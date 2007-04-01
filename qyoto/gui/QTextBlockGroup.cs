@@ -7,51 +7,37 @@ namespace Qyoto {
 	[SmokeClass("QTextBlockGroup")]
 	public class QTextBlockGroup : QTextObject {
  		protected QTextBlockGroup(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextBlockGroup")]
-		interface IQTextBlockGroupProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockGroup), this);
-			interceptor = (QTextBlockGroup) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextBlockGroup), "QTextBlockGroup", this);
 		}
-		private static IQTextBlockGroupProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextBlockGroup() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBlockGroupProxy), null);
-			staticInterceptor = (IQTextBlockGroupProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextBlockGroup), "QTextBlockGroup", null);
 		}
 		public QTextBlockGroup(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
-			NewQTextBlockGroup(doc);
+			interceptor.Invoke("QTextBlockGroup#", "QTextBlockGroup(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);
 		}
-		[SmokeMethod("QTextBlockGroup", "(QTextDocument*)", "#")]
-		private void NewQTextBlockGroup(QTextDocument doc) {
-			((QTextBlockGroup) interceptor).NewQTextBlockGroup(doc);
-		}
-		[SmokeMethod("blockInserted", "(const QTextBlock&)", "#")]
+		[SmokeMethod("blockInserted(const QTextBlock&)")]
 		protected virtual void BlockInserted(QTextBlock block) {
-			((QTextBlockGroup) interceptor).BlockInserted(block);
+			interceptor.Invoke("blockInserted#", "blockInserted(const QTextBlock&)", typeof(void), typeof(QTextBlock), block);
 		}
-		[SmokeMethod("blockRemoved", "(const QTextBlock&)", "#")]
+		[SmokeMethod("blockRemoved(const QTextBlock&)")]
 		protected virtual void BlockRemoved(QTextBlock block) {
-			((QTextBlockGroup) interceptor).BlockRemoved(block);
+			interceptor.Invoke("blockRemoved#", "blockRemoved(const QTextBlock&)", typeof(void), typeof(QTextBlock), block);
 		}
-		[SmokeMethod("blockFormatChanged", "(const QTextBlock&)", "#")]
+		[SmokeMethod("blockFormatChanged(const QTextBlock&)")]
 		protected virtual void BlockFormatChanged(QTextBlock block) {
-			((QTextBlockGroup) interceptor).BlockFormatChanged(block);
+			interceptor.Invoke("blockFormatChanged#", "blockFormatChanged(const QTextBlock&)", typeof(void), typeof(QTextBlock), block);
 		}
-		[SmokeMethod("blockList", "() const", "")]
 		protected List<QTextBlock> BlockList() {
-			return ((QTextBlockGroup) interceptor).BlockList();
+			return (List<QTextBlock>) interceptor.Invoke("blockList", "blockList() const", typeof(List<QTextBlock>));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextBlockGroupSignals Emit {
 			get { return (IQTextBlockGroupSignals) Q_EMIT; }

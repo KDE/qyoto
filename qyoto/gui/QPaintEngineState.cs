@@ -4,95 +4,70 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QPaintEngineState")]
-	public class QPaintEngineState : MarshalByRefObject, IDisposable {
-		protected QPaintEngineState interceptor = null;
+	public class QPaintEngineState : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPaintEngineState(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEngineState), this);
-			interceptor = (QPaintEngineState) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPaintEngineState), "QPaintEngineState", this);
 		}
-		[SmokeMethod("state", "() const", "")]
 		public int State() {
-			return ((QPaintEngineState) interceptor).State();
+			return (int) interceptor.Invoke("state", "state() const", typeof(int));
 		}
-		[SmokeMethod("pen", "() const", "")]
 		public QPen Pen() {
-			return ((QPaintEngineState) interceptor).Pen();
+			return (QPen) interceptor.Invoke("pen", "pen() const", typeof(QPen));
 		}
-		[SmokeMethod("brush", "() const", "")]
 		public QBrush Brush() {
-			return ((QPaintEngineState) interceptor).Brush();
+			return (QBrush) interceptor.Invoke("brush", "brush() const", typeof(QBrush));
 		}
-		[SmokeMethod("brushOrigin", "() const", "")]
 		public QPointF BrushOrigin() {
-			return ((QPaintEngineState) interceptor).BrushOrigin();
+			return (QPointF) interceptor.Invoke("brushOrigin", "brushOrigin() const", typeof(QPointF));
 		}
-		[SmokeMethod("backgroundBrush", "() const", "")]
 		public QBrush BackgroundBrush() {
-			return ((QPaintEngineState) interceptor).BackgroundBrush();
+			return (QBrush) interceptor.Invoke("backgroundBrush", "backgroundBrush() const", typeof(QBrush));
 		}
-		[SmokeMethod("backgroundMode", "() const", "")]
 		public Qt.BGMode BackgroundMode() {
-			return ((QPaintEngineState) interceptor).BackgroundMode();
+			return (Qt.BGMode) interceptor.Invoke("backgroundMode", "backgroundMode() const", typeof(Qt.BGMode));
 		}
-		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ((QPaintEngineState) interceptor).Font();
+			return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
 		}
-		[SmokeMethod("matrix", "() const", "")]
 		public QMatrix Matrix() {
-			return ((QPaintEngineState) interceptor).Matrix();
+			return (QMatrix) interceptor.Invoke("matrix", "matrix() const", typeof(QMatrix));
 		}
-		[SmokeMethod("clipOperation", "() const", "")]
 		public Qt.ClipOperation ClipOperation() {
-			return ((QPaintEngineState) interceptor).ClipOperation();
+			return (Qt.ClipOperation) interceptor.Invoke("clipOperation", "clipOperation() const", typeof(Qt.ClipOperation));
 		}
-		[SmokeMethod("clipRegion", "() const", "")]
 		public QRegion ClipRegion() {
-			return ((QPaintEngineState) interceptor).ClipRegion();
+			return (QRegion) interceptor.Invoke("clipRegion", "clipRegion() const", typeof(QRegion));
 		}
-		[SmokeMethod("clipPath", "() const", "")]
 		public QPainterPath ClipPath() {
-			return ((QPaintEngineState) interceptor).ClipPath();
+			return (QPainterPath) interceptor.Invoke("clipPath", "clipPath() const", typeof(QPainterPath));
 		}
-		[SmokeMethod("isClipEnabled", "() const", "")]
 		public bool IsClipEnabled() {
-			return ((QPaintEngineState) interceptor).IsClipEnabled();
+			return (bool) interceptor.Invoke("isClipEnabled", "isClipEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("renderHints", "() const", "")]
 		public int RenderHints() {
-			return ((QPaintEngineState) interceptor).RenderHints();
+			return (int) interceptor.Invoke("renderHints", "renderHints() const", typeof(int));
 		}
-		[SmokeMethod("compositionMode", "() const", "")]
 		public QPainter.CompositionMode CompositionMode() {
-			return ((QPaintEngineState) interceptor).CompositionMode();
+			return (QPainter.CompositionMode) interceptor.Invoke("compositionMode", "compositionMode() const", typeof(QPainter.CompositionMode));
 		}
-		[SmokeMethod("opacity", "() const", "")]
 		public double Opacity() {
-			return ((QPaintEngineState) interceptor).Opacity();
+			return (double) interceptor.Invoke("opacity", "opacity() const", typeof(double));
 		}
-		[SmokeMethod("painter", "() const", "")]
 		public QPainter Painter() {
-			return ((QPaintEngineState) interceptor).Painter();
+			return (QPainter) interceptor.Invoke("painter", "painter() const", typeof(QPainter));
 		}
 		public QPaintEngineState() : this((Type) null) {
 			CreateProxy();
-			NewQPaintEngineState();
-		}
-		[SmokeMethod("QPaintEngineState", "()", "")]
-		private void NewQPaintEngineState() {
-			((QPaintEngineState) interceptor).NewQPaintEngineState();
+			interceptor.Invoke("QPaintEngineState", "QPaintEngineState()", typeof(void));
 		}
 		~QPaintEngineState() {
-			DisposeQPaintEngineState();
+			interceptor.Invoke("~QPaintEngineState", "~QPaintEngineState()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPaintEngineState();
-		}
-		[SmokeMethod("~QPaintEngineState", "()", "")]
-		private void DisposeQPaintEngineState() {
-			((QPaintEngineState) interceptor).DisposeQPaintEngineState();
+			interceptor.Invoke("~QPaintEngineState", "~QPaintEngineState()", typeof(void));
 		}
 	}
 }

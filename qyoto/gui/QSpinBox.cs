@@ -8,124 +8,89 @@ namespace Qyoto {
 	[SmokeClass("QSpinBox")]
 	public class QSpinBox : QAbstractSpinBox, IDisposable {
  		protected QSpinBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSpinBox")]
-		interface IQSpinBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpinBox), this);
-			interceptor = (QSpinBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSpinBox), "QSpinBox", this);
 		}
-		private static IQSpinBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSpinBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSpinBoxProxy), null);
-			staticInterceptor = (IQSpinBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSpinBox), "QSpinBox", null);
 		}
 		[Q_PROPERTY("QString", "suffix")]
 		public string Suffix {
-			[SmokeMethod("suffix", "()", "")]
-			get { return ((QSpinBox) interceptor).Suffix; }
-			[SmokeMethod("setSuffix", "(QString)", "$")]
-			set { ((QSpinBox) interceptor).Suffix = value; }
+			get { return (string) interceptor.Invoke("suffix", "suffix()", typeof(string)); }
+			set { interceptor.Invoke("setSuffix$", "setSuffix(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "prefix")]
 		public string Prefix {
-			[SmokeMethod("prefix", "()", "")]
-			get { return ((QSpinBox) interceptor).Prefix; }
-			[SmokeMethod("setPrefix", "(QString)", "$")]
-			set { ((QSpinBox) interceptor).Prefix = value; }
+			get { return (string) interceptor.Invoke("prefix", "prefix()", typeof(string)); }
+			set { interceptor.Invoke("setPrefix$", "setPrefix(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "cleanText")]
 		public string CleanText {
-			[SmokeMethod("cleanText", "()", "")]
-			get { return ((QSpinBox) interceptor).CleanText; }
+			get { return (string) interceptor.Invoke("cleanText", "cleanText()", typeof(string)); }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			[SmokeMethod("maximum", "()", "")]
-			get { return ((QSpinBox) interceptor).Maximum; }
-			[SmokeMethod("setMaximum", "(int)", "$")]
-			set { ((QSpinBox) interceptor).Maximum = value; }
+			get { return (int) interceptor.Invoke("maximum", "maximum()", typeof(int)); }
+			set { interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			[SmokeMethod("minimum", "()", "")]
-			get { return ((QSpinBox) interceptor).Minimum; }
-			[SmokeMethod("setMinimum", "(int)", "$")]
-			set { ((QSpinBox) interceptor).Minimum = value; }
+			get { return (int) interceptor.Invoke("minimum", "minimum()", typeof(int)); }
+			set { interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "singleStep")]
 		public int SingleStep {
-			[SmokeMethod("singleStep", "()", "")]
-			get { return ((QSpinBox) interceptor).SingleStep; }
-			[SmokeMethod("setSingleStep", "(int)", "$")]
-			set { ((QSpinBox) interceptor).SingleStep = value; }
+			get { return (int) interceptor.Invoke("singleStep", "singleStep()", typeof(int)); }
+			set { interceptor.Invoke("setSingleStep$", "setSingleStep(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			[SmokeMethod("value", "()", "")]
-			get { return ((QSpinBox) interceptor).Value; }
-			[SmokeMethod("setValue", "(int)", "$")]
-			set { ((QSpinBox) interceptor).Value = value; }
+			get { return (int) interceptor.Invoke("value", "value()", typeof(int)); }
+			set { interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value); }
 		}
 		public QSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSpinBox(parent);
-		}
-		[SmokeMethod("QSpinBox", "(QWidget*)", "#")]
-		private void NewQSpinBox(QWidget parent) {
-			((QSpinBox) interceptor).NewQSpinBox(parent);
+			interceptor.Invoke("QSpinBox#", "QSpinBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QSpinBox() : this((Type) null) {
 			CreateProxy();
-			NewQSpinBox();
+			interceptor.Invoke("QSpinBox", "QSpinBox()", typeof(void));
 		}
-		[SmokeMethod("QSpinBox", "()", "")]
-		private void NewQSpinBox() {
-			((QSpinBox) interceptor).NewQSpinBox();
-		}
-		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int min, int max) {
-			((QSpinBox) interceptor).SetRange(min,max);
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QSpinBox) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		protected new virtual int Validate(StringBuilder input, out int pos) {
-			return ((QSpinBox) interceptor).Validate(input,out pos);
+		[SmokeMethod("validate(QString&, int&) const")]
+		protected new virtual int Validate(StringBuilder input, int pos) {
+			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), input, typeof(int), pos);
 		}
-		[SmokeMethod("valueFromText", "(const QString&) const", "$")]
+		[SmokeMethod("valueFromText(const QString&) const")]
 		protected virtual int ValueFromText(string text) {
-			return ((QSpinBox) interceptor).ValueFromText(text);
+			return (int) interceptor.Invoke("valueFromText$", "valueFromText(const QString&) const", typeof(int), typeof(string), text);
 		}
-		[SmokeMethod("textFromValue", "(int) const", "$")]
+		[SmokeMethod("textFromValue(int) const")]
 		protected virtual string TextFromValue(int val) {
-			return ((QSpinBox) interceptor).TextFromValue(val);
+			return (string) interceptor.Invoke("textFromValue$", "textFromValue(int) const", typeof(string), typeof(int), val);
 		}
-		[SmokeMethod("fixup", "(QString&) const", "$")]
+		[SmokeMethod("fixup(QString&) const")]
 		protected new virtual void Fixup(StringBuilder str) {
-			((QSpinBox) interceptor).Fixup(str);
+			interceptor.Invoke("fixup$", "fixup(QString&) const", typeof(void), typeof(StringBuilder), str);
 		}
 		~QSpinBox() {
-			DisposeQSpinBox();
+			interceptor.Invoke("~QSpinBox", "~QSpinBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSpinBox();
-		}
-		[SmokeMethod("~QSpinBox", "()", "")]
-		private void DisposeQSpinBox() {
-			((QSpinBox) interceptor).DisposeQSpinBox();
+			interceptor.Invoke("~QSpinBox", "~QSpinBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSpinBoxSignals Emit {
 			get { return (IQSpinBoxSignals) Q_EMIT; }

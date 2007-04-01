@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QContextMenuEvent : QInputEvent, IDisposable {
  		protected QContextMenuEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QContextMenuEvent), this);
-			interceptor = (QContextMenuEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QContextMenuEvent), "QContextMenuEvent", this);
 		}
 		public enum Reason {
 			Mouse = 0,
@@ -17,57 +16,38 @@ namespace Qyoto {
 		}
 		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos) : this((Type) null) {
 			CreateProxy();
-			NewQContextMenuEvent(reason,pos,globalPos);
-		}
-		[SmokeMethod("QContextMenuEvent", "(QContextMenuEvent::Reason, const QPoint&, const QPoint&)", "$##")]
-		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos) {
-			((QContextMenuEvent) interceptor).NewQContextMenuEvent(reason,pos,globalPos);
+			interceptor.Invoke("QContextMenuEvent$##", "QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, const QPoint&)", typeof(void), typeof(QContextMenuEvent.Reason), reason, typeof(QPoint), pos, typeof(QPoint), globalPos);
 		}
 		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos) : this((Type) null) {
 			CreateProxy();
-			NewQContextMenuEvent(reason,pos);
+			interceptor.Invoke("QContextMenuEvent$#", "QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&)", typeof(void), typeof(QContextMenuEvent.Reason), reason, typeof(QPoint), pos);
 		}
-		[SmokeMethod("QContextMenuEvent", "(QContextMenuEvent::Reason, const QPoint&)", "$#")]
-		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos) {
-			((QContextMenuEvent) interceptor).NewQContextMenuEvent(reason,pos);
-		}
-		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ((QContextMenuEvent) interceptor).X();
+			return (int) interceptor.Invoke("x", "x() const", typeof(int));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ((QContextMenuEvent) interceptor).Y();
+			return (int) interceptor.Invoke("y", "y() const", typeof(int));
 		}
-		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ((QContextMenuEvent) interceptor).GlobalX();
+			return (int) interceptor.Invoke("globalX", "globalX() const", typeof(int));
 		}
-		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ((QContextMenuEvent) interceptor).GlobalY();
+			return (int) interceptor.Invoke("globalY", "globalY() const", typeof(int));
 		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ((QContextMenuEvent) interceptor).Pos();
+			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ((QContextMenuEvent) interceptor).GlobalPos();
+			return (QPoint) interceptor.Invoke("globalPos", "globalPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("reason", "() const", "")]
 		public QContextMenuEvent.Reason reason() {
-			return ((QContextMenuEvent) interceptor).reason();
+			return (QContextMenuEvent.Reason) interceptor.Invoke("reason", "reason() const", typeof(QContextMenuEvent.Reason));
 		}
 		~QContextMenuEvent() {
-			DisposeQContextMenuEvent();
+			interceptor.Invoke("~QContextMenuEvent", "~QContextMenuEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQContextMenuEvent();
-		}
-		[SmokeMethod("~QContextMenuEvent", "()", "")]
-		private void DisposeQContextMenuEvent() {
-			((QContextMenuEvent) interceptor).DisposeQContextMenuEvent();
+			interceptor.Invoke("~QContextMenuEvent", "~QContextMenuEvent()", typeof(void));
 		}
 	}
 }

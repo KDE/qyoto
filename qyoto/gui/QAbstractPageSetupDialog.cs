@@ -6,49 +6,31 @@ namespace Qyoto {
 	[SmokeClass("QAbstractPageSetupDialog")]
 	public abstract class QAbstractPageSetupDialog : QDialog {
  		protected QAbstractPageSetupDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractPageSetupDialog")]
-		interface IQAbstractPageSetupDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractPageSetupDialog), this);
-			interceptor = (QAbstractPageSetupDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractPageSetupDialog), "QAbstractPageSetupDialog", this);
 		}
-		private static IQAbstractPageSetupDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractPageSetupDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractPageSetupDialogProxy), null);
-			staticInterceptor = (IQAbstractPageSetupDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractPageSetupDialog), "QAbstractPageSetupDialog", null);
 		}
 		public QAbstractPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractPageSetupDialog(printer,parent);
-		}
-		[SmokeMethod("QAbstractPageSetupDialog", "(QPrinter*, QWidget*)", "##")]
-		private void NewQAbstractPageSetupDialog(QPrinter printer, QWidget parent) {
-			((QAbstractPageSetupDialog) interceptor).NewQAbstractPageSetupDialog(printer,parent);
+			interceptor.Invoke("QAbstractPageSetupDialog##", "QAbstractPageSetupDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);
 		}
 		public QAbstractPageSetupDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractPageSetupDialog(printer);
+			interceptor.Invoke("QAbstractPageSetupDialog#", "QAbstractPageSetupDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
 		}
-		[SmokeMethod("QAbstractPageSetupDialog", "(QPrinter*)", "#")]
-		private void NewQAbstractPageSetupDialog(QPrinter printer) {
-			((QAbstractPageSetupDialog) interceptor).NewQAbstractPageSetupDialog(printer);
-		}
-		[SmokeMethod("exec", "()", "")]
+		[SmokeMethod("exec()")]
 		public abstract int Exec();
-		[SmokeMethod("printer", "()", "")]
 		public QPrinter Printer() {
-			return ((QAbstractPageSetupDialog) interceptor).Printer();
+			return (QPrinter) interceptor.Invoke("printer", "printer()", typeof(QPrinter));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractPageSetupDialogSignals Emit {
 			get { return (IQAbstractPageSetupDialogSignals) Q_EMIT; }

@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	public class QSql : MarshalByRefObject {
-		protected QSql interceptor = null;
+	public class QSql : Object {
+		protected SmokeInvocation interceptor = null;
 		public enum Location {
 			BeforeFirstRow = -1,
 			AfterLastRow = -2,

@@ -4,46 +4,32 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QByteRef")]
-	public class QByteRef : MarshalByRefObject {
-		protected QByteRef interceptor = null;
+	public class QByteRef : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QByteRef(Type dummy) {}
-		[SmokeClass("QByteRef")]
-		interface IQByteRefProxy {
-			[SmokeMethod("operator==", "(char) const", "$")]
-			bool op_equals(QByteRef lhs, char c);
-			[SmokeMethod("operator>", "(char) const", "$")]
-			bool op_gt(QByteRef lhs, char c);
-			[SmokeMethod("operator>=", "(char) const", "$")]
-			bool op_gte(QByteRef lhs, char c);
-			[SmokeMethod("operator<", "(char) const", "$")]
-			bool op_lt(QByteRef lhs, char c);
-			[SmokeMethod("operator<=", "(char) const", "$")]
-			bool op_lte(QByteRef lhs, char c);
-		}
-		private static IQByteRefProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QByteRef() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQByteRefProxy), null);
-			staticInterceptor = (IQByteRefProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QByteRef), "QByteRef", null);
 		}
 		//  operator const char(); >>>> NOT CONVERTED
 		public static bool operator==(QByteRef lhs, char c) {
-			return staticInterceptor.op_equals(lhs,c);
+			return (bool) staticInterceptor.Invoke("operator==$", "operator==(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}
 		public static bool operator!=(QByteRef lhs, char c) {
-			return !staticInterceptor.op_equals(lhs,c);
+			return !(bool) staticInterceptor.Invoke("operator==$", "operator==(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}
 		public static bool operator>(QByteRef lhs, char c) {
-			return staticInterceptor.op_gt(lhs,c);
+			return (bool) staticInterceptor.Invoke("operator>$", "operator>(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}
 		public static bool operator>=(QByteRef lhs, char c) {
-			return staticInterceptor.op_gte(lhs,c);
+			return (bool) staticInterceptor.Invoke("operator>=$", "operator>=(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}
 		public static bool operator<(QByteRef lhs, char c) {
-			return staticInterceptor.op_lt(lhs,c);
+			return (bool) staticInterceptor.Invoke("operator<$", "operator<(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}
 		public static bool operator<=(QByteRef lhs, char c) {
-			return staticInterceptor.op_lte(lhs,c);
+			return (bool) staticInterceptor.Invoke("operator<=$", "operator<=(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}
 	}
 }

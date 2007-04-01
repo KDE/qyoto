@@ -7,66 +7,45 @@ namespace Qyoto {
 	public class QMouseEvent : QInputEvent, IDisposable {
  		protected QMouseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMouseEvent), this);
-			interceptor = (QMouseEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMouseEvent), "QMouseEvent", this);
 		}
 		public QMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQMouseEvent(type,pos,button,buttons,modifiers);
-		}
-		[SmokeMethod("QMouseEvent", "(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", "$#$$$")]
-		private void NewQMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) {
-			((QMouseEvent) interceptor).NewQMouseEvent(type,pos,button,buttons,modifiers);
+			interceptor.Invoke("QMouseEvent$#$$$", "QMouseEvent(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(Qt.MouseButton), button, typeof(int), buttons, typeof(int), modifiers);
 		}
 		public QMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
+			interceptor.Invoke("QMouseEvent$##$$$", "QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(Qt.MouseButton), button, typeof(int), buttons, typeof(int), modifiers);
 		}
-		[SmokeMethod("QMouseEvent", "(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", "$##$$$")]
-		private void NewQMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) {
-			((QMouseEvent) interceptor).NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ((QMouseEvent) interceptor).Pos();
+			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ((QMouseEvent) interceptor).GlobalPos();
+			return (QPoint) interceptor.Invoke("globalPos", "globalPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ((QMouseEvent) interceptor).X();
+			return (int) interceptor.Invoke("x", "x() const", typeof(int));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ((QMouseEvent) interceptor).Y();
+			return (int) interceptor.Invoke("y", "y() const", typeof(int));
 		}
-		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ((QMouseEvent) interceptor).GlobalX();
+			return (int) interceptor.Invoke("globalX", "globalX() const", typeof(int));
 		}
-		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ((QMouseEvent) interceptor).GlobalY();
+			return (int) interceptor.Invoke("globalY", "globalY() const", typeof(int));
 		}
-		[SmokeMethod("button", "() const", "")]
 		public Qt.MouseButton Button() {
-			return ((QMouseEvent) interceptor).Button();
+			return (Qt.MouseButton) interceptor.Invoke("button", "button() const", typeof(Qt.MouseButton));
 		}
-		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ((QMouseEvent) interceptor).Buttons();
+			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
 		}
 		~QMouseEvent() {
-			DisposeQMouseEvent();
+			interceptor.Invoke("~QMouseEvent", "~QMouseEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQMouseEvent();
-		}
-		[SmokeMethod("~QMouseEvent", "()", "")]
-		private void DisposeQMouseEvent() {
-			((QMouseEvent) interceptor).DisposeQMouseEvent();
+			interceptor.Invoke("~QMouseEvent", "~QMouseEvent()", typeof(void));
 		}
 	}
 }

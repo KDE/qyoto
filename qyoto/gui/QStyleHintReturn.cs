@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QStyleHintReturn")]
-	public class QStyleHintReturn : MarshalByRefObject, IDisposable {
-		protected QStyleHintReturn interceptor = null;
+	public class QStyleHintReturn : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QStyleHintReturn(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturn), this);
-			interceptor = (QStyleHintReturn) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleHintReturn), "QStyleHintReturn", this);
 		}
 		public enum HintReturnType {
 			SH_Default = 0xf000,
@@ -24,37 +23,21 @@ namespace Qyoto {
 		}
 		public QStyleHintReturn(int version, int type) : this((Type) null) {
 			CreateProxy();
-			NewQStyleHintReturn(version,type);
-		}
-		[SmokeMethod("QStyleHintReturn", "(int, int)", "$$")]
-		private void NewQStyleHintReturn(int version, int type) {
-			((QStyleHintReturn) interceptor).NewQStyleHintReturn(version,type);
+			interceptor.Invoke("QStyleHintReturn$$", "QStyleHintReturn(int, int)", typeof(void), typeof(int), version, typeof(int), type);
 		}
 		public QStyleHintReturn(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleHintReturn(version);
-		}
-		[SmokeMethod("QStyleHintReturn", "(int)", "$")]
-		private void NewQStyleHintReturn(int version) {
-			((QStyleHintReturn) interceptor).NewQStyleHintReturn(version);
+			interceptor.Invoke("QStyleHintReturn$", "QStyleHintReturn(int)", typeof(void), typeof(int), version);
 		}
 		public QStyleHintReturn() : this((Type) null) {
 			CreateProxy();
-			NewQStyleHintReturn();
-		}
-		[SmokeMethod("QStyleHintReturn", "()", "")]
-		private void NewQStyleHintReturn() {
-			((QStyleHintReturn) interceptor).NewQStyleHintReturn();
+			interceptor.Invoke("QStyleHintReturn", "QStyleHintReturn()", typeof(void));
 		}
 		~QStyleHintReturn() {
-			DisposeQStyleHintReturn();
+			interceptor.Invoke("~QStyleHintReturn", "~QStyleHintReturn()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleHintReturn();
-		}
-		[SmokeMethod("~QStyleHintReturn", "()", "")]
-		private void DisposeQStyleHintReturn() {
-			((QStyleHintReturn) interceptor).DisposeQStyleHintReturn();
+			interceptor.Invoke("~QStyleHintReturn", "~QStyleHintReturn()", typeof(void));
 		}
 	}
 }

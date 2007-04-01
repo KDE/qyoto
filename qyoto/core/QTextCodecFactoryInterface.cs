@@ -7,18 +7,13 @@ namespace Qyoto {
 	public abstract class QTextCodecFactoryInterface : QFactoryInterface {
  		protected QTextCodecFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodecFactoryInterface), this);
-			interceptor = (QTextCodecFactoryInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextCodecFactoryInterface), "QTextCodecFactoryInterface", this);
 		}
-		[SmokeMethod("create", "(const QString&)", "$")]
+		[SmokeMethod("create(const QString&)")]
 		public abstract QTextCodec Create(string key);
 		public QTextCodecFactoryInterface() : this((Type) null) {
 			CreateProxy();
-			NewQTextCodecFactoryInterface();
-		}
-		[SmokeMethod("QTextCodecFactoryInterface", "()", "")]
-		private void NewQTextCodecFactoryInterface() {
-			((QTextCodecFactoryInterface) interceptor).NewQTextCodecFactoryInterface();
+			interceptor.Invoke("QTextCodecFactoryInterface", "QTextCodecFactoryInterface()", typeof(void));
 		}
 	}
 }

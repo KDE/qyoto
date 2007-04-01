@@ -20,49 +20,28 @@ namespace Qyoto {
 				Console.WriteLine("Could not retrieve signal interface");
 			}
 		}
-		[SmokeMethod("metaObject", "()", "")]
+		[SmokeMethod("metaObject()")]
 		public virtual QMetaObject MetaObject() {
 			if (SmokeMarshallers.IsSmokeClass(GetType())) {
-				return ((QObject) interceptor).MetaObject();
+				return (QMetaObject) interceptor.Invoke("metaObject", "metaObject()", typeof(QMetaObject));
 			} else {
 				return Qyoto.GetMetaObject(this);
 			}
 		}
-		[SmokeClass("QObject")]
-		interface IQObjectProxy {
-			[SmokeMethod("staticQtMetaObject", "()", "")]
-			QMetaObject staticQtMetaObject();
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("connect", "(const QObject*, const char*, const QObject*, const char*, Qt::ConnectionType)", "#$#$$")]
-			bool Connect(QObject sender, string signal, QObject receiver, string member, Qt.ConnectionType arg5);
-			[SmokeMethod("connect", "(const QObject*, const char*, const QObject*, const char*)", "#$#$")]
-			bool Connect(QObject sender, string signal, QObject receiver, string member);
-			[SmokeMethod("disconnect", "(const QObject*, const char*, const QObject*, const char*)", "#$#$")]
-			bool Disconnect(QObject sender, string signal, QObject receiver, string member);
-			[SmokeMethod("registerUserData", "()", "")]
-			uint RegisterUserData();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObject), this);
-			interceptor = (QObject) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QObject), "QObject", this);
 		}
-		private static IQObjectProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QObject() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQObjectProxy), null);
-			staticInterceptor = (IQObjectProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QObject), "QObject", null);
 		}
 		public static QMetaObject StaticQtMetaObject() {
-			return staticInterceptor.staticQtMetaObject();
+			return (QMetaObject) staticInterceptor.Invoke("staticQtMetaObject", "staticQtMetaObject()", typeof(QMetaObject));
 		}
 		[Q_PROPERTY("QString", "objectName")]
 		public string ObjectName {
-			[SmokeMethod("objectName", "()", "")]
-			get { return ((QObject) interceptor).ObjectName; }
-			[SmokeMethod("setObjectName", "(QString)", "$")]
-			set { ((QObject) interceptor).ObjectName = value; }
+			get { return (string) interceptor.Invoke("objectName", "objectName()", typeof(string)); }
+			set { interceptor.Invoke("setObjectName$", "setObjectName(QString)", typeof(void), typeof(string), value); }
 		}
 		// QThread* thread(); >>>> NOT CONVERTED
 		// void moveToThread(QThread* arg1); >>>> NOT CONVERTED
@@ -70,184 +49,145 @@ namespace Qyoto {
 		// QObjectUserData* userData(uint arg1); >>>> NOT CONVERTED
 		public QObject(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQObject(parent);
-		}
-		[SmokeMethod("QObject", "(QObject*)", "#")]
-		private void NewQObject(QObject parent) {
-			((QObject) interceptor).NewQObject(parent);
+			interceptor.Invoke("QObject#", "QObject(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QObject() : this((Type) null) {
 			CreateProxy();
-			NewQObject();
+			interceptor.Invoke("QObject", "QObject()", typeof(void));
 		}
-		[SmokeMethod("QObject", "()", "")]
-		private void NewQObject() {
-			((QObject) interceptor).NewQObject();
-		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		public virtual bool Event(QEvent arg1) {
-			return ((QObject) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QObject) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("isWidgetType", "() const", "")]
 		public bool IsWidgetType() {
-			return ((QObject) interceptor).IsWidgetType();
+			return (bool) interceptor.Invoke("isWidgetType", "isWidgetType() const", typeof(bool));
 		}
-		[SmokeMethod("signalsBlocked", "() const", "")]
 		public bool SignalsBlocked() {
-			return ((QObject) interceptor).SignalsBlocked();
+			return (bool) interceptor.Invoke("signalsBlocked", "signalsBlocked() const", typeof(bool));
 		}
-		[SmokeMethod("blockSignals", "(bool)", "$")]
 		public bool BlockSignals(bool b) {
-			return ((QObject) interceptor).BlockSignals(b);
+			return (bool) interceptor.Invoke("blockSignals$", "blockSignals(bool)", typeof(bool), typeof(bool), b);
 		}
-		[SmokeMethod("startTimer", "(int)", "$")]
 		public int StartTimer(int interval) {
-			return ((QObject) interceptor).StartTimer(interval);
+			return (int) interceptor.Invoke("startTimer$", "startTimer(int)", typeof(int), typeof(int), interval);
 		}
-		[SmokeMethod("killTimer", "(int)", "$")]
 		public void KillTimer(int id) {
-			((QObject) interceptor).KillTimer(id);
+			interceptor.Invoke("killTimer$", "killTimer(int)", typeof(void), typeof(int), id);
 		}
-		[SmokeMethod("children", "() const", "")]
 		public List<QObject> Children() {
-			return ((QObject) interceptor).Children();
+			return (List<QObject>) interceptor.Invoke("children", "children() const", typeof(List<QObject>));
 		}
-		[SmokeMethod("setParent", "(QObject*)", "#")]
 		public void SetParent(QObject arg1) {
-			((QObject) interceptor).SetParent(arg1);
+			interceptor.Invoke("setParent#", "setParent(QObject*)", typeof(void), typeof(QObject), arg1);
 		}
-		[SmokeMethod("installEventFilter", "(QObject*)", "#")]
 		public void InstallEventFilter(QObject arg1) {
-			((QObject) interceptor).InstallEventFilter(arg1);
+			interceptor.Invoke("installEventFilter#", "installEventFilter(QObject*)", typeof(void), typeof(QObject), arg1);
 		}
-		[SmokeMethod("removeEventFilter", "(QObject*)", "#")]
 		public void RemoveEventFilter(QObject arg1) {
-			((QObject) interceptor).RemoveEventFilter(arg1);
+			interceptor.Invoke("removeEventFilter#", "removeEventFilter(QObject*)", typeof(void), typeof(QObject), arg1);
 		}
-		[SmokeMethod("connect", "(const QObject*, const char*, const char*, Qt::ConnectionType) const", "#$$$")]
 		public bool Connect(QObject sender, string signal, string member, Qt.ConnectionType type) {
-			return ((QObject) interceptor).Connect(sender,signal,member,type);
+			return (bool) interceptor.Invoke("connect#$$$", "connect(const QObject*, const char*, const char*, Qt::ConnectionType) const", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(string), member, typeof(Qt.ConnectionType), type);
 		}
-		[SmokeMethod("connect", "(const QObject*, const char*, const char*) const", "#$$")]
 		public bool Connect(QObject sender, string signal, string member) {
-			return ((QObject) interceptor).Connect(sender,signal,member);
+			return (bool) interceptor.Invoke("connect#$$", "connect(const QObject*, const char*, const char*) const", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(string), member);
 		}
-		[SmokeMethod("disconnect", "(const char*, const QObject*, const char*)", "$#$")]
 		public bool Disconnect(string signal, QObject receiver, string member) {
-			return ((QObject) interceptor).Disconnect(signal,receiver,member);
+			return (bool) interceptor.Invoke("disconnect$#$", "disconnect(const char*, const QObject*, const char*)", typeof(bool), typeof(string), signal, typeof(QObject), receiver, typeof(string), member);
 		}
-		[SmokeMethod("disconnect", "(const char*, const QObject*)", "$#")]
 		public bool Disconnect(string signal, QObject receiver) {
-			return ((QObject) interceptor).Disconnect(signal,receiver);
+			return (bool) interceptor.Invoke("disconnect$#", "disconnect(const char*, const QObject*)", typeof(bool), typeof(string), signal, typeof(QObject), receiver);
 		}
-		[SmokeMethod("disconnect", "(const char*)", "$")]
 		public bool Disconnect(string signal) {
-			return ((QObject) interceptor).Disconnect(signal);
+			return (bool) interceptor.Invoke("disconnect$", "disconnect(const char*)", typeof(bool), typeof(string), signal);
 		}
-		[SmokeMethod("disconnect", "()", "")]
 		public bool Disconnect() {
-			return ((QObject) interceptor).Disconnect();
+			return (bool) interceptor.Invoke("disconnect", "disconnect()", typeof(bool));
 		}
-		[SmokeMethod("disconnect", "(const QObject*, const char*)", "#$")]
 		public bool Disconnect(QObject receiver, string member) {
-			return ((QObject) interceptor).Disconnect(receiver,member);
+			return (bool) interceptor.Invoke("disconnect#$", "disconnect(const QObject*, const char*)", typeof(bool), typeof(QObject), receiver, typeof(string), member);
 		}
-		[SmokeMethod("disconnect", "(const QObject*)", "#")]
 		public bool Disconnect(QObject receiver) {
-			return ((QObject) interceptor).Disconnect(receiver);
+			return (bool) interceptor.Invoke("disconnect#", "disconnect(const QObject*)", typeof(bool), typeof(QObject), receiver);
 		}
-		[SmokeMethod("dumpObjectTree", "()", "")]
 		public void DumpObjectTree() {
-			((QObject) interceptor).DumpObjectTree();
+			interceptor.Invoke("dumpObjectTree", "dumpObjectTree()", typeof(void));
 		}
-		[SmokeMethod("dumpObjectInfo", "()", "")]
 		public void DumpObjectInfo() {
-			((QObject) interceptor).DumpObjectInfo();
+			interceptor.Invoke("dumpObjectInfo", "dumpObjectInfo()", typeof(void));
 		}
-		[SmokeMethod("setProperty", "(const char*, const QVariant&)", "$#")]
 		public bool SetProperty(string name, QVariant value) {
-			return ((QObject) interceptor).SetProperty(name,value);
+			return (bool) interceptor.Invoke("setProperty$#", "setProperty(const char*, const QVariant&)", typeof(bool), typeof(string), name, typeof(QVariant), value);
 		}
-		[SmokeMethod("property", "(const char*) const", "$")]
 		public QVariant Property(string name) {
-			return ((QObject) interceptor).Property(name);
+			return (QVariant) interceptor.Invoke("property$", "property(const char*) const", typeof(QVariant), typeof(string), name);
 		}
-		[SmokeMethod("dynamicPropertyNames", "() const", "")]
 		public List<QByteArray> DynamicPropertyNames() {
-			return ((QObject) interceptor).DynamicPropertyNames();
+			return (List<QByteArray>) interceptor.Invoke("dynamicPropertyNames", "dynamicPropertyNames() const", typeof(List<QByteArray>));
 		}
-		[SmokeMethod("parent", "() const", "")]
 		public QObject Parent() {
-			return ((QObject) interceptor).Parent();
+			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
-		[SmokeMethod("inherits", "(const char*) const", "$")]
 		public bool Inherits(string classname) {
-			return ((QObject) interceptor).Inherits(classname);
+			return (bool) interceptor.Invoke("inherits$", "inherits(const char*) const", typeof(bool), typeof(string), classname);
 		}
 		[Q_SLOT("void deleteLater()")]
-		[SmokeMethod("deleteLater", "()", "")]
 		public void DeleteLater() {
-			((QObject) interceptor).DeleteLater();
+			interceptor.Invoke("deleteLater", "deleteLater()", typeof(void));
 		}
-		[SmokeMethod("sender", "() const", "")]
 		protected QObject Sender() {
-			return ((QObject) interceptor).Sender();
+			return (QObject) interceptor.Invoke("sender", "sender() const", typeof(QObject));
 		}
-		[SmokeMethod("receivers", "(const char*) const", "$")]
 		protected int Receivers(string signal) {
-			return ((QObject) interceptor).Receivers(signal);
+			return (int) interceptor.Invoke("receivers$", "receivers(const char*) const", typeof(int), typeof(string), signal);
 		}
-		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected virtual void TimerEvent(QTimerEvent arg1) {
-			((QObject) interceptor).TimerEvent(arg1);
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
-		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected virtual void ChildEvent(QChildEvent arg1) {
-			((QObject) interceptor).ChildEvent(arg1);
+			interceptor.Invoke("childEvent#", "childEvent(QChildEvent*)", typeof(void), typeof(QChildEvent), arg1);
 		}
-		[SmokeMethod("customEvent", "(QEvent*)", "#")]
+		[SmokeMethod("customEvent(QEvent*)")]
 		protected virtual void CustomEvent(QEvent arg1) {
-			((QObject) interceptor).CustomEvent(arg1);
+			interceptor.Invoke("customEvent#", "customEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("connectNotify", "(const char*)", "$")]
+		[SmokeMethod("connectNotify(const char*)")]
 		protected virtual void ConnectNotify(string signal) {
-			((QObject) interceptor).ConnectNotify(signal);
+			interceptor.Invoke("connectNotify$", "connectNotify(const char*)", typeof(void), typeof(string), signal);
 		}
-		[SmokeMethod("disconnectNotify", "(const char*)", "$")]
+		[SmokeMethod("disconnectNotify(const char*)")]
 		protected virtual void DisconnectNotify(string signal) {
-			((QObject) interceptor).DisconnectNotify(signal);
+			interceptor.Invoke("disconnectNotify$", "disconnectNotify(const char*)", typeof(void), typeof(string), signal);
 		}
 		~QObject() {
-			DisposeQObject();
+			interceptor.Invoke("~QObject", "~QObject()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQObject();
-		}
-		[SmokeMethod("~QObject", "()", "")]
-		private void DisposeQObject() {
-			((QObject) interceptor).DisposeQObject();
+			interceptor.Invoke("~QObject", "~QObject()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static bool Connect(QObject sender, string signal, QObject receiver, string member, Qt.ConnectionType arg5) {
-			return staticInterceptor.Connect(sender,signal,receiver,member,arg5);
+			return (bool) staticInterceptor.Invoke("connect#$#$$", "connect(const QObject*, const char*, const QObject*, const char*, Qt::ConnectionType)", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(QObject), receiver, typeof(string), member, typeof(Qt.ConnectionType), arg5);
 		}
 		public static bool Connect(QObject sender, string signal, QObject receiver, string member) {
-			return staticInterceptor.Connect(sender,signal,receiver,member);
+			return (bool) staticInterceptor.Invoke("connect#$#$", "connect(const QObject*, const char*, const QObject*, const char*)", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(QObject), receiver, typeof(string), member);
 		}
 		public static bool Disconnect(QObject sender, string signal, QObject receiver, string member) {
-			return staticInterceptor.Disconnect(sender,signal,receiver,member);
+			return (bool) staticInterceptor.Invoke("disconnect#$#$", "disconnect(const QObject*, const char*, const QObject*, const char*)", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(QObject), receiver, typeof(string), member);
 		}
 		public static uint RegisterUserData() {
-			return staticInterceptor.RegisterUserData();
+			return (uint) staticInterceptor.Invoke("registerUserData", "registerUserData()", typeof(uint));
 		}
 		protected new IQObjectSignals Emit {
 			get { return (IQObjectSignals) Q_EMIT; }

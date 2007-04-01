@@ -6,61 +6,40 @@ namespace Qyoto {
 	[SmokeClass("QObjectCleanupHandler")]
 	public class QObjectCleanupHandler : QObject, IDisposable {
  		protected QObjectCleanupHandler(Type dummy) : base((Type) null) {}
-		[SmokeClass("QObjectCleanupHandler")]
-		interface IQObjectCleanupHandlerProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectCleanupHandler), this);
-			interceptor = (QObjectCleanupHandler) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QObjectCleanupHandler), "QObjectCleanupHandler", this);
 		}
-		private static IQObjectCleanupHandlerProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QObjectCleanupHandler() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQObjectCleanupHandlerProxy), null);
-			staticInterceptor = (IQObjectCleanupHandlerProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QObjectCleanupHandler), "QObjectCleanupHandler", null);
 		}
 		public QObjectCleanupHandler() : this((Type) null) {
 			CreateProxy();
-			NewQObjectCleanupHandler();
+			interceptor.Invoke("QObjectCleanupHandler", "QObjectCleanupHandler()", typeof(void));
 		}
-		[SmokeMethod("QObjectCleanupHandler", "()", "")]
-		private void NewQObjectCleanupHandler() {
-			((QObjectCleanupHandler) interceptor).NewQObjectCleanupHandler();
-		}
-		[SmokeMethod("add", "(QObject*)", "#")]
 		public QObject Add(QObject arg1) {
-			return ((QObjectCleanupHandler) interceptor).Add(arg1);
+			return (QObject) interceptor.Invoke("add#", "add(QObject*)", typeof(QObject), typeof(QObject), arg1);
 		}
-		[SmokeMethod("remove", "(QObject*)", "#")]
 		public void Remove(QObject arg1) {
-			((QObjectCleanupHandler) interceptor).Remove(arg1);
+			interceptor.Invoke("remove#", "remove(QObject*)", typeof(void), typeof(QObject), arg1);
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QObjectCleanupHandler) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QObjectCleanupHandler) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
 		~QObjectCleanupHandler() {
-			DisposeQObjectCleanupHandler();
+			interceptor.Invoke("~QObjectCleanupHandler", "~QObjectCleanupHandler()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQObjectCleanupHandler();
-		}
-		[SmokeMethod("~QObjectCleanupHandler", "()", "")]
-		private void DisposeQObjectCleanupHandler() {
-			((QObjectCleanupHandler) interceptor).DisposeQObjectCleanupHandler();
+			interceptor.Invoke("~QObjectCleanupHandler", "~QObjectCleanupHandler()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQObjectCleanupHandlerSignals Emit {
 			get { return (IQObjectCleanupHandlerSignals) Q_EMIT; }

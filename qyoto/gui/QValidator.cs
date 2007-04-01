@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QValidator")]
 	public abstract class QValidator : QObject, IDisposable {
  		protected QValidator(Type dummy) : base((Type) null) {}
-		[SmokeClass("QValidator")]
-		interface IQValidatorProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QValidator), this);
-			interceptor = (QValidator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QValidator), "QValidator", this);
 		}
-		private static IQValidatorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QValidator() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQValidatorProxy), null);
-			staticInterceptor = (IQValidatorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QValidator), "QValidator", null);
 		}
 		public enum State {
 			Invalid = 0,
@@ -30,33 +21,25 @@ namespace Qyoto {
 		}
 		public QValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQValidator(parent);
+			interceptor.Invoke("QValidator#", "QValidator(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		[SmokeMethod("QValidator", "(QObject*)", "#")]
-		private void NewQValidator(QObject parent) {
-			((QValidator) interceptor).NewQValidator(parent);
-		}
-		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		public abstract int Validate(StringBuilder arg1, out int arg2);
-		[SmokeMethod("fixup", "(QString&) const", "$")]
+		[SmokeMethod("validate(QString&, int&) const")]
+		public abstract int Validate(StringBuilder arg1, int arg2);
+		[SmokeMethod("fixup(QString&) const")]
 		public virtual void Fixup(StringBuilder arg1) {
-			((QValidator) interceptor).Fixup(arg1);
+			interceptor.Invoke("fixup$", "fixup(QString&) const", typeof(void), typeof(StringBuilder), arg1);
 		}
 		~QValidator() {
-			DisposeQValidator();
+			interceptor.Invoke("~QValidator", "~QValidator()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQValidator();
-		}
-		[SmokeMethod("~QValidator", "()", "")]
-		private void DisposeQValidator() {
-			((QValidator) interceptor).DisposeQValidator();
+			interceptor.Invoke("~QValidator", "~QValidator()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQValidatorSignals Emit {
 			get { return (IQValidatorSignals) Q_EMIT; }

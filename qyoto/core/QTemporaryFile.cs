@@ -6,111 +6,72 @@ namespace Qyoto {
 	[SmokeClass("QTemporaryFile")]
 	public class QTemporaryFile : QFile, IDisposable {
  		protected QTemporaryFile(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTemporaryFile")]
-		interface IQTemporaryFileProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("createLocalFile", "(const QString&)", "$")]
-			QTemporaryFile CreateLocalFile(string fileName);
-			[SmokeMethod("createLocalFile", "(QFile&)", "#")]
-			QTemporaryFile CreateLocalFile(QFile file);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTemporaryFile), this);
-			interceptor = (QTemporaryFile) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTemporaryFile), "QTemporaryFile", this);
 		}
-		private static IQTemporaryFileProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTemporaryFile() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTemporaryFileProxy), null);
-			staticInterceptor = (IQTemporaryFileProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTemporaryFile), "QTemporaryFile", null);
 		}
 		public QTemporaryFile() : this((Type) null) {
 			CreateProxy();
-			NewQTemporaryFile();
-		}
-		[SmokeMethod("QTemporaryFile", "()", "")]
-		private void NewQTemporaryFile() {
-			((QTemporaryFile) interceptor).NewQTemporaryFile();
+			interceptor.Invoke("QTemporaryFile", "QTemporaryFile()", typeof(void));
 		}
 		public QTemporaryFile(string templateName) : this((Type) null) {
 			CreateProxy();
-			NewQTemporaryFile(templateName);
-		}
-		[SmokeMethod("QTemporaryFile", "(const QString&)", "$")]
-		private void NewQTemporaryFile(string templateName) {
-			((QTemporaryFile) interceptor).NewQTemporaryFile(templateName);
+			interceptor.Invoke("QTemporaryFile$", "QTemporaryFile(const QString&)", typeof(void), typeof(string), templateName);
 		}
 		public QTemporaryFile(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTemporaryFile(parent);
-		}
-		[SmokeMethod("QTemporaryFile", "(QObject*)", "#")]
-		private void NewQTemporaryFile(QObject parent) {
-			((QTemporaryFile) interceptor).NewQTemporaryFile(parent);
+			interceptor.Invoke("QTemporaryFile#", "QTemporaryFile(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QTemporaryFile(string templateName, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTemporaryFile(templateName,parent);
+			interceptor.Invoke("QTemporaryFile$#", "QTemporaryFile(const QString&, QObject*)", typeof(void), typeof(string), templateName, typeof(QObject), parent);
 		}
-		[SmokeMethod("QTemporaryFile", "(const QString&, QObject*)", "$#")]
-		private void NewQTemporaryFile(string templateName, QObject parent) {
-			((QTemporaryFile) interceptor).NewQTemporaryFile(templateName,parent);
-		}
-		[SmokeMethod("autoRemove", "() const", "")]
 		public bool AutoRemove() {
-			return ((QTemporaryFile) interceptor).AutoRemove();
+			return (bool) interceptor.Invoke("autoRemove", "autoRemove() const", typeof(bool));
 		}
-		[SmokeMethod("setAutoRemove", "(bool)", "$")]
 		public void SetAutoRemove(bool b) {
-			((QTemporaryFile) interceptor).SetAutoRemove(b);
+			interceptor.Invoke("setAutoRemove$", "setAutoRemove(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("open", "()", "")]
 		public bool Open() {
-			return ((QTemporaryFile) interceptor).Open();
+			return (bool) interceptor.Invoke("open", "open()", typeof(bool));
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QTemporaryFile) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("fileTemplate", "() const", "")]
 		public string FileTemplate() {
-			return ((QTemporaryFile) interceptor).FileTemplate();
+			return (string) interceptor.Invoke("fileTemplate", "fileTemplate() const", typeof(string));
 		}
-		[SmokeMethod("setFileTemplate", "(const QString&)", "$")]
 		public void SetFileTemplate(string name) {
-			((QTemporaryFile) interceptor).SetFileTemplate(name);
+			interceptor.Invoke("setFileTemplate$", "setFileTemplate(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("fileEngine", "() const", "")]
+		[SmokeMethod("fileEngine() const")]
 		public override QAbstractFileEngine FileEngine() {
-			return ((QTemporaryFile) interceptor).FileEngine();
+			return (QAbstractFileEngine) interceptor.Invoke("fileEngine", "fileEngine() const", typeof(QAbstractFileEngine));
 		}
-		[SmokeMethod("open", "(OpenMode)", "$")]
+		[SmokeMethod("open(OpenMode)")]
 		protected new virtual bool Open(int flags) {
-			return ((QTemporaryFile) interceptor).Open(flags);
+			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), flags);
 		}
 		~QTemporaryFile() {
-			DisposeQTemporaryFile();
+			interceptor.Invoke("~QTemporaryFile", "~QTemporaryFile()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTemporaryFile();
-		}
-		[SmokeMethod("~QTemporaryFile", "()", "")]
-		private void DisposeQTemporaryFile() {
-			((QTemporaryFile) interceptor).DisposeQTemporaryFile();
+			interceptor.Invoke("~QTemporaryFile", "~QTemporaryFile()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QTemporaryFile CreateLocalFile(string fileName) {
-			return staticInterceptor.CreateLocalFile(fileName);
+			return (QTemporaryFile) staticInterceptor.Invoke("createLocalFile$", "createLocalFile(const QString&)", typeof(QTemporaryFile), typeof(string), fileName);
 		}
 		public static QTemporaryFile CreateLocalFile(QFile file) {
-			return staticInterceptor.CreateLocalFile(file);
+			return (QTemporaryFile) staticInterceptor.Invoke("createLocalFile#", "createLocalFile(QFile&)", typeof(QTemporaryFile), typeof(QFile), file);
 		}
 		protected new IQTemporaryFileSignals Emit {
 			get { return (IQTemporaryFileSignals) Q_EMIT; }

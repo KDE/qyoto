@@ -7,34 +7,23 @@ namespace Qyoto {
 	public class QMoveEvent : QEvent, IDisposable {
  		protected QMoveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMoveEvent), this);
-			interceptor = (QMoveEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMoveEvent), "QMoveEvent", this);
 		}
 		public QMoveEvent(QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();
-			NewQMoveEvent(pos,oldPos);
+			interceptor.Invoke("QMoveEvent##", "QMoveEvent(const QPoint&, const QPoint&)", typeof(void), typeof(QPoint), pos, typeof(QPoint), oldPos);
 		}
-		[SmokeMethod("QMoveEvent", "(const QPoint&, const QPoint&)", "##")]
-		private void NewQMoveEvent(QPoint pos, QPoint oldPos) {
-			((QMoveEvent) interceptor).NewQMoveEvent(pos,oldPos);
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ((QMoveEvent) interceptor).Pos();
+			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		[SmokeMethod("oldPos", "() const", "")]
 		public QPoint OldPos() {
-			return ((QMoveEvent) interceptor).OldPos();
+			return (QPoint) interceptor.Invoke("oldPos", "oldPos() const", typeof(QPoint));
 		}
 		~QMoveEvent() {
-			DisposeQMoveEvent();
+			interceptor.Invoke("~QMoveEvent", "~QMoveEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQMoveEvent();
-		}
-		[SmokeMethod("~QMoveEvent", "()", "")]
-		private void DisposeQMoveEvent() {
-			((QMoveEvent) interceptor).DisposeQMoveEvent();
+			interceptor.Invoke("~QMoveEvent", "~QMoveEvent()", typeof(void));
 		}
 	}
 }

@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QTextFrameFormat : QTextFormat, IDisposable {
  		protected QTextFrameFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameFormat), this);
-			interceptor = (QTextFrameFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextFrameFormat), "QTextFrameFormat", this);
 		}
 		public enum Position {
 			InFlow = 0,
@@ -17,89 +16,64 @@ namespace Qyoto {
 		}
 		public QTextFrameFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextFrameFormat();
+			interceptor.Invoke("QTextFrameFormat", "QTextFrameFormat()", typeof(void));
 		}
-		[SmokeMethod("QTextFrameFormat", "()", "")]
-		private void NewQTextFrameFormat() {
-			((QTextFrameFormat) interceptor).NewQTextFrameFormat();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextFrameFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("setPosition", "(QTextFrameFormat::Position)", "$")]
 		public void SetPosition(QTextFrameFormat.Position f) {
-			((QTextFrameFormat) interceptor).SetPosition(f);
+			interceptor.Invoke("setPosition$", "setPosition(QTextFrameFormat::Position)", typeof(void), typeof(QTextFrameFormat.Position), f);
 		}
-		[SmokeMethod("position", "() const", "")]
 		public QTextFrameFormat.Position position() {
-			return ((QTextFrameFormat) interceptor).position();
+			return (QTextFrameFormat.Position) interceptor.Invoke("position", "position() const", typeof(QTextFrameFormat.Position));
 		}
-		[SmokeMethod("setBorder", "(qreal)", "$")]
 		public void SetBorder(double border) {
-			((QTextFrameFormat) interceptor).SetBorder(border);
+			interceptor.Invoke("setBorder$", "setBorder(qreal)", typeof(void), typeof(double), border);
 		}
-		[SmokeMethod("border", "() const", "")]
 		public double Border() {
-			return ((QTextFrameFormat) interceptor).Border();
+			return (double) interceptor.Invoke("border", "border() const", typeof(double));
 		}
-		[SmokeMethod("setMargin", "(qreal)", "$")]
 		public void SetMargin(double margin) {
-			((QTextFrameFormat) interceptor).SetMargin(margin);
+			interceptor.Invoke("setMargin$", "setMargin(qreal)", typeof(void), typeof(double), margin);
 		}
-		[SmokeMethod("margin", "() const", "")]
 		public double Margin() {
-			return ((QTextFrameFormat) interceptor).Margin();
+			return (double) interceptor.Invoke("margin", "margin() const", typeof(double));
 		}
-		[SmokeMethod("setPadding", "(qreal)", "$")]
 		public void SetPadding(double padding) {
-			((QTextFrameFormat) interceptor).SetPadding(padding);
+			interceptor.Invoke("setPadding$", "setPadding(qreal)", typeof(void), typeof(double), padding);
 		}
-		[SmokeMethod("padding", "() const", "")]
 		public double Padding() {
-			return ((QTextFrameFormat) interceptor).Padding();
+			return (double) interceptor.Invoke("padding", "padding() const", typeof(double));
 		}
-		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
-			((QTextFrameFormat) interceptor).SetWidth(width);
+			interceptor.Invoke("setWidth$", "setWidth(qreal)", typeof(void), typeof(double), width);
 		}
-		[SmokeMethod("setWidth", "(const QTextLength&)", "#")]
 		public void SetWidth(QTextLength length) {
-			((QTextFrameFormat) interceptor).SetWidth(length);
+			interceptor.Invoke("setWidth#", "setWidth(const QTextLength&)", typeof(void), typeof(QTextLength), length);
 		}
-		[SmokeMethod("width", "() const", "")]
 		public QTextLength Width() {
-			return ((QTextFrameFormat) interceptor).Width();
+			return (QTextLength) interceptor.Invoke("width", "width() const", typeof(QTextLength));
 		}
-		[SmokeMethod("setHeight", "(qreal)", "$")]
 		public void SetHeight(double height) {
-			((QTextFrameFormat) interceptor).SetHeight(height);
+			interceptor.Invoke("setHeight$", "setHeight(qreal)", typeof(void), typeof(double), height);
 		}
-		[SmokeMethod("setHeight", "(const QTextLength&)", "#")]
 		public void SetHeight(QTextLength height) {
-			((QTextFrameFormat) interceptor).SetHeight(height);
+			interceptor.Invoke("setHeight#", "setHeight(const QTextLength&)", typeof(void), typeof(QTextLength), height);
 		}
-		[SmokeMethod("height", "() const", "")]
 		public QTextLength Height() {
-			return ((QTextFrameFormat) interceptor).Height();
+			return (QTextLength) interceptor.Invoke("height", "height() const", typeof(QTextLength));
 		}
-		[SmokeMethod("setPageBreakPolicy", "(PageBreakFlags)", "$")]
 		public void SetPageBreakPolicy(int flags) {
-			((QTextFrameFormat) interceptor).SetPageBreakPolicy(flags);
+			interceptor.Invoke("setPageBreakPolicy$", "setPageBreakPolicy(PageBreakFlags)", typeof(void), typeof(int), flags);
 		}
-		[SmokeMethod("pageBreakPolicy", "() const", "")]
 		public int PageBreakPolicy() {
-			return ((QTextFrameFormat) interceptor).PageBreakPolicy();
+			return (int) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(int));
 		}
 		~QTextFrameFormat() {
-			DisposeQTextFrameFormat();
+			interceptor.Invoke("~QTextFrameFormat", "~QTextFrameFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextFrameFormat();
-		}
-		[SmokeMethod("~QTextFrameFormat", "()", "")]
-		private void DisposeQTextFrameFormat() {
-			((QTextFrameFormat) interceptor).DisposeQTextFrameFormat();
+			interceptor.Invoke("~QTextFrameFormat", "~QTextFrameFormat()", typeof(void));
 		}
 	}
 }

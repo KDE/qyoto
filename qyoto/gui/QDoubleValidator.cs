@@ -7,86 +7,59 @@ namespace Qyoto {
 	[SmokeClass("QDoubleValidator")]
 	public class QDoubleValidator : QValidator, IDisposable {
  		protected QDoubleValidator(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDoubleValidator")]
-		interface IQDoubleValidatorProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDoubleValidator), this);
-			interceptor = (QDoubleValidator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDoubleValidator), "QDoubleValidator", this);
 		}
-		private static IQDoubleValidatorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDoubleValidator() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDoubleValidatorProxy), null);
-			staticInterceptor = (IQDoubleValidatorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDoubleValidator), "QDoubleValidator", null);
 		}
 		[Q_PROPERTY("double", "bottom")]
 		public double Bottom {
-			[SmokeMethod("bottom", "()", "")]
-			get { return ((QDoubleValidator) interceptor).Bottom; }
-			[SmokeMethod("setBottom", "(double)", "$")]
-			set { ((QDoubleValidator) interceptor).Bottom = value; }
+			get { return (double) interceptor.Invoke("bottom", "bottom()", typeof(double)); }
+			set { interceptor.Invoke("setBottom$", "setBottom(double)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("double", "top")]
 		public double Top {
-			[SmokeMethod("top", "()", "")]
-			get { return ((QDoubleValidator) interceptor).Top; }
-			[SmokeMethod("setTop", "(double)", "$")]
-			set { ((QDoubleValidator) interceptor).Top = value; }
+			get { return (double) interceptor.Invoke("top", "top()", typeof(double)); }
+			set { interceptor.Invoke("setTop$", "setTop(double)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("int", "decimals")]
 		public int Decimals {
-			[SmokeMethod("decimals", "()", "")]
-			get { return ((QDoubleValidator) interceptor).Decimals; }
-			[SmokeMethod("setDecimals", "(int)", "$")]
-			set { ((QDoubleValidator) interceptor).Decimals = value; }
+			get { return (int) interceptor.Invoke("decimals", "decimals()", typeof(int)); }
+			set { interceptor.Invoke("setDecimals$", "setDecimals(int)", typeof(void), typeof(int), value); }
 		}
 		public QDoubleValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDoubleValidator(parent);
-		}
-		[SmokeMethod("QDoubleValidator", "(QObject*)", "#")]
-		private void NewQDoubleValidator(QObject parent) {
-			((QDoubleValidator) interceptor).NewQDoubleValidator(parent);
+			interceptor.Invoke("QDoubleValidator#", "QDoubleValidator(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QDoubleValidator(double bottom, double top, int decimals, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDoubleValidator(bottom,top,decimals,parent);
+			interceptor.Invoke("QDoubleValidator$$$#", "QDoubleValidator(double, double, int, QObject*)", typeof(void), typeof(double), bottom, typeof(double), top, typeof(int), decimals, typeof(QObject), parent);
 		}
-		[SmokeMethod("QDoubleValidator", "(double, double, int, QObject*)", "$$$#")]
-		private void NewQDoubleValidator(double bottom, double top, int decimals, QObject parent) {
-			((QDoubleValidator) interceptor).NewQDoubleValidator(bottom,top,decimals,parent);
+		[SmokeMethod("validate(QString&, int&) const")]
+		public override int Validate(StringBuilder arg1, int arg2) {
+			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		public override int Validate(StringBuilder arg1, out int arg2) {
-			return ((QDoubleValidator) interceptor).Validate(arg1,out arg2);
-		}
-		[SmokeMethod("setRange", "(double, double, int)", "$$$")]
+		[SmokeMethod("setRange(double, double, int)")]
 		public virtual void SetRange(double bottom, double top, int decimals) {
-			((QDoubleValidator) interceptor).SetRange(bottom,top,decimals);
+			interceptor.Invoke("setRange$$$", "setRange(double, double, int)", typeof(void), typeof(double), bottom, typeof(double), top, typeof(int), decimals);
 		}
-		[SmokeMethod("setRange", "(double, double)", "$$")]
+		[SmokeMethod("setRange(double, double)")]
 		public virtual void SetRange(double bottom, double top) {
-			((QDoubleValidator) interceptor).SetRange(bottom,top);
+			interceptor.Invoke("setRange$$", "setRange(double, double)", typeof(void), typeof(double), bottom, typeof(double), top);
 		}
 		~QDoubleValidator() {
-			DisposeQDoubleValidator();
+			interceptor.Invoke("~QDoubleValidator", "~QDoubleValidator()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDoubleValidator();
-		}
-		[SmokeMethod("~QDoubleValidator", "()", "")]
-		private void DisposeQDoubleValidator() {
-			((QDoubleValidator) interceptor).DisposeQDoubleValidator();
+			interceptor.Invoke("~QDoubleValidator", "~QDoubleValidator()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDoubleValidatorSignals Emit {
 			get { return (IQDoubleValidatorSignals) Q_EMIT; }

@@ -4,324 +4,234 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QRectF")]
-	public class QRectF : MarshalByRefObject, IDisposable {
-		protected QRectF interceptor = null;
+	public class QRectF : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QRectF(Type dummy) {}
-		[SmokeClass("QRectF")]
-		interface IQRectFProxy {
-			[SmokeMethod("operator|", "(const QRectF&) const", "#")]
-			QRectF op_or(QRectF lhs, QRectF r);
-			[SmokeMethod("operator&", "(const QRectF&) const", "#")]
-			QRectF op_and(QRectF lhs, QRectF r);
-			[SmokeMethod("operator==", "(const QRectF&, const QRectF&)", "##")]
-			bool op_equals(QRectF arg1, QRectF arg2);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRectF), this);
-			interceptor = (QRectF) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QRectF), "QRectF", this);
 		}
-		private static IQRectFProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QRectF() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRectFProxy), null);
-			staticInterceptor = (IQRectFProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QRectF), "QRectF", null);
 		}
 		public QRectF() : this((Type) null) {
 			CreateProxy();
-			NewQRectF();
-		}
-		[SmokeMethod("QRectF", "()", "")]
-		private void NewQRectF() {
-			((QRectF) interceptor).NewQRectF();
+			interceptor.Invoke("QRectF", "QRectF()", typeof(void));
 		}
 		public QRectF(QPointF topleft, QSizeF size) : this((Type) null) {
 			CreateProxy();
-			NewQRectF(topleft,size);
-		}
-		[SmokeMethod("QRectF", "(const QPointF&, const QSizeF&)", "##")]
-		private void NewQRectF(QPointF topleft, QSizeF size) {
-			((QRectF) interceptor).NewQRectF(topleft,size);
+			interceptor.Invoke("QRectF##", "QRectF(const QPointF&, const QSizeF&)", typeof(void), typeof(QPointF), topleft, typeof(QSizeF), size);
 		}
 		public QRectF(double left, double top, double width, double height) : this((Type) null) {
 			CreateProxy();
-			NewQRectF(left,top,width,height);
-		}
-		[SmokeMethod("QRectF", "(qreal, qreal, qreal, qreal)", "$$$$")]
-		private void NewQRectF(double left, double top, double width, double height) {
-			((QRectF) interceptor).NewQRectF(left,top,width,height);
+			interceptor.Invoke("QRectF$$$$", "QRectF(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), left, typeof(double), top, typeof(double), width, typeof(double), height);
 		}
 		public QRectF(QRect rect) : this((Type) null) {
 			CreateProxy();
-			NewQRectF(rect);
+			interceptor.Invoke("QRectF#", "QRectF(const QRect&)", typeof(void), typeof(QRect), rect);
 		}
-		[SmokeMethod("QRectF", "(const QRect&)", "#")]
-		private void NewQRectF(QRect rect) {
-			((QRectF) interceptor).NewQRectF(rect);
-		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QRectF) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QRectF) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QRectF) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("normalized", "() const", "")]
 		public QRectF Normalized() {
-			return ((QRectF) interceptor).Normalized();
+			return (QRectF) interceptor.Invoke("normalized", "normalized() const", typeof(QRectF));
 		}
-		[SmokeMethod("left", "() const", "")]
 		public double Left() {
-			return ((QRectF) interceptor).Left();
+			return (double) interceptor.Invoke("left", "left() const", typeof(double));
 		}
-		[SmokeMethod("top", "() const", "")]
 		public double Top() {
-			return ((QRectF) interceptor).Top();
+			return (double) interceptor.Invoke("top", "top() const", typeof(double));
 		}
-		[SmokeMethod("right", "() const", "")]
 		public double Right() {
-			return ((QRectF) interceptor).Right();
+			return (double) interceptor.Invoke("right", "right() const", typeof(double));
 		}
-		[SmokeMethod("bottom", "() const", "")]
 		public double Bottom() {
-			return ((QRectF) interceptor).Bottom();
+			return (double) interceptor.Invoke("bottom", "bottom() const", typeof(double));
 		}
-		[SmokeMethod("x", "() const", "")]
 		public double X() {
-			return ((QRectF) interceptor).X();
+			return (double) interceptor.Invoke("x", "x() const", typeof(double));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public double Y() {
-			return ((QRectF) interceptor).Y();
+			return (double) interceptor.Invoke("y", "y() const", typeof(double));
 		}
-		[SmokeMethod("setLeft", "(qreal)", "$")]
 		public void SetLeft(double pos) {
-			((QRectF) interceptor).SetLeft(pos);
+			interceptor.Invoke("setLeft$", "setLeft(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("setTop", "(qreal)", "$")]
 		public void SetTop(double pos) {
-			((QRectF) interceptor).SetTop(pos);
+			interceptor.Invoke("setTop$", "setTop(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("setRight", "(qreal)", "$")]
 		public void SetRight(double pos) {
-			((QRectF) interceptor).SetRight(pos);
+			interceptor.Invoke("setRight$", "setRight(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("setBottom", "(qreal)", "$")]
 		public void SetBottom(double pos) {
-			((QRectF) interceptor).SetBottom(pos);
+			interceptor.Invoke("setBottom$", "setBottom(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("topLeft", "() const", "")]
 		public QPointF TopLeft() {
-			return ((QRectF) interceptor).TopLeft();
+			return (QPointF) interceptor.Invoke("topLeft", "topLeft() const", typeof(QPointF));
 		}
-		[SmokeMethod("bottomRight", "() const", "")]
 		public QPointF BottomRight() {
-			return ((QRectF) interceptor).BottomRight();
+			return (QPointF) interceptor.Invoke("bottomRight", "bottomRight() const", typeof(QPointF));
 		}
-		[SmokeMethod("topRight", "() const", "")]
 		public QPointF TopRight() {
-			return ((QRectF) interceptor).TopRight();
+			return (QPointF) interceptor.Invoke("topRight", "topRight() const", typeof(QPointF));
 		}
-		[SmokeMethod("bottomLeft", "() const", "")]
 		public QPointF BottomLeft() {
-			return ((QRectF) interceptor).BottomLeft();
+			return (QPointF) interceptor.Invoke("bottomLeft", "bottomLeft() const", typeof(QPointF));
 		}
-		[SmokeMethod("center", "() const", "")]
 		public QPointF Center() {
-			return ((QRectF) interceptor).Center();
+			return (QPointF) interceptor.Invoke("center", "center() const", typeof(QPointF));
 		}
-		[SmokeMethod("setTopLeft", "(const QPointF&)", "#")]
 		public void SetTopLeft(QPointF p) {
-			((QRectF) interceptor).SetTopLeft(p);
+			interceptor.Invoke("setTopLeft#", "setTopLeft(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("setBottomRight", "(const QPointF&)", "#")]
 		public void SetBottomRight(QPointF p) {
-			((QRectF) interceptor).SetBottomRight(p);
+			interceptor.Invoke("setBottomRight#", "setBottomRight(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("setTopRight", "(const QPointF&)", "#")]
 		public void SetTopRight(QPointF p) {
-			((QRectF) interceptor).SetTopRight(p);
+			interceptor.Invoke("setTopRight#", "setTopRight(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("setBottomLeft", "(const QPointF&)", "#")]
 		public void SetBottomLeft(QPointF p) {
-			((QRectF) interceptor).SetBottomLeft(p);
+			interceptor.Invoke("setBottomLeft#", "setBottomLeft(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("moveLeft", "(qreal)", "$")]
 		public void MoveLeft(double pos) {
-			((QRectF) interceptor).MoveLeft(pos);
+			interceptor.Invoke("moveLeft$", "moveLeft(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("moveTop", "(qreal)", "$")]
 		public void MoveTop(double pos) {
-			((QRectF) interceptor).MoveTop(pos);
+			interceptor.Invoke("moveTop$", "moveTop(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("moveRight", "(qreal)", "$")]
 		public void MoveRight(double pos) {
-			((QRectF) interceptor).MoveRight(pos);
+			interceptor.Invoke("moveRight$", "moveRight(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("moveBottom", "(qreal)", "$")]
 		public void MoveBottom(double pos) {
-			((QRectF) interceptor).MoveBottom(pos);
+			interceptor.Invoke("moveBottom$", "moveBottom(qreal)", typeof(void), typeof(double), pos);
 		}
-		[SmokeMethod("moveTopLeft", "(const QPointF&)", "#")]
 		public void MoveTopLeft(QPointF p) {
-			((QRectF) interceptor).MoveTopLeft(p);
+			interceptor.Invoke("moveTopLeft#", "moveTopLeft(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("moveBottomRight", "(const QPointF&)", "#")]
 		public void MoveBottomRight(QPointF p) {
-			((QRectF) interceptor).MoveBottomRight(p);
+			interceptor.Invoke("moveBottomRight#", "moveBottomRight(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("moveTopRight", "(const QPointF&)", "#")]
 		public void MoveTopRight(QPointF p) {
-			((QRectF) interceptor).MoveTopRight(p);
+			interceptor.Invoke("moveTopRight#", "moveTopRight(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("moveBottomLeft", "(const QPointF&)", "#")]
 		public void MoveBottomLeft(QPointF p) {
-			((QRectF) interceptor).MoveBottomLeft(p);
+			interceptor.Invoke("moveBottomLeft#", "moveBottomLeft(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("moveCenter", "(const QPointF&)", "#")]
 		public void MoveCenter(QPointF p) {
-			((QRectF) interceptor).MoveCenter(p);
+			interceptor.Invoke("moveCenter#", "moveCenter(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("translate", "(qreal, qreal)", "$$")]
 		public void Translate(double dx, double dy) {
-			((QRectF) interceptor).Translate(dx,dy);
+			interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("translate", "(const QPointF&)", "#")]
 		public void Translate(QPointF p) {
-			((QRectF) interceptor).Translate(p);
+			interceptor.Invoke("translate#", "translate(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("translated", "(qreal, qreal) const", "$$")]
 		public QRectF Translated(double dx, double dy) {
-			return ((QRectF) interceptor).Translated(dx,dy);
+			return (QRectF) interceptor.Invoke("translated$$", "translated(qreal, qreal) const", typeof(QRectF), typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("translated", "(const QPointF&) const", "#")]
 		public QRectF Translated(QPointF p) {
-			return ((QRectF) interceptor).Translated(p);
+			return (QRectF) interceptor.Invoke("translated#", "translated(const QPointF&) const", typeof(QRectF), typeof(QPointF), p);
 		}
-		[SmokeMethod("moveTo", "(qreal, qreal)", "$$")]
 		public void MoveTo(double x, double t) {
-			((QRectF) interceptor).MoveTo(x,t);
+			interceptor.Invoke("moveTo$$", "moveTo(qreal, qreal)", typeof(void), typeof(double), x, typeof(double), t);
 		}
-		[SmokeMethod("moveTo", "(const QPointF&)", "#")]
 		public void MoveTo(QPointF p) {
-			((QRectF) interceptor).MoveTo(p);
+			interceptor.Invoke("moveTo#", "moveTo(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("setRect", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetRect(double x, double y, double w, double h) {
-			((QRectF) interceptor).SetRect(x,y,w,h);
+			interceptor.Invoke("setRect$$$$", "setRect(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("getRect", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
-		public void GetRect(out double x, out double y, out double w, out double h) {
-			((QRectF) interceptor).GetRect(out x,out y,out w,out h);
+		public void GetRect(double x, double y, double w, double h) {
+			interceptor.Invoke("getRect$$$$", "getRect(qreal*, qreal*, qreal*, qreal*) const", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("setCoords", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetCoords(double x1, double y1, double x2, double y2) {
-			((QRectF) interceptor).SetCoords(x1,y1,x2,y2);
+			interceptor.Invoke("setCoords$$$$", "setCoords(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
 		}
-		[SmokeMethod("getCoords", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
-		public void GetCoords(out double x1, out double y1, out double x2, out double y2) {
-			((QRectF) interceptor).GetCoords(out x1,out y1,out x2,out y2);
+		public void GetCoords(double x1, double y1, double x2, double y2) {
+			interceptor.Invoke("getCoords$$$$", "getCoords(qreal*, qreal*, qreal*, qreal*) const", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
 		}
-		[SmokeMethod("adjust", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void Adjust(double x1, double y1, double x2, double y2) {
-			((QRectF) interceptor).Adjust(x1,y1,x2,y2);
+			interceptor.Invoke("adjust$$$$", "adjust(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
 		}
-		[SmokeMethod("adjusted", "(qreal, qreal, qreal, qreal) const", "$$$$")]
 		public QRectF Adjusted(double x1, double y1, double x2, double y2) {
-			return ((QRectF) interceptor).Adjusted(x1,y1,x2,y2);
+			return (QRectF) interceptor.Invoke("adjusted$$$$", "adjusted(qreal, qreal, qreal, qreal) const", typeof(QRectF), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
 		}
-		[SmokeMethod("size", "() const", "")]
 		public QSizeF Size() {
-			return ((QRectF) interceptor).Size();
+			return (QSizeF) interceptor.Invoke("size", "size() const", typeof(QSizeF));
 		}
-		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ((QRectF) interceptor).Width();
+			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ((QRectF) interceptor).Height();
+			return (double) interceptor.Invoke("height", "height() const", typeof(double));
 		}
-		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double w) {
-			((QRectF) interceptor).SetWidth(w);
+			interceptor.Invoke("setWidth$", "setWidth(qreal)", typeof(void), typeof(double), w);
 		}
-		[SmokeMethod("setHeight", "(qreal)", "$")]
 		public void SetHeight(double h) {
-			((QRectF) interceptor).SetHeight(h);
+			interceptor.Invoke("setHeight$", "setHeight(qreal)", typeof(void), typeof(double), h);
 		}
-		[SmokeMethod("setSize", "(const QSizeF&)", "#")]
 		public void SetSize(QSizeF s) {
-			((QRectF) interceptor).SetSize(s);
+			interceptor.Invoke("setSize#", "setSize(const QSizeF&)", typeof(void), typeof(QSizeF), s);
 		}
-		[SmokeMethod("contains", "(const QPointF&) const", "#")]
 		public bool Contains(QPointF p) {
-			return ((QRectF) interceptor).Contains(p);
+			return (bool) interceptor.Invoke("contains#", "contains(const QPointF&) const", typeof(bool), typeof(QPointF), p);
 		}
-		[SmokeMethod("contains", "(qreal, qreal) const", "$$")]
 		public bool Contains(double x, double y) {
-			return ((QRectF) interceptor).Contains(x,y);
+			return (bool) interceptor.Invoke("contains$$", "contains(qreal, qreal) const", typeof(bool), typeof(double), x, typeof(double), y);
 		}
-		[SmokeMethod("contains", "(const QRectF&) const", "#")]
 		public bool Contains(QRectF r) {
-			return ((QRectF) interceptor).Contains(r);
+			return (bool) interceptor.Invoke("contains#", "contains(const QRectF&) const", typeof(bool), typeof(QRectF), r);
 		}
-		[SmokeMethod("unite", "(const QRectF&) const", "#")]
 		public QRectF Unite(QRectF r) {
-			return ((QRectF) interceptor).Unite(r);
+			return (QRectF) interceptor.Invoke("unite#", "unite(const QRectF&) const", typeof(QRectF), typeof(QRectF), r);
 		}
-		[SmokeMethod("united", "(const QRectF&) const", "#")]
 		public QRectF United(QRectF other) {
-			return ((QRectF) interceptor).United(other);
+			return (QRectF) interceptor.Invoke("united#", "united(const QRectF&) const", typeof(QRectF), typeof(QRectF), other);
 		}
-		[SmokeMethod("intersect", "(const QRectF&) const", "#")]
 		public QRectF Intersect(QRectF r) {
-			return ((QRectF) interceptor).Intersect(r);
+			return (QRectF) interceptor.Invoke("intersect#", "intersect(const QRectF&) const", typeof(QRectF), typeof(QRectF), r);
 		}
-		[SmokeMethod("intersected", "(const QRectF&) const", "#")]
 		public QRectF Intersected(QRectF other) {
-			return ((QRectF) interceptor).Intersected(other);
+			return (QRectF) interceptor.Invoke("intersected#", "intersected(const QRectF&) const", typeof(QRectF), typeof(QRectF), other);
 		}
-		[SmokeMethod("intersects", "(const QRectF&) const", "#")]
 		public bool Intersects(QRectF r) {
-			return ((QRectF) interceptor).Intersects(r);
+			return (bool) interceptor.Invoke("intersects#", "intersects(const QRectF&) const", typeof(bool), typeof(QRectF), r);
 		}
-		[SmokeMethod("toRect", "() const", "")]
 		public QRect ToRect() {
-			return ((QRectF) interceptor).ToRect();
+			return (QRect) interceptor.Invoke("toRect", "toRect() const", typeof(QRect));
 		}
 		~QRectF() {
-			DisposeQRectF();
+			interceptor.Invoke("~QRectF", "~QRectF()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQRectF();
-		}
-		[SmokeMethod("~QRectF", "()", "")]
-		private void DisposeQRectF() {
-			((QRectF) interceptor).DisposeQRectF();
+			interceptor.Invoke("~QRectF", "~QRectF()", typeof(void));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QRectF)) { return false; }
 			return this == (QRectF) o;
 		}
 		public override int GetHashCode() {
-			return ((QRectF) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		public static QRectF operator|(QRectF lhs, QRectF r) {
-			return staticInterceptor.op_or(lhs,r);
+			return (QRectF) staticInterceptor.Invoke("operator|#", "operator|(const QRectF&) const", typeof(QRectF), typeof(QRectF), lhs, typeof(QRectF), r);
 		}
 		public static QRectF operator&(QRectF lhs, QRectF r) {
-			return staticInterceptor.op_and(lhs,r);
+			return (QRectF) staticInterceptor.Invoke("operator&#", "operator&(const QRectF&) const", typeof(QRectF), typeof(QRectF), lhs, typeof(QRectF), r);
 		}
 		public static bool operator==(QRectF arg1, QRectF arg2) {
-			return staticInterceptor.op_equals(arg1,arg2);
+			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QRectF&, const QRectF&)", typeof(bool), typeof(QRectF), arg1, typeof(QRectF), arg2);
 		}
 		public static bool operator!=(QRectF arg1, QRectF arg2) {
-			return !staticInterceptor.op_equals(arg1,arg2);
+			return !(bool) staticInterceptor.Invoke("operator==##", "operator==(const QRectF&, const QRectF&)", typeof(bool), typeof(QRectF), arg1, typeof(QRectF), arg2);
 		}
 	}
 }

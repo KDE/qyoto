@@ -7,70 +7,48 @@ namespace Qyoto {
 	public class QDomCharacterData : QDomNode, IDisposable {
  		protected QDomCharacterData(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCharacterData), this);
-			interceptor = (QDomCharacterData) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomCharacterData), "QDomCharacterData", this);
 		}
 		public QDomCharacterData() : this((Type) null) {
 			CreateProxy();
-			NewQDomCharacterData();
-		}
-		[SmokeMethod("QDomCharacterData", "()", "")]
-		private void NewQDomCharacterData() {
-			((QDomCharacterData) interceptor).NewQDomCharacterData();
+			interceptor.Invoke("QDomCharacterData", "QDomCharacterData()", typeof(void));
 		}
 		public QDomCharacterData(QDomCharacterData x) : this((Type) null) {
 			CreateProxy();
-			NewQDomCharacterData(x);
+			interceptor.Invoke("QDomCharacterData#", "QDomCharacterData(const QDomCharacterData&)", typeof(void), typeof(QDomCharacterData), x);
 		}
-		[SmokeMethod("QDomCharacterData", "(const QDomCharacterData&)", "#")]
-		private void NewQDomCharacterData(QDomCharacterData x) {
-			((QDomCharacterData) interceptor).NewQDomCharacterData(x);
-		}
-		[SmokeMethod("substringData", "(unsigned long, unsigned long)", "$$")]
 		public string SubstringData(ulong offset, ulong count) {
-			return ((QDomCharacterData) interceptor).SubstringData(offset,count);
+			return (string) interceptor.Invoke("substringData$$", "substringData(unsigned long, unsigned long)", typeof(string), typeof(ulong), offset, typeof(ulong), count);
 		}
-		[SmokeMethod("appendData", "(const QString&)", "$")]
 		public void AppendData(string arg) {
-			((QDomCharacterData) interceptor).AppendData(arg);
+			interceptor.Invoke("appendData$", "appendData(const QString&)", typeof(void), typeof(string), arg);
 		}
-		[SmokeMethod("insertData", "(unsigned long, const QString&)", "$$")]
 		public void InsertData(ulong offset, string arg) {
-			((QDomCharacterData) interceptor).InsertData(offset,arg);
+			interceptor.Invoke("insertData$$", "insertData(unsigned long, const QString&)", typeof(void), typeof(ulong), offset, typeof(string), arg);
 		}
-		[SmokeMethod("deleteData", "(unsigned long, unsigned long)", "$$")]
 		public void DeleteData(ulong offset, ulong count) {
-			((QDomCharacterData) interceptor).DeleteData(offset,count);
+			interceptor.Invoke("deleteData$$", "deleteData(unsigned long, unsigned long)", typeof(void), typeof(ulong), offset, typeof(ulong), count);
 		}
-		[SmokeMethod("replaceData", "(unsigned long, unsigned long, const QString&)", "$$$")]
 		public void ReplaceData(ulong offset, ulong count, string arg) {
-			((QDomCharacterData) interceptor).ReplaceData(offset,count,arg);
+			interceptor.Invoke("replaceData$$$", "replaceData(unsigned long, unsigned long, const QString&)", typeof(void), typeof(ulong), offset, typeof(ulong), count, typeof(string), arg);
 		}
-		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
-			return ((QDomCharacterData) interceptor).Length();
+			return (uint) interceptor.Invoke("length", "length() const", typeof(uint));
 		}
-		[SmokeMethod("data", "() const", "")]
 		public string Data() {
-			return ((QDomCharacterData) interceptor).Data();
+			return (string) interceptor.Invoke("data", "data() const", typeof(string));
 		}
-		[SmokeMethod("setData", "(const QString&)", "$")]
 		public void SetData(string arg1) {
-			((QDomCharacterData) interceptor).SetData(arg1);
+			interceptor.Invoke("setData$", "setData(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomCharacterData) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomCharacterData() {
-			DisposeQDomCharacterData();
+			interceptor.Invoke("~QDomCharacterData", "~QDomCharacterData()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomCharacterData();
-		}
-		[SmokeMethod("~QDomCharacterData", "()", "")]
-		private void DisposeQDomCharacterData() {
-			((QDomCharacterData) interceptor).DisposeQDomCharacterData();
+			interceptor.Invoke("~QDomCharacterData", "~QDomCharacterData()", typeof(void));
 		}
 	}
 }

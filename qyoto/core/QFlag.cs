@@ -4,32 +4,23 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QFlag")]
-	public class QFlag : MarshalByRefObject, IDisposable {
-		protected QFlag interceptor = null;
+	public class QFlag : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFlag(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFlag), this);
-			interceptor = (QFlag) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFlag), "QFlag", this);
 		}
 		//  operator int(); >>>> NOT CONVERTED
 		public QFlag(int i) : this((Type) null) {
 			CreateProxy();
-			NewQFlag(i);
-		}
-		[SmokeMethod("QFlag", "(int)", "$")]
-		private void NewQFlag(int i) {
-			((QFlag) interceptor).NewQFlag(i);
+			interceptor.Invoke("QFlag$", "QFlag(int)", typeof(void), typeof(int), i);
 		}
 		~QFlag() {
-			DisposeQFlag();
+			interceptor.Invoke("~QFlag", "~QFlag()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQFlag();
-		}
-		[SmokeMethod("~QFlag", "()", "")]
-		private void DisposeQFlag() {
-			((QFlag) interceptor).DisposeQFlag();
+			interceptor.Invoke("~QFlag", "~QFlag()", typeof(void));
 		}
 	}
 }

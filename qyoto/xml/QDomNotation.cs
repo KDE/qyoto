@@ -7,46 +7,30 @@ namespace Qyoto {
 	public class QDomNotation : QDomNode, IDisposable {
  		protected QDomNotation(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNotation), this);
-			interceptor = (QDomNotation) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomNotation), "QDomNotation", this);
 		}
 		public QDomNotation() : this((Type) null) {
 			CreateProxy();
-			NewQDomNotation();
-		}
-		[SmokeMethod("QDomNotation", "()", "")]
-		private void NewQDomNotation() {
-			((QDomNotation) interceptor).NewQDomNotation();
+			interceptor.Invoke("QDomNotation", "QDomNotation()", typeof(void));
 		}
 		public QDomNotation(QDomNotation x) : this((Type) null) {
 			CreateProxy();
-			NewQDomNotation(x);
+			interceptor.Invoke("QDomNotation#", "QDomNotation(const QDomNotation&)", typeof(void), typeof(QDomNotation), x);
 		}
-		[SmokeMethod("QDomNotation", "(const QDomNotation&)", "#")]
-		private void NewQDomNotation(QDomNotation x) {
-			((QDomNotation) interceptor).NewQDomNotation(x);
-		}
-		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
-			return ((QDomNotation) interceptor).PublicId();
+			return (string) interceptor.Invoke("publicId", "publicId() const", typeof(string));
 		}
-		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
-			return ((QDomNotation) interceptor).SystemId();
+			return (string) interceptor.Invoke("systemId", "systemId() const", typeof(string));
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomNotation) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomNotation() {
-			DisposeQDomNotation();
+			interceptor.Invoke("~QDomNotation", "~QDomNotation()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomNotation();
-		}
-		[SmokeMethod("~QDomNotation", "()", "")]
-		private void DisposeQDomNotation() {
-			((QDomNotation) interceptor).DisposeQDomNotation();
+			interceptor.Invoke("~QDomNotation", "~QDomNotation()", typeof(void));
 		}
 	}
 }

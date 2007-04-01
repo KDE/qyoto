@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QFileIconProvider")]
-	public class QFileIconProvider : MarshalByRefObject, IDisposable {
-		protected QFileIconProvider interceptor = null;
+	public class QFileIconProvider : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFileIconProvider(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileIconProvider), this);
-			interceptor = (QFileIconProvider) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFileIconProvider), "QFileIconProvider", this);
 		}
 		public enum IconType {
 			Computer = 0,
@@ -23,33 +22,25 @@ namespace Qyoto {
 		}
 		public QFileIconProvider() : this((Type) null) {
 			CreateProxy();
-			NewQFileIconProvider();
+			interceptor.Invoke("QFileIconProvider", "QFileIconProvider()", typeof(void));
 		}
-		[SmokeMethod("QFileIconProvider", "()", "")]
-		private void NewQFileIconProvider() {
-			((QFileIconProvider) interceptor).NewQFileIconProvider();
-		}
-		[SmokeMethod("icon", "(QFileIconProvider::IconType) const", "$")]
+		[SmokeMethod("icon(QFileIconProvider::IconType) const")]
 		public virtual QIcon Icon(QFileIconProvider.IconType type) {
-			return ((QFileIconProvider) interceptor).Icon(type);
+			return (QIcon) interceptor.Invoke("icon$", "icon(QFileIconProvider::IconType) const", typeof(QIcon), typeof(QFileIconProvider.IconType), type);
 		}
-		[SmokeMethod("icon", "(const QFileInfo&) const", "#")]
+		[SmokeMethod("icon(const QFileInfo&) const")]
 		public virtual QIcon Icon(QFileInfo info) {
-			return ((QFileIconProvider) interceptor).Icon(info);
+			return (QIcon) interceptor.Invoke("icon#", "icon(const QFileInfo&) const", typeof(QIcon), typeof(QFileInfo), info);
 		}
-		[SmokeMethod("type", "(const QFileInfo&) const", "#")]
+		[SmokeMethod("type(const QFileInfo&) const")]
 		public virtual string type(QFileInfo info) {
-			return ((QFileIconProvider) interceptor).type(info);
+			return (string) interceptor.Invoke("type#", "type(const QFileInfo&) const", typeof(string), typeof(QFileInfo), info);
 		}
 		~QFileIconProvider() {
-			DisposeQFileIconProvider();
+			interceptor.Invoke("~QFileIconProvider", "~QFileIconProvider()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQFileIconProvider();
-		}
-		[SmokeMethod("~QFileIconProvider", "()", "")]
-		private void DisposeQFileIconProvider() {
-			((QFileIconProvider) interceptor).DisposeQFileIconProvider();
+			interceptor.Invoke("~QFileIconProvider", "~QFileIconProvider()", typeof(void));
 		}
 	}
 }

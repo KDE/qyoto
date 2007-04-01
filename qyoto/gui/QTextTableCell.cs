@@ -4,106 +4,76 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextTableCell")]
-	public class QTextTableCell : MarshalByRefObject, IDisposable {
-		protected QTextTableCell interceptor = null;
+	public class QTextTableCell : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextTableCell(Type dummy) {}
-		[SmokeClass("QTextTableCell")]
-		interface IQTextTableCellProxy {
-			[SmokeMethod("operator==", "(const QTextTableCell&) const", "#")]
-			bool op_equals(QTextTableCell lhs, QTextTableCell other);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableCell), this);
-			interceptor = (QTextTableCell) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextTableCell), "QTextTableCell", this);
 		}
-		private static IQTextTableCellProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextTableCell() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextTableCellProxy), null);
-			staticInterceptor = (IQTextTableCellProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextTableCell), "QTextTableCell", null);
 		}
 		public QTextTableCell() : this((Type) null) {
 			CreateProxy();
-			NewQTextTableCell();
-		}
-		[SmokeMethod("QTextTableCell", "()", "")]
-		private void NewQTextTableCell() {
-			((QTextTableCell) interceptor).NewQTextTableCell();
+			interceptor.Invoke("QTextTableCell", "QTextTableCell()", typeof(void));
 		}
 		public QTextTableCell(QTextTableCell o) : this((Type) null) {
 			CreateProxy();
-			NewQTextTableCell(o);
+			interceptor.Invoke("QTextTableCell#", "QTextTableCell(const QTextTableCell&)", typeof(void), typeof(QTextTableCell), o);
 		}
-		[SmokeMethod("QTextTableCell", "(const QTextTableCell&)", "#")]
-		private void NewQTextTableCell(QTextTableCell o) {
-			((QTextTableCell) interceptor).NewQTextTableCell(o);
-		}
-		[SmokeMethod("setFormat", "(const QTextCharFormat&)", "#")]
 		public void SetFormat(QTextCharFormat format) {
-			((QTextTableCell) interceptor).SetFormat(format);
+			interceptor.Invoke("setFormat#", "setFormat(const QTextCharFormat&)", typeof(void), typeof(QTextCharFormat), format);
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QTextCharFormat Format() {
-			return ((QTextTableCell) interceptor).Format();
+			return (QTextCharFormat) interceptor.Invoke("format", "format() const", typeof(QTextCharFormat));
 		}
-		[SmokeMethod("row", "() const", "")]
 		public int Row() {
-			return ((QTextTableCell) interceptor).Row();
+			return (int) interceptor.Invoke("row", "row() const", typeof(int));
 		}
-		[SmokeMethod("column", "() const", "")]
 		public int Column() {
-			return ((QTextTableCell) interceptor).Column();
+			return (int) interceptor.Invoke("column", "column() const", typeof(int));
 		}
-		[SmokeMethod("rowSpan", "() const", "")]
 		public int RowSpan() {
-			return ((QTextTableCell) interceptor).RowSpan();
+			return (int) interceptor.Invoke("rowSpan", "rowSpan() const", typeof(int));
 		}
-		[SmokeMethod("columnSpan", "() const", "")]
 		public int ColumnSpan() {
-			return ((QTextTableCell) interceptor).ColumnSpan();
+			return (int) interceptor.Invoke("columnSpan", "columnSpan() const", typeof(int));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextTableCell) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("firstCursorPosition", "() const", "")]
 		public QTextCursor FirstCursorPosition() {
-			return ((QTextTableCell) interceptor).FirstCursorPosition();
+			return (QTextCursor) interceptor.Invoke("firstCursorPosition", "firstCursorPosition() const", typeof(QTextCursor));
 		}
-		[SmokeMethod("lastCursorPosition", "() const", "")]
 		public QTextCursor LastCursorPosition() {
-			return ((QTextTableCell) interceptor).LastCursorPosition();
+			return (QTextCursor) interceptor.Invoke("lastCursorPosition", "lastCursorPosition() const", typeof(QTextCursor));
 		}
-		[SmokeMethod("firstPosition", "() const", "")]
 		public int FirstPosition() {
-			return ((QTextTableCell) interceptor).FirstPosition();
+			return (int) interceptor.Invoke("firstPosition", "firstPosition() const", typeof(int));
 		}
-		[SmokeMethod("lastPosition", "() const", "")]
 		public int LastPosition() {
-			return ((QTextTableCell) interceptor).LastPosition();
+			return (int) interceptor.Invoke("lastPosition", "lastPosition() const", typeof(int));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextTableCell)) { return false; }
 			return this == (QTextTableCell) o;
 		}
 		public override int GetHashCode() {
-			return ((QTextTableCell) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QTextTableCell() {
-			DisposeQTextTableCell();
+			interceptor.Invoke("~QTextTableCell", "~QTextTableCell()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextTableCell();
-		}
-		[SmokeMethod("~QTextTableCell", "()", "")]
-		private void DisposeQTextTableCell() {
-			((QTextTableCell) interceptor).DisposeQTextTableCell();
+			interceptor.Invoke("~QTextTableCell", "~QTextTableCell()", typeof(void));
 		}
 		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextTableCell&) const", typeof(bool), typeof(QTextTableCell), lhs, typeof(QTextTableCell), other);
 		}
 		public static bool operator!=(QTextTableCell lhs, QTextTableCell other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextTableCell&) const", typeof(bool), typeof(QTextTableCell), lhs, typeof(QTextTableCell), other);
 		}
 	}
 }

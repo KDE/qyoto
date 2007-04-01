@@ -5,39 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QKeySequence")]
-	public class QKeySequence : MarshalByRefObject, IDisposable {
-		protected QKeySequence interceptor = null;
+	public class QKeySequence : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QKeySequence(Type dummy) {}
-		[SmokeClass("QKeySequence")]
-		interface IQKeySequenceProxy {
-			[SmokeMethod("operator==", "(const QKeySequence&) const", "#")]
-			bool op_equals(QKeySequence lhs, QKeySequence other);
-			[SmokeMethod("operator<", "(const QKeySequence&) const", "#")]
-			bool op_lt(QKeySequence lhs, QKeySequence ks);
-			[SmokeMethod("operator>", "(const QKeySequence&) const", "#")]
-			bool op_gt(QKeySequence lhs, QKeySequence other);
-			[SmokeMethod("operator<=", "(const QKeySequence&) const", "#")]
-			bool op_lte(QKeySequence lhs, QKeySequence other);
-			[SmokeMethod("operator>=", "(const QKeySequence&) const", "#")]
-			bool op_gte(QKeySequence lhs, QKeySequence other);
-			[SmokeMethod("fromString", "(const QString&, QKeySequence::SequenceFormat)", "$$")]
-			QKeySequence FromString(string str, QKeySequence.SequenceFormat format);
-			[SmokeMethod("fromString", "(const QString&)", "$")]
-			QKeySequence FromString(string str);
-			[SmokeMethod("mnemonic", "(const QString&)", "$")]
-			QKeySequence Mnemonic(string text);
-			[SmokeMethod("keyBindings", "(QKeySequence::StandardKey)", "$")]
-			List<QKeySequence> KeyBindings(QKeySequence.StandardKey key);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeySequence), this);
-			interceptor = (QKeySequence) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QKeySequence), "QKeySequence", this);
 		}
-		private static IQKeySequenceProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QKeySequence() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQKeySequenceProxy), null);
-			staticInterceptor = (IQKeySequenceProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QKeySequence), "QKeySequence", null);
 		}
 		public enum StandardKey {
 			UnknownKey = 0,
@@ -116,138 +93,96 @@ namespace Qyoto {
 		//  operator int(); >>>> NOT CONVERTED
 		public QKeySequence() : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence();
-		}
-		[SmokeMethod("QKeySequence", "()", "")]
-		private void NewQKeySequence() {
-			((QKeySequence) interceptor).NewQKeySequence();
+			interceptor.Invoke("QKeySequence", "QKeySequence()", typeof(void));
 		}
 		public QKeySequence(string key) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(key);
-		}
-		[SmokeMethod("QKeySequence", "(const QString&)", "$")]
-		private void NewQKeySequence(string key) {
-			((QKeySequence) interceptor).NewQKeySequence(key);
+			interceptor.Invoke("QKeySequence$", "QKeySequence(const QString&)", typeof(void), typeof(string), key);
 		}
 		public QKeySequence(int k1, int k2, int k3, int k4) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(k1,k2,k3,k4);
-		}
-		[SmokeMethod("QKeySequence", "(int, int, int, int)", "$$$$")]
-		private void NewQKeySequence(int k1, int k2, int k3, int k4) {
-			((QKeySequence) interceptor).NewQKeySequence(k1,k2,k3,k4);
+			interceptor.Invoke("QKeySequence$$$$", "QKeySequence(int, int, int, int)", typeof(void), typeof(int), k1, typeof(int), k2, typeof(int), k3, typeof(int), k4);
 		}
 		public QKeySequence(int k1, int k2, int k3) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(k1,k2,k3);
-		}
-		[SmokeMethod("QKeySequence", "(int, int, int)", "$$$")]
-		private void NewQKeySequence(int k1, int k2, int k3) {
-			((QKeySequence) interceptor).NewQKeySequence(k1,k2,k3);
+			interceptor.Invoke("QKeySequence$$$", "QKeySequence(int, int, int)", typeof(void), typeof(int), k1, typeof(int), k2, typeof(int), k3);
 		}
 		public QKeySequence(int k1, int k2) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(k1,k2);
-		}
-		[SmokeMethod("QKeySequence", "(int, int)", "$$")]
-		private void NewQKeySequence(int k1, int k2) {
-			((QKeySequence) interceptor).NewQKeySequence(k1,k2);
+			interceptor.Invoke("QKeySequence$$", "QKeySequence(int, int)", typeof(void), typeof(int), k1, typeof(int), k2);
 		}
 		public QKeySequence(int k1) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(k1);
-		}
-		[SmokeMethod("QKeySequence", "(int)", "$")]
-		private void NewQKeySequence(int k1) {
-			((QKeySequence) interceptor).NewQKeySequence(k1);
+			interceptor.Invoke("QKeySequence$", "QKeySequence(int)", typeof(void), typeof(int), k1);
 		}
 		public QKeySequence(QKeySequence ks) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(ks);
-		}
-		[SmokeMethod("QKeySequence", "(const QKeySequence&)", "#")]
-		private void NewQKeySequence(QKeySequence ks) {
-			((QKeySequence) interceptor).NewQKeySequence(ks);
+			interceptor.Invoke("QKeySequence#", "QKeySequence(const QKeySequence&)", typeof(void), typeof(QKeySequence), ks);
 		}
 		public QKeySequence(QKeySequence.StandardKey key) : this((Type) null) {
 			CreateProxy();
-			NewQKeySequence(key);
+			interceptor.Invoke("QKeySequence$", "QKeySequence(QKeySequence::StandardKey)", typeof(void), typeof(QKeySequence.StandardKey), key);
 		}
-		[SmokeMethod("QKeySequence", "(QKeySequence::StandardKey)", "$")]
-		private void NewQKeySequence(QKeySequence.StandardKey key) {
-			((QKeySequence) interceptor).NewQKeySequence(key);
-		}
-		[SmokeMethod("count", "() const", "")]
 		public uint Count() {
-			return ((QKeySequence) interceptor).Count();
+			return (uint) interceptor.Invoke("count", "count() const", typeof(uint));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QKeySequence) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("toString", "(QKeySequence::SequenceFormat) const", "$")]
 		public string ToString(QKeySequence.SequenceFormat format) {
-			return ((QKeySequence) interceptor).ToString(format);
+			return (string) interceptor.Invoke("toString$", "toString(QKeySequence::SequenceFormat) const", typeof(string), typeof(QKeySequence.SequenceFormat), format);
 		}
-		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ((QKeySequence) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("matches", "(const QKeySequence&) const", "#")]
 		public QKeySequence.SequenceMatch Matches(QKeySequence seq) {
-			return ((QKeySequence) interceptor).Matches(seq);
+			return (QKeySequence.SequenceMatch) interceptor.Invoke("matches#", "matches(const QKeySequence&) const", typeof(QKeySequence.SequenceMatch), typeof(QKeySequence), seq);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QKeySequence)) { return false; }
 			return this == (QKeySequence) o;
 		}
 		public override int GetHashCode() {
-			return ((QKeySequence) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QKeySequence) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
 		~QKeySequence() {
-			DisposeQKeySequence();
+			interceptor.Invoke("~QKeySequence", "~QKeySequence()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQKeySequence();
-		}
-		[SmokeMethod("~QKeySequence", "()", "")]
-		private void DisposeQKeySequence() {
-			((QKeySequence) interceptor).DisposeQKeySequence();
+			interceptor.Invoke("~QKeySequence", "~QKeySequence()", typeof(void));
 		}
 		public static bool operator==(QKeySequence lhs, QKeySequence other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), other);
 		}
 		public static bool operator!=(QKeySequence lhs, QKeySequence other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), other);
 		}
 		public static bool operator<(QKeySequence lhs, QKeySequence ks) {
-			return staticInterceptor.op_lt(lhs,ks);
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), ks);
 		}
 		public static bool operator>(QKeySequence lhs, QKeySequence other) {
-			return staticInterceptor.op_gt(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator>#", "operator>(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), other);
 		}
 		public static bool operator<=(QKeySequence lhs, QKeySequence other) {
-			return staticInterceptor.op_lte(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator<=#", "operator<=(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), other);
 		}
 		public static bool operator>=(QKeySequence lhs, QKeySequence other) {
-			return staticInterceptor.op_gte(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator>=#", "operator>=(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), other);
 		}
 		public static QKeySequence FromString(string str, QKeySequence.SequenceFormat format) {
-			return staticInterceptor.FromString(str,format);
+			return (QKeySequence) staticInterceptor.Invoke("fromString$$", "fromString(const QString&, QKeySequence::SequenceFormat)", typeof(QKeySequence), typeof(string), str, typeof(QKeySequence.SequenceFormat), format);
 		}
 		public static QKeySequence FromString(string str) {
-			return staticInterceptor.FromString(str);
+			return (QKeySequence) staticInterceptor.Invoke("fromString$", "fromString(const QString&)", typeof(QKeySequence), typeof(string), str);
 		}
 		public static QKeySequence Mnemonic(string text) {
-			return staticInterceptor.Mnemonic(text);
+			return (QKeySequence) staticInterceptor.Invoke("mnemonic$", "mnemonic(const QString&)", typeof(QKeySequence), typeof(string), text);
 		}
 		public static List<QKeySequence> KeyBindings(QKeySequence.StandardKey key) {
-			return staticInterceptor.KeyBindings(key);
+			return (List<QKeySequence>) staticInterceptor.Invoke("keyBindings$", "keyBindings(QKeySequence::StandardKey)", typeof(List<QKeySequence>), typeof(QKeySequence.StandardKey), key);
 		}
 	}
 }

@@ -6,125 +6,91 @@ namespace Qyoto {
 	[SmokeClass("QBuffer")]
 	public class QBuffer : QIODevice, IDisposable {
  		protected QBuffer(Type dummy) : base((Type) null) {}
-		[SmokeClass("QBuffer")]
-		interface IQBufferProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBuffer), this);
-			interceptor = (QBuffer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QBuffer), "QBuffer", this);
 		}
-		private static IQBufferProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QBuffer() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBufferProxy), null);
-			staticInterceptor = (IQBufferProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QBuffer), "QBuffer", null);
 		}
 		public QBuffer(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQBuffer(parent);
-		}
-		[SmokeMethod("QBuffer", "(QObject*)", "#")]
-		private void NewQBuffer(QObject parent) {
-			((QBuffer) interceptor).NewQBuffer(parent);
+			interceptor.Invoke("QBuffer#", "QBuffer(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QBuffer() : this((Type) null) {
 			CreateProxy();
-			NewQBuffer();
-		}
-		[SmokeMethod("QBuffer", "()", "")]
-		private void NewQBuffer() {
-			((QBuffer) interceptor).NewQBuffer();
+			interceptor.Invoke("QBuffer", "QBuffer()", typeof(void));
 		}
 		public QBuffer(QByteArray buf, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQBuffer(buf,parent);
-		}
-		[SmokeMethod("QBuffer", "(QByteArray*, QObject*)", "##")]
-		private void NewQBuffer(QByteArray buf, QObject parent) {
-			((QBuffer) interceptor).NewQBuffer(buf,parent);
+			interceptor.Invoke("QBuffer##", "QBuffer(QByteArray*, QObject*)", typeof(void), typeof(QByteArray), buf, typeof(QObject), parent);
 		}
 		public QBuffer(QByteArray buf) : this((Type) null) {
 			CreateProxy();
-			NewQBuffer(buf);
+			interceptor.Invoke("QBuffer#", "QBuffer(QByteArray*)", typeof(void), typeof(QByteArray), buf);
 		}
-		[SmokeMethod("QBuffer", "(QByteArray*)", "#")]
-		private void NewQBuffer(QByteArray buf) {
-			((QBuffer) interceptor).NewQBuffer(buf);
-		}
-		[SmokeMethod("buffer", "()", "")]
 		public QByteArray Buffer() {
-			return ((QBuffer) interceptor).Buffer();
+			return (QByteArray) interceptor.Invoke("buffer", "buffer()", typeof(QByteArray));
 		}
-		[SmokeMethod("setBuffer", "(QByteArray*)", "#")]
 		public void SetBuffer(QByteArray a) {
-			((QBuffer) interceptor).SetBuffer(a);
+			interceptor.Invoke("setBuffer#", "setBuffer(QByteArray*)", typeof(void), typeof(QByteArray), a);
 		}
-		[SmokeMethod("setData", "(const QByteArray&)", "#")]
 		public void SetData(QByteArray data) {
-			((QBuffer) interceptor).SetData(data);
+			interceptor.Invoke("setData#", "setData(const QByteArray&)", typeof(void), typeof(QByteArray), data);
 		}
-		[SmokeMethod("setData", "(const char*, int)", "$$")]
 		public void SetData(string data, int len) {
-			((QBuffer) interceptor).SetData(data,len);
+			interceptor.Invoke("setData$$", "setData(const char*, int)", typeof(void), typeof(string), data, typeof(int), len);
 		}
-		[SmokeMethod("data", "() const", "")]
 		public QByteArray Data() {
-			return ((QBuffer) interceptor).Data();
+			return (QByteArray) interceptor.Invoke("data", "data() const", typeof(QByteArray));
 		}
-		[SmokeMethod("open", "(OpenMode)", "$")]
+		[SmokeMethod("open(OpenMode)")]
 		public override bool Open(int openMode) {
-			return ((QBuffer) interceptor).Open(openMode);
+			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), openMode);
 		}
-		[SmokeMethod("close", "()", "")]
+		[SmokeMethod("close()")]
 		public override void Close() {
-			((QBuffer) interceptor).Close();
+			interceptor.Invoke("close", "close()", typeof(void));
 		}
-		[SmokeMethod("size", "() const", "")]
+		[SmokeMethod("size() const")]
 		public override long Size() {
-			return ((QBuffer) interceptor).Size();
+			return (long) interceptor.Invoke("size", "size() const", typeof(long));
 		}
-		[SmokeMethod("pos", "() const", "")]
+		[SmokeMethod("pos() const")]
 		public override long Pos() {
-			return ((QBuffer) interceptor).Pos();
+			return (long) interceptor.Invoke("pos", "pos() const", typeof(long));
 		}
-		[SmokeMethod("seek", "(qint64)", "$")]
+		[SmokeMethod("seek(qint64)")]
 		public override bool Seek(long off) {
-			return ((QBuffer) interceptor).Seek(off);
+			return (bool) interceptor.Invoke("seek$", "seek(qint64)", typeof(bool), typeof(long), off);
 		}
-		[SmokeMethod("atEnd", "() const", "")]
+		[SmokeMethod("atEnd() const")]
 		public override bool AtEnd() {
-			return ((QBuffer) interceptor).AtEnd();
+			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
-		[SmokeMethod("canReadLine", "() const", "")]
+		[SmokeMethod("canReadLine() const")]
 		public override bool CanReadLine() {
-			return ((QBuffer) interceptor).CanReadLine();
+			return (bool) interceptor.Invoke("canReadLine", "canReadLine() const", typeof(bool));
 		}
-		[SmokeMethod("readData", "(char*, qint64)", "$$")]
+		[SmokeMethod("readData(char*, qint64)")]
 		protected override long ReadData(string data, long maxlen) {
-			return ((QBuffer) interceptor).ReadData(data,maxlen);
+			return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
-		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
+		[SmokeMethod("writeData(const char*, qint64)")]
 		protected override long WriteData(string data, long len) {
-			return ((QBuffer) interceptor).WriteData(data,len);
+			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
 		~QBuffer() {
-			DisposeQBuffer();
+			interceptor.Invoke("~QBuffer", "~QBuffer()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQBuffer();
-		}
-		[SmokeMethod("~QBuffer", "()", "")]
-		private void DisposeQBuffer() {
-			((QBuffer) interceptor).DisposeQBuffer();
+			interceptor.Invoke("~QBuffer", "~QBuffer()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQBufferSignals Emit {
 			get { return (IQBufferSignals) Q_EMIT; }

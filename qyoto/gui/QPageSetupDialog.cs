@@ -6,57 +6,36 @@ namespace Qyoto {
 	[SmokeClass("QPageSetupDialog")]
 	public class QPageSetupDialog : QAbstractPageSetupDialog, IDisposable {
  		protected QPageSetupDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QPageSetupDialog")]
-		interface IQPageSetupDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPageSetupDialog), this);
-			interceptor = (QPageSetupDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPageSetupDialog), "QPageSetupDialog", this);
 		}
-		private static IQPageSetupDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPageSetupDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPageSetupDialogProxy), null);
-			staticInterceptor = (IQPageSetupDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPageSetupDialog), "QPageSetupDialog", null);
 		}
 		public QPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQPageSetupDialog(printer,parent);
-		}
-		[SmokeMethod("QPageSetupDialog", "(QPrinter*, QWidget*)", "##")]
-		private void NewQPageSetupDialog(QPrinter printer, QWidget parent) {
-			((QPageSetupDialog) interceptor).NewQPageSetupDialog(printer,parent);
+			interceptor.Invoke("QPageSetupDialog##", "QPageSetupDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);
 		}
 		public QPageSetupDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
-			NewQPageSetupDialog(printer);
+			interceptor.Invoke("QPageSetupDialog#", "QPageSetupDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
 		}
-		[SmokeMethod("QPageSetupDialog", "(QPrinter*)", "#")]
-		private void NewQPageSetupDialog(QPrinter printer) {
-			((QPageSetupDialog) interceptor).NewQPageSetupDialog(printer);
-		}
-		[SmokeMethod("exec", "()", "")]
+		[SmokeMethod("exec()")]
 		public override int Exec() {
-			return ((QPageSetupDialog) interceptor).Exec();
+			return (int) interceptor.Invoke("exec", "exec()", typeof(int));
 		}
 		~QPageSetupDialog() {
-			DisposeQPageSetupDialog();
+			interceptor.Invoke("~QPageSetupDialog", "~QPageSetupDialog()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQPageSetupDialog();
-		}
-		[SmokeMethod("~QPageSetupDialog", "()", "")]
-		private void DisposeQPageSetupDialog() {
-			((QPageSetupDialog) interceptor).DisposeQPageSetupDialog();
+			interceptor.Invoke("~QPageSetupDialog", "~QPageSetupDialog()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQPageSetupDialogSignals Emit {
 			get { return (IQPageSetupDialogSignals) Q_EMIT; }

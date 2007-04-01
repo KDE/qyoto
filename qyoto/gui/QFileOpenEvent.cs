@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QFileOpenEvent : QEvent, IDisposable {
  		protected QFileOpenEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileOpenEvent), this);
-			interceptor = (QFileOpenEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFileOpenEvent), "QFileOpenEvent", this);
 		}
 		public QFileOpenEvent(string file) : this((Type) null) {
 			CreateProxy();
-			NewQFileOpenEvent(file);
+			interceptor.Invoke("QFileOpenEvent$", "QFileOpenEvent(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("QFileOpenEvent", "(const QString&)", "$")]
-		private void NewQFileOpenEvent(string file) {
-			((QFileOpenEvent) interceptor).NewQFileOpenEvent(file);
-		}
-		[SmokeMethod("file", "() const", "")]
 		public string File() {
-			return ((QFileOpenEvent) interceptor).File();
+			return (string) interceptor.Invoke("file", "file() const", typeof(string));
 		}
 		~QFileOpenEvent() {
-			DisposeQFileOpenEvent();
+			interceptor.Invoke("~QFileOpenEvent", "~QFileOpenEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFileOpenEvent();
-		}
-		[SmokeMethod("~QFileOpenEvent", "()", "")]
-		private void DisposeQFileOpenEvent() {
-			((QFileOpenEvent) interceptor).DisposeQFileOpenEvent();
+			interceptor.Invoke("~QFileOpenEvent", "~QFileOpenEvent()", typeof(void));
 		}
 	}
 }

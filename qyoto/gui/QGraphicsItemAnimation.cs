@@ -6,147 +6,105 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsItemAnimation")]
 	public class QGraphicsItemAnimation : QObject, IDisposable {
  		protected QGraphicsItemAnimation(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGraphicsItemAnimation")]
-		interface IQGraphicsItemAnimationProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsItemAnimation), this);
-			interceptor = (QGraphicsItemAnimation) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), "QGraphicsItemAnimation", this);
 		}
-		private static IQGraphicsItemAnimationProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGraphicsItemAnimation() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsItemAnimationProxy), null);
-			staticInterceptor = (IQGraphicsItemAnimationProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), "QGraphicsItemAnimation", null);
 		}
 		public QGraphicsItemAnimation(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsItemAnimation(parent);
-		}
-		[SmokeMethod("QGraphicsItemAnimation", "(QObject*)", "#")]
-		private void NewQGraphicsItemAnimation(QObject parent) {
-			((QGraphicsItemAnimation) interceptor).NewQGraphicsItemAnimation(parent);
+			interceptor.Invoke("QGraphicsItemAnimation#", "QGraphicsItemAnimation(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QGraphicsItemAnimation() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsItemAnimation();
+			interceptor.Invoke("QGraphicsItemAnimation", "QGraphicsItemAnimation()", typeof(void));
 		}
-		[SmokeMethod("QGraphicsItemAnimation", "()", "")]
-		private void NewQGraphicsItemAnimation() {
-			((QGraphicsItemAnimation) interceptor).NewQGraphicsItemAnimation();
-		}
-		[SmokeMethod("item", "() const", "")]
 		public QGraphicsItem Item() {
-			return ((QGraphicsItemAnimation) interceptor).Item();
+			return (QGraphicsItem) interceptor.Invoke("item", "item() const", typeof(QGraphicsItem));
 		}
-		[SmokeMethod("setItem", "(QGraphicsItem*)", "#")]
 		public void SetItem(QGraphicsItem item) {
-			((QGraphicsItemAnimation) interceptor).SetItem(item);
+			interceptor.Invoke("setItem#", "setItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("timeLine", "() const", "")]
 		public QTimeLine TimeLine() {
-			return ((QGraphicsItemAnimation) interceptor).TimeLine();
+			return (QTimeLine) interceptor.Invoke("timeLine", "timeLine() const", typeof(QTimeLine));
 		}
-		[SmokeMethod("setTimeLine", "(QTimeLine*)", "#")]
 		public void SetTimeLine(QTimeLine timeLine) {
-			((QGraphicsItemAnimation) interceptor).SetTimeLine(timeLine);
+			interceptor.Invoke("setTimeLine#", "setTimeLine(QTimeLine*)", typeof(void), typeof(QTimeLine), timeLine);
 		}
-		[SmokeMethod("posAt", "(qreal) const", "$")]
 		public QPointF PosAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).PosAt(step);
+			return (QPointF) interceptor.Invoke("posAt$", "posAt(qreal) const", typeof(QPointF), typeof(double), step);
 		}
-		[SmokeMethod("setPosAt", "(qreal, const QPointF&)", "$#")]
 		public void SetPosAt(double step, QPointF pos) {
-			((QGraphicsItemAnimation) interceptor).SetPosAt(step,pos);
+			interceptor.Invoke("setPosAt$#", "setPosAt(qreal, const QPointF&)", typeof(void), typeof(double), step, typeof(QPointF), pos);
 		}
-		[SmokeMethod("matrixAt", "(qreal) const", "$")]
 		public QMatrix MatrixAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).MatrixAt(step);
+			return (QMatrix) interceptor.Invoke("matrixAt$", "matrixAt(qreal) const", typeof(QMatrix), typeof(double), step);
 		}
-		[SmokeMethod("rotationAt", "(qreal) const", "$")]
 		public double RotationAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).RotationAt(step);
+			return (double) interceptor.Invoke("rotationAt$", "rotationAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("setRotationAt", "(qreal, qreal)", "$$")]
 		public void SetRotationAt(double step, double angle) {
-			((QGraphicsItemAnimation) interceptor).SetRotationAt(step,angle);
+			interceptor.Invoke("setRotationAt$$", "setRotationAt(qreal, qreal)", typeof(void), typeof(double), step, typeof(double), angle);
 		}
-		[SmokeMethod("xTranslationAt", "(qreal) const", "$")]
 		public double XTranslationAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).XTranslationAt(step);
+			return (double) interceptor.Invoke("xTranslationAt$", "xTranslationAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("yTranslationAt", "(qreal) const", "$")]
 		public double YTranslationAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).YTranslationAt(step);
+			return (double) interceptor.Invoke("yTranslationAt$", "yTranslationAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("setTranslationAt", "(qreal, qreal, qreal)", "$$$")]
 		public void SetTranslationAt(double step, double dx, double dy) {
-			((QGraphicsItemAnimation) interceptor).SetTranslationAt(step,dx,dy);
+			interceptor.Invoke("setTranslationAt$$$", "setTranslationAt(qreal, qreal, qreal)", typeof(void), typeof(double), step, typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("verticalScaleAt", "(qreal) const", "$")]
 		public double VerticalScaleAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).VerticalScaleAt(step);
+			return (double) interceptor.Invoke("verticalScaleAt$", "verticalScaleAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("horizontalScaleAt", "(qreal) const", "$")]
 		public double HorizontalScaleAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).HorizontalScaleAt(step);
+			return (double) interceptor.Invoke("horizontalScaleAt$", "horizontalScaleAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("setScaleAt", "(qreal, qreal, qreal)", "$$$")]
 		public void SetScaleAt(double step, double sx, double sy) {
-			((QGraphicsItemAnimation) interceptor).SetScaleAt(step,sx,sy);
+			interceptor.Invoke("setScaleAt$$$", "setScaleAt(qreal, qreal, qreal)", typeof(void), typeof(double), step, typeof(double), sx, typeof(double), sy);
 		}
-		[SmokeMethod("verticalShearAt", "(qreal) const", "$")]
 		public double VerticalShearAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).VerticalShearAt(step);
+			return (double) interceptor.Invoke("verticalShearAt$", "verticalShearAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("horizontalShearAt", "(qreal) const", "$")]
 		public double HorizontalShearAt(double step) {
-			return ((QGraphicsItemAnimation) interceptor).HorizontalShearAt(step);
+			return (double) interceptor.Invoke("horizontalShearAt$", "horizontalShearAt(qreal) const", typeof(double), typeof(double), step);
 		}
-		[SmokeMethod("setShearAt", "(qreal, qreal, qreal)", "$$$")]
 		public void SetShearAt(double step, double sh, double sv) {
-			((QGraphicsItemAnimation) interceptor).SetShearAt(step,sh,sv);
+			interceptor.Invoke("setShearAt$$$", "setShearAt(qreal, qreal, qreal)", typeof(void), typeof(double), step, typeof(double), sh, typeof(double), sv);
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QGraphicsItemAnimation) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
 		[Q_SLOT("void setStep(qreal)")]
-		[SmokeMethod("setStep", "(qreal)", "$")]
 		public void SetStep(double x) {
-			((QGraphicsItemAnimation) interceptor).SetStep(x);
+			interceptor.Invoke("setStep$", "setStep(qreal)", typeof(void), typeof(double), x);
 		}
 		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			((QGraphicsItemAnimation) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
-		[SmokeMethod("beforeAnimationStep", "(qreal)", "$")]
+		[SmokeMethod("beforeAnimationStep(qreal)")]
 		protected virtual void BeforeAnimationStep(double step) {
-			((QGraphicsItemAnimation) interceptor).BeforeAnimationStep(step);
+			interceptor.Invoke("beforeAnimationStep$", "beforeAnimationStep(qreal)", typeof(void), typeof(double), step);
 		}
-		[SmokeMethod("afterAnimationStep", "(qreal)", "$")]
+		[SmokeMethod("afterAnimationStep(qreal)")]
 		protected virtual void AfterAnimationStep(double step) {
-			((QGraphicsItemAnimation) interceptor).AfterAnimationStep(step);
+			interceptor.Invoke("afterAnimationStep$", "afterAnimationStep(qreal)", typeof(void), typeof(double), step);
 		}
 		~QGraphicsItemAnimation() {
-			DisposeQGraphicsItemAnimation();
+			interceptor.Invoke("~QGraphicsItemAnimation", "~QGraphicsItemAnimation()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsItemAnimation();
-		}
-		[SmokeMethod("~QGraphicsItemAnimation", "()", "")]
-		private void DisposeQGraphicsItemAnimation() {
-			((QGraphicsItemAnimation) interceptor).DisposeQGraphicsItemAnimation();
+			interceptor.Invoke("~QGraphicsItemAnimation", "~QGraphicsItemAnimation()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGraphicsItemAnimationSignals Emit {
 			get { return (IQGraphicsItemAnimationSignals) Q_EMIT; }

@@ -5,64 +5,41 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QInputContextFactory")]
-	public class QInputContextFactory : MarshalByRefObject, IDisposable {
-		protected QInputContextFactory interceptor = null;
+	public class QInputContextFactory : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QInputContextFactory(Type dummy) {}
-		[SmokeClass("QInputContextFactory")]
-		interface IQInputContextFactoryProxy {
-			[SmokeMethod("keys", "()", "")]
-			List<string> Keys();
-			[SmokeMethod("create", "(const QString&, QObject*)", "$#")]
-			QInputContext Create(string key, QObject parent);
-			[SmokeMethod("languages", "(const QString&)", "$")]
-			List<string> Languages(string key);
-			[SmokeMethod("displayName", "(const QString&)", "$")]
-			string DisplayName(string key);
-			[SmokeMethod("description", "(const QString&)", "$")]
-			string Description(string key);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactory), this);
-			interceptor = (QInputContextFactory) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QInputContextFactory), "QInputContextFactory", this);
 		}
-		private static IQInputContextFactoryProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QInputContextFactory() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputContextFactoryProxy), null);
-			staticInterceptor = (IQInputContextFactoryProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QInputContextFactory), "QInputContextFactory", null);
 		}
 		public QInputContextFactory() : this((Type) null) {
 			CreateProxy();
-			NewQInputContextFactory();
-		}
-		[SmokeMethod("QInputContextFactory", "()", "")]
-		private void NewQInputContextFactory() {
-			((QInputContextFactory) interceptor).NewQInputContextFactory();
+			interceptor.Invoke("QInputContextFactory", "QInputContextFactory()", typeof(void));
 		}
 		~QInputContextFactory() {
-			DisposeQInputContextFactory();
+			interceptor.Invoke("~QInputContextFactory", "~QInputContextFactory()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQInputContextFactory();
-		}
-		[SmokeMethod("~QInputContextFactory", "()", "")]
-		private void DisposeQInputContextFactory() {
-			((QInputContextFactory) interceptor).DisposeQInputContextFactory();
+			interceptor.Invoke("~QInputContextFactory", "~QInputContextFactory()", typeof(void));
 		}
 		public static List<string> Keys() {
-			return staticInterceptor.Keys();
+			return (List<string>) staticInterceptor.Invoke("keys", "keys()", typeof(List<string>));
 		}
 		public static QInputContext Create(string key, QObject parent) {
-			return staticInterceptor.Create(key,parent);
+			return (QInputContext) staticInterceptor.Invoke("create$#", "create(const QString&, QObject*)", typeof(QInputContext), typeof(string), key, typeof(QObject), parent);
 		}
 		public static List<string> Languages(string key) {
-			return staticInterceptor.Languages(key);
+			return (List<string>) staticInterceptor.Invoke("languages$", "languages(const QString&)", typeof(List<string>), typeof(string), key);
 		}
 		public static string DisplayName(string key) {
-			return staticInterceptor.DisplayName(key);
+			return (string) staticInterceptor.Invoke("displayName$", "displayName(const QString&)", typeof(string), typeof(string), key);
 		}
 		public static string Description(string key) {
-			return staticInterceptor.Description(key);
+			return (string) staticInterceptor.Invoke("description$", "description(const QString&)", typeof(string), typeof(string), key);
 		}
 	}
 }

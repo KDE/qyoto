@@ -6,89 +6,62 @@ namespace Qyoto {
 	[SmokeClass("QTranslator")]
 	public class QTranslator : QObject, IDisposable {
  		protected QTranslator(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTranslator")]
-		interface IQTranslatorProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTranslator), this);
-			interceptor = (QTranslator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTranslator), "QTranslator", this);
 		}
-		private static IQTranslatorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTranslator() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTranslatorProxy), null);
-			staticInterceptor = (IQTranslatorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTranslator), "QTranslator", null);
 		}
 		public QTranslator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTranslator(parent);
-		}
-		[SmokeMethod("QTranslator", "(QObject*)", "#")]
-		private void NewQTranslator(QObject parent) {
-			((QTranslator) interceptor).NewQTranslator(parent);
+			interceptor.Invoke("QTranslator#", "QTranslator(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QTranslator() : this((Type) null) {
 			CreateProxy();
-			NewQTranslator();
+			interceptor.Invoke("QTranslator", "QTranslator()", typeof(void));
 		}
-		[SmokeMethod("QTranslator", "()", "")]
-		private void NewQTranslator() {
-			((QTranslator) interceptor).NewQTranslator();
-		}
-		[SmokeMethod("translate", "(const char*, const char*, const char*) const", "$$$")]
+		[SmokeMethod("translate(const char*, const char*, const char*) const")]
 		public virtual string Translate(string context, string sourceText, string comment) {
-			return ((QTranslator) interceptor).Translate(context,sourceText,comment);
+			return (string) interceptor.Invoke("translate$$$", "translate(const char*, const char*, const char*) const", typeof(string), typeof(string), context, typeof(string), sourceText, typeof(string), comment);
 		}
-		[SmokeMethod("translate", "(const char*, const char*) const", "$$")]
+		[SmokeMethod("translate(const char*, const char*) const")]
 		public virtual string Translate(string context, string sourceText) {
-			return ((QTranslator) interceptor).Translate(context,sourceText);
+			return (string) interceptor.Invoke("translate$$", "translate(const char*, const char*) const", typeof(string), typeof(string), context, typeof(string), sourceText);
 		}
-		[SmokeMethod("translate", "(const char*, const char*, const char*, int) const", "$$$$")]
 		public string Translate(string context, string sourceText, string comment, int n) {
-			return ((QTranslator) interceptor).Translate(context,sourceText,comment,n);
+			return (string) interceptor.Invoke("translate$$$$", "translate(const char*, const char*, const char*, int) const", typeof(string), typeof(string), context, typeof(string), sourceText, typeof(string), comment, typeof(int), n);
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
+		[SmokeMethod("isEmpty() const")]
 		public virtual bool IsEmpty() {
-			return ((QTranslator) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("load", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
 		public bool Load(string filename, string directory, string search_delimiters, string suffix) {
-			return ((QTranslator) interceptor).Load(filename,directory,search_delimiters,suffix);
+			return (bool) interceptor.Invoke("load$$$$", "load(const QString&, const QString&, const QString&, const QString&)", typeof(bool), typeof(string), filename, typeof(string), directory, typeof(string), search_delimiters, typeof(string), suffix);
 		}
-		[SmokeMethod("load", "(const QString&, const QString&, const QString&)", "$$$")]
 		public bool Load(string filename, string directory, string search_delimiters) {
-			return ((QTranslator) interceptor).Load(filename,directory,search_delimiters);
+			return (bool) interceptor.Invoke("load$$$", "load(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), filename, typeof(string), directory, typeof(string), search_delimiters);
 		}
-		[SmokeMethod("load", "(const QString&, const QString&)", "$$")]
 		public bool Load(string filename, string directory) {
-			return ((QTranslator) interceptor).Load(filename,directory);
+			return (bool) interceptor.Invoke("load$$", "load(const QString&, const QString&)", typeof(bool), typeof(string), filename, typeof(string), directory);
 		}
-		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string filename) {
-			return ((QTranslator) interceptor).Load(filename);
+			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), filename);
 		}
-		[SmokeMethod("load", "(const uchar*, int)", "$$")]
 		public bool Load(char[] data, int len) {
-			return ((QTranslator) interceptor).Load(data,len);
+			return (bool) interceptor.Invoke("load$$", "load(const uchar*, int)", typeof(bool), typeof(char[]), data, typeof(int), len);
 		}
 		~QTranslator() {
-			DisposeQTranslator();
+			interceptor.Invoke("~QTranslator", "~QTranslator()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTranslator();
-		}
-		[SmokeMethod("~QTranslator", "()", "")]
-		private void DisposeQTranslator() {
-			((QTranslator) interceptor).DisposeQTranslator();
+			interceptor.Invoke("~QTranslator", "~QTranslator()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTranslatorSignals Emit {
 			get { return (IQTranslatorSignals) Q_EMIT; }

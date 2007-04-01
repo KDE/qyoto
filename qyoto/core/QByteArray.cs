@@ -5,774 +5,549 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QByteArray")]
-	public class QByteArray : MarshalByRefObject, IDisposable {
-		protected QByteArray interceptor = null;
+	public class QByteArray : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QByteArray(Type dummy) {}
-		[SmokeClass("QByteArray")]
-		interface IQByteArrayProxy {
-			[SmokeMethod("operator==", "(const QString&) const", "$")]
-			bool op_equals(QByteArray lhs, string s2);
-			[SmokeMethod("operator<", "(const QString&) const", "$")]
-			bool op_lt(QByteArray lhs, string s2);
-			[SmokeMethod("operator>", "(const QString&) const", "$")]
-			bool op_gt(QByteArray lhs, string s2);
-			[SmokeMethod("operator<=", "(const QString&) const", "$")]
-			bool op_lte(QByteArray lhs, string s2);
-			[SmokeMethod("operator>=", "(const QString&) const", "$")]
-			bool op_gte(QByteArray lhs, string s2);
-			[SmokeMethod("number", "(int, int)", "$$")]
-			QByteArray Number(int arg1, int arg2);
-			[SmokeMethod("number", "(int)", "$")]
-			QByteArray Number(int arg1);
-			[SmokeMethod("number", "(uint, int)", "$$")]
-			QByteArray Number(uint arg1, int arg2);
-			[SmokeMethod("number", "(uint)", "$")]
-			QByteArray Number(uint arg1);
-			[SmokeMethod("number", "(qlonglong, int)", "?$")]
-			QByteArray Number(long arg1, int arg2);
-			[SmokeMethod("number", "(qlonglong)", "?")]
-			QByteArray Number(long arg1);
-			[SmokeMethod("number", "(qulonglong, int)", "$$")]
-			QByteArray Number(ulong arg1, int arg2);
-			[SmokeMethod("number", "(qulonglong)", "$")]
-			QByteArray Number(ulong arg1);
-			[SmokeMethod("number", "(double, char, int)", "$$$")]
-			QByteArray Number(double arg1, char f, int prec);
-			[SmokeMethod("number", "(double, char)", "$$")]
-			QByteArray Number(double arg1, char f);
-			[SmokeMethod("number", "(double)", "$")]
-			QByteArray Number(double arg1);
-			[SmokeMethod("fromRawData", "(const char*, int)", "$$")]
-			QByteArray FromRawData(string arg1, int size);
-			[SmokeMethod("fromBase64", "(const QByteArray&)", "#")]
-			QByteArray FromBase64(QByteArray base64);
-			[SmokeMethod("operator==", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_equals(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator==", "(const char*, const QByteArray&)", "$#")]
-			bool op_equals(string a1, QByteArray a2);
-			[SmokeMethod("operator<", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_lt(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator<", "(const char*, const QByteArray&)", "$#")]
-			bool op_lt(string a1, QByteArray a2);
-			[SmokeMethod("operator<=", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_lte(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator<=", "(const char*, const QByteArray&)", "$#")]
-			bool op_lte(string a1, QByteArray a2);
-			[SmokeMethod("operator>", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_gt(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator>", "(const char*, const QByteArray&)", "$#")]
-			bool op_gt(string a1, QByteArray a2);
-			[SmokeMethod("operator>=", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_gte(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator>=", "(const char*, const QByteArray&)", "$#")]
-			bool op_gte(string a1, QByteArray a2);
-			[SmokeMethod("operator+", "(const QByteArray&, const QByteArray&)", "##")]
-			QByteArray op_plus(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator+", "(const QByteArray&, const char*)", "#$")]
-			QByteArray op_plus(QByteArray a1, string a2);
-			[SmokeMethod("operator+", "(const QByteArray&, char)", "#$")]
-			QByteArray op_plus(QByteArray a1, char a2);
-			[SmokeMethod("operator+", "(const char*, const QByteArray&)", "$#")]
-			QByteArray op_plus(string a1, QByteArray a2);
-			[SmokeMethod("operator+", "(char, const QByteArray&)", "$#")]
-			QByteArray op_plus(char a1, QByteArray a2);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArray), this);
-			interceptor = (QByteArray) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QByteArray), "QByteArray", this);
 		}
-		private static IQByteArrayProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QByteArray() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQByteArrayProxy), null);
-			staticInterceptor = (IQByteArrayProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QByteArray), "QByteArray", null);
 		}
 		//  operator const char *(); >>>> NOT CONVERTED
 		//  operator const void *(); >>>> NOT CONVERTED
 		public QByteArray() : this((Type) null) {
 			CreateProxy();
-			NewQByteArray();
-		}
-		[SmokeMethod("QByteArray", "()", "")]
-		private void NewQByteArray() {
-			((QByteArray) interceptor).NewQByteArray();
+			interceptor.Invoke("QByteArray", "QByteArray()", typeof(void));
 		}
 		public QByteArray(string arg1) : this((Type) null) {
 			CreateProxy();
-			NewQByteArray(arg1);
-		}
-		[SmokeMethod("QByteArray", "(const char*)", "$")]
-		private void NewQByteArray(string arg1) {
-			((QByteArray) interceptor).NewQByteArray(arg1);
+			interceptor.Invoke("QByteArray$", "QByteArray(const char*)", typeof(void), typeof(string), arg1);
 		}
 		public QByteArray(string arg1, int size) : this((Type) null) {
 			CreateProxy();
-			NewQByteArray(arg1,size);
-		}
-		[SmokeMethod("QByteArray", "(const char*, int)", "$$")]
-		private void NewQByteArray(string arg1, int size) {
-			((QByteArray) interceptor).NewQByteArray(arg1,size);
+			interceptor.Invoke("QByteArray$$", "QByteArray(const char*, int)", typeof(void), typeof(string), arg1, typeof(int), size);
 		}
 		public QByteArray(int size, char c) : this((Type) null) {
 			CreateProxy();
-			NewQByteArray(size,c);
-		}
-		[SmokeMethod("QByteArray", "(int, char)", "$$")]
-		private void NewQByteArray(int size, char c) {
-			((QByteArray) interceptor).NewQByteArray(size,c);
+			interceptor.Invoke("QByteArray$$", "QByteArray(int, char)", typeof(void), typeof(int), size, typeof(char), c);
 		}
 		public QByteArray(QByteArray arg1) : this((Type) null) {
 			CreateProxy();
-			NewQByteArray(arg1);
+			interceptor.Invoke("QByteArray#", "QByteArray(const QByteArray&)", typeof(void), typeof(QByteArray), arg1);
 		}
-		[SmokeMethod("QByteArray", "(const QByteArray&)", "#")]
-		private void NewQByteArray(QByteArray arg1) {
-			((QByteArray) interceptor).NewQByteArray(arg1);
-		}
-		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ((QByteArray) interceptor).Size();
+			return (int) interceptor.Invoke("size", "size() const", typeof(int));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QByteArray) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("resize", "(int)", "$")]
 		public void Resize(int size) {
-			((QByteArray) interceptor).Resize(size);
+			interceptor.Invoke("resize$", "resize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("fill", "(char, int)", "$$")]
 		public QByteArray Fill(char c, int size) {
-			return ((QByteArray) interceptor).Fill(c,size);
+			return (QByteArray) interceptor.Invoke("fill$$", "fill(char, int)", typeof(QByteArray), typeof(char), c, typeof(int), size);
 		}
-		[SmokeMethod("fill", "(char)", "$")]
 		public QByteArray Fill(char c) {
-			return ((QByteArray) interceptor).Fill(c);
+			return (QByteArray) interceptor.Invoke("fill$", "fill(char)", typeof(QByteArray), typeof(char), c);
 		}
-		[SmokeMethod("capacity", "() const", "")]
 		public int Capacity() {
-			return ((QByteArray) interceptor).Capacity();
+			return (int) interceptor.Invoke("capacity", "capacity() const", typeof(int));
 		}
-		[SmokeMethod("reserve", "(int)", "$")]
 		public void Reserve(int size) {
-			((QByteArray) interceptor).Reserve(size);
+			interceptor.Invoke("reserve$", "reserve(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("squeeze", "()", "")]
 		public void Squeeze() {
-			((QByteArray) interceptor).Squeeze();
+			interceptor.Invoke("squeeze", "squeeze()", typeof(void));
 		}
-		[SmokeMethod("data", "()", "")]
 		public string Data() {
-			return ((QByteArray) interceptor).Data();
+			return (string) interceptor.Invoke("data", "data()", typeof(string));
 		}
-		[SmokeMethod("constData", "() const", "")]
 		public string ConstData() {
-			return ((QByteArray) interceptor).ConstData();
+			return (string) interceptor.Invoke("constData", "constData() const", typeof(string));
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QByteArray) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QByteArray) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QByteArray) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("at", "(int) const", "$")]
 		public char At(int i) {
-			return ((QByteArray) interceptor).At(i);
+			return (char) interceptor.Invoke("at$", "at(int) const", typeof(char), typeof(int), i);
 		}
-		[SmokeMethod("indexOf", "(char, int) const", "$$")]
 		public int IndexOf(char c, int from) {
-			return ((QByteArray) interceptor).IndexOf(c,from);
+			return (int) interceptor.Invoke("indexOf$$", "indexOf(char, int) const", typeof(int), typeof(char), c, typeof(int), from);
 		}
-		[SmokeMethod("indexOf", "(char) const", "$")]
 		public int IndexOf(char c) {
-			return ((QByteArray) interceptor).IndexOf(c);
+			return (int) interceptor.Invoke("indexOf$", "indexOf(char) const", typeof(int), typeof(char), c);
 		}
-		[SmokeMethod("indexOf", "(const char*, int) const", "$$")]
 		public int IndexOf(string c, int from) {
-			return ((QByteArray) interceptor).IndexOf(c,from);
+			return (int) interceptor.Invoke("indexOf$$", "indexOf(const char*, int) const", typeof(int), typeof(string), c, typeof(int), from);
 		}
-		[SmokeMethod("indexOf", "(const char*) const", "$")]
 		public int IndexOf(string c) {
-			return ((QByteArray) interceptor).IndexOf(c);
+			return (int) interceptor.Invoke("indexOf$", "indexOf(const char*) const", typeof(int), typeof(string), c);
 		}
-		[SmokeMethod("indexOf", "(const QByteArray&, int) const", "#$")]
 		public int IndexOf(QByteArray a, int from) {
-			return ((QByteArray) interceptor).IndexOf(a,from);
+			return (int) interceptor.Invoke("indexOf#$", "indexOf(const QByteArray&, int) const", typeof(int), typeof(QByteArray), a, typeof(int), from);
 		}
-		[SmokeMethod("indexOf", "(const QByteArray&) const", "#")]
 		public int IndexOf(QByteArray a) {
-			return ((QByteArray) interceptor).IndexOf(a);
+			return (int) interceptor.Invoke("indexOf#", "indexOf(const QByteArray&) const", typeof(int), typeof(QByteArray), a);
 		}
-		[SmokeMethod("lastIndexOf", "(char, int) const", "$$")]
 		public int LastIndexOf(char c, int from) {
-			return ((QByteArray) interceptor).LastIndexOf(c,from);
+			return (int) interceptor.Invoke("lastIndexOf$$", "lastIndexOf(char, int) const", typeof(int), typeof(char), c, typeof(int), from);
 		}
-		[SmokeMethod("lastIndexOf", "(char) const", "$")]
 		public int LastIndexOf(char c) {
-			return ((QByteArray) interceptor).LastIndexOf(c);
+			return (int) interceptor.Invoke("lastIndexOf$", "lastIndexOf(char) const", typeof(int), typeof(char), c);
 		}
-		[SmokeMethod("lastIndexOf", "(const char*, int) const", "$$")]
 		public int LastIndexOf(string c, int from) {
-			return ((QByteArray) interceptor).LastIndexOf(c,from);
+			return (int) interceptor.Invoke("lastIndexOf$$", "lastIndexOf(const char*, int) const", typeof(int), typeof(string), c, typeof(int), from);
 		}
-		[SmokeMethod("lastIndexOf", "(const char*) const", "$")]
 		public int LastIndexOf(string c) {
-			return ((QByteArray) interceptor).LastIndexOf(c);
+			return (int) interceptor.Invoke("lastIndexOf$", "lastIndexOf(const char*) const", typeof(int), typeof(string), c);
 		}
-		[SmokeMethod("lastIndexOf", "(const QByteArray&, int) const", "#$")]
 		public int LastIndexOf(QByteArray a, int from) {
-			return ((QByteArray) interceptor).LastIndexOf(a,from);
+			return (int) interceptor.Invoke("lastIndexOf#$", "lastIndexOf(const QByteArray&, int) const", typeof(int), typeof(QByteArray), a, typeof(int), from);
 		}
-		[SmokeMethod("lastIndexOf", "(const QByteArray&) const", "#")]
 		public int LastIndexOf(QByteArray a) {
-			return ((QByteArray) interceptor).LastIndexOf(a);
+			return (int) interceptor.Invoke("lastIndexOf#", "lastIndexOf(const QByteArray&) const", typeof(int), typeof(QByteArray), a);
 		}
-		[SmokeMethod("contains", "(char) const", "$")]
 		public QBool Contains(char c) {
-			return ((QByteArray) interceptor).Contains(c);
+			return (QBool) interceptor.Invoke("contains$", "contains(char) const", typeof(QBool), typeof(char), c);
 		}
-		[SmokeMethod("contains", "(const char*) const", "$")]
 		public QBool Contains(string a) {
-			return ((QByteArray) interceptor).Contains(a);
+			return (QBool) interceptor.Invoke("contains$", "contains(const char*) const", typeof(QBool), typeof(string), a);
 		}
-		[SmokeMethod("contains", "(const QByteArray&) const", "#")]
 		public QBool Contains(QByteArray a) {
-			return ((QByteArray) interceptor).Contains(a);
+			return (QBool) interceptor.Invoke("contains#", "contains(const QByteArray&) const", typeof(QBool), typeof(QByteArray), a);
 		}
-		[SmokeMethod("count", "(char) const", "$")]
 		public int Count(char c) {
-			return ((QByteArray) interceptor).Count(c);
+			return (int) interceptor.Invoke("count$", "count(char) const", typeof(int), typeof(char), c);
 		}
-		[SmokeMethod("count", "(const char*) const", "$")]
 		public int Count(string a) {
-			return ((QByteArray) interceptor).Count(a);
+			return (int) interceptor.Invoke("count$", "count(const char*) const", typeof(int), typeof(string), a);
 		}
-		[SmokeMethod("count", "(const QByteArray&) const", "#")]
 		public int Count(QByteArray a) {
-			return ((QByteArray) interceptor).Count(a);
+			return (int) interceptor.Invoke("count#", "count(const QByteArray&) const", typeof(int), typeof(QByteArray), a);
 		}
-		[SmokeMethod("left", "(int) const", "$")]
 		public QByteArray Left(int len) {
-			return ((QByteArray) interceptor).Left(len);
+			return (QByteArray) interceptor.Invoke("left$", "left(int) const", typeof(QByteArray), typeof(int), len);
 		}
-		[SmokeMethod("right", "(int) const", "$")]
 		public QByteArray Right(int len) {
-			return ((QByteArray) interceptor).Right(len);
+			return (QByteArray) interceptor.Invoke("right$", "right(int) const", typeof(QByteArray), typeof(int), len);
 		}
-		[SmokeMethod("mid", "(int, int) const", "$$")]
 		public QByteArray Mid(int index, int len) {
-			return ((QByteArray) interceptor).Mid(index,len);
+			return (QByteArray) interceptor.Invoke("mid$$", "mid(int, int) const", typeof(QByteArray), typeof(int), index, typeof(int), len);
 		}
-		[SmokeMethod("mid", "(int) const", "$")]
 		public QByteArray Mid(int index) {
-			return ((QByteArray) interceptor).Mid(index);
+			return (QByteArray) interceptor.Invoke("mid$", "mid(int) const", typeof(QByteArray), typeof(int), index);
 		}
-		[SmokeMethod("startsWith", "(const QByteArray&) const", "#")]
 		public bool StartsWith(QByteArray a) {
-			return ((QByteArray) interceptor).StartsWith(a);
+			return (bool) interceptor.Invoke("startsWith#", "startsWith(const QByteArray&) const", typeof(bool), typeof(QByteArray), a);
 		}
-		[SmokeMethod("startsWith", "(char) const", "$")]
 		public bool StartsWith(char c) {
-			return ((QByteArray) interceptor).StartsWith(c);
+			return (bool) interceptor.Invoke("startsWith$", "startsWith(char) const", typeof(bool), typeof(char), c);
 		}
-		[SmokeMethod("startsWith", "(const char*) const", "$")]
 		public bool StartsWith(string c) {
-			return ((QByteArray) interceptor).StartsWith(c);
+			return (bool) interceptor.Invoke("startsWith$", "startsWith(const char*) const", typeof(bool), typeof(string), c);
 		}
-		[SmokeMethod("endsWith", "(const QByteArray&) const", "#")]
 		public bool EndsWith(QByteArray a) {
-			return ((QByteArray) interceptor).EndsWith(a);
+			return (bool) interceptor.Invoke("endsWith#", "endsWith(const QByteArray&) const", typeof(bool), typeof(QByteArray), a);
 		}
-		[SmokeMethod("endsWith", "(char) const", "$")]
 		public bool EndsWith(char c) {
-			return ((QByteArray) interceptor).EndsWith(c);
+			return (bool) interceptor.Invoke("endsWith$", "endsWith(char) const", typeof(bool), typeof(char), c);
 		}
-		[SmokeMethod("endsWith", "(const char*) const", "$")]
 		public bool EndsWith(string c) {
-			return ((QByteArray) interceptor).EndsWith(c);
+			return (bool) interceptor.Invoke("endsWith$", "endsWith(const char*) const", typeof(bool), typeof(string), c);
 		}
-		[SmokeMethod("truncate", "(int)", "$")]
 		public void Truncate(int pos) {
-			((QByteArray) interceptor).Truncate(pos);
+			interceptor.Invoke("truncate$", "truncate(int)", typeof(void), typeof(int), pos);
 		}
-		[SmokeMethod("chop", "(int)", "$")]
 		public void Chop(int n) {
-			((QByteArray) interceptor).Chop(n);
+			interceptor.Invoke("chop$", "chop(int)", typeof(void), typeof(int), n);
 		}
-		[SmokeMethod("toLower", "() const", "")]
 		public QByteArray ToLower() {
-			return ((QByteArray) interceptor).ToLower();
+			return (QByteArray) interceptor.Invoke("toLower", "toLower() const", typeof(QByteArray));
 		}
-		[SmokeMethod("toUpper", "() const", "")]
 		public QByteArray ToUpper() {
-			return ((QByteArray) interceptor).ToUpper();
+			return (QByteArray) interceptor.Invoke("toUpper", "toUpper() const", typeof(QByteArray));
 		}
-		[SmokeMethod("trimmed", "() const", "")]
 		public QByteArray Trimmed() {
-			return ((QByteArray) interceptor).Trimmed();
+			return (QByteArray) interceptor.Invoke("trimmed", "trimmed() const", typeof(QByteArray));
 		}
-		[SmokeMethod("simplified", "() const", "")]
 		public QByteArray Simplified() {
-			return ((QByteArray) interceptor).Simplified();
+			return (QByteArray) interceptor.Invoke("simplified", "simplified() const", typeof(QByteArray));
 		}
-		[SmokeMethod("leftJustified", "(int, char, bool) const", "$$$")]
 		public QByteArray LeftJustified(int width, char fill, bool truncate) {
-			return ((QByteArray) interceptor).LeftJustified(width,fill,truncate);
+			return (QByteArray) interceptor.Invoke("leftJustified$$$", "leftJustified(int, char, bool) const", typeof(QByteArray), typeof(int), width, typeof(char), fill, typeof(bool), truncate);
 		}
-		[SmokeMethod("leftJustified", "(int, char) const", "$$")]
 		public QByteArray LeftJustified(int width, char fill) {
-			return ((QByteArray) interceptor).LeftJustified(width,fill);
+			return (QByteArray) interceptor.Invoke("leftJustified$$", "leftJustified(int, char) const", typeof(QByteArray), typeof(int), width, typeof(char), fill);
 		}
-		[SmokeMethod("leftJustified", "(int) const", "$")]
 		public QByteArray LeftJustified(int width) {
-			return ((QByteArray) interceptor).LeftJustified(width);
+			return (QByteArray) interceptor.Invoke("leftJustified$", "leftJustified(int) const", typeof(QByteArray), typeof(int), width);
 		}
-		[SmokeMethod("rightJustified", "(int, char, bool) const", "$$$")]
 		public QByteArray RightJustified(int width, char fill, bool truncate) {
-			return ((QByteArray) interceptor).RightJustified(width,fill,truncate);
+			return (QByteArray) interceptor.Invoke("rightJustified$$$", "rightJustified(int, char, bool) const", typeof(QByteArray), typeof(int), width, typeof(char), fill, typeof(bool), truncate);
 		}
-		[SmokeMethod("rightJustified", "(int, char) const", "$$")]
 		public QByteArray RightJustified(int width, char fill) {
-			return ((QByteArray) interceptor).RightJustified(width,fill);
+			return (QByteArray) interceptor.Invoke("rightJustified$$", "rightJustified(int, char) const", typeof(QByteArray), typeof(int), width, typeof(char), fill);
 		}
-		[SmokeMethod("rightJustified", "(int) const", "$")]
 		public QByteArray RightJustified(int width) {
-			return ((QByteArray) interceptor).RightJustified(width);
+			return (QByteArray) interceptor.Invoke("rightJustified$", "rightJustified(int) const", typeof(QByteArray), typeof(int), width);
 		}
-		[SmokeMethod("prepend", "(char)", "$")]
 		public QByteArray Prepend(char c) {
-			return ((QByteArray) interceptor).Prepend(c);
+			return (QByteArray) interceptor.Invoke("prepend$", "prepend(char)", typeof(QByteArray), typeof(char), c);
 		}
-		[SmokeMethod("prepend", "(const char*)", "$")]
 		public QByteArray Prepend(string s) {
-			return ((QByteArray) interceptor).Prepend(s);
+			return (QByteArray) interceptor.Invoke("prepend$", "prepend(const char*)", typeof(QByteArray), typeof(string), s);
 		}
-		[SmokeMethod("prepend", "(const QByteArray&)", "#")]
 		public QByteArray Prepend(QByteArray a) {
-			return ((QByteArray) interceptor).Prepend(a);
+			return (QByteArray) interceptor.Invoke("prepend#", "prepend(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), a);
 		}
-		[SmokeMethod("append", "(char)", "$")]
 		public QByteArray Append(char c) {
-			return ((QByteArray) interceptor).Append(c);
+			return (QByteArray) interceptor.Invoke("append$", "append(char)", typeof(QByteArray), typeof(char), c);
 		}
-		[SmokeMethod("append", "(const char*)", "$")]
 		public QByteArray Append(string s) {
-			return ((QByteArray) interceptor).Append(s);
+			return (QByteArray) interceptor.Invoke("append$", "append(const char*)", typeof(QByteArray), typeof(string), s);
 		}
-		[SmokeMethod("append", "(const QByteArray&)", "#")]
 		public QByteArray Append(QByteArray a) {
-			return ((QByteArray) interceptor).Append(a);
+			return (QByteArray) interceptor.Invoke("append#", "append(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), a);
 		}
-		[SmokeMethod("insert", "(int, char)", "$$")]
 		public QByteArray Insert(int i, char c) {
-			return ((QByteArray) interceptor).Insert(i,c);
+			return (QByteArray) interceptor.Invoke("insert$$", "insert(int, char)", typeof(QByteArray), typeof(int), i, typeof(char), c);
 		}
-		[SmokeMethod("insert", "(int, const char*)", "$$")]
 		public QByteArray Insert(int i, string s) {
-			return ((QByteArray) interceptor).Insert(i,s);
+			return (QByteArray) interceptor.Invoke("insert$$", "insert(int, const char*)", typeof(QByteArray), typeof(int), i, typeof(string), s);
 		}
-		[SmokeMethod("insert", "(int, const QByteArray&)", "$#")]
 		public QByteArray Insert(int i, QByteArray a) {
-			return ((QByteArray) interceptor).Insert(i,a);
+			return (QByteArray) interceptor.Invoke("insert$#", "insert(int, const QByteArray&)", typeof(QByteArray), typeof(int), i, typeof(QByteArray), a);
 		}
-		[SmokeMethod("remove", "(int, int)", "$$")]
 		public QByteArray Remove(int index, int len) {
-			return ((QByteArray) interceptor).Remove(index,len);
+			return (QByteArray) interceptor.Invoke("remove$$", "remove(int, int)", typeof(QByteArray), typeof(int), index, typeof(int), len);
 		}
-		[SmokeMethod("replace", "(int, int, const char*)", "$$$")]
 		public QByteArray Replace(int index, int len, string s) {
-			return ((QByteArray) interceptor).Replace(index,len,s);
+			return (QByteArray) interceptor.Invoke("replace$$$", "replace(int, int, const char*)", typeof(QByteArray), typeof(int), index, typeof(int), len, typeof(string), s);
 		}
-		[SmokeMethod("replace", "(int, int, const QByteArray&)", "$$#")]
 		public QByteArray Replace(int index, int len, QByteArray s) {
-			return ((QByteArray) interceptor).Replace(index,len,s);
+			return (QByteArray) interceptor.Invoke("replace$$#", "replace(int, int, const QByteArray&)", typeof(QByteArray), typeof(int), index, typeof(int), len, typeof(QByteArray), s);
 		}
-		[SmokeMethod("replace", "(char, const char*)", "$$")]
 		public QByteArray Replace(char before, string after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace$$", "replace(char, const char*)", typeof(QByteArray), typeof(char), before, typeof(string), after);
 		}
-		[SmokeMethod("replace", "(char, const QByteArray&)", "$#")]
 		public QByteArray Replace(char before, QByteArray after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace$#", "replace(char, const QByteArray&)", typeof(QByteArray), typeof(char), before, typeof(QByteArray), after);
 		}
-		[SmokeMethod("replace", "(const char*, const char*)", "$$")]
 		public QByteArray Replace(string before, string after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace$$", "replace(const char*, const char*)", typeof(QByteArray), typeof(string), before, typeof(string), after);
 		}
-		[SmokeMethod("replace", "(const QByteArray&, const QByteArray&)", "##")]
 		public QByteArray Replace(QByteArray before, QByteArray after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace##", "replace(const QByteArray&, const QByteArray&)", typeof(QByteArray), typeof(QByteArray), before, typeof(QByteArray), after);
 		}
-		[SmokeMethod("replace", "(const QByteArray&, const char*)", "#$")]
 		public QByteArray Replace(QByteArray before, string after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace#$", "replace(const QByteArray&, const char*)", typeof(QByteArray), typeof(QByteArray), before, typeof(string), after);
 		}
-		[SmokeMethod("replace", "(const char*, const QByteArray&)", "$#")]
 		public QByteArray Replace(string before, QByteArray after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace$#", "replace(const char*, const QByteArray&)", typeof(QByteArray), typeof(string), before, typeof(QByteArray), after);
 		}
-		[SmokeMethod("replace", "(char, char)", "$$")]
 		public QByteArray Replace(char before, char after) {
-			return ((QByteArray) interceptor).Replace(before,after);
+			return (QByteArray) interceptor.Invoke("replace$$", "replace(char, char)", typeof(QByteArray), typeof(char), before, typeof(char), after);
 		}
-		[SmokeMethod("split", "(char) const", "$")]
 		public List<QByteArray> Split(char sep) {
-			return ((QByteArray) interceptor).Split(sep);
+			return (List<QByteArray>) interceptor.Invoke("split$", "split(char) const", typeof(List<QByteArray>), typeof(char), sep);
 		}
-		[SmokeMethod("toShort", "(bool*, int) const", "$$")]
-		public short ToShort(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToShort(out ok,arg2);
+		public short ToShort(bool ok, int arg2) {
+			return (short) interceptor.Invoke("toShort$$", "toShort(bool*, int) const", typeof(short), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toShort", "(bool*) const", "$")]
-		public short ToShort(out bool ok) {
-			return ((QByteArray) interceptor).ToShort(out ok);
+		public short ToShort(bool ok) {
+			return (short) interceptor.Invoke("toShort$", "toShort(bool*) const", typeof(short), typeof(bool), ok);
 		}
-		[SmokeMethod("toShort", "() const", "")]
 		public short ToShort() {
-			return ((QByteArray) interceptor).ToShort();
+			return (short) interceptor.Invoke("toShort", "toShort() const", typeof(short));
 		}
-		[SmokeMethod("toUShort", "(bool*, int) const", "$$")]
-		public ushort ToUShort(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToUShort(out ok,arg2);
+		public ushort ToUShort(bool ok, int arg2) {
+			return (ushort) interceptor.Invoke("toUShort$$", "toUShort(bool*, int) const", typeof(ushort), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toUShort", "(bool*) const", "$")]
-		public ushort ToUShort(out bool ok) {
-			return ((QByteArray) interceptor).ToUShort(out ok);
+		public ushort ToUShort(bool ok) {
+			return (ushort) interceptor.Invoke("toUShort$", "toUShort(bool*) const", typeof(ushort), typeof(bool), ok);
 		}
-		[SmokeMethod("toUShort", "() const", "")]
 		public ushort ToUShort() {
-			return ((QByteArray) interceptor).ToUShort();
+			return (ushort) interceptor.Invoke("toUShort", "toUShort() const", typeof(ushort));
 		}
-		[SmokeMethod("toInt", "(bool*, int) const", "$$")]
-		public int ToInt(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToInt(out ok,arg2);
+		public int ToInt(bool ok, int arg2) {
+			return (int) interceptor.Invoke("toInt$$", "toInt(bool*, int) const", typeof(int), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toInt", "(bool*) const", "$")]
-		public int ToInt(out bool ok) {
-			return ((QByteArray) interceptor).ToInt(out ok);
+		public int ToInt(bool ok) {
+			return (int) interceptor.Invoke("toInt$", "toInt(bool*) const", typeof(int), typeof(bool), ok);
 		}
-		[SmokeMethod("toInt", "() const", "")]
 		public int ToInt() {
-			return ((QByteArray) interceptor).ToInt();
+			return (int) interceptor.Invoke("toInt", "toInt() const", typeof(int));
 		}
-		[SmokeMethod("toUInt", "(bool*, int) const", "$$")]
-		public uint ToUInt(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToUInt(out ok,arg2);
+		public uint ToUInt(bool ok, int arg2) {
+			return (uint) interceptor.Invoke("toUInt$$", "toUInt(bool*, int) const", typeof(uint), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toUInt", "(bool*) const", "$")]
-		public uint ToUInt(out bool ok) {
-			return ((QByteArray) interceptor).ToUInt(out ok);
+		public uint ToUInt(bool ok) {
+			return (uint) interceptor.Invoke("toUInt$", "toUInt(bool*) const", typeof(uint), typeof(bool), ok);
 		}
-		[SmokeMethod("toUInt", "() const", "")]
 		public uint ToUInt() {
-			return ((QByteArray) interceptor).ToUInt();
+			return (uint) interceptor.Invoke("toUInt", "toUInt() const", typeof(uint));
 		}
-		[SmokeMethod("toLong", "(bool*, int) const", "$$")]
-		public long ToLong(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToLong(out ok,arg2);
+		public long ToLong(bool ok, int arg2) {
+			return (long) interceptor.Invoke("toLong$$", "toLong(bool*, int) const", typeof(long), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toLong", "(bool*) const", "$")]
-		public long ToLong(out bool ok) {
-			return ((QByteArray) interceptor).ToLong(out ok);
+		public long ToLong(bool ok) {
+			return (long) interceptor.Invoke("toLong$", "toLong(bool*) const", typeof(long), typeof(bool), ok);
 		}
-		[SmokeMethod("toLong", "() const", "")]
 		public long ToLong() {
-			return ((QByteArray) interceptor).ToLong();
+			return (long) interceptor.Invoke("toLong", "toLong() const", typeof(long));
 		}
-		[SmokeMethod("toULong", "(bool*, int) const", "$$")]
-		public ulong ToULong(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToULong(out ok,arg2);
+		public ulong ToULong(bool ok, int arg2) {
+			return (ulong) interceptor.Invoke("toULong$$", "toULong(bool*, int) const", typeof(ulong), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toULong", "(bool*) const", "$")]
-		public ulong ToULong(out bool ok) {
-			return ((QByteArray) interceptor).ToULong(out ok);
+		public ulong ToULong(bool ok) {
+			return (ulong) interceptor.Invoke("toULong$", "toULong(bool*) const", typeof(ulong), typeof(bool), ok);
 		}
-		[SmokeMethod("toULong", "() const", "")]
 		public ulong ToULong() {
-			return ((QByteArray) interceptor).ToULong();
+			return (ulong) interceptor.Invoke("toULong", "toULong() const", typeof(ulong));
 		}
-		[SmokeMethod("toLongLong", "(bool*, int) const", "$$")]
-		public long ToLongLong(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToLongLong(out ok,arg2);
+		public long ToLongLong(bool ok, int arg2) {
+			return (long) interceptor.Invoke("toLongLong$$", "toLongLong(bool*, int) const", typeof(long), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toLongLong", "(bool*) const", "$")]
-		public long ToLongLong(out bool ok) {
-			return ((QByteArray) interceptor).ToLongLong(out ok);
+		public long ToLongLong(bool ok) {
+			return (long) interceptor.Invoke("toLongLong$", "toLongLong(bool*) const", typeof(long), typeof(bool), ok);
 		}
-		[SmokeMethod("toLongLong", "() const", "")]
 		public long ToLongLong() {
-			return ((QByteArray) interceptor).ToLongLong();
+			return (long) interceptor.Invoke("toLongLong", "toLongLong() const", typeof(long));
 		}
-		[SmokeMethod("toULongLong", "(bool*, int) const", "$$")]
-		public ulong ToULongLong(out bool ok, int arg2) {
-			return ((QByteArray) interceptor).ToULongLong(out ok,arg2);
+		public ulong ToULongLong(bool ok, int arg2) {
+			return (ulong) interceptor.Invoke("toULongLong$$", "toULongLong(bool*, int) const", typeof(ulong), typeof(bool), ok, typeof(int), arg2);
 		}
-		[SmokeMethod("toULongLong", "(bool*) const", "$")]
-		public ulong ToULongLong(out bool ok) {
-			return ((QByteArray) interceptor).ToULongLong(out ok);
+		public ulong ToULongLong(bool ok) {
+			return (ulong) interceptor.Invoke("toULongLong$", "toULongLong(bool*) const", typeof(ulong), typeof(bool), ok);
 		}
-		[SmokeMethod("toULongLong", "() const", "")]
 		public ulong ToULongLong() {
-			return ((QByteArray) interceptor).ToULongLong();
+			return (ulong) interceptor.Invoke("toULongLong", "toULongLong() const", typeof(ulong));
 		}
-		[SmokeMethod("toFloat", "(bool*) const", "$")]
-		public float ToFloat(out bool ok) {
-			return ((QByteArray) interceptor).ToFloat(out ok);
+		public float ToFloat(bool ok) {
+			return (float) interceptor.Invoke("toFloat$", "toFloat(bool*) const", typeof(float), typeof(bool), ok);
 		}
-		[SmokeMethod("toFloat", "() const", "")]
 		public float ToFloat() {
-			return ((QByteArray) interceptor).ToFloat();
+			return (float) interceptor.Invoke("toFloat", "toFloat() const", typeof(float));
 		}
-		[SmokeMethod("toDouble", "(bool*) const", "$")]
-		public double ToDouble(out bool ok) {
-			return ((QByteArray) interceptor).ToDouble(out ok);
+		public double ToDouble(bool ok) {
+			return (double) interceptor.Invoke("toDouble$", "toDouble(bool*) const", typeof(double), typeof(bool), ok);
 		}
-		[SmokeMethod("toDouble", "() const", "")]
 		public double ToDouble() {
-			return ((QByteArray) interceptor).ToDouble();
+			return (double) interceptor.Invoke("toDouble", "toDouble() const", typeof(double));
 		}
-		[SmokeMethod("toBase64", "() const", "")]
 		public QByteArray ToBase64() {
-			return ((QByteArray) interceptor).ToBase64();
+			return (QByteArray) interceptor.Invoke("toBase64", "toBase64() const", typeof(QByteArray));
 		}
-		[SmokeMethod("setNum", "(short, int)", "$$")]
 		public QByteArray SetNum(short arg1, int arg2) {
-			return ((QByteArray) interceptor).SetNum(arg1,arg2);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(short, int)", typeof(QByteArray), typeof(short), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setNum", "(short)", "$")]
 		public QByteArray SetNum(short arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(short)", typeof(QByteArray), typeof(short), arg1);
 		}
-		[SmokeMethod("setNum", "(ushort, int)", "$$")]
 		public QByteArray SetNum(ushort arg1, int arg2) {
-			return ((QByteArray) interceptor).SetNum(arg1,arg2);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(ushort, int)", typeof(QByteArray), typeof(ushort), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setNum", "(ushort)", "$")]
 		public QByteArray SetNum(ushort arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(ushort)", typeof(QByteArray), typeof(ushort), arg1);
 		}
-		[SmokeMethod("setNum", "(int, int)", "$$")]
 		public QByteArray SetNum(int arg1, int arg2) {
-			return ((QByteArray) interceptor).SetNum(arg1,arg2);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(int, int)", typeof(QByteArray), typeof(int), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setNum", "(int)", "$")]
 		public QByteArray SetNum(int arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(int)", typeof(QByteArray), typeof(int), arg1);
 		}
-		[SmokeMethod("setNum", "(uint, int)", "$$")]
 		public QByteArray SetNum(uint arg1, int arg2) {
-			return ((QByteArray) interceptor).SetNum(arg1,arg2);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(uint, int)", typeof(QByteArray), typeof(uint), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setNum", "(uint)", "$")]
 		public QByteArray SetNum(uint arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(uint)", typeof(QByteArray), typeof(uint), arg1);
 		}
-		[SmokeMethod("setNum", "(qlonglong, int)", "?$")]
 		public QByteArray SetNum(long arg1, int arg2) {
-			return ((QByteArray) interceptor).SetNum(arg1,arg2);
+			return (QByteArray) interceptor.Invoke("setNum?$", "setNum(qlonglong, int)", typeof(QByteArray), typeof(long), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setNum", "(qlonglong)", "?")]
 		public QByteArray SetNum(long arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum?", "setNum(qlonglong)", typeof(QByteArray), typeof(long), arg1);
 		}
-		[SmokeMethod("setNum", "(qulonglong, int)", "$$")]
 		public QByteArray SetNum(ulong arg1, int arg2) {
-			return ((QByteArray) interceptor).SetNum(arg1,arg2);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(qulonglong, int)", typeof(QByteArray), typeof(ulong), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setNum", "(qulonglong)", "$")]
 		public QByteArray SetNum(ulong arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(qulonglong)", typeof(QByteArray), typeof(ulong), arg1);
 		}
-		[SmokeMethod("setNum", "(float, char, int)", "$$$")]
 		public QByteArray SetNum(float arg1, char f, int prec) {
-			return ((QByteArray) interceptor).SetNum(arg1,f,prec);
+			return (QByteArray) interceptor.Invoke("setNum$$$", "setNum(float, char, int)", typeof(QByteArray), typeof(float), arg1, typeof(char), f, typeof(int), prec);
 		}
-		[SmokeMethod("setNum", "(float, char)", "$$")]
 		public QByteArray SetNum(float arg1, char f) {
-			return ((QByteArray) interceptor).SetNum(arg1,f);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(float, char)", typeof(QByteArray), typeof(float), arg1, typeof(char), f);
 		}
-		[SmokeMethod("setNum", "(float)", "$")]
 		public QByteArray SetNum(float arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(float)", typeof(QByteArray), typeof(float), arg1);
 		}
-		[SmokeMethod("setNum", "(double, char, int)", "$$$")]
 		public QByteArray SetNum(double arg1, char f, int prec) {
-			return ((QByteArray) interceptor).SetNum(arg1,f,prec);
+			return (QByteArray) interceptor.Invoke("setNum$$$", "setNum(double, char, int)", typeof(QByteArray), typeof(double), arg1, typeof(char), f, typeof(int), prec);
 		}
-		[SmokeMethod("setNum", "(double, char)", "$$")]
 		public QByteArray SetNum(double arg1, char f) {
-			return ((QByteArray) interceptor).SetNum(arg1,f);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(double, char)", typeof(QByteArray), typeof(double), arg1, typeof(char), f);
 		}
-		[SmokeMethod("setNum", "(double)", "$")]
 		public QByteArray SetNum(double arg1) {
-			return ((QByteArray) interceptor).SetNum(arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(double)", typeof(QByteArray), typeof(double), arg1);
 		}
-		[SmokeMethod("push_back", "(char)", "$")]
 		public void Push_back(char c) {
-			((QByteArray) interceptor).Push_back(c);
+			interceptor.Invoke("push_back$", "push_back(char)", typeof(void), typeof(char), c);
 		}
-		[SmokeMethod("push_back", "(const char*)", "$")]
 		public void Push_back(string c) {
-			((QByteArray) interceptor).Push_back(c);
+			interceptor.Invoke("push_back$", "push_back(const char*)", typeof(void), typeof(string), c);
 		}
-		[SmokeMethod("push_back", "(const QByteArray&)", "#")]
 		public void Push_back(QByteArray a) {
-			((QByteArray) interceptor).Push_back(a);
+			interceptor.Invoke("push_back#", "push_back(const QByteArray&)", typeof(void), typeof(QByteArray), a);
 		}
-		[SmokeMethod("push_front", "(char)", "$")]
 		public void Push_front(char c) {
-			((QByteArray) interceptor).Push_front(c);
+			interceptor.Invoke("push_front$", "push_front(char)", typeof(void), typeof(char), c);
 		}
-		[SmokeMethod("push_front", "(const char*)", "$")]
 		public void Push_front(string c) {
-			((QByteArray) interceptor).Push_front(c);
+			interceptor.Invoke("push_front$", "push_front(const char*)", typeof(void), typeof(string), c);
 		}
-		[SmokeMethod("push_front", "(const QByteArray&)", "#")]
 		public void Push_front(QByteArray a) {
-			((QByteArray) interceptor).Push_front(a);
+			interceptor.Invoke("push_front#", "push_front(const QByteArray&)", typeof(void), typeof(QByteArray), a);
 		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QByteArray) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ((QByteArray) interceptor).Length();
+			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QByteArray) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
 		~QByteArray() {
-			DisposeQByteArray();
+			interceptor.Invoke("~QByteArray", "~QByteArray()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQByteArray();
-		}
-		[SmokeMethod("~QByteArray", "()", "")]
-		private void DisposeQByteArray() {
-			((QByteArray) interceptor).DisposeQByteArray();
+			interceptor.Invoke("~QByteArray", "~QByteArray()", typeof(void));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QByteArray)) { return false; }
 			return this == (QByteArray) o;
 		}
 		public override int GetHashCode() {
-			return ((QByteArray) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		public static bool operator==(QByteArray lhs, string s2) {
-			return staticInterceptor.op_equals(lhs,s2);
+			return (bool) staticInterceptor.Invoke("operator==$", "operator==(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);
 		}
 		public static bool operator!=(QByteArray lhs, string s2) {
-			return !staticInterceptor.op_equals(lhs,s2);
+			return !(bool) staticInterceptor.Invoke("operator==$", "operator==(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);
 		}
 		public static bool operator<(QByteArray lhs, string s2) {
-			return staticInterceptor.op_lt(lhs,s2);
+			return (bool) staticInterceptor.Invoke("operator<$", "operator<(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);
 		}
 		public static bool operator>(QByteArray lhs, string s2) {
-			return staticInterceptor.op_gt(lhs,s2);
+			return (bool) staticInterceptor.Invoke("operator>$", "operator>(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);
 		}
 		public static bool operator<=(QByteArray lhs, string s2) {
-			return staticInterceptor.op_lte(lhs,s2);
+			return (bool) staticInterceptor.Invoke("operator<=$", "operator<=(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);
 		}
 		public static bool operator>=(QByteArray lhs, string s2) {
-			return staticInterceptor.op_gte(lhs,s2);
+			return (bool) staticInterceptor.Invoke("operator>=$", "operator>=(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);
 		}
 		public static QByteArray Number(int arg1, int arg2) {
-			return staticInterceptor.Number(arg1,arg2);
+			return (QByteArray) staticInterceptor.Invoke("number$$", "number(int, int)", typeof(QByteArray), typeof(int), arg1, typeof(int), arg2);
 		}
 		public static QByteArray Number(int arg1) {
-			return staticInterceptor.Number(arg1);
+			return (QByteArray) staticInterceptor.Invoke("number$", "number(int)", typeof(QByteArray), typeof(int), arg1);
 		}
 		public static QByteArray Number(uint arg1, int arg2) {
-			return staticInterceptor.Number(arg1,arg2);
+			return (QByteArray) staticInterceptor.Invoke("number$$", "number(uint, int)", typeof(QByteArray), typeof(uint), arg1, typeof(int), arg2);
 		}
 		public static QByteArray Number(uint arg1) {
-			return staticInterceptor.Number(arg1);
+			return (QByteArray) staticInterceptor.Invoke("number$", "number(uint)", typeof(QByteArray), typeof(uint), arg1);
 		}
 		public static QByteArray Number(long arg1, int arg2) {
-			return staticInterceptor.Number(arg1,arg2);
+			return (QByteArray) staticInterceptor.Invoke("number?$", "number(qlonglong, int)", typeof(QByteArray), typeof(long), arg1, typeof(int), arg2);
 		}
 		public static QByteArray Number(long arg1) {
-			return staticInterceptor.Number(arg1);
+			return (QByteArray) staticInterceptor.Invoke("number?", "number(qlonglong)", typeof(QByteArray), typeof(long), arg1);
 		}
 		public static QByteArray Number(ulong arg1, int arg2) {
-			return staticInterceptor.Number(arg1,arg2);
+			return (QByteArray) staticInterceptor.Invoke("number$$", "number(qulonglong, int)", typeof(QByteArray), typeof(ulong), arg1, typeof(int), arg2);
 		}
 		public static QByteArray Number(ulong arg1) {
-			return staticInterceptor.Number(arg1);
+			return (QByteArray) staticInterceptor.Invoke("number$", "number(qulonglong)", typeof(QByteArray), typeof(ulong), arg1);
 		}
 		public static QByteArray Number(double arg1, char f, int prec) {
-			return staticInterceptor.Number(arg1,f,prec);
+			return (QByteArray) staticInterceptor.Invoke("number$$$", "number(double, char, int)", typeof(QByteArray), typeof(double), arg1, typeof(char), f, typeof(int), prec);
 		}
 		public static QByteArray Number(double arg1, char f) {
-			return staticInterceptor.Number(arg1,f);
+			return (QByteArray) staticInterceptor.Invoke("number$$", "number(double, char)", typeof(QByteArray), typeof(double), arg1, typeof(char), f);
 		}
 		public static QByteArray Number(double arg1) {
-			return staticInterceptor.Number(arg1);
+			return (QByteArray) staticInterceptor.Invoke("number$", "number(double)", typeof(QByteArray), typeof(double), arg1);
 		}
 		public static QByteArray FromRawData(string arg1, int size) {
-			return staticInterceptor.FromRawData(arg1,size);
+			return (QByteArray) staticInterceptor.Invoke("fromRawData$$", "fromRawData(const char*, int)", typeof(QByteArray), typeof(string), arg1, typeof(int), size);
 		}
 		public static QByteArray FromBase64(QByteArray base64) {
-			return staticInterceptor.FromBase64(base64);
+			return (QByteArray) staticInterceptor.Invoke("fromBase64#", "fromBase64(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), base64);
 		}
 		public static bool operator==(QByteArray a1, QByteArray a2) {
-			return staticInterceptor.op_equals(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator!=(QByteArray a1, QByteArray a2) {
-			return !staticInterceptor.op_equals(a1,a2);
+			return !(bool) staticInterceptor.Invoke("operator==##", "operator==(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator==(string a1, QByteArray a2) {
-			return staticInterceptor.op_equals(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator==$#", "operator==(const char*, const QByteArray&)", typeof(bool), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator!=(string a1, QByteArray a2) {
-			return !staticInterceptor.op_equals(a1,a2);
+			return !(bool) staticInterceptor.Invoke("operator==$#", "operator==(const char*, const QByteArray&)", typeof(bool), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator<(QByteArray a1, QByteArray a2) {
-			return staticInterceptor.op_lt(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator<##", "operator<(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator<(string a1, QByteArray a2) {
-			return staticInterceptor.op_lt(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator<$#", "operator<(const char*, const QByteArray&)", typeof(bool), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator<=(QByteArray a1, QByteArray a2) {
-			return staticInterceptor.op_lte(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator<=##", "operator<=(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator<=(string a1, QByteArray a2) {
-			return staticInterceptor.op_lte(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator<=$#", "operator<=(const char*, const QByteArray&)", typeof(bool), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator>(QByteArray a1, QByteArray a2) {
-			return staticInterceptor.op_gt(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator>##", "operator>(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator>(string a1, QByteArray a2) {
-			return staticInterceptor.op_gt(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator>$#", "operator>(const char*, const QByteArray&)", typeof(bool), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator>=(QByteArray a1, QByteArray a2) {
-			return staticInterceptor.op_gte(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator>=##", "operator>=(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static bool operator>=(string a1, QByteArray a2) {
-			return staticInterceptor.op_gte(a1,a2);
+			return (bool) staticInterceptor.Invoke("operator>=$#", "operator>=(const char*, const QByteArray&)", typeof(bool), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static QByteArray operator+(QByteArray a1, QByteArray a2) {
-			return staticInterceptor.op_plus(a1,a2);
+			return (QByteArray) staticInterceptor.Invoke("operator+##", "operator+(const QByteArray&, const QByteArray&)", typeof(QByteArray), typeof(QByteArray), a1, typeof(QByteArray), a2);
 		}
 		public static QByteArray operator+(QByteArray a1, string a2) {
-			return staticInterceptor.op_plus(a1,a2);
+			return (QByteArray) staticInterceptor.Invoke("operator+#$", "operator+(const QByteArray&, const char*)", typeof(QByteArray), typeof(QByteArray), a1, typeof(string), a2);
 		}
 		public static QByteArray operator+(QByteArray a1, char a2) {
-			return staticInterceptor.op_plus(a1,a2);
+			return (QByteArray) staticInterceptor.Invoke("operator+#$", "operator+(const QByteArray&, char)", typeof(QByteArray), typeof(QByteArray), a1, typeof(char), a2);
 		}
 		public static QByteArray operator+(string a1, QByteArray a2) {
-			return staticInterceptor.op_plus(a1,a2);
+			return (QByteArray) staticInterceptor.Invoke("operator+$#", "operator+(const char*, const QByteArray&)", typeof(QByteArray), typeof(string), a1, typeof(QByteArray), a2);
 		}
 		public static QByteArray operator+(char a1, QByteArray a2) {
-			return staticInterceptor.op_plus(a1,a2);
+			return (QByteArray) staticInterceptor.Invoke("operator+$#", "operator+(char, const QByteArray&)", typeof(QByteArray), typeof(char), a1, typeof(QByteArray), a2);
 		}
 	}
 }

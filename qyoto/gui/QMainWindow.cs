@@ -7,229 +7,164 @@ namespace Qyoto {
 	[SmokeClass("QMainWindow")]
 	public class QMainWindow : QWidget, IDisposable {
  		protected QMainWindow(Type dummy) : base((Type) null) {}
-		[SmokeClass("QMainWindow")]
-		interface IQMainWindowProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMainWindow), this);
-			interceptor = (QMainWindow) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMainWindow), "QMainWindow", this);
 		}
-		private static IQMainWindowProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QMainWindow() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMainWindowProxy), null);
-			staticInterceptor = (IQMainWindowProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QMainWindow), "QMainWindow", null);
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			[SmokeMethod("iconSize", "()", "")]
-			get { return ((QMainWindow) interceptor).IconSize; }
-			[SmokeMethod("setIconSize", "(QSize)", "#")]
-			set { ((QMainWindow) interceptor).IconSize = value; }
+			get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
-			[SmokeMethod("toolButtonStyle", "()", "")]
-			get { return ((QMainWindow) interceptor).ToolButtonStyle; }
-			[SmokeMethod("setToolButtonStyle", "(Qt::ToolButtonStyle)", "$")]
-			set { ((QMainWindow) interceptor).ToolButtonStyle = value; }
+			get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
+			set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
 		}
 		[Q_PROPERTY("bool", "animated")]
 		public bool Animated {
-			[SmokeMethod("isAnimated", "()", "")]
-			get { return ((QMainWindow) interceptor).Animated; }
-			[SmokeMethod("setAnimated", "(bool)", "$")]
-			set { ((QMainWindow) interceptor).Animated = value; }
+			get { return (bool) interceptor.Invoke("isAnimated", "isAnimated()", typeof(bool)); }
+			set { interceptor.Invoke("setAnimated$", "setAnimated(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "dockNestingEnabled")]
 		public bool DockNestingEnabled {
-			[SmokeMethod("isDockNestingEnabled", "()", "")]
-			get { return ((QMainWindow) interceptor).DockNestingEnabled; }
-			[SmokeMethod("setDockNestingEnabled", "(bool)", "$")]
-			set { ((QMainWindow) interceptor).DockNestingEnabled = value; }
+			get { return (bool) interceptor.Invoke("isDockNestingEnabled", "isDockNestingEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setDockNestingEnabled$", "setDockNestingEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QMainWindow(QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
-			NewQMainWindow(parent,flags);
-		}
-		[SmokeMethod("QMainWindow", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQMainWindow(QWidget parent, int flags) {
-			((QMainWindow) interceptor).NewQMainWindow(parent,flags);
+			interceptor.Invoke("QMainWindow#$", "QMainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
 		}
 		public QMainWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQMainWindow(parent);
-		}
-		[SmokeMethod("QMainWindow", "(QWidget*)", "#")]
-		private void NewQMainWindow(QWidget parent) {
-			((QMainWindow) interceptor).NewQMainWindow(parent);
+			interceptor.Invoke("QMainWindow#", "QMainWindow(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QMainWindow() : this((Type) null) {
 			CreateProxy();
-			NewQMainWindow();
+			interceptor.Invoke("QMainWindow", "QMainWindow()", typeof(void));
 		}
-		[SmokeMethod("QMainWindow", "()", "")]
-		private void NewQMainWindow() {
-			((QMainWindow) interceptor).NewQMainWindow();
-		}
-		[SmokeMethod("isAnimated", "() const", "")]
 		public bool IsAnimated() {
-			return ((QMainWindow) interceptor).IsAnimated();
+			return (bool) interceptor.Invoke("isAnimated", "isAnimated() const", typeof(bool));
 		}
-		[SmokeMethod("isDockNestingEnabled", "() const", "")]
 		public bool IsDockNestingEnabled() {
-			return ((QMainWindow) interceptor).IsDockNestingEnabled();
+			return (bool) interceptor.Invoke("isDockNestingEnabled", "isDockNestingEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("isSeparator", "(const QPoint&) const", "#")]
 		public bool IsSeparator(QPoint pos) {
-			return ((QMainWindow) interceptor).IsSeparator(pos);
+			return (bool) interceptor.Invoke("isSeparator#", "isSeparator(const QPoint&) const", typeof(bool), typeof(QPoint), pos);
 		}
-		[SmokeMethod("menuBar", "() const", "")]
 		public QMenuBar MenuBar() {
-			return ((QMainWindow) interceptor).MenuBar();
+			return (QMenuBar) interceptor.Invoke("menuBar", "menuBar() const", typeof(QMenuBar));
 		}
-		[SmokeMethod("setMenuBar", "(QMenuBar*)", "#")]
 		public void SetMenuBar(QMenuBar menubar) {
-			((QMainWindow) interceptor).SetMenuBar(menubar);
+			interceptor.Invoke("setMenuBar#", "setMenuBar(QMenuBar*)", typeof(void), typeof(QMenuBar), menubar);
 		}
-		[SmokeMethod("menuWidget", "() const", "")]
 		public QWidget MenuWidget() {
-			return ((QMainWindow) interceptor).MenuWidget();
+			return (QWidget) interceptor.Invoke("menuWidget", "menuWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setMenuWidget", "(QWidget*)", "#")]
 		public void SetMenuWidget(QWidget menubar) {
-			((QMainWindow) interceptor).SetMenuWidget(menubar);
+			interceptor.Invoke("setMenuWidget#", "setMenuWidget(QWidget*)", typeof(void), typeof(QWidget), menubar);
 		}
-		[SmokeMethod("statusBar", "() const", "")]
 		public QStatusBar StatusBar() {
-			return ((QMainWindow) interceptor).StatusBar();
+			return (QStatusBar) interceptor.Invoke("statusBar", "statusBar() const", typeof(QStatusBar));
 		}
-		[SmokeMethod("setStatusBar", "(QStatusBar*)", "#")]
 		public void SetStatusBar(QStatusBar statusbar) {
-			((QMainWindow) interceptor).SetStatusBar(statusbar);
+			interceptor.Invoke("setStatusBar#", "setStatusBar(QStatusBar*)", typeof(void), typeof(QStatusBar), statusbar);
 		}
-		[SmokeMethod("centralWidget", "() const", "")]
 		public QWidget CentralWidget() {
-			return ((QMainWindow) interceptor).CentralWidget();
+			return (QWidget) interceptor.Invoke("centralWidget", "centralWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setCentralWidget", "(QWidget*)", "#")]
 		public void SetCentralWidget(QWidget widget) {
-			((QMainWindow) interceptor).SetCentralWidget(widget);
+			interceptor.Invoke("setCentralWidget#", "setCentralWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("setCorner", "(Qt::Corner, Qt::DockWidgetArea)", "$$")]
 		public void SetCorner(Qt.Corner corner, Qt.DockWidgetArea area) {
-			((QMainWindow) interceptor).SetCorner(corner,area);
+			interceptor.Invoke("setCorner$$", "setCorner(Qt::Corner, Qt::DockWidgetArea)", typeof(void), typeof(Qt.Corner), corner, typeof(Qt.DockWidgetArea), area);
 		}
-		[SmokeMethod("corner", "(Qt::Corner) const", "$")]
 		public Qt.DockWidgetArea Corner(Qt.Corner corner) {
-			return ((QMainWindow) interceptor).Corner(corner);
+			return (Qt.DockWidgetArea) interceptor.Invoke("corner$", "corner(Qt::Corner) const", typeof(Qt.DockWidgetArea), typeof(Qt.Corner), corner);
 		}
-		[SmokeMethod("addToolBarBreak", "(Qt::ToolBarArea)", "$")]
 		public void AddToolBarBreak(Qt.ToolBarArea area) {
-			((QMainWindow) interceptor).AddToolBarBreak(area);
+			interceptor.Invoke("addToolBarBreak$", "addToolBarBreak(Qt::ToolBarArea)", typeof(void), typeof(Qt.ToolBarArea), area);
 		}
-		[SmokeMethod("addToolBarBreak", "()", "")]
 		public void AddToolBarBreak() {
-			((QMainWindow) interceptor).AddToolBarBreak();
+			interceptor.Invoke("addToolBarBreak", "addToolBarBreak()", typeof(void));
 		}
-		[SmokeMethod("insertToolBarBreak", "(QToolBar*)", "#")]
 		public void InsertToolBarBreak(QToolBar before) {
-			((QMainWindow) interceptor).InsertToolBarBreak(before);
+			interceptor.Invoke("insertToolBarBreak#", "insertToolBarBreak(QToolBar*)", typeof(void), typeof(QToolBar), before);
 		}
-		[SmokeMethod("addToolBar", "(Qt::ToolBarArea, QToolBar*)", "$#")]
 		public void AddToolBar(Qt.ToolBarArea area, QToolBar toolbar) {
-			((QMainWindow) interceptor).AddToolBar(area,toolbar);
+			interceptor.Invoke("addToolBar$#", "addToolBar(Qt::ToolBarArea, QToolBar*)", typeof(void), typeof(Qt.ToolBarArea), area, typeof(QToolBar), toolbar);
 		}
-		[SmokeMethod("addToolBar", "(QToolBar*)", "#")]
 		public void AddToolBar(QToolBar toolbar) {
-			((QMainWindow) interceptor).AddToolBar(toolbar);
+			interceptor.Invoke("addToolBar#", "addToolBar(QToolBar*)", typeof(void), typeof(QToolBar), toolbar);
 		}
-		[SmokeMethod("addToolBar", "(const QString&)", "$")]
 		public QToolBar AddToolBar(string title) {
-			return ((QMainWindow) interceptor).AddToolBar(title);
+			return (QToolBar) interceptor.Invoke("addToolBar$", "addToolBar(const QString&)", typeof(QToolBar), typeof(string), title);
 		}
-		[SmokeMethod("insertToolBar", "(QToolBar*, QToolBar*)", "##")]
 		public void InsertToolBar(QToolBar before, QToolBar toolbar) {
-			((QMainWindow) interceptor).InsertToolBar(before,toolbar);
+			interceptor.Invoke("insertToolBar##", "insertToolBar(QToolBar*, QToolBar*)", typeof(void), typeof(QToolBar), before, typeof(QToolBar), toolbar);
 		}
-		[SmokeMethod("removeToolBar", "(QToolBar*)", "#")]
 		public void RemoveToolBar(QToolBar toolbar) {
-			((QMainWindow) interceptor).RemoveToolBar(toolbar);
+			interceptor.Invoke("removeToolBar#", "removeToolBar(QToolBar*)", typeof(void), typeof(QToolBar), toolbar);
 		}
-		[SmokeMethod("toolBarArea", "(QToolBar*) const", "#")]
 		public Qt.ToolBarArea ToolBarArea(QToolBar toolbar) {
-			return ((QMainWindow) interceptor).ToolBarArea(toolbar);
+			return (Qt.ToolBarArea) interceptor.Invoke("toolBarArea#", "toolBarArea(QToolBar*) const", typeof(Qt.ToolBarArea), typeof(QToolBar), toolbar);
 		}
-		[SmokeMethod("addDockWidget", "(Qt::DockWidgetArea, QDockWidget*)", "$#")]
 		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget) {
-			((QMainWindow) interceptor).AddDockWidget(area,dockwidget);
+			interceptor.Invoke("addDockWidget$#", "addDockWidget(Qt::DockWidgetArea, QDockWidget*)", typeof(void), typeof(Qt.DockWidgetArea), area, typeof(QDockWidget), dockwidget);
 		}
-		[SmokeMethod("addDockWidget", "(Qt::DockWidgetArea, QDockWidget*, Qt::Orientation)", "$#$")]
 		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget, Qt.Orientation orientation) {
-			((QMainWindow) interceptor).AddDockWidget(area,dockwidget,orientation);
+			interceptor.Invoke("addDockWidget$#$", "addDockWidget(Qt::DockWidgetArea, QDockWidget*, Qt::Orientation)", typeof(void), typeof(Qt.DockWidgetArea), area, typeof(QDockWidget), dockwidget, typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("splitDockWidget", "(QDockWidget*, QDockWidget*, Qt::Orientation)", "##$")]
 		public void SplitDockWidget(QDockWidget after, QDockWidget dockwidget, Qt.Orientation orientation) {
-			((QMainWindow) interceptor).SplitDockWidget(after,dockwidget,orientation);
+			interceptor.Invoke("splitDockWidget##$", "splitDockWidget(QDockWidget*, QDockWidget*, Qt::Orientation)", typeof(void), typeof(QDockWidget), after, typeof(QDockWidget), dockwidget, typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("tabifyDockWidget", "(QDockWidget*, QDockWidget*)", "##")]
 		public void TabifyDockWidget(QDockWidget first, QDockWidget second) {
-			((QMainWindow) interceptor).TabifyDockWidget(first,second);
+			interceptor.Invoke("tabifyDockWidget##", "tabifyDockWidget(QDockWidget*, QDockWidget*)", typeof(void), typeof(QDockWidget), first, typeof(QDockWidget), second);
 		}
-		[SmokeMethod("removeDockWidget", "(QDockWidget*)", "#")]
 		public void RemoveDockWidget(QDockWidget dockwidget) {
-			((QMainWindow) interceptor).RemoveDockWidget(dockwidget);
+			interceptor.Invoke("removeDockWidget#", "removeDockWidget(QDockWidget*)", typeof(void), typeof(QDockWidget), dockwidget);
 		}
-		[SmokeMethod("dockWidgetArea", "(QDockWidget*) const", "#")]
 		public Qt.DockWidgetArea DockWidgetArea(QDockWidget dockwidget) {
-			return ((QMainWindow) interceptor).DockWidgetArea(dockwidget);
+			return (Qt.DockWidgetArea) interceptor.Invoke("dockWidgetArea#", "dockWidgetArea(QDockWidget*) const", typeof(Qt.DockWidgetArea), typeof(QDockWidget), dockwidget);
 		}
-		[SmokeMethod("saveState", "(int) const", "$")]
 		public QByteArray SaveState(int version) {
-			return ((QMainWindow) interceptor).SaveState(version);
+			return (QByteArray) interceptor.Invoke("saveState$", "saveState(int) const", typeof(QByteArray), typeof(int), version);
 		}
-		[SmokeMethod("saveState", "() const", "")]
 		public QByteArray SaveState() {
-			return ((QMainWindow) interceptor).SaveState();
+			return (QByteArray) interceptor.Invoke("saveState", "saveState() const", typeof(QByteArray));
 		}
-		[SmokeMethod("restoreState", "(const QByteArray&, int)", "#$")]
 		public bool RestoreState(QByteArray state, int version) {
-			return ((QMainWindow) interceptor).RestoreState(state,version);
+			return (bool) interceptor.Invoke("restoreState#$", "restoreState(const QByteArray&, int)", typeof(bool), typeof(QByteArray), state, typeof(int), version);
 		}
-		[SmokeMethod("restoreState", "(const QByteArray&)", "#")]
 		public bool RestoreState(QByteArray state) {
-			return ((QMainWindow) interceptor).RestoreState(state);
+			return (bool) interceptor.Invoke("restoreState#", "restoreState(const QByteArray&)", typeof(bool), typeof(QByteArray), state);
 		}
-		[SmokeMethod("createPopupMenu", "()", "")]
+		[SmokeMethod("createPopupMenu()")]
 		public virtual QMenu CreatePopupMenu() {
-			return ((QMainWindow) interceptor).CreatePopupMenu();
+			return (QMenu) interceptor.Invoke("createPopupMenu", "createPopupMenu()", typeof(QMenu));
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			((QMainWindow) interceptor).ContextMenuEvent(arg1);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QMainWindow) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QMainWindow() {
-			DisposeQMainWindow();
+			interceptor.Invoke("~QMainWindow", "~QMainWindow()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQMainWindow();
-		}
-		[SmokeMethod("~QMainWindow", "()", "")]
-		private void DisposeQMainWindow() {
-			((QMainWindow) interceptor).DisposeQMainWindow();
+			interceptor.Invoke("~QMainWindow", "~QMainWindow()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQMainWindowSignals Emit {
 			get { return (IQMainWindowSignals) Q_EMIT; }

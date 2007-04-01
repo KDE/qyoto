@@ -7,54 +7,38 @@ namespace Qyoto {
 	public class QTextImageFormat : QTextCharFormat, IDisposable {
  		protected QTextImageFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextImageFormat), this);
-			interceptor = (QTextImageFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextImageFormat), "QTextImageFormat", this);
 		}
 		public QTextImageFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextImageFormat();
+			interceptor.Invoke("QTextImageFormat", "QTextImageFormat()", typeof(void));
 		}
-		[SmokeMethod("QTextImageFormat", "()", "")]
-		private void NewQTextImageFormat() {
-			((QTextImageFormat) interceptor).NewQTextImageFormat();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextImageFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("setName", "(const QString&)", "$")]
 		public void SetName(string name) {
-			((QTextImageFormat) interceptor).SetName(name);
+			interceptor.Invoke("setName$", "setName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QTextImageFormat) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
-			((QTextImageFormat) interceptor).SetWidth(width);
+			interceptor.Invoke("setWidth$", "setWidth(qreal)", typeof(void), typeof(double), width);
 		}
-		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ((QTextImageFormat) interceptor).Width();
+			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		[SmokeMethod("setHeight", "(qreal)", "$")]
 		public void SetHeight(double height) {
-			((QTextImageFormat) interceptor).SetHeight(height);
+			interceptor.Invoke("setHeight$", "setHeight(qreal)", typeof(void), typeof(double), height);
 		}
-		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ((QTextImageFormat) interceptor).Height();
+			return (double) interceptor.Invoke("height", "height() const", typeof(double));
 		}
 		~QTextImageFormat() {
-			DisposeQTextImageFormat();
+			interceptor.Invoke("~QTextImageFormat", "~QTextImageFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextImageFormat();
-		}
-		[SmokeMethod("~QTextImageFormat", "()", "")]
-		private void DisposeQTextImageFormat() {
-			((QTextImageFormat) interceptor).DisposeQTextImageFormat();
+			interceptor.Invoke("~QTextImageFormat", "~QTextImageFormat()", typeof(void));
 		}
 	}
 }

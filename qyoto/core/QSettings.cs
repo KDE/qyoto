@@ -7,27 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QSettings")]
 	public class QSettings : QObject, IDisposable {
  		protected QSettings(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSettings")]
-		interface IQSettingsProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("setSystemIniPath", "(const QString&)", "$")]
-			void SetSystemIniPath(string dir);
-			[SmokeMethod("setUserIniPath", "(const QString&)", "$")]
-			void SetUserIniPath(string dir);
-			[SmokeMethod("setPath", "(QSettings::Format, QSettings::Scope, const QString&)", "$$$")]
-			void SetPath(QSettings.Format format, QSettings.Scope scope, string path);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSettings), this);
-			interceptor = (QSettings) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSettings), "QSettings", this);
 		}
-		private static IQSettingsProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSettings() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSettingsProxy), null);
-			staticInterceptor = (IQSettingsProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSettings), "QSettings", null);
 		}
 		public enum Status {
 			NoError = 0,
@@ -63,228 +48,149 @@ namespace Qyoto {
 		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3); >>>> NOT CONVERTED
 		public QSettings(string organization, string application, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(organization,application,parent);
-		}
-		[SmokeMethod("QSettings", "(const QString&, const QString&, QObject*)", "$$#")]
-		private void NewQSettings(string organization, string application, QObject parent) {
-			((QSettings) interceptor).NewQSettings(organization,application,parent);
+			interceptor.Invoke("QSettings$$#", "QSettings(const QString&, const QString&, QObject*)", typeof(void), typeof(string), organization, typeof(string), application, typeof(QObject), parent);
 		}
 		public QSettings(string organization, string application) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(organization,application);
-		}
-		[SmokeMethod("QSettings", "(const QString&, const QString&)", "$$")]
-		private void NewQSettings(string organization, string application) {
-			((QSettings) interceptor).NewQSettings(organization,application);
+			interceptor.Invoke("QSettings$$", "QSettings(const QString&, const QString&)", typeof(void), typeof(string), organization, typeof(string), application);
 		}
 		public QSettings(string organization) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(organization);
-		}
-		[SmokeMethod("QSettings", "(const QString&)", "$")]
-		private void NewQSettings(string organization) {
-			((QSettings) interceptor).NewQSettings(organization);
+			interceptor.Invoke("QSettings$", "QSettings(const QString&)", typeof(void), typeof(string), organization);
 		}
 		public QSettings(QSettings.Scope scope, string organization, string application, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(scope,organization,application,parent);
-		}
-		[SmokeMethod("QSettings", "(QSettings::Scope, const QString&, const QString&, QObject*)", "$$$#")]
-		private void NewQSettings(QSettings.Scope scope, string organization, string application, QObject parent) {
-			((QSettings) interceptor).NewQSettings(scope,organization,application,parent);
+			interceptor.Invoke("QSettings$$$#", "QSettings(QSettings::Scope, const QString&, const QString&, QObject*)", typeof(void), typeof(QSettings.Scope), scope, typeof(string), organization, typeof(string), application, typeof(QObject), parent);
 		}
 		public QSettings(QSettings.Scope scope, string organization, string application) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(scope,organization,application);
-		}
-		[SmokeMethod("QSettings", "(QSettings::Scope, const QString&, const QString&)", "$$$")]
-		private void NewQSettings(QSettings.Scope scope, string organization, string application) {
-			((QSettings) interceptor).NewQSettings(scope,organization,application);
+			interceptor.Invoke("QSettings$$$", "QSettings(QSettings::Scope, const QString&, const QString&)", typeof(void), typeof(QSettings.Scope), scope, typeof(string), organization, typeof(string), application);
 		}
 		public QSettings(QSettings.Scope scope, string organization) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(scope,organization);
-		}
-		[SmokeMethod("QSettings", "(QSettings::Scope, const QString&)", "$$")]
-		private void NewQSettings(QSettings.Scope scope, string organization) {
-			((QSettings) interceptor).NewQSettings(scope,organization);
+			interceptor.Invoke("QSettings$$", "QSettings(QSettings::Scope, const QString&)", typeof(void), typeof(QSettings.Scope), scope, typeof(string), organization);
 		}
 		public QSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(format,scope,organization,application,parent);
-		}
-		[SmokeMethod("QSettings", "(QSettings::Format, QSettings::Scope, const QString&, const QString&, QObject*)", "$$$$#")]
-		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application, QObject parent) {
-			((QSettings) interceptor).NewQSettings(format,scope,organization,application,parent);
+			interceptor.Invoke("QSettings$$$$#", "QSettings(QSettings::Format, QSettings::Scope, const QString&, const QString&, QObject*)", typeof(void), typeof(QSettings.Format), format, typeof(QSettings.Scope), scope, typeof(string), organization, typeof(string), application, typeof(QObject), parent);
 		}
 		public QSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(format,scope,organization,application);
-		}
-		[SmokeMethod("QSettings", "(QSettings::Format, QSettings::Scope, const QString&, const QString&)", "$$$$")]
-		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application) {
-			((QSettings) interceptor).NewQSettings(format,scope,organization,application);
+			interceptor.Invoke("QSettings$$$$", "QSettings(QSettings::Format, QSettings::Scope, const QString&, const QString&)", typeof(void), typeof(QSettings.Format), format, typeof(QSettings.Scope), scope, typeof(string), organization, typeof(string), application);
 		}
 		public QSettings(QSettings.Format format, QSettings.Scope scope, string organization) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(format,scope,organization);
-		}
-		[SmokeMethod("QSettings", "(QSettings::Format, QSettings::Scope, const QString&)", "$$$")]
-		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization) {
-			((QSettings) interceptor).NewQSettings(format,scope,organization);
+			interceptor.Invoke("QSettings$$$", "QSettings(QSettings::Format, QSettings::Scope, const QString&)", typeof(void), typeof(QSettings.Format), format, typeof(QSettings.Scope), scope, typeof(string), organization);
 		}
 		public QSettings(string fileName, QSettings.Format format, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(fileName,format,parent);
-		}
-		[SmokeMethod("QSettings", "(const QString&, QSettings::Format, QObject*)", "$$#")]
-		private void NewQSettings(string fileName, QSettings.Format format, QObject parent) {
-			((QSettings) interceptor).NewQSettings(fileName,format,parent);
+			interceptor.Invoke("QSettings$$#", "QSettings(const QString&, QSettings::Format, QObject*)", typeof(void), typeof(string), fileName, typeof(QSettings.Format), format, typeof(QObject), parent);
 		}
 		public QSettings(string fileName, QSettings.Format format) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(fileName,format);
-		}
-		[SmokeMethod("QSettings", "(const QString&, QSettings::Format)", "$$")]
-		private void NewQSettings(string fileName, QSettings.Format format) {
-			((QSettings) interceptor).NewQSettings(fileName,format);
+			interceptor.Invoke("QSettings$$", "QSettings(const QString&, QSettings::Format)", typeof(void), typeof(string), fileName, typeof(QSettings.Format), format);
 		}
 		public QSettings(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSettings(parent);
-		}
-		[SmokeMethod("QSettings", "(QObject*)", "#")]
-		private void NewQSettings(QObject parent) {
-			((QSettings) interceptor).NewQSettings(parent);
+			interceptor.Invoke("QSettings#", "QSettings(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QSettings() : this((Type) null) {
 			CreateProxy();
-			NewQSettings();
+			interceptor.Invoke("QSettings", "QSettings()", typeof(void));
 		}
-		[SmokeMethod("QSettings", "()", "")]
-		private void NewQSettings() {
-			((QSettings) interceptor).NewQSettings();
-		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QSettings) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("sync", "()", "")]
 		public void Sync() {
-			((QSettings) interceptor).Sync();
+			interceptor.Invoke("sync", "sync()", typeof(void));
 		}
-		[SmokeMethod("status", "() const", "")]
 		public QSettings.Status status() {
-			return ((QSettings) interceptor).status();
+			return (QSettings.Status) interceptor.Invoke("status", "status() const", typeof(QSettings.Status));
 		}
-		[SmokeMethod("beginGroup", "(const QString&)", "$")]
 		public void BeginGroup(string prefix) {
-			((QSettings) interceptor).BeginGroup(prefix);
+			interceptor.Invoke("beginGroup$", "beginGroup(const QString&)", typeof(void), typeof(string), prefix);
 		}
-		[SmokeMethod("endGroup", "()", "")]
 		public void EndGroup() {
-			((QSettings) interceptor).EndGroup();
+			interceptor.Invoke("endGroup", "endGroup()", typeof(void));
 		}
-		[SmokeMethod("group", "() const", "")]
 		public string Group() {
-			return ((QSettings) interceptor).Group();
+			return (string) interceptor.Invoke("group", "group() const", typeof(string));
 		}
-		[SmokeMethod("beginReadArray", "(const QString&)", "$")]
 		public int BeginReadArray(string prefix) {
-			return ((QSettings) interceptor).BeginReadArray(prefix);
+			return (int) interceptor.Invoke("beginReadArray$", "beginReadArray(const QString&)", typeof(int), typeof(string), prefix);
 		}
-		[SmokeMethod("beginWriteArray", "(const QString&, int)", "$$")]
 		public void BeginWriteArray(string prefix, int size) {
-			((QSettings) interceptor).BeginWriteArray(prefix,size);
+			interceptor.Invoke("beginWriteArray$$", "beginWriteArray(const QString&, int)", typeof(void), typeof(string), prefix, typeof(int), size);
 		}
-		[SmokeMethod("beginWriteArray", "(const QString&)", "$")]
 		public void BeginWriteArray(string prefix) {
-			((QSettings) interceptor).BeginWriteArray(prefix);
+			interceptor.Invoke("beginWriteArray$", "beginWriteArray(const QString&)", typeof(void), typeof(string), prefix);
 		}
-		[SmokeMethod("endArray", "()", "")]
 		public void EndArray() {
-			((QSettings) interceptor).EndArray();
+			interceptor.Invoke("endArray", "endArray()", typeof(void));
 		}
-		[SmokeMethod("setArrayIndex", "(int)", "$")]
 		public void SetArrayIndex(int i) {
-			((QSettings) interceptor).SetArrayIndex(i);
+			interceptor.Invoke("setArrayIndex$", "setArrayIndex(int)", typeof(void), typeof(int), i);
 		}
-		[SmokeMethod("allKeys", "() const", "")]
 		public List<string> AllKeys() {
-			return ((QSettings) interceptor).AllKeys();
+			return (List<string>) interceptor.Invoke("allKeys", "allKeys() const", typeof(List<string>));
 		}
-		[SmokeMethod("childKeys", "() const", "")]
 		public List<string> ChildKeys() {
-			return ((QSettings) interceptor).ChildKeys();
+			return (List<string>) interceptor.Invoke("childKeys", "childKeys() const", typeof(List<string>));
 		}
-		[SmokeMethod("childGroups", "() const", "")]
 		public List<string> ChildGroups() {
-			return ((QSettings) interceptor).ChildGroups();
+			return (List<string>) interceptor.Invoke("childGroups", "childGroups() const", typeof(List<string>));
 		}
-		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
-			return ((QSettings) interceptor).IsWritable();
+			return (bool) interceptor.Invoke("isWritable", "isWritable() const", typeof(bool));
 		}
-		[SmokeMethod("setValue", "(const QString&, const QVariant&)", "$#")]
 		public void SetValue(string key, QVariant value) {
-			((QSettings) interceptor).SetValue(key,value);
+			interceptor.Invoke("setValue$#", "setValue(const QString&, const QVariant&)", typeof(void), typeof(string), key, typeof(QVariant), value);
 		}
-		[SmokeMethod("value", "(const QString&, const QVariant&) const", "$#")]
 		public QVariant Value(string key, QVariant defaultValue) {
-			return ((QSettings) interceptor).Value(key,defaultValue);
+			return (QVariant) interceptor.Invoke("value$#", "value(const QString&, const QVariant&) const", typeof(QVariant), typeof(string), key, typeof(QVariant), defaultValue);
 		}
-		[SmokeMethod("value", "(const QString&) const", "$")]
 		public QVariant Value(string key) {
-			return ((QSettings) interceptor).Value(key);
+			return (QVariant) interceptor.Invoke("value$", "value(const QString&) const", typeof(QVariant), typeof(string), key);
 		}
-		[SmokeMethod("remove", "(const QString&)", "$")]
 		public void Remove(string key) {
-			((QSettings) interceptor).Remove(key);
+			interceptor.Invoke("remove$", "remove(const QString&)", typeof(void), typeof(string), key);
 		}
-		[SmokeMethod("contains", "(const QString&) const", "$")]
 		public bool Contains(string key) {
-			return ((QSettings) interceptor).Contains(key);
+			return (bool) interceptor.Invoke("contains$", "contains(const QString&) const", typeof(bool), typeof(string), key);
 		}
-		[SmokeMethod("setFallbacksEnabled", "(bool)", "$")]
 		public void SetFallbacksEnabled(bool b) {
-			((QSettings) interceptor).SetFallbacksEnabled(b);
+			interceptor.Invoke("setFallbacksEnabled$", "setFallbacksEnabled(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("fallbacksEnabled", "() const", "")]
 		public bool FallbacksEnabled() {
-			return ((QSettings) interceptor).FallbacksEnabled();
+			return (bool) interceptor.Invoke("fallbacksEnabled", "fallbacksEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QSettings) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QSettings) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QSettings() {
-			DisposeQSettings();
+			interceptor.Invoke("~QSettings", "~QSettings()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSettings();
-		}
-		[SmokeMethod("~QSettings", "()", "")]
-		private void DisposeQSettings() {
-			((QSettings) interceptor).DisposeQSettings();
+			interceptor.Invoke("~QSettings", "~QSettings()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static void SetSystemIniPath(string dir) {
-			staticInterceptor.SetSystemIniPath(dir);
+			staticInterceptor.Invoke("setSystemIniPath$", "setSystemIniPath(const QString&)", typeof(void), typeof(string), dir);
 		}
 		public static void SetUserIniPath(string dir) {
-			staticInterceptor.SetUserIniPath(dir);
+			staticInterceptor.Invoke("setUserIniPath$", "setUserIniPath(const QString&)", typeof(void), typeof(string), dir);
 		}
 		public static void SetPath(QSettings.Format format, QSettings.Scope scope, string path) {
-			staticInterceptor.SetPath(format,scope,path);
+			staticInterceptor.Invoke("setPath$$$", "setPath(QSettings::Format, QSettings::Scope, const QString&)", typeof(void), typeof(QSettings.Format), format, typeof(QSettings.Scope), scope, typeof(string), path);
 		}
 		protected new IQSettingsSignals Emit {
 			get { return (IQSettingsSignals) Q_EMIT; }

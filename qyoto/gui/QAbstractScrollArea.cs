@@ -7,192 +7,154 @@ namespace Qyoto {
 	[SmokeClass("QAbstractScrollArea")]
 	public abstract class QAbstractScrollArea : QFrame, IDisposable {
  		protected QAbstractScrollArea(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractScrollArea")]
-		interface IQAbstractScrollAreaProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractScrollArea), this);
-			interceptor = (QAbstractScrollArea) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractScrollArea), "QAbstractScrollArea", this);
 		}
-		private static IQAbstractScrollAreaProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractScrollArea() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractScrollAreaProxy), null);
-			staticInterceptor = (IQAbstractScrollAreaProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractScrollArea), "QAbstractScrollArea", null);
 		}
 		[Q_PROPERTY("Qt::ScrollBarPolicy", "verticalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {
-			[SmokeMethod("verticalScrollBarPolicy", "()", "")]
-			get { return ((QAbstractScrollArea) interceptor).VerticalScrollBarPolicy; }
-			[SmokeMethod("setVerticalScrollBarPolicy", "(Qt::ScrollBarPolicy)", "$")]
-			set { ((QAbstractScrollArea) interceptor).VerticalScrollBarPolicy = value; }
+			get { return (Qt.ScrollBarPolicy) interceptor.Invoke("verticalScrollBarPolicy", "verticalScrollBarPolicy()", typeof(Qt.ScrollBarPolicy)); }
+			set { interceptor.Invoke("setVerticalScrollBarPolicy$", "setVerticalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), value); }
 		}
 		[Q_PROPERTY("Qt::ScrollBarPolicy", "horizontalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy {
-			[SmokeMethod("horizontalScrollBarPolicy", "()", "")]
-			get { return ((QAbstractScrollArea) interceptor).HorizontalScrollBarPolicy; }
-			[SmokeMethod("setHorizontalScrollBarPolicy", "(Qt::ScrollBarPolicy)", "$")]
-			set { ((QAbstractScrollArea) interceptor).HorizontalScrollBarPolicy = value; }
+			get { return (Qt.ScrollBarPolicy) interceptor.Invoke("horizontalScrollBarPolicy", "horizontalScrollBarPolicy()", typeof(Qt.ScrollBarPolicy)); }
+			set { interceptor.Invoke("setHorizontalScrollBarPolicy$", "setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), value); }
 		}
 		public QAbstractScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractScrollArea(parent);
-		}
-		[SmokeMethod("QAbstractScrollArea", "(QWidget*)", "#")]
-		private void NewQAbstractScrollArea(QWidget parent) {
-			((QAbstractScrollArea) interceptor).NewQAbstractScrollArea(parent);
+			interceptor.Invoke("QAbstractScrollArea#", "QAbstractScrollArea(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QAbstractScrollArea() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractScrollArea();
+			interceptor.Invoke("QAbstractScrollArea", "QAbstractScrollArea()", typeof(void));
 		}
-		[SmokeMethod("QAbstractScrollArea", "()", "")]
-		private void NewQAbstractScrollArea() {
-			((QAbstractScrollArea) interceptor).NewQAbstractScrollArea();
-		}
-		[SmokeMethod("verticalScrollBar", "() const", "")]
 		public QScrollBar VerticalScrollBar() {
-			return ((QAbstractScrollArea) interceptor).VerticalScrollBar();
+			return (QScrollBar) interceptor.Invoke("verticalScrollBar", "verticalScrollBar() const", typeof(QScrollBar));
 		}
-		[SmokeMethod("setVerticalScrollBar", "(QScrollBar*)", "#")]
 		public void SetVerticalScrollBar(QScrollBar scrollbar) {
-			((QAbstractScrollArea) interceptor).SetVerticalScrollBar(scrollbar);
+			interceptor.Invoke("setVerticalScrollBar#", "setVerticalScrollBar(QScrollBar*)", typeof(void), typeof(QScrollBar), scrollbar);
 		}
-		[SmokeMethod("horizontalScrollBar", "() const", "")]
 		public QScrollBar HorizontalScrollBar() {
-			return ((QAbstractScrollArea) interceptor).HorizontalScrollBar();
+			return (QScrollBar) interceptor.Invoke("horizontalScrollBar", "horizontalScrollBar() const", typeof(QScrollBar));
 		}
-		[SmokeMethod("setHorizontalScrollBar", "(QScrollBar*)", "#")]
 		public void SetHorizontalScrollBar(QScrollBar scrollbar) {
-			((QAbstractScrollArea) interceptor).SetHorizontalScrollBar(scrollbar);
+			interceptor.Invoke("setHorizontalScrollBar#", "setHorizontalScrollBar(QScrollBar*)", typeof(void), typeof(QScrollBar), scrollbar);
 		}
-		[SmokeMethod("cornerWidget", "() const", "")]
 		public QWidget CornerWidget() {
-			return ((QAbstractScrollArea) interceptor).CornerWidget();
+			return (QWidget) interceptor.Invoke("cornerWidget", "cornerWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setCornerWidget", "(QWidget*)", "#")]
 		public void SetCornerWidget(QWidget widget) {
-			((QAbstractScrollArea) interceptor).SetCornerWidget(widget);
+			interceptor.Invoke("setCornerWidget#", "setCornerWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("addScrollBarWidget", "(QWidget*, Qt::Alignment)", "#$")]
 		public void AddScrollBarWidget(QWidget widget, int alignment) {
-			((QAbstractScrollArea) interceptor).AddScrollBarWidget(widget,alignment);
+			interceptor.Invoke("addScrollBarWidget#$", "addScrollBarWidget(QWidget*, Qt::Alignment)", typeof(void), typeof(QWidget), widget, typeof(int), alignment);
 		}
-		[SmokeMethod("scrollBarWidgets", "(Qt::Alignment)", "$")]
 		public List<QWidget> ScrollBarWidgets(int alignment) {
-			return ((QAbstractScrollArea) interceptor).ScrollBarWidgets(alignment);
+			return (List<QWidget>) interceptor.Invoke("scrollBarWidgets$", "scrollBarWidgets(Qt::Alignment)", typeof(List<QWidget>), typeof(int), alignment);
 		}
-		[SmokeMethod("viewport", "() const", "")]
 		public QWidget Viewport() {
-			return ((QAbstractScrollArea) interceptor).Viewport();
+			return (QWidget) interceptor.Invoke("viewport", "viewport() const", typeof(QWidget));
 		}
-		[SmokeMethod("setViewport", "(QWidget*)", "#")]
 		public void SetViewport(QWidget widget) {
-			((QAbstractScrollArea) interceptor).SetViewport(widget);
+			interceptor.Invoke("setViewport#", "setViewport(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("maximumViewportSize", "() const", "")]
 		public QSize MaximumViewportSize() {
-			return ((QAbstractScrollArea) interceptor).MaximumViewportSize();
+			return (QSize) interceptor.Invoke("maximumViewportSize", "maximumViewportSize() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QAbstractScrollArea) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QAbstractScrollArea) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("setViewportMargins", "(int, int, int, int)", "$$$$")]
 		protected void SetViewportMargins(int left, int top, int right, int bottom) {
-			((QAbstractScrollArea) interceptor).SetViewportMargins(left,top,right,bottom);
+			interceptor.Invoke("setViewportMargins$$$$", "setViewportMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QAbstractScrollArea) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
+		[SmokeMethod("viewportEvent(QEvent*)")]
 		protected virtual bool ViewportEvent(QEvent arg1) {
-			return ((QAbstractScrollArea) interceptor).ViewportEvent(arg1);
+			return (bool) interceptor.Invoke("viewportEvent#", "viewportEvent(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QAbstractScrollArea) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QAbstractScrollArea) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QAbstractScrollArea) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QAbstractScrollArea) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected override void MouseDoubleClickEvent(QMouseEvent arg1) {
-			((QAbstractScrollArea) interceptor).MouseDoubleClickEvent(arg1);
+			interceptor.Invoke("mouseDoubleClickEvent#", "mouseDoubleClickEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QAbstractScrollArea) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected override void WheelEvent(QWheelEvent arg1) {
-			((QAbstractScrollArea) interceptor).WheelEvent(arg1);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), arg1);
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			((QAbstractScrollArea) interceptor).ContextMenuEvent(arg1);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
 		}
-		[SmokeMethod("dragEnterEvent", "(QDragEnterEvent*)", "#")]
+		[SmokeMethod("dragEnterEvent(QDragEnterEvent*)")]
 		protected override void DragEnterEvent(QDragEnterEvent arg1) {
-			((QAbstractScrollArea) interceptor).DragEnterEvent(arg1);
+			interceptor.Invoke("dragEnterEvent#", "dragEnterEvent(QDragEnterEvent*)", typeof(void), typeof(QDragEnterEvent), arg1);
 		}
-		[SmokeMethod("dragMoveEvent", "(QDragMoveEvent*)", "#")]
+		[SmokeMethod("dragMoveEvent(QDragMoveEvent*)")]
 		protected override void DragMoveEvent(QDragMoveEvent arg1) {
-			((QAbstractScrollArea) interceptor).DragMoveEvent(arg1);
+			interceptor.Invoke("dragMoveEvent#", "dragMoveEvent(QDragMoveEvent*)", typeof(void), typeof(QDragMoveEvent), arg1);
 		}
-		[SmokeMethod("dragLeaveEvent", "(QDragLeaveEvent*)", "#")]
+		[SmokeMethod("dragLeaveEvent(QDragLeaveEvent*)")]
 		protected override void DragLeaveEvent(QDragLeaveEvent arg1) {
-			((QAbstractScrollArea) interceptor).DragLeaveEvent(arg1);
+			interceptor.Invoke("dragLeaveEvent#", "dragLeaveEvent(QDragLeaveEvent*)", typeof(void), typeof(QDragLeaveEvent), arg1);
 		}
-		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
+		[SmokeMethod("dropEvent(QDropEvent*)")]
 		protected override void DropEvent(QDropEvent arg1) {
-			((QAbstractScrollArea) interceptor).DropEvent(arg1);
+			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QAbstractScrollArea) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
+		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected virtual void ScrollContentsBy(int dx, int dy) {
-			((QAbstractScrollArea) interceptor).ScrollContentsBy(dx,dy);
+			interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
 		[Q_SLOT("void setupViewport(QWidget*)")]
-		[SmokeMethod("setupViewport", "(QWidget*)", "#")]
 		protected void SetupViewport(QWidget viewport) {
-			((QAbstractScrollArea) interceptor).SetupViewport(viewport);
+			interceptor.Invoke("setupViewport#", "setupViewport(QWidget*)", typeof(void), typeof(QWidget), viewport);
 		}
 		~QAbstractScrollArea() {
-			DisposeQAbstractScrollArea();
+			interceptor.Invoke("~QAbstractScrollArea", "~QAbstractScrollArea()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQAbstractScrollArea();
-		}
-		[SmokeMethod("~QAbstractScrollArea", "()", "")]
-		private void DisposeQAbstractScrollArea() {
-			((QAbstractScrollArea) interceptor).DisposeQAbstractScrollArea();
+			interceptor.Invoke("~QAbstractScrollArea", "~QAbstractScrollArea()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractScrollAreaSignals Emit {
 			get { return (IQAbstractScrollAreaSignals) Q_EMIT; }

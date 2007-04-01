@@ -5,23 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QImageWriter")]
-	public class QImageWriter : MarshalByRefObject, IDisposable {
-		protected QImageWriter interceptor = null;
+	public class QImageWriter : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QImageWriter(Type dummy) {}
-		[SmokeClass("QImageWriter")]
-		interface IQImageWriterProxy {
-			[SmokeMethod("supportedImageFormats", "()", "")]
-			List<QByteArray> SupportedImageFormats();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageWriter), this);
-			interceptor = (QImageWriter) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QImageWriter), "QImageWriter", this);
 		}
-		private static IQImageWriterProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QImageWriter() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQImageWriterProxy), null);
-			staticInterceptor = (IQImageWriterProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QImageWriter), "QImageWriter", null);
 		}
 		public enum ImageWriterError {
 			UnknownError = 0,
@@ -30,120 +23,82 @@ namespace Qyoto {
 		}
 		public QImageWriter() : this((Type) null) {
 			CreateProxy();
-			NewQImageWriter();
-		}
-		[SmokeMethod("QImageWriter", "()", "")]
-		private void NewQImageWriter() {
-			((QImageWriter) interceptor).NewQImageWriter();
+			interceptor.Invoke("QImageWriter", "QImageWriter()", typeof(void));
 		}
 		public QImageWriter(QIODevice device, QByteArray format) : this((Type) null) {
 			CreateProxy();
-			NewQImageWriter(device,format);
-		}
-		[SmokeMethod("QImageWriter", "(QIODevice*, const QByteArray&)", "##")]
-		private void NewQImageWriter(QIODevice device, QByteArray format) {
-			((QImageWriter) interceptor).NewQImageWriter(device,format);
+			interceptor.Invoke("QImageWriter##", "QImageWriter(QIODevice*, const QByteArray&)", typeof(void), typeof(QIODevice), device, typeof(QByteArray), format);
 		}
 		public QImageWriter(string fileName, QByteArray format) : this((Type) null) {
 			CreateProxy();
-			NewQImageWriter(fileName,format);
-		}
-		[SmokeMethod("QImageWriter", "(const QString&, const QByteArray&)", "$#")]
-		private void NewQImageWriter(string fileName, QByteArray format) {
-			((QImageWriter) interceptor).NewQImageWriter(fileName,format);
+			interceptor.Invoke("QImageWriter$#", "QImageWriter(const QString&, const QByteArray&)", typeof(void), typeof(string), fileName, typeof(QByteArray), format);
 		}
 		public QImageWriter(string fileName) : this((Type) null) {
 			CreateProxy();
-			NewQImageWriter(fileName);
+			interceptor.Invoke("QImageWriter$", "QImageWriter(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		[SmokeMethod("QImageWriter", "(const QString&)", "$")]
-		private void NewQImageWriter(string fileName) {
-			((QImageWriter) interceptor).NewQImageWriter(fileName);
-		}
-		[SmokeMethod("setFormat", "(const QByteArray&)", "#")]
 		public void SetFormat(QByteArray format) {
-			((QImageWriter) interceptor).SetFormat(format);
+			interceptor.Invoke("setFormat#", "setFormat(const QByteArray&)", typeof(void), typeof(QByteArray), format);
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QByteArray Format() {
-			return ((QImageWriter) interceptor).Format();
+			return (QByteArray) interceptor.Invoke("format", "format() const", typeof(QByteArray));
 		}
-		[SmokeMethod("setDevice", "(QIODevice*)", "#")]
 		public void SetDevice(QIODevice device) {
-			((QImageWriter) interceptor).SetDevice(device);
+			interceptor.Invoke("setDevice#", "setDevice(QIODevice*)", typeof(void), typeof(QIODevice), device);
 		}
-		[SmokeMethod("device", "() const", "")]
 		public QIODevice Device() {
-			return ((QImageWriter) interceptor).Device();
+			return (QIODevice) interceptor.Invoke("device", "device() const", typeof(QIODevice));
 		}
-		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string fileName) {
-			((QImageWriter) interceptor).SetFileName(fileName);
+			interceptor.Invoke("setFileName$", "setFileName(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QImageWriter) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("setQuality", "(int)", "$")]
 		public void SetQuality(int quality) {
-			((QImageWriter) interceptor).SetQuality(quality);
+			interceptor.Invoke("setQuality$", "setQuality(int)", typeof(void), typeof(int), quality);
 		}
-		[SmokeMethod("quality", "() const", "")]
 		public int Quality() {
-			return ((QImageWriter) interceptor).Quality();
+			return (int) interceptor.Invoke("quality", "quality() const", typeof(int));
 		}
-		[SmokeMethod("setGamma", "(float)", "$")]
 		public void SetGamma(float gamma) {
-			((QImageWriter) interceptor).SetGamma(gamma);
+			interceptor.Invoke("setGamma$", "setGamma(float)", typeof(void), typeof(float), gamma);
 		}
-		[SmokeMethod("gamma", "() const", "")]
 		public float Gamma() {
-			return ((QImageWriter) interceptor).Gamma();
+			return (float) interceptor.Invoke("gamma", "gamma() const", typeof(float));
 		}
-		[SmokeMethod("setDescription", "(const QString&)", "$")]
 		public void SetDescription(string description) {
-			((QImageWriter) interceptor).SetDescription(description);
+			interceptor.Invoke("setDescription$", "setDescription(const QString&)", typeof(void), typeof(string), description);
 		}
-		[SmokeMethod("description", "() const", "")]
 		public string Description() {
-			return ((QImageWriter) interceptor).Description();
+			return (string) interceptor.Invoke("description", "description() const", typeof(string));
 		}
-		[SmokeMethod("setText", "(const QString&, const QString&)", "$$")]
 		public void SetText(string key, string text) {
-			((QImageWriter) interceptor).SetText(key,text);
+			interceptor.Invoke("setText$$", "setText(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), text);
 		}
-		[SmokeMethod("canWrite", "() const", "")]
 		public bool CanWrite() {
-			return ((QImageWriter) interceptor).CanWrite();
+			return (bool) interceptor.Invoke("canWrite", "canWrite() const", typeof(bool));
 		}
-		[SmokeMethod("write", "(const QImage&)", "#")]
 		public bool Write(QImage image) {
-			return ((QImageWriter) interceptor).Write(image);
+			return (bool) interceptor.Invoke("write#", "write(const QImage&)", typeof(bool), typeof(QImage), image);
 		}
-		[SmokeMethod("error", "() const", "")]
 		public QImageWriter.ImageWriterError Error() {
-			return ((QImageWriter) interceptor).Error();
+			return (QImageWriter.ImageWriterError) interceptor.Invoke("error", "error() const", typeof(QImageWriter.ImageWriterError));
 		}
-		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ((QImageWriter) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
-		[SmokeMethod("supportsOption", "(QImageIOHandler::ImageOption) const", "$")]
 		public bool SupportsOption(QImageIOHandler.ImageOption option) {
-			return ((QImageWriter) interceptor).SupportsOption(option);
+			return (bool) interceptor.Invoke("supportsOption$", "supportsOption(QImageIOHandler::ImageOption) const", typeof(bool), typeof(QImageIOHandler.ImageOption), option);
 		}
 		~QImageWriter() {
-			DisposeQImageWriter();
+			interceptor.Invoke("~QImageWriter", "~QImageWriter()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQImageWriter();
-		}
-		[SmokeMethod("~QImageWriter", "()", "")]
-		private void DisposeQImageWriter() {
-			((QImageWriter) interceptor).DisposeQImageWriter();
+			interceptor.Invoke("~QImageWriter", "~QImageWriter()", typeof(void));
 		}
 		public static List<QByteArray> SupportedImageFormats() {
-			return staticInterceptor.SupportedImageFormats();
+			return (List<QByteArray>) staticInterceptor.Invoke("supportedImageFormats", "supportedImageFormats()", typeof(List<QByteArray>));
 		}
 	}
 }

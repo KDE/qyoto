@@ -8,93 +8,58 @@ namespace Qyoto {
 	[SmokeClass("QFileSystemWatcher")]
 	public class QFileSystemWatcher : QObject, IDisposable {
  		protected QFileSystemWatcher(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFileSystemWatcher")]
-		interface IQFileSystemWatcherProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileSystemWatcher), this);
-			interceptor = (QFileSystemWatcher) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFileSystemWatcher), "QFileSystemWatcher", this);
 		}
-		private static IQFileSystemWatcherProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFileSystemWatcher() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFileSystemWatcherProxy), null);
-			staticInterceptor = (IQFileSystemWatcherProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFileSystemWatcher), "QFileSystemWatcher", null);
 		}
 		public QFileSystemWatcher(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQFileSystemWatcher(parent);
-		}
-		[SmokeMethod("QFileSystemWatcher", "(QObject*)", "#")]
-		private void NewQFileSystemWatcher(QObject parent) {
-			((QFileSystemWatcher) interceptor).NewQFileSystemWatcher(parent);
+			interceptor.Invoke("QFileSystemWatcher#", "QFileSystemWatcher(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QFileSystemWatcher() : this((Type) null) {
 			CreateProxy();
-			NewQFileSystemWatcher();
-		}
-		[SmokeMethod("QFileSystemWatcher", "()", "")]
-		private void NewQFileSystemWatcher() {
-			((QFileSystemWatcher) interceptor).NewQFileSystemWatcher();
+			interceptor.Invoke("QFileSystemWatcher", "QFileSystemWatcher()", typeof(void));
 		}
 		public QFileSystemWatcher(List<string> paths, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQFileSystemWatcher(paths,parent);
-		}
-		[SmokeMethod("QFileSystemWatcher", "(const QStringList&, QObject*)", "?#")]
-		private void NewQFileSystemWatcher(List<string> paths, QObject parent) {
-			((QFileSystemWatcher) interceptor).NewQFileSystemWatcher(paths,parent);
+			interceptor.Invoke("QFileSystemWatcher?#", "QFileSystemWatcher(const QStringList&, QObject*)", typeof(void), typeof(List<string>), paths, typeof(QObject), parent);
 		}
 		public QFileSystemWatcher(List<string> paths) : this((Type) null) {
 			CreateProxy();
-			NewQFileSystemWatcher(paths);
+			interceptor.Invoke("QFileSystemWatcher?", "QFileSystemWatcher(const QStringList&)", typeof(void), typeof(List<string>), paths);
 		}
-		[SmokeMethod("QFileSystemWatcher", "(const QStringList&)", "?")]
-		private void NewQFileSystemWatcher(List<string> paths) {
-			((QFileSystemWatcher) interceptor).NewQFileSystemWatcher(paths);
-		}
-		[SmokeMethod("addPath", "(const QString&)", "$")]
 		public void AddPath(string file) {
-			((QFileSystemWatcher) interceptor).AddPath(file);
+			interceptor.Invoke("addPath$", "addPath(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("addPaths", "(const QStringList&)", "?")]
 		public void AddPaths(List<string> files) {
-			((QFileSystemWatcher) interceptor).AddPaths(files);
+			interceptor.Invoke("addPaths?", "addPaths(const QStringList&)", typeof(void), typeof(List<string>), files);
 		}
-		[SmokeMethod("removePath", "(const QString&)", "$")]
 		public void RemovePath(string file) {
-			((QFileSystemWatcher) interceptor).RemovePath(file);
+			interceptor.Invoke("removePath$", "removePath(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("removePaths", "(const QStringList&)", "?")]
 		public void RemovePaths(List<string> files) {
-			((QFileSystemWatcher) interceptor).RemovePaths(files);
+			interceptor.Invoke("removePaths?", "removePaths(const QStringList&)", typeof(void), typeof(List<string>), files);
 		}
-		[SmokeMethod("files", "() const", "")]
 		public List<string> Files() {
-			return ((QFileSystemWatcher) interceptor).Files();
+			return (List<string>) interceptor.Invoke("files", "files() const", typeof(List<string>));
 		}
-		[SmokeMethod("directories", "() const", "")]
 		public List<string> Directories() {
-			return ((QFileSystemWatcher) interceptor).Directories();
+			return (List<string>) interceptor.Invoke("directories", "directories() const", typeof(List<string>));
 		}
 		~QFileSystemWatcher() {
-			DisposeQFileSystemWatcher();
+			interceptor.Invoke("~QFileSystemWatcher", "~QFileSystemWatcher()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFileSystemWatcher();
-		}
-		[SmokeMethod("~QFileSystemWatcher", "()", "")]
-		private void DisposeQFileSystemWatcher() {
-			((QFileSystemWatcher) interceptor).DisposeQFileSystemWatcher();
+			interceptor.Invoke("~QFileSystemWatcher", "~QFileSystemWatcher()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQFileSystemWatcherSignals Emit {
 			get { return (IQFileSystemWatcherSignals) Q_EMIT; }

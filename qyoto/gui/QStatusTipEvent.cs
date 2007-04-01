@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QStatusTipEvent : QEvent, IDisposable {
  		protected QStatusTipEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusTipEvent), this);
-			interceptor = (QStatusTipEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStatusTipEvent), "QStatusTipEvent", this);
 		}
 		public QStatusTipEvent(string tip) : this((Type) null) {
 			CreateProxy();
-			NewQStatusTipEvent(tip);
+			interceptor.Invoke("QStatusTipEvent$", "QStatusTipEvent(const QString&)", typeof(void), typeof(string), tip);
 		}
-		[SmokeMethod("QStatusTipEvent", "(const QString&)", "$")]
-		private void NewQStatusTipEvent(string tip) {
-			((QStatusTipEvent) interceptor).NewQStatusTipEvent(tip);
-		}
-		[SmokeMethod("tip", "() const", "")]
 		public string Tip() {
-			return ((QStatusTipEvent) interceptor).Tip();
+			return (string) interceptor.Invoke("tip", "tip() const", typeof(string));
 		}
 		~QStatusTipEvent() {
-			DisposeQStatusTipEvent();
+			interceptor.Invoke("~QStatusTipEvent", "~QStatusTipEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQStatusTipEvent();
-		}
-		[SmokeMethod("~QStatusTipEvent", "()", "")]
-		private void DisposeQStatusTipEvent() {
-			((QStatusTipEvent) interceptor).DisposeQStatusTipEvent();
+			interceptor.Invoke("~QStatusTipEvent", "~QStatusTipEvent()", typeof(void));
 		}
 	}
 }

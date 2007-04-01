@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QTabletEvent : QInputEvent, IDisposable {
  		protected QTabletEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabletEvent), this);
-			interceptor = (QTabletEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTabletEvent), "QTabletEvent", this);
 		}
 		public enum TabletDevice {
 			NoDevice = 0,
@@ -27,93 +26,67 @@ namespace Qyoto {
 		}
 		public QTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) : this((Type) null) {
 			CreateProxy();
-			NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
+			interceptor.Invoke("QTabletEvent$###$$$$$$$$$$", "QTabletEvent(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)", typeof(void), typeof(QEvent.TypeOf), t, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(QPointF), hiResGlobalPos, typeof(int), device, typeof(int), pointerType, typeof(double), pressure, typeof(int), xTilt, typeof(int), yTilt, typeof(double), tangentialPressure, typeof(double), rotation, typeof(int), z, typeof(int), keyState, typeof(long), uniqueID);
 		}
-		[SmokeMethod("QTabletEvent", "(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)", "$###$$$$$$$$$$")]
-		private void NewQTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) {
-			((QTabletEvent) interceptor).NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ((QTabletEvent) interceptor).Pos();
+			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ((QTabletEvent) interceptor).GlobalPos();
+			return (QPoint) interceptor.Invoke("globalPos", "globalPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("hiResGlobalPos", "() const", "")]
 		public QPointF HiResGlobalPos() {
-			return ((QTabletEvent) interceptor).HiResGlobalPos();
+			return (QPointF) interceptor.Invoke("hiResGlobalPos", "hiResGlobalPos() const", typeof(QPointF));
 		}
-		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ((QTabletEvent) interceptor).X();
+			return (int) interceptor.Invoke("x", "x() const", typeof(int));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ((QTabletEvent) interceptor).Y();
+			return (int) interceptor.Invoke("y", "y() const", typeof(int));
 		}
-		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ((QTabletEvent) interceptor).GlobalX();
+			return (int) interceptor.Invoke("globalX", "globalX() const", typeof(int));
 		}
-		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ((QTabletEvent) interceptor).GlobalY();
+			return (int) interceptor.Invoke("globalY", "globalY() const", typeof(int));
 		}
-		[SmokeMethod("hiResGlobalX", "() const", "")]
 		public double HiResGlobalX() {
-			return ((QTabletEvent) interceptor).HiResGlobalX();
+			return (double) interceptor.Invoke("hiResGlobalX", "hiResGlobalX() const", typeof(double));
 		}
-		[SmokeMethod("hiResGlobalY", "() const", "")]
 		public double HiResGlobalY() {
-			return ((QTabletEvent) interceptor).HiResGlobalY();
+			return (double) interceptor.Invoke("hiResGlobalY", "hiResGlobalY() const", typeof(double));
 		}
-		[SmokeMethod("device", "() const", "")]
 		public QTabletEvent.TabletDevice Device() {
-			return ((QTabletEvent) interceptor).Device();
+			return (QTabletEvent.TabletDevice) interceptor.Invoke("device", "device() const", typeof(QTabletEvent.TabletDevice));
 		}
-		[SmokeMethod("pointerType", "() const", "")]
 		public QTabletEvent.PointerType pointerType() {
-			return ((QTabletEvent) interceptor).pointerType();
+			return (QTabletEvent.PointerType) interceptor.Invoke("pointerType", "pointerType() const", typeof(QTabletEvent.PointerType));
 		}
-		[SmokeMethod("uniqueId", "() const", "")]
 		public long UniqueId() {
-			return ((QTabletEvent) interceptor).UniqueId();
+			return (long) interceptor.Invoke("uniqueId", "uniqueId() const", typeof(long));
 		}
-		[SmokeMethod("pressure", "() const", "")]
 		public double Pressure() {
-			return ((QTabletEvent) interceptor).Pressure();
+			return (double) interceptor.Invoke("pressure", "pressure() const", typeof(double));
 		}
-		[SmokeMethod("z", "() const", "")]
 		public int Z() {
-			return ((QTabletEvent) interceptor).Z();
+			return (int) interceptor.Invoke("z", "z() const", typeof(int));
 		}
-		[SmokeMethod("tangentialPressure", "() const", "")]
 		public double TangentialPressure() {
-			return ((QTabletEvent) interceptor).TangentialPressure();
+			return (double) interceptor.Invoke("tangentialPressure", "tangentialPressure() const", typeof(double));
 		}
-		[SmokeMethod("rotation", "() const", "")]
 		public double Rotation() {
-			return ((QTabletEvent) interceptor).Rotation();
+			return (double) interceptor.Invoke("rotation", "rotation() const", typeof(double));
 		}
-		[SmokeMethod("xTilt", "() const", "")]
 		public int XTilt() {
-			return ((QTabletEvent) interceptor).XTilt();
+			return (int) interceptor.Invoke("xTilt", "xTilt() const", typeof(int));
 		}
-		[SmokeMethod("yTilt", "() const", "")]
 		public int YTilt() {
-			return ((QTabletEvent) interceptor).YTilt();
+			return (int) interceptor.Invoke("yTilt", "yTilt() const", typeof(int));
 		}
 		~QTabletEvent() {
-			DisposeQTabletEvent();
+			interceptor.Invoke("~QTabletEvent", "~QTabletEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTabletEvent();
-		}
-		[SmokeMethod("~QTabletEvent", "()", "")]
-		private void DisposeQTabletEvent() {
-			((QTabletEvent) interceptor).DisposeQTabletEvent();
+			interceptor.Invoke("~QTabletEvent", "~QTabletEvent()", typeof(void));
 		}
 	}
 }

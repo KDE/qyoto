@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionSizeGrip : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSizeGrip(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSizeGrip), this);
-			interceptor = (QStyleOptionSizeGrip) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionSizeGrip), "QStyleOptionSizeGrip", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SizeGrip,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionSizeGrip() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSizeGrip();
-		}
-		[SmokeMethod("QStyleOptionSizeGrip", "()", "")]
-		private void NewQStyleOptionSizeGrip() {
-			((QStyleOptionSizeGrip) interceptor).NewQStyleOptionSizeGrip();
+			interceptor.Invoke("QStyleOptionSizeGrip", "QStyleOptionSizeGrip()", typeof(void));
 		}
 		public QStyleOptionSizeGrip(QStyleOptionSizeGrip other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSizeGrip(other);
-		}
-		[SmokeMethod("QStyleOptionSizeGrip", "(const QStyleOptionSizeGrip&)", "#")]
-		private void NewQStyleOptionSizeGrip(QStyleOptionSizeGrip other) {
-			((QStyleOptionSizeGrip) interceptor).NewQStyleOptionSizeGrip(other);
+			interceptor.Invoke("QStyleOptionSizeGrip#", "QStyleOptionSizeGrip(const QStyleOptionSizeGrip&)", typeof(void), typeof(QStyleOptionSizeGrip), other);
 		}
 		public QStyleOptionSizeGrip(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSizeGrip(version);
-		}
-		[SmokeMethod("QStyleOptionSizeGrip", "(int)", "$")]
-		private void NewQStyleOptionSizeGrip(int version) {
-			((QStyleOptionSizeGrip) interceptor).NewQStyleOptionSizeGrip(version);
+			interceptor.Invoke("QStyleOptionSizeGrip$", "QStyleOptionSizeGrip(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionSizeGrip() {
-			DisposeQStyleOptionSizeGrip();
+			interceptor.Invoke("~QStyleOptionSizeGrip", "~QStyleOptionSizeGrip()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionSizeGrip();
-		}
-		[SmokeMethod("~QStyleOptionSizeGrip", "()", "")]
-		private void DisposeQStyleOptionSizeGrip() {
-			((QStyleOptionSizeGrip) interceptor).DisposeQStyleOptionSizeGrip();
+			interceptor.Invoke("~QStyleOptionSizeGrip", "~QStyleOptionSizeGrip()", typeof(void));
 		}
 	}
 }

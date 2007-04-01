@@ -7,62 +7,42 @@ namespace Qyoto {
 	public class QDomDocumentType : QDomNode, IDisposable {
  		protected QDomDocumentType(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentType), this);
-			interceptor = (QDomDocumentType) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomDocumentType), "QDomDocumentType", this);
 		}
 		public QDomDocumentType() : this((Type) null) {
 			CreateProxy();
-			NewQDomDocumentType();
-		}
-		[SmokeMethod("QDomDocumentType", "()", "")]
-		private void NewQDomDocumentType() {
-			((QDomDocumentType) interceptor).NewQDomDocumentType();
+			interceptor.Invoke("QDomDocumentType", "QDomDocumentType()", typeof(void));
 		}
 		public QDomDocumentType(QDomDocumentType x) : this((Type) null) {
 			CreateProxy();
-			NewQDomDocumentType(x);
+			interceptor.Invoke("QDomDocumentType#", "QDomDocumentType(const QDomDocumentType&)", typeof(void), typeof(QDomDocumentType), x);
 		}
-		[SmokeMethod("QDomDocumentType", "(const QDomDocumentType&)", "#")]
-		private void NewQDomDocumentType(QDomDocumentType x) {
-			((QDomDocumentType) interceptor).NewQDomDocumentType(x);
-		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QDomDocumentType) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("entities", "() const", "")]
 		public QDomNamedNodeMap Entities() {
-			return ((QDomDocumentType) interceptor).Entities();
+			return (QDomNamedNodeMap) interceptor.Invoke("entities", "entities() const", typeof(QDomNamedNodeMap));
 		}
-		[SmokeMethod("notations", "() const", "")]
 		public QDomNamedNodeMap Notations() {
-			return ((QDomDocumentType) interceptor).Notations();
+			return (QDomNamedNodeMap) interceptor.Invoke("notations", "notations() const", typeof(QDomNamedNodeMap));
 		}
-		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
-			return ((QDomDocumentType) interceptor).PublicId();
+			return (string) interceptor.Invoke("publicId", "publicId() const", typeof(string));
 		}
-		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
-			return ((QDomDocumentType) interceptor).SystemId();
+			return (string) interceptor.Invoke("systemId", "systemId() const", typeof(string));
 		}
-		[SmokeMethod("internalSubset", "() const", "")]
 		public string InternalSubset() {
-			return ((QDomDocumentType) interceptor).InternalSubset();
+			return (string) interceptor.Invoke("internalSubset", "internalSubset() const", typeof(string));
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomDocumentType) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomDocumentType() {
-			DisposeQDomDocumentType();
+			interceptor.Invoke("~QDomDocumentType", "~QDomDocumentType()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomDocumentType();
-		}
-		[SmokeMethod("~QDomDocumentType", "()", "")]
-		private void DisposeQDomDocumentType() {
-			((QDomDocumentType) interceptor).DisposeQDomDocumentType();
+			interceptor.Invoke("~QDomDocumentType", "~QDomDocumentType()", typeof(void));
 		}
 	}
 }

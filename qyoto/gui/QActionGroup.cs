@@ -8,107 +8,74 @@ namespace Qyoto {
 	[SmokeClass("QActionGroup")]
 	public class QActionGroup : QObject, IDisposable {
  		protected QActionGroup(Type dummy) : base((Type) null) {}
-		[SmokeClass("QActionGroup")]
-		interface IQActionGroupProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionGroup), this);
-			interceptor = (QActionGroup) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QActionGroup), "QActionGroup", this);
 		}
-		private static IQActionGroupProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QActionGroup() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQActionGroupProxy), null);
-			staticInterceptor = (IQActionGroupProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QActionGroup), "QActionGroup", null);
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
-			[SmokeMethod("isExclusive", "()", "")]
-			get { return ((QActionGroup) interceptor).Exclusive; }
-			[SmokeMethod("setExclusive", "(bool)", "$")]
-			set { ((QActionGroup) interceptor).Exclusive = value; }
+			get { return (bool) interceptor.Invoke("isExclusive", "isExclusive()", typeof(bool)); }
+			set { interceptor.Invoke("setExclusive$", "setExclusive(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			[SmokeMethod("isEnabled", "()", "")]
-			get { return ((QActionGroup) interceptor).Enabled; }
-			[SmokeMethod("setEnabled", "(bool)", "$")]
-			set { ((QActionGroup) interceptor).Enabled = value; }
+			get { return (bool) interceptor.Invoke("isEnabled", "isEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
-			[SmokeMethod("isVisible", "()", "")]
-			get { return ((QActionGroup) interceptor).Visible; }
-			[SmokeMethod("setVisible", "(bool)", "$")]
-			set { ((QActionGroup) interceptor).Visible = value; }
+			get { return (bool) interceptor.Invoke("isVisible", "isVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QActionGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQActionGroup(parent);
+			interceptor.Invoke("QActionGroup#", "QActionGroup(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		[SmokeMethod("QActionGroup", "(QObject*)", "#")]
-		private void NewQActionGroup(QObject parent) {
-			((QActionGroup) interceptor).NewQActionGroup(parent);
-		}
-		[SmokeMethod("addAction", "(QAction*)", "#")]
 		public QAction AddAction(QAction a) {
-			return ((QActionGroup) interceptor).AddAction(a);
+			return (QAction) interceptor.Invoke("addAction#", "addAction(QAction*)", typeof(QAction), typeof(QAction), a);
 		}
-		[SmokeMethod("addAction", "(const QString&)", "$")]
 		public QAction AddAction(string text) {
-			return ((QActionGroup) interceptor).AddAction(text);
+			return (QAction) interceptor.Invoke("addAction$", "addAction(const QString&)", typeof(QAction), typeof(string), text);
 		}
-		[SmokeMethod("addAction", "(const QIcon&, const QString&)", "#$")]
 		public QAction AddAction(QIcon icon, string text) {
-			return ((QActionGroup) interceptor).AddAction(icon,text);
+			return (QAction) interceptor.Invoke("addAction#$", "addAction(const QIcon&, const QString&)", typeof(QAction), typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("removeAction", "(QAction*)", "#")]
 		public void RemoveAction(QAction a) {
-			((QActionGroup) interceptor).RemoveAction(a);
+			interceptor.Invoke("removeAction#", "removeAction(QAction*)", typeof(void), typeof(QAction), a);
 		}
-		[SmokeMethod("actions", "() const", "")]
 		public List<QAction> Actions() {
-			return ((QActionGroup) interceptor).Actions();
+			return (List<QAction>) interceptor.Invoke("actions", "actions() const", typeof(List<QAction>));
 		}
-		[SmokeMethod("checkedAction", "() const", "")]
 		public QAction CheckedAction() {
-			return ((QActionGroup) interceptor).CheckedAction();
+			return (QAction) interceptor.Invoke("checkedAction", "checkedAction() const", typeof(QAction));
 		}
-		[SmokeMethod("isExclusive", "() const", "")]
 		public bool IsExclusive() {
-			return ((QActionGroup) interceptor).IsExclusive();
+			return (bool) interceptor.Invoke("isExclusive", "isExclusive() const", typeof(bool));
 		}
-		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ((QActionGroup) interceptor).IsEnabled();
+			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
-			return ((QActionGroup) interceptor).IsVisible();
+			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
 		}
 		[Q_SLOT("void setDisabled(bool)")]
-		[SmokeMethod("setDisabled", "(bool)", "$")]
 		public void SetDisabled(bool b) {
-			((QActionGroup) interceptor).SetDisabled(b);
+			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), b);
 		}
 		~QActionGroup() {
-			DisposeQActionGroup();
+			interceptor.Invoke("~QActionGroup", "~QActionGroup()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQActionGroup();
-		}
-		[SmokeMethod("~QActionGroup", "()", "")]
-		private void DisposeQActionGroup() {
-			((QActionGroup) interceptor).DisposeQActionGroup();
+			interceptor.Invoke("~QActionGroup", "~QActionGroup()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQActionGroupSignals Emit {
 			get { return (IQActionGroupSignals) Q_EMIT; }

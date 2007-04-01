@@ -6,151 +6,103 @@ namespace Qyoto {
 	[SmokeClass("QPushButton")]
 	public class QPushButton : QAbstractButton, IDisposable {
  		protected QPushButton(Type dummy) : base((Type) null) {}
-		[SmokeClass("QPushButton")]
-		interface IQPushButtonProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPushButton), this);
-			interceptor = (QPushButton) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPushButton), "QPushButton", this);
 		}
-		private static IQPushButtonProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPushButton() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPushButtonProxy), null);
-			staticInterceptor = (IQPushButtonProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPushButton), "QPushButton", null);
 		}
 		[Q_PROPERTY("bool", "autoDefault")]
 		public bool AutoDefault {
-			[SmokeMethod("autoDefault", "()", "")]
-			get { return ((QPushButton) interceptor).AutoDefault; }
-			[SmokeMethod("setAutoDefault", "(bool)", "$")]
-			set { ((QPushButton) interceptor).AutoDefault = value; }
+			get { return (bool) interceptor.Invoke("autoDefault", "autoDefault()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoDefault$", "setAutoDefault(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "default")]
 		public bool Default {
-			[SmokeMethod("isDefault", "()", "")]
-			get { return ((QPushButton) interceptor).Default; }
-			[SmokeMethod("setDefault", "(bool)", "$")]
-			set { ((QPushButton) interceptor).Default = value; }
+			get { return (bool) interceptor.Invoke("isDefault", "isDefault()", typeof(bool)); }
+			set { interceptor.Invoke("setDefault$", "setDefault(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {
-			[SmokeMethod("isFlat", "()", "")]
-			get { return ((QPushButton) interceptor).Flat; }
-			[SmokeMethod("setFlat", "(bool)", "$")]
-			set { ((QPushButton) interceptor).Flat = value; }
+			get { return (bool) interceptor.Invoke("isFlat", "isFlat()", typeof(bool)); }
+			set { interceptor.Invoke("setFlat$", "setFlat(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QPushButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQPushButton(parent);
-		}
-		[SmokeMethod("QPushButton", "(QWidget*)", "#")]
-		private void NewQPushButton(QWidget parent) {
-			((QPushButton) interceptor).NewQPushButton(parent);
+			interceptor.Invoke("QPushButton#", "QPushButton(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QPushButton() : this((Type) null) {
 			CreateProxy();
-			NewQPushButton();
-		}
-		[SmokeMethod("QPushButton", "()", "")]
-		private void NewQPushButton() {
-			((QPushButton) interceptor).NewQPushButton();
+			interceptor.Invoke("QPushButton", "QPushButton()", typeof(void));
 		}
 		public QPushButton(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQPushButton(text,parent);
-		}
-		[SmokeMethod("QPushButton", "(const QString&, QWidget*)", "$#")]
-		private void NewQPushButton(string text, QWidget parent) {
-			((QPushButton) interceptor).NewQPushButton(text,parent);
+			interceptor.Invoke("QPushButton$#", "QPushButton(const QString&, QWidget*)", typeof(void), typeof(string), text, typeof(QWidget), parent);
 		}
 		public QPushButton(string text) : this((Type) null) {
 			CreateProxy();
-			NewQPushButton(text);
-		}
-		[SmokeMethod("QPushButton", "(const QString&)", "$")]
-		private void NewQPushButton(string text) {
-			((QPushButton) interceptor).NewQPushButton(text);
+			interceptor.Invoke("QPushButton$", "QPushButton(const QString&)", typeof(void), typeof(string), text);
 		}
 		public QPushButton(QIcon icon, string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQPushButton(icon,text,parent);
-		}
-		[SmokeMethod("QPushButton", "(const QIcon&, const QString&, QWidget*)", "#$#")]
-		private void NewQPushButton(QIcon icon, string text, QWidget parent) {
-			((QPushButton) interceptor).NewQPushButton(icon,text,parent);
+			interceptor.Invoke("QPushButton#$#", "QPushButton(const QIcon&, const QString&, QWidget*)", typeof(void), typeof(QIcon), icon, typeof(string), text, typeof(QWidget), parent);
 		}
 		public QPushButton(QIcon icon, string text) : this((Type) null) {
 			CreateProxy();
-			NewQPushButton(icon,text);
+			interceptor.Invoke("QPushButton#$", "QPushButton(const QIcon&, const QString&)", typeof(void), typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("QPushButton", "(const QIcon&, const QString&)", "#$")]
-		private void NewQPushButton(QIcon icon, string text) {
-			((QPushButton) interceptor).NewQPushButton(icon,text);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QPushButton) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("isDefault", "() const", "")]
 		public bool IsDefault() {
-			return ((QPushButton) interceptor).IsDefault();
+			return (bool) interceptor.Invoke("isDefault", "isDefault() const", typeof(bool));
 		}
-		[SmokeMethod("setMenu", "(QMenu*)", "#")]
 		public void SetMenu(QMenu menu) {
-			((QPushButton) interceptor).SetMenu(menu);
+			interceptor.Invoke("setMenu#", "setMenu(QMenu*)", typeof(void), typeof(QMenu), menu);
 		}
-		[SmokeMethod("menu", "() const", "")]
 		public QMenu Menu() {
-			return ((QPushButton) interceptor).Menu();
+			return (QMenu) interceptor.Invoke("menu", "menu() const", typeof(QMenu));
 		}
-		[SmokeMethod("isFlat", "() const", "")]
 		public bool IsFlat() {
-			return ((QPushButton) interceptor).IsFlat();
+			return (bool) interceptor.Invoke("isFlat", "isFlat() const", typeof(bool));
 		}
 		[Q_SLOT("void showMenu()")]
-		[SmokeMethod("showMenu", "()", "")]
 		public void ShowMenu() {
-			((QPushButton) interceptor).ShowMenu();
+			interceptor.Invoke("showMenu", "showMenu()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QPushButton) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QPushButton) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QPushButton) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			((QPushButton) interceptor).FocusInEvent(arg1);
+			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected override void FocusOutEvent(QFocusEvent arg1) {
-			((QPushButton) interceptor).FocusOutEvent(arg1);
+			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
 		~QPushButton() {
-			DisposeQPushButton();
+			interceptor.Invoke("~QPushButton", "~QPushButton()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQPushButton();
-		}
-		[SmokeMethod("~QPushButton", "()", "")]
-		private void DisposeQPushButton() {
-			((QPushButton) interceptor).DisposeQPushButton();
+			interceptor.Invoke("~QPushButton", "~QPushButton()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQPushButtonSignals Emit {
 			get { return (IQPushButtonSignals) Q_EMIT; }

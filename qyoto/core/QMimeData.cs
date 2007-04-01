@@ -7,129 +7,94 @@ namespace Qyoto {
 	[SmokeClass("QMimeData")]
 	public class QMimeData : QObject, IDisposable {
  		protected QMimeData(Type dummy) : base((Type) null) {}
-		[SmokeClass("QMimeData")]
-		interface IQMimeDataProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeData), this);
-			interceptor = (QMimeData) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMimeData), "QMimeData", this);
 		}
-		private static IQMimeDataProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QMimeData() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMimeDataProxy), null);
-			staticInterceptor = (IQMimeDataProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QMimeData), "QMimeData", null);
 		}
 		public QMimeData() : this((Type) null) {
 			CreateProxy();
-			NewQMimeData();
+			interceptor.Invoke("QMimeData", "QMimeData()", typeof(void));
 		}
-		[SmokeMethod("QMimeData", "()", "")]
-		private void NewQMimeData() {
-			((QMimeData) interceptor).NewQMimeData();
-		}
-		[SmokeMethod("urls", "() const", "")]
 		public List<QUrl> Urls() {
-			return ((QMimeData) interceptor).Urls();
+			return (List<QUrl>) interceptor.Invoke("urls", "urls() const", typeof(List<QUrl>));
 		}
-		[SmokeMethod("setUrls", "(const QList<QUrl>&)", "?")]
 		public void SetUrls(List<QUrl> urls) {
-			((QMimeData) interceptor).SetUrls(urls);
+			interceptor.Invoke("setUrls?", "setUrls(const QList<QUrl>&)", typeof(void), typeof(List<QUrl>), urls);
 		}
-		[SmokeMethod("hasUrls", "() const", "")]
 		public bool HasUrls() {
-			return ((QMimeData) interceptor).HasUrls();
+			return (bool) interceptor.Invoke("hasUrls", "hasUrls() const", typeof(bool));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QMimeData) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			((QMimeData) interceptor).SetText(text);
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("hasText", "() const", "")]
 		public bool HasText() {
-			return ((QMimeData) interceptor).HasText();
+			return (bool) interceptor.Invoke("hasText", "hasText() const", typeof(bool));
 		}
-		[SmokeMethod("html", "() const", "")]
 		public string Html() {
-			return ((QMimeData) interceptor).Html();
+			return (string) interceptor.Invoke("html", "html() const", typeof(string));
 		}
-		[SmokeMethod("setHtml", "(const QString&)", "$")]
 		public void SetHtml(string html) {
-			((QMimeData) interceptor).SetHtml(html);
+			interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), html);
 		}
-		[SmokeMethod("hasHtml", "() const", "")]
 		public bool HasHtml() {
-			return ((QMimeData) interceptor).HasHtml();
+			return (bool) interceptor.Invoke("hasHtml", "hasHtml() const", typeof(bool));
 		}
-		[SmokeMethod("imageData", "() const", "")]
 		public QVariant ImageData() {
-			return ((QMimeData) interceptor).ImageData();
+			return (QVariant) interceptor.Invoke("imageData", "imageData() const", typeof(QVariant));
 		}
-		[SmokeMethod("setImageData", "(const QVariant&)", "#")]
 		public void SetImageData(QVariant image) {
-			((QMimeData) interceptor).SetImageData(image);
+			interceptor.Invoke("setImageData#", "setImageData(const QVariant&)", typeof(void), typeof(QVariant), image);
 		}
-		[SmokeMethod("hasImage", "() const", "")]
 		public bool HasImage() {
-			return ((QMimeData) interceptor).HasImage();
+			return (bool) interceptor.Invoke("hasImage", "hasImage() const", typeof(bool));
 		}
-		[SmokeMethod("colorData", "() const", "")]
 		public QVariant ColorData() {
-			return ((QMimeData) interceptor).ColorData();
+			return (QVariant) interceptor.Invoke("colorData", "colorData() const", typeof(QVariant));
 		}
-		[SmokeMethod("setColorData", "(const QVariant&)", "#")]
 		public void SetColorData(QVariant color) {
-			((QMimeData) interceptor).SetColorData(color);
+			interceptor.Invoke("setColorData#", "setColorData(const QVariant&)", typeof(void), typeof(QVariant), color);
 		}
-		[SmokeMethod("hasColor", "() const", "")]
 		public bool HasColor() {
-			return ((QMimeData) interceptor).HasColor();
+			return (bool) interceptor.Invoke("hasColor", "hasColor() const", typeof(bool));
 		}
-		[SmokeMethod("data", "(const QString&) const", "$")]
 		public QByteArray Data(string mimetype) {
-			return ((QMimeData) interceptor).Data(mimetype);
+			return (QByteArray) interceptor.Invoke("data$", "data(const QString&) const", typeof(QByteArray), typeof(string), mimetype);
 		}
-		[SmokeMethod("setData", "(const QString&, const QByteArray&)", "$#")]
 		public void SetData(string mimetype, QByteArray data) {
-			((QMimeData) interceptor).SetData(mimetype,data);
+			interceptor.Invoke("setData$#", "setData(const QString&, const QByteArray&)", typeof(void), typeof(string), mimetype, typeof(QByteArray), data);
 		}
-		[SmokeMethod("hasFormat", "(const QString&) const", "$")]
+		[SmokeMethod("hasFormat(const QString&) const")]
 		public virtual bool HasFormat(string mimetype) {
-			return ((QMimeData) interceptor).HasFormat(mimetype);
+			return (bool) interceptor.Invoke("hasFormat$", "hasFormat(const QString&) const", typeof(bool), typeof(string), mimetype);
 		}
-		[SmokeMethod("formats", "() const", "")]
+		[SmokeMethod("formats() const")]
 		public virtual List<string> Formats() {
-			return ((QMimeData) interceptor).Formats();
+			return (List<string>) interceptor.Invoke("formats", "formats() const", typeof(List<string>));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QMimeData) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("retrieveData", "(const QString&, QVariant::Type) const", "$$")]
+		[SmokeMethod("retrieveData(const QString&, QVariant::Type) const")]
 		protected virtual QVariant RetrieveData(string mimetype, QVariant.TypeOf preferredType) {
-			return ((QMimeData) interceptor).RetrieveData(mimetype,preferredType);
+			return (QVariant) interceptor.Invoke("retrieveData$$", "retrieveData(const QString&, QVariant::Type) const", typeof(QVariant), typeof(string), mimetype, typeof(QVariant.TypeOf), preferredType);
 		}
 		~QMimeData() {
-			DisposeQMimeData();
+			interceptor.Invoke("~QMimeData", "~QMimeData()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQMimeData();
-		}
-		[SmokeMethod("~QMimeData", "()", "")]
-		private void DisposeQMimeData() {
-			((QMimeData) interceptor).DisposeQMimeData();
+			interceptor.Invoke("~QMimeData", "~QMimeData()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQMimeDataSignals Emit {
 			get { return (IQMimeDataSignals) Q_EMIT; }

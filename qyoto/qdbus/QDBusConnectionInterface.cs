@@ -6,17 +6,9 @@ namespace Qyoto {
 	[SmokeClass("QDBusConnectionInterface")]
 	public partial class QDBusConnectionInterface : QDBusAbstractInterface {
  		protected QDBusConnectionInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDBusConnectionInterface")]
-		interface IQDBusConnectionInterfaceProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
-		private static IQDBusConnectionInterfaceProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDBusConnectionInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusConnectionInterfaceProxy), null);
-			staticInterceptor = (IQDBusConnectionInterfaceProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDBusConnectionInterface), "QDBusConnectionInterface", null);
 		}
 		public enum ServiceQueueOptions {
 			DontQueueService = 0,
@@ -43,10 +35,10 @@ namespace Qyoto {
 		// QDBusReply<uint> serviceUid(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<void> startService(const QString& arg1); >>>> NOT CONVERTED
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDBusConnectionInterfaceSignals Emit {
 			get { return (IQDBusConnectionInterfaceSignals) Q_EMIT; }

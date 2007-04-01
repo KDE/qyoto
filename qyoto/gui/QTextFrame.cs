@@ -7,85 +7,58 @@ namespace Qyoto {
 	[SmokeClass("QTextFrame")]
 	public class QTextFrame : QTextObject, IDisposable {
  		protected QTextFrame(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextFrame")]
-		interface IQTextFrameProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrame), this);
-			interceptor = (QTextFrame) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextFrame), "QTextFrame", this);
 		}
-		private static IQTextFrameProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextFrame() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextFrameProxy), null);
-			staticInterceptor = (IQTextFrameProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextFrame), "QTextFrame", null);
 		}
 		public QTextFrame(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
-			NewQTextFrame(doc);
+			interceptor.Invoke("QTextFrame#", "QTextFrame(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);
 		}
-		[SmokeMethod("QTextFrame", "(QTextDocument*)", "#")]
-		private void NewQTextFrame(QTextDocument doc) {
-			((QTextFrame) interceptor).NewQTextFrame(doc);
-		}
-		[SmokeMethod("setFrameFormat", "(const QTextFrameFormat&)", "#")]
 		public void SetFrameFormat(QTextFrameFormat format) {
-			((QTextFrame) interceptor).SetFrameFormat(format);
+			interceptor.Invoke("setFrameFormat#", "setFrameFormat(const QTextFrameFormat&)", typeof(void), typeof(QTextFrameFormat), format);
 		}
-		[SmokeMethod("frameFormat", "() const", "")]
 		public QTextFrameFormat FrameFormat() {
-			return ((QTextFrame) interceptor).FrameFormat();
+			return (QTextFrameFormat) interceptor.Invoke("frameFormat", "frameFormat() const", typeof(QTextFrameFormat));
 		}
-		[SmokeMethod("firstCursorPosition", "() const", "")]
 		public QTextCursor FirstCursorPosition() {
-			return ((QTextFrame) interceptor).FirstCursorPosition();
+			return (QTextCursor) interceptor.Invoke("firstCursorPosition", "firstCursorPosition() const", typeof(QTextCursor));
 		}
-		[SmokeMethod("lastCursorPosition", "() const", "")]
 		public QTextCursor LastCursorPosition() {
-			return ((QTextFrame) interceptor).LastCursorPosition();
+			return (QTextCursor) interceptor.Invoke("lastCursorPosition", "lastCursorPosition() const", typeof(QTextCursor));
 		}
-		[SmokeMethod("firstPosition", "() const", "")]
 		public int FirstPosition() {
-			return ((QTextFrame) interceptor).FirstPosition();
+			return (int) interceptor.Invoke("firstPosition", "firstPosition() const", typeof(int));
 		}
-		[SmokeMethod("lastPosition", "() const", "")]
 		public int LastPosition() {
-			return ((QTextFrame) interceptor).LastPosition();
+			return (int) interceptor.Invoke("lastPosition", "lastPosition() const", typeof(int));
 		}
-		[SmokeMethod("layoutData", "() const", "")]
 		public QTextFrameLayoutData LayoutData() {
-			return ((QTextFrame) interceptor).LayoutData();
+			return (QTextFrameLayoutData) interceptor.Invoke("layoutData", "layoutData() const", typeof(QTextFrameLayoutData));
 		}
-		[SmokeMethod("setLayoutData", "(QTextFrameLayoutData*)", "#")]
 		public void SetLayoutData(QTextFrameLayoutData data) {
-			((QTextFrame) interceptor).SetLayoutData(data);
+			interceptor.Invoke("setLayoutData#", "setLayoutData(QTextFrameLayoutData*)", typeof(void), typeof(QTextFrameLayoutData), data);
 		}
-		[SmokeMethod("childFrames", "() const", "")]
 		public List<QTextFrame> ChildFrames() {
-			return ((QTextFrame) interceptor).ChildFrames();
+			return (List<QTextFrame>) interceptor.Invoke("childFrames", "childFrames() const", typeof(List<QTextFrame>));
 		}
-		[SmokeMethod("parentFrame", "() const", "")]
 		public QTextFrame ParentFrame() {
-			return ((QTextFrame) interceptor).ParentFrame();
+			return (QTextFrame) interceptor.Invoke("parentFrame", "parentFrame() const", typeof(QTextFrame));
 		}
 		~QTextFrame() {
-			DisposeQTextFrame();
+			interceptor.Invoke("~QTextFrame", "~QTextFrame()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTextFrame();
-		}
-		[SmokeMethod("~QTextFrame", "()", "")]
-		private void DisposeQTextFrame() {
-			((QTextFrame) interceptor).DisposeQTextFrame();
+			interceptor.Invoke("~QTextFrame", "~QTextFrame()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextFrameSignals Emit {
 			get { return (IQTextFrameSignals) Q_EMIT; }

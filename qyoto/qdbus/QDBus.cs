@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	public class QDBus : MarshalByRefObject {
-		protected QDBus interceptor = null;
+	public class QDBus : Object {
+		protected SmokeInvocation interceptor = null;
 		public enum CallMode {
 			NoBlock = 0,
 			Block = 1,

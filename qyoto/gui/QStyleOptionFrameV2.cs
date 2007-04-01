@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionFrameV2 : QStyleOptionFrame, IDisposable {
  		protected QStyleOptionFrameV2(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrameV2), this);
-			interceptor = (QStyleOptionFrameV2) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionFrameV2), "QStyleOptionFrameV2", this);
 		}
 		public enum StyleOptionVersion {
 			Version = 2,
@@ -19,45 +18,25 @@ namespace Qyoto {
 		}
 		public QStyleOptionFrameV2() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrameV2();
-		}
-		[SmokeMethod("QStyleOptionFrameV2", "()", "")]
-		private void NewQStyleOptionFrameV2() {
-			((QStyleOptionFrameV2) interceptor).NewQStyleOptionFrameV2();
+			interceptor.Invoke("QStyleOptionFrameV2", "QStyleOptionFrameV2()", typeof(void));
 		}
 		public QStyleOptionFrameV2(QStyleOptionFrameV2 other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrameV2(other);
-		}
-		[SmokeMethod("QStyleOptionFrameV2", "(const QStyleOptionFrameV2&)", "#")]
-		private void NewQStyleOptionFrameV2(QStyleOptionFrameV2 other) {
-			((QStyleOptionFrameV2) interceptor).NewQStyleOptionFrameV2(other);
+			interceptor.Invoke("QStyleOptionFrameV2#", "QStyleOptionFrameV2(const QStyleOptionFrameV2&)", typeof(void), typeof(QStyleOptionFrameV2), other);
 		}
 		public QStyleOptionFrameV2(QStyleOptionFrame other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrameV2(other);
-		}
-		[SmokeMethod("QStyleOptionFrameV2", "(const QStyleOptionFrame&)", "#")]
-		private void NewQStyleOptionFrameV2(QStyleOptionFrame other) {
-			((QStyleOptionFrameV2) interceptor).NewQStyleOptionFrameV2(other);
+			interceptor.Invoke("QStyleOptionFrameV2#", "QStyleOptionFrameV2(const QStyleOptionFrame&)", typeof(void), typeof(QStyleOptionFrame), other);
 		}
 		public QStyleOptionFrameV2(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrameV2(version);
-		}
-		[SmokeMethod("QStyleOptionFrameV2", "(int)", "$")]
-		private void NewQStyleOptionFrameV2(int version) {
-			((QStyleOptionFrameV2) interceptor).NewQStyleOptionFrameV2(version);
+			interceptor.Invoke("QStyleOptionFrameV2$", "QStyleOptionFrameV2(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionFrameV2() {
-			DisposeQStyleOptionFrameV2();
+			interceptor.Invoke("~QStyleOptionFrameV2", "~QStyleOptionFrameV2()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionFrameV2();
-		}
-		[SmokeMethod("~QStyleOptionFrameV2", "()", "")]
-		private void DisposeQStyleOptionFrameV2() {
-			((QStyleOptionFrameV2) interceptor).DisposeQStyleOptionFrameV2();
+			interceptor.Invoke("~QStyleOptionFrameV2", "~QStyleOptionFrameV2()", typeof(void));
 		}
 	}
 }

@@ -6,115 +6,87 @@ namespace Qyoto {
 	[SmokeClass("QDial")]
 	public class QDial : QAbstractSlider, IDisposable {
  		protected QDial(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDial")]
-		interface IQDialProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDial), this);
-			interceptor = (QDial) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDial), "QDial", this);
 		}
-		private static IQDialProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDial() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDialProxy), null);
-			staticInterceptor = (IQDialProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDial), "QDial", null);
 		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
-			[SmokeMethod("wrapping", "()", "")]
-			get { return ((QDial) interceptor).Wrapping; }
-			[SmokeMethod("setWrapping", "(bool)", "$")]
-			set { ((QDial) interceptor).Wrapping = value; }
+			get { return (bool) interceptor.Invoke("wrapping", "wrapping()", typeof(bool)); }
+			set { interceptor.Invoke("setWrapping$", "setWrapping(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "notchSize")]
 		public int NotchSize {
-			[SmokeMethod("notchSize", "()", "")]
-			get { return ((QDial) interceptor).NotchSize; }
+			get { return (int) interceptor.Invoke("notchSize", "notchSize()", typeof(int)); }
 		}
 		[Q_PROPERTY("qreal", "notchTarget")]
 		public double NotchTarget {
-			[SmokeMethod("notchTarget", "()", "")]
-			get { return ((QDial) interceptor).NotchTarget; }
-			[SmokeMethod("setNotchTarget", "(qreal)", "$")]
-			set { ((QDial) interceptor).NotchTarget = value; }
+			get { return (double) interceptor.Invoke("notchTarget", "notchTarget()", typeof(double)); }
+			set { interceptor.Invoke("setNotchTarget$", "setNotchTarget(qreal)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("bool", "notchesVisible")]
 		public bool NotchesVisible {
-			[SmokeMethod("notchesVisible", "()", "")]
-			get { return ((QDial) interceptor).NotchesVisible; }
-			[SmokeMethod("setNotchesVisible", "(bool)", "$")]
-			set { ((QDial) interceptor).NotchesVisible = value; }
+			get { return (bool) interceptor.Invoke("notchesVisible", "notchesVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setNotchesVisible$", "setNotchesVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QDial(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDial(parent);
-		}
-		[SmokeMethod("QDial", "(QWidget*)", "#")]
-		private void NewQDial(QWidget parent) {
-			((QDial) interceptor).NewQDial(parent);
+			interceptor.Invoke("QDial#", "QDial(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QDial() : this((Type) null) {
 			CreateProxy();
-			NewQDial();
+			interceptor.Invoke("QDial", "QDial()", typeof(void));
 		}
-		[SmokeMethod("QDial", "()", "")]
-		private void NewQDial() {
-			((QDial) interceptor).NewQDial();
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QDial) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QDial) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QDial) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent re) {
-			((QDial) interceptor).ResizeEvent(re);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), re);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent pe) {
-			((QDial) interceptor).PaintEvent(pe);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), pe);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent me) {
-			((QDial) interceptor).MousePressEvent(me);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), me);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent me) {
-			((QDial) interceptor).MouseReleaseEvent(me);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), me);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent me) {
-			((QDial) interceptor).MouseMoveEvent(me);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), me);
 		}
-		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
+		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
 		protected override void sliderChange(QAbstractSlider.SliderChange change) {
-			((QDial) interceptor).sliderChange(change);
+			interceptor.Invoke("sliderChange$", "sliderChange(QAbstractSlider::SliderChange)", typeof(void), typeof(QAbstractSlider.SliderChange), change);
 		}
 		~QDial() {
-			DisposeQDial();
+			interceptor.Invoke("~QDial", "~QDial()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDial();
-		}
-		[SmokeMethod("~QDial", "()", "")]
-		private void DisposeQDial() {
-			((QDial) interceptor).DisposeQDial();
+			interceptor.Invoke("~QDial", "~QDial()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDialSignals Emit {
 			get { return (IQDialSignals) Q_EMIT; }

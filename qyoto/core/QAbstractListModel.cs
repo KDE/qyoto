@@ -6,69 +6,48 @@ namespace Qyoto {
 	[SmokeClass("QAbstractListModel")]
 	public abstract class QAbstractListModel : QAbstractItemModel, IDisposable {
  		protected QAbstractListModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractListModel")]
-		interface IQAbstractListModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractListModel), this);
-			interceptor = (QAbstractListModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractListModel), "QAbstractListModel", this);
 		}
-		private static IQAbstractListModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractListModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractListModelProxy), null);
-			staticInterceptor = (IQAbstractListModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractListModel), "QAbstractListModel", null);
 		}
 		public QAbstractListModel(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractListModel(parent);
-		}
-		[SmokeMethod("QAbstractListModel", "(QObject*)", "#")]
-		private void NewQAbstractListModel(QObject parent) {
-			((QAbstractListModel) interceptor).NewQAbstractListModel(parent);
+			interceptor.Invoke("QAbstractListModel#", "QAbstractListModel(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QAbstractListModel() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractListModel();
+			interceptor.Invoke("QAbstractListModel", "QAbstractListModel()", typeof(void));
 		}
-		[SmokeMethod("QAbstractListModel", "()", "")]
-		private void NewQAbstractListModel() {
-			((QAbstractListModel) interceptor).NewQAbstractListModel();
-		}
-		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
+		[SmokeMethod("index(int, int, const QModelIndex&) const")]
 		public override QModelIndex Index(int row, int column, QModelIndex parent) {
-			return ((QAbstractListModel) interceptor).Index(row,column,parent);
+			return (QModelIndex) interceptor.Invoke("index$$#", "index(int, int, const QModelIndex&) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("index", "(int, int) const", "$$")]
+		[SmokeMethod("index(int, int) const")]
 		public virtual QModelIndex Index(int row, int column) {
-			return ((QAbstractListModel) interceptor).Index(row,column);
+			return (QModelIndex) interceptor.Invoke("index$$", "index(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("index", "(int) const", "$")]
+		[SmokeMethod("index(int) const")]
 		public virtual QModelIndex Index(int row) {
-			return ((QAbstractListModel) interceptor).Index(row);
+			return (QModelIndex) interceptor.Invoke("index$", "index(int) const", typeof(QModelIndex), typeof(int), row);
 		}
-		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]
+		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
-			return ((QAbstractListModel) interceptor).DropMimeData(data,action,row,column,parent);
+			return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
 		~QAbstractListModel() {
-			DisposeQAbstractListModel();
+			interceptor.Invoke("~QAbstractListModel", "~QAbstractListModel()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQAbstractListModel();
-		}
-		[SmokeMethod("~QAbstractListModel", "()", "")]
-		private void DisposeQAbstractListModel() {
-			((QAbstractListModel) interceptor).DisposeQAbstractListModel();
+			interceptor.Invoke("~QAbstractListModel", "~QAbstractListModel()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractListModelSignals Emit {
 			get { return (IQAbstractListModelSignals) Q_EMIT; }

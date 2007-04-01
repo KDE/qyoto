@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleHintReturnMask : QStyleHintReturn, IDisposable {
  		protected QStyleHintReturnMask(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturnMask), this);
-			interceptor = (QStyleHintReturnMask) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleHintReturnMask), "QStyleHintReturnMask", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleHintReturn.HintReturnType.SH_Mask,
@@ -18,21 +17,13 @@ namespace Qyoto {
 		}
 		public QStyleHintReturnMask() : this((Type) null) {
 			CreateProxy();
-			NewQStyleHintReturnMask();
-		}
-		[SmokeMethod("QStyleHintReturnMask", "()", "")]
-		private void NewQStyleHintReturnMask() {
-			((QStyleHintReturnMask) interceptor).NewQStyleHintReturnMask();
+			interceptor.Invoke("QStyleHintReturnMask", "QStyleHintReturnMask()", typeof(void));
 		}
 		~QStyleHintReturnMask() {
-			DisposeQStyleHintReturnMask();
+			interceptor.Invoke("~QStyleHintReturnMask", "~QStyleHintReturnMask()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleHintReturnMask();
-		}
-		[SmokeMethod("~QStyleHintReturnMask", "()", "")]
-		private void DisposeQStyleHintReturnMask() {
-			((QStyleHintReturnMask) interceptor).DisposeQStyleHintReturnMask();
+			interceptor.Invoke("~QStyleHintReturnMask", "~QStyleHintReturnMask()", typeof(void));
 		}
 	}
 }

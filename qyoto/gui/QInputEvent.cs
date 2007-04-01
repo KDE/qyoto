@@ -7,38 +7,24 @@ namespace Qyoto {
 	public class QInputEvent : QEvent, IDisposable {
  		protected QInputEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputEvent), this);
-			interceptor = (QInputEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QInputEvent), "QInputEvent", this);
 		}
 		public QInputEvent(QEvent.TypeOf type, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQInputEvent(type,modifiers);
-		}
-		[SmokeMethod("QInputEvent", "(QEvent::Type, Qt::KeyboardModifiers)", "$$")]
-		private void NewQInputEvent(QEvent.TypeOf type, int modifiers) {
-			((QInputEvent) interceptor).NewQInputEvent(type,modifiers);
+			interceptor.Invoke("QInputEvent$$", "QInputEvent(QEvent::Type, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(int), modifiers);
 		}
 		public QInputEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQInputEvent(type);
+			interceptor.Invoke("QInputEvent$", "QInputEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
-		[SmokeMethod("QInputEvent", "(QEvent::Type)", "$")]
-		private void NewQInputEvent(QEvent.TypeOf type) {
-			((QInputEvent) interceptor).NewQInputEvent(type);
-		}
-		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ((QInputEvent) interceptor).Modifiers();
+			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
 		}
 		~QInputEvent() {
-			DisposeQInputEvent();
+			interceptor.Invoke("~QInputEvent", "~QInputEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQInputEvent();
-		}
-		[SmokeMethod("~QInputEvent", "()", "")]
-		private void DisposeQInputEvent() {
-			((QInputEvent) interceptor).DisposeQInputEvent();
+			interceptor.Invoke("~QInputEvent", "~QInputEvent()", typeof(void));
 		}
 	}
 }

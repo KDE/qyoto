@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QFontComboBox")]
 	public class QFontComboBox : QComboBox, IDisposable {
  		protected QFontComboBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFontComboBox")]
-		interface IQFontComboBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontComboBox), this);
-			interceptor = (QFontComboBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFontComboBox), "QFontComboBox", this);
 		}
-		private static IQFontComboBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFontComboBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontComboBoxProxy), null);
-			staticInterceptor = (IQFontComboBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFontComboBox), "QFontComboBox", null);
 		}
 		public enum FontFilter {
 			AllFonts = 0,
@@ -32,64 +23,46 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QFontDatabase::WritingSystem", "writingSystem")]
 		public QFontDatabase.WritingSystem WritingSystem {
-			[SmokeMethod("writingSystem", "()", "")]
-			get { return ((QFontComboBox) interceptor).WritingSystem; }
-			[SmokeMethod("setWritingSystem", "(QFontDatabase::WritingSystem)", "$")]
-			set { ((QFontComboBox) interceptor).WritingSystem = value; }
+			get { return (QFontDatabase.WritingSystem) interceptor.Invoke("writingSystem", "writingSystem()", typeof(QFontDatabase.WritingSystem)); }
+			set { interceptor.Invoke("setWritingSystem$", "setWritingSystem(QFontDatabase::WritingSystem)", typeof(void), typeof(QFontDatabase.WritingSystem), value); }
 		}
 		[Q_PROPERTY("FontFilters", "fontFilters")]
 		public int FontFilters {
-			[SmokeMethod("fontFilters", "()", "")]
-			get { return ((QFontComboBox) interceptor).FontFilters; }
-			[SmokeMethod("setFontFilters", "(FontFilters)", "$")]
-			set { ((QFontComboBox) interceptor).FontFilters = value; }
+			get { return (int) interceptor.Invoke("fontFilters", "fontFilters()", typeof(int)); }
+			set { interceptor.Invoke("setFontFilters$", "setFontFilters(FontFilters)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QFont", "currentFont")]
 		public QFont CurrentFont {
-			[SmokeMethod("currentFont", "()", "")]
-			get { return ((QFontComboBox) interceptor).CurrentFont; }
-			[SmokeMethod("setCurrentFont", "(QFont)", "#")]
-			set { ((QFontComboBox) interceptor).CurrentFont = value; }
+			get { return (QFont) interceptor.Invoke("currentFont", "currentFont()", typeof(QFont)); }
+			set { interceptor.Invoke("setCurrentFont#", "setCurrentFont(QFont)", typeof(void), typeof(QFont), value); }
 		}
 		public QFontComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQFontComboBox(parent);
-		}
-		[SmokeMethod("QFontComboBox", "(QWidget*)", "#")]
-		private void NewQFontComboBox(QWidget parent) {
-			((QFontComboBox) interceptor).NewQFontComboBox(parent);
+			interceptor.Invoke("QFontComboBox#", "QFontComboBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QFontComboBox() : this((Type) null) {
 			CreateProxy();
-			NewQFontComboBox();
+			interceptor.Invoke("QFontComboBox", "QFontComboBox()", typeof(void));
 		}
-		[SmokeMethod("QFontComboBox", "()", "")]
-		private void NewQFontComboBox() {
-			((QFontComboBox) interceptor).NewQFontComboBox();
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QFontComboBox) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent e) {
-			return ((QFontComboBox) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
 		~QFontComboBox() {
-			DisposeQFontComboBox();
+			interceptor.Invoke("~QFontComboBox", "~QFontComboBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFontComboBox();
-		}
-		[SmokeMethod("~QFontComboBox", "()", "")]
-		private void DisposeQFontComboBox() {
-			((QFontComboBox) interceptor).DisposeQFontComboBox();
+			interceptor.Invoke("~QFontComboBox", "~QFontComboBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQFontComboBoxSignals Emit {
 			get { return (IQFontComboBoxSignals) Q_EMIT; }

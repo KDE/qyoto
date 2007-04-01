@@ -8,316 +8,268 @@ namespace Qyoto {
 	[SmokeClass("QAbstractItemModel")]
 	public abstract partial class QAbstractItemModel : QObject {
  		protected QAbstractItemModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractItemModel")]
-		interface IQAbstractItemModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemModel), this);
-			interceptor = (QAbstractItemModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractItemModel), "QAbstractItemModel", this);
 		}
-		private static IQAbstractItemModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractItemModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractItemModelProxy), null);
-			staticInterceptor = (IQAbstractItemModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemModel), "QAbstractItemModel", null);
 		}
 		// QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QAbstractItemModel(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractItemModel(parent);
-		}
-		[SmokeMethod("QAbstractItemModel", "(QObject*)", "#")]
-		private void NewQAbstractItemModel(QObject parent) {
-			((QAbstractItemModel) interceptor).NewQAbstractItemModel(parent);
+			interceptor.Invoke("QAbstractItemModel#", "QAbstractItemModel(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QAbstractItemModel() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractItemModel();
+			interceptor.Invoke("QAbstractItemModel", "QAbstractItemModel()", typeof(void));
 		}
-		[SmokeMethod("QAbstractItemModel", "()", "")]
-		private void NewQAbstractItemModel() {
-			((QAbstractItemModel) interceptor).NewQAbstractItemModel();
-		}
-		[SmokeMethod("hasIndex", "(int, int, const QModelIndex&) const", "$$#")]
 		public bool HasIndex(int row, int column, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).HasIndex(row,column,parent);
+			return (bool) interceptor.Invoke("hasIndex$$#", "hasIndex(int, int, const QModelIndex&) const", typeof(bool), typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("hasIndex", "(int, int) const", "$$")]
 		public bool HasIndex(int row, int column) {
-			return ((QAbstractItemModel) interceptor).HasIndex(row,column);
+			return (bool) interceptor.Invoke("hasIndex$$", "hasIndex(int, int) const", typeof(bool), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
+		[SmokeMethod("index(int, int, const QModelIndex&) const")]
 		public abstract QModelIndex Index(int row, int column, QModelIndex parent);
-		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("parent(const QModelIndex&) const")]
 		public abstract QModelIndex Parent(QModelIndex child);
-		[SmokeMethod("sibling", "(int, int, const QModelIndex&) const", "$$#")]
 		public QModelIndex Sibling(int row, int column, QModelIndex idx) {
-			return ((QAbstractItemModel) interceptor).Sibling(row,column,idx);
+			return (QModelIndex) interceptor.Invoke("sibling$$#", "sibling(int, int, const QModelIndex&) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(QModelIndex), idx);
 		}
-		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("rowCount(const QModelIndex&) const")]
 		public abstract int RowCount(QModelIndex parent);
-		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("columnCount(const QModelIndex&) const")]
 		public abstract int ColumnCount(QModelIndex parent);
-		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("hasChildren(const QModelIndex&) const")]
 		public virtual bool HasChildren(QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).HasChildren(parent);
+			return (bool) interceptor.Invoke("hasChildren#", "hasChildren(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("hasChildren", "() const", "")]
+		[SmokeMethod("hasChildren() const")]
 		public virtual bool HasChildren() {
-			return ((QAbstractItemModel) interceptor).HasChildren();
+			return (bool) interceptor.Invoke("hasChildren", "hasChildren() const", typeof(bool));
 		}
-		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
+		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public abstract QVariant Data(QModelIndex index, int role);
-		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&, int)")]
 		public virtual bool SetData(QModelIndex index, QVariant value, int role) {
-			return ((QAbstractItemModel) interceptor).SetData(index,value,role);
+			return (bool) interceptor.Invoke("setData##$", "setData(const QModelIndex&, const QVariant&, int)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value, typeof(int), role);
 		}
-		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
 		public virtual bool SetData(QModelIndex index, QVariant value) {
-			return ((QAbstractItemModel) interceptor).SetData(index,value);
+			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public virtual QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ((QAbstractItemModel) interceptor).HeaderData(section,orientation,role);
+			return (QVariant) interceptor.Invoke("headerData$$$", "headerData(int, Qt::Orientation, int) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(int), role);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation) const", "$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation) const")]
 		public virtual QVariant HeaderData(int section, Qt.Orientation orientation) {
-			return ((QAbstractItemModel) interceptor).HeaderData(section,orientation);
+			return (QVariant) interceptor.Invoke("headerData$$", "headerData(int, Qt::Orientation) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&, int)", "$$#$")]
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&, int)")]
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
-			return ((QAbstractItemModel) interceptor).SetHeaderData(section,orientation,value,role);
+			return (bool) interceptor.Invoke("setHeaderData$$#$", "setHeaderData(int, Qt::Orientation, const QVariant&, int)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value, typeof(int), role);
 		}
-		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&)", "$$#")]
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&)")]
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
-			return ((QAbstractItemModel) interceptor).SetHeaderData(section,orientation,value);
+			return (bool) interceptor.Invoke("setHeaderData$$#", "setHeaderData(int, Qt::Orientation, const QVariant&)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value);
 		}
-		[SmokeMethod("itemData", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("itemData(const QModelIndex&) const")]
 		public virtual Dictionary<int, QVariant> ItemData(QModelIndex index) {
-			return ((QAbstractItemModel) interceptor).ItemData(index);
+			return (Dictionary<int, QVariant>) interceptor.Invoke("itemData#", "itemData(const QModelIndex&) const", typeof(Dictionary<int, QVariant>), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("setItemData", "(const QModelIndex&, const QMap<int, QVariant>&)", "#?")]
+		[SmokeMethod("setItemData(const QModelIndex&, const QMap<int, QVariant>&)")]
 		public virtual bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
-			return ((QAbstractItemModel) interceptor).SetItemData(index,roles);
+			return (bool) interceptor.Invoke("setItemData#?", "setItemData(const QModelIndex&, const QMap<int, QVariant>&)", typeof(bool), typeof(QModelIndex), index, typeof(Dictionary<int, QVariant>), roles);
 		}
-		[SmokeMethod("mimeTypes", "() const", "")]
+		[SmokeMethod("mimeTypes() const")]
 		public virtual List<string> MimeTypes() {
-			return ((QAbstractItemModel) interceptor).MimeTypes();
+			return (List<string>) interceptor.Invoke("mimeTypes", "mimeTypes() const", typeof(List<string>));
 		}
-		[SmokeMethod("mimeData", "(const QModelIndexList&) const", "?")]
+		[SmokeMethod("mimeData(const QModelIndexList&) const")]
 		public virtual QMimeData MimeData(List<QModelIndex> indexes) {
-			return ((QAbstractItemModel) interceptor).MimeData(indexes);
+			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QModelIndexList&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
 		}
-		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]
+		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public virtual bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).DropMimeData(data,action,row,column,parent);
+			return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("supportedDropActions", "() const", "")]
+		[SmokeMethod("supportedDropActions() const")]
 		public virtual int SupportedDropActions() {
-			return ((QAbstractItemModel) interceptor).SupportedDropActions();
+			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
 		}
-		[SmokeMethod("supportedDragActions", "() const", "")]
 		public int SupportedDragActions() {
-			return ((QAbstractItemModel) interceptor).SupportedDragActions();
+			return (int) interceptor.Invoke("supportedDragActions", "supportedDragActions() const", typeof(int));
 		}
-		[SmokeMethod("setSupportedDragActions", "(Qt::DropActions)", "$")]
 		public void SetSupportedDragActions(int arg1) {
-			((QAbstractItemModel) interceptor).SetSupportedDragActions(arg1);
+			interceptor.Invoke("setSupportedDragActions$", "setSupportedDragActions(Qt::DropActions)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("insertRows", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("insertRows(int, int, const QModelIndex&)")]
 		public virtual bool InsertRows(int row, int count, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).InsertRows(row,count,parent);
+			return (bool) interceptor.Invoke("insertRows$$#", "insertRows(int, int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("insertRows", "(int, int)", "$$")]
+		[SmokeMethod("insertRows(int, int)")]
 		public virtual bool InsertRows(int row, int count) {
-			return ((QAbstractItemModel) interceptor).InsertRows(row,count);
+			return (bool) interceptor.Invoke("insertRows$$", "insertRows(int, int)", typeof(bool), typeof(int), row, typeof(int), count);
 		}
-		[SmokeMethod("insertColumns", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("insertColumns(int, int, const QModelIndex&)")]
 		public virtual bool InsertColumns(int column, int count, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).InsertColumns(column,count,parent);
+			return (bool) interceptor.Invoke("insertColumns$$#", "insertColumns(int, int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("insertColumns", "(int, int)", "$$")]
+		[SmokeMethod("insertColumns(int, int)")]
 		public virtual bool InsertColumns(int column, int count) {
-			return ((QAbstractItemModel) interceptor).InsertColumns(column,count);
+			return (bool) interceptor.Invoke("insertColumns$$", "insertColumns(int, int)", typeof(bool), typeof(int), column, typeof(int), count);
 		}
-		[SmokeMethod("removeRows", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("removeRows(int, int, const QModelIndex&)")]
 		public virtual bool RemoveRows(int row, int count, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).RemoveRows(row,count,parent);
+			return (bool) interceptor.Invoke("removeRows$$#", "removeRows(int, int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("removeRows", "(int, int)", "$$")]
+		[SmokeMethod("removeRows(int, int)")]
 		public virtual bool RemoveRows(int row, int count) {
-			return ((QAbstractItemModel) interceptor).RemoveRows(row,count);
+			return (bool) interceptor.Invoke("removeRows$$", "removeRows(int, int)", typeof(bool), typeof(int), row, typeof(int), count);
 		}
-		[SmokeMethod("removeColumns", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("removeColumns(int, int, const QModelIndex&)")]
 		public virtual bool RemoveColumns(int column, int count, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).RemoveColumns(column,count,parent);
+			return (bool) interceptor.Invoke("removeColumns$$#", "removeColumns(int, int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("removeColumns", "(int, int)", "$$")]
+		[SmokeMethod("removeColumns(int, int)")]
 		public virtual bool RemoveColumns(int column, int count) {
-			return ((QAbstractItemModel) interceptor).RemoveColumns(column,count);
+			return (bool) interceptor.Invoke("removeColumns$$", "removeColumns(int, int)", typeof(bool), typeof(int), column, typeof(int), count);
 		}
-		[SmokeMethod("insertRow", "(int, const QModelIndex&)", "$#")]
 		public bool InsertRow(int row, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).InsertRow(row,parent);
+			return (bool) interceptor.Invoke("insertRow$#", "insertRow(int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("insertRow", "(int)", "$")]
 		public bool InsertRow(int row) {
-			return ((QAbstractItemModel) interceptor).InsertRow(row);
+			return (bool) interceptor.Invoke("insertRow$", "insertRow(int)", typeof(bool), typeof(int), row);
 		}
-		[SmokeMethod("insertColumn", "(int, const QModelIndex&)", "$#")]
 		public bool InsertColumn(int column, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).InsertColumn(column,parent);
+			return (bool) interceptor.Invoke("insertColumn$#", "insertColumn(int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("insertColumn", "(int)", "$")]
 		public bool InsertColumn(int column) {
-			return ((QAbstractItemModel) interceptor).InsertColumn(column);
+			return (bool) interceptor.Invoke("insertColumn$", "insertColumn(int)", typeof(bool), typeof(int), column);
 		}
-		[SmokeMethod("removeRow", "(int, const QModelIndex&)", "$#")]
 		public bool RemoveRow(int row, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).RemoveRow(row,parent);
+			return (bool) interceptor.Invoke("removeRow$#", "removeRow(int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("removeRow", "(int)", "$")]
 		public bool RemoveRow(int row) {
-			return ((QAbstractItemModel) interceptor).RemoveRow(row);
+			return (bool) interceptor.Invoke("removeRow$", "removeRow(int)", typeof(bool), typeof(int), row);
 		}
-		[SmokeMethod("removeColumn", "(int, const QModelIndex&)", "$#")]
 		public bool RemoveColumn(int column, QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).RemoveColumn(column,parent);
+			return (bool) interceptor.Invoke("removeColumn$#", "removeColumn(int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("removeColumn", "(int)", "$")]
 		public bool RemoveColumn(int column) {
-			return ((QAbstractItemModel) interceptor).RemoveColumn(column);
+			return (bool) interceptor.Invoke("removeColumn$", "removeColumn(int)", typeof(bool), typeof(int), column);
 		}
-		[SmokeMethod("fetchMore", "(const QModelIndex&)", "#")]
+		[SmokeMethod("fetchMore(const QModelIndex&)")]
 		public virtual void FetchMore(QModelIndex parent) {
-			((QAbstractItemModel) interceptor).FetchMore(parent);
+			interceptor.Invoke("fetchMore#", "fetchMore(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("canFetchMore", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("canFetchMore(const QModelIndex&) const")]
 		public virtual bool CanFetchMore(QModelIndex parent) {
-			return ((QAbstractItemModel) interceptor).CanFetchMore(parent);
+			return (bool) interceptor.Invoke("canFetchMore#", "canFetchMore(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("flags(const QModelIndex&) const")]
 		public virtual int Flags(QModelIndex index) {
-			return ((QAbstractItemModel) interceptor).Flags(index);
+			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
+		[SmokeMethod("sort(int, Qt::SortOrder)")]
 		public virtual void Sort(int column, Qt.SortOrder order) {
-			((QAbstractItemModel) interceptor).Sort(column,order);
+			interceptor.Invoke("sort$$", "sort(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}
-		[SmokeMethod("sort", "(int)", "$")]
+		[SmokeMethod("sort(int)")]
 		public virtual void Sort(int column) {
-			((QAbstractItemModel) interceptor).Sort(column);
+			interceptor.Invoke("sort$", "sort(int)", typeof(void), typeof(int), column);
 		}
-		[SmokeMethod("buddy", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("buddy(const QModelIndex&) const")]
 		public virtual QModelIndex Buddy(QModelIndex index) {
-			return ((QAbstractItemModel) interceptor).Buddy(index);
+			return (QModelIndex) interceptor.Invoke("buddy#", "buddy(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", "#$#$$")]
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
-			return ((QAbstractItemModel) interceptor).Match(start,role,value,hits,flags);
+			return (List<QModelIndex>) interceptor.Invoke("match#$#$$", "match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits, typeof(int), flags);
 		}
-		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&, int) const", "#$#$")]
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {
-			return ((QAbstractItemModel) interceptor).Match(start,role,value,hits);
+			return (List<QModelIndex>) interceptor.Invoke("match#$#$", "match(const QModelIndex&, int, const QVariant&, int) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits);
 		}
-		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&) const", "#$#")]
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value) {
-			return ((QAbstractItemModel) interceptor).Match(start,role,value);
+			return (List<QModelIndex>) interceptor.Invoke("match#$#", "match(const QModelIndex&, int, const QVariant&) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value);
 		}
-		[SmokeMethod("span", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("span(const QModelIndex&) const")]
 		public virtual QSize Span(QModelIndex index) {
-			return ((QAbstractItemModel) interceptor).Span(index);
+			return (QSize) interceptor.Invoke("span#", "span(const QModelIndex&) const", typeof(QSize), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("parent", "() const", "")]
 		public QObject Parent() {
-			return ((QAbstractItemModel) interceptor).Parent();
+			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
 		[Q_SLOT("bool submit()")]
-		[SmokeMethod("submit", "()", "")]
+		[SmokeMethod("submit()")]
 		public virtual bool Submit() {
-			return ((QAbstractItemModel) interceptor).Submit();
+			return (bool) interceptor.Invoke("submit", "submit()", typeof(bool));
 		}
 		[Q_SLOT("void revert()")]
-		[SmokeMethod("revert", "()", "")]
+		[SmokeMethod("revert()")]
 		public virtual void Revert() {
-			((QAbstractItemModel) interceptor).Revert();
+			interceptor.Invoke("revert", "revert()", typeof(void));
 		}
-		[SmokeMethod("createIndex", "(int, int) const", "$$")]
 		protected QModelIndex CreateIndex(int row, int column) {
-			return ((QAbstractItemModel) interceptor).CreateIndex(row,column);
+			return (QModelIndex) interceptor.Invoke("createIndex$$", "createIndex(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("createIndex", "(int, int, int) const", "$$$")]
 		protected QModelIndex CreateIndex(int row, int column, int id) {
-			return ((QAbstractItemModel) interceptor).CreateIndex(row,column,id);
+			return (QModelIndex) interceptor.Invoke("createIndex$$$", "createIndex(int, int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(int), id);
 		}
-		[SmokeMethod("createIndex", "(int, int, quint32) const", "$$$")]
 		protected QModelIndex CreateIndex(int row, int column, uint id) {
-			return ((QAbstractItemModel) interceptor).CreateIndex(row,column,id);
+			return (QModelIndex) interceptor.Invoke("createIndex$$$", "createIndex(int, int, quint32) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(uint), id);
 		}
-		[SmokeMethod("encodeData", "(const QModelIndexList&, QDataStream&) const", "?#")]
 		protected void EncodeData(List<QModelIndex> indexes, QDataStream stream) {
-			((QAbstractItemModel) interceptor).EncodeData(indexes,stream);
+			interceptor.Invoke("encodeData?#", "encodeData(const QModelIndexList&, QDataStream&) const", typeof(void), typeof(List<QModelIndex>), indexes, typeof(QDataStream), stream);
 		}
-		[SmokeMethod("decodeData", "(int, int, const QModelIndex&, QDataStream&)", "$$##")]
 		protected bool DecodeData(int row, int column, QModelIndex parent, QDataStream stream) {
-			return ((QAbstractItemModel) interceptor).DecodeData(row,column,parent,stream);
+			return (bool) interceptor.Invoke("decodeData$$##", "decodeData(int, int, const QModelIndex&, QDataStream&)", typeof(bool), typeof(int), row, typeof(int), column, typeof(QModelIndex), parent, typeof(QDataStream), stream);
 		}
-		[SmokeMethod("beginInsertRows", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginInsertRows(QModelIndex parent, int first, int last) {
-			((QAbstractItemModel) interceptor).BeginInsertRows(parent,first,last);
+			interceptor.Invoke("beginInsertRows#$$", "beginInsertRows(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), first, typeof(int), last);
 		}
-		[SmokeMethod("endInsertRows", "()", "")]
 		protected void EndInsertRows() {
-			((QAbstractItemModel) interceptor).EndInsertRows();
+			interceptor.Invoke("endInsertRows", "endInsertRows()", typeof(void));
 		}
-		[SmokeMethod("beginRemoveRows", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginRemoveRows(QModelIndex parent, int first, int last) {
-			((QAbstractItemModel) interceptor).BeginRemoveRows(parent,first,last);
+			interceptor.Invoke("beginRemoveRows#$$", "beginRemoveRows(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), first, typeof(int), last);
 		}
-		[SmokeMethod("endRemoveRows", "()", "")]
 		protected void EndRemoveRows() {
-			((QAbstractItemModel) interceptor).EndRemoveRows();
+			interceptor.Invoke("endRemoveRows", "endRemoveRows()", typeof(void));
 		}
-		[SmokeMethod("beginInsertColumns", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginInsertColumns(QModelIndex parent, int first, int last) {
-			((QAbstractItemModel) interceptor).BeginInsertColumns(parent,first,last);
+			interceptor.Invoke("beginInsertColumns#$$", "beginInsertColumns(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), first, typeof(int), last);
 		}
-		[SmokeMethod("endInsertColumns", "()", "")]
 		protected void EndInsertColumns() {
-			((QAbstractItemModel) interceptor).EndInsertColumns();
+			interceptor.Invoke("endInsertColumns", "endInsertColumns()", typeof(void));
 		}
-		[SmokeMethod("beginRemoveColumns", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginRemoveColumns(QModelIndex parent, int first, int last) {
-			((QAbstractItemModel) interceptor).BeginRemoveColumns(parent,first,last);
+			interceptor.Invoke("beginRemoveColumns#$$", "beginRemoveColumns(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), first, typeof(int), last);
 		}
-		[SmokeMethod("endRemoveColumns", "()", "")]
 		protected void EndRemoveColumns() {
-			((QAbstractItemModel) interceptor).EndRemoveColumns();
+			interceptor.Invoke("endRemoveColumns", "endRemoveColumns()", typeof(void));
 		}
-		[SmokeMethod("reset", "()", "")]
 		protected void Reset() {
-			((QAbstractItemModel) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
-		[SmokeMethod("changePersistentIndex", "(const QModelIndex&, const QModelIndex&)", "##")]
 		protected void ChangePersistentIndex(QModelIndex from, QModelIndex to) {
-			((QAbstractItemModel) interceptor).ChangePersistentIndex(from,to);
+			interceptor.Invoke("changePersistentIndex##", "changePersistentIndex(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), from, typeof(QModelIndex), to);
 		}
-		[SmokeMethod("changePersistentIndexList", "(const QModelIndexList&, const QModelIndexList&)", "??")]
 		protected void ChangePersistentIndexList(List<QModelIndex> from, List<QModelIndex> to) {
-			((QAbstractItemModel) interceptor).ChangePersistentIndexList(from,to);
+			interceptor.Invoke("changePersistentIndexList??", "changePersistentIndexList(const QModelIndexList&, const QModelIndexList&)", typeof(void), typeof(List<QModelIndex>), from, typeof(List<QModelIndex>), to);
 		}
-		[SmokeMethod("persistentIndexList", "() const", "")]
 		protected List<QModelIndex> PersistentIndexList() {
-			return ((QAbstractItemModel) interceptor).PersistentIndexList();
+			return (List<QModelIndex>) interceptor.Invoke("persistentIndexList", "persistentIndexList() const", typeof(List<QModelIndex>));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractItemModelSignals Emit {
 			get { return (IQAbstractItemModelSignals) Q_EMIT; }

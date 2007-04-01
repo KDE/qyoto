@@ -4,39 +4,34 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QIconEngine")]
-	public abstract class QIconEngine : MarshalByRefObject {
-		protected QIconEngine interceptor = null;
+	public abstract class QIconEngine : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QIconEngine(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconEngine), this);
-			interceptor = (QIconEngine) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QIconEngine), "QIconEngine", this);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QRect&, QIcon::Mode, QIcon::State)", "##$$")]
+		[SmokeMethod("paint(QPainter*, const QRect&, QIcon::Mode, QIcon::State)")]
 		public abstract void Paint(QPainter painter, QRect rect, QIcon.Mode mode, QIcon.State state);
-		[SmokeMethod("actualSize", "(const QSize&, QIcon::Mode, QIcon::State)", "#$$")]
+		[SmokeMethod("actualSize(const QSize&, QIcon::Mode, QIcon::State)")]
 		public virtual QSize ActualSize(QSize size, QIcon.Mode mode, QIcon.State state) {
-			return ((QIconEngine) interceptor).ActualSize(size,mode,state);
+			return (QSize) interceptor.Invoke("actualSize#$$", "actualSize(const QSize&, QIcon::Mode, QIcon::State)", typeof(QSize), typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("pixmap", "(const QSize&, QIcon::Mode, QIcon::State)", "#$$")]
+		[SmokeMethod("pixmap(const QSize&, QIcon::Mode, QIcon::State)")]
 		public virtual QPixmap Pixmap(QSize size, QIcon.Mode mode, QIcon.State state) {
-			return ((QIconEngine) interceptor).Pixmap(size,mode,state);
+			return (QPixmap) interceptor.Invoke("pixmap#$$", "pixmap(const QSize&, QIcon::Mode, QIcon::State)", typeof(QPixmap), typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("addPixmap", "(const QPixmap&, QIcon::Mode, QIcon::State)", "#$$")]
+		[SmokeMethod("addPixmap(const QPixmap&, QIcon::Mode, QIcon::State)")]
 		public virtual void AddPixmap(QPixmap pixmap, QIcon.Mode mode, QIcon.State state) {
-			((QIconEngine) interceptor).AddPixmap(pixmap,mode,state);
+			interceptor.Invoke("addPixmap#$$", "addPixmap(const QPixmap&, QIcon::Mode, QIcon::State)", typeof(void), typeof(QPixmap), pixmap, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("addFile", "(const QString&, const QSize&, QIcon::Mode, QIcon::State)", "$#$$")]
+		[SmokeMethod("addFile(const QString&, const QSize&, QIcon::Mode, QIcon::State)")]
 		public virtual void AddFile(string fileName, QSize size, QIcon.Mode mode, QIcon.State state) {
-			((QIconEngine) interceptor).AddFile(fileName,size,mode,state);
+			interceptor.Invoke("addFile$#$$", "addFile(const QString&, const QSize&, QIcon::Mode, QIcon::State)", typeof(void), typeof(string), fileName, typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
 		public QIconEngine() : this((Type) null) {
 			CreateProxy();
-			NewQIconEngine();
-		}
-		[SmokeMethod("QIconEngine", "()", "")]
-		private void NewQIconEngine() {
-			((QIconEngine) interceptor).NewQIconEngine();
+			interceptor.Invoke("QIconEngine", "QIconEngine()", typeof(void));
 		}
 	}
 }

@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextLayout")]
-	public class QTextLayout : MarshalByRefObject, IDisposable {
-		protected QTextLayout interceptor = null;
+	public class QTextLayout : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextLayout(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLayout), this);
-			interceptor = (QTextLayout) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextLayout), "QTextLayout", this);
 		}
 		public enum CursorMode {
 			SkipCharacters = 0,
@@ -23,177 +22,122 @@ namespace Qyoto {
 		// QTextEngine* engine(); >>>> NOT CONVERTED
 		public QTextLayout() : this((Type) null) {
 			CreateProxy();
-			NewQTextLayout();
-		}
-		[SmokeMethod("QTextLayout", "()", "")]
-		private void NewQTextLayout() {
-			((QTextLayout) interceptor).NewQTextLayout();
+			interceptor.Invoke("QTextLayout", "QTextLayout()", typeof(void));
 		}
 		public QTextLayout(string text) : this((Type) null) {
 			CreateProxy();
-			NewQTextLayout(text);
-		}
-		[SmokeMethod("QTextLayout", "(const QString&)", "$")]
-		private void NewQTextLayout(string text) {
-			((QTextLayout) interceptor).NewQTextLayout(text);
+			interceptor.Invoke("QTextLayout$", "QTextLayout(const QString&)", typeof(void), typeof(string), text);
 		}
 		public QTextLayout(string text, QFont font, IQPaintDevice paintdevice) : this((Type) null) {
 			CreateProxy();
-			NewQTextLayout(text,font,paintdevice);
-		}
-		[SmokeMethod("QTextLayout", "(const QString&, const QFont&, QPaintDevice*)", "$##")]
-		private void NewQTextLayout(string text, QFont font, IQPaintDevice paintdevice) {
-			((QTextLayout) interceptor).NewQTextLayout(text,font,paintdevice);
+			interceptor.Invoke("QTextLayout$##", "QTextLayout(const QString&, const QFont&, QPaintDevice*)", typeof(void), typeof(string), text, typeof(QFont), font, typeof(IQPaintDevice), paintdevice);
 		}
 		public QTextLayout(string text, QFont font) : this((Type) null) {
 			CreateProxy();
-			NewQTextLayout(text,font);
-		}
-		[SmokeMethod("QTextLayout", "(const QString&, const QFont&)", "$#")]
-		private void NewQTextLayout(string text, QFont font) {
-			((QTextLayout) interceptor).NewQTextLayout(text,font);
+			interceptor.Invoke("QTextLayout$#", "QTextLayout(const QString&, const QFont&)", typeof(void), typeof(string), text, typeof(QFont), font);
 		}
 		public QTextLayout(QTextBlock b) : this((Type) null) {
 			CreateProxy();
-			NewQTextLayout(b);
+			interceptor.Invoke("QTextLayout#", "QTextLayout(const QTextBlock&)", typeof(void), typeof(QTextBlock), b);
 		}
-		[SmokeMethod("QTextLayout", "(const QTextBlock&)", "#")]
-		private void NewQTextLayout(QTextBlock b) {
-			((QTextLayout) interceptor).NewQTextLayout(b);
-		}
-		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont f) {
-			((QTextLayout) interceptor).SetFont(f);
+			interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), f);
 		}
-		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ((QTextLayout) interceptor).Font();
+			return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
 		}
-		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string arg1) {
-			((QTextLayout) interceptor).SetText(arg1);
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QTextLayout) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("setTextOption", "(const QTextOption&)", "#")]
 		public void SetTextOption(QTextOption option) {
-			((QTextLayout) interceptor).SetTextOption(option);
+			interceptor.Invoke("setTextOption#", "setTextOption(const QTextOption&)", typeof(void), typeof(QTextOption), option);
 		}
-		[SmokeMethod("textOption", "() const", "")]
 		public QTextOption TextOption() {
-			return ((QTextLayout) interceptor).TextOption();
+			return (QTextOption) interceptor.Invoke("textOption", "textOption() const", typeof(QTextOption));
 		}
-		[SmokeMethod("setPreeditArea", "(int, const QString&)", "$$")]
 		public void SetPreeditArea(int position, string text) {
-			((QTextLayout) interceptor).SetPreeditArea(position,text);
+			interceptor.Invoke("setPreeditArea$$", "setPreeditArea(int, const QString&)", typeof(void), typeof(int), position, typeof(string), text);
 		}
-		[SmokeMethod("preeditAreaPosition", "() const", "")]
 		public int PreeditAreaPosition() {
-			return ((QTextLayout) interceptor).PreeditAreaPosition();
+			return (int) interceptor.Invoke("preeditAreaPosition", "preeditAreaPosition() const", typeof(int));
 		}
-		[SmokeMethod("preeditAreaText", "() const", "")]
 		public string PreeditAreaText() {
-			return ((QTextLayout) interceptor).PreeditAreaText();
+			return (string) interceptor.Invoke("preeditAreaText", "preeditAreaText() const", typeof(string));
 		}
-		[SmokeMethod("clearAdditionalFormats", "()", "")]
 		public void ClearAdditionalFormats() {
-			((QTextLayout) interceptor).ClearAdditionalFormats();
+			interceptor.Invoke("clearAdditionalFormats", "clearAdditionalFormats()", typeof(void));
 		}
-		[SmokeMethod("setCacheEnabled", "(bool)", "$")]
 		public void SetCacheEnabled(bool enable) {
-			((QTextLayout) interceptor).SetCacheEnabled(enable);
+			interceptor.Invoke("setCacheEnabled$", "setCacheEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("cacheEnabled", "() const", "")]
 		public bool CacheEnabled() {
-			return ((QTextLayout) interceptor).CacheEnabled();
+			return (bool) interceptor.Invoke("cacheEnabled", "cacheEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("beginLayout", "()", "")]
 		public void BeginLayout() {
-			((QTextLayout) interceptor).BeginLayout();
+			interceptor.Invoke("beginLayout", "beginLayout()", typeof(void));
 		}
-		[SmokeMethod("endLayout", "()", "")]
 		public void EndLayout() {
-			((QTextLayout) interceptor).EndLayout();
+			interceptor.Invoke("endLayout", "endLayout()", typeof(void));
 		}
-		[SmokeMethod("createLine", "()", "")]
 		public QTextLine CreateLine() {
-			return ((QTextLayout) interceptor).CreateLine();
+			return (QTextLine) interceptor.Invoke("createLine", "createLine()", typeof(QTextLine));
 		}
-		[SmokeMethod("lineCount", "() const", "")]
 		public int LineCount() {
-			return ((QTextLayout) interceptor).LineCount();
+			return (int) interceptor.Invoke("lineCount", "lineCount() const", typeof(int));
 		}
-		[SmokeMethod("lineAt", "(int) const", "$")]
 		public QTextLine LineAt(int i) {
-			return ((QTextLayout) interceptor).LineAt(i);
+			return (QTextLine) interceptor.Invoke("lineAt$", "lineAt(int) const", typeof(QTextLine), typeof(int), i);
 		}
-		[SmokeMethod("lineForTextPosition", "(int) const", "$")]
 		public QTextLine LineForTextPosition(int pos) {
-			return ((QTextLayout) interceptor).LineForTextPosition(pos);
+			return (QTextLine) interceptor.Invoke("lineForTextPosition$", "lineForTextPosition(int) const", typeof(QTextLine), typeof(int), pos);
 		}
-		[SmokeMethod("isValidCursorPosition", "(int) const", "$")]
 		public bool IsValidCursorPosition(int pos) {
-			return ((QTextLayout) interceptor).IsValidCursorPosition(pos);
+			return (bool) interceptor.Invoke("isValidCursorPosition$", "isValidCursorPosition(int) const", typeof(bool), typeof(int), pos);
 		}
-		[SmokeMethod("nextCursorPosition", "(int, QTextLayout::CursorMode) const", "$$")]
 		public int NextCursorPosition(int oldPos, QTextLayout.CursorMode mode) {
-			return ((QTextLayout) interceptor).NextCursorPosition(oldPos,mode);
+			return (int) interceptor.Invoke("nextCursorPosition$$", "nextCursorPosition(int, QTextLayout::CursorMode) const", typeof(int), typeof(int), oldPos, typeof(QTextLayout.CursorMode), mode);
 		}
-		[SmokeMethod("nextCursorPosition", "(int) const", "$")]
 		public int NextCursorPosition(int oldPos) {
-			return ((QTextLayout) interceptor).NextCursorPosition(oldPos);
+			return (int) interceptor.Invoke("nextCursorPosition$", "nextCursorPosition(int) const", typeof(int), typeof(int), oldPos);
 		}
-		[SmokeMethod("previousCursorPosition", "(int, QTextLayout::CursorMode) const", "$$")]
 		public int PreviousCursorPosition(int oldPos, QTextLayout.CursorMode mode) {
-			return ((QTextLayout) interceptor).PreviousCursorPosition(oldPos,mode);
+			return (int) interceptor.Invoke("previousCursorPosition$$", "previousCursorPosition(int, QTextLayout::CursorMode) const", typeof(int), typeof(int), oldPos, typeof(QTextLayout.CursorMode), mode);
 		}
-		[SmokeMethod("previousCursorPosition", "(int) const", "$")]
 		public int PreviousCursorPosition(int oldPos) {
-			return ((QTextLayout) interceptor).PreviousCursorPosition(oldPos);
+			return (int) interceptor.Invoke("previousCursorPosition$", "previousCursorPosition(int) const", typeof(int), typeof(int), oldPos);
 		}
-		[SmokeMethod("draw", "(QPainter*, const QPointF&) const", "##")]
 		public void Draw(QPainter p, QPointF pos) {
-			((QTextLayout) interceptor).Draw(p,pos);
+			interceptor.Invoke("draw##", "draw(QPainter*, const QPointF&) const", typeof(void), typeof(QPainter), p, typeof(QPointF), pos);
 		}
-		[SmokeMethod("drawCursor", "(QPainter*, const QPointF&, int) const", "##$")]
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition) {
-			((QTextLayout) interceptor).DrawCursor(p,pos,cursorPosition);
+			interceptor.Invoke("drawCursor##$", "drawCursor(QPainter*, const QPointF&, int) const", typeof(void), typeof(QPainter), p, typeof(QPointF), pos, typeof(int), cursorPosition);
 		}
-		[SmokeMethod("drawCursor", "(QPainter*, const QPointF&, int, int) const", "##$$")]
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition, int width) {
-			((QTextLayout) interceptor).DrawCursor(p,pos,cursorPosition,width);
+			interceptor.Invoke("drawCursor##$$", "drawCursor(QPainter*, const QPointF&, int, int) const", typeof(void), typeof(QPainter), p, typeof(QPointF), pos, typeof(int), cursorPosition, typeof(int), width);
 		}
-		[SmokeMethod("position", "() const", "")]
 		public QPointF Position() {
-			return ((QTextLayout) interceptor).Position();
+			return (QPointF) interceptor.Invoke("position", "position() const", typeof(QPointF));
 		}
-		[SmokeMethod("setPosition", "(const QPointF&)", "#")]
 		public void SetPosition(QPointF p) {
-			((QTextLayout) interceptor).SetPosition(p);
+			interceptor.Invoke("setPosition#", "setPosition(const QPointF&)", typeof(void), typeof(QPointF), p);
 		}
-		[SmokeMethod("boundingRect", "() const", "")]
 		public QRectF BoundingRect() {
-			return ((QTextLayout) interceptor).BoundingRect();
+			return (QRectF) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRectF));
 		}
-		[SmokeMethod("minimumWidth", "() const", "")]
 		public double MinimumWidth() {
-			return ((QTextLayout) interceptor).MinimumWidth();
+			return (double) interceptor.Invoke("minimumWidth", "minimumWidth() const", typeof(double));
 		}
-		[SmokeMethod("maximumWidth", "() const", "")]
 		public double MaximumWidth() {
-			return ((QTextLayout) interceptor).MaximumWidth();
+			return (double) interceptor.Invoke("maximumWidth", "maximumWidth() const", typeof(double));
 		}
 		~QTextLayout() {
-			DisposeQTextLayout();
+			interceptor.Invoke("~QTextLayout", "~QTextLayout()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextLayout();
-		}
-		[SmokeMethod("~QTextLayout", "()", "")]
-		private void DisposeQTextLayout() {
-			((QTextLayout) interceptor).DisposeQTextLayout();
+			interceptor.Invoke("~QTextLayout", "~QTextLayout()", typeof(void));
 		}
 	}
 }

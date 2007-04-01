@@ -7,86 +7,56 @@ namespace Qyoto {
 	public class QWheelEvent : QInputEvent, IDisposable {
  		protected QWheelEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWheelEvent), this);
-			interceptor = (QWheelEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWheelEvent), "QWheelEvent", this);
 		}
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
-			NewQWheelEvent(pos,delta,buttons,modifiers,orient);
-		}
-		[SmokeMethod("QWheelEvent", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", "#$$$$")]
-		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
-			((QWheelEvent) interceptor).NewQWheelEvent(pos,delta,buttons,modifiers,orient);
+			interceptor.Invoke("QWheelEvent#$$$$", "QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", typeof(void), typeof(QPoint), pos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers, typeof(Qt.Orientation), orient);
 		}
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQWheelEvent(pos,delta,buttons,modifiers);
-		}
-		[SmokeMethod("QWheelEvent", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$$$")]
-		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers) {
-			((QWheelEvent) interceptor).NewQWheelEvent(pos,delta,buttons,modifiers);
+			interceptor.Invoke("QWheelEvent#$$$", "QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
-			NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
-		}
-		[SmokeMethod("QWheelEvent", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", "##$$$$")]
-		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
-			((QWheelEvent) interceptor).NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
+			interceptor.Invoke("QWheelEvent##$$$$", "QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", typeof(void), typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers, typeof(Qt.Orientation), orient);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
+			interceptor.Invoke("QWheelEvent##$$$", "QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers);
 		}
-		[SmokeMethod("QWheelEvent", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", "##$$$")]
-		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) {
-			((QWheelEvent) interceptor).NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
-		}
-		[SmokeMethod("delta", "() const", "")]
 		public int Delta() {
-			return ((QWheelEvent) interceptor).Delta();
+			return (int) interceptor.Invoke("delta", "delta() const", typeof(int));
 		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ((QWheelEvent) interceptor).Pos();
+			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ((QWheelEvent) interceptor).GlobalPos();
+			return (QPoint) interceptor.Invoke("globalPos", "globalPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ((QWheelEvent) interceptor).X();
+			return (int) interceptor.Invoke("x", "x() const", typeof(int));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ((QWheelEvent) interceptor).Y();
+			return (int) interceptor.Invoke("y", "y() const", typeof(int));
 		}
-		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ((QWheelEvent) interceptor).GlobalX();
+			return (int) interceptor.Invoke("globalX", "globalX() const", typeof(int));
 		}
-		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ((QWheelEvent) interceptor).GlobalY();
+			return (int) interceptor.Invoke("globalY", "globalY() const", typeof(int));
 		}
-		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ((QWheelEvent) interceptor).Buttons();
+			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
 		}
-		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ((QWheelEvent) interceptor).Orientation();
+			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
 		~QWheelEvent() {
-			DisposeQWheelEvent();
+			interceptor.Invoke("~QWheelEvent", "~QWheelEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQWheelEvent();
-		}
-		[SmokeMethod("~QWheelEvent", "()", "")]
-		private void DisposeQWheelEvent() {
-			((QWheelEvent) interceptor).DisposeQWheelEvent();
+			interceptor.Invoke("~QWheelEvent", "~QWheelEvent()", typeof(void));
 		}
 	}
 }

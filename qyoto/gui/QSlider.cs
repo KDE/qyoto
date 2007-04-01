@@ -6,21 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QSlider")]
 	public class QSlider : QAbstractSlider, IDisposable {
  		protected QSlider(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSlider")]
-		interface IQSliderProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSlider), this);
-			interceptor = (QSlider) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSlider), "QSlider", this);
 		}
-		private static IQSliderProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSlider() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSliderProxy), null);
-			staticInterceptor = (IQSliderProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSlider), "QSlider", null);
 		}
 		public enum TickPosition {
 			NoTicks = 0,
@@ -32,93 +23,69 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QSlider::TickPosition", "tickPosition")]
 		public QSlider.TickPosition tickPosition {
-			[SmokeMethod("tickPosition", "()", "")]
-			get { return ((QSlider) interceptor).tickPosition; }
-			[SmokeMethod("setTickPosition", "(QSlider::TickPosition)", "$")]
-			set { ((QSlider) interceptor).tickPosition = value; }
+			get { return (QSlider.TickPosition) interceptor.Invoke("tickPosition", "tickPosition()", typeof(QSlider.TickPosition)); }
+			set { interceptor.Invoke("setTickPosition$", "setTickPosition(QSlider::TickPosition)", typeof(void), typeof(QSlider.TickPosition), value); }
 		}
 		[Q_PROPERTY("int", "tickInterval")]
 		public int TickInterval {
-			[SmokeMethod("tickInterval", "()", "")]
-			get { return ((QSlider) interceptor).TickInterval; }
-			[SmokeMethod("setTickInterval", "(int)", "$")]
-			set { ((QSlider) interceptor).TickInterval = value; }
+			get { return (int) interceptor.Invoke("tickInterval", "tickInterval()", typeof(int)); }
+			set { interceptor.Invoke("setTickInterval$", "setTickInterval(int)", typeof(void), typeof(int), value); }
 		}
 		public QSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSlider(parent);
-		}
-		[SmokeMethod("QSlider", "(QWidget*)", "#")]
-		private void NewQSlider(QWidget parent) {
-			((QSlider) interceptor).NewQSlider(parent);
+			interceptor.Invoke("QSlider#", "QSlider(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QSlider() : this((Type) null) {
 			CreateProxy();
-			NewQSlider();
-		}
-		[SmokeMethod("QSlider", "()", "")]
-		private void NewQSlider() {
-			((QSlider) interceptor).NewQSlider();
+			interceptor.Invoke("QSlider", "QSlider()", typeof(void));
 		}
 		public QSlider(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSlider(orientation,parent);
-		}
-		[SmokeMethod("QSlider", "(Qt::Orientation, QWidget*)", "$#")]
-		private void NewQSlider(Qt.Orientation orientation, QWidget parent) {
-			((QSlider) interceptor).NewQSlider(orientation,parent);
+			interceptor.Invoke("QSlider$#", "QSlider(Qt::Orientation, QWidget*)", typeof(void), typeof(Qt.Orientation), orientation, typeof(QWidget), parent);
 		}
 		public QSlider(Qt.Orientation orientation) : this((Type) null) {
 			CreateProxy();
-			NewQSlider(orientation);
+			interceptor.Invoke("QSlider$", "QSlider(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("QSlider", "(Qt::Orientation)", "$")]
-		private void NewQSlider(Qt.Orientation orientation) {
-			((QSlider) interceptor).NewQSlider(orientation);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QSlider) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QSlider) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		public new virtual bool Event(QEvent arg1) {
-			return ((QSlider) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent ev) {
-			((QSlider) interceptor).PaintEvent(ev);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), ev);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent ev) {
-			((QSlider) interceptor).MousePressEvent(ev);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent ev) {
-			((QSlider) interceptor).MouseReleaseEvent(ev);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent ev) {
-			((QSlider) interceptor).MouseMoveEvent(ev);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
 		}
 		~QSlider() {
-			DisposeQSlider();
+			interceptor.Invoke("~QSlider", "~QSlider()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSlider();
-		}
-		[SmokeMethod("~QSlider", "()", "")]
-		private void DisposeQSlider() {
-			((QSlider) interceptor).DisposeQSlider();
+			interceptor.Invoke("~QSlider", "~QSlider()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSliderSignals Emit {
 			get { return (IQSliderSignals) Q_EMIT; }

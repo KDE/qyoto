@@ -7,116 +7,82 @@ namespace Qyoto {
 	[SmokeClass("QCheckBox")]
 	public class QCheckBox : QAbstractButton, IDisposable {
  		protected QCheckBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QCheckBox")]
-		interface IQCheckBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCheckBox), this);
-			interceptor = (QCheckBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QCheckBox), "QCheckBox", this);
 		}
-		private static IQCheckBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QCheckBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCheckBoxProxy), null);
-			staticInterceptor = (IQCheckBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QCheckBox), "QCheckBox", null);
 		}
 		[Q_PROPERTY("bool", "tristate")]
 		public bool Tristate {
-			[SmokeMethod("isTristate", "()", "")]
-			get { return ((QCheckBox) interceptor).Tristate; }
-			[SmokeMethod("setTristate", "(bool)", "$")]
-			set { ((QCheckBox) interceptor).Tristate = value; }
+			get { return (bool) interceptor.Invoke("isTristate", "isTristate()", typeof(bool)); }
+			set { interceptor.Invoke("setTristate$", "setTristate(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QCheckBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQCheckBox(parent);
-		}
-		[SmokeMethod("QCheckBox", "(QWidget*)", "#")]
-		private void NewQCheckBox(QWidget parent) {
-			((QCheckBox) interceptor).NewQCheckBox(parent);
+			interceptor.Invoke("QCheckBox#", "QCheckBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QCheckBox() : this((Type) null) {
 			CreateProxy();
-			NewQCheckBox();
-		}
-		[SmokeMethod("QCheckBox", "()", "")]
-		private void NewQCheckBox() {
-			((QCheckBox) interceptor).NewQCheckBox();
+			interceptor.Invoke("QCheckBox", "QCheckBox()", typeof(void));
 		}
 		public QCheckBox(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQCheckBox(text,parent);
-		}
-		[SmokeMethod("QCheckBox", "(const QString&, QWidget*)", "$#")]
-		private void NewQCheckBox(string text, QWidget parent) {
-			((QCheckBox) interceptor).NewQCheckBox(text,parent);
+			interceptor.Invoke("QCheckBox$#", "QCheckBox(const QString&, QWidget*)", typeof(void), typeof(string), text, typeof(QWidget), parent);
 		}
 		public QCheckBox(string text) : this((Type) null) {
 			CreateProxy();
-			NewQCheckBox(text);
+			interceptor.Invoke("QCheckBox$", "QCheckBox(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("QCheckBox", "(const QString&)", "$")]
-		private void NewQCheckBox(string text) {
-			((QCheckBox) interceptor).NewQCheckBox(text);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QCheckBox) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("isTristate", "() const", "")]
 		public bool IsTristate() {
-			return ((QCheckBox) interceptor).IsTristate();
+			return (bool) interceptor.Invoke("isTristate", "isTristate() const", typeof(bool));
 		}
-		[SmokeMethod("checkState", "() const", "")]
 		public Qt.CheckState CheckState() {
-			return ((QCheckBox) interceptor).CheckState();
+			return (Qt.CheckState) interceptor.Invoke("checkState", "checkState() const", typeof(Qt.CheckState));
 		}
-		[SmokeMethod("setCheckState", "(Qt::CheckState)", "$")]
 		public void SetCheckState(Qt.CheckState state) {
-			((QCheckBox) interceptor).SetCheckState(state);
+			interceptor.Invoke("setCheckState$", "setCheckState(Qt::CheckState)", typeof(void), typeof(Qt.CheckState), state);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QCheckBox) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
+		[SmokeMethod("hitButton(const QPoint&) const")]
 		protected override bool HitButton(QPoint pos) {
-			return ((QCheckBox) interceptor).HitButton(pos);
+			return (bool) interceptor.Invoke("hitButton#", "hitButton(const QPoint&) const", typeof(bool), typeof(QPoint), pos);
 		}
-		[SmokeMethod("checkStateSet", "()", "")]
+		[SmokeMethod("checkStateSet()")]
 		protected override void CheckStateSet() {
-			((QCheckBox) interceptor).CheckStateSet();
+			interceptor.Invoke("checkStateSet", "checkStateSet()", typeof(void));
 		}
-		[SmokeMethod("nextCheckState", "()", "")]
+		[SmokeMethod("nextCheckState()")]
 		protected override void NextCheckState() {
-			((QCheckBox) interceptor).NextCheckState();
+			interceptor.Invoke("nextCheckState", "nextCheckState()", typeof(void));
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QCheckBox) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QCheckBox) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
 		~QCheckBox() {
-			DisposeQCheckBox();
+			interceptor.Invoke("~QCheckBox", "~QCheckBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQCheckBox();
-		}
-		[SmokeMethod("~QCheckBox", "()", "")]
-		private void DisposeQCheckBox() {
-			((QCheckBox) interceptor).DisposeQCheckBox();
+			interceptor.Invoke("~QCheckBox", "~QCheckBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQCheckBoxSignals Emit {
 			get { return (IQCheckBoxSignals) Q_EMIT; }

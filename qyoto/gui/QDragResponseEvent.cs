@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QDragResponseEvent : QEvent, IDisposable {
  		protected QDragResponseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragResponseEvent), this);
-			interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDragResponseEvent), "QDragResponseEvent", this);
 		}
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
 			CreateProxy();
-			NewQDragResponseEvent(accepted);
+			interceptor.Invoke("QDragResponseEvent$", "QDragResponseEvent(bool)", typeof(void), typeof(bool), accepted);
 		}
-		[SmokeMethod("QDragResponseEvent", "(bool)", "$")]
-		private void NewQDragResponseEvent(bool accepted) {
-			((QDragResponseEvent) interceptor).NewQDragResponseEvent(accepted);
-		}
-		[SmokeMethod("dragAccepted", "() const", "")]
 		public bool DragAccepted() {
-			return ((QDragResponseEvent) interceptor).DragAccepted();
+			return (bool) interceptor.Invoke("dragAccepted", "dragAccepted() const", typeof(bool));
 		}
 		~QDragResponseEvent() {
-			DisposeQDragResponseEvent();
+			interceptor.Invoke("~QDragResponseEvent", "~QDragResponseEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDragResponseEvent();
-		}
-		[SmokeMethod("~QDragResponseEvent", "()", "")]
-		private void DisposeQDragResponseEvent() {
-			((QDragResponseEvent) interceptor).DisposeQDragResponseEvent();
+			interceptor.Invoke("~QDragResponseEvent", "~QDragResponseEvent()", typeof(void));
 		}
 	}
 }

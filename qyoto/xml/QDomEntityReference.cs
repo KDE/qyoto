@@ -7,38 +7,24 @@ namespace Qyoto {
 	public class QDomEntityReference : QDomNode, IDisposable {
  		protected QDomEntityReference(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomEntityReference), this);
-			interceptor = (QDomEntityReference) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomEntityReference), "QDomEntityReference", this);
 		}
 		public QDomEntityReference() : this((Type) null) {
 			CreateProxy();
-			NewQDomEntityReference();
-		}
-		[SmokeMethod("QDomEntityReference", "()", "")]
-		private void NewQDomEntityReference() {
-			((QDomEntityReference) interceptor).NewQDomEntityReference();
+			interceptor.Invoke("QDomEntityReference", "QDomEntityReference()", typeof(void));
 		}
 		public QDomEntityReference(QDomEntityReference x) : this((Type) null) {
 			CreateProxy();
-			NewQDomEntityReference(x);
+			interceptor.Invoke("QDomEntityReference#", "QDomEntityReference(const QDomEntityReference&)", typeof(void), typeof(QDomEntityReference), x);
 		}
-		[SmokeMethod("QDomEntityReference", "(const QDomEntityReference&)", "#")]
-		private void NewQDomEntityReference(QDomEntityReference x) {
-			((QDomEntityReference) interceptor).NewQDomEntityReference(x);
-		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomEntityReference) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomEntityReference() {
-			DisposeQDomEntityReference();
+			interceptor.Invoke("~QDomEntityReference", "~QDomEntityReference()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomEntityReference();
-		}
-		[SmokeMethod("~QDomEntityReference", "()", "")]
-		private void DisposeQDomEntityReference() {
-			((QDomEntityReference) interceptor).DisposeQDomEntityReference();
+			interceptor.Invoke("~QDomEntityReference", "~QDomEntityReference()", typeof(void));
 		}
 	}
 }

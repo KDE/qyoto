@@ -4,27 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QHostAddress")]
-	public class QHostAddress : MarshalByRefObject, IDisposable {
-		protected QHostAddress interceptor = null;
+	public class QHostAddress : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QHostAddress(Type dummy) {}
-		[SmokeClass("QHostAddress")]
-		interface IQHostAddressProxy {
-			[SmokeMethod("operator==", "(const QHostAddress&) const", "#")]
-			bool op_equals(QHostAddress lhs, QHostAddress address);
-			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress) const", "$")]
-			bool op_equals(QHostAddress lhs, QHostAddress.SpecialAddress address);
-			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress, const QHostAddress&)", "$#")]
-			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostAddress), this);
-			interceptor = (QHostAddress) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QHostAddress), "QHostAddress", this);
 		}
-		private static IQHostAddressProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QHostAddress() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHostAddressProxy), null);
-			staticInterceptor = (IQHostAddressProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QHostAddress), "QHostAddress", null);
 		}
 		public enum SpecialAddress {
 			Null = 0,
@@ -43,114 +32,81 @@ namespace Qyoto {
 		// Q_IPV6ADDR toIPv6Address(); >>>> NOT CONVERTED
 		public QHostAddress() : this((Type) null) {
 			CreateProxy();
-			NewQHostAddress();
-		}
-		[SmokeMethod("QHostAddress", "()", "")]
-		private void NewQHostAddress() {
-			((QHostAddress) interceptor).NewQHostAddress();
+			interceptor.Invoke("QHostAddress", "QHostAddress()", typeof(void));
 		}
 		public QHostAddress(uint ip4Addr) : this((Type) null) {
 			CreateProxy();
-			NewQHostAddress(ip4Addr);
-		}
-		[SmokeMethod("QHostAddress", "(quint32)", "$")]
-		private void NewQHostAddress(uint ip4Addr) {
-			((QHostAddress) interceptor).NewQHostAddress(ip4Addr);
+			interceptor.Invoke("QHostAddress$", "QHostAddress(quint32)", typeof(void), typeof(uint), ip4Addr);
 		}
 		public QHostAddress(string address) : this((Type) null) {
 			CreateProxy();
-			NewQHostAddress(address);
-		}
-		[SmokeMethod("QHostAddress", "(const QString&)", "$")]
-		private void NewQHostAddress(string address) {
-			((QHostAddress) interceptor).NewQHostAddress(address);
+			interceptor.Invoke("QHostAddress$", "QHostAddress(const QString&)", typeof(void), typeof(string), address);
 		}
 		public QHostAddress(QHostAddress copy) : this((Type) null) {
 			CreateProxy();
-			NewQHostAddress(copy);
-		}
-		[SmokeMethod("QHostAddress", "(const QHostAddress&)", "#")]
-		private void NewQHostAddress(QHostAddress copy) {
-			((QHostAddress) interceptor).NewQHostAddress(copy);
+			interceptor.Invoke("QHostAddress#", "QHostAddress(const QHostAddress&)", typeof(void), typeof(QHostAddress), copy);
 		}
 		public QHostAddress(QHostAddress.SpecialAddress address) : this((Type) null) {
 			CreateProxy();
-			NewQHostAddress(address);
+			interceptor.Invoke("QHostAddress$", "QHostAddress(QHostAddress::SpecialAddress)", typeof(void), typeof(QHostAddress.SpecialAddress), address);
 		}
-		[SmokeMethod("QHostAddress", "(QHostAddress::SpecialAddress)", "$")]
-		private void NewQHostAddress(QHostAddress.SpecialAddress address) {
-			((QHostAddress) interceptor).NewQHostAddress(address);
-		}
-		[SmokeMethod("setAddress", "(quint32)", "$")]
 		public void SetAddress(uint ip4Addr) {
-			((QHostAddress) interceptor).SetAddress(ip4Addr);
+			interceptor.Invoke("setAddress$", "setAddress(quint32)", typeof(void), typeof(uint), ip4Addr);
 		}
-		[SmokeMethod("setAddress", "(const QString&)", "$")]
 		public bool SetAddress(string address) {
-			return ((QHostAddress) interceptor).SetAddress(address);
+			return (bool) interceptor.Invoke("setAddress$", "setAddress(const QString&)", typeof(bool), typeof(string), address);
 		}
-		[SmokeMethod("protocol", "() const", "")]
 		public QAbstractSocket.NetworkLayerProtocol Protocol() {
-			return ((QHostAddress) interceptor).Protocol();
+			return (QAbstractSocket.NetworkLayerProtocol) interceptor.Invoke("protocol", "protocol() const", typeof(QAbstractSocket.NetworkLayerProtocol));
 		}
-		[SmokeMethod("toIPv4Address", "() const", "")]
 		public uint ToIPv4Address() {
-			return ((QHostAddress) interceptor).ToIPv4Address();
+			return (uint) interceptor.Invoke("toIPv4Address", "toIPv4Address() const", typeof(uint));
 		}
-		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ((QHostAddress) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("scopeId", "() const", "")]
 		public string ScopeId() {
-			return ((QHostAddress) interceptor).ScopeId();
+			return (string) interceptor.Invoke("scopeId", "scopeId() const", typeof(string));
 		}
-		[SmokeMethod("setScopeId", "(const QString&)", "$")]
 		public void SetScopeId(string id) {
-			((QHostAddress) interceptor).SetScopeId(id);
+			interceptor.Invoke("setScopeId$", "setScopeId(const QString&)", typeof(void), typeof(string), id);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QHostAddress)) { return false; }
 			return this == (QHostAddress) o;
 		}
 		public override int GetHashCode() {
-			return ((QHostAddress) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QHostAddress) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QHostAddress) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
 		~QHostAddress() {
-			DisposeQHostAddress();
+			interceptor.Invoke("~QHostAddress", "~QHostAddress()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQHostAddress();
-		}
-		[SmokeMethod("~QHostAddress", "()", "")]
-		private void DisposeQHostAddress() {
-			((QHostAddress) interceptor).DisposeQHostAddress();
+			interceptor.Invoke("~QHostAddress", "~QHostAddress()", typeof(void));
 		}
 		public static bool operator==(QHostAddress lhs, QHostAddress address) {
-			return staticInterceptor.op_equals(lhs,address);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QHostAddress&) const", typeof(bool), typeof(QHostAddress), lhs, typeof(QHostAddress), address);
 		}
 		public static bool operator!=(QHostAddress lhs, QHostAddress address) {
-			return !staticInterceptor.op_equals(lhs,address);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QHostAddress&) const", typeof(bool), typeof(QHostAddress), lhs, typeof(QHostAddress), address);
 		}
 		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
-			return staticInterceptor.op_equals(lhs,address);
+			return (bool) staticInterceptor.Invoke("operator==$", "operator==(QHostAddress::SpecialAddress) const", typeof(bool), typeof(QHostAddress), lhs, typeof(QHostAddress.SpecialAddress), address);
 		}
 		public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
-			return !staticInterceptor.op_equals(lhs,address);
+			return !(bool) staticInterceptor.Invoke("operator==$", "operator==(QHostAddress::SpecialAddress) const", typeof(bool), typeof(QHostAddress), lhs, typeof(QHostAddress.SpecialAddress), address);
 		}
 		public static bool operator==(QHostAddress.SpecialAddress address1, QHostAddress address2) {
-			return staticInterceptor.op_equals(address1,address2);
+			return (bool) staticInterceptor.Invoke("operator==$#", "operator==(QHostAddress::SpecialAddress, const QHostAddress&)", typeof(bool), typeof(QHostAddress.SpecialAddress), address1, typeof(QHostAddress), address2);
 		}
 		public static bool operator!=(QHostAddress.SpecialAddress address1, QHostAddress address2) {
-			return !staticInterceptor.op_equals(address1,address2);
+			return !(bool) staticInterceptor.Invoke("operator==$#", "operator==(QHostAddress::SpecialAddress, const QHostAddress&)", typeof(bool), typeof(QHostAddress.SpecialAddress), address1, typeof(QHostAddress), address2);
 		}
 	}
 }

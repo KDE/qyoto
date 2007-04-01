@@ -4,79 +4,56 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QUndoCommand")]
-	public class QUndoCommand : MarshalByRefObject, IDisposable {
-		protected QUndoCommand interceptor = null;
+	public class QUndoCommand : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUndoCommand(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoCommand), this);
-			interceptor = (QUndoCommand) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QUndoCommand), "QUndoCommand", this);
 		}
 		public QUndoCommand(QUndoCommand parent) : this((Type) null) {
 			CreateProxy();
-			NewQUndoCommand(parent);
-		}
-		[SmokeMethod("QUndoCommand", "(QUndoCommand*)", "#")]
-		private void NewQUndoCommand(QUndoCommand parent) {
-			((QUndoCommand) interceptor).NewQUndoCommand(parent);
+			interceptor.Invoke("QUndoCommand#", "QUndoCommand(QUndoCommand*)", typeof(void), typeof(QUndoCommand), parent);
 		}
 		public QUndoCommand() : this((Type) null) {
 			CreateProxy();
-			NewQUndoCommand();
-		}
-		[SmokeMethod("QUndoCommand", "()", "")]
-		private void NewQUndoCommand() {
-			((QUndoCommand) interceptor).NewQUndoCommand();
+			interceptor.Invoke("QUndoCommand", "QUndoCommand()", typeof(void));
 		}
 		public QUndoCommand(string text, QUndoCommand parent) : this((Type) null) {
 			CreateProxy();
-			NewQUndoCommand(text,parent);
-		}
-		[SmokeMethod("QUndoCommand", "(const QString&, QUndoCommand*)", "$#")]
-		private void NewQUndoCommand(string text, QUndoCommand parent) {
-			((QUndoCommand) interceptor).NewQUndoCommand(text,parent);
+			interceptor.Invoke("QUndoCommand$#", "QUndoCommand(const QString&, QUndoCommand*)", typeof(void), typeof(string), text, typeof(QUndoCommand), parent);
 		}
 		public QUndoCommand(string text) : this((Type) null) {
 			CreateProxy();
-			NewQUndoCommand(text);
+			interceptor.Invoke("QUndoCommand$", "QUndoCommand(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("QUndoCommand", "(const QString&)", "$")]
-		private void NewQUndoCommand(string text) {
-			((QUndoCommand) interceptor).NewQUndoCommand(text);
-		}
-		[SmokeMethod("undo", "()", "")]
+		[SmokeMethod("undo()")]
 		public virtual void Undo() {
-			((QUndoCommand) interceptor).Undo();
+			interceptor.Invoke("undo", "undo()", typeof(void));
 		}
-		[SmokeMethod("redo", "()", "")]
+		[SmokeMethod("redo()")]
 		public virtual void Redo() {
-			((QUndoCommand) interceptor).Redo();
+			interceptor.Invoke("redo", "redo()", typeof(void));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QUndoCommand) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			((QUndoCommand) interceptor).SetText(text);
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("id", "() const", "")]
+		[SmokeMethod("id() const")]
 		public virtual int Id() {
-			return ((QUndoCommand) interceptor).Id();
+			return (int) interceptor.Invoke("id", "id() const", typeof(int));
 		}
-		[SmokeMethod("mergeWith", "(const QUndoCommand*)", "#")]
+		[SmokeMethod("mergeWith(const QUndoCommand*)")]
 		public virtual bool MergeWith(QUndoCommand other) {
-			return ((QUndoCommand) interceptor).MergeWith(other);
+			return (bool) interceptor.Invoke("mergeWith#", "mergeWith(const QUndoCommand*)", typeof(bool), typeof(QUndoCommand), other);
 		}
 		~QUndoCommand() {
-			DisposeQUndoCommand();
+			interceptor.Invoke("~QUndoCommand", "~QUndoCommand()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQUndoCommand();
-		}
-		[SmokeMethod("~QUndoCommand", "()", "")]
-		private void DisposeQUndoCommand() {
-			((QUndoCommand) interceptor).DisposeQUndoCommand();
+			interceptor.Invoke("~QUndoCommand", "~QUndoCommand()", typeof(void));
 		}
 	}
 }

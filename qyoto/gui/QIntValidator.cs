@@ -7,75 +7,50 @@ namespace Qyoto {
 	[SmokeClass("QIntValidator")]
 	public class QIntValidator : QValidator, IDisposable {
  		protected QIntValidator(Type dummy) : base((Type) null) {}
-		[SmokeClass("QIntValidator")]
-		interface IQIntValidatorProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIntValidator), this);
-			interceptor = (QIntValidator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QIntValidator), "QIntValidator", this);
 		}
-		private static IQIntValidatorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QIntValidator() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQIntValidatorProxy), null);
-			staticInterceptor = (IQIntValidatorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QIntValidator), "QIntValidator", null);
 		}
 		[Q_PROPERTY("int", "bottom")]
 		public int Bottom {
-			[SmokeMethod("bottom", "()", "")]
-			get { return ((QIntValidator) interceptor).Bottom; }
-			[SmokeMethod("setBottom", "(int)", "$")]
-			set { ((QIntValidator) interceptor).Bottom = value; }
+			get { return (int) interceptor.Invoke("bottom", "bottom()", typeof(int)); }
+			set { interceptor.Invoke("setBottom$", "setBottom(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "top")]
 		public int Top {
-			[SmokeMethod("top", "()", "")]
-			get { return ((QIntValidator) interceptor).Top; }
-			[SmokeMethod("setTop", "(int)", "$")]
-			set { ((QIntValidator) interceptor).Top = value; }
+			get { return (int) interceptor.Invoke("top", "top()", typeof(int)); }
+			set { interceptor.Invoke("setTop$", "setTop(int)", typeof(void), typeof(int), value); }
 		}
 		public QIntValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQIntValidator(parent);
-		}
-		[SmokeMethod("QIntValidator", "(QObject*)", "#")]
-		private void NewQIntValidator(QObject parent) {
-			((QIntValidator) interceptor).NewQIntValidator(parent);
+			interceptor.Invoke("QIntValidator#", "QIntValidator(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QIntValidator(int bottom, int top, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQIntValidator(bottom,top,parent);
+			interceptor.Invoke("QIntValidator$$#", "QIntValidator(int, int, QObject*)", typeof(void), typeof(int), bottom, typeof(int), top, typeof(QObject), parent);
 		}
-		[SmokeMethod("QIntValidator", "(int, int, QObject*)", "$$#")]
-		private void NewQIntValidator(int bottom, int top, QObject parent) {
-			((QIntValidator) interceptor).NewQIntValidator(bottom,top,parent);
+		[SmokeMethod("validate(QString&, int&) const")]
+		public override int Validate(StringBuilder arg1, int arg2) {
+			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		public override int Validate(StringBuilder arg1, out int arg2) {
-			return ((QIntValidator) interceptor).Validate(arg1,out arg2);
-		}
-		[SmokeMethod("setRange", "(int, int)", "$$")]
+		[SmokeMethod("setRange(int, int)")]
 		public virtual void SetRange(int bottom, int top) {
-			((QIntValidator) interceptor).SetRange(bottom,top);
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), bottom, typeof(int), top);
 		}
 		~QIntValidator() {
-			DisposeQIntValidator();
+			interceptor.Invoke("~QIntValidator", "~QIntValidator()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQIntValidator();
-		}
-		[SmokeMethod("~QIntValidator", "()", "")]
-		private void DisposeQIntValidator() {
-			((QIntValidator) interceptor).DisposeQIntValidator();
+			interceptor.Invoke("~QIntValidator", "~QIntValidator()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQIntValidatorSignals Emit {
 			get { return (IQIntValidatorSignals) Q_EMIT; }

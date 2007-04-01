@@ -4,54 +4,35 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDesktopServices")]
-	public class QDesktopServices : MarshalByRefObject, IDisposable {
-		protected QDesktopServices interceptor = null;
+	public class QDesktopServices : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDesktopServices(Type dummy) {}
-		[SmokeClass("QDesktopServices")]
-		interface IQDesktopServicesProxy {
-			[SmokeMethod("openUrl", "(const QUrl&)", "#")]
-			bool OpenUrl(IQUrl url);
-			[SmokeMethod("setUrlHandler", "(const QString&, QObject*, const char*)", "$#$")]
-			void SetUrlHandler(string scheme, QObject receiver, string method);
-			[SmokeMethod("unsetUrlHandler", "(const QString&)", "$")]
-			void UnsetUrlHandler(string scheme);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDesktopServices), this);
-			interceptor = (QDesktopServices) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDesktopServices), "QDesktopServices", this);
 		}
-		private static IQDesktopServicesProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDesktopServices() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDesktopServicesProxy), null);
-			staticInterceptor = (IQDesktopServicesProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDesktopServices), "QDesktopServices", null);
 		}
 		public QDesktopServices() : this((Type) null) {
 			CreateProxy();
-			NewQDesktopServices();
-		}
-		[SmokeMethod("QDesktopServices", "()", "")]
-		private void NewQDesktopServices() {
-			((QDesktopServices) interceptor).NewQDesktopServices();
+			interceptor.Invoke("QDesktopServices", "QDesktopServices()", typeof(void));
 		}
 		~QDesktopServices() {
-			DisposeQDesktopServices();
+			interceptor.Invoke("~QDesktopServices", "~QDesktopServices()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDesktopServices();
-		}
-		[SmokeMethod("~QDesktopServices", "()", "")]
-		private void DisposeQDesktopServices() {
-			((QDesktopServices) interceptor).DisposeQDesktopServices();
+			interceptor.Invoke("~QDesktopServices", "~QDesktopServices()", typeof(void));
 		}
 		public static bool OpenUrl(IQUrl url) {
-			return staticInterceptor.OpenUrl(url);
+			return (bool) staticInterceptor.Invoke("openUrl#", "openUrl(const QUrl&)", typeof(bool), typeof(IQUrl), url);
 		}
 		public static void SetUrlHandler(string scheme, QObject receiver, string method) {
-			staticInterceptor.SetUrlHandler(scheme,receiver,method);
+			staticInterceptor.Invoke("setUrlHandler$#$", "setUrlHandler(const QString&, QObject*, const char*)", typeof(void), typeof(string), scheme, typeof(QObject), receiver, typeof(string), method);
 		}
 		public static void UnsetUrlHandler(string scheme) {
-			staticInterceptor.UnsetUrlHandler(scheme);
+			staticInterceptor.Invoke("unsetUrlHandler$", "unsetUrlHandler(const QString&)", typeof(void), typeof(string), scheme);
 		}
 	}
 }

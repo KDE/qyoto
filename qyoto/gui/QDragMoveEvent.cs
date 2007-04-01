@@ -7,54 +7,36 @@ namespace Qyoto {
 	public class QDragMoveEvent : QDropEvent, IDisposable {
  		protected QDragMoveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragMoveEvent), this);
-			interceptor = (QDragMoveEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDragMoveEvent), "QDragMoveEvent", this);
 		}
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
-		}
-		[SmokeMethod("QDragMoveEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", "#$#$$$")]
-		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
-			((QDragMoveEvent) interceptor).NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
+			interceptor.Invoke("QDragMoveEvent#$#$$$", "QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers, typeof(QEvent.TypeOf), type);
 		}
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQDragMoveEvent(pos,actions,data,buttons,modifiers);
+			interceptor.Invoke("QDragMoveEvent#$#$$", "QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers);
 		}
-		[SmokeMethod("QDragMoveEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$#$$")]
-		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
-			((QDragMoveEvent) interceptor).NewQDragMoveEvent(pos,actions,data,buttons,modifiers);
-		}
-		[SmokeMethod("answerRect", "() const", "")]
 		public QRect AnswerRect() {
-			return ((QDragMoveEvent) interceptor).AnswerRect();
+			return (QRect) interceptor.Invoke("answerRect", "answerRect() const", typeof(QRect));
 		}
-		[SmokeMethod("accept", "()", "")]
 		public void Accept() {
-			((QDragMoveEvent) interceptor).Accept();
+			interceptor.Invoke("accept", "accept()", typeof(void));
 		}
-		[SmokeMethod("ignore", "()", "")]
 		public void Ignore() {
-			((QDragMoveEvent) interceptor).Ignore();
+			interceptor.Invoke("ignore", "ignore()", typeof(void));
 		}
-		[SmokeMethod("accept", "(const QRect&)", "#")]
 		public void Accept(QRect r) {
-			((QDragMoveEvent) interceptor).Accept(r);
+			interceptor.Invoke("accept#", "accept(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		[SmokeMethod("ignore", "(const QRect&)", "#")]
 		public void Ignore(QRect r) {
-			((QDragMoveEvent) interceptor).Ignore(r);
+			interceptor.Invoke("ignore#", "ignore(const QRect&)", typeof(void), typeof(QRect), r);
 		}
 		~QDragMoveEvent() {
-			DisposeQDragMoveEvent();
+			interceptor.Invoke("~QDragMoveEvent", "~QDragMoveEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDragMoveEvent();
-		}
-		[SmokeMethod("~QDragMoveEvent", "()", "")]
-		private void DisposeQDragMoveEvent() {
-			((QDragMoveEvent) interceptor).DisposeQDragMoveEvent();
+			interceptor.Invoke("~QDragMoveEvent", "~QDragMoveEvent()", typeof(void));
 		}
 	}
 }

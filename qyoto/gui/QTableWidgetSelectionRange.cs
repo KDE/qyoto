@@ -4,71 +4,48 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTableWidgetSelectionRange")]
-	public class QTableWidgetSelectionRange : MarshalByRefObject, IDisposable {
-		protected QTableWidgetSelectionRange interceptor = null;
+	public class QTableWidgetSelectionRange : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTableWidgetSelectionRange(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableWidgetSelectionRange), this);
-			interceptor = (QTableWidgetSelectionRange) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTableWidgetSelectionRange), "QTableWidgetSelectionRange", this);
 		}
 		public QTableWidgetSelectionRange() : this((Type) null) {
 			CreateProxy();
-			NewQTableWidgetSelectionRange();
-		}
-		[SmokeMethod("QTableWidgetSelectionRange", "()", "")]
-		private void NewQTableWidgetSelectionRange() {
-			((QTableWidgetSelectionRange) interceptor).NewQTableWidgetSelectionRange();
+			interceptor.Invoke("QTableWidgetSelectionRange", "QTableWidgetSelectionRange()", typeof(void));
 		}
 		public QTableWidgetSelectionRange(int top, int left, int bottom, int right) : this((Type) null) {
 			CreateProxy();
-			NewQTableWidgetSelectionRange(top,left,bottom,right);
-		}
-		[SmokeMethod("QTableWidgetSelectionRange", "(int, int, int, int)", "$$$$")]
-		private void NewQTableWidgetSelectionRange(int top, int left, int bottom, int right) {
-			((QTableWidgetSelectionRange) interceptor).NewQTableWidgetSelectionRange(top,left,bottom,right);
+			interceptor.Invoke("QTableWidgetSelectionRange$$$$", "QTableWidgetSelectionRange(int, int, int, int)", typeof(void), typeof(int), top, typeof(int), left, typeof(int), bottom, typeof(int), right);
 		}
 		public QTableWidgetSelectionRange(QTableWidgetSelectionRange other) : this((Type) null) {
 			CreateProxy();
-			NewQTableWidgetSelectionRange(other);
+			interceptor.Invoke("QTableWidgetSelectionRange#", "QTableWidgetSelectionRange(const QTableWidgetSelectionRange&)", typeof(void), typeof(QTableWidgetSelectionRange), other);
 		}
-		[SmokeMethod("QTableWidgetSelectionRange", "(const QTableWidgetSelectionRange&)", "#")]
-		private void NewQTableWidgetSelectionRange(QTableWidgetSelectionRange other) {
-			((QTableWidgetSelectionRange) interceptor).NewQTableWidgetSelectionRange(other);
-		}
-		[SmokeMethod("topRow", "() const", "")]
 		public int TopRow() {
-			return ((QTableWidgetSelectionRange) interceptor).TopRow();
+			return (int) interceptor.Invoke("topRow", "topRow() const", typeof(int));
 		}
-		[SmokeMethod("bottomRow", "() const", "")]
 		public int BottomRow() {
-			return ((QTableWidgetSelectionRange) interceptor).BottomRow();
+			return (int) interceptor.Invoke("bottomRow", "bottomRow() const", typeof(int));
 		}
-		[SmokeMethod("leftColumn", "() const", "")]
 		public int LeftColumn() {
-			return ((QTableWidgetSelectionRange) interceptor).LeftColumn();
+			return (int) interceptor.Invoke("leftColumn", "leftColumn() const", typeof(int));
 		}
-		[SmokeMethod("rightColumn", "() const", "")]
 		public int RightColumn() {
-			return ((QTableWidgetSelectionRange) interceptor).RightColumn();
+			return (int) interceptor.Invoke("rightColumn", "rightColumn() const", typeof(int));
 		}
-		[SmokeMethod("rowCount", "() const", "")]
 		public int RowCount() {
-			return ((QTableWidgetSelectionRange) interceptor).RowCount();
+			return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
 		}
-		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ((QTableWidgetSelectionRange) interceptor).ColumnCount();
+			return (int) interceptor.Invoke("columnCount", "columnCount() const", typeof(int));
 		}
 		~QTableWidgetSelectionRange() {
-			DisposeQTableWidgetSelectionRange();
+			interceptor.Invoke("~QTableWidgetSelectionRange", "~QTableWidgetSelectionRange()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTableWidgetSelectionRange();
-		}
-		[SmokeMethod("~QTableWidgetSelectionRange", "()", "")]
-		private void DisposeQTableWidgetSelectionRange() {
-			((QTableWidgetSelectionRange) interceptor).DisposeQTableWidgetSelectionRange();
+			interceptor.Invoke("~QTableWidgetSelectionRange", "~QTableWidgetSelectionRange()", typeof(void));
 		}
 	}
 }

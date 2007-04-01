@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionTab : QStyleOption, IDisposable {
  		protected QStyleOptionTab(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTab), this);
-			interceptor = (QStyleOptionTab) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionTab), "QStyleOptionTab", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Tab,
@@ -34,37 +33,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionTab() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTab();
-		}
-		[SmokeMethod("QStyleOptionTab", "()", "")]
-		private void NewQStyleOptionTab() {
-			((QStyleOptionTab) interceptor).NewQStyleOptionTab();
+			interceptor.Invoke("QStyleOptionTab", "QStyleOptionTab()", typeof(void));
 		}
 		public QStyleOptionTab(QStyleOptionTab other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTab(other);
-		}
-		[SmokeMethod("QStyleOptionTab", "(const QStyleOptionTab&)", "#")]
-		private void NewQStyleOptionTab(QStyleOptionTab other) {
-			((QStyleOptionTab) interceptor).NewQStyleOptionTab(other);
+			interceptor.Invoke("QStyleOptionTab#", "QStyleOptionTab(const QStyleOptionTab&)", typeof(void), typeof(QStyleOptionTab), other);
 		}
 		public QStyleOptionTab(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTab(version);
-		}
-		[SmokeMethod("QStyleOptionTab", "(int)", "$")]
-		private void NewQStyleOptionTab(int version) {
-			((QStyleOptionTab) interceptor).NewQStyleOptionTab(version);
+			interceptor.Invoke("QStyleOptionTab$", "QStyleOptionTab(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionTab() {
-			DisposeQStyleOptionTab();
+			interceptor.Invoke("~QStyleOptionTab", "~QStyleOptionTab()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionTab();
-		}
-		[SmokeMethod("~QStyleOptionTab", "()", "")]
-		private void DisposeQStyleOptionTab() {
-			((QStyleOptionTab) interceptor).DisposeQStyleOptionTab();
+			interceptor.Invoke("~QStyleOptionTab", "~QStyleOptionTab()", typeof(void));
 		}
 	}
 }

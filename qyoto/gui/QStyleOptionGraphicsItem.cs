@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionGraphicsItem : QStyleOption, IDisposable {
  		protected QStyleOptionGraphicsItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), this);
-			interceptor = (QStyleOptionGraphicsItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), "QStyleOptionGraphicsItem", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GraphicsItem,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionGraphicsItem() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionGraphicsItem();
-		}
-		[SmokeMethod("QStyleOptionGraphicsItem", "()", "")]
-		private void NewQStyleOptionGraphicsItem() {
-			((QStyleOptionGraphicsItem) interceptor).NewQStyleOptionGraphicsItem();
+			interceptor.Invoke("QStyleOptionGraphicsItem", "QStyleOptionGraphicsItem()", typeof(void));
 		}
 		public QStyleOptionGraphicsItem(QStyleOptionGraphicsItem other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionGraphicsItem(other);
-		}
-		[SmokeMethod("QStyleOptionGraphicsItem", "(const QStyleOptionGraphicsItem&)", "#")]
-		private void NewQStyleOptionGraphicsItem(QStyleOptionGraphicsItem other) {
-			((QStyleOptionGraphicsItem) interceptor).NewQStyleOptionGraphicsItem(other);
+			interceptor.Invoke("QStyleOptionGraphicsItem#", "QStyleOptionGraphicsItem(const QStyleOptionGraphicsItem&)", typeof(void), typeof(QStyleOptionGraphicsItem), other);
 		}
 		public QStyleOptionGraphicsItem(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionGraphicsItem(version);
-		}
-		[SmokeMethod("QStyleOptionGraphicsItem", "(int)", "$")]
-		private void NewQStyleOptionGraphicsItem(int version) {
-			((QStyleOptionGraphicsItem) interceptor).NewQStyleOptionGraphicsItem(version);
+			interceptor.Invoke("QStyleOptionGraphicsItem$", "QStyleOptionGraphicsItem(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionGraphicsItem() {
-			DisposeQStyleOptionGraphicsItem();
+			interceptor.Invoke("~QStyleOptionGraphicsItem", "~QStyleOptionGraphicsItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionGraphicsItem();
-		}
-		[SmokeMethod("~QStyleOptionGraphicsItem", "()", "")]
-		private void DisposeQStyleOptionGraphicsItem() {
-			((QStyleOptionGraphicsItem) interceptor).DisposeQStyleOptionGraphicsItem();
+			interceptor.Invoke("~QStyleOptionGraphicsItem", "~QStyleOptionGraphicsItem()", typeof(void));
 		}
 	}
 }

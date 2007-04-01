@@ -5,45 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QTextCodec")]
-	public abstract class QTextCodec : MarshalByRefObject {
-		protected QTextCodec interceptor = null;
+	public abstract class QTextCodec : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextCodec(Type dummy) {}
-		[SmokeClass("QTextCodec")]
-		interface IQTextCodecProxy {
-			[SmokeMethod("codecForName", "(const QByteArray&)", "#")]
-			QTextCodec CodecForName(QByteArray name);
-			[SmokeMethod("codecForName", "(const char*)", "$")]
-			QTextCodec CodecForName(string name);
-			[SmokeMethod("codecForMib", "(int)", "$")]
-			QTextCodec CodecForMib(int mib);
-			[SmokeMethod("availableCodecs", "()", "")]
-			List<QByteArray> AvailableCodecs();
-			[SmokeMethod("availableMibs", "()", "")]
-			List<int> AvailableMibs();
-			[SmokeMethod("codecForLocale", "()", "")]
-			QTextCodec CodecForLocale();
-			[SmokeMethod("setCodecForLocale", "(QTextCodec*)", "#")]
-			void SetCodecForLocale(QTextCodec c);
-			[SmokeMethod("codecForTr", "()", "")]
-			QTextCodec CodecForTr();
-			[SmokeMethod("setCodecForTr", "(QTextCodec*)", "#")]
-			void SetCodecForTr(QTextCodec c);
-			[SmokeMethod("codecForCStrings", "()", "")]
-			QTextCodec CodecForCStrings();
-			[SmokeMethod("setCodecForCStrings", "(QTextCodec*)", "#")]
-			void SetCodecForCStrings(QTextCodec c);
-			[SmokeMethod("codecForHtml", "(const QByteArray&)", "#")]
-			QTextCodec CodecForHtml(QByteArray ba);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodec), this);
-			interceptor = (QTextCodec) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextCodec), "QTextCodec", this);
 		}
-		private static IQTextCodecProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextCodec() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextCodecProxy), null);
-			staticInterceptor = (IQTextCodecProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextCodec), "QTextCodec", null);
 		}
 		public enum ConversionFlag : long {
 			DefaultConversion = 0,
@@ -54,93 +25,80 @@ namespace Qyoto {
 		// QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
 		// QString convertToUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
 		// QByteArray convertFromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		[SmokeMethod("makeDecoder", "() const", "")]
 		public QTextDecoder MakeDecoder() {
-			return ((QTextCodec) interceptor).MakeDecoder();
+			return (QTextDecoder) interceptor.Invoke("makeDecoder", "makeDecoder() const", typeof(QTextDecoder));
 		}
-		[SmokeMethod("makeEncoder", "() const", "")]
 		public QTextEncoder MakeEncoder() {
-			return ((QTextCodec) interceptor).MakeEncoder();
+			return (QTextEncoder) interceptor.Invoke("makeEncoder", "makeEncoder() const", typeof(QTextEncoder));
 		}
-		[SmokeMethod("canEncode", "(QChar) const", "#")]
 		public bool CanEncode(char arg1) {
-			return ((QTextCodec) interceptor).CanEncode(arg1);
+			return (bool) interceptor.Invoke("canEncode#", "canEncode(QChar) const", typeof(bool), typeof(char), arg1);
 		}
-		[SmokeMethod("canEncode", "(const QString&) const", "$")]
 		public bool CanEncode(string arg1) {
-			return ((QTextCodec) interceptor).CanEncode(arg1);
+			return (bool) interceptor.Invoke("canEncode$", "canEncode(const QString&) const", typeof(bool), typeof(string), arg1);
 		}
-		[SmokeMethod("toUnicode", "(const QByteArray&) const", "#")]
 		public string ToUnicode(QByteArray arg1) {
-			return ((QTextCodec) interceptor).ToUnicode(arg1);
+			return (string) interceptor.Invoke("toUnicode#", "toUnicode(const QByteArray&) const", typeof(string), typeof(QByteArray), arg1);
 		}
-		[SmokeMethod("toUnicode", "(const char*) const", "$")]
 		public string ToUnicode(string chars) {
-			return ((QTextCodec) interceptor).ToUnicode(chars);
+			return (string) interceptor.Invoke("toUnicode$", "toUnicode(const char*) const", typeof(string), typeof(string), chars);
 		}
-		[SmokeMethod("fromUnicode", "(const QString&) const", "$")]
 		public QByteArray FromUnicode(string uc) {
-			return ((QTextCodec) interceptor).FromUnicode(uc);
+			return (QByteArray) interceptor.Invoke("fromUnicode$", "fromUnicode(const QString&) const", typeof(QByteArray), typeof(string), uc);
 		}
-		[SmokeMethod("toUnicode", "(const char*, int) const", "$$")]
 		public string ToUnicode(string arg1, int length) {
-			return ((QTextCodec) interceptor).ToUnicode(arg1,length);
+			return (string) interceptor.Invoke("toUnicode$$", "toUnicode(const char*, int) const", typeof(string), typeof(string), arg1, typeof(int), length);
 		}
-		[SmokeMethod("fromUnicode", "(const QChar*, int) const", "#$")]
 		public QByteArray FromUnicode(char arg1, int length) {
-			return ((QTextCodec) interceptor).FromUnicode(arg1,length);
+			return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int) const", typeof(QByteArray), typeof(char), arg1, typeof(int), length);
 		}
-		[SmokeMethod("name", "() const", "")]
+		[SmokeMethod("name() const")]
 		public abstract QByteArray Name();
-		[SmokeMethod("aliases", "() const", "")]
+		[SmokeMethod("aliases() const")]
 		public virtual List<QByteArray> Aliases() {
-			return ((QTextCodec) interceptor).Aliases();
+			return (List<QByteArray>) interceptor.Invoke("aliases", "aliases() const", typeof(List<QByteArray>));
 		}
-		[SmokeMethod("mibEnum", "() const", "")]
+		[SmokeMethod("mibEnum() const")]
 		public abstract int MibEnum();
 		public QTextCodec() : this((Type) null) {
 			CreateProxy();
-			NewQTextCodec();
-		}
-		[SmokeMethod("QTextCodec", "()", "")]
-		private void NewQTextCodec() {
-			((QTextCodec) interceptor).NewQTextCodec();
+			interceptor.Invoke("QTextCodec", "QTextCodec()", typeof(void));
 		}
 		public static QTextCodec CodecForName(QByteArray name) {
-			return staticInterceptor.CodecForName(name);
+			return (QTextCodec) staticInterceptor.Invoke("codecForName#", "codecForName(const QByteArray&)", typeof(QTextCodec), typeof(QByteArray), name);
 		}
 		public static QTextCodec CodecForName(string name) {
-			return staticInterceptor.CodecForName(name);
+			return (QTextCodec) staticInterceptor.Invoke("codecForName$", "codecForName(const char*)", typeof(QTextCodec), typeof(string), name);
 		}
 		public static QTextCodec CodecForMib(int mib) {
-			return staticInterceptor.CodecForMib(mib);
+			return (QTextCodec) staticInterceptor.Invoke("codecForMib$", "codecForMib(int)", typeof(QTextCodec), typeof(int), mib);
 		}
 		public static List<QByteArray> AvailableCodecs() {
-			return staticInterceptor.AvailableCodecs();
+			return (List<QByteArray>) staticInterceptor.Invoke("availableCodecs", "availableCodecs()", typeof(List<QByteArray>));
 		}
 		public static List<int> AvailableMibs() {
-			return staticInterceptor.AvailableMibs();
+			return (List<int>) staticInterceptor.Invoke("availableMibs", "availableMibs()", typeof(List<int>));
 		}
 		public static QTextCodec CodecForLocale() {
-			return staticInterceptor.CodecForLocale();
+			return (QTextCodec) staticInterceptor.Invoke("codecForLocale", "codecForLocale()", typeof(QTextCodec));
 		}
 		public static void SetCodecForLocale(QTextCodec c) {
-			staticInterceptor.SetCodecForLocale(c);
+			staticInterceptor.Invoke("setCodecForLocale#", "setCodecForLocale(QTextCodec*)", typeof(void), typeof(QTextCodec), c);
 		}
 		public static QTextCodec CodecForTr() {
-			return staticInterceptor.CodecForTr();
+			return (QTextCodec) staticInterceptor.Invoke("codecForTr", "codecForTr()", typeof(QTextCodec));
 		}
 		public static void SetCodecForTr(QTextCodec c) {
-			staticInterceptor.SetCodecForTr(c);
+			staticInterceptor.Invoke("setCodecForTr#", "setCodecForTr(QTextCodec*)", typeof(void), typeof(QTextCodec), c);
 		}
 		public static QTextCodec CodecForCStrings() {
-			return staticInterceptor.CodecForCStrings();
+			return (QTextCodec) staticInterceptor.Invoke("codecForCStrings", "codecForCStrings()", typeof(QTextCodec));
 		}
 		public static void SetCodecForCStrings(QTextCodec c) {
-			staticInterceptor.SetCodecForCStrings(c);
+			staticInterceptor.Invoke("setCodecForCStrings#", "setCodecForCStrings(QTextCodec*)", typeof(void), typeof(QTextCodec), c);
 		}
 		public static QTextCodec CodecForHtml(QByteArray ba) {
-			return staticInterceptor.CodecForHtml(ba);
+			return (QTextCodec) staticInterceptor.Invoke("codecForHtml#", "codecForHtml(const QByteArray&)", typeof(QTextCodec), typeof(QByteArray), ba);
 		}
 	}
 }

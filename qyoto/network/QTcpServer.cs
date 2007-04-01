@@ -7,137 +7,98 @@ namespace Qyoto {
 	[SmokeClass("QTcpServer")]
 	public class QTcpServer : QObject, IDisposable {
  		protected QTcpServer(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTcpServer")]
-		interface IQTcpServerProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpServer), this);
-			interceptor = (QTcpServer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTcpServer), "QTcpServer", this);
 		}
-		private static IQTcpServerProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTcpServer() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTcpServerProxy), null);
-			staticInterceptor = (IQTcpServerProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTcpServer), "QTcpServer", null);
 		}
 		public QTcpServer(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTcpServer(parent);
-		}
-		[SmokeMethod("QTcpServer", "(QObject*)", "#")]
-		private void NewQTcpServer(QObject parent) {
-			((QTcpServer) interceptor).NewQTcpServer(parent);
+			interceptor.Invoke("QTcpServer#", "QTcpServer(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QTcpServer() : this((Type) null) {
 			CreateProxy();
-			NewQTcpServer();
+			interceptor.Invoke("QTcpServer", "QTcpServer()", typeof(void));
 		}
-		[SmokeMethod("QTcpServer", "()", "")]
-		private void NewQTcpServer() {
-			((QTcpServer) interceptor).NewQTcpServer();
-		}
-		[SmokeMethod("listen", "(const QHostAddress&, quint16)", "#$")]
 		public bool Listen(QHostAddress address, ushort port) {
-			return ((QTcpServer) interceptor).Listen(address,port);
+			return (bool) interceptor.Invoke("listen#$", "listen(const QHostAddress&, quint16)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port);
 		}
-		[SmokeMethod("listen", "(const QHostAddress&)", "#")]
 		public bool Listen(QHostAddress address) {
-			return ((QTcpServer) interceptor).Listen(address);
+			return (bool) interceptor.Invoke("listen#", "listen(const QHostAddress&)", typeof(bool), typeof(QHostAddress), address);
 		}
-		[SmokeMethod("listen", "()", "")]
 		public bool Listen() {
-			return ((QTcpServer) interceptor).Listen();
+			return (bool) interceptor.Invoke("listen", "listen()", typeof(bool));
 		}
-		[SmokeMethod("close", "()", "")]
 		public void Close() {
-			((QTcpServer) interceptor).Close();
+			interceptor.Invoke("close", "close()", typeof(void));
 		}
-		[SmokeMethod("isListening", "() const", "")]
 		public bool IsListening() {
-			return ((QTcpServer) interceptor).IsListening();
+			return (bool) interceptor.Invoke("isListening", "isListening() const", typeof(bool));
 		}
-		[SmokeMethod("setMaxPendingConnections", "(int)", "$")]
 		public void SetMaxPendingConnections(int numConnections) {
-			((QTcpServer) interceptor).SetMaxPendingConnections(numConnections);
+			interceptor.Invoke("setMaxPendingConnections$", "setMaxPendingConnections(int)", typeof(void), typeof(int), numConnections);
 		}
-		[SmokeMethod("maxPendingConnections", "() const", "")]
 		public int MaxPendingConnections() {
-			return ((QTcpServer) interceptor).MaxPendingConnections();
+			return (int) interceptor.Invoke("maxPendingConnections", "maxPendingConnections() const", typeof(int));
 		}
-		[SmokeMethod("serverPort", "() const", "")]
 		public ushort ServerPort() {
-			return ((QTcpServer) interceptor).ServerPort();
+			return (ushort) interceptor.Invoke("serverPort", "serverPort() const", typeof(ushort));
 		}
-		[SmokeMethod("serverAddress", "() const", "")]
 		public QHostAddress ServerAddress() {
-			return ((QTcpServer) interceptor).ServerAddress();
+			return (QHostAddress) interceptor.Invoke("serverAddress", "serverAddress() const", typeof(QHostAddress));
 		}
-		[SmokeMethod("socketDescriptor", "() const", "")]
 		public int SocketDescriptor() {
-			return ((QTcpServer) interceptor).SocketDescriptor();
+			return (int) interceptor.Invoke("socketDescriptor", "socketDescriptor() const", typeof(int));
 		}
-		[SmokeMethod("setSocketDescriptor", "(int)", "$")]
 		public bool SetSocketDescriptor(int socketDescriptor) {
-			return ((QTcpServer) interceptor).SetSocketDescriptor(socketDescriptor);
+			return (bool) interceptor.Invoke("setSocketDescriptor$", "setSocketDescriptor(int)", typeof(bool), typeof(int), socketDescriptor);
 		}
-		[SmokeMethod("waitForNewConnection", "(int, bool*)", "$$")]
-		public bool WaitForNewConnection(int msec, out bool timedOut) {
-			return ((QTcpServer) interceptor).WaitForNewConnection(msec,out timedOut);
+		public bool WaitForNewConnection(int msec, bool timedOut) {
+			return (bool) interceptor.Invoke("waitForNewConnection$$", "waitForNewConnection(int, bool*)", typeof(bool), typeof(int), msec, typeof(bool), timedOut);
 		}
-		[SmokeMethod("waitForNewConnection", "(int)", "$")]
 		public bool WaitForNewConnection(int msec) {
-			return ((QTcpServer) interceptor).WaitForNewConnection(msec);
+			return (bool) interceptor.Invoke("waitForNewConnection$", "waitForNewConnection(int)", typeof(bool), typeof(int), msec);
 		}
-		[SmokeMethod("waitForNewConnection", "()", "")]
 		public bool WaitForNewConnection() {
-			return ((QTcpServer) interceptor).WaitForNewConnection();
+			return (bool) interceptor.Invoke("waitForNewConnection", "waitForNewConnection()", typeof(bool));
 		}
-		[SmokeMethod("hasPendingConnections", "() const", "")]
+		[SmokeMethod("hasPendingConnections() const")]
 		public virtual bool HasPendingConnections() {
-			return ((QTcpServer) interceptor).HasPendingConnections();
+			return (bool) interceptor.Invoke("hasPendingConnections", "hasPendingConnections() const", typeof(bool));
 		}
-		[SmokeMethod("nextPendingConnection", "()", "")]
+		[SmokeMethod("nextPendingConnection()")]
 		public virtual QTcpSocket NextPendingConnection() {
-			return ((QTcpServer) interceptor).NextPendingConnection();
+			return (QTcpSocket) interceptor.Invoke("nextPendingConnection", "nextPendingConnection()", typeof(QTcpSocket));
 		}
-		[SmokeMethod("serverError", "() const", "")]
 		public QAbstractSocket.SocketError ServerError() {
-			return ((QTcpServer) interceptor).ServerError();
+			return (QAbstractSocket.SocketError) interceptor.Invoke("serverError", "serverError() const", typeof(QAbstractSocket.SocketError));
 		}
-		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ((QTcpServer) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
-		[SmokeMethod("setProxy", "(const QNetworkProxy&)", "#")]
 		public void SetProxy(QNetworkProxy networkProxy) {
-			((QTcpServer) interceptor).SetProxy(networkProxy);
+			interceptor.Invoke("setProxy#", "setProxy(const QNetworkProxy&)", typeof(void), typeof(QNetworkProxy), networkProxy);
 		}
-		[SmokeMethod("proxy", "() const", "")]
 		public QNetworkProxy Proxy() {
-			return ((QTcpServer) interceptor).Proxy();
+			return (QNetworkProxy) interceptor.Invoke("proxy", "proxy() const", typeof(QNetworkProxy));
 		}
-		[SmokeMethod("incomingConnection", "(int)", "$")]
+		[SmokeMethod("incomingConnection(int)")]
 		protected virtual void IncomingConnection(int handle) {
-			((QTcpServer) interceptor).IncomingConnection(handle);
+			interceptor.Invoke("incomingConnection$", "incomingConnection(int)", typeof(void), typeof(int), handle);
 		}
 		~QTcpServer() {
-			DisposeQTcpServer();
+			interceptor.Invoke("~QTcpServer", "~QTcpServer()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTcpServer();
-		}
-		[SmokeMethod("~QTcpServer", "()", "")]
-		private void DisposeQTcpServer() {
-			((QTcpServer) interceptor).DisposeQTcpServer();
+			interceptor.Invoke("~QTcpServer", "~QTcpServer()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTcpServerSignals Emit {
 			get { return (IQTcpServerSignals) Q_EMIT; }

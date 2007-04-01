@@ -7,77 +7,55 @@ namespace Qyoto {
 	[SmokeClass("QWidgetAction")]
 	public class QWidgetAction : QAction, IDisposable {
  		protected QWidgetAction(Type dummy) : base((Type) null) {}
-		[SmokeClass("QWidgetAction")]
-		interface IQWidgetActionProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetAction), this);
-			interceptor = (QWidgetAction) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWidgetAction), "QWidgetAction", this);
 		}
-		private static IQWidgetActionProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QWidgetAction() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWidgetActionProxy), null);
-			staticInterceptor = (IQWidgetActionProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QWidgetAction), "QWidgetAction", null);
 		}
 		public QWidgetAction(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQWidgetAction(parent);
+			interceptor.Invoke("QWidgetAction#", "QWidgetAction(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		[SmokeMethod("QWidgetAction", "(QObject*)", "#")]
-		private void NewQWidgetAction(QObject parent) {
-			((QWidgetAction) interceptor).NewQWidgetAction(parent);
-		}
-		[SmokeMethod("setDefaultWidget", "(QWidget*)", "#")]
 		public void SetDefaultWidget(QWidget w) {
-			((QWidgetAction) interceptor).SetDefaultWidget(w);
+			interceptor.Invoke("setDefaultWidget#", "setDefaultWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("defaultWidget", "() const", "")]
 		public QWidget DefaultWidget() {
-			return ((QWidgetAction) interceptor).DefaultWidget();
+			return (QWidget) interceptor.Invoke("defaultWidget", "defaultWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("requestWidget", "(QWidget*)", "#")]
 		public QWidget RequestWidget(QWidget parent) {
-			return ((QWidgetAction) interceptor).RequestWidget(parent);
+			return (QWidget) interceptor.Invoke("requestWidget#", "requestWidget(QWidget*)", typeof(QWidget), typeof(QWidget), parent);
 		}
-		[SmokeMethod("releaseWidget", "(QWidget*)", "#")]
 		public void ReleaseWidget(QWidget widget) {
-			((QWidgetAction) interceptor).ReleaseWidget(widget);
+			interceptor.Invoke("releaseWidget#", "releaseWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QWidgetAction) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("createWidget", "(QWidget*)", "#")]
+		[SmokeMethod("createWidget(QWidget*)")]
 		protected virtual QWidget CreateWidget(QWidget parent) {
-			return ((QWidgetAction) interceptor).CreateWidget(parent);
+			return (QWidget) interceptor.Invoke("createWidget#", "createWidget(QWidget*)", typeof(QWidget), typeof(QWidget), parent);
 		}
-		[SmokeMethod("deleteWidget", "(QWidget*)", "#")]
+		[SmokeMethod("deleteWidget(QWidget*)")]
 		protected virtual void DeleteWidget(QWidget widget) {
-			((QWidgetAction) interceptor).DeleteWidget(widget);
+			interceptor.Invoke("deleteWidget#", "deleteWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("createdWidgets", "() const", "")]
 		protected List<QWidget> CreatedWidgets() {
-			return ((QWidgetAction) interceptor).CreatedWidgets();
+			return (List<QWidget>) interceptor.Invoke("createdWidgets", "createdWidgets() const", typeof(List<QWidget>));
 		}
 		~QWidgetAction() {
-			DisposeQWidgetAction();
+			interceptor.Invoke("~QWidgetAction", "~QWidgetAction()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQWidgetAction();
-		}
-		[SmokeMethod("~QWidgetAction", "()", "")]
-		private void DisposeQWidgetAction() {
-			((QWidgetAction) interceptor).DisposeQWidgetAction();
+			interceptor.Invoke("~QWidgetAction", "~QWidgetAction()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQWidgetActionSignals Emit {
 			get { return (IQWidgetActionSignals) Q_EMIT; }

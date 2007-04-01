@@ -7,23 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QAbstractItemDelegate")]
 	public abstract class QAbstractItemDelegate : QObject {
  		protected QAbstractItemDelegate(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractItemDelegate")]
-		interface IQAbstractItemDelegateProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("elidedText", "(const QFontMetrics&, int, Qt::TextElideMode, const QString&)", "#$$$")]
-			string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemDelegate), this);
-			interceptor = (QAbstractItemDelegate) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractItemDelegate), "QAbstractItemDelegate", this);
 		}
-		private static IQAbstractItemDelegateProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractItemDelegate() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractItemDelegateProxy), null);
-			staticInterceptor = (IQAbstractItemDelegateProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemDelegate), "QAbstractItemDelegate", null);
 		}
 		public enum EndEditHint {
 			NoHint = 0,
@@ -34,52 +23,44 @@ namespace Qyoto {
 		}
 		public QAbstractItemDelegate(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractItemDelegate(parent);
-		}
-		[SmokeMethod("QAbstractItemDelegate", "(QObject*)", "#")]
-		private void NewQAbstractItemDelegate(QObject parent) {
-			((QAbstractItemDelegate) interceptor).NewQAbstractItemDelegate(parent);
+			interceptor.Invoke("QAbstractItemDelegate#", "QAbstractItemDelegate(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QAbstractItemDelegate() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractItemDelegate();
+			interceptor.Invoke("QAbstractItemDelegate", "QAbstractItemDelegate()", typeof(void));
 		}
-		[SmokeMethod("QAbstractItemDelegate", "()", "")]
-		private void NewQAbstractItemDelegate() {
-			((QAbstractItemDelegate) interceptor).NewQAbstractItemDelegate();
-		}
-		[SmokeMethod("paint", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
+		[SmokeMethod("paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public abstract void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index);
-		[SmokeMethod("sizeHint", "(const QStyleOptionViewItem&, const QModelIndex&) const", "##")]
+		[SmokeMethod("sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public abstract QSize SizeHint(QStyleOptionViewItem option, QModelIndex index);
-		[SmokeMethod("createEditor", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
+		[SmokeMethod("createEditor(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual QWidget CreateEditor(QWidget parent, QStyleOptionViewItem option, QModelIndex index) {
-			return ((QAbstractItemDelegate) interceptor).CreateEditor(parent,option,index);
+			return (QWidget) interceptor.Invoke("createEditor###", "createEditor(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", typeof(QWidget), typeof(QWidget), parent, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
-		[SmokeMethod("setEditorData", "(QWidget*, const QModelIndex&) const", "##")]
+		[SmokeMethod("setEditorData(QWidget*, const QModelIndex&) const")]
 		public virtual void SetEditorData(QWidget editor, QModelIndex index) {
-			((QAbstractItemDelegate) interceptor).SetEditorData(editor,index);
+			interceptor.Invoke("setEditorData##", "setEditorData(QWidget*, const QModelIndex&) const", typeof(void), typeof(QWidget), editor, typeof(QModelIndex), index);
 		}
-		[SmokeMethod("setModelData", "(QWidget*, QAbstractItemModel*, const QModelIndex&) const", "###")]
+		[SmokeMethod("setModelData(QWidget*, QAbstractItemModel*, const QModelIndex&) const")]
 		public virtual void SetModelData(QWidget editor, QAbstractItemModel model, QModelIndex index) {
-			((QAbstractItemDelegate) interceptor).SetModelData(editor,model,index);
+			interceptor.Invoke("setModelData###", "setModelData(QWidget*, QAbstractItemModel*, const QModelIndex&) const", typeof(void), typeof(QWidget), editor, typeof(QAbstractItemModel), model, typeof(QModelIndex), index);
 		}
-		[SmokeMethod("updateEditorGeometry", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
+		[SmokeMethod("updateEditorGeometry(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual void UpdateEditorGeometry(QWidget editor, QStyleOptionViewItem option, QModelIndex index) {
-			((QAbstractItemDelegate) interceptor).UpdateEditorGeometry(editor,option,index);
+			interceptor.Invoke("updateEditorGeometry###", "updateEditorGeometry(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", typeof(void), typeof(QWidget), editor, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
-		[SmokeMethod("editorEvent", "(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", "####")]
+		[SmokeMethod("editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)")]
 		public virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
-			return ((QAbstractItemDelegate) interceptor).EditorEvent(arg1,model,option,index);
+			return (bool) interceptor.Invoke("editorEvent####", "editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QEvent), arg1, typeof(QAbstractItemModel), model, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text) {
-			return staticInterceptor.ElidedText(fontMetrics,width,mode,text);
+			return (string) staticInterceptor.Invoke("elidedText#$$$", "elidedText(const QFontMetrics&, int, Qt::TextElideMode, const QString&)", typeof(string), typeof(QFontMetrics), fontMetrics, typeof(int), width, typeof(Qt.TextElideMode), mode, typeof(string), text);
 		}
 		protected new IQAbstractItemDelegateSignals Emit {
 			get { return (IQAbstractItemDelegateSignals) Q_EMIT; }

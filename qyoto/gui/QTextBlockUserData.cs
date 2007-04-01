@@ -4,31 +4,22 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextBlockUserData")]
-	public class QTextBlockUserData : MarshalByRefObject, IDisposable {
-		protected QTextBlockUserData interceptor = null;
+	public class QTextBlockUserData : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextBlockUserData(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockUserData), this);
-			interceptor = (QTextBlockUserData) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextBlockUserData), "QTextBlockUserData", this);
 		}
 		public QTextBlockUserData() : this((Type) null) {
 			CreateProxy();
-			NewQTextBlockUserData();
-		}
-		[SmokeMethod("QTextBlockUserData", "()", "")]
-		private void NewQTextBlockUserData() {
-			((QTextBlockUserData) interceptor).NewQTextBlockUserData();
+			interceptor.Invoke("QTextBlockUserData", "QTextBlockUserData()", typeof(void));
 		}
 		~QTextBlockUserData() {
-			DisposeQTextBlockUserData();
+			interceptor.Invoke("~QTextBlockUserData", "~QTextBlockUserData()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextBlockUserData();
-		}
-		[SmokeMethod("~QTextBlockUserData", "()", "")]
-		private void DisposeQTextBlockUserData() {
-			((QTextBlockUserData) interceptor).DisposeQTextBlockUserData();
+			interceptor.Invoke("~QTextBlockUserData", "~QTextBlockUserData()", typeof(void));
 		}
 	}
 }

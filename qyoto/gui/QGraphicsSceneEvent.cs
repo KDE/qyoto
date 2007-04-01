@@ -7,34 +7,23 @@ namespace Qyoto {
 	public class QGraphicsSceneEvent : QEvent, IDisposable {
  		protected QGraphicsSceneEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneEvent), this);
-			interceptor = (QGraphicsSceneEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneEvent), "QGraphicsSceneEvent", this);
 		}
 		public QGraphicsSceneEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneEvent(type);
+			interceptor.Invoke("QGraphicsSceneEvent$", "QGraphicsSceneEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
-		[SmokeMethod("QGraphicsSceneEvent", "(QEvent::Type)", "$")]
-		private void NewQGraphicsSceneEvent(QEvent.TypeOf type) {
-			((QGraphicsSceneEvent) interceptor).NewQGraphicsSceneEvent(type);
-		}
-		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ((QGraphicsSceneEvent) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			((QGraphicsSceneEvent) interceptor).SetWidget(widget);
+			interceptor.Invoke("setWidget#", "setWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		~QGraphicsSceneEvent() {
-			DisposeQGraphicsSceneEvent();
+			interceptor.Invoke("~QGraphicsSceneEvent", "~QGraphicsSceneEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsSceneEvent();
-		}
-		[SmokeMethod("~QGraphicsSceneEvent", "()", "")]
-		private void DisposeQGraphicsSceneEvent() {
-			((QGraphicsSceneEvent) interceptor).DisposeQGraphicsSceneEvent();
+			interceptor.Invoke("~QGraphicsSceneEvent", "~QGraphicsSceneEvent()", typeof(void));
 		}
 	}
 }

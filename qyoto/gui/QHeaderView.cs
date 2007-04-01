@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QHeaderView")]
 	public class QHeaderView : QAbstractItemView, IDisposable {
  		protected QHeaderView(Type dummy) : base((Type) null) {}
-		[SmokeClass("QHeaderView")]
-		interface IQHeaderViewProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHeaderView), this);
-			interceptor = (QHeaderView) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QHeaderView), "QHeaderView", this);
 		}
-		private static IQHeaderViewProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QHeaderView() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHeaderViewProxy), null);
-			staticInterceptor = (IQHeaderViewProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QHeaderView), "QHeaderView", null);
 		}
 		public enum ResizeMode {
 			Interactive = 0,
@@ -32,387 +23,313 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "showSortIndicator")]
 		public bool ShowSortIndicator {
-			[SmokeMethod("isSortIndicatorShown", "()", "")]
-			get { return ((QHeaderView) interceptor).ShowSortIndicator; }
-			[SmokeMethod("setSortIndicatorShown", "(bool)", "$")]
-			set { ((QHeaderView) interceptor).ShowSortIndicator = value; }
+			get { return (bool) interceptor.Invoke("isSortIndicatorShown", "isSortIndicatorShown()", typeof(bool)); }
+			set { interceptor.Invoke("setSortIndicatorShown$", "setSortIndicatorShown(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "highlightSections")]
 		public bool HighlightSections {
-			[SmokeMethod("highlightSections", "()", "")]
-			get { return ((QHeaderView) interceptor).HighlightSections; }
-			[SmokeMethod("setHighlightSections", "(bool)", "$")]
-			set { ((QHeaderView) interceptor).HighlightSections = value; }
+			get { return (bool) interceptor.Invoke("highlightSections", "highlightSections()", typeof(bool)); }
+			set { interceptor.Invoke("setHighlightSections$", "setHighlightSections(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "stretchLastSection")]
 		public bool StretchLastSection {
-			[SmokeMethod("stretchLastSection", "()", "")]
-			get { return ((QHeaderView) interceptor).StretchLastSection; }
-			[SmokeMethod("setStretchLastSection", "(bool)", "$")]
-			set { ((QHeaderView) interceptor).StretchLastSection = value; }
+			get { return (bool) interceptor.Invoke("stretchLastSection", "stretchLastSection()", typeof(bool)); }
+			set { interceptor.Invoke("setStretchLastSection$", "setStretchLastSection(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "cascadingSectionResizes")]
 		public bool CascadingSectionResizes {
-			[SmokeMethod("cascadingSectionResizes", "()", "")]
-			get { return ((QHeaderView) interceptor).CascadingSectionResizes; }
-			[SmokeMethod("setCascadingSectionResizes", "(bool)", "$")]
-			set { ((QHeaderView) interceptor).CascadingSectionResizes = value; }
+			get { return (bool) interceptor.Invoke("cascadingSectionResizes", "cascadingSectionResizes()", typeof(bool)); }
+			set { interceptor.Invoke("setCascadingSectionResizes$", "setCascadingSectionResizes(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "defaultSectionSize")]
 		public int DefaultSectionSize {
-			[SmokeMethod("defaultSectionSize", "()", "")]
-			get { return ((QHeaderView) interceptor).DefaultSectionSize; }
-			[SmokeMethod("setDefaultSectionSize", "(int)", "$")]
-			set { ((QHeaderView) interceptor).DefaultSectionSize = value; }
+			get { return (int) interceptor.Invoke("defaultSectionSize", "defaultSectionSize()", typeof(int)); }
+			set { interceptor.Invoke("setDefaultSectionSize$", "setDefaultSectionSize(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "minimumSectionSize")]
 		public int MinimumSectionSize {
-			[SmokeMethod("minimumSectionSize", "()", "")]
-			get { return ((QHeaderView) interceptor).MinimumSectionSize; }
-			[SmokeMethod("setMinimumSectionSize", "(int)", "$")]
-			set { ((QHeaderView) interceptor).MinimumSectionSize = value; }
+			get { return (int) interceptor.Invoke("minimumSectionSize", "minimumSectionSize()", typeof(int)); }
+			set { interceptor.Invoke("setMinimumSectionSize$", "setMinimumSectionSize(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "defaultAlignment")]
 		public int DefaultAlignment {
-			[SmokeMethod("defaultAlignment", "()", "")]
-			get { return ((QHeaderView) interceptor).DefaultAlignment; }
-			[SmokeMethod("setDefaultAlignment", "(Qt::Alignment)", "$")]
-			set { ((QHeaderView) interceptor).DefaultAlignment = value; }
+			get { return (int) interceptor.Invoke("defaultAlignment", "defaultAlignment()", typeof(int)); }
+			set { interceptor.Invoke("setDefaultAlignment$", "setDefaultAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
 		}
 		public QHeaderView(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQHeaderView(orientation,parent);
-		}
-		[SmokeMethod("QHeaderView", "(Qt::Orientation, QWidget*)", "$#")]
-		private void NewQHeaderView(Qt.Orientation orientation, QWidget parent) {
-			((QHeaderView) interceptor).NewQHeaderView(orientation,parent);
+			interceptor.Invoke("QHeaderView$#", "QHeaderView(Qt::Orientation, QWidget*)", typeof(void), typeof(Qt.Orientation), orientation, typeof(QWidget), parent);
 		}
 		public QHeaderView(Qt.Orientation orientation) : this((Type) null) {
 			CreateProxy();
-			NewQHeaderView(orientation);
+			interceptor.Invoke("QHeaderView$", "QHeaderView(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("QHeaderView", "(Qt::Orientation)", "$")]
-		private void NewQHeaderView(Qt.Orientation orientation) {
-			((QHeaderView) interceptor).NewQHeaderView(orientation);
-		}
-		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
+		[SmokeMethod("setModel(QAbstractItemModel*)")]
 		public override void SetModel(QAbstractItemModel model) {
-			((QHeaderView) interceptor).SetModel(model);
+			interceptor.Invoke("setModel#", "setModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);
 		}
-		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ((QHeaderView) interceptor).Orientation();
+			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
-		[SmokeMethod("offset", "() const", "")]
 		public int Offset() {
-			return ((QHeaderView) interceptor).Offset();
+			return (int) interceptor.Invoke("offset", "offset() const", typeof(int));
 		}
-		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ((QHeaderView) interceptor).Length();
+			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QHeaderView) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("sectionSizeHint", "(int) const", "$")]
 		public int SectionSizeHint(int logicalIndex) {
-			return ((QHeaderView) interceptor).SectionSizeHint(logicalIndex);
+			return (int) interceptor.Invoke("sectionSizeHint$", "sectionSizeHint(int) const", typeof(int), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("visualIndexAt", "(int) const", "$")]
 		public int VisualIndexAt(int position) {
-			return ((QHeaderView) interceptor).VisualIndexAt(position);
+			return (int) interceptor.Invoke("visualIndexAt$", "visualIndexAt(int) const", typeof(int), typeof(int), position);
 		}
-		[SmokeMethod("logicalIndexAt", "(int) const", "$")]
 		public int LogicalIndexAt(int position) {
-			return ((QHeaderView) interceptor).LogicalIndexAt(position);
+			return (int) interceptor.Invoke("logicalIndexAt$", "logicalIndexAt(int) const", typeof(int), typeof(int), position);
 		}
-		[SmokeMethod("logicalIndexAt", "(int, int) const", "$$")]
 		public int LogicalIndexAt(int x, int y) {
-			return ((QHeaderView) interceptor).LogicalIndexAt(x,y);
+			return (int) interceptor.Invoke("logicalIndexAt$$", "logicalIndexAt(int, int) const", typeof(int), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("logicalIndexAt", "(const QPoint&) const", "#")]
 		public int LogicalIndexAt(QPoint pos) {
-			return ((QHeaderView) interceptor).LogicalIndexAt(pos);
+			return (int) interceptor.Invoke("logicalIndexAt#", "logicalIndexAt(const QPoint&) const", typeof(int), typeof(QPoint), pos);
 		}
-		[SmokeMethod("sectionSize", "(int) const", "$")]
 		public int SectionSize(int logicalIndex) {
-			return ((QHeaderView) interceptor).SectionSize(logicalIndex);
+			return (int) interceptor.Invoke("sectionSize$", "sectionSize(int) const", typeof(int), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("sectionPosition", "(int) const", "$")]
 		public int SectionPosition(int logicalIndex) {
-			return ((QHeaderView) interceptor).SectionPosition(logicalIndex);
+			return (int) interceptor.Invoke("sectionPosition$", "sectionPosition(int) const", typeof(int), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("sectionViewportPosition", "(int) const", "$")]
 		public int SectionViewportPosition(int logicalIndex) {
-			return ((QHeaderView) interceptor).SectionViewportPosition(logicalIndex);
+			return (int) interceptor.Invoke("sectionViewportPosition$", "sectionViewportPosition(int) const", typeof(int), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("moveSection", "(int, int)", "$$")]
 		public void MoveSection(int from, int to) {
-			((QHeaderView) interceptor).MoveSection(from,to);
+			interceptor.Invoke("moveSection$$", "moveSection(int, int)", typeof(void), typeof(int), from, typeof(int), to);
 		}
-		[SmokeMethod("swapSections", "(int, int)", "$$")]
 		public void SwapSections(int first, int second) {
-			((QHeaderView) interceptor).SwapSections(first,second);
+			interceptor.Invoke("swapSections$$", "swapSections(int, int)", typeof(void), typeof(int), first, typeof(int), second);
 		}
-		[SmokeMethod("resizeSection", "(int, int)", "$$")]
 		public void ResizeSection(int logicalIndex, int size) {
-			((QHeaderView) interceptor).ResizeSection(logicalIndex,size);
+			interceptor.Invoke("resizeSection$$", "resizeSection(int, int)", typeof(void), typeof(int), logicalIndex, typeof(int), size);
 		}
-		[SmokeMethod("resizeSections", "(QHeaderView::ResizeMode)", "$")]
 		public void ResizeSections(QHeaderView.ResizeMode mode) {
-			((QHeaderView) interceptor).ResizeSections(mode);
+			interceptor.Invoke("resizeSections$", "resizeSections(QHeaderView::ResizeMode)", typeof(void), typeof(QHeaderView.ResizeMode), mode);
 		}
-		[SmokeMethod("isSectionHidden", "(int) const", "$")]
 		public bool IsSectionHidden(int logicalIndex) {
-			return ((QHeaderView) interceptor).IsSectionHidden(logicalIndex);
+			return (bool) interceptor.Invoke("isSectionHidden$", "isSectionHidden(int) const", typeof(bool), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("setSectionHidden", "(int, bool)", "$$")]
 		public void SetSectionHidden(int logicalIndex, bool hide) {
-			((QHeaderView) interceptor).SetSectionHidden(logicalIndex,hide);
+			interceptor.Invoke("setSectionHidden$$", "setSectionHidden(int, bool)", typeof(void), typeof(int), logicalIndex, typeof(bool), hide);
 		}
-		[SmokeMethod("hiddenSectionCount", "() const", "")]
 		public int HiddenSectionCount() {
-			return ((QHeaderView) interceptor).HiddenSectionCount();
+			return (int) interceptor.Invoke("hiddenSectionCount", "hiddenSectionCount() const", typeof(int));
 		}
-		[SmokeMethod("hideSection", "(int)", "$")]
 		public void HideSection(int logicalIndex) {
-			((QHeaderView) interceptor).HideSection(logicalIndex);
+			interceptor.Invoke("hideSection$", "hideSection(int)", typeof(void), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("showSection", "(int)", "$")]
 		public void ShowSection(int logicalIndex) {
-			((QHeaderView) interceptor).ShowSection(logicalIndex);
+			interceptor.Invoke("showSection$", "showSection(int)", typeof(void), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QHeaderView) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("visualIndex", "(int) const", "$")]
 		public int VisualIndex(int logicalIndex) {
-			return ((QHeaderView) interceptor).VisualIndex(logicalIndex);
+			return (int) interceptor.Invoke("visualIndex$", "visualIndex(int) const", typeof(int), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("logicalIndex", "(int) const", "$")]
 		public int LogicalIndex(int visualIndex) {
-			return ((QHeaderView) interceptor).LogicalIndex(visualIndex);
+			return (int) interceptor.Invoke("logicalIndex$", "logicalIndex(int) const", typeof(int), typeof(int), visualIndex);
 		}
-		[SmokeMethod("setMovable", "(bool)", "$")]
 		public void SetMovable(bool movable) {
-			((QHeaderView) interceptor).SetMovable(movable);
+			interceptor.Invoke("setMovable$", "setMovable(bool)", typeof(void), typeof(bool), movable);
 		}
-		[SmokeMethod("isMovable", "() const", "")]
 		public bool IsMovable() {
-			return ((QHeaderView) interceptor).IsMovable();
+			return (bool) interceptor.Invoke("isMovable", "isMovable() const", typeof(bool));
 		}
-		[SmokeMethod("setClickable", "(bool)", "$")]
 		public void SetClickable(bool clickable) {
-			((QHeaderView) interceptor).SetClickable(clickable);
+			interceptor.Invoke("setClickable$", "setClickable(bool)", typeof(void), typeof(bool), clickable);
 		}
-		[SmokeMethod("isClickable", "() const", "")]
 		public bool IsClickable() {
-			return ((QHeaderView) interceptor).IsClickable();
+			return (bool) interceptor.Invoke("isClickable", "isClickable() const", typeof(bool));
 		}
-		[SmokeMethod("setResizeMode", "(QHeaderView::ResizeMode)", "$")]
 		public void SetResizeMode(QHeaderView.ResizeMode mode) {
-			((QHeaderView) interceptor).SetResizeMode(mode);
+			interceptor.Invoke("setResizeMode$", "setResizeMode(QHeaderView::ResizeMode)", typeof(void), typeof(QHeaderView.ResizeMode), mode);
 		}
-		[SmokeMethod("setResizeMode", "(int, QHeaderView::ResizeMode)", "$$")]
 		public void SetResizeMode(int logicalIndex, QHeaderView.ResizeMode mode) {
-			((QHeaderView) interceptor).SetResizeMode(logicalIndex,mode);
+			interceptor.Invoke("setResizeMode$$", "setResizeMode(int, QHeaderView::ResizeMode)", typeof(void), typeof(int), logicalIndex, typeof(QHeaderView.ResizeMode), mode);
 		}
-		[SmokeMethod("resizeMode", "(int) const", "$")]
 		public QHeaderView.ResizeMode resizeMode(int logicalIndex) {
-			return ((QHeaderView) interceptor).resizeMode(logicalIndex);
+			return (QHeaderView.ResizeMode) interceptor.Invoke("resizeMode$", "resizeMode(int) const", typeof(QHeaderView.ResizeMode), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("stretchSectionCount", "() const", "")]
 		public int StretchSectionCount() {
-			return ((QHeaderView) interceptor).StretchSectionCount();
+			return (int) interceptor.Invoke("stretchSectionCount", "stretchSectionCount() const", typeof(int));
 		}
-		[SmokeMethod("setSortIndicatorShown", "(bool)", "$")]
 		public void SetSortIndicatorShown(bool show) {
-			((QHeaderView) interceptor).SetSortIndicatorShown(show);
+			interceptor.Invoke("setSortIndicatorShown$", "setSortIndicatorShown(bool)", typeof(void), typeof(bool), show);
 		}
-		[SmokeMethod("isSortIndicatorShown", "() const", "")]
 		public bool IsSortIndicatorShown() {
-			return ((QHeaderView) interceptor).IsSortIndicatorShown();
+			return (bool) interceptor.Invoke("isSortIndicatorShown", "isSortIndicatorShown() const", typeof(bool));
 		}
-		[SmokeMethod("setSortIndicator", "(int, Qt::SortOrder)", "$$")]
 		public void SetSortIndicator(int logicalIndex, Qt.SortOrder order) {
-			((QHeaderView) interceptor).SetSortIndicator(logicalIndex,order);
+			interceptor.Invoke("setSortIndicator$$", "setSortIndicator(int, Qt::SortOrder)", typeof(void), typeof(int), logicalIndex, typeof(Qt.SortOrder), order);
 		}
-		[SmokeMethod("sortIndicatorSection", "() const", "")]
 		public int SortIndicatorSection() {
-			return ((QHeaderView) interceptor).SortIndicatorSection();
+			return (int) interceptor.Invoke("sortIndicatorSection", "sortIndicatorSection() const", typeof(int));
 		}
-		[SmokeMethod("sortIndicatorOrder", "() const", "")]
 		public Qt.SortOrder SortIndicatorOrder() {
-			return ((QHeaderView) interceptor).SortIndicatorOrder();
+			return (Qt.SortOrder) interceptor.Invoke("sortIndicatorOrder", "sortIndicatorOrder() const", typeof(Qt.SortOrder));
 		}
-		[SmokeMethod("doItemsLayout", "()", "")]
+		[SmokeMethod("doItemsLayout()")]
 		public override void DoItemsLayout() {
-			((QHeaderView) interceptor).DoItemsLayout();
+			interceptor.Invoke("doItemsLayout", "doItemsLayout()", typeof(void));
 		}
-		[SmokeMethod("sectionsMoved", "() const", "")]
 		public bool SectionsMoved() {
-			return ((QHeaderView) interceptor).SectionsMoved();
+			return (bool) interceptor.Invoke("sectionsMoved", "sectionsMoved() const", typeof(bool));
 		}
-		[SmokeMethod("sectionsHidden", "() const", "")]
 		public bool SectionsHidden() {
-			return ((QHeaderView) interceptor).SectionsHidden();
+			return (bool) interceptor.Invoke("sectionsHidden", "sectionsHidden() const", typeof(bool));
 		}
 		[Q_SLOT("void setOffset(int)")]
-		[SmokeMethod("setOffset", "(int)", "$")]
 		public void SetOffset(int offset) {
-			((QHeaderView) interceptor).SetOffset(offset);
+			interceptor.Invoke("setOffset$", "setOffset(int)", typeof(void), typeof(int), offset);
 		}
 		[Q_SLOT("void setOffsetToSectionPosition(int)")]
-		[SmokeMethod("setOffsetToSectionPosition", "(int)", "$")]
 		public void SetOffsetToSectionPosition(int visualIndex) {
-			((QHeaderView) interceptor).SetOffsetToSectionPosition(visualIndex);
+			interceptor.Invoke("setOffsetToSectionPosition$", "setOffsetToSectionPosition(int)", typeof(void), typeof(int), visualIndex);
 		}
 		[Q_SLOT("void headerDataChanged(Qt::Orientation, int, int)")]
-		[SmokeMethod("headerDataChanged", "(Qt::Orientation, int, int)", "$$$")]
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
-			((QHeaderView) interceptor).HeaderDataChanged(orientation,logicalFirst,logicalLast);
+			interceptor.Invoke("headerDataChanged$$$", "headerDataChanged(Qt::Orientation, int, int)", typeof(void), typeof(Qt.Orientation), orientation, typeof(int), logicalFirst, typeof(int), logicalLast);
 		}
-		[SmokeMethod("initialize", "()", "")]
 		protected void Initialize() {
-			((QHeaderView) interceptor).Initialize();
+			interceptor.Invoke("initialize", "initialize()", typeof(void));
 		}
-		[SmokeMethod("initializeSections", "()", "")]
 		protected void InitializeSections() {
-			((QHeaderView) interceptor).InitializeSections();
+			interceptor.Invoke("initializeSections", "initializeSections()", typeof(void));
 		}
-		[SmokeMethod("initializeSections", "(int, int)", "$$")]
 		protected void InitializeSections(int start, int end) {
-			((QHeaderView) interceptor).InitializeSections(start,end);
+			interceptor.Invoke("initializeSections$$", "initializeSections(int, int)", typeof(void), typeof(int), start, typeof(int), end);
 		}
-		[SmokeMethod("currentChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
+		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
 		protected override void CurrentChanged(QModelIndex current, QModelIndex old) {
-			((QHeaderView) interceptor).CurrentChanged(current,old);
+			interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), old);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QHeaderView) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent e) {
-			((QHeaderView) interceptor).PaintEvent(e);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), e);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent e) {
-			((QHeaderView) interceptor).MousePressEvent(e);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent e) {
-			((QHeaderView) interceptor).MouseMoveEvent(e);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent e) {
-			((QHeaderView) interceptor).MouseReleaseEvent(e);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
 		}
-		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected override void MouseDoubleClickEvent(QMouseEvent e) {
-			((QHeaderView) interceptor).MouseDoubleClickEvent(e);
+			interceptor.Invoke("mouseDoubleClickEvent#", "mouseDoubleClickEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
 		}
-		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
+		[SmokeMethod("viewportEvent(QEvent*)")]
 		protected override bool ViewportEvent(QEvent e) {
-			return ((QHeaderView) interceptor).ViewportEvent(e);
+			return (bool) interceptor.Invoke("viewportEvent#", "viewportEvent(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintSection", "(QPainter*, const QRect&, int) const", "##$")]
+		[SmokeMethod("paintSection(QPainter*, const QRect&, int) const")]
 		protected virtual void PaintSection(QPainter painter, QRect rect, int logicalIndex) {
-			((QHeaderView) interceptor).PaintSection(painter,rect,logicalIndex);
+			interceptor.Invoke("paintSection##$", "paintSection(QPainter*, const QRect&, int) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), logicalIndex);
 		}
-		[SmokeMethod("sectionSizeFromContents", "(int) const", "$")]
+		[SmokeMethod("sectionSizeFromContents(int) const")]
 		protected virtual QSize SectionSizeFromContents(int logicalIndex) {
-			return ((QHeaderView) interceptor).SectionSizeFromContents(logicalIndex);
+			return (QSize) interceptor.Invoke("sectionSizeFromContents$", "sectionSizeFromContents(int) const", typeof(QSize), typeof(int), logicalIndex);
 		}
-		[SmokeMethod("horizontalOffset", "() const", "")]
+		[SmokeMethod("horizontalOffset() const")]
 		protected override int HorizontalOffset() {
-			return ((QHeaderView) interceptor).HorizontalOffset();
+			return (int) interceptor.Invoke("horizontalOffset", "horizontalOffset() const", typeof(int));
 		}
-		[SmokeMethod("verticalOffset", "() const", "")]
+		[SmokeMethod("verticalOffset() const")]
 		protected override int VerticalOffset() {
-			return ((QHeaderView) interceptor).VerticalOffset();
+			return (int) interceptor.Invoke("verticalOffset", "verticalOffset() const", typeof(int));
 		}
-		[SmokeMethod("updateGeometries", "()", "")]
+		[SmokeMethod("updateGeometries()")]
 		protected override void UpdateGeometries() {
-			((QHeaderView) interceptor).UpdateGeometries();
+			interceptor.Invoke("updateGeometries", "updateGeometries()", typeof(void));
 		}
-		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
+		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			((QHeaderView) interceptor).ScrollContentsBy(dx,dy);
+			interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
-		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
+		[SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
 		protected override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
-			((QHeaderView) interceptor).DataChanged(topLeft,bottomRight);
+			interceptor.Invoke("dataChanged##", "dataChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);
 		}
-		[SmokeMethod("rowsInserted", "(const QModelIndex&, int, int)", "#$$")]
+		[SmokeMethod("rowsInserted(const QModelIndex&, int, int)")]
 		protected override void RowsInserted(QModelIndex parent, int start, int end) {
-			((QHeaderView) interceptor).RowsInserted(parent,start,end);
+			interceptor.Invoke("rowsInserted#$$", "rowsInserted(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
 		}
-		[SmokeMethod("visualRect", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public override QRect VisualRect(QModelIndex index) {
-			return ((QHeaderView) interceptor).VisualRect(index);
+			return (QRect) interceptor.Invoke("visualRect#", "visualRect(const QModelIndex&) const", typeof(QRect), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("scrollTo", "(const QModelIndex&, QAbstractItemView::ScrollHint)", "#$")]
+		[SmokeMethod("scrollTo(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		public override void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
-			((QHeaderView) interceptor).ScrollTo(index,hint);
+			interceptor.Invoke("scrollTo#$", "scrollTo(const QModelIndex&, QAbstractItemView::ScrollHint)", typeof(void), typeof(QModelIndex), index, typeof(QAbstractItemView.ScrollHint), hint);
 		}
-		[SmokeMethod("indexAt", "(const QPoint&) const", "#")]
+		[SmokeMethod("indexAt(const QPoint&) const")]
 		public override QModelIndex IndexAt(QPoint p) {
-			return ((QHeaderView) interceptor).IndexAt(p);
+			return (QModelIndex) interceptor.Invoke("indexAt#", "indexAt(const QPoint&) const", typeof(QModelIndex), typeof(QPoint), p);
 		}
-		[SmokeMethod("isIndexHidden", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("isIndexHidden(const QModelIndex&) const")]
 		protected override bool IsIndexHidden(QModelIndex index) {
-			return ((QHeaderView) interceptor).IsIndexHidden(index);
+			return (bool) interceptor.Invoke("isIndexHidden#", "isIndexHidden(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("moveCursor", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", "$$")]
+		[SmokeMethod("moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
 		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction arg1, int arg2) {
-			return ((QHeaderView) interceptor).MoveCursor(arg1,arg2);
+			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("setSelection", "(const QRect&, QItemSelectionModel::SelectionFlags)", "#$")]
+		[SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
 		protected override void SetSelection(QRect arg1, int arg2) {
-			((QHeaderView) interceptor).SetSelection(arg1,arg2);
+			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("visualRegionForSelection", "(const QItemSelection&) const", "#")]
+		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {
-			return ((QHeaderView) interceptor).VisualRegionForSelection(selection);
+			return (QRegion) interceptor.Invoke("visualRegionForSelection#", "visualRegionForSelection(const QItemSelection&) const", typeof(QRegion), typeof(QItemSelection), selection);
 		}
 		[Q_SLOT("void updateSection(int)")]
-		[SmokeMethod("updateSection", "(int)", "$")]
 		protected void UpdateSection(int logicalIndex) {
-			((QHeaderView) interceptor).UpdateSection(logicalIndex);
+			interceptor.Invoke("updateSection$", "updateSection(int)", typeof(void), typeof(int), logicalIndex);
 		}
 		[Q_SLOT("void resizeSections()")]
-		[SmokeMethod("resizeSections", "()", "")]
 		protected void ResizeSections() {
-			((QHeaderView) interceptor).ResizeSections();
+			interceptor.Invoke("resizeSections", "resizeSections()", typeof(void));
 		}
 		[Q_SLOT("void sectionsInserted(const QModelIndex&, int, int)")]
-		[SmokeMethod("sectionsInserted", "(const QModelIndex&, int, int)", "#$$")]
 		protected void SectionsInserted(QModelIndex parent, int logicalFirst, int logicalLast) {
-			((QHeaderView) interceptor).SectionsInserted(parent,logicalFirst,logicalLast);
+			interceptor.Invoke("sectionsInserted#$$", "sectionsInserted(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), logicalFirst, typeof(int), logicalLast);
 		}
 		[Q_SLOT("void sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
-		[SmokeMethod("sectionsAboutToBeRemoved", "(const QModelIndex&, int, int)", "#$$")]
 		protected void SectionsAboutToBeRemoved(QModelIndex parent, int logicalFirst, int logicalLast) {
-			((QHeaderView) interceptor).SectionsAboutToBeRemoved(parent,logicalFirst,logicalLast);
+			interceptor.Invoke("sectionsAboutToBeRemoved#$$", "sectionsAboutToBeRemoved(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), logicalFirst, typeof(int), logicalLast);
 		}
 		~QHeaderView() {
-			DisposeQHeaderView();
+			interceptor.Invoke("~QHeaderView", "~QHeaderView()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQHeaderView();
-		}
-		[SmokeMethod("~QHeaderView", "()", "")]
-		private void DisposeQHeaderView() {
-			((QHeaderView) interceptor).DisposeQHeaderView();
+			interceptor.Invoke("~QHeaderView", "~QHeaderView()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQHeaderViewSignals Emit {
 			get { return (IQHeaderViewSignals) Q_EMIT; }

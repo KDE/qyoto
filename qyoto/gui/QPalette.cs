@@ -4,23 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QPalette")]
-	public class QPalette : MarshalByRefObject, IDisposable {
-		protected QPalette interceptor = null;
+	public class QPalette : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPalette(Type dummy) {}
-		[SmokeClass("QPalette")]
-		interface IQPaletteProxy {
-			[SmokeMethod("operator==", "(const QPalette&) const", "#")]
-			bool op_equals(QPalette lhs, QPalette p);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPalette), this);
-			interceptor = (QPalette) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPalette), "QPalette", this);
 		}
-		private static IQPaletteProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPalette() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPaletteProxy), null);
-			staticInterceptor = (IQPaletteProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPalette), "QPalette", null);
 		}
 		public enum ColorGroup {
 			Active = 0,
@@ -57,230 +50,161 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPalette() : this((Type) null) {
 			CreateProxy();
-			NewQPalette();
-		}
-		[SmokeMethod("QPalette", "()", "")]
-		private void NewQPalette() {
-			((QPalette) interceptor).NewQPalette();
+			interceptor.Invoke("QPalette", "QPalette()", typeof(void));
 		}
 		public QPalette(QColor button) : this((Type) null) {
 			CreateProxy();
-			NewQPalette(button);
-		}
-		[SmokeMethod("QPalette", "(const QColor&)", "#")]
-		private void NewQPalette(QColor button) {
-			((QPalette) interceptor).NewQPalette(button);
+			interceptor.Invoke("QPalette#", "QPalette(const QColor&)", typeof(void), typeof(QColor), button);
 		}
 		public QPalette(Qt.GlobalColor button) : this((Type) null) {
 			CreateProxy();
-			NewQPalette(button);
-		}
-		[SmokeMethod("QPalette", "(Qt::GlobalColor)", "$")]
-		private void NewQPalette(Qt.GlobalColor button) {
-			((QPalette) interceptor).NewQPalette(button);
+			interceptor.Invoke("QPalette$", "QPalette(Qt::GlobalColor)", typeof(void), typeof(Qt.GlobalColor), button);
 		}
 		public QPalette(QColor button, QColor window) : this((Type) null) {
 			CreateProxy();
-			NewQPalette(button,window);
-		}
-		[SmokeMethod("QPalette", "(const QColor&, const QColor&)", "##")]
-		private void NewQPalette(QColor button, QColor window) {
-			((QPalette) interceptor).NewQPalette(button,window);
+			interceptor.Invoke("QPalette##", "QPalette(const QColor&, const QColor&)", typeof(void), typeof(QColor), button, typeof(QColor), window);
 		}
 		public QPalette(QBrush windowText, QBrush button, QBrush light, QBrush dark, QBrush mid, QBrush text, QBrush bright_text, QBrush arg8, QBrush window) : this((Type) null) {
 			CreateProxy();
-			NewQPalette(windowText,button,light,dark,mid,text,bright_text,arg8,window);
-		}
-		[SmokeMethod("QPalette", "(const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)", "#########")]
-		private void NewQPalette(QBrush windowText, QBrush button, QBrush light, QBrush dark, QBrush mid, QBrush text, QBrush bright_text, QBrush arg8, QBrush window) {
-			((QPalette) interceptor).NewQPalette(windowText,button,light,dark,mid,text,bright_text,arg8,window);
+			interceptor.Invoke("QPalette#########", "QPalette(const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)", typeof(void), typeof(QBrush), windowText, typeof(QBrush), button, typeof(QBrush), light, typeof(QBrush), dark, typeof(QBrush), mid, typeof(QBrush), text, typeof(QBrush), bright_text, typeof(QBrush), arg8, typeof(QBrush), window);
 		}
 		public QPalette(QColor windowText, QColor window, QColor light, QColor dark, QColor mid, QColor text, QColor arg7) : this((Type) null) {
 			CreateProxy();
-			NewQPalette(windowText,window,light,dark,mid,text,arg7);
-		}
-		[SmokeMethod("QPalette", "(const QColor&, const QColor&, const QColor&, const QColor&, const QColor&, const QColor&, const QColor&)", "#######")]
-		private void NewQPalette(QColor windowText, QColor window, QColor light, QColor dark, QColor mid, QColor text, QColor arg7) {
-			((QPalette) interceptor).NewQPalette(windowText,window,light,dark,mid,text,arg7);
+			interceptor.Invoke("QPalette#######", "QPalette(const QColor&, const QColor&, const QColor&, const QColor&, const QColor&, const QColor&, const QColor&)", typeof(void), typeof(QColor), windowText, typeof(QColor), window, typeof(QColor), light, typeof(QColor), dark, typeof(QColor), mid, typeof(QColor), text, typeof(QColor), arg7);
 		}
 		public QPalette(QPalette palette) : this((Type) null) {
 			CreateProxy();
-			NewQPalette(palette);
+			interceptor.Invoke("QPalette#", "QPalette(const QPalette&)", typeof(void), typeof(QPalette), palette);
 		}
-		[SmokeMethod("QPalette", "(const QPalette&)", "#")]
-		private void NewQPalette(QPalette palette) {
-			((QPalette) interceptor).NewQPalette(palette);
-		}
-		[SmokeMethod("currentColorGroup", "() const", "")]
 		public QPalette.ColorGroup CurrentColorGroup() {
-			return ((QPalette) interceptor).CurrentColorGroup();
+			return (QPalette.ColorGroup) interceptor.Invoke("currentColorGroup", "currentColorGroup() const", typeof(QPalette.ColorGroup));
 		}
-		[SmokeMethod("setCurrentColorGroup", "(QPalette::ColorGroup)", "$")]
 		public void SetCurrentColorGroup(QPalette.ColorGroup cg) {
-			((QPalette) interceptor).SetCurrentColorGroup(cg);
+			interceptor.Invoke("setCurrentColorGroup$", "setCurrentColorGroup(QPalette::ColorGroup)", typeof(void), typeof(QPalette.ColorGroup), cg);
 		}
-		[SmokeMethod("color", "(QPalette::ColorGroup, QPalette::ColorRole) const", "$$")]
 		public QColor Color(QPalette.ColorGroup cg, QPalette.ColorRole cr) {
-			return ((QPalette) interceptor).Color(cg,cr);
+			return (QColor) interceptor.Invoke("color$$", "color(QPalette::ColorGroup, QPalette::ColorRole) const", typeof(QColor), typeof(QPalette.ColorGroup), cg, typeof(QPalette.ColorRole), cr);
 		}
-		[SmokeMethod("brush", "(QPalette::ColorGroup, QPalette::ColorRole) const", "$$")]
 		public QBrush Brush(QPalette.ColorGroup cg, QPalette.ColorRole cr) {
-			return ((QPalette) interceptor).Brush(cg,cr);
+			return (QBrush) interceptor.Invoke("brush$$", "brush(QPalette::ColorGroup, QPalette::ColorRole) const", typeof(QBrush), typeof(QPalette.ColorGroup), cg, typeof(QPalette.ColorRole), cr);
 		}
-		[SmokeMethod("setColor", "(QPalette::ColorGroup, QPalette::ColorRole, const QColor&)", "$$#")]
 		public void SetColor(QPalette.ColorGroup cg, QPalette.ColorRole cr, QColor color) {
-			((QPalette) interceptor).SetColor(cg,cr,color);
+			interceptor.Invoke("setColor$$#", "setColor(QPalette::ColorGroup, QPalette::ColorRole, const QColor&)", typeof(void), typeof(QPalette.ColorGroup), cg, typeof(QPalette.ColorRole), cr, typeof(QColor), color);
 		}
-		[SmokeMethod("setColor", "(QPalette::ColorRole, const QColor&)", "$#")]
 		public void SetColor(QPalette.ColorRole cr, QColor color) {
-			((QPalette) interceptor).SetColor(cr,color);
+			interceptor.Invoke("setColor$#", "setColor(QPalette::ColorRole, const QColor&)", typeof(void), typeof(QPalette.ColorRole), cr, typeof(QColor), color);
 		}
-		[SmokeMethod("setBrush", "(QPalette::ColorRole, const QBrush&)", "$#")]
 		public void SetBrush(QPalette.ColorRole cr, QBrush brush) {
-			((QPalette) interceptor).SetBrush(cr,brush);
+			interceptor.Invoke("setBrush$#", "setBrush(QPalette::ColorRole, const QBrush&)", typeof(void), typeof(QPalette.ColorRole), cr, typeof(QBrush), brush);
 		}
-		[SmokeMethod("isBrushSet", "(QPalette::ColorGroup, QPalette::ColorRole) const", "$$")]
 		public bool IsBrushSet(QPalette.ColorGroup cg, QPalette.ColorRole cr) {
-			return ((QPalette) interceptor).IsBrushSet(cg,cr);
+			return (bool) interceptor.Invoke("isBrushSet$$", "isBrushSet(QPalette::ColorGroup, QPalette::ColorRole) const", typeof(bool), typeof(QPalette.ColorGroup), cg, typeof(QPalette.ColorRole), cr);
 		}
-		[SmokeMethod("setBrush", "(QPalette::ColorGroup, QPalette::ColorRole, const QBrush&)", "$$#")]
 		public void SetBrush(QPalette.ColorGroup cg, QPalette.ColorRole cr, QBrush brush) {
-			((QPalette) interceptor).SetBrush(cg,cr,brush);
+			interceptor.Invoke("setBrush$$#", "setBrush(QPalette::ColorGroup, QPalette::ColorRole, const QBrush&)", typeof(void), typeof(QPalette.ColorGroup), cg, typeof(QPalette.ColorRole), cr, typeof(QBrush), brush);
 		}
-		[SmokeMethod("setColorGroup", "(QPalette::ColorGroup, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)", "$#########")]
 		public void SetColorGroup(QPalette.ColorGroup cr, QBrush windowText, QBrush button, QBrush light, QBrush dark, QBrush mid, QBrush text, QBrush bright_text, QBrush arg9, QBrush window) {
-			((QPalette) interceptor).SetColorGroup(cr,windowText,button,light,dark,mid,text,bright_text,arg9,window);
+			interceptor.Invoke("setColorGroup$#########", "setColorGroup(QPalette::ColorGroup, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)", typeof(void), typeof(QPalette.ColorGroup), cr, typeof(QBrush), windowText, typeof(QBrush), button, typeof(QBrush), light, typeof(QBrush), dark, typeof(QBrush), mid, typeof(QBrush), text, typeof(QBrush), bright_text, typeof(QBrush), arg9, typeof(QBrush), window);
 		}
-		[SmokeMethod("isEqual", "(QPalette::ColorGroup, QPalette::ColorGroup) const", "$$")]
 		public bool IsEqual(QPalette.ColorGroup cr1, QPalette.ColorGroup cr2) {
-			return ((QPalette) interceptor).IsEqual(cr1,cr2);
+			return (bool) interceptor.Invoke("isEqual$$", "isEqual(QPalette::ColorGroup, QPalette::ColorGroup) const", typeof(bool), typeof(QPalette.ColorGroup), cr1, typeof(QPalette.ColorGroup), cr2);
 		}
-		[SmokeMethod("color", "(QPalette::ColorRole) const", "$")]
 		public QColor Color(QPalette.ColorRole cr) {
-			return ((QPalette) interceptor).Color(cr);
+			return (QColor) interceptor.Invoke("color$", "color(QPalette::ColorRole) const", typeof(QColor), typeof(QPalette.ColorRole), cr);
 		}
-		[SmokeMethod("brush", "(QPalette::ColorRole) const", "$")]
 		public QBrush Brush(QPalette.ColorRole cr) {
-			return ((QPalette) interceptor).Brush(cr);
+			return (QBrush) interceptor.Invoke("brush$", "brush(QPalette::ColorRole) const", typeof(QBrush), typeof(QPalette.ColorRole), cr);
 		}
-		[SmokeMethod("foreground", "() const", "")]
 		public QBrush Foreground() {
-			return ((QPalette) interceptor).Foreground();
+			return (QBrush) interceptor.Invoke("foreground", "foreground() const", typeof(QBrush));
 		}
-		[SmokeMethod("windowText", "() const", "")]
 		public QBrush WindowText() {
-			return ((QPalette) interceptor).WindowText();
+			return (QBrush) interceptor.Invoke("windowText", "windowText() const", typeof(QBrush));
 		}
-		[SmokeMethod("button", "() const", "")]
 		public QBrush Button() {
-			return ((QPalette) interceptor).Button();
+			return (QBrush) interceptor.Invoke("button", "button() const", typeof(QBrush));
 		}
-		[SmokeMethod("light", "() const", "")]
 		public QBrush Light() {
-			return ((QPalette) interceptor).Light();
+			return (QBrush) interceptor.Invoke("light", "light() const", typeof(QBrush));
 		}
-		[SmokeMethod("dark", "() const", "")]
 		public QBrush Dark() {
-			return ((QPalette) interceptor).Dark();
+			return (QBrush) interceptor.Invoke("dark", "dark() const", typeof(QBrush));
 		}
-		[SmokeMethod("mid", "() const", "")]
 		public QBrush Mid() {
-			return ((QPalette) interceptor).Mid();
+			return (QBrush) interceptor.Invoke("mid", "mid() const", typeof(QBrush));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public QBrush Text() {
-			return ((QPalette) interceptor).Text();
+			return (QBrush) interceptor.Invoke("text", "text() const", typeof(QBrush));
 		}
-		[SmokeMethod("base", "() const", "")]
 		public QBrush Base() {
-			return ((QPalette) interceptor).Base();
+			return (QBrush) interceptor.Invoke("base", "base() const", typeof(QBrush));
 		}
-		[SmokeMethod("alternateBase", "() const", "")]
 		public QBrush AlternateBase() {
-			return ((QPalette) interceptor).AlternateBase();
+			return (QBrush) interceptor.Invoke("alternateBase", "alternateBase() const", typeof(QBrush));
 		}
-		[SmokeMethod("background", "() const", "")]
 		public QBrush Background() {
-			return ((QPalette) interceptor).Background();
+			return (QBrush) interceptor.Invoke("background", "background() const", typeof(QBrush));
 		}
-		[SmokeMethod("window", "() const", "")]
 		public QBrush Window() {
-			return ((QPalette) interceptor).Window();
+			return (QBrush) interceptor.Invoke("window", "window() const", typeof(QBrush));
 		}
-		[SmokeMethod("midlight", "() const", "")]
 		public QBrush Midlight() {
-			return ((QPalette) interceptor).Midlight();
+			return (QBrush) interceptor.Invoke("midlight", "midlight() const", typeof(QBrush));
 		}
-		[SmokeMethod("brightText", "() const", "")]
 		public QBrush BrightText() {
-			return ((QPalette) interceptor).BrightText();
+			return (QBrush) interceptor.Invoke("brightText", "brightText() const", typeof(QBrush));
 		}
-		[SmokeMethod("buttonText", "() const", "")]
 		public QBrush ButtonText() {
-			return ((QPalette) interceptor).ButtonText();
+			return (QBrush) interceptor.Invoke("buttonText", "buttonText() const", typeof(QBrush));
 		}
-		[SmokeMethod("shadow", "() const", "")]
 		public QBrush Shadow() {
-			return ((QPalette) interceptor).Shadow();
+			return (QBrush) interceptor.Invoke("shadow", "shadow() const", typeof(QBrush));
 		}
-		[SmokeMethod("highlight", "() const", "")]
 		public QBrush Highlight() {
-			return ((QPalette) interceptor).Highlight();
+			return (QBrush) interceptor.Invoke("highlight", "highlight() const", typeof(QBrush));
 		}
-		[SmokeMethod("highlightedText", "() const", "")]
 		public QBrush HighlightedText() {
-			return ((QPalette) interceptor).HighlightedText();
+			return (QBrush) interceptor.Invoke("highlightedText", "highlightedText() const", typeof(QBrush));
 		}
-		[SmokeMethod("link", "() const", "")]
 		public QBrush Link() {
-			return ((QPalette) interceptor).Link();
+			return (QBrush) interceptor.Invoke("link", "link() const", typeof(QBrush));
 		}
-		[SmokeMethod("linkVisited", "() const", "")]
 		public QBrush LinkVisited() {
-			return ((QPalette) interceptor).LinkVisited();
+			return (QBrush) interceptor.Invoke("linkVisited", "linkVisited() const", typeof(QBrush));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPalette)) { return false; }
 			return this == (QPalette) o;
 		}
 		public override int GetHashCode() {
-			return ((QPalette) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("isCopyOf", "(const QPalette&) const", "#")]
 		public bool IsCopyOf(QPalette p) {
-			return ((QPalette) interceptor).IsCopyOf(p);
+			return (bool) interceptor.Invoke("isCopyOf#", "isCopyOf(const QPalette&) const", typeof(bool), typeof(QPalette), p);
 		}
-		[SmokeMethod("serialNumber", "() const", "")]
 		public int SerialNumber() {
-			return ((QPalette) interceptor).SerialNumber();
+			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
 		}
-		[SmokeMethod("resolve", "(const QPalette&) const", "#")]
 		public QPalette Resolve(QPalette arg1) {
-			return ((QPalette) interceptor).Resolve(arg1);
+			return (QPalette) interceptor.Invoke("resolve#", "resolve(const QPalette&) const", typeof(QPalette), typeof(QPalette), arg1);
 		}
-		[SmokeMethod("resolve", "() const", "")]
 		public uint Resolve() {
-			return ((QPalette) interceptor).Resolve();
+			return (uint) interceptor.Invoke("resolve", "resolve() const", typeof(uint));
 		}
-		[SmokeMethod("resolve", "(uint)", "$")]
 		public void Resolve(uint mask) {
-			((QPalette) interceptor).Resolve(mask);
+			interceptor.Invoke("resolve$", "resolve(uint)", typeof(void), typeof(uint), mask);
 		}
 		~QPalette() {
-			DisposeQPalette();
+			interceptor.Invoke("~QPalette", "~QPalette()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPalette();
-		}
-		[SmokeMethod("~QPalette", "()", "")]
-		private void DisposeQPalette() {
-			((QPalette) interceptor).DisposeQPalette();
+			interceptor.Invoke("~QPalette", "~QPalette()", typeof(void));
 		}
 		public static bool operator==(QPalette lhs, QPalette p) {
-			return staticInterceptor.op_equals(lhs,p);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QPalette&) const", typeof(bool), typeof(QPalette), lhs, typeof(QPalette), p);
 		}
 		public static bool operator!=(QPalette lhs, QPalette p) {
-			return !staticInterceptor.op_equals(lhs,p);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QPalette&) const", typeof(bool), typeof(QPalette), lhs, typeof(QPalette), p);
 		}
 	}
 }

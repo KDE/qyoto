@@ -1071,7 +1071,8 @@ static QByteArray * currentSignature = 0;
 					if (currentSignature == 0) {
 						currentSignature = new QByteArray("");
 					}
-		
+
+					signature = strchr(signature, '(');
 					*currentSignature = "(";
 		
 					for (int i = 0; i < methodRef.numArgs; i++) {

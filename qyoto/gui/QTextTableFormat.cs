@@ -8,82 +8,59 @@ namespace Qyoto {
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
  		protected QTextTableFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableFormat), this);
-			interceptor = (QTextTableFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextTableFormat), "QTextTableFormat", this);
 		}
 		public QTextTableFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextTableFormat();
+			interceptor.Invoke("QTextTableFormat", "QTextTableFormat()", typeof(void));
 		}
-		[SmokeMethod("QTextTableFormat", "()", "")]
-		private void NewQTextTableFormat() {
-			((QTextTableFormat) interceptor).NewQTextTableFormat();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextTableFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("columns", "() const", "")]
 		public int Columns() {
-			return ((QTextTableFormat) interceptor).Columns();
+			return (int) interceptor.Invoke("columns", "columns() const", typeof(int));
 		}
-		[SmokeMethod("setColumns", "(int)", "$")]
 		public void SetColumns(int columns) {
-			((QTextTableFormat) interceptor).SetColumns(columns);
+			interceptor.Invoke("setColumns$", "setColumns(int)", typeof(void), typeof(int), columns);
 		}
-		[SmokeMethod("setColumnWidthConstraints", "(const QVector<QTextLength>&)", "?")]
 		public void SetColumnWidthConstraints(List<QTextLength> constraints) {
-			((QTextTableFormat) interceptor).SetColumnWidthConstraints(constraints);
+			interceptor.Invoke("setColumnWidthConstraints?", "setColumnWidthConstraints(const QVector<QTextLength>&)", typeof(void), typeof(List<QTextLength>), constraints);
 		}
-		[SmokeMethod("columnWidthConstraints", "() const", "")]
 		public List<QTextLength> ColumnWidthConstraints() {
-			return ((QTextTableFormat) interceptor).ColumnWidthConstraints();
+			return (List<QTextLength>) interceptor.Invoke("columnWidthConstraints", "columnWidthConstraints() const", typeof(List<QTextLength>));
 		}
-		[SmokeMethod("clearColumnWidthConstraints", "()", "")]
 		public void ClearColumnWidthConstraints() {
-			((QTextTableFormat) interceptor).ClearColumnWidthConstraints();
+			interceptor.Invoke("clearColumnWidthConstraints", "clearColumnWidthConstraints()", typeof(void));
 		}
-		[SmokeMethod("cellSpacing", "() const", "")]
 		public double CellSpacing() {
-			return ((QTextTableFormat) interceptor).CellSpacing();
+			return (double) interceptor.Invoke("cellSpacing", "cellSpacing() const", typeof(double));
 		}
-		[SmokeMethod("setCellSpacing", "(qreal)", "$")]
 		public void SetCellSpacing(double spacing) {
-			((QTextTableFormat) interceptor).SetCellSpacing(spacing);
+			interceptor.Invoke("setCellSpacing$", "setCellSpacing(qreal)", typeof(void), typeof(double), spacing);
 		}
-		[SmokeMethod("cellPadding", "() const", "")]
 		public double CellPadding() {
-			return ((QTextTableFormat) interceptor).CellPadding();
+			return (double) interceptor.Invoke("cellPadding", "cellPadding() const", typeof(double));
 		}
-		[SmokeMethod("setCellPadding", "(qreal)", "$")]
 		public void SetCellPadding(double padding) {
-			((QTextTableFormat) interceptor).SetCellPadding(padding);
+			interceptor.Invoke("setCellPadding$", "setCellPadding(qreal)", typeof(void), typeof(double), padding);
 		}
-		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			((QTextTableFormat) interceptor).SetAlignment(alignment);
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
 		}
-		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ((QTextTableFormat) interceptor).Alignment();
+			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
 		}
-		[SmokeMethod("setHeaderRowCount", "(int)", "$")]
 		public void SetHeaderRowCount(int count) {
-			((QTextTableFormat) interceptor).SetHeaderRowCount(count);
+			interceptor.Invoke("setHeaderRowCount$", "setHeaderRowCount(int)", typeof(void), typeof(int), count);
 		}
-		[SmokeMethod("headerRowCount", "() const", "")]
 		public int HeaderRowCount() {
-			return ((QTextTableFormat) interceptor).HeaderRowCount();
+			return (int) interceptor.Invoke("headerRowCount", "headerRowCount() const", typeof(int));
 		}
 		~QTextTableFormat() {
-			DisposeQTextTableFormat();
+			interceptor.Invoke("~QTextTableFormat", "~QTextTableFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextTableFormat();
-		}
-		[SmokeMethod("~QTextTableFormat", "()", "")]
-		private void DisposeQTextTableFormat() {
-			((QTextTableFormat) interceptor).DisposeQTextTableFormat();
+			interceptor.Invoke("~QTextTableFormat", "~QTextTableFormat()", typeof(void));
 		}
 	}
 }

@@ -6,117 +6,72 @@ namespace Qyoto {
 	[SmokeClass("QUndoView")]
 	public class QUndoView : QListView, IDisposable {
  		protected QUndoView(Type dummy) : base((Type) null) {}
-		[SmokeClass("QUndoView")]
-		interface IQUndoViewProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoView), this);
-			interceptor = (QUndoView) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QUndoView), "QUndoView", this);
 		}
-		private static IQUndoViewProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QUndoView() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUndoViewProxy), null);
-			staticInterceptor = (IQUndoViewProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QUndoView), "QUndoView", null);
 		}
 		[Q_PROPERTY("QString", "emptyLabel")]
 		public string EmptyLabel {
-			[SmokeMethod("emptyLabel", "()", "")]
-			get { return ((QUndoView) interceptor).EmptyLabel; }
-			[SmokeMethod("setEmptyLabel", "(QString)", "$")]
-			set { ((QUndoView) interceptor).EmptyLabel = value; }
+			get { return (string) interceptor.Invoke("emptyLabel", "emptyLabel()", typeof(string)); }
+			set { interceptor.Invoke("setEmptyLabel$", "setEmptyLabel(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QIcon", "cleanIcon")]
 		public QIcon CleanIcon {
-			[SmokeMethod("cleanIcon", "()", "")]
-			get { return ((QUndoView) interceptor).CleanIcon; }
-			[SmokeMethod("setCleanIcon", "(QIcon)", "#")]
-			set { ((QUndoView) interceptor).CleanIcon = value; }
+			get { return (QIcon) interceptor.Invoke("cleanIcon", "cleanIcon()", typeof(QIcon)); }
+			set { interceptor.Invoke("setCleanIcon#", "setCleanIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
 		public QUndoView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQUndoView(parent);
-		}
-		[SmokeMethod("QUndoView", "(QWidget*)", "#")]
-		private void NewQUndoView(QWidget parent) {
-			((QUndoView) interceptor).NewQUndoView(parent);
+			interceptor.Invoke("QUndoView#", "QUndoView(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QUndoView() : this((Type) null) {
 			CreateProxy();
-			NewQUndoView();
-		}
-		[SmokeMethod("QUndoView", "()", "")]
-		private void NewQUndoView() {
-			((QUndoView) interceptor).NewQUndoView();
+			interceptor.Invoke("QUndoView", "QUndoView()", typeof(void));
 		}
 		public QUndoView(QUndoStack stack, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQUndoView(stack,parent);
-		}
-		[SmokeMethod("QUndoView", "(QUndoStack*, QWidget*)", "##")]
-		private void NewQUndoView(QUndoStack stack, QWidget parent) {
-			((QUndoView) interceptor).NewQUndoView(stack,parent);
+			interceptor.Invoke("QUndoView##", "QUndoView(QUndoStack*, QWidget*)", typeof(void), typeof(QUndoStack), stack, typeof(QWidget), parent);
 		}
 		public QUndoView(QUndoStack stack) : this((Type) null) {
 			CreateProxy();
-			NewQUndoView(stack);
-		}
-		[SmokeMethod("QUndoView", "(QUndoStack*)", "#")]
-		private void NewQUndoView(QUndoStack stack) {
-			((QUndoView) interceptor).NewQUndoView(stack);
+			interceptor.Invoke("QUndoView#", "QUndoView(QUndoStack*)", typeof(void), typeof(QUndoStack), stack);
 		}
 		public QUndoView(QUndoGroup group, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQUndoView(group,parent);
-		}
-		[SmokeMethod("QUndoView", "(QUndoGroup*, QWidget*)", "##")]
-		private void NewQUndoView(QUndoGroup group, QWidget parent) {
-			((QUndoView) interceptor).NewQUndoView(group,parent);
+			interceptor.Invoke("QUndoView##", "QUndoView(QUndoGroup*, QWidget*)", typeof(void), typeof(QUndoGroup), group, typeof(QWidget), parent);
 		}
 		public QUndoView(QUndoGroup group) : this((Type) null) {
 			CreateProxy();
-			NewQUndoView(group);
+			interceptor.Invoke("QUndoView#", "QUndoView(QUndoGroup*)", typeof(void), typeof(QUndoGroup), group);
 		}
-		[SmokeMethod("QUndoView", "(QUndoGroup*)", "#")]
-		private void NewQUndoView(QUndoGroup group) {
-			((QUndoView) interceptor).NewQUndoView(group);
-		}
-		[SmokeMethod("stack", "() const", "")]
 		public QUndoStack Stack() {
-			return ((QUndoView) interceptor).Stack();
+			return (QUndoStack) interceptor.Invoke("stack", "stack() const", typeof(QUndoStack));
 		}
-		[SmokeMethod("group", "() const", "")]
 		public QUndoGroup Group() {
-			return ((QUndoView) interceptor).Group();
+			return (QUndoGroup) interceptor.Invoke("group", "group() const", typeof(QUndoGroup));
 		}
 		[Q_SLOT("void setStack(QUndoStack*)")]
-		[SmokeMethod("setStack", "(QUndoStack*)", "#")]
 		public void SetStack(QUndoStack stack) {
-			((QUndoView) interceptor).SetStack(stack);
+			interceptor.Invoke("setStack#", "setStack(QUndoStack*)", typeof(void), typeof(QUndoStack), stack);
 		}
 		[Q_SLOT("void setGroup(QUndoGroup*)")]
-		[SmokeMethod("setGroup", "(QUndoGroup*)", "#")]
 		public void SetGroup(QUndoGroup group) {
-			((QUndoView) interceptor).SetGroup(group);
+			interceptor.Invoke("setGroup#", "setGroup(QUndoGroup*)", typeof(void), typeof(QUndoGroup), group);
 		}
 		~QUndoView() {
-			DisposeQUndoView();
+			interceptor.Invoke("~QUndoView", "~QUndoView()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQUndoView();
-		}
-		[SmokeMethod("~QUndoView", "()", "")]
-		private void DisposeQUndoView() {
-			((QUndoView) interceptor).DisposeQUndoView();
+			interceptor.Invoke("~QUndoView", "~QUndoView()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQUndoViewSignals Emit {
 			get { return (IQUndoViewSignals) Q_EMIT; }

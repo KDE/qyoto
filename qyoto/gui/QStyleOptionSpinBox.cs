@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionSpinBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSpinBox), this);
-			interceptor = (QStyleOptionSpinBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionSpinBox), "QStyleOptionSpinBox", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SpinBox,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionSpinBox() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSpinBox();
-		}
-		[SmokeMethod("QStyleOptionSpinBox", "()", "")]
-		private void NewQStyleOptionSpinBox() {
-			((QStyleOptionSpinBox) interceptor).NewQStyleOptionSpinBox();
+			interceptor.Invoke("QStyleOptionSpinBox", "QStyleOptionSpinBox()", typeof(void));
 		}
 		public QStyleOptionSpinBox(QStyleOptionSpinBox other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSpinBox(other);
-		}
-		[SmokeMethod("QStyleOptionSpinBox", "(const QStyleOptionSpinBox&)", "#")]
-		private void NewQStyleOptionSpinBox(QStyleOptionSpinBox other) {
-			((QStyleOptionSpinBox) interceptor).NewQStyleOptionSpinBox(other);
+			interceptor.Invoke("QStyleOptionSpinBox#", "QStyleOptionSpinBox(const QStyleOptionSpinBox&)", typeof(void), typeof(QStyleOptionSpinBox), other);
 		}
 		public QStyleOptionSpinBox(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSpinBox(version);
-		}
-		[SmokeMethod("QStyleOptionSpinBox", "(int)", "$")]
-		private void NewQStyleOptionSpinBox(int version) {
-			((QStyleOptionSpinBox) interceptor).NewQStyleOptionSpinBox(version);
+			interceptor.Invoke("QStyleOptionSpinBox$", "QStyleOptionSpinBox(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionSpinBox() {
-			DisposeQStyleOptionSpinBox();
+			interceptor.Invoke("~QStyleOptionSpinBox", "~QStyleOptionSpinBox()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionSpinBox();
-		}
-		[SmokeMethod("~QStyleOptionSpinBox", "()", "")]
-		private void DisposeQStyleOptionSpinBox() {
-			((QStyleOptionSpinBox) interceptor).DisposeQStyleOptionSpinBox();
+			interceptor.Invoke("~QStyleOptionSpinBox", "~QStyleOptionSpinBox()", typeof(void));
 		}
 	}
 }

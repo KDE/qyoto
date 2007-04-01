@@ -6,65 +6,41 @@ namespace Qyoto {
 	[SmokeClass("QDBusServer")]
 	public class QDBusServer : QObject, IDisposable {
  		protected QDBusServer(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDBusServer")]
-		interface IQDBusServerProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusServer), this);
-			interceptor = (QDBusServer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusServer), "QDBusServer", this);
 		}
-		private static IQDBusServerProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDBusServer() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusServerProxy), null);
-			staticInterceptor = (IQDBusServerProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDBusServer), "QDBusServer", null);
 		}
 		public QDBusServer(string address, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDBusServer(address,parent);
-		}
-		[SmokeMethod("QDBusServer", "(const QString&, QObject*)", "$#")]
-		private void NewQDBusServer(string address, QObject parent) {
-			((QDBusServer) interceptor).NewQDBusServer(address,parent);
+			interceptor.Invoke("QDBusServer$#", "QDBusServer(const QString&, QObject*)", typeof(void), typeof(string), address, typeof(QObject), parent);
 		}
 		public QDBusServer(string address) : this((Type) null) {
 			CreateProxy();
-			NewQDBusServer(address);
+			interceptor.Invoke("QDBusServer$", "QDBusServer(const QString&)", typeof(void), typeof(string), address);
 		}
-		[SmokeMethod("QDBusServer", "(const QString&)", "$")]
-		private void NewQDBusServer(string address) {
-			((QDBusServer) interceptor).NewQDBusServer(address);
-		}
-		[SmokeMethod("isConnected", "() const", "")]
 		public bool IsConnected() {
-			return ((QDBusServer) interceptor).IsConnected();
+			return (bool) interceptor.Invoke("isConnected", "isConnected() const", typeof(bool));
 		}
-		[SmokeMethod("lastError", "() const", "")]
 		public QDBusError LastError() {
-			return ((QDBusServer) interceptor).LastError();
+			return (QDBusError) interceptor.Invoke("lastError", "lastError() const", typeof(QDBusError));
 		}
-		[SmokeMethod("address", "() const", "")]
 		public string Address() {
-			return ((QDBusServer) interceptor).Address();
+			return (string) interceptor.Invoke("address", "address() const", typeof(string));
 		}
 		~QDBusServer() {
-			DisposeQDBusServer();
+			interceptor.Invoke("~QDBusServer", "~QDBusServer()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDBusServer();
-		}
-		[SmokeMethod("~QDBusServer", "()", "")]
-		private void DisposeQDBusServer() {
-			((QDBusServer) interceptor).DisposeQDBusServer();
+			interceptor.Invoke("~QDBusServer", "~QDBusServer()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDBusServerSignals Emit {
 			get { return (IQDBusServerSignals) Q_EMIT; }

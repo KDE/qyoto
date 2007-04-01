@@ -4,133 +4,95 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QPersistentModelIndex")]
-	public class QPersistentModelIndex : MarshalByRefObject, IDisposable {
-		protected QPersistentModelIndex interceptor = null;
+	public class QPersistentModelIndex : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPersistentModelIndex(Type dummy) {}
-		[SmokeClass("QPersistentModelIndex")]
-		interface IQPersistentModelIndexProxy {
-			[SmokeMethod("operator<", "(const QPersistentModelIndex&) const", "#")]
-			bool op_lt(QPersistentModelIndex lhs, QPersistentModelIndex other);
-			[SmokeMethod("operator==", "(const QPersistentModelIndex&) const", "#")]
-			bool op_equals(QPersistentModelIndex lhs, QPersistentModelIndex other);
-			[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
-			bool op_equals(QPersistentModelIndex lhs, QModelIndex other);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPersistentModelIndex), this);
-			interceptor = (QPersistentModelIndex) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPersistentModelIndex), "QPersistentModelIndex", this);
 		}
-		private static IQPersistentModelIndexProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPersistentModelIndex() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPersistentModelIndexProxy), null);
-			staticInterceptor = (IQPersistentModelIndexProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPersistentModelIndex), "QPersistentModelIndex", null);
 		}
 		//  operator const QModelIndex&(); >>>> NOT CONVERTED
 		// void* internalPointer(); >>>> NOT CONVERTED
 		public QPersistentModelIndex() : this((Type) null) {
 			CreateProxy();
-			NewQPersistentModelIndex();
-		}
-		[SmokeMethod("QPersistentModelIndex", "()", "")]
-		private void NewQPersistentModelIndex() {
-			((QPersistentModelIndex) interceptor).NewQPersistentModelIndex();
+			interceptor.Invoke("QPersistentModelIndex", "QPersistentModelIndex()", typeof(void));
 		}
 		public QPersistentModelIndex(QModelIndex index) : this((Type) null) {
 			CreateProxy();
-			NewQPersistentModelIndex(index);
-		}
-		[SmokeMethod("QPersistentModelIndex", "(const QModelIndex&)", "#")]
-		private void NewQPersistentModelIndex(QModelIndex index) {
-			((QPersistentModelIndex) interceptor).NewQPersistentModelIndex(index);
+			interceptor.Invoke("QPersistentModelIndex#", "QPersistentModelIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
 		public QPersistentModelIndex(QPersistentModelIndex other) : this((Type) null) {
 			CreateProxy();
-			NewQPersistentModelIndex(other);
-		}
-		[SmokeMethod("QPersistentModelIndex", "(const QPersistentModelIndex&)", "#")]
-		private void NewQPersistentModelIndex(QPersistentModelIndex other) {
-			((QPersistentModelIndex) interceptor).NewQPersistentModelIndex(other);
+			interceptor.Invoke("QPersistentModelIndex#", "QPersistentModelIndex(const QPersistentModelIndex&)", typeof(void), typeof(QPersistentModelIndex), other);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPersistentModelIndex)) { return false; }
 			return this == (QPersistentModelIndex) o;
 		}
 		public override int GetHashCode() {
-			return ((QPersistentModelIndex) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("row", "() const", "")]
 		public int Row() {
-			return ((QPersistentModelIndex) interceptor).Row();
+			return (int) interceptor.Invoke("row", "row() const", typeof(int));
 		}
-		[SmokeMethod("column", "() const", "")]
 		public int Column() {
-			return ((QPersistentModelIndex) interceptor).Column();
+			return (int) interceptor.Invoke("column", "column() const", typeof(int));
 		}
-		[SmokeMethod("internalId", "() const", "")]
 		public long InternalId() {
-			return ((QPersistentModelIndex) interceptor).InternalId();
+			return (long) interceptor.Invoke("internalId", "internalId() const", typeof(long));
 		}
-		[SmokeMethod("parent", "() const", "")]
 		public QModelIndex Parent() {
-			return ((QPersistentModelIndex) interceptor).Parent();
+			return (QModelIndex) interceptor.Invoke("parent", "parent() const", typeof(QModelIndex));
 		}
-		[SmokeMethod("sibling", "(int, int) const", "$$")]
 		public QModelIndex Sibling(int row, int column) {
-			return ((QPersistentModelIndex) interceptor).Sibling(row,column);
+			return (QModelIndex) interceptor.Invoke("sibling$$", "sibling(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("child", "(int, int) const", "$$")]
 		public QModelIndex Child(int row, int column) {
-			return ((QPersistentModelIndex) interceptor).Child(row,column);
+			return (QModelIndex) interceptor.Invoke("child$$", "child(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("data", "(int) const", "$")]
 		public QVariant Data(int role) {
-			return ((QPersistentModelIndex) interceptor).Data(role);
+			return (QVariant) interceptor.Invoke("data$", "data(int) const", typeof(QVariant), typeof(int), role);
 		}
-		[SmokeMethod("data", "() const", "")]
 		public QVariant Data() {
-			return ((QPersistentModelIndex) interceptor).Data();
+			return (QVariant) interceptor.Invoke("data", "data() const", typeof(QVariant));
 		}
-		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ((QPersistentModelIndex) interceptor).Flags();
+			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
 		}
-		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ((QPersistentModelIndex) interceptor).Model();
+			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QPersistentModelIndex) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		~QPersistentModelIndex() {
-			DisposeQPersistentModelIndex();
+			interceptor.Invoke("~QPersistentModelIndex", "~QPersistentModelIndex()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPersistentModelIndex();
-		}
-		[SmokeMethod("~QPersistentModelIndex", "()", "")]
-		private void DisposeQPersistentModelIndex() {
-			((QPersistentModelIndex) interceptor).DisposeQPersistentModelIndex();
+			interceptor.Invoke("~QPersistentModelIndex", "~QPersistentModelIndex()", typeof(void));
 		}
 		public static bool operator<(QPersistentModelIndex lhs, QPersistentModelIndex other) {
-			return staticInterceptor.op_lt(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QPersistentModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QPersistentModelIndex), other);
 		}
 		public static bool operator>(QPersistentModelIndex lhs, QPersistentModelIndex other) {
-			return !staticInterceptor.op_lt(lhs,other)
-						&& !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QPersistentModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QPersistentModelIndex), other)
+						&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QPersistentModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QPersistentModelIndex), other);
 		}
 		public static bool operator==(QPersistentModelIndex lhs, QPersistentModelIndex other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QPersistentModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QPersistentModelIndex), other);
 		}
 		public static bool operator!=(QPersistentModelIndex lhs, QPersistentModelIndex other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QPersistentModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QPersistentModelIndex), other);
 		}
 		public static bool operator==(QPersistentModelIndex lhs, QModelIndex other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QModelIndex), other);
 		}
 		public static bool operator!=(QPersistentModelIndex lhs, QModelIndex other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QModelIndex&) const", typeof(bool), typeof(QPersistentModelIndex), lhs, typeof(QModelIndex), other);
 		}
 	}
 }

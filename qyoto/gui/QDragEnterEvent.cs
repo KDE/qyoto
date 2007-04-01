@@ -7,26 +7,17 @@ namespace Qyoto {
 	public class QDragEnterEvent : QDragMoveEvent, IDisposable {
  		protected QDragEnterEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragEnterEvent), this);
-			interceptor = (QDragEnterEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDragEnterEvent), "QDragEnterEvent", this);
 		}
 		public QDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
-			NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
-		}
-		[SmokeMethod("QDragEnterEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$#$$")]
-		private void NewQDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
-			((QDragEnterEvent) interceptor).NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
+			interceptor.Invoke("QDragEnterEvent#$#$$", "QDragEnterEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers);
 		}
 		~QDragEnterEvent() {
-			DisposeQDragEnterEvent();
+			interceptor.Invoke("~QDragEnterEvent", "~QDragEnterEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDragEnterEvent();
-		}
-		[SmokeMethod("~QDragEnterEvent", "()", "")]
-		private void DisposeQDragEnterEvent() {
-			((QDragEnterEvent) interceptor).DisposeQDragEnterEvent();
+			interceptor.Invoke("~QDragEnterEvent", "~QDragEnterEvent()", typeof(void));
 		}
 	}
 }

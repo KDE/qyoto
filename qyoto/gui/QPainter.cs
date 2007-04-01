@@ -5,31 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QPainter")]
-	public class QPainter : MarshalByRefObject, IDisposable {
-		protected QPainter interceptor = null;
+	public class QPainter : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPainter(Type dummy) {}
-		[SmokeClass("QPainter")]
-		interface IQPainterProxy {
-			[SmokeMethod("setRedirected", "(const QPaintDevice*, QPaintDevice*, const QPoint&)", "###")]
-			void SetRedirected(IQPaintDevice device, IQPaintDevice replacement, QPoint offset);
-			[SmokeMethod("setRedirected", "(const QPaintDevice*, QPaintDevice*)", "##")]
-			void SetRedirected(IQPaintDevice device, IQPaintDevice replacement);
-			[SmokeMethod("redirected", "(const QPaintDevice*, QPoint*)", "##")]
-			IQPaintDevice Redirected(IQPaintDevice device, QPoint offset);
-			[SmokeMethod("redirected", "(const QPaintDevice*)", "#")]
-			IQPaintDevice Redirected(IQPaintDevice device);
-			[SmokeMethod("restoreRedirected", "(const QPaintDevice*)", "#")]
-			void RestoreRedirected(IQPaintDevice device);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainter), this);
-			interceptor = (QPainter) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPainter), "QPainter", this);
 		}
-		private static IQPainterProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPainter() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPainterProxy), null);
-			staticInterceptor = (IQPainterProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPainter), "QPainter", null);
 		}
 		public enum RenderHint {
 			Antialiasing = 0x01,
@@ -52,872 +37,653 @@ namespace Qyoto {
 		}
 		public QPainter() : this((Type) null) {
 			CreateProxy();
-			NewQPainter();
-		}
-		[SmokeMethod("QPainter", "()", "")]
-		private void NewQPainter() {
-			((QPainter) interceptor).NewQPainter();
+			interceptor.Invoke("QPainter", "QPainter()", typeof(void));
 		}
 		public QPainter(IQPaintDevice arg1) : this((Type) null) {
 			CreateProxy();
-			NewQPainter(arg1);
+			interceptor.Invoke("QPainter#", "QPainter(QPaintDevice*)", typeof(void), typeof(IQPaintDevice), arg1);
 		}
-		[SmokeMethod("QPainter", "(QPaintDevice*)", "#")]
-		private void NewQPainter(IQPaintDevice arg1) {
-			((QPainter) interceptor).NewQPainter(arg1);
-		}
-		[SmokeMethod("device", "() const", "")]
 		public IQPaintDevice Device() {
-			return ((QPainter) interceptor).Device();
+			return (IQPaintDevice) interceptor.Invoke("device", "device() const", typeof(IQPaintDevice));
 		}
-		[SmokeMethod("begin", "(QPaintDevice*)", "#")]
 		public bool Begin(IQPaintDevice arg1) {
-			return ((QPainter) interceptor).Begin(arg1);
+			return (bool) interceptor.Invoke("begin#", "begin(QPaintDevice*)", typeof(bool), typeof(IQPaintDevice), arg1);
 		}
-		[SmokeMethod("end", "()", "")]
 		public bool End() {
-			return ((QPainter) interceptor).End();
+			return (bool) interceptor.Invoke("end", "end()", typeof(bool));
 		}
-		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
-			return ((QPainter) interceptor).IsActive();
+			return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
 		}
-		[SmokeMethod("initFrom", "(const QWidget*)", "#")]
 		public void InitFrom(QWidget widget) {
-			((QPainter) interceptor).InitFrom(widget);
+			interceptor.Invoke("initFrom#", "initFrom(const QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("setCompositionMode", "(QPainter::CompositionMode)", "$")]
 		public void SetCompositionMode(QPainter.CompositionMode mode) {
-			((QPainter) interceptor).SetCompositionMode(mode);
+			interceptor.Invoke("setCompositionMode$", "setCompositionMode(QPainter::CompositionMode)", typeof(void), typeof(QPainter.CompositionMode), mode);
 		}
-		[SmokeMethod("compositionMode", "() const", "")]
 		public QPainter.CompositionMode compositionMode() {
-			return ((QPainter) interceptor).compositionMode();
+			return (QPainter.CompositionMode) interceptor.Invoke("compositionMode", "compositionMode() const", typeof(QPainter.CompositionMode));
 		}
-		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ((QPainter) interceptor).Font();
+			return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
 		}
-		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont f) {
-			((QPainter) interceptor).SetFont(f);
+			interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), f);
 		}
-		[SmokeMethod("fontMetrics", "() const", "")]
 		public QFontMetrics FontMetrics() {
-			return ((QPainter) interceptor).FontMetrics();
+			return (QFontMetrics) interceptor.Invoke("fontMetrics", "fontMetrics() const", typeof(QFontMetrics));
 		}
-		[SmokeMethod("fontInfo", "() const", "")]
 		public QFontInfo FontInfo() {
-			return ((QPainter) interceptor).FontInfo();
+			return (QFontInfo) interceptor.Invoke("fontInfo", "fontInfo() const", typeof(QFontInfo));
 		}
-		[SmokeMethod("setPen", "(const QColor&)", "#")]
 		public void SetPen(QColor color) {
-			((QPainter) interceptor).SetPen(color);
+			interceptor.Invoke("setPen#", "setPen(const QColor&)", typeof(void), typeof(QColor), color);
 		}
-		[SmokeMethod("setPen", "(const QPen&)", "#")]
 		public void SetPen(QPen pen) {
-			((QPainter) interceptor).SetPen(pen);
+			interceptor.Invoke("setPen#", "setPen(const QPen&)", typeof(void), typeof(QPen), pen);
 		}
-		[SmokeMethod("setPen", "(Qt::PenStyle)", "$")]
 		public void SetPen(Qt.PenStyle style) {
-			((QPainter) interceptor).SetPen(style);
+			interceptor.Invoke("setPen$", "setPen(Qt::PenStyle)", typeof(void), typeof(Qt.PenStyle), style);
 		}
-		[SmokeMethod("pen", "() const", "")]
 		public QPen Pen() {
-			return ((QPainter) interceptor).Pen();
+			return (QPen) interceptor.Invoke("pen", "pen() const", typeof(QPen));
 		}
-		[SmokeMethod("setBrush", "(const QBrush&)", "#")]
 		public void SetBrush(QBrush brush) {
-			((QPainter) interceptor).SetBrush(brush);
+			interceptor.Invoke("setBrush#", "setBrush(const QBrush&)", typeof(void), typeof(QBrush), brush);
 		}
-		[SmokeMethod("setBrush", "(Qt::BrushStyle)", "$")]
 		public void SetBrush(Qt.BrushStyle style) {
-			((QPainter) interceptor).SetBrush(style);
+			interceptor.Invoke("setBrush$", "setBrush(Qt::BrushStyle)", typeof(void), typeof(Qt.BrushStyle), style);
 		}
-		[SmokeMethod("brush", "() const", "")]
 		public QBrush Brush() {
-			return ((QPainter) interceptor).Brush();
+			return (QBrush) interceptor.Invoke("brush", "brush() const", typeof(QBrush));
 		}
-		[SmokeMethod("setBackgroundMode", "(Qt::BGMode)", "$")]
 		public void SetBackgroundMode(Qt.BGMode mode) {
-			((QPainter) interceptor).SetBackgroundMode(mode);
+			interceptor.Invoke("setBackgroundMode$", "setBackgroundMode(Qt::BGMode)", typeof(void), typeof(Qt.BGMode), mode);
 		}
-		[SmokeMethod("backgroundMode", "() const", "")]
 		public Qt.BGMode BackgroundMode() {
-			return ((QPainter) interceptor).BackgroundMode();
+			return (Qt.BGMode) interceptor.Invoke("backgroundMode", "backgroundMode() const", typeof(Qt.BGMode));
 		}
-		[SmokeMethod("brushOrigin", "() const", "")]
 		public QPoint BrushOrigin() {
-			return ((QPainter) interceptor).BrushOrigin();
+			return (QPoint) interceptor.Invoke("brushOrigin", "brushOrigin() const", typeof(QPoint));
 		}
-		[SmokeMethod("setBrushOrigin", "(int, int)", "$$")]
 		public void SetBrushOrigin(int x, int y) {
-			((QPainter) interceptor).SetBrushOrigin(x,y);
+			interceptor.Invoke("setBrushOrigin$$", "setBrushOrigin(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("setBrushOrigin", "(const QPoint&)", "#")]
 		public void SetBrushOrigin(QPoint arg1) {
-			((QPainter) interceptor).SetBrushOrigin(arg1);
+			interceptor.Invoke("setBrushOrigin#", "setBrushOrigin(const QPoint&)", typeof(void), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("setBrushOrigin", "(const QPointF&)", "#")]
 		public void SetBrushOrigin(QPointF arg1) {
-			((QPainter) interceptor).SetBrushOrigin(arg1);
+			interceptor.Invoke("setBrushOrigin#", "setBrushOrigin(const QPointF&)", typeof(void), typeof(QPointF), arg1);
 		}
-		[SmokeMethod("setBackground", "(const QBrush&)", "#")]
 		public void SetBackground(QBrush bg) {
-			((QPainter) interceptor).SetBackground(bg);
+			interceptor.Invoke("setBackground#", "setBackground(const QBrush&)", typeof(void), typeof(QBrush), bg);
 		}
-		[SmokeMethod("background", "() const", "")]
 		public QBrush Background() {
-			return ((QPainter) interceptor).Background();
+			return (QBrush) interceptor.Invoke("background", "background() const", typeof(QBrush));
 		}
-		[SmokeMethod("opacity", "() const", "")]
 		public double Opacity() {
-			return ((QPainter) interceptor).Opacity();
+			return (double) interceptor.Invoke("opacity", "opacity() const", typeof(double));
 		}
-		[SmokeMethod("setOpacity", "(qreal)", "$")]
 		public void SetOpacity(double opacity) {
-			((QPainter) interceptor).SetOpacity(opacity);
+			interceptor.Invoke("setOpacity$", "setOpacity(qreal)", typeof(void), typeof(double), opacity);
 		}
-		[SmokeMethod("clipRegion", "() const", "")]
 		public QRegion ClipRegion() {
-			return ((QPainter) interceptor).ClipRegion();
+			return (QRegion) interceptor.Invoke("clipRegion", "clipRegion() const", typeof(QRegion));
 		}
-		[SmokeMethod("clipPath", "() const", "")]
 		public QPainterPath ClipPath() {
-			return ((QPainter) interceptor).ClipPath();
+			return (QPainterPath) interceptor.Invoke("clipPath", "clipPath() const", typeof(QPainterPath));
 		}
-		[SmokeMethod("setClipRect", "(const QRectF&, Qt::ClipOperation)", "#$")]
 		public void SetClipRect(QRectF arg1, Qt.ClipOperation op) {
-			((QPainter) interceptor).SetClipRect(arg1,op);
+			interceptor.Invoke("setClipRect#$", "setClipRect(const QRectF&, Qt::ClipOperation)", typeof(void), typeof(QRectF), arg1, typeof(Qt.ClipOperation), op);
 		}
-		[SmokeMethod("setClipRect", "(const QRectF&)", "#")]
 		public void SetClipRect(QRectF arg1) {
-			((QPainter) interceptor).SetClipRect(arg1);
+			interceptor.Invoke("setClipRect#", "setClipRect(const QRectF&)", typeof(void), typeof(QRectF), arg1);
 		}
-		[SmokeMethod("setClipRect", "(const QRect&, Qt::ClipOperation)", "#$")]
 		public void SetClipRect(QRect arg1, Qt.ClipOperation op) {
-			((QPainter) interceptor).SetClipRect(arg1,op);
+			interceptor.Invoke("setClipRect#$", "setClipRect(const QRect&, Qt::ClipOperation)", typeof(void), typeof(QRect), arg1, typeof(Qt.ClipOperation), op);
 		}
-		[SmokeMethod("setClipRect", "(const QRect&)", "#")]
 		public void SetClipRect(QRect arg1) {
-			((QPainter) interceptor).SetClipRect(arg1);
+			interceptor.Invoke("setClipRect#", "setClipRect(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		[SmokeMethod("setClipRect", "(int, int, int, int, Qt::ClipOperation)", "$$$$$")]
 		public void SetClipRect(int x, int y, int w, int h, Qt.ClipOperation op) {
-			((QPainter) interceptor).SetClipRect(x,y,w,h,op);
+			interceptor.Invoke("setClipRect$$$$$", "setClipRect(int, int, int, int, Qt::ClipOperation)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(Qt.ClipOperation), op);
 		}
-		[SmokeMethod("setClipRect", "(int, int, int, int)", "$$$$")]
 		public void SetClipRect(int x, int y, int w, int h) {
-			((QPainter) interceptor).SetClipRect(x,y,w,h);
+			interceptor.Invoke("setClipRect$$$$", "setClipRect(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("setClipRegion", "(const QRegion&, Qt::ClipOperation)", "#$")]
 		public void SetClipRegion(QRegion arg1, Qt.ClipOperation op) {
-			((QPainter) interceptor).SetClipRegion(arg1,op);
+			interceptor.Invoke("setClipRegion#$", "setClipRegion(const QRegion&, Qt::ClipOperation)", typeof(void), typeof(QRegion), arg1, typeof(Qt.ClipOperation), op);
 		}
-		[SmokeMethod("setClipRegion", "(const QRegion&)", "#")]
 		public void SetClipRegion(QRegion arg1) {
-			((QPainter) interceptor).SetClipRegion(arg1);
+			interceptor.Invoke("setClipRegion#", "setClipRegion(const QRegion&)", typeof(void), typeof(QRegion), arg1);
 		}
-		[SmokeMethod("setClipPath", "(const QPainterPath&, Qt::ClipOperation)", "#$")]
 		public void SetClipPath(QPainterPath path, Qt.ClipOperation op) {
-			((QPainter) interceptor).SetClipPath(path,op);
+			interceptor.Invoke("setClipPath#$", "setClipPath(const QPainterPath&, Qt::ClipOperation)", typeof(void), typeof(QPainterPath), path, typeof(Qt.ClipOperation), op);
 		}
-		[SmokeMethod("setClipPath", "(const QPainterPath&)", "#")]
 		public void SetClipPath(QPainterPath path) {
-			((QPainter) interceptor).SetClipPath(path);
+			interceptor.Invoke("setClipPath#", "setClipPath(const QPainterPath&)", typeof(void), typeof(QPainterPath), path);
 		}
-		[SmokeMethod("setClipping", "(bool)", "$")]
 		public void SetClipping(bool enable) {
-			((QPainter) interceptor).SetClipping(enable);
+			interceptor.Invoke("setClipping$", "setClipping(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("hasClipping", "() const", "")]
 		public bool HasClipping() {
-			return ((QPainter) interceptor).HasClipping();
+			return (bool) interceptor.Invoke("hasClipping", "hasClipping() const", typeof(bool));
 		}
-		[SmokeMethod("save", "()", "")]
 		public void Save() {
-			((QPainter) interceptor).Save();
+			interceptor.Invoke("save", "save()", typeof(void));
 		}
-		[SmokeMethod("restore", "()", "")]
 		public void Restore() {
-			((QPainter) interceptor).Restore();
+			interceptor.Invoke("restore", "restore()", typeof(void));
 		}
-		[SmokeMethod("setMatrix", "(const QMatrix&, bool)", "#$")]
 		public void SetMatrix(QMatrix matrix, bool combine) {
-			((QPainter) interceptor).SetMatrix(matrix,combine);
+			interceptor.Invoke("setMatrix#$", "setMatrix(const QMatrix&, bool)", typeof(void), typeof(QMatrix), matrix, typeof(bool), combine);
 		}
-		[SmokeMethod("setMatrix", "(const QMatrix&)", "#")]
 		public void SetMatrix(QMatrix matrix) {
-			((QPainter) interceptor).SetMatrix(matrix);
+			interceptor.Invoke("setMatrix#", "setMatrix(const QMatrix&)", typeof(void), typeof(QMatrix), matrix);
 		}
-		[SmokeMethod("matrix", "() const", "")]
 		public QMatrix Matrix() {
-			return ((QPainter) interceptor).Matrix();
+			return (QMatrix) interceptor.Invoke("matrix", "matrix() const", typeof(QMatrix));
 		}
-		[SmokeMethod("deviceMatrix", "() const", "")]
 		public QMatrix DeviceMatrix() {
-			return ((QPainter) interceptor).DeviceMatrix();
+			return (QMatrix) interceptor.Invoke("deviceMatrix", "deviceMatrix() const", typeof(QMatrix));
 		}
-		[SmokeMethod("resetMatrix", "()", "")]
 		public void ResetMatrix() {
-			((QPainter) interceptor).ResetMatrix();
+			interceptor.Invoke("resetMatrix", "resetMatrix()", typeof(void));
 		}
-		[SmokeMethod("setWorldMatrix", "(const QMatrix&, bool)", "#$")]
 		public void SetWorldMatrix(QMatrix matrix, bool combine) {
-			((QPainter) interceptor).SetWorldMatrix(matrix,combine);
+			interceptor.Invoke("setWorldMatrix#$", "setWorldMatrix(const QMatrix&, bool)", typeof(void), typeof(QMatrix), matrix, typeof(bool), combine);
 		}
-		[SmokeMethod("setWorldMatrix", "(const QMatrix&)", "#")]
 		public void SetWorldMatrix(QMatrix matrix) {
-			((QPainter) interceptor).SetWorldMatrix(matrix);
+			interceptor.Invoke("setWorldMatrix#", "setWorldMatrix(const QMatrix&)", typeof(void), typeof(QMatrix), matrix);
 		}
-		[SmokeMethod("worldMatrix", "() const", "")]
 		public QMatrix WorldMatrix() {
-			return ((QPainter) interceptor).WorldMatrix();
+			return (QMatrix) interceptor.Invoke("worldMatrix", "worldMatrix() const", typeof(QMatrix));
 		}
-		[SmokeMethod("combinedMatrix", "() const", "")]
 		public QMatrix CombinedMatrix() {
-			return ((QPainter) interceptor).CombinedMatrix();
+			return (QMatrix) interceptor.Invoke("combinedMatrix", "combinedMatrix() const", typeof(QMatrix));
 		}
-		[SmokeMethod("setMatrixEnabled", "(bool)", "$")]
 		public void SetMatrixEnabled(bool enabled) {
-			((QPainter) interceptor).SetMatrixEnabled(enabled);
+			interceptor.Invoke("setMatrixEnabled$", "setMatrixEnabled(bool)", typeof(void), typeof(bool), enabled);
 		}
-		[SmokeMethod("matrixEnabled", "() const", "")]
 		public bool MatrixEnabled() {
-			return ((QPainter) interceptor).MatrixEnabled();
+			return (bool) interceptor.Invoke("matrixEnabled", "matrixEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("setWorldMatrixEnabled", "(bool)", "$")]
 		public void SetWorldMatrixEnabled(bool enabled) {
-			((QPainter) interceptor).SetWorldMatrixEnabled(enabled);
+			interceptor.Invoke("setWorldMatrixEnabled$", "setWorldMatrixEnabled(bool)", typeof(void), typeof(bool), enabled);
 		}
-		[SmokeMethod("worldMatrixEnabled", "() const", "")]
 		public bool WorldMatrixEnabled() {
-			return ((QPainter) interceptor).WorldMatrixEnabled();
+			return (bool) interceptor.Invoke("worldMatrixEnabled", "worldMatrixEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("scale", "(qreal, qreal)", "$$")]
 		public void Scale(double sx, double sy) {
-			((QPainter) interceptor).Scale(sx,sy);
+			interceptor.Invoke("scale$$", "scale(qreal, qreal)", typeof(void), typeof(double), sx, typeof(double), sy);
 		}
-		[SmokeMethod("shear", "(qreal, qreal)", "$$")]
 		public void Shear(double sh, double sv) {
-			((QPainter) interceptor).Shear(sh,sv);
+			interceptor.Invoke("shear$$", "shear(qreal, qreal)", typeof(void), typeof(double), sh, typeof(double), sv);
 		}
-		[SmokeMethod("rotate", "(qreal)", "$")]
 		public void Rotate(double a) {
-			((QPainter) interceptor).Rotate(a);
+			interceptor.Invoke("rotate$", "rotate(qreal)", typeof(void), typeof(double), a);
 		}
-		[SmokeMethod("translate", "(const QPointF&)", "#")]
 		public void Translate(QPointF offset) {
-			((QPainter) interceptor).Translate(offset);
+			interceptor.Invoke("translate#", "translate(const QPointF&)", typeof(void), typeof(QPointF), offset);
 		}
-		[SmokeMethod("translate", "(const QPoint&)", "#")]
 		public void Translate(QPoint offset) {
-			((QPainter) interceptor).Translate(offset);
+			interceptor.Invoke("translate#", "translate(const QPoint&)", typeof(void), typeof(QPoint), offset);
 		}
-		[SmokeMethod("translate", "(qreal, qreal)", "$$")]
 		public void Translate(double dx, double dy) {
-			((QPainter) interceptor).Translate(dx,dy);
+			interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("window", "() const", "")]
 		public QRect Window() {
-			return ((QPainter) interceptor).Window();
+			return (QRect) interceptor.Invoke("window", "window() const", typeof(QRect));
 		}
-		[SmokeMethod("setWindow", "(const QRect&)", "#")]
 		public void SetWindow(QRect window) {
-			((QPainter) interceptor).SetWindow(window);
+			interceptor.Invoke("setWindow#", "setWindow(const QRect&)", typeof(void), typeof(QRect), window);
 		}
-		[SmokeMethod("setWindow", "(int, int, int, int)", "$$$$")]
 		public void SetWindow(int x, int y, int w, int h) {
-			((QPainter) interceptor).SetWindow(x,y,w,h);
+			interceptor.Invoke("setWindow$$$$", "setWindow(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("viewport", "() const", "")]
 		public QRect Viewport() {
-			return ((QPainter) interceptor).Viewport();
+			return (QRect) interceptor.Invoke("viewport", "viewport() const", typeof(QRect));
 		}
-		[SmokeMethod("setViewport", "(const QRect&)", "#")]
 		public void SetViewport(QRect viewport) {
-			((QPainter) interceptor).SetViewport(viewport);
+			interceptor.Invoke("setViewport#", "setViewport(const QRect&)", typeof(void), typeof(QRect), viewport);
 		}
-		[SmokeMethod("setViewport", "(int, int, int, int)", "$$$$")]
 		public void SetViewport(int x, int y, int w, int h) {
-			((QPainter) interceptor).SetViewport(x,y,w,h);
+			interceptor.Invoke("setViewport$$$$", "setViewport(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("setViewTransformEnabled", "(bool)", "$")]
 		public void SetViewTransformEnabled(bool enable) {
-			((QPainter) interceptor).SetViewTransformEnabled(enable);
+			interceptor.Invoke("setViewTransformEnabled$", "setViewTransformEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("viewTransformEnabled", "() const", "")]
 		public bool ViewTransformEnabled() {
-			return ((QPainter) interceptor).ViewTransformEnabled();
+			return (bool) interceptor.Invoke("viewTransformEnabled", "viewTransformEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("strokePath", "(const QPainterPath&, const QPen&)", "##")]
 		public void StrokePath(QPainterPath path, QPen pen) {
-			((QPainter) interceptor).StrokePath(path,pen);
+			interceptor.Invoke("strokePath##", "strokePath(const QPainterPath&, const QPen&)", typeof(void), typeof(QPainterPath), path, typeof(QPen), pen);
 		}
-		[SmokeMethod("fillPath", "(const QPainterPath&, const QBrush&)", "##")]
 		public void FillPath(QPainterPath path, QBrush brush) {
-			((QPainter) interceptor).FillPath(path,brush);
+			interceptor.Invoke("fillPath##", "fillPath(const QPainterPath&, const QBrush&)", typeof(void), typeof(QPainterPath), path, typeof(QBrush), brush);
 		}
-		[SmokeMethod("drawPath", "(const QPainterPath&)", "#")]
 		public void DrawPath(QPainterPath path) {
-			((QPainter) interceptor).DrawPath(path);
+			interceptor.Invoke("drawPath#", "drawPath(const QPainterPath&)", typeof(void), typeof(QPainterPath), path);
 		}
-		[SmokeMethod("drawPoint", "(const QPointF&)", "#")]
 		public void DrawPoint(QPointF pt) {
-			((QPainter) interceptor).DrawPoint(pt);
+			interceptor.Invoke("drawPoint#", "drawPoint(const QPointF&)", typeof(void), typeof(QPointF), pt);
 		}
-		[SmokeMethod("drawPoint", "(const QPoint&)", "#")]
 		public void DrawPoint(QPoint p) {
-			((QPainter) interceptor).DrawPoint(p);
+			interceptor.Invoke("drawPoint#", "drawPoint(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
-		[SmokeMethod("drawPoint", "(int, int)", "$$")]
 		public void DrawPoint(int x, int y) {
-			((QPainter) interceptor).DrawPoint(x,y);
+			interceptor.Invoke("drawPoint$$", "drawPoint(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("drawPoints", "(const QPointF*, int)", "#$")]
 		public void DrawPoints(QPointF points, int pointCount) {
-			((QPainter) interceptor).DrawPoints(points,pointCount);
+			interceptor.Invoke("drawPoints#$", "drawPoints(const QPointF*, int)", typeof(void), typeof(QPointF), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawPoints", "(const QPolygonF&)", "#")]
 		public void DrawPoints(QPolygonF points) {
-			((QPainter) interceptor).DrawPoints(points);
+			interceptor.Invoke("drawPoints#", "drawPoints(const QPolygonF&)", typeof(void), typeof(QPolygonF), points);
 		}
-		[SmokeMethod("drawPoints", "(const QPoint*, int)", "#$")]
 		public void DrawPoints(QPoint points, int pointCount) {
-			((QPainter) interceptor).DrawPoints(points,pointCount);
+			interceptor.Invoke("drawPoints#$", "drawPoints(const QPoint*, int)", typeof(void), typeof(QPoint), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawPoints", "(const QPolygon&)", "#")]
 		public void DrawPoints(QPolygon points) {
-			((QPainter) interceptor).DrawPoints(points);
+			interceptor.Invoke("drawPoints#", "drawPoints(const QPolygon&)", typeof(void), typeof(QPolygon), points);
 		}
-		[SmokeMethod("drawLine", "(const QLineF&)", "#")]
 		public void DrawLine(QLineF line) {
-			((QPainter) interceptor).DrawLine(line);
+			interceptor.Invoke("drawLine#", "drawLine(const QLineF&)", typeof(void), typeof(QLineF), line);
 		}
-		[SmokeMethod("drawLine", "(const QLine&)", "#")]
 		public void DrawLine(QLine line) {
-			((QPainter) interceptor).DrawLine(line);
+			interceptor.Invoke("drawLine#", "drawLine(const QLine&)", typeof(void), typeof(QLine), line);
 		}
-		[SmokeMethod("drawLine", "(int, int, int, int)", "$$$$")]
 		public void DrawLine(int x1, int y1, int x2, int y2) {
-			((QPainter) interceptor).DrawLine(x1,y1,x2,y2);
+			interceptor.Invoke("drawLine$$$$", "drawLine(int, int, int, int)", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2);
 		}
-		[SmokeMethod("drawLine", "(const QPoint&, const QPoint&)", "##")]
 		public void DrawLine(QPoint p1, QPoint p2) {
-			((QPainter) interceptor).DrawLine(p1,p2);
+			interceptor.Invoke("drawLine##", "drawLine(const QPoint&, const QPoint&)", typeof(void), typeof(QPoint), p1, typeof(QPoint), p2);
 		}
-		[SmokeMethod("drawLine", "(const QPointF&, const QPointF&)", "##")]
 		public void DrawLine(QPointF p1, QPointF p2) {
-			((QPainter) interceptor).DrawLine(p1,p2);
+			interceptor.Invoke("drawLine##", "drawLine(const QPointF&, const QPointF&)", typeof(void), typeof(QPointF), p1, typeof(QPointF), p2);
 		}
-		[SmokeMethod("drawLines", "(const QLineF*, int)", "#$")]
 		public void DrawLines(QLineF lines, int lineCount) {
-			((QPainter) interceptor).DrawLines(lines,lineCount);
+			interceptor.Invoke("drawLines#$", "drawLines(const QLineF*, int)", typeof(void), typeof(QLineF), lines, typeof(int), lineCount);
 		}
-		[SmokeMethod("drawLines", "(const QVector<QLineF>&)", "?")]
 		public void DrawLines(List<QLineF> lines) {
-			((QPainter) interceptor).DrawLines(lines);
+			interceptor.Invoke("drawLines?", "drawLines(const QVector<QLineF>&)", typeof(void), typeof(List<QLineF>), lines);
 		}
-		[SmokeMethod("drawLines", "(const QPointF*, int)", "#$")]
 		public void DrawLines(QPointF pointPairs, int lineCount) {
-			((QPainter) interceptor).DrawLines(pointPairs,lineCount);
+			interceptor.Invoke("drawLines#$", "drawLines(const QPointF*, int)", typeof(void), typeof(QPointF), pointPairs, typeof(int), lineCount);
 		}
-		[SmokeMethod("drawLines", "(const QVector<QPointF>&)", "?")]
 		public void DrawLines(List<QPointF> pointPairs) {
-			((QPainter) interceptor).DrawLines(pointPairs);
+			interceptor.Invoke("drawLines?", "drawLines(const QVector<QPointF>&)", typeof(void), typeof(List<QPointF>), pointPairs);
 		}
-		[SmokeMethod("drawLines", "(const QLine*, int)", "#$")]
 		public void DrawLines(QLine lines, int lineCount) {
-			((QPainter) interceptor).DrawLines(lines,lineCount);
+			interceptor.Invoke("drawLines#$", "drawLines(const QLine*, int)", typeof(void), typeof(QLine), lines, typeof(int), lineCount);
 		}
-		[SmokeMethod("drawLines", "(const QVector<QLine>&)", "?")]
 		public void DrawLines(List<QLine> lines) {
-			((QPainter) interceptor).DrawLines(lines);
+			interceptor.Invoke("drawLines?", "drawLines(const QVector<QLine>&)", typeof(void), typeof(List<QLine>), lines);
 		}
-		[SmokeMethod("drawLines", "(const QPoint*, int)", "#$")]
 		public void DrawLines(QPoint pointPairs, int lineCount) {
-			((QPainter) interceptor).DrawLines(pointPairs,lineCount);
+			interceptor.Invoke("drawLines#$", "drawLines(const QPoint*, int)", typeof(void), typeof(QPoint), pointPairs, typeof(int), lineCount);
 		}
-		[SmokeMethod("drawLines", "(const QVector<QPoint>&)", "?")]
 		public void DrawLines(List<QPoint> pointPairs) {
-			((QPainter) interceptor).DrawLines(pointPairs);
+			interceptor.Invoke("drawLines?", "drawLines(const QVector<QPoint>&)", typeof(void), typeof(List<QPoint>), pointPairs);
 		}
-		[SmokeMethod("drawRect", "(const QRectF&)", "#")]
 		public void DrawRect(QRectF rect) {
-			((QPainter) interceptor).DrawRect(rect);
+			interceptor.Invoke("drawRect#", "drawRect(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
-		[SmokeMethod("drawRect", "(int, int, int, int)", "$$$$")]
 		public void DrawRect(int x1, int y1, int w, int h) {
-			((QPainter) interceptor).DrawRect(x1,y1,w,h);
+			interceptor.Invoke("drawRect$$$$", "drawRect(int, int, int, int)", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("drawRect", "(const QRect&)", "#")]
 		public void DrawRect(QRect rect) {
-			((QPainter) interceptor).DrawRect(rect);
+			interceptor.Invoke("drawRect#", "drawRect(const QRect&)", typeof(void), typeof(QRect), rect);
 		}
-		[SmokeMethod("drawRects", "(const QRectF*, int)", "#$")]
 		public void DrawRects(QRectF rects, int rectCount) {
-			((QPainter) interceptor).DrawRects(rects,rectCount);
+			interceptor.Invoke("drawRects#$", "drawRects(const QRectF*, int)", typeof(void), typeof(QRectF), rects, typeof(int), rectCount);
 		}
-		[SmokeMethod("drawRects", "(const QVector<QRectF>&)", "?")]
 		public void DrawRects(List<QRectF> rectangles) {
-			((QPainter) interceptor).DrawRects(rectangles);
+			interceptor.Invoke("drawRects?", "drawRects(const QVector<QRectF>&)", typeof(void), typeof(List<QRectF>), rectangles);
 		}
-		[SmokeMethod("drawRects", "(const QRect*, int)", "#$")]
 		public void DrawRects(QRect rects, int rectCount) {
-			((QPainter) interceptor).DrawRects(rects,rectCount);
+			interceptor.Invoke("drawRects#$", "drawRects(const QRect*, int)", typeof(void), typeof(QRect), rects, typeof(int), rectCount);
 		}
-		[SmokeMethod("drawRects", "(const QVector<QRect>&)", "?")]
 		public void DrawRects(List<QRect> rectangles) {
-			((QPainter) interceptor).DrawRects(rectangles);
+			interceptor.Invoke("drawRects?", "drawRects(const QVector<QRect>&)", typeof(void), typeof(List<QRect>), rectangles);
 		}
-		[SmokeMethod("drawEllipse", "(const QRectF&)", "#")]
 		public void DrawEllipse(QRectF r) {
-			((QPainter) interceptor).DrawEllipse(r);
+			interceptor.Invoke("drawEllipse#", "drawEllipse(const QRectF&)", typeof(void), typeof(QRectF), r);
 		}
-		[SmokeMethod("drawEllipse", "(const QRect&)", "#")]
 		public void DrawEllipse(QRect r) {
-			((QPainter) interceptor).DrawEllipse(r);
+			interceptor.Invoke("drawEllipse#", "drawEllipse(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		[SmokeMethod("drawEllipse", "(int, int, int, int)", "$$$$")]
 		public void DrawEllipse(int x, int y, int w, int h) {
-			((QPainter) interceptor).DrawEllipse(x,y,w,h);
+			interceptor.Invoke("drawEllipse$$$$", "drawEllipse(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("drawPolyline", "(const QPointF*, int)", "#$")]
 		public void DrawPolyline(QPointF points, int pointCount) {
-			((QPainter) interceptor).DrawPolyline(points,pointCount);
+			interceptor.Invoke("drawPolyline#$", "drawPolyline(const QPointF*, int)", typeof(void), typeof(QPointF), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawPolyline", "(const QPolygonF&)", "#")]
 		public void DrawPolyline(QPolygonF polyline) {
-			((QPainter) interceptor).DrawPolyline(polyline);
+			interceptor.Invoke("drawPolyline#", "drawPolyline(const QPolygonF&)", typeof(void), typeof(QPolygonF), polyline);
 		}
-		[SmokeMethod("drawPolyline", "(const QPoint*, int)", "#$")]
 		public void DrawPolyline(QPoint points, int pointCount) {
-			((QPainter) interceptor).DrawPolyline(points,pointCount);
+			interceptor.Invoke("drawPolyline#$", "drawPolyline(const QPoint*, int)", typeof(void), typeof(QPoint), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawPolyline", "(const QPolygon&)", "#")]
 		public void DrawPolyline(QPolygon polygon) {
-			((QPainter) interceptor).DrawPolyline(polygon);
+			interceptor.Invoke("drawPolyline#", "drawPolyline(const QPolygon&)", typeof(void), typeof(QPolygon), polygon);
 		}
-		[SmokeMethod("drawPolygon", "(const QPointF*, int, Qt::FillRule)", "#$$")]
 		public void DrawPolygon(QPointF points, int pointCount, Qt.FillRule fillRule) {
-			((QPainter) interceptor).DrawPolygon(points,pointCount,fillRule);
+			interceptor.Invoke("drawPolygon#$$", "drawPolygon(const QPointF*, int, Qt::FillRule)", typeof(void), typeof(QPointF), points, typeof(int), pointCount, typeof(Qt.FillRule), fillRule);
 		}
-		[SmokeMethod("drawPolygon", "(const QPointF*, int)", "#$")]
 		public void DrawPolygon(QPointF points, int pointCount) {
-			((QPainter) interceptor).DrawPolygon(points,pointCount);
+			interceptor.Invoke("drawPolygon#$", "drawPolygon(const QPointF*, int)", typeof(void), typeof(QPointF), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawPolygon", "(const QPolygonF&, Qt::FillRule)", "#$")]
 		public void DrawPolygon(QPolygonF polygon, Qt.FillRule fillRule) {
-			((QPainter) interceptor).DrawPolygon(polygon,fillRule);
+			interceptor.Invoke("drawPolygon#$", "drawPolygon(const QPolygonF&, Qt::FillRule)", typeof(void), typeof(QPolygonF), polygon, typeof(Qt.FillRule), fillRule);
 		}
-		[SmokeMethod("drawPolygon", "(const QPolygonF&)", "#")]
 		public void DrawPolygon(QPolygonF polygon) {
-			((QPainter) interceptor).DrawPolygon(polygon);
+			interceptor.Invoke("drawPolygon#", "drawPolygon(const QPolygonF&)", typeof(void), typeof(QPolygonF), polygon);
 		}
-		[SmokeMethod("drawPolygon", "(const QPoint*, int, Qt::FillRule)", "#$$")]
 		public void DrawPolygon(QPoint points, int pointCount, Qt.FillRule fillRule) {
-			((QPainter) interceptor).DrawPolygon(points,pointCount,fillRule);
+			interceptor.Invoke("drawPolygon#$$", "drawPolygon(const QPoint*, int, Qt::FillRule)", typeof(void), typeof(QPoint), points, typeof(int), pointCount, typeof(Qt.FillRule), fillRule);
 		}
-		[SmokeMethod("drawPolygon", "(const QPoint*, int)", "#$")]
 		public void DrawPolygon(QPoint points, int pointCount) {
-			((QPainter) interceptor).DrawPolygon(points,pointCount);
+			interceptor.Invoke("drawPolygon#$", "drawPolygon(const QPoint*, int)", typeof(void), typeof(QPoint), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawPolygon", "(const QPolygon&, Qt::FillRule)", "#$")]
 		public void DrawPolygon(QPolygon polygon, Qt.FillRule fillRule) {
-			((QPainter) interceptor).DrawPolygon(polygon,fillRule);
+			interceptor.Invoke("drawPolygon#$", "drawPolygon(const QPolygon&, Qt::FillRule)", typeof(void), typeof(QPolygon), polygon, typeof(Qt.FillRule), fillRule);
 		}
-		[SmokeMethod("drawPolygon", "(const QPolygon&)", "#")]
 		public void DrawPolygon(QPolygon polygon) {
-			((QPainter) interceptor).DrawPolygon(polygon);
+			interceptor.Invoke("drawPolygon#", "drawPolygon(const QPolygon&)", typeof(void), typeof(QPolygon), polygon);
 		}
-		[SmokeMethod("drawConvexPolygon", "(const QPointF*, int)", "#$")]
 		public void DrawConvexPolygon(QPointF points, int pointCount) {
-			((QPainter) interceptor).DrawConvexPolygon(points,pointCount);
+			interceptor.Invoke("drawConvexPolygon#$", "drawConvexPolygon(const QPointF*, int)", typeof(void), typeof(QPointF), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawConvexPolygon", "(const QPolygonF&)", "#")]
 		public void DrawConvexPolygon(QPolygonF polygon) {
-			((QPainter) interceptor).DrawConvexPolygon(polygon);
+			interceptor.Invoke("drawConvexPolygon#", "drawConvexPolygon(const QPolygonF&)", typeof(void), typeof(QPolygonF), polygon);
 		}
-		[SmokeMethod("drawConvexPolygon", "(const QPoint*, int)", "#$")]
 		public void DrawConvexPolygon(QPoint points, int pointCount) {
-			((QPainter) interceptor).DrawConvexPolygon(points,pointCount);
+			interceptor.Invoke("drawConvexPolygon#$", "drawConvexPolygon(const QPoint*, int)", typeof(void), typeof(QPoint), points, typeof(int), pointCount);
 		}
-		[SmokeMethod("drawConvexPolygon", "(const QPolygon&)", "#")]
 		public void DrawConvexPolygon(QPolygon polygon) {
-			((QPainter) interceptor).DrawConvexPolygon(polygon);
+			interceptor.Invoke("drawConvexPolygon#", "drawConvexPolygon(const QPolygon&)", typeof(void), typeof(QPolygon), polygon);
 		}
-		[SmokeMethod("drawArc", "(const QRectF&, int, int)", "#$$")]
 		public void DrawArc(QRectF rect, int a, int alen) {
-			((QPainter) interceptor).DrawArc(rect,a,alen);
+			interceptor.Invoke("drawArc#$$", "drawArc(const QRectF&, int, int)", typeof(void), typeof(QRectF), rect, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawArc", "(const QRect&, int, int)", "#$$")]
 		public void DrawArc(QRect arg1, int a, int alen) {
-			((QPainter) interceptor).DrawArc(arg1,a,alen);
+			interceptor.Invoke("drawArc#$$", "drawArc(const QRect&, int, int)", typeof(void), typeof(QRect), arg1, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawArc", "(int, int, int, int, int, int)", "$$$$$$")]
 		public void DrawArc(int x, int y, int w, int h, int a, int alen) {
-			((QPainter) interceptor).DrawArc(x,y,w,h,a,alen);
+			interceptor.Invoke("drawArc$$$$$$", "drawArc(int, int, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawPie", "(const QRectF&, int, int)", "#$$")]
 		public void DrawPie(QRectF rect, int a, int alen) {
-			((QPainter) interceptor).DrawPie(rect,a,alen);
+			interceptor.Invoke("drawPie#$$", "drawPie(const QRectF&, int, int)", typeof(void), typeof(QRectF), rect, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawPie", "(int, int, int, int, int, int)", "$$$$$$")]
 		public void DrawPie(int x, int y, int w, int h, int a, int alen) {
-			((QPainter) interceptor).DrawPie(x,y,w,h,a,alen);
+			interceptor.Invoke("drawPie$$$$$$", "drawPie(int, int, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawPie", "(const QRect&, int, int)", "#$$")]
 		public void DrawPie(QRect arg1, int a, int alen) {
-			((QPainter) interceptor).DrawPie(arg1,a,alen);
+			interceptor.Invoke("drawPie#$$", "drawPie(const QRect&, int, int)", typeof(void), typeof(QRect), arg1, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawChord", "(const QRectF&, int, int)", "#$$")]
 		public void DrawChord(QRectF rect, int a, int alen) {
-			((QPainter) interceptor).DrawChord(rect,a,alen);
+			interceptor.Invoke("drawChord#$$", "drawChord(const QRectF&, int, int)", typeof(void), typeof(QRectF), rect, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawChord", "(int, int, int, int, int, int)", "$$$$$$")]
 		public void DrawChord(int x, int y, int w, int h, int a, int alen) {
-			((QPainter) interceptor).DrawChord(x,y,w,h,a,alen);
+			interceptor.Invoke("drawChord$$$$$$", "drawChord(int, int, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawChord", "(const QRect&, int, int)", "#$$")]
 		public void DrawChord(QRect arg1, int a, int alen) {
-			((QPainter) interceptor).DrawChord(arg1,a,alen);
+			interceptor.Invoke("drawChord#$$", "drawChord(const QRect&, int, int)", typeof(void), typeof(QRect), arg1, typeof(int), a, typeof(int), alen);
 		}
-		[SmokeMethod("drawRoundRect", "(const QRectF&, int, int)", "#$$")]
 		public void DrawRoundRect(QRectF r, int xround, int yround) {
-			((QPainter) interceptor).DrawRoundRect(r,xround,yround);
+			interceptor.Invoke("drawRoundRect#$$", "drawRoundRect(const QRectF&, int, int)", typeof(void), typeof(QRectF), r, typeof(int), xround, typeof(int), yround);
 		}
-		[SmokeMethod("drawRoundRect", "(const QRectF&, int)", "#$")]
 		public void DrawRoundRect(QRectF r, int xround) {
-			((QPainter) interceptor).DrawRoundRect(r,xround);
+			interceptor.Invoke("drawRoundRect#$", "drawRoundRect(const QRectF&, int)", typeof(void), typeof(QRectF), r, typeof(int), xround);
 		}
-		[SmokeMethod("drawRoundRect", "(const QRectF&)", "#")]
 		public void DrawRoundRect(QRectF r) {
-			((QPainter) interceptor).DrawRoundRect(r);
+			interceptor.Invoke("drawRoundRect#", "drawRoundRect(const QRectF&)", typeof(void), typeof(QRectF), r);
 		}
-		[SmokeMethod("drawRoundRect", "(int, int, int, int, int, int)", "$$$$$$")]
 		public void DrawRoundRect(int x, int y, int w, int h, int arg5, int arg6) {
-			((QPainter) interceptor).DrawRoundRect(x,y,w,h,arg5,arg6);
+			interceptor.Invoke("drawRoundRect$$$$$$", "drawRoundRect(int, int, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), arg5, typeof(int), arg6);
 		}
-		[SmokeMethod("drawRoundRect", "(int, int, int, int, int)", "$$$$$")]
 		public void DrawRoundRect(int x, int y, int w, int h, int arg5) {
-			((QPainter) interceptor).DrawRoundRect(x,y,w,h,arg5);
+			interceptor.Invoke("drawRoundRect$$$$$", "drawRoundRect(int, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), arg5);
 		}
-		[SmokeMethod("drawRoundRect", "(int, int, int, int)", "$$$$")]
 		public void DrawRoundRect(int x, int y, int w, int h) {
-			((QPainter) interceptor).DrawRoundRect(x,y,w,h);
+			interceptor.Invoke("drawRoundRect$$$$", "drawRoundRect(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("drawRoundRect", "(const QRect&, int, int)", "#$$")]
 		public void DrawRoundRect(QRect r, int xround, int yround) {
-			((QPainter) interceptor).DrawRoundRect(r,xround,yround);
+			interceptor.Invoke("drawRoundRect#$$", "drawRoundRect(const QRect&, int, int)", typeof(void), typeof(QRect), r, typeof(int), xround, typeof(int), yround);
 		}
-		[SmokeMethod("drawRoundRect", "(const QRect&, int)", "#$")]
 		public void DrawRoundRect(QRect r, int xround) {
-			((QPainter) interceptor).DrawRoundRect(r,xround);
+			interceptor.Invoke("drawRoundRect#$", "drawRoundRect(const QRect&, int)", typeof(void), typeof(QRect), r, typeof(int), xround);
 		}
-		[SmokeMethod("drawRoundRect", "(const QRect&)", "#")]
 		public void DrawRoundRect(QRect r) {
-			((QPainter) interceptor).DrawRoundRect(r);
+			interceptor.Invoke("drawRoundRect#", "drawRoundRect(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		[SmokeMethod("drawTiledPixmap", "(const QRectF&, const QPixmap&, const QPointF&)", "###")]
 		public void DrawTiledPixmap(QRectF rect, QPixmap pm, QPointF offset) {
-			((QPainter) interceptor).DrawTiledPixmap(rect,pm,offset);
+			interceptor.Invoke("drawTiledPixmap###", "drawTiledPixmap(const QRectF&, const QPixmap&, const QPointF&)", typeof(void), typeof(QRectF), rect, typeof(QPixmap), pm, typeof(QPointF), offset);
 		}
-		[SmokeMethod("drawTiledPixmap", "(const QRectF&, const QPixmap&)", "##")]
 		public void DrawTiledPixmap(QRectF rect, QPixmap pm) {
-			((QPainter) interceptor).DrawTiledPixmap(rect,pm);
+			interceptor.Invoke("drawTiledPixmap##", "drawTiledPixmap(const QRectF&, const QPixmap&)", typeof(void), typeof(QRectF), rect, typeof(QPixmap), pm);
 		}
-		[SmokeMethod("drawTiledPixmap", "(int, int, int, int, const QPixmap&, int, int)", "$$$$#$$")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5, int sx, int sy) {
-			((QPainter) interceptor).DrawTiledPixmap(x,y,w,h,arg5,sx,sy);
+			interceptor.Invoke("drawTiledPixmap$$$$#$$", "drawTiledPixmap(int, int, int, int, const QPixmap&, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPixmap), arg5, typeof(int), sx, typeof(int), sy);
 		}
-		[SmokeMethod("drawTiledPixmap", "(int, int, int, int, const QPixmap&, int)", "$$$$#$")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5, int sx) {
-			((QPainter) interceptor).DrawTiledPixmap(x,y,w,h,arg5,sx);
+			interceptor.Invoke("drawTiledPixmap$$$$#$", "drawTiledPixmap(int, int, int, int, const QPixmap&, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPixmap), arg5, typeof(int), sx);
 		}
-		[SmokeMethod("drawTiledPixmap", "(int, int, int, int, const QPixmap&)", "$$$$#")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5) {
-			((QPainter) interceptor).DrawTiledPixmap(x,y,w,h,arg5);
+			interceptor.Invoke("drawTiledPixmap$$$$#", "drawTiledPixmap(int, int, int, int, const QPixmap&)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPixmap), arg5);
 		}
-		[SmokeMethod("drawTiledPixmap", "(const QRect&, const QPixmap&, const QPoint&)", "###")]
 		public void DrawTiledPixmap(QRect arg1, QPixmap arg2, QPoint arg3) {
-			((QPainter) interceptor).DrawTiledPixmap(arg1,arg2,arg3);
+			interceptor.Invoke("drawTiledPixmap###", "drawTiledPixmap(const QRect&, const QPixmap&, const QPoint&)", typeof(void), typeof(QRect), arg1, typeof(QPixmap), arg2, typeof(QPoint), arg3);
 		}
-		[SmokeMethod("drawTiledPixmap", "(const QRect&, const QPixmap&)", "##")]
 		public void DrawTiledPixmap(QRect arg1, QPixmap arg2) {
-			((QPainter) interceptor).DrawTiledPixmap(arg1,arg2);
+			interceptor.Invoke("drawTiledPixmap##", "drawTiledPixmap(const QRect&, const QPixmap&)", typeof(void), typeof(QRect), arg1, typeof(QPixmap), arg2);
 		}
-		[SmokeMethod("drawPicture", "(const QPointF&, const QPicture&)", "##")]
 		public void DrawPicture(QPointF p, QPicture picture) {
-			((QPainter) interceptor).DrawPicture(p,picture);
+			interceptor.Invoke("drawPicture##", "drawPicture(const QPointF&, const QPicture&)", typeof(void), typeof(QPointF), p, typeof(QPicture), picture);
 		}
-		[SmokeMethod("drawPicture", "(int, int, const QPicture&)", "$$#")]
 		public void DrawPicture(int x, int y, QPicture picture) {
-			((QPainter) interceptor).DrawPicture(x,y,picture);
+			interceptor.Invoke("drawPicture$$#", "drawPicture(int, int, const QPicture&)", typeof(void), typeof(int), x, typeof(int), y, typeof(QPicture), picture);
 		}
-		[SmokeMethod("drawPicture", "(const QPoint&, const QPicture&)", "##")]
 		public void DrawPicture(QPoint p, QPicture picture) {
-			((QPainter) interceptor).DrawPicture(p,picture);
+			interceptor.Invoke("drawPicture##", "drawPicture(const QPoint&, const QPicture&)", typeof(void), typeof(QPoint), p, typeof(QPicture), picture);
 		}
-		[SmokeMethod("drawPixmap", "(const QRectF&, const QPixmap&, const QRectF&)", "###")]
 		public void DrawPixmap(QRectF targetRect, QPixmap pixmap, QRectF sourceRect) {
-			((QPainter) interceptor).DrawPixmap(targetRect,pixmap,sourceRect);
+			interceptor.Invoke("drawPixmap###", "drawPixmap(const QRectF&, const QPixmap&, const QRectF&)", typeof(void), typeof(QRectF), targetRect, typeof(QPixmap), pixmap, typeof(QRectF), sourceRect);
 		}
-		[SmokeMethod("drawPixmap", "(const QRect&, const QPixmap&, const QRect&)", "###")]
 		public void DrawPixmap(QRect targetRect, QPixmap pixmap, QRect sourceRect) {
-			((QPainter) interceptor).DrawPixmap(targetRect,pixmap,sourceRect);
+			interceptor.Invoke("drawPixmap###", "drawPixmap(const QRect&, const QPixmap&, const QRect&)", typeof(void), typeof(QRect), targetRect, typeof(QPixmap), pixmap, typeof(QRect), sourceRect);
 		}
-		[SmokeMethod("drawPixmap", "(int, int, int, int, const QPixmap&, int, int, int, int)", "$$$$#$$$$")]
 		public void DrawPixmap(int x, int y, int w, int h, QPixmap pm, int sx, int sy, int sw, int sh) {
-			((QPainter) interceptor).DrawPixmap(x,y,w,h,pm,sx,sy,sw,sh);
+			interceptor.Invoke("drawPixmap$$$$#$$$$", "drawPixmap(int, int, int, int, const QPixmap&, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPixmap), pm, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh);
 		}
-		[SmokeMethod("drawPixmap", "(int, int, const QPixmap&, int, int, int, int)", "$$#$$$$")]
 		public void DrawPixmap(int x, int y, QPixmap pm, int sx, int sy, int sw, int sh) {
-			((QPainter) interceptor).DrawPixmap(x,y,pm,sx,sy,sw,sh);
+			interceptor.Invoke("drawPixmap$$#$$$$", "drawPixmap(int, int, const QPixmap&, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(QPixmap), pm, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh);
 		}
-		[SmokeMethod("drawPixmap", "(const QPointF&, const QPixmap&, const QRectF&)", "###")]
 		public void DrawPixmap(QPointF p, QPixmap pm, QRectF sr) {
-			((QPainter) interceptor).DrawPixmap(p,pm,sr);
+			interceptor.Invoke("drawPixmap###", "drawPixmap(const QPointF&, const QPixmap&, const QRectF&)", typeof(void), typeof(QPointF), p, typeof(QPixmap), pm, typeof(QRectF), sr);
 		}
-		[SmokeMethod("drawPixmap", "(const QPoint&, const QPixmap&, const QRect&)", "###")]
 		public void DrawPixmap(QPoint p, QPixmap pm, QRect sr) {
-			((QPainter) interceptor).DrawPixmap(p,pm,sr);
+			interceptor.Invoke("drawPixmap###", "drawPixmap(const QPoint&, const QPixmap&, const QRect&)", typeof(void), typeof(QPoint), p, typeof(QPixmap), pm, typeof(QRect), sr);
 		}
-		[SmokeMethod("drawPixmap", "(const QPointF&, const QPixmap&)", "##")]
 		public void DrawPixmap(QPointF p, QPixmap pm) {
-			((QPainter) interceptor).DrawPixmap(p,pm);
+			interceptor.Invoke("drawPixmap##", "drawPixmap(const QPointF&, const QPixmap&)", typeof(void), typeof(QPointF), p, typeof(QPixmap), pm);
 		}
-		[SmokeMethod("drawPixmap", "(const QPoint&, const QPixmap&)", "##")]
 		public void DrawPixmap(QPoint p, QPixmap pm) {
-			((QPainter) interceptor).DrawPixmap(p,pm);
+			interceptor.Invoke("drawPixmap##", "drawPixmap(const QPoint&, const QPixmap&)", typeof(void), typeof(QPoint), p, typeof(QPixmap), pm);
 		}
-		[SmokeMethod("drawPixmap", "(int, int, const QPixmap&)", "$$#")]
 		public void DrawPixmap(int x, int y, QPixmap pm) {
-			((QPainter) interceptor).DrawPixmap(x,y,pm);
+			interceptor.Invoke("drawPixmap$$#", "drawPixmap(int, int, const QPixmap&)", typeof(void), typeof(int), x, typeof(int), y, typeof(QPixmap), pm);
 		}
-		[SmokeMethod("drawPixmap", "(const QRect&, const QPixmap&)", "##")]
 		public void DrawPixmap(QRect r, QPixmap pm) {
-			((QPainter) interceptor).DrawPixmap(r,pm);
+			interceptor.Invoke("drawPixmap##", "drawPixmap(const QRect&, const QPixmap&)", typeof(void), typeof(QRect), r, typeof(QPixmap), pm);
 		}
-		[SmokeMethod("drawPixmap", "(int, int, int, int, const QPixmap&)", "$$$$#")]
 		public void DrawPixmap(int x, int y, int w, int h, QPixmap pm) {
-			((QPainter) interceptor).DrawPixmap(x,y,w,h,pm);
+			interceptor.Invoke("drawPixmap$$$$#", "drawPixmap(int, int, int, int, const QPixmap&)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPixmap), pm);
 		}
-		[SmokeMethod("drawImage", "(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", "###$")]
 		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect, int flags) {
-			((QPainter) interceptor).DrawImage(targetRect,image,sourceRect,flags);
+			interceptor.Invoke("drawImage###$", "drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QRectF), targetRect, typeof(QImage), image, typeof(QRectF), sourceRect, typeof(int), flags);
 		}
-		[SmokeMethod("drawImage", "(const QRectF&, const QImage&, const QRectF&)", "###")]
 		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect) {
-			((QPainter) interceptor).DrawImage(targetRect,image,sourceRect);
+			interceptor.Invoke("drawImage###", "drawImage(const QRectF&, const QImage&, const QRectF&)", typeof(void), typeof(QRectF), targetRect, typeof(QImage), image, typeof(QRectF), sourceRect);
 		}
-		[SmokeMethod("drawImage", "(const QRect&, const QImage&, const QRect&, Qt::ImageConversionFlags)", "###$")]
 		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect, int flags) {
-			((QPainter) interceptor).DrawImage(targetRect,image,sourceRect,flags);
+			interceptor.Invoke("drawImage###$", "drawImage(const QRect&, const QImage&, const QRect&, Qt::ImageConversionFlags)", typeof(void), typeof(QRect), targetRect, typeof(QImage), image, typeof(QRect), sourceRect, typeof(int), flags);
 		}
-		[SmokeMethod("drawImage", "(const QRect&, const QImage&, const QRect&)", "###")]
 		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect) {
-			((QPainter) interceptor).DrawImage(targetRect,image,sourceRect);
+			interceptor.Invoke("drawImage###", "drawImage(const QRect&, const QImage&, const QRect&)", typeof(void), typeof(QRect), targetRect, typeof(QImage), image, typeof(QRect), sourceRect);
 		}
-		[SmokeMethod("drawImage", "(const QPointF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", "###$")]
 		public void DrawImage(QPointF p, QImage image, QRectF sr, int flags) {
-			((QPainter) interceptor).DrawImage(p,image,sr,flags);
+			interceptor.Invoke("drawImage###$", "drawImage(const QPointF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QPointF), p, typeof(QImage), image, typeof(QRectF), sr, typeof(int), flags);
 		}
-		[SmokeMethod("drawImage", "(const QPointF&, const QImage&, const QRectF&)", "###")]
 		public void DrawImage(QPointF p, QImage image, QRectF sr) {
-			((QPainter) interceptor).DrawImage(p,image,sr);
+			interceptor.Invoke("drawImage###", "drawImage(const QPointF&, const QImage&, const QRectF&)", typeof(void), typeof(QPointF), p, typeof(QImage), image, typeof(QRectF), sr);
 		}
-		[SmokeMethod("drawImage", "(const QPoint&, const QImage&, const QRect&, Qt::ImageConversionFlags)", "###$")]
 		public void DrawImage(QPoint p, QImage image, QRect sr, int flags) {
-			((QPainter) interceptor).DrawImage(p,image,sr,flags);
+			interceptor.Invoke("drawImage###$", "drawImage(const QPoint&, const QImage&, const QRect&, Qt::ImageConversionFlags)", typeof(void), typeof(QPoint), p, typeof(QImage), image, typeof(QRect), sr, typeof(int), flags);
 		}
-		[SmokeMethod("drawImage", "(const QPoint&, const QImage&, const QRect&)", "###")]
 		public void DrawImage(QPoint p, QImage image, QRect sr) {
-			((QPainter) interceptor).DrawImage(p,image,sr);
+			interceptor.Invoke("drawImage###", "drawImage(const QPoint&, const QImage&, const QRect&)", typeof(void), typeof(QPoint), p, typeof(QImage), image, typeof(QRect), sr);
 		}
-		[SmokeMethod("drawImage", "(const QRectF&, const QImage&)", "##")]
 		public void DrawImage(QRectF r, QImage image) {
-			((QPainter) interceptor).DrawImage(r,image);
+			interceptor.Invoke("drawImage##", "drawImage(const QRectF&, const QImage&)", typeof(void), typeof(QRectF), r, typeof(QImage), image);
 		}
-		[SmokeMethod("drawImage", "(const QRect&, const QImage&)", "##")]
 		public void DrawImage(QRect r, QImage image) {
-			((QPainter) interceptor).DrawImage(r,image);
+			interceptor.Invoke("drawImage##", "drawImage(const QRect&, const QImage&)", typeof(void), typeof(QRect), r, typeof(QImage), image);
 		}
-		[SmokeMethod("drawImage", "(const QPointF&, const QImage&)", "##")]
 		public void DrawImage(QPointF p, QImage image) {
-			((QPainter) interceptor).DrawImage(p,image);
+			interceptor.Invoke("drawImage##", "drawImage(const QPointF&, const QImage&)", typeof(void), typeof(QPointF), p, typeof(QImage), image);
 		}
-		[SmokeMethod("drawImage", "(const QPoint&, const QImage&)", "##")]
 		public void DrawImage(QPoint p, QImage image) {
-			((QPainter) interceptor).DrawImage(p,image);
+			interceptor.Invoke("drawImage##", "drawImage(const QPoint&, const QImage&)", typeof(void), typeof(QPoint), p, typeof(QImage), image);
 		}
-		[SmokeMethod("drawImage", "(int, int, const QImage&, int, int, int, int, Qt::ImageConversionFlags)", "$$#$$$$$")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh, int flags) {
-			((QPainter) interceptor).DrawImage(x,y,image,sx,sy,sw,sh,flags);
+			interceptor.Invoke("drawImage$$#$$$$$", "drawImage(int, int, const QImage&, int, int, int, int, Qt::ImageConversionFlags)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh, typeof(int), flags);
 		}
-		[SmokeMethod("drawImage", "(int, int, const QImage&, int, int, int, int)", "$$#$$$$")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh) {
-			((QPainter) interceptor).DrawImage(x,y,image,sx,sy,sw,sh);
+			interceptor.Invoke("drawImage$$#$$$$", "drawImage(int, int, const QImage&, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh);
 		}
-		[SmokeMethod("drawImage", "(int, int, const QImage&, int, int, int)", "$$#$$$")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw) {
-			((QPainter) interceptor).DrawImage(x,y,image,sx,sy,sw);
+			interceptor.Invoke("drawImage$$#$$$", "drawImage(int, int, const QImage&, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy, typeof(int), sw);
 		}
-		[SmokeMethod("drawImage", "(int, int, const QImage&, int, int)", "$$#$$")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy) {
-			((QPainter) interceptor).DrawImage(x,y,image,sx,sy);
+			interceptor.Invoke("drawImage$$#$$", "drawImage(int, int, const QImage&, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy);
 		}
-		[SmokeMethod("drawImage", "(int, int, const QImage&, int)", "$$#$")]
 		public void DrawImage(int x, int y, QImage image, int sx) {
-			((QPainter) interceptor).DrawImage(x,y,image,sx);
+			interceptor.Invoke("drawImage$$#$", "drawImage(int, int, const QImage&, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx);
 		}
-		[SmokeMethod("drawImage", "(int, int, const QImage&)", "$$#")]
 		public void DrawImage(int x, int y, QImage image) {
-			((QPainter) interceptor).DrawImage(x,y,image);
+			interceptor.Invoke("drawImage$$#", "drawImage(int, int, const QImage&)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image);
 		}
-		[SmokeMethod("setLayoutDirection", "(Qt::LayoutDirection)", "$")]
 		public void SetLayoutDirection(Qt.LayoutDirection direction) {
-			((QPainter) interceptor).SetLayoutDirection(direction);
+			interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), direction);
 		}
-		[SmokeMethod("layoutDirection", "() const", "")]
 		public Qt.LayoutDirection LayoutDirection() {
-			return ((QPainter) interceptor).LayoutDirection();
+			return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection() const", typeof(Qt.LayoutDirection));
 		}
-		[SmokeMethod("drawText", "(const QPointF&, const QString&)", "#$")]
 		public void DrawText(QPointF p, string s) {
-			((QPainter) interceptor).DrawText(p,s);
+			interceptor.Invoke("drawText#$", "drawText(const QPointF&, const QString&)", typeof(void), typeof(QPointF), p, typeof(string), s);
 		}
-		[SmokeMethod("drawText", "(const QPoint&, const QString&)", "#$")]
 		public void DrawText(QPoint p, string s) {
-			((QPainter) interceptor).DrawText(p,s);
+			interceptor.Invoke("drawText#$", "drawText(const QPoint&, const QString&)", typeof(void), typeof(QPoint), p, typeof(string), s);
 		}
-		[SmokeMethod("drawText", "(int, int, const QString&)", "$$$")]
 		public void DrawText(int x, int y, string s) {
-			((QPainter) interceptor).DrawText(x,y,s);
+			interceptor.Invoke("drawText$$$", "drawText(int, int, const QString&)", typeof(void), typeof(int), x, typeof(int), y, typeof(string), s);
 		}
-		[SmokeMethod("drawText", "(const QRectF&, int, const QString&, QRectF*)", "#$$#")]
 		public void DrawText(QRectF r, int flags, string text, QRectF br) {
-			((QPainter) interceptor).DrawText(r,flags,text,br);
+			interceptor.Invoke("drawText#$$#", "drawText(const QRectF&, int, const QString&, QRectF*)", typeof(void), typeof(QRectF), r, typeof(int), flags, typeof(string), text, typeof(QRectF), br);
 		}
-		[SmokeMethod("drawText", "(const QRectF&, int, const QString&)", "#$$")]
 		public void DrawText(QRectF r, int flags, string text) {
-			((QPainter) interceptor).DrawText(r,flags,text);
+			interceptor.Invoke("drawText#$$", "drawText(const QRectF&, int, const QString&)", typeof(void), typeof(QRectF), r, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("drawText", "(const QRect&, int, const QString&, QRect*)", "#$$#")]
 		public void DrawText(QRect r, int flags, string text, QRect br) {
-			((QPainter) interceptor).DrawText(r,flags,text,br);
+			interceptor.Invoke("drawText#$$#", "drawText(const QRect&, int, const QString&, QRect*)", typeof(void), typeof(QRect), r, typeof(int), flags, typeof(string), text, typeof(QRect), br);
 		}
-		[SmokeMethod("drawText", "(const QRect&, int, const QString&)", "#$$")]
 		public void DrawText(QRect r, int flags, string text) {
-			((QPainter) interceptor).DrawText(r,flags,text);
+			interceptor.Invoke("drawText#$$", "drawText(const QRect&, int, const QString&)", typeof(void), typeof(QRect), r, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("drawText", "(int, int, int, int, int, const QString&, QRect*)", "$$$$$$#")]
 		public void DrawText(int x, int y, int w, int h, int flags, string text, QRect br) {
-			((QPainter) interceptor).DrawText(x,y,w,h,flags,text,br);
+			interceptor.Invoke("drawText$$$$$$#", "drawText(int, int, int, int, int, const QString&, QRect*)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), flags, typeof(string), text, typeof(QRect), br);
 		}
-		[SmokeMethod("drawText", "(int, int, int, int, int, const QString&)", "$$$$$$")]
 		public void DrawText(int x, int y, int w, int h, int flags, string text) {
-			((QPainter) interceptor).DrawText(x,y,w,h,flags,text);
+			interceptor.Invoke("drawText$$$$$$", "drawText(int, int, int, int, int, const QString&)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("drawText", "(const QRectF&, const QString&, const QTextOption&)", "#$#")]
 		public void DrawText(QRectF r, string text, QTextOption o) {
-			((QPainter) interceptor).DrawText(r,text,o);
+			interceptor.Invoke("drawText#$#", "drawText(const QRectF&, const QString&, const QTextOption&)", typeof(void), typeof(QRectF), r, typeof(string), text, typeof(QTextOption), o);
 		}
-		[SmokeMethod("drawText", "(const QRectF&, const QString&)", "#$")]
 		public void DrawText(QRectF r, string text) {
-			((QPainter) interceptor).DrawText(r,text);
+			interceptor.Invoke("drawText#$", "drawText(const QRectF&, const QString&)", typeof(void), typeof(QRectF), r, typeof(string), text);
 		}
-		[SmokeMethod("boundingRect", "(const QRectF&, int, const QString&)", "#$$")]
 		public QRectF BoundingRect(QRectF rect, int flags, string text) {
-			return ((QPainter) interceptor).BoundingRect(rect,flags,text);
+			return (QRectF) interceptor.Invoke("boundingRect#$$", "boundingRect(const QRectF&, int, const QString&)", typeof(QRectF), typeof(QRectF), rect, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("boundingRect", "(const QRect&, int, const QString&)", "#$$")]
 		public QRect BoundingRect(QRect rect, int flags, string text) {
-			return ((QPainter) interceptor).BoundingRect(rect,flags,text);
+			return (QRect) interceptor.Invoke("boundingRect#$$", "boundingRect(const QRect&, int, const QString&)", typeof(QRect), typeof(QRect), rect, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("boundingRect", "(int, int, int, int, int, const QString&)", "$$$$$$")]
 		public QRect BoundingRect(int x, int y, int w, int h, int flags, string text) {
-			return ((QPainter) interceptor).BoundingRect(x,y,w,h,flags,text);
+			return (QRect) interceptor.Invoke("boundingRect$$$$$$", "boundingRect(int, int, int, int, int, const QString&)", typeof(QRect), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("boundingRect", "(const QRectF&, const QString&, const QTextOption&)", "#$#")]
 		public QRectF BoundingRect(QRectF rect, string text, QTextOption o) {
-			return ((QPainter) interceptor).BoundingRect(rect,text,o);
+			return (QRectF) interceptor.Invoke("boundingRect#$#", "boundingRect(const QRectF&, const QString&, const QTextOption&)", typeof(QRectF), typeof(QRectF), rect, typeof(string), text, typeof(QTextOption), o);
 		}
-		[SmokeMethod("boundingRect", "(const QRectF&, const QString&)", "#$")]
 		public QRectF BoundingRect(QRectF rect, string text) {
-			return ((QPainter) interceptor).BoundingRect(rect,text);
+			return (QRectF) interceptor.Invoke("boundingRect#$", "boundingRect(const QRectF&, const QString&)", typeof(QRectF), typeof(QRectF), rect, typeof(string), text);
 		}
-		[SmokeMethod("fillRect", "(const QRectF&, const QBrush&)", "##")]
 		public void FillRect(QRectF arg1, QBrush arg2) {
-			((QPainter) interceptor).FillRect(arg1,arg2);
+			interceptor.Invoke("fillRect##", "fillRect(const QRectF&, const QBrush&)", typeof(void), typeof(QRectF), arg1, typeof(QBrush), arg2);
 		}
-		[SmokeMethod("fillRect", "(int, int, int, int, const QBrush&)", "$$$$#")]
 		public void FillRect(int x, int y, int w, int h, QBrush arg5) {
-			((QPainter) interceptor).FillRect(x,y,w,h,arg5);
+			interceptor.Invoke("fillRect$$$$#", "fillRect(int, int, int, int, const QBrush&)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QBrush), arg5);
 		}
-		[SmokeMethod("fillRect", "(const QRect&, const QBrush&)", "##")]
 		public void FillRect(QRect arg1, QBrush arg2) {
-			((QPainter) interceptor).FillRect(arg1,arg2);
+			interceptor.Invoke("fillRect##", "fillRect(const QRect&, const QBrush&)", typeof(void), typeof(QRect), arg1, typeof(QBrush), arg2);
 		}
-		[SmokeMethod("eraseRect", "(const QRectF&)", "#")]
 		public void EraseRect(QRectF arg1) {
-			((QPainter) interceptor).EraseRect(arg1);
+			interceptor.Invoke("eraseRect#", "eraseRect(const QRectF&)", typeof(void), typeof(QRectF), arg1);
 		}
-		[SmokeMethod("eraseRect", "(int, int, int, int)", "$$$$")]
 		public void EraseRect(int x, int y, int w, int h) {
-			((QPainter) interceptor).EraseRect(x,y,w,h);
+			interceptor.Invoke("eraseRect$$$$", "eraseRect(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("eraseRect", "(const QRect&)", "#")]
 		public void EraseRect(QRect arg1) {
-			((QPainter) interceptor).EraseRect(arg1);
+			interceptor.Invoke("eraseRect#", "eraseRect(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		[SmokeMethod("setRenderHint", "(QPainter::RenderHint, bool)", "$$")]
 		public void SetRenderHint(QPainter.RenderHint hint, bool on) {
-			((QPainter) interceptor).SetRenderHint(hint,on);
+			interceptor.Invoke("setRenderHint$$", "setRenderHint(QPainter::RenderHint, bool)", typeof(void), typeof(QPainter.RenderHint), hint, typeof(bool), on);
 		}
-		[SmokeMethod("setRenderHint", "(QPainter::RenderHint)", "$")]
 		public void SetRenderHint(QPainter.RenderHint hint) {
-			((QPainter) interceptor).SetRenderHint(hint);
+			interceptor.Invoke("setRenderHint$", "setRenderHint(QPainter::RenderHint)", typeof(void), typeof(QPainter.RenderHint), hint);
 		}
-		[SmokeMethod("setRenderHints", "(RenderHints, bool)", "$$")]
 		public void SetRenderHints(int hints, bool on) {
-			((QPainter) interceptor).SetRenderHints(hints,on);
+			interceptor.Invoke("setRenderHints$$", "setRenderHints(RenderHints, bool)", typeof(void), typeof(int), hints, typeof(bool), on);
 		}
-		[SmokeMethod("setRenderHints", "(RenderHints)", "$")]
 		public void SetRenderHints(int hints) {
-			((QPainter) interceptor).SetRenderHints(hints);
+			interceptor.Invoke("setRenderHints$", "setRenderHints(RenderHints)", typeof(void), typeof(int), hints);
 		}
-		[SmokeMethod("renderHints", "() const", "")]
 		public int RenderHints() {
-			return ((QPainter) interceptor).RenderHints();
+			return (int) interceptor.Invoke("renderHints", "renderHints() const", typeof(int));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
 		public QPaintEngine PaintEngine() {
-			return ((QPainter) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
 		~QPainter() {
-			DisposeQPainter();
+			interceptor.Invoke("~QPainter", "~QPainter()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPainter();
-		}
-		[SmokeMethod("~QPainter", "()", "")]
-		private void DisposeQPainter() {
-			((QPainter) interceptor).DisposeQPainter();
+			interceptor.Invoke("~QPainter", "~QPainter()", typeof(void));
 		}
 		public static void SetRedirected(IQPaintDevice device, IQPaintDevice replacement, QPoint offset) {
-			staticInterceptor.SetRedirected(device,replacement,offset);
+			staticInterceptor.Invoke("setRedirected###", "setRedirected(const QPaintDevice*, QPaintDevice*, const QPoint&)", typeof(void), typeof(IQPaintDevice), device, typeof(IQPaintDevice), replacement, typeof(QPoint), offset);
 		}
 		public static void SetRedirected(IQPaintDevice device, IQPaintDevice replacement) {
-			staticInterceptor.SetRedirected(device,replacement);
+			staticInterceptor.Invoke("setRedirected##", "setRedirected(const QPaintDevice*, QPaintDevice*)", typeof(void), typeof(IQPaintDevice), device, typeof(IQPaintDevice), replacement);
 		}
 		public static IQPaintDevice Redirected(IQPaintDevice device, QPoint offset) {
-			return staticInterceptor.Redirected(device,offset);
+			return (IQPaintDevice) staticInterceptor.Invoke("redirected##", "redirected(const QPaintDevice*, QPoint*)", typeof(IQPaintDevice), typeof(IQPaintDevice), device, typeof(QPoint), offset);
 		}
 		public static IQPaintDevice Redirected(IQPaintDevice device) {
-			return staticInterceptor.Redirected(device);
+			return (IQPaintDevice) staticInterceptor.Invoke("redirected#", "redirected(const QPaintDevice*)", typeof(IQPaintDevice), typeof(IQPaintDevice), device);
 		}
 		public static void RestoreRedirected(IQPaintDevice device) {
-			staticInterceptor.RestoreRedirected(device);
+			staticInterceptor.Invoke("restoreRedirected#", "restoreRedirected(const QPaintDevice*)", typeof(void), typeof(IQPaintDevice), device);
 		}
 	}
 }

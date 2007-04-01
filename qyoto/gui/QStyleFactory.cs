@@ -5,49 +5,32 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QStyleFactory")]
-	public class QStyleFactory : MarshalByRefObject, IDisposable {
-		protected QStyleFactory interceptor = null;
+	public class QStyleFactory : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QStyleFactory(Type dummy) {}
-		[SmokeClass("QStyleFactory")]
-		interface IQStyleFactoryProxy {
-			[SmokeMethod("keys", "()", "")]
-			List<string> Keys();
-			[SmokeMethod("create", "(const QString&)", "$")]
-			QStyle Create(string arg1);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactory), this);
-			interceptor = (QStyleFactory) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleFactory), "QStyleFactory", this);
 		}
-		private static IQStyleFactoryProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QStyleFactory() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleFactoryProxy), null);
-			staticInterceptor = (IQStyleFactoryProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QStyleFactory), "QStyleFactory", null);
 		}
 		public QStyleFactory() : this((Type) null) {
 			CreateProxy();
-			NewQStyleFactory();
-		}
-		[SmokeMethod("QStyleFactory", "()", "")]
-		private void NewQStyleFactory() {
-			((QStyleFactory) interceptor).NewQStyleFactory();
+			interceptor.Invoke("QStyleFactory", "QStyleFactory()", typeof(void));
 		}
 		~QStyleFactory() {
-			DisposeQStyleFactory();
+			interceptor.Invoke("~QStyleFactory", "~QStyleFactory()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleFactory();
-		}
-		[SmokeMethod("~QStyleFactory", "()", "")]
-		private void DisposeQStyleFactory() {
-			((QStyleFactory) interceptor).DisposeQStyleFactory();
+			interceptor.Invoke("~QStyleFactory", "~QStyleFactory()", typeof(void));
 		}
 		public static List<string> Keys() {
-			return staticInterceptor.Keys();
+			return (List<string>) staticInterceptor.Invoke("keys", "keys()", typeof(List<string>));
 		}
 		public static QStyle Create(string arg1) {
-			return staticInterceptor.Create(arg1);
+			return (QStyle) staticInterceptor.Invoke("create$", "create(const QString&)", typeof(QStyle), typeof(string), arg1);
 		}
 	}
 }

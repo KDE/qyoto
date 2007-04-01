@@ -7,168 +7,111 @@ namespace Qyoto {
 	[SmokeClass("QSvgRenderer")]
 	public class QSvgRenderer : QObject, IDisposable {
  		protected QSvgRenderer(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSvgRenderer")]
-		interface IQSvgRendererProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSvgRenderer), this);
-			interceptor = (QSvgRenderer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSvgRenderer), "QSvgRenderer", this);
 		}
-		private static IQSvgRendererProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSvgRenderer() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSvgRendererProxy), null);
-			staticInterceptor = (IQSvgRendererProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSvgRenderer), "QSvgRenderer", null);
 		}
 		[Q_PROPERTY("QRectF", "viewBox")]
 		public QRectF ViewBox {
-			[SmokeMethod("viewBoxF", "()", "")]
-			get { return ((QSvgRenderer) interceptor).ViewBox; }
-			[SmokeMethod("setViewBox", "(QRectF)", "#")]
-			set { ((QSvgRenderer) interceptor).ViewBox = value; }
+			get { return (QRectF) interceptor.Invoke("viewBoxF", "viewBoxF()", typeof(QRectF)); }
+			set { interceptor.Invoke("setViewBox#", "setViewBox(QRectF)", typeof(void), typeof(QRectF), value); }
 		}
 		[Q_PROPERTY("int", "framesPerSecond")]
 		public int FramesPerSecond {
-			[SmokeMethod("framesPerSecond", "()", "")]
-			get { return ((QSvgRenderer) interceptor).FramesPerSecond; }
-			[SmokeMethod("setFramesPerSecond", "(int)", "$")]
-			set { ((QSvgRenderer) interceptor).FramesPerSecond = value; }
+			get { return (int) interceptor.Invoke("framesPerSecond", "framesPerSecond()", typeof(int)); }
+			set { interceptor.Invoke("setFramesPerSecond$", "setFramesPerSecond(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "currentFrame")]
 		public int CurrentFrame {
-			[SmokeMethod("currentFrame", "()", "")]
-			get { return ((QSvgRenderer) interceptor).CurrentFrame; }
-			[SmokeMethod("setCurrentFrame", "(int)", "$")]
-			set { ((QSvgRenderer) interceptor).CurrentFrame = value; }
+			get { return (int) interceptor.Invoke("currentFrame", "currentFrame()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentFrame$", "setCurrentFrame(int)", typeof(void), typeof(int), value); }
 		}
 		public QSvgRenderer(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSvgRenderer(parent);
-		}
-		[SmokeMethod("QSvgRenderer", "(QObject*)", "#")]
-		private void NewQSvgRenderer(QObject parent) {
-			((QSvgRenderer) interceptor).NewQSvgRenderer(parent);
+			interceptor.Invoke("QSvgRenderer#", "QSvgRenderer(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QSvgRenderer() : this((Type) null) {
 			CreateProxy();
-			NewQSvgRenderer();
-		}
-		[SmokeMethod("QSvgRenderer", "()", "")]
-		private void NewQSvgRenderer() {
-			((QSvgRenderer) interceptor).NewQSvgRenderer();
+			interceptor.Invoke("QSvgRenderer", "QSvgRenderer()", typeof(void));
 		}
 		public QSvgRenderer(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSvgRenderer(filename,parent);
-		}
-		[SmokeMethod("QSvgRenderer", "(const QString&, QObject*)", "$#")]
-		private void NewQSvgRenderer(string filename, QObject parent) {
-			((QSvgRenderer) interceptor).NewQSvgRenderer(filename,parent);
+			interceptor.Invoke("QSvgRenderer$#", "QSvgRenderer(const QString&, QObject*)", typeof(void), typeof(string), filename, typeof(QObject), parent);
 		}
 		public QSvgRenderer(string filename) : this((Type) null) {
 			CreateProxy();
-			NewQSvgRenderer(filename);
-		}
-		[SmokeMethod("QSvgRenderer", "(const QString&)", "$")]
-		private void NewQSvgRenderer(string filename) {
-			((QSvgRenderer) interceptor).NewQSvgRenderer(filename);
+			interceptor.Invoke("QSvgRenderer$", "QSvgRenderer(const QString&)", typeof(void), typeof(string), filename);
 		}
 		public QSvgRenderer(QByteArray contents, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSvgRenderer(contents,parent);
-		}
-		[SmokeMethod("QSvgRenderer", "(const QByteArray&, QObject*)", "##")]
-		private void NewQSvgRenderer(QByteArray contents, QObject parent) {
-			((QSvgRenderer) interceptor).NewQSvgRenderer(contents,parent);
+			interceptor.Invoke("QSvgRenderer##", "QSvgRenderer(const QByteArray&, QObject*)", typeof(void), typeof(QByteArray), contents, typeof(QObject), parent);
 		}
 		public QSvgRenderer(QByteArray contents) : this((Type) null) {
 			CreateProxy();
-			NewQSvgRenderer(contents);
+			interceptor.Invoke("QSvgRenderer#", "QSvgRenderer(const QByteArray&)", typeof(void), typeof(QByteArray), contents);
 		}
-		[SmokeMethod("QSvgRenderer", "(const QByteArray&)", "#")]
-		private void NewQSvgRenderer(QByteArray contents) {
-			((QSvgRenderer) interceptor).NewQSvgRenderer(contents);
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QSvgRenderer) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("defaultSize", "() const", "")]
 		public QSize DefaultSize() {
-			return ((QSvgRenderer) interceptor).DefaultSize();
+			return (QSize) interceptor.Invoke("defaultSize", "defaultSize() const", typeof(QSize));
 		}
-		[SmokeMethod("viewBoxF", "() const", "")]
 		public QRectF ViewBoxF() {
-			return ((QSvgRenderer) interceptor).ViewBoxF();
+			return (QRectF) interceptor.Invoke("viewBoxF", "viewBoxF() const", typeof(QRectF));
 		}
-		[SmokeMethod("animated", "() const", "")]
 		public bool Animated() {
-			return ((QSvgRenderer) interceptor).Animated();
+			return (bool) interceptor.Invoke("animated", "animated() const", typeof(bool));
 		}
-		[SmokeMethod("animationDuration", "() const", "")]
 		public int AnimationDuration() {
-			return ((QSvgRenderer) interceptor).AnimationDuration();
+			return (int) interceptor.Invoke("animationDuration", "animationDuration() const", typeof(int));
 		}
-		[SmokeMethod("boundsOnElement", "(const QString&) const", "$")]
 		public QRectF BoundsOnElement(string id) {
-			return ((QSvgRenderer) interceptor).BoundsOnElement(id);
+			return (QRectF) interceptor.Invoke("boundsOnElement$", "boundsOnElement(const QString&) const", typeof(QRectF), typeof(string), id);
 		}
-		[SmokeMethod("elementExists", "(const QString&) const", "$")]
 		public bool ElementExists(string id) {
-			return ((QSvgRenderer) interceptor).ElementExists(id);
+			return (bool) interceptor.Invoke("elementExists$", "elementExists(const QString&) const", typeof(bool), typeof(string), id);
 		}
-		[SmokeMethod("matrixForElement", "(const QString&) const", "$")]
 		public QMatrix MatrixForElement(string id) {
-			return ((QSvgRenderer) interceptor).MatrixForElement(id);
+			return (QMatrix) interceptor.Invoke("matrixForElement$", "matrixForElement(const QString&) const", typeof(QMatrix), typeof(string), id);
 		}
 		[Q_SLOT("bool load(const QString&)")]
-		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string filename) {
-			return ((QSvgRenderer) interceptor).Load(filename);
+			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), filename);
 		}
 		[Q_SLOT("bool load(const QByteArray&)")]
-		[SmokeMethod("load", "(const QByteArray&)", "#")]
 		public bool Load(QByteArray contents) {
-			return ((QSvgRenderer) interceptor).Load(contents);
+			return (bool) interceptor.Invoke("load#", "load(const QByteArray&)", typeof(bool), typeof(QByteArray), contents);
 		}
 		[Q_SLOT("void render(QPainter*)")]
-		[SmokeMethod("render", "(QPainter*)", "#")]
 		public void Render(QPainter p) {
-			((QSvgRenderer) interceptor).Render(p);
+			interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), p);
 		}
 		[Q_SLOT("void render(QPainter*, const QRectF&)")]
-		[SmokeMethod("render", "(QPainter*, const QRectF&)", "##")]
 		public void Render(QPainter p, QRectF bounds) {
-			((QSvgRenderer) interceptor).Render(p,bounds);
+			interceptor.Invoke("render##", "render(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), p, typeof(QRectF), bounds);
 		}
 		[Q_SLOT("void render(QPainter*, const QString&, const QRectF&)")]
-		[SmokeMethod("render", "(QPainter*, const QString&, const QRectF&)", "#$#")]
 		public void Render(QPainter p, string elementId, QRectF bounds) {
-			((QSvgRenderer) interceptor).Render(p,elementId,bounds);
+			interceptor.Invoke("render#$#", "render(QPainter*, const QString&, const QRectF&)", typeof(void), typeof(QPainter), p, typeof(string), elementId, typeof(QRectF), bounds);
 		}
 		[Q_SLOT("void render(QPainter*, const QString&)")]
-		[SmokeMethod("render", "(QPainter*, const QString&)", "#$")]
 		public void Render(QPainter p, string elementId) {
-			((QSvgRenderer) interceptor).Render(p,elementId);
+			interceptor.Invoke("render#$", "render(QPainter*, const QString&)", typeof(void), typeof(QPainter), p, typeof(string), elementId);
 		}
 		~QSvgRenderer() {
-			DisposeQSvgRenderer();
+			interceptor.Invoke("~QSvgRenderer", "~QSvgRenderer()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSvgRenderer();
-		}
-		[SmokeMethod("~QSvgRenderer", "()", "")]
-		private void DisposeQSvgRenderer() {
-			((QSvgRenderer) interceptor).DisposeQSvgRenderer();
+			interceptor.Invoke("~QSvgRenderer", "~QSvgRenderer()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSvgRendererSignals Emit {
 			get { return (IQSvgRendererSignals) Q_EMIT; }

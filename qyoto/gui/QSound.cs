@@ -6,93 +6,61 @@ namespace Qyoto {
 	[SmokeClass("QSound")]
 	public class QSound : QObject, IDisposable {
  		protected QSound(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSound")]
-		interface IQSoundProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("isAvailable", "()", "")]
-			bool IsAvailable();
-			[SmokeMethod("play", "(const QString&)", "$")]
-			void Play(string filename);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSound), this);
-			interceptor = (QSound) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSound), "QSound", this);
 		}
-		private static IQSoundProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSound() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSoundProxy), null);
-			staticInterceptor = (IQSoundProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSound), "QSound", null);
 		}
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSound(filename,parent);
-		}
-		[SmokeMethod("QSound", "(const QString&, QObject*)", "$#")]
-		private void NewQSound(string filename, QObject parent) {
-			((QSound) interceptor).NewQSound(filename,parent);
+			interceptor.Invoke("QSound$#", "QSound(const QString&, QObject*)", typeof(void), typeof(string), filename, typeof(QObject), parent);
 		}
 		public QSound(string filename) : this((Type) null) {
 			CreateProxy();
-			NewQSound(filename);
+			interceptor.Invoke("QSound$", "QSound(const QString&)", typeof(void), typeof(string), filename);
 		}
-		[SmokeMethod("QSound", "(const QString&)", "$")]
-		private void NewQSound(string filename) {
-			((QSound) interceptor).NewQSound(filename);
-		}
-		[SmokeMethod("loops", "() const", "")]
 		public int Loops() {
-			return ((QSound) interceptor).Loops();
+			return (int) interceptor.Invoke("loops", "loops() const", typeof(int));
 		}
-		[SmokeMethod("loopsRemaining", "() const", "")]
 		public int LoopsRemaining() {
-			return ((QSound) interceptor).LoopsRemaining();
+			return (int) interceptor.Invoke("loopsRemaining", "loopsRemaining() const", typeof(int));
 		}
-		[SmokeMethod("setLoops", "(int)", "$")]
 		public void SetLoops(int arg1) {
-			((QSound) interceptor).SetLoops(arg1);
+			interceptor.Invoke("setLoops$", "setLoops(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QSound) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("isFinished", "() const", "")]
 		public bool IsFinished() {
-			return ((QSound) interceptor).IsFinished();
+			return (bool) interceptor.Invoke("isFinished", "isFinished() const", typeof(bool));
 		}
 		[Q_SLOT("void play()")]
-		[SmokeMethod("play", "()", "")]
 		public void Play() {
-			((QSound) interceptor).Play();
+			interceptor.Invoke("play", "play()", typeof(void));
 		}
 		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			((QSound) interceptor).Stop();
+			interceptor.Invoke("stop", "stop()", typeof(void));
 		}
 		~QSound() {
-			DisposeQSound();
+			interceptor.Invoke("~QSound", "~QSound()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSound();
-		}
-		[SmokeMethod("~QSound", "()", "")]
-		private void DisposeQSound() {
-			((QSound) interceptor).DisposeQSound();
+			interceptor.Invoke("~QSound", "~QSound()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static bool IsAvailable() {
-			return staticInterceptor.IsAvailable();
+			return (bool) staticInterceptor.Invoke("isAvailable", "isAvailable()", typeof(bool));
 		}
 		public static void Play(string filename) {
-			staticInterceptor.Play(filename);
+			staticInterceptor.Invoke("play$", "play(const QString&)", typeof(void), typeof(string), filename);
 		}
 		protected new IQSoundSignals Emit {
 			get { return (IQSoundSignals) Q_EMIT; }

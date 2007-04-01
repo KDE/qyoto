@@ -4,27 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QUrlInfo")]
-	public class QUrlInfo : MarshalByRefObject, IDisposable {
-		protected QUrlInfo interceptor = null;
+	public class QUrlInfo : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUrlInfo(Type dummy) {}
-		[SmokeClass("QUrlInfo")]
-		interface IQUrlInfoProxy {
-			[SmokeMethod("greaterThan", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
-			bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
-			[SmokeMethod("lessThan", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
-			bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
-			[SmokeMethod("equal", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
-			bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUrlInfo), this);
-			interceptor = (QUrlInfo) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QUrlInfo), "QUrlInfo", this);
 		}
-		private static IQUrlInfoProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QUrlInfo() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUrlInfoProxy), null);
-			staticInterceptor = (IQUrlInfoProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QUrlInfo), "QUrlInfo", null);
 		}
 		public enum PermissionSpec {
 			ReadOwner = 00400,
@@ -39,154 +28,120 @@ namespace Qyoto {
 		}
 		public QUrlInfo() : this((Type) null) {
 			CreateProxy();
-			NewQUrlInfo();
-		}
-		[SmokeMethod("QUrlInfo", "()", "")]
-		private void NewQUrlInfo() {
-			((QUrlInfo) interceptor).NewQUrlInfo();
+			interceptor.Invoke("QUrlInfo", "QUrlInfo()", typeof(void));
 		}
 		public QUrlInfo(QUrlInfo ui) : this((Type) null) {
 			CreateProxy();
-			NewQUrlInfo(ui);
-		}
-		[SmokeMethod("QUrlInfo", "(const QUrlInfo&)", "#")]
-		private void NewQUrlInfo(QUrlInfo ui) {
-			((QUrlInfo) interceptor).NewQUrlInfo(ui);
+			interceptor.Invoke("QUrlInfo#", "QUrlInfo(const QUrlInfo&)", typeof(void), typeof(QUrlInfo), ui);
 		}
 		public QUrlInfo(string name, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) : this((Type) null) {
 			CreateProxy();
-			NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
-		}
-		[SmokeMethod("QUrlInfo", "(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", "$$$$$##$$$$$$")]
-		private void NewQUrlInfo(string name, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) {
-			((QUrlInfo) interceptor).NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
+			interceptor.Invoke("QUrlInfo$$$$$##$$$$$$", "QUrlInfo(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", typeof(void), typeof(string), name, typeof(int), permissions, typeof(string), owner, typeof(string), group, typeof(long), size, typeof(QDateTime), lastModified, typeof(QDateTime), lastRead, typeof(bool), isDir, typeof(bool), isFile, typeof(bool), isSymLink, typeof(bool), isWritable, typeof(bool), isReadable, typeof(bool), isExecutable);
 		}
 		public QUrlInfo(IQUrl url, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) : this((Type) null) {
 			CreateProxy();
-			NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
+			interceptor.Invoke("QUrlInfo#$$$$##$$$$$$", "QUrlInfo(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", typeof(void), typeof(IQUrl), url, typeof(int), permissions, typeof(string), owner, typeof(string), group, typeof(long), size, typeof(QDateTime), lastModified, typeof(QDateTime), lastRead, typeof(bool), isDir, typeof(bool), isFile, typeof(bool), isSymLink, typeof(bool), isWritable, typeof(bool), isReadable, typeof(bool), isExecutable);
 		}
-		[SmokeMethod("QUrlInfo", "(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", "#$$$$##$$$$$$")]
-		private void NewQUrlInfo(IQUrl url, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) {
-			((QUrlInfo) interceptor).NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
-		}
-		[SmokeMethod("setName", "(const QString&)", "$")]
+		[SmokeMethod("setName(const QString&)")]
 		public virtual void SetName(string name) {
-			((QUrlInfo) interceptor).SetName(name);
+			interceptor.Invoke("setName$", "setName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("setDir", "(bool)", "$")]
+		[SmokeMethod("setDir(bool)")]
 		public virtual void SetDir(bool b) {
-			((QUrlInfo) interceptor).SetDir(b);
+			interceptor.Invoke("setDir$", "setDir(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("setFile", "(bool)", "$")]
+		[SmokeMethod("setFile(bool)")]
 		public virtual void SetFile(bool b) {
-			((QUrlInfo) interceptor).SetFile(b);
+			interceptor.Invoke("setFile$", "setFile(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("setSymLink", "(bool)", "$")]
+		[SmokeMethod("setSymLink(bool)")]
 		public virtual void SetSymLink(bool b) {
-			((QUrlInfo) interceptor).SetSymLink(b);
+			interceptor.Invoke("setSymLink$", "setSymLink(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("setOwner", "(const QString&)", "$")]
+		[SmokeMethod("setOwner(const QString&)")]
 		public virtual void SetOwner(string s) {
-			((QUrlInfo) interceptor).SetOwner(s);
+			interceptor.Invoke("setOwner$", "setOwner(const QString&)", typeof(void), typeof(string), s);
 		}
-		[SmokeMethod("setGroup", "(const QString&)", "$")]
+		[SmokeMethod("setGroup(const QString&)")]
 		public virtual void SetGroup(string s) {
-			((QUrlInfo) interceptor).SetGroup(s);
+			interceptor.Invoke("setGroup$", "setGroup(const QString&)", typeof(void), typeof(string), s);
 		}
-		[SmokeMethod("setSize", "(qint64)", "$")]
+		[SmokeMethod("setSize(qint64)")]
 		public virtual void SetSize(long size) {
-			((QUrlInfo) interceptor).SetSize(size);
+			interceptor.Invoke("setSize$", "setSize(qint64)", typeof(void), typeof(long), size);
 		}
-		[SmokeMethod("setWritable", "(bool)", "$")]
+		[SmokeMethod("setWritable(bool)")]
 		public virtual void SetWritable(bool b) {
-			((QUrlInfo) interceptor).SetWritable(b);
+			interceptor.Invoke("setWritable$", "setWritable(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("setReadable", "(bool)", "$")]
+		[SmokeMethod("setReadable(bool)")]
 		public virtual void SetReadable(bool b) {
-			((QUrlInfo) interceptor).SetReadable(b);
+			interceptor.Invoke("setReadable$", "setReadable(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("setPermissions", "(int)", "$")]
+		[SmokeMethod("setPermissions(int)")]
 		public virtual void SetPermissions(int p) {
-			((QUrlInfo) interceptor).SetPermissions(p);
+			interceptor.Invoke("setPermissions$", "setPermissions(int)", typeof(void), typeof(int), p);
 		}
-		[SmokeMethod("setLastModified", "(const QDateTime&)", "#")]
+		[SmokeMethod("setLastModified(const QDateTime&)")]
 		public virtual void SetLastModified(QDateTime dt) {
-			((QUrlInfo) interceptor).SetLastModified(dt);
+			interceptor.Invoke("setLastModified#", "setLastModified(const QDateTime&)", typeof(void), typeof(QDateTime), dt);
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QUrlInfo) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QUrlInfo) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("permissions", "() const", "")]
 		public int Permissions() {
-			return ((QUrlInfo) interceptor).Permissions();
+			return (int) interceptor.Invoke("permissions", "permissions() const", typeof(int));
 		}
-		[SmokeMethod("owner", "() const", "")]
 		public string Owner() {
-			return ((QUrlInfo) interceptor).Owner();
+			return (string) interceptor.Invoke("owner", "owner() const", typeof(string));
 		}
-		[SmokeMethod("group", "() const", "")]
 		public string Group() {
-			return ((QUrlInfo) interceptor).Group();
+			return (string) interceptor.Invoke("group", "group() const", typeof(string));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public long Size() {
-			return ((QUrlInfo) interceptor).Size();
+			return (long) interceptor.Invoke("size", "size() const", typeof(long));
 		}
-		[SmokeMethod("lastModified", "() const", "")]
 		public QDateTime LastModified() {
-			return ((QUrlInfo) interceptor).LastModified();
+			return (QDateTime) interceptor.Invoke("lastModified", "lastModified() const", typeof(QDateTime));
 		}
-		[SmokeMethod("lastRead", "() const", "")]
 		public QDateTime LastRead() {
-			return ((QUrlInfo) interceptor).LastRead();
+			return (QDateTime) interceptor.Invoke("lastRead", "lastRead() const", typeof(QDateTime));
 		}
-		[SmokeMethod("isDir", "() const", "")]
 		public bool IsDir() {
-			return ((QUrlInfo) interceptor).IsDir();
+			return (bool) interceptor.Invoke("isDir", "isDir() const", typeof(bool));
 		}
-		[SmokeMethod("isFile", "() const", "")]
 		public bool IsFile() {
-			return ((QUrlInfo) interceptor).IsFile();
+			return (bool) interceptor.Invoke("isFile", "isFile() const", typeof(bool));
 		}
-		[SmokeMethod("isSymLink", "() const", "")]
 		public bool IsSymLink() {
-			return ((QUrlInfo) interceptor).IsSymLink();
+			return (bool) interceptor.Invoke("isSymLink", "isSymLink() const", typeof(bool));
 		}
-		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
-			return ((QUrlInfo) interceptor).IsWritable();
+			return (bool) interceptor.Invoke("isWritable", "isWritable() const", typeof(bool));
 		}
-		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
-			return ((QUrlInfo) interceptor).IsReadable();
+			return (bool) interceptor.Invoke("isReadable", "isReadable() const", typeof(bool));
 		}
-		[SmokeMethod("isExecutable", "() const", "")]
 		public bool IsExecutable() {
-			return ((QUrlInfo) interceptor).IsExecutable();
+			return (bool) interceptor.Invoke("isExecutable", "isExecutable() const", typeof(bool));
 		}
 		~QUrlInfo() {
-			DisposeQUrlInfo();
+			interceptor.Invoke("~QUrlInfo", "~QUrlInfo()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQUrlInfo();
-		}
-		[SmokeMethod("~QUrlInfo", "()", "")]
-		private void DisposeQUrlInfo() {
-			((QUrlInfo) interceptor).DisposeQUrlInfo();
+			interceptor.Invoke("~QUrlInfo", "~QUrlInfo()", typeof(void));
 		}
 		public static bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
-			return staticInterceptor.GreaterThan(i1,i2,sortBy);
+			return (bool) staticInterceptor.Invoke("greaterThan##$", "greaterThan(const QUrlInfo&, const QUrlInfo&, int)", typeof(bool), typeof(QUrlInfo), i1, typeof(QUrlInfo), i2, typeof(int), sortBy);
 		}
 		public static bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
-			return staticInterceptor.LessThan(i1,i2,sortBy);
+			return (bool) staticInterceptor.Invoke("lessThan##$", "lessThan(const QUrlInfo&, const QUrlInfo&, int)", typeof(bool), typeof(QUrlInfo), i1, typeof(QUrlInfo), i2, typeof(int), sortBy);
 		}
 		public static bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy) {
-			return staticInterceptor.Equal(i1,i2,sortBy);
+			return (bool) staticInterceptor.Invoke("equal##$", "equal(const QUrlInfo&, const QUrlInfo&, int)", typeof(bool), typeof(QUrlInfo), i1, typeof(QUrlInfo), i2, typeof(int), sortBy);
 		}
 	}
 }

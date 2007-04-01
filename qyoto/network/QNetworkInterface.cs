@@ -5,29 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QNetworkInterface")]
-	public class QNetworkInterface : MarshalByRefObject, IDisposable {
-		protected QNetworkInterface interceptor = null;
+	public class QNetworkInterface : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QNetworkInterface(Type dummy) {}
-		[SmokeClass("QNetworkInterface")]
-		interface IQNetworkInterfaceProxy {
-			[SmokeMethod("interfaceFromName", "(const QString&)", "$")]
-			QNetworkInterface InterfaceFromName(string name);
-			[SmokeMethod("interfaceFromIndex", "(int)", "$")]
-			QNetworkInterface InterfaceFromIndex(int index);
-			[SmokeMethod("allInterfaces", "()", "")]
-			List<QNetworkInterface> AllInterfaces();
-			[SmokeMethod("allAddresses", "()", "")]
-			List<QHostAddress> AllAddresses();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkInterface), this);
-			interceptor = (QNetworkInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QNetworkInterface), "QNetworkInterface", this);
 		}
-		private static IQNetworkInterfaceProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QNetworkInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQNetworkInterfaceProxy), null);
-			staticInterceptor = (IQNetworkInterfaceProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QNetworkInterface), "QNetworkInterface", null);
 		}
 		public enum InterfaceFlag {
 			IsUp = 0x1,
@@ -39,61 +26,44 @@ namespace Qyoto {
 		}
 		public QNetworkInterface() : this((Type) null) {
 			CreateProxy();
-			NewQNetworkInterface();
-		}
-		[SmokeMethod("QNetworkInterface", "()", "")]
-		private void NewQNetworkInterface() {
-			((QNetworkInterface) interceptor).NewQNetworkInterface();
+			interceptor.Invoke("QNetworkInterface", "QNetworkInterface()", typeof(void));
 		}
 		public QNetworkInterface(QNetworkInterface other) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkInterface(other);
+			interceptor.Invoke("QNetworkInterface#", "QNetworkInterface(const QNetworkInterface&)", typeof(void), typeof(QNetworkInterface), other);
 		}
-		[SmokeMethod("QNetworkInterface", "(const QNetworkInterface&)", "#")]
-		private void NewQNetworkInterface(QNetworkInterface other) {
-			((QNetworkInterface) interceptor).NewQNetworkInterface(other);
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QNetworkInterface) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QNetworkInterface) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ((QNetworkInterface) interceptor).Flags();
+			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
 		}
-		[SmokeMethod("hardwareAddress", "() const", "")]
 		public string HardwareAddress() {
-			return ((QNetworkInterface) interceptor).HardwareAddress();
+			return (string) interceptor.Invoke("hardwareAddress", "hardwareAddress() const", typeof(string));
 		}
-		[SmokeMethod("addressEntries", "() const", "")]
 		public List<QNetworkAddressEntry> AddressEntries() {
-			return ((QNetworkInterface) interceptor).AddressEntries();
+			return (List<QNetworkAddressEntry>) interceptor.Invoke("addressEntries", "addressEntries() const", typeof(List<QNetworkAddressEntry>));
 		}
 		~QNetworkInterface() {
-			DisposeQNetworkInterface();
+			interceptor.Invoke("~QNetworkInterface", "~QNetworkInterface()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQNetworkInterface();
-		}
-		[SmokeMethod("~QNetworkInterface", "()", "")]
-		private void DisposeQNetworkInterface() {
-			((QNetworkInterface) interceptor).DisposeQNetworkInterface();
+			interceptor.Invoke("~QNetworkInterface", "~QNetworkInterface()", typeof(void));
 		}
 		public static QNetworkInterface InterfaceFromName(string name) {
-			return staticInterceptor.InterfaceFromName(name);
+			return (QNetworkInterface) staticInterceptor.Invoke("interfaceFromName$", "interfaceFromName(const QString&)", typeof(QNetworkInterface), typeof(string), name);
 		}
 		public static QNetworkInterface InterfaceFromIndex(int index) {
-			return staticInterceptor.InterfaceFromIndex(index);
+			return (QNetworkInterface) staticInterceptor.Invoke("interfaceFromIndex$", "interfaceFromIndex(int)", typeof(QNetworkInterface), typeof(int), index);
 		}
 		public static List<QNetworkInterface> AllInterfaces() {
-			return staticInterceptor.AllInterfaces();
+			return (List<QNetworkInterface>) staticInterceptor.Invoke("allInterfaces", "allInterfaces()", typeof(List<QNetworkInterface>));
 		}
 		public static List<QHostAddress> AllAddresses() {
-			return staticInterceptor.AllAddresses();
+			return (List<QHostAddress>) staticInterceptor.Invoke("allAddresses", "allAddresses()", typeof(List<QHostAddress>));
 		}
 	}
 }

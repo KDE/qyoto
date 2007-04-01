@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QSessionManager")]
 	public class QSessionManager : QObject {
  		protected QSessionManager(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSessionManager")]
-		interface IQSessionManagerProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSessionManager), this);
-			interceptor = (QSessionManager) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSessionManager), "QSessionManager", this);
 		}
-		private static IQSessionManagerProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSessionManager() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSessionManagerProxy), null);
-			staticInterceptor = (IQSessionManagerProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSessionManager), "QSessionManager", null);
 		}
 		public enum RestartHint {
 			RestartIfRunning = 0,
@@ -29,75 +20,59 @@ namespace Qyoto {
 			RestartImmediately = 2,
 			RestartNever = 3,
 		}
-		[SmokeMethod("sessionId", "() const", "")]
 		public string SessionId() {
-			return ((QSessionManager) interceptor).SessionId();
+			return (string) interceptor.Invoke("sessionId", "sessionId() const", typeof(string));
 		}
-		[SmokeMethod("sessionKey", "() const", "")]
 		public string SessionKey() {
-			return ((QSessionManager) interceptor).SessionKey();
+			return (string) interceptor.Invoke("sessionKey", "sessionKey() const", typeof(string));
 		}
-		[SmokeMethod("allowsInteraction", "()", "")]
 		public bool AllowsInteraction() {
-			return ((QSessionManager) interceptor).AllowsInteraction();
+			return (bool) interceptor.Invoke("allowsInteraction", "allowsInteraction()", typeof(bool));
 		}
-		[SmokeMethod("allowsErrorInteraction", "()", "")]
 		public bool AllowsErrorInteraction() {
-			return ((QSessionManager) interceptor).AllowsErrorInteraction();
+			return (bool) interceptor.Invoke("allowsErrorInteraction", "allowsErrorInteraction()", typeof(bool));
 		}
-		[SmokeMethod("release", "()", "")]
 		public void Release() {
-			((QSessionManager) interceptor).Release();
+			interceptor.Invoke("release", "release()", typeof(void));
 		}
-		[SmokeMethod("cancel", "()", "")]
 		public void Cancel() {
-			((QSessionManager) interceptor).Cancel();
+			interceptor.Invoke("cancel", "cancel()", typeof(void));
 		}
-		[SmokeMethod("setRestartHint", "(QSessionManager::RestartHint)", "$")]
 		public void SetRestartHint(QSessionManager.RestartHint arg1) {
-			((QSessionManager) interceptor).SetRestartHint(arg1);
+			interceptor.Invoke("setRestartHint$", "setRestartHint(QSessionManager::RestartHint)", typeof(void), typeof(QSessionManager.RestartHint), arg1);
 		}
-		[SmokeMethod("restartHint", "() const", "")]
 		public QSessionManager.RestartHint restartHint() {
-			return ((QSessionManager) interceptor).restartHint();
+			return (QSessionManager.RestartHint) interceptor.Invoke("restartHint", "restartHint() const", typeof(QSessionManager.RestartHint));
 		}
-		[SmokeMethod("setRestartCommand", "(const QStringList&)", "?")]
 		public void SetRestartCommand(List<string> arg1) {
-			((QSessionManager) interceptor).SetRestartCommand(arg1);
+			interceptor.Invoke("setRestartCommand?", "setRestartCommand(const QStringList&)", typeof(void), typeof(List<string>), arg1);
 		}
-		[SmokeMethod("restartCommand", "() const", "")]
 		public List<string> RestartCommand() {
-			return ((QSessionManager) interceptor).RestartCommand();
+			return (List<string>) interceptor.Invoke("restartCommand", "restartCommand() const", typeof(List<string>));
 		}
-		[SmokeMethod("setDiscardCommand", "(const QStringList&)", "?")]
 		public void SetDiscardCommand(List<string> arg1) {
-			((QSessionManager) interceptor).SetDiscardCommand(arg1);
+			interceptor.Invoke("setDiscardCommand?", "setDiscardCommand(const QStringList&)", typeof(void), typeof(List<string>), arg1);
 		}
-		[SmokeMethod("discardCommand", "() const", "")]
 		public List<string> DiscardCommand() {
-			return ((QSessionManager) interceptor).DiscardCommand();
+			return (List<string>) interceptor.Invoke("discardCommand", "discardCommand() const", typeof(List<string>));
 		}
-		[SmokeMethod("setManagerProperty", "(const QString&, const QString&)", "$$")]
 		public void SetManagerProperty(string name, string value) {
-			((QSessionManager) interceptor).SetManagerProperty(name,value);
+			interceptor.Invoke("setManagerProperty$$", "setManagerProperty(const QString&, const QString&)", typeof(void), typeof(string), name, typeof(string), value);
 		}
-		[SmokeMethod("setManagerProperty", "(const QString&, const QStringList&)", "$?")]
 		public void SetManagerProperty(string name, List<string> value) {
-			((QSessionManager) interceptor).SetManagerProperty(name,value);
+			interceptor.Invoke("setManagerProperty$?", "setManagerProperty(const QString&, const QStringList&)", typeof(void), typeof(string), name, typeof(List<string>), value);
 		}
-		[SmokeMethod("isPhase2", "() const", "")]
 		public bool IsPhase2() {
-			return ((QSessionManager) interceptor).IsPhase2();
+			return (bool) interceptor.Invoke("isPhase2", "isPhase2() const", typeof(bool));
 		}
-		[SmokeMethod("requestPhase2", "()", "")]
 		public void RequestPhase2() {
-			((QSessionManager) interceptor).RequestPhase2();
+			interceptor.Invoke("requestPhase2", "requestPhase2()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSessionManagerSignals Emit {
 			get { return (IQSessionManagerSignals) Q_EMIT; }

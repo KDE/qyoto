@@ -4,52 +4,35 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDBusMetaType")]
-	public class QDBusMetaType : MarshalByRefObject, IDisposable {
-		protected QDBusMetaType interceptor = null;
+	public class QDBusMetaType : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDBusMetaType(Type dummy) {}
-		[SmokeClass("QDBusMetaType")]
-		interface IQDBusMetaTypeProxy {
-			[SmokeMethod("signatureToType", "(const char*)", "$")]
-			int SignatureToType(string signature);
-			[SmokeMethod("typeToSignature", "(int)", "$")]
-			string TypeToSignature(int type);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusMetaType), this);
-			interceptor = (QDBusMetaType) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusMetaType), "QDBusMetaType", this);
 		}
-		private static IQDBusMetaTypeProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDBusMetaType() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusMetaTypeProxy), null);
-			staticInterceptor = (IQDBusMetaTypeProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDBusMetaType), "QDBusMetaType", null);
 		}
 		// void registerMarshallOperators(int arg1,MarshallFunction arg2,DemarshallFunction arg3); >>>> NOT CONVERTED
 		// bool marshall(QDBusArgument& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
 		// bool demarshall(const QDBusArgument& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QDBusMetaType() : this((Type) null) {
 			CreateProxy();
-			NewQDBusMetaType();
-		}
-		[SmokeMethod("QDBusMetaType", "()", "")]
-		private void NewQDBusMetaType() {
-			((QDBusMetaType) interceptor).NewQDBusMetaType();
+			interceptor.Invoke("QDBusMetaType", "QDBusMetaType()", typeof(void));
 		}
 		~QDBusMetaType() {
-			DisposeQDBusMetaType();
+			interceptor.Invoke("~QDBusMetaType", "~QDBusMetaType()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDBusMetaType();
-		}
-		[SmokeMethod("~QDBusMetaType", "()", "")]
-		private void DisposeQDBusMetaType() {
-			((QDBusMetaType) interceptor).DisposeQDBusMetaType();
+			interceptor.Invoke("~QDBusMetaType", "~QDBusMetaType()", typeof(void));
 		}
 		public static int SignatureToType(string signature) {
-			return staticInterceptor.SignatureToType(signature);
+			return (int) staticInterceptor.Invoke("signatureToType$", "signatureToType(const char*)", typeof(int), typeof(string), signature);
 		}
 		public static string TypeToSignature(int type) {
-			return staticInterceptor.TypeToSignature(type);
+			return (string) staticInterceptor.Invoke("typeToSignature$", "typeToSignature(int)", typeof(string), typeof(int), type);
 		}
 	}
 }

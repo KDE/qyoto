@@ -4,130 +4,89 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QPoint")]
-	public class QPoint : MarshalByRefObject, IDisposable {
-		protected QPoint interceptor = null;
+	public class QPoint : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPoint(Type dummy) {}
-		[SmokeClass("QPoint")]
-		interface IQPointProxy {
-			[SmokeMethod("operator/=", "(qreal)", "$")]
-			QPoint op_div(QPoint lhs, double c);
-			[SmokeMethod("operator*", "(const QPoint&, const QMatrix&)", "##")]
-			QPoint op_mult(QPoint p, QMatrix m);
-			[SmokeMethod("operator==", "(const QPoint&, const QPoint&)", "##")]
-			bool op_equals(QPoint p1, QPoint p2);
-			[SmokeMethod("operator+", "(const QPoint&, const QPoint&)", "##")]
-			QPoint op_plus(QPoint p1, QPoint p2);
-			[SmokeMethod("operator-", "(const QPoint&, const QPoint&)", "##")]
-			QPoint op_minus(QPoint p1, QPoint p2);
-			[SmokeMethod("operator*", "(const QPoint&, qreal)", "#$")]
-			QPoint op_mult(QPoint p, double c);
-			[SmokeMethod("operator*", "(qreal, const QPoint&)", "$#")]
-			QPoint op_mult(double c, QPoint p);
-			[SmokeMethod("operator-", "(const QPoint&)", "#")]
-			QPoint op_minus(QPoint p);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPoint), this);
-			interceptor = (QPoint) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPoint), "QPoint", this);
 		}
-		private static IQPointProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPoint() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPointProxy), null);
-			staticInterceptor = (IQPointProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPoint), "QPoint", null);
 		}
 		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
 		public QPoint() : this((Type) null) {
 			CreateProxy();
-			NewQPoint();
-		}
-		[SmokeMethod("QPoint", "()", "")]
-		private void NewQPoint() {
-			((QPoint) interceptor).NewQPoint();
+			interceptor.Invoke("QPoint", "QPoint()", typeof(void));
 		}
 		public QPoint(int xpos, int ypos) : this((Type) null) {
 			CreateProxy();
-			NewQPoint(xpos,ypos);
+			interceptor.Invoke("QPoint$$", "QPoint(int, int)", typeof(void), typeof(int), xpos, typeof(int), ypos);
 		}
-		[SmokeMethod("QPoint", "(int, int)", "$$")]
-		private void NewQPoint(int xpos, int ypos) {
-			((QPoint) interceptor).NewQPoint(xpos,ypos);
-		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QPoint) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ((QPoint) interceptor).X();
+			return (int) interceptor.Invoke("x", "x() const", typeof(int));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ((QPoint) interceptor).Y();
+			return (int) interceptor.Invoke("y", "y() const", typeof(int));
 		}
-		[SmokeMethod("setX", "(int)", "$")]
 		public void SetX(int x) {
-			((QPoint) interceptor).SetX(x);
+			interceptor.Invoke("setX$", "setX(int)", typeof(void), typeof(int), x);
 		}
-		[SmokeMethod("setY", "(int)", "$")]
 		public void SetY(int y) {
-			((QPoint) interceptor).SetY(y);
+			interceptor.Invoke("setY$", "setY(int)", typeof(void), typeof(int), y);
 		}
-		[SmokeMethod("manhattanLength", "() const", "")]
 		public int ManhattanLength() {
-			return ((QPoint) interceptor).ManhattanLength();
+			return (int) interceptor.Invoke("manhattanLength", "manhattanLength() const", typeof(int));
 		}
-		[SmokeMethod("rx", "()", "")]
 		public int Rx() {
-			return ((QPoint) interceptor).Rx();
+			return (int) interceptor.Invoke("rx", "rx()", typeof(int));
 		}
-		[SmokeMethod("ry", "()", "")]
 		public int Ry() {
-			return ((QPoint) interceptor).Ry();
+			return (int) interceptor.Invoke("ry", "ry()", typeof(int));
 		}
 		~QPoint() {
-			DisposeQPoint();
+			interceptor.Invoke("~QPoint", "~QPoint()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPoint();
-		}
-		[SmokeMethod("~QPoint", "()", "")]
-		private void DisposeQPoint() {
-			((QPoint) interceptor).DisposeQPoint();
+			interceptor.Invoke("~QPoint", "~QPoint()", typeof(void));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPoint)) { return false; }
 			return this == (QPoint) o;
 		}
 		public override int GetHashCode() {
-			return ((QPoint) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		public static QPoint operator/(QPoint lhs, double c) {
-			return staticInterceptor.op_div(lhs,c);
+			return (QPoint) staticInterceptor.Invoke("operator/=$", "operator/=(qreal)", typeof(QPoint), typeof(QPoint), lhs, typeof(double), c);
 		}
 		public static QPoint operator*(QPoint p, QMatrix m) {
-			return staticInterceptor.op_mult(p,m);
+			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
 		}
 		public static bool operator==(QPoint p1, QPoint p2) {
-			return staticInterceptor.op_equals(p1,p2);
+			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QPoint&, const QPoint&)", typeof(bool), typeof(QPoint), p1, typeof(QPoint), p2);
 		}
 		public static bool operator!=(QPoint p1, QPoint p2) {
-			return !staticInterceptor.op_equals(p1,p2);
+			return !(bool) staticInterceptor.Invoke("operator==##", "operator==(const QPoint&, const QPoint&)", typeof(bool), typeof(QPoint), p1, typeof(QPoint), p2);
 		}
 		public static QPoint operator+(QPoint p1, QPoint p2) {
-			return staticInterceptor.op_plus(p1,p2);
+			return (QPoint) staticInterceptor.Invoke("operator+##", "operator+(const QPoint&, const QPoint&)", typeof(QPoint), typeof(QPoint), p1, typeof(QPoint), p2);
 		}
 		public static QPoint operator-(QPoint p1, QPoint p2) {
-			return staticInterceptor.op_minus(p1,p2);
+			return (QPoint) staticInterceptor.Invoke("operator-##", "operator-(const QPoint&, const QPoint&)", typeof(QPoint), typeof(QPoint), p1, typeof(QPoint), p2);
 		}
 		public static QPoint operator*(QPoint p, double c) {
-			return staticInterceptor.op_mult(p,c);
+			return (QPoint) staticInterceptor.Invoke("operator*#$", "operator*(const QPoint&, qreal)", typeof(QPoint), typeof(QPoint), p, typeof(double), c);
 		}
 		public static QPoint operator*(double c, QPoint p) {
-			return staticInterceptor.op_mult(c,p);
+			return (QPoint) staticInterceptor.Invoke("operator*$#", "operator*(qreal, const QPoint&)", typeof(QPoint), typeof(double), c, typeof(QPoint), p);
 		}
 		public static QPoint operator-(QPoint p) {
-			return staticInterceptor.op_minus(p);
+			return (QPoint) staticInterceptor.Invoke("operator-#", "operator-(const QPoint&)", typeof(QPoint), typeof(QPoint), p);
 		}
 	}
 }

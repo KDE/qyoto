@@ -4,23 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDomNode")]
-	public class QDomNode : MarshalByRefObject, IDisposable {
-		protected QDomNode interceptor = null;
+	public class QDomNode : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDomNode(Type dummy) {}
-		[SmokeClass("QDomNode")]
-		interface IQDomNodeProxy {
-			[SmokeMethod("operator==", "(const QDomNode&) const", "#")]
-			bool op_equals(QDomNode lhs, QDomNode arg1);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNode), this);
-			interceptor = (QDomNode) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomNode), "QDomNode", this);
 		}
-		private static IQDomNodeProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDomNode() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomNodeProxy), null);
-			staticInterceptor = (IQDomNodeProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDomNode), "QDomNode", null);
 		}
 		public enum NodeType {
 			ElementNode = 1,
@@ -41,314 +34,235 @@ namespace Qyoto {
 		// QDomNode* QDomNode(QDomNodePrivate* arg1); >>>> NOT CONVERTED
 		public QDomNode() : this((Type) null) {
 			CreateProxy();
-			NewQDomNode();
-		}
-		[SmokeMethod("QDomNode", "()", "")]
-		private void NewQDomNode() {
-			((QDomNode) interceptor).NewQDomNode();
+			interceptor.Invoke("QDomNode", "QDomNode()", typeof(void));
 		}
 		public QDomNode(QDomNode arg1) : this((Type) null) {
 			CreateProxy();
-			NewQDomNode(arg1);
-		}
-		[SmokeMethod("QDomNode", "(const QDomNode&)", "#")]
-		private void NewQDomNode(QDomNode arg1) {
-			((QDomNode) interceptor).NewQDomNode(arg1);
+			interceptor.Invoke("QDomNode#", "QDomNode(const QDomNode&)", typeof(void), typeof(QDomNode), arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNode)) { return false; }
 			return this == (QDomNode) o;
 		}
 		public override int GetHashCode() {
-			return ((QDomNode) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("insertBefore", "(const QDomNode&, const QDomNode&)", "##")]
 		public QDomNode InsertBefore(QDomNode newChild, QDomNode refChild) {
-			return ((QDomNode) interceptor).InsertBefore(newChild,refChild);
+			return (QDomNode) interceptor.Invoke("insertBefore##", "insertBefore(const QDomNode&, const QDomNode&)", typeof(QDomNode), typeof(QDomNode), newChild, typeof(QDomNode), refChild);
 		}
-		[SmokeMethod("insertAfter", "(const QDomNode&, const QDomNode&)", "##")]
 		public QDomNode InsertAfter(QDomNode newChild, QDomNode refChild) {
-			return ((QDomNode) interceptor).InsertAfter(newChild,refChild);
+			return (QDomNode) interceptor.Invoke("insertAfter##", "insertAfter(const QDomNode&, const QDomNode&)", typeof(QDomNode), typeof(QDomNode), newChild, typeof(QDomNode), refChild);
 		}
-		[SmokeMethod("replaceChild", "(const QDomNode&, const QDomNode&)", "##")]
 		public QDomNode ReplaceChild(QDomNode newChild, QDomNode oldChild) {
-			return ((QDomNode) interceptor).ReplaceChild(newChild,oldChild);
+			return (QDomNode) interceptor.Invoke("replaceChild##", "replaceChild(const QDomNode&, const QDomNode&)", typeof(QDomNode), typeof(QDomNode), newChild, typeof(QDomNode), oldChild);
 		}
-		[SmokeMethod("removeChild", "(const QDomNode&)", "#")]
 		public QDomNode RemoveChild(QDomNode oldChild) {
-			return ((QDomNode) interceptor).RemoveChild(oldChild);
+			return (QDomNode) interceptor.Invoke("removeChild#", "removeChild(const QDomNode&)", typeof(QDomNode), typeof(QDomNode), oldChild);
 		}
-		[SmokeMethod("appendChild", "(const QDomNode&)", "#")]
 		public QDomNode AppendChild(QDomNode newChild) {
-			return ((QDomNode) interceptor).AppendChild(newChild);
+			return (QDomNode) interceptor.Invoke("appendChild#", "appendChild(const QDomNode&)", typeof(QDomNode), typeof(QDomNode), newChild);
 		}
-		[SmokeMethod("hasChildNodes", "() const", "")]
 		public bool HasChildNodes() {
-			return ((QDomNode) interceptor).HasChildNodes();
+			return (bool) interceptor.Invoke("hasChildNodes", "hasChildNodes() const", typeof(bool));
 		}
-		[SmokeMethod("cloneNode", "(bool) const", "$")]
 		public QDomNode CloneNode(bool deep) {
-			return ((QDomNode) interceptor).CloneNode(deep);
+			return (QDomNode) interceptor.Invoke("cloneNode$", "cloneNode(bool) const", typeof(QDomNode), typeof(bool), deep);
 		}
-		[SmokeMethod("cloneNode", "() const", "")]
 		public QDomNode CloneNode() {
-			return ((QDomNode) interceptor).CloneNode();
+			return (QDomNode) interceptor.Invoke("cloneNode", "cloneNode() const", typeof(QDomNode));
 		}
-		[SmokeMethod("normalize", "()", "")]
 		public void Normalize() {
-			((QDomNode) interceptor).Normalize();
+			interceptor.Invoke("normalize", "normalize()", typeof(void));
 		}
-		[SmokeMethod("isSupported", "(const QString&, const QString&) const", "$$")]
 		public bool IsSupported(string feature, string version) {
-			return ((QDomNode) interceptor).IsSupported(feature,version);
+			return (bool) interceptor.Invoke("isSupported$$", "isSupported(const QString&, const QString&) const", typeof(bool), typeof(string), feature, typeof(string), version);
 		}
-		[SmokeMethod("nodeName", "() const", "")]
 		public string NodeName() {
-			return ((QDomNode) interceptor).NodeName();
+			return (string) interceptor.Invoke("nodeName", "nodeName() const", typeof(string));
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType nodeType() {
-			return ((QDomNode) interceptor).nodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
-		[SmokeMethod("parentNode", "() const", "")]
 		public QDomNode ParentNode() {
-			return ((QDomNode) interceptor).ParentNode();
+			return (QDomNode) interceptor.Invoke("parentNode", "parentNode() const", typeof(QDomNode));
 		}
-		[SmokeMethod("childNodes", "() const", "")]
 		public QDomNodeList ChildNodes() {
-			return ((QDomNode) interceptor).ChildNodes();
+			return (QDomNodeList) interceptor.Invoke("childNodes", "childNodes() const", typeof(QDomNodeList));
 		}
-		[SmokeMethod("firstChild", "() const", "")]
 		public QDomNode FirstChild() {
-			return ((QDomNode) interceptor).FirstChild();
+			return (QDomNode) interceptor.Invoke("firstChild", "firstChild() const", typeof(QDomNode));
 		}
-		[SmokeMethod("lastChild", "() const", "")]
 		public QDomNode LastChild() {
-			return ((QDomNode) interceptor).LastChild();
+			return (QDomNode) interceptor.Invoke("lastChild", "lastChild() const", typeof(QDomNode));
 		}
-		[SmokeMethod("previousSibling", "() const", "")]
 		public QDomNode PreviousSibling() {
-			return ((QDomNode) interceptor).PreviousSibling();
+			return (QDomNode) interceptor.Invoke("previousSibling", "previousSibling() const", typeof(QDomNode));
 		}
-		[SmokeMethod("nextSibling", "() const", "")]
 		public QDomNode NextSibling() {
-			return ((QDomNode) interceptor).NextSibling();
+			return (QDomNode) interceptor.Invoke("nextSibling", "nextSibling() const", typeof(QDomNode));
 		}
-		[SmokeMethod("attributes", "() const", "")]
 		public QDomNamedNodeMap Attributes() {
-			return ((QDomNode) interceptor).Attributes();
+			return (QDomNamedNodeMap) interceptor.Invoke("attributes", "attributes() const", typeof(QDomNamedNodeMap));
 		}
-		[SmokeMethod("ownerDocument", "() const", "")]
 		public QDomDocument OwnerDocument() {
-			return ((QDomNode) interceptor).OwnerDocument();
+			return (QDomDocument) interceptor.Invoke("ownerDocument", "ownerDocument() const", typeof(QDomDocument));
 		}
-		[SmokeMethod("namespaceURI", "() const", "")]
 		public string NamespaceURI() {
-			return ((QDomNode) interceptor).NamespaceURI();
+			return (string) interceptor.Invoke("namespaceURI", "namespaceURI() const", typeof(string));
 		}
-		[SmokeMethod("localName", "() const", "")]
 		public string LocalName() {
-			return ((QDomNode) interceptor).LocalName();
+			return (string) interceptor.Invoke("localName", "localName() const", typeof(string));
 		}
-		[SmokeMethod("hasAttributes", "() const", "")]
 		public bool HasAttributes() {
-			return ((QDomNode) interceptor).HasAttributes();
+			return (bool) interceptor.Invoke("hasAttributes", "hasAttributes() const", typeof(bool));
 		}
-		[SmokeMethod("nodeValue", "() const", "")]
 		public string NodeValue() {
-			return ((QDomNode) interceptor).NodeValue();
+			return (string) interceptor.Invoke("nodeValue", "nodeValue() const", typeof(string));
 		}
-		[SmokeMethod("setNodeValue", "(const QString&)", "$")]
 		public void SetNodeValue(string arg1) {
-			((QDomNode) interceptor).SetNodeValue(arg1);
+			interceptor.Invoke("setNodeValue$", "setNodeValue(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("prefix", "() const", "")]
 		public string Prefix() {
-			return ((QDomNode) interceptor).Prefix();
+			return (string) interceptor.Invoke("prefix", "prefix() const", typeof(string));
 		}
-		[SmokeMethod("setPrefix", "(const QString&)", "$")]
 		public void SetPrefix(string pre) {
-			((QDomNode) interceptor).SetPrefix(pre);
+			interceptor.Invoke("setPrefix$", "setPrefix(const QString&)", typeof(void), typeof(string), pre);
 		}
-		[SmokeMethod("isAttr", "() const", "")]
 		public bool IsAttr() {
-			return ((QDomNode) interceptor).IsAttr();
+			return (bool) interceptor.Invoke("isAttr", "isAttr() const", typeof(bool));
 		}
-		[SmokeMethod("isCDATASection", "() const", "")]
 		public bool IsCDATASection() {
-			return ((QDomNode) interceptor).IsCDATASection();
+			return (bool) interceptor.Invoke("isCDATASection", "isCDATASection() const", typeof(bool));
 		}
-		[SmokeMethod("isDocumentFragment", "() const", "")]
 		public bool IsDocumentFragment() {
-			return ((QDomNode) interceptor).IsDocumentFragment();
+			return (bool) interceptor.Invoke("isDocumentFragment", "isDocumentFragment() const", typeof(bool));
 		}
-		[SmokeMethod("isDocument", "() const", "")]
 		public bool IsDocument() {
-			return ((QDomNode) interceptor).IsDocument();
+			return (bool) interceptor.Invoke("isDocument", "isDocument() const", typeof(bool));
 		}
-		[SmokeMethod("isDocumentType", "() const", "")]
 		public bool IsDocumentType() {
-			return ((QDomNode) interceptor).IsDocumentType();
+			return (bool) interceptor.Invoke("isDocumentType", "isDocumentType() const", typeof(bool));
 		}
-		[SmokeMethod("isElement", "() const", "")]
 		public bool IsElement() {
-			return ((QDomNode) interceptor).IsElement();
+			return (bool) interceptor.Invoke("isElement", "isElement() const", typeof(bool));
 		}
-		[SmokeMethod("isEntityReference", "() const", "")]
 		public bool IsEntityReference() {
-			return ((QDomNode) interceptor).IsEntityReference();
+			return (bool) interceptor.Invoke("isEntityReference", "isEntityReference() const", typeof(bool));
 		}
-		[SmokeMethod("isText", "() const", "")]
 		public bool IsText() {
-			return ((QDomNode) interceptor).IsText();
+			return (bool) interceptor.Invoke("isText", "isText() const", typeof(bool));
 		}
-		[SmokeMethod("isEntity", "() const", "")]
 		public bool IsEntity() {
-			return ((QDomNode) interceptor).IsEntity();
+			return (bool) interceptor.Invoke("isEntity", "isEntity() const", typeof(bool));
 		}
-		[SmokeMethod("isNotation", "() const", "")]
 		public bool IsNotation() {
-			return ((QDomNode) interceptor).IsNotation();
+			return (bool) interceptor.Invoke("isNotation", "isNotation() const", typeof(bool));
 		}
-		[SmokeMethod("isProcessingInstruction", "() const", "")]
 		public bool IsProcessingInstruction() {
-			return ((QDomNode) interceptor).IsProcessingInstruction();
+			return (bool) interceptor.Invoke("isProcessingInstruction", "isProcessingInstruction() const", typeof(bool));
 		}
-		[SmokeMethod("isCharacterData", "() const", "")]
 		public bool IsCharacterData() {
-			return ((QDomNode) interceptor).IsCharacterData();
+			return (bool) interceptor.Invoke("isCharacterData", "isCharacterData() const", typeof(bool));
 		}
-		[SmokeMethod("isComment", "() const", "")]
 		public bool IsComment() {
-			return ((QDomNode) interceptor).IsComment();
+			return (bool) interceptor.Invoke("isComment", "isComment() const", typeof(bool));
 		}
 		///<remarks>
 		/// Shortcut to avoid dealing with QDomArrayList
 		/// all the time.
 		///     </remarks>		<short>    Shortcut to avoid dealing with QDomNodeList  all the time.</short>
-		[SmokeMethod("namedItem", "(const QString&) const", "$")]
 		public QDomNode NamedItem(string name) {
-			return ((QDomNode) interceptor).NamedItem(name);
+			return (QDomNode) interceptor.Invoke("namedItem$", "namedItem(const QString&) const", typeof(QDomNode), typeof(string), name);
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QDomNode) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QDomNode) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("toAttr", "() const", "")]
 		public QDomAttr ToAttr() {
-			return ((QDomNode) interceptor).ToAttr();
+			return (QDomAttr) interceptor.Invoke("toAttr", "toAttr() const", typeof(QDomAttr));
 		}
-		[SmokeMethod("toCDATASection", "() const", "")]
 		public QDomCDATASection ToCDATASection() {
-			return ((QDomNode) interceptor).ToCDATASection();
+			return (QDomCDATASection) interceptor.Invoke("toCDATASection", "toCDATASection() const", typeof(QDomCDATASection));
 		}
-		[SmokeMethod("toDocumentFragment", "() const", "")]
 		public QDomDocumentFragment ToDocumentFragment() {
-			return ((QDomNode) interceptor).ToDocumentFragment();
+			return (QDomDocumentFragment) interceptor.Invoke("toDocumentFragment", "toDocumentFragment() const", typeof(QDomDocumentFragment));
 		}
-		[SmokeMethod("toDocument", "() const", "")]
 		public QDomDocument ToDocument() {
-			return ((QDomNode) interceptor).ToDocument();
+			return (QDomDocument) interceptor.Invoke("toDocument", "toDocument() const", typeof(QDomDocument));
 		}
-		[SmokeMethod("toDocumentType", "() const", "")]
 		public QDomDocumentType ToDocumentType() {
-			return ((QDomNode) interceptor).ToDocumentType();
+			return (QDomDocumentType) interceptor.Invoke("toDocumentType", "toDocumentType() const", typeof(QDomDocumentType));
 		}
-		[SmokeMethod("toElement", "() const", "")]
 		public QDomElement ToElement() {
-			return ((QDomNode) interceptor).ToElement();
+			return (QDomElement) interceptor.Invoke("toElement", "toElement() const", typeof(QDomElement));
 		}
-		[SmokeMethod("toEntityReference", "() const", "")]
 		public QDomEntityReference ToEntityReference() {
-			return ((QDomNode) interceptor).ToEntityReference();
+			return (QDomEntityReference) interceptor.Invoke("toEntityReference", "toEntityReference() const", typeof(QDomEntityReference));
 		}
-		[SmokeMethod("toText", "() const", "")]
 		public QDomText ToText() {
-			return ((QDomNode) interceptor).ToText();
+			return (QDomText) interceptor.Invoke("toText", "toText() const", typeof(QDomText));
 		}
-		[SmokeMethod("toEntity", "() const", "")]
 		public QDomEntity ToEntity() {
-			return ((QDomNode) interceptor).ToEntity();
+			return (QDomEntity) interceptor.Invoke("toEntity", "toEntity() const", typeof(QDomEntity));
 		}
-		[SmokeMethod("toNotation", "() const", "")]
 		public QDomNotation ToNotation() {
-			return ((QDomNode) interceptor).ToNotation();
+			return (QDomNotation) interceptor.Invoke("toNotation", "toNotation() const", typeof(QDomNotation));
 		}
-		[SmokeMethod("toProcessingInstruction", "() const", "")]
 		public QDomProcessingInstruction ToProcessingInstruction() {
-			return ((QDomNode) interceptor).ToProcessingInstruction();
+			return (QDomProcessingInstruction) interceptor.Invoke("toProcessingInstruction", "toProcessingInstruction() const", typeof(QDomProcessingInstruction));
 		}
-		[SmokeMethod("toCharacterData", "() const", "")]
 		public QDomCharacterData ToCharacterData() {
-			return ((QDomNode) interceptor).ToCharacterData();
+			return (QDomCharacterData) interceptor.Invoke("toCharacterData", "toCharacterData() const", typeof(QDomCharacterData));
 		}
-		[SmokeMethod("toComment", "() const", "")]
 		public QDomComment ToComment() {
-			return ((QDomNode) interceptor).ToComment();
+			return (QDomComment) interceptor.Invoke("toComment", "toComment() const", typeof(QDomComment));
 		}
-		[SmokeMethod("save", "(QTextStream&, int) const", "#$")]
 		public void Save(QTextStream arg1, int arg2) {
-			((QDomNode) interceptor).Save(arg1,arg2);
+			interceptor.Invoke("save#$", "save(QTextStream&, int) const", typeof(void), typeof(QTextStream), arg1, typeof(int), arg2);
 		}
-		[SmokeMethod("firstChildElement", "(const QString&) const", "$")]
 		public QDomElement FirstChildElement(string tagName) {
-			return ((QDomNode) interceptor).FirstChildElement(tagName);
+			return (QDomElement) interceptor.Invoke("firstChildElement$", "firstChildElement(const QString&) const", typeof(QDomElement), typeof(string), tagName);
 		}
-		[SmokeMethod("firstChildElement", "() const", "")]
 		public QDomElement FirstChildElement() {
-			return ((QDomNode) interceptor).FirstChildElement();
+			return (QDomElement) interceptor.Invoke("firstChildElement", "firstChildElement() const", typeof(QDomElement));
 		}
-		[SmokeMethod("lastChildElement", "(const QString&) const", "$")]
 		public QDomElement LastChildElement(string tagName) {
-			return ((QDomNode) interceptor).LastChildElement(tagName);
+			return (QDomElement) interceptor.Invoke("lastChildElement$", "lastChildElement(const QString&) const", typeof(QDomElement), typeof(string), tagName);
 		}
-		[SmokeMethod("lastChildElement", "() const", "")]
 		public QDomElement LastChildElement() {
-			return ((QDomNode) interceptor).LastChildElement();
+			return (QDomElement) interceptor.Invoke("lastChildElement", "lastChildElement() const", typeof(QDomElement));
 		}
-		[SmokeMethod("previousSiblingElement", "(const QString&) const", "$")]
 		public QDomElement PreviousSiblingElement(string tagName) {
-			return ((QDomNode) interceptor).PreviousSiblingElement(tagName);
+			return (QDomElement) interceptor.Invoke("previousSiblingElement$", "previousSiblingElement(const QString&) const", typeof(QDomElement), typeof(string), tagName);
 		}
-		[SmokeMethod("previousSiblingElement", "() const", "")]
 		public QDomElement PreviousSiblingElement() {
-			return ((QDomNode) interceptor).PreviousSiblingElement();
+			return (QDomElement) interceptor.Invoke("previousSiblingElement", "previousSiblingElement() const", typeof(QDomElement));
 		}
-		[SmokeMethod("nextSiblingElement", "(const QString&) const", "$")]
 		public QDomElement NextSiblingElement(string taName) {
-			return ((QDomNode) interceptor).NextSiblingElement(taName);
+			return (QDomElement) interceptor.Invoke("nextSiblingElement$", "nextSiblingElement(const QString&) const", typeof(QDomElement), typeof(string), taName);
 		}
-		[SmokeMethod("nextSiblingElement", "() const", "")]
 		public QDomElement NextSiblingElement() {
-			return ((QDomNode) interceptor).NextSiblingElement();
+			return (QDomElement) interceptor.Invoke("nextSiblingElement", "nextSiblingElement() const", typeof(QDomElement));
 		}
-		[SmokeMethod("lineNumber", "() const", "")]
 		public int LineNumber() {
-			return ((QDomNode) interceptor).LineNumber();
+			return (int) interceptor.Invoke("lineNumber", "lineNumber() const", typeof(int));
 		}
-		[SmokeMethod("columnNumber", "() const", "")]
 		public int ColumnNumber() {
-			return ((QDomNode) interceptor).ColumnNumber();
+			return (int) interceptor.Invoke("columnNumber", "columnNumber() const", typeof(int));
 		}
 		~QDomNode() {
-			DisposeQDomNode();
+			interceptor.Invoke("~QDomNode", "~QDomNode()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomNode();
-		}
-		[SmokeMethod("~QDomNode", "()", "")]
-		private void DisposeQDomNode() {
-			((QDomNode) interceptor).DisposeQDomNode();
+			interceptor.Invoke("~QDomNode", "~QDomNode()", typeof(void));
 		}
 		public static bool operator==(QDomNode lhs, QDomNode arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomNode&) const", typeof(bool), typeof(QDomNode), lhs, typeof(QDomNode), arg1);
 		}
 		public static bool operator!=(QDomNode lhs, QDomNode arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomNode&) const", typeof(bool), typeof(QDomNode), lhs, typeof(QDomNode), arg1);
 		}
 	}
 }

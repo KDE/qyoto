@@ -6,53 +6,32 @@ namespace Qyoto {
 	[SmokeClass("QTcpSocket")]
 	public class QTcpSocket : QAbstractSocket, IDisposable {
  		protected QTcpSocket(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTcpSocket")]
-		interface IQTcpSocketProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpSocket), this);
-			interceptor = (QTcpSocket) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTcpSocket), "QTcpSocket", this);
 		}
-		private static IQTcpSocketProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTcpSocket() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTcpSocketProxy), null);
-			staticInterceptor = (IQTcpSocketProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTcpSocket), "QTcpSocket", null);
 		}
 		public QTcpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTcpSocket(parent);
-		}
-		[SmokeMethod("QTcpSocket", "(QObject*)", "#")]
-		private void NewQTcpSocket(QObject parent) {
-			((QTcpSocket) interceptor).NewQTcpSocket(parent);
+			interceptor.Invoke("QTcpSocket#", "QTcpSocket(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QTcpSocket() : this((Type) null) {
 			CreateProxy();
-			NewQTcpSocket();
-		}
-		[SmokeMethod("QTcpSocket", "()", "")]
-		private void NewQTcpSocket() {
-			((QTcpSocket) interceptor).NewQTcpSocket();
+			interceptor.Invoke("QTcpSocket", "QTcpSocket()", typeof(void));
 		}
 		~QTcpSocket() {
-			DisposeQTcpSocket();
+			interceptor.Invoke("~QTcpSocket", "~QTcpSocket()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTcpSocket();
-		}
-		[SmokeMethod("~QTcpSocket", "()", "")]
-		private void DisposeQTcpSocket() {
-			((QTcpSocket) interceptor).DisposeQTcpSocket();
+			interceptor.Invoke("~QTcpSocket", "~QTcpSocket()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTcpSocketSignals Emit {
 			get { return (IQTcpSocketSignals) Q_EMIT; }

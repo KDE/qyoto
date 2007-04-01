@@ -7,62 +7,40 @@ namespace Qyoto {
 	public class QConicalGradient : QGradient, IDisposable {
  		protected QConicalGradient(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QConicalGradient), this);
-			interceptor = (QConicalGradient) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QConicalGradient), "QConicalGradient", this);
 		}
 		public QConicalGradient() : this((Type) null) {
 			CreateProxy();
-			NewQConicalGradient();
-		}
-		[SmokeMethod("QConicalGradient", "()", "")]
-		private void NewQConicalGradient() {
-			((QConicalGradient) interceptor).NewQConicalGradient();
+			interceptor.Invoke("QConicalGradient", "QConicalGradient()", typeof(void));
 		}
 		public QConicalGradient(QPointF center, double startAngle) : this((Type) null) {
 			CreateProxy();
-			NewQConicalGradient(center,startAngle);
-		}
-		[SmokeMethod("QConicalGradient", "(const QPointF&, qreal)", "#$")]
-		private void NewQConicalGradient(QPointF center, double startAngle) {
-			((QConicalGradient) interceptor).NewQConicalGradient(center,startAngle);
+			interceptor.Invoke("QConicalGradient#$", "QConicalGradient(const QPointF&, qreal)", typeof(void), typeof(QPointF), center, typeof(double), startAngle);
 		}
 		public QConicalGradient(double cx, double cy, double startAngle) : this((Type) null) {
 			CreateProxy();
-			NewQConicalGradient(cx,cy,startAngle);
+			interceptor.Invoke("QConicalGradient$$$", "QConicalGradient(qreal, qreal, qreal)", typeof(void), typeof(double), cx, typeof(double), cy, typeof(double), startAngle);
 		}
-		[SmokeMethod("QConicalGradient", "(qreal, qreal, qreal)", "$$$")]
-		private void NewQConicalGradient(double cx, double cy, double startAngle) {
-			((QConicalGradient) interceptor).NewQConicalGradient(cx,cy,startAngle);
-		}
-		[SmokeMethod("center", "() const", "")]
 		public QPointF Center() {
-			return ((QConicalGradient) interceptor).Center();
+			return (QPointF) interceptor.Invoke("center", "center() const", typeof(QPointF));
 		}
-		[SmokeMethod("setCenter", "(const QPointF&)", "#")]
 		public void SetCenter(QPointF center) {
-			((QConicalGradient) interceptor).SetCenter(center);
+			interceptor.Invoke("setCenter#", "setCenter(const QPointF&)", typeof(void), typeof(QPointF), center);
 		}
-		[SmokeMethod("setCenter", "(qreal, qreal)", "$$")]
 		public void SetCenter(double x, double y) {
-			((QConicalGradient) interceptor).SetCenter(x,y);
+			interceptor.Invoke("setCenter$$", "setCenter(qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y);
 		}
-		[SmokeMethod("angle", "() const", "")]
 		public double Angle() {
-			return ((QConicalGradient) interceptor).Angle();
+			return (double) interceptor.Invoke("angle", "angle() const", typeof(double));
 		}
-		[SmokeMethod("setAngle", "(qreal)", "$")]
 		public void SetAngle(double angle) {
-			((QConicalGradient) interceptor).SetAngle(angle);
+			interceptor.Invoke("setAngle$", "setAngle(qreal)", typeof(void), typeof(double), angle);
 		}
 		~QConicalGradient() {
-			DisposeQConicalGradient();
+			interceptor.Invoke("~QConicalGradient", "~QConicalGradient()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQConicalGradient();
-		}
-		[SmokeMethod("~QConicalGradient", "()", "")]
-		private void DisposeQConicalGradient() {
-			((QConicalGradient) interceptor).DisposeQConicalGradient();
+			interceptor.Invoke("~QConicalGradient", "~QConicalGradient()", typeof(void));
 		}
 	}
 }

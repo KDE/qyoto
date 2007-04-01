@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QProgressBar")]
 	public class QProgressBar : QWidget, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QProgressBar")]
-		interface IQProgressBarProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressBar), this);
-			interceptor = (QProgressBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QProgressBar), "QProgressBar", this);
 		}
-		private static IQProgressBarProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QProgressBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQProgressBarProxy), null);
-			staticInterceptor = (IQProgressBarProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QProgressBar), "QProgressBar", null);
 		}
 		public enum Direction {
 			TopToBottom = 0,
@@ -29,132 +20,98 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			[SmokeMethod("minimum", "()", "")]
-			get { return ((QProgressBar) interceptor).Minimum; }
-			[SmokeMethod("setMinimum", "(int)", "$")]
-			set { ((QProgressBar) interceptor).Minimum = value; }
+			get { return (int) interceptor.Invoke("minimum", "minimum()", typeof(int)); }
+			set { interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			[SmokeMethod("maximum", "()", "")]
-			get { return ((QProgressBar) interceptor).Maximum; }
-			[SmokeMethod("setMaximum", "(int)", "$")]
-			set { ((QProgressBar) interceptor).Maximum = value; }
+			get { return (int) interceptor.Invoke("maximum", "maximum()", typeof(int)); }
+			set { interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			[SmokeMethod("text", "()", "")]
-			get { return ((QProgressBar) interceptor).Text; }
+			get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			[SmokeMethod("value", "()", "")]
-			get { return ((QProgressBar) interceptor).Value; }
-			[SmokeMethod("setValue", "(int)", "$")]
-			set { ((QProgressBar) interceptor).Value = value; }
+			get { return (int) interceptor.Invoke("value", "value()", typeof(int)); }
+			set { interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			[SmokeMethod("alignment", "()", "")]
-			get { return ((QProgressBar) interceptor).Alignment; }
-			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
-			set { ((QProgressBar) interceptor).Alignment = value; }
+			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("bool", "textVisible")]
 		public bool TextVisible {
-			[SmokeMethod("isTextVisible", "()", "")]
-			get { return ((QProgressBar) interceptor).TextVisible; }
-			[SmokeMethod("setTextVisible", "(bool)", "$")]
-			set { ((QProgressBar) interceptor).TextVisible = value; }
+			get { return (bool) interceptor.Invoke("isTextVisible", "isTextVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setTextVisible$", "setTextVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			[SmokeMethod("orientation", "()", "")]
-			get { return ((QProgressBar) interceptor).Orientation; }
-			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
-			set { ((QProgressBar) interceptor).Orientation = value; }
+			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
 		[Q_PROPERTY("bool", "invertedAppearance")]
 		public bool InvertedAppearance {
-			[SmokeMethod("invertedAppearance", "()", "")]
-			get { return ((QProgressBar) interceptor).InvertedAppearance; }
-			[SmokeMethod("setInvertedAppearance", "(bool)", "$")]
-			set { ((QProgressBar) interceptor).InvertedAppearance = value; }
+			get { return (bool) interceptor.Invoke("invertedAppearance", "invertedAppearance()", typeof(bool)); }
+			set { interceptor.Invoke("setInvertedAppearance$", "setInvertedAppearance(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QProgressBar::Direction", "textDirection")]
 		public QProgressBar.Direction TextDirection {
-			[SmokeMethod("textDirection", "()", "")]
-			get { return ((QProgressBar) interceptor).TextDirection; }
-			[SmokeMethod("setTextDirection", "(QProgressBar::Direction)", "$")]
-			set { ((QProgressBar) interceptor).TextDirection = value; }
+			get { return (QProgressBar.Direction) interceptor.Invoke("textDirection", "textDirection()", typeof(QProgressBar.Direction)); }
+			set { interceptor.Invoke("setTextDirection$", "setTextDirection(QProgressBar::Direction)", typeof(void), typeof(QProgressBar.Direction), value); }
 		}
 		[Q_PROPERTY("QString", "format")]
 		public string Format {
-			[SmokeMethod("format", "()", "")]
-			get { return ((QProgressBar) interceptor).Format; }
-			[SmokeMethod("setFormat", "(QString)", "$")]
-			set { ((QProgressBar) interceptor).Format = value; }
+			get { return (string) interceptor.Invoke("format", "format()", typeof(string)); }
+			set { interceptor.Invoke("setFormat$", "setFormat(QString)", typeof(void), typeof(string), value); }
 		}
 		public QProgressBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQProgressBar(parent);
-		}
-		[SmokeMethod("QProgressBar", "(QWidget*)", "#")]
-		private void NewQProgressBar(QWidget parent) {
-			((QProgressBar) interceptor).NewQProgressBar(parent);
+			interceptor.Invoke("QProgressBar#", "QProgressBar(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QProgressBar() : this((Type) null) {
 			CreateProxy();
-			NewQProgressBar();
+			interceptor.Invoke("QProgressBar", "QProgressBar()", typeof(void));
 		}
-		[SmokeMethod("QProgressBar", "()", "")]
-		private void NewQProgressBar() {
-			((QProgressBar) interceptor).NewQProgressBar();
-		}
-		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int minimum, int maximum) {
-			((QProgressBar) interceptor).SetRange(minimum,maximum);
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
 		}
-		[SmokeMethod("isTextVisible", "() const", "")]
 		public bool IsTextVisible() {
-			return ((QProgressBar) interceptor).IsTextVisible();
+			return (bool) interceptor.Invoke("isTextVisible", "isTextVisible() const", typeof(bool));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QProgressBar) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QProgressBar) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
 		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			((QProgressBar) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QProgressBar) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QProgressBar) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
 		~QProgressBar() {
-			DisposeQProgressBar();
+			interceptor.Invoke("~QProgressBar", "~QProgressBar()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQProgressBar();
-		}
-		[SmokeMethod("~QProgressBar", "()", "")]
-		private void DisposeQProgressBar() {
-			((QProgressBar) interceptor).DisposeQProgressBar();
+			interceptor.Invoke("~QProgressBar", "~QProgressBar()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQProgressBarSignals Emit {
 			get { return (IQProgressBarSignals) Q_EMIT; }

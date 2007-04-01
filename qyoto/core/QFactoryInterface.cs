@@ -5,23 +5,18 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QFactoryInterface")]
-	public abstract class QFactoryInterface : MarshalByRefObject {
-		protected QFactoryInterface interceptor = null;
+	public abstract class QFactoryInterface : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFactoryInterface(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFactoryInterface), this);
-			interceptor = (QFactoryInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFactoryInterface), "QFactoryInterface", this);
 		}
-		[SmokeMethod("keys", "() const", "")]
+		[SmokeMethod("keys() const")]
 		public abstract List<string> Keys();
 		public QFactoryInterface() : this((Type) null) {
 			CreateProxy();
-			NewQFactoryInterface();
-		}
-		[SmokeMethod("QFactoryInterface", "()", "")]
-		private void NewQFactoryInterface() {
-			((QFactoryInterface) interceptor).NewQFactoryInterface();
+			interceptor.Invoke("QFactoryInterface", "QFactoryInterface()", typeof(void));
 		}
 	}
 }

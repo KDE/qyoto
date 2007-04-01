@@ -30,21 +30,12 @@ namespace Qyoto {
 	[SmokeClass("QSocketNotifier")]
 	public class QSocketNotifier : QObject, IDisposable {
  		protected QSocketNotifier(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSocketNotifier")]
-		interface IQSocketNotifierProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSocketNotifier), this);
-			interceptor = (QSocketNotifier) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSocketNotifier), "QSocketNotifier", this);
 		}
-		private static IQSocketNotifierProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSocketNotifier() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSocketNotifierProxy), null);
-			staticInterceptor = (IQSocketNotifierProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSocketNotifier), "QSocketNotifier", null);
 		}
 		public enum TypeOf {
 			Read = 0,
@@ -53,56 +44,40 @@ namespace Qyoto {
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSocketNotifier(socket,arg2,parent);
-		}
-		[SmokeMethod("QSocketNotifier", "(int, QSocketNotifier::Type, QObject*)", "$$#")]
-		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) {
-			((QSocketNotifier) interceptor).NewQSocketNotifier(socket,arg2,parent);
+			interceptor.Invoke("QSocketNotifier$$#", "QSocketNotifier(int, QSocketNotifier::Type, QObject*)", typeof(void), typeof(int), socket, typeof(QSocketNotifier.TypeOf), arg2, typeof(QObject), parent);
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) : this((Type) null) {
 			CreateProxy();
-			NewQSocketNotifier(socket,arg2);
+			interceptor.Invoke("QSocketNotifier$$", "QSocketNotifier(int, QSocketNotifier::Type)", typeof(void), typeof(int), socket, typeof(QSocketNotifier.TypeOf), arg2);
 		}
-		[SmokeMethod("QSocketNotifier", "(int, QSocketNotifier::Type)", "$$")]
-		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) {
-			((QSocketNotifier) interceptor).NewQSocketNotifier(socket,arg2);
-		}
-		[SmokeMethod("socket", "() const", "")]
 		public int Socket() {
-			return ((QSocketNotifier) interceptor).Socket();
+			return (int) interceptor.Invoke("socket", "socket() const", typeof(int));
 		}
-		[SmokeMethod("type", "() const", "")]
 		public QSocketNotifier.TypeOf type() {
-			return ((QSocketNotifier) interceptor).type();
+			return (QSocketNotifier.TypeOf) interceptor.Invoke("type", "type() const", typeof(QSocketNotifier.TypeOf));
 		}
-		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ((QSocketNotifier) interceptor).IsEnabled();
+			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
 		}
 		[Q_SLOT("void setEnabled(bool)")]
-		[SmokeMethod("setEnabled", "(bool)", "$")]
 		public void SetEnabled(bool arg1) {
-			((QSocketNotifier) interceptor).SetEnabled(arg1);
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QSocketNotifier) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QSocketNotifier() {
-			DisposeQSocketNotifier();
+			interceptor.Invoke("~QSocketNotifier", "~QSocketNotifier()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSocketNotifier();
-		}
-		[SmokeMethod("~QSocketNotifier", "()", "")]
-		private void DisposeQSocketNotifier() {
-			((QSocketNotifier) interceptor).DisposeQSocketNotifier();
+			interceptor.Invoke("~QSocketNotifier", "~QSocketNotifier()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSocketNotifierSignals Emit {
 			get { return (IQSocketNotifierSignals) Q_EMIT; }

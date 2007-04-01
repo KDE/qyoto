@@ -4,200 +4,135 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTime")]
-	public class QTime : MarshalByRefObject, IDisposable {
-		protected QTime interceptor = null;
+	public class QTime : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTime(Type dummy) {}
-		[SmokeClass("QTime")]
-		interface IQTimeProxy {
-			[SmokeMethod("operator==", "(const QTime&) const", "#")]
-			bool op_equals(QTime lhs, QTime other);
-			[SmokeMethod("operator<", "(const QTime&) const", "#")]
-			bool op_lt(QTime lhs, QTime other);
-			[SmokeMethod("operator<=", "(const QTime&) const", "#")]
-			bool op_lte(QTime lhs, QTime other);
-			[SmokeMethod("operator>", "(const QTime&) const", "#")]
-			bool op_gt(QTime lhs, QTime other);
-			[SmokeMethod("operator>=", "(const QTime&) const", "#")]
-			bool op_gte(QTime lhs, QTime other);
-			[SmokeMethod("currentTime", "()", "")]
-			QTime CurrentTime();
-			[SmokeMethod("fromString", "(const QString&, Qt::DateFormat)", "$$")]
-			QTime FromString(string s, Qt.DateFormat f);
-			[SmokeMethod("fromString", "(const QString&)", "$")]
-			QTime FromString(string s);
-			[SmokeMethod("fromString", "(const QString&, const QString&)", "$$")]
-			QTime FromString(string s, string format);
-			[SmokeMethod("isValid", "(int, int, int, int)", "$$$$")]
-			bool IsValid(int h, int m, int s, int ms);
-			[SmokeMethod("isValid", "(int, int, int)", "$$$")]
-			bool IsValid(int h, int m, int s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTime), this);
-			interceptor = (QTime) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTime), "QTime", this);
 		}
-		private static IQTimeProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTime() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTimeProxy), null);
-			staticInterceptor = (IQTimeProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTime), "QTime", null);
 		}
 		public QTime() : this((Type) null) {
 			CreateProxy();
-			NewQTime();
-		}
-		[SmokeMethod("QTime", "()", "")]
-		private void NewQTime() {
-			((QTime) interceptor).NewQTime();
+			interceptor.Invoke("QTime", "QTime()", typeof(void));
 		}
 		public QTime(int h, int m, int s, int ms) : this((Type) null) {
 			CreateProxy();
-			NewQTime(h,m,s,ms);
-		}
-		[SmokeMethod("QTime", "(int, int, int, int)", "$$$$")]
-		private void NewQTime(int h, int m, int s, int ms) {
-			((QTime) interceptor).NewQTime(h,m,s,ms);
+			interceptor.Invoke("QTime$$$$", "QTime(int, int, int, int)", typeof(void), typeof(int), h, typeof(int), m, typeof(int), s, typeof(int), ms);
 		}
 		public QTime(int h, int m, int s) : this((Type) null) {
 			CreateProxy();
-			NewQTime(h,m,s);
-		}
-		[SmokeMethod("QTime", "(int, int, int)", "$$$")]
-		private void NewQTime(int h, int m, int s) {
-			((QTime) interceptor).NewQTime(h,m,s);
+			interceptor.Invoke("QTime$$$", "QTime(int, int, int)", typeof(void), typeof(int), h, typeof(int), m, typeof(int), s);
 		}
 		public QTime(int h, int m) : this((Type) null) {
 			CreateProxy();
-			NewQTime(h,m);
+			interceptor.Invoke("QTime$$", "QTime(int, int)", typeof(void), typeof(int), h, typeof(int), m);
 		}
-		[SmokeMethod("QTime", "(int, int)", "$$")]
-		private void NewQTime(int h, int m) {
-			((QTime) interceptor).NewQTime(h,m);
-		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QTime) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTime) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("hour", "() const", "")]
 		public int Hour() {
-			return ((QTime) interceptor).Hour();
+			return (int) interceptor.Invoke("hour", "hour() const", typeof(int));
 		}
-		[SmokeMethod("minute", "() const", "")]
 		public int Minute() {
-			return ((QTime) interceptor).Minute();
+			return (int) interceptor.Invoke("minute", "minute() const", typeof(int));
 		}
-		[SmokeMethod("second", "() const", "")]
 		public int Second() {
-			return ((QTime) interceptor).Second();
+			return (int) interceptor.Invoke("second", "second() const", typeof(int));
 		}
-		[SmokeMethod("msec", "() const", "")]
 		public int Msec() {
-			return ((QTime) interceptor).Msec();
+			return (int) interceptor.Invoke("msec", "msec() const", typeof(int));
 		}
-		[SmokeMethod("toString", "(Qt::DateFormat) const", "$")]
 		public string ToString(Qt.DateFormat f) {
-			return ((QTime) interceptor).ToString(f);
+			return (string) interceptor.Invoke("toString$", "toString(Qt::DateFormat) const", typeof(string), typeof(Qt.DateFormat), f);
 		}
-		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ((QTime) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("toString", "(const QString&) const", "$")]
 		public string ToString(string format) {
-			return ((QTime) interceptor).ToString(format);
+			return (string) interceptor.Invoke("toString$", "toString(const QString&) const", typeof(string), typeof(string), format);
 		}
-		[SmokeMethod("setHMS", "(int, int, int, int)", "$$$$")]
 		public bool SetHMS(int h, int m, int s, int ms) {
-			return ((QTime) interceptor).SetHMS(h,m,s,ms);
+			return (bool) interceptor.Invoke("setHMS$$$$", "setHMS(int, int, int, int)", typeof(bool), typeof(int), h, typeof(int), m, typeof(int), s, typeof(int), ms);
 		}
-		[SmokeMethod("setHMS", "(int, int, int)", "$$$")]
 		public bool SetHMS(int h, int m, int s) {
-			return ((QTime) interceptor).SetHMS(h,m,s);
+			return (bool) interceptor.Invoke("setHMS$$$", "setHMS(int, int, int)", typeof(bool), typeof(int), h, typeof(int), m, typeof(int), s);
 		}
-		[SmokeMethod("addSecs", "(int) const", "$")]
 		public QTime AddSecs(int secs) {
-			return ((QTime) interceptor).AddSecs(secs);
+			return (QTime) interceptor.Invoke("addSecs$", "addSecs(int) const", typeof(QTime), typeof(int), secs);
 		}
-		[SmokeMethod("secsTo", "(const QTime&) const", "#")]
 		public int SecsTo(QTime arg1) {
-			return ((QTime) interceptor).SecsTo(arg1);
+			return (int) interceptor.Invoke("secsTo#", "secsTo(const QTime&) const", typeof(int), typeof(QTime), arg1);
 		}
-		[SmokeMethod("addMSecs", "(int) const", "$")]
 		public QTime AddMSecs(int ms) {
-			return ((QTime) interceptor).AddMSecs(ms);
+			return (QTime) interceptor.Invoke("addMSecs$", "addMSecs(int) const", typeof(QTime), typeof(int), ms);
 		}
-		[SmokeMethod("msecsTo", "(const QTime&) const", "#")]
 		public int MsecsTo(QTime arg1) {
-			return ((QTime) interceptor).MsecsTo(arg1);
+			return (int) interceptor.Invoke("msecsTo#", "msecsTo(const QTime&) const", typeof(int), typeof(QTime), arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTime)) { return false; }
 			return this == (QTime) o;
 		}
 		public override int GetHashCode() {
-			return ((QTime) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("start", "()", "")]
 		public void Start() {
-			((QTime) interceptor).Start();
+			interceptor.Invoke("start", "start()", typeof(void));
 		}
-		[SmokeMethod("restart", "()", "")]
 		public int Restart() {
-			return ((QTime) interceptor).Restart();
+			return (int) interceptor.Invoke("restart", "restart()", typeof(int));
 		}
-		[SmokeMethod("elapsed", "() const", "")]
 		public int Elapsed() {
-			return ((QTime) interceptor).Elapsed();
+			return (int) interceptor.Invoke("elapsed", "elapsed() const", typeof(int));
 		}
 		~QTime() {
-			DisposeQTime();
+			interceptor.Invoke("~QTime", "~QTime()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTime();
-		}
-		[SmokeMethod("~QTime", "()", "")]
-		private void DisposeQTime() {
-			((QTime) interceptor).DisposeQTime();
+			interceptor.Invoke("~QTime", "~QTime()", typeof(void));
 		}
 		public static bool operator==(QTime lhs, QTime other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTime&) const", typeof(bool), typeof(QTime), lhs, typeof(QTime), other);
 		}
 		public static bool operator!=(QTime lhs, QTime other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTime&) const", typeof(bool), typeof(QTime), lhs, typeof(QTime), other);
 		}
 		public static bool operator<(QTime lhs, QTime other) {
-			return staticInterceptor.op_lt(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QTime&) const", typeof(bool), typeof(QTime), lhs, typeof(QTime), other);
 		}
 		public static bool operator<=(QTime lhs, QTime other) {
-			return staticInterceptor.op_lte(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator<=#", "operator<=(const QTime&) const", typeof(bool), typeof(QTime), lhs, typeof(QTime), other);
 		}
 		public static bool operator>(QTime lhs, QTime other) {
-			return staticInterceptor.op_gt(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator>#", "operator>(const QTime&) const", typeof(bool), typeof(QTime), lhs, typeof(QTime), other);
 		}
 		public static bool operator>=(QTime lhs, QTime other) {
-			return staticInterceptor.op_gte(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator>=#", "operator>=(const QTime&) const", typeof(bool), typeof(QTime), lhs, typeof(QTime), other);
 		}
 		public static QTime CurrentTime() {
-			return staticInterceptor.CurrentTime();
+			return (QTime) staticInterceptor.Invoke("currentTime", "currentTime()", typeof(QTime));
 		}
 		public static QTime FromString(string s, Qt.DateFormat f) {
-			return staticInterceptor.FromString(s,f);
+			return (QTime) staticInterceptor.Invoke("fromString$$", "fromString(const QString&, Qt::DateFormat)", typeof(QTime), typeof(string), s, typeof(Qt.DateFormat), f);
 		}
 		public static QTime FromString(string s) {
-			return staticInterceptor.FromString(s);
+			return (QTime) staticInterceptor.Invoke("fromString$", "fromString(const QString&)", typeof(QTime), typeof(string), s);
 		}
 		public static QTime FromString(string s, string format) {
-			return staticInterceptor.FromString(s,format);
+			return (QTime) staticInterceptor.Invoke("fromString$$", "fromString(const QString&, const QString&)", typeof(QTime), typeof(string), s, typeof(string), format);
 		}
 		public static bool IsValid(int h, int m, int s, int ms) {
-			return staticInterceptor.IsValid(h,m,s,ms);
+			return (bool) staticInterceptor.Invoke("isValid$$$$", "isValid(int, int, int, int)", typeof(bool), typeof(int), h, typeof(int), m, typeof(int), s, typeof(int), ms);
 		}
 		public static bool IsValid(int h, int m, int s) {
-			return staticInterceptor.IsValid(h,m,s);
+			return (bool) staticInterceptor.Invoke("isValid$$$", "isValid(int, int, int)", typeof(bool), typeof(int), h, typeof(int), m, typeof(int), s);
 		}
 	}
 }

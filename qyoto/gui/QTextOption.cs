@@ -5,13 +5,12 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QTextOption")]
-	public class QTextOption : MarshalByRefObject, IDisposable {
-		protected QTextOption interceptor = null;
+	public class QTextOption : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextOption(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextOption), this);
-			interceptor = (QTextOption) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextOption), "QTextOption", this);
 		}
 		public enum WrapMode {
 			NoWrap = 0,
@@ -25,93 +24,63 @@ namespace Qyoto {
 		}
 		public QTextOption() : this((Type) null) {
 			CreateProxy();
-			NewQTextOption();
-		}
-		[SmokeMethod("QTextOption", "()", "")]
-		private void NewQTextOption() {
-			((QTextOption) interceptor).NewQTextOption();
+			interceptor.Invoke("QTextOption", "QTextOption()", typeof(void));
 		}
 		public QTextOption(int alignment) : this((Type) null) {
 			CreateProxy();
-			NewQTextOption(alignment);
-		}
-		[SmokeMethod("QTextOption", "(Qt::Alignment)", "$")]
-		private void NewQTextOption(int alignment) {
-			((QTextOption) interceptor).NewQTextOption(alignment);
+			interceptor.Invoke("QTextOption$", "QTextOption(Qt::Alignment)", typeof(void), typeof(int), alignment);
 		}
 		public QTextOption(QTextOption o) : this((Type) null) {
 			CreateProxy();
-			NewQTextOption(o);
+			interceptor.Invoke("QTextOption#", "QTextOption(const QTextOption&)", typeof(void), typeof(QTextOption), o);
 		}
-		[SmokeMethod("QTextOption", "(const QTextOption&)", "#")]
-		private void NewQTextOption(QTextOption o) {
-			((QTextOption) interceptor).NewQTextOption(o);
-		}
-		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			((QTextOption) interceptor).SetAlignment(alignment);
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
 		}
-		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ((QTextOption) interceptor).Alignment();
+			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
 		}
-		[SmokeMethod("setTextDirection", "(Qt::LayoutDirection)", "$")]
 		public void SetTextDirection(Qt.LayoutDirection aDirection) {
-			((QTextOption) interceptor).SetTextDirection(aDirection);
+			interceptor.Invoke("setTextDirection$", "setTextDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), aDirection);
 		}
-		[SmokeMethod("textDirection", "() const", "")]
 		public Qt.LayoutDirection TextDirection() {
-			return ((QTextOption) interceptor).TextDirection();
+			return (Qt.LayoutDirection) interceptor.Invoke("textDirection", "textDirection() const", typeof(Qt.LayoutDirection));
 		}
-		[SmokeMethod("setWrapMode", "(QTextOption::WrapMode)", "$")]
 		public void SetWrapMode(QTextOption.WrapMode wrap) {
-			((QTextOption) interceptor).SetWrapMode(wrap);
+			interceptor.Invoke("setWrapMode$", "setWrapMode(QTextOption::WrapMode)", typeof(void), typeof(QTextOption.WrapMode), wrap);
 		}
-		[SmokeMethod("wrapMode", "() const", "")]
 		public QTextOption.WrapMode wrapMode() {
-			return ((QTextOption) interceptor).wrapMode();
+			return (QTextOption.WrapMode) interceptor.Invoke("wrapMode", "wrapMode() const", typeof(QTextOption.WrapMode));
 		}
-		[SmokeMethod("setFlags", "(Flags)", "$")]
 		public void SetFlags(int flags) {
-			((QTextOption) interceptor).SetFlags(flags);
+			interceptor.Invoke("setFlags$", "setFlags(Flags)", typeof(void), typeof(int), flags);
 		}
-		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ((QTextOption) interceptor).Flags();
+			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
 		}
-		[SmokeMethod("setTabStop", "(qreal)", "$")]
 		public void SetTabStop(double tabStop) {
-			((QTextOption) interceptor).SetTabStop(tabStop);
+			interceptor.Invoke("setTabStop$", "setTabStop(qreal)", typeof(void), typeof(double), tabStop);
 		}
-		[SmokeMethod("tabStop", "() const", "")]
 		public double TabStop() {
-			return ((QTextOption) interceptor).TabStop();
+			return (double) interceptor.Invoke("tabStop", "tabStop() const", typeof(double));
 		}
-		[SmokeMethod("setTabArray", "(QList<qreal>)", "?")]
 		public void SetTabArray(List<double> tabStops) {
-			((QTextOption) interceptor).SetTabArray(tabStops);
+			interceptor.Invoke("setTabArray?", "setTabArray(QList<qreal>)", typeof(void), typeof(List<double>), tabStops);
 		}
-		[SmokeMethod("tabArray", "() const", "")]
 		public List<double> TabArray() {
-			return ((QTextOption) interceptor).TabArray();
+			return (List<double>) interceptor.Invoke("tabArray", "tabArray() const", typeof(List<double>));
 		}
-		[SmokeMethod("setUseDesignMetrics", "(bool)", "$")]
 		public void SetUseDesignMetrics(bool b) {
-			((QTextOption) interceptor).SetUseDesignMetrics(b);
+			interceptor.Invoke("setUseDesignMetrics$", "setUseDesignMetrics(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("useDesignMetrics", "() const", "")]
 		public bool UseDesignMetrics() {
-			return ((QTextOption) interceptor).UseDesignMetrics();
+			return (bool) interceptor.Invoke("useDesignMetrics", "useDesignMetrics() const", typeof(bool));
 		}
 		~QTextOption() {
-			DisposeQTextOption();
+			interceptor.Invoke("~QTextOption", "~QTextOption()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextOption();
-		}
-		[SmokeMethod("~QTextOption", "()", "")]
-		private void DisposeQTextOption() {
-			((QTextOption) interceptor).DisposeQTextOption();
+			interceptor.Invoke("~QTextOption", "~QTextOption()", typeof(void));
 		}
 	}
 }

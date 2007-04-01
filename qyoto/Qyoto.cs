@@ -497,40 +497,17 @@ namespace Qyoto
 						| AttributeTargets.Interface )]
 	public class SmokeMethod : Attribute
 	{
-		public string name;
-		public string argsSignature;
-		public string mungedSignature;
-		public int methodId = -1;
-
-		public string Name {
-			get {
-				return name;
-			}
-		}
-	
-		public string ArgsSignature {
-			get {
-				return argsSignature;
-			}
-		}
+		public string signature;
 	
 		public string Signature {
 			get {
-				return name + argsSignature;
-			}
-		}
-
-		public string MungedName {
-			get {
-				return name + mungedSignature;
+				return signature;
 			}
 		}
 	
-		public SmokeMethod(string name, string argsSignature, string mungedSignature)
+		public SmokeMethod(string signature)
 		{
-			this.name = name;
-			this.argsSignature = argsSignature;
-			this.mungedSignature = mungedSignature;
+			this.signature = signature;
 		}
 	}
 	

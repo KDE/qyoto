@@ -5,13 +5,12 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QSqlResult")]
-	public abstract class QSqlResult : MarshalByRefObject {
-		protected QSqlResult interceptor = null;
+	public abstract class QSqlResult : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlResult(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlResult), this);
-			interceptor = (QSqlResult) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlResult), "QSqlResult", this);
 		}
 		public enum BindingSyntax {
 			PositionalBinding = 0,
@@ -22,175 +21,149 @@ namespace Qyoto {
 		}
 		public QSqlResult(QSqlDriver db) : this((Type) null) {
 			CreateProxy();
-			NewQSqlResult(db);
+			interceptor.Invoke("QSqlResult#", "QSqlResult(const QSqlDriver*)", typeof(void), typeof(QSqlDriver), db);
 		}
-		[SmokeMethod("QSqlResult", "(const QSqlDriver*)", "#")]
-		private void NewQSqlResult(QSqlDriver db) {
-			((QSqlResult) interceptor).NewQSqlResult(db);
-		}
-		[SmokeMethod("at", "() const", "")]
 		protected int At() {
-			return ((QSqlResult) interceptor).At();
+			return (int) interceptor.Invoke("at", "at() const", typeof(int));
 		}
-		[SmokeMethod("lastQuery", "() const", "")]
 		protected string LastQuery() {
-			return ((QSqlResult) interceptor).LastQuery();
+			return (string) interceptor.Invoke("lastQuery", "lastQuery() const", typeof(string));
 		}
-		[SmokeMethod("lastError", "() const", "")]
 		protected QSqlError LastError() {
-			return ((QSqlResult) interceptor).LastError();
+			return (QSqlError) interceptor.Invoke("lastError", "lastError() const", typeof(QSqlError));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		protected bool IsValid() {
-			return ((QSqlResult) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("isActive", "() const", "")]
 		protected bool IsActive() {
-			return ((QSqlResult) interceptor).IsActive();
+			return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
 		}
-		[SmokeMethod("isSelect", "() const", "")]
 		protected bool IsSelect() {
-			return ((QSqlResult) interceptor).IsSelect();
+			return (bool) interceptor.Invoke("isSelect", "isSelect() const", typeof(bool));
 		}
-		[SmokeMethod("isForwardOnly", "() const", "")]
 		protected bool IsForwardOnly() {
-			return ((QSqlResult) interceptor).IsForwardOnly();
+			return (bool) interceptor.Invoke("isForwardOnly", "isForwardOnly() const", typeof(bool));
 		}
-		[SmokeMethod("driver", "() const", "")]
 		protected QSqlDriver Driver() {
-			return ((QSqlResult) interceptor).Driver();
+			return (QSqlDriver) interceptor.Invoke("driver", "driver() const", typeof(QSqlDriver));
 		}
-		[SmokeMethod("setAt", "(int)", "$")]
+		[SmokeMethod("setAt(int)")]
 		protected virtual void SetAt(int at) {
-			((QSqlResult) interceptor).SetAt(at);
+			interceptor.Invoke("setAt$", "setAt(int)", typeof(void), typeof(int), at);
 		}
-		[SmokeMethod("setActive", "(bool)", "$")]
+		[SmokeMethod("setActive(bool)")]
 		protected virtual void SetActive(bool a) {
-			((QSqlResult) interceptor).SetActive(a);
+			interceptor.Invoke("setActive$", "setActive(bool)", typeof(void), typeof(bool), a);
 		}
-		[SmokeMethod("setLastError", "(const QSqlError&)", "#")]
+		[SmokeMethod("setLastError(const QSqlError&)")]
 		protected virtual void SetLastError(QSqlError e) {
-			((QSqlResult) interceptor).SetLastError(e);
+			interceptor.Invoke("setLastError#", "setLastError(const QSqlError&)", typeof(void), typeof(QSqlError), e);
 		}
-		[SmokeMethod("setQuery", "(const QString&)", "$")]
+		[SmokeMethod("setQuery(const QString&)")]
 		protected virtual void SetQuery(string query) {
-			((QSqlResult) interceptor).SetQuery(query);
+			interceptor.Invoke("setQuery$", "setQuery(const QString&)", typeof(void), typeof(string), query);
 		}
-		[SmokeMethod("setSelect", "(bool)", "$")]
+		[SmokeMethod("setSelect(bool)")]
 		protected virtual void SetSelect(bool s) {
-			((QSqlResult) interceptor).SetSelect(s);
+			interceptor.Invoke("setSelect$", "setSelect(bool)", typeof(void), typeof(bool), s);
 		}
-		[SmokeMethod("setForwardOnly", "(bool)", "$")]
+		[SmokeMethod("setForwardOnly(bool)")]
 		protected virtual void SetForwardOnly(bool forward) {
-			((QSqlResult) interceptor).SetForwardOnly(forward);
+			interceptor.Invoke("setForwardOnly$", "setForwardOnly(bool)", typeof(void), typeof(bool), forward);
 		}
-		[SmokeMethod("exec", "()", "")]
+		[SmokeMethod("exec()")]
 		protected virtual bool Exec() {
-			return ((QSqlResult) interceptor).Exec();
+			return (bool) interceptor.Invoke("exec", "exec()", typeof(bool));
 		}
-		[SmokeMethod("prepare", "(const QString&)", "$")]
+		[SmokeMethod("prepare(const QString&)")]
 		protected virtual bool Prepare(string query) {
-			return ((QSqlResult) interceptor).Prepare(query);
+			return (bool) interceptor.Invoke("prepare$", "prepare(const QString&)", typeof(bool), typeof(string), query);
 		}
-		[SmokeMethod("savePrepare", "(const QString&)", "$")]
+		[SmokeMethod("savePrepare(const QString&)")]
 		protected virtual bool SavePrepare(string sqlquery) {
-			return ((QSqlResult) interceptor).SavePrepare(sqlquery);
+			return (bool) interceptor.Invoke("savePrepare$", "savePrepare(const QString&)", typeof(bool), typeof(string), sqlquery);
 		}
-		[SmokeMethod("bindValue", "(int, const QVariant&, QSql::ParamType)", "$#$")]
+		[SmokeMethod("bindValue(int, const QVariant&, QSql::ParamType)")]
 		protected virtual void BindValue(int pos, QVariant val, int type) {
-			((QSqlResult) interceptor).BindValue(pos,val,type);
+			interceptor.Invoke("bindValue$#$", "bindValue(int, const QVariant&, QSql::ParamType)", typeof(void), typeof(int), pos, typeof(QVariant), val, typeof(int), type);
 		}
-		[SmokeMethod("bindValue", "(const QString&, const QVariant&, QSql::ParamType)", "$#$")]
+		[SmokeMethod("bindValue(const QString&, const QVariant&, QSql::ParamType)")]
 		protected virtual void BindValue(string placeholder, QVariant val, int type) {
-			((QSqlResult) interceptor).BindValue(placeholder,val,type);
+			interceptor.Invoke("bindValue$#$", "bindValue(const QString&, const QVariant&, QSql::ParamType)", typeof(void), typeof(string), placeholder, typeof(QVariant), val, typeof(int), type);
 		}
-		[SmokeMethod("addBindValue", "(const QVariant&, QSql::ParamType)", "#$")]
 		protected void AddBindValue(QVariant val, int type) {
-			((QSqlResult) interceptor).AddBindValue(val,type);
+			interceptor.Invoke("addBindValue#$", "addBindValue(const QVariant&, QSql::ParamType)", typeof(void), typeof(QVariant), val, typeof(int), type);
 		}
-		[SmokeMethod("boundValue", "(const QString&) const", "$")]
 		protected QVariant BoundValue(string placeholder) {
-			return ((QSqlResult) interceptor).BoundValue(placeholder);
+			return (QVariant) interceptor.Invoke("boundValue$", "boundValue(const QString&) const", typeof(QVariant), typeof(string), placeholder);
 		}
-		[SmokeMethod("boundValue", "(int) const", "$")]
 		protected QVariant BoundValue(int pos) {
-			return ((QSqlResult) interceptor).BoundValue(pos);
+			return (QVariant) interceptor.Invoke("boundValue$", "boundValue(int) const", typeof(QVariant), typeof(int), pos);
 		}
-		[SmokeMethod("bindValueType", "(const QString&) const", "$")]
 		protected int BindValueType(string placeholder) {
-			return ((QSqlResult) interceptor).BindValueType(placeholder);
+			return (int) interceptor.Invoke("bindValueType$", "bindValueType(const QString&) const", typeof(int), typeof(string), placeholder);
 		}
-		[SmokeMethod("bindValueType", "(int) const", "$")]
 		protected int BindValueType(int pos) {
-			return ((QSqlResult) interceptor).BindValueType(pos);
+			return (int) interceptor.Invoke("bindValueType$", "bindValueType(int) const", typeof(int), typeof(int), pos);
 		}
-		[SmokeMethod("boundValueCount", "() const", "")]
 		protected int BoundValueCount() {
-			return ((QSqlResult) interceptor).BoundValueCount();
+			return (int) interceptor.Invoke("boundValueCount", "boundValueCount() const", typeof(int));
 		}
-		[SmokeMethod("boundValues", "() const", "")]
 		protected List<QVariant> BoundValues() {
-			return ((QSqlResult) interceptor).BoundValues();
+			return (List<QVariant>) interceptor.Invoke("boundValues", "boundValues() const", typeof(List<QVariant>));
 		}
-		[SmokeMethod("executedQuery", "() const", "")]
 		protected string ExecutedQuery() {
-			return ((QSqlResult) interceptor).ExecutedQuery();
+			return (string) interceptor.Invoke("executedQuery", "executedQuery() const", typeof(string));
 		}
-		[SmokeMethod("boundValueName", "(int) const", "$")]
 		protected string BoundValueName(int pos) {
-			return ((QSqlResult) interceptor).BoundValueName(pos);
+			return (string) interceptor.Invoke("boundValueName$", "boundValueName(int) const", typeof(string), typeof(int), pos);
 		}
-		[SmokeMethod("clear", "()", "")]
 		protected void Clear() {
-			((QSqlResult) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("hasOutValues", "() const", "")]
 		protected bool HasOutValues() {
-			return ((QSqlResult) interceptor).HasOutValues();
+			return (bool) interceptor.Invoke("hasOutValues", "hasOutValues() const", typeof(bool));
 		}
-		[SmokeMethod("bindingSyntax", "() const", "")]
 		protected QSqlResult.BindingSyntax bindingSyntax() {
-			return ((QSqlResult) interceptor).bindingSyntax();
+			return (QSqlResult.BindingSyntax) interceptor.Invoke("bindingSyntax", "bindingSyntax() const", typeof(QSqlResult.BindingSyntax));
 		}
-		[SmokeMethod("data", "(int)", "$")]
+		[SmokeMethod("data(int)")]
 		protected abstract QVariant Data(int i);
-		[SmokeMethod("isNull", "(int)", "$")]
+		[SmokeMethod("isNull(int)")]
 		protected abstract bool IsNull(int i);
-		[SmokeMethod("reset", "(const QString&)", "$")]
+		[SmokeMethod("reset(const QString&)")]
 		protected abstract bool Reset(string sqlquery);
-		[SmokeMethod("fetch", "(int)", "$")]
+		[SmokeMethod("fetch(int)")]
 		protected abstract bool Fetch(int i);
-		[SmokeMethod("fetchNext", "()", "")]
+		[SmokeMethod("fetchNext()")]
 		protected virtual bool FetchNext() {
-			return ((QSqlResult) interceptor).FetchNext();
+			return (bool) interceptor.Invoke("fetchNext", "fetchNext()", typeof(bool));
 		}
-		[SmokeMethod("fetchPrevious", "()", "")]
+		[SmokeMethod("fetchPrevious()")]
 		protected virtual bool FetchPrevious() {
-			return ((QSqlResult) interceptor).FetchPrevious();
+			return (bool) interceptor.Invoke("fetchPrevious", "fetchPrevious()", typeof(bool));
 		}
-		[SmokeMethod("fetchFirst", "()", "")]
+		[SmokeMethod("fetchFirst()")]
 		protected abstract bool FetchFirst();
-		[SmokeMethod("fetchLast", "()", "")]
+		[SmokeMethod("fetchLast()")]
 		protected abstract bool FetchLast();
-		[SmokeMethod("size", "()", "")]
+		[SmokeMethod("size()")]
 		protected abstract int Size();
-		[SmokeMethod("numRowsAffected", "()", "")]
+		[SmokeMethod("numRowsAffected()")]
 		protected abstract int NumRowsAffected();
-		[SmokeMethod("record", "() const", "")]
+		[SmokeMethod("record() const")]
 		protected virtual QSqlRecord Record() {
-			return ((QSqlResult) interceptor).Record();
+			return (QSqlRecord) interceptor.Invoke("record", "record() const", typeof(QSqlRecord));
 		}
-		[SmokeMethod("lastInsertId", "() const", "")]
+		[SmokeMethod("lastInsertId() const")]
 		protected virtual QVariant LastInsertId() {
-			return ((QSqlResult) interceptor).LastInsertId();
+			return (QVariant) interceptor.Invoke("lastInsertId", "lastInsertId() const", typeof(QVariant));
 		}
-		[SmokeMethod("execBatch", "(bool)", "$")]
 		protected bool ExecBatch(bool arrayBind) {
-			return ((QSqlResult) interceptor).ExecBatch(arrayBind);
+			return (bool) interceptor.Invoke("execBatch$", "execBatch(bool)", typeof(bool), typeof(bool), arrayBind);
 		}
-		[SmokeMethod("execBatch", "()", "")]
 		protected bool ExecBatch() {
-			return ((QSqlResult) interceptor).ExecBatch();
+			return (bool) interceptor.Invoke("execBatch", "execBatch()", typeof(bool));
 		}
 	}
 }

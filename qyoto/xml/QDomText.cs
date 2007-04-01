@@ -7,42 +7,27 @@ namespace Qyoto {
 	public class QDomText : QDomCharacterData, IDisposable {
  		protected QDomText(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomText), this);
-			interceptor = (QDomText) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomText), "QDomText", this);
 		}
 		public QDomText() : this((Type) null) {
 			CreateProxy();
-			NewQDomText();
-		}
-		[SmokeMethod("QDomText", "()", "")]
-		private void NewQDomText() {
-			((QDomText) interceptor).NewQDomText();
+			interceptor.Invoke("QDomText", "QDomText()", typeof(void));
 		}
 		public QDomText(QDomText x) : this((Type) null) {
 			CreateProxy();
-			NewQDomText(x);
+			interceptor.Invoke("QDomText#", "QDomText(const QDomText&)", typeof(void), typeof(QDomText), x);
 		}
-		[SmokeMethod("QDomText", "(const QDomText&)", "#")]
-		private void NewQDomText(QDomText x) {
-			((QDomText) interceptor).NewQDomText(x);
-		}
-		[SmokeMethod("splitText", "(int)", "$")]
 		public QDomText SplitText(int offset) {
-			return ((QDomText) interceptor).SplitText(offset);
+			return (QDomText) interceptor.Invoke("splitText$", "splitText(int)", typeof(QDomText), typeof(int), offset);
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomText) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomText() {
-			DisposeQDomText();
+			interceptor.Invoke("~QDomText", "~QDomText()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomText();
-		}
-		[SmokeMethod("~QDomText", "()", "")]
-		private void DisposeQDomText() {
-			((QDomText) interceptor).DisposeQDomText();
+			interceptor.Invoke("~QDomText", "~QDomText()", typeof(void));
 		}
 	}
 }

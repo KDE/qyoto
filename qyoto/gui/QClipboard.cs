@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QClipboard")]
 	public class QClipboard : QObject {
  		protected QClipboard(Type dummy) : base((Type) null) {}
-		[SmokeClass("QClipboard")]
-		interface IQClipboardProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClipboard), this);
-			interceptor = (QClipboard) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QClipboard), "QClipboard", this);
 		}
-		private static IQClipboardProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QClipboard() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQClipboardProxy), null);
-			staticInterceptor = (IQClipboardProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QClipboard), "QClipboard", null);
 		}
 		public enum Mode {
 			Clipboard = 0,
@@ -29,111 +20,86 @@ namespace Qyoto {
 			FindBuffer = 2,
 			LastMode = FindBuffer,
 		}
-		[SmokeMethod("clear", "(QClipboard::Mode)", "$")]
 		public void Clear(QClipboard.Mode mode) {
-			((QClipboard) interceptor).Clear(mode);
+			interceptor.Invoke("clear$", "clear(QClipboard::Mode)", typeof(void), typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QClipboard) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("supportsSelection", "() const", "")]
 		public bool SupportsSelection() {
-			return ((QClipboard) interceptor).SupportsSelection();
+			return (bool) interceptor.Invoke("supportsSelection", "supportsSelection() const", typeof(bool));
 		}
-		[SmokeMethod("supportsFindBuffer", "() const", "")]
 		public bool SupportsFindBuffer() {
-			return ((QClipboard) interceptor).SupportsFindBuffer();
+			return (bool) interceptor.Invoke("supportsFindBuffer", "supportsFindBuffer() const", typeof(bool));
 		}
-		[SmokeMethod("ownsSelection", "() const", "")]
 		public bool OwnsSelection() {
-			return ((QClipboard) interceptor).OwnsSelection();
+			return (bool) interceptor.Invoke("ownsSelection", "ownsSelection() const", typeof(bool));
 		}
-		[SmokeMethod("ownsClipboard", "() const", "")]
 		public bool OwnsClipboard() {
-			return ((QClipboard) interceptor).OwnsClipboard();
+			return (bool) interceptor.Invoke("ownsClipboard", "ownsClipboard() const", typeof(bool));
 		}
-		[SmokeMethod("ownsFindBuffer", "() const", "")]
 		public bool OwnsFindBuffer() {
-			return ((QClipboard) interceptor).OwnsFindBuffer();
+			return (bool) interceptor.Invoke("ownsFindBuffer", "ownsFindBuffer() const", typeof(bool));
 		}
-		[SmokeMethod("text", "(QClipboard::Mode) const", "$")]
 		public string Text(QClipboard.Mode mode) {
-			return ((QClipboard) interceptor).Text(mode);
+			return (string) interceptor.Invoke("text$", "text(QClipboard::Mode) const", typeof(string), typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QClipboard) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("text", "(QString&, QClipboard::Mode) const", "$$")]
 		public string Text(StringBuilder subtype, QClipboard.Mode mode) {
-			return ((QClipboard) interceptor).Text(subtype,mode);
+			return (string) interceptor.Invoke("text$$", "text(QString&, QClipboard::Mode) const", typeof(string), typeof(StringBuilder), subtype, typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("text", "(QString&) const", "$")]
 		public string Text(StringBuilder subtype) {
-			return ((QClipboard) interceptor).Text(subtype);
+			return (string) interceptor.Invoke("text$", "text(QString&) const", typeof(string), typeof(StringBuilder), subtype);
 		}
-		[SmokeMethod("setText", "(const QString&, QClipboard::Mode)", "$$")]
 		public void SetText(string arg1, QClipboard.Mode mode) {
-			((QClipboard) interceptor).SetText(arg1,mode);
+			interceptor.Invoke("setText$$", "setText(const QString&, QClipboard::Mode)", typeof(void), typeof(string), arg1, typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string arg1) {
-			((QClipboard) interceptor).SetText(arg1);
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("mimeData", "(QClipboard::Mode) const", "$")]
 		public QMimeData MimeData(QClipboard.Mode mode) {
-			return ((QClipboard) interceptor).MimeData(mode);
+			return (QMimeData) interceptor.Invoke("mimeData$", "mimeData(QClipboard::Mode) const", typeof(QMimeData), typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("mimeData", "() const", "")]
 		public QMimeData MimeData() {
-			return ((QClipboard) interceptor).MimeData();
+			return (QMimeData) interceptor.Invoke("mimeData", "mimeData() const", typeof(QMimeData));
 		}
-		[SmokeMethod("setMimeData", "(QMimeData*, QClipboard::Mode)", "#$")]
 		public void SetMimeData(QMimeData data, QClipboard.Mode mode) {
-			((QClipboard) interceptor).SetMimeData(data,mode);
+			interceptor.Invoke("setMimeData#$", "setMimeData(QMimeData*, QClipboard::Mode)", typeof(void), typeof(QMimeData), data, typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("setMimeData", "(QMimeData*)", "#")]
 		public void SetMimeData(QMimeData data) {
-			((QClipboard) interceptor).SetMimeData(data);
+			interceptor.Invoke("setMimeData#", "setMimeData(QMimeData*)", typeof(void), typeof(QMimeData), data);
 		}
-		[SmokeMethod("image", "(QClipboard::Mode) const", "$")]
 		public QImage Image(QClipboard.Mode mode) {
-			return ((QClipboard) interceptor).Image(mode);
+			return (QImage) interceptor.Invoke("image$", "image(QClipboard::Mode) const", typeof(QImage), typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("image", "() const", "")]
 		public QImage Image() {
-			return ((QClipboard) interceptor).Image();
+			return (QImage) interceptor.Invoke("image", "image() const", typeof(QImage));
 		}
-		[SmokeMethod("pixmap", "(QClipboard::Mode) const", "$")]
 		public QPixmap Pixmap(QClipboard.Mode mode) {
-			return ((QClipboard) interceptor).Pixmap(mode);
+			return (QPixmap) interceptor.Invoke("pixmap$", "pixmap(QClipboard::Mode) const", typeof(QPixmap), typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ((QClipboard) interceptor).Pixmap();
+			return (QPixmap) interceptor.Invoke("pixmap", "pixmap() const", typeof(QPixmap));
 		}
-		[SmokeMethod("setImage", "(const QImage&, QClipboard::Mode)", "#$")]
 		public void SetImage(QImage arg1, QClipboard.Mode mode) {
-			((QClipboard) interceptor).SetImage(arg1,mode);
+			interceptor.Invoke("setImage#$", "setImage(const QImage&, QClipboard::Mode)", typeof(void), typeof(QImage), arg1, typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("setImage", "(const QImage&)", "#")]
 		public void SetImage(QImage arg1) {
-			((QClipboard) interceptor).SetImage(arg1);
+			interceptor.Invoke("setImage#", "setImage(const QImage&)", typeof(void), typeof(QImage), arg1);
 		}
-		[SmokeMethod("setPixmap", "(const QPixmap&, QClipboard::Mode)", "#$")]
 		public void SetPixmap(QPixmap arg1, QClipboard.Mode mode) {
-			((QClipboard) interceptor).SetPixmap(arg1,mode);
+			interceptor.Invoke("setPixmap#$", "setPixmap(const QPixmap&, QClipboard::Mode)", typeof(void), typeof(QPixmap), arg1, typeof(QClipboard.Mode), mode);
 		}
-		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap arg1) {
-			((QClipboard) interceptor).SetPixmap(arg1);
+			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQClipboardSignals Emit {
 			get { return (IQClipboardSignals) Q_EMIT; }

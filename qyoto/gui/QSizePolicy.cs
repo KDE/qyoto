@@ -4,23 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSizePolicy")]
-	public class QSizePolicy : MarshalByRefObject, IDisposable {
-		protected QSizePolicy interceptor = null;
+	public class QSizePolicy : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSizePolicy(Type dummy) {}
-		[SmokeClass("QSizePolicy")]
-		interface IQSizePolicyProxy {
-			[SmokeMethod("operator==", "(const QSizePolicy&) const", "#")]
-			bool op_equals(QSizePolicy lhs, QSizePolicy s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizePolicy), this);
-			interceptor = (QSizePolicy) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSizePolicy), "QSizePolicy", this);
 		}
-		private static IQSizePolicyProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSizePolicy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSizePolicyProxy), null);
-			staticInterceptor = (IQSizePolicyProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSizePolicy), "QSizePolicy", null);
 		}
 		public enum PolicyFlag {
 			GrowFlag = 1,
@@ -40,90 +33,66 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QSizePolicy() : this((Type) null) {
 			CreateProxy();
-			NewQSizePolicy();
-		}
-		[SmokeMethod("QSizePolicy", "()", "")]
-		private void NewQSizePolicy() {
-			((QSizePolicy) interceptor).NewQSizePolicy();
+			interceptor.Invoke("QSizePolicy", "QSizePolicy()", typeof(void));
 		}
 		public QSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) : this((Type) null) {
 			CreateProxy();
-			NewQSizePolicy(horizontal,vertical);
+			interceptor.Invoke("QSizePolicy$$", "QSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), horizontal, typeof(QSizePolicy.Policy), vertical);
 		}
-		[SmokeMethod("QSizePolicy", "(QSizePolicy::Policy, QSizePolicy::Policy)", "$$")]
-		private void NewQSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) {
-			((QSizePolicy) interceptor).NewQSizePolicy(horizontal,vertical);
-		}
-		[SmokeMethod("horizontalPolicy", "() const", "")]
 		public QSizePolicy.Policy HorizontalPolicy() {
-			return ((QSizePolicy) interceptor).HorizontalPolicy();
+			return (QSizePolicy.Policy) interceptor.Invoke("horizontalPolicy", "horizontalPolicy() const", typeof(QSizePolicy.Policy));
 		}
-		[SmokeMethod("verticalPolicy", "() const", "")]
 		public QSizePolicy.Policy VerticalPolicy() {
-			return ((QSizePolicy) interceptor).VerticalPolicy();
+			return (QSizePolicy.Policy) interceptor.Invoke("verticalPolicy", "verticalPolicy() const", typeof(QSizePolicy.Policy));
 		}
-		[SmokeMethod("setHorizontalPolicy", "(QSizePolicy::Policy)", "$")]
 		public void SetHorizontalPolicy(QSizePolicy.Policy d) {
-			((QSizePolicy) interceptor).SetHorizontalPolicy(d);
+			interceptor.Invoke("setHorizontalPolicy$", "setHorizontalPolicy(QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), d);
 		}
-		[SmokeMethod("setVerticalPolicy", "(QSizePolicy::Policy)", "$")]
 		public void SetVerticalPolicy(QSizePolicy.Policy d) {
-			((QSizePolicy) interceptor).SetVerticalPolicy(d);
+			interceptor.Invoke("setVerticalPolicy$", "setVerticalPolicy(QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), d);
 		}
-		[SmokeMethod("expandingDirections", "() const", "")]
 		public int ExpandingDirections() {
-			return ((QSizePolicy) interceptor).ExpandingDirections();
+			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
 		}
-		[SmokeMethod("setHeightForWidth", "(bool)", "$")]
 		public void SetHeightForWidth(bool b) {
-			((QSizePolicy) interceptor).SetHeightForWidth(b);
+			interceptor.Invoke("setHeightForWidth$", "setHeightForWidth(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public bool HasHeightForWidth() {
-			return ((QSizePolicy) interceptor).HasHeightForWidth();
+			return (bool) interceptor.Invoke("hasHeightForWidth", "hasHeightForWidth() const", typeof(bool));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QSizePolicy)) { return false; }
 			return this == (QSizePolicy) o;
 		}
 		public override int GetHashCode() {
-			return ((QSizePolicy) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("horizontalStretch", "() const", "")]
 		public int HorizontalStretch() {
-			return ((QSizePolicy) interceptor).HorizontalStretch();
+			return (int) interceptor.Invoke("horizontalStretch", "horizontalStretch() const", typeof(int));
 		}
-		[SmokeMethod("verticalStretch", "() const", "")]
 		public int VerticalStretch() {
-			return ((QSizePolicy) interceptor).VerticalStretch();
+			return (int) interceptor.Invoke("verticalStretch", "verticalStretch() const", typeof(int));
 		}
-		[SmokeMethod("setHorizontalStretch", "(uchar)", "$")]
 		public void SetHorizontalStretch(ushort stretchFactor) {
-			((QSizePolicy) interceptor).SetHorizontalStretch(stretchFactor);
+			interceptor.Invoke("setHorizontalStretch$", "setHorizontalStretch(uchar)", typeof(void), typeof(ushort), stretchFactor);
 		}
-		[SmokeMethod("setVerticalStretch", "(uchar)", "$")]
 		public void SetVerticalStretch(ushort stretchFactor) {
-			((QSizePolicy) interceptor).SetVerticalStretch(stretchFactor);
+			interceptor.Invoke("setVerticalStretch$", "setVerticalStretch(uchar)", typeof(void), typeof(ushort), stretchFactor);
 		}
-		[SmokeMethod("transpose", "()", "")]
 		public void Transpose() {
-			((QSizePolicy) interceptor).Transpose();
+			interceptor.Invoke("transpose", "transpose()", typeof(void));
 		}
 		~QSizePolicy() {
-			DisposeQSizePolicy();
+			interceptor.Invoke("~QSizePolicy", "~QSizePolicy()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSizePolicy();
-		}
-		[SmokeMethod("~QSizePolicy", "()", "")]
-		private void DisposeQSizePolicy() {
-			((QSizePolicy) interceptor).DisposeQSizePolicy();
+			interceptor.Invoke("~QSizePolicy", "~QSizePolicy()", typeof(void));
 		}
 		public static bool operator==(QSizePolicy lhs, QSizePolicy s) {
-			return staticInterceptor.op_equals(lhs,s);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QSizePolicy&) const", typeof(bool), typeof(QSizePolicy), lhs, typeof(QSizePolicy), s);
 		}
 		public static bool operator!=(QSizePolicy lhs, QSizePolicy s) {
-			return !staticInterceptor.op_equals(lhs,s);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSizePolicy&) const", typeof(bool), typeof(QSizePolicy), lhs, typeof(QSizePolicy), s);
 		}
 	}
 }

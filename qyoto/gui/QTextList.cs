@@ -6,85 +6,58 @@ namespace Qyoto {
 	[SmokeClass("QTextList")]
 	public class QTextList : QTextBlockGroup, IDisposable {
  		protected QTextList(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextList")]
-		interface IQTextListProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextList), this);
-			interceptor = (QTextList) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextList), "QTextList", this);
 		}
-		private static IQTextListProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextList() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextListProxy), null);
-			staticInterceptor = (IQTextListProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextList), "QTextList", null);
 		}
 		public QTextList(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
-			NewQTextList(doc);
+			interceptor.Invoke("QTextList#", "QTextList(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);
 		}
-		[SmokeMethod("QTextList", "(QTextDocument*)", "#")]
-		private void NewQTextList(QTextDocument doc) {
-			((QTextList) interceptor).NewQTextList(doc);
-		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QTextList) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QTextList) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("item", "(int) const", "$")]
 		public QTextBlock Item(int i) {
-			return ((QTextList) interceptor).Item(i);
+			return (QTextBlock) interceptor.Invoke("item$", "item(int) const", typeof(QTextBlock), typeof(int), i);
 		}
-		[SmokeMethod("itemNumber", "(const QTextBlock&) const", "#")]
 		public int ItemNumber(QTextBlock arg1) {
-			return ((QTextList) interceptor).ItemNumber(arg1);
+			return (int) interceptor.Invoke("itemNumber#", "itemNumber(const QTextBlock&) const", typeof(int), typeof(QTextBlock), arg1);
 		}
-		[SmokeMethod("itemText", "(const QTextBlock&) const", "#")]
 		public string ItemText(QTextBlock arg1) {
-			return ((QTextList) interceptor).ItemText(arg1);
+			return (string) interceptor.Invoke("itemText#", "itemText(const QTextBlock&) const", typeof(string), typeof(QTextBlock), arg1);
 		}
-		[SmokeMethod("removeItem", "(int)", "$")]
 		public void RemoveItem(int i) {
-			((QTextList) interceptor).RemoveItem(i);
+			interceptor.Invoke("removeItem$", "removeItem(int)", typeof(void), typeof(int), i);
 		}
-		[SmokeMethod("remove", "(const QTextBlock&)", "#")]
 		public void Remove(QTextBlock arg1) {
-			((QTextList) interceptor).Remove(arg1);
+			interceptor.Invoke("remove#", "remove(const QTextBlock&)", typeof(void), typeof(QTextBlock), arg1);
 		}
-		[SmokeMethod("add", "(const QTextBlock&)", "#")]
 		public void Add(QTextBlock block) {
-			((QTextList) interceptor).Add(block);
+			interceptor.Invoke("add#", "add(const QTextBlock&)", typeof(void), typeof(QTextBlock), block);
 		}
-		[SmokeMethod("setFormat", "(const QTextListFormat&)", "#")]
 		public void SetFormat(QTextListFormat format) {
-			((QTextList) interceptor).SetFormat(format);
+			interceptor.Invoke("setFormat#", "setFormat(const QTextListFormat&)", typeof(void), typeof(QTextListFormat), format);
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QTextListFormat Format() {
-			return ((QTextList) interceptor).Format();
+			return (QTextListFormat) interceptor.Invoke("format", "format() const", typeof(QTextListFormat));
 		}
 		~QTextList() {
-			DisposeQTextList();
+			interceptor.Invoke("~QTextList", "~QTextList()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTextList();
-		}
-		[SmokeMethod("~QTextList", "()", "")]
-		private void DisposeQTextList() {
-			((QTextList) interceptor).DisposeQTextList();
+			interceptor.Invoke("~QTextList", "~QTextList()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextListSignals Emit {
 			get { return (IQTextListSignals) Q_EMIT; }

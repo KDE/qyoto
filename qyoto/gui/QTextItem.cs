@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextItem")]
-	public class QTextItem : MarshalByRefObject, IDisposable {
-		protected QTextItem interceptor = null;
+	public class QTextItem : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextItem(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextItem), this);
-			interceptor = (QTextItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextItem), "QTextItem", this);
 		}
 		public enum RenderFlag : uint {
 			RightToLeft = 0x1,
@@ -19,47 +18,33 @@ namespace Qyoto {
 			StrikeOut = 0x40,
 			Dummy = 0xffffffff,
 		}
-		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
-			return ((QTextItem) interceptor).Descent();
+			return (double) interceptor.Invoke("descent", "descent() const", typeof(double));
 		}
-		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
-			return ((QTextItem) interceptor).Ascent();
+			return (double) interceptor.Invoke("ascent", "ascent() const", typeof(double));
 		}
-		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ((QTextItem) interceptor).Width();
+			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		[SmokeMethod("renderFlags", "() const", "")]
 		public int RenderFlags() {
-			return ((QTextItem) interceptor).RenderFlags();
+			return (int) interceptor.Invoke("renderFlags", "renderFlags() const", typeof(int));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QTextItem) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ((QTextItem) interceptor).Font();
+			return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
 		}
 		public QTextItem() : this((Type) null) {
 			CreateProxy();
-			NewQTextItem();
-		}
-		[SmokeMethod("QTextItem", "()", "")]
-		private void NewQTextItem() {
-			((QTextItem) interceptor).NewQTextItem();
+			interceptor.Invoke("QTextItem", "QTextItem()", typeof(void));
 		}
 		~QTextItem() {
-			DisposeQTextItem();
+			interceptor.Invoke("~QTextItem", "~QTextItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextItem();
-		}
-		[SmokeMethod("~QTextItem", "()", "")]
-		private void DisposeQTextItem() {
-			((QTextItem) interceptor).DisposeQTextItem();
+			interceptor.Invoke("~QTextItem", "~QTextItem()", typeof(void));
 		}
 	}
 }

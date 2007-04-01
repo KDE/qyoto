@@ -7,125 +7,94 @@ namespace Qyoto {
 	[SmokeClass("QStringListModel")]
 	public partial class QStringListModel : QAbstractListModel, IDisposable {
  		protected QStringListModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStringListModel")]
-		interface IQStringListModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringListModel), this);
-			interceptor = (QStringListModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStringListModel), "QStringListModel", this);
 		}
-		private static IQStringListModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QStringListModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStringListModelProxy), null);
-			staticInterceptor = (IQStringListModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QStringListModel), "QStringListModel", null);
 		}
 		public QStringListModel(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQStringListModel(parent);
-		}
-		[SmokeMethod("QStringListModel", "(QObject*)", "#")]
-		private void NewQStringListModel(QObject parent) {
-			((QStringListModel) interceptor).NewQStringListModel(parent);
+			interceptor.Invoke("QStringListModel#", "QStringListModel(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QStringListModel() : this((Type) null) {
 			CreateProxy();
-			NewQStringListModel();
-		}
-		[SmokeMethod("QStringListModel", "()", "")]
-		private void NewQStringListModel() {
-			((QStringListModel) interceptor).NewQStringListModel();
+			interceptor.Invoke("QStringListModel", "QStringListModel()", typeof(void));
 		}
 		public QStringListModel(List<string> strings, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQStringListModel(strings,parent);
-		}
-		[SmokeMethod("QStringListModel", "(const QStringList&, QObject*)", "?#")]
-		private void NewQStringListModel(List<string> strings, QObject parent) {
-			((QStringListModel) interceptor).NewQStringListModel(strings,parent);
+			interceptor.Invoke("QStringListModel?#", "QStringListModel(const QStringList&, QObject*)", typeof(void), typeof(List<string>), strings, typeof(QObject), parent);
 		}
 		public QStringListModel(List<string> strings) : this((Type) null) {
 			CreateProxy();
-			NewQStringListModel(strings);
+			interceptor.Invoke("QStringListModel?", "QStringListModel(const QStringList&)", typeof(void), typeof(List<string>), strings);
 		}
-		[SmokeMethod("QStringListModel", "(const QStringList&)", "?")]
-		private void NewQStringListModel(List<string> strings) {
-			((QStringListModel) interceptor).NewQStringListModel(strings);
-		}
-		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("rowCount(const QModelIndex&) const")]
 		public override int RowCount(QModelIndex parent) {
-			return ((QStringListModel) interceptor).RowCount(parent);
+			return (int) interceptor.Invoke("rowCount#", "rowCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("rowCount", "() const", "")]
+		[SmokeMethod("rowCount() const")]
 		public virtual int RowCount() {
-			return ((QStringListModel) interceptor).RowCount();
+			return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
 		}
-		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
+		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public override QVariant Data(QModelIndex index, int role) {
-			return ((QStringListModel) interceptor).Data(index,role);
+			return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), index, typeof(int), role);
 		}
-		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&, int)")]
 		public override bool SetData(QModelIndex index, QVariant value, int role) {
-			return ((QStringListModel) interceptor).SetData(index,value,role);
+			return (bool) interceptor.Invoke("setData##$", "setData(const QModelIndex&, const QVariant&, int)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value, typeof(int), role);
 		}
-		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
 		public override bool SetData(QModelIndex index, QVariant value) {
-			return ((QStringListModel) interceptor).SetData(index,value);
+			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
 		}
-		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("flags(const QModelIndex&) const")]
 		public override int Flags(QModelIndex index) {
-			return ((QStringListModel) interceptor).Flags(index);
+			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("insertRows", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("insertRows(int, int, const QModelIndex&)")]
 		public override bool InsertRows(int row, int count, QModelIndex parent) {
-			return ((QStringListModel) interceptor).InsertRows(row,count,parent);
+			return (bool) interceptor.Invoke("insertRows$$#", "insertRows(int, int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("insertRows", "(int, int)", "$$")]
+		[SmokeMethod("insertRows(int, int)")]
 		public override bool InsertRows(int row, int count) {
-			return ((QStringListModel) interceptor).InsertRows(row,count);
+			return (bool) interceptor.Invoke("insertRows$$", "insertRows(int, int)", typeof(bool), typeof(int), row, typeof(int), count);
 		}
-		[SmokeMethod("removeRows", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("removeRows(int, int, const QModelIndex&)")]
 		public override bool RemoveRows(int row, int count, QModelIndex parent) {
-			return ((QStringListModel) interceptor).RemoveRows(row,count,parent);
+			return (bool) interceptor.Invoke("removeRows$$#", "removeRows(int, int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("removeRows", "(int, int)", "$$")]
+		[SmokeMethod("removeRows(int, int)")]
 		public override bool RemoveRows(int row, int count) {
-			return ((QStringListModel) interceptor).RemoveRows(row,count);
+			return (bool) interceptor.Invoke("removeRows$$", "removeRows(int, int)", typeof(bool), typeof(int), row, typeof(int), count);
 		}
-		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
+		[SmokeMethod("sort(int, Qt::SortOrder)")]
 		public override void Sort(int column, Qt.SortOrder order) {
-			((QStringListModel) interceptor).Sort(column,order);
+			interceptor.Invoke("sort$$", "sort(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}
-		[SmokeMethod("sort", "(int)", "$")]
+		[SmokeMethod("sort(int)")]
 		public override void Sort(int column) {
-			((QStringListModel) interceptor).Sort(column);
+			interceptor.Invoke("sort$", "sort(int)", typeof(void), typeof(int), column);
 		}
-		[SmokeMethod("stringList", "() const", "")]
 		public List<string> StringList() {
-			return ((QStringListModel) interceptor).StringList();
+			return (List<string>) interceptor.Invoke("stringList", "stringList() const", typeof(List<string>));
 		}
-		[SmokeMethod("setStringList", "(const QStringList&)", "?")]
 		public void SetStringList(List<string> strings) {
-			((QStringListModel) interceptor).SetStringList(strings);
+			interceptor.Invoke("setStringList?", "setStringList(const QStringList&)", typeof(void), typeof(List<string>), strings);
 		}
 		~QStringListModel() {
-			DisposeQStringListModel();
+			interceptor.Invoke("~QStringListModel", "~QStringListModel()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQStringListModel();
-		}
-		[SmokeMethod("~QStringListModel", "()", "")]
-		private void DisposeQStringListModel() {
-			((QStringListModel) interceptor).DisposeQStringListModel();
+			interceptor.Invoke("~QStringListModel", "~QStringListModel()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQStringListModelSignals Emit {
 			get { return (IQStringListModelSignals) Q_EMIT; }

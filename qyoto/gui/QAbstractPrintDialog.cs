@@ -6,21 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QAbstractPrintDialog")]
 	public abstract class QAbstractPrintDialog : QDialog {
  		protected QAbstractPrintDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractPrintDialog")]
-		interface IQAbstractPrintDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractPrintDialog), this);
-			interceptor = (QAbstractPrintDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractPrintDialog), "QAbstractPrintDialog", this);
 		}
-		private static IQAbstractPrintDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractPrintDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractPrintDialogProxy), null);
-			staticInterceptor = (IQAbstractPrintDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractPrintDialog), "QAbstractPrintDialog", null);
 		}
 		public enum PrintRange {
 			AllPages = 0,
@@ -36,79 +27,58 @@ namespace Qyoto {
 		}
 		public QAbstractPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractPrintDialog(printer,parent);
-		}
-		[SmokeMethod("QAbstractPrintDialog", "(QPrinter*, QWidget*)", "##")]
-		private void NewQAbstractPrintDialog(QPrinter printer, QWidget parent) {
-			((QAbstractPrintDialog) interceptor).NewQAbstractPrintDialog(printer,parent);
+			interceptor.Invoke("QAbstractPrintDialog##", "QAbstractPrintDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);
 		}
 		public QAbstractPrintDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractPrintDialog(printer);
+			interceptor.Invoke("QAbstractPrintDialog#", "QAbstractPrintDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
 		}
-		[SmokeMethod("QAbstractPrintDialog", "(QPrinter*)", "#")]
-		private void NewQAbstractPrintDialog(QPrinter printer) {
-			((QAbstractPrintDialog) interceptor).NewQAbstractPrintDialog(printer);
-		}
-		[SmokeMethod("exec", "()", "")]
+		[SmokeMethod("exec()")]
 		public abstract int Exec();
-		[SmokeMethod("addEnabledOption", "(QAbstractPrintDialog::PrintDialogOption)", "$")]
 		public void AddEnabledOption(QAbstractPrintDialog.PrintDialogOption option) {
-			((QAbstractPrintDialog) interceptor).AddEnabledOption(option);
+			interceptor.Invoke("addEnabledOption$", "addEnabledOption(QAbstractPrintDialog::PrintDialogOption)", typeof(void), typeof(QAbstractPrintDialog.PrintDialogOption), option);
 		}
-		[SmokeMethod("setEnabledOptions", "(PrintDialogOptions)", "$")]
 		public void SetEnabledOptions(int options) {
-			((QAbstractPrintDialog) interceptor).SetEnabledOptions(options);
+			interceptor.Invoke("setEnabledOptions$", "setEnabledOptions(PrintDialogOptions)", typeof(void), typeof(int), options);
 		}
-		[SmokeMethod("enabledOptions", "() const", "")]
 		public int EnabledOptions() {
-			return ((QAbstractPrintDialog) interceptor).EnabledOptions();
+			return (int) interceptor.Invoke("enabledOptions", "enabledOptions() const", typeof(int));
 		}
-		[SmokeMethod("isOptionEnabled", "(QAbstractPrintDialog::PrintDialogOption) const", "$")]
 		public bool IsOptionEnabled(QAbstractPrintDialog.PrintDialogOption option) {
-			return ((QAbstractPrintDialog) interceptor).IsOptionEnabled(option);
+			return (bool) interceptor.Invoke("isOptionEnabled$", "isOptionEnabled(QAbstractPrintDialog::PrintDialogOption) const", typeof(bool), typeof(QAbstractPrintDialog.PrintDialogOption), option);
 		}
-		[SmokeMethod("setPrintRange", "(QAbstractPrintDialog::PrintRange)", "$")]
 		public void SetPrintRange(QAbstractPrintDialog.PrintRange range) {
-			((QAbstractPrintDialog) interceptor).SetPrintRange(range);
+			interceptor.Invoke("setPrintRange$", "setPrintRange(QAbstractPrintDialog::PrintRange)", typeof(void), typeof(QAbstractPrintDialog.PrintRange), range);
 		}
-		[SmokeMethod("printRange", "() const", "")]
 		public QAbstractPrintDialog.PrintRange printRange() {
-			return ((QAbstractPrintDialog) interceptor).printRange();
+			return (QAbstractPrintDialog.PrintRange) interceptor.Invoke("printRange", "printRange() const", typeof(QAbstractPrintDialog.PrintRange));
 		}
-		[SmokeMethod("setMinMax", "(int, int)", "$$")]
 		public void SetMinMax(int min, int max) {
-			((QAbstractPrintDialog) interceptor).SetMinMax(min,max);
+			interceptor.Invoke("setMinMax$$", "setMinMax(int, int)", typeof(void), typeof(int), min, typeof(int), max);
 		}
-		[SmokeMethod("minPage", "() const", "")]
 		public int MinPage() {
-			return ((QAbstractPrintDialog) interceptor).MinPage();
+			return (int) interceptor.Invoke("minPage", "minPage() const", typeof(int));
 		}
-		[SmokeMethod("maxPage", "() const", "")]
 		public int MaxPage() {
-			return ((QAbstractPrintDialog) interceptor).MaxPage();
+			return (int) interceptor.Invoke("maxPage", "maxPage() const", typeof(int));
 		}
-		[SmokeMethod("setFromTo", "(int, int)", "$$")]
 		public void SetFromTo(int fromPage, int toPage) {
-			((QAbstractPrintDialog) interceptor).SetFromTo(fromPage,toPage);
+			interceptor.Invoke("setFromTo$$", "setFromTo(int, int)", typeof(void), typeof(int), fromPage, typeof(int), toPage);
 		}
-		[SmokeMethod("fromPage", "() const", "")]
 		public int FromPage() {
-			return ((QAbstractPrintDialog) interceptor).FromPage();
+			return (int) interceptor.Invoke("fromPage", "fromPage() const", typeof(int));
 		}
-		[SmokeMethod("toPage", "() const", "")]
 		public int ToPage() {
-			return ((QAbstractPrintDialog) interceptor).ToPage();
+			return (int) interceptor.Invoke("toPage", "toPage() const", typeof(int));
 		}
-		[SmokeMethod("printer", "() const", "")]
 		public QPrinter Printer() {
-			return ((QAbstractPrintDialog) interceptor).Printer();
+			return (QPrinter) interceptor.Invoke("printer", "printer() const", typeof(QPrinter));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractPrintDialogSignals Emit {
 			get { return (IQAbstractPrintDialogSignals) Q_EMIT; }

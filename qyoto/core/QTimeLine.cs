@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QTimeLine")]
 	public class QTimeLine : QObject, IDisposable {
  		protected QTimeLine(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTimeLine")]
-		interface IQTimeLineProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimeLine), this);
-			interceptor = (QTimeLine) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTimeLine), "QTimeLine", this);
 		}
-		private static IQTimeLineProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTimeLine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTimeLineProxy), null);
-			staticInterceptor = (IQTimeLineProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTimeLine), "QTimeLine", null);
 		}
 		public enum State {
 			NotRunning = 0,
@@ -41,149 +32,108 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "duration")]
 		public int Duration {
-			[SmokeMethod("duration", "()", "")]
-			get { return ((QTimeLine) interceptor).Duration; }
-			[SmokeMethod("setDuration", "(int)", "$")]
-			set { ((QTimeLine) interceptor).Duration = value; }
+			get { return (int) interceptor.Invoke("duration", "duration()", typeof(int)); }
+			set { interceptor.Invoke("setDuration$", "setDuration(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "updateInterval")]
 		public int UpdateInterval {
-			[SmokeMethod("updateInterval", "()", "")]
-			get { return ((QTimeLine) interceptor).UpdateInterval; }
-			[SmokeMethod("setUpdateInterval", "(int)", "$")]
-			set { ((QTimeLine) interceptor).UpdateInterval = value; }
+			get { return (int) interceptor.Invoke("updateInterval", "updateInterval()", typeof(int)); }
+			set { interceptor.Invoke("setUpdateInterval$", "setUpdateInterval(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "currentTime")]
 		public int CurrentTime {
-			[SmokeMethod("currentTime", "()", "")]
-			get { return ((QTimeLine) interceptor).CurrentTime; }
-			[SmokeMethod("setCurrentTime", "(int)", "$")]
-			set { ((QTimeLine) interceptor).CurrentTime = value; }
+			get { return (int) interceptor.Invoke("currentTime", "currentTime()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentTime$", "setCurrentTime(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QTimeLine::Direction", "direction")]
 		public QTimeLine.Direction direction {
-			[SmokeMethod("direction", "()", "")]
-			get { return ((QTimeLine) interceptor).direction; }
-			[SmokeMethod("setDirection", "(QTimeLine::Direction)", "$")]
-			set { ((QTimeLine) interceptor).direction = value; }
+			get { return (QTimeLine.Direction) interceptor.Invoke("direction", "direction()", typeof(QTimeLine.Direction)); }
+			set { interceptor.Invoke("setDirection$", "setDirection(QTimeLine::Direction)", typeof(void), typeof(QTimeLine.Direction), value); }
 		}
 		[Q_PROPERTY("int", "loopCount")]
 		public int LoopCount {
-			[SmokeMethod("loopCount", "()", "")]
-			get { return ((QTimeLine) interceptor).LoopCount; }
-			[SmokeMethod("setLoopCount", "(int)", "$")]
-			set { ((QTimeLine) interceptor).LoopCount = value; }
+			get { return (int) interceptor.Invoke("loopCount", "loopCount()", typeof(int)); }
+			set { interceptor.Invoke("setLoopCount$", "setLoopCount(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QTimeLine::CurveShape", "curveShape")]
 		public QTimeLine.CurveShape curveShape {
-			[SmokeMethod("curveShape", "()", "")]
-			get { return ((QTimeLine) interceptor).curveShape; }
-			[SmokeMethod("setCurveShape", "(QTimeLine::CurveShape)", "$")]
-			set { ((QTimeLine) interceptor).curveShape = value; }
+			get { return (QTimeLine.CurveShape) interceptor.Invoke("curveShape", "curveShape()", typeof(QTimeLine.CurveShape)); }
+			set { interceptor.Invoke("setCurveShape$", "setCurveShape(QTimeLine::CurveShape)", typeof(void), typeof(QTimeLine.CurveShape), value); }
 		}
 		public QTimeLine(int duration, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTimeLine(duration,parent);
-		}
-		[SmokeMethod("QTimeLine", "(int, QObject*)", "$#")]
-		private void NewQTimeLine(int duration, QObject parent) {
-			((QTimeLine) interceptor).NewQTimeLine(duration,parent);
+			interceptor.Invoke("QTimeLine$#", "QTimeLine(int, QObject*)", typeof(void), typeof(int), duration, typeof(QObject), parent);
 		}
 		public QTimeLine(int duration) : this((Type) null) {
 			CreateProxy();
-			NewQTimeLine(duration);
-		}
-		[SmokeMethod("QTimeLine", "(int)", "$")]
-		private void NewQTimeLine(int duration) {
-			((QTimeLine) interceptor).NewQTimeLine(duration);
+			interceptor.Invoke("QTimeLine$", "QTimeLine(int)", typeof(void), typeof(int), duration);
 		}
 		public QTimeLine() : this((Type) null) {
 			CreateProxy();
-			NewQTimeLine();
+			interceptor.Invoke("QTimeLine", "QTimeLine()", typeof(void));
 		}
-		[SmokeMethod("QTimeLine", "()", "")]
-		private void NewQTimeLine() {
-			((QTimeLine) interceptor).NewQTimeLine();
-		}
-		[SmokeMethod("state", "() const", "")]
 		public QTimeLine.State state() {
-			return ((QTimeLine) interceptor).state();
+			return (QTimeLine.State) interceptor.Invoke("state", "state() const", typeof(QTimeLine.State));
 		}
-		[SmokeMethod("startFrame", "() const", "")]
 		public int StartFrame() {
-			return ((QTimeLine) interceptor).StartFrame();
+			return (int) interceptor.Invoke("startFrame", "startFrame() const", typeof(int));
 		}
-		[SmokeMethod("setStartFrame", "(int)", "$")]
 		public void SetStartFrame(int frame) {
-			((QTimeLine) interceptor).SetStartFrame(frame);
+			interceptor.Invoke("setStartFrame$", "setStartFrame(int)", typeof(void), typeof(int), frame);
 		}
-		[SmokeMethod("endFrame", "() const", "")]
 		public int EndFrame() {
-			return ((QTimeLine) interceptor).EndFrame();
+			return (int) interceptor.Invoke("endFrame", "endFrame() const", typeof(int));
 		}
-		[SmokeMethod("setEndFrame", "(int)", "$")]
 		public void SetEndFrame(int frame) {
-			((QTimeLine) interceptor).SetEndFrame(frame);
+			interceptor.Invoke("setEndFrame$", "setEndFrame(int)", typeof(void), typeof(int), frame);
 		}
-		[SmokeMethod("setFrameRange", "(int, int)", "$$")]
 		public void SetFrameRange(int startFrame, int endFrame) {
-			((QTimeLine) interceptor).SetFrameRange(startFrame,endFrame);
+			interceptor.Invoke("setFrameRange$$", "setFrameRange(int, int)", typeof(void), typeof(int), startFrame, typeof(int), endFrame);
 		}
-		[SmokeMethod("currentFrame", "() const", "")]
 		public int CurrentFrame() {
-			return ((QTimeLine) interceptor).CurrentFrame();
+			return (int) interceptor.Invoke("currentFrame", "currentFrame() const", typeof(int));
 		}
-		[SmokeMethod("currentValue", "() const", "")]
 		public double CurrentValue() {
-			return ((QTimeLine) interceptor).CurrentValue();
+			return (double) interceptor.Invoke("currentValue", "currentValue() const", typeof(double));
 		}
-		[SmokeMethod("frameForTime", "(int) const", "$")]
 		public int FrameForTime(int msec) {
-			return ((QTimeLine) interceptor).FrameForTime(msec);
+			return (int) interceptor.Invoke("frameForTime$", "frameForTime(int) const", typeof(int), typeof(int), msec);
 		}
-		[SmokeMethod("valueForTime", "(int) const", "$")]
+		[SmokeMethod("valueForTime(int) const")]
 		public virtual double ValueForTime(int msec) {
-			return ((QTimeLine) interceptor).ValueForTime(msec);
+			return (double) interceptor.Invoke("valueForTime$", "valueForTime(int) const", typeof(double), typeof(int), msec);
 		}
 		[Q_SLOT("void start()")]
-		[SmokeMethod("start", "()", "")]
 		public void Start() {
-			((QTimeLine) interceptor).Start();
+			interceptor.Invoke("start", "start()", typeof(void));
 		}
 		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			((QTimeLine) interceptor).Stop();
+			interceptor.Invoke("stop", "stop()", typeof(void));
 		}
 		[Q_SLOT("void setPaused(bool)")]
-		[SmokeMethod("setPaused", "(bool)", "$")]
 		public void SetPaused(bool paused) {
-			((QTimeLine) interceptor).SetPaused(paused);
+			interceptor.Invoke("setPaused$", "setPaused(bool)", typeof(void), typeof(bool), paused);
 		}
 		[Q_SLOT("void toggleDirection()")]
-		[SmokeMethod("toggleDirection", "()", "")]
 		public void ToggleDirection() {
-			((QTimeLine) interceptor).ToggleDirection();
+			interceptor.Invoke("toggleDirection", "toggleDirection()", typeof(void));
 		}
-		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			((QTimeLine) interceptor).TimerEvent(arg1);
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
 		~QTimeLine() {
-			DisposeQTimeLine();
+			interceptor.Invoke("~QTimeLine", "~QTimeLine()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTimeLine();
-		}
-		[SmokeMethod("~QTimeLine", "()", "")]
-		private void DisposeQTimeLine() {
-			((QTimeLine) interceptor).DisposeQTimeLine();
+			interceptor.Invoke("~QTimeLine", "~QTimeLine()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTimeLineSignals Emit {
 			get { return (IQTimeLineSignals) Q_EMIT; }

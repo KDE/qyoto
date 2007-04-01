@@ -7,42 +7,27 @@ namespace Qyoto {
 	public class QActionEvent : QEvent, IDisposable {
  		protected QActionEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionEvent), this);
-			interceptor = (QActionEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QActionEvent), "QActionEvent", this);
 		}
 		public QActionEvent(int type, QAction action, QAction before) : this((Type) null) {
 			CreateProxy();
-			NewQActionEvent(type,action,before);
-		}
-		[SmokeMethod("QActionEvent", "(int, QAction*, QAction*)", "$##")]
-		private void NewQActionEvent(int type, QAction action, QAction before) {
-			((QActionEvent) interceptor).NewQActionEvent(type,action,before);
+			interceptor.Invoke("QActionEvent$##", "QActionEvent(int, QAction*, QAction*)", typeof(void), typeof(int), type, typeof(QAction), action, typeof(QAction), before);
 		}
 		public QActionEvent(int type, QAction action) : this((Type) null) {
 			CreateProxy();
-			NewQActionEvent(type,action);
+			interceptor.Invoke("QActionEvent$#", "QActionEvent(int, QAction*)", typeof(void), typeof(int), type, typeof(QAction), action);
 		}
-		[SmokeMethod("QActionEvent", "(int, QAction*)", "$#")]
-		private void NewQActionEvent(int type, QAction action) {
-			((QActionEvent) interceptor).NewQActionEvent(type,action);
-		}
-		[SmokeMethod("action", "() const", "")]
 		public QAction Action() {
-			return ((QActionEvent) interceptor).Action();
+			return (QAction) interceptor.Invoke("action", "action() const", typeof(QAction));
 		}
-		[SmokeMethod("before", "() const", "")]
 		public QAction Before() {
-			return ((QActionEvent) interceptor).Before();
+			return (QAction) interceptor.Invoke("before", "before() const", typeof(QAction));
 		}
 		~QActionEvent() {
-			DisposeQActionEvent();
+			interceptor.Invoke("~QActionEvent", "~QActionEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQActionEvent();
-		}
-		[SmokeMethod("~QActionEvent", "()", "")]
-		private void DisposeQActionEvent() {
-			((QActionEvent) interceptor).DisposeQActionEvent();
+			interceptor.Invoke("~QActionEvent", "~QActionEvent()", typeof(void));
 		}
 	}
 }

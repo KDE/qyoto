@@ -8,8 +8,7 @@ namespace Qyoto {
 	public class QPrinter : QPaintDevice, IDisposable {
  		protected QPrinter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrinter), this);
-			interceptor = (QPrinter) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPrinter), "QPrinter", this);
 		}
 		public enum PrinterMode {
 			ScreenResolution = 0,
@@ -95,229 +94,170 @@ namespace Qyoto {
 		}
 		public QPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
 			CreateProxy();
-			NewQPrinter(mode);
-		}
-		[SmokeMethod("QPrinter", "(QPrinter::PrinterMode)", "$")]
-		private void NewQPrinter(QPrinter.PrinterMode mode) {
-			((QPrinter) interceptor).NewQPrinter(mode);
+			interceptor.Invoke("QPrinter$", "QPrinter(QPrinter::PrinterMode)", typeof(void), typeof(QPrinter.PrinterMode), mode);
 		}
 		public QPrinter() : this((Type) null) {
 			CreateProxy();
-			NewQPrinter();
+			interceptor.Invoke("QPrinter", "QPrinter()", typeof(void));
 		}
-		[SmokeMethod("QPrinter", "()", "")]
-		private void NewQPrinter() {
-			((QPrinter) interceptor).NewQPrinter();
-		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		public override int DevType() {
-			return ((QPrinter) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
-		[SmokeMethod("setOutputFormat", "(QPrinter::OutputFormat)", "$")]
 		public void SetOutputFormat(QPrinter.OutputFormat format) {
-			((QPrinter) interceptor).SetOutputFormat(format);
+			interceptor.Invoke("setOutputFormat$", "setOutputFormat(QPrinter::OutputFormat)", typeof(void), typeof(QPrinter.OutputFormat), format);
 		}
-		[SmokeMethod("outputFormat", "() const", "")]
 		public QPrinter.OutputFormat outputFormat() {
-			return ((QPrinter) interceptor).outputFormat();
+			return (QPrinter.OutputFormat) interceptor.Invoke("outputFormat", "outputFormat() const", typeof(QPrinter.OutputFormat));
 		}
-		[SmokeMethod("setPrinterName", "(const QString&)", "$")]
 		public void SetPrinterName(string arg1) {
-			((QPrinter) interceptor).SetPrinterName(arg1);
+			interceptor.Invoke("setPrinterName$", "setPrinterName(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("printerName", "() const", "")]
 		public string PrinterName() {
-			return ((QPrinter) interceptor).PrinterName();
+			return (string) interceptor.Invoke("printerName", "printerName() const", typeof(string));
 		}
-		[SmokeMethod("setOutputFileName", "(const QString&)", "$")]
 		public void SetOutputFileName(string arg1) {
-			((QPrinter) interceptor).SetOutputFileName(arg1);
+			interceptor.Invoke("setOutputFileName$", "setOutputFileName(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("outputFileName", "() const", "")]
 		public string OutputFileName() {
-			return ((QPrinter) interceptor).OutputFileName();
+			return (string) interceptor.Invoke("outputFileName", "outputFileName() const", typeof(string));
 		}
-		[SmokeMethod("setPrintProgram", "(const QString&)", "$")]
 		public void SetPrintProgram(string arg1) {
-			((QPrinter) interceptor).SetPrintProgram(arg1);
+			interceptor.Invoke("setPrintProgram$", "setPrintProgram(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("printProgram", "() const", "")]
 		public string PrintProgram() {
-			return ((QPrinter) interceptor).PrintProgram();
+			return (string) interceptor.Invoke("printProgram", "printProgram() const", typeof(string));
 		}
-		[SmokeMethod("setDocName", "(const QString&)", "$")]
 		public void SetDocName(string arg1) {
-			((QPrinter) interceptor).SetDocName(arg1);
+			interceptor.Invoke("setDocName$", "setDocName(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("docName", "() const", "")]
 		public string DocName() {
-			return ((QPrinter) interceptor).DocName();
+			return (string) interceptor.Invoke("docName", "docName() const", typeof(string));
 		}
-		[SmokeMethod("setCreator", "(const QString&)", "$")]
 		public void SetCreator(string arg1) {
-			((QPrinter) interceptor).SetCreator(arg1);
+			interceptor.Invoke("setCreator$", "setCreator(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("creator", "() const", "")]
 		public string Creator() {
-			return ((QPrinter) interceptor).Creator();
+			return (string) interceptor.Invoke("creator", "creator() const", typeof(string));
 		}
-		[SmokeMethod("setOrientation", "(QPrinter::Orientation)", "$")]
 		public void SetOrientation(QPrinter.Orientation arg1) {
-			((QPrinter) interceptor).SetOrientation(arg1);
+			interceptor.Invoke("setOrientation$", "setOrientation(QPrinter::Orientation)", typeof(void), typeof(QPrinter.Orientation), arg1);
 		}
-		[SmokeMethod("orientation", "() const", "")]
 		public QPrinter.Orientation orientation() {
-			return ((QPrinter) interceptor).orientation();
+			return (QPrinter.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(QPrinter.Orientation));
 		}
-		[SmokeMethod("setPageSize", "(QPrinter::PageSize)", "$")]
 		public void SetPageSize(QPrinter.PageSize arg1) {
-			((QPrinter) interceptor).SetPageSize(arg1);
+			interceptor.Invoke("setPageSize$", "setPageSize(QPrinter::PageSize)", typeof(void), typeof(QPrinter.PageSize), arg1);
 		}
-		[SmokeMethod("pageSize", "() const", "")]
 		public QPrinter.PageSize pageSize() {
-			return ((QPrinter) interceptor).pageSize();
+			return (QPrinter.PageSize) interceptor.Invoke("pageSize", "pageSize() const", typeof(QPrinter.PageSize));
 		}
-		[SmokeMethod("setPageOrder", "(QPrinter::PageOrder)", "$")]
 		public void SetPageOrder(QPrinter.PageOrder arg1) {
-			((QPrinter) interceptor).SetPageOrder(arg1);
+			interceptor.Invoke("setPageOrder$", "setPageOrder(QPrinter::PageOrder)", typeof(void), typeof(QPrinter.PageOrder), arg1);
 		}
-		[SmokeMethod("pageOrder", "() const", "")]
 		public QPrinter.PageOrder pageOrder() {
-			return ((QPrinter) interceptor).pageOrder();
+			return (QPrinter.PageOrder) interceptor.Invoke("pageOrder", "pageOrder() const", typeof(QPrinter.PageOrder));
 		}
-		[SmokeMethod("setResolution", "(int)", "$")]
 		public void SetResolution(int arg1) {
-			((QPrinter) interceptor).SetResolution(arg1);
+			interceptor.Invoke("setResolution$", "setResolution(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("resolution", "() const", "")]
 		public int Resolution() {
-			return ((QPrinter) interceptor).Resolution();
+			return (int) interceptor.Invoke("resolution", "resolution() const", typeof(int));
 		}
-		[SmokeMethod("setColorMode", "(QPrinter::ColorMode)", "$")]
 		public void SetColorMode(QPrinter.ColorMode arg1) {
-			((QPrinter) interceptor).SetColorMode(arg1);
+			interceptor.Invoke("setColorMode$", "setColorMode(QPrinter::ColorMode)", typeof(void), typeof(QPrinter.ColorMode), arg1);
 		}
-		[SmokeMethod("colorMode", "() const", "")]
 		public QPrinter.ColorMode colorMode() {
-			return ((QPrinter) interceptor).colorMode();
+			return (QPrinter.ColorMode) interceptor.Invoke("colorMode", "colorMode() const", typeof(QPrinter.ColorMode));
 		}
-		[SmokeMethod("setCollateCopies", "(bool)", "$")]
 		public void SetCollateCopies(bool collate) {
-			((QPrinter) interceptor).SetCollateCopies(collate);
+			interceptor.Invoke("setCollateCopies$", "setCollateCopies(bool)", typeof(void), typeof(bool), collate);
 		}
-		[SmokeMethod("collateCopies", "() const", "")]
 		public bool CollateCopies() {
-			return ((QPrinter) interceptor).CollateCopies();
+			return (bool) interceptor.Invoke("collateCopies", "collateCopies() const", typeof(bool));
 		}
-		[SmokeMethod("setFullPage", "(bool)", "$")]
 		public void SetFullPage(bool arg1) {
-			((QPrinter) interceptor).SetFullPage(arg1);
+			interceptor.Invoke("setFullPage$", "setFullPage(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("fullPage", "() const", "")]
 		public bool FullPage() {
-			return ((QPrinter) interceptor).FullPage();
+			return (bool) interceptor.Invoke("fullPage", "fullPage() const", typeof(bool));
 		}
-		[SmokeMethod("setNumCopies", "(int)", "$")]
 		public void SetNumCopies(int arg1) {
-			((QPrinter) interceptor).SetNumCopies(arg1);
+			interceptor.Invoke("setNumCopies$", "setNumCopies(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("numCopies", "() const", "")]
 		public int NumCopies() {
-			return ((QPrinter) interceptor).NumCopies();
+			return (int) interceptor.Invoke("numCopies", "numCopies() const", typeof(int));
 		}
-		[SmokeMethod("setPaperSource", "(QPrinter::PaperSource)", "$")]
 		public void SetPaperSource(QPrinter.PaperSource arg1) {
-			((QPrinter) interceptor).SetPaperSource(arg1);
+			interceptor.Invoke("setPaperSource$", "setPaperSource(QPrinter::PaperSource)", typeof(void), typeof(QPrinter.PaperSource), arg1);
 		}
-		[SmokeMethod("paperSource", "() const", "")]
 		public QPrinter.PaperSource paperSource() {
-			return ((QPrinter) interceptor).paperSource();
+			return (QPrinter.PaperSource) interceptor.Invoke("paperSource", "paperSource() const", typeof(QPrinter.PaperSource));
 		}
-		[SmokeMethod("supportedResolutions", "() const", "")]
 		public List<int> SupportedResolutions() {
-			return ((QPrinter) interceptor).SupportedResolutions();
+			return (List<int>) interceptor.Invoke("supportedResolutions", "supportedResolutions() const", typeof(List<int>));
 		}
-		[SmokeMethod("setFontEmbeddingEnabled", "(bool)", "$")]
 		public void SetFontEmbeddingEnabled(bool enable) {
-			((QPrinter) interceptor).SetFontEmbeddingEnabled(enable);
+			interceptor.Invoke("setFontEmbeddingEnabled$", "setFontEmbeddingEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("fontEmbeddingEnabled", "() const", "")]
 		public bool FontEmbeddingEnabled() {
-			return ((QPrinter) interceptor).FontEmbeddingEnabled();
+			return (bool) interceptor.Invoke("fontEmbeddingEnabled", "fontEmbeddingEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("setDoubleSidedPrinting", "(bool)", "$")]
 		public void SetDoubleSidedPrinting(bool enable) {
-			((QPrinter) interceptor).SetDoubleSidedPrinting(enable);
+			interceptor.Invoke("setDoubleSidedPrinting$", "setDoubleSidedPrinting(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("doubleSidedPrinting", "() const", "")]
 		public bool DoubleSidedPrinting() {
-			return ((QPrinter) interceptor).DoubleSidedPrinting();
+			return (bool) interceptor.Invoke("doubleSidedPrinting", "doubleSidedPrinting() const", typeof(bool));
 		}
-		[SmokeMethod("paperRect", "() const", "")]
 		public QRect PaperRect() {
-			return ((QPrinter) interceptor).PaperRect();
+			return (QRect) interceptor.Invoke("paperRect", "paperRect() const", typeof(QRect));
 		}
-		[SmokeMethod("pageRect", "() const", "")]
 		public QRect PageRect() {
-			return ((QPrinter) interceptor).PageRect();
+			return (QRect) interceptor.Invoke("pageRect", "pageRect() const", typeof(QRect));
 		}
-		[SmokeMethod("newPage", "()", "")]
 		public bool NewPage() {
-			return ((QPrinter) interceptor).NewPage();
+			return (bool) interceptor.Invoke("newPage", "newPage()", typeof(bool));
 		}
-		[SmokeMethod("abort", "()", "")]
 		public bool Abort() {
-			return ((QPrinter) interceptor).Abort();
+			return (bool) interceptor.Invoke("abort", "abort()", typeof(bool));
 		}
-		[SmokeMethod("printerState", "() const", "")]
 		public QPrinter.PrinterState printerState() {
-			return ((QPrinter) interceptor).printerState();
+			return (QPrinter.PrinterState) interceptor.Invoke("printerState", "printerState() const", typeof(QPrinter.PrinterState));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {
-			return ((QPrinter) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
-		[SmokeMethod("printEngine", "() const", "")]
 		public QPrintEngine PrintEngine() {
-			return ((QPrinter) interceptor).PrintEngine();
+			return (QPrintEngine) interceptor.Invoke("printEngine", "printEngine() const", typeof(QPrintEngine));
 		}
-		[SmokeMethod("setFromTo", "(int, int)", "$$")]
 		public void SetFromTo(int fromPage, int toPage) {
-			((QPrinter) interceptor).SetFromTo(fromPage,toPage);
+			interceptor.Invoke("setFromTo$$", "setFromTo(int, int)", typeof(void), typeof(int), fromPage, typeof(int), toPage);
 		}
-		[SmokeMethod("fromPage", "() const", "")]
 		public int FromPage() {
-			return ((QPrinter) interceptor).FromPage();
+			return (int) interceptor.Invoke("fromPage", "fromPage() const", typeof(int));
 		}
-		[SmokeMethod("toPage", "() const", "")]
 		public int ToPage() {
-			return ((QPrinter) interceptor).ToPage();
+			return (int) interceptor.Invoke("toPage", "toPage() const", typeof(int));
 		}
-		[SmokeMethod("setPrintRange", "(QPrinter::PrintRange)", "$")]
 		public void SetPrintRange(QPrinter.PrintRange range) {
-			((QPrinter) interceptor).SetPrintRange(range);
+			interceptor.Invoke("setPrintRange$", "setPrintRange(QPrinter::PrintRange)", typeof(void), typeof(QPrinter.PrintRange), range);
 		}
-		[SmokeMethod("printRange", "() const", "")]
 		public QPrinter.PrintRange printRange() {
-			return ((QPrinter) interceptor).printRange();
+			return (QPrinter.PrintRange) interceptor.Invoke("printRange", "printRange() const", typeof(QPrinter.PrintRange));
 		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice arg1) {
-			return ((QPrinter) interceptor).Metric(arg1);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), arg1);
 		}
-		[SmokeMethod("setEngines", "(QPrintEngine*, QPaintEngine*)", "##")]
 		protected void SetEngines(QPrintEngine printEngine, QPaintEngine paintEngine) {
-			((QPrinter) interceptor).SetEngines(printEngine,paintEngine);
+			interceptor.Invoke("setEngines##", "setEngines(QPrintEngine*, QPaintEngine*)", typeof(void), typeof(QPrintEngine), printEngine, typeof(QPaintEngine), paintEngine);
 		}
 		~QPrinter() {
-			DisposeQPrinter();
+			interceptor.Invoke("~QPrinter", "~QPrinter()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPrinter();
-		}
-		[SmokeMethod("~QPrinter", "()", "")]
-		private void DisposeQPrinter() {
-			((QPrinter) interceptor).DisposeQPrinter();
+			interceptor.Invoke("~QPrinter", "~QPrinter()", typeof(void));
 		}
 	}
 }

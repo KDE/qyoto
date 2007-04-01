@@ -7,46 +7,30 @@ namespace Qyoto {
 	public class QShortcutEvent : QEvent, IDisposable {
  		protected QShortcutEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcutEvent), this);
-			interceptor = (QShortcutEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QShortcutEvent), "QShortcutEvent", this);
 		}
 		public QShortcutEvent(QKeySequence key, int id, bool ambiguous) : this((Type) null) {
 			CreateProxy();
-			NewQShortcutEvent(key,id,ambiguous);
-		}
-		[SmokeMethod("QShortcutEvent", "(const QKeySequence&, int, bool)", "#$$")]
-		private void NewQShortcutEvent(QKeySequence key, int id, bool ambiguous) {
-			((QShortcutEvent) interceptor).NewQShortcutEvent(key,id,ambiguous);
+			interceptor.Invoke("QShortcutEvent#$$", "QShortcutEvent(const QKeySequence&, int, bool)", typeof(void), typeof(QKeySequence), key, typeof(int), id, typeof(bool), ambiguous);
 		}
 		public QShortcutEvent(QKeySequence key, int id) : this((Type) null) {
 			CreateProxy();
-			NewQShortcutEvent(key,id);
+			interceptor.Invoke("QShortcutEvent#$", "QShortcutEvent(const QKeySequence&, int)", typeof(void), typeof(QKeySequence), key, typeof(int), id);
 		}
-		[SmokeMethod("QShortcutEvent", "(const QKeySequence&, int)", "#$")]
-		private void NewQShortcutEvent(QKeySequence key, int id) {
-			((QShortcutEvent) interceptor).NewQShortcutEvent(key,id);
-		}
-		[SmokeMethod("key", "()", "")]
 		public QKeySequence Key() {
-			return ((QShortcutEvent) interceptor).Key();
+			return (QKeySequence) interceptor.Invoke("key", "key()", typeof(QKeySequence));
 		}
-		[SmokeMethod("shortcutId", "()", "")]
 		public int ShortcutId() {
-			return ((QShortcutEvent) interceptor).ShortcutId();
+			return (int) interceptor.Invoke("shortcutId", "shortcutId()", typeof(int));
 		}
-		[SmokeMethod("isAmbiguous", "()", "")]
 		public bool IsAmbiguous() {
-			return ((QShortcutEvent) interceptor).IsAmbiguous();
+			return (bool) interceptor.Invoke("isAmbiguous", "isAmbiguous()", typeof(bool));
 		}
 		~QShortcutEvent() {
-			DisposeQShortcutEvent();
+			interceptor.Invoke("~QShortcutEvent", "~QShortcutEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQShortcutEvent();
-		}
-		[SmokeMethod("~QShortcutEvent", "()", "")]
-		private void DisposeQShortcutEvent() {
-			((QShortcutEvent) interceptor).DisposeQShortcutEvent();
+			interceptor.Invoke("~QShortcutEvent", "~QShortcutEvent()", typeof(void));
 		}
 	}
 }

@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionSlider : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSlider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSlider), this);
-			interceptor = (QStyleOptionSlider) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionSlider), "QStyleOptionSlider", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Slider,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionSlider() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSlider();
-		}
-		[SmokeMethod("QStyleOptionSlider", "()", "")]
-		private void NewQStyleOptionSlider() {
-			((QStyleOptionSlider) interceptor).NewQStyleOptionSlider();
+			interceptor.Invoke("QStyleOptionSlider", "QStyleOptionSlider()", typeof(void));
 		}
 		public QStyleOptionSlider(QStyleOptionSlider other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSlider(other);
-		}
-		[SmokeMethod("QStyleOptionSlider", "(const QStyleOptionSlider&)", "#")]
-		private void NewQStyleOptionSlider(QStyleOptionSlider other) {
-			((QStyleOptionSlider) interceptor).NewQStyleOptionSlider(other);
+			interceptor.Invoke("QStyleOptionSlider#", "QStyleOptionSlider(const QStyleOptionSlider&)", typeof(void), typeof(QStyleOptionSlider), other);
 		}
 		public QStyleOptionSlider(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionSlider(version);
-		}
-		[SmokeMethod("QStyleOptionSlider", "(int)", "$")]
-		private void NewQStyleOptionSlider(int version) {
-			((QStyleOptionSlider) interceptor).NewQStyleOptionSlider(version);
+			interceptor.Invoke("QStyleOptionSlider$", "QStyleOptionSlider(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionSlider() {
-			DisposeQStyleOptionSlider();
+			interceptor.Invoke("~QStyleOptionSlider", "~QStyleOptionSlider()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionSlider();
-		}
-		[SmokeMethod("~QStyleOptionSlider", "()", "")]
-		private void DisposeQStyleOptionSlider() {
-			((QStyleOptionSlider) interceptor).DisposeQStyleOptionSlider();
+			interceptor.Invoke("~QStyleOptionSlider", "~QStyleOptionSlider()", typeof(void));
 		}
 	}
 }

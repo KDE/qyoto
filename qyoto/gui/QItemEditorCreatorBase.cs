@@ -4,25 +4,20 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QItemEditorCreatorBase")]
-	public abstract class QItemEditorCreatorBase : MarshalByRefObject {
-		protected QItemEditorCreatorBase interceptor = null;
+	public abstract class QItemEditorCreatorBase : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QItemEditorCreatorBase(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemEditorCreatorBase), this);
-			interceptor = (QItemEditorCreatorBase) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QItemEditorCreatorBase), "QItemEditorCreatorBase", this);
 		}
-		[SmokeMethod("createWidget", "(QWidget*) const", "#")]
+		[SmokeMethod("createWidget(QWidget*) const")]
 		public abstract QWidget CreateWidget(QWidget parent);
-		[SmokeMethod("valuePropertyName", "() const", "")]
+		[SmokeMethod("valuePropertyName() const")]
 		public abstract QByteArray ValuePropertyName();
 		public QItemEditorCreatorBase() : this((Type) null) {
 			CreateProxy();
-			NewQItemEditorCreatorBase();
-		}
-		[SmokeMethod("QItemEditorCreatorBase", "()", "")]
-		private void NewQItemEditorCreatorBase() {
-			((QItemEditorCreatorBase) interceptor).NewQItemEditorCreatorBase();
+			interceptor.Invoke("QItemEditorCreatorBase", "QItemEditorCreatorBase()", typeof(void));
 		}
 	}
 }

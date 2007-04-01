@@ -4,87 +4,62 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QGLColormap")]
-	public class QGLColormap : MarshalByRefObject, IDisposable {
-		protected QGLColormap interceptor = null;
+	public class QGLColormap : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGLColormap(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLColormap), this);
-			interceptor = (QGLColormap) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGLColormap), "QGLColormap", this);
 		}
 		public QGLColormap() : this((Type) null) {
 			CreateProxy();
-			NewQGLColormap();
-		}
-		[SmokeMethod("QGLColormap", "()", "")]
-		private void NewQGLColormap() {
-			((QGLColormap) interceptor).NewQGLColormap();
+			interceptor.Invoke("QGLColormap", "QGLColormap()", typeof(void));
 		}
 		public QGLColormap(QGLColormap arg1) : this((Type) null) {
 			CreateProxy();
-			NewQGLColormap(arg1);
+			interceptor.Invoke("QGLColormap#", "QGLColormap(const QGLColormap&)", typeof(void), typeof(QGLColormap), arg1);
 		}
-		[SmokeMethod("QGLColormap", "(const QGLColormap&)", "#")]
-		private void NewQGLColormap(QGLColormap arg1) {
-			((QGLColormap) interceptor).NewQGLColormap(arg1);
-		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QGLColormap) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ((QGLColormap) interceptor).Size();
+			return (int) interceptor.Invoke("size", "size() const", typeof(int));
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QGLColormap) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("setEntries", "(int, const QRgb*, int)", "$?$")]
-		public void SetEntries(int count, out int colors, int arg3) {
-			((QGLColormap) interceptor).SetEntries(count,out colors,arg3);
+		public void SetEntries(int count, int colors, int arg3) {
+			interceptor.Invoke("setEntries$?$", "setEntries(int, const QRgb*, int)", typeof(void), typeof(int), count, typeof(int), colors, typeof(int), arg3);
 		}
-		[SmokeMethod("setEntries", "(int, const QRgb*)", "$?")]
-		public void SetEntries(int count, out int colors) {
-			((QGLColormap) interceptor).SetEntries(count,out colors);
+		public void SetEntries(int count, int colors) {
+			interceptor.Invoke("setEntries$?", "setEntries(int, const QRgb*)", typeof(void), typeof(int), count, typeof(int), colors);
 		}
-		[SmokeMethod("setEntry", "(int, QRgb)", "$$")]
 		public void SetEntry(int idx, uint color) {
-			((QGLColormap) interceptor).SetEntry(idx,color);
+			interceptor.Invoke("setEntry$$", "setEntry(int, QRgb)", typeof(void), typeof(int), idx, typeof(uint), color);
 		}
-		[SmokeMethod("setEntry", "(int, const QColor&)", "$#")]
 		public void SetEntry(int idx, QColor color) {
-			((QGLColormap) interceptor).SetEntry(idx,color);
+			interceptor.Invoke("setEntry$#", "setEntry(int, const QColor&)", typeof(void), typeof(int), idx, typeof(QColor), color);
 		}
-		[SmokeMethod("entryRgb", "(int) const", "$")]
 		public uint EntryRgb(int idx) {
-			return ((QGLColormap) interceptor).EntryRgb(idx);
+			return (uint) interceptor.Invoke("entryRgb$", "entryRgb(int) const", typeof(uint), typeof(int), idx);
 		}
-		[SmokeMethod("entryColor", "(int) const", "$")]
 		public QColor EntryColor(int idx) {
-			return ((QGLColormap) interceptor).EntryColor(idx);
+			return (QColor) interceptor.Invoke("entryColor$", "entryColor(int) const", typeof(QColor), typeof(int), idx);
 		}
-		[SmokeMethod("find", "(QRgb) const", "$")]
 		public int Find(uint color) {
-			return ((QGLColormap) interceptor).Find(color);
+			return (int) interceptor.Invoke("find$", "find(QRgb) const", typeof(int), typeof(uint), color);
 		}
-		[SmokeMethod("findNearest", "(QRgb) const", "$")]
 		public int FindNearest(uint color) {
-			return ((QGLColormap) interceptor).FindNearest(color);
+			return (int) interceptor.Invoke("findNearest$", "findNearest(QRgb) const", typeof(int), typeof(uint), color);
 		}
-		[SmokeMethod("setHandle", "(Qt::HANDLE)", "$")]
 		protected void SetHandle(uint ahandle) {
-			((QGLColormap) interceptor).SetHandle(ahandle);
+			interceptor.Invoke("setHandle$", "setHandle(Qt::HANDLE)", typeof(void), typeof(uint), ahandle);
 		}
 		~QGLColormap() {
-			DisposeQGLColormap();
+			interceptor.Invoke("~QGLColormap", "~QGLColormap()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGLColormap();
-		}
-		[SmokeMethod("~QGLColormap", "()", "")]
-		private void DisposeQGLColormap() {
-			((QGLColormap) interceptor).DisposeQGLColormap();
+			interceptor.Invoke("~QGLColormap", "~QGLColormap()", typeof(void));
 		}
 	}
 }

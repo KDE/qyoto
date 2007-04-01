@@ -4,45 +4,31 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QGenericArgument")]
-	public class QGenericArgument : MarshalByRefObject, IDisposable {
-		protected QGenericArgument interceptor = null;
+	public class QGenericArgument : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGenericArgument(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGenericArgument), this);
-			interceptor = (QGenericArgument) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGenericArgument), "QGenericArgument", this);
 		}
 		// QGenericArgument* QGenericArgument(const char* arg1,const void* arg2); >>>> NOT CONVERTED
 		// void* data(); >>>> NOT CONVERTED
 		public QGenericArgument(string aName) : this((Type) null) {
 			CreateProxy();
-			NewQGenericArgument(aName);
-		}
-		[SmokeMethod("QGenericArgument", "(const char*)", "$")]
-		private void NewQGenericArgument(string aName) {
-			((QGenericArgument) interceptor).NewQGenericArgument(aName);
+			interceptor.Invoke("QGenericArgument$", "QGenericArgument(const char*)", typeof(void), typeof(string), aName);
 		}
 		public QGenericArgument() : this((Type) null) {
 			CreateProxy();
-			NewQGenericArgument();
+			interceptor.Invoke("QGenericArgument", "QGenericArgument()", typeof(void));
 		}
-		[SmokeMethod("QGenericArgument", "()", "")]
-		private void NewQGenericArgument() {
-			((QGenericArgument) interceptor).NewQGenericArgument();
-		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QGenericArgument) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
 		~QGenericArgument() {
-			DisposeQGenericArgument();
+			interceptor.Invoke("~QGenericArgument", "~QGenericArgument()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGenericArgument();
-		}
-		[SmokeMethod("~QGenericArgument", "()", "")]
-		private void DisposeQGenericArgument() {
-			((QGenericArgument) interceptor).DisposeQGenericArgument();
+			interceptor.Invoke("~QGenericArgument", "~QGenericArgument()", typeof(void));
 		}
 	}
 }

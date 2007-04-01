@@ -4,25 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QChar")]
-	public class QChar : MarshalByRefObject, IDisposable {
-		protected QChar interceptor = null;
+	public class QChar : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QChar(Type dummy) {}
-		[SmokeClass("QChar")]
-		interface IQCharProxy {
-			[SmokeMethod("fromAscii", "(char)", "$")]
-			char FromAscii(char c);
-			[SmokeMethod("fromLatin1", "(char)", "$")]
-			char FromLatin1(char c);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChar), this);
-			interceptor = (QChar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QChar), "QChar", this);
 		}
-		private static IQCharProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QChar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCharProxy), null);
-			staticInterceptor = (IQCharProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QChar), "QChar", null);
 		}
 		public enum SpecialCharacter {
 			Null = 0x0000,
@@ -149,207 +140,140 @@ namespace Qyoto {
 		// ushort& unicode(); >>>> NOT CONVERTED
 		public QChar() : this((Type) null) {
 			CreateProxy();
-			NewQChar();
-		}
-		[SmokeMethod("QChar", "()", "")]
-		private void NewQChar() {
-			((QChar) interceptor).NewQChar();
+			interceptor.Invoke("QChar", "QChar()", typeof(void));
 		}
 		public QChar(char c) : this((Type) null) {
 			CreateProxy();
-			NewQChar(c);
-		}
-		[SmokeMethod("QChar", "(char)", "$")]
-		private void NewQChar(char c) {
-			((QChar) interceptor).NewQChar(c);
+			interceptor.Invoke("QChar$", "QChar(char)", typeof(void), typeof(char), c);
 		}
 		public QChar(ushort c) : this((Type) null) {
 			CreateProxy();
-			NewQChar(c);
-		}
-		[SmokeMethod("QChar", "(uchar)", "$")]
-		private void NewQChar(ushort c) {
-			((QChar) interceptor).NewQChar(c);
+			interceptor.Invoke("QChar$", "QChar(uchar)", typeof(void), typeof(ushort), c);
 		}
 		public QChar(QLatin1Char ch) : this((Type) null) {
 			CreateProxy();
-			NewQChar(ch);
-		}
-		[SmokeMethod("QChar", "(QLatin1Char)", "#")]
-		private void NewQChar(QLatin1Char ch) {
-			((QChar) interceptor).NewQChar(ch);
+			interceptor.Invoke("QChar#", "QChar(QLatin1Char)", typeof(void), typeof(QLatin1Char), ch);
 		}
 		public QChar(ushort c, ushort r) : this((Type) null) {
 			CreateProxy();
-			NewQChar(c,r);
-		}
-		[SmokeMethod("QChar", "(uchar, uchar)", "$$")]
-		private void NewQChar(ushort c, ushort r) {
-			((QChar) interceptor).NewQChar(c,r);
+			interceptor.Invoke("QChar$$", "QChar(uchar, uchar)", typeof(void), typeof(ushort), c, typeof(ushort), r);
 		}
 		public QChar(short rc) : this((Type) null) {
 			CreateProxy();
-			NewQChar(rc);
-		}
-		[SmokeMethod("QChar", "(short)", "$")]
-		private void NewQChar(short rc) {
-			((QChar) interceptor).NewQChar(rc);
+			interceptor.Invoke("QChar$", "QChar(short)", typeof(void), typeof(short), rc);
 		}
 		public QChar(uint rc) : this((Type) null) {
 			CreateProxy();
-			NewQChar(rc);
-		}
-		[SmokeMethod("QChar", "(uint)", "$")]
-		private void NewQChar(uint rc) {
-			((QChar) interceptor).NewQChar(rc);
+			interceptor.Invoke("QChar$", "QChar(uint)", typeof(void), typeof(uint), rc);
 		}
 		public QChar(int rc) : this((Type) null) {
 			CreateProxy();
-			NewQChar(rc);
+			interceptor.Invoke("QChar$", "QChar(int)", typeof(void), typeof(int), rc);
 		}
-		[SmokeMethod("QChar", "(int)", "$")]
-		private void NewQChar(int rc) {
-			((QChar) interceptor).NewQChar(rc);
-		}
-		[SmokeMethod("digitValue", "() const", "")]
 		public int DigitValue() {
-			return ((QChar) interceptor).DigitValue();
+			return (int) interceptor.Invoke("digitValue", "digitValue() const", typeof(int));
 		}
-		[SmokeMethod("toLower", "() const", "")]
 		public char ToLower() {
-			return ((QChar) interceptor).ToLower();
+			return (char) interceptor.Invoke("toLower", "toLower() const", typeof(char));
 		}
-		[SmokeMethod("toUpper", "() const", "")]
 		public char ToUpper() {
-			return ((QChar) interceptor).ToUpper();
+			return (char) interceptor.Invoke("toUpper", "toUpper() const", typeof(char));
 		}
-		[SmokeMethod("category", "() const", "")]
 		public char category() {
-			return ((QChar) interceptor).category();
+			return (char) interceptor.Invoke("category", "category() const", typeof(char));
 		}
-		[SmokeMethod("direction", "() const", "")]
 		public char direction() {
-			return ((QChar) interceptor).direction();
+			return (char) interceptor.Invoke("direction", "direction() const", typeof(char));
 		}
-		[SmokeMethod("joining", "() const", "")]
 		public char joining() {
-			return ((QChar) interceptor).joining();
+			return (char) interceptor.Invoke("joining", "joining() const", typeof(char));
 		}
-		[SmokeMethod("hasMirrored", "() const", "")]
 		public bool HasMirrored() {
-			return ((QChar) interceptor).HasMirrored();
+			return (bool) interceptor.Invoke("hasMirrored", "hasMirrored() const", typeof(bool));
 		}
-		[SmokeMethod("isLower", "() const", "")]
 		public bool IsLower() {
-			return ((QChar) interceptor).IsLower();
+			return (bool) interceptor.Invoke("isLower", "isLower() const", typeof(bool));
 		}
-		[SmokeMethod("isUpper", "() const", "")]
 		public bool IsUpper() {
-			return ((QChar) interceptor).IsUpper();
+			return (bool) interceptor.Invoke("isUpper", "isUpper() const", typeof(bool));
 		}
-		[SmokeMethod("mirroredChar", "() const", "")]
 		public char MirroredChar() {
-			return ((QChar) interceptor).MirroredChar();
+			return (char) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(char));
 		}
-		[SmokeMethod("decomposition", "() const", "")]
 		public string decomposition() {
-			return ((QChar) interceptor).decomposition();
+			return (string) interceptor.Invoke("decomposition", "decomposition() const", typeof(string));
 		}
-		[SmokeMethod("decompositionTag", "() const", "")]
 		public char DecompositionTag() {
-			return ((QChar) interceptor).DecompositionTag();
+			return (char) interceptor.Invoke("decompositionTag", "decompositionTag() const", typeof(char));
 		}
-		[SmokeMethod("combiningClass", "() const", "")]
 		public ushort combiningClass() {
-			return ((QChar) interceptor).combiningClass();
+			return (ushort) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(ushort));
 		}
-		[SmokeMethod("unicodeVersion", "() const", "")]
 		public char unicodeVersion() {
-			return ((QChar) interceptor).unicodeVersion();
+			return (char) interceptor.Invoke("unicodeVersion", "unicodeVersion() const", typeof(char));
 		}
-		[SmokeMethod("toAscii", "() const", "")]
 		public char ToAscii() {
-			return ((QChar) interceptor).ToAscii();
+			return (char) interceptor.Invoke("toAscii", "toAscii() const", typeof(char));
 		}
-		[SmokeMethod("toLatin1", "() const", "")]
 		public char ToLatin1() {
-			return ((QChar) interceptor).ToLatin1();
+			return (char) interceptor.Invoke("toLatin1", "toLatin1() const", typeof(char));
 		}
-		[SmokeMethod("unicode", "() const", "")]
 		public ushort Unicode() {
-			return ((QChar) interceptor).Unicode();
+			return (ushort) interceptor.Invoke("unicode", "unicode() const", typeof(ushort));
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QChar) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("isPrint", "() const", "")]
 		public bool IsPrint() {
-			return ((QChar) interceptor).IsPrint();
+			return (bool) interceptor.Invoke("isPrint", "isPrint() const", typeof(bool));
 		}
-		[SmokeMethod("isPunct", "() const", "")]
 		public bool IsPunct() {
-			return ((QChar) interceptor).IsPunct();
+			return (bool) interceptor.Invoke("isPunct", "isPunct() const", typeof(bool));
 		}
-		[SmokeMethod("isSpace", "() const", "")]
 		public bool IsSpace() {
-			return ((QChar) interceptor).IsSpace();
+			return (bool) interceptor.Invoke("isSpace", "isSpace() const", typeof(bool));
 		}
-		[SmokeMethod("isMark", "() const", "")]
 		public bool IsMark() {
-			return ((QChar) interceptor).IsMark();
+			return (bool) interceptor.Invoke("isMark", "isMark() const", typeof(bool));
 		}
-		[SmokeMethod("isLetter", "() const", "")]
 		public bool IsLetter() {
-			return ((QChar) interceptor).IsLetter();
+			return (bool) interceptor.Invoke("isLetter", "isLetter() const", typeof(bool));
 		}
-		[SmokeMethod("isNumber", "() const", "")]
 		public bool IsNumber() {
-			return ((QChar) interceptor).IsNumber();
+			return (bool) interceptor.Invoke("isNumber", "isNumber() const", typeof(bool));
 		}
-		[SmokeMethod("isLetterOrNumber", "() const", "")]
 		public bool IsLetterOrNumber() {
-			return ((QChar) interceptor).IsLetterOrNumber();
+			return (bool) interceptor.Invoke("isLetterOrNumber", "isLetterOrNumber() const", typeof(bool));
 		}
-		[SmokeMethod("isDigit", "() const", "")]
 		public bool IsDigit() {
-			return ((QChar) interceptor).IsDigit();
+			return (bool) interceptor.Invoke("isDigit", "isDigit() const", typeof(bool));
 		}
-		[SmokeMethod("isSymbol", "() const", "")]
 		public bool IsSymbol() {
-			return ((QChar) interceptor).IsSymbol();
+			return (bool) interceptor.Invoke("isSymbol", "isSymbol() const", typeof(bool));
 		}
-		[SmokeMethod("cell", "() const", "")]
 		public ushort Cell() {
-			return ((QChar) interceptor).Cell();
+			return (ushort) interceptor.Invoke("cell", "cell() const", typeof(ushort));
 		}
-		[SmokeMethod("row", "() const", "")]
 		public ushort Row() {
-			return ((QChar) interceptor).Row();
+			return (ushort) interceptor.Invoke("row", "row() const", typeof(ushort));
 		}
-		[SmokeMethod("setCell", "(uchar)", "$")]
 		public void SetCell(ushort cell) {
-			((QChar) interceptor).SetCell(cell);
+			interceptor.Invoke("setCell$", "setCell(uchar)", typeof(void), typeof(ushort), cell);
 		}
-		[SmokeMethod("setRow", "(uchar)", "$")]
 		public void SetRow(ushort row) {
-			((QChar) interceptor).SetRow(row);
+			interceptor.Invoke("setRow$", "setRow(uchar)", typeof(void), typeof(ushort), row);
 		}
 		~QChar() {
-			DisposeQChar();
+			interceptor.Invoke("~QChar", "~QChar()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQChar();
-		}
-		[SmokeMethod("~QChar", "()", "")]
-		private void DisposeQChar() {
-			((QChar) interceptor).DisposeQChar();
+			interceptor.Invoke("~QChar", "~QChar()", typeof(void));
 		}
 		public static char FromAscii(char c) {
-			return staticInterceptor.FromAscii(c);
+			return (char) staticInterceptor.Invoke("fromAscii$", "fromAscii(char)", typeof(char), typeof(char), c);
 		}
 		public static char FromLatin1(char c) {
-			return staticInterceptor.FromLatin1(c);
+			return (char) staticInterceptor.Invoke("fromLatin1$", "fromLatin1(char)", typeof(char), typeof(char), c);
 		}
 	}
 }

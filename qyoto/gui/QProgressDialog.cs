@@ -7,195 +7,135 @@ namespace Qyoto {
 	[SmokeClass("QProgressDialog")]
 	public class QProgressDialog : QDialog, IDisposable {
  		protected QProgressDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QProgressDialog")]
-		interface IQProgressDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressDialog), this);
-			interceptor = (QProgressDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QProgressDialog), "QProgressDialog", this);
 		}
-		private static IQProgressDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QProgressDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQProgressDialogProxy), null);
-			staticInterceptor = (IQProgressDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QProgressDialog), "QProgressDialog", null);
 		}
 		[Q_PROPERTY("bool", "wasCanceled")]
 		public bool WasCanceled {
-			[SmokeMethod("wasCanceled", "()", "")]
-			get { return ((QProgressDialog) interceptor).WasCanceled; }
+			get { return (bool) interceptor.Invoke("wasCanceled", "wasCanceled()", typeof(bool)); }
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			[SmokeMethod("minimum", "()", "")]
-			get { return ((QProgressDialog) interceptor).Minimum; }
-			[SmokeMethod("setMinimum", "(int)", "$")]
-			set { ((QProgressDialog) interceptor).Minimum = value; }
+			get { return (int) interceptor.Invoke("minimum", "minimum()", typeof(int)); }
+			set { interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			[SmokeMethod("maximum", "()", "")]
-			get { return ((QProgressDialog) interceptor).Maximum; }
-			[SmokeMethod("setMaximum", "(int)", "$")]
-			set { ((QProgressDialog) interceptor).Maximum = value; }
+			get { return (int) interceptor.Invoke("maximum", "maximum()", typeof(int)); }
+			set { interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			[SmokeMethod("value", "()", "")]
-			get { return ((QProgressDialog) interceptor).Value; }
-			[SmokeMethod("setValue", "(int)", "$")]
-			set { ((QProgressDialog) interceptor).Value = value; }
+			get { return (int) interceptor.Invoke("value", "value()", typeof(int)); }
+			set { interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("bool", "autoReset")]
 		public bool AutoReset {
-			[SmokeMethod("autoReset", "()", "")]
-			get { return ((QProgressDialog) interceptor).AutoReset; }
-			[SmokeMethod("setAutoReset", "(bool)", "$")]
-			set { ((QProgressDialog) interceptor).AutoReset = value; }
+			get { return (bool) interceptor.Invoke("autoReset", "autoReset()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoReset$", "setAutoReset(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "autoClose")]
 		public bool AutoClose {
-			[SmokeMethod("autoClose", "()", "")]
-			get { return ((QProgressDialog) interceptor).AutoClose; }
-			[SmokeMethod("setAutoClose", "(bool)", "$")]
-			set { ((QProgressDialog) interceptor).AutoClose = value; }
+			get { return (bool) interceptor.Invoke("autoClose", "autoClose()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoClose$", "setAutoClose(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "minimumDuration")]
 		public int MinimumDuration {
-			[SmokeMethod("minimumDuration", "()", "")]
-			get { return ((QProgressDialog) interceptor).MinimumDuration; }
-			[SmokeMethod("setMinimumDuration", "(int)", "$")]
-			set { ((QProgressDialog) interceptor).MinimumDuration = value; }
+			get { return (int) interceptor.Invoke("minimumDuration", "minimumDuration()", typeof(int)); }
+			set { interceptor.Invoke("setMinimumDuration$", "setMinimumDuration(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QString", "labelText")]
 		public string LabelText {
-			[SmokeMethod("labelText", "()", "")]
-			get { return ((QProgressDialog) interceptor).LabelText; }
-			[SmokeMethod("setLabelText", "(QString)", "$")]
-			set { ((QProgressDialog) interceptor).LabelText = value; }
+			get { return (string) interceptor.Invoke("labelText", "labelText()", typeof(string)); }
+			set { interceptor.Invoke("setLabelText$", "setLabelText(QString)", typeof(void), typeof(string), value); }
 		}
 		public QProgressDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQProgressDialog(parent,f);
-		}
-		[SmokeMethod("QProgressDialog", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQProgressDialog(QWidget parent, int f) {
-			((QProgressDialog) interceptor).NewQProgressDialog(parent,f);
+			interceptor.Invoke("QProgressDialog#$", "QProgressDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
 		public QProgressDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQProgressDialog(parent);
-		}
-		[SmokeMethod("QProgressDialog", "(QWidget*)", "#")]
-		private void NewQProgressDialog(QWidget parent) {
-			((QProgressDialog) interceptor).NewQProgressDialog(parent);
+			interceptor.Invoke("QProgressDialog#", "QProgressDialog(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QProgressDialog() : this((Type) null) {
 			CreateProxy();
-			NewQProgressDialog();
-		}
-		[SmokeMethod("QProgressDialog", "()", "")]
-		private void NewQProgressDialog() {
-			((QProgressDialog) interceptor).NewQProgressDialog();
+			interceptor.Invoke("QProgressDialog", "QProgressDialog()", typeof(void));
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent,f);
-		}
-		[SmokeMethod("QProgressDialog", "(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)", "$$$$#$")]
-		private void NewQProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, int f) {
-			((QProgressDialog) interceptor).NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent,f);
+			interceptor.Invoke("QProgressDialog$$$$#$", "QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum, typeof(QWidget), parent, typeof(int), f);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent);
-		}
-		[SmokeMethod("QProgressDialog", "(const QString&, const QString&, int, int, QWidget*)", "$$$$#")]
-		private void NewQProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent) {
-			((QProgressDialog) interceptor).NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent);
+			interceptor.Invoke("QProgressDialog$$$$#", "QProgressDialog(const QString&, const QString&, int, int, QWidget*)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum, typeof(QWidget), parent);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum) : this((Type) null) {
 			CreateProxy();
-			NewQProgressDialog(labelText,cancelButtonText,minimum,maximum);
+			interceptor.Invoke("QProgressDialog$$$$", "QProgressDialog(const QString&, const QString&, int, int)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum);
 		}
-		[SmokeMethod("QProgressDialog", "(const QString&, const QString&, int, int)", "$$$$")]
-		private void NewQProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum) {
-			((QProgressDialog) interceptor).NewQProgressDialog(labelText,cancelButtonText,minimum,maximum);
-		}
-		[SmokeMethod("setLabel", "(QLabel*)", "#")]
 		public void SetLabel(QLabel label) {
-			((QProgressDialog) interceptor).SetLabel(label);
+			interceptor.Invoke("setLabel#", "setLabel(QLabel*)", typeof(void), typeof(QLabel), label);
 		}
-		[SmokeMethod("setCancelButton", "(QPushButton*)", "#")]
 		public void SetCancelButton(QPushButton button) {
-			((QProgressDialog) interceptor).SetCancelButton(button);
+			interceptor.Invoke("setCancelButton#", "setCancelButton(QPushButton*)", typeof(void), typeof(QPushButton), button);
 		}
-		[SmokeMethod("setBar", "(QProgressBar*)", "#")]
 		public void SetBar(QProgressBar bar) {
-			((QProgressDialog) interceptor).SetBar(bar);
+			interceptor.Invoke("setBar#", "setBar(QProgressBar*)", typeof(void), typeof(QProgressBar), bar);
 		}
-		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int minimum, int maximum) {
-			((QProgressDialog) interceptor).SetRange(minimum,maximum);
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QProgressDialog) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		[Q_SLOT("void cancel()")]
-		[SmokeMethod("cancel", "()", "")]
 		public void Cancel() {
-			((QProgressDialog) interceptor).Cancel();
+			interceptor.Invoke("cancel", "cancel()", typeof(void));
 		}
 		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			((QProgressDialog) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
 		[Q_SLOT("void setCancelButtonText(const QString&)")]
-		[SmokeMethod("setCancelButtonText", "(const QString&)", "$")]
 		public void SetCancelButtonText(string arg1) {
-			((QProgressDialog) interceptor).SetCancelButtonText(arg1);
+			interceptor.Invoke("setCancelButtonText$", "setCancelButtonText(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QProgressDialog) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected override void CloseEvent(QCloseEvent arg1) {
-			((QProgressDialog) interceptor).CloseEvent(arg1);
+			interceptor.Invoke("closeEvent#", "closeEvent(QCloseEvent*)", typeof(void), typeof(QCloseEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QProgressDialog) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent e) {
-			((QProgressDialog) interceptor).ShowEvent(e);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), e);
 		}
 		[Q_SLOT("void forceShow()")]
-		[SmokeMethod("forceShow", "()", "")]
 		protected void ForceShow() {
-			((QProgressDialog) interceptor).ForceShow();
+			interceptor.Invoke("forceShow", "forceShow()", typeof(void));
 		}
 		~QProgressDialog() {
-			DisposeQProgressDialog();
+			interceptor.Invoke("~QProgressDialog", "~QProgressDialog()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQProgressDialog();
-		}
-		[SmokeMethod("~QProgressDialog", "()", "")]
-		private void DisposeQProgressDialog() {
-			((QProgressDialog) interceptor).DisposeQProgressDialog();
+			interceptor.Invoke("~QProgressDialog", "~QProgressDialog()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQProgressDialogSignals Emit {
 			get { return (IQProgressDialogSignals) Q_EMIT; }

@@ -7,25 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QSystemTrayIcon")]
 	public class QSystemTrayIcon : QObject, IDisposable {
  		protected QSystemTrayIcon(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSystemTrayIcon")]
-		interface IQSystemTrayIconProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("isSystemTrayAvailable", "()", "")]
-			bool IsSystemTrayAvailable();
-			[SmokeMethod("supportsMessages", "()", "")]
-			bool SupportsMessages();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSystemTrayIcon), this);
-			interceptor = (QSystemTrayIcon) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSystemTrayIcon), "QSystemTrayIcon", this);
 		}
-		private static IQSystemTrayIconProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSystemTrayIcon() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSystemTrayIconProxy), null);
-			staticInterceptor = (IQSystemTrayIconProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSystemTrayIcon), "QSystemTrayIcon", null);
 		}
 		public enum ActivationReason {
 			Unknown = 0,
@@ -42,116 +29,82 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
-			[SmokeMethod("toolTip", "()", "")]
-			get { return ((QSystemTrayIcon) interceptor).ToolTip; }
-			[SmokeMethod("setToolTip", "(QString)", "$")]
-			set { ((QSystemTrayIcon) interceptor).ToolTip = value; }
+			get { return (string) interceptor.Invoke("toolTip", "toolTip()", typeof(string)); }
+			set { interceptor.Invoke("setToolTip$", "setToolTip(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
-			[SmokeMethod("icon", "()", "")]
-			get { return ((QSystemTrayIcon) interceptor).Icon; }
-			[SmokeMethod("setIcon", "(QIcon)", "#")]
-			set { ((QSystemTrayIcon) interceptor).Icon = value; }
+			get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+			set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
 		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
-			[SmokeMethod("isVisible", "()", "")]
-			get { return ((QSystemTrayIcon) interceptor).Visible; }
-			[SmokeMethod("setVisible", "(bool)", "$")]
-			set { ((QSystemTrayIcon) interceptor).Visible = value; }
+			get { return (bool) interceptor.Invoke("isVisible", "isVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QSystemTrayIcon(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSystemTrayIcon(parent);
-		}
-		[SmokeMethod("QSystemTrayIcon", "(QObject*)", "#")]
-		private void NewQSystemTrayIcon(QObject parent) {
-			((QSystemTrayIcon) interceptor).NewQSystemTrayIcon(parent);
+			interceptor.Invoke("QSystemTrayIcon#", "QSystemTrayIcon(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QSystemTrayIcon() : this((Type) null) {
 			CreateProxy();
-			NewQSystemTrayIcon();
-		}
-		[SmokeMethod("QSystemTrayIcon", "()", "")]
-		private void NewQSystemTrayIcon() {
-			((QSystemTrayIcon) interceptor).NewQSystemTrayIcon();
+			interceptor.Invoke("QSystemTrayIcon", "QSystemTrayIcon()", typeof(void));
 		}
 		public QSystemTrayIcon(QIcon icon, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSystemTrayIcon(icon,parent);
-		}
-		[SmokeMethod("QSystemTrayIcon", "(const QIcon&, QObject*)", "##")]
-		private void NewQSystemTrayIcon(QIcon icon, QObject parent) {
-			((QSystemTrayIcon) interceptor).NewQSystemTrayIcon(icon,parent);
+			interceptor.Invoke("QSystemTrayIcon##", "QSystemTrayIcon(const QIcon&, QObject*)", typeof(void), typeof(QIcon), icon, typeof(QObject), parent);
 		}
 		public QSystemTrayIcon(QIcon icon) : this((Type) null) {
 			CreateProxy();
-			NewQSystemTrayIcon(icon);
+			interceptor.Invoke("QSystemTrayIcon#", "QSystemTrayIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
 		}
-		[SmokeMethod("QSystemTrayIcon", "(const QIcon&)", "#")]
-		private void NewQSystemTrayIcon(QIcon icon) {
-			((QSystemTrayIcon) interceptor).NewQSystemTrayIcon(icon);
-		}
-		[SmokeMethod("setContextMenu", "(QMenu*)", "#")]
 		public void SetContextMenu(QMenu menu) {
-			((QSystemTrayIcon) interceptor).SetContextMenu(menu);
+			interceptor.Invoke("setContextMenu#", "setContextMenu(QMenu*)", typeof(void), typeof(QMenu), menu);
 		}
-		[SmokeMethod("contextMenu", "() const", "")]
 		public QMenu ContextMenu() {
-			return ((QSystemTrayIcon) interceptor).ContextMenu();
+			return (QMenu) interceptor.Invoke("contextMenu", "contextMenu() const", typeof(QMenu));
 		}
-		[SmokeMethod("showMessage", "(const QString&, const QString&, QSystemTrayIcon::MessageIcon, int)", "$$$$")]
 		public void ShowMessage(string title, string msg, QSystemTrayIcon.MessageIcon icon, int msecs) {
-			((QSystemTrayIcon) interceptor).ShowMessage(title,msg,icon,msecs);
+			interceptor.Invoke("showMessage$$$$", "showMessage(const QString&, const QString&, QSystemTrayIcon::MessageIcon, int)", typeof(void), typeof(string), title, typeof(string), msg, typeof(QSystemTrayIcon.MessageIcon), icon, typeof(int), msecs);
 		}
-		[SmokeMethod("showMessage", "(const QString&, const QString&, QSystemTrayIcon::MessageIcon)", "$$$")]
 		public void ShowMessage(string title, string msg, QSystemTrayIcon.MessageIcon icon) {
-			((QSystemTrayIcon) interceptor).ShowMessage(title,msg,icon);
+			interceptor.Invoke("showMessage$$$", "showMessage(const QString&, const QString&, QSystemTrayIcon::MessageIcon)", typeof(void), typeof(string), title, typeof(string), msg, typeof(QSystemTrayIcon.MessageIcon), icon);
 		}
-		[SmokeMethod("showMessage", "(const QString&, const QString&)", "$$")]
 		public void ShowMessage(string title, string msg) {
-			((QSystemTrayIcon) interceptor).ShowMessage(title,msg);
+			interceptor.Invoke("showMessage$$", "showMessage(const QString&, const QString&)", typeof(void), typeof(string), title, typeof(string), msg);
 		}
-		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
-			return ((QSystemTrayIcon) interceptor).IsVisible();
+			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
 		}
 		[Q_SLOT("void show()")]
-		[SmokeMethod("show", "()", "")]
 		public void Show() {
-			((QSystemTrayIcon) interceptor).Show();
+			interceptor.Invoke("show", "show()", typeof(void));
 		}
 		[Q_SLOT("void hide()")]
-		[SmokeMethod("hide", "()", "")]
 		public void Hide() {
-			((QSystemTrayIcon) interceptor).Hide();
+			interceptor.Invoke("hide", "hide()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QSystemTrayIcon) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QSystemTrayIcon() {
-			DisposeQSystemTrayIcon();
+			interceptor.Invoke("~QSystemTrayIcon", "~QSystemTrayIcon()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSystemTrayIcon();
-		}
-		[SmokeMethod("~QSystemTrayIcon", "()", "")]
-		private void DisposeQSystemTrayIcon() {
-			((QSystemTrayIcon) interceptor).DisposeQSystemTrayIcon();
+			interceptor.Invoke("~QSystemTrayIcon", "~QSystemTrayIcon()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static bool IsSystemTrayAvailable() {
-			return staticInterceptor.IsSystemTrayAvailable();
+			return (bool) staticInterceptor.Invoke("isSystemTrayAvailable", "isSystemTrayAvailable()", typeof(bool));
 		}
 		public static bool SupportsMessages() {
-			return staticInterceptor.SupportsMessages();
+			return (bool) staticInterceptor.Invoke("supportsMessages", "supportsMessages()", typeof(bool));
 		}
 		protected new IQSystemTrayIconSignals Emit {
 			get { return (IQSystemTrayIconSignals) Q_EMIT; }

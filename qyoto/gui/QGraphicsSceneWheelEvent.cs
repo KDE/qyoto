@@ -7,82 +7,57 @@ namespace Qyoto {
 	public class QGraphicsSceneWheelEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneWheelEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneWheelEvent), this);
-			interceptor = (QGraphicsSceneWheelEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneWheelEvent), "QGraphicsSceneWheelEvent", this);
 		}
 		public QGraphicsSceneWheelEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneWheelEvent(type);
-		}
-		[SmokeMethod("QGraphicsSceneWheelEvent", "(QEvent::Type)", "$")]
-		private void NewQGraphicsSceneWheelEvent(QEvent.TypeOf type) {
-			((QGraphicsSceneWheelEvent) interceptor).NewQGraphicsSceneWheelEvent(type);
+			interceptor.Invoke("QGraphicsSceneWheelEvent$", "QGraphicsSceneWheelEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
 		public QGraphicsSceneWheelEvent() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneWheelEvent();
+			interceptor.Invoke("QGraphicsSceneWheelEvent", "QGraphicsSceneWheelEvent()", typeof(void));
 		}
-		[SmokeMethod("QGraphicsSceneWheelEvent", "()", "")]
-		private void NewQGraphicsSceneWheelEvent() {
-			((QGraphicsSceneWheelEvent) interceptor).NewQGraphicsSceneWheelEvent();
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ((QGraphicsSceneWheelEvent) interceptor).Pos();
+			return (QPointF) interceptor.Invoke("pos", "pos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			((QGraphicsSceneWheelEvent) interceptor).SetPos(pos);
+			interceptor.Invoke("setPos#", "setPos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ((QGraphicsSceneWheelEvent) interceptor).ScenePos();
+			return (QPointF) interceptor.Invoke("scenePos", "scenePos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			((QGraphicsSceneWheelEvent) interceptor).SetScenePos(pos);
+			interceptor.Invoke("setScenePos#", "setScenePos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ((QGraphicsSceneWheelEvent) interceptor).ScreenPos();
+			return (QPoint) interceptor.Invoke("screenPos", "screenPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			((QGraphicsSceneWheelEvent) interceptor).SetScreenPos(pos);
+			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ((QGraphicsSceneWheelEvent) interceptor).Buttons();
+			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
 		}
-		[SmokeMethod("setButtons", "(Qt::MouseButtons)", "$")]
 		public void SetButtons(int buttons) {
-			((QGraphicsSceneWheelEvent) interceptor).SetButtons(buttons);
+			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(int), buttons);
 		}
-		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ((QGraphicsSceneWheelEvent) interceptor).Modifiers();
+			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
 		}
-		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
-			((QGraphicsSceneWheelEvent) interceptor).SetModifiers(modifiers);
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
 		}
-		[SmokeMethod("delta", "() const", "")]
 		public int Delta() {
-			return ((QGraphicsSceneWheelEvent) interceptor).Delta();
+			return (int) interceptor.Invoke("delta", "delta() const", typeof(int));
 		}
-		[SmokeMethod("setDelta", "(int)", "$")]
 		public void SetDelta(int delta) {
-			((QGraphicsSceneWheelEvent) interceptor).SetDelta(delta);
+			interceptor.Invoke("setDelta$", "setDelta(int)", typeof(void), typeof(int), delta);
 		}
 		~QGraphicsSceneWheelEvent() {
-			DisposeQGraphicsSceneWheelEvent();
+			interceptor.Invoke("~QGraphicsSceneWheelEvent", "~QGraphicsSceneWheelEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsSceneWheelEvent();
-		}
-		[SmokeMethod("~QGraphicsSceneWheelEvent", "()", "")]
-		private void DisposeQGraphicsSceneWheelEvent() {
-			((QGraphicsSceneWheelEvent) interceptor).DisposeQGraphicsSceneWheelEvent();
+			interceptor.Invoke("~QGraphicsSceneWheelEvent", "~QGraphicsSceneWheelEvent()", typeof(void));
 		}
 	}
 }

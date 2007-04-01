@@ -4,39 +4,28 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextEncoder")]
-	public class QTextEncoder : MarshalByRefObject, IDisposable {
-		protected QTextEncoder interceptor = null;
+	public class QTextEncoder : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextEncoder(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextEncoder), this);
-			interceptor = (QTextEncoder) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextEncoder), "QTextEncoder", this);
 		}
 		public QTextEncoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();
-			NewQTextEncoder(codec);
+			interceptor.Invoke("QTextEncoder#", "QTextEncoder(const QTextCodec*)", typeof(void), typeof(QTextCodec), codec);
 		}
-		[SmokeMethod("QTextEncoder", "(const QTextCodec*)", "#")]
-		private void NewQTextEncoder(QTextCodec codec) {
-			((QTextEncoder) interceptor).NewQTextEncoder(codec);
-		}
-		[SmokeMethod("fromUnicode", "(const QString&)", "$")]
 		public QByteArray FromUnicode(string str) {
-			return ((QTextEncoder) interceptor).FromUnicode(str);
+			return (QByteArray) interceptor.Invoke("fromUnicode$", "fromUnicode(const QString&)", typeof(QByteArray), typeof(string), str);
 		}
-		[SmokeMethod("fromUnicode", "(const QChar*, int)", "#$")]
 		public QByteArray FromUnicode(char uc, int len) {
-			return ((QTextEncoder) interceptor).FromUnicode(uc,len);
+			return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int)", typeof(QByteArray), typeof(char), uc, typeof(int), len);
 		}
 		~QTextEncoder() {
-			DisposeQTextEncoder();
+			interceptor.Invoke("~QTextEncoder", "~QTextEncoder()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextEncoder();
-		}
-		[SmokeMethod("~QTextEncoder", "()", "")]
-		private void DisposeQTextEncoder() {
-			((QTextEncoder) interceptor).DisposeQTextEncoder();
+			interceptor.Invoke("~QTextEncoder", "~QTextEncoder()", typeof(void));
 		}
 	}
 }

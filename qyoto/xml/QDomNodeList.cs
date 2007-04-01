@@ -4,86 +4,61 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDomNodeList")]
-	public class QDomNodeList : MarshalByRefObject, IDisposable {
-		protected QDomNodeList interceptor = null;
+	public class QDomNodeList : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDomNodeList(Type dummy) {}
-		[SmokeClass("QDomNodeList")]
-		interface IQDomNodeListProxy {
-			[SmokeMethod("operator==", "(const QDomNodeList&) const", "#")]
-			bool op_equals(QDomNodeList lhs, QDomNodeList arg1);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNodeList), this);
-			interceptor = (QDomNodeList) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomNodeList), "QDomNodeList", this);
 		}
-		private static IQDomNodeListProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDomNodeList() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomNodeListProxy), null);
-			staticInterceptor = (IQDomNodeListProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDomNodeList), "QDomNodeList", null);
 		}
 		public QDomNodeList() : this((Type) null) {
 			CreateProxy();
-			NewQDomNodeList();
-		}
-		[SmokeMethod("QDomNodeList", "()", "")]
-		private void NewQDomNodeList() {
-			((QDomNodeList) interceptor).NewQDomNodeList();
+			interceptor.Invoke("QDomNodeList", "QDomNodeList()", typeof(void));
 		}
 		public QDomNodeList(QDomNodeList arg1) : this((Type) null) {
 			CreateProxy();
-			NewQDomNodeList(arg1);
-		}
-		[SmokeMethod("QDomNodeList", "(const QDomNodeList&)", "#")]
-		private void NewQDomNodeList(QDomNodeList arg1) {
-			((QDomNodeList) interceptor).NewQDomNodeList(arg1);
+			interceptor.Invoke("QDomNodeList#", "QDomNodeList(const QDomNodeList&)", typeof(void), typeof(QDomNodeList), arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNodeList)) { return false; }
 			return this == (QDomNodeList) o;
 		}
 		public override int GetHashCode() {
-			return ((QDomNodeList) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("item", "(int) const", "$")]
 		public QDomNode Item(int index) {
-			return ((QDomNodeList) interceptor).Item(index);
+			return (QDomNode) interceptor.Invoke("item$", "item(int) const", typeof(QDomNode), typeof(int), index);
 		}
-		[SmokeMethod("at", "(int) const", "$")]
 		public QDomNode At(int index) {
-			return ((QDomNodeList) interceptor).At(index);
+			return (QDomNode) interceptor.Invoke("at$", "at(int) const", typeof(QDomNode), typeof(int), index);
 		}
-		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
-			return ((QDomNodeList) interceptor).Length();
+			return (uint) interceptor.Invoke("length", "length() const", typeof(uint));
 		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QDomNodeList) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ((QDomNodeList) interceptor).Size();
+			return (int) interceptor.Invoke("size", "size() const", typeof(int));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QDomNodeList) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
 		~QDomNodeList() {
-			DisposeQDomNodeList();
+			interceptor.Invoke("~QDomNodeList", "~QDomNodeList()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomNodeList();
-		}
-		[SmokeMethod("~QDomNodeList", "()", "")]
-		private void DisposeQDomNodeList() {
-			((QDomNodeList) interceptor).DisposeQDomNodeList();
+			interceptor.Invoke("~QDomNodeList", "~QDomNodeList()", typeof(void));
 		}
 		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomNodeList&) const", typeof(bool), typeof(QDomNodeList), lhs, typeof(QDomNodeList), arg1);
 		}
 		public static bool operator!=(QDomNodeList lhs, QDomNodeList arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomNodeList&) const", typeof(bool), typeof(QDomNodeList), lhs, typeof(QDomNodeList), arg1);
 		}
 	}
 }

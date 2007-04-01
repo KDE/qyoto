@@ -4,162 +4,118 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSqlRecord")]
-	public class QSqlRecord : MarshalByRefObject, IDisposable {
-		protected QSqlRecord interceptor = null;
+	public class QSqlRecord : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlRecord(Type dummy) {}
-		[SmokeClass("QSqlRecord")]
-		interface IQSqlRecordProxy {
-			[SmokeMethod("operator==", "(const QSqlRecord&) const", "#")]
-			bool op_equals(QSqlRecord lhs, QSqlRecord other);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRecord), this);
-			interceptor = (QSqlRecord) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlRecord), "QSqlRecord", this);
 		}
-		private static IQSqlRecordProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSqlRecord() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlRecordProxy), null);
-			staticInterceptor = (IQSqlRecordProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSqlRecord), "QSqlRecord", null);
 		}
 		public QSqlRecord() : this((Type) null) {
 			CreateProxy();
-			NewQSqlRecord();
-		}
-		[SmokeMethod("QSqlRecord", "()", "")]
-		private void NewQSqlRecord() {
-			((QSqlRecord) interceptor).NewQSqlRecord();
+			interceptor.Invoke("QSqlRecord", "QSqlRecord()", typeof(void));
 		}
 		public QSqlRecord(QSqlRecord other) : this((Type) null) {
 			CreateProxy();
-			NewQSqlRecord(other);
-		}
-		[SmokeMethod("QSqlRecord", "(const QSqlRecord&)", "#")]
-		private void NewQSqlRecord(QSqlRecord other) {
-			((QSqlRecord) interceptor).NewQSqlRecord(other);
+			interceptor.Invoke("QSqlRecord#", "QSqlRecord(const QSqlRecord&)", typeof(void), typeof(QSqlRecord), other);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QSqlRecord)) { return false; }
 			return this == (QSqlRecord) o;
 		}
 		public override int GetHashCode() {
-			return ((QSqlRecord) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("value", "(int) const", "$")]
 		public QVariant Value(int i) {
-			return ((QSqlRecord) interceptor).Value(i);
+			return (QVariant) interceptor.Invoke("value$", "value(int) const", typeof(QVariant), typeof(int), i);
 		}
-		[SmokeMethod("value", "(const QString&) const", "$")]
 		public QVariant Value(string name) {
-			return ((QSqlRecord) interceptor).Value(name);
+			return (QVariant) interceptor.Invoke("value$", "value(const QString&) const", typeof(QVariant), typeof(string), name);
 		}
-		[SmokeMethod("setValue", "(int, const QVariant&)", "$#")]
 		public void SetValue(int i, QVariant val) {
-			((QSqlRecord) interceptor).SetValue(i,val);
+			interceptor.Invoke("setValue$#", "setValue(int, const QVariant&)", typeof(void), typeof(int), i, typeof(QVariant), val);
 		}
-		[SmokeMethod("setValue", "(const QString&, const QVariant&)", "$#")]
 		public void SetValue(string name, QVariant val) {
-			((QSqlRecord) interceptor).SetValue(name,val);
+			interceptor.Invoke("setValue$#", "setValue(const QString&, const QVariant&)", typeof(void), typeof(string), name, typeof(QVariant), val);
 		}
-		[SmokeMethod("setNull", "(int)", "$")]
 		public void SetNull(int i) {
-			((QSqlRecord) interceptor).SetNull(i);
+			interceptor.Invoke("setNull$", "setNull(int)", typeof(void), typeof(int), i);
 		}
-		[SmokeMethod("setNull", "(const QString&)", "$")]
 		public void SetNull(string name) {
-			((QSqlRecord) interceptor).SetNull(name);
+			interceptor.Invoke("setNull$", "setNull(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("isNull", "(int) const", "$")]
 		public bool IsNull(int i) {
-			return ((QSqlRecord) interceptor).IsNull(i);
+			return (bool) interceptor.Invoke("isNull$", "isNull(int) const", typeof(bool), typeof(int), i);
 		}
-		[SmokeMethod("isNull", "(const QString&) const", "$")]
 		public bool IsNull(string name) {
-			return ((QSqlRecord) interceptor).IsNull(name);
+			return (bool) interceptor.Invoke("isNull$", "isNull(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("indexOf", "(const QString&) const", "$")]
 		public int IndexOf(string name) {
-			return ((QSqlRecord) interceptor).IndexOf(name);
+			return (int) interceptor.Invoke("indexOf$", "indexOf(const QString&) const", typeof(int), typeof(string), name);
 		}
-		[SmokeMethod("fieldName", "(int) const", "$")]
 		public string FieldName(int i) {
-			return ((QSqlRecord) interceptor).FieldName(i);
+			return (string) interceptor.Invoke("fieldName$", "fieldName(int) const", typeof(string), typeof(int), i);
 		}
-		[SmokeMethod("field", "(int) const", "$")]
 		public QSqlField Field(int i) {
-			return ((QSqlRecord) interceptor).Field(i);
+			return (QSqlField) interceptor.Invoke("field$", "field(int) const", typeof(QSqlField), typeof(int), i);
 		}
-		[SmokeMethod("field", "(const QString&) const", "$")]
 		public QSqlField Field(string name) {
-			return ((QSqlRecord) interceptor).Field(name);
+			return (QSqlField) interceptor.Invoke("field$", "field(const QString&) const", typeof(QSqlField), typeof(string), name);
 		}
-		[SmokeMethod("isGenerated", "(int) const", "$")]
 		public bool IsGenerated(int i) {
-			return ((QSqlRecord) interceptor).IsGenerated(i);
+			return (bool) interceptor.Invoke("isGenerated$", "isGenerated(int) const", typeof(bool), typeof(int), i);
 		}
-		[SmokeMethod("isGenerated", "(const QString&) const", "$")]
 		public bool IsGenerated(string name) {
-			return ((QSqlRecord) interceptor).IsGenerated(name);
+			return (bool) interceptor.Invoke("isGenerated$", "isGenerated(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("setGenerated", "(const QString&, bool)", "$$")]
 		public void SetGenerated(string name, bool generated) {
-			((QSqlRecord) interceptor).SetGenerated(name,generated);
+			interceptor.Invoke("setGenerated$$", "setGenerated(const QString&, bool)", typeof(void), typeof(string), name, typeof(bool), generated);
 		}
-		[SmokeMethod("setGenerated", "(int, bool)", "$$")]
 		public void SetGenerated(int i, bool generated) {
-			((QSqlRecord) interceptor).SetGenerated(i,generated);
+			interceptor.Invoke("setGenerated$$", "setGenerated(int, bool)", typeof(void), typeof(int), i, typeof(bool), generated);
 		}
-		[SmokeMethod("append", "(const QSqlField&)", "#")]
 		public void Append(QSqlField field) {
-			((QSqlRecord) interceptor).Append(field);
+			interceptor.Invoke("append#", "append(const QSqlField&)", typeof(void), typeof(QSqlField), field);
 		}
-		[SmokeMethod("replace", "(int, const QSqlField&)", "$#")]
 		public void Replace(int pos, QSqlField field) {
-			((QSqlRecord) interceptor).Replace(pos,field);
+			interceptor.Invoke("replace$#", "replace(int, const QSqlField&)", typeof(void), typeof(int), pos, typeof(QSqlField), field);
 		}
-		[SmokeMethod("insert", "(int, const QSqlField&)", "$#")]
 		public void Insert(int pos, QSqlField field) {
-			((QSqlRecord) interceptor).Insert(pos,field);
+			interceptor.Invoke("insert$#", "insert(int, const QSqlField&)", typeof(void), typeof(int), pos, typeof(QSqlField), field);
 		}
-		[SmokeMethod("remove", "(int)", "$")]
 		public void Remove(int pos) {
-			((QSqlRecord) interceptor).Remove(pos);
+			interceptor.Invoke("remove$", "remove(int)", typeof(void), typeof(int), pos);
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QSqlRecord) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("contains", "(const QString&) const", "$")]
 		public bool Contains(string name) {
-			return ((QSqlRecord) interceptor).Contains(name);
+			return (bool) interceptor.Invoke("contains$", "contains(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QSqlRecord) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("clearValues", "()", "")]
 		public void ClearValues() {
-			((QSqlRecord) interceptor).ClearValues();
+			interceptor.Invoke("clearValues", "clearValues()", typeof(void));
 		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QSqlRecord) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
 		~QSqlRecord() {
-			DisposeQSqlRecord();
+			interceptor.Invoke("~QSqlRecord", "~QSqlRecord()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSqlRecord();
-		}
-		[SmokeMethod("~QSqlRecord", "()", "")]
-		private void DisposeQSqlRecord() {
-			((QSqlRecord) interceptor).DisposeQSqlRecord();
+			interceptor.Invoke("~QSqlRecord", "~QSqlRecord()", typeof(void));
 		}
 		public static bool operator==(QSqlRecord lhs, QSqlRecord other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QSqlRecord&) const", typeof(bool), typeof(QSqlRecord), lhs, typeof(QSqlRecord), other);
 		}
 		public static bool operator!=(QSqlRecord lhs, QSqlRecord other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSqlRecord&) const", typeof(bool), typeof(QSqlRecord), lhs, typeof(QSqlRecord), other);
 		}
 	}
 }

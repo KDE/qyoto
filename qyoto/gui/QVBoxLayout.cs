@@ -6,53 +6,32 @@ namespace Qyoto {
 	[SmokeClass("QVBoxLayout")]
 	public class QVBoxLayout : QBoxLayout, IDisposable {
  		protected QVBoxLayout(Type dummy) : base((Type) null) {}
-		[SmokeClass("QVBoxLayout")]
-		interface IQVBoxLayoutProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVBoxLayout), this);
-			interceptor = (QVBoxLayout) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QVBoxLayout), "QVBoxLayout", this);
 		}
-		private static IQVBoxLayoutProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QVBoxLayout() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQVBoxLayoutProxy), null);
-			staticInterceptor = (IQVBoxLayoutProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QVBoxLayout), "QVBoxLayout", null);
 		}
 		public QVBoxLayout() : this((Type) null) {
 			CreateProxy();
-			NewQVBoxLayout();
-		}
-		[SmokeMethod("QVBoxLayout", "()", "")]
-		private void NewQVBoxLayout() {
-			((QVBoxLayout) interceptor).NewQVBoxLayout();
+			interceptor.Invoke("QVBoxLayout", "QVBoxLayout()", typeof(void));
 		}
 		public QVBoxLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQVBoxLayout(parent);
-		}
-		[SmokeMethod("QVBoxLayout", "(QWidget*)", "#")]
-		private void NewQVBoxLayout(QWidget parent) {
-			((QVBoxLayout) interceptor).NewQVBoxLayout(parent);
+			interceptor.Invoke("QVBoxLayout#", "QVBoxLayout(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		~QVBoxLayout() {
-			DisposeQVBoxLayout();
+			interceptor.Invoke("~QVBoxLayout", "~QVBoxLayout()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQVBoxLayout();
-		}
-		[SmokeMethod("~QVBoxLayout", "()", "")]
-		private void DisposeQVBoxLayout() {
-			((QVBoxLayout) interceptor).DisposeQVBoxLayout();
+			interceptor.Invoke("~QVBoxLayout", "~QVBoxLayout()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQVBoxLayoutSignals Emit {
 			get { return (IQVBoxLayoutSignals) Q_EMIT; }

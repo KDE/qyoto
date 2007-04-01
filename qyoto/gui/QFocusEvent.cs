@@ -7,46 +7,30 @@ namespace Qyoto {
 	public class QFocusEvent : QEvent, IDisposable {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusEvent), this);
-			interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFocusEvent), "QFocusEvent", this);
 		}
 		public QFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) : this((Type) null) {
 			CreateProxy();
-			NewQFocusEvent(type,reason);
-		}
-		[SmokeMethod("QFocusEvent", "(QEvent::Type, Qt::FocusReason)", "$$")]
-		private void NewQFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) {
-			((QFocusEvent) interceptor).NewQFocusEvent(type,reason);
+			interceptor.Invoke("QFocusEvent$$", "QFocusEvent(QEvent::Type, Qt::FocusReason)", typeof(void), typeof(QEvent.TypeOf), type, typeof(Qt.FocusReason), reason);
 		}
 		public QFocusEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQFocusEvent(type);
+			interceptor.Invoke("QFocusEvent$", "QFocusEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
-		[SmokeMethod("QFocusEvent", "(QEvent::Type)", "$")]
-		private void NewQFocusEvent(QEvent.TypeOf type) {
-			((QFocusEvent) interceptor).NewQFocusEvent(type);
-		}
-		[SmokeMethod("gotFocus", "() const", "")]
 		public bool GotFocus() {
-			return ((QFocusEvent) interceptor).GotFocus();
+			return (bool) interceptor.Invoke("gotFocus", "gotFocus() const", typeof(bool));
 		}
-		[SmokeMethod("lostFocus", "() const", "")]
 		public bool LostFocus() {
-			return ((QFocusEvent) interceptor).LostFocus();
+			return (bool) interceptor.Invoke("lostFocus", "lostFocus() const", typeof(bool));
 		}
-		[SmokeMethod("reason", "()", "")]
 		public Qt.FocusReason Reason() {
-			return ((QFocusEvent) interceptor).Reason();
+			return (Qt.FocusReason) interceptor.Invoke("reason", "reason()", typeof(Qt.FocusReason));
 		}
 		~QFocusEvent() {
-			DisposeQFocusEvent();
+			interceptor.Invoke("~QFocusEvent", "~QFocusEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFocusEvent();
-		}
-		[SmokeMethod("~QFocusEvent", "()", "")]
-		private void DisposeQFocusEvent() {
-			((QFocusEvent) interceptor).DisposeQFocusEvent();
+			interceptor.Invoke("~QFocusEvent", "~QFocusEvent()", typeof(void));
 		}
 	}
 }

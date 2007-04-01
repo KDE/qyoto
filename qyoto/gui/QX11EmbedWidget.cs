@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QX11EmbedWidget")]
 	public class QX11EmbedWidget : QWidget, IDisposable {
  		protected QX11EmbedWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QX11EmbedWidget")]
-		interface IQX11EmbedWidgetProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QX11EmbedWidget), this);
-			interceptor = (QX11EmbedWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QX11EmbedWidget), "QX11EmbedWidget", this);
 		}
-		private static IQX11EmbedWidgetProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QX11EmbedWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQX11EmbedWidgetProxy), null);
-			staticInterceptor = (IQX11EmbedWidgetProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QX11EmbedWidget), "QX11EmbedWidget", null);
 		}
 		public enum Error {
 			Unknown = 0,
@@ -31,59 +22,44 @@ namespace Qyoto {
 		// bool x11Event(XEvent* arg1); >>>> NOT CONVERTED
 		public QX11EmbedWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQX11EmbedWidget(parent);
-		}
-		[SmokeMethod("QX11EmbedWidget", "(QWidget*)", "#")]
-		private void NewQX11EmbedWidget(QWidget parent) {
-			((QX11EmbedWidget) interceptor).NewQX11EmbedWidget(parent);
+			interceptor.Invoke("QX11EmbedWidget#", "QX11EmbedWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QX11EmbedWidget() : this((Type) null) {
 			CreateProxy();
-			NewQX11EmbedWidget();
+			interceptor.Invoke("QX11EmbedWidget", "QX11EmbedWidget()", typeof(void));
 		}
-		[SmokeMethod("QX11EmbedWidget", "()", "")]
-		private void NewQX11EmbedWidget() {
-			((QX11EmbedWidget) interceptor).NewQX11EmbedWidget();
-		}
-		[SmokeMethod("embedInto", "(WId)", "$")]
 		public void EmbedInto(ulong id) {
-			((QX11EmbedWidget) interceptor).EmbedInto(id);
+			interceptor.Invoke("embedInto$", "embedInto(WId)", typeof(void), typeof(ulong), id);
 		}
-		[SmokeMethod("containerWinId", "() const", "")]
 		public ulong ContainerWinId() {
-			return ((QX11EmbedWidget) interceptor).ContainerWinId();
+			return (ulong) interceptor.Invoke("containerWinId", "containerWinId() const", typeof(ulong));
 		}
-		[SmokeMethod("error", "() const", "")]
 		public QX11EmbedWidget.Error error() {
-			return ((QX11EmbedWidget) interceptor).error();
+			return (QX11EmbedWidget.Error) interceptor.Invoke("error", "error() const", typeof(QX11EmbedWidget.Error));
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QX11EmbedWidget) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QX11EmbedWidget) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QX11EmbedWidget) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
 		~QX11EmbedWidget() {
-			DisposeQX11EmbedWidget();
+			interceptor.Invoke("~QX11EmbedWidget", "~QX11EmbedWidget()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQX11EmbedWidget();
-		}
-		[SmokeMethod("~QX11EmbedWidget", "()", "")]
-		private void DisposeQX11EmbedWidget() {
-			((QX11EmbedWidget) interceptor).DisposeQX11EmbedWidget();
+			interceptor.Invoke("~QX11EmbedWidget", "~QX11EmbedWidget()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQX11EmbedWidgetSignals Emit {
 			get { return (IQX11EmbedWidgetSignals) Q_EMIT; }

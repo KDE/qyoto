@@ -4,25 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTreeWidgetItemIterator")]
-	public class QTreeWidgetItemIterator : MarshalByRefObject, IDisposable {
-		protected QTreeWidgetItemIterator interceptor = null;
+	public class QTreeWidgetItemIterator : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTreeWidgetItemIterator(Type dummy) {}
-		[SmokeClass("QTreeWidgetItemIterator")]
-		interface IQTreeWidgetItemIteratorProxy {
-			[SmokeMethod("operator++", "()", "")]
-			QTreeWidgetItemIterator op_incr(QTreeWidgetItemIterator lhs);
-			[SmokeMethod("operator--", "()", "")]
-			QTreeWidgetItemIterator op_decr(QTreeWidgetItemIterator lhs);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTreeWidgetItemIterator), this);
-			interceptor = (QTreeWidgetItemIterator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTreeWidgetItemIterator), "QTreeWidgetItemIterator", this);
 		}
-		private static IQTreeWidgetItemIteratorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTreeWidgetItemIterator() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTreeWidgetItemIteratorProxy), null);
-			staticInterceptor = (IQTreeWidgetItemIteratorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTreeWidgetItemIterator), "QTreeWidgetItemIterator", null);
 		}
 		public enum IteratorFlag {
 			All = 0x00000000,
@@ -48,59 +39,35 @@ namespace Qyoto {
 		}
 		public QTreeWidgetItemIterator(QTreeWidgetItemIterator it) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItemIterator(it);
-		}
-		[SmokeMethod("QTreeWidgetItemIterator", "(const QTreeWidgetItemIterator&)", "#")]
-		private void NewQTreeWidgetItemIterator(QTreeWidgetItemIterator it) {
-			((QTreeWidgetItemIterator) interceptor).NewQTreeWidgetItemIterator(it);
+			interceptor.Invoke("QTreeWidgetItemIterator#", "QTreeWidgetItemIterator(const QTreeWidgetItemIterator&)", typeof(void), typeof(QTreeWidgetItemIterator), it);
 		}
 		public QTreeWidgetItemIterator(QTreeWidget widget, int flags) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItemIterator(widget,flags);
-		}
-		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidget*, IteratorFlags)", "#$")]
-		private void NewQTreeWidgetItemIterator(QTreeWidget widget, int flags) {
-			((QTreeWidgetItemIterator) interceptor).NewQTreeWidgetItemIterator(widget,flags);
+			interceptor.Invoke("QTreeWidgetItemIterator#$", "QTreeWidgetItemIterator(QTreeWidget*, IteratorFlags)", typeof(void), typeof(QTreeWidget), widget, typeof(int), flags);
 		}
 		public QTreeWidgetItemIterator(QTreeWidget widget) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItemIterator(widget);
-		}
-		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidget*)", "#")]
-		private void NewQTreeWidgetItemIterator(QTreeWidget widget) {
-			((QTreeWidgetItemIterator) interceptor).NewQTreeWidgetItemIterator(widget);
+			interceptor.Invoke("QTreeWidgetItemIterator#", "QTreeWidgetItemIterator(QTreeWidget*)", typeof(void), typeof(QTreeWidget), widget);
 		}
 		public QTreeWidgetItemIterator(QTreeWidgetItem item, int flags) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItemIterator(item,flags);
-		}
-		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidgetItem*, IteratorFlags)", "#$")]
-		private void NewQTreeWidgetItemIterator(QTreeWidgetItem item, int flags) {
-			((QTreeWidgetItemIterator) interceptor).NewQTreeWidgetItemIterator(item,flags);
+			interceptor.Invoke("QTreeWidgetItemIterator#$", "QTreeWidgetItemIterator(QTreeWidgetItem*, IteratorFlags)", typeof(void), typeof(QTreeWidgetItem), item, typeof(int), flags);
 		}
 		public QTreeWidgetItemIterator(QTreeWidgetItem item) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItemIterator(item);
-		}
-		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidgetItem*)", "#")]
-		private void NewQTreeWidgetItemIterator(QTreeWidgetItem item) {
-			((QTreeWidgetItemIterator) interceptor).NewQTreeWidgetItemIterator(item);
+			interceptor.Invoke("QTreeWidgetItemIterator#", "QTreeWidgetItemIterator(QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), item);
 		}
 		~QTreeWidgetItemIterator() {
-			DisposeQTreeWidgetItemIterator();
+			interceptor.Invoke("~QTreeWidgetItemIterator", "~QTreeWidgetItemIterator()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTreeWidgetItemIterator();
-		}
-		[SmokeMethod("~QTreeWidgetItemIterator", "()", "")]
-		private void DisposeQTreeWidgetItemIterator() {
-			((QTreeWidgetItemIterator) interceptor).DisposeQTreeWidgetItemIterator();
+			interceptor.Invoke("~QTreeWidgetItemIterator", "~QTreeWidgetItemIterator()", typeof(void));
 		}
 		public static QTreeWidgetItemIterator operator++(QTreeWidgetItemIterator lhs) {
-			return staticInterceptor.op_incr(lhs);
+			return (QTreeWidgetItemIterator) staticInterceptor.Invoke("operator++", "operator++()", typeof(QTreeWidgetItemIterator), typeof(QTreeWidgetItemIterator), lhs);
 		}
 		public static QTreeWidgetItemIterator operator--(QTreeWidgetItemIterator lhs) {
-			return staticInterceptor.op_decr(lhs);
+			return (QTreeWidgetItemIterator) staticInterceptor.Invoke("operator--", "operator--()", typeof(QTreeWidgetItemIterator), typeof(QTreeWidgetItemIterator), lhs);
 		}
 	}
 }

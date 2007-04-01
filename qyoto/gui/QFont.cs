@@ -5,43 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QFont")]
-	public class QFont : MarshalByRefObject, IDisposable {
-		protected QFont interceptor = null;
+	public class QFont : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFont(Type dummy) {}
-		[SmokeClass("QFont")]
-		interface IQFontProxy {
-			[SmokeMethod("operator==", "(const QFont&) const", "#")]
-			bool op_equals(QFont lhs, QFont arg1);
-			[SmokeMethod("operator<", "(const QFont&) const", "#")]
-			bool op_lt(QFont lhs, QFont arg1);
-			[SmokeMethod("substitute", "(const QString&)", "$")]
-			string Substitute(string arg1);
-			[SmokeMethod("substitutes", "(const QString&)", "$")]
-			List<string> Substitutes(string arg1);
-			[SmokeMethod("substitutions", "()", "")]
-			List<string> Substitutions();
-			[SmokeMethod("insertSubstitution", "(const QString&, const QString&)", "$$")]
-			void InsertSubstitution(string arg1, string arg2);
-			[SmokeMethod("insertSubstitutions", "(const QString&, const QStringList&)", "$?")]
-			void InsertSubstitutions(string arg1, List<string> arg2);
-			[SmokeMethod("removeSubstitution", "(const QString&)", "$")]
-			void RemoveSubstitution(string arg1);
-			[SmokeMethod("initialize", "()", "")]
-			void Initialize();
-			[SmokeMethod("cleanup", "()", "")]
-			void Cleanup();
-			[SmokeMethod("cacheStatistics", "()", "")]
-			void CacheStatistics();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFont), this);
-			interceptor = (QFont) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFont), "QFont", this);
 		}
-		private static IQFontProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFont() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontProxy), null);
-			staticInterceptor = (IQFontProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFont), "QFont", null);
 		}
 		public enum StyleHint {
 			Helvetica = 0,
@@ -94,308 +67,228 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QFont() : this((Type) null) {
 			CreateProxy();
-			NewQFont();
-		}
-		[SmokeMethod("QFont", "()", "")]
-		private void NewQFont() {
-			((QFont) interceptor).NewQFont();
+			interceptor.Invoke("QFont", "QFont()", typeof(void));
 		}
 		public QFont(string family, int pointSize, int weight, bool italic) : this((Type) null) {
 			CreateProxy();
-			NewQFont(family,pointSize,weight,italic);
-		}
-		[SmokeMethod("QFont", "(const QString&, int, int, bool)", "$$$$")]
-		private void NewQFont(string family, int pointSize, int weight, bool italic) {
-			((QFont) interceptor).NewQFont(family,pointSize,weight,italic);
+			interceptor.Invoke("QFont$$$$", "QFont(const QString&, int, int, bool)", typeof(void), typeof(string), family, typeof(int), pointSize, typeof(int), weight, typeof(bool), italic);
 		}
 		public QFont(string family, int pointSize, int weight) : this((Type) null) {
 			CreateProxy();
-			NewQFont(family,pointSize,weight);
-		}
-		[SmokeMethod("QFont", "(const QString&, int, int)", "$$$")]
-		private void NewQFont(string family, int pointSize, int weight) {
-			((QFont) interceptor).NewQFont(family,pointSize,weight);
+			interceptor.Invoke("QFont$$$", "QFont(const QString&, int, int)", typeof(void), typeof(string), family, typeof(int), pointSize, typeof(int), weight);
 		}
 		public QFont(string family, int pointSize) : this((Type) null) {
 			CreateProxy();
-			NewQFont(family,pointSize);
-		}
-		[SmokeMethod("QFont", "(const QString&, int)", "$$")]
-		private void NewQFont(string family, int pointSize) {
-			((QFont) interceptor).NewQFont(family,pointSize);
+			interceptor.Invoke("QFont$$", "QFont(const QString&, int)", typeof(void), typeof(string), family, typeof(int), pointSize);
 		}
 		public QFont(string family) : this((Type) null) {
 			CreateProxy();
-			NewQFont(family);
-		}
-		[SmokeMethod("QFont", "(const QString&)", "$")]
-		private void NewQFont(string family) {
-			((QFont) interceptor).NewQFont(family);
+			interceptor.Invoke("QFont$", "QFont(const QString&)", typeof(void), typeof(string), family);
 		}
 		public QFont(QFont arg1, IQPaintDevice pd) : this((Type) null) {
 			CreateProxy();
-			NewQFont(arg1,pd);
-		}
-		[SmokeMethod("QFont", "(const QFont&, QPaintDevice*)", "##")]
-		private void NewQFont(QFont arg1, IQPaintDevice pd) {
-			((QFont) interceptor).NewQFont(arg1,pd);
+			interceptor.Invoke("QFont##", "QFont(const QFont&, QPaintDevice*)", typeof(void), typeof(QFont), arg1, typeof(IQPaintDevice), pd);
 		}
 		public QFont(QFont arg1) : this((Type) null) {
 			CreateProxy();
-			NewQFont(arg1);
+			interceptor.Invoke("QFont#", "QFont(const QFont&)", typeof(void), typeof(QFont), arg1);
 		}
-		[SmokeMethod("QFont", "(const QFont&)", "#")]
-		private void NewQFont(QFont arg1) {
-			((QFont) interceptor).NewQFont(arg1);
-		}
-		[SmokeMethod("family", "() const", "")]
 		public string Family() {
-			return ((QFont) interceptor).Family();
+			return (string) interceptor.Invoke("family", "family() const", typeof(string));
 		}
-		[SmokeMethod("setFamily", "(const QString&)", "$")]
 		public void SetFamily(string arg1) {
-			((QFont) interceptor).SetFamily(arg1);
+			interceptor.Invoke("setFamily$", "setFamily(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("pointSize", "() const", "")]
 		public int PointSize() {
-			return ((QFont) interceptor).PointSize();
+			return (int) interceptor.Invoke("pointSize", "pointSize() const", typeof(int));
 		}
-		[SmokeMethod("setPointSize", "(int)", "$")]
 		public void SetPointSize(int arg1) {
-			((QFont) interceptor).SetPointSize(arg1);
+			interceptor.Invoke("setPointSize$", "setPointSize(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("pointSizeF", "() const", "")]
 		public double PointSizeF() {
-			return ((QFont) interceptor).PointSizeF();
+			return (double) interceptor.Invoke("pointSizeF", "pointSizeF() const", typeof(double));
 		}
-		[SmokeMethod("setPointSizeF", "(qreal)", "$")]
 		public void SetPointSizeF(double arg1) {
-			((QFont) interceptor).SetPointSizeF(arg1);
+			interceptor.Invoke("setPointSizeF$", "setPointSizeF(qreal)", typeof(void), typeof(double), arg1);
 		}
-		[SmokeMethod("pixelSize", "() const", "")]
 		public int PixelSize() {
-			return ((QFont) interceptor).PixelSize();
+			return (int) interceptor.Invoke("pixelSize", "pixelSize() const", typeof(int));
 		}
-		[SmokeMethod("setPixelSize", "(int)", "$")]
 		public void SetPixelSize(int arg1) {
-			((QFont) interceptor).SetPixelSize(arg1);
+			interceptor.Invoke("setPixelSize$", "setPixelSize(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("weight", "() const", "")]
 		public int weight() {
-			return ((QFont) interceptor).weight();
+			return (int) interceptor.Invoke("weight", "weight() const", typeof(int));
 		}
-		[SmokeMethod("setWeight", "(int)", "$")]
 		public void SetWeight(int arg1) {
-			((QFont) interceptor).SetWeight(arg1);
+			interceptor.Invoke("setWeight$", "setWeight(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("bold", "() const", "")]
 		public bool Bold() {
-			return ((QFont) interceptor).Bold();
+			return (bool) interceptor.Invoke("bold", "bold() const", typeof(bool));
 		}
-		[SmokeMethod("setBold", "(bool)", "$")]
 		public void SetBold(bool arg1) {
-			((QFont) interceptor).SetBold(arg1);
+			interceptor.Invoke("setBold$", "setBold(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("setStyle", "(QFont::Style)", "$")]
 		public void SetStyle(QFont.Style style) {
-			((QFont) interceptor).SetStyle(style);
+			interceptor.Invoke("setStyle$", "setStyle(QFont::Style)", typeof(void), typeof(QFont.Style), style);
 		}
-		[SmokeMethod("style", "() const", "")]
 		public QFont.Style style() {
-			return ((QFont) interceptor).style();
+			return (QFont.Style) interceptor.Invoke("style", "style() const", typeof(QFont.Style));
 		}
-		[SmokeMethod("italic", "() const", "")]
 		public bool Italic() {
-			return ((QFont) interceptor).Italic();
+			return (bool) interceptor.Invoke("italic", "italic() const", typeof(bool));
 		}
-		[SmokeMethod("setItalic", "(bool)", "$")]
 		public void SetItalic(bool b) {
-			((QFont) interceptor).SetItalic(b);
+			interceptor.Invoke("setItalic$", "setItalic(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("underline", "() const", "")]
 		public bool Underline() {
-			return ((QFont) interceptor).Underline();
+			return (bool) interceptor.Invoke("underline", "underline() const", typeof(bool));
 		}
-		[SmokeMethod("setUnderline", "(bool)", "$")]
 		public void SetUnderline(bool arg1) {
-			((QFont) interceptor).SetUnderline(arg1);
+			interceptor.Invoke("setUnderline$", "setUnderline(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("overline", "() const", "")]
 		public bool Overline() {
-			return ((QFont) interceptor).Overline();
+			return (bool) interceptor.Invoke("overline", "overline() const", typeof(bool));
 		}
-		[SmokeMethod("setOverline", "(bool)", "$")]
 		public void SetOverline(bool arg1) {
-			((QFont) interceptor).SetOverline(arg1);
+			interceptor.Invoke("setOverline$", "setOverline(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("strikeOut", "() const", "")]
 		public bool StrikeOut() {
-			return ((QFont) interceptor).StrikeOut();
+			return (bool) interceptor.Invoke("strikeOut", "strikeOut() const", typeof(bool));
 		}
-		[SmokeMethod("setStrikeOut", "(bool)", "$")]
 		public void SetStrikeOut(bool arg1) {
-			((QFont) interceptor).SetStrikeOut(arg1);
+			interceptor.Invoke("setStrikeOut$", "setStrikeOut(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("fixedPitch", "() const", "")]
 		public bool FixedPitch() {
-			return ((QFont) interceptor).FixedPitch();
+			return (bool) interceptor.Invoke("fixedPitch", "fixedPitch() const", typeof(bool));
 		}
-		[SmokeMethod("setFixedPitch", "(bool)", "$")]
 		public void SetFixedPitch(bool arg1) {
-			((QFont) interceptor).SetFixedPitch(arg1);
+			interceptor.Invoke("setFixedPitch$", "setFixedPitch(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("kerning", "() const", "")]
 		public bool Kerning() {
-			return ((QFont) interceptor).Kerning();
+			return (bool) interceptor.Invoke("kerning", "kerning() const", typeof(bool));
 		}
-		[SmokeMethod("setKerning", "(bool)", "$")]
 		public void SetKerning(bool arg1) {
-			((QFont) interceptor).SetKerning(arg1);
+			interceptor.Invoke("setKerning$", "setKerning(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("styleHint", "() const", "")]
 		public QFont.StyleHint styleHint() {
-			return ((QFont) interceptor).styleHint();
+			return (QFont.StyleHint) interceptor.Invoke("styleHint", "styleHint() const", typeof(QFont.StyleHint));
 		}
-		[SmokeMethod("styleStrategy", "() const", "")]
 		public QFont.StyleStrategy styleStrategy() {
-			return ((QFont) interceptor).styleStrategy();
+			return (QFont.StyleStrategy) interceptor.Invoke("styleStrategy", "styleStrategy() const", typeof(QFont.StyleStrategy));
 		}
-		[SmokeMethod("setStyleHint", "(QFont::StyleHint, QFont::StyleStrategy)", "$$")]
 		public void SetStyleHint(QFont.StyleHint arg1, QFont.StyleStrategy arg2) {
-			((QFont) interceptor).SetStyleHint(arg1,arg2);
+			interceptor.Invoke("setStyleHint$$", "setStyleHint(QFont::StyleHint, QFont::StyleStrategy)", typeof(void), typeof(QFont.StyleHint), arg1, typeof(QFont.StyleStrategy), arg2);
 		}
-		[SmokeMethod("setStyleHint", "(QFont::StyleHint)", "$")]
 		public void SetStyleHint(QFont.StyleHint arg1) {
-			((QFont) interceptor).SetStyleHint(arg1);
+			interceptor.Invoke("setStyleHint$", "setStyleHint(QFont::StyleHint)", typeof(void), typeof(QFont.StyleHint), arg1);
 		}
-		[SmokeMethod("setStyleStrategy", "(QFont::StyleStrategy)", "$")]
 		public void SetStyleStrategy(QFont.StyleStrategy s) {
-			((QFont) interceptor).SetStyleStrategy(s);
+			interceptor.Invoke("setStyleStrategy$", "setStyleStrategy(QFont::StyleStrategy)", typeof(void), typeof(QFont.StyleStrategy), s);
 		}
-		[SmokeMethod("stretch", "() const", "")]
 		public int stretch() {
-			return ((QFont) interceptor).stretch();
+			return (int) interceptor.Invoke("stretch", "stretch() const", typeof(int));
 		}
-		[SmokeMethod("setStretch", "(int)", "$")]
 		public void SetStretch(int arg1) {
-			((QFont) interceptor).SetStretch(arg1);
+			interceptor.Invoke("setStretch$", "setStretch(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("rawMode", "() const", "")]
 		public bool RawMode() {
-			return ((QFont) interceptor).RawMode();
+			return (bool) interceptor.Invoke("rawMode", "rawMode() const", typeof(bool));
 		}
-		[SmokeMethod("setRawMode", "(bool)", "$")]
 		public void SetRawMode(bool arg1) {
-			((QFont) interceptor).SetRawMode(arg1);
+			interceptor.Invoke("setRawMode$", "setRawMode(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("exactMatch", "() const", "")]
 		public bool ExactMatch() {
-			return ((QFont) interceptor).ExactMatch();
+			return (bool) interceptor.Invoke("exactMatch", "exactMatch() const", typeof(bool));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QFont)) { return false; }
 			return this == (QFont) o;
 		}
 		public override int GetHashCode() {
-			return ((QFont) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("isCopyOf", "(const QFont&) const", "#")]
 		public bool IsCopyOf(QFont arg1) {
-			return ((QFont) interceptor).IsCopyOf(arg1);
+			return (bool) interceptor.Invoke("isCopyOf#", "isCopyOf(const QFont&) const", typeof(bool), typeof(QFont), arg1);
 		}
-		[SmokeMethod("setRawName", "(const QString&)", "$")]
 		public void SetRawName(string arg1) {
-			((QFont) interceptor).SetRawName(arg1);
+			interceptor.Invoke("setRawName$", "setRawName(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("rawName", "() const", "")]
 		public string RawName() {
-			return ((QFont) interceptor).RawName();
+			return (string) interceptor.Invoke("rawName", "rawName() const", typeof(string));
 		}
-		[SmokeMethod("key", "() const", "")]
 		public string Key() {
-			return ((QFont) interceptor).Key();
+			return (string) interceptor.Invoke("key", "key() const", typeof(string));
 		}
-		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ((QFont) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("fromString", "(const QString&)", "$")]
 		public bool FromString(string arg1) {
-			return ((QFont) interceptor).FromString(arg1);
+			return (bool) interceptor.Invoke("fromString$", "fromString(const QString&)", typeof(bool), typeof(string), arg1);
 		}
-		[SmokeMethod("defaultFamily", "() const", "")]
 		public string DefaultFamily() {
-			return ((QFont) interceptor).DefaultFamily();
+			return (string) interceptor.Invoke("defaultFamily", "defaultFamily() const", typeof(string));
 		}
-		[SmokeMethod("lastResortFamily", "() const", "")]
 		public string LastResortFamily() {
-			return ((QFont) interceptor).LastResortFamily();
+			return (string) interceptor.Invoke("lastResortFamily", "lastResortFamily() const", typeof(string));
 		}
-		[SmokeMethod("lastResortFont", "() const", "")]
 		public string LastResortFont() {
-			return ((QFont) interceptor).LastResortFont();
+			return (string) interceptor.Invoke("lastResortFont", "lastResortFont() const", typeof(string));
 		}
-		[SmokeMethod("resolve", "(const QFont&) const", "#")]
 		public QFont Resolve(QFont arg1) {
-			return ((QFont) interceptor).Resolve(arg1);
+			return (QFont) interceptor.Invoke("resolve#", "resolve(const QFont&) const", typeof(QFont), typeof(QFont), arg1);
 		}
-		[SmokeMethod("resolve", "() const", "")]
 		public uint Resolve() {
-			return ((QFont) interceptor).Resolve();
+			return (uint) interceptor.Invoke("resolve", "resolve() const", typeof(uint));
 		}
-		[SmokeMethod("resolve", "(uint)", "$")]
 		public void Resolve(uint mask) {
-			((QFont) interceptor).Resolve(mask);
+			interceptor.Invoke("resolve$", "resolve(uint)", typeof(void), typeof(uint), mask);
 		}
 		~QFont() {
-			DisposeQFont();
+			interceptor.Invoke("~QFont", "~QFont()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQFont();
-		}
-		[SmokeMethod("~QFont", "()", "")]
-		private void DisposeQFont() {
-			((QFont) interceptor).DisposeQFont();
+			interceptor.Invoke("~QFont", "~QFont()", typeof(void));
 		}
 		public static bool operator==(QFont lhs, QFont arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1);
 		}
 		public static bool operator!=(QFont lhs, QFont arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1);
 		}
 		public static bool operator<(QFont lhs, QFont arg1) {
-			return staticInterceptor.op_lt(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1);
 		}
 		public static bool operator>(QFont lhs, QFont arg1) {
-			return !staticInterceptor.op_lt(lhs,arg1)
-						&& !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1)
+						&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1);
 		}
 		public static string Substitute(string arg1) {
-			return staticInterceptor.Substitute(arg1);
+			return (string) staticInterceptor.Invoke("substitute$", "substitute(const QString&)", typeof(string), typeof(string), arg1);
 		}
 		public static List<string> Substitutes(string arg1) {
-			return staticInterceptor.Substitutes(arg1);
+			return (List<string>) staticInterceptor.Invoke("substitutes$", "substitutes(const QString&)", typeof(List<string>), typeof(string), arg1);
 		}
 		public static List<string> Substitutions() {
-			return staticInterceptor.Substitutions();
+			return (List<string>) staticInterceptor.Invoke("substitutions", "substitutions()", typeof(List<string>));
 		}
 		public static void InsertSubstitution(string arg1, string arg2) {
-			staticInterceptor.InsertSubstitution(arg1,arg2);
+			staticInterceptor.Invoke("insertSubstitution$$", "insertSubstitution(const QString&, const QString&)", typeof(void), typeof(string), arg1, typeof(string), arg2);
 		}
 		public static void InsertSubstitutions(string arg1, List<string> arg2) {
-			staticInterceptor.InsertSubstitutions(arg1,arg2);
+			staticInterceptor.Invoke("insertSubstitutions$?", "insertSubstitutions(const QString&, const QStringList&)", typeof(void), typeof(string), arg1, typeof(List<string>), arg2);
 		}
 		public static void RemoveSubstitution(string arg1) {
-			staticInterceptor.RemoveSubstitution(arg1);
+			staticInterceptor.Invoke("removeSubstitution$", "removeSubstitution(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		public static void Initialize() {
-			staticInterceptor.Initialize();
+			staticInterceptor.Invoke("initialize", "initialize()", typeof(void));
 		}
 		public static void Cleanup() {
-			staticInterceptor.Cleanup();
+			staticInterceptor.Invoke("cleanup", "cleanup()", typeof(void));
 		}
 		public static void CacheStatistics() {
-			staticInterceptor.CacheStatistics();
+			staticInterceptor.Invoke("cacheStatistics", "cacheStatistics()", typeof(void));
 		}
 	}
 }

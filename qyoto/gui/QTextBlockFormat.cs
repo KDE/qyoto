@@ -7,102 +7,74 @@ namespace Qyoto {
 	public class QTextBlockFormat : QTextFormat, IDisposable {
  		protected QTextBlockFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockFormat), this);
-			interceptor = (QTextBlockFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextBlockFormat), "QTextBlockFormat", this);
 		}
 		public QTextBlockFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextBlockFormat();
+			interceptor.Invoke("QTextBlockFormat", "QTextBlockFormat()", typeof(void));
 		}
-		[SmokeMethod("QTextBlockFormat", "()", "")]
-		private void NewQTextBlockFormat() {
-			((QTextBlockFormat) interceptor).NewQTextBlockFormat();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextBlockFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			((QTextBlockFormat) interceptor).SetAlignment(alignment);
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
 		}
-		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ((QTextBlockFormat) interceptor).Alignment();
+			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
 		}
-		[SmokeMethod("setTopMargin", "(qreal)", "$")]
 		public void SetTopMargin(double margin) {
-			((QTextBlockFormat) interceptor).SetTopMargin(margin);
+			interceptor.Invoke("setTopMargin$", "setTopMargin(qreal)", typeof(void), typeof(double), margin);
 		}
-		[SmokeMethod("topMargin", "() const", "")]
 		public double TopMargin() {
-			return ((QTextBlockFormat) interceptor).TopMargin();
+			return (double) interceptor.Invoke("topMargin", "topMargin() const", typeof(double));
 		}
-		[SmokeMethod("setBottomMargin", "(qreal)", "$")]
 		public void SetBottomMargin(double margin) {
-			((QTextBlockFormat) interceptor).SetBottomMargin(margin);
+			interceptor.Invoke("setBottomMargin$", "setBottomMargin(qreal)", typeof(void), typeof(double), margin);
 		}
-		[SmokeMethod("bottomMargin", "() const", "")]
 		public double BottomMargin() {
-			return ((QTextBlockFormat) interceptor).BottomMargin();
+			return (double) interceptor.Invoke("bottomMargin", "bottomMargin() const", typeof(double));
 		}
-		[SmokeMethod("setLeftMargin", "(qreal)", "$")]
 		public void SetLeftMargin(double margin) {
-			((QTextBlockFormat) interceptor).SetLeftMargin(margin);
+			interceptor.Invoke("setLeftMargin$", "setLeftMargin(qreal)", typeof(void), typeof(double), margin);
 		}
-		[SmokeMethod("leftMargin", "() const", "")]
 		public double LeftMargin() {
-			return ((QTextBlockFormat) interceptor).LeftMargin();
+			return (double) interceptor.Invoke("leftMargin", "leftMargin() const", typeof(double));
 		}
-		[SmokeMethod("setRightMargin", "(qreal)", "$")]
 		public void SetRightMargin(double margin) {
-			((QTextBlockFormat) interceptor).SetRightMargin(margin);
+			interceptor.Invoke("setRightMargin$", "setRightMargin(qreal)", typeof(void), typeof(double), margin);
 		}
-		[SmokeMethod("rightMargin", "() const", "")]
 		public double RightMargin() {
-			return ((QTextBlockFormat) interceptor).RightMargin();
+			return (double) interceptor.Invoke("rightMargin", "rightMargin() const", typeof(double));
 		}
-		[SmokeMethod("setTextIndent", "(qreal)", "$")]
 		public void SetTextIndent(double margin) {
-			((QTextBlockFormat) interceptor).SetTextIndent(margin);
+			interceptor.Invoke("setTextIndent$", "setTextIndent(qreal)", typeof(void), typeof(double), margin);
 		}
-		[SmokeMethod("textIndent", "() const", "")]
 		public double TextIndent() {
-			return ((QTextBlockFormat) interceptor).TextIndent();
+			return (double) interceptor.Invoke("textIndent", "textIndent() const", typeof(double));
 		}
-		[SmokeMethod("setIndent", "(int)", "$")]
 		public void SetIndent(int indent) {
-			((QTextBlockFormat) interceptor).SetIndent(indent);
+			interceptor.Invoke("setIndent$", "setIndent(int)", typeof(void), typeof(int), indent);
 		}
-		[SmokeMethod("indent", "() const", "")]
 		public int Indent() {
-			return ((QTextBlockFormat) interceptor).Indent();
+			return (int) interceptor.Invoke("indent", "indent() const", typeof(int));
 		}
-		[SmokeMethod("setNonBreakableLines", "(bool)", "$")]
 		public void SetNonBreakableLines(bool b) {
-			((QTextBlockFormat) interceptor).SetNonBreakableLines(b);
+			interceptor.Invoke("setNonBreakableLines$", "setNonBreakableLines(bool)", typeof(void), typeof(bool), b);
 		}
-		[SmokeMethod("nonBreakableLines", "() const", "")]
 		public bool NonBreakableLines() {
-			return ((QTextBlockFormat) interceptor).NonBreakableLines();
+			return (bool) interceptor.Invoke("nonBreakableLines", "nonBreakableLines() const", typeof(bool));
 		}
-		[SmokeMethod("setPageBreakPolicy", "(PageBreakFlags)", "$")]
 		public void SetPageBreakPolicy(int flags) {
-			((QTextBlockFormat) interceptor).SetPageBreakPolicy(flags);
+			interceptor.Invoke("setPageBreakPolicy$", "setPageBreakPolicy(PageBreakFlags)", typeof(void), typeof(int), flags);
 		}
-		[SmokeMethod("pageBreakPolicy", "() const", "")]
 		public int PageBreakPolicy() {
-			return ((QTextBlockFormat) interceptor).PageBreakPolicy();
+			return (int) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(int));
 		}
 		~QTextBlockFormat() {
-			DisposeQTextBlockFormat();
+			interceptor.Invoke("~QTextBlockFormat", "~QTextBlockFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextBlockFormat();
-		}
-		[SmokeMethod("~QTextBlockFormat", "()", "")]
-		private void DisposeQTextBlockFormat() {
-			((QTextBlockFormat) interceptor).DisposeQTextBlockFormat();
+			interceptor.Invoke("~QTextBlockFormat", "~QTextBlockFormat()", typeof(void));
 		}
 	}
 }

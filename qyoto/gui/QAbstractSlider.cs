@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QAbstractSlider")]
 	public abstract class QAbstractSlider : QWidget, IDisposable {
  		protected QAbstractSlider(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractSlider")]
-		interface IQAbstractSliderProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSlider), this);
-			interceptor = (QAbstractSlider) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractSlider), "QAbstractSlider", this);
 		}
-		private static IQAbstractSliderProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractSlider() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractSliderProxy), null);
-			staticInterceptor = (IQAbstractSliderProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractSlider), "QAbstractSlider", null);
 		}
 		public enum SliderAction {
 			SliderNoAction = 0,
@@ -41,168 +32,126 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			[SmokeMethod("minimum", "()", "")]
-			get { return ((QAbstractSlider) interceptor).Minimum; }
-			[SmokeMethod("setMinimum", "(int)", "$")]
-			set { ((QAbstractSlider) interceptor).Minimum = value; }
+			get { return (int) interceptor.Invoke("minimum", "minimum()", typeof(int)); }
+			set { interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			[SmokeMethod("maximum", "()", "")]
-			get { return ((QAbstractSlider) interceptor).Maximum; }
-			[SmokeMethod("setMaximum", "(int)", "$")]
-			set { ((QAbstractSlider) interceptor).Maximum = value; }
+			get { return (int) interceptor.Invoke("maximum", "maximum()", typeof(int)); }
+			set { interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "singleStep")]
 		public int SingleStep {
-			[SmokeMethod("singleStep", "()", "")]
-			get { return ((QAbstractSlider) interceptor).SingleStep; }
-			[SmokeMethod("setSingleStep", "(int)", "$")]
-			set { ((QAbstractSlider) interceptor).SingleStep = value; }
+			get { return (int) interceptor.Invoke("singleStep", "singleStep()", typeof(int)); }
+			set { interceptor.Invoke("setSingleStep$", "setSingleStep(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "pageStep")]
 		public int PageStep {
-			[SmokeMethod("pageStep", "()", "")]
-			get { return ((QAbstractSlider) interceptor).PageStep; }
-			[SmokeMethod("setPageStep", "(int)", "$")]
-			set { ((QAbstractSlider) interceptor).PageStep = value; }
+			get { return (int) interceptor.Invoke("pageStep", "pageStep()", typeof(int)); }
+			set { interceptor.Invoke("setPageStep$", "setPageStep(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			[SmokeMethod("value", "()", "")]
-			get { return ((QAbstractSlider) interceptor).Value; }
-			[SmokeMethod("setValue", "(int)", "$")]
-			set { ((QAbstractSlider) interceptor).Value = value; }
+			get { return (int) interceptor.Invoke("value", "value()", typeof(int)); }
+			set { interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "sliderPosition")]
 		public int SliderPosition {
-			[SmokeMethod("sliderPosition", "()", "")]
-			get { return ((QAbstractSlider) interceptor).SliderPosition; }
-			[SmokeMethod("setSliderPosition", "(int)", "$")]
-			set { ((QAbstractSlider) interceptor).SliderPosition = value; }
+			get { return (int) interceptor.Invoke("sliderPosition", "sliderPosition()", typeof(int)); }
+			set { interceptor.Invoke("setSliderPosition$", "setSliderPosition(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("bool", "tracking")]
 		public bool Tracking {
-			[SmokeMethod("hasTracking", "()", "")]
-			get { return ((QAbstractSlider) interceptor).Tracking; }
-			[SmokeMethod("setTracking", "(bool)", "$")]
-			set { ((QAbstractSlider) interceptor).Tracking = value; }
+			get { return (bool) interceptor.Invoke("hasTracking", "hasTracking()", typeof(bool)); }
+			set { interceptor.Invoke("setTracking$", "setTracking(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			[SmokeMethod("orientation", "()", "")]
-			get { return ((QAbstractSlider) interceptor).Orientation; }
-			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
-			set { ((QAbstractSlider) interceptor).Orientation = value; }
+			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
 		[Q_PROPERTY("bool", "invertedAppearance")]
 		public bool InvertedAppearance {
-			[SmokeMethod("invertedAppearance", "()", "")]
-			get { return ((QAbstractSlider) interceptor).InvertedAppearance; }
-			[SmokeMethod("setInvertedAppearance", "(bool)", "$")]
-			set { ((QAbstractSlider) interceptor).InvertedAppearance = value; }
+			get { return (bool) interceptor.Invoke("invertedAppearance", "invertedAppearance()", typeof(bool)); }
+			set { interceptor.Invoke("setInvertedAppearance$", "setInvertedAppearance(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "invertedControls")]
 		public bool InvertedControls {
-			[SmokeMethod("invertedControls", "()", "")]
-			get { return ((QAbstractSlider) interceptor).InvertedControls; }
-			[SmokeMethod("setInvertedControls", "(bool)", "$")]
-			set { ((QAbstractSlider) interceptor).InvertedControls = value; }
+			get { return (bool) interceptor.Invoke("invertedControls", "invertedControls()", typeof(bool)); }
+			set { interceptor.Invoke("setInvertedControls$", "setInvertedControls(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "sliderDown")]
 		public bool SliderDown {
-			[SmokeMethod("isSliderDown", "()", "")]
-			get { return ((QAbstractSlider) interceptor).SliderDown; }
-			[SmokeMethod("setSliderDown", "(bool)", "$")]
-			set { ((QAbstractSlider) interceptor).SliderDown = value; }
+			get { return (bool) interceptor.Invoke("isSliderDown", "isSliderDown()", typeof(bool)); }
+			set { interceptor.Invoke("setSliderDown$", "setSliderDown(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QAbstractSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractSlider(parent);
-		}
-		[SmokeMethod("QAbstractSlider", "(QWidget*)", "#")]
-		private void NewQAbstractSlider(QWidget parent) {
-			((QAbstractSlider) interceptor).NewQAbstractSlider(parent);
+			interceptor.Invoke("QAbstractSlider#", "QAbstractSlider(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QAbstractSlider() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractSlider();
+			interceptor.Invoke("QAbstractSlider", "QAbstractSlider()", typeof(void));
 		}
-		[SmokeMethod("QAbstractSlider", "()", "")]
-		private void NewQAbstractSlider() {
-			((QAbstractSlider) interceptor).NewQAbstractSlider();
-		}
-		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int min, int max) {
-			((QAbstractSlider) interceptor).SetRange(min,max);
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
 		}
-		[SmokeMethod("hasTracking", "() const", "")]
 		public bool HasTracking() {
-			return ((QAbstractSlider) interceptor).HasTracking();
+			return (bool) interceptor.Invoke("hasTracking", "hasTracking() const", typeof(bool));
 		}
-		[SmokeMethod("isSliderDown", "() const", "")]
 		public bool IsSliderDown() {
-			return ((QAbstractSlider) interceptor).IsSliderDown();
+			return (bool) interceptor.Invoke("isSliderDown", "isSliderDown() const", typeof(bool));
 		}
-		[SmokeMethod("triggerAction", "(QAbstractSlider::SliderAction)", "$")]
 		public void TriggerAction(QAbstractSlider.SliderAction action) {
-			((QAbstractSlider) interceptor).TriggerAction(action);
+			interceptor.Invoke("triggerAction$", "triggerAction(QAbstractSlider::SliderAction)", typeof(void), typeof(QAbstractSlider.SliderAction), action);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QAbstractSlider) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction, int, int)", "$$$")]
 		protected void SetRepeatAction(QAbstractSlider.SliderAction action, int thresholdTime, int repeatTime) {
-			((QAbstractSlider) interceptor).SetRepeatAction(action,thresholdTime,repeatTime);
+			interceptor.Invoke("setRepeatAction$$$", "setRepeatAction(QAbstractSlider::SliderAction, int, int)", typeof(void), typeof(QAbstractSlider.SliderAction), action, typeof(int), thresholdTime, typeof(int), repeatTime);
 		}
-		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction, int)", "$$")]
 		protected void SetRepeatAction(QAbstractSlider.SliderAction action, int thresholdTime) {
-			((QAbstractSlider) interceptor).SetRepeatAction(action,thresholdTime);
+			interceptor.Invoke("setRepeatAction$$", "setRepeatAction(QAbstractSlider::SliderAction, int)", typeof(void), typeof(QAbstractSlider.SliderAction), action, typeof(int), thresholdTime);
 		}
-		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction)", "$")]
 		protected void SetRepeatAction(QAbstractSlider.SliderAction action) {
-			((QAbstractSlider) interceptor).SetRepeatAction(action);
+			interceptor.Invoke("setRepeatAction$", "setRepeatAction(QAbstractSlider::SliderAction)", typeof(void), typeof(QAbstractSlider.SliderAction), action);
 		}
-		[SmokeMethod("repeatAction", "() const", "")]
 		protected QAbstractSlider.SliderAction RepeatAction() {
-			return ((QAbstractSlider) interceptor).RepeatAction();
+			return (QAbstractSlider.SliderAction) interceptor.Invoke("repeatAction", "repeatAction() const", typeof(QAbstractSlider.SliderAction));
 		}
-		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
+		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
 		protected virtual void sliderChange(QAbstractSlider.SliderChange change) {
-			((QAbstractSlider) interceptor).sliderChange(change);
+			interceptor.Invoke("sliderChange$", "sliderChange(QAbstractSlider::SliderChange)", typeof(void), typeof(QAbstractSlider.SliderChange), change);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent ev) {
-			((QAbstractSlider) interceptor).KeyPressEvent(ev);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), ev);
 		}
-		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			((QAbstractSlider) interceptor).TimerEvent(arg1);
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected override void WheelEvent(QWheelEvent e) {
-			((QAbstractSlider) interceptor).WheelEvent(e);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), e);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent e) {
-			((QAbstractSlider) interceptor).ChangeEvent(e);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
 		}
 		~QAbstractSlider() {
-			DisposeQAbstractSlider();
+			interceptor.Invoke("~QAbstractSlider", "~QAbstractSlider()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQAbstractSlider();
-		}
-		[SmokeMethod("~QAbstractSlider", "()", "")]
-		private void DisposeQAbstractSlider() {
-			((QAbstractSlider) interceptor).DisposeQAbstractSlider();
+			interceptor.Invoke("~QAbstractSlider", "~QAbstractSlider()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractSliderSignals Emit {
 			get { return (IQAbstractSliderSignals) Q_EMIT; }

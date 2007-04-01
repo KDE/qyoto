@@ -7,38 +7,24 @@ namespace Qyoto {
 	public class QDomComment : QDomCharacterData, IDisposable {
  		protected QDomComment(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomComment), this);
-			interceptor = (QDomComment) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomComment), "QDomComment", this);
 		}
 		public QDomComment() : this((Type) null) {
 			CreateProxy();
-			NewQDomComment();
-		}
-		[SmokeMethod("QDomComment", "()", "")]
-		private void NewQDomComment() {
-			((QDomComment) interceptor).NewQDomComment();
+			interceptor.Invoke("QDomComment", "QDomComment()", typeof(void));
 		}
 		public QDomComment(QDomComment x) : this((Type) null) {
 			CreateProxy();
-			NewQDomComment(x);
+			interceptor.Invoke("QDomComment#", "QDomComment(const QDomComment&)", typeof(void), typeof(QDomComment), x);
 		}
-		[SmokeMethod("QDomComment", "(const QDomComment&)", "#")]
-		private void NewQDomComment(QDomComment x) {
-			((QDomComment) interceptor).NewQDomComment(x);
-		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomComment) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomComment() {
-			DisposeQDomComment();
+			interceptor.Invoke("~QDomComment", "~QDomComment()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomComment();
-		}
-		[SmokeMethod("~QDomComment", "()", "")]
-		private void DisposeQDomComment() {
-			((QDomComment) interceptor).DisposeQDomComment();
+			interceptor.Invoke("~QDomComment", "~QDomComment()", typeof(void));
 		}
 	}
 }

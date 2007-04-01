@@ -4,71 +4,48 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QStringMatcher")]
-	public class QStringMatcher : MarshalByRefObject, IDisposable {
-		protected QStringMatcher interceptor = null;
+	public class QStringMatcher : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QStringMatcher(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringMatcher), this);
-			interceptor = (QStringMatcher) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStringMatcher), "QStringMatcher", this);
 		}
 		public QStringMatcher() : this((Type) null) {
 			CreateProxy();
-			NewQStringMatcher();
-		}
-		[SmokeMethod("QStringMatcher", "()", "")]
-		private void NewQStringMatcher() {
-			((QStringMatcher) interceptor).NewQStringMatcher();
+			interceptor.Invoke("QStringMatcher", "QStringMatcher()", typeof(void));
 		}
 		public QStringMatcher(string pattern, Qt.CaseSensitivity cs) : this((Type) null) {
 			CreateProxy();
-			NewQStringMatcher(pattern,cs);
-		}
-		[SmokeMethod("QStringMatcher", "(const QString&, Qt::CaseSensitivity)", "$$")]
-		private void NewQStringMatcher(string pattern, Qt.CaseSensitivity cs) {
-			((QStringMatcher) interceptor).NewQStringMatcher(pattern,cs);
+			interceptor.Invoke("QStringMatcher$$", "QStringMatcher(const QString&, Qt::CaseSensitivity)", typeof(void), typeof(string), pattern, typeof(Qt.CaseSensitivity), cs);
 		}
 		public QStringMatcher(string pattern) : this((Type) null) {
 			CreateProxy();
-			NewQStringMatcher(pattern);
+			interceptor.Invoke("QStringMatcher$", "QStringMatcher(const QString&)", typeof(void), typeof(string), pattern);
 		}
-		[SmokeMethod("QStringMatcher", "(const QString&)", "$")]
-		private void NewQStringMatcher(string pattern) {
-			((QStringMatcher) interceptor).NewQStringMatcher(pattern);
-		}
-		[SmokeMethod("setPattern", "(const QString&)", "$")]
 		public void SetPattern(string pattern) {
-			((QStringMatcher) interceptor).SetPattern(pattern);
+			interceptor.Invoke("setPattern$", "setPattern(const QString&)", typeof(void), typeof(string), pattern);
 		}
-		[SmokeMethod("setCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
 		public void SetCaseSensitivity(Qt.CaseSensitivity cs) {
-			((QStringMatcher) interceptor).SetCaseSensitivity(cs);
+			interceptor.Invoke("setCaseSensitivity$", "setCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), cs);
 		}
-		[SmokeMethod("indexIn", "(const QString&, int) const", "$$")]
 		public int IndexIn(string str, int from) {
-			return ((QStringMatcher) interceptor).IndexIn(str,from);
+			return (int) interceptor.Invoke("indexIn$$", "indexIn(const QString&, int) const", typeof(int), typeof(string), str, typeof(int), from);
 		}
-		[SmokeMethod("indexIn", "(const QString&) const", "$")]
 		public int IndexIn(string str) {
-			return ((QStringMatcher) interceptor).IndexIn(str);
+			return (int) interceptor.Invoke("indexIn$", "indexIn(const QString&) const", typeof(int), typeof(string), str);
 		}
-		[SmokeMethod("pattern", "() const", "")]
 		public string Pattern() {
-			return ((QStringMatcher) interceptor).Pattern();
+			return (string) interceptor.Invoke("pattern", "pattern() const", typeof(string));
 		}
-		[SmokeMethod("caseSensitivity", "() const", "")]
 		public Qt.CaseSensitivity CaseSensitivity() {
-			return ((QStringMatcher) interceptor).CaseSensitivity();
+			return (Qt.CaseSensitivity) interceptor.Invoke("caseSensitivity", "caseSensitivity() const", typeof(Qt.CaseSensitivity));
 		}
 		~QStringMatcher() {
-			DisposeQStringMatcher();
+			interceptor.Invoke("~QStringMatcher", "~QStringMatcher()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStringMatcher();
-		}
-		[SmokeMethod("~QStringMatcher", "()", "")]
-		private void DisposeQStringMatcher() {
-			((QStringMatcher) interceptor).DisposeQStringMatcher();
+			interceptor.Invoke("~QStringMatcher", "~QStringMatcher()", typeof(void));
 		}
 	}
 }

@@ -6,21 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QRubberBand")]
 	public class QRubberBand : QWidget, IDisposable {
  		protected QRubberBand(Type dummy) : base((Type) null) {}
-		[SmokeClass("QRubberBand")]
-		interface IQRubberBandProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRubberBand), this);
-			interceptor = (QRubberBand) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QRubberBand), "QRubberBand", this);
 		}
-		private static IQRubberBandProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QRubberBand() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRubberBandProxy), null);
-			staticInterceptor = (IQRubberBandProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QRubberBand), "QRubberBand", null);
 		}
 		public enum Shape {
 			Line = 0,
@@ -28,87 +19,68 @@ namespace Qyoto {
 		}
 		public QRubberBand(QRubberBand.Shape arg1, QWidget arg2) : this((Type) null) {
 			CreateProxy();
-			NewQRubberBand(arg1,arg2);
-		}
-		[SmokeMethod("QRubberBand", "(QRubberBand::Shape, QWidget*)", "$#")]
-		private void NewQRubberBand(QRubberBand.Shape arg1, QWidget arg2) {
-			((QRubberBand) interceptor).NewQRubberBand(arg1,arg2);
+			interceptor.Invoke("QRubberBand$#", "QRubberBand(QRubberBand::Shape, QWidget*)", typeof(void), typeof(QRubberBand.Shape), arg1, typeof(QWidget), arg2);
 		}
 		public QRubberBand(QRubberBand.Shape arg1) : this((Type) null) {
 			CreateProxy();
-			NewQRubberBand(arg1);
+			interceptor.Invoke("QRubberBand$", "QRubberBand(QRubberBand::Shape)", typeof(void), typeof(QRubberBand.Shape), arg1);
 		}
-		[SmokeMethod("QRubberBand", "(QRubberBand::Shape)", "$")]
-		private void NewQRubberBand(QRubberBand.Shape arg1) {
-			((QRubberBand) interceptor).NewQRubberBand(arg1);
-		}
-		[SmokeMethod("shape", "() const", "")]
 		public QRubberBand.Shape shape() {
-			return ((QRubberBand) interceptor).shape();
+			return (QRubberBand.Shape) interceptor.Invoke("shape", "shape() const", typeof(QRubberBand.Shape));
 		}
-		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public void SetGeometry(QRect r) {
-			((QRubberBand) interceptor).SetGeometry(r);
+			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		[SmokeMethod("setGeometry", "(int, int, int, int)", "$$$$")]
 		public void SetGeometry(int x, int y, int w, int h) {
-			((QRubberBand) interceptor).SetGeometry(x,y,w,h);
+			interceptor.Invoke("setGeometry$$$$", "setGeometry(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("move", "(int, int)", "$$")]
 		public void Move(int x, int y) {
-			((QRubberBand) interceptor).Move(x,y);
+			interceptor.Invoke("move$$", "move(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("move", "(const QPoint&)", "#")]
 		public void Move(QPoint p) {
-			((QRubberBand) interceptor).Move(p);
+			interceptor.Invoke("move#", "move(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
-		[SmokeMethod("resize", "(int, int)", "$$")]
 		public void Resize(int w, int h) {
-			((QRubberBand) interceptor).Resize(w,h);
+			interceptor.Invoke("resize$$", "resize(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("resize", "(const QSize&)", "#")]
 		public void Resize(QSize s) {
-			((QRubberBand) interceptor).Resize(s);
+			interceptor.Invoke("resize#", "resize(const QSize&)", typeof(void), typeof(QSize), s);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QRubberBand) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QRubberBand) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QRubberBand) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			((QRubberBand) interceptor).ShowEvent(arg1);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QRubberBand) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("moveEvent", "(QMoveEvent*)", "#")]
+		[SmokeMethod("moveEvent(QMoveEvent*)")]
 		protected override void MoveEvent(QMoveEvent arg1) {
-			((QRubberBand) interceptor).MoveEvent(arg1);
+			interceptor.Invoke("moveEvent#", "moveEvent(QMoveEvent*)", typeof(void), typeof(QMoveEvent), arg1);
 		}
 		~QRubberBand() {
-			DisposeQRubberBand();
+			interceptor.Invoke("~QRubberBand", "~QRubberBand()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQRubberBand();
-		}
-		[SmokeMethod("~QRubberBand", "()", "")]
-		private void DisposeQRubberBand() {
-			((QRubberBand) interceptor).DisposeQRubberBand();
+			interceptor.Invoke("~QRubberBand", "~QRubberBand()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQRubberBandSignals Emit {
 			get { return (IQRubberBandSignals) Q_EMIT; }

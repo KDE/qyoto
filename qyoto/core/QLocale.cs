@@ -4,33 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QLocale")]
-	public class QLocale : MarshalByRefObject, IDisposable {
-		protected QLocale interceptor = null;
+	public class QLocale : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QLocale(Type dummy) {}
-		[SmokeClass("QLocale")]
-		interface IQLocaleProxy {
-			[SmokeMethod("operator==", "(const QLocale&) const", "#")]
-			bool op_equals(QLocale lhs, QLocale other);
-			[SmokeMethod("languageToString", "(QLocale::Language)", "$")]
-			string LanguageToString(QLocale.Language language);
-			[SmokeMethod("countryToString", "(QLocale::Country)", "$")]
-			string CountryToString(QLocale.Country country);
-			[SmokeMethod("setDefault", "(const QLocale&)", "#")]
-			void SetDefault(QLocale locale);
-			[SmokeMethod("c", "()", "")]
-			QLocale C();
-			[SmokeMethod("system", "()", "")]
-			QLocale System();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLocale), this);
-			interceptor = (QLocale) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QLocale), "QLocale", this);
 		}
-		private static IQLocaleProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QLocale() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLocaleProxy), null);
-			staticInterceptor = (IQLocaleProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QLocale), "QLocale", null);
 		}
 		public enum Language {
 			C = 1,
@@ -435,317 +418,234 @@ namespace Qyoto {
 		}
 		public QLocale() : this((Type) null) {
 			CreateProxy();
-			NewQLocale();
-		}
-		[SmokeMethod("QLocale", "()", "")]
-		private void NewQLocale() {
-			((QLocale) interceptor).NewQLocale();
+			interceptor.Invoke("QLocale", "QLocale()", typeof(void));
 		}
 		public QLocale(string name) : this((Type) null) {
 			CreateProxy();
-			NewQLocale(name);
-		}
-		[SmokeMethod("QLocale", "(const QString&)", "$")]
-		private void NewQLocale(string name) {
-			((QLocale) interceptor).NewQLocale(name);
+			interceptor.Invoke("QLocale$", "QLocale(const QString&)", typeof(void), typeof(string), name);
 		}
 		public QLocale(QLocale.Language language, QLocale.Country country) : this((Type) null) {
 			CreateProxy();
-			NewQLocale(language,country);
-		}
-		[SmokeMethod("QLocale", "(QLocale::Language, QLocale::Country)", "$$")]
-		private void NewQLocale(QLocale.Language language, QLocale.Country country) {
-			((QLocale) interceptor).NewQLocale(language,country);
+			interceptor.Invoke("QLocale$$", "QLocale(QLocale::Language, QLocale::Country)", typeof(void), typeof(QLocale.Language), language, typeof(QLocale.Country), country);
 		}
 		public QLocale(QLocale.Language language) : this((Type) null) {
 			CreateProxy();
-			NewQLocale(language);
-		}
-		[SmokeMethod("QLocale", "(QLocale::Language)", "$")]
-		private void NewQLocale(QLocale.Language language) {
-			((QLocale) interceptor).NewQLocale(language);
+			interceptor.Invoke("QLocale$", "QLocale(QLocale::Language)", typeof(void), typeof(QLocale.Language), language);
 		}
 		public QLocale(QLocale other) : this((Type) null) {
 			CreateProxy();
-			NewQLocale(other);
+			interceptor.Invoke("QLocale#", "QLocale(const QLocale&)", typeof(void), typeof(QLocale), other);
 		}
-		[SmokeMethod("QLocale", "(const QLocale&)", "#")]
-		private void NewQLocale(QLocale other) {
-			((QLocale) interceptor).NewQLocale(other);
-		}
-		[SmokeMethod("language", "() const", "")]
 		public QLocale.Language language() {
-			return ((QLocale) interceptor).language();
+			return (QLocale.Language) interceptor.Invoke("language", "language() const", typeof(QLocale.Language));
 		}
-		[SmokeMethod("country", "() const", "")]
 		public QLocale.Country country() {
-			return ((QLocale) interceptor).country();
+			return (QLocale.Country) interceptor.Invoke("country", "country() const", typeof(QLocale.Country));
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QLocale) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("toShort", "(const QString&, bool*, int) const", "$$$")]
-		public short ToShort(string s, out bool ok, int arg3) {
-			return ((QLocale) interceptor).ToShort(s,out ok,arg3);
+		public short ToShort(string s, bool ok, int arg3) {
+			return (short) interceptor.Invoke("toShort$$$", "toShort(const QString&, bool*, int) const", typeof(short), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
 		}
-		[SmokeMethod("toShort", "(const QString&, bool*) const", "$$")]
-		public short ToShort(string s, out bool ok) {
-			return ((QLocale) interceptor).ToShort(s,out ok);
+		public short ToShort(string s, bool ok) {
+			return (short) interceptor.Invoke("toShort$$", "toShort(const QString&, bool*) const", typeof(short), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toShort", "(const QString&) const", "$")]
 		public short ToShort(string s) {
-			return ((QLocale) interceptor).ToShort(s);
+			return (short) interceptor.Invoke("toShort$", "toShort(const QString&) const", typeof(short), typeof(string), s);
 		}
-		[SmokeMethod("toUShort", "(const QString&, bool*, int) const", "$$$")]
-		public ushort ToUShort(string s, out bool ok, int arg3) {
-			return ((QLocale) interceptor).ToUShort(s,out ok,arg3);
+		public ushort ToUShort(string s, bool ok, int arg3) {
+			return (ushort) interceptor.Invoke("toUShort$$$", "toUShort(const QString&, bool*, int) const", typeof(ushort), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
 		}
-		[SmokeMethod("toUShort", "(const QString&, bool*) const", "$$")]
-		public ushort ToUShort(string s, out bool ok) {
-			return ((QLocale) interceptor).ToUShort(s,out ok);
+		public ushort ToUShort(string s, bool ok) {
+			return (ushort) interceptor.Invoke("toUShort$$", "toUShort(const QString&, bool*) const", typeof(ushort), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toUShort", "(const QString&) const", "$")]
 		public ushort ToUShort(string s) {
-			return ((QLocale) interceptor).ToUShort(s);
+			return (ushort) interceptor.Invoke("toUShort$", "toUShort(const QString&) const", typeof(ushort), typeof(string), s);
 		}
-		[SmokeMethod("toInt", "(const QString&, bool*, int) const", "$$$")]
-		public int ToInt(string s, out bool ok, int arg3) {
-			return ((QLocale) interceptor).ToInt(s,out ok,arg3);
+		public int ToInt(string s, bool ok, int arg3) {
+			return (int) interceptor.Invoke("toInt$$$", "toInt(const QString&, bool*, int) const", typeof(int), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
 		}
-		[SmokeMethod("toInt", "(const QString&, bool*) const", "$$")]
-		public int ToInt(string s, out bool ok) {
-			return ((QLocale) interceptor).ToInt(s,out ok);
+		public int ToInt(string s, bool ok) {
+			return (int) interceptor.Invoke("toInt$$", "toInt(const QString&, bool*) const", typeof(int), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toInt", "(const QString&) const", "$")]
 		public int ToInt(string s) {
-			return ((QLocale) interceptor).ToInt(s);
+			return (int) interceptor.Invoke("toInt$", "toInt(const QString&) const", typeof(int), typeof(string), s);
 		}
-		[SmokeMethod("toUInt", "(const QString&, bool*, int) const", "$$$")]
-		public uint ToUInt(string s, out bool ok, int arg3) {
-			return ((QLocale) interceptor).ToUInt(s,out ok,arg3);
+		public uint ToUInt(string s, bool ok, int arg3) {
+			return (uint) interceptor.Invoke("toUInt$$$", "toUInt(const QString&, bool*, int) const", typeof(uint), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
 		}
-		[SmokeMethod("toUInt", "(const QString&, bool*) const", "$$")]
-		public uint ToUInt(string s, out bool ok) {
-			return ((QLocale) interceptor).ToUInt(s,out ok);
+		public uint ToUInt(string s, bool ok) {
+			return (uint) interceptor.Invoke("toUInt$$", "toUInt(const QString&, bool*) const", typeof(uint), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toUInt", "(const QString&) const", "$")]
 		public uint ToUInt(string s) {
-			return ((QLocale) interceptor).ToUInt(s);
+			return (uint) interceptor.Invoke("toUInt$", "toUInt(const QString&) const", typeof(uint), typeof(string), s);
 		}
-		[SmokeMethod("toLongLong", "(const QString&, bool*, int) const", "$$$")]
-		public long ToLongLong(string s, out bool ok, int arg3) {
-			return ((QLocale) interceptor).ToLongLong(s,out ok,arg3);
+		public long ToLongLong(string s, bool ok, int arg3) {
+			return (long) interceptor.Invoke("toLongLong$$$", "toLongLong(const QString&, bool*, int) const", typeof(long), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
 		}
-		[SmokeMethod("toLongLong", "(const QString&, bool*) const", "$$")]
-		public long ToLongLong(string s, out bool ok) {
-			return ((QLocale) interceptor).ToLongLong(s,out ok);
+		public long ToLongLong(string s, bool ok) {
+			return (long) interceptor.Invoke("toLongLong$$", "toLongLong(const QString&, bool*) const", typeof(long), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toLongLong", "(const QString&) const", "$")]
 		public long ToLongLong(string s) {
-			return ((QLocale) interceptor).ToLongLong(s);
+			return (long) interceptor.Invoke("toLongLong$", "toLongLong(const QString&) const", typeof(long), typeof(string), s);
 		}
-		[SmokeMethod("toULongLong", "(const QString&, bool*, int) const", "$$$")]
-		public long ToULongLong(string s, out bool ok, int arg3) {
-			return ((QLocale) interceptor).ToULongLong(s,out ok,arg3);
+		public long ToULongLong(string s, bool ok, int arg3) {
+			return (long) interceptor.Invoke("toULongLong$$$", "toULongLong(const QString&, bool*, int) const", typeof(long), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
 		}
-		[SmokeMethod("toULongLong", "(const QString&, bool*) const", "$$")]
-		public long ToULongLong(string s, out bool ok) {
-			return ((QLocale) interceptor).ToULongLong(s,out ok);
+		public long ToULongLong(string s, bool ok) {
+			return (long) interceptor.Invoke("toULongLong$$", "toULongLong(const QString&, bool*) const", typeof(long), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toULongLong", "(const QString&) const", "$")]
 		public long ToULongLong(string s) {
-			return ((QLocale) interceptor).ToULongLong(s);
+			return (long) interceptor.Invoke("toULongLong$", "toULongLong(const QString&) const", typeof(long), typeof(string), s);
 		}
-		[SmokeMethod("toFloat", "(const QString&, bool*) const", "$$")]
-		public float ToFloat(string s, out bool ok) {
-			return ((QLocale) interceptor).ToFloat(s,out ok);
+		public float ToFloat(string s, bool ok) {
+			return (float) interceptor.Invoke("toFloat$$", "toFloat(const QString&, bool*) const", typeof(float), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toFloat", "(const QString&) const", "$")]
 		public float ToFloat(string s) {
-			return ((QLocale) interceptor).ToFloat(s);
+			return (float) interceptor.Invoke("toFloat$", "toFloat(const QString&) const", typeof(float), typeof(string), s);
 		}
-		[SmokeMethod("toDouble", "(const QString&, bool*) const", "$$")]
-		public double ToDouble(string s, out bool ok) {
-			return ((QLocale) interceptor).ToDouble(s,out ok);
+		public double ToDouble(string s, bool ok) {
+			return (double) interceptor.Invoke("toDouble$$", "toDouble(const QString&, bool*) const", typeof(double), typeof(string), s, typeof(bool), ok);
 		}
-		[SmokeMethod("toDouble", "(const QString&) const", "$")]
 		public double ToDouble(string s) {
-			return ((QLocale) interceptor).ToDouble(s);
+			return (double) interceptor.Invoke("toDouble$", "toDouble(const QString&) const", typeof(double), typeof(string), s);
 		}
-		[SmokeMethod("toString", "(qlonglong) const", "?")]
 		public string ToString(long i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString?", "toString(qlonglong) const", typeof(string), typeof(long), i);
 		}
-		[SmokeMethod("toString", "(qulonglong) const", "$")]
 		public string ToString(ulong i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(qulonglong) const", typeof(string), typeof(ulong), i);
 		}
-		[SmokeMethod("toString", "(short) const", "$")]
 		public string ToString(short i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(short) const", typeof(string), typeof(short), i);
 		}
-		[SmokeMethod("toString", "(ushort) const", "$")]
 		public string ToString(ushort i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(ushort) const", typeof(string), typeof(ushort), i);
 		}
-		[SmokeMethod("toString", "(int) const", "$")]
 		public string ToString(int i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(int) const", typeof(string), typeof(int), i);
 		}
-		[SmokeMethod("toString", "(uint) const", "$")]
 		public string ToString(uint i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(uint) const", typeof(string), typeof(uint), i);
 		}
-		[SmokeMethod("toString", "(double, char, int) const", "$$$")]
 		public string ToString(double i, char f, int prec) {
-			return ((QLocale) interceptor).ToString(i,f,prec);
+			return (string) interceptor.Invoke("toString$$$", "toString(double, char, int) const", typeof(string), typeof(double), i, typeof(char), f, typeof(int), prec);
 		}
-		[SmokeMethod("toString", "(double, char) const", "$$")]
 		public string ToString(double i, char f) {
-			return ((QLocale) interceptor).ToString(i,f);
+			return (string) interceptor.Invoke("toString$$", "toString(double, char) const", typeof(string), typeof(double), i, typeof(char), f);
 		}
-		[SmokeMethod("toString", "(double) const", "$")]
 		public string ToString(double i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(double) const", typeof(string), typeof(double), i);
 		}
-		[SmokeMethod("toString", "(float, char, int) const", "$$$")]
 		public string ToString(float i, char f, int prec) {
-			return ((QLocale) interceptor).ToString(i,f,prec);
+			return (string) interceptor.Invoke("toString$$$", "toString(float, char, int) const", typeof(string), typeof(float), i, typeof(char), f, typeof(int), prec);
 		}
-		[SmokeMethod("toString", "(float, char) const", "$$")]
 		public string ToString(float i, char f) {
-			return ((QLocale) interceptor).ToString(i,f);
+			return (string) interceptor.Invoke("toString$$", "toString(float, char) const", typeof(string), typeof(float), i, typeof(char), f);
 		}
-		[SmokeMethod("toString", "(float) const", "$")]
 		public string ToString(float i) {
-			return ((QLocale) interceptor).ToString(i);
+			return (string) interceptor.Invoke("toString$", "toString(float) const", typeof(string), typeof(float), i);
 		}
-		[SmokeMethod("toString", "(const QDate&, const QString&) const", "#$")]
 		public string ToString(QDate date, string formatStr) {
-			return ((QLocale) interceptor).ToString(date,formatStr);
+			return (string) interceptor.Invoke("toString#$", "toString(const QDate&, const QString&) const", typeof(string), typeof(QDate), date, typeof(string), formatStr);
 		}
-		[SmokeMethod("toString", "(const QDate&, QLocale::FormatType) const", "#$")]
 		public string ToString(QDate date, QLocale.FormatType format) {
-			return ((QLocale) interceptor).ToString(date,format);
+			return (string) interceptor.Invoke("toString#$", "toString(const QDate&, QLocale::FormatType) const", typeof(string), typeof(QDate), date, typeof(QLocale.FormatType), format);
 		}
-		[SmokeMethod("toString", "(const QDate&) const", "#")]
 		public string ToString(QDate date) {
-			return ((QLocale) interceptor).ToString(date);
+			return (string) interceptor.Invoke("toString#", "toString(const QDate&) const", typeof(string), typeof(QDate), date);
 		}
-		[SmokeMethod("toString", "(const QTime&, const QString&) const", "#$")]
 		public string ToString(QTime time, string formatStr) {
-			return ((QLocale) interceptor).ToString(time,formatStr);
+			return (string) interceptor.Invoke("toString#$", "toString(const QTime&, const QString&) const", typeof(string), typeof(QTime), time, typeof(string), formatStr);
 		}
-		[SmokeMethod("toString", "(const QTime&, QLocale::FormatType) const", "#$")]
 		public string ToString(QTime time, QLocale.FormatType format) {
-			return ((QLocale) interceptor).ToString(time,format);
+			return (string) interceptor.Invoke("toString#$", "toString(const QTime&, QLocale::FormatType) const", typeof(string), typeof(QTime), time, typeof(QLocale.FormatType), format);
 		}
-		[SmokeMethod("toString", "(const QTime&) const", "#")]
 		public string ToString(QTime time) {
-			return ((QLocale) interceptor).ToString(time);
+			return (string) interceptor.Invoke("toString#", "toString(const QTime&) const", typeof(string), typeof(QTime), time);
 		}
-		[SmokeMethod("dateFormat", "(QLocale::FormatType) const", "$")]
 		public string DateFormat(QLocale.FormatType format) {
-			return ((QLocale) interceptor).DateFormat(format);
+			return (string) interceptor.Invoke("dateFormat$", "dateFormat(QLocale::FormatType) const", typeof(string), typeof(QLocale.FormatType), format);
 		}
-		[SmokeMethod("dateFormat", "() const", "")]
 		public string DateFormat() {
-			return ((QLocale) interceptor).DateFormat();
+			return (string) interceptor.Invoke("dateFormat", "dateFormat() const", typeof(string));
 		}
-		[SmokeMethod("timeFormat", "(QLocale::FormatType) const", "$")]
 		public string TimeFormat(QLocale.FormatType format) {
-			return ((QLocale) interceptor).TimeFormat(format);
+			return (string) interceptor.Invoke("timeFormat$", "timeFormat(QLocale::FormatType) const", typeof(string), typeof(QLocale.FormatType), format);
 		}
-		[SmokeMethod("timeFormat", "() const", "")]
 		public string TimeFormat() {
-			return ((QLocale) interceptor).TimeFormat();
+			return (string) interceptor.Invoke("timeFormat", "timeFormat() const", typeof(string));
 		}
-		[SmokeMethod("decimalPoint", "() const", "")]
 		public char DecimalPoint() {
-			return ((QLocale) interceptor).DecimalPoint();
+			return (char) interceptor.Invoke("decimalPoint", "decimalPoint() const", typeof(char));
 		}
-		[SmokeMethod("groupSeparator", "() const", "")]
 		public char GroupSeparator() {
-			return ((QLocale) interceptor).GroupSeparator();
+			return (char) interceptor.Invoke("groupSeparator", "groupSeparator() const", typeof(char));
 		}
-		[SmokeMethod("percent", "() const", "")]
 		public char Percent() {
-			return ((QLocale) interceptor).Percent();
+			return (char) interceptor.Invoke("percent", "percent() const", typeof(char));
 		}
-		[SmokeMethod("zeroDigit", "() const", "")]
 		public char ZeroDigit() {
-			return ((QLocale) interceptor).ZeroDigit();
+			return (char) interceptor.Invoke("zeroDigit", "zeroDigit() const", typeof(char));
 		}
-		[SmokeMethod("negativeSign", "() const", "")]
 		public char NegativeSign() {
-			return ((QLocale) interceptor).NegativeSign();
+			return (char) interceptor.Invoke("negativeSign", "negativeSign() const", typeof(char));
 		}
-		[SmokeMethod("exponential", "() const", "")]
 		public char Exponential() {
-			return ((QLocale) interceptor).Exponential();
+			return (char) interceptor.Invoke("exponential", "exponential() const", typeof(char));
 		}
-		[SmokeMethod("monthName", "(int, QLocale::FormatType) const", "$$")]
 		public string MonthName(int arg1, QLocale.FormatType format) {
-			return ((QLocale) interceptor).MonthName(arg1,format);
+			return (string) interceptor.Invoke("monthName$$", "monthName(int, QLocale::FormatType) const", typeof(string), typeof(int), arg1, typeof(QLocale.FormatType), format);
 		}
-		[SmokeMethod("monthName", "(int) const", "$")]
 		public string MonthName(int arg1) {
-			return ((QLocale) interceptor).MonthName(arg1);
+			return (string) interceptor.Invoke("monthName$", "monthName(int) const", typeof(string), typeof(int), arg1);
 		}
-		[SmokeMethod("dayName", "(int, QLocale::FormatType) const", "$$")]
 		public string DayName(int arg1, QLocale.FormatType format) {
-			return ((QLocale) interceptor).DayName(arg1,format);
+			return (string) interceptor.Invoke("dayName$$", "dayName(int, QLocale::FormatType) const", typeof(string), typeof(int), arg1, typeof(QLocale.FormatType), format);
 		}
-		[SmokeMethod("dayName", "(int) const", "$")]
 		public string DayName(int arg1) {
-			return ((QLocale) interceptor).DayName(arg1);
+			return (string) interceptor.Invoke("dayName$", "dayName(int) const", typeof(string), typeof(int), arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QLocale)) { return false; }
 			return this == (QLocale) o;
 		}
 		public override int GetHashCode() {
-			return ((QLocale) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("setNumberOptions", "(NumberOptions)", "$")]
 		public void SetNumberOptions(int options) {
-			((QLocale) interceptor).SetNumberOptions(options);
+			interceptor.Invoke("setNumberOptions$", "setNumberOptions(NumberOptions)", typeof(void), typeof(int), options);
 		}
-		[SmokeMethod("numberOptions", "() const", "")]
 		public int NumberOptions() {
-			return ((QLocale) interceptor).NumberOptions();
+			return (int) interceptor.Invoke("numberOptions", "numberOptions() const", typeof(int));
 		}
 		~QLocale() {
-			DisposeQLocale();
+			interceptor.Invoke("~QLocale", "~QLocale()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQLocale();
-		}
-		[SmokeMethod("~QLocale", "()", "")]
-		private void DisposeQLocale() {
-			((QLocale) interceptor).DisposeQLocale();
+			interceptor.Invoke("~QLocale", "~QLocale()", typeof(void));
 		}
 		public static bool operator==(QLocale lhs, QLocale other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QLocale&) const", typeof(bool), typeof(QLocale), lhs, typeof(QLocale), other);
 		}
 		public static bool operator!=(QLocale lhs, QLocale other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QLocale&) const", typeof(bool), typeof(QLocale), lhs, typeof(QLocale), other);
 		}
 		public static string LanguageToString(QLocale.Language language) {
-			return staticInterceptor.LanguageToString(language);
+			return (string) staticInterceptor.Invoke("languageToString$", "languageToString(QLocale::Language)", typeof(string), typeof(QLocale.Language), language);
 		}
 		public static string CountryToString(QLocale.Country country) {
-			return staticInterceptor.CountryToString(country);
+			return (string) staticInterceptor.Invoke("countryToString$", "countryToString(QLocale::Country)", typeof(string), typeof(QLocale.Country), country);
 		}
 		public static void SetDefault(QLocale locale) {
-			staticInterceptor.SetDefault(locale);
+			staticInterceptor.Invoke("setDefault#", "setDefault(const QLocale&)", typeof(void), typeof(QLocale), locale);
 		}
 		public static QLocale C() {
-			return staticInterceptor.C();
+			return (QLocale) staticInterceptor.Invoke("c", "c()", typeof(QLocale));
 		}
 		public static QLocale System() {
-			return staticInterceptor.System();
+			return (QLocale) staticInterceptor.Invoke("system", "system()", typeof(QLocale));
 		}
 	}
 }

@@ -7,133 +7,88 @@ namespace Qyoto {
 	[SmokeClass("QSplashScreen")]
 	public class QSplashScreen : QWidget, IDisposable {
  		protected QSplashScreen(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSplashScreen")]
-		interface IQSplashScreenProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSplashScreen), this);
-			interceptor = (QSplashScreen) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSplashScreen), "QSplashScreen", this);
 		}
-		private static IQSplashScreenProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSplashScreen() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSplashScreenProxy), null);
-			staticInterceptor = (IQSplashScreenProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSplashScreen), "QSplashScreen", null);
 		}
 		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();
-			NewQSplashScreen(pixmap,f);
-		}
-		[SmokeMethod("QSplashScreen", "(const QPixmap&, Qt::WindowFlags)", "#$")]
-		private void NewQSplashScreen(QPixmap pixmap, int f) {
-			((QSplashScreen) interceptor).NewQSplashScreen(pixmap,f);
+			interceptor.Invoke("QSplashScreen#$", "QSplashScreen(const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QPixmap), pixmap, typeof(int), f);
 		}
 		public QSplashScreen(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
-			NewQSplashScreen(pixmap);
-		}
-		[SmokeMethod("QSplashScreen", "(const QPixmap&)", "#")]
-		private void NewQSplashScreen(QPixmap pixmap) {
-			((QSplashScreen) interceptor).NewQSplashScreen(pixmap);
+			interceptor.Invoke("QSplashScreen#", "QSplashScreen(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
 		public QSplashScreen() : this((Type) null) {
 			CreateProxy();
-			NewQSplashScreen();
-		}
-		[SmokeMethod("QSplashScreen", "()", "")]
-		private void NewQSplashScreen() {
-			((QSplashScreen) interceptor).NewQSplashScreen();
+			interceptor.Invoke("QSplashScreen", "QSplashScreen()", typeof(void));
 		}
 		public QSplashScreen(QWidget parent, QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();
-			NewQSplashScreen(parent,pixmap,f);
-		}
-		[SmokeMethod("QSplashScreen", "(QWidget*, const QPixmap&, Qt::WindowFlags)", "##$")]
-		private void NewQSplashScreen(QWidget parent, QPixmap pixmap, int f) {
-			((QSplashScreen) interceptor).NewQSplashScreen(parent,pixmap,f);
+			interceptor.Invoke("QSplashScreen##$", "QSplashScreen(QWidget*, const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(QPixmap), pixmap, typeof(int), f);
 		}
 		public QSplashScreen(QWidget parent, QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
-			NewQSplashScreen(parent,pixmap);
-		}
-		[SmokeMethod("QSplashScreen", "(QWidget*, const QPixmap&)", "##")]
-		private void NewQSplashScreen(QWidget parent, QPixmap pixmap) {
-			((QSplashScreen) interceptor).NewQSplashScreen(parent,pixmap);
+			interceptor.Invoke("QSplashScreen##", "QSplashScreen(QWidget*, const QPixmap&)", typeof(void), typeof(QWidget), parent, typeof(QPixmap), pixmap);
 		}
 		public QSplashScreen(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSplashScreen(parent);
+			interceptor.Invoke("QSplashScreen#", "QSplashScreen(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
-		[SmokeMethod("QSplashScreen", "(QWidget*)", "#")]
-		private void NewQSplashScreen(QWidget parent) {
-			((QSplashScreen) interceptor).NewQSplashScreen(parent);
-		}
-		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap pixmap) {
-			((QSplashScreen) interceptor).SetPixmap(pixmap);
+			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ((QSplashScreen) interceptor).Pixmap();
+			return (QPixmap) interceptor.Invoke("pixmap", "pixmap() const", typeof(QPixmap));
 		}
-		[SmokeMethod("finish", "(QWidget*)", "#")]
 		public void Finish(QWidget w) {
-			((QSplashScreen) interceptor).Finish(w);
+			interceptor.Invoke("finish#", "finish(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("repaint", "()", "")]
 		public void Repaint() {
-			((QSplashScreen) interceptor).Repaint();
+			interceptor.Invoke("repaint", "repaint()", typeof(void));
 		}
 		[Q_SLOT("void showMessage(const QString&, int, const QColor&)")]
-		[SmokeMethod("showMessage", "(const QString&, int, const QColor&)", "$$#")]
 		public void ShowMessage(string message, int alignment, QColor color) {
-			((QSplashScreen) interceptor).ShowMessage(message,alignment,color);
+			interceptor.Invoke("showMessage$$#", "showMessage(const QString&, int, const QColor&)", typeof(void), typeof(string), message, typeof(int), alignment, typeof(QColor), color);
 		}
 		[Q_SLOT("void showMessage(const QString&, int)")]
-		[SmokeMethod("showMessage", "(const QString&, int)", "$$")]
 		public void ShowMessage(string message, int alignment) {
-			((QSplashScreen) interceptor).ShowMessage(message,alignment);
+			interceptor.Invoke("showMessage$$", "showMessage(const QString&, int)", typeof(void), typeof(string), message, typeof(int), alignment);
 		}
 		[Q_SLOT("void showMessage(const QString&)")]
-		[SmokeMethod("showMessage", "(const QString&)", "$")]
 		public void ShowMessage(string message) {
-			((QSplashScreen) interceptor).ShowMessage(message);
+			interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), message);
 		}
 		[Q_SLOT("void clearMessage()")]
-		[SmokeMethod("clearMessage", "()", "")]
 		public void ClearMessage() {
-			((QSplashScreen) interceptor).ClearMessage();
+			interceptor.Invoke("clearMessage", "clearMessage()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QSplashScreen) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("drawContents", "(QPainter*)", "#")]
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected virtual void DrawContents(QPainter painter) {
-			((QSplashScreen) interceptor).DrawContents(painter);
+			interceptor.Invoke("drawContents#", "drawContents(QPainter*)", typeof(void), typeof(QPainter), painter);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QSplashScreen) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
 		~QSplashScreen() {
-			DisposeQSplashScreen();
+			interceptor.Invoke("~QSplashScreen", "~QSplashScreen()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSplashScreen();
-		}
-		[SmokeMethod("~QSplashScreen", "()", "")]
-		private void DisposeQSplashScreen() {
-			((QSplashScreen) interceptor).DisposeQSplashScreen();
+			interceptor.Invoke("~QSplashScreen", "~QSplashScreen()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSplashScreenSignals Emit {
 			get { return (IQSplashScreenSignals) Q_EMIT; }

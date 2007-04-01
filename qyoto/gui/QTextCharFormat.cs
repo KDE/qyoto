@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QTextCharFormat : QTextFormat, IDisposable {
  		protected QTextCharFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCharFormat), this);
-			interceptor = (QTextCharFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextCharFormat), "QTextCharFormat", this);
 		}
 		public enum VerticalAlignment {
 			AlignNormal = 0,
@@ -27,169 +26,124 @@ namespace Qyoto {
 		}
 		public QTextCharFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextCharFormat();
+			interceptor.Invoke("QTextCharFormat", "QTextCharFormat()", typeof(void));
 		}
-		[SmokeMethod("QTextCharFormat", "()", "")]
-		private void NewQTextCharFormat() {
-			((QTextCharFormat) interceptor).NewQTextCharFormat();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextCharFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont font) {
-			((QTextCharFormat) interceptor).SetFont(font);
+			interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), font);
 		}
-		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ((QTextCharFormat) interceptor).Font();
+			return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
 		}
-		[SmokeMethod("setFontFamily", "(const QString&)", "$")]
 		public void SetFontFamily(string family) {
-			((QTextCharFormat) interceptor).SetFontFamily(family);
+			interceptor.Invoke("setFontFamily$", "setFontFamily(const QString&)", typeof(void), typeof(string), family);
 		}
-		[SmokeMethod("fontFamily", "() const", "")]
 		public string FontFamily() {
-			return ((QTextCharFormat) interceptor).FontFamily();
+			return (string) interceptor.Invoke("fontFamily", "fontFamily() const", typeof(string));
 		}
-		[SmokeMethod("setFontPointSize", "(qreal)", "$")]
 		public void SetFontPointSize(double size) {
-			((QTextCharFormat) interceptor).SetFontPointSize(size);
+			interceptor.Invoke("setFontPointSize$", "setFontPointSize(qreal)", typeof(void), typeof(double), size);
 		}
-		[SmokeMethod("fontPointSize", "() const", "")]
 		public double FontPointSize() {
-			return ((QTextCharFormat) interceptor).FontPointSize();
+			return (double) interceptor.Invoke("fontPointSize", "fontPointSize() const", typeof(double));
 		}
-		[SmokeMethod("setFontWeight", "(int)", "$")]
 		public void SetFontWeight(int weight) {
-			((QTextCharFormat) interceptor).SetFontWeight(weight);
+			interceptor.Invoke("setFontWeight$", "setFontWeight(int)", typeof(void), typeof(int), weight);
 		}
-		[SmokeMethod("fontWeight", "() const", "")]
 		public int FontWeight() {
-			return ((QTextCharFormat) interceptor).FontWeight();
+			return (int) interceptor.Invoke("fontWeight", "fontWeight() const", typeof(int));
 		}
-		[SmokeMethod("setFontItalic", "(bool)", "$")]
 		public void SetFontItalic(bool italic) {
-			((QTextCharFormat) interceptor).SetFontItalic(italic);
+			interceptor.Invoke("setFontItalic$", "setFontItalic(bool)", typeof(void), typeof(bool), italic);
 		}
-		[SmokeMethod("fontItalic", "() const", "")]
 		public bool FontItalic() {
-			return ((QTextCharFormat) interceptor).FontItalic();
+			return (bool) interceptor.Invoke("fontItalic", "fontItalic() const", typeof(bool));
 		}
-		[SmokeMethod("setFontUnderline", "(bool)", "$")]
 		public void SetFontUnderline(bool underline) {
-			((QTextCharFormat) interceptor).SetFontUnderline(underline);
+			interceptor.Invoke("setFontUnderline$", "setFontUnderline(bool)", typeof(void), typeof(bool), underline);
 		}
-		[SmokeMethod("fontUnderline", "() const", "")]
 		public bool FontUnderline() {
-			return ((QTextCharFormat) interceptor).FontUnderline();
+			return (bool) interceptor.Invoke("fontUnderline", "fontUnderline() const", typeof(bool));
 		}
-		[SmokeMethod("setFontOverline", "(bool)", "$")]
 		public void SetFontOverline(bool overline) {
-			((QTextCharFormat) interceptor).SetFontOverline(overline);
+			interceptor.Invoke("setFontOverline$", "setFontOverline(bool)", typeof(void), typeof(bool), overline);
 		}
-		[SmokeMethod("fontOverline", "() const", "")]
 		public bool FontOverline() {
-			return ((QTextCharFormat) interceptor).FontOverline();
+			return (bool) interceptor.Invoke("fontOverline", "fontOverline() const", typeof(bool));
 		}
-		[SmokeMethod("setFontStrikeOut", "(bool)", "$")]
 		public void SetFontStrikeOut(bool strikeOut) {
-			((QTextCharFormat) interceptor).SetFontStrikeOut(strikeOut);
+			interceptor.Invoke("setFontStrikeOut$", "setFontStrikeOut(bool)", typeof(void), typeof(bool), strikeOut);
 		}
-		[SmokeMethod("fontStrikeOut", "() const", "")]
 		public bool FontStrikeOut() {
-			return ((QTextCharFormat) interceptor).FontStrikeOut();
+			return (bool) interceptor.Invoke("fontStrikeOut", "fontStrikeOut() const", typeof(bool));
 		}
-		[SmokeMethod("setUnderlineColor", "(const QColor&)", "#")]
 		public void SetUnderlineColor(QColor color) {
-			((QTextCharFormat) interceptor).SetUnderlineColor(color);
+			interceptor.Invoke("setUnderlineColor#", "setUnderlineColor(const QColor&)", typeof(void), typeof(QColor), color);
 		}
-		[SmokeMethod("underlineColor", "() const", "")]
 		public QColor UnderlineColor() {
-			return ((QTextCharFormat) interceptor).UnderlineColor();
+			return (QColor) interceptor.Invoke("underlineColor", "underlineColor() const", typeof(QColor));
 		}
-		[SmokeMethod("setFontFixedPitch", "(bool)", "$")]
 		public void SetFontFixedPitch(bool fixedPitch) {
-			((QTextCharFormat) interceptor).SetFontFixedPitch(fixedPitch);
+			interceptor.Invoke("setFontFixedPitch$", "setFontFixedPitch(bool)", typeof(void), typeof(bool), fixedPitch);
 		}
-		[SmokeMethod("fontFixedPitch", "() const", "")]
 		public bool FontFixedPitch() {
-			return ((QTextCharFormat) interceptor).FontFixedPitch();
+			return (bool) interceptor.Invoke("fontFixedPitch", "fontFixedPitch() const", typeof(bool));
 		}
-		[SmokeMethod("setUnderlineStyle", "(QTextCharFormat::UnderlineStyle)", "$")]
 		public void SetUnderlineStyle(QTextCharFormat.UnderlineStyle style) {
-			((QTextCharFormat) interceptor).SetUnderlineStyle(style);
+			interceptor.Invoke("setUnderlineStyle$", "setUnderlineStyle(QTextCharFormat::UnderlineStyle)", typeof(void), typeof(QTextCharFormat.UnderlineStyle), style);
 		}
-		[SmokeMethod("underlineStyle", "() const", "")]
 		public QTextCharFormat.UnderlineStyle underlineStyle() {
-			return ((QTextCharFormat) interceptor).underlineStyle();
+			return (QTextCharFormat.UnderlineStyle) interceptor.Invoke("underlineStyle", "underlineStyle() const", typeof(QTextCharFormat.UnderlineStyle));
 		}
-		[SmokeMethod("setVerticalAlignment", "(QTextCharFormat::VerticalAlignment)", "$")]
 		public void SetVerticalAlignment(QTextCharFormat.VerticalAlignment alignment) {
-			((QTextCharFormat) interceptor).SetVerticalAlignment(alignment);
+			interceptor.Invoke("setVerticalAlignment$", "setVerticalAlignment(QTextCharFormat::VerticalAlignment)", typeof(void), typeof(QTextCharFormat.VerticalAlignment), alignment);
 		}
-		[SmokeMethod("verticalAlignment", "() const", "")]
 		public QTextCharFormat.VerticalAlignment verticalAlignment() {
-			return ((QTextCharFormat) interceptor).verticalAlignment();
+			return (QTextCharFormat.VerticalAlignment) interceptor.Invoke("verticalAlignment", "verticalAlignment() const", typeof(QTextCharFormat.VerticalAlignment));
 		}
-		[SmokeMethod("setTextOutline", "(const QPen&)", "#")]
 		public void SetTextOutline(QPen pen) {
-			((QTextCharFormat) interceptor).SetTextOutline(pen);
+			interceptor.Invoke("setTextOutline#", "setTextOutline(const QPen&)", typeof(void), typeof(QPen), pen);
 		}
-		[SmokeMethod("textOutline", "() const", "")]
 		public QPen TextOutline() {
-			return ((QTextCharFormat) interceptor).TextOutline();
+			return (QPen) interceptor.Invoke("textOutline", "textOutline() const", typeof(QPen));
 		}
-		[SmokeMethod("setAnchor", "(bool)", "$")]
 		public void SetAnchor(bool anchor) {
-			((QTextCharFormat) interceptor).SetAnchor(anchor);
+			interceptor.Invoke("setAnchor$", "setAnchor(bool)", typeof(void), typeof(bool), anchor);
 		}
-		[SmokeMethod("isAnchor", "() const", "")]
 		public bool IsAnchor() {
-			return ((QTextCharFormat) interceptor).IsAnchor();
+			return (bool) interceptor.Invoke("isAnchor", "isAnchor() const", typeof(bool));
 		}
-		[SmokeMethod("setAnchorHref", "(const QString&)", "$")]
 		public void SetAnchorHref(string value) {
-			((QTextCharFormat) interceptor).SetAnchorHref(value);
+			interceptor.Invoke("setAnchorHref$", "setAnchorHref(const QString&)", typeof(void), typeof(string), value);
 		}
-		[SmokeMethod("anchorHref", "() const", "")]
 		public string AnchorHref() {
-			return ((QTextCharFormat) interceptor).AnchorHref();
+			return (string) interceptor.Invoke("anchorHref", "anchorHref() const", typeof(string));
 		}
-		[SmokeMethod("setAnchorName", "(const QString&)", "$")]
 		public void SetAnchorName(string name) {
-			((QTextCharFormat) interceptor).SetAnchorName(name);
+			interceptor.Invoke("setAnchorName$", "setAnchorName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("anchorName", "() const", "")]
 		public string AnchorName() {
-			return ((QTextCharFormat) interceptor).AnchorName();
+			return (string) interceptor.Invoke("anchorName", "anchorName() const", typeof(string));
 		}
-		[SmokeMethod("setTableCellRowSpan", "(int)", "$")]
 		public void SetTableCellRowSpan(int tableCellRowSpan) {
-			((QTextCharFormat) interceptor).SetTableCellRowSpan(tableCellRowSpan);
+			interceptor.Invoke("setTableCellRowSpan$", "setTableCellRowSpan(int)", typeof(void), typeof(int), tableCellRowSpan);
 		}
-		[SmokeMethod("tableCellRowSpan", "() const", "")]
 		public int TableCellRowSpan() {
-			return ((QTextCharFormat) interceptor).TableCellRowSpan();
+			return (int) interceptor.Invoke("tableCellRowSpan", "tableCellRowSpan() const", typeof(int));
 		}
-		[SmokeMethod("setTableCellColumnSpan", "(int)", "$")]
 		public void SetTableCellColumnSpan(int tableCellColumnSpan) {
-			((QTextCharFormat) interceptor).SetTableCellColumnSpan(tableCellColumnSpan);
+			interceptor.Invoke("setTableCellColumnSpan$", "setTableCellColumnSpan(int)", typeof(void), typeof(int), tableCellColumnSpan);
 		}
-		[SmokeMethod("tableCellColumnSpan", "() const", "")]
 		public int TableCellColumnSpan() {
-			return ((QTextCharFormat) interceptor).TableCellColumnSpan();
+			return (int) interceptor.Invoke("tableCellColumnSpan", "tableCellColumnSpan() const", typeof(int));
 		}
 		~QTextCharFormat() {
-			DisposeQTextCharFormat();
+			interceptor.Invoke("~QTextCharFormat", "~QTextCharFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextCharFormat();
-		}
-		[SmokeMethod("~QTextCharFormat", "()", "")]
-		private void DisposeQTextCharFormat() {
-			((QTextCharFormat) interceptor).DisposeQTextCharFormat();
+			interceptor.Invoke("~QTextCharFormat", "~QTextCharFormat()", typeof(void));
 		}
 	}
 }

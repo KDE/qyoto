@@ -7,162 +7,117 @@ namespace Qyoto {
 	[SmokeClass("QToolBox")]
 	public class QToolBox : QFrame, IDisposable {
  		protected QToolBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QToolBox")]
-		interface IQToolBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBox), this);
-			interceptor = (QToolBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QToolBox), "QToolBox", this);
 		}
-		private static IQToolBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QToolBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolBoxProxy), null);
-			staticInterceptor = (IQToolBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QToolBox), "QToolBox", null);
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			[SmokeMethod("currentIndex", "()", "")]
-			get { return ((QToolBox) interceptor).CurrentIndex; }
-			[SmokeMethod("setCurrentIndex", "(int)", "$")]
-			set { ((QToolBox) interceptor).CurrentIndex = value; }
+			get { return (int) interceptor.Invoke("currentIndex", "currentIndex()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			[SmokeMethod("count", "()", "")]
-			get { return ((QToolBox) interceptor).Count; }
+			get { return (int) interceptor.Invoke("count", "count()", typeof(int)); }
 		}
 		public QToolBox(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQToolBox(parent,f);
-		}
-		[SmokeMethod("QToolBox", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQToolBox(QWidget parent, int f) {
-			((QToolBox) interceptor).NewQToolBox(parent,f);
+			interceptor.Invoke("QToolBox#$", "QToolBox(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
 		public QToolBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQToolBox(parent);
-		}
-		[SmokeMethod("QToolBox", "(QWidget*)", "#")]
-		private void NewQToolBox(QWidget parent) {
-			((QToolBox) interceptor).NewQToolBox(parent);
+			interceptor.Invoke("QToolBox#", "QToolBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QToolBox() : this((Type) null) {
 			CreateProxy();
-			NewQToolBox();
+			interceptor.Invoke("QToolBox", "QToolBox()", typeof(void));
 		}
-		[SmokeMethod("QToolBox", "()", "")]
-		private void NewQToolBox() {
-			((QToolBox) interceptor).NewQToolBox();
-		}
-		[SmokeMethod("addItem", "(QWidget*, const QString&)", "#$")]
 		public int AddItem(QWidget widget, string text) {
-			return ((QToolBox) interceptor).AddItem(widget,text);
+			return (int) interceptor.Invoke("addItem#$", "addItem(QWidget*, const QString&)", typeof(int), typeof(QWidget), widget, typeof(string), text);
 		}
-		[SmokeMethod("addItem", "(QWidget*, const QIcon&, const QString&)", "##$")]
 		public int AddItem(QWidget widget, QIcon icon, string text) {
-			return ((QToolBox) interceptor).AddItem(widget,icon,text);
+			return (int) interceptor.Invoke("addItem##$", "addItem(QWidget*, const QIcon&, const QString&)", typeof(int), typeof(QWidget), widget, typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("insertItem", "(int, QWidget*, const QString&)", "$#$")]
 		public int InsertItem(int index, QWidget widget, string text) {
-			return ((QToolBox) interceptor).InsertItem(index,widget,text);
+			return (int) interceptor.Invoke("insertItem$#$", "insertItem(int, QWidget*, const QString&)", typeof(int), typeof(int), index, typeof(QWidget), widget, typeof(string), text);
 		}
-		[SmokeMethod("insertItem", "(int, QWidget*, const QIcon&, const QString&)", "$##$")]
 		public int InsertItem(int index, QWidget widget, QIcon icon, string text) {
-			return ((QToolBox) interceptor).InsertItem(index,widget,icon,text);
+			return (int) interceptor.Invoke("insertItem$##$", "insertItem(int, QWidget*, const QIcon&, const QString&)", typeof(int), typeof(int), index, typeof(QWidget), widget, typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("removeItem", "(int)", "$")]
 		public void RemoveItem(int index) {
-			((QToolBox) interceptor).RemoveItem(index);
+			interceptor.Invoke("removeItem$", "removeItem(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("setItemEnabled", "(int, bool)", "$$")]
 		public void SetItemEnabled(int index, bool enabled) {
-			((QToolBox) interceptor).SetItemEnabled(index,enabled);
+			interceptor.Invoke("setItemEnabled$$", "setItemEnabled(int, bool)", typeof(void), typeof(int), index, typeof(bool), enabled);
 		}
-		[SmokeMethod("isItemEnabled", "(int) const", "$")]
 		public bool IsItemEnabled(int index) {
-			return ((QToolBox) interceptor).IsItemEnabled(index);
+			return (bool) interceptor.Invoke("isItemEnabled$", "isItemEnabled(int) const", typeof(bool), typeof(int), index);
 		}
-		[SmokeMethod("setItemText", "(int, const QString&)", "$$")]
 		public void SetItemText(int index, string text) {
-			((QToolBox) interceptor).SetItemText(index,text);
+			interceptor.Invoke("setItemText$$", "setItemText(int, const QString&)", typeof(void), typeof(int), index, typeof(string), text);
 		}
-		[SmokeMethod("itemText", "(int) const", "$")]
 		public string ItemText(int index) {
-			return ((QToolBox) interceptor).ItemText(index);
+			return (string) interceptor.Invoke("itemText$", "itemText(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("setItemIcon", "(int, const QIcon&)", "$#")]
 		public void SetItemIcon(int index, QIcon icon) {
-			((QToolBox) interceptor).SetItemIcon(index,icon);
+			interceptor.Invoke("setItemIcon$#", "setItemIcon(int, const QIcon&)", typeof(void), typeof(int), index, typeof(QIcon), icon);
 		}
-		[SmokeMethod("itemIcon", "(int) const", "$")]
 		public QIcon ItemIcon(int index) {
-			return ((QToolBox) interceptor).ItemIcon(index);
+			return (QIcon) interceptor.Invoke("itemIcon$", "itemIcon(int) const", typeof(QIcon), typeof(int), index);
 		}
-		[SmokeMethod("setItemToolTip", "(int, const QString&)", "$$")]
 		public void SetItemToolTip(int index, string toolTip) {
-			((QToolBox) interceptor).SetItemToolTip(index,toolTip);
+			interceptor.Invoke("setItemToolTip$$", "setItemToolTip(int, const QString&)", typeof(void), typeof(int), index, typeof(string), toolTip);
 		}
-		[SmokeMethod("itemToolTip", "(int) const", "$")]
 		public string ItemToolTip(int index) {
-			return ((QToolBox) interceptor).ItemToolTip(index);
+			return (string) interceptor.Invoke("itemToolTip$", "itemToolTip(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("currentWidget", "() const", "")]
 		public QWidget CurrentWidget() {
-			return ((QToolBox) interceptor).CurrentWidget();
+			return (QWidget) interceptor.Invoke("currentWidget", "currentWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("widget", "(int) const", "$")]
 		public QWidget Widget(int index) {
-			return ((QToolBox) interceptor).Widget(index);
+			return (QWidget) interceptor.Invoke("widget$", "widget(int) const", typeof(QWidget), typeof(int), index);
 		}
-		[SmokeMethod("indexOf", "(QWidget*) const", "#")]
 		public int IndexOf(QWidget widget) {
-			return ((QToolBox) interceptor).IndexOf(widget);
+			return (int) interceptor.Invoke("indexOf#", "indexOf(QWidget*) const", typeof(int), typeof(QWidget), widget);
 		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
-		[SmokeMethod("setCurrentWidget", "(QWidget*)", "#")]
 		public void SetCurrentWidget(QWidget widget) {
-			((QToolBox) interceptor).SetCurrentWidget(widget);
+			interceptor.Invoke("setCurrentWidget#", "setCurrentWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QToolBox) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("itemInserted", "(int)", "$")]
+		[SmokeMethod("itemInserted(int)")]
 		protected virtual void ItemInserted(int index) {
-			((QToolBox) interceptor).ItemInserted(index);
+			interceptor.Invoke("itemInserted$", "itemInserted(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("itemRemoved", "(int)", "$")]
+		[SmokeMethod("itemRemoved(int)")]
 		protected virtual void ItemRemoved(int index) {
-			((QToolBox) interceptor).ItemRemoved(index);
+			interceptor.Invoke("itemRemoved$", "itemRemoved(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent e) {
-			((QToolBox) interceptor).ShowEvent(e);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), e);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QToolBox) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
 		~QToolBox() {
-			DisposeQToolBox();
+			interceptor.Invoke("~QToolBox", "~QToolBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQToolBox();
-		}
-		[SmokeMethod("~QToolBox", "()", "")]
-		private void DisposeQToolBox() {
-			((QToolBox) interceptor).DisposeQToolBox();
+			interceptor.Invoke("~QToolBox", "~QToolBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQToolBoxSignals Emit {
 			get { return (IQToolBoxSignals) Q_EMIT; }

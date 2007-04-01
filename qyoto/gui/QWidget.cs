@@ -8,1215 +8,940 @@ namespace Qyoto {
 	[SmokeClass("QWidget")]
 	public class QWidget : QObject, IQPaintDevice, IDisposable {
  		protected QWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QWidget")]
-		interface IQWidgetProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("setTabOrder", "(QWidget*, QWidget*)", "##")]
-			void SetTabOrder(QWidget arg1, QWidget arg2);
-			[SmokeMethod("mouseGrabber", "()", "")]
-			QWidget MouseGrabber();
-			[SmokeMethod("keyboardGrabber", "()", "")]
-			QWidget KeyboardGrabber();
-			[SmokeMethod("find", "(WId)", "$")]
-			QWidget Find(ulong arg1);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidget), this);
-			interceptor = (QWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWidget), "QWidget", this);
 		}
-		private static IQWidgetProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWidgetProxy), null);
-			staticInterceptor = (IQWidgetProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QWidget), "QWidget", null);
 		}
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
-			[SmokeMethod("isModal", "()", "")]
-			get { return ((QWidget) interceptor).Modal; }
+			get { return (bool) interceptor.Invoke("isModal", "isModal()", typeof(bool)); }
 		}
 		[Q_PROPERTY("Qt::WindowModality", "windowModality")]
 		public Qt.WindowModality WindowModality {
-			[SmokeMethod("windowModality", "()", "")]
-			get { return ((QWidget) interceptor).WindowModality; }
-			[SmokeMethod("setWindowModality", "(Qt::WindowModality)", "$")]
-			set { ((QWidget) interceptor).WindowModality = value; }
+			get { return (Qt.WindowModality) interceptor.Invoke("windowModality", "windowModality()", typeof(Qt.WindowModality)); }
+			set { interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), value); }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			[SmokeMethod("isEnabled", "()", "")]
-			get { return ((QWidget) interceptor).Enabled; }
-			[SmokeMethod("setEnabled", "(bool)", "$")]
-			set { ((QWidget) interceptor).Enabled = value; }
+			get { return (bool) interceptor.Invoke("isEnabled", "isEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QRect", "geometry")]
 		public QRect Geometry {
-			[SmokeMethod("geometry", "()", "")]
-			get { return ((QWidget) interceptor).Geometry; }
-			[SmokeMethod("setGeometry", "(QRect)", "#")]
-			set { ((QWidget) interceptor).Geometry = value; }
+			get { return (QRect) interceptor.Invoke("geometry", "geometry()", typeof(QRect)); }
+			set { interceptor.Invoke("setGeometry#", "setGeometry(QRect)", typeof(void), typeof(QRect), value); }
 		}
 		[Q_PROPERTY("QRect", "frameGeometry")]
 		public QRect FrameGeometry {
-			[SmokeMethod("frameGeometry", "()", "")]
-			get { return ((QWidget) interceptor).FrameGeometry; }
+			get { return (QRect) interceptor.Invoke("frameGeometry", "frameGeometry()", typeof(QRect)); }
 		}
 		[Q_PROPERTY("QRect", "normalGeometry")]
 		public QRect NormalGeometry {
-			[SmokeMethod("normalGeometry", "()", "")]
-			get { return ((QWidget) interceptor).NormalGeometry; }
+			get { return (QRect) interceptor.Invoke("normalGeometry", "normalGeometry()", typeof(QRect)); }
 		}
 		[Q_PROPERTY("int", "x")]
 		public int X {
-			[SmokeMethod("x", "()", "")]
-			get { return ((QWidget) interceptor).X; }
+			get { return (int) interceptor.Invoke("x", "x()", typeof(int)); }
 		}
 		[Q_PROPERTY("int", "y")]
 		public int Y {
-			[SmokeMethod("y", "()", "")]
-			get { return ((QWidget) interceptor).Y; }
+			get { return (int) interceptor.Invoke("y", "y()", typeof(int)); }
 		}
 		[Q_PROPERTY("QPoint", "pos")]
 		public QPoint Pos {
-			[SmokeMethod("pos", "()", "")]
-			get { return ((QWidget) interceptor).Pos; }
-			[SmokeMethod("move", "(QPoint)", "#")]
-			set { ((QWidget) interceptor).Pos = value; }
+			get { return (QPoint) interceptor.Invoke("pos", "pos()", typeof(QPoint)); }
+			set { interceptor.Invoke("move#", "move(QPoint)", typeof(void), typeof(QPoint), value); }
 		}
 		[Q_PROPERTY("QSize", "frameSize")]
 		public QSize FrameSize {
-			[SmokeMethod("frameSize", "()", "")]
-			get { return ((QWidget) interceptor).FrameSize; }
+			get { return (QSize) interceptor.Invoke("frameSize", "frameSize()", typeof(QSize)); }
 		}
 		[Q_PROPERTY("QSize", "size")]
 		public QSize Size {
-			[SmokeMethod("size", "()", "")]
-			get { return ((QWidget) interceptor).Size; }
-			[SmokeMethod("resize", "(QSize)", "#")]
-			set { ((QWidget) interceptor).Size = value; }
+			get { return (QSize) interceptor.Invoke("size", "size()", typeof(QSize)); }
+			set { interceptor.Invoke("resize#", "resize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("QRect", "rect")]
 		public QRect Rect {
-			[SmokeMethod("rect", "()", "")]
-			get { return ((QWidget) interceptor).Rect; }
+			get { return (QRect) interceptor.Invoke("rect", "rect()", typeof(QRect)); }
 		}
 		[Q_PROPERTY("QRect", "childrenRect")]
 		public QRect ChildrenRect {
-			[SmokeMethod("childrenRect", "()", "")]
-			get { return ((QWidget) interceptor).ChildrenRect; }
+			get { return (QRect) interceptor.Invoke("childrenRect", "childrenRect()", typeof(QRect)); }
 		}
 		[Q_PROPERTY("QRegion", "childrenRegion")]
 		public QRegion ChildrenRegion {
-			[SmokeMethod("childrenRegion", "()", "")]
-			get { return ((QWidget) interceptor).ChildrenRegion; }
+			get { return (QRegion) interceptor.Invoke("childrenRegion", "childrenRegion()", typeof(QRegion)); }
 		}
 		[Q_PROPERTY("QSizePolicy", "sizePolicy")]
 		public QSizePolicy SizePolicy {
-			[SmokeMethod("sizePolicy", "()", "")]
-			get { return ((QWidget) interceptor).SizePolicy; }
-			[SmokeMethod("setSizePolicy", "(QSizePolicy)", "#")]
-			set { ((QWidget) interceptor).SizePolicy = value; }
+			get { return (QSizePolicy) interceptor.Invoke("sizePolicy", "sizePolicy()", typeof(QSizePolicy)); }
+			set { interceptor.Invoke("setSizePolicy#", "setSizePolicy(QSizePolicy)", typeof(void), typeof(QSizePolicy), value); }
 		}
 		[Q_PROPERTY("QSize", "minimumSize")]
 		public QSize MinimumSize {
-			[SmokeMethod("minimumSize", "()", "")]
-			get { return ((QWidget) interceptor).MinimumSize; }
-			[SmokeMethod("setMinimumSize", "(QSize)", "#")]
-			set { ((QWidget) interceptor).MinimumSize = value; }
+			get { return (QSize) interceptor.Invoke("minimumSize", "minimumSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setMinimumSize#", "setMinimumSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("QSize", "maximumSize")]
 		public QSize MaximumSize {
-			[SmokeMethod("maximumSize", "()", "")]
-			get { return ((QWidget) interceptor).MaximumSize; }
-			[SmokeMethod("setMaximumSize", "(QSize)", "#")]
-			set { ((QWidget) interceptor).MaximumSize = value; }
+			get { return (QSize) interceptor.Invoke("maximumSize", "maximumSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setMaximumSize#", "setMaximumSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("int", "minimumWidth")]
 		public int MinimumWidth {
-			[SmokeMethod("minimumWidth", "()", "")]
-			get { return ((QWidget) interceptor).MinimumWidth; }
-			[SmokeMethod("setMinimumWidth", "(int)", "$")]
-			set { ((QWidget) interceptor).MinimumWidth = value; }
+			get { return (int) interceptor.Invoke("minimumWidth", "minimumWidth()", typeof(int)); }
+			set { interceptor.Invoke("setMinimumWidth$", "setMinimumWidth(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "minimumHeight")]
 		public int MinimumHeight {
-			[SmokeMethod("minimumHeight", "()", "")]
-			get { return ((QWidget) interceptor).MinimumHeight; }
-			[SmokeMethod("setMinimumHeight", "(int)", "$")]
-			set { ((QWidget) interceptor).MinimumHeight = value; }
+			get { return (int) interceptor.Invoke("minimumHeight", "minimumHeight()", typeof(int)); }
+			set { interceptor.Invoke("setMinimumHeight$", "setMinimumHeight(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maximumWidth")]
 		public int MaximumWidth {
-			[SmokeMethod("maximumWidth", "()", "")]
-			get { return ((QWidget) interceptor).MaximumWidth; }
-			[SmokeMethod("setMaximumWidth", "(int)", "$")]
-			set { ((QWidget) interceptor).MaximumWidth = value; }
+			get { return (int) interceptor.Invoke("maximumWidth", "maximumWidth()", typeof(int)); }
+			set { interceptor.Invoke("setMaximumWidth$", "setMaximumWidth(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maximumHeight")]
 		public int MaximumHeight {
-			[SmokeMethod("maximumHeight", "()", "")]
-			get { return ((QWidget) interceptor).MaximumHeight; }
-			[SmokeMethod("setMaximumHeight", "(int)", "$")]
-			set { ((QWidget) interceptor).MaximumHeight = value; }
+			get { return (int) interceptor.Invoke("maximumHeight", "maximumHeight()", typeof(int)); }
+			set { interceptor.Invoke("setMaximumHeight$", "setMaximumHeight(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QSize", "sizeIncrement")]
 		public QSize SizeIncrement {
-			[SmokeMethod("sizeIncrement", "()", "")]
-			get { return ((QWidget) interceptor).SizeIncrement; }
-			[SmokeMethod("setSizeIncrement", "(QSize)", "#")]
-			set { ((QWidget) interceptor).SizeIncrement = value; }
+			get { return (QSize) interceptor.Invoke("sizeIncrement", "sizeIncrement()", typeof(QSize)); }
+			set { interceptor.Invoke("setSizeIncrement#", "setSizeIncrement(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("QSize", "baseSize")]
 		public QSize BaseSize {
-			[SmokeMethod("baseSize", "()", "")]
-			get { return ((QWidget) interceptor).BaseSize; }
-			[SmokeMethod("setBaseSize", "(QSize)", "#")]
-			set { ((QWidget) interceptor).BaseSize = value; }
+			get { return (QSize) interceptor.Invoke("baseSize", "baseSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setBaseSize#", "setBaseSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("QPalette", "palette")]
 		public QPalette Palette {
-			[SmokeMethod("palette", "()", "")]
-			get { return ((QWidget) interceptor).Palette; }
-			[SmokeMethod("setPalette", "(QPalette)", "#")]
-			set { ((QWidget) interceptor).Palette = value; }
+			get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
+			set { interceptor.Invoke("setPalette#", "setPalette(QPalette)", typeof(void), typeof(QPalette), value); }
 		}
 		[Q_PROPERTY("QFont", "font")]
 		public QFont Font {
-			[SmokeMethod("font", "()", "")]
-			get { return ((QWidget) interceptor).Font; }
-			[SmokeMethod("setFont", "(QFont)", "#")]
-			set { ((QWidget) interceptor).Font = value; }
+			get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
+			set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
 		}
 		[Q_PROPERTY("QCursor", "cursor")]
 		public QCursor Cursor {
-			[SmokeMethod("cursor", "()", "")]
-			get { return ((QWidget) interceptor).Cursor; }
-			[SmokeMethod("setCursor", "(QCursor)", "#")]
-			set { ((QWidget) interceptor).Cursor = value; }
+			get { return (QCursor) interceptor.Invoke("cursor", "cursor()", typeof(QCursor)); }
+			set { interceptor.Invoke("setCursor#", "setCursor(QCursor)", typeof(void), typeof(QCursor), value); }
 		}
 		[Q_PROPERTY("bool", "mouseTracking")]
 		public bool MouseTracking {
-			[SmokeMethod("hasMouseTracking", "()", "")]
-			get { return ((QWidget) interceptor).MouseTracking; }
-			[SmokeMethod("setMouseTracking", "(bool)", "$")]
-			set { ((QWidget) interceptor).MouseTracking = value; }
+			get { return (bool) interceptor.Invoke("hasMouseTracking", "hasMouseTracking()", typeof(bool)); }
+			set { interceptor.Invoke("setMouseTracking$", "setMouseTracking(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "isActiveWindow")]
 		public bool IsActiveWindow {
-			[SmokeMethod("isActiveWindow", "()", "")]
-			get { return ((QWidget) interceptor).IsActiveWindow; }
+			get { return (bool) interceptor.Invoke("isActiveWindow", "isActiveWindow()", typeof(bool)); }
 		}
 		[Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
 		public Qt.FocusPolicy FocusPolicy {
-			[SmokeMethod("focusPolicy", "()", "")]
-			get { return ((QWidget) interceptor).FocusPolicy; }
-			[SmokeMethod("setFocusPolicy", "(Qt::FocusPolicy)", "$")]
-			set { ((QWidget) interceptor).FocusPolicy = value; }
+			get { return (Qt.FocusPolicy) interceptor.Invoke("focusPolicy", "focusPolicy()", typeof(Qt.FocusPolicy)); }
+			set { interceptor.Invoke("setFocusPolicy$", "setFocusPolicy(Qt::FocusPolicy)", typeof(void), typeof(Qt.FocusPolicy), value); }
 		}
 		[Q_PROPERTY("bool", "focus")]
 		public bool Focus {
-			[SmokeMethod("hasFocus", "()", "")]
-			get { return ((QWidget) interceptor).Focus; }
+			get { return (bool) interceptor.Invoke("hasFocus", "hasFocus()", typeof(bool)); }
 		}
 		[Q_PROPERTY("Qt::ContextMenuPolicy", "contextMenuPolicy")]
 		public Qt.ContextMenuPolicy ContextMenuPolicy {
-			[SmokeMethod("contextMenuPolicy", "()", "")]
-			get { return ((QWidget) interceptor).ContextMenuPolicy; }
-			[SmokeMethod("setContextMenuPolicy", "(Qt::ContextMenuPolicy)", "$")]
-			set { ((QWidget) interceptor).ContextMenuPolicy = value; }
+			get { return (Qt.ContextMenuPolicy) interceptor.Invoke("contextMenuPolicy", "contextMenuPolicy()", typeof(Qt.ContextMenuPolicy)); }
+			set { interceptor.Invoke("setContextMenuPolicy$", "setContextMenuPolicy(Qt::ContextMenuPolicy)", typeof(void), typeof(Qt.ContextMenuPolicy), value); }
 		}
 		[Q_PROPERTY("bool", "updatesEnabled")]
 		public bool UpdatesEnabled {
-			[SmokeMethod("updatesEnabled", "()", "")]
-			get { return ((QWidget) interceptor).UpdatesEnabled; }
-			[SmokeMethod("setUpdatesEnabled", "(bool)", "$")]
-			set { ((QWidget) interceptor).UpdatesEnabled = value; }
+			get { return (bool) interceptor.Invoke("updatesEnabled", "updatesEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setUpdatesEnabled$", "setUpdatesEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "minimized")]
 		public bool Minimized {
-			[SmokeMethod("isMinimized", "()", "")]
-			get { return ((QWidget) interceptor).Minimized; }
+			get { return (bool) interceptor.Invoke("isMinimized", "isMinimized()", typeof(bool)); }
 		}
 		[Q_PROPERTY("bool", "maximized")]
 		public bool Maximized {
-			[SmokeMethod("isMaximized", "()", "")]
-			get { return ((QWidget) interceptor).Maximized; }
+			get { return (bool) interceptor.Invoke("isMaximized", "isMaximized()", typeof(bool)); }
 		}
 		[Q_PROPERTY("bool", "fullScreen")]
 		public bool FullScreen {
-			[SmokeMethod("isFullScreen", "()", "")]
-			get { return ((QWidget) interceptor).FullScreen; }
+			get { return (bool) interceptor.Invoke("isFullScreen", "isFullScreen()", typeof(bool)); }
 		}
 		[Q_PROPERTY("bool", "acceptDrops")]
 		public bool AcceptDrops {
-			[SmokeMethod("acceptDrops", "()", "")]
-			get { return ((QWidget) interceptor).AcceptDrops; }
-			[SmokeMethod("setAcceptDrops", "(bool)", "$")]
-			set { ((QWidget) interceptor).AcceptDrops = value; }
+			get { return (bool) interceptor.Invoke("acceptDrops", "acceptDrops()", typeof(bool)); }
+			set { interceptor.Invoke("setAcceptDrops$", "setAcceptDrops(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QString", "windowTitle")]
 		public string WindowTitle {
-			[SmokeMethod("windowTitle", "()", "")]
-			get { return ((QWidget) interceptor).WindowTitle; }
-			[SmokeMethod("setWindowTitle", "(QString)", "$")]
-			set { ((QWidget) interceptor).WindowTitle = value; }
+			get { return (string) interceptor.Invoke("windowTitle", "windowTitle()", typeof(string)); }
+			set { interceptor.Invoke("setWindowTitle$", "setWindowTitle(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QIcon", "windowIcon")]
 		public QIcon WindowIcon {
-			[SmokeMethod("windowIcon", "()", "")]
-			get { return ((QWidget) interceptor).WindowIcon; }
-			[SmokeMethod("setWindowIcon", "(QIcon)", "#")]
-			set { ((QWidget) interceptor).WindowIcon = value; }
+			get { return (QIcon) interceptor.Invoke("windowIcon", "windowIcon()", typeof(QIcon)); }
+			set { interceptor.Invoke("setWindowIcon#", "setWindowIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
 		[Q_PROPERTY("QString", "windowIconText")]
 		public string WindowIconText {
-			[SmokeMethod("windowIconText", "()", "")]
-			get { return ((QWidget) interceptor).WindowIconText; }
-			[SmokeMethod("setWindowIconText", "(QString)", "$")]
-			set { ((QWidget) interceptor).WindowIconText = value; }
+			get { return (string) interceptor.Invoke("windowIconText", "windowIconText()", typeof(string)); }
+			set { interceptor.Invoke("setWindowIconText$", "setWindowIconText(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("double", "windowOpacity")]
 		public double WindowOpacity {
-			[SmokeMethod("windowOpacity", "()", "")]
-			get { return ((QWidget) interceptor).WindowOpacity; }
-			[SmokeMethod("setWindowOpacity", "(double)", "$")]
-			set { ((QWidget) interceptor).WindowOpacity = value; }
+			get { return (double) interceptor.Invoke("windowOpacity", "windowOpacity()", typeof(double)); }
+			set { interceptor.Invoke("setWindowOpacity$", "setWindowOpacity(double)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("bool", "windowModified")]
 		public bool WindowModified {
-			[SmokeMethod("isWindowModified", "()", "")]
-			get { return ((QWidget) interceptor).WindowModified; }
-			[SmokeMethod("setWindowModified", "(bool)", "$")]
-			set { ((QWidget) interceptor).WindowModified = value; }
+			get { return (bool) interceptor.Invoke("isWindowModified", "isWindowModified()", typeof(bool)); }
+			set { interceptor.Invoke("setWindowModified$", "setWindowModified(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
-			[SmokeMethod("toolTip", "()", "")]
-			get { return ((QWidget) interceptor).ToolTip; }
-			[SmokeMethod("setToolTip", "(QString)", "$")]
-			set { ((QWidget) interceptor).ToolTip = value; }
+			get { return (string) interceptor.Invoke("toolTip", "toolTip()", typeof(string)); }
+			set { interceptor.Invoke("setToolTip$", "setToolTip(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "statusTip")]
 		public string StatusTip {
-			[SmokeMethod("statusTip", "()", "")]
-			get { return ((QWidget) interceptor).StatusTip; }
-			[SmokeMethod("setStatusTip", "(QString)", "$")]
-			set { ((QWidget) interceptor).StatusTip = value; }
+			get { return (string) interceptor.Invoke("statusTip", "statusTip()", typeof(string)); }
+			set { interceptor.Invoke("setStatusTip$", "setStatusTip(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
-			[SmokeMethod("whatsThis", "()", "")]
-			get { return ((QWidget) interceptor).WhatsThis; }
-			[SmokeMethod("setWhatsThis", "(QString)", "$")]
-			set { ((QWidget) interceptor).WhatsThis = value; }
+			get { return (string) interceptor.Invoke("whatsThis", "whatsThis()", typeof(string)); }
+			set { interceptor.Invoke("setWhatsThis$", "setWhatsThis(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "accessibleName")]
 		public string AccessibleName {
-			[SmokeMethod("accessibleName", "()", "")]
-			get { return ((QWidget) interceptor).AccessibleName; }
-			[SmokeMethod("setAccessibleName", "(QString)", "$")]
-			set { ((QWidget) interceptor).AccessibleName = value; }
+			get { return (string) interceptor.Invoke("accessibleName", "accessibleName()", typeof(string)); }
+			set { interceptor.Invoke("setAccessibleName$", "setAccessibleName(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "accessibleDescription")]
 		public string AccessibleDescription {
-			[SmokeMethod("accessibleDescription", "()", "")]
-			get { return ((QWidget) interceptor).AccessibleDescription; }
-			[SmokeMethod("setAccessibleDescription", "(QString)", "$")]
-			set { ((QWidget) interceptor).AccessibleDescription = value; }
+			get { return (string) interceptor.Invoke("accessibleDescription", "accessibleDescription()", typeof(string)); }
+			set { interceptor.Invoke("setAccessibleDescription$", "setAccessibleDescription(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
 		public Qt.LayoutDirection LayoutDirection {
-			[SmokeMethod("layoutDirection", "()", "")]
-			get { return ((QWidget) interceptor).LayoutDirection; }
-			[SmokeMethod("setLayoutDirection", "(Qt::LayoutDirection)", "$")]
-			set { ((QWidget) interceptor).LayoutDirection = value; }
+			get { return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection)); }
+			set { interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), value); }
 		}
 		[Q_PROPERTY("bool", "autoFillBackground")]
 		public bool AutoFillBackground {
-			[SmokeMethod("autoFillBackground", "()", "")]
-			get { return ((QWidget) interceptor).AutoFillBackground; }
-			[SmokeMethod("setAutoFillBackground", "(bool)", "$")]
-			set { ((QWidget) interceptor).AutoFillBackground = value; }
+			get { return (bool) interceptor.Invoke("autoFillBackground", "autoFillBackground()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoFillBackground$", "setAutoFillBackground(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QString", "styleSheet")]
 		public string StyleSheet {
-			[SmokeMethod("styleSheet", "()", "")]
-			get { return ((QWidget) interceptor).StyleSheet; }
-			[SmokeMethod("setStyleSheet", "(QString)", "$")]
-			set { ((QWidget) interceptor).StyleSheet = value; }
+			get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
+			set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
 		}
 		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
 		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
 		public QWidget(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQWidget(parent,f);
-		}
-		[SmokeMethod("QWidget", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQWidget(QWidget parent, int f) {
-			((QWidget) interceptor).NewQWidget(parent,f);
+			interceptor.Invoke("QWidget#$", "QWidget(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
 		public QWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQWidget(parent);
-		}
-		[SmokeMethod("QWidget", "(QWidget*)", "#")]
-		private void NewQWidget(QWidget parent) {
-			((QWidget) interceptor).NewQWidget(parent);
+			interceptor.Invoke("QWidget#", "QWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QWidget() : this((Type) null) {
 			CreateProxy();
-			NewQWidget();
+			interceptor.Invoke("QWidget", "QWidget()", typeof(void));
 		}
-		[SmokeMethod("QWidget", "()", "")]
-		private void NewQWidget() {
-			((QWidget) interceptor).NewQWidget();
-		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		public virtual int DevType() {
-			return ((QWidget) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
-		[SmokeMethod("winId", "() const", "")]
 		public ulong WinId() {
-			return ((QWidget) interceptor).WinId();
+			return (ulong) interceptor.Invoke("winId", "winId() const", typeof(ulong));
 		}
-		[SmokeMethod("createWinId", "()", "")]
 		public void CreateWinId() {
-			((QWidget) interceptor).CreateWinId();
+			interceptor.Invoke("createWinId", "createWinId()", typeof(void));
 		}
-		[SmokeMethod("internalWinId", "() const", "")]
 		public ulong InternalWinId() {
-			return ((QWidget) interceptor).InternalWinId();
+			return (ulong) interceptor.Invoke("internalWinId", "internalWinId() const", typeof(ulong));
 		}
-		[SmokeMethod("style", "() const", "")]
 		public QStyle Style() {
-			return ((QWidget) interceptor).Style();
+			return (QStyle) interceptor.Invoke("style", "style() const", typeof(QStyle));
 		}
-		[SmokeMethod("setStyle", "(QStyle*)", "#")]
 		public void SetStyle(QStyle arg1) {
-			((QWidget) interceptor).SetStyle(arg1);
+			interceptor.Invoke("setStyle#", "setStyle(QStyle*)", typeof(void), typeof(QStyle), arg1);
 		}
-		[SmokeMethod("isTopLevel", "() const", "")]
 		public bool IsTopLevel() {
-			return ((QWidget) interceptor).IsTopLevel();
+			return (bool) interceptor.Invoke("isTopLevel", "isTopLevel() const", typeof(bool));
 		}
-		[SmokeMethod("isWindow", "() const", "")]
 		public bool IsWindow() {
-			return ((QWidget) interceptor).IsWindow();
+			return (bool) interceptor.Invoke("isWindow", "isWindow() const", typeof(bool));
 		}
-		[SmokeMethod("isModal", "() const", "")]
 		public bool IsModal() {
-			return ((QWidget) interceptor).IsModal();
+			return (bool) interceptor.Invoke("isModal", "isModal() const", typeof(bool));
 		}
-		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ((QWidget) interceptor).IsEnabled();
+			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("isEnabledTo", "(QWidget*) const", "#")]
 		public bool IsEnabledTo(QWidget arg1) {
-			return ((QWidget) interceptor).IsEnabledTo(arg1);
+			return (bool) interceptor.Invoke("isEnabledTo#", "isEnabledTo(QWidget*) const", typeof(bool), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("isEnabledToTLW", "() const", "")]
 		public bool IsEnabledToTLW() {
-			return ((QWidget) interceptor).IsEnabledToTLW();
+			return (bool) interceptor.Invoke("isEnabledToTLW", "isEnabledToTLW() const", typeof(bool));
 		}
-		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ((QWidget) interceptor).Width();
+			return (int) interceptor.Invoke("width", "width() const", typeof(int));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ((QWidget) interceptor).Height();
+			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
-		[SmokeMethod("setMinimumSize", "(int, int)", "$$")]
 		public void SetMinimumSize(int minw, int minh) {
-			((QWidget) interceptor).SetMinimumSize(minw,minh);
+			interceptor.Invoke("setMinimumSize$$", "setMinimumSize(int, int)", typeof(void), typeof(int), minw, typeof(int), minh);
 		}
-		[SmokeMethod("setMaximumSize", "(int, int)", "$$")]
 		public void SetMaximumSize(int maxw, int maxh) {
-			((QWidget) interceptor).SetMaximumSize(maxw,maxh);
+			interceptor.Invoke("setMaximumSize$$", "setMaximumSize(int, int)", typeof(void), typeof(int), maxw, typeof(int), maxh);
 		}
-		[SmokeMethod("setSizeIncrement", "(int, int)", "$$")]
 		public void SetSizeIncrement(int w, int h) {
-			((QWidget) interceptor).SetSizeIncrement(w,h);
+			interceptor.Invoke("setSizeIncrement$$", "setSizeIncrement(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("setBaseSize", "(int, int)", "$$")]
 		public void SetBaseSize(int basew, int baseh) {
-			((QWidget) interceptor).SetBaseSize(basew,baseh);
+			interceptor.Invoke("setBaseSize$$", "setBaseSize(int, int)", typeof(void), typeof(int), basew, typeof(int), baseh);
 		}
-		[SmokeMethod("setFixedSize", "(const QSize&)", "#")]
 		public void SetFixedSize(QSize arg1) {
-			((QWidget) interceptor).SetFixedSize(arg1);
+			interceptor.Invoke("setFixedSize#", "setFixedSize(const QSize&)", typeof(void), typeof(QSize), arg1);
 		}
-		[SmokeMethod("setFixedSize", "(int, int)", "$$")]
 		public void SetFixedSize(int w, int h) {
-			((QWidget) interceptor).SetFixedSize(w,h);
+			interceptor.Invoke("setFixedSize$$", "setFixedSize(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("setFixedWidth", "(int)", "$")]
 		public void SetFixedWidth(int w) {
-			((QWidget) interceptor).SetFixedWidth(w);
+			interceptor.Invoke("setFixedWidth$", "setFixedWidth(int)", typeof(void), typeof(int), w);
 		}
-		[SmokeMethod("setFixedHeight", "(int)", "$")]
 		public void SetFixedHeight(int h) {
-			((QWidget) interceptor).SetFixedHeight(h);
+			interceptor.Invoke("setFixedHeight$", "setFixedHeight(int)", typeof(void), typeof(int), h);
 		}
-		[SmokeMethod("mapToGlobal", "(const QPoint&) const", "#")]
 		public QPoint MapToGlobal(QPoint arg1) {
-			return ((QWidget) interceptor).MapToGlobal(arg1);
+			return (QPoint) interceptor.Invoke("mapToGlobal#", "mapToGlobal(const QPoint&) const", typeof(QPoint), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("mapFromGlobal", "(const QPoint&) const", "#")]
 		public QPoint MapFromGlobal(QPoint arg1) {
-			return ((QWidget) interceptor).MapFromGlobal(arg1);
+			return (QPoint) interceptor.Invoke("mapFromGlobal#", "mapFromGlobal(const QPoint&) const", typeof(QPoint), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("mapToParent", "(const QPoint&) const", "#")]
 		public QPoint MapToParent(QPoint arg1) {
-			return ((QWidget) interceptor).MapToParent(arg1);
+			return (QPoint) interceptor.Invoke("mapToParent#", "mapToParent(const QPoint&) const", typeof(QPoint), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("mapFromParent", "(const QPoint&) const", "#")]
 		public QPoint MapFromParent(QPoint arg1) {
-			return ((QWidget) interceptor).MapFromParent(arg1);
+			return (QPoint) interceptor.Invoke("mapFromParent#", "mapFromParent(const QPoint&) const", typeof(QPoint), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("mapTo", "(QWidget*, const QPoint&) const", "##")]
 		public QPoint MapTo(QWidget arg1, QPoint arg2) {
-			return ((QWidget) interceptor).MapTo(arg1,arg2);
+			return (QPoint) interceptor.Invoke("mapTo##", "mapTo(QWidget*, const QPoint&) const", typeof(QPoint), typeof(QWidget), arg1, typeof(QPoint), arg2);
 		}
-		[SmokeMethod("mapFrom", "(QWidget*, const QPoint&) const", "##")]
 		public QPoint MapFrom(QWidget arg1, QPoint arg2) {
-			return ((QWidget) interceptor).MapFrom(arg1,arg2);
+			return (QPoint) interceptor.Invoke("mapFrom##", "mapFrom(QWidget*, const QPoint&) const", typeof(QPoint), typeof(QWidget), arg1, typeof(QPoint), arg2);
 		}
-		[SmokeMethod("window", "() const", "")]
 		public QWidget Window() {
-			return ((QWidget) interceptor).Window();
+			return (QWidget) interceptor.Invoke("window", "window() const", typeof(QWidget));
 		}
-		[SmokeMethod("topLevelWidget", "() const", "")]
 		public QWidget TopLevelWidget() {
-			return ((QWidget) interceptor).TopLevelWidget();
+			return (QWidget) interceptor.Invoke("topLevelWidget", "topLevelWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setBackgroundRole", "(QPalette::ColorRole)", "$")]
 		public void SetBackgroundRole(QPalette.ColorRole arg1) {
-			((QWidget) interceptor).SetBackgroundRole(arg1);
+			interceptor.Invoke("setBackgroundRole$", "setBackgroundRole(QPalette::ColorRole)", typeof(void), typeof(QPalette.ColorRole), arg1);
 		}
-		[SmokeMethod("backgroundRole", "() const", "")]
 		public QPalette.ColorRole BackgroundRole() {
-			return ((QWidget) interceptor).BackgroundRole();
+			return (QPalette.ColorRole) interceptor.Invoke("backgroundRole", "backgroundRole() const", typeof(QPalette.ColorRole));
 		}
-		[SmokeMethod("setForegroundRole", "(QPalette::ColorRole)", "$")]
 		public void SetForegroundRole(QPalette.ColorRole arg1) {
-			((QWidget) interceptor).SetForegroundRole(arg1);
+			interceptor.Invoke("setForegroundRole$", "setForegroundRole(QPalette::ColorRole)", typeof(void), typeof(QPalette.ColorRole), arg1);
 		}
-		[SmokeMethod("foregroundRole", "() const", "")]
 		public QPalette.ColorRole ForegroundRole() {
-			return ((QWidget) interceptor).ForegroundRole();
+			return (QPalette.ColorRole) interceptor.Invoke("foregroundRole", "foregroundRole() const", typeof(QPalette.ColorRole));
 		}
-		[SmokeMethod("fontMetrics", "() const", "")]
 		public QFontMetrics FontMetrics() {
-			return ((QWidget) interceptor).FontMetrics();
+			return (QFontMetrics) interceptor.Invoke("fontMetrics", "fontMetrics() const", typeof(QFontMetrics));
 		}
-		[SmokeMethod("fontInfo", "() const", "")]
 		public QFontInfo FontInfo() {
-			return ((QWidget) interceptor).FontInfo();
+			return (QFontInfo) interceptor.Invoke("fontInfo", "fontInfo() const", typeof(QFontInfo));
 		}
-		[SmokeMethod("unsetCursor", "()", "")]
 		public void UnsetCursor() {
-			((QWidget) interceptor).UnsetCursor();
+			interceptor.Invoke("unsetCursor", "unsetCursor()", typeof(void));
 		}
-		[SmokeMethod("hasMouseTracking", "() const", "")]
 		public bool HasMouseTracking() {
-			return ((QWidget) interceptor).HasMouseTracking();
+			return (bool) interceptor.Invoke("hasMouseTracking", "hasMouseTracking() const", typeof(bool));
 		}
-		[SmokeMethod("underMouse", "() const", "")]
 		public bool UnderMouse() {
-			return ((QWidget) interceptor).UnderMouse();
+			return (bool) interceptor.Invoke("underMouse", "underMouse() const", typeof(bool));
 		}
-		[SmokeMethod("setMask", "(const QBitmap&)", "#")]
 		public void SetMask(QBitmap arg1) {
-			((QWidget) interceptor).SetMask(arg1);
+			interceptor.Invoke("setMask#", "setMask(const QBitmap&)", typeof(void), typeof(QBitmap), arg1);
 		}
-		[SmokeMethod("setMask", "(const QRegion&)", "#")]
 		public void SetMask(QRegion arg1) {
-			((QWidget) interceptor).SetMask(arg1);
+			interceptor.Invoke("setMask#", "setMask(const QRegion&)", typeof(void), typeof(QRegion), arg1);
 		}
-		[SmokeMethod("mask", "() const", "")]
 		public QRegion Mask() {
-			return ((QWidget) interceptor).Mask();
+			return (QRegion) interceptor.Invoke("mask", "mask() const", typeof(QRegion));
 		}
-		[SmokeMethod("clearMask", "()", "")]
 		public void ClearMask() {
-			((QWidget) interceptor).ClearMask();
+			interceptor.Invoke("clearMask", "clearMask()", typeof(void));
 		}
-		[SmokeMethod("setWindowRole", "(const QString&)", "$")]
 		public void SetWindowRole(string arg1) {
-			((QWidget) interceptor).SetWindowRole(arg1);
+			interceptor.Invoke("setWindowRole$", "setWindowRole(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("windowRole", "() const", "")]
 		public string WindowRole() {
-			return ((QWidget) interceptor).WindowRole();
+			return (string) interceptor.Invoke("windowRole", "windowRole() const", typeof(string));
 		}
-		[SmokeMethod("isWindowModified", "() const", "")]
 		public bool IsWindowModified() {
-			return ((QWidget) interceptor).IsWindowModified();
+			return (bool) interceptor.Invoke("isWindowModified", "isWindowModified() const", typeof(bool));
 		}
-		[SmokeMethod("unsetLayoutDirection", "()", "")]
 		public void UnsetLayoutDirection() {
-			((QWidget) interceptor).UnsetLayoutDirection();
+			interceptor.Invoke("unsetLayoutDirection", "unsetLayoutDirection()", typeof(void));
 		}
-		[SmokeMethod("isRightToLeft", "() const", "")]
 		public bool IsRightToLeft() {
-			return ((QWidget) interceptor).IsRightToLeft();
+			return (bool) interceptor.Invoke("isRightToLeft", "isRightToLeft() const", typeof(bool));
 		}
-		[SmokeMethod("isLeftToRight", "() const", "")]
 		public bool IsLeftToRight() {
-			return ((QWidget) interceptor).IsLeftToRight();
+			return (bool) interceptor.Invoke("isLeftToRight", "isLeftToRight() const", typeof(bool));
 		}
-		[SmokeMethod("activateWindow", "()", "")]
 		public void ActivateWindow() {
-			((QWidget) interceptor).ActivateWindow();
+			interceptor.Invoke("activateWindow", "activateWindow()", typeof(void));
 		}
-		[SmokeMethod("clearFocus", "()", "")]
 		public void ClearFocus() {
-			((QWidget) interceptor).ClearFocus();
+			interceptor.Invoke("clearFocus", "clearFocus()", typeof(void));
 		}
-		[SmokeMethod("hasFocus", "() const", "")]
 		public bool HasFocus() {
-			return ((QWidget) interceptor).HasFocus();
+			return (bool) interceptor.Invoke("hasFocus", "hasFocus() const", typeof(bool));
 		}
-		[SmokeMethod("setFocusProxy", "(QWidget*)", "#")]
 		public void SetFocusProxy(QWidget arg1) {
-			((QWidget) interceptor).SetFocusProxy(arg1);
+			interceptor.Invoke("setFocusProxy#", "setFocusProxy(QWidget*)", typeof(void), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("focusProxy", "() const", "")]
 		public QWidget FocusProxy() {
-			return ((QWidget) interceptor).FocusProxy();
+			return (QWidget) interceptor.Invoke("focusProxy", "focusProxy() const", typeof(QWidget));
 		}
-		[SmokeMethod("grabMouse", "()", "")]
 		public void GrabMouse() {
-			((QWidget) interceptor).GrabMouse();
+			interceptor.Invoke("grabMouse", "grabMouse()", typeof(void));
 		}
-		[SmokeMethod("grabMouse", "(const QCursor&)", "#")]
 		public void GrabMouse(QCursor arg1) {
-			((QWidget) interceptor).GrabMouse(arg1);
+			interceptor.Invoke("grabMouse#", "grabMouse(const QCursor&)", typeof(void), typeof(QCursor), arg1);
 		}
-		[SmokeMethod("releaseMouse", "()", "")]
 		public void ReleaseMouse() {
-			((QWidget) interceptor).ReleaseMouse();
+			interceptor.Invoke("releaseMouse", "releaseMouse()", typeof(void));
 		}
-		[SmokeMethod("grabKeyboard", "()", "")]
 		public void GrabKeyboard() {
-			((QWidget) interceptor).GrabKeyboard();
+			interceptor.Invoke("grabKeyboard", "grabKeyboard()", typeof(void));
 		}
-		[SmokeMethod("releaseKeyboard", "()", "")]
 		public void ReleaseKeyboard() {
-			((QWidget) interceptor).ReleaseKeyboard();
+			interceptor.Invoke("releaseKeyboard", "releaseKeyboard()", typeof(void));
 		}
-		[SmokeMethod("grabShortcut", "(const QKeySequence&, Qt::ShortcutContext)", "#$")]
 		public int GrabShortcut(QKeySequence key, Qt.ShortcutContext context) {
-			return ((QWidget) interceptor).GrabShortcut(key,context);
+			return (int) interceptor.Invoke("grabShortcut#$", "grabShortcut(const QKeySequence&, Qt::ShortcutContext)", typeof(int), typeof(QKeySequence), key, typeof(Qt.ShortcutContext), context);
 		}
-		[SmokeMethod("grabShortcut", "(const QKeySequence&)", "#")]
 		public int GrabShortcut(QKeySequence key) {
-			return ((QWidget) interceptor).GrabShortcut(key);
+			return (int) interceptor.Invoke("grabShortcut#", "grabShortcut(const QKeySequence&)", typeof(int), typeof(QKeySequence), key);
 		}
-		[SmokeMethod("releaseShortcut", "(int)", "$")]
 		public void ReleaseShortcut(int id) {
-			((QWidget) interceptor).ReleaseShortcut(id);
+			interceptor.Invoke("releaseShortcut$", "releaseShortcut(int)", typeof(void), typeof(int), id);
 		}
-		[SmokeMethod("setShortcutEnabled", "(int, bool)", "$$")]
 		public void SetShortcutEnabled(int id, bool enable) {
-			((QWidget) interceptor).SetShortcutEnabled(id,enable);
+			interceptor.Invoke("setShortcutEnabled$$", "setShortcutEnabled(int, bool)", typeof(void), typeof(int), id, typeof(bool), enable);
 		}
-		[SmokeMethod("setShortcutEnabled", "(int)", "$")]
 		public void SetShortcutEnabled(int id) {
-			((QWidget) interceptor).SetShortcutEnabled(id);
+			interceptor.Invoke("setShortcutEnabled$", "setShortcutEnabled(int)", typeof(void), typeof(int), id);
 		}
-		[SmokeMethod("setShortcutAutoRepeat", "(int, bool)", "$$")]
 		public void SetShortcutAutoRepeat(int id, bool enable) {
-			((QWidget) interceptor).SetShortcutAutoRepeat(id,enable);
+			interceptor.Invoke("setShortcutAutoRepeat$$", "setShortcutAutoRepeat(int, bool)", typeof(void), typeof(int), id, typeof(bool), enable);
 		}
-		[SmokeMethod("setShortcutAutoRepeat", "(int)", "$")]
 		public void SetShortcutAutoRepeat(int id) {
-			((QWidget) interceptor).SetShortcutAutoRepeat(id);
+			interceptor.Invoke("setShortcutAutoRepeat$", "setShortcutAutoRepeat(int)", typeof(void), typeof(int), id);
 		}
-		[SmokeMethod("update", "(int, int, int, int)", "$$$$")]
 		public void Update(int x, int y, int w, int h) {
-			((QWidget) interceptor).Update(x,y,w,h);
+			interceptor.Invoke("update$$$$", "update(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("update", "(const QRect&)", "#")]
 		public void Update(QRect arg1) {
-			((QWidget) interceptor).Update(arg1);
+			interceptor.Invoke("update#", "update(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		[SmokeMethod("update", "(const QRegion&)", "#")]
 		public void Update(QRegion arg1) {
-			((QWidget) interceptor).Update(arg1);
+			interceptor.Invoke("update#", "update(const QRegion&)", typeof(void), typeof(QRegion), arg1);
 		}
-		[SmokeMethod("repaint", "(int, int, int, int)", "$$$$")]
 		public void Repaint(int x, int y, int w, int h) {
-			((QWidget) interceptor).Repaint(x,y,w,h);
+			interceptor.Invoke("repaint$$$$", "repaint(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("repaint", "(const QRect&)", "#")]
 		public void Repaint(QRect arg1) {
-			((QWidget) interceptor).Repaint(arg1);
+			interceptor.Invoke("repaint#", "repaint(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		[SmokeMethod("repaint", "(const QRegion&)", "#")]
 		public void Repaint(QRegion arg1) {
-			((QWidget) interceptor).Repaint(arg1);
+			interceptor.Invoke("repaint#", "repaint(const QRegion&)", typeof(void), typeof(QRegion), arg1);
 		}
-		[SmokeMethod("stackUnder", "(QWidget*)", "#")]
 		public void StackUnder(QWidget arg1) {
-			((QWidget) interceptor).StackUnder(arg1);
+			interceptor.Invoke("stackUnder#", "stackUnder(QWidget*)", typeof(void), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("move", "(int, int)", "$$")]
 		public void Move(int x, int y) {
-			((QWidget) interceptor).Move(x,y);
+			interceptor.Invoke("move$$", "move(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("move", "(const QPoint&)", "#")]
 		public void Move(QPoint arg1) {
-			((QWidget) interceptor).Move(arg1);
+			interceptor.Invoke("move#", "move(const QPoint&)", typeof(void), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("resize", "(int, int)", "$$")]
 		public void Resize(int w, int h) {
-			((QWidget) interceptor).Resize(w,h);
+			interceptor.Invoke("resize$$", "resize(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("resize", "(const QSize&)", "#")]
 		public void Resize(QSize arg1) {
-			((QWidget) interceptor).Resize(arg1);
+			interceptor.Invoke("resize#", "resize(const QSize&)", typeof(void), typeof(QSize), arg1);
 		}
-		[SmokeMethod("setGeometry", "(int, int, int, int)", "$$$$")]
 		public void SetGeometry(int x, int y, int w, int h) {
-			((QWidget) interceptor).SetGeometry(x,y,w,h);
+			interceptor.Invoke("setGeometry$$$$", "setGeometry(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("saveGeometry", "() const", "")]
 		public QByteArray SaveGeometry() {
-			return ((QWidget) interceptor).SaveGeometry();
+			return (QByteArray) interceptor.Invoke("saveGeometry", "saveGeometry() const", typeof(QByteArray));
 		}
-		[SmokeMethod("restoreGeometry", "(const QByteArray&)", "#")]
 		public bool RestoreGeometry(QByteArray geometry) {
-			return ((QWidget) interceptor).RestoreGeometry(geometry);
+			return (bool) interceptor.Invoke("restoreGeometry#", "restoreGeometry(const QByteArray&)", typeof(bool), typeof(QByteArray), geometry);
 		}
-		[SmokeMethod("adjustSize", "()", "")]
 		public void AdjustSize() {
-			((QWidget) interceptor).AdjustSize();
+			interceptor.Invoke("adjustSize", "adjustSize()", typeof(void));
 		}
-		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
-			return ((QWidget) interceptor).IsVisible();
+			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
 		}
-		[SmokeMethod("isVisibleTo", "(QWidget*) const", "#")]
 		public bool IsVisibleTo(QWidget arg1) {
-			return ((QWidget) interceptor).IsVisibleTo(arg1);
+			return (bool) interceptor.Invoke("isVisibleTo#", "isVisibleTo(QWidget*) const", typeof(bool), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("isHidden", "() const", "")]
 		public bool IsHidden() {
-			return ((QWidget) interceptor).IsHidden();
+			return (bool) interceptor.Invoke("isHidden", "isHidden() const", typeof(bool));
 		}
-		[SmokeMethod("isMinimized", "() const", "")]
 		public bool IsMinimized() {
-			return ((QWidget) interceptor).IsMinimized();
+			return (bool) interceptor.Invoke("isMinimized", "isMinimized() const", typeof(bool));
 		}
-		[SmokeMethod("isMaximized", "() const", "")]
 		public bool IsMaximized() {
-			return ((QWidget) interceptor).IsMaximized();
+			return (bool) interceptor.Invoke("isMaximized", "isMaximized() const", typeof(bool));
 		}
-		[SmokeMethod("isFullScreen", "() const", "")]
 		public bool IsFullScreen() {
-			return ((QWidget) interceptor).IsFullScreen();
+			return (bool) interceptor.Invoke("isFullScreen", "isFullScreen() const", typeof(bool));
 		}
-		[SmokeMethod("windowState", "() const", "")]
 		public int WindowState() {
-			return ((QWidget) interceptor).WindowState();
+			return (int) interceptor.Invoke("windowState", "windowState() const", typeof(int));
 		}
-		[SmokeMethod("setWindowState", "(Qt::WindowStates)", "$")]
 		public void SetWindowState(int state) {
-			((QWidget) interceptor).SetWindowState(state);
+			interceptor.Invoke("setWindowState$", "setWindowState(Qt::WindowStates)", typeof(void), typeof(int), state);
 		}
-		[SmokeMethod("overrideWindowState", "(Qt::WindowStates)", "$")]
 		public void OverrideWindowState(int state) {
-			((QWidget) interceptor).OverrideWindowState(state);
+			interceptor.Invoke("overrideWindowState$", "overrideWindowState(Qt::WindowStates)", typeof(void), typeof(int), state);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public virtual QSize SizeHint() {
-			return ((QWidget) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public virtual QSize MinimumSizeHint() {
-			return ((QWidget) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("setSizePolicy", "(QSizePolicy::Policy, QSizePolicy::Policy)", "$$")]
 		public void SetSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) {
-			((QWidget) interceptor).SetSizePolicy(horizontal,vertical);
+			interceptor.Invoke("setSizePolicy$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), horizontal, typeof(QSizePolicy.Policy), vertical);
 		}
-		[SmokeMethod("heightForWidth", "(int) const", "$")]
+		[SmokeMethod("heightForWidth(int) const")]
 		public virtual int HeightForWidth(int arg1) {
-			return ((QWidget) interceptor).HeightForWidth(arg1);
+			return (int) interceptor.Invoke("heightForWidth$", "heightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
-		[SmokeMethod("visibleRegion", "() const", "")]
 		public QRegion VisibleRegion() {
-			return ((QWidget) interceptor).VisibleRegion();
+			return (QRegion) interceptor.Invoke("visibleRegion", "visibleRegion() const", typeof(QRegion));
 		}
-		[SmokeMethod("setContentsMargins", "(int, int, int, int)", "$$$$")]
 		public void SetContentsMargins(int left, int top, int right, int bottom) {
-			((QWidget) interceptor).SetContentsMargins(left,top,right,bottom);
+			interceptor.Invoke("setContentsMargins$$$$", "setContentsMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
 		}
-		[SmokeMethod("getContentsMargins", "(int*, int*, int*, int*) const", "$$$$")]
-		public void GetContentsMargins(out int left, out int top, out int right, out int bottom) {
-			((QWidget) interceptor).GetContentsMargins(out left,out top,out right,out bottom);
+		public void GetContentsMargins(int left, int top, int right, int bottom) {
+			interceptor.Invoke("getContentsMargins$$$$", "getContentsMargins(int*, int*, int*, int*) const", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
 		}
-		[SmokeMethod("contentsRect", "() const", "")]
 		public QRect ContentsRect() {
-			return ((QWidget) interceptor).ContentsRect();
+			return (QRect) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRect));
 		}
-		[SmokeMethod("layout", "() const", "")]
 		public QLayout Layout() {
-			return ((QWidget) interceptor).Layout();
+			return (QLayout) interceptor.Invoke("layout", "layout() const", typeof(QLayout));
 		}
-		[SmokeMethod("setLayout", "(QLayout*)", "#")]
 		public void SetLayout(QLayout arg1) {
-			((QWidget) interceptor).SetLayout(arg1);
+			interceptor.Invoke("setLayout#", "setLayout(QLayout*)", typeof(void), typeof(QLayout), arg1);
 		}
-		[SmokeMethod("updateGeometry", "()", "")]
 		public void UpdateGeometry() {
-			((QWidget) interceptor).UpdateGeometry();
+			interceptor.Invoke("updateGeometry", "updateGeometry()", typeof(void));
 		}
-		[SmokeMethod("setParent", "(QWidget*)", "#")]
 		public void SetParent(QWidget parent) {
-			((QWidget) interceptor).SetParent(parent);
+			interceptor.Invoke("setParent#", "setParent(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
-		[SmokeMethod("setParent", "(QWidget*, Qt::WindowFlags)", "#$")]
 		public void SetParent(QWidget parent, int f) {
-			((QWidget) interceptor).SetParent(parent,f);
+			interceptor.Invoke("setParent#$", "setParent(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
-		[SmokeMethod("scroll", "(int, int)", "$$")]
 		public void Scroll(int dx, int dy) {
-			((QWidget) interceptor).Scroll(dx,dy);
+			interceptor.Invoke("scroll$$", "scroll(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
-		[SmokeMethod("scroll", "(int, int, const QRect&)", "$$#")]
 		public void Scroll(int dx, int dy, QRect arg3) {
-			((QWidget) interceptor).Scroll(dx,dy,arg3);
+			interceptor.Invoke("scroll$$#", "scroll(int, int, const QRect&)", typeof(void), typeof(int), dx, typeof(int), dy, typeof(QRect), arg3);
 		}
-		[SmokeMethod("focusWidget", "() const", "")]
 		public QWidget FocusWidget() {
-			return ((QWidget) interceptor).FocusWidget();
+			return (QWidget) interceptor.Invoke("focusWidget", "focusWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("nextInFocusChain", "() const", "")]
 		public QWidget NextInFocusChain() {
-			return ((QWidget) interceptor).NextInFocusChain();
+			return (QWidget) interceptor.Invoke("nextInFocusChain", "nextInFocusChain() const", typeof(QWidget));
 		}
-		[SmokeMethod("addAction", "(QAction*)", "#")]
 		public void AddAction(QAction action) {
-			((QWidget) interceptor).AddAction(action);
+			interceptor.Invoke("addAction#", "addAction(QAction*)", typeof(void), typeof(QAction), action);
 		}
-		[SmokeMethod("addActions", "(QList<QAction*>)", "?")]
 		public void AddActions(List<QAction> actions) {
-			((QWidget) interceptor).AddActions(actions);
+			interceptor.Invoke("addActions?", "addActions(QList<QAction*>)", typeof(void), typeof(List<QAction>), actions);
 		}
-		[SmokeMethod("insertAction", "(QAction*, QAction*)", "##")]
 		public void InsertAction(QAction before, QAction action) {
-			((QWidget) interceptor).InsertAction(before,action);
+			interceptor.Invoke("insertAction##", "insertAction(QAction*, QAction*)", typeof(void), typeof(QAction), before, typeof(QAction), action);
 		}
-		[SmokeMethod("insertActions", "(QAction*, QList<QAction*>)", "#?")]
 		public void InsertActions(QAction before, List<QAction> actions) {
-			((QWidget) interceptor).InsertActions(before,actions);
+			interceptor.Invoke("insertActions#?", "insertActions(QAction*, QList<QAction*>)", typeof(void), typeof(QAction), before, typeof(List<QAction>), actions);
 		}
-		[SmokeMethod("removeAction", "(QAction*)", "#")]
 		public void RemoveAction(QAction action) {
-			((QWidget) interceptor).RemoveAction(action);
+			interceptor.Invoke("removeAction#", "removeAction(QAction*)", typeof(void), typeof(QAction), action);
 		}
-		[SmokeMethod("actions", "() const", "")]
 		public List<QAction> Actions() {
-			return ((QWidget) interceptor).Actions();
+			return (List<QAction>) interceptor.Invoke("actions", "actions() const", typeof(List<QAction>));
 		}
-		[SmokeMethod("parentWidget", "() const", "")]
 		public QWidget ParentWidget() {
-			return ((QWidget) interceptor).ParentWidget();
+			return (QWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setWindowFlags", "(Qt::WindowFlags)", "$")]
 		public void SetWindowFlags(int type) {
-			((QWidget) interceptor).SetWindowFlags(type);
+			interceptor.Invoke("setWindowFlags$", "setWindowFlags(Qt::WindowFlags)", typeof(void), typeof(int), type);
 		}
-		[SmokeMethod("windowFlags", "() const", "")]
 		public int WindowFlags() {
-			return ((QWidget) interceptor).WindowFlags();
+			return (int) interceptor.Invoke("windowFlags", "windowFlags() const", typeof(int));
 		}
-		[SmokeMethod("overrideWindowFlags", "(Qt::WindowFlags)", "$")]
 		public void OverrideWindowFlags(int type) {
-			((QWidget) interceptor).OverrideWindowFlags(type);
+			interceptor.Invoke("overrideWindowFlags$", "overrideWindowFlags(Qt::WindowFlags)", typeof(void), typeof(int), type);
 		}
-		[SmokeMethod("windowType", "() const", "")]
 		public Qt.WindowType WindowType() {
-			return ((QWidget) interceptor).WindowType();
+			return (Qt.WindowType) interceptor.Invoke("windowType", "windowType() const", typeof(Qt.WindowType));
 		}
-		[SmokeMethod("childAt", "(int, int) const", "$$")]
 		public QWidget ChildAt(int x, int y) {
-			return ((QWidget) interceptor).ChildAt(x,y);
+			return (QWidget) interceptor.Invoke("childAt$$", "childAt(int, int) const", typeof(QWidget), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("childAt", "(const QPoint&) const", "#")]
 		public QWidget ChildAt(QPoint p) {
-			return ((QWidget) interceptor).ChildAt(p);
+			return (QWidget) interceptor.Invoke("childAt#", "childAt(const QPoint&) const", typeof(QWidget), typeof(QPoint), p);
 		}
-		[SmokeMethod("setAttribute", "(Qt::WidgetAttribute, bool)", "$$")]
 		public void SetAttribute(Qt.WidgetAttribute arg1, bool on) {
-			((QWidget) interceptor).SetAttribute(arg1,on);
+			interceptor.Invoke("setAttribute$$", "setAttribute(Qt::WidgetAttribute, bool)", typeof(void), typeof(Qt.WidgetAttribute), arg1, typeof(bool), on);
 		}
-		[SmokeMethod("setAttribute", "(Qt::WidgetAttribute)", "$")]
 		public void SetAttribute(Qt.WidgetAttribute arg1) {
-			((QWidget) interceptor).SetAttribute(arg1);
+			interceptor.Invoke("setAttribute$", "setAttribute(Qt::WidgetAttribute)", typeof(void), typeof(Qt.WidgetAttribute), arg1);
 		}
-		[SmokeMethod("testAttribute", "(Qt::WidgetAttribute) const", "$")]
 		public bool TestAttribute(Qt.WidgetAttribute arg1) {
-			return ((QWidget) interceptor).TestAttribute(arg1);
+			return (bool) interceptor.Invoke("testAttribute$", "testAttribute(Qt::WidgetAttribute) const", typeof(bool), typeof(Qt.WidgetAttribute), arg1);
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public virtual QPaintEngine PaintEngine() {
-			return ((QWidget) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
-		[SmokeMethod("ensurePolished", "() const", "")]
 		public void EnsurePolished() {
-			((QWidget) interceptor).EnsurePolished();
+			interceptor.Invoke("ensurePolished", "ensurePolished() const", typeof(void));
 		}
-		[SmokeMethod("inputContext", "()", "")]
 		public QInputContext InputContext() {
-			return ((QWidget) interceptor).InputContext();
+			return (QInputContext) interceptor.Invoke("inputContext", "inputContext()", typeof(QInputContext));
 		}
-		[SmokeMethod("setInputContext", "(QInputContext*)", "#")]
 		public void SetInputContext(QInputContext arg1) {
-			((QWidget) interceptor).SetInputContext(arg1);
+			interceptor.Invoke("setInputContext#", "setInputContext(QInputContext*)", typeof(void), typeof(QInputContext), arg1);
 		}
-		[SmokeMethod("isAncestorOf", "(const QWidget*) const", "#")]
 		public bool IsAncestorOf(QWidget child) {
-			return ((QWidget) interceptor).IsAncestorOf(child);
+			return (bool) interceptor.Invoke("isAncestorOf#", "isAncestorOf(const QWidget*) const", typeof(bool), typeof(QWidget), child);
 		}
-		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
+		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
-			return ((QWidget) interceptor).InputMethodQuery(arg1);
+			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), arg1);
 		}
 		[Q_SLOT("void setDisabled(bool)")]
-		[SmokeMethod("setDisabled", "(bool)", "$")]
 		public void SetDisabled(bool arg1) {
-			((QWidget) interceptor).SetDisabled(arg1);
+			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), arg1);
 		}
 		[Q_SLOT("void setFocus()")]
-		[SmokeMethod("setFocus", "()", "")]
 		public void SetFocus() {
-			((QWidget) interceptor).SetFocus();
+			interceptor.Invoke("setFocus", "setFocus()", typeof(void));
 		}
 		[Q_SLOT("void update()")]
-		[SmokeMethod("update", "()", "")]
 		public void Update() {
-			((QWidget) interceptor).Update();
+			interceptor.Invoke("update", "update()", typeof(void));
 		}
 		[Q_SLOT("void repaint()")]
-		[SmokeMethod("repaint", "()", "")]
 		public void Repaint() {
-			((QWidget) interceptor).Repaint();
+			interceptor.Invoke("repaint", "repaint()", typeof(void));
 		}
 		[Q_SLOT("void setVisible(bool)")]
-		[SmokeMethod("setVisible", "(bool)", "$")]
+		[SmokeMethod("setVisible(bool)")]
 		public virtual void SetVisible(bool visible) {
-			((QWidget) interceptor).SetVisible(visible);
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
 		}
 		[Q_SLOT("void setHidden(bool)")]
-		[SmokeMethod("setHidden", "(bool)", "$")]
 		public void SetHidden(bool hidden) {
-			((QWidget) interceptor).SetHidden(hidden);
+			interceptor.Invoke("setHidden$", "setHidden(bool)", typeof(void), typeof(bool), hidden);
 		}
 		[Q_SLOT("void show()")]
-		[SmokeMethod("show", "()", "")]
 		public void Show() {
-			((QWidget) interceptor).Show();
+			interceptor.Invoke("show", "show()", typeof(void));
 		}
 		[Q_SLOT("void hide()")]
-		[SmokeMethod("hide", "()", "")]
 		public void Hide() {
-			((QWidget) interceptor).Hide();
+			interceptor.Invoke("hide", "hide()", typeof(void));
 		}
 		[Q_SLOT("void setShown(bool)")]
-		[SmokeMethod("setShown", "(bool)", "$")]
 		public void SetShown(bool shown) {
-			((QWidget) interceptor).SetShown(shown);
+			interceptor.Invoke("setShown$", "setShown(bool)", typeof(void), typeof(bool), shown);
 		}
 		[Q_SLOT("void showMinimized()")]
-		[SmokeMethod("showMinimized", "()", "")]
 		public void ShowMinimized() {
-			((QWidget) interceptor).ShowMinimized();
+			interceptor.Invoke("showMinimized", "showMinimized()", typeof(void));
 		}
 		[Q_SLOT("void showMaximized()")]
-		[SmokeMethod("showMaximized", "()", "")]
 		public void ShowMaximized() {
-			((QWidget) interceptor).ShowMaximized();
+			interceptor.Invoke("showMaximized", "showMaximized()", typeof(void));
 		}
 		[Q_SLOT("void showFullScreen()")]
-		[SmokeMethod("showFullScreen", "()", "")]
 		public void ShowFullScreen() {
-			((QWidget) interceptor).ShowFullScreen();
+			interceptor.Invoke("showFullScreen", "showFullScreen()", typeof(void));
 		}
 		[Q_SLOT("void showNormal()")]
-		[SmokeMethod("showNormal", "()", "")]
 		public void ShowNormal() {
-			((QWidget) interceptor).ShowNormal();
+			interceptor.Invoke("showNormal", "showNormal()", typeof(void));
 		}
 		[Q_SLOT("bool close()")]
-		[SmokeMethod("close", "()", "")]
 		public bool Close() {
-			return ((QWidget) interceptor).Close();
+			return (bool) interceptor.Invoke("close", "close()", typeof(bool));
 		}
 		[Q_SLOT("void raise()")]
-		[SmokeMethod("raise", "()", "")]
 		public void Raise() {
-			((QWidget) interceptor).Raise();
+			interceptor.Invoke("raise", "raise()", typeof(void));
 		}
 		[Q_SLOT("void lower()")]
-		[SmokeMethod("lower", "()", "")]
 		public void Lower() {
-			((QWidget) interceptor).Lower();
+			interceptor.Invoke("lower", "lower()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QWidget) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected virtual void MousePressEvent(QMouseEvent arg1) {
-			((QWidget) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected virtual void MouseReleaseEvent(QMouseEvent arg1) {
-			((QWidget) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected virtual void MouseDoubleClickEvent(QMouseEvent arg1) {
-			((QWidget) interceptor).MouseDoubleClickEvent(arg1);
+			interceptor.Invoke("mouseDoubleClickEvent#", "mouseDoubleClickEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected virtual void MouseMoveEvent(QMouseEvent arg1) {
-			((QWidget) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected virtual void WheelEvent(QWheelEvent arg1) {
-			((QWidget) interceptor).WheelEvent(arg1);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected virtual void KeyPressEvent(QKeyEvent arg1) {
-			((QWidget) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("keyReleaseEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyReleaseEvent(QKeyEvent*)")]
 		protected virtual void KeyReleaseEvent(QKeyEvent arg1) {
-			((QWidget) interceptor).KeyReleaseEvent(arg1);
+			interceptor.Invoke("keyReleaseEvent#", "keyReleaseEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected virtual void FocusInEvent(QFocusEvent arg1) {
-			((QWidget) interceptor).FocusInEvent(arg1);
+			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected virtual void FocusOutEvent(QFocusEvent arg1) {
-			((QWidget) interceptor).FocusOutEvent(arg1);
+			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("enterEvent", "(QEvent*)", "#")]
+		[SmokeMethod("enterEvent(QEvent*)")]
 		protected virtual void EnterEvent(QEvent arg1) {
-			((QWidget) interceptor).EnterEvent(arg1);
+			interceptor.Invoke("enterEvent#", "enterEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("leaveEvent", "(QEvent*)", "#")]
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected virtual void LeaveEvent(QEvent arg1) {
-			((QWidget) interceptor).LeaveEvent(arg1);
+			interceptor.Invoke("leaveEvent#", "leaveEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected virtual void PaintEvent(QPaintEvent arg1) {
-			((QWidget) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("moveEvent", "(QMoveEvent*)", "#")]
+		[SmokeMethod("moveEvent(QMoveEvent*)")]
 		protected virtual void MoveEvent(QMoveEvent arg1) {
-			((QWidget) interceptor).MoveEvent(arg1);
+			interceptor.Invoke("moveEvent#", "moveEvent(QMoveEvent*)", typeof(void), typeof(QMoveEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected virtual void ResizeEvent(QResizeEvent arg1) {
-			((QWidget) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected virtual void CloseEvent(QCloseEvent arg1) {
-			((QWidget) interceptor).CloseEvent(arg1);
+			interceptor.Invoke("closeEvent#", "closeEvent(QCloseEvent*)", typeof(void), typeof(QCloseEvent), arg1);
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected virtual void ContextMenuEvent(QContextMenuEvent arg1) {
-			((QWidget) interceptor).ContextMenuEvent(arg1);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
 		}
-		[SmokeMethod("tabletEvent", "(QTabletEvent*)", "#")]
+		[SmokeMethod("tabletEvent(QTabletEvent*)")]
 		protected virtual void TabletEvent(QTabletEvent arg1) {
-			((QWidget) interceptor).TabletEvent(arg1);
+			interceptor.Invoke("tabletEvent#", "tabletEvent(QTabletEvent*)", typeof(void), typeof(QTabletEvent), arg1);
 		}
-		[SmokeMethod("actionEvent", "(QActionEvent*)", "#")]
+		[SmokeMethod("actionEvent(QActionEvent*)")]
 		protected virtual void ActionEvent(QActionEvent arg1) {
-			((QWidget) interceptor).ActionEvent(arg1);
+			interceptor.Invoke("actionEvent#", "actionEvent(QActionEvent*)", typeof(void), typeof(QActionEvent), arg1);
 		}
-		[SmokeMethod("dragEnterEvent", "(QDragEnterEvent*)", "#")]
+		[SmokeMethod("dragEnterEvent(QDragEnterEvent*)")]
 		protected virtual void DragEnterEvent(QDragEnterEvent arg1) {
-			((QWidget) interceptor).DragEnterEvent(arg1);
+			interceptor.Invoke("dragEnterEvent#", "dragEnterEvent(QDragEnterEvent*)", typeof(void), typeof(QDragEnterEvent), arg1);
 		}
-		[SmokeMethod("dragMoveEvent", "(QDragMoveEvent*)", "#")]
+		[SmokeMethod("dragMoveEvent(QDragMoveEvent*)")]
 		protected virtual void DragMoveEvent(QDragMoveEvent arg1) {
-			((QWidget) interceptor).DragMoveEvent(arg1);
+			interceptor.Invoke("dragMoveEvent#", "dragMoveEvent(QDragMoveEvent*)", typeof(void), typeof(QDragMoveEvent), arg1);
 		}
-		[SmokeMethod("dragLeaveEvent", "(QDragLeaveEvent*)", "#")]
+		[SmokeMethod("dragLeaveEvent(QDragLeaveEvent*)")]
 		protected virtual void DragLeaveEvent(QDragLeaveEvent arg1) {
-			((QWidget) interceptor).DragLeaveEvent(arg1);
+			interceptor.Invoke("dragLeaveEvent#", "dragLeaveEvent(QDragLeaveEvent*)", typeof(void), typeof(QDragLeaveEvent), arg1);
 		}
-		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
+		[SmokeMethod("dropEvent(QDropEvent*)")]
 		protected virtual void DropEvent(QDropEvent arg1) {
-			((QWidget) interceptor).DropEvent(arg1);
+			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), arg1);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected virtual void ShowEvent(QShowEvent arg1) {
-			((QWidget) interceptor).ShowEvent(arg1);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
 		}
-		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected virtual void HideEvent(QHideEvent arg1) {
-			((QWidget) interceptor).HideEvent(arg1);
+			interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected virtual void ChangeEvent(QEvent arg1) {
-			((QWidget) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected virtual int Metric(IQPaintDevice arg1) {
-			return ((QWidget) interceptor).Metric(arg1);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), arg1);
 		}
-		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
+		[SmokeMethod("inputMethodEvent(QInputMethodEvent*)")]
 		protected virtual void InputMethodEvent(QInputMethodEvent arg1) {
-			((QWidget) interceptor).InputMethodEvent(arg1);
+			interceptor.Invoke("inputMethodEvent#", "inputMethodEvent(QInputMethodEvent*)", typeof(void), typeof(QInputMethodEvent), arg1);
 		}
-		[SmokeMethod("resetInputContext", "()", "")]
 		protected void ResetInputContext() {
-			((QWidget) interceptor).ResetInputContext();
+			interceptor.Invoke("resetInputContext", "resetInputContext()", typeof(void));
 		}
-		[SmokeMethod("create", "(WId, bool, bool)", "$$$")]
 		protected void Create(ulong arg1, bool initializeWindow, bool destroyOldWindow) {
-			((QWidget) interceptor).Create(arg1,initializeWindow,destroyOldWindow);
+			interceptor.Invoke("create$$$", "create(WId, bool, bool)", typeof(void), typeof(ulong), arg1, typeof(bool), initializeWindow, typeof(bool), destroyOldWindow);
 		}
-		[SmokeMethod("create", "(WId, bool)", "$$")]
 		protected void Create(ulong arg1, bool initializeWindow) {
-			((QWidget) interceptor).Create(arg1,initializeWindow);
+			interceptor.Invoke("create$$", "create(WId, bool)", typeof(void), typeof(ulong), arg1, typeof(bool), initializeWindow);
 		}
-		[SmokeMethod("create", "(WId)", "$")]
 		protected void Create(ulong arg1) {
-			((QWidget) interceptor).Create(arg1);
+			interceptor.Invoke("create$", "create(WId)", typeof(void), typeof(ulong), arg1);
 		}
-		[SmokeMethod("create", "()", "")]
 		protected void Create() {
-			((QWidget) interceptor).Create();
+			interceptor.Invoke("create", "create()", typeof(void));
 		}
-		[SmokeMethod("destroy", "(bool, bool)", "$$")]
 		protected void Destroy(bool destroyWindow, bool destroySubWindows) {
-			((QWidget) interceptor).Destroy(destroyWindow,destroySubWindows);
+			interceptor.Invoke("destroy$$", "destroy(bool, bool)", typeof(void), typeof(bool), destroyWindow, typeof(bool), destroySubWindows);
 		}
-		[SmokeMethod("destroy", "(bool)", "$")]
 		protected void Destroy(bool destroyWindow) {
-			((QWidget) interceptor).Destroy(destroyWindow);
+			interceptor.Invoke("destroy$", "destroy(bool)", typeof(void), typeof(bool), destroyWindow);
 		}
-		[SmokeMethod("destroy", "()", "")]
 		protected void Destroy() {
-			((QWidget) interceptor).Destroy();
+			interceptor.Invoke("destroy", "destroy()", typeof(void));
 		}
-		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		protected virtual bool FocusNextPrevChild(bool next) {
-			return ((QWidget) interceptor).FocusNextPrevChild(next);
+			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
-		[SmokeMethod("focusNextChild", "()", "")]
 		protected bool FocusNextChild() {
-			return ((QWidget) interceptor).FocusNextChild();
+			return (bool) interceptor.Invoke("focusNextChild", "focusNextChild()", typeof(bool));
 		}
-		[SmokeMethod("focusPreviousChild", "()", "")]
 		protected bool FocusPreviousChild() {
-			return ((QWidget) interceptor).FocusPreviousChild();
+			return (bool) interceptor.Invoke("focusPreviousChild", "focusPreviousChild()", typeof(bool));
 		}
-		[SmokeMethod("styleChange", "(QStyle&)", "#")]
+		[SmokeMethod("styleChange(QStyle&)")]
 		protected virtual void StyleChange(QStyle arg1) {
-			((QWidget) interceptor).StyleChange(arg1);
+			interceptor.Invoke("styleChange#", "styleChange(QStyle&)", typeof(void), typeof(QStyle), arg1);
 		}
-		[SmokeMethod("enabledChange", "(bool)", "$")]
+		[SmokeMethod("enabledChange(bool)")]
 		protected virtual void EnabledChange(bool arg1) {
-			((QWidget) interceptor).EnabledChange(arg1);
+			interceptor.Invoke("enabledChange$", "enabledChange(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("paletteChange", "(const QPalette&)", "#")]
+		[SmokeMethod("paletteChange(const QPalette&)")]
 		protected virtual void PaletteChange(QPalette arg1) {
-			((QWidget) interceptor).PaletteChange(arg1);
+			interceptor.Invoke("paletteChange#", "paletteChange(const QPalette&)", typeof(void), typeof(QPalette), arg1);
 		}
-		[SmokeMethod("fontChange", "(const QFont&)", "#")]
+		[SmokeMethod("fontChange(const QFont&)")]
 		protected virtual void FontChange(QFont arg1) {
-			((QWidget) interceptor).FontChange(arg1);
+			interceptor.Invoke("fontChange#", "fontChange(const QFont&)", typeof(void), typeof(QFont), arg1);
 		}
-		[SmokeMethod("windowActivationChange", "(bool)", "$")]
+		[SmokeMethod("windowActivationChange(bool)")]
 		protected virtual void WindowActivationChange(bool arg1) {
-			((QWidget) interceptor).WindowActivationChange(arg1);
+			interceptor.Invoke("windowActivationChange$", "windowActivationChange(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("languageChange", "()", "")]
+		[SmokeMethod("languageChange()")]
 		protected virtual void LanguageChange() {
-			((QWidget) interceptor).LanguageChange();
+			interceptor.Invoke("languageChange", "languageChange()", typeof(void));
 		}
 		[Q_SLOT("void updateMicroFocus()")]
-		[SmokeMethod("updateMicroFocus", "()", "")]
 		protected void UpdateMicroFocus() {
-			((QWidget) interceptor).UpdateMicroFocus();
+			interceptor.Invoke("updateMicroFocus", "updateMicroFocus()", typeof(void));
 		}
 		~QWidget() {
-			DisposeQWidget();
+			interceptor.Invoke("~QWidget", "~QWidget()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQWidget();
+			interceptor.Invoke("~QWidget", "~QWidget()", typeof(void));
 		}
-		[SmokeMethod("~QWidget", "()", "")]
-		private void DisposeQWidget() {
-			((QWidget) interceptor).DisposeQWidget();
-		}
-		[SmokeMethod("paintingActive", "() const", "")]
 		public bool PaintingActive() {
-			return ((QWidget) interceptor).PaintingActive();
+			return (bool) interceptor.Invoke("paintingActive", "paintingActive() const", typeof(bool));
 		}
-		[SmokeMethod("widthMM", "() const", "")]
 		public int WidthMM() {
-			return ((QWidget) interceptor).WidthMM();
+			return (int) interceptor.Invoke("widthMM", "widthMM() const", typeof(int));
 		}
-		[SmokeMethod("heightMM", "() const", "")]
 		public int HeightMM() {
-			return ((QWidget) interceptor).HeightMM();
+			return (int) interceptor.Invoke("heightMM", "heightMM() const", typeof(int));
 		}
-		[SmokeMethod("logicalDpiX", "() const", "")]
 		public int LogicalDpiX() {
-			return ((QWidget) interceptor).LogicalDpiX();
+			return (int) interceptor.Invoke("logicalDpiX", "logicalDpiX() const", typeof(int));
 		}
-		[SmokeMethod("logicalDpiY", "() const", "")]
 		public int LogicalDpiY() {
-			return ((QWidget) interceptor).LogicalDpiY();
+			return (int) interceptor.Invoke("logicalDpiY", "logicalDpiY() const", typeof(int));
 		}
-		[SmokeMethod("physicalDpiX", "() const", "")]
 		public int PhysicalDpiX() {
-			return ((QWidget) interceptor).PhysicalDpiX();
+			return (int) interceptor.Invoke("physicalDpiX", "physicalDpiX() const", typeof(int));
 		}
-		[SmokeMethod("physicalDpiY", "() const", "")]
 		public int PhysicalDpiY() {
-			return ((QWidget) interceptor).PhysicalDpiY();
+			return (int) interceptor.Invoke("physicalDpiY", "physicalDpiY() const", typeof(int));
 		}
-		[SmokeMethod("numColors", "() const", "")]
 		public int NumColors() {
-			return ((QWidget) interceptor).NumColors();
+			return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
 		}
-		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ((QWidget) interceptor).Depth();
+			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static void SetTabOrder(QWidget arg1, QWidget arg2) {
-			staticInterceptor.SetTabOrder(arg1,arg2);
+			staticInterceptor.Invoke("setTabOrder##", "setTabOrder(QWidget*, QWidget*)", typeof(void), typeof(QWidget), arg1, typeof(QWidget), arg2);
 		}
 		public static QWidget MouseGrabber() {
-			return staticInterceptor.MouseGrabber();
+			return (QWidget) staticInterceptor.Invoke("mouseGrabber", "mouseGrabber()", typeof(QWidget));
 		}
 		public static QWidget KeyboardGrabber() {
-			return staticInterceptor.KeyboardGrabber();
+			return (QWidget) staticInterceptor.Invoke("keyboardGrabber", "keyboardGrabber()", typeof(QWidget));
 		}
 		public static QWidget Find(ulong arg1) {
-			return staticInterceptor.Find(arg1);
+			return (QWidget) staticInterceptor.Invoke("find$", "find(WId)", typeof(QWidget), typeof(ulong), arg1);
 		}
 		protected new IQWidgetSignals Emit {
 			get { return (IQWidgetSignals) Q_EMIT; }

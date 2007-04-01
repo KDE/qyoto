@@ -8,21 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QWorkspace")]
 	public class QWorkspace : QWidget, IDisposable {
  		protected QWorkspace(Type dummy) : base((Type) null) {}
-		[SmokeClass("QWorkspace")]
-		interface IQWorkspaceProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWorkspace), this);
-			interceptor = (QWorkspace) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWorkspace), "QWorkspace", this);
 		}
-		private static IQWorkspaceProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QWorkspace() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWorkspaceProxy), null);
-			staticInterceptor = (IQWorkspaceProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QWorkspace), "QWorkspace", null);
 		}
 		public enum WindowOrder {
 			CreationOrder = 0,
@@ -30,149 +21,120 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "scrollBarsEnabled")]
 		public bool ScrollBarsEnabled {
-			[SmokeMethod("scrollBarsEnabled", "()", "")]
-			get { return ((QWorkspace) interceptor).ScrollBarsEnabled; }
-			[SmokeMethod("setScrollBarsEnabled", "(bool)", "$")]
-			set { ((QWorkspace) interceptor).ScrollBarsEnabled = value; }
+			get { return (bool) interceptor.Invoke("scrollBarsEnabled", "scrollBarsEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setScrollBarsEnabled$", "setScrollBarsEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QBrush", "background")]
 		public QBrush Background {
-			[SmokeMethod("background", "()", "")]
-			get { return ((QWorkspace) interceptor).Background; }
-			[SmokeMethod("setBackground", "(QBrush)", "#")]
-			set { ((QWorkspace) interceptor).Background = value; }
+			get { return (QBrush) interceptor.Invoke("background", "background()", typeof(QBrush)); }
+			set { interceptor.Invoke("setBackground#", "setBackground(QBrush)", typeof(void), typeof(QBrush), value); }
 		}
 		public QWorkspace(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQWorkspace(parent);
-		}
-		[SmokeMethod("QWorkspace", "(QWidget*)", "#")]
-		private void NewQWorkspace(QWidget parent) {
-			((QWorkspace) interceptor).NewQWorkspace(parent);
+			interceptor.Invoke("QWorkspace#", "QWorkspace(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QWorkspace() : this((Type) null) {
 			CreateProxy();
-			NewQWorkspace();
+			interceptor.Invoke("QWorkspace", "QWorkspace()", typeof(void));
 		}
-		[SmokeMethod("QWorkspace", "()", "")]
-		private void NewQWorkspace() {
-			((QWorkspace) interceptor).NewQWorkspace();
-		}
-		[SmokeMethod("activeWindow", "() const", "")]
 		public QWidget ActiveWindow() {
-			return ((QWorkspace) interceptor).ActiveWindow();
+			return (QWidget) interceptor.Invoke("activeWindow", "activeWindow() const", typeof(QWidget));
 		}
-		[SmokeMethod("windowList", "(QWorkspace::WindowOrder) const", "$")]
 		public List<QWidget> WindowList(QWorkspace.WindowOrder order) {
-			return ((QWorkspace) interceptor).WindowList(order);
+			return (List<QWidget>) interceptor.Invoke("windowList$", "windowList(QWorkspace::WindowOrder) const", typeof(List<QWidget>), typeof(QWorkspace.WindowOrder), order);
 		}
-		[SmokeMethod("windowList", "() const", "")]
 		public List<QWidget> WindowList() {
-			return ((QWorkspace) interceptor).WindowList();
+			return (List<QWidget>) interceptor.Invoke("windowList", "windowList() const", typeof(List<QWidget>));
 		}
-		[SmokeMethod("addWindow", "(QWidget*, Qt::WindowFlags)", "#$")]
 		public QWidget AddWindow(QWidget w, int flags) {
-			return ((QWorkspace) interceptor).AddWindow(w,flags);
+			return (QWidget) interceptor.Invoke("addWindow#$", "addWindow(QWidget*, Qt::WindowFlags)", typeof(QWidget), typeof(QWidget), w, typeof(int), flags);
 		}
-		[SmokeMethod("addWindow", "(QWidget*)", "#")]
 		public QWidget AddWindow(QWidget w) {
-			return ((QWorkspace) interceptor).AddWindow(w);
+			return (QWidget) interceptor.Invoke("addWindow#", "addWindow(QWidget*)", typeof(QWidget), typeof(QWidget), w);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QWorkspace) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		[Q_SLOT("void setActiveWindow(QWidget*)")]
-		[SmokeMethod("setActiveWindow", "(QWidget*)", "#")]
 		public void SetActiveWindow(QWidget w) {
-			((QWorkspace) interceptor).SetActiveWindow(w);
+			interceptor.Invoke("setActiveWindow#", "setActiveWindow(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
 		[Q_SLOT("void cascade()")]
-		[SmokeMethod("cascade", "()", "")]
 		public void Cascade() {
-			((QWorkspace) interceptor).Cascade();
+			interceptor.Invoke("cascade", "cascade()", typeof(void));
 		}
 		[Q_SLOT("void tile()")]
-		[SmokeMethod("tile", "()", "")]
 		public void Tile() {
-			((QWorkspace) interceptor).Tile();
+			interceptor.Invoke("tile", "tile()", typeof(void));
 		}
 		[Q_SLOT("void arrangeIcons()")]
-		[SmokeMethod("arrangeIcons", "()", "")]
 		public void ArrangeIcons() {
-			((QWorkspace) interceptor).ArrangeIcons();
+			interceptor.Invoke("arrangeIcons", "arrangeIcons()", typeof(void));
 		}
 		[Q_SLOT("void closeActiveWindow()")]
-		[SmokeMethod("closeActiveWindow", "()", "")]
 		public void CloseActiveWindow() {
-			((QWorkspace) interceptor).CloseActiveWindow();
+			interceptor.Invoke("closeActiveWindow", "closeActiveWindow()", typeof(void));
 		}
 		[Q_SLOT("void closeAllWindows()")]
-		[SmokeMethod("closeAllWindows", "()", "")]
 		public void CloseAllWindows() {
-			((QWorkspace) interceptor).CloseAllWindows();
+			interceptor.Invoke("closeAllWindows", "closeAllWindows()", typeof(void));
 		}
 		[Q_SLOT("void activateNextWindow()")]
-		[SmokeMethod("activateNextWindow", "()", "")]
 		public void ActivateNextWindow() {
-			((QWorkspace) interceptor).ActivateNextWindow();
+			interceptor.Invoke("activateNextWindow", "activateNextWindow()", typeof(void));
 		}
 		[Q_SLOT("void activatePreviousWindow()")]
-		[SmokeMethod("activatePreviousWindow", "()", "")]
 		public void ActivatePreviousWindow() {
-			((QWorkspace) interceptor).ActivatePreviousWindow();
+			interceptor.Invoke("activatePreviousWindow", "activatePreviousWindow()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QWorkspace) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent e) {
-			((QWorkspace) interceptor).PaintEvent(e);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), e);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QWorkspace) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected override void ChildEvent(QChildEvent arg1) {
-			((QWorkspace) interceptor).ChildEvent(arg1);
+			interceptor.Invoke("childEvent#", "childEvent(QChildEvent*)", typeof(void), typeof(QChildEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QWorkspace) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QWorkspace) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent e) {
-			((QWorkspace) interceptor).ShowEvent(e);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), e);
 		}
-		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected override void HideEvent(QHideEvent e) {
-			((QWorkspace) interceptor).HideEvent(e);
+			interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), e);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected override void WheelEvent(QWheelEvent e) {
-			((QWorkspace) interceptor).WheelEvent(e);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), e);
 		}
 		~QWorkspace() {
-			DisposeQWorkspace();
+			interceptor.Invoke("~QWorkspace", "~QWorkspace()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQWorkspace();
-		}
-		[SmokeMethod("~QWorkspace", "()", "")]
-		private void DisposeQWorkspace() {
-			((QWorkspace) interceptor).DisposeQWorkspace();
+			interceptor.Invoke("~QWorkspace", "~QWorkspace()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQWorkspaceSignals Emit {
 			get { return (IQWorkspaceSignals) Q_EMIT; }

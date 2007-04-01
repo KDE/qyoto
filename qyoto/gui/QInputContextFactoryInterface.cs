@@ -8,24 +8,19 @@ namespace Qyoto {
 	public abstract class QInputContextFactoryInterface : QFactoryInterface {
  		protected QInputContextFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactoryInterface), this);
-			interceptor = (QInputContextFactoryInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QInputContextFactoryInterface), "QInputContextFactoryInterface", this);
 		}
-		[SmokeMethod("create", "(const QString&)", "$")]
+		[SmokeMethod("create(const QString&)")]
 		public abstract QInputContext Create(string key);
-		[SmokeMethod("languages", "(const QString&)", "$")]
+		[SmokeMethod("languages(const QString&)")]
 		public abstract List<string> Languages(string key);
-		[SmokeMethod("displayName", "(const QString&)", "$")]
+		[SmokeMethod("displayName(const QString&)")]
 		public abstract string DisplayName(string key);
-		[SmokeMethod("description", "(const QString&)", "$")]
+		[SmokeMethod("description(const QString&)")]
 		public abstract string Description(string key);
 		public QInputContextFactoryInterface() : this((Type) null) {
 			CreateProxy();
-			NewQInputContextFactoryInterface();
-		}
-		[SmokeMethod("QInputContextFactoryInterface", "()", "")]
-		private void NewQInputContextFactoryInterface() {
-			((QInputContextFactoryInterface) interceptor).NewQInputContextFactoryInterface();
+			interceptor.Invoke("QInputContextFactoryInterface", "QInputContextFactoryInterface()", typeof(void));
 		}
 	}
 }

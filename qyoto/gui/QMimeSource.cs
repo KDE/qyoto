@@ -10,29 +10,24 @@ namespace Qyoto {
 	}
 
 	[SmokeClass("QMimeSource")]
-	public abstract class QMimeSource : MarshalByRefObject, IQMimeSource {
-		protected QMimeSource interceptor = null;
+	public abstract class QMimeSource : Object, IQMimeSource {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QMimeSource(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeSource), this);
-			interceptor = (QMimeSource) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMimeSource), "QMimeSource", this);
 		}
-		[SmokeMethod("format", "(int) const", "$")]
+		[SmokeMethod("format(int) const")]
 		public abstract string Format(int n);
-		[SmokeMethod("provides", "(const char*) const", "$")]
+		[SmokeMethod("provides(const char*) const")]
 		public virtual bool Provides(string arg1) {
-			return ((QMimeSource) interceptor).Provides(arg1);
+			return (bool) interceptor.Invoke("provides$", "provides(const char*) const", typeof(bool), typeof(string), arg1);
 		}
-		[SmokeMethod("encodedData", "(const char*) const", "$")]
+		[SmokeMethod("encodedData(const char*) const")]
 		public abstract QByteArray EncodedData(string arg1);
 		public QMimeSource() : this((Type) null) {
 			CreateProxy();
-			NewQMimeSource();
-		}
-		[SmokeMethod("QMimeSource", "()", "")]
-		private void NewQMimeSource() {
-			((QMimeSource) interceptor).NewQMimeSource();
+			interceptor.Invoke("QMimeSource", "QMimeSource()", typeof(void));
 		}
 	}
 }

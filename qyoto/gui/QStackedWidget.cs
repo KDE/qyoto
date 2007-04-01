@@ -7,98 +7,67 @@ namespace Qyoto {
 	[SmokeClass("QStackedWidget")]
 	public class QStackedWidget : QFrame, IDisposable {
  		protected QStackedWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStackedWidget")]
-		interface IQStackedWidgetProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStackedWidget), this);
-			interceptor = (QStackedWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStackedWidget), "QStackedWidget", this);
 		}
-		private static IQStackedWidgetProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QStackedWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStackedWidgetProxy), null);
-			staticInterceptor = (IQStackedWidgetProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QStackedWidget), "QStackedWidget", null);
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			[SmokeMethod("currentIndex", "()", "")]
-			get { return ((QStackedWidget) interceptor).CurrentIndex; }
-			[SmokeMethod("setCurrentIndex", "(int)", "$")]
-			set { ((QStackedWidget) interceptor).CurrentIndex = value; }
+			get { return (int) interceptor.Invoke("currentIndex", "currentIndex()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			[SmokeMethod("count", "()", "")]
-			get { return ((QStackedWidget) interceptor).Count; }
+			get { return (int) interceptor.Invoke("count", "count()", typeof(int)); }
 		}
 		public QStackedWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQStackedWidget(parent);
-		}
-		[SmokeMethod("QStackedWidget", "(QWidget*)", "#")]
-		private void NewQStackedWidget(QWidget parent) {
-			((QStackedWidget) interceptor).NewQStackedWidget(parent);
+			interceptor.Invoke("QStackedWidget#", "QStackedWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QStackedWidget() : this((Type) null) {
 			CreateProxy();
-			NewQStackedWidget();
+			interceptor.Invoke("QStackedWidget", "QStackedWidget()", typeof(void));
 		}
-		[SmokeMethod("QStackedWidget", "()", "")]
-		private void NewQStackedWidget() {
-			((QStackedWidget) interceptor).NewQStackedWidget();
-		}
-		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public int AddWidget(QWidget w) {
-			return ((QStackedWidget) interceptor).AddWidget(w);
+			return (int) interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(int), typeof(QWidget), w);
 		}
-		[SmokeMethod("insertWidget", "(int, QWidget*)", "$#")]
 		public int InsertWidget(int index, QWidget w) {
-			return ((QStackedWidget) interceptor).InsertWidget(index,w);
+			return (int) interceptor.Invoke("insertWidget$#", "insertWidget(int, QWidget*)", typeof(int), typeof(int), index, typeof(QWidget), w);
 		}
-		[SmokeMethod("removeWidget", "(QWidget*)", "#")]
 		public void RemoveWidget(QWidget w) {
-			((QStackedWidget) interceptor).RemoveWidget(w);
+			interceptor.Invoke("removeWidget#", "removeWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("currentWidget", "() const", "")]
 		public QWidget CurrentWidget() {
-			return ((QStackedWidget) interceptor).CurrentWidget();
+			return (QWidget) interceptor.Invoke("currentWidget", "currentWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("indexOf", "(QWidget*) const", "#")]
 		public int IndexOf(QWidget arg1) {
-			return ((QStackedWidget) interceptor).IndexOf(arg1);
+			return (int) interceptor.Invoke("indexOf#", "indexOf(QWidget*) const", typeof(int), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("widget", "(int) const", "$")]
 		public QWidget Widget(int arg1) {
-			return ((QStackedWidget) interceptor).Widget(arg1);
+			return (QWidget) interceptor.Invoke("widget$", "widget(int) const", typeof(QWidget), typeof(int), arg1);
 		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
-		[SmokeMethod("setCurrentWidget", "(QWidget*)", "#")]
 		public void SetCurrentWidget(QWidget w) {
-			((QStackedWidget) interceptor).SetCurrentWidget(w);
+			interceptor.Invoke("setCurrentWidget#", "setCurrentWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QStackedWidget) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
 		~QStackedWidget() {
-			DisposeQStackedWidget();
+			interceptor.Invoke("~QStackedWidget", "~QStackedWidget()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQStackedWidget();
-		}
-		[SmokeMethod("~QStackedWidget", "()", "")]
-		private void DisposeQStackedWidget() {
-			((QStackedWidget) interceptor).DisposeQStackedWidget();
+			interceptor.Invoke("~QStackedWidget", "~QStackedWidget()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQStackedWidgetSignals Emit {
 			get { return (IQStackedWidgetSignals) Q_EMIT; }

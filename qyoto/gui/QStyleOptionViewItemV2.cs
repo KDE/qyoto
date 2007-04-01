@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionViewItemV2 : QStyleOptionViewItem, IDisposable {
  		protected QStyleOptionViewItemV2(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionViewItemV2), this);
-			interceptor = (QStyleOptionViewItemV2) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionViewItemV2), "QStyleOptionViewItemV2", this);
 		}
 		public enum StyleOptionVersion {
 			Version = 2,
@@ -20,45 +19,25 @@ namespace Qyoto {
 		}
 		public QStyleOptionViewItemV2() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionViewItemV2();
-		}
-		[SmokeMethod("QStyleOptionViewItemV2", "()", "")]
-		private void NewQStyleOptionViewItemV2() {
-			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2();
+			interceptor.Invoke("QStyleOptionViewItemV2", "QStyleOptionViewItemV2()", typeof(void));
 		}
 		public QStyleOptionViewItemV2(QStyleOptionViewItemV2 other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionViewItemV2(other);
-		}
-		[SmokeMethod("QStyleOptionViewItemV2", "(const QStyleOptionViewItemV2&)", "#")]
-		private void NewQStyleOptionViewItemV2(QStyleOptionViewItemV2 other) {
-			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2(other);
+			interceptor.Invoke("QStyleOptionViewItemV2#", "QStyleOptionViewItemV2(const QStyleOptionViewItemV2&)", typeof(void), typeof(QStyleOptionViewItemV2), other);
 		}
 		public QStyleOptionViewItemV2(QStyleOptionViewItem other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionViewItemV2(other);
-		}
-		[SmokeMethod("QStyleOptionViewItemV2", "(const QStyleOptionViewItem&)", "#")]
-		private void NewQStyleOptionViewItemV2(QStyleOptionViewItem other) {
-			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2(other);
+			interceptor.Invoke("QStyleOptionViewItemV2#", "QStyleOptionViewItemV2(const QStyleOptionViewItem&)", typeof(void), typeof(QStyleOptionViewItem), other);
 		}
 		public QStyleOptionViewItemV2(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionViewItemV2(version);
-		}
-		[SmokeMethod("QStyleOptionViewItemV2", "(int)", "$")]
-		private void NewQStyleOptionViewItemV2(int version) {
-			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2(version);
+			interceptor.Invoke("QStyleOptionViewItemV2$", "QStyleOptionViewItemV2(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionViewItemV2() {
-			DisposeQStyleOptionViewItemV2();
+			interceptor.Invoke("~QStyleOptionViewItemV2", "~QStyleOptionViewItemV2()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionViewItemV2();
-		}
-		[SmokeMethod("~QStyleOptionViewItemV2", "()", "")]
-		private void DisposeQStyleOptionViewItemV2() {
-			((QStyleOptionViewItemV2) interceptor).DisposeQStyleOptionViewItemV2();
+			interceptor.Invoke("~QStyleOptionViewItemV2", "~QStyleOptionViewItemV2()", typeof(void));
 		}
 	}
 }

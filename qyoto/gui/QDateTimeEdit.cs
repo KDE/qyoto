@@ -8,21 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QDateTimeEdit")]
 	public class QDateTimeEdit : QAbstractSpinBox, IDisposable {
  		protected QDateTimeEdit(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDateTimeEdit")]
-		interface IQDateTimeEditProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateTimeEdit), this);
-			interceptor = (QDateTimeEdit) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDateTimeEdit), "QDateTimeEdit", this);
 		}
-		private static IQDateTimeEditProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDateTimeEdit() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDateTimeEditProxy), null);
-			staticInterceptor = (IQDateTimeEditProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDateTimeEdit), "QDateTimeEdit", null);
 		}
 		public enum Section {
 			NoSection = 0x0000,
@@ -39,250 +30,185 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QDateTime", "dateTime")]
 		public QDateTime DateTime {
-			[SmokeMethod("dateTime", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).DateTime; }
-			[SmokeMethod("setDateTime", "(QDateTime)", "#")]
-			set { ((QDateTimeEdit) interceptor).DateTime = value; }
+			get { return (QDateTime) interceptor.Invoke("dateTime", "dateTime()", typeof(QDateTime)); }
+			set { interceptor.Invoke("setDateTime#", "setDateTime(QDateTime)", typeof(void), typeof(QDateTime), value); }
 		}
 		[Q_PROPERTY("QDate", "date")]
 		public QDate Date {
-			[SmokeMethod("date", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).Date; }
-			[SmokeMethod("setDate", "(QDate)", "#")]
-			set { ((QDateTimeEdit) interceptor).Date = value; }
+			get { return (QDate) interceptor.Invoke("date", "date()", typeof(QDate)); }
+			set { interceptor.Invoke("setDate#", "setDate(QDate)", typeof(void), typeof(QDate), value); }
 		}
 		[Q_PROPERTY("QTime", "time")]
 		public QTime Time {
-			[SmokeMethod("time", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).Time; }
-			[SmokeMethod("setTime", "(QTime)", "#")]
-			set { ((QDateTimeEdit) interceptor).Time = value; }
+			get { return (QTime) interceptor.Invoke("time", "time()", typeof(QTime)); }
+			set { interceptor.Invoke("setTime#", "setTime(QTime)", typeof(void), typeof(QTime), value); }
 		}
 		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
-			[SmokeMethod("maximumDate", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).MaximumDate; }
-			[SmokeMethod("setMaximumDate", "(QDate)", "#")]
-			set { ((QDateTimeEdit) interceptor).MaximumDate = value; }
+			get { return (QDate) interceptor.Invoke("maximumDate", "maximumDate()", typeof(QDate)); }
+			set { interceptor.Invoke("setMaximumDate#", "setMaximumDate(QDate)", typeof(void), typeof(QDate), value); }
 		}
 		[Q_PROPERTY("QDate", "minimumDate")]
 		public QDate MinimumDate {
-			[SmokeMethod("minimumDate", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).MinimumDate; }
-			[SmokeMethod("setMinimumDate", "(QDate)", "#")]
-			set { ((QDateTimeEdit) interceptor).MinimumDate = value; }
+			get { return (QDate) interceptor.Invoke("minimumDate", "minimumDate()", typeof(QDate)); }
+			set { interceptor.Invoke("setMinimumDate#", "setMinimumDate(QDate)", typeof(void), typeof(QDate), value); }
 		}
 		[Q_PROPERTY("QTime", "maximumTime")]
 		public QTime MaximumTime {
-			[SmokeMethod("maximumTime", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).MaximumTime; }
-			[SmokeMethod("setMaximumTime", "(QTime)", "#")]
-			set { ((QDateTimeEdit) interceptor).MaximumTime = value; }
+			get { return (QTime) interceptor.Invoke("maximumTime", "maximumTime()", typeof(QTime)); }
+			set { interceptor.Invoke("setMaximumTime#", "setMaximumTime(QTime)", typeof(void), typeof(QTime), value); }
 		}
 		[Q_PROPERTY("QTime", "minimumTime")]
 		public QTime MinimumTime {
-			[SmokeMethod("minimumTime", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).MinimumTime; }
-			[SmokeMethod("setMinimumTime", "(QTime)", "#")]
-			set { ((QDateTimeEdit) interceptor).MinimumTime = value; }
+			get { return (QTime) interceptor.Invoke("minimumTime", "minimumTime()", typeof(QTime)); }
+			set { interceptor.Invoke("setMinimumTime#", "setMinimumTime(QTime)", typeof(void), typeof(QTime), value); }
 		}
 		[Q_PROPERTY("QDateTimeEdit::Section", "currentSection")]
 		public QDateTimeEdit.Section CurrentSection {
-			[SmokeMethod("currentSection", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).CurrentSection; }
-			[SmokeMethod("setCurrentSection", "(QDateTimeEdit::Section)", "$")]
-			set { ((QDateTimeEdit) interceptor).CurrentSection = value; }
+			get { return (QDateTimeEdit.Section) interceptor.Invoke("currentSection", "currentSection()", typeof(QDateTimeEdit.Section)); }
+			set { interceptor.Invoke("setCurrentSection$", "setCurrentSection(QDateTimeEdit::Section)", typeof(void), typeof(QDateTimeEdit.Section), value); }
 		}
 		[Q_PROPERTY("Sections", "displayedSections")]
 		public int DisplayedSections {
-			[SmokeMethod("displayedSections", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).DisplayedSections; }
+			get { return (int) interceptor.Invoke("displayedSections", "displayedSections()", typeof(int)); }
 		}
 		[Q_PROPERTY("QString", "displayFormat")]
 		public string DisplayFormat {
-			[SmokeMethod("displayFormat", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).DisplayFormat; }
-			[SmokeMethod("setDisplayFormat", "(QString)", "$")]
-			set { ((QDateTimeEdit) interceptor).DisplayFormat = value; }
+			get { return (string) interceptor.Invoke("displayFormat", "displayFormat()", typeof(string)); }
+			set { interceptor.Invoke("setDisplayFormat$", "setDisplayFormat(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("bool", "calendarPopup")]
 		public bool CalendarPopup {
-			[SmokeMethod("calendarPopup", "()", "")]
-			get { return ((QDateTimeEdit) interceptor).CalendarPopup; }
-			[SmokeMethod("setCalendarPopup", "(bool)", "$")]
-			set { ((QDateTimeEdit) interceptor).CalendarPopup = value; }
+			get { return (bool) interceptor.Invoke("calendarPopup", "calendarPopup()", typeof(bool)); }
+			set { interceptor.Invoke("setCalendarPopup$", "setCalendarPopup(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(parent);
-		}
-		[SmokeMethod("QDateTimeEdit", "(QWidget*)", "#")]
-		private void NewQDateTimeEdit(QWidget parent) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(parent);
+			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QDateTimeEdit() : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit();
-		}
-		[SmokeMethod("QDateTimeEdit", "()", "")]
-		private void NewQDateTimeEdit() {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit();
+			interceptor.Invoke("QDateTimeEdit", "QDateTimeEdit()", typeof(void));
 		}
 		public QDateTimeEdit(QDateTime dt, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(dt,parent);
-		}
-		[SmokeMethod("QDateTimeEdit", "(const QDateTime&, QWidget*)", "##")]
-		private void NewQDateTimeEdit(QDateTime dt, QWidget parent) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(dt,parent);
+			interceptor.Invoke("QDateTimeEdit##", "QDateTimeEdit(const QDateTime&, QWidget*)", typeof(void), typeof(QDateTime), dt, typeof(QWidget), parent);
 		}
 		public QDateTimeEdit(QDateTime dt) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(dt);
-		}
-		[SmokeMethod("QDateTimeEdit", "(const QDateTime&)", "#")]
-		private void NewQDateTimeEdit(QDateTime dt) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(dt);
+			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(const QDateTime&)", typeof(void), typeof(QDateTime), dt);
 		}
 		public QDateTimeEdit(QDate d, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(d,parent);
-		}
-		[SmokeMethod("QDateTimeEdit", "(const QDate&, QWidget*)", "##")]
-		private void NewQDateTimeEdit(QDate d, QWidget parent) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(d,parent);
+			interceptor.Invoke("QDateTimeEdit##", "QDateTimeEdit(const QDate&, QWidget*)", typeof(void), typeof(QDate), d, typeof(QWidget), parent);
 		}
 		public QDateTimeEdit(QDate d) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(d);
-		}
-		[SmokeMethod("QDateTimeEdit", "(const QDate&)", "#")]
-		private void NewQDateTimeEdit(QDate d) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(d);
+			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(const QDate&)", typeof(void), typeof(QDate), d);
 		}
 		public QDateTimeEdit(QTime t, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(t,parent);
-		}
-		[SmokeMethod("QDateTimeEdit", "(const QTime&, QWidget*)", "##")]
-		private void NewQDateTimeEdit(QTime t, QWidget parent) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(t,parent);
+			interceptor.Invoke("QDateTimeEdit##", "QDateTimeEdit(const QTime&, QWidget*)", typeof(void), typeof(QTime), t, typeof(QWidget), parent);
 		}
 		public QDateTimeEdit(QTime t) : this((Type) null) {
 			CreateProxy();
-			NewQDateTimeEdit(t);
+			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(const QTime&)", typeof(void), typeof(QTime), t);
 		}
-		[SmokeMethod("QDateTimeEdit", "(const QTime&)", "#")]
-		private void NewQDateTimeEdit(QTime t) {
-			((QDateTimeEdit) interceptor).NewQDateTimeEdit(t);
-		}
-		[SmokeMethod("clearMinimumDate", "()", "")]
 		public void ClearMinimumDate() {
-			((QDateTimeEdit) interceptor).ClearMinimumDate();
+			interceptor.Invoke("clearMinimumDate", "clearMinimumDate()", typeof(void));
 		}
-		[SmokeMethod("clearMaximumDate", "()", "")]
 		public void ClearMaximumDate() {
-			((QDateTimeEdit) interceptor).ClearMaximumDate();
+			interceptor.Invoke("clearMaximumDate", "clearMaximumDate()", typeof(void));
 		}
-		[SmokeMethod("setDateRange", "(const QDate&, const QDate&)", "##")]
 		public void SetDateRange(QDate min, QDate max) {
-			((QDateTimeEdit) interceptor).SetDateRange(min,max);
+			interceptor.Invoke("setDateRange##", "setDateRange(const QDate&, const QDate&)", typeof(void), typeof(QDate), min, typeof(QDate), max);
 		}
-		[SmokeMethod("clearMinimumTime", "()", "")]
 		public void ClearMinimumTime() {
-			((QDateTimeEdit) interceptor).ClearMinimumTime();
+			interceptor.Invoke("clearMinimumTime", "clearMinimumTime()", typeof(void));
 		}
-		[SmokeMethod("clearMaximumTime", "()", "")]
 		public void ClearMaximumTime() {
-			((QDateTimeEdit) interceptor).ClearMaximumTime();
+			interceptor.Invoke("clearMaximumTime", "clearMaximumTime()", typeof(void));
 		}
-		[SmokeMethod("setTimeRange", "(const QTime&, const QTime&)", "##")]
 		public void SetTimeRange(QTime min, QTime max) {
-			((QDateTimeEdit) interceptor).SetTimeRange(min,max);
+			interceptor.Invoke("setTimeRange##", "setTimeRange(const QTime&, const QTime&)", typeof(void), typeof(QTime), min, typeof(QTime), max);
 		}
-		[SmokeMethod("setSelectedSection", "(QDateTimeEdit::Section)", "$")]
 		public void SetSelectedSection(QDateTimeEdit.Section section) {
-			((QDateTimeEdit) interceptor).SetSelectedSection(section);
+			interceptor.Invoke("setSelectedSection$", "setSelectedSection(QDateTimeEdit::Section)", typeof(void), typeof(QDateTimeEdit.Section), section);
 		}
-		[SmokeMethod("sectionText", "(QDateTimeEdit::Section) const", "$")]
 		public string SectionText(QDateTimeEdit.Section section) {
-			return ((QDateTimeEdit) interceptor).SectionText(section);
+			return (string) interceptor.Invoke("sectionText$", "sectionText(QDateTimeEdit::Section) const", typeof(string), typeof(QDateTimeEdit.Section), section);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QDateTimeEdit) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("clear", "()", "")]
+		[SmokeMethod("clear()")]
 		public override void Clear() {
-			((QDateTimeEdit) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("stepBy", "(int)", "$")]
+		[SmokeMethod("stepBy(int)")]
 		public override void StepBy(int steps) {
-			((QDateTimeEdit) interceptor).StepBy(steps);
+			interceptor.Invoke("stepBy$", "stepBy(int)", typeof(void), typeof(int), steps);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		public override bool Event(QEvent arg1) {
-			return ((QDateTimeEdit) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QDateTimeEdit) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected override void WheelEvent(QWheelEvent arg1) {
-			((QDateTimeEdit) interceptor).WheelEvent(arg1);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), arg1);
 		}
-		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			((QDateTimeEdit) interceptor).FocusInEvent(arg1);
+			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		protected override bool FocusNextPrevChild(bool next) {
-			return ((QDateTimeEdit) interceptor).FocusNextPrevChild(next);
+			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
-		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		protected new virtual int Validate(StringBuilder input, out int pos) {
-			return ((QDateTimeEdit) interceptor).Validate(input,out pos);
+		[SmokeMethod("validate(QString&, int&) const")]
+		protected new virtual int Validate(StringBuilder input, int pos) {
+			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), input, typeof(int), pos);
 		}
-		[SmokeMethod("fixup", "(QString&) const", "$")]
+		[SmokeMethod("fixup(QString&) const")]
 		protected new virtual void Fixup(StringBuilder input) {
-			((QDateTimeEdit) interceptor).Fixup(input);
+			interceptor.Invoke("fixup$", "fixup(QString&) const", typeof(void), typeof(StringBuilder), input);
 		}
-		[SmokeMethod("dateTimeFromText", "(const QString&) const", "$")]
+		[SmokeMethod("dateTimeFromText(const QString&) const")]
 		protected virtual QDateTime DateTimeFromText(string text) {
-			return ((QDateTimeEdit) interceptor).DateTimeFromText(text);
+			return (QDateTime) interceptor.Invoke("dateTimeFromText$", "dateTimeFromText(const QString&) const", typeof(QDateTime), typeof(string), text);
 		}
-		[SmokeMethod("textFromDateTime", "(const QDateTime&) const", "#")]
+		[SmokeMethod("textFromDateTime(const QDateTime&) const")]
 		protected virtual string TextFromDateTime(QDateTime dt) {
-			return ((QDateTimeEdit) interceptor).TextFromDateTime(dt);
+			return (string) interceptor.Invoke("textFromDateTime#", "textFromDateTime(const QDateTime&) const", typeof(string), typeof(QDateTime), dt);
 		}
-		[SmokeMethod("stepEnabled", "() const", "")]
+		[SmokeMethod("stepEnabled() const")]
 		protected override int StepEnabled() {
-			return ((QDateTimeEdit) interceptor).StepEnabled();
+			return (int) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(int));
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QDateTimeEdit) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QDateTimeEdit) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
 		~QDateTimeEdit() {
-			DisposeQDateTimeEdit();
+			interceptor.Invoke("~QDateTimeEdit", "~QDateTimeEdit()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDateTimeEdit();
-		}
-		[SmokeMethod("~QDateTimeEdit", "()", "")]
-		private void DisposeQDateTimeEdit() {
-			((QDateTimeEdit) interceptor).DisposeQDateTimeEdit();
+			interceptor.Invoke("~QDateTimeEdit", "~QDateTimeEdit()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDateTimeEditSignals Emit {
 			get { return (IQDateTimeEditSignals) Q_EMIT; }

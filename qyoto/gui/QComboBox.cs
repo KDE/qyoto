@@ -8,21 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QComboBox")]
 	public class QComboBox : QWidget, IDisposable {
  		protected QComboBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QComboBox")]
-		interface IQComboBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QComboBox), this);
-			interceptor = (QComboBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QComboBox), "QComboBox", this);
 		}
-		private static IQComboBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QComboBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQComboBoxProxy), null);
-			staticInterceptor = (IQComboBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QComboBox), "QComboBox", null);
 		}
 		public enum InsertPolicy {
 			NoInsert = 0,
@@ -40,391 +31,308 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "editable")]
 		public bool Editable {
-			[SmokeMethod("isEditable", "()", "")]
-			get { return ((QComboBox) interceptor).Editable; }
-			[SmokeMethod("setEditable", "(bool)", "$")]
-			set { ((QComboBox) interceptor).Editable = value; }
+			get { return (bool) interceptor.Invoke("isEditable", "isEditable()", typeof(bool)); }
+			set { interceptor.Invoke("setEditable$", "setEditable(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			[SmokeMethod("count", "()", "")]
-			get { return ((QComboBox) interceptor).Count; }
+			get { return (int) interceptor.Invoke("count", "count()", typeof(int)); }
 		}
 		[Q_PROPERTY("QString", "currentText")]
 		public string CurrentText {
-			[SmokeMethod("currentText", "()", "")]
-			get { return ((QComboBox) interceptor).CurrentText; }
+			get { return (string) interceptor.Invoke("currentText", "currentText()", typeof(string)); }
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			[SmokeMethod("currentIndex", "()", "")]
-			get { return ((QComboBox) interceptor).CurrentIndex; }
-			[SmokeMethod("setCurrentIndex", "(int)", "$")]
-			set { ((QComboBox) interceptor).CurrentIndex = value; }
+			get { return (int) interceptor.Invoke("currentIndex", "currentIndex()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maxVisibleItems")]
 		public int MaxVisibleItems {
-			[SmokeMethod("maxVisibleItems", "()", "")]
-			get { return ((QComboBox) interceptor).MaxVisibleItems; }
-			[SmokeMethod("setMaxVisibleItems", "(int)", "$")]
-			set { ((QComboBox) interceptor).MaxVisibleItems = value; }
+			get { return (int) interceptor.Invoke("maxVisibleItems", "maxVisibleItems()", typeof(int)); }
+			set { interceptor.Invoke("setMaxVisibleItems$", "setMaxVisibleItems(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "maxCount")]
 		public int MaxCount {
-			[SmokeMethod("maxCount", "()", "")]
-			get { return ((QComboBox) interceptor).MaxCount; }
-			[SmokeMethod("setMaxCount", "(int)", "$")]
-			set { ((QComboBox) interceptor).MaxCount = value; }
+			get { return (int) interceptor.Invoke("maxCount", "maxCount()", typeof(int)); }
+			set { interceptor.Invoke("setMaxCount$", "setMaxCount(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QComboBox::InsertPolicy", "insertPolicy")]
 		public QComboBox.InsertPolicy insertPolicy {
-			[SmokeMethod("insertPolicy", "()", "")]
-			get { return ((QComboBox) interceptor).insertPolicy; }
-			[SmokeMethod("setInsertPolicy", "(QComboBox::InsertPolicy)", "$")]
-			set { ((QComboBox) interceptor).insertPolicy = value; }
+			get { return (QComboBox.InsertPolicy) interceptor.Invoke("insertPolicy", "insertPolicy()", typeof(QComboBox.InsertPolicy)); }
+			set { interceptor.Invoke("setInsertPolicy$", "setInsertPolicy(QComboBox::InsertPolicy)", typeof(void), typeof(QComboBox.InsertPolicy), value); }
 		}
 		[Q_PROPERTY("QComboBox::SizeAdjustPolicy", "sizeAdjustPolicy")]
 		public QComboBox.SizeAdjustPolicy sizeAdjustPolicy {
-			[SmokeMethod("sizeAdjustPolicy", "()", "")]
-			get { return ((QComboBox) interceptor).sizeAdjustPolicy; }
-			[SmokeMethod("setSizeAdjustPolicy", "(QComboBox::SizeAdjustPolicy)", "$")]
-			set { ((QComboBox) interceptor).sizeAdjustPolicy = value; }
+			get { return (QComboBox.SizeAdjustPolicy) interceptor.Invoke("sizeAdjustPolicy", "sizeAdjustPolicy()", typeof(QComboBox.SizeAdjustPolicy)); }
+			set { interceptor.Invoke("setSizeAdjustPolicy$", "setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy)", typeof(void), typeof(QComboBox.SizeAdjustPolicy), value); }
 		}
 		[Q_PROPERTY("int", "minimumContentsLength")]
 		public int MinimumContentsLength {
-			[SmokeMethod("minimumContentsLength", "()", "")]
-			get { return ((QComboBox) interceptor).MinimumContentsLength; }
-			[SmokeMethod("setMinimumContentsLength", "(int)", "$")]
-			set { ((QComboBox) interceptor).MinimumContentsLength = value; }
+			get { return (int) interceptor.Invoke("minimumContentsLength", "minimumContentsLength()", typeof(int)); }
+			set { interceptor.Invoke("setMinimumContentsLength$", "setMinimumContentsLength(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			[SmokeMethod("iconSize", "()", "")]
-			get { return ((QComboBox) interceptor).IconSize; }
-			[SmokeMethod("setIconSize", "(QSize)", "#")]
-			set { ((QComboBox) interceptor).IconSize = value; }
+			get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("bool", "autoCompletion")]
 		public bool AutoCompletion {
-			[SmokeMethod("autoCompletion", "()", "")]
-			get { return ((QComboBox) interceptor).AutoCompletion; }
-			[SmokeMethod("setAutoCompletion", "(bool)", "$")]
-			set { ((QComboBox) interceptor).AutoCompletion = value; }
+			get { return (bool) interceptor.Invoke("autoCompletion", "autoCompletion()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoCompletion$", "setAutoCompletion(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "autoCompletionCaseSensitivity")]
 		public Qt.CaseSensitivity AutoCompletionCaseSensitivity {
-			[SmokeMethod("autoCompletionCaseSensitivity", "()", "")]
-			get { return ((QComboBox) interceptor).AutoCompletionCaseSensitivity; }
-			[SmokeMethod("setAutoCompletionCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
-			set { ((QComboBox) interceptor).AutoCompletionCaseSensitivity = value; }
+			get { return (Qt.CaseSensitivity) interceptor.Invoke("autoCompletionCaseSensitivity", "autoCompletionCaseSensitivity()", typeof(Qt.CaseSensitivity)); }
+			set { interceptor.Invoke("setAutoCompletionCaseSensitivity$", "setAutoCompletionCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), value); }
 		}
 		[Q_PROPERTY("bool", "duplicatesEnabled")]
 		public bool DuplicatesEnabled {
-			[SmokeMethod("duplicatesEnabled", "()", "")]
-			get { return ((QComboBox) interceptor).DuplicatesEnabled; }
-			[SmokeMethod("setDuplicatesEnabled", "(bool)", "$")]
-			set { ((QComboBox) interceptor).DuplicatesEnabled = value; }
+			get { return (bool) interceptor.Invoke("duplicatesEnabled", "duplicatesEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setDuplicatesEnabled$", "setDuplicatesEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
-			[SmokeMethod("hasFrame", "()", "")]
-			get { return ((QComboBox) interceptor).Frame; }
-			[SmokeMethod("setFrame", "(bool)", "$")]
-			set { ((QComboBox) interceptor).Frame = value; }
+			get { return (bool) interceptor.Invoke("hasFrame", "hasFrame()", typeof(bool)); }
+			set { interceptor.Invoke("setFrame$", "setFrame(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "modelColumn")]
 		public int ModelColumn {
-			[SmokeMethod("modelColumn", "()", "")]
-			get { return ((QComboBox) interceptor).ModelColumn; }
-			[SmokeMethod("setModelColumn", "(int)", "$")]
-			set { ((QComboBox) interceptor).ModelColumn = value; }
+			get { return (int) interceptor.Invoke("modelColumn", "modelColumn()", typeof(int)); }
+			set { interceptor.Invoke("setModelColumn$", "setModelColumn(int)", typeof(void), typeof(int), value); }
 		}
 		public QComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQComboBox(parent);
-		}
-		[SmokeMethod("QComboBox", "(QWidget*)", "#")]
-		private void NewQComboBox(QWidget parent) {
-			((QComboBox) interceptor).NewQComboBox(parent);
+			interceptor.Invoke("QComboBox#", "QComboBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QComboBox() : this((Type) null) {
 			CreateProxy();
-			NewQComboBox();
+			interceptor.Invoke("QComboBox", "QComboBox()", typeof(void));
 		}
-		[SmokeMethod("QComboBox", "()", "")]
-		private void NewQComboBox() {
-			((QComboBox) interceptor).NewQComboBox();
-		}
-		[SmokeMethod("hasFrame", "() const", "")]
 		public bool HasFrame() {
-			return ((QComboBox) interceptor).HasFrame();
+			return (bool) interceptor.Invoke("hasFrame", "hasFrame() const", typeof(bool));
 		}
-		[SmokeMethod("findText", "(const QString&, Qt::MatchFlags) const", "$$")]
 		public int FindText(string text, int flags) {
-			return ((QComboBox) interceptor).FindText(text,flags);
+			return (int) interceptor.Invoke("findText$$", "findText(const QString&, Qt::MatchFlags) const", typeof(int), typeof(string), text, typeof(int), flags);
 		}
-		[SmokeMethod("findText", "(const QString&) const", "$")]
 		public int FindText(string text) {
-			return ((QComboBox) interceptor).FindText(text);
+			return (int) interceptor.Invoke("findText$", "findText(const QString&) const", typeof(int), typeof(string), text);
 		}
-		[SmokeMethod("findData", "(const QVariant&, int, Qt::MatchFlags) const", "#$$")]
 		public int FindData(QVariant data, int role, int flags) {
-			return ((QComboBox) interceptor).FindData(data,role,flags);
+			return (int) interceptor.Invoke("findData#$$", "findData(const QVariant&, int, Qt::MatchFlags) const", typeof(int), typeof(QVariant), data, typeof(int), role, typeof(int), flags);
 		}
-		[SmokeMethod("findData", "(const QVariant&, int) const", "#$")]
 		public int FindData(QVariant data, int role) {
-			return ((QComboBox) interceptor).FindData(data,role);
+			return (int) interceptor.Invoke("findData#$", "findData(const QVariant&, int) const", typeof(int), typeof(QVariant), data, typeof(int), role);
 		}
-		[SmokeMethod("findData", "(const QVariant&) const", "#")]
 		public int FindData(QVariant data) {
-			return ((QComboBox) interceptor).FindData(data);
+			return (int) interceptor.Invoke("findData#", "findData(const QVariant&) const", typeof(int), typeof(QVariant), data);
 		}
-		[SmokeMethod("isEditable", "() const", "")]
 		public bool IsEditable() {
-			return ((QComboBox) interceptor).IsEditable();
+			return (bool) interceptor.Invoke("isEditable", "isEditable() const", typeof(bool));
 		}
-		[SmokeMethod("setLineEdit", "(QLineEdit*)", "#")]
 		public void SetLineEdit(QLineEdit edit) {
-			((QComboBox) interceptor).SetLineEdit(edit);
+			interceptor.Invoke("setLineEdit#", "setLineEdit(QLineEdit*)", typeof(void), typeof(QLineEdit), edit);
 		}
-		[SmokeMethod("lineEdit", "() const", "")]
 		public QLineEdit LineEdit() {
-			return ((QComboBox) interceptor).LineEdit();
+			return (QLineEdit) interceptor.Invoke("lineEdit", "lineEdit() const", typeof(QLineEdit));
 		}
-		[SmokeMethod("setValidator", "(const QValidator*)", "#")]
 		public void SetValidator(QValidator v) {
-			((QComboBox) interceptor).SetValidator(v);
+			interceptor.Invoke("setValidator#", "setValidator(const QValidator*)", typeof(void), typeof(QValidator), v);
 		}
-		[SmokeMethod("validator", "() const", "")]
 		public QValidator Validator() {
-			return ((QComboBox) interceptor).Validator();
+			return (QValidator) interceptor.Invoke("validator", "validator() const", typeof(QValidator));
 		}
-		[SmokeMethod("setCompleter", "(QCompleter*)", "#")]
 		public void SetCompleter(QCompleter c) {
-			((QComboBox) interceptor).SetCompleter(c);
+			interceptor.Invoke("setCompleter#", "setCompleter(QCompleter*)", typeof(void), typeof(QCompleter), c);
 		}
-		[SmokeMethod("completer", "() const", "")]
 		public QCompleter Completer() {
-			return ((QComboBox) interceptor).Completer();
+			return (QCompleter) interceptor.Invoke("completer", "completer() const", typeof(QCompleter));
 		}
-		[SmokeMethod("itemDelegate", "() const", "")]
 		public QAbstractItemDelegate ItemDelegate() {
-			return ((QComboBox) interceptor).ItemDelegate();
+			return (QAbstractItemDelegate) interceptor.Invoke("itemDelegate", "itemDelegate() const", typeof(QAbstractItemDelegate));
 		}
-		[SmokeMethod("setItemDelegate", "(QAbstractItemDelegate*)", "#")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
-			((QComboBox) interceptor).SetItemDelegate(arg1);
+			interceptor.Invoke("setItemDelegate#", "setItemDelegate(QAbstractItemDelegate*)", typeof(void), typeof(QAbstractItemDelegate), arg1);
 		}
-		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ((QComboBox) interceptor).Model();
+			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
-		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public void SetModel(QAbstractItemModel model) {
-			((QComboBox) interceptor).SetModel(model);
+			interceptor.Invoke("setModel#", "setModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);
 		}
-		[SmokeMethod("rootModelIndex", "() const", "")]
 		public QModelIndex RootModelIndex() {
-			return ((QComboBox) interceptor).RootModelIndex();
+			return (QModelIndex) interceptor.Invoke("rootModelIndex", "rootModelIndex() const", typeof(QModelIndex));
 		}
-		[SmokeMethod("setRootModelIndex", "(const QModelIndex&)", "#")]
 		public void SetRootModelIndex(QModelIndex index) {
-			((QComboBox) interceptor).SetRootModelIndex(index);
+			interceptor.Invoke("setRootModelIndex#", "setRootModelIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("itemText", "(int) const", "$")]
 		public string ItemText(int index) {
-			return ((QComboBox) interceptor).ItemText(index);
+			return (string) interceptor.Invoke("itemText$", "itemText(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("itemIcon", "(int) const", "$")]
 		public QIcon ItemIcon(int index) {
-			return ((QComboBox) interceptor).ItemIcon(index);
+			return (QIcon) interceptor.Invoke("itemIcon$", "itemIcon(int) const", typeof(QIcon), typeof(int), index);
 		}
-		[SmokeMethod("itemData", "(int, int) const", "$$")]
 		public QVariant ItemData(int index, int role) {
-			return ((QComboBox) interceptor).ItemData(index,role);
+			return (QVariant) interceptor.Invoke("itemData$$", "itemData(int, int) const", typeof(QVariant), typeof(int), index, typeof(int), role);
 		}
-		[SmokeMethod("itemData", "(int) const", "$")]
 		public QVariant ItemData(int index) {
-			return ((QComboBox) interceptor).ItemData(index);
+			return (QVariant) interceptor.Invoke("itemData$", "itemData(int) const", typeof(QVariant), typeof(int), index);
 		}
-		[SmokeMethod("addItem", "(const QString&, const QVariant&)", "$#")]
 		public void AddItem(string text, QVariant userData) {
-			((QComboBox) interceptor).AddItem(text,userData);
+			interceptor.Invoke("addItem$#", "addItem(const QString&, const QVariant&)", typeof(void), typeof(string), text, typeof(QVariant), userData);
 		}
-		[SmokeMethod("addItem", "(const QString&)", "$")]
 		public void AddItem(string text) {
-			((QComboBox) interceptor).AddItem(text);
+			interceptor.Invoke("addItem$", "addItem(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("addItem", "(const QIcon&, const QString&, const QVariant&)", "#$#")]
 		public void AddItem(QIcon icon, string text, QVariant userData) {
-			((QComboBox) interceptor).AddItem(icon,text,userData);
+			interceptor.Invoke("addItem#$#", "addItem(const QIcon&, const QString&, const QVariant&)", typeof(void), typeof(QIcon), icon, typeof(string), text, typeof(QVariant), userData);
 		}
-		[SmokeMethod("addItem", "(const QIcon&, const QString&)", "#$")]
 		public void AddItem(QIcon icon, string text) {
-			((QComboBox) interceptor).AddItem(icon,text);
+			interceptor.Invoke("addItem#$", "addItem(const QIcon&, const QString&)", typeof(void), typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("addItems", "(const QStringList&)", "?")]
 		public void AddItems(List<string> texts) {
-			((QComboBox) interceptor).AddItems(texts);
+			interceptor.Invoke("addItems?", "addItems(const QStringList&)", typeof(void), typeof(List<string>), texts);
 		}
-		[SmokeMethod("insertItem", "(int, const QString&, const QVariant&)", "$$#")]
 		public void InsertItem(int index, string text, QVariant userData) {
-			((QComboBox) interceptor).InsertItem(index,text,userData);
+			interceptor.Invoke("insertItem$$#", "insertItem(int, const QString&, const QVariant&)", typeof(void), typeof(int), index, typeof(string), text, typeof(QVariant), userData);
 		}
-		[SmokeMethod("insertItem", "(int, const QString&)", "$$")]
 		public void InsertItem(int index, string text) {
-			((QComboBox) interceptor).InsertItem(index,text);
+			interceptor.Invoke("insertItem$$", "insertItem(int, const QString&)", typeof(void), typeof(int), index, typeof(string), text);
 		}
-		[SmokeMethod("insertItem", "(int, const QIcon&, const QString&, const QVariant&)", "$#$#")]
 		public void InsertItem(int index, QIcon icon, string text, QVariant userData) {
-			((QComboBox) interceptor).InsertItem(index,icon,text,userData);
+			interceptor.Invoke("insertItem$#$#", "insertItem(int, const QIcon&, const QString&, const QVariant&)", typeof(void), typeof(int), index, typeof(QIcon), icon, typeof(string), text, typeof(QVariant), userData);
 		}
-		[SmokeMethod("insertItem", "(int, const QIcon&, const QString&)", "$#$")]
 		public void InsertItem(int index, QIcon icon, string text) {
-			((QComboBox) interceptor).InsertItem(index,icon,text);
+			interceptor.Invoke("insertItem$#$", "insertItem(int, const QIcon&, const QString&)", typeof(void), typeof(int), index, typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("insertItems", "(int, const QStringList&)", "$?")]
 		public void InsertItems(int index, List<string> texts) {
-			((QComboBox) interceptor).InsertItems(index,texts);
+			interceptor.Invoke("insertItems$?", "insertItems(int, const QStringList&)", typeof(void), typeof(int), index, typeof(List<string>), texts);
 		}
-		[SmokeMethod("removeItem", "(int)", "$")]
 		public void RemoveItem(int index) {
-			((QComboBox) interceptor).RemoveItem(index);
+			interceptor.Invoke("removeItem$", "removeItem(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("setItemText", "(int, const QString&)", "$$")]
 		public void SetItemText(int index, string text) {
-			((QComboBox) interceptor).SetItemText(index,text);
+			interceptor.Invoke("setItemText$$", "setItemText(int, const QString&)", typeof(void), typeof(int), index, typeof(string), text);
 		}
-		[SmokeMethod("setItemIcon", "(int, const QIcon&)", "$#")]
 		public void SetItemIcon(int index, QIcon icon) {
-			((QComboBox) interceptor).SetItemIcon(index,icon);
+			interceptor.Invoke("setItemIcon$#", "setItemIcon(int, const QIcon&)", typeof(void), typeof(int), index, typeof(QIcon), icon);
 		}
-		[SmokeMethod("setItemData", "(int, const QVariant&, int)", "$#$")]
 		public void SetItemData(int index, QVariant value, int role) {
-			((QComboBox) interceptor).SetItemData(index,value,role);
+			interceptor.Invoke("setItemData$#$", "setItemData(int, const QVariant&, int)", typeof(void), typeof(int), index, typeof(QVariant), value, typeof(int), role);
 		}
-		[SmokeMethod("setItemData", "(int, const QVariant&)", "$#")]
 		public void SetItemData(int index, QVariant value) {
-			((QComboBox) interceptor).SetItemData(index,value);
+			interceptor.Invoke("setItemData$#", "setItemData(int, const QVariant&)", typeof(void), typeof(int), index, typeof(QVariant), value);
 		}
-		[SmokeMethod("view", "() const", "")]
 		public QAbstractItemView View() {
-			return ((QComboBox) interceptor).View();
+			return (QAbstractItemView) interceptor.Invoke("view", "view() const", typeof(QAbstractItemView));
 		}
-		[SmokeMethod("setView", "(QAbstractItemView*)", "#")]
 		public void SetView(QAbstractItemView itemView) {
-			((QComboBox) interceptor).SetView(itemView);
+			interceptor.Invoke("setView#", "setView(QAbstractItemView*)", typeof(void), typeof(QAbstractItemView), itemView);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QComboBox) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QComboBox) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("showPopup", "()", "")]
+		[SmokeMethod("showPopup()")]
 		public virtual void ShowPopup() {
-			((QComboBox) interceptor).ShowPopup();
+			interceptor.Invoke("showPopup", "showPopup()", typeof(void));
 		}
-		[SmokeMethod("hidePopup", "()", "")]
+		[SmokeMethod("hidePopup()")]
 		public virtual void HidePopup() {
-			((QComboBox) interceptor).HidePopup();
+			interceptor.Invoke("hidePopup", "hidePopup()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		public new virtual bool Event(QEvent arg1) {
-			return ((QComboBox) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QComboBox) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
 		[Q_SLOT("void clearEditText()")]
-		[SmokeMethod("clearEditText", "()", "")]
 		public void ClearEditText() {
-			((QComboBox) interceptor).ClearEditText();
+			interceptor.Invoke("clearEditText", "clearEditText()", typeof(void));
 		}
 		[Q_SLOT("void setEditText(const QString&)")]
-		[SmokeMethod("setEditText", "(const QString&)", "$")]
 		public void SetEditText(string text) {
-			((QComboBox) interceptor).SetEditText(text);
+			interceptor.Invoke("setEditText$", "setEditText(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent e) {
-			((QComboBox) interceptor).FocusInEvent(e);
+			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), e);
 		}
-		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected override void FocusOutEvent(QFocusEvent e) {
-			((QComboBox) interceptor).FocusOutEvent(e);
+			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), e);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent e) {
-			((QComboBox) interceptor).ChangeEvent(e);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent e) {
-			((QComboBox) interceptor).ResizeEvent(e);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent e) {
-			((QComboBox) interceptor).PaintEvent(e);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), e);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent e) {
-			((QComboBox) interceptor).ShowEvent(e);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), e);
 		}
-		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected override void HideEvent(QHideEvent e) {
-			((QComboBox) interceptor).HideEvent(e);
+			interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), e);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent e) {
-			((QComboBox) interceptor).MousePressEvent(e);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent e) {
-			((QComboBox) interceptor).MouseReleaseEvent(e);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent e) {
-			((QComboBox) interceptor).KeyPressEvent(e);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), e);
 		}
-		[SmokeMethod("keyReleaseEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyReleaseEvent(QKeyEvent*)")]
 		protected override void KeyReleaseEvent(QKeyEvent e) {
-			((QComboBox) interceptor).KeyReleaseEvent(e);
+			interceptor.Invoke("keyReleaseEvent#", "keyReleaseEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), e);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected override void WheelEvent(QWheelEvent e) {
-			((QComboBox) interceptor).WheelEvent(e);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), e);
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent e) {
-			((QComboBox) interceptor).ContextMenuEvent(e);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), e);
 		}
-		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
+		[SmokeMethod("inputMethodEvent(QInputMethodEvent*)")]
 		protected override void InputMethodEvent(QInputMethodEvent arg1) {
-			((QComboBox) interceptor).InputMethodEvent(arg1);
+			interceptor.Invoke("inputMethodEvent#", "inputMethodEvent(QInputMethodEvent*)", typeof(void), typeof(QInputMethodEvent), arg1);
 		}
-		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
+		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		protected new virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
-			return ((QComboBox) interceptor).InputMethodQuery(arg1);
+			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), arg1);
 		}
 		~QComboBox() {
-			DisposeQComboBox();
+			interceptor.Invoke("~QComboBox", "~QComboBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQComboBox();
-		}
-		[SmokeMethod("~QComboBox", "()", "")]
-		private void DisposeQComboBox() {
-			((QComboBox) interceptor).DisposeQComboBox();
+			interceptor.Invoke("~QComboBox", "~QComboBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQComboBoxSignals Emit {
 			get { return (IQComboBoxSignals) Q_EMIT; }

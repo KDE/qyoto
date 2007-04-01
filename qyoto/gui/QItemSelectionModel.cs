@@ -8,21 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QItemSelectionModel")]
 	public class QItemSelectionModel : QObject, IDisposable {
  		protected QItemSelectionModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QItemSelectionModel")]
-		interface IQItemSelectionModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelectionModel), this);
-			interceptor = (QItemSelectionModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QItemSelectionModel), "QItemSelectionModel", this);
 		}
-		private static IQItemSelectionModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QItemSelectionModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemSelectionModelProxy), null);
-			staticInterceptor = (IQItemSelectionModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QItemSelectionModel), "QItemSelectionModel", null);
 		}
 		public enum SelectionFlag {
 			NoUpdate = 0x0000,
@@ -39,125 +30,96 @@ namespace Qyoto {
 		}
 		public QItemSelectionModel(QAbstractItemModel model) : this((Type) null) {
 			CreateProxy();
-			NewQItemSelectionModel(model);
-		}
-		[SmokeMethod("QItemSelectionModel", "(QAbstractItemModel*)", "#")]
-		private void NewQItemSelectionModel(QAbstractItemModel model) {
-			((QItemSelectionModel) interceptor).NewQItemSelectionModel(model);
+			interceptor.Invoke("QItemSelectionModel#", "QItemSelectionModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);
 		}
 		public QItemSelectionModel(QAbstractItemModel model, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQItemSelectionModel(model,parent);
+			interceptor.Invoke("QItemSelectionModel##", "QItemSelectionModel(QAbstractItemModel*, QObject*)", typeof(void), typeof(QAbstractItemModel), model, typeof(QObject), parent);
 		}
-		[SmokeMethod("QItemSelectionModel", "(QAbstractItemModel*, QObject*)", "##")]
-		private void NewQItemSelectionModel(QAbstractItemModel model, QObject parent) {
-			((QItemSelectionModel) interceptor).NewQItemSelectionModel(model,parent);
-		}
-		[SmokeMethod("currentIndex", "() const", "")]
 		public QModelIndex CurrentIndex() {
-			return ((QItemSelectionModel) interceptor).CurrentIndex();
+			return (QModelIndex) interceptor.Invoke("currentIndex", "currentIndex() const", typeof(QModelIndex));
 		}
-		[SmokeMethod("isSelected", "(const QModelIndex&) const", "#")]
 		public bool IsSelected(QModelIndex index) {
-			return ((QItemSelectionModel) interceptor).IsSelected(index);
+			return (bool) interceptor.Invoke("isSelected#", "isSelected(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("isRowSelected", "(int, const QModelIndex&) const", "$#")]
 		public bool IsRowSelected(int row, QModelIndex parent) {
-			return ((QItemSelectionModel) interceptor).IsRowSelected(row,parent);
+			return (bool) interceptor.Invoke("isRowSelected$#", "isRowSelected(int, const QModelIndex&) const", typeof(bool), typeof(int), row, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("isColumnSelected", "(int, const QModelIndex&) const", "$#")]
 		public bool IsColumnSelected(int column, QModelIndex parent) {
-			return ((QItemSelectionModel) interceptor).IsColumnSelected(column,parent);
+			return (bool) interceptor.Invoke("isColumnSelected$#", "isColumnSelected(int, const QModelIndex&) const", typeof(bool), typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("rowIntersectsSelection", "(int, const QModelIndex&) const", "$#")]
 		public bool RowIntersectsSelection(int row, QModelIndex parent) {
-			return ((QItemSelectionModel) interceptor).RowIntersectsSelection(row,parent);
+			return (bool) interceptor.Invoke("rowIntersectsSelection$#", "rowIntersectsSelection(int, const QModelIndex&) const", typeof(bool), typeof(int), row, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("columnIntersectsSelection", "(int, const QModelIndex&) const", "$#")]
 		public bool ColumnIntersectsSelection(int column, QModelIndex parent) {
-			return ((QItemSelectionModel) interceptor).ColumnIntersectsSelection(column,parent);
+			return (bool) interceptor.Invoke("columnIntersectsSelection$#", "columnIntersectsSelection(int, const QModelIndex&) const", typeof(bool), typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("hasSelection", "() const", "")]
 		public bool HasSelection() {
-			return ((QItemSelectionModel) interceptor).HasSelection();
+			return (bool) interceptor.Invoke("hasSelection", "hasSelection() const", typeof(bool));
 		}
-		[SmokeMethod("selectedIndexes", "() const", "")]
 		public List<QModelIndex> SelectedIndexes() {
-			return ((QItemSelectionModel) interceptor).SelectedIndexes();
+			return (List<QModelIndex>) interceptor.Invoke("selectedIndexes", "selectedIndexes() const", typeof(List<QModelIndex>));
 		}
-		[SmokeMethod("selectedRows", "(int) const", "$")]
 		public List<QModelIndex> SelectedRows(int column) {
-			return ((QItemSelectionModel) interceptor).SelectedRows(column);
+			return (List<QModelIndex>) interceptor.Invoke("selectedRows$", "selectedRows(int) const", typeof(List<QModelIndex>), typeof(int), column);
 		}
-		[SmokeMethod("selectedRows", "() const", "")]
 		public List<QModelIndex> SelectedRows() {
-			return ((QItemSelectionModel) interceptor).SelectedRows();
+			return (List<QModelIndex>) interceptor.Invoke("selectedRows", "selectedRows() const", typeof(List<QModelIndex>));
 		}
-		[SmokeMethod("selectedColumns", "(int) const", "$")]
 		public List<QModelIndex> SelectedColumns(int row) {
-			return ((QItemSelectionModel) interceptor).SelectedColumns(row);
+			return (List<QModelIndex>) interceptor.Invoke("selectedColumns$", "selectedColumns(int) const", typeof(List<QModelIndex>), typeof(int), row);
 		}
-		[SmokeMethod("selectedColumns", "() const", "")]
 		public List<QModelIndex> SelectedColumns() {
-			return ((QItemSelectionModel) interceptor).SelectedColumns();
+			return (List<QModelIndex>) interceptor.Invoke("selectedColumns", "selectedColumns() const", typeof(List<QModelIndex>));
 		}
-		[SmokeMethod("selection", "() const", "")]
 		public QItemSelection Selection() {
-			return ((QItemSelectionModel) interceptor).Selection();
+			return (QItemSelection) interceptor.Invoke("selection", "selection() const", typeof(QItemSelection));
 		}
-		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ((QItemSelectionModel) interceptor).Model();
+			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
 		[Q_SLOT("void setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
-		[SmokeMethod("setCurrentIndex", "(const QModelIndex&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public void SetCurrentIndex(QModelIndex index, int command) {
-			((QItemSelectionModel) interceptor).SetCurrentIndex(index,command);
+			interceptor.Invoke("setCurrentIndex#$", "setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(int), command);
 		}
 		[Q_SLOT("void select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
-		[SmokeMethod("select", "(const QModelIndex&, QItemSelectionModel::SelectionFlags)", "#$")]
+		[SmokeMethod("select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QModelIndex index, int command) {
-			((QItemSelectionModel) interceptor).Select(index,command);
+			interceptor.Invoke("select#$", "select(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(int), command);
 		}
 		[Q_SLOT("void select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
-		[SmokeMethod("select", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)", "#$")]
+		[SmokeMethod("select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QItemSelection selection, int command) {
-			((QItemSelectionModel) interceptor).Select(selection,command);
+			interceptor.Invoke("select#$", "select(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), selection, typeof(int), command);
 		}
 		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear", "()", "")]
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
-			((QItemSelectionModel) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
 		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset", "()", "")]
+		[SmokeMethod("reset()")]
 		public virtual void Reset() {
-			((QItemSelectionModel) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
 		[Q_SLOT("void clearSelection()")]
-		[SmokeMethod("clearSelection", "()", "")]
 		public void ClearSelection() {
-			((QItemSelectionModel) interceptor).ClearSelection();
+			interceptor.Invoke("clearSelection", "clearSelection()", typeof(void));
 		}
-		[SmokeMethod("emitSelectionChanged", "(const QItemSelection&, const QItemSelection&)", "##")]
 		protected void EmitSelectionChanged(QItemSelection newSelection, QItemSelection oldSelection) {
-			((QItemSelectionModel) interceptor).EmitSelectionChanged(newSelection,oldSelection);
+			interceptor.Invoke("emitSelectionChanged##", "emitSelectionChanged(const QItemSelection&, const QItemSelection&)", typeof(void), typeof(QItemSelection), newSelection, typeof(QItemSelection), oldSelection);
 		}
 		~QItemSelectionModel() {
-			DisposeQItemSelectionModel();
+			interceptor.Invoke("~QItemSelectionModel", "~QItemSelectionModel()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQItemSelectionModel();
-		}
-		[SmokeMethod("~QItemSelectionModel", "()", "")]
-		private void DisposeQItemSelectionModel() {
-			((QItemSelectionModel) interceptor).DisposeQItemSelectionModel();
+			interceptor.Invoke("~QItemSelectionModel", "~QItemSelectionModel()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQItemSelectionModelSignals Emit {
 			get { return (IQItemSelectionModelSignals) Q_EMIT; }

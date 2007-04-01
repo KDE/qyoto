@@ -7,58 +7,39 @@ namespace Qyoto {
 	public class QGraphicsSceneHoverEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneHoverEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneHoverEvent), this);
-			interceptor = (QGraphicsSceneHoverEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneHoverEvent), "QGraphicsSceneHoverEvent", this);
 		}
 		public QGraphicsSceneHoverEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneHoverEvent(type);
-		}
-		[SmokeMethod("QGraphicsSceneHoverEvent", "(QEvent::Type)", "$")]
-		private void NewQGraphicsSceneHoverEvent(QEvent.TypeOf type) {
-			((QGraphicsSceneHoverEvent) interceptor).NewQGraphicsSceneHoverEvent(type);
+			interceptor.Invoke("QGraphicsSceneHoverEvent$", "QGraphicsSceneHoverEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
 		public QGraphicsSceneHoverEvent() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneHoverEvent();
+			interceptor.Invoke("QGraphicsSceneHoverEvent", "QGraphicsSceneHoverEvent()", typeof(void));
 		}
-		[SmokeMethod("QGraphicsSceneHoverEvent", "()", "")]
-		private void NewQGraphicsSceneHoverEvent() {
-			((QGraphicsSceneHoverEvent) interceptor).NewQGraphicsSceneHoverEvent();
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ((QGraphicsSceneHoverEvent) interceptor).Pos();
+			return (QPointF) interceptor.Invoke("pos", "pos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			((QGraphicsSceneHoverEvent) interceptor).SetPos(pos);
+			interceptor.Invoke("setPos#", "setPos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ((QGraphicsSceneHoverEvent) interceptor).ScenePos();
+			return (QPointF) interceptor.Invoke("scenePos", "scenePos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			((QGraphicsSceneHoverEvent) interceptor).SetScenePos(pos);
+			interceptor.Invoke("setScenePos#", "setScenePos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ((QGraphicsSceneHoverEvent) interceptor).ScreenPos();
+			return (QPoint) interceptor.Invoke("screenPos", "screenPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			((QGraphicsSceneHoverEvent) interceptor).SetScreenPos(pos);
+			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
 		~QGraphicsSceneHoverEvent() {
-			DisposeQGraphicsSceneHoverEvent();
+			interceptor.Invoke("~QGraphicsSceneHoverEvent", "~QGraphicsSceneHoverEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsSceneHoverEvent();
-		}
-		[SmokeMethod("~QGraphicsSceneHoverEvent", "()", "")]
-		private void DisposeQGraphicsSceneHoverEvent() {
-			((QGraphicsSceneHoverEvent) interceptor).DisposeQGraphicsSceneHoverEvent();
+			interceptor.Invoke("~QGraphicsSceneHoverEvent", "~QGraphicsSceneHoverEvent()", typeof(void));
 		}
 	}
 }

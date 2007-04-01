@@ -7,58 +7,39 @@ namespace Qyoto {
 	public class QDomAttr : QDomNode, IDisposable {
  		protected QDomAttr(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomAttr), this);
-			interceptor = (QDomAttr) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomAttr), "QDomAttr", this);
 		}
 		public QDomAttr() : this((Type) null) {
 			CreateProxy();
-			NewQDomAttr();
-		}
-		[SmokeMethod("QDomAttr", "()", "")]
-		private void NewQDomAttr() {
-			((QDomAttr) interceptor).NewQDomAttr();
+			interceptor.Invoke("QDomAttr", "QDomAttr()", typeof(void));
 		}
 		public QDomAttr(QDomAttr x) : this((Type) null) {
 			CreateProxy();
-			NewQDomAttr(x);
+			interceptor.Invoke("QDomAttr#", "QDomAttr(const QDomAttr&)", typeof(void), typeof(QDomAttr), x);
 		}
-		[SmokeMethod("QDomAttr", "(const QDomAttr&)", "#")]
-		private void NewQDomAttr(QDomAttr x) {
-			((QDomAttr) interceptor).NewQDomAttr(x);
-		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QDomAttr) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("specified", "() const", "")]
 		public bool Specified() {
-			return ((QDomAttr) interceptor).Specified();
+			return (bool) interceptor.Invoke("specified", "specified() const", typeof(bool));
 		}
-		[SmokeMethod("ownerElement", "() const", "")]
 		public QDomElement OwnerElement() {
-			return ((QDomAttr) interceptor).OwnerElement();
+			return (QDomElement) interceptor.Invoke("ownerElement", "ownerElement() const", typeof(QDomElement));
 		}
-		[SmokeMethod("value", "() const", "")]
 		public string Value() {
-			return ((QDomAttr) interceptor).Value();
+			return (string) interceptor.Invoke("value", "value() const", typeof(string));
 		}
-		[SmokeMethod("setValue", "(const QString&)", "$")]
 		public void SetValue(string arg1) {
-			((QDomAttr) interceptor).SetValue(arg1);
+			interceptor.Invoke("setValue$", "setValue(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomAttr) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomAttr() {
-			DisposeQDomAttr();
+			interceptor.Invoke("~QDomAttr", "~QDomAttr()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomAttr();
-		}
-		[SmokeMethod("~QDomAttr", "()", "")]
-		private void DisposeQDomAttr() {
-			((QDomAttr) interceptor).DisposeQDomAttr();
+			interceptor.Invoke("~QDomAttr", "~QDomAttr()", typeof(void));
 		}
 	}
 }

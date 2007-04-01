@@ -4,64 +4,45 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QBool")]
-	public class QBool : MarshalByRefObject, IDisposable {
-		protected QBool interceptor = null;
+	public class QBool : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QBool(Type dummy) {}
-		[SmokeClass("QBool")]
-		interface IQBoolProxy {
-			[SmokeMethod("operator==", "(QBool, bool)", "#$")]
-			bool op_equals(QBool b1, bool b2);
-			[SmokeMethod("operator==", "(bool, QBool)", "$#")]
-			bool op_equals(bool b1, QBool b2);
-			[SmokeMethod("operator==", "(QBool, QBool)", "##")]
-			bool op_equals(QBool b1, QBool b2);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBool), this);
-			interceptor = (QBool) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QBool), "QBool", this);
 		}
-		private static IQBoolProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QBool() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBoolProxy), null);
-			staticInterceptor = (IQBoolProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QBool), "QBool", null);
 		}
 		//  operator const void *(); >>>> NOT CONVERTED
 		public QBool(bool B) : this((Type) null) {
 			CreateProxy();
-			NewQBool(B);
-		}
-		[SmokeMethod("QBool", "(bool)", "$")]
-		private void NewQBool(bool B) {
-			((QBool) interceptor).NewQBool(B);
+			interceptor.Invoke("QBool$", "QBool(bool)", typeof(void), typeof(bool), B);
 		}
 		~QBool() {
-			DisposeQBool();
+			interceptor.Invoke("~QBool", "~QBool()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQBool();
-		}
-		[SmokeMethod("~QBool", "()", "")]
-		private void DisposeQBool() {
-			((QBool) interceptor).DisposeQBool();
+			interceptor.Invoke("~QBool", "~QBool()", typeof(void));
 		}
 		public static bool operator==(QBool b1, bool b2) {
-			return staticInterceptor.op_equals(b1,b2);
+			return (bool) staticInterceptor.Invoke("operator==#$", "operator==(QBool, bool)", typeof(bool), typeof(QBool), b1, typeof(bool), b2);
 		}
 		public static bool operator!=(QBool b1, bool b2) {
-			return !staticInterceptor.op_equals(b1,b2);
+			return !(bool) staticInterceptor.Invoke("operator==#$", "operator==(QBool, bool)", typeof(bool), typeof(QBool), b1, typeof(bool), b2);
 		}
 		public static bool operator==(bool b1, QBool b2) {
-			return staticInterceptor.op_equals(b1,b2);
+			return (bool) staticInterceptor.Invoke("operator==$#", "operator==(bool, QBool)", typeof(bool), typeof(bool), b1, typeof(QBool), b2);
 		}
 		public static bool operator!=(bool b1, QBool b2) {
-			return !staticInterceptor.op_equals(b1,b2);
+			return !(bool) staticInterceptor.Invoke("operator==$#", "operator==(bool, QBool)", typeof(bool), typeof(bool), b1, typeof(QBool), b2);
 		}
 		public static bool operator==(QBool b1, QBool b2) {
-			return staticInterceptor.op_equals(b1,b2);
+			return (bool) staticInterceptor.Invoke("operator==##", "operator==(QBool, QBool)", typeof(bool), typeof(QBool), b1, typeof(QBool), b2);
 		}
 		public static bool operator!=(QBool b1, QBool b2) {
-			return !staticInterceptor.op_equals(b1,b2);
+			return !(bool) staticInterceptor.Invoke("operator==##", "operator==(QBool, QBool)", typeof(bool), typeof(QBool), b1, typeof(QBool), b2);
 		}
 	}
 }

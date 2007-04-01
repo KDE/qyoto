@@ -5,29 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QHostInfo")]
-	public class QHostInfo : MarshalByRefObject, IDisposable {
-		protected QHostInfo interceptor = null;
+	public class QHostInfo : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QHostInfo(Type dummy) {}
-		[SmokeClass("QHostInfo")]
-		interface IQHostInfoProxy {
-			[SmokeMethod("lookupHost", "(const QString&, QObject*, const char*)", "$#$")]
-			int LookupHost(string name, QObject receiver, string member);
-			[SmokeMethod("abortHostLookup", "(int)", "$")]
-			void AbortHostLookup(int lookupId);
-			[SmokeMethod("fromName", "(const QString&)", "$")]
-			QHostInfo FromName(string name);
-			[SmokeMethod("localHostName", "()", "")]
-			string LocalHostName();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostInfo), this);
-			interceptor = (QHostInfo) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QHostInfo), "QHostInfo", this);
 		}
-		private static IQHostInfoProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QHostInfo() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHostInfoProxy), null);
-			staticInterceptor = (IQHostInfoProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QHostInfo), "QHostInfo", null);
 		}
 		public enum HostInfoError {
 			NoError = 0,
@@ -36,89 +23,63 @@ namespace Qyoto {
 		}
 		public QHostInfo(int lookupId) : this((Type) null) {
 			CreateProxy();
-			NewQHostInfo(lookupId);
-		}
-		[SmokeMethod("QHostInfo", "(int)", "$")]
-		private void NewQHostInfo(int lookupId) {
-			((QHostInfo) interceptor).NewQHostInfo(lookupId);
+			interceptor.Invoke("QHostInfo$", "QHostInfo(int)", typeof(void), typeof(int), lookupId);
 		}
 		public QHostInfo() : this((Type) null) {
 			CreateProxy();
-			NewQHostInfo();
-		}
-		[SmokeMethod("QHostInfo", "()", "")]
-		private void NewQHostInfo() {
-			((QHostInfo) interceptor).NewQHostInfo();
+			interceptor.Invoke("QHostInfo", "QHostInfo()", typeof(void));
 		}
 		public QHostInfo(QHostInfo d) : this((Type) null) {
 			CreateProxy();
-			NewQHostInfo(d);
+			interceptor.Invoke("QHostInfo#", "QHostInfo(const QHostInfo&)", typeof(void), typeof(QHostInfo), d);
 		}
-		[SmokeMethod("QHostInfo", "(const QHostInfo&)", "#")]
-		private void NewQHostInfo(QHostInfo d) {
-			((QHostInfo) interceptor).NewQHostInfo(d);
-		}
-		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
-			return ((QHostInfo) interceptor).HostName();
+			return (string) interceptor.Invoke("hostName", "hostName() const", typeof(string));
 		}
-		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string name) {
-			((QHostInfo) interceptor).SetHostName(name);
+			interceptor.Invoke("setHostName$", "setHostName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("addresses", "() const", "")]
 		public List<QHostAddress> Addresses() {
-			return ((QHostInfo) interceptor).Addresses();
+			return (List<QHostAddress>) interceptor.Invoke("addresses", "addresses() const", typeof(List<QHostAddress>));
 		}
-		[SmokeMethod("setAddresses", "(const QList<QHostAddress>&)", "?")]
 		public void SetAddresses(List<QHostAddress> addresses) {
-			((QHostInfo) interceptor).SetAddresses(addresses);
+			interceptor.Invoke("setAddresses?", "setAddresses(const QList<QHostAddress>&)", typeof(void), typeof(List<QHostAddress>), addresses);
 		}
-		[SmokeMethod("error", "() const", "")]
 		public QHostInfo.HostInfoError Error() {
-			return ((QHostInfo) interceptor).Error();
+			return (QHostInfo.HostInfoError) interceptor.Invoke("error", "error() const", typeof(QHostInfo.HostInfoError));
 		}
-		[SmokeMethod("setError", "(QHostInfo::HostInfoError)", "$")]
 		public void SetError(QHostInfo.HostInfoError error) {
-			((QHostInfo) interceptor).SetError(error);
+			interceptor.Invoke("setError$", "setError(QHostInfo::HostInfoError)", typeof(void), typeof(QHostInfo.HostInfoError), error);
 		}
-		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ((QHostInfo) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
-		[SmokeMethod("setErrorString", "(const QString&)", "$")]
 		public void SetErrorString(string errorString) {
-			((QHostInfo) interceptor).SetErrorString(errorString);
+			interceptor.Invoke("setErrorString$", "setErrorString(const QString&)", typeof(void), typeof(string), errorString);
 		}
-		[SmokeMethod("setLookupId", "(int)", "$")]
 		public void SetLookupId(int id) {
-			((QHostInfo) interceptor).SetLookupId(id);
+			interceptor.Invoke("setLookupId$", "setLookupId(int)", typeof(void), typeof(int), id);
 		}
-		[SmokeMethod("lookupId", "() const", "")]
 		public int LookupId() {
-			return ((QHostInfo) interceptor).LookupId();
+			return (int) interceptor.Invoke("lookupId", "lookupId() const", typeof(int));
 		}
 		~QHostInfo() {
-			DisposeQHostInfo();
+			interceptor.Invoke("~QHostInfo", "~QHostInfo()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQHostInfo();
-		}
-		[SmokeMethod("~QHostInfo", "()", "")]
-		private void DisposeQHostInfo() {
-			((QHostInfo) interceptor).DisposeQHostInfo();
+			interceptor.Invoke("~QHostInfo", "~QHostInfo()", typeof(void));
 		}
 		public static int LookupHost(string name, QObject receiver, string member) {
-			return staticInterceptor.LookupHost(name,receiver,member);
+			return (int) staticInterceptor.Invoke("lookupHost$#$", "lookupHost(const QString&, QObject*, const char*)", typeof(int), typeof(string), name, typeof(QObject), receiver, typeof(string), member);
 		}
 		public static void AbortHostLookup(int lookupId) {
-			staticInterceptor.AbortHostLookup(lookupId);
+			staticInterceptor.Invoke("abortHostLookup$", "abortHostLookup(int)", typeof(void), typeof(int), lookupId);
 		}
 		public static QHostInfo FromName(string name) {
-			return staticInterceptor.FromName(name);
+			return (QHostInfo) staticInterceptor.Invoke("fromName$", "fromName(const QString&)", typeof(QHostInfo), typeof(string), name);
 		}
 		public static string LocalHostName() {
-			return staticInterceptor.LocalHostName();
+			return (string) staticInterceptor.Invoke("localHostName", "localHostName()", typeof(string));
 		}
 	}
 }

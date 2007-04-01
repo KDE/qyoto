@@ -4,25 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QNetworkProxy")]
-	public class QNetworkProxy : MarshalByRefObject, IDisposable {
-		protected QNetworkProxy interceptor = null;
+	public class QNetworkProxy : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QNetworkProxy(Type dummy) {}
-		[SmokeClass("QNetworkProxy")]
-		interface IQNetworkProxyProxy {
-			[SmokeMethod("setApplicationProxy", "(const QNetworkProxy&)", "#")]
-			void SetApplicationProxy(QNetworkProxy proxy);
-			[SmokeMethod("applicationProxy", "()", "")]
-			QNetworkProxy ApplicationProxy();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkProxy), this);
-			interceptor = (QNetworkProxy) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QNetworkProxy), "QNetworkProxy", this);
 		}
-		private static IQNetworkProxyProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QNetworkProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQNetworkProxyProxy), null);
-			staticInterceptor = (IQNetworkProxyProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QNetworkProxy), "QNetworkProxy", null);
 		}
 		public enum ProxyType {
 			DefaultProxy = 0,
@@ -31,115 +22,73 @@ namespace Qyoto {
 		}
 		public QNetworkProxy() : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy();
-		}
-		[SmokeMethod("QNetworkProxy", "()", "")]
-		private void NewQNetworkProxy() {
-			((QNetworkProxy) interceptor).NewQNetworkProxy();
+			interceptor.Invoke("QNetworkProxy", "QNetworkProxy()", typeof(void));
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user, string password) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy(type,hostName,port,user,password);
-		}
-		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&, quint16, const QString&, const QString&)", "$$$$$")]
-		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user, string password) {
-			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName,port,user,password);
+			interceptor.Invoke("QNetworkProxy$$$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, quint16, const QString&, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port, typeof(string), user, typeof(string), password);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy(type,hostName,port,user);
-		}
-		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&, quint16, const QString&)", "$$$$")]
-		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user) {
-			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName,port,user);
+			interceptor.Invoke("QNetworkProxy$$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, quint16, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port, typeof(string), user);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy(type,hostName,port);
-		}
-		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&, quint16)", "$$$")]
-		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port) {
-			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName,port);
+			interceptor.Invoke("QNetworkProxy$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, quint16)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy(type,hostName);
-		}
-		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&)", "$$")]
-		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName) {
-			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName);
+			interceptor.Invoke("QNetworkProxy$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy(type);
-		}
-		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType)", "$")]
-		private void NewQNetworkProxy(QNetworkProxy.ProxyType type) {
-			((QNetworkProxy) interceptor).NewQNetworkProxy(type);
+			interceptor.Invoke("QNetworkProxy$", "QNetworkProxy(QNetworkProxy::ProxyType)", typeof(void), typeof(QNetworkProxy.ProxyType), type);
 		}
 		public QNetworkProxy(QNetworkProxy other) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkProxy(other);
+			interceptor.Invoke("QNetworkProxy#", "QNetworkProxy(const QNetworkProxy&)", typeof(void), typeof(QNetworkProxy), other);
 		}
-		[SmokeMethod("QNetworkProxy", "(const QNetworkProxy&)", "#")]
-		private void NewQNetworkProxy(QNetworkProxy other) {
-			((QNetworkProxy) interceptor).NewQNetworkProxy(other);
-		}
-		[SmokeMethod("setType", "(QNetworkProxy::ProxyType)", "$")]
 		public void SetType(QNetworkProxy.ProxyType type) {
-			((QNetworkProxy) interceptor).SetType(type);
+			interceptor.Invoke("setType$", "setType(QNetworkProxy::ProxyType)", typeof(void), typeof(QNetworkProxy.ProxyType), type);
 		}
-		[SmokeMethod("type", "() const", "")]
 		public QNetworkProxy.ProxyType type() {
-			return ((QNetworkProxy) interceptor).type();
+			return (QNetworkProxy.ProxyType) interceptor.Invoke("type", "type() const", typeof(QNetworkProxy.ProxyType));
 		}
-		[SmokeMethod("setUser", "(const QString&)", "$")]
 		public void SetUser(string userName) {
-			((QNetworkProxy) interceptor).SetUser(userName);
+			interceptor.Invoke("setUser$", "setUser(const QString&)", typeof(void), typeof(string), userName);
 		}
-		[SmokeMethod("user", "() const", "")]
 		public string User() {
-			return ((QNetworkProxy) interceptor).User();
+			return (string) interceptor.Invoke("user", "user() const", typeof(string));
 		}
-		[SmokeMethod("setPassword", "(const QString&)", "$")]
 		public void SetPassword(string password) {
-			((QNetworkProxy) interceptor).SetPassword(password);
+			interceptor.Invoke("setPassword$", "setPassword(const QString&)", typeof(void), typeof(string), password);
 		}
-		[SmokeMethod("password", "() const", "")]
 		public string Password() {
-			return ((QNetworkProxy) interceptor).Password();
+			return (string) interceptor.Invoke("password", "password() const", typeof(string));
 		}
-		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string hostName) {
-			((QNetworkProxy) interceptor).SetHostName(hostName);
+			interceptor.Invoke("setHostName$", "setHostName(const QString&)", typeof(void), typeof(string), hostName);
 		}
-		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
-			return ((QNetworkProxy) interceptor).HostName();
+			return (string) interceptor.Invoke("hostName", "hostName() const", typeof(string));
 		}
-		[SmokeMethod("setPort", "(quint16)", "$")]
 		public void SetPort(ushort port) {
-			((QNetworkProxy) interceptor).SetPort(port);
+			interceptor.Invoke("setPort$", "setPort(quint16)", typeof(void), typeof(ushort), port);
 		}
-		[SmokeMethod("port", "() const", "")]
 		public ushort Port() {
-			return ((QNetworkProxy) interceptor).Port();
+			return (ushort) interceptor.Invoke("port", "port() const", typeof(ushort));
 		}
 		~QNetworkProxy() {
-			DisposeQNetworkProxy();
+			interceptor.Invoke("~QNetworkProxy", "~QNetworkProxy()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQNetworkProxy();
-		}
-		[SmokeMethod("~QNetworkProxy", "()", "")]
-		private void DisposeQNetworkProxy() {
-			((QNetworkProxy) interceptor).DisposeQNetworkProxy();
+			interceptor.Invoke("~QNetworkProxy", "~QNetworkProxy()", typeof(void));
 		}
 		public static void SetApplicationProxy(QNetworkProxy proxy) {
-			staticInterceptor.SetApplicationProxy(proxy);
+			staticInterceptor.Invoke("setApplicationProxy#", "setApplicationProxy(const QNetworkProxy&)", typeof(void), typeof(QNetworkProxy), proxy);
 		}
 		public static QNetworkProxy ApplicationProxy() {
-			return staticInterceptor.ApplicationProxy();
+			return (QNetworkProxy) staticInterceptor.Invoke("applicationProxy", "applicationProxy()", typeof(QNetworkProxy));
 		}
 	}
 }

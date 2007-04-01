@@ -6,169 +6,139 @@ namespace Qyoto {
 	[SmokeClass("QSqlQueryModel")]
 	public partial class QSqlQueryModel : QAbstractTableModel, IDisposable {
  		protected QSqlQueryModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSqlQueryModel")]
-		interface IQSqlQueryModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlQueryModel), this);
-			interceptor = (QSqlQueryModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlQueryModel), "QSqlQueryModel", this);
 		}
-		private static IQSqlQueryModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSqlQueryModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlQueryModelProxy), null);
-			staticInterceptor = (IQSqlQueryModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSqlQueryModel), "QSqlQueryModel", null);
 		}
 		public QSqlQueryModel(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSqlQueryModel(parent);
-		}
-		[SmokeMethod("QSqlQueryModel", "(QObject*)", "#")]
-		private void NewQSqlQueryModel(QObject parent) {
-			((QSqlQueryModel) interceptor).NewQSqlQueryModel(parent);
+			interceptor.Invoke("QSqlQueryModel#", "QSqlQueryModel(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QSqlQueryModel() : this((Type) null) {
 			CreateProxy();
-			NewQSqlQueryModel();
+			interceptor.Invoke("QSqlQueryModel", "QSqlQueryModel()", typeof(void));
 		}
-		[SmokeMethod("QSqlQueryModel", "()", "")]
-		private void NewQSqlQueryModel() {
-			((QSqlQueryModel) interceptor).NewQSqlQueryModel();
-		}
-		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("rowCount(const QModelIndex&) const")]
 		public override int RowCount(QModelIndex parent) {
-			return ((QSqlQueryModel) interceptor).RowCount(parent);
+			return (int) interceptor.Invoke("rowCount#", "rowCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("rowCount", "() const", "")]
+		[SmokeMethod("rowCount() const")]
 		public virtual int RowCount() {
-			return ((QSqlQueryModel) interceptor).RowCount();
+			return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
 		}
-		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("columnCount(const QModelIndex&) const")]
 		public override int ColumnCount(QModelIndex parent) {
-			return ((QSqlQueryModel) interceptor).ColumnCount(parent);
+			return (int) interceptor.Invoke("columnCount#", "columnCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("columnCount", "() const", "")]
+		[SmokeMethod("columnCount() const")]
 		public virtual int ColumnCount() {
-			return ((QSqlQueryModel) interceptor).ColumnCount();
+			return (int) interceptor.Invoke("columnCount", "columnCount() const", typeof(int));
 		}
-		[SmokeMethod("record", "(int) const", "$")]
 		public QSqlRecord Record(int row) {
-			return ((QSqlQueryModel) interceptor).Record(row);
+			return (QSqlRecord) interceptor.Invoke("record$", "record(int) const", typeof(QSqlRecord), typeof(int), row);
 		}
-		[SmokeMethod("record", "() const", "")]
 		public QSqlRecord Record() {
-			return ((QSqlQueryModel) interceptor).Record();
+			return (QSqlRecord) interceptor.Invoke("record", "record() const", typeof(QSqlRecord));
 		}
-		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
+		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public override QVariant Data(QModelIndex item, int role) {
-			return ((QSqlQueryModel) interceptor).Data(item,role);
+			return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), item, typeof(int), role);
 		}
-		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("data(const QModelIndex&) const")]
 		public virtual QVariant Data(QModelIndex item) {
-			return ((QSqlQueryModel) interceptor).Data(item);
+			return (QVariant) interceptor.Invoke("data#", "data(const QModelIndex&) const", typeof(QVariant), typeof(QModelIndex), item);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ((QSqlQueryModel) interceptor).HeaderData(section,orientation,role);
+			return (QVariant) interceptor.Invoke("headerData$$$", "headerData(int, Qt::Orientation, int) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(int), role);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation) const", "$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation) {
-			return ((QSqlQueryModel) interceptor).HeaderData(section,orientation);
+			return (QVariant) interceptor.Invoke("headerData$$", "headerData(int, Qt::Orientation) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&, int)", "$$#$")]
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&, int)")]
 		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
-			return ((QSqlQueryModel) interceptor).SetHeaderData(section,orientation,value,role);
+			return (bool) interceptor.Invoke("setHeaderData$$#$", "setHeaderData(int, Qt::Orientation, const QVariant&, int)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value, typeof(int), role);
 		}
-		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&)", "$$#")]
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&)")]
 		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
-			return ((QSqlQueryModel) interceptor).SetHeaderData(section,orientation,value);
+			return (bool) interceptor.Invoke("setHeaderData$$#", "setHeaderData(int, Qt::Orientation, const QVariant&)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value);
 		}
-		[SmokeMethod("insertColumns", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("insertColumns(int, int, const QModelIndex&)")]
 		public override bool InsertColumns(int column, int count, QModelIndex parent) {
-			return ((QSqlQueryModel) interceptor).InsertColumns(column,count,parent);
+			return (bool) interceptor.Invoke("insertColumns$$#", "insertColumns(int, int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("insertColumns", "(int, int)", "$$")]
+		[SmokeMethod("insertColumns(int, int)")]
 		public override bool InsertColumns(int column, int count) {
-			return ((QSqlQueryModel) interceptor).InsertColumns(column,count);
+			return (bool) interceptor.Invoke("insertColumns$$", "insertColumns(int, int)", typeof(bool), typeof(int), column, typeof(int), count);
 		}
-		[SmokeMethod("removeColumns", "(int, int, const QModelIndex&)", "$$#")]
+		[SmokeMethod("removeColumns(int, int, const QModelIndex&)")]
 		public override bool RemoveColumns(int column, int count, QModelIndex parent) {
-			return ((QSqlQueryModel) interceptor).RemoveColumns(column,count,parent);
+			return (bool) interceptor.Invoke("removeColumns$$#", "removeColumns(int, int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(int), count, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("removeColumns", "(int, int)", "$$")]
+		[SmokeMethod("removeColumns(int, int)")]
 		public override bool RemoveColumns(int column, int count) {
-			return ((QSqlQueryModel) interceptor).RemoveColumns(column,count);
+			return (bool) interceptor.Invoke("removeColumns$$", "removeColumns(int, int)", typeof(bool), typeof(int), column, typeof(int), count);
 		}
-		[SmokeMethod("setQuery", "(const QSqlQuery&)", "#")]
 		public void SetQuery(IQSqlQuery query) {
-			((QSqlQueryModel) interceptor).SetQuery(query);
+			interceptor.Invoke("setQuery#", "setQuery(const QSqlQuery&)", typeof(void), typeof(IQSqlQuery), query);
 		}
-		[SmokeMethod("setQuery", "(const QString&, const QSqlDatabase&)", "$#")]
 		public void SetQuery(string query, QSqlDatabase db) {
-			((QSqlQueryModel) interceptor).SetQuery(query,db);
+			interceptor.Invoke("setQuery$#", "setQuery(const QString&, const QSqlDatabase&)", typeof(void), typeof(string), query, typeof(QSqlDatabase), db);
 		}
-		[SmokeMethod("setQuery", "(const QString&)", "$")]
 		public void SetQuery(string query) {
-			((QSqlQueryModel) interceptor).SetQuery(query);
+			interceptor.Invoke("setQuery$", "setQuery(const QString&)", typeof(void), typeof(string), query);
 		}
-		[SmokeMethod("query", "() const", "")]
 		public IQSqlQuery Query() {
-			return ((QSqlQueryModel) interceptor).Query();
+			return (IQSqlQuery) interceptor.Invoke("query", "query() const", typeof(IQSqlQuery));
 		}
-		[SmokeMethod("clear", "()", "")]
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
-			((QSqlQueryModel) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("lastError", "() const", "")]
 		public QSqlError LastError() {
-			return ((QSqlQueryModel) interceptor).LastError();
+			return (QSqlError) interceptor.Invoke("lastError", "lastError() const", typeof(QSqlError));
 		}
-		[SmokeMethod("fetchMore", "(const QModelIndex&)", "#")]
+		[SmokeMethod("fetchMore(const QModelIndex&)")]
 		public override void FetchMore(QModelIndex parent) {
-			((QSqlQueryModel) interceptor).FetchMore(parent);
+			interceptor.Invoke("fetchMore#", "fetchMore(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("fetchMore", "()", "")]
+		[SmokeMethod("fetchMore()")]
 		public void FetchMore() {
-			((QSqlQueryModel) interceptor).FetchMore();
+			interceptor.Invoke("fetchMore", "fetchMore()", typeof(void));
 		}
-		[SmokeMethod("canFetchMore", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("canFetchMore(const QModelIndex&) const")]
 		public override bool CanFetchMore(QModelIndex parent) {
-			return ((QSqlQueryModel) interceptor).CanFetchMore(parent);
+			return (bool) interceptor.Invoke("canFetchMore#", "canFetchMore(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("canFetchMore", "() const", "")]
+		[SmokeMethod("canFetchMore() const")]
 		public bool CanFetchMore() {
-			return ((QSqlQueryModel) interceptor).CanFetchMore();
+			return (bool) interceptor.Invoke("canFetchMore", "canFetchMore() const", typeof(bool));
 		}
-		[SmokeMethod("queryChange", "()", "")]
+		[SmokeMethod("queryChange()")]
 		protected virtual void QueryChange() {
-			((QSqlQueryModel) interceptor).QueryChange();
+			interceptor.Invoke("queryChange", "queryChange()", typeof(void));
 		}
-		[SmokeMethod("indexInQuery", "(const QModelIndex&) const", "#")]
 		protected QModelIndex IndexInQuery(QModelIndex item) {
-			return ((QSqlQueryModel) interceptor).IndexInQuery(item);
+			return (QModelIndex) interceptor.Invoke("indexInQuery#", "indexInQuery(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), item);
 		}
-		[SmokeMethod("setLastError", "(const QSqlError&)", "#")]
 		protected void SetLastError(QSqlError error) {
-			((QSqlQueryModel) interceptor).SetLastError(error);
+			interceptor.Invoke("setLastError#", "setLastError(const QSqlError&)", typeof(void), typeof(QSqlError), error);
 		}
 		~QSqlQueryModel() {
-			DisposeQSqlQueryModel();
+			interceptor.Invoke("~QSqlQueryModel", "~QSqlQueryModel()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSqlQueryModel();
-		}
-		[SmokeMethod("~QSqlQueryModel", "()", "")]
-		private void DisposeQSqlQueryModel() {
-			((QSqlQueryModel) interceptor).DisposeQSqlQueryModel();
+			interceptor.Invoke("~QSqlQueryModel", "~QSqlQueryModel()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSqlQueryModelSignals Emit {
 			get { return (IQSqlQueryModelSignals) Q_EMIT; }

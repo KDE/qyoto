@@ -4,27 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDomImplementation")]
-	public class QDomImplementation : MarshalByRefObject, IDisposable {
-		protected QDomImplementation interceptor = null;
+	public class QDomImplementation : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDomImplementation(Type dummy) {}
-		[SmokeClass("QDomImplementation")]
-		interface IQDomImplementationProxy {
-			[SmokeMethod("operator==", "(const QDomImplementation&) const", "#")]
-			bool op_equals(QDomImplementation lhs, QDomImplementation arg1);
-			[SmokeMethod("invalidDataPolicy", "()", "")]
-			QDomImplementation.InvalidDataPolicy invalidDataPolicy();
-			[SmokeMethod("setInvalidDataPolicy", "(QDomImplementation::InvalidDataPolicy)", "$")]
-			void SetInvalidDataPolicy(QDomImplementation.InvalidDataPolicy policy);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomImplementation), this);
-			interceptor = (QDomImplementation) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomImplementation), "QDomImplementation", this);
 		}
-		private static IQDomImplementationProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDomImplementation() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomImplementationProxy), null);
-			staticInterceptor = (IQDomImplementationProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDomImplementation), "QDomImplementation", null);
 		}
 		public enum InvalidDataPolicy {
 			AcceptInvalidChars = 0,
@@ -33,64 +22,48 @@ namespace Qyoto {
 		}
 		public QDomImplementation() : this((Type) null) {
 			CreateProxy();
-			NewQDomImplementation();
-		}
-		[SmokeMethod("QDomImplementation", "()", "")]
-		private void NewQDomImplementation() {
-			((QDomImplementation) interceptor).NewQDomImplementation();
+			interceptor.Invoke("QDomImplementation", "QDomImplementation()", typeof(void));
 		}
 		public QDomImplementation(QDomImplementation arg1) : this((Type) null) {
 			CreateProxy();
-			NewQDomImplementation(arg1);
-		}
-		[SmokeMethod("QDomImplementation", "(const QDomImplementation&)", "#")]
-		private void NewQDomImplementation(QDomImplementation arg1) {
-			((QDomImplementation) interceptor).NewQDomImplementation(arg1);
+			interceptor.Invoke("QDomImplementation#", "QDomImplementation(const QDomImplementation&)", typeof(void), typeof(QDomImplementation), arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomImplementation)) { return false; }
 			return this == (QDomImplementation) o;
 		}
 		public override int GetHashCode() {
-			return ((QDomImplementation) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("hasFeature", "(const QString&, const QString&) const", "$$")]
 		public bool HasFeature(string feature, string version) {
-			return ((QDomImplementation) interceptor).HasFeature(feature,version);
+			return (bool) interceptor.Invoke("hasFeature$$", "hasFeature(const QString&, const QString&) const", typeof(bool), typeof(string), feature, typeof(string), version);
 		}
-		[SmokeMethod("createDocumentType", "(const QString&, const QString&, const QString&)", "$$$")]
 		public QDomDocumentType CreateDocumentType(string qName, string publicId, string systemId) {
-			return ((QDomImplementation) interceptor).CreateDocumentType(qName,publicId,systemId);
+			return (QDomDocumentType) interceptor.Invoke("createDocumentType$$$", "createDocumentType(const QString&, const QString&, const QString&)", typeof(QDomDocumentType), typeof(string), qName, typeof(string), publicId, typeof(string), systemId);
 		}
-		[SmokeMethod("createDocument", "(const QString&, const QString&, const QDomDocumentType&)", "$$#")]
 		public QDomDocument CreateDocument(string nsURI, string qName, QDomDocumentType doctype) {
-			return ((QDomImplementation) interceptor).CreateDocument(nsURI,qName,doctype);
+			return (QDomDocument) interceptor.Invoke("createDocument$$#", "createDocument(const QString&, const QString&, const QDomDocumentType&)", typeof(QDomDocument), typeof(string), nsURI, typeof(string), qName, typeof(QDomDocumentType), doctype);
 		}
-		[SmokeMethod("isNull", "()", "")]
 		public bool IsNull() {
-			return ((QDomImplementation) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull()", typeof(bool));
 		}
 		~QDomImplementation() {
-			DisposeQDomImplementation();
+			interceptor.Invoke("~QDomImplementation", "~QDomImplementation()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomImplementation();
-		}
-		[SmokeMethod("~QDomImplementation", "()", "")]
-		private void DisposeQDomImplementation() {
-			((QDomImplementation) interceptor).DisposeQDomImplementation();
+			interceptor.Invoke("~QDomImplementation", "~QDomImplementation()", typeof(void));
 		}
 		public static bool operator==(QDomImplementation lhs, QDomImplementation arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomImplementation&) const", typeof(bool), typeof(QDomImplementation), lhs, typeof(QDomImplementation), arg1);
 		}
 		public static bool operator!=(QDomImplementation lhs, QDomImplementation arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomImplementation&) const", typeof(bool), typeof(QDomImplementation), lhs, typeof(QDomImplementation), arg1);
 		}
 		public static QDomImplementation.InvalidDataPolicy invalidDataPolicy() {
-			return staticInterceptor.invalidDataPolicy();
+			return (QDomImplementation.InvalidDataPolicy) staticInterceptor.Invoke("invalidDataPolicy", "invalidDataPolicy()", typeof(QDomImplementation.InvalidDataPolicy));
 		}
 		public static void SetInvalidDataPolicy(QDomImplementation.InvalidDataPolicy policy) {
-			staticInterceptor.SetInvalidDataPolicy(policy);
+			staticInterceptor.Invoke("setInvalidDataPolicy$", "setInvalidDataPolicy(QDomImplementation::InvalidDataPolicy)", typeof(void), typeof(QDomImplementation.InvalidDataPolicy), policy);
 		}
 	}
 }

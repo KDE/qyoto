@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QToolButton")]
 	public class QToolButton : QAbstractButton, IDisposable {
  		protected QToolButton(Type dummy) : base((Type) null) {}
-		[SmokeClass("QToolButton")]
-		interface IQToolButtonProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolButton), this);
-			interceptor = (QToolButton) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QToolButton), "QToolButton", this);
 		}
-		private static IQToolButtonProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QToolButton() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolButtonProxy), null);
-			staticInterceptor = (IQToolButtonProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QToolButton), "QToolButton", null);
 		}
 		public enum ToolButtonPopupMode {
 			DelayedPopup = 0,
@@ -30,137 +21,112 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QToolButton::ToolButtonPopupMode", "popupMode")]
 		public QToolButton.ToolButtonPopupMode PopupMode {
-			[SmokeMethod("popupMode", "()", "")]
-			get { return ((QToolButton) interceptor).PopupMode; }
-			[SmokeMethod("setPopupMode", "(QToolButton::ToolButtonPopupMode)", "$")]
-			set { ((QToolButton) interceptor).PopupMode = value; }
+			get { return (QToolButton.ToolButtonPopupMode) interceptor.Invoke("popupMode", "popupMode()", typeof(QToolButton.ToolButtonPopupMode)); }
+			set { interceptor.Invoke("setPopupMode$", "setPopupMode(QToolButton::ToolButtonPopupMode)", typeof(void), typeof(QToolButton.ToolButtonPopupMode), value); }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
-			[SmokeMethod("toolButtonStyle", "()", "")]
-			get { return ((QToolButton) interceptor).ToolButtonStyle; }
-			[SmokeMethod("setToolButtonStyle", "(Qt::ToolButtonStyle)", "$")]
-			set { ((QToolButton) interceptor).ToolButtonStyle = value; }
+			get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
+			set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
 		}
 		[Q_PROPERTY("bool", "autoRaise")]
 		public bool AutoRaise {
-			[SmokeMethod("autoRaise", "()", "")]
-			get { return ((QToolButton) interceptor).AutoRaise; }
-			[SmokeMethod("setAutoRaise", "(bool)", "$")]
-			set { ((QToolButton) interceptor).AutoRaise = value; }
+			get { return (bool) interceptor.Invoke("autoRaise", "autoRaise()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoRaise$", "setAutoRaise(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::ArrowType", "arrowType")]
 		public Qt.ArrowType ArrowType {
-			[SmokeMethod("arrowType", "()", "")]
-			get { return ((QToolButton) interceptor).ArrowType; }
-			[SmokeMethod("setArrowType", "(Qt::ArrowType)", "$")]
-			set { ((QToolButton) interceptor).ArrowType = value; }
+			get { return (Qt.ArrowType) interceptor.Invoke("arrowType", "arrowType()", typeof(Qt.ArrowType)); }
+			set { interceptor.Invoke("setArrowType$", "setArrowType(Qt::ArrowType)", typeof(void), typeof(Qt.ArrowType), value); }
 		}
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQToolButton(parent);
-		}
-		[SmokeMethod("QToolButton", "(QWidget*)", "#")]
-		private void NewQToolButton(QWidget parent) {
-			((QToolButton) interceptor).NewQToolButton(parent);
+			interceptor.Invoke("QToolButton#", "QToolButton(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QToolButton() : this((Type) null) {
 			CreateProxy();
-			NewQToolButton();
+			interceptor.Invoke("QToolButton", "QToolButton()", typeof(void));
 		}
-		[SmokeMethod("QToolButton", "()", "")]
-		private void NewQToolButton() {
-			((QToolButton) interceptor).NewQToolButton();
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QToolButton) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QToolButton) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("setMenu", "(QMenu*)", "#")]
 		public void SetMenu(QMenu menu) {
-			((QToolButton) interceptor).SetMenu(menu);
+			interceptor.Invoke("setMenu#", "setMenu(QMenu*)", typeof(void), typeof(QMenu), menu);
 		}
-		[SmokeMethod("menu", "() const", "")]
 		public QMenu Menu() {
-			return ((QToolButton) interceptor).Menu();
+			return (QMenu) interceptor.Invoke("menu", "menu() const", typeof(QMenu));
 		}
-		[SmokeMethod("defaultAction", "() const", "")]
 		public QAction DefaultAction() {
-			return ((QToolButton) interceptor).DefaultAction();
+			return (QAction) interceptor.Invoke("defaultAction", "defaultAction() const", typeof(QAction));
 		}
 		[Q_SLOT("void showMenu()")]
-		[SmokeMethod("showMenu", "()", "")]
 		public void ShowMenu() {
-			((QToolButton) interceptor).ShowMenu();
+			interceptor.Invoke("showMenu", "showMenu()", typeof(void));
 		}
 		[Q_SLOT("void setDefaultAction(QAction*)")]
-		[SmokeMethod("setDefaultAction", "(QAction*)", "#")]
 		public void SetDefaultAction(QAction arg1) {
-			((QToolButton) interceptor).SetDefaultAction(arg1);
+			interceptor.Invoke("setDefaultAction#", "setDefaultAction(QAction*)", typeof(void), typeof(QAction), arg1);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QToolButton) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QToolButton) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QToolButton) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QToolButton) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("actionEvent", "(QActionEvent*)", "#")]
+		[SmokeMethod("actionEvent(QActionEvent*)")]
 		protected override void ActionEvent(QActionEvent arg1) {
-			((QToolButton) interceptor).ActionEvent(arg1);
+			interceptor.Invoke("actionEvent#", "actionEvent(QActionEvent*)", typeof(void), typeof(QActionEvent), arg1);
 		}
-		[SmokeMethod("enterEvent", "(QEvent*)", "#")]
+		[SmokeMethod("enterEvent(QEvent*)")]
 		protected override void EnterEvent(QEvent arg1) {
-			((QToolButton) interceptor).EnterEvent(arg1);
+			interceptor.Invoke("enterEvent#", "enterEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("leaveEvent", "(QEvent*)", "#")]
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected override void LeaveEvent(QEvent arg1) {
-			((QToolButton) interceptor).LeaveEvent(arg1);
+			interceptor.Invoke("leaveEvent#", "leaveEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			((QToolButton) interceptor).TimerEvent(arg1);
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QToolButton) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
+		[SmokeMethod("hitButton(const QPoint&) const")]
 		protected override bool HitButton(QPoint pos) {
-			return ((QToolButton) interceptor).HitButton(pos);
+			return (bool) interceptor.Invoke("hitButton#", "hitButton(const QPoint&) const", typeof(bool), typeof(QPoint), pos);
 		}
-		[SmokeMethod("nextCheckState", "()", "")]
+		[SmokeMethod("nextCheckState()")]
 		protected override void NextCheckState() {
-			((QToolButton) interceptor).NextCheckState();
+			interceptor.Invoke("nextCheckState", "nextCheckState()", typeof(void));
 		}
 		~QToolButton() {
-			DisposeQToolButton();
+			interceptor.Invoke("~QToolButton", "~QToolButton()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQToolButton();
-		}
-		[SmokeMethod("~QToolButton", "()", "")]
-		private void DisposeQToolButton() {
-			((QToolButton) interceptor).DisposeQToolButton();
+			interceptor.Invoke("~QToolButton", "~QToolButton()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQToolButtonSignals Emit {
 			get { return (IQToolButtonSignals) Q_EMIT; }

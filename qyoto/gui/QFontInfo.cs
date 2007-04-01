@@ -4,99 +4,71 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QFontInfo")]
-	public class QFontInfo : MarshalByRefObject, IDisposable {
-		protected QFontInfo interceptor = null;
+	public class QFontInfo : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFontInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontInfo), this);
-			interceptor = (QFontInfo) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFontInfo), "QFontInfo", this);
 		}
 		public QFontInfo(QFont arg1) : this((Type) null) {
 			CreateProxy();
-			NewQFontInfo(arg1);
-		}
-		[SmokeMethod("QFontInfo", "(const QFont&)", "#")]
-		private void NewQFontInfo(QFont arg1) {
-			((QFontInfo) interceptor).NewQFontInfo(arg1);
+			interceptor.Invoke("QFontInfo#", "QFontInfo(const QFont&)", typeof(void), typeof(QFont), arg1);
 		}
 		public QFontInfo(QFontInfo arg1) : this((Type) null) {
 			CreateProxy();
-			NewQFontInfo(arg1);
+			interceptor.Invoke("QFontInfo#", "QFontInfo(const QFontInfo&)", typeof(void), typeof(QFontInfo), arg1);
 		}
-		[SmokeMethod("QFontInfo", "(const QFontInfo&)", "#")]
-		private void NewQFontInfo(QFontInfo arg1) {
-			((QFontInfo) interceptor).NewQFontInfo(arg1);
-		}
-		[SmokeMethod("family", "() const", "")]
 		public string Family() {
-			return ((QFontInfo) interceptor).Family();
+			return (string) interceptor.Invoke("family", "family() const", typeof(string));
 		}
-		[SmokeMethod("pixelSize", "() const", "")]
 		public int PixelSize() {
-			return ((QFontInfo) interceptor).PixelSize();
+			return (int) interceptor.Invoke("pixelSize", "pixelSize() const", typeof(int));
 		}
-		[SmokeMethod("pointSize", "() const", "")]
 		public int PointSize() {
-			return ((QFontInfo) interceptor).PointSize();
+			return (int) interceptor.Invoke("pointSize", "pointSize() const", typeof(int));
 		}
-		[SmokeMethod("pointSizeF", "() const", "")]
 		public double PointSizeF() {
-			return ((QFontInfo) interceptor).PointSizeF();
+			return (double) interceptor.Invoke("pointSizeF", "pointSizeF() const", typeof(double));
 		}
-		[SmokeMethod("italic", "() const", "")]
 		public bool Italic() {
-			return ((QFontInfo) interceptor).Italic();
+			return (bool) interceptor.Invoke("italic", "italic() const", typeof(bool));
 		}
-		[SmokeMethod("style", "() const", "")]
 		public QFont.Style Style() {
-			return ((QFontInfo) interceptor).Style();
+			return (QFont.Style) interceptor.Invoke("style", "style() const", typeof(QFont.Style));
 		}
-		[SmokeMethod("weight", "() const", "")]
 		public int Weight() {
-			return ((QFontInfo) interceptor).Weight();
+			return (int) interceptor.Invoke("weight", "weight() const", typeof(int));
 		}
-		[SmokeMethod("bold", "() const", "")]
 		public bool Bold() {
-			return ((QFontInfo) interceptor).Bold();
+			return (bool) interceptor.Invoke("bold", "bold() const", typeof(bool));
 		}
-		[SmokeMethod("underline", "() const", "")]
 		public bool Underline() {
-			return ((QFontInfo) interceptor).Underline();
+			return (bool) interceptor.Invoke("underline", "underline() const", typeof(bool));
 		}
-		[SmokeMethod("overline", "() const", "")]
 		public bool Overline() {
-			return ((QFontInfo) interceptor).Overline();
+			return (bool) interceptor.Invoke("overline", "overline() const", typeof(bool));
 		}
-		[SmokeMethod("strikeOut", "() const", "")]
 		public bool StrikeOut() {
-			return ((QFontInfo) interceptor).StrikeOut();
+			return (bool) interceptor.Invoke("strikeOut", "strikeOut() const", typeof(bool));
 		}
-		[SmokeMethod("fixedPitch", "() const", "")]
 		public bool FixedPitch() {
-			return ((QFontInfo) interceptor).FixedPitch();
+			return (bool) interceptor.Invoke("fixedPitch", "fixedPitch() const", typeof(bool));
 		}
-		[SmokeMethod("styleHint", "() const", "")]
 		public QFont.StyleHint StyleHint() {
-			return ((QFontInfo) interceptor).StyleHint();
+			return (QFont.StyleHint) interceptor.Invoke("styleHint", "styleHint() const", typeof(QFont.StyleHint));
 		}
-		[SmokeMethod("rawMode", "() const", "")]
 		public bool RawMode() {
-			return ((QFontInfo) interceptor).RawMode();
+			return (bool) interceptor.Invoke("rawMode", "rawMode() const", typeof(bool));
 		}
-		[SmokeMethod("exactMatch", "() const", "")]
 		public bool ExactMatch() {
-			return ((QFontInfo) interceptor).ExactMatch();
+			return (bool) interceptor.Invoke("exactMatch", "exactMatch() const", typeof(bool));
 		}
 		~QFontInfo() {
-			DisposeQFontInfo();
+			interceptor.Invoke("~QFontInfo", "~QFontInfo()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQFontInfo();
-		}
-		[SmokeMethod("~QFontInfo", "()", "")]
-		private void DisposeQFontInfo() {
-			((QFontInfo) interceptor).DisposeQFontInfo();
+			interceptor.Invoke("~QFontInfo", "~QFontInfo()", typeof(void));
 		}
 	}
 }

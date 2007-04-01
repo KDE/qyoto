@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QDirModel")]
 	public class QDirModel : QAbstractItemModel, IDisposable {
  		protected QDirModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDirModel")]
-		interface IQDirModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDirModel), this);
-			interceptor = (QDirModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDirModel), "QDirModel", this);
 		}
-		private static IQDirModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDirModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDirModelProxy), null);
-			staticInterceptor = (IQDirModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDirModel), "QDirModel", null);
 		}
 		public enum Roles {
 			FileIconRole = Qt.ItemDataRole.DecorationRole,
@@ -30,248 +21,200 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "resolveSymlinks")]
 		public bool ResolveSymlinks {
-			[SmokeMethod("resolveSymlinks", "()", "")]
-			get { return ((QDirModel) interceptor).ResolveSymlinks; }
-			[SmokeMethod("setResolveSymlinks", "(bool)", "$")]
-			set { ((QDirModel) interceptor).ResolveSymlinks = value; }
+			get { return (bool) interceptor.Invoke("resolveSymlinks", "resolveSymlinks()", typeof(bool)); }
+			set { interceptor.Invoke("setResolveSymlinks$", "setResolveSymlinks(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			[SmokeMethod("isReadOnly", "()", "")]
-			get { return ((QDirModel) interceptor).ReadOnly; }
-			[SmokeMethod("setReadOnly", "(bool)", "$")]
-			set { ((QDirModel) interceptor).ReadOnly = value; }
+			get { return (bool) interceptor.Invoke("isReadOnly", "isReadOnly()", typeof(bool)); }
+			set { interceptor.Invoke("setReadOnly$", "setReadOnly(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "lazyChildCount")]
 		public bool LazyChildCount {
-			[SmokeMethod("lazyChildCount", "()", "")]
-			get { return ((QDirModel) interceptor).LazyChildCount; }
-			[SmokeMethod("setLazyChildCount", "(bool)", "$")]
-			set { ((QDirModel) interceptor).LazyChildCount = value; }
+			get { return (bool) interceptor.Invoke("lazyChildCount", "lazyChildCount()", typeof(bool)); }
+			set { interceptor.Invoke("setLazyChildCount$", "setLazyChildCount(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QDirModel(List<string> nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDirModel(nameFilters,filters,sort,parent);
-		}
-		[SmokeMethod("QDirModel", "(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)", "?$$#")]
-		private void NewQDirModel(List<string> nameFilters, int filters, int sort, QObject parent) {
-			((QDirModel) interceptor).NewQDirModel(nameFilters,filters,sort,parent);
+			interceptor.Invoke("QDirModel?$$#", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)", typeof(void), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort, typeof(QObject), parent);
 		}
 		public QDirModel(List<string> nameFilters, int filters, int sort) : this((Type) null) {
 			CreateProxy();
-			NewQDirModel(nameFilters,filters,sort);
-		}
-		[SmokeMethod("QDirModel", "(const QStringList&, QDir::Filters, QDir::SortFlags)", "?$$")]
-		private void NewQDirModel(List<string> nameFilters, int filters, int sort) {
-			((QDirModel) interceptor).NewQDirModel(nameFilters,filters,sort);
+			interceptor.Invoke("QDirModel?$$", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags)", typeof(void), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort);
 		}
 		public QDirModel(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDirModel(parent);
-		}
-		[SmokeMethod("QDirModel", "(QObject*)", "#")]
-		private void NewQDirModel(QObject parent) {
-			((QDirModel) interceptor).NewQDirModel(parent);
+			interceptor.Invoke("QDirModel#", "QDirModel(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QDirModel() : this((Type) null) {
 			CreateProxy();
-			NewQDirModel();
+			interceptor.Invoke("QDirModel", "QDirModel()", typeof(void));
 		}
-		[SmokeMethod("QDirModel", "()", "")]
-		private void NewQDirModel() {
-			((QDirModel) interceptor).NewQDirModel();
-		}
-		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
+		[SmokeMethod("index(int, int, const QModelIndex&) const")]
 		public override QModelIndex Index(int row, int column, QModelIndex parent) {
-			return ((QDirModel) interceptor).Index(row,column,parent);
+			return (QModelIndex) interceptor.Invoke("index$$#", "index(int, int, const QModelIndex&) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("index", "(int, int) const", "$$")]
+		[SmokeMethod("index(int, int) const")]
 		public virtual QModelIndex Index(int row, int column) {
-			return ((QDirModel) interceptor).Index(row,column);
+			return (QModelIndex) interceptor.Invoke("index$$", "index(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("parent(const QModelIndex&) const")]
 		public override QModelIndex Parent(QModelIndex child) {
-			return ((QDirModel) interceptor).Parent(child);
+			return (QModelIndex) interceptor.Invoke("parent#", "parent(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), child);
 		}
-		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("rowCount(const QModelIndex&) const")]
 		public override int RowCount(QModelIndex parent) {
-			return ((QDirModel) interceptor).RowCount(parent);
+			return (int) interceptor.Invoke("rowCount#", "rowCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("rowCount", "() const", "")]
+		[SmokeMethod("rowCount() const")]
 		public virtual int RowCount() {
-			return ((QDirModel) interceptor).RowCount();
+			return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
 		}
-		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("columnCount(const QModelIndex&) const")]
 		public override int ColumnCount(QModelIndex parent) {
-			return ((QDirModel) interceptor).ColumnCount(parent);
+			return (int) interceptor.Invoke("columnCount#", "columnCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("columnCount", "() const", "")]
+		[SmokeMethod("columnCount() const")]
 		public virtual int ColumnCount() {
-			return ((QDirModel) interceptor).ColumnCount();
+			return (int) interceptor.Invoke("columnCount", "columnCount() const", typeof(int));
 		}
-		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
+		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public override QVariant Data(QModelIndex index, int role) {
-			return ((QDirModel) interceptor).Data(index,role);
+			return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), index, typeof(int), role);
 		}
-		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("data(const QModelIndex&) const")]
 		public virtual QVariant Data(QModelIndex index) {
-			return ((QDirModel) interceptor).Data(index);
+			return (QVariant) interceptor.Invoke("data#", "data(const QModelIndex&) const", typeof(QVariant), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&, int)")]
 		public override bool SetData(QModelIndex index, QVariant value, int role) {
-			return ((QDirModel) interceptor).SetData(index,value,role);
+			return (bool) interceptor.Invoke("setData##$", "setData(const QModelIndex&, const QVariant&, int)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value, typeof(int), role);
 		}
-		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
 		public override bool SetData(QModelIndex index, QVariant value) {
-			return ((QDirModel) interceptor).SetData(index,value);
+			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ((QDirModel) interceptor).HeaderData(section,orientation,role);
+			return (QVariant) interceptor.Invoke("headerData$$$", "headerData(int, Qt::Orientation, int) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(int), role);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation) const", "$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation) {
-			return ((QDirModel) interceptor).HeaderData(section,orientation);
+			return (QVariant) interceptor.Invoke("headerData$$", "headerData(int, Qt::Orientation) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("hasChildren(const QModelIndex&) const")]
 		public override bool HasChildren(QModelIndex index) {
-			return ((QDirModel) interceptor).HasChildren(index);
+			return (bool) interceptor.Invoke("hasChildren#", "hasChildren(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("hasChildren", "() const", "")]
+		[SmokeMethod("hasChildren() const")]
 		public override bool HasChildren() {
-			return ((QDirModel) interceptor).HasChildren();
+			return (bool) interceptor.Invoke("hasChildren", "hasChildren() const", typeof(bool));
 		}
-		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("flags(const QModelIndex&) const")]
 		public override int Flags(QModelIndex index) {
-			return ((QDirModel) interceptor).Flags(index);
+			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
+		[SmokeMethod("sort(int, Qt::SortOrder)")]
 		public override void Sort(int column, Qt.SortOrder order) {
-			((QDirModel) interceptor).Sort(column,order);
+			interceptor.Invoke("sort$$", "sort(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}
-		[SmokeMethod("sort", "(int)", "$")]
+		[SmokeMethod("sort(int)")]
 		public override void Sort(int column) {
-			((QDirModel) interceptor).Sort(column);
+			interceptor.Invoke("sort$", "sort(int)", typeof(void), typeof(int), column);
 		}
-		[SmokeMethod("mimeTypes", "() const", "")]
+		[SmokeMethod("mimeTypes() const")]
 		public override List<string> MimeTypes() {
-			return ((QDirModel) interceptor).MimeTypes();
+			return (List<string>) interceptor.Invoke("mimeTypes", "mimeTypes() const", typeof(List<string>));
 		}
-		[SmokeMethod("mimeData", "(const QModelIndexList&) const", "?")]
+		[SmokeMethod("mimeData(const QModelIndexList&) const")]
 		public override QMimeData MimeData(List<QModelIndex> indexes) {
-			return ((QDirModel) interceptor).MimeData(indexes);
+			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QModelIndexList&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
 		}
-		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]
+		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
-			return ((QDirModel) interceptor).DropMimeData(data,action,row,column,parent);
+			return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("supportedDropActions", "() const", "")]
+		[SmokeMethod("supportedDropActions() const")]
 		public override int SupportedDropActions() {
-			return ((QDirModel) interceptor).SupportedDropActions();
+			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
 		}
-		[SmokeMethod("setIconProvider", "(QFileIconProvider*)", "#")]
 		public void SetIconProvider(QFileIconProvider provider) {
-			((QDirModel) interceptor).SetIconProvider(provider);
+			interceptor.Invoke("setIconProvider#", "setIconProvider(QFileIconProvider*)", typeof(void), typeof(QFileIconProvider), provider);
 		}
-		[SmokeMethod("iconProvider", "() const", "")]
 		public QFileIconProvider IconProvider() {
-			return ((QDirModel) interceptor).IconProvider();
+			return (QFileIconProvider) interceptor.Invoke("iconProvider", "iconProvider() const", typeof(QFileIconProvider));
 		}
-		[SmokeMethod("setNameFilters", "(const QStringList&)", "?")]
 		public void SetNameFilters(List<string> filters) {
-			((QDirModel) interceptor).SetNameFilters(filters);
+			interceptor.Invoke("setNameFilters?", "setNameFilters(const QStringList&)", typeof(void), typeof(List<string>), filters);
 		}
-		[SmokeMethod("nameFilters", "() const", "")]
 		public List<string> NameFilters() {
-			return ((QDirModel) interceptor).NameFilters();
+			return (List<string>) interceptor.Invoke("nameFilters", "nameFilters() const", typeof(List<string>));
 		}
-		[SmokeMethod("setFilter", "(QDir::Filters)", "$")]
 		public void SetFilter(int filters) {
-			((QDirModel) interceptor).SetFilter(filters);
+			interceptor.Invoke("setFilter$", "setFilter(QDir::Filters)", typeof(void), typeof(int), filters);
 		}
-		[SmokeMethod("filter", "() const", "")]
 		public int Filter() {
-			return ((QDirModel) interceptor).Filter();
+			return (int) interceptor.Invoke("filter", "filter() const", typeof(int));
 		}
-		[SmokeMethod("setSorting", "(QDir::SortFlags)", "$")]
 		public void SetSorting(int sort) {
-			((QDirModel) interceptor).SetSorting(sort);
+			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(int), sort);
 		}
-		[SmokeMethod("sorting", "() const", "")]
 		public int Sorting() {
-			return ((QDirModel) interceptor).Sorting();
+			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
 		}
-		[SmokeMethod("isReadOnly", "() const", "")]
 		public bool IsReadOnly() {
-			return ((QDirModel) interceptor).IsReadOnly();
+			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
 		}
-		[SmokeMethod("refresh", "(const QModelIndex&)", "#")]
 		public void Refresh(QModelIndex parent) {
-			((QDirModel) interceptor).Refresh(parent);
+			interceptor.Invoke("refresh#", "refresh(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("refresh", "()", "")]
 		public void Refresh() {
-			((QDirModel) interceptor).Refresh();
+			interceptor.Invoke("refresh", "refresh()", typeof(void));
 		}
-		[SmokeMethod("index", "(const QString&, int) const", "$$")]
 		public QModelIndex Index(string path, int column) {
-			return ((QDirModel) interceptor).Index(path,column);
+			return (QModelIndex) interceptor.Invoke("index$$", "index(const QString&, int) const", typeof(QModelIndex), typeof(string), path, typeof(int), column);
 		}
-		[SmokeMethod("index", "(const QString&) const", "$")]
 		public QModelIndex Index(string path) {
-			return ((QDirModel) interceptor).Index(path);
+			return (QModelIndex) interceptor.Invoke("index$", "index(const QString&) const", typeof(QModelIndex), typeof(string), path);
 		}
-		[SmokeMethod("isDir", "(const QModelIndex&) const", "#")]
 		public bool IsDir(QModelIndex index) {
-			return ((QDirModel) interceptor).IsDir(index);
+			return (bool) interceptor.Invoke("isDir#", "isDir(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("mkdir", "(const QModelIndex&, const QString&)", "#$")]
 		public QModelIndex Mkdir(QModelIndex parent, string name) {
-			return ((QDirModel) interceptor).Mkdir(parent,name);
+			return (QModelIndex) interceptor.Invoke("mkdir#$", "mkdir(const QModelIndex&, const QString&)", typeof(QModelIndex), typeof(QModelIndex), parent, typeof(string), name);
 		}
-		[SmokeMethod("rmdir", "(const QModelIndex&)", "#")]
 		public bool Rmdir(QModelIndex index) {
-			return ((QDirModel) interceptor).Rmdir(index);
+			return (bool) interceptor.Invoke("rmdir#", "rmdir(const QModelIndex&)", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("remove", "(const QModelIndex&)", "#")]
 		public bool Remove(QModelIndex index) {
-			return ((QDirModel) interceptor).Remove(index);
+			return (bool) interceptor.Invoke("remove#", "remove(const QModelIndex&)", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("filePath", "(const QModelIndex&) const", "#")]
 		public string FilePath(QModelIndex index) {
-			return ((QDirModel) interceptor).FilePath(index);
+			return (string) interceptor.Invoke("filePath#", "filePath(const QModelIndex&) const", typeof(string), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("fileName", "(const QModelIndex&) const", "#")]
 		public string FileName(QModelIndex index) {
-			return ((QDirModel) interceptor).FileName(index);
+			return (string) interceptor.Invoke("fileName#", "fileName(const QModelIndex&) const", typeof(string), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("fileIcon", "(const QModelIndex&) const", "#")]
 		public QIcon FileIcon(QModelIndex index) {
-			return ((QDirModel) interceptor).FileIcon(index);
+			return (QIcon) interceptor.Invoke("fileIcon#", "fileIcon(const QModelIndex&) const", typeof(QIcon), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("fileInfo", "(const QModelIndex&) const", "#")]
 		public QFileInfo FileInfo(QModelIndex index) {
-			return ((QDirModel) interceptor).FileInfo(index);
+			return (QFileInfo) interceptor.Invoke("fileInfo#", "fileInfo(const QModelIndex&) const", typeof(QFileInfo), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("parent", "() const", "")]
 		public QObject Parent() {
-			return ((QDirModel) interceptor).Parent();
+			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
 		~QDirModel() {
-			DisposeQDirModel();
+			interceptor.Invoke("~QDirModel", "~QDirModel()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDirModel();
-		}
-		[SmokeMethod("~QDirModel", "()", "")]
-		private void DisposeQDirModel() {
-			((QDirModel) interceptor).DisposeQDirModel();
+			interceptor.Invoke("~QDirModel", "~QDirModel()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDirModelSignals Emit {
 			get { return (IQDirModelSignals) Q_EMIT; }

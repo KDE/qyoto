@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QImageIOHandler")]
-	public abstract class QImageIOHandler : MarshalByRefObject {
-		protected QImageIOHandler interceptor = null;
+	public abstract class QImageIOHandler : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QImageIOHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageIOHandler), this);
-			interceptor = (QImageIOHandler) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QImageIOHandler), "QImageIOHandler", this);
 		}
 		public enum ImageOption {
 			Size = 0,
@@ -31,79 +30,71 @@ namespace Qyoto {
 		// QImageIOHandler* QImageIOHandler(QImageIOHandlerPrivate& arg1); >>>> NOT CONVERTED
 		public QImageIOHandler() : this((Type) null) {
 			CreateProxy();
-			NewQImageIOHandler();
+			interceptor.Invoke("QImageIOHandler", "QImageIOHandler()", typeof(void));
 		}
-		[SmokeMethod("QImageIOHandler", "()", "")]
-		private void NewQImageIOHandler() {
-			((QImageIOHandler) interceptor).NewQImageIOHandler();
-		}
-		[SmokeMethod("setDevice", "(QIODevice*)", "#")]
 		public void SetDevice(QIODevice device) {
-			((QImageIOHandler) interceptor).SetDevice(device);
+			interceptor.Invoke("setDevice#", "setDevice(QIODevice*)", typeof(void), typeof(QIODevice), device);
 		}
-		[SmokeMethod("device", "() const", "")]
 		public QIODevice Device() {
-			return ((QImageIOHandler) interceptor).Device();
+			return (QIODevice) interceptor.Invoke("device", "device() const", typeof(QIODevice));
 		}
-		[SmokeMethod("setFormat", "(const QByteArray&)", "#")]
 		public void SetFormat(QByteArray format) {
-			((QImageIOHandler) interceptor).SetFormat(format);
+			interceptor.Invoke("setFormat#", "setFormat(const QByteArray&)", typeof(void), typeof(QByteArray), format);
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QByteArray Format() {
-			return ((QImageIOHandler) interceptor).Format();
+			return (QByteArray) interceptor.Invoke("format", "format() const", typeof(QByteArray));
 		}
-		[SmokeMethod("name", "() const", "")]
+		[SmokeMethod("name() const")]
 		public virtual QByteArray Name() {
-			return ((QImageIOHandler) interceptor).Name();
+			return (QByteArray) interceptor.Invoke("name", "name() const", typeof(QByteArray));
 		}
-		[SmokeMethod("canRead", "() const", "")]
+		[SmokeMethod("canRead() const")]
 		public abstract bool CanRead();
-		[SmokeMethod("read", "(QImage*)", "#")]
+		[SmokeMethod("read(QImage*)")]
 		public abstract bool Read(QImage image);
-		[SmokeMethod("write", "(const QImage&)", "#")]
+		[SmokeMethod("write(const QImage&)")]
 		public virtual bool Write(QImage image) {
-			return ((QImageIOHandler) interceptor).Write(image);
+			return (bool) interceptor.Invoke("write#", "write(const QImage&)", typeof(bool), typeof(QImage), image);
 		}
-		[SmokeMethod("option", "(QImageIOHandler::ImageOption) const", "$")]
+		[SmokeMethod("option(QImageIOHandler::ImageOption) const")]
 		public virtual QVariant Option(QImageIOHandler.ImageOption option) {
-			return ((QImageIOHandler) interceptor).Option(option);
+			return (QVariant) interceptor.Invoke("option$", "option(QImageIOHandler::ImageOption) const", typeof(QVariant), typeof(QImageIOHandler.ImageOption), option);
 		}
-		[SmokeMethod("setOption", "(QImageIOHandler::ImageOption, const QVariant&)", "$#")]
+		[SmokeMethod("setOption(QImageIOHandler::ImageOption, const QVariant&)")]
 		public virtual void SetOption(QImageIOHandler.ImageOption option, QVariant value) {
-			((QImageIOHandler) interceptor).SetOption(option,value);
+			interceptor.Invoke("setOption$#", "setOption(QImageIOHandler::ImageOption, const QVariant&)", typeof(void), typeof(QImageIOHandler.ImageOption), option, typeof(QVariant), value);
 		}
-		[SmokeMethod("supportsOption", "(QImageIOHandler::ImageOption) const", "$")]
+		[SmokeMethod("supportsOption(QImageIOHandler::ImageOption) const")]
 		public virtual bool SupportsOption(QImageIOHandler.ImageOption option) {
-			return ((QImageIOHandler) interceptor).SupportsOption(option);
+			return (bool) interceptor.Invoke("supportsOption$", "supportsOption(QImageIOHandler::ImageOption) const", typeof(bool), typeof(QImageIOHandler.ImageOption), option);
 		}
-		[SmokeMethod("jumpToNextImage", "()", "")]
+		[SmokeMethod("jumpToNextImage()")]
 		public virtual bool JumpToNextImage() {
-			return ((QImageIOHandler) interceptor).JumpToNextImage();
+			return (bool) interceptor.Invoke("jumpToNextImage", "jumpToNextImage()", typeof(bool));
 		}
-		[SmokeMethod("jumpToImage", "(int)", "$")]
+		[SmokeMethod("jumpToImage(int)")]
 		public virtual bool JumpToImage(int imageNumber) {
-			return ((QImageIOHandler) interceptor).JumpToImage(imageNumber);
+			return (bool) interceptor.Invoke("jumpToImage$", "jumpToImage(int)", typeof(bool), typeof(int), imageNumber);
 		}
-		[SmokeMethod("loopCount", "() const", "")]
+		[SmokeMethod("loopCount() const")]
 		public virtual int LoopCount() {
-			return ((QImageIOHandler) interceptor).LoopCount();
+			return (int) interceptor.Invoke("loopCount", "loopCount() const", typeof(int));
 		}
-		[SmokeMethod("imageCount", "() const", "")]
+		[SmokeMethod("imageCount() const")]
 		public virtual int ImageCount() {
-			return ((QImageIOHandler) interceptor).ImageCount();
+			return (int) interceptor.Invoke("imageCount", "imageCount() const", typeof(int));
 		}
-		[SmokeMethod("nextImageDelay", "() const", "")]
+		[SmokeMethod("nextImageDelay() const")]
 		public virtual int NextImageDelay() {
-			return ((QImageIOHandler) interceptor).NextImageDelay();
+			return (int) interceptor.Invoke("nextImageDelay", "nextImageDelay() const", typeof(int));
 		}
-		[SmokeMethod("currentImageNumber", "() const", "")]
+		[SmokeMethod("currentImageNumber() const")]
 		public virtual int CurrentImageNumber() {
-			return ((QImageIOHandler) interceptor).CurrentImageNumber();
+			return (int) interceptor.Invoke("currentImageNumber", "currentImageNumber() const", typeof(int));
 		}
-		[SmokeMethod("currentImageRect", "() const", "")]
+		[SmokeMethod("currentImageRect() const")]
 		public virtual QRect CurrentImageRect() {
-			return ((QImageIOHandler) interceptor).CurrentImageRect();
+			return (QRect) interceptor.Invoke("currentImageRect", "currentImageRect() const", typeof(QRect));
 		}
 	}
 }

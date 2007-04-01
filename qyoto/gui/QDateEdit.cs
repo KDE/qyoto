@@ -6,69 +6,40 @@ namespace Qyoto {
 	[SmokeClass("QDateEdit")]
 	public class QDateEdit : QDateTimeEdit, IDisposable {
  		protected QDateEdit(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDateEdit")]
-		interface IQDateEditProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateEdit), this);
-			interceptor = (QDateEdit) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDateEdit), "QDateEdit", this);
 		}
-		private static IQDateEditProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDateEdit() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDateEditProxy), null);
-			staticInterceptor = (IQDateEditProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDateEdit), "QDateEdit", null);
 		}
 		public QDateEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDateEdit(parent);
-		}
-		[SmokeMethod("QDateEdit", "(QWidget*)", "#")]
-		private void NewQDateEdit(QWidget parent) {
-			((QDateEdit) interceptor).NewQDateEdit(parent);
+			interceptor.Invoke("QDateEdit#", "QDateEdit(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QDateEdit() : this((Type) null) {
 			CreateProxy();
-			NewQDateEdit();
-		}
-		[SmokeMethod("QDateEdit", "()", "")]
-		private void NewQDateEdit() {
-			((QDateEdit) interceptor).NewQDateEdit();
+			interceptor.Invoke("QDateEdit", "QDateEdit()", typeof(void));
 		}
 		public QDateEdit(QDate date, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDateEdit(date,parent);
-		}
-		[SmokeMethod("QDateEdit", "(const QDate&, QWidget*)", "##")]
-		private void NewQDateEdit(QDate date, QWidget parent) {
-			((QDateEdit) interceptor).NewQDateEdit(date,parent);
+			interceptor.Invoke("QDateEdit##", "QDateEdit(const QDate&, QWidget*)", typeof(void), typeof(QDate), date, typeof(QWidget), parent);
 		}
 		public QDateEdit(QDate date) : this((Type) null) {
 			CreateProxy();
-			NewQDateEdit(date);
-		}
-		[SmokeMethod("QDateEdit", "(const QDate&)", "#")]
-		private void NewQDateEdit(QDate date) {
-			((QDateEdit) interceptor).NewQDateEdit(date);
+			interceptor.Invoke("QDateEdit#", "QDateEdit(const QDate&)", typeof(void), typeof(QDate), date);
 		}
 		~QDateEdit() {
-			DisposeQDateEdit();
+			interceptor.Invoke("~QDateEdit", "~QDateEdit()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDateEdit();
-		}
-		[SmokeMethod("~QDateEdit", "()", "")]
-		private void DisposeQDateEdit() {
-			((QDateEdit) interceptor).DisposeQDateEdit();
+			interceptor.Invoke("~QDateEdit", "~QDateEdit()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDateEditSignals Emit {
 			get { return (IQDateEditSignals) Q_EMIT; }

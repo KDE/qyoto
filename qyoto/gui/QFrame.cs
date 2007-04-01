@@ -6,21 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QFrame")]
 	public class QFrame : QWidget, IDisposable {
  		protected QFrame(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFrame")]
-		interface IQFrameProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFrame), this);
-			interceptor = (QFrame) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFrame), "QFrame", this);
 		}
-		private static IQFrameProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFrame() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFrameProxy), null);
-			staticInterceptor = (IQFrameProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFrame), "QFrame", null);
 		}
 		public enum Shape {
 			NoFrame = 0,
@@ -42,111 +33,81 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QFrame::Shape", "frameShape")]
 		public QFrame.Shape FrameShape {
-			[SmokeMethod("frameShape", "()", "")]
-			get { return ((QFrame) interceptor).FrameShape; }
-			[SmokeMethod("setFrameShape", "(QFrame::Shape)", "$")]
-			set { ((QFrame) interceptor).FrameShape = value; }
+			get { return (QFrame.Shape) interceptor.Invoke("frameShape", "frameShape()", typeof(QFrame.Shape)); }
+			set { interceptor.Invoke("setFrameShape$", "setFrameShape(QFrame::Shape)", typeof(void), typeof(QFrame.Shape), value); }
 		}
 		[Q_PROPERTY("QFrame::Shadow", "frameShadow")]
 		public QFrame.Shadow FrameShadow {
-			[SmokeMethod("frameShadow", "()", "")]
-			get { return ((QFrame) interceptor).FrameShadow; }
-			[SmokeMethod("setFrameShadow", "(QFrame::Shadow)", "$")]
-			set { ((QFrame) interceptor).FrameShadow = value; }
+			get { return (QFrame.Shadow) interceptor.Invoke("frameShadow", "frameShadow()", typeof(QFrame.Shadow)); }
+			set { interceptor.Invoke("setFrameShadow$", "setFrameShadow(QFrame::Shadow)", typeof(void), typeof(QFrame.Shadow), value); }
 		}
 		[Q_PROPERTY("int", "lineWidth")]
 		public int LineWidth {
-			[SmokeMethod("lineWidth", "()", "")]
-			get { return ((QFrame) interceptor).LineWidth; }
-			[SmokeMethod("setLineWidth", "(int)", "$")]
-			set { ((QFrame) interceptor).LineWidth = value; }
+			get { return (int) interceptor.Invoke("lineWidth", "lineWidth()", typeof(int)); }
+			set { interceptor.Invoke("setLineWidth$", "setLineWidth(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "midLineWidth")]
 		public int MidLineWidth {
-			[SmokeMethod("midLineWidth", "()", "")]
-			get { return ((QFrame) interceptor).MidLineWidth; }
-			[SmokeMethod("setMidLineWidth", "(int)", "$")]
-			set { ((QFrame) interceptor).MidLineWidth = value; }
+			get { return (int) interceptor.Invoke("midLineWidth", "midLineWidth()", typeof(int)); }
+			set { interceptor.Invoke("setMidLineWidth$", "setMidLineWidth(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "frameWidth")]
 		public int FrameWidth {
-			[SmokeMethod("frameWidth", "()", "")]
-			get { return ((QFrame) interceptor).FrameWidth; }
+			get { return (int) interceptor.Invoke("frameWidth", "frameWidth()", typeof(int)); }
 		}
 		[Q_PROPERTY("QRect", "frameRect")]
 		public QRect FrameRect {
-			[SmokeMethod("frameRect", "()", "")]
-			get { return ((QFrame) interceptor).FrameRect; }
-			[SmokeMethod("setFrameRect", "(QRect)", "#")]
-			set { ((QFrame) interceptor).FrameRect = value; }
+			get { return (QRect) interceptor.Invoke("frameRect", "frameRect()", typeof(QRect)); }
+			set { interceptor.Invoke("setFrameRect#", "setFrameRect(QRect)", typeof(void), typeof(QRect), value); }
 		}
 		public QFrame(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQFrame(parent,f);
-		}
-		[SmokeMethod("QFrame", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQFrame(QWidget parent, int f) {
-			((QFrame) interceptor).NewQFrame(parent,f);
+			interceptor.Invoke("QFrame#$", "QFrame(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
 		public QFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQFrame(parent);
-		}
-		[SmokeMethod("QFrame", "(QWidget*)", "#")]
-		private void NewQFrame(QWidget parent) {
-			((QFrame) interceptor).NewQFrame(parent);
+			interceptor.Invoke("QFrame#", "QFrame(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QFrame() : this((Type) null) {
 			CreateProxy();
-			NewQFrame();
+			interceptor.Invoke("QFrame", "QFrame()", typeof(void));
 		}
-		[SmokeMethod("QFrame", "()", "")]
-		private void NewQFrame() {
-			((QFrame) interceptor).NewQFrame();
-		}
-		[SmokeMethod("frameStyle", "() const", "")]
 		public int FrameStyle() {
-			return ((QFrame) interceptor).FrameStyle();
+			return (int) interceptor.Invoke("frameStyle", "frameStyle() const", typeof(int));
 		}
-		[SmokeMethod("setFrameStyle", "(int)", "$")]
 		public void SetFrameStyle(int arg1) {
-			((QFrame) interceptor).SetFrameStyle(arg1);
+			interceptor.Invoke("setFrameStyle$", "setFrameStyle(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QFrame) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QFrame) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QFrame) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QFrame) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("drawFrame", "(QPainter*)", "#")]
 		protected void DrawFrame(QPainter arg1) {
-			((QFrame) interceptor).DrawFrame(arg1);
+			interceptor.Invoke("drawFrame#", "drawFrame(QPainter*)", typeof(void), typeof(QPainter), arg1);
 		}
 		~QFrame() {
-			DisposeQFrame();
+			interceptor.Invoke("~QFrame", "~QFrame()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFrame();
-		}
-		[SmokeMethod("~QFrame", "()", "")]
-		private void DisposeQFrame() {
-			((QFrame) interceptor).DisposeQFrame();
+			interceptor.Invoke("~QFrame", "~QFrame()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQFrameSignals Emit {
 			get { return (IQFrameSignals) Q_EMIT; }

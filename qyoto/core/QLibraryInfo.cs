@@ -4,25 +4,13 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QLibraryInfo")]
-	public class QLibraryInfo : MarshalByRefObject {
-		protected QLibraryInfo interceptor = null;
+	public class QLibraryInfo : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QLibraryInfo(Type dummy) {}
-		[SmokeClass("QLibraryInfo")]
-		interface IQLibraryInfoProxy {
-			[SmokeMethod("licensee", "()", "")]
-			string Licensee();
-			[SmokeMethod("licensedProducts", "()", "")]
-			string LicensedProducts();
-			[SmokeMethod("buildKey", "()", "")]
-			string BuildKey();
-			[SmokeMethod("location", "(QLibraryInfo::LibraryLocation)", "$")]
-			string Location(QLibraryInfo.LibraryLocation arg1);
-		}
-		private static IQLibraryInfoProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QLibraryInfo() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLibraryInfoProxy), null);
-			staticInterceptor = (IQLibraryInfoProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QLibraryInfo), "QLibraryInfo", null);
 		}
 		public enum LibraryLocation {
 			PrefixPath = 0,
@@ -38,16 +26,16 @@ namespace Qyoto {
 			ExamplesPath = 10,
 		}
 		public static string Licensee() {
-			return staticInterceptor.Licensee();
+			return (string) staticInterceptor.Invoke("licensee", "licensee()", typeof(string));
 		}
 		public static string LicensedProducts() {
-			return staticInterceptor.LicensedProducts();
+			return (string) staticInterceptor.Invoke("licensedProducts", "licensedProducts()", typeof(string));
 		}
 		public static string BuildKey() {
-			return staticInterceptor.BuildKey();
+			return (string) staticInterceptor.Invoke("buildKey", "buildKey()", typeof(string));
 		}
 		public static string Location(QLibraryInfo.LibraryLocation arg1) {
-			return staticInterceptor.Location(arg1);
+			return (string) staticInterceptor.Invoke("location$", "location(QLibraryInfo::LibraryLocation)", typeof(string), typeof(QLibraryInfo.LibraryLocation), arg1);
 		}
 	}
 }

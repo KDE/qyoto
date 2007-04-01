@@ -7,18 +7,13 @@ namespace Qyoto {
 	public abstract class QStyleFactoryInterface : QFactoryInterface {
  		protected QStyleFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactoryInterface), this);
-			interceptor = (QStyleFactoryInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleFactoryInterface), "QStyleFactoryInterface", this);
 		}
-		[SmokeMethod("create", "(const QString&)", "$")]
+		[SmokeMethod("create(const QString&)")]
 		public abstract QStyle Create(string key);
 		public QStyleFactoryInterface() : this((Type) null) {
 			CreateProxy();
-			NewQStyleFactoryInterface();
-		}
-		[SmokeMethod("QStyleFactoryInterface", "()", "")]
-		private void NewQStyleFactoryInterface() {
-			((QStyleFactoryInterface) interceptor).NewQStyleFactoryInterface();
+			interceptor.Invoke("QStyleFactoryInterface", "QStyleFactoryInterface()", typeof(void));
 		}
 	}
 }

@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionDockWidget : QStyleOption, IDisposable {
  		protected QStyleOptionDockWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionDockWidget), this);
-			interceptor = (QStyleOptionDockWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionDockWidget), "QStyleOptionDockWidget", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_DockWidget,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionDockWidget() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionDockWidget();
-		}
-		[SmokeMethod("QStyleOptionDockWidget", "()", "")]
-		private void NewQStyleOptionDockWidget() {
-			((QStyleOptionDockWidget) interceptor).NewQStyleOptionDockWidget();
+			interceptor.Invoke("QStyleOptionDockWidget", "QStyleOptionDockWidget()", typeof(void));
 		}
 		public QStyleOptionDockWidget(QStyleOptionDockWidget other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionDockWidget(other);
-		}
-		[SmokeMethod("QStyleOptionDockWidget", "(const QStyleOptionDockWidget&)", "#")]
-		private void NewQStyleOptionDockWidget(QStyleOptionDockWidget other) {
-			((QStyleOptionDockWidget) interceptor).NewQStyleOptionDockWidget(other);
+			interceptor.Invoke("QStyleOptionDockWidget#", "QStyleOptionDockWidget(const QStyleOptionDockWidget&)", typeof(void), typeof(QStyleOptionDockWidget), other);
 		}
 		public QStyleOptionDockWidget(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionDockWidget(version);
-		}
-		[SmokeMethod("QStyleOptionDockWidget", "(int)", "$")]
-		private void NewQStyleOptionDockWidget(int version) {
-			((QStyleOptionDockWidget) interceptor).NewQStyleOptionDockWidget(version);
+			interceptor.Invoke("QStyleOptionDockWidget$", "QStyleOptionDockWidget(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionDockWidget() {
-			DisposeQStyleOptionDockWidget();
+			interceptor.Invoke("~QStyleOptionDockWidget", "~QStyleOptionDockWidget()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionDockWidget();
-		}
-		[SmokeMethod("~QStyleOptionDockWidget", "()", "")]
-		private void DisposeQStyleOptionDockWidget() {
-			((QStyleOptionDockWidget) interceptor).DisposeQStyleOptionDockWidget();
+			interceptor.Invoke("~QStyleOptionDockWidget", "~QStyleOptionDockWidget()", typeof(void));
 		}
 	}
 }

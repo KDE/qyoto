@@ -11,29 +11,24 @@ namespace Qyoto {
 	}
 
 	[SmokeClass("QXmlErrorHandler")]
-	public abstract class QXmlErrorHandler : MarshalByRefObject, IQXmlErrorHandler {
-		protected QXmlErrorHandler interceptor = null;
+	public abstract class QXmlErrorHandler : Object, IQXmlErrorHandler {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlErrorHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlErrorHandler), this);
-			interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlErrorHandler), "QXmlErrorHandler", this);
 		}
-		[SmokeMethod("warning", "(const QXmlParseException&)", "#")]
+		[SmokeMethod("warning(const QXmlParseException&)")]
 		public abstract bool Warning(QXmlParseException exception);
-		[SmokeMethod("error", "(const QXmlParseException&)", "#")]
+		[SmokeMethod("error(const QXmlParseException&)")]
 		public abstract bool Error(QXmlParseException exception);
-		[SmokeMethod("fatalError", "(const QXmlParseException&)", "#")]
+		[SmokeMethod("fatalError(const QXmlParseException&)")]
 		public abstract bool FatalError(QXmlParseException exception);
-		[SmokeMethod("errorString", "() const", "")]
+		[SmokeMethod("errorString() const")]
 		public abstract string ErrorString();
 		public QXmlErrorHandler() : this((Type) null) {
 			CreateProxy();
-			NewQXmlErrorHandler();
-		}
-		[SmokeMethod("QXmlErrorHandler", "()", "")]
-		private void NewQXmlErrorHandler() {
-			((QXmlErrorHandler) interceptor).NewQXmlErrorHandler();
+			interceptor.Invoke("QXmlErrorHandler", "QXmlErrorHandler()", typeof(void));
 		}
 	}
 }

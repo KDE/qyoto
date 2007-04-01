@@ -7,89 +7,61 @@ namespace Qyoto {
 	[SmokeClass("QDrag")]
 	public class QDrag : QObject, IDisposable {
  		protected QDrag(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDrag")]
-		interface IQDragProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDrag), this);
-			interceptor = (QDrag) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDrag), "QDrag", this);
 		}
-		private static IQDragProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDrag() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDragProxy), null);
-			staticInterceptor = (IQDragProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDrag), "QDrag", null);
 		}
 		public QDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
-			NewQDrag(dragSource);
+			interceptor.Invoke("QDrag#", "QDrag(QWidget*)", typeof(void), typeof(QWidget), dragSource);
 		}
-		[SmokeMethod("QDrag", "(QWidget*)", "#")]
-		private void NewQDrag(QWidget dragSource) {
-			((QDrag) interceptor).NewQDrag(dragSource);
-		}
-		[SmokeMethod("setMimeData", "(QMimeData*)", "#")]
 		public void SetMimeData(QMimeData data) {
-			((QDrag) interceptor).SetMimeData(data);
+			interceptor.Invoke("setMimeData#", "setMimeData(QMimeData*)", typeof(void), typeof(QMimeData), data);
 		}
-		[SmokeMethod("mimeData", "() const", "")]
 		public QMimeData MimeData() {
-			return ((QDrag) interceptor).MimeData();
+			return (QMimeData) interceptor.Invoke("mimeData", "mimeData() const", typeof(QMimeData));
 		}
-		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap arg1) {
-			((QDrag) interceptor).SetPixmap(arg1);
+			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}
-		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ((QDrag) interceptor).Pixmap();
+			return (QPixmap) interceptor.Invoke("pixmap", "pixmap() const", typeof(QPixmap));
 		}
-		[SmokeMethod("setHotSpot", "(const QPoint&)", "#")]
 		public void SetHotSpot(QPoint hotspot) {
-			((QDrag) interceptor).SetHotSpot(hotspot);
+			interceptor.Invoke("setHotSpot#", "setHotSpot(const QPoint&)", typeof(void), typeof(QPoint), hotspot);
 		}
-		[SmokeMethod("hotSpot", "() const", "")]
 		public QPoint HotSpot() {
-			return ((QDrag) interceptor).HotSpot();
+			return (QPoint) interceptor.Invoke("hotSpot", "hotSpot() const", typeof(QPoint));
 		}
-		[SmokeMethod("source", "() const", "")]
 		public QWidget Source() {
-			return ((QDrag) interceptor).Source();
+			return (QWidget) interceptor.Invoke("source", "source() const", typeof(QWidget));
 		}
-		[SmokeMethod("target", "() const", "")]
 		public QWidget Target() {
-			return ((QDrag) interceptor).Target();
+			return (QWidget) interceptor.Invoke("target", "target() const", typeof(QWidget));
 		}
-		[SmokeMethod("start", "(Qt::DropActions)", "$")]
 		public Qt.DropAction Start(int supportedActions) {
-			return ((QDrag) interceptor).Start(supportedActions);
+			return (Qt.DropAction) interceptor.Invoke("start$", "start(Qt::DropActions)", typeof(Qt.DropAction), typeof(int), supportedActions);
 		}
-		[SmokeMethod("start", "()", "")]
 		public Qt.DropAction Start() {
-			return ((QDrag) interceptor).Start();
+			return (Qt.DropAction) interceptor.Invoke("start", "start()", typeof(Qt.DropAction));
 		}
-		[SmokeMethod("setDragCursor", "(const QPixmap&, Qt::DropAction)", "#$")]
 		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
-			((QDrag) interceptor).SetDragCursor(cursor,action);
+			interceptor.Invoke("setDragCursor#$", "setDragCursor(const QPixmap&, Qt::DropAction)", typeof(void), typeof(QPixmap), cursor, typeof(Qt.DropAction), action);
 		}
 		~QDrag() {
-			DisposeQDrag();
+			interceptor.Invoke("~QDrag", "~QDrag()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDrag();
-		}
-		[SmokeMethod("~QDrag", "()", "")]
-		private void DisposeQDrag() {
-			((QDrag) interceptor).DisposeQDrag();
+			interceptor.Invoke("~QDrag", "~QDrag()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDragSignals Emit {
 			get { return (IQDragSignals) Q_EMIT; }

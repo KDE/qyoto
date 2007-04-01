@@ -5,137 +5,87 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QPolygon")]
-	public class QPolygon : MarshalByRefObject, IDisposable {
-		protected QPolygon interceptor = null;
+	public class QPolygon : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPolygon(Type dummy) {}
-		[SmokeClass("QPolygon")]
-		interface IQPolygonProxy {
-			[SmokeMethod("operator*", "(const QPolygon&, const QMatrix&)", "##")]
-			QPolygon op_mult(QPolygon a, QMatrix m);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPolygon), this);
-			interceptor = (QPolygon) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPolygon), "QPolygon", this);
 		}
-		private static IQPolygonProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPolygon() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPolygonProxy), null);
-			staticInterceptor = (IQPolygonProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPolygon), "QPolygon", null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPolygon() : this((Type) null) {
 			CreateProxy();
-			NewQPolygon();
-		}
-		[SmokeMethod("QPolygon", "()", "")]
-		private void NewQPolygon() {
-			((QPolygon) interceptor).NewQPolygon();
+			interceptor.Invoke("QPolygon", "QPolygon()", typeof(void));
 		}
 		public QPolygon(int size) : this((Type) null) {
 			CreateProxy();
-			NewQPolygon(size);
-		}
-		[SmokeMethod("QPolygon", "(int)", "$")]
-		private void NewQPolygon(int size) {
-			((QPolygon) interceptor).NewQPolygon(size);
+			interceptor.Invoke("QPolygon$", "QPolygon(int)", typeof(void), typeof(int), size);
 		}
 		public QPolygon(QPolygon a) : this((Type) null) {
 			CreateProxy();
-			NewQPolygon(a);
-		}
-		[SmokeMethod("QPolygon", "(const QPolygon&)", "#")]
-		private void NewQPolygon(QPolygon a) {
-			((QPolygon) interceptor).NewQPolygon(a);
+			interceptor.Invoke("QPolygon#", "QPolygon(const QPolygon&)", typeof(void), typeof(QPolygon), a);
 		}
 		public QPolygon(List<QPoint> v) : this((Type) null) {
 			CreateProxy();
-			NewQPolygon(v);
-		}
-		[SmokeMethod("QPolygon", "(const QVector<QPoint>&)", "?")]
-		private void NewQPolygon(List<QPoint> v) {
-			((QPolygon) interceptor).NewQPolygon(v);
+			interceptor.Invoke("QPolygon?", "QPolygon(const QVector<QPoint>&)", typeof(void), typeof(List<QPoint>), v);
 		}
 		public QPolygon(QRect r, bool closed) : this((Type) null) {
 			CreateProxy();
-			NewQPolygon(r,closed);
-		}
-		[SmokeMethod("QPolygon", "(const QRect&, bool)", "#$")]
-		private void NewQPolygon(QRect r, bool closed) {
-			((QPolygon) interceptor).NewQPolygon(r,closed);
+			interceptor.Invoke("QPolygon#$", "QPolygon(const QRect&, bool)", typeof(void), typeof(QRect), r, typeof(bool), closed);
 		}
 		public QPolygon(QRect r) : this((Type) null) {
 			CreateProxy();
-			NewQPolygon(r);
+			interceptor.Invoke("QPolygon#", "QPolygon(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		[SmokeMethod("QPolygon", "(const QRect&)", "#")]
-		private void NewQPolygon(QRect r) {
-			((QPolygon) interceptor).NewQPolygon(r);
-		}
-		public QPolygon(int nPoints, out int points) : this((Type) null) {
+		public QPolygon(int nPoints, int points) : this((Type) null) {
 			CreateProxy();
-			NewQPolygon(nPoints,out points);
+			interceptor.Invoke("QPolygon$$", "QPolygon(int, const int*)", typeof(void), typeof(int), nPoints, typeof(int), points);
 		}
-		[SmokeMethod("QPolygon", "(int, const int*)", "$$")]
-		private void NewQPolygon(int nPoints, out int points) {
-			((QPolygon) interceptor).NewQPolygon(nPoints,out points);
-		}
-		[SmokeMethod("translate", "(int, int)", "$$")]
 		public void Translate(int dx, int dy) {
-			((QPolygon) interceptor).Translate(dx,dy);
+			interceptor.Invoke("translate$$", "translate(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
-		[SmokeMethod("translate", "(const QPoint&)", "#")]
 		public void Translate(QPoint offset) {
-			((QPolygon) interceptor).Translate(offset);
+			interceptor.Invoke("translate#", "translate(const QPoint&)", typeof(void), typeof(QPoint), offset);
 		}
-		[SmokeMethod("boundingRect", "() const", "")]
 		public QRect BoundingRect() {
-			return ((QPolygon) interceptor).BoundingRect();
+			return (QRect) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRect));
 		}
-		[SmokeMethod("point", "(int, int*, int*) const", "$$$")]
-		public void Point(int i, out int x, out int y) {
-			((QPolygon) interceptor).Point(i,out x,out y);
+		public void Point(int i, int x, int y) {
+			interceptor.Invoke("point$$$", "point(int, int*, int*) const", typeof(void), typeof(int), i, typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("point", "(int) const", "$")]
 		public QPoint Point(int i) {
-			return ((QPolygon) interceptor).Point(i);
+			return (QPoint) interceptor.Invoke("point$", "point(int) const", typeof(QPoint), typeof(int), i);
 		}
-		[SmokeMethod("setPoint", "(int, int, int)", "$$$")]
 		public void SetPoint(int index, int x, int y) {
-			((QPolygon) interceptor).SetPoint(index,x,y);
+			interceptor.Invoke("setPoint$$$", "setPoint(int, int, int)", typeof(void), typeof(int), index, typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("setPoint", "(int, const QPoint&)", "$#")]
 		public void SetPoint(int index, QPoint p) {
-			((QPolygon) interceptor).SetPoint(index,p);
+			interceptor.Invoke("setPoint$#", "setPoint(int, const QPoint&)", typeof(void), typeof(int), index, typeof(QPoint), p);
 		}
-		[SmokeMethod("setPoints", "(int, const int*)", "$$")]
-		public void SetPoints(int nPoints, out int points) {
-			((QPolygon) interceptor).SetPoints(nPoints,out points);
+		public void SetPoints(int nPoints, int points) {
+			interceptor.Invoke("setPoints$$", "setPoints(int, const int*)", typeof(void), typeof(int), nPoints, typeof(int), points);
 		}
-		[SmokeMethod("putPoints", "(int, int, const int*)", "$$$")]
-		public void PutPoints(int index, int nPoints, out int points) {
-			((QPolygon) interceptor).PutPoints(index,nPoints,out points);
+		public void PutPoints(int index, int nPoints, int points) {
+			interceptor.Invoke("putPoints$$$", "putPoints(int, int, const int*)", typeof(void), typeof(int), index, typeof(int), nPoints, typeof(int), points);
 		}
-		[SmokeMethod("putPoints", "(int, int, const QPolygon&, int)", "$$#$")]
 		public void PutPoints(int index, int nPoints, QPolygon from, int fromIndex) {
-			((QPolygon) interceptor).PutPoints(index,nPoints,from,fromIndex);
+			interceptor.Invoke("putPoints$$#$", "putPoints(int, int, const QPolygon&, int)", typeof(void), typeof(int), index, typeof(int), nPoints, typeof(QPolygon), from, typeof(int), fromIndex);
 		}
-		[SmokeMethod("putPoints", "(int, int, const QPolygon&)", "$$#")]
 		public void PutPoints(int index, int nPoints, QPolygon from) {
-			((QPolygon) interceptor).PutPoints(index,nPoints,from);
+			interceptor.Invoke("putPoints$$#", "putPoints(int, int, const QPolygon&)", typeof(void), typeof(int), index, typeof(int), nPoints, typeof(QPolygon), from);
 		}
 		~QPolygon() {
-			DisposeQPolygon();
+			interceptor.Invoke("~QPolygon", "~QPolygon()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPolygon();
-		}
-		[SmokeMethod("~QPolygon", "()", "")]
-		private void DisposeQPolygon() {
-			((QPolygon) interceptor).DisposeQPolygon();
+			interceptor.Invoke("~QPolygon", "~QPolygon()", typeof(void));
 		}
 		public static QPolygon operator*(QPolygon a, QMatrix m) {
-			return staticInterceptor.op_mult(a,m);
+			return (QPolygon) staticInterceptor.Invoke("operator*##", "operator*(const QPolygon&, const QMatrix&)", typeof(QPolygon), typeof(QPolygon), a, typeof(QMatrix), m);
 		}
 	}
 }

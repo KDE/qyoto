@@ -5,63 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QDir")]
-	public class QDir : MarshalByRefObject, IDisposable {
-		protected QDir interceptor = null;
+	public class QDir : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDir(Type dummy) {}
-		[SmokeClass("QDir")]
-		interface IQDirProxy {
-			[SmokeMethod("operator==", "(const QDir&) const", "#")]
-			bool op_equals(QDir lhs, QDir dir);
-			[SmokeMethod("addResourceSearchPath", "(const QString&)", "$")]
-			void AddResourceSearchPath(string path);
-			[SmokeMethod("toNativeSeparators", "(const QString&)", "$")]
-			string ToNativeSeparators(string pathName);
-			[SmokeMethod("fromNativeSeparators", "(const QString&)", "$")]
-			string FromNativeSeparators(string pathName);
-			[SmokeMethod("nameFiltersFromString", "(const QString&)", "$")]
-			List<string> NameFiltersFromString(string nameFilter);
-			[SmokeMethod("isRelativePath", "(const QString&)", "$")]
-			bool IsRelativePath(string path);
-			[SmokeMethod("isAbsolutePath", "(const QString&)", "$")]
-			bool IsAbsolutePath(string path);
-			[SmokeMethod("drives", "()", "")]
-			List<QFileInfo> Drives();
-			[SmokeMethod("separator", "()", "")]
-			char Separator();
-			[SmokeMethod("setCurrent", "(const QString&)", "$")]
-			bool SetCurrent(string path);
-			[SmokeMethod("current", "()", "")]
-			QDir Current();
-			[SmokeMethod("currentPath", "()", "")]
-			string CurrentPath();
-			[SmokeMethod("home", "()", "")]
-			QDir Home();
-			[SmokeMethod("homePath", "()", "")]
-			string HomePath();
-			[SmokeMethod("root", "()", "")]
-			QDir Root();
-			[SmokeMethod("rootPath", "()", "")]
-			string RootPath();
-			[SmokeMethod("temp", "()", "")]
-			QDir Temp();
-			[SmokeMethod("tempPath", "()", "")]
-			string TempPath();
-			[SmokeMethod("match", "(const QStringList&, const QString&)", "?$")]
-			bool Match(List<string> filters, string fileName);
-			[SmokeMethod("match", "(const QString&, const QString&)", "$$")]
-			bool Match(string filter, string fileName);
-			[SmokeMethod("cleanPath", "(const QString&)", "$")]
-			string CleanPath(string path);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDir), this);
-			interceptor = (QDir) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDir), "QDir", this);
 		}
-		private static IQDirProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDir() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDirProxy), null);
-			staticInterceptor = (IQDirProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDir), "QDir", null);
 		}
 		public enum Filter {
 			Dirs = 0x001,
@@ -99,306 +52,235 @@ namespace Qyoto {
 		}
 		public QDir(QDir arg1) : this((Type) null) {
 			CreateProxy();
-			NewQDir(arg1);
-		}
-		[SmokeMethod("QDir", "(const QDir&)", "#")]
-		private void NewQDir(QDir arg1) {
-			((QDir) interceptor).NewQDir(arg1);
+			interceptor.Invoke("QDir#", "QDir(const QDir&)", typeof(void), typeof(QDir), arg1);
 		}
 		public QDir(string path) : this((Type) null) {
 			CreateProxy();
-			NewQDir(path);
-		}
-		[SmokeMethod("QDir", "(const QString&)", "$")]
-		private void NewQDir(string path) {
-			((QDir) interceptor).NewQDir(path);
+			interceptor.Invoke("QDir$", "QDir(const QString&)", typeof(void), typeof(string), path);
 		}
 		public QDir() : this((Type) null) {
 			CreateProxy();
-			NewQDir();
-		}
-		[SmokeMethod("QDir", "()", "")]
-		private void NewQDir() {
-			((QDir) interceptor).NewQDir();
+			interceptor.Invoke("QDir", "QDir()", typeof(void));
 		}
 		public QDir(string path, string nameFilter, int sort, int filter) : this((Type) null) {
 			CreateProxy();
-			NewQDir(path,nameFilter,sort,filter);
-		}
-		[SmokeMethod("QDir", "(const QString&, const QString&, SortFlags, Filters)", "$$$$")]
-		private void NewQDir(string path, string nameFilter, int sort, int filter) {
-			((QDir) interceptor).NewQDir(path,nameFilter,sort,filter);
+			interceptor.Invoke("QDir$$$$", "QDir(const QString&, const QString&, SortFlags, Filters)", typeof(void), typeof(string), path, typeof(string), nameFilter, typeof(int), sort, typeof(int), filter);
 		}
 		public QDir(string path, string nameFilter, int sort) : this((Type) null) {
 			CreateProxy();
-			NewQDir(path,nameFilter,sort);
-		}
-		[SmokeMethod("QDir", "(const QString&, const QString&, SortFlags)", "$$$")]
-		private void NewQDir(string path, string nameFilter, int sort) {
-			((QDir) interceptor).NewQDir(path,nameFilter,sort);
+			interceptor.Invoke("QDir$$$", "QDir(const QString&, const QString&, SortFlags)", typeof(void), typeof(string), path, typeof(string), nameFilter, typeof(int), sort);
 		}
 		public QDir(string path, string nameFilter) : this((Type) null) {
 			CreateProxy();
-			NewQDir(path,nameFilter);
+			interceptor.Invoke("QDir$$", "QDir(const QString&, const QString&)", typeof(void), typeof(string), path, typeof(string), nameFilter);
 		}
-		[SmokeMethod("QDir", "(const QString&, const QString&)", "$$")]
-		private void NewQDir(string path, string nameFilter) {
-			((QDir) interceptor).NewQDir(path,nameFilter);
-		}
-		[SmokeMethod("setPath", "(const QString&)", "$")]
 		public void SetPath(string path) {
-			((QDir) interceptor).SetPath(path);
+			interceptor.Invoke("setPath$", "setPath(const QString&)", typeof(void), typeof(string), path);
 		}
-		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ((QDir) interceptor).Path();
+			return (string) interceptor.Invoke("path", "path() const", typeof(string));
 		}
-		[SmokeMethod("absolutePath", "() const", "")]
 		public string AbsolutePath() {
-			return ((QDir) interceptor).AbsolutePath();
+			return (string) interceptor.Invoke("absolutePath", "absolutePath() const", typeof(string));
 		}
-		[SmokeMethod("canonicalPath", "() const", "")]
 		public string CanonicalPath() {
-			return ((QDir) interceptor).CanonicalPath();
+			return (string) interceptor.Invoke("canonicalPath", "canonicalPath() const", typeof(string));
 		}
-		[SmokeMethod("dirName", "() const", "")]
 		public string DirName() {
-			return ((QDir) interceptor).DirName();
+			return (string) interceptor.Invoke("dirName", "dirName() const", typeof(string));
 		}
-		[SmokeMethod("filePath", "(const QString&) const", "$")]
 		public string FilePath(string fileName) {
-			return ((QDir) interceptor).FilePath(fileName);
+			return (string) interceptor.Invoke("filePath$", "filePath(const QString&) const", typeof(string), typeof(string), fileName);
 		}
-		[SmokeMethod("absoluteFilePath", "(const QString&) const", "$")]
 		public string AbsoluteFilePath(string fileName) {
-			return ((QDir) interceptor).AbsoluteFilePath(fileName);
+			return (string) interceptor.Invoke("absoluteFilePath$", "absoluteFilePath(const QString&) const", typeof(string), typeof(string), fileName);
 		}
-		[SmokeMethod("relativeFilePath", "(const QString&) const", "$")]
 		public string RelativeFilePath(string fileName) {
-			return ((QDir) interceptor).RelativeFilePath(fileName);
+			return (string) interceptor.Invoke("relativeFilePath$", "relativeFilePath(const QString&) const", typeof(string), typeof(string), fileName);
 		}
-		[SmokeMethod("cd", "(const QString&)", "$")]
 		public bool Cd(string dirName) {
-			return ((QDir) interceptor).Cd(dirName);
+			return (bool) interceptor.Invoke("cd$", "cd(const QString&)", typeof(bool), typeof(string), dirName);
 		}
-		[SmokeMethod("cdUp", "()", "")]
 		public bool CdUp() {
-			return ((QDir) interceptor).CdUp();
+			return (bool) interceptor.Invoke("cdUp", "cdUp()", typeof(bool));
 		}
-		[SmokeMethod("nameFilters", "() const", "")]
 		public List<string> NameFilters() {
-			return ((QDir) interceptor).NameFilters();
+			return (List<string>) interceptor.Invoke("nameFilters", "nameFilters() const", typeof(List<string>));
 		}
-		[SmokeMethod("setNameFilters", "(const QStringList&)", "?")]
 		public void SetNameFilters(List<string> nameFilters) {
-			((QDir) interceptor).SetNameFilters(nameFilters);
+			interceptor.Invoke("setNameFilters?", "setNameFilters(const QStringList&)", typeof(void), typeof(List<string>), nameFilters);
 		}
-		[SmokeMethod("filter", "() const", "")]
 		public int filter() {
-			return ((QDir) interceptor).filter();
+			return (int) interceptor.Invoke("filter", "filter() const", typeof(int));
 		}
-		[SmokeMethod("setFilter", "(Filters)", "$")]
 		public void SetFilter(int filter) {
-			((QDir) interceptor).SetFilter(filter);
+			interceptor.Invoke("setFilter$", "setFilter(Filters)", typeof(void), typeof(int), filter);
 		}
-		[SmokeMethod("sorting", "() const", "")]
 		public int Sorting() {
-			return ((QDir) interceptor).Sorting();
+			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
 		}
-		[SmokeMethod("setSorting", "(SortFlags)", "$")]
 		public void SetSorting(int sort) {
-			((QDir) interceptor).SetSorting(sort);
+			interceptor.Invoke("setSorting$", "setSorting(SortFlags)", typeof(void), typeof(int), sort);
 		}
-		[SmokeMethod("count", "() const", "")]
 		public uint Count() {
-			return ((QDir) interceptor).Count();
+			return (uint) interceptor.Invoke("count", "count() const", typeof(uint));
 		}
-		[SmokeMethod("entryList", "(Filters, SortFlags) const", "$$")]
 		public List<string> EntryList(int filters, int sort) {
-			return ((QDir) interceptor).EntryList(filters,sort);
+			return (List<string>) interceptor.Invoke("entryList$$", "entryList(Filters, SortFlags) const", typeof(List<string>), typeof(int), filters, typeof(int), sort);
 		}
-		[SmokeMethod("entryList", "(Filters) const", "$")]
 		public List<string> EntryList(int filters) {
-			return ((QDir) interceptor).EntryList(filters);
+			return (List<string>) interceptor.Invoke("entryList$", "entryList(Filters) const", typeof(List<string>), typeof(int), filters);
 		}
-		[SmokeMethod("entryList", "() const", "")]
 		public List<string> EntryList() {
-			return ((QDir) interceptor).EntryList();
+			return (List<string>) interceptor.Invoke("entryList", "entryList() const", typeof(List<string>));
 		}
-		[SmokeMethod("entryList", "(const QStringList&, Filters, SortFlags) const", "?$$")]
 		public List<string> EntryList(List<string> nameFilters, int filters, int sort) {
-			return ((QDir) interceptor).EntryList(nameFilters,filters,sort);
+			return (List<string>) interceptor.Invoke("entryList?$$", "entryList(const QStringList&, Filters, SortFlags) const", typeof(List<string>), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort);
 		}
-		[SmokeMethod("entryList", "(const QStringList&, Filters) const", "?$")]
 		public List<string> EntryList(List<string> nameFilters, int filters) {
-			return ((QDir) interceptor).EntryList(nameFilters,filters);
+			return (List<string>) interceptor.Invoke("entryList?$", "entryList(const QStringList&, Filters) const", typeof(List<string>), typeof(List<string>), nameFilters, typeof(int), filters);
 		}
-		[SmokeMethod("entryList", "(const QStringList&) const", "?")]
 		public List<string> EntryList(List<string> nameFilters) {
-			return ((QDir) interceptor).EntryList(nameFilters);
+			return (List<string>) interceptor.Invoke("entryList?", "entryList(const QStringList&) const", typeof(List<string>), typeof(List<string>), nameFilters);
 		}
-		[SmokeMethod("entryInfoList", "(Filters, SortFlags) const", "$$")]
 		public List<QFileInfo> EntryInfoList(int filters, int sort) {
-			return ((QDir) interceptor).EntryInfoList(filters,sort);
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList$$", "entryInfoList(Filters, SortFlags) const", typeof(List<QFileInfo>), typeof(int), filters, typeof(int), sort);
 		}
-		[SmokeMethod("entryInfoList", "(Filters) const", "$")]
 		public List<QFileInfo> EntryInfoList(int filters) {
-			return ((QDir) interceptor).EntryInfoList(filters);
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList$", "entryInfoList(Filters) const", typeof(List<QFileInfo>), typeof(int), filters);
 		}
-		[SmokeMethod("entryInfoList", "() const", "")]
 		public List<QFileInfo> EntryInfoList() {
-			return ((QDir) interceptor).EntryInfoList();
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList", "entryInfoList() const", typeof(List<QFileInfo>));
 		}
-		[SmokeMethod("entryInfoList", "(const QStringList&, Filters, SortFlags) const", "?$$")]
 		public List<QFileInfo> EntryInfoList(List<string> nameFilters, int filters, int sort) {
-			return ((QDir) interceptor).EntryInfoList(nameFilters,filters,sort);
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?$$", "entryInfoList(const QStringList&, Filters, SortFlags) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort);
 		}
-		[SmokeMethod("entryInfoList", "(const QStringList&, Filters) const", "?$")]
 		public List<QFileInfo> EntryInfoList(List<string> nameFilters, int filters) {
-			return ((QDir) interceptor).EntryInfoList(nameFilters,filters);
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?$", "entryInfoList(const QStringList&, Filters) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters, typeof(int), filters);
 		}
-		[SmokeMethod("entryInfoList", "(const QStringList&) const", "?")]
 		public List<QFileInfo> EntryInfoList(List<string> nameFilters) {
-			return ((QDir) interceptor).EntryInfoList(nameFilters);
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?", "entryInfoList(const QStringList&) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters);
 		}
-		[SmokeMethod("mkdir", "(const QString&) const", "$")]
 		public bool Mkdir(string dirName) {
-			return ((QDir) interceptor).Mkdir(dirName);
+			return (bool) interceptor.Invoke("mkdir$", "mkdir(const QString&) const", typeof(bool), typeof(string), dirName);
 		}
-		[SmokeMethod("rmdir", "(const QString&) const", "$")]
 		public bool Rmdir(string dirName) {
-			return ((QDir) interceptor).Rmdir(dirName);
+			return (bool) interceptor.Invoke("rmdir$", "rmdir(const QString&) const", typeof(bool), typeof(string), dirName);
 		}
-		[SmokeMethod("mkpath", "(const QString&) const", "$")]
 		public bool Mkpath(string dirPath) {
-			return ((QDir) interceptor).Mkpath(dirPath);
+			return (bool) interceptor.Invoke("mkpath$", "mkpath(const QString&) const", typeof(bool), typeof(string), dirPath);
 		}
-		[SmokeMethod("rmpath", "(const QString&) const", "$")]
 		public bool Rmpath(string dirPath) {
-			return ((QDir) interceptor).Rmpath(dirPath);
+			return (bool) interceptor.Invoke("rmpath$", "rmpath(const QString&) const", typeof(bool), typeof(string), dirPath);
 		}
-		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
-			return ((QDir) interceptor).IsReadable();
+			return (bool) interceptor.Invoke("isReadable", "isReadable() const", typeof(bool));
 		}
-		[SmokeMethod("exists", "() const", "")]
 		public bool Exists() {
-			return ((QDir) interceptor).Exists();
+			return (bool) interceptor.Invoke("exists", "exists() const", typeof(bool));
 		}
-		[SmokeMethod("isRoot", "() const", "")]
 		public bool IsRoot() {
-			return ((QDir) interceptor).IsRoot();
+			return (bool) interceptor.Invoke("isRoot", "isRoot() const", typeof(bool));
 		}
-		[SmokeMethod("isRelative", "() const", "")]
 		public bool IsRelative() {
-			return ((QDir) interceptor).IsRelative();
+			return (bool) interceptor.Invoke("isRelative", "isRelative() const", typeof(bool));
 		}
-		[SmokeMethod("isAbsolute", "() const", "")]
 		public bool IsAbsolute() {
-			return ((QDir) interceptor).IsAbsolute();
+			return (bool) interceptor.Invoke("isAbsolute", "isAbsolute() const", typeof(bool));
 		}
-		[SmokeMethod("makeAbsolute", "()", "")]
 		public bool MakeAbsolute() {
-			return ((QDir) interceptor).MakeAbsolute();
+			return (bool) interceptor.Invoke("makeAbsolute", "makeAbsolute()", typeof(bool));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDir)) { return false; }
 			return this == (QDir) o;
 		}
 		public override int GetHashCode() {
-			return ((QDir) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("remove", "(const QString&)", "$")]
 		public bool Remove(string fileName) {
-			return ((QDir) interceptor).Remove(fileName);
+			return (bool) interceptor.Invoke("remove$", "remove(const QString&)", typeof(bool), typeof(string), fileName);
 		}
-		[SmokeMethod("rename", "(const QString&, const QString&)", "$$")]
 		public bool Rename(string oldName, string newName) {
-			return ((QDir) interceptor).Rename(oldName,newName);
+			return (bool) interceptor.Invoke("rename$$", "rename(const QString&, const QString&)", typeof(bool), typeof(string), oldName, typeof(string), newName);
 		}
-		[SmokeMethod("exists", "(const QString&) const", "$")]
 		public bool Exists(string name) {
-			return ((QDir) interceptor).Exists(name);
+			return (bool) interceptor.Invoke("exists$", "exists(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("refresh", "() const", "")]
 		public void Refresh() {
-			((QDir) interceptor).Refresh();
+			interceptor.Invoke("refresh", "refresh() const", typeof(void));
 		}
 		~QDir() {
-			DisposeQDir();
+			interceptor.Invoke("~QDir", "~QDir()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDir();
-		}
-		[SmokeMethod("~QDir", "()", "")]
-		private void DisposeQDir() {
-			((QDir) interceptor).DisposeQDir();
+			interceptor.Invoke("~QDir", "~QDir()", typeof(void));
 		}
 		public static bool operator==(QDir lhs, QDir dir) {
-			return staticInterceptor.op_equals(lhs,dir);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QDir&) const", typeof(bool), typeof(QDir), lhs, typeof(QDir), dir);
 		}
 		public static bool operator!=(QDir lhs, QDir dir) {
-			return !staticInterceptor.op_equals(lhs,dir);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QDir&) const", typeof(bool), typeof(QDir), lhs, typeof(QDir), dir);
 		}
 		public static void AddResourceSearchPath(string path) {
-			staticInterceptor.AddResourceSearchPath(path);
+			staticInterceptor.Invoke("addResourceSearchPath$", "addResourceSearchPath(const QString&)", typeof(void), typeof(string), path);
 		}
 		public static string ToNativeSeparators(string pathName) {
-			return staticInterceptor.ToNativeSeparators(pathName);
+			return (string) staticInterceptor.Invoke("toNativeSeparators$", "toNativeSeparators(const QString&)", typeof(string), typeof(string), pathName);
 		}
 		public static string FromNativeSeparators(string pathName) {
-			return staticInterceptor.FromNativeSeparators(pathName);
+			return (string) staticInterceptor.Invoke("fromNativeSeparators$", "fromNativeSeparators(const QString&)", typeof(string), typeof(string), pathName);
 		}
 		public static List<string> NameFiltersFromString(string nameFilter) {
-			return staticInterceptor.NameFiltersFromString(nameFilter);
+			return (List<string>) staticInterceptor.Invoke("nameFiltersFromString$", "nameFiltersFromString(const QString&)", typeof(List<string>), typeof(string), nameFilter);
 		}
 		public static bool IsRelativePath(string path) {
-			return staticInterceptor.IsRelativePath(path);
+			return (bool) staticInterceptor.Invoke("isRelativePath$", "isRelativePath(const QString&)", typeof(bool), typeof(string), path);
 		}
 		public static bool IsAbsolutePath(string path) {
-			return staticInterceptor.IsAbsolutePath(path);
+			return (bool) staticInterceptor.Invoke("isAbsolutePath$", "isAbsolutePath(const QString&)", typeof(bool), typeof(string), path);
 		}
 		public static List<QFileInfo> Drives() {
-			return staticInterceptor.Drives();
+			return (List<QFileInfo>) staticInterceptor.Invoke("drives", "drives()", typeof(List<QFileInfo>));
 		}
 		public static char Separator() {
-			return staticInterceptor.Separator();
+			return (char) staticInterceptor.Invoke("separator", "separator()", typeof(char));
 		}
 		public static bool SetCurrent(string path) {
-			return staticInterceptor.SetCurrent(path);
+			return (bool) staticInterceptor.Invoke("setCurrent$", "setCurrent(const QString&)", typeof(bool), typeof(string), path);
 		}
 		public static QDir Current() {
-			return staticInterceptor.Current();
+			return (QDir) staticInterceptor.Invoke("current", "current()", typeof(QDir));
 		}
 		public static string CurrentPath() {
-			return staticInterceptor.CurrentPath();
+			return (string) staticInterceptor.Invoke("currentPath", "currentPath()", typeof(string));
 		}
 		public static QDir Home() {
-			return staticInterceptor.Home();
+			return (QDir) staticInterceptor.Invoke("home", "home()", typeof(QDir));
 		}
 		public static string HomePath() {
-			return staticInterceptor.HomePath();
+			return (string) staticInterceptor.Invoke("homePath", "homePath()", typeof(string));
 		}
 		public static QDir Root() {
-			return staticInterceptor.Root();
+			return (QDir) staticInterceptor.Invoke("root", "root()", typeof(QDir));
 		}
 		public static string RootPath() {
-			return staticInterceptor.RootPath();
+			return (string) staticInterceptor.Invoke("rootPath", "rootPath()", typeof(string));
 		}
 		public static QDir Temp() {
-			return staticInterceptor.Temp();
+			return (QDir) staticInterceptor.Invoke("temp", "temp()", typeof(QDir));
 		}
 		public static string TempPath() {
-			return staticInterceptor.TempPath();
+			return (string) staticInterceptor.Invoke("tempPath", "tempPath()", typeof(string));
 		}
 		public static bool Match(List<string> filters, string fileName) {
-			return staticInterceptor.Match(filters,fileName);
+			return (bool) staticInterceptor.Invoke("match?$", "match(const QStringList&, const QString&)", typeof(bool), typeof(List<string>), filters, typeof(string), fileName);
 		}
 		public static bool Match(string filter, string fileName) {
-			return staticInterceptor.Match(filter,fileName);
+			return (bool) staticInterceptor.Invoke("match$$", "match(const QString&, const QString&)", typeof(bool), typeof(string), filter, typeof(string), fileName);
 		}
 		public static string CleanPath(string path) {
-			return staticInterceptor.CleanPath(path);
+			return (string) staticInterceptor.Invoke("cleanPath$", "cleanPath(const QString&)", typeof(string), typeof(string), path);
 		}
 	}
 }

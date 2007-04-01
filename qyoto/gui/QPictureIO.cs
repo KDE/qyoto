@@ -5,156 +5,107 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QPictureIO")]
-	public class QPictureIO : MarshalByRefObject, IDisposable {
-		protected QPictureIO interceptor = null;
+	public class QPictureIO : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPictureIO(Type dummy) {}
-		[SmokeClass("QPictureIO")]
-		interface IQPictureIOProxy {
-			[SmokeMethod("pictureFormat", "(const QString&)", "$")]
-			QByteArray PictureFormat(string fileName);
-			[SmokeMethod("pictureFormat", "(QIODevice*)", "#")]
-			QByteArray PictureFormat(QIODevice arg1);
-			[SmokeMethod("inputFormats", "()", "")]
-			List<QByteArray> InputFormats();
-			[SmokeMethod("outputFormats", "()", "")]
-			List<QByteArray> OutputFormats();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPictureIO), this);
-			interceptor = (QPictureIO) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPictureIO), "QPictureIO", this);
 		}
-		private static IQPictureIOProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPictureIO() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPictureIOProxy), null);
-			staticInterceptor = (IQPictureIOProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPictureIO), "QPictureIO", null);
 		}
 		// void defineIOHandler(const char* arg1,const char* arg2,const char* arg3,picture_io_handler arg4,picture_io_handler arg5); >>>> NOT CONVERTED
 		public QPictureIO() : this((Type) null) {
 			CreateProxy();
-			NewQPictureIO();
-		}
-		[SmokeMethod("QPictureIO", "()", "")]
-		private void NewQPictureIO() {
-			((QPictureIO) interceptor).NewQPictureIO();
+			interceptor.Invoke("QPictureIO", "QPictureIO()", typeof(void));
 		}
 		public QPictureIO(QIODevice ioDevice, string format) : this((Type) null) {
 			CreateProxy();
-			NewQPictureIO(ioDevice,format);
-		}
-		[SmokeMethod("QPictureIO", "(QIODevice*, const char*)", "#$")]
-		private void NewQPictureIO(QIODevice ioDevice, string format) {
-			((QPictureIO) interceptor).NewQPictureIO(ioDevice,format);
+			interceptor.Invoke("QPictureIO#$", "QPictureIO(QIODevice*, const char*)", typeof(void), typeof(QIODevice), ioDevice, typeof(string), format);
 		}
 		public QPictureIO(string fileName, string format) : this((Type) null) {
 			CreateProxy();
-			NewQPictureIO(fileName,format);
+			interceptor.Invoke("QPictureIO$$", "QPictureIO(const QString&, const char*)", typeof(void), typeof(string), fileName, typeof(string), format);
 		}
-		[SmokeMethod("QPictureIO", "(const QString&, const char*)", "$$")]
-		private void NewQPictureIO(string fileName, string format) {
-			((QPictureIO) interceptor).NewQPictureIO(fileName,format);
-		}
-		[SmokeMethod("picture", "() const", "")]
 		public QPicture Picture() {
-			return ((QPictureIO) interceptor).Picture();
+			return (QPicture) interceptor.Invoke("picture", "picture() const", typeof(QPicture));
 		}
-		[SmokeMethod("status", "() const", "")]
 		public int Status() {
-			return ((QPictureIO) interceptor).Status();
+			return (int) interceptor.Invoke("status", "status() const", typeof(int));
 		}
-		[SmokeMethod("format", "() const", "")]
 		public string Format() {
-			return ((QPictureIO) interceptor).Format();
+			return (string) interceptor.Invoke("format", "format() const", typeof(string));
 		}
-		[SmokeMethod("ioDevice", "() const", "")]
 		public QIODevice IoDevice() {
-			return ((QPictureIO) interceptor).IoDevice();
+			return (QIODevice) interceptor.Invoke("ioDevice", "ioDevice() const", typeof(QIODevice));
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QPictureIO) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("quality", "() const", "")]
 		public int Quality() {
-			return ((QPictureIO) interceptor).Quality();
+			return (int) interceptor.Invoke("quality", "quality() const", typeof(int));
 		}
-		[SmokeMethod("description", "() const", "")]
 		public string Description() {
-			return ((QPictureIO) interceptor).Description();
+			return (string) interceptor.Invoke("description", "description() const", typeof(string));
 		}
-		[SmokeMethod("parameters", "() const", "")]
 		public string Parameters() {
-			return ((QPictureIO) interceptor).Parameters();
+			return (string) interceptor.Invoke("parameters", "parameters() const", typeof(string));
 		}
-		[SmokeMethod("gamma", "() const", "")]
 		public float Gamma() {
-			return ((QPictureIO) interceptor).Gamma();
+			return (float) interceptor.Invoke("gamma", "gamma() const", typeof(float));
 		}
-		[SmokeMethod("setPicture", "(const QPicture&)", "#")]
 		public void SetPicture(QPicture arg1) {
-			((QPictureIO) interceptor).SetPicture(arg1);
+			interceptor.Invoke("setPicture#", "setPicture(const QPicture&)", typeof(void), typeof(QPicture), arg1);
 		}
-		[SmokeMethod("setStatus", "(int)", "$")]
 		public void SetStatus(int arg1) {
-			((QPictureIO) interceptor).SetStatus(arg1);
+			interceptor.Invoke("setStatus$", "setStatus(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("setFormat", "(const char*)", "$")]
 		public void SetFormat(string arg1) {
-			((QPictureIO) interceptor).SetFormat(arg1);
+			interceptor.Invoke("setFormat$", "setFormat(const char*)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("setIODevice", "(QIODevice*)", "#")]
 		public void SetIODevice(QIODevice arg1) {
-			((QPictureIO) interceptor).SetIODevice(arg1);
+			interceptor.Invoke("setIODevice#", "setIODevice(QIODevice*)", typeof(void), typeof(QIODevice), arg1);
 		}
-		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string arg1) {
-			((QPictureIO) interceptor).SetFileName(arg1);
+			interceptor.Invoke("setFileName$", "setFileName(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("setQuality", "(int)", "$")]
 		public void SetQuality(int arg1) {
-			((QPictureIO) interceptor).SetQuality(arg1);
+			interceptor.Invoke("setQuality$", "setQuality(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("setDescription", "(const QString&)", "$")]
 		public void SetDescription(string arg1) {
-			((QPictureIO) interceptor).SetDescription(arg1);
+			interceptor.Invoke("setDescription$", "setDescription(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("setParameters", "(const char*)", "$")]
 		public void SetParameters(string arg1) {
-			((QPictureIO) interceptor).SetParameters(arg1);
+			interceptor.Invoke("setParameters$", "setParameters(const char*)", typeof(void), typeof(string), arg1);
 		}
-		[SmokeMethod("setGamma", "(float)", "$")]
 		public void SetGamma(float arg1) {
-			((QPictureIO) interceptor).SetGamma(arg1);
+			interceptor.Invoke("setGamma$", "setGamma(float)", typeof(void), typeof(float), arg1);
 		}
-		[SmokeMethod("read", "()", "")]
 		public bool Read() {
-			return ((QPictureIO) interceptor).Read();
+			return (bool) interceptor.Invoke("read", "read()", typeof(bool));
 		}
-		[SmokeMethod("write", "()", "")]
 		public bool Write() {
-			return ((QPictureIO) interceptor).Write();
+			return (bool) interceptor.Invoke("write", "write()", typeof(bool));
 		}
 		~QPictureIO() {
-			DisposeQPictureIO();
+			interceptor.Invoke("~QPictureIO", "~QPictureIO()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPictureIO();
-		}
-		[SmokeMethod("~QPictureIO", "()", "")]
-		private void DisposeQPictureIO() {
-			((QPictureIO) interceptor).DisposeQPictureIO();
+			interceptor.Invoke("~QPictureIO", "~QPictureIO()", typeof(void));
 		}
 		public static QByteArray PictureFormat(string fileName) {
-			return staticInterceptor.PictureFormat(fileName);
+			return (QByteArray) staticInterceptor.Invoke("pictureFormat$", "pictureFormat(const QString&)", typeof(QByteArray), typeof(string), fileName);
 		}
 		public static QByteArray PictureFormat(QIODevice arg1) {
-			return staticInterceptor.PictureFormat(arg1);
+			return (QByteArray) staticInterceptor.Invoke("pictureFormat#", "pictureFormat(QIODevice*)", typeof(QByteArray), typeof(QIODevice), arg1);
 		}
 		public static List<QByteArray> InputFormats() {
-			return staticInterceptor.InputFormats();
+			return (List<QByteArray>) staticInterceptor.Invoke("inputFormats", "inputFormats()", typeof(List<QByteArray>));
 		}
 		public static List<QByteArray> OutputFormats() {
-			return staticInterceptor.OutputFormats();
+			return (List<QByteArray>) staticInterceptor.Invoke("outputFormats", "outputFormats()", typeof(List<QByteArray>));
 		}
 	}
 }

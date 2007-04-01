@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QGraphicsPixmapItem : QGraphicsItem, IDisposable {
  		protected QGraphicsPixmapItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPixmapItem), this);
-			interceptor = (QGraphicsPixmapItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsPixmapItem), "QGraphicsPixmapItem", this);
 		}
 		public enum ShapeMode {
 			MaskShape = 0,
@@ -19,133 +18,97 @@ namespace Qyoto {
 
 		public QGraphicsPixmapItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsPixmapItem(parent,scene);
-		}
-		[SmokeMethod("QGraphicsPixmapItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
-		private void NewQGraphicsPixmapItem(QGraphicsItem parent, QGraphicsScene scene) {
-			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(parent,scene);
+			interceptor.Invoke("QGraphicsPixmapItem##", "QGraphicsPixmapItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
 		}
 		public QGraphicsPixmapItem(QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsPixmapItem(parent);
-		}
-		[SmokeMethod("QGraphicsPixmapItem", "(QGraphicsItem*)", "#")]
-		private void NewQGraphicsPixmapItem(QGraphicsItem parent) {
-			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(parent);
+			interceptor.Invoke("QGraphicsPixmapItem#", "QGraphicsPixmapItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);
 		}
 		public QGraphicsPixmapItem() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsPixmapItem();
-		}
-		[SmokeMethod("QGraphicsPixmapItem", "()", "")]
-		private void NewQGraphicsPixmapItem() {
-			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem();
+			interceptor.Invoke("QGraphicsPixmapItem", "QGraphicsPixmapItem()", typeof(void));
 		}
 		public QGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsPixmapItem(pixmap,parent,scene);
-		}
-		[SmokeMethod("QGraphicsPixmapItem", "(const QPixmap&, QGraphicsItem*, QGraphicsScene*)", "###")]
-		private void NewQGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent, QGraphicsScene scene) {
-			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(pixmap,parent,scene);
+			interceptor.Invoke("QGraphicsPixmapItem###", "QGraphicsPixmapItem(const QPixmap&, QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QPixmap), pixmap, typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
 		}
 		public QGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsPixmapItem(pixmap,parent);
-		}
-		[SmokeMethod("QGraphicsPixmapItem", "(const QPixmap&, QGraphicsItem*)", "##")]
-		private void NewQGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent) {
-			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(pixmap,parent);
+			interceptor.Invoke("QGraphicsPixmapItem##", "QGraphicsPixmapItem(const QPixmap&, QGraphicsItem*)", typeof(void), typeof(QPixmap), pixmap, typeof(QGraphicsItem), parent);
 		}
 		public QGraphicsPixmapItem(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsPixmapItem(pixmap);
+			interceptor.Invoke("QGraphicsPixmapItem#", "QGraphicsPixmapItem(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("QGraphicsPixmapItem", "(const QPixmap&)", "#")]
-		private void NewQGraphicsPixmapItem(QPixmap pixmap) {
-			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(pixmap);
-		}
-		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ((QGraphicsPixmapItem) interceptor).Pixmap();
+			return (QPixmap) interceptor.Invoke("pixmap", "pixmap() const", typeof(QPixmap));
 		}
-		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap pixmap) {
-			((QGraphicsPixmapItem) interceptor).SetPixmap(pixmap);
+			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("transformationMode", "() const", "")]
 		public Qt.TransformationMode TransformationMode() {
-			return ((QGraphicsPixmapItem) interceptor).TransformationMode();
+			return (Qt.TransformationMode) interceptor.Invoke("transformationMode", "transformationMode() const", typeof(Qt.TransformationMode));
 		}
-		[SmokeMethod("setTransformationMode", "(Qt::TransformationMode)", "$")]
 		public void SetTransformationMode(Qt.TransformationMode mode) {
-			((QGraphicsPixmapItem) interceptor).SetTransformationMode(mode);
+			interceptor.Invoke("setTransformationMode$", "setTransformationMode(Qt::TransformationMode)", typeof(void), typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("offset", "() const", "")]
 		public QPointF Offset() {
-			return ((QGraphicsPixmapItem) interceptor).Offset();
+			return (QPointF) interceptor.Invoke("offset", "offset() const", typeof(QPointF));
 		}
-		[SmokeMethod("setOffset", "(const QPointF&)", "#")]
 		public void SetOffset(QPointF offset) {
-			((QGraphicsPixmapItem) interceptor).SetOffset(offset);
+			interceptor.Invoke("setOffset#", "setOffset(const QPointF&)", typeof(void), typeof(QPointF), offset);
 		}
-		[SmokeMethod("boundingRect", "() const", "")]
+		[SmokeMethod("boundingRect() const")]
 		public override QRectF BoundingRect() {
-			return ((QGraphicsPixmapItem) interceptor).BoundingRect();
+			return (QRectF) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRectF));
 		}
-		[SmokeMethod("shape", "() const", "")]
+		[SmokeMethod("shape() const")]
 		public override QPainterPath Shape() {
-			return ((QGraphicsPixmapItem) interceptor).Shape();
+			return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));
 		}
-		[SmokeMethod("contains", "(const QPointF&) const", "#")]
+		[SmokeMethod("contains(const QPointF&) const")]
 		public override bool Contains(QPointF point) {
-			return ((QGraphicsPixmapItem) interceptor).Contains(point);
+			return (bool) interceptor.Invoke("contains#", "contains(const QPointF&) const", typeof(bool), typeof(QPointF), point);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
+		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
 		public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
-			((QGraphicsPixmapItem) interceptor).Paint(painter,option,widget);
+			interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
 		}
-		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
+		[SmokeMethod("isObscuredBy(const QGraphicsItem*) const")]
 		public override bool IsObscuredBy(QGraphicsItem item) {
-			return ((QGraphicsPixmapItem) interceptor).IsObscuredBy(item);
+			return (bool) interceptor.Invoke("isObscuredBy#", "isObscuredBy(const QGraphicsItem*) const", typeof(bool), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("opaqueArea", "() const", "")]
+		[SmokeMethod("opaqueArea() const")]
 		public override QPainterPath OpaqueArea() {
-			return ((QGraphicsPixmapItem) interceptor).OpaqueArea();
+			return (QPainterPath) interceptor.Invoke("opaqueArea", "opaqueArea() const", typeof(QPainterPath));
 		}
-		[SmokeMethod("type", "() const", "")]
+		[SmokeMethod("type() const")]
 		public override int type() {
-			return ((QGraphicsPixmapItem) interceptor).type();
+			return (int) interceptor.Invoke("type", "type() const", typeof(int));
 		}
-		[SmokeMethod("shapeMode", "() const", "")]
 		public QGraphicsPixmapItem.ShapeMode shapeMode() {
-			return ((QGraphicsPixmapItem) interceptor).shapeMode();
+			return (QGraphicsPixmapItem.ShapeMode) interceptor.Invoke("shapeMode", "shapeMode() const", typeof(QGraphicsPixmapItem.ShapeMode));
 		}
-		[SmokeMethod("setShapeMode", "(QGraphicsPixmapItem::ShapeMode)", "$")]
 		public void SetShapeMode(QGraphicsPixmapItem.ShapeMode mode) {
-			((QGraphicsPixmapItem) interceptor).SetShapeMode(mode);
+			interceptor.Invoke("setShapeMode$", "setShapeMode(QGraphicsPixmapItem::ShapeMode)", typeof(void), typeof(QGraphicsPixmapItem.ShapeMode), mode);
 		}
-		[SmokeMethod("supportsExtension", "(QGraphicsItem::Extension) const", "$")]
+		[SmokeMethod("supportsExtension(QGraphicsItem::Extension) const")]
 		protected override bool SupportsExtension(QGraphicsItem.Extension extension) {
-			return ((QGraphicsPixmapItem) interceptor).SupportsExtension(extension);
+			return (bool) interceptor.Invoke("supportsExtension$", "supportsExtension(QGraphicsItem::Extension) const", typeof(bool), typeof(QGraphicsItem.Extension), extension);
 		}
-		[SmokeMethod("setExtension", "(QGraphicsItem::Extension, const QVariant&)", "$#")]
+		[SmokeMethod("setExtension(QGraphicsItem::Extension, const QVariant&)")]
 		protected override void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
-			((QGraphicsPixmapItem) interceptor).SetExtension(extension,variant);
+			interceptor.Invoke("setExtension$#", "setExtension(QGraphicsItem::Extension, const QVariant&)", typeof(void), typeof(QGraphicsItem.Extension), extension, typeof(QVariant), variant);
 		}
-		[SmokeMethod("extension", "(const QVariant&) const", "#")]
+		[SmokeMethod("extension(const QVariant&) const")]
 		protected override QVariant extension(QVariant variant) {
-			return ((QGraphicsPixmapItem) interceptor).extension(variant);
+			return (QVariant) interceptor.Invoke("extension#", "extension(const QVariant&) const", typeof(QVariant), typeof(QVariant), variant);
 		}
 		~QGraphicsPixmapItem() {
-			DisposeQGraphicsPixmapItem();
+			interceptor.Invoke("~QGraphicsPixmapItem", "~QGraphicsPixmapItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGraphicsPixmapItem();
-		}
-		[SmokeMethod("~QGraphicsPixmapItem", "()", "")]
-		private void DisposeQGraphicsPixmapItem() {
-			((QGraphicsPixmapItem) interceptor).DisposeQGraphicsPixmapItem();
+			interceptor.Invoke("~QGraphicsPixmapItem", "~QGraphicsPixmapItem()", typeof(void));
 		}
 	}
 }

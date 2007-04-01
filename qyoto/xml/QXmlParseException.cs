@@ -4,91 +4,57 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QXmlParseException")]
-	public class QXmlParseException : MarshalByRefObject, IDisposable {
-		protected QXmlParseException interceptor = null;
+	public class QXmlParseException : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlParseException(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlParseException), this);
-			interceptor = (QXmlParseException) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlParseException), "QXmlParseException", this);
 		}
 		public QXmlParseException(string name, int c, int l, string p, string s) : this((Type) null) {
 			CreateProxy();
-			NewQXmlParseException(name,c,l,p,s);
-		}
-		[SmokeMethod("QXmlParseException", "(const QString&, int, int, const QString&, const QString&)", "$$$$$")]
-		private void NewQXmlParseException(string name, int c, int l, string p, string s) {
-			((QXmlParseException) interceptor).NewQXmlParseException(name,c,l,p,s);
+			interceptor.Invoke("QXmlParseException$$$$$", "QXmlParseException(const QString&, int, int, const QString&, const QString&)", typeof(void), typeof(string), name, typeof(int), c, typeof(int), l, typeof(string), p, typeof(string), s);
 		}
 		public QXmlParseException(string name, int c, int l, string p) : this((Type) null) {
 			CreateProxy();
-			NewQXmlParseException(name,c,l,p);
-		}
-		[SmokeMethod("QXmlParseException", "(const QString&, int, int, const QString&)", "$$$$")]
-		private void NewQXmlParseException(string name, int c, int l, string p) {
-			((QXmlParseException) interceptor).NewQXmlParseException(name,c,l,p);
+			interceptor.Invoke("QXmlParseException$$$$", "QXmlParseException(const QString&, int, int, const QString&)", typeof(void), typeof(string), name, typeof(int), c, typeof(int), l, typeof(string), p);
 		}
 		public QXmlParseException(string name, int c, int l) : this((Type) null) {
 			CreateProxy();
-			NewQXmlParseException(name,c,l);
-		}
-		[SmokeMethod("QXmlParseException", "(const QString&, int, int)", "$$$")]
-		private void NewQXmlParseException(string name, int c, int l) {
-			((QXmlParseException) interceptor).NewQXmlParseException(name,c,l);
+			interceptor.Invoke("QXmlParseException$$$", "QXmlParseException(const QString&, int, int)", typeof(void), typeof(string), name, typeof(int), c, typeof(int), l);
 		}
 		public QXmlParseException(string name, int c) : this((Type) null) {
 			CreateProxy();
-			NewQXmlParseException(name,c);
-		}
-		[SmokeMethod("QXmlParseException", "(const QString&, int)", "$$")]
-		private void NewQXmlParseException(string name, int c) {
-			((QXmlParseException) interceptor).NewQXmlParseException(name,c);
+			interceptor.Invoke("QXmlParseException$$", "QXmlParseException(const QString&, int)", typeof(void), typeof(string), name, typeof(int), c);
 		}
 		public QXmlParseException(string name) : this((Type) null) {
 			CreateProxy();
-			NewQXmlParseException(name);
-		}
-		[SmokeMethod("QXmlParseException", "(const QString&)", "$")]
-		private void NewQXmlParseException(string name) {
-			((QXmlParseException) interceptor).NewQXmlParseException(name);
+			interceptor.Invoke("QXmlParseException$", "QXmlParseException(const QString&)", typeof(void), typeof(string), name);
 		}
 		public QXmlParseException() : this((Type) null) {
 			CreateProxy();
-			NewQXmlParseException();
+			interceptor.Invoke("QXmlParseException", "QXmlParseException()", typeof(void));
 		}
-		[SmokeMethod("QXmlParseException", "()", "")]
-		private void NewQXmlParseException() {
-			((QXmlParseException) interceptor).NewQXmlParseException();
-		}
-		[SmokeMethod("columnNumber", "() const", "")]
 		public int ColumnNumber() {
-			return ((QXmlParseException) interceptor).ColumnNumber();
+			return (int) interceptor.Invoke("columnNumber", "columnNumber() const", typeof(int));
 		}
-		[SmokeMethod("lineNumber", "() const", "")]
 		public int LineNumber() {
-			return ((QXmlParseException) interceptor).LineNumber();
+			return (int) interceptor.Invoke("lineNumber", "lineNumber() const", typeof(int));
 		}
-		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
-			return ((QXmlParseException) interceptor).PublicId();
+			return (string) interceptor.Invoke("publicId", "publicId() const", typeof(string));
 		}
-		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
-			return ((QXmlParseException) interceptor).SystemId();
+			return (string) interceptor.Invoke("systemId", "systemId() const", typeof(string));
 		}
-		[SmokeMethod("message", "() const", "")]
 		public string Message() {
-			return ((QXmlParseException) interceptor).Message();
+			return (string) interceptor.Invoke("message", "message() const", typeof(string));
 		}
 		~QXmlParseException() {
-			DisposeQXmlParseException();
+			interceptor.Invoke("~QXmlParseException", "~QXmlParseException()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQXmlParseException();
-		}
-		[SmokeMethod("~QXmlParseException", "()", "")]
-		private void DisposeQXmlParseException() {
-			((QXmlParseException) interceptor).DisposeQXmlParseException();
+			interceptor.Invoke("~QXmlParseException", "~QXmlParseException()", typeof(void));
 		}
 	}
 }

@@ -7,31 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QFSFileEngine")]
 	public class QFSFileEngine : QAbstractFileEngine, IDisposable {
  		protected QFSFileEngine(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFSFileEngine")]
-		interface IQFSFileEngineProxy {
-			[SmokeMethod("setCurrentPath", "(const QString&)", "$")]
-			bool SetCurrentPath(string path);
-			[SmokeMethod("currentPath", "(const QString&)", "$")]
-			string CurrentPath(string path);
-			[SmokeMethod("currentPath", "()", "")]
-			string CurrentPath();
-			[SmokeMethod("homePath", "()", "")]
-			string HomePath();
-			[SmokeMethod("rootPath", "()", "")]
-			string RootPath();
-			[SmokeMethod("tempPath", "()", "")]
-			string TempPath();
-			[SmokeMethod("drives", "()", "")]
-			List<QFileInfo> Drives();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFSFileEngine), this);
-			interceptor = (QFSFileEngine) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFSFileEngine), "QFSFileEngine", this);
 		}
-		private static IQFSFileEngineProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFSFileEngine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFSFileEngineProxy), null);
-			staticInterceptor = (IQFSFileEngineProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFSFileEngine), "QFSFileEngine", null);
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
@@ -40,170 +21,157 @@ namespace Qyoto {
 		// QFSFileEngine* QFSFileEngine(QFSFileEnginePrivate& arg1); >>>> NOT CONVERTED
 		public QFSFileEngine() : this((Type) null) {
 			CreateProxy();
-			NewQFSFileEngine();
-		}
-		[SmokeMethod("QFSFileEngine", "()", "")]
-		private void NewQFSFileEngine() {
-			((QFSFileEngine) interceptor).NewQFSFileEngine();
+			interceptor.Invoke("QFSFileEngine", "QFSFileEngine()", typeof(void));
 		}
 		public QFSFileEngine(string file) : this((Type) null) {
 			CreateProxy();
-			NewQFSFileEngine(file);
+			interceptor.Invoke("QFSFileEngine$", "QFSFileEngine(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("QFSFileEngine", "(const QString&)", "$")]
-		private void NewQFSFileEngine(string file) {
-			((QFSFileEngine) interceptor).NewQFSFileEngine(file);
-		}
-		[SmokeMethod("open", "(QIODevice::OpenMode)", "$")]
+		[SmokeMethod("open(QIODevice::OpenMode)")]
 		public override bool Open(int openMode) {
-			return ((QFSFileEngine) interceptor).Open(openMode);
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(int), openMode);
 		}
-		[SmokeMethod("close", "()", "")]
+		[SmokeMethod("close()")]
 		public override bool Close() {
-			return ((QFSFileEngine) interceptor).Close();
+			return (bool) interceptor.Invoke("close", "close()", typeof(bool));
 		}
-		[SmokeMethod("flush", "()", "")]
+		[SmokeMethod("flush()")]
 		public override bool Flush() {
-			return ((QFSFileEngine) interceptor).Flush();
+			return (bool) interceptor.Invoke("flush", "flush()", typeof(bool));
 		}
-		[SmokeMethod("size", "() const", "")]
+		[SmokeMethod("size() const")]
 		public override long Size() {
-			return ((QFSFileEngine) interceptor).Size();
+			return (long) interceptor.Invoke("size", "size() const", typeof(long));
 		}
-		[SmokeMethod("pos", "() const", "")]
+		[SmokeMethod("pos() const")]
 		public override long Pos() {
-			return ((QFSFileEngine) interceptor).Pos();
+			return (long) interceptor.Invoke("pos", "pos() const", typeof(long));
 		}
-		[SmokeMethod("seek", "(qint64)", "$")]
+		[SmokeMethod("seek(qint64)")]
 		public override bool Seek(long arg1) {
-			return ((QFSFileEngine) interceptor).Seek(arg1);
+			return (bool) interceptor.Invoke("seek$", "seek(qint64)", typeof(bool), typeof(long), arg1);
 		}
-		[SmokeMethod("isSequential", "() const", "")]
+		[SmokeMethod("isSequential() const")]
 		public override bool IsSequential() {
-			return ((QFSFileEngine) interceptor).IsSequential();
+			return (bool) interceptor.Invoke("isSequential", "isSequential() const", typeof(bool));
 		}
-		[SmokeMethod("remove", "()", "")]
+		[SmokeMethod("remove()")]
 		public override bool Remove() {
-			return ((QFSFileEngine) interceptor).Remove();
+			return (bool) interceptor.Invoke("remove", "remove()", typeof(bool));
 		}
-		[SmokeMethod("copy", "(const QString&)", "$")]
+		[SmokeMethod("copy(const QString&)")]
 		public override bool Copy(string newName) {
-			return ((QFSFileEngine) interceptor).Copy(newName);
+			return (bool) interceptor.Invoke("copy$", "copy(const QString&)", typeof(bool), typeof(string), newName);
 		}
-		[SmokeMethod("rename", "(const QString&)", "$")]
+		[SmokeMethod("rename(const QString&)")]
 		public override bool Rename(string newName) {
-			return ((QFSFileEngine) interceptor).Rename(newName);
+			return (bool) interceptor.Invoke("rename$", "rename(const QString&)", typeof(bool), typeof(string), newName);
 		}
-		[SmokeMethod("link", "(const QString&)", "$")]
+		[SmokeMethod("link(const QString&)")]
 		public override bool Link(string newName) {
-			return ((QFSFileEngine) interceptor).Link(newName);
+			return (bool) interceptor.Invoke("link$", "link(const QString&)", typeof(bool), typeof(string), newName);
 		}
-		[SmokeMethod("mkdir", "(const QString&, bool) const", "$$")]
+		[SmokeMethod("mkdir(const QString&, bool) const")]
 		public override bool Mkdir(string dirName, bool createParentDirectories) {
-			return ((QFSFileEngine) interceptor).Mkdir(dirName,createParentDirectories);
+			return (bool) interceptor.Invoke("mkdir$$", "mkdir(const QString&, bool) const", typeof(bool), typeof(string), dirName, typeof(bool), createParentDirectories);
 		}
-		[SmokeMethod("rmdir", "(const QString&, bool) const", "$$")]
+		[SmokeMethod("rmdir(const QString&, bool) const")]
 		public override bool Rmdir(string dirName, bool recurseParentDirectories) {
-			return ((QFSFileEngine) interceptor).Rmdir(dirName,recurseParentDirectories);
+			return (bool) interceptor.Invoke("rmdir$$", "rmdir(const QString&, bool) const", typeof(bool), typeof(string), dirName, typeof(bool), recurseParentDirectories);
 		}
-		[SmokeMethod("setSize", "(qint64)", "$")]
+		[SmokeMethod("setSize(qint64)")]
 		public override bool SetSize(long size) {
-			return ((QFSFileEngine) interceptor).SetSize(size);
+			return (bool) interceptor.Invoke("setSize$", "setSize(qint64)", typeof(bool), typeof(long), size);
 		}
-		[SmokeMethod("caseSensitive", "() const", "")]
+		[SmokeMethod("caseSensitive() const")]
 		public override bool CaseSensitive() {
-			return ((QFSFileEngine) interceptor).CaseSensitive();
+			return (bool) interceptor.Invoke("caseSensitive", "caseSensitive() const", typeof(bool));
 		}
-		[SmokeMethod("isRelativePath", "() const", "")]
+		[SmokeMethod("isRelativePath() const")]
 		public override bool IsRelativePath() {
-			return ((QFSFileEngine) interceptor).IsRelativePath();
+			return (bool) interceptor.Invoke("isRelativePath", "isRelativePath() const", typeof(bool));
 		}
-		[SmokeMethod("entryList", "(QDir::Filters, const QStringList&) const", "$?")]
+		[SmokeMethod("entryList(QDir::Filters, const QStringList&) const")]
 		public override List<string> EntryList(int filters, List<string> filterNames) {
-			return ((QFSFileEngine) interceptor).EntryList(filters,filterNames);
+			return (List<string>) interceptor.Invoke("entryList$?", "entryList(QDir::Filters, const QStringList&) const", typeof(List<string>), typeof(int), filters, typeof(List<string>), filterNames);
 		}
-		[SmokeMethod("fileFlags", "(FileFlags) const", "$")]
+		[SmokeMethod("fileFlags(FileFlags) const")]
 		public override int FileFlags(int type) {
-			return ((QFSFileEngine) interceptor).FileFlags(type);
+			return (int) interceptor.Invoke("fileFlags$", "fileFlags(FileFlags) const", typeof(int), typeof(int), type);
 		}
-		[SmokeMethod("setPermissions", "(uint)", "$")]
+		[SmokeMethod("setPermissions(uint)")]
 		public override bool SetPermissions(uint perms) {
-			return ((QFSFileEngine) interceptor).SetPermissions(perms);
+			return (bool) interceptor.Invoke("setPermissions$", "setPermissions(uint)", typeof(bool), typeof(uint), perms);
 		}
-		[SmokeMethod("fileName", "(QAbstractFileEngine::FileName) const", "$")]
+		[SmokeMethod("fileName(QAbstractFileEngine::FileName) const")]
 		public override string fileName(QAbstractFileEngine.FileName file) {
-			return ((QFSFileEngine) interceptor).fileName(file);
+			return (string) interceptor.Invoke("fileName$", "fileName(QAbstractFileEngine::FileName) const", typeof(string), typeof(QAbstractFileEngine.FileName), file);
 		}
-		[SmokeMethod("ownerId", "(QAbstractFileEngine::FileOwner) const", "$")]
+		[SmokeMethod("ownerId(QAbstractFileEngine::FileOwner) const")]
 		public override uint OwnerId(QAbstractFileEngine.FileOwner arg1) {
-			return ((QFSFileEngine) interceptor).OwnerId(arg1);
+			return (uint) interceptor.Invoke("ownerId$", "ownerId(QAbstractFileEngine::FileOwner) const", typeof(uint), typeof(QAbstractFileEngine.FileOwner), arg1);
 		}
-		[SmokeMethod("owner", "(QAbstractFileEngine::FileOwner) const", "$")]
+		[SmokeMethod("owner(QAbstractFileEngine::FileOwner) const")]
 		public override string Owner(QAbstractFileEngine.FileOwner arg1) {
-			return ((QFSFileEngine) interceptor).Owner(arg1);
+			return (string) interceptor.Invoke("owner$", "owner(QAbstractFileEngine::FileOwner) const", typeof(string), typeof(QAbstractFileEngine.FileOwner), arg1);
 		}
-		[SmokeMethod("fileTime", "(QAbstractFileEngine::FileTime) const", "$")]
+		[SmokeMethod("fileTime(QAbstractFileEngine::FileTime) const")]
 		public override QDateTime fileTime(QAbstractFileEngine.FileTime time) {
-			return ((QFSFileEngine) interceptor).fileTime(time);
+			return (QDateTime) interceptor.Invoke("fileTime$", "fileTime(QAbstractFileEngine::FileTime) const", typeof(QDateTime), typeof(QAbstractFileEngine.FileTime), time);
 		}
-		[SmokeMethod("setFileName", "(const QString&)", "$")]
+		[SmokeMethod("setFileName(const QString&)")]
 		public override void SetFileName(string file) {
-			((QFSFileEngine) interceptor).SetFileName(file);
+			interceptor.Invoke("setFileName$", "setFileName(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("read", "(char*, qint64)", "$$")]
+		[SmokeMethod("read(char*, qint64)")]
 		public override long Read(string data, long maxlen) {
-			return ((QFSFileEngine) interceptor).Read(data,maxlen);
+			return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
-		[SmokeMethod("readLine", "(char*, qint64)", "$$")]
+		[SmokeMethod("readLine(char*, qint64)")]
 		public override long ReadLine(string data, long maxlen) {
-			return ((QFSFileEngine) interceptor).ReadLine(data,maxlen);
+			return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
-		[SmokeMethod("write", "(const char*, qint64)", "$$")]
+		[SmokeMethod("write(const char*, qint64)")]
 		public override long Write(string data, long len) {
-			return ((QFSFileEngine) interceptor).Write(data,len);
+			return (long) interceptor.Invoke("write$$", "write(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
-		[SmokeMethod("extension", "(QAbstractFileEngine::Extension)", "$")]
+		[SmokeMethod("extension(QAbstractFileEngine::Extension)")]
 		public override bool extension(QAbstractFileEngine.Extension extension) {
-			return ((QFSFileEngine) interceptor).extension(extension);
+			return (bool) interceptor.Invoke("extension$", "extension(QAbstractFileEngine::Extension)", typeof(bool), typeof(QAbstractFileEngine.Extension), extension);
 		}
-		[SmokeMethod("supportsExtension", "(QAbstractFileEngine::Extension) const", "$")]
+		[SmokeMethod("supportsExtension(QAbstractFileEngine::Extension) const")]
 		public override bool SupportsExtension(QAbstractFileEngine.Extension extension) {
-			return ((QFSFileEngine) interceptor).SupportsExtension(extension);
+			return (bool) interceptor.Invoke("supportsExtension$", "supportsExtension(QAbstractFileEngine::Extension) const", typeof(bool), typeof(QAbstractFileEngine.Extension), extension);
 		}
-		[SmokeMethod("open", "(QIODevice::OpenMode, int)", "$$")]
 		public bool Open(int flags, int fd) {
-			return ((QFSFileEngine) interceptor).Open(flags,fd);
+			return (bool) interceptor.Invoke("open$$", "open(QIODevice::OpenMode, int)", typeof(bool), typeof(int), flags, typeof(int), fd);
 		}
 		~QFSFileEngine() {
-			DisposeQFSFileEngine();
+			interceptor.Invoke("~QFSFileEngine", "~QFSFileEngine()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFSFileEngine();
-		}
-		[SmokeMethod("~QFSFileEngine", "()", "")]
-		private void DisposeQFSFileEngine() {
-			((QFSFileEngine) interceptor).DisposeQFSFileEngine();
+			interceptor.Invoke("~QFSFileEngine", "~QFSFileEngine()", typeof(void));
 		}
 		public static bool SetCurrentPath(string path) {
-			return staticInterceptor.SetCurrentPath(path);
+			return (bool) staticInterceptor.Invoke("setCurrentPath$", "setCurrentPath(const QString&)", typeof(bool), typeof(string), path);
 		}
 		public static string CurrentPath(string path) {
-			return staticInterceptor.CurrentPath(path);
+			return (string) staticInterceptor.Invoke("currentPath$", "currentPath(const QString&)", typeof(string), typeof(string), path);
 		}
 		public static string CurrentPath() {
-			return staticInterceptor.CurrentPath();
+			return (string) staticInterceptor.Invoke("currentPath", "currentPath()", typeof(string));
 		}
 		public static string HomePath() {
-			return staticInterceptor.HomePath();
+			return (string) staticInterceptor.Invoke("homePath", "homePath()", typeof(string));
 		}
 		public static string RootPath() {
-			return staticInterceptor.RootPath();
+			return (string) staticInterceptor.Invoke("rootPath", "rootPath()", typeof(string));
 		}
 		public static string TempPath() {
-			return staticInterceptor.TempPath();
+			return (string) staticInterceptor.Invoke("tempPath", "tempPath()", typeof(string));
 		}
 		public static List<QFileInfo> Drives() {
-			return staticInterceptor.Drives();
+			return (List<QFileInfo>) staticInterceptor.Invoke("drives", "drives()", typeof(List<QFileInfo>));
 		}
 	}
 }

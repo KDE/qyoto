@@ -7,50 +7,35 @@ namespace Qyoto {
 	public class QHelpEvent : QEvent, IDisposable {
  		protected QHelpEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHelpEvent), this);
-			interceptor = (QHelpEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QHelpEvent), "QHelpEvent", this);
 		}
 		public QHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) : this((Type) null) {
 			CreateProxy();
-			NewQHelpEvent(type,pos,globalPos);
+			interceptor.Invoke("QHelpEvent$##", "QHelpEvent(QEvent::Type, const QPoint&, const QPoint&)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(QPoint), globalPos);
 		}
-		[SmokeMethod("QHelpEvent", "(QEvent::Type, const QPoint&, const QPoint&)", "$##")]
-		private void NewQHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) {
-			((QHelpEvent) interceptor).NewQHelpEvent(type,pos,globalPos);
-		}
-		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ((QHelpEvent) interceptor).X();
+			return (int) interceptor.Invoke("x", "x() const", typeof(int));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ((QHelpEvent) interceptor).Y();
+			return (int) interceptor.Invoke("y", "y() const", typeof(int));
 		}
-		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ((QHelpEvent) interceptor).GlobalX();
+			return (int) interceptor.Invoke("globalX", "globalX() const", typeof(int));
 		}
-		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ((QHelpEvent) interceptor).GlobalY();
+			return (int) interceptor.Invoke("globalY", "globalY() const", typeof(int));
 		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ((QHelpEvent) interceptor).Pos();
+			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ((QHelpEvent) interceptor).GlobalPos();
+			return (QPoint) interceptor.Invoke("globalPos", "globalPos() const", typeof(QPoint));
 		}
 		~QHelpEvent() {
-			DisposeQHelpEvent();
+			interceptor.Invoke("~QHelpEvent", "~QHelpEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQHelpEvent();
-		}
-		[SmokeMethod("~QHelpEvent", "()", "")]
-		private void DisposeQHelpEvent() {
-			((QHelpEvent) interceptor).DisposeQHelpEvent();
+			interceptor.Invoke("~QHelpEvent", "~QHelpEvent()", typeof(void));
 		}
 	}
 }

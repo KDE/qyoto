@@ -5,23 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QTextFormat")]
-	public class QTextFormat : MarshalByRefObject, IDisposable {
-		protected QTextFormat interceptor = null;
+	public class QTextFormat : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextFormat(Type dummy) {}
-		[SmokeClass("QTextFormat")]
-		interface IQTextFormatProxy {
-			[SmokeMethod("operator==", "(const QTextFormat&) const", "#")]
-			bool op_equals(QTextFormat lhs, QTextFormat rhs);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFormat), this);
-			interceptor = (QTextFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextFormat), "QTextFormat", this);
 		}
-		private static IQTextFormatProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextFormat() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextFormatProxy), null);
-			staticInterceptor = (IQTextFormatProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextFormat), "QTextFormat", null);
 		}
 		public enum FormatType {
 			InvalidFormat = -1,
@@ -102,218 +95,160 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QTextFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextFormat();
-		}
-		[SmokeMethod("QTextFormat", "()", "")]
-		private void NewQTextFormat() {
-			((QTextFormat) interceptor).NewQTextFormat();
+			interceptor.Invoke("QTextFormat", "QTextFormat()", typeof(void));
 		}
 		public QTextFormat(int type) : this((Type) null) {
 			CreateProxy();
-			NewQTextFormat(type);
-		}
-		[SmokeMethod("QTextFormat", "(int)", "$")]
-		private void NewQTextFormat(int type) {
-			((QTextFormat) interceptor).NewQTextFormat(type);
+			interceptor.Invoke("QTextFormat$", "QTextFormat(int)", typeof(void), typeof(int), type);
 		}
 		public QTextFormat(QTextFormat rhs) : this((Type) null) {
 			CreateProxy();
-			NewQTextFormat(rhs);
+			interceptor.Invoke("QTextFormat#", "QTextFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), rhs);
 		}
-		[SmokeMethod("QTextFormat", "(const QTextFormat&)", "#")]
-		private void NewQTextFormat(QTextFormat rhs) {
-			((QTextFormat) interceptor).NewQTextFormat(rhs);
-		}
-		[SmokeMethod("merge", "(const QTextFormat&)", "#")]
 		public void Merge(QTextFormat other) {
-			((QTextFormat) interceptor).Merge(other);
+			interceptor.Invoke("merge#", "merge(const QTextFormat&)", typeof(void), typeof(QTextFormat), other);
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("type", "() const", "")]
 		public int type() {
-			return ((QTextFormat) interceptor).type();
+			return (int) interceptor.Invoke("type", "type() const", typeof(int));
 		}
-		[SmokeMethod("objectIndex", "() const", "")]
 		public int ObjectIndex() {
-			return ((QTextFormat) interceptor).ObjectIndex();
+			return (int) interceptor.Invoke("objectIndex", "objectIndex() const", typeof(int));
 		}
-		[SmokeMethod("setObjectIndex", "(int)", "$")]
 		public void SetObjectIndex(int arg1) {
-			((QTextFormat) interceptor).SetObjectIndex(arg1);
+			interceptor.Invoke("setObjectIndex$", "setObjectIndex(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("property", "(int) const", "$")]
 		public QVariant property(int propertyId) {
-			return ((QTextFormat) interceptor).property(propertyId);
+			return (QVariant) interceptor.Invoke("property$", "property(int) const", typeof(QVariant), typeof(int), propertyId);
 		}
-		[SmokeMethod("setProperty", "(int, const QVariant&)", "$#")]
 		public void SetProperty(int propertyId, QVariant value) {
-			((QTextFormat) interceptor).SetProperty(propertyId,value);
+			interceptor.Invoke("setProperty$#", "setProperty(int, const QVariant&)", typeof(void), typeof(int), propertyId, typeof(QVariant), value);
 		}
-		[SmokeMethod("clearProperty", "(int)", "$")]
 		public void ClearProperty(int propertyId) {
-			((QTextFormat) interceptor).ClearProperty(propertyId);
+			interceptor.Invoke("clearProperty$", "clearProperty(int)", typeof(void), typeof(int), propertyId);
 		}
-		[SmokeMethod("hasProperty", "(int) const", "$")]
 		public bool HasProperty(int propertyId) {
-			return ((QTextFormat) interceptor).HasProperty(propertyId);
+			return (bool) interceptor.Invoke("hasProperty$", "hasProperty(int) const", typeof(bool), typeof(int), propertyId);
 		}
-		[SmokeMethod("boolProperty", "(int) const", "$")]
 		public bool BoolProperty(int propertyId) {
-			return ((QTextFormat) interceptor).BoolProperty(propertyId);
+			return (bool) interceptor.Invoke("boolProperty$", "boolProperty(int) const", typeof(bool), typeof(int), propertyId);
 		}
-		[SmokeMethod("intProperty", "(int) const", "$")]
 		public int IntProperty(int propertyId) {
-			return ((QTextFormat) interceptor).IntProperty(propertyId);
+			return (int) interceptor.Invoke("intProperty$", "intProperty(int) const", typeof(int), typeof(int), propertyId);
 		}
-		[SmokeMethod("doubleProperty", "(int) const", "$")]
 		public double DoubleProperty(int propertyId) {
-			return ((QTextFormat) interceptor).DoubleProperty(propertyId);
+			return (double) interceptor.Invoke("doubleProperty$", "doubleProperty(int) const", typeof(double), typeof(int), propertyId);
 		}
-		[SmokeMethod("stringProperty", "(int) const", "$")]
 		public string StringProperty(int propertyId) {
-			return ((QTextFormat) interceptor).StringProperty(propertyId);
+			return (string) interceptor.Invoke("stringProperty$", "stringProperty(int) const", typeof(string), typeof(int), propertyId);
 		}
-		[SmokeMethod("colorProperty", "(int) const", "$")]
 		public QColor ColorProperty(int propertyId) {
-			return ((QTextFormat) interceptor).ColorProperty(propertyId);
+			return (QColor) interceptor.Invoke("colorProperty$", "colorProperty(int) const", typeof(QColor), typeof(int), propertyId);
 		}
-		[SmokeMethod("penProperty", "(int) const", "$")]
 		public QPen PenProperty(int propertyId) {
-			return ((QTextFormat) interceptor).PenProperty(propertyId);
+			return (QPen) interceptor.Invoke("penProperty$", "penProperty(int) const", typeof(QPen), typeof(int), propertyId);
 		}
-		[SmokeMethod("brushProperty", "(int) const", "$")]
 		public QBrush BrushProperty(int propertyId) {
-			return ((QTextFormat) interceptor).BrushProperty(propertyId);
+			return (QBrush) interceptor.Invoke("brushProperty$", "brushProperty(int) const", typeof(QBrush), typeof(int), propertyId);
 		}
-		[SmokeMethod("lengthProperty", "(int) const", "$")]
 		public QTextLength LengthProperty(int propertyId) {
-			return ((QTextFormat) interceptor).LengthProperty(propertyId);
+			return (QTextLength) interceptor.Invoke("lengthProperty$", "lengthProperty(int) const", typeof(QTextLength), typeof(int), propertyId);
 		}
-		[SmokeMethod("lengthVectorProperty", "(int) const", "$")]
 		public List<QTextLength> LengthVectorProperty(int propertyId) {
-			return ((QTextFormat) interceptor).LengthVectorProperty(propertyId);
+			return (List<QTextLength>) interceptor.Invoke("lengthVectorProperty$", "lengthVectorProperty(int) const", typeof(List<QTextLength>), typeof(int), propertyId);
 		}
-		[SmokeMethod("setProperty", "(int, const QVector<QTextLength>&)", "$?")]
 		public void SetProperty(int propertyId, List<QTextLength> lengths) {
-			((QTextFormat) interceptor).SetProperty(propertyId,lengths);
+			interceptor.Invoke("setProperty$?", "setProperty(int, const QVector<QTextLength>&)", typeof(void), typeof(int), propertyId, typeof(List<QTextLength>), lengths);
 		}
-		[SmokeMethod("properties", "() const", "")]
 		public Dictionary<int, QVariant> Properties() {
-			return ((QTextFormat) interceptor).Properties();
+			return (Dictionary<int, QVariant>) interceptor.Invoke("properties", "properties() const", typeof(Dictionary<int, QVariant>));
 		}
-		[SmokeMethod("setObjectType", "(int)", "$")]
 		public void SetObjectType(int type) {
-			((QTextFormat) interceptor).SetObjectType(type);
+			interceptor.Invoke("setObjectType$", "setObjectType(int)", typeof(void), typeof(int), type);
 		}
-		[SmokeMethod("objectType", "() const", "")]
 		public int ObjectType() {
-			return ((QTextFormat) interceptor).ObjectType();
+			return (int) interceptor.Invoke("objectType", "objectType() const", typeof(int));
 		}
-		[SmokeMethod("isCharFormat", "() const", "")]
 		public bool IsCharFormat() {
-			return ((QTextFormat) interceptor).IsCharFormat();
+			return (bool) interceptor.Invoke("isCharFormat", "isCharFormat() const", typeof(bool));
 		}
-		[SmokeMethod("isBlockFormat", "() const", "")]
 		public bool IsBlockFormat() {
-			return ((QTextFormat) interceptor).IsBlockFormat();
+			return (bool) interceptor.Invoke("isBlockFormat", "isBlockFormat() const", typeof(bool));
 		}
-		[SmokeMethod("isListFormat", "() const", "")]
 		public bool IsListFormat() {
-			return ((QTextFormat) interceptor).IsListFormat();
+			return (bool) interceptor.Invoke("isListFormat", "isListFormat() const", typeof(bool));
 		}
-		[SmokeMethod("isFrameFormat", "() const", "")]
 		public bool IsFrameFormat() {
-			return ((QTextFormat) interceptor).IsFrameFormat();
+			return (bool) interceptor.Invoke("isFrameFormat", "isFrameFormat() const", typeof(bool));
 		}
-		[SmokeMethod("isImageFormat", "() const", "")]
 		public bool IsImageFormat() {
-			return ((QTextFormat) interceptor).IsImageFormat();
+			return (bool) interceptor.Invoke("isImageFormat", "isImageFormat() const", typeof(bool));
 		}
-		[SmokeMethod("isTableFormat", "() const", "")]
 		public bool IsTableFormat() {
-			return ((QTextFormat) interceptor).IsTableFormat();
+			return (bool) interceptor.Invoke("isTableFormat", "isTableFormat() const", typeof(bool));
 		}
-		[SmokeMethod("toBlockFormat", "() const", "")]
 		public QTextBlockFormat ToBlockFormat() {
-			return ((QTextFormat) interceptor).ToBlockFormat();
+			return (QTextBlockFormat) interceptor.Invoke("toBlockFormat", "toBlockFormat() const", typeof(QTextBlockFormat));
 		}
-		[SmokeMethod("toCharFormat", "() const", "")]
 		public QTextCharFormat ToCharFormat() {
-			return ((QTextFormat) interceptor).ToCharFormat();
+			return (QTextCharFormat) interceptor.Invoke("toCharFormat", "toCharFormat() const", typeof(QTextCharFormat));
 		}
-		[SmokeMethod("toListFormat", "() const", "")]
 		public QTextListFormat ToListFormat() {
-			return ((QTextFormat) interceptor).ToListFormat();
+			return (QTextListFormat) interceptor.Invoke("toListFormat", "toListFormat() const", typeof(QTextListFormat));
 		}
-		[SmokeMethod("toTableFormat", "() const", "")]
 		public QTextTableFormat ToTableFormat() {
-			return ((QTextFormat) interceptor).ToTableFormat();
+			return (QTextTableFormat) interceptor.Invoke("toTableFormat", "toTableFormat() const", typeof(QTextTableFormat));
 		}
-		[SmokeMethod("toFrameFormat", "() const", "")]
 		public QTextFrameFormat ToFrameFormat() {
-			return ((QTextFormat) interceptor).ToFrameFormat();
+			return (QTextFrameFormat) interceptor.Invoke("toFrameFormat", "toFrameFormat() const", typeof(QTextFrameFormat));
 		}
-		[SmokeMethod("toImageFormat", "() const", "")]
 		public QTextImageFormat ToImageFormat() {
-			return ((QTextFormat) interceptor).ToImageFormat();
+			return (QTextImageFormat) interceptor.Invoke("toImageFormat", "toImageFormat() const", typeof(QTextImageFormat));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextFormat)) { return false; }
 			return this == (QTextFormat) o;
 		}
 		public override int GetHashCode() {
-			return ((QTextFormat) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("setLayoutDirection", "(Qt::LayoutDirection)", "$")]
 		public void SetLayoutDirection(Qt.LayoutDirection direction) {
-			((QTextFormat) interceptor).SetLayoutDirection(direction);
+			interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), direction);
 		}
-		[SmokeMethod("layoutDirection", "() const", "")]
 		public Qt.LayoutDirection LayoutDirection() {
-			return ((QTextFormat) interceptor).LayoutDirection();
+			return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection() const", typeof(Qt.LayoutDirection));
 		}
-		[SmokeMethod("setBackground", "(const QBrush&)", "#")]
 		public void SetBackground(QBrush brush) {
-			((QTextFormat) interceptor).SetBackground(brush);
+			interceptor.Invoke("setBackground#", "setBackground(const QBrush&)", typeof(void), typeof(QBrush), brush);
 		}
-		[SmokeMethod("background", "() const", "")]
 		public QBrush Background() {
-			return ((QTextFormat) interceptor).Background();
+			return (QBrush) interceptor.Invoke("background", "background() const", typeof(QBrush));
 		}
-		[SmokeMethod("clearBackground", "()", "")]
 		public void ClearBackground() {
-			((QTextFormat) interceptor).ClearBackground();
+			interceptor.Invoke("clearBackground", "clearBackground()", typeof(void));
 		}
-		[SmokeMethod("setForeground", "(const QBrush&)", "#")]
 		public void SetForeground(QBrush brush) {
-			((QTextFormat) interceptor).SetForeground(brush);
+			interceptor.Invoke("setForeground#", "setForeground(const QBrush&)", typeof(void), typeof(QBrush), brush);
 		}
-		[SmokeMethod("foreground", "() const", "")]
 		public QBrush Foreground() {
-			return ((QTextFormat) interceptor).Foreground();
+			return (QBrush) interceptor.Invoke("foreground", "foreground() const", typeof(QBrush));
 		}
-		[SmokeMethod("clearForeground", "()", "")]
 		public void ClearForeground() {
-			((QTextFormat) interceptor).ClearForeground();
+			interceptor.Invoke("clearForeground", "clearForeground()", typeof(void));
 		}
 		~QTextFormat() {
-			DisposeQTextFormat();
+			interceptor.Invoke("~QTextFormat", "~QTextFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextFormat();
-		}
-		[SmokeMethod("~QTextFormat", "()", "")]
-		private void DisposeQTextFormat() {
-			((QTextFormat) interceptor).DisposeQTextFormat();
+			interceptor.Invoke("~QTextFormat", "~QTextFormat()", typeof(void));
 		}
 		public static bool operator==(QTextFormat lhs, QTextFormat rhs) {
-			return staticInterceptor.op_equals(lhs,rhs);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFormat&) const", typeof(bool), typeof(QTextFormat), lhs, typeof(QTextFormat), rhs);
 		}
 		public static bool operator!=(QTextFormat lhs, QTextFormat rhs) {
-			return !staticInterceptor.op_equals(lhs,rhs);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFormat&) const", typeof(bool), typeof(QTextFormat), lhs, typeof(QTextFormat), rhs);
 		}
 	}
 }

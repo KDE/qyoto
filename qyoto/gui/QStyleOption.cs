@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QStyleOption")]
-	public class QStyleOption : MarshalByRefObject, IDisposable {
-		protected QStyleOption interceptor = null;
+	public class QStyleOption : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QStyleOption(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOption), this);
-			interceptor = (QStyleOption) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOption), "QStyleOption", this);
 		}
 		public enum OptionType {
 			SO_Default = 0,
@@ -51,53 +50,31 @@ namespace Qyoto {
 		}
 		public QStyleOption(int version, int type) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOption(version,type);
-		}
-		[SmokeMethod("QStyleOption", "(int, int)", "$$")]
-		private void NewQStyleOption(int version, int type) {
-			((QStyleOption) interceptor).NewQStyleOption(version,type);
+			interceptor.Invoke("QStyleOption$$", "QStyleOption(int, int)", typeof(void), typeof(int), version, typeof(int), type);
 		}
 		public QStyleOption(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOption(version);
-		}
-		[SmokeMethod("QStyleOption", "(int)", "$")]
-		private void NewQStyleOption(int version) {
-			((QStyleOption) interceptor).NewQStyleOption(version);
+			interceptor.Invoke("QStyleOption$", "QStyleOption(int)", typeof(void), typeof(int), version);
 		}
 		public QStyleOption() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOption();
-		}
-		[SmokeMethod("QStyleOption", "()", "")]
-		private void NewQStyleOption() {
-			((QStyleOption) interceptor).NewQStyleOption();
+			interceptor.Invoke("QStyleOption", "QStyleOption()", typeof(void));
 		}
 		public QStyleOption(QStyleOption other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOption(other);
+			interceptor.Invoke("QStyleOption#", "QStyleOption(const QStyleOption&)", typeof(void), typeof(QStyleOption), other);
 		}
-		[SmokeMethod("QStyleOption", "(const QStyleOption&)", "#")]
-		private void NewQStyleOption(QStyleOption other) {
-			((QStyleOption) interceptor).NewQStyleOption(other);
-		}
-		[SmokeMethod("init", "(const QWidget*)", "#")]
 		public void Init(QWidget w) {
-			((QStyleOption) interceptor).Init(w);
+			interceptor.Invoke("init#", "init(const QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("initFrom", "(const QWidget*)", "#")]
 		public void InitFrom(QWidget w) {
-			((QStyleOption) interceptor).InitFrom(w);
+			interceptor.Invoke("initFrom#", "initFrom(const QWidget*)", typeof(void), typeof(QWidget), w);
 		}
 		~QStyleOption() {
-			DisposeQStyleOption();
+			interceptor.Invoke("~QStyleOption", "~QStyleOption()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOption();
-		}
-		[SmokeMethod("~QStyleOption", "()", "")]
-		private void DisposeQStyleOption() {
-			((QStyleOption) interceptor).DisposeQStyleOption();
+			interceptor.Invoke("~QStyleOption", "~QStyleOption()", typeof(void));
 		}
 	}
 }

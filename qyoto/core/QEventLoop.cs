@@ -6,21 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QEventLoop")]
 	public class QEventLoop : QObject, IDisposable {
  		protected QEventLoop(Type dummy) : base((Type) null) {}
-		[SmokeClass("QEventLoop")]
-		interface IQEventLoopProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEventLoop), this);
-			interceptor = (QEventLoop) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QEventLoop), "QEventLoop", this);
 		}
-		private static IQEventLoopProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QEventLoop() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQEventLoopProxy), null);
-			staticInterceptor = (IQEventLoopProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QEventLoop), "QEventLoop", null);
 		}
 		public enum ProcessEventsFlag {
 			AllEvents = 0x00,
@@ -32,76 +23,54 @@ namespace Qyoto {
 		}
 		public QEventLoop(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQEventLoop(parent);
-		}
-		[SmokeMethod("QEventLoop", "(QObject*)", "#")]
-		private void NewQEventLoop(QObject parent) {
-			((QEventLoop) interceptor).NewQEventLoop(parent);
+			interceptor.Invoke("QEventLoop#", "QEventLoop(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QEventLoop() : this((Type) null) {
 			CreateProxy();
-			NewQEventLoop();
+			interceptor.Invoke("QEventLoop", "QEventLoop()", typeof(void));
 		}
-		[SmokeMethod("QEventLoop", "()", "")]
-		private void NewQEventLoop() {
-			((QEventLoop) interceptor).NewQEventLoop();
-		}
-		[SmokeMethod("processEvents", "(ProcessEventsFlags)", "$")]
 		public bool ProcessEvents(int flags) {
-			return ((QEventLoop) interceptor).ProcessEvents(flags);
+			return (bool) interceptor.Invoke("processEvents$", "processEvents(ProcessEventsFlags)", typeof(bool), typeof(int), flags);
 		}
-		[SmokeMethod("processEvents", "()", "")]
 		public bool ProcessEvents() {
-			return ((QEventLoop) interceptor).ProcessEvents();
+			return (bool) interceptor.Invoke("processEvents", "processEvents()", typeof(bool));
 		}
-		[SmokeMethod("processEvents", "(ProcessEventsFlags, int)", "$$")]
 		public void ProcessEvents(int flags, int maximumTime) {
-			((QEventLoop) interceptor).ProcessEvents(flags,maximumTime);
+			interceptor.Invoke("processEvents$$", "processEvents(ProcessEventsFlags, int)", typeof(void), typeof(int), flags, typeof(int), maximumTime);
 		}
-		[SmokeMethod("exec", "(ProcessEventsFlags)", "$")]
 		public int Exec(int flags) {
-			return ((QEventLoop) interceptor).Exec(flags);
+			return (int) interceptor.Invoke("exec$", "exec(ProcessEventsFlags)", typeof(int), typeof(int), flags);
 		}
-		[SmokeMethod("exec", "()", "")]
 		public int Exec() {
-			return ((QEventLoop) interceptor).Exec();
+			return (int) interceptor.Invoke("exec", "exec()", typeof(int));
 		}
-		[SmokeMethod("exit", "(int)", "$")]
 		public void Exit(int returnCode) {
-			((QEventLoop) interceptor).Exit(returnCode);
+			interceptor.Invoke("exit$", "exit(int)", typeof(void), typeof(int), returnCode);
 		}
-		[SmokeMethod("exit", "()", "")]
 		public void Exit() {
-			((QEventLoop) interceptor).Exit();
+			interceptor.Invoke("exit", "exit()", typeof(void));
 		}
-		[SmokeMethod("isRunning", "() const", "")]
 		public bool IsRunning() {
-			return ((QEventLoop) interceptor).IsRunning();
+			return (bool) interceptor.Invoke("isRunning", "isRunning() const", typeof(bool));
 		}
-		[SmokeMethod("wakeUp", "()", "")]
 		public void WakeUp() {
-			((QEventLoop) interceptor).WakeUp();
+			interceptor.Invoke("wakeUp", "wakeUp()", typeof(void));
 		}
 		[Q_SLOT("void quit()")]
-		[SmokeMethod("quit", "()", "")]
 		public void Quit() {
-			((QEventLoop) interceptor).Quit();
+			interceptor.Invoke("quit", "quit()", typeof(void));
 		}
 		~QEventLoop() {
-			DisposeQEventLoop();
+			interceptor.Invoke("~QEventLoop", "~QEventLoop()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQEventLoop();
-		}
-		[SmokeMethod("~QEventLoop", "()", "")]
-		private void DisposeQEventLoop() {
-			((QEventLoop) interceptor).DisposeQEventLoop();
+			interceptor.Invoke("~QEventLoop", "~QEventLoop()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQEventLoopSignals Emit {
 			get { return (IQEventLoopSignals) Q_EMIT; }

@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionGroupBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionGroupBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGroupBox), this);
-			interceptor = (QStyleOptionGroupBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionGroupBox), "QStyleOptionGroupBox", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GroupBox,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionGroupBox() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionGroupBox();
-		}
-		[SmokeMethod("QStyleOptionGroupBox", "()", "")]
-		private void NewQStyleOptionGroupBox() {
-			((QStyleOptionGroupBox) interceptor).NewQStyleOptionGroupBox();
+			interceptor.Invoke("QStyleOptionGroupBox", "QStyleOptionGroupBox()", typeof(void));
 		}
 		public QStyleOptionGroupBox(QStyleOptionGroupBox other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionGroupBox(other);
-		}
-		[SmokeMethod("QStyleOptionGroupBox", "(const QStyleOptionGroupBox&)", "#")]
-		private void NewQStyleOptionGroupBox(QStyleOptionGroupBox other) {
-			((QStyleOptionGroupBox) interceptor).NewQStyleOptionGroupBox(other);
+			interceptor.Invoke("QStyleOptionGroupBox#", "QStyleOptionGroupBox(const QStyleOptionGroupBox&)", typeof(void), typeof(QStyleOptionGroupBox), other);
 		}
 		public QStyleOptionGroupBox(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionGroupBox(version);
-		}
-		[SmokeMethod("QStyleOptionGroupBox", "(int)", "$")]
-		private void NewQStyleOptionGroupBox(int version) {
-			((QStyleOptionGroupBox) interceptor).NewQStyleOptionGroupBox(version);
+			interceptor.Invoke("QStyleOptionGroupBox$", "QStyleOptionGroupBox(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionGroupBox() {
-			DisposeQStyleOptionGroupBox();
+			interceptor.Invoke("~QStyleOptionGroupBox", "~QStyleOptionGroupBox()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionGroupBox();
-		}
-		[SmokeMethod("~QStyleOptionGroupBox", "()", "")]
-		private void DisposeQStyleOptionGroupBox() {
-			((QStyleOptionGroupBox) interceptor).DisposeQStyleOptionGroupBox();
+			interceptor.Invoke("~QStyleOptionGroupBox", "~QStyleOptionGroupBox()", typeof(void));
 		}
 	}
 }

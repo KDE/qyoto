@@ -6,100 +6,67 @@ namespace Qyoto {
 	[SmokeClass("QGLFramebufferObject")]
 	public class QGLFramebufferObject : QPaintDevice, IDisposable {
  		protected QGLFramebufferObject(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGLFramebufferObject")]
-		interface IQGLFramebufferObjectProxy {
-			[SmokeMethod("hasOpenGLFramebufferObjects", "()", "")]
-			bool HasOpenGLFramebufferObjects();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFramebufferObject), this);
-			interceptor = (QGLFramebufferObject) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGLFramebufferObject), "QGLFramebufferObject", this);
 		}
-		private static IQGLFramebufferObjectProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGLFramebufferObject() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLFramebufferObjectProxy), null);
-			staticInterceptor = (IQGLFramebufferObjectProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGLFramebufferObject), "QGLFramebufferObject", null);
 		}
 		public QGLFramebufferObject(QSize size, int target) : this((Type) null) {
 			CreateProxy();
-			NewQGLFramebufferObject(size,target);
-		}
-		[SmokeMethod("QGLFramebufferObject", "(const QSize&, GLenum)", "#$")]
-		private void NewQGLFramebufferObject(QSize size, int target) {
-			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(size,target);
+			interceptor.Invoke("QGLFramebufferObject#$", "QGLFramebufferObject(const QSize&, GLenum)", typeof(void), typeof(QSize), size, typeof(int), target);
 		}
 		public QGLFramebufferObject(QSize size) : this((Type) null) {
 			CreateProxy();
-			NewQGLFramebufferObject(size);
-		}
-		[SmokeMethod("QGLFramebufferObject", "(const QSize&)", "#")]
-		private void NewQGLFramebufferObject(QSize size) {
-			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(size);
+			interceptor.Invoke("QGLFramebufferObject#", "QGLFramebufferObject(const QSize&)", typeof(void), typeof(QSize), size);
 		}
 		public QGLFramebufferObject(int width, int height, int target) : this((Type) null) {
 			CreateProxy();
-			NewQGLFramebufferObject(width,height,target);
-		}
-		[SmokeMethod("QGLFramebufferObject", "(int, int, GLenum)", "$$$")]
-		private void NewQGLFramebufferObject(int width, int height, int target) {
-			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(width,height,target);
+			interceptor.Invoke("QGLFramebufferObject$$$", "QGLFramebufferObject(int, int, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(int), target);
 		}
 		public QGLFramebufferObject(int width, int height) : this((Type) null) {
 			CreateProxy();
-			NewQGLFramebufferObject(width,height);
+			interceptor.Invoke("QGLFramebufferObject$$", "QGLFramebufferObject(int, int)", typeof(void), typeof(int), width, typeof(int), height);
 		}
-		[SmokeMethod("QGLFramebufferObject", "(int, int)", "$$")]
-		private void NewQGLFramebufferObject(int width, int height) {
-			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(width,height);
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QGLFramebufferObject) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("bind", "()", "")]
 		public bool Bind() {
-			return ((QGLFramebufferObject) interceptor).Bind();
+			return (bool) interceptor.Invoke("bind", "bind()", typeof(bool));
 		}
-		[SmokeMethod("release", "()", "")]
 		public bool Release() {
-			return ((QGLFramebufferObject) interceptor).Release();
+			return (bool) interceptor.Invoke("release", "release()", typeof(bool));
 		}
-		[SmokeMethod("texture", "() const", "")]
 		public uint Texture() {
-			return ((QGLFramebufferObject) interceptor).Texture();
+			return (uint) interceptor.Invoke("texture", "texture() const", typeof(uint));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ((QGLFramebufferObject) interceptor).Size();
+			return (QSize) interceptor.Invoke("size", "size() const", typeof(QSize));
 		}
-		[SmokeMethod("toImage", "() const", "")]
 		public QImage ToImage() {
-			return ((QGLFramebufferObject) interceptor).ToImage();
+			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {
-			return ((QGLFramebufferObject) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice metric) {
-			return ((QGLFramebufferObject) interceptor).Metric(metric);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), metric);
 		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		protected new virtual int DevType() {
-			return ((QGLFramebufferObject) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
 		~QGLFramebufferObject() {
-			DisposeQGLFramebufferObject();
+			interceptor.Invoke("~QGLFramebufferObject", "~QGLFramebufferObject()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGLFramebufferObject();
-		}
-		[SmokeMethod("~QGLFramebufferObject", "()", "")]
-		private void DisposeQGLFramebufferObject() {
-			((QGLFramebufferObject) interceptor).DisposeQGLFramebufferObject();
+			interceptor.Invoke("~QGLFramebufferObject", "~QGLFramebufferObject()", typeof(void));
 		}
 		public static bool HasOpenGLFramebufferObjects() {
-			return staticInterceptor.HasOpenGLFramebufferObjects();
+			return (bool) staticInterceptor.Invoke("hasOpenGLFramebufferObjects", "hasOpenGLFramebufferObjects()", typeof(bool));
 		}
 	}
 }

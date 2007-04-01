@@ -7,196 +7,140 @@ namespace Qyoto {
 	[SmokeClass("QToolBar")]
 	public class QToolBar : QWidget, IDisposable {
  		protected QToolBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QToolBar")]
-		interface IQToolBarProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBar), this);
-			interceptor = (QToolBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QToolBar), "QToolBar", this);
 		}
-		private static IQToolBarProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QToolBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolBarProxy), null);
-			staticInterceptor = (IQToolBarProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QToolBar), "QToolBar", null);
 		}
 		[Q_PROPERTY("bool", "movable")]
 		public bool Movable {
-			[SmokeMethod("isMovable", "()", "")]
-			get { return ((QToolBar) interceptor).Movable; }
-			[SmokeMethod("setMovable", "(bool)", "$")]
-			set { ((QToolBar) interceptor).Movable = value; }
+			get { return (bool) interceptor.Invoke("isMovable", "isMovable()", typeof(bool)); }
+			set { interceptor.Invoke("setMovable$", "setMovable(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::ToolBarAreas", "allowedAreas")]
 		public int AllowedAreas {
-			[SmokeMethod("allowedAreas", "()", "")]
-			get { return ((QToolBar) interceptor).AllowedAreas; }
-			[SmokeMethod("setAllowedAreas", "(Qt::ToolBarAreas)", "$")]
-			set { ((QToolBar) interceptor).AllowedAreas = value; }
+			get { return (int) interceptor.Invoke("allowedAreas", "allowedAreas()", typeof(int)); }
+			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::ToolBarAreas)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			[SmokeMethod("orientation", "()", "")]
-			get { return ((QToolBar) interceptor).Orientation; }
-			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
-			set { ((QToolBar) interceptor).Orientation = value; }
+			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			[SmokeMethod("iconSize", "()", "")]
-			get { return ((QToolBar) interceptor).IconSize; }
-			[SmokeMethod("setIconSize", "(QSize)", "#")]
-			set { ((QToolBar) interceptor).IconSize = value; }
+			get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
-			[SmokeMethod("toolButtonStyle", "()", "")]
-			get { return ((QToolBar) interceptor).ToolButtonStyle; }
-			[SmokeMethod("setToolButtonStyle", "(Qt::ToolButtonStyle)", "$")]
-			set { ((QToolBar) interceptor).ToolButtonStyle = value; }
+			get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
+			set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
 		}
 		public QToolBar(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQToolBar(title,parent);
-		}
-		[SmokeMethod("QToolBar", "(const QString&, QWidget*)", "$#")]
-		private void NewQToolBar(string title, QWidget parent) {
-			((QToolBar) interceptor).NewQToolBar(title,parent);
+			interceptor.Invoke("QToolBar$#", "QToolBar(const QString&, QWidget*)", typeof(void), typeof(string), title, typeof(QWidget), parent);
 		}
 		public QToolBar(string title) : this((Type) null) {
 			CreateProxy();
-			NewQToolBar(title);
-		}
-		[SmokeMethod("QToolBar", "(const QString&)", "$")]
-		private void NewQToolBar(string title) {
-			((QToolBar) interceptor).NewQToolBar(title);
+			interceptor.Invoke("QToolBar$", "QToolBar(const QString&)", typeof(void), typeof(string), title);
 		}
 		public QToolBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQToolBar(parent);
-		}
-		[SmokeMethod("QToolBar", "(QWidget*)", "#")]
-		private void NewQToolBar(QWidget parent) {
-			((QToolBar) interceptor).NewQToolBar(parent);
+			interceptor.Invoke("QToolBar#", "QToolBar(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QToolBar() : this((Type) null) {
 			CreateProxy();
-			NewQToolBar();
+			interceptor.Invoke("QToolBar", "QToolBar()", typeof(void));
 		}
-		[SmokeMethod("QToolBar", "()", "")]
-		private void NewQToolBar() {
-			((QToolBar) interceptor).NewQToolBar();
-		}
-		[SmokeMethod("isMovable", "() const", "")]
 		public bool IsMovable() {
-			return ((QToolBar) interceptor).IsMovable();
+			return (bool) interceptor.Invoke("isMovable", "isMovable() const", typeof(bool));
 		}
-		[SmokeMethod("isAreaAllowed", "(Qt::ToolBarArea) const", "$")]
 		public bool IsAreaAllowed(Qt.ToolBarArea area) {
-			return ((QToolBar) interceptor).IsAreaAllowed(area);
+			return (bool) interceptor.Invoke("isAreaAllowed$", "isAreaAllowed(Qt::ToolBarArea) const", typeof(bool), typeof(Qt.ToolBarArea), area);
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QToolBar) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("addAction", "(QAction*)", "#")]
 		public void AddAction(QAction action) {
-			((QToolBar) interceptor).AddAction(action);
+			interceptor.Invoke("addAction#", "addAction(QAction*)", typeof(void), typeof(QAction), action);
 		}
-		[SmokeMethod("addAction", "(const QString&)", "$")]
 		public QAction AddAction(string text) {
-			return ((QToolBar) interceptor).AddAction(text);
+			return (QAction) interceptor.Invoke("addAction$", "addAction(const QString&)", typeof(QAction), typeof(string), text);
 		}
-		[SmokeMethod("addAction", "(const QIcon&, const QString&)", "#$")]
 		public QAction AddAction(QIcon icon, string text) {
-			return ((QToolBar) interceptor).AddAction(icon,text);
+			return (QAction) interceptor.Invoke("addAction#$", "addAction(const QIcon&, const QString&)", typeof(QAction), typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("addAction", "(const QString&, const QObject*, const char*)", "$#$")]
 		public QAction AddAction(string text, QObject receiver, string member) {
-			return ((QToolBar) interceptor).AddAction(text,receiver,member);
+			return (QAction) interceptor.Invoke("addAction$#$", "addAction(const QString&, const QObject*, const char*)", typeof(QAction), typeof(string), text, typeof(QObject), receiver, typeof(string), member);
 		}
-		[SmokeMethod("addAction", "(const QIcon&, const QString&, const QObject*, const char*)", "#$#$")]
 		public QAction AddAction(QIcon icon, string text, QObject receiver, string member) {
-			return ((QToolBar) interceptor).AddAction(icon,text,receiver,member);
+			return (QAction) interceptor.Invoke("addAction#$#$", "addAction(const QIcon&, const QString&, const QObject*, const char*)", typeof(QAction), typeof(QIcon), icon, typeof(string), text, typeof(QObject), receiver, typeof(string), member);
 		}
-		[SmokeMethod("addSeparator", "()", "")]
 		public QAction AddSeparator() {
-			return ((QToolBar) interceptor).AddSeparator();
+			return (QAction) interceptor.Invoke("addSeparator", "addSeparator()", typeof(QAction));
 		}
-		[SmokeMethod("insertSeparator", "(QAction*)", "#")]
 		public QAction InsertSeparator(QAction before) {
-			return ((QToolBar) interceptor).InsertSeparator(before);
+			return (QAction) interceptor.Invoke("insertSeparator#", "insertSeparator(QAction*)", typeof(QAction), typeof(QAction), before);
 		}
-		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public QAction AddWidget(QWidget widget) {
-			return ((QToolBar) interceptor).AddWidget(widget);
+			return (QAction) interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(QAction), typeof(QWidget), widget);
 		}
-		[SmokeMethod("insertWidget", "(QAction*, QWidget*)", "##")]
 		public QAction InsertWidget(QAction before, QWidget widget) {
-			return ((QToolBar) interceptor).InsertWidget(before,widget);
+			return (QAction) interceptor.Invoke("insertWidget##", "insertWidget(QAction*, QWidget*)", typeof(QAction), typeof(QAction), before, typeof(QWidget), widget);
 		}
-		[SmokeMethod("actionGeometry", "(QAction*) const", "#")]
 		public QRect ActionGeometry(QAction action) {
-			return ((QToolBar) interceptor).ActionGeometry(action);
+			return (QRect) interceptor.Invoke("actionGeometry#", "actionGeometry(QAction*) const", typeof(QRect), typeof(QAction), action);
 		}
-		[SmokeMethod("actionAt", "(const QPoint&) const", "#")]
 		public QAction ActionAt(QPoint p) {
-			return ((QToolBar) interceptor).ActionAt(p);
+			return (QAction) interceptor.Invoke("actionAt#", "actionAt(const QPoint&) const", typeof(QAction), typeof(QPoint), p);
 		}
-		[SmokeMethod("actionAt", "(int, int) const", "$$")]
 		public QAction ActionAt(int x, int y) {
-			return ((QToolBar) interceptor).ActionAt(x,y);
+			return (QAction) interceptor.Invoke("actionAt$$", "actionAt(int, int) const", typeof(QAction), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("toggleViewAction", "() const", "")]
 		public QAction ToggleViewAction() {
-			return ((QToolBar) interceptor).ToggleViewAction();
+			return (QAction) interceptor.Invoke("toggleViewAction", "toggleViewAction() const", typeof(QAction));
 		}
-		[SmokeMethod("widgetForAction", "(QAction*) const", "#")]
 		public QWidget WidgetForAction(QAction action) {
-			return ((QToolBar) interceptor).WidgetForAction(action);
+			return (QWidget) interceptor.Invoke("widgetForAction#", "widgetForAction(QAction*) const", typeof(QWidget), typeof(QAction), action);
 		}
-		[SmokeMethod("actionEvent", "(QActionEvent*)", "#")]
+		[SmokeMethod("actionEvent(QActionEvent*)")]
 		protected override void ActionEvent(QActionEvent arg1) {
-			((QToolBar) interceptor).ActionEvent(arg1);
+			interceptor.Invoke("actionEvent#", "actionEvent(QActionEvent*)", typeof(void), typeof(QActionEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QToolBar) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected override void ChildEvent(QChildEvent arg1) {
-			((QToolBar) interceptor).ChildEvent(arg1);
+			interceptor.Invoke("childEvent#", "childEvent(QChildEvent*)", typeof(void), typeof(QChildEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QToolBar) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QToolBar) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QToolBar) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QToolBar() {
-			DisposeQToolBar();
+			interceptor.Invoke("~QToolBar", "~QToolBar()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQToolBar();
-		}
-		[SmokeMethod("~QToolBar", "()", "")]
-		private void DisposeQToolBar() {
-			((QToolBar) interceptor).DisposeQToolBar();
+			interceptor.Invoke("~QToolBar", "~QToolBar()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQToolBarSignals Emit {
 			get { return (IQToolBarSignals) Q_EMIT; }

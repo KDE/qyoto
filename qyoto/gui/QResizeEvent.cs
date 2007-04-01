@@ -7,34 +7,23 @@ namespace Qyoto {
 	public class QResizeEvent : QEvent, IDisposable {
  		protected QResizeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QResizeEvent), this);
-			interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QResizeEvent), "QResizeEvent", this);
 		}
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
 			CreateProxy();
-			NewQResizeEvent(size,oldSize);
+			interceptor.Invoke("QResizeEvent##", "QResizeEvent(const QSize&, const QSize&)", typeof(void), typeof(QSize), size, typeof(QSize), oldSize);
 		}
-		[SmokeMethod("QResizeEvent", "(const QSize&, const QSize&)", "##")]
-		private void NewQResizeEvent(QSize size, QSize oldSize) {
-			((QResizeEvent) interceptor).NewQResizeEvent(size,oldSize);
-		}
-		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ((QResizeEvent) interceptor).Size();
+			return (QSize) interceptor.Invoke("size", "size() const", typeof(QSize));
 		}
-		[SmokeMethod("oldSize", "() const", "")]
 		public QSize OldSize() {
-			return ((QResizeEvent) interceptor).OldSize();
+			return (QSize) interceptor.Invoke("oldSize", "oldSize() const", typeof(QSize));
 		}
 		~QResizeEvent() {
-			DisposeQResizeEvent();
+			interceptor.Invoke("~QResizeEvent", "~QResizeEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQResizeEvent();
-		}
-		[SmokeMethod("~QResizeEvent", "()", "")]
-		private void DisposeQResizeEvent() {
-			((QResizeEvent) interceptor).DisposeQResizeEvent();
+			interceptor.Invoke("~QResizeEvent", "~QResizeEvent()", typeof(void));
 		}
 	}
 }

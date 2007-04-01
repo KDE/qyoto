@@ -7,26 +7,17 @@ namespace Qyoto {
 	public class QShowEvent : QEvent, IDisposable {
  		protected QShowEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShowEvent), this);
-			interceptor = (QShowEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QShowEvent), "QShowEvent", this);
 		}
 		public QShowEvent() : this((Type) null) {
 			CreateProxy();
-			NewQShowEvent();
-		}
-		[SmokeMethod("QShowEvent", "()", "")]
-		private void NewQShowEvent() {
-			((QShowEvent) interceptor).NewQShowEvent();
+			interceptor.Invoke("QShowEvent", "QShowEvent()", typeof(void));
 		}
 		~QShowEvent() {
-			DisposeQShowEvent();
+			interceptor.Invoke("~QShowEvent", "~QShowEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQShowEvent();
-		}
-		[SmokeMethod("~QShowEvent", "()", "")]
-		private void DisposeQShowEvent() {
-			((QShowEvent) interceptor).DisposeQShowEvent();
+			interceptor.Invoke("~QShowEvent", "~QShowEvent()", typeof(void));
 		}
 	}
 }

@@ -6,13 +6,12 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QDBusArgument")]
-	public class QDBusArgument : MarshalByRefObject, IDisposable {
-		protected QDBusArgument interceptor = null;
+	public class QDBusArgument : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDBusArgument(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusArgument), this);
-			interceptor = (QDBusArgument) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusArgument), "QDBusArgument", this);
 		}
 		// const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(ushort& arg1); >>>> NOT CONVERTED
@@ -21,177 +20,128 @@ namespace Qyoto {
 		// QDBusArgument* QDBusArgument(QDBusArgumentPrivate* arg1); >>>> NOT CONVERTED
 		public QDBusArgument() : this((Type) null) {
 			CreateProxy();
-			NewQDBusArgument();
-		}
-		[SmokeMethod("QDBusArgument", "()", "")]
-		private void NewQDBusArgument() {
-			((QDBusArgument) interceptor).NewQDBusArgument();
+			interceptor.Invoke("QDBusArgument", "QDBusArgument()", typeof(void));
 		}
 		public QDBusArgument(QDBusArgument other) : this((Type) null) {
 			CreateProxy();
-			NewQDBusArgument(other);
+			interceptor.Invoke("QDBusArgument#", "QDBusArgument(const QDBusArgument&)", typeof(void), typeof(QDBusArgument), other);
 		}
-		[SmokeMethod("QDBusArgument", "(const QDBusArgument&)", "#")]
-		private void NewQDBusArgument(QDBusArgument other) {
-			((QDBusArgument) interceptor).NewQDBusArgument(other);
-		}
-		[SmokeMethod("operator<<", "(uchar)", "$")]
 		public QDBusArgument Write(ushort arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(uchar)", typeof(QDBusArgument), typeof(ushort), arg);
 		}
-		[SmokeMethod("operator<<", "(bool)", "$")]
 		public QDBusArgument Write(bool arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(bool)", typeof(QDBusArgument), typeof(bool), arg);
 		}
-		[SmokeMethod("operator<<", "(short)", "$")]
 		public QDBusArgument Write(short arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(short)", typeof(QDBusArgument), typeof(short), arg);
 		}
-		[SmokeMethod("operator<<", "(int)", "$")]
 		public QDBusArgument Write(int arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(int)", typeof(QDBusArgument), typeof(int), arg);
 		}
-		[SmokeMethod("operator<<", "(uint)", "$")]
 		public QDBusArgument Write(uint arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(uint)", typeof(QDBusArgument), typeof(uint), arg);
 		}
-		[SmokeMethod("operator<<", "(qlonglong)", "?")]
 		public QDBusArgument Write(long arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<?", "operator<<(qlonglong)", typeof(QDBusArgument), typeof(long), arg);
 		}
-		[SmokeMethod("operator<<", "(qulonglong)", "$")]
 		public QDBusArgument Write(ulong arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(qulonglong)", typeof(QDBusArgument), typeof(ulong), arg);
 		}
-		[SmokeMethod("operator<<", "(double)", "$")]
 		public QDBusArgument Write(double arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(double)", typeof(QDBusArgument), typeof(double), arg);
 		}
-		[SmokeMethod("operator<<", "(const QString&)", "$")]
 		public QDBusArgument Write(string arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(const QString&)", typeof(QDBusArgument), typeof(string), arg);
 		}
-		[SmokeMethod("operator<<", "(const QDBusVariant&)", "?")]
 		public QDBusArgument Write(QDBusVariant arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<?", "operator<<(const QDBusVariant&)", typeof(QDBusArgument), typeof(QDBusVariant), arg);
 		}
-		[SmokeMethod("operator<<", "(const QDBusObjectPath&)", "$")]
 		public QDBusArgument Write(QDBusObjectPath arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(const QDBusObjectPath&)", typeof(QDBusArgument), typeof(QDBusObjectPath), arg);
 		}
-		[SmokeMethod("operator<<", "(const QDBusSignature&)", "$")]
 		public QDBusArgument Write(QDBusSignature arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<$", "operator<<(const QDBusSignature&)", typeof(QDBusArgument), typeof(QDBusSignature), arg);
 		}
-		[SmokeMethod("operator<<", "(const QStringList&)", "?")]
 		public QDBusArgument Write(List<string> arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<?", "operator<<(const QStringList&)", typeof(QDBusArgument), typeof(List<string>), arg);
 		}
-		[SmokeMethod("operator<<", "(const QByteArray&)", "#")]
 		public QDBusArgument Write(QByteArray arg) {
-			return ((QDBusArgument) interceptor).Write(arg);
+			return (QDBusArgument) interceptor.Invoke("operator<<#", "operator<<(const QByteArray&)", typeof(QDBusArgument), typeof(QByteArray), arg);
 		}
-		[SmokeMethod("beginStructure", "()", "")]
 		public void BeginStructure() {
-			((QDBusArgument) interceptor).BeginStructure();
+			interceptor.Invoke("beginStructure", "beginStructure()", typeof(void));
 		}
-		[SmokeMethod("endStructure", "()", "")]
 		public void EndStructure() {
-			((QDBusArgument) interceptor).EndStructure();
+			interceptor.Invoke("endStructure", "endStructure()", typeof(void));
 		}
-		[SmokeMethod("beginArray", "(int)", "$")]
 		public void BeginArray(int elementMetaTypeId) {
-			((QDBusArgument) interceptor).BeginArray(elementMetaTypeId);
+			interceptor.Invoke("beginArray$", "beginArray(int)", typeof(void), typeof(int), elementMetaTypeId);
 		}
-		[SmokeMethod("endArray", "()", "")]
 		public void EndArray() {
-			((QDBusArgument) interceptor).EndArray();
+			interceptor.Invoke("endArray", "endArray()", typeof(void));
 		}
-		[SmokeMethod("beginMap", "(int, int)", "$$")]
 		public void BeginMap(int keyMetaTypeId, int valueMetaTypeId) {
-			((QDBusArgument) interceptor).BeginMap(keyMetaTypeId,valueMetaTypeId);
+			interceptor.Invoke("beginMap$$", "beginMap(int, int)", typeof(void), typeof(int), keyMetaTypeId, typeof(int), valueMetaTypeId);
 		}
-		[SmokeMethod("endMap", "()", "")]
 		public void EndMap() {
-			((QDBusArgument) interceptor).EndMap();
+			interceptor.Invoke("endMap", "endMap()", typeof(void));
 		}
-		[SmokeMethod("beginMapEntry", "()", "")]
 		public void BeginMapEntry() {
-			((QDBusArgument) interceptor).BeginMapEntry();
+			interceptor.Invoke("beginMapEntry", "beginMapEntry()", typeof(void));
 		}
-		[SmokeMethod("endMapEntry", "()", "")]
 		public void EndMapEntry() {
-			((QDBusArgument) interceptor).EndMapEntry();
+			interceptor.Invoke("endMapEntry", "endMapEntry()", typeof(void));
 		}
-		[SmokeMethod("currentSignature", "() const", "")]
 		public string CurrentSignature() {
-			return ((QDBusArgument) interceptor).CurrentSignature();
+			return (string) interceptor.Invoke("currentSignature", "currentSignature() const", typeof(string));
 		}
-		[SmokeMethod("operator>>", "(uchar&) const", "$")]
 		public QDBusArgument Read(ushort arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(uchar&) const", typeof(QDBusArgument), typeof(ushort), arg);
 		}
-		[SmokeMethod("operator>>", "(bool&) const", "$")]
 		public QDBusArgument Read(bool arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(bool&) const", typeof(QDBusArgument), typeof(bool), arg);
 		}
-		[SmokeMethod("operator>>", "(int&) const", "$")]
-		public QDBusArgument Read(out int arg) {
-			return ((QDBusArgument) interceptor).Read(out arg);
+		public QDBusArgument Read(int arg) {
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(int&) const", typeof(QDBusArgument), typeof(int), arg);
 		}
-		[SmokeMethod("operator>>", "(uint&) const", "$")]
 		public QDBusArgument Read(uint arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(uint&) const", typeof(QDBusArgument), typeof(uint), arg);
 		}
-		[SmokeMethod("operator>>", "(double&) const", "$")]
 		public QDBusArgument Read(double arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(double&) const", typeof(QDBusArgument), typeof(double), arg);
 		}
-		[SmokeMethod("operator>>", "(QString&) const", "$")]
 		public QDBusArgument Read(StringBuilder arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(QString&) const", typeof(QDBusArgument), typeof(StringBuilder), arg);
 		}
-		[SmokeMethod("operator>>", "(QDBusVariant&) const", "?")]
 		public QDBusArgument Read(QDBusVariant arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>?", "operator>>(QDBusVariant&) const", typeof(QDBusArgument), typeof(QDBusVariant), arg);
 		}
-		[SmokeMethod("operator>>", "(QDBusObjectPath&) const", "$")]
 		public QDBusArgument Read(QDBusObjectPath arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(QDBusObjectPath&) const", typeof(QDBusArgument), typeof(QDBusObjectPath), arg);
 		}
-		[SmokeMethod("operator>>", "(QDBusSignature&) const", "$")]
 		public QDBusArgument Read(QDBusSignature arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(QDBusSignature&) const", typeof(QDBusArgument), typeof(QDBusSignature), arg);
 		}
-		[SmokeMethod("operator>>", "(QStringList&) const", "?")]
 		public QDBusArgument Read(List<string> arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>?", "operator>>(QStringList&) const", typeof(QDBusArgument), typeof(List<string>), arg);
 		}
-		[SmokeMethod("operator>>", "(QByteArray&) const", "#")]
 		public QDBusArgument Read(QByteArray arg) {
-			return ((QDBusArgument) interceptor).Read(arg);
+			return (QDBusArgument) interceptor.Invoke("operator>>#", "operator>>(QByteArray&) const", typeof(QDBusArgument), typeof(QByteArray), arg);
 		}
-		[SmokeMethod("beginArray", "() const", "")]
 		public void BeginArray() {
-			((QDBusArgument) interceptor).BeginArray();
+			interceptor.Invoke("beginArray", "beginArray() const", typeof(void));
 		}
-		[SmokeMethod("beginMap", "() const", "")]
 		public void BeginMap() {
-			((QDBusArgument) interceptor).BeginMap();
+			interceptor.Invoke("beginMap", "beginMap() const", typeof(void));
 		}
-		[SmokeMethod("atEnd", "() const", "")]
 		public bool AtEnd() {
-			return ((QDBusArgument) interceptor).AtEnd();
+			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
 		~QDBusArgument() {
-			DisposeQDBusArgument();
+			interceptor.Invoke("~QDBusArgument", "~QDBusArgument()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDBusArgument();
-		}
-		[SmokeMethod("~QDBusArgument", "()", "")]
-		private void DisposeQDBusArgument() {
-			((QDBusArgument) interceptor).DisposeQDBusArgument();
+			interceptor.Invoke("~QDBusArgument", "~QDBusArgument()", typeof(void));
 		}
 	}
 }

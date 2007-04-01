@@ -7,66 +7,57 @@ namespace Qyoto {
 	public class QWidgetItem : QLayoutItem, IDisposable {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetItem), this);
-			interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWidgetItem), "QWidgetItem", this);
 		}
 		public QWidgetItem(QWidget w) : this((Type) null) {
 			CreateProxy();
-			NewQWidgetItem(w);
+			interceptor.Invoke("QWidgetItem#", "QWidgetItem(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("QWidgetItem", "(QWidget*)", "#")]
-		private void NewQWidgetItem(QWidget w) {
-			((QWidgetItem) interceptor).NewQWidgetItem(w);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QWidgetItem) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSize", "() const", "")]
+		[SmokeMethod("minimumSize() const")]
 		public override QSize MinimumSize() {
-			return ((QWidgetItem) interceptor).MinimumSize();
+			return (QSize) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("maximumSize", "() const", "")]
+		[SmokeMethod("maximumSize() const")]
 		public override QSize MaximumSize() {
-			return ((QWidgetItem) interceptor).MaximumSize();
+			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("expandingDirections", "() const", "")]
+		[SmokeMethod("expandingDirections() const")]
 		public override int ExpandingDirections() {
-			return ((QWidgetItem) interceptor).ExpandingDirections();
+			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
+		[SmokeMethod("isEmpty() const")]
 		public override bool IsEmpty() {
-			return ((QWidgetItem) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public override void SetGeometry(QRect arg1) {
-			((QWidgetItem) interceptor).SetGeometry(arg1);
+			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		[SmokeMethod("geometry", "() const", "")]
+		[SmokeMethod("geometry() const")]
 		public override QRect Geometry() {
-			return ((QWidgetItem) interceptor).Geometry();
+			return (QRect) interceptor.Invoke("geometry", "geometry() const", typeof(QRect));
 		}
-		[SmokeMethod("widget", "()", "")]
+		[SmokeMethod("widget()")]
 		public override QWidget Widget() {
-			return ((QWidgetItem) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget()", typeof(QWidget));
 		}
-		[SmokeMethod("hasHeightForWidth", "() const", "")]
+		[SmokeMethod("hasHeightForWidth() const")]
 		public override bool HasHeightForWidth() {
-			return ((QWidgetItem) interceptor).HasHeightForWidth();
+			return (bool) interceptor.Invoke("hasHeightForWidth", "hasHeightForWidth() const", typeof(bool));
 		}
-		[SmokeMethod("heightForWidth", "(int) const", "$")]
+		[SmokeMethod("heightForWidth(int) const")]
 		public override int HeightForWidth(int arg1) {
-			return ((QWidgetItem) interceptor).HeightForWidth(arg1);
+			return (int) interceptor.Invoke("heightForWidth$", "heightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
 		~QWidgetItem() {
-			DisposeQWidgetItem();
+			interceptor.Invoke("~QWidgetItem", "~QWidgetItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQWidgetItem();
-		}
-		[SmokeMethod("~QWidgetItem", "()", "")]
-		private void DisposeQWidgetItem() {
-			((QWidgetItem) interceptor).DisposeQWidgetItem();
+			interceptor.Invoke("~QWidgetItem", "~QWidgetItem()", typeof(void));
 		}
 	}
 }

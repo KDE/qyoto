@@ -6,71 +6,52 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QXmlNamespaceSupport")]
-	public class QXmlNamespaceSupport : MarshalByRefObject, IDisposable {
-		protected QXmlNamespaceSupport interceptor = null;
+	public class QXmlNamespaceSupport : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlNamespaceSupport(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlNamespaceSupport), this);
-			interceptor = (QXmlNamespaceSupport) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlNamespaceSupport), "QXmlNamespaceSupport", this);
 		}
 		public QXmlNamespaceSupport() : this((Type) null) {
 			CreateProxy();
-			NewQXmlNamespaceSupport();
+			interceptor.Invoke("QXmlNamespaceSupport", "QXmlNamespaceSupport()", typeof(void));
 		}
-		[SmokeMethod("QXmlNamespaceSupport", "()", "")]
-		private void NewQXmlNamespaceSupport() {
-			((QXmlNamespaceSupport) interceptor).NewQXmlNamespaceSupport();
-		}
-		[SmokeMethod("setPrefix", "(const QString&, const QString&)", "$$")]
 		public void SetPrefix(string arg1, string arg2) {
-			((QXmlNamespaceSupport) interceptor).SetPrefix(arg1,arg2);
+			interceptor.Invoke("setPrefix$$", "setPrefix(const QString&, const QString&)", typeof(void), typeof(string), arg1, typeof(string), arg2);
 		}
-		[SmokeMethod("prefix", "(const QString&) const", "$")]
 		public string Prefix(string arg1) {
-			return ((QXmlNamespaceSupport) interceptor).Prefix(arg1);
+			return (string) interceptor.Invoke("prefix$", "prefix(const QString&) const", typeof(string), typeof(string), arg1);
 		}
-		[SmokeMethod("uri", "(const QString&) const", "$")]
 		public string Uri(string arg1) {
-			return ((QXmlNamespaceSupport) interceptor).Uri(arg1);
+			return (string) interceptor.Invoke("uri$", "uri(const QString&) const", typeof(string), typeof(string), arg1);
 		}
-		[SmokeMethod("splitName", "(const QString&, QString&, QString&) const", "$$$")]
 		public void SplitName(string arg1, StringBuilder arg2, StringBuilder arg3) {
-			((QXmlNamespaceSupport) interceptor).SplitName(arg1,arg2,arg3);
+			interceptor.Invoke("splitName$$$", "splitName(const QString&, QString&, QString&) const", typeof(void), typeof(string), arg1, typeof(StringBuilder), arg2, typeof(StringBuilder), arg3);
 		}
-		[SmokeMethod("processName", "(const QString&, bool, QString&, QString&) const", "$$$$")]
 		public void ProcessName(string arg1, bool arg2, StringBuilder arg3, StringBuilder arg4) {
-			((QXmlNamespaceSupport) interceptor).ProcessName(arg1,arg2,arg3,arg4);
+			interceptor.Invoke("processName$$$$", "processName(const QString&, bool, QString&, QString&) const", typeof(void), typeof(string), arg1, typeof(bool), arg2, typeof(StringBuilder), arg3, typeof(StringBuilder), arg4);
 		}
-		[SmokeMethod("prefixes", "() const", "")]
 		public List<string> Prefixes() {
-			return ((QXmlNamespaceSupport) interceptor).Prefixes();
+			return (List<string>) interceptor.Invoke("prefixes", "prefixes() const", typeof(List<string>));
 		}
-		[SmokeMethod("prefixes", "(const QString&) const", "$")]
 		public List<string> Prefixes(string arg1) {
-			return ((QXmlNamespaceSupport) interceptor).Prefixes(arg1);
+			return (List<string>) interceptor.Invoke("prefixes$", "prefixes(const QString&) const", typeof(List<string>), typeof(string), arg1);
 		}
-		[SmokeMethod("pushContext", "()", "")]
 		public void PushContext() {
-			((QXmlNamespaceSupport) interceptor).PushContext();
+			interceptor.Invoke("pushContext", "pushContext()", typeof(void));
 		}
-		[SmokeMethod("popContext", "()", "")]
 		public void PopContext() {
-			((QXmlNamespaceSupport) interceptor).PopContext();
+			interceptor.Invoke("popContext", "popContext()", typeof(void));
 		}
-		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			((QXmlNamespaceSupport) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
 		~QXmlNamespaceSupport() {
-			DisposeQXmlNamespaceSupport();
+			interceptor.Invoke("~QXmlNamespaceSupport", "~QXmlNamespaceSupport()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQXmlNamespaceSupport();
-		}
-		[SmokeMethod("~QXmlNamespaceSupport", "()", "")]
-		private void DisposeQXmlNamespaceSupport() {
-			((QXmlNamespaceSupport) interceptor).DisposeQXmlNamespaceSupport();
+			interceptor.Invoke("~QXmlNamespaceSupport", "~QXmlNamespaceSupport()", typeof(void));
 		}
 	}
 }

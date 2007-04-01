@@ -6,393 +6,270 @@ namespace Qyoto {
 	[SmokeClass("QPixmap")]
 	public class QPixmap : QPaintDevice, IDisposable {
  		protected QPixmap(Type dummy) : base((Type) null) {}
-		[SmokeClass("QPixmap")]
-		interface IQPixmapProxy {
-			[SmokeMethod("operator!", "() const", "")]
-			bool op_not(QPixmap lhs);
-			[SmokeMethod("defaultDepth", "()", "")]
-			int DefaultDepth();
-			[SmokeMethod("grabWindow", "(WId, int, int, int, int)", "$$$$$")]
-			QPixmap GrabWindow(ulong arg1, int x, int y, int w, int h);
-			[SmokeMethod("grabWindow", "(WId, int, int, int)", "$$$$")]
-			QPixmap GrabWindow(ulong arg1, int x, int y, int w);
-			[SmokeMethod("grabWindow", "(WId, int, int)", "$$$")]
-			QPixmap GrabWindow(ulong arg1, int x, int y);
-			[SmokeMethod("grabWindow", "(WId, int)", "$$")]
-			QPixmap GrabWindow(ulong arg1, int x);
-			[SmokeMethod("grabWindow", "(WId)", "$")]
-			QPixmap GrabWindow(ulong arg1);
-			[SmokeMethod("grabWidget", "(QWidget*, const QRect&)", "##")]
-			QPixmap GrabWidget(QWidget widget, QRect rect);
-			[SmokeMethod("grabWidget", "(QWidget*, int, int, int, int)", "#$$$$")]
-			QPixmap GrabWidget(QWidget widget, int x, int y, int w, int h);
-			[SmokeMethod("grabWidget", "(QWidget*, int, int, int)", "#$$$")]
-			QPixmap GrabWidget(QWidget widget, int x, int y, int w);
-			[SmokeMethod("grabWidget", "(QWidget*, int, int)", "#$$")]
-			QPixmap GrabWidget(QWidget widget, int x, int y);
-			[SmokeMethod("grabWidget", "(QWidget*, int)", "#$")]
-			QPixmap GrabWidget(QWidget widget, int x);
-			[SmokeMethod("grabWidget", "(QWidget*)", "#")]
-			QPixmap GrabWidget(QWidget widget);
-			[SmokeMethod("trueMatrix", "(const QMatrix&, int, int)", "#$$")]
-			QMatrix TrueMatrix(QMatrix m, int w, int h);
-			[SmokeMethod("fromImage", "(const QImage&, Qt::ImageConversionFlags)", "#$")]
-			QPixmap FromImage(QImage image, int flags);
-			[SmokeMethod("fromImage", "(const QImage&)", "#")]
-			QPixmap FromImage(QImage image);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmap), this);
-			interceptor = (QPixmap) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPixmap), "QPixmap", this);
 		}
-		private static IQPixmapProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPixmap() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPixmapProxy), null);
-			staticInterceptor = (IQPixmapProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPixmap), "QPixmap", null);
 		}
 		// QPixmap* QPixmap(const char** arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPixmap() : this((Type) null) {
 			CreateProxy();
-			NewQPixmap();
-		}
-		[SmokeMethod("QPixmap", "()", "")]
-		private void NewQPixmap() {
-			((QPixmap) interceptor).NewQPixmap();
+			interceptor.Invoke("QPixmap", "QPixmap()", typeof(void));
 		}
 		public QPixmap(int w, int h) : this((Type) null) {
 			CreateProxy();
-			NewQPixmap(w,h);
-		}
-		[SmokeMethod("QPixmap", "(int, int)", "$$")]
-		private void NewQPixmap(int w, int h) {
-			((QPixmap) interceptor).NewQPixmap(w,h);
+			interceptor.Invoke("QPixmap$$", "QPixmap(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
 		public QPixmap(QSize arg1) : this((Type) null) {
 			CreateProxy();
-			NewQPixmap(arg1);
-		}
-		[SmokeMethod("QPixmap", "(const QSize&)", "#")]
-		private void NewQPixmap(QSize arg1) {
-			((QPixmap) interceptor).NewQPixmap(arg1);
+			interceptor.Invoke("QPixmap#", "QPixmap(const QSize&)", typeof(void), typeof(QSize), arg1);
 		}
 		public QPixmap(string fileName, string format, int flags) : this((Type) null) {
 			CreateProxy();
-			NewQPixmap(fileName,format,flags);
-		}
-		[SmokeMethod("QPixmap", "(const QString&, const char*, Qt::ImageConversionFlags)", "$$$")]
-		private void NewQPixmap(string fileName, string format, int flags) {
-			((QPixmap) interceptor).NewQPixmap(fileName,format,flags);
+			interceptor.Invoke("QPixmap$$$", "QPixmap(const QString&, const char*, Qt::ImageConversionFlags)", typeof(void), typeof(string), fileName, typeof(string), format, typeof(int), flags);
 		}
 		public QPixmap(string fileName, string format) : this((Type) null) {
 			CreateProxy();
-			NewQPixmap(fileName,format);
-		}
-		[SmokeMethod("QPixmap", "(const QString&, const char*)", "$$")]
-		private void NewQPixmap(string fileName, string format) {
-			((QPixmap) interceptor).NewQPixmap(fileName,format);
+			interceptor.Invoke("QPixmap$$", "QPixmap(const QString&, const char*)", typeof(void), typeof(string), fileName, typeof(string), format);
 		}
 		public QPixmap(string fileName) : this((Type) null) {
 			CreateProxy();
-			NewQPixmap(fileName);
-		}
-		[SmokeMethod("QPixmap", "(const QString&)", "$")]
-		private void NewQPixmap(string fileName) {
-			((QPixmap) interceptor).NewQPixmap(fileName);
+			interceptor.Invoke("QPixmap$", "QPixmap(const QString&)", typeof(void), typeof(string), fileName);
 		}
 		public QPixmap(QPixmap arg1) : this((Type) null) {
 			CreateProxy();
-			NewQPixmap(arg1);
+			interceptor.Invoke("QPixmap#", "QPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}
-		[SmokeMethod("QPixmap", "(const QPixmap&)", "#")]
-		private void NewQPixmap(QPixmap arg1) {
-			((QPixmap) interceptor).NewQPixmap(arg1);
-		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QPixmap) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		public override int DevType() {
-			return ((QPixmap) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
-		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ((QPixmap) interceptor).Width();
+			return (int) interceptor.Invoke("width", "width() const", typeof(int));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ((QPixmap) interceptor).Height();
+			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ((QPixmap) interceptor).Size();
+			return (QSize) interceptor.Invoke("size", "size() const", typeof(QSize));
 		}
-		[SmokeMethod("rect", "() const", "")]
 		public QRect Rect() {
-			return ((QPixmap) interceptor).Rect();
+			return (QRect) interceptor.Invoke("rect", "rect() const", typeof(QRect));
 		}
-		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ((QPixmap) interceptor).Depth();
+			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
-		[SmokeMethod("fill", "(const QColor&)", "#")]
 		public void Fill(QColor fillColor) {
-			((QPixmap) interceptor).Fill(fillColor);
+			interceptor.Invoke("fill#", "fill(const QColor&)", typeof(void), typeof(QColor), fillColor);
 		}
-		[SmokeMethod("fill", "()", "")]
 		public void Fill() {
-			((QPixmap) interceptor).Fill();
+			interceptor.Invoke("fill", "fill()", typeof(void));
 		}
-		[SmokeMethod("fill", "(const QWidget*, const QPoint&)", "##")]
 		public void Fill(QWidget widget, QPoint ofs) {
-			((QPixmap) interceptor).Fill(widget,ofs);
+			interceptor.Invoke("fill##", "fill(const QWidget*, const QPoint&)", typeof(void), typeof(QWidget), widget, typeof(QPoint), ofs);
 		}
-		[SmokeMethod("fill", "(const QWidget*, int, int)", "#$$")]
 		public void Fill(QWidget widget, int xofs, int yofs) {
-			((QPixmap) interceptor).Fill(widget,xofs,yofs);
+			interceptor.Invoke("fill#$$", "fill(const QWidget*, int, int)", typeof(void), typeof(QWidget), widget, typeof(int), xofs, typeof(int), yofs);
 		}
-		[SmokeMethod("mask", "() const", "")]
 		public QBitmap Mask() {
-			return ((QPixmap) interceptor).Mask();
+			return (QBitmap) interceptor.Invoke("mask", "mask() const", typeof(QBitmap));
 		}
-		[SmokeMethod("setMask", "(const QBitmap&)", "#")]
 		public void SetMask(QBitmap arg1) {
-			((QPixmap) interceptor).SetMask(arg1);
+			interceptor.Invoke("setMask#", "setMask(const QBitmap&)", typeof(void), typeof(QBitmap), arg1);
 		}
-		[SmokeMethod("alphaChannel", "() const", "")]
 		public QPixmap AlphaChannel() {
-			return ((QPixmap) interceptor).AlphaChannel();
+			return (QPixmap) interceptor.Invoke("alphaChannel", "alphaChannel() const", typeof(QPixmap));
 		}
-		[SmokeMethod("setAlphaChannel", "(const QPixmap&)", "#")]
 		public void SetAlphaChannel(QPixmap arg1) {
-			((QPixmap) interceptor).SetAlphaChannel(arg1);
+			interceptor.Invoke("setAlphaChannel#", "setAlphaChannel(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}
-		[SmokeMethod("hasAlpha", "() const", "")]
 		public bool HasAlpha() {
-			return ((QPixmap) interceptor).HasAlpha();
+			return (bool) interceptor.Invoke("hasAlpha", "hasAlpha() const", typeof(bool));
 		}
-		[SmokeMethod("hasAlphaChannel", "() const", "")]
 		public bool HasAlphaChannel() {
-			return ((QPixmap) interceptor).HasAlphaChannel();
+			return (bool) interceptor.Invoke("hasAlphaChannel", "hasAlphaChannel() const", typeof(bool));
 		}
-		[SmokeMethod("createHeuristicMask", "(bool) const", "$")]
 		public QBitmap CreateHeuristicMask(bool clipTight) {
-			return ((QPixmap) interceptor).CreateHeuristicMask(clipTight);
+			return (QBitmap) interceptor.Invoke("createHeuristicMask$", "createHeuristicMask(bool) const", typeof(QBitmap), typeof(bool), clipTight);
 		}
-		[SmokeMethod("createHeuristicMask", "() const", "")]
 		public QBitmap CreateHeuristicMask() {
-			return ((QPixmap) interceptor).CreateHeuristicMask();
+			return (QBitmap) interceptor.Invoke("createHeuristicMask", "createHeuristicMask() const", typeof(QBitmap));
 		}
-		[SmokeMethod("createMaskFromColor", "(const QColor&) const", "#")]
 		public QBitmap CreateMaskFromColor(QColor maskColor) {
-			return ((QPixmap) interceptor).CreateMaskFromColor(maskColor);
+			return (QBitmap) interceptor.Invoke("createMaskFromColor#", "createMaskFromColor(const QColor&) const", typeof(QBitmap), typeof(QColor), maskColor);
 		}
-		[SmokeMethod("scaled", "(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", "$$$$")]
 		public QPixmap Scaled(int w, int h, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
-			return ((QPixmap) interceptor).Scaled(w,h,aspectMode,mode);
+			return (QPixmap) interceptor.Invoke("scaled$$$$", "scaled(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QPixmap), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaled", "(int, int, Qt::AspectRatioMode) const", "$$$")]
 		public QPixmap Scaled(int w, int h, Qt.AspectRatioMode aspectMode) {
-			return ((QPixmap) interceptor).Scaled(w,h,aspectMode);
+			return (QPixmap) interceptor.Invoke("scaled$$$", "scaled(int, int, Qt::AspectRatioMode) const", typeof(QPixmap), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode);
 		}
-		[SmokeMethod("scaled", "(int, int) const", "$$")]
 		public QPixmap Scaled(int w, int h) {
-			return ((QPixmap) interceptor).Scaled(w,h);
+			return (QPixmap) interceptor.Invoke("scaled$$", "scaled(int, int) const", typeof(QPixmap), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("scaled", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const", "#$$")]
 		public QPixmap Scaled(QSize s, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
-			return ((QPixmap) interceptor).Scaled(s,aspectMode,mode);
+			return (QPixmap) interceptor.Invoke("scaled#$$", "scaled(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QPixmap), typeof(QSize), s, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaled", "(const QSize&, Qt::AspectRatioMode) const", "#$")]
 		public QPixmap Scaled(QSize s, Qt.AspectRatioMode aspectMode) {
-			return ((QPixmap) interceptor).Scaled(s,aspectMode);
+			return (QPixmap) interceptor.Invoke("scaled#$", "scaled(const QSize&, Qt::AspectRatioMode) const", typeof(QPixmap), typeof(QSize), s, typeof(Qt.AspectRatioMode), aspectMode);
 		}
-		[SmokeMethod("scaled", "(const QSize&) const", "#")]
 		public QPixmap Scaled(QSize s) {
-			return ((QPixmap) interceptor).Scaled(s);
+			return (QPixmap) interceptor.Invoke("scaled#", "scaled(const QSize&) const", typeof(QPixmap), typeof(QSize), s);
 		}
-		[SmokeMethod("scaledToWidth", "(int, Qt::TransformationMode) const", "$$")]
 		public QPixmap ScaledToWidth(int w, Qt.TransformationMode mode) {
-			return ((QPixmap) interceptor).ScaledToWidth(w,mode);
+			return (QPixmap) interceptor.Invoke("scaledToWidth$$", "scaledToWidth(int, Qt::TransformationMode) const", typeof(QPixmap), typeof(int), w, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaledToWidth", "(int) const", "$")]
 		public QPixmap ScaledToWidth(int w) {
-			return ((QPixmap) interceptor).ScaledToWidth(w);
+			return (QPixmap) interceptor.Invoke("scaledToWidth$", "scaledToWidth(int) const", typeof(QPixmap), typeof(int), w);
 		}
-		[SmokeMethod("scaledToHeight", "(int, Qt::TransformationMode) const", "$$")]
 		public QPixmap ScaledToHeight(int h, Qt.TransformationMode mode) {
-			return ((QPixmap) interceptor).ScaledToHeight(h,mode);
+			return (QPixmap) interceptor.Invoke("scaledToHeight$$", "scaledToHeight(int, Qt::TransformationMode) const", typeof(QPixmap), typeof(int), h, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaledToHeight", "(int) const", "$")]
 		public QPixmap ScaledToHeight(int h) {
-			return ((QPixmap) interceptor).ScaledToHeight(h);
+			return (QPixmap) interceptor.Invoke("scaledToHeight$", "scaledToHeight(int) const", typeof(QPixmap), typeof(int), h);
 		}
-		[SmokeMethod("transformed", "(const QMatrix&, Qt::TransformationMode) const", "#$")]
 		public QPixmap Transformed(QMatrix arg1, Qt.TransformationMode mode) {
-			return ((QPixmap) interceptor).Transformed(arg1,mode);
+			return (QPixmap) interceptor.Invoke("transformed#$", "transformed(const QMatrix&, Qt::TransformationMode) const", typeof(QPixmap), typeof(QMatrix), arg1, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("transformed", "(const QMatrix&) const", "#")]
 		public QPixmap Transformed(QMatrix arg1) {
-			return ((QPixmap) interceptor).Transformed(arg1);
+			return (QPixmap) interceptor.Invoke("transformed#", "transformed(const QMatrix&) const", typeof(QPixmap), typeof(QMatrix), arg1);
 		}
-		[SmokeMethod("toImage", "() const", "")]
 		public QImage ToImage() {
-			return ((QPixmap) interceptor).ToImage();
+			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
 		}
-		[SmokeMethod("load", "(const QString&, const char*, Qt::ImageConversionFlags)", "$$$")]
 		public bool Load(string fileName, string format, int flags) {
-			return ((QPixmap) interceptor).Load(fileName,format,flags);
+			return (bool) interceptor.Invoke("load$$$", "load(const QString&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(string), fileName, typeof(string), format, typeof(int), flags);
 		}
-		[SmokeMethod("load", "(const QString&, const char*)", "$$")]
 		public bool Load(string fileName, string format) {
-			return ((QPixmap) interceptor).Load(fileName,format);
+			return (bool) interceptor.Invoke("load$$", "load(const QString&, const char*)", typeof(bool), typeof(string), fileName, typeof(string), format);
 		}
-		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string fileName) {
-			return ((QPixmap) interceptor).Load(fileName);
+			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), fileName);
 		}
-		[SmokeMethod("loadFromData", "(const uchar*, uint, const char*, Qt::ImageConversionFlags)", "$$$$")]
 		public bool LoadFromData(char[] buf, uint len, string format, int flags) {
-			return ((QPixmap) interceptor).LoadFromData(buf,len,format,flags);
+			return (bool) interceptor.Invoke("loadFromData$$$$", "loadFromData(const uchar*, uint, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(char[]), buf, typeof(uint), len, typeof(string), format, typeof(int), flags);
 		}
-		[SmokeMethod("loadFromData", "(const uchar*, uint, const char*)", "$$$")]
 		public bool LoadFromData(char[] buf, uint len, string format) {
-			return ((QPixmap) interceptor).LoadFromData(buf,len,format);
+			return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, uint, const char*)", typeof(bool), typeof(char[]), buf, typeof(uint), len, typeof(string), format);
 		}
-		[SmokeMethod("loadFromData", "(const uchar*, uint)", "$$")]
 		public bool LoadFromData(char[] buf, uint len) {
-			return ((QPixmap) interceptor).LoadFromData(buf,len);
+			return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, uint)", typeof(bool), typeof(char[]), buf, typeof(uint), len);
 		}
-		[SmokeMethod("loadFromData", "(const QByteArray&, const char*, Qt::ImageConversionFlags)", "#$$")]
 		public bool LoadFromData(QByteArray data, string format, int flags) {
-			return ((QPixmap) interceptor).LoadFromData(data,format,flags);
+			return (bool) interceptor.Invoke("loadFromData#$$", "loadFromData(const QByteArray&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(QByteArray), data, typeof(string), format, typeof(int), flags);
 		}
-		[SmokeMethod("loadFromData", "(const QByteArray&, const char*)", "#$")]
 		public bool LoadFromData(QByteArray data, string format) {
-			return ((QPixmap) interceptor).LoadFromData(data,format);
+			return (bool) interceptor.Invoke("loadFromData#$", "loadFromData(const QByteArray&, const char*)", typeof(bool), typeof(QByteArray), data, typeof(string), format);
 		}
-		[SmokeMethod("loadFromData", "(const QByteArray&)", "#")]
 		public bool LoadFromData(QByteArray data) {
-			return ((QPixmap) interceptor).LoadFromData(data);
+			return (bool) interceptor.Invoke("loadFromData#", "loadFromData(const QByteArray&)", typeof(bool), typeof(QByteArray), data);
 		}
-		[SmokeMethod("save", "(const QString&, const char*, int) const", "$$$")]
 		public bool Save(string fileName, string format, int quality) {
-			return ((QPixmap) interceptor).Save(fileName,format,quality);
+			return (bool) interceptor.Invoke("save$$$", "save(const QString&, const char*, int) const", typeof(bool), typeof(string), fileName, typeof(string), format, typeof(int), quality);
 		}
-		[SmokeMethod("save", "(const QString&, const char*) const", "$$")]
 		public bool Save(string fileName, string format) {
-			return ((QPixmap) interceptor).Save(fileName,format);
+			return (bool) interceptor.Invoke("save$$", "save(const QString&, const char*) const", typeof(bool), typeof(string), fileName, typeof(string), format);
 		}
-		[SmokeMethod("save", "(const QString&) const", "$")]
 		public bool Save(string fileName) {
-			return ((QPixmap) interceptor).Save(fileName);
+			return (bool) interceptor.Invoke("save$", "save(const QString&) const", typeof(bool), typeof(string), fileName);
 		}
-		[SmokeMethod("save", "(QIODevice*, const char*, int) const", "#$$")]
 		public bool Save(QIODevice device, string format, int quality) {
-			return ((QPixmap) interceptor).Save(device,format,quality);
+			return (bool) interceptor.Invoke("save#$$", "save(QIODevice*, const char*, int) const", typeof(bool), typeof(QIODevice), device, typeof(string), format, typeof(int), quality);
 		}
-		[SmokeMethod("save", "(QIODevice*, const char*) const", "#$")]
 		public bool Save(QIODevice device, string format) {
-			return ((QPixmap) interceptor).Save(device,format);
+			return (bool) interceptor.Invoke("save#$", "save(QIODevice*, const char*) const", typeof(bool), typeof(QIODevice), device, typeof(string), format);
 		}
-		[SmokeMethod("save", "(QIODevice*) const", "#")]
 		public bool Save(QIODevice device) {
-			return ((QPixmap) interceptor).Save(device);
+			return (bool) interceptor.Invoke("save#", "save(QIODevice*) const", typeof(bool), typeof(QIODevice), device);
 		}
-		[SmokeMethod("copy", "(int, int, int, int) const", "$$$$")]
 		public QPixmap Copy(int x, int y, int width, int height) {
-			return ((QPixmap) interceptor).Copy(x,y,width,height);
+			return (QPixmap) interceptor.Invoke("copy$$$$", "copy(int, int, int, int) const", typeof(QPixmap), typeof(int), x, typeof(int), y, typeof(int), width, typeof(int), height);
 		}
-		[SmokeMethod("copy", "(const QRect&) const", "#")]
 		public QPixmap Copy(QRect rect) {
-			return ((QPixmap) interceptor).Copy(rect);
+			return (QPixmap) interceptor.Invoke("copy#", "copy(const QRect&) const", typeof(QPixmap), typeof(QRect), rect);
 		}
-		[SmokeMethod("copy", "() const", "")]
 		public QPixmap Copy() {
-			return ((QPixmap) interceptor).Copy();
+			return (QPixmap) interceptor.Invoke("copy", "copy() const", typeof(QPixmap));
 		}
-		[SmokeMethod("serialNumber", "() const", "")]
 		public int SerialNumber() {
-			return ((QPixmap) interceptor).SerialNumber();
+			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QPixmap) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QPixmap) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("isQBitmap", "() const", "")]
 		public bool IsQBitmap() {
-			return ((QPixmap) interceptor).IsQBitmap();
+			return (bool) interceptor.Invoke("isQBitmap", "isQBitmap() const", typeof(bool));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {
-			return ((QPixmap) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice arg1) {
-			return ((QPixmap) interceptor).Metric(arg1);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), arg1);
 		}
 		~QPixmap() {
-			DisposeQPixmap();
+			interceptor.Invoke("~QPixmap", "~QPixmap()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPixmap();
-		}
-		[SmokeMethod("~QPixmap", "()", "")]
-		private void DisposeQPixmap() {
-			((QPixmap) interceptor).DisposeQPixmap();
+			interceptor.Invoke("~QPixmap", "~QPixmap()", typeof(void));
 		}
 		public static bool operator!(QPixmap lhs) {
-			return staticInterceptor.op_not(lhs);
+			return (bool) staticInterceptor.Invoke("operator!", "operator!() const", typeof(bool), typeof(QPixmap), lhs);
 		}
 		public static int DefaultDepth() {
-			return staticInterceptor.DefaultDepth();
+			return (int) staticInterceptor.Invoke("defaultDepth", "defaultDepth()", typeof(int));
 		}
 		public static QPixmap GrabWindow(ulong arg1, int x, int y, int w, int h) {
-			return staticInterceptor.GrabWindow(arg1,x,y,w,h);
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$$", "grabWindow(WId, int, int, int, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
 		public static QPixmap GrabWindow(ulong arg1, int x, int y, int w) {
-			return staticInterceptor.GrabWindow(arg1,x,y,w);
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$", "grabWindow(WId, int, int, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x, typeof(int), y, typeof(int), w);
 		}
 		public static QPixmap GrabWindow(ulong arg1, int x, int y) {
-			return staticInterceptor.GrabWindow(arg1,x,y);
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$", "grabWindow(WId, int, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x, typeof(int), y);
 		}
 		public static QPixmap GrabWindow(ulong arg1, int x) {
-			return staticInterceptor.GrabWindow(arg1,x);
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$", "grabWindow(WId, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x);
 		}
 		public static QPixmap GrabWindow(ulong arg1) {
-			return staticInterceptor.GrabWindow(arg1);
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$", "grabWindow(WId)", typeof(QPixmap), typeof(ulong), arg1);
 		}
 		public static QPixmap GrabWidget(QWidget widget, QRect rect) {
-			return staticInterceptor.GrabWidget(widget,rect);
+			return (QPixmap) staticInterceptor.Invoke("grabWidget##", "grabWidget(QWidget*, const QRect&)", typeof(QPixmap), typeof(QWidget), widget, typeof(QRect), rect);
 		}
 		public static QPixmap GrabWidget(QWidget widget, int x, int y, int w, int h) {
-			return staticInterceptor.GrabWidget(widget,x,y,w,h);
+			return (QPixmap) staticInterceptor.Invoke("grabWidget#$$$$", "grabWidget(QWidget*, int, int, int, int)", typeof(QPixmap), typeof(QWidget), widget, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
 		public static QPixmap GrabWidget(QWidget widget, int x, int y, int w) {
-			return staticInterceptor.GrabWidget(widget,x,y,w);
+			return (QPixmap) staticInterceptor.Invoke("grabWidget#$$$", "grabWidget(QWidget*, int, int, int)", typeof(QPixmap), typeof(QWidget), widget, typeof(int), x, typeof(int), y, typeof(int), w);
 		}
 		public static QPixmap GrabWidget(QWidget widget, int x, int y) {
-			return staticInterceptor.GrabWidget(widget,x,y);
+			return (QPixmap) staticInterceptor.Invoke("grabWidget#$$", "grabWidget(QWidget*, int, int)", typeof(QPixmap), typeof(QWidget), widget, typeof(int), x, typeof(int), y);
 		}
 		public static QPixmap GrabWidget(QWidget widget, int x) {
-			return staticInterceptor.GrabWidget(widget,x);
+			return (QPixmap) staticInterceptor.Invoke("grabWidget#$", "grabWidget(QWidget*, int)", typeof(QPixmap), typeof(QWidget), widget, typeof(int), x);
 		}
 		public static QPixmap GrabWidget(QWidget widget) {
-			return staticInterceptor.GrabWidget(widget);
+			return (QPixmap) staticInterceptor.Invoke("grabWidget#", "grabWidget(QWidget*)", typeof(QPixmap), typeof(QWidget), widget);
 		}
 		public static QMatrix TrueMatrix(QMatrix m, int w, int h) {
-			return staticInterceptor.TrueMatrix(m,w,h);
+			return (QMatrix) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QMatrix&, int, int)", typeof(QMatrix), typeof(QMatrix), m, typeof(int), w, typeof(int), h);
 		}
 		public static QPixmap FromImage(QImage image, int flags) {
-			return staticInterceptor.FromImage(image,flags);
+			return (QPixmap) staticInterceptor.Invoke("fromImage#$", "fromImage(const QImage&, Qt::ImageConversionFlags)", typeof(QPixmap), typeof(QImage), image, typeof(int), flags);
 		}
 		public static QPixmap FromImage(QImage image) {
-			return staticInterceptor.FromImage(image);
+			return (QPixmap) staticInterceptor.Invoke("fromImage#", "fromImage(const QImage&)", typeof(QPixmap), typeof(QImage), image);
 		}
 	}
 }

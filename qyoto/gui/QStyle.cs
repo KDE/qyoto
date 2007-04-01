@@ -6,37 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyle")]
 	public abstract class QStyle : QObject {
  		protected QStyle(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyle")]
-		interface IQStyleProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("visualRect", "(Qt::LayoutDirection, const QRect&, const QRect&)", "$##")]
-			QRect VisualRect(Qt.LayoutDirection direction, QRect boundingRect, QRect logicalRect);
-			[SmokeMethod("visualPos", "(Qt::LayoutDirection, const QRect&, const QPoint&)", "$##")]
-			QPoint VisualPos(Qt.LayoutDirection direction, QRect boundingRect, QPoint logicalPos);
-			[SmokeMethod("sliderPositionFromValue", "(int, int, int, int, bool)", "$$$$$")]
-			int SliderPositionFromValue(int min, int max, int val, int space, bool upsideDown);
-			[SmokeMethod("sliderPositionFromValue", "(int, int, int, int)", "$$$$")]
-			int SliderPositionFromValue(int min, int max, int val, int space);
-			[SmokeMethod("sliderValueFromPosition", "(int, int, int, int, bool)", "$$$$$")]
-			int SliderValueFromPosition(int min, int max, int pos, int space, bool upsideDown);
-			[SmokeMethod("sliderValueFromPosition", "(int, int, int, int)", "$$$$")]
-			int SliderValueFromPosition(int min, int max, int pos, int space);
-			[SmokeMethod("visualAlignment", "(Qt::LayoutDirection, Qt::Alignment)", "$$")]
-			int VisualAlignment(Qt.LayoutDirection direction, int alignment);
-			[SmokeMethod("alignedRect", "(Qt::LayoutDirection, Qt::Alignment, const QSize&, const QRect&)", "$$##")]
-			QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyle), this);
-			interceptor = (QStyle) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyle), "QStyle", this);
 		}
-		private static IQStyleProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QStyle() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleProxy), null);
-			staticInterceptor = (IQStyleProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QStyle), "QStyle", null);
 		}
 		public enum StateFlag {
 			State_None = 0x00000000,
@@ -506,134 +481,124 @@ namespace Qyoto {
 		// QStyle* QStyle(QStylePrivate& arg1); >>>> NOT CONVERTED
 		public QStyle() : this((Type) null) {
 			CreateProxy();
-			NewQStyle();
+			interceptor.Invoke("QStyle", "QStyle()", typeof(void));
 		}
-		[SmokeMethod("QStyle", "()", "")]
-		private void NewQStyle() {
-			((QStyle) interceptor).NewQStyle();
-		}
-		[SmokeMethod("polish", "(QWidget*)", "#")]
+		[SmokeMethod("polish(QWidget*)")]
 		public virtual void Polish(QWidget arg1) {
-			((QStyle) interceptor).Polish(arg1);
+			interceptor.Invoke("polish#", "polish(QWidget*)", typeof(void), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("unpolish", "(QWidget*)", "#")]
+		[SmokeMethod("unpolish(QWidget*)")]
 		public virtual void Unpolish(QWidget arg1) {
-			((QStyle) interceptor).Unpolish(arg1);
+			interceptor.Invoke("unpolish#", "unpolish(QWidget*)", typeof(void), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("polish", "(QApplication*)", "#")]
+		[SmokeMethod("polish(QApplication*)")]
 		public virtual void Polish(QApplication arg1) {
-			((QStyle) interceptor).Polish(arg1);
+			interceptor.Invoke("polish#", "polish(QApplication*)", typeof(void), typeof(QApplication), arg1);
 		}
-		[SmokeMethod("unpolish", "(QApplication*)", "#")]
+		[SmokeMethod("unpolish(QApplication*)")]
 		public virtual void Unpolish(QApplication arg1) {
-			((QStyle) interceptor).Unpolish(arg1);
+			interceptor.Invoke("unpolish#", "unpolish(QApplication*)", typeof(void), typeof(QApplication), arg1);
 		}
-		[SmokeMethod("polish", "(QPalette&)", "#")]
+		[SmokeMethod("polish(QPalette&)")]
 		public virtual void Polish(QPalette arg1) {
-			((QStyle) interceptor).Polish(arg1);
+			interceptor.Invoke("polish#", "polish(QPalette&)", typeof(void), typeof(QPalette), arg1);
 		}
-		[SmokeMethod("itemTextRect", "(const QFontMetrics&, const QRect&, int, bool, const QString&) const", "##$$$")]
+		[SmokeMethod("itemTextRect(const QFontMetrics&, const QRect&, int, bool, const QString&) const")]
 		public virtual QRect ItemTextRect(QFontMetrics fm, QRect r, int flags, bool enabled, string text) {
-			return ((QStyle) interceptor).ItemTextRect(fm,r,flags,enabled,text);
+			return (QRect) interceptor.Invoke("itemTextRect##$$$", "itemTextRect(const QFontMetrics&, const QRect&, int, bool, const QString&) const", typeof(QRect), typeof(QFontMetrics), fm, typeof(QRect), r, typeof(int), flags, typeof(bool), enabled, typeof(string), text);
 		}
-		[SmokeMethod("itemPixmapRect", "(const QRect&, int, const QPixmap&) const", "#$#")]
+		[SmokeMethod("itemPixmapRect(const QRect&, int, const QPixmap&) const")]
 		public virtual QRect ItemPixmapRect(QRect r, int flags, QPixmap pixmap) {
-			return ((QStyle) interceptor).ItemPixmapRect(r,flags,pixmap);
+			return (QRect) interceptor.Invoke("itemPixmapRect#$#", "itemPixmapRect(const QRect&, int, const QPixmap&) const", typeof(QRect), typeof(QRect), r, typeof(int), flags, typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("drawItemText", "(QPainter*, const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole) const", "##$#$$$")]
+		[SmokeMethod("drawItemText(QPainter*, const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole) const")]
 		public virtual void DrawItemText(QPainter painter, QRect rect, int flags, QPalette pal, bool enabled, string text, QPalette.ColorRole textRole) {
-			((QStyle) interceptor).DrawItemText(painter,rect,flags,pal,enabled,text,textRole);
+			interceptor.Invoke("drawItemText##$#$$$", "drawItemText(QPainter*, const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), flags, typeof(QPalette), pal, typeof(bool), enabled, typeof(string), text, typeof(QPalette.ColorRole), textRole);
 		}
-		[SmokeMethod("drawItemText", "(QPainter*, const QRect&, int, const QPalette&, bool, const QString&) const", "##$#$$")]
+		[SmokeMethod("drawItemText(QPainter*, const QRect&, int, const QPalette&, bool, const QString&) const")]
 		public virtual void DrawItemText(QPainter painter, QRect rect, int flags, QPalette pal, bool enabled, string text) {
-			((QStyle) interceptor).DrawItemText(painter,rect,flags,pal,enabled,text);
+			interceptor.Invoke("drawItemText##$#$$", "drawItemText(QPainter*, const QRect&, int, const QPalette&, bool, const QString&) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), flags, typeof(QPalette), pal, typeof(bool), enabled, typeof(string), text);
 		}
-		[SmokeMethod("drawItemPixmap", "(QPainter*, const QRect&, int, const QPixmap&) const", "##$#")]
+		[SmokeMethod("drawItemPixmap(QPainter*, const QRect&, int, const QPixmap&) const")]
 		public virtual void DrawItemPixmap(QPainter painter, QRect rect, int alignment, QPixmap pixmap) {
-			((QStyle) interceptor).DrawItemPixmap(painter,rect,alignment,pixmap);
+			interceptor.Invoke("drawItemPixmap##$#", "drawItemPixmap(QPainter*, const QRect&, int, const QPixmap&) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment, typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("standardPalette", "() const", "")]
+		[SmokeMethod("standardPalette() const")]
 		public virtual QPalette StandardPalette() {
-			return ((QStyle) interceptor).StandardPalette();
+			return (QPalette) interceptor.Invoke("standardPalette", "standardPalette() const", typeof(QPalette));
 		}
-		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
-		public abstract void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p, QWidget w);
-		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
-		public abstract void DrawControl(QStyle.ControlElement element, out int opt, QPainter p, QWidget w);
-		[SmokeMethod("subElementRect", "(QStyle::SubElement, const QStyleOption*, const QWidget*) const", "$##")]
-		public abstract QRect SubElementRect(QStyle.SubElement subElement, out int option, QWidget widget);
-		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const", "$###")]
+		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const")]
+		public abstract void DrawPrimitive(QStyle.PrimitiveElement pe, int opt, QPainter p, QWidget w);
+		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const")]
+		public abstract void DrawControl(QStyle.ControlElement element, int opt, QPainter p, QWidget w);
+		[SmokeMethod("subElementRect(QStyle::SubElement, const QStyleOption*, const QWidget*) const")]
+		public abstract QRect SubElementRect(QStyle.SubElement subElement, int option, QWidget widget);
+		[SmokeMethod("drawComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const")]
 		public abstract void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p, QWidget widget);
-		[SmokeMethod("hitTestComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&, const QWidget*) const", "$###")]
+		[SmokeMethod("hitTestComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&, const QWidget*) const")]
 		public abstract QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt, QWidget widget);
-		[SmokeMethod("subControlRect", "(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl, const QWidget*) const", "$#$#")]
+		[SmokeMethod("subControlRect(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl, const QWidget*) const")]
 		public abstract QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc, QWidget widget);
-		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const", "$##")]
-		public abstract int pixelMetric(QStyle.PixelMetric metric, out int option, QWidget widget);
-		[SmokeMethod("sizeFromContents", "(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const", "$###")]
-		public abstract QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize, QWidget w);
-		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const", "$###")]
-		public abstract int styleHint(QStyle.StyleHint stylehint, out int opt, QWidget widget, QStyleHintReturn returnData);
-		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
-		public abstract QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt, QWidget widget);
-		[SmokeMethod("standardIcon", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
-		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
-			return ((QStyle) interceptor).StandardIcon(standardIcon,out option,widget);
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const")]
+		public abstract int pixelMetric(QStyle.PixelMetric metric, int option, QWidget widget);
+		[SmokeMethod("sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const")]
+		public abstract QSize SizeFromContents(QStyle.ContentsType ct, int opt, QSize contentsSize, QWidget w);
+		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const")]
+		public abstract int styleHint(QStyle.StyleHint stylehint, int opt, QWidget widget, QStyleHintReturn returnData);
+		[SmokeMethod("standardPixmap(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		public abstract QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, int opt, QWidget widget);
+		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, int option, QWidget widget) {
+			return (QIcon) interceptor.Invoke("standardIcon$##", "standardIcon(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), option, typeof(QWidget), widget);
 		}
-		[SmokeMethod("standardIcon", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
-		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, out int option) {
-			return ((QStyle) interceptor).StandardIcon(standardIcon,out option);
+		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, int option) {
+			return (QIcon) interceptor.Invoke("standardIcon$#", "standardIcon(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), option);
 		}
-		[SmokeMethod("standardIcon", "(QStyle::StandardPixmap) const", "$")]
 		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon) {
-			return ((QStyle) interceptor).StandardIcon(standardIcon);
+			return (QIcon) interceptor.Invoke("standardIcon$", "standardIcon(QStyle::StandardPixmap) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon);
 		}
-		[SmokeMethod("generatedIconPixmap", "(QIcon::Mode, const QPixmap&, const QStyleOption*) const", "$##")]
-		public abstract QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, out int opt);
+		[SmokeMethod("generatedIconPixmap(QIcon::Mode, const QPixmap&, const QStyleOption*) const")]
+		public abstract QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, int opt);
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
-			return ((QStyle) interceptor).StandardIconImplementation(standardIcon,out opt,widget);
+		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt, QWidget widget) {
+			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt, typeof(QWidget), widget);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt) {
-			return ((QStyle) interceptor).StandardIconImplementation(standardIcon,out opt);
+		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt) {
+			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
-		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap) const", "$")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
-			return ((QStyle) interceptor).StandardIconImplementation(standardIcon);
+			return (QIcon) interceptor.Invoke("standardIconImplementation$", "standardIconImplementation(QStyle::StandardPixmap) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QRect VisualRect(Qt.LayoutDirection direction, QRect boundingRect, QRect logicalRect) {
-			return staticInterceptor.VisualRect(direction,boundingRect,logicalRect);
+			return (QRect) staticInterceptor.Invoke("visualRect$##", "visualRect(Qt::LayoutDirection, const QRect&, const QRect&)", typeof(QRect), typeof(Qt.LayoutDirection), direction, typeof(QRect), boundingRect, typeof(QRect), logicalRect);
 		}
 		public static QPoint VisualPos(Qt.LayoutDirection direction, QRect boundingRect, QPoint logicalPos) {
-			return staticInterceptor.VisualPos(direction,boundingRect,logicalPos);
+			return (QPoint) staticInterceptor.Invoke("visualPos$##", "visualPos(Qt::LayoutDirection, const QRect&, const QPoint&)", typeof(QPoint), typeof(Qt.LayoutDirection), direction, typeof(QRect), boundingRect, typeof(QPoint), logicalPos);
 		}
 		public static int SliderPositionFromValue(int min, int max, int val, int space, bool upsideDown) {
-			return staticInterceptor.SliderPositionFromValue(min,max,val,space,upsideDown);
+			return (int) staticInterceptor.Invoke("sliderPositionFromValue$$$$$", "sliderPositionFromValue(int, int, int, int, bool)", typeof(int), typeof(int), min, typeof(int), max, typeof(int), val, typeof(int), space, typeof(bool), upsideDown);
 		}
 		public static int SliderPositionFromValue(int min, int max, int val, int space) {
-			return staticInterceptor.SliderPositionFromValue(min,max,val,space);
+			return (int) staticInterceptor.Invoke("sliderPositionFromValue$$$$", "sliderPositionFromValue(int, int, int, int)", typeof(int), typeof(int), min, typeof(int), max, typeof(int), val, typeof(int), space);
 		}
 		public static int SliderValueFromPosition(int min, int max, int pos, int space, bool upsideDown) {
-			return staticInterceptor.SliderValueFromPosition(min,max,pos,space,upsideDown);
+			return (int) staticInterceptor.Invoke("sliderValueFromPosition$$$$$", "sliderValueFromPosition(int, int, int, int, bool)", typeof(int), typeof(int), min, typeof(int), max, typeof(int), pos, typeof(int), space, typeof(bool), upsideDown);
 		}
 		public static int SliderValueFromPosition(int min, int max, int pos, int space) {
-			return staticInterceptor.SliderValueFromPosition(min,max,pos,space);
+			return (int) staticInterceptor.Invoke("sliderValueFromPosition$$$$", "sliderValueFromPosition(int, int, int, int)", typeof(int), typeof(int), min, typeof(int), max, typeof(int), pos, typeof(int), space);
 		}
 		public static int VisualAlignment(Qt.LayoutDirection direction, int alignment) {
-			return staticInterceptor.VisualAlignment(direction,alignment);
+			return (int) staticInterceptor.Invoke("visualAlignment$$", "visualAlignment(Qt::LayoutDirection, Qt::Alignment)", typeof(int), typeof(Qt.LayoutDirection), direction, typeof(int), alignment);
 		}
 		public static QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle) {
-			return staticInterceptor.AlignedRect(direction,alignment,size,rectangle);
+			return (QRect) staticInterceptor.Invoke("alignedRect$$##", "alignedRect(Qt::LayoutDirection, Qt::Alignment, const QSize&, const QRect&)", typeof(QRect), typeof(Qt.LayoutDirection), direction, typeof(int), alignment, typeof(QSize), size, typeof(QRect), rectangle);
 		}
 		protected new IQStyleSignals Emit {
 			get { return (IQStyleSignals) Q_EMIT; }

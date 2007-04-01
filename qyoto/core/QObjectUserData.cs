@@ -4,24 +4,19 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QObjectUserData")]
-	public class QObjectUserData : MarshalByRefObject, IDisposable {
-		protected QObjectUserData interceptor = null;
+	public class QObjectUserData : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QObjectUserData(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectUserData), this);
-			interceptor = (QObjectUserData) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QObjectUserData), "QObjectUserData", this);
 		}
 		// QObjectUserData* QObjectUserData(); >>>> NOT CONVERTED
 		~QObjectUserData() {
-			DisposeQObjectUserData();
+			interceptor.Invoke("~QObjectUserData", "~QObjectUserData()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQObjectUserData();
-		}
-		[SmokeMethod("~QObjectUserData", "()", "")]
-		private void DisposeQObjectUserData() {
-			((QObjectUserData) interceptor).DisposeQObjectUserData();
+			interceptor.Invoke("~QObjectUserData", "~QObjectUserData()", typeof(void));
 		}
 	}
 }

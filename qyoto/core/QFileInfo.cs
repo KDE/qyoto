@@ -4,262 +4,187 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QFileInfo")]
-	public class QFileInfo : MarshalByRefObject, IDisposable {
-		protected QFileInfo interceptor = null;
+	public class QFileInfo : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFileInfo(Type dummy) {}
-		[SmokeClass("QFileInfo")]
-		interface IQFileInfoProxy {
-			[SmokeMethod("operator==", "(const QFileInfo&)", "#")]
-			bool op_equals(QFileInfo lhs, QFileInfo fileinfo);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileInfo), this);
-			interceptor = (QFileInfo) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFileInfo), "QFileInfo", this);
 		}
-		private static IQFileInfoProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFileInfo() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFileInfoProxy), null);
-			staticInterceptor = (IQFileInfoProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFileInfo), "QFileInfo", null);
 		}
 		public QFileInfo() : this((Type) null) {
 			CreateProxy();
-			NewQFileInfo();
-		}
-		[SmokeMethod("QFileInfo", "()", "")]
-		private void NewQFileInfo() {
-			((QFileInfo) interceptor).NewQFileInfo();
+			interceptor.Invoke("QFileInfo", "QFileInfo()", typeof(void));
 		}
 		public QFileInfo(string file) : this((Type) null) {
 			CreateProxy();
-			NewQFileInfo(file);
-		}
-		[SmokeMethod("QFileInfo", "(const QString&)", "$")]
-		private void NewQFileInfo(string file) {
-			((QFileInfo) interceptor).NewQFileInfo(file);
+			interceptor.Invoke("QFileInfo$", "QFileInfo(const QString&)", typeof(void), typeof(string), file);
 		}
 		public QFileInfo(QFile file) : this((Type) null) {
 			CreateProxy();
-			NewQFileInfo(file);
-		}
-		[SmokeMethod("QFileInfo", "(const QFile&)", "#")]
-		private void NewQFileInfo(QFile file) {
-			((QFileInfo) interceptor).NewQFileInfo(file);
+			interceptor.Invoke("QFileInfo#", "QFileInfo(const QFile&)", typeof(void), typeof(QFile), file);
 		}
 		public QFileInfo(QDir dir, string file) : this((Type) null) {
 			CreateProxy();
-			NewQFileInfo(dir,file);
-		}
-		[SmokeMethod("QFileInfo", "(const QDir&, const QString&)", "#$")]
-		private void NewQFileInfo(QDir dir, string file) {
-			((QFileInfo) interceptor).NewQFileInfo(dir,file);
+			interceptor.Invoke("QFileInfo#$", "QFileInfo(const QDir&, const QString&)", typeof(void), typeof(QDir), dir, typeof(string), file);
 		}
 		public QFileInfo(QFileInfo fileinfo) : this((Type) null) {
 			CreateProxy();
-			NewQFileInfo(fileinfo);
-		}
-		[SmokeMethod("QFileInfo", "(const QFileInfo&)", "#")]
-		private void NewQFileInfo(QFileInfo fileinfo) {
-			((QFileInfo) interceptor).NewQFileInfo(fileinfo);
+			interceptor.Invoke("QFileInfo#", "QFileInfo(const QFileInfo&)", typeof(void), typeof(QFileInfo), fileinfo);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QFileInfo)) { return false; }
 			return this == (QFileInfo) o;
 		}
 		public override int GetHashCode() {
-			return ((QFileInfo) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("setFile", "(const QString&)", "$")]
 		public void SetFile(string file) {
-			((QFileInfo) interceptor).SetFile(file);
+			interceptor.Invoke("setFile$", "setFile(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("setFile", "(const QFile&)", "#")]
 		public void SetFile(QFile file) {
-			((QFileInfo) interceptor).SetFile(file);
+			interceptor.Invoke("setFile#", "setFile(const QFile&)", typeof(void), typeof(QFile), file);
 		}
-		[SmokeMethod("setFile", "(const QDir&, const QString&)", "#$")]
 		public void SetFile(QDir dir, string file) {
-			((QFileInfo) interceptor).SetFile(dir,file);
+			interceptor.Invoke("setFile#$", "setFile(const QDir&, const QString&)", typeof(void), typeof(QDir), dir, typeof(string), file);
 		}
-		[SmokeMethod("exists", "() const", "")]
 		public bool Exists() {
-			return ((QFileInfo) interceptor).Exists();
+			return (bool) interceptor.Invoke("exists", "exists() const", typeof(bool));
 		}
-		[SmokeMethod("refresh", "()", "")]
 		public void Refresh() {
-			((QFileInfo) interceptor).Refresh();
+			interceptor.Invoke("refresh", "refresh()", typeof(void));
 		}
-		[SmokeMethod("filePath", "() const", "")]
 		public string FilePath() {
-			return ((QFileInfo) interceptor).FilePath();
+			return (string) interceptor.Invoke("filePath", "filePath() const", typeof(string));
 		}
-		[SmokeMethod("absoluteFilePath", "() const", "")]
 		public string AbsoluteFilePath() {
-			return ((QFileInfo) interceptor).AbsoluteFilePath();
+			return (string) interceptor.Invoke("absoluteFilePath", "absoluteFilePath() const", typeof(string));
 		}
-		[SmokeMethod("canonicalFilePath", "() const", "")]
 		public string CanonicalFilePath() {
-			return ((QFileInfo) interceptor).CanonicalFilePath();
+			return (string) interceptor.Invoke("canonicalFilePath", "canonicalFilePath() const", typeof(string));
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QFileInfo) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("baseName", "() const", "")]
 		public string BaseName() {
-			return ((QFileInfo) interceptor).BaseName();
+			return (string) interceptor.Invoke("baseName", "baseName() const", typeof(string));
 		}
-		[SmokeMethod("completeBaseName", "() const", "")]
 		public string CompleteBaseName() {
-			return ((QFileInfo) interceptor).CompleteBaseName();
+			return (string) interceptor.Invoke("completeBaseName", "completeBaseName() const", typeof(string));
 		}
-		[SmokeMethod("suffix", "() const", "")]
 		public string Suffix() {
-			return ((QFileInfo) interceptor).Suffix();
+			return (string) interceptor.Invoke("suffix", "suffix() const", typeof(string));
 		}
-		[SmokeMethod("completeSuffix", "() const", "")]
 		public string CompleteSuffix() {
-			return ((QFileInfo) interceptor).CompleteSuffix();
+			return (string) interceptor.Invoke("completeSuffix", "completeSuffix() const", typeof(string));
 		}
-		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ((QFileInfo) interceptor).Path();
+			return (string) interceptor.Invoke("path", "path() const", typeof(string));
 		}
-		[SmokeMethod("absolutePath", "() const", "")]
 		public string AbsolutePath() {
-			return ((QFileInfo) interceptor).AbsolutePath();
+			return (string) interceptor.Invoke("absolutePath", "absolutePath() const", typeof(string));
 		}
-		[SmokeMethod("canonicalPath", "() const", "")]
 		public string CanonicalPath() {
-			return ((QFileInfo) interceptor).CanonicalPath();
+			return (string) interceptor.Invoke("canonicalPath", "canonicalPath() const", typeof(string));
 		}
-		[SmokeMethod("dir", "() const", "")]
 		public QDir Dir() {
-			return ((QFileInfo) interceptor).Dir();
+			return (QDir) interceptor.Invoke("dir", "dir() const", typeof(QDir));
 		}
-		[SmokeMethod("absoluteDir", "() const", "")]
 		public QDir AbsoluteDir() {
-			return ((QFileInfo) interceptor).AbsoluteDir();
+			return (QDir) interceptor.Invoke("absoluteDir", "absoluteDir() const", typeof(QDir));
 		}
-		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
-			return ((QFileInfo) interceptor).IsReadable();
+			return (bool) interceptor.Invoke("isReadable", "isReadable() const", typeof(bool));
 		}
-		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
-			return ((QFileInfo) interceptor).IsWritable();
+			return (bool) interceptor.Invoke("isWritable", "isWritable() const", typeof(bool));
 		}
-		[SmokeMethod("isExecutable", "() const", "")]
 		public bool IsExecutable() {
-			return ((QFileInfo) interceptor).IsExecutable();
+			return (bool) interceptor.Invoke("isExecutable", "isExecutable() const", typeof(bool));
 		}
-		[SmokeMethod("isHidden", "() const", "")]
 		public bool IsHidden() {
-			return ((QFileInfo) interceptor).IsHidden();
+			return (bool) interceptor.Invoke("isHidden", "isHidden() const", typeof(bool));
 		}
-		[SmokeMethod("isRelative", "() const", "")]
 		public bool IsRelative() {
-			return ((QFileInfo) interceptor).IsRelative();
+			return (bool) interceptor.Invoke("isRelative", "isRelative() const", typeof(bool));
 		}
-		[SmokeMethod("isAbsolute", "() const", "")]
 		public bool IsAbsolute() {
-			return ((QFileInfo) interceptor).IsAbsolute();
+			return (bool) interceptor.Invoke("isAbsolute", "isAbsolute() const", typeof(bool));
 		}
-		[SmokeMethod("makeAbsolute", "()", "")]
 		public bool MakeAbsolute() {
-			return ((QFileInfo) interceptor).MakeAbsolute();
+			return (bool) interceptor.Invoke("makeAbsolute", "makeAbsolute()", typeof(bool));
 		}
-		[SmokeMethod("isFile", "() const", "")]
 		public bool IsFile() {
-			return ((QFileInfo) interceptor).IsFile();
+			return (bool) interceptor.Invoke("isFile", "isFile() const", typeof(bool));
 		}
-		[SmokeMethod("isDir", "() const", "")]
 		public bool IsDir() {
-			return ((QFileInfo) interceptor).IsDir();
+			return (bool) interceptor.Invoke("isDir", "isDir() const", typeof(bool));
 		}
-		[SmokeMethod("isSymLink", "() const", "")]
 		public bool IsSymLink() {
-			return ((QFileInfo) interceptor).IsSymLink();
+			return (bool) interceptor.Invoke("isSymLink", "isSymLink() const", typeof(bool));
 		}
-		[SmokeMethod("isRoot", "() const", "")]
 		public bool IsRoot() {
-			return ((QFileInfo) interceptor).IsRoot();
+			return (bool) interceptor.Invoke("isRoot", "isRoot() const", typeof(bool));
 		}
-		[SmokeMethod("readLink", "() const", "")]
 		public string ReadLink() {
-			return ((QFileInfo) interceptor).ReadLink();
+			return (string) interceptor.Invoke("readLink", "readLink() const", typeof(string));
 		}
-		[SmokeMethod("symLinkTarget", "() const", "")]
 		public string SymLinkTarget() {
-			return ((QFileInfo) interceptor).SymLinkTarget();
+			return (string) interceptor.Invoke("symLinkTarget", "symLinkTarget() const", typeof(string));
 		}
-		[SmokeMethod("owner", "() const", "")]
 		public string Owner() {
-			return ((QFileInfo) interceptor).Owner();
+			return (string) interceptor.Invoke("owner", "owner() const", typeof(string));
 		}
-		[SmokeMethod("ownerId", "() const", "")]
 		public uint OwnerId() {
-			return ((QFileInfo) interceptor).OwnerId();
+			return (uint) interceptor.Invoke("ownerId", "ownerId() const", typeof(uint));
 		}
-		[SmokeMethod("group", "() const", "")]
 		public string Group() {
-			return ((QFileInfo) interceptor).Group();
+			return (string) interceptor.Invoke("group", "group() const", typeof(string));
 		}
-		[SmokeMethod("groupId", "() const", "")]
 		public uint GroupId() {
-			return ((QFileInfo) interceptor).GroupId();
+			return (uint) interceptor.Invoke("groupId", "groupId() const", typeof(uint));
 		}
-		[SmokeMethod("permission", "(QFile::Permissions) const", "$")]
 		public bool Permission(int permissions) {
-			return ((QFileInfo) interceptor).Permission(permissions);
+			return (bool) interceptor.Invoke("permission$", "permission(QFile::Permissions) const", typeof(bool), typeof(int), permissions);
 		}
-		[SmokeMethod("permissions", "() const", "")]
 		public int Permissions() {
-			return ((QFileInfo) interceptor).Permissions();
+			return (int) interceptor.Invoke("permissions", "permissions() const", typeof(int));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public long Size() {
-			return ((QFileInfo) interceptor).Size();
+			return (long) interceptor.Invoke("size", "size() const", typeof(long));
 		}
-		[SmokeMethod("created", "() const", "")]
 		public QDateTime Created() {
-			return ((QFileInfo) interceptor).Created();
+			return (QDateTime) interceptor.Invoke("created", "created() const", typeof(QDateTime));
 		}
-		[SmokeMethod("lastModified", "() const", "")]
 		public QDateTime LastModified() {
-			return ((QFileInfo) interceptor).LastModified();
+			return (QDateTime) interceptor.Invoke("lastModified", "lastModified() const", typeof(QDateTime));
 		}
-		[SmokeMethod("lastRead", "() const", "")]
 		public QDateTime LastRead() {
-			return ((QFileInfo) interceptor).LastRead();
+			return (QDateTime) interceptor.Invoke("lastRead", "lastRead() const", typeof(QDateTime));
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QFileInfo) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("caching", "() const", "")]
 		public bool Caching() {
-			return ((QFileInfo) interceptor).Caching();
+			return (bool) interceptor.Invoke("caching", "caching() const", typeof(bool));
 		}
-		[SmokeMethod("setCaching", "(bool)", "$")]
 		public void SetCaching(bool on) {
-			((QFileInfo) interceptor).SetCaching(on);
+			interceptor.Invoke("setCaching$", "setCaching(bool)", typeof(void), typeof(bool), on);
 		}
 		~QFileInfo() {
-			DisposeQFileInfo();
+			interceptor.Invoke("~QFileInfo", "~QFileInfo()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQFileInfo();
-		}
-		[SmokeMethod("~QFileInfo", "()", "")]
-		private void DisposeQFileInfo() {
-			((QFileInfo) interceptor).DisposeQFileInfo();
+			interceptor.Invoke("~QFileInfo", "~QFileInfo()", typeof(void));
 		}
 		public static bool operator==(QFileInfo lhs, QFileInfo fileinfo) {
-			return staticInterceptor.op_equals(lhs,fileinfo);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QFileInfo&)", typeof(bool), typeof(QFileInfo), lhs, typeof(QFileInfo), fileinfo);
 		}
 		public static bool operator!=(QFileInfo lhs, QFileInfo fileinfo) {
-			return !staticInterceptor.op_equals(lhs,fileinfo);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QFileInfo&)", typeof(bool), typeof(QFileInfo), lhs, typeof(QFileInfo), fileinfo);
 		}
 	}
 }

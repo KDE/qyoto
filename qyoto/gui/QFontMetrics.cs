@@ -4,206 +4,149 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QFontMetrics")]
-	public class QFontMetrics : MarshalByRefObject, IDisposable {
-		protected QFontMetrics interceptor = null;
+	public class QFontMetrics : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFontMetrics(Type dummy) {}
-		[SmokeClass("QFontMetrics")]
-		interface IQFontMetricsProxy {
-			[SmokeMethod("operator==", "(const QFontMetrics&)", "#")]
-			bool op_equals(QFontMetrics lhs, QFontMetrics other);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontMetrics), this);
-			interceptor = (QFontMetrics) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFontMetrics), "QFontMetrics", this);
 		}
-		private static IQFontMetricsProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFontMetrics() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontMetricsProxy), null);
-			staticInterceptor = (IQFontMetricsProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFontMetrics), "QFontMetrics", null);
 		}
 		public QFontMetrics(QFont arg1) : this((Type) null) {
 			CreateProxy();
-			NewQFontMetrics(arg1);
-		}
-		[SmokeMethod("QFontMetrics", "(const QFont&)", "#")]
-		private void NewQFontMetrics(QFont arg1) {
-			((QFontMetrics) interceptor).NewQFontMetrics(arg1);
+			interceptor.Invoke("QFontMetrics#", "QFontMetrics(const QFont&)", typeof(void), typeof(QFont), arg1);
 		}
 		public QFontMetrics(QFont arg1, IQPaintDevice pd) : this((Type) null) {
 			CreateProxy();
-			NewQFontMetrics(arg1,pd);
-		}
-		[SmokeMethod("QFontMetrics", "(const QFont&, QPaintDevice*)", "##")]
-		private void NewQFontMetrics(QFont arg1, IQPaintDevice pd) {
-			((QFontMetrics) interceptor).NewQFontMetrics(arg1,pd);
+			interceptor.Invoke("QFontMetrics##", "QFontMetrics(const QFont&, QPaintDevice*)", typeof(void), typeof(QFont), arg1, typeof(IQPaintDevice), pd);
 		}
 		public QFontMetrics(QFontMetrics arg1) : this((Type) null) {
 			CreateProxy();
-			NewQFontMetrics(arg1);
+			interceptor.Invoke("QFontMetrics#", "QFontMetrics(const QFontMetrics&)", typeof(void), typeof(QFontMetrics), arg1);
 		}
-		[SmokeMethod("QFontMetrics", "(const QFontMetrics&)", "#")]
-		private void NewQFontMetrics(QFontMetrics arg1) {
-			((QFontMetrics) interceptor).NewQFontMetrics(arg1);
-		}
-		[SmokeMethod("ascent", "() const", "")]
 		public int Ascent() {
-			return ((QFontMetrics) interceptor).Ascent();
+			return (int) interceptor.Invoke("ascent", "ascent() const", typeof(int));
 		}
-		[SmokeMethod("descent", "() const", "")]
 		public int Descent() {
-			return ((QFontMetrics) interceptor).Descent();
+			return (int) interceptor.Invoke("descent", "descent() const", typeof(int));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ((QFontMetrics) interceptor).Height();
+			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
-		[SmokeMethod("leading", "() const", "")]
 		public int Leading() {
-			return ((QFontMetrics) interceptor).Leading();
+			return (int) interceptor.Invoke("leading", "leading() const", typeof(int));
 		}
-		[SmokeMethod("lineSpacing", "() const", "")]
 		public int LineSpacing() {
-			return ((QFontMetrics) interceptor).LineSpacing();
+			return (int) interceptor.Invoke("lineSpacing", "lineSpacing() const", typeof(int));
 		}
-		[SmokeMethod("minLeftBearing", "() const", "")]
 		public int MinLeftBearing() {
-			return ((QFontMetrics) interceptor).MinLeftBearing();
+			return (int) interceptor.Invoke("minLeftBearing", "minLeftBearing() const", typeof(int));
 		}
-		[SmokeMethod("minRightBearing", "() const", "")]
 		public int MinRightBearing() {
-			return ((QFontMetrics) interceptor).MinRightBearing();
+			return (int) interceptor.Invoke("minRightBearing", "minRightBearing() const", typeof(int));
 		}
-		[SmokeMethod("maxWidth", "() const", "")]
 		public int MaxWidth() {
-			return ((QFontMetrics) interceptor).MaxWidth();
+			return (int) interceptor.Invoke("maxWidth", "maxWidth() const", typeof(int));
 		}
-		[SmokeMethod("xHeight", "() const", "")]
 		public int XHeight() {
-			return ((QFontMetrics) interceptor).XHeight();
+			return (int) interceptor.Invoke("xHeight", "xHeight() const", typeof(int));
 		}
-		[SmokeMethod("averageCharWidth", "() const", "")]
 		public int AverageCharWidth() {
-			return ((QFontMetrics) interceptor).AverageCharWidth();
+			return (int) interceptor.Invoke("averageCharWidth", "averageCharWidth() const", typeof(int));
 		}
-		[SmokeMethod("inFont", "(QChar) const", "#")]
 		public bool InFont(char arg1) {
-			return ((QFontMetrics) interceptor).InFont(arg1);
+			return (bool) interceptor.Invoke("inFont#", "inFont(QChar) const", typeof(bool), typeof(char), arg1);
 		}
-		[SmokeMethod("leftBearing", "(QChar) const", "#")]
 		public int LeftBearing(char arg1) {
-			return ((QFontMetrics) interceptor).LeftBearing(arg1);
+			return (int) interceptor.Invoke("leftBearing#", "leftBearing(QChar) const", typeof(int), typeof(char), arg1);
 		}
-		[SmokeMethod("rightBearing", "(QChar) const", "#")]
 		public int RightBearing(char arg1) {
-			return ((QFontMetrics) interceptor).RightBearing(arg1);
+			return (int) interceptor.Invoke("rightBearing#", "rightBearing(QChar) const", typeof(int), typeof(char), arg1);
 		}
-		[SmokeMethod("width", "(const QString&, int) const", "$$")]
 		public int Width(string arg1, int len) {
-			return ((QFontMetrics) interceptor).Width(arg1,len);
+			return (int) interceptor.Invoke("width$$", "width(const QString&, int) const", typeof(int), typeof(string), arg1, typeof(int), len);
 		}
-		[SmokeMethod("width", "(const QString&) const", "$")]
 		public int Width(string arg1) {
-			return ((QFontMetrics) interceptor).Width(arg1);
+			return (int) interceptor.Invoke("width$", "width(const QString&) const", typeof(int), typeof(string), arg1);
 		}
-		[SmokeMethod("width", "(QChar) const", "#")]
 		public int Width(char arg1) {
-			return ((QFontMetrics) interceptor).Width(arg1);
+			return (int) interceptor.Invoke("width#", "width(QChar) const", typeof(int), typeof(char), arg1);
 		}
-		[SmokeMethod("charWidth", "(const QString&, int) const", "$$")]
 		public int CharWidth(string str, int pos) {
-			return ((QFontMetrics) interceptor).CharWidth(str,pos);
+			return (int) interceptor.Invoke("charWidth$$", "charWidth(const QString&, int) const", typeof(int), typeof(string), str, typeof(int), pos);
 		}
-		[SmokeMethod("boundingRect", "(QChar) const", "#")]
 		public QRect BoundingRect(char arg1) {
-			return ((QFontMetrics) interceptor).BoundingRect(arg1);
+			return (QRect) interceptor.Invoke("boundingRect#", "boundingRect(QChar) const", typeof(QRect), typeof(char), arg1);
 		}
-		[SmokeMethod("boundingRect", "(const QString&) const", "$")]
 		public QRect BoundingRect(string text) {
-			return ((QFontMetrics) interceptor).BoundingRect(text);
+			return (QRect) interceptor.Invoke("boundingRect$", "boundingRect(const QString&) const", typeof(QRect), typeof(string), text);
 		}
-		[SmokeMethod("boundingRect", "(const QRect&, int, const QString&, int, int*) const", "#$$$$")]
-		public QRect BoundingRect(QRect r, int flags, string text, int tabstops, out int tabarray) {
-			return ((QFontMetrics) interceptor).BoundingRect(r,flags,text,tabstops,out tabarray);
+		public QRect BoundingRect(QRect r, int flags, string text, int tabstops, int tabarray) {
+			return (QRect) interceptor.Invoke("boundingRect#$$$$", "boundingRect(const QRect&, int, const QString&, int, int*) const", typeof(QRect), typeof(QRect), r, typeof(int), flags, typeof(string), text, typeof(int), tabstops, typeof(int), tabarray);
 		}
-		[SmokeMethod("boundingRect", "(const QRect&, int, const QString&, int) const", "#$$$")]
 		public QRect BoundingRect(QRect r, int flags, string text, int tabstops) {
-			return ((QFontMetrics) interceptor).BoundingRect(r,flags,text,tabstops);
+			return (QRect) interceptor.Invoke("boundingRect#$$$", "boundingRect(const QRect&, int, const QString&, int) const", typeof(QRect), typeof(QRect), r, typeof(int), flags, typeof(string), text, typeof(int), tabstops);
 		}
-		[SmokeMethod("boundingRect", "(const QRect&, int, const QString&) const", "#$$")]
 		public QRect BoundingRect(QRect r, int flags, string text) {
-			return ((QFontMetrics) interceptor).BoundingRect(r,flags,text);
+			return (QRect) interceptor.Invoke("boundingRect#$$", "boundingRect(const QRect&, int, const QString&) const", typeof(QRect), typeof(QRect), r, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("boundingRect", "(int, int, int, int, int, const QString&, int, int*) const", "$$$$$$$$")]
-		public QRect BoundingRect(int x, int y, int w, int h, int flags, string text, int tabstops, out int tabarray) {
-			return ((QFontMetrics) interceptor).BoundingRect(x,y,w,h,flags,text,tabstops,out tabarray);
+		public QRect BoundingRect(int x, int y, int w, int h, int flags, string text, int tabstops, int tabarray) {
+			return (QRect) interceptor.Invoke("boundingRect$$$$$$$$", "boundingRect(int, int, int, int, int, const QString&, int, int*) const", typeof(QRect), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), flags, typeof(string), text, typeof(int), tabstops, typeof(int), tabarray);
 		}
-		[SmokeMethod("boundingRect", "(int, int, int, int, int, const QString&, int) const", "$$$$$$$")]
 		public QRect BoundingRect(int x, int y, int w, int h, int flags, string text, int tabstops) {
-			return ((QFontMetrics) interceptor).BoundingRect(x,y,w,h,flags,text,tabstops);
+			return (QRect) interceptor.Invoke("boundingRect$$$$$$$", "boundingRect(int, int, int, int, int, const QString&, int) const", typeof(QRect), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), flags, typeof(string), text, typeof(int), tabstops);
 		}
-		[SmokeMethod("boundingRect", "(int, int, int, int, int, const QString&) const", "$$$$$$")]
 		public QRect BoundingRect(int x, int y, int w, int h, int flags, string text) {
-			return ((QFontMetrics) interceptor).BoundingRect(x,y,w,h,flags,text);
+			return (QRect) interceptor.Invoke("boundingRect$$$$$$", "boundingRect(int, int, int, int, int, const QString&) const", typeof(QRect), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), flags, typeof(string), text);
 		}
-		[SmokeMethod("size", "(int, const QString&, int, int*) const", "$$$$")]
-		public QSize Size(int flags, string str, int tabstops, out int tabarray) {
-			return ((QFontMetrics) interceptor).Size(flags,str,tabstops,out tabarray);
+		public QSize Size(int flags, string str, int tabstops, int tabarray) {
+			return (QSize) interceptor.Invoke("size$$$$", "size(int, const QString&, int, int*) const", typeof(QSize), typeof(int), flags, typeof(string), str, typeof(int), tabstops, typeof(int), tabarray);
 		}
-		[SmokeMethod("size", "(int, const QString&, int) const", "$$$")]
 		public QSize Size(int flags, string str, int tabstops) {
-			return ((QFontMetrics) interceptor).Size(flags,str,tabstops);
+			return (QSize) interceptor.Invoke("size$$$", "size(int, const QString&, int) const", typeof(QSize), typeof(int), flags, typeof(string), str, typeof(int), tabstops);
 		}
-		[SmokeMethod("size", "(int, const QString&) const", "$$")]
 		public QSize Size(int flags, string str) {
-			return ((QFontMetrics) interceptor).Size(flags,str);
+			return (QSize) interceptor.Invoke("size$$", "size(int, const QString&) const", typeof(QSize), typeof(int), flags, typeof(string), str);
 		}
-		[SmokeMethod("elidedText", "(const QString&, Qt::TextElideMode, int, int) const", "$$$$")]
 		public string ElidedText(string text, Qt.TextElideMode mode, int width, int flags) {
-			return ((QFontMetrics) interceptor).ElidedText(text,mode,width,flags);
+			return (string) interceptor.Invoke("elidedText$$$$", "elidedText(const QString&, Qt::TextElideMode, int, int) const", typeof(string), typeof(string), text, typeof(Qt.TextElideMode), mode, typeof(int), width, typeof(int), flags);
 		}
-		[SmokeMethod("elidedText", "(const QString&, Qt::TextElideMode, int) const", "$$$")]
 		public string ElidedText(string text, Qt.TextElideMode mode, int width) {
-			return ((QFontMetrics) interceptor).ElidedText(text,mode,width);
+			return (string) interceptor.Invoke("elidedText$$$", "elidedText(const QString&, Qt::TextElideMode, int) const", typeof(string), typeof(string), text, typeof(Qt.TextElideMode), mode, typeof(int), width);
 		}
-		[SmokeMethod("underlinePos", "() const", "")]
 		public int UnderlinePos() {
-			return ((QFontMetrics) interceptor).UnderlinePos();
+			return (int) interceptor.Invoke("underlinePos", "underlinePos() const", typeof(int));
 		}
-		[SmokeMethod("overlinePos", "() const", "")]
 		public int OverlinePos() {
-			return ((QFontMetrics) interceptor).OverlinePos();
+			return (int) interceptor.Invoke("overlinePos", "overlinePos() const", typeof(int));
 		}
-		[SmokeMethod("strikeOutPos", "() const", "")]
 		public int StrikeOutPos() {
-			return ((QFontMetrics) interceptor).StrikeOutPos();
+			return (int) interceptor.Invoke("strikeOutPos", "strikeOutPos() const", typeof(int));
 		}
-		[SmokeMethod("lineWidth", "() const", "")]
 		public int LineWidth() {
-			return ((QFontMetrics) interceptor).LineWidth();
+			return (int) interceptor.Invoke("lineWidth", "lineWidth() const", typeof(int));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QFontMetrics)) { return false; }
 			return this == (QFontMetrics) o;
 		}
 		public override int GetHashCode() {
-			return ((QFontMetrics) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QFontMetrics() {
-			DisposeQFontMetrics();
+			interceptor.Invoke("~QFontMetrics", "~QFontMetrics()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQFontMetrics();
-		}
-		[SmokeMethod("~QFontMetrics", "()", "")]
-		private void DisposeQFontMetrics() {
-			((QFontMetrics) interceptor).DisposeQFontMetrics();
+			interceptor.Invoke("~QFontMetrics", "~QFontMetrics()", typeof(void));
 		}
 		public static bool operator==(QFontMetrics lhs, QFontMetrics other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QFontMetrics&)", typeof(bool), typeof(QFontMetrics), lhs, typeof(QFontMetrics), other);
 		}
 		public static bool operator!=(QFontMetrics lhs, QFontMetrics other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QFontMetrics&)", typeof(bool), typeof(QFontMetrics), lhs, typeof(QFontMetrics), other);
 		}
 	}
 }

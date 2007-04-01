@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSysInfo")]
-	public class QSysInfo : MarshalByRefObject, IDisposable {
-		protected QSysInfo interceptor = null;
+	public class QSysInfo : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSysInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSysInfo), this);
-			interceptor = (QSysInfo) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSysInfo), "QSysInfo", this);
 		}
 		public enum Sizes {
 			WordSize = (4<<3),
@@ -21,21 +20,13 @@ namespace Qyoto {
 		}
 		public QSysInfo() : this((Type) null) {
 			CreateProxy();
-			NewQSysInfo();
-		}
-		[SmokeMethod("QSysInfo", "()", "")]
-		private void NewQSysInfo() {
-			((QSysInfo) interceptor).NewQSysInfo();
+			interceptor.Invoke("QSysInfo", "QSysInfo()", typeof(void));
 		}
 		~QSysInfo() {
-			DisposeQSysInfo();
+			interceptor.Invoke("~QSysInfo", "~QSysInfo()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSysInfo();
-		}
-		[SmokeMethod("~QSysInfo", "()", "")]
-		private void DisposeQSysInfo() {
-			((QSysInfo) interceptor).DisposeQSysInfo();
+			interceptor.Invoke("~QSysInfo", "~QSysInfo()", typeof(void));
 		}
 	}
 }

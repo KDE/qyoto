@@ -6,119 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QMessageBox")]
 	public class QMessageBox : QDialog, IDisposable {
  		protected QMessageBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QMessageBox")]
-		interface IQMessageBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", "#$$$$")]
-			QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, StandardButtons)", "#$$$")]
-			QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&)", "#$$")]
-			QMessageBox.StandardButton Information(QWidget parent, string title, string text);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", "#$$$$")]
-			QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, StandardButtons)", "#$$$")]
-			QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&)", "#$$")]
-			QMessageBox.StandardButton Question(QWidget parent, string title, string text);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", "#$$$$")]
-			QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, StandardButtons)", "#$$$")]
-			QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&)", "#$$")]
-			QMessageBox.StandardButton Warning(QWidget parent, string title, string text);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", "#$$$$")]
-			QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, StandardButtons)", "#$$$")]
-			QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&)", "#$$")]
-			QMessageBox.StandardButton Critical(QWidget parent, string title, string text);
-			[SmokeMethod("about", "(QWidget*, const QString&, const QString&)", "#$$")]
-			void About(QWidget parent, string title, string text);
-			[SmokeMethod("aboutQt", "(QWidget*, const QString&)", "#$")]
-			void AboutQt(QWidget parent, string title);
-			[SmokeMethod("aboutQt", "(QWidget*)", "#")]
-			void AboutQt(QWidget parent);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, int, int, int)", "#$$$$$")]
-			int Information(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, int, int)", "#$$$$")]
-			int Information(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", "#$$$$$$$")]
-			int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", "#$$$$$$")]
-			int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", "#$$$$$")]
-			int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, const QString&, const QString&)", "#$$$$")]
-			int Information(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			int Information(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", "#$$$$")]
-			QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("information", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton)", "#$$$")]
-			QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, int, int, int)", "#$$$$$")]
-			int Question(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, int, int)", "#$$$$")]
-			int Question(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", "#$$$$$$$")]
-			int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", "#$$$$$$")]
-			int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", "#$$$$$")]
-			int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, const QString&, const QString&)", "#$$$$")]
-			int Question(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			int Question(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("question", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", "#$$$$")]
-			int Question(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, int, int, int)", "#$$$$$")]
-			int Warning(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, int, int)", "#$$$$")]
-			int Warning(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", "#$$$$$$$")]
-			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", "#$$$$$$")]
-			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", "#$$$$$")]
-			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, const QString&, const QString&)", "#$$$$")]
-			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			int Warning(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("warning", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", "#$$$$")]
-			int Warning(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, int, int, int)", "#$$$$$")]
-			int Critical(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, int, int)", "#$$$$")]
-			int Critical(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", "#$$$$$$$")]
-			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", "#$$$$$$")]
-			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", "#$$$$$")]
-			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, const QString&, const QString&)", "#$$$$")]
-			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			int Critical(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("critical", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", "#$$$$")]
-			int Critical(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("standardIcon", "(QMessageBox::Icon)", "$")]
-			QPixmap StandardIcon(QMessageBox.Icon icon);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMessageBox), this);
-			interceptor = (QMessageBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMessageBox), "QMessageBox", this);
 		}
-		private static IQMessageBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QMessageBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMessageBoxProxy), null);
-			staticInterceptor = (IQMessageBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QMessageBox), "QMessageBox", null);
 		}
 		public enum Icon {
 			NoIcon = 0,
@@ -171,371 +64,302 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			[SmokeMethod("text", "()", "")]
-			get { return ((QMessageBox) interceptor).Text; }
-			[SmokeMethod("setText", "(QString)", "$")]
-			set { ((QMessageBox) interceptor).Text = value; }
+			get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+			set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QMessageBox::Icon", "icon")]
 		public QMessageBox.Icon icon {
-			[SmokeMethod("icon", "()", "")]
-			get { return ((QMessageBox) interceptor).icon; }
-			[SmokeMethod("setIcon", "(QMessageBox::Icon)", "$")]
-			set { ((QMessageBox) interceptor).icon = value; }
+			get { return (QMessageBox.Icon) interceptor.Invoke("icon", "icon()", typeof(QMessageBox.Icon)); }
+			set { interceptor.Invoke("setIcon$", "setIcon(QMessageBox::Icon)", typeof(void), typeof(QMessageBox.Icon), value); }
 		}
 		[Q_PROPERTY("QPixmap", "iconPixmap")]
 		public QPixmap IconPixmap {
-			[SmokeMethod("iconPixmap", "()", "")]
-			get { return ((QMessageBox) interceptor).IconPixmap; }
-			[SmokeMethod("setIconPixmap", "(QPixmap)", "#")]
-			set { ((QMessageBox) interceptor).IconPixmap = value; }
+			get { return (QPixmap) interceptor.Invoke("iconPixmap", "iconPixmap()", typeof(QPixmap)); }
+			set { interceptor.Invoke("setIconPixmap#", "setIconPixmap(QPixmap)", typeof(void), typeof(QPixmap), value); }
 		}
 		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
 		public Qt.TextFormat TextFormat {
-			[SmokeMethod("textFormat", "()", "")]
-			get { return ((QMessageBox) interceptor).TextFormat; }
-			[SmokeMethod("setTextFormat", "(Qt::TextFormat)", "$")]
-			set { ((QMessageBox) interceptor).TextFormat = value; }
+			get { return (Qt.TextFormat) interceptor.Invoke("textFormat", "textFormat()", typeof(Qt.TextFormat)); }
+			set { interceptor.Invoke("setTextFormat$", "setTextFormat(Qt::TextFormat)", typeof(void), typeof(Qt.TextFormat), value); }
 		}
 		[Q_PROPERTY("StandardButtons", "standardButtons")]
 		public int StandardButtons {
-			[SmokeMethod("standardButtons", "()", "")]
-			get { return ((QMessageBox) interceptor).StandardButtons; }
-			[SmokeMethod("setStandardButtons", "(StandardButtons)", "$")]
-			set { ((QMessageBox) interceptor).StandardButtons = value; }
+			get { return (int) interceptor.Invoke("standardButtons", "standardButtons()", typeof(int)); }
+			set { interceptor.Invoke("setStandardButtons$", "setStandardButtons(StandardButtons)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QString", "detailedText")]
 		public string DetailedText {
-			[SmokeMethod("detailedText", "()", "")]
-			get { return ((QMessageBox) interceptor).DetailedText; }
-			[SmokeMethod("setDetailedText", "(QString)", "$")]
-			set { ((QMessageBox) interceptor).DetailedText = value; }
+			get { return (string) interceptor.Invoke("detailedText", "detailedText()", typeof(string)); }
+			set { interceptor.Invoke("setDetailedText$", "setDetailedText(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "informativeText")]
 		public string InformativeText {
-			[SmokeMethod("informativeText", "()", "")]
-			get { return ((QMessageBox) interceptor).InformativeText; }
-			[SmokeMethod("setInformativeText", "(QString)", "$")]
-			set { ((QMessageBox) interceptor).InformativeText = value; }
+			get { return (string) interceptor.Invoke("informativeText", "informativeText()", typeof(string)); }
+			set { interceptor.Invoke("setInformativeText$", "setInformativeText(QString)", typeof(void), typeof(string), value); }
 		}
 		public QMessageBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(parent);
-		}
-		[SmokeMethod("QMessageBox", "(QWidget*)", "#")]
-		private void NewQMessageBox(QWidget parent) {
-			((QMessageBox) interceptor).NewQMessageBox(parent);
+			interceptor.Invoke("QMessageBox#", "QMessageBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QMessageBox() : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox();
-		}
-		[SmokeMethod("QMessageBox", "()", "")]
-		private void NewQMessageBox() {
-			((QMessageBox) interceptor).NewQMessageBox();
+			interceptor.Invoke("QMessageBox", "QMessageBox()", typeof(void));
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(icon,title,text,buttons,parent,f);
-		}
-		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)", "$$$$#$")]
-		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent, int f) {
-			((QMessageBox) interceptor).NewQMessageBox(icon,title,text,buttons,parent,f);
+			interceptor.Invoke("QMessageBox$$$$#$", "QMessageBox(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)", typeof(void), typeof(QMessageBox.Icon), icon, typeof(string), title, typeof(string), text, typeof(int), buttons, typeof(QWidget), parent, typeof(int), f);
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(icon,title,text,buttons,parent);
-		}
-		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*)", "$$$$#")]
-		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent) {
-			((QMessageBox) interceptor).NewQMessageBox(icon,title,text,buttons,parent);
+			interceptor.Invoke("QMessageBox$$$$#", "QMessageBox(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*)", typeof(void), typeof(QMessageBox.Icon), icon, typeof(string), title, typeof(string), text, typeof(int), buttons, typeof(QWidget), parent);
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text, int buttons) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(icon,title,text,buttons);
-		}
-		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons)", "$$$$")]
-		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons) {
-			((QMessageBox) interceptor).NewQMessageBox(icon,title,text,buttons);
+			interceptor.Invoke("QMessageBox$$$$", "QMessageBox(QMessageBox::Icon, const QString&, const QString&, StandardButtons)", typeof(void), typeof(QMessageBox.Icon), icon, typeof(string), title, typeof(string), text, typeof(int), buttons);
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(icon,title,text);
+			interceptor.Invoke("QMessageBox$$$", "QMessageBox(QMessageBox::Icon, const QString&, const QString&)", typeof(void), typeof(QMessageBox.Icon), icon, typeof(string), title, typeof(string), text);
 		}
-		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&)", "$$$")]
-		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text) {
-			((QMessageBox) interceptor).NewQMessageBox(icon,title,text);
-		}
-		[SmokeMethod("addButton", "(QAbstractButton*, QMessageBox::ButtonRole)", "#$")]
 		public void AddButton(QAbstractButton button, QMessageBox.ButtonRole role) {
-			((QMessageBox) interceptor).AddButton(button,role);
+			interceptor.Invoke("addButton#$", "addButton(QAbstractButton*, QMessageBox::ButtonRole)", typeof(void), typeof(QAbstractButton), button, typeof(QMessageBox.ButtonRole), role);
 		}
-		[SmokeMethod("addButton", "(const QString&, QMessageBox::ButtonRole)", "$$")]
 		public QPushButton AddButton(string text, QMessageBox.ButtonRole role) {
-			return ((QMessageBox) interceptor).AddButton(text,role);
+			return (QPushButton) interceptor.Invoke("addButton$$", "addButton(const QString&, QMessageBox::ButtonRole)", typeof(QPushButton), typeof(string), text, typeof(QMessageBox.ButtonRole), role);
 		}
-		[SmokeMethod("addButton", "(QMessageBox::StandardButton)", "$")]
 		public QPushButton AddButton(QMessageBox.StandardButton button) {
-			return ((QMessageBox) interceptor).AddButton(button);
+			return (QPushButton) interceptor.Invoke("addButton$", "addButton(QMessageBox::StandardButton)", typeof(QPushButton), typeof(QMessageBox.StandardButton), button);
 		}
-		[SmokeMethod("removeButton", "(QAbstractButton*)", "#")]
 		public void RemoveButton(QAbstractButton button) {
-			((QMessageBox) interceptor).RemoveButton(button);
+			interceptor.Invoke("removeButton#", "removeButton(QAbstractButton*)", typeof(void), typeof(QAbstractButton), button);
 		}
-		[SmokeMethod("standardButton", "(QAbstractButton*) const", "#")]
 		public QMessageBox.StandardButton standardButton(QAbstractButton button) {
-			return ((QMessageBox) interceptor).standardButton(button);
+			return (QMessageBox.StandardButton) interceptor.Invoke("standardButton#", "standardButton(QAbstractButton*) const", typeof(QMessageBox.StandardButton), typeof(QAbstractButton), button);
 		}
-		[SmokeMethod("button", "(QMessageBox::StandardButton) const", "$")]
 		public QAbstractButton Button(QMessageBox.StandardButton which) {
-			return ((QMessageBox) interceptor).Button(which);
+			return (QAbstractButton) interceptor.Invoke("button$", "button(QMessageBox::StandardButton) const", typeof(QAbstractButton), typeof(QMessageBox.StandardButton), which);
 		}
-		[SmokeMethod("defaultButton", "() const", "")]
 		public QPushButton DefaultButton() {
-			return ((QMessageBox) interceptor).DefaultButton();
+			return (QPushButton) interceptor.Invoke("defaultButton", "defaultButton() const", typeof(QPushButton));
 		}
-		[SmokeMethod("setDefaultButton", "(QPushButton*)", "#")]
 		public void SetDefaultButton(QPushButton button) {
-			((QMessageBox) interceptor).SetDefaultButton(button);
+			interceptor.Invoke("setDefaultButton#", "setDefaultButton(QPushButton*)", typeof(void), typeof(QPushButton), button);
 		}
-		[SmokeMethod("escapeButton", "() const", "")]
 		public QAbstractButton EscapeButton() {
-			return ((QMessageBox) interceptor).EscapeButton();
+			return (QAbstractButton) interceptor.Invoke("escapeButton", "escapeButton() const", typeof(QAbstractButton));
 		}
-		[SmokeMethod("setEscapeButton", "(QAbstractButton*)", "#")]
 		public void SetEscapeButton(QAbstractButton button) {
-			((QMessageBox) interceptor).SetEscapeButton(button);
+			interceptor.Invoke("setEscapeButton#", "setEscapeButton(QAbstractButton*)", typeof(void), typeof(QAbstractButton), button);
 		}
-		[SmokeMethod("clickedButton", "() const", "")]
 		public QAbstractButton ClickedButton() {
-			return ((QMessageBox) interceptor).ClickedButton();
+			return (QAbstractButton) interceptor.Invoke("clickedButton", "clickedButton() const", typeof(QAbstractButton));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QMessageBox) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		public QMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(title,text,icon,button0,button1,button2,parent,f);
-		}
-		[SmokeMethod("QMessageBox", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WindowFlags)", "$$$$$$#$")]
-		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) {
-			((QMessageBox) interceptor).NewQMessageBox(title,text,icon,button0,button1,button2,parent,f);
+			interceptor.Invoke("QMessageBox$$$$$$#$", "QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), title, typeof(string), text, typeof(QMessageBox.Icon), icon, typeof(int), button0, typeof(int), button1, typeof(int), button2, typeof(QWidget), parent, typeof(int), f);
 		}
 		public QMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(title,text,icon,button0,button1,button2,parent);
-		}
-		[SmokeMethod("QMessageBox", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)", "$$$$$$#")]
-		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) {
-			((QMessageBox) interceptor).NewQMessageBox(title,text,icon,button0,button1,button2,parent);
+			interceptor.Invoke("QMessageBox$$$$$$#", "QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)", typeof(void), typeof(string), title, typeof(string), text, typeof(QMessageBox.Icon), icon, typeof(int), button0, typeof(int), button1, typeof(int), button2, typeof(QWidget), parent);
 		}
 		public QMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2) : this((Type) null) {
 			CreateProxy();
-			NewQMessageBox(title,text,icon,button0,button1,button2);
+			interceptor.Invoke("QMessageBox$$$$$$", "QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int)", typeof(void), typeof(string), title, typeof(string), text, typeof(QMessageBox.Icon), icon, typeof(int), button0, typeof(int), button1, typeof(int), button2);
 		}
-		[SmokeMethod("QMessageBox", "(const QString&, const QString&, QMessageBox::Icon, int, int, int)", "$$$$$$")]
-		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2) {
-			((QMessageBox) interceptor).NewQMessageBox(title,text,icon,button0,button1,button2);
-		}
-		[SmokeMethod("buttonText", "(int) const", "$")]
 		public string ButtonText(int button) {
-			return ((QMessageBox) interceptor).ButtonText(button);
+			return (string) interceptor.Invoke("buttonText$", "buttonText(int) const", typeof(string), typeof(int), button);
 		}
-		[SmokeMethod("setButtonText", "(int, const QString&)", "$$")]
 		public void SetButtonText(int button, string text) {
-			((QMessageBox) interceptor).SetButtonText(button,text);
+			interceptor.Invoke("setButtonText$$", "setButtonText(int, const QString&)", typeof(void), typeof(int), button, typeof(string), text);
 		}
-		[SmokeMethod("setWindowTitle", "(const QString&)", "$")]
 		public void SetWindowTitle(string title) {
-			((QMessageBox) interceptor).SetWindowTitle(title);
+			interceptor.Invoke("setWindowTitle$", "setWindowTitle(const QString&)", typeof(void), typeof(string), title);
 		}
-		[SmokeMethod("setWindowModality", "(Qt::WindowModality)", "$")]
 		public void SetWindowModality(Qt.WindowModality windowModality) {
-			((QMessageBox) interceptor).SetWindowModality(windowModality);
+			interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), windowModality);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QMessageBox) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			((QMessageBox) interceptor).ShowEvent(arg1);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
 		}
-		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected override void CloseEvent(QCloseEvent arg1) {
-			((QMessageBox) interceptor).CloseEvent(arg1);
+			interceptor.Invoke("closeEvent#", "closeEvent(QCloseEvent*)", typeof(void), typeof(QCloseEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QMessageBox) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QMessageBox) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
 		~QMessageBox() {
-			DisposeQMessageBox();
+			interceptor.Invoke("~QMessageBox", "~QMessageBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQMessageBox();
-		}
-		[SmokeMethod("~QMessageBox", "()", "")]
-		private void DisposeQMessageBox() {
-			((QMessageBox) interceptor).DisposeQMessageBox();
+			interceptor.Invoke("~QMessageBox", "~QMessageBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return staticInterceptor.Information(parent,title,text,buttons,defaultButton);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("information#$$$$", "information(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons, typeof(QMessageBox.StandardButton), defaultButton);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons) {
-			return staticInterceptor.Information(parent,title,text,buttons);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("information#$$$", "information(QWidget*, const QString&, const QString&, StandardButtons)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text) {
-			return staticInterceptor.Information(parent,title,text);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("information#$$", "information(QWidget*, const QString&, const QString&)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text);
 		}
 		public static QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return staticInterceptor.Question(parent,title,text,buttons,defaultButton);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("question#$$$$", "question(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons, typeof(QMessageBox.StandardButton), defaultButton);
 		}
 		public static QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons) {
-			return staticInterceptor.Question(parent,title,text,buttons);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("question#$$$", "question(QWidget*, const QString&, const QString&, StandardButtons)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons);
 		}
 		public static QMessageBox.StandardButton Question(QWidget parent, string title, string text) {
-			return staticInterceptor.Question(parent,title,text);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("question#$$", "question(QWidget*, const QString&, const QString&)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text);
 		}
 		public static QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return staticInterceptor.Warning(parent,title,text,buttons,defaultButton);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("warning#$$$$", "warning(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons, typeof(QMessageBox.StandardButton), defaultButton);
 		}
 		public static QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons) {
-			return staticInterceptor.Warning(parent,title,text,buttons);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("warning#$$$", "warning(QWidget*, const QString&, const QString&, StandardButtons)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons);
 		}
 		public static QMessageBox.StandardButton Warning(QWidget parent, string title, string text) {
-			return staticInterceptor.Warning(parent,title,text);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("warning#$$", "warning(QWidget*, const QString&, const QString&)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text);
 		}
 		public static QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return staticInterceptor.Critical(parent,title,text,buttons,defaultButton);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("critical#$$$$", "critical(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons, typeof(QMessageBox.StandardButton), defaultButton);
 		}
 		public static QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons) {
-			return staticInterceptor.Critical(parent,title,text,buttons);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("critical#$$$", "critical(QWidget*, const QString&, const QString&, StandardButtons)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), buttons);
 		}
 		public static QMessageBox.StandardButton Critical(QWidget parent, string title, string text) {
-			return staticInterceptor.Critical(parent,title,text);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("critical#$$", "critical(QWidget*, const QString&, const QString&)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text);
 		}
 		public static void About(QWidget parent, string title, string text) {
-			staticInterceptor.About(parent,title,text);
+			staticInterceptor.Invoke("about#$$", "about(QWidget*, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), title, typeof(string), text);
 		}
 		public static void AboutQt(QWidget parent, string title) {
-			staticInterceptor.AboutQt(parent,title);
+			staticInterceptor.Invoke("aboutQt#$", "aboutQt(QWidget*, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), title);
 		}
 		public static void AboutQt(QWidget parent) {
-			staticInterceptor.AboutQt(parent);
+			staticInterceptor.Invoke("aboutQt#", "aboutQt(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public static int Information(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return staticInterceptor.Information(parent,title,text,button0,button1,button2);
+			return (int) staticInterceptor.Invoke("information#$$$$$", "information(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1, typeof(int), button2);
 		}
 		public static int Information(QWidget parent, string title, string text, int button0, int button1) {
-			return staticInterceptor.Information(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("information#$$$$", "information(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return staticInterceptor.Information(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return (int) staticInterceptor.Invoke("information#$$$$$$$", "information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber, typeof(int), escapeButtonNumber);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return staticInterceptor.Information(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return (int) staticInterceptor.Invoke("information#$$$$$$", "information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return staticInterceptor.Information(parent,title,text,button0Text,button1Text,button2Text);
+			return (int) staticInterceptor.Invoke("information#$$$$$", "information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return staticInterceptor.Information(parent,title,text,button0Text,button1Text);
+			return (int) staticInterceptor.Invoke("information#$$$$", "information(QWidget*, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text) {
-			return staticInterceptor.Information(parent,title,text,button0Text);
+			return (int) staticInterceptor.Invoke("information#$$$", "information(QWidget*, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return staticInterceptor.Information(parent,title,text,button0,button1);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("information#$$$$", "information(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(QMessageBox.StandardButton), button0, typeof(QMessageBox.StandardButton), button1);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0) {
-			return staticInterceptor.Information(parent,title,text,button0);
+			return (QMessageBox.StandardButton) staticInterceptor.Invoke("information#$$$", "information(QWidget*, const QString&, const QString&, QMessageBox::StandardButton)", typeof(QMessageBox.StandardButton), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(QMessageBox.StandardButton), button0);
 		}
 		public static int Question(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return staticInterceptor.Question(parent,title,text,button0,button1,button2);
+			return (int) staticInterceptor.Invoke("question#$$$$$", "question(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1, typeof(int), button2);
 		}
 		public static int Question(QWidget parent, string title, string text, int button0, int button1) {
-			return staticInterceptor.Question(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("question#$$$$", "question(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return staticInterceptor.Question(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return (int) staticInterceptor.Invoke("question#$$$$$$$", "question(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber, typeof(int), escapeButtonNumber);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return staticInterceptor.Question(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return (int) staticInterceptor.Invoke("question#$$$$$$", "question(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return staticInterceptor.Question(parent,title,text,button0Text,button1Text,button2Text);
+			return (int) staticInterceptor.Invoke("question#$$$$$", "question(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return staticInterceptor.Question(parent,title,text,button0Text,button1Text);
+			return (int) staticInterceptor.Invoke("question#$$$$", "question(QWidget*, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text) {
-			return staticInterceptor.Question(parent,title,text,button0Text);
+			return (int) staticInterceptor.Invoke("question#$$$", "question(QWidget*, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text);
 		}
 		public static int Question(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return staticInterceptor.Question(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("question#$$$$", "question(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(QMessageBox.StandardButton), button0, typeof(QMessageBox.StandardButton), button1);
 		}
 		public static int Warning(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return staticInterceptor.Warning(parent,title,text,button0,button1,button2);
+			return (int) staticInterceptor.Invoke("warning#$$$$$", "warning(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1, typeof(int), button2);
 		}
 		public static int Warning(QWidget parent, string title, string text, int button0, int button1) {
-			return staticInterceptor.Warning(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("warning#$$$$", "warning(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return (int) staticInterceptor.Invoke("warning#$$$$$$$", "warning(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber, typeof(int), escapeButtonNumber);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return (int) staticInterceptor.Invoke("warning#$$$$$$", "warning(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text,button2Text);
+			return (int) staticInterceptor.Invoke("warning#$$$$$", "warning(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text);
+			return (int) staticInterceptor.Invoke("warning#$$$$", "warning(QWidget*, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text) {
-			return staticInterceptor.Warning(parent,title,text,button0Text);
+			return (int) staticInterceptor.Invoke("warning#$$$", "warning(QWidget*, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text);
 		}
 		public static int Warning(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return staticInterceptor.Warning(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("warning#$$$$", "warning(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(QMessageBox.StandardButton), button0, typeof(QMessageBox.StandardButton), button1);
 		}
 		public static int Critical(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return staticInterceptor.Critical(parent,title,text,button0,button1,button2);
+			return (int) staticInterceptor.Invoke("critical#$$$$$", "critical(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1, typeof(int), button2);
 		}
 		public static int Critical(QWidget parent, string title, string text, int button0, int button1) {
-			return staticInterceptor.Critical(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("critical#$$$$", "critical(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(int), button0, typeof(int), button1);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return (int) staticInterceptor.Invoke("critical#$$$$$$$", "critical(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber, typeof(int), escapeButtonNumber);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return (int) staticInterceptor.Invoke("critical#$$$$$$", "critical(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text, typeof(int), defaultButtonNumber);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text,button2Text);
+			return (int) staticInterceptor.Invoke("critical#$$$$$", "critical(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text, typeof(string), button2Text);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text);
+			return (int) staticInterceptor.Invoke("critical#$$$$", "critical(QWidget*, const QString&, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text, typeof(string), button1Text);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text) {
-			return staticInterceptor.Critical(parent,title,text,button0Text);
+			return (int) staticInterceptor.Invoke("critical#$$$", "critical(QWidget*, const QString&, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(string), button0Text);
 		}
 		public static int Critical(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return staticInterceptor.Critical(parent,title,text,button0,button1);
+			return (int) staticInterceptor.Invoke("critical#$$$$", "critical(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), text, typeof(QMessageBox.StandardButton), button0, typeof(QMessageBox.StandardButton), button1);
 		}
 		public static QPixmap StandardIcon(QMessageBox.Icon icon) {
-			return staticInterceptor.StandardIcon(icon);
+			return (QPixmap) staticInterceptor.Invoke("standardIcon$", "standardIcon(QMessageBox::Icon)", typeof(QPixmap), typeof(QMessageBox.Icon), icon);
 		}
 		protected new IQMessageBoxSignals Emit {
 			get { return (IQMessageBoxSignals) Q_EMIT; }

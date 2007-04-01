@@ -4,75 +4,55 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QMetaEnum")]
-	public class QMetaEnum : MarshalByRefObject, IDisposable {
-		protected QMetaEnum interceptor = null;
+	public class QMetaEnum : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QMetaEnum(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaEnum), this);
-			interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMetaEnum), "QMetaEnum", this);
 		}
 		public QMetaEnum() : this((Type) null) {
 			CreateProxy();
-			NewQMetaEnum();
+			interceptor.Invoke("QMetaEnum", "QMetaEnum()", typeof(void));
 		}
-		[SmokeMethod("QMetaEnum", "()", "")]
-		private void NewQMetaEnum() {
-			((QMetaEnum) interceptor).NewQMetaEnum();
-		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QMetaEnum) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("isFlag", "() const", "")]
 		public bool IsFlag() {
-			return ((QMetaEnum) interceptor).IsFlag();
+			return (bool) interceptor.Invoke("isFlag", "isFlag() const", typeof(bool));
 		}
-		[SmokeMethod("keyCount", "() const", "")]
 		public int KeyCount() {
-			return ((QMetaEnum) interceptor).KeyCount();
+			return (int) interceptor.Invoke("keyCount", "keyCount() const", typeof(int));
 		}
-		[SmokeMethod("key", "(int) const", "$")]
 		public string Key(int index) {
-			return ((QMetaEnum) interceptor).Key(index);
+			return (string) interceptor.Invoke("key$", "key(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("value", "(int) const", "$")]
 		public int Value(int index) {
-			return ((QMetaEnum) interceptor).Value(index);
+			return (int) interceptor.Invoke("value$", "value(int) const", typeof(int), typeof(int), index);
 		}
-		[SmokeMethod("scope", "() const", "")]
 		public string Scope() {
-			return ((QMetaEnum) interceptor).Scope();
+			return (string) interceptor.Invoke("scope", "scope() const", typeof(string));
 		}
-		[SmokeMethod("keyToValue", "(const char*) const", "$")]
 		public int KeyToValue(string key) {
-			return ((QMetaEnum) interceptor).KeyToValue(key);
+			return (int) interceptor.Invoke("keyToValue$", "keyToValue(const char*) const", typeof(int), typeof(string), key);
 		}
-		[SmokeMethod("valueToKey", "(int) const", "$")]
 		public string ValueToKey(int value) {
-			return ((QMetaEnum) interceptor).ValueToKey(value);
+			return (string) interceptor.Invoke("valueToKey$", "valueToKey(int) const", typeof(string), typeof(int), value);
 		}
-		[SmokeMethod("keysToValue", "(const char*) const", "$")]
 		public int KeysToValue(string keys) {
-			return ((QMetaEnum) interceptor).KeysToValue(keys);
+			return (int) interceptor.Invoke("keysToValue$", "keysToValue(const char*) const", typeof(int), typeof(string), keys);
 		}
-		[SmokeMethod("valueToKeys", "(int) const", "$")]
 		public QByteArray ValueToKeys(int value) {
-			return ((QMetaEnum) interceptor).ValueToKeys(value);
+			return (QByteArray) interceptor.Invoke("valueToKeys$", "valueToKeys(int) const", typeof(QByteArray), typeof(int), value);
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QMetaEnum) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		~QMetaEnum() {
-			DisposeQMetaEnum();
+			interceptor.Invoke("~QMetaEnum", "~QMetaEnum()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQMetaEnum();
-		}
-		[SmokeMethod("~QMetaEnum", "()", "")]
-		private void DisposeQMetaEnum() {
-			((QMetaEnum) interceptor).DisposeQMetaEnum();
+			interceptor.Invoke("~QMetaEnum", "~QMetaEnum()", typeof(void));
 		}
 	}
 }

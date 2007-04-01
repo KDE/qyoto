@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QTabBar")]
 	public class QTabBar : QWidget, IDisposable {
  		protected QTabBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTabBar")]
-		interface IQTabBarProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabBar), this);
-			interceptor = (QTabBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTabBar), "QTabBar", this);
 		}
-		private static IQTabBarProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTabBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTabBarProxy), null);
-			staticInterceptor = (IQTabBarProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTabBar), "QTabBar", null);
 		}
 		public enum Shape {
 			RoundedNorth = 0,
@@ -35,222 +26,177 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QTabBar::Shape", "shape")]
 		public QTabBar.Shape shape {
-			[SmokeMethod("shape", "()", "")]
-			get { return ((QTabBar) interceptor).shape; }
-			[SmokeMethod("setShape", "(QTabBar::Shape)", "$")]
-			set { ((QTabBar) interceptor).shape = value; }
+			get { return (QTabBar.Shape) interceptor.Invoke("shape", "shape()", typeof(QTabBar.Shape)); }
+			set { interceptor.Invoke("setShape$", "setShape(QTabBar::Shape)", typeof(void), typeof(QTabBar.Shape), value); }
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			[SmokeMethod("currentIndex", "()", "")]
-			get { return ((QTabBar) interceptor).CurrentIndex; }
-			[SmokeMethod("setCurrentIndex", "(int)", "$")]
-			set { ((QTabBar) interceptor).CurrentIndex = value; }
+			get { return (int) interceptor.Invoke("currentIndex", "currentIndex()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			[SmokeMethod("count", "()", "")]
-			get { return ((QTabBar) interceptor).Count; }
+			get { return (int) interceptor.Invoke("count", "count()", typeof(int)); }
 		}
 		[Q_PROPERTY("bool", "drawBase")]
 		public bool DrawBase {
-			[SmokeMethod("drawBase", "()", "")]
-			get { return ((QTabBar) interceptor).DrawBase; }
-			[SmokeMethod("setDrawBase", "(bool)", "$")]
-			set { ((QTabBar) interceptor).DrawBase = value; }
+			get { return (bool) interceptor.Invoke("drawBase", "drawBase()", typeof(bool)); }
+			set { interceptor.Invoke("setDrawBase$", "setDrawBase(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			[SmokeMethod("iconSize", "()", "")]
-			get { return ((QTabBar) interceptor).IconSize; }
-			[SmokeMethod("setIconSize", "(QSize)", "#")]
-			set { ((QTabBar) interceptor).IconSize = value; }
+			get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("Qt::TextElideMode", "elideMode")]
 		public Qt.TextElideMode ElideMode {
-			[SmokeMethod("elideMode", "()", "")]
-			get { return ((QTabBar) interceptor).ElideMode; }
-			[SmokeMethod("setElideMode", "(Qt::TextElideMode)", "$")]
-			set { ((QTabBar) interceptor).ElideMode = value; }
+			get { return (Qt.TextElideMode) interceptor.Invoke("elideMode", "elideMode()", typeof(Qt.TextElideMode)); }
+			set { interceptor.Invoke("setElideMode$", "setElideMode(Qt::TextElideMode)", typeof(void), typeof(Qt.TextElideMode), value); }
 		}
 		[Q_PROPERTY("bool", "usesScrollButtons")]
 		public bool UsesScrollButtons {
-			[SmokeMethod("usesScrollButtons", "()", "")]
-			get { return ((QTabBar) interceptor).UsesScrollButtons; }
-			[SmokeMethod("setUsesScrollButtons", "(bool)", "$")]
-			set { ((QTabBar) interceptor).UsesScrollButtons = value; }
+			get { return (bool) interceptor.Invoke("usesScrollButtons", "usesScrollButtons()", typeof(bool)); }
+			set { interceptor.Invoke("setUsesScrollButtons$", "setUsesScrollButtons(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QTabBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQTabBar(parent);
-		}
-		[SmokeMethod("QTabBar", "(QWidget*)", "#")]
-		private void NewQTabBar(QWidget parent) {
-			((QTabBar) interceptor).NewQTabBar(parent);
+			interceptor.Invoke("QTabBar#", "QTabBar(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QTabBar() : this((Type) null) {
 			CreateProxy();
-			NewQTabBar();
+			interceptor.Invoke("QTabBar", "QTabBar()", typeof(void));
 		}
-		[SmokeMethod("QTabBar", "()", "")]
-		private void NewQTabBar() {
-			((QTabBar) interceptor).NewQTabBar();
-		}
-		[SmokeMethod("addTab", "(const QString&)", "$")]
 		public int AddTab(string text) {
-			return ((QTabBar) interceptor).AddTab(text);
+			return (int) interceptor.Invoke("addTab$", "addTab(const QString&)", typeof(int), typeof(string), text);
 		}
-		[SmokeMethod("addTab", "(const QIcon&, const QString&)", "#$")]
 		public int AddTab(QIcon icon, string text) {
-			return ((QTabBar) interceptor).AddTab(icon,text);
+			return (int) interceptor.Invoke("addTab#$", "addTab(const QIcon&, const QString&)", typeof(int), typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("insertTab", "(int, const QString&)", "$$")]
 		public int InsertTab(int index, string text) {
-			return ((QTabBar) interceptor).InsertTab(index,text);
+			return (int) interceptor.Invoke("insertTab$$", "insertTab(int, const QString&)", typeof(int), typeof(int), index, typeof(string), text);
 		}
-		[SmokeMethod("insertTab", "(int, const QIcon&, const QString&)", "$#$")]
 		public int InsertTab(int index, QIcon icon, string text) {
-			return ((QTabBar) interceptor).InsertTab(index,icon,text);
+			return (int) interceptor.Invoke("insertTab$#$", "insertTab(int, const QIcon&, const QString&)", typeof(int), typeof(int), index, typeof(QIcon), icon, typeof(string), text);
 		}
-		[SmokeMethod("removeTab", "(int)", "$")]
 		public void RemoveTab(int index) {
-			((QTabBar) interceptor).RemoveTab(index);
+			interceptor.Invoke("removeTab$", "removeTab(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("isTabEnabled", "(int) const", "$")]
 		public bool IsTabEnabled(int index) {
-			return ((QTabBar) interceptor).IsTabEnabled(index);
+			return (bool) interceptor.Invoke("isTabEnabled$", "isTabEnabled(int) const", typeof(bool), typeof(int), index);
 		}
-		[SmokeMethod("setTabEnabled", "(int, bool)", "$$")]
 		public void SetTabEnabled(int index, bool arg2) {
-			((QTabBar) interceptor).SetTabEnabled(index,arg2);
+			interceptor.Invoke("setTabEnabled$$", "setTabEnabled(int, bool)", typeof(void), typeof(int), index, typeof(bool), arg2);
 		}
-		[SmokeMethod("tabText", "(int) const", "$")]
 		public string TabText(int index) {
-			return ((QTabBar) interceptor).TabText(index);
+			return (string) interceptor.Invoke("tabText$", "tabText(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("setTabText", "(int, const QString&)", "$$")]
 		public void SetTabText(int index, string text) {
-			((QTabBar) interceptor).SetTabText(index,text);
+			interceptor.Invoke("setTabText$$", "setTabText(int, const QString&)", typeof(void), typeof(int), index, typeof(string), text);
 		}
-		[SmokeMethod("tabTextColor", "(int) const", "$")]
 		public QColor TabTextColor(int index) {
-			return ((QTabBar) interceptor).TabTextColor(index);
+			return (QColor) interceptor.Invoke("tabTextColor$", "tabTextColor(int) const", typeof(QColor), typeof(int), index);
 		}
-		[SmokeMethod("setTabTextColor", "(int, const QColor&)", "$#")]
 		public void SetTabTextColor(int index, QColor color) {
-			((QTabBar) interceptor).SetTabTextColor(index,color);
+			interceptor.Invoke("setTabTextColor$#", "setTabTextColor(int, const QColor&)", typeof(void), typeof(int), index, typeof(QColor), color);
 		}
-		[SmokeMethod("tabIcon", "(int) const", "$")]
 		public QIcon TabIcon(int index) {
-			return ((QTabBar) interceptor).TabIcon(index);
+			return (QIcon) interceptor.Invoke("tabIcon$", "tabIcon(int) const", typeof(QIcon), typeof(int), index);
 		}
-		[SmokeMethod("setTabIcon", "(int, const QIcon&)", "$#")]
 		public void SetTabIcon(int index, QIcon icon) {
-			((QTabBar) interceptor).SetTabIcon(index,icon);
+			interceptor.Invoke("setTabIcon$#", "setTabIcon(int, const QIcon&)", typeof(void), typeof(int), index, typeof(QIcon), icon);
 		}
-		[SmokeMethod("setTabToolTip", "(int, const QString&)", "$$")]
 		public void SetTabToolTip(int index, string tip) {
-			((QTabBar) interceptor).SetTabToolTip(index,tip);
+			interceptor.Invoke("setTabToolTip$$", "setTabToolTip(int, const QString&)", typeof(void), typeof(int), index, typeof(string), tip);
 		}
-		[SmokeMethod("tabToolTip", "(int) const", "$")]
 		public string TabToolTip(int index) {
-			return ((QTabBar) interceptor).TabToolTip(index);
+			return (string) interceptor.Invoke("tabToolTip$", "tabToolTip(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("setTabWhatsThis", "(int, const QString&)", "$$")]
 		public void SetTabWhatsThis(int index, string text) {
-			((QTabBar) interceptor).SetTabWhatsThis(index,text);
+			interceptor.Invoke("setTabWhatsThis$$", "setTabWhatsThis(int, const QString&)", typeof(void), typeof(int), index, typeof(string), text);
 		}
-		[SmokeMethod("tabWhatsThis", "(int) const", "$")]
 		public string TabWhatsThis(int index) {
-			return ((QTabBar) interceptor).TabWhatsThis(index);
+			return (string) interceptor.Invoke("tabWhatsThis$", "tabWhatsThis(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("setTabData", "(int, const QVariant&)", "$#")]
 		public void SetTabData(int index, QVariant data) {
-			((QTabBar) interceptor).SetTabData(index,data);
+			interceptor.Invoke("setTabData$#", "setTabData(int, const QVariant&)", typeof(void), typeof(int), index, typeof(QVariant), data);
 		}
-		[SmokeMethod("tabData", "(int) const", "$")]
 		public QVariant TabData(int index) {
-			return ((QTabBar) interceptor).TabData(index);
+			return (QVariant) interceptor.Invoke("tabData$", "tabData(int) const", typeof(QVariant), typeof(int), index);
 		}
-		[SmokeMethod("tabRect", "(int) const", "$")]
 		public QRect TabRect(int index) {
-			return ((QTabBar) interceptor).TabRect(index);
+			return (QRect) interceptor.Invoke("tabRect$", "tabRect(int) const", typeof(QRect), typeof(int), index);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QTabBar) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QTabBar) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("tabSizeHint", "(int) const", "$")]
+		[SmokeMethod("tabSizeHint(int) const")]
 		protected virtual QSize TabSizeHint(int index) {
-			return ((QTabBar) interceptor).TabSizeHint(index);
+			return (QSize) interceptor.Invoke("tabSizeHint$", "tabSizeHint(int) const", typeof(QSize), typeof(int), index);
 		}
-		[SmokeMethod("tabInserted", "(int)", "$")]
+		[SmokeMethod("tabInserted(int)")]
 		protected virtual void TabInserted(int index) {
-			((QTabBar) interceptor).TabInserted(index);
+			interceptor.Invoke("tabInserted$", "tabInserted(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("tabRemoved", "(int)", "$")]
+		[SmokeMethod("tabRemoved(int)")]
 		protected virtual void TabRemoved(int index) {
-			((QTabBar) interceptor).TabRemoved(index);
+			interceptor.Invoke("tabRemoved$", "tabRemoved(int)", typeof(void), typeof(int), index);
 		}
-		[SmokeMethod("tabLayoutChange", "()", "")]
+		[SmokeMethod("tabLayoutChange()")]
 		protected virtual void TabLayoutChange() {
-			((QTabBar) interceptor).TabLayoutChange();
+			interceptor.Invoke("tabLayoutChange", "tabLayoutChange()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QTabBar) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QTabBar) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			((QTabBar) interceptor).ShowEvent(arg1);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QTabBar) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QTabBar) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QTabBar) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QTabBar) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QTabBar) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QTabBar) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
 		~QTabBar() {
-			DisposeQTabBar();
+			interceptor.Invoke("~QTabBar", "~QTabBar()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTabBar();
-		}
-		[SmokeMethod("~QTabBar", "()", "")]
-		private void DisposeQTabBar() {
-			((QTabBar) interceptor).DisposeQTabBar();
+			interceptor.Invoke("~QTabBar", "~QTabBar()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTabBarSignals Emit {
 			get { return (IQTabBarSignals) Q_EMIT; }

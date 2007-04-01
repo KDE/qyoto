@@ -6,67 +6,43 @@ namespace Qyoto {
 	[SmokeClass("QErrorMessage")]
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
-		[SmokeClass("QErrorMessage")]
-		interface IQErrorMessageProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("qtHandler", "()", "")]
-			QErrorMessage QtHandler();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QErrorMessage), this);
-			interceptor = (QErrorMessage) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QErrorMessage), "QErrorMessage", this);
 		}
-		private static IQErrorMessageProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QErrorMessage() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQErrorMessageProxy), null);
-			staticInterceptor = (IQErrorMessageProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QErrorMessage), "QErrorMessage", null);
 		}
 		public QErrorMessage(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQErrorMessage(parent);
-		}
-		[SmokeMethod("QErrorMessage", "(QWidget*)", "#")]
-		private void NewQErrorMessage(QWidget parent) {
-			((QErrorMessage) interceptor).NewQErrorMessage(parent);
+			interceptor.Invoke("QErrorMessage#", "QErrorMessage(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QErrorMessage() : this((Type) null) {
 			CreateProxy();
-			NewQErrorMessage();
-		}
-		[SmokeMethod("QErrorMessage", "()", "")]
-		private void NewQErrorMessage() {
-			((QErrorMessage) interceptor).NewQErrorMessage();
+			interceptor.Invoke("QErrorMessage", "QErrorMessage()", typeof(void));
 		}
 		[Q_SLOT("void showMessage(const QString&)")]
-		[SmokeMethod("showMessage", "(const QString&)", "$")]
 		public void ShowMessage(string message) {
-			((QErrorMessage) interceptor).ShowMessage(message);
+			interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), message);
 		}
-		[SmokeMethod("done", "(int)", "$")]
+		[SmokeMethod("done(int)")]
 		protected new virtual void Done(int arg1) {
-			((QErrorMessage) interceptor).Done(arg1);
+			interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), arg1);
 		}
 		~QErrorMessage() {
-			DisposeQErrorMessage();
+			interceptor.Invoke("~QErrorMessage", "~QErrorMessage()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQErrorMessage();
-		}
-		[SmokeMethod("~QErrorMessage", "()", "")]
-		private void DisposeQErrorMessage() {
-			((QErrorMessage) interceptor).DisposeQErrorMessage();
+			interceptor.Invoke("~QErrorMessage", "~QErrorMessage()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QErrorMessage QtHandler() {
-			return staticInterceptor.QtHandler();
+			return (QErrorMessage) staticInterceptor.Invoke("qtHandler", "qtHandler()", typeof(QErrorMessage));
 		}
 		protected new IQErrorMessageSignals Emit {
 			get { return (IQErrorMessageSignals) Q_EMIT; }

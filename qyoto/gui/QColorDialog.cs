@@ -6,73 +6,45 @@ namespace Qyoto {
 	[SmokeClass("QColorDialog")]
 	public class QColorDialog : QDialog {
  		protected QColorDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QColorDialog")]
-		interface IQColorDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("getColor", "(const QColor&, QWidget*)", "##")]
-			QColor GetColor(QColor init, QWidget parent);
-			[SmokeMethod("getColor", "(const QColor&)", "#")]
-			QColor GetColor(QColor init);
-			[SmokeMethod("getColor", "()", "")]
-			QColor GetColor();
-			[SmokeMethod("getRgba", "(QRgb, bool*, QWidget*)", "$$#")]
-			uint GetRgba(uint arg1, out bool ok, QWidget parent);
-			[SmokeMethod("getRgba", "(QRgb, bool*)", "$$")]
-			uint GetRgba(uint arg1, out bool ok);
-			[SmokeMethod("getRgba", "(QRgb)", "$")]
-			uint GetRgba(uint arg1);
-			[SmokeMethod("customCount", "()", "")]
-			int CustomCount();
-			[SmokeMethod("customColor", "(int)", "$")]
-			uint CustomColor(int arg1);
-			[SmokeMethod("setCustomColor", "(int, QRgb)", "$$")]
-			void SetCustomColor(int arg1, uint arg2);
-			[SmokeMethod("setStandardColor", "(int, QRgb)", "$$")]
-			void SetStandardColor(int arg1, uint arg2);
-		}
-		private static IQColorDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QColorDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQColorDialogProxy), null);
-			staticInterceptor = (IQColorDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QColorDialog), "QColorDialog", null);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QColor GetColor(QColor init, QWidget parent) {
-			return staticInterceptor.GetColor(init,parent);
+			return (QColor) staticInterceptor.Invoke("getColor##", "getColor(const QColor&, QWidget*)", typeof(QColor), typeof(QColor), init, typeof(QWidget), parent);
 		}
 		public static QColor GetColor(QColor init) {
-			return staticInterceptor.GetColor(init);
+			return (QColor) staticInterceptor.Invoke("getColor#", "getColor(const QColor&)", typeof(QColor), typeof(QColor), init);
 		}
 		public static QColor GetColor() {
-			return staticInterceptor.GetColor();
+			return (QColor) staticInterceptor.Invoke("getColor", "getColor()", typeof(QColor));
 		}
-		public static uint GetRgba(uint arg1, out bool ok, QWidget parent) {
-			return staticInterceptor.GetRgba(arg1,out ok,parent);
+		public static uint GetRgba(uint arg1, bool ok, QWidget parent) {
+			return (uint) staticInterceptor.Invoke("getRgba$$#", "getRgba(QRgb, bool*, QWidget*)", typeof(uint), typeof(uint), arg1, typeof(bool), ok, typeof(QWidget), parent);
 		}
-		public static uint GetRgba(uint arg1, out bool ok) {
-			return staticInterceptor.GetRgba(arg1,out ok);
+		public static uint GetRgba(uint arg1, bool ok) {
+			return (uint) staticInterceptor.Invoke("getRgba$$", "getRgba(QRgb, bool*)", typeof(uint), typeof(uint), arg1, typeof(bool), ok);
 		}
 		public static uint GetRgba(uint arg1) {
-			return staticInterceptor.GetRgba(arg1);
+			return (uint) staticInterceptor.Invoke("getRgba$", "getRgba(QRgb)", typeof(uint), typeof(uint), arg1);
 		}
 		public static int CustomCount() {
-			return staticInterceptor.CustomCount();
+			return (int) staticInterceptor.Invoke("customCount", "customCount()", typeof(int));
 		}
 		public static uint CustomColor(int arg1) {
-			return staticInterceptor.CustomColor(arg1);
+			return (uint) staticInterceptor.Invoke("customColor$", "customColor(int)", typeof(uint), typeof(int), arg1);
 		}
 		public static void SetCustomColor(int arg1, uint arg2) {
-			staticInterceptor.SetCustomColor(arg1,arg2);
+			staticInterceptor.Invoke("setCustomColor$$", "setCustomColor(int, QRgb)", typeof(void), typeof(int), arg1, typeof(uint), arg2);
 		}
 		public static void SetStandardColor(int arg1, uint arg2) {
-			staticInterceptor.SetStandardColor(arg1,arg2);
+			staticInterceptor.Invoke("setStandardColor$$", "setStandardColor(int, QRgb)", typeof(void), typeof(int), arg1, typeof(uint), arg2);
 		}
 		protected new IQColorDialogSignals Emit {
 			get { return (IQColorDialogSignals) Q_EMIT; }

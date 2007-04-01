@@ -6,89 +6,60 @@ namespace Qyoto {
 	[SmokeClass("QRadioButton")]
 	public class QRadioButton : QAbstractButton, IDisposable {
  		protected QRadioButton(Type dummy) : base((Type) null) {}
-		[SmokeClass("QRadioButton")]
-		interface IQRadioButtonProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRadioButton), this);
-			interceptor = (QRadioButton) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QRadioButton), "QRadioButton", this);
 		}
-		private static IQRadioButtonProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QRadioButton() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRadioButtonProxy), null);
-			staticInterceptor = (IQRadioButtonProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QRadioButton), "QRadioButton", null);
 		}
 		public QRadioButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQRadioButton(parent);
-		}
-		[SmokeMethod("QRadioButton", "(QWidget*)", "#")]
-		private void NewQRadioButton(QWidget parent) {
-			((QRadioButton) interceptor).NewQRadioButton(parent);
+			interceptor.Invoke("QRadioButton#", "QRadioButton(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QRadioButton() : this((Type) null) {
 			CreateProxy();
-			NewQRadioButton();
-		}
-		[SmokeMethod("QRadioButton", "()", "")]
-		private void NewQRadioButton() {
-			((QRadioButton) interceptor).NewQRadioButton();
+			interceptor.Invoke("QRadioButton", "QRadioButton()", typeof(void));
 		}
 		public QRadioButton(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQRadioButton(text,parent);
-		}
-		[SmokeMethod("QRadioButton", "(const QString&, QWidget*)", "$#")]
-		private void NewQRadioButton(string text, QWidget parent) {
-			((QRadioButton) interceptor).NewQRadioButton(text,parent);
+			interceptor.Invoke("QRadioButton$#", "QRadioButton(const QString&, QWidget*)", typeof(void), typeof(string), text, typeof(QWidget), parent);
 		}
 		public QRadioButton(string text) : this((Type) null) {
 			CreateProxy();
-			NewQRadioButton(text);
+			interceptor.Invoke("QRadioButton$", "QRadioButton(const QString&)", typeof(void), typeof(string), text);
 		}
-		[SmokeMethod("QRadioButton", "(const QString&)", "$")]
-		private void NewQRadioButton(string text) {
-			((QRadioButton) interceptor).NewQRadioButton(text);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QRadioButton) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QRadioButton) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
+		[SmokeMethod("hitButton(const QPoint&) const")]
 		protected override bool HitButton(QPoint arg1) {
-			return ((QRadioButton) interceptor).HitButton(arg1);
+			return (bool) interceptor.Invoke("hitButton#", "hitButton(const QPoint&) const", typeof(bool), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QRadioButton) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QRadioButton) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
 		~QRadioButton() {
-			DisposeQRadioButton();
+			interceptor.Invoke("~QRadioButton", "~QRadioButton()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQRadioButton();
-		}
-		[SmokeMethod("~QRadioButton", "()", "")]
-		private void DisposeQRadioButton() {
-			((QRadioButton) interceptor).DisposeQRadioButton();
+			interceptor.Invoke("~QRadioButton", "~QRadioButton()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQRadioButtonSignals Emit {
 			get { return (IQRadioButtonSignals) Q_EMIT; }

@@ -6,53 +6,34 @@ namespace Qyoto {
 	[SmokeClass("QDBusAbstractAdaptor")]
 	public abstract class QDBusAbstractAdaptor : QObject, IDisposable {
  		protected QDBusAbstractAdaptor(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDBusAbstractAdaptor")]
-		interface IQDBusAbstractAdaptorProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusAbstractAdaptor), this);
-			interceptor = (QDBusAbstractAdaptor) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), "QDBusAbstractAdaptor", this);
 		}
-		private static IQDBusAbstractAdaptorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDBusAbstractAdaptor() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusAbstractAdaptorProxy), null);
-			staticInterceptor = (IQDBusAbstractAdaptorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), "QDBusAbstractAdaptor", null);
 		}
 		public QDBusAbstractAdaptor(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDBusAbstractAdaptor(parent);
+			interceptor.Invoke("QDBusAbstractAdaptor#", "QDBusAbstractAdaptor(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		[SmokeMethod("QDBusAbstractAdaptor", "(QObject*)", "#")]
-		private void NewQDBusAbstractAdaptor(QObject parent) {
-			((QDBusAbstractAdaptor) interceptor).NewQDBusAbstractAdaptor(parent);
-		}
-		[SmokeMethod("setAutoRelaySignals", "(bool)", "$")]
 		protected void SetAutoRelaySignals(bool enable) {
-			((QDBusAbstractAdaptor) interceptor).SetAutoRelaySignals(enable);
+			interceptor.Invoke("setAutoRelaySignals$", "setAutoRelaySignals(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("autoRelaySignals", "() const", "")]
 		protected bool AutoRelaySignals() {
-			return ((QDBusAbstractAdaptor) interceptor).AutoRelaySignals();
+			return (bool) interceptor.Invoke("autoRelaySignals", "autoRelaySignals() const", typeof(bool));
 		}
 		~QDBusAbstractAdaptor() {
-			DisposeQDBusAbstractAdaptor();
+			interceptor.Invoke("~QDBusAbstractAdaptor", "~QDBusAbstractAdaptor()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDBusAbstractAdaptor();
-		}
-		[SmokeMethod("~QDBusAbstractAdaptor", "()", "")]
-		private void DisposeQDBusAbstractAdaptor() {
-			((QDBusAbstractAdaptor) interceptor).DisposeQDBusAbstractAdaptor();
+			interceptor.Invoke("~QDBusAbstractAdaptor", "~QDBusAbstractAdaptor()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDBusAbstractAdaptorSignals Emit {
 			get { return (IQDBusAbstractAdaptorSignals) Q_EMIT; }

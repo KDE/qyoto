@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionHeader : QStyleOption, IDisposable {
  		protected QStyleOptionHeader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionHeader), this);
-			interceptor = (QStyleOptionHeader) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionHeader), "QStyleOptionHeader", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Header,
@@ -35,37 +34,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionHeader() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionHeader();
-		}
-		[SmokeMethod("QStyleOptionHeader", "()", "")]
-		private void NewQStyleOptionHeader() {
-			((QStyleOptionHeader) interceptor).NewQStyleOptionHeader();
+			interceptor.Invoke("QStyleOptionHeader", "QStyleOptionHeader()", typeof(void));
 		}
 		public QStyleOptionHeader(QStyleOptionHeader other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionHeader(other);
-		}
-		[SmokeMethod("QStyleOptionHeader", "(const QStyleOptionHeader&)", "#")]
-		private void NewQStyleOptionHeader(QStyleOptionHeader other) {
-			((QStyleOptionHeader) interceptor).NewQStyleOptionHeader(other);
+			interceptor.Invoke("QStyleOptionHeader#", "QStyleOptionHeader(const QStyleOptionHeader&)", typeof(void), typeof(QStyleOptionHeader), other);
 		}
 		public QStyleOptionHeader(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionHeader(version);
-		}
-		[SmokeMethod("QStyleOptionHeader", "(int)", "$")]
-		private void NewQStyleOptionHeader(int version) {
-			((QStyleOptionHeader) interceptor).NewQStyleOptionHeader(version);
+			interceptor.Invoke("QStyleOptionHeader$", "QStyleOptionHeader(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionHeader() {
-			DisposeQStyleOptionHeader();
+			interceptor.Invoke("~QStyleOptionHeader", "~QStyleOptionHeader()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionHeader();
-		}
-		[SmokeMethod("~QStyleOptionHeader", "()", "")]
-		private void DisposeQStyleOptionHeader() {
-			((QStyleOptionHeader) interceptor).DisposeQStyleOptionHeader();
+			interceptor.Invoke("~QStyleOptionHeader", "~QStyleOptionHeader()", typeof(void));
 		}
 	}
 }

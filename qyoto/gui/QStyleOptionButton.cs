@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionButton : QStyleOption, IDisposable {
  		protected QStyleOptionButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionButton), this);
-			interceptor = (QStyleOptionButton) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionButton), "QStyleOptionButton", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Button,
@@ -25,37 +24,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionButton() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionButton();
-		}
-		[SmokeMethod("QStyleOptionButton", "()", "")]
-		private void NewQStyleOptionButton() {
-			((QStyleOptionButton) interceptor).NewQStyleOptionButton();
+			interceptor.Invoke("QStyleOptionButton", "QStyleOptionButton()", typeof(void));
 		}
 		public QStyleOptionButton(QStyleOptionButton other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionButton(other);
-		}
-		[SmokeMethod("QStyleOptionButton", "(const QStyleOptionButton&)", "#")]
-		private void NewQStyleOptionButton(QStyleOptionButton other) {
-			((QStyleOptionButton) interceptor).NewQStyleOptionButton(other);
+			interceptor.Invoke("QStyleOptionButton#", "QStyleOptionButton(const QStyleOptionButton&)", typeof(void), typeof(QStyleOptionButton), other);
 		}
 		public QStyleOptionButton(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionButton(version);
-		}
-		[SmokeMethod("QStyleOptionButton", "(int)", "$")]
-		private void NewQStyleOptionButton(int version) {
-			((QStyleOptionButton) interceptor).NewQStyleOptionButton(version);
+			interceptor.Invoke("QStyleOptionButton$", "QStyleOptionButton(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionButton() {
-			DisposeQStyleOptionButton();
+			interceptor.Invoke("~QStyleOptionButton", "~QStyleOptionButton()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionButton();
-		}
-		[SmokeMethod("~QStyleOptionButton", "()", "")]
-		private void DisposeQStyleOptionButton() {
-			((QStyleOptionButton) interceptor).DisposeQStyleOptionButton();
+			interceptor.Invoke("~QStyleOptionButton", "~QStyleOptionButton()", typeof(void));
 		}
 	}
 }

@@ -7,166 +7,120 @@ namespace Qyoto {
 	public class QDomElement : QDomNode, IDisposable {
  		protected QDomElement(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomElement), this);
-			interceptor = (QDomElement) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomElement), "QDomElement", this);
 		}
 		public QDomElement() : this((Type) null) {
 			CreateProxy();
-			NewQDomElement();
-		}
-		[SmokeMethod("QDomElement", "()", "")]
-		private void NewQDomElement() {
-			((QDomElement) interceptor).NewQDomElement();
+			interceptor.Invoke("QDomElement", "QDomElement()", typeof(void));
 		}
 		public QDomElement(QDomElement x) : this((Type) null) {
 			CreateProxy();
-			NewQDomElement(x);
+			interceptor.Invoke("QDomElement#", "QDomElement(const QDomElement&)", typeof(void), typeof(QDomElement), x);
 		}
-		[SmokeMethod("QDomElement", "(const QDomElement&)", "#")]
-		private void NewQDomElement(QDomElement x) {
-			((QDomElement) interceptor).NewQDomElement(x);
-		}
-		[SmokeMethod("attribute", "(const QString&, const QString&) const", "$$")]
 		public string Attribute(string name, string defValue) {
-			return ((QDomElement) interceptor).Attribute(name,defValue);
+			return (string) interceptor.Invoke("attribute$$", "attribute(const QString&, const QString&) const", typeof(string), typeof(string), name, typeof(string), defValue);
 		}
-		[SmokeMethod("attribute", "(const QString&) const", "$")]
 		public string Attribute(string name) {
-			return ((QDomElement) interceptor).Attribute(name);
+			return (string) interceptor.Invoke("attribute$", "attribute(const QString&) const", typeof(string), typeof(string), name);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, const QString&)", "$$")]
 		public void SetAttribute(string name, string value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$$", "setAttribute(const QString&, const QString&)", typeof(void), typeof(string), name, typeof(string), value);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, qlonglong)", "$?")]
 		public void SetAttribute(string name, long value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$?", "setAttribute(const QString&, qlonglong)", typeof(void), typeof(string), name, typeof(long), value);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, qulonglong)", "$$")]
 		public void SetAttribute(string name, ulong value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$$", "setAttribute(const QString&, qulonglong)", typeof(void), typeof(string), name, typeof(ulong), value);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, int)", "$$")]
 		public void SetAttribute(string name, int value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$$", "setAttribute(const QString&, int)", typeof(void), typeof(string), name, typeof(int), value);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, uint)", "$$")]
 		public void SetAttribute(string name, uint value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$$", "setAttribute(const QString&, uint)", typeof(void), typeof(string), name, typeof(uint), value);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, float)", "$$")]
 		public void SetAttribute(string name, float value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$$", "setAttribute(const QString&, float)", typeof(void), typeof(string), name, typeof(float), value);
 		}
-		[SmokeMethod("setAttribute", "(const QString&, double)", "$$")]
 		public void SetAttribute(string name, double value) {
-			((QDomElement) interceptor).SetAttribute(name,value);
+			interceptor.Invoke("setAttribute$$", "setAttribute(const QString&, double)", typeof(void), typeof(string), name, typeof(double), value);
 		}
-		[SmokeMethod("removeAttribute", "(const QString&)", "$")]
 		public void RemoveAttribute(string name) {
-			((QDomElement) interceptor).RemoveAttribute(name);
+			interceptor.Invoke("removeAttribute$", "removeAttribute(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("attributeNode", "(const QString&)", "$")]
 		public QDomAttr AttributeNode(string name) {
-			return ((QDomElement) interceptor).AttributeNode(name);
+			return (QDomAttr) interceptor.Invoke("attributeNode$", "attributeNode(const QString&)", typeof(QDomAttr), typeof(string), name);
 		}
-		[SmokeMethod("setAttributeNode", "(const QDomAttr&)", "#")]
 		public QDomAttr SetAttributeNode(QDomAttr newAttr) {
-			return ((QDomElement) interceptor).SetAttributeNode(newAttr);
+			return (QDomAttr) interceptor.Invoke("setAttributeNode#", "setAttributeNode(const QDomAttr&)", typeof(QDomAttr), typeof(QDomAttr), newAttr);
 		}
-		[SmokeMethod("removeAttributeNode", "(const QDomAttr&)", "#")]
 		public QDomAttr RemoveAttributeNode(QDomAttr oldAttr) {
-			return ((QDomElement) interceptor).RemoveAttributeNode(oldAttr);
+			return (QDomAttr) interceptor.Invoke("removeAttributeNode#", "removeAttributeNode(const QDomAttr&)", typeof(QDomAttr), typeof(QDomAttr), oldAttr);
 		}
-		[SmokeMethod("elementsByTagName", "(const QString&) const", "$")]
 		public QDomNodeList ElementsByTagName(string tagname) {
-			return ((QDomElement) interceptor).ElementsByTagName(tagname);
+			return (QDomNodeList) interceptor.Invoke("elementsByTagName$", "elementsByTagName(const QString&) const", typeof(QDomNodeList), typeof(string), tagname);
 		}
-		[SmokeMethod("hasAttribute", "(const QString&) const", "$")]
 		public bool HasAttribute(string name) {
-			return ((QDomElement) interceptor).HasAttribute(name);
+			return (bool) interceptor.Invoke("hasAttribute$", "hasAttribute(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("attributeNS", "(const QString, const QString&, const QString&) const", "$$$")]
 		public string AttributeNS(string nsURI, string localName, string defValue) {
-			return ((QDomElement) interceptor).AttributeNS(nsURI,localName,defValue);
+			return (string) interceptor.Invoke("attributeNS$$$", "attributeNS(const QString, const QString&, const QString&) const", typeof(string), typeof(string), nsURI, typeof(string), localName, typeof(string), defValue);
 		}
-		[SmokeMethod("attributeNS", "(const QString, const QString&) const", "$$")]
 		public string AttributeNS(string nsURI, string localName) {
-			return ((QDomElement) interceptor).AttributeNS(nsURI,localName);
+			return (string) interceptor.Invoke("attributeNS$$", "attributeNS(const QString, const QString&) const", typeof(string), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("setAttributeNS", "(const QString, const QString&, const QString&)", "$$$")]
 		public void SetAttributeNS(string nsURI, string qName, string value) {
-			((QDomElement) interceptor).SetAttributeNS(nsURI,qName,value);
+			interceptor.Invoke("setAttributeNS$$$", "setAttributeNS(const QString, const QString&, const QString&)", typeof(void), typeof(string), nsURI, typeof(string), qName, typeof(string), value);
 		}
-		[SmokeMethod("setAttributeNS", "(const QString, const QString&, int)", "$$$")]
 		public void SetAttributeNS(string nsURI, string qName, int value) {
-			((QDomElement) interceptor).SetAttributeNS(nsURI,qName,value);
+			interceptor.Invoke("setAttributeNS$$$", "setAttributeNS(const QString, const QString&, int)", typeof(void), typeof(string), nsURI, typeof(string), qName, typeof(int), value);
 		}
-		[SmokeMethod("setAttributeNS", "(const QString, const QString&, uint)", "$$$")]
 		public void SetAttributeNS(string nsURI, string qName, uint value) {
-			((QDomElement) interceptor).SetAttributeNS(nsURI,qName,value);
+			interceptor.Invoke("setAttributeNS$$$", "setAttributeNS(const QString, const QString&, uint)", typeof(void), typeof(string), nsURI, typeof(string), qName, typeof(uint), value);
 		}
-		[SmokeMethod("setAttributeNS", "(const QString, const QString&, qlonglong)", "$$?")]
 		public void SetAttributeNS(string nsURI, string qName, long value) {
-			((QDomElement) interceptor).SetAttributeNS(nsURI,qName,value);
+			interceptor.Invoke("setAttributeNS$$?", "setAttributeNS(const QString, const QString&, qlonglong)", typeof(void), typeof(string), nsURI, typeof(string), qName, typeof(long), value);
 		}
-		[SmokeMethod("setAttributeNS", "(const QString, const QString&, qulonglong)", "$$$")]
 		public void SetAttributeNS(string nsURI, string qName, ulong value) {
-			((QDomElement) interceptor).SetAttributeNS(nsURI,qName,value);
+			interceptor.Invoke("setAttributeNS$$$", "setAttributeNS(const QString, const QString&, qulonglong)", typeof(void), typeof(string), nsURI, typeof(string), qName, typeof(ulong), value);
 		}
-		[SmokeMethod("setAttributeNS", "(const QString, const QString&, double)", "$$$")]
 		public void SetAttributeNS(string nsURI, string qName, double value) {
-			((QDomElement) interceptor).SetAttributeNS(nsURI,qName,value);
+			interceptor.Invoke("setAttributeNS$$$", "setAttributeNS(const QString, const QString&, double)", typeof(void), typeof(string), nsURI, typeof(string), qName, typeof(double), value);
 		}
-		[SmokeMethod("removeAttributeNS", "(const QString&, const QString&)", "$$")]
 		public void RemoveAttributeNS(string nsURI, string localName) {
-			((QDomElement) interceptor).RemoveAttributeNS(nsURI,localName);
+			interceptor.Invoke("removeAttributeNS$$", "removeAttributeNS(const QString&, const QString&)", typeof(void), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("attributeNodeNS", "(const QString&, const QString&)", "$$")]
 		public QDomAttr AttributeNodeNS(string nsURI, string localName) {
-			return ((QDomElement) interceptor).AttributeNodeNS(nsURI,localName);
+			return (QDomAttr) interceptor.Invoke("attributeNodeNS$$", "attributeNodeNS(const QString&, const QString&)", typeof(QDomAttr), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("setAttributeNodeNS", "(const QDomAttr&)", "#")]
 		public QDomAttr SetAttributeNodeNS(QDomAttr newAttr) {
-			return ((QDomElement) interceptor).SetAttributeNodeNS(newAttr);
+			return (QDomAttr) interceptor.Invoke("setAttributeNodeNS#", "setAttributeNodeNS(const QDomAttr&)", typeof(QDomAttr), typeof(QDomAttr), newAttr);
 		}
-		[SmokeMethod("elementsByTagNameNS", "(const QString&, const QString&) const", "$$")]
 		public QDomNodeList ElementsByTagNameNS(string nsURI, string localName) {
-			return ((QDomElement) interceptor).ElementsByTagNameNS(nsURI,localName);
+			return (QDomNodeList) interceptor.Invoke("elementsByTagNameNS$$", "elementsByTagNameNS(const QString&, const QString&) const", typeof(QDomNodeList), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("hasAttributeNS", "(const QString&, const QString&) const", "$$")]
 		public bool HasAttributeNS(string nsURI, string localName) {
-			return ((QDomElement) interceptor).HasAttributeNS(nsURI,localName);
+			return (bool) interceptor.Invoke("hasAttributeNS$$", "hasAttributeNS(const QString&, const QString&) const", typeof(bool), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("tagName", "() const", "")]
 		public string TagName() {
-			return ((QDomElement) interceptor).TagName();
+			return (string) interceptor.Invoke("tagName", "tagName() const", typeof(string));
 		}
-		[SmokeMethod("setTagName", "(const QString&)", "$")]
 		public void SetTagName(string name) {
-			((QDomElement) interceptor).SetTagName(name);
+			interceptor.Invoke("setTagName$", "setTagName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("attributes", "() const", "")]
 		public QDomNamedNodeMap Attributes() {
-			return ((QDomElement) interceptor).Attributes();
+			return (QDomNamedNodeMap) interceptor.Invoke("attributes", "attributes() const", typeof(QDomNamedNodeMap));
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomElement) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QDomElement) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
 		~QDomElement() {
-			DisposeQDomElement();
+			interceptor.Invoke("~QDomElement", "~QDomElement()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomElement();
-		}
-		[SmokeMethod("~QDomElement", "()", "")]
-		private void DisposeQDomElement() {
-			((QDomElement) interceptor).DisposeQDomElement();
+			interceptor.Invoke("~QDomElement", "~QDomElement()", typeof(void));
 		}
 	}
 }

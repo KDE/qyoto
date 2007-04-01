@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextLine")]
-	public class QTextLine : MarshalByRefObject, IDisposable {
-		protected QTextLine interceptor = null;
+	public class QTextLine : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextLine(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLine), this);
-			interceptor = (QTextLine) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextLine), "QTextLine", this);
 		}
 		public enum Edge {
 			Leading = 0,
@@ -23,117 +22,79 @@ namespace Qyoto {
 		// void draw(QPainter* arg1,const QPointF& arg2,const QTextLayout::FormatRange* arg3); >>>> NOT CONVERTED
 		public QTextLine() : this((Type) null) {
 			CreateProxy();
-			NewQTextLine();
+			interceptor.Invoke("QTextLine", "QTextLine()", typeof(void));
 		}
-		[SmokeMethod("QTextLine", "()", "")]
-		private void NewQTextLine() {
-			((QTextLine) interceptor).NewQTextLine();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextLine) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("rect", "() const", "")]
 		public QRectF Rect() {
-			return ((QTextLine) interceptor).Rect();
+			return (QRectF) interceptor.Invoke("rect", "rect() const", typeof(QRectF));
 		}
-		[SmokeMethod("x", "() const", "")]
 		public double X() {
-			return ((QTextLine) interceptor).X();
+			return (double) interceptor.Invoke("x", "x() const", typeof(double));
 		}
-		[SmokeMethod("y", "() const", "")]
 		public double Y() {
-			return ((QTextLine) interceptor).Y();
+			return (double) interceptor.Invoke("y", "y() const", typeof(double));
 		}
-		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ((QTextLine) interceptor).Width();
+			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
-			return ((QTextLine) interceptor).Ascent();
+			return (double) interceptor.Invoke("ascent", "ascent() const", typeof(double));
 		}
-		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
-			return ((QTextLine) interceptor).Descent();
+			return (double) interceptor.Invoke("descent", "descent() const", typeof(double));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ((QTextLine) interceptor).Height();
+			return (double) interceptor.Invoke("height", "height() const", typeof(double));
 		}
-		[SmokeMethod("naturalTextWidth", "() const", "")]
 		public double NaturalTextWidth() {
-			return ((QTextLine) interceptor).NaturalTextWidth();
+			return (double) interceptor.Invoke("naturalTextWidth", "naturalTextWidth() const", typeof(double));
 		}
-		[SmokeMethod("naturalTextRect", "() const", "")]
 		public QRectF NaturalTextRect() {
-			return ((QTextLine) interceptor).NaturalTextRect();
+			return (QRectF) interceptor.Invoke("naturalTextRect", "naturalTextRect() const", typeof(QRectF));
 		}
-		[SmokeMethod("cursorToX", "(int*, QTextLine::Edge) const", "$$")]
-		public double CursorToX(out int cursorPos, QTextLine.Edge edge) {
-			return ((QTextLine) interceptor).CursorToX(out cursorPos,edge);
-		}
-		[SmokeMethod("cursorToX", "(int*) const", "$")]
-		public double CursorToX(out int cursorPos) {
-			return ((QTextLine) interceptor).CursorToX(out cursorPos);
-		}
-		[SmokeMethod("cursorToX", "(int, QTextLine::Edge) const", "$$")]
 		public double CursorToX(int cursorPos, QTextLine.Edge edge) {
-			return ((QTextLine) interceptor).CursorToX(cursorPos,edge);
+			return (double) interceptor.Invoke("cursorToX$$", "cursorToX(int*, QTextLine::Edge) const", typeof(double), typeof(int), cursorPos, typeof(QTextLine.Edge), edge);
 		}
-		[SmokeMethod("cursorToX", "(int) const", "$")]
 		public double CursorToX(int cursorPos) {
-			return ((QTextLine) interceptor).CursorToX(cursorPos);
+			return (double) interceptor.Invoke("cursorToX$", "cursorToX(int*) const", typeof(double), typeof(int), cursorPos);
 		}
-		[SmokeMethod("xToCursor", "(qreal, QTextLine::CursorPosition) const", "$$")]
 		public int XToCursor(double x, QTextLine.CursorPosition arg2) {
-			return ((QTextLine) interceptor).XToCursor(x,arg2);
+			return (int) interceptor.Invoke("xToCursor$$", "xToCursor(qreal, QTextLine::CursorPosition) const", typeof(int), typeof(double), x, typeof(QTextLine.CursorPosition), arg2);
 		}
-		[SmokeMethod("xToCursor", "(qreal) const", "$")]
 		public int XToCursor(double x) {
-			return ((QTextLine) interceptor).XToCursor(x);
+			return (int) interceptor.Invoke("xToCursor$", "xToCursor(qreal) const", typeof(int), typeof(double), x);
 		}
-		[SmokeMethod("setLineWidth", "(qreal)", "$")]
 		public void SetLineWidth(double width) {
-			((QTextLine) interceptor).SetLineWidth(width);
+			interceptor.Invoke("setLineWidth$", "setLineWidth(qreal)", typeof(void), typeof(double), width);
 		}
-		[SmokeMethod("setNumColumns", "(int)", "$")]
 		public void SetNumColumns(int columns) {
-			((QTextLine) interceptor).SetNumColumns(columns);
+			interceptor.Invoke("setNumColumns$", "setNumColumns(int)", typeof(void), typeof(int), columns);
 		}
-		[SmokeMethod("setPosition", "(const QPointF&)", "#")]
 		public void SetPosition(QPointF pos) {
-			((QTextLine) interceptor).SetPosition(pos);
+			interceptor.Invoke("setPosition#", "setPosition(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("position", "() const", "")]
 		public QPointF Position() {
-			return ((QTextLine) interceptor).Position();
+			return (QPointF) interceptor.Invoke("position", "position() const", typeof(QPointF));
 		}
-		[SmokeMethod("textStart", "() const", "")]
 		public int TextStart() {
-			return ((QTextLine) interceptor).TextStart();
+			return (int) interceptor.Invoke("textStart", "textStart() const", typeof(int));
 		}
-		[SmokeMethod("textLength", "() const", "")]
 		public int TextLength() {
-			return ((QTextLine) interceptor).TextLength();
+			return (int) interceptor.Invoke("textLength", "textLength() const", typeof(int));
 		}
-		[SmokeMethod("lineNumber", "() const", "")]
 		public int LineNumber() {
-			return ((QTextLine) interceptor).LineNumber();
+			return (int) interceptor.Invoke("lineNumber", "lineNumber() const", typeof(int));
 		}
-		[SmokeMethod("draw", "(QPainter*, const QPointF&) const", "##")]
 		public void Draw(QPainter p, QPointF point) {
-			((QTextLine) interceptor).Draw(p,point);
+			interceptor.Invoke("draw##", "draw(QPainter*, const QPointF&) const", typeof(void), typeof(QPainter), p, typeof(QPointF), point);
 		}
 		~QTextLine() {
-			DisposeQTextLine();
+			interceptor.Invoke("~QTextLine", "~QTextLine()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextLine();
-		}
-		[SmokeMethod("~QTextLine", "()", "")]
-		private void DisposeQTextLine() {
-			((QTextLine) interceptor).DisposeQTextLine();
+			interceptor.Invoke("~QTextLine", "~QTextLine()", typeof(void));
 		}
 	}
 }

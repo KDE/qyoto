@@ -7,130 +7,93 @@ namespace Qyoto {
 	public class QGraphicsSceneMouseEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneMouseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneMouseEvent), this);
-			interceptor = (QGraphicsSceneMouseEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneMouseEvent), "QGraphicsSceneMouseEvent", this);
 		}
 		public QGraphicsSceneMouseEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneMouseEvent(type);
-		}
-		[SmokeMethod("QGraphicsSceneMouseEvent", "(QEvent::Type)", "$")]
-		private void NewQGraphicsSceneMouseEvent(QEvent.TypeOf type) {
-			((QGraphicsSceneMouseEvent) interceptor).NewQGraphicsSceneMouseEvent(type);
+			interceptor.Invoke("QGraphicsSceneMouseEvent$", "QGraphicsSceneMouseEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
 		public QGraphicsSceneMouseEvent() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneMouseEvent();
+			interceptor.Invoke("QGraphicsSceneMouseEvent", "QGraphicsSceneMouseEvent()", typeof(void));
 		}
-		[SmokeMethod("QGraphicsSceneMouseEvent", "()", "")]
-		private void NewQGraphicsSceneMouseEvent() {
-			((QGraphicsSceneMouseEvent) interceptor).NewQGraphicsSceneMouseEvent();
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ((QGraphicsSceneMouseEvent) interceptor).Pos();
+			return (QPointF) interceptor.Invoke("pos", "pos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetPos(pos);
+			interceptor.Invoke("setPos#", "setPos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ((QGraphicsSceneMouseEvent) interceptor).ScenePos();
+			return (QPointF) interceptor.Invoke("scenePos", "scenePos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetScenePos(pos);
+			interceptor.Invoke("setScenePos#", "setScenePos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ((QGraphicsSceneMouseEvent) interceptor).ScreenPos();
+			return (QPoint) interceptor.Invoke("screenPos", "screenPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetScreenPos(pos);
+			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		[SmokeMethod("buttonDownPos", "(Qt::MouseButton) const", "$")]
 		public QPointF ButtonDownPos(Qt.MouseButton button) {
-			return ((QGraphicsSceneMouseEvent) interceptor).ButtonDownPos(button);
+			return (QPointF) interceptor.Invoke("buttonDownPos$", "buttonDownPos(Qt::MouseButton) const", typeof(QPointF), typeof(Qt.MouseButton), button);
 		}
-		[SmokeMethod("setButtonDownPos", "(Qt::MouseButton, const QPointF&)", "$#")]
 		public void SetButtonDownPos(Qt.MouseButton button, QPointF pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetButtonDownPos(button,pos);
+			interceptor.Invoke("setButtonDownPos$#", "setButtonDownPos(Qt::MouseButton, const QPointF&)", typeof(void), typeof(Qt.MouseButton), button, typeof(QPointF), pos);
 		}
-		[SmokeMethod("buttonDownScenePos", "(Qt::MouseButton) const", "$")]
 		public QPointF ButtonDownScenePos(Qt.MouseButton button) {
-			return ((QGraphicsSceneMouseEvent) interceptor).ButtonDownScenePos(button);
+			return (QPointF) interceptor.Invoke("buttonDownScenePos$", "buttonDownScenePos(Qt::MouseButton) const", typeof(QPointF), typeof(Qt.MouseButton), button);
 		}
-		[SmokeMethod("setButtonDownScenePos", "(Qt::MouseButton, const QPointF&)", "$#")]
 		public void SetButtonDownScenePos(Qt.MouseButton button, QPointF pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetButtonDownScenePos(button,pos);
+			interceptor.Invoke("setButtonDownScenePos$#", "setButtonDownScenePos(Qt::MouseButton, const QPointF&)", typeof(void), typeof(Qt.MouseButton), button, typeof(QPointF), pos);
 		}
-		[SmokeMethod("buttonDownScreenPos", "(Qt::MouseButton) const", "$")]
 		public QPoint ButtonDownScreenPos(Qt.MouseButton button) {
-			return ((QGraphicsSceneMouseEvent) interceptor).ButtonDownScreenPos(button);
+			return (QPoint) interceptor.Invoke("buttonDownScreenPos$", "buttonDownScreenPos(Qt::MouseButton) const", typeof(QPoint), typeof(Qt.MouseButton), button);
 		}
-		[SmokeMethod("setButtonDownScreenPos", "(Qt::MouseButton, const QPoint&)", "$#")]
 		public void SetButtonDownScreenPos(Qt.MouseButton button, QPoint pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetButtonDownScreenPos(button,pos);
+			interceptor.Invoke("setButtonDownScreenPos$#", "setButtonDownScreenPos(Qt::MouseButton, const QPoint&)", typeof(void), typeof(Qt.MouseButton), button, typeof(QPoint), pos);
 		}
-		[SmokeMethod("lastPos", "() const", "")]
 		public QPointF LastPos() {
-			return ((QGraphicsSceneMouseEvent) interceptor).LastPos();
+			return (QPointF) interceptor.Invoke("lastPos", "lastPos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setLastPos", "(const QPointF&)", "#")]
 		public void SetLastPos(QPointF pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetLastPos(pos);
+			interceptor.Invoke("setLastPos#", "setLastPos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("lastScenePos", "() const", "")]
 		public QPointF LastScenePos() {
-			return ((QGraphicsSceneMouseEvent) interceptor).LastScenePos();
+			return (QPointF) interceptor.Invoke("lastScenePos", "lastScenePos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setLastScenePos", "(const QPointF&)", "#")]
 		public void SetLastScenePos(QPointF pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetLastScenePos(pos);
+			interceptor.Invoke("setLastScenePos#", "setLastScenePos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("lastScreenPos", "() const", "")]
 		public QPoint LastScreenPos() {
-			return ((QGraphicsSceneMouseEvent) interceptor).LastScreenPos();
+			return (QPoint) interceptor.Invoke("lastScreenPos", "lastScreenPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("setLastScreenPos", "(const QPoint&)", "#")]
 		public void SetLastScreenPos(QPoint pos) {
-			((QGraphicsSceneMouseEvent) interceptor).SetLastScreenPos(pos);
+			interceptor.Invoke("setLastScreenPos#", "setLastScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ((QGraphicsSceneMouseEvent) interceptor).Buttons();
+			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
 		}
-		[SmokeMethod("setButtons", "(Qt::MouseButtons)", "$")]
 		public void SetButtons(int buttons) {
-			((QGraphicsSceneMouseEvent) interceptor).SetButtons(buttons);
+			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(int), buttons);
 		}
-		[SmokeMethod("button", "() const", "")]
 		public Qt.MouseButton Button() {
-			return ((QGraphicsSceneMouseEvent) interceptor).Button();
+			return (Qt.MouseButton) interceptor.Invoke("button", "button() const", typeof(Qt.MouseButton));
 		}
-		[SmokeMethod("setButton", "(Qt::MouseButton)", "$")]
 		public void SetButton(Qt.MouseButton button) {
-			((QGraphicsSceneMouseEvent) interceptor).SetButton(button);
+			interceptor.Invoke("setButton$", "setButton(Qt::MouseButton)", typeof(void), typeof(Qt.MouseButton), button);
 		}
-		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ((QGraphicsSceneMouseEvent) interceptor).Modifiers();
+			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
 		}
-		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
-			((QGraphicsSceneMouseEvent) interceptor).SetModifiers(modifiers);
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
 		}
 		~QGraphicsSceneMouseEvent() {
-			DisposeQGraphicsSceneMouseEvent();
+			interceptor.Invoke("~QGraphicsSceneMouseEvent", "~QGraphicsSceneMouseEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsSceneMouseEvent();
-		}
-		[SmokeMethod("~QGraphicsSceneMouseEvent", "()", "")]
-		private void DisposeQGraphicsSceneMouseEvent() {
-			((QGraphicsSceneMouseEvent) interceptor).DisposeQGraphicsSceneMouseEvent();
+			interceptor.Invoke("~QGraphicsSceneMouseEvent", "~QGraphicsSceneMouseEvent()", typeof(void));
 		}
 	}
 }

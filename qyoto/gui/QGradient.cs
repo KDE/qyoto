@@ -4,23 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QGradient")]
-	public class QGradient : MarshalByRefObject, IDisposable {
-		protected QGradient interceptor = null;
+	public class QGradient : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGradient(Type dummy) {}
-		[SmokeClass("QGradient")]
-		interface IQGradientProxy {
-			[SmokeMethod("operator==", "(const QGradient&) const", "#")]
-			bool op_equals(QGradient lhs, QGradient gradient);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGradient), this);
-			interceptor = (QGradient) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGradient), "QGradient", this);
 		}
-		private static IQGradientProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGradient() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGradientProxy), null);
-			staticInterceptor = (IQGradientProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGradient), "QGradient", null);
 		}
 		public enum TypeOf {
 			LinearGradient = 0,
@@ -41,58 +34,44 @@ namespace Qyoto {
 		// QGradientStops stops(); >>>> NOT CONVERTED
 		public QGradient() : this((Type) null) {
 			CreateProxy();
-			NewQGradient();
+			interceptor.Invoke("QGradient", "QGradient()", typeof(void));
 		}
-		[SmokeMethod("QGradient", "()", "")]
-		private void NewQGradient() {
-			((QGradient) interceptor).NewQGradient();
-		}
-		[SmokeMethod("type", "() const", "")]
 		public QGradient.TypeOf type() {
-			return ((QGradient) interceptor).type();
+			return (QGradient.TypeOf) interceptor.Invoke("type", "type() const", typeof(QGradient.TypeOf));
 		}
-		[SmokeMethod("setSpread", "(QGradient::Spread)", "$")]
 		public void SetSpread(QGradient.Spread spread) {
-			((QGradient) interceptor).SetSpread(spread);
+			interceptor.Invoke("setSpread$", "setSpread(QGradient::Spread)", typeof(void), typeof(QGradient.Spread), spread);
 		}
-		[SmokeMethod("spread", "() const", "")]
 		public QGradient.Spread spread() {
-			return ((QGradient) interceptor).spread();
+			return (QGradient.Spread) interceptor.Invoke("spread", "spread() const", typeof(QGradient.Spread));
 		}
-		[SmokeMethod("setColorAt", "(qreal, const QColor&)", "$#")]
 		public void SetColorAt(double pos, QColor color) {
-			((QGradient) interceptor).SetColorAt(pos,color);
+			interceptor.Invoke("setColorAt$#", "setColorAt(qreal, const QColor&)", typeof(void), typeof(double), pos, typeof(QColor), color);
 		}
-		[SmokeMethod("coordinateMode", "() const", "")]
 		public QGradient.CoordinateMode coordinateMode() {
-			return ((QGradient) interceptor).coordinateMode();
+			return (QGradient.CoordinateMode) interceptor.Invoke("coordinateMode", "coordinateMode() const", typeof(QGradient.CoordinateMode));
 		}
-		[SmokeMethod("setCoordinateMode", "(QGradient::CoordinateMode)", "$")]
 		public void SetCoordinateMode(QGradient.CoordinateMode mode) {
-			((QGradient) interceptor).SetCoordinateMode(mode);
+			interceptor.Invoke("setCoordinateMode$", "setCoordinateMode(QGradient::CoordinateMode)", typeof(void), typeof(QGradient.CoordinateMode), mode);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QGradient)) { return false; }
 			return this == (QGradient) o;
 		}
 		public override int GetHashCode() {
-			return ((QGradient) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QGradient() {
-			DisposeQGradient();
+			interceptor.Invoke("~QGradient", "~QGradient()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGradient();
-		}
-		[SmokeMethod("~QGradient", "()", "")]
-		private void DisposeQGradient() {
-			((QGradient) interceptor).DisposeQGradient();
+			interceptor.Invoke("~QGradient", "~QGradient()", typeof(void));
 		}
 		public static bool operator==(QGradient lhs, QGradient gradient) {
-			return staticInterceptor.op_equals(lhs,gradient);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QGradient&) const", typeof(bool), typeof(QGradient), lhs, typeof(QGradient), gradient);
 		}
 		public static bool operator!=(QGradient lhs, QGradient gradient) {
-			return !staticInterceptor.op_equals(lhs,gradient);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QGradient&) const", typeof(bool), typeof(QGradient), lhs, typeof(QGradient), gradient);
 		}
 	}
 }

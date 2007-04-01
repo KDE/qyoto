@@ -4,91 +4,67 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QXmlAttributes")]
-	public class QXmlAttributes : MarshalByRefObject, IDisposable {
-		protected QXmlAttributes interceptor = null;
+	public class QXmlAttributes : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlAttributes(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlAttributes), this);
-			interceptor = (QXmlAttributes) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlAttributes), "QXmlAttributes", this);
 		}
 		public QXmlAttributes() : this((Type) null) {
 			CreateProxy();
-			NewQXmlAttributes();
+			interceptor.Invoke("QXmlAttributes", "QXmlAttributes()", typeof(void));
 		}
-		[SmokeMethod("QXmlAttributes", "()", "")]
-		private void NewQXmlAttributes() {
-			((QXmlAttributes) interceptor).NewQXmlAttributes();
-		}
-		[SmokeMethod("index", "(const QString&) const", "$")]
 		public int Index(string qName) {
-			return ((QXmlAttributes) interceptor).Index(qName);
+			return (int) interceptor.Invoke("index$", "index(const QString&) const", typeof(int), typeof(string), qName);
 		}
-		[SmokeMethod("index", "(const QString&, const QString&) const", "$$")]
 		public int Index(string uri, string localPart) {
-			return ((QXmlAttributes) interceptor).Index(uri,localPart);
+			return (int) interceptor.Invoke("index$$", "index(const QString&, const QString&) const", typeof(int), typeof(string), uri, typeof(string), localPart);
 		}
-		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ((QXmlAttributes) interceptor).Length();
+			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QXmlAttributes) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("localName", "(int) const", "$")]
 		public string LocalName(int index) {
-			return ((QXmlAttributes) interceptor).LocalName(index);
+			return (string) interceptor.Invoke("localName$", "localName(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("qName", "(int) const", "$")]
 		public string QName(int index) {
-			return ((QXmlAttributes) interceptor).QName(index);
+			return (string) interceptor.Invoke("qName$", "qName(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("uri", "(int) const", "$")]
 		public string Uri(int index) {
-			return ((QXmlAttributes) interceptor).Uri(index);
+			return (string) interceptor.Invoke("uri$", "uri(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("type", "(int) const", "$")]
 		public string type(int index) {
-			return ((QXmlAttributes) interceptor).type(index);
+			return (string) interceptor.Invoke("type$", "type(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("type", "(const QString&) const", "$")]
 		public string type(string qName) {
-			return ((QXmlAttributes) interceptor).type(qName);
+			return (string) interceptor.Invoke("type$", "type(const QString&) const", typeof(string), typeof(string), qName);
 		}
-		[SmokeMethod("type", "(const QString&, const QString&) const", "$$")]
 		public string type(string uri, string localName) {
-			return ((QXmlAttributes) interceptor).type(uri,localName);
+			return (string) interceptor.Invoke("type$$", "type(const QString&, const QString&) const", typeof(string), typeof(string), uri, typeof(string), localName);
 		}
-		[SmokeMethod("value", "(int) const", "$")]
 		public string Value(int index) {
-			return ((QXmlAttributes) interceptor).Value(index);
+			return (string) interceptor.Invoke("value$", "value(int) const", typeof(string), typeof(int), index);
 		}
-		[SmokeMethod("value", "(const QString&) const", "$")]
 		public string Value(string qName) {
-			return ((QXmlAttributes) interceptor).Value(qName);
+			return (string) interceptor.Invoke("value$", "value(const QString&) const", typeof(string), typeof(string), qName);
 		}
-		[SmokeMethod("value", "(const QString&, const QString&) const", "$$")]
 		public string Value(string uri, string localName) {
-			return ((QXmlAttributes) interceptor).Value(uri,localName);
+			return (string) interceptor.Invoke("value$$", "value(const QString&, const QString&) const", typeof(string), typeof(string), uri, typeof(string), localName);
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QXmlAttributes) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("append", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
 		public void Append(string qName, string uri, string localPart, string value) {
-			((QXmlAttributes) interceptor).Append(qName,uri,localPart,value);
+			interceptor.Invoke("append$$$$", "append(const QString&, const QString&, const QString&, const QString&)", typeof(void), typeof(string), qName, typeof(string), uri, typeof(string), localPart, typeof(string), value);
 		}
 		~QXmlAttributes() {
-			DisposeQXmlAttributes();
+			interceptor.Invoke("~QXmlAttributes", "~QXmlAttributes()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQXmlAttributes();
-		}
-		[SmokeMethod("~QXmlAttributes", "()", "")]
-		private void DisposeQXmlAttributes() {
-			((QXmlAttributes) interceptor).DisposeQXmlAttributes();
+			interceptor.Invoke("~QXmlAttributes", "~QXmlAttributes()", typeof(void));
 		}
 	}
 }

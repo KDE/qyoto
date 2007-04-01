@@ -7,128 +7,82 @@ namespace Qyoto {
 	[SmokeClass("QShortcut")]
 	public class QShortcut : QObject, IDisposable {
  		protected QShortcut(Type dummy) : base((Type) null) {}
-		[SmokeClass("QShortcut")]
-		interface IQShortcutProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcut), this);
-			interceptor = (QShortcut) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QShortcut), "QShortcut", this);
 		}
-		private static IQShortcutProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QShortcut() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQShortcutProxy), null);
-			staticInterceptor = (IQShortcutProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QShortcut), "QShortcut", null);
 		}
 		[Q_PROPERTY("QKeySequence", "key")]
 		public QKeySequence Key {
-			[SmokeMethod("key", "()", "")]
-			get { return ((QShortcut) interceptor).Key; }
-			[SmokeMethod("setKey", "(QKeySequence)", "#")]
-			set { ((QShortcut) interceptor).Key = value; }
+			get { return (QKeySequence) interceptor.Invoke("key", "key()", typeof(QKeySequence)); }
+			set { interceptor.Invoke("setKey#", "setKey(QKeySequence)", typeof(void), typeof(QKeySequence), value); }
 		}
 		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
-			[SmokeMethod("whatsThis", "()", "")]
-			get { return ((QShortcut) interceptor).WhatsThis; }
-			[SmokeMethod("setWhatsThis", "(QString)", "$")]
-			set { ((QShortcut) interceptor).WhatsThis = value; }
+			get { return (string) interceptor.Invoke("whatsThis", "whatsThis()", typeof(string)); }
+			set { interceptor.Invoke("setWhatsThis$", "setWhatsThis(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			[SmokeMethod("isEnabled", "()", "")]
-			get { return ((QShortcut) interceptor).Enabled; }
-			[SmokeMethod("setEnabled", "(bool)", "$")]
-			set { ((QShortcut) interceptor).Enabled = value; }
+			get { return (bool) interceptor.Invoke("isEnabled", "isEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
-			[SmokeMethod("autoRepeat", "()", "")]
-			get { return ((QShortcut) interceptor).AutoRepeat; }
-			[SmokeMethod("setAutoRepeat", "(bool)", "$")]
-			set { ((QShortcut) interceptor).AutoRepeat = value; }
+			get { return (bool) interceptor.Invoke("autoRepeat", "autoRepeat()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoRepeat$", "setAutoRepeat(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::ShortcutContext", "context")]
 		public Qt.ShortcutContext Context {
-			[SmokeMethod("context", "()", "")]
-			get { return ((QShortcut) interceptor).Context; }
-			[SmokeMethod("setContext", "(Qt::ShortcutContext)", "$")]
-			set { ((QShortcut) interceptor).Context = value; }
+			get { return (Qt.ShortcutContext) interceptor.Invoke("context", "context()", typeof(Qt.ShortcutContext)); }
+			set { interceptor.Invoke("setContext$", "setContext(Qt::ShortcutContext)", typeof(void), typeof(Qt.ShortcutContext), value); }
 		}
 		public QShortcut(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQShortcut(parent);
-		}
-		[SmokeMethod("QShortcut", "(QWidget*)", "#")]
-		private void NewQShortcut(QWidget parent) {
-			((QShortcut) interceptor).NewQShortcut(parent);
+			interceptor.Invoke("QShortcut#", "QShortcut(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) : this((Type) null) {
 			CreateProxy();
-			NewQShortcut(key,parent,member,ambiguousMember,context);
-		}
-		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*, const char*, const char*, Qt::ShortcutContext)", "##$$$")]
-		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) {
-			((QShortcut) interceptor).NewQShortcut(key,parent,member,ambiguousMember,context);
+			interceptor.Invoke("QShortcut##$$$", "QShortcut(const QKeySequence&, QWidget*, const char*, const char*, Qt::ShortcutContext)", typeof(void), typeof(QKeySequence), key, typeof(QWidget), parent, typeof(string), member, typeof(string), ambiguousMember, typeof(Qt.ShortcutContext), context);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) : this((Type) null) {
 			CreateProxy();
-			NewQShortcut(key,parent,member,ambiguousMember);
-		}
-		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*, const char*, const char*)", "##$$")]
-		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) {
-			((QShortcut) interceptor).NewQShortcut(key,parent,member,ambiguousMember);
+			interceptor.Invoke("QShortcut##$$", "QShortcut(const QKeySequence&, QWidget*, const char*, const char*)", typeof(void), typeof(QKeySequence), key, typeof(QWidget), parent, typeof(string), member, typeof(string), ambiguousMember);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member) : this((Type) null) {
 			CreateProxy();
-			NewQShortcut(key,parent,member);
-		}
-		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*, const char*)", "##$")]
-		private void NewQShortcut(QKeySequence key, QWidget parent, string member) {
-			((QShortcut) interceptor).NewQShortcut(key,parent,member);
+			interceptor.Invoke("QShortcut##$", "QShortcut(const QKeySequence&, QWidget*, const char*)", typeof(void), typeof(QKeySequence), key, typeof(QWidget), parent, typeof(string), member);
 		}
 		public QShortcut(QKeySequence key, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQShortcut(key,parent);
+			interceptor.Invoke("QShortcut##", "QShortcut(const QKeySequence&, QWidget*)", typeof(void), typeof(QKeySequence), key, typeof(QWidget), parent);
 		}
-		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*)", "##")]
-		private void NewQShortcut(QKeySequence key, QWidget parent) {
-			((QShortcut) interceptor).NewQShortcut(key,parent);
-		}
-		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ((QShortcut) interceptor).IsEnabled();
+			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("id", "() const", "")]
 		public int Id() {
-			return ((QShortcut) interceptor).Id();
+			return (int) interceptor.Invoke("id", "id() const", typeof(int));
 		}
-		[SmokeMethod("parentWidget", "() const", "")]
 		public QWidget ParentWidget() {
-			return ((QShortcut) interceptor).ParentWidget();
+			return (QWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent e) {
-			return ((QShortcut) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
 		~QShortcut() {
-			DisposeQShortcut();
+			interceptor.Invoke("~QShortcut", "~QShortcut()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQShortcut();
-		}
-		[SmokeMethod("~QShortcut", "()", "")]
-		private void DisposeQShortcut() {
-			((QShortcut) interceptor).DisposeQShortcut();
+			interceptor.Invoke("~QShortcut", "~QShortcut()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQShortcutSignals Emit {
 			get { return (IQShortcutSignals) Q_EMIT; }

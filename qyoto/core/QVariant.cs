@@ -5,27 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QVariant")]
-	public partial class QVariant : MarshalByRefObject, IDisposable {
-		protected QVariant interceptor = null;
+	public partial class QVariant : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QVariant(Type dummy) {}
-		[SmokeClass("QVariant")]
-		interface IQVariantProxy {
-			[SmokeMethod("operator==", "(const QVariant&) const", "#")]
-			bool op_equals(QVariant lhs, QVariant v);
-			[SmokeMethod("typeToName", "(QVariant::Type)", "$")]
-			string TypeToName(QVariant.TypeOf type);
-			[SmokeMethod("nameToType", "(const char*)", "$")]
-			QVariant.TypeOf NameToType(string name);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVariant), this);
-			interceptor = (QVariant) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QVariant), "QVariant", this);
 		}
-		private static IQVariantProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QVariant() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQVariantProxy), null);
-			staticInterceptor = (IQVariantProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QVariant), "QVariant", null);
 		}
 		public enum TypeOf : uint {
 			Invalid = 0,
@@ -89,456 +78,284 @@ namespace Qyoto {
 		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
 		public QVariant() : this((Type) null) {
 			CreateProxy();
-			NewQVariant();
-		}
-		[SmokeMethod("QVariant", "()", "")]
-		private void NewQVariant() {
-			((QVariant) interceptor).NewQVariant();
+			interceptor.Invoke("QVariant", "QVariant()", typeof(void));
 		}
 		public QVariant(QVariant.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(type);
-		}
-		[SmokeMethod("QVariant", "(QVariant::Type)", "$")]
-		private void NewQVariant(QVariant.TypeOf type) {
-			((QVariant) interceptor).NewQVariant(type);
+			interceptor.Invoke("QVariant$", "QVariant(QVariant::Type)", typeof(void), typeof(QVariant.TypeOf), type);
 		}
 		public QVariant(QVariant other) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(other);
-		}
-		[SmokeMethod("QVariant", "(const QVariant&)", "#")]
-		private void NewQVariant(QVariant other) {
-			((QVariant) interceptor).NewQVariant(other);
+			interceptor.Invoke("QVariant#", "QVariant(const QVariant&)", typeof(void), typeof(QVariant), other);
 		}
 		public QVariant(QDataStream s) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(s);
-		}
-		[SmokeMethod("QVariant", "(QDataStream&)", "#")]
-		private void NewQVariant(QDataStream s) {
-			((QVariant) interceptor).NewQVariant(s);
+			interceptor.Invoke("QVariant#", "QVariant(QDataStream&)", typeof(void), typeof(QDataStream), s);
 		}
 		public QVariant(int i) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(i);
-		}
-		[SmokeMethod("QVariant", "(int)", "$")]
-		private void NewQVariant(int i) {
-			((QVariant) interceptor).NewQVariant(i);
+			interceptor.Invoke("QVariant$", "QVariant(int)", typeof(void), typeof(int), i);
 		}
 		public QVariant(uint ui) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(ui);
-		}
-		[SmokeMethod("QVariant", "(uint)", "$")]
-		private void NewQVariant(uint ui) {
-			((QVariant) interceptor).NewQVariant(ui);
+			interceptor.Invoke("QVariant$", "QVariant(uint)", typeof(void), typeof(uint), ui);
 		}
 		public QVariant(long ll) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(ll);
-		}
-		[SmokeMethod("QVariant", "(qlonglong)", "?")]
-		private void NewQVariant(long ll) {
-			((QVariant) interceptor).NewQVariant(ll);
+			interceptor.Invoke("QVariant?", "QVariant(qlonglong)", typeof(void), typeof(long), ll);
 		}
 		public QVariant(ulong ull) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(ull);
-		}
-		[SmokeMethod("QVariant", "(qulonglong)", "$")]
-		private void NewQVariant(ulong ull) {
-			((QVariant) interceptor).NewQVariant(ull);
+			interceptor.Invoke("QVariant$", "QVariant(qulonglong)", typeof(void), typeof(ulong), ull);
 		}
 		public QVariant(bool b) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(b);
-		}
-		[SmokeMethod("QVariant", "(bool)", "$")]
-		private void NewQVariant(bool b) {
-			((QVariant) interceptor).NewQVariant(b);
+			interceptor.Invoke("QVariant$", "QVariant(bool)", typeof(void), typeof(bool), b);
 		}
 		public QVariant(double d) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(d);
-		}
-		[SmokeMethod("QVariant", "(double)", "$")]
-		private void NewQVariant(double d) {
-			((QVariant) interceptor).NewQVariant(d);
+			interceptor.Invoke("QVariant$", "QVariant(double)", typeof(void), typeof(double), d);
 		}
 		public QVariant(string str) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(str);
-		}
-		[SmokeMethod("QVariant", "(const char*)", "$")]
-		private void NewQVariant(string str) {
-			((QVariant) interceptor).NewQVariant(str);
+			interceptor.Invoke("QVariant$", "QVariant(const char*)", typeof(void), typeof(string), str);
 		}
 		public QVariant(QByteArray bytearray) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(bytearray);
-		}
-		[SmokeMethod("QVariant", "(const QByteArray&)", "#")]
-		private void NewQVariant(QByteArray bytearray) {
-			((QVariant) interceptor).NewQVariant(bytearray);
+			interceptor.Invoke("QVariant#", "QVariant(const QByteArray&)", typeof(void), typeof(QByteArray), bytearray);
 		}
 		public QVariant(List<string> stringlist) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(stringlist);
-		}
-		[SmokeMethod("QVariant", "(const QStringList&)", "?")]
-		private void NewQVariant(List<string> stringlist) {
-			((QVariant) interceptor).NewQVariant(stringlist);
+			interceptor.Invoke("QVariant?", "QVariant(const QStringList&)", typeof(void), typeof(List<string>), stringlist);
 		}
 		public QVariant(char qchar) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(qchar);
-		}
-		[SmokeMethod("QVariant", "(const QChar&)", "#")]
-		private void NewQVariant(char qchar) {
-			((QVariant) interceptor).NewQVariant(qchar);
+			interceptor.Invoke("QVariant#", "QVariant(const QChar&)", typeof(void), typeof(char), qchar);
 		}
 		public QVariant(QDate date) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(date);
-		}
-		[SmokeMethod("QVariant", "(const QDate&)", "#")]
-		private void NewQVariant(QDate date) {
-			((QVariant) interceptor).NewQVariant(date);
+			interceptor.Invoke("QVariant#", "QVariant(const QDate&)", typeof(void), typeof(QDate), date);
 		}
 		public QVariant(QTime time) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(time);
-		}
-		[SmokeMethod("QVariant", "(const QTime&)", "#")]
-		private void NewQVariant(QTime time) {
-			((QVariant) interceptor).NewQVariant(time);
+			interceptor.Invoke("QVariant#", "QVariant(const QTime&)", typeof(void), typeof(QTime), time);
 		}
 		public QVariant(QDateTime datetime) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(datetime);
-		}
-		[SmokeMethod("QVariant", "(const QDateTime&)", "#")]
-		private void NewQVariant(QDateTime datetime) {
-			((QVariant) interceptor).NewQVariant(datetime);
+			interceptor.Invoke("QVariant#", "QVariant(const QDateTime&)", typeof(void), typeof(QDateTime), datetime);
 		}
 		public QVariant(List<QVariant> list) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(list);
-		}
-		[SmokeMethod("QVariant", "(const QList<QVariant>&)", "?")]
-		private void NewQVariant(List<QVariant> list) {
-			((QVariant) interceptor).NewQVariant(list);
+			interceptor.Invoke("QVariant?", "QVariant(const QList<QVariant>&)", typeof(void), typeof(List<QVariant>), list);
 		}
 		public QVariant(Dictionary<string, QVariant> map) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(map);
-		}
-		[SmokeMethod("QVariant", "(const QMap<QString, QVariant>&)", "?")]
-		private void NewQVariant(Dictionary<string, QVariant> map) {
-			((QVariant) interceptor).NewQVariant(map);
+			interceptor.Invoke("QVariant?", "QVariant(const QMap<QString, QVariant>&)", typeof(void), typeof(Dictionary<string, QVariant>), map);
 		}
 		public QVariant(QSize size) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(size);
-		}
-		[SmokeMethod("QVariant", "(const QSize&)", "#")]
-		private void NewQVariant(QSize size) {
-			((QVariant) interceptor).NewQVariant(size);
+			interceptor.Invoke("QVariant#", "QVariant(const QSize&)", typeof(void), typeof(QSize), size);
 		}
 		public QVariant(QSizeF size) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(size);
-		}
-		[SmokeMethod("QVariant", "(const QSizeF&)", "#")]
-		private void NewQVariant(QSizeF size) {
-			((QVariant) interceptor).NewQVariant(size);
+			interceptor.Invoke("QVariant#", "QVariant(const QSizeF&)", typeof(void), typeof(QSizeF), size);
 		}
 		public QVariant(QPoint pt) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(pt);
-		}
-		[SmokeMethod("QVariant", "(const QPoint&)", "#")]
-		private void NewQVariant(QPoint pt) {
-			((QVariant) interceptor).NewQVariant(pt);
+			interceptor.Invoke("QVariant#", "QVariant(const QPoint&)", typeof(void), typeof(QPoint), pt);
 		}
 		public QVariant(QPointF pt) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(pt);
-		}
-		[SmokeMethod("QVariant", "(const QPointF&)", "#")]
-		private void NewQVariant(QPointF pt) {
-			((QVariant) interceptor).NewQVariant(pt);
+			interceptor.Invoke("QVariant#", "QVariant(const QPointF&)", typeof(void), typeof(QPointF), pt);
 		}
 		public QVariant(QLine line) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(line);
-		}
-		[SmokeMethod("QVariant", "(const QLine&)", "#")]
-		private void NewQVariant(QLine line) {
-			((QVariant) interceptor).NewQVariant(line);
+			interceptor.Invoke("QVariant#", "QVariant(const QLine&)", typeof(void), typeof(QLine), line);
 		}
 		public QVariant(QLineF line) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(line);
-		}
-		[SmokeMethod("QVariant", "(const QLineF&)", "#")]
-		private void NewQVariant(QLineF line) {
-			((QVariant) interceptor).NewQVariant(line);
+			interceptor.Invoke("QVariant#", "QVariant(const QLineF&)", typeof(void), typeof(QLineF), line);
 		}
 		public QVariant(QRect rect) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(rect);
-		}
-		[SmokeMethod("QVariant", "(const QRect&)", "#")]
-		private void NewQVariant(QRect rect) {
-			((QVariant) interceptor).NewQVariant(rect);
+			interceptor.Invoke("QVariant#", "QVariant(const QRect&)", typeof(void), typeof(QRect), rect);
 		}
 		public QVariant(QRectF rect) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(rect);
-		}
-		[SmokeMethod("QVariant", "(const QRectF&)", "#")]
-		private void NewQVariant(QRectF rect) {
-			((QVariant) interceptor).NewQVariant(rect);
+			interceptor.Invoke("QVariant#", "QVariant(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
 		public QVariant(IQUrl url) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(url);
-		}
-		[SmokeMethod("QVariant", "(const QUrl&)", "#")]
-		private void NewQVariant(IQUrl url) {
-			((QVariant) interceptor).NewQVariant(url);
+			interceptor.Invoke("QVariant#", "QVariant(const QUrl&)", typeof(void), typeof(IQUrl), url);
 		}
 		public QVariant(QLocale locale) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(locale);
-		}
-		[SmokeMethod("QVariant", "(const QLocale&)", "#")]
-		private void NewQVariant(QLocale locale) {
-			((QVariant) interceptor).NewQVariant(locale);
+			interceptor.Invoke("QVariant#", "QVariant(const QLocale&)", typeof(void), typeof(QLocale), locale);
 		}
 		public QVariant(QRegExp regExp) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(regExp);
-		}
-		[SmokeMethod("QVariant", "(const QRegExp&)", "#")]
-		private void NewQVariant(QRegExp regExp) {
-			((QVariant) interceptor).NewQVariant(regExp);
+			interceptor.Invoke("QVariant#", "QVariant(const QRegExp&)", typeof(void), typeof(QRegExp), regExp);
 		}
 		public QVariant(Qt.GlobalColor color) : this((Type) null) {
 			CreateProxy();
-			NewQVariant(color);
+			interceptor.Invoke("QVariant$", "QVariant(Qt::GlobalColor)", typeof(void), typeof(Qt.GlobalColor), color);
 		}
-		[SmokeMethod("QVariant", "(Qt::GlobalColor)", "$")]
-		private void NewQVariant(Qt.GlobalColor color) {
-			((QVariant) interceptor).NewQVariant(color);
-		}
-		[SmokeMethod("type", "() const", "")]
 		public QVariant.TypeOf type() {
-			return ((QVariant) interceptor).type();
+			return (QVariant.TypeOf) interceptor.Invoke("type", "type() const", typeof(QVariant.TypeOf));
 		}
-		[SmokeMethod("userType", "() const", "")]
 		public int UserType() {
-			return ((QVariant) interceptor).UserType();
+			return (int) interceptor.Invoke("userType", "userType() const", typeof(int));
 		}
-		[SmokeMethod("typeName", "() const", "")]
 		public string TypeName() {
-			return ((QVariant) interceptor).TypeName();
+			return (string) interceptor.Invoke("typeName", "typeName() const", typeof(string));
 		}
-		[SmokeMethod("canConvert", "(QVariant::Type) const", "$")]
 		public bool CanConvert(QVariant.TypeOf t) {
-			return ((QVariant) interceptor).CanConvert(t);
+			return (bool) interceptor.Invoke("canConvert$", "canConvert(QVariant::Type) const", typeof(bool), typeof(QVariant.TypeOf), t);
 		}
-		[SmokeMethod("convert", "(QVariant::Type)", "$")]
 		public bool Convert(QVariant.TypeOf t) {
-			return ((QVariant) interceptor).Convert(t);
+			return (bool) interceptor.Invoke("convert$", "convert(QVariant::Type)", typeof(bool), typeof(QVariant.TypeOf), t);
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QVariant) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QVariant) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QVariant) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QVariant) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QVariant) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		[SmokeMethod("toInt", "(bool*) const", "$")]
-		public int ToInt(out bool ok) {
-			return ((QVariant) interceptor).ToInt(out ok);
+		public int ToInt(bool ok) {
+			return (int) interceptor.Invoke("toInt$", "toInt(bool*) const", typeof(int), typeof(bool), ok);
 		}
-		[SmokeMethod("toInt", "() const", "")]
 		public int ToInt() {
-			return ((QVariant) interceptor).ToInt();
+			return (int) interceptor.Invoke("toInt", "toInt() const", typeof(int));
 		}
-		[SmokeMethod("toUInt", "(bool*) const", "$")]
-		public uint ToUInt(out bool ok) {
-			return ((QVariant) interceptor).ToUInt(out ok);
+		public uint ToUInt(bool ok) {
+			return (uint) interceptor.Invoke("toUInt$", "toUInt(bool*) const", typeof(uint), typeof(bool), ok);
 		}
-		[SmokeMethod("toUInt", "() const", "")]
 		public uint ToUInt() {
-			return ((QVariant) interceptor).ToUInt();
+			return (uint) interceptor.Invoke("toUInt", "toUInt() const", typeof(uint));
 		}
-		[SmokeMethod("toLongLong", "(bool*) const", "$")]
-		public long ToLongLong(out bool ok) {
-			return ((QVariant) interceptor).ToLongLong(out ok);
+		public long ToLongLong(bool ok) {
+			return (long) interceptor.Invoke("toLongLong$", "toLongLong(bool*) const", typeof(long), typeof(bool), ok);
 		}
-		[SmokeMethod("toLongLong", "() const", "")]
 		public long ToLongLong() {
-			return ((QVariant) interceptor).ToLongLong();
+			return (long) interceptor.Invoke("toLongLong", "toLongLong() const", typeof(long));
 		}
-		[SmokeMethod("toULongLong", "(bool*) const", "$")]
-		public ulong ToULongLong(out bool ok) {
-			return ((QVariant) interceptor).ToULongLong(out ok);
+		public ulong ToULongLong(bool ok) {
+			return (ulong) interceptor.Invoke("toULongLong$", "toULongLong(bool*) const", typeof(ulong), typeof(bool), ok);
 		}
-		[SmokeMethod("toULongLong", "() const", "")]
 		public ulong ToULongLong() {
-			return ((QVariant) interceptor).ToULongLong();
+			return (ulong) interceptor.Invoke("toULongLong", "toULongLong() const", typeof(ulong));
 		}
-		[SmokeMethod("toBool", "() const", "")]
 		public bool ToBool() {
-			return ((QVariant) interceptor).ToBool();
+			return (bool) interceptor.Invoke("toBool", "toBool() const", typeof(bool));
 		}
-		[SmokeMethod("toDouble", "(bool*) const", "$")]
-		public double ToDouble(out bool ok) {
-			return ((QVariant) interceptor).ToDouble(out ok);
+		public double ToDouble(bool ok) {
+			return (double) interceptor.Invoke("toDouble$", "toDouble(bool*) const", typeof(double), typeof(bool), ok);
 		}
-		[SmokeMethod("toDouble", "() const", "")]
 		public double ToDouble() {
-			return ((QVariant) interceptor).ToDouble();
+			return (double) interceptor.Invoke("toDouble", "toDouble() const", typeof(double));
 		}
-		[SmokeMethod("toByteArray", "() const", "")]
 		public QByteArray ToByteArray() {
-			return ((QVariant) interceptor).ToByteArray();
+			return (QByteArray) interceptor.Invoke("toByteArray", "toByteArray() const", typeof(QByteArray));
 		}
-		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ((QVariant) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("toStringList", "() const", "")]
 		public List<string> ToStringList() {
-			return ((QVariant) interceptor).ToStringList();
+			return (List<string>) interceptor.Invoke("toStringList", "toStringList() const", typeof(List<string>));
 		}
-		[SmokeMethod("toChar", "() const", "")]
 		public char ToChar() {
-			return ((QVariant) interceptor).ToChar();
+			return (char) interceptor.Invoke("toChar", "toChar() const", typeof(char));
 		}
-		[SmokeMethod("toDate", "() const", "")]
 		public QDate ToDate() {
-			return ((QVariant) interceptor).ToDate();
+			return (QDate) interceptor.Invoke("toDate", "toDate() const", typeof(QDate));
 		}
-		[SmokeMethod("toTime", "() const", "")]
 		public QTime ToTime() {
-			return ((QVariant) interceptor).ToTime();
+			return (QTime) interceptor.Invoke("toTime", "toTime() const", typeof(QTime));
 		}
-		[SmokeMethod("toDateTime", "() const", "")]
 		public QDateTime ToDateTime() {
-			return ((QVariant) interceptor).ToDateTime();
+			return (QDateTime) interceptor.Invoke("toDateTime", "toDateTime() const", typeof(QDateTime));
 		}
-		[SmokeMethod("toList", "() const", "")]
 		public List<QVariant> ToList() {
-			return ((QVariant) interceptor).ToList();
+			return (List<QVariant>) interceptor.Invoke("toList", "toList() const", typeof(List<QVariant>));
 		}
-		[SmokeMethod("toMap", "() const", "")]
 		public Dictionary<string, QVariant> ToMap() {
-			return ((QVariant) interceptor).ToMap();
+			return (Dictionary<string, QVariant>) interceptor.Invoke("toMap", "toMap() const", typeof(Dictionary<string, QVariant>));
 		}
-		[SmokeMethod("toPoint", "() const", "")]
 		public QPoint ToPoint() {
-			return ((QVariant) interceptor).ToPoint();
+			return (QPoint) interceptor.Invoke("toPoint", "toPoint() const", typeof(QPoint));
 		}
-		[SmokeMethod("toPointF", "() const", "")]
 		public QPointF ToPointF() {
-			return ((QVariant) interceptor).ToPointF();
+			return (QPointF) interceptor.Invoke("toPointF", "toPointF() const", typeof(QPointF));
 		}
-		[SmokeMethod("toRect", "() const", "")]
 		public QRect ToRect() {
-			return ((QVariant) interceptor).ToRect();
+			return (QRect) interceptor.Invoke("toRect", "toRect() const", typeof(QRect));
 		}
-		[SmokeMethod("toSize", "() const", "")]
 		public QSize ToSize() {
-			return ((QVariant) interceptor).ToSize();
+			return (QSize) interceptor.Invoke("toSize", "toSize() const", typeof(QSize));
 		}
-		[SmokeMethod("toSizeF", "() const", "")]
 		public QSizeF ToSizeF() {
-			return ((QVariant) interceptor).ToSizeF();
+			return (QSizeF) interceptor.Invoke("toSizeF", "toSizeF() const", typeof(QSizeF));
 		}
-		[SmokeMethod("toLine", "() const", "")]
 		public QLine ToLine() {
-			return ((QVariant) interceptor).ToLine();
+			return (QLine) interceptor.Invoke("toLine", "toLine() const", typeof(QLine));
 		}
-		[SmokeMethod("toLineF", "() const", "")]
 		public QLineF ToLineF() {
-			return ((QVariant) interceptor).ToLineF();
+			return (QLineF) interceptor.Invoke("toLineF", "toLineF() const", typeof(QLineF));
 		}
-		[SmokeMethod("toRectF", "() const", "")]
 		public QRectF ToRectF() {
-			return ((QVariant) interceptor).ToRectF();
+			return (QRectF) interceptor.Invoke("toRectF", "toRectF() const", typeof(QRectF));
 		}
-		[SmokeMethod("toUrl", "() const", "")]
 		public IQUrl ToUrl() {
-			return ((QVariant) interceptor).ToUrl();
+			return (IQUrl) interceptor.Invoke("toUrl", "toUrl() const", typeof(IQUrl));
 		}
-		[SmokeMethod("toLocale", "() const", "")]
 		public QLocale ToLocale() {
-			return ((QVariant) interceptor).ToLocale();
+			return (QLocale) interceptor.Invoke("toLocale", "toLocale() const", typeof(QLocale));
 		}
-		[SmokeMethod("toRegExp", "() const", "")]
 		public QRegExp ToRegExp() {
-			return ((QVariant) interceptor).ToRegExp();
+			return (QRegExp) interceptor.Invoke("toRegExp", "toRegExp() const", typeof(QRegExp));
 		}
-		[SmokeMethod("load", "(QDataStream&)", "#")]
 		public void Load(QDataStream ds) {
-			((QVariant) interceptor).Load(ds);
+			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), ds);
 		}
-		[SmokeMethod("save", "(QDataStream&) const", "#")]
 		public void Save(QDataStream ds) {
-			((QVariant) interceptor).Save(ds);
+			interceptor.Invoke("save#", "save(QDataStream&) const", typeof(void), typeof(QDataStream), ds);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QVariant)) { return false; }
 			return this == (QVariant) o;
 		}
 		public override int GetHashCode() {
-			return ((QVariant) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("cmp", "(const QVariant&) const", "#")]
 		protected bool Cmp(QVariant other) {
-			return ((QVariant) interceptor).Cmp(other);
+			return (bool) interceptor.Invoke("cmp#", "cmp(const QVariant&) const", typeof(bool), typeof(QVariant), other);
 		}
 		~QVariant() {
-			DisposeQVariant();
+			interceptor.Invoke("~QVariant", "~QVariant()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQVariant();
-		}
-		[SmokeMethod("~QVariant", "()", "")]
-		private void DisposeQVariant() {
-			((QVariant) interceptor).DisposeQVariant();
+			interceptor.Invoke("~QVariant", "~QVariant()", typeof(void));
 		}
 		public static bool operator==(QVariant lhs, QVariant v) {
-			return staticInterceptor.op_equals(lhs,v);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QVariant&) const", typeof(bool), typeof(QVariant), lhs, typeof(QVariant), v);
 		}
 		public static bool operator!=(QVariant lhs, QVariant v) {
-			return !staticInterceptor.op_equals(lhs,v);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QVariant&) const", typeof(bool), typeof(QVariant), lhs, typeof(QVariant), v);
 		}
 		public static string TypeToName(QVariant.TypeOf type) {
-			return staticInterceptor.TypeToName(type);
+			return (string) staticInterceptor.Invoke("typeToName$", "typeToName(QVariant::Type)", typeof(string), typeof(QVariant.TypeOf), type);
 		}
 		public static QVariant.TypeOf NameToType(string name) {
-			return staticInterceptor.NameToType(name);
+			return (QVariant.TypeOf) staticInterceptor.Invoke("nameToType$", "nameToType(const char*)", typeof(QVariant.TypeOf), typeof(string), name);
 		}
 	}
 }

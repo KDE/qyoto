@@ -30,103 +30,70 @@ namespace Qyoto {
 	[SmokeClass("QTimer")]
 	public class QTimer : QObject, IDisposable {
  		protected QTimer(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTimer")]
-		interface IQTimerProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("singleShot", "(int, QObject*, const char*)", "$#$")]
-			void singleShot(int msec, QObject receiver, string member);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimer), this);
-			interceptor = (QTimer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTimer), "QTimer", this);
 		}
-		private static IQTimerProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTimer() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTimerProxy), null);
-			staticInterceptor = (IQTimerProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTimer), "QTimer", null);
 		}
 		[Q_PROPERTY("bool", "singleShot")]
 		public bool SingleShot {
-			[SmokeMethod("isSingleShot", "()", "")]
-			get { return ((QTimer) interceptor).SingleShot; }
-			[SmokeMethod("setSingleShot", "(bool)", "$")]
-			set { ((QTimer) interceptor).SingleShot = value; }
+			get { return (bool) interceptor.Invoke("isSingleShot", "isSingleShot()", typeof(bool)); }
+			set { interceptor.Invoke("setSingleShot$", "setSingleShot(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "interval")]
 		public int Interval {
-			[SmokeMethod("interval", "()", "")]
-			get { return ((QTimer) interceptor).Interval; }
-			[SmokeMethod("setInterval", "(int)", "$")]
-			set { ((QTimer) interceptor).Interval = value; }
+			get { return (int) interceptor.Invoke("interval", "interval()", typeof(int)); }
+			set { interceptor.Invoke("setInterval$", "setInterval(int)", typeof(void), typeof(int), value); }
 		}
 		public QTimer(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQTimer(parent);
-		}
-		[SmokeMethod("QTimer", "(QObject*)", "#")]
-		private void NewQTimer(QObject parent) {
-			((QTimer) interceptor).NewQTimer(parent);
+			interceptor.Invoke("QTimer#", "QTimer(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QTimer() : this((Type) null) {
 			CreateProxy();
-			NewQTimer();
+			interceptor.Invoke("QTimer", "QTimer()", typeof(void));
 		}
-		[SmokeMethod("QTimer", "()", "")]
-		private void NewQTimer() {
-			((QTimer) interceptor).NewQTimer();
-		}
-		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
-			return ((QTimer) interceptor).IsActive();
+			return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
 		}
-		[SmokeMethod("timerId", "() const", "")]
 		public int TimerId() {
-			return ((QTimer) interceptor).TimerId();
+			return (int) interceptor.Invoke("timerId", "timerId() const", typeof(int));
 		}
-		[SmokeMethod("isSingleShot", "() const", "")]
 		public bool IsSingleShot() {
-			return ((QTimer) interceptor).IsSingleShot();
+			return (bool) interceptor.Invoke("isSingleShot", "isSingleShot() const", typeof(bool));
 		}
 		[Q_SLOT("void start(int)")]
-		[SmokeMethod("start", "(int)", "$")]
 		public void Start(int msec) {
-			((QTimer) interceptor).Start(msec);
+			interceptor.Invoke("start$", "start(int)", typeof(void), typeof(int), msec);
 		}
 		[Q_SLOT("void start()")]
-		[SmokeMethod("start", "()", "")]
 		public void Start() {
-			((QTimer) interceptor).Start();
+			interceptor.Invoke("start", "start()", typeof(void));
 		}
 		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			((QTimer) interceptor).Stop();
+			interceptor.Invoke("stop", "stop()", typeof(void));
 		}
-		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			((QTimer) interceptor).TimerEvent(arg1);
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
 		~QTimer() {
-			DisposeQTimer();
+			interceptor.Invoke("~QTimer", "~QTimer()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTimer();
-		}
-		[SmokeMethod("~QTimer", "()", "")]
-		private void DisposeQTimer() {
-			((QTimer) interceptor).DisposeQTimer();
+			interceptor.Invoke("~QTimer", "~QTimer()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static void singleShot(int msec, QObject receiver, string member) {
-			staticInterceptor.singleShot(msec,receiver,member);
+			staticInterceptor.Invoke("singleShot$#$", "singleShot(int, QObject*, const char*)", typeof(void), typeof(int), msec, typeof(QObject), receiver, typeof(string), member);
 		}
 		protected new IQTimerSignals Emit {
 			get { return (IQTimerSignals) Q_EMIT; }

@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionToolBox : QStyleOption, IDisposable {
  		protected QStyleOptionToolBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionToolBox), this);
-			interceptor = (QStyleOptionToolBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionToolBox), "QStyleOptionToolBox", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ToolBox,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionToolBox() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionToolBox();
-		}
-		[SmokeMethod("QStyleOptionToolBox", "()", "")]
-		private void NewQStyleOptionToolBox() {
-			((QStyleOptionToolBox) interceptor).NewQStyleOptionToolBox();
+			interceptor.Invoke("QStyleOptionToolBox", "QStyleOptionToolBox()", typeof(void));
 		}
 		public QStyleOptionToolBox(QStyleOptionToolBox other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionToolBox(other);
-		}
-		[SmokeMethod("QStyleOptionToolBox", "(const QStyleOptionToolBox&)", "#")]
-		private void NewQStyleOptionToolBox(QStyleOptionToolBox other) {
-			((QStyleOptionToolBox) interceptor).NewQStyleOptionToolBox(other);
+			interceptor.Invoke("QStyleOptionToolBox#", "QStyleOptionToolBox(const QStyleOptionToolBox&)", typeof(void), typeof(QStyleOptionToolBox), other);
 		}
 		public QStyleOptionToolBox(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionToolBox(version);
-		}
-		[SmokeMethod("QStyleOptionToolBox", "(int)", "$")]
-		private void NewQStyleOptionToolBox(int version) {
-			((QStyleOptionToolBox) interceptor).NewQStyleOptionToolBox(version);
+			interceptor.Invoke("QStyleOptionToolBox$", "QStyleOptionToolBox(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionToolBox() {
-			DisposeQStyleOptionToolBox();
+			interceptor.Invoke("~QStyleOptionToolBox", "~QStyleOptionToolBox()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionToolBox();
-		}
-		[SmokeMethod("~QStyleOptionToolBox", "()", "")]
-		private void DisposeQStyleOptionToolBox() {
-			((QStyleOptionToolBox) interceptor).DisposeQStyleOptionToolBox();
+			interceptor.Invoke("~QStyleOptionToolBox", "~QStyleOptionToolBox()", typeof(void));
 		}
 	}
 }

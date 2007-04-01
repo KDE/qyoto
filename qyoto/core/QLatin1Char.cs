@@ -4,39 +4,28 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QLatin1Char")]
-	public class QLatin1Char : MarshalByRefObject, IDisposable {
-		protected QLatin1Char interceptor = null;
+	public class QLatin1Char : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QLatin1Char(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLatin1Char), this);
-			interceptor = (QLatin1Char) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QLatin1Char), "QLatin1Char", this);
 		}
 		public QLatin1Char(char c) : this((Type) null) {
 			CreateProxy();
-			NewQLatin1Char(c);
+			interceptor.Invoke("QLatin1Char$", "QLatin1Char(char)", typeof(void), typeof(char), c);
 		}
-		[SmokeMethod("QLatin1Char", "(char)", "$")]
-		private void NewQLatin1Char(char c) {
-			((QLatin1Char) interceptor).NewQLatin1Char(c);
-		}
-		[SmokeMethod("toLatin1", "() const", "")]
 		public char ToLatin1() {
-			return ((QLatin1Char) interceptor).ToLatin1();
+			return (char) interceptor.Invoke("toLatin1", "toLatin1() const", typeof(char));
 		}
-		[SmokeMethod("unicode", "() const", "")]
 		public ushort Unicode() {
-			return ((QLatin1Char) interceptor).Unicode();
+			return (ushort) interceptor.Invoke("unicode", "unicode() const", typeof(ushort));
 		}
 		~QLatin1Char() {
-			DisposeQLatin1Char();
+			interceptor.Invoke("~QLatin1Char", "~QLatin1Char()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQLatin1Char();
-		}
-		[SmokeMethod("~QLatin1Char", "()", "")]
-		private void DisposeQLatin1Char() {
-			((QLatin1Char) interceptor).DisposeQLatin1Char();
+			interceptor.Invoke("~QLatin1Char", "~QLatin1Char()", typeof(void));
 		}
 	}
 }

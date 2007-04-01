@@ -8,31 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QProcess")]
 	public class QProcess : QIODevice, IDisposable {
  		protected QProcess(Type dummy) : base((Type) null) {}
-		[SmokeClass("QProcess")]
-		interface IQProcessProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("execute", "(const QString&, const QStringList&)", "$?")]
-			int Execute(string program, List<string> arguments);
-			[SmokeMethod("execute", "(const QString&)", "$")]
-			int Execute(string program);
-			[SmokeMethod("startDetached", "(const QString&, const QStringList&)", "$?")]
-			bool StartDetached(string program, List<string> arguments);
-			[SmokeMethod("startDetached", "(const QString&)", "$")]
-			bool StartDetached(string program);
-			[SmokeMethod("systemEnvironment", "()", "")]
-			List<string> SystemEnvironment();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProcess), this);
-			interceptor = (QProcess) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QProcess), "QProcess", this);
 		}
-		private static IQProcessProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QProcess() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQProcessProxy), null);
-			staticInterceptor = (IQProcessProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QProcess), "QProcess", null);
 		}
 		public enum ProcessError {
 			FailedToStart = 0,
@@ -63,244 +44,197 @@ namespace Qyoto {
 		// Q_PID pid(); >>>> NOT CONVERTED
 		public QProcess(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQProcess(parent);
-		}
-		[SmokeMethod("QProcess", "(QObject*)", "#")]
-		private void NewQProcess(QObject parent) {
-			((QProcess) interceptor).NewQProcess(parent);
+			interceptor.Invoke("QProcess#", "QProcess(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QProcess() : this((Type) null) {
 			CreateProxy();
-			NewQProcess();
+			interceptor.Invoke("QProcess", "QProcess()", typeof(void));
 		}
-		[SmokeMethod("QProcess", "()", "")]
-		private void NewQProcess() {
-			((QProcess) interceptor).NewQProcess();
-		}
-		[SmokeMethod("start", "(const QString&, const QStringList&, OpenMode)", "$?$")]
 		public void Start(string program, List<string> arguments, int mode) {
-			((QProcess) interceptor).Start(program,arguments,mode);
+			interceptor.Invoke("start$?$", "start(const QString&, const QStringList&, OpenMode)", typeof(void), typeof(string), program, typeof(List<string>), arguments, typeof(int), mode);
 		}
-		[SmokeMethod("start", "(const QString&, const QStringList&)", "$?")]
 		public void Start(string program, List<string> arguments) {
-			((QProcess) interceptor).Start(program,arguments);
+			interceptor.Invoke("start$?", "start(const QString&, const QStringList&)", typeof(void), typeof(string), program, typeof(List<string>), arguments);
 		}
-		[SmokeMethod("start", "(const QString&, OpenMode)", "$$")]
 		public void Start(string program, int mode) {
-			((QProcess) interceptor).Start(program,mode);
+			interceptor.Invoke("start$$", "start(const QString&, OpenMode)", typeof(void), typeof(string), program, typeof(int), mode);
 		}
-		[SmokeMethod("start", "(const QString&)", "$")]
 		public void Start(string program) {
-			((QProcess) interceptor).Start(program);
+			interceptor.Invoke("start$", "start(const QString&)", typeof(void), typeof(string), program);
 		}
-		[SmokeMethod("readChannelMode", "() const", "")]
 		public QProcess.ProcessChannelMode ReadChannelMode() {
-			return ((QProcess) interceptor).ReadChannelMode();
+			return (QProcess.ProcessChannelMode) interceptor.Invoke("readChannelMode", "readChannelMode() const", typeof(QProcess.ProcessChannelMode));
 		}
-		[SmokeMethod("setReadChannelMode", "(QProcess::ProcessChannelMode)", "$")]
 		public void SetReadChannelMode(QProcess.ProcessChannelMode mode) {
-			((QProcess) interceptor).SetReadChannelMode(mode);
+			interceptor.Invoke("setReadChannelMode$", "setReadChannelMode(QProcess::ProcessChannelMode)", typeof(void), typeof(QProcess.ProcessChannelMode), mode);
 		}
-		[SmokeMethod("processChannelMode", "() const", "")]
 		public QProcess.ProcessChannelMode processChannelMode() {
-			return ((QProcess) interceptor).processChannelMode();
+			return (QProcess.ProcessChannelMode) interceptor.Invoke("processChannelMode", "processChannelMode() const", typeof(QProcess.ProcessChannelMode));
 		}
-		[SmokeMethod("setProcessChannelMode", "(QProcess::ProcessChannelMode)", "$")]
 		public void SetProcessChannelMode(QProcess.ProcessChannelMode mode) {
-			((QProcess) interceptor).SetProcessChannelMode(mode);
+			interceptor.Invoke("setProcessChannelMode$", "setProcessChannelMode(QProcess::ProcessChannelMode)", typeof(void), typeof(QProcess.ProcessChannelMode), mode);
 		}
-		[SmokeMethod("readChannel", "() const", "")]
 		public QProcess.ProcessChannel ReadChannel() {
-			return ((QProcess) interceptor).ReadChannel();
+			return (QProcess.ProcessChannel) interceptor.Invoke("readChannel", "readChannel() const", typeof(QProcess.ProcessChannel));
 		}
-		[SmokeMethod("setReadChannel", "(QProcess::ProcessChannel)", "$")]
 		public void SetReadChannel(QProcess.ProcessChannel channel) {
-			((QProcess) interceptor).SetReadChannel(channel);
+			interceptor.Invoke("setReadChannel$", "setReadChannel(QProcess::ProcessChannel)", typeof(void), typeof(QProcess.ProcessChannel), channel);
 		}
-		[SmokeMethod("closeReadChannel", "(QProcess::ProcessChannel)", "$")]
 		public void CloseReadChannel(QProcess.ProcessChannel channel) {
-			((QProcess) interceptor).CloseReadChannel(channel);
+			interceptor.Invoke("closeReadChannel$", "closeReadChannel(QProcess::ProcessChannel)", typeof(void), typeof(QProcess.ProcessChannel), channel);
 		}
-		[SmokeMethod("closeWriteChannel", "()", "")]
 		public void CloseWriteChannel() {
-			((QProcess) interceptor).CloseWriteChannel();
+			interceptor.Invoke("closeWriteChannel", "closeWriteChannel()", typeof(void));
 		}
-		[SmokeMethod("setStandardInputFile", "(const QString&)", "$")]
 		public void SetStandardInputFile(string fileName) {
-			((QProcess) interceptor).SetStandardInputFile(fileName);
+			interceptor.Invoke("setStandardInputFile$", "setStandardInputFile(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		[SmokeMethod("setStandardOutputFile", "(const QString&, OpenMode)", "$$")]
 		public void SetStandardOutputFile(string fileName, int mode) {
-			((QProcess) interceptor).SetStandardOutputFile(fileName,mode);
+			interceptor.Invoke("setStandardOutputFile$$", "setStandardOutputFile(const QString&, OpenMode)", typeof(void), typeof(string), fileName, typeof(int), mode);
 		}
-		[SmokeMethod("setStandardOutputFile", "(const QString&)", "$")]
 		public void SetStandardOutputFile(string fileName) {
-			((QProcess) interceptor).SetStandardOutputFile(fileName);
+			interceptor.Invoke("setStandardOutputFile$", "setStandardOutputFile(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		[SmokeMethod("setStandardErrorFile", "(const QString&, OpenMode)", "$$")]
 		public void SetStandardErrorFile(string fileName, int mode) {
-			((QProcess) interceptor).SetStandardErrorFile(fileName,mode);
+			interceptor.Invoke("setStandardErrorFile$$", "setStandardErrorFile(const QString&, OpenMode)", typeof(void), typeof(string), fileName, typeof(int), mode);
 		}
-		[SmokeMethod("setStandardErrorFile", "(const QString&)", "$")]
 		public void SetStandardErrorFile(string fileName) {
-			((QProcess) interceptor).SetStandardErrorFile(fileName);
+			interceptor.Invoke("setStandardErrorFile$", "setStandardErrorFile(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		[SmokeMethod("setStandardOutputProcess", "(QProcess*)", "#")]
 		public void SetStandardOutputProcess(QProcess destination) {
-			((QProcess) interceptor).SetStandardOutputProcess(destination);
+			interceptor.Invoke("setStandardOutputProcess#", "setStandardOutputProcess(QProcess*)", typeof(void), typeof(QProcess), destination);
 		}
-		[SmokeMethod("workingDirectory", "() const", "")]
 		public string WorkingDirectory() {
-			return ((QProcess) interceptor).WorkingDirectory();
+			return (string) interceptor.Invoke("workingDirectory", "workingDirectory() const", typeof(string));
 		}
-		[SmokeMethod("setWorkingDirectory", "(const QString&)", "$")]
 		public void SetWorkingDirectory(string dir) {
-			((QProcess) interceptor).SetWorkingDirectory(dir);
+			interceptor.Invoke("setWorkingDirectory$", "setWorkingDirectory(const QString&)", typeof(void), typeof(string), dir);
 		}
-		[SmokeMethod("setEnvironment", "(const QStringList&)", "?")]
 		public void SetEnvironment(List<string> environment) {
-			((QProcess) interceptor).SetEnvironment(environment);
+			interceptor.Invoke("setEnvironment?", "setEnvironment(const QStringList&)", typeof(void), typeof(List<string>), environment);
 		}
-		[SmokeMethod("environment", "() const", "")]
 		public List<string> Environment() {
-			return ((QProcess) interceptor).Environment();
+			return (List<string>) interceptor.Invoke("environment", "environment() const", typeof(List<string>));
 		}
-		[SmokeMethod("error", "() const", "")]
 		public QProcess.ProcessError Error() {
-			return ((QProcess) interceptor).Error();
+			return (QProcess.ProcessError) interceptor.Invoke("error", "error() const", typeof(QProcess.ProcessError));
 		}
-		[SmokeMethod("state", "() const", "")]
 		public QProcess.ProcessState State() {
-			return ((QProcess) interceptor).State();
+			return (QProcess.ProcessState) interceptor.Invoke("state", "state() const", typeof(QProcess.ProcessState));
 		}
-		[SmokeMethod("waitForStarted", "(int)", "$")]
 		public bool WaitForStarted(int msecs) {
-			return ((QProcess) interceptor).WaitForStarted(msecs);
+			return (bool) interceptor.Invoke("waitForStarted$", "waitForStarted(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForStarted", "()", "")]
 		public bool WaitForStarted() {
-			return ((QProcess) interceptor).WaitForStarted();
+			return (bool) interceptor.Invoke("waitForStarted", "waitForStarted()", typeof(bool));
 		}
-		[SmokeMethod("waitForReadyRead", "(int)", "$")]
+		[SmokeMethod("waitForReadyRead(int)")]
 		public override bool WaitForReadyRead(int msecs) {
-			return ((QProcess) interceptor).WaitForReadyRead(msecs);
+			return (bool) interceptor.Invoke("waitForReadyRead$", "waitForReadyRead(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForReadyRead", "()", "")]
+		[SmokeMethod("waitForReadyRead()")]
 		public bool WaitForReadyRead() {
-			return ((QProcess) interceptor).WaitForReadyRead();
+			return (bool) interceptor.Invoke("waitForReadyRead", "waitForReadyRead()", typeof(bool));
 		}
-		[SmokeMethod("waitForBytesWritten", "(int)", "$")]
+		[SmokeMethod("waitForBytesWritten(int)")]
 		public override bool WaitForBytesWritten(int msecs) {
-			return ((QProcess) interceptor).WaitForBytesWritten(msecs);
+			return (bool) interceptor.Invoke("waitForBytesWritten$", "waitForBytesWritten(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForBytesWritten", "()", "")]
+		[SmokeMethod("waitForBytesWritten()")]
 		public bool WaitForBytesWritten() {
-			return ((QProcess) interceptor).WaitForBytesWritten();
+			return (bool) interceptor.Invoke("waitForBytesWritten", "waitForBytesWritten()", typeof(bool));
 		}
-		[SmokeMethod("waitForFinished", "(int)", "$")]
 		public bool WaitForFinished(int msecs) {
-			return ((QProcess) interceptor).WaitForFinished(msecs);
+			return (bool) interceptor.Invoke("waitForFinished$", "waitForFinished(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForFinished", "()", "")]
 		public bool WaitForFinished() {
-			return ((QProcess) interceptor).WaitForFinished();
+			return (bool) interceptor.Invoke("waitForFinished", "waitForFinished()", typeof(bool));
 		}
-		[SmokeMethod("readAllStandardOutput", "()", "")]
 		public QByteArray ReadAllStandardOutput() {
-			return ((QProcess) interceptor).ReadAllStandardOutput();
+			return (QByteArray) interceptor.Invoke("readAllStandardOutput", "readAllStandardOutput()", typeof(QByteArray));
 		}
-		[SmokeMethod("readAllStandardError", "()", "")]
 		public QByteArray ReadAllStandardError() {
-			return ((QProcess) interceptor).ReadAllStandardError();
+			return (QByteArray) interceptor.Invoke("readAllStandardError", "readAllStandardError()", typeof(QByteArray));
 		}
-		[SmokeMethod("exitCode", "() const", "")]
 		public int ExitCode() {
-			return ((QProcess) interceptor).ExitCode();
+			return (int) interceptor.Invoke("exitCode", "exitCode() const", typeof(int));
 		}
-		[SmokeMethod("exitStatus", "() const", "")]
 		public QProcess.ExitStatus exitStatus() {
-			return ((QProcess) interceptor).exitStatus();
+			return (QProcess.ExitStatus) interceptor.Invoke("exitStatus", "exitStatus() const", typeof(QProcess.ExitStatus));
 		}
-		[SmokeMethod("bytesAvailable", "() const", "")]
+		[SmokeMethod("bytesAvailable() const")]
 		public override long BytesAvailable() {
-			return ((QProcess) interceptor).BytesAvailable();
+			return (long) interceptor.Invoke("bytesAvailable", "bytesAvailable() const", typeof(long));
 		}
-		[SmokeMethod("bytesToWrite", "() const", "")]
+		[SmokeMethod("bytesToWrite() const")]
 		public override long BytesToWrite() {
-			return ((QProcess) interceptor).BytesToWrite();
+			return (long) interceptor.Invoke("bytesToWrite", "bytesToWrite() const", typeof(long));
 		}
-		[SmokeMethod("isSequential", "() const", "")]
+		[SmokeMethod("isSequential() const")]
 		public override bool IsSequential() {
-			return ((QProcess) interceptor).IsSequential();
+			return (bool) interceptor.Invoke("isSequential", "isSequential() const", typeof(bool));
 		}
-		[SmokeMethod("canReadLine", "() const", "")]
+		[SmokeMethod("canReadLine() const")]
 		public override bool CanReadLine() {
-			return ((QProcess) interceptor).CanReadLine();
+			return (bool) interceptor.Invoke("canReadLine", "canReadLine() const", typeof(bool));
 		}
-		[SmokeMethod("close", "()", "")]
+		[SmokeMethod("close()")]
 		public override void Close() {
-			((QProcess) interceptor).Close();
+			interceptor.Invoke("close", "close()", typeof(void));
 		}
-		[SmokeMethod("atEnd", "() const", "")]
+		[SmokeMethod("atEnd() const")]
 		public override bool AtEnd() {
-			return ((QProcess) interceptor).AtEnd();
+			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
 		[Q_SLOT("void terminate()")]
-		[SmokeMethod("terminate", "()", "")]
 		public void Terminate() {
-			((QProcess) interceptor).Terminate();
+			interceptor.Invoke("terminate", "terminate()", typeof(void));
 		}
 		[Q_SLOT("void kill()")]
-		[SmokeMethod("kill", "()", "")]
 		public void Kill() {
-			((QProcess) interceptor).Kill();
+			interceptor.Invoke("kill", "kill()", typeof(void));
 		}
-		[SmokeMethod("setProcessState", "(QProcess::ProcessState)", "$")]
 		protected void SetProcessState(QProcess.ProcessState state) {
-			((QProcess) interceptor).SetProcessState(state);
+			interceptor.Invoke("setProcessState$", "setProcessState(QProcess::ProcessState)", typeof(void), typeof(QProcess.ProcessState), state);
 		}
-		[SmokeMethod("setupChildProcess", "()", "")]
+		[SmokeMethod("setupChildProcess()")]
 		protected virtual void SetupChildProcess() {
-			((QProcess) interceptor).SetupChildProcess();
+			interceptor.Invoke("setupChildProcess", "setupChildProcess()", typeof(void));
 		}
-		[SmokeMethod("readData", "(char*, qint64)", "$$")]
+		[SmokeMethod("readData(char*, qint64)")]
 		protected override long ReadData(string data, long maxlen) {
-			return ((QProcess) interceptor).ReadData(data,maxlen);
+			return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
-		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
+		[SmokeMethod("writeData(const char*, qint64)")]
 		protected override long WriteData(string data, long len) {
-			return ((QProcess) interceptor).WriteData(data,len);
+			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
 		~QProcess() {
-			DisposeQProcess();
+			interceptor.Invoke("~QProcess", "~QProcess()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQProcess();
-		}
-		[SmokeMethod("~QProcess", "()", "")]
-		private void DisposeQProcess() {
-			((QProcess) interceptor).DisposeQProcess();
+			interceptor.Invoke("~QProcess", "~QProcess()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static int Execute(string program, List<string> arguments) {
-			return staticInterceptor.Execute(program,arguments);
+			return (int) staticInterceptor.Invoke("execute$?", "execute(const QString&, const QStringList&)", typeof(int), typeof(string), program, typeof(List<string>), arguments);
 		}
 		public static int Execute(string program) {
-			return staticInterceptor.Execute(program);
+			return (int) staticInterceptor.Invoke("execute$", "execute(const QString&)", typeof(int), typeof(string), program);
 		}
 		public static bool StartDetached(string program, List<string> arguments) {
-			return staticInterceptor.StartDetached(program,arguments);
+			return (bool) staticInterceptor.Invoke("startDetached$?", "startDetached(const QString&, const QStringList&)", typeof(bool), typeof(string), program, typeof(List<string>), arguments);
 		}
 		public static bool StartDetached(string program) {
-			return staticInterceptor.StartDetached(program);
+			return (bool) staticInterceptor.Invoke("startDetached$", "startDetached(const QString&)", typeof(bool), typeof(string), program);
 		}
 		public static List<string> SystemEnvironment() {
-			return staticInterceptor.SystemEnvironment();
+			return (List<string>) staticInterceptor.Invoke("systemEnvironment", "systemEnvironment()", typeof(List<string>));
 		}
 		protected new IQProcessSignals Emit {
 			get { return (IQProcessSignals) Q_EMIT; }

@@ -4,39 +4,28 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextDecoder")]
-	public class QTextDecoder : MarshalByRefObject, IDisposable {
-		protected QTextDecoder interceptor = null;
+	public class QTextDecoder : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextDecoder(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDecoder), this);
-			interceptor = (QTextDecoder) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextDecoder), "QTextDecoder", this);
 		}
 		public QTextDecoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();
-			NewQTextDecoder(codec);
+			interceptor.Invoke("QTextDecoder#", "QTextDecoder(const QTextCodec*)", typeof(void), typeof(QTextCodec), codec);
 		}
-		[SmokeMethod("QTextDecoder", "(const QTextCodec*)", "#")]
-		private void NewQTextDecoder(QTextCodec codec) {
-			((QTextDecoder) interceptor).NewQTextDecoder(codec);
-		}
-		[SmokeMethod("toUnicode", "(const char*, int)", "$$")]
 		public string ToUnicode(string chars, int len) {
-			return ((QTextDecoder) interceptor).ToUnicode(chars,len);
+			return (string) interceptor.Invoke("toUnicode$$", "toUnicode(const char*, int)", typeof(string), typeof(string), chars, typeof(int), len);
 		}
-		[SmokeMethod("toUnicode", "(const QByteArray&)", "#")]
 		public string ToUnicode(QByteArray ba) {
-			return ((QTextDecoder) interceptor).ToUnicode(ba);
+			return (string) interceptor.Invoke("toUnicode#", "toUnicode(const QByteArray&)", typeof(string), typeof(QByteArray), ba);
 		}
 		~QTextDecoder() {
-			DisposeQTextDecoder();
+			interceptor.Invoke("~QTextDecoder", "~QTextDecoder()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextDecoder();
-		}
-		[SmokeMethod("~QTextDecoder", "()", "")]
-		private void DisposeQTextDecoder() {
-			((QTextDecoder) interceptor).DisposeQTextDecoder();
+			interceptor.Invoke("~QTextDecoder", "~QTextDecoder()", typeof(void));
 		}
 	}
 }

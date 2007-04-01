@@ -4,61 +4,43 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QItemEditorFactory")]
-	public class QItemEditorFactory : MarshalByRefObject, IDisposable {
-		protected QItemEditorFactory interceptor = null;
+	public class QItemEditorFactory : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QItemEditorFactory(Type dummy) {}
-		[SmokeClass("QItemEditorFactory")]
-		interface IQItemEditorFactoryProxy {
-			[SmokeMethod("defaultFactory", "()", "")]
-			QItemEditorFactory DefaultFactory();
-			[SmokeMethod("setDefaultFactory", "(QItemEditorFactory*)", "#")]
-			void SetDefaultFactory(QItemEditorFactory factory);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemEditorFactory), this);
-			interceptor = (QItemEditorFactory) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QItemEditorFactory), "QItemEditorFactory", this);
 		}
-		private static IQItemEditorFactoryProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QItemEditorFactory() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemEditorFactoryProxy), null);
-			staticInterceptor = (IQItemEditorFactoryProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QItemEditorFactory), "QItemEditorFactory", null);
 		}
 		public QItemEditorFactory() : this((Type) null) {
 			CreateProxy();
-			NewQItemEditorFactory();
+			interceptor.Invoke("QItemEditorFactory", "QItemEditorFactory()", typeof(void));
 		}
-		[SmokeMethod("QItemEditorFactory", "()", "")]
-		private void NewQItemEditorFactory() {
-			((QItemEditorFactory) interceptor).NewQItemEditorFactory();
-		}
-		[SmokeMethod("createEditor", "(QVariant::Type, QWidget*) const", "$#")]
+		[SmokeMethod("createEditor(QVariant::Type, QWidget*) const")]
 		public virtual QWidget CreateEditor(QVariant.TypeOf type, QWidget parent) {
-			return ((QItemEditorFactory) interceptor).CreateEditor(type,parent);
+			return (QWidget) interceptor.Invoke("createEditor$#", "createEditor(QVariant::Type, QWidget*) const", typeof(QWidget), typeof(QVariant.TypeOf), type, typeof(QWidget), parent);
 		}
-		[SmokeMethod("valuePropertyName", "(QVariant::Type) const", "$")]
+		[SmokeMethod("valuePropertyName(QVariant::Type) const")]
 		public virtual QByteArray ValuePropertyName(QVariant.TypeOf type) {
-			return ((QItemEditorFactory) interceptor).ValuePropertyName(type);
+			return (QByteArray) interceptor.Invoke("valuePropertyName$", "valuePropertyName(QVariant::Type) const", typeof(QByteArray), typeof(QVariant.TypeOf), type);
 		}
-		[SmokeMethod("registerEditor", "(QVariant::Type, QItemEditorCreatorBase*)", "$#")]
 		public void RegisterEditor(QVariant.TypeOf type, QItemEditorCreatorBase creator) {
-			((QItemEditorFactory) interceptor).RegisterEditor(type,creator);
+			interceptor.Invoke("registerEditor$#", "registerEditor(QVariant::Type, QItemEditorCreatorBase*)", typeof(void), typeof(QVariant.TypeOf), type, typeof(QItemEditorCreatorBase), creator);
 		}
 		~QItemEditorFactory() {
-			DisposeQItemEditorFactory();
+			interceptor.Invoke("~QItemEditorFactory", "~QItemEditorFactory()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQItemEditorFactory();
-		}
-		[SmokeMethod("~QItemEditorFactory", "()", "")]
-		private void DisposeQItemEditorFactory() {
-			((QItemEditorFactory) interceptor).DisposeQItemEditorFactory();
+			interceptor.Invoke("~QItemEditorFactory", "~QItemEditorFactory()", typeof(void));
 		}
 		public static QItemEditorFactory DefaultFactory() {
-			return staticInterceptor.DefaultFactory();
+			return (QItemEditorFactory) staticInterceptor.Invoke("defaultFactory", "defaultFactory()", typeof(QItemEditorFactory));
 		}
 		public static void SetDefaultFactory(QItemEditorFactory factory) {
-			staticInterceptor.SetDefaultFactory(factory);
+			staticInterceptor.Invoke("setDefaultFactory#", "setDefaultFactory(QItemEditorFactory*)", typeof(void), typeof(QItemEditorFactory), factory);
 		}
 	}
 }

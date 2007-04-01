@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QLCDNumber")]
 	public class QLCDNumber : QFrame, IDisposable {
  		protected QLCDNumber(Type dummy) : base((Type) null) {}
-		[SmokeClass("QLCDNumber")]
-		interface IQLCDNumberProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLCDNumber), this);
-			interceptor = (QLCDNumber) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QLCDNumber), "QLCDNumber", this);
 		}
-		private static IQLCDNumberProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QLCDNumber() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLCDNumberProxy), null);
-			staticInterceptor = (IQLCDNumberProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QLCDNumber), "QLCDNumber", null);
 		}
 		public enum Mode {
 			Hex = 0,
@@ -36,148 +27,107 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "smallDecimalPoint")]
 		public bool SmallDecimalPoint {
-			[SmokeMethod("smallDecimalPoint", "()", "")]
-			get { return ((QLCDNumber) interceptor).SmallDecimalPoint; }
-			[SmokeMethod("setSmallDecimalPoint", "(bool)", "$")]
-			set { ((QLCDNumber) interceptor).SmallDecimalPoint = value; }
+			get { return (bool) interceptor.Invoke("smallDecimalPoint", "smallDecimalPoint()", typeof(bool)); }
+			set { interceptor.Invoke("setSmallDecimalPoint$", "setSmallDecimalPoint(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "numDigits")]
 		public int NumDigits {
-			[SmokeMethod("numDigits", "()", "")]
-			get { return ((QLCDNumber) interceptor).NumDigits; }
-			[SmokeMethod("setNumDigits", "(int)", "$")]
-			set { ((QLCDNumber) interceptor).NumDigits = value; }
+			get { return (int) interceptor.Invoke("numDigits", "numDigits()", typeof(int)); }
+			set { interceptor.Invoke("setNumDigits$", "setNumDigits(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QLCDNumber::Mode", "mode")]
 		public QLCDNumber.Mode mode {
-			[SmokeMethod("mode", "()", "")]
-			get { return ((QLCDNumber) interceptor).mode; }
-			[SmokeMethod("setMode", "(QLCDNumber::Mode)", "$")]
-			set { ((QLCDNumber) interceptor).mode = value; }
+			get { return (QLCDNumber.Mode) interceptor.Invoke("mode", "mode()", typeof(QLCDNumber.Mode)); }
+			set { interceptor.Invoke("setMode$", "setMode(QLCDNumber::Mode)", typeof(void), typeof(QLCDNumber.Mode), value); }
 		}
 		[Q_PROPERTY("QLCDNumber::SegmentStyle", "segmentStyle")]
 		public QLCDNumber.SegmentStyle segmentStyle {
-			[SmokeMethod("segmentStyle", "()", "")]
-			get { return ((QLCDNumber) interceptor).segmentStyle; }
-			[SmokeMethod("setSegmentStyle", "(QLCDNumber::SegmentStyle)", "$")]
-			set { ((QLCDNumber) interceptor).segmentStyle = value; }
+			get { return (QLCDNumber.SegmentStyle) interceptor.Invoke("segmentStyle", "segmentStyle()", typeof(QLCDNumber.SegmentStyle)); }
+			set { interceptor.Invoke("setSegmentStyle$", "setSegmentStyle(QLCDNumber::SegmentStyle)", typeof(void), typeof(QLCDNumber.SegmentStyle), value); }
 		}
 		[Q_PROPERTY("double", "value")]
 		public double Value {
-			[SmokeMethod("value", "()", "")]
-			get { return ((QLCDNumber) interceptor).Value; }
-			[SmokeMethod("display", "(double)", "$")]
-			set { ((QLCDNumber) interceptor).Value = value; }
+			get { return (double) interceptor.Invoke("value", "value()", typeof(double)); }
+			set { interceptor.Invoke("display$", "display(double)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("int", "intValue")]
 		public int IntValue {
-			[SmokeMethod("intValue", "()", "")]
-			get { return ((QLCDNumber) interceptor).IntValue; }
-			[SmokeMethod("display", "(int)", "$")]
-			set { ((QLCDNumber) interceptor).IntValue = value; }
+			get { return (int) interceptor.Invoke("intValue", "intValue()", typeof(int)); }
+			set { interceptor.Invoke("display$", "display(int)", typeof(void), typeof(int), value); }
 		}
 		public QLCDNumber(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQLCDNumber(parent);
-		}
-		[SmokeMethod("QLCDNumber", "(QWidget*)", "#")]
-		private void NewQLCDNumber(QWidget parent) {
-			((QLCDNumber) interceptor).NewQLCDNumber(parent);
+			interceptor.Invoke("QLCDNumber#", "QLCDNumber(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QLCDNumber() : this((Type) null) {
 			CreateProxy();
-			NewQLCDNumber();
-		}
-		[SmokeMethod("QLCDNumber", "()", "")]
-		private void NewQLCDNumber() {
-			((QLCDNumber) interceptor).NewQLCDNumber();
+			interceptor.Invoke("QLCDNumber", "QLCDNumber()", typeof(void));
 		}
 		public QLCDNumber(uint numDigits, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQLCDNumber(numDigits,parent);
-		}
-		[SmokeMethod("QLCDNumber", "(uint, QWidget*)", "$#")]
-		private void NewQLCDNumber(uint numDigits, QWidget parent) {
-			((QLCDNumber) interceptor).NewQLCDNumber(numDigits,parent);
+			interceptor.Invoke("QLCDNumber$#", "QLCDNumber(uint, QWidget*)", typeof(void), typeof(uint), numDigits, typeof(QWidget), parent);
 		}
 		public QLCDNumber(uint numDigits) : this((Type) null) {
 			CreateProxy();
-			NewQLCDNumber(numDigits);
+			interceptor.Invoke("QLCDNumber$", "QLCDNumber(uint)", typeof(void), typeof(uint), numDigits);
 		}
-		[SmokeMethod("QLCDNumber", "(uint)", "$")]
-		private void NewQLCDNumber(uint numDigits) {
-			((QLCDNumber) interceptor).NewQLCDNumber(numDigits);
-		}
-		[SmokeMethod("checkOverflow", "(double) const", "$")]
 		public bool CheckOverflow(double num) {
-			return ((QLCDNumber) interceptor).CheckOverflow(num);
+			return (bool) interceptor.Invoke("checkOverflow$", "checkOverflow(double) const", typeof(bool), typeof(double), num);
 		}
-		[SmokeMethod("checkOverflow", "(int) const", "$")]
 		public bool CheckOverflow(int num) {
-			return ((QLCDNumber) interceptor).CheckOverflow(num);
+			return (bool) interceptor.Invoke("checkOverflow$", "checkOverflow(int) const", typeof(bool), typeof(int), num);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QLCDNumber) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		[Q_SLOT("void display(const QString&)")]
-		[SmokeMethod("display", "(const QString&)", "$")]
 		public void Display(string str) {
-			((QLCDNumber) interceptor).Display(str);
+			interceptor.Invoke("display$", "display(const QString&)", typeof(void), typeof(string), str);
 		}
 		[Q_SLOT("void display(int)")]
-		[SmokeMethod("display", "(int)", "$")]
 		public void Display(int num) {
-			((QLCDNumber) interceptor).Display(num);
+			interceptor.Invoke("display$", "display(int)", typeof(void), typeof(int), num);
 		}
 		[Q_SLOT("void display(double)")]
-		[SmokeMethod("display", "(double)", "$")]
 		public void Display(double num) {
-			((QLCDNumber) interceptor).Display(num);
+			interceptor.Invoke("display$", "display(double)", typeof(void), typeof(double), num);
 		}
 		[Q_SLOT("void setHexMode()")]
-		[SmokeMethod("setHexMode", "()", "")]
 		public void SetHexMode() {
-			((QLCDNumber) interceptor).SetHexMode();
+			interceptor.Invoke("setHexMode", "setHexMode()", typeof(void));
 		}
 		[Q_SLOT("void setDecMode()")]
-		[SmokeMethod("setDecMode", "()", "")]
 		public void SetDecMode() {
-			((QLCDNumber) interceptor).SetDecMode();
+			interceptor.Invoke("setDecMode", "setDecMode()", typeof(void));
 		}
 		[Q_SLOT("void setOctMode()")]
-		[SmokeMethod("setOctMode", "()", "")]
 		public void SetOctMode() {
-			((QLCDNumber) interceptor).SetOctMode();
+			interceptor.Invoke("setOctMode", "setOctMode()", typeof(void));
 		}
 		[Q_SLOT("void setBinMode()")]
-		[SmokeMethod("setBinMode", "()", "")]
 		public void SetBinMode() {
-			((QLCDNumber) interceptor).SetBinMode();
+			interceptor.Invoke("setBinMode", "setBinMode()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QLCDNumber) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QLCDNumber) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
 		~QLCDNumber() {
-			DisposeQLCDNumber();
+			interceptor.Invoke("~QLCDNumber", "~QLCDNumber()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQLCDNumber();
-		}
-		[SmokeMethod("~QLCDNumber", "()", "")]
-		private void DisposeQLCDNumber() {
-			((QLCDNumber) interceptor).DisposeQLCDNumber();
+			interceptor.Invoke("~QLCDNumber", "~QLCDNumber()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQLCDNumberSignals Emit {
 			get { return (IQLCDNumberSignals) Q_EMIT; }

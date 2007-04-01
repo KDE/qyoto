@@ -4,63 +4,42 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QByteArrayMatcher")]
-	public class QByteArrayMatcher : MarshalByRefObject, IDisposable {
-		protected QByteArrayMatcher interceptor = null;
+	public class QByteArrayMatcher : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QByteArrayMatcher(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArrayMatcher), this);
-			interceptor = (QByteArrayMatcher) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QByteArrayMatcher), "QByteArrayMatcher", this);
 		}
 		public QByteArrayMatcher() : this((Type) null) {
 			CreateProxy();
-			NewQByteArrayMatcher();
-		}
-		[SmokeMethod("QByteArrayMatcher", "()", "")]
-		private void NewQByteArrayMatcher() {
-			((QByteArrayMatcher) interceptor).NewQByteArrayMatcher();
+			interceptor.Invoke("QByteArrayMatcher", "QByteArrayMatcher()", typeof(void));
 		}
 		public QByteArrayMatcher(QByteArray pattern) : this((Type) null) {
 			CreateProxy();
-			NewQByteArrayMatcher(pattern);
-		}
-		[SmokeMethod("QByteArrayMatcher", "(const QByteArray&)", "#")]
-		private void NewQByteArrayMatcher(QByteArray pattern) {
-			((QByteArrayMatcher) interceptor).NewQByteArrayMatcher(pattern);
+			interceptor.Invoke("QByteArrayMatcher#", "QByteArrayMatcher(const QByteArray&)", typeof(void), typeof(QByteArray), pattern);
 		}
 		public QByteArrayMatcher(QByteArrayMatcher other) : this((Type) null) {
 			CreateProxy();
-			NewQByteArrayMatcher(other);
+			interceptor.Invoke("QByteArrayMatcher#", "QByteArrayMatcher(const QByteArrayMatcher&)", typeof(void), typeof(QByteArrayMatcher), other);
 		}
-		[SmokeMethod("QByteArrayMatcher", "(const QByteArrayMatcher&)", "#")]
-		private void NewQByteArrayMatcher(QByteArrayMatcher other) {
-			((QByteArrayMatcher) interceptor).NewQByteArrayMatcher(other);
-		}
-		[SmokeMethod("setPattern", "(const QByteArray&)", "#")]
 		public void SetPattern(QByteArray pattern) {
-			((QByteArrayMatcher) interceptor).SetPattern(pattern);
+			interceptor.Invoke("setPattern#", "setPattern(const QByteArray&)", typeof(void), typeof(QByteArray), pattern);
 		}
-		[SmokeMethod("indexIn", "(const QByteArray&, int) const", "#$")]
 		public int IndexIn(QByteArray ba, int from) {
-			return ((QByteArrayMatcher) interceptor).IndexIn(ba,from);
+			return (int) interceptor.Invoke("indexIn#$", "indexIn(const QByteArray&, int) const", typeof(int), typeof(QByteArray), ba, typeof(int), from);
 		}
-		[SmokeMethod("indexIn", "(const QByteArray&) const", "#")]
 		public int IndexIn(QByteArray ba) {
-			return ((QByteArrayMatcher) interceptor).IndexIn(ba);
+			return (int) interceptor.Invoke("indexIn#", "indexIn(const QByteArray&) const", typeof(int), typeof(QByteArray), ba);
 		}
-		[SmokeMethod("pattern", "() const", "")]
 		public QByteArray Pattern() {
-			return ((QByteArrayMatcher) interceptor).Pattern();
+			return (QByteArray) interceptor.Invoke("pattern", "pattern() const", typeof(QByteArray));
 		}
 		~QByteArrayMatcher() {
-			DisposeQByteArrayMatcher();
+			interceptor.Invoke("~QByteArrayMatcher", "~QByteArrayMatcher()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQByteArrayMatcher();
-		}
-		[SmokeMethod("~QByteArrayMatcher", "()", "")]
-		private void DisposeQByteArrayMatcher() {
-			((QByteArrayMatcher) interceptor).DisposeQByteArrayMatcher();
+			interceptor.Invoke("~QByteArrayMatcher", "~QByteArrayMatcher()", typeof(void));
 		}
 	}
 }

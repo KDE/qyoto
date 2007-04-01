@@ -9,73 +9,12 @@ namespace Qyoto {
 	[SmokeClass("QFileDialog")]
 	public class QFileDialog : QDialog, IDisposable {
  		protected QFileDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFileDialog")]
-		interface IQFileDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("getOpenFileName", "(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", "#$$$$$")]
-			string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
-			[SmokeMethod("getOpenFileName", "(QWidget*, const QString&, const QString&, const QString&, QString*)", "#$$$$")]
-			string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
-			[SmokeMethod("getOpenFileName", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			string GetOpenFileName(QWidget parent, string caption, string dir, string filter);
-			[SmokeMethod("getOpenFileName", "(QWidget*, const QString&, const QString&)", "#$$")]
-			string GetOpenFileName(QWidget parent, string caption, string dir);
-			[SmokeMethod("getOpenFileName", "(QWidget*, const QString&)", "#$")]
-			string GetOpenFileName(QWidget parent, string caption);
-			[SmokeMethod("getOpenFileName", "(QWidget*)", "#")]
-			string GetOpenFileName(QWidget parent);
-			[SmokeMethod("getOpenFileName", "()", "")]
-			string GetOpenFileName();
-			[SmokeMethod("getSaveFileName", "(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", "#$$$$$")]
-			string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
-			[SmokeMethod("getSaveFileName", "(QWidget*, const QString&, const QString&, const QString&, QString*)", "#$$$$")]
-			string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
-			[SmokeMethod("getSaveFileName", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			string GetSaveFileName(QWidget parent, string caption, string dir, string filter);
-			[SmokeMethod("getSaveFileName", "(QWidget*, const QString&, const QString&)", "#$$")]
-			string GetSaveFileName(QWidget parent, string caption, string dir);
-			[SmokeMethod("getSaveFileName", "(QWidget*, const QString&)", "#$")]
-			string GetSaveFileName(QWidget parent, string caption);
-			[SmokeMethod("getSaveFileName", "(QWidget*)", "#")]
-			string GetSaveFileName(QWidget parent);
-			[SmokeMethod("getSaveFileName", "()", "")]
-			string GetSaveFileName();
-			[SmokeMethod("getExistingDirectory", "(QWidget*, const QString&, const QString&, Options)", "#$$$")]
-			string GetExistingDirectory(QWidget parent, string caption, string dir, int options);
-			[SmokeMethod("getExistingDirectory", "(QWidget*, const QString&, const QString&)", "#$$")]
-			string GetExistingDirectory(QWidget parent, string caption, string dir);
-			[SmokeMethod("getExistingDirectory", "(QWidget*, const QString&)", "#$")]
-			string GetExistingDirectory(QWidget parent, string caption);
-			[SmokeMethod("getExistingDirectory", "(QWidget*)", "#")]
-			string GetExistingDirectory(QWidget parent);
-			[SmokeMethod("getExistingDirectory", "()", "")]
-			string GetExistingDirectory();
-			[SmokeMethod("getOpenFileNames", "(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", "#$$$$$")]
-			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
-			[SmokeMethod("getOpenFileNames", "(QWidget*, const QString&, const QString&, const QString&, QString*)", "#$$$$")]
-			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
-			[SmokeMethod("getOpenFileNames", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter);
-			[SmokeMethod("getOpenFileNames", "(QWidget*, const QString&, const QString&)", "#$$")]
-			List<string> GetOpenFileNames(QWidget parent, string caption, string dir);
-			[SmokeMethod("getOpenFileNames", "(QWidget*, const QString&)", "#$")]
-			List<string> GetOpenFileNames(QWidget parent, string caption);
-			[SmokeMethod("getOpenFileNames", "(QWidget*)", "#")]
-			List<string> GetOpenFileNames(QWidget parent);
-			[SmokeMethod("getOpenFileNames", "()", "")]
-			List<string> GetOpenFileNames();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileDialog), this);
-			interceptor = (QFileDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFileDialog), "QFileDialog", this);
 		}
-		private static IQFileDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFileDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFileDialogProxy), null);
-			staticInterceptor = (IQFileDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFileDialog), "QFileDialog", null);
 		}
 		public enum ViewMode {
 			Detail = 0,
@@ -108,279 +47,218 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QFileDialog::ViewMode", "viewMode")]
 		public QFileDialog.ViewMode viewMode {
-			[SmokeMethod("viewMode", "()", "")]
-			get { return ((QFileDialog) interceptor).viewMode; }
-			[SmokeMethod("setViewMode", "(QFileDialog::ViewMode)", "$")]
-			set { ((QFileDialog) interceptor).viewMode = value; }
+			get { return (QFileDialog.ViewMode) interceptor.Invoke("viewMode", "viewMode()", typeof(QFileDialog.ViewMode)); }
+			set { interceptor.Invoke("setViewMode$", "setViewMode(QFileDialog::ViewMode)", typeof(void), typeof(QFileDialog.ViewMode), value); }
 		}
 		[Q_PROPERTY("QFileDialog::FileMode", "fileMode")]
 		public QFileDialog.FileMode fileMode {
-			[SmokeMethod("fileMode", "()", "")]
-			get { return ((QFileDialog) interceptor).fileMode; }
-			[SmokeMethod("setFileMode", "(QFileDialog::FileMode)", "$")]
-			set { ((QFileDialog) interceptor).fileMode = value; }
+			get { return (QFileDialog.FileMode) interceptor.Invoke("fileMode", "fileMode()", typeof(QFileDialog.FileMode)); }
+			set { interceptor.Invoke("setFileMode$", "setFileMode(QFileDialog::FileMode)", typeof(void), typeof(QFileDialog.FileMode), value); }
 		}
 		[Q_PROPERTY("QFileDialog::AcceptMode", "acceptMode")]
 		public QFileDialog.AcceptMode acceptMode {
-			[SmokeMethod("acceptMode", "()", "")]
-			get { return ((QFileDialog) interceptor).acceptMode; }
-			[SmokeMethod("setAcceptMode", "(QFileDialog::AcceptMode)", "$")]
-			set { ((QFileDialog) interceptor).acceptMode = value; }
+			get { return (QFileDialog.AcceptMode) interceptor.Invoke("acceptMode", "acceptMode()", typeof(QFileDialog.AcceptMode)); }
+			set { interceptor.Invoke("setAcceptMode$", "setAcceptMode(QFileDialog::AcceptMode)", typeof(void), typeof(QFileDialog.AcceptMode), value); }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			[SmokeMethod("isReadOnly", "()", "")]
-			get { return ((QFileDialog) interceptor).ReadOnly; }
-			[SmokeMethod("setReadOnly", "(bool)", "$")]
-			set { ((QFileDialog) interceptor).ReadOnly = value; }
+			get { return (bool) interceptor.Invoke("isReadOnly", "isReadOnly()", typeof(bool)); }
+			set { interceptor.Invoke("setReadOnly$", "setReadOnly(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "resolveSymlinks")]
 		public bool ResolveSymlinks {
-			[SmokeMethod("resolveSymlinks", "()", "")]
-			get { return ((QFileDialog) interceptor).ResolveSymlinks; }
-			[SmokeMethod("setResolveSymlinks", "(bool)", "$")]
-			set { ((QFileDialog) interceptor).ResolveSymlinks = value; }
+			get { return (bool) interceptor.Invoke("resolveSymlinks", "resolveSymlinks()", typeof(bool)); }
+			set { interceptor.Invoke("setResolveSymlinks$", "setResolveSymlinks(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "confirmOverwrite")]
 		public bool ConfirmOverwrite {
-			[SmokeMethod("confirmOverwrite", "()", "")]
-			get { return ((QFileDialog) interceptor).ConfirmOverwrite; }
-			[SmokeMethod("setConfirmOverwrite", "(bool)", "$")]
-			set { ((QFileDialog) interceptor).ConfirmOverwrite = value; }
+			get { return (bool) interceptor.Invoke("confirmOverwrite", "confirmOverwrite()", typeof(bool)); }
+			set { interceptor.Invoke("setConfirmOverwrite$", "setConfirmOverwrite(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QString", "defaultSuffix")]
 		public string DefaultSuffix {
-			[SmokeMethod("defaultSuffix", "()", "")]
-			get { return ((QFileDialog) interceptor).DefaultSuffix; }
-			[SmokeMethod("setDefaultSuffix", "(QString)", "$")]
-			set { ((QFileDialog) interceptor).DefaultSuffix = value; }
+			get { return (string) interceptor.Invoke("defaultSuffix", "defaultSuffix()", typeof(string)); }
+			set { interceptor.Invoke("setDefaultSuffix$", "setDefaultSuffix(QString)", typeof(void), typeof(string), value); }
 		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
 		public QFileDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQFileDialog(parent,f);
-		}
-		[SmokeMethod("QFileDialog", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQFileDialog(QWidget parent, int f) {
-			((QFileDialog) interceptor).NewQFileDialog(parent,f);
+			interceptor.Invoke("QFileDialog#$", "QFileDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
 		public QFileDialog(QWidget parent, string caption, string directory, string filter) : this((Type) null) {
 			CreateProxy();
-			NewQFileDialog(parent,caption,directory,filter);
-		}
-		[SmokeMethod("QFileDialog", "(QWidget*, const QString&, const QString&, const QString&)", "#$$$")]
-		private void NewQFileDialog(QWidget parent, string caption, string directory, string filter) {
-			((QFileDialog) interceptor).NewQFileDialog(parent,caption,directory,filter);
+			interceptor.Invoke("QFileDialog#$$$", "QFileDialog(QWidget*, const QString&, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(string), directory, typeof(string), filter);
 		}
 		public QFileDialog(QWidget parent, string caption, string directory) : this((Type) null) {
 			CreateProxy();
-			NewQFileDialog(parent,caption,directory);
-		}
-		[SmokeMethod("QFileDialog", "(QWidget*, const QString&, const QString&)", "#$$")]
-		private void NewQFileDialog(QWidget parent, string caption, string directory) {
-			((QFileDialog) interceptor).NewQFileDialog(parent,caption,directory);
+			interceptor.Invoke("QFileDialog#$$", "QFileDialog(QWidget*, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(string), directory);
 		}
 		public QFileDialog(QWidget parent, string caption) : this((Type) null) {
 			CreateProxy();
-			NewQFileDialog(parent,caption);
-		}
-		[SmokeMethod("QFileDialog", "(QWidget*, const QString&)", "#$")]
-		private void NewQFileDialog(QWidget parent, string caption) {
-			((QFileDialog) interceptor).NewQFileDialog(parent,caption);
+			interceptor.Invoke("QFileDialog#$", "QFileDialog(QWidget*, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), caption);
 		}
 		public QFileDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQFileDialog(parent);
-		}
-		[SmokeMethod("QFileDialog", "(QWidget*)", "#")]
-		private void NewQFileDialog(QWidget parent) {
-			((QFileDialog) interceptor).NewQFileDialog(parent);
+			interceptor.Invoke("QFileDialog#", "QFileDialog(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QFileDialog() : this((Type) null) {
 			CreateProxy();
-			NewQFileDialog();
+			interceptor.Invoke("QFileDialog", "QFileDialog()", typeof(void));
 		}
-		[SmokeMethod("QFileDialog", "()", "")]
-		private void NewQFileDialog() {
-			((QFileDialog) interceptor).NewQFileDialog();
-		}
-		[SmokeMethod("setDirectory", "(const QString&)", "$")]
 		public void SetDirectory(string directory) {
-			((QFileDialog) interceptor).SetDirectory(directory);
+			interceptor.Invoke("setDirectory$", "setDirectory(const QString&)", typeof(void), typeof(string), directory);
 		}
-		[SmokeMethod("setDirectory", "(const QDir&)", "#")]
 		public void SetDirectory(QDir directory) {
-			((QFileDialog) interceptor).SetDirectory(directory);
+			interceptor.Invoke("setDirectory#", "setDirectory(const QDir&)", typeof(void), typeof(QDir), directory);
 		}
-		[SmokeMethod("directory", "() const", "")]
 		public QDir Directory() {
-			return ((QFileDialog) interceptor).Directory();
+			return (QDir) interceptor.Invoke("directory", "directory() const", typeof(QDir));
 		}
-		[SmokeMethod("selectFile", "(const QString&)", "$")]
 		public void SelectFile(string filename) {
-			((QFileDialog) interceptor).SelectFile(filename);
+			interceptor.Invoke("selectFile$", "selectFile(const QString&)", typeof(void), typeof(string), filename);
 		}
-		[SmokeMethod("selectedFiles", "() const", "")]
 		public List<string> SelectedFiles() {
-			return ((QFileDialog) interceptor).SelectedFiles();
+			return (List<string>) interceptor.Invoke("selectedFiles", "selectedFiles() const", typeof(List<string>));
 		}
-		[SmokeMethod("setFilter", "(const QString&)", "$")]
 		public void SetFilter(string filter) {
-			((QFileDialog) interceptor).SetFilter(filter);
+			interceptor.Invoke("setFilter$", "setFilter(const QString&)", typeof(void), typeof(string), filter);
 		}
-		[SmokeMethod("setFilters", "(const QStringList&)", "?")]
 		public void SetFilters(List<string> filters) {
-			((QFileDialog) interceptor).SetFilters(filters);
+			interceptor.Invoke("setFilters?", "setFilters(const QStringList&)", typeof(void), typeof(List<string>), filters);
 		}
-		[SmokeMethod("filters", "() const", "")]
 		public List<string> Filters() {
-			return ((QFileDialog) interceptor).Filters();
+			return (List<string>) interceptor.Invoke("filters", "filters() const", typeof(List<string>));
 		}
-		[SmokeMethod("selectFilter", "(const QString&)", "$")]
 		public void SelectFilter(string filter) {
-			((QFileDialog) interceptor).SelectFilter(filter);
+			interceptor.Invoke("selectFilter$", "selectFilter(const QString&)", typeof(void), typeof(string), filter);
 		}
-		[SmokeMethod("selectedFilter", "() const", "")]
 		public string SelectedFilter() {
-			return ((QFileDialog) interceptor).SelectedFilter();
+			return (string) interceptor.Invoke("selectedFilter", "selectedFilter() const", typeof(string));
 		}
-		[SmokeMethod("isReadOnly", "() const", "")]
 		public bool IsReadOnly() {
-			return ((QFileDialog) interceptor).IsReadOnly();
+			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
 		}
-		[SmokeMethod("setHistory", "(const QStringList&)", "?")]
 		public void SetHistory(List<string> paths) {
-			((QFileDialog) interceptor).SetHistory(paths);
+			interceptor.Invoke("setHistory?", "setHistory(const QStringList&)", typeof(void), typeof(List<string>), paths);
 		}
-		[SmokeMethod("history", "() const", "")]
 		public List<string> History() {
-			return ((QFileDialog) interceptor).History();
+			return (List<string>) interceptor.Invoke("history", "history() const", typeof(List<string>));
 		}
-		[SmokeMethod("setItemDelegate", "(QAbstractItemDelegate*)", "#")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
-			((QFileDialog) interceptor).SetItemDelegate(arg1);
+			interceptor.Invoke("setItemDelegate#", "setItemDelegate(QAbstractItemDelegate*)", typeof(void), typeof(QAbstractItemDelegate), arg1);
 		}
-		[SmokeMethod("itemDelegate", "() const", "")]
 		public QAbstractItemDelegate ItemDelegate() {
-			return ((QFileDialog) interceptor).ItemDelegate();
+			return (QAbstractItemDelegate) interceptor.Invoke("itemDelegate", "itemDelegate() const", typeof(QAbstractItemDelegate));
 		}
-		[SmokeMethod("setIconProvider", "(QFileIconProvider*)", "#")]
 		public void SetIconProvider(QFileIconProvider provider) {
-			((QFileDialog) interceptor).SetIconProvider(provider);
+			interceptor.Invoke("setIconProvider#", "setIconProvider(QFileIconProvider*)", typeof(void), typeof(QFileIconProvider), provider);
 		}
-		[SmokeMethod("iconProvider", "() const", "")]
 		public QFileIconProvider IconProvider() {
-			return ((QFileDialog) interceptor).IconProvider();
+			return (QFileIconProvider) interceptor.Invoke("iconProvider", "iconProvider() const", typeof(QFileIconProvider));
 		}
-		[SmokeMethod("setLabelText", "(QFileDialog::DialogLabel, const QString&)", "$$")]
 		public void SetLabelText(QFileDialog.DialogLabel label, string text) {
-			((QFileDialog) interceptor).SetLabelText(label,text);
+			interceptor.Invoke("setLabelText$$", "setLabelText(QFileDialog::DialogLabel, const QString&)", typeof(void), typeof(QFileDialog.DialogLabel), label, typeof(string), text);
 		}
-		[SmokeMethod("labelText", "(QFileDialog::DialogLabel) const", "$")]
 		public string LabelText(QFileDialog.DialogLabel label) {
-			return ((QFileDialog) interceptor).LabelText(label);
+			return (string) interceptor.Invoke("labelText$", "labelText(QFileDialog::DialogLabel) const", typeof(string), typeof(QFileDialog.DialogLabel), label);
 		}
-		[SmokeMethod("done", "(int)", "$")]
+		[SmokeMethod("done(int)")]
 		protected new virtual void Done(int result) {
-			((QFileDialog) interceptor).Done(result);
+			interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), result);
 		}
-		[SmokeMethod("accept", "()", "")]
+		[SmokeMethod("accept()")]
 		protected new virtual void Accept() {
-			((QFileDialog) interceptor).Accept();
+			interceptor.Invoke("accept", "accept()", typeof(void));
 		}
 		~QFileDialog() {
-			DisposeQFileDialog();
+			interceptor.Invoke("~QFileDialog", "~QFileDialog()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFileDialog();
-		}
-		[SmokeMethod("~QFileDialog", "()", "")]
-		private void DisposeQFileDialog() {
-			((QFileDialog) interceptor).DisposeQFileDialog();
+			interceptor.Invoke("~QFileDialog", "~QFileDialog()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
-			return staticInterceptor.GetOpenFileName(parent,caption,dir,filter,selectedFilter,options);
+			return (string) staticInterceptor.Invoke("getOpenFileName#$$$$$", "getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(int), options);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
-			return staticInterceptor.GetOpenFileName(parent,caption,dir,filter,selectedFilter);
+			return (string) staticInterceptor.Invoke("getOpenFileName#$$$$", "getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter) {
-			return staticInterceptor.GetOpenFileName(parent,caption,dir,filter);
+			return (string) staticInterceptor.Invoke("getOpenFileName#$$$", "getOpenFileName(QWidget*, const QString&, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption, string dir) {
-			return staticInterceptor.GetOpenFileName(parent,caption,dir);
+			return (string) staticInterceptor.Invoke("getOpenFileName#$$", "getOpenFileName(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption) {
-			return staticInterceptor.GetOpenFileName(parent,caption);
+			return (string) staticInterceptor.Invoke("getOpenFileName#$", "getOpenFileName(QWidget*, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption);
 		}
 		public static string GetOpenFileName(QWidget parent) {
-			return staticInterceptor.GetOpenFileName(parent);
+			return (string) staticInterceptor.Invoke("getOpenFileName#", "getOpenFileName(QWidget*)", typeof(string), typeof(QWidget), parent);
 		}
 		public static string GetOpenFileName() {
-			return staticInterceptor.GetOpenFileName();
+			return (string) staticInterceptor.Invoke("getOpenFileName", "getOpenFileName()", typeof(string));
 		}
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
-			return staticInterceptor.GetSaveFileName(parent,caption,dir,filter,selectedFilter,options);
+			return (string) staticInterceptor.Invoke("getSaveFileName#$$$$$", "getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(int), options);
 		}
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
-			return staticInterceptor.GetSaveFileName(parent,caption,dir,filter,selectedFilter);
+			return (string) staticInterceptor.Invoke("getSaveFileName#$$$$", "getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter);
 		}
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter) {
-			return staticInterceptor.GetSaveFileName(parent,caption,dir,filter);
+			return (string) staticInterceptor.Invoke("getSaveFileName#$$$", "getSaveFileName(QWidget*, const QString&, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter);
 		}
 		public static string GetSaveFileName(QWidget parent, string caption, string dir) {
-			return staticInterceptor.GetSaveFileName(parent,caption,dir);
+			return (string) staticInterceptor.Invoke("getSaveFileName#$$", "getSaveFileName(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir);
 		}
 		public static string GetSaveFileName(QWidget parent, string caption) {
-			return staticInterceptor.GetSaveFileName(parent,caption);
+			return (string) staticInterceptor.Invoke("getSaveFileName#$", "getSaveFileName(QWidget*, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption);
 		}
 		public static string GetSaveFileName(QWidget parent) {
-			return staticInterceptor.GetSaveFileName(parent);
+			return (string) staticInterceptor.Invoke("getSaveFileName#", "getSaveFileName(QWidget*)", typeof(string), typeof(QWidget), parent);
 		}
 		public static string GetSaveFileName() {
-			return staticInterceptor.GetSaveFileName();
+			return (string) staticInterceptor.Invoke("getSaveFileName", "getSaveFileName()", typeof(string));
 		}
 		public static string GetExistingDirectory(QWidget parent, string caption, string dir, int options) {
-			return staticInterceptor.GetExistingDirectory(parent,caption,dir,options);
+			return (string) staticInterceptor.Invoke("getExistingDirectory#$$$", "getExistingDirectory(QWidget*, const QString&, const QString&, Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(int), options);
 		}
 		public static string GetExistingDirectory(QWidget parent, string caption, string dir) {
-			return staticInterceptor.GetExistingDirectory(parent,caption,dir);
+			return (string) staticInterceptor.Invoke("getExistingDirectory#$$", "getExistingDirectory(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir);
 		}
 		public static string GetExistingDirectory(QWidget parent, string caption) {
-			return staticInterceptor.GetExistingDirectory(parent,caption);
+			return (string) staticInterceptor.Invoke("getExistingDirectory#$", "getExistingDirectory(QWidget*, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption);
 		}
 		public static string GetExistingDirectory(QWidget parent) {
-			return staticInterceptor.GetExistingDirectory(parent);
+			return (string) staticInterceptor.Invoke("getExistingDirectory#", "getExistingDirectory(QWidget*)", typeof(string), typeof(QWidget), parent);
 		}
 		public static string GetExistingDirectory() {
-			return staticInterceptor.GetExistingDirectory();
+			return (string) staticInterceptor.Invoke("getExistingDirectory", "getExistingDirectory()", typeof(string));
 		}
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
-			return staticInterceptor.GetOpenFileNames(parent,caption,dir,filter,selectedFilter,options);
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$$$$", "getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(int), options);
 		}
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
-			return staticInterceptor.GetOpenFileNames(parent,caption,dir,filter,selectedFilter);
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$$$", "getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter);
 		}
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter) {
-			return staticInterceptor.GetOpenFileNames(parent,caption,dir,filter);
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$$", "getOpenFileNames(QWidget*, const QString&, const QString&, const QString&)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter);
 		}
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir) {
-			return staticInterceptor.GetOpenFileNames(parent,caption,dir);
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$", "getOpenFileNames(QWidget*, const QString&, const QString&)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir);
 		}
 		public static List<string> GetOpenFileNames(QWidget parent, string caption) {
-			return staticInterceptor.GetOpenFileNames(parent,caption);
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$", "getOpenFileNames(QWidget*, const QString&)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption);
 		}
 		public static List<string> GetOpenFileNames(QWidget parent) {
-			return staticInterceptor.GetOpenFileNames(parent);
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#", "getOpenFileNames(QWidget*)", typeof(List<string>), typeof(QWidget), parent);
 		}
 		public static List<string> GetOpenFileNames() {
-			return staticInterceptor.GetOpenFileNames();
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames", "getOpenFileNames()", typeof(List<string>));
 		}
 		protected new IQFileDialogSignals Emit {
 			get { return (IQFileDialogSignals) Q_EMIT; }

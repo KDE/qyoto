@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QLayout")]
 	public abstract class QLayout : QObject, IQLayoutItem {
  		protected QLayout(Type dummy) : base((Type) null) {}
-		[SmokeClass("QLayout")]
-		interface IQLayoutProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("closestAcceptableSize", "(const QWidget*, const QSize&)", "##")]
-			QSize ClosestAcceptableSize(QWidget w, QSize s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayout), this);
-			interceptor = (QLayout) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QLayout), "QLayout", this);
 		}
-		private static IQLayoutProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QLayout() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLayoutProxy), null);
-			staticInterceptor = (IQLayoutProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QLayout), "QLayout", null);
 		}
 		public enum SizeConstraint {
 			SetDefaultConstraint = 0,
@@ -34,205 +23,169 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "margin")]
 		public int Margin {
-			[SmokeMethod("margin", "()", "")]
-			get { return ((QLayout) interceptor).Margin; }
-			[SmokeMethod("setMargin", "(int)", "$")]
-			set { ((QLayout) interceptor).Margin = value; }
+			get { return (int) interceptor.Invoke("margin", "margin()", typeof(int)); }
+			set { interceptor.Invoke("setMargin$", "setMargin(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "spacing")]
 		public int Spacing {
-			[SmokeMethod("spacing", "()", "")]
-			get { return ((QLayout) interceptor).Spacing; }
-			[SmokeMethod("setSpacing", "(int)", "$")]
-			set { ((QLayout) interceptor).Spacing = value; }
+			get { return (int) interceptor.Invoke("spacing", "spacing()", typeof(int)); }
+			set { interceptor.Invoke("setSpacing$", "setSpacing(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QLayout::SizeConstraint", "sizeConstraint")]
 		public QLayout.SizeConstraint sizeConstraint {
-			[SmokeMethod("sizeConstraint", "()", "")]
-			get { return ((QLayout) interceptor).sizeConstraint; }
-			[SmokeMethod("setSizeConstraint", "(QLayout::SizeConstraint)", "$")]
-			set { ((QLayout) interceptor).sizeConstraint = value; }
+			get { return (QLayout.SizeConstraint) interceptor.Invoke("sizeConstraint", "sizeConstraint()", typeof(QLayout.SizeConstraint)); }
+			set { interceptor.Invoke("setSizeConstraint$", "setSizeConstraint(QLayout::SizeConstraint)", typeof(void), typeof(QLayout.SizeConstraint), value); }
 		}
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQLayout(parent);
-		}
-		[SmokeMethod("QLayout", "(QWidget*)", "#")]
-		private void NewQLayout(QWidget parent) {
-			((QLayout) interceptor).NewQLayout(parent);
+			interceptor.Invoke("QLayout#", "QLayout(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QLayout() : this((Type) null) {
 			CreateProxy();
-			NewQLayout();
+			interceptor.Invoke("QLayout", "QLayout()", typeof(void));
 		}
-		[SmokeMethod("QLayout", "()", "")]
-		private void NewQLayout() {
-			((QLayout) interceptor).NewQLayout();
-		}
-		[SmokeMethod("setAlignment", "(QWidget*, Qt::Alignment)", "#$")]
 		public bool SetAlignment(QWidget w, int alignment) {
-			return ((QLayout) interceptor).SetAlignment(w,alignment);
+			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QWidget*, Qt::Alignment)", typeof(bool), typeof(QWidget), w, typeof(int), alignment);
 		}
-		[SmokeMethod("setAlignment", "(QLayout*, Qt::Alignment)", "#$")]
 		public bool SetAlignment(QLayout l, int alignment) {
-			return ((QLayout) interceptor).SetAlignment(l,alignment);
+			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QLayout*, Qt::Alignment)", typeof(bool), typeof(QLayout), l, typeof(int), alignment);
 		}
-		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			((QLayout) interceptor).SetAlignment(alignment);
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
 		}
-		[SmokeMethod("setMenuBar", "(QWidget*)", "#")]
 		public void SetMenuBar(QWidget w) {
-			((QLayout) interceptor).SetMenuBar(w);
+			interceptor.Invoke("setMenuBar#", "setMenuBar(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("menuBar", "() const", "")]
 		public QWidget MenuBar() {
-			return ((QLayout) interceptor).MenuBar();
+			return (QWidget) interceptor.Invoke("menuBar", "menuBar() const", typeof(QWidget));
 		}
-		[SmokeMethod("parentWidget", "() const", "")]
 		public QWidget ParentWidget() {
-			return ((QLayout) interceptor).ParentWidget();
+			return (QWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("invalidate", "()", "")]
+		[SmokeMethod("invalidate()")]
 		public virtual void Invalidate() {
-			((QLayout) interceptor).Invalidate();
+			interceptor.Invoke("invalidate", "invalidate()", typeof(void));
 		}
-		[SmokeMethod("geometry", "() const", "")]
+		[SmokeMethod("geometry() const")]
 		public virtual QRect Geometry() {
-			return ((QLayout) interceptor).Geometry();
+			return (QRect) interceptor.Invoke("geometry", "geometry() const", typeof(QRect));
 		}
-		[SmokeMethod("activate", "()", "")]
 		public bool Activate() {
-			return ((QLayout) interceptor).Activate();
+			return (bool) interceptor.Invoke("activate", "activate()", typeof(bool));
 		}
-		[SmokeMethod("update", "()", "")]
 		public void Update() {
-			((QLayout) interceptor).Update();
+			interceptor.Invoke("update", "update()", typeof(void));
 		}
-		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public void AddWidget(QWidget w) {
-			((QLayout) interceptor).AddWidget(w);
+			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
+		[SmokeMethod("addItem(QLayoutItem*)")]
 		public abstract void AddItem(IQLayoutItem arg1);
-		[SmokeMethod("removeWidget", "(QWidget*)", "#")]
 		public void RemoveWidget(QWidget w) {
-			((QLayout) interceptor).RemoveWidget(w);
+			interceptor.Invoke("removeWidget#", "removeWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("removeItem", "(QLayoutItem*)", "#")]
 		public void RemoveItem(IQLayoutItem arg1) {
-			((QLayout) interceptor).RemoveItem(arg1);
+			interceptor.Invoke("removeItem#", "removeItem(QLayoutItem*)", typeof(void), typeof(IQLayoutItem), arg1);
 		}
-		[SmokeMethod("expandingDirections", "() const", "")]
+		[SmokeMethod("expandingDirections() const")]
 		public virtual int ExpandingDirections() {
-			return ((QLayout) interceptor).ExpandingDirections();
+			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
 		}
-		[SmokeMethod("minimumSize", "() const", "")]
+		[SmokeMethod("minimumSize() const")]
 		public virtual QSize MinimumSize() {
-			return ((QLayout) interceptor).MinimumSize();
+			return (QSize) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("maximumSize", "() const", "")]
+		[SmokeMethod("maximumSize() const")]
 		public virtual QSize MaximumSize() {
-			return ((QLayout) interceptor).MaximumSize();
+			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public abstract void SetGeometry(QRect arg1);
-		[SmokeMethod("itemAt", "(int) const", "$")]
+		[SmokeMethod("itemAt(int) const")]
 		public abstract IQLayoutItem ItemAt(int index);
-		[SmokeMethod("takeAt", "(int)", "$")]
+		[SmokeMethod("takeAt(int)")]
 		public abstract IQLayoutItem TakeAt(int index);
-		[SmokeMethod("indexOf", "(QWidget*) const", "#")]
+		[SmokeMethod("indexOf(QWidget*) const")]
 		public virtual int IndexOf(QWidget arg1) {
-			return ((QLayout) interceptor).IndexOf(arg1);
+			return (int) interceptor.Invoke("indexOf#", "indexOf(QWidget*) const", typeof(int), typeof(QWidget), arg1);
 		}
-		[SmokeMethod("count", "() const", "")]
+		[SmokeMethod("count() const")]
 		public abstract int Count();
-		[SmokeMethod("isEmpty", "() const", "")]
+		[SmokeMethod("isEmpty() const")]
 		public virtual bool IsEmpty() {
-			return ((QLayout) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("totalHeightForWidth", "(int) const", "$")]
 		public int TotalHeightForWidth(int w) {
-			return ((QLayout) interceptor).TotalHeightForWidth(w);
+			return (int) interceptor.Invoke("totalHeightForWidth$", "totalHeightForWidth(int) const", typeof(int), typeof(int), w);
 		}
-		[SmokeMethod("totalMinimumSize", "() const", "")]
 		public QSize TotalMinimumSize() {
-			return ((QLayout) interceptor).TotalMinimumSize();
+			return (QSize) interceptor.Invoke("totalMinimumSize", "totalMinimumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("totalMaximumSize", "() const", "")]
 		public QSize TotalMaximumSize() {
-			return ((QLayout) interceptor).TotalMaximumSize();
+			return (QSize) interceptor.Invoke("totalMaximumSize", "totalMaximumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("totalSizeHint", "() const", "")]
 		public QSize TotalSizeHint() {
-			return ((QLayout) interceptor).TotalSizeHint();
+			return (QSize) interceptor.Invoke("totalSizeHint", "totalSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("layout", "()", "")]
+		[SmokeMethod("layout()")]
 		public virtual QLayout Layout() {
-			return ((QLayout) interceptor).Layout();
+			return (QLayout) interceptor.Invoke("layout", "layout()", typeof(QLayout));
 		}
-		[SmokeMethod("setEnabled", "(bool)", "$")]
 		public void SetEnabled(bool arg1) {
-			((QLayout) interceptor).SetEnabled(arg1);
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ((QLayout) interceptor).IsEnabled();
+			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("widgetEvent", "(QEvent*)", "#")]
 		protected void WidgetEvent(QEvent arg1) {
-			((QLayout) interceptor).WidgetEvent(arg1);
+			interceptor.Invoke("widgetEvent#", "widgetEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected override void ChildEvent(QChildEvent e) {
-			((QLayout) interceptor).ChildEvent(e);
+			interceptor.Invoke("childEvent#", "childEvent(QChildEvent*)", typeof(void), typeof(QChildEvent), e);
 		}
-		[SmokeMethod("addChildLayout", "(QLayout*)", "#")]
 		protected void AddChildLayout(QLayout l) {
-			((QLayout) interceptor).AddChildLayout(l);
+			interceptor.Invoke("addChildLayout#", "addChildLayout(QLayout*)", typeof(void), typeof(QLayout), l);
 		}
-		[SmokeMethod("addChildWidget", "(QWidget*)", "#")]
 		protected void AddChildWidget(QWidget w) {
-			((QLayout) interceptor).AddChildWidget(w);
+			interceptor.Invoke("addChildWidget#", "addChildWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("alignmentRect", "(const QRect&) const", "#")]
 		protected QRect AlignmentRect(QRect arg1) {
-			return ((QLayout) interceptor).AlignmentRect(arg1);
+			return (QRect) interceptor.Invoke("alignmentRect#", "alignmentRect(const QRect&) const", typeof(QRect), typeof(QRect), arg1);
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public abstract QSize SizeHint();
-		[SmokeMethod("hasHeightForWidth", "() const", "")]
+		[SmokeMethod("hasHeightForWidth() const")]
 		public virtual bool HasHeightForWidth() {
-			return ((QLayout) interceptor).HasHeightForWidth();
+			return (bool) interceptor.Invoke("hasHeightForWidth", "hasHeightForWidth() const", typeof(bool));
 		}
-		[SmokeMethod("heightForWidth", "(int) const", "$")]
+		[SmokeMethod("heightForWidth(int) const")]
 		public virtual int HeightForWidth(int arg1) {
-			return ((QLayout) interceptor).HeightForWidth(arg1);
+			return (int) interceptor.Invoke("heightForWidth$", "heightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
-		[SmokeMethod("minimumHeightForWidth", "(int) const", "$")]
+		[SmokeMethod("minimumHeightForWidth(int) const")]
 		public virtual int MinimumHeightForWidth(int arg1) {
-			return ((QLayout) interceptor).MinimumHeightForWidth(arg1);
+			return (int) interceptor.Invoke("minimumHeightForWidth$", "minimumHeightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
-		[SmokeMethod("widget", "()", "")]
+		[SmokeMethod("widget()")]
 		public virtual QWidget Widget() {
-			return ((QLayout) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget()", typeof(QWidget));
 		}
-		[SmokeMethod("spacerItem", "()", "")]
+		[SmokeMethod("spacerItem()")]
 		public virtual QSpacerItem SpacerItem() {
-			return ((QLayout) interceptor).SpacerItem();
+			return (QSpacerItem) interceptor.Invoke("spacerItem", "spacerItem()", typeof(QSpacerItem));
 		}
-		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ((QLayout) interceptor).Alignment();
+			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QSize ClosestAcceptableSize(QWidget w, QSize s) {
-			return staticInterceptor.ClosestAcceptableSize(w,s);
+			return (QSize) staticInterceptor.Invoke("closestAcceptableSize##", "closestAcceptableSize(const QWidget*, const QSize&)", typeof(QSize), typeof(QWidget), w, typeof(QSize), s);
 		}
 		protected new IQLayoutSignals Emit {
 			get { return (IQLayoutSignals) Q_EMIT; }

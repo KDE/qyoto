@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QTextListFormat : QTextFormat, IDisposable {
  		protected QTextListFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextListFormat), this);
-			interceptor = (QTextListFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextListFormat), "QTextListFormat", this);
 		}
 		public enum Style {
 			ListDisc = -1,
@@ -21,41 +20,28 @@ namespace Qyoto {
 		}
 		public QTextListFormat() : this((Type) null) {
 			CreateProxy();
-			NewQTextListFormat();
+			interceptor.Invoke("QTextListFormat", "QTextListFormat()", typeof(void));
 		}
-		[SmokeMethod("QTextListFormat", "()", "")]
-		private void NewQTextListFormat() {
-			((QTextListFormat) interceptor).NewQTextListFormat();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextListFormat) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("setStyle", "(QTextListFormat::Style)", "$")]
 		public void SetStyle(QTextListFormat.Style style) {
-			((QTextListFormat) interceptor).SetStyle(style);
+			interceptor.Invoke("setStyle$", "setStyle(QTextListFormat::Style)", typeof(void), typeof(QTextListFormat.Style), style);
 		}
-		[SmokeMethod("style", "() const", "")]
 		public QTextListFormat.Style style() {
-			return ((QTextListFormat) interceptor).style();
+			return (QTextListFormat.Style) interceptor.Invoke("style", "style() const", typeof(QTextListFormat.Style));
 		}
-		[SmokeMethod("setIndent", "(int)", "$")]
 		public void SetIndent(int indent) {
-			((QTextListFormat) interceptor).SetIndent(indent);
+			interceptor.Invoke("setIndent$", "setIndent(int)", typeof(void), typeof(int), indent);
 		}
-		[SmokeMethod("indent", "() const", "")]
 		public int Indent() {
-			return ((QTextListFormat) interceptor).Indent();
+			return (int) interceptor.Invoke("indent", "indent() const", typeof(int));
 		}
 		~QTextListFormat() {
-			DisposeQTextListFormat();
+			interceptor.Invoke("~QTextListFormat", "~QTextListFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextListFormat();
-		}
-		[SmokeMethod("~QTextListFormat", "()", "")]
-		private void DisposeQTextListFormat() {
-			((QTextListFormat) interceptor).DisposeQTextListFormat();
+			interceptor.Invoke("~QTextListFormat", "~QTextListFormat()", typeof(void));
 		}
 	}
 }

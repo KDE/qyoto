@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QWhatsThisClickedEvent : QEvent, IDisposable {
  		protected QWhatsThisClickedEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThisClickedEvent), this);
-			interceptor = (QWhatsThisClickedEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWhatsThisClickedEvent), "QWhatsThisClickedEvent", this);
 		}
 		public QWhatsThisClickedEvent(string href) : this((Type) null) {
 			CreateProxy();
-			NewQWhatsThisClickedEvent(href);
+			interceptor.Invoke("QWhatsThisClickedEvent$", "QWhatsThisClickedEvent(const QString&)", typeof(void), typeof(string), href);
 		}
-		[SmokeMethod("QWhatsThisClickedEvent", "(const QString&)", "$")]
-		private void NewQWhatsThisClickedEvent(string href) {
-			((QWhatsThisClickedEvent) interceptor).NewQWhatsThisClickedEvent(href);
-		}
-		[SmokeMethod("href", "() const", "")]
 		public string Href() {
-			return ((QWhatsThisClickedEvent) interceptor).Href();
+			return (string) interceptor.Invoke("href", "href() const", typeof(string));
 		}
 		~QWhatsThisClickedEvent() {
-			DisposeQWhatsThisClickedEvent();
+			interceptor.Invoke("~QWhatsThisClickedEvent", "~QWhatsThisClickedEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQWhatsThisClickedEvent();
-		}
-		[SmokeMethod("~QWhatsThisClickedEvent", "()", "")]
-		private void DisposeQWhatsThisClickedEvent() {
-			((QWhatsThisClickedEvent) interceptor).DisposeQWhatsThisClickedEvent();
+			interceptor.Invoke("~QWhatsThisClickedEvent", "~QWhatsThisClickedEvent()", typeof(void));
 		}
 	}
 }

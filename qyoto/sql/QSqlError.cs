@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSqlError")]
-	public class QSqlError : MarshalByRefObject, IDisposable {
-		protected QSqlError interceptor = null;
+	public class QSqlError : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlError(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlError), this);
-			interceptor = (QSqlError) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlError), "QSqlError", this);
 		}
 		public enum ErrorType {
 			NoError = 0,
@@ -21,101 +20,63 @@ namespace Qyoto {
 		}
 		public QSqlError(string driverText, string databaseText, QSqlError.ErrorType type, int number) : this((Type) null) {
 			CreateProxy();
-			NewQSqlError(driverText,databaseText,type,number);
-		}
-		[SmokeMethod("QSqlError", "(const QString&, const QString&, QSqlError::ErrorType, int)", "$$$$")]
-		private void NewQSqlError(string driverText, string databaseText, QSqlError.ErrorType type, int number) {
-			((QSqlError) interceptor).NewQSqlError(driverText,databaseText,type,number);
+			interceptor.Invoke("QSqlError$$$$", "QSqlError(const QString&, const QString&, QSqlError::ErrorType, int)", typeof(void), typeof(string), driverText, typeof(string), databaseText, typeof(QSqlError.ErrorType), type, typeof(int), number);
 		}
 		public QSqlError(string driverText, string databaseText, QSqlError.ErrorType type) : this((Type) null) {
 			CreateProxy();
-			NewQSqlError(driverText,databaseText,type);
-		}
-		[SmokeMethod("QSqlError", "(const QString&, const QString&, QSqlError::ErrorType)", "$$$")]
-		private void NewQSqlError(string driverText, string databaseText, QSqlError.ErrorType type) {
-			((QSqlError) interceptor).NewQSqlError(driverText,databaseText,type);
+			interceptor.Invoke("QSqlError$$$", "QSqlError(const QString&, const QString&, QSqlError::ErrorType)", typeof(void), typeof(string), driverText, typeof(string), databaseText, typeof(QSqlError.ErrorType), type);
 		}
 		public QSqlError(string driverText, string databaseText) : this((Type) null) {
 			CreateProxy();
-			NewQSqlError(driverText,databaseText);
-		}
-		[SmokeMethod("QSqlError", "(const QString&, const QString&)", "$$")]
-		private void NewQSqlError(string driverText, string databaseText) {
-			((QSqlError) interceptor).NewQSqlError(driverText,databaseText);
+			interceptor.Invoke("QSqlError$$", "QSqlError(const QString&, const QString&)", typeof(void), typeof(string), driverText, typeof(string), databaseText);
 		}
 		public QSqlError(string driverText) : this((Type) null) {
 			CreateProxy();
-			NewQSqlError(driverText);
-		}
-		[SmokeMethod("QSqlError", "(const QString&)", "$")]
-		private void NewQSqlError(string driverText) {
-			((QSqlError) interceptor).NewQSqlError(driverText);
+			interceptor.Invoke("QSqlError$", "QSqlError(const QString&)", typeof(void), typeof(string), driverText);
 		}
 		public QSqlError() : this((Type) null) {
 			CreateProxy();
-			NewQSqlError();
-		}
-		[SmokeMethod("QSqlError", "()", "")]
-		private void NewQSqlError() {
-			((QSqlError) interceptor).NewQSqlError();
+			interceptor.Invoke("QSqlError", "QSqlError()", typeof(void));
 		}
 		public QSqlError(QSqlError other) : this((Type) null) {
 			CreateProxy();
-			NewQSqlError(other);
+			interceptor.Invoke("QSqlError#", "QSqlError(const QSqlError&)", typeof(void), typeof(QSqlError), other);
 		}
-		[SmokeMethod("QSqlError", "(const QSqlError&)", "#")]
-		private void NewQSqlError(QSqlError other) {
-			((QSqlError) interceptor).NewQSqlError(other);
-		}
-		[SmokeMethod("driverText", "() const", "")]
 		public string DriverText() {
-			return ((QSqlError) interceptor).DriverText();
+			return (string) interceptor.Invoke("driverText", "driverText() const", typeof(string));
 		}
-		[SmokeMethod("setDriverText", "(const QString&)", "$")]
 		public void SetDriverText(string driverText) {
-			((QSqlError) interceptor).SetDriverText(driverText);
+			interceptor.Invoke("setDriverText$", "setDriverText(const QString&)", typeof(void), typeof(string), driverText);
 		}
-		[SmokeMethod("databaseText", "() const", "")]
 		public string DatabaseText() {
-			return ((QSqlError) interceptor).DatabaseText();
+			return (string) interceptor.Invoke("databaseText", "databaseText() const", typeof(string));
 		}
-		[SmokeMethod("setDatabaseText", "(const QString&)", "$")]
 		public void SetDatabaseText(string databaseText) {
-			((QSqlError) interceptor).SetDatabaseText(databaseText);
+			interceptor.Invoke("setDatabaseText$", "setDatabaseText(const QString&)", typeof(void), typeof(string), databaseText);
 		}
-		[SmokeMethod("type", "() const", "")]
 		public QSqlError.ErrorType type() {
-			return ((QSqlError) interceptor).type();
+			return (QSqlError.ErrorType) interceptor.Invoke("type", "type() const", typeof(QSqlError.ErrorType));
 		}
-		[SmokeMethod("setType", "(QSqlError::ErrorType)", "$")]
 		public void SetType(QSqlError.ErrorType type) {
-			((QSqlError) interceptor).SetType(type);
+			interceptor.Invoke("setType$", "setType(QSqlError::ErrorType)", typeof(void), typeof(QSqlError.ErrorType), type);
 		}
-		[SmokeMethod("number", "() const", "")]
 		public int Number() {
-			return ((QSqlError) interceptor).Number();
+			return (int) interceptor.Invoke("number", "number() const", typeof(int));
 		}
-		[SmokeMethod("setNumber", "(int)", "$")]
 		public void SetNumber(int number) {
-			((QSqlError) interceptor).SetNumber(number);
+			interceptor.Invoke("setNumber$", "setNumber(int)", typeof(void), typeof(int), number);
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QSqlError) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QSqlError) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		~QSqlError() {
-			DisposeQSqlError();
+			interceptor.Invoke("~QSqlError", "~QSqlError()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSqlError();
-		}
-		[SmokeMethod("~QSqlError", "()", "")]
-		private void DisposeQSqlError() {
-			((QSqlError) interceptor).DisposeQSqlError();
+			interceptor.Invoke("~QSqlError", "~QSqlError()", typeof(void));
 		}
 	}
 }

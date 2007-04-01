@@ -4,25 +4,20 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QAccessibleBridge")]
-	public abstract class QAccessibleBridge : MarshalByRefObject {
-		protected QAccessibleBridge interceptor = null;
+	public abstract class QAccessibleBridge : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QAccessibleBridge(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleBridge), this);
-			interceptor = (QAccessibleBridge) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAccessibleBridge), "QAccessibleBridge", this);
 		}
-		[SmokeMethod("setRootObject", "(QAccessibleInterface*)", "#")]
+		[SmokeMethod("setRootObject(QAccessibleInterface*)")]
 		public abstract void SetRootObject(QAccessibleInterface arg1);
-		[SmokeMethod("notifyAccessibilityUpdate", "(int, QAccessibleInterface*, int)", "$#$")]
+		[SmokeMethod("notifyAccessibilityUpdate(int, QAccessibleInterface*, int)")]
 		public abstract void NotifyAccessibilityUpdate(int arg1, QAccessibleInterface arg2, int arg3);
 		public QAccessibleBridge() : this((Type) null) {
 			CreateProxy();
-			NewQAccessibleBridge();
-		}
-		[SmokeMethod("QAccessibleBridge", "()", "")]
-		private void NewQAccessibleBridge() {
-			((QAccessibleBridge) interceptor).NewQAccessibleBridge();
+			interceptor.Invoke("QAccessibleBridge", "QAccessibleBridge()", typeof(void));
 		}
 	}
 }

@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionMenuItem : QStyleOption, IDisposable {
  		protected QStyleOptionMenuItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionMenuItem), this);
-			interceptor = (QStyleOptionMenuItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionMenuItem), "QStyleOptionMenuItem", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_MenuItem,
@@ -33,37 +32,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionMenuItem() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionMenuItem();
-		}
-		[SmokeMethod("QStyleOptionMenuItem", "()", "")]
-		private void NewQStyleOptionMenuItem() {
-			((QStyleOptionMenuItem) interceptor).NewQStyleOptionMenuItem();
+			interceptor.Invoke("QStyleOptionMenuItem", "QStyleOptionMenuItem()", typeof(void));
 		}
 		public QStyleOptionMenuItem(QStyleOptionMenuItem other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionMenuItem(other);
-		}
-		[SmokeMethod("QStyleOptionMenuItem", "(const QStyleOptionMenuItem&)", "#")]
-		private void NewQStyleOptionMenuItem(QStyleOptionMenuItem other) {
-			((QStyleOptionMenuItem) interceptor).NewQStyleOptionMenuItem(other);
+			interceptor.Invoke("QStyleOptionMenuItem#", "QStyleOptionMenuItem(const QStyleOptionMenuItem&)", typeof(void), typeof(QStyleOptionMenuItem), other);
 		}
 		public QStyleOptionMenuItem(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionMenuItem(version);
-		}
-		[SmokeMethod("QStyleOptionMenuItem", "(int)", "$")]
-		private void NewQStyleOptionMenuItem(int version) {
-			((QStyleOptionMenuItem) interceptor).NewQStyleOptionMenuItem(version);
+			interceptor.Invoke("QStyleOptionMenuItem$", "QStyleOptionMenuItem(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionMenuItem() {
-			DisposeQStyleOptionMenuItem();
+			interceptor.Invoke("~QStyleOptionMenuItem", "~QStyleOptionMenuItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionMenuItem();
-		}
-		[SmokeMethod("~QStyleOptionMenuItem", "()", "")]
-		private void DisposeQStyleOptionMenuItem() {
-			((QStyleOptionMenuItem) interceptor).DisposeQStyleOptionMenuItem();
+			interceptor.Invoke("~QStyleOptionMenuItem", "~QStyleOptionMenuItem()", typeof(void));
 		}
 	}
 }

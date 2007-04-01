@@ -6,217 +6,168 @@ namespace Qyoto {
 	[SmokeClass("QGridLayout")]
 	public class QGridLayout : QLayout, IDisposable {
  		protected QGridLayout(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGridLayout")]
-		interface IQGridLayoutProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGridLayout), this);
-			interceptor = (QGridLayout) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGridLayout), "QGridLayout", this);
 		}
-		private static IQGridLayoutProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGridLayout() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGridLayoutProxy), null);
-			staticInterceptor = (IQGridLayoutProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGridLayout), "QGridLayout", null);
 		}
 		public QGridLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQGridLayout(parent);
-		}
-		[SmokeMethod("QGridLayout", "(QWidget*)", "#")]
-		private void NewQGridLayout(QWidget parent) {
-			((QGridLayout) interceptor).NewQGridLayout(parent);
+			interceptor.Invoke("QGridLayout#", "QGridLayout(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QGridLayout() : this((Type) null) {
 			CreateProxy();
-			NewQGridLayout();
+			interceptor.Invoke("QGridLayout", "QGridLayout()", typeof(void));
 		}
-		[SmokeMethod("QGridLayout", "()", "")]
-		private void NewQGridLayout() {
-			((QGridLayout) interceptor).NewQGridLayout();
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QGridLayout) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSize", "() const", "")]
+		[SmokeMethod("minimumSize() const")]
 		public override QSize MinimumSize() {
-			return ((QGridLayout) interceptor).MinimumSize();
+			return (QSize) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("maximumSize", "() const", "")]
+		[SmokeMethod("maximumSize() const")]
 		public override QSize MaximumSize() {
-			return ((QGridLayout) interceptor).MaximumSize();
+			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
 		}
-		[SmokeMethod("setRowStretch", "(int, int)", "$$")]
 		public void SetRowStretch(int row, int stretch) {
-			((QGridLayout) interceptor).SetRowStretch(row,stretch);
+			interceptor.Invoke("setRowStretch$$", "setRowStretch(int, int)", typeof(void), typeof(int), row, typeof(int), stretch);
 		}
-		[SmokeMethod("setColumnStretch", "(int, int)", "$$")]
 		public void SetColumnStretch(int column, int stretch) {
-			((QGridLayout) interceptor).SetColumnStretch(column,stretch);
+			interceptor.Invoke("setColumnStretch$$", "setColumnStretch(int, int)", typeof(void), typeof(int), column, typeof(int), stretch);
 		}
-		[SmokeMethod("rowStretch", "(int) const", "$")]
 		public int RowStretch(int row) {
-			return ((QGridLayout) interceptor).RowStretch(row);
+			return (int) interceptor.Invoke("rowStretch$", "rowStretch(int) const", typeof(int), typeof(int), row);
 		}
-		[SmokeMethod("columnStretch", "(int) const", "$")]
 		public int ColumnStretch(int column) {
-			return ((QGridLayout) interceptor).ColumnStretch(column);
+			return (int) interceptor.Invoke("columnStretch$", "columnStretch(int) const", typeof(int), typeof(int), column);
 		}
-		[SmokeMethod("setRowMinimumHeight", "(int, int)", "$$")]
 		public void SetRowMinimumHeight(int row, int minSize) {
-			((QGridLayout) interceptor).SetRowMinimumHeight(row,minSize);
+			interceptor.Invoke("setRowMinimumHeight$$", "setRowMinimumHeight(int, int)", typeof(void), typeof(int), row, typeof(int), minSize);
 		}
-		[SmokeMethod("setColumnMinimumWidth", "(int, int)", "$$")]
 		public void SetColumnMinimumWidth(int column, int minSize) {
-			((QGridLayout) interceptor).SetColumnMinimumWidth(column,minSize);
+			interceptor.Invoke("setColumnMinimumWidth$$", "setColumnMinimumWidth(int, int)", typeof(void), typeof(int), column, typeof(int), minSize);
 		}
-		[SmokeMethod("rowMinimumHeight", "(int) const", "$")]
 		public int RowMinimumHeight(int row) {
-			return ((QGridLayout) interceptor).RowMinimumHeight(row);
+			return (int) interceptor.Invoke("rowMinimumHeight$", "rowMinimumHeight(int) const", typeof(int), typeof(int), row);
 		}
-		[SmokeMethod("columnMinimumWidth", "(int) const", "$")]
 		public int ColumnMinimumWidth(int column) {
-			return ((QGridLayout) interceptor).ColumnMinimumWidth(column);
+			return (int) interceptor.Invoke("columnMinimumWidth$", "columnMinimumWidth(int) const", typeof(int), typeof(int), column);
 		}
-		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ((QGridLayout) interceptor).ColumnCount();
+			return (int) interceptor.Invoke("columnCount", "columnCount() const", typeof(int));
 		}
-		[SmokeMethod("rowCount", "() const", "")]
 		public int RowCount() {
-			return ((QGridLayout) interceptor).RowCount();
+			return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
 		}
-		[SmokeMethod("cellRect", "(int, int) const", "$$")]
 		public QRect CellRect(int row, int column) {
-			return ((QGridLayout) interceptor).CellRect(row,column);
+			return (QRect) interceptor.Invoke("cellRect$$", "cellRect(int, int) const", typeof(QRect), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("hasHeightForWidth", "() const", "")]
+		[SmokeMethod("hasHeightForWidth() const")]
 		public override bool HasHeightForWidth() {
-			return ((QGridLayout) interceptor).HasHeightForWidth();
+			return (bool) interceptor.Invoke("hasHeightForWidth", "hasHeightForWidth() const", typeof(bool));
 		}
-		[SmokeMethod("heightForWidth", "(int) const", "$")]
+		[SmokeMethod("heightForWidth(int) const")]
 		public override int HeightForWidth(int arg1) {
-			return ((QGridLayout) interceptor).HeightForWidth(arg1);
+			return (int) interceptor.Invoke("heightForWidth$", "heightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
-		[SmokeMethod("minimumHeightForWidth", "(int) const", "$")]
+		[SmokeMethod("minimumHeightForWidth(int) const")]
 		public override int MinimumHeightForWidth(int arg1) {
-			return ((QGridLayout) interceptor).MinimumHeightForWidth(arg1);
+			return (int) interceptor.Invoke("minimumHeightForWidth$", "minimumHeightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
-		[SmokeMethod("expandingDirections", "() const", "")]
+		[SmokeMethod("expandingDirections() const")]
 		public override int ExpandingDirections() {
-			return ((QGridLayout) interceptor).ExpandingDirections();
+			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
 		}
-		[SmokeMethod("invalidate", "()", "")]
+		[SmokeMethod("invalidate()")]
 		public override void Invalidate() {
-			((QGridLayout) interceptor).Invalidate();
+			interceptor.Invoke("invalidate", "invalidate()", typeof(void));
 		}
-		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public void AddWidget(QWidget w) {
-			((QGridLayout) interceptor).AddWidget(w);
+			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("addWidget", "(QWidget*, int, int, Qt::Alignment)", "#$$$")]
 		public void AddWidget(QWidget arg1, int row, int column, int arg4) {
-			((QGridLayout) interceptor).AddWidget(arg1,row,column,arg4);
+			interceptor.Invoke("addWidget#$$$", "addWidget(QWidget*, int, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), arg4);
 		}
-		[SmokeMethod("addWidget", "(QWidget*, int, int)", "#$$")]
 		public void AddWidget(QWidget arg1, int row, int column) {
-			((QGridLayout) interceptor).AddWidget(arg1,row,column);
+			interceptor.Invoke("addWidget#$$", "addWidget(QWidget*, int, int)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("addWidget", "(QWidget*, int, int, int, int, Qt::Alignment)", "#$$$$$")]
 		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			((QGridLayout) interceptor).AddWidget(arg1,row,column,rowSpan,columnSpan,arg6);
+			interceptor.Invoke("addWidget#$$$$$", "addWidget(QWidget*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
 		}
-		[SmokeMethod("addWidget", "(QWidget*, int, int, int, int)", "#$$$$")]
 		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan) {
-			((QGridLayout) interceptor).AddWidget(arg1,row,column,rowSpan,columnSpan);
+			interceptor.Invoke("addWidget#$$$$", "addWidget(QWidget*, int, int, int, int)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
-		[SmokeMethod("addLayout", "(QLayout*, int, int, Qt::Alignment)", "#$$$")]
 		public void AddLayout(QLayout arg1, int row, int column, int arg4) {
-			((QGridLayout) interceptor).AddLayout(arg1,row,column,arg4);
+			interceptor.Invoke("addLayout#$$$", "addLayout(QLayout*, int, int, Qt::Alignment)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), arg4);
 		}
-		[SmokeMethod("addLayout", "(QLayout*, int, int)", "#$$")]
 		public void AddLayout(QLayout arg1, int row, int column) {
-			((QGridLayout) interceptor).AddLayout(arg1,row,column);
+			interceptor.Invoke("addLayout#$$", "addLayout(QLayout*, int, int)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("addLayout", "(QLayout*, int, int, int, int, Qt::Alignment)", "#$$$$$")]
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			((QGridLayout) interceptor).AddLayout(arg1,row,column,rowSpan,columnSpan,arg6);
+			interceptor.Invoke("addLayout#$$$$$", "addLayout(QLayout*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
 		}
-		[SmokeMethod("addLayout", "(QLayout*, int, int, int, int)", "#$$$$")]
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan) {
-			((QGridLayout) interceptor).AddLayout(arg1,row,column,rowSpan,columnSpan);
+			interceptor.Invoke("addLayout#$$$$", "addLayout(QLayout*, int, int, int, int)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
-		[SmokeMethod("setOriginCorner", "(Qt::Corner)", "$")]
 		public void SetOriginCorner(Qt.Corner arg1) {
-			((QGridLayout) interceptor).SetOriginCorner(arg1);
+			interceptor.Invoke("setOriginCorner$", "setOriginCorner(Qt::Corner)", typeof(void), typeof(Qt.Corner), arg1);
 		}
-		[SmokeMethod("originCorner", "() const", "")]
 		public Qt.Corner OriginCorner() {
-			return ((QGridLayout) interceptor).OriginCorner();
+			return (Qt.Corner) interceptor.Invoke("originCorner", "originCorner() const", typeof(Qt.Corner));
 		}
-		[SmokeMethod("itemAt", "(int) const", "$")]
+		[SmokeMethod("itemAt(int) const")]
 		public override IQLayoutItem ItemAt(int arg1) {
-			return ((QGridLayout) interceptor).ItemAt(arg1);
+			return (IQLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(IQLayoutItem), typeof(int), arg1);
 		}
-		[SmokeMethod("takeAt", "(int)", "$")]
+		[SmokeMethod("takeAt(int)")]
 		public override IQLayoutItem TakeAt(int arg1) {
-			return ((QGridLayout) interceptor).TakeAt(arg1);
+			return (IQLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(IQLayoutItem), typeof(int), arg1);
 		}
-		[SmokeMethod("count", "() const", "")]
+		[SmokeMethod("count() const")]
 		public override int Count() {
-			return ((QGridLayout) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public override void SetGeometry(QRect arg1) {
-			((QGridLayout) interceptor).SetGeometry(arg1);
+			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		[SmokeMethod("addItem", "(QLayoutItem*, int, int, int, int, Qt::Alignment)", "#$$$$$")]
 		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			((QGridLayout) interceptor).AddItem(item,row,column,rowSpan,columnSpan,arg6);
+			interceptor.Invoke("addItem#$$$$$", "addItem(QLayoutItem*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
 		}
-		[SmokeMethod("addItem", "(QLayoutItem*, int, int, int, int)", "#$$$$")]
 		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan) {
-			((QGridLayout) interceptor).AddItem(item,row,column,rowSpan,columnSpan);
+			interceptor.Invoke("addItem#$$$$", "addItem(QLayoutItem*, int, int, int, int)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
-		[SmokeMethod("addItem", "(QLayoutItem*, int, int, int)", "#$$$")]
 		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan) {
-			((QGridLayout) interceptor).AddItem(item,row,column,rowSpan);
+			interceptor.Invoke("addItem#$$$", "addItem(QLayoutItem*, int, int, int)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan);
 		}
-		[SmokeMethod("addItem", "(QLayoutItem*, int, int)", "#$$")]
 		public void AddItem(IQLayoutItem item, int row, int column) {
-			((QGridLayout) interceptor).AddItem(item,row,column);
+			interceptor.Invoke("addItem#$$", "addItem(QLayoutItem*, int, int)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("setDefaultPositioning", "(int, Qt::Orientation)", "$$")]
 		public void SetDefaultPositioning(int n, Qt.Orientation orient) {
-			((QGridLayout) interceptor).SetDefaultPositioning(n,orient);
+			interceptor.Invoke("setDefaultPositioning$$", "setDefaultPositioning(int, Qt::Orientation)", typeof(void), typeof(int), n, typeof(Qt.Orientation), orient);
 		}
-		[SmokeMethod("getItemPosition", "(int, int*, int*, int*, int*)", "$$$$$")]
-		public void GetItemPosition(int idx, out int row, out int column, out int rowSpan, out int columnSpan) {
-			((QGridLayout) interceptor).GetItemPosition(idx,out row,out column,out rowSpan,out columnSpan);
+		public void GetItemPosition(int idx, int row, int column, int rowSpan, int columnSpan) {
+			interceptor.Invoke("getItemPosition$$$$$", "getItemPosition(int, int*, int*, int*, int*)", typeof(void), typeof(int), idx, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
-		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
+		[SmokeMethod("addItem(QLayoutItem*)")]
 		public override void AddItem(IQLayoutItem arg1) {
-			((QGridLayout) interceptor).AddItem(arg1);
+			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(IQLayoutItem), arg1);
 		}
 		~QGridLayout() {
-			DisposeQGridLayout();
+			interceptor.Invoke("~QGridLayout", "~QGridLayout()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGridLayout();
-		}
-		[SmokeMethod("~QGridLayout", "()", "")]
-		private void DisposeQGridLayout() {
-			((QGridLayout) interceptor).DisposeQGridLayout();
+			interceptor.Invoke("~QGridLayout", "~QGridLayout()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGridLayoutSignals Emit {
 			get { return (IQGridLayoutSignals) Q_EMIT; }

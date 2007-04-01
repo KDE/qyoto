@@ -4,55 +4,38 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSqlRelation")]
-	public class QSqlRelation : MarshalByRefObject, IDisposable {
-		protected QSqlRelation interceptor = null;
+	public class QSqlRelation : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlRelation(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRelation), this);
-			interceptor = (QSqlRelation) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlRelation), "QSqlRelation", this);
 		}
 		public QSqlRelation() : this((Type) null) {
 			CreateProxy();
-			NewQSqlRelation();
-		}
-		[SmokeMethod("QSqlRelation", "()", "")]
-		private void NewQSqlRelation() {
-			((QSqlRelation) interceptor).NewQSqlRelation();
+			interceptor.Invoke("QSqlRelation", "QSqlRelation()", typeof(void));
 		}
 		public QSqlRelation(string aTableName, string indexCol, string displayCol) : this((Type) null) {
 			CreateProxy();
-			NewQSqlRelation(aTableName,indexCol,displayCol);
+			interceptor.Invoke("QSqlRelation$$$", "QSqlRelation(const QString&, const QString&, const QString&)", typeof(void), typeof(string), aTableName, typeof(string), indexCol, typeof(string), displayCol);
 		}
-		[SmokeMethod("QSqlRelation", "(const QString&, const QString&, const QString&)", "$$$")]
-		private void NewQSqlRelation(string aTableName, string indexCol, string displayCol) {
-			((QSqlRelation) interceptor).NewQSqlRelation(aTableName,indexCol,displayCol);
-		}
-		[SmokeMethod("tableName", "() const", "")]
 		public string TableName() {
-			return ((QSqlRelation) interceptor).TableName();
+			return (string) interceptor.Invoke("tableName", "tableName() const", typeof(string));
 		}
-		[SmokeMethod("indexColumn", "() const", "")]
 		public string IndexColumn() {
-			return ((QSqlRelation) interceptor).IndexColumn();
+			return (string) interceptor.Invoke("indexColumn", "indexColumn() const", typeof(string));
 		}
-		[SmokeMethod("displayColumn", "() const", "")]
 		public string DisplayColumn() {
-			return ((QSqlRelation) interceptor).DisplayColumn();
+			return (string) interceptor.Invoke("displayColumn", "displayColumn() const", typeof(string));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QSqlRelation) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		~QSqlRelation() {
-			DisposeQSqlRelation();
+			interceptor.Invoke("~QSqlRelation", "~QSqlRelation()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSqlRelation();
-		}
-		[SmokeMethod("~QSqlRelation", "()", "")]
-		private void DisposeQSqlRelation() {
-			((QSqlRelation) interceptor).DisposeQSqlRelation();
+			interceptor.Invoke("~QSqlRelation", "~QSqlRelation()", typeof(void));
 		}
 	}
 }

@@ -7,38 +7,26 @@ namespace Qyoto {
 	public class QAccessibleEvent : QEvent, IDisposable {
  		protected QAccessibleEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleEvent), this);
-			interceptor = (QAccessibleEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAccessibleEvent), "QAccessibleEvent", this);
 		}
 		public QAccessibleEvent(QEvent.TypeOf type, int child) : this((Type) null) {
 			CreateProxy();
-			NewQAccessibleEvent(type,child);
+			interceptor.Invoke("QAccessibleEvent$$", "QAccessibleEvent(QEvent::Type, int)", typeof(void), typeof(QEvent.TypeOf), type, typeof(int), child);
 		}
-		[SmokeMethod("QAccessibleEvent", "(QEvent::Type, int)", "$$")]
-		private void NewQAccessibleEvent(QEvent.TypeOf type, int child) {
-			((QAccessibleEvent) interceptor).NewQAccessibleEvent(type,child);
-		}
-		[SmokeMethod("child", "() const", "")]
 		public int Child() {
-			return ((QAccessibleEvent) interceptor).Child();
+			return (int) interceptor.Invoke("child", "child() const", typeof(int));
 		}
-		[SmokeMethod("value", "() const", "")]
 		public string Value() {
-			return ((QAccessibleEvent) interceptor).Value();
+			return (string) interceptor.Invoke("value", "value() const", typeof(string));
 		}
-		[SmokeMethod("setValue", "(const QString&)", "$")]
 		public void SetValue(string aText) {
-			((QAccessibleEvent) interceptor).SetValue(aText);
+			interceptor.Invoke("setValue$", "setValue(const QString&)", typeof(void), typeof(string), aText);
 		}
 		~QAccessibleEvent() {
-			DisposeQAccessibleEvent();
+			interceptor.Invoke("~QAccessibleEvent", "~QAccessibleEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQAccessibleEvent();
-		}
-		[SmokeMethod("~QAccessibleEvent", "()", "")]
-		private void DisposeQAccessibleEvent() {
-			((QAccessibleEvent) interceptor).DisposeQAccessibleEvent();
+			interceptor.Invoke("~QAccessibleEvent", "~QAccessibleEvent()", typeof(void));
 		}
 	}
 }

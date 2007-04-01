@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSystemLocale")]
-	public class QSystemLocale : MarshalByRefObject, IDisposable {
-		protected QSystemLocale interceptor = null;
+	public class QSystemLocale : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSystemLocale(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSystemLocale), this);
-			interceptor = (QSystemLocale) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSystemLocale), "QSystemLocale", this);
 		}
 		public enum QueryType {
 			LanguageId = 0,
@@ -34,29 +33,21 @@ namespace Qyoto {
 		}
 		public QSystemLocale() : this((Type) null) {
 			CreateProxy();
-			NewQSystemLocale();
+			interceptor.Invoke("QSystemLocale", "QSystemLocale()", typeof(void));
 		}
-		[SmokeMethod("QSystemLocale", "()", "")]
-		private void NewQSystemLocale() {
-			((QSystemLocale) interceptor).NewQSystemLocale();
-		}
-		[SmokeMethod("query", "(QSystemLocale::QueryType, QVariant) const", "$#")]
+		[SmokeMethod("query(QSystemLocale::QueryType, QVariant) const")]
 		public virtual QVariant Query(QSystemLocale.QueryType type, QVariant arg2) {
-			return ((QSystemLocale) interceptor).Query(type,arg2);
+			return (QVariant) interceptor.Invoke("query$#", "query(QSystemLocale::QueryType, QVariant) const", typeof(QVariant), typeof(QSystemLocale.QueryType), type, typeof(QVariant), arg2);
 		}
-		[SmokeMethod("fallbackLocale", "() const", "")]
+		[SmokeMethod("fallbackLocale() const")]
 		public virtual QLocale FallbackLocale() {
-			return ((QSystemLocale) interceptor).FallbackLocale();
+			return (QLocale) interceptor.Invoke("fallbackLocale", "fallbackLocale() const", typeof(QLocale));
 		}
 		~QSystemLocale() {
-			DisposeQSystemLocale();
+			interceptor.Invoke("~QSystemLocale", "~QSystemLocale()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSystemLocale();
-		}
-		[SmokeMethod("~QSystemLocale", "()", "")]
-		private void DisposeQSystemLocale() {
-			((QSystemLocale) interceptor).DisposeQSystemLocale();
+			interceptor.Invoke("~QSystemLocale", "~QSystemLocale()", typeof(void));
 		}
 	}
 }

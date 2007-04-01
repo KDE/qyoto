@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QEvent")]
-	public class QEvent : MarshalByRefObject, IDisposable {
-		protected QEvent interceptor = null;
+	public class QEvent : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QEvent(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEvent), this);
-			interceptor = (QEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QEvent), "QEvent", this);
 		}
 		public enum TypeOf {
 			None = 0,
@@ -143,45 +142,31 @@ namespace Qyoto {
 		}
 		public QEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQEvent(type);
+			interceptor.Invoke("QEvent$", "QEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
-		[SmokeMethod("QEvent", "(QEvent::Type)", "$")]
-		private void NewQEvent(QEvent.TypeOf type) {
-			((QEvent) interceptor).NewQEvent(type);
-		}
-		[SmokeMethod("type", "() const", "")]
 		public QEvent.TypeOf type() {
-			return ((QEvent) interceptor).type();
+			return (QEvent.TypeOf) interceptor.Invoke("type", "type() const", typeof(QEvent.TypeOf));
 		}
-		[SmokeMethod("spontaneous", "() const", "")]
 		public bool Spontaneous() {
-			return ((QEvent) interceptor).Spontaneous();
+			return (bool) interceptor.Invoke("spontaneous", "spontaneous() const", typeof(bool));
 		}
-		[SmokeMethod("setAccepted", "(bool)", "$")]
 		public void SetAccepted(bool accepted) {
-			((QEvent) interceptor).SetAccepted(accepted);
+			interceptor.Invoke("setAccepted$", "setAccepted(bool)", typeof(void), typeof(bool), accepted);
 		}
-		[SmokeMethod("isAccepted", "() const", "")]
 		public bool IsAccepted() {
-			return ((QEvent) interceptor).IsAccepted();
+			return (bool) interceptor.Invoke("isAccepted", "isAccepted() const", typeof(bool));
 		}
-		[SmokeMethod("accept", "()", "")]
 		public void Accept() {
-			((QEvent) interceptor).Accept();
+			interceptor.Invoke("accept", "accept()", typeof(void));
 		}
-		[SmokeMethod("ignore", "()", "")]
 		public void Ignore() {
-			((QEvent) interceptor).Ignore();
+			interceptor.Invoke("ignore", "ignore()", typeof(void));
 		}
 		~QEvent() {
-			DisposeQEvent();
+			interceptor.Invoke("~QEvent", "~QEvent()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQEvent();
-		}
-		[SmokeMethod("~QEvent", "()", "")]
-		private void DisposeQEvent() {
-			((QEvent) interceptor).DisposeQEvent();
+			interceptor.Invoke("~QEvent", "~QEvent()", typeof(void));
 		}
 	}
 }

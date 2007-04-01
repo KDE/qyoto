@@ -7,139 +7,100 @@ namespace Qyoto {
 	[SmokeClass("QStatusBar")]
 	public class QStatusBar : QWidget, IDisposable {
  		protected QStatusBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStatusBar")]
-		interface IQStatusBarProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusBar), this);
-			interceptor = (QStatusBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStatusBar), "QStatusBar", this);
 		}
-		private static IQStatusBarProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QStatusBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStatusBarProxy), null);
-			staticInterceptor = (IQStatusBarProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QStatusBar), "QStatusBar", null);
 		}
 		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
-			[SmokeMethod("isSizeGripEnabled", "()", "")]
-			get { return ((QStatusBar) interceptor).SizeGripEnabled; }
-			[SmokeMethod("setSizeGripEnabled", "(bool)", "$")]
-			set { ((QStatusBar) interceptor).SizeGripEnabled = value; }
+			get { return (bool) interceptor.Invoke("isSizeGripEnabled", "isSizeGripEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setSizeGripEnabled$", "setSizeGripEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QStatusBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQStatusBar(parent);
-		}
-		[SmokeMethod("QStatusBar", "(QWidget*)", "#")]
-		private void NewQStatusBar(QWidget parent) {
-			((QStatusBar) interceptor).NewQStatusBar(parent);
+			interceptor.Invoke("QStatusBar#", "QStatusBar(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QStatusBar() : this((Type) null) {
 			CreateProxy();
-			NewQStatusBar();
+			interceptor.Invoke("QStatusBar", "QStatusBar()", typeof(void));
 		}
-		[SmokeMethod("QStatusBar", "()", "")]
-		private void NewQStatusBar() {
-			((QStatusBar) interceptor).NewQStatusBar();
-		}
-		[SmokeMethod("addWidget", "(QWidget*, int)", "#$")]
 		public void AddWidget(QWidget widget, int stretch) {
-			((QStatusBar) interceptor).AddWidget(widget,stretch);
+			interceptor.Invoke("addWidget#$", "addWidget(QWidget*, int)", typeof(void), typeof(QWidget), widget, typeof(int), stretch);
 		}
-		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public void AddWidget(QWidget widget) {
-			((QStatusBar) interceptor).AddWidget(widget);
+			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("insertWidget", "(int, QWidget*, int)", "$#$")]
 		public int InsertWidget(int index, QWidget widget, int stretch) {
-			return ((QStatusBar) interceptor).InsertWidget(index,widget,stretch);
+			return (int) interceptor.Invoke("insertWidget$#$", "insertWidget(int, QWidget*, int)", typeof(int), typeof(int), index, typeof(QWidget), widget, typeof(int), stretch);
 		}
-		[SmokeMethod("insertWidget", "(int, QWidget*)", "$#")]
 		public int InsertWidget(int index, QWidget widget) {
-			return ((QStatusBar) interceptor).InsertWidget(index,widget);
+			return (int) interceptor.Invoke("insertWidget$#", "insertWidget(int, QWidget*)", typeof(int), typeof(int), index, typeof(QWidget), widget);
 		}
-		[SmokeMethod("addPermanentWidget", "(QWidget*, int)", "#$")]
 		public void AddPermanentWidget(QWidget widget, int stretch) {
-			((QStatusBar) interceptor).AddPermanentWidget(widget,stretch);
+			interceptor.Invoke("addPermanentWidget#$", "addPermanentWidget(QWidget*, int)", typeof(void), typeof(QWidget), widget, typeof(int), stretch);
 		}
-		[SmokeMethod("addPermanentWidget", "(QWidget*)", "#")]
 		public void AddPermanentWidget(QWidget widget) {
-			((QStatusBar) interceptor).AddPermanentWidget(widget);
+			interceptor.Invoke("addPermanentWidget#", "addPermanentWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("insertPermanentWidget", "(int, QWidget*, int)", "$#$")]
 		public int InsertPermanentWidget(int index, QWidget widget, int stretch) {
-			return ((QStatusBar) interceptor).InsertPermanentWidget(index,widget,stretch);
+			return (int) interceptor.Invoke("insertPermanentWidget$#$", "insertPermanentWidget(int, QWidget*, int)", typeof(int), typeof(int), index, typeof(QWidget), widget, typeof(int), stretch);
 		}
-		[SmokeMethod("insertPermanentWidget", "(int, QWidget*)", "$#")]
 		public int InsertPermanentWidget(int index, QWidget widget) {
-			return ((QStatusBar) interceptor).InsertPermanentWidget(index,widget);
+			return (int) interceptor.Invoke("insertPermanentWidget$#", "insertPermanentWidget(int, QWidget*)", typeof(int), typeof(int), index, typeof(QWidget), widget);
 		}
-		[SmokeMethod("removeWidget", "(QWidget*)", "#")]
 		public void RemoveWidget(QWidget widget) {
-			((QStatusBar) interceptor).RemoveWidget(widget);
+			interceptor.Invoke("removeWidget#", "removeWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("isSizeGripEnabled", "() const", "")]
 		public bool IsSizeGripEnabled() {
-			return ((QStatusBar) interceptor).IsSizeGripEnabled();
+			return (bool) interceptor.Invoke("isSizeGripEnabled", "isSizeGripEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("currentMessage", "() const", "")]
 		public string CurrentMessage() {
-			return ((QStatusBar) interceptor).CurrentMessage();
+			return (string) interceptor.Invoke("currentMessage", "currentMessage() const", typeof(string));
 		}
 		[Q_SLOT("void showMessage(const QString&, int)")]
-		[SmokeMethod("showMessage", "(const QString&, int)", "$$")]
 		public void ShowMessage(string text, int timeout) {
-			((QStatusBar) interceptor).ShowMessage(text,timeout);
+			interceptor.Invoke("showMessage$$", "showMessage(const QString&, int)", typeof(void), typeof(string), text, typeof(int), timeout);
 		}
 		[Q_SLOT("void showMessage(const QString&)")]
-		[SmokeMethod("showMessage", "(const QString&)", "$")]
 		public void ShowMessage(string text) {
-			((QStatusBar) interceptor).ShowMessage(text);
+			interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), text);
 		}
 		[Q_SLOT("void clearMessage()")]
-		[SmokeMethod("clearMessage", "()", "")]
 		public void ClearMessage() {
-			((QStatusBar) interceptor).ClearMessage();
+			interceptor.Invoke("clearMessage", "clearMessage()", typeof(void));
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QStatusBar) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QStatusBar) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("reformat", "()", "")]
 		protected void Reformat() {
-			((QStatusBar) interceptor).Reformat();
+			interceptor.Invoke("reformat", "reformat()", typeof(void));
 		}
-		[SmokeMethod("hideOrShow", "()", "")]
 		protected void HideOrShow() {
-			((QStatusBar) interceptor).HideOrShow();
+			interceptor.Invoke("hideOrShow", "hideOrShow()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QStatusBar) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QStatusBar() {
-			DisposeQStatusBar();
+			interceptor.Invoke("~QStatusBar", "~QStatusBar()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQStatusBar();
-		}
-		[SmokeMethod("~QStatusBar", "()", "")]
-		private void DisposeQStatusBar() {
-			((QStatusBar) interceptor).DisposeQStatusBar();
+			interceptor.Invoke("~QStatusBar", "~QStatusBar()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQStatusBarSignals Emit {
 			get { return (IQStatusBarSignals) Q_EMIT; }

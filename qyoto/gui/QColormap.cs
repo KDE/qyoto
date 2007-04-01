@@ -5,29 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QColormap")]
-	public class QColormap : MarshalByRefObject, IDisposable {
-		protected QColormap interceptor = null;
+	public class QColormap : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QColormap(Type dummy) {}
-		[SmokeClass("QColormap")]
-		interface IQColormapProxy {
-			[SmokeMethod("initialize", "()", "")]
-			void Initialize();
-			[SmokeMethod("cleanup", "()", "")]
-			void Cleanup();
-			[SmokeMethod("instance", "(int)", "$")]
-			QColormap Instance(int screen);
-			[SmokeMethod("instance", "()", "")]
-			QColormap Instance();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColormap), this);
-			interceptor = (QColormap) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QColormap), "QColormap", this);
 		}
-		private static IQColormapProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QColormap() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQColormapProxy), null);
-			staticInterceptor = (IQColormapProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QColormap), "QColormap", null);
 		}
 		public enum Mode {
 			Direct = 0,
@@ -36,57 +23,43 @@ namespace Qyoto {
 		}
 		public QColormap(QColormap colormap) : this((Type) null) {
 			CreateProxy();
-			NewQColormap(colormap);
+			interceptor.Invoke("QColormap#", "QColormap(const QColormap&)", typeof(void), typeof(QColormap), colormap);
 		}
-		[SmokeMethod("QColormap", "(const QColormap&)", "#")]
-		private void NewQColormap(QColormap colormap) {
-			((QColormap) interceptor).NewQColormap(colormap);
-		}
-		[SmokeMethod("mode", "() const", "")]
 		public QColormap.Mode mode() {
-			return ((QColormap) interceptor).mode();
+			return (QColormap.Mode) interceptor.Invoke("mode", "mode() const", typeof(QColormap.Mode));
 		}
-		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ((QColormap) interceptor).Depth();
+			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ((QColormap) interceptor).Size();
+			return (int) interceptor.Invoke("size", "size() const", typeof(int));
 		}
-		[SmokeMethod("pixel", "(const QColor&) const", "#")]
 		public uint Pixel(QColor color) {
-			return ((QColormap) interceptor).Pixel(color);
+			return (uint) interceptor.Invoke("pixel#", "pixel(const QColor&) const", typeof(uint), typeof(QColor), color);
 		}
-		[SmokeMethod("colorAt", "(uint) const", "$")]
 		public QColor ColorAt(uint pixel) {
-			return ((QColormap) interceptor).ColorAt(pixel);
+			return (QColor) interceptor.Invoke("colorAt$", "colorAt(uint) const", typeof(QColor), typeof(uint), pixel);
 		}
-		[SmokeMethod("colormap", "() const", "")]
 		public List<QColor> Colormap() {
-			return ((QColormap) interceptor).Colormap();
+			return (List<QColor>) interceptor.Invoke("colormap", "colormap() const", typeof(List<QColor>));
 		}
 		~QColormap() {
-			DisposeQColormap();
+			interceptor.Invoke("~QColormap", "~QColormap()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQColormap();
-		}
-		[SmokeMethod("~QColormap", "()", "")]
-		private void DisposeQColormap() {
-			((QColormap) interceptor).DisposeQColormap();
+			interceptor.Invoke("~QColormap", "~QColormap()", typeof(void));
 		}
 		public static void Initialize() {
-			staticInterceptor.Initialize();
+			staticInterceptor.Invoke("initialize", "initialize()", typeof(void));
 		}
 		public static void Cleanup() {
-			staticInterceptor.Cleanup();
+			staticInterceptor.Invoke("cleanup", "cleanup()", typeof(void));
 		}
 		public static QColormap Instance(int screen) {
-			return staticInterceptor.Instance(screen);
+			return (QColormap) staticInterceptor.Invoke("instance$", "instance(int)", typeof(QColormap), typeof(int), screen);
 		}
 		public static QColormap Instance() {
-			return staticInterceptor.Instance();
+			return (QColormap) staticInterceptor.Invoke("instance", "instance()", typeof(QColormap));
 		}
 	}
 }

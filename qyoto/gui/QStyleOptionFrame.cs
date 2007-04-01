@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionFrame : QStyleOption, IDisposable {
  		protected QStyleOptionFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrame), this);
-			interceptor = (QStyleOptionFrame) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionFrame), "QStyleOptionFrame", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Frame,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionFrame() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrame();
-		}
-		[SmokeMethod("QStyleOptionFrame", "()", "")]
-		private void NewQStyleOptionFrame() {
-			((QStyleOptionFrame) interceptor).NewQStyleOptionFrame();
+			interceptor.Invoke("QStyleOptionFrame", "QStyleOptionFrame()", typeof(void));
 		}
 		public QStyleOptionFrame(QStyleOptionFrame other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrame(other);
-		}
-		[SmokeMethod("QStyleOptionFrame", "(const QStyleOptionFrame&)", "#")]
-		private void NewQStyleOptionFrame(QStyleOptionFrame other) {
-			((QStyleOptionFrame) interceptor).NewQStyleOptionFrame(other);
+			interceptor.Invoke("QStyleOptionFrame#", "QStyleOptionFrame(const QStyleOptionFrame&)", typeof(void), typeof(QStyleOptionFrame), other);
 		}
 		public QStyleOptionFrame(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFrame(version);
-		}
-		[SmokeMethod("QStyleOptionFrame", "(int)", "$")]
-		private void NewQStyleOptionFrame(int version) {
-			((QStyleOptionFrame) interceptor).NewQStyleOptionFrame(version);
+			interceptor.Invoke("QStyleOptionFrame$", "QStyleOptionFrame(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionFrame() {
-			DisposeQStyleOptionFrame();
+			interceptor.Invoke("~QStyleOptionFrame", "~QStyleOptionFrame()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionFrame();
-		}
-		[SmokeMethod("~QStyleOptionFrame", "()", "")]
-		private void DisposeQStyleOptionFrame() {
-			((QStyleOptionFrame) interceptor).DisposeQStyleOptionFrame();
+			interceptor.Invoke("~QStyleOptionFrame", "~QStyleOptionFrame()", typeof(void));
 		}
 	}
 }

@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QIcon")]
-	public class QIcon : MarshalByRefObject, IDisposable {
-		protected QIcon interceptor = null;
+	public class QIcon : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QIcon(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIcon), this);
-			interceptor = (QIcon) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QIcon), "QIcon", this);
 		}
 		public enum Mode {
 			Normal = 0,
@@ -25,173 +24,119 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QIcon() : this((Type) null) {
 			CreateProxy();
-			NewQIcon();
-		}
-		[SmokeMethod("QIcon", "()", "")]
-		private void NewQIcon() {
-			((QIcon) interceptor).NewQIcon();
+			interceptor.Invoke("QIcon", "QIcon()", typeof(void));
 		}
 		public QIcon(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
-			NewQIcon(pixmap);
-		}
-		[SmokeMethod("QIcon", "(const QPixmap&)", "#")]
-		private void NewQIcon(QPixmap pixmap) {
-			((QIcon) interceptor).NewQIcon(pixmap);
+			interceptor.Invoke("QIcon#", "QIcon(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
 		public QIcon(QIcon other) : this((Type) null) {
 			CreateProxy();
-			NewQIcon(other);
-		}
-		[SmokeMethod("QIcon", "(const QIcon&)", "#")]
-		private void NewQIcon(QIcon other) {
-			((QIcon) interceptor).NewQIcon(other);
+			interceptor.Invoke("QIcon#", "QIcon(const QIcon&)", typeof(void), typeof(QIcon), other);
 		}
 		public QIcon(string fileName) : this((Type) null) {
 			CreateProxy();
-			NewQIcon(fileName);
-		}
-		[SmokeMethod("QIcon", "(const QString&)", "$")]
-		private void NewQIcon(string fileName) {
-			((QIcon) interceptor).NewQIcon(fileName);
+			interceptor.Invoke("QIcon$", "QIcon(const QString&)", typeof(void), typeof(string), fileName);
 		}
 		public QIcon(QIconEngine engine) : this((Type) null) {
 			CreateProxy();
-			NewQIcon(engine);
+			interceptor.Invoke("QIcon#", "QIcon(QIconEngine*)", typeof(void), typeof(QIconEngine), engine);
 		}
-		[SmokeMethod("QIcon", "(QIconEngine*)", "#")]
-		private void NewQIcon(QIconEngine engine) {
-			((QIcon) interceptor).NewQIcon(engine);
-		}
-		[SmokeMethod("pixmap", "(const QSize&, QIcon::Mode, QIcon::State) const", "#$$")]
 		public QPixmap Pixmap(QSize size, QIcon.Mode mode, QIcon.State state) {
-			return ((QIcon) interceptor).Pixmap(size,mode,state);
+			return (QPixmap) interceptor.Invoke("pixmap#$$", "pixmap(const QSize&, QIcon::Mode, QIcon::State) const", typeof(QPixmap), typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("pixmap", "(const QSize&, QIcon::Mode) const", "#$")]
 		public QPixmap Pixmap(QSize size, QIcon.Mode mode) {
-			return ((QIcon) interceptor).Pixmap(size,mode);
+			return (QPixmap) interceptor.Invoke("pixmap#$", "pixmap(const QSize&, QIcon::Mode) const", typeof(QPixmap), typeof(QSize), size, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("pixmap", "(const QSize&) const", "#")]
 		public QPixmap Pixmap(QSize size) {
-			return ((QIcon) interceptor).Pixmap(size);
+			return (QPixmap) interceptor.Invoke("pixmap#", "pixmap(const QSize&) const", typeof(QPixmap), typeof(QSize), size);
 		}
-		[SmokeMethod("pixmap", "(int, int, QIcon::Mode, QIcon::State) const", "$$$$")]
 		public QPixmap Pixmap(int w, int h, QIcon.Mode mode, QIcon.State state) {
-			return ((QIcon) interceptor).Pixmap(w,h,mode,state);
+			return (QPixmap) interceptor.Invoke("pixmap$$$$", "pixmap(int, int, QIcon::Mode, QIcon::State) const", typeof(QPixmap), typeof(int), w, typeof(int), h, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("pixmap", "(int, int, QIcon::Mode) const", "$$$")]
 		public QPixmap Pixmap(int w, int h, QIcon.Mode mode) {
-			return ((QIcon) interceptor).Pixmap(w,h,mode);
+			return (QPixmap) interceptor.Invoke("pixmap$$$", "pixmap(int, int, QIcon::Mode) const", typeof(QPixmap), typeof(int), w, typeof(int), h, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("pixmap", "(int, int) const", "$$")]
 		public QPixmap Pixmap(int w, int h) {
-			return ((QIcon) interceptor).Pixmap(w,h);
+			return (QPixmap) interceptor.Invoke("pixmap$$", "pixmap(int, int) const", typeof(QPixmap), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("pixmap", "(int, QIcon::Mode, QIcon::State) const", "$$$")]
 		public QPixmap Pixmap(int extent, QIcon.Mode mode, QIcon.State state) {
-			return ((QIcon) interceptor).Pixmap(extent,mode,state);
+			return (QPixmap) interceptor.Invoke("pixmap$$$", "pixmap(int, QIcon::Mode, QIcon::State) const", typeof(QPixmap), typeof(int), extent, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("pixmap", "(int, QIcon::Mode) const", "$$")]
 		public QPixmap Pixmap(int extent, QIcon.Mode mode) {
-			return ((QIcon) interceptor).Pixmap(extent,mode);
+			return (QPixmap) interceptor.Invoke("pixmap$$", "pixmap(int, QIcon::Mode) const", typeof(QPixmap), typeof(int), extent, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("pixmap", "(int) const", "$")]
 		public QPixmap Pixmap(int extent) {
-			return ((QIcon) interceptor).Pixmap(extent);
+			return (QPixmap) interceptor.Invoke("pixmap$", "pixmap(int) const", typeof(QPixmap), typeof(int), extent);
 		}
-		[SmokeMethod("actualSize", "(const QSize&, QIcon::Mode, QIcon::State) const", "#$$")]
 		public QSize ActualSize(QSize size, QIcon.Mode mode, QIcon.State state) {
-			return ((QIcon) interceptor).ActualSize(size,mode,state);
+			return (QSize) interceptor.Invoke("actualSize#$$", "actualSize(const QSize&, QIcon::Mode, QIcon::State) const", typeof(QSize), typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("actualSize", "(const QSize&, QIcon::Mode) const", "#$")]
 		public QSize ActualSize(QSize size, QIcon.Mode mode) {
-			return ((QIcon) interceptor).ActualSize(size,mode);
+			return (QSize) interceptor.Invoke("actualSize#$", "actualSize(const QSize&, QIcon::Mode) const", typeof(QSize), typeof(QSize), size, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("actualSize", "(const QSize&) const", "#")]
 		public QSize ActualSize(QSize size) {
-			return ((QIcon) interceptor).ActualSize(size);
+			return (QSize) interceptor.Invoke("actualSize#", "actualSize(const QSize&) const", typeof(QSize), typeof(QSize), size);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode, QIcon::State) const", "##$$$")]
 		public void Paint(QPainter painter, QRect rect, int alignment, QIcon.Mode mode, QIcon.State state) {
-			((QIcon) interceptor).Paint(painter,rect,alignment,mode,state);
+			interceptor.Invoke("paint##$$$", "paint(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode, QIcon::State) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode) const", "##$$")]
 		public void Paint(QPainter painter, QRect rect, int alignment, QIcon.Mode mode) {
-			((QIcon) interceptor).Paint(painter,rect,alignment,mode);
+			interceptor.Invoke("paint##$$", "paint(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QRect&, Qt::Alignment) const", "##$")]
 		public void Paint(QPainter painter, QRect rect, int alignment) {
-			((QIcon) interceptor).Paint(painter,rect,alignment);
+			interceptor.Invoke("paint##$", "paint(QPainter*, const QRect&, Qt::Alignment) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QRect&) const", "##")]
 		public void Paint(QPainter painter, QRect rect) {
-			((QIcon) interceptor).Paint(painter,rect);
+			interceptor.Invoke("paint##", "paint(QPainter*, const QRect&) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect);
 		}
-		[SmokeMethod("paint", "(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode, QIcon::State) const", "#$$$$$$$")]
 		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment, QIcon.Mode mode, QIcon.State state) {
-			((QIcon) interceptor).Paint(painter,x,y,w,h,alignment,mode,state);
+			interceptor.Invoke("paint#$$$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode, QIcon::State) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), alignment, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("paint", "(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode) const", "#$$$$$$")]
 		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment, QIcon.Mode mode) {
-			((QIcon) interceptor).Paint(painter,x,y,w,h,alignment,mode);
+			interceptor.Invoke("paint#$$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), alignment, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("paint", "(QPainter*, int, int, int, int, Qt::Alignment) const", "#$$$$$")]
 		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment) {
-			((QIcon) interceptor).Paint(painter,x,y,w,h,alignment);
+			interceptor.Invoke("paint#$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), alignment);
 		}
-		[SmokeMethod("paint", "(QPainter*, int, int, int, int) const", "#$$$$")]
 		public void Paint(QPainter painter, int x, int y, int w, int h) {
-			((QIcon) interceptor).Paint(painter,x,y,w,h);
+			interceptor.Invoke("paint#$$$$", "paint(QPainter*, int, int, int, int) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QIcon) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QIcon) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		[SmokeMethod("serialNumber", "() const", "")]
 		public int SerialNumber() {
-			return ((QIcon) interceptor).SerialNumber();
+			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
 		}
-		[SmokeMethod("addPixmap", "(const QPixmap&, QIcon::Mode, QIcon::State)", "#$$")]
 		public void AddPixmap(QPixmap pixmap, QIcon.Mode mode, QIcon.State state) {
-			((QIcon) interceptor).AddPixmap(pixmap,mode,state);
+			interceptor.Invoke("addPixmap#$$", "addPixmap(const QPixmap&, QIcon::Mode, QIcon::State)", typeof(void), typeof(QPixmap), pixmap, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("addPixmap", "(const QPixmap&, QIcon::Mode)", "#$")]
 		public void AddPixmap(QPixmap pixmap, QIcon.Mode mode) {
-			((QIcon) interceptor).AddPixmap(pixmap,mode);
+			interceptor.Invoke("addPixmap#$", "addPixmap(const QPixmap&, QIcon::Mode)", typeof(void), typeof(QPixmap), pixmap, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("addPixmap", "(const QPixmap&)", "#")]
 		public void AddPixmap(QPixmap pixmap) {
-			((QIcon) interceptor).AddPixmap(pixmap);
+			interceptor.Invoke("addPixmap#", "addPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("addFile", "(const QString&, const QSize&, QIcon::Mode, QIcon::State)", "$#$$")]
 		public void AddFile(string fileName, QSize size, QIcon.Mode mode, QIcon.State state) {
-			((QIcon) interceptor).AddFile(fileName,size,mode,state);
+			interceptor.Invoke("addFile$#$$", "addFile(const QString&, const QSize&, QIcon::Mode, QIcon::State)", typeof(void), typeof(string), fileName, typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		[SmokeMethod("addFile", "(const QString&, const QSize&, QIcon::Mode)", "$#$")]
 		public void AddFile(string fileName, QSize size, QIcon.Mode mode) {
-			((QIcon) interceptor).AddFile(fileName,size,mode);
+			interceptor.Invoke("addFile$#$", "addFile(const QString&, const QSize&, QIcon::Mode)", typeof(void), typeof(string), fileName, typeof(QSize), size, typeof(QIcon.Mode), mode);
 		}
-		[SmokeMethod("addFile", "(const QString&, const QSize&)", "$#")]
 		public void AddFile(string fileName, QSize size) {
-			((QIcon) interceptor).AddFile(fileName,size);
+			interceptor.Invoke("addFile$#", "addFile(const QString&, const QSize&)", typeof(void), typeof(string), fileName, typeof(QSize), size);
 		}
-		[SmokeMethod("addFile", "(const QString&)", "$")]
 		public void AddFile(string fileName) {
-			((QIcon) interceptor).AddFile(fileName);
+			interceptor.Invoke("addFile$", "addFile(const QString&)", typeof(void), typeof(string), fileName);
 		}
 		~QIcon() {
-			DisposeQIcon();
+			interceptor.Invoke("~QIcon", "~QIcon()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQIcon();
-		}
-		[SmokeMethod("~QIcon", "()", "")]
-		private void DisposeQIcon() {
-			((QIcon) interceptor).DisposeQIcon();
+			interceptor.Invoke("~QIcon", "~QIcon()", typeof(void));
 		}
 	}
 }

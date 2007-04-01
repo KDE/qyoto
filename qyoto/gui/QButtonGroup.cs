@@ -8,96 +8,64 @@ namespace Qyoto {
 	[SmokeClass("QButtonGroup")]
 	public class QButtonGroup : QObject, IDisposable {
  		protected QButtonGroup(Type dummy) : base((Type) null) {}
-		[SmokeClass("QButtonGroup")]
-		interface IQButtonGroupProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QButtonGroup), this);
-			interceptor = (QButtonGroup) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QButtonGroup), "QButtonGroup", this);
 		}
-		private static IQButtonGroupProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QButtonGroup() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQButtonGroupProxy), null);
-			staticInterceptor = (IQButtonGroupProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QButtonGroup), "QButtonGroup", null);
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
-			[SmokeMethod("exclusive", "()", "")]
-			get { return ((QButtonGroup) interceptor).Exclusive; }
-			[SmokeMethod("setExclusive", "(bool)", "$")]
-			set { ((QButtonGroup) interceptor).Exclusive = value; }
+			get { return (bool) interceptor.Invoke("exclusive", "exclusive()", typeof(bool)); }
+			set { interceptor.Invoke("setExclusive$", "setExclusive(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QButtonGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQButtonGroup(parent);
-		}
-		[SmokeMethod("QButtonGroup", "(QObject*)", "#")]
-		private void NewQButtonGroup(QObject parent) {
-			((QButtonGroup) interceptor).NewQButtonGroup(parent);
+			interceptor.Invoke("QButtonGroup#", "QButtonGroup(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QButtonGroup() : this((Type) null) {
 			CreateProxy();
-			NewQButtonGroup();
+			interceptor.Invoke("QButtonGroup", "QButtonGroup()", typeof(void));
 		}
-		[SmokeMethod("QButtonGroup", "()", "")]
-		private void NewQButtonGroup() {
-			((QButtonGroup) interceptor).NewQButtonGroup();
-		}
-		[SmokeMethod("addButton", "(QAbstractButton*)", "#")]
 		public void AddButton(QAbstractButton arg1) {
-			((QButtonGroup) interceptor).AddButton(arg1);
+			interceptor.Invoke("addButton#", "addButton(QAbstractButton*)", typeof(void), typeof(QAbstractButton), arg1);
 		}
-		[SmokeMethod("addButton", "(QAbstractButton*, int)", "#$")]
 		public void AddButton(QAbstractButton arg1, int id) {
-			((QButtonGroup) interceptor).AddButton(arg1,id);
+			interceptor.Invoke("addButton#$", "addButton(QAbstractButton*, int)", typeof(void), typeof(QAbstractButton), arg1, typeof(int), id);
 		}
-		[SmokeMethod("removeButton", "(QAbstractButton*)", "#")]
 		public void RemoveButton(QAbstractButton arg1) {
-			((QButtonGroup) interceptor).RemoveButton(arg1);
+			interceptor.Invoke("removeButton#", "removeButton(QAbstractButton*)", typeof(void), typeof(QAbstractButton), arg1);
 		}
-		[SmokeMethod("buttons", "() const", "")]
 		public List<QAbstractButton> Buttons() {
-			return ((QButtonGroup) interceptor).Buttons();
+			return (List<QAbstractButton>) interceptor.Invoke("buttons", "buttons() const", typeof(List<QAbstractButton>));
 		}
-		[SmokeMethod("checkedButton", "() const", "")]
 		public QAbstractButton CheckedButton() {
-			return ((QButtonGroup) interceptor).CheckedButton();
+			return (QAbstractButton) interceptor.Invoke("checkedButton", "checkedButton() const", typeof(QAbstractButton));
 		}
-		[SmokeMethod("button", "(int) const", "$")]
 		public QAbstractButton Button(int id) {
-			return ((QButtonGroup) interceptor).Button(id);
+			return (QAbstractButton) interceptor.Invoke("button$", "button(int) const", typeof(QAbstractButton), typeof(int), id);
 		}
-		[SmokeMethod("setId", "(QAbstractButton*, int)", "#$")]
 		public void SetId(QAbstractButton button, int id) {
-			((QButtonGroup) interceptor).SetId(button,id);
+			interceptor.Invoke("setId#$", "setId(QAbstractButton*, int)", typeof(void), typeof(QAbstractButton), button, typeof(int), id);
 		}
-		[SmokeMethod("id", "(QAbstractButton*) const", "#")]
 		public int Id(QAbstractButton button) {
-			return ((QButtonGroup) interceptor).Id(button);
+			return (int) interceptor.Invoke("id#", "id(QAbstractButton*) const", typeof(int), typeof(QAbstractButton), button);
 		}
-		[SmokeMethod("checkedId", "() const", "")]
 		public int CheckedId() {
-			return ((QButtonGroup) interceptor).CheckedId();
+			return (int) interceptor.Invoke("checkedId", "checkedId() const", typeof(int));
 		}
 		~QButtonGroup() {
-			DisposeQButtonGroup();
+			interceptor.Invoke("~QButtonGroup", "~QButtonGroup()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQButtonGroup();
-		}
-		[SmokeMethod("~QButtonGroup", "()", "")]
-		private void DisposeQButtonGroup() {
-			((QButtonGroup) interceptor).DisposeQButtonGroup();
+			interceptor.Invoke("~QButtonGroup", "~QButtonGroup()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQButtonGroupSignals Emit {
 			get { return (IQButtonGroupSignals) Q_EMIT; }

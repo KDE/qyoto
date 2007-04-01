@@ -11,29 +11,24 @@ namespace Qyoto {
 	}
 
 	[SmokeClass("QXmlDeclHandler")]
-	public abstract class QXmlDeclHandler : MarshalByRefObject, IQXmlDeclHandler {
-		protected QXmlDeclHandler interceptor = null;
+	public abstract class QXmlDeclHandler : Object, IQXmlDeclHandler {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlDeclHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDeclHandler), this);
-			interceptor = (QXmlDeclHandler) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlDeclHandler), "QXmlDeclHandler", this);
 		}
-		[SmokeMethod("attributeDecl", "(const QString&, const QString&, const QString&, const QString&, const QString&)", "$$$$$")]
+		[SmokeMethod("attributeDecl(const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public abstract bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);
-		[SmokeMethod("internalEntityDecl", "(const QString&, const QString&)", "$$")]
+		[SmokeMethod("internalEntityDecl(const QString&, const QString&)")]
 		public abstract bool InternalEntityDecl(string name, string value);
-		[SmokeMethod("externalEntityDecl", "(const QString&, const QString&, const QString&)", "$$$")]
+		[SmokeMethod("externalEntityDecl(const QString&, const QString&, const QString&)")]
 		public abstract bool ExternalEntityDecl(string name, string publicId, string systemId);
-		[SmokeMethod("errorString", "() const", "")]
+		[SmokeMethod("errorString() const")]
 		public abstract string ErrorString();
 		public QXmlDeclHandler() : this((Type) null) {
 			CreateProxy();
-			NewQXmlDeclHandler();
-		}
-		[SmokeMethod("QXmlDeclHandler", "()", "")]
-		private void NewQXmlDeclHandler() {
-			((QXmlDeclHandler) interceptor).NewQXmlDeclHandler();
+			interceptor.Invoke("QXmlDeclHandler", "QXmlDeclHandler()", typeof(void));
 		}
 	}
 }

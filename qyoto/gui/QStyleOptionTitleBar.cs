@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionTitleBar : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionTitleBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTitleBar), this);
-			interceptor = (QStyleOptionTitleBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionTitleBar), "QStyleOptionTitleBar", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TitleBar,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionTitleBar() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTitleBar();
-		}
-		[SmokeMethod("QStyleOptionTitleBar", "()", "")]
-		private void NewQStyleOptionTitleBar() {
-			((QStyleOptionTitleBar) interceptor).NewQStyleOptionTitleBar();
+			interceptor.Invoke("QStyleOptionTitleBar", "QStyleOptionTitleBar()", typeof(void));
 		}
 		public QStyleOptionTitleBar(QStyleOptionTitleBar other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTitleBar(other);
-		}
-		[SmokeMethod("QStyleOptionTitleBar", "(const QStyleOptionTitleBar&)", "#")]
-		private void NewQStyleOptionTitleBar(QStyleOptionTitleBar other) {
-			((QStyleOptionTitleBar) interceptor).NewQStyleOptionTitleBar(other);
+			interceptor.Invoke("QStyleOptionTitleBar#", "QStyleOptionTitleBar(const QStyleOptionTitleBar&)", typeof(void), typeof(QStyleOptionTitleBar), other);
 		}
 		public QStyleOptionTitleBar(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTitleBar(version);
-		}
-		[SmokeMethod("QStyleOptionTitleBar", "(int)", "$")]
-		private void NewQStyleOptionTitleBar(int version) {
-			((QStyleOptionTitleBar) interceptor).NewQStyleOptionTitleBar(version);
+			interceptor.Invoke("QStyleOptionTitleBar$", "QStyleOptionTitleBar(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionTitleBar() {
-			DisposeQStyleOptionTitleBar();
+			interceptor.Invoke("~QStyleOptionTitleBar", "~QStyleOptionTitleBar()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionTitleBar();
-		}
-		[SmokeMethod("~QStyleOptionTitleBar", "()", "")]
-		private void DisposeQStyleOptionTitleBar() {
-			((QStyleOptionTitleBar) interceptor).DisposeQStyleOptionTitleBar();
+			interceptor.Invoke("~QStyleOptionTitleBar", "~QStyleOptionTitleBar()", typeof(void));
 		}
 	}
 }

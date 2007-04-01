@@ -7,42 +7,27 @@ namespace Qyoto {
 	public class QWindowStateChangeEvent : QEvent, IDisposable {
  		protected QWindowStateChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWindowStateChangeEvent), this);
-			interceptor = (QWindowStateChangeEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QWindowStateChangeEvent), "QWindowStateChangeEvent", this);
 		}
 		public QWindowStateChangeEvent(int aOldState) : this((Type) null) {
 			CreateProxy();
-			NewQWindowStateChangeEvent(aOldState);
-		}
-		[SmokeMethod("QWindowStateChangeEvent", "(Qt::WindowStates)", "$")]
-		private void NewQWindowStateChangeEvent(int aOldState) {
-			((QWindowStateChangeEvent) interceptor).NewQWindowStateChangeEvent(aOldState);
+			interceptor.Invoke("QWindowStateChangeEvent$", "QWindowStateChangeEvent(Qt::WindowStates)", typeof(void), typeof(int), aOldState);
 		}
 		public QWindowStateChangeEvent(int aOldState, bool isOverride) : this((Type) null) {
 			CreateProxy();
-			NewQWindowStateChangeEvent(aOldState,isOverride);
+			interceptor.Invoke("QWindowStateChangeEvent$$", "QWindowStateChangeEvent(Qt::WindowStates, bool)", typeof(void), typeof(int), aOldState, typeof(bool), isOverride);
 		}
-		[SmokeMethod("QWindowStateChangeEvent", "(Qt::WindowStates, bool)", "$$")]
-		private void NewQWindowStateChangeEvent(int aOldState, bool isOverride) {
-			((QWindowStateChangeEvent) interceptor).NewQWindowStateChangeEvent(aOldState,isOverride);
-		}
-		[SmokeMethod("oldState", "() const", "")]
 		public int OldState() {
-			return ((QWindowStateChangeEvent) interceptor).OldState();
+			return (int) interceptor.Invoke("oldState", "oldState() const", typeof(int));
 		}
-		[SmokeMethod("isOverride", "() const", "")]
 		public bool IsOverride() {
-			return ((QWindowStateChangeEvent) interceptor).IsOverride();
+			return (bool) interceptor.Invoke("isOverride", "isOverride() const", typeof(bool));
 		}
 		~QWindowStateChangeEvent() {
-			DisposeQWindowStateChangeEvent();
+			interceptor.Invoke("~QWindowStateChangeEvent", "~QWindowStateChangeEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQWindowStateChangeEvent();
-		}
-		[SmokeMethod("~QWindowStateChangeEvent", "()", "")]
-		private void DisposeQWindowStateChangeEvent() {
-			((QWindowStateChangeEvent) interceptor).DisposeQWindowStateChangeEvent();
+			interceptor.Invoke("~QWindowStateChangeEvent", "~QWindowStateChangeEvent()", typeof(void));
 		}
 	}
 }

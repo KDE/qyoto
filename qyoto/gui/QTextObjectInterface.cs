@@ -4,25 +4,20 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextObjectInterface")]
-	public abstract class QTextObjectInterface : MarshalByRefObject {
-		protected QTextObjectInterface interceptor = null;
+	public abstract class QTextObjectInterface : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextObjectInterface(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextObjectInterface), this);
-			interceptor = (QTextObjectInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextObjectInterface), "QTextObjectInterface", this);
 		}
-		[SmokeMethod("intrinsicSize", "(QTextDocument*, int, const QTextFormat&)", "#$#")]
+		[SmokeMethod("intrinsicSize(QTextDocument*, int, const QTextFormat&)")]
 		public abstract QSizeF IntrinsicSize(QTextDocument doc, int posInDocument, QTextFormat format);
-		[SmokeMethod("drawObject", "(QPainter*, const QRectF&, QTextDocument*, int, const QTextFormat&)", "###$#")]
+		[SmokeMethod("drawObject(QPainter*, const QRectF&, QTextDocument*, int, const QTextFormat&)")]
 		public abstract void DrawObject(QPainter painter, QRectF rect, QTextDocument doc, int posInDocument, QTextFormat format);
 		public QTextObjectInterface() : this((Type) null) {
 			CreateProxy();
-			NewQTextObjectInterface();
-		}
-		[SmokeMethod("QTextObjectInterface", "()", "")]
-		private void NewQTextObjectInterface() {
-			((QTextObjectInterface) interceptor).NewQTextObjectInterface();
+			interceptor.Invoke("QTextObjectInterface", "QTextObjectInterface()", typeof(void));
 		}
 	}
 }

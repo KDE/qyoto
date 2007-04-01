@@ -5,13 +5,12 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QTreeWidgetItem")]
-	public class QTreeWidgetItem : MarshalByRefObject, IDisposable {
-		protected QTreeWidgetItem interceptor = null;
+	public class QTreeWidgetItem : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTreeWidgetItem(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTreeWidgetItem), this);
-			interceptor = (QTreeWidgetItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTreeWidgetItem), "QTreeWidgetItem", this);
 		}
 		public enum ItemType {
 			Type = 0,
@@ -19,353 +18,237 @@ namespace Qyoto {
 		}
 		public QTreeWidgetItem(int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(int)", "$")]
-		private void NewQTreeWidgetItem(int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(type);
+			interceptor.Invoke("QTreeWidgetItem$", "QTreeWidgetItem(int)", typeof(void), typeof(int), type);
 		}
 		public QTreeWidgetItem() : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem();
-		}
-		[SmokeMethod("QTreeWidgetItem", "()", "")]
-		private void NewQTreeWidgetItem() {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem();
+			interceptor.Invoke("QTreeWidgetItem", "QTreeWidgetItem()", typeof(void));
 		}
 		public QTreeWidgetItem(List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(strings,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(const QStringList&, int)", "?$")]
-		private void NewQTreeWidgetItem(List<string> strings, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(strings,type);
+			interceptor.Invoke("QTreeWidgetItem?$", "QTreeWidgetItem(const QStringList&, int)", typeof(void), typeof(List<string>), strings, typeof(int), type);
 		}
 		public QTreeWidgetItem(List<string> strings) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(strings);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(const QStringList&)", "?")]
-		private void NewQTreeWidgetItem(List<string> strings) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(strings);
+			interceptor.Invoke("QTreeWidgetItem?", "QTreeWidgetItem(const QStringList&)", typeof(void), typeof(List<string>), strings);
 		}
 		public QTreeWidgetItem(QTreeWidget view, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(view,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, int)", "#$")]
-		private void NewQTreeWidgetItem(QTreeWidget view, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,type);
+			interceptor.Invoke("QTreeWidgetItem#$", "QTreeWidgetItem(QTreeWidget*, int)", typeof(void), typeof(QTreeWidget), view, typeof(int), type);
 		}
 		public QTreeWidgetItem(QTreeWidget view) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(view);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*)", "#")]
-		private void NewQTreeWidgetItem(QTreeWidget view) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view);
+			interceptor.Invoke("QTreeWidgetItem#", "QTreeWidgetItem(QTreeWidget*)", typeof(void), typeof(QTreeWidget), view);
 		}
 		public QTreeWidgetItem(QTreeWidget view, List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(view,strings,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, const QStringList&, int)", "#?$")]
-		private void NewQTreeWidgetItem(QTreeWidget view, List<string> strings, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,strings,type);
+			interceptor.Invoke("QTreeWidgetItem#?$", "QTreeWidgetItem(QTreeWidget*, const QStringList&, int)", typeof(void), typeof(QTreeWidget), view, typeof(List<string>), strings, typeof(int), type);
 		}
 		public QTreeWidgetItem(QTreeWidget view, List<string> strings) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(view,strings);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, const QStringList&)", "#?")]
-		private void NewQTreeWidgetItem(QTreeWidget view, List<string> strings) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,strings);
+			interceptor.Invoke("QTreeWidgetItem#?", "QTreeWidgetItem(QTreeWidget*, const QStringList&)", typeof(void), typeof(QTreeWidget), view, typeof(List<string>), strings);
 		}
 		public QTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(view,after,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, QTreeWidgetItem*, int)", "##$")]
-		private void NewQTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,after,type);
+			interceptor.Invoke("QTreeWidgetItem##$", "QTreeWidgetItem(QTreeWidget*, QTreeWidgetItem*, int)", typeof(void), typeof(QTreeWidget), view, typeof(QTreeWidgetItem), after, typeof(int), type);
 		}
 		public QTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(view,after);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, QTreeWidgetItem*)", "##")]
-		private void NewQTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,after);
+			interceptor.Invoke("QTreeWidgetItem##", "QTreeWidgetItem(QTreeWidget*, QTreeWidgetItem*)", typeof(void), typeof(QTreeWidget), view, typeof(QTreeWidgetItem), after);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(parent,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, int)", "#$")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,type);
+			interceptor.Invoke("QTreeWidgetItem#$", "QTreeWidgetItem(QTreeWidgetItem*, int)", typeof(void), typeof(QTreeWidgetItem), parent, typeof(int), type);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(parent);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*)", "#")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent);
+			interceptor.Invoke("QTreeWidgetItem#", "QTreeWidgetItem(QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), parent);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(parent,strings,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, const QStringList&, int)", "#?$")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, List<string> strings, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,strings,type);
+			interceptor.Invoke("QTreeWidgetItem#?$", "QTreeWidgetItem(QTreeWidgetItem*, const QStringList&, int)", typeof(void), typeof(QTreeWidgetItem), parent, typeof(List<string>), strings, typeof(int), type);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, List<string> strings) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(parent,strings);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, const QStringList&)", "#?")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, List<string> strings) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,strings);
+			interceptor.Invoke("QTreeWidgetItem#?", "QTreeWidgetItem(QTreeWidgetItem*, const QStringList&)", typeof(void), typeof(QTreeWidgetItem), parent, typeof(List<string>), strings);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after, int type) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(parent,after,type);
-		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, QTreeWidgetItem*, int)", "##$")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after, int type) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,after,type);
+			interceptor.Invoke("QTreeWidgetItem##$", "QTreeWidgetItem(QTreeWidgetItem*, QTreeWidgetItem*, int)", typeof(void), typeof(QTreeWidgetItem), parent, typeof(QTreeWidgetItem), after, typeof(int), type);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after) : this((Type) null) {
 			CreateProxy();
-			NewQTreeWidgetItem(parent,after);
+			interceptor.Invoke("QTreeWidgetItem##", "QTreeWidgetItem(QTreeWidgetItem*, QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), parent, typeof(QTreeWidgetItem), after);
 		}
-		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, QTreeWidgetItem*)", "##")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after) {
-			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,after);
-		}
-		[SmokeMethod("clone", "() const", "")]
+		[SmokeMethod("clone() const")]
 		public virtual QTreeWidgetItem Clone() {
-			return ((QTreeWidgetItem) interceptor).Clone();
+			return (QTreeWidgetItem) interceptor.Invoke("clone", "clone() const", typeof(QTreeWidgetItem));
 		}
-		[SmokeMethod("treeWidget", "() const", "")]
 		public QTreeWidget TreeWidget() {
-			return ((QTreeWidgetItem) interceptor).TreeWidget();
+			return (QTreeWidget) interceptor.Invoke("treeWidget", "treeWidget() const", typeof(QTreeWidget));
 		}
-		[SmokeMethod("setSelected", "(bool)", "$")]
 		public void SetSelected(bool select) {
-			((QTreeWidgetItem) interceptor).SetSelected(select);
+			interceptor.Invoke("setSelected$", "setSelected(bool)", typeof(void), typeof(bool), select);
 		}
-		[SmokeMethod("isSelected", "() const", "")]
 		public bool IsSelected() {
-			return ((QTreeWidgetItem) interceptor).IsSelected();
+			return (bool) interceptor.Invoke("isSelected", "isSelected() const", typeof(bool));
 		}
-		[SmokeMethod("setHidden", "(bool)", "$")]
 		public void SetHidden(bool hide) {
-			((QTreeWidgetItem) interceptor).SetHidden(hide);
+			interceptor.Invoke("setHidden$", "setHidden(bool)", typeof(void), typeof(bool), hide);
 		}
-		[SmokeMethod("isHidden", "() const", "")]
 		public bool IsHidden() {
-			return ((QTreeWidgetItem) interceptor).IsHidden();
+			return (bool) interceptor.Invoke("isHidden", "isHidden() const", typeof(bool));
 		}
-		[SmokeMethod("setExpanded", "(bool)", "$")]
 		public void SetExpanded(bool expand) {
-			((QTreeWidgetItem) interceptor).SetExpanded(expand);
+			interceptor.Invoke("setExpanded$", "setExpanded(bool)", typeof(void), typeof(bool), expand);
 		}
-		[SmokeMethod("isExpanded", "() const", "")]
 		public bool IsExpanded() {
-			return ((QTreeWidgetItem) interceptor).IsExpanded();
+			return (bool) interceptor.Invoke("isExpanded", "isExpanded() const", typeof(bool));
 		}
-		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ((QTreeWidgetItem) interceptor).Flags();
+			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
 		}
-		[SmokeMethod("setFlags", "(Qt::ItemFlags)", "$")]
 		public void SetFlags(int flags) {
-			((QTreeWidgetItem) interceptor).SetFlags(flags);
+			interceptor.Invoke("setFlags$", "setFlags(Qt::ItemFlags)", typeof(void), typeof(int), flags);
 		}
-		[SmokeMethod("text", "(int) const", "$")]
 		public string Text(int column) {
-			return ((QTreeWidgetItem) interceptor).Text(column);
+			return (string) interceptor.Invoke("text$", "text(int) const", typeof(string), typeof(int), column);
 		}
-		[SmokeMethod("setText", "(int, const QString&)", "$$")]
 		public void SetText(int column, string text) {
-			((QTreeWidgetItem) interceptor).SetText(column,text);
+			interceptor.Invoke("setText$$", "setText(int, const QString&)", typeof(void), typeof(int), column, typeof(string), text);
 		}
-		[SmokeMethod("icon", "(int) const", "$")]
 		public QIcon Icon(int column) {
-			return ((QTreeWidgetItem) interceptor).Icon(column);
+			return (QIcon) interceptor.Invoke("icon$", "icon(int) const", typeof(QIcon), typeof(int), column);
 		}
-		[SmokeMethod("setIcon", "(int, const QIcon&)", "$#")]
 		public void SetIcon(int column, QIcon icon) {
-			((QTreeWidgetItem) interceptor).SetIcon(column,icon);
+			interceptor.Invoke("setIcon$#", "setIcon(int, const QIcon&)", typeof(void), typeof(int), column, typeof(QIcon), icon);
 		}
-		[SmokeMethod("statusTip", "(int) const", "$")]
 		public string StatusTip(int column) {
-			return ((QTreeWidgetItem) interceptor).StatusTip(column);
+			return (string) interceptor.Invoke("statusTip$", "statusTip(int) const", typeof(string), typeof(int), column);
 		}
-		[SmokeMethod("setStatusTip", "(int, const QString&)", "$$")]
 		public void SetStatusTip(int column, string statusTip) {
-			((QTreeWidgetItem) interceptor).SetStatusTip(column,statusTip);
+			interceptor.Invoke("setStatusTip$$", "setStatusTip(int, const QString&)", typeof(void), typeof(int), column, typeof(string), statusTip);
 		}
-		[SmokeMethod("toolTip", "(int) const", "$")]
 		public string ToolTip(int column) {
-			return ((QTreeWidgetItem) interceptor).ToolTip(column);
+			return (string) interceptor.Invoke("toolTip$", "toolTip(int) const", typeof(string), typeof(int), column);
 		}
-		[SmokeMethod("setToolTip", "(int, const QString&)", "$$")]
 		public void SetToolTip(int column, string toolTip) {
-			((QTreeWidgetItem) interceptor).SetToolTip(column,toolTip);
+			interceptor.Invoke("setToolTip$$", "setToolTip(int, const QString&)", typeof(void), typeof(int), column, typeof(string), toolTip);
 		}
-		[SmokeMethod("whatsThis", "(int) const", "$")]
 		public string WhatsThis(int column) {
-			return ((QTreeWidgetItem) interceptor).WhatsThis(column);
+			return (string) interceptor.Invoke("whatsThis$", "whatsThis(int) const", typeof(string), typeof(int), column);
 		}
-		[SmokeMethod("setWhatsThis", "(int, const QString&)", "$$")]
 		public void SetWhatsThis(int column, string whatsThis) {
-			((QTreeWidgetItem) interceptor).SetWhatsThis(column,whatsThis);
+			interceptor.Invoke("setWhatsThis$$", "setWhatsThis(int, const QString&)", typeof(void), typeof(int), column, typeof(string), whatsThis);
 		}
-		[SmokeMethod("font", "(int) const", "$")]
 		public QFont Font(int column) {
-			return ((QTreeWidgetItem) interceptor).Font(column);
+			return (QFont) interceptor.Invoke("font$", "font(int) const", typeof(QFont), typeof(int), column);
 		}
-		[SmokeMethod("setFont", "(int, const QFont&)", "$#")]
 		public void SetFont(int column, QFont font) {
-			((QTreeWidgetItem) interceptor).SetFont(column,font);
+			interceptor.Invoke("setFont$#", "setFont(int, const QFont&)", typeof(void), typeof(int), column, typeof(QFont), font);
 		}
-		[SmokeMethod("textAlignment", "(int) const", "$")]
 		public int TextAlignment(int column) {
-			return ((QTreeWidgetItem) interceptor).TextAlignment(column);
+			return (int) interceptor.Invoke("textAlignment$", "textAlignment(int) const", typeof(int), typeof(int), column);
 		}
-		[SmokeMethod("setTextAlignment", "(int, int)", "$$")]
 		public void SetTextAlignment(int column, int alignment) {
-			((QTreeWidgetItem) interceptor).SetTextAlignment(column,alignment);
+			interceptor.Invoke("setTextAlignment$$", "setTextAlignment(int, int)", typeof(void), typeof(int), column, typeof(int), alignment);
 		}
-		[SmokeMethod("backgroundColor", "(int) const", "$")]
 		public QColor BackgroundColor(int column) {
-			return ((QTreeWidgetItem) interceptor).BackgroundColor(column);
+			return (QColor) interceptor.Invoke("backgroundColor$", "backgroundColor(int) const", typeof(QColor), typeof(int), column);
 		}
-		[SmokeMethod("setBackgroundColor", "(int, const QColor&)", "$#")]
 		public void SetBackgroundColor(int column, QColor color) {
-			((QTreeWidgetItem) interceptor).SetBackgroundColor(column,color);
+			interceptor.Invoke("setBackgroundColor$#", "setBackgroundColor(int, const QColor&)", typeof(void), typeof(int), column, typeof(QColor), color);
 		}
-		[SmokeMethod("background", "(int) const", "$")]
 		public QBrush Background(int column) {
-			return ((QTreeWidgetItem) interceptor).Background(column);
+			return (QBrush) interceptor.Invoke("background$", "background(int) const", typeof(QBrush), typeof(int), column);
 		}
-		[SmokeMethod("setBackground", "(int, const QBrush&)", "$#")]
 		public void SetBackground(int column, QBrush brush) {
-			((QTreeWidgetItem) interceptor).SetBackground(column,brush);
+			interceptor.Invoke("setBackground$#", "setBackground(int, const QBrush&)", typeof(void), typeof(int), column, typeof(QBrush), brush);
 		}
-		[SmokeMethod("textColor", "(int) const", "$")]
 		public QColor TextColor(int column) {
-			return ((QTreeWidgetItem) interceptor).TextColor(column);
+			return (QColor) interceptor.Invoke("textColor$", "textColor(int) const", typeof(QColor), typeof(int), column);
 		}
-		[SmokeMethod("setTextColor", "(int, const QColor&)", "$#")]
 		public void SetTextColor(int column, QColor color) {
-			((QTreeWidgetItem) interceptor).SetTextColor(column,color);
+			interceptor.Invoke("setTextColor$#", "setTextColor(int, const QColor&)", typeof(void), typeof(int), column, typeof(QColor), color);
 		}
-		[SmokeMethod("foreground", "(int) const", "$")]
 		public QBrush Foreground(int column) {
-			return ((QTreeWidgetItem) interceptor).Foreground(column);
+			return (QBrush) interceptor.Invoke("foreground$", "foreground(int) const", typeof(QBrush), typeof(int), column);
 		}
-		[SmokeMethod("setForeground", "(int, const QBrush&)", "$#")]
 		public void SetForeground(int column, QBrush brush) {
-			((QTreeWidgetItem) interceptor).SetForeground(column,brush);
+			interceptor.Invoke("setForeground$#", "setForeground(int, const QBrush&)", typeof(void), typeof(int), column, typeof(QBrush), brush);
 		}
-		[SmokeMethod("checkState", "(int) const", "$")]
 		public Qt.CheckState CheckState(int column) {
-			return ((QTreeWidgetItem) interceptor).CheckState(column);
+			return (Qt.CheckState) interceptor.Invoke("checkState$", "checkState(int) const", typeof(Qt.CheckState), typeof(int), column);
 		}
-		[SmokeMethod("setCheckState", "(int, Qt::CheckState)", "$$")]
 		public void SetCheckState(int column, Qt.CheckState state) {
-			((QTreeWidgetItem) interceptor).SetCheckState(column,state);
+			interceptor.Invoke("setCheckState$$", "setCheckState(int, Qt::CheckState)", typeof(void), typeof(int), column, typeof(Qt.CheckState), state);
 		}
-		[SmokeMethod("sizeHint", "(int) const", "$")]
 		public QSize SizeHint(int column) {
-			return ((QTreeWidgetItem) interceptor).SizeHint(column);
+			return (QSize) interceptor.Invoke("sizeHint$", "sizeHint(int) const", typeof(QSize), typeof(int), column);
 		}
-		[SmokeMethod("setSizeHint", "(int, const QSize&)", "$#")]
 		public void SetSizeHint(int column, QSize size) {
-			((QTreeWidgetItem) interceptor).SetSizeHint(column,size);
+			interceptor.Invoke("setSizeHint$#", "setSizeHint(int, const QSize&)", typeof(void), typeof(int), column, typeof(QSize), size);
 		}
-		[SmokeMethod("data", "(int, int) const", "$$")]
+		[SmokeMethod("data(int, int) const")]
 		public virtual QVariant Data(int column, int role) {
-			return ((QTreeWidgetItem) interceptor).Data(column,role);
+			return (QVariant) interceptor.Invoke("data$$", "data(int, int) const", typeof(QVariant), typeof(int), column, typeof(int), role);
 		}
-		[SmokeMethod("setData", "(int, int, const QVariant&)", "$$#")]
+		[SmokeMethod("setData(int, int, const QVariant&)")]
 		public virtual void SetData(int column, int role, QVariant value) {
-			((QTreeWidgetItem) interceptor).SetData(column,role,value);
+			interceptor.Invoke("setData$$#", "setData(int, int, const QVariant&)", typeof(void), typeof(int), column, typeof(int), role, typeof(QVariant), value);
 		}
-		[SmokeMethod("read", "(QDataStream&)", "#")]
+		[SmokeMethod("read(QDataStream&)")]
 		public virtual void Read(QDataStream arg1) {
-			((QTreeWidgetItem) interceptor).Read(arg1);
+			interceptor.Invoke("read#", "read(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
 		}
-		[SmokeMethod("write", "(QDataStream&) const", "#")]
+		[SmokeMethod("write(QDataStream&) const")]
 		public virtual void Write(QDataStream arg1) {
-			((QTreeWidgetItem) interceptor).Write(arg1);
+			interceptor.Invoke("write#", "write(QDataStream&) const", typeof(void), typeof(QDataStream), arg1);
 		}
-		[SmokeMethod("parent", "() const", "")]
 		public QTreeWidgetItem Parent() {
-			return ((QTreeWidgetItem) interceptor).Parent();
+			return (QTreeWidgetItem) interceptor.Invoke("parent", "parent() const", typeof(QTreeWidgetItem));
 		}
-		[SmokeMethod("child", "(int) const", "$")]
 		public QTreeWidgetItem Child(int index) {
-			return ((QTreeWidgetItem) interceptor).Child(index);
+			return (QTreeWidgetItem) interceptor.Invoke("child$", "child(int) const", typeof(QTreeWidgetItem), typeof(int), index);
 		}
-		[SmokeMethod("childCount", "() const", "")]
 		public int ChildCount() {
-			return ((QTreeWidgetItem) interceptor).ChildCount();
+			return (int) interceptor.Invoke("childCount", "childCount() const", typeof(int));
 		}
-		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ((QTreeWidgetItem) interceptor).ColumnCount();
+			return (int) interceptor.Invoke("columnCount", "columnCount() const", typeof(int));
 		}
-		[SmokeMethod("indexOfChild", "(QTreeWidgetItem*) const", "#")]
 		public int IndexOfChild(QTreeWidgetItem child) {
-			return ((QTreeWidgetItem) interceptor).IndexOfChild(child);
+			return (int) interceptor.Invoke("indexOfChild#", "indexOfChild(QTreeWidgetItem*) const", typeof(int), typeof(QTreeWidgetItem), child);
 		}
-		[SmokeMethod("addChild", "(QTreeWidgetItem*)", "#")]
 		public void AddChild(QTreeWidgetItem child) {
-			((QTreeWidgetItem) interceptor).AddChild(child);
+			interceptor.Invoke("addChild#", "addChild(QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), child);
 		}
-		[SmokeMethod("insertChild", "(int, QTreeWidgetItem*)", "$#")]
 		public void InsertChild(int index, QTreeWidgetItem child) {
-			((QTreeWidgetItem) interceptor).InsertChild(index,child);
+			interceptor.Invoke("insertChild$#", "insertChild(int, QTreeWidgetItem*)", typeof(void), typeof(int), index, typeof(QTreeWidgetItem), child);
 		}
-		[SmokeMethod("takeChild", "(int)", "$")]
 		public QTreeWidgetItem TakeChild(int index) {
-			return ((QTreeWidgetItem) interceptor).TakeChild(index);
+			return (QTreeWidgetItem) interceptor.Invoke("takeChild$", "takeChild(int)", typeof(QTreeWidgetItem), typeof(int), index);
 		}
-		[SmokeMethod("addChildren", "(const QList<QTreeWidgetItem*>&)", "?")]
 		public void AddChildren(List<QTreeWidgetItem> children) {
-			((QTreeWidgetItem) interceptor).AddChildren(children);
+			interceptor.Invoke("addChildren?", "addChildren(const QList<QTreeWidgetItem*>&)", typeof(void), typeof(List<QTreeWidgetItem>), children);
 		}
-		[SmokeMethod("insertChildren", "(int, const QList<QTreeWidgetItem*>&)", "$?")]
 		public void InsertChildren(int index, List<QTreeWidgetItem> children) {
-			((QTreeWidgetItem) interceptor).InsertChildren(index,children);
+			interceptor.Invoke("insertChildren$?", "insertChildren(int, const QList<QTreeWidgetItem*>&)", typeof(void), typeof(int), index, typeof(List<QTreeWidgetItem>), children);
 		}
-		[SmokeMethod("takeChildren", "()", "")]
 		public List<QTreeWidgetItem> TakeChildren() {
-			return ((QTreeWidgetItem) interceptor).TakeChildren();
+			return (List<QTreeWidgetItem>) interceptor.Invoke("takeChildren", "takeChildren()", typeof(List<QTreeWidgetItem>));
 		}
-		[SmokeMethod("type", "() const", "")]
 		public int type() {
-			return ((QTreeWidgetItem) interceptor).type();
+			return (int) interceptor.Invoke("type", "type() const", typeof(int));
 		}
-		[SmokeMethod("sortChildren", "(int, Qt::SortOrder)", "$$")]
 		public void SortChildren(int column, Qt.SortOrder order) {
-			((QTreeWidgetItem) interceptor).SortChildren(column,order);
+			interceptor.Invoke("sortChildren$$", "sortChildren(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}
 		~QTreeWidgetItem() {
-			DisposeQTreeWidgetItem();
+			interceptor.Invoke("~QTreeWidgetItem", "~QTreeWidgetItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTreeWidgetItem();
-		}
-		[SmokeMethod("~QTreeWidgetItem", "()", "")]
-		private void DisposeQTreeWidgetItem() {
-			((QTreeWidgetItem) interceptor).DisposeQTreeWidgetItem();
+			interceptor.Invoke("~QTreeWidgetItem", "~QTreeWidgetItem()", typeof(void));
 		}
 	}
 }

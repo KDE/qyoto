@@ -6,48 +6,30 @@ namespace Qyoto {
 	[SmokeClass("QFontDialog")]
 	public class QFontDialog : QDialog {
  		protected QFontDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFontDialog")]
-		interface IQFontDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("getFont", "(bool*, const QFont&, QWidget*, const QString&)", "$##$")]
-			QFont GetFont(out bool ok, QFont def, QWidget parent, string caption);
-			[SmokeMethod("getFont", "(bool*, const QFont&, QWidget*)", "$##")]
-			QFont GetFont(out bool ok, QFont def, QWidget parent);
-			[SmokeMethod("getFont", "(bool*, const QFont&)", "$#")]
-			QFont GetFont(out bool ok, QFont def);
-			[SmokeMethod("getFont", "(bool*, QWidget*)", "$#")]
-			QFont GetFont(out bool ok, QWidget parent);
-			[SmokeMethod("getFont", "(bool*)", "$")]
-			QFont GetFont(out bool ok);
-		}
-		private static IQFontDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFontDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontDialogProxy), null);
-			staticInterceptor = (IQFontDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFontDialog), "QFontDialog", null);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		public static QFont GetFont(out bool ok, QFont def, QWidget parent, string caption) {
-			return staticInterceptor.GetFont(out ok,def,parent,caption);
+		public static QFont GetFont(bool ok, QFont def, QWidget parent, string caption) {
+			return (QFont) staticInterceptor.Invoke("getFont$##$", "getFont(bool*, const QFont&, QWidget*, const QString&)", typeof(QFont), typeof(bool), ok, typeof(QFont), def, typeof(QWidget), parent, typeof(string), caption);
 		}
-		public static QFont GetFont(out bool ok, QFont def, QWidget parent) {
-			return staticInterceptor.GetFont(out ok,def,parent);
+		public static QFont GetFont(bool ok, QFont def, QWidget parent) {
+			return (QFont) staticInterceptor.Invoke("getFont$##", "getFont(bool*, const QFont&, QWidget*)", typeof(QFont), typeof(bool), ok, typeof(QFont), def, typeof(QWidget), parent);
 		}
-		public static QFont GetFont(out bool ok, QFont def) {
-			return staticInterceptor.GetFont(out ok,def);
+		public static QFont GetFont(bool ok, QFont def) {
+			return (QFont) staticInterceptor.Invoke("getFont$#", "getFont(bool*, const QFont&)", typeof(QFont), typeof(bool), ok, typeof(QFont), def);
 		}
-		public static QFont GetFont(out bool ok, QWidget parent) {
-			return staticInterceptor.GetFont(out ok,parent);
+		public static QFont GetFont(bool ok, QWidget parent) {
+			return (QFont) staticInterceptor.Invoke("getFont$#", "getFont(bool*, QWidget*)", typeof(QFont), typeof(bool), ok, typeof(QWidget), parent);
 		}
-		public static QFont GetFont(out bool ok) {
-			return staticInterceptor.GetFont(out ok);
+		public static QFont GetFont(bool ok) {
+			return (QFont) staticInterceptor.Invoke("getFont$", "getFont(bool*)", typeof(QFont), typeof(bool), ok);
 		}
 		protected new IQFontDialogSignals Emit {
 			get { return (IQFontDialogSignals) Q_EMIT; }

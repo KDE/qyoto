@@ -4,39 +4,28 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QMetaClassInfo")]
-	public class QMetaClassInfo : MarshalByRefObject, IDisposable {
-		protected QMetaClassInfo interceptor = null;
+	public class QMetaClassInfo : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QMetaClassInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaClassInfo), this);
-			interceptor = (QMetaClassInfo) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMetaClassInfo), "QMetaClassInfo", this);
 		}
 		public QMetaClassInfo() : this((Type) null) {
 			CreateProxy();
-			NewQMetaClassInfo();
+			interceptor.Invoke("QMetaClassInfo", "QMetaClassInfo()", typeof(void));
 		}
-		[SmokeMethod("QMetaClassInfo", "()", "")]
-		private void NewQMetaClassInfo() {
-			((QMetaClassInfo) interceptor).NewQMetaClassInfo();
-		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QMetaClassInfo) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("value", "() const", "")]
 		public string Value() {
-			return ((QMetaClassInfo) interceptor).Value();
+			return (string) interceptor.Invoke("value", "value() const", typeof(string));
 		}
 		~QMetaClassInfo() {
-			DisposeQMetaClassInfo();
+			interceptor.Invoke("~QMetaClassInfo", "~QMetaClassInfo()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQMetaClassInfo();
-		}
-		[SmokeMethod("~QMetaClassInfo", "()", "")]
-		private void DisposeQMetaClassInfo() {
-			((QMetaClassInfo) interceptor).DisposeQMetaClassInfo();
+			interceptor.Invoke("~QMetaClassInfo", "~QMetaClassInfo()", typeof(void));
 		}
 	}
 }

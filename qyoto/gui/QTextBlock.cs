@@ -4,144 +4,105 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextBlock")]
-	public class QTextBlock : MarshalByRefObject, IDisposable {
-		protected QTextBlock interceptor = null;
+	public class QTextBlock : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextBlock(Type dummy) {}
-		[SmokeClass("QTextBlock")]
-		interface IQTextBlockProxy {
-			[SmokeMethod("operator==", "(const QTextBlock&) const", "#")]
-			bool op_equals(QTextBlock lhs, QTextBlock o);
-			[SmokeMethod("operator<", "(const QTextBlock&) const", "#")]
-			bool op_lt(QTextBlock lhs, QTextBlock o);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlock), this);
-			interceptor = (QTextBlock) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextBlock), "QTextBlock", this);
 		}
-		private static IQTextBlockProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextBlock() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBlockProxy), null);
-			staticInterceptor = (IQTextBlockProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextBlock), "QTextBlock", null);
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		public QTextBlock() : this((Type) null) {
 			CreateProxy();
-			NewQTextBlock();
-		}
-		[SmokeMethod("QTextBlock", "()", "")]
-		private void NewQTextBlock() {
-			((QTextBlock) interceptor).NewQTextBlock();
+			interceptor.Invoke("QTextBlock", "QTextBlock()", typeof(void));
 		}
 		public QTextBlock(QTextBlock o) : this((Type) null) {
 			CreateProxy();
-			NewQTextBlock(o);
+			interceptor.Invoke("QTextBlock#", "QTextBlock(const QTextBlock&)", typeof(void), typeof(QTextBlock), o);
 		}
-		[SmokeMethod("QTextBlock", "(const QTextBlock&)", "#")]
-		private void NewQTextBlock(QTextBlock o) {
-			((QTextBlock) interceptor).NewQTextBlock(o);
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextBlock) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextBlock)) { return false; }
 			return this == (QTextBlock) o;
 		}
 		public override int GetHashCode() {
-			return ((QTextBlock) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("position", "() const", "")]
 		public int Position() {
-			return ((QTextBlock) interceptor).Position();
+			return (int) interceptor.Invoke("position", "position() const", typeof(int));
 		}
-		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ((QTextBlock) interceptor).Length();
+			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		[SmokeMethod("contains", "(int) const", "$")]
 		public bool Contains(int position) {
-			return ((QTextBlock) interceptor).Contains(position);
+			return (bool) interceptor.Invoke("contains$", "contains(int) const", typeof(bool), typeof(int), position);
 		}
-		[SmokeMethod("layout", "() const", "")]
 		public QTextLayout Layout() {
-			return ((QTextBlock) interceptor).Layout();
+			return (QTextLayout) interceptor.Invoke("layout", "layout() const", typeof(QTextLayout));
 		}
-		[SmokeMethod("blockFormat", "() const", "")]
 		public QTextBlockFormat BlockFormat() {
-			return ((QTextBlock) interceptor).BlockFormat();
+			return (QTextBlockFormat) interceptor.Invoke("blockFormat", "blockFormat() const", typeof(QTextBlockFormat));
 		}
-		[SmokeMethod("blockFormatIndex", "() const", "")]
 		public int BlockFormatIndex() {
-			return ((QTextBlock) interceptor).BlockFormatIndex();
+			return (int) interceptor.Invoke("blockFormatIndex", "blockFormatIndex() const", typeof(int));
 		}
-		[SmokeMethod("charFormat", "() const", "")]
 		public QTextCharFormat CharFormat() {
-			return ((QTextBlock) interceptor).CharFormat();
+			return (QTextCharFormat) interceptor.Invoke("charFormat", "charFormat() const", typeof(QTextCharFormat));
 		}
-		[SmokeMethod("charFormatIndex", "() const", "")]
 		public int CharFormatIndex() {
-			return ((QTextBlock) interceptor).CharFormatIndex();
+			return (int) interceptor.Invoke("charFormatIndex", "charFormatIndex() const", typeof(int));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QTextBlock) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("document", "() const", "")]
 		public QTextDocument Document() {
-			return ((QTextBlock) interceptor).Document();
+			return (QTextDocument) interceptor.Invoke("document", "document() const", typeof(QTextDocument));
 		}
-		[SmokeMethod("textList", "() const", "")]
 		public QTextList TextList() {
-			return ((QTextBlock) interceptor).TextList();
+			return (QTextList) interceptor.Invoke("textList", "textList() const", typeof(QTextList));
 		}
-		[SmokeMethod("userData", "() const", "")]
 		public QTextBlockUserData UserData() {
-			return ((QTextBlock) interceptor).UserData();
+			return (QTextBlockUserData) interceptor.Invoke("userData", "userData() const", typeof(QTextBlockUserData));
 		}
-		[SmokeMethod("setUserData", "(QTextBlockUserData*)", "#")]
 		public void SetUserData(QTextBlockUserData data) {
-			((QTextBlock) interceptor).SetUserData(data);
+			interceptor.Invoke("setUserData#", "setUserData(QTextBlockUserData*)", typeof(void), typeof(QTextBlockUserData), data);
 		}
-		[SmokeMethod("userState", "() const", "")]
 		public int UserState() {
-			return ((QTextBlock) interceptor).UserState();
+			return (int) interceptor.Invoke("userState", "userState() const", typeof(int));
 		}
-		[SmokeMethod("setUserState", "(int)", "$")]
 		public void SetUserState(int state) {
-			((QTextBlock) interceptor).SetUserState(state);
+			interceptor.Invoke("setUserState$", "setUserState(int)", typeof(void), typeof(int), state);
 		}
-		[SmokeMethod("next", "() const", "")]
 		public QTextBlock Next() {
-			return ((QTextBlock) interceptor).Next();
+			return (QTextBlock) interceptor.Invoke("next", "next() const", typeof(QTextBlock));
 		}
-		[SmokeMethod("previous", "() const", "")]
 		public QTextBlock Previous() {
-			return ((QTextBlock) interceptor).Previous();
+			return (QTextBlock) interceptor.Invoke("previous", "previous() const", typeof(QTextBlock));
 		}
 		~QTextBlock() {
-			DisposeQTextBlock();
+			interceptor.Invoke("~QTextBlock", "~QTextBlock()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextBlock();
-		}
-		[SmokeMethod("~QTextBlock", "()", "")]
-		private void DisposeQTextBlock() {
-			((QTextBlock) interceptor).DisposeQTextBlock();
+			interceptor.Invoke("~QTextBlock", "~QTextBlock()", typeof(void));
 		}
 		public static bool operator==(QTextBlock lhs, QTextBlock o) {
-			return staticInterceptor.op_equals(lhs,o);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextBlock&) const", typeof(bool), typeof(QTextBlock), lhs, typeof(QTextBlock), o);
 		}
 		public static bool operator!=(QTextBlock lhs, QTextBlock o) {
-			return !staticInterceptor.op_equals(lhs,o);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextBlock&) const", typeof(bool), typeof(QTextBlock), lhs, typeof(QTextBlock), o);
 		}
 		public static bool operator<(QTextBlock lhs, QTextBlock o) {
-			return staticInterceptor.op_lt(lhs,o);
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QTextBlock&) const", typeof(bool), typeof(QTextBlock), lhs, typeof(QTextBlock), o);
 		}
 		public static bool operator>(QTextBlock lhs, QTextBlock o) {
-			return !staticInterceptor.op_lt(lhs,o)
-						&& !staticInterceptor.op_equals(lhs,o);
+			return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QTextBlock&) const", typeof(bool), typeof(QTextBlock), lhs, typeof(QTextBlock), o)
+						&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextBlock&) const", typeof(bool), typeof(QTextBlock), lhs, typeof(QTextBlock), o);
 		}
 	}
 }

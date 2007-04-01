@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionRubberBand : QStyleOption, IDisposable {
  		protected QStyleOptionRubberBand(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionRubberBand), this);
-			interceptor = (QStyleOptionRubberBand) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionRubberBand), "QStyleOptionRubberBand", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_RubberBand,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionRubberBand() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionRubberBand();
-		}
-		[SmokeMethod("QStyleOptionRubberBand", "()", "")]
-		private void NewQStyleOptionRubberBand() {
-			((QStyleOptionRubberBand) interceptor).NewQStyleOptionRubberBand();
+			interceptor.Invoke("QStyleOptionRubberBand", "QStyleOptionRubberBand()", typeof(void));
 		}
 		public QStyleOptionRubberBand(QStyleOptionRubberBand other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionRubberBand(other);
-		}
-		[SmokeMethod("QStyleOptionRubberBand", "(const QStyleOptionRubberBand&)", "#")]
-		private void NewQStyleOptionRubberBand(QStyleOptionRubberBand other) {
-			((QStyleOptionRubberBand) interceptor).NewQStyleOptionRubberBand(other);
+			interceptor.Invoke("QStyleOptionRubberBand#", "QStyleOptionRubberBand(const QStyleOptionRubberBand&)", typeof(void), typeof(QStyleOptionRubberBand), other);
 		}
 		public QStyleOptionRubberBand(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionRubberBand(version);
-		}
-		[SmokeMethod("QStyleOptionRubberBand", "(int)", "$")]
-		private void NewQStyleOptionRubberBand(int version) {
-			((QStyleOptionRubberBand) interceptor).NewQStyleOptionRubberBand(version);
+			interceptor.Invoke("QStyleOptionRubberBand$", "QStyleOptionRubberBand(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionRubberBand() {
-			DisposeQStyleOptionRubberBand();
+			interceptor.Invoke("~QStyleOptionRubberBand", "~QStyleOptionRubberBand()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionRubberBand();
-		}
-		[SmokeMethod("~QStyleOptionRubberBand", "()", "")]
-		private void DisposeQStyleOptionRubberBand() {
-			((QStyleOptionRubberBand) interceptor).DisposeQStyleOptionRubberBand();
+			interceptor.Invoke("~QStyleOptionRubberBand", "~QStyleOptionRubberBand()", typeof(void));
 		}
 	}
 }

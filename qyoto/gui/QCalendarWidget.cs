@@ -8,21 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QCalendarWidget")]
 	public class QCalendarWidget : QWidget, IDisposable {
  		protected QCalendarWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QCalendarWidget")]
-		interface IQCalendarWidgetProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCalendarWidget), this);
-			interceptor = (QCalendarWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QCalendarWidget), "QCalendarWidget", this);
 		}
-		private static IQCalendarWidgetProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QCalendarWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCalendarWidgetProxy), null);
-			staticInterceptor = (IQCalendarWidgetProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QCalendarWidget), "QCalendarWidget", null);
 		}
 		public enum HorizontalHeaderFormat {
 			NoHorizontalHeader = 0,
@@ -40,210 +31,161 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QDate", "selectedDate")]
 		public QDate SelectedDate {
-			[SmokeMethod("selectedDate", "()", "")]
-			get { return ((QCalendarWidget) interceptor).SelectedDate; }
-			[SmokeMethod("setSelectedDate", "(QDate)", "#")]
-			set { ((QCalendarWidget) interceptor).SelectedDate = value; }
+			get { return (QDate) interceptor.Invoke("selectedDate", "selectedDate()", typeof(QDate)); }
+			set { interceptor.Invoke("setSelectedDate#", "setSelectedDate(QDate)", typeof(void), typeof(QDate), value); }
 		}
 		[Q_PROPERTY("QDate", "minimumDate")]
 		public QDate MinimumDate {
-			[SmokeMethod("minimumDate", "()", "")]
-			get { return ((QCalendarWidget) interceptor).MinimumDate; }
-			[SmokeMethod("setMinimumDate", "(QDate)", "#")]
-			set { ((QCalendarWidget) interceptor).MinimumDate = value; }
+			get { return (QDate) interceptor.Invoke("minimumDate", "minimumDate()", typeof(QDate)); }
+			set { interceptor.Invoke("setMinimumDate#", "setMinimumDate(QDate)", typeof(void), typeof(QDate), value); }
 		}
 		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
-			[SmokeMethod("maximumDate", "()", "")]
-			get { return ((QCalendarWidget) interceptor).MaximumDate; }
-			[SmokeMethod("setMaximumDate", "(QDate)", "#")]
-			set { ((QCalendarWidget) interceptor).MaximumDate = value; }
+			get { return (QDate) interceptor.Invoke("maximumDate", "maximumDate()", typeof(QDate)); }
+			set { interceptor.Invoke("setMaximumDate#", "setMaximumDate(QDate)", typeof(void), typeof(QDate), value); }
 		}
 		[Q_PROPERTY("Qt::DayOfWeek", "firstDayOfWeek")]
 		public Qt.DayOfWeek FirstDayOfWeek {
-			[SmokeMethod("firstDayOfWeek", "()", "")]
-			get { return ((QCalendarWidget) interceptor).FirstDayOfWeek; }
-			[SmokeMethod("setFirstDayOfWeek", "(Qt::DayOfWeek)", "$")]
-			set { ((QCalendarWidget) interceptor).FirstDayOfWeek = value; }
+			get { return (Qt.DayOfWeek) interceptor.Invoke("firstDayOfWeek", "firstDayOfWeek()", typeof(Qt.DayOfWeek)); }
+			set { interceptor.Invoke("setFirstDayOfWeek$", "setFirstDayOfWeek(Qt::DayOfWeek)", typeof(void), typeof(Qt.DayOfWeek), value); }
 		}
 		[Q_PROPERTY("bool", "gridVisible")]
 		public bool GridVisible {
-			[SmokeMethod("isGridVisible", "()", "")]
-			get { return ((QCalendarWidget) interceptor).GridVisible; }
-			[SmokeMethod("setGridVisible", "(bool)", "$")]
-			set { ((QCalendarWidget) interceptor).GridVisible = value; }
+			get { return (bool) interceptor.Invoke("isGridVisible", "isGridVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setGridVisible$", "setGridVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QCalendarWidget::SelectionMode", "selectionMode")]
 		public QCalendarWidget.SelectionMode selectionMode {
-			[SmokeMethod("selectionMode", "()", "")]
-			get { return ((QCalendarWidget) interceptor).selectionMode; }
-			[SmokeMethod("setSelectionMode", "(QCalendarWidget::SelectionMode)", "$")]
-			set { ((QCalendarWidget) interceptor).selectionMode = value; }
+			get { return (QCalendarWidget.SelectionMode) interceptor.Invoke("selectionMode", "selectionMode()", typeof(QCalendarWidget.SelectionMode)); }
+			set { interceptor.Invoke("setSelectionMode$", "setSelectionMode(QCalendarWidget::SelectionMode)", typeof(void), typeof(QCalendarWidget.SelectionMode), value); }
 		}
 		[Q_PROPERTY("QCalendarWidget::HorizontalHeaderFormat", "horizontalHeaderFormat")]
 		public QCalendarWidget.HorizontalHeaderFormat horizontalHeaderFormat {
-			[SmokeMethod("horizontalHeaderFormat", "()", "")]
-			get { return ((QCalendarWidget) interceptor).horizontalHeaderFormat; }
-			[SmokeMethod("setHorizontalHeaderFormat", "(QCalendarWidget::HorizontalHeaderFormat)", "$")]
-			set { ((QCalendarWidget) interceptor).horizontalHeaderFormat = value; }
+			get { return (QCalendarWidget.HorizontalHeaderFormat) interceptor.Invoke("horizontalHeaderFormat", "horizontalHeaderFormat()", typeof(QCalendarWidget.HorizontalHeaderFormat)); }
+			set { interceptor.Invoke("setHorizontalHeaderFormat$", "setHorizontalHeaderFormat(QCalendarWidget::HorizontalHeaderFormat)", typeof(void), typeof(QCalendarWidget.HorizontalHeaderFormat), value); }
 		}
 		[Q_PROPERTY("QCalendarWidget::VerticalHeaderFormat", "verticalHeaderFormat")]
 		public QCalendarWidget.VerticalHeaderFormat verticalHeaderFormat {
-			[SmokeMethod("verticalHeaderFormat", "()", "")]
-			get { return ((QCalendarWidget) interceptor).verticalHeaderFormat; }
-			[SmokeMethod("setVerticalHeaderFormat", "(QCalendarWidget::VerticalHeaderFormat)", "$")]
-			set { ((QCalendarWidget) interceptor).verticalHeaderFormat = value; }
+			get { return (QCalendarWidget.VerticalHeaderFormat) interceptor.Invoke("verticalHeaderFormat", "verticalHeaderFormat()", typeof(QCalendarWidget.VerticalHeaderFormat)); }
+			set { interceptor.Invoke("setVerticalHeaderFormat$", "setVerticalHeaderFormat(QCalendarWidget::VerticalHeaderFormat)", typeof(void), typeof(QCalendarWidget.VerticalHeaderFormat), value); }
 		}
 		[Q_PROPERTY("bool", "headerVisible")]
 		public bool HeaderVisible {
-			[SmokeMethod("isHeaderVisible", "()", "")]
-			get { return ((QCalendarWidget) interceptor).HeaderVisible; }
-			[SmokeMethod("setHeaderVisible", "(bool)", "$")]
-			set { ((QCalendarWidget) interceptor).HeaderVisible = value; }
+			get { return (bool) interceptor.Invoke("isHeaderVisible", "isHeaderVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setHeaderVisible$", "setHeaderVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QCalendarWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQCalendarWidget(parent);
-		}
-		[SmokeMethod("QCalendarWidget", "(QWidget*)", "#")]
-		private void NewQCalendarWidget(QWidget parent) {
-			((QCalendarWidget) interceptor).NewQCalendarWidget(parent);
+			interceptor.Invoke("QCalendarWidget#", "QCalendarWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QCalendarWidget() : this((Type) null) {
 			CreateProxy();
-			NewQCalendarWidget();
+			interceptor.Invoke("QCalendarWidget", "QCalendarWidget()", typeof(void));
 		}
-		[SmokeMethod("QCalendarWidget", "()", "")]
-		private void NewQCalendarWidget() {
-			((QCalendarWidget) interceptor).NewQCalendarWidget();
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QCalendarWidget) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QCalendarWidget) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("yearShown", "() const", "")]
 		public int YearShown() {
-			return ((QCalendarWidget) interceptor).YearShown();
+			return (int) interceptor.Invoke("yearShown", "yearShown() const", typeof(int));
 		}
-		[SmokeMethod("monthShown", "() const", "")]
 		public int MonthShown() {
-			return ((QCalendarWidget) interceptor).MonthShown();
+			return (int) interceptor.Invoke("monthShown", "monthShown() const", typeof(int));
 		}
-		[SmokeMethod("isHeaderVisible", "() const", "")]
 		public bool IsHeaderVisible() {
-			return ((QCalendarWidget) interceptor).IsHeaderVisible();
+			return (bool) interceptor.Invoke("isHeaderVisible", "isHeaderVisible() const", typeof(bool));
 		}
-		[SmokeMethod("isGridVisible", "() const", "")]
 		public bool IsGridVisible() {
-			return ((QCalendarWidget) interceptor).IsGridVisible();
+			return (bool) interceptor.Invoke("isGridVisible", "isGridVisible() const", typeof(bool));
 		}
-		[SmokeMethod("headerTextFormat", "() const", "")]
 		public QTextCharFormat HeaderTextFormat() {
-			return ((QCalendarWidget) interceptor).HeaderTextFormat();
+			return (QTextCharFormat) interceptor.Invoke("headerTextFormat", "headerTextFormat() const", typeof(QTextCharFormat));
 		}
-		[SmokeMethod("setHeaderTextFormat", "(const QTextCharFormat&)", "#")]
 		public void SetHeaderTextFormat(QTextCharFormat format) {
-			((QCalendarWidget) interceptor).SetHeaderTextFormat(format);
+			interceptor.Invoke("setHeaderTextFormat#", "setHeaderTextFormat(const QTextCharFormat&)", typeof(void), typeof(QTextCharFormat), format);
 		}
-		[SmokeMethod("weekdayTextFormat", "(Qt::DayOfWeek) const", "$")]
 		public QTextCharFormat WeekdayTextFormat(Qt.DayOfWeek dayOfWeek) {
-			return ((QCalendarWidget) interceptor).WeekdayTextFormat(dayOfWeek);
+			return (QTextCharFormat) interceptor.Invoke("weekdayTextFormat$", "weekdayTextFormat(Qt::DayOfWeek) const", typeof(QTextCharFormat), typeof(Qt.DayOfWeek), dayOfWeek);
 		}
-		[SmokeMethod("setWeekdayTextFormat", "(Qt::DayOfWeek, const QTextCharFormat&)", "$#")]
 		public void SetWeekdayTextFormat(Qt.DayOfWeek dayOfWeek, QTextCharFormat format) {
-			((QCalendarWidget) interceptor).SetWeekdayTextFormat(dayOfWeek,format);
+			interceptor.Invoke("setWeekdayTextFormat$#", "setWeekdayTextFormat(Qt::DayOfWeek, const QTextCharFormat&)", typeof(void), typeof(Qt.DayOfWeek), dayOfWeek, typeof(QTextCharFormat), format);
 		}
-		[SmokeMethod("dateTextFormat", "() const", "")]
 		public Dictionary<QDate, QTextCharFormat> DateTextFormat() {
-			return ((QCalendarWidget) interceptor).DateTextFormat();
+			return (Dictionary<QDate, QTextCharFormat>) interceptor.Invoke("dateTextFormat", "dateTextFormat() const", typeof(Dictionary<QDate, QTextCharFormat>));
 		}
-		[SmokeMethod("dateTextFormat", "(const QDate&) const", "#")]
 		public QTextCharFormat DateTextFormat(QDate date) {
-			return ((QCalendarWidget) interceptor).DateTextFormat(date);
+			return (QTextCharFormat) interceptor.Invoke("dateTextFormat#", "dateTextFormat(const QDate&) const", typeof(QTextCharFormat), typeof(QDate), date);
 		}
-		[SmokeMethod("setDateTextFormat", "(const QDate&, const QTextCharFormat&)", "##")]
 		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
-			((QCalendarWidget) interceptor).SetDateTextFormat(date,color);
+			interceptor.Invoke("setDateTextFormat##", "setDateTextFormat(const QDate&, const QTextCharFormat&)", typeof(void), typeof(QDate), date, typeof(QTextCharFormat), color);
 		}
 		[Q_SLOT("void setDateRange(const QDate&, const QDate&)")]
-		[SmokeMethod("setDateRange", "(const QDate&, const QDate&)", "##")]
 		public void SetDateRange(QDate min, QDate max) {
-			((QCalendarWidget) interceptor).SetDateRange(min,max);
+			interceptor.Invoke("setDateRange##", "setDateRange(const QDate&, const QDate&)", typeof(void), typeof(QDate), min, typeof(QDate), max);
 		}
 		[Q_SLOT("void setCurrentPage(int, int)")]
-		[SmokeMethod("setCurrentPage", "(int, int)", "$$")]
 		public void SetCurrentPage(int year, int month) {
-			((QCalendarWidget) interceptor).SetCurrentPage(year,month);
+			interceptor.Invoke("setCurrentPage$$", "setCurrentPage(int, int)", typeof(void), typeof(int), year, typeof(int), month);
 		}
 		[Q_SLOT("void showNextMonth()")]
-		[SmokeMethod("showNextMonth", "()", "")]
 		public void ShowNextMonth() {
-			((QCalendarWidget) interceptor).ShowNextMonth();
+			interceptor.Invoke("showNextMonth", "showNextMonth()", typeof(void));
 		}
 		[Q_SLOT("void showPreviousMonth()")]
-		[SmokeMethod("showPreviousMonth", "()", "")]
 		public void ShowPreviousMonth() {
-			((QCalendarWidget) interceptor).ShowPreviousMonth();
+			interceptor.Invoke("showPreviousMonth", "showPreviousMonth()", typeof(void));
 		}
 		[Q_SLOT("void showNextYear()")]
-		[SmokeMethod("showNextYear", "()", "")]
 		public void ShowNextYear() {
-			((QCalendarWidget) interceptor).ShowNextYear();
+			interceptor.Invoke("showNextYear", "showNextYear()", typeof(void));
 		}
 		[Q_SLOT("void showPreviousYear()")]
-		[SmokeMethod("showPreviousYear", "()", "")]
 		public void ShowPreviousYear() {
-			((QCalendarWidget) interceptor).ShowPreviousYear();
+			interceptor.Invoke("showPreviousYear", "showPreviousYear()", typeof(void));
 		}
 		[Q_SLOT("void showSelectedDate()")]
-		[SmokeMethod("showSelectedDate", "()", "")]
 		public void ShowSelectedDate() {
-			((QCalendarWidget) interceptor).ShowSelectedDate();
+			interceptor.Invoke("showSelectedDate", "showSelectedDate()", typeof(void));
 		}
 		[Q_SLOT("void showToday()")]
-		[SmokeMethod("showToday", "()", "")]
 		public void ShowToday() {
-			((QCalendarWidget) interceptor).ShowToday();
+			interceptor.Invoke("showToday", "showToday()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QCalendarWidget) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QCalendarWidget) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QCalendarWidget) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QCalendarWidget) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("paintCell", "(QPainter*, const QRect&, const QDate&) const", "###")]
+		[SmokeMethod("paintCell(QPainter*, const QRect&, const QDate&) const")]
 		protected virtual void PaintCell(QPainter painter, QRect rect, QDate date) {
-			((QCalendarWidget) interceptor).PaintCell(painter,rect,date);
+			interceptor.Invoke("paintCell###", "paintCell(QPainter*, const QRect&, const QDate&) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(QDate), date);
 		}
 		~QCalendarWidget() {
-			DisposeQCalendarWidget();
+			interceptor.Invoke("~QCalendarWidget", "~QCalendarWidget()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQCalendarWidget();
-		}
-		[SmokeMethod("~QCalendarWidget", "()", "")]
-		private void DisposeQCalendarWidget() {
-			((QCalendarWidget) interceptor).DisposeQCalendarWidget();
+			interceptor.Invoke("~QCalendarWidget", "~QCalendarWidget()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQCalendarWidgetSignals Emit {
 			get { return (IQCalendarWidgetSignals) Q_EMIT; }

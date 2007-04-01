@@ -6,127 +6,93 @@ namespace Qyoto {
 	[SmokeClass("QScrollArea")]
 	public class QScrollArea : QAbstractScrollArea, IDisposable {
  		protected QScrollArea(Type dummy) : base((Type) null) {}
-		[SmokeClass("QScrollArea")]
-		interface IQScrollAreaProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollArea), this);
-			interceptor = (QScrollArea) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QScrollArea), "QScrollArea", this);
 		}
-		private static IQScrollAreaProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QScrollArea() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQScrollAreaProxy), null);
-			staticInterceptor = (IQScrollAreaProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QScrollArea), "QScrollArea", null);
 		}
 		[Q_PROPERTY("bool", "widgetResizable")]
 		public bool WidgetResizable {
-			[SmokeMethod("widgetResizable", "()", "")]
-			get { return ((QScrollArea) interceptor).WidgetResizable; }
-			[SmokeMethod("setWidgetResizable", "(bool)", "$")]
-			set { ((QScrollArea) interceptor).WidgetResizable = value; }
+			get { return (bool) interceptor.Invoke("widgetResizable", "widgetResizable()", typeof(bool)); }
+			set { interceptor.Invoke("setWidgetResizable$", "setWidgetResizable(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			[SmokeMethod("alignment", "()", "")]
-			get { return ((QScrollArea) interceptor).Alignment; }
-			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
-			set { ((QScrollArea) interceptor).Alignment = value; }
+			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
 		}
 		public QScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQScrollArea(parent);
-		}
-		[SmokeMethod("QScrollArea", "(QWidget*)", "#")]
-		private void NewQScrollArea(QWidget parent) {
-			((QScrollArea) interceptor).NewQScrollArea(parent);
+			interceptor.Invoke("QScrollArea#", "QScrollArea(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QScrollArea() : this((Type) null) {
 			CreateProxy();
-			NewQScrollArea();
+			interceptor.Invoke("QScrollArea", "QScrollArea()", typeof(void));
 		}
-		[SmokeMethod("QScrollArea", "()", "")]
-		private void NewQScrollArea() {
-			((QScrollArea) interceptor).NewQScrollArea();
-		}
-		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ((QScrollArea) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			((QScrollArea) interceptor).SetWidget(widget);
+			interceptor.Invoke("setWidget#", "setWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("takeWidget", "()", "")]
 		public QWidget TakeWidget() {
-			return ((QScrollArea) interceptor).TakeWidget();
+			return (QWidget) interceptor.Invoke("takeWidget", "takeWidget()", typeof(QWidget));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QScrollArea) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		public new virtual bool FocusNextPrevChild(bool next) {
-			return ((QScrollArea) interceptor).FocusNextPrevChild(next);
+			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
-		[SmokeMethod("ensureVisible", "(int, int, int, int)", "$$$$")]
 		public void EnsureVisible(int x, int y, int xmargin, int ymargin) {
-			((QScrollArea) interceptor).EnsureVisible(x,y,xmargin,ymargin);
+			interceptor.Invoke("ensureVisible$$$$", "ensureVisible(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), xmargin, typeof(int), ymargin);
 		}
-		[SmokeMethod("ensureVisible", "(int, int, int)", "$$$")]
 		public void EnsureVisible(int x, int y, int xmargin) {
-			((QScrollArea) interceptor).EnsureVisible(x,y,xmargin);
+			interceptor.Invoke("ensureVisible$$$", "ensureVisible(int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), xmargin);
 		}
-		[SmokeMethod("ensureVisible", "(int, int)", "$$")]
 		public void EnsureVisible(int x, int y) {
-			((QScrollArea) interceptor).EnsureVisible(x,y);
+			interceptor.Invoke("ensureVisible$$", "ensureVisible(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("ensureWidgetVisible", "(QWidget*, int, int)", "#$$")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin, int ymargin) {
-			((QScrollArea) interceptor).EnsureWidgetVisible(childWidget,xmargin,ymargin);
+			interceptor.Invoke("ensureWidgetVisible#$$", "ensureWidgetVisible(QWidget*, int, int)", typeof(void), typeof(QWidget), childWidget, typeof(int), xmargin, typeof(int), ymargin);
 		}
-		[SmokeMethod("ensureWidgetVisible", "(QWidget*, int)", "#$")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin) {
-			((QScrollArea) interceptor).EnsureWidgetVisible(childWidget,xmargin);
+			interceptor.Invoke("ensureWidgetVisible#$", "ensureWidgetVisible(QWidget*, int)", typeof(void), typeof(QWidget), childWidget, typeof(int), xmargin);
 		}
-		[SmokeMethod("ensureWidgetVisible", "(QWidget*)", "#")]
 		public void EnsureWidgetVisible(QWidget childWidget) {
-			((QScrollArea) interceptor).EnsureWidgetVisible(childWidget);
+			interceptor.Invoke("ensureWidgetVisible#", "ensureWidgetVisible(QWidget*)", typeof(void), typeof(QWidget), childWidget);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QScrollArea) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QScrollArea) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QScrollArea) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
+		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			((QScrollArea) interceptor).ScrollContentsBy(dx,dy);
+			interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
 		~QScrollArea() {
-			DisposeQScrollArea();
+			interceptor.Invoke("~QScrollArea", "~QScrollArea()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQScrollArea();
-		}
-		[SmokeMethod("~QScrollArea", "()", "")]
-		private void DisposeQScrollArea() {
-			((QScrollArea) interceptor).DisposeQScrollArea();
+			interceptor.Invoke("~QScrollArea", "~QScrollArea()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQScrollAreaSignals Emit {
 			get { return (IQScrollAreaSignals) Q_EMIT; }

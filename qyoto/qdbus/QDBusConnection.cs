@@ -4,33 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDBusConnection")]
-	public class QDBusConnection : MarshalByRefObject, IDisposable {
-		protected QDBusConnection interceptor = null;
+	public class QDBusConnection : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDBusConnection(Type dummy) {}
-		[SmokeClass("QDBusConnection")]
-		interface IQDBusConnectionProxy {
-			[SmokeMethod("connectToBus", "(QDBusConnection::BusType, const QString&)", "$$")]
-			QDBusConnection ConnectToBus(QDBusConnection.BusType type, string name);
-			[SmokeMethod("connectToBus", "(const QString&, const QString&)", "$$")]
-			QDBusConnection ConnectToBus(string address, string name);
-			[SmokeMethod("disconnectFromBus", "(const QString&)", "$")]
-			void DisconnectFromBus(string name);
-			[SmokeMethod("sessionBus", "()", "")]
-			QDBusConnection SessionBus();
-			[SmokeMethod("systemBus", "()", "")]
-			QDBusConnection SystemBus();
-			[SmokeMethod("sender", "()", "")]
-			QDBusConnection Sender();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusConnection), this);
-			interceptor = (QDBusConnection) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusConnection), "QDBusConnection", this);
 		}
-		private static IQDBusConnectionProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDBusConnection() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusConnectionProxy), null);
-			staticInterceptor = (IQDBusConnectionProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDBusConnection), "QDBusConnection", null);
 		}
 		public enum BusType {
 			SessionBus = 0,
@@ -60,131 +43,98 @@ namespace Qyoto {
 		// QDBusConnection* QDBusConnection(QDBusConnectionPrivate* arg1); >>>> NOT CONVERTED
 		public QDBusConnection(string name) : this((Type) null) {
 			CreateProxy();
-			NewQDBusConnection(name);
-		}
-		[SmokeMethod("QDBusConnection", "(const QString&)", "$")]
-		private void NewQDBusConnection(string name) {
-			((QDBusConnection) interceptor).NewQDBusConnection(name);
+			interceptor.Invoke("QDBusConnection$", "QDBusConnection(const QString&)", typeof(void), typeof(string), name);
 		}
 		public QDBusConnection(QDBusConnection other) : this((Type) null) {
 			CreateProxy();
-			NewQDBusConnection(other);
+			interceptor.Invoke("QDBusConnection#", "QDBusConnection(const QDBusConnection&)", typeof(void), typeof(QDBusConnection), other);
 		}
-		[SmokeMethod("QDBusConnection", "(const QDBusConnection&)", "#")]
-		private void NewQDBusConnection(QDBusConnection other) {
-			((QDBusConnection) interceptor).NewQDBusConnection(other);
-		}
-		[SmokeMethod("isConnected", "() const", "")]
 		public bool IsConnected() {
-			return ((QDBusConnection) interceptor).IsConnected();
+			return (bool) interceptor.Invoke("isConnected", "isConnected() const", typeof(bool));
 		}
-		[SmokeMethod("baseService", "() const", "")]
 		public string BaseService() {
-			return ((QDBusConnection) interceptor).BaseService();
+			return (string) interceptor.Invoke("baseService", "baseService() const", typeof(string));
 		}
-		[SmokeMethod("lastError", "() const", "")]
 		public QDBusError LastError() {
-			return ((QDBusConnection) interceptor).LastError();
+			return (QDBusError) interceptor.Invoke("lastError", "lastError() const", typeof(QDBusError));
 		}
-		[SmokeMethod("send", "(const QDBusMessage&) const", "#")]
 		public bool Send(QDBusMessage message) {
-			return ((QDBusConnection) interceptor).Send(message);
+			return (bool) interceptor.Invoke("send#", "send(const QDBusMessage&) const", typeof(bool), typeof(QDBusMessage), message);
 		}
-		[SmokeMethod("callWithCallback", "(const QDBusMessage&, QObject*, const char*, int) const", "##$$")]
 		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot, int timeout) {
-			return ((QDBusConnection) interceptor).CallWithCallback(message,receiver,slot,timeout);
+			return (bool) interceptor.Invoke("callWithCallback##$$", "callWithCallback(const QDBusMessage&, QObject*, const char*, int) const", typeof(bool), typeof(QDBusMessage), message, typeof(QObject), receiver, typeof(string), slot, typeof(int), timeout);
 		}
-		[SmokeMethod("callWithCallback", "(const QDBusMessage&, QObject*, const char*) const", "##$")]
 		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot) {
-			return ((QDBusConnection) interceptor).CallWithCallback(message,receiver,slot);
+			return (bool) interceptor.Invoke("callWithCallback##$", "callWithCallback(const QDBusMessage&, QObject*, const char*) const", typeof(bool), typeof(QDBusMessage), message, typeof(QObject), receiver, typeof(string), slot);
 		}
-		[SmokeMethod("call", "(const QDBusMessage&, QDBus::CallMode, int) const", "#$$")]
 		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode, int timeout) {
-			return ((QDBusConnection) interceptor).Call(message,mode,timeout);
+			return (QDBusMessage) interceptor.Invoke("call#$$", "call(const QDBusMessage&, QDBus::CallMode, int) const", typeof(QDBusMessage), typeof(QDBusMessage), message, typeof(QDBus.CallMode), mode, typeof(int), timeout);
 		}
-		[SmokeMethod("call", "(const QDBusMessage&, QDBus::CallMode) const", "#$")]
 		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode) {
-			return ((QDBusConnection) interceptor).Call(message,mode);
+			return (QDBusMessage) interceptor.Invoke("call#$", "call(const QDBusMessage&, QDBus::CallMode) const", typeof(QDBusMessage), typeof(QDBusMessage), message, typeof(QDBus.CallMode), mode);
 		}
-		[SmokeMethod("call", "(const QDBusMessage&) const", "#")]
 		public QDBusMessage Call(QDBusMessage message) {
-			return ((QDBusConnection) interceptor).Call(message);
+			return (QDBusMessage) interceptor.Invoke("call#", "call(const QDBusMessage&) const", typeof(QDBusMessage), typeof(QDBusMessage), message);
 		}
-		[SmokeMethod("connect", "(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", "$$$$#$")]
 		public bool Connect(string service, string path, string arg3, string name, QObject receiver, string slot) {
-			return ((QDBusConnection) interceptor).Connect(service,path,arg3,name,receiver,slot);
+			return (bool) interceptor.Invoke("connect$$$$#$", "connect(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", typeof(bool), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(string), name, typeof(QObject), receiver, typeof(string), slot);
 		}
-		[SmokeMethod("disconnect", "(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", "$$$$#$")]
 		public bool Disconnect(string service, string path, string arg3, string name, QObject receiver, string slot) {
-			return ((QDBusConnection) interceptor).Disconnect(service,path,arg3,name,receiver,slot);
+			return (bool) interceptor.Invoke("disconnect$$$$#$", "disconnect(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", typeof(bool), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(string), name, typeof(QObject), receiver, typeof(string), slot);
 		}
-		[SmokeMethod("connect", "(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", "$$$$$#$")]
 		public bool Connect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
-			return ((QDBusConnection) interceptor).Connect(service,path,arg3,name,signature,receiver,slot);
+			return (bool) interceptor.Invoke("connect$$$$$#$", "connect(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", typeof(bool), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(string), name, typeof(string), signature, typeof(QObject), receiver, typeof(string), slot);
 		}
-		[SmokeMethod("disconnect", "(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", "$$$$$#$")]
 		public bool Disconnect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
-			return ((QDBusConnection) interceptor).Disconnect(service,path,arg3,name,signature,receiver,slot);
+			return (bool) interceptor.Invoke("disconnect$$$$$#$", "disconnect(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", typeof(bool), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(string), name, typeof(string), signature, typeof(QObject), receiver, typeof(string), slot);
 		}
-		[SmokeMethod("registerObject", "(const QString&, QObject*, RegisterOptions)", "$#$")]
 		public bool RegisterObject(string path, QObject arg2, int options) {
-			return ((QDBusConnection) interceptor).RegisterObject(path,arg2,options);
+			return (bool) interceptor.Invoke("registerObject$#$", "registerObject(const QString&, QObject*, RegisterOptions)", typeof(bool), typeof(string), path, typeof(QObject), arg2, typeof(int), options);
 		}
-		[SmokeMethod("registerObject", "(const QString&, QObject*)", "$#")]
 		public bool RegisterObject(string path, QObject arg2) {
-			return ((QDBusConnection) interceptor).RegisterObject(path,arg2);
+			return (bool) interceptor.Invoke("registerObject$#", "registerObject(const QString&, QObject*)", typeof(bool), typeof(string), path, typeof(QObject), arg2);
 		}
-		[SmokeMethod("unregisterObject", "(const QString&, QDBusConnection::UnregisterMode)", "$$")]
 		public void UnregisterObject(string path, QDBusConnection.UnregisterMode mode) {
-			((QDBusConnection) interceptor).UnregisterObject(path,mode);
+			interceptor.Invoke("unregisterObject$$", "unregisterObject(const QString&, QDBusConnection::UnregisterMode)", typeof(void), typeof(string), path, typeof(QDBusConnection.UnregisterMode), mode);
 		}
-		[SmokeMethod("unregisterObject", "(const QString&)", "$")]
 		public void UnregisterObject(string path) {
-			((QDBusConnection) interceptor).UnregisterObject(path);
+			interceptor.Invoke("unregisterObject$", "unregisterObject(const QString&)", typeof(void), typeof(string), path);
 		}
-		[SmokeMethod("objectRegisteredAt", "(const QString&) const", "$")]
 		public QObject ObjectRegisteredAt(string path) {
-			return ((QDBusConnection) interceptor).ObjectRegisteredAt(path);
+			return (QObject) interceptor.Invoke("objectRegisteredAt$", "objectRegisteredAt(const QString&) const", typeof(QObject), typeof(string), path);
 		}
-		[SmokeMethod("registerService", "(const QString&)", "$")]
 		public bool RegisterService(string serviceName) {
-			return ((QDBusConnection) interceptor).RegisterService(serviceName);
+			return (bool) interceptor.Invoke("registerService$", "registerService(const QString&)", typeof(bool), typeof(string), serviceName);
 		}
-		[SmokeMethod("unregisterService", "(const QString&)", "$")]
 		public bool UnregisterService(string serviceName) {
-			return ((QDBusConnection) interceptor).UnregisterService(serviceName);
+			return (bool) interceptor.Invoke("unregisterService$", "unregisterService(const QString&)", typeof(bool), typeof(string), serviceName);
 		}
-		[SmokeMethod("interface", "() const", "")]
 		public QDBusConnectionInterface Interface() {
-			return ((QDBusConnection) interceptor).Interface();
+			return (QDBusConnectionInterface) interceptor.Invoke("interface", "interface() const", typeof(QDBusConnectionInterface));
 		}
 		~QDBusConnection() {
-			DisposeQDBusConnection();
+			interceptor.Invoke("~QDBusConnection", "~QDBusConnection()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDBusConnection();
-		}
-		[SmokeMethod("~QDBusConnection", "()", "")]
-		private void DisposeQDBusConnection() {
-			((QDBusConnection) interceptor).DisposeQDBusConnection();
+			interceptor.Invoke("~QDBusConnection", "~QDBusConnection()", typeof(void));
 		}
 		public static QDBusConnection ConnectToBus(QDBusConnection.BusType type, string name) {
-			return staticInterceptor.ConnectToBus(type,name);
+			return (QDBusConnection) staticInterceptor.Invoke("connectToBus$$", "connectToBus(QDBusConnection::BusType, const QString&)", typeof(QDBusConnection), typeof(QDBusConnection.BusType), type, typeof(string), name);
 		}
 		public static QDBusConnection ConnectToBus(string address, string name) {
-			return staticInterceptor.ConnectToBus(address,name);
+			return (QDBusConnection) staticInterceptor.Invoke("connectToBus$$", "connectToBus(const QString&, const QString&)", typeof(QDBusConnection), typeof(string), address, typeof(string), name);
 		}
 		public static void DisconnectFromBus(string name) {
-			staticInterceptor.DisconnectFromBus(name);
+			staticInterceptor.Invoke("disconnectFromBus$", "disconnectFromBus(const QString&)", typeof(void), typeof(string), name);
 		}
 		public static QDBusConnection SessionBus() {
-			return staticInterceptor.SessionBus();
+			return (QDBusConnection) staticInterceptor.Invoke("sessionBus", "sessionBus()", typeof(QDBusConnection));
 		}
 		public static QDBusConnection SystemBus() {
-			return staticInterceptor.SystemBus();
+			return (QDBusConnection) staticInterceptor.Invoke("systemBus", "systemBus()", typeof(QDBusConnection));
 		}
 		public static QDBusConnection Sender() {
-			return staticInterceptor.Sender();
+			return (QDBusConnection) staticInterceptor.Invoke("sender", "sender()", typeof(QDBusConnection));
 		}
 	}
 }

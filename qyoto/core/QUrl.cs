@@ -60,47 +60,16 @@ namespace Qyoto {
 	}
 
 	[SmokeClass("QUrl")]
-	public class QUrl : MarshalByRefObject, IQUrl, IDisposable {
-		protected QUrl interceptor = null;
+	public class QUrl : Object, IQUrl, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUrl(Type dummy) {}
-		[SmokeClass("QUrl")]
-		interface IQUrlProxy {
-			[SmokeMethod("fromLocalFile", "(const QString&)", "$")]
-			IQUrl FromLocalFile(string localfile);
-			[SmokeMethod("fromEncoded", "(const QByteArray&)", "#")]
-			IQUrl FromEncoded(QByteArray url);
-			[SmokeMethod("fromEncoded", "(const QByteArray&, QUrl::ParsingMode)", "#$")]
-			IQUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode);
-			[SmokeMethod("fromPercentEncoding", "(const QByteArray&)", "#")]
-			string FromPercentEncoding(QByteArray arg1);
-			[SmokeMethod("toPercentEncoding", "(const QString&, const QByteArray&, const QByteArray&)", "$##")]
-			QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include);
-			[SmokeMethod("toPercentEncoding", "(const QString&, const QByteArray&)", "$#")]
-			QByteArray ToPercentEncoding(string arg1, QByteArray exclude);
-			[SmokeMethod("toPercentEncoding", "(const QString&)", "$")]
-			QByteArray ToPercentEncoding(string arg1);
-			[SmokeMethod("fromPunycode", "(const QByteArray&)", "#")]
-			string FromPunycode(QByteArray arg1);
-			[SmokeMethod("toPunycode", "(const QString&)", "$")]
-			QByteArray ToPunycode(string arg1);
-			[SmokeMethod("fromAce", "(const QByteArray&)", "#")]
-			string FromAce(QByteArray arg1);
-			[SmokeMethod("toAce", "(const QString&)", "$")]
-			QByteArray ToAce(string arg1);
-			[SmokeMethod("idnWhitelist", "()", "")]
-			List<string> IdnWhitelist();
-			[SmokeMethod("setIdnWhitelist", "(const QStringList&)", "?")]
-			void SetIdnWhitelist(List<string> arg1);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUrl), this);
-			interceptor = (QUrl) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QUrl), "QUrl", this);
 		}
-		private static IQUrlProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QUrl() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUrlProxy), null);
-			staticInterceptor = (IQUrlProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QUrl), "QUrl", null);
 		}
 		public enum ParsingMode {
 			TolerantMode = 0,
@@ -120,292 +89,220 @@ namespace Qyoto {
 		}
 		public QUrl() : this((Type) null) {
 			CreateProxy();
-			NewQUrl();
-		}
-		[SmokeMethod("QUrl", "()", "")]
-		private void NewQUrl() {
-			((QUrl) interceptor).NewQUrl();
+			interceptor.Invoke("QUrl", "QUrl()", typeof(void));
 		}
 		public QUrl(string url) : this((Type) null) {
 			CreateProxy();
-			NewQUrl(url);
-		}
-		[SmokeMethod("QUrl", "(const QString&)", "$")]
-		private void NewQUrl(string url) {
-			((QUrl) interceptor).NewQUrl(url);
+			interceptor.Invoke("QUrl$", "QUrl(const QString&)", typeof(void), typeof(string), url);
 		}
 		public QUrl(string url, QUrl.ParsingMode mode) : this((Type) null) {
 			CreateProxy();
-			NewQUrl(url,mode);
-		}
-		[SmokeMethod("QUrl", "(const QString&, QUrl::ParsingMode)", "$$")]
-		private void NewQUrl(string url, QUrl.ParsingMode mode) {
-			((QUrl) interceptor).NewQUrl(url,mode);
+			interceptor.Invoke("QUrl$$", "QUrl(const QString&, QUrl::ParsingMode)", typeof(void), typeof(string), url, typeof(QUrl.ParsingMode), mode);
 		}
 		public QUrl(IQUrl copy) : this((Type) null) {
 			CreateProxy();
-			NewQUrl(copy);
+			interceptor.Invoke("QUrl#", "QUrl(const QUrl&)", typeof(void), typeof(IQUrl), copy);
 		}
-		[SmokeMethod("QUrl", "(const QUrl&)", "#")]
-		private void NewQUrl(IQUrl copy) {
-			((QUrl) interceptor).NewQUrl(copy);
-		}
-		[SmokeMethod("setUrl", "(const QString&)", "$")]
 		public void SetUrl(string url) {
-			((QUrl) interceptor).SetUrl(url);
+			interceptor.Invoke("setUrl$", "setUrl(const QString&)", typeof(void), typeof(string), url);
 		}
-		[SmokeMethod("setUrl", "(const QString&, QUrl::ParsingMode)", "$$")]
 		public void SetUrl(string url, QUrl.ParsingMode mode) {
-			((QUrl) interceptor).SetUrl(url,mode);
+			interceptor.Invoke("setUrl$$", "setUrl(const QString&, QUrl::ParsingMode)", typeof(void), typeof(string), url, typeof(QUrl.ParsingMode), mode);
 		}
-		[SmokeMethod("setEncodedUrl", "(const QByteArray&)", "#")]
 		public void SetEncodedUrl(QByteArray url) {
-			((QUrl) interceptor).SetEncodedUrl(url);
+			interceptor.Invoke("setEncodedUrl#", "setEncodedUrl(const QByteArray&)", typeof(void), typeof(QByteArray), url);
 		}
-		[SmokeMethod("setEncodedUrl", "(const QByteArray&, QUrl::ParsingMode)", "#$")]
 		public void SetEncodedUrl(QByteArray url, QUrl.ParsingMode mode) {
-			((QUrl) interceptor).SetEncodedUrl(url,mode);
+			interceptor.Invoke("setEncodedUrl#$", "setEncodedUrl(const QByteArray&, QUrl::ParsingMode)", typeof(void), typeof(QByteArray), url, typeof(QUrl.ParsingMode), mode);
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QUrl) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QUrl) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QUrl) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("setScheme", "(const QString&)", "$")]
 		public void SetScheme(string scheme) {
-			((QUrl) interceptor).SetScheme(scheme);
+			interceptor.Invoke("setScheme$", "setScheme(const QString&)", typeof(void), typeof(string), scheme);
 		}
-		[SmokeMethod("scheme", "() const", "")]
 		public string Scheme() {
-			return ((QUrl) interceptor).Scheme();
+			return (string) interceptor.Invoke("scheme", "scheme() const", typeof(string));
 		}
-		[SmokeMethod("setAuthority", "(const QString&)", "$")]
 		public void SetAuthority(string authority) {
-			((QUrl) interceptor).SetAuthority(authority);
+			interceptor.Invoke("setAuthority$", "setAuthority(const QString&)", typeof(void), typeof(string), authority);
 		}
-		[SmokeMethod("authority", "() const", "")]
 		public string Authority() {
-			return ((QUrl) interceptor).Authority();
+			return (string) interceptor.Invoke("authority", "authority() const", typeof(string));
 		}
-		[SmokeMethod("setUserInfo", "(const QString&)", "$")]
 		public void SetUserInfo(string userInfo) {
-			((QUrl) interceptor).SetUserInfo(userInfo);
+			interceptor.Invoke("setUserInfo$", "setUserInfo(const QString&)", typeof(void), typeof(string), userInfo);
 		}
-		[SmokeMethod("userInfo", "() const", "")]
 		public string UserInfo() {
-			return ((QUrl) interceptor).UserInfo();
+			return (string) interceptor.Invoke("userInfo", "userInfo() const", typeof(string));
 		}
-		[SmokeMethod("setUserName", "(const QString&)", "$")]
 		public void SetUserName(string userName) {
-			((QUrl) interceptor).SetUserName(userName);
+			interceptor.Invoke("setUserName$", "setUserName(const QString&)", typeof(void), typeof(string), userName);
 		}
-		[SmokeMethod("userName", "() const", "")]
 		public string UserName() {
-			return ((QUrl) interceptor).UserName();
+			return (string) interceptor.Invoke("userName", "userName() const", typeof(string));
 		}
-		[SmokeMethod("setPassword", "(const QString&)", "$")]
 		public void SetPassword(string password) {
-			((QUrl) interceptor).SetPassword(password);
+			interceptor.Invoke("setPassword$", "setPassword(const QString&)", typeof(void), typeof(string), password);
 		}
-		[SmokeMethod("password", "() const", "")]
 		public string Password() {
-			return ((QUrl) interceptor).Password();
+			return (string) interceptor.Invoke("password", "password() const", typeof(string));
 		}
-		[SmokeMethod("setHost", "(const QString&)", "$")]
 		public void SetHost(string host) {
-			((QUrl) interceptor).SetHost(host);
+			interceptor.Invoke("setHost$", "setHost(const QString&)", typeof(void), typeof(string), host);
 		}
-		[SmokeMethod("host", "() const", "")]
 		public string Host() {
-			return ((QUrl) interceptor).Host();
+			return (string) interceptor.Invoke("host", "host() const", typeof(string));
 		}
-		[SmokeMethod("setPort", "(int)", "$")]
 		public void SetPort(int port) {
-			((QUrl) interceptor).SetPort(port);
+			interceptor.Invoke("setPort$", "setPort(int)", typeof(void), typeof(int), port);
 		}
-		[SmokeMethod("port", "() const", "")]
 		public int Port() {
-			return ((QUrl) interceptor).Port();
+			return (int) interceptor.Invoke("port", "port() const", typeof(int));
 		}
-		[SmokeMethod("port", "(int) const", "$")]
 		public int Port(int defaultPort) {
-			return ((QUrl) interceptor).Port(defaultPort);
+			return (int) interceptor.Invoke("port$", "port(int) const", typeof(int), typeof(int), defaultPort);
 		}
-		[SmokeMethod("setPath", "(const QString&)", "$")]
 		public void SetPath(string path) {
-			((QUrl) interceptor).SetPath(path);
+			interceptor.Invoke("setPath$", "setPath(const QString&)", typeof(void), typeof(string), path);
 		}
-		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ((QUrl) interceptor).Path();
+			return (string) interceptor.Invoke("path", "path() const", typeof(string));
 		}
-		[SmokeMethod("hasQuery", "() const", "")]
 		public bool HasQuery() {
-			return ((QUrl) interceptor).HasQuery();
+			return (bool) interceptor.Invoke("hasQuery", "hasQuery() const", typeof(bool));
 		}
-		[SmokeMethod("setEncodedQuery", "(const QByteArray&)", "#")]
 		public void SetEncodedQuery(QByteArray query) {
-			((QUrl) interceptor).SetEncodedQuery(query);
+			interceptor.Invoke("setEncodedQuery#", "setEncodedQuery(const QByteArray&)", typeof(void), typeof(QByteArray), query);
 		}
-		[SmokeMethod("encodedQuery", "() const", "")]
 		public QByteArray EncodedQuery() {
-			return ((QUrl) interceptor).EncodedQuery();
+			return (QByteArray) interceptor.Invoke("encodedQuery", "encodedQuery() const", typeof(QByteArray));
 		}
-		[SmokeMethod("setQueryDelimiters", "(char, char)", "$$")]
 		public void SetQueryDelimiters(char valueDelimiter, char pairDelimiter) {
-			((QUrl) interceptor).SetQueryDelimiters(valueDelimiter,pairDelimiter);
+			interceptor.Invoke("setQueryDelimiters$$", "setQueryDelimiters(char, char)", typeof(void), typeof(char), valueDelimiter, typeof(char), pairDelimiter);
 		}
-		[SmokeMethod("queryValueDelimiter", "() const", "")]
 		public char QueryValueDelimiter() {
-			return ((QUrl) interceptor).QueryValueDelimiter();
+			return (char) interceptor.Invoke("queryValueDelimiter", "queryValueDelimiter() const", typeof(char));
 		}
-		[SmokeMethod("queryPairDelimiter", "() const", "")]
 		public char QueryPairDelimiter() {
-			return ((QUrl) interceptor).QueryPairDelimiter();
+			return (char) interceptor.Invoke("queryPairDelimiter", "queryPairDelimiter() const", typeof(char));
 		}
-		[SmokeMethod("setQueryItems", "(const QList<QPair<QString, QString> >&)", "?")]
 		public void SetQueryItems(List<QPair<string, string>> query) {
-			((QUrl) interceptor).SetQueryItems(query);
+			interceptor.Invoke("setQueryItems?", "setQueryItems(const QList<QPair<QString, QString> >&)", typeof(void), typeof(List<QPair<string, string>>), query);
 		}
-		[SmokeMethod("addQueryItem", "(const QString&, const QString&)", "$$")]
 		public void AddQueryItem(string key, string value) {
-			((QUrl) interceptor).AddQueryItem(key,value);
+			interceptor.Invoke("addQueryItem$$", "addQueryItem(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);
 		}
-		[SmokeMethod("queryItems", "() const", "")]
 		public List<QPair<string, string>> QueryItems() {
-			return ((QUrl) interceptor).QueryItems();
+			return (List<QPair<string, string>>) interceptor.Invoke("queryItems", "queryItems() const", typeof(List<QPair<string, string>>));
 		}
-		[SmokeMethod("hasQueryItem", "(const QString&) const", "$")]
 		public bool HasQueryItem(string key) {
-			return ((QUrl) interceptor).HasQueryItem(key);
+			return (bool) interceptor.Invoke("hasQueryItem$", "hasQueryItem(const QString&) const", typeof(bool), typeof(string), key);
 		}
-		[SmokeMethod("queryItemValue", "(const QString&) const", "$")]
 		public string QueryItemValue(string key) {
-			return ((QUrl) interceptor).QueryItemValue(key);
+			return (string) interceptor.Invoke("queryItemValue$", "queryItemValue(const QString&) const", typeof(string), typeof(string), key);
 		}
-		[SmokeMethod("allQueryItemValues", "(const QString&) const", "$")]
 		public List<string> AllQueryItemValues(string key) {
-			return ((QUrl) interceptor).AllQueryItemValues(key);
+			return (List<string>) interceptor.Invoke("allQueryItemValues$", "allQueryItemValues(const QString&) const", typeof(List<string>), typeof(string), key);
 		}
-		[SmokeMethod("removeQueryItem", "(const QString&)", "$")]
 		public void RemoveQueryItem(string key) {
-			((QUrl) interceptor).RemoveQueryItem(key);
+			interceptor.Invoke("removeQueryItem$", "removeQueryItem(const QString&)", typeof(void), typeof(string), key);
 		}
-		[SmokeMethod("removeAllQueryItems", "(const QString&)", "$")]
 		public void RemoveAllQueryItems(string key) {
-			((QUrl) interceptor).RemoveAllQueryItems(key);
+			interceptor.Invoke("removeAllQueryItems$", "removeAllQueryItems(const QString&)", typeof(void), typeof(string), key);
 		}
-		[SmokeMethod("setFragment", "(const QString&)", "$")]
 		public void SetFragment(string fragment) {
-			((QUrl) interceptor).SetFragment(fragment);
+			interceptor.Invoke("setFragment$", "setFragment(const QString&)", typeof(void), typeof(string), fragment);
 		}
-		[SmokeMethod("fragment", "() const", "")]
 		public string Fragment() {
-			return ((QUrl) interceptor).Fragment();
+			return (string) interceptor.Invoke("fragment", "fragment() const", typeof(string));
 		}
-		[SmokeMethod("hasFragment", "() const", "")]
 		public bool HasFragment() {
-			return ((QUrl) interceptor).HasFragment();
+			return (bool) interceptor.Invoke("hasFragment", "hasFragment() const", typeof(bool));
 		}
-		[SmokeMethod("resolved", "(const QUrl&) const", "#")]
 		public IQUrl Resolved(IQUrl relative) {
-			return ((QUrl) interceptor).Resolved(relative);
+			return (IQUrl) interceptor.Invoke("resolved#", "resolved(const QUrl&) const", typeof(IQUrl), typeof(IQUrl), relative);
 		}
-		[SmokeMethod("isRelative", "() const", "")]
 		public bool IsRelative() {
-			return ((QUrl) interceptor).IsRelative();
+			return (bool) interceptor.Invoke("isRelative", "isRelative() const", typeof(bool));
 		}
-		[SmokeMethod("isParentOf", "(const QUrl&) const", "#")]
 		public bool IsParentOf(IQUrl url) {
-			return ((QUrl) interceptor).IsParentOf(url);
+			return (bool) interceptor.Invoke("isParentOf#", "isParentOf(const QUrl&) const", typeof(bool), typeof(IQUrl), url);
 		}
-		[SmokeMethod("toLocalFile", "() const", "")]
 		public string ToLocalFile() {
-			return ((QUrl) interceptor).ToLocalFile();
+			return (string) interceptor.Invoke("toLocalFile", "toLocalFile() const", typeof(string));
 		}
-		[SmokeMethod("toString", "(FormattingOptions) const", "$")]
 		public string ToString(int options) {
-			return ((QUrl) interceptor).ToString(options);
+			return (string) interceptor.Invoke("toString$", "toString(FormattingOptions) const", typeof(string), typeof(int), options);
 		}
-		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ((QUrl) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("toEncoded", "(FormattingOptions) const", "$")]
 		public QByteArray ToEncoded(int options) {
-			return ((QUrl) interceptor).ToEncoded(options);
+			return (QByteArray) interceptor.Invoke("toEncoded$", "toEncoded(FormattingOptions) const", typeof(QByteArray), typeof(int), options);
 		}
-		[SmokeMethod("toEncoded", "() const", "")]
 		public QByteArray ToEncoded() {
-			return ((QUrl) interceptor).ToEncoded();
+			return (QByteArray) interceptor.Invoke("toEncoded", "toEncoded() const", typeof(QByteArray));
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QUrl) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QUrl) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ((QUrl) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
 		~QUrl() {
-			DisposeQUrl();
+			interceptor.Invoke("~QUrl", "~QUrl()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQUrl();
-		}
-		[SmokeMethod("~QUrl", "()", "")]
-		private void DisposeQUrl() {
-			((QUrl) interceptor).DisposeQUrl();
+			interceptor.Invoke("~QUrl", "~QUrl()", typeof(void));
 		}
 		public static IQUrl FromLocalFile(string localfile) {
-			return staticInterceptor.FromLocalFile(localfile);
+			return (IQUrl) staticInterceptor.Invoke("fromLocalFile$", "fromLocalFile(const QString&)", typeof(IQUrl), typeof(string), localfile);
 		}
 		public static IQUrl FromEncoded(QByteArray url) {
-			return staticInterceptor.FromEncoded(url);
+			return (IQUrl) staticInterceptor.Invoke("fromEncoded#", "fromEncoded(const QByteArray&)", typeof(IQUrl), typeof(QByteArray), url);
 		}
 		public static IQUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode) {
-			return staticInterceptor.FromEncoded(url,mode);
+			return (IQUrl) staticInterceptor.Invoke("fromEncoded#$", "fromEncoded(const QByteArray&, QUrl::ParsingMode)", typeof(IQUrl), typeof(QByteArray), url, typeof(QUrl.ParsingMode), mode);
 		}
 		public static string FromPercentEncoding(QByteArray arg1) {
-			return staticInterceptor.FromPercentEncoding(arg1);
+			return (string) staticInterceptor.Invoke("fromPercentEncoding#", "fromPercentEncoding(const QByteArray&)", typeof(string), typeof(QByteArray), arg1);
 		}
 		public static QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include) {
-			return staticInterceptor.ToPercentEncoding(arg1,exclude,include);
+			return (QByteArray) staticInterceptor.Invoke("toPercentEncoding$##", "toPercentEncoding(const QString&, const QByteArray&, const QByteArray&)", typeof(QByteArray), typeof(string), arg1, typeof(QByteArray), exclude, typeof(QByteArray), include);
 		}
 		public static QByteArray ToPercentEncoding(string arg1, QByteArray exclude) {
-			return staticInterceptor.ToPercentEncoding(arg1,exclude);
+			return (QByteArray) staticInterceptor.Invoke("toPercentEncoding$#", "toPercentEncoding(const QString&, const QByteArray&)", typeof(QByteArray), typeof(string), arg1, typeof(QByteArray), exclude);
 		}
 		public static QByteArray ToPercentEncoding(string arg1) {
-			return staticInterceptor.ToPercentEncoding(arg1);
+			return (QByteArray) staticInterceptor.Invoke("toPercentEncoding$", "toPercentEncoding(const QString&)", typeof(QByteArray), typeof(string), arg1);
 		}
 		public static string FromPunycode(QByteArray arg1) {
-			return staticInterceptor.FromPunycode(arg1);
+			return (string) staticInterceptor.Invoke("fromPunycode#", "fromPunycode(const QByteArray&)", typeof(string), typeof(QByteArray), arg1);
 		}
 		public static QByteArray ToPunycode(string arg1) {
-			return staticInterceptor.ToPunycode(arg1);
+			return (QByteArray) staticInterceptor.Invoke("toPunycode$", "toPunycode(const QString&)", typeof(QByteArray), typeof(string), arg1);
 		}
 		public static string FromAce(QByteArray arg1) {
-			return staticInterceptor.FromAce(arg1);
+			return (string) staticInterceptor.Invoke("fromAce#", "fromAce(const QByteArray&)", typeof(string), typeof(QByteArray), arg1);
 		}
 		public static QByteArray ToAce(string arg1) {
-			return staticInterceptor.ToAce(arg1);
+			return (QByteArray) staticInterceptor.Invoke("toAce$", "toAce(const QString&)", typeof(QByteArray), typeof(string), arg1);
 		}
 		public static List<string> IdnWhitelist() {
-			return staticInterceptor.IdnWhitelist();
+			return (List<string>) staticInterceptor.Invoke("idnWhitelist", "idnWhitelist()", typeof(List<string>));
 		}
 		public static void SetIdnWhitelist(List<string> arg1) {
-			staticInterceptor.SetIdnWhitelist(arg1);
+			staticInterceptor.Invoke("setIdnWhitelist?", "setIdnWhitelist(const QStringList&)", typeof(void), typeof(List<string>), arg1);
 		}
 	}
 }

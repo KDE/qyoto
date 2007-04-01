@@ -7,66 +7,43 @@ namespace Qyoto {
 	public class QLinearGradient : QGradient, IDisposable {
  		protected QLinearGradient(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLinearGradient), this);
-			interceptor = (QLinearGradient) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QLinearGradient), "QLinearGradient", this);
 		}
 		public QLinearGradient() : this((Type) null) {
 			CreateProxy();
-			NewQLinearGradient();
-		}
-		[SmokeMethod("QLinearGradient", "()", "")]
-		private void NewQLinearGradient() {
-			((QLinearGradient) interceptor).NewQLinearGradient();
+			interceptor.Invoke("QLinearGradient", "QLinearGradient()", typeof(void));
 		}
 		public QLinearGradient(QPointF start, QPointF finalStop) : this((Type) null) {
 			CreateProxy();
-			NewQLinearGradient(start,finalStop);
-		}
-		[SmokeMethod("QLinearGradient", "(const QPointF&, const QPointF&)", "##")]
-		private void NewQLinearGradient(QPointF start, QPointF finalStop) {
-			((QLinearGradient) interceptor).NewQLinearGradient(start,finalStop);
+			interceptor.Invoke("QLinearGradient##", "QLinearGradient(const QPointF&, const QPointF&)", typeof(void), typeof(QPointF), start, typeof(QPointF), finalStop);
 		}
 		public QLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) : this((Type) null) {
 			CreateProxy();
-			NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
+			interceptor.Invoke("QLinearGradient$$$$", "QLinearGradient(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), xStart, typeof(double), yStart, typeof(double), xFinalStop, typeof(double), yFinalStop);
 		}
-		[SmokeMethod("QLinearGradient", "(qreal, qreal, qreal, qreal)", "$$$$")]
-		private void NewQLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) {
-			((QLinearGradient) interceptor).NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
-		}
-		[SmokeMethod("start", "() const", "")]
 		public QPointF Start() {
-			return ((QLinearGradient) interceptor).Start();
+			return (QPointF) interceptor.Invoke("start", "start() const", typeof(QPointF));
 		}
-		[SmokeMethod("setStart", "(const QPointF&)", "#")]
 		public void SetStart(QPointF start) {
-			((QLinearGradient) interceptor).SetStart(start);
+			interceptor.Invoke("setStart#", "setStart(const QPointF&)", typeof(void), typeof(QPointF), start);
 		}
-		[SmokeMethod("setStart", "(qreal, qreal)", "$$")]
 		public void SetStart(double x, double y) {
-			((QLinearGradient) interceptor).SetStart(x,y);
+			interceptor.Invoke("setStart$$", "setStart(qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y);
 		}
-		[SmokeMethod("finalStop", "() const", "")]
 		public QPointF FinalStop() {
-			return ((QLinearGradient) interceptor).FinalStop();
+			return (QPointF) interceptor.Invoke("finalStop", "finalStop() const", typeof(QPointF));
 		}
-		[SmokeMethod("setFinalStop", "(const QPointF&)", "#")]
 		public void SetFinalStop(QPointF stop) {
-			((QLinearGradient) interceptor).SetFinalStop(stop);
+			interceptor.Invoke("setFinalStop#", "setFinalStop(const QPointF&)", typeof(void), typeof(QPointF), stop);
 		}
-		[SmokeMethod("setFinalStop", "(qreal, qreal)", "$$")]
 		public void SetFinalStop(double x, double y) {
-			((QLinearGradient) interceptor).SetFinalStop(x,y);
+			interceptor.Invoke("setFinalStop$$", "setFinalStop(qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y);
 		}
 		~QLinearGradient() {
-			DisposeQLinearGradient();
+			interceptor.Invoke("~QLinearGradient", "~QLinearGradient()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQLinearGradient();
-		}
-		[SmokeMethod("~QLinearGradient", "()", "")]
-		private void DisposeQLinearGradient() {
-			((QLinearGradient) interceptor).DisposeQLinearGradient();
+			interceptor.Invoke("~QLinearGradient", "~QLinearGradient()", typeof(void));
 		}
 	}
 }

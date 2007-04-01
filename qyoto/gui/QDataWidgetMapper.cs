@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QDataWidgetMapper")]
 	public class QDataWidgetMapper : QObject, IDisposable {
  		protected QDataWidgetMapper(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDataWidgetMapper")]
-		interface IQDataWidgetMapperProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataWidgetMapper), this);
-			interceptor = (QDataWidgetMapper) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDataWidgetMapper), "QDataWidgetMapper", this);
 		}
-		private static IQDataWidgetMapperProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDataWidgetMapper() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDataWidgetMapperProxy), null);
-			staticInterceptor = (IQDataWidgetMapperProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDataWidgetMapper), "QDataWidgetMapper", null);
 		}
 		public enum SubmitPolicy {
 			AutoSubmit = 0,
@@ -29,135 +20,99 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			[SmokeMethod("currentIndex", "()", "")]
-			get { return ((QDataWidgetMapper) interceptor).CurrentIndex; }
-			[SmokeMethod("setCurrentIndex", "(int)", "$")]
-			set { ((QDataWidgetMapper) interceptor).CurrentIndex = value; }
+			get { return (int) interceptor.Invoke("currentIndex", "currentIndex()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			[SmokeMethod("orientation", "()", "")]
-			get { return ((QDataWidgetMapper) interceptor).Orientation; }
-			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
-			set { ((QDataWidgetMapper) interceptor).Orientation = value; }
+			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
 		[Q_PROPERTY("QDataWidgetMapper::SubmitPolicy", "submitPolicy")]
 		public QDataWidgetMapper.SubmitPolicy submitPolicy {
-			[SmokeMethod("submitPolicy", "()", "")]
-			get { return ((QDataWidgetMapper) interceptor).submitPolicy; }
-			[SmokeMethod("setSubmitPolicy", "(QDataWidgetMapper::SubmitPolicy)", "$")]
-			set { ((QDataWidgetMapper) interceptor).submitPolicy = value; }
+			get { return (QDataWidgetMapper.SubmitPolicy) interceptor.Invoke("submitPolicy", "submitPolicy()", typeof(QDataWidgetMapper.SubmitPolicy)); }
+			set { interceptor.Invoke("setSubmitPolicy$", "setSubmitPolicy(QDataWidgetMapper::SubmitPolicy)", typeof(void), typeof(QDataWidgetMapper.SubmitPolicy), value); }
 		}
 		public QDataWidgetMapper(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDataWidgetMapper(parent);
-		}
-		[SmokeMethod("QDataWidgetMapper", "(QObject*)", "#")]
-		private void NewQDataWidgetMapper(QObject parent) {
-			((QDataWidgetMapper) interceptor).NewQDataWidgetMapper(parent);
+			interceptor.Invoke("QDataWidgetMapper#", "QDataWidgetMapper(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QDataWidgetMapper() : this((Type) null) {
 			CreateProxy();
-			NewQDataWidgetMapper();
+			interceptor.Invoke("QDataWidgetMapper", "QDataWidgetMapper()", typeof(void));
 		}
-		[SmokeMethod("QDataWidgetMapper", "()", "")]
-		private void NewQDataWidgetMapper() {
-			((QDataWidgetMapper) interceptor).NewQDataWidgetMapper();
-		}
-		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public void SetModel(QAbstractItemModel model) {
-			((QDataWidgetMapper) interceptor).SetModel(model);
+			interceptor.Invoke("setModel#", "setModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);
 		}
-		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ((QDataWidgetMapper) interceptor).Model();
+			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
-		[SmokeMethod("setItemDelegate", "(QAbstractItemDelegate*)", "#")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
-			((QDataWidgetMapper) interceptor).SetItemDelegate(arg1);
+			interceptor.Invoke("setItemDelegate#", "setItemDelegate(QAbstractItemDelegate*)", typeof(void), typeof(QAbstractItemDelegate), arg1);
 		}
-		[SmokeMethod("itemDelegate", "() const", "")]
 		public QAbstractItemDelegate ItemDelegate() {
-			return ((QDataWidgetMapper) interceptor).ItemDelegate();
+			return (QAbstractItemDelegate) interceptor.Invoke("itemDelegate", "itemDelegate() const", typeof(QAbstractItemDelegate));
 		}
-		[SmokeMethod("setRootIndex", "(const QModelIndex&)", "#")]
 		public void SetRootIndex(QModelIndex index) {
-			((QDataWidgetMapper) interceptor).SetRootIndex(index);
+			interceptor.Invoke("setRootIndex#", "setRootIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("rootIndex", "() const", "")]
 		public QModelIndex RootIndex() {
-			return ((QDataWidgetMapper) interceptor).RootIndex();
+			return (QModelIndex) interceptor.Invoke("rootIndex", "rootIndex() const", typeof(QModelIndex));
 		}
-		[SmokeMethod("addMapping", "(QWidget*, int)", "#$")]
 		public void AddMapping(QWidget widget, int section) {
-			((QDataWidgetMapper) interceptor).AddMapping(widget,section);
+			interceptor.Invoke("addMapping#$", "addMapping(QWidget*, int)", typeof(void), typeof(QWidget), widget, typeof(int), section);
 		}
-		[SmokeMethod("removeMapping", "(QWidget*)", "#")]
 		public void RemoveMapping(QWidget widget) {
-			((QDataWidgetMapper) interceptor).RemoveMapping(widget);
+			interceptor.Invoke("removeMapping#", "removeMapping(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("mappedSection", "(QWidget*) const", "#")]
 		public int MappedSection(QWidget widget) {
-			return ((QDataWidgetMapper) interceptor).MappedSection(widget);
+			return (int) interceptor.Invoke("mappedSection#", "mappedSection(QWidget*) const", typeof(int), typeof(QWidget), widget);
 		}
-		[SmokeMethod("mappedWidgetAt", "(int) const", "$")]
 		public QWidget MappedWidgetAt(int section) {
-			return ((QDataWidgetMapper) interceptor).MappedWidgetAt(section);
+			return (QWidget) interceptor.Invoke("mappedWidgetAt$", "mappedWidgetAt(int) const", typeof(QWidget), typeof(int), section);
 		}
-		[SmokeMethod("clearMapping", "()", "")]
 		public void ClearMapping() {
-			((QDataWidgetMapper) interceptor).ClearMapping();
+			interceptor.Invoke("clearMapping", "clearMapping()", typeof(void));
 		}
 		[Q_SLOT("void revert()")]
-		[SmokeMethod("revert", "()", "")]
 		public void Revert() {
-			((QDataWidgetMapper) interceptor).Revert();
+			interceptor.Invoke("revert", "revert()", typeof(void));
 		}
 		[Q_SLOT("bool submit()")]
-		[SmokeMethod("submit", "()", "")]
 		public bool Submit() {
-			return ((QDataWidgetMapper) interceptor).Submit();
+			return (bool) interceptor.Invoke("submit", "submit()", typeof(bool));
 		}
 		[Q_SLOT("void toFirst()")]
-		[SmokeMethod("toFirst", "()", "")]
 		public void ToFirst() {
-			((QDataWidgetMapper) interceptor).ToFirst();
+			interceptor.Invoke("toFirst", "toFirst()", typeof(void));
 		}
 		[Q_SLOT("void toLast()")]
-		[SmokeMethod("toLast", "()", "")]
 		public void ToLast() {
-			((QDataWidgetMapper) interceptor).ToLast();
+			interceptor.Invoke("toLast", "toLast()", typeof(void));
 		}
 		[Q_SLOT("void toNext()")]
-		[SmokeMethod("toNext", "()", "")]
 		public void ToNext() {
-			((QDataWidgetMapper) interceptor).ToNext();
+			interceptor.Invoke("toNext", "toNext()", typeof(void));
 		}
 		[Q_SLOT("void toPrevious()")]
-		[SmokeMethod("toPrevious", "()", "")]
 		public void ToPrevious() {
-			((QDataWidgetMapper) interceptor).ToPrevious();
+			interceptor.Invoke("toPrevious", "toPrevious()", typeof(void));
 		}
 		[Q_SLOT("void setCurrentModelIndex(const QModelIndex&)")]
-		[SmokeMethod("setCurrentModelIndex", "(const QModelIndex&)", "#")]
 		public void SetCurrentModelIndex(QModelIndex index) {
-			((QDataWidgetMapper) interceptor).SetCurrentModelIndex(index);
+			interceptor.Invoke("setCurrentModelIndex#", "setCurrentModelIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
 		~QDataWidgetMapper() {
-			DisposeQDataWidgetMapper();
+			interceptor.Invoke("~QDataWidgetMapper", "~QDataWidgetMapper()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDataWidgetMapper();
-		}
-		[SmokeMethod("~QDataWidgetMapper", "()", "")]
-		private void DisposeQDataWidgetMapper() {
-			((QDataWidgetMapper) interceptor).DisposeQDataWidgetMapper();
+			interceptor.Invoke("~QDataWidgetMapper", "~QDataWidgetMapper()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDataWidgetMapperSignals Emit {
 			get { return (IQDataWidgetMapperSignals) Q_EMIT; }

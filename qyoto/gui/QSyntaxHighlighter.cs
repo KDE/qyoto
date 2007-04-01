@@ -6,102 +6,69 @@ namespace Qyoto {
 	[SmokeClass("QSyntaxHighlighter")]
 	public abstract class QSyntaxHighlighter : QObject {
  		protected QSyntaxHighlighter(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSyntaxHighlighter")]
-		interface IQSyntaxHighlighterProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSyntaxHighlighter), this);
-			interceptor = (QSyntaxHighlighter) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSyntaxHighlighter), "QSyntaxHighlighter", this);
 		}
-		private static IQSyntaxHighlighterProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSyntaxHighlighter() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSyntaxHighlighterProxy), null);
-			staticInterceptor = (IQSyntaxHighlighterProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSyntaxHighlighter), "QSyntaxHighlighter", null);
 		}
 		public QSyntaxHighlighter(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSyntaxHighlighter(parent);
-		}
-		[SmokeMethod("QSyntaxHighlighter", "(QObject*)", "#")]
-		private void NewQSyntaxHighlighter(QObject parent) {
-			((QSyntaxHighlighter) interceptor).NewQSyntaxHighlighter(parent);
+			interceptor.Invoke("QSyntaxHighlighter#", "QSyntaxHighlighter(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QSyntaxHighlighter(QTextDocument parent) : this((Type) null) {
 			CreateProxy();
-			NewQSyntaxHighlighter(parent);
-		}
-		[SmokeMethod("QSyntaxHighlighter", "(QTextDocument*)", "#")]
-		private void NewQSyntaxHighlighter(QTextDocument parent) {
-			((QSyntaxHighlighter) interceptor).NewQSyntaxHighlighter(parent);
+			interceptor.Invoke("QSyntaxHighlighter#", "QSyntaxHighlighter(QTextDocument*)", typeof(void), typeof(QTextDocument), parent);
 		}
 		public QSyntaxHighlighter(QTextEdit parent) : this((Type) null) {
 			CreateProxy();
-			NewQSyntaxHighlighter(parent);
+			interceptor.Invoke("QSyntaxHighlighter#", "QSyntaxHighlighter(QTextEdit*)", typeof(void), typeof(QTextEdit), parent);
 		}
-		[SmokeMethod("QSyntaxHighlighter", "(QTextEdit*)", "#")]
-		private void NewQSyntaxHighlighter(QTextEdit parent) {
-			((QSyntaxHighlighter) interceptor).NewQSyntaxHighlighter(parent);
-		}
-		[SmokeMethod("setDocument", "(QTextDocument*)", "#")]
 		public void SetDocument(QTextDocument doc) {
-			((QSyntaxHighlighter) interceptor).SetDocument(doc);
+			interceptor.Invoke("setDocument#", "setDocument(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);
 		}
-		[SmokeMethod("document", "() const", "")]
 		public QTextDocument Document() {
-			return ((QSyntaxHighlighter) interceptor).Document();
+			return (QTextDocument) interceptor.Invoke("document", "document() const", typeof(QTextDocument));
 		}
 		[Q_SLOT("void rehighlight()")]
-		[SmokeMethod("rehighlight", "()", "")]
 		public void Rehighlight() {
-			((QSyntaxHighlighter) interceptor).Rehighlight();
+			interceptor.Invoke("rehighlight", "rehighlight()", typeof(void));
 		}
-		[SmokeMethod("highlightBlock", "(const QString&)", "$")]
+		[SmokeMethod("highlightBlock(const QString&)")]
 		protected abstract void HighlightBlock(string text);
-		[SmokeMethod("setFormat", "(int, int, const QTextCharFormat&)", "$$#")]
 		protected void SetFormat(int start, int count, QTextCharFormat format) {
-			((QSyntaxHighlighter) interceptor).SetFormat(start,count,format);
+			interceptor.Invoke("setFormat$$#", "setFormat(int, int, const QTextCharFormat&)", typeof(void), typeof(int), start, typeof(int), count, typeof(QTextCharFormat), format);
 		}
-		[SmokeMethod("setFormat", "(int, int, const QColor&)", "$$#")]
 		protected void SetFormat(int start, int count, QColor color) {
-			((QSyntaxHighlighter) interceptor).SetFormat(start,count,color);
+			interceptor.Invoke("setFormat$$#", "setFormat(int, int, const QColor&)", typeof(void), typeof(int), start, typeof(int), count, typeof(QColor), color);
 		}
-		[SmokeMethod("setFormat", "(int, int, const QFont&)", "$$#")]
 		protected void SetFormat(int start, int count, QFont font) {
-			((QSyntaxHighlighter) interceptor).SetFormat(start,count,font);
+			interceptor.Invoke("setFormat$$#", "setFormat(int, int, const QFont&)", typeof(void), typeof(int), start, typeof(int), count, typeof(QFont), font);
 		}
-		[SmokeMethod("format", "(int) const", "$")]
 		protected QTextCharFormat Format(int pos) {
-			return ((QSyntaxHighlighter) interceptor).Format(pos);
+			return (QTextCharFormat) interceptor.Invoke("format$", "format(int) const", typeof(QTextCharFormat), typeof(int), pos);
 		}
-		[SmokeMethod("previousBlockState", "() const", "")]
 		protected int PreviousBlockState() {
-			return ((QSyntaxHighlighter) interceptor).PreviousBlockState();
+			return (int) interceptor.Invoke("previousBlockState", "previousBlockState() const", typeof(int));
 		}
-		[SmokeMethod("currentBlockState", "() const", "")]
 		protected int CurrentBlockState() {
-			return ((QSyntaxHighlighter) interceptor).CurrentBlockState();
+			return (int) interceptor.Invoke("currentBlockState", "currentBlockState() const", typeof(int));
 		}
-		[SmokeMethod("setCurrentBlockState", "(int)", "$")]
 		protected void SetCurrentBlockState(int newState) {
-			((QSyntaxHighlighter) interceptor).SetCurrentBlockState(newState);
+			interceptor.Invoke("setCurrentBlockState$", "setCurrentBlockState(int)", typeof(void), typeof(int), newState);
 		}
-		[SmokeMethod("setCurrentBlockUserData", "(QTextBlockUserData*)", "#")]
 		protected void SetCurrentBlockUserData(QTextBlockUserData data) {
-			((QSyntaxHighlighter) interceptor).SetCurrentBlockUserData(data);
+			interceptor.Invoke("setCurrentBlockUserData#", "setCurrentBlockUserData(QTextBlockUserData*)", typeof(void), typeof(QTextBlockUserData), data);
 		}
-		[SmokeMethod("currentBlockUserData", "() const", "")]
 		protected QTextBlockUserData CurrentBlockUserData() {
-			return ((QSyntaxHighlighter) interceptor).CurrentBlockUserData();
+			return (QTextBlockUserData) interceptor.Invoke("currentBlockUserData", "currentBlockUserData() const", typeof(QTextBlockUserData));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSyntaxHighlighterSignals Emit {
 			get { return (IQSyntaxHighlighterSignals) Q_EMIT; }

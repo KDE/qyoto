@@ -6,7 +6,7 @@ namespace Qyoto {
 	using System.Text;
 	using System.Runtime.InteropServices;
 
-	public partial class QVariant : MarshalByRefObject, IDisposable {
+	public partial class QVariant : Object, IDisposable {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QVariantValue(string typeName, IntPtr variant);

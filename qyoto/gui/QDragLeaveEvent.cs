@@ -7,26 +7,17 @@ namespace Qyoto {
 	public class QDragLeaveEvent : QEvent, IDisposable {
  		protected QDragLeaveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragLeaveEvent), this);
-			interceptor = (QDragLeaveEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDragLeaveEvent), "QDragLeaveEvent", this);
 		}
 		public QDragLeaveEvent() : this((Type) null) {
 			CreateProxy();
-			NewQDragLeaveEvent();
-		}
-		[SmokeMethod("QDragLeaveEvent", "()", "")]
-		private void NewQDragLeaveEvent() {
-			((QDragLeaveEvent) interceptor).NewQDragLeaveEvent();
+			interceptor.Invoke("QDragLeaveEvent", "QDragLeaveEvent()", typeof(void));
 		}
 		~QDragLeaveEvent() {
-			DisposeQDragLeaveEvent();
+			interceptor.Invoke("~QDragLeaveEvent", "~QDragLeaveEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDragLeaveEvent();
-		}
-		[SmokeMethod("~QDragLeaveEvent", "()", "")]
-		private void DisposeQDragLeaveEvent() {
-			((QDragLeaveEvent) interceptor).DisposeQDragLeaveEvent();
+			interceptor.Invoke("~QDragLeaveEvent", "~QDragLeaveEvent()", typeof(void));
 		}
 	}
 }

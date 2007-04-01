@@ -4,31 +4,22 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextFrameLayoutData")]
-	public class QTextFrameLayoutData : MarshalByRefObject, IDisposable {
-		protected QTextFrameLayoutData interceptor = null;
+	public class QTextFrameLayoutData : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextFrameLayoutData(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameLayoutData), this);
-			interceptor = (QTextFrameLayoutData) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextFrameLayoutData), "QTextFrameLayoutData", this);
 		}
 		public QTextFrameLayoutData() : this((Type) null) {
 			CreateProxy();
-			NewQTextFrameLayoutData();
-		}
-		[SmokeMethod("QTextFrameLayoutData", "()", "")]
-		private void NewQTextFrameLayoutData() {
-			((QTextFrameLayoutData) interceptor).NewQTextFrameLayoutData();
+			interceptor.Invoke("QTextFrameLayoutData", "QTextFrameLayoutData()", typeof(void));
 		}
 		~QTextFrameLayoutData() {
-			DisposeQTextFrameLayoutData();
+			interceptor.Invoke("~QTextFrameLayoutData", "~QTextFrameLayoutData()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextFrameLayoutData();
-		}
-		[SmokeMethod("~QTextFrameLayoutData", "()", "")]
-		private void DisposeQTextFrameLayoutData() {
-			((QTextFrameLayoutData) interceptor).DisposeQTextFrameLayoutData();
+			interceptor.Invoke("~QTextFrameLayoutData", "~QTextFrameLayoutData()", typeof(void));
 		}
 	}
 }

@@ -7,143 +7,87 @@ namespace Qyoto {
 	[SmokeClass("QInputDialog")]
 	public class QInputDialog : QDialog {
  		protected QInputDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QInputDialog")]
-		interface IQInputDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("getText", "(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, Qt::WindowFlags)", "#$$$$$$")]
-			string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, out bool ok, int f);
-			[SmokeMethod("getText", "(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*)", "#$$$$$")]
-			string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, out bool ok);
-			[SmokeMethod("getText", "(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&)", "#$$$$")]
-			string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text);
-			[SmokeMethod("getText", "(QWidget*, const QString&, const QString&, QLineEdit::EchoMode)", "#$$$")]
-			string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo);
-			[SmokeMethod("getText", "(QWidget*, const QString&, const QString&)", "#$$")]
-			string GetText(QWidget parent, string title, string label);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&, int, int, int, int, bool*, Qt::WindowFlags)", "#$$$$$$$$")]
-			int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, out bool ok, int f);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&, int, int, int, int, bool*)", "#$$$$$$$")]
-			int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, out bool ok);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&, int, int, int, int)", "#$$$$$$")]
-			int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&, int, int, int)", "#$$$$$")]
-			int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&, int, int)", "#$$$$")]
-			int GetInteger(QWidget parent, string title, string label, int value, int minValue);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&, int)", "#$$$")]
-			int GetInteger(QWidget parent, string title, string label, int value);
-			[SmokeMethod("getInteger", "(QWidget*, const QString&, const QString&)", "#$$")]
-			int GetInteger(QWidget parent, string title, string label);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&, double, double, double, int, bool*, Qt::WindowFlags)", "#$$$$$$$$")]
-			double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, out bool ok, int f);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&, double, double, double, int, bool*)", "#$$$$$$$")]
-			double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, out bool ok);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&, double, double, double, int)", "#$$$$$$")]
-			double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&, double, double, double)", "#$$$$$")]
-			double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&, double, double)", "#$$$$")]
-			double GetDouble(QWidget parent, string title, string label, double value, double minValue);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&, double)", "#$$$")]
-			double GetDouble(QWidget parent, string title, string label, double value);
-			[SmokeMethod("getDouble", "(QWidget*, const QString&, const QString&)", "#$$")]
-			double GetDouble(QWidget parent, string title, string label);
-			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*, Qt::WindowFlags)", "#$$?$$$$")]
-			string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok, int f);
-			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*)", "#$$?$$$")]
-			string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok);
-			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&, int, bool)", "#$$?$$")]
-			string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable);
-			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&, int)", "#$$?$")]
-			string GetItem(QWidget parent, string title, string label, List<string> list, int current);
-			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&)", "#$$?")]
-			string GetItem(QWidget parent, string title, string label, List<string> list);
-		}
-		private static IQInputDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QInputDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputDialogProxy), null);
-			staticInterceptor = (IQInputDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QInputDialog), "QInputDialog", null);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, out bool ok, int f) {
-			return staticInterceptor.GetText(parent,title,label,echo,text,out ok,f);
+		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, bool ok, int f) {
+			return (string) staticInterceptor.Invoke("getText#$$$$$$", "getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, Qt::WindowFlags)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(QLineEdit.EchoMode), echo, typeof(string), text, typeof(bool), ok, typeof(int), f);
 		}
-		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, out bool ok) {
-			return staticInterceptor.GetText(parent,title,label,echo,text,out ok);
+		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, bool ok) {
+			return (string) staticInterceptor.Invoke("getText#$$$$$", "getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(QLineEdit.EchoMode), echo, typeof(string), text, typeof(bool), ok);
 		}
 		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text) {
-			return staticInterceptor.GetText(parent,title,label,echo,text);
+			return (string) staticInterceptor.Invoke("getText#$$$$", "getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(QLineEdit.EchoMode), echo, typeof(string), text);
 		}
 		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo) {
-			return staticInterceptor.GetText(parent,title,label,echo);
+			return (string) staticInterceptor.Invoke("getText#$$$", "getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(QLineEdit.EchoMode), echo);
 		}
 		public static string GetText(QWidget parent, string title, string label) {
-			return staticInterceptor.GetText(parent,title,label);
+			return (string) staticInterceptor.Invoke("getText#$$", "getText(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
 		}
-		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, out bool ok, int f) {
-			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue,step,out ok,f);
+		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, bool ok, int f) {
+			return (int) staticInterceptor.Invoke("getInteger#$$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*, Qt::WindowFlags)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue, typeof(int), step, typeof(bool), ok, typeof(int), f);
 		}
-		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, out bool ok) {
-			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue,step,out ok);
+		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, bool ok) {
+			return (int) staticInterceptor.Invoke("getInteger#$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue, typeof(int), step, typeof(bool), ok);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step) {
-			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue,step);
+			return (int) staticInterceptor.Invoke("getInteger#$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue, typeof(int), step);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue) {
-			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue);
+			return (int) staticInterceptor.Invoke("getInteger#$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue) {
-			return staticInterceptor.GetInteger(parent,title,label,value,minValue);
+			return (int) staticInterceptor.Invoke("getInteger#$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value) {
-			return staticInterceptor.GetInteger(parent,title,label,value);
+			return (int) staticInterceptor.Invoke("getInteger#$$$", "getInteger(QWidget*, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value);
 		}
 		public static int GetInteger(QWidget parent, string title, string label) {
-			return staticInterceptor.GetInteger(parent,title,label);
+			return (int) staticInterceptor.Invoke("getInteger#$$", "getInteger(QWidget*, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
 		}
-		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, out bool ok, int f) {
-			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue,decimals,out ok,f);
+		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, bool ok, int f) {
+			return (double) staticInterceptor.Invoke("getDouble#$$$$$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double, double, int, bool*, Qt::WindowFlags)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(double), value, typeof(double), minValue, typeof(double), maxValue, typeof(int), decimals, typeof(bool), ok, typeof(int), f);
 		}
-		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, out bool ok) {
-			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue,decimals,out ok);
+		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, bool ok) {
+			return (double) staticInterceptor.Invoke("getDouble#$$$$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double, double, int, bool*)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(double), value, typeof(double), minValue, typeof(double), maxValue, typeof(int), decimals, typeof(bool), ok);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals) {
-			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue,decimals);
+			return (double) staticInterceptor.Invoke("getDouble#$$$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double, double, int)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(double), value, typeof(double), minValue, typeof(double), maxValue, typeof(int), decimals);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue) {
-			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue);
+			return (double) staticInterceptor.Invoke("getDouble#$$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double, double)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(double), value, typeof(double), minValue, typeof(double), maxValue);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue) {
-			return staticInterceptor.GetDouble(parent,title,label,value,minValue);
+			return (double) staticInterceptor.Invoke("getDouble#$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(double), value, typeof(double), minValue);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value) {
-			return staticInterceptor.GetDouble(parent,title,label,value);
+			return (double) staticInterceptor.Invoke("getDouble#$$$", "getDouble(QWidget*, const QString&, const QString&, double)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(double), value);
 		}
 		public static double GetDouble(QWidget parent, string title, string label) {
-			return staticInterceptor.GetDouble(parent,title,label);
+			return (double) staticInterceptor.Invoke("getDouble#$$", "getDouble(QWidget*, const QString&, const QString&)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
 		}
-		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok, int f) {
-			return staticInterceptor.GetItem(parent,title,label,list,current,editable,out ok,f);
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, bool ok, int f) {
+			return (string) staticInterceptor.Invoke("getItem#$$?$$$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*, Qt::WindowFlags)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list, typeof(int), current, typeof(bool), editable, typeof(bool), ok, typeof(int), f);
 		}
-		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok) {
-			return staticInterceptor.GetItem(parent,title,label,list,current,editable,out ok);
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, bool ok) {
+			return (string) staticInterceptor.Invoke("getItem#$$?$$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list, typeof(int), current, typeof(bool), editable, typeof(bool), ok);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable) {
-			return staticInterceptor.GetItem(parent,title,label,list,current,editable);
+			return (string) staticInterceptor.Invoke("getItem#$$?$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list, typeof(int), current, typeof(bool), editable);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current) {
-			return staticInterceptor.GetItem(parent,title,label,list,current);
+			return (string) staticInterceptor.Invoke("getItem#$$?$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list, typeof(int), current);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list) {
-			return staticInterceptor.GetItem(parent,title,label,list);
+			return (string) staticInterceptor.Invoke("getItem#$$?", "getItem(QWidget*, const QString&, const QString&, const QStringList&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list);
 		}
 		protected new IQInputDialogSignals Emit {
 			get { return (IQInputDialogSignals) Q_EMIT; }

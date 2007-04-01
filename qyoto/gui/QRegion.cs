@@ -5,35 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QRegion")]
-	public class QRegion : MarshalByRefObject, IDisposable {
-		protected QRegion interceptor = null;
+	public class QRegion : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QRegion(Type dummy) {}
-		[SmokeClass("QRegion")]
-		interface IQRegionProxy {
-			[SmokeMethod("operator|", "(const QRegion&) const", "#")]
-			QRegion op_or(QRegion lhs, QRegion r);
-			[SmokeMethod("operator+", "(const QRegion&) const", "#")]
-			QRegion op_plus(QRegion lhs, QRegion r);
-			[SmokeMethod("operator&", "(const QRegion&) const", "#")]
-			QRegion op_and(QRegion lhs, QRegion r);
-			[SmokeMethod("operator-", "(const QRegion&) const", "#")]
-			QRegion op_minus(QRegion lhs, QRegion r);
-			[SmokeMethod("operator^", "(const QRegion&) const", "#")]
-			QRegion op_xor(QRegion lhs, QRegion r);
-			[SmokeMethod("operator==", "(const QRegion&) const", "#")]
-			bool op_equals(QRegion lhs, QRegion r);
-			[SmokeMethod("operator*", "(const QRegion&, const QMatrix&)", "##")]
-			QRegion op_mult(QRegion r, QMatrix m);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegion), this);
-			interceptor = (QRegion) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QRegion), "QRegion", this);
 		}
-		private static IQRegionProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QRegion() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRegionProxy), null);
-			staticInterceptor = (IQRegionProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QRegion), "QRegion", null);
 		}
 		public enum RegionType {
 			Rectangle = 0,
@@ -42,196 +23,136 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QRegion() : this((Type) null) {
 			CreateProxy();
-			NewQRegion();
-		}
-		[SmokeMethod("QRegion", "()", "")]
-		private void NewQRegion() {
-			((QRegion) interceptor).NewQRegion();
+			interceptor.Invoke("QRegion", "QRegion()", typeof(void));
 		}
 		public QRegion(int x, int y, int w, int h, QRegion.RegionType t) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(x,y,w,h,t);
-		}
-		[SmokeMethod("QRegion", "(int, int, int, int, QRegion::RegionType)", "$$$$$")]
-		private void NewQRegion(int x, int y, int w, int h, QRegion.RegionType t) {
-			((QRegion) interceptor).NewQRegion(x,y,w,h,t);
+			interceptor.Invoke("QRegion$$$$$", "QRegion(int, int, int, int, QRegion::RegionType)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QRegion.RegionType), t);
 		}
 		public QRegion(int x, int y, int w, int h) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(x,y,w,h);
-		}
-		[SmokeMethod("QRegion", "(int, int, int, int)", "$$$$")]
-		private void NewQRegion(int x, int y, int w, int h) {
-			((QRegion) interceptor).NewQRegion(x,y,w,h);
+			interceptor.Invoke("QRegion$$$$", "QRegion(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
 		public QRegion(QRect r, QRegion.RegionType t) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(r,t);
-		}
-		[SmokeMethod("QRegion", "(const QRect&, QRegion::RegionType)", "#$")]
-		private void NewQRegion(QRect r, QRegion.RegionType t) {
-			((QRegion) interceptor).NewQRegion(r,t);
+			interceptor.Invoke("QRegion#$", "QRegion(const QRect&, QRegion::RegionType)", typeof(void), typeof(QRect), r, typeof(QRegion.RegionType), t);
 		}
 		public QRegion(QRect r) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(r);
-		}
-		[SmokeMethod("QRegion", "(const QRect&)", "#")]
-		private void NewQRegion(QRect r) {
-			((QRegion) interceptor).NewQRegion(r);
+			interceptor.Invoke("QRegion#", "QRegion(const QRect&)", typeof(void), typeof(QRect), r);
 		}
 		public QRegion(QPolygon pa, Qt.FillRule fillRule) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(pa,fillRule);
-		}
-		[SmokeMethod("QRegion", "(const QPolygon&, Qt::FillRule)", "#$")]
-		private void NewQRegion(QPolygon pa, Qt.FillRule fillRule) {
-			((QRegion) interceptor).NewQRegion(pa,fillRule);
+			interceptor.Invoke("QRegion#$", "QRegion(const QPolygon&, Qt::FillRule)", typeof(void), typeof(QPolygon), pa, typeof(Qt.FillRule), fillRule);
 		}
 		public QRegion(QPolygon pa) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(pa);
-		}
-		[SmokeMethod("QRegion", "(const QPolygon&)", "#")]
-		private void NewQRegion(QPolygon pa) {
-			((QRegion) interceptor).NewQRegion(pa);
+			interceptor.Invoke("QRegion#", "QRegion(const QPolygon&)", typeof(void), typeof(QPolygon), pa);
 		}
 		public QRegion(QRegion region) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(region);
-		}
-		[SmokeMethod("QRegion", "(const QRegion&)", "#")]
-		private void NewQRegion(QRegion region) {
-			((QRegion) interceptor).NewQRegion(region);
+			interceptor.Invoke("QRegion#", "QRegion(const QRegion&)", typeof(void), typeof(QRegion), region);
 		}
 		public QRegion(QBitmap bitmap) : this((Type) null) {
 			CreateProxy();
-			NewQRegion(bitmap);
+			interceptor.Invoke("QRegion#", "QRegion(const QBitmap&)", typeof(void), typeof(QBitmap), bitmap);
 		}
-		[SmokeMethod("QRegion", "(const QBitmap&)", "#")]
-		private void NewQRegion(QBitmap bitmap) {
-			((QRegion) interceptor).NewQRegion(bitmap);
-		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QRegion) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("contains", "(const QPoint&) const", "#")]
 		public bool Contains(QPoint p) {
-			return ((QRegion) interceptor).Contains(p);
+			return (bool) interceptor.Invoke("contains#", "contains(const QPoint&) const", typeof(bool), typeof(QPoint), p);
 		}
-		[SmokeMethod("contains", "(const QRect&) const", "#")]
 		public bool Contains(QRect r) {
-			return ((QRegion) interceptor).Contains(r);
+			return (bool) interceptor.Invoke("contains#", "contains(const QRect&) const", typeof(bool), typeof(QRect), r);
 		}
-		[SmokeMethod("translate", "(int, int)", "$$")]
 		public void Translate(int dx, int dy) {
-			((QRegion) interceptor).Translate(dx,dy);
+			interceptor.Invoke("translate$$", "translate(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
-		[SmokeMethod("translate", "(const QPoint&)", "#")]
 		public void Translate(QPoint p) {
-			((QRegion) interceptor).Translate(p);
+			interceptor.Invoke("translate#", "translate(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
-		[SmokeMethod("translated", "(int, int) const", "$$")]
 		public QRegion Translated(int dx, int dy) {
-			return ((QRegion) interceptor).Translated(dx,dy);
+			return (QRegion) interceptor.Invoke("translated$$", "translated(int, int) const", typeof(QRegion), typeof(int), dx, typeof(int), dy);
 		}
-		[SmokeMethod("translated", "(const QPoint&) const", "#")]
 		public QRegion Translated(QPoint p) {
-			return ((QRegion) interceptor).Translated(p);
+			return (QRegion) interceptor.Invoke("translated#", "translated(const QPoint&) const", typeof(QRegion), typeof(QPoint), p);
 		}
-		[SmokeMethod("unite", "(const QRegion&) const", "#")]
 		public QRegion Unite(QRegion r) {
-			return ((QRegion) interceptor).Unite(r);
+			return (QRegion) interceptor.Invoke("unite#", "unite(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("intersect", "(const QRegion&) const", "#")]
 		public QRegion Intersect(QRegion r) {
-			return ((QRegion) interceptor).Intersect(r);
+			return (QRegion) interceptor.Invoke("intersect#", "intersect(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("subtract", "(const QRegion&) const", "#")]
 		public QRegion Subtract(QRegion r) {
-			return ((QRegion) interceptor).Subtract(r);
+			return (QRegion) interceptor.Invoke("subtract#", "subtract(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("eor", "(const QRegion&) const", "#")]
 		public QRegion Eor(QRegion r) {
-			return ((QRegion) interceptor).Eor(r);
+			return (QRegion) interceptor.Invoke("eor#", "eor(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("united", "(const QRegion&) const", "#")]
 		public QRegion United(QRegion r) {
-			return ((QRegion) interceptor).United(r);
+			return (QRegion) interceptor.Invoke("united#", "united(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("intersected", "(const QRegion&) const", "#")]
 		public QRegion Intersected(QRegion r) {
-			return ((QRegion) interceptor).Intersected(r);
+			return (QRegion) interceptor.Invoke("intersected#", "intersected(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("subtracted", "(const QRegion&) const", "#")]
 		public QRegion Subtracted(QRegion r) {
-			return ((QRegion) interceptor).Subtracted(r);
+			return (QRegion) interceptor.Invoke("subtracted#", "subtracted(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("xored", "(const QRegion&) const", "#")]
 		public QRegion Xored(QRegion r) {
-			return ((QRegion) interceptor).Xored(r);
+			return (QRegion) interceptor.Invoke("xored#", "xored(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("intersects", "(const QRegion&) const", "#")]
 		public bool Intersects(QRegion r) {
-			return ((QRegion) interceptor).Intersects(r);
+			return (bool) interceptor.Invoke("intersects#", "intersects(const QRegion&) const", typeof(bool), typeof(QRegion), r);
 		}
-		[SmokeMethod("intersects", "(const QRect&) const", "#")]
 		public bool Intersects(QRect r) {
-			return ((QRegion) interceptor).Intersects(r);
+			return (bool) interceptor.Invoke("intersects#", "intersects(const QRect&) const", typeof(bool), typeof(QRect), r);
 		}
-		[SmokeMethod("boundingRect", "() const", "")]
 		public QRect BoundingRect() {
-			return ((QRegion) interceptor).BoundingRect();
+			return (QRect) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRect));
 		}
-		[SmokeMethod("rects", "() const", "")]
 		public List<QRect> Rects() {
-			return ((QRegion) interceptor).Rects();
+			return (List<QRect>) interceptor.Invoke("rects", "rects() const", typeof(List<QRect>));
 		}
-		[SmokeMethod("setRects", "(const QRect*, int)", "#$")]
 		public void SetRects(QRect rect, int num) {
-			((QRegion) interceptor).SetRects(rect,num);
+			interceptor.Invoke("setRects#$", "setRects(const QRect*, int)", typeof(void), typeof(QRect), rect, typeof(int), num);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QRegion)) { return false; }
 			return this == (QRegion) o;
 		}
 		public override int GetHashCode() {
-			return ((QRegion) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QRegion() {
-			DisposeQRegion();
+			interceptor.Invoke("~QRegion", "~QRegion()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQRegion();
-		}
-		[SmokeMethod("~QRegion", "()", "")]
-		private void DisposeQRegion() {
-			((QRegion) interceptor).DisposeQRegion();
+			interceptor.Invoke("~QRegion", "~QRegion()", typeof(void));
 		}
 		public static QRegion operator|(QRegion lhs, QRegion r) {
-			return staticInterceptor.op_or(lhs,r);
+			return (QRegion) staticInterceptor.Invoke("operator|#", "operator|(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static QRegion operator+(QRegion lhs, QRegion r) {
-			return staticInterceptor.op_plus(lhs,r);
+			return (QRegion) staticInterceptor.Invoke("operator+#", "operator+(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static QRegion operator&(QRegion lhs, QRegion r) {
-			return staticInterceptor.op_and(lhs,r);
+			return (QRegion) staticInterceptor.Invoke("operator&#", "operator&(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static QRegion operator-(QRegion lhs, QRegion r) {
-			return staticInterceptor.op_minus(lhs,r);
+			return (QRegion) staticInterceptor.Invoke("operator-#", "operator-(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static QRegion operator^(QRegion lhs, QRegion r) {
-			return staticInterceptor.op_xor(lhs,r);
+			return (QRegion) staticInterceptor.Invoke("operator^#", "operator^(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static bool operator==(QRegion lhs, QRegion r) {
-			return staticInterceptor.op_equals(lhs,r);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QRegion&) const", typeof(bool), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static bool operator!=(QRegion lhs, QRegion r) {
-			return !staticInterceptor.op_equals(lhs,r);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QRegion&) const", typeof(bool), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
 		public static QRegion operator*(QRegion r, QMatrix m) {
-			return staticInterceptor.op_mult(r,m);
+			return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QMatrix&)", typeof(QRegion), typeof(QRegion), r, typeof(QMatrix), m);
 		}
 	}
 }

@@ -7,38 +7,24 @@ namespace Qyoto {
 	public class QDomDocumentFragment : QDomNode, IDisposable {
  		protected QDomDocumentFragment(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentFragment), this);
-			interceptor = (QDomDocumentFragment) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomDocumentFragment), "QDomDocumentFragment", this);
 		}
 		public QDomDocumentFragment() : this((Type) null) {
 			CreateProxy();
-			NewQDomDocumentFragment();
-		}
-		[SmokeMethod("QDomDocumentFragment", "()", "")]
-		private void NewQDomDocumentFragment() {
-			((QDomDocumentFragment) interceptor).NewQDomDocumentFragment();
+			interceptor.Invoke("QDomDocumentFragment", "QDomDocumentFragment()", typeof(void));
 		}
 		public QDomDocumentFragment(QDomDocumentFragment x) : this((Type) null) {
 			CreateProxy();
-			NewQDomDocumentFragment(x);
+			interceptor.Invoke("QDomDocumentFragment#", "QDomDocumentFragment(const QDomDocumentFragment&)", typeof(void), typeof(QDomDocumentFragment), x);
 		}
-		[SmokeMethod("QDomDocumentFragment", "(const QDomDocumentFragment&)", "#")]
-		private void NewQDomDocumentFragment(QDomDocumentFragment x) {
-			((QDomDocumentFragment) interceptor).NewQDomDocumentFragment(x);
-		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomDocumentFragment) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomDocumentFragment() {
-			DisposeQDomDocumentFragment();
+			interceptor.Invoke("~QDomDocumentFragment", "~QDomDocumentFragment()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomDocumentFragment();
-		}
-		[SmokeMethod("~QDomDocumentFragment", "()", "")]
-		private void DisposeQDomDocumentFragment() {
-			((QDomDocumentFragment) interceptor).DisposeQDomDocumentFragment();
+			interceptor.Invoke("~QDomDocumentFragment", "~QDomDocumentFragment()", typeof(void));
 		}
 	}
 }

@@ -7,42 +7,29 @@ namespace Qyoto {
 	public class QChildEvent : QEvent, IDisposable {
  		protected QChildEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChildEvent), this);
-			interceptor = (QChildEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QChildEvent), "QChildEvent", this);
 		}
 		public QChildEvent(QEvent.TypeOf type, QObject child) : this((Type) null) {
 			CreateProxy();
-			NewQChildEvent(type,child);
+			interceptor.Invoke("QChildEvent$#", "QChildEvent(QEvent::Type, QObject*)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QObject), child);
 		}
-		[SmokeMethod("QChildEvent", "(QEvent::Type, QObject*)", "$#")]
-		private void NewQChildEvent(QEvent.TypeOf type, QObject child) {
-			((QChildEvent) interceptor).NewQChildEvent(type,child);
-		}
-		[SmokeMethod("child", "() const", "")]
 		public QObject Child() {
-			return ((QChildEvent) interceptor).Child();
+			return (QObject) interceptor.Invoke("child", "child() const", typeof(QObject));
 		}
-		[SmokeMethod("added", "() const", "")]
 		public bool Added() {
-			return ((QChildEvent) interceptor).Added();
+			return (bool) interceptor.Invoke("added", "added() const", typeof(bool));
 		}
-		[SmokeMethod("polished", "() const", "")]
 		public bool Polished() {
-			return ((QChildEvent) interceptor).Polished();
+			return (bool) interceptor.Invoke("polished", "polished() const", typeof(bool));
 		}
-		[SmokeMethod("removed", "() const", "")]
 		public bool Removed() {
-			return ((QChildEvent) interceptor).Removed();
+			return (bool) interceptor.Invoke("removed", "removed() const", typeof(bool));
 		}
 		~QChildEvent() {
-			DisposeQChildEvent();
+			interceptor.Invoke("~QChildEvent", "~QChildEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQChildEvent();
-		}
-		[SmokeMethod("~QChildEvent", "()", "")]
-		private void DisposeQChildEvent() {
-			((QChildEvent) interceptor).DisposeQChildEvent();
+			interceptor.Invoke("~QChildEvent", "~QChildEvent()", typeof(void));
 		}
 	}
 }

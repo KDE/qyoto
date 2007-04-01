@@ -7,50 +7,33 @@ namespace Qyoto {
 	public class QDomEntity : QDomNode, IDisposable {
  		protected QDomEntity(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomEntity), this);
-			interceptor = (QDomEntity) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomEntity), "QDomEntity", this);
 		}
 		public QDomEntity() : this((Type) null) {
 			CreateProxy();
-			NewQDomEntity();
-		}
-		[SmokeMethod("QDomEntity", "()", "")]
-		private void NewQDomEntity() {
-			((QDomEntity) interceptor).NewQDomEntity();
+			interceptor.Invoke("QDomEntity", "QDomEntity()", typeof(void));
 		}
 		public QDomEntity(QDomEntity x) : this((Type) null) {
 			CreateProxy();
-			NewQDomEntity(x);
+			interceptor.Invoke("QDomEntity#", "QDomEntity(const QDomEntity&)", typeof(void), typeof(QDomEntity), x);
 		}
-		[SmokeMethod("QDomEntity", "(const QDomEntity&)", "#")]
-		private void NewQDomEntity(QDomEntity x) {
-			((QDomEntity) interceptor).NewQDomEntity(x);
-		}
-		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
-			return ((QDomEntity) interceptor).PublicId();
+			return (string) interceptor.Invoke("publicId", "publicId() const", typeof(string));
 		}
-		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
-			return ((QDomEntity) interceptor).SystemId();
+			return (string) interceptor.Invoke("systemId", "systemId() const", typeof(string));
 		}
-		[SmokeMethod("notationName", "() const", "")]
 		public string NotationName() {
-			return ((QDomEntity) interceptor).NotationName();
+			return (string) interceptor.Invoke("notationName", "notationName() const", typeof(string));
 		}
-		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ((QDomEntity) interceptor).NodeType();
+			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomEntity() {
-			DisposeQDomEntity();
+			interceptor.Invoke("~QDomEntity", "~QDomEntity()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomEntity();
-		}
-		[SmokeMethod("~QDomEntity", "()", "")]
-		private void DisposeQDomEntity() {
-			((QDomEntity) interceptor).DisposeQDomEntity();
+			interceptor.Invoke("~QDomEntity", "~QDomEntity()", typeof(void));
 		}
 	}
 }

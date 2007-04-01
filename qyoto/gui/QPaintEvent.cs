@@ -7,42 +7,27 @@ namespace Qyoto {
 	public class QPaintEvent : QEvent, IDisposable {
  		protected QPaintEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEvent), this);
-			interceptor = (QPaintEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPaintEvent), "QPaintEvent", this);
 		}
 		public QPaintEvent(QRegion paintRegion) : this((Type) null) {
 			CreateProxy();
-			NewQPaintEvent(paintRegion);
-		}
-		[SmokeMethod("QPaintEvent", "(const QRegion&)", "#")]
-		private void NewQPaintEvent(QRegion paintRegion) {
-			((QPaintEvent) interceptor).NewQPaintEvent(paintRegion);
+			interceptor.Invoke("QPaintEvent#", "QPaintEvent(const QRegion&)", typeof(void), typeof(QRegion), paintRegion);
 		}
 		public QPaintEvent(QRect paintRect) : this((Type) null) {
 			CreateProxy();
-			NewQPaintEvent(paintRect);
+			interceptor.Invoke("QPaintEvent#", "QPaintEvent(const QRect&)", typeof(void), typeof(QRect), paintRect);
 		}
-		[SmokeMethod("QPaintEvent", "(const QRect&)", "#")]
-		private void NewQPaintEvent(QRect paintRect) {
-			((QPaintEvent) interceptor).NewQPaintEvent(paintRect);
-		}
-		[SmokeMethod("rect", "() const", "")]
 		public QRect Rect() {
-			return ((QPaintEvent) interceptor).Rect();
+			return (QRect) interceptor.Invoke("rect", "rect() const", typeof(QRect));
 		}
-		[SmokeMethod("region", "() const", "")]
 		public QRegion Region() {
-			return ((QPaintEvent) interceptor).Region();
+			return (QRegion) interceptor.Invoke("region", "region() const", typeof(QRegion));
 		}
 		~QPaintEvent() {
-			DisposeQPaintEvent();
+			interceptor.Invoke("~QPaintEvent", "~QPaintEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQPaintEvent();
-		}
-		[SmokeMethod("~QPaintEvent", "()", "")]
-		private void DisposeQPaintEvent() {
-			((QPaintEvent) interceptor).DisposeQPaintEvent();
+			interceptor.Invoke("~QPaintEvent", "~QPaintEvent()", typeof(void));
 		}
 	}
 }

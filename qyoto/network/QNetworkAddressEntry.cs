@@ -4,63 +4,44 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QNetworkAddressEntry")]
-	public class QNetworkAddressEntry : MarshalByRefObject, IDisposable {
-		protected QNetworkAddressEntry interceptor = null;
+	public class QNetworkAddressEntry : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QNetworkAddressEntry(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkAddressEntry), this);
-			interceptor = (QNetworkAddressEntry) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QNetworkAddressEntry), "QNetworkAddressEntry", this);
 		}
 		public QNetworkAddressEntry() : this((Type) null) {
 			CreateProxy();
-			NewQNetworkAddressEntry();
-		}
-		[SmokeMethod("QNetworkAddressEntry", "()", "")]
-		private void NewQNetworkAddressEntry() {
-			((QNetworkAddressEntry) interceptor).NewQNetworkAddressEntry();
+			interceptor.Invoke("QNetworkAddressEntry", "QNetworkAddressEntry()", typeof(void));
 		}
 		public QNetworkAddressEntry(QNetworkAddressEntry other) : this((Type) null) {
 			CreateProxy();
-			NewQNetworkAddressEntry(other);
+			interceptor.Invoke("QNetworkAddressEntry#", "QNetworkAddressEntry(const QNetworkAddressEntry&)", typeof(void), typeof(QNetworkAddressEntry), other);
 		}
-		[SmokeMethod("QNetworkAddressEntry", "(const QNetworkAddressEntry&)", "#")]
-		private void NewQNetworkAddressEntry(QNetworkAddressEntry other) {
-			((QNetworkAddressEntry) interceptor).NewQNetworkAddressEntry(other);
-		}
-		[SmokeMethod("ip", "() const", "")]
 		public QHostAddress Ip() {
-			return ((QNetworkAddressEntry) interceptor).Ip();
+			return (QHostAddress) interceptor.Invoke("ip", "ip() const", typeof(QHostAddress));
 		}
-		[SmokeMethod("setIp", "(const QHostAddress&)", "#")]
 		public void SetIp(QHostAddress newIp) {
-			((QNetworkAddressEntry) interceptor).SetIp(newIp);
+			interceptor.Invoke("setIp#", "setIp(const QHostAddress&)", typeof(void), typeof(QHostAddress), newIp);
 		}
-		[SmokeMethod("netmask", "() const", "")]
 		public QHostAddress Netmask() {
-			return ((QNetworkAddressEntry) interceptor).Netmask();
+			return (QHostAddress) interceptor.Invoke("netmask", "netmask() const", typeof(QHostAddress));
 		}
-		[SmokeMethod("setNetmask", "(const QHostAddress&)", "#")]
 		public void SetNetmask(QHostAddress newNetmask) {
-			((QNetworkAddressEntry) interceptor).SetNetmask(newNetmask);
+			interceptor.Invoke("setNetmask#", "setNetmask(const QHostAddress&)", typeof(void), typeof(QHostAddress), newNetmask);
 		}
-		[SmokeMethod("broadcast", "() const", "")]
 		public QHostAddress Broadcast() {
-			return ((QNetworkAddressEntry) interceptor).Broadcast();
+			return (QHostAddress) interceptor.Invoke("broadcast", "broadcast() const", typeof(QHostAddress));
 		}
-		[SmokeMethod("setBroadcast", "(const QHostAddress&)", "#")]
 		public void SetBroadcast(QHostAddress newBroadcast) {
-			((QNetworkAddressEntry) interceptor).SetBroadcast(newBroadcast);
+			interceptor.Invoke("setBroadcast#", "setBroadcast(const QHostAddress&)", typeof(void), typeof(QHostAddress), newBroadcast);
 		}
 		~QNetworkAddressEntry() {
-			DisposeQNetworkAddressEntry();
+			interceptor.Invoke("~QNetworkAddressEntry", "~QNetworkAddressEntry()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQNetworkAddressEntry();
-		}
-		[SmokeMethod("~QNetworkAddressEntry", "()", "")]
-		private void DisposeQNetworkAddressEntry() {
-			((QNetworkAddressEntry) interceptor).DisposeQNetworkAddressEntry();
+			interceptor.Invoke("~QNetworkAddressEntry", "~QNetworkAddressEntry()", typeof(void));
 		}
 	}
 }

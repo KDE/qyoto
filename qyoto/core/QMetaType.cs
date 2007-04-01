@@ -4,27 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QMetaType")]
-	public class QMetaType : MarshalByRefObject, IDisposable {
-		protected QMetaType interceptor = null;
+	public class QMetaType : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QMetaType(Type dummy) {}
-		[SmokeClass("QMetaType")]
-		interface IQMetaTypeProxy {
-			[SmokeMethod("type", "(const char*)", "$")]
-			int type(string typeName);
-			[SmokeMethod("typeName", "(int)", "$")]
-			string TypeName(int type);
-			[SmokeMethod("isRegistered", "(int)", "$")]
-			bool IsRegistered(int type);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaType), this);
-			interceptor = (QMetaType) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMetaType), "QMetaType", this);
 		}
-		private static IQMetaTypeProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QMetaType() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMetaTypeProxy), null);
-			staticInterceptor = (IQMetaTypeProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QMetaType), "QMetaType", null);
 		}
 		public enum TypeOf {
 			Void = 0,
@@ -98,30 +87,22 @@ namespace Qyoto {
 		// bool load(QDataStream& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QMetaType() : this((Type) null) {
 			CreateProxy();
-			NewQMetaType();
-		}
-		[SmokeMethod("QMetaType", "()", "")]
-		private void NewQMetaType() {
-			((QMetaType) interceptor).NewQMetaType();
+			interceptor.Invoke("QMetaType", "QMetaType()", typeof(void));
 		}
 		~QMetaType() {
-			DisposeQMetaType();
+			interceptor.Invoke("~QMetaType", "~QMetaType()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQMetaType();
-		}
-		[SmokeMethod("~QMetaType", "()", "")]
-		private void DisposeQMetaType() {
-			((QMetaType) interceptor).DisposeQMetaType();
+			interceptor.Invoke("~QMetaType", "~QMetaType()", typeof(void));
 		}
 		public static int type(string typeName) {
-			return staticInterceptor.type(typeName);
+			return (int) staticInterceptor.Invoke("type$", "type(const char*)", typeof(int), typeof(string), typeName);
 		}
 		public static string TypeName(int type) {
-			return staticInterceptor.TypeName(type);
+			return (string) staticInterceptor.Invoke("typeName$", "typeName(int)", typeof(string), typeof(int), type);
 		}
 		public static bool IsRegistered(int type) {
-			return staticInterceptor.IsRegistered(type);
+			return (bool) staticInterceptor.Invoke("isRegistered$", "isRegistered(int)", typeof(bool), typeof(int), type);
 		}
 	}
 }

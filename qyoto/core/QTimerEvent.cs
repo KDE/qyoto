@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QTimerEvent : QEvent, IDisposable {
  		protected QTimerEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimerEvent), this);
-			interceptor = (QTimerEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTimerEvent), "QTimerEvent", this);
 		}
 		public QTimerEvent(int timerId) : this((Type) null) {
 			CreateProxy();
-			NewQTimerEvent(timerId);
+			interceptor.Invoke("QTimerEvent$", "QTimerEvent(int)", typeof(void), typeof(int), timerId);
 		}
-		[SmokeMethod("QTimerEvent", "(int)", "$")]
-		private void NewQTimerEvent(int timerId) {
-			((QTimerEvent) interceptor).NewQTimerEvent(timerId);
-		}
-		[SmokeMethod("timerId", "() const", "")]
 		public int TimerId() {
-			return ((QTimerEvent) interceptor).TimerId();
+			return (int) interceptor.Invoke("timerId", "timerId() const", typeof(int));
 		}
 		~QTimerEvent() {
-			DisposeQTimerEvent();
+			interceptor.Invoke("~QTimerEvent", "~QTimerEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTimerEvent();
-		}
-		[SmokeMethod("~QTimerEvent", "()", "")]
-		private void DisposeQTimerEvent() {
-			((QTimerEvent) interceptor).DisposeQTimerEvent();
+			interceptor.Invoke("~QTimerEvent", "~QTimerEvent()", typeof(void));
 		}
 	}
 }

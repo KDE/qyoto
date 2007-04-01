@@ -6,61 +6,40 @@ namespace Qyoto {
 	[SmokeClass("QPrintDialog")]
 	public class QPrintDialog : QAbstractPrintDialog, IDisposable {
  		protected QPrintDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QPrintDialog")]
-		interface IQPrintDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrintDialog), this);
-			interceptor = (QPrintDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPrintDialog), "QPrintDialog", this);
 		}
-		private static IQPrintDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPrintDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPrintDialogProxy), null);
-			staticInterceptor = (IQPrintDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPrintDialog), "QPrintDialog", null);
 		}
 		public QPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQPrintDialog(printer,parent);
-		}
-		[SmokeMethod("QPrintDialog", "(QPrinter*, QWidget*)", "##")]
-		private void NewQPrintDialog(QPrinter printer, QWidget parent) {
-			((QPrintDialog) interceptor).NewQPrintDialog(printer,parent);
+			interceptor.Invoke("QPrintDialog##", "QPrintDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);
 		}
 		public QPrintDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
-			NewQPrintDialog(printer);
+			interceptor.Invoke("QPrintDialog#", "QPrintDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
 		}
-		[SmokeMethod("QPrintDialog", "(QPrinter*)", "#")]
-		private void NewQPrintDialog(QPrinter printer) {
-			((QPrintDialog) interceptor).NewQPrintDialog(printer);
-		}
-		[SmokeMethod("exec", "()", "")]
+		[SmokeMethod("exec()")]
 		public override int Exec() {
-			return ((QPrintDialog) interceptor).Exec();
+			return (int) interceptor.Invoke("exec", "exec()", typeof(int));
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QPrintDialog) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
 		~QPrintDialog() {
-			DisposeQPrintDialog();
+			interceptor.Invoke("~QPrintDialog", "~QPrintDialog()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQPrintDialog();
-		}
-		[SmokeMethod("~QPrintDialog", "()", "")]
-		private void DisposeQPrintDialog() {
-			((QPrintDialog) interceptor).DisposeQPrintDialog();
+			interceptor.Invoke("~QPrintDialog", "~QPrintDialog()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQPrintDialogSignals Emit {
 			get { return (IQPrintDialogSignals) Q_EMIT; }

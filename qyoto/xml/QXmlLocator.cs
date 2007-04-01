@@ -4,25 +4,20 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QXmlLocator")]
-	public abstract class QXmlLocator : MarshalByRefObject {
-		protected QXmlLocator interceptor = null;
+	public abstract class QXmlLocator : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlLocator(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlLocator), this);
-			interceptor = (QXmlLocator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlLocator), "QXmlLocator", this);
 		}
 		public QXmlLocator() : this((Type) null) {
 			CreateProxy();
-			NewQXmlLocator();
+			interceptor.Invoke("QXmlLocator", "QXmlLocator()", typeof(void));
 		}
-		[SmokeMethod("QXmlLocator", "()", "")]
-		private void NewQXmlLocator() {
-			((QXmlLocator) interceptor).NewQXmlLocator();
-		}
-		[SmokeMethod("columnNumber", "() const", "")]
+		[SmokeMethod("columnNumber() const")]
 		public abstract int ColumnNumber();
-		[SmokeMethod("lineNumber", "() const", "")]
+		[SmokeMethod("lineNumber() const")]
 		public abstract int LineNumber();
 	}
 }

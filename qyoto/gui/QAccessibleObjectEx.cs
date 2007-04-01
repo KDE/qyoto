@@ -8,44 +8,39 @@ namespace Qyoto {
 	public abstract class QAccessibleObjectEx : QAccessibleInterfaceEx {
  		protected QAccessibleObjectEx(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleObjectEx), this);
-			interceptor = (QAccessibleObjectEx) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAccessibleObjectEx), "QAccessibleObjectEx", this);
 		}
 		public QAccessibleObjectEx(QObject arg1) : this((Type) null) {
 			CreateProxy();
-			NewQAccessibleObjectEx(arg1);
+			interceptor.Invoke("QAccessibleObjectEx#", "QAccessibleObjectEx(QObject*)", typeof(void), typeof(QObject), arg1);
 		}
-		[SmokeMethod("QAccessibleObjectEx", "(QObject*)", "#")]
-		private void NewQAccessibleObjectEx(QObject arg1) {
-			((QAccessibleObjectEx) interceptor).NewQAccessibleObjectEx(arg1);
-		}
-		[SmokeMethod("isValid", "() const", "")]
+		[SmokeMethod("isValid() const")]
 		public override bool IsValid() {
-			return ((QAccessibleObjectEx) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("object", "() const", "")]
+		[SmokeMethod("object() const")]
 		public override QObject Object() {
-			return ((QAccessibleObjectEx) interceptor).Object();
+			return (QObject) interceptor.Invoke("object", "object() const", typeof(QObject));
 		}
-		[SmokeMethod("rect", "(int) const", "$")]
+		[SmokeMethod("rect(int) const")]
 		public override QRect Rect(int child) {
-			return ((QAccessibleObjectEx) interceptor).Rect(child);
+			return (QRect) interceptor.Invoke("rect$", "rect(int) const", typeof(QRect), typeof(int), child);
 		}
-		[SmokeMethod("setText", "(QAccessible::Text, int, const QString&)", "$$$")]
+		[SmokeMethod("setText(QAccessible::Text, int, const QString&)")]
 		public override void SetText(QAccessible.Text t, int child, string text) {
-			((QAccessibleObjectEx) interceptor).SetText(t,child,text);
+			interceptor.Invoke("setText$$$", "setText(QAccessible::Text, int, const QString&)", typeof(void), typeof(QAccessible.Text), t, typeof(int), child, typeof(string), text);
 		}
-		[SmokeMethod("userActionCount", "(int) const", "$")]
+		[SmokeMethod("userActionCount(int) const")]
 		public override int UserActionCount(int child) {
-			return ((QAccessibleObjectEx) interceptor).UserActionCount(child);
+			return (int) interceptor.Invoke("userActionCount$", "userActionCount(int) const", typeof(int), typeof(int), child);
 		}
-		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
+		[SmokeMethod("doAction(int, int, const QVariantList&)")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return ((QAccessibleObjectEx) interceptor).DoAction(action,child,arg3);
+			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QVariantList&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
 		}
-		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
+		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {
-			return ((QAccessibleObjectEx) interceptor).ActionText(action,t,child);
+			return (string) interceptor.Invoke("actionText$$$", "actionText(int, QAccessible::Text, int) const", typeof(string), typeof(int), action, typeof(QAccessible.Text), t, typeof(int), child);
 		}
 	}
 }

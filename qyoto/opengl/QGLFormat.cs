@@ -4,35 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QGLFormat")]
-	public class QGLFormat : MarshalByRefObject, IDisposable {
-		protected QGLFormat interceptor = null;
+	public class QGLFormat : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGLFormat(Type dummy) {}
-		[SmokeClass("QGLFormat")]
-		interface IQGLFormatProxy {
-			[SmokeMethod("defaultFormat", "()", "")]
-			QGLFormat DefaultFormat();
-			[SmokeMethod("setDefaultFormat", "(const QGLFormat&)", "#")]
-			void SetDefaultFormat(QGLFormat f);
-			[SmokeMethod("defaultOverlayFormat", "()", "")]
-			QGLFormat DefaultOverlayFormat();
-			[SmokeMethod("setDefaultOverlayFormat", "(const QGLFormat&)", "#")]
-			void SetDefaultOverlayFormat(QGLFormat f);
-			[SmokeMethod("hasOpenGL", "()", "")]
-			bool HasOpenGL();
-			[SmokeMethod("hasOpenGLOverlays", "()", "")]
-			bool HasOpenGLOverlays();
-			[SmokeMethod("operator==", "(const QGLFormat&, const QGLFormat&)", "##")]
-			bool op_equals(QGLFormat arg1, QGLFormat arg2);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFormat), this);
-			interceptor = (QGLFormat) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGLFormat), "QGLFormat", this);
 		}
-		private static IQGLFormatProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGLFormat() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLFormatProxy), null);
-			staticInterceptor = (IQGLFormatProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGLFormat), "QGLFormat", null);
 		}
 		public enum OpenGLVersionFlag {
 			OpenGL_Version_None = 0x00000000,
@@ -52,244 +33,182 @@ namespace Qyoto {
 		// OpenGLVersionFlags openGLVersionFlags(); >>>> NOT CONVERTED
 		public QGLFormat() : this((Type) null) {
 			CreateProxy();
-			NewQGLFormat();
-		}
-		[SmokeMethod("QGLFormat", "()", "")]
-		private void NewQGLFormat() {
-			((QGLFormat) interceptor).NewQGLFormat();
+			interceptor.Invoke("QGLFormat", "QGLFormat()", typeof(void));
 		}
 		public QGLFormat(int options, int plane) : this((Type) null) {
 			CreateProxy();
-			NewQGLFormat(options,plane);
-		}
-		[SmokeMethod("QGLFormat", "(QGL::FormatOptions, int)", "$$")]
-		private void NewQGLFormat(int options, int plane) {
-			((QGLFormat) interceptor).NewQGLFormat(options,plane);
+			interceptor.Invoke("QGLFormat$$", "QGLFormat(QGL::FormatOptions, int)", typeof(void), typeof(int), options, typeof(int), plane);
 		}
 		public QGLFormat(int options) : this((Type) null) {
 			CreateProxy();
-			NewQGLFormat(options);
-		}
-		[SmokeMethod("QGLFormat", "(QGL::FormatOptions)", "$")]
-		private void NewQGLFormat(int options) {
-			((QGLFormat) interceptor).NewQGLFormat(options);
+			interceptor.Invoke("QGLFormat$", "QGLFormat(QGL::FormatOptions)", typeof(void), typeof(int), options);
 		}
 		public QGLFormat(QGLFormat other) : this((Type) null) {
 			CreateProxy();
-			NewQGLFormat(other);
+			interceptor.Invoke("QGLFormat#", "QGLFormat(const QGLFormat&)", typeof(void), typeof(QGLFormat), other);
 		}
-		[SmokeMethod("QGLFormat", "(const QGLFormat&)", "#")]
-		private void NewQGLFormat(QGLFormat other) {
-			((QGLFormat) interceptor).NewQGLFormat(other);
-		}
-		[SmokeMethod("setDepthBufferSize", "(int)", "$")]
 		public void SetDepthBufferSize(int size) {
-			((QGLFormat) interceptor).SetDepthBufferSize(size);
+			interceptor.Invoke("setDepthBufferSize$", "setDepthBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("depthBufferSize", "() const", "")]
 		public int DepthBufferSize() {
-			return ((QGLFormat) interceptor).DepthBufferSize();
+			return (int) interceptor.Invoke("depthBufferSize", "depthBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setAccumBufferSize", "(int)", "$")]
 		public void SetAccumBufferSize(int size) {
-			((QGLFormat) interceptor).SetAccumBufferSize(size);
+			interceptor.Invoke("setAccumBufferSize$", "setAccumBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("accumBufferSize", "() const", "")]
 		public int AccumBufferSize() {
-			return ((QGLFormat) interceptor).AccumBufferSize();
+			return (int) interceptor.Invoke("accumBufferSize", "accumBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setRedBufferSize", "(int)", "$")]
 		public void SetRedBufferSize(int size) {
-			((QGLFormat) interceptor).SetRedBufferSize(size);
+			interceptor.Invoke("setRedBufferSize$", "setRedBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("redBufferSize", "() const", "")]
 		public int RedBufferSize() {
-			return ((QGLFormat) interceptor).RedBufferSize();
+			return (int) interceptor.Invoke("redBufferSize", "redBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setGreenBufferSize", "(int)", "$")]
 		public void SetGreenBufferSize(int size) {
-			((QGLFormat) interceptor).SetGreenBufferSize(size);
+			interceptor.Invoke("setGreenBufferSize$", "setGreenBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("greenBufferSize", "() const", "")]
 		public int GreenBufferSize() {
-			return ((QGLFormat) interceptor).GreenBufferSize();
+			return (int) interceptor.Invoke("greenBufferSize", "greenBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setBlueBufferSize", "(int)", "$")]
 		public void SetBlueBufferSize(int size) {
-			((QGLFormat) interceptor).SetBlueBufferSize(size);
+			interceptor.Invoke("setBlueBufferSize$", "setBlueBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("blueBufferSize", "() const", "")]
 		public int BlueBufferSize() {
-			return ((QGLFormat) interceptor).BlueBufferSize();
+			return (int) interceptor.Invoke("blueBufferSize", "blueBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setAlphaBufferSize", "(int)", "$")]
 		public void SetAlphaBufferSize(int size) {
-			((QGLFormat) interceptor).SetAlphaBufferSize(size);
+			interceptor.Invoke("setAlphaBufferSize$", "setAlphaBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("alphaBufferSize", "() const", "")]
 		public int AlphaBufferSize() {
-			return ((QGLFormat) interceptor).AlphaBufferSize();
+			return (int) interceptor.Invoke("alphaBufferSize", "alphaBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setStencilBufferSize", "(int)", "$")]
 		public void SetStencilBufferSize(int size) {
-			((QGLFormat) interceptor).SetStencilBufferSize(size);
+			interceptor.Invoke("setStencilBufferSize$", "setStencilBufferSize(int)", typeof(void), typeof(int), size);
 		}
-		[SmokeMethod("stencilBufferSize", "() const", "")]
 		public int StencilBufferSize() {
-			return ((QGLFormat) interceptor).StencilBufferSize();
+			return (int) interceptor.Invoke("stencilBufferSize", "stencilBufferSize() const", typeof(int));
 		}
-		[SmokeMethod("setSampleBuffers", "(bool)", "$")]
 		public void SetSampleBuffers(bool enable) {
-			((QGLFormat) interceptor).SetSampleBuffers(enable);
+			interceptor.Invoke("setSampleBuffers$", "setSampleBuffers(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("sampleBuffers", "() const", "")]
 		public bool SampleBuffers() {
-			return ((QGLFormat) interceptor).SampleBuffers();
+			return (bool) interceptor.Invoke("sampleBuffers", "sampleBuffers() const", typeof(bool));
 		}
-		[SmokeMethod("setSamples", "(int)", "$")]
 		public void SetSamples(int numSamples) {
-			((QGLFormat) interceptor).SetSamples(numSamples);
+			interceptor.Invoke("setSamples$", "setSamples(int)", typeof(void), typeof(int), numSamples);
 		}
-		[SmokeMethod("samples", "() const", "")]
 		public int Samples() {
-			return ((QGLFormat) interceptor).Samples();
+			return (int) interceptor.Invoke("samples", "samples() const", typeof(int));
 		}
-		[SmokeMethod("setSwapInterval", "(int)", "$")]
 		public void SetSwapInterval(int interval) {
-			((QGLFormat) interceptor).SetSwapInterval(interval);
+			interceptor.Invoke("setSwapInterval$", "setSwapInterval(int)", typeof(void), typeof(int), interval);
 		}
-		[SmokeMethod("swapInterval", "() const", "")]
 		public int SwapInterval() {
-			return ((QGLFormat) interceptor).SwapInterval();
+			return (int) interceptor.Invoke("swapInterval", "swapInterval() const", typeof(int));
 		}
-		[SmokeMethod("doubleBuffer", "() const", "")]
 		public bool DoubleBuffer() {
-			return ((QGLFormat) interceptor).DoubleBuffer();
+			return (bool) interceptor.Invoke("doubleBuffer", "doubleBuffer() const", typeof(bool));
 		}
-		[SmokeMethod("setDoubleBuffer", "(bool)", "$")]
 		public void SetDoubleBuffer(bool enable) {
-			((QGLFormat) interceptor).SetDoubleBuffer(enable);
+			interceptor.Invoke("setDoubleBuffer$", "setDoubleBuffer(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("depth", "() const", "")]
 		public bool Depth() {
-			return ((QGLFormat) interceptor).Depth();
+			return (bool) interceptor.Invoke("depth", "depth() const", typeof(bool));
 		}
-		[SmokeMethod("setDepth", "(bool)", "$")]
 		public void SetDepth(bool enable) {
-			((QGLFormat) interceptor).SetDepth(enable);
+			interceptor.Invoke("setDepth$", "setDepth(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("rgba", "() const", "")]
 		public bool Rgba() {
-			return ((QGLFormat) interceptor).Rgba();
+			return (bool) interceptor.Invoke("rgba", "rgba() const", typeof(bool));
 		}
-		[SmokeMethod("setRgba", "(bool)", "$")]
 		public void SetRgba(bool enable) {
-			((QGLFormat) interceptor).SetRgba(enable);
+			interceptor.Invoke("setRgba$", "setRgba(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("alpha", "() const", "")]
 		public bool Alpha() {
-			return ((QGLFormat) interceptor).Alpha();
+			return (bool) interceptor.Invoke("alpha", "alpha() const", typeof(bool));
 		}
-		[SmokeMethod("setAlpha", "(bool)", "$")]
 		public void SetAlpha(bool enable) {
-			((QGLFormat) interceptor).SetAlpha(enable);
+			interceptor.Invoke("setAlpha$", "setAlpha(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("accum", "() const", "")]
 		public bool Accum() {
-			return ((QGLFormat) interceptor).Accum();
+			return (bool) interceptor.Invoke("accum", "accum() const", typeof(bool));
 		}
-		[SmokeMethod("setAccum", "(bool)", "$")]
 		public void SetAccum(bool enable) {
-			((QGLFormat) interceptor).SetAccum(enable);
+			interceptor.Invoke("setAccum$", "setAccum(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("stencil", "() const", "")]
 		public bool Stencil() {
-			return ((QGLFormat) interceptor).Stencil();
+			return (bool) interceptor.Invoke("stencil", "stencil() const", typeof(bool));
 		}
-		[SmokeMethod("setStencil", "(bool)", "$")]
 		public void SetStencil(bool enable) {
-			((QGLFormat) interceptor).SetStencil(enable);
+			interceptor.Invoke("setStencil$", "setStencil(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("stereo", "() const", "")]
 		public bool Stereo() {
-			return ((QGLFormat) interceptor).Stereo();
+			return (bool) interceptor.Invoke("stereo", "stereo() const", typeof(bool));
 		}
-		[SmokeMethod("setStereo", "(bool)", "$")]
 		public void SetStereo(bool enable) {
-			((QGLFormat) interceptor).SetStereo(enable);
+			interceptor.Invoke("setStereo$", "setStereo(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("directRendering", "() const", "")]
 		public bool DirectRendering() {
-			return ((QGLFormat) interceptor).DirectRendering();
+			return (bool) interceptor.Invoke("directRendering", "directRendering() const", typeof(bool));
 		}
-		[SmokeMethod("setDirectRendering", "(bool)", "$")]
 		public void SetDirectRendering(bool enable) {
-			((QGLFormat) interceptor).SetDirectRendering(enable);
+			interceptor.Invoke("setDirectRendering$", "setDirectRendering(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("hasOverlay", "() const", "")]
 		public bool HasOverlay() {
-			return ((QGLFormat) interceptor).HasOverlay();
+			return (bool) interceptor.Invoke("hasOverlay", "hasOverlay() const", typeof(bool));
 		}
-		[SmokeMethod("setOverlay", "(bool)", "$")]
 		public void SetOverlay(bool enable) {
-			((QGLFormat) interceptor).SetOverlay(enable);
+			interceptor.Invoke("setOverlay$", "setOverlay(bool)", typeof(void), typeof(bool), enable);
 		}
-		[SmokeMethod("plane", "() const", "")]
 		public int Plane() {
-			return ((QGLFormat) interceptor).Plane();
+			return (int) interceptor.Invoke("plane", "plane() const", typeof(int));
 		}
-		[SmokeMethod("setPlane", "(int)", "$")]
 		public void SetPlane(int plane) {
-			((QGLFormat) interceptor).SetPlane(plane);
+			interceptor.Invoke("setPlane$", "setPlane(int)", typeof(void), typeof(int), plane);
 		}
-		[SmokeMethod("setOption", "(QGL::FormatOptions)", "$")]
 		public void SetOption(int opt) {
-			((QGLFormat) interceptor).SetOption(opt);
+			interceptor.Invoke("setOption$", "setOption(QGL::FormatOptions)", typeof(void), typeof(int), opt);
 		}
-		[SmokeMethod("testOption", "(QGL::FormatOptions) const", "$")]
 		public bool TestOption(int opt) {
-			return ((QGLFormat) interceptor).TestOption(opt);
+			return (bool) interceptor.Invoke("testOption$", "testOption(QGL::FormatOptions) const", typeof(bool), typeof(int), opt);
 		}
 		~QGLFormat() {
-			DisposeQGLFormat();
+			interceptor.Invoke("~QGLFormat", "~QGLFormat()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGLFormat();
-		}
-		[SmokeMethod("~QGLFormat", "()", "")]
-		private void DisposeQGLFormat() {
-			((QGLFormat) interceptor).DisposeQGLFormat();
+			interceptor.Invoke("~QGLFormat", "~QGLFormat()", typeof(void));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QGLFormat)) { return false; }
 			return this == (QGLFormat) o;
 		}
 		public override int GetHashCode() {
-			return ((QGLFormat) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		public static QGLFormat DefaultFormat() {
-			return staticInterceptor.DefaultFormat();
+			return (QGLFormat) staticInterceptor.Invoke("defaultFormat", "defaultFormat()", typeof(QGLFormat));
 		}
 		public static void SetDefaultFormat(QGLFormat f) {
-			staticInterceptor.SetDefaultFormat(f);
+			staticInterceptor.Invoke("setDefaultFormat#", "setDefaultFormat(const QGLFormat&)", typeof(void), typeof(QGLFormat), f);
 		}
 		public static QGLFormat DefaultOverlayFormat() {
-			return staticInterceptor.DefaultOverlayFormat();
+			return (QGLFormat) staticInterceptor.Invoke("defaultOverlayFormat", "defaultOverlayFormat()", typeof(QGLFormat));
 		}
 		public static void SetDefaultOverlayFormat(QGLFormat f) {
-			staticInterceptor.SetDefaultOverlayFormat(f);
+			staticInterceptor.Invoke("setDefaultOverlayFormat#", "setDefaultOverlayFormat(const QGLFormat&)", typeof(void), typeof(QGLFormat), f);
 		}
 		public static bool HasOpenGL() {
-			return staticInterceptor.HasOpenGL();
+			return (bool) staticInterceptor.Invoke("hasOpenGL", "hasOpenGL()", typeof(bool));
 		}
 		public static bool HasOpenGLOverlays() {
-			return staticInterceptor.HasOpenGLOverlays();
+			return (bool) staticInterceptor.Invoke("hasOpenGLOverlays", "hasOpenGLOverlays()", typeof(bool));
 		}
 		public static bool operator==(QGLFormat arg1, QGLFormat arg2) {
-			return staticInterceptor.op_equals(arg1,arg2);
+			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QGLFormat&, const QGLFormat&)", typeof(bool), typeof(QGLFormat), arg1, typeof(QGLFormat), arg2);
 		}
 		public static bool operator!=(QGLFormat arg1, QGLFormat arg2) {
-			return !staticInterceptor.op_equals(arg1,arg2);
+			return !(bool) staticInterceptor.Invoke("operator==##", "operator==(const QGLFormat&, const QGLFormat&)", typeof(bool), typeof(QGLFormat), arg1, typeof(QGLFormat), arg2);
 		}
 	}
 }

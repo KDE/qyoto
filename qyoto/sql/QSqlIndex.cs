@@ -7,82 +7,53 @@ namespace Qyoto {
 	public class QSqlIndex : QSqlRecord, IDisposable {
  		protected QSqlIndex(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlIndex), this);
-			interceptor = (QSqlIndex) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlIndex), "QSqlIndex", this);
 		}
 		public QSqlIndex(string cursorName, string name) : this((Type) null) {
 			CreateProxy();
-			NewQSqlIndex(cursorName,name);
-		}
-		[SmokeMethod("QSqlIndex", "(const QString&, const QString&)", "$$")]
-		private void NewQSqlIndex(string cursorName, string name) {
-			((QSqlIndex) interceptor).NewQSqlIndex(cursorName,name);
+			interceptor.Invoke("QSqlIndex$$", "QSqlIndex(const QString&, const QString&)", typeof(void), typeof(string), cursorName, typeof(string), name);
 		}
 		public QSqlIndex(string cursorName) : this((Type) null) {
 			CreateProxy();
-			NewQSqlIndex(cursorName);
-		}
-		[SmokeMethod("QSqlIndex", "(const QString&)", "$")]
-		private void NewQSqlIndex(string cursorName) {
-			((QSqlIndex) interceptor).NewQSqlIndex(cursorName);
+			interceptor.Invoke("QSqlIndex$", "QSqlIndex(const QString&)", typeof(void), typeof(string), cursorName);
 		}
 		public QSqlIndex() : this((Type) null) {
 			CreateProxy();
-			NewQSqlIndex();
-		}
-		[SmokeMethod("QSqlIndex", "()", "")]
-		private void NewQSqlIndex() {
-			((QSqlIndex) interceptor).NewQSqlIndex();
+			interceptor.Invoke("QSqlIndex", "QSqlIndex()", typeof(void));
 		}
 		public QSqlIndex(QSqlIndex other) : this((Type) null) {
 			CreateProxy();
-			NewQSqlIndex(other);
+			interceptor.Invoke("QSqlIndex#", "QSqlIndex(const QSqlIndex&)", typeof(void), typeof(QSqlIndex), other);
 		}
-		[SmokeMethod("QSqlIndex", "(const QSqlIndex&)", "#")]
-		private void NewQSqlIndex(QSqlIndex other) {
-			((QSqlIndex) interceptor).NewQSqlIndex(other);
-		}
-		[SmokeMethod("setCursorName", "(const QString&)", "$")]
 		public void SetCursorName(string cursorName) {
-			((QSqlIndex) interceptor).SetCursorName(cursorName);
+			interceptor.Invoke("setCursorName$", "setCursorName(const QString&)", typeof(void), typeof(string), cursorName);
 		}
-		[SmokeMethod("cursorName", "() const", "")]
 		public string CursorName() {
-			return ((QSqlIndex) interceptor).CursorName();
+			return (string) interceptor.Invoke("cursorName", "cursorName() const", typeof(string));
 		}
-		[SmokeMethod("setName", "(const QString&)", "$")]
 		public void SetName(string name) {
-			((QSqlIndex) interceptor).SetName(name);
+			interceptor.Invoke("setName$", "setName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QSqlIndex) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("append", "(const QSqlField&)", "#")]
 		public void Append(QSqlField field) {
-			((QSqlIndex) interceptor).Append(field);
+			interceptor.Invoke("append#", "append(const QSqlField&)", typeof(void), typeof(QSqlField), field);
 		}
-		[SmokeMethod("append", "(const QSqlField&, bool)", "#$")]
 		public void Append(QSqlField field, bool desc) {
-			((QSqlIndex) interceptor).Append(field,desc);
+			interceptor.Invoke("append#$", "append(const QSqlField&, bool)", typeof(void), typeof(QSqlField), field, typeof(bool), desc);
 		}
-		[SmokeMethod("isDescending", "(int) const", "$")]
 		public bool IsDescending(int i) {
-			return ((QSqlIndex) interceptor).IsDescending(i);
+			return (bool) interceptor.Invoke("isDescending$", "isDescending(int) const", typeof(bool), typeof(int), i);
 		}
-		[SmokeMethod("setDescending", "(int, bool)", "$$")]
 		public void SetDescending(int i, bool desc) {
-			((QSqlIndex) interceptor).SetDescending(i,desc);
+			interceptor.Invoke("setDescending$$", "setDescending(int, bool)", typeof(void), typeof(int), i, typeof(bool), desc);
 		}
 		~QSqlIndex() {
-			DisposeQSqlIndex();
+			interceptor.Invoke("~QSqlIndex", "~QSqlIndex()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSqlIndex();
-		}
-		[SmokeMethod("~QSqlIndex", "()", "")]
-		private void DisposeQSqlIndex() {
-			((QSqlIndex) interceptor).DisposeQSqlIndex();
+			interceptor.Invoke("~QSqlIndex", "~QSqlIndex()", typeof(void));
 		}
 	}
 }

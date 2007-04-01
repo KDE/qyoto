@@ -4,23 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextLength")]
-	public class QTextLength : MarshalByRefObject, IDisposable {
-		protected QTextLength interceptor = null;
+	public class QTextLength : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextLength(Type dummy) {}
-		[SmokeClass("QTextLength")]
-		interface IQTextLengthProxy {
-			[SmokeMethod("operator==", "(const QTextLength&) const", "#")]
-			bool op_equals(QTextLength lhs, QTextLength other);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLength), this);
-			interceptor = (QTextLength) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextLength), "QTextLength", this);
 		}
-		private static IQTextLengthProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextLength() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextLengthProxy), null);
-			staticInterceptor = (IQTextLengthProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextLength), "QTextLength", null);
 		}
 		public enum TypeOf {
 			VariableLength = 0,
@@ -30,54 +23,39 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QTextLength() : this((Type) null) {
 			CreateProxy();
-			NewQTextLength();
-		}
-		[SmokeMethod("QTextLength", "()", "")]
-		private void NewQTextLength() {
-			((QTextLength) interceptor).NewQTextLength();
+			interceptor.Invoke("QTextLength", "QTextLength()", typeof(void));
 		}
 		public QTextLength(QTextLength.TypeOf type, double value) : this((Type) null) {
 			CreateProxy();
-			NewQTextLength(type,value);
+			interceptor.Invoke("QTextLength$$", "QTextLength(QTextLength::Type, qreal)", typeof(void), typeof(QTextLength.TypeOf), type, typeof(double), value);
 		}
-		[SmokeMethod("QTextLength", "(QTextLength::Type, qreal)", "$$")]
-		private void NewQTextLength(QTextLength.TypeOf type, double value) {
-			((QTextLength) interceptor).NewQTextLength(type,value);
-		}
-		[SmokeMethod("type", "() const", "")]
 		public QTextLength.TypeOf type() {
-			return ((QTextLength) interceptor).type();
+			return (QTextLength.TypeOf) interceptor.Invoke("type", "type() const", typeof(QTextLength.TypeOf));
 		}
-		[SmokeMethod("value", "(qreal) const", "$")]
 		public double Value(double maximumLength) {
-			return ((QTextLength) interceptor).Value(maximumLength);
+			return (double) interceptor.Invoke("value$", "value(qreal) const", typeof(double), typeof(double), maximumLength);
 		}
-		[SmokeMethod("rawValue", "() const", "")]
 		public double RawValue() {
-			return ((QTextLength) interceptor).RawValue();
+			return (double) interceptor.Invoke("rawValue", "rawValue() const", typeof(double));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextLength)) { return false; }
 			return this == (QTextLength) o;
 		}
 		public override int GetHashCode() {
-			return ((QTextLength) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QTextLength() {
-			DisposeQTextLength();
+			interceptor.Invoke("~QTextLength", "~QTextLength()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextLength();
-		}
-		[SmokeMethod("~QTextLength", "()", "")]
-		private void DisposeQTextLength() {
-			((QTextLength) interceptor).DisposeQTextLength();
+			interceptor.Invoke("~QTextLength", "~QTextLength()", typeof(void));
 		}
 		public static bool operator==(QTextLength lhs, QTextLength other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextLength&) const", typeof(bool), typeof(QTextLength), lhs, typeof(QTextLength), other);
 		}
 		public static bool operator!=(QTextLength lhs, QTextLength other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextLength&) const", typeof(bool), typeof(QTextLength), lhs, typeof(QTextLength), other);
 		}
 	}
 }

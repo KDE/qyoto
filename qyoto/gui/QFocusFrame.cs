@@ -6,73 +6,50 @@ namespace Qyoto {
 	[SmokeClass("QFocusFrame")]
 	public class QFocusFrame : QWidget, IDisposable {
  		protected QFocusFrame(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFocusFrame")]
-		interface IQFocusFrameProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusFrame), this);
-			interceptor = (QFocusFrame) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFocusFrame), "QFocusFrame", this);
 		}
-		private static IQFocusFrameProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFocusFrame() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFocusFrameProxy), null);
-			staticInterceptor = (IQFocusFrameProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFocusFrame), "QFocusFrame", null);
 		}
 		public QFocusFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQFocusFrame(parent);
-		}
-		[SmokeMethod("QFocusFrame", "(QWidget*)", "#")]
-		private void NewQFocusFrame(QWidget parent) {
-			((QFocusFrame) interceptor).NewQFocusFrame(parent);
+			interceptor.Invoke("QFocusFrame#", "QFocusFrame(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QFocusFrame() : this((Type) null) {
 			CreateProxy();
-			NewQFocusFrame();
+			interceptor.Invoke("QFocusFrame", "QFocusFrame()", typeof(void));
 		}
-		[SmokeMethod("QFocusFrame", "()", "")]
-		private void NewQFocusFrame() {
-			((QFocusFrame) interceptor).NewQFocusFrame();
-		}
-		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			((QFocusFrame) interceptor).SetWidget(widget);
+			interceptor.Invoke("setWidget#", "setWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ((QFocusFrame) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QFocusFrame) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QFocusFrame) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QFocusFrame) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
 		~QFocusFrame() {
-			DisposeQFocusFrame();
+			interceptor.Invoke("~QFocusFrame", "~QFocusFrame()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFocusFrame();
-		}
-		[SmokeMethod("~QFocusFrame", "()", "")]
-		private void DisposeQFocusFrame() {
-			((QFocusFrame) interceptor).DisposeQFocusFrame();
+			interceptor.Invoke("~QFocusFrame", "~QFocusFrame()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQFocusFrameSignals Emit {
 			get { return (IQFocusFrameSignals) Q_EMIT; }

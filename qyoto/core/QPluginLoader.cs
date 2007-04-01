@@ -7,101 +7,63 @@ namespace Qyoto {
 	[SmokeClass("QPluginLoader")]
 	public class QPluginLoader : QObject, IDisposable {
  		protected QPluginLoader(Type dummy) : base((Type) null) {}
-		[SmokeClass("QPluginLoader")]
-		interface IQPluginLoaderProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("staticInstances", "()", "")]
-			List<QObject> StaticInstances();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPluginLoader), this);
-			interceptor = (QPluginLoader) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPluginLoader), "QPluginLoader", this);
 		}
-		private static IQPluginLoaderProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPluginLoader() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPluginLoaderProxy), null);
-			staticInterceptor = (IQPluginLoaderProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPluginLoader), "QPluginLoader", null);
 		}
 		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
-			[SmokeMethod("fileName", "()", "")]
-			get { return ((QPluginLoader) interceptor).FileName; }
-			[SmokeMethod("setFileName", "(QString)", "$")]
-			set { ((QPluginLoader) interceptor).FileName = value; }
+			get { return (string) interceptor.Invoke("fileName", "fileName()", typeof(string)); }
+			set { interceptor.Invoke("setFileName$", "setFileName(QString)", typeof(void), typeof(string), value); }
 		}
 		public QPluginLoader(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQPluginLoader(parent);
-		}
-		[SmokeMethod("QPluginLoader", "(QObject*)", "#")]
-		private void NewQPluginLoader(QObject parent) {
-			((QPluginLoader) interceptor).NewQPluginLoader(parent);
+			interceptor.Invoke("QPluginLoader#", "QPluginLoader(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QPluginLoader() : this((Type) null) {
 			CreateProxy();
-			NewQPluginLoader();
-		}
-		[SmokeMethod("QPluginLoader", "()", "")]
-		private void NewQPluginLoader() {
-			((QPluginLoader) interceptor).NewQPluginLoader();
+			interceptor.Invoke("QPluginLoader", "QPluginLoader()", typeof(void));
 		}
 		public QPluginLoader(string fileName, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQPluginLoader(fileName,parent);
-		}
-		[SmokeMethod("QPluginLoader", "(const QString&, QObject*)", "$#")]
-		private void NewQPluginLoader(string fileName, QObject parent) {
-			((QPluginLoader) interceptor).NewQPluginLoader(fileName,parent);
+			interceptor.Invoke("QPluginLoader$#", "QPluginLoader(const QString&, QObject*)", typeof(void), typeof(string), fileName, typeof(QObject), parent);
 		}
 		public QPluginLoader(string fileName) : this((Type) null) {
 			CreateProxy();
-			NewQPluginLoader(fileName);
+			interceptor.Invoke("QPluginLoader$", "QPluginLoader(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		[SmokeMethod("QPluginLoader", "(const QString&)", "$")]
-		private void NewQPluginLoader(string fileName) {
-			((QPluginLoader) interceptor).NewQPluginLoader(fileName);
-		}
-		[SmokeMethod("instance", "()", "")]
 		public QObject Instance() {
-			return ((QPluginLoader) interceptor).Instance();
+			return (QObject) interceptor.Invoke("instance", "instance()", typeof(QObject));
 		}
-		[SmokeMethod("load", "()", "")]
 		public bool Load() {
-			return ((QPluginLoader) interceptor).Load();
+			return (bool) interceptor.Invoke("load", "load()", typeof(bool));
 		}
-		[SmokeMethod("unload", "()", "")]
 		public bool Unload() {
-			return ((QPluginLoader) interceptor).Unload();
+			return (bool) interceptor.Invoke("unload", "unload()", typeof(bool));
 		}
-		[SmokeMethod("isLoaded", "() const", "")]
 		public bool IsLoaded() {
-			return ((QPluginLoader) interceptor).IsLoaded();
+			return (bool) interceptor.Invoke("isLoaded", "isLoaded() const", typeof(bool));
 		}
-		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ((QPluginLoader) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
 		~QPluginLoader() {
-			DisposeQPluginLoader();
+			interceptor.Invoke("~QPluginLoader", "~QPluginLoader()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQPluginLoader();
-		}
-		[SmokeMethod("~QPluginLoader", "()", "")]
-		private void DisposeQPluginLoader() {
-			((QPluginLoader) interceptor).DisposeQPluginLoader();
+			interceptor.Invoke("~QPluginLoader", "~QPluginLoader()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static List<QObject> StaticInstances() {
-			return staticInterceptor.StaticInstances();
+			return (List<QObject>) staticInterceptor.Invoke("staticInstances", "staticInstances()", typeof(List<QObject>));
 		}
 		protected new IQPluginLoaderSignals Emit {
 			get { return (IQPluginLoaderSignals) Q_EMIT; }

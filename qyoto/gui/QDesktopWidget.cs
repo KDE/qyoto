@@ -7,113 +7,80 @@ namespace Qyoto {
 	[SmokeClass("QDesktopWidget")]
 	public class QDesktopWidget : QWidget, IDisposable {
  		protected QDesktopWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDesktopWidget")]
-		interface IQDesktopWidgetProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDesktopWidget), this);
-			interceptor = (QDesktopWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDesktopWidget), "QDesktopWidget", this);
 		}
-		private static IQDesktopWidgetProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDesktopWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDesktopWidgetProxy), null);
-			staticInterceptor = (IQDesktopWidgetProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDesktopWidget), "QDesktopWidget", null);
 		}
 		public QDesktopWidget() : this((Type) null) {
 			CreateProxy();
-			NewQDesktopWidget();
+			interceptor.Invoke("QDesktopWidget", "QDesktopWidget()", typeof(void));
 		}
-		[SmokeMethod("QDesktopWidget", "()", "")]
-		private void NewQDesktopWidget() {
-			((QDesktopWidget) interceptor).NewQDesktopWidget();
-		}
-		[SmokeMethod("isVirtualDesktop", "() const", "")]
 		public bool IsVirtualDesktop() {
-			return ((QDesktopWidget) interceptor).IsVirtualDesktop();
+			return (bool) interceptor.Invoke("isVirtualDesktop", "isVirtualDesktop() const", typeof(bool));
 		}
-		[SmokeMethod("numScreens", "() const", "")]
 		public int NumScreens() {
-			return ((QDesktopWidget) interceptor).NumScreens();
+			return (int) interceptor.Invoke("numScreens", "numScreens() const", typeof(int));
 		}
-		[SmokeMethod("primaryScreen", "() const", "")]
 		public int PrimaryScreen() {
-			return ((QDesktopWidget) interceptor).PrimaryScreen();
+			return (int) interceptor.Invoke("primaryScreen", "primaryScreen() const", typeof(int));
 		}
-		[SmokeMethod("screenNumber", "(const QWidget*) const", "#")]
 		public int ScreenNumber(QWidget widget) {
-			return ((QDesktopWidget) interceptor).ScreenNumber(widget);
+			return (int) interceptor.Invoke("screenNumber#", "screenNumber(const QWidget*) const", typeof(int), typeof(QWidget), widget);
 		}
-		[SmokeMethod("screenNumber", "() const", "")]
 		public int ScreenNumber() {
-			return ((QDesktopWidget) interceptor).ScreenNumber();
+			return (int) interceptor.Invoke("screenNumber", "screenNumber() const", typeof(int));
 		}
-		[SmokeMethod("screenNumber", "(const QPoint&) const", "#")]
 		public int ScreenNumber(QPoint arg1) {
-			return ((QDesktopWidget) interceptor).ScreenNumber(arg1);
+			return (int) interceptor.Invoke("screenNumber#", "screenNumber(const QPoint&) const", typeof(int), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("screen", "(int)", "$")]
 		public QWidget Screen(int screen) {
-			return ((QDesktopWidget) interceptor).Screen(screen);
+			return (QWidget) interceptor.Invoke("screen$", "screen(int)", typeof(QWidget), typeof(int), screen);
 		}
-		[SmokeMethod("screen", "()", "")]
 		public QWidget Screen() {
-			return ((QDesktopWidget) interceptor).Screen();
+			return (QWidget) interceptor.Invoke("screen", "screen()", typeof(QWidget));
 		}
-		[SmokeMethod("screenGeometry", "(int) const", "$")]
 		public QRect ScreenGeometry(int screen) {
-			return ((QDesktopWidget) interceptor).ScreenGeometry(screen);
+			return (QRect) interceptor.Invoke("screenGeometry$", "screenGeometry(int) const", typeof(QRect), typeof(int), screen);
 		}
-		[SmokeMethod("screenGeometry", "() const", "")]
 		public QRect ScreenGeometry() {
-			return ((QDesktopWidget) interceptor).ScreenGeometry();
+			return (QRect) interceptor.Invoke("screenGeometry", "screenGeometry() const", typeof(QRect));
 		}
-		[SmokeMethod("screenGeometry", "(const QWidget*) const", "#")]
 		public QRect ScreenGeometry(QWidget widget) {
-			return ((QDesktopWidget) interceptor).ScreenGeometry(widget);
+			return (QRect) interceptor.Invoke("screenGeometry#", "screenGeometry(const QWidget*) const", typeof(QRect), typeof(QWidget), widget);
 		}
-		[SmokeMethod("screenGeometry", "(const QPoint&) const", "#")]
 		public QRect ScreenGeometry(QPoint point) {
-			return ((QDesktopWidget) interceptor).ScreenGeometry(point);
+			return (QRect) interceptor.Invoke("screenGeometry#", "screenGeometry(const QPoint&) const", typeof(QRect), typeof(QPoint), point);
 		}
-		[SmokeMethod("availableGeometry", "(int) const", "$")]
 		public QRect AvailableGeometry(int screen) {
-			return ((QDesktopWidget) interceptor).AvailableGeometry(screen);
+			return (QRect) interceptor.Invoke("availableGeometry$", "availableGeometry(int) const", typeof(QRect), typeof(int), screen);
 		}
-		[SmokeMethod("availableGeometry", "() const", "")]
 		public QRect AvailableGeometry() {
-			return ((QDesktopWidget) interceptor).AvailableGeometry();
+			return (QRect) interceptor.Invoke("availableGeometry", "availableGeometry() const", typeof(QRect));
 		}
-		[SmokeMethod("availableGeometry", "(const QWidget*) const", "#")]
 		public QRect AvailableGeometry(QWidget widget) {
-			return ((QDesktopWidget) interceptor).AvailableGeometry(widget);
+			return (QRect) interceptor.Invoke("availableGeometry#", "availableGeometry(const QWidget*) const", typeof(QRect), typeof(QWidget), widget);
 		}
-		[SmokeMethod("availableGeometry", "(const QPoint&) const", "#")]
 		public QRect AvailableGeometry(QPoint point) {
-			return ((QDesktopWidget) interceptor).AvailableGeometry(point);
+			return (QRect) interceptor.Invoke("availableGeometry#", "availableGeometry(const QPoint&) const", typeof(QRect), typeof(QPoint), point);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent e) {
-			((QDesktopWidget) interceptor).ResizeEvent(e);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), e);
 		}
 		~QDesktopWidget() {
-			DisposeQDesktopWidget();
+			interceptor.Invoke("~QDesktopWidget", "~QDesktopWidget()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDesktopWidget();
-		}
-		[SmokeMethod("~QDesktopWidget", "()", "")]
-		private void DisposeQDesktopWidget() {
-			((QDesktopWidget) interceptor).DisposeQDesktopWidget();
+			interceptor.Invoke("~QDesktopWidget", "~QDesktopWidget()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDesktopWidgetSignals Emit {
 			get { return (IQDesktopWidgetSignals) Q_EMIT; }

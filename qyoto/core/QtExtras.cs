@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Text;
 	using System.Reflection;
 
-	public partial class Qt : MarshalByRefObject {
+	public partial class Qt : Object {
 		public static QApplication qApp = null;
 
 		public static string SIGNAL(string signal) {

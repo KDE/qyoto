@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionFocusRect : QStyleOption, IDisposable {
  		protected QStyleOptionFocusRect(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFocusRect), this);
-			interceptor = (QStyleOptionFocusRect) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionFocusRect), "QStyleOptionFocusRect", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_FocusRect,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionFocusRect() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFocusRect();
-		}
-		[SmokeMethod("QStyleOptionFocusRect", "()", "")]
-		private void NewQStyleOptionFocusRect() {
-			((QStyleOptionFocusRect) interceptor).NewQStyleOptionFocusRect();
+			interceptor.Invoke("QStyleOptionFocusRect", "QStyleOptionFocusRect()", typeof(void));
 		}
 		public QStyleOptionFocusRect(QStyleOptionFocusRect other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFocusRect(other);
-		}
-		[SmokeMethod("QStyleOptionFocusRect", "(const QStyleOptionFocusRect&)", "#")]
-		private void NewQStyleOptionFocusRect(QStyleOptionFocusRect other) {
-			((QStyleOptionFocusRect) interceptor).NewQStyleOptionFocusRect(other);
+			interceptor.Invoke("QStyleOptionFocusRect#", "QStyleOptionFocusRect(const QStyleOptionFocusRect&)", typeof(void), typeof(QStyleOptionFocusRect), other);
 		}
 		public QStyleOptionFocusRect(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionFocusRect(version);
-		}
-		[SmokeMethod("QStyleOptionFocusRect", "(int)", "$")]
-		private void NewQStyleOptionFocusRect(int version) {
-			((QStyleOptionFocusRect) interceptor).NewQStyleOptionFocusRect(version);
+			interceptor.Invoke("QStyleOptionFocusRect$", "QStyleOptionFocusRect(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionFocusRect() {
-			DisposeQStyleOptionFocusRect();
+			interceptor.Invoke("~QStyleOptionFocusRect", "~QStyleOptionFocusRect()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionFocusRect();
-		}
-		[SmokeMethod("~QStyleOptionFocusRect", "()", "")]
-		private void DisposeQStyleOptionFocusRect() {
-			((QStyleOptionFocusRect) interceptor).DisposeQStyleOptionFocusRect();
+			interceptor.Invoke("~QStyleOptionFocusRect", "~QStyleOptionFocusRect()", typeof(void));
 		}
 	}
 }

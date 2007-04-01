@@ -7,173 +7,126 @@ namespace Qyoto {
 	[SmokeClass("QDBusAbstractInterface")]
 	public abstract class QDBusAbstractInterface : QObject, IDisposable {
  		protected QDBusAbstractInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDBusAbstractInterface")]
-		interface IQDBusAbstractInterfaceProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusAbstractInterface), this);
-			interceptor = (QDBusAbstractInterface) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), "QDBusAbstractInterface", this);
 		}
-		private static IQDBusAbstractInterfaceProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDBusAbstractInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusAbstractInterfaceProxy), null);
-			staticInterceptor = (IQDBusAbstractInterfaceProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), "QDBusAbstractInterface", null);
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QDBusAbstractInterface) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("connection", "() const", "")]
 		public QDBusConnection Connection() {
-			return ((QDBusAbstractInterface) interceptor).Connection();
+			return (QDBusConnection) interceptor.Invoke("connection", "connection() const", typeof(QDBusConnection));
 		}
-		[SmokeMethod("service", "() const", "")]
 		public string Service() {
-			return ((QDBusAbstractInterface) interceptor).Service();
+			return (string) interceptor.Invoke("service", "service() const", typeof(string));
 		}
-		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ((QDBusAbstractInterface) interceptor).Path();
+			return (string) interceptor.Invoke("path", "path() const", typeof(string));
 		}
-		[SmokeMethod("interface", "() const", "")]
 		public string Interface() {
-			return ((QDBusAbstractInterface) interceptor).Interface();
+			return (string) interceptor.Invoke("interface", "interface() const", typeof(string));
 		}
-		[SmokeMethod("lastError", "() const", "")]
 		public QDBusError LastError() {
-			return ((QDBusAbstractInterface) interceptor).LastError();
+			return (QDBusError) interceptor.Invoke("lastError", "lastError() const", typeof(QDBusError));
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$########")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7, QVariant arg8) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+			return (QDBusMessage) interceptor.Invoke("call$########", "call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6, typeof(QVariant), arg7, typeof(QVariant), arg8);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$#######")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+			return (QDBusMessage) interceptor.Invoke("call$#######", "call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6, typeof(QVariant), arg7);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$######")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2,arg3,arg4,arg5,arg6);
+			return (QDBusMessage) interceptor.Invoke("call$######", "call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$#####")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2,arg3,arg4,arg5);
+			return (QDBusMessage) interceptor.Invoke("call$#####", "call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$####")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2,arg3,arg4);
+			return (QDBusMessage) interceptor.Invoke("call$####", "call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&, const QVariant&)", "$###")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2,arg3);
+			return (QDBusMessage) interceptor.Invoke("call$###", "call(const QString&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&, const QVariant&)", "$##")]
 		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1,arg2);
+			return (QDBusMessage) interceptor.Invoke("call$##", "call(const QString&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2);
 		}
-		[SmokeMethod("call", "(const QString&, const QVariant&)", "$#")]
 		public QDBusMessage Call(string method, QVariant arg1) {
-			return ((QDBusAbstractInterface) interceptor).Call(method,arg1);
+			return (QDBusMessage) interceptor.Invoke("call$#", "call(const QString&, const QVariant&)", typeof(QDBusMessage), typeof(string), method, typeof(QVariant), arg1);
 		}
-		[SmokeMethod("call", "(const QString&)", "$")]
 		public QDBusMessage Call(string method) {
-			return ((QDBusAbstractInterface) interceptor).Call(method);
+			return (QDBusMessage) interceptor.Invoke("call$", "call(const QString&)", typeof(QDBusMessage), typeof(string), method);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$$########")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7, QVariant arg8) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+			return (QDBusMessage) interceptor.Invoke("call$$########", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6, typeof(QVariant), arg7, typeof(QVariant), arg8);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$$#######")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+			return (QDBusMessage) interceptor.Invoke("call$$#######", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6, typeof(QVariant), arg7);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$$######")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2,arg3,arg4,arg5,arg6);
+			return (QDBusMessage) interceptor.Invoke("call$$######", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$$#####")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2,arg3,arg4,arg5);
+			return (QDBusMessage) interceptor.Invoke("call$$#####", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", "$$####")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2,arg3,arg4);
+			return (QDBusMessage) interceptor.Invoke("call$$####", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&)", "$$###")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2,arg3);
+			return (QDBusMessage) interceptor.Invoke("call$$###", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&, const QVariant&)", "$$##")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1,arg2);
+			return (QDBusMessage) interceptor.Invoke("call$$##", "call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&, const QVariant&)", "$$#")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method,arg1);
+			return (QDBusMessage) interceptor.Invoke("call$$#", "call(QDBus::CallMode, const QString&, const QVariant&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(QVariant), arg1);
 		}
-		[SmokeMethod("call", "(QDBus::CallMode, const QString&)", "$$")]
 		public QDBusMessage Call(QDBus.CallMode mode, string method) {
-			return ((QDBusAbstractInterface) interceptor).Call(mode,method);
+			return (QDBusMessage) interceptor.Invoke("call$$", "call(QDBus::CallMode, const QString&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method);
 		}
-		[SmokeMethod("callWithArgumentList", "(QDBus::CallMode, const QString&, const QList<QVariant>&)", "$$?")]
 		public QDBusMessage CallWithArgumentList(QDBus.CallMode mode, string method, List<QVariant> args) {
-			return ((QDBusAbstractInterface) interceptor).CallWithArgumentList(mode,method,args);
+			return (QDBusMessage) interceptor.Invoke("callWithArgumentList$$?", "callWithArgumentList(QDBus::CallMode, const QString&, const QList<QVariant>&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(List<QVariant>), args);
 		}
-		[SmokeMethod("callWithCallback", "(const QString&, const QList<QVariant>&, QObject*, const char*)", "$?#$")]
 		public bool CallWithCallback(string method, List<QVariant> args, QObject receiver, string member) {
-			return ((QDBusAbstractInterface) interceptor).CallWithCallback(method,args,receiver,member);
+			return (bool) interceptor.Invoke("callWithCallback$?#$", "callWithCallback(const QString&, const QList<QVariant>&, QObject*, const char*)", typeof(bool), typeof(string), method, typeof(List<QVariant>), args, typeof(QObject), receiver, typeof(string), member);
 		}
 		public QDBusAbstractInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQDBusAbstractInterface(service,path,arg3,connection,parent);
+			interceptor.Invoke("QDBusAbstractInterface$$$##", "QDBusAbstractInterface(const QString&, const QString&, const char*, const QDBusConnection&, QObject*)", typeof(void), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(QDBusConnection), connection, typeof(QObject), parent);
 		}
-		[SmokeMethod("QDBusAbstractInterface", "(const QString&, const QString&, const char*, const QDBusConnection&, QObject*)", "$$$##")]
-		private void NewQDBusAbstractInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) {
-			((QDBusAbstractInterface) interceptor).NewQDBusAbstractInterface(service,path,arg3,connection,parent);
-		}
-		[SmokeMethod("connectNotify", "(const char*)", "$")]
+		[SmokeMethod("connectNotify(const char*)")]
 		protected override void ConnectNotify(string signal) {
-			((QDBusAbstractInterface) interceptor).ConnectNotify(signal);
+			interceptor.Invoke("connectNotify$", "connectNotify(const char*)", typeof(void), typeof(string), signal);
 		}
-		[SmokeMethod("disconnectNotify", "(const char*)", "$")]
+		[SmokeMethod("disconnectNotify(const char*)")]
 		protected override void DisconnectNotify(string signal) {
-			((QDBusAbstractInterface) interceptor).DisconnectNotify(signal);
+			interceptor.Invoke("disconnectNotify$", "disconnectNotify(const char*)", typeof(void), typeof(string), signal);
 		}
-		[SmokeMethod("internalPropGet", "(const char*) const", "$")]
 		protected QVariant InternalPropGet(string propname) {
-			return ((QDBusAbstractInterface) interceptor).InternalPropGet(propname);
+			return (QVariant) interceptor.Invoke("internalPropGet$", "internalPropGet(const char*) const", typeof(QVariant), typeof(string), propname);
 		}
-		[SmokeMethod("internalPropSet", "(const char*, const QVariant&)", "$#")]
 		protected void InternalPropSet(string propname, QVariant value) {
-			((QDBusAbstractInterface) interceptor).InternalPropSet(propname,value);
+			interceptor.Invoke("internalPropSet$#", "internalPropSet(const char*, const QVariant&)", typeof(void), typeof(string), propname, typeof(QVariant), value);
 		}
-		[SmokeMethod("internalConstCall", "(QDBus::CallMode, const QString&, const QList<QVariant>&) const", "$$?")]
 		protected QDBusMessage InternalConstCall(QDBus.CallMode mode, string method, List<QVariant> args) {
-			return ((QDBusAbstractInterface) interceptor).InternalConstCall(mode,method,args);
+			return (QDBusMessage) interceptor.Invoke("internalConstCall$$?", "internalConstCall(QDBus::CallMode, const QString&, const QList<QVariant>&) const", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(List<QVariant>), args);
 		}
-		[SmokeMethod("internalConstCall", "(QDBus::CallMode, const QString&) const", "$$")]
 		protected QDBusMessage InternalConstCall(QDBus.CallMode mode, string method) {
-			return ((QDBusAbstractInterface) interceptor).InternalConstCall(mode,method);
+			return (QDBusMessage) interceptor.Invoke("internalConstCall$$", "internalConstCall(QDBus::CallMode, const QString&) const", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method);
 		}
 		~QDBusAbstractInterface() {
-			DisposeQDBusAbstractInterface();
+			interceptor.Invoke("~QDBusAbstractInterface", "~QDBusAbstractInterface()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDBusAbstractInterface();
-		}
-		[SmokeMethod("~QDBusAbstractInterface", "()", "")]
-		private void DisposeQDBusAbstractInterface() {
-			((QDBusAbstractInterface) interceptor).DisposeQDBusAbstractInterface();
+			interceptor.Invoke("~QDBusAbstractInterface", "~QDBusAbstractInterface()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDBusAbstractInterfaceSignals Emit {
 			get { return (IQDBusAbstractInterfaceSignals) Q_EMIT; }

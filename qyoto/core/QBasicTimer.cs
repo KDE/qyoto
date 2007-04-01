@@ -4,47 +4,34 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QBasicTimer")]
-	public class QBasicTimer : MarshalByRefObject, IDisposable {
-		protected QBasicTimer interceptor = null;
+	public class QBasicTimer : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QBasicTimer(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBasicTimer), this);
-			interceptor = (QBasicTimer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QBasicTimer), "QBasicTimer", this);
 		}
 		public QBasicTimer() : this((Type) null) {
 			CreateProxy();
-			NewQBasicTimer();
+			interceptor.Invoke("QBasicTimer", "QBasicTimer()", typeof(void));
 		}
-		[SmokeMethod("QBasicTimer", "()", "")]
-		private void NewQBasicTimer() {
-			((QBasicTimer) interceptor).NewQBasicTimer();
-		}
-		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
-			return ((QBasicTimer) interceptor).IsActive();
+			return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
 		}
-		[SmokeMethod("timerId", "() const", "")]
 		public int TimerId() {
-			return ((QBasicTimer) interceptor).TimerId();
+			return (int) interceptor.Invoke("timerId", "timerId() const", typeof(int));
 		}
-		[SmokeMethod("start", "(int, QObject*)", "$#")]
 		public void Start(int msec, QObject arg2) {
-			((QBasicTimer) interceptor).Start(msec,arg2);
+			interceptor.Invoke("start$#", "start(int, QObject*)", typeof(void), typeof(int), msec, typeof(QObject), arg2);
 		}
-		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			((QBasicTimer) interceptor).Stop();
+			interceptor.Invoke("stop", "stop()", typeof(void));
 		}
 		~QBasicTimer() {
-			DisposeQBasicTimer();
+			interceptor.Invoke("~QBasicTimer", "~QBasicTimer()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQBasicTimer();
-		}
-		[SmokeMethod("~QBasicTimer", "()", "")]
-		private void DisposeQBasicTimer() {
-			((QBasicTimer) interceptor).DisposeQBasicTimer();
+			interceptor.Invoke("~QBasicTimer", "~QBasicTimer()", typeof(void));
 		}
 	}
 }

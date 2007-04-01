@@ -5,13 +5,12 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QMetaMethod")]
-	public class QMetaMethod : MarshalByRefObject, IDisposable {
-		protected QMetaMethod interceptor = null;
+	public class QMetaMethod : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QMetaMethod(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaMethod), this);
-			interceptor = (QMetaMethod) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMetaMethod), "QMetaMethod", this);
 		}
 		public enum Access {
 			Private = 0,
@@ -30,53 +29,37 @@ namespace Qyoto {
 		}
 		public QMetaMethod() : this((Type) null) {
 			CreateProxy();
-			NewQMetaMethod();
+			interceptor.Invoke("QMetaMethod", "QMetaMethod()", typeof(void));
 		}
-		[SmokeMethod("QMetaMethod", "()", "")]
-		private void NewQMetaMethod() {
-			((QMetaMethod) interceptor).NewQMetaMethod();
-		}
-		[SmokeMethod("signature", "() const", "")]
 		public string Signature() {
-			return ((QMetaMethod) interceptor).Signature();
+			return (string) interceptor.Invoke("signature", "signature() const", typeof(string));
 		}
-		[SmokeMethod("typeName", "() const", "")]
 		public string TypeName() {
-			return ((QMetaMethod) interceptor).TypeName();
+			return (string) interceptor.Invoke("typeName", "typeName() const", typeof(string));
 		}
-		[SmokeMethod("parameterTypes", "() const", "")]
 		public List<QByteArray> ParameterTypes() {
-			return ((QMetaMethod) interceptor).ParameterTypes();
+			return (List<QByteArray>) interceptor.Invoke("parameterTypes", "parameterTypes() const", typeof(List<QByteArray>));
 		}
-		[SmokeMethod("parameterNames", "() const", "")]
 		public List<QByteArray> ParameterNames() {
-			return ((QMetaMethod) interceptor).ParameterNames();
+			return (List<QByteArray>) interceptor.Invoke("parameterNames", "parameterNames() const", typeof(List<QByteArray>));
 		}
-		[SmokeMethod("tag", "() const", "")]
 		public string Tag() {
-			return ((QMetaMethod) interceptor).Tag();
+			return (string) interceptor.Invoke("tag", "tag() const", typeof(string));
 		}
-		[SmokeMethod("access", "() const", "")]
 		public QMetaMethod.Access access() {
-			return ((QMetaMethod) interceptor).access();
+			return (QMetaMethod.Access) interceptor.Invoke("access", "access() const", typeof(QMetaMethod.Access));
 		}
-		[SmokeMethod("methodType", "() const", "")]
 		public QMetaMethod.MethodType methodType() {
-			return ((QMetaMethod) interceptor).methodType();
+			return (QMetaMethod.MethodType) interceptor.Invoke("methodType", "methodType() const", typeof(QMetaMethod.MethodType));
 		}
-		[SmokeMethod("attributes", "() const", "")]
 		public int attributes() {
-			return ((QMetaMethod) interceptor).attributes();
+			return (int) interceptor.Invoke("attributes", "attributes() const", typeof(int));
 		}
 		~QMetaMethod() {
-			DisposeQMetaMethod();
+			interceptor.Invoke("~QMetaMethod", "~QMetaMethod()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQMetaMethod();
-		}
-		[SmokeMethod("~QMetaMethod", "()", "")]
-		private void DisposeQMetaMethod() {
-			((QMetaMethod) interceptor).DisposeQMetaMethod();
+			interceptor.Invoke("~QMetaMethod", "~QMetaMethod()", typeof(void));
 		}
 	}
 }

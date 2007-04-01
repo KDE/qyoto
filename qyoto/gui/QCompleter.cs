@@ -8,21 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QCompleter")]
 	public class QCompleter : QObject, IDisposable {
  		protected QCompleter(Type dummy) : base((Type) null) {}
-		[SmokeClass("QCompleter")]
-		interface IQCompleterProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCompleter), this);
-			interceptor = (QCompleter) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QCompleter), "QCompleter", this);
 		}
-		private static IQCompleterProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QCompleter() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCompleterProxy), null);
-			staticInterceptor = (IQCompleterProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QCompleter), "QCompleter", null);
 		}
 		public enum CompletionMode {
 			PopupCompletion = 0,
@@ -36,183 +27,129 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "completionPrefix")]
 		public string CompletionPrefix {
-			[SmokeMethod("completionPrefix", "()", "")]
-			get { return ((QCompleter) interceptor).CompletionPrefix; }
-			[SmokeMethod("setCompletionPrefix", "(QString)", "$")]
-			set { ((QCompleter) interceptor).CompletionPrefix = value; }
+			get { return (string) interceptor.Invoke("completionPrefix", "completionPrefix()", typeof(string)); }
+			set { interceptor.Invoke("setCompletionPrefix$", "setCompletionPrefix(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QCompleter::ModelSorting", "modelSorting")]
 		public QCompleter.ModelSorting modelSorting {
-			[SmokeMethod("modelSorting", "()", "")]
-			get { return ((QCompleter) interceptor).modelSorting; }
-			[SmokeMethod("setModelSorting", "(QCompleter::ModelSorting)", "$")]
-			set { ((QCompleter) interceptor).modelSorting = value; }
+			get { return (QCompleter.ModelSorting) interceptor.Invoke("modelSorting", "modelSorting()", typeof(QCompleter.ModelSorting)); }
+			set { interceptor.Invoke("setModelSorting$", "setModelSorting(QCompleter::ModelSorting)", typeof(void), typeof(QCompleter.ModelSorting), value); }
 		}
 		[Q_PROPERTY("QCompleter::CompletionMode", "completionMode")]
 		public QCompleter.CompletionMode completionMode {
-			[SmokeMethod("completionMode", "()", "")]
-			get { return ((QCompleter) interceptor).completionMode; }
-			[SmokeMethod("setCompletionMode", "(QCompleter::CompletionMode)", "$")]
-			set { ((QCompleter) interceptor).completionMode = value; }
+			get { return (QCompleter.CompletionMode) interceptor.Invoke("completionMode", "completionMode()", typeof(QCompleter.CompletionMode)); }
+			set { interceptor.Invoke("setCompletionMode$", "setCompletionMode(QCompleter::CompletionMode)", typeof(void), typeof(QCompleter.CompletionMode), value); }
 		}
 		[Q_PROPERTY("int", "completionColumn")]
 		public int CompletionColumn {
-			[SmokeMethod("completionColumn", "()", "")]
-			get { return ((QCompleter) interceptor).CompletionColumn; }
-			[SmokeMethod("setCompletionColumn", "(int)", "$")]
-			set { ((QCompleter) interceptor).CompletionColumn = value; }
+			get { return (int) interceptor.Invoke("completionColumn", "completionColumn()", typeof(int)); }
+			set { interceptor.Invoke("setCompletionColumn$", "setCompletionColumn(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "completionRole")]
 		public int CompletionRole {
-			[SmokeMethod("completionRole", "()", "")]
-			get { return ((QCompleter) interceptor).CompletionRole; }
-			[SmokeMethod("setCompletionRole", "(int)", "$")]
-			set { ((QCompleter) interceptor).CompletionRole = value; }
+			get { return (int) interceptor.Invoke("completionRole", "completionRole()", typeof(int)); }
+			set { interceptor.Invoke("setCompletionRole$", "setCompletionRole(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "caseSensitivity")]
 		public Qt.CaseSensitivity CaseSensitivity {
-			[SmokeMethod("caseSensitivity", "()", "")]
-			get { return ((QCompleter) interceptor).CaseSensitivity; }
-			[SmokeMethod("setCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
-			set { ((QCompleter) interceptor).CaseSensitivity = value; }
+			get { return (Qt.CaseSensitivity) interceptor.Invoke("caseSensitivity", "caseSensitivity()", typeof(Qt.CaseSensitivity)); }
+			set { interceptor.Invoke("setCaseSensitivity$", "setCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), value); }
 		}
 		public QCompleter(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQCompleter(parent);
-		}
-		[SmokeMethod("QCompleter", "(QObject*)", "#")]
-		private void NewQCompleter(QObject parent) {
-			((QCompleter) interceptor).NewQCompleter(parent);
+			interceptor.Invoke("QCompleter#", "QCompleter(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QCompleter() : this((Type) null) {
 			CreateProxy();
-			NewQCompleter();
-		}
-		[SmokeMethod("QCompleter", "()", "")]
-		private void NewQCompleter() {
-			((QCompleter) interceptor).NewQCompleter();
+			interceptor.Invoke("QCompleter", "QCompleter()", typeof(void));
 		}
 		public QCompleter(QAbstractItemModel model, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQCompleter(model,parent);
-		}
-		[SmokeMethod("QCompleter", "(QAbstractItemModel*, QObject*)", "##")]
-		private void NewQCompleter(QAbstractItemModel model, QObject parent) {
-			((QCompleter) interceptor).NewQCompleter(model,parent);
+			interceptor.Invoke("QCompleter##", "QCompleter(QAbstractItemModel*, QObject*)", typeof(void), typeof(QAbstractItemModel), model, typeof(QObject), parent);
 		}
 		public QCompleter(QAbstractItemModel model) : this((Type) null) {
 			CreateProxy();
-			NewQCompleter(model);
-		}
-		[SmokeMethod("QCompleter", "(QAbstractItemModel*)", "#")]
-		private void NewQCompleter(QAbstractItemModel model) {
-			((QCompleter) interceptor).NewQCompleter(model);
+			interceptor.Invoke("QCompleter#", "QCompleter(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);
 		}
 		public QCompleter(List<string> completions, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQCompleter(completions,parent);
-		}
-		[SmokeMethod("QCompleter", "(const QStringList&, QObject*)", "?#")]
-		private void NewQCompleter(List<string> completions, QObject parent) {
-			((QCompleter) interceptor).NewQCompleter(completions,parent);
+			interceptor.Invoke("QCompleter?#", "QCompleter(const QStringList&, QObject*)", typeof(void), typeof(List<string>), completions, typeof(QObject), parent);
 		}
 		public QCompleter(List<string> completions) : this((Type) null) {
 			CreateProxy();
-			NewQCompleter(completions);
+			interceptor.Invoke("QCompleter?", "QCompleter(const QStringList&)", typeof(void), typeof(List<string>), completions);
 		}
-		[SmokeMethod("QCompleter", "(const QStringList&)", "?")]
-		private void NewQCompleter(List<string> completions) {
-			((QCompleter) interceptor).NewQCompleter(completions);
-		}
-		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			((QCompleter) interceptor).SetWidget(widget);
+			interceptor.Invoke("setWidget#", "setWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ((QCompleter) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public void SetModel(QAbstractItemModel c) {
-			((QCompleter) interceptor).SetModel(c);
+			interceptor.Invoke("setModel#", "setModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), c);
 		}
-		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ((QCompleter) interceptor).Model();
+			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
-		[SmokeMethod("popup", "() const", "")]
 		public QAbstractItemView Popup() {
-			return ((QCompleter) interceptor).Popup();
+			return (QAbstractItemView) interceptor.Invoke("popup", "popup() const", typeof(QAbstractItemView));
 		}
-		[SmokeMethod("setPopup", "(QAbstractItemView*)", "#")]
 		public void SetPopup(QAbstractItemView popup) {
-			((QCompleter) interceptor).SetPopup(popup);
+			interceptor.Invoke("setPopup#", "setPopup(QAbstractItemView*)", typeof(void), typeof(QAbstractItemView), popup);
 		}
-		[SmokeMethod("completionCount", "() const", "")]
 		public int CompletionCount() {
-			return ((QCompleter) interceptor).CompletionCount();
+			return (int) interceptor.Invoke("completionCount", "completionCount() const", typeof(int));
 		}
-		[SmokeMethod("setCurrentRow", "(int)", "$")]
 		public bool SetCurrentRow(int row) {
-			return ((QCompleter) interceptor).SetCurrentRow(row);
+			return (bool) interceptor.Invoke("setCurrentRow$", "setCurrentRow(int)", typeof(bool), typeof(int), row);
 		}
-		[SmokeMethod("currentRow", "() const", "")]
 		public int CurrentRow() {
-			return ((QCompleter) interceptor).CurrentRow();
+			return (int) interceptor.Invoke("currentRow", "currentRow() const", typeof(int));
 		}
-		[SmokeMethod("currentIndex", "() const", "")]
 		public QModelIndex CurrentIndex() {
-			return ((QCompleter) interceptor).CurrentIndex();
+			return (QModelIndex) interceptor.Invoke("currentIndex", "currentIndex() const", typeof(QModelIndex));
 		}
-		[SmokeMethod("currentCompletion", "() const", "")]
 		public string CurrentCompletion() {
-			return ((QCompleter) interceptor).CurrentCompletion();
+			return (string) interceptor.Invoke("currentCompletion", "currentCompletion() const", typeof(string));
 		}
-		[SmokeMethod("completionModel", "() const", "")]
 		public QAbstractItemModel CompletionModel() {
-			return ((QCompleter) interceptor).CompletionModel();
+			return (QAbstractItemModel) interceptor.Invoke("completionModel", "completionModel() const", typeof(QAbstractItemModel));
 		}
-		[SmokeMethod("pathFromIndex", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("pathFromIndex(const QModelIndex&) const")]
 		public virtual string PathFromIndex(QModelIndex index) {
-			return ((QCompleter) interceptor).PathFromIndex(index);
+			return (string) interceptor.Invoke("pathFromIndex#", "pathFromIndex(const QModelIndex&) const", typeof(string), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("splitPath", "(const QString&) const", "$")]
+		[SmokeMethod("splitPath(const QString&) const")]
 		public virtual List<string> SplitPath(string path) {
-			return ((QCompleter) interceptor).SplitPath(path);
+			return (List<string>) interceptor.Invoke("splitPath$", "splitPath(const QString&) const", typeof(List<string>), typeof(string), path);
 		}
 		[Q_SLOT("void complete(const QRect&)")]
-		[SmokeMethod("complete", "(const QRect&)", "#")]
 		public void Complete(QRect rect) {
-			((QCompleter) interceptor).Complete(rect);
+			interceptor.Invoke("complete#", "complete(const QRect&)", typeof(void), typeof(QRect), rect);
 		}
 		[Q_SLOT("void complete()")]
-		[SmokeMethod("complete", "()", "")]
 		public void Complete() {
-			((QCompleter) interceptor).Complete();
+			interceptor.Invoke("complete", "complete()", typeof(void));
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
-			return ((QCompleter) interceptor).EventFilter(o,e);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), o, typeof(QEvent), e);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QCompleter) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QCompleter() {
-			DisposeQCompleter();
+			interceptor.Invoke("~QCompleter", "~QCompleter()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQCompleter();
-		}
-		[SmokeMethod("~QCompleter", "()", "")]
-		private void DisposeQCompleter() {
-			((QCompleter) interceptor).DisposeQCompleter();
+			interceptor.Invoke("~QCompleter", "~QCompleter()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQCompleterSignals Emit {
 			get { return (IQCompleterSignals) Q_EMIT; }

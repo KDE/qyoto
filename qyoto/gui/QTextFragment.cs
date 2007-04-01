@@ -4,99 +4,71 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextFragment")]
-	public class QTextFragment : MarshalByRefObject, IDisposable {
-		protected QTextFragment interceptor = null;
+	public class QTextFragment : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextFragment(Type dummy) {}
-		[SmokeClass("QTextFragment")]
-		interface IQTextFragmentProxy {
-			[SmokeMethod("operator==", "(const QTextFragment&) const", "#")]
-			bool op_equals(QTextFragment lhs, QTextFragment o);
-			[SmokeMethod("operator<", "(const QTextFragment&) const", "#")]
-			bool op_lt(QTextFragment lhs, QTextFragment o);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFragment), this);
-			interceptor = (QTextFragment) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextFragment), "QTextFragment", this);
 		}
-		private static IQTextFragmentProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextFragment() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextFragmentProxy), null);
-			staticInterceptor = (IQTextFragmentProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextFragment), "QTextFragment", null);
 		}
 		public QTextFragment() : this((Type) null) {
 			CreateProxy();
-			NewQTextFragment();
-		}
-		[SmokeMethod("QTextFragment", "()", "")]
-		private void NewQTextFragment() {
-			((QTextFragment) interceptor).NewQTextFragment();
+			interceptor.Invoke("QTextFragment", "QTextFragment()", typeof(void));
 		}
 		public QTextFragment(QTextFragment o) : this((Type) null) {
 			CreateProxy();
-			NewQTextFragment(o);
+			interceptor.Invoke("QTextFragment#", "QTextFragment(const QTextFragment&)", typeof(void), typeof(QTextFragment), o);
 		}
-		[SmokeMethod("QTextFragment", "(const QTextFragment&)", "#")]
-		private void NewQTextFragment(QTextFragment o) {
-			((QTextFragment) interceptor).NewQTextFragment(o);
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextFragment) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextFragment)) { return false; }
 			return this == (QTextFragment) o;
 		}
 		public override int GetHashCode() {
-			return ((QTextFragment) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("position", "() const", "")]
 		public int Position() {
-			return ((QTextFragment) interceptor).Position();
+			return (int) interceptor.Invoke("position", "position() const", typeof(int));
 		}
-		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ((QTextFragment) interceptor).Length();
+			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		[SmokeMethod("contains", "(int) const", "$")]
 		public bool Contains(int position) {
-			return ((QTextFragment) interceptor).Contains(position);
+			return (bool) interceptor.Invoke("contains$", "contains(int) const", typeof(bool), typeof(int), position);
 		}
-		[SmokeMethod("charFormat", "() const", "")]
 		public QTextCharFormat CharFormat() {
-			return ((QTextFragment) interceptor).CharFormat();
+			return (QTextCharFormat) interceptor.Invoke("charFormat", "charFormat() const", typeof(QTextCharFormat));
 		}
-		[SmokeMethod("charFormatIndex", "() const", "")]
 		public int CharFormatIndex() {
-			return ((QTextFragment) interceptor).CharFormatIndex();
+			return (int) interceptor.Invoke("charFormatIndex", "charFormatIndex() const", typeof(int));
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QTextFragment) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
 		~QTextFragment() {
-			DisposeQTextFragment();
+			interceptor.Invoke("~QTextFragment", "~QTextFragment()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextFragment();
-		}
-		[SmokeMethod("~QTextFragment", "()", "")]
-		private void DisposeQTextFragment() {
-			((QTextFragment) interceptor).DisposeQTextFragment();
+			interceptor.Invoke("~QTextFragment", "~QTextFragment()", typeof(void));
 		}
 		public static bool operator==(QTextFragment lhs, QTextFragment o) {
-			return staticInterceptor.op_equals(lhs,o);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFragment&) const", typeof(bool), typeof(QTextFragment), lhs, typeof(QTextFragment), o);
 		}
 		public static bool operator!=(QTextFragment lhs, QTextFragment o) {
-			return !staticInterceptor.op_equals(lhs,o);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFragment&) const", typeof(bool), typeof(QTextFragment), lhs, typeof(QTextFragment), o);
 		}
 		public static bool operator<(QTextFragment lhs, QTextFragment o) {
-			return staticInterceptor.op_lt(lhs,o);
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QTextFragment&) const", typeof(bool), typeof(QTextFragment), lhs, typeof(QTextFragment), o);
 		}
 		public static bool operator>(QTextFragment lhs, QTextFragment o) {
-			return !staticInterceptor.op_lt(lhs,o)
-						&& !staticInterceptor.op_equals(lhs,o);
+			return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QTextFragment&) const", typeof(bool), typeof(QTextFragment), lhs, typeof(QTextFragment), o)
+						&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFragment&) const", typeof(bool), typeof(QTextFragment), lhs, typeof(QTextFragment), o);
 		}
 	}
 }

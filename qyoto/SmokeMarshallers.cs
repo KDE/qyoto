@@ -263,7 +263,7 @@ namespace Qyoto {
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
 		// and the value is a WeakReference to the C# instance.
-		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>();
+		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>(2179);
 
 		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createStrongReference) {
 			Object instance = ((GCHandle) instancePtr).Target;

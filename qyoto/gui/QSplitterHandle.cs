@@ -6,93 +6,70 @@ namespace Qyoto {
 	[SmokeClass("QSplitterHandle")]
 	public class QSplitterHandle : QWidget, IDisposable {
  		protected QSplitterHandle(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSplitterHandle")]
-		interface IQSplitterHandleProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSplitterHandle), this);
-			interceptor = (QSplitterHandle) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSplitterHandle), "QSplitterHandle", this);
 		}
-		private static IQSplitterHandleProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSplitterHandle() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSplitterHandleProxy), null);
-			staticInterceptor = (IQSplitterHandleProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSplitterHandle), "QSplitterHandle", null);
 		}
 		public QSplitterHandle(Qt.Orientation o, QSplitter parent) : this((Type) null) {
 			CreateProxy();
-			NewQSplitterHandle(o,parent);
+			interceptor.Invoke("QSplitterHandle$#", "QSplitterHandle(Qt::Orientation, QSplitter*)", typeof(void), typeof(Qt.Orientation), o, typeof(QSplitter), parent);
 		}
-		[SmokeMethod("QSplitterHandle", "(Qt::Orientation, QSplitter*)", "$#")]
-		private void NewQSplitterHandle(Qt.Orientation o, QSplitter parent) {
-			((QSplitterHandle) interceptor).NewQSplitterHandle(o,parent);
-		}
-		[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
 		public void SetOrientation(Qt.Orientation o) {
-			((QSplitterHandle) interceptor).SetOrientation(o);
+			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), o);
 		}
-		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ((QSplitterHandle) interceptor).Orientation();
+			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
-		[SmokeMethod("opaqueResize", "() const", "")]
 		public bool OpaqueResize() {
-			return ((QSplitterHandle) interceptor).OpaqueResize();
+			return (bool) interceptor.Invoke("opaqueResize", "opaqueResize() const", typeof(bool));
 		}
-		[SmokeMethod("splitter", "() const", "")]
 		public QSplitter Splitter() {
-			return ((QSplitterHandle) interceptor).Splitter();
+			return (QSplitter) interceptor.Invoke("splitter", "splitter() const", typeof(QSplitter));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QSplitterHandle) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QSplitterHandle) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QSplitterHandle) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QSplitterHandle) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QSplitterHandle) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QSplitterHandle) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("moveSplitter", "(int)", "$")]
 		protected void MoveSplitter(int p) {
-			((QSplitterHandle) interceptor).MoveSplitter(p);
+			interceptor.Invoke("moveSplitter$", "moveSplitter(int)", typeof(void), typeof(int), p);
 		}
-		[SmokeMethod("closestLegalPosition", "(int)", "$")]
 		protected int ClosestLegalPosition(int p) {
-			return ((QSplitterHandle) interceptor).ClosestLegalPosition(p);
+			return (int) interceptor.Invoke("closestLegalPosition$", "closestLegalPosition(int)", typeof(int), typeof(int), p);
 		}
 		~QSplitterHandle() {
-			DisposeQSplitterHandle();
+			interceptor.Invoke("~QSplitterHandle", "~QSplitterHandle()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSplitterHandle();
-		}
-		[SmokeMethod("~QSplitterHandle", "()", "")]
-		private void DisposeQSplitterHandle() {
-			((QSplitterHandle) interceptor).DisposeQSplitterHandle();
+			interceptor.Invoke("~QSplitterHandle", "~QSplitterHandle()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSplitterHandleSignals Emit {
 			get { return (IQSplitterHandleSignals) Q_EMIT; }

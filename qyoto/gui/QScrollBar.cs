@@ -6,105 +6,76 @@ namespace Qyoto {
 	[SmokeClass("QScrollBar")]
 	public class QScrollBar : QAbstractSlider, IDisposable {
  		protected QScrollBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QScrollBar")]
-		interface IQScrollBarProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollBar), this);
-			interceptor = (QScrollBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QScrollBar), "QScrollBar", this);
 		}
-		private static IQScrollBarProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QScrollBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQScrollBarProxy), null);
-			staticInterceptor = (IQScrollBarProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QScrollBar), "QScrollBar", null);
 		}
 		public QScrollBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQScrollBar(parent);
-		}
-		[SmokeMethod("QScrollBar", "(QWidget*)", "#")]
-		private void NewQScrollBar(QWidget parent) {
-			((QScrollBar) interceptor).NewQScrollBar(parent);
+			interceptor.Invoke("QScrollBar#", "QScrollBar(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QScrollBar() : this((Type) null) {
 			CreateProxy();
-			NewQScrollBar();
-		}
-		[SmokeMethod("QScrollBar", "()", "")]
-		private void NewQScrollBar() {
-			((QScrollBar) interceptor).NewQScrollBar();
+			interceptor.Invoke("QScrollBar", "QScrollBar()", typeof(void));
 		}
 		public QScrollBar(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQScrollBar(arg1,parent);
-		}
-		[SmokeMethod("QScrollBar", "(Qt::Orientation, QWidget*)", "$#")]
-		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent) {
-			((QScrollBar) interceptor).NewQScrollBar(arg1,parent);
+			interceptor.Invoke("QScrollBar$#", "QScrollBar(Qt::Orientation, QWidget*)", typeof(void), typeof(Qt.Orientation), arg1, typeof(QWidget), parent);
 		}
 		public QScrollBar(Qt.Orientation arg1) : this((Type) null) {
 			CreateProxy();
-			NewQScrollBar(arg1);
+			interceptor.Invoke("QScrollBar$", "QScrollBar(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), arg1);
 		}
-		[SmokeMethod("QScrollBar", "(Qt::Orientation)", "$")]
-		private void NewQScrollBar(Qt.Orientation arg1) {
-			((QScrollBar) interceptor).NewQScrollBar(arg1);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QScrollBar) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		public new virtual bool Event(QEvent arg1) {
-			return ((QScrollBar) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QScrollBar) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QScrollBar) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QScrollBar) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QScrollBar) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected override void HideEvent(QHideEvent arg1) {
-			((QScrollBar) interceptor).HideEvent(arg1);
+			interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), arg1);
 		}
-		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
+		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
 		protected override void sliderChange(QAbstractSlider.SliderChange change) {
-			((QScrollBar) interceptor).sliderChange(change);
+			interceptor.Invoke("sliderChange$", "sliderChange(QAbstractSlider::SliderChange)", typeof(void), typeof(QAbstractSlider.SliderChange), change);
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			((QScrollBar) interceptor).ContextMenuEvent(arg1);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
 		}
 		~QScrollBar() {
-			DisposeQScrollBar();
+			interceptor.Invoke("~QScrollBar", "~QScrollBar()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQScrollBar();
-		}
-		[SmokeMethod("~QScrollBar", "()", "")]
-		private void DisposeQScrollBar() {
-			((QScrollBar) interceptor).DisposeQScrollBar();
+			interceptor.Invoke("~QScrollBar", "~QScrollBar()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQScrollBarSignals Emit {
 			get { return (IQScrollBarSignals) Q_EMIT; }

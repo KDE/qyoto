@@ -6,87 +6,69 @@ namespace Qyoto {
 	[SmokeClass("QAbstractProxyModel")]
 	public abstract class QAbstractProxyModel : QAbstractItemModel {
  		protected QAbstractProxyModel(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractProxyModel")]
-		interface IQAbstractProxyModelProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractProxyModel), this);
-			interceptor = (QAbstractProxyModel) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractProxyModel), "QAbstractProxyModel", this);
 		}
-		private static IQAbstractProxyModelProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractProxyModel() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractProxyModelProxy), null);
-			staticInterceptor = (IQAbstractProxyModelProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractProxyModel), "QAbstractProxyModel", null);
 		}
 		public QAbstractProxyModel(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractProxyModel(parent);
-		}
-		[SmokeMethod("QAbstractProxyModel", "(QObject*)", "#")]
-		private void NewQAbstractProxyModel(QObject parent) {
-			((QAbstractProxyModel) interceptor).NewQAbstractProxyModel(parent);
+			interceptor.Invoke("QAbstractProxyModel#", "QAbstractProxyModel(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QAbstractProxyModel() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractProxyModel();
+			interceptor.Invoke("QAbstractProxyModel", "QAbstractProxyModel()", typeof(void));
 		}
-		[SmokeMethod("QAbstractProxyModel", "()", "")]
-		private void NewQAbstractProxyModel() {
-			((QAbstractProxyModel) interceptor).NewQAbstractProxyModel();
-		}
-		[SmokeMethod("setSourceModel", "(QAbstractItemModel*)", "#")]
+		[SmokeMethod("setSourceModel(QAbstractItemModel*)")]
 		public virtual void SetSourceModel(QAbstractItemModel sourceModel) {
-			((QAbstractProxyModel) interceptor).SetSourceModel(sourceModel);
+			interceptor.Invoke("setSourceModel#", "setSourceModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), sourceModel);
 		}
-		[SmokeMethod("sourceModel", "() const", "")]
 		public QAbstractItemModel SourceModel() {
-			return ((QAbstractProxyModel) interceptor).SourceModel();
+			return (QAbstractItemModel) interceptor.Invoke("sourceModel", "sourceModel() const", typeof(QAbstractItemModel));
 		}
-		[SmokeMethod("mapToSource", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("mapToSource(const QModelIndex&) const")]
 		public abstract QModelIndex MapToSource(QModelIndex proxyIndex);
-		[SmokeMethod("mapFromSource", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("mapFromSource(const QModelIndex&) const")]
 		public abstract QModelIndex MapFromSource(QModelIndex sourceIndex);
-		[SmokeMethod("mapSelectionToSource", "(const QItemSelection&) const", "#")]
+		[SmokeMethod("mapSelectionToSource(const QItemSelection&) const")]
 		public virtual QItemSelection MapSelectionToSource(QItemSelection selection) {
-			return ((QAbstractProxyModel) interceptor).MapSelectionToSource(selection);
+			return (QItemSelection) interceptor.Invoke("mapSelectionToSource#", "mapSelectionToSource(const QItemSelection&) const", typeof(QItemSelection), typeof(QItemSelection), selection);
 		}
-		[SmokeMethod("mapSelectionFromSource", "(const QItemSelection&) const", "#")]
+		[SmokeMethod("mapSelectionFromSource(const QItemSelection&) const")]
 		public virtual QItemSelection MapSelectionFromSource(QItemSelection selection) {
-			return ((QAbstractProxyModel) interceptor).MapSelectionFromSource(selection);
+			return (QItemSelection) interceptor.Invoke("mapSelectionFromSource#", "mapSelectionFromSource(const QItemSelection&) const", typeof(QItemSelection), typeof(QItemSelection), selection);
 		}
-		[SmokeMethod("submit", "()", "")]
+		[SmokeMethod("submit()")]
 		public override bool Submit() {
-			return ((QAbstractProxyModel) interceptor).Submit();
+			return (bool) interceptor.Invoke("submit", "submit()", typeof(bool));
 		}
-		[SmokeMethod("revert", "()", "")]
+		[SmokeMethod("revert()")]
 		public override void Revert() {
-			((QAbstractProxyModel) interceptor).Revert();
+			interceptor.Invoke("revert", "revert()", typeof(void));
 		}
-		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
+		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public override QVariant Data(QModelIndex proxyIndex, int role) {
-			return ((QAbstractProxyModel) interceptor).Data(proxyIndex,role);
+			return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), proxyIndex, typeof(int), role);
 		}
-		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("data(const QModelIndex&) const")]
 		public virtual QVariant Data(QModelIndex proxyIndex) {
-			return ((QAbstractProxyModel) interceptor).Data(proxyIndex);
+			return (QVariant) interceptor.Invoke("data#", "data(const QModelIndex&) const", typeof(QVariant), typeof(QModelIndex), proxyIndex);
 		}
-		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
+		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ((QAbstractProxyModel) interceptor).HeaderData(section,orientation,role);
+			return (QVariant) interceptor.Invoke("headerData$$$", "headerData(int, Qt::Orientation, int) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(int), role);
 		}
-		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
+		[SmokeMethod("flags(const QModelIndex&) const")]
 		public override int Flags(QModelIndex index) {
-			return ((QAbstractProxyModel) interceptor).Flags(index);
+			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractProxyModelSignals Emit {
 			get { return (IQAbstractProxyModelSignals) Q_EMIT; }

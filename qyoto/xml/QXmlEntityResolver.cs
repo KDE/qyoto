@@ -9,25 +9,20 @@ namespace Qyoto {
 	}
 
 	[SmokeClass("QXmlEntityResolver")]
-	public abstract class QXmlEntityResolver : MarshalByRefObject, IQXmlEntityResolver {
-		protected QXmlEntityResolver interceptor = null;
+	public abstract class QXmlEntityResolver : Object, IQXmlEntityResolver {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlEntityResolver(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlEntityResolver), this);
-			interceptor = (QXmlEntityResolver) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlEntityResolver), "QXmlEntityResolver", this);
 		}
-		[SmokeMethod("resolveEntity", "(const QString&, const QString&, QXmlInputSource*&)", "$$?")]
+		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
 		public abstract bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret);
-		[SmokeMethod("errorString", "() const", "")]
+		[SmokeMethod("errorString() const")]
 		public abstract string ErrorString();
 		public QXmlEntityResolver() : this((Type) null) {
 			CreateProxy();
-			NewQXmlEntityResolver();
-		}
-		[SmokeMethod("QXmlEntityResolver", "()", "")]
-		private void NewQXmlEntityResolver() {
-			((QXmlEntityResolver) interceptor).NewQXmlEntityResolver();
+			interceptor.Invoke("QXmlEntityResolver", "QXmlEntityResolver()", typeof(void));
 		}
 	}
 }

@@ -4,23 +4,16 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSqlField")]
-	public class QSqlField : MarshalByRefObject, IDisposable {
-		protected QSqlField interceptor = null;
+	public class QSqlField : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlField(Type dummy) {}
-		[SmokeClass("QSqlField")]
-		interface IQSqlFieldProxy {
-			[SmokeMethod("operator==", "(const QSqlField&) const", "#")]
-			bool op_equals(QSqlField lhs, QSqlField other);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlField), this);
-			interceptor = (QSqlField) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlField), "QSqlField", this);
 		}
-		private static IQSqlFieldProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSqlField() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlFieldProxy), null);
-			staticInterceptor = (IQSqlFieldProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSqlField), "QSqlField", null);
 		}
 		public enum RequiredStatus {
 			Unknown = -1,
@@ -29,162 +22,116 @@ namespace Qyoto {
 		}
 		public QSqlField(string fieldName, QVariant.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQSqlField(fieldName,type);
-		}
-		[SmokeMethod("QSqlField", "(const QString&, QVariant::Type)", "$$")]
-		private void NewQSqlField(string fieldName, QVariant.TypeOf type) {
-			((QSqlField) interceptor).NewQSqlField(fieldName,type);
+			interceptor.Invoke("QSqlField$$", "QSqlField(const QString&, QVariant::Type)", typeof(void), typeof(string), fieldName, typeof(QVariant.TypeOf), type);
 		}
 		public QSqlField(string fieldName) : this((Type) null) {
 			CreateProxy();
-			NewQSqlField(fieldName);
-		}
-		[SmokeMethod("QSqlField", "(const QString&)", "$")]
-		private void NewQSqlField(string fieldName) {
-			((QSqlField) interceptor).NewQSqlField(fieldName);
+			interceptor.Invoke("QSqlField$", "QSqlField(const QString&)", typeof(void), typeof(string), fieldName);
 		}
 		public QSqlField() : this((Type) null) {
 			CreateProxy();
-			NewQSqlField();
-		}
-		[SmokeMethod("QSqlField", "()", "")]
-		private void NewQSqlField() {
-			((QSqlField) interceptor).NewQSqlField();
+			interceptor.Invoke("QSqlField", "QSqlField()", typeof(void));
 		}
 		public QSqlField(QSqlField other) : this((Type) null) {
 			CreateProxy();
-			NewQSqlField(other);
-		}
-		[SmokeMethod("QSqlField", "(const QSqlField&)", "#")]
-		private void NewQSqlField(QSqlField other) {
-			((QSqlField) interceptor).NewQSqlField(other);
+			interceptor.Invoke("QSqlField#", "QSqlField(const QSqlField&)", typeof(void), typeof(QSqlField), other);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QSqlField)) { return false; }
 			return this == (QSqlField) o;
 		}
 		public override int GetHashCode() {
-			return ((QSqlField) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("setValue", "(const QVariant&)", "#")]
 		public void SetValue(QVariant value) {
-			((QSqlField) interceptor).SetValue(value);
+			interceptor.Invoke("setValue#", "setValue(const QVariant&)", typeof(void), typeof(QVariant), value);
 		}
-		[SmokeMethod("value", "() const", "")]
 		public QVariant Value() {
-			return ((QSqlField) interceptor).Value();
+			return (QVariant) interceptor.Invoke("value", "value() const", typeof(QVariant));
 		}
-		[SmokeMethod("setName", "(const QString&)", "$")]
 		public void SetName(string name) {
-			((QSqlField) interceptor).SetName(name);
+			interceptor.Invoke("setName$", "setName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QSqlField) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QSqlField) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("setReadOnly", "(bool)", "$")]
 		public void SetReadOnly(bool readOnly) {
-			((QSqlField) interceptor).SetReadOnly(readOnly);
+			interceptor.Invoke("setReadOnly$", "setReadOnly(bool)", typeof(void), typeof(bool), readOnly);
 		}
-		[SmokeMethod("isReadOnly", "() const", "")]
 		public bool IsReadOnly() {
-			return ((QSqlField) interceptor).IsReadOnly();
+			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
 		}
-		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			((QSqlField) interceptor).Clear();
+			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		[SmokeMethod("type", "() const", "")]
 		public QVariant.TypeOf type() {
-			return ((QSqlField) interceptor).type();
+			return (QVariant.TypeOf) interceptor.Invoke("type", "type() const", typeof(QVariant.TypeOf));
 		}
-		[SmokeMethod("isAutoValue", "() const", "")]
 		public bool IsAutoValue() {
-			return ((QSqlField) interceptor).IsAutoValue();
+			return (bool) interceptor.Invoke("isAutoValue", "isAutoValue() const", typeof(bool));
 		}
-		[SmokeMethod("setType", "(QVariant::Type)", "$")]
 		public void SetType(QVariant.TypeOf type) {
-			((QSqlField) interceptor).SetType(type);
+			interceptor.Invoke("setType$", "setType(QVariant::Type)", typeof(void), typeof(QVariant.TypeOf), type);
 		}
-		[SmokeMethod("setRequiredStatus", "(QSqlField::RequiredStatus)", "$")]
 		public void SetRequiredStatus(QSqlField.RequiredStatus status) {
-			((QSqlField) interceptor).SetRequiredStatus(status);
+			interceptor.Invoke("setRequiredStatus$", "setRequiredStatus(QSqlField::RequiredStatus)", typeof(void), typeof(QSqlField.RequiredStatus), status);
 		}
-		[SmokeMethod("setRequired", "(bool)", "$")]
 		public void SetRequired(bool required) {
-			((QSqlField) interceptor).SetRequired(required);
+			interceptor.Invoke("setRequired$", "setRequired(bool)", typeof(void), typeof(bool), required);
 		}
-		[SmokeMethod("setLength", "(int)", "$")]
 		public void SetLength(int fieldLength) {
-			((QSqlField) interceptor).SetLength(fieldLength);
+			interceptor.Invoke("setLength$", "setLength(int)", typeof(void), typeof(int), fieldLength);
 		}
-		[SmokeMethod("setPrecision", "(int)", "$")]
 		public void SetPrecision(int precision) {
-			((QSqlField) interceptor).SetPrecision(precision);
+			interceptor.Invoke("setPrecision$", "setPrecision(int)", typeof(void), typeof(int), precision);
 		}
-		[SmokeMethod("setDefaultValue", "(const QVariant&)", "#")]
 		public void SetDefaultValue(QVariant value) {
-			((QSqlField) interceptor).SetDefaultValue(value);
+			interceptor.Invoke("setDefaultValue#", "setDefaultValue(const QVariant&)", typeof(void), typeof(QVariant), value);
 		}
-		[SmokeMethod("setSqlType", "(int)", "$")]
 		public void SetSqlType(int type) {
-			((QSqlField) interceptor).SetSqlType(type);
+			interceptor.Invoke("setSqlType$", "setSqlType(int)", typeof(void), typeof(int), type);
 		}
-		[SmokeMethod("setGenerated", "(bool)", "$")]
 		public void SetGenerated(bool gen) {
-			((QSqlField) interceptor).SetGenerated(gen);
+			interceptor.Invoke("setGenerated$", "setGenerated(bool)", typeof(void), typeof(bool), gen);
 		}
-		[SmokeMethod("setAutoValue", "(bool)", "$")]
 		public void SetAutoValue(bool autoVal) {
-			((QSqlField) interceptor).SetAutoValue(autoVal);
+			interceptor.Invoke("setAutoValue$", "setAutoValue(bool)", typeof(void), typeof(bool), autoVal);
 		}
-		[SmokeMethod("requiredStatus", "() const", "")]
 		public QSqlField.RequiredStatus requiredStatus() {
-			return ((QSqlField) interceptor).requiredStatus();
+			return (QSqlField.RequiredStatus) interceptor.Invoke("requiredStatus", "requiredStatus() const", typeof(QSqlField.RequiredStatus));
 		}
-		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ((QSqlField) interceptor).Length();
+			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		[SmokeMethod("precision", "() const", "")]
 		public int Precision() {
-			return ((QSqlField) interceptor).Precision();
+			return (int) interceptor.Invoke("precision", "precision() const", typeof(int));
 		}
-		[SmokeMethod("defaultValue", "() const", "")]
 		public QVariant DefaultValue() {
-			return ((QSqlField) interceptor).DefaultValue();
+			return (QVariant) interceptor.Invoke("defaultValue", "defaultValue() const", typeof(QVariant));
 		}
-		[SmokeMethod("typeID", "() const", "")]
 		public int TypeID() {
-			return ((QSqlField) interceptor).TypeID();
+			return (int) interceptor.Invoke("typeID", "typeID() const", typeof(int));
 		}
-		[SmokeMethod("isGenerated", "() const", "")]
 		public bool IsGenerated() {
-			return ((QSqlField) interceptor).IsGenerated();
+			return (bool) interceptor.Invoke("isGenerated", "isGenerated() const", typeof(bool));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QSqlField) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		~QSqlField() {
-			DisposeQSqlField();
+			interceptor.Invoke("~QSqlField", "~QSqlField()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSqlField();
-		}
-		[SmokeMethod("~QSqlField", "()", "")]
-		private void DisposeQSqlField() {
-			((QSqlField) interceptor).DisposeQSqlField();
+			interceptor.Invoke("~QSqlField", "~QSqlField()", typeof(void));
 		}
 		public static bool operator==(QSqlField lhs, QSqlField other) {
-			return staticInterceptor.op_equals(lhs,other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QSqlField&) const", typeof(bool), typeof(QSqlField), lhs, typeof(QSqlField), other);
 		}
 		public static bool operator!=(QSqlField lhs, QSqlField other) {
-			return !staticInterceptor.op_equals(lhs,other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSqlField&) const", typeof(bool), typeof(QSqlField), lhs, typeof(QSqlField), other);
 		}
 	}
 }

@@ -7,138 +7,129 @@ namespace Qyoto {
 	public class QXmlDefaultHandler : QXmlLexicalHandler, IQXmlContentHandler, IQXmlDTDHandler, IQXmlDeclHandler, IQXmlEntityResolver, IQXmlErrorHandler, IDisposable {
  		protected QXmlDefaultHandler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDefaultHandler), this);
-			interceptor = (QXmlDefaultHandler) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlDefaultHandler), "QXmlDefaultHandler", this);
 		}
 		public QXmlDefaultHandler() : this((Type) null) {
 			CreateProxy();
-			NewQXmlDefaultHandler();
+			interceptor.Invoke("QXmlDefaultHandler", "QXmlDefaultHandler()", typeof(void));
 		}
-		[SmokeMethod("QXmlDefaultHandler", "()", "")]
-		private void NewQXmlDefaultHandler() {
-			((QXmlDefaultHandler) interceptor).NewQXmlDefaultHandler();
-		}
-		[SmokeMethod("setDocumentLocator", "(QXmlLocator*)", "#")]
+		[SmokeMethod("setDocumentLocator(QXmlLocator*)")]
 		public virtual void SetDocumentLocator(QXmlLocator locator) {
-			((QXmlDefaultHandler) interceptor).SetDocumentLocator(locator);
+			interceptor.Invoke("setDocumentLocator#", "setDocumentLocator(QXmlLocator*)", typeof(void), typeof(QXmlLocator), locator);
 		}
-		[SmokeMethod("startDocument", "()", "")]
+		[SmokeMethod("startDocument()")]
 		public virtual bool StartDocument() {
-			return ((QXmlDefaultHandler) interceptor).StartDocument();
+			return (bool) interceptor.Invoke("startDocument", "startDocument()", typeof(bool));
 		}
-		[SmokeMethod("endDocument", "()", "")]
+		[SmokeMethod("endDocument()")]
 		public virtual bool EndDocument() {
-			return ((QXmlDefaultHandler) interceptor).EndDocument();
+			return (bool) interceptor.Invoke("endDocument", "endDocument()", typeof(bool));
 		}
-		[SmokeMethod("startPrefixMapping", "(const QString&, const QString&)", "$$")]
+		[SmokeMethod("startPrefixMapping(const QString&, const QString&)")]
 		public virtual bool StartPrefixMapping(string prefix, string uri) {
-			return ((QXmlDefaultHandler) interceptor).StartPrefixMapping(prefix,uri);
+			return (bool) interceptor.Invoke("startPrefixMapping$$", "startPrefixMapping(const QString&, const QString&)", typeof(bool), typeof(string), prefix, typeof(string), uri);
 		}
-		[SmokeMethod("endPrefixMapping", "(const QString&)", "$")]
+		[SmokeMethod("endPrefixMapping(const QString&)")]
 		public virtual bool EndPrefixMapping(string prefix) {
-			return ((QXmlDefaultHandler) interceptor).EndPrefixMapping(prefix);
+			return (bool) interceptor.Invoke("endPrefixMapping$", "endPrefixMapping(const QString&)", typeof(bool), typeof(string), prefix);
 		}
-		[SmokeMethod("startElement", "(const QString&, const QString&, const QString&, const QXmlAttributes&)", "$$$#")]
+		[SmokeMethod("startElement(const QString&, const QString&, const QString&, const QXmlAttributes&)")]
 		public virtual bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts) {
-			return ((QXmlDefaultHandler) interceptor).StartElement(namespaceURI,localName,qName,atts);
+			return (bool) interceptor.Invoke("startElement$$$#", "startElement(const QString&, const QString&, const QString&, const QXmlAttributes&)", typeof(bool), typeof(string), namespaceURI, typeof(string), localName, typeof(string), qName, typeof(QXmlAttributes), atts);
 		}
-		[SmokeMethod("endElement", "(const QString&, const QString&, const QString&)", "$$$")]
+		[SmokeMethod("endElement(const QString&, const QString&, const QString&)")]
 		public virtual bool EndElement(string namespaceURI, string localName, string qName) {
-			return ((QXmlDefaultHandler) interceptor).EndElement(namespaceURI,localName,qName);
+			return (bool) interceptor.Invoke("endElement$$$", "endElement(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), namespaceURI, typeof(string), localName, typeof(string), qName);
 		}
-		[SmokeMethod("characters", "(const QString&)", "$")]
+		[SmokeMethod("characters(const QString&)")]
 		public virtual bool Characters(string ch) {
-			return ((QXmlDefaultHandler) interceptor).Characters(ch);
+			return (bool) interceptor.Invoke("characters$", "characters(const QString&)", typeof(bool), typeof(string), ch);
 		}
-		[SmokeMethod("ignorableWhitespace", "(const QString&)", "$")]
+		[SmokeMethod("ignorableWhitespace(const QString&)")]
 		public virtual bool IgnorableWhitespace(string ch) {
-			return ((QXmlDefaultHandler) interceptor).IgnorableWhitespace(ch);
+			return (bool) interceptor.Invoke("ignorableWhitespace$", "ignorableWhitespace(const QString&)", typeof(bool), typeof(string), ch);
 		}
-		[SmokeMethod("processingInstruction", "(const QString&, const QString&)", "$$")]
+		[SmokeMethod("processingInstruction(const QString&, const QString&)")]
 		public virtual bool ProcessingInstruction(string target, string data) {
-			return ((QXmlDefaultHandler) interceptor).ProcessingInstruction(target,data);
+			return (bool) interceptor.Invoke("processingInstruction$$", "processingInstruction(const QString&, const QString&)", typeof(bool), typeof(string), target, typeof(string), data);
 		}
-		[SmokeMethod("skippedEntity", "(const QString&)", "$")]
+		[SmokeMethod("skippedEntity(const QString&)")]
 		public virtual bool SkippedEntity(string name) {
-			return ((QXmlDefaultHandler) interceptor).SkippedEntity(name);
+			return (bool) interceptor.Invoke("skippedEntity$", "skippedEntity(const QString&)", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("warning", "(const QXmlParseException&)", "#")]
+		[SmokeMethod("warning(const QXmlParseException&)")]
 		public virtual bool Warning(QXmlParseException exception) {
-			return ((QXmlDefaultHandler) interceptor).Warning(exception);
+			return (bool) interceptor.Invoke("warning#", "warning(const QXmlParseException&)", typeof(bool), typeof(QXmlParseException), exception);
 		}
-		[SmokeMethod("error", "(const QXmlParseException&)", "#")]
+		[SmokeMethod("error(const QXmlParseException&)")]
 		public virtual bool Error(QXmlParseException exception) {
-			return ((QXmlDefaultHandler) interceptor).Error(exception);
+			return (bool) interceptor.Invoke("error#", "error(const QXmlParseException&)", typeof(bool), typeof(QXmlParseException), exception);
 		}
-		[SmokeMethod("fatalError", "(const QXmlParseException&)", "#")]
+		[SmokeMethod("fatalError(const QXmlParseException&)")]
 		public virtual bool FatalError(QXmlParseException exception) {
-			return ((QXmlDefaultHandler) interceptor).FatalError(exception);
+			return (bool) interceptor.Invoke("fatalError#", "fatalError(const QXmlParseException&)", typeof(bool), typeof(QXmlParseException), exception);
 		}
-		[SmokeMethod("notationDecl", "(const QString&, const QString&, const QString&)", "$$$")]
+		[SmokeMethod("notationDecl(const QString&, const QString&, const QString&)")]
 		public virtual bool NotationDecl(string name, string publicId, string systemId) {
-			return ((QXmlDefaultHandler) interceptor).NotationDecl(name,publicId,systemId);
+			return (bool) interceptor.Invoke("notationDecl$$$", "notationDecl(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), name, typeof(string), publicId, typeof(string), systemId);
 		}
-		[SmokeMethod("unparsedEntityDecl", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
+		[SmokeMethod("unparsedEntityDecl(const QString&, const QString&, const QString&, const QString&)")]
 		public virtual bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
-			return ((QXmlDefaultHandler) interceptor).UnparsedEntityDecl(name,publicId,systemId,notationName);
+			return (bool) interceptor.Invoke("unparsedEntityDecl$$$$", "unparsedEntityDecl(const QString&, const QString&, const QString&, const QString&)", typeof(bool), typeof(string), name, typeof(string), publicId, typeof(string), systemId, typeof(string), notationName);
 		}
-		[SmokeMethod("resolveEntity", "(const QString&, const QString&, QXmlInputSource*&)", "$$?")]
+		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
-			return ((QXmlDefaultHandler) interceptor).ResolveEntity(publicId,systemId,ret);
+			return (bool) interceptor.Invoke("resolveEntity$$?", "resolveEntity(const QString&, const QString&, QXmlInputSource*&)", typeof(bool), typeof(string), publicId, typeof(string), systemId, typeof(QXmlInputSource), ret);
 		}
-		[SmokeMethod("startDTD", "(const QString&, const QString&, const QString&)", "$$$")]
+		[SmokeMethod("startDTD(const QString&, const QString&, const QString&)")]
 		public override bool StartDTD(string name, string publicId, string systemId) {
-			return ((QXmlDefaultHandler) interceptor).StartDTD(name,publicId,systemId);
+			return (bool) interceptor.Invoke("startDTD$$$", "startDTD(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), name, typeof(string), publicId, typeof(string), systemId);
 		}
-		[SmokeMethod("endDTD", "()", "")]
+		[SmokeMethod("endDTD()")]
 		public override bool EndDTD() {
-			return ((QXmlDefaultHandler) interceptor).EndDTD();
+			return (bool) interceptor.Invoke("endDTD", "endDTD()", typeof(bool));
 		}
-		[SmokeMethod("startEntity", "(const QString&)", "$")]
+		[SmokeMethod("startEntity(const QString&)")]
 		public override bool StartEntity(string name) {
-			return ((QXmlDefaultHandler) interceptor).StartEntity(name);
+			return (bool) interceptor.Invoke("startEntity$", "startEntity(const QString&)", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("endEntity", "(const QString&)", "$")]
+		[SmokeMethod("endEntity(const QString&)")]
 		public override bool EndEntity(string name) {
-			return ((QXmlDefaultHandler) interceptor).EndEntity(name);
+			return (bool) interceptor.Invoke("endEntity$", "endEntity(const QString&)", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("startCDATA", "()", "")]
+		[SmokeMethod("startCDATA()")]
 		public override bool StartCDATA() {
-			return ((QXmlDefaultHandler) interceptor).StartCDATA();
+			return (bool) interceptor.Invoke("startCDATA", "startCDATA()", typeof(bool));
 		}
-		[SmokeMethod("endCDATA", "()", "")]
+		[SmokeMethod("endCDATA()")]
 		public override bool EndCDATA() {
-			return ((QXmlDefaultHandler) interceptor).EndCDATA();
+			return (bool) interceptor.Invoke("endCDATA", "endCDATA()", typeof(bool));
 		}
-		[SmokeMethod("comment", "(const QString&)", "$")]
+		[SmokeMethod("comment(const QString&)")]
 		public override bool Comment(string ch) {
-			return ((QXmlDefaultHandler) interceptor).Comment(ch);
+			return (bool) interceptor.Invoke("comment$", "comment(const QString&)", typeof(bool), typeof(string), ch);
 		}
-		[SmokeMethod("attributeDecl", "(const QString&, const QString&, const QString&, const QString&, const QString&)", "$$$$$")]
+		[SmokeMethod("attributeDecl(const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public virtual bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value) {
-			return ((QXmlDefaultHandler) interceptor).AttributeDecl(eName,aName,type,valueDefault,value);
+			return (bool) interceptor.Invoke("attributeDecl$$$$$", "attributeDecl(const QString&, const QString&, const QString&, const QString&, const QString&)", typeof(bool), typeof(string), eName, typeof(string), aName, typeof(string), type, typeof(string), valueDefault, typeof(string), value);
 		}
-		[SmokeMethod("internalEntityDecl", "(const QString&, const QString&)", "$$")]
+		[SmokeMethod("internalEntityDecl(const QString&, const QString&)")]
 		public virtual bool InternalEntityDecl(string name, string value) {
-			return ((QXmlDefaultHandler) interceptor).InternalEntityDecl(name,value);
+			return (bool) interceptor.Invoke("internalEntityDecl$$", "internalEntityDecl(const QString&, const QString&)", typeof(bool), typeof(string), name, typeof(string), value);
 		}
-		[SmokeMethod("externalEntityDecl", "(const QString&, const QString&, const QString&)", "$$$")]
+		[SmokeMethod("externalEntityDecl(const QString&, const QString&, const QString&)")]
 		public virtual bool ExternalEntityDecl(string name, string publicId, string systemId) {
-			return ((QXmlDefaultHandler) interceptor).ExternalEntityDecl(name,publicId,systemId);
+			return (bool) interceptor.Invoke("externalEntityDecl$$$", "externalEntityDecl(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), name, typeof(string), publicId, typeof(string), systemId);
 		}
-		[SmokeMethod("errorString", "() const", "")]
+		[SmokeMethod("errorString() const")]
 		public override string ErrorString() {
-			return ((QXmlDefaultHandler) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
 		~QXmlDefaultHandler() {
-			DisposeQXmlDefaultHandler();
+			interceptor.Invoke("~QXmlDefaultHandler", "~QXmlDefaultHandler()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQXmlDefaultHandler();
-		}
-		[SmokeMethod("~QXmlDefaultHandler", "()", "")]
-		private void DisposeQXmlDefaultHandler() {
-			((QXmlDefaultHandler) interceptor).DisposeQXmlDefaultHandler();
+			interceptor.Invoke("~QXmlDefaultHandler", "~QXmlDefaultHandler()", typeof(void));
 		}
 	}
 }

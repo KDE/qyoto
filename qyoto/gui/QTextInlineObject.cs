@@ -4,84 +4,62 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QTextInlineObject")]
-	public class QTextInlineObject : MarshalByRefObject, IDisposable {
-		protected QTextInlineObject interceptor = null;
+	public class QTextInlineObject : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextInlineObject(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextInlineObject), this);
-			interceptor = (QTextInlineObject) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextInlineObject), "QTextInlineObject", this);
 		}
 		// QTextInlineObject* QTextInlineObject(int arg1,QTextEngine* arg2); >>>> NOT CONVERTED
 		public QTextInlineObject() : this((Type) null) {
 			CreateProxy();
-			NewQTextInlineObject();
+			interceptor.Invoke("QTextInlineObject", "QTextInlineObject()", typeof(void));
 		}
-		[SmokeMethod("QTextInlineObject", "()", "")]
-		private void NewQTextInlineObject() {
-			((QTextInlineObject) interceptor).NewQTextInlineObject();
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QTextInlineObject) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("rect", "() const", "")]
 		public QRectF Rect() {
-			return ((QTextInlineObject) interceptor).Rect();
+			return (QRectF) interceptor.Invoke("rect", "rect() const", typeof(QRectF));
 		}
-		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ((QTextInlineObject) interceptor).Width();
+			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
-			return ((QTextInlineObject) interceptor).Ascent();
+			return (double) interceptor.Invoke("ascent", "ascent() const", typeof(double));
 		}
-		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
-			return ((QTextInlineObject) interceptor).Descent();
+			return (double) interceptor.Invoke("descent", "descent() const", typeof(double));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ((QTextInlineObject) interceptor).Height();
+			return (double) interceptor.Invoke("height", "height() const", typeof(double));
 		}
-		[SmokeMethod("textDirection", "() const", "")]
 		public Qt.LayoutDirection TextDirection() {
-			return ((QTextInlineObject) interceptor).TextDirection();
+			return (Qt.LayoutDirection) interceptor.Invoke("textDirection", "textDirection() const", typeof(Qt.LayoutDirection));
 		}
-		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double w) {
-			((QTextInlineObject) interceptor).SetWidth(w);
+			interceptor.Invoke("setWidth$", "setWidth(qreal)", typeof(void), typeof(double), w);
 		}
-		[SmokeMethod("setAscent", "(qreal)", "$")]
 		public void SetAscent(double a) {
-			((QTextInlineObject) interceptor).SetAscent(a);
+			interceptor.Invoke("setAscent$", "setAscent(qreal)", typeof(void), typeof(double), a);
 		}
-		[SmokeMethod("setDescent", "(qreal)", "$")]
 		public void SetDescent(double d) {
-			((QTextInlineObject) interceptor).SetDescent(d);
+			interceptor.Invoke("setDescent$", "setDescent(qreal)", typeof(void), typeof(double), d);
 		}
-		[SmokeMethod("textPosition", "() const", "")]
 		public int TextPosition() {
-			return ((QTextInlineObject) interceptor).TextPosition();
+			return (int) interceptor.Invoke("textPosition", "textPosition() const", typeof(int));
 		}
-		[SmokeMethod("formatIndex", "() const", "")]
 		public int FormatIndex() {
-			return ((QTextInlineObject) interceptor).FormatIndex();
+			return (int) interceptor.Invoke("formatIndex", "formatIndex() const", typeof(int));
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QTextFormat Format() {
-			return ((QTextInlineObject) interceptor).Format();
+			return (QTextFormat) interceptor.Invoke("format", "format() const", typeof(QTextFormat));
 		}
 		~QTextInlineObject() {
-			DisposeQTextInlineObject();
+			interceptor.Invoke("~QTextInlineObject", "~QTextInlineObject()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQTextInlineObject();
-		}
-		[SmokeMethod("~QTextInlineObject", "()", "")]
-		private void DisposeQTextInlineObject() {
-			((QTextInlineObject) interceptor).DisposeQTextInlineObject();
+			interceptor.Invoke("~QTextInlineObject", "~QTextInlineObject()", typeof(void));
 		}
 	}
 }

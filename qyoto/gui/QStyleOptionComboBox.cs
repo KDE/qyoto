@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionComboBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionComboBox), this);
-			interceptor = (QStyleOptionComboBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionComboBox), "QStyleOptionComboBox", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ComboBox,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionComboBox() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionComboBox();
-		}
-		[SmokeMethod("QStyleOptionComboBox", "()", "")]
-		private void NewQStyleOptionComboBox() {
-			((QStyleOptionComboBox) interceptor).NewQStyleOptionComboBox();
+			interceptor.Invoke("QStyleOptionComboBox", "QStyleOptionComboBox()", typeof(void));
 		}
 		public QStyleOptionComboBox(QStyleOptionComboBox other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionComboBox(other);
-		}
-		[SmokeMethod("QStyleOptionComboBox", "(const QStyleOptionComboBox&)", "#")]
-		private void NewQStyleOptionComboBox(QStyleOptionComboBox other) {
-			((QStyleOptionComboBox) interceptor).NewQStyleOptionComboBox(other);
+			interceptor.Invoke("QStyleOptionComboBox#", "QStyleOptionComboBox(const QStyleOptionComboBox&)", typeof(void), typeof(QStyleOptionComboBox), other);
 		}
 		public QStyleOptionComboBox(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionComboBox(version);
-		}
-		[SmokeMethod("QStyleOptionComboBox", "(int)", "$")]
-		private void NewQStyleOptionComboBox(int version) {
-			((QStyleOptionComboBox) interceptor).NewQStyleOptionComboBox(version);
+			interceptor.Invoke("QStyleOptionComboBox$", "QStyleOptionComboBox(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionComboBox() {
-			DisposeQStyleOptionComboBox();
+			interceptor.Invoke("~QStyleOptionComboBox", "~QStyleOptionComboBox()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionComboBox();
-		}
-		[SmokeMethod("~QStyleOptionComboBox", "()", "")]
-		private void DisposeQStyleOptionComboBox() {
-			((QStyleOptionComboBox) interceptor).DisposeQStyleOptionComboBox();
+			interceptor.Invoke("~QStyleOptionComboBox", "~QStyleOptionComboBox()", typeof(void));
 		}
 	}
 }

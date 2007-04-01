@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QToolBarChangeEvent : QEvent, IDisposable {
  		protected QToolBarChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBarChangeEvent), this);
-			interceptor = (QToolBarChangeEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QToolBarChangeEvent), "QToolBarChangeEvent", this);
 		}
 		public QToolBarChangeEvent(bool t) : this((Type) null) {
 			CreateProxy();
-			NewQToolBarChangeEvent(t);
+			interceptor.Invoke("QToolBarChangeEvent$", "QToolBarChangeEvent(bool)", typeof(void), typeof(bool), t);
 		}
-		[SmokeMethod("QToolBarChangeEvent", "(bool)", "$")]
-		private void NewQToolBarChangeEvent(bool t) {
-			((QToolBarChangeEvent) interceptor).NewQToolBarChangeEvent(t);
-		}
-		[SmokeMethod("toggle", "() const", "")]
 		public bool Toggle() {
-			return ((QToolBarChangeEvent) interceptor).Toggle();
+			return (bool) interceptor.Invoke("toggle", "toggle() const", typeof(bool));
 		}
 		~QToolBarChangeEvent() {
-			DisposeQToolBarChangeEvent();
+			interceptor.Invoke("~QToolBarChangeEvent", "~QToolBarChangeEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQToolBarChangeEvent();
-		}
-		[SmokeMethod("~QToolBarChangeEvent", "()", "")]
-		private void DisposeQToolBarChangeEvent() {
-			((QToolBarChangeEvent) interceptor).DisposeQToolBarChangeEvent();
+			interceptor.Invoke("~QToolBarChangeEvent", "~QToolBarChangeEvent()", typeof(void));
 		}
 	}
 }

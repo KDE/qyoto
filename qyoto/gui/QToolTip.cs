@@ -4,57 +4,37 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QToolTip")]
-	public class QToolTip : MarshalByRefObject {
-		protected QToolTip interceptor = null;
+	public class QToolTip : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QToolTip(Type dummy) {}
-		[SmokeClass("QToolTip")]
-		interface IQToolTipProxy {
-			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*)", "#$#")]
-			void ShowText(QPoint pos, string text, QWidget w);
-			[SmokeMethod("showText", "(const QPoint&, const QString&)", "#$")]
-			void ShowText(QPoint pos, string text);
-			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*, const QRect&)", "#$##")]
-			void ShowText(QPoint pos, string text, QWidget w, QRect rect);
-			[SmokeMethod("hideText", "()", "")]
-			void HideText();
-			[SmokeMethod("palette", "()", "")]
-			QPalette Palette();
-			[SmokeMethod("setPalette", "(const QPalette&)", "#")]
-			void SetPalette(QPalette arg1);
-			[SmokeMethod("font", "()", "")]
-			QFont Font();
-			[SmokeMethod("setFont", "(const QFont&)", "#")]
-			void SetFont(QFont arg1);
-		}
-		private static IQToolTipProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QToolTip() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolTipProxy), null);
-			staticInterceptor = (IQToolTipProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QToolTip), "QToolTip", null);
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w) {
-			staticInterceptor.ShowText(pos,text,w);
+			staticInterceptor.Invoke("showText#$#", "showText(const QPoint&, const QString&, QWidget*)", typeof(void), typeof(QPoint), pos, typeof(string), text, typeof(QWidget), w);
 		}
 		public static void ShowText(QPoint pos, string text) {
-			staticInterceptor.ShowText(pos,text);
+			staticInterceptor.Invoke("showText#$", "showText(const QPoint&, const QString&)", typeof(void), typeof(QPoint), pos, typeof(string), text);
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w, QRect rect) {
-			staticInterceptor.ShowText(pos,text,w,rect);
+			staticInterceptor.Invoke("showText#$##", "showText(const QPoint&, const QString&, QWidget*, const QRect&)", typeof(void), typeof(QPoint), pos, typeof(string), text, typeof(QWidget), w, typeof(QRect), rect);
 		}
 		public static void HideText() {
-			staticInterceptor.HideText();
+			staticInterceptor.Invoke("hideText", "hideText()", typeof(void));
 		}
 		public static QPalette Palette() {
-			return staticInterceptor.Palette();
+			return (QPalette) staticInterceptor.Invoke("palette", "palette()", typeof(QPalette));
 		}
 		public static void SetPalette(QPalette arg1) {
-			staticInterceptor.SetPalette(arg1);
+			staticInterceptor.Invoke("setPalette#", "setPalette(const QPalette&)", typeof(void), typeof(QPalette), arg1);
 		}
 		public static QFont Font() {
-			return staticInterceptor.Font();
+			return (QFont) staticInterceptor.Invoke("font", "font()", typeof(QFont));
 		}
 		public static void SetFont(QFont arg1) {
-			staticInterceptor.SetFont(arg1);
+			staticInterceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), arg1);
 		}
 	}
 }

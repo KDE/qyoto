@@ -8,142 +8,112 @@ namespace Qyoto {
 	[SmokeClass("QTextBrowser")]
 	public class QTextBrowser : QTextEdit, IDisposable {
  		protected QTextBrowser(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextBrowser")]
-		interface IQTextBrowserProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBrowser), this);
-			interceptor = (QTextBrowser) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextBrowser), "QTextBrowser", this);
 		}
-		private static IQTextBrowserProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextBrowser() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBrowserProxy), null);
-			staticInterceptor = (IQTextBrowserProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextBrowser), "QTextBrowser", null);
 		}
 		[Q_PROPERTY("QUrl", "source")]
 		public IQUrl Source {
-			[SmokeMethod("source", "()", "")]
-			get { return ((QTextBrowser) interceptor).Source; }
-			[SmokeMethod("setSource", "(QUrl)", "#")]
-			set { ((QTextBrowser) interceptor).Source = value; }
+			get { return (IQUrl) interceptor.Invoke("source", "source()", typeof(IQUrl)); }
+			set { interceptor.Invoke("setSource#", "setSource(QUrl)", typeof(void), typeof(IQUrl), value); }
 		}
 		[Q_PROPERTY("QStringList", "searchPaths")]
 		public List<string> SearchPaths {
-			[SmokeMethod("searchPaths", "()", "")]
-			get { return ((QTextBrowser) interceptor).SearchPaths; }
-			[SmokeMethod("setSearchPaths", "(QStringList)", "?")]
-			set { ((QTextBrowser) interceptor).SearchPaths = value; }
+			get { return (List<string>) interceptor.Invoke("searchPaths", "searchPaths()", typeof(List<string>)); }
+			set { interceptor.Invoke("setSearchPaths?", "setSearchPaths(QStringList)", typeof(void), typeof(List<string>), value); }
 		}
 		[Q_PROPERTY("bool", "openExternalLinks")]
 		public bool OpenExternalLinks {
-			[SmokeMethod("openExternalLinks", "()", "")]
-			get { return ((QTextBrowser) interceptor).OpenExternalLinks; }
-			[SmokeMethod("setOpenExternalLinks", "(bool)", "$")]
-			set { ((QTextBrowser) interceptor).OpenExternalLinks = value; }
+			get { return (bool) interceptor.Invoke("openExternalLinks", "openExternalLinks()", typeof(bool)); }
+			set { interceptor.Invoke("setOpenExternalLinks$", "setOpenExternalLinks(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QTextBrowser(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQTextBrowser(parent);
-		}
-		[SmokeMethod("QTextBrowser", "(QWidget*)", "#")]
-		private void NewQTextBrowser(QWidget parent) {
-			((QTextBrowser) interceptor).NewQTextBrowser(parent);
+			interceptor.Invoke("QTextBrowser#", "QTextBrowser(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QTextBrowser() : this((Type) null) {
 			CreateProxy();
-			NewQTextBrowser();
+			interceptor.Invoke("QTextBrowser", "QTextBrowser()", typeof(void));
 		}
-		[SmokeMethod("QTextBrowser", "()", "")]
-		private void NewQTextBrowser() {
-			((QTextBrowser) interceptor).NewQTextBrowser();
-		}
-		[SmokeMethod("loadResource", "(int, const QUrl&)", "$#")]
+		[SmokeMethod("loadResource(int, const QUrl&)")]
 		public override QVariant LoadResource(int type, IQUrl name) {
-			return ((QTextBrowser) interceptor).LoadResource(type,name);
+			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(IQUrl), name);
 		}
-		[SmokeMethod("isBackwardAvailable", "() const", "")]
 		public bool IsBackwardAvailable() {
-			return ((QTextBrowser) interceptor).IsBackwardAvailable();
+			return (bool) interceptor.Invoke("isBackwardAvailable", "isBackwardAvailable() const", typeof(bool));
 		}
-		[SmokeMethod("isForwardAvailable", "() const", "")]
 		public bool IsForwardAvailable() {
-			return ((QTextBrowser) interceptor).IsForwardAvailable();
+			return (bool) interceptor.Invoke("isForwardAvailable", "isForwardAvailable() const", typeof(bool));
 		}
-		[SmokeMethod("clearHistory", "()", "")]
 		public void ClearHistory() {
-			((QTextBrowser) interceptor).ClearHistory();
+			interceptor.Invoke("clearHistory", "clearHistory()", typeof(void));
 		}
 		[Q_SLOT("void backward()")]
-		[SmokeMethod("backward", "()", "")]
+		[SmokeMethod("backward()")]
 		public virtual void Backward() {
-			((QTextBrowser) interceptor).Backward();
+			interceptor.Invoke("backward", "backward()", typeof(void));
 		}
 		[Q_SLOT("void forward()")]
-		[SmokeMethod("forward", "()", "")]
+		[SmokeMethod("forward()")]
 		public virtual void Forward() {
-			((QTextBrowser) interceptor).Forward();
+			interceptor.Invoke("forward", "forward()", typeof(void));
 		}
 		[Q_SLOT("void home()")]
-		[SmokeMethod("home", "()", "")]
+		[SmokeMethod("home()")]
 		public virtual void Home() {
-			((QTextBrowser) interceptor).Home();
+			interceptor.Invoke("home", "home()", typeof(void));
 		}
 		[Q_SLOT("void reload()")]
-		[SmokeMethod("reload", "()", "")]
+		[SmokeMethod("reload()")]
 		public virtual void Reload() {
-			((QTextBrowser) interceptor).Reload();
+			interceptor.Invoke("reload", "reload()", typeof(void));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
-			return ((QTextBrowser) interceptor).Event(e);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent ev) {
-			((QTextBrowser) interceptor).KeyPressEvent(ev);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), ev);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent ev) {
-			((QTextBrowser) interceptor).MouseMoveEvent(ev);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent ev) {
-			((QTextBrowser) interceptor).MousePressEvent(ev);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent ev) {
-			((QTextBrowser) interceptor).MouseReleaseEvent(ev);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
 		}
-		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected override void FocusOutEvent(QFocusEvent ev) {
-			((QTextBrowser) interceptor).FocusOutEvent(ev);
+			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), ev);
 		}
-		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		protected override bool FocusNextPrevChild(bool next) {
-			return ((QTextBrowser) interceptor).FocusNextPrevChild(next);
+			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent e) {
-			((QTextBrowser) interceptor).PaintEvent(e);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), e);
 		}
 		~QTextBrowser() {
-			DisposeQTextBrowser();
+			interceptor.Invoke("~QTextBrowser", "~QTextBrowser()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTextBrowser();
-		}
-		[SmokeMethod("~QTextBrowser", "()", "")]
-		private void DisposeQTextBrowser() {
-			((QTextBrowser) interceptor).DisposeQTextBrowser();
+			interceptor.Invoke("~QTextBrowser", "~QTextBrowser()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextBrowserSignals Emit {
 			get { return (IQTextBrowserSignals) Q_EMIT; }

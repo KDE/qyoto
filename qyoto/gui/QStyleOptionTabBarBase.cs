@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionTabBarBase : QStyleOption, IDisposable {
  		protected QStyleOptionTabBarBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabBarBase), this);
-			interceptor = (QStyleOptionTabBarBase) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionTabBarBase), "QStyleOptionTabBarBase", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TabBarBase,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionTabBarBase() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTabBarBase();
-		}
-		[SmokeMethod("QStyleOptionTabBarBase", "()", "")]
-		private void NewQStyleOptionTabBarBase() {
-			((QStyleOptionTabBarBase) interceptor).NewQStyleOptionTabBarBase();
+			interceptor.Invoke("QStyleOptionTabBarBase", "QStyleOptionTabBarBase()", typeof(void));
 		}
 		public QStyleOptionTabBarBase(QStyleOptionTabBarBase other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTabBarBase(other);
-		}
-		[SmokeMethod("QStyleOptionTabBarBase", "(const QStyleOptionTabBarBase&)", "#")]
-		private void NewQStyleOptionTabBarBase(QStyleOptionTabBarBase other) {
-			((QStyleOptionTabBarBase) interceptor).NewQStyleOptionTabBarBase(other);
+			interceptor.Invoke("QStyleOptionTabBarBase#", "QStyleOptionTabBarBase(const QStyleOptionTabBarBase&)", typeof(void), typeof(QStyleOptionTabBarBase), other);
 		}
 		public QStyleOptionTabBarBase(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionTabBarBase(version);
-		}
-		[SmokeMethod("QStyleOptionTabBarBase", "(int)", "$")]
-		private void NewQStyleOptionTabBarBase(int version) {
-			((QStyleOptionTabBarBase) interceptor).NewQStyleOptionTabBarBase(version);
+			interceptor.Invoke("QStyleOptionTabBarBase$", "QStyleOptionTabBarBase(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionTabBarBase() {
-			DisposeQStyleOptionTabBarBase();
+			interceptor.Invoke("~QStyleOptionTabBarBase", "~QStyleOptionTabBarBase()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionTabBarBase();
-		}
-		[SmokeMethod("~QStyleOptionTabBarBase", "()", "")]
-		private void DisposeQStyleOptionTabBarBase() {
-			((QStyleOptionTabBarBase) interceptor).DisposeQStyleOptionTabBarBase();
+			interceptor.Invoke("~QStyleOptionTabBarBase", "~QStyleOptionTabBarBase()", typeof(void));
 		}
 	}
 }

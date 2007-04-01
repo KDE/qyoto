@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDBusError")]
-	public class QDBusError : MarshalByRefObject, IDisposable {
-		protected QDBusError interceptor = null;
+	public class QDBusError : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDBusError(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusError), this);
-			interceptor = (QDBusError) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDBusError), "QDBusError", this);
 		}
 		public enum ErrorType {
 			NoError = 0,
@@ -39,53 +38,33 @@ namespace Qyoto {
 		// QDBusError* QDBusError(const DBusError* arg1); >>>> NOT CONVERTED
 		public QDBusError(QDBusMessage msg) : this((Type) null) {
 			CreateProxy();
-			NewQDBusError(msg);
-		}
-		[SmokeMethod("QDBusError", "(const QDBusMessage&)", "#")]
-		private void NewQDBusError(QDBusMessage msg) {
-			((QDBusError) interceptor).NewQDBusError(msg);
+			interceptor.Invoke("QDBusError#", "QDBusError(const QDBusMessage&)", typeof(void), typeof(QDBusMessage), msg);
 		}
 		public QDBusError(QDBusError.ErrorType error, string message) : this((Type) null) {
 			CreateProxy();
-			NewQDBusError(error,message);
-		}
-		[SmokeMethod("QDBusError", "(QDBusError::ErrorType, const QString&)", "$$")]
-		private void NewQDBusError(QDBusError.ErrorType error, string message) {
-			((QDBusError) interceptor).NewQDBusError(error,message);
+			interceptor.Invoke("QDBusError$$", "QDBusError(QDBusError::ErrorType, const QString&)", typeof(void), typeof(QDBusError.ErrorType), error, typeof(string), message);
 		}
 		public QDBusError(QDBusError other) : this((Type) null) {
 			CreateProxy();
-			NewQDBusError(other);
+			interceptor.Invoke("QDBusError#", "QDBusError(const QDBusError&)", typeof(void), typeof(QDBusError), other);
 		}
-		[SmokeMethod("QDBusError", "(const QDBusError&)", "#")]
-		private void NewQDBusError(QDBusError other) {
-			((QDBusError) interceptor).NewQDBusError(other);
-		}
-		[SmokeMethod("type", "() const", "")]
 		public QDBusError.ErrorType type() {
-			return ((QDBusError) interceptor).type();
+			return (QDBusError.ErrorType) interceptor.Invoke("type", "type() const", typeof(QDBusError.ErrorType));
 		}
-		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ((QDBusError) interceptor).Name();
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		[SmokeMethod("message", "() const", "")]
 		public string Message() {
-			return ((QDBusError) interceptor).Message();
+			return (string) interceptor.Invoke("message", "message() const", typeof(string));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QDBusError) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		~QDBusError() {
-			DisposeQDBusError();
+			interceptor.Invoke("~QDBusError", "~QDBusError()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDBusError();
-		}
-		[SmokeMethod("~QDBusError", "()", "")]
-		private void DisposeQDBusError() {
-			((QDBusError) interceptor).DisposeQDBusError();
+			interceptor.Invoke("~QDBusError", "~QDBusError()", typeof(void));
 		}
 	}
 }

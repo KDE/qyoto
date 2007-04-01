@@ -6,73 +6,56 @@ namespace Qyoto {
 	[SmokeClass("QSizeGrip")]
 	public class QSizeGrip : QWidget, IDisposable {
  		protected QSizeGrip(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSizeGrip")]
-		interface IQSizeGripProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizeGrip), this);
-			interceptor = (QSizeGrip) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSizeGrip), "QSizeGrip", this);
 		}
-		private static IQSizeGripProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSizeGrip() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSizeGripProxy), null);
-			staticInterceptor = (IQSizeGripProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSizeGrip), "QSizeGrip", null);
 		}
 		public QSizeGrip(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSizeGrip(parent);
+			interceptor.Invoke("QSizeGrip#", "QSizeGrip(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
-		[SmokeMethod("QSizeGrip", "(QWidget*)", "#")]
-		private void NewQSizeGrip(QWidget parent) {
-			((QSizeGrip) interceptor).NewQSizeGrip(parent);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QSizeGrip) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("setVisible", "(bool)", "$")]
+		[SmokeMethod("setVisible(bool)")]
 		public override void SetVisible(bool arg1) {
-			((QSizeGrip) interceptor).SetVisible(arg1);
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QSizeGrip) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QSizeGrip) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QSizeGrip) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QSizeGrip) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QSizeGrip) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QSizeGrip() {
-			DisposeQSizeGrip();
+			interceptor.Invoke("~QSizeGrip", "~QSizeGrip()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSizeGrip();
-		}
-		[SmokeMethod("~QSizeGrip", "()", "")]
-		private void DisposeQSizeGrip() {
-			((QSizeGrip) interceptor).DisposeQSizeGrip();
+			interceptor.Invoke("~QSizeGrip", "~QSizeGrip()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSizeGripSignals Emit {
 			get { return (IQSizeGripSignals) Q_EMIT; }

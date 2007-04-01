@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionProgressBar : QStyleOption, IDisposable {
  		protected QStyleOptionProgressBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionProgressBar), this);
-			interceptor = (QStyleOptionProgressBar) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStyleOptionProgressBar), "QStyleOptionProgressBar", this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ProgressBar,
@@ -18,37 +17,21 @@ namespace Qyoto {
 		}
 		public QStyleOptionProgressBar() : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionProgressBar();
-		}
-		[SmokeMethod("QStyleOptionProgressBar", "()", "")]
-		private void NewQStyleOptionProgressBar() {
-			((QStyleOptionProgressBar) interceptor).NewQStyleOptionProgressBar();
+			interceptor.Invoke("QStyleOptionProgressBar", "QStyleOptionProgressBar()", typeof(void));
 		}
 		public QStyleOptionProgressBar(QStyleOptionProgressBar other) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionProgressBar(other);
-		}
-		[SmokeMethod("QStyleOptionProgressBar", "(const QStyleOptionProgressBar&)", "#")]
-		private void NewQStyleOptionProgressBar(QStyleOptionProgressBar other) {
-			((QStyleOptionProgressBar) interceptor).NewQStyleOptionProgressBar(other);
+			interceptor.Invoke("QStyleOptionProgressBar#", "QStyleOptionProgressBar(const QStyleOptionProgressBar&)", typeof(void), typeof(QStyleOptionProgressBar), other);
 		}
 		public QStyleOptionProgressBar(int version) : this((Type) null) {
 			CreateProxy();
-			NewQStyleOptionProgressBar(version);
-		}
-		[SmokeMethod("QStyleOptionProgressBar", "(int)", "$")]
-		private void NewQStyleOptionProgressBar(int version) {
-			((QStyleOptionProgressBar) interceptor).NewQStyleOptionProgressBar(version);
+			interceptor.Invoke("QStyleOptionProgressBar$", "QStyleOptionProgressBar(int)", typeof(void), typeof(int), version);
 		}
 		~QStyleOptionProgressBar() {
-			DisposeQStyleOptionProgressBar();
+			interceptor.Invoke("~QStyleOptionProgressBar", "~QStyleOptionProgressBar()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStyleOptionProgressBar();
-		}
-		[SmokeMethod("~QStyleOptionProgressBar", "()", "")]
-		private void DisposeQStyleOptionProgressBar() {
-			((QStyleOptionProgressBar) interceptor).DisposeQStyleOptionProgressBar();
+			interceptor.Invoke("~QStyleOptionProgressBar", "~QStyleOptionProgressBar()", typeof(void));
 		}
 	}
 }

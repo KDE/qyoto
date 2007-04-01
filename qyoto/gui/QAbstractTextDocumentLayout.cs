@@ -7,92 +7,71 @@ namespace Qyoto {
 	[SmokeClass("QAbstractTextDocumentLayout")]
 	public abstract class QAbstractTextDocumentLayout : QObject {
  		protected QAbstractTextDocumentLayout(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractTextDocumentLayout")]
-		interface IQAbstractTextDocumentLayoutProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), this);
-			interceptor = (QAbstractTextDocumentLayout) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), "QAbstractTextDocumentLayout", this);
 		}
-		private static IQAbstractTextDocumentLayoutProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractTextDocumentLayout() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractTextDocumentLayoutProxy), null);
-			staticInterceptor = (IQAbstractTextDocumentLayoutProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), "QAbstractTextDocumentLayout", null);
 		}
 		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
 		public QAbstractTextDocumentLayout(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractTextDocumentLayout(doc);
+			interceptor.Invoke("QAbstractTextDocumentLayout#", "QAbstractTextDocumentLayout(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);
 		}
-		[SmokeMethod("QAbstractTextDocumentLayout", "(QTextDocument*)", "#")]
-		private void NewQAbstractTextDocumentLayout(QTextDocument doc) {
-			((QAbstractTextDocumentLayout) interceptor).NewQAbstractTextDocumentLayout(doc);
-		}
-		[SmokeMethod("hitTest", "(const QPointF&, Qt::HitTestAccuracy) const", "#$")]
+		[SmokeMethod("hitTest(const QPointF&, Qt::HitTestAccuracy) const")]
 		public abstract int HitTest(QPointF point, Qt.HitTestAccuracy accuracy);
-		[SmokeMethod("anchorAt", "(const QPointF&) const", "#")]
 		public string AnchorAt(QPointF pos) {
-			return ((QAbstractTextDocumentLayout) interceptor).AnchorAt(pos);
+			return (string) interceptor.Invoke("anchorAt#", "anchorAt(const QPointF&) const", typeof(string), typeof(QPointF), pos);
 		}
-		[SmokeMethod("pageCount", "() const", "")]
+		[SmokeMethod("pageCount() const")]
 		public abstract int PageCount();
-		[SmokeMethod("documentSize", "() const", "")]
+		[SmokeMethod("documentSize() const")]
 		public abstract QSizeF DocumentSize();
-		[SmokeMethod("frameBoundingRect", "(QTextFrame*) const", "#")]
+		[SmokeMethod("frameBoundingRect(QTextFrame*) const")]
 		public abstract QRectF FrameBoundingRect(QTextFrame frame);
-		[SmokeMethod("blockBoundingRect", "(const QTextBlock&) const", "#")]
+		[SmokeMethod("blockBoundingRect(const QTextBlock&) const")]
 		public abstract QRectF BlockBoundingRect(QTextBlock block);
-		[SmokeMethod("setPaintDevice", "(QPaintDevice*)", "#")]
 		public void SetPaintDevice(IQPaintDevice device) {
-			((QAbstractTextDocumentLayout) interceptor).SetPaintDevice(device);
+			interceptor.Invoke("setPaintDevice#", "setPaintDevice(QPaintDevice*)", typeof(void), typeof(IQPaintDevice), device);
 		}
-		[SmokeMethod("paintDevice", "() const", "")]
 		public IQPaintDevice PaintDevice() {
-			return ((QAbstractTextDocumentLayout) interceptor).PaintDevice();
+			return (IQPaintDevice) interceptor.Invoke("paintDevice", "paintDevice() const", typeof(IQPaintDevice));
 		}
-		[SmokeMethod("document", "() const", "")]
 		public QTextDocument Document() {
-			return ((QAbstractTextDocumentLayout) interceptor).Document();
+			return (QTextDocument) interceptor.Invoke("document", "document() const", typeof(QTextDocument));
 		}
-		[SmokeMethod("registerHandler", "(int, QObject*)", "$#")]
 		public void RegisterHandler(int objectType, QObject component) {
-			((QAbstractTextDocumentLayout) interceptor).RegisterHandler(objectType,component);
+			interceptor.Invoke("registerHandler$#", "registerHandler(int, QObject*)", typeof(void), typeof(int), objectType, typeof(QObject), component);
 		}
-		[SmokeMethod("handlerForObject", "(int) const", "$")]
 		public QTextObjectInterface HandlerForObject(int objectType) {
-			return ((QAbstractTextDocumentLayout) interceptor).HandlerForObject(objectType);
+			return (QTextObjectInterface) interceptor.Invoke("handlerForObject$", "handlerForObject(int) const", typeof(QTextObjectInterface), typeof(int), objectType);
 		}
-		[SmokeMethod("documentChanged", "(int, int, int)", "$$$")]
+		[SmokeMethod("documentChanged(int, int, int)")]
 		protected abstract void DocumentChanged(int from, int charsRemoved, int charsAdded);
-		[SmokeMethod("resizeInlineObject", "(QTextInlineObject, int, const QTextFormat&)", "#$#")]
+		[SmokeMethod("resizeInlineObject(QTextInlineObject, int, const QTextFormat&)")]
 		protected virtual void ResizeInlineObject(QTextInlineObject item, int posInDocument, QTextFormat format) {
-			((QAbstractTextDocumentLayout) interceptor).ResizeInlineObject(item,posInDocument,format);
+			interceptor.Invoke("resizeInlineObject#$#", "resizeInlineObject(QTextInlineObject, int, const QTextFormat&)", typeof(void), typeof(QTextInlineObject), item, typeof(int), posInDocument, typeof(QTextFormat), format);
 		}
-		[SmokeMethod("positionInlineObject", "(QTextInlineObject, int, const QTextFormat&)", "#$#")]
+		[SmokeMethod("positionInlineObject(QTextInlineObject, int, const QTextFormat&)")]
 		protected virtual void PositionInlineObject(QTextInlineObject item, int posInDocument, QTextFormat format) {
-			((QAbstractTextDocumentLayout) interceptor).PositionInlineObject(item,posInDocument,format);
+			interceptor.Invoke("positionInlineObject#$#", "positionInlineObject(QTextInlineObject, int, const QTextFormat&)", typeof(void), typeof(QTextInlineObject), item, typeof(int), posInDocument, typeof(QTextFormat), format);
 		}
-		[SmokeMethod("drawInlineObject", "(QPainter*, const QRectF&, QTextInlineObject, int, const QTextFormat&)", "###$#")]
+		[SmokeMethod("drawInlineObject(QPainter*, const QRectF&, QTextInlineObject, int, const QTextFormat&)")]
 		protected virtual void DrawInlineObject(QPainter painter, QRectF rect, QTextInlineObject arg3, int posInDocument, QTextFormat format) {
-			((QAbstractTextDocumentLayout) interceptor).DrawInlineObject(painter,rect,arg3,posInDocument,format);
+			interceptor.Invoke("drawInlineObject###$#", "drawInlineObject(QPainter*, const QRectF&, QTextInlineObject, int, const QTextFormat&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect, typeof(QTextInlineObject), arg3, typeof(int), posInDocument, typeof(QTextFormat), format);
 		}
-		[SmokeMethod("formatIndex", "(int)", "$")]
 		protected int FormatIndex(int pos) {
-			return ((QAbstractTextDocumentLayout) interceptor).FormatIndex(pos);
+			return (int) interceptor.Invoke("formatIndex$", "formatIndex(int)", typeof(int), typeof(int), pos);
 		}
-		[SmokeMethod("format", "(int)", "$")]
 		protected QTextCharFormat Format(int pos) {
-			return ((QAbstractTextDocumentLayout) interceptor).Format(pos);
+			return (QTextCharFormat) interceptor.Invoke("format$", "format(int)", typeof(QTextCharFormat), typeof(int), pos);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractTextDocumentLayoutSignals Emit {
 			get { return (IQAbstractTextDocumentLayoutSignals) Q_EMIT; }

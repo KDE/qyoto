@@ -5,25 +5,16 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QRegExp")]
-	public class QRegExp : MarshalByRefObject, IDisposable {
-		protected QRegExp interceptor = null;
+	public class QRegExp : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QRegExp(Type dummy) {}
-		[SmokeClass("QRegExp")]
-		interface IQRegExpProxy {
-			[SmokeMethod("operator==", "(const QRegExp&) const", "#")]
-			bool op_equals(QRegExp lhs, QRegExp rx);
-			[SmokeMethod("escape", "(const QString&)", "$")]
-			string Escape(string str);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExp), this);
-			interceptor = (QRegExp) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QRegExp), "QRegExp", this);
 		}
-		private static IQRegExpProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QRegExp() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRegExpProxy), null);
-			staticInterceptor = (IQRegExpProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QRegExp), "QRegExp", null);
 		}
 		public enum PatternSyntax {
 			RegExp = 0,
@@ -38,169 +29,120 @@ namespace Qyoto {
 		}
 		public QRegExp() : this((Type) null) {
 			CreateProxy();
-			NewQRegExp();
-		}
-		[SmokeMethod("QRegExp", "()", "")]
-		private void NewQRegExp() {
-			((QRegExp) interceptor).NewQRegExp();
+			interceptor.Invoke("QRegExp", "QRegExp()", typeof(void));
 		}
 		public QRegExp(string pattern, Qt.CaseSensitivity cs, QRegExp.PatternSyntax syntax) : this((Type) null) {
 			CreateProxy();
-			NewQRegExp(pattern,cs,syntax);
-		}
-		[SmokeMethod("QRegExp", "(const QString&, Qt::CaseSensitivity, QRegExp::PatternSyntax)", "$$$")]
-		private void NewQRegExp(string pattern, Qt.CaseSensitivity cs, QRegExp.PatternSyntax syntax) {
-			((QRegExp) interceptor).NewQRegExp(pattern,cs,syntax);
+			interceptor.Invoke("QRegExp$$$", "QRegExp(const QString&, Qt::CaseSensitivity, QRegExp::PatternSyntax)", typeof(void), typeof(string), pattern, typeof(Qt.CaseSensitivity), cs, typeof(QRegExp.PatternSyntax), syntax);
 		}
 		public QRegExp(string pattern, Qt.CaseSensitivity cs) : this((Type) null) {
 			CreateProxy();
-			NewQRegExp(pattern,cs);
-		}
-		[SmokeMethod("QRegExp", "(const QString&, Qt::CaseSensitivity)", "$$")]
-		private void NewQRegExp(string pattern, Qt.CaseSensitivity cs) {
-			((QRegExp) interceptor).NewQRegExp(pattern,cs);
+			interceptor.Invoke("QRegExp$$", "QRegExp(const QString&, Qt::CaseSensitivity)", typeof(void), typeof(string), pattern, typeof(Qt.CaseSensitivity), cs);
 		}
 		public QRegExp(string pattern) : this((Type) null) {
 			CreateProxy();
-			NewQRegExp(pattern);
-		}
-		[SmokeMethod("QRegExp", "(const QString&)", "$")]
-		private void NewQRegExp(string pattern) {
-			((QRegExp) interceptor).NewQRegExp(pattern);
+			interceptor.Invoke("QRegExp$", "QRegExp(const QString&)", typeof(void), typeof(string), pattern);
 		}
 		public QRegExp(QRegExp rx) : this((Type) null) {
 			CreateProxy();
-			NewQRegExp(rx);
-		}
-		[SmokeMethod("QRegExp", "(const QRegExp&)", "#")]
-		private void NewQRegExp(QRegExp rx) {
-			((QRegExp) interceptor).NewQRegExp(rx);
+			interceptor.Invoke("QRegExp#", "QRegExp(const QRegExp&)", typeof(void), typeof(QRegExp), rx);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QRegExp)) { return false; }
 			return this == (QRegExp) o;
 		}
 		public override int GetHashCode() {
-			return ((QRegExp) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QRegExp) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QRegExp) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("pattern", "() const", "")]
 		public string Pattern() {
-			return ((QRegExp) interceptor).Pattern();
+			return (string) interceptor.Invoke("pattern", "pattern() const", typeof(string));
 		}
-		[SmokeMethod("setPattern", "(const QString&)", "$")]
 		public void SetPattern(string pattern) {
-			((QRegExp) interceptor).SetPattern(pattern);
+			interceptor.Invoke("setPattern$", "setPattern(const QString&)", typeof(void), typeof(string), pattern);
 		}
-		[SmokeMethod("caseSensitivity", "() const", "")]
 		public Qt.CaseSensitivity CaseSensitivity() {
-			return ((QRegExp) interceptor).CaseSensitivity();
+			return (Qt.CaseSensitivity) interceptor.Invoke("caseSensitivity", "caseSensitivity() const", typeof(Qt.CaseSensitivity));
 		}
-		[SmokeMethod("setCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
 		public void SetCaseSensitivity(Qt.CaseSensitivity cs) {
-			((QRegExp) interceptor).SetCaseSensitivity(cs);
+			interceptor.Invoke("setCaseSensitivity$", "setCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), cs);
 		}
-		[SmokeMethod("patternSyntax", "() const", "")]
 		public QRegExp.PatternSyntax patternSyntax() {
-			return ((QRegExp) interceptor).patternSyntax();
+			return (QRegExp.PatternSyntax) interceptor.Invoke("patternSyntax", "patternSyntax() const", typeof(QRegExp.PatternSyntax));
 		}
-		[SmokeMethod("setPatternSyntax", "(QRegExp::PatternSyntax)", "$")]
 		public void SetPatternSyntax(QRegExp.PatternSyntax syntax) {
-			((QRegExp) interceptor).SetPatternSyntax(syntax);
+			interceptor.Invoke("setPatternSyntax$", "setPatternSyntax(QRegExp::PatternSyntax)", typeof(void), typeof(QRegExp.PatternSyntax), syntax);
 		}
-		[SmokeMethod("isMinimal", "() const", "")]
 		public bool IsMinimal() {
-			return ((QRegExp) interceptor).IsMinimal();
+			return (bool) interceptor.Invoke("isMinimal", "isMinimal() const", typeof(bool));
 		}
-		[SmokeMethod("setMinimal", "(bool)", "$")]
 		public void SetMinimal(bool minimal) {
-			((QRegExp) interceptor).SetMinimal(minimal);
+			interceptor.Invoke("setMinimal$", "setMinimal(bool)", typeof(void), typeof(bool), minimal);
 		}
-		[SmokeMethod("exactMatch", "(const QString&) const", "$")]
 		public bool ExactMatch(string str) {
-			return ((QRegExp) interceptor).ExactMatch(str);
+			return (bool) interceptor.Invoke("exactMatch$", "exactMatch(const QString&) const", typeof(bool), typeof(string), str);
 		}
-		[SmokeMethod("indexIn", "(const QString&, int, QRegExp::CaretMode) const", "$$$")]
 		public int IndexIn(string str, int offset, QRegExp.CaretMode caretMode) {
-			return ((QRegExp) interceptor).IndexIn(str,offset,caretMode);
+			return (int) interceptor.Invoke("indexIn$$$", "indexIn(const QString&, int, QRegExp::CaretMode) const", typeof(int), typeof(string), str, typeof(int), offset, typeof(QRegExp.CaretMode), caretMode);
 		}
-		[SmokeMethod("indexIn", "(const QString&, int) const", "$$")]
 		public int IndexIn(string str, int offset) {
-			return ((QRegExp) interceptor).IndexIn(str,offset);
+			return (int) interceptor.Invoke("indexIn$$", "indexIn(const QString&, int) const", typeof(int), typeof(string), str, typeof(int), offset);
 		}
-		[SmokeMethod("indexIn", "(const QString&) const", "$")]
 		public int IndexIn(string str) {
-			return ((QRegExp) interceptor).IndexIn(str);
+			return (int) interceptor.Invoke("indexIn$", "indexIn(const QString&) const", typeof(int), typeof(string), str);
 		}
-		[SmokeMethod("lastIndexIn", "(const QString&, int, QRegExp::CaretMode) const", "$$$")]
 		public int LastIndexIn(string str, int offset, QRegExp.CaretMode caretMode) {
-			return ((QRegExp) interceptor).LastIndexIn(str,offset,caretMode);
+			return (int) interceptor.Invoke("lastIndexIn$$$", "lastIndexIn(const QString&, int, QRegExp::CaretMode) const", typeof(int), typeof(string), str, typeof(int), offset, typeof(QRegExp.CaretMode), caretMode);
 		}
-		[SmokeMethod("lastIndexIn", "(const QString&, int) const", "$$")]
 		public int LastIndexIn(string str, int offset) {
-			return ((QRegExp) interceptor).LastIndexIn(str,offset);
+			return (int) interceptor.Invoke("lastIndexIn$$", "lastIndexIn(const QString&, int) const", typeof(int), typeof(string), str, typeof(int), offset);
 		}
-		[SmokeMethod("lastIndexIn", "(const QString&) const", "$")]
 		public int LastIndexIn(string str) {
-			return ((QRegExp) interceptor).LastIndexIn(str);
+			return (int) interceptor.Invoke("lastIndexIn$", "lastIndexIn(const QString&) const", typeof(int), typeof(string), str);
 		}
-		[SmokeMethod("matchedLength", "() const", "")]
 		public int MatchedLength() {
-			return ((QRegExp) interceptor).MatchedLength();
+			return (int) interceptor.Invoke("matchedLength", "matchedLength() const", typeof(int));
 		}
-		[SmokeMethod("numCaptures", "() const", "")]
 		public int NumCaptures() {
-			return ((QRegExp) interceptor).NumCaptures();
+			return (int) interceptor.Invoke("numCaptures", "numCaptures() const", typeof(int));
 		}
-		[SmokeMethod("capturedTexts", "()", "")]
 		public List<string> CapturedTexts() {
-			return ((QRegExp) interceptor).CapturedTexts();
+			return (List<string>) interceptor.Invoke("capturedTexts", "capturedTexts()", typeof(List<string>));
 		}
-		[SmokeMethod("cap", "(int)", "$")]
 		public string Cap(int nth) {
-			return ((QRegExp) interceptor).Cap(nth);
+			return (string) interceptor.Invoke("cap$", "cap(int)", typeof(string), typeof(int), nth);
 		}
-		[SmokeMethod("cap", "()", "")]
 		public string Cap() {
-			return ((QRegExp) interceptor).Cap();
+			return (string) interceptor.Invoke("cap", "cap()", typeof(string));
 		}
-		[SmokeMethod("pos", "(int)", "$")]
 		public int Pos(int nth) {
-			return ((QRegExp) interceptor).Pos(nth);
+			return (int) interceptor.Invoke("pos$", "pos(int)", typeof(int), typeof(int), nth);
 		}
-		[SmokeMethod("pos", "()", "")]
 		public int Pos() {
-			return ((QRegExp) interceptor).Pos();
+			return (int) interceptor.Invoke("pos", "pos()", typeof(int));
 		}
-		[SmokeMethod("errorString", "()", "")]
 		public string ErrorString() {
-			return ((QRegExp) interceptor).ErrorString();
+			return (string) interceptor.Invoke("errorString", "errorString()", typeof(string));
 		}
 		~QRegExp() {
-			DisposeQRegExp();
+			interceptor.Invoke("~QRegExp", "~QRegExp()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQRegExp();
-		}
-		[SmokeMethod("~QRegExp", "()", "")]
-		private void DisposeQRegExp() {
-			((QRegExp) interceptor).DisposeQRegExp();
+			interceptor.Invoke("~QRegExp", "~QRegExp()", typeof(void));
 		}
 		public static bool operator==(QRegExp lhs, QRegExp rx) {
-			return staticInterceptor.op_equals(lhs,rx);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QRegExp&) const", typeof(bool), typeof(QRegExp), lhs, typeof(QRegExp), rx);
 		}
 		public static bool operator!=(QRegExp lhs, QRegExp rx) {
-			return !staticInterceptor.op_equals(lhs,rx);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QRegExp&) const", typeof(bool), typeof(QRegExp), lhs, typeof(QRegExp), rx);
 		}
 		public static string Escape(string str) {
-			return staticInterceptor.Escape(str);
+			return (string) staticInterceptor.Invoke("escape$", "escape(const QString&)", typeof(string), typeof(string), str);
 		}
 	}
 }

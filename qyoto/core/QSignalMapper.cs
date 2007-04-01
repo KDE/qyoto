@@ -7,99 +7,67 @@ namespace Qyoto {
 	[SmokeClass("QSignalMapper")]
 	public class QSignalMapper : QObject, IDisposable {
  		protected QSignalMapper(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSignalMapper")]
-		interface IQSignalMapperProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSignalMapper), this);
-			interceptor = (QSignalMapper) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSignalMapper), "QSignalMapper", this);
 		}
-		private static IQSignalMapperProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSignalMapper() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSignalMapperProxy), null);
-			staticInterceptor = (IQSignalMapperProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSignalMapper), "QSignalMapper", null);
 		}
 		public QSignalMapper(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQSignalMapper(parent);
-		}
-		[SmokeMethod("QSignalMapper", "(QObject*)", "#")]
-		private void NewQSignalMapper(QObject parent) {
-			((QSignalMapper) interceptor).NewQSignalMapper(parent);
+			interceptor.Invoke("QSignalMapper#", "QSignalMapper(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QSignalMapper() : this((Type) null) {
 			CreateProxy();
-			NewQSignalMapper();
+			interceptor.Invoke("QSignalMapper", "QSignalMapper()", typeof(void));
 		}
-		[SmokeMethod("QSignalMapper", "()", "")]
-		private void NewQSignalMapper() {
-			((QSignalMapper) interceptor).NewQSignalMapper();
-		}
-		[SmokeMethod("setMapping", "(QObject*, int)", "#$")]
 		public void SetMapping(QObject sender, int id) {
-			((QSignalMapper) interceptor).SetMapping(sender,id);
+			interceptor.Invoke("setMapping#$", "setMapping(QObject*, int)", typeof(void), typeof(QObject), sender, typeof(int), id);
 		}
-		[SmokeMethod("setMapping", "(QObject*, const QString&)", "#$")]
 		public void SetMapping(QObject sender, string text) {
-			((QSignalMapper) interceptor).SetMapping(sender,text);
+			interceptor.Invoke("setMapping#$", "setMapping(QObject*, const QString&)", typeof(void), typeof(QObject), sender, typeof(string), text);
 		}
-		[SmokeMethod("setMapping", "(QObject*, QWidget*)", "##")]
 		public void SetMapping(QObject sender, QWidget widget) {
-			((QSignalMapper) interceptor).SetMapping(sender,widget);
+			interceptor.Invoke("setMapping##", "setMapping(QObject*, QWidget*)", typeof(void), typeof(QObject), sender, typeof(QWidget), widget);
 		}
-		[SmokeMethod("setMapping", "(QObject*, QObject*)", "##")]
 		public void SetMapping(QObject sender, QObject arg2) {
-			((QSignalMapper) interceptor).SetMapping(sender,arg2);
+			interceptor.Invoke("setMapping##", "setMapping(QObject*, QObject*)", typeof(void), typeof(QObject), sender, typeof(QObject), arg2);
 		}
-		[SmokeMethod("removeMappings", "(QObject*)", "#")]
 		public void RemoveMappings(QObject sender) {
-			((QSignalMapper) interceptor).RemoveMappings(sender);
+			interceptor.Invoke("removeMappings#", "removeMappings(QObject*)", typeof(void), typeof(QObject), sender);
 		}
-		[SmokeMethod("mapping", "(int) const", "$")]
 		public QObject Mapping(int id) {
-			return ((QSignalMapper) interceptor).Mapping(id);
+			return (QObject) interceptor.Invoke("mapping$", "mapping(int) const", typeof(QObject), typeof(int), id);
 		}
-		[SmokeMethod("mapping", "(const QString&) const", "$")]
 		public QObject Mapping(string text) {
-			return ((QSignalMapper) interceptor).Mapping(text);
+			return (QObject) interceptor.Invoke("mapping$", "mapping(const QString&) const", typeof(QObject), typeof(string), text);
 		}
-		[SmokeMethod("mapping", "(QWidget*) const", "#")]
 		public QObject Mapping(QWidget widget) {
-			return ((QSignalMapper) interceptor).Mapping(widget);
+			return (QObject) interceptor.Invoke("mapping#", "mapping(QWidget*) const", typeof(QObject), typeof(QWidget), widget);
 		}
-		[SmokeMethod("mapping", "(QObject*) const", "#")]
 		public QObject Mapping(QObject arg1) {
-			return ((QSignalMapper) interceptor).Mapping(arg1);
+			return (QObject) interceptor.Invoke("mapping#", "mapping(QObject*) const", typeof(QObject), typeof(QObject), arg1);
 		}
 		[Q_SLOT("void map()")]
-		[SmokeMethod("map", "()", "")]
 		public void Map() {
-			((QSignalMapper) interceptor).Map();
+			interceptor.Invoke("map", "map()", typeof(void));
 		}
 		[Q_SLOT("void map(QObject*)")]
-		[SmokeMethod("map", "(QObject*)", "#")]
 		public void Map(QObject sender) {
-			((QSignalMapper) interceptor).Map(sender);
+			interceptor.Invoke("map#", "map(QObject*)", typeof(void), typeof(QObject), sender);
 		}
 		~QSignalMapper() {
-			DisposeQSignalMapper();
+			interceptor.Invoke("~QSignalMapper", "~QSignalMapper()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSignalMapper();
-		}
-		[SmokeMethod("~QSignalMapper", "()", "")]
-		private void DisposeQSignalMapper() {
-			((QSignalMapper) interceptor).DisposeQSignalMapper();
+			interceptor.Invoke("~QSignalMapper", "~QSignalMapper()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSignalMapperSignals Emit {
 			get { return (IQSignalMapperSignals) Q_EMIT; }

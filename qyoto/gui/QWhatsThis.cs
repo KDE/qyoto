@@ -4,57 +4,37 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QWhatsThis")]
-	public class QWhatsThis : MarshalByRefObject {
-		protected QWhatsThis interceptor = null;
+	public class QWhatsThis : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QWhatsThis(Type dummy) {}
-		[SmokeClass("QWhatsThis")]
-		interface IQWhatsThisProxy {
-			[SmokeMethod("enterWhatsThisMode", "()", "")]
-			void EnterWhatsThisMode();
-			[SmokeMethod("inWhatsThisMode", "()", "")]
-			bool InWhatsThisMode();
-			[SmokeMethod("leaveWhatsThisMode", "()", "")]
-			void LeaveWhatsThisMode();
-			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*)", "#$#")]
-			void ShowText(QPoint pos, string text, QWidget w);
-			[SmokeMethod("showText", "(const QPoint&, const QString&)", "#$")]
-			void ShowText(QPoint pos, string text);
-			[SmokeMethod("hideText", "()", "")]
-			void HideText();
-			[SmokeMethod("createAction", "(QObject*)", "#")]
-			QAction CreateAction(QObject parent);
-			[SmokeMethod("createAction", "()", "")]
-			QAction CreateAction();
-		}
-		private static IQWhatsThisProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QWhatsThis() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWhatsThisProxy), null);
-			staticInterceptor = (IQWhatsThisProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QWhatsThis), "QWhatsThis", null);
 		}
 		public static void EnterWhatsThisMode() {
-			staticInterceptor.EnterWhatsThisMode();
+			staticInterceptor.Invoke("enterWhatsThisMode", "enterWhatsThisMode()", typeof(void));
 		}
 		public static bool InWhatsThisMode() {
-			return staticInterceptor.InWhatsThisMode();
+			return (bool) staticInterceptor.Invoke("inWhatsThisMode", "inWhatsThisMode()", typeof(bool));
 		}
 		public static void LeaveWhatsThisMode() {
-			staticInterceptor.LeaveWhatsThisMode();
+			staticInterceptor.Invoke("leaveWhatsThisMode", "leaveWhatsThisMode()", typeof(void));
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w) {
-			staticInterceptor.ShowText(pos,text,w);
+			staticInterceptor.Invoke("showText#$#", "showText(const QPoint&, const QString&, QWidget*)", typeof(void), typeof(QPoint), pos, typeof(string), text, typeof(QWidget), w);
 		}
 		public static void ShowText(QPoint pos, string text) {
-			staticInterceptor.ShowText(pos,text);
+			staticInterceptor.Invoke("showText#$", "showText(const QPoint&, const QString&)", typeof(void), typeof(QPoint), pos, typeof(string), text);
 		}
 		public static void HideText() {
-			staticInterceptor.HideText();
+			staticInterceptor.Invoke("hideText", "hideText()", typeof(void));
 		}
 		public static QAction CreateAction(QObject parent) {
-			return staticInterceptor.CreateAction(parent);
+			return (QAction) staticInterceptor.Invoke("createAction#", "createAction(QObject*)", typeof(QAction), typeof(QObject), parent);
 		}
 		public static QAction CreateAction() {
-			return staticInterceptor.CreateAction();
+			return (QAction) staticInterceptor.Invoke("createAction", "createAction()", typeof(QAction));
 		}
 	}
 }

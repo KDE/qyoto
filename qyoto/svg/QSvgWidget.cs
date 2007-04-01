@@ -6,91 +6,59 @@ namespace Qyoto {
 	[SmokeClass("QSvgWidget")]
 	public class QSvgWidget : QWidget, IDisposable {
  		protected QSvgWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSvgWidget")]
-		interface IQSvgWidgetProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSvgWidget), this);
-			interceptor = (QSvgWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSvgWidget), "QSvgWidget", this);
 		}
-		private static IQSvgWidgetProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSvgWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSvgWidgetProxy), null);
-			staticInterceptor = (IQSvgWidgetProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSvgWidget), "QSvgWidget", null);
 		}
 		public QSvgWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSvgWidget(parent);
-		}
-		[SmokeMethod("QSvgWidget", "(QWidget*)", "#")]
-		private void NewQSvgWidget(QWidget parent) {
-			((QSvgWidget) interceptor).NewQSvgWidget(parent);
+			interceptor.Invoke("QSvgWidget#", "QSvgWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QSvgWidget() : this((Type) null) {
 			CreateProxy();
-			NewQSvgWidget();
-		}
-		[SmokeMethod("QSvgWidget", "()", "")]
-		private void NewQSvgWidget() {
-			((QSvgWidget) interceptor).NewQSvgWidget();
+			interceptor.Invoke("QSvgWidget", "QSvgWidget()", typeof(void));
 		}
 		public QSvgWidget(string file, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQSvgWidget(file,parent);
-		}
-		[SmokeMethod("QSvgWidget", "(const QString&, QWidget*)", "$#")]
-		private void NewQSvgWidget(string file, QWidget parent) {
-			((QSvgWidget) interceptor).NewQSvgWidget(file,parent);
+			interceptor.Invoke("QSvgWidget$#", "QSvgWidget(const QString&, QWidget*)", typeof(void), typeof(string), file, typeof(QWidget), parent);
 		}
 		public QSvgWidget(string file) : this((Type) null) {
 			CreateProxy();
-			NewQSvgWidget(file);
+			interceptor.Invoke("QSvgWidget$", "QSvgWidget(const QString&)", typeof(void), typeof(string), file);
 		}
-		[SmokeMethod("QSvgWidget", "(const QString&)", "$")]
-		private void NewQSvgWidget(string file) {
-			((QSvgWidget) interceptor).NewQSvgWidget(file);
-		}
-		[SmokeMethod("renderer", "() const", "")]
 		public QSvgRenderer Renderer() {
-			return ((QSvgWidget) interceptor).Renderer();
+			return (QSvgRenderer) interceptor.Invoke("renderer", "renderer() const", typeof(QSvgRenderer));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QSvgWidget) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		[Q_SLOT("void load(const QString&)")]
-		[SmokeMethod("load", "(const QString&)", "$")]
 		public void Load(string file) {
-			((QSvgWidget) interceptor).Load(file);
+			interceptor.Invoke("load$", "load(const QString&)", typeof(void), typeof(string), file);
 		}
 		[Q_SLOT("void load(const QByteArray&)")]
-		[SmokeMethod("load", "(const QByteArray&)", "#")]
 		public void Load(QByteArray contents) {
-			((QSvgWidget) interceptor).Load(contents);
+			interceptor.Invoke("load#", "load(const QByteArray&)", typeof(void), typeof(QByteArray), contents);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QSvgWidget) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
 		~QSvgWidget() {
-			DisposeQSvgWidget();
+			interceptor.Invoke("~QSvgWidget", "~QSvgWidget()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQSvgWidget();
-		}
-		[SmokeMethod("~QSvgWidget", "()", "")]
-		private void DisposeQSvgWidget() {
-			((QSvgWidget) interceptor).DisposeQSvgWidget();
+			interceptor.Invoke("~QSvgWidget", "~QSvgWidget()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSvgWidgetSignals Emit {
 			get { return (IQSvgWidgetSignals) Q_EMIT; }

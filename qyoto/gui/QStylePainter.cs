@@ -7,78 +7,52 @@ namespace Qyoto {
 	public class QStylePainter : QPainter, IDisposable {
  		protected QStylePainter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStylePainter), this);
-			interceptor = (QStylePainter) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QStylePainter), "QStylePainter", this);
 		}
 		public QStylePainter() : this((Type) null) {
 			CreateProxy();
-			NewQStylePainter();
-		}
-		[SmokeMethod("QStylePainter", "()", "")]
-		private void NewQStylePainter() {
-			((QStylePainter) interceptor).NewQStylePainter();
+			interceptor.Invoke("QStylePainter", "QStylePainter()", typeof(void));
 		}
 		public QStylePainter(QWidget w) : this((Type) null) {
 			CreateProxy();
-			NewQStylePainter(w);
-		}
-		[SmokeMethod("QStylePainter", "(QWidget*)", "#")]
-		private void NewQStylePainter(QWidget w) {
-			((QStylePainter) interceptor).NewQStylePainter(w);
+			interceptor.Invoke("QStylePainter#", "QStylePainter(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
 		public QStylePainter(IQPaintDevice pd, QWidget w) : this((Type) null) {
 			CreateProxy();
-			NewQStylePainter(pd,w);
+			interceptor.Invoke("QStylePainter##", "QStylePainter(QPaintDevice*, QWidget*)", typeof(void), typeof(IQPaintDevice), pd, typeof(QWidget), w);
 		}
-		[SmokeMethod("QStylePainter", "(QPaintDevice*, QWidget*)", "##")]
-		private void NewQStylePainter(IQPaintDevice pd, QWidget w) {
-			((QStylePainter) interceptor).NewQStylePainter(pd,w);
-		}
-		[SmokeMethod("begin", "(QWidget*)", "#")]
 		public bool Begin(QWidget w) {
-			return ((QStylePainter) interceptor).Begin(w);
+			return (bool) interceptor.Invoke("begin#", "begin(QWidget*)", typeof(bool), typeof(QWidget), w);
 		}
-		[SmokeMethod("begin", "(QPaintDevice*, QWidget*)", "##")]
 		public bool Begin(IQPaintDevice pd, QWidget w) {
-			return ((QStylePainter) interceptor).Begin(pd,w);
+			return (bool) interceptor.Invoke("begin##", "begin(QPaintDevice*, QWidget*)", typeof(bool), typeof(IQPaintDevice), pd, typeof(QWidget), w);
 		}
-		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption&)", "$#")]
 		public void DrawPrimitive(QStyle.PrimitiveElement pe, QStyleOption opt) {
-			((QStylePainter) interceptor).DrawPrimitive(pe,opt);
+			interceptor.Invoke("drawPrimitive$#", "drawPrimitive(QStyle::PrimitiveElement, const QStyleOption&)", typeof(void), typeof(QStyle.PrimitiveElement), pe, typeof(QStyleOption), opt);
 		}
-		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption&)", "$#")]
 		public void DrawControl(QStyle.ControlElement ce, QStyleOption opt) {
-			((QStylePainter) interceptor).DrawControl(ce,opt);
+			interceptor.Invoke("drawControl$#", "drawControl(QStyle::ControlElement, const QStyleOption&)", typeof(void), typeof(QStyle.ControlElement), ce, typeof(QStyleOption), opt);
 		}
-		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex&)", "$#")]
 		public void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt) {
-			((QStylePainter) interceptor).DrawComplexControl(cc,opt);
+			interceptor.Invoke("drawComplexControl$#", "drawComplexControl(QStyle::ComplexControl, const QStyleOptionComplex&)", typeof(void), typeof(QStyle.ComplexControl), cc, typeof(QStyleOptionComplex), opt);
 		}
-		[SmokeMethod("drawItemText", "(const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole)", "#$#$$$")]
 		public void DrawItemText(QRect r, int flags, QPalette pal, bool enabled, string text, QPalette.ColorRole textRole) {
-			((QStylePainter) interceptor).DrawItemText(r,flags,pal,enabled,text,textRole);
+			interceptor.Invoke("drawItemText#$#$$$", "drawItemText(const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole)", typeof(void), typeof(QRect), r, typeof(int), flags, typeof(QPalette), pal, typeof(bool), enabled, typeof(string), text, typeof(QPalette.ColorRole), textRole);
 		}
-		[SmokeMethod("drawItemText", "(const QRect&, int, const QPalette&, bool, const QString&)", "#$#$$")]
 		public void DrawItemText(QRect r, int flags, QPalette pal, bool enabled, string text) {
-			((QStylePainter) interceptor).DrawItemText(r,flags,pal,enabled,text);
+			interceptor.Invoke("drawItemText#$#$$", "drawItemText(const QRect&, int, const QPalette&, bool, const QString&)", typeof(void), typeof(QRect), r, typeof(int), flags, typeof(QPalette), pal, typeof(bool), enabled, typeof(string), text);
 		}
-		[SmokeMethod("drawItemPixmap", "(const QRect&, int, const QPixmap&)", "#$#")]
 		public void DrawItemPixmap(QRect r, int flags, QPixmap pixmap) {
-			((QStylePainter) interceptor).DrawItemPixmap(r,flags,pixmap);
+			interceptor.Invoke("drawItemPixmap#$#", "drawItemPixmap(const QRect&, int, const QPixmap&)", typeof(void), typeof(QRect), r, typeof(int), flags, typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("style", "() const", "")]
 		public QStyle Style() {
-			return ((QStylePainter) interceptor).Style();
+			return (QStyle) interceptor.Invoke("style", "style() const", typeof(QStyle));
 		}
 		~QStylePainter() {
-			DisposeQStylePainter();
+			interceptor.Invoke("~QStylePainter", "~QStylePainter()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQStylePainter();
-		}
-		[SmokeMethod("~QStylePainter", "()", "")]
-		private void DisposeQStylePainter() {
-			((QStylePainter) interceptor).DisposeQStylePainter();
+			interceptor.Invoke("~QStylePainter", "~QStylePainter()", typeof(void));
 		}
 	}
 }

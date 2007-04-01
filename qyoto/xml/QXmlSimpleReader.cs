@@ -7,109 +7,100 @@ namespace Qyoto {
 	public class QXmlSimpleReader : QXmlReader, IDisposable {
  		protected QXmlSimpleReader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlSimpleReader), this);
-			interceptor = (QXmlSimpleReader) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QXmlSimpleReader), "QXmlSimpleReader", this);
 		}
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED
 		// void setProperty(const QString& arg1,void* arg2); >>>> NOT CONVERTED
 		public QXmlSimpleReader() : this((Type) null) {
 			CreateProxy();
-			NewQXmlSimpleReader();
+			interceptor.Invoke("QXmlSimpleReader", "QXmlSimpleReader()", typeof(void));
 		}
-		[SmokeMethod("QXmlSimpleReader", "()", "")]
-		private void NewQXmlSimpleReader() {
-			((QXmlSimpleReader) interceptor).NewQXmlSimpleReader();
+		[SmokeMethod("feature(const QString&, bool*) const")]
+		public override bool Feature(string name, bool ok) {
+			return (bool) interceptor.Invoke("feature$$", "feature(const QString&, bool*) const", typeof(bool), typeof(string), name, typeof(bool), ok);
 		}
-		[SmokeMethod("feature", "(const QString&, bool*) const", "$$")]
-		public override bool Feature(string name, out bool ok) {
-			return ((QXmlSimpleReader) interceptor).Feature(name,out ok);
-		}
-		[SmokeMethod("feature", "(const QString&) const", "$")]
+		[SmokeMethod("feature(const QString&) const")]
 		public virtual bool Feature(string name) {
-			return ((QXmlSimpleReader) interceptor).Feature(name);
+			return (bool) interceptor.Invoke("feature$", "feature(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("setFeature", "(const QString&, bool)", "$$")]
+		[SmokeMethod("setFeature(const QString&, bool)")]
 		public override void SetFeature(string name, bool value) {
-			((QXmlSimpleReader) interceptor).SetFeature(name,value);
+			interceptor.Invoke("setFeature$$", "setFeature(const QString&, bool)", typeof(void), typeof(string), name, typeof(bool), value);
 		}
-		[SmokeMethod("hasFeature", "(const QString&) const", "$")]
+		[SmokeMethod("hasFeature(const QString&) const")]
 		public override bool HasFeature(string name) {
-			return ((QXmlSimpleReader) interceptor).HasFeature(name);
+			return (bool) interceptor.Invoke("hasFeature$", "hasFeature(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("hasProperty", "(const QString&) const", "$")]
+		[SmokeMethod("hasProperty(const QString&) const")]
 		public override bool HasProperty(string name) {
-			return ((QXmlSimpleReader) interceptor).HasProperty(name);
+			return (bool) interceptor.Invoke("hasProperty$", "hasProperty(const QString&) const", typeof(bool), typeof(string), name);
 		}
-		[SmokeMethod("setEntityResolver", "(QXmlEntityResolver*)", "#")]
+		[SmokeMethod("setEntityResolver(QXmlEntityResolver*)")]
 		public override void SetEntityResolver(IQXmlEntityResolver handler) {
-			((QXmlSimpleReader) interceptor).SetEntityResolver(handler);
+			interceptor.Invoke("setEntityResolver#", "setEntityResolver(QXmlEntityResolver*)", typeof(void), typeof(IQXmlEntityResolver), handler);
 		}
-		[SmokeMethod("entityResolver", "() const", "")]
+		[SmokeMethod("entityResolver() const")]
 		public override IQXmlEntityResolver EntityResolver() {
-			return ((QXmlSimpleReader) interceptor).EntityResolver();
+			return (IQXmlEntityResolver) interceptor.Invoke("entityResolver", "entityResolver() const", typeof(IQXmlEntityResolver));
 		}
-		[SmokeMethod("setDTDHandler", "(QXmlDTDHandler*)", "#")]
+		[SmokeMethod("setDTDHandler(QXmlDTDHandler*)")]
 		public override void SetDTDHandler(IQXmlDTDHandler handler) {
-			((QXmlSimpleReader) interceptor).SetDTDHandler(handler);
+			interceptor.Invoke("setDTDHandler#", "setDTDHandler(QXmlDTDHandler*)", typeof(void), typeof(IQXmlDTDHandler), handler);
 		}
-		[SmokeMethod("DTDHandler", "() const", "")]
+		[SmokeMethod("DTDHandler() const")]
 		public override IQXmlDTDHandler DTDHandler() {
-			return ((QXmlSimpleReader) interceptor).DTDHandler();
+			return (IQXmlDTDHandler) interceptor.Invoke("DTDHandler", "DTDHandler() const", typeof(IQXmlDTDHandler));
 		}
-		[SmokeMethod("setContentHandler", "(QXmlContentHandler*)", "#")]
+		[SmokeMethod("setContentHandler(QXmlContentHandler*)")]
 		public override void SetContentHandler(IQXmlContentHandler handler) {
-			((QXmlSimpleReader) interceptor).SetContentHandler(handler);
+			interceptor.Invoke("setContentHandler#", "setContentHandler(QXmlContentHandler*)", typeof(void), typeof(IQXmlContentHandler), handler);
 		}
-		[SmokeMethod("contentHandler", "() const", "")]
+		[SmokeMethod("contentHandler() const")]
 		public override IQXmlContentHandler ContentHandler() {
-			return ((QXmlSimpleReader) interceptor).ContentHandler();
+			return (IQXmlContentHandler) interceptor.Invoke("contentHandler", "contentHandler() const", typeof(IQXmlContentHandler));
 		}
-		[SmokeMethod("setErrorHandler", "(QXmlErrorHandler*)", "#")]
+		[SmokeMethod("setErrorHandler(QXmlErrorHandler*)")]
 		public override void SetErrorHandler(IQXmlErrorHandler handler) {
-			((QXmlSimpleReader) interceptor).SetErrorHandler(handler);
+			interceptor.Invoke("setErrorHandler#", "setErrorHandler(QXmlErrorHandler*)", typeof(void), typeof(IQXmlErrorHandler), handler);
 		}
-		[SmokeMethod("errorHandler", "() const", "")]
+		[SmokeMethod("errorHandler() const")]
 		public override IQXmlErrorHandler ErrorHandler() {
-			return ((QXmlSimpleReader) interceptor).ErrorHandler();
+			return (IQXmlErrorHandler) interceptor.Invoke("errorHandler", "errorHandler() const", typeof(IQXmlErrorHandler));
 		}
-		[SmokeMethod("setLexicalHandler", "(QXmlLexicalHandler*)", "#")]
+		[SmokeMethod("setLexicalHandler(QXmlLexicalHandler*)")]
 		public override void SetLexicalHandler(QXmlLexicalHandler handler) {
-			((QXmlSimpleReader) interceptor).SetLexicalHandler(handler);
+			interceptor.Invoke("setLexicalHandler#", "setLexicalHandler(QXmlLexicalHandler*)", typeof(void), typeof(QXmlLexicalHandler), handler);
 		}
-		[SmokeMethod("lexicalHandler", "() const", "")]
+		[SmokeMethod("lexicalHandler() const")]
 		public override QXmlLexicalHandler LexicalHandler() {
-			return ((QXmlSimpleReader) interceptor).LexicalHandler();
+			return (QXmlLexicalHandler) interceptor.Invoke("lexicalHandler", "lexicalHandler() const", typeof(QXmlLexicalHandler));
 		}
-		[SmokeMethod("setDeclHandler", "(QXmlDeclHandler*)", "#")]
+		[SmokeMethod("setDeclHandler(QXmlDeclHandler*)")]
 		public override void SetDeclHandler(IQXmlDeclHandler handler) {
-			((QXmlSimpleReader) interceptor).SetDeclHandler(handler);
+			interceptor.Invoke("setDeclHandler#", "setDeclHandler(QXmlDeclHandler*)", typeof(void), typeof(IQXmlDeclHandler), handler);
 		}
-		[SmokeMethod("declHandler", "() const", "")]
+		[SmokeMethod("declHandler() const")]
 		public override IQXmlDeclHandler DeclHandler() {
-			return ((QXmlSimpleReader) interceptor).DeclHandler();
+			return (IQXmlDeclHandler) interceptor.Invoke("declHandler", "declHandler() const", typeof(IQXmlDeclHandler));
 		}
-		[SmokeMethod("parse", "(const QXmlInputSource&)", "#")]
+		[SmokeMethod("parse(const QXmlInputSource&)")]
 		public override bool Parse(QXmlInputSource input) {
-			return ((QXmlSimpleReader) interceptor).Parse(input);
+			return (bool) interceptor.Invoke("parse#", "parse(const QXmlInputSource&)", typeof(bool), typeof(QXmlInputSource), input);
 		}
-		[SmokeMethod("parse", "(const QXmlInputSource*, bool)", "#$")]
+		[SmokeMethod("parse(const QXmlInputSource*, bool)")]
 		public virtual bool Parse(QXmlInputSource input, bool incremental) {
-			return ((QXmlSimpleReader) interceptor).Parse(input,incremental);
+			return (bool) interceptor.Invoke("parse#$", "parse(const QXmlInputSource*, bool)", typeof(bool), typeof(QXmlInputSource), input, typeof(bool), incremental);
 		}
-		[SmokeMethod("parseContinue", "()", "")]
+		[SmokeMethod("parseContinue()")]
 		public virtual bool ParseContinue() {
-			return ((QXmlSimpleReader) interceptor).ParseContinue();
+			return (bool) interceptor.Invoke("parseContinue", "parseContinue()", typeof(bool));
 		}
 		~QXmlSimpleReader() {
-			DisposeQXmlSimpleReader();
+			interceptor.Invoke("~QXmlSimpleReader", "~QXmlSimpleReader()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQXmlSimpleReader();
-		}
-		[SmokeMethod("~QXmlSimpleReader", "()", "")]
-		private void DisposeQXmlSimpleReader() {
-			((QXmlSimpleReader) interceptor).DisposeQXmlSimpleReader();
+			interceptor.Invoke("~QXmlSimpleReader", "~QXmlSimpleReader()", typeof(void));
 		}
 	}
 }

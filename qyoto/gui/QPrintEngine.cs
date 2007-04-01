@@ -4,13 +4,12 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QPrintEngine")]
-	public abstract class QPrintEngine : MarshalByRefObject {
-		protected QPrintEngine interceptor = null;
+	public abstract class QPrintEngine : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPrintEngine(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrintEngine), this);
-			interceptor = (QPrintEngine) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPrintEngine), "QPrintEngine", this);
 		}
 		public enum PrintEnginePropertyKey {
 			PPK_CollateCopies = 0,
@@ -37,25 +36,21 @@ namespace Qyoto {
 			PPK_Duplex = 21,
 			PPK_CustomBase = 0xff00,
 		}
-		[SmokeMethod("setProperty", "(QPrintEngine::PrintEnginePropertyKey, const QVariant&)", "$#")]
+		[SmokeMethod("setProperty(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]
 		public abstract void SetProperty(QPrintEngine.PrintEnginePropertyKey key, QVariant value);
-		[SmokeMethod("property", "(QPrintEngine::PrintEnginePropertyKey) const", "$")]
+		[SmokeMethod("property(QPrintEngine::PrintEnginePropertyKey) const")]
 		public abstract QVariant Property(QPrintEngine.PrintEnginePropertyKey key);
-		[SmokeMethod("newPage", "()", "")]
+		[SmokeMethod("newPage()")]
 		public abstract bool NewPage();
-		[SmokeMethod("abort", "()", "")]
+		[SmokeMethod("abort()")]
 		public abstract bool Abort();
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		public abstract int Metric(IQPaintDevice arg1);
-		[SmokeMethod("printerState", "() const", "")]
+		[SmokeMethod("printerState() const")]
 		public abstract QPrinter.PrinterState PrinterState();
 		public QPrintEngine() : this((Type) null) {
 			CreateProxy();
-			NewQPrintEngine();
-		}
-		[SmokeMethod("QPrintEngine", "()", "")]
-		private void NewQPrintEngine() {
-			((QPrintEngine) interceptor).NewQPrintEngine();
+			interceptor.Invoke("QPrintEngine", "QPrintEngine()", typeof(void));
 		}
 	}
 }

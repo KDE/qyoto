@@ -5,68 +5,45 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QItemSelection")]
-	public class QItemSelection : MarshalByRefObject, IDisposable {
-		protected QItemSelection interceptor = null;
+	public class QItemSelection : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QItemSelection(Type dummy) {}
-		[SmokeClass("QItemSelection")]
-		interface IQItemSelectionProxy {
-			[SmokeMethod("split", "(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)", "###")]
-			void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelection), this);
-			interceptor = (QItemSelection) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QItemSelection), "QItemSelection", this);
 		}
-		private static IQItemSelectionProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QItemSelection() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemSelectionProxy), null);
-			staticInterceptor = (IQItemSelectionProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QItemSelection), "QItemSelection", null);
 		}
 		public QItemSelection() : this((Type) null) {
 			CreateProxy();
-			NewQItemSelection();
-		}
-		[SmokeMethod("QItemSelection", "()", "")]
-		private void NewQItemSelection() {
-			((QItemSelection) interceptor).NewQItemSelection();
+			interceptor.Invoke("QItemSelection", "QItemSelection()", typeof(void));
 		}
 		public QItemSelection(QModelIndex topLeft, QModelIndex bottomRight) : this((Type) null) {
 			CreateProxy();
-			NewQItemSelection(topLeft,bottomRight);
+			interceptor.Invoke("QItemSelection##", "QItemSelection(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);
 		}
-		[SmokeMethod("QItemSelection", "(const QModelIndex&, const QModelIndex&)", "##")]
-		private void NewQItemSelection(QModelIndex topLeft, QModelIndex bottomRight) {
-			((QItemSelection) interceptor).NewQItemSelection(topLeft,bottomRight);
-		}
-		[SmokeMethod("select", "(const QModelIndex&, const QModelIndex&)", "##")]
 		public void Select(QModelIndex topLeft, QModelIndex bottomRight) {
-			((QItemSelection) interceptor).Select(topLeft,bottomRight);
+			interceptor.Invoke("select##", "select(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);
 		}
-		[SmokeMethod("contains", "(const QModelIndex&) const", "#")]
 		public bool Contains(QModelIndex index) {
-			return ((QItemSelection) interceptor).Contains(index);
+			return (bool) interceptor.Invoke("contains#", "contains(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
-		[SmokeMethod("indexes", "() const", "")]
 		public List<QModelIndex> Indexes() {
-			return ((QItemSelection) interceptor).Indexes();
+			return (List<QModelIndex>) interceptor.Invoke("indexes", "indexes() const", typeof(List<QModelIndex>));
 		}
-		[SmokeMethod("merge", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public void Merge(QItemSelection other, int command) {
-			((QItemSelection) interceptor).Merge(other,command);
+			interceptor.Invoke("merge#$", "merge(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), other, typeof(int), command);
 		}
 		~QItemSelection() {
-			DisposeQItemSelection();
+			interceptor.Invoke("~QItemSelection", "~QItemSelection()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQItemSelection();
-		}
-		[SmokeMethod("~QItemSelection", "()", "")]
-		private void DisposeQItemSelection() {
-			((QItemSelection) interceptor).DisposeQItemSelection();
+			interceptor.Invoke("~QItemSelection", "~QItemSelection()", typeof(void));
 		}
 		public static void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result) {
-			staticInterceptor.Split(range,other,result);
+			staticInterceptor.Invoke("split###", "split(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)", typeof(void), typeof(QItemSelectionRange), range, typeof(QItemSelectionRange), other, typeof(QItemSelection), result);
 		}
 	}
 }

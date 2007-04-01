@@ -4,74 +4,47 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QPixmapCache")]
-	public class QPixmapCache : MarshalByRefObject, IDisposable {
-		protected QPixmapCache interceptor = null;
+	public class QPixmapCache : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPixmapCache(Type dummy) {}
-		[SmokeClass("QPixmapCache")]
-		interface IQPixmapCacheProxy {
-			[SmokeMethod("cacheLimit", "()", "")]
-			int CacheLimit();
-			[SmokeMethod("setCacheLimit", "(int)", "$")]
-			void SetCacheLimit(int arg1);
-			[SmokeMethod("find", "(const QString&)", "$")]
-			QPixmap Find(string key);
-			[SmokeMethod("find", "(const QString&, QPixmap&)", "$#")]
-			bool Find(string key, QPixmap arg2);
-			[SmokeMethod("insert", "(const QString&, const QPixmap&)", "$#")]
-			bool Insert(string key, QPixmap arg2);
-			[SmokeMethod("remove", "(const QString&)", "$")]
-			void Remove(string key);
-			[SmokeMethod("clear", "()", "")]
-			void Clear();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmapCache), this);
-			interceptor = (QPixmapCache) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPixmapCache), "QPixmapCache", this);
 		}
-		private static IQPixmapCacheProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QPixmapCache() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPixmapCacheProxy), null);
-			staticInterceptor = (IQPixmapCacheProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QPixmapCache), "QPixmapCache", null);
 		}
 		public QPixmapCache() : this((Type) null) {
 			CreateProxy();
-			NewQPixmapCache();
-		}
-		[SmokeMethod("QPixmapCache", "()", "")]
-		private void NewQPixmapCache() {
-			((QPixmapCache) interceptor).NewQPixmapCache();
+			interceptor.Invoke("QPixmapCache", "QPixmapCache()", typeof(void));
 		}
 		~QPixmapCache() {
-			DisposeQPixmapCache();
+			interceptor.Invoke("~QPixmapCache", "~QPixmapCache()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPixmapCache();
-		}
-		[SmokeMethod("~QPixmapCache", "()", "")]
-		private void DisposeQPixmapCache() {
-			((QPixmapCache) interceptor).DisposeQPixmapCache();
+			interceptor.Invoke("~QPixmapCache", "~QPixmapCache()", typeof(void));
 		}
 		public static int CacheLimit() {
-			return staticInterceptor.CacheLimit();
+			return (int) staticInterceptor.Invoke("cacheLimit", "cacheLimit()", typeof(int));
 		}
 		public static void SetCacheLimit(int arg1) {
-			staticInterceptor.SetCacheLimit(arg1);
+			staticInterceptor.Invoke("setCacheLimit$", "setCacheLimit(int)", typeof(void), typeof(int), arg1);
 		}
 		public static QPixmap Find(string key) {
-			return staticInterceptor.Find(key);
+			return (QPixmap) staticInterceptor.Invoke("find$", "find(const QString&)", typeof(QPixmap), typeof(string), key);
 		}
 		public static bool Find(string key, QPixmap arg2) {
-			return staticInterceptor.Find(key,arg2);
+			return (bool) staticInterceptor.Invoke("find$#", "find(const QString&, QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), arg2);
 		}
 		public static bool Insert(string key, QPixmap arg2) {
-			return staticInterceptor.Insert(key,arg2);
+			return (bool) staticInterceptor.Invoke("insert$#", "insert(const QString&, const QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), arg2);
 		}
 		public static void Remove(string key) {
-			staticInterceptor.Remove(key);
+			staticInterceptor.Invoke("remove$", "remove(const QString&)", typeof(void), typeof(string), key);
 		}
 		public static void Clear() {
-			staticInterceptor.Clear();
+			staticInterceptor.Invoke("clear", "clear()", typeof(void));
 		}
 	}
 }

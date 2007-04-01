@@ -6,113 +6,79 @@ namespace Qyoto {
 	[SmokeClass("QTextTable")]
 	public class QTextTable : QTextFrame, IDisposable {
  		protected QTextTable(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextTable")]
-		interface IQTextTableProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTable), this);
-			interceptor = (QTextTable) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QTextTable), "QTextTable", this);
 		}
-		private static IQTextTableProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QTextTable() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextTableProxy), null);
-			staticInterceptor = (IQTextTableProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QTextTable), "QTextTable", null);
 		}
 		public QTextTable(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
-			NewQTextTable(doc);
+			interceptor.Invoke("QTextTable#", "QTextTable(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);
 		}
-		[SmokeMethod("QTextTable", "(QTextDocument*)", "#")]
-		private void NewQTextTable(QTextDocument doc) {
-			((QTextTable) interceptor).NewQTextTable(doc);
-		}
-		[SmokeMethod("resize", "(int, int)", "$$")]
 		public void Resize(int rows, int cols) {
-			((QTextTable) interceptor).Resize(rows,cols);
+			interceptor.Invoke("resize$$", "resize(int, int)", typeof(void), typeof(int), rows, typeof(int), cols);
 		}
-		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public void InsertRows(int pos, int num) {
-			((QTextTable) interceptor).InsertRows(pos,num);
+			interceptor.Invoke("insertRows$$", "insertRows(int, int)", typeof(void), typeof(int), pos, typeof(int), num);
 		}
-		[SmokeMethod("insertColumns", "(int, int)", "$$")]
 		public void InsertColumns(int pos, int num) {
-			((QTextTable) interceptor).InsertColumns(pos,num);
+			interceptor.Invoke("insertColumns$$", "insertColumns(int, int)", typeof(void), typeof(int), pos, typeof(int), num);
 		}
-		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public void RemoveRows(int pos, int num) {
-			((QTextTable) interceptor).RemoveRows(pos,num);
+			interceptor.Invoke("removeRows$$", "removeRows(int, int)", typeof(void), typeof(int), pos, typeof(int), num);
 		}
-		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public void RemoveColumns(int pos, int num) {
-			((QTextTable) interceptor).RemoveColumns(pos,num);
+			interceptor.Invoke("removeColumns$$", "removeColumns(int, int)", typeof(void), typeof(int), pos, typeof(int), num);
 		}
-		[SmokeMethod("mergeCells", "(int, int, int, int)", "$$$$")]
 		public void MergeCells(int row, int col, int numRows, int numCols) {
-			((QTextTable) interceptor).MergeCells(row,col,numRows,numCols);
+			interceptor.Invoke("mergeCells$$$$", "mergeCells(int, int, int, int)", typeof(void), typeof(int), row, typeof(int), col, typeof(int), numRows, typeof(int), numCols);
 		}
-		[SmokeMethod("mergeCells", "(const QTextCursor&)", "#")]
 		public void MergeCells(QTextCursor cursor) {
-			((QTextTable) interceptor).MergeCells(cursor);
+			interceptor.Invoke("mergeCells#", "mergeCells(const QTextCursor&)", typeof(void), typeof(QTextCursor), cursor);
 		}
-		[SmokeMethod("splitCell", "(int, int, int, int)", "$$$$")]
 		public void SplitCell(int row, int col, int numRows, int numCols) {
-			((QTextTable) interceptor).SplitCell(row,col,numRows,numCols);
+			interceptor.Invoke("splitCell$$$$", "splitCell(int, int, int, int)", typeof(void), typeof(int), row, typeof(int), col, typeof(int), numRows, typeof(int), numCols);
 		}
-		[SmokeMethod("rows", "() const", "")]
 		public int Rows() {
-			return ((QTextTable) interceptor).Rows();
+			return (int) interceptor.Invoke("rows", "rows() const", typeof(int));
 		}
-		[SmokeMethod("columns", "() const", "")]
 		public int Columns() {
-			return ((QTextTable) interceptor).Columns();
+			return (int) interceptor.Invoke("columns", "columns() const", typeof(int));
 		}
-		[SmokeMethod("cellAt", "(int, int) const", "$$")]
 		public QTextTableCell CellAt(int row, int col) {
-			return ((QTextTable) interceptor).CellAt(row,col);
+			return (QTextTableCell) interceptor.Invoke("cellAt$$", "cellAt(int, int) const", typeof(QTextTableCell), typeof(int), row, typeof(int), col);
 		}
-		[SmokeMethod("cellAt", "(int) const", "$")]
 		public QTextTableCell CellAt(int position) {
-			return ((QTextTable) interceptor).CellAt(position);
+			return (QTextTableCell) interceptor.Invoke("cellAt$", "cellAt(int) const", typeof(QTextTableCell), typeof(int), position);
 		}
-		[SmokeMethod("cellAt", "(const QTextCursor&) const", "#")]
 		public QTextTableCell CellAt(QTextCursor c) {
-			return ((QTextTable) interceptor).CellAt(c);
+			return (QTextTableCell) interceptor.Invoke("cellAt#", "cellAt(const QTextCursor&) const", typeof(QTextTableCell), typeof(QTextCursor), c);
 		}
-		[SmokeMethod("rowStart", "(const QTextCursor&) const", "#")]
 		public QTextCursor RowStart(QTextCursor c) {
-			return ((QTextTable) interceptor).RowStart(c);
+			return (QTextCursor) interceptor.Invoke("rowStart#", "rowStart(const QTextCursor&) const", typeof(QTextCursor), typeof(QTextCursor), c);
 		}
-		[SmokeMethod("rowEnd", "(const QTextCursor&) const", "#")]
 		public QTextCursor RowEnd(QTextCursor c) {
-			return ((QTextTable) interceptor).RowEnd(c);
+			return (QTextCursor) interceptor.Invoke("rowEnd#", "rowEnd(const QTextCursor&) const", typeof(QTextCursor), typeof(QTextCursor), c);
 		}
-		[SmokeMethod("setFormat", "(const QTextTableFormat&)", "#")]
 		public void SetFormat(QTextTableFormat format) {
-			((QTextTable) interceptor).SetFormat(format);
+			interceptor.Invoke("setFormat#", "setFormat(const QTextTableFormat&)", typeof(void), typeof(QTextTableFormat), format);
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QTextTableFormat Format() {
-			return ((QTextTable) interceptor).Format();
+			return (QTextTableFormat) interceptor.Invoke("format", "format() const", typeof(QTextTableFormat));
 		}
 		~QTextTable() {
-			DisposeQTextTable();
+			interceptor.Invoke("~QTextTable", "~QTextTable()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQTextTable();
-		}
-		[SmokeMethod("~QTextTable", "()", "")]
-		private void DisposeQTextTable() {
-			((QTextTable) interceptor).DisposeQTextTable();
+			interceptor.Invoke("~QTextTable", "~QTextTable()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextTableSignals Emit {
 			get { return (IQTextTableSignals) Q_EMIT; }

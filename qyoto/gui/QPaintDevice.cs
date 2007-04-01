@@ -20,13 +20,12 @@ namespace Qyoto {
 	}
 
 	[SmokeClass("QPaintDevice")]
-	public abstract class QPaintDevice : MarshalByRefObject, IQPaintDevice {
-		protected QPaintDevice interceptor = null;
+	public abstract class QPaintDevice : Object, IQPaintDevice {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPaintDevice(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDevice), this);
-			interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPaintDevice), "QPaintDevice", this);
 		}
 		public enum PaintDeviceMetric {
 			PdmWidth = 1,
@@ -40,67 +39,52 @@ namespace Qyoto {
 			PdmPhysicalDpiX = 9,
 			PdmPhysicalDpiY = 10,
 		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		public virtual int DevType() {
-			return ((QPaintDevice) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
-		[SmokeMethod("paintingActive", "() const", "")]
 		public bool PaintingActive() {
-			return ((QPaintDevice) interceptor).PaintingActive();
+			return (bool) interceptor.Invoke("paintingActive", "paintingActive() const", typeof(bool));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public abstract QPaintEngine PaintEngine();
-		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ((QPaintDevice) interceptor).Width();
+			return (int) interceptor.Invoke("width", "width() const", typeof(int));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ((QPaintDevice) interceptor).Height();
+			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
-		[SmokeMethod("widthMM", "() const", "")]
 		public int WidthMM() {
-			return ((QPaintDevice) interceptor).WidthMM();
+			return (int) interceptor.Invoke("widthMM", "widthMM() const", typeof(int));
 		}
-		[SmokeMethod("heightMM", "() const", "")]
 		public int HeightMM() {
-			return ((QPaintDevice) interceptor).HeightMM();
+			return (int) interceptor.Invoke("heightMM", "heightMM() const", typeof(int));
 		}
-		[SmokeMethod("logicalDpiX", "() const", "")]
 		public int LogicalDpiX() {
-			return ((QPaintDevice) interceptor).LogicalDpiX();
+			return (int) interceptor.Invoke("logicalDpiX", "logicalDpiX() const", typeof(int));
 		}
-		[SmokeMethod("logicalDpiY", "() const", "")]
 		public int LogicalDpiY() {
-			return ((QPaintDevice) interceptor).LogicalDpiY();
+			return (int) interceptor.Invoke("logicalDpiY", "logicalDpiY() const", typeof(int));
 		}
-		[SmokeMethod("physicalDpiX", "() const", "")]
 		public int PhysicalDpiX() {
-			return ((QPaintDevice) interceptor).PhysicalDpiX();
+			return (int) interceptor.Invoke("physicalDpiX", "physicalDpiX() const", typeof(int));
 		}
-		[SmokeMethod("physicalDpiY", "() const", "")]
 		public int PhysicalDpiY() {
-			return ((QPaintDevice) interceptor).PhysicalDpiY();
+			return (int) interceptor.Invoke("physicalDpiY", "physicalDpiY() const", typeof(int));
 		}
-		[SmokeMethod("numColors", "() const", "")]
 		public int NumColors() {
-			return ((QPaintDevice) interceptor).NumColors();
+			return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
 		}
-		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ((QPaintDevice) interceptor).Depth();
+			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
 		public QPaintDevice() : this((Type) null) {
 			CreateProxy();
-			NewQPaintDevice();
+			interceptor.Invoke("QPaintDevice", "QPaintDevice()", typeof(void));
 		}
-		[SmokeMethod("QPaintDevice", "()", "")]
-		private void NewQPaintDevice() {
-			((QPaintDevice) interceptor).NewQPaintDevice();
-		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected virtual int Metric(IQPaintDevice metric) {
-			return ((QPaintDevice) interceptor).Metric(metric);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), metric);
 		}
 	}
 }

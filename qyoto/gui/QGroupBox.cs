@@ -7,156 +7,114 @@ namespace Qyoto {
 	[SmokeClass("QGroupBox")]
 	public class QGroupBox : QWidget, IDisposable {
  		protected QGroupBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGroupBox")]
-		interface IQGroupBoxProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGroupBox), this);
-			interceptor = (QGroupBox) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGroupBox), "QGroupBox", this);
 		}
-		private static IQGroupBoxProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGroupBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGroupBoxProxy), null);
-			staticInterceptor = (IQGroupBoxProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGroupBox), "QGroupBox", null);
 		}
 		[Q_PROPERTY("QString", "title")]
 		public string Title {
-			[SmokeMethod("title", "()", "")]
-			get { return ((QGroupBox) interceptor).Title; }
-			[SmokeMethod("setTitle", "(QString)", "$")]
-			set { ((QGroupBox) interceptor).Title = value; }
+			get { return (string) interceptor.Invoke("title", "title()", typeof(string)); }
+			set { interceptor.Invoke("setTitle$", "setTitle(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			[SmokeMethod("alignment", "()", "")]
-			get { return ((QGroupBox) interceptor).Alignment; }
-			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
-			set { ((QGroupBox) interceptor).Alignment = value; }
+			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {
-			[SmokeMethod("isFlat", "()", "")]
-			get { return ((QGroupBox) interceptor).Flat; }
-			[SmokeMethod("setFlat", "(bool)", "$")]
-			set { ((QGroupBox) interceptor).Flat = value; }
+			get { return (bool) interceptor.Invoke("isFlat", "isFlat()", typeof(bool)); }
+			set { interceptor.Invoke("setFlat$", "setFlat(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
-			[SmokeMethod("isCheckable", "()", "")]
-			get { return ((QGroupBox) interceptor).Checkable; }
-			[SmokeMethod("setCheckable", "(bool)", "$")]
-			set { ((QGroupBox) interceptor).Checkable = value; }
+			get { return (bool) interceptor.Invoke("isCheckable", "isCheckable()", typeof(bool)); }
+			set { interceptor.Invoke("setCheckable$", "setCheckable(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
-			[SmokeMethod("isChecked", "()", "")]
-			get { return ((QGroupBox) interceptor).Checked; }
-			[SmokeMethod("setChecked", "(bool)", "$")]
-			set { ((QGroupBox) interceptor).Checked = value; }
+			get { return (bool) interceptor.Invoke("isChecked", "isChecked()", typeof(bool)); }
+			set { interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QGroupBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQGroupBox(parent);
-		}
-		[SmokeMethod("QGroupBox", "(QWidget*)", "#")]
-		private void NewQGroupBox(QWidget parent) {
-			((QGroupBox) interceptor).NewQGroupBox(parent);
+			interceptor.Invoke("QGroupBox#", "QGroupBox(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QGroupBox() : this((Type) null) {
 			CreateProxy();
-			NewQGroupBox();
-		}
-		[SmokeMethod("QGroupBox", "()", "")]
-		private void NewQGroupBox() {
-			((QGroupBox) interceptor).NewQGroupBox();
+			interceptor.Invoke("QGroupBox", "QGroupBox()", typeof(void));
 		}
 		public QGroupBox(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQGroupBox(title,parent);
-		}
-		[SmokeMethod("QGroupBox", "(const QString&, QWidget*)", "$#")]
-		private void NewQGroupBox(string title, QWidget parent) {
-			((QGroupBox) interceptor).NewQGroupBox(title,parent);
+			interceptor.Invoke("QGroupBox$#", "QGroupBox(const QString&, QWidget*)", typeof(void), typeof(string), title, typeof(QWidget), parent);
 		}
 		public QGroupBox(string title) : this((Type) null) {
 			CreateProxy();
-			NewQGroupBox(title);
+			interceptor.Invoke("QGroupBox$", "QGroupBox(const QString&)", typeof(void), typeof(string), title);
 		}
-		[SmokeMethod("QGroupBox", "(const QString&)", "$")]
-		private void NewQGroupBox(string title) {
-			((QGroupBox) interceptor).NewQGroupBox(title);
-		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QGroupBox) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("isFlat", "() const", "")]
 		public bool IsFlat() {
-			return ((QGroupBox) interceptor).IsFlat();
+			return (bool) interceptor.Invoke("isFlat", "isFlat() const", typeof(bool));
 		}
-		[SmokeMethod("isCheckable", "() const", "")]
 		public bool IsCheckable() {
-			return ((QGroupBox) interceptor).IsCheckable();
+			return (bool) interceptor.Invoke("isCheckable", "isCheckable() const", typeof(bool));
 		}
-		[SmokeMethod("isChecked", "() const", "")]
 		public bool IsChecked() {
-			return ((QGroupBox) interceptor).IsChecked();
+			return (bool) interceptor.Invoke("isChecked", "isChecked() const", typeof(bool));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QGroupBox) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected override void ChildEvent(QChildEvent arg1) {
-			((QGroupBox) interceptor).ChildEvent(arg1);
+			interceptor.Invoke("childEvent#", "childEvent(QChildEvent*)", typeof(void), typeof(QChildEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QGroupBox) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QGroupBox) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			((QGroupBox) interceptor).FocusInEvent(arg1);
+			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
-			((QGroupBox) interceptor).ChangeEvent(arg1);
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QGroupBox) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QGroupBox) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QGroupBox) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
 		~QGroupBox() {
-			DisposeQGroupBox();
+			interceptor.Invoke("~QGroupBox", "~QGroupBox()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGroupBox();
-		}
-		[SmokeMethod("~QGroupBox", "()", "")]
-		private void DisposeQGroupBox() {
-			((QGroupBox) interceptor).DisposeQGroupBox();
+			interceptor.Invoke("~QGroupBox", "~QGroupBox()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGroupBoxSignals Emit {
 			get { return (IQGroupBoxSignals) Q_EMIT; }

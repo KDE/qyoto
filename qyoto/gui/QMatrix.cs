@@ -4,236 +4,165 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QMatrix")]
-	public class QMatrix : MarshalByRefObject, IDisposable {
-		protected QMatrix interceptor = null;
+	public class QMatrix : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QMatrix(Type dummy) {}
-		[SmokeClass("QMatrix")]
-		interface IQMatrixProxy {
-			[SmokeMethod("operator==", "(const QMatrix&) const", "#")]
-			bool op_equals(QMatrix lhs, QMatrix arg1);
-			[SmokeMethod("operator*", "(const QMatrix&) const", "#")]
-			QMatrix op_mult(QMatrix lhs, QMatrix o);
-			[SmokeMethod("operator*", "(const QPoint&, const QMatrix&)", "##")]
-			QPoint op_mult(QPoint p, QMatrix m);
-			[SmokeMethod("operator*", "(const QPointF&, const QMatrix&)", "##")]
-			QPointF op_mult(QPointF p, QMatrix m);
-			[SmokeMethod("operator*", "(const QLineF&, const QMatrix&)", "##")]
-			QLineF op_mult(QLineF l, QMatrix m);
-			[SmokeMethod("operator*", "(const QLine&, const QMatrix&)", "##")]
-			QLine op_mult(QLine l, QMatrix m);
-			[SmokeMethod("operator*", "(const QPolygon&, const QMatrix&)", "##")]
-			QPolygon op_mult(QPolygon a, QMatrix m);
-			[SmokeMethod("operator*", "(const QPolygonF&, const QMatrix&)", "##")]
-			QPolygonF op_mult(QPolygonF a, QMatrix m);
-			[SmokeMethod("operator*", "(const QRegion&, const QMatrix&)", "##")]
-			QRegion op_mult(QRegion r, QMatrix m);
-			[SmokeMethod("operator*", "(const QPainterPath&, const QMatrix&)", "##")]
-			QPainterPath op_mult(QPainterPath p, QMatrix m);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMatrix), this);
-			interceptor = (QMatrix) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QMatrix), "QMatrix", this);
 		}
-		private static IQMatrixProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QMatrix() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMatrixProxy), null);
-			staticInterceptor = (IQMatrixProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QMatrix), "QMatrix", null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QMatrix() : this((Type) null) {
 			CreateProxy();
-			NewQMatrix();
-		}
-		[SmokeMethod("QMatrix", "()", "")]
-		private void NewQMatrix() {
-			((QMatrix) interceptor).NewQMatrix();
+			interceptor.Invoke("QMatrix", "QMatrix()", typeof(void));
 		}
 		public QMatrix(double m11, double m12, double m21, double m22, double dx, double dy) : this((Type) null) {
 			CreateProxy();
-			NewQMatrix(m11,m12,m21,m22,dx,dy);
-		}
-		[SmokeMethod("QMatrix", "(qreal, qreal, qreal, qreal, qreal, qreal)", "$$$$$$")]
-		private void NewQMatrix(double m11, double m12, double m21, double m22, double dx, double dy) {
-			((QMatrix) interceptor).NewQMatrix(m11,m12,m21,m22,dx,dy);
+			interceptor.Invoke("QMatrix$$$$$$", "QMatrix(qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), m11, typeof(double), m12, typeof(double), m21, typeof(double), m22, typeof(double), dx, typeof(double), dy);
 		}
 		public QMatrix(QMatrix matrix) : this((Type) null) {
 			CreateProxy();
-			NewQMatrix(matrix);
+			interceptor.Invoke("QMatrix#", "QMatrix(const QMatrix&)", typeof(void), typeof(QMatrix), matrix);
 		}
-		[SmokeMethod("QMatrix", "(const QMatrix&)", "#")]
-		private void NewQMatrix(QMatrix matrix) {
-			((QMatrix) interceptor).NewQMatrix(matrix);
-		}
-		[SmokeMethod("setMatrix", "(qreal, qreal, qreal, qreal, qreal, qreal)", "$$$$$$")]
 		public void SetMatrix(double m11, double m12, double m21, double m22, double dx, double dy) {
-			((QMatrix) interceptor).SetMatrix(m11,m12,m21,m22,dx,dy);
+			interceptor.Invoke("setMatrix$$$$$$", "setMatrix(qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), m11, typeof(double), m12, typeof(double), m21, typeof(double), m22, typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("m11", "() const", "")]
 		public double M11() {
-			return ((QMatrix) interceptor).M11();
+			return (double) interceptor.Invoke("m11", "m11() const", typeof(double));
 		}
-		[SmokeMethod("m12", "() const", "")]
 		public double M12() {
-			return ((QMatrix) interceptor).M12();
+			return (double) interceptor.Invoke("m12", "m12() const", typeof(double));
 		}
-		[SmokeMethod("m21", "() const", "")]
 		public double M21() {
-			return ((QMatrix) interceptor).M21();
+			return (double) interceptor.Invoke("m21", "m21() const", typeof(double));
 		}
-		[SmokeMethod("m22", "() const", "")]
 		public double M22() {
-			return ((QMatrix) interceptor).M22();
+			return (double) interceptor.Invoke("m22", "m22() const", typeof(double));
 		}
-		[SmokeMethod("dx", "() const", "")]
 		public double Dx() {
-			return ((QMatrix) interceptor).Dx();
+			return (double) interceptor.Invoke("dx", "dx() const", typeof(double));
 		}
-		[SmokeMethod("dy", "() const", "")]
 		public double Dy() {
-			return ((QMatrix) interceptor).Dy();
+			return (double) interceptor.Invoke("dy", "dy() const", typeof(double));
 		}
-		[SmokeMethod("map", "(int, int, int*, int*) const", "$$$$")]
-		public void Map(int x, int y, out int tx, out int ty) {
-			((QMatrix) interceptor).Map(x,y,out tx,out ty);
+		public void Map(int x, int y, int tx, int ty) {
+			interceptor.Invoke("map$$$$", "map(int, int, int*, int*) const", typeof(void), typeof(int), x, typeof(int), y, typeof(int), tx, typeof(int), ty);
 		}
-		[SmokeMethod("map", "(qreal, qreal, qreal*, qreal*) const", "$$$$")]
-		public void Map(double x, double y, out double tx, out double ty) {
-			((QMatrix) interceptor).Map(x,y,out tx,out ty);
+		public void Map(double x, double y, double tx, double ty) {
+			interceptor.Invoke("map$$$$", "map(qreal, qreal, qreal*, qreal*) const", typeof(void), typeof(double), x, typeof(double), y, typeof(double), tx, typeof(double), ty);
 		}
-		[SmokeMethod("mapRect", "(const QRect&) const", "#")]
 		public QRect MapRect(QRect arg1) {
-			return ((QMatrix) interceptor).MapRect(arg1);
+			return (QRect) interceptor.Invoke("mapRect#", "mapRect(const QRect&) const", typeof(QRect), typeof(QRect), arg1);
 		}
-		[SmokeMethod("mapRect", "(const QRectF&) const", "#")]
 		public QRectF MapRect(QRectF arg1) {
-			return ((QMatrix) interceptor).MapRect(arg1);
+			return (QRectF) interceptor.Invoke("mapRect#", "mapRect(const QRectF&) const", typeof(QRectF), typeof(QRectF), arg1);
 		}
-		[SmokeMethod("map", "(const QPoint&) const", "#")]
 		public QPoint Map(QPoint p) {
-			return ((QMatrix) interceptor).Map(p);
+			return (QPoint) interceptor.Invoke("map#", "map(const QPoint&) const", typeof(QPoint), typeof(QPoint), p);
 		}
-		[SmokeMethod("map", "(const QPointF&) const", "#")]
 		public QPointF Map(QPointF p) {
-			return ((QMatrix) interceptor).Map(p);
+			return (QPointF) interceptor.Invoke("map#", "map(const QPointF&) const", typeof(QPointF), typeof(QPointF), p);
 		}
-		[SmokeMethod("map", "(const QLine&) const", "#")]
 		public QLine Map(QLine l) {
-			return ((QMatrix) interceptor).Map(l);
+			return (QLine) interceptor.Invoke("map#", "map(const QLine&) const", typeof(QLine), typeof(QLine), l);
 		}
-		[SmokeMethod("map", "(const QLineF&) const", "#")]
 		public QLineF Map(QLineF l) {
-			return ((QMatrix) interceptor).Map(l);
+			return (QLineF) interceptor.Invoke("map#", "map(const QLineF&) const", typeof(QLineF), typeof(QLineF), l);
 		}
-		[SmokeMethod("map", "(const QPolygonF&) const", "#")]
 		public QPolygonF Map(QPolygonF a) {
-			return ((QMatrix) interceptor).Map(a);
+			return (QPolygonF) interceptor.Invoke("map#", "map(const QPolygonF&) const", typeof(QPolygonF), typeof(QPolygonF), a);
 		}
-		[SmokeMethod("map", "(const QPolygon&) const", "#")]
 		public QPolygon Map(QPolygon a) {
-			return ((QMatrix) interceptor).Map(a);
+			return (QPolygon) interceptor.Invoke("map#", "map(const QPolygon&) const", typeof(QPolygon), typeof(QPolygon), a);
 		}
-		[SmokeMethod("map", "(const QRegion&) const", "#")]
 		public QRegion Map(QRegion r) {
-			return ((QMatrix) interceptor).Map(r);
+			return (QRegion) interceptor.Invoke("map#", "map(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
-		[SmokeMethod("map", "(const QPainterPath&) const", "#")]
 		public QPainterPath Map(QPainterPath p) {
-			return ((QMatrix) interceptor).Map(p);
+			return (QPainterPath) interceptor.Invoke("map#", "map(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), p);
 		}
-		[SmokeMethod("mapToPolygon", "(const QRect&) const", "#")]
 		public QPolygon MapToPolygon(QRect r) {
-			return ((QMatrix) interceptor).MapToPolygon(r);
+			return (QPolygon) interceptor.Invoke("mapToPolygon#", "mapToPolygon(const QRect&) const", typeof(QPolygon), typeof(QRect), r);
 		}
-		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			((QMatrix) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
-		[SmokeMethod("isIdentity", "() const", "")]
 		public bool IsIdentity() {
-			return ((QMatrix) interceptor).IsIdentity();
+			return (bool) interceptor.Invoke("isIdentity", "isIdentity() const", typeof(bool));
 		}
-		[SmokeMethod("translate", "(qreal, qreal)", "$$")]
 		public QMatrix Translate(double dx, double dy) {
-			return ((QMatrix) interceptor).Translate(dx,dy);
+			return (QMatrix) interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(QMatrix), typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("scale", "(qreal, qreal)", "$$")]
 		public QMatrix Scale(double sx, double sy) {
-			return ((QMatrix) interceptor).Scale(sx,sy);
+			return (QMatrix) interceptor.Invoke("scale$$", "scale(qreal, qreal)", typeof(QMatrix), typeof(double), sx, typeof(double), sy);
 		}
-		[SmokeMethod("shear", "(qreal, qreal)", "$$")]
 		public QMatrix Shear(double sh, double sv) {
-			return ((QMatrix) interceptor).Shear(sh,sv);
+			return (QMatrix) interceptor.Invoke("shear$$", "shear(qreal, qreal)", typeof(QMatrix), typeof(double), sh, typeof(double), sv);
 		}
-		[SmokeMethod("rotate", "(qreal)", "$")]
 		public QMatrix Rotate(double a) {
-			return ((QMatrix) interceptor).Rotate(a);
+			return (QMatrix) interceptor.Invoke("rotate$", "rotate(qreal)", typeof(QMatrix), typeof(double), a);
 		}
-		[SmokeMethod("isInvertible", "() const", "")]
 		public bool IsInvertible() {
-			return ((QMatrix) interceptor).IsInvertible();
+			return (bool) interceptor.Invoke("isInvertible", "isInvertible() const", typeof(bool));
 		}
-		[SmokeMethod("det", "() const", "")]
 		public double Det() {
-			return ((QMatrix) interceptor).Det();
+			return (double) interceptor.Invoke("det", "det() const", typeof(double));
 		}
-		[SmokeMethod("inverted", "(bool*) const", "$")]
-		public QMatrix Inverted(out bool invertible) {
-			return ((QMatrix) interceptor).Inverted(out invertible);
+		public QMatrix Inverted(bool invertible) {
+			return (QMatrix) interceptor.Invoke("inverted$", "inverted(bool*) const", typeof(QMatrix), typeof(bool), invertible);
 		}
-		[SmokeMethod("inverted", "() const", "")]
 		public QMatrix Inverted() {
-			return ((QMatrix) interceptor).Inverted();
+			return (QMatrix) interceptor.Invoke("inverted", "inverted() const", typeof(QMatrix));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QMatrix)) { return false; }
 			return this == (QMatrix) o;
 		}
 		public override int GetHashCode() {
-			return ((QMatrix) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QMatrix() {
-			DisposeQMatrix();
+			interceptor.Invoke("~QMatrix", "~QMatrix()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQMatrix();
-		}
-		[SmokeMethod("~QMatrix", "()", "")]
-		private void DisposeQMatrix() {
-			((QMatrix) interceptor).DisposeQMatrix();
+			interceptor.Invoke("~QMatrix", "~QMatrix()", typeof(void));
 		}
 		public static bool operator==(QMatrix lhs, QMatrix arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QMatrix&) const", typeof(bool), typeof(QMatrix), lhs, typeof(QMatrix), arg1);
 		}
 		public static bool operator!=(QMatrix lhs, QMatrix arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QMatrix&) const", typeof(bool), typeof(QMatrix), lhs, typeof(QMatrix), arg1);
 		}
 		public static QMatrix operator*(QMatrix lhs, QMatrix o) {
-			return staticInterceptor.op_mult(lhs,o);
+			return (QMatrix) staticInterceptor.Invoke("operator*#", "operator*(const QMatrix&) const", typeof(QMatrix), typeof(QMatrix), lhs, typeof(QMatrix), o);
 		}
 		public static QPoint operator*(QPoint p, QMatrix m) {
-			return staticInterceptor.op_mult(p,m);
+			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
 		}
 		public static QPointF operator*(QPointF p, QMatrix m) {
-			return staticInterceptor.op_mult(p,m);
+			return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QMatrix&)", typeof(QPointF), typeof(QPointF), p, typeof(QMatrix), m);
 		}
 		public static QLineF operator*(QLineF l, QMatrix m) {
-			return staticInterceptor.op_mult(l,m);
+			return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QMatrix&)", typeof(QLineF), typeof(QLineF), l, typeof(QMatrix), m);
 		}
 		public static QLine operator*(QLine l, QMatrix m) {
-			return staticInterceptor.op_mult(l,m);
+			return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QMatrix&)", typeof(QLine), typeof(QLine), l, typeof(QMatrix), m);
 		}
 		public static QPolygon operator*(QPolygon a, QMatrix m) {
-			return staticInterceptor.op_mult(a,m);
+			return (QPolygon) staticInterceptor.Invoke("operator*##", "operator*(const QPolygon&, const QMatrix&)", typeof(QPolygon), typeof(QPolygon), a, typeof(QMatrix), m);
 		}
 		public static QPolygonF operator*(QPolygonF a, QMatrix m) {
-			return staticInterceptor.op_mult(a,m);
+			return (QPolygonF) staticInterceptor.Invoke("operator*##", "operator*(const QPolygonF&, const QMatrix&)", typeof(QPolygonF), typeof(QPolygonF), a, typeof(QMatrix), m);
 		}
 		public static QRegion operator*(QRegion r, QMatrix m) {
-			return staticInterceptor.op_mult(r,m);
+			return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QMatrix&)", typeof(QRegion), typeof(QRegion), r, typeof(QMatrix), m);
 		}
 		public static QPainterPath operator*(QPainterPath p, QMatrix m) {
-			return staticInterceptor.op_mult(p,m);
+			return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QMatrix&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QMatrix), m);
 		}
 	}
 }

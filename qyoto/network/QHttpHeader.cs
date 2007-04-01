@@ -5,125 +5,93 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QHttpHeader")]
-	public abstract class QHttpHeader : MarshalByRefObject {
-		protected QHttpHeader interceptor = null;
+	public abstract class QHttpHeader : Object {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QHttpHeader(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpHeader), this);
-			interceptor = (QHttpHeader) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QHttpHeader), "QHttpHeader", this);
 		}
 		public QHttpHeader() : this((Type) null) {
 			CreateProxy();
-			NewQHttpHeader();
-		}
-		[SmokeMethod("QHttpHeader", "()", "")]
-		private void NewQHttpHeader() {
-			((QHttpHeader) interceptor).NewQHttpHeader();
+			interceptor.Invoke("QHttpHeader", "QHttpHeader()", typeof(void));
 		}
 		public QHttpHeader(QHttpHeader header) : this((Type) null) {
 			CreateProxy();
-			NewQHttpHeader(header);
-		}
-		[SmokeMethod("QHttpHeader", "(const QHttpHeader&)", "#")]
-		private void NewQHttpHeader(QHttpHeader header) {
-			((QHttpHeader) interceptor).NewQHttpHeader(header);
+			interceptor.Invoke("QHttpHeader#", "QHttpHeader(const QHttpHeader&)", typeof(void), typeof(QHttpHeader), header);
 		}
 		public QHttpHeader(string str) : this((Type) null) {
 			CreateProxy();
-			NewQHttpHeader(str);
+			interceptor.Invoke("QHttpHeader$", "QHttpHeader(const QString&)", typeof(void), typeof(string), str);
 		}
-		[SmokeMethod("QHttpHeader", "(const QString&)", "$")]
-		private void NewQHttpHeader(string str) {
-			((QHttpHeader) interceptor).NewQHttpHeader(str);
-		}
-		[SmokeMethod("setValue", "(const QString&, const QString&)", "$$")]
 		public void SetValue(string key, string value) {
-			((QHttpHeader) interceptor).SetValue(key,value);
+			interceptor.Invoke("setValue$$", "setValue(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);
 		}
-		[SmokeMethod("setValues", "(const QList<QPair<QString, QString> >&)", "?")]
 		public void SetValues(List<QPair<string, string>> values) {
-			((QHttpHeader) interceptor).SetValues(values);
+			interceptor.Invoke("setValues?", "setValues(const QList<QPair<QString, QString> >&)", typeof(void), typeof(List<QPair<string, string>>), values);
 		}
-		[SmokeMethod("addValue", "(const QString&, const QString&)", "$$")]
 		public void AddValue(string key, string value) {
-			((QHttpHeader) interceptor).AddValue(key,value);
+			interceptor.Invoke("addValue$$", "addValue(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);
 		}
-		[SmokeMethod("values", "() const", "")]
 		public List<QPair<string, string>> Values() {
-			return ((QHttpHeader) interceptor).Values();
+			return (List<QPair<string, string>>) interceptor.Invoke("values", "values() const", typeof(List<QPair<string, string>>));
 		}
-		[SmokeMethod("hasKey", "(const QString&) const", "$")]
 		public bool HasKey(string key) {
-			return ((QHttpHeader) interceptor).HasKey(key);
+			return (bool) interceptor.Invoke("hasKey$", "hasKey(const QString&) const", typeof(bool), typeof(string), key);
 		}
-		[SmokeMethod("keys", "() const", "")]
 		public List<string> Keys() {
-			return ((QHttpHeader) interceptor).Keys();
+			return (List<string>) interceptor.Invoke("keys", "keys() const", typeof(List<string>));
 		}
-		[SmokeMethod("value", "(const QString&) const", "$")]
 		public string Value(string key) {
-			return ((QHttpHeader) interceptor).Value(key);
+			return (string) interceptor.Invoke("value$", "value(const QString&) const", typeof(string), typeof(string), key);
 		}
-		[SmokeMethod("allValues", "(const QString&) const", "$")]
 		public List<string> AllValues(string key) {
-			return ((QHttpHeader) interceptor).AllValues(key);
+			return (List<string>) interceptor.Invoke("allValues$", "allValues(const QString&) const", typeof(List<string>), typeof(string), key);
 		}
-		[SmokeMethod("removeValue", "(const QString&)", "$")]
 		public void RemoveValue(string key) {
-			((QHttpHeader) interceptor).RemoveValue(key);
+			interceptor.Invoke("removeValue$", "removeValue(const QString&)", typeof(void), typeof(string), key);
 		}
-		[SmokeMethod("removeAllValues", "(const QString&)", "$")]
 		public void RemoveAllValues(string key) {
-			((QHttpHeader) interceptor).RemoveAllValues(key);
+			interceptor.Invoke("removeAllValues$", "removeAllValues(const QString&)", typeof(void), typeof(string), key);
 		}
-		[SmokeMethod("hasContentLength", "() const", "")]
 		public bool HasContentLength() {
-			return ((QHttpHeader) interceptor).HasContentLength();
+			return (bool) interceptor.Invoke("hasContentLength", "hasContentLength() const", typeof(bool));
 		}
-		[SmokeMethod("contentLength", "() const", "")]
 		public uint ContentLength() {
-			return ((QHttpHeader) interceptor).ContentLength();
+			return (uint) interceptor.Invoke("contentLength", "contentLength() const", typeof(uint));
 		}
-		[SmokeMethod("setContentLength", "(int)", "$")]
 		public void SetContentLength(int len) {
-			((QHttpHeader) interceptor).SetContentLength(len);
+			interceptor.Invoke("setContentLength$", "setContentLength(int)", typeof(void), typeof(int), len);
 		}
-		[SmokeMethod("hasContentType", "() const", "")]
 		public bool HasContentType() {
-			return ((QHttpHeader) interceptor).HasContentType();
+			return (bool) interceptor.Invoke("hasContentType", "hasContentType() const", typeof(bool));
 		}
-		[SmokeMethod("contentType", "() const", "")]
 		public string ContentType() {
-			return ((QHttpHeader) interceptor).ContentType();
+			return (string) interceptor.Invoke("contentType", "contentType() const", typeof(string));
 		}
-		[SmokeMethod("setContentType", "(const QString&)", "$")]
 		public void SetContentType(string type) {
-			((QHttpHeader) interceptor).SetContentType(type);
+			interceptor.Invoke("setContentType$", "setContentType(const QString&)", typeof(void), typeof(string), type);
 		}
-		[SmokeMethod("toString", "() const", "")]
+		[SmokeMethod("toString() const")]
 		public virtual string ToString() {
-			return ((QHttpHeader) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QHttpHeader) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("majorVersion", "() const", "")]
+		[SmokeMethod("majorVersion() const")]
 		public abstract int MajorVersion();
-		[SmokeMethod("minorVersion", "() const", "")]
+		[SmokeMethod("minorVersion() const")]
 		public abstract int MinorVersion();
-		[SmokeMethod("parseLine", "(const QString&, int)", "$$")]
+		[SmokeMethod("parseLine(const QString&, int)")]
 		protected virtual bool ParseLine(string line, int number) {
-			return ((QHttpHeader) interceptor).ParseLine(line,number);
+			return (bool) interceptor.Invoke("parseLine$$", "parseLine(const QString&, int)", typeof(bool), typeof(string), line, typeof(int), number);
 		}
-		[SmokeMethod("parse", "(const QString&)", "$")]
 		protected bool Parse(string str) {
-			return ((QHttpHeader) interceptor).Parse(str);
+			return (bool) interceptor.Invoke("parse$", "parse(const QString&)", typeof(bool), typeof(string), str);
 		}
-		[SmokeMethod("setValid", "(bool)", "$")]
 		protected void SetValid(bool arg1) {
-			((QHttpHeader) interceptor).SetValid(arg1);
+			interceptor.Invoke("setValid$", "setValid(bool)", typeof(void), typeof(bool), arg1);
 		}
 	}
 }

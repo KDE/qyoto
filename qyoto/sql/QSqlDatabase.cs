@@ -5,263 +5,177 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QSqlDatabase")]
-	public class QSqlDatabase : MarshalByRefObject, IDisposable {
-		protected QSqlDatabase interceptor = null;
+	public class QSqlDatabase : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlDatabase(Type dummy) {}
-		[SmokeClass("QSqlDatabase")]
-		interface IQSqlDatabaseProxy {
-			[SmokeMethod("defaultConnection", "()", "")]
-			string defaultConnection();
-			[SmokeMethod("addDatabase", "(const QString&, const QString&)", "$$")]
-			QSqlDatabase AddDatabase(string type, string connectionName);
-			[SmokeMethod("addDatabase", "(const QString&)", "$")]
-			QSqlDatabase AddDatabase(string type);
-			[SmokeMethod("addDatabase", "(QSqlDriver*, const QString&)", "#$")]
-			QSqlDatabase AddDatabase(QSqlDriver driver, string connectionName);
-			[SmokeMethod("addDatabase", "(QSqlDriver*)", "#")]
-			QSqlDatabase AddDatabase(QSqlDriver driver);
-			[SmokeMethod("cloneDatabase", "(const QSqlDatabase&, const QString&)", "#$")]
-			QSqlDatabase CloneDatabase(QSqlDatabase other, string connectionName);
-			[SmokeMethod("database", "(const QString&, bool)", "$$")]
-			QSqlDatabase Database(string connectionName, bool open);
-			[SmokeMethod("database", "(const QString&)", "$")]
-			QSqlDatabase Database(string connectionName);
-			[SmokeMethod("database", "()", "")]
-			QSqlDatabase Database();
-			[SmokeMethod("removeDatabase", "(const QString&)", "$")]
-			void RemoveDatabase(string connectionName);
-			[SmokeMethod("contains", "(const QString&)", "$")]
-			bool Contains(string connectionName);
-			[SmokeMethod("contains", "()", "")]
-			bool Contains();
-			[SmokeMethod("drivers", "()", "")]
-			List<string> Drivers();
-			[SmokeMethod("connectionNames", "()", "")]
-			List<string> ConnectionNames();
-			[SmokeMethod("isDriverAvailable", "(const QString&)", "$")]
-			bool IsDriverAvailable(string name);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDatabase), this);
-			interceptor = (QSqlDatabase) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QSqlDatabase), "QSqlDatabase", this);
 		}
-		private static IQSqlDatabaseProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QSqlDatabase() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlDatabaseProxy), null);
-			staticInterceptor = (IQSqlDatabaseProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QSqlDatabase), "QSqlDatabase", null);
 		}
 		public static string DefaultConnection() {
-			return staticInterceptor.defaultConnection();
+			return (string) staticInterceptor.Invoke("defaultConnection", "defaultConnection()", typeof(string));
 		}
 		// void registerSqlDriver(const QString& arg1,QSqlDriverCreatorBase* arg2); >>>> NOT CONVERTED
 		public QSqlDatabase() : this((Type) null) {
 			CreateProxy();
-			NewQSqlDatabase();
-		}
-		[SmokeMethod("QSqlDatabase", "()", "")]
-		private void NewQSqlDatabase() {
-			((QSqlDatabase) interceptor).NewQSqlDatabase();
+			interceptor.Invoke("QSqlDatabase", "QSqlDatabase()", typeof(void));
 		}
 		public QSqlDatabase(QSqlDatabase other) : this((Type) null) {
 			CreateProxy();
-			NewQSqlDatabase(other);
+			interceptor.Invoke("QSqlDatabase#", "QSqlDatabase(const QSqlDatabase&)", typeof(void), typeof(QSqlDatabase), other);
 		}
-		[SmokeMethod("QSqlDatabase", "(const QSqlDatabase&)", "#")]
-		private void NewQSqlDatabase(QSqlDatabase other) {
-			((QSqlDatabase) interceptor).NewQSqlDatabase(other);
-		}
-		[SmokeMethod("open", "()", "")]
 		public bool Open() {
-			return ((QSqlDatabase) interceptor).Open();
+			return (bool) interceptor.Invoke("open", "open()", typeof(bool));
 		}
-		[SmokeMethod("open", "(const QString&, const QString&)", "$$")]
 		public bool Open(string user, string password) {
-			return ((QSqlDatabase) interceptor).Open(user,password);
+			return (bool) interceptor.Invoke("open$$", "open(const QString&, const QString&)", typeof(bool), typeof(string), user, typeof(string), password);
 		}
-		[SmokeMethod("close", "()", "")]
 		public void Close() {
-			((QSqlDatabase) interceptor).Close();
+			interceptor.Invoke("close", "close()", typeof(void));
 		}
-		[SmokeMethod("isOpen", "() const", "")]
 		public bool IsOpen() {
-			return ((QSqlDatabase) interceptor).IsOpen();
+			return (bool) interceptor.Invoke("isOpen", "isOpen() const", typeof(bool));
 		}
-		[SmokeMethod("isOpenError", "() const", "")]
 		public bool IsOpenError() {
-			return ((QSqlDatabase) interceptor).IsOpenError();
+			return (bool) interceptor.Invoke("isOpenError", "isOpenError() const", typeof(bool));
 		}
-		[SmokeMethod("tables", "(QSql::TableType) const", "$")]
 		public List<string> Tables(QSql.TableType type) {
-			return ((QSqlDatabase) interceptor).Tables(type);
+			return (List<string>) interceptor.Invoke("tables$", "tables(QSql::TableType) const", typeof(List<string>), typeof(QSql.TableType), type);
 		}
-		[SmokeMethod("tables", "() const", "")]
 		public List<string> Tables() {
-			return ((QSqlDatabase) interceptor).Tables();
+			return (List<string>) interceptor.Invoke("tables", "tables() const", typeof(List<string>));
 		}
-		[SmokeMethod("primaryIndex", "(const QString&) const", "$")]
 		public QSqlIndex PrimaryIndex(string tablename) {
-			return ((QSqlDatabase) interceptor).PrimaryIndex(tablename);
+			return (QSqlIndex) interceptor.Invoke("primaryIndex$", "primaryIndex(const QString&) const", typeof(QSqlIndex), typeof(string), tablename);
 		}
-		[SmokeMethod("record", "(const QString&) const", "$")]
 		public QSqlRecord Record(string tablename) {
-			return ((QSqlDatabase) interceptor).Record(tablename);
+			return (QSqlRecord) interceptor.Invoke("record$", "record(const QString&) const", typeof(QSqlRecord), typeof(string), tablename);
 		}
-		[SmokeMethod("exec", "(const QString&) const", "$")]
 		public IQSqlQuery Exec(string query) {
-			return ((QSqlDatabase) interceptor).Exec(query);
+			return (IQSqlQuery) interceptor.Invoke("exec$", "exec(const QString&) const", typeof(IQSqlQuery), typeof(string), query);
 		}
-		[SmokeMethod("exec", "() const", "")]
 		public IQSqlQuery Exec() {
-			return ((QSqlDatabase) interceptor).Exec();
+			return (IQSqlQuery) interceptor.Invoke("exec", "exec() const", typeof(IQSqlQuery));
 		}
-		[SmokeMethod("lastError", "() const", "")]
 		public QSqlError LastError() {
-			return ((QSqlDatabase) interceptor).LastError();
+			return (QSqlError) interceptor.Invoke("lastError", "lastError() const", typeof(QSqlError));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QSqlDatabase) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("transaction", "()", "")]
 		public bool Transaction() {
-			return ((QSqlDatabase) interceptor).Transaction();
+			return (bool) interceptor.Invoke("transaction", "transaction()", typeof(bool));
 		}
-		[SmokeMethod("commit", "()", "")]
 		public bool Commit() {
-			return ((QSqlDatabase) interceptor).Commit();
+			return (bool) interceptor.Invoke("commit", "commit()", typeof(bool));
 		}
-		[SmokeMethod("rollback", "()", "")]
 		public bool Rollback() {
-			return ((QSqlDatabase) interceptor).Rollback();
+			return (bool) interceptor.Invoke("rollback", "rollback()", typeof(bool));
 		}
-		[SmokeMethod("setDatabaseName", "(const QString&)", "$")]
 		public void SetDatabaseName(string name) {
-			((QSqlDatabase) interceptor).SetDatabaseName(name);
+			interceptor.Invoke("setDatabaseName$", "setDatabaseName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("setUserName", "(const QString&)", "$")]
 		public void SetUserName(string name) {
-			((QSqlDatabase) interceptor).SetUserName(name);
+			interceptor.Invoke("setUserName$", "setUserName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("setPassword", "(const QString&)", "$")]
 		public void SetPassword(string password) {
-			((QSqlDatabase) interceptor).SetPassword(password);
+			interceptor.Invoke("setPassword$", "setPassword(const QString&)", typeof(void), typeof(string), password);
 		}
-		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string host) {
-			((QSqlDatabase) interceptor).SetHostName(host);
+			interceptor.Invoke("setHostName$", "setHostName(const QString&)", typeof(void), typeof(string), host);
 		}
-		[SmokeMethod("setPort", "(int)", "$")]
 		public void SetPort(int p) {
-			((QSqlDatabase) interceptor).SetPort(p);
+			interceptor.Invoke("setPort$", "setPort(int)", typeof(void), typeof(int), p);
 		}
-		[SmokeMethod("setConnectOptions", "(const QString&)", "$")]
 		public void SetConnectOptions(string options) {
-			((QSqlDatabase) interceptor).SetConnectOptions(options);
+			interceptor.Invoke("setConnectOptions$", "setConnectOptions(const QString&)", typeof(void), typeof(string), options);
 		}
-		[SmokeMethod("setConnectOptions", "()", "")]
 		public void SetConnectOptions() {
-			((QSqlDatabase) interceptor).SetConnectOptions();
+			interceptor.Invoke("setConnectOptions", "setConnectOptions()", typeof(void));
 		}
-		[SmokeMethod("databaseName", "() const", "")]
 		public string DatabaseName() {
-			return ((QSqlDatabase) interceptor).DatabaseName();
+			return (string) interceptor.Invoke("databaseName", "databaseName() const", typeof(string));
 		}
-		[SmokeMethod("userName", "() const", "")]
 		public string UserName() {
-			return ((QSqlDatabase) interceptor).UserName();
+			return (string) interceptor.Invoke("userName", "userName() const", typeof(string));
 		}
-		[SmokeMethod("password", "() const", "")]
 		public string Password() {
-			return ((QSqlDatabase) interceptor).Password();
+			return (string) interceptor.Invoke("password", "password() const", typeof(string));
 		}
-		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
-			return ((QSqlDatabase) interceptor).HostName();
+			return (string) interceptor.Invoke("hostName", "hostName() const", typeof(string));
 		}
-		[SmokeMethod("driverName", "() const", "")]
 		public string DriverName() {
-			return ((QSqlDatabase) interceptor).DriverName();
+			return (string) interceptor.Invoke("driverName", "driverName() const", typeof(string));
 		}
-		[SmokeMethod("port", "() const", "")]
 		public int Port() {
-			return ((QSqlDatabase) interceptor).Port();
+			return (int) interceptor.Invoke("port", "port() const", typeof(int));
 		}
-		[SmokeMethod("connectOptions", "() const", "")]
 		public string ConnectOptions() {
-			return ((QSqlDatabase) interceptor).ConnectOptions();
+			return (string) interceptor.Invoke("connectOptions", "connectOptions() const", typeof(string));
 		}
-		[SmokeMethod("driver", "() const", "")]
 		public QSqlDriver Driver() {
-			return ((QSqlDatabase) interceptor).Driver();
+			return (QSqlDriver) interceptor.Invoke("driver", "driver() const", typeof(QSqlDriver));
 		}
 		public QSqlDatabase(string type) : this((Type) null) {
 			CreateProxy();
-			NewQSqlDatabase(type);
-		}
-		[SmokeMethod("QSqlDatabase", "(const QString&)", "$")]
-		private void NewQSqlDatabase(string type) {
-			((QSqlDatabase) interceptor).NewQSqlDatabase(type);
+			interceptor.Invoke("QSqlDatabase$", "QSqlDatabase(const QString&)", typeof(void), typeof(string), type);
 		}
 		public QSqlDatabase(QSqlDriver driver) : this((Type) null) {
 			CreateProxy();
-			NewQSqlDatabase(driver);
-		}
-		[SmokeMethod("QSqlDatabase", "(QSqlDriver*)", "#")]
-		private void NewQSqlDatabase(QSqlDriver driver) {
-			((QSqlDatabase) interceptor).NewQSqlDatabase(driver);
+			interceptor.Invoke("QSqlDatabase#", "QSqlDatabase(QSqlDriver*)", typeof(void), typeof(QSqlDriver), driver);
 		}
 		~QSqlDatabase() {
-			DisposeQSqlDatabase();
+			interceptor.Invoke("~QSqlDatabase", "~QSqlDatabase()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQSqlDatabase();
-		}
-		[SmokeMethod("~QSqlDatabase", "()", "")]
-		private void DisposeQSqlDatabase() {
-			((QSqlDatabase) interceptor).DisposeQSqlDatabase();
+			interceptor.Invoke("~QSqlDatabase", "~QSqlDatabase()", typeof(void));
 		}
 		public static QSqlDatabase AddDatabase(string type, string connectionName) {
-			return staticInterceptor.AddDatabase(type,connectionName);
+			return (QSqlDatabase) staticInterceptor.Invoke("addDatabase$$", "addDatabase(const QString&, const QString&)", typeof(QSqlDatabase), typeof(string), type, typeof(string), connectionName);
 		}
 		public static QSqlDatabase AddDatabase(string type) {
-			return staticInterceptor.AddDatabase(type);
+			return (QSqlDatabase) staticInterceptor.Invoke("addDatabase$", "addDatabase(const QString&)", typeof(QSqlDatabase), typeof(string), type);
 		}
 		public static QSqlDatabase AddDatabase(QSqlDriver driver, string connectionName) {
-			return staticInterceptor.AddDatabase(driver,connectionName);
+			return (QSqlDatabase) staticInterceptor.Invoke("addDatabase#$", "addDatabase(QSqlDriver*, const QString&)", typeof(QSqlDatabase), typeof(QSqlDriver), driver, typeof(string), connectionName);
 		}
 		public static QSqlDatabase AddDatabase(QSqlDriver driver) {
-			return staticInterceptor.AddDatabase(driver);
+			return (QSqlDatabase) staticInterceptor.Invoke("addDatabase#", "addDatabase(QSqlDriver*)", typeof(QSqlDatabase), typeof(QSqlDriver), driver);
 		}
 		public static QSqlDatabase CloneDatabase(QSqlDatabase other, string connectionName) {
-			return staticInterceptor.CloneDatabase(other,connectionName);
+			return (QSqlDatabase) staticInterceptor.Invoke("cloneDatabase#$", "cloneDatabase(const QSqlDatabase&, const QString&)", typeof(QSqlDatabase), typeof(QSqlDatabase), other, typeof(string), connectionName);
 		}
 		public static QSqlDatabase Database(string connectionName, bool open) {
-			return staticInterceptor.Database(connectionName,open);
+			return (QSqlDatabase) staticInterceptor.Invoke("database$$", "database(const QString&, bool)", typeof(QSqlDatabase), typeof(string), connectionName, typeof(bool), open);
 		}
 		public static QSqlDatabase Database(string connectionName) {
-			return staticInterceptor.Database(connectionName);
+			return (QSqlDatabase) staticInterceptor.Invoke("database$", "database(const QString&)", typeof(QSqlDatabase), typeof(string), connectionName);
 		}
 		public static QSqlDatabase Database() {
-			return staticInterceptor.Database();
+			return (QSqlDatabase) staticInterceptor.Invoke("database", "database()", typeof(QSqlDatabase));
 		}
 		public static void RemoveDatabase(string connectionName) {
-			staticInterceptor.RemoveDatabase(connectionName);
+			staticInterceptor.Invoke("removeDatabase$", "removeDatabase(const QString&)", typeof(void), typeof(string), connectionName);
 		}
 		public static bool Contains(string connectionName) {
-			return staticInterceptor.Contains(connectionName);
+			return (bool) staticInterceptor.Invoke("contains$", "contains(const QString&)", typeof(bool), typeof(string), connectionName);
 		}
 		public static bool Contains() {
-			return staticInterceptor.Contains();
+			return (bool) staticInterceptor.Invoke("contains", "contains()", typeof(bool));
 		}
 		public static List<string> Drivers() {
-			return staticInterceptor.Drivers();
+			return (List<string>) staticInterceptor.Invoke("drivers", "drivers()", typeof(List<string>));
 		}
 		public static List<string> ConnectionNames() {
-			return staticInterceptor.ConnectionNames();
+			return (List<string>) staticInterceptor.Invoke("connectionNames", "connectionNames()", typeof(List<string>));
 		}
 		public static bool IsDriverAvailable(string name) {
-			return staticInterceptor.IsDriverAvailable(name);
+			return (bool) staticInterceptor.Invoke("isDriverAvailable$", "isDriverAvailable(const QString&)", typeof(bool), typeof(string), name);
 		}
 	}
 }

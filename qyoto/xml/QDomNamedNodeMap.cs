@@ -4,110 +4,79 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDomNamedNodeMap")]
-	public class QDomNamedNodeMap : MarshalByRefObject, IDisposable {
-		protected QDomNamedNodeMap interceptor = null;
+	public class QDomNamedNodeMap : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDomNamedNodeMap(Type dummy) {}
-		[SmokeClass("QDomNamedNodeMap")]
-		interface IQDomNamedNodeMapProxy {
-			[SmokeMethod("operator==", "(const QDomNamedNodeMap&) const", "#")]
-			bool op_equals(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNamedNodeMap), this);
-			interceptor = (QDomNamedNodeMap) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDomNamedNodeMap), "QDomNamedNodeMap", this);
 		}
-		private static IQDomNamedNodeMapProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDomNamedNodeMap() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomNamedNodeMapProxy), null);
-			staticInterceptor = (IQDomNamedNodeMapProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDomNamedNodeMap), "QDomNamedNodeMap", null);
 		}
 		public QDomNamedNodeMap() : this((Type) null) {
 			CreateProxy();
-			NewQDomNamedNodeMap();
-		}
-		[SmokeMethod("QDomNamedNodeMap", "()", "")]
-		private void NewQDomNamedNodeMap() {
-			((QDomNamedNodeMap) interceptor).NewQDomNamedNodeMap();
+			interceptor.Invoke("QDomNamedNodeMap", "QDomNamedNodeMap()", typeof(void));
 		}
 		public QDomNamedNodeMap(QDomNamedNodeMap arg1) : this((Type) null) {
 			CreateProxy();
-			NewQDomNamedNodeMap(arg1);
-		}
-		[SmokeMethod("QDomNamedNodeMap", "(const QDomNamedNodeMap&)", "#")]
-		private void NewQDomNamedNodeMap(QDomNamedNodeMap arg1) {
-			((QDomNamedNodeMap) interceptor).NewQDomNamedNodeMap(arg1);
+			interceptor.Invoke("QDomNamedNodeMap#", "QDomNamedNodeMap(const QDomNamedNodeMap&)", typeof(void), typeof(QDomNamedNodeMap), arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNamedNodeMap)) { return false; }
 			return this == (QDomNamedNodeMap) o;
 		}
 		public override int GetHashCode() {
-			return ((QDomNamedNodeMap) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("namedItem", "(const QString&) const", "$")]
 		public QDomNode NamedItem(string name) {
-			return ((QDomNamedNodeMap) interceptor).NamedItem(name);
+			return (QDomNode) interceptor.Invoke("namedItem$", "namedItem(const QString&) const", typeof(QDomNode), typeof(string), name);
 		}
-		[SmokeMethod("setNamedItem", "(const QDomNode&)", "#")]
 		public QDomNode SetNamedItem(QDomNode newNode) {
-			return ((QDomNamedNodeMap) interceptor).SetNamedItem(newNode);
+			return (QDomNode) interceptor.Invoke("setNamedItem#", "setNamedItem(const QDomNode&)", typeof(QDomNode), typeof(QDomNode), newNode);
 		}
-		[SmokeMethod("removeNamedItem", "(const QString&)", "$")]
 		public QDomNode RemoveNamedItem(string name) {
-			return ((QDomNamedNodeMap) interceptor).RemoveNamedItem(name);
+			return (QDomNode) interceptor.Invoke("removeNamedItem$", "removeNamedItem(const QString&)", typeof(QDomNode), typeof(string), name);
 		}
-		[SmokeMethod("item", "(int) const", "$")]
 		public QDomNode Item(int index) {
-			return ((QDomNamedNodeMap) interceptor).Item(index);
+			return (QDomNode) interceptor.Invoke("item$", "item(int) const", typeof(QDomNode), typeof(int), index);
 		}
-		[SmokeMethod("namedItemNS", "(const QString&, const QString&) const", "$$")]
 		public QDomNode NamedItemNS(string nsURI, string localName) {
-			return ((QDomNamedNodeMap) interceptor).NamedItemNS(nsURI,localName);
+			return (QDomNode) interceptor.Invoke("namedItemNS$$", "namedItemNS(const QString&, const QString&) const", typeof(QDomNode), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("setNamedItemNS", "(const QDomNode&)", "#")]
 		public QDomNode SetNamedItemNS(QDomNode newNode) {
-			return ((QDomNamedNodeMap) interceptor).SetNamedItemNS(newNode);
+			return (QDomNode) interceptor.Invoke("setNamedItemNS#", "setNamedItemNS(const QDomNode&)", typeof(QDomNode), typeof(QDomNode), newNode);
 		}
-		[SmokeMethod("removeNamedItemNS", "(const QString&, const QString&)", "$$")]
 		public QDomNode RemoveNamedItemNS(string nsURI, string localName) {
-			return ((QDomNamedNodeMap) interceptor).RemoveNamedItemNS(nsURI,localName);
+			return (QDomNode) interceptor.Invoke("removeNamedItemNS$$", "removeNamedItemNS(const QString&, const QString&)", typeof(QDomNode), typeof(string), nsURI, typeof(string), localName);
 		}
-		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
-			return ((QDomNamedNodeMap) interceptor).Length();
+			return (uint) interceptor.Invoke("length", "length() const", typeof(uint));
 		}
-		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ((QDomNamedNodeMap) interceptor).Count();
+			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ((QDomNamedNodeMap) interceptor).Size();
+			return (int) interceptor.Invoke("size", "size() const", typeof(int));
 		}
-		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ((QDomNamedNodeMap) interceptor).IsEmpty();
+			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		[SmokeMethod("contains", "(const QString&) const", "$")]
 		public bool Contains(string name) {
-			return ((QDomNamedNodeMap) interceptor).Contains(name);
+			return (bool) interceptor.Invoke("contains$", "contains(const QString&) const", typeof(bool), typeof(string), name);
 		}
 		~QDomNamedNodeMap() {
-			DisposeQDomNamedNodeMap();
+			interceptor.Invoke("~QDomNamedNodeMap", "~QDomNamedNodeMap()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQDomNamedNodeMap();
-		}
-		[SmokeMethod("~QDomNamedNodeMap", "()", "")]
-		private void DisposeQDomNamedNodeMap() {
-			((QDomNamedNodeMap) interceptor).DisposeQDomNamedNodeMap();
+			interceptor.Invoke("~QDomNamedNodeMap", "~QDomNamedNodeMap()", typeof(void));
 		}
 		public static bool operator==(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomNamedNodeMap&) const", typeof(bool), typeof(QDomNamedNodeMap), lhs, typeof(QDomNamedNodeMap), arg1);
 		}
 		public static bool operator!=(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QDomNamedNodeMap&) const", typeof(bool), typeof(QDomNamedNodeMap), lhs, typeof(QDomNamedNodeMap), arg1);
 		}
 	}
 }

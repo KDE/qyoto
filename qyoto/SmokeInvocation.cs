@@ -49,7 +49,7 @@ namespace Qyoto {
 		[FieldOffset(0)] public IntPtr s_class;
 	}
 	
-	public class SmokeInvocation : RealProxy {
+	public class SmokeInvocation {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int FindMethodId(string className, string mungedName, string signature);
 			
@@ -375,142 +375,140 @@ namespace Qyoto {
 		private Type	classToProxy;
 		private Object	instance;
 		private string	className = "";
+		private Dictionary<string, int> methodIdCache;
 
-		private static Dictionary<MethodInfo, int> methodIdCache = new Dictionary<MethodInfo, int>();
+		private static Dictionary<Type, Dictionary<string, int>> globalMethodIdCache = new Dictionary<Type, Dictionary<string, int>>();
 		
-		public SmokeInvocation(Type klass, Object obj) : base(klass) 
+		public SmokeInvocation(Type klass, string name, Object obj) 
 		{
 			classToProxy = klass;
 			instance = obj;
-			className = SmokeMarshallers.SmokeClassName(classToProxy);
+			className = name;
+
+			if (!globalMethodIdCache.TryGetValue(classToProxy, out methodIdCache)) {
+				methodIdCache = new Dictionary<string, int>();
+				globalMethodIdCache[classToProxy] = methodIdCache;
+			}
 
 			if (instance != null) {
 				AddOverridenMethods(instance.GetType());
 			}
 		}
 
-		public override IMessage Invoke(IMessage message) {
-			IMethodCallMessage callMessage = (IMethodCallMessage) message;
-			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
+		public object Invoke(string mungedName, string signature, Type returnType, params object[] args) {
 
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
-				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+				Console.WriteLine(	"ENTER TestSmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									className,
-									callMessage.MethodName, 
-									callMessage.TypeName, 
-									callMessage.ArgCount.ToString() );
+									signature, 
+									returnType, 
+									args.Length );
 			}
 #endif
 			
 			int methodId = -1;
-			if (!methodIdCache.TryGetValue((MethodInfo) callMessage.MethodBase, out methodId)) {
-				object[] smokeMethod = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(SmokeMethod), false);
-				if (smokeMethod.Length > 0) {
-					methodId = FindMethodId(	className,
-												((SmokeMethod) smokeMethod[0]).MungedName, 
-												((SmokeMethod) smokeMethod[0]).ArgsSignature );
+			if (!methodIdCache.TryGetValue(signature, out methodId)) {
+				methodId = FindMethodId(className, mungedName, signature);
 
-					if (methodId == -1) {
-						Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
-													className,
-													((MethodInfo) callMessage.MethodBase).Name );
-						return returnMessage;
-					}
+				if (methodId == -1) {
+					Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
+												className,
+												signature );
+						return null;
+				}
 
-					// Don't cache calls to QObject.MetaObject() as it is the same method for all
-					// classes, and the wrong method is cached for classes which aren't QObject.
-					if (!callMessage.MethodName.EndsWith("MetaObject")) {
-						methodIdCache[(MethodInfo) callMessage.MethodBase] = methodId;
-					}
+				// Don't cache calls to QObject.MetaObject() as it is the same method for all
+				// classes, and the wrong method is cached for classes which aren't QObject.
+				if (signature != "metaObject()") {
+					methodIdCache[signature] = methodId;
 				}
 			}
 			
-			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
+			StackItem[] stack = new StackItem[(args.Length / 2) + 1];
 
-			if (callMessage.MethodSignature != null) {
-				Type[] types = (Type[]) callMessage.MethodSignature;
-
-				for (int i = 0; i < callMessage.ArgCount; i++) {
-					if (callMessage.Args[i] == null) {
-						unsafe {
-							stack[i+1].s_class = (IntPtr) 0;
-						}
-					} else if (types[i] == typeof(int) || types[i].IsEnum) {
-						stack[i+1].s_int = (int) callMessage.Args[i];
-					} else if (types[i] == typeof(bool)) {
-						stack[i+1].s_bool = (bool) callMessage.Args[i];
-					} else if (types[i] == typeof(short)) {
-						stack[i+1].s_short = (short) callMessage.Args[i];
-					} else if (types[i] == typeof(float)) {
-						stack[i+1].s_float = (float) callMessage.Args[i];
-					} else if (types[i] == typeof(double)) {
-						stack[i+1].s_double = (double) callMessage.Args[i];
-					} else if (types[i] == typeof(long)) {
-						stack[i+1].s_long = (long) callMessage.Args[i];
-					} else if (types[i] == typeof(ushort)) {
-						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
-					} else if (types[i] == typeof(uint)) {
-						stack[i+1].s_uint = (uint) callMessage.Args[i];
-					} else if (types[i] == typeof(ulong)) {
-						stack[i+1].s_ulong = (ulong) callMessage.Args[i];
-					} else if (types[i] == typeof(sbyte)) {
-						stack[i+1].s_char = (sbyte) callMessage.Args[i];
-					} else if (types[i] == typeof(byte)) {
-						stack[i+1].s_uchar = (byte) callMessage.Args[i];
-					} else {
-#if DEBUG
-						stack[i+1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
-#else
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
-#endif
+			for (int i = 0, j = 1, k = 1; i < args.Length; i += 2, j += 2, k++) {
+				if (args[j] == null) {
+					unsafe {
+						stack[k].s_class = (IntPtr) 0;
 					}
+				} else if (args[i] == typeof(int) || ((Type) args[i]).IsEnum) {
+					stack[k].s_int = (int) args[j];
+				} else if (args[i] == typeof(bool)) {
+					stack[k].s_bool = (bool) args[j];
+				} else if (args[i] == typeof(short)) {
+					stack[k].s_short = (short) args[j];
+				} else if (args[i] == typeof(float)) {
+					stack[k].s_float = (float) args[j];
+				} else if (args[i] == typeof(double)) {
+					stack[k].s_double = (double) args[j];
+				} else if (args[i] == typeof(long)) {
+					stack[k].s_long = (long) args[j];
+				} else if (args[i] == typeof(ushort)) {
+					stack[k].s_ushort = (ushort) args[j];
+				} else if (args[i] == typeof(uint)) {
+					stack[k].s_uint = (uint) args[j];
+				} else if (args[i] == typeof(ulong)) {
+					stack[k].s_ulong = (ulong) args[j];
+				} else if (args[i] == typeof(sbyte)) {
+					stack[k].s_char = (sbyte) args[j];
+				} else if (args[i] == typeof(byte)) {
+					stack[k].s_uchar = (byte) args[j];
+				} else {
+#if DEBUG
+					stack[k].s_class = (IntPtr) DebugGCHandle.Alloc(args[j]);
+#else
+					stack[k].s_class = (IntPtr) GCHandle.Alloc(args[j]);
+#endif
 				}
 			}
 
+			object returnValue = null;
+			IntPtr instanceHandle = (IntPtr) 0;
+
+			if (instance != null) {
 #if DEBUG
-			GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
+				instanceHandle = (IntPtr) DebugGCHandle.Alloc(instance);
 #else
-			GCHandle instanceHandle = GCHandle.Alloc(instance);
+				instanceHandle = (IntPtr) GCHandle.Alloc(instance);
 #endif
-			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
-			
+			}
+
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
-					CallSmokeMethod((int) methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
-					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;
+					CallSmokeMethod((int) methodId, instanceHandle, (IntPtr) stackPtr, args.Length / 2);
 					
 					if (returnType == typeof(void)) {
 						;
 					} else if (returnType == typeof(bool)) {
-						returnValue.ReturnValue = stack[0].s_bool;
+						returnValue = stack[0].s_bool;
 					} else if (returnType == typeof(sbyte)) {
-						returnValue.ReturnValue = stack[0].s_char;
+						returnValue = stack[0].s_char;
 					} else if (returnType == typeof(byte)) {
-						returnValue.ReturnValue = stack[0].s_uchar;
+						returnValue = stack[0].s_uchar;
 					} else if (returnType == typeof(short)) {
-						returnValue.ReturnValue = stack[0].s_short;
+						returnValue = stack[0].s_short;
 					} else if (returnType == typeof(ushort)) {
-						returnValue.ReturnValue = stack[0].s_ushort;
+						returnValue = stack[0].s_ushort;
 					} else if (returnType.IsEnum) {
-						returnValue.ReturnValue = Enum.ToObject(returnType, stack[0].s_int);
+						returnValue = Enum.ToObject(returnType, stack[0].s_int);
 					} else if (returnType == typeof(int)) {
-						returnValue.ReturnValue = stack[0].s_int;
+						returnValue = stack[0].s_int;
 					} else if (returnType == typeof(uint)) {
-						returnValue.ReturnValue = stack[0].s_uint;
+						returnValue = stack[0].s_uint;
 					} else if (returnType == typeof(long)) {
-						returnValue.ReturnValue = stack[0].s_long;
+						returnValue = stack[0].s_long;
 					} else if (returnType == typeof(ulong)) {
-						returnValue.ReturnValue = stack[0].s_ulong;
+						returnValue = stack[0].s_ulong;
 					} else if (returnType == typeof(float)) {
-						returnValue.ReturnValue = stack[0].s_float;
+						returnValue = stack[0].s_float;
 					} else if (returnType == typeof(double)) {
-						returnValue.ReturnValue = stack[0].s_double;
+						returnValue = stack[0].s_double;
 					} else {
 						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
-							returnValue.ReturnValue = null;
+							returnValue = null;
 						} else {
-							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+							returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else

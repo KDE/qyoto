@@ -7,30 +7,20 @@ namespace Qyoto {
 	public class QDynamicPropertyChangeEvent : QEvent, IDisposable {
  		protected QDynamicPropertyChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDynamicPropertyChangeEvent), this);
-			interceptor = (QDynamicPropertyChangeEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDynamicPropertyChangeEvent), "QDynamicPropertyChangeEvent", this);
 		}
 		public QDynamicPropertyChangeEvent(QByteArray name) : this((Type) null) {
 			CreateProxy();
-			NewQDynamicPropertyChangeEvent(name);
+			interceptor.Invoke("QDynamicPropertyChangeEvent#", "QDynamicPropertyChangeEvent(const QByteArray&)", typeof(void), typeof(QByteArray), name);
 		}
-		[SmokeMethod("QDynamicPropertyChangeEvent", "(const QByteArray&)", "#")]
-		private void NewQDynamicPropertyChangeEvent(QByteArray name) {
-			((QDynamicPropertyChangeEvent) interceptor).NewQDynamicPropertyChangeEvent(name);
-		}
-		[SmokeMethod("propertyName", "() const", "")]
 		public QByteArray PropertyName() {
-			return ((QDynamicPropertyChangeEvent) interceptor).PropertyName();
+			return (QByteArray) interceptor.Invoke("propertyName", "propertyName() const", typeof(QByteArray));
 		}
 		~QDynamicPropertyChangeEvent() {
-			DisposeQDynamicPropertyChangeEvent();
+			interceptor.Invoke("~QDynamicPropertyChangeEvent", "~QDynamicPropertyChangeEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDynamicPropertyChangeEvent();
-		}
-		[SmokeMethod("~QDynamicPropertyChangeEvent", "()", "")]
-		private void DisposeQDynamicPropertyChangeEvent() {
-			((QDynamicPropertyChangeEvent) interceptor).DisposeQDynamicPropertyChangeEvent();
+			interceptor.Invoke("~QDynamicPropertyChangeEvent", "~QDynamicPropertyChangeEvent()", typeof(void));
 		}
 	}
 }

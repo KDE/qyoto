@@ -8,99 +8,12 @@ namespace Qyoto {
 	[SmokeClass("QCoreApplication")]
 	public partial class QCoreApplication : QObject, IDisposable {
  		protected QCoreApplication(Type dummy) : base((Type) null) {}
-		[SmokeClass("QCoreApplication")]
-		interface IQCoreApplicationProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("arguments", "()", "")]
-			List<string> Arguments();
-			[SmokeMethod("setAttribute", "(Qt::ApplicationAttribute, bool)", "$$")]
-			void SetAttribute(Qt.ApplicationAttribute attribute, bool on);
-			[SmokeMethod("setAttribute", "(Qt::ApplicationAttribute)", "$")]
-			void SetAttribute(Qt.ApplicationAttribute attribute);
-			[SmokeMethod("testAttribute", "(Qt::ApplicationAttribute)", "$")]
-			bool TestAttribute(Qt.ApplicationAttribute attribute);
-			[SmokeMethod("setOrganizationDomain", "(const QString&)", "$")]
-			void SetOrganizationDomain(string orgDomain);
-			[SmokeMethod("organizationDomain", "()", "")]
-			string organizationDomain();
-			[SmokeMethod("setOrganizationName", "(const QString&)", "$")]
-			void SetOrganizationName(string orgName);
-			[SmokeMethod("organizationName", "()", "")]
-			string organizationName();
-			[SmokeMethod("setApplicationName", "(const QString&)", "$")]
-			void SetApplicationName(string application);
-			[SmokeMethod("applicationName", "()", "")]
-			string applicationName();
-			[SmokeMethod("instance", "()", "")]
-			QCoreApplication Instance();
-			[SmokeMethod("exec", "()", "")]
-			int Exec();
-			[SmokeMethod("processEvents", "(QEventLoop::ProcessEventsFlags)", "$")]
-			void ProcessEvents(uint flags);
-			[SmokeMethod("processEvents", "()", "")]
-			void ProcessEvents();
-			[SmokeMethod("processEvents", "(QEventLoop::ProcessEventsFlags, int)", "$$")]
-			void ProcessEvents(uint flags, int maxtime);
-			[SmokeMethod("exit", "(int)", "$")]
-			void Exit(int retcode);
-			[SmokeMethod("exit", "()", "")]
-			void Exit();
-			[SmokeMethod("sendEvent", "(QObject*, QEvent*)", "##")]
-			bool SendEvent(QObject receiver, QEvent arg2);
-			[SmokeMethod("postEvent", "(QObject*, QEvent*)", "##")]
-			void PostEvent(QObject receiver, QEvent arg2);
-			[SmokeMethod("sendPostedEvents", "(QObject*, int)", "#$")]
-			void SendPostedEvents(QObject receiver, int event_type);
-			[SmokeMethod("sendPostedEvents", "()", "")]
-			void SendPostedEvents();
-			[SmokeMethod("removePostedEvents", "(QObject*)", "#")]
-			void RemovePostedEvents(QObject receiver);
-			[SmokeMethod("hasPendingEvents", "()", "")]
-			bool HasPendingEvents();
-			[SmokeMethod("startingUp", "()", "")]
-			bool StartingUp();
-			[SmokeMethod("closingDown", "()", "")]
-			bool ClosingDown();
-			[SmokeMethod("applicationDirPath", "()", "")]
-			string ApplicationDirPath();
-			[SmokeMethod("applicationFilePath", "()", "")]
-			string ApplicationFilePath();
-			[SmokeMethod("setLibraryPaths", "(const QStringList&)", "?")]
-			void SetLibraryPaths(List<string> arg1);
-			[SmokeMethod("libraryPaths", "()", "")]
-			List<string> LibraryPaths();
-			[SmokeMethod("addLibraryPath", "(const QString&)", "$")]
-			void AddLibraryPath(string arg1);
-			[SmokeMethod("removeLibraryPath", "(const QString&)", "$")]
-			void RemoveLibraryPath(string arg1);
-			[SmokeMethod("installTranslator", "(QTranslator*)", "#")]
-			void InstallTranslator(QTranslator messageFile);
-			[SmokeMethod("removeTranslator", "(QTranslator*)", "#")]
-			void RemoveTranslator(QTranslator messageFile);
-			[SmokeMethod("translate", "(const char*, const char*, const char*, QCoreApplication::Encoding)", "$$$$")]
-			string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding);
-			[SmokeMethod("translate", "(const char*, const char*, const char*)", "$$$")]
-			string Translate(string context, string key, string comment);
-			[SmokeMethod("translate", "(const char*, const char*)", "$$")]
-			string Translate(string context, string key);
-			[SmokeMethod("translate", "(const char*, const char*, const char*, QCoreApplication::Encoding, int)", "$$$$$")]
-			string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding, int n);
-			[SmokeMethod("flush", "()", "")]
-			void Flush();
-			[SmokeMethod("quit", "()", "")]
-			void Quit();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCoreApplication), this);
-			interceptor = (QCoreApplication) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QCoreApplication), "QCoreApplication", this);
 		}
-		private static IQCoreApplicationProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QCoreApplication() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCoreApplicationProxy), null);
-			staticInterceptor = (IQCoreApplicationProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QCoreApplication), "QCoreApplication", null);
 		}
 		public enum Encoding {
 			CodecForTr = 0,
@@ -109,170 +22,160 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "applicationName")]
 		public string ApplicationName {
-			[SmokeMethod("applicationName", "()", "")]
-			get { return ((QCoreApplication) interceptor).ApplicationName; }
-			[SmokeMethod("setApplicationName", "(QString)", "$")]
-			set { ((QCoreApplication) interceptor).ApplicationName = value; }
+			get { return (string) interceptor.Invoke("applicationName", "applicationName()", typeof(string)); }
+			set { interceptor.Invoke("setApplicationName$", "setApplicationName(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "organizationName")]
 		public string OrganizationName {
-			[SmokeMethod("organizationName", "()", "")]
-			get { return ((QCoreApplication) interceptor).OrganizationName; }
-			[SmokeMethod("setOrganizationName", "(QString)", "$")]
-			set { ((QCoreApplication) interceptor).OrganizationName = value; }
+			get { return (string) interceptor.Invoke("organizationName", "organizationName()", typeof(string)); }
+			set { interceptor.Invoke("setOrganizationName$", "setOrganizationName(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QString", "organizationDomain")]
 		public string OrganizationDomain {
-			[SmokeMethod("organizationDomain", "()", "")]
-			get { return ((QCoreApplication) interceptor).OrganizationDomain; }
-			[SmokeMethod("setOrganizationDomain", "(QString)", "$")]
-			set { ((QCoreApplication) interceptor).OrganizationDomain = value; }
+			get { return (string) interceptor.Invoke("organizationDomain", "organizationDomain()", typeof(string)); }
+			set { interceptor.Invoke("setOrganizationDomain$", "setOrganizationDomain(QString)", typeof(void), typeof(string), value); }
 		}
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
 		// bool filterEvent(void* arg1,long* arg2); >>>> NOT CONVERTED
 		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
-		[SmokeMethod("notify", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("notify(QObject*, QEvent*)")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
-			return ((QCoreApplication) interceptor).Notify(arg1,arg2);
+			return (bool) interceptor.Invoke("notify##", "notify(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ((QCoreApplication) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		~QCoreApplication() {
-			DisposeQCoreApplication();
+			interceptor.Invoke("~QCoreApplication", "~QCoreApplication()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQCoreApplication();
-		}
-		[SmokeMethod("~QCoreApplication", "()", "")]
-		private void DisposeQCoreApplication() {
-			((QCoreApplication) interceptor).DisposeQCoreApplication();
+			interceptor.Invoke("~QCoreApplication", "~QCoreApplication()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static List<string> Arguments() {
-			return staticInterceptor.Arguments();
+			return (List<string>) staticInterceptor.Invoke("arguments", "arguments()", typeof(List<string>));
 		}
 		public static void SetAttribute(Qt.ApplicationAttribute attribute, bool on) {
-			staticInterceptor.SetAttribute(attribute,on);
+			staticInterceptor.Invoke("setAttribute$$", "setAttribute(Qt::ApplicationAttribute, bool)", typeof(void), typeof(Qt.ApplicationAttribute), attribute, typeof(bool), on);
 		}
 		public static void SetAttribute(Qt.ApplicationAttribute attribute) {
-			staticInterceptor.SetAttribute(attribute);
+			staticInterceptor.Invoke("setAttribute$", "setAttribute(Qt::ApplicationAttribute)", typeof(void), typeof(Qt.ApplicationAttribute), attribute);
 		}
 		public static bool TestAttribute(Qt.ApplicationAttribute attribute) {
-			return staticInterceptor.TestAttribute(attribute);
+			return (bool) staticInterceptor.Invoke("testAttribute$", "testAttribute(Qt::ApplicationAttribute)", typeof(bool), typeof(Qt.ApplicationAttribute), attribute);
 		}
 		public static void SetOrganizationDomain(string orgDomain) {
-			staticInterceptor.SetOrganizationDomain(orgDomain);
+			staticInterceptor.Invoke("setOrganizationDomain$", "setOrganizationDomain(const QString&)", typeof(void), typeof(string), orgDomain);
 		}
 		public static string organizationDomain() {
-			return staticInterceptor.organizationDomain();
+			return (string) staticInterceptor.Invoke("organizationDomain", "organizationDomain()", typeof(string));
 		}
 		public static void SetOrganizationName(string orgName) {
-			staticInterceptor.SetOrganizationName(orgName);
+			staticInterceptor.Invoke("setOrganizationName$", "setOrganizationName(const QString&)", typeof(void), typeof(string), orgName);
 		}
 		public static string organizationName() {
-			return staticInterceptor.organizationName();
+			return (string) staticInterceptor.Invoke("organizationName", "organizationName()", typeof(string));
 		}
 		public static void SetApplicationName(string application) {
-			staticInterceptor.SetApplicationName(application);
+			staticInterceptor.Invoke("setApplicationName$", "setApplicationName(const QString&)", typeof(void), typeof(string), application);
 		}
 		public static string applicationName() {
-			return staticInterceptor.applicationName();
+			return (string) staticInterceptor.Invoke("applicationName", "applicationName()", typeof(string));
 		}
 		public static QCoreApplication Instance() {
-			return staticInterceptor.Instance();
+			return (QCoreApplication) staticInterceptor.Invoke("instance", "instance()", typeof(QCoreApplication));
 		}
 		public static int Exec() {
-			int result = staticInterceptor.Exec();
+			int result = (int) staticInterceptor.Invoke("exec", "exec()", typeof(int));
 			Qyoto.SetApplicationTerminated();
 			return result;
 		}
 		public static void ProcessEvents(uint flags) {
-			staticInterceptor.ProcessEvents(flags);
+			staticInterceptor.Invoke("processEvents$", "processEvents(QEventLoop::ProcessEventsFlags)", typeof(void), typeof(uint), flags);
 		}
 		public static void ProcessEvents() {
-			staticInterceptor.ProcessEvents();
+			staticInterceptor.Invoke("processEvents", "processEvents()", typeof(void));
 		}
 		public static void ProcessEvents(uint flags, int maxtime) {
-			staticInterceptor.ProcessEvents(flags,maxtime);
+			staticInterceptor.Invoke("processEvents$$", "processEvents(QEventLoop::ProcessEventsFlags, int)", typeof(void), typeof(uint), flags, typeof(int), maxtime);
 		}
 		public static void Exit(int retcode) {
-			staticInterceptor.Exit(retcode);
+			staticInterceptor.Invoke("exit$", "exit(int)", typeof(void), typeof(int), retcode);
 		}
 		public static void Exit() {
-			staticInterceptor.Exit();
+			staticInterceptor.Invoke("exit", "exit()", typeof(void));
 		}
 		public static bool SendEvent(QObject receiver, QEvent arg2) {
-			return staticInterceptor.SendEvent(receiver,arg2);
+			return (bool) staticInterceptor.Invoke("sendEvent##", "sendEvent(QObject*, QEvent*)", typeof(bool), typeof(QObject), receiver, typeof(QEvent), arg2);
 		}
 		public static void PostEvent(QObject receiver, QEvent arg2) {
-			staticInterceptor.PostEvent(receiver,arg2);
+			staticInterceptor.Invoke("postEvent##", "postEvent(QObject*, QEvent*)", typeof(void), typeof(QObject), receiver, typeof(QEvent), arg2);
 		}
 		public static void SendPostedEvents(QObject receiver, int event_type) {
-			staticInterceptor.SendPostedEvents(receiver,event_type);
+			staticInterceptor.Invoke("sendPostedEvents#$", "sendPostedEvents(QObject*, int)", typeof(void), typeof(QObject), receiver, typeof(int), event_type);
 		}
 		public static void SendPostedEvents() {
-			staticInterceptor.SendPostedEvents();
+			staticInterceptor.Invoke("sendPostedEvents", "sendPostedEvents()", typeof(void));
 		}
 		public static void RemovePostedEvents(QObject receiver) {
-			staticInterceptor.RemovePostedEvents(receiver);
+			staticInterceptor.Invoke("removePostedEvents#", "removePostedEvents(QObject*)", typeof(void), typeof(QObject), receiver);
 		}
 		public static bool HasPendingEvents() {
-			return staticInterceptor.HasPendingEvents();
+			return (bool) staticInterceptor.Invoke("hasPendingEvents", "hasPendingEvents()", typeof(bool));
 		}
 		public static bool StartingUp() {
-			return staticInterceptor.StartingUp();
+			return (bool) staticInterceptor.Invoke("startingUp", "startingUp()", typeof(bool));
 		}
 		public static bool ClosingDown() {
-			return staticInterceptor.ClosingDown();
+			return (bool) staticInterceptor.Invoke("closingDown", "closingDown()", typeof(bool));
 		}
 		public static string ApplicationDirPath() {
-			return staticInterceptor.ApplicationDirPath();
+			return (string) staticInterceptor.Invoke("applicationDirPath", "applicationDirPath()", typeof(string));
 		}
 		public static string ApplicationFilePath() {
-			return staticInterceptor.ApplicationFilePath();
+			return (string) staticInterceptor.Invoke("applicationFilePath", "applicationFilePath()", typeof(string));
 		}
 		public static void SetLibraryPaths(List<string> arg1) {
-			staticInterceptor.SetLibraryPaths(arg1);
+			staticInterceptor.Invoke("setLibraryPaths?", "setLibraryPaths(const QStringList&)", typeof(void), typeof(List<string>), arg1);
 		}
 		public static List<string> LibraryPaths() {
-			return staticInterceptor.LibraryPaths();
+			return (List<string>) staticInterceptor.Invoke("libraryPaths", "libraryPaths()", typeof(List<string>));
 		}
 		public static void AddLibraryPath(string arg1) {
-			staticInterceptor.AddLibraryPath(arg1);
+			staticInterceptor.Invoke("addLibraryPath$", "addLibraryPath(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		public static void RemoveLibraryPath(string arg1) {
-			staticInterceptor.RemoveLibraryPath(arg1);
+			staticInterceptor.Invoke("removeLibraryPath$", "removeLibraryPath(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		public static void InstallTranslator(QTranslator messageFile) {
-			staticInterceptor.InstallTranslator(messageFile);
+			staticInterceptor.Invoke("installTranslator#", "installTranslator(QTranslator*)", typeof(void), typeof(QTranslator), messageFile);
 		}
 		public static void RemoveTranslator(QTranslator messageFile) {
-			staticInterceptor.RemoveTranslator(messageFile);
+			staticInterceptor.Invoke("removeTranslator#", "removeTranslator(QTranslator*)", typeof(void), typeof(QTranslator), messageFile);
 		}
 		public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding) {
-			return staticInterceptor.Translate(context,key,comment,encoding);
+			return (string) staticInterceptor.Invoke("translate$$$$", "translate(const char*, const char*, const char*, QCoreApplication::Encoding)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), comment, typeof(QCoreApplication.Encoding), encoding);
 		}
 		public static string Translate(string context, string key, string comment) {
-			return staticInterceptor.Translate(context,key,comment);
+			return (string) staticInterceptor.Invoke("translate$$$", "translate(const char*, const char*, const char*)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), comment);
 		}
 		public static string Translate(string context, string key) {
-			return staticInterceptor.Translate(context,key);
+			return (string) staticInterceptor.Invoke("translate$$", "translate(const char*, const char*)", typeof(string), typeof(string), context, typeof(string), key);
 		}
 		public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding, int n) {
-			return staticInterceptor.Translate(context,key,comment,encoding,n);
+			return (string) staticInterceptor.Invoke("translate$$$$$", "translate(const char*, const char*, const char*, QCoreApplication::Encoding, int)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), comment, typeof(QCoreApplication.Encoding), encoding, typeof(int), n);
 		}
 		public static void Flush() {
-			staticInterceptor.Flush();
+			staticInterceptor.Invoke("flush", "flush()", typeof(void));
 		}
 		public static void Quit() {
-			staticInterceptor.Quit();
+			staticInterceptor.Invoke("quit", "quit()", typeof(void));
 		}
 		protected new IQCoreApplicationSignals Emit {
 			get { return (IQCoreApplicationSignals) Q_EMIT; }

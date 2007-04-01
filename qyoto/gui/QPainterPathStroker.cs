@@ -5,87 +5,64 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QPainterPathStroker")]
-	public class QPainterPathStroker : MarshalByRefObject, IDisposable {
-		protected QPainterPathStroker interceptor = null;
+	public class QPainterPathStroker : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPainterPathStroker(Type dummy) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainterPathStroker), this);
-			interceptor = (QPainterPathStroker) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QPainterPathStroker), "QPainterPathStroker", this);
 		}
 		public QPainterPathStroker() : this((Type) null) {
 			CreateProxy();
-			NewQPainterPathStroker();
+			interceptor.Invoke("QPainterPathStroker", "QPainterPathStroker()", typeof(void));
 		}
-		[SmokeMethod("QPainterPathStroker", "()", "")]
-		private void NewQPainterPathStroker() {
-			((QPainterPathStroker) interceptor).NewQPainterPathStroker();
-		}
-		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
-			((QPainterPathStroker) interceptor).SetWidth(width);
+			interceptor.Invoke("setWidth$", "setWidth(qreal)", typeof(void), typeof(double), width);
 		}
-		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ((QPainterPathStroker) interceptor).Width();
+			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		[SmokeMethod("setCapStyle", "(Qt::PenCapStyle)", "$")]
 		public void SetCapStyle(Qt.PenCapStyle style) {
-			((QPainterPathStroker) interceptor).SetCapStyle(style);
+			interceptor.Invoke("setCapStyle$", "setCapStyle(Qt::PenCapStyle)", typeof(void), typeof(Qt.PenCapStyle), style);
 		}
-		[SmokeMethod("capStyle", "() const", "")]
 		public Qt.PenCapStyle CapStyle() {
-			return ((QPainterPathStroker) interceptor).CapStyle();
+			return (Qt.PenCapStyle) interceptor.Invoke("capStyle", "capStyle() const", typeof(Qt.PenCapStyle));
 		}
-		[SmokeMethod("setJoinStyle", "(Qt::PenJoinStyle)", "$")]
 		public void SetJoinStyle(Qt.PenJoinStyle style) {
-			((QPainterPathStroker) interceptor).SetJoinStyle(style);
+			interceptor.Invoke("setJoinStyle$", "setJoinStyle(Qt::PenJoinStyle)", typeof(void), typeof(Qt.PenJoinStyle), style);
 		}
-		[SmokeMethod("joinStyle", "() const", "")]
 		public Qt.PenJoinStyle JoinStyle() {
-			return ((QPainterPathStroker) interceptor).JoinStyle();
+			return (Qt.PenJoinStyle) interceptor.Invoke("joinStyle", "joinStyle() const", typeof(Qt.PenJoinStyle));
 		}
-		[SmokeMethod("setMiterLimit", "(qreal)", "$")]
 		public void SetMiterLimit(double length) {
-			((QPainterPathStroker) interceptor).SetMiterLimit(length);
+			interceptor.Invoke("setMiterLimit$", "setMiterLimit(qreal)", typeof(void), typeof(double), length);
 		}
-		[SmokeMethod("miterLimit", "() const", "")]
 		public double MiterLimit() {
-			return ((QPainterPathStroker) interceptor).MiterLimit();
+			return (double) interceptor.Invoke("miterLimit", "miterLimit() const", typeof(double));
 		}
-		[SmokeMethod("setCurveThreshold", "(qreal)", "$")]
 		public void SetCurveThreshold(double threshold) {
-			((QPainterPathStroker) interceptor).SetCurveThreshold(threshold);
+			interceptor.Invoke("setCurveThreshold$", "setCurveThreshold(qreal)", typeof(void), typeof(double), threshold);
 		}
-		[SmokeMethod("curveThreshold", "() const", "")]
 		public double CurveThreshold() {
-			return ((QPainterPathStroker) interceptor).CurveThreshold();
+			return (double) interceptor.Invoke("curveThreshold", "curveThreshold() const", typeof(double));
 		}
-		[SmokeMethod("setDashPattern", "(Qt::PenStyle)", "$")]
 		public void SetDashPattern(Qt.PenStyle arg1) {
-			((QPainterPathStroker) interceptor).SetDashPattern(arg1);
+			interceptor.Invoke("setDashPattern$", "setDashPattern(Qt::PenStyle)", typeof(void), typeof(Qt.PenStyle), arg1);
 		}
-		[SmokeMethod("setDashPattern", "(const QVector<qreal>&)", "?")]
 		public void SetDashPattern(List<double> dashPattern) {
-			((QPainterPathStroker) interceptor).SetDashPattern(dashPattern);
+			interceptor.Invoke("setDashPattern?", "setDashPattern(const QVector<qreal>&)", typeof(void), typeof(List<double>), dashPattern);
 		}
-		[SmokeMethod("dashPattern", "() const", "")]
 		public List<double> DashPattern() {
-			return ((QPainterPathStroker) interceptor).DashPattern();
+			return (List<double>) interceptor.Invoke("dashPattern", "dashPattern() const", typeof(List<double>));
 		}
-		[SmokeMethod("createStroke", "(const QPainterPath&) const", "#")]
 		public QPainterPath CreateStroke(QPainterPath path) {
-			return ((QPainterPathStroker) interceptor).CreateStroke(path);
+			return (QPainterPath) interceptor.Invoke("createStroke#", "createStroke(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), path);
 		}
 		~QPainterPathStroker() {
-			DisposeQPainterPathStroker();
+			interceptor.Invoke("~QPainterPathStroker", "~QPainterPathStroker()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQPainterPathStroker();
-		}
-		[SmokeMethod("~QPainterPathStroker", "()", "")]
-		private void DisposeQPainterPathStroker() {
-			((QPainterPathStroker) interceptor).DisposeQPainterPathStroker();
+			interceptor.Invoke("~QPainterPathStroker", "~QPainterPathStroker()", typeof(void));
 		}
 	}
 }

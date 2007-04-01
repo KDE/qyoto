@@ -4,119 +4,83 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QLine")]
-	public class QLine : MarshalByRefObject, IDisposable {
-		protected QLine interceptor = null;
+	public class QLine : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QLine(Type dummy) {}
-		[SmokeClass("QLine")]
-		interface IQLineProxy {
-			[SmokeMethod("operator==", "(const QLine&) const", "#")]
-			bool op_equals(QLine lhs, QLine d);
-			[SmokeMethod("operator*", "(const QLine&, const QMatrix&)", "##")]
-			QLine op_mult(QLine l, QMatrix m);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLine), this);
-			interceptor = (QLine) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QLine), "QLine", this);
 		}
-		private static IQLineProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QLine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLineProxy), null);
-			staticInterceptor = (IQLineProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QLine), "QLine", null);
 		}
 		public QLine() : this((Type) null) {
 			CreateProxy();
-			NewQLine();
-		}
-		[SmokeMethod("QLine", "()", "")]
-		private void NewQLine() {
-			((QLine) interceptor).NewQLine();
+			interceptor.Invoke("QLine", "QLine()", typeof(void));
 		}
 		public QLine(QPoint pt1, QPoint pt2) : this((Type) null) {
 			CreateProxy();
-			NewQLine(pt1,pt2);
-		}
-		[SmokeMethod("QLine", "(const QPoint&, const QPoint&)", "##")]
-		private void NewQLine(QPoint pt1, QPoint pt2) {
-			((QLine) interceptor).NewQLine(pt1,pt2);
+			interceptor.Invoke("QLine##", "QLine(const QPoint&, const QPoint&)", typeof(void), typeof(QPoint), pt1, typeof(QPoint), pt2);
 		}
 		public QLine(int x1, int y1, int x2, int y2) : this((Type) null) {
 			CreateProxy();
-			NewQLine(x1,y1,x2,y2);
+			interceptor.Invoke("QLine$$$$", "QLine(int, int, int, int)", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2);
 		}
-		[SmokeMethod("QLine", "(int, int, int, int)", "$$$$")]
-		private void NewQLine(int x1, int y1, int x2, int y2) {
-			((QLine) interceptor).NewQLine(x1,y1,x2,y2);
-		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QLine) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("p1", "() const", "")]
 		public QPoint P1() {
-			return ((QLine) interceptor).P1();
+			return (QPoint) interceptor.Invoke("p1", "p1() const", typeof(QPoint));
 		}
-		[SmokeMethod("p2", "() const", "")]
 		public QPoint P2() {
-			return ((QLine) interceptor).P2();
+			return (QPoint) interceptor.Invoke("p2", "p2() const", typeof(QPoint));
 		}
-		[SmokeMethod("x1", "() const", "")]
 		public int X1() {
-			return ((QLine) interceptor).X1();
+			return (int) interceptor.Invoke("x1", "x1() const", typeof(int));
 		}
-		[SmokeMethod("y1", "() const", "")]
 		public int Y1() {
-			return ((QLine) interceptor).Y1();
+			return (int) interceptor.Invoke("y1", "y1() const", typeof(int));
 		}
-		[SmokeMethod("x2", "() const", "")]
 		public int X2() {
-			return ((QLine) interceptor).X2();
+			return (int) interceptor.Invoke("x2", "x2() const", typeof(int));
 		}
-		[SmokeMethod("y2", "() const", "")]
 		public int Y2() {
-			return ((QLine) interceptor).Y2();
+			return (int) interceptor.Invoke("y2", "y2() const", typeof(int));
 		}
-		[SmokeMethod("dx", "() const", "")]
 		public int Dx() {
-			return ((QLine) interceptor).Dx();
+			return (int) interceptor.Invoke("dx", "dx() const", typeof(int));
 		}
-		[SmokeMethod("dy", "() const", "")]
 		public int Dy() {
-			return ((QLine) interceptor).Dy();
+			return (int) interceptor.Invoke("dy", "dy() const", typeof(int));
 		}
-		[SmokeMethod("translate", "(const QPoint&)", "#")]
 		public void Translate(QPoint p) {
-			((QLine) interceptor).Translate(p);
+			interceptor.Invoke("translate#", "translate(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
-		[SmokeMethod("translate", "(int, int)", "$$")]
 		public void Translate(int dx, int dy) {
-			((QLine) interceptor).Translate(dx,dy);
+			interceptor.Invoke("translate$$", "translate(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QLine)) { return false; }
 			return this == (QLine) o;
 		}
 		public override int GetHashCode() {
-			return ((QLine) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
 		~QLine() {
-			DisposeQLine();
+			interceptor.Invoke("~QLine", "~QLine()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQLine();
-		}
-		[SmokeMethod("~QLine", "()", "")]
-		private void DisposeQLine() {
-			((QLine) interceptor).DisposeQLine();
+			interceptor.Invoke("~QLine", "~QLine()", typeof(void));
 		}
 		public static bool operator==(QLine lhs, QLine d) {
-			return staticInterceptor.op_equals(lhs,d);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QLine&) const", typeof(bool), typeof(QLine), lhs, typeof(QLine), d);
 		}
 		public static bool operator!=(QLine lhs, QLine d) {
-			return !staticInterceptor.op_equals(lhs,d);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QLine&) const", typeof(bool), typeof(QLine), lhs, typeof(QLine), d);
 		}
 		public static QLine operator*(QLine l, QMatrix m) {
-			return staticInterceptor.op_mult(l,m);
+			return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QMatrix&)", typeof(QLine), typeof(QLine), l, typeof(QMatrix), m);
 		}
 	}
 }

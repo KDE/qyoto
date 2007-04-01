@@ -7,29 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QImage")]
 	public class QImage : QPaintDevice, IDisposable {
  		protected QImage(Type dummy) : base((Type) null) {}
-		[SmokeClass("QImage")]
-		interface IQImageProxy {
-			[SmokeMethod("operator==", "(const QImage&) const", "#")]
-			bool op_equals(QImage lhs, QImage arg1);
-			[SmokeMethod("trueMatrix", "(const QMatrix&, int, int)", "#$$")]
-			QMatrix TrueMatrix(QMatrix arg1, int w, int h);
-			[SmokeMethod("fromData", "(const uchar*, int, const char*)", "$$$")]
-			QImage FromData(char[] data, int size, string format);
-			[SmokeMethod("fromData", "(const uchar*, int)", "$$")]
-			QImage FromData(char[] data, int size);
-			[SmokeMethod("fromData", "(const QByteArray&, const char*)", "#$")]
-			QImage FromData(QByteArray data, string format);
-			[SmokeMethod("fromData", "(const QByteArray&)", "#")]
-			QImage FromData(QByteArray data);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImage), this);
-			interceptor = (QImage) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QImage), "QImage", this);
 		}
-		private static IQImageProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QImage() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQImageProxy), null);
-			staticInterceptor = (IQImageProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QImage), "QImage", null);
 		}
 		public enum InvertMode {
 			InvertRgb = 0,
@@ -52,465 +35,344 @@ namespace Qyoto {
 		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
 		public QImage() : this((Type) null) {
 			CreateProxy();
-			NewQImage();
-		}
-		[SmokeMethod("QImage", "()", "")]
-		private void NewQImage() {
-			((QImage) interceptor).NewQImage();
+			interceptor.Invoke("QImage", "QImage()", typeof(void));
 		}
 		public QImage(QSize size, QImage.Format format) : this((Type) null) {
 			CreateProxy();
-			NewQImage(size,format);
-		}
-		[SmokeMethod("QImage", "(const QSize&, QImage::Format)", "#$")]
-		private void NewQImage(QSize size, QImage.Format format) {
-			((QImage) interceptor).NewQImage(size,format);
+			interceptor.Invoke("QImage#$", "QImage(const QSize&, QImage::Format)", typeof(void), typeof(QSize), size, typeof(QImage.Format), format);
 		}
 		public QImage(int width, int height, QImage.Format format) : this((Type) null) {
 			CreateProxy();
-			NewQImage(width,height,format);
-		}
-		[SmokeMethod("QImage", "(int, int, QImage::Format)", "$$$")]
-		private void NewQImage(int width, int height, QImage.Format format) {
-			((QImage) interceptor).NewQImage(width,height,format);
+			interceptor.Invoke("QImage$$$", "QImage(int, int, QImage::Format)", typeof(void), typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
 		}
 		public QImage(char[] data, int width, int height, QImage.Format format) : this((Type) null) {
 			CreateProxy();
-			NewQImage(data,width,height,format);
-		}
-		[SmokeMethod("QImage", "(uchar*, int, int, QImage::Format)", "$$$$")]
-		private void NewQImage(char[] data, int width, int height, QImage.Format format) {
-			((QImage) interceptor).NewQImage(data,width,height,format);
+			interceptor.Invoke("QImage$$$$", "QImage(uchar*, int, int, QImage::Format)", typeof(void), typeof(char[]), data, typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
 		}
 		public QImage(string fileName, string format) : this((Type) null) {
 			CreateProxy();
-			NewQImage(fileName,format);
-		}
-		[SmokeMethod("QImage", "(const QString&, const char*)", "$$")]
-		private void NewQImage(string fileName, string format) {
-			((QImage) interceptor).NewQImage(fileName,format);
+			interceptor.Invoke("QImage$$", "QImage(const QString&, const char*)", typeof(void), typeof(string), fileName, typeof(string), format);
 		}
 		public QImage(string fileName) : this((Type) null) {
 			CreateProxy();
-			NewQImage(fileName);
-		}
-		[SmokeMethod("QImage", "(const QString&)", "$")]
-		private void NewQImage(string fileName) {
-			((QImage) interceptor).NewQImage(fileName);
+			interceptor.Invoke("QImage$", "QImage(const QString&)", typeof(void), typeof(string), fileName);
 		}
 		public QImage(QImage arg1) : this((Type) null) {
 			CreateProxy();
-			NewQImage(arg1);
+			interceptor.Invoke("QImage#", "QImage(const QImage&)", typeof(void), typeof(QImage), arg1);
 		}
-		[SmokeMethod("QImage", "(const QImage&)", "#")]
-		private void NewQImage(QImage arg1) {
-			((QImage) interceptor).NewQImage(arg1);
-		}
-		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ((QImage) interceptor).IsNull();
+			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		public override int DevType() {
-			return ((QImage) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QImage)) { return false; }
 			return this == (QImage) o;
 		}
 		public override int GetHashCode() {
-			return ((QImage) interceptor).GetHashCode();
+			return interceptor.GetHashCode();
 		}
-		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			((QImage) interceptor).Detach();
+			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ((QImage) interceptor).IsDetached();
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		[SmokeMethod("copy", "(const QRect&) const", "#")]
 		public QImage Copy(QRect rect) {
-			return ((QImage) interceptor).Copy(rect);
+			return (QImage) interceptor.Invoke("copy#", "copy(const QRect&) const", typeof(QImage), typeof(QRect), rect);
 		}
-		[SmokeMethod("copy", "() const", "")]
 		public QImage Copy() {
-			return ((QImage) interceptor).Copy();
+			return (QImage) interceptor.Invoke("copy", "copy() const", typeof(QImage));
 		}
-		[SmokeMethod("copy", "(int, int, int, int) const", "$$$$")]
 		public QImage Copy(int x, int y, int w, int h) {
-			return ((QImage) interceptor).Copy(x,y,w,h);
+			return (QImage) interceptor.Invoke("copy$$$$", "copy(int, int, int, int) const", typeof(QImage), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QImage.Format format() {
-			return ((QImage) interceptor).format();
+			return (QImage.Format) interceptor.Invoke("format", "format() const", typeof(QImage.Format));
 		}
-		[SmokeMethod("convertToFormat", "(QImage::Format, Qt::ImageConversionFlags) const", "$$")]
 		public QImage ConvertToFormat(QImage.Format f, int flags) {
-			return ((QImage) interceptor).ConvertToFormat(f,flags);
+			return (QImage) interceptor.Invoke("convertToFormat$$", "convertToFormat(QImage::Format, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(int), flags);
 		}
-		[SmokeMethod("convertToFormat", "(QImage::Format) const", "$")]
 		public QImage ConvertToFormat(QImage.Format f) {
-			return ((QImage) interceptor).ConvertToFormat(f);
+			return (QImage) interceptor.Invoke("convertToFormat$", "convertToFormat(QImage::Format) const", typeof(QImage), typeof(QImage.Format), f);
 		}
-		[SmokeMethod("convertToFormat", "(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const", "$?$")]
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, int flags) {
-			return ((QImage) interceptor).ConvertToFormat(f,colorTable,flags);
+			return (QImage) interceptor.Invoke("convertToFormat$?$", "convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable, typeof(int), flags);
 		}
-		[SmokeMethod("convertToFormat", "(QImage::Format, const QVector<QRgb>&) const", "$?")]
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
-			return ((QImage) interceptor).ConvertToFormat(f,colorTable);
+			return (QImage) interceptor.Invoke("convertToFormat$?", "convertToFormat(QImage::Format, const QVector<QRgb>&) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable);
 		}
-		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ((QImage) interceptor).Width();
+			return (int) interceptor.Invoke("width", "width() const", typeof(int));
 		}
-		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ((QImage) interceptor).Height();
+			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
-		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ((QImage) interceptor).Size();
+			return (QSize) interceptor.Invoke("size", "size() const", typeof(QSize));
 		}
-		[SmokeMethod("rect", "() const", "")]
 		public QRect Rect() {
-			return ((QImage) interceptor).Rect();
+			return (QRect) interceptor.Invoke("rect", "rect() const", typeof(QRect));
 		}
-		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ((QImage) interceptor).Depth();
+			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
-		[SmokeMethod("numColors", "() const", "")]
 		public int NumColors() {
-			return ((QImage) interceptor).NumColors();
+			return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
 		}
-		[SmokeMethod("color", "(int) const", "$")]
 		public uint Color(int i) {
-			return ((QImage) interceptor).Color(i);
+			return (uint) interceptor.Invoke("color$", "color(int) const", typeof(uint), typeof(int), i);
 		}
-		[SmokeMethod("setColor", "(int, QRgb)", "$$")]
 		public void SetColor(int i, uint c) {
-			((QImage) interceptor).SetColor(i,c);
+			interceptor.Invoke("setColor$$", "setColor(int, QRgb)", typeof(void), typeof(int), i, typeof(uint), c);
 		}
-		[SmokeMethod("setNumColors", "(int)", "$")]
 		public void SetNumColors(int arg1) {
-			((QImage) interceptor).SetNumColors(arg1);
+			interceptor.Invoke("setNumColors$", "setNumColors(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("allGray", "() const", "")]
 		public bool AllGray() {
-			return ((QImage) interceptor).AllGray();
+			return (bool) interceptor.Invoke("allGray", "allGray() const", typeof(bool));
 		}
-		[SmokeMethod("isGrayscale", "() const", "")]
 		public bool IsGrayscale() {
-			return ((QImage) interceptor).IsGrayscale();
+			return (bool) interceptor.Invoke("isGrayscale", "isGrayscale() const", typeof(bool));
 		}
-		[SmokeMethod("bits", "()", "")]
 		public char[] Bits() {
-			return ((QImage) interceptor).Bits();
+			return (char[]) interceptor.Invoke("bits", "bits()", typeof(char[]));
 		}
-		[SmokeMethod("numBytes", "() const", "")]
 		public int NumBytes() {
-			return ((QImage) interceptor).NumBytes();
+			return (int) interceptor.Invoke("numBytes", "numBytes() const", typeof(int));
 		}
-		[SmokeMethod("scanLine", "(int)", "$")]
 		public char[] ScanLine(int arg1) {
-			return ((QImage) interceptor).ScanLine(arg1);
+			return (char[]) interceptor.Invoke("scanLine$", "scanLine(int)", typeof(char[]), typeof(int), arg1);
 		}
-		[SmokeMethod("bytesPerLine", "() const", "")]
 		public int BytesPerLine() {
-			return ((QImage) interceptor).BytesPerLine();
+			return (int) interceptor.Invoke("bytesPerLine", "bytesPerLine() const", typeof(int));
 		}
-		[SmokeMethod("valid", "(int, int) const", "$$")]
 		public bool Valid(int x, int y) {
-			return ((QImage) interceptor).Valid(x,y);
+			return (bool) interceptor.Invoke("valid$$", "valid(int, int) const", typeof(bool), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("valid", "(const QPoint&) const", "#")]
 		public bool Valid(QPoint pt) {
-			return ((QImage) interceptor).Valid(pt);
+			return (bool) interceptor.Invoke("valid#", "valid(const QPoint&) const", typeof(bool), typeof(QPoint), pt);
 		}
-		[SmokeMethod("pixelIndex", "(int, int) const", "$$")]
 		public int PixelIndex(int x, int y) {
-			return ((QImage) interceptor).PixelIndex(x,y);
+			return (int) interceptor.Invoke("pixelIndex$$", "pixelIndex(int, int) const", typeof(int), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("pixelIndex", "(const QPoint&) const", "#")]
 		public int PixelIndex(QPoint pt) {
-			return ((QImage) interceptor).PixelIndex(pt);
+			return (int) interceptor.Invoke("pixelIndex#", "pixelIndex(const QPoint&) const", typeof(int), typeof(QPoint), pt);
 		}
-		[SmokeMethod("pixel", "(int, int) const", "$$")]
 		public uint Pixel(int x, int y) {
-			return ((QImage) interceptor).Pixel(x,y);
+			return (uint) interceptor.Invoke("pixel$$", "pixel(int, int) const", typeof(uint), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("pixel", "(const QPoint&) const", "#")]
 		public uint Pixel(QPoint pt) {
-			return ((QImage) interceptor).Pixel(pt);
+			return (uint) interceptor.Invoke("pixel#", "pixel(const QPoint&) const", typeof(uint), typeof(QPoint), pt);
 		}
-		[SmokeMethod("setPixel", "(int, int, uint)", "$$$")]
 		public void SetPixel(int x, int y, uint index_or_rgb) {
-			((QImage) interceptor).SetPixel(x,y,index_or_rgb);
+			interceptor.Invoke("setPixel$$$", "setPixel(int, int, uint)", typeof(void), typeof(int), x, typeof(int), y, typeof(uint), index_or_rgb);
 		}
-		[SmokeMethod("setPixel", "(const QPoint&, uint)", "#$")]
 		public void SetPixel(QPoint pt, uint index_or_rgb) {
-			((QImage) interceptor).SetPixel(pt,index_or_rgb);
+			interceptor.Invoke("setPixel#$", "setPixel(const QPoint&, uint)", typeof(void), typeof(QPoint), pt, typeof(uint), index_or_rgb);
 		}
-		[SmokeMethod("colorTable", "() const", "")]
 		public List<uint> ColorTable() {
-			return ((QImage) interceptor).ColorTable();
+			return (List<uint>) interceptor.Invoke("colorTable", "colorTable() const", typeof(List<uint>));
 		}
-		[SmokeMethod("setColorTable", "(const QVector<QRgb>)", "?")]
 		public void SetColorTable(List<uint> colors) {
-			((QImage) interceptor).SetColorTable(colors);
+			interceptor.Invoke("setColorTable?", "setColorTable(const QVector<QRgb>)", typeof(void), typeof(List<uint>), colors);
 		}
-		[SmokeMethod("fill", "(uint)", "$")]
 		public void Fill(uint pixel) {
-			((QImage) interceptor).Fill(pixel);
+			interceptor.Invoke("fill$", "fill(uint)", typeof(void), typeof(uint), pixel);
 		}
-		[SmokeMethod("hasAlphaChannel", "() const", "")]
 		public bool HasAlphaChannel() {
-			return ((QImage) interceptor).HasAlphaChannel();
+			return (bool) interceptor.Invoke("hasAlphaChannel", "hasAlphaChannel() const", typeof(bool));
 		}
-		[SmokeMethod("setAlphaChannel", "(const QImage&)", "#")]
 		public void SetAlphaChannel(QImage alphaChannel) {
-			((QImage) interceptor).SetAlphaChannel(alphaChannel);
+			interceptor.Invoke("setAlphaChannel#", "setAlphaChannel(const QImage&)", typeof(void), typeof(QImage), alphaChannel);
 		}
-		[SmokeMethod("alphaChannel", "() const", "")]
 		public QImage AlphaChannel() {
-			return ((QImage) interceptor).AlphaChannel();
+			return (QImage) interceptor.Invoke("alphaChannel", "alphaChannel() const", typeof(QImage));
 		}
-		[SmokeMethod("createAlphaMask", "(Qt::ImageConversionFlags) const", "$")]
 		public QImage CreateAlphaMask(int flags) {
-			return ((QImage) interceptor).CreateAlphaMask(flags);
+			return (QImage) interceptor.Invoke("createAlphaMask$", "createAlphaMask(Qt::ImageConversionFlags) const", typeof(QImage), typeof(int), flags);
 		}
-		[SmokeMethod("createAlphaMask", "() const", "")]
 		public QImage CreateAlphaMask() {
-			return ((QImage) interceptor).CreateAlphaMask();
+			return (QImage) interceptor.Invoke("createAlphaMask", "createAlphaMask() const", typeof(QImage));
 		}
-		[SmokeMethod("createHeuristicMask", "(bool) const", "$")]
 		public QImage CreateHeuristicMask(bool clipTight) {
-			return ((QImage) interceptor).CreateHeuristicMask(clipTight);
+			return (QImage) interceptor.Invoke("createHeuristicMask$", "createHeuristicMask(bool) const", typeof(QImage), typeof(bool), clipTight);
 		}
-		[SmokeMethod("createHeuristicMask", "() const", "")]
 		public QImage CreateHeuristicMask() {
-			return ((QImage) interceptor).CreateHeuristicMask();
+			return (QImage) interceptor.Invoke("createHeuristicMask", "createHeuristicMask() const", typeof(QImage));
 		}
-		[SmokeMethod("scaled", "(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", "$$$$")]
 		public QImage Scaled(int w, int h, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
-			return ((QImage) interceptor).Scaled(w,h,aspectMode,mode);
+			return (QImage) interceptor.Invoke("scaled$$$$", "scaled(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QImage), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaled", "(int, int, Qt::AspectRatioMode) const", "$$$")]
 		public QImage Scaled(int w, int h, Qt.AspectRatioMode aspectMode) {
-			return ((QImage) interceptor).Scaled(w,h,aspectMode);
+			return (QImage) interceptor.Invoke("scaled$$$", "scaled(int, int, Qt::AspectRatioMode) const", typeof(QImage), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode);
 		}
-		[SmokeMethod("scaled", "(int, int) const", "$$")]
 		public QImage Scaled(int w, int h) {
-			return ((QImage) interceptor).Scaled(w,h);
+			return (QImage) interceptor.Invoke("scaled$$", "scaled(int, int) const", typeof(QImage), typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("scaled", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const", "#$$")]
 		public QImage Scaled(QSize s, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
-			return ((QImage) interceptor).Scaled(s,aspectMode,mode);
+			return (QImage) interceptor.Invoke("scaled#$$", "scaled(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QImage), typeof(QSize), s, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaled", "(const QSize&, Qt::AspectRatioMode) const", "#$")]
 		public QImage Scaled(QSize s, Qt.AspectRatioMode aspectMode) {
-			return ((QImage) interceptor).Scaled(s,aspectMode);
+			return (QImage) interceptor.Invoke("scaled#$", "scaled(const QSize&, Qt::AspectRatioMode) const", typeof(QImage), typeof(QSize), s, typeof(Qt.AspectRatioMode), aspectMode);
 		}
-		[SmokeMethod("scaled", "(const QSize&) const", "#")]
 		public QImage Scaled(QSize s) {
-			return ((QImage) interceptor).Scaled(s);
+			return (QImage) interceptor.Invoke("scaled#", "scaled(const QSize&) const", typeof(QImage), typeof(QSize), s);
 		}
-		[SmokeMethod("scaledToWidth", "(int, Qt::TransformationMode) const", "$$")]
 		public QImage ScaledToWidth(int w, Qt.TransformationMode mode) {
-			return ((QImage) interceptor).ScaledToWidth(w,mode);
+			return (QImage) interceptor.Invoke("scaledToWidth$$", "scaledToWidth(int, Qt::TransformationMode) const", typeof(QImage), typeof(int), w, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaledToWidth", "(int) const", "$")]
 		public QImage ScaledToWidth(int w) {
-			return ((QImage) interceptor).ScaledToWidth(w);
+			return (QImage) interceptor.Invoke("scaledToWidth$", "scaledToWidth(int) const", typeof(QImage), typeof(int), w);
 		}
-		[SmokeMethod("scaledToHeight", "(int, Qt::TransformationMode) const", "$$")]
 		public QImage ScaledToHeight(int h, Qt.TransformationMode mode) {
-			return ((QImage) interceptor).ScaledToHeight(h,mode);
+			return (QImage) interceptor.Invoke("scaledToHeight$$", "scaledToHeight(int, Qt::TransformationMode) const", typeof(QImage), typeof(int), h, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("scaledToHeight", "(int) const", "$")]
 		public QImage ScaledToHeight(int h) {
-			return ((QImage) interceptor).ScaledToHeight(h);
+			return (QImage) interceptor.Invoke("scaledToHeight$", "scaledToHeight(int) const", typeof(QImage), typeof(int), h);
 		}
-		[SmokeMethod("transformed", "(const QMatrix&, Qt::TransformationMode) const", "#$")]
 		public QImage Transformed(QMatrix matrix, Qt.TransformationMode mode) {
-			return ((QImage) interceptor).Transformed(matrix,mode);
+			return (QImage) interceptor.Invoke("transformed#$", "transformed(const QMatrix&, Qt::TransformationMode) const", typeof(QImage), typeof(QMatrix), matrix, typeof(Qt.TransformationMode), mode);
 		}
-		[SmokeMethod("transformed", "(const QMatrix&) const", "#")]
 		public QImage Transformed(QMatrix matrix) {
-			return ((QImage) interceptor).Transformed(matrix);
+			return (QImage) interceptor.Invoke("transformed#", "transformed(const QMatrix&) const", typeof(QImage), typeof(QMatrix), matrix);
 		}
-		[SmokeMethod("mirrored", "(bool, bool) const", "$$")]
 		public QImage Mirrored(bool horizontally, bool vertically) {
-			return ((QImage) interceptor).Mirrored(horizontally,vertically);
+			return (QImage) interceptor.Invoke("mirrored$$", "mirrored(bool, bool) const", typeof(QImage), typeof(bool), horizontally, typeof(bool), vertically);
 		}
-		[SmokeMethod("mirrored", "(bool) const", "$")]
 		public QImage Mirrored(bool horizontally) {
-			return ((QImage) interceptor).Mirrored(horizontally);
+			return (QImage) interceptor.Invoke("mirrored$", "mirrored(bool) const", typeof(QImage), typeof(bool), horizontally);
 		}
-		[SmokeMethod("mirrored", "() const", "")]
 		public QImage Mirrored() {
-			return ((QImage) interceptor).Mirrored();
+			return (QImage) interceptor.Invoke("mirrored", "mirrored() const", typeof(QImage));
 		}
-		[SmokeMethod("rgbSwapped", "() const", "")]
 		public QImage RgbSwapped() {
-			return ((QImage) interceptor).RgbSwapped();
+			return (QImage) interceptor.Invoke("rgbSwapped", "rgbSwapped() const", typeof(QImage));
 		}
-		[SmokeMethod("invertPixels", "(QImage::InvertMode)", "$")]
 		public void InvertPixels(QImage.InvertMode arg1) {
-			((QImage) interceptor).InvertPixels(arg1);
+			interceptor.Invoke("invertPixels$", "invertPixels(QImage::InvertMode)", typeof(void), typeof(QImage.InvertMode), arg1);
 		}
-		[SmokeMethod("invertPixels", "()", "")]
 		public void InvertPixels() {
-			((QImage) interceptor).InvertPixels();
+			interceptor.Invoke("invertPixels", "invertPixels()", typeof(void));
 		}
-		[SmokeMethod("load", "(QIODevice*, const char*)", "#$")]
 		public bool Load(QIODevice device, string format) {
-			return ((QImage) interceptor).Load(device,format);
+			return (bool) interceptor.Invoke("load#$", "load(QIODevice*, const char*)", typeof(bool), typeof(QIODevice), device, typeof(string), format);
 		}
-		[SmokeMethod("load", "(const QString&, const char*)", "$$")]
 		public bool Load(string fileName, string format) {
-			return ((QImage) interceptor).Load(fileName,format);
+			return (bool) interceptor.Invoke("load$$", "load(const QString&, const char*)", typeof(bool), typeof(string), fileName, typeof(string), format);
 		}
-		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string fileName) {
-			return ((QImage) interceptor).Load(fileName);
+			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), fileName);
 		}
-		[SmokeMethod("loadFromData", "(const uchar*, int, const char*)", "$$$")]
 		public bool LoadFromData(char[] buf, int len, string format) {
-			return ((QImage) interceptor).LoadFromData(buf,len,format);
+			return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, int, const char*)", typeof(bool), typeof(char[]), buf, typeof(int), len, typeof(string), format);
 		}
-		[SmokeMethod("loadFromData", "(const uchar*, int)", "$$")]
 		public bool LoadFromData(char[] buf, int len) {
-			return ((QImage) interceptor).LoadFromData(buf,len);
+			return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, int)", typeof(bool), typeof(char[]), buf, typeof(int), len);
 		}
-		[SmokeMethod("loadFromData", "(const QByteArray&, const char*)", "#$")]
 		public bool LoadFromData(QByteArray data, string aformat) {
-			return ((QImage) interceptor).LoadFromData(data,aformat);
+			return (bool) interceptor.Invoke("loadFromData#$", "loadFromData(const QByteArray&, const char*)", typeof(bool), typeof(QByteArray), data, typeof(string), aformat);
 		}
-		[SmokeMethod("loadFromData", "(const QByteArray&)", "#")]
 		public bool LoadFromData(QByteArray data) {
-			return ((QImage) interceptor).LoadFromData(data);
+			return (bool) interceptor.Invoke("loadFromData#", "loadFromData(const QByteArray&)", typeof(bool), typeof(QByteArray), data);
 		}
-		[SmokeMethod("save", "(const QString&, const char*, int) const", "$$$")]
 		public bool Save(string fileName, string format, int quality) {
-			return ((QImage) interceptor).Save(fileName,format,quality);
+			return (bool) interceptor.Invoke("save$$$", "save(const QString&, const char*, int) const", typeof(bool), typeof(string), fileName, typeof(string), format, typeof(int), quality);
 		}
-		[SmokeMethod("save", "(const QString&, const char*) const", "$$")]
 		public bool Save(string fileName, string format) {
-			return ((QImage) interceptor).Save(fileName,format);
+			return (bool) interceptor.Invoke("save$$", "save(const QString&, const char*) const", typeof(bool), typeof(string), fileName, typeof(string), format);
 		}
-		[SmokeMethod("save", "(const QString&) const", "$")]
 		public bool Save(string fileName) {
-			return ((QImage) interceptor).Save(fileName);
+			return (bool) interceptor.Invoke("save$", "save(const QString&) const", typeof(bool), typeof(string), fileName);
 		}
-		[SmokeMethod("save", "(QIODevice*, const char*, int) const", "#$$")]
 		public bool Save(QIODevice device, string format, int quality) {
-			return ((QImage) interceptor).Save(device,format,quality);
+			return (bool) interceptor.Invoke("save#$$", "save(QIODevice*, const char*, int) const", typeof(bool), typeof(QIODevice), device, typeof(string), format, typeof(int), quality);
 		}
-		[SmokeMethod("save", "(QIODevice*, const char*) const", "#$")]
 		public bool Save(QIODevice device, string format) {
-			return ((QImage) interceptor).Save(device,format);
+			return (bool) interceptor.Invoke("save#$", "save(QIODevice*, const char*) const", typeof(bool), typeof(QIODevice), device, typeof(string), format);
 		}
-		[SmokeMethod("save", "(QIODevice*) const", "#")]
 		public bool Save(QIODevice device) {
-			return ((QImage) interceptor).Save(device);
+			return (bool) interceptor.Invoke("save#", "save(QIODevice*) const", typeof(bool), typeof(QIODevice), device);
 		}
-		[SmokeMethod("serialNumber", "() const", "")]
 		public int SerialNumber() {
-			return ((QImage) interceptor).SerialNumber();
+			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {
-			return ((QImage) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
-		[SmokeMethod("dotsPerMeterX", "() const", "")]
 		public int DotsPerMeterX() {
-			return ((QImage) interceptor).DotsPerMeterX();
+			return (int) interceptor.Invoke("dotsPerMeterX", "dotsPerMeterX() const", typeof(int));
 		}
-		[SmokeMethod("dotsPerMeterY", "() const", "")]
 		public int DotsPerMeterY() {
-			return ((QImage) interceptor).DotsPerMeterY();
+			return (int) interceptor.Invoke("dotsPerMeterY", "dotsPerMeterY() const", typeof(int));
 		}
-		[SmokeMethod("setDotsPerMeterX", "(int)", "$")]
 		public void SetDotsPerMeterX(int arg1) {
-			((QImage) interceptor).SetDotsPerMeterX(arg1);
+			interceptor.Invoke("setDotsPerMeterX$", "setDotsPerMeterX(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("setDotsPerMeterY", "(int)", "$")]
 		public void SetDotsPerMeterY(int arg1) {
-			((QImage) interceptor).SetDotsPerMeterY(arg1);
+			interceptor.Invoke("setDotsPerMeterY$", "setDotsPerMeterY(int)", typeof(void), typeof(int), arg1);
 		}
-		[SmokeMethod("offset", "() const", "")]
 		public QPoint Offset() {
-			return ((QImage) interceptor).Offset();
+			return (QPoint) interceptor.Invoke("offset", "offset() const", typeof(QPoint));
 		}
-		[SmokeMethod("setOffset", "(const QPoint&)", "#")]
 		public void SetOffset(QPoint arg1) {
-			((QImage) interceptor).SetOffset(arg1);
+			interceptor.Invoke("setOffset#", "setOffset(const QPoint&)", typeof(void), typeof(QPoint), arg1);
 		}
-		[SmokeMethod("textKeys", "() const", "")]
 		public List<string> TextKeys() {
-			return ((QImage) interceptor).TextKeys();
+			return (List<string>) interceptor.Invoke("textKeys", "textKeys() const", typeof(List<string>));
 		}
-		[SmokeMethod("text", "(const QString&) const", "$")]
 		public string Text(string key) {
-			return ((QImage) interceptor).Text(key);
+			return (string) interceptor.Invoke("text$", "text(const QString&) const", typeof(string), typeof(string), key);
 		}
-		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ((QImage) interceptor).Text();
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
-		[SmokeMethod("setText", "(const QString&, const QString&)", "$$")]
 		public void SetText(string key, string value) {
-			((QImage) interceptor).SetText(key,value);
+			interceptor.Invoke("setText$$", "setText(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);
 		}
-		[SmokeMethod("text", "(const char*, const char*) const", "$$")]
 		public string Text(string key, string lang) {
-			return ((QImage) interceptor).Text(key,lang);
+			return (string) interceptor.Invoke("text$$", "text(const char*, const char*) const", typeof(string), typeof(string), key, typeof(string), lang);
 		}
-		[SmokeMethod("textLanguages", "() const", "")]
 		public List<string> TextLanguages() {
-			return ((QImage) interceptor).TextLanguages();
+			return (List<string>) interceptor.Invoke("textLanguages", "textLanguages() const", typeof(List<string>));
 		}
-		[SmokeMethod("setText", "(const char*, const char*, const QString&)", "$$$")]
 		public void SetText(string key, string lang, string arg3) {
-			((QImage) interceptor).SetText(key,lang,arg3);
+			interceptor.Invoke("setText$$$", "setText(const char*, const char*, const QString&)", typeof(void), typeof(string), key, typeof(string), lang, typeof(string), arg3);
 		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice metric) {
-			return ((QImage) interceptor).Metric(metric);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), metric);
 		}
 		~QImage() {
-			DisposeQImage();
+			interceptor.Invoke("~QImage", "~QImage()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQImage();
-		}
-		[SmokeMethod("~QImage", "()", "")]
-		private void DisposeQImage() {
-			((QImage) interceptor).DisposeQImage();
+			interceptor.Invoke("~QImage", "~QImage()", typeof(void));
 		}
 		public static bool operator==(QImage lhs, QImage arg1) {
-			return staticInterceptor.op_equals(lhs,arg1);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QImage&) const", typeof(bool), typeof(QImage), lhs, typeof(QImage), arg1);
 		}
 		public static bool operator!=(QImage lhs, QImage arg1) {
-			return !staticInterceptor.op_equals(lhs,arg1);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QImage&) const", typeof(bool), typeof(QImage), lhs, typeof(QImage), arg1);
 		}
 		public static QMatrix TrueMatrix(QMatrix arg1, int w, int h) {
-			return staticInterceptor.TrueMatrix(arg1,w,h);
+			return (QMatrix) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QMatrix&, int, int)", typeof(QMatrix), typeof(QMatrix), arg1, typeof(int), w, typeof(int), h);
 		}
 		public static QImage FromData(char[] data, int size, string format) {
-			return staticInterceptor.FromData(data,size,format);
+			return (QImage) staticInterceptor.Invoke("fromData$$$", "fromData(const uchar*, int, const char*)", typeof(QImage), typeof(char[]), data, typeof(int), size, typeof(string), format);
 		}
 		public static QImage FromData(char[] data, int size) {
-			return staticInterceptor.FromData(data,size);
+			return (QImage) staticInterceptor.Invoke("fromData$$", "fromData(const uchar*, int)", typeof(QImage), typeof(char[]), data, typeof(int), size);
 		}
 		public static QImage FromData(QByteArray data, string format) {
-			return staticInterceptor.FromData(data,format);
+			return (QImage) staticInterceptor.Invoke("fromData#$", "fromData(const QByteArray&, const char*)", typeof(QImage), typeof(QByteArray), data, typeof(string), format);
 		}
 		public static QImage FromData(QByteArray data) {
-			return staticInterceptor.FromData(data);
+			return (QImage) staticInterceptor.Invoke("fromData#", "fromData(const QByteArray&)", typeof(QImage), typeof(QByteArray), data);
 		}
 	}
 }

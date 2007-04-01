@@ -7,148 +7,104 @@ namespace Qyoto {
 	public class QGraphicsRectItem : QAbstractGraphicsShapeItem, IDisposable {
  		protected QGraphicsRectItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsRectItem), this);
-			interceptor = (QGraphicsRectItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsRectItem), "QGraphicsRectItem", this);
 		}
 		public const int Type = 3;
 
 		public QGraphicsRectItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(parent,scene);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
-		private void NewQGraphicsRectItem(QGraphicsItem parent, QGraphicsScene scene) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(parent,scene);
+			interceptor.Invoke("QGraphicsRectItem##", "QGraphicsRectItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
 		}
 		public QGraphicsRectItem(QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(parent);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(QGraphicsItem*)", "#")]
-		private void NewQGraphicsRectItem(QGraphicsItem parent) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(parent);
+			interceptor.Invoke("QGraphicsRectItem#", "QGraphicsRectItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);
 		}
 		public QGraphicsRectItem() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem();
-		}
-		[SmokeMethod("QGraphicsRectItem", "()", "")]
-		private void NewQGraphicsRectItem() {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem();
+			interceptor.Invoke("QGraphicsRectItem", "QGraphicsRectItem()", typeof(void));
 		}
 		public QGraphicsRectItem(QRectF rect, QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(rect,parent,scene);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(const QRectF&, QGraphicsItem*, QGraphicsScene*)", "###")]
-		private void NewQGraphicsRectItem(QRectF rect, QGraphicsItem parent, QGraphicsScene scene) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(rect,parent,scene);
+			interceptor.Invoke("QGraphicsRectItem###", "QGraphicsRectItem(const QRectF&, QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QRectF), rect, typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
 		}
 		public QGraphicsRectItem(QRectF rect, QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(rect,parent);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(const QRectF&, QGraphicsItem*)", "##")]
-		private void NewQGraphicsRectItem(QRectF rect, QGraphicsItem parent) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(rect,parent);
+			interceptor.Invoke("QGraphicsRectItem##", "QGraphicsRectItem(const QRectF&, QGraphicsItem*)", typeof(void), typeof(QRectF), rect, typeof(QGraphicsItem), parent);
 		}
 		public QGraphicsRectItem(QRectF rect) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(rect);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(const QRectF&)", "#")]
-		private void NewQGraphicsRectItem(QRectF rect) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(rect);
+			interceptor.Invoke("QGraphicsRectItem#", "QGraphicsRectItem(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
 		public QGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(x,y,w,h,parent,scene);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)", "$$$$##")]
-		private void NewQGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent, QGraphicsScene scene) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(x,y,w,h,parent,scene);
+			interceptor.Invoke("QGraphicsRectItem$$$$##", "QGraphicsRectItem(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
 		}
 		public QGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(x,y,w,h,parent);
-		}
-		[SmokeMethod("QGraphicsRectItem", "(qreal, qreal, qreal, qreal, QGraphicsItem*)", "$$$$#")]
-		private void NewQGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(x,y,w,h,parent);
+			interceptor.Invoke("QGraphicsRectItem$$$$#", "QGraphicsRectItem(qreal, qreal, qreal, qreal, QGraphicsItem*)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QGraphicsItem), parent);
 		}
 		public QGraphicsRectItem(double x, double y, double w, double h) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsRectItem(x,y,w,h);
+			interceptor.Invoke("QGraphicsRectItem$$$$", "QGraphicsRectItem(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("QGraphicsRectItem", "(qreal, qreal, qreal, qreal)", "$$$$")]
-		private void NewQGraphicsRectItem(double x, double y, double w, double h) {
-			((QGraphicsRectItem) interceptor).NewQGraphicsRectItem(x,y,w,h);
-		}
-		[SmokeMethod("rect", "() const", "")]
 		public QRectF Rect() {
-			return ((QGraphicsRectItem) interceptor).Rect();
+			return (QRectF) interceptor.Invoke("rect", "rect() const", typeof(QRectF));
 		}
-		[SmokeMethod("setRect", "(const QRectF&)", "#")]
 		public void SetRect(QRectF rect) {
-			((QGraphicsRectItem) interceptor).SetRect(rect);
+			interceptor.Invoke("setRect#", "setRect(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
-		[SmokeMethod("setRect", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetRect(double x, double y, double w, double h) {
-			((QGraphicsRectItem) interceptor).SetRect(x,y,w,h);
+			interceptor.Invoke("setRect$$$$", "setRect(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("boundingRect", "() const", "")]
+		[SmokeMethod("boundingRect() const")]
 		public override QRectF BoundingRect() {
-			return ((QGraphicsRectItem) interceptor).BoundingRect();
+			return (QRectF) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRectF));
 		}
-		[SmokeMethod("shape", "() const", "")]
+		[SmokeMethod("shape() const")]
 		public override QPainterPath Shape() {
-			return ((QGraphicsRectItem) interceptor).Shape();
+			return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));
 		}
-		[SmokeMethod("contains", "(const QPointF&) const", "#")]
+		[SmokeMethod("contains(const QPointF&) const")]
 		public override bool Contains(QPointF point) {
-			return ((QGraphicsRectItem) interceptor).Contains(point);
+			return (bool) interceptor.Invoke("contains#", "contains(const QPointF&) const", typeof(bool), typeof(QPointF), point);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
+		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
 		public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
-			((QGraphicsRectItem) interceptor).Paint(painter,option,widget);
+			interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
 		}
-		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*)", "##")]
+		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*)")]
 		public virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
-			((QGraphicsRectItem) interceptor).Paint(painter,option);
+			interceptor.Invoke("paint##", "paint(QPainter*, const QStyleOptionGraphicsItem*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option);
 		}
-		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
+		[SmokeMethod("isObscuredBy(const QGraphicsItem*) const")]
 		public override bool IsObscuredBy(QGraphicsItem item) {
-			return ((QGraphicsRectItem) interceptor).IsObscuredBy(item);
+			return (bool) interceptor.Invoke("isObscuredBy#", "isObscuredBy(const QGraphicsItem*) const", typeof(bool), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("opaqueArea", "() const", "")]
+		[SmokeMethod("opaqueArea() const")]
 		public override QPainterPath OpaqueArea() {
-			return ((QGraphicsRectItem) interceptor).OpaqueArea();
+			return (QPainterPath) interceptor.Invoke("opaqueArea", "opaqueArea() const", typeof(QPainterPath));
 		}
-		[SmokeMethod("type", "() const", "")]
+		[SmokeMethod("type() const")]
 		public override int type() {
-			return ((QGraphicsRectItem) interceptor).type();
+			return (int) interceptor.Invoke("type", "type() const", typeof(int));
 		}
-		[SmokeMethod("supportsExtension", "(QGraphicsItem::Extension) const", "$")]
+		[SmokeMethod("supportsExtension(QGraphicsItem::Extension) const")]
 		protected override bool SupportsExtension(QGraphicsItem.Extension extension) {
-			return ((QGraphicsRectItem) interceptor).SupportsExtension(extension);
+			return (bool) interceptor.Invoke("supportsExtension$", "supportsExtension(QGraphicsItem::Extension) const", typeof(bool), typeof(QGraphicsItem.Extension), extension);
 		}
-		[SmokeMethod("setExtension", "(QGraphicsItem::Extension, const QVariant&)", "$#")]
+		[SmokeMethod("setExtension(QGraphicsItem::Extension, const QVariant&)")]
 		protected override void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
-			((QGraphicsRectItem) interceptor).SetExtension(extension,variant);
+			interceptor.Invoke("setExtension$#", "setExtension(QGraphicsItem::Extension, const QVariant&)", typeof(void), typeof(QGraphicsItem.Extension), extension, typeof(QVariant), variant);
 		}
-		[SmokeMethod("extension", "(const QVariant&) const", "#")]
+		[SmokeMethod("extension(const QVariant&) const")]
 		protected override QVariant extension(QVariant variant) {
-			return ((QGraphicsRectItem) interceptor).extension(variant);
+			return (QVariant) interceptor.Invoke("extension#", "extension(const QVariant&) const", typeof(QVariant), typeof(QVariant), variant);
 		}
 		~QGraphicsRectItem() {
-			DisposeQGraphicsRectItem();
+			interceptor.Invoke("~QGraphicsRectItem", "~QGraphicsRectItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGraphicsRectItem();
-		}
-		[SmokeMethod("~QGraphicsRectItem", "()", "")]
-		private void DisposeQGraphicsRectItem() {
-			((QGraphicsRectItem) interceptor).DisposeQGraphicsRectItem();
+			interceptor.Invoke("~QGraphicsRectItem", "~QGraphicsRectItem()", typeof(void));
 		}
 	}
 }

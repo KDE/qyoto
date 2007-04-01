@@ -1,3 +1,29 @@
+2007-04-01  Richard Dale  <rdale@foton.es>
+
+	* Replace transparent proxies to invoke methods, with a direct call to 
+	  'SmokeInvocation.Invoke()' to invoke a method in the Smoke library.
+	  Performance is now 20x better than two weeks ago for a test consisting
+	  of 5 goes at the cannon game with force 40. The new method to call a 
+	  method in the Smoke library looks like this:
+
+		public object Invoke(	string mungedName, 
+								string signature, 
+								Type returnType, 
+								params object[] args );
+
+	  Where the 'params' object[] argument is a list of arg type/arg value pairs.
+
+	  An example of calling it:
+
+		public QPoint(int xpos, int ypos) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke(	"QPoint$$", 
+								"QPoint(int, int)", 
+								typeof(void), 
+								typeof(int), xpos, typeof(int), ypos);
+		}
+
+
 2007-03-27  Richard Dale  <rdale@foton.es>
 
 	* When a reference in the weak reference map is found to be dead, remove

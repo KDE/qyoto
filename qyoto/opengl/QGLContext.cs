@@ -4,196 +4,146 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QGLContext")]
-	public class QGLContext : MarshalByRefObject, IDisposable {
-		protected QGLContext interceptor = null;
+	public class QGLContext : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGLContext(Type dummy) {}
-		[SmokeClass("QGLContext")]
-		interface IQGLContextProxy {
-			[SmokeMethod("currentCtx", "()", "")]
-			QGLContext currentCtx();
-			[SmokeMethod("setTextureCacheLimit", "(int)", "$")]
-			void SetTextureCacheLimit(int size);
-			[SmokeMethod("textureCacheLimit", "()", "")]
-			int TextureCacheLimit();
-			[SmokeMethod("currentContext", "()", "")]
-			QGLContext CurrentContext();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLContext), this);
-			interceptor = (QGLContext) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGLContext), "QGLContext", this);
 		}
-		private static IQGLContextProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGLContext() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLContextProxy), null);
-			staticInterceptor = (IQGLContextProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGLContext), "QGLContext", null);
 		}
 		public static QGLContext CurrentCtx() {
-			return staticInterceptor.currentCtx();
+			return (QGLContext) staticInterceptor.Invoke("currentCtx", "currentCtx()", typeof(QGLContext));
 		}
 		// void* getProcAddress(const QString& arg1); >>>> NOT CONVERTED
 		public QGLContext(QGLFormat format, IQPaintDevice device) : this((Type) null) {
 			CreateProxy();
-			NewQGLContext(format,device);
-		}
-		[SmokeMethod("QGLContext", "(const QGLFormat&, QPaintDevice*)", "##")]
-		private void NewQGLContext(QGLFormat format, IQPaintDevice device) {
-			((QGLContext) interceptor).NewQGLContext(format,device);
+			interceptor.Invoke("QGLContext##", "QGLContext(const QGLFormat&, QPaintDevice*)", typeof(void), typeof(QGLFormat), format, typeof(IQPaintDevice), device);
 		}
 		public QGLContext(QGLFormat format) : this((Type) null) {
 			CreateProxy();
-			NewQGLContext(format);
+			interceptor.Invoke("QGLContext#", "QGLContext(const QGLFormat&)", typeof(void), typeof(QGLFormat), format);
 		}
-		[SmokeMethod("QGLContext", "(const QGLFormat&)", "#")]
-		private void NewQGLContext(QGLFormat format) {
-			((QGLContext) interceptor).NewQGLContext(format);
-		}
-		[SmokeMethod("create", "(const QGLContext*)", "#")]
+		[SmokeMethod("create(const QGLContext*)")]
 		public virtual bool Create(QGLContext shareContext) {
-			return ((QGLContext) interceptor).Create(shareContext);
+			return (bool) interceptor.Invoke("create#", "create(const QGLContext*)", typeof(bool), typeof(QGLContext), shareContext);
 		}
-		[SmokeMethod("create", "()", "")]
+		[SmokeMethod("create()")]
 		public virtual bool Create() {
-			return ((QGLContext) interceptor).Create();
+			return (bool) interceptor.Invoke("create", "create()", typeof(bool));
 		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QGLContext) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("isSharing", "() const", "")]
 		public bool IsSharing() {
-			return ((QGLContext) interceptor).IsSharing();
+			return (bool) interceptor.Invoke("isSharing", "isSharing() const", typeof(bool));
 		}
-		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			((QGLContext) interceptor).Reset();
+			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QGLFormat Format() {
-			return ((QGLContext) interceptor).Format();
+			return (QGLFormat) interceptor.Invoke("format", "format() const", typeof(QGLFormat));
 		}
-		[SmokeMethod("requestedFormat", "() const", "")]
 		public QGLFormat RequestedFormat() {
-			return ((QGLContext) interceptor).RequestedFormat();
+			return (QGLFormat) interceptor.Invoke("requestedFormat", "requestedFormat() const", typeof(QGLFormat));
 		}
-		[SmokeMethod("setFormat", "(const QGLFormat&)", "#")]
 		public void SetFormat(QGLFormat format) {
-			((QGLContext) interceptor).SetFormat(format);
+			interceptor.Invoke("setFormat#", "setFormat(const QGLFormat&)", typeof(void), typeof(QGLFormat), format);
 		}
-		[SmokeMethod("makeCurrent", "()", "")]
+		[SmokeMethod("makeCurrent()")]
 		public virtual void MakeCurrent() {
-			((QGLContext) interceptor).MakeCurrent();
+			interceptor.Invoke("makeCurrent", "makeCurrent()", typeof(void));
 		}
-		[SmokeMethod("doneCurrent", "()", "")]
+		[SmokeMethod("doneCurrent()")]
 		public virtual void DoneCurrent() {
-			((QGLContext) interceptor).DoneCurrent();
+			interceptor.Invoke("doneCurrent", "doneCurrent()", typeof(void));
 		}
-		[SmokeMethod("swapBuffers", "() const", "")]
+		[SmokeMethod("swapBuffers() const")]
 		public virtual void SwapBuffers() {
-			((QGLContext) interceptor).SwapBuffers();
+			interceptor.Invoke("swapBuffers", "swapBuffers() const", typeof(void));
 		}
-		[SmokeMethod("bindTexture", "(const QImage&, GLenum, GLint)", "#$$")]
 		public uint BindTexture(QImage image, int target, int format) {
-			return ((QGLContext) interceptor).BindTexture(image,target,format);
+			return (uint) interceptor.Invoke("bindTexture#$$", "bindTexture(const QImage&, GLenum, GLint)", typeof(uint), typeof(QImage), image, typeof(int), target, typeof(int), format);
 		}
-		[SmokeMethod("bindTexture", "(const QImage&, GLenum)", "#$")]
 		public uint BindTexture(QImage image, int target) {
-			return ((QGLContext) interceptor).BindTexture(image,target);
+			return (uint) interceptor.Invoke("bindTexture#$", "bindTexture(const QImage&, GLenum)", typeof(uint), typeof(QImage), image, typeof(int), target);
 		}
-		[SmokeMethod("bindTexture", "(const QImage&)", "#")]
 		public uint BindTexture(QImage image) {
-			return ((QGLContext) interceptor).BindTexture(image);
+			return (uint) interceptor.Invoke("bindTexture#", "bindTexture(const QImage&)", typeof(uint), typeof(QImage), image);
 		}
-		[SmokeMethod("bindTexture", "(const QPixmap&, GLenum, GLint)", "#$$")]
 		public uint BindTexture(QPixmap pixmap, int target, int format) {
-			return ((QGLContext) interceptor).BindTexture(pixmap,target,format);
+			return (uint) interceptor.Invoke("bindTexture#$$", "bindTexture(const QPixmap&, GLenum, GLint)", typeof(uint), typeof(QPixmap), pixmap, typeof(int), target, typeof(int), format);
 		}
-		[SmokeMethod("bindTexture", "(const QPixmap&, GLenum)", "#$")]
 		public uint BindTexture(QPixmap pixmap, int target) {
-			return ((QGLContext) interceptor).BindTexture(pixmap,target);
+			return (uint) interceptor.Invoke("bindTexture#$", "bindTexture(const QPixmap&, GLenum)", typeof(uint), typeof(QPixmap), pixmap, typeof(int), target);
 		}
-		[SmokeMethod("bindTexture", "(const QPixmap&)", "#")]
 		public uint BindTexture(QPixmap pixmap) {
-			return ((QGLContext) interceptor).BindTexture(pixmap);
+			return (uint) interceptor.Invoke("bindTexture#", "bindTexture(const QPixmap&)", typeof(uint), typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("bindTexture", "(const QString&)", "$")]
 		public uint BindTexture(string fileName) {
-			return ((QGLContext) interceptor).BindTexture(fileName);
+			return (uint) interceptor.Invoke("bindTexture$", "bindTexture(const QString&)", typeof(uint), typeof(string), fileName);
 		}
-		[SmokeMethod("deleteTexture", "(GLuint)", "$")]
 		public void DeleteTexture(uint tx_id) {
-			((QGLContext) interceptor).DeleteTexture(tx_id);
+			interceptor.Invoke("deleteTexture$", "deleteTexture(GLuint)", typeof(void), typeof(uint), tx_id);
 		}
-		[SmokeMethod("device", "() const", "")]
 		public IQPaintDevice Device() {
-			return ((QGLContext) interceptor).Device();
+			return (IQPaintDevice) interceptor.Invoke("device", "device() const", typeof(IQPaintDevice));
 		}
-		[SmokeMethod("overlayTransparentColor", "() const", "")]
 		public QColor OverlayTransparentColor() {
-			return ((QGLContext) interceptor).OverlayTransparentColor();
+			return (QColor) interceptor.Invoke("overlayTransparentColor", "overlayTransparentColor() const", typeof(QColor));
 		}
-		[SmokeMethod("chooseContext", "(const QGLContext*)", "#")]
+		[SmokeMethod("chooseContext(const QGLContext*)")]
 		protected virtual bool ChooseContext(QGLContext shareContext) {
-			return ((QGLContext) interceptor).ChooseContext(shareContext);
+			return (bool) interceptor.Invoke("chooseContext#", "chooseContext(const QGLContext*)", typeof(bool), typeof(QGLContext), shareContext);
 		}
-		[SmokeMethod("chooseContext", "()", "")]
+		[SmokeMethod("chooseContext()")]
 		protected virtual bool ChooseContext() {
-			return ((QGLContext) interceptor).ChooseContext();
+			return (bool) interceptor.Invoke("chooseContext", "chooseContext()", typeof(bool));
 		}
-		[SmokeMethod("deviceIsPixmap", "() const", "")]
 		protected bool DeviceIsPixmap() {
-			return ((QGLContext) interceptor).DeviceIsPixmap();
+			return (bool) interceptor.Invoke("deviceIsPixmap", "deviceIsPixmap() const", typeof(bool));
 		}
-		[SmokeMethod("windowCreated", "() const", "")]
 		protected bool WindowCreated() {
-			return ((QGLContext) interceptor).WindowCreated();
+			return (bool) interceptor.Invoke("windowCreated", "windowCreated() const", typeof(bool));
 		}
-		[SmokeMethod("setWindowCreated", "(bool)", "$")]
 		protected void SetWindowCreated(bool on) {
-			((QGLContext) interceptor).SetWindowCreated(on);
+			interceptor.Invoke("setWindowCreated$", "setWindowCreated(bool)", typeof(void), typeof(bool), on);
 		}
-		[SmokeMethod("initialized", "() const", "")]
 		protected bool Initialized() {
-			return ((QGLContext) interceptor).Initialized();
+			return (bool) interceptor.Invoke("initialized", "initialized() const", typeof(bool));
 		}
-		[SmokeMethod("setInitialized", "(bool)", "$")]
 		protected void SetInitialized(bool on) {
-			((QGLContext) interceptor).SetInitialized(on);
+			interceptor.Invoke("setInitialized$", "setInitialized(bool)", typeof(void), typeof(bool), on);
 		}
-		[SmokeMethod("generateFontDisplayLists", "(const QFont&, int)", "#$")]
 		protected void GenerateFontDisplayLists(QFont fnt, int listBase) {
-			((QGLContext) interceptor).GenerateFontDisplayLists(fnt,listBase);
+			interceptor.Invoke("generateFontDisplayLists#$", "generateFontDisplayLists(const QFont&, int)", typeof(void), typeof(QFont), fnt, typeof(int), listBase);
 		}
-		[SmokeMethod("colorIndex", "(const QColor&) const", "#")]
 		protected uint ColorIndex(QColor c) {
-			return ((QGLContext) interceptor).ColorIndex(c);
+			return (uint) interceptor.Invoke("colorIndex#", "colorIndex(const QColor&) const", typeof(uint), typeof(QColor), c);
 		}
-		[SmokeMethod("setValid", "(bool)", "$")]
 		protected void SetValid(bool valid) {
-			((QGLContext) interceptor).SetValid(valid);
+			interceptor.Invoke("setValid$", "setValid(bool)", typeof(void), typeof(bool), valid);
 		}
-		[SmokeMethod("setDevice", "(QPaintDevice*)", "#")]
 		protected void SetDevice(IQPaintDevice pDev) {
-			((QGLContext) interceptor).SetDevice(pDev);
+			interceptor.Invoke("setDevice#", "setDevice(QPaintDevice*)", typeof(void), typeof(IQPaintDevice), pDev);
 		}
 		~QGLContext() {
-			DisposeQGLContext();
+			interceptor.Invoke("~QGLContext", "~QGLContext()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGLContext();
-		}
-		[SmokeMethod("~QGLContext", "()", "")]
-		private void DisposeQGLContext() {
-			((QGLContext) interceptor).DisposeQGLContext();
+			interceptor.Invoke("~QGLContext", "~QGLContext()", typeof(void));
 		}
 		public static void SetTextureCacheLimit(int size) {
-			staticInterceptor.SetTextureCacheLimit(size);
+			staticInterceptor.Invoke("setTextureCacheLimit$", "setTextureCacheLimit(int)", typeof(void), typeof(int), size);
 		}
 		public static int TextureCacheLimit() {
-			return staticInterceptor.TextureCacheLimit();
+			return (int) staticInterceptor.Invoke("textureCacheLimit", "textureCacheLimit()", typeof(int));
 		}
 		public static QGLContext CurrentContext() {
-			return staticInterceptor.CurrentContext();
+			return (QGLContext) staticInterceptor.Invoke("currentContext", "currentContext()", typeof(QGLContext));
 		}
 	}
 }

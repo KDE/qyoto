@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QDialog")]
 	public class QDialog : QWidget, IDisposable {
  		protected QDialog(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDialog")]
-		interface IQDialogProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDialog), this);
-			interceptor = (QDialog) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QDialog), "QDialog", this);
 		}
-		private static IQDialogProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QDialog() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDialogProxy), null);
-			staticInterceptor = (IQDialogProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QDialog), "QDialog", null);
 		}
 		public enum DialogCode {
 			Rejected = 0,
@@ -29,154 +20,124 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
-			[SmokeMethod("isSizeGripEnabled", "()", "")]
-			get { return ((QDialog) interceptor).SizeGripEnabled; }
-			[SmokeMethod("setSizeGripEnabled", "(bool)", "$")]
-			set { ((QDialog) interceptor).SizeGripEnabled = value; }
+			get { return (bool) interceptor.Invoke("isSizeGripEnabled", "isSizeGripEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setSizeGripEnabled$", "setSizeGripEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
-			[SmokeMethod("isModal", "()", "")]
-			get { return ((QDialog) interceptor).Modal; }
-			[SmokeMethod("setModal", "(bool)", "$")]
-			set { ((QDialog) interceptor).Modal = value; }
+			get { return (bool) interceptor.Invoke("isModal", "isModal()", typeof(bool)); }
+			set { interceptor.Invoke("setModal$", "setModal(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
-			NewQDialog(parent,f);
-		}
-		[SmokeMethod("QDialog", "(QWidget*, Qt::WindowFlags)", "#$")]
-		private void NewQDialog(QWidget parent, int f) {
-			((QDialog) interceptor).NewQDialog(parent,f);
+			interceptor.Invoke("QDialog#$", "QDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
 		}
 		public QDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQDialog(parent);
-		}
-		[SmokeMethod("QDialog", "(QWidget*)", "#")]
-		private void NewQDialog(QWidget parent) {
-			((QDialog) interceptor).NewQDialog(parent);
+			interceptor.Invoke("QDialog#", "QDialog(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QDialog() : this((Type) null) {
 			CreateProxy();
-			NewQDialog();
+			interceptor.Invoke("QDialog", "QDialog()", typeof(void));
 		}
-		[SmokeMethod("QDialog", "()", "")]
-		private void NewQDialog() {
-			((QDialog) interceptor).NewQDialog();
-		}
-		[SmokeMethod("result", "() const", "")]
 		public int Result() {
-			return ((QDialog) interceptor).Result();
+			return (int) interceptor.Invoke("result", "result() const", typeof(int));
 		}
-		[SmokeMethod("setVisible", "(bool)", "$")]
+		[SmokeMethod("setVisible(bool)")]
 		public override void SetVisible(bool visible) {
-			((QDialog) interceptor).SetVisible(visible);
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
 		}
-		[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
 		public void SetOrientation(Qt.Orientation orientation) {
-			((QDialog) interceptor).SetOrientation(orientation);
+			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
 		}
-		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ((QDialog) interceptor).Orientation();
+			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
-		[SmokeMethod("setExtension", "(QWidget*)", "#")]
 		public void SetExtension(QWidget extension) {
-			((QDialog) interceptor).SetExtension(extension);
+			interceptor.Invoke("setExtension#", "setExtension(QWidget*)", typeof(void), typeof(QWidget), extension);
 		}
-		[SmokeMethod("extension", "() const", "")]
 		public QWidget Extension() {
-			return ((QDialog) interceptor).Extension();
+			return (QWidget) interceptor.Invoke("extension", "extension() const", typeof(QWidget));
 		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QDialog) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("minimumSizeHint", "() const", "")]
+		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
-			return ((QDialog) interceptor).MinimumSizeHint();
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("isSizeGripEnabled", "() const", "")]
 		public bool IsSizeGripEnabled() {
-			return ((QDialog) interceptor).IsSizeGripEnabled();
+			return (bool) interceptor.Invoke("isSizeGripEnabled", "isSizeGripEnabled() const", typeof(bool));
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		public new virtual bool Event(QEvent arg1) {
-			return ((QDialog) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("setResult", "(int)", "$")]
 		public void SetResult(int r) {
-			((QDialog) interceptor).SetResult(r);
+			interceptor.Invoke("setResult$", "setResult(int)", typeof(void), typeof(int), r);
 		}
 		[Q_SLOT("int exec()")]
-		[SmokeMethod("exec", "()", "")]
 		public int Exec() {
-			return ((QDialog) interceptor).Exec();
+			return (int) interceptor.Invoke("exec", "exec()", typeof(int));
 		}
 		[Q_SLOT("void done(int)")]
-		[SmokeMethod("done", "(int)", "$")]
+		[SmokeMethod("done(int)")]
 		public virtual void Done(int arg1) {
-			((QDialog) interceptor).Done(arg1);
+			interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), arg1);
 		}
 		[Q_SLOT("void accept()")]
-		[SmokeMethod("accept", "()", "")]
+		[SmokeMethod("accept()")]
 		public virtual void Accept() {
-			((QDialog) interceptor).Accept();
+			interceptor.Invoke("accept", "accept()", typeof(void));
 		}
 		[Q_SLOT("void reject()")]
-		[SmokeMethod("reject", "()", "")]
+		[SmokeMethod("reject()")]
 		public virtual void Reject() {
-			((QDialog) interceptor).Reject();
+			interceptor.Invoke("reject", "reject()", typeof(void));
 		}
 		[Q_SLOT("void showExtension(bool)")]
-		[SmokeMethod("showExtension", "(bool)", "$")]
 		public void ShowExtension(bool arg1) {
-			((QDialog) interceptor).ShowExtension(arg1);
+			interceptor.Invoke("showExtension$", "showExtension(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QDialog) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected override void CloseEvent(QCloseEvent arg1) {
-			((QDialog) interceptor).CloseEvent(arg1);
+			interceptor.Invoke("closeEvent#", "closeEvent(QCloseEvent*)", typeof(void), typeof(QCloseEvent), arg1);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			((QDialog) interceptor).ShowEvent(arg1);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QDialog) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			((QDialog) interceptor).ContextMenuEvent(arg1);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
 		}
-		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ((QDialog) interceptor).EventFilter(arg1,arg2);
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[SmokeMethod("adjustPosition", "(QWidget*)", "#")]
 		protected void AdjustPosition(QWidget arg1) {
-			((QDialog) interceptor).AdjustPosition(arg1);
+			interceptor.Invoke("adjustPosition#", "adjustPosition(QWidget*)", typeof(void), typeof(QWidget), arg1);
 		}
 		~QDialog() {
-			DisposeQDialog();
+			interceptor.Invoke("~QDialog", "~QDialog()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQDialog();
-		}
-		[SmokeMethod("~QDialog", "()", "")]
-		private void DisposeQDialog() {
-			((QDialog) interceptor).DisposeQDialog();
+			interceptor.Invoke("~QDialog", "~QDialog()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDialogSignals Emit {
 			get { return (IQDialogSignals) Q_EMIT; }

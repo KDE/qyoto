@@ -3,7 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
-	public partial class QModelIndex : MarshalByRefObject, IDisposable {
+	public partial class QModelIndex : Object, IDisposable {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr ModelIndexInternalPointer(IntPtr obj);
 		

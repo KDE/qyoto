@@ -7,64 +7,41 @@ namespace Qyoto {
 	[SmokeClass("QRegExpValidator")]
 	public class QRegExpValidator : QValidator, IDisposable {
  		protected QRegExpValidator(Type dummy) : base((Type) null) {}
-		[SmokeClass("QRegExpValidator")]
-		interface IQRegExpValidatorProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExpValidator), this);
-			interceptor = (QRegExpValidator) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QRegExpValidator), "QRegExpValidator", this);
 		}
-		private static IQRegExpValidatorProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QRegExpValidator() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRegExpValidatorProxy), null);
-			staticInterceptor = (IQRegExpValidatorProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QRegExpValidator), "QRegExpValidator", null);
 		}
 		[Q_PROPERTY("QRegExp", "regExp")]
 		public QRegExp RegExp {
-			[SmokeMethod("regExp", "()", "")]
-			get { return ((QRegExpValidator) interceptor).RegExp; }
-			[SmokeMethod("setRegExp", "(QRegExp)", "#")]
-			set { ((QRegExpValidator) interceptor).RegExp = value; }
+			get { return (QRegExp) interceptor.Invoke("regExp", "regExp()", typeof(QRegExp)); }
+			set { interceptor.Invoke("setRegExp#", "setRegExp(QRegExp)", typeof(void), typeof(QRegExp), value); }
 		}
 		public QRegExpValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQRegExpValidator(parent);
-		}
-		[SmokeMethod("QRegExpValidator", "(QObject*)", "#")]
-		private void NewQRegExpValidator(QObject parent) {
-			((QRegExpValidator) interceptor).NewQRegExpValidator(parent);
+			interceptor.Invoke("QRegExpValidator#", "QRegExpValidator(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQRegExpValidator(rx,parent);
+			interceptor.Invoke("QRegExpValidator##", "QRegExpValidator(const QRegExp&, QObject*)", typeof(void), typeof(QRegExp), rx, typeof(QObject), parent);
 		}
-		[SmokeMethod("QRegExpValidator", "(const QRegExp&, QObject*)", "##")]
-		private void NewQRegExpValidator(QRegExp rx, QObject parent) {
-			((QRegExpValidator) interceptor).NewQRegExpValidator(rx,parent);
-		}
-		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		public override int Validate(StringBuilder input, out int pos) {
-			return ((QRegExpValidator) interceptor).Validate(input,out pos);
+		[SmokeMethod("validate(QString&, int&) const")]
+		public override int Validate(StringBuilder input, int pos) {
+			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), input, typeof(int), pos);
 		}
 		~QRegExpValidator() {
-			DisposeQRegExpValidator();
+			interceptor.Invoke("~QRegExpValidator", "~QRegExpValidator()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQRegExpValidator();
-		}
-		[SmokeMethod("~QRegExpValidator", "()", "")]
-		private void DisposeQRegExpValidator() {
-			((QRegExpValidator) interceptor).DisposeQRegExpValidator();
+			interceptor.Invoke("~QRegExpValidator", "~QRegExpValidator()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQRegExpValidatorSignals Emit {
 			get { return (IQRegExpValidatorSignals) Q_EMIT; }

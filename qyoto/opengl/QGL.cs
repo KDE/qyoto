@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	public class QGL : MarshalByRefObject {
-		protected QGL interceptor = null;
+	public class QGL : Object {
+		protected SmokeInvocation interceptor = null;
 		public enum FormatOption {
 			DoubleBuffer = 0x0001,
 			DepthBuffer = 0x0002,

@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QAbstractEventDispatcher")]
 	public abstract class QAbstractEventDispatcher : QObject {
  		protected QAbstractEventDispatcher(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAbstractEventDispatcher")]
-		interface IQAbstractEventDispatcherProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractEventDispatcher), this);
-			interceptor = (QAbstractEventDispatcher) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractEventDispatcher), "QAbstractEventDispatcher", this);
 		}
-		private static IQAbstractEventDispatcherProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractEventDispatcher() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractEventDispatcherProxy), null);
-			staticInterceptor = (IQAbstractEventDispatcherProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractEventDispatcher), "QAbstractEventDispatcher", null);
 		}
 		// QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* arg1); >>>> NOT CONVERTED
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
@@ -29,57 +20,48 @@ namespace Qyoto {
 		// QAbstractEventDispatcher* instance(QThread* arg1); >>>> NOT CONVERTED
 		public QAbstractEventDispatcher(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractEventDispatcher(parent);
-		}
-		[SmokeMethod("QAbstractEventDispatcher", "(QObject*)", "#")]
-		private void NewQAbstractEventDispatcher(QObject parent) {
-			((QAbstractEventDispatcher) interceptor).NewQAbstractEventDispatcher(parent);
+			interceptor.Invoke("QAbstractEventDispatcher#", "QAbstractEventDispatcher(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QAbstractEventDispatcher() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractEventDispatcher();
+			interceptor.Invoke("QAbstractEventDispatcher", "QAbstractEventDispatcher()", typeof(void));
 		}
-		[SmokeMethod("QAbstractEventDispatcher", "()", "")]
-		private void NewQAbstractEventDispatcher() {
-			((QAbstractEventDispatcher) interceptor).NewQAbstractEventDispatcher();
-		}
-		[SmokeMethod("processEvents", "(QEventLoop::ProcessEventsFlags)", "$")]
+		[SmokeMethod("processEvents(QEventLoop::ProcessEventsFlags)")]
 		public abstract bool ProcessEvents(uint flags);
-		[SmokeMethod("hasPendingEvents", "()", "")]
+		[SmokeMethod("hasPendingEvents()")]
 		public abstract bool HasPendingEvents();
-		[SmokeMethod("registerSocketNotifier", "(QSocketNotifier*)", "#")]
+		[SmokeMethod("registerSocketNotifier(QSocketNotifier*)")]
 		public abstract void RegisterSocketNotifier(QSocketNotifier notifier);
-		[SmokeMethod("unregisterSocketNotifier", "(QSocketNotifier*)", "#")]
+		[SmokeMethod("unregisterSocketNotifier(QSocketNotifier*)")]
 		public abstract void UnregisterSocketNotifier(QSocketNotifier notifier);
-		[SmokeMethod("registerTimer", "(int, QObject*)", "$#")]
 		public int RegisterTimer(int interval, QObject arg2) {
-			return ((QAbstractEventDispatcher) interceptor).RegisterTimer(interval,arg2);
+			return (int) interceptor.Invoke("registerTimer$#", "registerTimer(int, QObject*)", typeof(int), typeof(int), interval, typeof(QObject), arg2);
 		}
-		[SmokeMethod("registerTimer", "(int, int, QObject*)", "$$#")]
+		[SmokeMethod("registerTimer(int, int, QObject*)")]
 		public abstract void RegisterTimer(int timerId, int interval, QObject arg3);
-		[SmokeMethod("unregisterTimer", "(int)", "$")]
+		[SmokeMethod("unregisterTimer(int)")]
 		public abstract bool UnregisterTimer(int timerId);
-		[SmokeMethod("unregisterTimers", "(QObject*)", "#")]
+		[SmokeMethod("unregisterTimers(QObject*)")]
 		public abstract bool UnregisterTimers(QObject arg1);
-		[SmokeMethod("wakeUp", "()", "")]
+		[SmokeMethod("wakeUp()")]
 		public abstract void WakeUp();
-		[SmokeMethod("interrupt", "()", "")]
+		[SmokeMethod("interrupt()")]
 		public abstract void Interrupt();
-		[SmokeMethod("flush", "()", "")]
+		[SmokeMethod("flush()")]
 		public abstract void Flush();
-		[SmokeMethod("startingUp", "()", "")]
+		[SmokeMethod("startingUp()")]
 		public virtual void StartingUp() {
-			((QAbstractEventDispatcher) interceptor).StartingUp();
+			interceptor.Invoke("startingUp", "startingUp()", typeof(void));
 		}
-		[SmokeMethod("closingDown", "()", "")]
+		[SmokeMethod("closingDown()")]
 		public virtual void ClosingDown() {
-			((QAbstractEventDispatcher) interceptor).ClosingDown();
+			interceptor.Invoke("closingDown", "closingDown()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractEventDispatcherSignals Emit {
 			get { return (IQAbstractEventDispatcherSignals) Q_EMIT; }

@@ -15,12 +15,9 @@ namespace Qyoto {
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQApplication(args.Length, args);
-		}
-
-		[SmokeMethod("QApplication", "(int&, char**)", "$?")]
-		private void NewQApplication(int argc, string[] argv) {
-			((QApplication) interceptor).NewQApplication(argc, argv);
+			interceptor.Invoke(	"QApplication$?", 
+								"QApplication(int&, char**)", 
+								typeof(void), typeof(int), args.Length, typeof(string[]), args );
 		}
 
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
@@ -32,12 +29,9 @@ namespace Qyoto {
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQApplication(args.Length, args, GUIenabled);
-		}
-		
-		[SmokeMethod("QApplication", "(int&, char**, bool)", "$?$")]
-		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
-			((QApplication) interceptor).NewQApplication(argc, argv,GUIenabled);
+			interceptor.Invoke(	"QApplication$?", 
+								"QApplication(int&, char**)", 
+								typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(bool), GUIenabled );
 		}
     
 		public QApplication(string[] argv, QApplication.TypeOf arg3) : this((Type) null) {
@@ -49,11 +43,9 @@ namespace Qyoto {
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQApplication(args.Length, args, arg3);
+			interceptor.Invoke(	"QApplication$?", 
+								"QApplication(int&, char**)", 
+								typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(QApplication.TypeOf), arg3 );
 		}   
-		[SmokeMethod("QApplication", "(int&, char**, QApplication::Type)", "$?$")]
-		private void NewQApplication(int argc, string[] argv, QApplication.TypeOf arg3) {
-			((QApplication) interceptor).NewQApplication(argc, argv,arg3);
-		}
 	}
 }

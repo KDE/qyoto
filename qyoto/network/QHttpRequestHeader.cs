@@ -7,102 +7,68 @@ namespace Qyoto {
 	public class QHttpRequestHeader : QHttpHeader, IDisposable {
  		protected QHttpRequestHeader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpRequestHeader), this);
-			interceptor = (QHttpRequestHeader) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QHttpRequestHeader), "QHttpRequestHeader", this);
 		}
 		public QHttpRequestHeader() : this((Type) null) {
 			CreateProxy();
-			NewQHttpRequestHeader();
-		}
-		[SmokeMethod("QHttpRequestHeader", "()", "")]
-		private void NewQHttpRequestHeader() {
-			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader();
+			interceptor.Invoke("QHttpRequestHeader", "QHttpRequestHeader()", typeof(void));
 		}
 		public QHttpRequestHeader(string method, string path, int majorVer, int minorVer) : this((Type) null) {
 			CreateProxy();
-			NewQHttpRequestHeader(method,path,majorVer,minorVer);
-		}
-		[SmokeMethod("QHttpRequestHeader", "(const QString&, const QString&, int, int)", "$$$$")]
-		private void NewQHttpRequestHeader(string method, string path, int majorVer, int minorVer) {
-			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(method,path,majorVer,minorVer);
+			interceptor.Invoke("QHttpRequestHeader$$$$", "QHttpRequestHeader(const QString&, const QString&, int, int)", typeof(void), typeof(string), method, typeof(string), path, typeof(int), majorVer, typeof(int), minorVer);
 		}
 		public QHttpRequestHeader(string method, string path, int majorVer) : this((Type) null) {
 			CreateProxy();
-			NewQHttpRequestHeader(method,path,majorVer);
-		}
-		[SmokeMethod("QHttpRequestHeader", "(const QString&, const QString&, int)", "$$$")]
-		private void NewQHttpRequestHeader(string method, string path, int majorVer) {
-			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(method,path,majorVer);
+			interceptor.Invoke("QHttpRequestHeader$$$", "QHttpRequestHeader(const QString&, const QString&, int)", typeof(void), typeof(string), method, typeof(string), path, typeof(int), majorVer);
 		}
 		public QHttpRequestHeader(string method, string path) : this((Type) null) {
 			CreateProxy();
-			NewQHttpRequestHeader(method,path);
-		}
-		[SmokeMethod("QHttpRequestHeader", "(const QString&, const QString&)", "$$")]
-		private void NewQHttpRequestHeader(string method, string path) {
-			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(method,path);
+			interceptor.Invoke("QHttpRequestHeader$$", "QHttpRequestHeader(const QString&, const QString&)", typeof(void), typeof(string), method, typeof(string), path);
 		}
 		public QHttpRequestHeader(QHttpRequestHeader header) : this((Type) null) {
 			CreateProxy();
-			NewQHttpRequestHeader(header);
-		}
-		[SmokeMethod("QHttpRequestHeader", "(const QHttpRequestHeader&)", "#")]
-		private void NewQHttpRequestHeader(QHttpRequestHeader header) {
-			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(header);
+			interceptor.Invoke("QHttpRequestHeader#", "QHttpRequestHeader(const QHttpRequestHeader&)", typeof(void), typeof(QHttpRequestHeader), header);
 		}
 		public QHttpRequestHeader(string str) : this((Type) null) {
 			CreateProxy();
-			NewQHttpRequestHeader(str);
+			interceptor.Invoke("QHttpRequestHeader$", "QHttpRequestHeader(const QString&)", typeof(void), typeof(string), str);
 		}
-		[SmokeMethod("QHttpRequestHeader", "(const QString&)", "$")]
-		private void NewQHttpRequestHeader(string str) {
-			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(str);
-		}
-		[SmokeMethod("setRequest", "(const QString&, const QString&, int, int)", "$$$$")]
 		public void SetRequest(string method, string path, int majorVer, int minorVer) {
-			((QHttpRequestHeader) interceptor).SetRequest(method,path,majorVer,minorVer);
+			interceptor.Invoke("setRequest$$$$", "setRequest(const QString&, const QString&, int, int)", typeof(void), typeof(string), method, typeof(string), path, typeof(int), majorVer, typeof(int), minorVer);
 		}
-		[SmokeMethod("setRequest", "(const QString&, const QString&, int)", "$$$")]
 		public void SetRequest(string method, string path, int majorVer) {
-			((QHttpRequestHeader) interceptor).SetRequest(method,path,majorVer);
+			interceptor.Invoke("setRequest$$$", "setRequest(const QString&, const QString&, int)", typeof(void), typeof(string), method, typeof(string), path, typeof(int), majorVer);
 		}
-		[SmokeMethod("setRequest", "(const QString&, const QString&)", "$$")]
 		public void SetRequest(string method, string path) {
-			((QHttpRequestHeader) interceptor).SetRequest(method,path);
+			interceptor.Invoke("setRequest$$", "setRequest(const QString&, const QString&)", typeof(void), typeof(string), method, typeof(string), path);
 		}
-		[SmokeMethod("method", "() const", "")]
 		public string Method() {
-			return ((QHttpRequestHeader) interceptor).Method();
+			return (string) interceptor.Invoke("method", "method() const", typeof(string));
 		}
-		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ((QHttpRequestHeader) interceptor).Path();
+			return (string) interceptor.Invoke("path", "path() const", typeof(string));
 		}
-		[SmokeMethod("majorVersion", "() const", "")]
+		[SmokeMethod("majorVersion() const")]
 		public override int MajorVersion() {
-			return ((QHttpRequestHeader) interceptor).MajorVersion();
+			return (int) interceptor.Invoke("majorVersion", "majorVersion() const", typeof(int));
 		}
-		[SmokeMethod("minorVersion", "() const", "")]
+		[SmokeMethod("minorVersion() const")]
 		public override int MinorVersion() {
-			return ((QHttpRequestHeader) interceptor).MinorVersion();
+			return (int) interceptor.Invoke("minorVersion", "minorVersion() const", typeof(int));
 		}
-		[SmokeMethod("toString", "() const", "")]
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
-			return ((QHttpRequestHeader) interceptor).ToString();
+			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		[SmokeMethod("parseLine", "(const QString&, int)", "$$")]
+		[SmokeMethod("parseLine(const QString&, int)")]
 		protected override bool ParseLine(string line, int number) {
-			return ((QHttpRequestHeader) interceptor).ParseLine(line,number);
+			return (bool) interceptor.Invoke("parseLine$$", "parseLine(const QString&, int)", typeof(bool), typeof(string), line, typeof(int), number);
 		}
 		~QHttpRequestHeader() {
-			DisposeQHttpRequestHeader();
+			interceptor.Invoke("~QHttpRequestHeader", "~QHttpRequestHeader()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQHttpRequestHeader();
-		}
-		[SmokeMethod("~QHttpRequestHeader", "()", "")]
-		private void DisposeQHttpRequestHeader() {
-			((QHttpRequestHeader) interceptor).DisposeQHttpRequestHeader();
+			interceptor.Invoke("~QHttpRequestHeader", "~QHttpRequestHeader()", typeof(void));
 		}
 	}
 }

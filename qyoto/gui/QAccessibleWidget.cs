@@ -8,104 +8,84 @@ namespace Qyoto {
 	public class QAccessibleWidget : QAccessibleObject {
  		protected QAccessibleWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleWidget), this);
-			interceptor = (QAccessibleWidget) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAccessibleWidget), "QAccessibleWidget", this);
 		}
 		public QAccessibleWidget(QWidget o, QAccessible.Role r, string name) : this((Type) null) {
 			CreateProxy();
-			NewQAccessibleWidget(o,r,name);
-		}
-		[SmokeMethod("QAccessibleWidget", "(QWidget*, QAccessible::Role, const QString&)", "#$$")]
-		private void NewQAccessibleWidget(QWidget o, QAccessible.Role r, string name) {
-			((QAccessibleWidget) interceptor).NewQAccessibleWidget(o,r,name);
+			interceptor.Invoke("QAccessibleWidget#$$", "QAccessibleWidget(QWidget*, QAccessible::Role, const QString&)", typeof(void), typeof(QWidget), o, typeof(QAccessible.Role), r, typeof(string), name);
 		}
 		public QAccessibleWidget(QWidget o, QAccessible.Role r) : this((Type) null) {
 			CreateProxy();
-			NewQAccessibleWidget(o,r);
-		}
-		[SmokeMethod("QAccessibleWidget", "(QWidget*, QAccessible::Role)", "#$")]
-		private void NewQAccessibleWidget(QWidget o, QAccessible.Role r) {
-			((QAccessibleWidget) interceptor).NewQAccessibleWidget(o,r);
+			interceptor.Invoke("QAccessibleWidget#$", "QAccessibleWidget(QWidget*, QAccessible::Role)", typeof(void), typeof(QWidget), o, typeof(QAccessible.Role), r);
 		}
 		public QAccessibleWidget(QWidget o) : this((Type) null) {
 			CreateProxy();
-			NewQAccessibleWidget(o);
+			interceptor.Invoke("QAccessibleWidget#", "QAccessibleWidget(QWidget*)", typeof(void), typeof(QWidget), o);
 		}
-		[SmokeMethod("QAccessibleWidget", "(QWidget*)", "#")]
-		private void NewQAccessibleWidget(QWidget o) {
-			((QAccessibleWidget) interceptor).NewQAccessibleWidget(o);
-		}
-		[SmokeMethod("childCount", "() const", "")]
+		[SmokeMethod("childCount() const")]
 		public override int ChildCount() {
-			return ((QAccessibleWidget) interceptor).ChildCount();
+			return (int) interceptor.Invoke("childCount", "childCount() const", typeof(int));
 		}
-		[SmokeMethod("indexOfChild", "(const QAccessibleInterface*) const", "#")]
+		[SmokeMethod("indexOfChild(const QAccessibleInterface*) const")]
 		public override int IndexOfChild(QAccessibleInterface child) {
-			return ((QAccessibleWidget) interceptor).IndexOfChild(child);
+			return (int) interceptor.Invoke("indexOfChild#", "indexOfChild(const QAccessibleInterface*) const", typeof(int), typeof(QAccessibleInterface), child);
 		}
-		[SmokeMethod("relationTo", "(int, const QAccessibleInterface*, int) const", "$#$")]
+		[SmokeMethod("relationTo(int, const QAccessibleInterface*, int) const")]
 		public override int RelationTo(int child, QAccessibleInterface other, int otherChild) {
-			return ((QAccessibleWidget) interceptor).RelationTo(child,other,otherChild);
+			return (int) interceptor.Invoke("relationTo$#$", "relationTo(int, const QAccessibleInterface*, int) const", typeof(int), typeof(int), child, typeof(QAccessibleInterface), other, typeof(int), otherChild);
 		}
-		[SmokeMethod("childAt", "(int, int) const", "$$")]
+		[SmokeMethod("childAt(int, int) const")]
 		public override int ChildAt(int x, int y) {
-			return ((QAccessibleWidget) interceptor).ChildAt(x,y);
+			return (int) interceptor.Invoke("childAt$$", "childAt(int, int) const", typeof(int), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("rect", "(int) const", "$")]
+		[SmokeMethod("rect(int) const")]
 		public override QRect Rect(int child) {
-			return ((QAccessibleWidget) interceptor).Rect(child);
+			return (QRect) interceptor.Invoke("rect$", "rect(int) const", typeof(QRect), typeof(int), child);
 		}
-		[SmokeMethod("navigate", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const", "$$?")]
+		[SmokeMethod("navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
 		public override int Navigate(QAccessible.RelationFlag rel, int entry, QAccessibleInterface target) {
-			return ((QAccessibleWidget) interceptor).Navigate(rel,entry,target);
+			return (int) interceptor.Invoke("navigate$$?", "navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const", typeof(int), typeof(QAccessible.RelationFlag), rel, typeof(int), entry, typeof(QAccessibleInterface), target);
 		}
-		[SmokeMethod("text", "(QAccessible::Text, int) const", "$$")]
+		[SmokeMethod("text(QAccessible::Text, int) const")]
 		public override string Text(QAccessible.Text t, int child) {
-			return ((QAccessibleWidget) interceptor).Text(t,child);
+			return (string) interceptor.Invoke("text$$", "text(QAccessible::Text, int) const", typeof(string), typeof(QAccessible.Text), t, typeof(int), child);
 		}
-		[SmokeMethod("role", "(int) const", "$")]
+		[SmokeMethod("role(int) const")]
 		public override QAccessible.Role Role(int child) {
-			return ((QAccessibleWidget) interceptor).Role(child);
+			return (QAccessible.Role) interceptor.Invoke("role$", "role(int) const", typeof(QAccessible.Role), typeof(int), child);
 		}
-		[SmokeMethod("state", "(int) const", "$")]
+		[SmokeMethod("state(int) const")]
 		public override int State(int child) {
-			return ((QAccessibleWidget) interceptor).State(child);
+			return (int) interceptor.Invoke("state$", "state(int) const", typeof(int), typeof(int), child);
 		}
-		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
+		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {
-			return ((QAccessibleWidget) interceptor).ActionText(action,t,child);
+			return (string) interceptor.Invoke("actionText$$$", "actionText(int, QAccessible::Text, int) const", typeof(string), typeof(int), action, typeof(QAccessible.Text), t, typeof(int), child);
 		}
-		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
+		[SmokeMethod("doAction(int, int, const QVariantList&)")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return ((QAccessibleWidget) interceptor).DoAction(action,child,arg3);
+			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QVariantList&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
 		}
-		[SmokeMethod("widget", "() const", "")]
 		protected QWidget Widget() {
-			return ((QAccessibleWidget) interceptor).Widget();
+			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
 		}
-		[SmokeMethod("parentObject", "() const", "")]
 		protected QObject ParentObject() {
-			return ((QAccessibleWidget) interceptor).ParentObject();
+			return (QObject) interceptor.Invoke("parentObject", "parentObject() const", typeof(QObject));
 		}
-		[SmokeMethod("addControllingSignal", "(const QString&)", "$")]
 		protected void AddControllingSignal(string signal) {
-			((QAccessibleWidget) interceptor).AddControllingSignal(signal);
+			interceptor.Invoke("addControllingSignal$", "addControllingSignal(const QString&)", typeof(void), typeof(string), signal);
 		}
-		[SmokeMethod("setValue", "(const QString&)", "$")]
 		protected void SetValue(string value) {
-			((QAccessibleWidget) interceptor).SetValue(value);
+			interceptor.Invoke("setValue$", "setValue(const QString&)", typeof(void), typeof(string), value);
 		}
-		[SmokeMethod("setDescription", "(const QString&)", "$")]
 		protected void SetDescription(string desc) {
-			((QAccessibleWidget) interceptor).SetDescription(desc);
+			interceptor.Invoke("setDescription$", "setDescription(const QString&)", typeof(void), typeof(string), desc);
 		}
-		[SmokeMethod("setHelp", "(const QString&)", "$")]
 		protected void SetHelp(string help) {
-			((QAccessibleWidget) interceptor).SetHelp(help);
+			interceptor.Invoke("setHelp$", "setHelp(const QString&)", typeof(void), typeof(string), help);
 		}
-		[SmokeMethod("setAccelerator", "(const QString&)", "$")]
 		protected void SetAccelerator(string accel) {
-			((QAccessibleWidget) interceptor).SetAccelerator(accel);
+			interceptor.Invoke("setAccelerator$", "setAccelerator(const QString&)", typeof(void), typeof(string), accel);
 		}
 	}
 }

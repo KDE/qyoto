@@ -7,66 +7,45 @@ namespace Qyoto {
 	public abstract class QAbstractGraphicsShapeItem : QGraphicsItem, IDisposable {
  		protected QAbstractGraphicsShapeItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), this);
-			interceptor = (QAbstractGraphicsShapeItem) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), "QAbstractGraphicsShapeItem", this);
 		}
 		public QAbstractGraphicsShapeItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractGraphicsShapeItem(parent,scene);
-		}
-		[SmokeMethod("QAbstractGraphicsShapeItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
-		private void NewQAbstractGraphicsShapeItem(QGraphicsItem parent, QGraphicsScene scene) {
-			((QAbstractGraphicsShapeItem) interceptor).NewQAbstractGraphicsShapeItem(parent,scene);
+			interceptor.Invoke("QAbstractGraphicsShapeItem##", "QAbstractGraphicsShapeItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
 		}
 		public QAbstractGraphicsShapeItem(QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
-			NewQAbstractGraphicsShapeItem(parent);
-		}
-		[SmokeMethod("QAbstractGraphicsShapeItem", "(QGraphicsItem*)", "#")]
-		private void NewQAbstractGraphicsShapeItem(QGraphicsItem parent) {
-			((QAbstractGraphicsShapeItem) interceptor).NewQAbstractGraphicsShapeItem(parent);
+			interceptor.Invoke("QAbstractGraphicsShapeItem#", "QAbstractGraphicsShapeItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);
 		}
 		public QAbstractGraphicsShapeItem() : this((Type) null) {
 			CreateProxy();
-			NewQAbstractGraphicsShapeItem();
+			interceptor.Invoke("QAbstractGraphicsShapeItem", "QAbstractGraphicsShapeItem()", typeof(void));
 		}
-		[SmokeMethod("QAbstractGraphicsShapeItem", "()", "")]
-		private void NewQAbstractGraphicsShapeItem() {
-			((QAbstractGraphicsShapeItem) interceptor).NewQAbstractGraphicsShapeItem();
-		}
-		[SmokeMethod("pen", "() const", "")]
 		public QPen Pen() {
-			return ((QAbstractGraphicsShapeItem) interceptor).Pen();
+			return (QPen) interceptor.Invoke("pen", "pen() const", typeof(QPen));
 		}
-		[SmokeMethod("setPen", "(const QPen&)", "#")]
 		public void SetPen(QPen pen) {
-			((QAbstractGraphicsShapeItem) interceptor).SetPen(pen);
+			interceptor.Invoke("setPen#", "setPen(const QPen&)", typeof(void), typeof(QPen), pen);
 		}
-		[SmokeMethod("brush", "() const", "")]
 		public QBrush Brush() {
-			return ((QAbstractGraphicsShapeItem) interceptor).Brush();
+			return (QBrush) interceptor.Invoke("brush", "brush() const", typeof(QBrush));
 		}
-		[SmokeMethod("setBrush", "(const QBrush&)", "#")]
 		public void SetBrush(QBrush brush) {
-			((QAbstractGraphicsShapeItem) interceptor).SetBrush(brush);
+			interceptor.Invoke("setBrush#", "setBrush(const QBrush&)", typeof(void), typeof(QBrush), brush);
 		}
-		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
+		[SmokeMethod("isObscuredBy(const QGraphicsItem*) const")]
 		public override bool IsObscuredBy(QGraphicsItem item) {
-			return ((QAbstractGraphicsShapeItem) interceptor).IsObscuredBy(item);
+			return (bool) interceptor.Invoke("isObscuredBy#", "isObscuredBy(const QGraphicsItem*) const", typeof(bool), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("opaqueArea", "() const", "")]
+		[SmokeMethod("opaqueArea() const")]
 		public override QPainterPath OpaqueArea() {
-			return ((QAbstractGraphicsShapeItem) interceptor).OpaqueArea();
+			return (QPainterPath) interceptor.Invoke("opaqueArea", "opaqueArea() const", typeof(QPainterPath));
 		}
 		~QAbstractGraphicsShapeItem() {
-			DisposeQAbstractGraphicsShapeItem();
+			interceptor.Invoke("~QAbstractGraphicsShapeItem", "~QAbstractGraphicsShapeItem()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQAbstractGraphicsShapeItem();
-		}
-		[SmokeMethod("~QAbstractGraphicsShapeItem", "()", "")]
-		private void DisposeQAbstractGraphicsShapeItem() {
-			((QAbstractGraphicsShapeItem) interceptor).DisposeQAbstractGraphicsShapeItem();
+			interceptor.Invoke("~QAbstractGraphicsShapeItem", "~QAbstractGraphicsShapeItem()", typeof(void));
 		}
 	}
 }

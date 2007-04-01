@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QInputContext")]
 	public abstract class QInputContext : QObject {
  		protected QInputContext(Type dummy) : base((Type) null) {}
-		[SmokeClass("QInputContext")]
-		interface IQInputContextProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContext), this);
-			interceptor = (QInputContext) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QInputContext), "QInputContext", this);
 		}
-		private static IQInputContextProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QInputContext() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputContextProxy), null);
-			staticInterceptor = (IQInputContextProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QInputContext), "QInputContext", null);
 		}
 		public enum StandardFormat {
 			PreeditFormat = 0,
@@ -29,73 +20,62 @@ namespace Qyoto {
 		}
 		public QInputContext(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQInputContext(parent);
-		}
-		[SmokeMethod("QInputContext", "(QObject*)", "#")]
-		private void NewQInputContext(QObject parent) {
-			((QInputContext) interceptor).NewQInputContext(parent);
+			interceptor.Invoke("QInputContext#", "QInputContext(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QInputContext() : this((Type) null) {
 			CreateProxy();
-			NewQInputContext();
+			interceptor.Invoke("QInputContext", "QInputContext()", typeof(void));
 		}
-		[SmokeMethod("QInputContext", "()", "")]
-		private void NewQInputContext() {
-			((QInputContext) interceptor).NewQInputContext();
-		}
-		[SmokeMethod("identifierName", "()", "")]
+		[SmokeMethod("identifierName()")]
 		public abstract string IdentifierName();
-		[SmokeMethod("language", "()", "")]
+		[SmokeMethod("language()")]
 		public abstract string Language();
-		[SmokeMethod("reset", "()", "")]
+		[SmokeMethod("reset()")]
 		public abstract void Reset();
-		[SmokeMethod("update", "()", "")]
+		[SmokeMethod("update()")]
 		public virtual void Update() {
-			((QInputContext) interceptor).Update();
+			interceptor.Invoke("update", "update()", typeof(void));
 		}
-		[SmokeMethod("mouseHandler", "(int, QMouseEvent*)", "$#")]
+		[SmokeMethod("mouseHandler(int, QMouseEvent*)")]
 		public virtual void MouseHandler(int x, QMouseEvent arg2) {
-			((QInputContext) interceptor).MouseHandler(x,arg2);
+			interceptor.Invoke("mouseHandler$#", "mouseHandler(int, QMouseEvent*)", typeof(void), typeof(int), x, typeof(QMouseEvent), arg2);
 		}
-		[SmokeMethod("font", "() const", "")]
+		[SmokeMethod("font() const")]
 		public virtual QFont Font() {
-			return ((QInputContext) interceptor).Font();
+			return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
 		}
-		[SmokeMethod("isComposing", "() const", "")]
+		[SmokeMethod("isComposing() const")]
 		public abstract bool IsComposing();
-		[SmokeMethod("focusWidget", "() const", "")]
 		public QWidget FocusWidget() {
-			return ((QInputContext) interceptor).FocusWidget();
+			return (QWidget) interceptor.Invoke("focusWidget", "focusWidget() const", typeof(QWidget));
 		}
-		[SmokeMethod("setFocusWidget", "(QWidget*)", "#")]
+		[SmokeMethod("setFocusWidget(QWidget*)")]
 		public virtual void SetFocusWidget(QWidget w) {
-			((QInputContext) interceptor).SetFocusWidget(w);
+			interceptor.Invoke("setFocusWidget#", "setFocusWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("widgetDestroyed", "(QWidget*)", "#")]
+		[SmokeMethod("widgetDestroyed(QWidget*)")]
 		public virtual void WidgetDestroyed(QWidget w) {
-			((QInputContext) interceptor).WidgetDestroyed(w);
+			interceptor.Invoke("widgetDestroyed#", "widgetDestroyed(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		[SmokeMethod("actions", "()", "")]
+		[SmokeMethod("actions()")]
 		public virtual List<QAction> Actions() {
-			return ((QInputContext) interceptor).Actions();
+			return (List<QAction>) interceptor.Invoke("actions", "actions()", typeof(List<QAction>));
 		}
-		[SmokeMethod("filterEvent", "(const QEvent*)", "#")]
+		[SmokeMethod("filterEvent(const QEvent*)")]
 		public virtual bool FilterEvent(QEvent arg1) {
-			return ((QInputContext) interceptor).FilterEvent(arg1);
+			return (bool) interceptor.Invoke("filterEvent#", "filterEvent(const QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("sendEvent", "(const QInputMethodEvent&)", "#")]
 		public void SendEvent(QInputMethodEvent arg1) {
-			((QInputContext) interceptor).SendEvent(arg1);
+			interceptor.Invoke("sendEvent#", "sendEvent(const QInputMethodEvent&)", typeof(void), typeof(QInputMethodEvent), arg1);
 		}
-		[SmokeMethod("standardFormat", "(QInputContext::StandardFormat) const", "$")]
 		public QTextFormat standardFormat(QInputContext.StandardFormat s) {
-			return ((QInputContext) interceptor).standardFormat(s);
+			return (QTextFormat) interceptor.Invoke("standardFormat$", "standardFormat(QInputContext::StandardFormat) const", typeof(QTextFormat), typeof(QInputContext.StandardFormat), s);
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQInputContextSignals Emit {
 			get { return (IQInputContextSignals) Q_EMIT; }

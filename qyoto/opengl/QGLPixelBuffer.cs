@@ -6,156 +6,105 @@ namespace Qyoto {
 	[SmokeClass("QGLPixelBuffer")]
 	public class QGLPixelBuffer : QPaintDevice, IDisposable {
  		protected QGLPixelBuffer(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGLPixelBuffer")]
-		interface IQGLPixelBufferProxy {
-			[SmokeMethod("hasOpenGLPbuffers", "()", "")]
-			bool HasOpenGLPbuffers();
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLPixelBuffer), this);
-			interceptor = (QGLPixelBuffer) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGLPixelBuffer), "QGLPixelBuffer", this);
 		}
-		private static IQGLPixelBufferProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGLPixelBuffer() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLPixelBufferProxy), null);
-			staticInterceptor = (IQGLPixelBufferProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGLPixelBuffer), "QGLPixelBuffer", null);
 		}
 		public QGLPixelBuffer(QSize size, QGLFormat format, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
-			NewQGLPixelBuffer(size,format,shareWidget);
-		}
-		[SmokeMethod("QGLPixelBuffer", "(const QSize&, const QGLFormat&, QGLWidget*)", "###")]
-		private void NewQGLPixelBuffer(QSize size, QGLFormat format, QGLWidget shareWidget) {
-			((QGLPixelBuffer) interceptor).NewQGLPixelBuffer(size,format,shareWidget);
+			interceptor.Invoke("QGLPixelBuffer###", "QGLPixelBuffer(const QSize&, const QGLFormat&, QGLWidget*)", typeof(void), typeof(QSize), size, typeof(QGLFormat), format, typeof(QGLWidget), shareWidget);
 		}
 		public QGLPixelBuffer(QSize size, QGLFormat format) : this((Type) null) {
 			CreateProxy();
-			NewQGLPixelBuffer(size,format);
-		}
-		[SmokeMethod("QGLPixelBuffer", "(const QSize&, const QGLFormat&)", "##")]
-		private void NewQGLPixelBuffer(QSize size, QGLFormat format) {
-			((QGLPixelBuffer) interceptor).NewQGLPixelBuffer(size,format);
+			interceptor.Invoke("QGLPixelBuffer##", "QGLPixelBuffer(const QSize&, const QGLFormat&)", typeof(void), typeof(QSize), size, typeof(QGLFormat), format);
 		}
 		public QGLPixelBuffer(QSize size) : this((Type) null) {
 			CreateProxy();
-			NewQGLPixelBuffer(size);
-		}
-		[SmokeMethod("QGLPixelBuffer", "(const QSize&)", "#")]
-		private void NewQGLPixelBuffer(QSize size) {
-			((QGLPixelBuffer) interceptor).NewQGLPixelBuffer(size);
+			interceptor.Invoke("QGLPixelBuffer#", "QGLPixelBuffer(const QSize&)", typeof(void), typeof(QSize), size);
 		}
 		public QGLPixelBuffer(int width, int height, QGLFormat format, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
-			NewQGLPixelBuffer(width,height,format,shareWidget);
-		}
-		[SmokeMethod("QGLPixelBuffer", "(int, int, const QGLFormat&, QGLWidget*)", "$$##")]
-		private void NewQGLPixelBuffer(int width, int height, QGLFormat format, QGLWidget shareWidget) {
-			((QGLPixelBuffer) interceptor).NewQGLPixelBuffer(width,height,format,shareWidget);
+			interceptor.Invoke("QGLPixelBuffer$$##", "QGLPixelBuffer(int, int, const QGLFormat&, QGLWidget*)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFormat), format, typeof(QGLWidget), shareWidget);
 		}
 		public QGLPixelBuffer(int width, int height, QGLFormat format) : this((Type) null) {
 			CreateProxy();
-			NewQGLPixelBuffer(width,height,format);
-		}
-		[SmokeMethod("QGLPixelBuffer", "(int, int, const QGLFormat&)", "$$#")]
-		private void NewQGLPixelBuffer(int width, int height, QGLFormat format) {
-			((QGLPixelBuffer) interceptor).NewQGLPixelBuffer(width,height,format);
+			interceptor.Invoke("QGLPixelBuffer$$#", "QGLPixelBuffer(int, int, const QGLFormat&)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFormat), format);
 		}
 		public QGLPixelBuffer(int width, int height) : this((Type) null) {
 			CreateProxy();
-			NewQGLPixelBuffer(width,height);
+			interceptor.Invoke("QGLPixelBuffer$$", "QGLPixelBuffer(int, int)", typeof(void), typeof(int), width, typeof(int), height);
 		}
-		[SmokeMethod("QGLPixelBuffer", "(int, int)", "$$")]
-		private void NewQGLPixelBuffer(int width, int height) {
-			((QGLPixelBuffer) interceptor).NewQGLPixelBuffer(width,height);
-		}
-		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ((QGLPixelBuffer) interceptor).IsValid();
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		[SmokeMethod("makeCurrent", "()", "")]
 		public bool MakeCurrent() {
-			return ((QGLPixelBuffer) interceptor).MakeCurrent();
+			return (bool) interceptor.Invoke("makeCurrent", "makeCurrent()", typeof(bool));
 		}
-		[SmokeMethod("doneCurrent", "()", "")]
 		public bool DoneCurrent() {
-			return ((QGLPixelBuffer) interceptor).DoneCurrent();
+			return (bool) interceptor.Invoke("doneCurrent", "doneCurrent()", typeof(bool));
 		}
-		[SmokeMethod("generateDynamicTexture", "() const", "")]
 		public uint GenerateDynamicTexture() {
-			return ((QGLPixelBuffer) interceptor).GenerateDynamicTexture();
+			return (uint) interceptor.Invoke("generateDynamicTexture", "generateDynamicTexture() const", typeof(uint));
 		}
-		[SmokeMethod("bindToDynamicTexture", "(GLuint)", "$")]
 		public bool BindToDynamicTexture(uint texture) {
-			return ((QGLPixelBuffer) interceptor).BindToDynamicTexture(texture);
+			return (bool) interceptor.Invoke("bindToDynamicTexture$", "bindToDynamicTexture(GLuint)", typeof(bool), typeof(uint), texture);
 		}
-		[SmokeMethod("releaseFromDynamicTexture", "()", "")]
 		public void ReleaseFromDynamicTexture() {
-			((QGLPixelBuffer) interceptor).ReleaseFromDynamicTexture();
+			interceptor.Invoke("releaseFromDynamicTexture", "releaseFromDynamicTexture()", typeof(void));
 		}
-		[SmokeMethod("updateDynamicTexture", "(GLuint) const", "$")]
 		public void UpdateDynamicTexture(uint texture_id) {
-			((QGLPixelBuffer) interceptor).UpdateDynamicTexture(texture_id);
+			interceptor.Invoke("updateDynamicTexture$", "updateDynamicTexture(GLuint) const", typeof(void), typeof(uint), texture_id);
 		}
-		[SmokeMethod("bindTexture", "(const QImage&, GLenum)", "#$")]
 		public uint BindTexture(QImage image, int target) {
-			return ((QGLPixelBuffer) interceptor).BindTexture(image,target);
+			return (uint) interceptor.Invoke("bindTexture#$", "bindTexture(const QImage&, GLenum)", typeof(uint), typeof(QImage), image, typeof(int), target);
 		}
-		[SmokeMethod("bindTexture", "(const QImage&)", "#")]
 		public uint BindTexture(QImage image) {
-			return ((QGLPixelBuffer) interceptor).BindTexture(image);
+			return (uint) interceptor.Invoke("bindTexture#", "bindTexture(const QImage&)", typeof(uint), typeof(QImage), image);
 		}
-		[SmokeMethod("bindTexture", "(const QPixmap&, GLenum)", "#$")]
 		public uint BindTexture(QPixmap pixmap, int target) {
-			return ((QGLPixelBuffer) interceptor).BindTexture(pixmap,target);
+			return (uint) interceptor.Invoke("bindTexture#$", "bindTexture(const QPixmap&, GLenum)", typeof(uint), typeof(QPixmap), pixmap, typeof(int), target);
 		}
-		[SmokeMethod("bindTexture", "(const QPixmap&)", "#")]
 		public uint BindTexture(QPixmap pixmap) {
-			return ((QGLPixelBuffer) interceptor).BindTexture(pixmap);
+			return (uint) interceptor.Invoke("bindTexture#", "bindTexture(const QPixmap&)", typeof(uint), typeof(QPixmap), pixmap);
 		}
-		[SmokeMethod("bindTexture", "(const QString&)", "$")]
 		public uint BindTexture(string fileName) {
-			return ((QGLPixelBuffer) interceptor).BindTexture(fileName);
+			return (uint) interceptor.Invoke("bindTexture$", "bindTexture(const QString&)", typeof(uint), typeof(string), fileName);
 		}
-		[SmokeMethod("deleteTexture", "(GLuint)", "$")]
 		public void DeleteTexture(uint texture_id) {
-			((QGLPixelBuffer) interceptor).DeleteTexture(texture_id);
+			interceptor.Invoke("deleteTexture$", "deleteTexture(GLuint)", typeof(void), typeof(uint), texture_id);
 		}
-		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ((QGLPixelBuffer) interceptor).Size();
+			return (QSize) interceptor.Invoke("size", "size() const", typeof(QSize));
 		}
-		[SmokeMethod("toImage", "() const", "")]
 		public QImage ToImage() {
-			return ((QGLPixelBuffer) interceptor).ToImage();
+			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
 		}
-		[SmokeMethod("paintEngine", "() const", "")]
+		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {
-			return ((QGLPixelBuffer) interceptor).PaintEngine();
+			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
-		[SmokeMethod("format", "() const", "")]
 		public QGLFormat Format() {
-			return ((QGLPixelBuffer) interceptor).Format();
+			return (QGLFormat) interceptor.Invoke("format", "format() const", typeof(QGLFormat));
 		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice metric) {
-			return ((QGLPixelBuffer) interceptor).Metric(metric);
+			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), metric);
 		}
-		[SmokeMethod("devType", "() const", "")]
+		[SmokeMethod("devType() const")]
 		protected new virtual int DevType() {
-			return ((QGLPixelBuffer) interceptor).DevType();
+			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
 		~QGLPixelBuffer() {
-			DisposeQGLPixelBuffer();
+			interceptor.Invoke("~QGLPixelBuffer", "~QGLPixelBuffer()", typeof(void));
 		}
 		public void Dispose() {
-			DisposeQGLPixelBuffer();
-		}
-		[SmokeMethod("~QGLPixelBuffer", "()", "")]
-		private void DisposeQGLPixelBuffer() {
-			((QGLPixelBuffer) interceptor).DisposeQGLPixelBuffer();
+			interceptor.Invoke("~QGLPixelBuffer", "~QGLPixelBuffer()", typeof(void));
 		}
 		public static bool HasOpenGLPbuffers() {
-			return staticInterceptor.HasOpenGLPbuffers();
+			return (bool) staticInterceptor.Invoke("hasOpenGLPbuffers", "hasOpenGLPbuffers()", typeof(bool));
 		}
 	}
 }

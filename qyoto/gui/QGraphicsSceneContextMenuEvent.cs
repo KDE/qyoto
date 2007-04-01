@@ -7,8 +7,7 @@ namespace Qyoto {
 	public class QGraphicsSceneContextMenuEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneContextMenuEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneContextMenuEvent), this);
-			interceptor = (QGraphicsSceneContextMenuEvent) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneContextMenuEvent), "QGraphicsSceneContextMenuEvent", this);
 		}
 		public enum Reason {
 			Mouse = 0,
@@ -17,69 +16,47 @@ namespace Qyoto {
 		}
 		public QGraphicsSceneContextMenuEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneContextMenuEvent(type);
-		}
-		[SmokeMethod("QGraphicsSceneContextMenuEvent", "(QEvent::Type)", "$")]
-		private void NewQGraphicsSceneContextMenuEvent(QEvent.TypeOf type) {
-			((QGraphicsSceneContextMenuEvent) interceptor).NewQGraphicsSceneContextMenuEvent(type);
+			interceptor.Invoke("QGraphicsSceneContextMenuEvent$", "QGraphicsSceneContextMenuEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
 		public QGraphicsSceneContextMenuEvent() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsSceneContextMenuEvent();
+			interceptor.Invoke("QGraphicsSceneContextMenuEvent", "QGraphicsSceneContextMenuEvent()", typeof(void));
 		}
-		[SmokeMethod("QGraphicsSceneContextMenuEvent", "()", "")]
-		private void NewQGraphicsSceneContextMenuEvent() {
-			((QGraphicsSceneContextMenuEvent) interceptor).NewQGraphicsSceneContextMenuEvent();
-		}
-		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ((QGraphicsSceneContextMenuEvent) interceptor).Pos();
+			return (QPointF) interceptor.Invoke("pos", "pos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			((QGraphicsSceneContextMenuEvent) interceptor).SetPos(pos);
+			interceptor.Invoke("setPos#", "setPos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ((QGraphicsSceneContextMenuEvent) interceptor).ScenePos();
+			return (QPointF) interceptor.Invoke("scenePos", "scenePos() const", typeof(QPointF));
 		}
-		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			((QGraphicsSceneContextMenuEvent) interceptor).SetScenePos(pos);
+			interceptor.Invoke("setScenePos#", "setScenePos(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ((QGraphicsSceneContextMenuEvent) interceptor).ScreenPos();
+			return (QPoint) interceptor.Invoke("screenPos", "screenPos() const", typeof(QPoint));
 		}
-		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			((QGraphicsSceneContextMenuEvent) interceptor).SetScreenPos(pos);
+			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ((QGraphicsSceneContextMenuEvent) interceptor).Modifiers();
+			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
 		}
-		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
-			((QGraphicsSceneContextMenuEvent) interceptor).SetModifiers(modifiers);
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
 		}
-		[SmokeMethod("reason", "() const", "")]
 		public QGraphicsSceneContextMenuEvent.Reason reason() {
-			return ((QGraphicsSceneContextMenuEvent) interceptor).reason();
+			return (QGraphicsSceneContextMenuEvent.Reason) interceptor.Invoke("reason", "reason() const", typeof(QGraphicsSceneContextMenuEvent.Reason));
 		}
-		[SmokeMethod("setReason", "(QGraphicsSceneContextMenuEvent::Reason)", "$")]
 		public void SetReason(QGraphicsSceneContextMenuEvent.Reason reason) {
-			((QGraphicsSceneContextMenuEvent) interceptor).SetReason(reason);
+			interceptor.Invoke("setReason$", "setReason(QGraphicsSceneContextMenuEvent::Reason)", typeof(void), typeof(QGraphicsSceneContextMenuEvent.Reason), reason);
 		}
 		~QGraphicsSceneContextMenuEvent() {
-			DisposeQGraphicsSceneContextMenuEvent();
+			interceptor.Invoke("~QGraphicsSceneContextMenuEvent", "~QGraphicsSceneContextMenuEvent()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsSceneContextMenuEvent();
-		}
-		[SmokeMethod("~QGraphicsSceneContextMenuEvent", "()", "")]
-		private void DisposeQGraphicsSceneContextMenuEvent() {
-			((QGraphicsSceneContextMenuEvent) interceptor).DisposeQGraphicsSceneContextMenuEvent();
+			interceptor.Invoke("~QGraphicsSceneContextMenuEvent", "~QGraphicsSceneContextMenuEvent()", typeof(void));
 		}
 	}
 }

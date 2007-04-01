@@ -6,47 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QFile")]
 	public class QFile : QIODevice, IDisposable {
  		protected QFile(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFile")]
-		interface IQFileProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-			[SmokeMethod("encodeName", "(const QString&)", "$")]
-			QByteArray EncodeName(string fileName);
-			[SmokeMethod("decodeName", "(const QByteArray&)", "#")]
-			string DecodeName(QByteArray localFileName);
-			[SmokeMethod("decodeName", "(const char*)", "$")]
-			string DecodeName(string localFileName);
-			[SmokeMethod("exists", "(const QString&)", "$")]
-			bool Exists(string fileName);
-			[SmokeMethod("readLink", "(const QString&)", "$")]
-			string ReadLink(string fileName);
-			[SmokeMethod("symLinkTarget", "(const QString&)", "$")]
-			string SymLinkTarget(string fileName);
-			[SmokeMethod("remove", "(const QString&)", "$")]
-			bool Remove(string fileName);
-			[SmokeMethod("rename", "(const QString&, const QString&)", "$$")]
-			bool Rename(string oldName, string newName);
-			[SmokeMethod("link", "(const QString&, const QString&)", "$$")]
-			bool Link(string oldname, string newName);
-			[SmokeMethod("copy", "(const QString&, const QString&)", "$$")]
-			bool Copy(string fileName, string newName);
-			[SmokeMethod("resize", "(const QString&, qint64)", "$$")]
-			bool Resize(string filename, long sz);
-			[SmokeMethod("permissions", "(const QString&)", "$")]
-			int Permissions(string filename);
-			[SmokeMethod("setPermissions", "(const QString&, Permissions)", "$$")]
-			bool SetPermissions(string filename, int permissionSpec);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFile), this);
-			interceptor = (QFile) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QFile), "QFile", this);
 		}
-		private static IQFileProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QFile() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFileProxy), null);
-			staticInterceptor = (IQFileProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QFile), "QFile", null);
 		}
 		public enum FileError {
 			NoError = 0,
@@ -81,198 +46,162 @@ namespace Qyoto {
 		}
 		public QFile() : this((Type) null) {
 			CreateProxy();
-			NewQFile();
-		}
-		[SmokeMethod("QFile", "()", "")]
-		private void NewQFile() {
-			((QFile) interceptor).NewQFile();
+			interceptor.Invoke("QFile", "QFile()", typeof(void));
 		}
 		public QFile(string name) : this((Type) null) {
 			CreateProxy();
-			NewQFile(name);
-		}
-		[SmokeMethod("QFile", "(const QString&)", "$")]
-		private void NewQFile(string name) {
-			((QFile) interceptor).NewQFile(name);
+			interceptor.Invoke("QFile$", "QFile(const QString&)", typeof(void), typeof(string), name);
 		}
 		public QFile(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQFile(parent);
-		}
-		[SmokeMethod("QFile", "(QObject*)", "#")]
-		private void NewQFile(QObject parent) {
-			((QFile) interceptor).NewQFile(parent);
+			interceptor.Invoke("QFile#", "QFile(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QFile(string name, QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQFile(name,parent);
+			interceptor.Invoke("QFile$#", "QFile(const QString&, QObject*)", typeof(void), typeof(string), name, typeof(QObject), parent);
 		}
-		[SmokeMethod("QFile", "(const QString&, QObject*)", "$#")]
-		private void NewQFile(string name, QObject parent) {
-			((QFile) interceptor).NewQFile(name,parent);
-		}
-		[SmokeMethod("error", "() const", "")]
 		public QFile.FileError Error() {
-			return ((QFile) interceptor).Error();
+			return (QFile.FileError) interceptor.Invoke("error", "error() const", typeof(QFile.FileError));
 		}
-		[SmokeMethod("unsetError", "()", "")]
 		public void UnsetError() {
-			((QFile) interceptor).UnsetError();
+			interceptor.Invoke("unsetError", "unsetError()", typeof(void));
 		}
-		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ((QFile) interceptor).FileName();
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
-		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string name) {
-			((QFile) interceptor).SetFileName(name);
+			interceptor.Invoke("setFileName$", "setFileName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[SmokeMethod("exists", "() const", "")]
 		public bool Exists() {
-			return ((QFile) interceptor).Exists();
+			return (bool) interceptor.Invoke("exists", "exists() const", typeof(bool));
 		}
-		[SmokeMethod("readLink", "() const", "")]
 		public string ReadLink() {
-			return ((QFile) interceptor).ReadLink();
+			return (string) interceptor.Invoke("readLink", "readLink() const", typeof(string));
 		}
-		[SmokeMethod("symLinkTarget", "() const", "")]
 		public string SymLinkTarget() {
-			return ((QFile) interceptor).SymLinkTarget();
+			return (string) interceptor.Invoke("symLinkTarget", "symLinkTarget() const", typeof(string));
 		}
-		[SmokeMethod("remove", "()", "")]
 		public bool Remove() {
-			return ((QFile) interceptor).Remove();
+			return (bool) interceptor.Invoke("remove", "remove()", typeof(bool));
 		}
-		[SmokeMethod("rename", "(const QString&)", "$")]
 		public bool Rename(string newName) {
-			return ((QFile) interceptor).Rename(newName);
+			return (bool) interceptor.Invoke("rename$", "rename(const QString&)", typeof(bool), typeof(string), newName);
 		}
-		[SmokeMethod("link", "(const QString&)", "$")]
 		public bool Link(string newName) {
-			return ((QFile) interceptor).Link(newName);
+			return (bool) interceptor.Invoke("link$", "link(const QString&)", typeof(bool), typeof(string), newName);
 		}
-		[SmokeMethod("copy", "(const QString&)", "$")]
 		public bool Copy(string newName) {
-			return ((QFile) interceptor).Copy(newName);
+			return (bool) interceptor.Invoke("copy$", "copy(const QString&)", typeof(bool), typeof(string), newName);
 		}
-		[SmokeMethod("isSequential", "() const", "")]
+		[SmokeMethod("isSequential() const")]
 		public override bool IsSequential() {
-			return ((QFile) interceptor).IsSequential();
+			return (bool) interceptor.Invoke("isSequential", "isSequential() const", typeof(bool));
 		}
-		[SmokeMethod("open", "(OpenMode)", "$")]
+		[SmokeMethod("open(OpenMode)")]
 		public override bool Open(int flags) {
-			return ((QFile) interceptor).Open(flags);
+			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), flags);
 		}
-		[SmokeMethod("open", "(int, OpenMode)", "$$")]
 		public bool Open(int fd, int flags) {
-			return ((QFile) interceptor).Open(fd,flags);
+			return (bool) interceptor.Invoke("open$$", "open(int, OpenMode)", typeof(bool), typeof(int), fd, typeof(int), flags);
 		}
-		[SmokeMethod("close", "()", "")]
+		[SmokeMethod("close()")]
 		public override void Close() {
-			((QFile) interceptor).Close();
+			interceptor.Invoke("close", "close()", typeof(void));
 		}
-		[SmokeMethod("size", "() const", "")]
+		[SmokeMethod("size() const")]
 		public override long Size() {
-			return ((QFile) interceptor).Size();
+			return (long) interceptor.Invoke("size", "size() const", typeof(long));
 		}
-		[SmokeMethod("pos", "() const", "")]
+		[SmokeMethod("pos() const")]
 		public override long Pos() {
-			return ((QFile) interceptor).Pos();
+			return (long) interceptor.Invoke("pos", "pos() const", typeof(long));
 		}
-		[SmokeMethod("seek", "(qint64)", "$")]
+		[SmokeMethod("seek(qint64)")]
 		public override bool Seek(long offset) {
-			return ((QFile) interceptor).Seek(offset);
+			return (bool) interceptor.Invoke("seek$", "seek(qint64)", typeof(bool), typeof(long), offset);
 		}
-		[SmokeMethod("atEnd", "() const", "")]
+		[SmokeMethod("atEnd() const")]
 		public override bool AtEnd() {
-			return ((QFile) interceptor).AtEnd();
+			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
-		[SmokeMethod("flush", "()", "")]
 		public bool Flush() {
-			return ((QFile) interceptor).Flush();
+			return (bool) interceptor.Invoke("flush", "flush()", typeof(bool));
 		}
-		[SmokeMethod("resize", "(qint64)", "$")]
 		public bool Resize(long sz) {
-			return ((QFile) interceptor).Resize(sz);
+			return (bool) interceptor.Invoke("resize$", "resize(qint64)", typeof(bool), typeof(long), sz);
 		}
-		[SmokeMethod("permissions", "() const", "")]
 		public int Permissions() {
-			return ((QFile) interceptor).Permissions();
+			return (int) interceptor.Invoke("permissions", "permissions() const", typeof(int));
 		}
-		[SmokeMethod("setPermissions", "(Permissions)", "$")]
 		public bool SetPermissions(int permissionSpec) {
-			return ((QFile) interceptor).SetPermissions(permissionSpec);
+			return (bool) interceptor.Invoke("setPermissions$", "setPermissions(Permissions)", typeof(bool), typeof(int), permissionSpec);
 		}
-		[SmokeMethod("fileEngine", "() const", "")]
+		[SmokeMethod("fileEngine() const")]
 		public virtual QAbstractFileEngine FileEngine() {
-			return ((QFile) interceptor).FileEngine();
+			return (QAbstractFileEngine) interceptor.Invoke("fileEngine", "fileEngine() const", typeof(QAbstractFileEngine));
 		}
-		[SmokeMethod("readData", "(char*, qint64)", "$$")]
+		[SmokeMethod("readData(char*, qint64)")]
 		protected override long ReadData(string data, long maxlen) {
-			return ((QFile) interceptor).ReadData(data,maxlen);
+			return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
-		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
+		[SmokeMethod("writeData(const char*, qint64)")]
 		protected override long WriteData(string data, long len) {
-			return ((QFile) interceptor).WriteData(data,len);
+			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
-		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
+		[SmokeMethod("readLineData(char*, qint64)")]
 		protected override long ReadLineData(string data, long maxlen) {
-			return ((QFile) interceptor).ReadLineData(data,maxlen);
+			return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
 		~QFile() {
-			DisposeQFile();
+			interceptor.Invoke("~QFile", "~QFile()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQFile();
-		}
-		[SmokeMethod("~QFile", "()", "")]
-		private void DisposeQFile() {
-			((QFile) interceptor).DisposeQFile();
+			interceptor.Invoke("~QFile", "~QFile()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QByteArray EncodeName(string fileName) {
-			return staticInterceptor.EncodeName(fileName);
+			return (QByteArray) staticInterceptor.Invoke("encodeName$", "encodeName(const QString&)", typeof(QByteArray), typeof(string), fileName);
 		}
 		public static string DecodeName(QByteArray localFileName) {
-			return staticInterceptor.DecodeName(localFileName);
+			return (string) staticInterceptor.Invoke("decodeName#", "decodeName(const QByteArray&)", typeof(string), typeof(QByteArray), localFileName);
 		}
 		public static string DecodeName(string localFileName) {
-			return staticInterceptor.DecodeName(localFileName);
+			return (string) staticInterceptor.Invoke("decodeName$", "decodeName(const char*)", typeof(string), typeof(string), localFileName);
 		}
 		public static bool Exists(string fileName) {
-			return staticInterceptor.Exists(fileName);
+			return (bool) staticInterceptor.Invoke("exists$", "exists(const QString&)", typeof(bool), typeof(string), fileName);
 		}
 		public static string ReadLink(string fileName) {
-			return staticInterceptor.ReadLink(fileName);
+			return (string) staticInterceptor.Invoke("readLink$", "readLink(const QString&)", typeof(string), typeof(string), fileName);
 		}
 		public static string SymLinkTarget(string fileName) {
-			return staticInterceptor.SymLinkTarget(fileName);
+			return (string) staticInterceptor.Invoke("symLinkTarget$", "symLinkTarget(const QString&)", typeof(string), typeof(string), fileName);
 		}
 		public static bool Remove(string fileName) {
-			return staticInterceptor.Remove(fileName);
+			return (bool) staticInterceptor.Invoke("remove$", "remove(const QString&)", typeof(bool), typeof(string), fileName);
 		}
 		public static bool Rename(string oldName, string newName) {
-			return staticInterceptor.Rename(oldName,newName);
+			return (bool) staticInterceptor.Invoke("rename$$", "rename(const QString&, const QString&)", typeof(bool), typeof(string), oldName, typeof(string), newName);
 		}
 		public static bool Link(string oldname, string newName) {
-			return staticInterceptor.Link(oldname,newName);
+			return (bool) staticInterceptor.Invoke("link$$", "link(const QString&, const QString&)", typeof(bool), typeof(string), oldname, typeof(string), newName);
 		}
 		public static bool Copy(string fileName, string newName) {
-			return staticInterceptor.Copy(fileName,newName);
+			return (bool) staticInterceptor.Invoke("copy$$", "copy(const QString&, const QString&)", typeof(bool), typeof(string), fileName, typeof(string), newName);
 		}
 		public static bool Resize(string filename, long sz) {
-			return staticInterceptor.Resize(filename,sz);
+			return (bool) staticInterceptor.Invoke("resize$$", "resize(const QString&, qint64)", typeof(bool), typeof(string), filename, typeof(long), sz);
 		}
 		public static int Permissions(string filename) {
-			return staticInterceptor.Permissions(filename);
+			return (int) staticInterceptor.Invoke("permissions$", "permissions(const QString&)", typeof(int), typeof(string), filename);
 		}
 		public static bool SetPermissions(string filename, int permissionSpec) {
-			return staticInterceptor.SetPermissions(filename,permissionSpec);
+			return (bool) staticInterceptor.Invoke("setPermissions$$", "setPermissions(const QString&, Permissions)", typeof(bool), typeof(string), filename, typeof(int), permissionSpec);
 		}
 		protected new IQFileSignals Emit {
 			get { return (IQFileSignals) Q_EMIT; }

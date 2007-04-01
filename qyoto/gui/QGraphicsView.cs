@@ -7,21 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsView")]
 	public class QGraphicsView : QAbstractScrollArea, IDisposable {
  		protected QGraphicsView(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGraphicsView")]
-		interface IQGraphicsViewProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsView), this);
-			interceptor = (QGraphicsView) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QGraphicsView), "QGraphicsView", this);
 		}
-		private static IQGraphicsViewProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QGraphicsView() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsViewProxy), null);
-			staticInterceptor = (IQGraphicsViewProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QGraphicsView), "QGraphicsView", null);
 		}
 		public enum ViewportAnchor {
 			NoAnchor = 0,
@@ -39,477 +30,374 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
-			[SmokeMethod("backgroundBrush", "()", "")]
-			get { return ((QGraphicsView) interceptor).BackgroundBrush; }
-			[SmokeMethod("setBackgroundBrush", "(QBrush)", "#")]
-			set { ((QGraphicsView) interceptor).BackgroundBrush = value; }
+			get { return (QBrush) interceptor.Invoke("backgroundBrush", "backgroundBrush()", typeof(QBrush)); }
+			set { interceptor.Invoke("setBackgroundBrush#", "setBackgroundBrush(QBrush)", typeof(void), typeof(QBrush), value); }
 		}
 		[Q_PROPERTY("QBrush", "foregroundBrush")]
 		public QBrush ForegroundBrush {
-			[SmokeMethod("foregroundBrush", "()", "")]
-			get { return ((QGraphicsView) interceptor).ForegroundBrush; }
-			[SmokeMethod("setForegroundBrush", "(QBrush)", "#")]
-			set { ((QGraphicsView) interceptor).ForegroundBrush = value; }
+			get { return (QBrush) interceptor.Invoke("foregroundBrush", "foregroundBrush()", typeof(QBrush)); }
+			set { interceptor.Invoke("setForegroundBrush#", "setForegroundBrush(QBrush)", typeof(void), typeof(QBrush), value); }
 		}
 		[Q_PROPERTY("bool", "interactive")]
 		public bool Interactive {
-			[SmokeMethod("isInteractive", "()", "")]
-			get { return ((QGraphicsView) interceptor).Interactive; }
-			[SmokeMethod("setInteractive", "(bool)", "$")]
-			set { ((QGraphicsView) interceptor).Interactive = value; }
+			get { return (bool) interceptor.Invoke("isInteractive", "isInteractive()", typeof(bool)); }
+			set { interceptor.Invoke("setInteractive$", "setInteractive(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QRectF", "sceneRect")]
 		public QRectF SceneRect {
-			[SmokeMethod("sceneRect", "()", "")]
-			get { return ((QGraphicsView) interceptor).SceneRect; }
-			[SmokeMethod("setSceneRect", "(QRectF)", "#")]
-			set { ((QGraphicsView) interceptor).SceneRect = value; }
+			get { return (QRectF) interceptor.Invoke("sceneRect", "sceneRect()", typeof(QRectF)); }
+			set { interceptor.Invoke("setSceneRect#", "setSceneRect(QRectF)", typeof(void), typeof(QRectF), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			[SmokeMethod("alignment", "()", "")]
-			get { return ((QGraphicsView) interceptor).Alignment; }
-			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
-			set { ((QGraphicsView) interceptor).Alignment = value; }
+			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QPainter::RenderHints", "renderHints")]
 		public int RenderHints {
-			[SmokeMethod("renderHints", "()", "")]
-			get { return ((QGraphicsView) interceptor).RenderHints; }
-			[SmokeMethod("setRenderHints", "(QPainter::RenderHints)", "$")]
-			set { ((QGraphicsView) interceptor).RenderHints = value; }
+			get { return (int) interceptor.Invoke("renderHints", "renderHints()", typeof(int)); }
+			set { interceptor.Invoke("setRenderHints$", "setRenderHints(QPainter::RenderHints)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QGraphicsView::DragMode", "dragMode")]
 		public QGraphicsView.DragMode dragMode {
-			[SmokeMethod("dragMode", "()", "")]
-			get { return ((QGraphicsView) interceptor).dragMode; }
-			[SmokeMethod("setDragMode", "(QGraphicsView::DragMode)", "$")]
-			set { ((QGraphicsView) interceptor).dragMode = value; }
+			get { return (QGraphicsView.DragMode) interceptor.Invoke("dragMode", "dragMode()", typeof(QGraphicsView.DragMode)); }
+			set { interceptor.Invoke("setDragMode$", "setDragMode(QGraphicsView::DragMode)", typeof(void), typeof(QGraphicsView.DragMode), value); }
 		}
 		[Q_PROPERTY("CacheMode", "cacheMode")]
 		public int CacheMode {
-			[SmokeMethod("cacheMode", "()", "")]
-			get { return ((QGraphicsView) interceptor).CacheMode; }
-			[SmokeMethod("setCacheMode", "(CacheMode)", "$")]
-			set { ((QGraphicsView) interceptor).CacheMode = value; }
+			get { return (int) interceptor.Invoke("cacheMode", "cacheMode()", typeof(int)); }
+			set { interceptor.Invoke("setCacheMode$", "setCacheMode(CacheMode)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "transformationAnchor")]
 		public QGraphicsView.ViewportAnchor TransformationAnchor {
-			[SmokeMethod("transformationAnchor", "()", "")]
-			get { return ((QGraphicsView) interceptor).TransformationAnchor; }
-			[SmokeMethod("setTransformationAnchor", "(QGraphicsView::ViewportAnchor)", "$")]
-			set { ((QGraphicsView) interceptor).TransformationAnchor = value; }
+			get { return (QGraphicsView.ViewportAnchor) interceptor.Invoke("transformationAnchor", "transformationAnchor()", typeof(QGraphicsView.ViewportAnchor)); }
+			set { interceptor.Invoke("setTransformationAnchor$", "setTransformationAnchor(QGraphicsView::ViewportAnchor)", typeof(void), typeof(QGraphicsView.ViewportAnchor), value); }
 		}
 		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "resizeAnchor")]
 		public QGraphicsView.ViewportAnchor ResizeAnchor {
-			[SmokeMethod("resizeAnchor", "()", "")]
-			get { return ((QGraphicsView) interceptor).ResizeAnchor; }
-			[SmokeMethod("setResizeAnchor", "(QGraphicsView::ViewportAnchor)", "$")]
-			set { ((QGraphicsView) interceptor).ResizeAnchor = value; }
+			get { return (QGraphicsView.ViewportAnchor) interceptor.Invoke("resizeAnchor", "resizeAnchor()", typeof(QGraphicsView.ViewportAnchor)); }
+			set { interceptor.Invoke("setResizeAnchor$", "setResizeAnchor(QGraphicsView::ViewportAnchor)", typeof(void), typeof(QGraphicsView.ViewportAnchor), value); }
 		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsView(parent);
-		}
-		[SmokeMethod("QGraphicsView", "(QWidget*)", "#")]
-		private void NewQGraphicsView(QWidget parent) {
-			((QGraphicsView) interceptor).NewQGraphicsView(parent);
+			interceptor.Invoke("QGraphicsView#", "QGraphicsView(QWidget*)", typeof(void), typeof(QWidget), parent);
 		}
 		public QGraphicsView() : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsView();
-		}
-		[SmokeMethod("QGraphicsView", "()", "")]
-		private void NewQGraphicsView() {
-			((QGraphicsView) interceptor).NewQGraphicsView();
+			interceptor.Invoke("QGraphicsView", "QGraphicsView()", typeof(void));
 		}
 		public QGraphicsView(QGraphicsScene scene, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsView(scene,parent);
-		}
-		[SmokeMethod("QGraphicsView", "(QGraphicsScene*, QWidget*)", "##")]
-		private void NewQGraphicsView(QGraphicsScene scene, QWidget parent) {
-			((QGraphicsView) interceptor).NewQGraphicsView(scene,parent);
+			interceptor.Invoke("QGraphicsView##", "QGraphicsView(QGraphicsScene*, QWidget*)", typeof(void), typeof(QGraphicsScene), scene, typeof(QWidget), parent);
 		}
 		public QGraphicsView(QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
-			NewQGraphicsView(scene);
+			interceptor.Invoke("QGraphicsView#", "QGraphicsView(QGraphicsScene*)", typeof(void), typeof(QGraphicsScene), scene);
 		}
-		[SmokeMethod("QGraphicsView", "(QGraphicsScene*)", "#")]
-		private void NewQGraphicsView(QGraphicsScene scene) {
-			((QGraphicsView) interceptor).NewQGraphicsView(scene);
-		}
-		[SmokeMethod("sizeHint", "() const", "")]
+		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
-			return ((QGraphicsView) interceptor).SizeHint();
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("setRenderHint", "(QPainter::RenderHint, bool)", "$$")]
 		public void SetRenderHint(QPainter.RenderHint hint, bool enabled) {
-			((QGraphicsView) interceptor).SetRenderHint(hint,enabled);
+			interceptor.Invoke("setRenderHint$$", "setRenderHint(QPainter::RenderHint, bool)", typeof(void), typeof(QPainter.RenderHint), hint, typeof(bool), enabled);
 		}
-		[SmokeMethod("setRenderHint", "(QPainter::RenderHint)", "$")]
 		public void SetRenderHint(QPainter.RenderHint hint) {
-			((QGraphicsView) interceptor).SetRenderHint(hint);
+			interceptor.Invoke("setRenderHint$", "setRenderHint(QPainter::RenderHint)", typeof(void), typeof(QPainter.RenderHint), hint);
 		}
-		[SmokeMethod("resetCachedContent", "()", "")]
 		public void ResetCachedContent() {
-			((QGraphicsView) interceptor).ResetCachedContent();
+			interceptor.Invoke("resetCachedContent", "resetCachedContent()", typeof(void));
 		}
-		[SmokeMethod("isInteractive", "() const", "")]
 		public bool IsInteractive() {
-			return ((QGraphicsView) interceptor).IsInteractive();
+			return (bool) interceptor.Invoke("isInteractive", "isInteractive() const", typeof(bool));
 		}
-		[SmokeMethod("scene", "() const", "")]
 		public QGraphicsScene Scene() {
-			return ((QGraphicsView) interceptor).Scene();
+			return (QGraphicsScene) interceptor.Invoke("scene", "scene() const", typeof(QGraphicsScene));
 		}
-		[SmokeMethod("setScene", "(QGraphicsScene*)", "#")]
 		public void SetScene(QGraphicsScene scene) {
-			((QGraphicsView) interceptor).SetScene(scene);
+			interceptor.Invoke("setScene#", "setScene(QGraphicsScene*)", typeof(void), typeof(QGraphicsScene), scene);
 		}
-		[SmokeMethod("setSceneRect", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetSceneRect(double x, double y, double w, double h) {
-			((QGraphicsView) interceptor).SetSceneRect(x,y,w,h);
+			interceptor.Invoke("setSceneRect$$$$", "setSceneRect(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("matrix", "() const", "")]
 		public QMatrix Matrix() {
-			return ((QGraphicsView) interceptor).Matrix();
+			return (QMatrix) interceptor.Invoke("matrix", "matrix() const", typeof(QMatrix));
 		}
-		[SmokeMethod("setMatrix", "(const QMatrix&, bool)", "#$")]
 		public void SetMatrix(QMatrix matrix, bool combine) {
-			((QGraphicsView) interceptor).SetMatrix(matrix,combine);
+			interceptor.Invoke("setMatrix#$", "setMatrix(const QMatrix&, bool)", typeof(void), typeof(QMatrix), matrix, typeof(bool), combine);
 		}
-		[SmokeMethod("setMatrix", "(const QMatrix&)", "#")]
 		public void SetMatrix(QMatrix matrix) {
-			((QGraphicsView) interceptor).SetMatrix(matrix);
+			interceptor.Invoke("setMatrix#", "setMatrix(const QMatrix&)", typeof(void), typeof(QMatrix), matrix);
 		}
-		[SmokeMethod("resetMatrix", "()", "")]
 		public void ResetMatrix() {
-			((QGraphicsView) interceptor).ResetMatrix();
+			interceptor.Invoke("resetMatrix", "resetMatrix()", typeof(void));
 		}
-		[SmokeMethod("rotate", "(qreal)", "$")]
 		public void Rotate(double angle) {
-			((QGraphicsView) interceptor).Rotate(angle);
+			interceptor.Invoke("rotate$", "rotate(qreal)", typeof(void), typeof(double), angle);
 		}
-		[SmokeMethod("scale", "(qreal, qreal)", "$$")]
 		public void Scale(double sx, double sy) {
-			((QGraphicsView) interceptor).Scale(sx,sy);
+			interceptor.Invoke("scale$$", "scale(qreal, qreal)", typeof(void), typeof(double), sx, typeof(double), sy);
 		}
-		[SmokeMethod("shear", "(qreal, qreal)", "$$")]
 		public void Shear(double sh, double sv) {
-			((QGraphicsView) interceptor).Shear(sh,sv);
+			interceptor.Invoke("shear$$", "shear(qreal, qreal)", typeof(void), typeof(double), sh, typeof(double), sv);
 		}
-		[SmokeMethod("translate", "(qreal, qreal)", "$$")]
 		public void Translate(double dx, double dy) {
-			((QGraphicsView) interceptor).Translate(dx,dy);
+			interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
 		}
-		[SmokeMethod("centerOn", "(const QPointF&)", "#")]
 		public void CenterOn(QPointF pos) {
-			((QGraphicsView) interceptor).CenterOn(pos);
+			interceptor.Invoke("centerOn#", "centerOn(const QPointF&)", typeof(void), typeof(QPointF), pos);
 		}
-		[SmokeMethod("centerOn", "(qreal, qreal)", "$$")]
 		public void CenterOn(double x, double y) {
-			((QGraphicsView) interceptor).CenterOn(x,y);
+			interceptor.Invoke("centerOn$$", "centerOn(qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y);
 		}
-		[SmokeMethod("centerOn", "(const QGraphicsItem*)", "#")]
 		public void CenterOn(QGraphicsItem item) {
-			((QGraphicsView) interceptor).CenterOn(item);
+			interceptor.Invoke("centerOn#", "centerOn(const QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("ensureVisible", "(const QRectF&, int, int)", "#$$")]
 		public void EnsureVisible(QRectF rect, int xmargin, int ymargin) {
-			((QGraphicsView) interceptor).EnsureVisible(rect,xmargin,ymargin);
+			interceptor.Invoke("ensureVisible#$$", "ensureVisible(const QRectF&, int, int)", typeof(void), typeof(QRectF), rect, typeof(int), xmargin, typeof(int), ymargin);
 		}
-		[SmokeMethod("ensureVisible", "(const QRectF&, int)", "#$")]
 		public void EnsureVisible(QRectF rect, int xmargin) {
-			((QGraphicsView) interceptor).EnsureVisible(rect,xmargin);
+			interceptor.Invoke("ensureVisible#$", "ensureVisible(const QRectF&, int)", typeof(void), typeof(QRectF), rect, typeof(int), xmargin);
 		}
-		[SmokeMethod("ensureVisible", "(const QRectF&)", "#")]
 		public void EnsureVisible(QRectF rect) {
-			((QGraphicsView) interceptor).EnsureVisible(rect);
+			interceptor.Invoke("ensureVisible#", "ensureVisible(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
-		[SmokeMethod("ensureVisible", "(qreal, qreal, qreal, qreal, int, int)", "$$$$$$")]
 		public void EnsureVisible(double x, double y, double w, double h, int xmargin, int ymargin) {
-			((QGraphicsView) interceptor).EnsureVisible(x,y,w,h,xmargin,ymargin);
+			interceptor.Invoke("ensureVisible$$$$$$", "ensureVisible(qreal, qreal, qreal, qreal, int, int)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(int), xmargin, typeof(int), ymargin);
 		}
-		[SmokeMethod("ensureVisible", "(qreal, qreal, qreal, qreal, int)", "$$$$$")]
 		public void EnsureVisible(double x, double y, double w, double h, int xmargin) {
-			((QGraphicsView) interceptor).EnsureVisible(x,y,w,h,xmargin);
+			interceptor.Invoke("ensureVisible$$$$$", "ensureVisible(qreal, qreal, qreal, qreal, int)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(int), xmargin);
 		}
-		[SmokeMethod("ensureVisible", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void EnsureVisible(double x, double y, double w, double h) {
-			((QGraphicsView) interceptor).EnsureVisible(x,y,w,h);
+			interceptor.Invoke("ensureVisible$$$$", "ensureVisible(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("ensureVisible", "(const QGraphicsItem*, int, int)", "#$$")]
 		public void EnsureVisible(QGraphicsItem item, int xmargin, int ymargin) {
-			((QGraphicsView) interceptor).EnsureVisible(item,xmargin,ymargin);
+			interceptor.Invoke("ensureVisible#$$", "ensureVisible(const QGraphicsItem*, int, int)", typeof(void), typeof(QGraphicsItem), item, typeof(int), xmargin, typeof(int), ymargin);
 		}
-		[SmokeMethod("ensureVisible", "(const QGraphicsItem*, int)", "#$")]
 		public void EnsureVisible(QGraphicsItem item, int xmargin) {
-			((QGraphicsView) interceptor).EnsureVisible(item,xmargin);
+			interceptor.Invoke("ensureVisible#$", "ensureVisible(const QGraphicsItem*, int)", typeof(void), typeof(QGraphicsItem), item, typeof(int), xmargin);
 		}
-		[SmokeMethod("ensureVisible", "(const QGraphicsItem*)", "#")]
 		public void EnsureVisible(QGraphicsItem item) {
-			((QGraphicsView) interceptor).EnsureVisible(item);
+			interceptor.Invoke("ensureVisible#", "ensureVisible(const QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("fitInView", "(const QRectF&, Qt::AspectRatioMode)", "#$")]
 		public void FitInView(QRectF rect, Qt.AspectRatioMode aspectRadioMode) {
-			((QGraphicsView) interceptor).FitInView(rect,aspectRadioMode);
+			interceptor.Invoke("fitInView#$", "fitInView(const QRectF&, Qt::AspectRatioMode)", typeof(void), typeof(QRectF), rect, typeof(Qt.AspectRatioMode), aspectRadioMode);
 		}
-		[SmokeMethod("fitInView", "(const QRectF&)", "#")]
 		public void FitInView(QRectF rect) {
-			((QGraphicsView) interceptor).FitInView(rect);
+			interceptor.Invoke("fitInView#", "fitInView(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
-		[SmokeMethod("fitInView", "(qreal, qreal, qreal, qreal, Qt::AspectRatioMode)", "$$$$$")]
 		public void FitInView(double x, double y, double w, double h, Qt.AspectRatioMode aspectRadioMode) {
-			((QGraphicsView) interceptor).FitInView(x,y,w,h,aspectRadioMode);
+			interceptor.Invoke("fitInView$$$$$", "fitInView(qreal, qreal, qreal, qreal, Qt::AspectRatioMode)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(Qt.AspectRatioMode), aspectRadioMode);
 		}
-		[SmokeMethod("fitInView", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void FitInView(double x, double y, double w, double h) {
-			((QGraphicsView) interceptor).FitInView(x,y,w,h);
+			interceptor.Invoke("fitInView$$$$", "fitInView(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("fitInView", "(const QGraphicsItem*, Qt::AspectRatioMode)", "#$")]
 		public void FitInView(QGraphicsItem item, Qt.AspectRatioMode aspectRadioMode) {
-			((QGraphicsView) interceptor).FitInView(item,aspectRadioMode);
+			interceptor.Invoke("fitInView#$", "fitInView(const QGraphicsItem*, Qt::AspectRatioMode)", typeof(void), typeof(QGraphicsItem), item, typeof(Qt.AspectRatioMode), aspectRadioMode);
 		}
-		[SmokeMethod("fitInView", "(const QGraphicsItem*)", "#")]
 		public void FitInView(QGraphicsItem item) {
-			((QGraphicsView) interceptor).FitInView(item);
+			interceptor.Invoke("fitInView#", "fitInView(const QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), item);
 		}
-		[SmokeMethod("render", "(QPainter*, const QRectF&, const QRect&, Qt::AspectRatioMode)", "###$")]
 		public void Render(QPainter painter, QRectF target, QRect source, Qt.AspectRatioMode aspectRatioMode) {
-			((QGraphicsView) interceptor).Render(painter,target,source,aspectRatioMode);
+			interceptor.Invoke("render###$", "render(QPainter*, const QRectF&, const QRect&, Qt::AspectRatioMode)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target, typeof(QRect), source, typeof(Qt.AspectRatioMode), aspectRatioMode);
 		}
-		[SmokeMethod("render", "(QPainter*, const QRectF&, const QRect&)", "###")]
 		public void Render(QPainter painter, QRectF target, QRect source) {
-			((QGraphicsView) interceptor).Render(painter,target,source);
+			interceptor.Invoke("render###", "render(QPainter*, const QRectF&, const QRect&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target, typeof(QRect), source);
 		}
-		[SmokeMethod("render", "(QPainter*, const QRectF&)", "##")]
 		public void Render(QPainter painter, QRectF target) {
-			((QGraphicsView) interceptor).Render(painter,target);
+			interceptor.Invoke("render##", "render(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target);
 		}
-		[SmokeMethod("render", "(QPainter*)", "#")]
 		public void Render(QPainter painter) {
-			((QGraphicsView) interceptor).Render(painter);
+			interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), painter);
 		}
-		[SmokeMethod("items", "() const", "")]
 		public List<QGraphicsItem> Items() {
-			return ((QGraphicsView) interceptor).Items();
+			return (List<QGraphicsItem>) interceptor.Invoke("items", "items() const", typeof(List<QGraphicsItem>));
 		}
-		[SmokeMethod("items", "(const QPoint&) const", "#")]
 		public List<QGraphicsItem> Items(QPoint pos) {
-			return ((QGraphicsView) interceptor).Items(pos);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QPoint&) const", typeof(List<QGraphicsItem>), typeof(QPoint), pos);
 		}
-		[SmokeMethod("items", "(int, int) const", "$$")]
 		public List<QGraphicsItem> Items(int x, int y) {
-			return ((QGraphicsView) interceptor).Items(x,y);
+			return (List<QGraphicsItem>) interceptor.Invoke("items$$", "items(int, int) const", typeof(List<QGraphicsItem>), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("items", "(const QRect&, Qt::ItemSelectionMode) const", "#$")]
 		public List<QGraphicsItem> Items(QRect rect, Qt.ItemSelectionMode mode) {
-			return ((QGraphicsView) interceptor).Items(rect,mode);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QRect&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QRect), rect, typeof(Qt.ItemSelectionMode), mode);
 		}
-		[SmokeMethod("items", "(const QRect&) const", "#")]
 		public List<QGraphicsItem> Items(QRect rect) {
-			return ((QGraphicsView) interceptor).Items(rect);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QRect&) const", typeof(List<QGraphicsItem>), typeof(QRect), rect);
 		}
-		[SmokeMethod("items", "(const QPolygon&, Qt::ItemSelectionMode) const", "#$")]
 		public List<QGraphicsItem> Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
-			return ((QGraphicsView) interceptor).Items(polygon,mode);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QPolygon&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QPolygon), polygon, typeof(Qt.ItemSelectionMode), mode);
 		}
-		[SmokeMethod("items", "(const QPolygon&) const", "#")]
 		public List<QGraphicsItem> Items(QPolygon polygon) {
-			return ((QGraphicsView) interceptor).Items(polygon);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QPolygon&) const", typeof(List<QGraphicsItem>), typeof(QPolygon), polygon);
 		}
-		[SmokeMethod("items", "(const QPainterPath&, Qt::ItemSelectionMode) const", "#$")]
 		public List<QGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
-			return ((QGraphicsView) interceptor).Items(path,mode);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QPainterPath&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode);
 		}
-		[SmokeMethod("items", "(const QPainterPath&) const", "#")]
 		public List<QGraphicsItem> Items(QPainterPath path) {
-			return ((QGraphicsView) interceptor).Items(path);
+			return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QPainterPath&) const", typeof(List<QGraphicsItem>), typeof(QPainterPath), path);
 		}
-		[SmokeMethod("itemAt", "(const QPoint&) const", "#")]
 		public QGraphicsItem ItemAt(QPoint pos) {
-			return ((QGraphicsView) interceptor).ItemAt(pos);
+			return (QGraphicsItem) interceptor.Invoke("itemAt#", "itemAt(const QPoint&) const", typeof(QGraphicsItem), typeof(QPoint), pos);
 		}
-		[SmokeMethod("itemAt", "(int, int) const", "$$")]
 		public QGraphicsItem ItemAt(int x, int y) {
-			return ((QGraphicsView) interceptor).ItemAt(x,y);
+			return (QGraphicsItem) interceptor.Invoke("itemAt$$", "itemAt(int, int) const", typeof(QGraphicsItem), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("mapToScene", "(const QPoint&) const", "#")]
 		public QPointF MapToScene(QPoint point) {
-			return ((QGraphicsView) interceptor).MapToScene(point);
+			return (QPointF) interceptor.Invoke("mapToScene#", "mapToScene(const QPoint&) const", typeof(QPointF), typeof(QPoint), point);
 		}
-		[SmokeMethod("mapToScene", "(const QRect&) const", "#")]
 		public QPolygonF MapToScene(QRect rect) {
-			return ((QGraphicsView) interceptor).MapToScene(rect);
+			return (QPolygonF) interceptor.Invoke("mapToScene#", "mapToScene(const QRect&) const", typeof(QPolygonF), typeof(QRect), rect);
 		}
-		[SmokeMethod("mapToScene", "(const QPolygon&) const", "#")]
 		public QPolygonF MapToScene(QPolygon polygon) {
-			return ((QGraphicsView) interceptor).MapToScene(polygon);
+			return (QPolygonF) interceptor.Invoke("mapToScene#", "mapToScene(const QPolygon&) const", typeof(QPolygonF), typeof(QPolygon), polygon);
 		}
-		[SmokeMethod("mapToScene", "(const QPainterPath&) const", "#")]
 		public QPainterPath MapToScene(QPainterPath path) {
-			return ((QGraphicsView) interceptor).MapToScene(path);
+			return (QPainterPath) interceptor.Invoke("mapToScene#", "mapToScene(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), path);
 		}
-		[SmokeMethod("mapFromScene", "(const QPointF&) const", "#")]
 		public QPoint MapFromScene(QPointF point) {
-			return ((QGraphicsView) interceptor).MapFromScene(point);
+			return (QPoint) interceptor.Invoke("mapFromScene#", "mapFromScene(const QPointF&) const", typeof(QPoint), typeof(QPointF), point);
 		}
-		[SmokeMethod("mapFromScene", "(const QRectF&) const", "#")]
 		public QPolygon MapFromScene(QRectF rect) {
-			return ((QGraphicsView) interceptor).MapFromScene(rect);
+			return (QPolygon) interceptor.Invoke("mapFromScene#", "mapFromScene(const QRectF&) const", typeof(QPolygon), typeof(QRectF), rect);
 		}
-		[SmokeMethod("mapFromScene", "(const QPolygonF&) const", "#")]
 		public QPolygon MapFromScene(QPolygonF polygon) {
-			return ((QGraphicsView) interceptor).MapFromScene(polygon);
+			return (QPolygon) interceptor.Invoke("mapFromScene#", "mapFromScene(const QPolygonF&) const", typeof(QPolygon), typeof(QPolygonF), polygon);
 		}
-		[SmokeMethod("mapFromScene", "(const QPainterPath&) const", "#")]
 		public QPainterPath MapFromScene(QPainterPath path) {
-			return ((QGraphicsView) interceptor).MapFromScene(path);
+			return (QPainterPath) interceptor.Invoke("mapFromScene#", "mapFromScene(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), path);
 		}
-		[SmokeMethod("mapToScene", "(int, int) const", "$$")]
 		public QPointF MapToScene(int x, int y) {
-			return ((QGraphicsView) interceptor).MapToScene(x,y);
+			return (QPointF) interceptor.Invoke("mapToScene$$", "mapToScene(int, int) const", typeof(QPointF), typeof(int), x, typeof(int), y);
 		}
-		[SmokeMethod("mapToScene", "(int, int, int, int) const", "$$$$")]
 		public QPolygonF MapToScene(int x, int y, int w, int h) {
-			return ((QGraphicsView) interceptor).MapToScene(x,y,w,h);
+			return (QPolygonF) interceptor.Invoke("mapToScene$$$$", "mapToScene(int, int, int, int) const", typeof(QPolygonF), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		[SmokeMethod("mapFromScene", "(qreal, qreal) const", "$$")]
 		public QPoint MapFromScene(double x, double y) {
-			return ((QGraphicsView) interceptor).MapFromScene(x,y);
+			return (QPoint) interceptor.Invoke("mapFromScene$$", "mapFromScene(qreal, qreal) const", typeof(QPoint), typeof(double), x, typeof(double), y);
 		}
-		[SmokeMethod("mapFromScene", "(qreal, qreal, qreal, qreal) const", "$$$$")]
 		public QPolygon MapFromScene(double x, double y, double w, double h) {
-			return ((QGraphicsView) interceptor).MapFromScene(x,y,w,h);
+			return (QPolygon) interceptor.Invoke("mapFromScene$$$$", "mapFromScene(qreal, qreal, qreal, qreal) const", typeof(QPolygon), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
+		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		public override QVariant InputMethodQuery(Qt.InputMethodQuery query) {
-			return ((QGraphicsView) interceptor).InputMethodQuery(query);
+			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), query);
 		}
 		[Q_SLOT("void updateScene(const QList<QRectF>&)")]
-		[SmokeMethod("updateScene", "(const QList<QRectF>&)", "?")]
 		public void UpdateScene(List<QRectF> rects) {
-			((QGraphicsView) interceptor).UpdateScene(rects);
+			interceptor.Invoke("updateScene?", "updateScene(const QList<QRectF>&)", typeof(void), typeof(List<QRectF>), rects);
 		}
 		[Q_SLOT("void updateSceneRect(const QRectF&)")]
-		[SmokeMethod("updateSceneRect", "(const QRectF&)", "#")]
 		public void UpdateSceneRect(QRectF rect) {
-			((QGraphicsView) interceptor).UpdateSceneRect(rect);
+			interceptor.Invoke("updateSceneRect#", "updateSceneRect(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
+		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
-			return ((QGraphicsView) interceptor).Event(arg1);
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
+		[SmokeMethod("viewportEvent(QEvent*)")]
 		protected override bool ViewportEvent(QEvent arg1) {
-			return ((QGraphicsView) interceptor).ViewportEvent(arg1);
+			return (bool) interceptor.Invoke("viewportEvent#", "viewportEvent(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			((QGraphicsView) interceptor).ContextMenuEvent(arg1);
+			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
 		}
-		[SmokeMethod("dragEnterEvent", "(QDragEnterEvent*)", "#")]
+		[SmokeMethod("dragEnterEvent(QDragEnterEvent*)")]
 		protected override void DragEnterEvent(QDragEnterEvent arg1) {
-			((QGraphicsView) interceptor).DragEnterEvent(arg1);
+			interceptor.Invoke("dragEnterEvent#", "dragEnterEvent(QDragEnterEvent*)", typeof(void), typeof(QDragEnterEvent), arg1);
 		}
-		[SmokeMethod("dragLeaveEvent", "(QDragLeaveEvent*)", "#")]
+		[SmokeMethod("dragLeaveEvent(QDragLeaveEvent*)")]
 		protected override void DragLeaveEvent(QDragLeaveEvent arg1) {
-			((QGraphicsView) interceptor).DragLeaveEvent(arg1);
+			interceptor.Invoke("dragLeaveEvent#", "dragLeaveEvent(QDragLeaveEvent*)", typeof(void), typeof(QDragLeaveEvent), arg1);
 		}
-		[SmokeMethod("dragMoveEvent", "(QDragMoveEvent*)", "#")]
+		[SmokeMethod("dragMoveEvent(QDragMoveEvent*)")]
 		protected override void DragMoveEvent(QDragMoveEvent arg1) {
-			((QGraphicsView) interceptor).DragMoveEvent(arg1);
+			interceptor.Invoke("dragMoveEvent#", "dragMoveEvent(QDragMoveEvent*)", typeof(void), typeof(QDragMoveEvent), arg1);
 		}
-		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
+		[SmokeMethod("dropEvent(QDropEvent*)")]
 		protected override void DropEvent(QDropEvent arg1) {
-			((QGraphicsView) interceptor).DropEvent(arg1);
+			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), arg1);
 		}
-		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			((QGraphicsView) interceptor).FocusInEvent(arg1);
+			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected override void FocusOutEvent(QFocusEvent arg1) {
-			((QGraphicsView) interceptor).FocusOutEvent(arg1);
+			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			((QGraphicsView) interceptor).KeyPressEvent(arg1);
+			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("keyReleaseEvent", "(QKeyEvent*)", "#")]
+		[SmokeMethod("keyReleaseEvent(QKeyEvent*)")]
 		protected override void KeyReleaseEvent(QKeyEvent arg1) {
-			((QGraphicsView) interceptor).KeyReleaseEvent(arg1);
+			interceptor.Invoke("keyReleaseEvent#", "keyReleaseEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
-		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected override void MouseDoubleClickEvent(QMouseEvent arg1) {
-			((QGraphicsView) interceptor).MouseDoubleClickEvent(arg1);
+			interceptor.Invoke("mouseDoubleClickEvent#", "mouseDoubleClickEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			((QGraphicsView) interceptor).MousePressEvent(arg1);
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			((QGraphicsView) interceptor).MouseMoveEvent(arg1);
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			((QGraphicsView) interceptor).MouseReleaseEvent(arg1);
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
-		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected override void WheelEvent(QWheelEvent arg1) {
-			((QGraphicsView) interceptor).WheelEvent(arg1);
+			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), arg1);
 		}
-		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			((QGraphicsView) interceptor).PaintEvent(arg1);
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			((QGraphicsView) interceptor).ResizeEvent(arg1);
+			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
+		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			((QGraphicsView) interceptor).ScrollContentsBy(dx,dy);
+			interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			((QGraphicsView) interceptor).ShowEvent(arg1);
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
 		}
-		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
+		[SmokeMethod("inputMethodEvent(QInputMethodEvent*)")]
 		protected override void InputMethodEvent(QInputMethodEvent arg1) {
-			((QGraphicsView) interceptor).InputMethodEvent(arg1);
+			interceptor.Invoke("inputMethodEvent#", "inputMethodEvent(QInputMethodEvent*)", typeof(void), typeof(QInputMethodEvent), arg1);
 		}
-		[SmokeMethod("drawBackground", "(QPainter*, const QRectF&)", "##")]
+		[SmokeMethod("drawBackground(QPainter*, const QRectF&)")]
 		protected virtual void DrawBackground(QPainter painter, QRectF rect) {
-			((QGraphicsView) interceptor).DrawBackground(painter,rect);
+			interceptor.Invoke("drawBackground##", "drawBackground(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect);
 		}
-		[SmokeMethod("drawForeground", "(QPainter*, const QRectF&)", "##")]
+		[SmokeMethod("drawForeground(QPainter*, const QRectF&)")]
 		protected virtual void DrawForeground(QPainter painter, QRectF rect) {
-			((QGraphicsView) interceptor).DrawForeground(painter,rect);
+			interceptor.Invoke("drawForeground##", "drawForeground(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect);
 		}
 		[Q_SLOT("void setupViewport(QWidget*)")]
-		[SmokeMethod("setupViewport", "(QWidget*)", "#")]
 		protected void SetupViewport(QWidget widget) {
-			((QGraphicsView) interceptor).SetupViewport(widget);
+			interceptor.Invoke("setupViewport#", "setupViewport(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		~QGraphicsView() {
-			DisposeQGraphicsView();
+			interceptor.Invoke("~QGraphicsView", "~QGraphicsView()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQGraphicsView();
-		}
-		[SmokeMethod("~QGraphicsView", "()", "")]
-		private void DisposeQGraphicsView() {
-			((QGraphicsView) interceptor).DisposeQGraphicsView();
+			interceptor.Invoke("~QGraphicsView", "~QGraphicsView()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGraphicsViewSignals Emit {
 			get { return (IQGraphicsViewSignals) Q_EMIT; }

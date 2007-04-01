@@ -6,21 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QUdpSocket")]
 	public class QUdpSocket : QAbstractSocket, IDisposable {
  		protected QUdpSocket(Type dummy) : base((Type) null) {}
-		[SmokeClass("QUdpSocket")]
-		interface IQUdpSocketProxy {
-			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
-			string Tr(string s, string c);
-			[SmokeMethod("tr", "(const char*)", "$")]
-			string Tr(string s);
-		}
 		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUdpSocket), this);
-			interceptor = (QUdpSocket) realProxy.GetTransparentProxy();
+			interceptor = new SmokeInvocation(typeof(QUdpSocket), "QUdpSocket", this);
 		}
-		private static IQUdpSocketProxy staticInterceptor = null;
+		private static SmokeInvocation staticInterceptor = null;
 		static QUdpSocket() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUdpSocketProxy), null);
-			staticInterceptor = (IQUdpSocketProxy) realProxy.GetTransparentProxy();
+			staticInterceptor = new SmokeInvocation(typeof(QUdpSocket), "QUdpSocket", null);
 		}
 		public enum BindFlag {
 			DefaultForPlatform = 0x0,
@@ -31,79 +22,56 @@ namespace Qyoto {
 		// qint64 readDatagram(char* arg1,qint64 arg2,QHostAddress* arg3,quint16* arg4); >>>> NOT CONVERTED
 		public QUdpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
-			NewQUdpSocket(parent);
-		}
-		[SmokeMethod("QUdpSocket", "(QObject*)", "#")]
-		private void NewQUdpSocket(QObject parent) {
-			((QUdpSocket) interceptor).NewQUdpSocket(parent);
+			interceptor.Invoke("QUdpSocket#", "QUdpSocket(QObject*)", typeof(void), typeof(QObject), parent);
 		}
 		public QUdpSocket() : this((Type) null) {
 			CreateProxy();
-			NewQUdpSocket();
+			interceptor.Invoke("QUdpSocket", "QUdpSocket()", typeof(void));
 		}
-		[SmokeMethod("QUdpSocket", "()", "")]
-		private void NewQUdpSocket() {
-			((QUdpSocket) interceptor).NewQUdpSocket();
-		}
-		[SmokeMethod("bind", "(const QHostAddress&, quint16)", "#$")]
 		public bool Bind(QHostAddress address, ushort port) {
-			return ((QUdpSocket) interceptor).Bind(address,port);
+			return (bool) interceptor.Invoke("bind#$", "bind(const QHostAddress&, quint16)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port);
 		}
-		[SmokeMethod("bind", "(quint16)", "$")]
 		public bool Bind(ushort port) {
-			return ((QUdpSocket) interceptor).Bind(port);
+			return (bool) interceptor.Invoke("bind$", "bind(quint16)", typeof(bool), typeof(ushort), port);
 		}
-		[SmokeMethod("bind", "()", "")]
 		public bool Bind() {
-			return ((QUdpSocket) interceptor).Bind();
+			return (bool) interceptor.Invoke("bind", "bind()", typeof(bool));
 		}
-		[SmokeMethod("bind", "(const QHostAddress&, quint16, BindMode)", "#$$")]
 		public bool Bind(QHostAddress address, ushort port, int mode) {
-			return ((QUdpSocket) interceptor).Bind(address,port,mode);
+			return (bool) interceptor.Invoke("bind#$$", "bind(const QHostAddress&, quint16, BindMode)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port, typeof(int), mode);
 		}
-		[SmokeMethod("bind", "(quint16, BindMode)", "$$")]
 		public bool Bind(ushort port, int mode) {
-			return ((QUdpSocket) interceptor).Bind(port,mode);
+			return (bool) interceptor.Invoke("bind$$", "bind(quint16, BindMode)", typeof(bool), typeof(ushort), port, typeof(int), mode);
 		}
-		[SmokeMethod("hasPendingDatagrams", "() const", "")]
 		public bool HasPendingDatagrams() {
-			return ((QUdpSocket) interceptor).HasPendingDatagrams();
+			return (bool) interceptor.Invoke("hasPendingDatagrams", "hasPendingDatagrams() const", typeof(bool));
 		}
-		[SmokeMethod("pendingDatagramSize", "() const", "")]
 		public long PendingDatagramSize() {
-			return ((QUdpSocket) interceptor).PendingDatagramSize();
+			return (long) interceptor.Invoke("pendingDatagramSize", "pendingDatagramSize() const", typeof(long));
 		}
-		[SmokeMethod("readDatagram", "(char*, qint64, QHostAddress*)", "$$#")]
 		public long ReadDatagram(string data, long maxlen, QHostAddress host) {
-			return ((QUdpSocket) interceptor).ReadDatagram(data,maxlen,host);
+			return (long) interceptor.Invoke("readDatagram$$#", "readDatagram(char*, qint64, QHostAddress*)", typeof(long), typeof(string), data, typeof(long), maxlen, typeof(QHostAddress), host);
 		}
-		[SmokeMethod("readDatagram", "(char*, qint64)", "$$")]
 		public long ReadDatagram(string data, long maxlen) {
-			return ((QUdpSocket) interceptor).ReadDatagram(data,maxlen);
+			return (long) interceptor.Invoke("readDatagram$$", "readDatagram(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
 		}
-		[SmokeMethod("writeDatagram", "(const char*, qint64, const QHostAddress&, quint16)", "$$#$")]
 		public long WriteDatagram(string data, long len, QHostAddress host, ushort port) {
-			return ((QUdpSocket) interceptor).WriteDatagram(data,len,host,port);
+			return (long) interceptor.Invoke("writeDatagram$$#$", "writeDatagram(const char*, qint64, const QHostAddress&, quint16)", typeof(long), typeof(string), data, typeof(long), len, typeof(QHostAddress), host, typeof(ushort), port);
 		}
-		[SmokeMethod("writeDatagram", "(const QByteArray&, const QHostAddress&, quint16)", "##$")]
 		public long WriteDatagram(QByteArray datagram, QHostAddress host, ushort port) {
-			return ((QUdpSocket) interceptor).WriteDatagram(datagram,host,port);
+			return (long) interceptor.Invoke("writeDatagram##$", "writeDatagram(const QByteArray&, const QHostAddress&, quint16)", typeof(long), typeof(QByteArray), datagram, typeof(QHostAddress), host, typeof(ushort), port);
 		}
 		~QUdpSocket() {
-			DisposeQUdpSocket();
+			interceptor.Invoke("~QUdpSocket", "~QUdpSocket()", typeof(void));
 		}
 		public new void Dispose() {
-			DisposeQUdpSocket();
-		}
-		[SmokeMethod("~QUdpSocket", "()", "")]
-		private void DisposeQUdpSocket() {
-			((QUdpSocket) interceptor).DisposeQUdpSocket();
+			interceptor.Invoke("~QUdpSocket", "~QUdpSocket()", typeof(void));
 		}
 		public static string Tr(string s, string c) {
-			return staticInterceptor.Tr(s,c);
+			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
 		public static string Tr(string s) {
-			return staticInterceptor.Tr(s);
+			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQUdpSocketSignals Emit {
 			get { return (IQUdpSocketSignals) Q_EMIT; }
