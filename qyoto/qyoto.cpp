@@ -1313,6 +1313,112 @@ QAbstractItemModelColumnCount(void* obj, void * modelIndex)
 	return result;
 }
 
+int
+QAbstractItemModelRowCount(void* obj, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	int result = ((QAbstractItemModel*) o->ptr)->rowCount(*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}
+
+void*
+QAbstractItemModelData(void* obj, void * modelIndex, int role)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	QVariant result = ((QAbstractItemModel*) o->ptr)->data(*(((QModelIndex*) i->ptr)), role);
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	smokeqyoto_object * ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QVariant"), &result);
+	return (*CreateInstance)("Qyoto.QVariant", ret);
+}
+
+// These are virtual and not pure virtual, so callable methods are generated in C#.
+// Do we still need to override them in our QItemModel class?
+// commented out for now
+/*bool
+QAbstractItemModelSetData(void* obj, void * modelIndex, void * value, int role)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	smokeqyoto_object *v = (smokeqyoto_object*) (*GetSmokeObject)(value);
+	bool result = ((QAbstractItemModel*) o->ptr)->setData(*(((QModelIndex*) i->ptr)), *((QVariant*) v->ptr), role);
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	(*FreeGCHandle)(value);
+	return result;
+}
+
+int
+QAbstractItemModelFlags(void* obj, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	int result = ((QAbstractItemModel*) o->ptr)->flags(*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}
+
+bool
+QAbstractItemModelInsertRows(void* obj, int row, int count, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	bool result = ((QAbstractItemModel*) o->ptr)->insertRows(row, count, *(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}
+
+bool
+QAbstractItemModelInsertColumns(void* obj, int column, int count, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	bool result = ((QAbstractItemModel*) o->ptr)->insertColumns(column, count, *(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}
+
+bool
+QAbstractItemModelRemoveRows(void* obj, int row, int count, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	bool result = ((QAbstractItemModel*) o->ptr)->removeRows(row, count, *(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}
+
+bool
+QAbstractItemModelRemoveColumns(void* obj, int column, int count, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	bool result = ((QAbstractItemModel*) o->ptr)->removeColumns(column, count, *(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}*/
+
+void*
+QAbstractItemModelIndex(void* obj, int row, int column, void * modelIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
+	QModelIndex result = ((QAbstractItemModel*) o->ptr)->index(row, column, *(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return ret;
+}
+
 bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
 {
 	qRegisterResourceData(flag, s, n, d);

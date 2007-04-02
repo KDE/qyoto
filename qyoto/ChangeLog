@@ -1,3 +1,12 @@
+2007-04-02  Arno Rehn  <arno@arnorehn.de>
+
+	* Added a subclass of QAbstractItemModel called QItemModel which implements
+	  the abstract methods of its super class by calling the original methods of
+	  its C++ base class.
+	* Added workaround in resolve_classname to return "QItemModel" instead of "QAbstractItemModel"
+	  so instances of this class can be constructed. Makes calls which return a QAbstractItemModel
+	  work.
+
 2007-04-01  Richard Dale  <rdale@foton.es>
 
 	* Replace transparent proxies to invoke methods, with a direct call to 

@@ -430,6 +430,8 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject"));
 		const QMetaObject * meta = qobject->metaObject();
 
+		if (strcmp(smoke->classes[classId].className, "QAbstractItemModel") == 0)
+			return "Qyoto.QItemModel";
 		while (meta != 0) {
 			Smoke::Index classId = smoke->idClass(meta->className());
 			if (classId != 0) {
