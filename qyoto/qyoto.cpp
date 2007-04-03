@@ -526,9 +526,6 @@ public:
 
 	~MethodCall() {
 		delete[] _stack;
-		if (_target != 0) {
-			(*FreeGCHandle)(_target);
-		}
 	}
 
 	SmokeType type() {

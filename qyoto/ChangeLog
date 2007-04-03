@@ -1,3 +1,10 @@
+2007-04-03  Richard Dale  <rdale@foton.es>
+
+	* No need to special case the metaObject() method any more when caching 
+	  smoke method ids
+	* After a smoke method has been called, free the GCHandle for the instance
+	  on the C# side
+
 2007-04-02  Arno Rehn  <arno@arnorehn.de>
 
 	* Added a subclass of QAbstractItemModel called QItemModel which implements

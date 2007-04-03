@@ -396,7 +396,6 @@ namespace Qyoto {
 		}
 
 		public object Invoke(string mungedName, string signature, Type returnType, params object[] args) {
-
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER TestSmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
@@ -415,95 +414,94 @@ namespace Qyoto {
 					Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
 												className,
 												signature );
-						return null;
+					return null;
 				}
 
-				// Don't cache calls to QObject.MetaObject() as it is the same method for all
-				// classes, and the wrong method is cached for classes which aren't QObject.
-				if (signature != "metaObject()") {
-					methodIdCache[signature] = methodId;
-				}
+				methodIdCache[signature] = methodId;
 			}
 			
 			StackItem[] stack = new StackItem[(args.Length / 2) + 1];
 
-			for (int i = 0, j = 1, k = 1; i < args.Length; i += 2, j += 2, k++) {
-				if (args[j] == null) {
+			for (int i = 0, k = 1; i < args.Length; i += 2, k++) {
+				if (args[i+1] == null) {
 					unsafe {
 						stack[k].s_class = (IntPtr) 0;
 					}
 				} else if (args[i] == typeof(int) || ((Type) args[i]).IsEnum) {
-					stack[k].s_int = (int) args[j];
+					stack[k].s_int = (int) args[i+1];
 				} else if (args[i] == typeof(bool)) {
-					stack[k].s_bool = (bool) args[j];
+					stack[k].s_bool = (bool) args[i+1];
 				} else if (args[i] == typeof(short)) {
-					stack[k].s_short = (short) args[j];
+					stack[k].s_short = (short) args[i+1];
 				} else if (args[i] == typeof(float)) {
-					stack[k].s_float = (float) args[j];
+					stack[k].s_float = (float) args[i+1];
 				} else if (args[i] == typeof(double)) {
-					stack[k].s_double = (double) args[j];
+					stack[k].s_double = (double) args[i+1];
 				} else if (args[i] == typeof(long)) {
-					stack[k].s_long = (long) args[j];
+					stack[k].s_long = (long) args[i+1];
 				} else if (args[i] == typeof(ushort)) {
-					stack[k].s_ushort = (ushort) args[j];
+					stack[k].s_ushort = (ushort) args[i+1];
 				} else if (args[i] == typeof(uint)) {
-					stack[k].s_uint = (uint) args[j];
+					stack[k].s_uint = (uint) args[i+1];
 				} else if (args[i] == typeof(ulong)) {
-					stack[k].s_ulong = (ulong) args[j];
+					stack[k].s_ulong = (ulong) args[i+1];
 				} else if (args[i] == typeof(sbyte)) {
-					stack[k].s_char = (sbyte) args[j];
+					stack[k].s_char = (sbyte) args[i+1];
 				} else if (args[i] == typeof(byte)) {
-					stack[k].s_uchar = (byte) args[j];
+					stack[k].s_uchar = (byte) args[i+1];
 				} else {
 #if DEBUG
-					stack[k].s_class = (IntPtr) DebugGCHandle.Alloc(args[j]);
+					stack[k].s_class = (IntPtr) DebugGCHandle.Alloc(args[i+1]);
 #else
-					stack[k].s_class = (IntPtr) GCHandle.Alloc(args[j]);
+					stack[k].s_class = (IntPtr) GCHandle.Alloc(args[i+1]);
 #endif
 				}
 			}
 
 			object returnValue = null;
-			IntPtr instanceHandle = (IntPtr) 0;
-
-			if (instance != null) {
-#if DEBUG
-				instanceHandle = (IntPtr) DebugGCHandle.Alloc(instance);
-#else
-				instanceHandle = (IntPtr) GCHandle.Alloc(instance);
-#endif
-			}
 
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
-					CallSmokeMethod((int) methodId, instanceHandle, (IntPtr) stackPtr, args.Length / 2);
+					if (instance == null) {
+						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, args.Length / 2);
+					} else {
+#if DEBUG
+						GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
+#else
+						GCHandle instanceHandle = GCHandle.Alloc(instance);
+#endif
+						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, args.Length / 2);
+#if DEBUG
+						DebugGCHandle.Free(instanceHandle);
+#else
+						instanceHandle.Free();
+#endif
+					}
 					
 					if (returnType == typeof(void)) {
 						;
-					} else if (returnType == typeof(bool)) {
-						returnValue = stack[0].s_bool;
-					} else if (returnType == typeof(sbyte)) {
-						returnValue = stack[0].s_char;
-					} else if (returnType == typeof(byte)) {
-						returnValue = stack[0].s_uchar;
-					} else if (returnType == typeof(short)) {
-						returnValue = stack[0].s_short;
-					} else if (returnType == typeof(ushort)) {
-						returnValue = stack[0].s_ushort;
-					} else if (returnType.IsEnum) {
-						returnValue = Enum.ToObject(returnType, stack[0].s_int);
 					} else if (returnType == typeof(int)) {
 						returnValue = stack[0].s_int;
-					} else if (returnType == typeof(uint)) {
-						returnValue = stack[0].s_uint;
-					} else if (returnType == typeof(long)) {
-						returnValue = stack[0].s_long;
-					} else if (returnType == typeof(ulong)) {
-						returnValue = stack[0].s_ulong;
+					} else if (returnType == typeof(bool)) {
+						returnValue = stack[0].s_bool;
+					} else if (returnType == typeof(short)) {
+						returnValue = stack[0].s_short;
 					} else if (returnType == typeof(float)) {
 						returnValue = stack[0].s_float;
 					} else if (returnType == typeof(double)) {
 						returnValue = stack[0].s_double;
+					} else if (returnType == typeof(long)) {
+						returnValue = stack[0].s_long;
+					} else if (returnType == typeof(ushort)) {
+						returnValue = stack[0].s_ushort;
+					} else if (returnType.IsEnum) {
+						returnValue = Enum.ToObject(returnType, stack[0].s_int);
+					} else if (returnType == typeof(ulong)) {
+						returnValue = stack[0].s_ulong;
+					} else if (returnType == typeof(sbyte)) {
+						returnValue = stack[0].s_char;
+					} else if (returnType == typeof(byte)) {
+						returnValue = stack[0].s_uchar;
 					} else {
 						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
 							returnValue = null;
