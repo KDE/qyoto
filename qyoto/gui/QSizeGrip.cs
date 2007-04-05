@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QSizeGrip : QWidget, IDisposable {
  		protected QSizeGrip(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSizeGrip), "QSizeGrip", this);
+			interceptor = new SmokeInvocation(typeof(QSizeGrip), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSizeGrip() {
-			staticInterceptor = new SmokeInvocation(typeof(QSizeGrip), "QSizeGrip", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSizeGrip), null);
 		}
 		public QSizeGrip(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -36,6 +36,22 @@ namespace Qyoto {
 		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
 			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		protected override void MouseReleaseEvent(QMouseEvent mouseEvent) {
+			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), mouseEvent);
+		}
+		[SmokeMethod("moveEvent(QMoveEvent*)")]
+		protected override void MoveEvent(QMoveEvent moveEvent) {
+			interceptor.Invoke("moveEvent#", "moveEvent(QMoveEvent*)", typeof(void), typeof(QMoveEvent), moveEvent);
+		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
+		protected override void ShowEvent(QShowEvent showEvent) {
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), showEvent);
+		}
+		[SmokeMethod("hideEvent(QHideEvent*)")]
+		protected override void HideEvent(QHideEvent hideEvent) {
+			interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), hideEvent);
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {

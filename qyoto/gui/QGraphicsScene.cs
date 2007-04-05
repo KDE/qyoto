@@ -9,15 +9,21 @@ namespace Qyoto {
 	public class QGraphicsScene : QObject, IDisposable {
  		protected QGraphicsScene(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsScene), "QGraphicsScene", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsScene), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGraphicsScene() {
-			staticInterceptor = new SmokeInvocation(typeof(QGraphicsScene), "QGraphicsScene", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGraphicsScene), null);
 		}
 		public enum ItemIndexMethod {
 			BspTreeIndex = 0,
 			NoIndex = -1,
+		}
+		public enum SceneLayer {
+			ItemLayer = 0x1,
+			BackgroundLayer = 0x2,
+			ForegroundLayer = 0x4,
+			AllLayers = 0xffff,
 		}
 		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
@@ -39,6 +45,13 @@ namespace Qyoto {
 			get { return (QRectF) interceptor.Invoke("sceneRect", "sceneRect()", typeof(QRectF)); }
 			set { interceptor.Invoke("setSceneRect#", "setSceneRect(QRectF)", typeof(void), typeof(QRectF), value); }
 		}
+		[Q_PROPERTY("int", "bspTreeDepth")]
+		public int BspTreeDepth {
+			get { return (int) interceptor.Invoke("bspTreeDepth", "bspTreeDepth()", typeof(int)); }
+			set { interceptor.Invoke("setBspTreeDepth$", "setBspTreeDepth(int)", typeof(void), typeof(int), value); }
+		}
+		// void invalidate(qreal arg1,qreal arg2,qreal arg3,qreal arg4,SceneLayers arg5); >>>> NOT CONVERTED
+		// void invalidate(const QRectF& arg1,SceneLayers arg2); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsScene(QObject parent) : this((Type) null) {
@@ -122,14 +135,26 @@ namespace Qyoto {
 		public QGraphicsItem ItemAt(QPointF pos) {
 			return (QGraphicsItem) interceptor.Invoke("itemAt#", "itemAt(const QPointF&) const", typeof(QGraphicsItem), typeof(QPointF), pos);
 		}
+		public List<QGraphicsItem> Items(double x, double y, double w, double h, Qt.ItemSelectionMode mode) {
+			return (List<QGraphicsItem>) interceptor.Invoke("items$$$$$", "items(qreal, qreal, qreal, qreal, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(Qt.ItemSelectionMode), mode);
+		}
+		public List<QGraphicsItem> Items(double x, double y, double w, double h) {
+			return (List<QGraphicsItem>) interceptor.Invoke("items$$$$", "items(qreal, qreal, qreal, qreal) const", typeof(List<QGraphicsItem>), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
 		public QGraphicsItem ItemAt(double x, double y) {
 			return (QGraphicsItem) interceptor.Invoke("itemAt$$", "itemAt(qreal, qreal) const", typeof(QGraphicsItem), typeof(double), x, typeof(double), y);
 		}
 		public List<QGraphicsItem> SelectedItems() {
 			return (List<QGraphicsItem>) interceptor.Invoke("selectedItems", "selectedItems() const", typeof(List<QGraphicsItem>));
 		}
+		public QPainterPath SelectionArea() {
+			return (QPainterPath) interceptor.Invoke("selectionArea", "selectionArea() const", typeof(QPainterPath));
+		}
 		public void SetSelectionArea(QPainterPath path) {
 			interceptor.Invoke("setSelectionArea#", "setSelectionArea(const QPainterPath&)", typeof(void), typeof(QPainterPath), path);
+		}
+		public void SetSelectionArea(QPainterPath path, Qt.ItemSelectionMode arg2) {
+			interceptor.Invoke("setSelectionArea#$", "setSelectionArea(const QPainterPath&, Qt::ItemSelectionMode)", typeof(void), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), arg2);
 		}
 		public void ClearSelection() {
 			interceptor.Invoke("clearSelection", "clearSelection()", typeof(void));
@@ -194,6 +219,36 @@ namespace Qyoto {
 		public QGraphicsTextItem AddText(string text) {
 			return (QGraphicsTextItem) interceptor.Invoke("addText$", "addText(const QString&)", typeof(QGraphicsTextItem), typeof(string), text);
 		}
+		public QGraphicsSimpleTextItem AddSimpleText(string text, QFont font) {
+			return (QGraphicsSimpleTextItem) interceptor.Invoke("addSimpleText$#", "addSimpleText(const QString&, const QFont&)", typeof(QGraphicsSimpleTextItem), typeof(string), text, typeof(QFont), font);
+		}
+		public QGraphicsSimpleTextItem AddSimpleText(string text) {
+			return (QGraphicsSimpleTextItem) interceptor.Invoke("addSimpleText$", "addSimpleText(const QString&)", typeof(QGraphicsSimpleTextItem), typeof(string), text);
+		}
+		public QGraphicsEllipseItem AddEllipse(double x, double y, double w, double h, QPen pen, QBrush brush) {
+			return (QGraphicsEllipseItem) interceptor.Invoke("addEllipse$$$$##", "addEllipse(qreal, qreal, qreal, qreal, const QPen&, const QBrush&)", typeof(QGraphicsEllipseItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QPen), pen, typeof(QBrush), brush);
+		}
+		public QGraphicsEllipseItem AddEllipse(double x, double y, double w, double h, QPen pen) {
+			return (QGraphicsEllipseItem) interceptor.Invoke("addEllipse$$$$#", "addEllipse(qreal, qreal, qreal, qreal, const QPen&)", typeof(QGraphicsEllipseItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QPen), pen);
+		}
+		public QGraphicsEllipseItem AddEllipse(double x, double y, double w, double h) {
+			return (QGraphicsEllipseItem) interceptor.Invoke("addEllipse$$$$", "addEllipse(qreal, qreal, qreal, qreal)", typeof(QGraphicsEllipseItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
+		public QGraphicsLineItem AddLine(double x1, double y1, double x2, double y2, QPen pen) {
+			return (QGraphicsLineItem) interceptor.Invoke("addLine$$$$#", "addLine(qreal, qreal, qreal, qreal, const QPen&)", typeof(QGraphicsLineItem), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2, typeof(QPen), pen);
+		}
+		public QGraphicsLineItem AddLine(double x1, double y1, double x2, double y2) {
+			return (QGraphicsLineItem) interceptor.Invoke("addLine$$$$", "addLine(qreal, qreal, qreal, qreal)", typeof(QGraphicsLineItem), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
+		}
+		public QGraphicsRectItem AddRect(double x, double y, double w, double h, QPen pen, QBrush brush) {
+			return (QGraphicsRectItem) interceptor.Invoke("addRect$$$$##", "addRect(qreal, qreal, qreal, qreal, const QPen&, const QBrush&)", typeof(QGraphicsRectItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QPen), pen, typeof(QBrush), brush);
+		}
+		public QGraphicsRectItem AddRect(double x, double y, double w, double h, QPen pen) {
+			return (QGraphicsRectItem) interceptor.Invoke("addRect$$$$#", "addRect(qreal, qreal, qreal, qreal, const QPen&)", typeof(QGraphicsRectItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QPen), pen);
+		}
+		public QGraphicsRectItem AddRect(double x, double y, double w, double h) {
+			return (QGraphicsRectItem) interceptor.Invoke("addRect$$$$", "addRect(qreal, qreal, qreal, qreal)", typeof(QGraphicsRectItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
 		public void RemoveItem(QGraphicsItem item) {
 			interceptor.Invoke("removeItem#", "removeItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), item);
 		}
@@ -228,6 +283,12 @@ namespace Qyoto {
 		public List<QGraphicsView> Views() {
 			return (List<QGraphicsView>) interceptor.Invoke("views", "views() const", typeof(List<QGraphicsView>));
 		}
+		public void Update(double x, double y, double w, double h) {
+			interceptor.Invoke("update$$$$", "update(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
+		public void Invalidate(double x, double y, double w, double h) {
+			interceptor.Invoke("invalidate$$$$", "invalidate(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
 		[Q_SLOT("void update(const QRectF&)")]
 		public void Update(QRectF rect) {
 			interceptor.Invoke("update#", "update(const QRectF&)", typeof(void), typeof(QRectF), rect);
@@ -235,6 +296,14 @@ namespace Qyoto {
 		[Q_SLOT("void update()")]
 		public void Update() {
 			interceptor.Invoke("update", "update()", typeof(void));
+		}
+		[Q_SLOT("void invalidate(const QRectF&)")]
+		public void Invalidate(QRectF rect) {
+			interceptor.Invoke("invalidate#", "invalidate(const QRectF&)", typeof(void), typeof(QRectF), rect);
+		}
+		[Q_SLOT("void invalidate()")]
+		public void Invalidate() {
+			interceptor.Invoke("invalidate", "invalidate()", typeof(void));
 		}
 		[Q_SLOT("void advance()")]
 		public void Advance() {
@@ -338,5 +407,7 @@ namespace Qyoto {
 		void Changed(List<QRectF> region);
 		[Q_SIGNAL("void sceneRectChanged(const QRectF&)")]
 		void SceneRectChanged(QRectF rect);
+		[Q_SIGNAL("void selectionChanged()")]
+		void SelectionChanged();
 	}
 }

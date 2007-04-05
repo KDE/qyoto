@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionProgressBarV2 : QStyleOptionProgressBar, IDisposable {
  		protected QStyleOptionProgressBarV2(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionProgressBarV2), "QStyleOptionProgressBarV2", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionProgressBarV2), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ProgressBar,

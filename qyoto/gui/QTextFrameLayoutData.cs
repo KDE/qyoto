@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextFrameLayoutData(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextFrameLayoutData), "QTextFrameLayoutData", this);
+			interceptor = new SmokeInvocation(typeof(QTextFrameLayoutData), this);
 		}
 		public QTextFrameLayoutData() : this((Type) null) {
 			CreateProxy();

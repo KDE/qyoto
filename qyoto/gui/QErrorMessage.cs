@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QErrorMessage), "QErrorMessage", this);
+			interceptor = new SmokeInvocation(typeof(QErrorMessage), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QErrorMessage() {
-			staticInterceptor = new SmokeInvocation(typeof(QErrorMessage), "QErrorMessage", null);
+			staticInterceptor = new SmokeInvocation(typeof(QErrorMessage), null);
 		}
 		public QErrorMessage(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -28,6 +28,10 @@ namespace Qyoto {
 		[SmokeMethod("done(int)")]
 		protected new virtual void Done(int arg1) {
 			interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), arg1);
+		}
+		[SmokeMethod("changeEvent(QEvent*)")]
+		protected override void ChangeEvent(QEvent e) {
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
 		}
 		~QErrorMessage() {
 			interceptor.Invoke("~QErrorMessage", "~QErrorMessage()", typeof(void));

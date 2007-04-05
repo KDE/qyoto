@@ -9,14 +9,26 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSysInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSysInfo), "QSysInfo", this);
+			interceptor = new SmokeInvocation(typeof(QSysInfo), this);
 		}
 		public enum Sizes {
 			WordSize = (4<<3),
 		}
-		public enum Endian {
-			BigEndian = 0,
-			LittleEndian = 1,
+		public enum MacVersion {
+			MV_Unknown = 0x0000,
+			MV_9 = 0x0001,
+			MV_10_0 = 0x0002,
+			MV_10_1 = 0x0003,
+			MV_10_2 = 0x0004,
+			MV_10_3 = 0x0005,
+			MV_10_4 = 0x0006,
+			MV_10_5 = 0x0007,
+			MV_CHEETAH = MV_10_0,
+			MV_PUMA = MV_10_1,
+			MV_JAGUAR = MV_10_2,
+			MV_PANTHER = MV_10_3,
+			MV_TIGER = MV_10_4,
+			MV_LEOPARD = MV_10_5,
 		}
 		public QSysInfo() : this((Type) null) {
 			CreateProxy();

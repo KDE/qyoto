@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QInputEvent : QEvent, IDisposable {
  		protected QInputEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QInputEvent), "QInputEvent", this);
+			interceptor = new SmokeInvocation(typeof(QInputEvent), this);
 		}
 		public QInputEvent(QEvent.TypeOf type, int modifiers) : this((Type) null) {
 			CreateProxy();

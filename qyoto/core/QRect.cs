@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QRect(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRect), "QRect", this);
+			interceptor = new SmokeInvocation(typeof(QRect), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRect() {
-			staticInterceptor = new SmokeInvocation(typeof(QRect), "QRect", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRect), null);
 		}
 		public QRect() : this((Type) null) {
 			CreateProxy();

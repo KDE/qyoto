@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPolygonF(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPolygonF), "QPolygonF", this);
+			interceptor = new SmokeInvocation(typeof(QPolygonF), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPolygonF() {
-			staticInterceptor = new SmokeInvocation(typeof(QPolygonF), "QPolygonF", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPolygonF), null);
 		}
 		public QPolygonF() : this((Type) null) {
 			CreateProxy();
@@ -55,6 +55,18 @@ namespace Qyoto {
 		public QRectF BoundingRect() {
 			return (QRectF) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRectF));
 		}
+		public bool Contains(QPointF pt, Qt.FillRule fillRule) {
+			return (bool) interceptor.Invoke("contains#$", "contains(const QPointF&, Qt::FillRule) const", typeof(bool), typeof(QPointF), pt, typeof(Qt.FillRule), fillRule);
+		}
+		public QPolygonF United(QPolygonF r) {
+			return (QPolygonF) interceptor.Invoke("united#", "united(const QPolygonF&) const", typeof(QPolygonF), typeof(QPolygonF), r);
+		}
+		public QPolygonF Intersected(QPolygonF r) {
+			return (QPolygonF) interceptor.Invoke("intersected#", "intersected(const QPolygonF&) const", typeof(QPolygonF), typeof(QPolygonF), r);
+		}
+		public QPolygonF Subtracted(QPolygonF r) {
+			return (QPolygonF) interceptor.Invoke("subtracted#", "subtracted(const QPolygonF&) const", typeof(QPolygonF), typeof(QPolygonF), r);
+		}
 		~QPolygonF() {
 			interceptor.Invoke("~QPolygonF", "~QPolygonF()", typeof(void));
 		}
@@ -63,6 +75,9 @@ namespace Qyoto {
 		}
 		public static QPolygonF operator*(QPolygonF a, QMatrix m) {
 			return (QPolygonF) staticInterceptor.Invoke("operator*##", "operator*(const QPolygonF&, const QMatrix&)", typeof(QPolygonF), typeof(QPolygonF), a, typeof(QMatrix), m);
+		}
+		public static QPolygonF operator*(QPolygonF a, QTransform m) {
+			return (QPolygonF) staticInterceptor.Invoke("operator*##", "operator*(const QPolygonF&, const QTransform&)", typeof(QPolygonF), typeof(QPolygonF), a, typeof(QTransform), m);
 		}
 	}
 }

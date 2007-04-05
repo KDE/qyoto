@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDropEvent : QEvent, IQMimeSource, IDisposable {
  		protected QDropEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDropEvent), "QDropEvent", this);
+			interceptor = new SmokeInvocation(typeof(QDropEvent), this);
 		}
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();

@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QCleanlooksStyle : QWindowsStyle, IDisposable {
  		protected QCleanlooksStyle(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCleanlooksStyle), "QCleanlooksStyle", this);
+			interceptor = new SmokeInvocation(typeof(QCleanlooksStyle), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCleanlooksStyle() {
-			staticInterceptor = new SmokeInvocation(typeof(QCleanlooksStyle), "QCleanlooksStyle", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCleanlooksStyle), null);
 		}
 		public QCleanlooksStyle() : this((Type) null) {
 			CreateProxy();

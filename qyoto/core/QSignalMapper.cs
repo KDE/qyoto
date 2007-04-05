@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSignalMapper : QObject, IDisposable {
  		protected QSignalMapper(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSignalMapper), "QSignalMapper", this);
+			interceptor = new SmokeInvocation(typeof(QSignalMapper), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSignalMapper() {
-			staticInterceptor = new SmokeInvocation(typeof(QSignalMapper), "QSignalMapper", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSignalMapper), null);
 		}
 		public QSignalMapper(QObject parent) : this((Type) null) {
 			CreateProxy();

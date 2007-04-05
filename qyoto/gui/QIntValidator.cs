@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QIntValidator : QValidator, IDisposable {
  		protected QIntValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QIntValidator), "QIntValidator", this);
+			interceptor = new SmokeInvocation(typeof(QIntValidator), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QIntValidator() {
-			staticInterceptor = new SmokeInvocation(typeof(QIntValidator), "QIntValidator", null);
+			staticInterceptor = new SmokeInvocation(typeof(QIntValidator), null);
 		}
 		[Q_PROPERTY("int", "bottom")]
 		public int Bottom {

@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QMetaEnum(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMetaEnum), "QMetaEnum", this);
+			interceptor = new SmokeInvocation(typeof(QMetaEnum), this);
 		}
 		public QMetaEnum() : this((Type) null) {
 			CreateProxy();

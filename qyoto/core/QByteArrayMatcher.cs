@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QByteArrayMatcher(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QByteArrayMatcher), "QByteArrayMatcher", this);
+			interceptor = new SmokeInvocation(typeof(QByteArrayMatcher), this);
 		}
 		public QByteArrayMatcher() : this((Type) null) {
 			CreateProxy();

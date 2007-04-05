@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QListWidget : QListView, IDisposable {
  		protected QListWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QListWidget), "QListWidget", this);
+			interceptor = new SmokeInvocation(typeof(QListWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QListWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QListWidget), "QListWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QListWidget), null);
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
@@ -102,6 +102,9 @@ namespace Qyoto {
 		}
 		public void SetItemWidget(QListWidgetItem item, QWidget widget) {
 			interceptor.Invoke("setItemWidget##", "setItemWidget(QListWidgetItem*, QWidget*)", typeof(void), typeof(QListWidgetItem), item, typeof(QWidget), widget);
+		}
+		public void RemoveItemWidget(QListWidgetItem item) {
+			interceptor.Invoke("removeItemWidget#", "removeItemWidget(QListWidgetItem*)", typeof(void), typeof(QListWidgetItem), item);
 		}
 		public bool IsItemSelected(QListWidgetItem item) {
 			return (bool) interceptor.Invoke("isItemSelected#", "isItemSelected(const QListWidgetItem*) const", typeof(bool), typeof(QListWidgetItem), item);

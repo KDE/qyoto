@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsSceneDragDropEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneDragDropEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsSceneDragDropEvent), "QGraphicsSceneDragDropEvent", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneDragDropEvent), this);
 		}
 		public QGraphicsSceneDragDropEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();

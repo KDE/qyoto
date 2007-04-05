@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFont(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFont), "QFont", this);
+			interceptor = new SmokeInvocation(typeof(QFont), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFont() {
-			staticInterceptor = new SmokeInvocation(typeof(QFont), "QFont", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFont), null);
 		}
 		public enum StyleHint {
 			Helvetica = 0,

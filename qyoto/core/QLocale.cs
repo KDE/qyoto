@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QLocale(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLocale), "QLocale", this);
+			interceptor = new SmokeInvocation(typeof(QLocale), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLocale() {
-			staticInterceptor = new SmokeInvocation(typeof(QLocale), "QLocale", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLocale), null);
 		}
 		public enum Language {
 			C = 1,
@@ -101,6 +101,7 @@ namespace Qyoto {
 			NauruLanguage = 83,
 			Nepali = 84,
 			Norwegian = 85,
+			NorwegianBokmal = Norwegian,
 			Occitan = 86,
 			Oriya = 87,
 			Pashto = 88,
@@ -156,12 +157,33 @@ namespace Qyoto {
 			Yoruba = 138,
 			Zhuang = 139,
 			Zulu = 140,
-			Nynorsk = 141,
+			NorwegianNynorsk = 141,
+			Nynorsk = NorwegianNynorsk,
 			Bosnian = 142,
 			Divehi = 143,
 			Manx = 144,
 			Cornish = 145,
-			LastLanguage = Cornish,
+			Akan = 146,
+			Konkani = 147,
+			Ga = 148,
+			Igbo = 149,
+			Kamba = 150,
+			Syriac = 151,
+			Blin = 152,
+			Geez = 153,
+			Koro = 154,
+			Sidamo = 155,
+			Atsam = 156,
+			Tigre = 157,
+			Jju = 158,
+			Friulian = 159,
+			Venda = 160,
+			Ewe = 161,
+			Walamo = 162,
+			Hawaiian = 163,
+			Tyap = 164,
+			Chewa = 165,
+			LastLanguage = Chewa,
 		}
 		public enum Country {
 			AnyCountry = 0,
@@ -416,6 +438,7 @@ namespace Qyoto {
 			OmitGroupSeparator = 0x01,
 			RejectGroupSeparator = 0x02,
 		}
+		// QList<QLocale::Country> countriesForLanguage(QLocale::Language arg1); >>>> NOT CONVERTED
 		public QLocale() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLocale", "QLocale()", typeof(void));

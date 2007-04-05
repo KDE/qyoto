@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QFtp : QObject, IDisposable {
  		protected QFtp(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFtp), "QFtp", this);
+			interceptor = new SmokeInvocation(typeof(QFtp), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFtp() {
-			staticInterceptor = new SmokeInvocation(typeof(QFtp), "QFtp", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFtp), null);
 		}
 		public enum State {
 			Unconnected = 0,

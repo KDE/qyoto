@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDomImplementation(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomImplementation), "QDomImplementation", this);
+			interceptor = new SmokeInvocation(typeof(QDomImplementation), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDomImplementation() {
-			staticInterceptor = new SmokeInvocation(typeof(QDomImplementation), "QDomImplementation", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDomImplementation), null);
 		}
 		public enum InvalidDataPolicy {
 			AcceptInvalidChars = 0,

@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPen(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPen), "QPen", this);
+			interceptor = new SmokeInvocation(typeof(QPen), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPen() {
-			staticInterceptor = new SmokeInvocation(typeof(QPen), "QPen", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPen), null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPen() : this((Type) null) {
@@ -61,6 +61,12 @@ namespace Qyoto {
 		public void SetDashPattern(List<double> pattern) {
 			interceptor.Invoke("setDashPattern?", "setDashPattern(const QVector<qreal>&)", typeof(void), typeof(List<double>), pattern);
 		}
+		public double DashOffset() {
+			return (double) interceptor.Invoke("dashOffset", "dashOffset() const", typeof(double));
+		}
+		public void SetDashOffset(double doffset) {
+			interceptor.Invoke("setDashOffset$", "setDashOffset(qreal)", typeof(void), typeof(double), doffset);
+		}
 		public double MiterLimit() {
 			return (double) interceptor.Invoke("miterLimit", "miterLimit() const", typeof(double));
 		}
@@ -105,6 +111,12 @@ namespace Qyoto {
 		}
 		public void SetJoinStyle(Qt.PenJoinStyle pcs) {
 			interceptor.Invoke("setJoinStyle$", "setJoinStyle(Qt::PenJoinStyle)", typeof(void), typeof(Qt.PenJoinStyle), pcs);
+		}
+		public bool IsCosmetic() {
+			return (bool) interceptor.Invoke("isCosmetic", "isCosmetic() const", typeof(bool));
+		}
+		public void SetCosmetic(bool cosmetic) {
+			interceptor.Invoke("setCosmetic$", "setCosmetic(bool)", typeof(void), typeof(bool), cosmetic);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPen)) { return false; }

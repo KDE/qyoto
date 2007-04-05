@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTextBlockGroup : QTextObject {
  		protected QTextBlockGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextBlockGroup), "QTextBlockGroup", this);
+			interceptor = new SmokeInvocation(typeof(QTextBlockGroup), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextBlockGroup() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextBlockGroup), "QTextBlockGroup", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextBlockGroup), null);
 		}
 		public QTextBlockGroup(QTextDocument doc) : this((Type) null) {
 			CreateProxy();

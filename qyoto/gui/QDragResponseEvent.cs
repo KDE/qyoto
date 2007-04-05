@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDragResponseEvent : QEvent, IDisposable {
  		protected QDragResponseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDragResponseEvent), "QDragResponseEvent", this);
+			interceptor = new SmokeInvocation(typeof(QDragResponseEvent), this);
 		}
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
 			CreateProxy();

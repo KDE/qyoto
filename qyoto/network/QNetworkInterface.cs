@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QNetworkInterface(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QNetworkInterface), "QNetworkInterface", this);
+			interceptor = new SmokeInvocation(typeof(QNetworkInterface), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QNetworkInterface() {
-			staticInterceptor = new SmokeInvocation(typeof(QNetworkInterface), "QNetworkInterface", null);
+			staticInterceptor = new SmokeInvocation(typeof(QNetworkInterface), null);
 		}
 		public enum InterfaceFlag {
 			IsUp = 0x1,

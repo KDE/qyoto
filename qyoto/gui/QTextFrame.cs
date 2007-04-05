@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTextFrame : QTextObject, IDisposable {
  		protected QTextFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextFrame), "QTextFrame", this);
+			interceptor = new SmokeInvocation(typeof(QTextFrame), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextFrame() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextFrame), "QTextFrame", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextFrame), null);
 		}
 		public QTextFrame(QTextDocument doc) : this((Type) null) {
 			CreateProxy();

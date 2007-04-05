@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QGLPixelBuffer : QPaintDevice, IDisposable {
  		protected QGLPixelBuffer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGLPixelBuffer), "QGLPixelBuffer", this);
+			interceptor = new SmokeInvocation(typeof(QGLPixelBuffer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGLPixelBuffer() {
-			staticInterceptor = new SmokeInvocation(typeof(QGLPixelBuffer), "QGLPixelBuffer", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGLPixelBuffer), null);
 		}
 		public QGLPixelBuffer(QSize size, QGLFormat format, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();

@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 
+	[SmokeClass("QGL")]
 	public class QGL : Object {
 		protected SmokeInvocation interceptor = null;
 		public enum FormatOption {

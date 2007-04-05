@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QFile : QIODevice, IDisposable {
  		protected QFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFile), "QFile", this);
+			interceptor = new SmokeInvocation(typeof(QFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFile() {
-			staticInterceptor = new SmokeInvocation(typeof(QFile), "QFile", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFile), null);
 		}
 		public enum FileError {
 			NoError = 0,

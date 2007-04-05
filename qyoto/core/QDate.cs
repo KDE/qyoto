@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDate(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDate), "QDate", this);
+			interceptor = new SmokeInvocation(typeof(QDate), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDate() {
-			staticInterceptor = new SmokeInvocation(typeof(QDate), "QDate", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDate), null);
 		}
 		public QDate() : this((Type) null) {
 			CreateProxy();

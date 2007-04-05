@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPaintEngine(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPaintEngine), "QPaintEngine", this);
+			interceptor = new SmokeInvocation(typeof(QPaintEngine), this);
 		}
 		public enum PaintEngineFeature : uint {
 			PrimitiveTransform = 0x00000001,
@@ -26,6 +26,8 @@ namespace Qyoto {
 			BrushStroke = 0x00000800,
 			ConstantOpacity = 0x00001000,
 			MaskedBrush = 0x00002000,
+			PerspectiveTransform = 0x00004000,
+			BlendModes = 0x00008000,
 			PaintOutsidePaintEvent = 0x20000000,
 			AllFeatures = 0xffffffff,
 		}
@@ -63,6 +65,7 @@ namespace Qyoto {
 			Picture = 8,
 			SVG = 9,
 			Raster = 10,
+			Direct3D = 11,
 			User = 50,
 			MaxUser = 100,
 		}

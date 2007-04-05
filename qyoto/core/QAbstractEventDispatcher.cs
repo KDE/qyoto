@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractEventDispatcher : QObject {
  		protected QAbstractEventDispatcher(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractEventDispatcher), "QAbstractEventDispatcher", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractEventDispatcher), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractEventDispatcher() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractEventDispatcher), "QAbstractEventDispatcher", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractEventDispatcher), null);
 		}
 		// QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* arg1); >>>> NOT CONVERTED
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED

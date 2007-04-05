@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QTextTable : QTextFrame, IDisposable {
  		protected QTextTable(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextTable), "QTextTable", this);
+			interceptor = new SmokeInvocation(typeof(QTextTable), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextTable() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextTable), "QTextTable", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextTable), null);
 		}
 		public QTextTable(QTextDocument doc) : this((Type) null) {
 			CreateProxy();

@@ -10,7 +10,7 @@ namespace Qyoto {
 		protected QByteRef(Type dummy) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QByteRef() {
-			staticInterceptor = new SmokeInvocation(typeof(QByteRef), "QByteRef", null);
+			staticInterceptor = new SmokeInvocation(typeof(QByteRef), null);
 		}
 		//  operator const char(); >>>> NOT CONVERTED
 		public static bool operator==(QByteRef lhs, char c) {

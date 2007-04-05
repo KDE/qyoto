@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 
+	[SmokeClass("QSql")]
 	public class QSql : Object {
 		protected SmokeInvocation interceptor = null;
 		public enum Location {
@@ -20,6 +21,12 @@ namespace Qyoto {
 			SystemTables = 0x02,
 			Views = 0x04,
 			AllTables = 0xff,
+		}
+		public enum NumericalPrecisionPolicy {
+			LowPrecisionInt32 = 0x01,
+			LowPrecisionInt64 = 0x02,
+			LowPrecisionDouble = 0x04,
+			HighPrecision = 0,
 		}
 	}
 }

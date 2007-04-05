@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QInputMethodEvent : QEvent, IDisposable {
  		protected QInputMethodEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QInputMethodEvent), "QInputMethodEvent", this);
+			interceptor = new SmokeInvocation(typeof(QInputMethodEvent), this);
 		}
 		public enum AttributeType {
 			TextFormat = 0,

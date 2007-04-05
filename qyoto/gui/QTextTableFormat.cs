@@ -8,7 +8,7 @@ namespace Qyoto {
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
  		protected QTextTableFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextTableFormat), "QTextTableFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextTableFormat), this);
 		}
 		public QTextTableFormat() : this((Type) null) {
 			CreateProxy();

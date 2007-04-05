@@ -7,11 +7,16 @@ namespace Qyoto {
 	public class QTimeEdit : QDateTimeEdit, IDisposable {
  		protected QTimeEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTimeEdit), "QTimeEdit", this);
+			interceptor = new SmokeInvocation(typeof(QTimeEdit), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTimeEdit() {
-			staticInterceptor = new SmokeInvocation(typeof(QTimeEdit), "QTimeEdit", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTimeEdit), null);
+		}
+		[Q_PROPERTY("QTime", "time")]
+		public QTime Time {
+			get { return (QTime) interceptor.Invoke("time", "time()", typeof(QTime)); }
+			set { interceptor.Invoke("setTime#", "setTime(QTime)", typeof(void), typeof(QTime), value); }
 		}
 		public QTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();

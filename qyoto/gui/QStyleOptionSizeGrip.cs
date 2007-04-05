@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionSizeGrip : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSizeGrip(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionSizeGrip), "QStyleOptionSizeGrip", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionSizeGrip), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SizeGrip,

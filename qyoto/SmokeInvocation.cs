@@ -379,11 +379,11 @@ namespace Qyoto {
 
 		private static Dictionary<Type, Dictionary<string, int>> globalMethodIdCache = new Dictionary<Type, Dictionary<string, int>>();
 		
-		public SmokeInvocation(Type klass, string name, Object obj) 
+		public SmokeInvocation(Type klass, Object obj) 
 		{
 			classToProxy = klass;
 			instance = obj;
-			className = name;
+			className = SmokeMarshallers.SmokeClassName(klass);
 
 			if (!globalMethodIdCache.TryGetValue(classToProxy, out methodIdCache)) {
 				methodIdCache = new Dictionary<string, int>();
@@ -398,7 +398,7 @@ namespace Qyoto {
 		public object Invoke(string mungedName, string signature, Type returnType, params object[] args) {
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
-				Console.WriteLine(	"ENTER TestSmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									className,
 									signature, 
 									returnType, 

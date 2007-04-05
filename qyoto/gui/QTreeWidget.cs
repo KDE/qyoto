@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QTreeWidget : QTreeView, IDisposable {
  		protected QTreeWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTreeWidget), "QTreeWidget", this);
+			interceptor = new SmokeInvocation(typeof(QTreeWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTreeWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QTreeWidget), "QTreeWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTreeWidget), null);
 		}
 		[Q_PROPERTY("int", "columnCount")]
 		public int ColumnCount {
@@ -125,6 +125,9 @@ namespace Qyoto {
 		public void SetItemWidget(QTreeWidgetItem item, int column, QWidget widget) {
 			interceptor.Invoke("setItemWidget#$#", "setItemWidget(QTreeWidgetItem*, int, QWidget*)", typeof(void), typeof(QTreeWidgetItem), item, typeof(int), column, typeof(QWidget), widget);
 		}
+		public void RemoveItemWidget(QTreeWidgetItem item, int column) {
+			interceptor.Invoke("removeItemWidget#$", "removeItemWidget(QTreeWidgetItem*, int)", typeof(void), typeof(QTreeWidgetItem), item, typeof(int), column);
+		}
 		public bool IsItemSelected(QTreeWidgetItem item) {
 			return (bool) interceptor.Invoke("isItemSelected#", "isItemSelected(const QTreeWidgetItem*) const", typeof(bool), typeof(QTreeWidgetItem), item);
 		}
@@ -151,6 +154,18 @@ namespace Qyoto {
 		}
 		public void SetItemExpanded(QTreeWidgetItem item, bool expand) {
 			interceptor.Invoke("setItemExpanded#$", "setItemExpanded(const QTreeWidgetItem*, bool)", typeof(void), typeof(QTreeWidgetItem), item, typeof(bool), expand);
+		}
+		public bool IsItemSpanning(QTreeWidgetItem item) {
+			return (bool) interceptor.Invoke("isItemSpanning#", "isItemSpanning(const QTreeWidgetItem*) const", typeof(bool), typeof(QTreeWidgetItem), item);
+		}
+		public void SetItemSpanning(QTreeWidgetItem item, bool span) {
+			interceptor.Invoke("setItemSpanning#$", "setItemSpanning(const QTreeWidgetItem*, bool)", typeof(void), typeof(QTreeWidgetItem), item, typeof(bool), span);
+		}
+		public QTreeWidgetItem ItemAbove(QTreeWidgetItem item) {
+			return (QTreeWidgetItem) interceptor.Invoke("itemAbove#", "itemAbove(const QTreeWidgetItem*) const", typeof(QTreeWidgetItem), typeof(QTreeWidgetItem), item);
+		}
+		public QTreeWidgetItem ItemBelow(QTreeWidgetItem item) {
+			return (QTreeWidgetItem) interceptor.Invoke("itemBelow#", "itemBelow(const QTreeWidgetItem*) const", typeof(QTreeWidgetItem), typeof(QTreeWidgetItem), item);
 		}
 		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTreeWidgetItem item, QAbstractItemView.ScrollHint hint) {

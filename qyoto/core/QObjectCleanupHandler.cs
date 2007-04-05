@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QObjectCleanupHandler : QObject, IDisposable {
  		protected QObjectCleanupHandler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QObjectCleanupHandler), "QObjectCleanupHandler", this);
+			interceptor = new SmokeInvocation(typeof(QObjectCleanupHandler), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QObjectCleanupHandler() {
-			staticInterceptor = new SmokeInvocation(typeof(QObjectCleanupHandler), "QObjectCleanupHandler", null);
+			staticInterceptor = new SmokeInvocation(typeof(QObjectCleanupHandler), null);
 		}
 		public QObjectCleanupHandler() : this((Type) null) {
 			CreateProxy();

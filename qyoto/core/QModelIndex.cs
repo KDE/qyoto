@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QModelIndex(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QModelIndex), "QModelIndex", this);
+			interceptor = new SmokeInvocation(typeof(QModelIndex), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QModelIndex() {
-			staticInterceptor = new SmokeInvocation(typeof(QModelIndex), "QModelIndex", null);
+			staticInterceptor = new SmokeInvocation(typeof(QModelIndex), null);
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
 		public QModelIndex() : this((Type) null) {

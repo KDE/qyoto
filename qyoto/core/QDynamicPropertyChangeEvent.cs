@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDynamicPropertyChangeEvent : QEvent, IDisposable {
  		protected QDynamicPropertyChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDynamicPropertyChangeEvent), "QDynamicPropertyChangeEvent", this);
+			interceptor = new SmokeInvocation(typeof(QDynamicPropertyChangeEvent), this);
 		}
 		public QDynamicPropertyChangeEvent(QByteArray name) : this((Type) null) {
 			CreateProxy();

@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QAccessible(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessible), "QAccessible", this);
+			interceptor = new SmokeInvocation(typeof(QAccessible), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAccessible() {
-			staticInterceptor = new SmokeInvocation(typeof(QAccessible), "QAccessible", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAccessible), null);
 		}
 		public enum Event {
 			SoundPlayed = 0x0001,
@@ -200,6 +200,8 @@ namespace Qyoto {
 			ListSupportedMethods = 0,
 			SetCursorPosition = 1,
 			GetCursorPosition = 2,
+			ForegroundColor = 3,
+			BackgroundColor = 4,
 		}
 		// void installFactory(InterfaceFactory arg1); >>>> NOT CONVERTED
 		// void removeFactory(InterfaceFactory arg1); >>>> NOT CONVERTED

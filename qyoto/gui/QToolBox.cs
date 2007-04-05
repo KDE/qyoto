@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QToolBox : QFrame, IDisposable {
  		protected QToolBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QToolBox), "QToolBox", this);
+			interceptor = new SmokeInvocation(typeof(QToolBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QToolBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QToolBox), "QToolBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QToolBox), null);
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QSqlDriver : QObject {
  		protected QSqlDriver(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlDriver), "QSqlDriver", this);
+			interceptor = new SmokeInvocation(typeof(QSqlDriver), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlDriver() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlDriver), "QSqlDriver", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlDriver), null);
 		}
 		public enum DriverFeature {
 			Transactions = 0,
@@ -24,6 +24,8 @@ namespace Qyoto {
 			PositionalPlaceholders = 6,
 			LastInsertId = 7,
 			BatchOperations = 8,
+			SimpleLocking = 9,
+			LowPrecisionNumbers = 10,
 		}
 		public enum StatementType {
 			WhereStatement = 0,

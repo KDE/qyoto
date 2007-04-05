@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionGroupBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionGroupBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionGroupBox), "QStyleOptionGroupBox", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionGroupBox), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GroupBox,

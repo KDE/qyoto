@@ -15,7 +15,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QMimeSource(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMimeSource), "QMimeSource", this);
+			interceptor = new SmokeInvocation(typeof(QMimeSource), this);
 		}
 		[SmokeMethod("format(int) const")]
 		public abstract string Format(int n);

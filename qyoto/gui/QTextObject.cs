@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QTextObject : QObject {
  		protected QTextObject(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextObject), "QTextObject", this);
+			interceptor = new SmokeInvocation(typeof(QTextObject), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextObject() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextObject), "QTextObject", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextObject), null);
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		public QTextFormat Format() {

@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QDial : QAbstractSlider, IDisposable {
  		protected QDial(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDial), "QDial", this);
+			interceptor = new SmokeInvocation(typeof(QDial), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDial() {
-			staticInterceptor = new SmokeInvocation(typeof(QDial), "QDial", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDial), null);
 		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
@@ -75,6 +75,9 @@ namespace Qyoto {
 		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
 		protected override void sliderChange(QAbstractSlider.SliderChange change) {
 			interceptor.Invoke("sliderChange$", "sliderChange(QAbstractSlider::SliderChange)", typeof(void), typeof(QAbstractSlider.SliderChange), change);
+		}
+		protected void InitStyleOption(QStyleOptionSlider option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSlider*) const", typeof(void), typeof(QStyleOptionSlider), option);
 		}
 		~QDial() {
 			interceptor.Invoke("~QDial", "~QDial()", typeof(void));

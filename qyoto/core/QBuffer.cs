@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QBuffer : QIODevice, IDisposable {
  		protected QBuffer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QBuffer), "QBuffer", this);
+			interceptor = new SmokeInvocation(typeof(QBuffer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QBuffer() {
-			staticInterceptor = new SmokeInvocation(typeof(QBuffer), "QBuffer", null);
+			staticInterceptor = new SmokeInvocation(typeof(QBuffer), null);
 		}
 		public QBuffer(QObject parent) : this((Type) null) {
 			CreateProxy();

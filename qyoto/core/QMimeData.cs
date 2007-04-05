@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QMimeData : QObject, IDisposable {
  		protected QMimeData(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMimeData), "QMimeData", this);
+			interceptor = new SmokeInvocation(typeof(QMimeData), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMimeData() {
-			staticInterceptor = new SmokeInvocation(typeof(QMimeData), "QMimeData", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMimeData), null);
 		}
 		public QMimeData() : this((Type) null) {
 			CreateProxy();

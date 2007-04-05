@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QWindowsStyle : QCommonStyle, IDisposable {
  		protected QWindowsStyle(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWindowsStyle), "QWindowsStyle", this);
+			interceptor = new SmokeInvocation(typeof(QWindowsStyle), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QWindowsStyle() {
-			staticInterceptor = new SmokeInvocation(typeof(QWindowsStyle), "QWindowsStyle", null);
+			staticInterceptor = new SmokeInvocation(typeof(QWindowsStyle), null);
 		}
 		// QWindowsStyle* QWindowsStyle(QWindowsStylePrivate& arg1); >>>> NOT CONVERTED
 		public QWindowsStyle() : this((Type) null) {

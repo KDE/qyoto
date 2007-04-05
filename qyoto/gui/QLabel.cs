@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLabel), "QLabel", this);
+			interceptor = new SmokeInvocation(typeof(QLabel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLabel() {
-			staticInterceptor = new SmokeInvocation(typeof(QLabel), "QLabel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLabel), null);
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {

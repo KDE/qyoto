@@ -7,7 +7,7 @@ namespace Qyoto {
 	public abstract class QAccessibleBridgeFactoryInterface : QFactoryInterface {
  		protected QAccessibleBridgeFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleBridgeFactoryInterface), "QAccessibleBridgeFactoryInterface", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleBridgeFactoryInterface), this);
 		}
 		[SmokeMethod("create(const QString&)")]
 		public abstract QAccessibleBridge Create(string name);

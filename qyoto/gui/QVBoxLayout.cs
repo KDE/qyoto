@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QVBoxLayout : QBoxLayout, IDisposable {
  		protected QVBoxLayout(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QVBoxLayout), "QVBoxLayout", this);
+			interceptor = new SmokeInvocation(typeof(QVBoxLayout), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QVBoxLayout() {
-			staticInterceptor = new SmokeInvocation(typeof(QVBoxLayout), "QVBoxLayout", null);
+			staticInterceptor = new SmokeInvocation(typeof(QVBoxLayout), null);
 		}
 		public QVBoxLayout() : this((Type) null) {
 			CreateProxy();

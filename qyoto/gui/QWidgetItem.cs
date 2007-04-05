@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QWidgetItem : QLayoutItem, IDisposable {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWidgetItem), "QWidgetItem", this);
+			interceptor = new SmokeInvocation(typeof(QWidgetItem), this);
 		}
 		public QWidgetItem(QWidget w) : this((Type) null) {
 			CreateProxy();

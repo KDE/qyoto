@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsEllipseItem : QAbstractGraphicsShapeItem, IDisposable {
  		protected QGraphicsEllipseItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsEllipseItem), "QGraphicsEllipseItem", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsEllipseItem), this);
 		}
 		public const int Type = 4;
 

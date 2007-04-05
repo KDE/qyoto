@@ -7,11 +7,11 @@ namespace Qyoto {
 	public abstract class QDBusAbstractAdaptor : QObject, IDisposable {
  		protected QDBusAbstractAdaptor(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), "QDBusAbstractAdaptor", this);
+			interceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusAbstractAdaptor() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), "QDBusAbstractAdaptor", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), null);
 		}
 		public QDBusAbstractAdaptor(QObject parent) : this((Type) null) {
 			CreateProxy();

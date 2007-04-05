@@ -7,11 +7,11 @@ namespace Qyoto {
 	public abstract class QLayout : QObject, IQLayoutItem {
  		protected QLayout(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLayout), "QLayout", this);
+			interceptor = new SmokeInvocation(typeof(QLayout), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLayout() {
-			staticInterceptor = new SmokeInvocation(typeof(QLayout), "QLayout", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLayout), null);
 		}
 		public enum SizeConstraint {
 			SetDefaultConstraint = 0,
@@ -36,6 +36,7 @@ namespace Qyoto {
 			get { return (QLayout.SizeConstraint) interceptor.Invoke("sizeConstraint", "sizeConstraint()", typeof(QLayout.SizeConstraint)); }
 			set { interceptor.Invoke("setSizeConstraint$", "setSizeConstraint(QLayout::SizeConstraint)", typeof(void), typeof(QLayout.SizeConstraint), value); }
 		}
+		// QSizePolicy::ControlTypes controlTypes(); >>>> NOT CONVERTED
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLayout#", "QLayout(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -43,6 +44,15 @@ namespace Qyoto {
 		public QLayout() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLayout", "QLayout()", typeof(void));
+		}
+		public void SetContentsMargins(int left, int top, int right, int bottom) {
+			interceptor.Invoke("setContentsMargins$$$$", "setContentsMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
+		}
+		public void GetContentsMargins(int left, int top, int right, int bottom) {
+			interceptor.Invoke("getContentsMargins$$$$", "getContentsMargins(int*, int*, int*, int*) const", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
+		}
+		public QRect ContentsRect() {
+			return (QRect) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRect));
 		}
 		public bool SetAlignment(QWidget w, int alignment) {
 			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QWidget*, Qt::Alignment)", typeof(bool), typeof(QWidget), w, typeof(int), alignment);

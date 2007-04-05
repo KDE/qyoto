@@ -8,7 +8,7 @@ namespace Qyoto {
 	public class QPrinter : QPaintDevice, IDisposable {
  		protected QPrinter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPrinter), "QPrinter", this);
+			interceptor = new SmokeInvocation(typeof(QPrinter), this);
 		}
 		public enum PrinterMode {
 			ScreenResolution = 0,
@@ -75,6 +75,7 @@ namespace Qyoto {
 			LargeCapacity = 10,
 			Cassette = 11,
 			FormSource = 12,
+			MaxPageSource = 13,
 		}
 		public enum PrinterState {
 			Idle = 0,

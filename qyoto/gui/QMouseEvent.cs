@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QMouseEvent : QInputEvent, IDisposable {
  		protected QMouseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMouseEvent), "QMouseEvent", this);
+			interceptor = new SmokeInvocation(typeof(QMouseEvent), this);
 		}
 		public QMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();

@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QIcon(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QIcon), "QIcon", this);
+			interceptor = new SmokeInvocation(typeof(QIcon), this);
 		}
 		public enum Mode {
 			Normal = 0,
@@ -41,6 +41,10 @@ namespace Qyoto {
 		public QIcon(QIconEngine engine) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QIcon#", "QIcon(QIconEngine*)", typeof(void), typeof(QIconEngine), engine);
+		}
+		public QIcon(QIconEngineV2 engine) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QIcon#", "QIcon(QIconEngineV2*)", typeof(void), typeof(QIconEngineV2), engine);
 		}
 		public QPixmap Pixmap(QSize size, QIcon.Mode mode, QIcon.State state) {
 			return (QPixmap) interceptor.Invoke("pixmap#$$", "pixmap(const QSize&, QIcon::Mode, QIcon::State) const", typeof(QPixmap), typeof(QSize), size, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
@@ -108,8 +112,14 @@ namespace Qyoto {
 		public bool IsDetached() {
 			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
+		public void Detach() {
+			interceptor.Invoke("detach", "detach()", typeof(void));
+		}
 		public int SerialNumber() {
 			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
+		}
+		public long CacheKey() {
+			return (long) interceptor.Invoke("cacheKey", "cacheKey() const", typeof(long));
 		}
 		public void AddPixmap(QPixmap pixmap, QIcon.Mode mode, QIcon.State state) {
 			interceptor.Invoke("addPixmap#$$", "addPixmap(const QPixmap&, QIcon::Mode, QIcon::State)", typeof(void), typeof(QPixmap), pixmap, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);

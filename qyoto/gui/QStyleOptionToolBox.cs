@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionToolBox : QStyleOption, IDisposable {
  		protected QStyleOptionToolBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionToolBox), "QStyleOptionToolBox", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionToolBox), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ToolBox,

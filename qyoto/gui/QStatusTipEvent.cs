@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStatusTipEvent : QEvent, IDisposable {
  		protected QStatusTipEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStatusTipEvent), "QStatusTipEvent", this);
+			interceptor = new SmokeInvocation(typeof(QStatusTipEvent), this);
 		}
 		public QStatusTipEvent(string tip) : this((Type) null) {
 			CreateProxy();

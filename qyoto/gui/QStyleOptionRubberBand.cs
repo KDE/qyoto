@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionRubberBand : QStyleOption, IDisposable {
  		protected QStyleOptionRubberBand(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionRubberBand), "QStyleOptionRubberBand", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionRubberBand), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_RubberBand,

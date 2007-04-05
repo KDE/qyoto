@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QLine(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLine), "QLine", this);
+			interceptor = new SmokeInvocation(typeof(QLine), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLine() {
-			staticInterceptor = new SmokeInvocation(typeof(QLine), "QLine", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLine), null);
 		}
 		public QLine() : this((Type) null) {
 			CreateProxy();
@@ -81,6 +81,9 @@ namespace Qyoto {
 		}
 		public static QLine operator*(QLine l, QMatrix m) {
 			return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QMatrix&)", typeof(QLine), typeof(QLine), l, typeof(QMatrix), m);
+		}
+		public static QLine operator*(QLine l, QTransform m) {
+			return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QTransform&)", typeof(QLine), typeof(QLine), l, typeof(QTransform), m);
 		}
 	}
 }

@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QHostInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHostInfo), "QHostInfo", this);
+			interceptor = new SmokeInvocation(typeof(QHostInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QHostInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(QHostInfo), "QHostInfo", null);
+			staticInterceptor = new SmokeInvocation(typeof(QHostInfo), null);
 		}
 		public enum HostInfoError {
 			NoError = 0,

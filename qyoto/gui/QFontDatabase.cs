@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFontDatabase(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFontDatabase), "QFontDatabase", this);
+			interceptor = new SmokeInvocation(typeof(QFontDatabase), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFontDatabase() {
-			staticInterceptor = new SmokeInvocation(typeof(QFontDatabase), "QFontDatabase", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFontDatabase), null);
 		}
 		public enum WritingSystem {
 			Any = 0,

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QDataWidgetMapper : QObject, IDisposable {
  		protected QDataWidgetMapper(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDataWidgetMapper), "QDataWidgetMapper", this);
+			interceptor = new SmokeInvocation(typeof(QDataWidgetMapper), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDataWidgetMapper() {
-			staticInterceptor = new SmokeInvocation(typeof(QDataWidgetMapper), "QDataWidgetMapper", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDataWidgetMapper), null);
 		}
 		public enum SubmitPolicy {
 			AutoSubmit = 0,
@@ -62,11 +62,17 @@ namespace Qyoto {
 		public void AddMapping(QWidget widget, int section) {
 			interceptor.Invoke("addMapping#$", "addMapping(QWidget*, int)", typeof(void), typeof(QWidget), widget, typeof(int), section);
 		}
+		public void AddMapping(QWidget widget, int section, QByteArray propertyName) {
+			interceptor.Invoke("addMapping#$#", "addMapping(QWidget*, int, const QByteArray&)", typeof(void), typeof(QWidget), widget, typeof(int), section, typeof(QByteArray), propertyName);
+		}
 		public void RemoveMapping(QWidget widget) {
 			interceptor.Invoke("removeMapping#", "removeMapping(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		public int MappedSection(QWidget widget) {
 			return (int) interceptor.Invoke("mappedSection#", "mappedSection(QWidget*) const", typeof(int), typeof(QWidget), widget);
+		}
+		public QByteArray MappedPropertyName(QWidget widget) {
+			return (QByteArray) interceptor.Invoke("mappedPropertyName#", "mappedPropertyName(QWidget*) const", typeof(QByteArray), typeof(QWidget), widget);
 		}
 		public QWidget MappedWidgetAt(int section) {
 			return (QWidget) interceptor.Invoke("mappedWidgetAt$", "mappedWidgetAt(int) const", typeof(QWidget), typeof(int), section);

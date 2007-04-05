@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QSqlIndex : QSqlRecord, IDisposable {
  		protected QSqlIndex(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlIndex), "QSqlIndex", this);
+			interceptor = new SmokeInvocation(typeof(QSqlIndex), this);
 		}
 		public QSqlIndex(string cursorName, string name) : this((Type) null) {
 			CreateProxy();

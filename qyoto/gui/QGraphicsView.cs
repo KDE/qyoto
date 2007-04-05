@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QGraphicsView : QAbstractScrollArea, IDisposable {
  		protected QGraphicsView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsView), "QGraphicsView", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGraphicsView() {
-			staticInterceptor = new SmokeInvocation(typeof(QGraphicsView), "QGraphicsView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGraphicsView), null);
 		}
 		public enum ViewportAnchor {
 			NoAnchor = 0,
@@ -27,6 +27,17 @@ namespace Qyoto {
 			NoDrag = 0,
 			ScrollHandDrag = 1,
 			RubberBandDrag = 2,
+		}
+		public enum ViewportUpdateMode {
+			FullViewportUpdate = 0,
+			MinimalViewportUpdate = 1,
+			SmartViewportUpdate = 2,
+			NoViewportUpdate = 3,
+		}
+		public enum OptimizationFlag {
+			DontClipPainter = 0x1,
+			DontSavePainterState = 0x2,
+			DontAdjustForAntialiasing = 0x4,
 		}
 		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
@@ -78,6 +89,17 @@ namespace Qyoto {
 			get { return (QGraphicsView.ViewportAnchor) interceptor.Invoke("resizeAnchor", "resizeAnchor()", typeof(QGraphicsView.ViewportAnchor)); }
 			set { interceptor.Invoke("setResizeAnchor$", "setResizeAnchor(QGraphicsView::ViewportAnchor)", typeof(void), typeof(QGraphicsView.ViewportAnchor), value); }
 		}
+		[Q_PROPERTY("QGraphicsView::ViewportUpdateMode", "viewportUpdateMode")]
+		public QGraphicsView.ViewportUpdateMode viewportUpdateMode {
+			get { return (QGraphicsView.ViewportUpdateMode) interceptor.Invoke("viewportUpdateMode", "viewportUpdateMode()", typeof(QGraphicsView.ViewportUpdateMode)); }
+			set { interceptor.Invoke("setViewportUpdateMode$", "setViewportUpdateMode(QGraphicsView::ViewportUpdateMode)", typeof(void), typeof(QGraphicsView.ViewportUpdateMode), value); }
+		}
+		[Q_PROPERTY("Qt::ItemSelectionMode", "rubberBandSelectionMode")]
+		public Qt.ItemSelectionMode RubberBandSelectionMode {
+			get { return (Qt.ItemSelectionMode) interceptor.Invoke("rubberBandSelectionMode", "rubberBandSelectionMode()", typeof(Qt.ItemSelectionMode)); }
+			set { interceptor.Invoke("setRubberBandSelectionMode$", "setRubberBandSelectionMode(Qt::ItemSelectionMode)", typeof(void), typeof(Qt.ItemSelectionMode), value); }
+		}
+		// void invalidateScene(const QRectF& arg1,QGraphicsScene::SceneLayers arg2); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -105,6 +127,12 @@ namespace Qyoto {
 		public void SetRenderHint(QPainter.RenderHint hint) {
 			interceptor.Invoke("setRenderHint$", "setRenderHint(QPainter::RenderHint)", typeof(void), typeof(QPainter.RenderHint), hint);
 		}
+		public void SetOptimizationFlag(QGraphicsView.OptimizationFlag flag, bool enabled) {
+			interceptor.Invoke("setOptimizationFlag$$", "setOptimizationFlag(QGraphicsView::OptimizationFlag, bool)", typeof(void), typeof(QGraphicsView.OptimizationFlag), flag, typeof(bool), enabled);
+		}
+		public void SetOptimizationFlag(QGraphicsView.OptimizationFlag flag) {
+			interceptor.Invoke("setOptimizationFlag$", "setOptimizationFlag(QGraphicsView::OptimizationFlag)", typeof(void), typeof(QGraphicsView.OptimizationFlag), flag);
+		}
 		public void ResetCachedContent() {
 			interceptor.Invoke("resetCachedContent", "resetCachedContent()", typeof(void));
 		}
@@ -131,6 +159,21 @@ namespace Qyoto {
 		}
 		public void ResetMatrix() {
 			interceptor.Invoke("resetMatrix", "resetMatrix()", typeof(void));
+		}
+		public QTransform Transform() {
+			return (QTransform) interceptor.Invoke("transform", "transform() const", typeof(QTransform));
+		}
+		public QTransform ViewportTransform() {
+			return (QTransform) interceptor.Invoke("viewportTransform", "viewportTransform() const", typeof(QTransform));
+		}
+		public void SetTransform(QTransform matrix, bool combine) {
+			interceptor.Invoke("setTransform#$", "setTransform(const QTransform&, bool)", typeof(void), typeof(QTransform), matrix, typeof(bool), combine);
+		}
+		public void SetTransform(QTransform matrix) {
+			interceptor.Invoke("setTransform#", "setTransform(const QTransform&)", typeof(void), typeof(QTransform), matrix);
+		}
+		public void ResetTransform() {
+			interceptor.Invoke("resetTransform", "resetTransform()", typeof(void));
 		}
 		public void Rotate(double angle) {
 			interceptor.Invoke("rotate$", "rotate(qreal)", typeof(void), typeof(double), angle);
@@ -225,6 +268,12 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QRect rect) {
 			return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QRect&) const", typeof(List<QGraphicsItem>), typeof(QRect), rect);
 		}
+		public List<QGraphicsItem> Items(int x, int y, int w, int h, Qt.ItemSelectionMode mode) {
+			return (List<QGraphicsItem>) interceptor.Invoke("items$$$$$", "items(int, int, int, int, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(Qt.ItemSelectionMode), mode);
+		}
+		public List<QGraphicsItem> Items(int x, int y, int w, int h) {
+			return (List<QGraphicsItem>) interceptor.Invoke("items$$$$", "items(int, int, int, int) const", typeof(List<QGraphicsItem>), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
+		}
 		public List<QGraphicsItem> Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
 			return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QPolygon&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QPolygon), polygon, typeof(Qt.ItemSelectionMode), mode);
 		}
@@ -286,6 +335,14 @@ namespace Qyoto {
 		[Q_SLOT("void updateScene(const QList<QRectF>&)")]
 		public void UpdateScene(List<QRectF> rects) {
 			interceptor.Invoke("updateScene?", "updateScene(const QList<QRectF>&)", typeof(void), typeof(List<QRectF>), rects);
+		}
+		[Q_SLOT("void invalidateScene(const QRectF&)")]
+		public void InvalidateScene(QRectF rect) {
+			interceptor.Invoke("invalidateScene#", "invalidateScene(const QRectF&)", typeof(void), typeof(QRectF), rect);
+		}
+		[Q_SLOT("void invalidateScene()")]
+		public void InvalidateScene() {
+			interceptor.Invoke("invalidateScene", "invalidateScene()", typeof(void));
 		}
 		[Q_SLOT("void updateSceneRect(const QRectF&)")]
 		public void UpdateSceneRect(QRectF rect) {

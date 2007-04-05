@@ -8,7 +8,7 @@ namespace Qyoto {
 	public abstract class QAccessibleObjectEx : QAccessibleInterfaceEx {
  		protected QAccessibleObjectEx(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleObjectEx), "QAccessibleObjectEx", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleObjectEx), this);
 		}
 		public QAccessibleObjectEx(QObject arg1) : this((Type) null) {
 			CreateProxy();

@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlLocator(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlLocator), "QXmlLocator", this);
+			interceptor = new SmokeInvocation(typeof(QXmlLocator), this);
 		}
 		public QXmlLocator() : this((Type) null) {
 			CreateProxy();

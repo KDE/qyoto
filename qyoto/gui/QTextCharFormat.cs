@@ -2,17 +2,21 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QTextCharFormat")]
 	public class QTextCharFormat : QTextFormat, IDisposable {
  		protected QTextCharFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextCharFormat), "QTextCharFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextCharFormat), this);
 		}
 		public enum VerticalAlignment {
 			AlignNormal = 0,
 			AlignSuperScript = 1,
 			AlignSubScript = 2,
+			AlignMiddle = 3,
+			AlignTop = 4,
+			AlignBottom = 5,
 		}
 		public enum UnderlineStyle {
 			NoUnderline = 0,
@@ -109,6 +113,12 @@ namespace Qyoto {
 		public QPen TextOutline() {
 			return (QPen) interceptor.Invoke("textOutline", "textOutline() const", typeof(QPen));
 		}
+		public void SetToolTip(string tip) {
+			interceptor.Invoke("setToolTip$", "setToolTip(const QString&)", typeof(void), typeof(string), tip);
+		}
+		public string ToolTip() {
+			return (string) interceptor.Invoke("toolTip", "toolTip() const", typeof(string));
+		}
 		public void SetAnchor(bool anchor) {
 			interceptor.Invoke("setAnchor$", "setAnchor(bool)", typeof(void), typeof(bool), anchor);
 		}
@@ -126,6 +136,12 @@ namespace Qyoto {
 		}
 		public string AnchorName() {
 			return (string) interceptor.Invoke("anchorName", "anchorName() const", typeof(string));
+		}
+		public void SetAnchorNames(List<string> names) {
+			interceptor.Invoke("setAnchorNames?", "setAnchorNames(const QStringList&)", typeof(void), typeof(List<string>), names);
+		}
+		public List<string> AnchorNames() {
+			return (List<string>) interceptor.Invoke("anchorNames", "anchorNames() const", typeof(List<string>));
 		}
 		public void SetTableCellRowSpan(int tableCellRowSpan) {
 			interceptor.Invoke("setTableCellRowSpan$", "setTableCellRowSpan(int)", typeof(void), typeof(int), tableCellRowSpan);

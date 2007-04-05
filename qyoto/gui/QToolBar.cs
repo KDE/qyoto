@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QToolBar : QWidget, IDisposable {
  		protected QToolBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QToolBar), "QToolBar", this);
+			interceptor = new SmokeInvocation(typeof(QToolBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QToolBar() {
-			staticInterceptor = new SmokeInvocation(typeof(QToolBar), "QToolBar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QToolBar), null);
 		}
 		[Q_PROPERTY("bool", "movable")]
 		public bool Movable {
@@ -129,6 +129,9 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionToolBar option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionToolBar*) const", typeof(void), typeof(QStyleOptionToolBar), option);
 		}
 		~QToolBar() {
 			interceptor.Invoke("~QToolBar", "~QToolBar()", typeof(void));

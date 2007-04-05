@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDir(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDir), "QDir", this);
+			interceptor = new SmokeInvocation(typeof(QDir), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDir() {
-			staticInterceptor = new SmokeInvocation(typeof(QDir), "QDir", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDir), null);
 		}
 		public enum Filter {
 			Dirs = 0x001,
@@ -224,6 +224,15 @@ namespace Qyoto {
 		}
 		public static void AddResourceSearchPath(string path) {
 			staticInterceptor.Invoke("addResourceSearchPath$", "addResourceSearchPath(const QString&)", typeof(void), typeof(string), path);
+		}
+		public static void SetSearchPaths(string prefix, List<string> searchPaths) {
+			staticInterceptor.Invoke("setSearchPaths$?", "setSearchPaths(const QString&, const QStringList&)", typeof(void), typeof(string), prefix, typeof(List<string>), searchPaths);
+		}
+		public static void AddSearchPath(string prefix, string path) {
+			staticInterceptor.Invoke("addSearchPath$$", "addSearchPath(const QString&, const QString&)", typeof(void), typeof(string), prefix, typeof(string), path);
+		}
+		public static List<string> SearchPaths(string prefix) {
+			return (List<string>) staticInterceptor.Invoke("searchPaths$", "searchPaths(const QString&)", typeof(List<string>), typeof(string), prefix);
 		}
 		public static string ToNativeSeparators(string pathName) {
 			return (string) staticInterceptor.Invoke("toNativeSeparators$", "toNativeSeparators(const QString&)", typeof(string), typeof(string), pathName);

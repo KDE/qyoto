@@ -8,8 +8,9 @@ namespace Qyoto {
 	public abstract class QAccessibleInterface : QAccessible {
  		protected QAccessibleInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleInterface), "QAccessibleInterface", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleInterface), this);
 		}
+		// QSet<QAccessible::Method> supportedMethods(); >>>> NOT CONVERTED
 		[SmokeMethod("isValid() const")]
 		public abstract bool IsValid();
 		[SmokeMethod("object() const")]
@@ -48,6 +49,24 @@ namespace Qyoto {
 		}
 		public QVariant InvokeMethod(QAccessible.Method method) {
 			return (QVariant) interceptor.Invoke("invokeMethod$", "invokeMethod(QAccessible::Method)", typeof(QVariant), typeof(QAccessible.Method), method);
+		}
+		public QColor ForegroundColor() {
+			return (QColor) interceptor.Invoke("foregroundColor", "foregroundColor()", typeof(QColor));
+		}
+		public QColor BackgroundColor() {
+			return (QColor) interceptor.Invoke("backgroundColor", "backgroundColor()", typeof(QColor));
+		}
+		public QAccessibleTextInterface TextInterface() {
+			return (QAccessibleTextInterface) interceptor.Invoke("textInterface", "textInterface()", typeof(QAccessibleTextInterface));
+		}
+		public QAccessibleEditableTextInterface EditableTextInterface() {
+			return (QAccessibleEditableTextInterface) interceptor.Invoke("editableTextInterface", "editableTextInterface()", typeof(QAccessibleEditableTextInterface));
+		}
+		public QAccessibleValueInterface ValueInterface() {
+			return (QAccessibleValueInterface) interceptor.Invoke("valueInterface", "valueInterface()", typeof(QAccessibleValueInterface));
+		}
+		public QAccessibleTableInterface TableInterface() {
+			return (QAccessibleTableInterface) interceptor.Invoke("tableInterface", "tableInterface()", typeof(QAccessibleTableInterface));
 		}
 		public QAccessibleInterface() : this((Type) null) {
 			CreateProxy();

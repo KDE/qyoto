@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QXmlDefaultHandler : QXmlLexicalHandler, IQXmlContentHandler, IQXmlDTDHandler, IQXmlDeclHandler, IQXmlEntityResolver, IQXmlErrorHandler, IDisposable {
  		protected QXmlDefaultHandler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlDefaultHandler), "QXmlDefaultHandler", this);
+			interceptor = new SmokeInvocation(typeof(QXmlDefaultHandler), this);
 		}
 		public QXmlDefaultHandler() : this((Type) null) {
 			CreateProxy();

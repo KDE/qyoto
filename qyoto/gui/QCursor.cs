@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QCursor(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCursor), "QCursor", this);
+			interceptor = new SmokeInvocation(typeof(QCursor), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCursor() {
-			staticInterceptor = new SmokeInvocation(typeof(QCursor), "QCursor", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCursor), null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QCursor() : this((Type) null) {

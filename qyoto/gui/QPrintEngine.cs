@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPrintEngine(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPrintEngine), "QPrintEngine", this);
+			interceptor = new SmokeInvocation(typeof(QPrintEngine), this);
 		}
 		public enum PrintEnginePropertyKey {
 			PPK_CollateCopies = 0,
@@ -34,6 +34,7 @@ namespace Qyoto {
 			PPK_FontEmbedding = 19,
 			PPK_SuppressSystemPrintStatus = 20,
 			PPK_Duplex = 21,
+			PPK_PaperSources = 22,
 			PPK_CustomBase = 0xff00,
 		}
 		[SmokeMethod("setProperty(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]

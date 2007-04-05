@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsSceneWheelEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneWheelEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsSceneWheelEvent), "QGraphicsSceneWheelEvent", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneWheelEvent), this);
 		}
 		public QGraphicsSceneWheelEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -52,6 +52,12 @@ namespace Qyoto {
 		}
 		public void SetDelta(int delta) {
 			interceptor.Invoke("setDelta$", "setDelta(int)", typeof(void), typeof(int), delta);
+		}
+		public Qt.Orientation Orientation() {
+			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
+		}
+		public void SetOrientation(Qt.Orientation orientation) {
+			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
 		}
 		~QGraphicsSceneWheelEvent() {
 			interceptor.Invoke("~QGraphicsSceneWheelEvent", "~QGraphicsSceneWheelEvent()", typeof(void));

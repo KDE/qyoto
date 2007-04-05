@@ -9,11 +9,11 @@ namespace Qyoto {
 	public abstract class QAbstractSpinBox : QWidget, IDisposable {
  		protected QAbstractSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractSpinBox), "QAbstractSpinBox", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractSpinBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractSpinBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractSpinBox), "QAbstractSpinBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractSpinBox), null);
 		}
 		public enum StepEnabledFlag {
 			StepNone = 0x00,
@@ -23,10 +23,16 @@ namespace Qyoto {
 		public enum ButtonSymbols {
 			UpDownArrows = 0,
 			PlusMinus = 1,
+			NoButtons = 2,
 		}
 		public enum CorrectionMode {
 			CorrectToPreviousValue = 0,
 			CorrectToNearestValue = 1,
+		}
+		[Q_PROPERTY("bool", "modified")]
+		public bool Modified {
+			get { return (bool) interceptor.Invoke("isModified", "isModified()", typeof(bool)); }
+			set { interceptor.Invoke("setModified$", "setModified(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
@@ -72,6 +78,14 @@ namespace Qyoto {
 			get { return (QAbstractSpinBox.CorrectionMode) interceptor.Invoke("correctionMode", "correctionMode()", typeof(QAbstractSpinBox.CorrectionMode)); }
 			set { interceptor.Invoke("setCorrectionMode$", "setCorrectionMode(QAbstractSpinBox::CorrectionMode)", typeof(void), typeof(QAbstractSpinBox.CorrectionMode), value); }
 		}
+		[Q_PROPERTY("bool", "undoAvailable")]
+		public bool UndoAvailable {
+			get { return (bool) interceptor.Invoke("isUndoAvailable", "isUndoAvailable()", typeof(bool)); }
+		}
+		[Q_PROPERTY("bool", "redoAvailable")]
+		public bool RedoAvailable {
+			get { return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable()", typeof(bool)); }
+		}
 		[Q_PROPERTY("bool", "acceptableInput")]
 		public bool AcceptableInput {
 			get { return (bool) interceptor.Invoke("hasAcceptableInput", "hasAcceptableInput()", typeof(bool)); }
@@ -95,6 +109,15 @@ namespace Qyoto {
 		}
 		public bool IsAccelerated() {
 			return (bool) interceptor.Invoke("isAccelerated", "isAccelerated() const", typeof(bool));
+		}
+		public bool IsUndoAvailable() {
+			return (bool) interceptor.Invoke("isUndoAvailable", "isUndoAvailable() const", typeof(bool));
+		}
+		public bool IsRedoAvailable() {
+			return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable() const", typeof(bool));
+		}
+		public bool IsModified() {
+			return (bool) interceptor.Invoke("isModified", "isModified() const", typeof(bool));
 		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
@@ -139,6 +162,14 @@ namespace Qyoto {
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
+		}
+		[Q_SLOT("void undo()")]
+		public void Undo() {
+			interceptor.Invoke("undo", "undo()", typeof(void));
+		}
+		[Q_SLOT("void redo()")]
+		public void Redo() {
+			interceptor.Invoke("redo", "redo()", typeof(void));
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
@@ -203,6 +234,9 @@ namespace Qyoto {
 		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
 			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionSpinBox option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSpinBox*) const", typeof(void), typeof(QStyleOptionSpinBox), option);
 		}
 		protected QLineEdit LineEdit() {
 			return (QLineEdit) interceptor.Invoke("lineEdit", "lineEdit() const", typeof(QLineEdit));

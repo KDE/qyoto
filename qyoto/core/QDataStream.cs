@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDataStream(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDataStream), "QDataStream", this);
+			interceptor = new SmokeInvocation(typeof(QDataStream), this);
 		}
 		public enum Version {
 			Qt_1_0 = 1,
@@ -21,6 +21,7 @@ namespace Qyoto {
 			Qt_4_0 = 7,
 			Qt_4_1 = Qt_4_0,
 			Qt_4_2 = 8,
+			Qt_4_3 = 9,
 		}
 		public enum Status {
 			Ok = 0,

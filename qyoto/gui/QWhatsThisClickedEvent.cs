@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QWhatsThisClickedEvent : QEvent, IDisposable {
  		protected QWhatsThisClickedEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWhatsThisClickedEvent), "QWhatsThisClickedEvent", this);
+			interceptor = new SmokeInvocation(typeof(QWhatsThisClickedEvent), this);
 		}
 		public QWhatsThisClickedEvent(string href) : this((Type) null) {
 			CreateProxy();

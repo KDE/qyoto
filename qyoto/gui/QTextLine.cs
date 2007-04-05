@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextLine(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextLine), "QTextLine", this);
+			interceptor = new SmokeInvocation(typeof(QTextLine), this);
 		}
 		public enum Edge {
 			Leading = 0,
@@ -71,6 +71,9 @@ namespace Qyoto {
 		}
 		public void SetNumColumns(int columns) {
 			interceptor.Invoke("setNumColumns$", "setNumColumns(int)", typeof(void), typeof(int), columns);
+		}
+		public void SetNumColumns(int columns, double alignmentWidth) {
+			interceptor.Invoke("setNumColumns$$", "setNumColumns(int, qreal)", typeof(void), typeof(int), columns, typeof(double), alignmentWidth);
 		}
 		public void SetPosition(QPointF pos) {
 			interceptor.Invoke("setPosition#", "setPosition(const QPointF&)", typeof(void), typeof(QPointF), pos);

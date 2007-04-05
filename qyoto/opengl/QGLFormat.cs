@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QGLFormat(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGLFormat), "QGLFormat", this);
+			interceptor = new SmokeInvocation(typeof(QGLFormat), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGLFormat() {
-			staticInterceptor = new SmokeInvocation(typeof(QGLFormat), "QGLFormat", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGLFormat), null);
 		}
 		public enum OpenGLVersionFlag {
 			OpenGL_Version_None = 0x00000000,

@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QTextDocument : QObject, IDisposable {
  		protected QTextDocument(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextDocument), "QTextDocument", this);
+			interceptor = new SmokeInvocation(typeof(QTextDocument), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextDocument() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextDocument), "QTextDocument", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextDocument), null);
 		}
 		public enum MetaInformation {
 			DocumentTitle = 0,
@@ -234,6 +234,12 @@ namespace Qyoto {
 		public void Redo(QTextCursor cursor) {
 			interceptor.Invoke("redo#", "redo(QTextCursor*)", typeof(void), typeof(QTextCursor), cursor);
 		}
+		public QTextOption DefaultTextOption() {
+			return (QTextOption) interceptor.Invoke("defaultTextOption", "defaultTextOption() const", typeof(QTextOption));
+		}
+		public void SetDefaultTextOption(QTextOption option) {
+			interceptor.Invoke("setDefaultTextOption#", "setDefaultTextOption(const QTextOption&)", typeof(void), typeof(QTextOption), option);
+		}
 		[Q_SLOT("void undo()")]
 		public void Undo() {
 			interceptor.Invoke("undo", "undo()", typeof(void));
@@ -280,5 +286,7 @@ namespace Qyoto {
 		void ModificationChanged(bool m);
 		[Q_SIGNAL("void cursorPositionChanged(const QTextCursor&)")]
 		void CursorPositionChanged(QTextCursor cursor);
+		[Q_SIGNAL("void blockCountChanged(int)")]
+		void BlockCountChanged(int newBlockCount);
 	}
 }

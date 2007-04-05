@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QContextMenuEvent : QInputEvent, IDisposable {
  		protected QContextMenuEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QContextMenuEvent), "QContextMenuEvent", this);
+			interceptor = new SmokeInvocation(typeof(QContextMenuEvent), this);
 		}
 		public enum Reason {
 			Mouse = 0,

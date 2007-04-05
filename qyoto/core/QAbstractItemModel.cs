@@ -9,11 +9,11 @@ namespace Qyoto {
 	public abstract partial class QAbstractItemModel : QObject {
  		protected QAbstractItemModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractItemModel), "QAbstractItemModel", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractItemModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractItemModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemModel), "QAbstractItemModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemModel), null);
 		}
 		// QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QAbstractItemModel(QObject parent) : this((Type) null) {

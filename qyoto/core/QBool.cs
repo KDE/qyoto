@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QBool(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QBool), "QBool", this);
+			interceptor = new SmokeInvocation(typeof(QBool), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QBool() {
-			staticInterceptor = new SmokeInvocation(typeof(QBool), "QBool", null);
+			staticInterceptor = new SmokeInvocation(typeof(QBool), null);
 		}
 		//  operator const void *(); >>>> NOT CONVERTED
 		public QBool(bool B) : this((Type) null) {

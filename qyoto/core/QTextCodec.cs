@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextCodec(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextCodec), "QTextCodec", this);
+			interceptor = new SmokeInvocation(typeof(QTextCodec), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextCodec() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextCodec), "QTextCodec", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextCodec), null);
 		}
 		public enum ConversionFlag : long {
 			DefaultConversion = 0,

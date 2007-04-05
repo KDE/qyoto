@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QColor(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QColor), "QColor", this);
+			interceptor = new SmokeInvocation(typeof(QColor), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QColor() {
-			staticInterceptor = new SmokeInvocation(typeof(QColor), "QColor", null);
+			staticInterceptor = new SmokeInvocation(typeof(QColor), null);
 		}
 		public enum Spec {
 			Invalid = 0,
@@ -259,11 +259,23 @@ namespace Qyoto {
 		public QColor Light() {
 			return (QColor) interceptor.Invoke("light", "light() const", typeof(QColor));
 		}
+		public QColor Lighter(int f) {
+			return (QColor) interceptor.Invoke("lighter$", "lighter(int) const", typeof(QColor), typeof(int), f);
+		}
+		public QColor Lighter() {
+			return (QColor) interceptor.Invoke("lighter", "lighter() const", typeof(QColor));
+		}
 		public QColor Dark(int f) {
 			return (QColor) interceptor.Invoke("dark$", "dark(int) const", typeof(QColor), typeof(int), f);
 		}
 		public QColor Dark() {
 			return (QColor) interceptor.Invoke("dark", "dark() const", typeof(QColor));
+		}
+		public QColor Darker(int f) {
+			return (QColor) interceptor.Invoke("darker$", "darker(int) const", typeof(QColor), typeof(int), f);
+		}
+		public QColor Darker() {
+			return (QColor) interceptor.Invoke("darker", "darker() const", typeof(QColor));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QColor)) { return false; }

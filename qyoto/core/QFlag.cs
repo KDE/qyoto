@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFlag(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFlag), "QFlag", this);
+			interceptor = new SmokeInvocation(typeof(QFlag), this);
 		}
 		//  operator int(); >>>> NOT CONVERTED
 		public QFlag(int i) : this((Type) null) {

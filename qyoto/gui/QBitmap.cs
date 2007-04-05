@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QBitmap : QPixmap, IDisposable {
  		protected QBitmap(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QBitmap), "QBitmap", this);
+			interceptor = new SmokeInvocation(typeof(QBitmap), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QBitmap() {
-			staticInterceptor = new SmokeInvocation(typeof(QBitmap), "QBitmap", null);
+			staticInterceptor = new SmokeInvocation(typeof(QBitmap), null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QBitmap() : this((Type) null) {
@@ -43,6 +43,9 @@ namespace Qyoto {
 		}
 		public QBitmap Transformed(QMatrix arg1) {
 			return (QBitmap) interceptor.Invoke("transformed#", "transformed(const QMatrix&) const", typeof(QBitmap), typeof(QMatrix), arg1);
+		}
+		public QBitmap Transformed(QTransform matrix) {
+			return (QBitmap) interceptor.Invoke("transformed#", "transformed(const QTransform&) const", typeof(QBitmap), typeof(QTransform), matrix);
 		}
 		~QBitmap() {
 			interceptor.Invoke("~QBitmap", "~QBitmap()", typeof(void));

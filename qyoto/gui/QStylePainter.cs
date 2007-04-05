@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStylePainter : QPainter, IDisposable {
  		protected QStylePainter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStylePainter), "QStylePainter", this);
+			interceptor = new SmokeInvocation(typeof(QStylePainter), this);
 		}
 		public QStylePainter() : this((Type) null) {
 			CreateProxy();

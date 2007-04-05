@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QTextList : QTextBlockGroup, IDisposable {
  		protected QTextList(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextList), "QTextList", this);
+			interceptor = new SmokeInvocation(typeof(QTextList), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextList() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextList), "QTextList", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextList), null);
 		}
 		public QTextList(QTextDocument doc) : this((Type) null) {
 			CreateProxy();

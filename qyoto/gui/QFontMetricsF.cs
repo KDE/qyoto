@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFontMetricsF(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFontMetricsF), "QFontMetricsF", this);
+			interceptor = new SmokeInvocation(typeof(QFontMetricsF), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFontMetricsF() {
-			staticInterceptor = new SmokeInvocation(typeof(QFontMetricsF), "QFontMetricsF", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFontMetricsF), null);
 		}
 		public QFontMetricsF(QFont arg1) : this((Type) null) {
 			CreateProxy();

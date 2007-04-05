@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QImageIOHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QImageIOHandler), "QImageIOHandler", this);
+			interceptor = new SmokeInvocation(typeof(QImageIOHandler), this);
 		}
 		public enum ImageOption {
 			Size = 0,

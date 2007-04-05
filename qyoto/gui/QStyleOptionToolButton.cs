@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionToolButton : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionToolButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionToolButton), "QStyleOptionToolButton", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionToolButton), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ToolButton,
@@ -19,7 +19,9 @@ namespace Qyoto {
 			None = 0x00,
 			Arrow = 0x01,
 			Menu = 0x04,
+			MenuButtonPopup = Menu,
 			PopupDelay = 0x08,
+			HasMenu = 0x10,
 		}
 		public QStyleOptionToolButton() : this((Type) null) {
 			CreateProxy();

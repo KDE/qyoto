@@ -7,12 +7,17 @@ namespace Qyoto {
 	public class QGraphicsItemAnimation : QObject, IDisposable {
  		protected QGraphicsItemAnimation(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), "QGraphicsItemAnimation", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGraphicsItemAnimation() {
-			staticInterceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), "QGraphicsItemAnimation", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), null);
 		}
+		// QList<QPair<qreal, QPointF> > posList(); >>>> NOT CONVERTED
+		// QList<QPair<qreal, qreal> > rotationList(); >>>> NOT CONVERTED
+		// QList<QPair<qreal, QPointF> > translationList(); >>>> NOT CONVERTED
+		// QList<QPair<qreal, QPointF> > scaleList(); >>>> NOT CONVERTED
+		// QList<QPair<qreal, QPointF> > shearList(); >>>> NOT CONVERTED
 		public QGraphicsItemAnimation(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsItemAnimation#", "QGraphicsItemAnimation(QObject*)", typeof(void), typeof(QObject), parent);

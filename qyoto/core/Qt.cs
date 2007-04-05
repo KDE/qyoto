@@ -4,11 +4,12 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
+	[SmokeClass("Qt")]
 	public partial class Qt : Object {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Qt() {
-			staticInterceptor = new SmokeInvocation(typeof(Qt), "Qt", null);
+			staticInterceptor = new SmokeInvocation(typeof(Qt), null);
 		}
 		public enum HitTestAccuracy {
 			ExactHit = 0,
@@ -181,7 +182,8 @@ namespace Qyoto {
 			WA_Moved = 43,
 			WA_PendingUpdate = 44,
 			WA_InvalidSize = 45,
-			WA_MacMetalStyle = 46,
+			WA_MacBrushedMetal = 46,
+			WA_MacMetalStyle = WA_MacBrushedMetal,
 			WA_CustomWhatsThis = 47,
 			WA_LayoutOnEntireRect = 48,
 			WA_OutsideWSRange = 49,
@@ -222,11 +224,20 @@ namespace Qyoto {
 			WA_AlwaysShowToolTips = 84,
 			WA_MacOpaqueSizeGrip = 85,
 			WA_SetStyle = 86,
-			WA_AttributeCount = 87,
+			WA_SetLocale = 87,
+			WA_MacShowFocusRect = 88,
+			WA_MacNormalSize = 89,
+			WA_MacSmallSize = 90,
+			WA_MacMiniSize = 91,
+			WA_LayoutUsesWidgetRect = 92,
+			WA_StyledBackground = 93,
+			WA_MSWindowsUseDirect3D = 94,
+			WA_AttributeCount = 95,
 		}
 		public enum ApplicationAttribute {
 			AA_ImmediateWidgetCreation = 0,
-			AA_AttributeCount = 1,
+			AA_MSWindowsUseDirect3DByDefault = 1,
+			AA_AttributeCount = 2,
 		}
 		public enum ImageConversionFlag {
 			ColorMode_Mask = 0x00000003,
@@ -733,6 +744,7 @@ namespace Qyoto {
 			DirectConnection = 1,
 			QueuedConnection = 2,
 			AutoCompatConnection = 3,
+			BlockingQueuedConnection = 4,
 		}
 		public enum ShortcutContext {
 			WidgetShortcut = 0,
@@ -742,6 +754,10 @@ namespace Qyoto {
 		public enum FillRule {
 			OddEvenFill = 0,
 			WindingFill = 1,
+		}
+		public enum MaskMode {
+			MaskInColor = 0,
+			MaskOutColor = 1,
 		}
 		public enum ClipOperation {
 			NoClip = 0,
@@ -758,6 +774,11 @@ namespace Qyoto {
 		public enum TransformationMode {
 			FastTransformation = 0,
 			SmoothTransformation = 1,
+		}
+		public enum Axis {
+			XAxis = 0,
+			YAxis = 1,
+			ZAxis = 2,
 		}
 		public enum FocusReason {
 			MouseFocusReason = 0,
@@ -862,6 +883,11 @@ namespace Qyoto {
 			TextEditorInteraction = TextSelectableByMouse|TextSelectableByKeyboard|TextEditable,
 			TextBrowserInteraction = TextSelectableByMouse|LinksAccessibleByMouse|LinksAccessibleByKeyboard,
 		}
+		public enum EventPriority {
+			HighEventPriority = 1,
+			NormalEventPriority = 0,
+			LowEventPriority = -1,
+		}
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
 		// QDebug qDebug(); >>>> NOT CONVERTED
 		// QDebug qWarning(); >>>> NOT CONVERTED
@@ -888,9 +914,9 @@ namespace Qyoto {
 		// QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
 		// QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
 		// QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
-		// QDebug qDebug(); >>>> NOT CONVERTED
 		// QDebug qWarning(); >>>> NOT CONVERTED
 		// QDebug qCritical(); >>>> NOT CONVERTED
+		// QDebug qDebug(); >>>> NOT CONVERTED
 		public static bool MightBeRichText(string arg1) {
 			return (bool) staticInterceptor.Invoke("mightBeRichText$", "mightBeRichText(const QString&)", typeof(bool), typeof(string), arg1);
 		}
@@ -1266,6 +1292,12 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QMatrix arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QMatrix&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QMatrix), arg2);
 		}
+		public static QDataStream Write(QDataStream arg1, QTransform arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTransform&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTransform), arg2);
+		}
+		public static QDataStream Read(QDataStream arg1, QTransform arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTransform&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTransform), arg2);
+		}
 		public static QDataStream Read(QDataStream arg1, QTableWidgetItem item) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTableWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTableWidgetItem), item);
 		}
@@ -1286,6 +1318,18 @@ namespace Qyoto {
 		}
 		public static uint QHash(QItemSelectionRange arg1) {
 			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QItemSelectionRange&)", typeof(uint), typeof(QItemSelectionRange), arg1);
+		}
+		public static QAccessible2Interface QAccessibleValueCastHelper() {
+			return (QAccessible2Interface) staticInterceptor.Invoke("qAccessibleValueCastHelper", "qAccessibleValueCastHelper()", typeof(QAccessible2Interface));
+		}
+		public static QAccessible2Interface QAccessibleTextCastHelper() {
+			return (QAccessible2Interface) staticInterceptor.Invoke("qAccessibleTextCastHelper", "qAccessibleTextCastHelper()", typeof(QAccessible2Interface));
+		}
+		public static QAccessible2Interface QAccessibleEditableTextCastHelper() {
+			return (QAccessible2Interface) staticInterceptor.Invoke("qAccessibleEditableTextCastHelper", "qAccessibleEditableTextCastHelper()", typeof(QAccessible2Interface));
+		}
+		public static QAccessible2Interface QAccessibleTableCastHelper() {
+			return (QAccessible2Interface) staticInterceptor.Invoke("qAccessibleTableCastHelper", "qAccessibleTableCastHelper()", typeof(QAccessible2Interface));
 		}
 		public static int QRound(double d) {
 			return (int) staticInterceptor.Invoke("qRound$", "qRound(qreal)", typeof(int), typeof(double), d);

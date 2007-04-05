@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionSpinBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionSpinBox), "QStyleOptionSpinBox", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionSpinBox), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SpinBox,

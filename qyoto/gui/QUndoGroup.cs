@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QUndoGroup : QObject, IDisposable {
  		protected QUndoGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUndoGroup), "QUndoGroup", this);
+			interceptor = new SmokeInvocation(typeof(QUndoGroup), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUndoGroup() {
-			staticInterceptor = new SmokeInvocation(typeof(QUndoGroup), "QUndoGroup", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUndoGroup), null);
 		}
 		public QUndoGroup(QObject parent) : this((Type) null) {
 			CreateProxy();

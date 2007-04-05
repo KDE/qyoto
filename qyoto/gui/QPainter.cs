@@ -10,16 +10,17 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPainter(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPainter), "QPainter", this);
+			interceptor = new SmokeInvocation(typeof(QPainter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPainter() {
-			staticInterceptor = new SmokeInvocation(typeof(QPainter), "QPainter", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPainter), null);
 		}
 		public enum RenderHint {
 			Antialiasing = 0x01,
 			TextAntialiasing = 0x02,
 			SmoothPixmapTransform = 0x04,
+			HighQualityAntialiasing = 0x08,
 		}
 		public enum CompositionMode {
 			CompositionMode_SourceOver = 0,
@@ -34,6 +35,18 @@ namespace Qyoto {
 			CompositionMode_SourceAtop = 9,
 			CompositionMode_DestinationAtop = 10,
 			CompositionMode_Xor = 11,
+			CompositionMode_Plus = 12,
+			CompositionMode_Multiply = 13,
+			CompositionMode_Screen = 14,
+			CompositionMode_Overlay = 15,
+			CompositionMode_Darken = 16,
+			CompositionMode_Lighten = 17,
+			CompositionMode_ColorDodge = 18,
+			CompositionMode_ColorBurn = 19,
+			CompositionMode_HardLight = 20,
+			CompositionMode_SoftLight = 21,
+			CompositionMode_Difference = 22,
+			CompositionMode_Exclusion = 23,
 		}
 		public QPainter() : this((Type) null) {
 			CreateProxy();
@@ -190,6 +203,21 @@ namespace Qyoto {
 		public void ResetMatrix() {
 			interceptor.Invoke("resetMatrix", "resetMatrix()", typeof(void));
 		}
+		public void SetTransform(QTransform transform, bool combine) {
+			interceptor.Invoke("setTransform#$", "setTransform(const QTransform&, bool)", typeof(void), typeof(QTransform), transform, typeof(bool), combine);
+		}
+		public void SetTransform(QTransform transform) {
+			interceptor.Invoke("setTransform#", "setTransform(const QTransform&)", typeof(void), typeof(QTransform), transform);
+		}
+		public QTransform Transform() {
+			return (QTransform) interceptor.Invoke("transform", "transform() const", typeof(QTransform));
+		}
+		public QTransform DeviceTransform() {
+			return (QTransform) interceptor.Invoke("deviceTransform", "deviceTransform() const", typeof(QTransform));
+		}
+		public void ResetTransform() {
+			interceptor.Invoke("resetTransform", "resetTransform()", typeof(void));
+		}
 		public void SetWorldMatrix(QMatrix matrix, bool combine) {
 			interceptor.Invoke("setWorldMatrix#$", "setWorldMatrix(const QMatrix&, bool)", typeof(void), typeof(QMatrix), matrix, typeof(bool), combine);
 		}
@@ -199,8 +227,20 @@ namespace Qyoto {
 		public QMatrix WorldMatrix() {
 			return (QMatrix) interceptor.Invoke("worldMatrix", "worldMatrix() const", typeof(QMatrix));
 		}
+		public void SetWorldTransform(QTransform matrix, bool combine) {
+			interceptor.Invoke("setWorldTransform#$", "setWorldTransform(const QTransform&, bool)", typeof(void), typeof(QTransform), matrix, typeof(bool), combine);
+		}
+		public void SetWorldTransform(QTransform matrix) {
+			interceptor.Invoke("setWorldTransform#", "setWorldTransform(const QTransform&)", typeof(void), typeof(QTransform), matrix);
+		}
+		public QTransform WorldTransform() {
+			return (QTransform) interceptor.Invoke("worldTransform", "worldTransform() const", typeof(QTransform));
+		}
 		public QMatrix CombinedMatrix() {
 			return (QMatrix) interceptor.Invoke("combinedMatrix", "combinedMatrix() const", typeof(QMatrix));
+		}
+		public QTransform CombinedTransform() {
+			return (QTransform) interceptor.Invoke("combinedTransform", "combinedTransform() const", typeof(QTransform));
 		}
 		public void SetMatrixEnabled(bool enabled) {
 			interceptor.Invoke("setMatrixEnabled$", "setMatrixEnabled(bool)", typeof(void), typeof(bool), enabled);
@@ -660,6 +700,9 @@ namespace Qyoto {
 		}
 		public int RenderHints() {
 			return (int) interceptor.Invoke("renderHints", "renderHints() const", typeof(int));
+		}
+		public bool TestRenderHint(QPainter.RenderHint hint) {
+			return (bool) interceptor.Invoke("testRenderHint$", "testRenderHint(QPainter::RenderHint) const", typeof(bool), typeof(QPainter.RenderHint), hint);
 		}
 		public QPaintEngine PaintEngine() {
 			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));

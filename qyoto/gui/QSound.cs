@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QSound : QObject, IDisposable {
  		protected QSound(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSound), "QSound", this);
+			interceptor = new SmokeInvocation(typeof(QSound), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSound() {
-			staticInterceptor = new SmokeInvocation(typeof(QSound), "QSound", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSound), null);
 		}
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();

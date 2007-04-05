@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QStandardItem(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStandardItem), "QStandardItem", this);
+			interceptor = new SmokeInvocation(typeof(QStandardItem), this);
 		}
 		public enum ItemType {
 			Type = 0,

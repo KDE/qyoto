@@ -7,7 +7,7 @@ namespace Qyoto {
 	public abstract class QAbstractGraphicsShapeItem : QGraphicsItem, IDisposable {
  		protected QAbstractGraphicsShapeItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), "QAbstractGraphicsShapeItem", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), this);
 		}
 		public QAbstractGraphicsShapeItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();

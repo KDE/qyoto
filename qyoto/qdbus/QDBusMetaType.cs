@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDBusMetaType(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusMetaType), "QDBusMetaType", this);
+			interceptor = new SmokeInvocation(typeof(QDBusMetaType), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusMetaType() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusMetaType), "QDBusMetaType", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusMetaType), null);
 		}
 		// void registerMarshallOperators(int arg1,MarshallFunction arg2,DemarshallFunction arg3); >>>> NOT CONVERTED
 		// bool marshall(QDBusArgument& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED

@@ -10,11 +10,16 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTreeWidgetItem(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTreeWidgetItem), "QTreeWidgetItem", this);
+			interceptor = new SmokeInvocation(typeof(QTreeWidgetItem), this);
 		}
 		public enum ItemType {
 			Type = 0,
 			UserType = 1000,
+		}
+		public enum ChildIndicatorPolicy {
+			ShowIndicator = 0,
+			HideIndicator = 1,
+			ShowForChildren = 2,
 		}
 		public QTreeWidgetItem(int type) : this((Type) null) {
 			CreateProxy();
@@ -104,6 +109,24 @@ namespace Qyoto {
 		}
 		public bool IsExpanded() {
 			return (bool) interceptor.Invoke("isExpanded", "isExpanded() const", typeof(bool));
+		}
+		public void SetSpanning(bool span) {
+			interceptor.Invoke("setSpanning$", "setSpanning(bool)", typeof(void), typeof(bool), span);
+		}
+		public bool IsSpanning() {
+			return (bool) interceptor.Invoke("isSpanning", "isSpanning() const", typeof(bool));
+		}
+		public void SetDisabled(bool disabled) {
+			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), disabled);
+		}
+		public bool IsDisabled() {
+			return (bool) interceptor.Invoke("isDisabled", "isDisabled() const", typeof(bool));
+		}
+		public void SetChildIndicatorPolicy(QTreeWidgetItem.ChildIndicatorPolicy policy) {
+			interceptor.Invoke("setChildIndicatorPolicy$", "setChildIndicatorPolicy(QTreeWidgetItem::ChildIndicatorPolicy)", typeof(void), typeof(QTreeWidgetItem.ChildIndicatorPolicy), policy);
+		}
+		public QTreeWidgetItem.ChildIndicatorPolicy childIndicatorPolicy() {
+			return (QTreeWidgetItem.ChildIndicatorPolicy) interceptor.Invoke("childIndicatorPolicy", "childIndicatorPolicy() const", typeof(QTreeWidgetItem.ChildIndicatorPolicy));
 		}
 		public int Flags() {
 			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
@@ -225,6 +248,9 @@ namespace Qyoto {
 		}
 		public void InsertChild(int index, QTreeWidgetItem child) {
 			interceptor.Invoke("insertChild$#", "insertChild(int, QTreeWidgetItem*)", typeof(void), typeof(int), index, typeof(QTreeWidgetItem), child);
+		}
+		public void RemoveChild(QTreeWidgetItem child) {
+			interceptor.Invoke("removeChild#", "removeChild(QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), child);
 		}
 		public QTreeWidgetItem TakeChild(int index) {
 			return (QTreeWidgetItem) interceptor.Invoke("takeChild$", "takeChild(int)", typeof(QTreeWidgetItem), typeof(int), index);

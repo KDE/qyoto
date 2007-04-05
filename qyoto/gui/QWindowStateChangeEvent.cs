@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QWindowStateChangeEvent : QEvent, IDisposable {
  		protected QWindowStateChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWindowStateChangeEvent), "QWindowStateChangeEvent", this);
+			interceptor = new SmokeInvocation(typeof(QWindowStateChangeEvent), this);
 		}
 		public QWindowStateChangeEvent(int aOldState) : this((Type) null) {
 			CreateProxy();

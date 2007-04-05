@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDomNode(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomNode), "QDomNode", this);
+			interceptor = new SmokeInvocation(typeof(QDomNode), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDomNode() {
-			staticInterceptor = new SmokeInvocation(typeof(QDomNode), "QDomNode", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDomNode), null);
 		}
 		public enum NodeType {
 			ElementNode = 1,
@@ -30,6 +30,10 @@ namespace Qyoto {
 			NotationNode = 12,
 			BaseNode = 21,
 			CharacterDataNode = 22,
+		}
+		public enum EncodingPolicy {
+			EncodingFromDocument = 1,
+			EncodingFromTextStream = 2,
 		}
 		// QDomNode* QDomNode(QDomNodePrivate* arg1); >>>> NOT CONVERTED
 		public QDomNode() : this((Type) null) {
@@ -221,6 +225,9 @@ namespace Qyoto {
 		}
 		public void Save(QTextStream arg1, int arg2) {
 			interceptor.Invoke("save#$", "save(QTextStream&, int) const", typeof(void), typeof(QTextStream), arg1, typeof(int), arg2);
+		}
+		public void Save(QTextStream arg1, int arg2, QDomNode.EncodingPolicy arg3) {
+			interceptor.Invoke("save#$$", "save(QTextStream&, int, QDomNode::EncodingPolicy) const", typeof(void), typeof(QTextStream), arg1, typeof(int), arg2, typeof(QDomNode.EncodingPolicy), arg3);
 		}
 		public QDomElement FirstChildElement(string tagName) {
 			return (QDomElement) interceptor.Invoke("firstChildElement$", "firstChildElement(const QString&) const", typeof(QDomElement), typeof(string), tagName);

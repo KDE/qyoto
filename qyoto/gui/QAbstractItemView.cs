@@ -9,11 +9,11 @@ namespace Qyoto {
 	public abstract class QAbstractItemView : QAbstractScrollArea {
  		protected QAbstractItemView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractItemView), "QAbstractItemView", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractItemView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractItemView() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemView), "QAbstractItemView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemView), null);
 		}
 		public enum SelectionMode {
 			NoSelection = 0,
@@ -281,6 +281,10 @@ namespace Qyoto {
 		[Q_SLOT("void scrollToBottom()")]
 		public void ScrollToBottom() {
 			interceptor.Invoke("scrollToBottom", "scrollToBottom()", typeof(void));
+		}
+		[Q_SLOT("void updateIndex(const QModelIndex&)")]
+		public void UpdateIndex(QModelIndex index) {
+			interceptor.Invoke("updateIndex#", "updateIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
 		protected void SetHorizontalStepsPerItem(int steps) {
 			interceptor.Invoke("setHorizontalStepsPerItem$", "setHorizontalStepsPerItem(int)", typeof(void), typeof(int), steps);

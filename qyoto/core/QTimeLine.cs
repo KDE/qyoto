@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTimeLine : QObject, IDisposable {
  		protected QTimeLine(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTimeLine), "QTimeLine", this);
+			interceptor = new SmokeInvocation(typeof(QTimeLine), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTimeLine() {
-			staticInterceptor = new SmokeInvocation(typeof(QTimeLine), "QTimeLine", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTimeLine), null);
 		}
 		public enum State {
 			NotRunning = 0,
@@ -106,6 +106,10 @@ namespace Qyoto {
 		[Q_SLOT("void start()")]
 		public void Start() {
 			interceptor.Invoke("start", "start()", typeof(void));
+		}
+		[Q_SLOT("void resume()")]
+		public void Resume() {
+			interceptor.Invoke("resume", "resume()", typeof(void));
 		}
 		[Q_SLOT("void stop()")]
 		public void Stop() {

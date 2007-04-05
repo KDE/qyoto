@@ -29,11 +29,11 @@ namespace Qyoto {
 			}
 		}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QObject), "QObject", this);
+			interceptor = new SmokeInvocation(typeof(QObject), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QObject() {
-			staticInterceptor = new SmokeInvocation(typeof(QObject), "QObject", null);
+			staticInterceptor = new SmokeInvocation(typeof(QObject), null);
 		}
 		public static QMetaObject StaticQtMetaObject() {
 			return (QMetaObject) staticInterceptor.Invoke("staticQtMetaObject", "staticQtMetaObject()", typeof(QMetaObject));

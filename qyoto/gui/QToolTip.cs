@@ -10,7 +10,7 @@ namespace Qyoto {
 		protected QToolTip(Type dummy) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QToolTip() {
-			staticInterceptor = new SmokeInvocation(typeof(QToolTip), "QToolTip", null);
+			staticInterceptor = new SmokeInvocation(typeof(QToolTip), null);
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w) {
 			staticInterceptor.Invoke("showText#$#", "showText(const QPoint&, const QString&, QWidget*)", typeof(void), typeof(QPoint), pos, typeof(string), text, typeof(QWidget), w);

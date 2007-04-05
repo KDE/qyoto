@@ -8,11 +8,15 @@ namespace Qyoto {
 	public class QHttp : QObject, IDisposable {
  		protected QHttp(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHttp), "QHttp", this);
+			interceptor = new SmokeInvocation(typeof(QHttp), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QHttp() {
-			staticInterceptor = new SmokeInvocation(typeof(QHttp), "QHttp", null);
+			staticInterceptor = new SmokeInvocation(typeof(QHttp), null);
+		}
+		public enum ConnectionMode {
+			ConnectionModeHttp = 0,
+			ConnectionModeHttps = 1,
 		}
 		public enum State {
 			Unconnected = 0,
@@ -32,6 +36,8 @@ namespace Qyoto {
 			InvalidResponseHeader = 5,
 			WrongContentLength = 6,
 			Aborted = 7,
+			AuthenticationRequiredError = 8,
+			ProxyAuthenticationRequiredError = 9,
 		}
 		public QHttp(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -53,11 +59,29 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QHttp$", "QHttp(const QString&)", typeof(void), typeof(string), hostname);
 		}
+		public QHttp(string hostname, QHttp.ConnectionMode mode, ushort port, QObject parent) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QHttp$$$#", "QHttp(const QString&, QHttp::ConnectionMode, quint16, QObject*)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port, typeof(QObject), parent);
+		}
+		public QHttp(string hostname, QHttp.ConnectionMode mode, ushort port) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QHttp$$$", "QHttp(const QString&, QHttp::ConnectionMode, quint16)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port);
+		}
+		public QHttp(string hostname, QHttp.ConnectionMode mode) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QHttp$$", "QHttp(const QString&, QHttp::ConnectionMode)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode);
+		}
 		public int SetHost(string hostname, ushort port) {
 			return (int) interceptor.Invoke("setHost$$", "setHost(const QString&, quint16)", typeof(int), typeof(string), hostname, typeof(ushort), port);
 		}
 		public int SetHost(string hostname) {
 			return (int) interceptor.Invoke("setHost$", "setHost(const QString&)", typeof(int), typeof(string), hostname);
+		}
+		public int SetHost(string hostname, QHttp.ConnectionMode mode, ushort port) {
+			return (int) interceptor.Invoke("setHost$$$", "setHost(const QString&, QHttp::ConnectionMode, quint16)", typeof(int), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port);
+		}
+		public int SetHost(string hostname, QHttp.ConnectionMode mode) {
+			return (int) interceptor.Invoke("setHost$$", "setHost(const QString&, QHttp::ConnectionMode)", typeof(int), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode);
 		}
 		public int SetSocket(QTcpSocket socket) {
 			return (int) interceptor.Invoke("setSocket#", "setSocket(QTcpSocket*)", typeof(int), typeof(QTcpSocket), socket);
@@ -76,6 +100,9 @@ namespace Qyoto {
 		}
 		public int SetProxy(string host, int port) {
 			return (int) interceptor.Invoke("setProxy$$", "setProxy(const QString&, int)", typeof(int), typeof(string), host, typeof(int), port);
+		}
+		public int SetProxy(QNetworkProxy proxy) {
+			return (int) interceptor.Invoke("setProxy#", "setProxy(const QNetworkProxy&)", typeof(int), typeof(QNetworkProxy), proxy);
 		}
 		public int Get(string path, QIODevice to) {
 			return (int) interceptor.Invoke("get$#", "get(const QString&, QIODevice*)", typeof(int), typeof(string), path, typeof(QIODevice), to);
@@ -162,6 +189,10 @@ namespace Qyoto {
 		public void Abort() {
 			interceptor.Invoke("abort", "abort()", typeof(void));
 		}
+		[Q_SLOT("void ignoreSslErrors()")]
+		public void IgnoreSslErrors() {
+			interceptor.Invoke("ignoreSslErrors", "ignoreSslErrors()", typeof(void));
+		}
 		~QHttp() {
 			interceptor.Invoke("~QHttp", "~QHttp()", typeof(void));
 		}
@@ -196,5 +227,10 @@ namespace Qyoto {
 		void RequestFinished(int arg1, bool arg2);
 		[Q_SIGNAL("void done(bool)")]
 		void Done(bool arg1);
+		[Q_SIGNAL("void proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)")]
+		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator arg2);
+		[Q_SIGNAL("void authenticationRequired(const QString&, quint16, QAuthenticator*)")]
+		void AuthenticationRequired(string hostname, ushort port, QAuthenticator arg3);
+		// void sslErrors(const QList<QSslError>& arg1); >>>> NOT CONVERTED
 	}
 }

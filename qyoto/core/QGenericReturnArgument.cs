@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGenericReturnArgument : QGenericArgument, IDisposable {
  		protected QGenericReturnArgument(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGenericReturnArgument), "QGenericReturnArgument", this);
+			interceptor = new SmokeInvocation(typeof(QGenericReturnArgument), this);
 		}
 		// QGenericReturnArgument* QGenericReturnArgument(const char* arg1,void* arg2); >>>> NOT CONVERTED
 		public QGenericReturnArgument(string aName) : this((Type) null) {

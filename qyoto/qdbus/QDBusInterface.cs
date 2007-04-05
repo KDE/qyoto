@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDBusInterface : QDBusAbstractInterface, IDisposable {
  		protected QDBusInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusInterface), "QDBusInterface", this);
+			interceptor = new SmokeInvocation(typeof(QDBusInterface), this);
 		}
 		public QDBusInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPalette(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPalette), "QPalette", this);
+			interceptor = new SmokeInvocation(typeof(QPalette), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPalette() {
-			staticInterceptor = new SmokeInvocation(typeof(QPalette), "QPalette", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPalette), null);
 		}
 		public enum ColorGroup {
 			Active = 0,
@@ -184,6 +184,9 @@ namespace Qyoto {
 		}
 		public int SerialNumber() {
 			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
+		}
+		public long CacheKey() {
+			return (long) interceptor.Invoke("cacheKey", "cacheKey() const", typeof(long));
 		}
 		public QPalette Resolve(QPalette arg1) {
 			return (QPalette) interceptor.Invoke("resolve#", "resolve(const QPalette&) const", typeof(QPalette), typeof(QPalette), arg1);

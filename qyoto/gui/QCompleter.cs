@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QCompleter : QObject, IDisposable {
  		protected QCompleter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCompleter), "QCompleter", this);
+			interceptor = new SmokeInvocation(typeof(QCompleter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCompleter() {
-			staticInterceptor = new SmokeInvocation(typeof(QCompleter), "QCompleter", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCompleter), null);
 		}
 		public enum CompletionMode {
 			PopupCompletion = 0,
@@ -54,6 +54,11 @@ namespace Qyoto {
 		public Qt.CaseSensitivity CaseSensitivity {
 			get { return (Qt.CaseSensitivity) interceptor.Invoke("caseSensitivity", "caseSensitivity()", typeof(Qt.CaseSensitivity)); }
 			set { interceptor.Invoke("setCaseSensitivity$", "setCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), value); }
+		}
+		[Q_PROPERTY("bool", "wrapAround")]
+		public bool WrapAround {
+			get { return (bool) interceptor.Invoke("wrapAround", "wrapAround()", typeof(bool)); }
+			set { interceptor.Invoke("setWrapAround$", "setWrapAround(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QCompleter(QObject parent) : this((Type) null) {
 			CreateProxy();

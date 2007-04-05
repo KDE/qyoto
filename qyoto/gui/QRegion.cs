@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QRegion(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRegion), "QRegion", this);
+			interceptor = new SmokeInvocation(typeof(QRegion), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRegion() {
-			staticInterceptor = new SmokeInvocation(typeof(QRegion), "QRegion", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRegion), null);
 		}
 		public enum RegionType {
 			Rectangle = 0,
@@ -153,6 +153,9 @@ namespace Qyoto {
 		}
 		public static QRegion operator*(QRegion r, QMatrix m) {
 			return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QMatrix&)", typeof(QRegion), typeof(QRegion), r, typeof(QMatrix), m);
+		}
+		public static QRegion operator*(QRegion r, QTransform m) {
+			return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QTransform&)", typeof(QRegion), typeof(QRegion), r, typeof(QTransform), m);
 		}
 	}
 }

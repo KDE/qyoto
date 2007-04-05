@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QImage : QPaintDevice, IDisposable {
  		protected QImage(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QImage), "QImage", this);
+			interceptor = new SmokeInvocation(typeof(QImage), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QImage() {
-			staticInterceptor = new SmokeInvocation(typeof(QImage), "QImage", null);
+			staticInterceptor = new SmokeInvocation(typeof(QImage), null);
 		}
 		public enum InvertMode {
 			InvertRgb = 0,
@@ -48,6 +48,10 @@ namespace Qyoto {
 		public QImage(char[] data, int width, int height, QImage.Format format) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QImage$$$$", "QImage(uchar*, int, int, QImage::Format)", typeof(void), typeof(char[]), data, typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
+		}
+		public QImage(char[] data, int width, int height, int bytesPerLine, QImage.Format format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QImage$$$$$", "QImage(uchar*, int, int, int, QImage::Format)", typeof(void), typeof(char[]), data, typeof(int), width, typeof(int), height, typeof(int), bytesPerLine, typeof(QImage.Format), format);
 		}
 		public QImage(string fileName, string format) : this((Type) null) {
 			CreateProxy();
@@ -204,6 +208,12 @@ namespace Qyoto {
 		public QImage CreateHeuristicMask() {
 			return (QImage) interceptor.Invoke("createHeuristicMask", "createHeuristicMask() const", typeof(QImage));
 		}
+		public QImage CreateMaskFromColor(uint color, Qt.MaskMode mode) {
+			return (QImage) interceptor.Invoke("createMaskFromColor$$", "createMaskFromColor(QRgb, Qt::MaskMode) const", typeof(QImage), typeof(uint), color, typeof(Qt.MaskMode), mode);
+		}
+		public QImage CreateMaskFromColor(uint color) {
+			return (QImage) interceptor.Invoke("createMaskFromColor$", "createMaskFromColor(QRgb) const", typeof(QImage), typeof(uint), color);
+		}
 		public QImage Scaled(int w, int h, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return (QImage) interceptor.Invoke("scaled$$$$", "scaled(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QImage), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);
 		}
@@ -239,6 +249,12 @@ namespace Qyoto {
 		}
 		public QImage Transformed(QMatrix matrix) {
 			return (QImage) interceptor.Invoke("transformed#", "transformed(const QMatrix&) const", typeof(QImage), typeof(QMatrix), matrix);
+		}
+		public QImage Transformed(QTransform matrix, Qt.TransformationMode mode) {
+			return (QImage) interceptor.Invoke("transformed#$", "transformed(const QTransform&, Qt::TransformationMode) const", typeof(QImage), typeof(QTransform), matrix, typeof(Qt.TransformationMode), mode);
+		}
+		public QImage Transformed(QTransform matrix) {
+			return (QImage) interceptor.Invoke("transformed#", "transformed(const QTransform&) const", typeof(QImage), typeof(QTransform), matrix);
 		}
 		public QImage Mirrored(bool horizontally, bool vertically) {
 			return (QImage) interceptor.Invoke("mirrored$$", "mirrored(bool, bool) const", typeof(QImage), typeof(bool), horizontally, typeof(bool), vertically);
@@ -299,6 +315,9 @@ namespace Qyoto {
 		}
 		public int SerialNumber() {
 			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
+		}
+		public long CacheKey() {
+			return (long) interceptor.Invoke("cacheKey", "cacheKey() const", typeof(long));
 		}
 		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {
@@ -361,6 +380,9 @@ namespace Qyoto {
 		}
 		public static QMatrix TrueMatrix(QMatrix arg1, int w, int h) {
 			return (QMatrix) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QMatrix&, int, int)", typeof(QMatrix), typeof(QMatrix), arg1, typeof(int), w, typeof(int), h);
+		}
+		public static QTransform TrueMatrix(QTransform arg1, int w, int h) {
+			return (QTransform) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QTransform&, int, int)", typeof(QTransform), typeof(QTransform), arg1, typeof(int), w, typeof(int), h);
 		}
 		public static QImage FromData(char[] data, int size, string format) {
 			return (QImage) staticInterceptor.Invoke("fromData$$$", "fromData(const uchar*, int, const char*)", typeof(QImage), typeof(char[]), data, typeof(int), size, typeof(string), format);

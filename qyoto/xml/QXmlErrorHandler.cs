@@ -16,7 +16,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlErrorHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlErrorHandler), "QXmlErrorHandler", this);
+			interceptor = new SmokeInvocation(typeof(QXmlErrorHandler), this);
 		}
 		[SmokeMethod("warning(const QXmlParseException&)")]
 		public abstract bool Warning(QXmlParseException exception);

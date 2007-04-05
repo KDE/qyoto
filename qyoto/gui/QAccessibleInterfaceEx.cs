@@ -8,10 +8,14 @@ namespace Qyoto {
 	public abstract class QAccessibleInterfaceEx : QAccessibleInterface {
  		protected QAccessibleInterfaceEx(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleInterfaceEx), "QAccessibleInterfaceEx", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleInterfaceEx), this);
 		}
 		[SmokeMethod("invokeMethodEx(QAccessible::Method, int, const QVariantList&)")]
 		public abstract QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3);
+		[SmokeMethod("interface_cast(QAccessible2::InterfaceType)")]
+		public virtual QAccessible2Interface Interface_cast(QAccessible2.InterfaceType arg1) {
+			return (QAccessible2Interface) interceptor.Invoke("interface_cast$", "interface_cast(QAccessible2::InterfaceType)", typeof(QAccessible2Interface), typeof(QAccessible2.InterfaceType), arg1);
+		}
 		public QAccessibleInterfaceEx() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAccessibleInterfaceEx", "QAccessibleInterfaceEx()", typeof(void));

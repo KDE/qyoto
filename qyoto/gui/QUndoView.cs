@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QUndoView : QListView, IDisposable {
  		protected QUndoView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUndoView), "QUndoView", this);
+			interceptor = new SmokeInvocation(typeof(QUndoView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUndoView() {
-			staticInterceptor = new SmokeInvocation(typeof(QUndoView), "QUndoView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUndoView), null);
 		}
 		[Q_PROPERTY("QString", "emptyLabel")]
 		public string EmptyLabel {

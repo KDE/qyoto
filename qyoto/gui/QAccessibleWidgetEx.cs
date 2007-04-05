@@ -8,7 +8,7 @@ namespace Qyoto {
 	public abstract class QAccessibleWidgetEx : QAccessibleObjectEx {
  		protected QAccessibleWidgetEx(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleWidgetEx), "QAccessibleWidgetEx", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleWidgetEx), this);
 		}
 		public QAccessibleWidgetEx(QWidget o, QAccessible.Role r, string name) : this((Type) null) {
 			CreateProxy();
@@ -65,6 +65,10 @@ namespace Qyoto {
 		[SmokeMethod("doAction(int, int, const QVariantList&)")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
 			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QVariantList&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
+		}
+		[SmokeMethod("invokeMethodEx(QAccessible::Method, int, const QVariantList&)")]
+		public override QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3) {
+			return (QVariant) interceptor.Invoke("invokeMethodEx$$?", "invokeMethodEx(QAccessible::Method, int, const QVariantList&)", typeof(QVariant), typeof(QAccessible.Method), method, typeof(int), child, typeof(List<QVariant>), arg3);
 		}
 		protected QWidget Widget() {
 			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));

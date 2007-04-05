@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QTextListFormat : QTextFormat, IDisposable {
  		protected QTextListFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextListFormat), "QTextListFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextListFormat), this);
 		}
 		public enum Style {
 			ListDisc = -1,

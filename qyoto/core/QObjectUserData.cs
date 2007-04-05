@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QObjectUserData(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QObjectUserData), "QObjectUserData", this);
+			interceptor = new SmokeInvocation(typeof(QObjectUserData), this);
 		}
 		// QObjectUserData* QObjectUserData(); >>>> NOT CONVERTED
 		~QObjectUserData() {

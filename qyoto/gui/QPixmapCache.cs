@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPixmapCache(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPixmapCache), "QPixmapCache", this);
+			interceptor = new SmokeInvocation(typeof(QPixmapCache), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPixmapCache() {
-			staticInterceptor = new SmokeInvocation(typeof(QPixmapCache), "QPixmapCache", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPixmapCache), null);
 		}
 		public QPixmapCache() : this((Type) null) {
 			CreateProxy();

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QX11EmbedWidget : QWidget, IDisposable {
  		protected QX11EmbedWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QX11EmbedWidget), "QX11EmbedWidget", this);
+			interceptor = new SmokeInvocation(typeof(QX11EmbedWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QX11EmbedWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QX11EmbedWidget), "QX11EmbedWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QX11EmbedWidget), null);
 		}
 		public enum Error {
 			Unknown = 0,

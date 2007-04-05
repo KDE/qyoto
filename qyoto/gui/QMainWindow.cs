@@ -8,11 +8,18 @@ namespace Qyoto {
 	public class QMainWindow : QWidget, IDisposable {
  		protected QMainWindow(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMainWindow), "QMainWindow", this);
+			interceptor = new SmokeInvocation(typeof(QMainWindow), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMainWindow() {
-			staticInterceptor = new SmokeInvocation(typeof(QMainWindow), "QMainWindow", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMainWindow), null);
+		}
+		public enum DockOption {
+			AnimatedDocks = 0x01,
+			AllowNestedDocks = 0x02,
+			AllowTabbedDocks = 0x04,
+			ForceTabbedDocks = 0x08,
+			VerticalTabs = 0x10,
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
@@ -33,6 +40,11 @@ namespace Qyoto {
 		public bool DockNestingEnabled {
 			get { return (bool) interceptor.Invoke("isDockNestingEnabled", "isDockNestingEnabled()", typeof(bool)); }
 			set { interceptor.Invoke("setDockNestingEnabled$", "setDockNestingEnabled(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("bool", "unifiedTitleAndToolBarOnMac")]
+		public bool UnifiedTitleAndToolBarOnMac {
+			get { return (bool) interceptor.Invoke("unifiedTitleAndToolBarOnMac", "unifiedTitleAndToolBarOnMac()", typeof(bool)); }
+			set { interceptor.Invoke("setUnifiedTitleAndToolBarOnMac$", "setUnifiedTitleAndToolBarOnMac(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QMainWindow(QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
@@ -109,8 +121,14 @@ namespace Qyoto {
 		public void RemoveToolBar(QToolBar toolbar) {
 			interceptor.Invoke("removeToolBar#", "removeToolBar(QToolBar*)", typeof(void), typeof(QToolBar), toolbar);
 		}
+		public void RemoveToolBarBreak(QToolBar before) {
+			interceptor.Invoke("removeToolBarBreak#", "removeToolBarBreak(QToolBar*)", typeof(void), typeof(QToolBar), before);
+		}
 		public Qt.ToolBarArea ToolBarArea(QToolBar toolbar) {
 			return (Qt.ToolBarArea) interceptor.Invoke("toolBarArea#", "toolBarArea(QToolBar*) const", typeof(Qt.ToolBarArea), typeof(QToolBar), toolbar);
+		}
+		public bool ToolBarBreak(QToolBar toolbar) {
+			return (bool) interceptor.Invoke("toolBarBreak#", "toolBarBreak(QToolBar*) const", typeof(bool), typeof(QToolBar), toolbar);
 		}
 		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget) {
 			interceptor.Invoke("addDockWidget$#", "addDockWidget(Qt::DockWidgetArea, QDockWidget*)", typeof(void), typeof(Qt.DockWidgetArea), area, typeof(QDockWidget), dockwidget);

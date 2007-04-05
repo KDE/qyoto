@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QFileOpenEvent : QEvent, IDisposable {
  		protected QFileOpenEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFileOpenEvent), "QFileOpenEvent", this);
+			interceptor = new SmokeInvocation(typeof(QFileOpenEvent), this);
 		}
 		public QFileOpenEvent(string file) : this((Type) null) {
 			CreateProxy();

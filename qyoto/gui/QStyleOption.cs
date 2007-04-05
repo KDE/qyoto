@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QStyleOption(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOption), "QStyleOption", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOption), this);
 		}
 		public enum OptionType {
 			SO_Default = 0,

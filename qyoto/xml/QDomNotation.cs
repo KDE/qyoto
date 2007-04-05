@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDomNotation : QDomNode, IDisposable {
  		protected QDomNotation(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomNotation), "QDomNotation", this);
+			interceptor = new SmokeInvocation(typeof(QDomNotation), this);
 		}
 		public QDomNotation() : this((Type) null) {
 			CreateProxy();

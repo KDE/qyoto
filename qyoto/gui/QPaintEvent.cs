@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QPaintEvent : QEvent, IDisposable {
  		protected QPaintEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPaintEvent), "QPaintEvent", this);
+			interceptor = new SmokeInvocation(typeof(QPaintEvent), this);
 		}
 		public QPaintEvent(QRegion paintRegion) : this((Type) null) {
 			CreateProxy();

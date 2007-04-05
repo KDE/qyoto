@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QToolBarChangeEvent : QEvent, IDisposable {
  		protected QToolBarChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QToolBarChangeEvent), "QToolBarChangeEvent", this);
+			interceptor = new SmokeInvocation(typeof(QToolBarChangeEvent), this);
 		}
 		public QToolBarChangeEvent(bool t) : this((Type) null) {
 			CreateProxy();

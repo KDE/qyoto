@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QPageSetupDialog : QAbstractPageSetupDialog, IDisposable {
  		protected QPageSetupDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPageSetupDialog), "QPageSetupDialog", this);
+			interceptor = new SmokeInvocation(typeof(QPageSetupDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPageSetupDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QPageSetupDialog), "QPageSetupDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPageSetupDialog), null);
 		}
 		public QPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();

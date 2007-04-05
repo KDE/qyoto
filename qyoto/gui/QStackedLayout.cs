@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QStackedLayout : QLayout, IDisposable {
  		protected QStackedLayout(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStackedLayout), "QStackedLayout", this);
+			interceptor = new SmokeInvocation(typeof(QStackedLayout), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QStackedLayout() {
-			staticInterceptor = new SmokeInvocation(typeof(QStackedLayout), "QStackedLayout", null);
+			staticInterceptor = new SmokeInvocation(typeof(QStackedLayout), null);
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {

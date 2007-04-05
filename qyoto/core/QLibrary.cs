@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QLibrary : QObject, IDisposable {
  		protected QLibrary(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLibrary), "QLibrary", this);
+			interceptor = new SmokeInvocation(typeof(QLibrary), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLibrary() {
-			staticInterceptor = new SmokeInvocation(typeof(QLibrary), "QLibrary", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLibrary), null);
 		}
 		public enum LoadHint {
 			ResolveAllSymbolsHint = 0x01,

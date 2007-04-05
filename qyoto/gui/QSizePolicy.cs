@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSizePolicy(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSizePolicy), "QSizePolicy", this);
+			interceptor = new SmokeInvocation(typeof(QSizePolicy), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSizePolicy() {
-			staticInterceptor = new SmokeInvocation(typeof(QSizePolicy), "QSizePolicy", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSizePolicy), null);
 		}
 		public enum PolicyFlag {
 			GrowFlag = 1,
@@ -30,6 +30,23 @@ namespace Qyoto {
 			Expanding = PolicyFlag.GrowFlag|PolicyFlag.ShrinkFlag|PolicyFlag.ExpandFlag,
 			Ignored = PolicyFlag.ShrinkFlag|PolicyFlag.GrowFlag|PolicyFlag.IgnoreFlag,
 		}
+		public enum ControlType {
+			DefaultType = 0x00000001,
+			ButtonBox = 0x00000002,
+			CheckBox = 0x00000004,
+			ComboBox = 0x00000008,
+			Frame = 0x00000010,
+			GroupBox = 0x00000020,
+			Label = 0x00000040,
+			Line = 0x00000080,
+			LineEdit = 0x00000100,
+			PushButton = 0x00000200,
+			RadioButton = 0x00000400,
+			Slider = 0x00000800,
+			SpinBox = 0x00001000,
+			TabWidget = 0x00002000,
+			ToolButton = 0x00004000,
+		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QSizePolicy() : this((Type) null) {
 			CreateProxy();
@@ -39,17 +56,27 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QSizePolicy$$", "QSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), horizontal, typeof(QSizePolicy.Policy), vertical);
 		}
+		public QSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical, QSizePolicy.ControlType type) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSizePolicy$$$", "QSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy, QSizePolicy::ControlType)", typeof(void), typeof(QSizePolicy.Policy), horizontal, typeof(QSizePolicy.Policy), vertical, typeof(QSizePolicy.ControlType), type);
+		}
 		public QSizePolicy.Policy HorizontalPolicy() {
 			return (QSizePolicy.Policy) interceptor.Invoke("horizontalPolicy", "horizontalPolicy() const", typeof(QSizePolicy.Policy));
 		}
 		public QSizePolicy.Policy VerticalPolicy() {
 			return (QSizePolicy.Policy) interceptor.Invoke("verticalPolicy", "verticalPolicy() const", typeof(QSizePolicy.Policy));
 		}
+		public QSizePolicy.ControlType controlType() {
+			return (QSizePolicy.ControlType) interceptor.Invoke("controlType", "controlType() const", typeof(QSizePolicy.ControlType));
+		}
 		public void SetHorizontalPolicy(QSizePolicy.Policy d) {
 			interceptor.Invoke("setHorizontalPolicy$", "setHorizontalPolicy(QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), d);
 		}
 		public void SetVerticalPolicy(QSizePolicy.Policy d) {
 			interceptor.Invoke("setVerticalPolicy$", "setVerticalPolicy(QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), d);
+		}
+		public void SetControlType(QSizePolicy.ControlType type) {
+			interceptor.Invoke("setControlType$", "setControlType(QSizePolicy::ControlType)", typeof(void), typeof(QSizePolicy.ControlType), type);
 		}
 		public int ExpandingDirections() {
 			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));

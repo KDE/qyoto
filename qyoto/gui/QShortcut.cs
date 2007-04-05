@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QShortcut : QObject, IDisposable {
  		protected QShortcut(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QShortcut), "QShortcut", this);
+			interceptor = new SmokeInvocation(typeof(QShortcut), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QShortcut() {
-			staticInterceptor = new SmokeInvocation(typeof(QShortcut), "QShortcut", null);
+			staticInterceptor = new SmokeInvocation(typeof(QShortcut), null);
 		}
 		[Q_PROPERTY("QKeySequence", "key")]
 		public QKeySequence Key {

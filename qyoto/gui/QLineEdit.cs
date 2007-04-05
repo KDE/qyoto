@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QLineEdit : QWidget, IDisposable {
  		protected QLineEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLineEdit), "QLineEdit", this);
+			interceptor = new SmokeInvocation(typeof(QLineEdit), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLineEdit() {
-			staticInterceptor = new SmokeInvocation(typeof(QLineEdit), "QLineEdit", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLineEdit), null);
 		}
 		public enum EchoMode {
 			Normal = 0,
@@ -291,6 +291,9 @@ namespace Qyoto {
 		[SmokeMethod("inputMethodEvent(QInputMethodEvent*)")]
 		protected override void InputMethodEvent(QInputMethodEvent arg1) {
 			interceptor.Invoke("inputMethodEvent#", "inputMethodEvent(QInputMethodEvent*)", typeof(void), typeof(QInputMethodEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionFrame option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionFrame*) const", typeof(void), typeof(QStyleOptionFrame), option);
 		}
 		~QLineEdit() {
 			interceptor.Invoke("~QLineEdit", "~QLineEdit()", typeof(void));

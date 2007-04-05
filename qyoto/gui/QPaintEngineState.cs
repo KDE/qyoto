@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPaintEngineState(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPaintEngineState), "QPaintEngineState", this);
+			interceptor = new SmokeInvocation(typeof(QPaintEngineState), this);
 		}
 		public int State() {
 			return (int) interceptor.Invoke("state", "state() const", typeof(int));
@@ -35,6 +35,9 @@ namespace Qyoto {
 		public QMatrix Matrix() {
 			return (QMatrix) interceptor.Invoke("matrix", "matrix() const", typeof(QMatrix));
 		}
+		public QTransform Transform() {
+			return (QTransform) interceptor.Invoke("transform", "transform() const", typeof(QTransform));
+		}
 		public Qt.ClipOperation ClipOperation() {
 			return (Qt.ClipOperation) interceptor.Invoke("clipOperation", "clipOperation() const", typeof(Qt.ClipOperation));
 		}
@@ -58,6 +61,12 @@ namespace Qyoto {
 		}
 		public QPainter Painter() {
 			return (QPainter) interceptor.Invoke("painter", "painter() const", typeof(QPainter));
+		}
+		public bool BrushNeedsResolving() {
+			return (bool) interceptor.Invoke("brushNeedsResolving", "brushNeedsResolving() const", typeof(bool));
+		}
+		public bool PenNeedsResolving() {
+			return (bool) interceptor.Invoke("penNeedsResolving", "penNeedsResolving() const", typeof(bool));
 		}
 		public QPaintEngineState() : this((Type) null) {
 			CreateProxy();

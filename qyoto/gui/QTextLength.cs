@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextLength(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextLength), "QTextLength", this);
+			interceptor = new SmokeInvocation(typeof(QTextLength), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextLength() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextLength), "QTextLength", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextLength), null);
 		}
 		public enum TypeOf {
 			VariableLength = 0,

@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QCommonStyle : QStyle, IDisposable {
  		protected QCommonStyle(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCommonStyle), "QCommonStyle", this);
+			interceptor = new SmokeInvocation(typeof(QCommonStyle), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCommonStyle() {
-			staticInterceptor = new SmokeInvocation(typeof(QCommonStyle), "QCommonStyle", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCommonStyle), null);
 		}
 		// QCommonStyle* QCommonStyle(QCommonStylePrivate& arg1); >>>> NOT CONVERTED
 		public QCommonStyle() : this((Type) null) {

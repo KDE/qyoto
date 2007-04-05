@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QInputContext : QObject {
  		protected QInputContext(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QInputContext), "QInputContext", this);
+			interceptor = new SmokeInvocation(typeof(QInputContext), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QInputContext() {
-			staticInterceptor = new SmokeInvocation(typeof(QInputContext), "QInputContext", null);
+			staticInterceptor = new SmokeInvocation(typeof(QInputContext), null);
 		}
 		public enum StandardFormat {
 			PreeditFormat = 0,

@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QComboBox : QWidget, IDisposable {
  		protected QComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QComboBox), "QComboBox", this);
+			interceptor = new SmokeInvocation(typeof(QComboBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QComboBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QComboBox), "QComboBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QComboBox), null);
 		}
 		public enum InsertPolicy {
 			NoInsert = 0,
@@ -28,6 +28,7 @@ namespace Qyoto {
 			AdjustToContents = 0,
 			AdjustToContentsOnFirstShow = 1,
 			AdjustToMinimumContentsLength = 2,
+			AdjustToMinimumContentsLengthWithIcon = 3,
 		}
 		[Q_PROPERTY("bool", "editable")]
 		public bool Editable {
@@ -321,6 +322,9 @@ namespace Qyoto {
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		protected new virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionComboBox option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionComboBox*) const", typeof(void), typeof(QStyleOptionComboBox), option);
 		}
 		~QComboBox() {
 			interceptor.Invoke("~QComboBox", "~QComboBox()", typeof(void));

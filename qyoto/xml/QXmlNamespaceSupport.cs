@@ -11,7 +11,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlNamespaceSupport(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlNamespaceSupport), "QXmlNamespaceSupport", this);
+			interceptor = new SmokeInvocation(typeof(QXmlNamespaceSupport), this);
 		}
 		public QXmlNamespaceSupport() : this((Type) null) {
 			CreateProxy();

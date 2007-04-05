@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTableView : QAbstractItemView, IDisposable {
  		protected QTableView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTableView), "QTableView", this);
+			interceptor = new SmokeInvocation(typeof(QTableView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTableView() {
-			staticInterceptor = new SmokeInvocation(typeof(QTableView), "QTableView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTableView), null);
 		}
 		[Q_PROPERTY("bool", "showGrid")]
 		public bool ShowGrid {
@@ -28,6 +28,16 @@ namespace Qyoto {
 		public bool SortingEnabled {
 			get { return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled()", typeof(bool)); }
 			set { interceptor.Invoke("setSortingEnabled$", "setSortingEnabled(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("bool", "wordWrap")]
+		public bool WordWrap {
+			get { return (bool) interceptor.Invoke("wordWrap", "wordWrap()", typeof(bool)); }
+			set { interceptor.Invoke("setWordWrap$", "setWordWrap(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("bool", "cornerButtonEnabled")]
+		public bool CornerButtonEnabled {
+			get { return (bool) interceptor.Invoke("isCornerButtonEnabled", "isCornerButtonEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setCornerButtonEnabled$", "setCornerButtonEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QTableView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -99,6 +109,9 @@ namespace Qyoto {
 		}
 		public bool IsSortingEnabled() {
 			return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled() const", typeof(bool));
+		}
+		public bool IsCornerButtonEnabled() {
+			return (bool) interceptor.Invoke("isCornerButtonEnabled", "isCornerButtonEnabled() const", typeof(bool));
 		}
 		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public override QRect VisualRect(QModelIndex index) {

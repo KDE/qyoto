@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QStackedWidget : QFrame, IDisposable {
  		protected QStackedWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStackedWidget), "QStackedWidget", this);
+			interceptor = new SmokeInvocation(typeof(QStackedWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QStackedWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QStackedWidget), "QStackedWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QStackedWidget), null);
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {

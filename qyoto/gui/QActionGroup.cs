@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QActionGroup : QObject, IDisposable {
  		protected QActionGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QActionGroup), "QActionGroup", this);
+			interceptor = new SmokeInvocation(typeof(QActionGroup), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QActionGroup() {
-			staticInterceptor = new SmokeInvocation(typeof(QActionGroup), "QActionGroup", null);
+			staticInterceptor = new SmokeInvocation(typeof(QActionGroup), null);
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {

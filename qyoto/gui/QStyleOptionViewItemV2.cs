@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionViewItemV2 : QStyleOptionViewItem, IDisposable {
  		protected QStyleOptionViewItemV2(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionViewItemV2), "QStyleOptionViewItemV2", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionViewItemV2), this);
 		}
 		public enum StyleOptionVersion {
 			Version = 2,

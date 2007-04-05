@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFactoryInterface(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFactoryInterface), "QFactoryInterface", this);
+			interceptor = new SmokeInvocation(typeof(QFactoryInterface), this);
 		}
 		[SmokeMethod("keys() const")]
 		public abstract List<string> Keys();

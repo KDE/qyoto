@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 
+	[SmokeClass("QDBus")]
 	public class QDBus : Object {
 		protected SmokeInvocation interceptor = null;
 		public enum CallMode {

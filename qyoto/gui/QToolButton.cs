@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QToolButton : QAbstractButton, IDisposable {
  		protected QToolButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QToolButton), "QToolButton", this);
+			interceptor = new SmokeInvocation(typeof(QToolButton), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QToolButton() {
-			staticInterceptor = new SmokeInvocation(typeof(QToolButton), "QToolButton", null);
+			staticInterceptor = new SmokeInvocation(typeof(QToolButton), null);
 		}
 		public enum ToolButtonPopupMode {
 			DelayedPopup = 0,
@@ -115,6 +115,9 @@ namespace Qyoto {
 		[SmokeMethod("nextCheckState()")]
 		protected override void NextCheckState() {
 			interceptor.Invoke("nextCheckState", "nextCheckState()", typeof(void));
+		}
+		protected void InitStyleOption(QStyleOptionToolButton option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionToolButton*) const", typeof(void), typeof(QStyleOptionToolButton), option);
 		}
 		~QToolButton() {
 			interceptor.Invoke("~QToolButton", "~QToolButton()", typeof(void));

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QRegExpValidator : QValidator, IDisposable {
  		protected QRegExpValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRegExpValidator), "QRegExpValidator", this);
+			interceptor = new SmokeInvocation(typeof(QRegExpValidator), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRegExpValidator() {
-			staticInterceptor = new SmokeInvocation(typeof(QRegExpValidator), "QRegExpValidator", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRegExpValidator), null);
 		}
 		[Q_PROPERTY("QRegExp", "regExp")]
 		public QRegExp RegExp {

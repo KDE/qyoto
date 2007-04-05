@@ -9,11 +9,16 @@ namespace Qyoto {
 	public class QTreeView : QAbstractItemView, IDisposable {
  		protected QTreeView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTreeView), "QTreeView", this);
+			interceptor = new SmokeInvocation(typeof(QTreeView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTreeView() {
-			staticInterceptor = new SmokeInvocation(typeof(QTreeView), "QTreeView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTreeView), null);
+		}
+		[Q_PROPERTY("int", "autoExpandDelay")]
+		public int AutoExpandDelay {
+			get { return (int) interceptor.Invoke("autoExpandDelay", "autoExpandDelay()", typeof(int)); }
+			set { interceptor.Invoke("setAutoExpandDelay$", "setAutoExpandDelay(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "indentation")]
 		public int Indentation {
@@ -49,6 +54,11 @@ namespace Qyoto {
 		public bool AllColumnsShowFocus {
 			get { return (bool) interceptor.Invoke("allColumnsShowFocus", "allColumnsShowFocus()", typeof(bool)); }
 			set { interceptor.Invoke("setAllColumnsShowFocus$", "setAllColumnsShowFocus(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("bool", "wordWrap")]
+		public bool WordWrap {
+			get { return (bool) interceptor.Invoke("wordWrap", "wordWrap()", typeof(bool)); }
+			set { interceptor.Invoke("setWordWrap$", "setWordWrap(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QTreeView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -99,6 +109,12 @@ namespace Qyoto {
 		}
 		public void SetRowHidden(int row, QModelIndex parent, bool hide) {
 			interceptor.Invoke("setRowHidden$#$", "setRowHidden(int, const QModelIndex&, bool)", typeof(void), typeof(int), row, typeof(QModelIndex), parent, typeof(bool), hide);
+		}
+		public bool IsRowSpanning(int row, QModelIndex parent) {
+			return (bool) interceptor.Invoke("isRowSpanning$#", "isRowSpanning(int, const QModelIndex&) const", typeof(bool), typeof(int), row, typeof(QModelIndex), parent);
+		}
+		public void SetRowSpanning(int row, QModelIndex parent, bool span) {
+			interceptor.Invoke("setRowSpanning$#$", "setRowSpanning(int, const QModelIndex&, bool)", typeof(void), typeof(int), row, typeof(QModelIndex), parent, typeof(bool), span);
 		}
 		public bool IsExpanded(QModelIndex index) {
 			return (bool) interceptor.Invoke("isExpanded#", "isExpanded(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
@@ -191,6 +207,10 @@ namespace Qyoto {
 		public void CollapseAll() {
 			interceptor.Invoke("collapseAll", "collapseAll()", typeof(void));
 		}
+		[Q_SLOT("void expandTo(int)")]
+		public void ExpandTo(int depth) {
+			interceptor.Invoke("expandTo$", "expandTo(int)", typeof(void), typeof(int), depth);
+		}
 		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected override void ScrollContentsBy(int dx, int dy) {
 			interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
@@ -266,6 +286,14 @@ namespace Qyoto {
 		protected override void KeyPressEvent(QKeyEvent arg1) {
 			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
 		}
+		[SmokeMethod("dragMoveEvent(QDragMoveEvent*)")]
+		protected override void DragMoveEvent(QDragMoveEvent arg1) {
+			interceptor.Invoke("dragMoveEvent#", "dragMoveEvent(QDragMoveEvent*)", typeof(void), typeof(QDragMoveEvent), arg1);
+		}
+		[SmokeMethod("viewportEvent(QEvent*)")]
+		protected override bool ViewportEvent(QEvent arg1) {
+			return (bool) interceptor.Invoke("viewportEvent#", "viewportEvent(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
 		[SmokeMethod("updateGeometries()")]
 		protected override void UpdateGeometries() {
 			interceptor.Invoke("updateGeometries", "updateGeometries()", typeof(void));
@@ -276,6 +304,9 @@ namespace Qyoto {
 		}
 		protected int IndexRowSizeHint(QModelIndex index) {
 			return (int) interceptor.Invoke("indexRowSizeHint#", "indexRowSizeHint(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		}
+		protected int IndexRowHeight(QModelIndex index) {
+			return (int) interceptor.Invoke("indexRowHeight#", "indexRowHeight(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("horizontalScrollbarAction(int)")]
 		protected override void HorizontalScrollbarAction(int action) {

@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QTabletEvent : QInputEvent, IDisposable {
  		protected QTabletEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTabletEvent), "QTabletEvent", this);
+			interceptor = new SmokeInvocation(typeof(QTabletEvent), this);
 		}
 		public enum TabletDevice {
 			NoDevice = 0,

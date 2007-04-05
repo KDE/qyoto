@@ -10,7 +10,7 @@ namespace Qyoto {
 		protected QWhatsThis(Type dummy) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QWhatsThis() {
-			staticInterceptor = new SmokeInvocation(typeof(QWhatsThis), "QWhatsThis", null);
+			staticInterceptor = new SmokeInvocation(typeof(QWhatsThis), null);
 		}
 		public static void EnterWhatsThisMode() {
 			staticInterceptor.Invoke("enterWhatsThisMode", "enterWhatsThisMode()", typeof(void));

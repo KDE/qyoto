@@ -8,11 +8,15 @@ namespace Qyoto {
 	public class QDoubleValidator : QValidator, IDisposable {
  		protected QDoubleValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDoubleValidator), "QDoubleValidator", this);
+			interceptor = new SmokeInvocation(typeof(QDoubleValidator), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDoubleValidator() {
-			staticInterceptor = new SmokeInvocation(typeof(QDoubleValidator), "QDoubleValidator", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDoubleValidator), null);
+		}
+		public enum Notation {
+			StandardNotation = 0,
+			ScientificNotation = 1,
 		}
 		[Q_PROPERTY("double", "bottom")]
 		public double Bottom {
@@ -28,6 +32,11 @@ namespace Qyoto {
 		public int Decimals {
 			get { return (int) interceptor.Invoke("decimals", "decimals()", typeof(int)); }
 			set { interceptor.Invoke("setDecimals$", "setDecimals(int)", typeof(void), typeof(int), value); }
+		}
+		[Q_PROPERTY("QDoubleValidator::Notation", "notation")]
+		public QDoubleValidator.Notation notation {
+			get { return (QDoubleValidator.Notation) interceptor.Invoke("notation", "notation()", typeof(QDoubleValidator.Notation)); }
+			set { interceptor.Invoke("setNotation$", "setNotation(QDoubleValidator::Notation)", typeof(void), typeof(QDoubleValidator.Notation), value); }
 		}
 		public QDoubleValidator(QObject parent) : this((Type) null) {
 			CreateProxy();

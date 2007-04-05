@@ -41,6 +41,10 @@
 #include <QtGui/qundostack.h>
 #endif
 
+#if QT_VERSION >= 0x40300
+#include <QtXml/qxmlstream.h>
+#endif
+
 #include "smoke.h"
 
 #undef DEBUG
@@ -1483,6 +1487,11 @@ DEF_VALUELIST_MARSHALLER( QLineFVector, QVector<QLineF>, QLineF )
 DEF_VALUELIST_MARSHALLER( QRectVector, QVector<QRect>, QRect )
 DEF_VALUELIST_MARSHALLER( QRectFVector, QVector<QRectF>, QRectF )
 
+#if QT_VERSION >= 0x40300
+DEF_VALUELIST_MARSHALLER( QXmlStreamEntityDeclarations, QVector<QXmlStreamEntityDeclaration>, QXmlStreamEntityDeclaration )
+DEF_VALUELIST_MARSHALLER( QXmlStreamNamespaceDeclarations, QVector<QXmlStreamNamespaceDeclaration>, QXmlStreamNamespaceDeclaration )
+DEF_VALUELIST_MARSHALLER( QXmlStreamNotationDeclarations, QVector<QXmlStreamNotationDeclaration>, QXmlStreamNotationDeclaration )
+#endif
 
 TypeHandler Qt_handlers[] = {
     { "QString", marshall_QString },
@@ -1567,6 +1576,11 @@ TypeHandler Qt_handlers[] = {
     { "QList<QStandardItem*>&", marshall_QStandardItemList },
     { "QList<QUndoStack*>", marshall_QUndoStackList },
     { "QList<QUndoStack*>&", marshall_QUndoStackList },
+#endif
+#if QT_VERSION >= 0x40300
+    { "QXmlStreamEntityDeclarations", marshall_QXmlStreamEntityDeclarations },
+    { "QXmlStreamNamespaceDeclarations", marshall_QXmlStreamNamespaceDeclarations },
+    { "QXmlStreamNotationDeclarations", marshall_QXmlStreamNotationDeclarations },
 #endif
     { 0, 0 }
 };

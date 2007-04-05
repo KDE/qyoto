@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QItemSelectionRange(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QItemSelectionRange), "QItemSelectionRange", this);
+			interceptor = new SmokeInvocation(typeof(QItemSelectionRange), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QItemSelectionRange() {
-			staticInterceptor = new SmokeInvocation(typeof(QItemSelectionRange), "QItemSelectionRange", null);
+			staticInterceptor = new SmokeInvocation(typeof(QItemSelectionRange), null);
 		}
 		public QItemSelectionRange() : this((Type) null) {
 			CreateProxy();

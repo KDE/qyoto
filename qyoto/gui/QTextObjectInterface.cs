@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextObjectInterface(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextObjectInterface), "QTextObjectInterface", this);
+			interceptor = new SmokeInvocation(typeof(QTextObjectInterface), this);
 		}
 		[SmokeMethod("intrinsicSize(QTextDocument*, int, const QTextFormat&)")]
 		public abstract QSizeF IntrinsicSize(QTextDocument doc, int posInDocument, QTextFormat format);

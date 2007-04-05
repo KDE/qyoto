@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTreeWidgetItemIterator(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTreeWidgetItemIterator), "QTreeWidgetItemIterator", this);
+			interceptor = new SmokeInvocation(typeof(QTreeWidgetItemIterator), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTreeWidgetItemIterator() {
-			staticInterceptor = new SmokeInvocation(typeof(QTreeWidgetItemIterator), "QTreeWidgetItemIterator", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTreeWidgetItemIterator), null);
 		}
 		public enum IteratorFlag {
 			All = 0x00000000,

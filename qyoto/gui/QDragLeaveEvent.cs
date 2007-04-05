@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDragLeaveEvent : QEvent, IDisposable {
  		protected QDragLeaveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDragLeaveEvent), "QDragLeaveEvent", this);
+			interceptor = new SmokeInvocation(typeof(QDragLeaveEvent), this);
 		}
 		public QDragLeaveEvent() : this((Type) null) {
 			CreateProxy();

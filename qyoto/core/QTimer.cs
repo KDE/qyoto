@@ -31,11 +31,11 @@ namespace Qyoto {
 	public class QTimer : QObject, IDisposable {
  		protected QTimer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTimer), "QTimer", this);
+			interceptor = new SmokeInvocation(typeof(QTimer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTimer() {
-			staticInterceptor = new SmokeInvocation(typeof(QTimer), "QTimer", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTimer), null);
 		}
 		[Q_PROPERTY("bool", "singleShot")]
 		public bool SingleShot {
@@ -46,6 +46,10 @@ namespace Qyoto {
 		public int Interval {
 			get { return (int) interceptor.Invoke("interval", "interval()", typeof(int)); }
 			set { interceptor.Invoke("setInterval$", "setInterval(int)", typeof(void), typeof(int), value); }
+		}
+		[Q_PROPERTY("bool", "active")]
+		public bool Active {
+			get { return (bool) interceptor.Invoke("isActive", "isActive()", typeof(bool)); }
 		}
 		public QTimer(QObject parent) : this((Type) null) {
 			CreateProxy();

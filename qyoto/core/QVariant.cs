@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QVariant(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QVariant), "QVariant", this);
+			interceptor = new SmokeInvocation(typeof(QVariant), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QVariant() {
-			staticInterceptor = new SmokeInvocation(typeof(QVariant), "QVariant", null);
+			staticInterceptor = new SmokeInvocation(typeof(QVariant), null);
 		}
 		public enum TypeOf : uint {
 			Invalid = 0,
@@ -63,7 +63,8 @@ namespace Qyoto {
 			TextLength = 78,
 			TextFormat = 79,
 			Matrix = 80,
-			LastGuiType = Matrix,
+			Transform = 81,
+			LastGuiType = Transform,
 			UserType = 127,
 			LastType = 0xffffffff,
 		}

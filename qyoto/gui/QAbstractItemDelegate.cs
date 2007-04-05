@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractItemDelegate : QObject {
  		protected QAbstractItemDelegate(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractItemDelegate), "QAbstractItemDelegate", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractItemDelegate), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractItemDelegate() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemDelegate), "QAbstractItemDelegate", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemDelegate), null);
 		}
 		public enum EndEditHint {
 			NoHint = 0,
@@ -52,6 +52,10 @@ namespace Qyoto {
 		[SmokeMethod("editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)")]
 		public virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
 			return (bool) interceptor.Invoke("editorEvent####", "editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QEvent), arg1, typeof(QAbstractItemModel), model, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
+		}
+		[Q_SLOT("bool helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)")]
+		public bool HelpEvent(QHelpEvent arg1, QAbstractItemView view, QStyleOptionViewItem option, QModelIndex index) {
+			return (bool) interceptor.Invoke("helpEvent####", "helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QHelpEvent), arg1, typeof(QAbstractItemView), view, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
 		public static string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

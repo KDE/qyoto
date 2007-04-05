@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QPixmap : QPaintDevice, IDisposable {
  		protected QPixmap(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPixmap), "QPixmap", this);
+			interceptor = new SmokeInvocation(typeof(QPixmap), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPixmap() {
-			staticInterceptor = new SmokeInvocation(typeof(QPixmap), "QPixmap", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPixmap), null);
 		}
 		// QPixmap* QPixmap(const char** arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
@@ -104,6 +104,9 @@ namespace Qyoto {
 		public QBitmap CreateMaskFromColor(QColor maskColor) {
 			return (QBitmap) interceptor.Invoke("createMaskFromColor#", "createMaskFromColor(const QColor&) const", typeof(QBitmap), typeof(QColor), maskColor);
 		}
+		public QBitmap CreateMaskFromColor(QColor maskColor, Qt.MaskMode mode) {
+			return (QBitmap) interceptor.Invoke("createMaskFromColor#$", "createMaskFromColor(const QColor&, Qt::MaskMode) const", typeof(QBitmap), typeof(QColor), maskColor, typeof(Qt.MaskMode), mode);
+		}
 		public QPixmap Scaled(int w, int h, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return (QPixmap) interceptor.Invoke("scaled$$$$", "scaled(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QPixmap), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);
 		}
@@ -139,6 +142,12 @@ namespace Qyoto {
 		}
 		public QPixmap Transformed(QMatrix arg1) {
 			return (QPixmap) interceptor.Invoke("transformed#", "transformed(const QMatrix&) const", typeof(QPixmap), typeof(QMatrix), arg1);
+		}
+		public QPixmap Transformed(QTransform arg1, Qt.TransformationMode mode) {
+			return (QPixmap) interceptor.Invoke("transformed#$", "transformed(const QTransform&, Qt::TransformationMode) const", typeof(QPixmap), typeof(QTransform), arg1, typeof(Qt.TransformationMode), mode);
+		}
+		public QPixmap Transformed(QTransform arg1) {
+			return (QPixmap) interceptor.Invoke("transformed#", "transformed(const QTransform&) const", typeof(QPixmap), typeof(QTransform), arg1);
 		}
 		public QImage ToImage() {
 			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
@@ -199,6 +208,9 @@ namespace Qyoto {
 		}
 		public int SerialNumber() {
 			return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
+		}
+		public long CacheKey() {
+			return (long) interceptor.Invoke("cacheKey", "cacheKey() const", typeof(long));
 		}
 		public bool IsDetached() {
 			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
@@ -264,6 +276,9 @@ namespace Qyoto {
 		}
 		public static QMatrix TrueMatrix(QMatrix m, int w, int h) {
 			return (QMatrix) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QMatrix&, int, int)", typeof(QMatrix), typeof(QMatrix), m, typeof(int), w, typeof(int), h);
+		}
+		public static QTransform TrueMatrix(QTransform m, int w, int h) {
+			return (QTransform) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QTransform&, int, int)", typeof(QTransform), typeof(QTransform), m, typeof(int), w, typeof(int), h);
 		}
 		public static QPixmap FromImage(QImage image, int flags) {
 			return (QPixmap) staticInterceptor.Invoke("fromImage#$", "fromImage(const QImage&, Qt::ImageConversionFlags)", typeof(QPixmap), typeof(QImage), image, typeof(int), flags);

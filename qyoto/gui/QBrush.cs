@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QBrush(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QBrush), "QBrush", this);
+			interceptor = new SmokeInvocation(typeof(QBrush), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QBrush() {
-			staticInterceptor = new SmokeInvocation(typeof(QBrush), "QBrush", null);
+			staticInterceptor = new SmokeInvocation(typeof(QBrush), null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QBrush() : this((Type) null) {
@@ -75,6 +75,12 @@ namespace Qyoto {
 		}
 		public void SetMatrix(QMatrix mat) {
 			interceptor.Invoke("setMatrix#", "setMatrix(const QMatrix&)", typeof(void), typeof(QMatrix), mat);
+		}
+		public QTransform Transform() {
+			return (QTransform) interceptor.Invoke("transform", "transform() const", typeof(QTransform));
+		}
+		public void SetTransform(QTransform arg1) {
+			interceptor.Invoke("setTransform#", "setTransform(const QTransform&)", typeof(void), typeof(QTransform), arg1);
 		}
 		public QPixmap Texture() {
 			return (QPixmap) interceptor.Invoke("texture", "texture() const", typeof(QPixmap));

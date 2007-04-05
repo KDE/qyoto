@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPoint(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPoint), "QPoint", this);
+			interceptor = new SmokeInvocation(typeof(QPoint), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPoint() {
-			staticInterceptor = new SmokeInvocation(typeof(QPoint), "QPoint", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPoint), null);
 		}
 		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
 		public QPoint() : this((Type) null) {
@@ -66,6 +66,9 @@ namespace Qyoto {
 		}
 		public static QPoint operator*(QPoint p, QMatrix m) {
 			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
+		}
+		public static QPoint operator*(QPoint p, QTransform m) {
+			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QTransform&)", typeof(QPoint), typeof(QPoint), p, typeof(QTransform), m);
 		}
 		public static bool operator==(QPoint p1, QPoint p2) {
 			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QPoint&, const QPoint&)", typeof(bool), typeof(QPoint), p1, typeof(QPoint), p2);

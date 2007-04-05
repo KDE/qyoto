@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextFragment(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextFragment), "QTextFragment", this);
+			interceptor = new SmokeInvocation(typeof(QTextFragment), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextFragment() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextFragment), "QTextFragment", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextFragment), null);
 		}
 		public QTextFragment() : this((Type) null) {
 			CreateProxy();

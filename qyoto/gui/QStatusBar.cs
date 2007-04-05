@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QStatusBar : QWidget, IDisposable {
  		protected QStatusBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStatusBar), "QStatusBar", this);
+			interceptor = new SmokeInvocation(typeof(QStatusBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QStatusBar() {
-			staticInterceptor = new SmokeInvocation(typeof(QStatusBar), "QStatusBar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QStatusBar), null);
 		}
 		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {

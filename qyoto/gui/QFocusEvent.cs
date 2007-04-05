@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QFocusEvent : QEvent, IDisposable {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFocusEvent), "QFocusEvent", this);
+			interceptor = new SmokeInvocation(typeof(QFocusEvent), this);
 		}
 		public QFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) : this((Type) null) {
 			CreateProxy();

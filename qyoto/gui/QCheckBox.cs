@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QCheckBox : QAbstractButton, IDisposable {
  		protected QCheckBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCheckBox), "QCheckBox", this);
+			interceptor = new SmokeInvocation(typeof(QCheckBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCheckBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QCheckBox), "QCheckBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCheckBox), null);
 		}
 		[Q_PROPERTY("bool", "tristate")]
 		public bool Tristate {
@@ -71,6 +71,9 @@ namespace Qyoto {
 		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
 			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionButton option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionButton*) const", typeof(void), typeof(QStyleOptionButton), option);
 		}
 		~QCheckBox() {
 			interceptor.Invoke("~QCheckBox", "~QCheckBox()", typeof(void));

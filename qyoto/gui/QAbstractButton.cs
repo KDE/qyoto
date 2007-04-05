@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractButton : QWidget {
  		protected QAbstractButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractButton), "QAbstractButton", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractButton), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractButton() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractButton), "QAbstractButton", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractButton), null);
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {

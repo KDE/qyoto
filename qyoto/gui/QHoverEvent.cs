@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QHoverEvent : QEvent, IDisposable {
  		protected QHoverEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHoverEvent), "QHoverEvent", this);
+			interceptor = new SmokeInvocation(typeof(QHoverEvent), this);
 		}
 		public QHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();

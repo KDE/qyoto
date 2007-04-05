@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QValidator : QObject, IDisposable {
  		protected QValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QValidator), "QValidator", this);
+			interceptor = new SmokeInvocation(typeof(QValidator), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QValidator() {
-			staticInterceptor = new SmokeInvocation(typeof(QValidator), "QValidator", null);
+			staticInterceptor = new SmokeInvocation(typeof(QValidator), null);
 		}
 		public enum State {
 			Invalid = 0,
@@ -22,6 +22,12 @@ namespace Qyoto {
 		public QValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QValidator#", "QValidator(QObject*)", typeof(void), typeof(QObject), parent);
+		}
+		public void SetLocale(QLocale locale) {
+			interceptor.Invoke("setLocale#", "setLocale(const QLocale&)", typeof(void), typeof(QLocale), locale);
+		}
+		public QLocale Locale() {
+			return (QLocale) interceptor.Invoke("locale", "locale() const", typeof(QLocale));
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
 		public abstract int Validate(StringBuilder arg1, int arg2);

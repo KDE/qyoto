@@ -10,7 +10,7 @@ namespace Qyoto {
 		protected QLibraryInfo(Type dummy) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLibraryInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(QLibraryInfo), "QLibraryInfo", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLibraryInfo), null);
 		}
 		public enum LibraryLocation {
 			PrefixPath = 0,

@@ -8,7 +8,7 @@ namespace Qyoto {
 	public abstract class QInputContextFactoryInterface : QFactoryInterface {
  		protected QInputContextFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QInputContextFactoryInterface), "QInputContextFactoryInterface", this);
+			interceptor = new SmokeInvocation(typeof(QInputContextFactoryInterface), this);
 		}
 		[SmokeMethod("create(const QString&)")]
 		public abstract QInputContext Create(string key);

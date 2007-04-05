@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QSpacerItem : QLayoutItem, IDisposable {
  		protected QSpacerItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSpacerItem), "QSpacerItem", this);
+			interceptor = new SmokeInvocation(typeof(QSpacerItem), this);
 		}
 		public QSpacerItem(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) : this((Type) null) {
 			CreateProxy();

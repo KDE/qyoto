@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QImageReader(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QImageReader), "QImageReader", this);
+			interceptor = new SmokeInvocation(typeof(QImageReader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QImageReader() {
-			staticInterceptor = new SmokeInvocation(typeof(QImageReader), "QImageReader", null);
+			staticInterceptor = new SmokeInvocation(typeof(QImageReader), null);
 		}
 		public enum ImageReaderError {
 			UnknownError = 0,

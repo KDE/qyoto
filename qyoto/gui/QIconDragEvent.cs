@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QIconDragEvent : QEvent, IDisposable {
  		protected QIconDragEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QIconDragEvent), "QIconDragEvent", this);
+			interceptor = new SmokeInvocation(typeof(QIconDragEvent), this);
 		}
 		public QIconDragEvent() : this((Type) null) {
 			CreateProxy();

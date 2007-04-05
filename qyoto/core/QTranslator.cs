@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QTranslator : QObject, IDisposable {
  		protected QTranslator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTranslator), "QTranslator", this);
+			interceptor = new SmokeInvocation(typeof(QTranslator), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTranslator() {
-			staticInterceptor = new SmokeInvocation(typeof(QTranslator), "QTranslator", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTranslator), null);
 		}
 		public QTranslator(QObject parent) : this((Type) null) {
 			CreateProxy();

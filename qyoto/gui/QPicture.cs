@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QPicture : QPaintDevice, IDisposable {
  		protected QPicture(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPicture), "QPicture", this);
+			interceptor = new SmokeInvocation(typeof(QPicture), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPicture() {
-			staticInterceptor = new SmokeInvocation(typeof(QPicture), "QPicture", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPicture), null);
 		}
 		// QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED
 		public QPicture(int formatVersion) : this((Type) null) {

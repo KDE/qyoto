@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractSocket : QIODevice, IDisposable {
  		protected QAbstractSocket(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractSocket), "QAbstractSocket", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractSocket), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractSocket() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractSocket), "QAbstractSocket", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractSocket), null);
 		}
 		public enum SocketType {
 			TcpSocket = 0,
@@ -36,6 +36,8 @@ namespace Qyoto {
 			AddressInUseError = 8,
 			SocketAddressNotAvailableError = 9,
 			UnsupportedSocketOperationError = 10,
+			UnfinishedSocketOperationError = 11,
+			ProxyAuthenticationRequiredError = 12,
 			UnknownSocketError = -1,
 		}
 		public enum SocketState {
@@ -250,5 +252,7 @@ namespace Qyoto {
 		void StateChanged(QAbstractSocket.SocketState arg1);
 		[Q_SIGNAL("void error(QAbstractSocket::SocketError)")]
 		void Error(QAbstractSocket.SocketError arg1);
+		[Q_SIGNAL("void proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)")]
+		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator authenticator);
 	}
 }

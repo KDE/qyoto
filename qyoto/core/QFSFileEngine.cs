@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QFSFileEngine : QAbstractFileEngine, IDisposable {
  		protected QFSFileEngine(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFSFileEngine), "QFSFileEngine", this);
+			interceptor = new SmokeInvocation(typeof(QFSFileEngine), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFSFileEngine() {
-			staticInterceptor = new SmokeInvocation(typeof(QFSFileEngine), "QFSFileEngine", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFSFileEngine), null);
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractScrollArea : QFrame, IDisposable {
  		protected QAbstractScrollArea(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractScrollArea), "QAbstractScrollArea", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractScrollArea), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractScrollArea() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractScrollArea), "QAbstractScrollArea", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractScrollArea), null);
 		}
 		[Q_PROPERTY("Qt::ScrollBarPolicy", "verticalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {

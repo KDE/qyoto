@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsPolygonItem : QAbstractGraphicsShapeItem, IDisposable {
  		protected QGraphicsPolygonItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsPolygonItem), "QGraphicsPolygonItem", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsPolygonItem), this);
 		}
 		public const int Type = 5;
 

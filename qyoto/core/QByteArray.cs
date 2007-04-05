@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QByteArray(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QByteArray), "QByteArray", this);
+			interceptor = new SmokeInvocation(typeof(QByteArray), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QByteArray() {
-			staticInterceptor = new SmokeInvocation(typeof(QByteArray), "QByteArray", null);
+			staticInterceptor = new SmokeInvocation(typeof(QByteArray), null);
 		}
 		//  operator const char *(); >>>> NOT CONVERTED
 		//  operator const void *(); >>>> NOT CONVERTED
@@ -347,6 +347,9 @@ namespace Qyoto {
 		public QByteArray ToBase64() {
 			return (QByteArray) interceptor.Invoke("toBase64", "toBase64() const", typeof(QByteArray));
 		}
+		public QByteArray ToHex() {
+			return (QByteArray) interceptor.Invoke("toHex", "toHex() const", typeof(QByteArray));
+		}
 		public QByteArray SetNum(short arg1, int arg2) {
 			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(short, int)", typeof(QByteArray), typeof(short), arg1, typeof(int), arg2);
 		}
@@ -497,6 +500,9 @@ namespace Qyoto {
 		}
 		public static QByteArray FromBase64(QByteArray base64) {
 			return (QByteArray) staticInterceptor.Invoke("fromBase64#", "fromBase64(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), base64);
+		}
+		public static QByteArray FromHex(QByteArray hexEncoded) {
+			return (QByteArray) staticInterceptor.Invoke("fromHex#", "fromHex(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), hexEncoded);
 		}
 		public static bool operator==(QByteArray a1, QByteArray a2) {
 			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);

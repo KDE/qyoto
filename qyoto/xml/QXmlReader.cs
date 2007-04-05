@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlReader(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlReader), "QXmlReader", this);
+			interceptor = new SmokeInvocation(typeof(QXmlReader), this);
 		}
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED

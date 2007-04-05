@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QAccessibleBridge(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleBridge), "QAccessibleBridge", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleBridge), this);
 		}
 		[SmokeMethod("setRootObject(QAccessibleInterface*)")]
 		public abstract void SetRootObject(QAccessibleInterface arg1);

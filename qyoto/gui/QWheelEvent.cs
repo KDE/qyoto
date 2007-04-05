@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QWheelEvent : QInputEvent, IDisposable {
  		protected QWheelEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWheelEvent), "QWheelEvent", this);
+			interceptor = new SmokeInvocation(typeof(QWheelEvent), this);
 		}
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();

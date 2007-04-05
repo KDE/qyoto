@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QLinearGradient : QGradient, IDisposable {
  		protected QLinearGradient(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLinearGradient), "QLinearGradient", this);
+			interceptor = new SmokeInvocation(typeof(QLinearGradient), this);
 		}
 		public QLinearGradient() : this((Type) null) {
 			CreateProxy();

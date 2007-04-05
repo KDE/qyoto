@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractTextDocumentLayout : QObject {
  		protected QAbstractTextDocumentLayout(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), "QAbstractTextDocumentLayout", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractTextDocumentLayout() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), "QAbstractTextDocumentLayout", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), null);
 		}
 		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
 		public QAbstractTextDocumentLayout(QTextDocument doc) : this((Type) null) {

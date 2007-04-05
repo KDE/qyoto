@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QMoveEvent : QEvent, IDisposable {
  		protected QMoveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMoveEvent), "QMoveEvent", this);
+			interceptor = new SmokeInvocation(typeof(QMoveEvent), this);
 		}
 		public QMoveEvent(QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();

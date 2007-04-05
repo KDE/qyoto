@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QDesktopWidget : QWidget, IDisposable {
  		protected QDesktopWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDesktopWidget), "QDesktopWidget", this);
+			interceptor = new SmokeInvocation(typeof(QDesktopWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDesktopWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QDesktopWidget), "QDesktopWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDesktopWidget), null);
 		}
 		public QDesktopWidget() : this((Type) null) {
 			CreateProxy();

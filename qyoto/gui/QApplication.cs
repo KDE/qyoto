@@ -9,11 +9,11 @@ namespace Qyoto {
 	public partial class QApplication : QCoreApplication, IDisposable {
  		protected QApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QApplication), "QApplication", this);
+			interceptor = new SmokeInvocation(typeof(QApplication), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QApplication() {
-			staticInterceptor = new SmokeInvocation(typeof(QApplication), "QApplication", null);
+			staticInterceptor = new SmokeInvocation(typeof(QApplication), null);
 		}
 		public enum TypeOf {
 			Tty = 0,
@@ -237,6 +237,12 @@ namespace Qyoto {
 		}
 		public static void Beep() {
 			staticInterceptor.Invoke("beep", "beep()", typeof(void));
+		}
+		public static void Alert(QWidget widget, int duration) {
+			staticInterceptor.Invoke("alert#$", "alert(QWidget*, int)", typeof(void), typeof(QWidget), widget, typeof(int), duration);
+		}
+		public static void Alert(QWidget widget) {
+			staticInterceptor.Invoke("alert#", "alert(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		public static int KeyboardModifiers() {
 			return (int) staticInterceptor.Invoke("keyboardModifiers", "keyboardModifiers()", typeof(int));

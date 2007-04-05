@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QMetaObject(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMetaObject), "QMetaObject", this);
+			interceptor = new SmokeInvocation(typeof(QMetaObject), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMetaObject() {
-			staticInterceptor = new SmokeInvocation(typeof(QMetaObject), "QMetaObject", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMetaObject), null);
 		}
 		public enum Call {
 			InvokeMetaMethod = 0,

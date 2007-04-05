@@ -3,15 +3,16 @@ namespace Qyoto {
 
 	using System;
 
+	/// See <see cref="IQDBusServerSignals"></see> for signals emitted by QDBusServer
 	[SmokeClass("QDBusServer")]
 	public class QDBusServer : QObject, IDisposable {
  		protected QDBusServer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusServer), "QDBusServer", this);
+			interceptor = new SmokeInvocation(typeof(QDBusServer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusServer() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusServer), "QDBusServer", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusServer), null);
 		}
 		public QDBusServer(string address, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -48,5 +49,7 @@ namespace Qyoto {
 	}
 
 	public interface IQDBusServerSignals : IQObjectSignals {
+		[Q_SIGNAL("void newConnection(const QDBusConnection&)")]
+		void NewConnection(QDBusConnection connection);
 	}
 }

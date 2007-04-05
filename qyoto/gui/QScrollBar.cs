@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QScrollBar : QAbstractSlider, IDisposable {
  		protected QScrollBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QScrollBar), "QScrollBar", this);
+			interceptor = new SmokeInvocation(typeof(QScrollBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QScrollBar() {
-			staticInterceptor = new SmokeInvocation(typeof(QScrollBar), "QScrollBar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QScrollBar), null);
 		}
 		public QScrollBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -64,6 +64,9 @@ namespace Qyoto {
 		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
 			interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionSlider option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSlider*) const", typeof(void), typeof(QStyleOptionSlider), option);
 		}
 		~QScrollBar() {
 			interceptor.Invoke("~QScrollBar", "~QScrollBar()", typeof(void));

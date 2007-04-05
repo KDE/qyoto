@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QResizeEvent : QEvent, IDisposable {
  		protected QResizeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QResizeEvent), "QResizeEvent", this);
+			interceptor = new SmokeInvocation(typeof(QResizeEvent), this);
 		}
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
 			CreateProxy();

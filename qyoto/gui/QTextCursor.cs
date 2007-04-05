@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextCursor(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextCursor), "QTextCursor", this);
+			interceptor = new SmokeInvocation(typeof(QTextCursor), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextCursor() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextCursor), "QTextCursor", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextCursor), null);
 		}
 		public enum MoveMode {
 			MoveAnchor = 0,

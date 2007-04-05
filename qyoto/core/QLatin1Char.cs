@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QLatin1Char(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLatin1Char), "QLatin1Char", this);
+			interceptor = new SmokeInvocation(typeof(QLatin1Char), this);
 		}
 		public QLatin1Char(char c) : this((Type) null) {
 			CreateProxy();

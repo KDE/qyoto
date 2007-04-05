@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPainterPath(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPainterPath), "QPainterPath", this);
+			interceptor = new SmokeInvocation(typeof(QPainterPath), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPainterPath() {
-			staticInterceptor = new SmokeInvocation(typeof(QPainterPath), "QPainterPath", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPainterPath), null);
 		}
 		public enum ElementType {
 			MoveToElement = 0,
@@ -104,6 +104,18 @@ namespace Qyoto {
 		public void AddRegion(QRegion region) {
 			interceptor.Invoke("addRegion#", "addRegion(const QRegion&)", typeof(void), typeof(QRegion), region);
 		}
+		public void AddRoundRect(QRectF rect, int xRnd, int yRnd) {
+			interceptor.Invoke("addRoundRect#$$", "addRoundRect(const QRectF&, int, int)", typeof(void), typeof(QRectF), rect, typeof(int), xRnd, typeof(int), yRnd);
+		}
+		public void AddRoundRect(double x, double y, double w, double h, int xRnd, int yRnd) {
+			interceptor.Invoke("addRoundRect$$$$$$", "addRoundRect(qreal, qreal, qreal, qreal, int, int)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(int), xRnd, typeof(int), yRnd);
+		}
+		public void AddRoundRect(QRectF rect, int roundness) {
+			interceptor.Invoke("addRoundRect#$", "addRoundRect(const QRectF&, int)", typeof(void), typeof(QRectF), rect, typeof(int), roundness);
+		}
+		public void AddRoundRect(double x, double y, double w, double h, int roundness) {
+			interceptor.Invoke("addRoundRect$$$$$", "addRoundRect(qreal, qreal, qreal, qreal, int)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(int), roundness);
+		}
 		public void ConnectPath(QPainterPath path) {
 			interceptor.Invoke("connectPath#", "connectPath(const QPainterPath&)", typeof(void), typeof(QPainterPath), path);
 		}
@@ -152,11 +164,53 @@ namespace Qyoto {
 		public QPolygonF ToFillPolygon() {
 			return (QPolygonF) interceptor.Invoke("toFillPolygon", "toFillPolygon() const", typeof(QPolygonF));
 		}
+		public List<QPolygonF> ToSubpathPolygons(QTransform matrix) {
+			return (List<QPolygonF>) interceptor.Invoke("toSubpathPolygons#", "toSubpathPolygons(const QTransform&) const", typeof(List<QPolygonF>), typeof(QTransform), matrix);
+		}
+		public List<QPolygonF> ToFillPolygons(QTransform matrix) {
+			return (List<QPolygonF>) interceptor.Invoke("toFillPolygons#", "toFillPolygons(const QTransform&) const", typeof(List<QPolygonF>), typeof(QTransform), matrix);
+		}
+		public QPolygonF ToFillPolygon(QTransform matrix) {
+			return (QPolygonF) interceptor.Invoke("toFillPolygon#", "toFillPolygon(const QTransform&) const", typeof(QPolygonF), typeof(QTransform), matrix);
+		}
 		public int ElementCount() {
 			return (int) interceptor.Invoke("elementCount", "elementCount() const", typeof(int));
 		}
 		public void SetElementPositionAt(int i, double x, double y) {
 			interceptor.Invoke("setElementPositionAt$$$", "setElementPositionAt(int, qreal, qreal)", typeof(void), typeof(int), i, typeof(double), x, typeof(double), y);
+		}
+		public double Length() {
+			return (double) interceptor.Invoke("length", "length() const", typeof(double));
+		}
+		public double PercentAtLength(double t) {
+			return (double) interceptor.Invoke("percentAtLength$", "percentAtLength(qreal) const", typeof(double), typeof(double), t);
+		}
+		public QPointF PointAtPercent(double t) {
+			return (QPointF) interceptor.Invoke("pointAtPercent$", "pointAtPercent(qreal) const", typeof(QPointF), typeof(double), t);
+		}
+		public double AngleAtPercent(double t) {
+			return (double) interceptor.Invoke("angleAtPercent$", "angleAtPercent(qreal) const", typeof(double), typeof(double), t);
+		}
+		public double SlopeAtPercent(double t) {
+			return (double) interceptor.Invoke("slopeAtPercent$", "slopeAtPercent(qreal) const", typeof(double), typeof(double), t);
+		}
+		public bool Intersects(QPainterPath p) {
+			return (bool) interceptor.Invoke("intersects#", "intersects(const QPainterPath&) const", typeof(bool), typeof(QPainterPath), p);
+		}
+		public bool Contains(QPainterPath p) {
+			return (bool) interceptor.Invoke("contains#", "contains(const QPainterPath&) const", typeof(bool), typeof(QPainterPath), p);
+		}
+		public QPainterPath United(QPainterPath r) {
+			return (QPainterPath) interceptor.Invoke("united#", "united(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), r);
+		}
+		public QPainterPath Intersected(QPainterPath r) {
+			return (QPainterPath) interceptor.Invoke("intersected#", "intersected(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), r);
+		}
+		public QPainterPath Subtracted(QPainterPath r) {
+			return (QPainterPath) interceptor.Invoke("subtracted#", "subtracted(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), r);
+		}
+		public QPainterPath SubtractedInverted(QPainterPath r) {
+			return (QPainterPath) interceptor.Invoke("subtractedInverted#", "subtractedInverted(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), r);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPainterPath)) { return false; }
@@ -179,6 +233,9 @@ namespace Qyoto {
 		}
 		public static QPainterPath operator*(QPainterPath p, QMatrix m) {
 			return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QMatrix&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QMatrix), m);
+		}
+		public static QPainterPath operator*(QPainterPath p, QTransform m) {
+			return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QTransform&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QTransform), m);
 		}
 	}
 }

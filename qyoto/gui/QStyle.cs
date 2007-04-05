@@ -7,11 +7,11 @@ namespace Qyoto {
 	public abstract class QStyle : QObject {
  		protected QStyle(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyle), "QStyle", this);
+			interceptor = new SmokeInvocation(typeof(QStyle), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QStyle() {
-			staticInterceptor = new SmokeInvocation(typeof(QStyle), "QStyle", null);
+			staticInterceptor = new SmokeInvocation(typeof(QStyle), null);
 		}
 		public enum StateFlag {
 			State_None = 0x00000000,
@@ -32,6 +32,7 @@ namespace Qyoto {
 			State_UpArrow = 0x00004000,
 			State_Selected = 0x00008000,
 			State_Active = 0x00010000,
+			State_Window = 0x00020000,
 			State_Open = 0x00040000,
 			State_Children = 0x00080000,
 			State_Item = 0x00100000,
@@ -39,6 +40,8 @@ namespace Qyoto {
 			State_Editing = 0x00400000,
 			State_KeyboardFocusChange = 0x00800000,
 			State_ReadOnly = 0x02000000,
+			State_Small = 0x04000000,
+			State_Mini = 0x08000000,
 		}
 		public enum PrimitiveElement {
 			PE_Q3CheckListController = 0,
@@ -88,6 +91,7 @@ namespace Qyoto {
 			PE_IndicatorTabTear = 44,
 			PE_PanelScrollAreaCorner = 45,
 			PE_Widget = 46,
+			PE_IndicatorColumnViewArrow = 47,
 			PE_CustomBase = 0xf000000,
 		}
 		public enum ControlElement : uint {
@@ -133,6 +137,10 @@ namespace Qyoto {
 			CE_FocusFrame = 39,
 			CE_ComboBoxLabel = 40,
 			CE_ToolBar = 41,
+			CE_ToolBoxTabShape = 42,
+			CE_ToolBoxTabLabel = 43,
+			CE_HeaderEmptyArea = 44,
+			CE_ColumnViewGrip = 45,
 			CE_CustomBase = 0xf0000000,
 		}
 		public enum SubElement : uint {
@@ -174,6 +182,24 @@ namespace Qyoto {
 			SE_TreeViewDisclosureItem = 35,
 			SE_LineEditContents = 36,
 			SE_FrameContents = 37,
+			SE_DockWidgetCloseButton = 38,
+			SE_DockWidgetFloatButton = 39,
+			SE_DockWidgetTitleBarText = 40,
+			SE_DockWidgetIcon = 41,
+			SE_CheckBoxLayoutItem = 42,
+			SE_ComboBoxLayoutItem = 43,
+			SE_DateTimeEditLayoutItem = 44,
+			SE_DialogButtonBoxLayoutItem = 45,
+			SE_LabelLayoutItem = 46,
+			SE_ProgressBarLayoutItem = 47,
+			SE_PushButtonLayoutItem = 48,
+			SE_RadioButtonLayoutItem = 49,
+			SE_SliderLayoutItem = 50,
+			SE_SpinBoxLayoutItem = 51,
+			SE_ToolButtonLayoutItem = 52,
+			SE_FrameLayoutItem = 53,
+			SE_GroupBoxLayoutItem = 54,
+			SE_TabWidgetLayoutItem = 55,
 			SE_CustomBase = 0xf0000000,
 		}
 		public enum ComplexControl : uint {
@@ -186,6 +212,7 @@ namespace Qyoto {
 			CC_Q3ListView = 6,
 			CC_Dial = 7,
 			CC_GroupBox = 8,
+			CC_MDIControls = 9,
 			CC_CustomBase = 0xf0000000,
 		}
 		public enum SubControl : uint {
@@ -230,6 +257,9 @@ namespace Qyoto {
 			SC_GroupBoxLabel = 0x00000002,
 			SC_GroupBoxContents = 0x00000004,
 			SC_GroupBoxFrame = 0x00000008,
+			SC_MDIMinButton = 0x00000001,
+			SC_MDINormalButton = 0x00000002,
+			SC_MDICloseButton = 0x00000004,
 			SC_All = 0xffffffff,
 		}
 		public enum PixelMetric : uint {
@@ -311,6 +341,14 @@ namespace Qyoto {
 			PM_DockWidgetTitleMargin = 75,
 			PM_MessageBoxIconSize = 76,
 			PM_ButtonIconSize = 77,
+			PM_DockWidgetTitleBarButtonMargin = 78,
+			PM_RadioButtonLabelSpacing = 79,
+			PM_LayoutLeftMargin = 80,
+			PM_LayoutTopMargin = 81,
+			PM_LayoutRightMargin = 82,
+			PM_LayoutBottomMargin = 83,
+			PM_LayoutHorizontalSpacing = 84,
+			PM_LayoutVerticalSpacing = 85,
 			PM_CustomBase = 0xf0000000,
 		}
 		public enum ContentsType : uint {
@@ -337,6 +375,7 @@ namespace Qyoto {
 			CT_DialogButtons = 20,
 			CT_HeaderSection = 21,
 			CT_GroupBox = 22,
+			CT_MDIControls = 23,
 			CT_CustomBase = 0xf0000000,
 		}
 		public enum StyleHint : uint {
@@ -418,6 +457,9 @@ namespace Qyoto {
 			SH_MessageBox_CenterButtons = 74,
 			SH_Menu_SelectionWrap = 75,
 			SH_ItemView_MovementWithoutUpdatingSelection = 76,
+			SH_ToolTip_Mask = 77,
+			SH_FocusFrame_AboveWidget = 78,
+			SH_TextControl_FocusIndicatorTextCharFormat = 79,
 			SH_CustomBase = 0xf0000000,
 		}
 		public enum StandardPixmap : uint {
@@ -476,8 +518,12 @@ namespace Qyoto {
 			SP_ArrowRight = 52,
 			SP_ArrowBack = 53,
 			SP_ArrowForward = 54,
+			SP_DirHomeIcon = 55,
 			SP_CustomBase = 0xf0000000,
 		}
+		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3,QStyleOption* arg4,QWidget* arg5); >>>> NOT CONVERTED
+		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3,QStyleOption* arg4); >>>> NOT CONVERTED
+		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3); >>>> NOT CONVERTED
 		// QStyle* QStyle(QStylePrivate& arg1); >>>> NOT CONVERTED
 		public QStyle() : this((Type) null) {
 			CreateProxy();
@@ -558,6 +604,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("generatedIconPixmap(QIcon::Mode, const QPixmap&, const QStyleOption*) const")]
 		public abstract QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, int opt);
+		public int LayoutSpacing(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option, QWidget widget) {
+			return (int) interceptor.Invoke("layoutSpacing$$$##", "layoutSpacing(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(int), option, typeof(QWidget), widget);
+		}
+		public int LayoutSpacing(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option) {
+			return (int) interceptor.Invoke("layoutSpacing$$$#", "layoutSpacing(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(int), option);
+		}
+		public int LayoutSpacing(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation) {
+			return (int) interceptor.Invoke("layoutSpacing$$$", "layoutSpacing(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation);
+		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt, typeof(QWidget), widget);
@@ -569,6 +624,18 @@ namespace Qyoto {
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$", "standardIconImplementation(QStyle::StandardPixmap) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon);
+		}
+		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const")]
+		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option, QWidget widget) {
+			return (int) interceptor.Invoke("layoutSpacingImplementation$$$##", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(int), option, typeof(QWidget), widget);
+		}
+		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const")]
+		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option) {
+			return (int) interceptor.Invoke("layoutSpacingImplementation$$$#", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(int), option);
+		}
+		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const")]
+		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation) {
+			return (int) interceptor.Invoke("layoutSpacingImplementation$$$", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation);
 		}
 		public static string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

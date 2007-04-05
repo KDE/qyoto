@@ -16,7 +16,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlDeclHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlDeclHandler), "QXmlDeclHandler", this);
+			interceptor = new SmokeInvocation(typeof(QXmlDeclHandler), this);
 		}
 		[SmokeMethod("attributeDecl(const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public abstract bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);

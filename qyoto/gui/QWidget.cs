@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QWidget : QObject, IQPaintDevice, IDisposable {
  		protected QWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWidget), "QWidget", this);
+			interceptor = new SmokeInvocation(typeof(QWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QWidget), "QWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QWidget), null);
 		}
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
@@ -246,6 +246,11 @@ namespace Qyoto {
 			get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
 			set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
 		}
+		[Q_PROPERTY("QLocale", "locale")]
+		public QLocale Locale {
+			get { return (QLocale) interceptor.Invoke("locale", "locale()", typeof(QLocale)); }
+			set { interceptor.Invoke("setLocale#", "setLocale(QLocale)", typeof(void), typeof(QLocale), value); }
+		}
 		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
 		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
 		public QWidget(QWidget parent, int f) : this((Type) null) {
@@ -401,6 +406,9 @@ namespace Qyoto {
 		}
 		public void UnsetLayoutDirection() {
 			interceptor.Invoke("unsetLayoutDirection", "unsetLayoutDirection()", typeof(void));
+		}
+		public void UnsetLocale() {
+			interceptor.Invoke("unsetLocale", "unsetLocale()", typeof(void));
 		}
 		public bool IsRightToLeft() {
 			return (bool) interceptor.Invoke("isRightToLeft", "isRightToLeft() const", typeof(bool));

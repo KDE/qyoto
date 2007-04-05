@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTcpServer : QObject, IDisposable {
  		protected QTcpServer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTcpServer), "QTcpServer", this);
+			interceptor = new SmokeInvocation(typeof(QTcpServer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTcpServer() {
-			staticInterceptor = new SmokeInvocation(typeof(QTcpServer), "QTcpServer", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTcpServer), null);
 		}
 		public QTcpServer(QObject parent) : this((Type) null) {
 			CreateProxy();

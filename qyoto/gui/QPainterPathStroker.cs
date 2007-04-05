@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPainterPathStroker(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPainterPathStroker), "QPainterPathStroker", this);
+			interceptor = new SmokeInvocation(typeof(QPainterPathStroker), this);
 		}
 		public QPainterPathStroker() : this((Type) null) {
 			CreateProxy();
@@ -54,6 +54,12 @@ namespace Qyoto {
 		}
 		public List<double> DashPattern() {
 			return (List<double>) interceptor.Invoke("dashPattern", "dashPattern() const", typeof(List<double>));
+		}
+		public void SetDashOffset(double offset) {
+			interceptor.Invoke("setDashOffset$", "setDashOffset(qreal)", typeof(void), typeof(double), offset);
+		}
+		public double DashOffset() {
+			return (double) interceptor.Invoke("dashOffset", "dashOffset() const", typeof(double));
 		}
 		public QPainterPath CreateStroke(QPainterPath path) {
 			return (QPainterPath) interceptor.Invoke("createStroke#", "createStroke(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), path);

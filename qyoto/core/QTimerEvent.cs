@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QTimerEvent : QEvent, IDisposable {
  		protected QTimerEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTimerEvent), "QTimerEvent", this);
+			interceptor = new SmokeInvocation(typeof(QTimerEvent), this);
 		}
 		public QTimerEvent(int timerId) : this((Type) null) {
 			CreateProxy();

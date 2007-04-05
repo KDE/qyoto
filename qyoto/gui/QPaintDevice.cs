@@ -25,7 +25,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPaintDevice(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPaintDevice), "QPaintDevice", this);
+			interceptor = new SmokeInvocation(typeof(QPaintDevice), this);
 		}
 		public enum PaintDeviceMetric {
 			PdmWidth = 1,

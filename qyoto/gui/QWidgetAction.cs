@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QWidgetAction : QAction, IDisposable {
  		protected QWidgetAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWidgetAction), "QWidgetAction", this);
+			interceptor = new SmokeInvocation(typeof(QWidgetAction), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QWidgetAction() {
-			staticInterceptor = new SmokeInvocation(typeof(QWidgetAction), "QWidgetAction", null);
+			staticInterceptor = new SmokeInvocation(typeof(QWidgetAction), null);
 		}
 		public QWidgetAction(QObject parent) : this((Type) null) {
 			CreateProxy();

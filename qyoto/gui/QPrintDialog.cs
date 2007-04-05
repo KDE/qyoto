@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QPrintDialog : QAbstractPrintDialog, IDisposable {
  		protected QPrintDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPrintDialog), "QPrintDialog", this);
+			interceptor = new SmokeInvocation(typeof(QPrintDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPrintDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QPrintDialog), "QPrintDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPrintDialog), null);
 		}
 		public QPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSplashScreen : QWidget, IDisposable {
  		protected QSplashScreen(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSplashScreen), "QSplashScreen", this);
+			interceptor = new SmokeInvocation(typeof(QSplashScreen), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSplashScreen() {
-			staticInterceptor = new SmokeInvocation(typeof(QSplashScreen), "QSplashScreen", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSplashScreen), null);
 		}
 		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();

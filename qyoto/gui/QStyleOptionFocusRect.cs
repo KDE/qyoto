@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionFocusRect : QStyleOption, IDisposable {
  		protected QStyleOptionFocusRect(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionFocusRect), "QStyleOptionFocusRect", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionFocusRect), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_FocusRect,

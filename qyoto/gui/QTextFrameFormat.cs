@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QTextFrameFormat : QTextFormat, IDisposable {
  		protected QTextFrameFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextFrameFormat), "QTextFrameFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextFrameFormat), this);
 		}
 		public enum Position {
 			InFlow = 0,
@@ -38,6 +38,30 @@ namespace Qyoto {
 		}
 		public double Margin() {
 			return (double) interceptor.Invoke("margin", "margin() const", typeof(double));
+		}
+		public void SetTopMargin(double margin) {
+			interceptor.Invoke("setTopMargin$", "setTopMargin(qreal)", typeof(void), typeof(double), margin);
+		}
+		public double TopMargin() {
+			return (double) interceptor.Invoke("topMargin", "topMargin() const", typeof(double));
+		}
+		public void SetBottomMargin(double margin) {
+			interceptor.Invoke("setBottomMargin$", "setBottomMargin(qreal)", typeof(void), typeof(double), margin);
+		}
+		public double BottomMargin() {
+			return (double) interceptor.Invoke("bottomMargin", "bottomMargin() const", typeof(double));
+		}
+		public void SetLeftMargin(double margin) {
+			interceptor.Invoke("setLeftMargin$", "setLeftMargin(qreal)", typeof(void), typeof(double), margin);
+		}
+		public double LeftMargin() {
+			return (double) interceptor.Invoke("leftMargin", "leftMargin() const", typeof(double));
+		}
+		public void SetRightMargin(double margin) {
+			interceptor.Invoke("setRightMargin$", "setRightMargin(qreal)", typeof(void), typeof(double), margin);
+		}
+		public double RightMargin() {
+			return (double) interceptor.Invoke("rightMargin", "rightMargin() const", typeof(double));
 		}
 		public void SetPadding(double padding) {
 			interceptor.Invoke("setPadding$", "setPadding(qreal)", typeof(void), typeof(double), padding);

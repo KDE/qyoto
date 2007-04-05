@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QUuid(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUuid), "QUuid", this);
+			interceptor = new SmokeInvocation(typeof(QUuid), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUuid() {
-			staticInterceptor = new SmokeInvocation(typeof(QUuid), "QUuid", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUuid), null);
 		}
 		public enum Variant {
 			VarUnknown = -1,

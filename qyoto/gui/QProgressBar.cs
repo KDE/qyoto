@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QProgressBar : QWidget, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QProgressBar), "QProgressBar", this);
+			interceptor = new SmokeInvocation(typeof(QProgressBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QProgressBar() {
-			staticInterceptor = new SmokeInvocation(typeof(QProgressBar), "QProgressBar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QProgressBar), null);
 		}
 		public enum Direction {
 			TopToBottom = 0,
@@ -75,9 +75,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QProgressBar", "QProgressBar()", typeof(void));
 		}
-		public void SetRange(int minimum, int maximum) {
-			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
-		}
 		public bool IsTextVisible() {
 			return (bool) interceptor.Invoke("isTextVisible", "isTextVisible() const", typeof(bool));
 		}
@@ -93,6 +90,10 @@ namespace Qyoto {
 		public void Reset() {
 			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
+		[Q_SLOT("void setRange(int, int)")]
+		public void SetRange(int minimum, int maximum) {
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
@@ -100,6 +101,9 @@ namespace Qyoto {
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionProgressBar option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionProgressBar*) const", typeof(void), typeof(QStyleOptionProgressBar), option);
 		}
 		~QProgressBar() {
 			interceptor.Invoke("~QProgressBar", "~QProgressBar()", typeof(void));

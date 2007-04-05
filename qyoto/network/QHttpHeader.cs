@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QHttpHeader(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHttpHeader), "QHttpHeader", this);
+			interceptor = new SmokeInvocation(typeof(QHttpHeader), this);
 		}
 		public QHttpHeader() : this((Type) null) {
 			CreateProxy();

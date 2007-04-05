@@ -8,7 +8,7 @@ namespace Qyoto {
 	public class QAccessibleWidget : QAccessibleObject {
  		protected QAccessibleWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAccessibleWidget), "QAccessibleWidget", this);
+			interceptor = new SmokeInvocation(typeof(QAccessibleWidget), this);
 		}
 		public QAccessibleWidget(QWidget o, QAccessible.Role r, string name) : this((Type) null) {
 			CreateProxy();
@@ -57,6 +57,10 @@ namespace Qyoto {
 		[SmokeMethod("state(int) const")]
 		public override int State(int child) {
 			return (int) interceptor.Invoke("state$", "state(int) const", typeof(int), typeof(int), child);
+		}
+		[SmokeMethod("userActionCount(int) const")]
+		public override int UserActionCount(int child) {
+			return (int) interceptor.Invoke("userActionCount$", "userActionCount(int) const", typeof(int), typeof(int), child);
 		}
 		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {

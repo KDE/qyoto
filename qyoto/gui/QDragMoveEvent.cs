@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDragMoveEvent : QDropEvent, IDisposable {
  		protected QDragMoveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDragMoveEvent), "QDragMoveEvent", this);
+			interceptor = new SmokeInvocation(typeof(QDragMoveEvent), this);
 		}
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();

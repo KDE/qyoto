@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDomComment : QDomCharacterData, IDisposable {
  		protected QDomComment(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomComment), "QDomComment", this);
+			interceptor = new SmokeInvocation(typeof(QDomComment), this);
 		}
 		public QDomComment() : this((Type) null) {
 			CreateProxy();

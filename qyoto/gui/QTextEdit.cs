@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTextEdit : QAbstractScrollArea, IDisposable {
  		protected QTextEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextEdit), "QTextEdit", this);
+			interceptor = new SmokeInvocation(typeof(QTextEdit), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextEdit() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextEdit), "QTextEdit", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextEdit), null);
 		}
 		public enum LineWrapMode {
 			NoWrap = 0,
@@ -64,6 +64,11 @@ namespace Qyoto {
 		public string Html {
 			get { return (string) interceptor.Invoke("toHtml", "toHtml()", typeof(string)); }
 			set { interceptor.Invoke("setHtml$", "setHtml(QString)", typeof(void), typeof(string), value); }
+		}
+		[Q_PROPERTY("QString", "plainText")]
+		public string PlainText {
+			get { return (string) interceptor.Invoke("toPlainText", "toPlainText()", typeof(string)); }
+			set { interceptor.Invoke("setPlainText$", "setPlainText(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("bool", "overwriteMode")]
 		public bool OverwriteMode {
@@ -208,6 +213,9 @@ namespace Qyoto {
 		public bool CanPaste() {
 			return (bool) interceptor.Invoke("canPaste", "canPaste() const", typeof(bool));
 		}
+		public void Print(QPrinter printer) {
+			interceptor.Invoke("print#", "print(QPrinter*) const", typeof(void), typeof(QPrinter), printer);
+		}
 		[Q_SLOT("void setFontPointSize(qreal)")]
 		public void SetFontPointSize(double s) {
 			interceptor.Invoke("setFontPointSize$", "setFontPointSize(qreal)", typeof(void), typeof(double), s);
@@ -239,10 +247,6 @@ namespace Qyoto {
 		[Q_SLOT("void setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int a) {
 			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), a);
-		}
-		[Q_SLOT("void setPlainText(const QString&)")]
-		public void SetPlainText(string text) {
-			interceptor.Invoke("setPlainText$", "setPlainText(const QString&)", typeof(void), typeof(string), text);
 		}
 		[Q_SLOT("void setText(const QString&)")]
 		public void SetText(string text) {

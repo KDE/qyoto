@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFileIconProvider(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFileIconProvider), "QFileIconProvider", this);
+			interceptor = new SmokeInvocation(typeof(QFileIconProvider), this);
 		}
 		public enum IconType {
 			Computer = 0,

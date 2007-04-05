@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QMovie : QObject, IDisposable {
  		protected QMovie(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMovie), "QMovie", this);
+			interceptor = new SmokeInvocation(typeof(QMovie), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMovie() {
-			staticInterceptor = new SmokeInvocation(typeof(QMovie), "QMovie", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMovie), null);
 		}
 		public enum MovieState {
 			NotRunning = 0,

@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPointF(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPointF), "QPointF", this);
+			interceptor = new SmokeInvocation(typeof(QPointF), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPointF() {
-			staticInterceptor = new SmokeInvocation(typeof(QPointF), "QPointF", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPointF), null);
 		}
 		public QPointF() : this((Type) null) {
 			CreateProxy();
@@ -72,6 +72,9 @@ namespace Qyoto {
 		}
 		public static QPointF operator*(QPointF p, QMatrix m) {
 			return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QMatrix&)", typeof(QPointF), typeof(QPointF), p, typeof(QMatrix), m);
+		}
+		public static QPointF operator*(QPointF p, QTransform m) {
+			return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QTransform&)", typeof(QPointF), typeof(QPointF), p, typeof(QTransform), m);
 		}
 		public static bool operator==(QPointF p1, QPointF p2) {
 			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QPointF&, const QPointF&)", typeof(bool), typeof(QPointF), p1, typeof(QPointF), p2);

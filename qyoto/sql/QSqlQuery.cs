@@ -21,6 +21,8 @@ namespace Qyoto {
 		void SetForwardOnly(bool forward);
 		bool Exec(string query);
 		QVariant Value(int i);
+		void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy precisionPolicy);
+		QSql.NumericalPrecisionPolicy NumericalPrecisionPolicy();
 		bool Seek(int i, bool relative);
 		bool Seek(int i);
 		bool Next();
@@ -51,7 +53,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSqlQuery(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlQuery), "QSqlQuery", this);
+			interceptor = new SmokeInvocation(typeof(QSqlQuery), this);
 		}
 		public enum BatchExecutionMode {
 			ValuesAsRows = 0,
@@ -128,6 +130,12 @@ namespace Qyoto {
 		}
 		public QVariant Value(int i) {
 			return (QVariant) interceptor.Invoke("value$", "value(int) const", typeof(QVariant), typeof(int), i);
+		}
+		public void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy precisionPolicy) {
+			interceptor.Invoke("setNumericalPrecisionPolicy$", "setNumericalPrecisionPolicy(QSql::NumericalPrecisionPolicy)", typeof(void), typeof(QSql.NumericalPrecisionPolicy), precisionPolicy);
+		}
+		public QSql.NumericalPrecisionPolicy NumericalPrecisionPolicy() {
+			return (QSql.NumericalPrecisionPolicy) interceptor.Invoke("numericalPrecisionPolicy", "numericalPrecisionPolicy() const", typeof(QSql.NumericalPrecisionPolicy));
 		}
 		public bool Seek(int i, bool relative) {
 			return (bool) interceptor.Invoke("seek$$", "seek(int, bool)", typeof(bool), typeof(int), i, typeof(bool), relative);

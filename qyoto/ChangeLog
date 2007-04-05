@@ -1,3 +1,13 @@
+2007-04-05  Richard Dale  <rdale@foton.es>
+
+	* Regenerated the Qyoto classes from the Qt 4.3 headers, and added new 
+	  classes
+	* The test for instance operator methods was changing 'operator>>' and
+	  'operator<<' calls from static to instance methods, when they are
+	  actually still instance methods 'Read()' and 'Write()' in C#.
+	* Add some marshallers for the QVector types in the new QXmlStream*
+	  classes
+
 2007-04-03  Richard Dale  <rdale@foton.es>
 
 	* No need to special case the metaObject() method any more when caching 

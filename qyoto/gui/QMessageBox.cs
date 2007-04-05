@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QMessageBox : QDialog, IDisposable {
  		protected QMessageBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMessageBox), "QMessageBox", this);
+			interceptor = new SmokeInvocation(typeof(QMessageBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMessageBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QMessageBox), "QMessageBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMessageBox), null);
 		}
 		public enum Icon {
 			NoIcon = 0,
@@ -145,11 +145,17 @@ namespace Qyoto {
 		public void SetDefaultButton(QPushButton button) {
 			interceptor.Invoke("setDefaultButton#", "setDefaultButton(QPushButton*)", typeof(void), typeof(QPushButton), button);
 		}
+		public void SetDefaultButton(QMessageBox.StandardButton button) {
+			interceptor.Invoke("setDefaultButton$", "setDefaultButton(QMessageBox::StandardButton)", typeof(void), typeof(QMessageBox.StandardButton), button);
+		}
 		public QAbstractButton EscapeButton() {
 			return (QAbstractButton) interceptor.Invoke("escapeButton", "escapeButton() const", typeof(QAbstractButton));
 		}
 		public void SetEscapeButton(QAbstractButton button) {
 			interceptor.Invoke("setEscapeButton#", "setEscapeButton(QAbstractButton*)", typeof(void), typeof(QAbstractButton), button);
+		}
+		public void SetEscapeButton(QMessageBox.StandardButton button) {
+			interceptor.Invoke("setEscapeButton$", "setEscapeButton(QMessageBox::StandardButton)", typeof(void), typeof(QMessageBox.StandardButton), button);
 		}
 		public QAbstractButton ClickedButton() {
 			return (QAbstractButton) interceptor.Invoke("clickedButton", "clickedButton() const", typeof(QAbstractButton));
@@ -181,6 +187,10 @@ namespace Qyoto {
 		}
 		public void SetWindowModality(Qt.WindowModality windowModality) {
 			interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), windowModality);
+		}
+		[SmokeMethod("event(QEvent*)")]
+		protected new virtual bool Event(QEvent e) {
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {

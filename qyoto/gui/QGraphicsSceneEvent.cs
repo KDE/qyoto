@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsSceneEvent : QEvent, IDisposable {
  		protected QGraphicsSceneEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsSceneEvent), "QGraphicsSceneEvent", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsSceneEvent), this);
 		}
 		public QGraphicsSceneEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();

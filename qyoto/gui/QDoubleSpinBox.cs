@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QDoubleSpinBox : QAbstractSpinBox, IDisposable {
  		protected QDoubleSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDoubleSpinBox), "QDoubleSpinBox", this);
+			interceptor = new SmokeInvocation(typeof(QDoubleSpinBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDoubleSpinBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QDoubleSpinBox), "QDoubleSpinBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDoubleSpinBox), null);
 		}
 		[Q_PROPERTY("QString", "prefix")]
 		public string Prefix {
@@ -34,15 +34,15 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("decimals", "decimals()", typeof(int)); }
 			set { interceptor.Invoke("setDecimals$", "setDecimals(int)", typeof(void), typeof(int), value); }
 		}
-		[Q_PROPERTY("double", "maximum")]
-		public double Maximum {
-			get { return (double) interceptor.Invoke("maximum", "maximum()", typeof(double)); }
-			set { interceptor.Invoke("setMaximum$", "setMaximum(double)", typeof(void), typeof(double), value); }
-		}
 		[Q_PROPERTY("double", "minimum")]
 		public double Minimum {
 			get { return (double) interceptor.Invoke("minimum", "minimum()", typeof(double)); }
 			set { interceptor.Invoke("setMinimum$", "setMinimum(double)", typeof(void), typeof(double), value); }
+		}
+		[Q_PROPERTY("double", "maximum")]
+		public double Maximum {
+			get { return (double) interceptor.Invoke("maximum", "maximum()", typeof(double)); }
+			set { interceptor.Invoke("setMaximum$", "setMaximum(double)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("double", "singleStep")]
 		public double SingleStep {

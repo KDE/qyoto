@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionMenuItem : QStyleOption, IDisposable {
  		protected QStyleOptionMenuItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionMenuItem), "QStyleOptionMenuItem", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionMenuItem), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_MenuItem,

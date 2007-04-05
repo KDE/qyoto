@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QProcess : QIODevice, IDisposable {
  		protected QProcess(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QProcess), "QProcess", this);
+			interceptor = new SmokeInvocation(typeof(QProcess), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QProcess() {
-			staticInterceptor = new SmokeInvocation(typeof(QProcess), "QProcess", null);
+			staticInterceptor = new SmokeInvocation(typeof(QProcess), null);
 		}
 		public enum ProcessError {
 			FailedToStart = 0,

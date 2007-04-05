@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDomNodeList(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomNodeList), "QDomNodeList", this);
+			interceptor = new SmokeInvocation(typeof(QDomNodeList), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDomNodeList() {
-			staticInterceptor = new SmokeInvocation(typeof(QDomNodeList), "QDomNodeList", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDomNodeList), null);
 		}
 		public QDomNodeList() : this((Type) null) {
 			CreateProxy();

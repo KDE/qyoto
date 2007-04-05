@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QUrlInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUrlInfo), "QUrlInfo", this);
+			interceptor = new SmokeInvocation(typeof(QUrlInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUrlInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(QUrlInfo), "QUrlInfo", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUrlInfo), null);
 		}
 		public enum PermissionSpec {
 			ReadOwner = 00400,

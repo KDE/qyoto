@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QTableWidget : QTableView, IDisposable {
  		protected QTableWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTableWidget), "QTableWidget", this);
+			interceptor = new SmokeInvocation(typeof(QTableWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTableWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QTableWidget), "QTableWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTableWidget), null);
 		}
 		[Q_PROPERTY("int", "rowCount")]
 		public int RowCount {
@@ -121,6 +121,9 @@ namespace Qyoto {
 		}
 		public void SetCellWidget(int row, int column, QWidget widget) {
 			interceptor.Invoke("setCellWidget$$#", "setCellWidget(int, int, QWidget*)", typeof(void), typeof(int), row, typeof(int), column, typeof(QWidget), widget);
+		}
+		public void RemoveCellWidget(int row, int column) {
+			interceptor.Invoke("removeCellWidget$$", "removeCellWidget(int, int)", typeof(void), typeof(int), row, typeof(int), column);
 		}
 		public bool IsItemSelected(QTableWidgetItem item) {
 			return (bool) interceptor.Invoke("isItemSelected#", "isItemSelected(const QTableWidgetItem*) const", typeof(bool), typeof(QTableWidgetItem), item);

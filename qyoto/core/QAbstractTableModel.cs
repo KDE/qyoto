@@ -7,11 +7,11 @@ namespace Qyoto {
 	public abstract class QAbstractTableModel : QAbstractItemModel, IDisposable {
  		protected QAbstractTableModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractTableModel), "QAbstractTableModel", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractTableModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractTableModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractTableModel), "QAbstractTableModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractTableModel), null);
 		}
 		public QAbstractTableModel(QObject parent) : this((Type) null) {
 			CreateProxy();

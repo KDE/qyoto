@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionTabWidgetFrame : QStyleOption, IDisposable {
  		protected QStyleOptionTabWidgetFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionTabWidgetFrame), "QStyleOptionTabWidgetFrame", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionTabWidgetFrame), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TabWidgetFrame,

@@ -8,17 +8,18 @@ namespace Qyoto {
 	public class QDockWidget : QWidget, IDisposable {
  		protected QDockWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDockWidget), "QDockWidget", this);
+			interceptor = new SmokeInvocation(typeof(QDockWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDockWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QDockWidget), "QDockWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDockWidget), null);
 		}
 		public enum DockWidgetFeature {
 			DockWidgetClosable = 0x01,
 			DockWidgetMovable = 0x02,
 			DockWidgetFloatable = 0x04,
-			DockWidgetFeatureMask = 0x07,
+			DockWidgetVerticalTitleBar = 0x08,
+			DockWidgetFeatureMask = 0x0f,
 			AllDockWidgetFeatures = DockWidgetFeatureMask,
 			NoDockWidgetFeatures = 0x00,
 			Reserved = 0xff,
@@ -76,6 +77,12 @@ namespace Qyoto {
 		public bool IsFloating() {
 			return (bool) interceptor.Invoke("isFloating", "isFloating() const", typeof(bool));
 		}
+		public void SetTitleBarWidget(QWidget widget) {
+			interceptor.Invoke("setTitleBarWidget#", "setTitleBarWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
+		}
+		public QWidget TitleBarWidget() {
+			return (QWidget) interceptor.Invoke("titleBarWidget", "titleBarWidget() const", typeof(QWidget));
+		}
 		public bool IsAreaAllowed(Qt.DockWidgetArea area) {
 			return (bool) interceptor.Invoke("isAreaAllowed$", "isAreaAllowed(Qt::DockWidgetArea) const", typeof(bool), typeof(Qt.DockWidgetArea), area);
 		}
@@ -97,6 +104,9 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionDockWidget option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionDockWidget*) const", typeof(void), typeof(QStyleOptionDockWidget), option);
 		}
 		~QDockWidget() {
 			interceptor.Invoke("~QDockWidget", "~QDockWidget()", typeof(void));
@@ -122,5 +132,9 @@ namespace Qyoto {
 		void TopLevelChanged(bool topLevel);
 		[Q_SIGNAL("void allowedAreasChanged(Qt::DockWidgetAreas)")]
 		void AllowedAreasChanged(int allowedAreas);
+		[Q_SIGNAL("void visibilityChanged(bool)")]
+		void VisibilityChanged(bool visible);
+		[Q_SIGNAL("void dockLocationChanged(Qt::DockWidgetArea)")]
+		void DockLocationChanged(Qt.DockWidgetArea area);
 	}
 }

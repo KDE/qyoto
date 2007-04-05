@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextFormat(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextFormat), "QTextFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextFormat), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextFormat() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextFormat), "QTextFormat", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextFormat), null);
 		}
 		public enum FormatType {
 			InvalidFormat = -1,
@@ -56,6 +56,7 @@ namespace Qyoto {
 			TextVerticalAlignment = 0x2021,
 			TextOutline = 0x2022,
 			TextUnderlineStyle = 0x2023,
+			TextToolTip = 0x2024,
 			IsAnchor = 0x2030,
 			AnchorHref = 0x2031,
 			AnchorName = 0x2032,
@@ -67,6 +68,10 @@ namespace Qyoto {
 			FramePadding = 0x4002,
 			FrameWidth = 0x4003,
 			FrameHeight = 0x4004,
+			FrameTopMargin = 0x4005,
+			FrameBottomMargin = 0x4006,
+			FrameLeftMargin = 0x4007,
+			FrameRightMargin = 0x4008,
 			TableColumns = 0x4100,
 			TableColumnWidthConstraints = 0x4101,
 			TableCellSpacing = 0x4102,
@@ -164,6 +169,9 @@ namespace Qyoto {
 		}
 		public Dictionary<int, QVariant> Properties() {
 			return (Dictionary<int, QVariant>) interceptor.Invoke("properties", "properties() const", typeof(Dictionary<int, QVariant>));
+		}
+		public int PropertyCount() {
+			return (int) interceptor.Invoke("propertyCount", "propertyCount() const", typeof(int));
 		}
 		public void SetObjectType(int type) {
 			interceptor.Invoke("setObjectType$", "setObjectType(int)", typeof(void), typeof(int), type);

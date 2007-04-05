@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QRegExp(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRegExp), "QRegExp", this);
+			interceptor = new SmokeInvocation(typeof(QRegExp), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRegExp() {
-			staticInterceptor = new SmokeInvocation(typeof(QRegExp), "QRegExp", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRegExp), null);
 		}
 		public enum PatternSyntax {
 			RegExp = 0,

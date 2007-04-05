@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QItemSelectionModel : QObject, IDisposable {
  		protected QItemSelectionModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QItemSelectionModel), "QItemSelectionModel", this);
+			interceptor = new SmokeInvocation(typeof(QItemSelectionModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QItemSelectionModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QItemSelectionModel), "QItemSelectionModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QItemSelectionModel), null);
 		}
 		public enum SelectionFlag {
 			NoUpdate = 0x0000,

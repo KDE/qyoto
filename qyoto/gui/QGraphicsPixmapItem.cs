@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsPixmapItem : QGraphicsItem, IDisposable {
  		protected QGraphicsPixmapItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsPixmapItem), "QGraphicsPixmapItem", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsPixmapItem), this);
 		}
 		public enum ShapeMode {
 			MaskShape = 0,
@@ -57,6 +57,9 @@ namespace Qyoto {
 		}
 		public void SetOffset(QPointF offset) {
 			interceptor.Invoke("setOffset#", "setOffset(const QPointF&)", typeof(void), typeof(QPointF), offset);
+		}
+		public void SetOffset(double x, double y) {
+			interceptor.Invoke("setOffset$$", "setOffset(qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y);
 		}
 		[SmokeMethod("boundingRect() const")]
 		public override QRectF BoundingRect() {

@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QClipboardEvent : QEvent, IDisposable {
  		protected QClipboardEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QClipboardEvent), "QClipboardEvent", this);
+			interceptor = new SmokeInvocation(typeof(QClipboardEvent), this);
 		}
 		// QClipboardEvent* QClipboardEvent(QEventPrivate* arg1); >>>> NOT CONVERTED
 		// QEventPrivate* data(); >>>> NOT CONVERTED

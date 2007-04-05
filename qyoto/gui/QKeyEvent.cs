@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QKeyEvent : QInputEvent, IDisposable {
  		protected QKeyEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QKeyEvent), "QKeyEvent", this);
+			interceptor = new SmokeInvocation(typeof(QKeyEvent), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QKeyEvent() {
-			staticInterceptor = new SmokeInvocation(typeof(QKeyEvent), "QKeyEvent", null);
+			staticInterceptor = new SmokeInvocation(typeof(QKeyEvent), null);
 		}
 		public QKeyEvent(QEvent.TypeOf type, int key, int modifiers, string text, bool autorep, ushort count) : this((Type) null) {
 			CreateProxy();

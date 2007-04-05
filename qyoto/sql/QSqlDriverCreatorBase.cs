@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSqlDriverCreatorBase(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlDriverCreatorBase), "QSqlDriverCreatorBase", this);
+			interceptor = new SmokeInvocation(typeof(QSqlDriverCreatorBase), this);
 		}
 		// QSqlDriverCreatorBase* QSqlDriverCreatorBase(); >>>> NOT CONVERTED
 		[SmokeMethod("createObject() const")]

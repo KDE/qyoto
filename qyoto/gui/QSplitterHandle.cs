@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QSplitterHandle : QWidget, IDisposable {
  		protected QSplitterHandle(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSplitterHandle), "QSplitterHandle", this);
+			interceptor = new SmokeInvocation(typeof(QSplitterHandle), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSplitterHandle() {
-			staticInterceptor = new SmokeInvocation(typeof(QSplitterHandle), "QSplitterHandle", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSplitterHandle), null);
 		}
 		public QSplitterHandle(Qt.Orientation o, QSplitter parent) : this((Type) null) {
 			CreateProxy();

@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QRadioButton : QAbstractButton, IDisposable {
  		protected QRadioButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRadioButton), "QRadioButton", this);
+			interceptor = new SmokeInvocation(typeof(QRadioButton), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRadioButton() {
-			staticInterceptor = new SmokeInvocation(typeof(QRadioButton), "QRadioButton", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRadioButton), null);
 		}
 		public QRadioButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -48,6 +48,9 @@ namespace Qyoto {
 		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
 			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionButton button) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionButton*) const", typeof(void), typeof(QStyleOptionButton), button);
 		}
 		~QRadioButton() {
 			interceptor.Invoke("~QRadioButton", "~QRadioButton()", typeof(void));

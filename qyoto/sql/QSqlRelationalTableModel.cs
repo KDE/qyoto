@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QSqlRelationalTableModel : QSqlTableModel, IDisposable {
  		protected QSqlRelationalTableModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlRelationalTableModel), "QSqlRelationalTableModel", this);
+			interceptor = new SmokeInvocation(typeof(QSqlRelationalTableModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlRelationalTableModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlRelationalTableModel), "QSqlRelationalTableModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlRelationalTableModel), null);
 		}
 		public QSqlRelationalTableModel(QObject parent, QSqlDatabase db) : this((Type) null) {
 			CreateProxy();

@@ -10,11 +10,11 @@ namespace Qyoto {
 	public class QFileDialog : QDialog, IDisposable {
  		protected QFileDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFileDialog), "QFileDialog", this);
+			interceptor = new SmokeInvocation(typeof(QFileDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFileDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QFileDialog), "QFileDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFileDialog), null);
 		}
 		public enum ViewMode {
 			Detail = 0,
@@ -44,6 +44,7 @@ namespace Qyoto {
 			DontConfirmOverwrite = 0x04,
 			DontUseSheet = 0x08,
 			DontUseNativeDialog = 0x10,
+			StoreState = 0x20,
 		}
 		[Q_PROPERTY("QFileDialog::ViewMode", "viewMode")]
 		public QFileDialog.ViewMode viewMode {
@@ -59,6 +60,11 @@ namespace Qyoto {
 		public QFileDialog.AcceptMode acceptMode {
 			get { return (QFileDialog.AcceptMode) interceptor.Invoke("acceptMode", "acceptMode()", typeof(QFileDialog.AcceptMode)); }
 			set { interceptor.Invoke("setAcceptMode$", "setAcceptMode(QFileDialog::AcceptMode)", typeof(void), typeof(QFileDialog.AcceptMode), value); }
+		}
+		[Q_PROPERTY("bool", "detailsExpanded")]
+		public bool DetailsExpanded {
+			get { return (bool) interceptor.Invoke("isDetailsExpanded", "isDetailsExpanded()", typeof(bool)); }
+			set { interceptor.Invoke("setDetailsExpanded$", "setDetailsExpanded(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
@@ -135,8 +141,23 @@ namespace Qyoto {
 		public string SelectedFilter() {
 			return (string) interceptor.Invoke("selectedFilter", "selectedFilter() const", typeof(string));
 		}
+		public bool IsDetailsExpanded() {
+			return (bool) interceptor.Invoke("isDetailsExpanded", "isDetailsExpanded() const", typeof(bool));
+		}
 		public bool IsReadOnly() {
 			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
+		}
+		public void SetSidebarUrls(List<QUrl> urls) {
+			interceptor.Invoke("setSidebarUrls?", "setSidebarUrls(const QList<QUrl>&)", typeof(void), typeof(List<QUrl>), urls);
+		}
+		public List<QUrl> SidebarUrls() {
+			return (List<QUrl>) interceptor.Invoke("sidebarUrls", "sidebarUrls() const", typeof(List<QUrl>));
+		}
+		public QByteArray SaveState() {
+			return (QByteArray) interceptor.Invoke("saveState", "saveState() const", typeof(QByteArray));
+		}
+		public bool RestoreState(QByteArray state) {
+			return (bool) interceptor.Invoke("restoreState#", "restoreState(const QByteArray&)", typeof(bool), typeof(QByteArray), state);
 		}
 		public void SetHistory(List<string> paths) {
 			interceptor.Invoke("setHistory?", "setHistory(const QStringList&)", typeof(void), typeof(List<string>), paths);
@@ -162,6 +183,12 @@ namespace Qyoto {
 		public string LabelText(QFileDialog.DialogLabel label) {
 			return (string) interceptor.Invoke("labelText$", "labelText(QFileDialog::DialogLabel) const", typeof(string), typeof(QFileDialog.DialogLabel), label);
 		}
+		public void SetProxyModel(QAbstractProxyModel model) {
+			interceptor.Invoke("setProxyModel#", "setProxyModel(QAbstractProxyModel*)", typeof(void), typeof(QAbstractProxyModel), model);
+		}
+		public QAbstractProxyModel ProxyModel() {
+			return (QAbstractProxyModel) interceptor.Invoke("proxyModel", "proxyModel() const", typeof(QAbstractProxyModel));
+		}
 		[SmokeMethod("done(int)")]
 		protected new virtual void Done(int result) {
 			interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), result);
@@ -169,6 +196,14 @@ namespace Qyoto {
 		[SmokeMethod("accept()")]
 		protected new virtual void Accept() {
 			interceptor.Invoke("accept", "accept()", typeof(void));
+		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
+		protected override void TimerEvent(QTimerEvent arg1) {
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
+		}
+		[SmokeMethod("changeEvent(QEvent*)")]
+		protected override void ChangeEvent(QEvent e) {
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
 		}
 		~QFileDialog() {
 			interceptor.Invoke("~QFileDialog", "~QFileDialog()", typeof(void));
@@ -270,5 +305,9 @@ namespace Qyoto {
 		void FilesSelected(List<string> files);
 		[Q_SIGNAL("void currentChanged(const QString&)")]
 		void CurrentChanged(string path);
+		[Q_SIGNAL("void dirEntered(const QString&)")]
+		void DirEntered(string directory);
+		[Q_SIGNAL("void filterSelected(const QString&)")]
+		void FilterSelected(string filter);
 	}
 }

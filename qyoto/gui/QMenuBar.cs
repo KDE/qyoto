@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QMenuBar : QWidget, IDisposable {
  		protected QMenuBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMenuBar), "QMenuBar", this);
+			interceptor = new SmokeInvocation(typeof(QMenuBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMenuBar() {
-			staticInterceptor = new SmokeInvocation(typeof(QMenuBar), "QMenuBar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMenuBar), null);
 		}
 		[Q_PROPERTY("bool", "defaultUp")]
 		public bool DefaultUp {
@@ -96,6 +96,11 @@ namespace Qyoto {
 		public QWidget CornerWidget() {
 			return (QWidget) interceptor.Invoke("cornerWidget", "cornerWidget() const", typeof(QWidget));
 		}
+		[Q_SLOT("void setVisible(bool)")]
+		[SmokeMethod("setVisible(bool)")]
+		public override void SetVisible(bool visible) {
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
+		}
 		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
 			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
@@ -147,6 +152,9 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionMenuItem option, QAction action) {
+			interceptor.Invoke("initStyleOption##", "initStyleOption(QStyleOptionMenuItem*, const QAction*) const", typeof(void), typeof(QStyleOptionMenuItem), option, typeof(QAction), action);
 		}
 		~QMenuBar() {
 			interceptor.Invoke("~QMenuBar", "~QMenuBar()", typeof(void));

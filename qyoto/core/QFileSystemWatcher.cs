@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QFileSystemWatcher : QObject, IDisposable {
  		protected QFileSystemWatcher(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFileSystemWatcher), "QFileSystemWatcher", this);
+			interceptor = new SmokeInvocation(typeof(QFileSystemWatcher), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFileSystemWatcher() {
-			staticInterceptor = new SmokeInvocation(typeof(QFileSystemWatcher), "QFileSystemWatcher", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFileSystemWatcher), null);
 		}
 		public QFileSystemWatcher(QObject parent) : this((Type) null) {
 			CreateProxy();

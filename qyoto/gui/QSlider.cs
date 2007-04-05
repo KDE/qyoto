@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QSlider : QAbstractSlider, IDisposable {
  		protected QSlider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSlider), "QSlider", this);
+			interceptor = new SmokeInvocation(typeof(QSlider), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSlider() {
-			staticInterceptor = new SmokeInvocation(typeof(QSlider), "QSlider", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSlider), null);
 		}
 		public enum TickPosition {
 			NoTicks = 0,
@@ -74,6 +74,9 @@ namespace Qyoto {
 		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent ev) {
 			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), ev);
+		}
+		protected void InitStyleOption(QStyleOptionSlider option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSlider*) const", typeof(void), typeof(QStyleOptionSlider), option);
 		}
 		~QSlider() {
 			interceptor.Invoke("~QSlider", "~QSlider()", typeof(void));

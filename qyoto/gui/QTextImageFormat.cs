@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QTextImageFormat : QTextCharFormat, IDisposable {
  		protected QTextImageFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextImageFormat), "QTextImageFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextImageFormat), this);
 		}
 		public QTextImageFormat() : this((Type) null) {
 			CreateProxy();

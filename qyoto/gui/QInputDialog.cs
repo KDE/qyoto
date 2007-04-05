@@ -9,7 +9,7 @@ namespace Qyoto {
  		protected QInputDialog(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QInputDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QInputDialog), "QInputDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QInputDialog), null);
 		}
 		public static string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

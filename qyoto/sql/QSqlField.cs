@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSqlField(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlField), "QSqlField", this);
+			interceptor = new SmokeInvocation(typeof(QSqlField), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlField() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlField), "QSqlField", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlField), null);
 		}
 		public enum RequiredStatus {
 			Unknown = -1,

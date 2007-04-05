@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextBlockUserData(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextBlockUserData), "QTextBlockUserData", this);
+			interceptor = new SmokeInvocation(typeof(QTextBlockUserData), this);
 		}
 		public QTextBlockUserData() : this((Type) null) {
 			CreateProxy();

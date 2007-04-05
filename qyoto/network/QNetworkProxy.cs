@@ -9,16 +9,17 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QNetworkProxy(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QNetworkProxy), "QNetworkProxy", this);
+			interceptor = new SmokeInvocation(typeof(QNetworkProxy), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QNetworkProxy() {
-			staticInterceptor = new SmokeInvocation(typeof(QNetworkProxy), "QNetworkProxy", null);
+			staticInterceptor = new SmokeInvocation(typeof(QNetworkProxy), null);
 		}
 		public enum ProxyType {
 			DefaultProxy = 0,
 			Socks5Proxy = 1,
 			NoProxy = 2,
+			HttpProxy = 3,
 		}
 		public QNetworkProxy() : this((Type) null) {
 			CreateProxy();

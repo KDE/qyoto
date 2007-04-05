@@ -7,11 +7,11 @@ namespace Qyoto {
 	public abstract class QSyntaxHighlighter : QObject {
  		protected QSyntaxHighlighter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSyntaxHighlighter), "QSyntaxHighlighter", this);
+			interceptor = new SmokeInvocation(typeof(QSyntaxHighlighter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSyntaxHighlighter() {
-			staticInterceptor = new SmokeInvocation(typeof(QSyntaxHighlighter), "QSyntaxHighlighter", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSyntaxHighlighter), null);
 		}
 		public QSyntaxHighlighter(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -65,11 +65,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QUrl(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUrl), "QUrl", this);
+			interceptor = new SmokeInvocation(typeof(QUrl), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUrl() {
-			staticInterceptor = new SmokeInvocation(typeof(QUrl), "QUrl", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUrl), null);
 		}
 		public enum ParsingMode {
 			TolerantMode = 0,

@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QDomCDATASection : QDomText, IDisposable {
  		protected QDomCDATASection(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomCDATASection), "QDomCDATASection", this);
+			interceptor = new SmokeInvocation(typeof(QDomCDATASection), this);
 		}
 		public QDomCDATASection() : this((Type) null) {
 			CreateProxy();

@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QDialogButtonBox : QWidget, IDisposable {
  		protected QDialogButtonBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDialogButtonBox), "QDialogButtonBox", this);
+			interceptor = new SmokeInvocation(typeof(QDialogButtonBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDialogButtonBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QDialogButtonBox), "QDialogButtonBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDialogButtonBox), null);
 		}
 		public enum ButtonRole {
 			InvalidRole = -1,

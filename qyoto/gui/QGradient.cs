@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QGradient(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGradient), "QGradient", this);
+			interceptor = new SmokeInvocation(typeof(QGradient), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGradient() {
-			staticInterceptor = new SmokeInvocation(typeof(QGradient), "QGradient", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGradient), null);
 		}
 		public enum TypeOf {
 			LinearGradient = 0,
@@ -29,6 +29,7 @@ namespace Qyoto {
 		public enum CoordinateMode {
 			LogicalMode = 0,
 			StretchToDeviceMode = 1,
+			ObjectBoundingMode = 2,
 		}
 		// void setStops(const QGradientStops& arg1); >>>> NOT CONVERTED
 		// QGradientStops stops(); >>>> NOT CONVERTED

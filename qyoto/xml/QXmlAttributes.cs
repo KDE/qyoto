@@ -9,8 +9,10 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlAttributes(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlAttributes), "QXmlAttributes", this);
+			interceptor = new SmokeInvocation(typeof(QXmlAttributes), this);
 		}
+		// int index(const QLatin1String& arg1); >>>> NOT CONVERTED
+		// QString value(const QLatin1String& arg1); >>>> NOT CONVERTED
 		public QXmlAttributes() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QXmlAttributes", "QXmlAttributes()", typeof(void));

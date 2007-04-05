@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QHostAddress(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHostAddress), "QHostAddress", this);
+			interceptor = new SmokeInvocation(typeof(QHostAddress), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QHostAddress() {
-			staticInterceptor = new SmokeInvocation(typeof(QHostAddress), "QHostAddress", null);
+			staticInterceptor = new SmokeInvocation(typeof(QHostAddress), null);
 		}
 		public enum SpecialAddress {
 			Null = 0,

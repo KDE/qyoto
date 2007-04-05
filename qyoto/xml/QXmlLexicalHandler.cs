@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlLexicalHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlLexicalHandler), "QXmlLexicalHandler", this);
+			interceptor = new SmokeInvocation(typeof(QXmlLexicalHandler), this);
 		}
 		[SmokeMethod("startDTD(const QString&, const QString&, const QString&)")]
 		public abstract bool StartDTD(string name, string publicId, string systemId);

@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSystemLocale(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSystemLocale), "QSystemLocale", this);
+			interceptor = new SmokeInvocation(typeof(QSystemLocale), this);
 		}
 		public enum QueryType {
 			LanguageId = 0,

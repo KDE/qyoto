@@ -8,7 +8,7 @@ namespace Qyoto {
  		protected QColorDialog(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QColorDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QColorDialog), "QColorDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QColorDialog), null);
 		}
 		public static string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -33,6 +33,9 @@ namespace Qyoto {
 		}
 		public static uint GetRgba(uint arg1) {
 			return (uint) staticInterceptor.Invoke("getRgba$", "getRgba(QRgb)", typeof(uint), typeof(uint), arg1);
+		}
+		public static uint GetRgba() {
+			return (uint) staticInterceptor.Invoke("getRgba", "getRgba()", typeof(uint));
 		}
 		public static int CustomCount() {
 			return (int) staticInterceptor.Invoke("customCount", "customCount()", typeof(int));

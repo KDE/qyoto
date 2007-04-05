@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFileInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFileInfo), "QFileInfo", this);
+			interceptor = new SmokeInvocation(typeof(QFileInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFileInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(QFileInfo), "QFileInfo", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFileInfo), null);
 		}
 		public QFileInfo() : this((Type) null) {
 			CreateProxy();
@@ -78,6 +78,9 @@ namespace Qyoto {
 		public string Suffix() {
 			return (string) interceptor.Invoke("suffix", "suffix() const", typeof(string));
 		}
+		public string BundleName() {
+			return (string) interceptor.Invoke("bundleName", "bundleName() const", typeof(string));
+		}
 		public string CompleteSuffix() {
 			return (string) interceptor.Invoke("completeSuffix", "completeSuffix() const", typeof(string));
 		}
@@ -128,6 +131,9 @@ namespace Qyoto {
 		}
 		public bool IsRoot() {
 			return (bool) interceptor.Invoke("isRoot", "isRoot() const", typeof(bool));
+		}
+		public bool IsBundle() {
+			return (bool) interceptor.Invoke("isBundle", "isBundle() const", typeof(bool));
 		}
 		public string ReadLink() {
 			return (string) interceptor.Invoke("readLink", "readLink() const", typeof(string));

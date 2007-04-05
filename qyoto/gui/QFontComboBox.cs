@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QFontComboBox : QComboBox, IDisposable {
  		protected QFontComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFontComboBox), "QFontComboBox", this);
+			interceptor = new SmokeInvocation(typeof(QFontComboBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFontComboBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QFontComboBox), "QFontComboBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFontComboBox), null);
 		}
 		public enum FontFilter {
 			AllFonts = 0,

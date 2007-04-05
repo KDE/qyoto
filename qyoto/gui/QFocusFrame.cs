@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QFocusFrame : QWidget, IDisposable {
  		protected QFocusFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFocusFrame), "QFocusFrame", this);
+			interceptor = new SmokeInvocation(typeof(QFocusFrame), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFocusFrame() {
-			staticInterceptor = new SmokeInvocation(typeof(QFocusFrame), "QFocusFrame", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFocusFrame), null);
 		}
 		public QFocusFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -38,6 +38,9 @@ namespace Qyoto {
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
+		}
+		protected void InitStyleOption(int option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOption*) const", typeof(void), typeof(int), option);
 		}
 		~QFocusFrame() {
 			interceptor.Invoke("~QFocusFrame", "~QFocusFrame()", typeof(void));

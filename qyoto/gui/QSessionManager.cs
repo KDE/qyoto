@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSessionManager : QObject {
  		protected QSessionManager(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSessionManager), "QSessionManager", this);
+			interceptor = new SmokeInvocation(typeof(QSessionManager), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSessionManager() {
-			staticInterceptor = new SmokeInvocation(typeof(QSessionManager), "QSessionManager", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSessionManager), null);
 		}
 		public enum RestartHint {
 			RestartIfRunning = 0,

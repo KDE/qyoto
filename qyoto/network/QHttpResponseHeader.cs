@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QHttpResponseHeader : QHttpHeader, IDisposable {
  		protected QHttpResponseHeader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHttpResponseHeader), "QHttpResponseHeader", this);
+			interceptor = new SmokeInvocation(typeof(QHttpResponseHeader), this);
 		}
 		public QHttpResponseHeader() : this((Type) null) {
 			CreateProxy();

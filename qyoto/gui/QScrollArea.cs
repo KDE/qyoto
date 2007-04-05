@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QScrollArea : QAbstractScrollArea, IDisposable {
  		protected QScrollArea(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QScrollArea), "QScrollArea", this);
+			interceptor = new SmokeInvocation(typeof(QScrollArea), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QScrollArea() {
-			staticInterceptor = new SmokeInvocation(typeof(QScrollArea), "QScrollArea", null);
+			staticInterceptor = new SmokeInvocation(typeof(QScrollArea), null);
 		}
 		[Q_PROPERTY("bool", "widgetResizable")]
 		public bool WidgetResizable {

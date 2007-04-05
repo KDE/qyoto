@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QImageWriter(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QImageWriter), "QImageWriter", this);
+			interceptor = new SmokeInvocation(typeof(QImageWriter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QImageWriter() {
-			staticInterceptor = new SmokeInvocation(typeof(QImageWriter), "QImageWriter", null);
+			staticInterceptor = new SmokeInvocation(typeof(QImageWriter), null);
 		}
 		public enum ImageWriterError {
 			UnknownError = 0,
@@ -60,6 +60,12 @@ namespace Qyoto {
 		}
 		public int Quality() {
 			return (int) interceptor.Invoke("quality", "quality() const", typeof(int));
+		}
+		public void SetCompression(int compression) {
+			interceptor.Invoke("setCompression$", "setCompression(int)", typeof(void), typeof(int), compression);
+		}
+		public int Compression() {
+			return (int) interceptor.Invoke("compression", "compression() const", typeof(int));
 		}
 		public void SetGamma(float gamma) {
 			interceptor.Invoke("setGamma$", "setGamma(float)", typeof(void), typeof(float), gamma);

@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QAbstractFileEngine(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractFileEngine), "QAbstractFileEngine", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractFileEngine), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractFileEngine() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractFileEngine), "QAbstractFileEngine", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractFileEngine), null);
 		}
 		public enum FileFlag {
 			ReadOwnerPerm = 0x4000,
@@ -32,10 +32,12 @@ namespace Qyoto {
 			LinkType = 0x10000,
 			FileType = 0x20000,
 			DirectoryType = 0x40000,
+			BundleType = 0x80000,
 			HiddenFlag = 0x0100000,
 			LocalDiskFlag = 0x0200000,
 			ExistsFlag = 0x0400000,
 			RootFlag = 0x0800000,
+			Refresh = 0x1000000,
 			PermsMask = 0x0000FFFF,
 			TypesMask = 0x000F0000,
 			FlagsMask = 0x0FF00000,
@@ -50,6 +52,7 @@ namespace Qyoto {
 			LinkName = 5,
 			CanonicalName = 6,
 			CanonicalPathName = 7,
+			BundleName = 8,
 		}
 		public enum FileOwner {
 			OwnerUser = 0,
@@ -61,6 +64,8 @@ namespace Qyoto {
 			AccessTime = 2,
 		}
 		public enum Extension {
+			AtEndExtension = 0,
+			FastReadLineExtension = 1,
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
@@ -170,6 +175,9 @@ namespace Qyoto {
 		[SmokeMethod("setFileName(const QString&)")]
 		public virtual void SetFileName(string file) {
 			interceptor.Invoke("setFileName$", "setFileName(const QString&)", typeof(void), typeof(string), file);
+		}
+		public bool AtEnd() {
+			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
 		[SmokeMethod("read(char*, qint64)")]
 		public virtual long Read(string data, long maxlen) {

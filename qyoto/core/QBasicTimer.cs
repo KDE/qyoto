@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QBasicTimer(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QBasicTimer), "QBasicTimer", this);
+			interceptor = new SmokeInvocation(typeof(QBasicTimer), this);
 		}
 		public QBasicTimer() : this((Type) null) {
 			CreateProxy();

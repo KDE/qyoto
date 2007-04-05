@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QIODevice : QObject {
  		protected QIODevice(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QIODevice), "QIODevice", this);
+			interceptor = new SmokeInvocation(typeof(QIODevice), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QIODevice() {
-			staticInterceptor = new SmokeInvocation(typeof(QIODevice), "QIODevice", null);
+			staticInterceptor = new SmokeInvocation(typeof(QIODevice), null);
 		}
 		public enum OpenModeFlag {
 			NotOpen = 0x0000,

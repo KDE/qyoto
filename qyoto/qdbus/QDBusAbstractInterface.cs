@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QDBusAbstractInterface : QObject, IDisposable {
  		protected QDBusAbstractInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), "QDBusAbstractInterface", this);
+			interceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusAbstractInterface() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), "QDBusAbstractInterface", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), null);
 		}
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
@@ -88,6 +88,9 @@ namespace Qyoto {
 		}
 		public QDBusMessage CallWithArgumentList(QDBus.CallMode mode, string method, List<QVariant> args) {
 			return (QDBusMessage) interceptor.Invoke("callWithArgumentList$$?", "callWithArgumentList(QDBus::CallMode, const QString&, const QList<QVariant>&)", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method, typeof(List<QVariant>), args);
+		}
+		public bool CallWithCallback(string method, List<QVariant> args, QObject receiver, string member, string errorSlot) {
+			return (bool) interceptor.Invoke("callWithCallback$?#$$", "callWithCallback(const QString&, const QList<QVariant>&, QObject*, const char*, const char*)", typeof(bool), typeof(string), method, typeof(List<QVariant>), args, typeof(QObject), receiver, typeof(string), member, typeof(string), errorSlot);
 		}
 		public bool CallWithCallback(string method, List<QVariant> args, QObject receiver, string member) {
 			return (bool) interceptor.Invoke("callWithCallback$?#$", "callWithCallback(const QString&, const QList<QVariant>&, QObject*, const char*)", typeof(bool), typeof(string), method, typeof(List<QVariant>), args, typeof(QObject), receiver, typeof(string), member);

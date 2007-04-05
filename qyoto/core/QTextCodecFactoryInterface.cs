@@ -7,7 +7,7 @@ namespace Qyoto {
 	public abstract class QTextCodecFactoryInterface : QFactoryInterface {
  		protected QTextCodecFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextCodecFactoryInterface), "QTextCodecFactoryInterface", this);
+			interceptor = new SmokeInvocation(typeof(QTextCodecFactoryInterface), this);
 		}
 		[SmokeMethod("create(const QString&)")]
 		public abstract QTextCodec Create(string key);

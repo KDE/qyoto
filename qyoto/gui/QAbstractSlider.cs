@@ -8,11 +8,11 @@ namespace Qyoto {
 	public abstract class QAbstractSlider : QWidget, IDisposable {
  		protected QAbstractSlider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractSlider), "QAbstractSlider", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractSlider), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAbstractSlider() {
-			staticInterceptor = new SmokeInvocation(typeof(QAbstractSlider), "QAbstractSlider", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAbstractSlider), null);
 		}
 		public enum SliderAction {
 			SliderNoAction = 0,

@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QFontInfo(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFontInfo), "QFontInfo", this);
+			interceptor = new SmokeInvocation(typeof(QFontInfo), this);
 		}
 		public QFontInfo(QFont arg1) : this((Type) null) {
 			CreateProxy();

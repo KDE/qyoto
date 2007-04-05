@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTabBar : QWidget, IDisposable {
  		protected QTabBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTabBar), "QTabBar", this);
+			interceptor = new SmokeInvocation(typeof(QTabBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTabBar() {
-			staticInterceptor = new SmokeInvocation(typeof(QTabBar), "QTabBar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTabBar), null);
 		}
 		public enum Shape {
 			RoundedNorth = 0,
@@ -126,6 +126,9 @@ namespace Qyoto {
 		public QRect TabRect(int index) {
 			return (QRect) interceptor.Invoke("tabRect$", "tabRect(int) const", typeof(QRect), typeof(int), index);
 		}
+		public int TabAt(QPoint pos) {
+			return (int) interceptor.Invoke("tabAt#", "tabAt(const QPoint&) const", typeof(int), typeof(QPoint), pos);
+		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
@@ -185,6 +188,9 @@ namespace Qyoto {
 		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent arg1) {
 			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionTab option, int tabIndex) {
+			interceptor.Invoke("initStyleOption#$", "initStyleOption(QStyleOptionTab*, int) const", typeof(void), typeof(QStyleOptionTab), option, typeof(int), tabIndex);
 		}
 		~QTabBar() {
 			interceptor.Invoke("~QTabBar", "~QTabBar()", typeof(void));

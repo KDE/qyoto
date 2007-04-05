@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QGLContext(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGLContext), "QGLContext", this);
+			interceptor = new SmokeInvocation(typeof(QGLContext), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGLContext() {
-			staticInterceptor = new SmokeInvocation(typeof(QGLContext), "QGLContext", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGLContext), null);
 		}
 		public static QGLContext CurrentCtx() {
 			return (QGLContext) staticInterceptor.Invoke("currentCtx", "currentCtx()", typeof(QGLContext));

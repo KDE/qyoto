@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSqlDatabase(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlDatabase), "QSqlDatabase", this);
+			interceptor = new SmokeInvocation(typeof(QSqlDatabase), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlDatabase() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlDatabase), "QSqlDatabase", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlDatabase), null);
 		}
 		public static string DefaultConnection() {
 			return (string) staticInterceptor.Invoke("defaultConnection", "defaultConnection()", typeof(string));

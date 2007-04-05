@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QHeaderView : QAbstractItemView, IDisposable {
  		protected QHeaderView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QHeaderView), "QHeaderView", this);
+			interceptor = new SmokeInvocation(typeof(QHeaderView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QHeaderView() {
-			staticInterceptor = new SmokeInvocation(typeof(QHeaderView), "QHeaderView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QHeaderView), null);
 		}
 		public enum ResizeMode {
 			Interactive = 0,
@@ -190,6 +190,22 @@ namespace Qyoto {
 		public bool SectionsHidden() {
 			return (bool) interceptor.Invoke("sectionsHidden", "sectionsHidden() const", typeof(bool));
 		}
+		public QByteArray SaveState(int version) {
+			return (QByteArray) interceptor.Invoke("saveState$", "saveState(int) const", typeof(QByteArray), typeof(int), version);
+		}
+		public QByteArray SaveState() {
+			return (QByteArray) interceptor.Invoke("saveState", "saveState() const", typeof(QByteArray));
+		}
+		public bool RestoreState(QByteArray state, int version) {
+			return (bool) interceptor.Invoke("restoreState#$", "restoreState(const QByteArray&, int)", typeof(bool), typeof(QByteArray), state, typeof(int), version);
+		}
+		public bool RestoreState(QByteArray state) {
+			return (bool) interceptor.Invoke("restoreState#", "restoreState(const QByteArray&)", typeof(bool), typeof(QByteArray), state);
+		}
+		[SmokeMethod("reset()")]
+		public override void Reset() {
+			interceptor.Invoke("reset", "reset()", typeof(void));
+		}
 		[Q_SLOT("void setOffset(int)")]
 		public void SetOffset(int offset) {
 			interceptor.Invoke("setOffset$", "setOffset(int)", typeof(void), typeof(int), offset);
@@ -197,6 +213,10 @@ namespace Qyoto {
 		[Q_SLOT("void setOffsetToSectionPosition(int)")]
 		public void SetOffsetToSectionPosition(int visualIndex) {
 			interceptor.Invoke("setOffsetToSectionPosition$", "setOffsetToSectionPosition(int)", typeof(void), typeof(int), visualIndex);
+		}
+		[Q_SLOT("void setOffsetToLastSection()")]
+		public void SetOffsetToLastSection() {
+			interceptor.Invoke("setOffsetToLastSection", "setOffsetToLastSection()", typeof(void));
 		}
 		[Q_SLOT("void headerDataChanged(Qt::Orientation, int, int)")]
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
@@ -303,6 +323,9 @@ namespace Qyoto {
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {
 			return (QRegion) interceptor.Invoke("visualRegionForSelection#", "visualRegionForSelection(const QItemSelection&) const", typeof(QRegion), typeof(QItemSelection), selection);
 		}
+		protected void InitStyleOption(QStyleOptionHeader option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionHeader*) const", typeof(void), typeof(QStyleOptionHeader), option);
+		}
 		[Q_SLOT("void updateSection(int)")]
 		protected void UpdateSection(int logicalIndex) {
 			interceptor.Invoke("updateSection$", "updateSection(int)", typeof(void), typeof(int), logicalIndex);
@@ -345,6 +368,8 @@ namespace Qyoto {
 		void SectionPressed(int logicalIndex);
 		[Q_SIGNAL("void sectionClicked(int)")]
 		void SectionClicked(int logicalIndex);
+		[Q_SIGNAL("void sectionTouched(int)")]
+		void SectionTouched(int logicalIndex);
 		[Q_SIGNAL("void sectionDoubleClicked(int)")]
 		void SectionDoubleClicked(int logicalIndex);
 		[Q_SIGNAL("void sectionCountChanged(int, int)")]
@@ -355,5 +380,7 @@ namespace Qyoto {
 		void SectionAutoResize(int logicalIndex, QHeaderView.ResizeMode mode);
 		[Q_SIGNAL("void geometriesChanged()")]
 		void GeometriesChanged();
+		[Q_SIGNAL("void sortIndicatorChanged(int, Qt::SortOrder)")]
+		void SortIndicatorChanged(int logicalIndex, Qt.SortOrder order);
 	}
 }

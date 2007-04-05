@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionDockWidget : QStyleOption, IDisposable {
  		protected QStyleOptionDockWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionDockWidget), "QStyleOptionDockWidget", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionDockWidget), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_DockWidget,

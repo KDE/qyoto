@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QWorkspace : QWidget, IDisposable {
  		protected QWorkspace(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QWorkspace), "QWorkspace", this);
+			interceptor = new SmokeInvocation(typeof(QWorkspace), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QWorkspace() {
-			staticInterceptor = new SmokeInvocation(typeof(QWorkspace), "QWorkspace", null);
+			staticInterceptor = new SmokeInvocation(typeof(QWorkspace), null);
 		}
 		public enum WindowOrder {
 			CreationOrder = 0,

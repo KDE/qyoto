@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Text;
 
 	[SmokeClass("QTextDecoder")]
 	public class QTextDecoder : Object, IDisposable {
@@ -9,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextDecoder(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextDecoder), "QTextDecoder", this);
+			interceptor = new SmokeInvocation(typeof(QTextDecoder), this);
 		}
 		public QTextDecoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();
@@ -20,6 +21,9 @@ namespace Qyoto {
 		}
 		public string ToUnicode(QByteArray ba) {
 			return (string) interceptor.Invoke("toUnicode#", "toUnicode(const QByteArray&)", typeof(string), typeof(QByteArray), ba);
+		}
+		public void ToUnicode(StringBuilder target, string chars, int len) {
+			interceptor.Invoke("toUnicode$$$", "toUnicode(QString*, const char*, int)", typeof(void), typeof(StringBuilder), target, typeof(string), chars, typeof(int), len);
 		}
 		~QTextDecoder() {
 			interceptor.Invoke("~QTextDecoder", "~QTextDecoder()", typeof(void));

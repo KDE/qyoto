@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QItemEditorCreatorBase(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QItemEditorCreatorBase), "QItemEditorCreatorBase", this);
+			interceptor = new SmokeInvocation(typeof(QItemEditorCreatorBase), this);
 		}
 		[SmokeMethod("createWidget(QWidget*) const")]
 		public abstract QWidget CreateWidget(QWidget parent);

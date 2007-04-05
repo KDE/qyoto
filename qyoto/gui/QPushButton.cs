@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QPushButton : QAbstractButton, IDisposable {
  		protected QPushButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPushButton), "QPushButton", this);
+			interceptor = new SmokeInvocation(typeof(QPushButton), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPushButton() {
-			staticInterceptor = new SmokeInvocation(typeof(QPushButton), "QPushButton", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPushButton), null);
 		}
 		[Q_PROPERTY("bool", "autoDefault")]
 		public bool AutoDefault {
@@ -56,6 +56,10 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
+		[SmokeMethod("minimumSizeHint() const")]
+		public override QSize MinimumSizeHint() {
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
+		}
 		public bool IsDefault() {
 			return (bool) interceptor.Invoke("isDefault", "isDefault() const", typeof(bool));
 		}
@@ -91,6 +95,9 @@ namespace Qyoto {
 		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected override void FocusOutEvent(QFocusEvent arg1) {
 			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionButton option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionButton*) const", typeof(void), typeof(QStyleOptionButton), option);
 		}
 		~QPushButton() {
 			interceptor.Invoke("~QPushButton", "~QPushButton()", typeof(void));

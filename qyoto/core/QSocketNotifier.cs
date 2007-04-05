@@ -31,11 +31,11 @@ namespace Qyoto {
 	public class QSocketNotifier : QObject, IDisposable {
  		protected QSocketNotifier(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSocketNotifier), "QSocketNotifier", this);
+			interceptor = new SmokeInvocation(typeof(QSocketNotifier), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSocketNotifier() {
-			staticInterceptor = new SmokeInvocation(typeof(QSocketNotifier), "QSocketNotifier", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSocketNotifier), null);
 		}
 		public enum TypeOf {
 			Read = 0,

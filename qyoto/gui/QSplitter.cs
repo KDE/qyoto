@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QSplitter : QFrame, IDisposable {
  		protected QSplitter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSplitter), "QSplitter", this);
+			interceptor = new SmokeInvocation(typeof(QSplitter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSplitter() {
-			staticInterceptor = new SmokeInvocation(typeof(QSplitter), "QSplitter", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSplitter), null);
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {

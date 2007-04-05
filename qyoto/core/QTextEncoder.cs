@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextEncoder(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextEncoder), "QTextEncoder", this);
+			interceptor = new SmokeInvocation(typeof(QTextEncoder), this);
 		}
 		public QTextEncoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();

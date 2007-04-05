@@ -8,7 +8,7 @@ namespace Qyoto {
  		protected QDBusConnectionInterface(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusConnectionInterface() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusConnectionInterface), "QDBusConnectionInterface", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusConnectionInterface), null);
 		}
 		public enum ServiceQueueOptions {
 			DontQueueService = 0,
@@ -24,7 +24,6 @@ namespace Qyoto {
 			ServiceRegistered = 1,
 			ServiceQueued = 2,
 		}
-		// QDBusReply<QStringList> registeredServiceNames(); >>>> NOT CONVERTED
 		// QDBusReply<bool> isServiceRegistered(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<QString> serviceOwner(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<bool> unregisterService(const QString& arg1); >>>> NOT CONVERTED

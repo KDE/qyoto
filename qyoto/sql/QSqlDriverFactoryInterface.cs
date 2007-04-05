@@ -7,7 +7,7 @@ namespace Qyoto {
 	public abstract class QSqlDriverFactoryInterface : QFactoryInterface {
  		protected QSqlDriverFactoryInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlDriverFactoryInterface), "QSqlDriverFactoryInterface", this);
+			interceptor = new SmokeInvocation(typeof(QSqlDriverFactoryInterface), this);
 		}
 		[SmokeMethod("create(const QString&)")]
 		public abstract QSqlDriver Create(string name);

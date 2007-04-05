@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QFrame : QWidget, IDisposable {
  		protected QFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QFrame), "QFrame", this);
+			interceptor = new SmokeInvocation(typeof(QFrame), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFrame() {
-			staticInterceptor = new SmokeInvocation(typeof(QFrame), "QFrame", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFrame), null);
 		}
 		public enum Shape {
 			NoFrame = 0,

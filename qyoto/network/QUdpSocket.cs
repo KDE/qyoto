@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QUdpSocket : QAbstractSocket, IDisposable {
  		protected QUdpSocket(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUdpSocket), "QUdpSocket", this);
+			interceptor = new SmokeInvocation(typeof(QUdpSocket), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUdpSocket() {
-			staticInterceptor = new SmokeInvocation(typeof(QUdpSocket), "QUdpSocket", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUdpSocket), null);
 		}
 		public enum BindFlag {
 			DefaultForPlatform = 0x0,

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QDialog : QWidget, IDisposable {
  		protected QDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDialog), "QDialog", this);
+			interceptor = new SmokeInvocation(typeof(QDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QDialog), "QDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDialog), null);
 		}
 		public enum DialogCode {
 			Rejected = 0,

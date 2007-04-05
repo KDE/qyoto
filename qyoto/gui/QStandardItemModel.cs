@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QStandardItemModel : QAbstractItemModel, IDisposable {
  		protected QStandardItemModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStandardItemModel), "QStandardItemModel", this);
+			interceptor = new SmokeInvocation(typeof(QStandardItemModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QStandardItemModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QStandardItemModel), "QStandardItemModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QStandardItemModel), null);
 		}
 		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {

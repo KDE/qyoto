@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleHintReturnMask : QStyleHintReturn, IDisposable {
  		protected QStyleHintReturnMask(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleHintReturnMask), "QStyleHintReturnMask", this);
+			interceptor = new SmokeInvocation(typeof(QStyleHintReturnMask), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleHintReturn.HintReturnType.SH_Mask,

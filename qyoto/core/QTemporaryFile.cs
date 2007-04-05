@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QTemporaryFile : QFile, IDisposable {
  		protected QTemporaryFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTemporaryFile), "QTemporaryFile", this);
+			interceptor = new SmokeInvocation(typeof(QTemporaryFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTemporaryFile() {
-			staticInterceptor = new SmokeInvocation(typeof(QTemporaryFile), "QTemporaryFile", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTemporaryFile), null);
 		}
 		public QTemporaryFile() : this((Type) null) {
 			CreateProxy();

@@ -7,11 +7,11 @@ namespace Qyoto {
 	public partial class QSqlQueryModel : QAbstractTableModel, IDisposable {
  		protected QSqlQueryModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlQueryModel), "QSqlQueryModel", this);
+			interceptor = new SmokeInvocation(typeof(QSqlQueryModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlQueryModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlQueryModel), "QSqlQueryModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlQueryModel), null);
 		}
 		public QSqlQueryModel(QObject parent) : this((Type) null) {
 			CreateProxy();

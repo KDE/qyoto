@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QMetaMethod(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMetaMethod), "QMetaMethod", this);
+			interceptor = new SmokeInvocation(typeof(QMetaMethod), this);
 		}
 		public enum Access {
 			Private = 0,

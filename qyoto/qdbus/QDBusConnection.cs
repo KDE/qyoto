@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDBusConnection(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusConnection), "QDBusConnection", this);
+			interceptor = new SmokeInvocation(typeof(QDBusConnection), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusConnection() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusConnection), "QDBusConnection", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusConnection), null);
 		}
 		public enum BusType {
 			SessionBus = 0,
@@ -31,9 +31,10 @@ namespace Qyoto {
 			ExportNonScriptableProperties = 0x400,
 			ExportNonScriptableContents = 0xf00,
 			ExportAllSlots = ExportScriptableSlots|ExportNonScriptableSlots,
-			ExportAllSignal = ExportScriptableSignals|ExportNonScriptableSignals,
+			ExportAllSignals = ExportScriptableSignals|ExportNonScriptableSignals,
 			ExportAllProperties = ExportScriptableProperties|ExportNonScriptableProperties,
 			ExportAllContents = ExportScriptableContents|ExportNonScriptableContents,
+			ExportAllSignal = ExportAllSignals,
 			ExportChildObjects = 0x1000,
 		}
 		public enum UnregisterMode {
@@ -60,6 +61,12 @@ namespace Qyoto {
 		}
 		public bool Send(QDBusMessage message) {
 			return (bool) interceptor.Invoke("send#", "send(const QDBusMessage&) const", typeof(bool), typeof(QDBusMessage), message);
+		}
+		public bool CallWithCallback(QDBusMessage message, QObject receiver, string returnMethod, string errorMethod, int timeout) {
+			return (bool) interceptor.Invoke("callWithCallback##$$$", "callWithCallback(const QDBusMessage&, QObject*, const char*, const char*, int) const", typeof(bool), typeof(QDBusMessage), message, typeof(QObject), receiver, typeof(string), returnMethod, typeof(string), errorMethod, typeof(int), timeout);
+		}
+		public bool CallWithCallback(QDBusMessage message, QObject receiver, string returnMethod, string errorMethod) {
+			return (bool) interceptor.Invoke("callWithCallback##$$", "callWithCallback(const QDBusMessage&, QObject*, const char*, const char*) const", typeof(bool), typeof(QDBusMessage), message, typeof(QObject), receiver, typeof(string), returnMethod, typeof(string), errorMethod);
 		}
 		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot, int timeout) {
 			return (bool) interceptor.Invoke("callWithCallback##$$", "callWithCallback(const QDBusMessage&, QObject*, const char*, int) const", typeof(bool), typeof(QDBusMessage), message, typeof(QObject), receiver, typeof(string), slot, typeof(int), timeout);

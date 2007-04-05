@@ -8,7 +8,7 @@ namespace Qyoto {
 	public class QDomDocument : QDomNode, IDisposable {
  		protected QDomDocument(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDomDocument), "QDomDocument", this);
+			interceptor = new SmokeInvocation(typeof(QDomDocument), this);
 		}
 		public QDomDocument() : this((Type) null) {
 			CreateProxy();

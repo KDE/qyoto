@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QLineF(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLineF), "QLineF", this);
+			interceptor = new SmokeInvocation(typeof(QLineF), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QLineF() {
-			staticInterceptor = new SmokeInvocation(typeof(QLineF), "QLineF", null);
+			staticInterceptor = new SmokeInvocation(typeof(QLineF), null);
 		}
 		public enum IntersectType {
 			NoIntersection = 0,
@@ -114,6 +114,9 @@ namespace Qyoto {
 		}
 		public static QLineF operator*(QLineF l, QMatrix m) {
 			return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QMatrix&)", typeof(QLineF), typeof(QLineF), l, typeof(QMatrix), m);
+		}
+		public static QLineF operator*(QLineF l, QTransform m) {
+			return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QTransform&)", typeof(QLineF), typeof(QLineF), l, typeof(QTransform), m);
 		}
 	}
 }

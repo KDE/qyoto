@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QUndoCommand(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUndoCommand), "QUndoCommand", this);
+			interceptor = new SmokeInvocation(typeof(QUndoCommand), this);
 		}
 		public QUndoCommand(QUndoCommand parent) : this((Type) null) {
 			CreateProxy();

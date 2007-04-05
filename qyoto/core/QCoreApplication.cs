@@ -9,11 +9,11 @@ namespace Qyoto {
 	public partial class QCoreApplication : QObject, IDisposable {
  		protected QCoreApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCoreApplication), "QCoreApplication", this);
+			interceptor = new SmokeInvocation(typeof(QCoreApplication), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCoreApplication() {
-			staticInterceptor = new SmokeInvocation(typeof(QCoreApplication), "QCoreApplication", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCoreApplication), null);
 		}
 		public enum Encoding {
 			CodecForTr = 0,
@@ -117,6 +117,9 @@ namespace Qyoto {
 		public static void PostEvent(QObject receiver, QEvent arg2) {
 			staticInterceptor.Invoke("postEvent##", "postEvent(QObject*, QEvent*)", typeof(void), typeof(QObject), receiver, typeof(QEvent), arg2);
 		}
+		public static void PostEvent(QObject receiver, QEvent arg2, int priority) {
+			staticInterceptor.Invoke("postEvent##$", "postEvent(QObject*, QEvent*, int)", typeof(void), typeof(QObject), receiver, typeof(QEvent), arg2, typeof(int), priority);
+		}
 		public static void SendPostedEvents(QObject receiver, int event_type) {
 			staticInterceptor.Invoke("sendPostedEvents#$", "sendPostedEvents(QObject*, int)", typeof(void), typeof(QObject), receiver, typeof(int), event_type);
 		}
@@ -125,6 +128,9 @@ namespace Qyoto {
 		}
 		public static void RemovePostedEvents(QObject receiver) {
 			staticInterceptor.Invoke("removePostedEvents#", "removePostedEvents(QObject*)", typeof(void), typeof(QObject), receiver);
+		}
+		public static void RemovePostedEvents(QObject receiver, int eventType) {
+			staticInterceptor.Invoke("removePostedEvents#$", "removePostedEvents(QObject*, int)", typeof(void), typeof(QObject), receiver, typeof(int), eventType);
 		}
 		public static bool HasPendingEvents() {
 			return (bool) staticInterceptor.Invoke("hasPendingEvents", "hasPendingEvents()", typeof(bool));

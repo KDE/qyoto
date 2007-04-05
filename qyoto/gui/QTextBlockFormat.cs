@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QTextBlockFormat : QTextFormat, IDisposable {
  		protected QTextBlockFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextBlockFormat), "QTextBlockFormat", this);
+			interceptor = new SmokeInvocation(typeof(QTextBlockFormat), this);
 		}
 		public QTextBlockFormat() : this((Type) null) {
 			CreateProxy();

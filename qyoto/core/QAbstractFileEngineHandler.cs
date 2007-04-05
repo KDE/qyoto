@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QAbstractFileEngineHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAbstractFileEngineHandler), "QAbstractFileEngineHandler", this);
+			interceptor = new SmokeInvocation(typeof(QAbstractFileEngineHandler), this);
 		}
 		public QAbstractFileEngineHandler() : this((Type) null) {
 			CreateProxy();

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QGraphicsSvgItem : QObject, IQGraphicsItem, IDisposable {
  		protected QGraphicsSvgItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsSvgItem), "QGraphicsSvgItem", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsSvgItem), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGraphicsSvgItem() {
-			staticInterceptor = new SmokeInvocation(typeof(QGraphicsSvgItem), "QGraphicsSvgItem", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGraphicsSvgItem), null);
 		}
 		public const int Type = 13;
 
@@ -246,6 +246,24 @@ namespace Qyoto {
 		public void ResetMatrix() {
 			interceptor.Invoke("resetMatrix", "resetMatrix()", typeof(void));
 		}
+		public QTransform Transform() {
+			return (QTransform) interceptor.Invoke("transform", "transform() const", typeof(QTransform));
+		}
+		public QTransform SceneTransform() {
+			return (QTransform) interceptor.Invoke("sceneTransform", "sceneTransform() const", typeof(QTransform));
+		}
+		public QTransform DeviceTransform(QTransform viewportTransform) {
+			return (QTransform) interceptor.Invoke("deviceTransform#", "deviceTransform(const QTransform&) const", typeof(QTransform), typeof(QTransform), viewportTransform);
+		}
+		public void SetTransform(QTransform matrix, bool combine) {
+			interceptor.Invoke("setTransform#$", "setTransform(const QTransform&, bool)", typeof(void), typeof(QTransform), matrix, typeof(bool), combine);
+		}
+		public void SetTransform(QTransform matrix) {
+			interceptor.Invoke("setTransform#", "setTransform(const QTransform&)", typeof(void), typeof(QTransform), matrix);
+		}
+		public void ResetTransform() {
+			interceptor.Invoke("resetTransform", "resetTransform()", typeof(void));
+		}
 		public void Rotate(double angle) {
 			interceptor.Invoke("rotate$", "rotate(qreal)", typeof(void), typeof(double), angle);
 		}
@@ -306,6 +324,12 @@ namespace Qyoto {
 		}
 		public bool IsObscured() {
 			return (bool) interceptor.Invoke("isObscured", "isObscured() const", typeof(bool));
+		}
+		public bool IsObscured(QRectF rect) {
+			return (bool) interceptor.Invoke("isObscured#", "isObscured(const QRectF&) const", typeof(bool), typeof(QRectF), rect);
+		}
+		public bool IsObscured(double x, double y, double w, double h) {
+			return (bool) interceptor.Invoke("isObscured$$$$", "isObscured(qreal, qreal, qreal, qreal) const", typeof(bool), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
 		[SmokeMethod("isObscuredBy(const QGraphicsItem*) const")]
 		public virtual bool IsObscuredBy(QGraphicsItem item) {
@@ -405,6 +429,15 @@ namespace Qyoto {
 		public QPointF MapToScene(double x, double y) {
 			return (QPointF) interceptor.Invoke("mapToScene$$", "mapToScene(qreal, qreal) const", typeof(QPointF), typeof(double), x, typeof(double), y);
 		}
+		public QPolygonF MapToItem(QGraphicsItem item, double x, double y, double w, double h) {
+			return (QPolygonF) interceptor.Invoke("mapToItem#$$$$", "mapToItem(const QGraphicsItem*, qreal, qreal, qreal, qreal) const", typeof(QPolygonF), typeof(QGraphicsItem), item, typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
+		public QPolygonF MapToParent(double x, double y, double w, double h) {
+			return (QPolygonF) interceptor.Invoke("mapToParent$$$$", "mapToParent(qreal, qreal, qreal, qreal) const", typeof(QPolygonF), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
+		public QPolygonF MapToScene(double x, double y, double w, double h) {
+			return (QPolygonF) interceptor.Invoke("mapToScene$$$$", "mapToScene(qreal, qreal, qreal, qreal) const", typeof(QPolygonF), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
 		public QPointF MapFromItem(QGraphicsItem item, double x, double y) {
 			return (QPointF) interceptor.Invoke("mapFromItem#$$", "mapFromItem(const QGraphicsItem*, qreal, qreal) const", typeof(QPointF), typeof(QGraphicsItem), item, typeof(double), x, typeof(double), y);
 		}
@@ -413,6 +446,15 @@ namespace Qyoto {
 		}
 		public QPointF MapFromScene(double x, double y) {
 			return (QPointF) interceptor.Invoke("mapFromScene$$", "mapFromScene(qreal, qreal) const", typeof(QPointF), typeof(double), x, typeof(double), y);
+		}
+		public QPolygonF MapFromItem(QGraphicsItem item, double x, double y, double w, double h) {
+			return (QPolygonF) interceptor.Invoke("mapFromItem#$$$$", "mapFromItem(const QGraphicsItem*, qreal, qreal, qreal, qreal) const", typeof(QPolygonF), typeof(QGraphicsItem), item, typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
+		public QPolygonF MapFromParent(double x, double y, double w, double h) {
+			return (QPolygonF) interceptor.Invoke("mapFromParent$$$$", "mapFromParent(qreal, qreal, qreal, qreal) const", typeof(QPolygonF), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		}
+		public QPolygonF MapFromScene(double x, double y, double w, double h) {
+			return (QPolygonF) interceptor.Invoke("mapFromScene$$$$", "mapFromScene(qreal, qreal, qreal, qreal) const", typeof(QPolygonF), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
 		public bool IsAncestorOf(QGraphicsItem child) {
 			return (bool) interceptor.Invoke("isAncestorOf#", "isAncestorOf(const QGraphicsItem*) const", typeof(bool), typeof(QGraphicsItem), child);

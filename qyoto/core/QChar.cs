@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QChar(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QChar), "QChar", this);
+			interceptor = new SmokeInvocation(typeof(QChar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QChar() {
-			staticInterceptor = new SmokeInvocation(typeof(QChar), "QChar", null);
+			staticInterceptor = new SmokeInvocation(typeof(QChar), null);
 		}
 		public enum SpecialCharacter {
 			Null = 0x0000,
@@ -136,6 +136,8 @@ namespace Qyoto {
 			Unicode_3_1 = 5,
 			Unicode_3_2 = 6,
 			Unicode_4_0 = 7,
+			Unicode_4_1 = 8,
+			Unicode_5_0 = 9,
 		}
 		// ushort& unicode(); >>>> NOT CONVERTED
 		public QChar() : this((Type) null) {
@@ -170,15 +172,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QChar$", "QChar(int)", typeof(void), typeof(int), rc);
 		}
-		public int DigitValue() {
-			return (int) interceptor.Invoke("digitValue", "digitValue() const", typeof(int));
-		}
-		public char ToLower() {
-			return (char) interceptor.Invoke("toLower", "toLower() const", typeof(char));
-		}
-		public char ToUpper() {
-			return (char) interceptor.Invoke("toUpper", "toUpper() const", typeof(char));
-		}
 		public char category() {
 			return (char) interceptor.Invoke("category", "category() const", typeof(char));
 		}
@@ -191,11 +184,8 @@ namespace Qyoto {
 		public bool HasMirrored() {
 			return (bool) interceptor.Invoke("hasMirrored", "hasMirrored() const", typeof(bool));
 		}
-		public bool IsLower() {
-			return (bool) interceptor.Invoke("isLower", "isLower() const", typeof(bool));
-		}
-		public bool IsUpper() {
-			return (bool) interceptor.Invoke("isUpper", "isUpper() const", typeof(bool));
+		public ushort combiningClass() {
+			return (ushort) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(ushort));
 		}
 		public char MirroredChar() {
 			return (char) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(char));
@@ -206,8 +196,20 @@ namespace Qyoto {
 		public char DecompositionTag() {
 			return (char) interceptor.Invoke("decompositionTag", "decompositionTag() const", typeof(char));
 		}
-		public ushort combiningClass() {
-			return (ushort) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(ushort));
+		public int DigitValue() {
+			return (int) interceptor.Invoke("digitValue", "digitValue() const", typeof(int));
+		}
+		public char ToLower() {
+			return (char) interceptor.Invoke("toLower", "toLower() const", typeof(char));
+		}
+		public char ToUpper() {
+			return (char) interceptor.Invoke("toUpper", "toUpper() const", typeof(char));
+		}
+		public char ToTitleCase() {
+			return (char) interceptor.Invoke("toTitleCase", "toTitleCase() const", typeof(char));
+		}
+		public char ToCaseFolded() {
+			return (char) interceptor.Invoke("toCaseFolded", "toCaseFolded() const", typeof(char));
 		}
 		public char unicodeVersion() {
 			return (char) interceptor.Invoke("unicodeVersion", "unicodeVersion() const", typeof(char));
@@ -251,6 +253,21 @@ namespace Qyoto {
 		public bool IsSymbol() {
 			return (bool) interceptor.Invoke("isSymbol", "isSymbol() const", typeof(bool));
 		}
+		public bool IsLower() {
+			return (bool) interceptor.Invoke("isLower", "isLower() const", typeof(bool));
+		}
+		public bool IsUpper() {
+			return (bool) interceptor.Invoke("isUpper", "isUpper() const", typeof(bool));
+		}
+		public bool IsTitleCase() {
+			return (bool) interceptor.Invoke("isTitleCase", "isTitleCase() const", typeof(bool));
+		}
+		public bool IsHighSurrogate() {
+			return (bool) interceptor.Invoke("isHighSurrogate", "isHighSurrogate() const", typeof(bool));
+		}
+		public bool IsLowSurrogate() {
+			return (bool) interceptor.Invoke("isLowSurrogate", "isLowSurrogate() const", typeof(bool));
+		}
 		public ushort Cell() {
 			return (ushort) interceptor.Invoke("cell", "cell() const", typeof(ushort));
 		}
@@ -274,6 +291,90 @@ namespace Qyoto {
 		}
 		public static char FromLatin1(char c) {
 			return (char) staticInterceptor.Invoke("fromLatin1$", "fromLatin1(char)", typeof(char), typeof(char), c);
+		}
+		public static uint SurrogateToUcs4(ushort high, ushort low) {
+			return (uint) staticInterceptor.Invoke("surrogateToUcs4$$", "surrogateToUcs4(ushort, ushort)", typeof(uint), typeof(ushort), high, typeof(ushort), low);
+		}
+		public static uint SurrogateToUcs4(char high, char low) {
+			return (uint) staticInterceptor.Invoke("surrogateToUcs4##", "surrogateToUcs4(QChar, QChar)", typeof(uint), typeof(char), high, typeof(char), low);
+		}
+		public static ushort HighSurrogate(uint ucs4) {
+			return (ushort) staticInterceptor.Invoke("highSurrogate$", "highSurrogate(uint)", typeof(ushort), typeof(uint), ucs4);
+		}
+		public static ushort LowSurrogate(uint ucs4) {
+			return (ushort) staticInterceptor.Invoke("lowSurrogate$", "lowSurrogate(uint)", typeof(ushort), typeof(uint), ucs4);
+		}
+		public static char category(uint ucs4) {
+			return (char) staticInterceptor.Invoke("category$", "category(uint)", typeof(char), typeof(uint), ucs4);
+		}
+		public static char category(ushort ucs2) {
+			return (char) staticInterceptor.Invoke("category$", "category(ushort)", typeof(char), typeof(ushort), ucs2);
+		}
+		public static char direction(uint ucs4) {
+			return (char) staticInterceptor.Invoke("direction$", "direction(uint)", typeof(char), typeof(uint), ucs4);
+		}
+		public static char direction(ushort ucs2) {
+			return (char) staticInterceptor.Invoke("direction$", "direction(ushort)", typeof(char), typeof(ushort), ucs2);
+		}
+		public static char joining(uint ucs4) {
+			return (char) staticInterceptor.Invoke("joining$", "joining(uint)", typeof(char), typeof(uint), ucs4);
+		}
+		public static char joining(ushort ucs2) {
+			return (char) staticInterceptor.Invoke("joining$", "joining(ushort)", typeof(char), typeof(ushort), ucs2);
+		}
+		public static ushort combiningClass(uint ucs4) {
+			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(uint)", typeof(ushort), typeof(uint), ucs4);
+		}
+		public static ushort combiningClass(ushort ucs2) {
+			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		}
+		public static uint MirroredChar(uint ucs4) {
+			return (uint) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(uint)", typeof(uint), typeof(uint), ucs4);
+		}
+		public static ushort MirroredChar(ushort ucs2) {
+			return (ushort) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		}
+		public static char DecompositionTag(uint ucs4) {
+			return (char) staticInterceptor.Invoke("decompositionTag$", "decompositionTag(uint)", typeof(char), typeof(uint), ucs4);
+		}
+		public static int DigitValue(uint ucs4) {
+			return (int) staticInterceptor.Invoke("digitValue$", "digitValue(uint)", typeof(int), typeof(uint), ucs4);
+		}
+		public static int DigitValue(ushort ucs2) {
+			return (int) staticInterceptor.Invoke("digitValue$", "digitValue(ushort)", typeof(int), typeof(ushort), ucs2);
+		}
+		public static uint ToLower(uint ucs4) {
+			return (uint) staticInterceptor.Invoke("toLower$", "toLower(uint)", typeof(uint), typeof(uint), ucs4);
+		}
+		public static ushort ToLower(ushort ucs2) {
+			return (ushort) staticInterceptor.Invoke("toLower$", "toLower(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		}
+		public static uint ToUpper(uint ucs4) {
+			return (uint) staticInterceptor.Invoke("toUpper$", "toUpper(uint)", typeof(uint), typeof(uint), ucs4);
+		}
+		public static ushort ToUpper(ushort ucs2) {
+			return (ushort) staticInterceptor.Invoke("toUpper$", "toUpper(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		}
+		public static uint ToTitleCase(uint ucs4) {
+			return (uint) staticInterceptor.Invoke("toTitleCase$", "toTitleCase(uint)", typeof(uint), typeof(uint), ucs4);
+		}
+		public static ushort ToTitleCase(ushort ucs2) {
+			return (ushort) staticInterceptor.Invoke("toTitleCase$", "toTitleCase(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		}
+		public static uint ToCaseFolded(uint ucs4) {
+			return (uint) staticInterceptor.Invoke("toCaseFolded$", "toCaseFolded(uint)", typeof(uint), typeof(uint), ucs4);
+		}
+		public static ushort ToCaseFolded(ushort ucs2) {
+			return (ushort) staticInterceptor.Invoke("toCaseFolded$", "toCaseFolded(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		}
+		public static char unicodeVersion(uint ucs4) {
+			return (char) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(uint)", typeof(char), typeof(uint), ucs4);
+		}
+		public static char unicodeVersion(ushort ucs2) {
+			return (char) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(ushort)", typeof(char), typeof(ushort), ucs2);
+		}
+		public static string decomposition(uint ucs4) {
+			return (string) staticInterceptor.Invoke("decomposition$", "decomposition(uint)", typeof(string), typeof(uint), ucs4);
 		}
 	}
 }

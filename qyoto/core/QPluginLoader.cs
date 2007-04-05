@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QPluginLoader : QObject, IDisposable {
  		protected QPluginLoader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPluginLoader), "QPluginLoader", this);
+			interceptor = new SmokeInvocation(typeof(QPluginLoader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPluginLoader() {
-			staticInterceptor = new SmokeInvocation(typeof(QPluginLoader), "QPluginLoader", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPluginLoader), null);
 		}
 		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {

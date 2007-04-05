@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QStyleOptionTitleBar : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionTitleBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleOptionTitleBar), "QStyleOptionTitleBar", this);
+			interceptor = new SmokeInvocation(typeof(QStyleOptionTitleBar), this);
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TitleBar,

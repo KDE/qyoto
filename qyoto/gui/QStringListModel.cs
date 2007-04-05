@@ -8,11 +8,11 @@ namespace Qyoto {
 	public partial class QStringListModel : QAbstractListModel, IDisposable {
  		protected QStringListModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStringListModel), "QStringListModel", this);
+			interceptor = new SmokeInvocation(typeof(QStringListModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QStringListModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QStringListModel), "QStringListModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QStringListModel), null);
 		}
 		public QStringListModel(QObject parent) : this((Type) null) {
 			CreateProxy();

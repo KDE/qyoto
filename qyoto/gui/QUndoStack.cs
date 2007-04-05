@@ -8,16 +8,21 @@ namespace Qyoto {
 	public class QUndoStack : QObject, IDisposable {
  		protected QUndoStack(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QUndoStack), "QUndoStack", this);
+			interceptor = new SmokeInvocation(typeof(QUndoStack), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QUndoStack() {
-			staticInterceptor = new SmokeInvocation(typeof(QUndoStack), "QUndoStack", null);
+			staticInterceptor = new SmokeInvocation(typeof(QUndoStack), null);
 		}
 		[Q_PROPERTY("bool", "active")]
 		public bool Active {
 			get { return (bool) interceptor.Invoke("isActive", "isActive()", typeof(bool)); }
 			set { interceptor.Invoke("setActive$", "setActive(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("int", "undoLimit")]
+		public int UndoLimit {
+			get { return (int) interceptor.Invoke("undoLimit", "undoLimit()", typeof(int)); }
+			set { interceptor.Invoke("setUndoLimit$", "setUndoLimit(int)", typeof(void), typeof(int), value); }
 		}
 		public QUndoStack(QObject parent) : this((Type) null) {
 			CreateProxy();

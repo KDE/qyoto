@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QEvent(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QEvent), "QEvent", this);
+			interceptor = new SmokeInvocation(typeof(QEvent), this);
 		}
 		public enum TypeOf {
 			None = 0,
@@ -137,6 +137,11 @@ namespace Qyoto {
 			DynamicPropertyChange = 170,
 			TabletEnterProximity = 171,
 			TabletLeaveProximity = 172,
+			NonClientAreaMouseMove = 173,
+			NonClientAreaMouseButtonPress = 174,
+			NonClientAreaMouseButtonRelease = 175,
+			NonClientAreaMouseButtonDblClick = 176,
+			MacSizeChange = 177,
 			User = 1000,
 			MaxUser = 65535,
 		}

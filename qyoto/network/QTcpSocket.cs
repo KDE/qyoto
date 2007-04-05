@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QTcpSocket : QAbstractSocket, IDisposable {
  		protected QTcpSocket(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTcpSocket), "QTcpSocket", this);
+			interceptor = new SmokeInvocation(typeof(QTcpSocket), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTcpSocket() {
-			staticInterceptor = new SmokeInvocation(typeof(QTcpSocket), "QTcpSocket", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTcpSocket), null);
 		}
 		public QTcpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();

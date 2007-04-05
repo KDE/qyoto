@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QDrag : QObject, IDisposable {
  		protected QDrag(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDrag), "QDrag", this);
+			interceptor = new SmokeInvocation(typeof(QDrag), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDrag() {
-			staticInterceptor = new SmokeInvocation(typeof(QDrag), "QDrag", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDrag), null);
 		}
 		public QDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
@@ -47,6 +47,15 @@ namespace Qyoto {
 		}
 		public Qt.DropAction Start() {
 			return (Qt.DropAction) interceptor.Invoke("start", "start()", typeof(Qt.DropAction));
+		}
+		public Qt.DropAction Exec(int supportedActions) {
+			return (Qt.DropAction) interceptor.Invoke("exec$", "exec(Qt::DropActions)", typeof(Qt.DropAction), typeof(int), supportedActions);
+		}
+		public Qt.DropAction Exec() {
+			return (Qt.DropAction) interceptor.Invoke("exec", "exec()", typeof(Qt.DropAction));
+		}
+		public Qt.DropAction Exec(int supportedActions, Qt.DropAction defaultAction) {
+			return (Qt.DropAction) interceptor.Invoke("exec$$", "exec(Qt::DropActions, Qt::DropAction)", typeof(Qt.DropAction), typeof(int), supportedActions, typeof(Qt.DropAction), defaultAction);
 		}
 		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
 			interceptor.Invoke("setDragCursor#$", "setDragCursor(const QPixmap&, Qt::DropAction)", typeof(void), typeof(QPixmap), cursor, typeof(Qt.DropAction), action);

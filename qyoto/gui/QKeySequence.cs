@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QKeySequence(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QKeySequence), "QKeySequence", this);
+			interceptor = new SmokeInvocation(typeof(QKeySequence), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QKeySequence() {
-			staticInterceptor = new SmokeInvocation(typeof(QKeySequence), "QKeySequence", null);
+			staticInterceptor = new SmokeInvocation(typeof(QKeySequence), null);
 		}
 		public enum StandardKey {
 			UnknownKey = 0,

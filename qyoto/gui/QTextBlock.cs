@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextBlock(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextBlock), "QTextBlock", this);
+			interceptor = new SmokeInvocation(typeof(QTextBlock), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextBlock() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextBlock), "QTextBlock", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextBlock), null);
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		public QTextBlock() : this((Type) null) {

@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QRectF(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRectF), "QRectF", this);
+			interceptor = new SmokeInvocation(typeof(QRectF), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRectF() {
-			staticInterceptor = new SmokeInvocation(typeof(QRectF), "QRectF", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRectF), null);
 		}
 		public QRectF() : this((Type) null) {
 			CreateProxy();
@@ -22,6 +22,10 @@ namespace Qyoto {
 		public QRectF(QPointF topleft, QSizeF size) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QRectF##", "QRectF(const QPointF&, const QSizeF&)", typeof(void), typeof(QPointF), topleft, typeof(QSizeF), size);
+		}
+		public QRectF(QPointF topleft, QPointF bottomRight) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QRectF##", "QRectF(const QPointF&, const QPointF&)", typeof(void), typeof(QPointF), topleft, typeof(QPointF), bottomRight);
 		}
 		public QRectF(double left, double top, double width, double height) : this((Type) null) {
 			CreateProxy();
@@ -207,6 +211,9 @@ namespace Qyoto {
 		}
 		public QRect ToRect() {
 			return (QRect) interceptor.Invoke("toRect", "toRect() const", typeof(QRect));
+		}
+		public QRect ToAlignedRect() {
+			return (QRect) interceptor.Invoke("toAlignedRect", "toAlignedRect() const", typeof(QRect));
 		}
 		~QRectF() {
 			interceptor.Invoke("~QRectF", "~QRectF()", typeof(void));

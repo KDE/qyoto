@@ -28,8 +28,9 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QLayoutItem(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QLayoutItem), "QLayoutItem", this);
+			interceptor = new SmokeInvocation(typeof(QLayoutItem), this);
 		}
+		// QSizePolicy::ControlTypes controlTypes(); >>>> NOT CONVERTED
 		public QLayoutItem(int alignment) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLayoutItem$", "QLayoutItem(Qt::Alignment)", typeof(void), typeof(int), alignment);

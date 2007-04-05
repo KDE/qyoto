@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDesktopServices(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDesktopServices), "QDesktopServices", this);
+			interceptor = new SmokeInvocation(typeof(QDesktopServices), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDesktopServices() {
-			staticInterceptor = new SmokeInvocation(typeof(QDesktopServices), "QDesktopServices", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDesktopServices), null);
 		}
 		public QDesktopServices() : this((Type) null) {
 			CreateProxy();

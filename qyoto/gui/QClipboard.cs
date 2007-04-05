@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QClipboard : QObject {
  		protected QClipboard(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QClipboard), "QClipboard", this);
+			interceptor = new SmokeInvocation(typeof(QClipboard), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QClipboard() {
-			staticInterceptor = new SmokeInvocation(typeof(QClipboard), "QClipboard", null);
+			staticInterceptor = new SmokeInvocation(typeof(QClipboard), null);
 		}
 		public enum Mode {
 			Clipboard = 0,

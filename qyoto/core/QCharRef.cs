@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QCharRef(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCharRef), "QCharRef", this);
+			interceptor = new SmokeInvocation(typeof(QCharRef), this);
 		}
 		//  operator QChar(); >>>> NOT CONVERTED
 		public bool IsNull() {
@@ -39,6 +39,15 @@ namespace Qyoto {
 		public bool IsDigit() {
 			return (bool) interceptor.Invoke("isDigit", "isDigit() const", typeof(bool));
 		}
+		public bool IsLower() {
+			return (bool) interceptor.Invoke("isLower", "isLower() const", typeof(bool));
+		}
+		public bool IsUpper() {
+			return (bool) interceptor.Invoke("isUpper", "isUpper() const", typeof(bool));
+		}
+		public bool IsTitleCase() {
+			return (bool) interceptor.Invoke("isTitleCase", "isTitleCase() const", typeof(bool));
+		}
 		public int DigitValue() {
 			return (int) interceptor.Invoke("digitValue", "digitValue() const", typeof(int));
 		}
@@ -47,6 +56,9 @@ namespace Qyoto {
 		}
 		public char ToUpper() {
 			return (char) interceptor.Invoke("toUpper", "toUpper() const", typeof(char));
+		}
+		public char ToTitleCase() {
+			return (char) interceptor.Invoke("toTitleCase", "toTitleCase() const", typeof(char));
 		}
 		public char Category() {
 			return (char) interceptor.Invoke("category", "category() const", typeof(char));

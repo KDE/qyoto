@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QDirModel : QAbstractItemModel, IDisposable {
  		protected QDirModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDirModel), "QDirModel", this);
+			interceptor = new SmokeInvocation(typeof(QDirModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDirModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QDirModel), "QDirModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDirModel), null);
 		}
 		public enum Roles {
 			FileIconRole = Qt.ItemDataRole.DecorationRole,
@@ -165,12 +165,6 @@ namespace Qyoto {
 		public bool IsReadOnly() {
 			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
 		}
-		public void Refresh(QModelIndex parent) {
-			interceptor.Invoke("refresh#", "refresh(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
-		}
-		public void Refresh() {
-			interceptor.Invoke("refresh", "refresh()", typeof(void));
-		}
 		public QModelIndex Index(string path, int column) {
 			return (QModelIndex) interceptor.Invoke("index$$", "index(const QString&, int) const", typeof(QModelIndex), typeof(string), path, typeof(int), column);
 		}
@@ -203,6 +197,14 @@ namespace Qyoto {
 		}
 		public QObject Parent() {
 			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
+		}
+		[Q_SLOT("void refresh(const QModelIndex&)")]
+		public void Refresh(QModelIndex parent) {
+			interceptor.Invoke("refresh#", "refresh(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
+		}
+		[Q_SLOT("void refresh()")]
+		public void Refresh() {
+			interceptor.Invoke("refresh", "refresh()", typeof(void));
 		}
 		~QDirModel() {
 			interceptor.Invoke("~QDirModel", "~QDirModel()", typeof(void));

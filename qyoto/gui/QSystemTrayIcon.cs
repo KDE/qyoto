@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSystemTrayIcon : QObject, IDisposable {
  		protected QSystemTrayIcon(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSystemTrayIcon), "QSystemTrayIcon", this);
+			interceptor = new SmokeInvocation(typeof(QSystemTrayIcon), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSystemTrayIcon() {
-			staticInterceptor = new SmokeInvocation(typeof(QSystemTrayIcon), "QSystemTrayIcon", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSystemTrayIcon), null);
 		}
 		public enum ActivationReason {
 			Unknown = 0,
@@ -72,6 +72,9 @@ namespace Qyoto {
 		}
 		public void ShowMessage(string title, string msg) {
 			interceptor.Invoke("showMessage$$", "showMessage(const QString&, const QString&)", typeof(void), typeof(string), title, typeof(string), msg);
+		}
+		public QRect Geometry() {
+			return (QRect) interceptor.Invoke("geometry", "geometry() const", typeof(QRect));
 		}
 		public bool IsVisible() {
 			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));

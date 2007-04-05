@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QStringMatcher(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStringMatcher), "QStringMatcher", this);
+			interceptor = new SmokeInvocation(typeof(QStringMatcher), this);
 		}
 		public QStringMatcher() : this((Type) null) {
 			CreateProxy();

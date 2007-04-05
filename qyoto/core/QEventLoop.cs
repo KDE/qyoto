@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QEventLoop : QObject, IDisposable {
  		protected QEventLoop(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QEventLoop), "QEventLoop", this);
+			interceptor = new SmokeInvocation(typeof(QEventLoop), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QEventLoop() {
-			staticInterceptor = new SmokeInvocation(typeof(QEventLoop), "QEventLoop", null);
+			staticInterceptor = new SmokeInvocation(typeof(QEventLoop), null);
 		}
 		public enum ProcessEventsFlag {
 			AllEvents = 0x00,

@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QNetworkAddressEntry(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QNetworkAddressEntry), "QNetworkAddressEntry", this);
+			interceptor = new SmokeInvocation(typeof(QNetworkAddressEntry), this);
 		}
 		public QNetworkAddressEntry() : this((Type) null) {
 			CreateProxy();

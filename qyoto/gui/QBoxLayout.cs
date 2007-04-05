@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QBoxLayout : QLayout, IDisposable {
  		protected QBoxLayout(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QBoxLayout), "QBoxLayout", this);
+			interceptor = new SmokeInvocation(typeof(QBoxLayout), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QBoxLayout() {
-			staticInterceptor = new SmokeInvocation(typeof(QBoxLayout), "QBoxLayout", null);
+			staticInterceptor = new SmokeInvocation(typeof(QBoxLayout), null);
 		}
 		public enum Direction {
 			LeftToRight = 0,

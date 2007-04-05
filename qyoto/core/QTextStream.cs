@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextStream(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextStream), "QTextStream", this);
+			interceptor = new SmokeInvocation(typeof(QTextStream), this);
 		}
 		public enum RealNumberNotation {
 			SmartNotation = 0,

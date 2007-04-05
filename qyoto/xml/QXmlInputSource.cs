@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlInputSource(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlInputSource), "QXmlInputSource", this);
+			interceptor = new SmokeInvocation(typeof(QXmlInputSource), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QXmlInputSource() {
-			staticInterceptor = new SmokeInvocation(typeof(QXmlInputSource), "QXmlInputSource", null);
+			staticInterceptor = new SmokeInvocation(typeof(QXmlInputSource), null);
 		}
 		public static ushort EndOfData() {
 			return (ushort) staticInterceptor.Invoke("EndOfData", "EndOfData()", typeof(ushort));

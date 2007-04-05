@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QConicalGradient : QGradient, IDisposable {
  		protected QConicalGradient(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QConicalGradient), "QConicalGradient", this);
+			interceptor = new SmokeInvocation(typeof(QConicalGradient), this);
 		}
 		public QConicalGradient() : this((Type) null) {
 			CreateProxy();

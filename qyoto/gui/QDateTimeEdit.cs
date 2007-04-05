@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QDateTimeEdit : QAbstractSpinBox, IDisposable {
  		protected QDateTimeEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDateTimeEdit), "QDateTimeEdit", this);
+			interceptor = new SmokeInvocation(typeof(QDateTimeEdit), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDateTimeEdit() {
-			staticInterceptor = new SmokeInvocation(typeof(QDateTimeEdit), "QDateTimeEdit", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDateTimeEdit), null);
 		}
 		public enum Section {
 			NoSection = 0x0000,
@@ -82,6 +82,15 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("calendarPopup", "calendarPopup()", typeof(bool)); }
 			set { interceptor.Invoke("setCalendarPopup$", "setCalendarPopup(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("int", "currentSectionIndex")]
+		public int CurrentSectionIndex {
+			get { return (int) interceptor.Invoke("currentSectionIndex", "currentSectionIndex()", typeof(int)); }
+			set { interceptor.Invoke("setCurrentSectionIndex$", "setCurrentSectionIndex(int)", typeof(void), typeof(int), value); }
+		}
+		[Q_PROPERTY("int", "sectionCount")]
+		public int SectionCount {
+			get { return (int) interceptor.Invoke("sectionCount", "sectionCount()", typeof(int)); }
+		}
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -131,6 +140,9 @@ namespace Qyoto {
 		}
 		public void SetTimeRange(QTime min, QTime max) {
 			interceptor.Invoke("setTimeRange##", "setTimeRange(const QTime&, const QTime&)", typeof(void), typeof(QTime), min, typeof(QTime), max);
+		}
+		public QDateTimeEdit.Section SectionAt(int index) {
+			return (QDateTimeEdit.Section) interceptor.Invoke("sectionAt$", "sectionAt(int) const", typeof(QDateTimeEdit.Section), typeof(int), index);
 		}
 		public void SetSelectedSection(QDateTimeEdit.Section section) {
 			interceptor.Invoke("setSelectedSection$", "setSelectedSection(QDateTimeEdit::Section)", typeof(void), typeof(QDateTimeEdit.Section), section);
@@ -197,6 +209,9 @@ namespace Qyoto {
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionSpinBox option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSpinBox*) const", typeof(void), typeof(QStyleOptionSpinBox), option);
 		}
 		~QDateTimeEdit() {
 			interceptor.Invoke("~QDateTimeEdit", "~QDateTimeEdit()", typeof(void));

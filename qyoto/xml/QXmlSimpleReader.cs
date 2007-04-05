@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QXmlSimpleReader : QXmlReader, IDisposable {
  		protected QXmlSimpleReader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlSimpleReader), "QXmlSimpleReader", this);
+			interceptor = new SmokeInvocation(typeof(QXmlSimpleReader), this);
 		}
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED

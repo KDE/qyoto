@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextItem(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextItem), "QTextItem", this);
+			interceptor = new SmokeInvocation(typeof(QTextItem), this);
 		}
 		public enum RenderFlag : uint {
 			RightToLeft = 0x1,

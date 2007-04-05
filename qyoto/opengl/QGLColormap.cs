@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QGLColormap(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGLColormap), "QGLColormap", this);
+			interceptor = new SmokeInvocation(typeof(QGLColormap), this);
 		}
 		public QGLColormap() : this((Type) null) {
 			CreateProxy();

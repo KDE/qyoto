@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QMenu : QWidget, IDisposable {
  		protected QMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QMenu), "QMenu", this);
+			interceptor = new SmokeInvocation(typeof(QMenu), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QMenu() {
-			staticInterceptor = new SmokeInvocation(typeof(QMenu), "QMenu", null);
+			staticInterceptor = new SmokeInvocation(typeof(QMenu), null);
 		}
 		[Q_PROPERTY("bool", "tearOffEnabled")]
 		public bool TearOffEnabled {
@@ -206,6 +206,9 @@ namespace Qyoto {
 		[SmokeMethod("focusNextPrevChild(bool)")]
 		protected override bool FocusNextPrevChild(bool next) {
 			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
+		}
+		protected void InitStyleOption(QStyleOptionMenuItem option, QAction action) {
+			interceptor.Invoke("initStyleOption##", "initStyleOption(QStyleOptionMenuItem*, const QAction*) const", typeof(void), typeof(QStyleOptionMenuItem), option, typeof(QAction), action);
 		}
 		~QMenu() {
 			interceptor.Invoke("~QMenu", "~QMenu()", typeof(void));

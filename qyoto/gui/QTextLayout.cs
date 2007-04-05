@@ -9,7 +9,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextLayout(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextLayout), "QTextLayout", this);
+			interceptor = new SmokeInvocation(typeof(QTextLayout), this);
 		}
 		public enum CursorMode {
 			SkipCharacters = 0,

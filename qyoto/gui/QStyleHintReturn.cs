@@ -9,11 +9,12 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QStyleHintReturn(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QStyleHintReturn), "QStyleHintReturn", this);
+			interceptor = new SmokeInvocation(typeof(QStyleHintReturn), this);
 		}
 		public enum HintReturnType {
 			SH_Default = 0xf000,
 			SH_Mask = 0,
+			SH_Variant = 1,
 		}
 		public enum StyleOptionType {
 			Type = QStyleHintReturn.HintReturnType.SH_Default,

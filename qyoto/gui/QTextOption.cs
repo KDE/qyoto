@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextOption(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextOption), "QTextOption", this);
+			interceptor = new SmokeInvocation(typeof(QTextOption), this);
 		}
 		public enum WrapMode {
 			NoWrap = 0,

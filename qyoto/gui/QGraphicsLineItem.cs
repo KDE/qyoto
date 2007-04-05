@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QGraphicsLineItem : QGraphicsItem, IDisposable {
  		protected QGraphicsLineItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGraphicsLineItem), "QGraphicsLineItem", this);
+			interceptor = new SmokeInvocation(typeof(QGraphicsLineItem), this);
 		}
 		public const int Type = 6;
 

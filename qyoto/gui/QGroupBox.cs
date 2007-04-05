@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QGroupBox : QWidget, IDisposable {
  		protected QGroupBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGroupBox), "QGroupBox", this);
+			interceptor = new SmokeInvocation(typeof(QGroupBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGroupBox() {
-			staticInterceptor = new SmokeInvocation(typeof(QGroupBox), "QGroupBox", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGroupBox), null);
 		}
 		[Q_PROPERTY("QString", "title")]
 		public string Title {
@@ -103,6 +103,9 @@ namespace Qyoto {
 		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
 			interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionGroupBox option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionGroupBox*) const", typeof(void), typeof(QStyleOptionGroupBox), option);
 		}
 		~QGroupBox() {
 			interceptor.Invoke("~QGroupBox", "~QGroupBox()", typeof(void));

@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDBusMessage(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusMessage), "QDBusMessage", this);
+			interceptor = new SmokeInvocation(typeof(QDBusMessage), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QDBusMessage() {
-			staticInterceptor = new SmokeInvocation(typeof(QDBusMessage), "QDBusMessage", null);
+			staticInterceptor = new SmokeInvocation(typeof(QDBusMessage), null);
 		}
 		public enum MessageType {
 			InvalidMessage = 0,
@@ -46,6 +46,9 @@ namespace Qyoto {
 		public QDBusMessage CreateErrorReply(QDBusError err) {
 			return (QDBusMessage) interceptor.Invoke("createErrorReply#", "createErrorReply(const QDBusError&) const", typeof(QDBusMessage), typeof(QDBusError), err);
 		}
+		public QDBusMessage CreateErrorReply(QDBusError.ErrorType type, string msg) {
+			return (QDBusMessage) interceptor.Invoke("createErrorReply$$", "createErrorReply(QDBusError::ErrorType, const QString&) const", typeof(QDBusMessage), typeof(QDBusError.ErrorType), type, typeof(string), msg);
+		}
 		public string Service() {
 			return (string) interceptor.Invoke("service", "service() const", typeof(string));
 		}
@@ -60,6 +63,9 @@ namespace Qyoto {
 		}
 		public string ErrorName() {
 			return (string) interceptor.Invoke("errorName", "errorName() const", typeof(string));
+		}
+		public string ErrorMessage() {
+			return (string) interceptor.Invoke("errorMessage", "errorMessage() const", typeof(string));
 		}
 		public QDBusMessage.MessageType type() {
 			return (QDBusMessage.MessageType) interceptor.Invoke("type", "type() const", typeof(QDBusMessage.MessageType));
@@ -102,6 +108,9 @@ namespace Qyoto {
 		}
 		public static QDBusMessage CreateError(QDBusError err) {
 			return (QDBusMessage) staticInterceptor.Invoke("createError#", "createError(const QDBusError&)", typeof(QDBusMessage), typeof(QDBusError), err);
+		}
+		public static QDBusMessage CreateError(QDBusError.ErrorType type, string msg) {
+			return (QDBusMessage) staticInterceptor.Invoke("createError$$", "createError(QDBusError::ErrorType, const QString&)", typeof(QDBusMessage), typeof(QDBusError.ErrorType), type, typeof(string), msg);
 		}
 	}
 }

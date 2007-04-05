@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QProgressDialog : QDialog, IDisposable {
  		protected QProgressDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QProgressDialog), "QProgressDialog", this);
+			interceptor = new SmokeInvocation(typeof(QProgressDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QProgressDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QProgressDialog), "QProgressDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QProgressDialog), null);
 		}
 		[Q_PROPERTY("bool", "wasCanceled")]
 		public bool WasCanceled {
@@ -86,9 +86,6 @@ namespace Qyoto {
 		public void SetBar(QProgressBar bar) {
 			interceptor.Invoke("setBar#", "setBar(QProgressBar*)", typeof(void), typeof(QProgressBar), bar);
 		}
-		public void SetRange(int minimum, int maximum) {
-			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
-		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
@@ -100,6 +97,10 @@ namespace Qyoto {
 		[Q_SLOT("void reset()")]
 		public void Reset() {
 			interceptor.Invoke("reset", "reset()", typeof(void));
+		}
+		[Q_SLOT("void setRange(int, int)")]
+		public void SetRange(int minimum, int maximum) {
+			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
 		}
 		[Q_SLOT("void setCancelButtonText(const QString&)")]
 		public void SetCancelButtonText(string arg1) {

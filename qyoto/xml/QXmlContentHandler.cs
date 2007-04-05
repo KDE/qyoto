@@ -24,7 +24,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QXmlContentHandler(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QXmlContentHandler), "QXmlContentHandler", this);
+			interceptor = new SmokeInvocation(typeof(QXmlContentHandler), this);
 		}
 		[SmokeMethod("setDocumentLocator(QXmlLocator*)")]
 		public abstract void SetDocumentLocator(QXmlLocator locator);

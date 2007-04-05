@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QRubberBand : QWidget, IDisposable {
  		protected QRubberBand(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QRubberBand), "QRubberBand", this);
+			interceptor = new SmokeInvocation(typeof(QRubberBand), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QRubberBand() {
-			staticInterceptor = new SmokeInvocation(typeof(QRubberBand), "QRubberBand", null);
+			staticInterceptor = new SmokeInvocation(typeof(QRubberBand), null);
 		}
 		public enum Shape {
 			Line = 0,
@@ -69,6 +69,9 @@ namespace Qyoto {
 		[SmokeMethod("moveEvent(QMoveEvent*)")]
 		protected override void MoveEvent(QMoveEvent arg1) {
 			interceptor.Invoke("moveEvent#", "moveEvent(QMoveEvent*)", typeof(void), typeof(QMoveEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionRubberBand option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionRubberBand*) const", typeof(void), typeof(QStyleOptionRubberBand), option);
 		}
 		~QRubberBand() {
 			interceptor.Invoke("~QRubberBand", "~QRubberBand()", typeof(void));

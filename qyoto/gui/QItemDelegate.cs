@@ -7,11 +7,11 @@ namespace Qyoto {
 	public class QItemDelegate : QAbstractItemDelegate, IDisposable {
  		protected QItemDelegate(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QItemDelegate), "QItemDelegate", this);
+			interceptor = new SmokeInvocation(typeof(QItemDelegate), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QItemDelegate() {
-			staticInterceptor = new SmokeInvocation(typeof(QItemDelegate), "QItemDelegate", null);
+			staticInterceptor = new SmokeInvocation(typeof(QItemDelegate), null);
 		}
 		[Q_PROPERTY("bool", "clipping")]
 		public bool Clipping {

@@ -8,7 +8,7 @@ namespace Qyoto {
  		protected QFontDialog(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static QFontDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(QFontDialog), "QFontDialog", null);
+			staticInterceptor = new SmokeInvocation(typeof(QFontDialog), null);
 		}
 		public static string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

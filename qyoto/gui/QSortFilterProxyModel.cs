@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSortFilterProxyModel : QAbstractProxyModel, IDisposable {
  		protected QSortFilterProxyModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSortFilterProxyModel), "QSortFilterProxyModel", this);
+			interceptor = new SmokeInvocation(typeof(QSortFilterProxyModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSortFilterProxyModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QSortFilterProxyModel), "QSortFilterProxyModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSortFilterProxyModel), null);
 		}
 		[Q_PROPERTY("QRegExp", "filterRegExp")]
 		public QRegExp FilterRegExp {
@@ -38,6 +38,11 @@ namespace Qyoto {
 		public Qt.CaseSensitivity SortCaseSensitivity {
 			get { return (Qt.CaseSensitivity) interceptor.Invoke("sortCaseSensitivity", "sortCaseSensitivity()", typeof(Qt.CaseSensitivity)); }
 			set { interceptor.Invoke("setSortCaseSensitivity$", "setSortCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), value); }
+		}
+		[Q_PROPERTY("bool", "sortLocalAware")]
+		public bool SortLocalAware {
+			get { return (bool) interceptor.Invoke("sortLocalAware", "sortLocalAware()", typeof(bool)); }
+			set { interceptor.Invoke("setSortLocalAware$", "setSortLocalAware(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
@@ -196,6 +201,14 @@ namespace Qyoto {
 		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
 			return (List<QModelIndex>) interceptor.Invoke("match#$#$$", "match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits, typeof(int), flags);
 		}
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int) const")]
+		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {
+			return (List<QModelIndex>) interceptor.Invoke("match#$#$", "match(const QModelIndex&, int, const QVariant&, int) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits);
+		}
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&) const")]
+		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value) {
+			return (List<QModelIndex>) interceptor.Invoke("match#$#", "match(const QModelIndex&, int, const QVariant&) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value);
+		}
 		[SmokeMethod("span(const QModelIndex&) const")]
 		public override QSize Span(QModelIndex index) {
 			return (QSize) interceptor.Invoke("span#", "span(const QModelIndex&) const", typeof(QSize), typeof(QModelIndex), index);
@@ -228,6 +241,10 @@ namespace Qyoto {
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
+		[Q_SLOT("void invalidate()")]
+		public void Invalidate() {
+			interceptor.Invoke("invalidate", "invalidate()", typeof(void));
+		}
 		[SmokeMethod("filterAcceptsRow(int, const QModelIndex&) const")]
 		protected virtual bool FilterAcceptsRow(int source_row, QModelIndex source_parent) {
 			return (bool) interceptor.Invoke("filterAcceptsRow$#", "filterAcceptsRow(int, const QModelIndex&) const", typeof(bool), typeof(int), source_row, typeof(QModelIndex), source_parent);
@@ -242,6 +259,9 @@ namespace Qyoto {
 		}
 		protected void FilterChanged() {
 			interceptor.Invoke("filterChanged", "filterChanged()", typeof(void));
+		}
+		protected void InvalidateFilter() {
+			interceptor.Invoke("invalidateFilter", "invalidateFilter()", typeof(void));
 		}
 		~QSortFilterProxyModel() {
 			interceptor.Invoke("~QSortFilterProxyModel", "~QSortFilterProxyModel()", typeof(void));

@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSqlTableModel : QSqlQueryModel, IDisposable {
  		protected QSqlTableModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlTableModel), "QSqlTableModel", this);
+			interceptor = new SmokeInvocation(typeof(QSqlTableModel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlTableModel() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlTableModel), "QSqlTableModel", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlTableModel), null);
 		}
 		public enum EditStrategy {
 			OnFieldChange = 0,

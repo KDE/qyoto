@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QCalendarWidget : QWidget, IDisposable {
  		protected QCalendarWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QCalendarWidget), "QCalendarWidget", this);
+			interceptor = new SmokeInvocation(typeof(QCalendarWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QCalendarWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QCalendarWidget), "QCalendarWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QCalendarWidget), null);
 		}
 		public enum HorizontalHeaderFormat {
 			NoHorizontalHeader = 0,
@@ -74,6 +74,11 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isHeaderVisible", "isHeaderVisible()", typeof(bool)); }
 			set { interceptor.Invoke("setHeaderVisible$", "setHeaderVisible(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("bool", "navigationBarVisible")]
+		public bool NavigationBarVisible {
+			get { return (bool) interceptor.Invoke("isNavigationBarVisible", "isNavigationBarVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setNavigationBarVisible$", "setNavigationBarVisible(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QCalendarWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QCalendarWidget#", "QCalendarWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -98,6 +103,9 @@ namespace Qyoto {
 		}
 		public bool IsHeaderVisible() {
 			return (bool) interceptor.Invoke("isHeaderVisible", "isHeaderVisible() const", typeof(bool));
+		}
+		public bool IsNavigationBarVisible() {
+			return (bool) interceptor.Invoke("isNavigationBarVisible", "isNavigationBarVisible() const", typeof(bool));
 		}
 		public bool IsGridVisible() {
 			return (bool) interceptor.Invoke("isGridVisible", "isGridVisible() const", typeof(bool));

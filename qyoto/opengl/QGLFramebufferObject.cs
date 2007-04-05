@@ -7,11 +7,16 @@ namespace Qyoto {
 	public class QGLFramebufferObject : QPaintDevice, IDisposable {
  		protected QGLFramebufferObject(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QGLFramebufferObject), "QGLFramebufferObject", this);
+			interceptor = new SmokeInvocation(typeof(QGLFramebufferObject), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QGLFramebufferObject() {
-			staticInterceptor = new SmokeInvocation(typeof(QGLFramebufferObject), "QGLFramebufferObject", null);
+			staticInterceptor = new SmokeInvocation(typeof(QGLFramebufferObject), null);
+		}
+		public enum Attachments {
+			NoDepthStencil = 0,
+			DepthStencil = 1,
+			Depth = 2,
 		}
 		public QGLFramebufferObject(QSize size, int target) : this((Type) null) {
 			CreateProxy();
@@ -28,6 +33,30 @@ namespace Qyoto {
 		public QGLFramebufferObject(int width, int height) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGLFramebufferObject$$", "QGLFramebufferObject(int, int)", typeof(void), typeof(int), width, typeof(int), height);
+		}
+		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachments attachments, int target, int internal_format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QGLFramebufferObject#$$$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachments, GLenum, GLenum)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target, typeof(int), internal_format);
+		}
+		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachments attachments, int target) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QGLFramebufferObject#$$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachments, GLenum)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target);
+		}
+		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachments attachments) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QGLFramebufferObject#$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachments)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachments), attachments);
+		}
+		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachments attachments, int target, int internal_format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QGLFramebufferObject$$$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachments, GLenum, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target, typeof(int), internal_format);
+		}
+		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachments attachments, int target) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QGLFramebufferObject$$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachments, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target);
+		}
+		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachments attachments) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QGLFramebufferObject$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachments)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachments), attachments);
 		}
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
@@ -46,6 +75,9 @@ namespace Qyoto {
 		}
 		public QImage ToImage() {
 			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
+		}
+		public QGLFramebufferObject.Attachments attachments() {
+			return (QGLFramebufferObject.Attachments) interceptor.Invoke("attachments", "attachments() const", typeof(QGLFramebufferObject.Attachments));
 		}
 		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {

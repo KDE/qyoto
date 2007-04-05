@@ -10,7 +10,7 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSqlResult(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlResult), "QSqlResult", this);
+			interceptor = new SmokeInvocation(typeof(QSqlResult), this);
 		}
 		public enum BindingSyntax {
 			PositionalBinding = 0,
@@ -18,6 +18,8 @@ namespace Qyoto {
 		}
 		public enum VirtualHookOperation {
 			BatchOperation = 0,
+			DetachFromResultSet = 1,
+			SetNumericalPrecision = 2,
 		}
 		public QSqlResult(QSqlDriver db) : this((Type) null) {
 			CreateProxy();
@@ -164,6 +166,12 @@ namespace Qyoto {
 		}
 		protected bool ExecBatch() {
 			return (bool) interceptor.Invoke("execBatch", "execBatch()", typeof(bool));
+		}
+		protected void DetachFromResultSet() {
+			interceptor.Invoke("detachFromResultSet", "detachFromResultSet()", typeof(void));
+		}
+		protected void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy policy) {
+			interceptor.Invoke("setNumericalPrecisionPolicy$", "setNumericalPrecisionPolicy(QSql::NumericalPrecisionPolicy)", typeof(void), typeof(QSql.NumericalPrecisionPolicy), policy);
 		}
 	}
 }

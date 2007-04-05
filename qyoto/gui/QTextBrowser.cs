@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QTextBrowser : QTextEdit, IDisposable {
  		protected QTextBrowser(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextBrowser), "QTextBrowser", this);
+			interceptor = new SmokeInvocation(typeof(QTextBrowser), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextBrowser() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextBrowser), "QTextBrowser", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextBrowser), null);
 		}
 		[Q_PROPERTY("QUrl", "source")]
 		public IQUrl Source {

@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QTextTableCell(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTextTableCell), "QTextTableCell", this);
+			interceptor = new SmokeInvocation(typeof(QTextTableCell), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTextTableCell() {
-			staticInterceptor = new SmokeInvocation(typeof(QTextTableCell), "QTextTableCell", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTextTableCell), null);
 		}
 		public QTextTableCell() : this((Type) null) {
 			CreateProxy();

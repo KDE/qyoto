@@ -9,7 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QDBusError(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QDBusError), "QDBusError", this);
+			interceptor = new SmokeInvocation(typeof(QDBusError), this);
+		}
+		private static SmokeInvocation staticInterceptor = null;
+		static QDBusError() {
+			staticInterceptor = new SmokeInvocation(typeof(QDBusError), null);
 		}
 		public enum ErrorType {
 			NoError = 0,
@@ -33,7 +37,8 @@ namespace Qyoto {
 			InvalidSignature = 18,
 			UnknownInterface = 19,
 			InternalError = 20,
-			LastErrorType = InternalError,
+			UnknownObject = 21,
+			LastErrorType = UnknownObject,
 		}
 		// QDBusError* QDBusError(const DBusError* arg1); >>>> NOT CONVERTED
 		public QDBusError(QDBusMessage msg) : this((Type) null) {
@@ -65,6 +70,9 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QDBusError", "~QDBusError()", typeof(void));
+		}
+		public static string ErrorString(QDBusError.ErrorType error) {
+			return (string) staticInterceptor.Invoke("errorString$", "errorString(QDBusError::ErrorType)", typeof(string), typeof(QDBusError.ErrorType), error);
 		}
 	}
 }

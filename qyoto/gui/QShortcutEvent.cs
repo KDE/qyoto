@@ -7,7 +7,7 @@ namespace Qyoto {
 	public class QShortcutEvent : QEvent, IDisposable {
  		protected QShortcutEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QShortcutEvent), "QShortcutEvent", this);
+			interceptor = new SmokeInvocation(typeof(QShortcutEvent), this);
 		}
 		public QShortcutEvent(QKeySequence key, int id, bool ambiguous) : this((Type) null) {
 			CreateProxy();

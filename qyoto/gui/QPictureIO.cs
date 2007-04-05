@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QPictureIO(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QPictureIO), "QPictureIO", this);
+			interceptor = new SmokeInvocation(typeof(QPictureIO), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QPictureIO() {
-			staticInterceptor = new SmokeInvocation(typeof(QPictureIO), "QPictureIO", null);
+			staticInterceptor = new SmokeInvocation(typeof(QPictureIO), null);
 		}
 		// void defineIOHandler(const char* arg1,const char* arg2,const char* arg3,picture_io_handler arg4,picture_io_handler arg5); >>>> NOT CONVERTED
 		public QPictureIO() : this((Type) null) {

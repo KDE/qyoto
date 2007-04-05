@@ -10,11 +10,11 @@ namespace Qyoto {
 	public class QListView : QAbstractItemView, IDisposable {
  		protected QListView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QListView), "QListView", this);
+			interceptor = new SmokeInvocation(typeof(QListView), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QListView() {
-			staticInterceptor = new SmokeInvocation(typeof(QListView), "QListView", null);
+			staticInterceptor = new SmokeInvocation(typeof(QListView), null);
 		}
 		public enum Movement {
 			Static = 0,
@@ -97,6 +97,11 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("wordWrap", "wordWrap()", typeof(bool)); }
 			set { interceptor.Invoke("setWordWrap$", "setWordWrap(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("bool", "selectionRectVisible")]
+		public bool SelectionRectVisible {
+			get { return (bool) interceptor.Invoke("isSelectionRectVisible", "isSelectionRectVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setSelectionRectVisible$", "setSelectionRectVisible(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QListView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QListView#", "QListView(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -116,6 +121,9 @@ namespace Qyoto {
 		}
 		public void SetRowHidden(int row, bool hide) {
 			interceptor.Invoke("setRowHidden$$", "setRowHidden(int, bool)", typeof(void), typeof(int), row, typeof(bool), hide);
+		}
+		public bool IsSelectionRectVisible() {
+			return (bool) interceptor.Invoke("isSelectionRectVisible", "isSelectionRectVisible() const", typeof(bool));
 		}
 		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public override QRect VisualRect(QModelIndex index) {

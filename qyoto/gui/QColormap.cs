@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QColormap(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QColormap), "QColormap", this);
+			interceptor = new SmokeInvocation(typeof(QColormap), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QColormap() {
-			staticInterceptor = new SmokeInvocation(typeof(QColormap), "QColormap", null);
+			staticInterceptor = new SmokeInvocation(typeof(QColormap), null);
 		}
 		public enum Mode {
 			Direct = 0,

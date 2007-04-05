@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QSvgRenderer : QObject, IDisposable {
  		protected QSvgRenderer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSvgRenderer), "QSvgRenderer", this);
+			interceptor = new SmokeInvocation(typeof(QSvgRenderer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSvgRenderer() {
-			staticInterceptor = new SmokeInvocation(typeof(QSvgRenderer), "QSvgRenderer", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSvgRenderer), null);
 		}
 		[Q_PROPERTY("QRectF", "viewBox")]
 		public QRectF ViewBox {

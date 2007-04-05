@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QAction : QObject, IDisposable {
  		protected QAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QAction), "QAction", this);
+			interceptor = new SmokeInvocation(typeof(QAction), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QAction() {
-			staticInterceptor = new SmokeInvocation(typeof(QAction), "QAction", null);
+			staticInterceptor = new SmokeInvocation(typeof(QAction), null);
 		}
 		public enum MenuRole {
 			NoRole = 0,

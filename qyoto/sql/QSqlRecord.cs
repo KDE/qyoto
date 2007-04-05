@@ -9,11 +9,11 @@ namespace Qyoto {
 		private IntPtr smokeObject;
 		protected QSqlRecord(Type dummy) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QSqlRecord), "QSqlRecord", this);
+			interceptor = new SmokeInvocation(typeof(QSqlRecord), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QSqlRecord() {
-			staticInterceptor = new SmokeInvocation(typeof(QSqlRecord), "QSqlRecord", null);
+			staticInterceptor = new SmokeInvocation(typeof(QSqlRecord), null);
 		}
 		public QSqlRecord() : this((Type) null) {
 			CreateProxy();

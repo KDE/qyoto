@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QTabWidget : QWidget, IDisposable {
  		protected QTabWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(QTabWidget), "QTabWidget", this);
+			interceptor = new SmokeInvocation(typeof(QTabWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QTabWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(QTabWidget), "QTabWidget", null);
+			staticInterceptor = new SmokeInvocation(typeof(QTabWidget), null);
 		}
 		public enum TabPosition {
 			North = 0,
@@ -140,6 +140,9 @@ namespace Qyoto {
 		public QWidget CornerWidget() {
 			return (QWidget) interceptor.Invoke("cornerWidget", "cornerWidget() const", typeof(QWidget));
 		}
+		public void Clear() {
+			interceptor.Invoke("clear", "clear()", typeof(void));
+		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			interceptor.Invoke("setCurrentWidget#", "setCurrentWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
@@ -181,6 +184,9 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		protected void InitStyleOption(QStyleOptionTabWidgetFrame option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionTabWidgetFrame*) const", typeof(void), typeof(QStyleOptionTabWidgetFrame), option);
 		}
 		~QTabWidget() {
 			interceptor.Invoke("~QTabWidget", "~QTabWidget()", typeof(void));
