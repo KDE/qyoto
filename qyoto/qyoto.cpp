@@ -1327,7 +1327,7 @@ QAbstractItemModelData(void* obj, void * modelIndex, int role)
 	QVariant result = ((QAbstractItemModel*) o->ptr)->data(*(((QModelIndex*) i->ptr)), role);
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(modelIndex);
-	smokeqyoto_object * ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QVariant"), &result);
+	smokeqyoto_object * ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QVariant"), &result);
 	return (*CreateInstance)("Qyoto.QVariant", ret);
 }
 
@@ -1410,8 +1410,8 @@ QAbstractItemModelIndex(void* obj, int row, int column, void * modelIndex)
 	QModelIndex result = ((QAbstractItemModel*) o->ptr)->index(row, column, *(((QModelIndex*) i->ptr)));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(modelIndex);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return (*CreateInstance)("Qyoto.QModelIndex", ret);
 }
 
 void*
@@ -1422,8 +1422,8 @@ QAbstractProxyModelMapFromSource(void* obj, void* sourceIndex)
 	QModelIndex result = ((QAbstractProxyModel*) o->ptr)->mapFromSource(*(((QModelIndex*) i->ptr)));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(sourceIndex);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return (*CreateInstance)("Qyoto.QModelIndex", ret);
 }
 
 void*
@@ -1434,8 +1434,8 @@ QAbstractProxyModelMapToSource(void* obj, void* proxyIndex)
 	QModelIndex result = ((QAbstractProxyModel*) o->ptr)->mapToSource(*(((QModelIndex*) i->ptr)));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(proxyIndex);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return (*CreateInstance)("Qyoto.QModelIndex", ret);
 }
 
 void
@@ -1464,8 +1464,8 @@ QAbstractItemDelegateSizeHint(void* obj, void* option, void* index)
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(option);
 	(*FreeGCHandle)(index);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QSize"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QSize"), &result);
+	return (*CreateInstance)("Qyoto.QSize", ret);
 }
 
 void*
@@ -1476,8 +1476,8 @@ QAbstractItemViewIndexAt(void* obj, void* point)
 	QModelIndex result = ((QAbstractItemView*) o->ptr)->indexAt(*((QPoint*) p->ptr));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(point);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return (*CreateInstance)("Qyoto.QModelIndex", ret);
 }
 
 void
@@ -1498,8 +1498,8 @@ QAbstractItemViewVisualRect(void* obj, void* index)
 	QRect result = ((QAbstractItemView*) o->ptr)->visualRect(*((QModelIndex*) i->ptr));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(index);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QRect"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QRect"), &result);
+	return (*CreateInstance)("Qyoto.QRect", ret);
 }
 
 void*
@@ -1510,8 +1510,8 @@ QAbstractTextDocumentLayoutBlockBoundingRect(void* obj, void* block)
 	QRectF result = ((QAbstractTextDocumentLayout*) o->ptr)->blockBoundingRect(*((QTextBlock*) b->ptr));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(block);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QRectF"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QRectF"), &result);
+	return (*CreateInstance)("Qyoto.QRectF", ret);
 }
 
 void*
@@ -1520,8 +1520,8 @@ QAbstractTextDocumentLayoutDocumentSize(void* obj)
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	QSizeF result = ((QAbstractTextDocumentLayout*) o->ptr)->documentSize();
 	(*FreeGCHandle)(obj);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QSizeF"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QSizeF"), &result);
+	return (*CreateInstance)("Qyoto.QSizeF", ret);
 }
 
 void*
@@ -1532,8 +1532,8 @@ QAbstractTextDocumentLayoutFrameBoundingRect(void* obj, void* frame)
 	QRectF result = ((QAbstractTextDocumentLayout*) o->ptr)->frameBoundingRect((QTextFrame*) f->ptr);
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(frame);
-	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QRectF"), &result);
-	return ret;
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(false, o->smoke, o->smoke->idClass("QRectF"), &result);
+	return (*CreateInstance)("Qyoto.QRectF", ret);
 }
 
 int
