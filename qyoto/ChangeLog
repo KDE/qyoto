@@ -1,3 +1,7 @@
+2007-04-06  Arno Rehn  <arno@arnorehn.de>
+
+	* Added missing QItemModel.cs. Forgot to do a 'svn add' last time.
+
 2007-04-06  Richard Dale  <rdale@foton.es>
 
 	* Improved the code generation to fix some of the many warnings, and fixed
