@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QNetworkProxy(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QNetworkProxy), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;

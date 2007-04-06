@@ -1103,12 +1103,6 @@ static QByteArray * currentSignature = 0;
 	return -1;
 }
 
-int 
-MethodFromMap(int meth) 
-{
-	return qt_Smoke->methodMaps[meth].method;
-}
-
 QMetaObject* parent_meta_object(void* obj) {
 	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");

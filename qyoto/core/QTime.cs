@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTime(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTime), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -49,13 +49,13 @@ namespace Qyoto {
 		public int Msec() {
 			return (int) interceptor.Invoke("msec", "msec() const", typeof(int));
 		}
-		public string ToString(Qt.DateFormat f) {
+		public new string ToString(Qt.DateFormat f) {
 			return (string) interceptor.Invoke("toString$", "toString(Qt::DateFormat) const", typeof(string), typeof(Qt.DateFormat), f);
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		public string ToString(string format) {
+		public new string ToString(string format) {
 			return (string) interceptor.Invoke("toString$", "toString(const QString&) const", typeof(string), typeof(string), format);
 		}
 		public bool SetHMS(int h, int m, int s, int ms) {

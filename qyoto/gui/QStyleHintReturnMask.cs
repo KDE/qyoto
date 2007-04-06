@@ -22,7 +22,7 @@ namespace Qyoto {
 		~QStyleHintReturnMask() {
 			interceptor.Invoke("~QStyleHintReturnMask", "~QStyleHintReturnMask()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleHintReturnMask", "~QStyleHintReturnMask()", typeof(void));
 		}
 	}

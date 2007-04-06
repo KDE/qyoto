@@ -9,7 +9,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QFont(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QFont), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -220,7 +220,7 @@ namespace Qyoto {
 		public string Key() {
 			return (string) interceptor.Invoke("key", "key() const", typeof(string));
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public bool FromString(string arg1) {

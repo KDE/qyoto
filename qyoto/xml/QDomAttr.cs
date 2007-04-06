@@ -32,13 +32,13 @@ namespace Qyoto {
 		public void SetValue(string arg1) {
 			interceptor.Invoke("setValue$", "setValue(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomAttr() {
 			interceptor.Invoke("~QDomAttr", "~QDomAttr()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomAttr", "~QDomAttr()", typeof(void));
 		}
 	}

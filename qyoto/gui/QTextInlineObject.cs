@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextInlineObject(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTextInlineObject), this);
 		}
 		// QTextInlineObject* QTextInlineObject(int arg1,QTextEngine* arg2); >>>> NOT CONVERTED

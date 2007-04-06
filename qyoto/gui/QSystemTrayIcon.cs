@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQSystemTrayIconSignals"></see> for signals emitted by QSystemTrayIcon
+	///<remarks> See <see cref="IQSystemTrayIconSignals"></see> for signals emitted by QSystemTrayIcon
+	///</remarks>
+
 	[SmokeClass("QSystemTrayIcon")]
 	public class QSystemTrayIcon : QObject, IDisposable {
  		protected QSystemTrayIcon(Type dummy) : base((Type) null) {}
@@ -97,10 +99,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSystemTrayIcon", "~QSystemTrayIcon()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static bool IsSystemTrayAvailable() {

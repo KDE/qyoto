@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQSplashScreenSignals"></see> for signals emitted by QSplashScreen
+	///<remarks> See <see cref="IQSplashScreenSignals"></see> for signals emitted by QSplashScreen
+	///</remarks>
+
 	[SmokeClass("QSplashScreen")]
 	public class QSplashScreen : QWidget, IDisposable {
  		protected QSplashScreen(Type dummy) : base((Type) null) {}
@@ -47,7 +49,7 @@ namespace Qyoto {
 		public void Finish(QWidget w) {
 			interceptor.Invoke("finish#", "finish(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		public void Repaint() {
+		public new void Repaint() {
 			interceptor.Invoke("repaint", "repaint()", typeof(void));
 		}
 		[Q_SLOT("void showMessage(const QString&, int, const QColor&)")]
@@ -84,10 +86,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSplashScreen", "~QSplashScreen()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSplashScreenSignals Emit {

@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionSpinBox() {
 			interceptor.Invoke("~QStyleOptionSpinBox", "~QStyleOptionSpinBox()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionSpinBox", "~QStyleOptionSpinBox()", typeof(void));
 		}
 	}

@@ -9,7 +9,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QHttpHeader(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QHttpHeader), this);
 		}
 		public QHttpHeader() : this((Type) null) {
@@ -73,7 +73,7 @@ namespace Qyoto {
 			interceptor.Invoke("setContentType$", "setContentType(const QString&)", typeof(void), typeof(string), type);
 		}
 		[SmokeMethod("toString() const")]
-		public virtual string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public bool IsValid() {

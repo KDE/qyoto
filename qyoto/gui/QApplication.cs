@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQApplicationSignals"></see> for signals emitted by QApplication
+	///<remarks> See <see cref="IQApplicationSignals"></see> for signals emitted by QApplication
+	///</remarks>
+
 	[SmokeClass("QApplication")]
 	public partial class QApplication : QCoreApplication, IDisposable {
  		protected QApplication(Type dummy) : base((Type) null) {}
@@ -26,7 +28,7 @@ namespace Qyoto {
 			ManyColor = 2,
 		}
 		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
-		public Qt.LayoutDirection LayoutDirection {
+		public new Qt.LayoutDirection LayoutDirection {
 			get { return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection)); }
 			set { interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), value); }
 		}
@@ -118,10 +120,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QApplication", "~QApplication()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QApplication.TypeOf type() {
@@ -301,7 +303,7 @@ namespace Qyoto {
 		public static void SetLayoutDirection(Qt.LayoutDirection direction) {
 			staticInterceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), direction);
 		}
-		public static Qt.LayoutDirection layoutDirection() {
+		public static new Qt.LayoutDirection layoutDirection() {
 			return (Qt.LayoutDirection) staticInterceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection));
 		}
 		public static bool IsRightToLeft() {
@@ -325,7 +327,7 @@ namespace Qyoto {
 		public static Qt.LayoutDirection KeyboardInputDirection() {
 			return (Qt.LayoutDirection) staticInterceptor.Invoke("keyboardInputDirection", "keyboardInputDirection()", typeof(Qt.LayoutDirection));
 		}
-		public static int Exec() {
+		public static new int Exec() {
 			int result = (int) staticInterceptor.Invoke("exec", "exec()", typeof(int));
 			Qyoto.SetApplicationTerminated();
 			return result;

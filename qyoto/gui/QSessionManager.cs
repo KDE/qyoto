@@ -68,10 +68,10 @@ namespace Qyoto {
 		public void RequestPhase2() {
 			interceptor.Invoke("requestPhase2", "requestPhase2()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSessionManagerSignals Emit {

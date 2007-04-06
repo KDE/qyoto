@@ -56,7 +56,7 @@ namespace Qyoto {
 		~QRadialGradient() {
 			interceptor.Invoke("~QRadialGradient", "~QRadialGradient()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QRadialGradient", "~QRadialGradient()", typeof(void));
 		}
 	}

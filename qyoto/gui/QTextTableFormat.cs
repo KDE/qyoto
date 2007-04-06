@@ -14,7 +14,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextTableFormat", "QTextTableFormat()", typeof(void));
 		}
-		public bool IsValid() {
+		public new bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public int Columns() {
@@ -59,7 +59,7 @@ namespace Qyoto {
 		~QTextTableFormat() {
 			interceptor.Invoke("~QTextTableFormat", "~QTextTableFormat()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QTextTableFormat", "~QTextTableFormat()", typeof(void));
 		}
 	}

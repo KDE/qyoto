@@ -9,7 +9,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QVariant(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QVariant), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -267,7 +267,7 @@ namespace Qyoto {
 		public QByteArray ToByteArray() {
 			return (QByteArray) interceptor.Invoke("toByteArray", "toByteArray() const", typeof(QByteArray));
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public List<string> ToStringList() {

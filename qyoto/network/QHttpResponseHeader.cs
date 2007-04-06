@@ -74,7 +74,7 @@ namespace Qyoto {
 		~QHttpResponseHeader() {
 			interceptor.Invoke("~QHttpResponseHeader", "~QHttpResponseHeader()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~QHttpResponseHeader", "~QHttpResponseHeader()", typeof(void));
 		}
 	}

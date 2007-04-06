@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Text;
 
 	[SmokeClass("QValidator")]
-	public abstract class QValidator : QObject, IDisposable {
+	public abstract class QValidator : QObject {
  		protected QValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QValidator), this);
@@ -35,16 +35,10 @@ namespace Qyoto {
 		public virtual void Fixup(StringBuilder arg1) {
 			interceptor.Invoke("fixup$", "fixup(QString&) const", typeof(void), typeof(StringBuilder), arg1);
 		}
-		~QValidator() {
-			interceptor.Invoke("~QValidator", "~QValidator()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QValidator", "~QValidator()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQValidatorSignals Emit {

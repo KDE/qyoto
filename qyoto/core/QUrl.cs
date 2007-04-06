@@ -64,7 +64,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUrl(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QUrl), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -238,10 +238,10 @@ namespace Qyoto {
 		public string ToLocalFile() {
 			return (string) interceptor.Invoke("toLocalFile", "toLocalFile() const", typeof(string));
 		}
-		public string ToString(int options) {
+		public new string ToString(int options) {
 			return (string) interceptor.Invoke("toString$", "toString(FormattingOptions) const", typeof(string), typeof(int), options);
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public QByteArray ToEncoded(int options) {

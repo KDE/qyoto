@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTableWidgetSelectionRange(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTableWidgetSelectionRange), this);
 		}
 		public QTableWidgetSelectionRange() : this((Type) null) {

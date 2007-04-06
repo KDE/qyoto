@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QIconEngine(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QIconEngine), this);
 		}
 		[SmokeMethod("paint(QPainter*, const QRect&, QIcon::Mode, QIcon::State)")]

@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQShortcutSignals"></see> for signals emitted by QShortcut
+	///<remarks> See <see cref="IQShortcutSignals"></see> for signals emitted by QShortcut
+	///</remarks>
+
 	[SmokeClass("QShortcut")]
 	public class QShortcut : QObject, IDisposable {
  		protected QShortcut(Type dummy) : base((Type) null) {}
@@ -78,10 +80,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QShortcut", "~QShortcut()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQShortcutSignals Emit {

@@ -8,7 +8,7 @@ namespace Qyoto {
 		public QDBusSignature(string text) {
 			this.text = text;
 		}
-		public string ToString() {
+		public new string ToString() {
 			return text;
 		}
 	}

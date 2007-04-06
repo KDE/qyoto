@@ -128,7 +128,7 @@ namespace Qyoto {
 		~QXmlDefaultHandler() {
 			interceptor.Invoke("~QXmlDefaultHandler", "~QXmlDefaultHandler()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~QXmlDefaultHandler", "~QXmlDefaultHandler()", typeof(void));
 		}
 	}

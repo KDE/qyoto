@@ -98,7 +98,7 @@ namespace Qyoto {
 		public override void Invalidate() {
 			interceptor.Invoke("invalidate", "invalidate()", typeof(void));
 		}
-		public void AddWidget(QWidget w) {
+		public new void AddWidget(QWidget w) {
 			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
 		public void AddWidget(QWidget arg1, int row, int column, int arg4) {
@@ -175,10 +175,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QGridLayout", "~QGridLayout()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGridLayoutSignals Emit {

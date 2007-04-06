@@ -65,7 +65,7 @@ namespace Qyoto {
 		public void SetFormat(QTextTableFormat format) {
 			interceptor.Invoke("setFormat#", "setFormat(const QTextTableFormat&)", typeof(void), typeof(QTextTableFormat), format);
 		}
-		public QTextTableFormat Format() {
+		public new QTextTableFormat Format() {
 			return (QTextTableFormat) interceptor.Invoke("format", "format() const", typeof(QTextTableFormat));
 		}
 		~QTextTable() {
@@ -74,10 +74,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QTextTable", "~QTextTable()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextTableSignals Emit {

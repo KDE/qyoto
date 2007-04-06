@@ -149,7 +149,7 @@ namespace Qyoto {
 		~QFSFileEngine() {
 			interceptor.Invoke("~QFSFileEngine", "~QFSFileEngine()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~QFSFileEngine", "~QFSFileEngine()", typeof(void));
 		}
 		public static bool SetCurrentPath(string path) {

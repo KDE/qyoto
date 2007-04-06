@@ -5,11 +5,11 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QAbstractFileEngine")]
-	public abstract class QAbstractFileEngine : Object, IDisposable {
+	public abstract class QAbstractFileEngine : Object {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QAbstractFileEngine(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractFileEngine), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -211,12 +211,6 @@ namespace Qyoto {
 		public QAbstractFileEngine() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractFileEngine", "QAbstractFileEngine()", typeof(void));
-		}
-		~QAbstractFileEngine() {
-			interceptor.Invoke("~QAbstractFileEngine", "~QAbstractFileEngine()", typeof(void));
-		}
-		public void Dispose() {
-			interceptor.Invoke("~QAbstractFileEngine", "~QAbstractFileEngine()", typeof(void));
 		}
 		public static QAbstractFileEngine Create(string fileName) {
 			return (QAbstractFileEngine) staticInterceptor.Invoke("create$", "create(const QString&)", typeof(QAbstractFileEngine), typeof(string), fileName);

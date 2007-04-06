@@ -3,9 +3,11 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQAbstractSocketSignals"></see> for signals emitted by QAbstractSocket
+	///<remarks> See <see cref="IQAbstractSocketSignals"></see> for signals emitted by QAbstractSocket
+	///</remarks>
+
 	[SmokeClass("QAbstractSocket")]
-	public abstract class QAbstractSocket : QIODevice, IDisposable {
+	public abstract class QAbstractSocket : QIODevice {
  		protected QAbstractSocket(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractSocket), this);
@@ -224,16 +226,10 @@ namespace Qyoto {
 		protected void DisconnectFromHostImplementation() {
 			interceptor.Invoke("disconnectFromHostImplementation", "disconnectFromHostImplementation()", typeof(void));
 		}
-		~QAbstractSocket() {
-			interceptor.Invoke("~QAbstractSocket", "~QAbstractSocket()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QAbstractSocket", "~QAbstractSocket()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractSocketSignals Emit {

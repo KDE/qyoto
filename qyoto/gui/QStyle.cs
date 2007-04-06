@@ -637,10 +637,10 @@ namespace Qyoto {
 		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation) {
 			return (int) interceptor.Invoke("layoutSpacingImplementation$$$", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QRect VisualRect(Qt.LayoutDirection direction, QRect boundingRect, QRect logicalRect) {

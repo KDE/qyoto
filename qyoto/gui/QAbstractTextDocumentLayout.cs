@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQAbstractTextDocumentLayoutSignals"></see> for signals emitted by QAbstractTextDocumentLayout
+	///<remarks> See <see cref="IQAbstractTextDocumentLayoutSignals"></see> for signals emitted by QAbstractTextDocumentLayout
+	///</remarks>
+
 	[SmokeClass("QAbstractTextDocumentLayout")]
 	public abstract class QAbstractTextDocumentLayout : QObject {
  		protected QAbstractTextDocumentLayout(Type dummy) : base((Type) null) {}
@@ -67,10 +69,10 @@ namespace Qyoto {
 		protected QTextCharFormat Format(int pos) {
 			return (QTextCharFormat) interceptor.Invoke("format$", "format(int)", typeof(QTextCharFormat), typeof(int), pos);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractTextDocumentLayoutSignals Emit {

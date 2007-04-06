@@ -38,7 +38,7 @@ namespace Qyoto {
 		public bool Open() {
 			return (bool) interceptor.Invoke("open", "open()", typeof(bool));
 		}
-		public string FileName() {
+		public new string FileName() {
 			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
 		public string FileTemplate() {
@@ -61,10 +61,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QTemporaryFile", "~QTemporaryFile()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QTemporaryFile CreateLocalFile(string fileName) {

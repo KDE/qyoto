@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QAbstractGraphicsShapeItem")]
-	public abstract class QAbstractGraphicsShapeItem : QGraphicsItem, IDisposable {
+	public abstract class QAbstractGraphicsShapeItem : QGraphicsItem {
  		protected QAbstractGraphicsShapeItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), this);
@@ -40,12 +40,6 @@ namespace Qyoto {
 		[SmokeMethod("opaqueArea() const")]
 		public override QPainterPath OpaqueArea() {
 			return (QPainterPath) interceptor.Invoke("opaqueArea", "opaqueArea() const", typeof(QPainterPath));
-		}
-		~QAbstractGraphicsShapeItem() {
-			interceptor.Invoke("~QAbstractGraphicsShapeItem", "~QAbstractGraphicsShapeItem()", typeof(void));
-		}
-		public void Dispose() {
-			interceptor.Invoke("~QAbstractGraphicsShapeItem", "~QAbstractGraphicsShapeItem()", typeof(void));
 		}
 	}
 }

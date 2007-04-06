@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQToolBoxSignals"></see> for signals emitted by QToolBox
+	///<remarks> See <see cref="IQToolBoxSignals"></see> for signals emitted by QToolBox
+	///</remarks>
+
 	[SmokeClass("QToolBox")]
 	public class QToolBox : QFrame, IDisposable {
  		protected QToolBox(Type dummy) : base((Type) null) {}
@@ -113,10 +115,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QToolBox", "~QToolBox()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQToolBoxSignals Emit {

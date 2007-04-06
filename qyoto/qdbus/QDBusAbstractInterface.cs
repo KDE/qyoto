@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QDBusAbstractInterface")]
-	public abstract class QDBusAbstractInterface : QObject, IDisposable {
+	public abstract class QDBusAbstractInterface : QObject {
  		protected QDBusAbstractInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), this);
@@ -119,16 +119,10 @@ namespace Qyoto {
 		protected QDBusMessage InternalConstCall(QDBus.CallMode mode, string method) {
 			return (QDBusMessage) interceptor.Invoke("internalConstCall$$", "internalConstCall(QDBus::CallMode, const QString&) const", typeof(QDBusMessage), typeof(QDBus.CallMode), mode, typeof(string), method);
 		}
-		~QDBusAbstractInterface() {
-			interceptor.Invoke("~QDBusAbstractInterface", "~QDBusAbstractInterface()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QDBusAbstractInterface", "~QDBusAbstractInterface()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDBusAbstractInterfaceSignals Emit {

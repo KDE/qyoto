@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQTcpServerSignals"></see> for signals emitted by QTcpServer
+	///<remarks> See <see cref="IQTcpServerSignals"></see> for signals emitted by QTcpServer
+	///</remarks>
+
 	[SmokeClass("QTcpServer")]
 	public class QTcpServer : QObject, IDisposable {
  		protected QTcpServer(Type dummy) : base((Type) null) {}
@@ -94,10 +96,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QTcpServer", "~QTcpServer()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTcpServerSignals Emit {

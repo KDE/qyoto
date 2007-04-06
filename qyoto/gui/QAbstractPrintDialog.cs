@@ -74,10 +74,10 @@ namespace Qyoto {
 		public QPrinter Printer() {
 			return (QPrinter) interceptor.Invoke("printer", "printer() const", typeof(QPrinter));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractPrintDialogSignals Emit {

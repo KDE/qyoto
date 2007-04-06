@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
+	///<remarks> See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
+	///</remarks>
+
 	[SmokeClass("QMainWindow")]
 	public class QMainWindow : QWidget, IDisposable {
  		protected QMainWindow(Type dummy) : base((Type) null) {}
@@ -27,7 +29,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
-		public Qt.ToolButtonStyle ToolButtonStyle {
+		public new Qt.ToolButtonStyle ToolButtonStyle {
 			get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
 			set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
 		}
@@ -178,10 +180,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QMainWindow", "~QMainWindow()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQMainWindowSignals Emit {

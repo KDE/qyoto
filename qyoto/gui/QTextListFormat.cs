@@ -22,7 +22,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextListFormat", "QTextListFormat()", typeof(void));
 		}
-		public bool IsValid() {
+		public new bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public void SetStyle(QTextListFormat.Style style) {
@@ -40,7 +40,7 @@ namespace Qyoto {
 		~QTextListFormat() {
 			interceptor.Invoke("~QTextListFormat", "~QTextListFormat()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QTextListFormat", "~QTextListFormat()", typeof(void));
 		}
 	}

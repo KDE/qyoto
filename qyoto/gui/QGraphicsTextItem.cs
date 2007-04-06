@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQGraphicsTextItemSignals"></see> for signals emitted by QGraphicsTextItem
+	///<remarks> See <see cref="IQGraphicsTextItemSignals"></see> for signals emitted by QGraphicsTextItem
+	///</remarks>
+
 	[SmokeClass("QGraphicsTextItem")]
 	public class QGraphicsTextItem : QObject, IQGraphicsItem, IDisposable {
  		protected QGraphicsTextItem(Type dummy) : base((Type) null) {}
@@ -15,7 +17,7 @@ namespace Qyoto {
 		static QGraphicsTextItem() {
 			staticInterceptor = new SmokeInvocation(typeof(QGraphicsTextItem), null);
 		}
-		public const int Type = 8;
+		public new const int Type = 8;
 
 		public QGraphicsTextItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
@@ -622,10 +624,10 @@ namespace Qyoto {
 		protected void PrepareGeometryChange() {
 			interceptor.Invoke("prepareGeometryChange", "prepareGeometryChange()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGraphicsTextItemSignals Emit {

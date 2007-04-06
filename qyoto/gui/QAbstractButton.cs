@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQAbstractButtonSignals"></see> for signals emitted by QAbstractButton
+	///<remarks> See <see cref="IQAbstractButtonSignals"></see> for signals emitted by QAbstractButton
+	///</remarks>
+
 	[SmokeClass("QAbstractButton")]
 	public abstract class QAbstractButton : QWidget {
  		protected QAbstractButton(Type dummy) : base((Type) null) {}
@@ -159,10 +161,10 @@ namespace Qyoto {
 		protected override void TimerEvent(QTimerEvent e) {
 			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), e);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractButtonSignals Emit {

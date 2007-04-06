@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QDateTime(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QDateTime), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -65,13 +65,13 @@ namespace Qyoto {
 		public void SetTime_t(uint secsSince1Jan1970UTC) {
 			interceptor.Invoke("setTime_t$", "setTime_t(uint)", typeof(void), typeof(uint), secsSince1Jan1970UTC);
 		}
-		public string ToString(Qt.DateFormat f) {
+		public new string ToString(Qt.DateFormat f) {
 			return (string) interceptor.Invoke("toString$", "toString(Qt::DateFormat) const", typeof(string), typeof(Qt.DateFormat), f);
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		public string ToString(string format) {
+		public new string ToString(string format) {
 			return (string) interceptor.Invoke("toString$", "toString(const QString&) const", typeof(string), typeof(string), format);
 		}
 		public QDateTime AddDays(int days) {

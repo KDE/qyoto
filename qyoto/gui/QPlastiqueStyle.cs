@@ -122,27 +122,27 @@ namespace Qyoto {
 			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt, QWidget widget) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt, typeof(QWidget), widget);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$", "standardIconImplementation(QStyle::StandardPixmap) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon);
 		}
 		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const")]
-		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option, QWidget widget) {
+		protected new int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option, QWidget widget) {
 			return (int) interceptor.Invoke("layoutSpacingImplementation$$$##", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(int), option, typeof(QWidget), widget);
 		}
 		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const")]
-		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option) {
+		protected new int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, int option) {
 			return (int) interceptor.Invoke("layoutSpacingImplementation$$$#", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(int), option);
 		}
 		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const")]
-		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation) {
+		protected new int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation) {
 			return (int) interceptor.Invoke("layoutSpacingImplementation$$$", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation);
 		}
 		~QPlastiqueStyle() {
@@ -151,10 +151,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QPlastiqueStyle", "~QPlastiqueStyle()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQPlastiqueStyleSignals Emit {

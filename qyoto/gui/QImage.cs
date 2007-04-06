@@ -109,10 +109,10 @@ namespace Qyoto {
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
 			return (QImage) interceptor.Invoke("convertToFormat$?", "convertToFormat(QImage::Format, const QVector<QRgb>&) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable);
 		}
-		public int Width() {
+		public new int Width() {
 			return (int) interceptor.Invoke("width", "width() const", typeof(int));
 		}
-		public int Height() {
+		public new int Height() {
 			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
 		public QSize Size() {
@@ -121,10 +121,10 @@ namespace Qyoto {
 		public QRect Rect() {
 			return (QRect) interceptor.Invoke("rect", "rect() const", typeof(QRect));
 		}
-		public int Depth() {
+		public new int Depth() {
 			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
-		public int NumColors() {
+		public new int NumColors() {
 			return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
 		}
 		public uint Color(int i) {

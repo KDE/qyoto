@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextCharFormat", "QTextCharFormat()", typeof(void));
 		}
-		public bool IsValid() {
+		public new bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public void SetFont(QFont font) {
@@ -158,7 +158,7 @@ namespace Qyoto {
 		~QTextCharFormat() {
 			interceptor.Invoke("~QTextCharFormat", "~QTextCharFormat()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QTextCharFormat", "~QTextCharFormat()", typeof(void));
 		}
 	}

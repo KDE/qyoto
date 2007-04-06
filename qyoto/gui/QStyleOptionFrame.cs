@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionFrame() {
 			interceptor.Invoke("~QStyleOptionFrame", "~QStyleOptionFrame()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionFrame", "~QStyleOptionFrame()", typeof(void));
 		}
 	}

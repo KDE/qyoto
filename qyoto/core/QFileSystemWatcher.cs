@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQFileSystemWatcherSignals"></see> for signals emitted by QFileSystemWatcher
+	///<remarks> See <see cref="IQFileSystemWatcherSignals"></see> for signals emitted by QFileSystemWatcher
+	///</remarks>
+
 	[SmokeClass("QFileSystemWatcher")]
 	public class QFileSystemWatcher : QObject, IDisposable {
  		protected QFileSystemWatcher(Type dummy) : base((Type) null) {}
@@ -55,10 +57,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QFileSystemWatcher", "~QFileSystemWatcher()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQFileSystemWatcherSignals Emit {

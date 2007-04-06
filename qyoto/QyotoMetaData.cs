@@ -145,7 +145,7 @@ namespace Qyoto {
 				MethodFlags flags = MethodFlags.MethodSlot | MethodFlags.AccessPublic;
 				
 				if (entry.scriptable)
-					flags = MethodFlags.MethodScriptable | MethodFlags.MethodSlot | MethodFlags.AccessPublic;
+					flags |= MethodFlags.MethodScriptable;
 				
 				AddMethod(tmp,
 					entry.signature,						// signature

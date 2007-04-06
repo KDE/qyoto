@@ -35,13 +35,13 @@ namespace Qyoto {
 		public string InternalSubset() {
 			return (string) interceptor.Invoke("internalSubset", "internalSubset() const", typeof(string));
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomDocumentType() {
 			interceptor.Invoke("~QDomDocumentType", "~QDomDocumentType()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomDocumentType", "~QDomDocumentType()", typeof(void));
 		}
 	}

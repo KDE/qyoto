@@ -77,7 +77,7 @@ namespace Qyoto {
 		public QDomElement DocumentElement() {
 			return (QDomElement) interceptor.Invoke("documentElement", "documentElement() const", typeof(QDomElement));
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, int errorLine, int errorColumn) {
@@ -164,10 +164,10 @@ namespace Qyoto {
 		public bool SetContent(QXmlInputSource source, QXmlReader reader) {
 			return (bool) interceptor.Invoke("setContent##", "setContent(QXmlInputSource*, QXmlReader*)", typeof(bool), typeof(QXmlInputSource), source, typeof(QXmlReader), reader);
 		}
-		public string ToString(int arg1) {
+		public new string ToString(int arg1) {
 			return (string) interceptor.Invoke("toString$", "toString(int) const", typeof(string), typeof(int), arg1);
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public QByteArray ToByteArray(int arg1) {
@@ -179,7 +179,7 @@ namespace Qyoto {
 		~QDomDocument() {
 			interceptor.Invoke("~QDomDocument", "~QDomDocument()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomDocument", "~QDomDocument()", typeof(void));
 		}
 	}

@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel
+	///<remarks> See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel
+	///</remarks>
+
 	[SmokeClass("QStandardItemModel")]
 	public class QStandardItemModel : QAbstractItemModel, IDisposable {
  		protected QStandardItemModel(Type dummy) : base((Type) null) {}
@@ -155,7 +157,7 @@ namespace Qyoto {
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		public QObject Parent() {
+		public new QObject Parent() {
 			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
 		[SmokeMethod("sort(int, Qt::SortOrder)")]
@@ -229,16 +231,16 @@ namespace Qyoto {
 		public void InsertRow(int row, QStandardItem item) {
 			interceptor.Invoke("insertRow$#", "insertRow(int, QStandardItem*)", typeof(void), typeof(int), row, typeof(QStandardItem), item);
 		}
-		public bool InsertRow(int row, QModelIndex parent) {
+		public new bool InsertRow(int row, QModelIndex parent) {
 			return (bool) interceptor.Invoke("insertRow$#", "insertRow(int, const QModelIndex&)", typeof(bool), typeof(int), row, typeof(QModelIndex), parent);
 		}
-		public bool InsertRow(int row) {
+		public new bool InsertRow(int row) {
 			return (bool) interceptor.Invoke("insertRow$", "insertRow(int)", typeof(bool), typeof(int), row);
 		}
-		public bool InsertColumn(int column, QModelIndex parent) {
+		public new bool InsertColumn(int column, QModelIndex parent) {
 			return (bool) interceptor.Invoke("insertColumn$#", "insertColumn(int, const QModelIndex&)", typeof(bool), typeof(int), column, typeof(QModelIndex), parent);
 		}
-		public bool InsertColumn(int column) {
+		public new bool InsertColumn(int column) {
 			return (bool) interceptor.Invoke("insertColumn$", "insertColumn(int)", typeof(bool), typeof(int), column);
 		}
 		public QStandardItem TakeItem(int row, int column) {
@@ -280,10 +282,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QStandardItemModel", "~QStandardItemModel()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQStandardItemModelSignals Emit {

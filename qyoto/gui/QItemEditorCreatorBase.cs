@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QItemEditorCreatorBase(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QItemEditorCreatorBase), this);
 		}
 		[SmokeMethod("createWidget(QWidget*) const")]

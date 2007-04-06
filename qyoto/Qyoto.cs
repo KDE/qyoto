@@ -23,7 +23,6 @@ namespace Qyoto
 	using System.Diagnostics;
 	using System.Reflection;
 	using System.Text;
-	using System.Text.RegularExpressions;
 	using System.Runtime.InteropServices;
 
 #if DEBUG
@@ -409,7 +408,6 @@ namespace Qyoto
 				parentMeta = MakeMetaObject(t.BaseType, o);
 			}
 			
-			Dictionary<string, CPPMethod> slotTable;
 			ICollection<CPPMethod> slots;
 			
 			// build slot table

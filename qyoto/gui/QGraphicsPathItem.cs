@@ -9,7 +9,7 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QGraphicsPathItem), this);
 		}
-		public const int Type = 2;
+		public new const int Type = 2;
 
 		public QGraphicsPathItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();

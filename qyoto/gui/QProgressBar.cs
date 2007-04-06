@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQProgressBarSignals"></see> for signals emitted by QProgressBar
+	///<remarks> See <see cref="IQProgressBarSignals"></see> for signals emitted by QProgressBar
+	///</remarks>
+
 	[SmokeClass("QProgressBar")]
 	public class QProgressBar : QWidget, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
@@ -48,7 +50,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setTextVisible$", "setTextVisible(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
-		public Qt.Orientation Orientation {
+		public new Qt.Orientation Orientation {
 			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
 			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
@@ -111,10 +113,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QProgressBar", "~QProgressBar()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQProgressBarSignals Emit {

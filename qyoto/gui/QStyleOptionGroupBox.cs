@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionGroupBox() {
 			interceptor.Invoke("~QStyleOptionGroupBox", "~QStyleOptionGroupBox()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionGroupBox", "~QStyleOptionGroupBox()", typeof(void));
 		}
 	}

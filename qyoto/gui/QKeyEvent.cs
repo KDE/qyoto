@@ -35,7 +35,7 @@ namespace Qyoto {
 		public bool Matches(QKeySequence.StandardKey key) {
 			return (bool) interceptor.Invoke("matches$", "matches(QKeySequence::StandardKey) const", typeof(bool), typeof(QKeySequence.StandardKey), key);
 		}
-		public int Modifiers() {
+		public new int Modifiers() {
 			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
 		}
 		public string Text() {

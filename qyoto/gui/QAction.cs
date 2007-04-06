@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQActionSignals"></see> for signals emitted by QAction
+	///<remarks> See <see cref="IQActionSignals"></see> for signals emitted by QAction
+	///</remarks>
+
 	[SmokeClass("QAction")]
 	public class QAction : QObject, IDisposable {
  		protected QAction(Type dummy) : base((Type) null) {}
@@ -84,7 +86,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setShortcut#", "setShortcut(QKeySequence)", typeof(void), typeof(QKeySequence), value); }
 		}
 		[Q_PROPERTY("Qt::ShortcutContext", "shortcutContext")]
-		public Qt.ShortcutContext ShortcutContext {
+		public new Qt.ShortcutContext ShortcutContext {
 			get { return (Qt.ShortcutContext) interceptor.Invoke("shortcutContext", "shortcutContext()", typeof(Qt.ShortcutContext)); }
 			set { interceptor.Invoke("setShortcutContext$", "setShortcutContext(Qt::ShortcutContext)", typeof(void), typeof(Qt.ShortcutContext), value); }
 		}
@@ -201,10 +203,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QAction", "~QAction()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQActionSignals Emit {

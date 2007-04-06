@@ -10,10 +10,10 @@ namespace Qyoto {
 		static QFontDialog() {
 			staticInterceptor = new SmokeInvocation(typeof(QFontDialog), null);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QFont GetFont(bool ok, QFont def, QWidget parent, string caption) {

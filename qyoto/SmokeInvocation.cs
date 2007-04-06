@@ -24,7 +24,6 @@ namespace Qyoto {
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Text;
-	using System.Text.RegularExpressions;
 	using System.Reflection;
 	using System.Runtime.Remoting.Proxies;
 	using System.Runtime.Remoting.Messaging;
@@ -52,15 +51,9 @@ namespace Qyoto {
 	public class SmokeInvocation {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int FindMethodId(string className, string mungedName, string signature);
-			
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int MethodFromMap(int methodId);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
 
 		// The key is a type name of a class which has overriden one or more
 		// virtual methods, and the value is a Hashtable of the smoke type

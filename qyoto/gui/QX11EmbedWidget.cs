@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQX11EmbedWidgetSignals"></see> for signals emitted by QX11EmbedWidget
+	///<remarks> See <see cref="IQX11EmbedWidgetSignals"></see> for signals emitted by QX11EmbedWidget
+	///</remarks>
+
 	[SmokeClass("QX11EmbedWidget")]
 	public class QX11EmbedWidget : QWidget, IDisposable {
  		protected QX11EmbedWidget(Type dummy) : base((Type) null) {}
@@ -55,10 +57,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QX11EmbedWidget", "~QX11EmbedWidget()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQX11EmbedWidgetSignals Emit {

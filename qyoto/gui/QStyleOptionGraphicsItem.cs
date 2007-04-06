@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionGraphicsItem() {
 			interceptor.Invoke("~QStyleOptionGraphicsItem", "~QStyleOptionGraphicsItem()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionGraphicsItem", "~QStyleOptionGraphicsItem()", typeof(void));
 		}
 	}

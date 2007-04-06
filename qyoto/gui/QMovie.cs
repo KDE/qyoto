@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQMovieSignals"></see> for signals emitted by QMovie
+	///<remarks> See <see cref="IQMovieSignals"></see> for signals emitted by QMovie
+	///</remarks>
+
 	[SmokeClass("QMovie")]
 	public class QMovie : QObject, IDisposable {
  		protected QMovie(Type dummy) : base((Type) null) {}
@@ -148,10 +150,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QMovie", "~QMovie()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static List<QByteArray> SupportedFormats() {

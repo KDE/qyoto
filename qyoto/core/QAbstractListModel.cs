@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QAbstractListModel")]
-	public abstract class QAbstractListModel : QAbstractItemModel, IDisposable {
+	public abstract class QAbstractListModel : QAbstractItemModel {
  		protected QAbstractListModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractListModel), this);
@@ -37,16 +37,10 @@ namespace Qyoto {
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
-		~QAbstractListModel() {
-			interceptor.Invoke("~QAbstractListModel", "~QAbstractListModel()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QAbstractListModel", "~QAbstractListModel()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractListModelSignals Emit {

@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QBool(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QBool), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -25,6 +25,13 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QBool", "~QBool()", typeof(void));
+		}
+		public override bool Equals(object o) {
+			if (!(o is QBool)) { return false; }
+			return this == (QBool) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
 		}
 		public static bool operator==(QBool b1, bool b2) {
 			return (bool) staticInterceptor.Invoke("operator==#$", "operator==(QBool, bool)", typeof(bool), typeof(QBool), b1, typeof(bool), b2);

@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
+	///<remarks> See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
+	///</remarks>
+
 	[SmokeClass("QTextDocument")]
 	public class QTextDocument : QObject, IDisposable {
  		protected QTextDocument(Type dummy) : base((Type) null) {}
@@ -262,10 +264,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QTextDocument", "~QTextDocument()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextDocumentSignals Emit {

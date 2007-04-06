@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionSizeGrip() {
 			interceptor.Invoke("~QStyleOptionSizeGrip", "~QStyleOptionSizeGrip()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionSizeGrip", "~QStyleOptionSizeGrip()", typeof(void));
 		}
 	}

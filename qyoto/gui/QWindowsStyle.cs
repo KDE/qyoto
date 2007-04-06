@@ -123,11 +123,11 @@ namespace Qyoto {
 			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int option, QWidget widget) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int option, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), option, typeof(QWidget), widget);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int option) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int option) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), option);
 		}
 		~QWindowsStyle() {
@@ -136,10 +136,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QWindowsStyle", "~QWindowsStyle()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQWindowsStyleSignals Emit {

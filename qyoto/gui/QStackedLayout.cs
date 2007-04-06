@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQStackedLayoutSignals"></see> for signals emitted by QStackedLayout
+	///<remarks> See <see cref="IQStackedLayoutSignals"></see> for signals emitted by QStackedLayout
+	///</remarks>
+
 	[SmokeClass("QStackedLayout")]
 	public class QStackedLayout : QLayout, IDisposable {
  		protected QStackedLayout(Type dummy) : base((Type) null) {}
@@ -31,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QStackedLayout#", "QStackedLayout(QLayout*)", typeof(void), typeof(QLayout), parentLayout);
 		}
-		public int AddWidget(QWidget w) {
+		public new int AddWidget(QWidget w) {
 			return (int) interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(int), typeof(QWidget), w);
 		}
 		public int InsertWidget(int index, QWidget w) {
@@ -85,10 +87,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QStackedLayout", "~QStackedLayout()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQStackedLayoutSignals Emit {

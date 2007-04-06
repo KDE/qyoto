@@ -5,7 +5,9 @@ namespace Qyoto {
 	using System.Reflection;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
+	///<remarks> See <see cref="IQObjectSignals"></see> for signals emitted by QObject
+	///</remarks>
+
 	[SmokeClass("QObject")]
 	public partial class QObject : Qt, IDisposable {
 		private IntPtr smokeObject;
@@ -28,7 +30,7 @@ namespace Qyoto {
 				return Qyoto.GetMetaObject(this);
 			}
 		}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QObject), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -189,7 +191,7 @@ namespace Qyoto {
 		public static uint RegisterUserData() {
 			return (uint) staticInterceptor.Invoke("registerUserData", "registerUserData()", typeof(uint));
 		}
-		protected new IQObjectSignals Emit {
+		protected IQObjectSignals Emit {
 			get { return (IQObjectSignals) Q_EMIT; }
 		}
 	}

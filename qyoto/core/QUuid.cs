@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUuid(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QUuid), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -42,7 +42,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QUuid$", "QUuid(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public bool IsNull() {

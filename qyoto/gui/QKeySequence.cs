@@ -9,7 +9,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QKeySequence(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QKeySequence), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -129,10 +129,10 @@ namespace Qyoto {
 		public bool IsEmpty() {
 			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		public string ToString(QKeySequence.SequenceFormat format) {
+		public new string ToString(QKeySequence.SequenceFormat format) {
 			return (string) interceptor.Invoke("toString$", "toString(QKeySequence::SequenceFormat) const", typeof(string), typeof(QKeySequence.SequenceFormat), format);
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public QKeySequence.SequenceMatch Matches(QKeySequence seq) {

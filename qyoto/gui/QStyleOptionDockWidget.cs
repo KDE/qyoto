@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionDockWidget() {
 			interceptor.Invoke("~QStyleOptionDockWidget", "~QStyleOptionDockWidget()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionDockWidget", "~QStyleOptionDockWidget()", typeof(void));
 		}
 	}

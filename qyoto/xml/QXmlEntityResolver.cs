@@ -13,7 +13,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QXmlEntityResolver(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QXmlEntityResolver), this);
 		}
 		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]

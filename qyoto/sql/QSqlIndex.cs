@@ -37,7 +37,7 @@ namespace Qyoto {
 		public string Name() {
 			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		public void Append(QSqlField field) {
+		public new void Append(QSqlField field) {
 			interceptor.Invoke("append#", "append(const QSqlField&)", typeof(void), typeof(QSqlField), field);
 		}
 		public void Append(QSqlField field, bool desc) {
@@ -52,7 +52,7 @@ namespace Qyoto {
 		~QSqlIndex() {
 			interceptor.Invoke("~QSqlIndex", "~QSqlIndex()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QSqlIndex", "~QSqlIndex()", typeof(void));
 		}
 	}

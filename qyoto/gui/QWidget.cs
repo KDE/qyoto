@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQWidgetSignals"></see> for signals emitted by QWidget
+	///<remarks> See <see cref="IQWidgetSignals"></see> for signals emitted by QWidget
+	///</remarks>
+
 	[SmokeClass("QWidget")]
 	public class QWidget : QObject, IQPaintDevice, IDisposable {
  		protected QWidget(Type dummy) : base((Type) null) {}
@@ -20,7 +22,7 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isModal", "isModal()", typeof(bool)); }
 		}
 		[Q_PROPERTY("Qt::WindowModality", "windowModality")]
-		public Qt.WindowModality WindowModality {
+		public new Qt.WindowModality WindowModality {
 			get { return (Qt.WindowModality) interceptor.Invoke("windowModality", "windowModality()", typeof(Qt.WindowModality)); }
 			set { interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), value); }
 		}
@@ -146,7 +148,7 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isActiveWindow", "isActiveWindow()", typeof(bool)); }
 		}
 		[Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
-		public Qt.FocusPolicy FocusPolicy {
+		public new Qt.FocusPolicy FocusPolicy {
 			get { return (Qt.FocusPolicy) interceptor.Invoke("focusPolicy", "focusPolicy()", typeof(Qt.FocusPolicy)); }
 			set { interceptor.Invoke("setFocusPolicy$", "setFocusPolicy(Qt::FocusPolicy)", typeof(void), typeof(Qt.FocusPolicy), value); }
 		}
@@ -155,7 +157,7 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("hasFocus", "hasFocus()", typeof(bool)); }
 		}
 		[Q_PROPERTY("Qt::ContextMenuPolicy", "contextMenuPolicy")]
-		public Qt.ContextMenuPolicy ContextMenuPolicy {
+		public new Qt.ContextMenuPolicy ContextMenuPolicy {
 			get { return (Qt.ContextMenuPolicy) interceptor.Invoke("contextMenuPolicy", "contextMenuPolicy()", typeof(Qt.ContextMenuPolicy)); }
 			set { interceptor.Invoke("setContextMenuPolicy$", "setContextMenuPolicy(Qt::ContextMenuPolicy)", typeof(void), typeof(Qt.ContextMenuPolicy), value); }
 		}
@@ -232,7 +234,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setAccessibleDescription$", "setAccessibleDescription(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
-		public Qt.LayoutDirection LayoutDirection {
+		public new Qt.LayoutDirection LayoutDirection {
 			get { return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection)); }
 			set { interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), value); }
 		}
@@ -933,10 +935,10 @@ namespace Qyoto {
 		public int Depth() {
 			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static void SetTabOrder(QWidget arg1, QWidget arg2) {

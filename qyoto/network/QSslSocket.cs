@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQSslSocketSignals"></see> for signals emitted by QSslSocket
+	///<remarks> See <see cref="IQSslSocketSignals"></see> for signals emitted by QSslSocket
+	///</remarks>
+
 	[SmokeClass("QSslSocket")]
 	public class QSslSocket : QTcpSocket, IDisposable {
  		protected QSslSocket(Type dummy) : base((Type) null) {}
@@ -146,11 +148,11 @@ namespace Qyoto {
 			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
 		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
-		protected void ConnectToHostImplementation(string hostName, ushort port, int openMode) {
+		protected new void ConnectToHostImplementation(string hostName, ushort port, int openMode) {
 			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(int), openMode);
 		}
 		[Q_SLOT("void disconnectFromHostImplementation()")]
-		protected void DisconnectFromHostImplementation() {
+		protected new void DisconnectFromHostImplementation() {
 			interceptor.Invoke("disconnectFromHostImplementation", "disconnectFromHostImplementation()", typeof(void));
 		}
 		~QSslSocket() {
@@ -159,10 +161,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSslSocket", "~QSslSocket()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static void ResetGlobalCiphers() {

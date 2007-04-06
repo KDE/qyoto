@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQCompleterSignals"></see> for signals emitted by QCompleter
+	///<remarks> See <see cref="IQCompleterSignals"></see> for signals emitted by QCompleter
+	///</remarks>
+
 	[SmokeClass("QCompleter")]
 	public class QCompleter : QObject, IDisposable {
  		protected QCompleter(Type dummy) : base((Type) null) {}
@@ -51,7 +53,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setCompletionRole$", "setCompletionRole(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "caseSensitivity")]
-		public Qt.CaseSensitivity CaseSensitivity {
+		public new Qt.CaseSensitivity CaseSensitivity {
 			get { return (Qt.CaseSensitivity) interceptor.Invoke("caseSensitivity", "caseSensitivity()", typeof(Qt.CaseSensitivity)); }
 			set { interceptor.Invoke("setCaseSensitivity$", "setCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), value); }
 		}
@@ -150,10 +152,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QCompleter", "~QCompleter()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQCompleterSignals Emit {

@@ -3,9 +3,11 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQAbstractSliderSignals"></see> for signals emitted by QAbstractSlider
+	///<remarks> See <see cref="IQAbstractSliderSignals"></see> for signals emitted by QAbstractSlider
+	///</remarks>
+
 	[SmokeClass("QAbstractSlider")]
-	public abstract class QAbstractSlider : QWidget, IDisposable {
+	public abstract class QAbstractSlider : QWidget {
  		protected QAbstractSlider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractSlider), this);
@@ -66,7 +68,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setTracking$", "setTracking(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
-		public Qt.Orientation Orientation {
+		public new Qt.Orientation Orientation {
 			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
 			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
@@ -141,16 +143,10 @@ namespace Qyoto {
 		protected override void ChangeEvent(QEvent e) {
 			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
 		}
-		~QAbstractSlider() {
-			interceptor.Invoke("~QAbstractSlider", "~QAbstractSlider()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QAbstractSlider", "~QAbstractSlider()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractSliderSignals Emit {

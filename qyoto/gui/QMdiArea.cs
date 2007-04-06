@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQMdiAreaSignals"></see> for signals emitted by QMdiArea
+	///<remarks> See <see cref="IQMdiAreaSignals"></see> for signals emitted by QMdiArea
+	///</remarks>
+
 	[SmokeClass("QMdiArea")]
 	public class QMdiArea : QAbstractScrollArea, IDisposable {
  		protected QMdiArea(Type dummy) : base((Type) null) {}
@@ -131,7 +133,7 @@ namespace Qyoto {
 			interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
 		[Q_SLOT("void setupViewport(QWidget*)")]
-		protected void SetupViewport(QWidget viewport) {
+		protected new void SetupViewport(QWidget viewport) {
 			interceptor.Invoke("setupViewport#", "setupViewport(QWidget*)", typeof(void), typeof(QWidget), viewport);
 		}
 		~QMdiArea() {
@@ -140,10 +142,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QMdiArea", "~QMdiArea()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQMdiAreaSignals Emit {

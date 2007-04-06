@@ -4,9 +4,11 @@ namespace Qyoto {
 	using System;
 	using System.Text;
 
-	/// See <see cref="IQAbstractSpinBoxSignals"></see> for signals emitted by QAbstractSpinBox
+	///<remarks> See <see cref="IQAbstractSpinBoxSignals"></see> for signals emitted by QAbstractSpinBox
+	///</remarks>
+
 	[SmokeClass("QAbstractSpinBox")]
-	public abstract class QAbstractSpinBox : QWidget, IDisposable {
+	public abstract class QAbstractSpinBox : QWidget {
  		protected QAbstractSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractSpinBox), this);
@@ -248,16 +250,10 @@ namespace Qyoto {
 		protected virtual int StepEnabled() {
 			return (int) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(int));
 		}
-		~QAbstractSpinBox() {
-			interceptor.Invoke("~QAbstractSpinBox", "~QAbstractSpinBox()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QAbstractSpinBox", "~QAbstractSpinBox()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractSpinBoxSignals Emit {

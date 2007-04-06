@@ -82,7 +82,7 @@ namespace Qyoto {
 		public override QItemSelection MapSelectionFromSource(QItemSelection sourceSelection) {
 			return (QItemSelection) interceptor.Invoke("mapSelectionFromSource#", "mapSelectionFromSource(const QItemSelection&) const", typeof(QItemSelection), typeof(QItemSelection), sourceSelection);
 		}
-		public QObject Parent() {
+		public new QObject Parent() {
 			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
 		[SmokeMethod("index(int, int, const QModelIndex&) const")]
@@ -269,10 +269,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSortFilterProxyModel", "~QSortFilterProxyModel()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSortFilterProxyModelSignals Emit {

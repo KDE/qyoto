@@ -13,7 +13,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextImageFormat", "QTextImageFormat()", typeof(void));
 		}
-		public bool IsValid() {
+		public new bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public void SetName(string name) {
@@ -37,7 +37,7 @@ namespace Qyoto {
 		~QTextImageFormat() {
 			interceptor.Invoke("~QTextImageFormat", "~QTextImageFormat()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QTextImageFormat", "~QTextImageFormat()", typeof(void));
 		}
 	}

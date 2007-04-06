@@ -50,10 +50,10 @@ namespace Qyoto {
 		public override int DevType() {
 			return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
 		}
-		public int Width() {
+		public new int Width() {
 			return (int) interceptor.Invoke("width", "width() const", typeof(int));
 		}
-		public int Height() {
+		public new int Height() {
 			return (int) interceptor.Invoke("height", "height() const", typeof(int));
 		}
 		public QSize Size() {
@@ -62,7 +62,7 @@ namespace Qyoto {
 		public QRect Rect() {
 			return (QRect) interceptor.Invoke("rect", "rect() const", typeof(QRect));
 		}
-		public int Depth() {
+		public new int Depth() {
 			return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
 		}
 		public void Fill(QColor fillColor) {

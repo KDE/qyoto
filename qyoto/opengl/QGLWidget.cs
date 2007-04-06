@@ -127,7 +127,7 @@ namespace Qyoto {
 		public QGLContext OverlayContext() {
 			return (QGLContext) interceptor.Invoke("overlayContext", "overlayContext() const", typeof(QGLContext));
 		}
-		public void SetMouseTracking(bool enable) {
+		public new void SetMouseTracking(bool enable) {
 			interceptor.Invoke("setMouseTracking$", "setMouseTracking(bool)", typeof(void), typeof(bool), enable);
 		}
 		public QGLColormap Colormap() {
@@ -254,10 +254,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QGLWidget", "~QGLWidget()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QImage ConvertToGLFormat(QImage img) {

@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQAbstractItemDelegateSignals"></see> for signals emitted by QAbstractItemDelegate
+	///<remarks> See <see cref="IQAbstractItemDelegateSignals"></see> for signals emitted by QAbstractItemDelegate
+	///</remarks>
+
 	[SmokeClass("QAbstractItemDelegate")]
 	public abstract class QAbstractItemDelegate : QObject {
  		protected QAbstractItemDelegate(Type dummy) : base((Type) null) {}
@@ -57,10 +59,10 @@ namespace Qyoto {
 		public bool HelpEvent(QHelpEvent arg1, QAbstractItemView view, QStyleOptionViewItem option, QModelIndex index) {
 			return (bool) interceptor.Invoke("helpEvent####", "helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QHelpEvent), arg1, typeof(QAbstractItemView), view, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text) {

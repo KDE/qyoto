@@ -20,13 +20,13 @@ namespace Qyoto {
 		public QDomText SplitText(int offset) {
 			return (QDomText) interceptor.Invoke("splitText$", "splitText(int)", typeof(QDomText), typeof(int), offset);
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomText() {
 			interceptor.Invoke("~QDomText", "~QDomText()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomText", "~QDomText()", typeof(void));
 		}
 	}

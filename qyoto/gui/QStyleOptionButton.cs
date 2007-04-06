@@ -37,7 +37,7 @@ namespace Qyoto {
 		~QStyleOptionButton() {
 			interceptor.Invoke("~QStyleOptionButton", "~QStyleOptionButton()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionButton", "~QStyleOptionButton()", typeof(void));
 		}
 	}

@@ -78,7 +78,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setIconPixmap#", "setIconPixmap(QPixmap)", typeof(void), typeof(QPixmap), value); }
 		}
 		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
-		public Qt.TextFormat TextFormat {
+		public new Qt.TextFormat TextFormat {
 			get { return (Qt.TextFormat) interceptor.Invoke("textFormat", "textFormat()", typeof(Qt.TextFormat)); }
 			set { interceptor.Invoke("setTextFormat$", "setTextFormat(Qt::TextFormat)", typeof(void), typeof(Qt.TextFormat), value); }
 		}
@@ -182,10 +182,10 @@ namespace Qyoto {
 		public void SetButtonText(int button, string text) {
 			interceptor.Invoke("setButtonText$$", "setButtonText(int, const QString&)", typeof(void), typeof(int), button, typeof(string), text);
 		}
-		public void SetWindowTitle(string title) {
+		public new void SetWindowTitle(string title) {
 			interceptor.Invoke("setWindowTitle$", "setWindowTitle(const QString&)", typeof(void), typeof(string), title);
 		}
-		public void SetWindowModality(Qt.WindowModality windowModality) {
+		public new void SetWindowModality(Qt.WindowModality windowModality) {
 			interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), windowModality);
 		}
 		[SmokeMethod("event(QEvent*)")]
@@ -218,10 +218,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QMessageBox", "~QMessageBox()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {

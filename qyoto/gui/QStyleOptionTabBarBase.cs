@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionTabBarBase() {
 			interceptor.Invoke("~QStyleOptionTabBarBase", "~QStyleOptionTabBarBase()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionTabBarBase", "~QStyleOptionTabBarBase()", typeof(void));
 		}
 	}

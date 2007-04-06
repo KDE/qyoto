@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQMenuSignals"></see> for signals emitted by QMenu
+	///<remarks> See <see cref="IQMenuSignals"></see> for signals emitted by QMenu
+	///</remarks>
+
 	[SmokeClass("QMenu")]
 	public class QMenu : QWidget, IDisposable {
  		protected QMenu(Type dummy) : base((Type) null) {}
@@ -51,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QMenu$", "QMenu(const QString&)", typeof(void), typeof(string), title);
 		}
-		public void AddAction(QAction action) {
+		public new void AddAction(QAction action) {
 			interceptor.Invoke("addAction#", "addAction(QAction*)", typeof(void), typeof(QAction), action);
 		}
 		public QAction AddAction(string text) {
@@ -216,10 +218,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QMenu", "~QMenu()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static QAction Exec(List<QAction> actions, QPoint pos, QAction at) {

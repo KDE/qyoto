@@ -20,10 +20,10 @@ namespace Qyoto {
 		public QRect AnswerRect() {
 			return (QRect) interceptor.Invoke("answerRect", "answerRect() const", typeof(QRect));
 		}
-		public void Accept() {
+		public new void Accept() {
 			interceptor.Invoke("accept", "accept()", typeof(void));
 		}
-		public void Ignore() {
+		public new void Ignore() {
 			interceptor.Invoke("ignore", "ignore()", typeof(void));
 		}
 		public void Accept(QRect r) {

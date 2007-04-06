@@ -33,10 +33,10 @@ namespace Qyoto {
 		protected List<QTextBlock> BlockList() {
 			return (List<QTextBlock>) interceptor.Invoke("blockList", "blockList() const", typeof(List<QTextBlock>));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTextBlockGroupSignals Emit {

@@ -51,7 +51,7 @@ namespace Qyoto {
 		~QStylePainter() {
 			interceptor.Invoke("~QStylePainter", "~QStylePainter()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStylePainter", "~QStylePainter()", typeof(void));
 		}
 	}

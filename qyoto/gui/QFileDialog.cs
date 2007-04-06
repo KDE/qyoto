@@ -5,7 +5,9 @@ namespace Qyoto {
 	using System.Text;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQFileDialogSignals"></see> for signals emitted by QFileDialog
+	///<remarks> See <see cref="IQFileDialogSignals"></see> for signals emitted by QFileDialog
+	///</remarks>
+
 	[SmokeClass("QFileDialog")]
 	public class QFileDialog : QDialog, IDisposable {
  		protected QFileDialog(Type dummy) : base((Type) null) {}
@@ -211,10 +213,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QFileDialog", "~QFileDialog()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {

@@ -14,7 +14,7 @@ namespace Qyoto {
 			BoundingRectShape = 1,
 			HeuristicMaskShape = 2,
 		}
-		public const int Type = 7;
+		public new const int Type = 7;
 
 		public QGraphicsPixmapItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();

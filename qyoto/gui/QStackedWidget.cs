@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQStackedWidgetSignals"></see> for signals emitted by QStackedWidget
+	///<remarks> See <see cref="IQStackedWidgetSignals"></see> for signals emitted by QStackedWidget
+	///</remarks>
+
 	[SmokeClass("QStackedWidget")]
 	public class QStackedWidget : QFrame, IDisposable {
  		protected QStackedWidget(Type dummy) : base((Type) null) {}
@@ -63,10 +65,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QStackedWidget", "~QStackedWidget()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQStackedWidgetSignals Emit {

@@ -32,7 +32,7 @@ namespace Qyoto {
 		~QIconEngineV2() {
 			interceptor.Invoke("~QIconEngineV2", "~QIconEngineV2()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~QIconEngineV2", "~QIconEngineV2()", typeof(void));
 		}
 	}

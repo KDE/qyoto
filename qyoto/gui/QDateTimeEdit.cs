@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Text;
 
-	/// See <see cref="IQDateTimeEditSignals"></see> for signals emitted by QDateTimeEdit
+	///<remarks> See <see cref="IQDateTimeEditSignals"></see> for signals emitted by QDateTimeEdit
+	///</remarks>
+
 	[SmokeClass("QDateTimeEdit")]
 	public class QDateTimeEdit : QAbstractSpinBox, IDisposable {
  		protected QDateTimeEdit(Type dummy) : base((Type) null) {}
@@ -210,7 +212,7 @@ namespace Qyoto {
 		protected override void PaintEvent(QPaintEvent arg1) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		protected void InitStyleOption(QStyleOptionSpinBox option) {
+		protected new void InitStyleOption(QStyleOptionSpinBox option) {
 			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSpinBox*) const", typeof(void), typeof(QStyleOptionSpinBox), option);
 		}
 		~QDateTimeEdit() {
@@ -219,10 +221,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QDateTimeEdit", "~QDateTimeEdit()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDateTimeEditSignals Emit {

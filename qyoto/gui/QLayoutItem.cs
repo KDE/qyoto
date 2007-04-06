@@ -27,7 +27,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QLayoutItem(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QLayoutItem), this);
 		}
 		// QSizePolicy::ControlTypes controlTypes(); >>>> NOT CONVERTED

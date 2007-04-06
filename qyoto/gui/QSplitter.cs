@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQSplitterSignals"></see> for signals emitted by QSplitter
+	///<remarks> See <see cref="IQSplitterSignals"></see> for signals emitted by QSplitter
+	///</remarks>
+
 	[SmokeClass("QSplitter")]
 	public class QSplitter : QFrame, IDisposable {
  		protected QSplitter(Type dummy) : base((Type) null) {}
@@ -16,7 +18,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QSplitter), null);
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
-		public Qt.Orientation Orientation {
+		public new Qt.Orientation Orientation {
 			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
 			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
@@ -136,10 +138,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSplitter", "~QSplitter()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSplitterSignals Emit {

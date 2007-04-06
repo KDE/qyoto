@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQSqlTableModelSignals"></see> for signals emitted by QSqlTableModel
+	///<remarks> See <see cref="IQSqlTableModelSignals"></see> for signals emitted by QSqlTableModel
+	///</remarks>
+
 	[SmokeClass("QSqlTableModel")]
 	public class QSqlTableModel : QSqlQueryModel, IDisposable {
  		protected QSqlTableModel(Type dummy) : base((Type) null) {}
@@ -191,10 +193,10 @@ namespace Qyoto {
 		protected void SetPrimaryKey(QSqlIndex key) {
 			interceptor.Invoke("setPrimaryKey#", "setPrimaryKey(const QSqlIndex&)", typeof(void), typeof(QSqlIndex), key);
 		}
-		protected void SetQuery(IQSqlQuery query) {
+		protected new void SetQuery(IQSqlQuery query) {
 			interceptor.Invoke("setQuery#", "setQuery(const QSqlQuery&)", typeof(void), typeof(IQSqlQuery), query);
 		}
-		protected QModelIndex IndexInQuery(QModelIndex item) {
+		protected new QModelIndex IndexInQuery(QModelIndex item) {
 			return (QModelIndex) interceptor.Invoke("indexInQuery#", "indexInQuery(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), item);
 		}
 		~QSqlTableModel() {
@@ -203,10 +205,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSqlTableModel", "~QSqlTableModel()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSqlTableModelSignals Emit {

@@ -119,15 +119,15 @@ namespace Qyoto {
 			return (QPixmap) interceptor.Invoke("generatedIconPixmap$##", "generatedIconPixmap(QIcon::Mode, const QPixmap&, const QStyleOption*) const", typeof(QPixmap), typeof(QIcon.Mode), iconMode, typeof(QPixmap), pixmap, typeof(int), opt);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt, QWidget widget) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt, typeof(QWidget), widget);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int opt) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), opt);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$", "standardIconImplementation(QStyle::StandardPixmap) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon);
 		}
 		~QCommonStyle() {
@@ -136,10 +136,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QCommonStyle", "~QCommonStyle()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQCommonStyleSignals Emit {

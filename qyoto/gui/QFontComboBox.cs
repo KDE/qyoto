@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQFontComboBoxSignals"></see> for signals emitted by QFontComboBox
+	///<remarks> See <see cref="IQFontComboBoxSignals"></see> for signals emitted by QFontComboBox
+	///</remarks>
+
 	[SmokeClass("QFontComboBox")]
 	public class QFontComboBox : QComboBox, IDisposable {
  		protected QFontComboBox(Type dummy) : base((Type) null) {}
@@ -58,10 +60,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QFontComboBox", "~QFontComboBox()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQFontComboBoxSignals Emit {

@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQDialogButtonBoxSignals"></see> for signals emitted by QDialogButtonBox
+	///<remarks> See <see cref="IQDialogButtonBoxSignals"></see> for signals emitted by QDialogButtonBox
+	///</remarks>
+
 	[SmokeClass("QDialogButtonBox")]
 	public class QDialogButtonBox : QWidget, IDisposable {
  		protected QDialogButtonBox(Type dummy) : base((Type) null) {}
@@ -58,7 +60,7 @@ namespace Qyoto {
 			GnomeLayout = 3,
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
-		public Qt.Orientation Orientation {
+		public new Qt.Orientation Orientation {
 			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
 			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
@@ -141,10 +143,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QDialogButtonBox", "~QDialogButtonBox()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDialogButtonBoxSignals Emit {

@@ -28,22 +28,22 @@ namespace Qyoto {
 		public QRubberBand.Shape shape() {
 			return (QRubberBand.Shape) interceptor.Invoke("shape", "shape() const", typeof(QRubberBand.Shape));
 		}
-		public void SetGeometry(QRect r) {
+		public new void SetGeometry(QRect r) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		public void SetGeometry(int x, int y, int w, int h) {
+		public new void SetGeometry(int x, int y, int w, int h) {
 			interceptor.Invoke("setGeometry$$$$", "setGeometry(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		public void Move(int x, int y) {
+		public new void Move(int x, int y) {
 			interceptor.Invoke("move$$", "move(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		public void Move(QPoint p) {
+		public new void Move(QPoint p) {
 			interceptor.Invoke("move#", "move(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
-		public void Resize(int w, int h) {
+		public new void Resize(int w, int h) {
 			interceptor.Invoke("resize$$", "resize(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
-		public void Resize(QSize s) {
+		public new void Resize(QSize s) {
 			interceptor.Invoke("resize#", "resize(const QSize&)", typeof(void), typeof(QSize), s);
 		}
 		[SmokeMethod("event(QEvent*)")]
@@ -79,10 +79,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QRubberBand", "~QRubberBand()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQRubberBandSignals Emit {

@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QAccessibleApplication")]
-	public abstract class QAccessibleApplication : QAccessibleObject, IDisposable {
+	public abstract class QAccessibleApplication : QAccessibleObject {
  		protected QAccessibleApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAccessibleApplication), this);
@@ -57,12 +57,6 @@ namespace Qyoto {
 		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {
 			return (string) interceptor.Invoke("actionText$$$", "actionText(int, QAccessible::Text, int) const", typeof(string), typeof(int), action, typeof(QAccessible.Text), t, typeof(int), child);
-		}
-		~QAccessibleApplication() {
-			interceptor.Invoke("~QAccessibleApplication", "~QAccessibleApplication()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QAccessibleApplication", "~QAccessibleApplication()", typeof(void));
 		}
 	}
 }

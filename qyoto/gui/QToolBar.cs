@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQToolBarSignals"></see> for signals emitted by QToolBar
+	///<remarks> See <see cref="IQToolBarSignals"></see> for signals emitted by QToolBar
+	///</remarks>
+
 	[SmokeClass("QToolBar")]
 	public class QToolBar : QWidget, IDisposable {
  		protected QToolBar(Type dummy) : base((Type) null) {}
@@ -25,7 +27,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::ToolBarAreas)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
-		public Qt.Orientation Orientation {
+		public new Qt.Orientation Orientation {
 			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
 			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
@@ -35,7 +37,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
-		public Qt.ToolButtonStyle ToolButtonStyle {
+		public new Qt.ToolButtonStyle ToolButtonStyle {
 			get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
 			set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
 		}
@@ -64,7 +66,7 @@ namespace Qyoto {
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		public void AddAction(QAction action) {
+		public new void AddAction(QAction action) {
 			interceptor.Invoke("addAction#", "addAction(QAction*)", typeof(void), typeof(QAction), action);
 		}
 		public QAction AddAction(string text) {
@@ -139,10 +141,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QToolBar", "~QToolBar()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQToolBarSignals Emit {

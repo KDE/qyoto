@@ -143,7 +143,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGraphicsItem(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QGraphicsItem), this);
 		}
 		public enum GraphicsItemFlag {
@@ -171,7 +171,7 @@ namespace Qyoto {
 		public enum Extension : long {
 			UserExtension = 0x80000000,
 		}
-		public const int Type = 1;
+		public new const int Type = 1;
 		public const int UserType = 65536;
 
 		public QGraphicsItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {

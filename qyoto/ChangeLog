@@ -1,3 +1,9 @@
+2007-04-06  Richard Dale  <rdale@foton.es>
+
+	* Improved the code generation to fix some of the many warnings, and fixed
+	  some compiler warnings in the Qyoto runtime code too.
+	* Added a MonoDevelop project for the Qyoto source files
+
 2007-04-05  Richard Dale  <rdale@foton.es>
 
 	* Regenerated the Qyoto classes from the Qt 4.3 headers, and added new 

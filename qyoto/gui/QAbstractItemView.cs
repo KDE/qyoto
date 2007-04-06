@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQAbstractItemViewSignals"></see> for signals emitted by QAbstractItemView
+	///<remarks> See <see cref="IQAbstractItemViewSignals"></see> for signals emitted by QAbstractItemView
+	///</remarks>
+
 	[SmokeClass("QAbstractItemView")]
 	public abstract class QAbstractItemView : QAbstractScrollArea {
  		protected QAbstractItemView(Type dummy) : base((Type) null) {}
@@ -136,7 +138,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
 		[Q_PROPERTY("Qt::TextElideMode", "textElideMode")]
-		public Qt.TextElideMode TextElideMode {
+		public new Qt.TextElideMode TextElideMode {
 			get { return (Qt.TextElideMode) interceptor.Invoke("textElideMode", "textElideMode()", typeof(Qt.TextElideMode)); }
 			set { interceptor.Invoke("setTextElideMode$", "setTextElideMode(Qt::TextElideMode)", typeof(void), typeof(Qt.TextElideMode), value); }
 		}
@@ -510,10 +512,10 @@ namespace Qyoto {
 		protected virtual void EditorDestroyed(QObject editor) {
 			interceptor.Invoke("editorDestroyed#", "editorDestroyed(QObject*)", typeof(void), typeof(QObject), editor);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractItemViewSignals Emit {

@@ -39,7 +39,7 @@ namespace Qyoto {
 		~QConicalGradient() {
 			interceptor.Invoke("~QConicalGradient", "~QConicalGradient()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QConicalGradient", "~QConicalGradient()", typeof(void));
 		}
 	}

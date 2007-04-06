@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QHostAddress(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QHostAddress), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
@@ -62,7 +62,7 @@ namespace Qyoto {
 		public uint ToIPv4Address() {
 			return (uint) interceptor.Invoke("toIPv4Address", "toIPv4Address() const", typeof(uint));
 		}
-		public string ToString() {
+		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
 		public string ScopeId() {

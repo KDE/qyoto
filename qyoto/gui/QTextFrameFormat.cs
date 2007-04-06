@@ -18,7 +18,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextFrameFormat", "QTextFrameFormat()", typeof(void));
 		}
-		public bool IsValid() {
+		public new bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public void SetPosition(QTextFrameFormat.Position f) {
@@ -96,7 +96,7 @@ namespace Qyoto {
 		~QTextFrameFormat() {
 			interceptor.Invoke("~QTextFrameFormat", "~QTextFrameFormat()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QTextFrameFormat", "~QTextFrameFormat()", typeof(void));
 		}
 	}

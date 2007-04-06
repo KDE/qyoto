@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQLabelSignals"></see> for signals emitted by QLabel
+	///<remarks> See <see cref="IQLabelSignals"></see> for signals emitted by QLabel
+	///</remarks>
+
 	[SmokeClass("QLabel")]
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
@@ -20,7 +22,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
-		public Qt.TextFormat TextFormat {
+		public new Qt.TextFormat TextFormat {
 			get { return (Qt.TextFormat) interceptor.Invoke("textFormat", "textFormat()", typeof(Qt.TextFormat)); }
 			set { interceptor.Invoke("setTextFormat$", "setTextFormat(Qt::TextFormat)", typeof(void), typeof(Qt.TextFormat), value); }
 		}
@@ -185,10 +187,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QLabel", "~QLabel()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQLabelSignals Emit {

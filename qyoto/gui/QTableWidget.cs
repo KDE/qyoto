@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQTableWidgetSignals"></see> for signals emitted by QTableWidget
+	///<remarks> See <see cref="IQTableWidgetSignals"></see> for signals emitted by QTableWidget
+	///</remarks>
+
 	[SmokeClass("QTableWidget")]
 	public class QTableWidget : QTableView, IDisposable {
  		protected QTableWidget(Type dummy) : base((Type) null) {}
@@ -101,10 +103,10 @@ namespace Qyoto {
 		public void SortItems(int column) {
 			interceptor.Invoke("sortItems$", "sortItems(int)", typeof(void), typeof(int), column);
 		}
-		public void SetSortingEnabled(bool enable) {
+		public new void SetSortingEnabled(bool enable) {
 			interceptor.Invoke("setSortingEnabled$", "setSortingEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
-		public bool IsSortingEnabled() {
+		public new bool IsSortingEnabled() {
 			return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled() const", typeof(bool));
 		}
 		public void EditItem(QTableWidgetItem item) {
@@ -235,10 +237,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QTableWidget", "~QTableWidget()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQTableWidgetSignals Emit {

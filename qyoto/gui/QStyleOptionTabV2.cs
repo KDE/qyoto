@@ -31,7 +31,7 @@ namespace Qyoto {
 		~QStyleOptionTabV2() {
 			interceptor.Invoke("~QStyleOptionTabV2", "~QStyleOptionTabV2()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionTabV2", "~QStyleOptionTabV2()", typeof(void));
 		}
 	}

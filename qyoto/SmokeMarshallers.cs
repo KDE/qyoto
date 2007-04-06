@@ -196,7 +196,7 @@ namespace Qyoto {
 			}
 
 			Object instance = ((GCHandle) instancePtr).Target;
-			Debug.Assert(instance != null);
+//			Debug.Assert(instance != null);
 
 			SmokeClassData data = GetSmokeClassData(instance.GetType());
 			return (IntPtr) data.smokeObjectField.GetValue(instance);
@@ -204,7 +204,7 @@ namespace Qyoto {
 		
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
-			Debug.Assert(instance != null);
+//			Debug.Assert(instance != null);
 
 			SmokeClassData data = GetSmokeClassData(instance.GetType());
 			data.smokeObjectField.SetValue(instance, smokeObjectPtr);
@@ -388,8 +388,8 @@ namespace Qyoto {
 
 			result.constructorInfo = t.GetConstructor(BindingFlags.NonPublic 
 				| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
-			Debug.Assert(	result.constructorInfo != null,
-							"GetSmokeClassData(\"" + result.className + "\") constructor method missing" );
+//			Debug.Assert(	result.constructorInfo != null,
+//							"GetSmokeClassData(\"" + result.className + "\") constructor method missing" );
 
 			Type klass = t;
 			do {
@@ -400,8 +400,8 @@ namespace Qyoto {
 				klass = klass.BaseType;
 			} while (result.proxyCreator == null && klass != typeof(object));
 
-			Debug.Assert(	result.proxyCreator != null, 
-							"GetSmokeClassData(\"" + result.className + "\") no CreateProxy() found" );
+//			Debug.Assert(	result.proxyCreator != null, 
+//							"GetSmokeClassData(\"" + result.className + "\") no CreateProxy() found" );
 
 			result.smokeObjectField = t.GetField(	"smokeObject", 
 													BindingFlags.NonPublic 

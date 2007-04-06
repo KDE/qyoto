@@ -107,10 +107,10 @@ namespace Qyoto {
 		public void SetTagName(string name) {
 			interceptor.Invoke("setTagName$", "setTagName(const QString&)", typeof(void), typeof(string), name);
 		}
-		public QDomNamedNodeMap Attributes() {
+		public new QDomNamedNodeMap Attributes() {
 			return (QDomNamedNodeMap) interceptor.Invoke("attributes", "attributes() const", typeof(QDomNamedNodeMap));
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		public string Text() {
@@ -119,7 +119,7 @@ namespace Qyoto {
 		~QDomElement() {
 			interceptor.Invoke("~QDomElement", "~QDomElement()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomElement", "~QDomElement()", typeof(void));
 		}
 	}

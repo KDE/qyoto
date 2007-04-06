@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionRubberBand() {
 			interceptor.Invoke("~QStyleOptionRubberBand", "~QStyleOptionRubberBand()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionRubberBand", "~QStyleOptionRubberBand()", typeof(void));
 		}
 	}

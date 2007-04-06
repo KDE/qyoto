@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
+	///<remarks> See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
+	///</remarks>
+
 	[SmokeClass("QGroupBox")]
 	public class QGroupBox : QWidget, IDisposable {
  		protected QGroupBox(Type dummy) : base((Type) null) {}
@@ -113,10 +115,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QGroupBox", "~QGroupBox()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQGroupBoxSignals Emit {

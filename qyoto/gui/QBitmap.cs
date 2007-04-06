@@ -50,13 +50,13 @@ namespace Qyoto {
 		~QBitmap() {
 			interceptor.Invoke("~QBitmap", "~QBitmap()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QBitmap", "~QBitmap()", typeof(void));
 		}
-		public static QBitmap FromImage(QImage image, int flags) {
+		public static new QBitmap FromImage(QImage image, int flags) {
 			return (QBitmap) staticInterceptor.Invoke("fromImage#$", "fromImage(const QImage&, Qt::ImageConversionFlags)", typeof(QBitmap), typeof(QImage), image, typeof(int), flags);
 		}
-		public static QBitmap FromImage(QImage image) {
+		public static new QBitmap FromImage(QImage image) {
 			return (QBitmap) staticInterceptor.Invoke("fromImage#", "fromImage(const QImage&)", typeof(QBitmap), typeof(QImage), image);
 		}
 		public static QBitmap FromData(QSize size, char[] bits, QImage.Format monoFormat) {

@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQIODeviceSignals"></see> for signals emitted by QIODevice
+	///<remarks> See <see cref="IQIODeviceSignals"></see> for signals emitted by QIODevice
+	///</remarks>
+
 	[SmokeClass("QIODevice")]
 	public abstract class QIODevice : QObject {
  		protected QIODevice(Type dummy) : base((Type) null) {}
@@ -158,10 +160,10 @@ namespace Qyoto {
 		protected void SetErrorString(string errorString) {
 			interceptor.Invoke("setErrorString$", "setErrorString(const QString&)", typeof(void), typeof(string), errorString);
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQIODeviceSignals Emit {

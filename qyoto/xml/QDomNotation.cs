@@ -23,13 +23,13 @@ namespace Qyoto {
 		public string SystemId() {
 			return (string) interceptor.Invoke("systemId", "systemId() const", typeof(string));
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomNotation() {
 			interceptor.Invoke("~QDomNotation", "~QDomNotation()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomNotation", "~QDomNotation()", typeof(void));
 		}
 	}

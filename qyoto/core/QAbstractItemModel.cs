@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQAbstractItemModelSignals"></see> for signals emitted by QAbstractItemModel
+	///<remarks> See <see cref="IQAbstractItemModelSignals"></see> for signals emitted by QAbstractItemModel
+	///</remarks>
+
 	[SmokeClass("QAbstractItemModel")]
 	public abstract partial class QAbstractItemModel : QObject {
  		protected QAbstractItemModel(Type dummy) : base((Type) null) {}
@@ -201,7 +203,7 @@ namespace Qyoto {
 		public virtual QSize Span(QModelIndex index) {
 			return (QSize) interceptor.Invoke("span#", "span(const QModelIndex&) const", typeof(QSize), typeof(QModelIndex), index);
 		}
-		public QObject Parent() {
+		public new QObject Parent() {
 			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
 		[Q_SLOT("bool submit()")]
@@ -265,10 +267,10 @@ namespace Qyoto {
 		protected List<QModelIndex> PersistentIndexList() {
 			return (List<QModelIndex>) interceptor.Invoke("persistentIndexList", "persistentIndexList() const", typeof(List<QModelIndex>));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractItemModelSignals Emit {

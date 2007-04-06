@@ -35,7 +35,7 @@ namespace Qyoto {
 		~QStyleOptionFrameV2() {
 			interceptor.Invoke("~QStyleOptionFrameV2", "~QStyleOptionFrameV2()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionFrameV2", "~QStyleOptionFrameV2()", typeof(void));
 		}
 	}

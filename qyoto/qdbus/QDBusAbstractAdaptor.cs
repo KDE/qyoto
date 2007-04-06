@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QDBusAbstractAdaptor")]
-	public abstract class QDBusAbstractAdaptor : QObject, IDisposable {
+	public abstract class QDBusAbstractAdaptor : QObject {
  		protected QDBusAbstractAdaptor(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QDBusAbstractAdaptor), this);
@@ -23,16 +23,10 @@ namespace Qyoto {
 		protected bool AutoRelaySignals() {
 			return (bool) interceptor.Invoke("autoRelaySignals", "autoRelaySignals() const", typeof(bool));
 		}
-		~QDBusAbstractAdaptor() {
-			interceptor.Invoke("~QDBusAbstractAdaptor", "~QDBusAbstractAdaptor()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QDBusAbstractAdaptor", "~QDBusAbstractAdaptor()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDBusAbstractAdaptorSignals Emit {

@@ -99,7 +99,7 @@ namespace Qyoto {
 		~QXmlSimpleReader() {
 			interceptor.Invoke("~QXmlSimpleReader", "~QXmlSimpleReader()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~QXmlSimpleReader", "~QXmlSimpleReader()", typeof(void));
 		}
 	}

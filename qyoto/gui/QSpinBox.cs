@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Text;
 
-	/// See <see cref="IQSpinBoxSignals"></see> for signals emitted by QSpinBox
+	///<remarks> See <see cref="IQSpinBoxSignals"></see> for signals emitted by QSpinBox
+	///</remarks>
+
 	[SmokeClass("QSpinBox")]
 	public class QSpinBox : QAbstractSpinBox, IDisposable {
  		protected QSpinBox(Type dummy) : base((Type) null) {}
@@ -86,10 +88,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QSpinBox", "~QSpinBox()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQSpinBoxSignals Emit {

@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QGenericArgument(Type dummy) {}
-		protected new void CreateProxy() {
+		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QGenericArgument), this);
 		}
 		// QGenericArgument* QGenericArgument(const char* arg1,const void* arg2); >>>> NOT CONVERTED

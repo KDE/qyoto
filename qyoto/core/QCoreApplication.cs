@@ -4,7 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	/// See <see cref="IQCoreApplicationSignals"></see> for signals emitted by QCoreApplication
+	///<remarks> See <see cref="IQCoreApplicationSignals"></see> for signals emitted by QCoreApplication
+	///</remarks>
+
 	[SmokeClass("QCoreApplication")]
 	public partial class QCoreApplication : QObject, IDisposable {
  		protected QCoreApplication(Type dummy) : base((Type) null) {}
@@ -52,10 +54,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QCoreApplication", "~QCoreApplication()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		public static List<string> Arguments() {

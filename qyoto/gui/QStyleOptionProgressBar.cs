@@ -30,7 +30,7 @@ namespace Qyoto {
 		~QStyleOptionProgressBar() {
 			interceptor.Invoke("~QStyleOptionProgressBar", "~QStyleOptionProgressBar()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QStyleOptionProgressBar", "~QStyleOptionProgressBar()", typeof(void));
 		}
 	}

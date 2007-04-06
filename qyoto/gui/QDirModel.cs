@@ -195,7 +195,7 @@ namespace Qyoto {
 		public QFileInfo FileInfo(QModelIndex index) {
 			return (QFileInfo) interceptor.Invoke("fileInfo#", "fileInfo(const QModelIndex&) const", typeof(QFileInfo), typeof(QModelIndex), index);
 		}
-		public QObject Parent() {
+		public new QObject Parent() {
 			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
 		[Q_SLOT("void refresh(const QModelIndex&)")]
@@ -212,10 +212,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QDirModel", "~QDirModel()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQDirModelSignals Emit {

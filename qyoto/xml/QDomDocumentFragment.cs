@@ -17,13 +17,13 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QDomDocumentFragment#", "QDomDocumentFragment(const QDomDocumentFragment&)", typeof(void), typeof(QDomDocumentFragment), x);
 		}
-		public QDomNode.NodeType NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
 		~QDomDocumentFragment() {
 			interceptor.Invoke("~QDomDocumentFragment", "~QDomDocumentFragment()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~QDomDocumentFragment", "~QDomDocumentFragment()", typeof(void));
 		}
 	}

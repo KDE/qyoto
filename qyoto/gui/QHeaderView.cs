@@ -3,7 +3,9 @@ namespace Qyoto {
 
 	using System;
 
-	/// See <see cref="IQHeaderViewSignals"></see> for signals emitted by QHeaderView
+	///<remarks> See <see cref="IQHeaderViewSignals"></see> for signals emitted by QHeaderView
+	///</remarks>
+
 	[SmokeClass("QHeaderView")]
 	public class QHeaderView : QAbstractItemView, IDisposable {
  		protected QHeaderView(Type dummy) : base((Type) null) {}
@@ -348,10 +350,10 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QHeaderView", "~QHeaderView()", typeof(void));
 		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQHeaderViewSignals Emit {

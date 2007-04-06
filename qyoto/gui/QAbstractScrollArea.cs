@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QAbstractScrollArea")]
-	public abstract class QAbstractScrollArea : QFrame, IDisposable {
+	public abstract class QAbstractScrollArea : QFrame {
  		protected QAbstractScrollArea(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractScrollArea), this);
@@ -144,16 +144,10 @@ namespace Qyoto {
 		protected void SetupViewport(QWidget viewport) {
 			interceptor.Invoke("setupViewport#", "setupViewport(QWidget*)", typeof(void), typeof(QWidget), viewport);
 		}
-		~QAbstractScrollArea() {
-			interceptor.Invoke("~QAbstractScrollArea", "~QAbstractScrollArea()", typeof(void));
-		}
-		public new void Dispose() {
-			interceptor.Invoke("~QAbstractScrollArea", "~QAbstractScrollArea()", typeof(void));
-		}
-		public static string Tr(string s, string c) {
+		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}
-		public static string Tr(string s) {
+		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
 		protected new IQAbstractScrollAreaSignals Emit {
