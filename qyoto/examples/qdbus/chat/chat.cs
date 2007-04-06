@@ -67,7 +67,7 @@ public class ChatMainWindow : QMainWindow {
         foreach(string element in m_messages) {
             history.Append(element + "\n");
         }
-        m_ui.chatHistory.SetPlainText(history.ToString());
+        m_ui.chatHistory.PlainText = history.ToString();
     }
     
     [Q_SLOT]

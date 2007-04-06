@@ -1,6 +1,9 @@
 2007-04-06  Arno Rehn  <arno@arnorehn.de>
 
 	* Added missing QItemModel.cs. Forgot to do a 'svn add' last time.
+	* Added more helper classes for abstract base classes which are returned by
+	  public methods.
+	* Fixed little bug in qdbus/chat/chat.cs.
 
 2007-04-06  Richard Dale  <rdale@foton.es>
 

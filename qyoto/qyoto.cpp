@@ -29,6 +29,10 @@
 #include <QtCore/qstringlist.h>
 #include <QMetaMethod>
 #include <QModelIndex>
+#include <QAbstractProxyModel>
+#include <QAbstractItemDelegate>
+#include <QAbstractItemView>
+#include <QAbstractTextDocumentLayout>
 
 #undef DEBUG
 #ifndef __USE_POSIX
@@ -1408,6 +1412,148 @@ QAbstractItemModelIndex(void* obj, int row, int column, void * modelIndex)
 	(*FreeGCHandle)(modelIndex);
 	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
 	return ret;
+}
+
+void*
+QAbstractProxyModelMapFromSource(void* obj, void* sourceIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(sourceIndex);
+	QModelIndex result = ((QAbstractProxyModel*) o->ptr)->mapFromSource(*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(sourceIndex);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return ret;
+}
+
+void*
+QAbstractProxyModelMapToSource(void* obj, void* proxyIndex)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(proxyIndex);
+	QModelIndex result = ((QAbstractProxyModel*) o->ptr)->mapToSource(*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(proxyIndex);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return ret;
+}
+
+void
+QAbstractItemDelegatePaint(void* obj, void* painter, void* option, void* index)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *p = (smokeqyoto_object*) (*GetSmokeObject)(painter);
+	smokeqyoto_object *opt = (smokeqyoto_object*) (*GetSmokeObject)(option);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(index);
+	((QAbstractItemDelegate*) o->ptr)->paint((QPainter*) p->ptr, *((QStyleOptionViewItem*) opt->ptr), 
+						*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(painter);
+	(*FreeGCHandle)(option);
+	(*FreeGCHandle)(index);
+}
+
+void*
+QAbstractItemDelegateSizeHint(void* obj, void* option, void* index)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *opt = (smokeqyoto_object*) (*GetSmokeObject)(option);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(index);
+	QSize result = ((QAbstractItemDelegate*) o->ptr)->sizeHint(*((QStyleOptionViewItem*) opt->ptr), 
+									*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(option);
+	(*FreeGCHandle)(index);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QSize"), &result);
+	return ret;
+}
+
+void*
+QAbstractItemViewIndexAt(void* obj, void* point)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *p = (smokeqyoto_object*) (*GetSmokeObject)(point);
+	QModelIndex result = ((QAbstractItemView*) o->ptr)->indexAt(*((QPoint*) p->ptr));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(point);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QModelIndex"), &result);
+	return ret;
+}
+
+void
+QAbstractItemViewScrollTo(void* obj, void* index, int hint)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(index);
+	((QAbstractItemView*) o->ptr)->scrollTo(*((QModelIndex*) i->ptr), (QAbstractItemView::ScrollHint) hint);
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(index);
+}
+
+void*
+QAbstractItemViewVisualRect(void* obj, void* index)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(index);
+	QRect result = ((QAbstractItemView*) o->ptr)->visualRect(*((QModelIndex*) i->ptr));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(index);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QRect"), &result);
+	return ret;
+}
+
+void*
+QAbstractTextDocumentLayoutBlockBoundingRect(void* obj, void* block)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *b = (smokeqyoto_object*) (*GetSmokeObject)(block);
+	QRectF result = ((QAbstractTextDocumentLayout*) o->ptr)->blockBoundingRect(*((QTextBlock*) b->ptr));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(block);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QRectF"), &result);
+	return ret;
+}
+
+void*
+QAbstractTextDocumentLayoutDocumentSize(void* obj)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	QSizeF result = ((QAbstractTextDocumentLayout*) o->ptr)->documentSize();
+	(*FreeGCHandle)(obj);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QSizeF"), &result);
+	return ret;
+}
+
+void*
+QAbstractTextDocumentLayoutFrameBoundingRect(void* obj, void* frame)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *f = (smokeqyoto_object*) (*GetSmokeObject)(frame);
+	QRectF result = ((QAbstractTextDocumentLayout*) o->ptr)->frameBoundingRect((QTextFrame*) f->ptr);
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(frame);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, o->smoke->idClass("QRectF"), &result);
+	return ret;
+}
+
+int
+QAbstractTextDocumentLayoutHitTest(void* obj, void* point, int accuracy)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *p = (smokeqyoto_object*) (*GetSmokeObject)(point);
+	int result = ((QAbstractTextDocumentLayout*) o->ptr)->hitTest(*((QPointF*) p->ptr), (Qt::HitTestAccuracy) accuracy);
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(point);
+	return result;
+}
+
+int
+QAbstractTextDocumentLayoutPageCount(void* obj)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	int result = ((QAbstractTextDocumentLayout*) o->ptr)->pageCount();
+	(*FreeGCHandle)(obj);
+	return result;
 }
 
 bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
