@@ -96,7 +96,7 @@ namespace Qyoto {
 		public void SetCorner(Qt.Corner corner, Qt.DockWidgetArea area) {
 			interceptor.Invoke("setCorner$$", "setCorner(Qt::Corner, Qt::DockWidgetArea)", typeof(void), typeof(Qt.Corner), corner, typeof(Qt.DockWidgetArea), area);
 		}
-		public Qt.DockWidgetArea Corner(Qt.Corner corner) {
+		public new Qt.DockWidgetArea Corner(Qt.Corner corner) {
 			return (Qt.DockWidgetArea) interceptor.Invoke("corner$", "corner(Qt::Corner) const", typeof(Qt.DockWidgetArea), typeof(Qt.Corner), corner);
 		}
 		public void AddToolBarBreak(Qt.ToolBarArea area) {
@@ -126,7 +126,7 @@ namespace Qyoto {
 		public void RemoveToolBarBreak(QToolBar before) {
 			interceptor.Invoke("removeToolBarBreak#", "removeToolBarBreak(QToolBar*)", typeof(void), typeof(QToolBar), before);
 		}
-		public Qt.ToolBarArea ToolBarArea(QToolBar toolbar) {
+		public new Qt.ToolBarArea ToolBarArea(QToolBar toolbar) {
 			return (Qt.ToolBarArea) interceptor.Invoke("toolBarArea#", "toolBarArea(QToolBar*) const", typeof(Qt.ToolBarArea), typeof(QToolBar), toolbar);
 		}
 		public bool ToolBarBreak(QToolBar toolbar) {
@@ -147,7 +147,7 @@ namespace Qyoto {
 		public void RemoveDockWidget(QDockWidget dockwidget) {
 			interceptor.Invoke("removeDockWidget#", "removeDockWidget(QDockWidget*)", typeof(void), typeof(QDockWidget), dockwidget);
 		}
-		public Qt.DockWidgetArea DockWidgetArea(QDockWidget dockwidget) {
+		public new Qt.DockWidgetArea DockWidgetArea(QDockWidget dockwidget) {
 			return (Qt.DockWidgetArea) interceptor.Invoke("dockWidgetArea#", "dockWidgetArea(QDockWidget*) const", typeof(Qt.DockWidgetArea), typeof(QDockWidget), dockwidget);
 		}
 		public QByteArray SaveState(int version) {

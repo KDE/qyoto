@@ -171,7 +171,7 @@ namespace Qyoto {
 		public enum Extension : long {
 			UserExtension = 0x80000000,
 		}
-		public new const int Type = 1;
+		public const int Type = 1;
 		public const int UserType = 65536;
 
 		public QGraphicsItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {

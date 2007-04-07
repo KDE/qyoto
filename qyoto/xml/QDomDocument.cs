@@ -164,7 +164,7 @@ namespace Qyoto {
 		public bool SetContent(QXmlInputSource source, QXmlReader reader) {
 			return (bool) interceptor.Invoke("setContent##", "setContent(QXmlInputSource*, QXmlReader*)", typeof(bool), typeof(QXmlInputSource), source, typeof(QXmlReader), reader);
 		}
-		public new string ToString(int arg1) {
+		public string ToString(int arg1) {
 			return (string) interceptor.Invoke("toString$", "toString(int) const", typeof(string), typeof(int), arg1);
 		}
 		public new string ToString() {

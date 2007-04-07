@@ -532,7 +532,7 @@ namespace Qyoto {
 		public bool IsFullScreen() {
 			return (bool) interceptor.Invoke("isFullScreen", "isFullScreen() const", typeof(bool));
 		}
-		public int WindowState() {
+		public new int WindowState() {
 			return (int) interceptor.Invoke("windowState", "windowState() const", typeof(int));
 		}
 		public void SetWindowState(int state) {
@@ -625,7 +625,7 @@ namespace Qyoto {
 		public void OverrideWindowFlags(int type) {
 			interceptor.Invoke("overrideWindowFlags$", "overrideWindowFlags(Qt::WindowFlags)", typeof(void), typeof(int), type);
 		}
-		public Qt.WindowType WindowType() {
+		public new Qt.WindowType WindowType() {
 			return (Qt.WindowType) interceptor.Invoke("windowType", "windowType() const", typeof(Qt.WindowType));
 		}
 		public QWidget ChildAt(int x, int y) {
@@ -660,7 +660,7 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("isAncestorOf#", "isAncestorOf(const QWidget*) const", typeof(bool), typeof(QWidget), child);
 		}
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
-		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
+		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), arg1);
 		}
 		[Q_SLOT("void setDisabled(bool)")]

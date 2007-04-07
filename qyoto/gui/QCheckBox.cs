@@ -44,7 +44,7 @@ namespace Qyoto {
 		public bool IsTristate() {
 			return (bool) interceptor.Invoke("isTristate", "isTristate() const", typeof(bool));
 		}
-		public Qt.CheckState CheckState() {
+		public new Qt.CheckState CheckState() {
 			return (Qt.CheckState) interceptor.Invoke("checkState", "checkState() const", typeof(Qt.CheckState));
 		}
 		public void SetCheckState(Qt.CheckState state) {

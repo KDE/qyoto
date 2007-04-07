@@ -129,7 +129,7 @@ namespace Qyoto {
 		public bool IsEmpty() {
 			return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
 		}
-		public new string ToString(QKeySequence.SequenceFormat format) {
+		public string ToString(QKeySequence.SequenceFormat format) {
 			return (string) interceptor.Invoke("toString$", "toString(QKeySequence::SequenceFormat) const", typeof(string), typeof(QKeySequence.SequenceFormat), format);
 		}
 		public new string ToString() {

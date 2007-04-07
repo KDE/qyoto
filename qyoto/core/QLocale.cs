@@ -534,58 +534,58 @@ namespace Qyoto {
 		public double ToDouble(string s) {
 			return (double) interceptor.Invoke("toDouble$", "toDouble(const QString&) const", typeof(double), typeof(string), s);
 		}
-		public new string ToString(long i) {
+		public string ToString(long i) {
 			return (string) interceptor.Invoke("toString?", "toString(qlonglong) const", typeof(string), typeof(long), i);
 		}
-		public new string ToString(ulong i) {
+		public string ToString(ulong i) {
 			return (string) interceptor.Invoke("toString$", "toString(qulonglong) const", typeof(string), typeof(ulong), i);
 		}
-		public new string ToString(short i) {
+		public string ToString(short i) {
 			return (string) interceptor.Invoke("toString$", "toString(short) const", typeof(string), typeof(short), i);
 		}
-		public new string ToString(ushort i) {
+		public string ToString(ushort i) {
 			return (string) interceptor.Invoke("toString$", "toString(ushort) const", typeof(string), typeof(ushort), i);
 		}
-		public new string ToString(int i) {
+		public string ToString(int i) {
 			return (string) interceptor.Invoke("toString$", "toString(int) const", typeof(string), typeof(int), i);
 		}
-		public new string ToString(uint i) {
+		public string ToString(uint i) {
 			return (string) interceptor.Invoke("toString$", "toString(uint) const", typeof(string), typeof(uint), i);
 		}
-		public new string ToString(double i, char f, int prec) {
+		public string ToString(double i, char f, int prec) {
 			return (string) interceptor.Invoke("toString$$$", "toString(double, char, int) const", typeof(string), typeof(double), i, typeof(char), f, typeof(int), prec);
 		}
-		public new string ToString(double i, char f) {
+		public string ToString(double i, char f) {
 			return (string) interceptor.Invoke("toString$$", "toString(double, char) const", typeof(string), typeof(double), i, typeof(char), f);
 		}
-		public new string ToString(double i) {
+		public string ToString(double i) {
 			return (string) interceptor.Invoke("toString$", "toString(double) const", typeof(string), typeof(double), i);
 		}
-		public new string ToString(float i, char f, int prec) {
+		public string ToString(float i, char f, int prec) {
 			return (string) interceptor.Invoke("toString$$$", "toString(float, char, int) const", typeof(string), typeof(float), i, typeof(char), f, typeof(int), prec);
 		}
-		public new string ToString(float i, char f) {
+		public string ToString(float i, char f) {
 			return (string) interceptor.Invoke("toString$$", "toString(float, char) const", typeof(string), typeof(float), i, typeof(char), f);
 		}
-		public new string ToString(float i) {
+		public string ToString(float i) {
 			return (string) interceptor.Invoke("toString$", "toString(float) const", typeof(string), typeof(float), i);
 		}
-		public new string ToString(QDate date, string formatStr) {
+		public string ToString(QDate date, string formatStr) {
 			return (string) interceptor.Invoke("toString#$", "toString(const QDate&, const QString&) const", typeof(string), typeof(QDate), date, typeof(string), formatStr);
 		}
-		public new string ToString(QDate date, QLocale.FormatType format) {
+		public string ToString(QDate date, QLocale.FormatType format) {
 			return (string) interceptor.Invoke("toString#$", "toString(const QDate&, QLocale::FormatType) const", typeof(string), typeof(QDate), date, typeof(QLocale.FormatType), format);
 		}
-		public new string ToString(QDate date) {
+		public string ToString(QDate date) {
 			return (string) interceptor.Invoke("toString#", "toString(const QDate&) const", typeof(string), typeof(QDate), date);
 		}
-		public new string ToString(QTime time, string formatStr) {
+		public string ToString(QTime time, string formatStr) {
 			return (string) interceptor.Invoke("toString#$", "toString(const QTime&, const QString&) const", typeof(string), typeof(QTime), time, typeof(string), formatStr);
 		}
-		public new string ToString(QTime time, QLocale.FormatType format) {
+		public string ToString(QTime time, QLocale.FormatType format) {
 			return (string) interceptor.Invoke("toString#$", "toString(const QTime&, QLocale::FormatType) const", typeof(string), typeof(QTime), time, typeof(QLocale.FormatType), format);
 		}
-		public new string ToString(QTime time) {
+		public string ToString(QTime time) {
 			return (string) interceptor.Invoke("toString#", "toString(const QTime&) const", typeof(string), typeof(QTime), time);
 		}
 		public string DateFormat(QLocale.FormatType format) {

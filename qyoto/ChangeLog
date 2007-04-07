@@ -1,3 +1,8 @@
+2007-04-06  Richard Dale  <rdale@foton.es>
+
+	* Fixed all compiler warnings in the generated code, except for 180 
+	  warnings about the smokeObject private variable not being used.
+
 2007-04-06  Arno Rehn  <arno@arnorehn.de>
 
 	* Added missing QItemModel.cs. Forgot to do a 'svn add' last time.

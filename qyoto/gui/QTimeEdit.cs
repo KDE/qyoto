@@ -14,7 +14,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QTimeEdit), null);
 		}
 		[Q_PROPERTY("QTime", "time")]
-		public QTime Time {
+		public new QTime Time {
 			get { return (QTime) interceptor.Invoke("time", "time()", typeof(QTime)); }
 			set { interceptor.Invoke("setTime#", "setTime(QTime)", typeof(void), typeof(QTime), value); }
 		}

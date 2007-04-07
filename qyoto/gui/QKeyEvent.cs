@@ -65,6 +65,13 @@ namespace Qyoto {
 		public new void Dispose() {
 			interceptor.Invoke("~QKeyEvent", "~QKeyEvent()", typeof(void));
 		}
+		public override bool Equals(object o) {
+			if (!(o is QKeyEvent)) { return false; }
+			return this == (QKeyEvent) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		public static QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep, ushort count) {
 			return (QKeyEvent) staticInterceptor.Invoke("createExtendedKeyEvent$$$$$$$$$", "createExtendedKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32, const QString&, bool, ushort)", typeof(QKeyEvent), typeof(QEvent.TypeOf), type, typeof(int), key, typeof(int), modifiers, typeof(uint), nativeScanCode, typeof(uint), nativeVirtualKey, typeof(uint), nativeModifiers, typeof(string), text, typeof(bool), autorep, typeof(ushort), count);
 		}

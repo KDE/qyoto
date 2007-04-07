@@ -14,7 +14,7 @@ namespace Qyoto {
 		static QGraphicsSvgItem() {
 			staticInterceptor = new SmokeInvocation(typeof(QGraphicsSvgItem), null);
 		}
-		public new const int Type = 13;
+		public const int Type = 13;
 
 		public QGraphicsSvgItem(QGraphicsItem parentItem) : this((Type) null) {
 			CreateProxy();
@@ -90,7 +90,7 @@ namespace Qyoto {
 		public void SetParentItem(QGraphicsItem parent) {
 			interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);
 		}
-		public List<QGraphicsItem> Children() {
+		public new List<QGraphicsItem> Children() {
 			return (List<QGraphicsItem>) interceptor.Invoke("children", "children() const", typeof(List<QGraphicsItem>));
 		}
 		public QGraphicsItemGroup Group() {
@@ -552,7 +552,7 @@ namespace Qyoto {
 			interceptor.Invoke("inputMethodEvent#", "inputMethodEvent(QInputMethodEvent*)", typeof(void), typeof(QInputMethodEvent), arg1);
 		}
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
-		protected virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
+		protected new QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), query);
 		}
 		[SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]

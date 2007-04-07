@@ -26,7 +26,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setSizeGripEnabled$", "setSizeGripEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "modal")]
-		public bool Modal {
+		public new bool Modal {
 			get { return (bool) interceptor.Invoke("isModal", "isModal()", typeof(bool)); }
 			set { interceptor.Invoke("setModal$", "setModal(bool)", typeof(void), typeof(bool), value); }
 		}
@@ -52,7 +52,7 @@ namespace Qyoto {
 		public void SetOrientation(Qt.Orientation orientation) {
 			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
 		}
-		public Qt.Orientation Orientation() {
+		public new Qt.Orientation Orientation() {
 			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
 		public void SetExtension(QWidget extension) {

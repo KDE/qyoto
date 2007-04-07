@@ -41,10 +41,10 @@ namespace Qyoto {
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		public QBitmap Transformed(QMatrix arg1) {
+		public new QBitmap Transformed(QMatrix arg1) {
 			return (QBitmap) interceptor.Invoke("transformed#", "transformed(const QMatrix&) const", typeof(QBitmap), typeof(QMatrix), arg1);
 		}
-		public QBitmap Transformed(QTransform matrix) {
+		public new QBitmap Transformed(QTransform matrix) {
 			return (QBitmap) interceptor.Invoke("transformed#", "transformed(const QTransform&) const", typeof(QBitmap), typeof(QTransform), matrix);
 		}
 		~QBitmap() {

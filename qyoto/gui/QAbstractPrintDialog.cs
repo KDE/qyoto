@@ -34,7 +34,7 @@ namespace Qyoto {
 			interceptor.Invoke("QAbstractPrintDialog#", "QAbstractPrintDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
 		}
 		[SmokeMethod("exec()")]
-		public abstract int Exec();
+		public new abstract int Exec();
 		public void AddEnabledOption(QAbstractPrintDialog.PrintDialogOption option) {
 			interceptor.Invoke("addEnabledOption$", "addEnabledOption(QAbstractPrintDialog::PrintDialogOption)", typeof(void), typeof(QAbstractPrintDialog.PrintDialogOption), option);
 		}

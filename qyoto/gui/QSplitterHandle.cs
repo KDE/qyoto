@@ -20,7 +20,7 @@ namespace Qyoto {
 		public void SetOrientation(Qt.Orientation o) {
 			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), o);
 		}
-		public Qt.Orientation Orientation() {
+		public new Qt.Orientation Orientation() {
 			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
 		public bool OpaqueResize() {

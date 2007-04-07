@@ -70,7 +70,7 @@ namespace Qyoto {
 		public override void SetModel(QAbstractItemModel model) {
 			interceptor.Invoke("setModel#", "setModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);
 		}
-		public Qt.Orientation Orientation() {
+		public new Qt.Orientation Orientation() {
 			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
 		}
 		public int Offset() {

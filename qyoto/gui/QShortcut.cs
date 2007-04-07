@@ -17,7 +17,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QShortcut), null);
 		}
 		[Q_PROPERTY("QKeySequence", "key")]
-		public QKeySequence Key {
+		public new QKeySequence Key {
 			get { return (QKeySequence) interceptor.Invoke("key", "key()", typeof(QKeySequence)); }
 			set { interceptor.Invoke("setKey#", "setKey(QKeySequence)", typeof(void), typeof(QKeySequence), value); }
 		}

@@ -17,7 +17,7 @@ namespace Qyoto {
 		static QGraphicsTextItem() {
 			staticInterceptor = new SmokeInvocation(typeof(QGraphicsTextItem), null);
 		}
-		public new const int Type = 8;
+		public const int Type = 8;
 
 		public QGraphicsTextItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
@@ -201,7 +201,7 @@ namespace Qyoto {
 			interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
 		}
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
-		protected virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
+		protected new QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), query);
 		}
 		[SmokeMethod("supportsExtension(QGraphicsItem::Extension) const")]
@@ -234,7 +234,7 @@ namespace Qyoto {
 		public void SetParentItem(QGraphicsItem parent) {
 			interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);
 		}
-		public List<QGraphicsItem> Children() {
+		public new List<QGraphicsItem> Children() {
 			return (List<QGraphicsItem>) interceptor.Invoke("children", "children() const", typeof(List<QGraphicsItem>));
 		}
 		public QGraphicsItemGroup Group() {

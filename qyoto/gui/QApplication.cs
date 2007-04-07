@@ -303,7 +303,7 @@ namespace Qyoto {
 		public static void SetLayoutDirection(Qt.LayoutDirection direction) {
 			staticInterceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), direction);
 		}
-		public static new Qt.LayoutDirection layoutDirection() {
+		public static Qt.LayoutDirection layoutDirection() {
 			return (Qt.LayoutDirection) staticInterceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection));
 		}
 		public static bool IsRightToLeft() {

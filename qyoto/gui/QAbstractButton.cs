@@ -108,7 +108,7 @@ namespace Qyoto {
 			interceptor.Invoke("toggle", "toggle()", typeof(void));
 		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
-		protected abstract void PaintEvent(QPaintEvent e);
+		protected new abstract void PaintEvent(QPaintEvent e);
 		[SmokeMethod("hitButton(const QPoint&) const")]
 		protected virtual bool HitButton(QPoint pos) {
 			return (bool) interceptor.Invoke("hitButton#", "hitButton(const QPoint&) const", typeof(bool), typeof(QPoint), pos);

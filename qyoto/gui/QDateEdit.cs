@@ -14,7 +14,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QDateEdit), null);
 		}
 		[Q_PROPERTY("QDate", "date")]
-		public QDate Date {
+		public new QDate Date {
 			get { return (QDate) interceptor.Invoke("date", "date()", typeof(QDate)); }
 			set { interceptor.Invoke("setDate#", "setDate(QDate)", typeof(void), typeof(QDate), value); }
 		}

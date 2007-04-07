@@ -97,7 +97,7 @@ namespace Qyoto {
 		public void SortItems(int column, Qt.SortOrder order) {
 			interceptor.Invoke("sortItems$$", "sortItems(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}
-		public new void SetSortingEnabled(bool enable) {
+		public void SetSortingEnabled(bool enable) {
 			interceptor.Invoke("setSortingEnabled$", "setSortingEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
 		public new bool IsSortingEnabled() {

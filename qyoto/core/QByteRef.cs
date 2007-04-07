@@ -8,11 +8,21 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QByteRef(Type dummy) {}
+		protected void CreateProxy() {
+			interceptor = new SmokeInvocation(typeof(QByteRef), this);
+		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QByteRef() {
 			staticInterceptor = new SmokeInvocation(typeof(QByteRef), null);
 		}
 		//  operator const char(); >>>> NOT CONVERTED
+		public override bool Equals(object o) {
+			if (!(o is QByteRef)) { return false; }
+			return this == (QByteRef) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		public static bool operator==(QByteRef lhs, char c) {
 			return (bool) staticInterceptor.Invoke("operator==$", "operator==(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);
 		}

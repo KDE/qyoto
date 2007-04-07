@@ -388,6 +388,55 @@ namespace Qyoto {
 			}
 		}
 
+		// A variant of Invoke() for use in method calls with 'out' argument types.
+		// The caller is responsible for setting up the stack, and copying items
+		// back from the stack to the arguments after Invoke() has been called.
+		public void Invoke(string mungedName, string signature, StackItem[] stack) {
+#if DEBUG
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+				Console.WriteLine(	"ENTER SmokeInvocation.Invoke1() MethodName: {0}.{1}", 
+									className,
+									signature );
+			}
+#endif
+			
+			int methodId = -1;
+			if (!methodIdCache.TryGetValue(signature, out methodId)) {
+				methodId = FindMethodId(className, mungedName, signature);
+
+				if (methodId == -1) {
+					Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
+												className,
+												signature );
+					return;
+				}
+
+				methodIdCache[signature] = methodId;
+			}
+
+			unsafe {
+				fixed(StackItem * stackPtr = stack) {
+					if (instance == null) {
+						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, stack.Length);
+					} else {
+#if DEBUG
+						GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
+#else
+						GCHandle instanceHandle = GCHandle.Alloc(instance);
+#endif
+						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, stack.Length);
+#if DEBUG
+						DebugGCHandle.Free(instanceHandle);
+#else
+						instanceHandle.Free();
+#endif
+					}
+				}
+			}
+
+			return;
+		}
+
 		public object Invoke(string mungedName, string signature, Type returnType, params object[] args) {
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {

@@ -127,7 +127,7 @@ namespace Qyoto {
 		public QGLContext OverlayContext() {
 			return (QGLContext) interceptor.Invoke("overlayContext", "overlayContext() const", typeof(QGLContext));
 		}
-		public new void SetMouseTracking(bool enable) {
+		public void SetMouseTracking(bool enable) {
 			interceptor.Invoke("setMouseTracking$", "setMouseTracking(bool)", typeof(void), typeof(bool), enable);
 		}
 		public QGLColormap Colormap() {

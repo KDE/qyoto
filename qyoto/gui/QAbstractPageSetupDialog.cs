@@ -22,7 +22,7 @@ namespace Qyoto {
 			interceptor.Invoke("QAbstractPageSetupDialog#", "QAbstractPageSetupDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
 		}
 		[SmokeMethod("exec()")]
-		public abstract int Exec();
+		public new abstract int Exec();
 		public QPrinter Printer() {
 			return (QPrinter) interceptor.Invoke("printer", "printer()", typeof(QPrinter));
 		}

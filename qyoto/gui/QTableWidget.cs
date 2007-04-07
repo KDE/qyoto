@@ -103,7 +103,7 @@ namespace Qyoto {
 		public void SortItems(int column) {
 			interceptor.Invoke("sortItems$", "sortItems(int)", typeof(void), typeof(int), column);
 		}
-		public new void SetSortingEnabled(bool enable) {
+		public void SetSortingEnabled(bool enable) {
 			interceptor.Invoke("setSortingEnabled$", "setSortingEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
 		public new bool IsSortingEnabled() {

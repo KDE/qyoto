@@ -238,7 +238,7 @@ namespace Qyoto {
 		public string ToLocalFile() {
 			return (string) interceptor.Invoke("toLocalFile", "toLocalFile() const", typeof(string));
 		}
-		public new string ToString(int options) {
+		public string ToString(int options) {
 			return (string) interceptor.Invoke("toString$", "toString(FormattingOptions) const", typeof(string), typeof(int), options);
 		}
 		public new string ToString() {

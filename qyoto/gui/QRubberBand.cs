@@ -28,7 +28,7 @@ namespace Qyoto {
 		public QRubberBand.Shape shape() {
 			return (QRubberBand.Shape) interceptor.Invoke("shape", "shape() const", typeof(QRubberBand.Shape));
 		}
-		public new void SetGeometry(QRect r) {
+		public void SetGeometry(QRect r) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), r);
 		}
 		public new void SetGeometry(int x, int y, int w, int h) {

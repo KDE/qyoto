@@ -26,13 +26,13 @@ namespace Qyoto {
 		[SmokeMethod("navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
 		public abstract int Navigate(QAccessible.RelationFlag relation, int index, QAccessibleInterface iface);
 		[SmokeMethod("text(QAccessible::Text, int) const")]
-		public abstract string Text(QAccessible.Text t, int child);
+		public new abstract string Text(QAccessible.Text t, int child);
 		[SmokeMethod("setText(QAccessible::Text, int, const QString&)")]
 		public abstract void SetText(QAccessible.Text t, int child, string text);
 		[SmokeMethod("rect(int) const")]
 		public abstract QRect Rect(int child);
 		[SmokeMethod("role(int) const")]
-		public abstract QAccessible.Role Role(int child);
+		public new abstract QAccessible.Role Role(int child);
 		[SmokeMethod("state(int) const")]
 		public abstract int State(int child);
 		[SmokeMethod("userActionCount(int) const")]

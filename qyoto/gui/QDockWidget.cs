@@ -42,7 +42,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("$", "(Qt::DockWidgetAreas)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QString", "windowTitle")]
-		public string WindowTitle {
+		public new string WindowTitle {
 			get { return (string) interceptor.Invoke("windowTitle", "windowTitle()", typeof(string)); }
 			set { interceptor.Invoke("setWindowTitle$", "setWindowTitle(QString)", typeof(void), typeof(string), value); }
 		}

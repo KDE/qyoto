@@ -279,7 +279,7 @@ namespace Qyoto {
 			return (QGraphicsItem) interceptor.Invoke("mouseGrabberItem", "mouseGrabberItem() const", typeof(QGraphicsItem));
 		}
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
-		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
+		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), query);
 		}
 		public List<QGraphicsView> Views() {

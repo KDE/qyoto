@@ -50,7 +50,7 @@ namespace Qyoto {
 		public void AddWidget(QWidget arg1, int stretch) {
 			interceptor.Invoke("addWidget#$", "addWidget(QWidget*, int)", typeof(void), typeof(QWidget), arg1, typeof(int), stretch);
 		}
-		public void AddWidget(QWidget arg1) {
+		public new void AddWidget(QWidget arg1) {
 			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), arg1);
 		}
 		public void AddLayout(QLayout layout, int stretch) {
