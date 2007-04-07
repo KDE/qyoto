@@ -1,3 +1,9 @@
+2007-04-08  Arno Rehn  <arno@arnorehn.de>
+
+	* Renamed all QAbstract*Helper classes to QAbstract*Internal and
+	  marked them as internal, so they cannot be accessed from outside
+	  the assembly.
+
 2007-04-06  Richard Dale  <rdale@foton.es>
 
 	* Fixed all compiler warnings in the generated code, except for 180 

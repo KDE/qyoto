@@ -3,7 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
-	public class QAbstractProxyModelHelper : QAbstractProxyModel {
+	internal class QAbstractProxyModelInternal : QAbstractProxyModel {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractItemModelColumnCount(IntPtr obj, IntPtr modelIndex);
 		
@@ -22,7 +22,7 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractProxyModelMapFromSource(IntPtr obj, IntPtr sourceIndex);
 		
-		protected QAbstractProxyModelHelper(Type dummy) : base((Type) null) {}
+		protected QAbstractProxyModelInternal(Type dummy) : base((Type) null) {}
 		
 		public override int ColumnCount(QModelIndex parent) {
 			return QAbstractItemModelColumnCount((IntPtr) GCHandle.Alloc(this), (IntPtr) GCHandle.Alloc(parent));

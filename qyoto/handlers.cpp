@@ -437,15 +437,15 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		if (strcmp(smoke->classes[classId].className, "QAbstractItemModel") == 0)
 			return "Qyoto.QItemModel";
 		if (strcmp(smoke->classes[classId].className, "QAbstractButton") == 0)
-			return "Qyoto.QAbstractButtonHelper";
+			return "Qyoto.QAbstractButtonInternal";
 		if (strcmp(smoke->classes[classId].className, "QAbstractProxyModel") == 0)
-			return "Qyoto.QAbstractProxyModelHelper";
+			return "Qyoto.QAbstractProxyModelInternal";
 		if (strcmp(smoke->classes[classId].className, "QAbstractItemDelegate") == 0)
-			return "Qyoto.QAbstractItemDelegateHelper";
+			return "Qyoto.QAbstractItemDelegateInternal";
 		if (strcmp(smoke->classes[classId].className, "QAbstractItemView") == 0)
-			return "Qyoto.QAbstractItemViewHelper";
+			return "Qyoto.QAbstractItemViewInternal";
 		if (strcmp(smoke->classes[classId].className, "QAbstractTextDocumentLayout") == 0)
-			return "Qyoto.QAbstractTextDocumentLayoutHelper";
+			return "Qyoto.QAbstractTextDocumentLayoutInternal";
 
 		while (meta != 0) {
 			Smoke::Index classId = smoke->idClass(meta->className());

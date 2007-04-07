@@ -3,7 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
-	public class QAbstractItemViewHelper : QAbstractItemView {
+	internal class QAbstractItemViewInternal : QAbstractItemView {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemViewIndexAt(IntPtr obj, IntPtr point);
 		
@@ -13,7 +13,7 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemViewVisualRect(IntPtr obj, IntPtr index);
 		
-		public QAbstractItemViewHelper(Type dummy) : base((Type) dummy) {}
+		public QAbstractItemViewInternal(Type dummy) : base((Type) dummy) {}
 		
 		public override QModelIndex IndexAt (QPoint point) {
 			GCHandle ret = (GCHandle) QAbstractItemViewIndexAt((IntPtr) GCHandle.Alloc(this), 

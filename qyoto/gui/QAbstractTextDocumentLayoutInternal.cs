@@ -3,7 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
-	public class QAbstractTextDocumentLayoutHelper : QAbstractTextDocumentLayout {
+	internal class QAbstractTextDocumentLayoutInternal : QAbstractTextDocumentLayout {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractTextDocumentLayoutBlockBoundingRect(IntPtr obj, IntPtr block);
 		
@@ -19,7 +19,7 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractTextDocumentLayoutPageCount(IntPtr obj);
 		
-		protected QAbstractTextDocumentLayoutHelper(Type dummy) : base((Type) null) {}
+		protected QAbstractTextDocumentLayoutInternal(Type dummy) : base((Type) null) {}
 		
 		public override QRectF BlockBoundingRect (QTextBlock block) {
 			GCHandle ret = (GCHandle) QAbstractTextDocumentLayoutBlockBoundingRect((IntPtr) GCHandle.Alloc(this), 
