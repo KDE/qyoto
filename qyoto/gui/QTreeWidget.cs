@@ -100,7 +100,7 @@ namespace Qyoto {
 		public void SetSortingEnabled(bool enable) {
 			interceptor.Invoke("setSortingEnabled$", "setSortingEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
-		public new bool IsSortingEnabled() {
+		public bool IsSortingEnabled() {
 			return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled() const", typeof(bool));
 		}
 		public void EditItem(QTreeWidgetItem item, int column) {

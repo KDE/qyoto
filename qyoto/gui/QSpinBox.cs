@@ -62,6 +62,10 @@ namespace Qyoto {
 		public void SetRange(int min, int max) {
 			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
 		}
+		[Q_SLOT("void setValue(int)")]
+		public void SetValue(int val) {
+			interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), val);
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);

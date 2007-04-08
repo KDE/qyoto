@@ -229,6 +229,10 @@ namespace Qyoto {
 		public override int SupportedDropActions() {
 			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
 		}
+		[Q_SLOT("void setFilterRegExp(const QString&)")]
+		public void SetFilterRegExp(string pattern) {
+			interceptor.Invoke("setFilterRegExp$", "setFilterRegExp(const QString&)", typeof(void), typeof(string), pattern);
+		}
 		[Q_SLOT("void setFilterWildcard(const QString&)")]
 		public void SetFilterWildcard(string pattern) {
 			interceptor.Invoke("setFilterWildcard$", "setFilterWildcard(const QString&)", typeof(void), typeof(string), pattern);

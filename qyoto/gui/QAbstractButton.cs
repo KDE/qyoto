@@ -22,7 +22,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
-		public QIcon Icon {
+		public QIcon icon {
 			get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
 			set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
@@ -79,17 +79,12 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QAbstractButton", "QAbstractButton()", typeof(void));
 		}
-		public bool IsCheckable() {
-			return (bool) interceptor.Invoke("isCheckable", "isCheckable() const", typeof(bool));
-		}
-		public bool IsChecked() {
-			return (bool) interceptor.Invoke("isChecked", "isChecked() const", typeof(bool));
-		}
-		public bool IsDown() {
-			return (bool) interceptor.Invoke("isDown", "isDown() const", typeof(bool));
-		}
 		public QButtonGroup Group() {
 			return (QButtonGroup) interceptor.Invoke("group", "group() const", typeof(QButtonGroup));
+		}
+		[Q_SLOT("void setIconSize(const QSize&)")]
+		public void SetIconSize(QSize size) {
+			interceptor.Invoke("setIconSize#", "setIconSize(const QSize&)", typeof(void), typeof(QSize), size);
 		}
 		[Q_SLOT("void animateClick(int)")]
 		public void AnimateClick(int msec) {
@@ -106,6 +101,10 @@ namespace Qyoto {
 		[Q_SLOT("void toggle()")]
 		public void Toggle() {
 			interceptor.Invoke("toggle", "toggle()", typeof(void));
+		}
+		[Q_SLOT("void setChecked(bool)")]
+		public void SetChecked(bool arg1) {
+			interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), arg1);
 		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new abstract void PaintEvent(QPaintEvent e);

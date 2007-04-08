@@ -219,7 +219,7 @@ class CannonField : QWidget {
 	}
 
 	public bool isShooting() {
-		return autoShootTimer.IsActive();
+		return autoShootTimer.Active;
 	}
 
 	protected new ICannonFieldSignals Emit {

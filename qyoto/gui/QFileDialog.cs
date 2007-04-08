@@ -143,12 +143,6 @@ namespace Qyoto {
 		public string SelectedFilter() {
 			return (string) interceptor.Invoke("selectedFilter", "selectedFilter() const", typeof(string));
 		}
-		public bool IsDetailsExpanded() {
-			return (bool) interceptor.Invoke("isDetailsExpanded", "isDetailsExpanded() const", typeof(bool));
-		}
-		public bool IsReadOnly() {
-			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
-		}
 		public void SetSidebarUrls(List<QUrl> urls) {
 			interceptor.Invoke("setSidebarUrls?", "setSidebarUrls(const QList<QUrl>&)", typeof(void), typeof(List<QUrl>), urls);
 		}

@@ -100,13 +100,33 @@ namespace Qyoto {
 		public void Reset() {
 			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
+		[Q_SLOT("void setMaximum(int)")]
+		public void SetMaximum(int maximum) {
+			interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), maximum);
+		}
+		[Q_SLOT("void setMinimum(int)")]
+		public void SetMinimum(int minimum) {
+			interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), minimum);
+		}
 		[Q_SLOT("void setRange(int, int)")]
 		public void SetRange(int minimum, int maximum) {
 			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
 		}
+		[Q_SLOT("void setValue(int)")]
+		public void SetValue(int progress) {
+			interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), progress);
+		}
+		[Q_SLOT("void setLabelText(const QString&)")]
+		public void SetLabelText(string arg1) {
+			interceptor.Invoke("setLabelText$", "setLabelText(const QString&)", typeof(void), typeof(string), arg1);
+		}
 		[Q_SLOT("void setCancelButtonText(const QString&)")]
 		public void SetCancelButtonText(string arg1) {
 			interceptor.Invoke("setCancelButtonText$", "setCancelButtonText(const QString&)", typeof(void), typeof(string), arg1);
+		}
+		[Q_SLOT("void setMinimumDuration(int)")]
+		public void SetMinimumDuration(int ms) {
+			interceptor.Invoke("setMinimumDuration$", "setMinimumDuration(int)", typeof(void), typeof(int), ms);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {

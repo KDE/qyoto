@@ -57,9 +57,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QToolBar", "QToolBar()", typeof(void));
 		}
-		public bool IsMovable() {
-			return (bool) interceptor.Invoke("isMovable", "isMovable() const", typeof(bool));
-		}
 		public bool IsAreaAllowed(Qt.ToolBarArea area) {
 			return (bool) interceptor.Invoke("isAreaAllowed$", "isAreaAllowed(Qt::ToolBarArea) const", typeof(bool), typeof(Qt.ToolBarArea), area);
 		}
@@ -107,6 +104,14 @@ namespace Qyoto {
 		}
 		public QWidget WidgetForAction(QAction action) {
 			return (QWidget) interceptor.Invoke("widgetForAction#", "widgetForAction(QAction*) const", typeof(QWidget), typeof(QAction), action);
+		}
+		[Q_SLOT("void setIconSize(const QSize&)")]
+		public void SetIconSize(QSize iconSize) {
+			interceptor.Invoke("setIconSize#", "setIconSize(const QSize&)", typeof(void), typeof(QSize), iconSize);
+		}
+		[Q_SLOT("void setToolButtonStyle(Qt::ToolButtonStyle)")]
+		public void SetToolButtonStyle(Qt.ToolButtonStyle toolButtonStyle) {
+			interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), toolButtonStyle);
 		}
 		[SmokeMethod("actionEvent(QActionEvent*)")]
 		protected override void ActionEvent(QActionEvent arg1) {

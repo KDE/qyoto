@@ -110,9 +110,6 @@ namespace Qyoto {
 		public virtual void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		public bool IsUndoRedoEnabled() {
-			return (bool) interceptor.Invoke("isUndoRedoEnabled", "isUndoRedoEnabled() const", typeof(bool));
-		}
 		public bool IsUndoAvailable() {
 			return (bool) interceptor.Invoke("isUndoAvailable", "isUndoAvailable() const", typeof(bool));
 		}
@@ -200,9 +197,6 @@ namespace Qyoto {
 		public int PageCount() {
 			return (int) interceptor.Invoke("pageCount", "pageCount() const", typeof(int));
 		}
-		public bool IsModified() {
-			return (bool) interceptor.Invoke("isModified", "isModified() const", typeof(bool));
-		}
 		public void Print(QPrinter printer) {
 			interceptor.Invoke("print#", "print(QPrinter*) const", typeof(void), typeof(QPrinter), printer);
 		}
@@ -249,6 +243,14 @@ namespace Qyoto {
 		[Q_SLOT("void redo()")]
 		public void Redo() {
 			interceptor.Invoke("redo", "redo()", typeof(void));
+		}
+		[Q_SLOT("void setModified(bool)")]
+		public void SetModified(bool m) {
+			interceptor.Invoke("setModified$", "setModified(bool)", typeof(void), typeof(bool), m);
+		}
+		[Q_SLOT("void setModified()")]
+		public void SetModified() {
+			interceptor.Invoke("setModified", "setModified()", typeof(void));
 		}
 		[SmokeMethod("createObject(const QTextFormat&)")]
 		protected virtual QTextObject CreateObject(QTextFormat f) {

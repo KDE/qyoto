@@ -54,18 +54,21 @@ namespace Qyoto {
 		public QAction CheckedAction() {
 			return (QAction) interceptor.Invoke("checkedAction", "checkedAction() const", typeof(QAction));
 		}
-		public bool IsExclusive() {
-			return (bool) interceptor.Invoke("isExclusive", "isExclusive() const", typeof(bool));
-		}
-		public bool IsEnabled() {
-			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
-		}
-		public bool IsVisible() {
-			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
+		[Q_SLOT("void setEnabled(bool)")]
+		public void SetEnabled(bool arg1) {
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);
 		}
 		[Q_SLOT("void setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), b);
+		}
+		[Q_SLOT("void setVisible(bool)")]
+		public void SetVisible(bool arg1) {
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), arg1);
+		}
+		[Q_SLOT("void setExclusive(bool)")]
+		public void SetExclusive(bool arg1) {
+			interceptor.Invoke("setExclusive$", "setExclusive(bool)", typeof(void), typeof(bool), arg1);
 		}
 		~QActionGroup() {
 			interceptor.Invoke("~QActionGroup", "~QActionGroup()", typeof(void));

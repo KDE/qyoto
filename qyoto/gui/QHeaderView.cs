@@ -167,12 +167,6 @@ namespace Qyoto {
 		public int StretchSectionCount() {
 			return (int) interceptor.Invoke("stretchSectionCount", "stretchSectionCount() const", typeof(int));
 		}
-		public void SetSortIndicatorShown(bool show) {
-			interceptor.Invoke("setSortIndicatorShown$", "setSortIndicatorShown(bool)", typeof(void), typeof(bool), show);
-		}
-		public bool IsSortIndicatorShown() {
-			return (bool) interceptor.Invoke("isSortIndicatorShown", "isSortIndicatorShown() const", typeof(bool));
-		}
 		public void SetSortIndicator(int logicalIndex, Qt.SortOrder order) {
 			interceptor.Invoke("setSortIndicator$$", "setSortIndicator(int, Qt::SortOrder)", typeof(void), typeof(int), logicalIndex, typeof(Qt.SortOrder), order);
 		}

@@ -72,24 +72,6 @@ namespace Qyoto {
 		public static bool TestAttribute(Qt.ApplicationAttribute attribute) {
 			return (bool) staticInterceptor.Invoke("testAttribute$", "testAttribute(Qt::ApplicationAttribute)", typeof(bool), typeof(Qt.ApplicationAttribute), attribute);
 		}
-		public static void SetOrganizationDomain(string orgDomain) {
-			staticInterceptor.Invoke("setOrganizationDomain$", "setOrganizationDomain(const QString&)", typeof(void), typeof(string), orgDomain);
-		}
-		public static string organizationDomain() {
-			return (string) staticInterceptor.Invoke("organizationDomain", "organizationDomain()", typeof(string));
-		}
-		public static void SetOrganizationName(string orgName) {
-			staticInterceptor.Invoke("setOrganizationName$", "setOrganizationName(const QString&)", typeof(void), typeof(string), orgName);
-		}
-		public static string organizationName() {
-			return (string) staticInterceptor.Invoke("organizationName", "organizationName()", typeof(string));
-		}
-		public static void SetApplicationName(string application) {
-			staticInterceptor.Invoke("setApplicationName$", "setApplicationName(const QString&)", typeof(void), typeof(string), application);
-		}
-		public static string applicationName() {
-			return (string) staticInterceptor.Invoke("applicationName", "applicationName()", typeof(string));
-		}
 		public static QCoreApplication Instance() {
 			return (QCoreApplication) staticInterceptor.Invoke("instance", "instance()", typeof(QCoreApplication));
 		}

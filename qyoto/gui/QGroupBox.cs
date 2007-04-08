@@ -61,14 +61,9 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		public bool IsFlat() {
-			return (bool) interceptor.Invoke("isFlat", "isFlat() const", typeof(bool));
-		}
-		public bool IsCheckable() {
-			return (bool) interceptor.Invoke("isCheckable", "isCheckable() const", typeof(bool));
-		}
-		public bool IsChecked() {
-			return (bool) interceptor.Invoke("isChecked", "isChecked() const", typeof(bool));
+		[Q_SLOT("void setChecked(bool)")]
+		public void SetChecked(bool arg1) {
+			interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), arg1);
 		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {

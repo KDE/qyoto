@@ -83,6 +83,10 @@ namespace Qyoto {
 		public override void Fixup(StringBuilder str) {
 			interceptor.Invoke("fixup$", "fixup(QString&) const", typeof(void), typeof(StringBuilder), str);
 		}
+		[Q_SLOT("void setValue(double)")]
+		public void SetValue(double val) {
+			interceptor.Invoke("setValue$", "setValue(double)", typeof(void), typeof(double), val);
+		}
 		~QDoubleSpinBox() {
 			interceptor.Invoke("~QDoubleSpinBox", "~QDoubleSpinBox()", typeof(void));
 		}

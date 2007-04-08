@@ -46,7 +46,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
-		public QIcon Icon {
+		public QIcon icon {
 			get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
 			set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
@@ -144,23 +144,11 @@ namespace Qyoto {
 		public List<QKeySequence> Shortcuts() {
 			return (List<QKeySequence>) interceptor.Invoke("shortcuts", "shortcuts() const", typeof(List<QKeySequence>));
 		}
-		public bool IsCheckable() {
-			return (bool) interceptor.Invoke("isCheckable", "isCheckable() const", typeof(bool));
-		}
 		public QVariant Data() {
 			return (QVariant) interceptor.Invoke("data", "data() const", typeof(QVariant));
 		}
 		public void SetData(QVariant var) {
 			interceptor.Invoke("setData#", "setData(const QVariant&)", typeof(void), typeof(QVariant), var);
-		}
-		public bool IsChecked() {
-			return (bool) interceptor.Invoke("isChecked", "isChecked() const", typeof(bool));
-		}
-		public bool IsEnabled() {
-			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
-		}
-		public bool IsVisible() {
-			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
 		}
 		public void Activate(QAction.ActionEvent arg1) {
 			interceptor.Invoke("activate$", "activate(QAction::ActionEvent)", typeof(void), typeof(QAction.ActionEvent), arg1);
@@ -185,13 +173,25 @@ namespace Qyoto {
 		public void Hover() {
 			interceptor.Invoke("hover", "hover()", typeof(void));
 		}
+		[Q_SLOT("void setChecked(bool)")]
+		public void SetChecked(bool arg1) {
+			interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), arg1);
+		}
 		[Q_SLOT("void toggle()")]
 		public void Toggle() {
 			interceptor.Invoke("toggle", "toggle()", typeof(void));
 		}
+		[Q_SLOT("void setEnabled(bool)")]
+		public void SetEnabled(bool arg1) {
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);
+		}
 		[Q_SLOT("void setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), b);
+		}
+		[Q_SLOT("void setVisible(bool)")]
+		public void SetVisible(bool arg1) {
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), arg1);
 		}
 		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {

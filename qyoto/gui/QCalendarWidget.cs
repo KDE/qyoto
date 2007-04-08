@@ -103,15 +103,6 @@ namespace Qyoto {
 		public int MonthShown() {
 			return (int) interceptor.Invoke("monthShown", "monthShown() const", typeof(int));
 		}
-		public bool IsHeaderVisible() {
-			return (bool) interceptor.Invoke("isHeaderVisible", "isHeaderVisible() const", typeof(bool));
-		}
-		public bool IsNavigationBarVisible() {
-			return (bool) interceptor.Invoke("isNavigationBarVisible", "isNavigationBarVisible() const", typeof(bool));
-		}
-		public bool IsGridVisible() {
-			return (bool) interceptor.Invoke("isGridVisible", "isGridVisible() const", typeof(bool));
-		}
 		public QTextCharFormat HeaderTextFormat() {
 			return (QTextCharFormat) interceptor.Invoke("headerTextFormat", "headerTextFormat() const", typeof(QTextCharFormat));
 		}
@@ -133,6 +124,10 @@ namespace Qyoto {
 		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
 			interceptor.Invoke("setDateTextFormat##", "setDateTextFormat(const QDate&, const QTextCharFormat&)", typeof(void), typeof(QDate), date, typeof(QTextCharFormat), color);
 		}
+		[Q_SLOT("void setSelectedDate(const QDate&)")]
+		public void SetSelectedDate(QDate date) {
+			interceptor.Invoke("setSelectedDate#", "setSelectedDate(const QDate&)", typeof(void), typeof(QDate), date);
+		}
 		[Q_SLOT("void setDateRange(const QDate&, const QDate&)")]
 		public void SetDateRange(QDate min, QDate max) {
 			interceptor.Invoke("setDateRange##", "setDateRange(const QDate&, const QDate&)", typeof(void), typeof(QDate), min, typeof(QDate), max);
@@ -140,6 +135,14 @@ namespace Qyoto {
 		[Q_SLOT("void setCurrentPage(int, int)")]
 		public void SetCurrentPage(int year, int month) {
 			interceptor.Invoke("setCurrentPage$$", "setCurrentPage(int, int)", typeof(void), typeof(int), year, typeof(int), month);
+		}
+		[Q_SLOT("void setGridVisible(bool)")]
+		public void SetGridVisible(bool show) {
+			interceptor.Invoke("setGridVisible$", "setGridVisible(bool)", typeof(void), typeof(bool), show);
+		}
+		[Q_SLOT("void setNavigationBarVisible(bool)")]
+		public void SetNavigationBarVisible(bool visible) {
+			interceptor.Invoke("setNavigationBarVisible$", "setNavigationBarVisible(bool)", typeof(void), typeof(bool), visible);
 		}
 		[Q_SLOT("void showNextMonth()")]
 		public void ShowNextMonth() {

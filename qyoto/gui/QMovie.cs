@@ -144,6 +144,10 @@ namespace Qyoto {
 		public void Stop() {
 			interceptor.Invoke("stop", "stop()", typeof(void));
 		}
+		[Q_SLOT("void setSpeed(int)")]
+		public void SetSpeed(int percentSpeed) {
+			interceptor.Invoke("setSpeed$", "setSpeed(int)", typeof(void), typeof(int), percentSpeed);
+		}
 		~QMovie() {
 			interceptor.Invoke("~QMovie", "~QMovie()", typeof(void));
 		}

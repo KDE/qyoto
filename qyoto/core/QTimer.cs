@@ -59,14 +59,8 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTimer", "QTimer()", typeof(void));
 		}
-		public bool IsActive() {
-			return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
-		}
 		public int TimerId() {
 			return (int) interceptor.Invoke("timerId", "timerId() const", typeof(int));
-		}
-		public bool IsSingleShot() {
-			return (bool) interceptor.Invoke("isSingleShot", "isSingleShot() const", typeof(bool));
 		}
 		[Q_SLOT("void start(int)")]
 		public void Start(int msec) {

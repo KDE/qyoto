@@ -73,9 +73,6 @@ namespace Qyoto {
 		public QAction CreateRedoAction(QObject parent) {
 			return (QAction) interceptor.Invoke("createRedoAction#", "createRedoAction(QObject*) const", typeof(QAction), typeof(QObject), parent);
 		}
-		public bool IsActive() {
-			return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
-		}
 		public bool IsClean() {
 			return (bool) interceptor.Invoke("isClean", "isClean() const", typeof(bool));
 		}
@@ -103,6 +100,14 @@ namespace Qyoto {
 		[Q_SLOT("void redo()")]
 		public void Redo() {
 			interceptor.Invoke("redo", "redo()", typeof(void));
+		}
+		[Q_SLOT("void setActive(bool)")]
+		public void SetActive(bool active) {
+			interceptor.Invoke("setActive$", "setActive(bool)", typeof(void), typeof(bool), active);
+		}
+		[Q_SLOT("void setActive()")]
+		public void SetActive() {
+			interceptor.Invoke("setActive", "setActive()", typeof(void));
 		}
 		~QUndoStack() {
 			interceptor.Invoke("~QUndoStack", "~QUndoStack()", typeof(void));

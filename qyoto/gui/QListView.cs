@@ -111,9 +111,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QListView", "QListView()", typeof(void));
 		}
-		public void SetWrapping(bool enable) {
-			interceptor.Invoke("setWrapping$", "setWrapping(bool)", typeof(void), typeof(bool), enable);
-		}
 		public void ClearPropertyFlags() {
 			interceptor.Invoke("clearPropertyFlags", "clearPropertyFlags()", typeof(void));
 		}
@@ -122,9 +119,6 @@ namespace Qyoto {
 		}
 		public void SetRowHidden(int row, bool hide) {
 			interceptor.Invoke("setRowHidden$$", "setRowHidden(int, bool)", typeof(void), typeof(int), row, typeof(bool), hide);
-		}
-		public bool IsSelectionRectVisible() {
-			return (bool) interceptor.Invoke("isSelectionRectVisible", "isSelectionRectVisible() const", typeof(bool));
 		}
 		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public override QRect VisualRect(QModelIndex index) {

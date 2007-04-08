@@ -168,6 +168,18 @@ namespace Qyoto {
 		public override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
+		[Q_SLOT("void setDateTime(const QDateTime&)")]
+		public void SetDateTime(QDateTime dateTime) {
+			interceptor.Invoke("setDateTime#", "setDateTime(const QDateTime&)", typeof(void), typeof(QDateTime), dateTime);
+		}
+		[Q_SLOT("void setDate(const QDate&)")]
+		public void SetDate(QDate date) {
+			interceptor.Invoke("setDate#", "setDate(const QDate&)", typeof(void), typeof(QDate), date);
+		}
+		[Q_SLOT("void setTime(const QTime&)")]
+		public void SetTime(QTime time) {
+			interceptor.Invoke("setTime#", "setTime(const QTime&)", typeof(void), typeof(QTime), time);
+		}
 		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
 			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);

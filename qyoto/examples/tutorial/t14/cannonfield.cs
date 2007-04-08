@@ -229,7 +229,7 @@ class CannonField : QWidget {
     private QRect ShotRect() {
         const double gravity = 4;
         
-        double time = timerCount / 20.0;
+        double time = timerCount / 4.0;
         double velocity = shootForce;
         double radians = shootAngle * 3.14159265 / 180;
         
@@ -269,7 +269,7 @@ class CannonField : QWidget {
     }
 
     public bool IsShooting() {
-        return autoShootTimer.IsActive();
+        return autoShootTimer.Active;
     }
     
     public int Angle() { return currentAngle; }
@@ -277,9 +277,7 @@ class CannonField : QWidget {
     public bool GameOver() { return gameEnded; }
 
     protected new ICannonFieldSignals Emit {
-        get {
-            return (ICannonFieldSignals) Q_EMIT;
-        }
+        get { return (ICannonFieldSignals) Q_EMIT; }
     }
 }
 

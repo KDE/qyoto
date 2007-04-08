@@ -25,12 +25,13 @@ using System;
 
 public class MouseMain : Qt {
     private static int MouseCount = 7;
+    private static QGraphicsScene scene;
     
     public static int Main(string[] args) {
         Q_INIT_RESOURCE("mice");
         new QApplication(args);
     
-        QGraphicsScene scene = new QGraphicsScene();
+        scene = new QGraphicsScene();
         scene.SetSceneRect(-300, -300, 600, 600);
         scene.itemIndexMethod = QGraphicsScene.ItemIndexMethod.NoIndex;
     

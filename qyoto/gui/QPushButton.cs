@@ -60,17 +60,11 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		public bool IsDefault() {
-			return (bool) interceptor.Invoke("isDefault", "isDefault() const", typeof(bool));
-		}
 		public void SetMenu(QMenu menu) {
 			interceptor.Invoke("setMenu#", "setMenu(QMenu*)", typeof(void), typeof(QMenu), menu);
 		}
 		public QMenu Menu() {
 			return (QMenu) interceptor.Invoke("menu", "menu() const", typeof(QMenu));
-		}
-		public bool IsFlat() {
-			return (bool) interceptor.Invoke("isFlat", "isFlat() const", typeof(bool));
 		}
 		[Q_SLOT("void showMenu()")]
 		public void ShowMenu() {

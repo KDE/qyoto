@@ -37,13 +37,13 @@ namespace Qyoto {
 		public new void Move(int x, int y) {
 			interceptor.Invoke("move$$", "move(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		public new void Move(QPoint p) {
+		public void Move(QPoint p) {
 			interceptor.Invoke("move#", "move(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
 		public new void Resize(int w, int h) {
 			interceptor.Invoke("resize$$", "resize(int, int)", typeof(void), typeof(int), w, typeof(int), h);
 		}
-		public new void Resize(QSize s) {
+		public void Resize(QSize s) {
 			interceptor.Invoke("resize#", "resize(const QSize&)", typeof(void), typeof(QSize), s);
 		}
 		[SmokeMethod("event(QEvent*)")]

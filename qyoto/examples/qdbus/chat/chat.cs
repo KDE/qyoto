@@ -147,9 +147,7 @@ public class ChatMainWindow : QMainWindow {
     }
 
     protected new IChatMainWindowSignals Emit {
-        get {
-            return (IChatMainWindowSignals) Q_EMIT;
-        }
+        get { return (IChatMainWindowSignals) Q_EMIT; }
     }
 }
 

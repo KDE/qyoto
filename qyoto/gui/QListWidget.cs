@@ -87,9 +87,6 @@ namespace Qyoto {
 		public void SortItems() {
 			interceptor.Invoke("sortItems", "sortItems()", typeof(void));
 		}
-		public bool IsSortingEnabled() {
-			return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled() const", typeof(bool));
-		}
 		public void EditItem(QListWidgetItem item) {
 			interceptor.Invoke("editItem#", "editItem(QListWidgetItem*)", typeof(void), typeof(QListWidgetItem), item);
 		}

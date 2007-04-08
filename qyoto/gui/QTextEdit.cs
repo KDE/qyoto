@@ -127,9 +127,6 @@ namespace Qyoto {
 		public QTextCursor TextCursor() {
 			return (QTextCursor) interceptor.Invoke("textCursor", "textCursor() const", typeof(QTextCursor));
 		}
-		public bool IsReadOnly() {
-			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
-		}
 		public double FontPointSize() {
 			return (double) interceptor.Invoke("fontPointSize", "fontPointSize() const", typeof(double));
 		}
@@ -163,9 +160,6 @@ namespace Qyoto {
 		public QTextCharFormat CurrentCharFormat() {
 			return (QTextCharFormat) interceptor.Invoke("currentCharFormat", "currentCharFormat() const", typeof(QTextCharFormat));
 		}
-		public bool IsUndoRedoEnabled() {
-			return (bool) interceptor.Invoke("isUndoRedoEnabled", "isUndoRedoEnabled() const", typeof(bool));
-		}
 		public QTextOption.WrapMode WordWrapMode() {
 			return (QTextOption.WrapMode) interceptor.Invoke("wordWrapMode", "wordWrapMode() const", typeof(QTextOption.WrapMode));
 		}
@@ -177,12 +171,6 @@ namespace Qyoto {
 		}
 		public bool Find(string exp) {
 			return (bool) interceptor.Invoke("find$", "find(const QString&)", typeof(bool), typeof(string), exp);
-		}
-		public string ToPlainText() {
-			return (string) interceptor.Invoke("toPlainText", "toPlainText() const", typeof(string));
-		}
-		public string ToHtml() {
-			return (string) interceptor.Invoke("toHtml", "toHtml() const", typeof(string));
 		}
 		public void EnsureCursorVisible() {
 			interceptor.Invoke("ensureCursorVisible", "ensureCursorVisible()", typeof(void));
@@ -249,6 +237,14 @@ namespace Qyoto {
 		[Q_SLOT("void setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int a) {
 			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), a);
+		}
+		[Q_SLOT("void setPlainText(const QString&)")]
+		public void SetPlainText(string text) {
+			interceptor.Invoke("setPlainText$", "setPlainText(const QString&)", typeof(void), typeof(string), text);
+		}
+		[Q_SLOT("void setHtml(const QString&)")]
+		public void SetHtml(string text) {
+			interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), text);
 		}
 		[Q_SLOT("void setText(const QString&)")]
 		public void SetText(string text) {

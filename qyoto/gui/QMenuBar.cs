@@ -65,9 +65,6 @@ namespace Qyoto {
 		public void SetActiveAction(QAction action) {
 			interceptor.Invoke("setActiveAction#", "setActiveAction(QAction*)", typeof(void), typeof(QAction), action);
 		}
-		public bool IsDefaultUp() {
-			return (bool) interceptor.Invoke("isDefaultUp", "isDefaultUp() const", typeof(bool));
-		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));

@@ -48,6 +48,14 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
+		[Q_SLOT("void setNotchesVisible(bool)")]
+		public void SetNotchesVisible(bool visible) {
+			interceptor.Invoke("setNotchesVisible$", "setNotchesVisible(bool)", typeof(void), typeof(bool), visible);
+		}
+		[Q_SLOT("void setWrapping(bool)")]
+		public void SetWrapping(bool on) {
+			interceptor.Invoke("setWrapping$", "setWrapping(bool)", typeof(void), typeof(bool), on);
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);

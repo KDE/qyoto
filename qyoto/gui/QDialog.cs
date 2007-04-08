@@ -69,9 +69,6 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		public bool IsSizeGripEnabled() {
-			return (bool) interceptor.Invoke("isSizeGripEnabled", "isSizeGripEnabled() const", typeof(bool));
-		}
 		[SmokeMethod("event(QEvent*)")]
 		public new virtual bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);

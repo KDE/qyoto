@@ -100,27 +100,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QAbstractSpinBox", "QAbstractSpinBox()", typeof(void));
 		}
-		public bool HasAcceptableInput() {
-			return (bool) interceptor.Invoke("hasAcceptableInput", "hasAcceptableInput() const", typeof(bool));
-		}
-		public bool IsReadOnly() {
-			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
-		}
-		public bool HasFrame() {
-			return (bool) interceptor.Invoke("hasFrame", "hasFrame() const", typeof(bool));
-		}
-		public bool IsAccelerated() {
-			return (bool) interceptor.Invoke("isAccelerated", "isAccelerated() const", typeof(bool));
-		}
-		public bool IsUndoAvailable() {
-			return (bool) interceptor.Invoke("isUndoAvailable", "isUndoAvailable() const", typeof(bool));
-		}
-		public bool IsRedoAvailable() {
-			return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable() const", typeof(bool));
-		}
-		public bool IsModified() {
-			return (bool) interceptor.Invoke("isModified", "isModified() const", typeof(bool));
-		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));

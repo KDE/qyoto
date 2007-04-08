@@ -56,9 +56,6 @@ namespace Qyoto {
 		public void RemoveWidget(QWidget widget) {
 			interceptor.Invoke("removeWidget#", "removeWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		public bool IsSizeGripEnabled() {
-			return (bool) interceptor.Invoke("isSizeGripEnabled", "isSizeGripEnabled() const", typeof(bool));
-		}
 		public string CurrentMessage() {
 			return (string) interceptor.Invoke("currentMessage", "currentMessage() const", typeof(string));
 		}

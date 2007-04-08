@@ -107,12 +107,6 @@ namespace Qyoto {
 		public void SetColumnHidden(int column, bool hide) {
 			interceptor.Invoke("setColumnHidden$$", "setColumnHidden(int, bool)", typeof(void), typeof(int), column, typeof(bool), hide);
 		}
-		public bool IsSortingEnabled() {
-			return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled() const", typeof(bool));
-		}
-		public bool IsCornerButtonEnabled() {
-			return (bool) interceptor.Invoke("isCornerButtonEnabled", "isCornerButtonEnabled() const", typeof(bool));
-		}
 		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public override QRect VisualRect(QModelIndex index) {
 			return (QRect) interceptor.Invoke("visualRect#", "visualRect(const QModelIndex&) const", typeof(QRect), typeof(QModelIndex), index);
@@ -184,6 +178,10 @@ namespace Qyoto {
 		[Q_SLOT("void sortByColumn(int)")]
 		public void SortByColumn(int column) {
 			interceptor.Invoke("sortByColumn$", "sortByColumn(int)", typeof(void), typeof(int), column);
+		}
+		[Q_SLOT("void setShowGrid(bool)")]
+		public void SetShowGrid(bool show) {
+			interceptor.Invoke("setShowGrid$", "setShowGrid(bool)", typeof(void), typeof(bool), show);
 		}
 		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected override void ScrollContentsBy(int dx, int dy) {

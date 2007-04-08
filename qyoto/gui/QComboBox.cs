@@ -113,9 +113,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QComboBox", "QComboBox()", typeof(void));
 		}
-		public bool HasFrame() {
-			return (bool) interceptor.Invoke("hasFrame", "hasFrame() const", typeof(bool));
-		}
 		public int FindText(string text, int flags) {
 			return (int) interceptor.Invoke("findText$$", "findText(const QString&, Qt::MatchFlags) const", typeof(int), typeof(string), text, typeof(int), flags);
 		}
@@ -130,9 +127,6 @@ namespace Qyoto {
 		}
 		public int FindData(QVariant data) {
 			return (int) interceptor.Invoke("findData#", "findData(const QVariant&) const", typeof(int), typeof(QVariant), data);
-		}
-		public bool IsEditable() {
-			return (bool) interceptor.Invoke("isEditable", "isEditable() const", typeof(bool));
 		}
 		public void SetLineEdit(QLineEdit edit) {
 			interceptor.Invoke("setLineEdit#", "setLineEdit(QLineEdit*)", typeof(void), typeof(QLineEdit), edit);
@@ -264,6 +258,10 @@ namespace Qyoto {
 		[Q_SLOT("void setEditText(const QString&)")]
 		public void SetEditText(string text) {
 			interceptor.Invoke("setEditText$", "setEditText(const QString&)", typeof(void), typeof(string), text);
+		}
+		[Q_SLOT("void setCurrentIndex(int)")]
+		public void SetCurrentIndex(int index) {
+			interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), index);
 		}
 		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent e) {

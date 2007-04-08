@@ -292,12 +292,6 @@ namespace Qyoto {
 		public bool IsWindow() {
 			return (bool) interceptor.Invoke("isWindow", "isWindow() const", typeof(bool));
 		}
-		public bool IsModal() {
-			return (bool) interceptor.Invoke("isModal", "isModal() const", typeof(bool));
-		}
-		public bool IsEnabled() {
-			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
-		}
 		public bool IsEnabledTo(QWidget arg1) {
 			return (bool) interceptor.Invoke("isEnabledTo#", "isEnabledTo(QWidget*) const", typeof(bool), typeof(QWidget), arg1);
 		}
@@ -379,9 +373,6 @@ namespace Qyoto {
 		public void UnsetCursor() {
 			interceptor.Invoke("unsetCursor", "unsetCursor()", typeof(void));
 		}
-		public bool HasMouseTracking() {
-			return (bool) interceptor.Invoke("hasMouseTracking", "hasMouseTracking() const", typeof(bool));
-		}
 		public bool UnderMouse() {
 			return (bool) interceptor.Invoke("underMouse", "underMouse() const", typeof(bool));
 		}
@@ -403,9 +394,6 @@ namespace Qyoto {
 		public string WindowRole() {
 			return (string) interceptor.Invoke("windowRole", "windowRole() const", typeof(string));
 		}
-		public bool IsWindowModified() {
-			return (bool) interceptor.Invoke("isWindowModified", "isWindowModified() const", typeof(bool));
-		}
 		public void UnsetLayoutDirection() {
 			interceptor.Invoke("unsetLayoutDirection", "unsetLayoutDirection()", typeof(void));
 		}
@@ -423,9 +411,6 @@ namespace Qyoto {
 		}
 		public void ClearFocus() {
 			interceptor.Invoke("clearFocus", "clearFocus()", typeof(void));
-		}
-		public bool HasFocus() {
-			return (bool) interceptor.Invoke("hasFocus", "hasFocus() const", typeof(bool));
 		}
 		public void SetFocusProxy(QWidget arg1) {
 			interceptor.Invoke("setFocusProxy#", "setFocusProxy(QWidget*)", typeof(void), typeof(QWidget), arg1);
@@ -493,14 +478,8 @@ namespace Qyoto {
 		public void Move(int x, int y) {
 			interceptor.Invoke("move$$", "move(int, int)", typeof(void), typeof(int), x, typeof(int), y);
 		}
-		public void Move(QPoint arg1) {
-			interceptor.Invoke("move#", "move(const QPoint&)", typeof(void), typeof(QPoint), arg1);
-		}
 		public void Resize(int w, int h) {
 			interceptor.Invoke("resize$$", "resize(int, int)", typeof(void), typeof(int), w, typeof(int), h);
-		}
-		public void Resize(QSize arg1) {
-			interceptor.Invoke("resize#", "resize(const QSize&)", typeof(void), typeof(QSize), arg1);
 		}
 		public void SetGeometry(int x, int y, int w, int h) {
 			interceptor.Invoke("setGeometry$$$$", "setGeometry(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
@@ -522,15 +501,6 @@ namespace Qyoto {
 		}
 		public bool IsHidden() {
 			return (bool) interceptor.Invoke("isHidden", "isHidden() const", typeof(bool));
-		}
-		public bool IsMinimized() {
-			return (bool) interceptor.Invoke("isMinimized", "isMinimized() const", typeof(bool));
-		}
-		public bool IsMaximized() {
-			return (bool) interceptor.Invoke("isMaximized", "isMaximized() const", typeof(bool));
-		}
-		public bool IsFullScreen() {
-			return (bool) interceptor.Invoke("isFullScreen", "isFullScreen() const", typeof(bool));
 		}
 		public new int WindowState() {
 			return (int) interceptor.Invoke("windowState", "windowState() const", typeof(int));
@@ -663,9 +633,25 @@ namespace Qyoto {
 		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), arg1);
 		}
+		[Q_SLOT("void setEnabled(bool)")]
+		public void SetEnabled(bool arg1) {
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);
+		}
 		[Q_SLOT("void setDisabled(bool)")]
 		public void SetDisabled(bool arg1) {
 			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), arg1);
+		}
+		[Q_SLOT("void setWindowModified(bool)")]
+		public void SetWindowModified(bool arg1) {
+			interceptor.Invoke("setWindowModified$", "setWindowModified(bool)", typeof(void), typeof(bool), arg1);
+		}
+		[Q_SLOT("void setWindowTitle(const QString&)")]
+		public void SetWindowTitle(string arg1) {
+			interceptor.Invoke("setWindowTitle$", "setWindowTitle(const QString&)", typeof(void), typeof(string), arg1);
+		}
+		[Q_SLOT("void setStyleSheet(const QString&)")]
+		public void SetStyleSheet(string styleSheet) {
+			interceptor.Invoke("setStyleSheet$", "setStyleSheet(const QString&)", typeof(void), typeof(string), styleSheet);
 		}
 		[Q_SLOT("void setFocus()")]
 		public void SetFocus() {

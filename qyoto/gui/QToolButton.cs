@@ -70,6 +70,10 @@ namespace Qyoto {
 		public void ShowMenu() {
 			interceptor.Invoke("showMenu", "showMenu()", typeof(void));
 		}
+		[Q_SLOT("void setToolButtonStyle(Qt::ToolButtonStyle)")]
+		public void SetToolButtonStyle(Qt.ToolButtonStyle style) {
+			interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), style);
+		}
 		[Q_SLOT("void setDefaultAction(QAction*)")]
 		public void SetDefaultAction(QAction arg1) {
 			interceptor.Invoke("setDefaultAction#", "setDefaultAction(QAction*)", typeof(void), typeof(QAction), arg1);

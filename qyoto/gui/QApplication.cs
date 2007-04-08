@@ -110,6 +110,10 @@ namespace Qyoto {
 		public override bool Notify(QObject arg1, QEvent arg2) {
 			return (bool) interceptor.Invoke("notify##", "notify(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
+		[Q_SLOT("void setStyleSheet(const QString&)")]
+		public void SetStyleSheet(string sheet) {
+			interceptor.Invoke("setStyleSheet$", "setStyleSheet(const QString&)", typeof(void), typeof(string), sheet);
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
@@ -189,12 +193,6 @@ namespace Qyoto {
 		public static QFontMetrics FontMetrics() {
 			return (QFontMetrics) staticInterceptor.Invoke("fontMetrics", "fontMetrics()", typeof(QFontMetrics));
 		}
-		public static void SetWindowIcon(QIcon icon) {
-			staticInterceptor.Invoke("setWindowIcon#", "setWindowIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
-		}
-		public static QIcon windowIcon() {
-			return (QIcon) staticInterceptor.Invoke("windowIcon", "windowIcon()", typeof(QIcon));
-		}
 		public static List<QWidget> AllWidgets() {
 			return (List<QWidget>) staticInterceptor.Invoke("allWidgets", "allWidgets()", typeof(List<QWidget>));
 		}
@@ -258,35 +256,17 @@ namespace Qyoto {
 		public static bool DesktopSettingsAware() {
 			return (bool) staticInterceptor.Invoke("desktopSettingsAware", "desktopSettingsAware()", typeof(bool));
 		}
-		public static void SetCursorFlashTime(int arg1) {
-			staticInterceptor.Invoke("setCursorFlashTime$", "setCursorFlashTime(int)", typeof(void), typeof(int), arg1);
-		}
-		public static int cursorFlashTime() {
-			return (int) staticInterceptor.Invoke("cursorFlashTime", "cursorFlashTime()", typeof(int));
-		}
 		public static void SetDoubleClickInterval(int arg1) {
 			staticInterceptor.Invoke("setDoubleClickInterval$", "setDoubleClickInterval(int)", typeof(void), typeof(int), arg1);
 		}
 		public static int doubleClickInterval() {
 			return (int) staticInterceptor.Invoke("doubleClickInterval", "doubleClickInterval()", typeof(int));
 		}
-		public static void SetKeyboardInputInterval(int arg1) {
-			staticInterceptor.Invoke("setKeyboardInputInterval$", "setKeyboardInputInterval(int)", typeof(void), typeof(int), arg1);
-		}
-		public static int keyboardInputInterval() {
-			return (int) staticInterceptor.Invoke("keyboardInputInterval", "keyboardInputInterval()", typeof(int));
-		}
 		public static void SetWheelScrollLines(int arg1) {
 			staticInterceptor.Invoke("setWheelScrollLines$", "setWheelScrollLines(int)", typeof(void), typeof(int), arg1);
 		}
 		public static int wheelScrollLines() {
 			return (int) staticInterceptor.Invoke("wheelScrollLines", "wheelScrollLines()", typeof(int));
-		}
-		public static void SetGlobalStrut(QSize arg1) {
-			staticInterceptor.Invoke("setGlobalStrut#", "setGlobalStrut(const QSize&)", typeof(void), typeof(QSize), arg1);
-		}
-		public static QSize globalStrut() {
-			return (QSize) staticInterceptor.Invoke("globalStrut", "globalStrut()", typeof(QSize));
 		}
 		public static void SetStartDragTime(int ms) {
 			staticInterceptor.Invoke("setStartDragTime$", "setStartDragTime(int)", typeof(void), typeof(int), ms);
@@ -299,12 +279,6 @@ namespace Qyoto {
 		}
 		public static int startDragDistance() {
 			return (int) staticInterceptor.Invoke("startDragDistance", "startDragDistance()", typeof(int));
-		}
-		public static void SetLayoutDirection(Qt.LayoutDirection direction) {
-			staticInterceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), direction);
-		}
-		public static Qt.LayoutDirection layoutDirection() {
-			return (Qt.LayoutDirection) staticInterceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection));
 		}
 		public static bool IsRightToLeft() {
 			return (bool) staticInterceptor.Invoke("isRightToLeft", "isRightToLeft()", typeof(bool));

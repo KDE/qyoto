@@ -112,12 +112,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QLineEdit$", "QLineEdit(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		public bool HasFrame() {
-			return (bool) interceptor.Invoke("hasFrame", "hasFrame() const", typeof(bool));
-		}
-		public bool IsReadOnly() {
-			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
-		}
 		public void SetValidator(QValidator arg1) {
 			interceptor.Invoke("setValidator#", "setValidator(const QValidator*)", typeof(void), typeof(QValidator), arg1);
 		}
@@ -171,23 +165,11 @@ namespace Qyoto {
 		public void End(bool mark) {
 			interceptor.Invoke("end$", "end(bool)", typeof(void), typeof(bool), mark);
 		}
-		public bool IsModified() {
-			return (bool) interceptor.Invoke("isModified", "isModified() const", typeof(bool));
-		}
 		public void SetSelection(int arg1, int arg2) {
 			interceptor.Invoke("setSelection$$", "setSelection(int, int)", typeof(void), typeof(int), arg1, typeof(int), arg2);
 		}
 		public int SelectionStart() {
 			return (int) interceptor.Invoke("selectionStart", "selectionStart() const", typeof(int));
-		}
-		public bool IsUndoAvailable() {
-			return (bool) interceptor.Invoke("isUndoAvailable", "isUndoAvailable() const", typeof(bool));
-		}
-		public bool IsRedoAvailable() {
-			return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable() const", typeof(bool));
-		}
-		public bool HasAcceptableInput() {
-			return (bool) interceptor.Invoke("hasAcceptableInput", "hasAcceptableInput() const", typeof(bool));
 		}
 		public void Deselect() {
 			interceptor.Invoke("deselect", "deselect()", typeof(void));
@@ -205,6 +187,10 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		public new virtual bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		[Q_SLOT("void setText(const QString&)")]
+		public void SetText(string arg1) {
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		[Q_SLOT("void clear()")]
 		public void Clear() {

@@ -61,9 +61,6 @@ namespace Qyoto {
 		public QSize DefaultSize() {
 			return (QSize) interceptor.Invoke("defaultSize", "defaultSize() const", typeof(QSize));
 		}
-		public QRectF ViewBoxF() {
-			return (QRectF) interceptor.Invoke("viewBoxF", "viewBoxF() const", typeof(QRectF));
-		}
 		public bool Animated() {
 			return (bool) interceptor.Invoke("animated", "animated() const", typeof(bool));
 		}

@@ -24,6 +24,7 @@ namespace Qyoto {
 			ServiceRegistered = 1,
 			ServiceQueued = 2,
 		}
+		// QDBusReply<QStringList> registeredServiceNames(); >>>> NOT CONVERTED
 		// QDBusReply<bool> isServiceRegistered(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<QString> serviceOwner(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<bool> unregisterService(const QString& arg1); >>>> NOT CONVERTED

@@ -136,9 +136,6 @@ namespace Qyoto {
 		public void ResetCachedContent() {
 			interceptor.Invoke("resetCachedContent", "resetCachedContent()", typeof(void));
 		}
-		public bool IsInteractive() {
-			return (bool) interceptor.Invoke("isInteractive", "isInteractive() const", typeof(bool));
-		}
 		public QGraphicsScene Scene() {
 			return (QGraphicsScene) interceptor.Invoke("scene", "scene() const", typeof(QGraphicsScene));
 		}

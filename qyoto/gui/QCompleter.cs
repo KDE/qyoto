@@ -130,6 +130,10 @@ namespace Qyoto {
 		public virtual List<string> SplitPath(string path) {
 			return (List<string>) interceptor.Invoke("splitPath$", "splitPath(const QString&) const", typeof(List<string>), typeof(string), path);
 		}
+		[Q_SLOT("void setCompletionPrefix(const QString&)")]
+		public void SetCompletionPrefix(string prefix) {
+			interceptor.Invoke("setCompletionPrefix$", "setCompletionPrefix(const QString&)", typeof(void), typeof(string), prefix);
+		}
 		[Q_SLOT("void complete(const QRect&)")]
 		public void Complete(QRect rect) {
 			interceptor.Invoke("complete#", "complete(const QRect&)", typeof(void), typeof(QRect), rect);
@@ -137,6 +141,10 @@ namespace Qyoto {
 		[Q_SLOT("void complete()")]
 		public void Complete() {
 			interceptor.Invoke("complete", "complete()", typeof(void));
+		}
+		[Q_SLOT("void setWrapAround(bool)")]
+		public void SetWrapAround(bool wrap) {
+			interceptor.Invoke("setWrapAround$", "setWrapAround(bool)", typeof(void), typeof(bool), wrap);
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {

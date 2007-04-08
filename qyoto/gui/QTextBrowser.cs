@@ -53,6 +53,11 @@ namespace Qyoto {
 		public void ClearHistory() {
 			interceptor.Invoke("clearHistory", "clearHistory()", typeof(void));
 		}
+		[Q_SLOT("void setSource(const QUrl&)")]
+		[SmokeMethod("setSource(const QUrl&)")]
+		public virtual void SetSource(IQUrl name) {
+			interceptor.Invoke("setSource#", "setSource(const QUrl&)", typeof(void), typeof(IQUrl), name);
+		}
 		[Q_SLOT("void backward()")]
 		[SmokeMethod("backward()")]
 		public virtual void Backward() {

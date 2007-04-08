@@ -41,9 +41,6 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		public bool IsTristate() {
-			return (bool) interceptor.Invoke("isTristate", "isTristate() const", typeof(bool));
-		}
 		public new Qt.CheckState CheckState() {
 			return (Qt.CheckState) interceptor.Invoke("checkState", "checkState() const", typeof(Qt.CheckState));
 		}

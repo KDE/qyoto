@@ -111,6 +111,10 @@ namespace Qyoto {
 		public void SetBinMode() {
 			interceptor.Invoke("setBinMode", "setBinMode()", typeof(void));
 		}
+		[Q_SLOT("void setSmallDecimalPoint(bool)")]
+		public void SetSmallDecimalPoint(bool arg1) {
+			interceptor.Invoke("setSmallDecimalPoint$", "setSmallDecimalPoint(bool)", typeof(void), typeof(bool), arg1);
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);

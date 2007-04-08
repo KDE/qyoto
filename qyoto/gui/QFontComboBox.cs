@@ -50,6 +50,10 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
+		[Q_SLOT("void setCurrentFont(const QFont&)")]
+		public void SetCurrentFont(QFont f) {
+			interceptor.Invoke("setCurrentFont#", "setCurrentFont(const QFont&)", typeof(void), typeof(QFont), f);
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent e) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);

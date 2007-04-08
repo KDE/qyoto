@@ -76,9 +76,6 @@ namespace Qyoto {
 		public void SetWidget(QWidget widget) {
 			interceptor.Invoke("setWidget#", "setWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		public bool IsFloating() {
-			return (bool) interceptor.Invoke("isFloating", "isFloating() const", typeof(bool));
-		}
 		public void SetTitleBarWidget(QWidget widget) {
 			interceptor.Invoke("setTitleBarWidget#", "setTitleBarWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}

@@ -121,6 +121,10 @@ namespace Qyoto {
 		public void SetPaused(bool paused) {
 			interceptor.Invoke("setPaused$", "setPaused(bool)", typeof(void), typeof(bool), paused);
 		}
+		[Q_SLOT("void setCurrentTime(int)")]
+		public void SetCurrentTime(int msec) {
+			interceptor.Invoke("setCurrentTime$", "setCurrentTime(int)", typeof(void), typeof(int), msec);
+		}
 		[Q_SLOT("void toggleDirection()")]
 		public void ToggleDirection() {
 			interceptor.Invoke("toggleDirection", "toggleDirection()", typeof(void));

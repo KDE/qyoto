@@ -60,12 +60,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QMainWindow", "QMainWindow()", typeof(void));
 		}
-		public bool IsAnimated() {
-			return (bool) interceptor.Invoke("isAnimated", "isAnimated() const", typeof(bool));
-		}
-		public bool IsDockNestingEnabled() {
-			return (bool) interceptor.Invoke("isDockNestingEnabled", "isDockNestingEnabled() const", typeof(bool));
-		}
 		public bool IsSeparator(QPoint pos) {
 			return (bool) interceptor.Invoke("isSeparator#", "isSeparator(const QPoint&) const", typeof(bool), typeof(QPoint), pos);
 		}
@@ -165,6 +159,14 @@ namespace Qyoto {
 		[SmokeMethod("createPopupMenu()")]
 		public virtual QMenu CreatePopupMenu() {
 			return (QMenu) interceptor.Invoke("createPopupMenu", "createPopupMenu()", typeof(QMenu));
+		}
+		[Q_SLOT("void setAnimated(bool)")]
+		public void SetAnimated(bool enabled) {
+			interceptor.Invoke("setAnimated$", "setAnimated(bool)", typeof(void), typeof(bool), enabled);
+		}
+		[Q_SLOT("void setDockNestingEnabled(bool)")]
+		public void SetDockNestingEnabled(bool enabled) {
+			interceptor.Invoke("setDockNestingEnabled$", "setDockNestingEnabled(bool)", typeof(void), typeof(bool), enabled);
 		}
 		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {

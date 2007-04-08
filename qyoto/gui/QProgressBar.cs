@@ -77,8 +77,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QProgressBar", "QProgressBar()", typeof(void));
 		}
-		public bool IsTextVisible() {
-			return (bool) interceptor.Invoke("isTextVisible", "isTextVisible() const", typeof(bool));
+		[SmokeMethod("text() const")]
+		public virtual string text() {
+			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
@@ -95,6 +96,22 @@ namespace Qyoto {
 		[Q_SLOT("void setRange(int, int)")]
 		public void SetRange(int minimum, int maximum) {
 			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), minimum, typeof(int), maximum);
+		}
+		[Q_SLOT("void setMinimum(int)")]
+		public void SetMinimum(int minimum) {
+			interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), minimum);
+		}
+		[Q_SLOT("void setMaximum(int)")]
+		public void SetMaximum(int maximum) {
+			interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), maximum);
+		}
+		[Q_SLOT("void setValue(int)")]
+		public void SetValue(int value) {
+			interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value);
+		}
+		[Q_SLOT("void setOrientation(Qt::Orientation)")]
+		public void SetOrientation(Qt.Orientation arg1) {
+			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), arg1);
 		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {

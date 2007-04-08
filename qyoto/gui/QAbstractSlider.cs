@@ -98,14 +98,16 @@ namespace Qyoto {
 		public void SetRange(int min, int max) {
 			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
 		}
-		public bool HasTracking() {
-			return (bool) interceptor.Invoke("hasTracking", "hasTracking() const", typeof(bool));
-		}
-		public bool IsSliderDown() {
-			return (bool) interceptor.Invoke("isSliderDown", "isSliderDown() const", typeof(bool));
-		}
 		public void TriggerAction(QAbstractSlider.SliderAction action) {
 			interceptor.Invoke("triggerAction$", "triggerAction(QAbstractSlider::SliderAction)", typeof(void), typeof(QAbstractSlider.SliderAction), action);
+		}
+		[Q_SLOT("void setValue(int)")]
+		public void SetValue(int arg1) {
+			interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), arg1);
+		}
+		[Q_SLOT("void setOrientation(Qt::Orientation)")]
+		public void SetOrientation(Qt.Orientation arg1) {
+			interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), arg1);
 		}
 		[SmokeMethod("event(QEvent*)")]
 		protected override bool Event(QEvent e) {

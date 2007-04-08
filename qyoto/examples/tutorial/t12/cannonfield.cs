@@ -74,7 +74,7 @@ class CannonField : QWidget {
 
 	[Q_SLOT]
 	public void shoot() {
-		if (autoShootTimer.IsActive())
+		if (autoShootTimer.Active)
 			return;
 		timerCount = 0;
 		shootAngle = currentAngle;
@@ -121,7 +121,7 @@ class CannonField : QWidget {
 		QPainter painter = new QPainter(this);
 
 		paintCannon(painter);
-		if (autoShootTimer.IsActive())
+		if (autoShootTimer.Active)
 			paintShot(painter);
 		paintTarget(painter);
 		painter.End();

@@ -186,12 +186,6 @@ namespace Qyoto {
 		public QModelIndex RootIndex() {
 			return (QModelIndex) interceptor.Invoke("rootIndex", "rootIndex() const", typeof(QModelIndex));
 		}
-		public bool HasAutoScroll() {
-			return (bool) interceptor.Invoke("hasAutoScroll", "hasAutoScroll() const", typeof(bool));
-		}
-		public void SetDropIndicatorShown(bool enable) {
-			interceptor.Invoke("setDropIndicatorShown$", "setDropIndicatorShown(bool)", typeof(void), typeof(bool), enable);
-		}
 		[SmokeMethod("keyboardSearch(const QString&)")]
 		public virtual void KeyboardSearch(string search) {
 			interceptor.Invoke("keyboardSearch$", "keyboardSearch(const QString&)", typeof(void), typeof(string), search);

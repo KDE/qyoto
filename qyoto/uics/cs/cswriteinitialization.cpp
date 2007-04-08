@@ -594,6 +594,7 @@ void WriteInitialization::writeProperties(const QString &varName,
     lowerCasePropertyNames << "fileMode";
     lowerCasePropertyNames << "flow";
     lowerCasePropertyNames << "horizontalHeaderFormat";
+    lowerCasePropertyNames << "icon";
     lowerCasePropertyNames << "insertPolicy";
     lowerCasePropertyNames << "itemIndexMethod";
     lowerCasePropertyNames << "layoutMode";
@@ -602,6 +603,7 @@ void WriteInitialization::writeProperties(const QString &varName,
     lowerCasePropertyNames << "mode";
     lowerCasePropertyNames << "modelSorting";
     lowerCasePropertyNames << "movement";
+    lowerCasePropertyNames << "notation";
     lowerCasePropertyNames << "resizeMode";
     lowerCasePropertyNames << "segmentStyle";
     lowerCasePropertyNames << "selectionBehavior";
@@ -615,6 +617,8 @@ void WriteInitialization::writeProperties(const QString &varName,
     lowerCasePropertyNames << "tickPosition";
     lowerCasePropertyNames << "verticalHeaderFormat";
     lowerCasePropertyNames << "viewMode";
+    lowerCasePropertyNames << "viewportUpdateMode";
+    lowerCasePropertyNames << "wizardStyle";
 
     if (uic->customWidgetsInfo()->extends(className, QLatin1String("QAxWidget"))) {
         QHash<QString, DomProperty*> properties = propertyMap(lst);
@@ -643,7 +647,7 @@ void WriteInitialization::writeProperties(const QString &varName,
 			resizeOut << option.indent << "QSize " << tempName << " = new QSize(" << w << ", " << h << ");\n"
                       << option.indent << tempName << " = " << tempName << ".ExpandedTo("
                       << varName << ".MinimumSizeHint());\n"
-                      << option.indent << varName << ".Resize(" << tempName << ");\n";                
+                      << option.indent << varName << ".Size = " << tempName << ";\n";                
             continue;
         } else if (propertyName == QLatin1String("buttonGroupId") && buttonGroupWidget) { // Q3ButtonGroup support
             output << option.indent << driver->findOrInsertWidget(buttonGroupWidget) << ".Insert("

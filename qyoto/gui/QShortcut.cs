@@ -61,9 +61,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QShortcut##", "QShortcut(const QKeySequence&, QWidget*)", typeof(void), typeof(QKeySequence), key, typeof(QWidget), parent);
 		}
-		public bool IsEnabled() {
-			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
-		}
 		public int Id() {
 			return (int) interceptor.Invoke("id", "id() const", typeof(int));
 		}

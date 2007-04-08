@@ -35,7 +35,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setToolTip$", "setToolTip(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
-		public QIcon Icon {
+		public QIcon icon {
 			get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
 			set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
@@ -78,8 +78,9 @@ namespace Qyoto {
 		public QRect Geometry() {
 			return (QRect) interceptor.Invoke("geometry", "geometry() const", typeof(QRect));
 		}
-		public bool IsVisible() {
-			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
+		[Q_SLOT("void setVisible(bool)")]
+		public void SetVisible(bool visible) {
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
 		}
 		[Q_SLOT("void show()")]
 		public void Show() {

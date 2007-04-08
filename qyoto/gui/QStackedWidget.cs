@@ -51,6 +51,10 @@ namespace Qyoto {
 		public QWidget Widget(int arg1) {
 			return (QWidget) interceptor.Invoke("widget$", "widget(int) const", typeof(QWidget), typeof(int), arg1);
 		}
+		[Q_SLOT("void setCurrentIndex(int)")]
+		public void SetCurrentIndex(int index) {
+			interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), index);
+		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			interceptor.Invoke("setCurrentWidget#", "setCurrentWidget(QWidget*)", typeof(void), typeof(QWidget), w);

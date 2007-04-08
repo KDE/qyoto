@@ -77,6 +77,10 @@ namespace Qyoto {
 		public override void SetGeometry(QRect rect) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), rect);
 		}
+		[Q_SLOT("void setCurrentIndex(int)")]
+		public void SetCurrentIndex(int index) {
+			interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), index);
+		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			interceptor.Invoke("setCurrentWidget#", "setCurrentWidget(QWidget*)", typeof(void), typeof(QWidget), w);

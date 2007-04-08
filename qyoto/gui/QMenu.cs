@@ -28,7 +28,7 @@ namespace Qyoto {
 			set { interceptor.Invoke("setTitle$", "setTitle(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
-		public QIcon Icon {
+		public QIcon icon {
 			get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
 			set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
 		}
@@ -97,9 +97,6 @@ namespace Qyoto {
 		}
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
-		}
-		public bool IsTearOffEnabled() {
-			return (bool) interceptor.Invoke("isTearOffEnabled", "isTearOffEnabled() const", typeof(bool));
 		}
 		public bool IsTearOffMenuVisible() {
 			return (bool) interceptor.Invoke("isTearOffMenuVisible", "isTearOffMenuVisible() const", typeof(bool));

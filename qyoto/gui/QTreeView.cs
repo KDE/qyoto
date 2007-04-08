@@ -124,12 +124,6 @@ namespace Qyoto {
 		public void SetExpanded(QModelIndex index, bool expand) {
 			interceptor.Invoke("setExpanded#$", "setExpanded(const QModelIndex&, bool)", typeof(void), typeof(QModelIndex), index, typeof(bool), expand);
 		}
-		public bool IsSortingEnabled() {
-			return (bool) interceptor.Invoke("isSortingEnabled", "isSortingEnabled() const", typeof(bool));
-		}
-		public bool IsAnimated() {
-			return (bool) interceptor.Invoke("isAnimated", "isAnimated() const", typeof(bool));
-		}
 		[SmokeMethod("keyboardSearch(const QString&)")]
 		public override void KeyboardSearch(string search) {
 			interceptor.Invoke("keyboardSearch$", "keyboardSearch(const QString&)", typeof(void), typeof(string), search);

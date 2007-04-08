@@ -162,9 +162,6 @@ namespace Qyoto {
 		public int Sorting() {
 			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
 		}
-		public bool IsReadOnly() {
-			return (bool) interceptor.Invoke("isReadOnly", "isReadOnly() const", typeof(bool));
-		}
 		public QModelIndex Index(string path, int column) {
 			return (QModelIndex) interceptor.Invoke("index$$", "index(const QString&, int) const", typeof(QModelIndex), typeof(string), path, typeof(int), column);
 		}

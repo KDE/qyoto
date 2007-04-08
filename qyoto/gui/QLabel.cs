@@ -96,9 +96,6 @@ namespace Qyoto {
 		public QMovie Movie() {
 			return (QMovie) interceptor.Invoke("movie", "movie() const", typeof(QMovie));
 		}
-		public bool HasScaledContents() {
-			return (bool) interceptor.Invoke("hasScaledContents", "hasScaledContents() const", typeof(bool));
-		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
@@ -116,6 +113,14 @@ namespace Qyoto {
 		[SmokeMethod("heightForWidth(int) const")]
 		public override int HeightForWidth(int arg1) {
 			return (int) interceptor.Invoke("heightForWidth$", "heightForWidth(int) const", typeof(int), typeof(int), arg1);
+		}
+		[Q_SLOT("void setText(const QString&)")]
+		public void SetText(string arg1) {
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
+		}
+		[Q_SLOT("void setPixmap(const QPixmap&)")]
+		public void SetPixmap(QPixmap arg1) {
+			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}
 		[Q_SLOT("void setPicture(const QPicture&)")]
 		public void SetPicture(QPicture arg1) {

@@ -26,9 +26,6 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QItemDelegate", "QItemDelegate()", typeof(void));
 		}
-		public bool HasClipping() {
-			return (bool) interceptor.Invoke("hasClipping", "hasClipping() const", typeof(bool));
-		}
 		[SmokeMethod("paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public override void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index) {
 			interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);

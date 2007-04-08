@@ -139,6 +139,10 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
+		[Q_SLOT("void setCurrentIndex(int)")]
+		public void SetCurrentIndex(int index) {
+			interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), index);
+		}
 		[SmokeMethod("tabSizeHint(int) const")]
 		protected virtual QSize TabSizeHint(int index) {
 			return (QSize) interceptor.Invoke("tabSizeHint$", "tabSizeHint(int) const", typeof(QSize), typeof(int), index);

@@ -106,6 +106,11 @@ namespace Qyoto {
 		public void ToPrevious() {
 			interceptor.Invoke("toPrevious", "toPrevious()", typeof(void));
 		}
+		[Q_SLOT("void setCurrentIndex(int)")]
+		[SmokeMethod("setCurrentIndex(int)")]
+		public virtual void SetCurrentIndex(int index) {
+			interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), index);
+		}
 		[Q_SLOT("void setCurrentModelIndex(const QModelIndex&)")]
 		public void SetCurrentModelIndex(QModelIndex index) {
 			interceptor.Invoke("setCurrentModelIndex#", "setCurrentModelIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
