@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	///<remarks> See <see cref="IQHttpSignals"></see> for signals emitted by QHttp
 	///</remarks>
@@ -233,6 +234,7 @@ namespace Qyoto {
 		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator arg2);
 		[Q_SIGNAL("void authenticationRequired(const QString&, quint16, QAuthenticator*)")]
 		void AuthenticationRequired(string hostname, ushort port, QAuthenticator arg3);
-		// void sslErrors(const QList<QSslError>& arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
+		void SslErrors(List<QSslError> errors);
 	}
 }

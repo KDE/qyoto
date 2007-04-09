@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QGraphicsItemAnimation")]
 	public class QGraphicsItemAnimation : QObject, IDisposable {
@@ -13,11 +14,6 @@ namespace Qyoto {
 		static QGraphicsItemAnimation() {
 			staticInterceptor = new SmokeInvocation(typeof(QGraphicsItemAnimation), null);
 		}
-		// QList<QPair<qreal, QPointF> > posList(); >>>> NOT CONVERTED
-		// QList<QPair<qreal, qreal> > rotationList(); >>>> NOT CONVERTED
-		// QList<QPair<qreal, QPointF> > translationList(); >>>> NOT CONVERTED
-		// QList<QPair<qreal, QPointF> > scaleList(); >>>> NOT CONVERTED
-		// QList<QPair<qreal, QPointF> > shearList(); >>>> NOT CONVERTED
 		public QGraphicsItemAnimation(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsItemAnimation#", "QGraphicsItemAnimation(QObject*)", typeof(void), typeof(QObject), parent);
@@ -41,6 +37,9 @@ namespace Qyoto {
 		public QPointF PosAt(double step) {
 			return (QPointF) interceptor.Invoke("posAt$", "posAt(qreal) const", typeof(QPointF), typeof(double), step);
 		}
+		public List<QPair<double, QPointF>> PosList() {
+			return (List<QPair<double, QPointF>>) interceptor.Invoke("posList", "posList() const", typeof(List<QPair<double, QPointF>>));
+		}
 		public void SetPosAt(double step, QPointF pos) {
 			interceptor.Invoke("setPosAt$#", "setPosAt(qreal, const QPointF&)", typeof(void), typeof(double), step, typeof(QPointF), pos);
 		}
@@ -49,6 +48,9 @@ namespace Qyoto {
 		}
 		public double RotationAt(double step) {
 			return (double) interceptor.Invoke("rotationAt$", "rotationAt(qreal) const", typeof(double), typeof(double), step);
+		}
+		public List<QPair<double, double>> RotationList() {
+			return (List<QPair<double, double>>) interceptor.Invoke("rotationList", "rotationList() const", typeof(List<QPair<double, double>>));
 		}
 		public void SetRotationAt(double step, double angle) {
 			interceptor.Invoke("setRotationAt$$", "setRotationAt(qreal, qreal)", typeof(void), typeof(double), step, typeof(double), angle);
@@ -59,6 +61,9 @@ namespace Qyoto {
 		public double YTranslationAt(double step) {
 			return (double) interceptor.Invoke("yTranslationAt$", "yTranslationAt(qreal) const", typeof(double), typeof(double), step);
 		}
+		public List<QPair<double, QPointF>> TranslationList() {
+			return (List<QPair<double, QPointF>>) interceptor.Invoke("translationList", "translationList() const", typeof(List<QPair<double, QPointF>>));
+		}
 		public void SetTranslationAt(double step, double dx, double dy) {
 			interceptor.Invoke("setTranslationAt$$$", "setTranslationAt(qreal, qreal, qreal)", typeof(void), typeof(double), step, typeof(double), dx, typeof(double), dy);
 		}
@@ -68,6 +73,9 @@ namespace Qyoto {
 		public double HorizontalScaleAt(double step) {
 			return (double) interceptor.Invoke("horizontalScaleAt$", "horizontalScaleAt(qreal) const", typeof(double), typeof(double), step);
 		}
+		public List<QPair<double, QPointF>> ScaleList() {
+			return (List<QPair<double, QPointF>>) interceptor.Invoke("scaleList", "scaleList() const", typeof(List<QPair<double, QPointF>>));
+		}
 		public void SetScaleAt(double step, double sx, double sy) {
 			interceptor.Invoke("setScaleAt$$$", "setScaleAt(qreal, qreal, qreal)", typeof(void), typeof(double), step, typeof(double), sx, typeof(double), sy);
 		}
@@ -76,6 +84,9 @@ namespace Qyoto {
 		}
 		public double HorizontalShearAt(double step) {
 			return (double) interceptor.Invoke("horizontalShearAt$", "horizontalShearAt(qreal) const", typeof(double), typeof(double), step);
+		}
+		public List<QPair<double, QPointF>> ShearList() {
+			return (List<QPair<double, QPointF>>) interceptor.Invoke("shearList", "shearList() const", typeof(List<QPair<double, QPointF>>));
 		}
 		public void SetShearAt(double step, double sh, double sv) {
 			interceptor.Invoke("setShearAt$$$", "setShearAt(qreal, qreal, qreal)", typeof(void), typeof(double), step, typeof(double), sh, typeof(double), sv);

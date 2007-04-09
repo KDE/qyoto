@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QLocale")]
 	public class QLocale : Object, IDisposable {
@@ -438,7 +439,6 @@ namespace Qyoto {
 			OmitGroupSeparator = 0x01,
 			RejectGroupSeparator = 0x02,
 		}
-		// QList<QLocale::Country> countriesForLanguage(QLocale::Language arg1); >>>> NOT CONVERTED
 		public QLocale() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLocale", "QLocale()", typeof(void));
@@ -669,6 +669,9 @@ namespace Qyoto {
 		}
 		public static QLocale System() {
 			return (QLocale) staticInterceptor.Invoke("system", "system()", typeof(QLocale));
+		}
+		public static List<QLocale.Country> CountriesForLanguage(QLocale.Language lang) {
+			return (List<QLocale.Country>) staticInterceptor.Invoke("countriesForLanguage$", "countriesForLanguage(QLocale::Language)", typeof(List<QLocale.Country>), typeof(QLocale.Language), lang);
 		}
 	}
 }

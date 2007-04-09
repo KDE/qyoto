@@ -1,4 +1,8 @@
-2007-04-06  Richard Dale  <rdale@foton.es>
+2007-04-09  Richard Dale  <rdale@foton.es>
+
+	* Added marshallers for some of the new Qt 4.3 list types
+
+2007-04-08  Richard Dale  <rdale@foton.es>
 
 	* Improved the code to only generate C# properties instead of normal
 	  method calls. Only generate code for the Read and write methods of

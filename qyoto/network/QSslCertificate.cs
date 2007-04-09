@@ -24,8 +24,6 @@ namespace Qyoto {
 			CountryName = 4,
 			StateOrProvinceName = 5,
 		}
-		// QList<QSslCertificate> fromDevice(QIODevice* arg1); >>>> NOT CONVERTED
-		// QList<QSslCertificate> fromData(const QByteArray& arg1); >>>> NOT CONVERTED
 		public QSslCertificate(QIODevice device) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslCertificate#", "QSslCertificate(QIODevice*)", typeof(void), typeof(QIODevice), device);
@@ -111,6 +109,12 @@ namespace Qyoto {
 		}
 		public static bool operator!=(QSslCertificate lhs, QSslCertificate other) {
 			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSslCertificate&) const", typeof(bool), typeof(QSslCertificate), lhs, typeof(QSslCertificate), other);
+		}
+		public static List<QSslCertificate> FromDevice(QIODevice device) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromDevice#", "fromDevice(QIODevice*)", typeof(List<QSslCertificate>), typeof(QIODevice), device);
+		}
+		public static List<QSslCertificate> FromData(QByteArray data) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromData#", "fromData(const QByteArray&)", typeof(List<QSslCertificate>), typeof(QByteArray), data);
 		}
 	}
 }

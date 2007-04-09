@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	///<remarks> See <see cref="IQMdiAreaSignals"></see> for signals emitted by QMdiArea
 	///</remarks>
@@ -33,8 +34,6 @@ namespace Qyoto {
 			get { return (QBrush) interceptor.Invoke("background", "background()", typeof(QBrush)); }
 			set { interceptor.Invoke("setBackground#", "setBackground(QBrush)", typeof(void), typeof(QBrush), value); }
 		}
-		// QList<QMdiSubWindow*> subWindowList(QMdiArea::WindowOrder arg1); >>>> NOT CONVERTED
-		// QList<QMdiSubWindow*> subWindowList(); >>>> NOT CONVERTED
 		public QMdiArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QMdiArea#", "QMdiArea(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -53,6 +52,12 @@ namespace Qyoto {
 		}
 		public QMdiSubWindow ActiveSubWindow() {
 			return (QMdiSubWindow) interceptor.Invoke("activeSubWindow", "activeSubWindow() const", typeof(QMdiSubWindow));
+		}
+		public List<QMdiSubWindow> SubWindowList(QMdiArea.WindowOrder order) {
+			return (List<QMdiSubWindow>) interceptor.Invoke("subWindowList$", "subWindowList(QMdiArea::WindowOrder) const", typeof(List<QMdiSubWindow>), typeof(QMdiArea.WindowOrder), order);
+		}
+		public List<QMdiSubWindow> SubWindowList() {
+			return (List<QMdiSubWindow>) interceptor.Invoke("subWindowList", "subWindowList() const", typeof(List<QMdiSubWindow>));
 		}
 		public QMdiSubWindow AddSubWindow(QWidget widget, int flags) {
 			return (QMdiSubWindow) interceptor.Invoke("addSubWindow#$", "addSubWindow(QWidget*, Qt::WindowFlags)", typeof(QMdiSubWindow), typeof(QWidget), widget, typeof(int), flags);

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	///<remarks> See <see cref="IQSslSocketSignals"></see> for signals emitted by QSslSocket
 	///</remarks>
@@ -27,19 +28,6 @@ namespace Qyoto {
 			TlsV1 = 2,
 			Compat = 3,
 		}
-		// QList<QSslCertificate> peerCertificateChain(); >>>> NOT CONVERTED
-		// QList<QSslCipher> ciphers(); >>>> NOT CONVERTED
-		// void setCiphers(const QList<QSslCipher>& arg1); >>>> NOT CONVERTED
-		// void addCaCertificates(const QList<QSslCertificate>& arg1); >>>> NOT CONVERTED
-		// void setCaCertificates(const QList<QSslCertificate>& arg1); >>>> NOT CONVERTED
-		// QList<QSslCertificate> caCertificates(); >>>> NOT CONVERTED
-		// void setGlobalCiphers(const QList<QSslCipher>& arg1); >>>> NOT CONVERTED
-		// QList<QSslCipher> globalCiphers(); >>>> NOT CONVERTED
-		// QList<QSslCipher> supportedCiphers(); >>>> NOT CONVERTED
-		// void addGlobalCaCertificates(const QList<QSslCertificate>& arg1); >>>> NOT CONVERTED
-		// void setGlobalCaCertificates(const QList<QSslCertificate>& arg1); >>>> NOT CONVERTED
-		// QList<QSslCertificate> globalCaCertificates(); >>>> NOT CONVERTED
-		// QList<QSslCertificate> systemCaCertificates(); >>>> NOT CONVERTED
 		public QSslSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslSocket#", "QSslSocket(QObject*)", typeof(void), typeof(QObject), parent);
@@ -95,6 +83,9 @@ namespace Qyoto {
 		public QSslCertificate PeerCertificate() {
 			return (QSslCertificate) interceptor.Invoke("peerCertificate", "peerCertificate() const", typeof(QSslCertificate));
 		}
+		public List<QSslCertificate> PeerCertificateChain() {
+			return (List<QSslCertificate>) interceptor.Invoke("peerCertificateChain", "peerCertificateChain() const", typeof(List<QSslCertificate>));
+		}
 		public QSslCipher CurrentCipher() {
 			return (QSslCipher) interceptor.Invoke("currentCipher", "currentCipher() const", typeof(QSslCipher));
 		}
@@ -104,8 +95,14 @@ namespace Qyoto {
 		public QSslKey PrivateKey() {
 			return (QSslKey) interceptor.Invoke("privateKey", "privateKey() const", typeof(QSslKey));
 		}
+		public List<QSslCipher> Ciphers() {
+			return (List<QSslCipher>) interceptor.Invoke("ciphers", "ciphers() const", typeof(List<QSslCipher>));
+		}
 		public void ResetCiphers() {
 			interceptor.Invoke("resetCiphers", "resetCiphers()", typeof(void));
+		}
+		public void SetCiphers(List<QSslCipher> ciphers) {
+			interceptor.Invoke("setCiphers?", "setCiphers(const QList<QSslCipher>&)", typeof(void), typeof(List<QSslCipher>), ciphers);
 		}
 		public bool AddCaCertificates(string path) {
 			return (bool) interceptor.Invoke("addCaCertificates$", "addCaCertificates(const QString&)", typeof(bool), typeof(string), path);
@@ -113,8 +110,17 @@ namespace Qyoto {
 		public void AddCaCertificate(QSslCertificate certificate) {
 			interceptor.Invoke("addCaCertificate#", "addCaCertificate(const QSslCertificate&)", typeof(void), typeof(QSslCertificate), certificate);
 		}
+		public void AddCaCertificates(List<QSslCertificate> certificates) {
+			interceptor.Invoke("addCaCertificates?", "addCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		}
+		public void SetCaCertificates(List<QSslCertificate> certificates) {
+			interceptor.Invoke("setCaCertificates?", "setCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		}
 		public void ResetCaCertificates() {
 			interceptor.Invoke("resetCaCertificates", "resetCaCertificates()", typeof(void));
+		}
+		public List<QSslCertificate> CaCertificates() {
+			return (List<QSslCertificate>) interceptor.Invoke("caCertificates", "caCertificates() const", typeof(List<QSslCertificate>));
 		}
 		public bool WaitForEncrypted(int msecs) {
 			return (bool) interceptor.Invoke("waitForEncrypted$", "waitForEncrypted(int)", typeof(bool), typeof(int), msecs);
@@ -167,14 +173,35 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
+		public static void SetGlobalCiphers(List<QSslCipher> ciphers) {
+			staticInterceptor.Invoke("setGlobalCiphers?", "setGlobalCiphers(const QList<QSslCipher>&)", typeof(void), typeof(List<QSslCipher>), ciphers);
+		}
 		public static void ResetGlobalCiphers() {
 			staticInterceptor.Invoke("resetGlobalCiphers", "resetGlobalCiphers()", typeof(void));
+		}
+		public static List<QSslCipher> GlobalCiphers() {
+			return (List<QSslCipher>) staticInterceptor.Invoke("globalCiphers", "globalCiphers()", typeof(List<QSslCipher>));
+		}
+		public static List<QSslCipher> SupportedCiphers() {
+			return (List<QSslCipher>) staticInterceptor.Invoke("supportedCiphers", "supportedCiphers()", typeof(List<QSslCipher>));
 		}
 		public static bool AddGlobalCaCertificates(string path) {
 			return (bool) staticInterceptor.Invoke("addGlobalCaCertificates$", "addGlobalCaCertificates(const QString&)", typeof(bool), typeof(string), path);
 		}
 		public static void AddGlobalCaCertificate(QSslCertificate certificate) {
 			staticInterceptor.Invoke("addGlobalCaCertificate#", "addGlobalCaCertificate(const QSslCertificate&)", typeof(void), typeof(QSslCertificate), certificate);
+		}
+		public static void AddGlobalCaCertificates(List<QSslCertificate> certificates) {
+			staticInterceptor.Invoke("addGlobalCaCertificates?", "addGlobalCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		}
+		public static void SetGlobalCaCertificates(List<QSslCertificate> certificates) {
+			staticInterceptor.Invoke("setGlobalCaCertificates?", "setGlobalCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		}
+		public static List<QSslCertificate> GlobalCaCertificates() {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("globalCaCertificates", "globalCaCertificates()", typeof(List<QSslCertificate>));
+		}
+		public static List<QSslCertificate> SystemCaCertificates() {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("systemCaCertificates", "systemCaCertificates()", typeof(List<QSslCertificate>));
 		}
 		public static bool SupportsSsl() {
 			return (bool) staticInterceptor.Invoke("supportsSsl", "supportsSsl()", typeof(bool));
@@ -187,7 +214,8 @@ namespace Qyoto {
 	public interface IQSslSocketSignals : IQTcpSocketSignals {
 		[Q_SIGNAL("void encrypted()")]
 		void Encrypted();
-		// void sslErrors(const QList<QSslError>& arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
+		void SslErrors(List<QSslError> errors);
 		[Q_SIGNAL("void modeChanged(QSslSocket::Mode)")]
 		void ModeChanged(QSslSocket.Mode newMode);
 	}

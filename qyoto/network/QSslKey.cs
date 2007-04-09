@@ -11,6 +11,10 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QSslKey), this);
 		}
+		private static SmokeInvocation staticInterceptor = null;
+		static QSslKey() {
+			staticInterceptor = new SmokeInvocation(typeof(QSslKey), null);
+		}
 		public enum TypeOf {
 			PrivateKey = 0,
 			PublicKey = 1,
@@ -19,7 +23,6 @@ namespace Qyoto {
 			Rsa = 0,
 			Dsa = 1,
 		}
-		// QPair<QSslKey, QSslKey> generateKeyPair(QSslKey::Algorithm arg1,int arg2); >>>> NOT CONVERTED
 		public QSslKey(QByteArray encoded) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslKey#", "QSslKey(const QByteArray&)", typeof(void), typeof(QByteArray), encoded);
@@ -67,6 +70,9 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QSslKey", "~QSslKey()", typeof(void));
+		}
+		public static QPair<QSslKey, QSslKey> GenerateKeyPair(QSslKey.Algorithm algorithm, int keyLength) {
+			return (QPair<QSslKey, QSslKey>) staticInterceptor.Invoke("generateKeyPair$$", "generateKeyPair(QSslKey::Algorithm, int)", typeof(QPair<QSslKey, QSslKey>), typeof(QSslKey.Algorithm), algorithm, typeof(int), keyLength);
 		}
 	}
 }
