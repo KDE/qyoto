@@ -1,13 +1,13 @@
 PROJECT (kimono)
 
 # source files
-SET(SRC_CPP qyoto.cpp
-	handlers.cpp)
+SET(SRC_CPP src/qyoto.cpp
+	src/handlers.cpp)
 
-SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/SmokeInvocation.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/SmokeMarshallers.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/Qyoto.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/QyotoMetaData.cs
+SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocation.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeMarshallers.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Qyoto.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/src/QyotoMetaData.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/network/*.cs
@@ -40,7 +40,7 @@ ELSE (NOT GMCS_PATH)
 	MESSAGE (STATUS "Looking for gmcs - found - ${GMCS_PATH}")
 ENDIF (NOT GMCS_PATH)
 
-SET( UICS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/uics/uics )
+SET( UICS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/tools/uics/uics )
 SET( CSRCC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/tools/csrcc/csrcc )
 
 INCLUDE_DIRECTORIES (${QT_INCLUDES})
@@ -52,6 +52,5 @@ ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -debug -define:DEBUG -unsafe -warn
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
 
-ADD_SUBDIRECTORY(uics)
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(examples)

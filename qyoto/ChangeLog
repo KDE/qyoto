@@ -1,3 +1,9 @@
+2007-04-13  Arno Rehn  <arno@arnorehn.de>
+
+	* Fixed CMakeLists.txt's to work with the new directory structure. Some lines of
+	  the top-level CMakeLists.txt should be put in subdirectories, though.
+	* Subclasses of QTextBlockUserData are now contained instances.
+
 2007-04-09  Richard Dale  <rdale@foton.es>
 
 	* Added marshallers for some of the new Qt 4.3 list types

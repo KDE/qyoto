@@ -272,6 +272,8 @@ IsContainedInstance(smokeqyoto_object *o)
 		if (qobject->parent() != 0) {
 			return true;
 		}
+	} else if (isDerivedFromByName(o->smoke, className, "QTextBlockUserData")) {
+		return true;
 	}
 	
     return false;

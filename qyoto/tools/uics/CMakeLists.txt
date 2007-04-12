@@ -1,6 +1,6 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/uics )
-include_directories( ${CMAKE_SOURCE_DIR}/uics/cs )
+include_directories( ${CMAKE_SOURCE_DIR}/tools/uics )
+include_directories( ${CMAKE_SOURCE_DIR}/tools/uics/cs )
 
 ########### next target ###############
 

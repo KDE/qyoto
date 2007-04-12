@@ -1,3 +1,4 @@
 ADD_SUBDIRECTORY(csrcc)
+ADD_SUBDIRECTORY(uics)
 
 
