@@ -15,10 +15,10 @@
   </Configurations>
   <DeployTargets />
   <Contents>
-    <File name="./SmokeMarshallers.cs" subtype="Code" buildaction="Compile" />
-    <File name="./Qyoto.cs" subtype="Code" buildaction="Compile" />
-    <File name="./QyotoMetaData.cs" subtype="Code" buildaction="Compile" />
-    <File name="./SmokeInvocation.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/SmokeMarshallers.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/Qyoto.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/QyotoMetaData.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/SmokeInvocation.cs" subtype="Code" buildaction="Compile" />
     <File name="./core/QAbstractEventDispatcher.cs" subtype="Code" buildaction="Compile" />
     <File name="./core/QAbstractFileEngine.cs" subtype="Code" buildaction="Compile" />
     <File name="./core/QAbstractFileEngineHandler.cs" subtype="Code" buildaction="Compile" />
