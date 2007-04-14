@@ -58,18 +58,19 @@ class Pong : QDBusAbstractAdaptor
         string q = query.ToLower();
 
         if (q == "hello")
-            return new QDBusVariant(new QVariant("World"));
+            return new QDBusVariant("World");
+//            return new QDBusVariant("World");
         if (q == "ping")
-            return new QDBusVariant(new QVariant("Pong"));
+            return new QDBusVariant("Pong");
         if (q == "the answer to life, the universe and everything")
-            return new QDBusVariant(new QVariant(42));
+            return new QDBusVariant(42);
         if (q.IndexOf("unladen swallow") != -1) {
             if (q.IndexOf("european") != -1)
-                return new QDBusVariant(new QVariant(11.0));
-            return new QDBusVariant(new QVariant(new QByteArray("african or european?")));
+                return new QDBusVariant(11.0);
+            return new QDBusVariant(new QByteArray("african or european?"));
         }
 
-        return new QDBusVariant(new QVariant("Sorry, I don't know the answer"));
+        return new QDBusVariant("Sorry, I don't know the answer");
     }
 
     public static int Main(string[] args) {

@@ -31,8 +31,8 @@ class TreeModel : QAbstractItemModel {
 	
 	public TreeModel(string data, QObject parent) : base(parent) {
 		List<QVariant> rootData = new List<QVariant>();
-		rootData.Add(new QVariant("Title"));
-		rootData.Add(new QVariant("Summary"));
+		rootData.Add("Title");
+		rootData.Add("Summary");
 		rootItem = new TreeItem(rootData);
 		SetupModelData(new List<string>(data.Split("\n".ToCharArray())), rootItem);
 	}

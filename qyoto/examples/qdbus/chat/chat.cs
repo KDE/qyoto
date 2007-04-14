@@ -103,7 +103,7 @@ public class ChatMainWindow : QMainWindow {
     {
         //Emit.message(m_nickname, messageLineEdit.text());
         QDBusMessage msg = QDBusMessage.CreateSignal("/", "com.trolltech.chat", "message");
-        msg.Write(new QVariant(m_nickname)).Write(new QVariant(m_ui.messageLineEdit.Text));
+        msg.Write(m_nickname).Write(m_ui.messageLineEdit.Text);
         QDBusConnection.SessionBus().Send(msg);
         m_ui.messageLineEdit.Text = "";
     }

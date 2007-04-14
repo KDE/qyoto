@@ -40,8 +40,7 @@ class Ping
 
         QDBusInterface iface = new QDBusInterface(SERVICE_NAME, "/", "", QDBusConnection.SessionBus());
         if (iface.IsValid()) {
-//Debug.SetDebug(QtDebugChannel.QTDB_ALL);
-            QDBusMessage message = iface.Call("ping", new QVariant(args.Length > 0 ? args[0] : ""));
+            QDBusMessage message = iface.Call("ping", args.Length > 0 ? args[0] : "");
             QDBusReply<string> reply = new QDBusReply<string>(message);
             if (reply.IsValid()) {
                 Console.WriteLine("Reply was: {0}", reply.Value());
