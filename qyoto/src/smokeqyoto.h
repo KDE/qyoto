@@ -235,7 +235,7 @@ public:
     SmokeQyoto() : future_extension(0) {}
 
     // don't need this, we're only defining an interface
-//    virtual ~SmokeRuby() = 0;
+    virtual ~SmokeQyoto() = 0;
 
     /**
      * Registers a Smoke object

@@ -1,6 +1,5 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/tools/uics )
-include_directories( ${CMAKE_SOURCE_DIR}/tools/uics/cs )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/cs )
 
 ########### next target ###############
 
@@ -12,12 +11,12 @@ set(uics_bin_SRCS
    ui4.cpp 
    uic.cpp 
    validator.cpp 
-   cs/cswritedeclaration.cpp 
-   cs/cswriteincludes.cpp 
-   cs/cswriteicondata.cpp 
-   cs/cswriteicondeclaration.cpp 
-   cs/cswriteiconinitialization.cpp 
-   cs/cswriteinitialization.cpp 
+   ${CMAKE_CURRENT_SOURCE_DIR}/cs/cswritedeclaration.cpp 
+   ${CMAKE_CURRENT_SOURCE_DIR}/cs/cswriteincludes.cpp 
+   ${CMAKE_CURRENT_SOURCE_DIR}/cs/cswriteicondata.cpp 
+   ${CMAKE_CURRENT_SOURCE_DIR}/cs/cswriteicondeclaration.cpp 
+   ${CMAKE_CURRENT_SOURCE_DIR}/cs/cswriteiconinitialization.cpp 
+   ${CMAKE_CURRENT_SOURCE_DIR}/cs/cswriteinitialization.cpp 
    main.cpp )
 
 add_executable(uics_bin ${uics_bin_SRCS})

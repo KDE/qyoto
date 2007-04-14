@@ -670,7 +670,7 @@ class EmitSignal : public Marshall {
     bool _called;
 public:
     EmitSignal(QObject *qobj, int id, int items, MocArgument * args, Smoke::StackItem *sp) :
-    _qobj(qobj), _id(id), _sp(sp), _items(items), _args(args),
+    _qobj(qobj), _id(id), _args(args), _sp(sp), _items(items), 
     _cur(-1), _called(false)
     {
 	_stack = new Smoke::StackItem[_items];
@@ -1558,12 +1558,12 @@ QAbstractTextDocumentLayoutPageCount(void* obj)
 
 bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
 {
-	qRegisterResourceData(flag, s, n, d);
+	return qRegisterResourceData(flag, s, n, d);
 }
 
 bool QyotoUnregisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
 {
-	qUnregisterResourceData(flag, s, n, d);
+	return qUnregisterResourceData(flag, s, n, d);
 }
 
 void 
@@ -1758,7 +1758,9 @@ GetMocArgumentsNumber(QString replyType, QString member, int& number)
 
 			QByteArray name = (*it).toLatin1();
 			QByteArray static_type = a.toLatin1();
-			bool valid = setMocType(mocargs, i, name.constData(), static_type.constData());
+			if (!setMocType(mocargs, i, name.constData(), static_type.constData())) {
+				return 0;
+			}
 		}
     }
 
@@ -1797,7 +1799,6 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 			break;
 	}
 	
-    Smoke::StackItem * result;
 	EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();
 

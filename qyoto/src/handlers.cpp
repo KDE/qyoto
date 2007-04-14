@@ -996,7 +996,7 @@ static void marshall_charP_array(Marshall *m) {
         case Marshall::FromObject:
             {
             m->item().s_voidp = (*IntPtrToCharStarStar)(m->var().s_voidp);
-            char ** temp = (char **) m->item().s_voidp;
+//            char ** temp = (char **) m->item().s_voidp;
             }
             break;
 
@@ -1280,7 +1280,7 @@ void marshall_ItemList(Marshall *m) {
 			ItemList *cpplist = new ItemList;
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 			
-			for (int i; i < list->size(); ++i) {
+			for (int i = 0; i < list->size(); ++i) {
 				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(list->at(i));
 				
 				void* ptr = o->ptr;
