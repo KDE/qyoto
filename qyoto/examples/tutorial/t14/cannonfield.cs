@@ -80,7 +80,7 @@ class CannonField : QWidget {
 
     [Q_SLOT]
     public void Shoot() {
-        if (IsShooting())
+        if (IsShooting)
             return;
         timerCount = 0;
         shootAngle = currentAngle;
@@ -90,16 +90,16 @@ class CannonField : QWidget {
     }
 
     private static bool firstTime = true;
-    private static Random RandomClass = null;
+    private static Random random = null;
 
     [Q_SLOT]
     public void NewTarget() {
         if (firstTime) {
             firstTime = false;
-            RandomClass = new Random();
+            random = new Random();
         }
 
-        target = new QPoint(200 + RandomClass.Next(190), 10 + RandomClass.Next(255));
+        target = new QPoint(200 + random.Next(190), 10 + random.Next(255));
         Update();
     }
 
@@ -107,7 +107,7 @@ class CannonField : QWidget {
     public void SetGameOver() {
         if (gameEnded)
             return;
-        if (IsShooting())
+        if (IsShooting)
             autoShootTimer.Stop();
         gameEnded = true;
         Update();
@@ -115,7 +115,7 @@ class CannonField : QWidget {
 
     [Q_SLOT]
     public void RestartGame() {
-        if (IsShooting())
+        if (IsShooting)
             autoShootTimer.Stop();
         gameEnded = false;
         Update();
@@ -139,7 +139,7 @@ class CannonField : QWidget {
             Emit.Missed();
             Emit.CanShoot(true);
         } else {
-            region = region.Unite(new QRegion(shotR));
+            region = region.Unite(shotR);
         }
 
         Update(region);
@@ -173,14 +173,14 @@ class CannonField : QWidget {
         QPainter painter = new QPainter(this);
 
         if (gameEnded) {
-            painter.SetPen(new QColor(Qt.GlobalColor.black));
+            painter.SetPen(Qt.GlobalColor.black);
             painter.SetFont(new QFont("Courier", 48, (int) QFont.Weight.Bold));
             painter.DrawText(Rect, (int) Qt.AlignmentFlag.AlignCenter, Tr("Game Over"));
         }
 
         PaintCannon(painter);
         PaintBarrier(painter);
-        if (IsShooting())
+        if (IsShooting)
             PaintShot(painter);
         if (!gameEnded)
             PaintTarget(painter);
@@ -190,19 +190,19 @@ class CannonField : QWidget {
 
     private void PaintShot(QPainter painter) {
         painter.SetPen(Qt.PenStyle.NoPen);
-        painter.SetBrush(new QBrush(Qt.GlobalColor.black));
+        painter.SetBrush(Qt.GlobalColor.black);
         painter.DrawRect(ShotRect());
     }
 
     private void PaintTarget(QPainter painter) {
-        painter.SetPen(new QColor(Qt.GlobalColor.black));
-        painter.SetBrush(new QBrush(Qt.GlobalColor.red));
+        painter.SetPen(Qt.GlobalColor.black);
+        painter.SetBrush(Qt.GlobalColor.red);
         painter.DrawRect(TargetRect());
     }
 
     private void PaintBarrier(QPainter painter) {
-        painter.SetPen(new QColor(Qt.GlobalColor.black));
-        painter.SetBrush(new QBrush(Qt.GlobalColor.yellow));
+        painter.SetPen(Qt.GlobalColor.black);
+        painter.SetBrush(Qt.GlobalColor.yellow);
         painter.DrawRect(BarrierRect());
     }
 
@@ -210,7 +210,7 @@ class CannonField : QWidget {
 
     private void PaintCannon(QPainter painter) {
         painter.SetPen(Qt.PenStyle.NoPen);
-        painter.SetBrush(new QBrush(Qt.GlobalColor.blue));
+        painter.SetBrush(Qt.GlobalColor.blue);
         
         painter.Save();
         painter.Translate(0, Height());
@@ -268,13 +268,13 @@ class CannonField : QWidget {
         return new QSize(400, 300);
     }
 
-    public bool IsShooting() {
-        return autoShootTimer.Active;
+    public bool IsShooting {
+        get { return autoShootTimer.Active; }
     }
     
-    public int Angle() { return currentAngle; }
-    public int Force() { return currentForce; }
-    public bool GameOver() { return gameEnded; }
+    public int Angle { get { return currentAngle; } }
+    public int Force { get { return currentForce; } }
+    public bool GameOver { get { return gameEnded; } }
 
     protected new ICannonFieldSignals Emit {
         get { return (ICannonFieldSignals) Q_EMIT; }

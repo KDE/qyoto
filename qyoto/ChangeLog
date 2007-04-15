@@ -1,3 +1,10 @@
+2007-04-15  Richard Dale  <rdale@foton.es>
+
+	* The Qyoto project is built with no symbols visible by default in
+	  kdebindings, so add function declarations in qyoto.h to make it work.
+	* Added some more implicit type conversion operator methods and chaanged
+	  the code in the tutorial t14 example to use them
+
 2007-04-14  Richard Dale  <rdale@foton.es>
 	
 	* Fixed some compiler warnings

@@ -86,9 +86,9 @@ class GameBoard : QWidget {
         QLabel hitsLabel = new QLabel(Tr("HITS"));
         QLabel shotsLeftLabel = new QLabel(Tr("SHOTS LEFT"));
 
-        new QShortcut(new QKeySequence((int) Qt.Key.Key_Enter), this, SLOT("Fire()"));
-        new QShortcut(new QKeySequence((int) Qt.Key.Key_Return), this, SLOT("Fire()"));
-        new QShortcut(new QKeySequence((int) Qt.Modifier.CTRL + (int) Qt.Key.Key_Q), this, SLOT("close()"));
+        new QShortcut(Qt.Key.Key_Enter, this, SLOT("Fire()"));
+        new QShortcut(Qt.Key.Key_Return, this, SLOT("Fire()"));
+        new QShortcut((int) Qt.Modifier.CTRL + (int) Qt.Key.Key_Q, this, SLOT("close()"));
 
         QHBoxLayout topLayout = new QHBoxLayout();
         topLayout.AddWidget(shoot);
@@ -124,7 +124,7 @@ class GameBoard : QWidget {
 
     [Q_SLOT]
     protected void Fire() {
-        if (cannonField.GameOver() || cannonField.IsShooting())
+        if (cannonField.GameOver || cannonField.IsShooting)
             return;
         shotsLeft.Display(shotsLeft.IntValue - 1);
         cannonField.Shoot();

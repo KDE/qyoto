@@ -524,9 +524,7 @@ matches_arg(Smoke *smoke, Smoke::Index meth, Smoke::Index argidx, const char *ar
 {
     Smoke::Index *arg = smoke->argumentList + smoke->methods[meth].args + argidx;
     SmokeType type = SmokeType(smoke, *arg);
-    if(type.name() && !strcmp(type.name(), argtype))
-	return true;
-    return false;
+	return (type.name() && qstrcmp(type.name(), argtype) == 0);
 }
 
 void *

@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QKeySequence")]
-	public class QKeySequence : Object, IDisposable {
+	public partial class QKeySequence : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QKeySequence(Type dummy) {}
