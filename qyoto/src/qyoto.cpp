@@ -1644,6 +1644,20 @@ SetApplicationTerminated()
 	application_terminated = true;
 }
 
+int 
+QyotoHash(void * obj)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	(*FreeGCHandle)(obj);
+
+	if (sizeof(void*) > sizeof(int)) {
+		qint64 key = (qint64) o->ptr;
+		return (int) ((key >> (8 * sizeof(int) - 1)) ^ key);
+	} else {
+		return (int) o->ptr;
+	}
+}
+
 void
 CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 {

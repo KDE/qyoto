@@ -55,6 +55,9 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
 
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern int QyotoHash(IntPtr obj);
+
 		// The key is a type name of a class which has overriden one or more
 		// virtual methods, and the value is a Hashtable of the smoke type
 		// signatures as keys retrieving a suitable MethodInfo to invoke via 
@@ -563,7 +566,11 @@ namespace Qyoto {
 		}
 		
 		public override int GetHashCode() {
-			return instance.GetHashCode();
+#if DEBUG
+			return QyotoHash((IntPtr) DebugGCHandle.Alloc(instance));
+#else
+			return QyotoHash((IntPtr) GCHandle.Alloc(instance));
+#endif
 		}
 	}
 

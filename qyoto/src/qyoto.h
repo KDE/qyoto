@@ -83,21 +83,6 @@ extern CreateInstanceFn CreateInstance;
 extern GetInstanceFn GetInstance;
 extern GetIntPtr GetSmokeObject;
 
-/*
-extern Q_DECL_EXPORT void InstallFreeGCHandle(FromIntPtr callback);
-extern Q_DECL_EXPORT void InstallGetSmokeObject(GetIntPtr callback);
-extern Q_DECL_EXPORT void InstallSetSmokeObject(SetIntPtr callback);
-extern Q_DECL_EXPORT void InstallMapPointer(MapPointerFn callback);
-extern Q_DECL_EXPORT void InstallUnmapPointer(FromIntPtr callback);
-extern Q_DECL_EXPORT void InstallGetInstance(GetInstanceFn callback);
-extern Q_DECL_EXPORT void InstallOverridenMethod(OverridenMethodFn callback);
-extern Q_DECL_EXPORT void InstallInvokeMethod(InvokeMethodFn callback);
-extern Q_DECL_EXPORT void InstallCreateInstance(CreateInstanceFn callback);
-extern Q_DECL_EXPORT void InstallInvokeCustomSlot(InvokeCustomSlotFn callback);
-extern Q_DECL_EXPORT void InstallGetProperty(OverridenMethodFn callback);
-extern Q_DECL_EXPORT void InstallSetProperty(SetPropertyFn callback);
-*/
-
 extern "C" {
 extern Q_DECL_EXPORT void InstallFreeGCHandle(FromIntPtr callback);
 extern Q_DECL_EXPORT void InstallGetSmokeObject(GetIntPtr callback);
@@ -146,6 +131,7 @@ extern Q_DECL_EXPORT bool QyotoRegisterResourceData(int flag, const unsigned cha
 extern Q_DECL_EXPORT bool QyotoUnregisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d);
 
 extern Q_DECL_EXPORT void SetApplicationTerminated();
+extern Q_DECL_EXPORT int QyotoHash(void * obj);
 extern Q_DECL_EXPORT void CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items);
 extern Q_DECL_EXPORT bool SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int items);
 extern Q_DECL_EXPORT void * make_metaObject(	void * obj, void * parentMeta, 

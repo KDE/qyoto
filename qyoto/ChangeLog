@@ -1,3 +1,8 @@
+2007-04-16  Richard Dale  <rdale@foton.es>
+
+	* Added a QyotoHash() method for deriving a hash value from the c++
+	  pointer of an instance.
+
 2007-04-15  Richard Dale  <rdale@foton.es>
 
 	* The Qyoto project is built with no symbols visible by default in
