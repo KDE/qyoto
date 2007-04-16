@@ -6,5 +6,8 @@ namespace Qyoto {
 		public static implicit operator QBrush(Qt.GlobalColor arg) {
 			return new QBrush(arg);
 		}
+		public static implicit operator QBrush(QColor arg) {
+			return new QBrush(arg);
+		}
 	}
 }

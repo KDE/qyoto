@@ -9,5 +9,8 @@ namespace Qyoto {
 		public static implicit operator QKeySequence(Qt.Key arg) {
 			return new QKeySequence((int) arg);
 		}
+		public static implicit operator QKeySequence(QKeySequence.StandardKey arg) {
+			return new QKeySequence((int) arg);
+		}
 	}
 }

@@ -47,7 +47,7 @@ public class Mouse : QGraphicsItem {
 
     private static double Pi = 3.14159265358979323846264338327950288419717;
     private static double TwoPi = 2.0 * Pi;
-    private static Random RandomClass = null;
+    private static Random random = null;
     
     private static double NormalizeAngle(double angle)
     {
@@ -62,10 +62,10 @@ public class Mouse : QGraphicsItem {
     {
         speed = 0;
         mouseEyeDirection = 0;
-        RandomClass = new Random();
-        color = new QColor(RandomClass.Next(255), RandomClass.Next(255), RandomClass.Next(255));
+        random = new Random();
+        color = new QColor(random.Next(255), random.Next(255), random.Next(255));
         timer = new MouseTimer(this);
-        Rotate(RandomClass.Next(360 * 16));
+        Rotate(random.Next(360 * 16));
     }
     
     public override QRectF BoundingRect()
@@ -85,16 +85,16 @@ public class Mouse : QGraphicsItem {
     public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
     {
         // Body
-        painter.SetBrush(new QBrush(color));
+        painter.SetBrush(color);
         painter.DrawEllipse(-10, -20, 20, 40);
     
         // Eyes
-        painter.SetBrush(new QBrush(Qt.GlobalColor.white));
+        painter.SetBrush(Qt.GlobalColor.white);
         painter.DrawEllipse(-10, -17, 8, 8);
         painter.DrawEllipse(2, -17, 8, 8);
     
         // Nose
-        painter.SetBrush(new QBrush(Qt.GlobalColor.black));
+        painter.SetBrush(Qt.GlobalColor.black);
         painter.DrawEllipse(new QRectF(-2, -22, 4, 4));
     
         // Pupils
@@ -102,7 +102,7 @@ public class Mouse : QGraphicsItem {
         painter.DrawEllipse(new QRectF(4.0 + mouseEyeDirection, -17, 4, 4));
     
         // Ears
-        painter.SetBrush(new QBrush(Scene().CollidingItems(this).Count == 0 ? Qt.GlobalColor.darkYellow : Qt.GlobalColor.red));
+        painter.SetBrush(Scene().CollidingItems(this).Count == 0 ? Qt.GlobalColor.darkYellow : Qt.GlobalColor.red);
         painter.DrawEllipse(-17, -12, 16, 16);
         painter.DrawEllipse(1, -12, 16, 16);
     
@@ -168,14 +168,14 @@ public class Mouse : QGraphicsItem {
         }
     
         // Add some random movement
-        if (dangerMice.Count > 1 && (RandomClass.Next(10)) == 0) {
-            if (RandomClass.Next(1) == 1)
-                angle += (RandomClass.Next(100)) / 500.0;
+        if (dangerMice.Count > 1 && (random.Next(10)) == 0) {
+            if (random.Next(1) == 1)
+                angle += (random.Next(100)) / 500.0;
             else
-                angle -= (RandomClass.Next(100)) / 500.0;
+                angle -= (random.Next(100)) / 500.0;
         }
     
-        speed += (-50 + RandomClass.Next(100)) / 100.0;
+        speed += (-50 + random.Next(100)) / 100.0;
     
         double dx = Math.Sin(angle) * 10;
         mouseEyeDirection = (Math.Abs(dx / 5) < 1) ? 0 : dx / 5;

@@ -49,7 +49,6 @@ public class Car : QGraphicsItem {
     {
         if (speed < 10)
             ++speed;
-        Console.WriteLine("accelerate about to return 5\n");
         return 5;
     }
     
@@ -73,7 +72,7 @@ public class Car : QGraphicsItem {
     
     public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
     {
-        painter.SetBrush(new QBrush(Qt.GlobalColor.gray));
+        painter.SetBrush(Qt.GlobalColor.gray);
         painter.DrawRect(-20, -58, 40, 2); // front axel
         painter.DrawRect(-20, 7, 40, 2); // rear axel
     
@@ -88,7 +87,7 @@ public class Car : QGraphicsItem {
     
         painter.DrawRect(-17, 19, 34, 15); // rear wing
     
-        painter.SetBrush(new QBrush(Qt.GlobalColor.black));
+        painter.SetBrush(Qt.GlobalColor.black);
         painter.DrawPie(-5, -51, 10, 15, 0, 180 * 16);
         painter.DrawRect(-5, -44, 10, 10); // cocpit
     

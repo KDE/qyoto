@@ -65,7 +65,7 @@ public class AnalogClock : QWidget {
         painter.Scale(side / 200.0, side / 200.0);
     
         painter.SetPen(Qt.PenStyle.NoPen);
-        painter.SetBrush(new QBrush(hourColor));
+        painter.SetBrush(hourColor);
     
         painter.Save();
         painter.Rotate(30.0 * ((time.Hour() + time.Minute() / 60.0)));
@@ -80,7 +80,7 @@ public class AnalogClock : QWidget {
         }
     
         painter.SetPen(Qt.PenStyle.NoPen);
-        painter.SetBrush(new QBrush(minuteColor));
+        painter.SetBrush(minuteColor);
     
         painter.Save();
         painter.Rotate(6.0 * (time.Minute() + time.Second() / 60.0));

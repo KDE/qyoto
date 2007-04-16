@@ -22,7 +22,7 @@
 
 using Qyoto;
 
-public class CarMain {
+public class CarMain : Qt {
     public static int Main(string[] args) {
         new QApplication(args);
     
@@ -35,9 +35,8 @@ public class CarMain {
     
         QGraphicsView view = new QGraphicsView(scene);
         view.SetRenderHint(QPainter.RenderHint.Antialiasing);
-        view.BackgroundBrush = new QBrush(Qt.GlobalColor.darkGray);
-        view.WindowTitle = "Qt DBus Controlled Car";
-//        view.SetWindowTitle(QT_TRANSLATE_NOOP(QGraphicsView, "Qt DBus Controlled Car"));
+        view.BackgroundBrush = Qt.GlobalColor.darkGray;
+        view.WindowTitle = QT_TRANSLATE_NOOP("QGraphicsView", "Qt DBus Controlled Car");
         view.Resize(400, 300);
         view.Show();
     
