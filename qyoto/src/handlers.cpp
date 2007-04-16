@@ -1025,6 +1025,7 @@ void marshall_QDBusVariant(Marshall *m) {
 	{
 		if (m->var().s_class == 0) {
 			m->item().s_class = 0;
+			(*FreeGCHandle)(m->var().s_class);
 			return;
 		}
 
@@ -1037,6 +1038,7 @@ void marshall_QDBusVariant(Marshall *m) {
 		    break;
 		}
 		m->item().s_class = o->ptr;
+		(*FreeGCHandle)(m->var().s_class);
 		break;
 	}
 
@@ -1086,6 +1088,7 @@ void marshall_QMapintQVariant(Marshall *m) {
 			if (m->cleanup()) {
 				delete map;
 			}
+			(*FreeGCHandle)(m->var().s_voidp);
 			break;
 		}
 
@@ -1101,6 +1104,7 @@ void marshall_QMapintQVariant(Marshall *m) {
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
 				(*AddIntObjectToDictionary)(dict, i.key(), value);
+				(*FreeGCHandle)(value);
 			}
 			
 			m->var().s_voidp = dict;
@@ -1126,6 +1130,7 @@ void marshall_QMapQStringQString(Marshall *m) {
 			if (m->cleanup()) {
 				delete map;
 			}
+			(*FreeGCHandle)(m->var().s_voidp);
 			break;
 		}
 
@@ -1135,9 +1140,13 @@ void marshall_QMapQStringQString(Marshall *m) {
 			void* dict = (*ConstructDictionary)("System.String", "System.String");
 			
 			for (QMap<QString, QString>::iterator i = map->begin(); i != map->end(); ++i) {
+				void* string1 = (void*) StringFromQString((void*) &(i.key()));
+				void* string2 = (void*) StringFromQString((void*) &(i.value()));
 				(*AddObjectObjectToDictionary)(	dict,
-								(void*) StringFromQString((void*) &(i.key())),
-								(void*) StringFromQString((void*) &(i.value())));
+								string1,
+								string2);
+				(*FreeGCHandle)(string1);
+				(*FreeGCHandle)(string2);
 			}
 			
 			m->var().s_voidp = dict;
@@ -1163,6 +1172,7 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 			if (m->cleanup()) {
 				delete map;
 			}
+			(*FreeGCHandle)(m->var().s_voidp);
 			break;
 		}
 
@@ -1177,9 +1187,12 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
+				void* string = (void*) StringFromQString((void*) &(i.key()));
 				(*AddObjectObjectToDictionary)(	dict,
-								(void*) StringFromQString((void*) &(i.key())),
+								string,
 								value);
+				(*FreeGCHandle)(string);
+				(*FreeGCHandle)(value);
 			}
 			
 			m->var().s_voidp = dict;
@@ -1232,6 +1245,7 @@ void marshall_QStringList(Marshall *m) {
 			if (m->cleanup()) {
 				delete stringlist;
 			}
+			(*FreeGCHandle)(m->var().s_voidp);
 	   
 			break;
 		}
@@ -1279,7 +1293,8 @@ void marshall_ItemList(Marshall *m) {
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 			
 			for (int i = 0; i < list->size(); ++i) {
-				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(list->at(i));
+				void* obj = list->at(i);
+				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 				
 				void* ptr = o->ptr;
 				ptr = o->smoke->cast(
@@ -1289,10 +1304,14 @@ void marshall_ItemList(Marshall *m) {
 				);
 				
 				cpplist->append((Item*) ptr);
+				(*FreeGCHandle)(obj);
 			}
 			
 			m->item().s_voidp = cpplist;
 			m->next();
+			
+			delete list;
+			(*FreeGCHandle)(m->var().s_voidp);
 			
 			if (m->cleanup()) {
 				delete cpplist;
@@ -1347,6 +1366,8 @@ void marshall_QListInt(Marshall *m) {
 	    void* valuelist = (*ListIntToQListInt)(list);
 	    m->item().s_voidp = valuelist;
 	    m->next();
+
+	    (*FreeGCHandle)(m->var().s_voidp);
 
 		/*if (m->cleanup()) {
 			delete valuelist;
@@ -1414,7 +1435,8 @@ void marshall_ValueListItem(Marshall *m) {
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 
 			for (int i = 0; i < list->size(); ++i) {
-				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(list->at(i));
+				void* obj = list->at(i);
+				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 				
 				void* ptr = o->ptr;
 				ptr = o->smoke->cast(
@@ -1424,12 +1446,14 @@ void marshall_ValueListItem(Marshall *m) {
 				);
 				
 				cpplist->append(*(Item*) ptr);
+				(*FreeGCHandle)(obj);
 			}
 			
 			m->item().s_voidp = cpplist;
 			m->next();
 			
 			delete list;
+			(*FreeGCHandle)(m->var().s_voidp);
 
 			if (m->cleanup()) {
 				delete cpplist;
