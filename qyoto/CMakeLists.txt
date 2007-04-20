@@ -20,16 +20,6 @@ SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocation.cs
 # find Qt4
 FIND_PACKAGE (Qt4 REQUIRED)
 
-# find the SMOKE library
-MESSAGE (STATUS "Looking for SMOKE library")
-FIND_LIBRARY (SMOKE_PATH smokeqt)
-IF (NOT SMOKE_PATH)
-	MESSAGE (STATUS "Looking for SMOKE library - not found")
-	#MESSAGE (SEND_ERROR "The SMOKE Library was not found on your system")
-ELSE (NOT SMOKE_PATH)
-	MESSAGE (STATUS "Looking for SMOKE library - found - ${SMOKE_PATH}")
-ENDIF (NOT SMOKE_PATH)
-
 SET( UICS_PATH ${CMAKE_CURRENT_BINARY_DIR}/tools/uics/uics )
 SET( CSRCC_PATH ${CMAKE_CURRENT_BINARY_DIR}/tools/csrcc/csrcc )
 
