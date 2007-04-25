@@ -1,3 +1,11 @@
+2007-04-25  Arno Rehn  <arno@arnorehn.de>
+
+	* Special cased QVector<QRgb> when marshalling.
+	* Fixed two more memory leaks.
+	* Removed all the instances of delegates in SmokeMarshallers.cs. In C# 2.0
+	  we can directly specify a method, we don't need an instance of a correspondending
+	  delegate anymore.
+
 2007-04-16  Richard Dale  <rdale@foton.es>
 
 	* Added a QyotoHash() method for deriving a hash value from the c++

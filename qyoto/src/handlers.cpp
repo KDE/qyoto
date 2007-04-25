@@ -77,9 +77,11 @@ static SetIntPtrFromCharStar StringBuilderFromQString;
 static GetIntPtr StringListToQStringList;
 static GetIntPtr ListToPointerList;
 static GetIntPtr ListIntToQListInt;
+static GetIntPtr ListUIntToQListQRgb;
 static CreateListFn ConstructList;
 static SetIntPtr AddIntPtrToList;
 static AddInt AddIntToListInt;
+static AddUInt AddUIntToListUInt;
 static ConstructDict ConstructDictionary;
 static InvokeMethodFn AddObjectObjectToDictionary;
 static AddIntObject AddIntObjectToDictionary;
@@ -170,6 +172,16 @@ void InstallDictionaryToQMap(DictToMap callback)
 	DictionaryToQMap = callback;
 }
 
+void InstallListUIntToQListQRgb(GetIntPtr callback)
+{
+	ListUIntToQListQRgb = callback;
+}
+
+void InstallAddUIntToListUInt(AddUInt callback)
+{
+	AddUIntToListUInt = callback;
+}
+
 void* ConstructPointerList()
 {
 	void * list = (void*) new QList<void*>;
@@ -224,6 +236,17 @@ void AddQStringQVariantToQMap(void* ptr, char* str, void* qv)
 	QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) ptr;
 	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
 	map->insert(QString(str), *variant);
+}
+
+void* ConstructQListQRgb()
+{
+	return (void*) new QList<QRgb>;
+}
+
+void AddUIntToQListQRgb(void* ptr, uint i)
+{
+	QList<QRgb>* list = (QList<QRgb>*) ptr;
+	list->append(i);
 }
 
 };
@@ -1339,6 +1362,7 @@ void marshall_ItemList(Marshall *m) {
 					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
 				}
 				(*AddIntPtrToList)(al, obj);
+				(*FreeGCHandle)(obj);
 			}
 
 			m->var().s_voidp = al;
@@ -1483,6 +1507,7 @@ void marshall_ValueListItem(Marshall *m) {
 				}
 
 				(*AddIntPtrToList)(al, obj);
+				(*FreeGCHandle)(obj);
 			}
 
 			m->var().s_voidp = al;
@@ -1502,6 +1527,52 @@ void marshall_ValueListItem(Marshall *m) {
 	}
 }
 
+void marshall_QRgbVector(Marshall *m)
+{
+	switch(m->action()) {
+		case Marshall::FromObject:
+		{
+			QList<QRgb>* cpplist = (QList<QRgb>*) (*ListUIntToQListQRgb)(m->var().s_voidp);
+			m->item().s_voidp = cpplist;
+			m->next();
+			
+			(*FreeGCHandle)(m->var().s_voidp);
+
+			if (m->cleanup()) {
+				delete cpplist;
+			}
+		}
+		break;
+      
+		case Marshall::ToObject:
+		{
+			QList<QRgb> *valuelist = (QList<QRgb>*) m->item().s_voidp;
+			if (valuelist == 0) {
+				break;
+			}
+
+			void * al = (*ConstructList)("System.UInt32");
+
+			for (int i=0; i < valuelist->size() ; ++i) {
+				(*AddUIntToListUInt)(al, valuelist->at(i));
+			}
+
+			m->var().s_voidp = al;
+			m->next();
+
+			if (m->cleanup()) {
+				delete valuelist;
+			}
+			
+
+		}
+		break;
+      
+		default:
+			m->unsupported();
+		break;
+	}
+}
 
 #define DEF_VALUELIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
         Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;
@@ -1519,7 +1590,7 @@ DEF_VALUELIST_MARSHALLER( QFileInfoList, QFileInfoList, QFileInfo )
 DEF_VALUELIST_MARSHALLER( QTextBlockList, QList<QTextBlock>, QTextBlock )
 
 DEF_VALUELIST_MARSHALLER( QColorVector, QVector<QColor>, QColor )
-DEF_VALUELIST_MARSHALLER( QRgbVector, QVector<QRgb>, QRgb )
+// DEF_VALUELIST_MARSHALLER( QRgbVector, QVector<QRgb>, QRgb )
 DEF_VALUELIST_MARSHALLER( QVariantVector, QVector<QVariant>, QVariant )
 DEF_VALUELIST_MARSHALLER( QTextFormatVector, QVector<QTextFormat>, QTextFormat )
 DEF_VALUELIST_MARSHALLER( QTextLengthVector, QVector<QTextLength>, QTextLength )

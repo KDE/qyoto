@@ -55,6 +55,12 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void AddIntToQList(IntPtr ptr, int i);
 		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern IntPtr ConstructQListQRgb();
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void AddUIntToQListQRgb(IntPtr ptr, uint i);
+		
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr ConstructQMap(int type);
@@ -140,6 +146,9 @@ namespace Qyoto {
 		public static extern IntPtr InstallListIntToQListInt(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern IntPtr InstallListUIntToQListQRgb(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallAddIntPtrToList(SetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -156,6 +165,9 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallDictionaryToQMap(DictToMap callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallAddUIntToListUInt(AddUInt callback);
 #endregion
 		
 #region delegates
@@ -174,6 +186,7 @@ namespace Qyoto {
 		public delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
 		public delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		public delegate void AddInt(IntPtr obj, int i);
+		public delegate void AddUInt(IntPtr obj, uint i);
 		public delegate void AddIntObject(IntPtr hash, int key, IntPtr val);
 		public delegate IntPtr DictToMap(IntPtr ptr, int type);
 		public delegate IntPtr ConstructDict(string type1, string type2);
@@ -520,6 +533,20 @@ namespace Qyoto {
 			return QList;
 		}
 
+		public static IntPtr ListUIntToQListQRgb(IntPtr ptr) {
+			List<uint> il = (List<uint>) ((GCHandle) ptr).Target;
+			IntPtr QList = ConstructQListQRgb();
+			foreach (uint i in il) {
+				AddUIntToQListQRgb(QList, i);
+			}
+			return QList;
+		}
+
+		public static void AddUIntToListUInt(IntPtr ptr, uint i) {
+			List<uint> il = (List<uint>) ((GCHandle) ptr).Target;
+			il.Add(i);
+		}
+
 		public static IntPtr ListToPointerList(IntPtr ptr) {
 			object l = ((GCHandle) ptr).Target;
 			// convert the list to an array via reflection. this is probably the easiest way
@@ -623,84 +650,46 @@ namespace Qyoto {
 #endregion
 		
 #region Setup
-		static private FromIntPtr freeGCHandle = new FromIntPtr(FreeGCHandle);
-
-		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
-		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
-		
-		static private MapPointerFn mapPointer = new MapPointerFn(MapPointer);
-		static private FromIntPtr unmapPointer = new FromIntPtr(UnmapPointer);
-		static private GetInstanceFn getInstance = new GetInstanceFn(GetInstance);
-		
-		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
-		static private GetStringFromIntPtr intPtrToString = new GetStringFromIntPtr(IntPtrToString);
-		static private GetIntPtrFromString intPtrFromString = new GetIntPtrFromString(IntPtrFromString);
-		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
-		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
-		static private GetIntPtr stringBuilderToQString = new GetIntPtr(StringBuilderToQString);
-		static private SetIntPtrFromCharStar stringBuilderFromQString = new SetIntPtrFromCharStar(StringBuilderFromQString);
-		
-		static private GetIntPtr stringListToQStringList = new GetIntPtr(StringListToQStringList);
-		static private GetIntPtr listToPointerList = new GetIntPtr(ListToPointerList);
-		static private GetIntPtr listIntToQListInt = new GetIntPtr(ListIntToQListInt);
-		
-		static private DictToMap dictionaryToQMap = new DictToMap(DictionaryToQMap);
-		
-		static private CreateListFn constructList = new CreateListFn(ConstructList);
-		static private SetIntPtr addIntPtrToList = new SetIntPtr(AddIntPtrToList);
-		static private AddInt addIntToListInt = new AddInt(AddIntToListInt);
-		
-		static private ConstructDict constructDictionary = new ConstructDict(ConstructDictionary);
-		static private InvokeMethodFn addObjectObjectToDictionary = new InvokeMethodFn(AddObjectObjectToDictionary);
-		static private AddIntObject addIntObjectToDictionary = new AddIntObject(AddIntObjectToDictionary);
-		
-		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(SmokeInvocation.OverridenMethod);
-		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(SmokeInvocation.InvokeMethod);
-
-		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
-		static private InvokeCustomSlotFn invokeCustomSlot = new InvokeCustomSlotFn(SmokeInvocation.InvokeCustomSlot);
-		
-		static private OverridenMethodFn getProperty = new OverridenMethodFn(GetProperty);
-		static private SetPropertyFn setProperty = new SetPropertyFn(SetProperty);
-		
 		public static void SetUp() {
-			InstallFreeGCHandle(freeGCHandle);
+			InstallFreeGCHandle(FreeGCHandle);
 
-			InstallGetSmokeObject(getSmokeObject);
-			InstallSetSmokeObject(setSmokeObject);
+			InstallGetSmokeObject(GetSmokeObject);
+			InstallSetSmokeObject(SetSmokeObject);
 			
-			InstallMapPointer(mapPointer);
-			InstallUnmapPointer(unmapPointer);
-			InstallGetInstance(getInstance);
+			InstallMapPointer(MapPointer);
+			InstallUnmapPointer(UnmapPointer);
+			InstallGetInstance(GetInstance);
 
-			InstallIntPtrToCharStarStar(intPtrToCharStarStar);
-			InstallIntPtrToCharStar(intPtrToString);
-			InstallIntPtrFromCharStar(intPtrFromString);
-			InstallIntPtrToQString(intPtrToQString);
-			InstallIntPtrFromQString(intPtrFromQString);
-			InstallStringBuilderToQString(stringBuilderToQString);
-			InstallStringBuilderFromQString(stringBuilderFromQString);
-			InstallConstructList(constructList);
-			InstallStringListToQStringList(stringListToQStringList);
-			InstallListToPointerList(listToPointerList);
-			InstallListIntToQListInt(listIntToQListInt);
-			InstallAddIntPtrToList(addIntPtrToList);
-			InstallAddIntToListInt(addIntToListInt);
+			InstallIntPtrToCharStarStar(IntPtrToCharStarStar);
+			InstallIntPtrToCharStar(IntPtrToString);
+			InstallIntPtrFromCharStar(IntPtrFromString);
+			InstallIntPtrToQString(IntPtrToQString);
+			InstallIntPtrFromQString(IntPtrFromQString);
+			InstallStringBuilderToQString(StringBuilderToQString);
+			InstallStringBuilderFromQString(StringBuilderFromQString);
+			InstallConstructList(ConstructList);
+			InstallStringListToQStringList(StringListToQStringList);
+			InstallListToPointerList(ListToPointerList);
+			InstallListIntToQListInt(ListIntToQListInt);
+			InstallListUIntToQListQRgb(ListUIntToQListQRgb);
+			InstallAddIntPtrToList(AddIntPtrToList);
+			InstallAddIntToListInt(AddIntToListInt);
+			InstallAddUIntToListUInt(AddUIntToListUInt);
 
-			InstallConstructDictionary(constructDictionary);
-			InstallAddObjectObjectToDictionary(addObjectObjectToDictionary);
-			InstallAddIntObjectToDictionary(addIntObjectToDictionary);
+			InstallConstructDictionary(ConstructDictionary);
+			InstallAddObjectObjectToDictionary(AddObjectObjectToDictionary);
+			InstallAddIntObjectToDictionary(AddIntObjectToDictionary);
 			
-			InstallDictionaryToQMap(dictionaryToQMap);
+			InstallDictionaryToQMap(DictionaryToQMap);
 
-			InstallOverridenMethod(overridenMethod);
-			InstallInvokeMethod(invokeMethod);
+			InstallOverridenMethod(SmokeInvocation.OverridenMethod);
+			InstallInvokeMethod(SmokeInvocation.InvokeMethod);
 
-			InstallCreateInstance(createInstance);
-			InstallInvokeCustomSlot(invokeCustomSlot);
+			InstallCreateInstance(CreateInstance);
+			InstallInvokeCustomSlot(SmokeInvocation.InvokeCustomSlot);
 			
-			InstallGetProperty(getProperty);
-			InstallSetProperty(setProperty);
+			InstallGetProperty(GetProperty);
+			InstallSetProperty(SetProperty);
 		}
 #endregion
 

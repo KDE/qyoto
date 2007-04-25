@@ -73,6 +73,7 @@ typedef void * (*CreateInstanceFn)(const char *, void *);
 typedef void * (*GetInstanceFn)(void *, bool);
 typedef void (*InvokeCustomSlotFn)(void *, const char*, void *, void *);
 typedef void (*AddInt)(void *, int);
+typedef void (*AddUInt)(void *, uint);
 typedef void (*AddIntObject)(void *, int, void *);
 typedef void * (*DictToMap)(void *, int);
 typedef void * (*ConstructDict)(const char*, const char*);
