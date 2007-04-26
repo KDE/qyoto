@@ -176,8 +176,8 @@ namespace Qyoto {
 			interceptor.Invoke("ensureCursorVisible", "ensureCursorVisible()", typeof(void));
 		}
 		[SmokeMethod("loadResource(int, const QUrl&)")]
-		public virtual QVariant LoadResource(int type, IQUrl name) {
-			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(IQUrl), name);
+		public virtual QVariant LoadResource(int type, QUrl name) {
+			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(QUrl), name);
 		}
 		public QMenu CreateStandardContextMenu() {
 			return (QMenu) interceptor.Invoke("createStandardContextMenu", "createStandardContextMenu()", typeof(QMenu));

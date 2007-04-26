@@ -79,9 +79,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QSqlQuery#", "QSqlQuery(QSqlDatabase)", typeof(void), typeof(QSqlDatabase), db);
 		}
-		public QSqlQuery(IQSqlQuery other) : this((Type) null) {
+		public QSqlQuery(QSqlQuery other) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSqlQuery#", "QSqlQuery(const QSqlQuery&)", typeof(void), typeof(IQSqlQuery), other);
+			interceptor.Invoke("QSqlQuery#", "QSqlQuery(const QSqlQuery&)", typeof(void), typeof(QSqlQuery), other);
 		}
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));

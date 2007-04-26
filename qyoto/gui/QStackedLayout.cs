@@ -54,8 +54,8 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
 		[SmokeMethod("addItem(QLayoutItem*)")]
-		public override void AddItem(IQLayoutItem item) {
-			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(IQLayoutItem), item);
+		public override void AddItem(QLayoutItem item) {
+			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(QLayoutItem), item);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {
@@ -66,12 +66,12 @@ namespace Qyoto {
 			return (QSize) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSize));
 		}
 		[SmokeMethod("itemAt(int) const")]
-		public override IQLayoutItem ItemAt(int arg1) {
-			return (IQLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(IQLayoutItem), typeof(int), arg1);
+		public override QLayoutItem ItemAt(int arg1) {
+			return (QLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(QLayoutItem), typeof(int), arg1);
 		}
 		[SmokeMethod("takeAt(int)")]
-		public override IQLayoutItem TakeAt(int arg1) {
-			return (IQLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(IQLayoutItem), typeof(int), arg1);
+		public override QLayoutItem TakeAt(int arg1) {
+			return (QLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(QLayoutItem), typeof(int), arg1);
 		}
 		[SmokeMethod("setGeometry(const QRect&)")]
 		public override void SetGeometry(QRect rect) {

@@ -55,11 +55,11 @@ namespace Qyoto {
 		public QSqlRecord Record(string tablename) {
 			return (QSqlRecord) interceptor.Invoke("record$", "record(const QString&) const", typeof(QSqlRecord), typeof(string), tablename);
 		}
-		public IQSqlQuery Exec(string query) {
-			return (IQSqlQuery) interceptor.Invoke("exec$", "exec(const QString&) const", typeof(IQSqlQuery), typeof(string), query);
+		public QSqlQuery Exec(string query) {
+			return (QSqlQuery) interceptor.Invoke("exec$", "exec(const QString&) const", typeof(QSqlQuery), typeof(string), query);
 		}
-		public IQSqlQuery Exec() {
-			return (IQSqlQuery) interceptor.Invoke("exec", "exec() const", typeof(IQSqlQuery));
+		public QSqlQuery Exec() {
+			return (QSqlQuery) interceptor.Invoke("exec", "exec() const", typeof(QSqlQuery));
 		}
 		public QSqlError LastError() {
 			return (QSqlError) interceptor.Invoke("lastError", "lastError() const", typeof(QSqlError));

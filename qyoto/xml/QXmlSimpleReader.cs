@@ -37,36 +37,36 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("hasProperty$", "hasProperty(const QString&) const", typeof(bool), typeof(string), name);
 		}
 		[SmokeMethod("setEntityResolver(QXmlEntityResolver*)")]
-		public override void SetEntityResolver(IQXmlEntityResolver handler) {
-			interceptor.Invoke("setEntityResolver#", "setEntityResolver(QXmlEntityResolver*)", typeof(void), typeof(IQXmlEntityResolver), handler);
+		public override void SetEntityResolver(QXmlEntityResolver handler) {
+			interceptor.Invoke("setEntityResolver#", "setEntityResolver(QXmlEntityResolver*)", typeof(void), typeof(QXmlEntityResolver), handler);
 		}
 		[SmokeMethod("entityResolver() const")]
-		public override IQXmlEntityResolver EntityResolver() {
-			return (IQXmlEntityResolver) interceptor.Invoke("entityResolver", "entityResolver() const", typeof(IQXmlEntityResolver));
+		public override QXmlEntityResolver EntityResolver() {
+			return (QXmlEntityResolver) interceptor.Invoke("entityResolver", "entityResolver() const", typeof(QXmlEntityResolver));
 		}
 		[SmokeMethod("setDTDHandler(QXmlDTDHandler*)")]
-		public override void SetDTDHandler(IQXmlDTDHandler handler) {
-			interceptor.Invoke("setDTDHandler#", "setDTDHandler(QXmlDTDHandler*)", typeof(void), typeof(IQXmlDTDHandler), handler);
+		public override void SetDTDHandler(QXmlDTDHandler handler) {
+			interceptor.Invoke("setDTDHandler#", "setDTDHandler(QXmlDTDHandler*)", typeof(void), typeof(QXmlDTDHandler), handler);
 		}
 		[SmokeMethod("DTDHandler() const")]
-		public override IQXmlDTDHandler DTDHandler() {
-			return (IQXmlDTDHandler) interceptor.Invoke("DTDHandler", "DTDHandler() const", typeof(IQXmlDTDHandler));
+		public override QXmlDTDHandler DTDHandler() {
+			return (QXmlDTDHandler) interceptor.Invoke("DTDHandler", "DTDHandler() const", typeof(QXmlDTDHandler));
 		}
 		[SmokeMethod("setContentHandler(QXmlContentHandler*)")]
-		public override void SetContentHandler(IQXmlContentHandler handler) {
-			interceptor.Invoke("setContentHandler#", "setContentHandler(QXmlContentHandler*)", typeof(void), typeof(IQXmlContentHandler), handler);
+		public override void SetContentHandler(QXmlContentHandler handler) {
+			interceptor.Invoke("setContentHandler#", "setContentHandler(QXmlContentHandler*)", typeof(void), typeof(QXmlContentHandler), handler);
 		}
 		[SmokeMethod("contentHandler() const")]
-		public override IQXmlContentHandler ContentHandler() {
-			return (IQXmlContentHandler) interceptor.Invoke("contentHandler", "contentHandler() const", typeof(IQXmlContentHandler));
+		public override QXmlContentHandler ContentHandler() {
+			return (QXmlContentHandler) interceptor.Invoke("contentHandler", "contentHandler() const", typeof(QXmlContentHandler));
 		}
 		[SmokeMethod("setErrorHandler(QXmlErrorHandler*)")]
-		public override void SetErrorHandler(IQXmlErrorHandler handler) {
-			interceptor.Invoke("setErrorHandler#", "setErrorHandler(QXmlErrorHandler*)", typeof(void), typeof(IQXmlErrorHandler), handler);
+		public override void SetErrorHandler(QXmlErrorHandler handler) {
+			interceptor.Invoke("setErrorHandler#", "setErrorHandler(QXmlErrorHandler*)", typeof(void), typeof(QXmlErrorHandler), handler);
 		}
 		[SmokeMethod("errorHandler() const")]
-		public override IQXmlErrorHandler ErrorHandler() {
-			return (IQXmlErrorHandler) interceptor.Invoke("errorHandler", "errorHandler() const", typeof(IQXmlErrorHandler));
+		public override QXmlErrorHandler ErrorHandler() {
+			return (QXmlErrorHandler) interceptor.Invoke("errorHandler", "errorHandler() const", typeof(QXmlErrorHandler));
 		}
 		[SmokeMethod("setLexicalHandler(QXmlLexicalHandler*)")]
 		public override void SetLexicalHandler(QXmlLexicalHandler handler) {
@@ -77,12 +77,12 @@ namespace Qyoto {
 			return (QXmlLexicalHandler) interceptor.Invoke("lexicalHandler", "lexicalHandler() const", typeof(QXmlLexicalHandler));
 		}
 		[SmokeMethod("setDeclHandler(QXmlDeclHandler*)")]
-		public override void SetDeclHandler(IQXmlDeclHandler handler) {
-			interceptor.Invoke("setDeclHandler#", "setDeclHandler(QXmlDeclHandler*)", typeof(void), typeof(IQXmlDeclHandler), handler);
+		public override void SetDeclHandler(QXmlDeclHandler handler) {
+			interceptor.Invoke("setDeclHandler#", "setDeclHandler(QXmlDeclHandler*)", typeof(void), typeof(QXmlDeclHandler), handler);
 		}
 		[SmokeMethod("declHandler() const")]
-		public override IQXmlDeclHandler DeclHandler() {
-			return (IQXmlDeclHandler) interceptor.Invoke("declHandler", "declHandler() const", typeof(IQXmlDeclHandler));
+		public override QXmlDeclHandler DeclHandler() {
+			return (QXmlDeclHandler) interceptor.Invoke("declHandler", "declHandler() const", typeof(QXmlDeclHandler));
 		}
 		[SmokeMethod("parse(const QXmlInputSource&)")]
 		public override bool Parse(QXmlInputSource input) {

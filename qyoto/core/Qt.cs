@@ -1598,11 +1598,11 @@ namespace Qyoto {
 		public static QTextStream Ws(QTextStream s) {
 			return (QTextStream) staticInterceptor.Invoke("ws#", "ws(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
 		}
-		public static QDataStream Write(QDataStream arg1, IQUrl arg2) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(IQUrl), arg2);
+		public static QDataStream Write(QDataStream arg1, QUrl arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUrl), arg2);
 		}
-		public static QDataStream Read(QDataStream arg1, IQUrl arg2) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(IQUrl), arg2);
+		public static QDataStream Read(QDataStream arg1, QUrl arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUrl), arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QUuid arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUuid&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUuid), arg2);

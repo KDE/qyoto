@@ -193,8 +193,8 @@ namespace Qyoto {
 		protected void SetPrimaryKey(QSqlIndex key) {
 			interceptor.Invoke("setPrimaryKey#", "setPrimaryKey(const QSqlIndex&)", typeof(void), typeof(QSqlIndex), key);
 		}
-		protected new void SetQuery(IQSqlQuery query) {
-			interceptor.Invoke("setQuery#", "setQuery(const QSqlQuery&)", typeof(void), typeof(IQSqlQuery), query);
+		protected new void SetQuery(QSqlQuery query) {
+			interceptor.Invoke("setQuery#", "setQuery(const QSqlQuery&)", typeof(void), typeof(QSqlQuery), query);
 		}
 		protected new QModelIndex IndexInQuery(QModelIndex item) {
 			return (QModelIndex) interceptor.Invoke("indexInQuery#", "indexInQuery(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), item);

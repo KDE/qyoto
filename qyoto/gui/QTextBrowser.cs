@@ -18,9 +18,9 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QTextBrowser), null);
 		}
 		[Q_PROPERTY("QUrl", "source")]
-		public IQUrl Source {
-			get { return (IQUrl) interceptor.Invoke("source", "source()", typeof(IQUrl)); }
-			set { interceptor.Invoke("setSource#", "setSource(QUrl)", typeof(void), typeof(IQUrl), value); }
+		public QUrl Source {
+			get { return (QUrl) interceptor.Invoke("source", "source()", typeof(QUrl)); }
+			set { interceptor.Invoke("setSource#", "setSource(QUrl)", typeof(void), typeof(QUrl), value); }
 		}
 		[Q_PROPERTY("QStringList", "searchPaths")]
 		public List<string> SearchPaths {
@@ -41,8 +41,8 @@ namespace Qyoto {
 			interceptor.Invoke("QTextBrowser", "QTextBrowser()", typeof(void));
 		}
 		[SmokeMethod("loadResource(int, const QUrl&)")]
-		public override QVariant LoadResource(int type, IQUrl name) {
-			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(IQUrl), name);
+		public override QVariant LoadResource(int type, QUrl name) {
+			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(QUrl), name);
 		}
 		public bool IsBackwardAvailable() {
 			return (bool) interceptor.Invoke("isBackwardAvailable", "isBackwardAvailable() const", typeof(bool));
@@ -55,8 +55,8 @@ namespace Qyoto {
 		}
 		[Q_SLOT("void setSource(const QUrl&)")]
 		[SmokeMethod("setSource(const QUrl&)")]
-		public virtual void SetSource(IQUrl name) {
-			interceptor.Invoke("setSource#", "setSource(const QUrl&)", typeof(void), typeof(IQUrl), name);
+		public virtual void SetSource(QUrl name) {
+			interceptor.Invoke("setSource#", "setSource(const QUrl&)", typeof(void), typeof(QUrl), name);
 		}
 		[Q_SLOT("void backward()")]
 		[SmokeMethod("backward()")]
@@ -133,12 +133,12 @@ namespace Qyoto {
 		[Q_SIGNAL("void forwardAvailable(bool)")]
 		void ForwardAvailable(bool arg1);
 		[Q_SIGNAL("void sourceChanged(const QUrl&)")]
-		void SourceChanged(IQUrl arg1);
+		void SourceChanged(QUrl arg1);
 		[Q_SIGNAL("void highlighted(const QUrl&)")]
-		void Highlighted(IQUrl arg1);
+		void Highlighted(QUrl arg1);
 		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
 		[Q_SIGNAL("void anchorClicked(const QUrl&)")]
-		void AnchorClicked(IQUrl arg1);
+		void AnchorClicked(QUrl arg1);
 	}
 }

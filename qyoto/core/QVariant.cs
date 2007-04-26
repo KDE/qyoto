@@ -185,9 +185,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QVariant#", "QVariant(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
-		public QVariant(IQUrl url) : this((Type) null) {
+		public QVariant(QUrl url) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QVariant#", "QVariant(const QUrl&)", typeof(void), typeof(IQUrl), url);
+			interceptor.Invoke("QVariant#", "QVariant(const QUrl&)", typeof(void), typeof(QUrl), url);
 		}
 		public QVariant(QLocale locale) : this((Type) null) {
 			CreateProxy();
@@ -315,8 +315,8 @@ namespace Qyoto {
 		public QRectF ToRectF() {
 			return (QRectF) interceptor.Invoke("toRectF", "toRectF() const", typeof(QRectF));
 		}
-		public IQUrl ToUrl() {
-			return (IQUrl) interceptor.Invoke("toUrl", "toUrl() const", typeof(IQUrl));
+		public QUrl ToUrl() {
+			return (QUrl) interceptor.Invoke("toUrl", "toUrl() const", typeof(QUrl));
 		}
 		public QLocale ToLocale() {
 			return (QLocale) interceptor.Invoke("toLocale", "toLocale() const", typeof(QLocale));

@@ -23,29 +23,29 @@ namespace Qyoto {
 		[SmokeMethod("hasProperty(const QString&) const")]
 		public abstract bool HasProperty(string name);
 		[SmokeMethod("setEntityResolver(QXmlEntityResolver*)")]
-		public abstract void SetEntityResolver(IQXmlEntityResolver handler);
+		public abstract void SetEntityResolver(QXmlEntityResolver handler);
 		[SmokeMethod("entityResolver() const")]
-		public abstract IQXmlEntityResolver EntityResolver();
+		public abstract QXmlEntityResolver EntityResolver();
 		[SmokeMethod("setDTDHandler(QXmlDTDHandler*)")]
-		public abstract void SetDTDHandler(IQXmlDTDHandler handler);
+		public abstract void SetDTDHandler(QXmlDTDHandler handler);
 		[SmokeMethod("DTDHandler() const")]
-		public abstract IQXmlDTDHandler DTDHandler();
+		public abstract QXmlDTDHandler DTDHandler();
 		[SmokeMethod("setContentHandler(QXmlContentHandler*)")]
-		public abstract void SetContentHandler(IQXmlContentHandler handler);
+		public abstract void SetContentHandler(QXmlContentHandler handler);
 		[SmokeMethod("contentHandler() const")]
-		public abstract IQXmlContentHandler ContentHandler();
+		public abstract QXmlContentHandler ContentHandler();
 		[SmokeMethod("setErrorHandler(QXmlErrorHandler*)")]
-		public abstract void SetErrorHandler(IQXmlErrorHandler handler);
+		public abstract void SetErrorHandler(QXmlErrorHandler handler);
 		[SmokeMethod("errorHandler() const")]
-		public abstract IQXmlErrorHandler ErrorHandler();
+		public abstract QXmlErrorHandler ErrorHandler();
 		[SmokeMethod("setLexicalHandler(QXmlLexicalHandler*)")]
 		public abstract void SetLexicalHandler(QXmlLexicalHandler handler);
 		[SmokeMethod("lexicalHandler() const")]
 		public abstract QXmlLexicalHandler LexicalHandler();
 		[SmokeMethod("setDeclHandler(QXmlDeclHandler*)")]
-		public abstract void SetDeclHandler(IQXmlDeclHandler handler);
+		public abstract void SetDeclHandler(QXmlDeclHandler handler);
 		[SmokeMethod("declHandler() const")]
-		public abstract IQXmlDeclHandler DeclHandler();
+		public abstract QXmlDeclHandler DeclHandler();
 		[SmokeMethod("parse(const QXmlInputSource&)")]
 		public abstract bool Parse(QXmlInputSource input);
 		public QXmlReader() : this((Type) null) {

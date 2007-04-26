@@ -38,9 +38,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QUrlInfo$$$$$##$$$$$$", "QUrlInfo(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", typeof(void), typeof(string), name, typeof(int), permissions, typeof(string), owner, typeof(string), group, typeof(long), size, typeof(QDateTime), lastModified, typeof(QDateTime), lastRead, typeof(bool), isDir, typeof(bool), isFile, typeof(bool), isSymLink, typeof(bool), isWritable, typeof(bool), isReadable, typeof(bool), isExecutable);
 		}
-		public QUrlInfo(IQUrl url, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) : this((Type) null) {
+		public QUrlInfo(QUrl url, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QUrlInfo#$$$$##$$$$$$", "QUrlInfo(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", typeof(void), typeof(IQUrl), url, typeof(int), permissions, typeof(string), owner, typeof(string), group, typeof(long), size, typeof(QDateTime), lastModified, typeof(QDateTime), lastRead, typeof(bool), isDir, typeof(bool), isFile, typeof(bool), isSymLink, typeof(bool), isWritable, typeof(bool), isReadable, typeof(bool), isExecutable);
+			interceptor.Invoke("QUrlInfo#$$$$##$$$$$$", "QUrlInfo(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", typeof(void), typeof(QUrl), url, typeof(int), permissions, typeof(string), owner, typeof(string), group, typeof(long), size, typeof(QDateTime), lastModified, typeof(QDateTime), lastRead, typeof(bool), isDir, typeof(bool), isFile, typeof(bool), isSymLink, typeof(bool), isWritable, typeof(bool), isReadable, typeof(bool), isExecutable);
 		}
 		[SmokeMethod("setName(const QString&)")]
 		public virtual void SetName(string name) {

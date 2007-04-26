@@ -200,11 +200,11 @@ namespace Qyoto {
 		public void Print(QPrinter printer) {
 			interceptor.Invoke("print#", "print(QPrinter*) const", typeof(void), typeof(QPrinter), printer);
 		}
-		public QVariant Resource(int type, IQUrl name) {
-			return (QVariant) interceptor.Invoke("resource$#", "resource(int, const QUrl&) const", typeof(QVariant), typeof(int), type, typeof(IQUrl), name);
+		public QVariant Resource(int type, QUrl name) {
+			return (QVariant) interceptor.Invoke("resource$#", "resource(int, const QUrl&) const", typeof(QVariant), typeof(int), type, typeof(QUrl), name);
 		}
-		public void AddResource(int type, IQUrl name, QVariant resource) {
-			interceptor.Invoke("addResource$##", "addResource(int, const QUrl&, const QVariant&)", typeof(void), typeof(int), type, typeof(IQUrl), name, typeof(QVariant), resource);
+		public void AddResource(int type, QUrl name, QVariant resource) {
+			interceptor.Invoke("addResource$##", "addResource(int, const QUrl&, const QVariant&)", typeof(void), typeof(int), type, typeof(QUrl), name, typeof(QVariant), resource);
 		}
 		public List<QTextFormat> AllFormats() {
 			return (List<QTextFormat>) interceptor.Invoke("allFormats", "allFormats() const", typeof(List<QTextFormat>));
@@ -257,8 +257,8 @@ namespace Qyoto {
 			return (QTextObject) interceptor.Invoke("createObject#", "createObject(const QTextFormat&)", typeof(QTextObject), typeof(QTextFormat), f);
 		}
 		[SmokeMethod("loadResource(int, const QUrl&)")]
-		protected virtual QVariant LoadResource(int type, IQUrl name) {
-			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(IQUrl), name);
+		protected virtual QVariant LoadResource(int type, QUrl name) {
+			return (QVariant) interceptor.Invoke("loadResource$#", "loadResource(int, const QUrl&)", typeof(QVariant), typeof(int), type, typeof(QUrl), name);
 		}
 		~QTextDocument() {
 			interceptor.Invoke("~QTextDocument", "~QTextDocument()", typeof(void));

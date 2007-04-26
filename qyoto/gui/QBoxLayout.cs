@@ -63,8 +63,8 @@ namespace Qyoto {
 			interceptor.Invoke("addStrut$", "addStrut(int)", typeof(void), typeof(int), arg1);
 		}
 		[SmokeMethod("addItem(QLayoutItem*)")]
-		public override void AddItem(IQLayoutItem arg1) {
-			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(IQLayoutItem), arg1);
+		public override void AddItem(QLayoutItem arg1) {
+			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(QLayoutItem), arg1);
 		}
 		public void InsertSpacing(int index, int size) {
 			interceptor.Invoke("insertSpacing$$", "insertSpacing(int, int)", typeof(void), typeof(int), index, typeof(int), size);
@@ -129,12 +129,12 @@ namespace Qyoto {
 			interceptor.Invoke("invalidate", "invalidate()", typeof(void));
 		}
 		[SmokeMethod("itemAt(int) const")]
-		public override IQLayoutItem ItemAt(int arg1) {
-			return (IQLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(IQLayoutItem), typeof(int), arg1);
+		public override QLayoutItem ItemAt(int arg1) {
+			return (QLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(QLayoutItem), typeof(int), arg1);
 		}
 		[SmokeMethod("takeAt(int)")]
-		public override IQLayoutItem TakeAt(int arg1) {
-			return (IQLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(IQLayoutItem), typeof(int), arg1);
+		public override QLayoutItem TakeAt(int arg1) {
+			return (QLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(QLayoutItem), typeof(int), arg1);
 		}
 		[SmokeMethod("count() const")]
 		public override int Count() {
@@ -144,8 +144,8 @@ namespace Qyoto {
 		public override void SetGeometry(QRect arg1) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		protected void InsertItem(int index, IQLayoutItem arg2) {
-			interceptor.Invoke("insertItem$#", "insertItem(int, QLayoutItem*)", typeof(void), typeof(int), index, typeof(IQLayoutItem), arg2);
+		protected void InsertItem(int index, QLayoutItem arg2) {
+			interceptor.Invoke("insertItem$#", "insertItem(int, QLayoutItem*)", typeof(void), typeof(int), index, typeof(QLayoutItem), arg2);
 		}
 		~QBoxLayout() {
 			interceptor.Invoke("~QBoxLayout", "~QBoxLayout()", typeof(void));

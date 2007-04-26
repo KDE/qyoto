@@ -83,8 +83,8 @@ namespace Qyoto {
 		public override bool RemoveColumns(int column, int count) {
 			return (bool) interceptor.Invoke("removeColumns$$", "removeColumns(int, int)", typeof(bool), typeof(int), column, typeof(int), count);
 		}
-		public void SetQuery(IQSqlQuery query) {
-			interceptor.Invoke("setQuery#", "setQuery(const QSqlQuery&)", typeof(void), typeof(IQSqlQuery), query);
+		public void SetQuery(QSqlQuery query) {
+			interceptor.Invoke("setQuery#", "setQuery(const QSqlQuery&)", typeof(void), typeof(QSqlQuery), query);
 		}
 		public void SetQuery(string query, QSqlDatabase db) {
 			interceptor.Invoke("setQuery$#", "setQuery(const QString&, const QSqlDatabase&)", typeof(void), typeof(string), query, typeof(QSqlDatabase), db);
@@ -92,8 +92,8 @@ namespace Qyoto {
 		public void SetQuery(string query) {
 			interceptor.Invoke("setQuery$", "setQuery(const QString&)", typeof(void), typeof(string), query);
 		}
-		public IQSqlQuery Query() {
-			return (IQSqlQuery) interceptor.Invoke("query", "query() const", typeof(IQSqlQuery));
+		public QSqlQuery Query() {
+			return (QSqlQuery) interceptor.Invoke("query", "query() const", typeof(QSqlQuery));
 		}
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {

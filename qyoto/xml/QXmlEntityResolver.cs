@@ -4,7 +4,6 @@ namespace Qyoto {
 	using System;
 
 	public interface IQXmlEntityResolver {
-		bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret);
 		string ErrorString();
 	}
 
@@ -16,8 +15,7 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QXmlEntityResolver), this);
 		}
-		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
-		public abstract bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret);
+		// bool resolveEntity(const QString& arg1,const QString& arg2,QXmlInputSource*& arg3); >>>> NOT CONVERTED
 		[SmokeMethod("errorString() const")]
 		public abstract string ErrorString();
 		public QXmlEntityResolver() : this((Type) null) {

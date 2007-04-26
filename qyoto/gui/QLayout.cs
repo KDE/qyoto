@@ -90,12 +90,12 @@ namespace Qyoto {
 			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
 		[SmokeMethod("addItem(QLayoutItem*)")]
-		public abstract void AddItem(IQLayoutItem arg1);
+		public abstract void AddItem(QLayoutItem arg1);
 		public void RemoveWidget(QWidget w) {
 			interceptor.Invoke("removeWidget#", "removeWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		public void RemoveItem(IQLayoutItem arg1) {
-			interceptor.Invoke("removeItem#", "removeItem(QLayoutItem*)", typeof(void), typeof(IQLayoutItem), arg1);
+		public void RemoveItem(QLayoutItem arg1) {
+			interceptor.Invoke("removeItem#", "removeItem(QLayoutItem*)", typeof(void), typeof(QLayoutItem), arg1);
 		}
 		[SmokeMethod("expandingDirections() const")]
 		public virtual int ExpandingDirections() {
@@ -112,9 +112,9 @@ namespace Qyoto {
 		[SmokeMethod("setGeometry(const QRect&)")]
 		public abstract void SetGeometry(QRect arg1);
 		[SmokeMethod("itemAt(int) const")]
-		public abstract IQLayoutItem ItemAt(int index);
+		public abstract QLayoutItem ItemAt(int index);
 		[SmokeMethod("takeAt(int)")]
-		public abstract IQLayoutItem TakeAt(int index);
+		public abstract QLayoutItem TakeAt(int index);
 		[SmokeMethod("indexOf(QWidget*) const")]
 		public virtual int IndexOf(QWidget arg1) {
 			return (int) interceptor.Invoke("indexOf#", "indexOf(QWidget*) const", typeof(int), typeof(QWidget), arg1);

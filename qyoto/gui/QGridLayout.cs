@@ -132,12 +132,12 @@ namespace Qyoto {
 			return (Qt.Corner) interceptor.Invoke("originCorner", "originCorner() const", typeof(Qt.Corner));
 		}
 		[SmokeMethod("itemAt(int) const")]
-		public override IQLayoutItem ItemAt(int arg1) {
-			return (IQLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(IQLayoutItem), typeof(int), arg1);
+		public override QLayoutItem ItemAt(int arg1) {
+			return (QLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(QLayoutItem), typeof(int), arg1);
 		}
 		[SmokeMethod("takeAt(int)")]
-		public override IQLayoutItem TakeAt(int arg1) {
-			return (IQLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(IQLayoutItem), typeof(int), arg1);
+		public override QLayoutItem TakeAt(int arg1) {
+			return (QLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(QLayoutItem), typeof(int), arg1);
 		}
 		[SmokeMethod("count() const")]
 		public override int Count() {
@@ -147,17 +147,17 @@ namespace Qyoto {
 		public override void SetGeometry(QRect arg1) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			interceptor.Invoke("addItem#$$$$$", "addItem(QLayoutItem*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
+		public void AddItem(QLayoutItem item, int row, int column, int rowSpan, int columnSpan, int arg6) {
+			interceptor.Invoke("addItem#$$$$$", "addItem(QLayoutItem*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
 		}
-		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan) {
-			interceptor.Invoke("addItem#$$$$", "addItem(QLayoutItem*, int, int, int, int)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
+		public void AddItem(QLayoutItem item, int row, int column, int rowSpan, int columnSpan) {
+			interceptor.Invoke("addItem#$$$$", "addItem(QLayoutItem*, int, int, int, int)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
-		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan) {
-			interceptor.Invoke("addItem#$$$", "addItem(QLayoutItem*, int, int, int)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan);
+		public void AddItem(QLayoutItem item, int row, int column, int rowSpan) {
+			interceptor.Invoke("addItem#$$$", "addItem(QLayoutItem*, int, int, int)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan);
 		}
-		public void AddItem(IQLayoutItem item, int row, int column) {
-			interceptor.Invoke("addItem#$$", "addItem(QLayoutItem*, int, int)", typeof(void), typeof(IQLayoutItem), item, typeof(int), row, typeof(int), column);
+		public void AddItem(QLayoutItem item, int row, int column) {
+			interceptor.Invoke("addItem#$$", "addItem(QLayoutItem*, int, int)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column);
 		}
 		public void SetDefaultPositioning(int n, Qt.Orientation orient) {
 			interceptor.Invoke("setDefaultPositioning$$", "setDefaultPositioning(int, Qt::Orientation)", typeof(void), typeof(int), n, typeof(Qt.Orientation), orient);
@@ -166,8 +166,8 @@ namespace Qyoto {
 			interceptor.Invoke("getItemPosition$$$$$", "getItemPosition(int, int*, int*, int*, int*)", typeof(void), typeof(int), idx, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
 		[SmokeMethod("addItem(QLayoutItem*)")]
-		public override void AddItem(IQLayoutItem arg1) {
-			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(IQLayoutItem), arg1);
+		public override void AddItem(QLayoutItem arg1) {
+			interceptor.Invoke("addItem#", "addItem(QLayoutItem*)", typeof(void), typeof(QLayoutItem), arg1);
 		}
 		~QGridLayout() {
 			interceptor.Invoke("~QGridLayout", "~QGridLayout()", typeof(void));

@@ -10,6 +10,7 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAccessibleWidget), this);
 		}
+		// int navigate(QAccessible::RelationFlag arg1,int arg2,QAccessibleInterface** arg3); >>>> NOT CONVERTED
 		public QAccessibleWidget(QWidget o, QAccessible.Role r, string name) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAccessibleWidget#$$", "QAccessibleWidget(QWidget*, QAccessible::Role, const QString&)", typeof(void), typeof(QWidget), o, typeof(QAccessible.Role), r, typeof(string), name);
@@ -41,10 +42,6 @@ namespace Qyoto {
 		[SmokeMethod("rect(int) const")]
 		public override QRect Rect(int child) {
 			return (QRect) interceptor.Invoke("rect$", "rect(int) const", typeof(QRect), typeof(int), child);
-		}
-		[SmokeMethod("navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
-		public override int Navigate(QAccessible.RelationFlag rel, int entry, QAccessibleInterface target) {
-			return (int) interceptor.Invoke("navigate$$?", "navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const", typeof(int), typeof(QAccessible.RelationFlag), rel, typeof(int), entry, typeof(QAccessibleInterface), target);
 		}
 		[SmokeMethod("text(QAccessible::Text, int) const")]
 		public override string Text(QAccessible.Text t, int child) {

@@ -25,8 +25,8 @@ namespace Qyoto {
 		public void Dispose() {
 			interceptor.Invoke("~QDesktopServices", "~QDesktopServices()", typeof(void));
 		}
-		public static bool OpenUrl(IQUrl url) {
-			return (bool) staticInterceptor.Invoke("openUrl#", "openUrl(const QUrl&)", typeof(bool), typeof(IQUrl), url);
+		public static bool OpenUrl(QUrl url) {
+			return (bool) staticInterceptor.Invoke("openUrl#", "openUrl(const QUrl&)", typeof(bool), typeof(QUrl), url);
 		}
 		public static void SetUrlHandler(string scheme, QObject receiver, string method) {
 			staticInterceptor.Invoke("setUrlHandler$#$", "setUrlHandler(const QString&, QObject*, const char*)", typeof(void), typeof(string), scheme, typeof(QObject), receiver, typeof(string), method);

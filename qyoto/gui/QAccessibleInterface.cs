@@ -10,6 +10,7 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAccessibleInterface), this);
 		}
+		// int navigate(QAccessible::RelationFlag arg1,int arg2,QAccessibleInterface** arg3); >>>> NOT CONVERTED
 		// QSet<QAccessible::Method> supportedMethods(); >>>> NOT CONVERTED
 		[SmokeMethod("isValid() const")]
 		public abstract bool IsValid();
@@ -23,8 +24,6 @@ namespace Qyoto {
 		public abstract int RelationTo(int child, QAccessibleInterface other, int otherChild);
 		[SmokeMethod("childAt(int, int) const")]
 		public abstract int ChildAt(int x, int y);
-		[SmokeMethod("navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
-		public abstract int Navigate(QAccessible.RelationFlag relation, int index, QAccessibleInterface iface);
 		[SmokeMethod("text(QAccessible::Text, int) const")]
 		public new abstract string Text(QAccessible.Text t, int child);
 		[SmokeMethod("setText(QAccessible::Text, int, const QString&)")]

@@ -55,8 +55,8 @@ namespace Qyoto {
 		public QRectF BoundingRect() {
 			return (QRectF) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRectF));
 		}
-		public bool Contains(QPointF pt, Qt.FillRule fillRule) {
-			return (bool) interceptor.Invoke("contains#$", "contains(const QPointF&, Qt::FillRule) const", typeof(bool), typeof(QPointF), pt, typeof(Qt.FillRule), fillRule);
+		public bool ContainsPoint(QPointF pt, Qt.FillRule fillRule) {
+			return (bool) interceptor.Invoke("containsPoint#$", "containsPoint(const QPointF&, Qt::FillRule) const", typeof(bool), typeof(QPointF), pt, typeof(Qt.FillRule), fillRule);
 		}
 		public QPolygonF United(QPolygonF r) {
 			return (QPolygonF) interceptor.Invoke("united#", "united(const QPolygonF&) const", typeof(QPolygonF), typeof(QPolygonF), r);

@@ -9,6 +9,8 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QXmlDefaultHandler), this);
 		}
+		// bool resolveEntity(const QString& arg1,const QString& arg2,QXmlInputSource*& arg3); >>>> NOT CONVERTED
+		// bool resolveEntity(const QString& arg1,const QString& arg2,QXmlInputSource*& arg3); >>>> NOT CONVERTED
 		public QXmlDefaultHandler() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QXmlDefaultHandler", "QXmlDefaultHandler()", typeof(void));
@@ -76,10 +78,6 @@ namespace Qyoto {
 		[SmokeMethod("unparsedEntityDecl(const QString&, const QString&, const QString&, const QString&)")]
 		public virtual bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
 			return (bool) interceptor.Invoke("unparsedEntityDecl$$$$", "unparsedEntityDecl(const QString&, const QString&, const QString&, const QString&)", typeof(bool), typeof(string), name, typeof(string), publicId, typeof(string), systemId, typeof(string), notationName);
-		}
-		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
-		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
-			return (bool) interceptor.Invoke("resolveEntity$$?", "resolveEntity(const QString&, const QString&, QXmlInputSource*&)", typeof(bool), typeof(string), publicId, typeof(string), systemId, typeof(QXmlInputSource), ret);
 		}
 		[SmokeMethod("startDTD(const QString&, const QString&, const QString&)")]
 		public override bool StartDTD(string name, string publicId, string systemId) {

@@ -46,9 +46,9 @@ namespace Qyoto {
 		void SetFragment(string fragment);
 		string Fragment();
 		bool HasFragment();
-		IQUrl Resolved(IQUrl relative);
+		QUrl Resolved(QUrl relative);
 		bool IsRelative();
-		bool IsParentOf(IQUrl url);
+		bool IsParentOf(QUrl url);
 		string ToLocalFile();
 		string ToString(int options);
 		string ToString();
@@ -99,9 +99,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QUrl$$", "QUrl(const QString&, QUrl::ParsingMode)", typeof(void), typeof(string), url, typeof(QUrl.ParsingMode), mode);
 		}
-		public QUrl(IQUrl copy) : this((Type) null) {
+		public QUrl(QUrl copy) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QUrl#", "QUrl(const QUrl&)", typeof(void), typeof(IQUrl), copy);
+			interceptor.Invoke("QUrl#", "QUrl(const QUrl&)", typeof(void), typeof(QUrl), copy);
 		}
 		public void SetUrl(string url) {
 			interceptor.Invoke("setUrl$", "setUrl(const QString&)", typeof(void), typeof(string), url);
@@ -226,14 +226,14 @@ namespace Qyoto {
 		public bool HasFragment() {
 			return (bool) interceptor.Invoke("hasFragment", "hasFragment() const", typeof(bool));
 		}
-		public IQUrl Resolved(IQUrl relative) {
-			return (IQUrl) interceptor.Invoke("resolved#", "resolved(const QUrl&) const", typeof(IQUrl), typeof(IQUrl), relative);
+		public QUrl Resolved(QUrl relative) {
+			return (QUrl) interceptor.Invoke("resolved#", "resolved(const QUrl&) const", typeof(QUrl), typeof(QUrl), relative);
 		}
 		public bool IsRelative() {
 			return (bool) interceptor.Invoke("isRelative", "isRelative() const", typeof(bool));
 		}
-		public bool IsParentOf(IQUrl url) {
-			return (bool) interceptor.Invoke("isParentOf#", "isParentOf(const QUrl&) const", typeof(bool), typeof(IQUrl), url);
+		public bool IsParentOf(QUrl url) {
+			return (bool) interceptor.Invoke("isParentOf#", "isParentOf(const QUrl&) const", typeof(bool), typeof(QUrl), url);
 		}
 		public string ToLocalFile() {
 			return (string) interceptor.Invoke("toLocalFile", "toLocalFile() const", typeof(string));
@@ -265,14 +265,14 @@ namespace Qyoto {
 		public void Dispose() {
 			interceptor.Invoke("~QUrl", "~QUrl()", typeof(void));
 		}
-		public static IQUrl FromLocalFile(string localfile) {
-			return (IQUrl) staticInterceptor.Invoke("fromLocalFile$", "fromLocalFile(const QString&)", typeof(IQUrl), typeof(string), localfile);
+		public static QUrl FromLocalFile(string localfile) {
+			return (QUrl) staticInterceptor.Invoke("fromLocalFile$", "fromLocalFile(const QString&)", typeof(QUrl), typeof(string), localfile);
 		}
-		public static IQUrl FromEncoded(QByteArray url) {
-			return (IQUrl) staticInterceptor.Invoke("fromEncoded#", "fromEncoded(const QByteArray&)", typeof(IQUrl), typeof(QByteArray), url);
+		public static QUrl FromEncoded(QByteArray url) {
+			return (QUrl) staticInterceptor.Invoke("fromEncoded#", "fromEncoded(const QByteArray&)", typeof(QUrl), typeof(QByteArray), url);
 		}
-		public static IQUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode) {
-			return (IQUrl) staticInterceptor.Invoke("fromEncoded#$", "fromEncoded(const QByteArray&, QUrl::ParsingMode)", typeof(IQUrl), typeof(QByteArray), url, typeof(QUrl.ParsingMode), mode);
+		public static QUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode) {
+			return (QUrl) staticInterceptor.Invoke("fromEncoded#$", "fromEncoded(const QByteArray&, QUrl::ParsingMode)", typeof(QUrl), typeof(QByteArray), url, typeof(QUrl.ParsingMode), mode);
 		}
 		public static string FromPercentEncoding(QByteArray arg1) {
 			return (string) staticInterceptor.Invoke("fromPercentEncoding#", "fromPercentEncoding(const QByteArray&)", typeof(string), typeof(QByteArray), arg1);
