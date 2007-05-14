@@ -39,28 +39,28 @@ namespace Qyoto {
 			interceptor.Invoke("polish#", "polish(QPalette&)", typeof(void), typeof(QPalette), arg1);
 		}
 		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const")]
-		public override void DrawPrimitive(QStyle.PrimitiveElement pe, int opt, QPainter p, QWidget w) {
-			interceptor.Invoke("drawPrimitive$###", "drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const", typeof(void), typeof(QStyle.PrimitiveElement), pe, typeof(int), opt, typeof(QPainter), p, typeof(QWidget), w);
+		public override void DrawPrimitive(QStyle.PrimitiveElement pe, QStyleOption opt, QPainter p, QWidget w) {
+			interceptor.Invoke("drawPrimitive$###", "drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const", typeof(void), typeof(QStyle.PrimitiveElement), pe, typeof(QStyleOption), opt, typeof(QPainter), p, typeof(QWidget), w);
 		}
 		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const")]
-		public override void DrawPrimitive(QStyle.PrimitiveElement pe, int opt, QPainter p) {
-			interceptor.Invoke("drawPrimitive$##", "drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const", typeof(void), typeof(QStyle.PrimitiveElement), pe, typeof(int), opt, typeof(QPainter), p);
+		public override void DrawPrimitive(QStyle.PrimitiveElement pe, QStyleOption opt, QPainter p) {
+			interceptor.Invoke("drawPrimitive$##", "drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const", typeof(void), typeof(QStyle.PrimitiveElement), pe, typeof(QStyleOption), opt, typeof(QPainter), p);
 		}
 		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const")]
-		public override void DrawControl(QStyle.ControlElement element, int opt, QPainter p, QWidget w) {
-			interceptor.Invoke("drawControl$###", "drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const", typeof(void), typeof(QStyle.ControlElement), element, typeof(int), opt, typeof(QPainter), p, typeof(QWidget), w);
+		public override void DrawControl(QStyle.ControlElement element, QStyleOption opt, QPainter p, QWidget w) {
+			interceptor.Invoke("drawControl$###", "drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const", typeof(void), typeof(QStyle.ControlElement), element, typeof(QStyleOption), opt, typeof(QPainter), p, typeof(QWidget), w);
 		}
 		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*) const")]
-		public override void DrawControl(QStyle.ControlElement element, int opt, QPainter p) {
-			interceptor.Invoke("drawControl$##", "drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*) const", typeof(void), typeof(QStyle.ControlElement), element, typeof(int), opt, typeof(QPainter), p);
+		public override void DrawControl(QStyle.ControlElement element, QStyleOption opt, QPainter p) {
+			interceptor.Invoke("drawControl$##", "drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*) const", typeof(void), typeof(QStyle.ControlElement), element, typeof(QStyleOption), opt, typeof(QPainter), p);
 		}
 		[SmokeMethod("subElementRect(QStyle::SubElement, const QStyleOption*, const QWidget*) const")]
-		public override QRect SubElementRect(QStyle.SubElement r, int opt, QWidget widget) {
-			return (QRect) interceptor.Invoke("subElementRect$##", "subElementRect(QStyle::SubElement, const QStyleOption*, const QWidget*) const", typeof(QRect), typeof(QStyle.SubElement), r, typeof(int), opt, typeof(QWidget), widget);
+		public override QRect SubElementRect(QStyle.SubElement r, QStyleOption opt, QWidget widget) {
+			return (QRect) interceptor.Invoke("subElementRect$##", "subElementRect(QStyle::SubElement, const QStyleOption*, const QWidget*) const", typeof(QRect), typeof(QStyle.SubElement), r, typeof(QStyleOption), opt, typeof(QWidget), widget);
 		}
 		[SmokeMethod("subElementRect(QStyle::SubElement, const QStyleOption*) const")]
-		public override QRect SubElementRect(QStyle.SubElement r, int opt) {
-			return (QRect) interceptor.Invoke("subElementRect$#", "subElementRect(QStyle::SubElement, const QStyleOption*) const", typeof(QRect), typeof(QStyle.SubElement), r, typeof(int), opt);
+		public override QRect SubElementRect(QStyle.SubElement r, QStyleOption opt) {
+			return (QRect) interceptor.Invoke("subElementRect$#", "subElementRect(QStyle::SubElement, const QStyleOption*) const", typeof(QRect), typeof(QStyle.SubElement), r, typeof(QStyleOption), opt);
 		}
 		[SmokeMethod("drawComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const")]
 		public override void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p, QWidget w) {
@@ -71,48 +71,48 @@ namespace Qyoto {
 			interceptor.Invoke("drawComplexControl$##", "drawComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*) const", typeof(void), typeof(QStyle.ComplexControl), cc, typeof(QStyleOptionComplex), opt, typeof(QPainter), p);
 		}
 		[SmokeMethod("sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const")]
-		public override QSize SizeFromContents(QStyle.ContentsType ct, int opt, QSize contentsSize, QWidget widget) {
-			return (QSize) interceptor.Invoke("sizeFromContents$###", "sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const", typeof(QSize), typeof(QStyle.ContentsType), ct, typeof(int), opt, typeof(QSize), contentsSize, typeof(QWidget), widget);
+		public override QSize SizeFromContents(QStyle.ContentsType ct, QStyleOption opt, QSize contentsSize, QWidget widget) {
+			return (QSize) interceptor.Invoke("sizeFromContents$###", "sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const", typeof(QSize), typeof(QStyle.ContentsType), ct, typeof(QStyleOption), opt, typeof(QSize), contentsSize, typeof(QWidget), widget);
 		}
 		[SmokeMethod("sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&) const")]
-		public override QSize SizeFromContents(QStyle.ContentsType ct, int opt, QSize contentsSize) {
-			return (QSize) interceptor.Invoke("sizeFromContents$##", "sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&) const", typeof(QSize), typeof(QStyle.ContentsType), ct, typeof(int), opt, typeof(QSize), contentsSize);
+		public override QSize SizeFromContents(QStyle.ContentsType ct, QStyleOption opt, QSize contentsSize) {
+			return (QSize) interceptor.Invoke("sizeFromContents$##", "sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&) const", typeof(QSize), typeof(QStyle.ContentsType), ct, typeof(QStyleOption), opt, typeof(QSize), contentsSize);
 		}
 		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const")]
-		public override int pixelMetric(QStyle.PixelMetric pm, int option, QWidget widget) {
-			return (int) interceptor.Invoke("pixelMetric$##", "pixelMetric(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QStyle.PixelMetric), pm, typeof(int), option, typeof(QWidget), widget);
+		public override int pixelMetric(QStyle.PixelMetric pm, QStyleOption option, QWidget widget) {
+			return (int) interceptor.Invoke("pixelMetric$##", "pixelMetric(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QStyle.PixelMetric), pm, typeof(QStyleOption), option, typeof(QWidget), widget);
 		}
 		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*) const")]
-		public override int pixelMetric(QStyle.PixelMetric pm, int option) {
-			return (int) interceptor.Invoke("pixelMetric$#", "pixelMetric(QStyle::PixelMetric, const QStyleOption*) const", typeof(int), typeof(QStyle.PixelMetric), pm, typeof(int), option);
+		public override int pixelMetric(QStyle.PixelMetric pm, QStyleOption option) {
+			return (int) interceptor.Invoke("pixelMetric$#", "pixelMetric(QStyle::PixelMetric, const QStyleOption*) const", typeof(int), typeof(QStyle.PixelMetric), pm, typeof(QStyleOption), option);
 		}
 		[SmokeMethod("pixelMetric(QStyle::PixelMetric) const")]
 		public override int pixelMetric(QStyle.PixelMetric pm) {
 			return (int) interceptor.Invoke("pixelMetric$", "pixelMetric(QStyle::PixelMetric) const", typeof(int), typeof(QStyle.PixelMetric), pm);
 		}
 		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const")]
-		public override int styleHint(QStyle.StyleHint hint, int opt, QWidget widget, QStyleHintReturn returnData) {
-			return (int) interceptor.Invoke("styleHint$###", "styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const", typeof(int), typeof(QStyle.StyleHint), hint, typeof(int), opt, typeof(QWidget), widget, typeof(QStyleHintReturn), returnData);
+		public override int styleHint(QStyle.StyleHint hint, QStyleOption opt, QWidget widget, QStyleHintReturn returnData) {
+			return (int) interceptor.Invoke("styleHint$###", "styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const", typeof(int), typeof(QStyle.StyleHint), hint, typeof(QStyleOption), opt, typeof(QWidget), widget, typeof(QStyleHintReturn), returnData);
 		}
 		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*) const")]
-		public override int styleHint(QStyle.StyleHint hint, int opt, QWidget widget) {
-			return (int) interceptor.Invoke("styleHint$##", "styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QStyle.StyleHint), hint, typeof(int), opt, typeof(QWidget), widget);
+		public override int styleHint(QStyle.StyleHint hint, QStyleOption opt, QWidget widget) {
+			return (int) interceptor.Invoke("styleHint$##", "styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QStyle.StyleHint), hint, typeof(QStyleOption), opt, typeof(QWidget), widget);
 		}
 		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*) const")]
-		public override int styleHint(QStyle.StyleHint hint, int opt) {
-			return (int) interceptor.Invoke("styleHint$#", "styleHint(QStyle::StyleHint, const QStyleOption*) const", typeof(int), typeof(QStyle.StyleHint), hint, typeof(int), opt);
+		public override int styleHint(QStyle.StyleHint hint, QStyleOption opt) {
+			return (int) interceptor.Invoke("styleHint$#", "styleHint(QStyle::StyleHint, const QStyleOption*) const", typeof(int), typeof(QStyle.StyleHint), hint, typeof(QStyleOption), opt);
 		}
 		[SmokeMethod("styleHint(QStyle::StyleHint) const")]
 		public override int styleHint(QStyle.StyleHint hint) {
 			return (int) interceptor.Invoke("styleHint$", "styleHint(QStyle::StyleHint) const", typeof(int), typeof(QStyle.StyleHint), hint);
 		}
 		[SmokeMethod("standardPixmap(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, int opt, QWidget widget) {
-			return (QPixmap) interceptor.Invoke("standardPixmap$##", "standardPixmap(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QPixmap), typeof(QStyle.StandardPixmap), standardPixmap, typeof(int), opt, typeof(QWidget), widget);
+		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, QStyleOption opt, QWidget widget) {
+			return (QPixmap) interceptor.Invoke("standardPixmap$##", "standardPixmap(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QPixmap), typeof(QStyle.StandardPixmap), standardPixmap, typeof(QStyleOption), opt, typeof(QWidget), widget);
 		}
 		[SmokeMethod("standardPixmap(QStyle::StandardPixmap, const QStyleOption*) const")]
-		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, int opt) {
-			return (QPixmap) interceptor.Invoke("standardPixmap$#", "standardPixmap(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QPixmap), typeof(QStyle.StandardPixmap), standardPixmap, typeof(int), opt);
+		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, QStyleOption opt) {
+			return (QPixmap) interceptor.Invoke("standardPixmap$#", "standardPixmap(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QPixmap), typeof(QStyle.StandardPixmap), standardPixmap, typeof(QStyleOption), opt);
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
@@ -123,12 +123,12 @@ namespace Qyoto {
 			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int option, QWidget widget) {
-			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), option, typeof(QWidget), widget);
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption option, QWidget widget) {
+			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), option, typeof(QWidget), widget);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, int option) {
-			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(int), option);
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption option) {
+			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), option);
 		}
 		~QWindowsStyle() {
 			interceptor.Invoke("~QWindowsStyle", "~QWindowsStyle()", typeof(void));

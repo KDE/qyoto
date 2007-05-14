@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QXmlSimpleReader")]
 	public class QXmlSimpleReader : QXmlReader, IDisposable {
@@ -17,8 +18,22 @@ namespace Qyoto {
 			interceptor.Invoke("QXmlSimpleReader", "QXmlSimpleReader()", typeof(void));
 		}
 		[SmokeMethod("feature(const QString&, bool*) const")]
-		public override bool Feature(string name, bool ok) {
-			return (bool) interceptor.Invoke("feature$$", "feature(const QString&, bool*) const", typeof(bool), typeof(string), name, typeof(bool), ok);
+		public override bool Feature(string name, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("feature$$", "feature(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_bool;
 		}
 		[SmokeMethod("feature(const QString&) const")]
 		public virtual bool Feature(string name) {

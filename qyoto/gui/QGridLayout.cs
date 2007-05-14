@@ -162,8 +162,19 @@ namespace Qyoto {
 		public void SetDefaultPositioning(int n, Qt.Orientation orient) {
 			interceptor.Invoke("setDefaultPositioning$$", "setDefaultPositioning(int, Qt::Orientation)", typeof(void), typeof(int), n, typeof(Qt.Orientation), orient);
 		}
-		public void GetItemPosition(int idx, int row, int column, int rowSpan, int columnSpan) {
-			interceptor.Invoke("getItemPosition$$$$$", "getItemPosition(int, int*, int*, int*, int*)", typeof(void), typeof(int), idx, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
+		public void GetItemPosition(int idx, ref int row, ref int column, ref int rowSpan, ref int columnSpan) {
+			StackItem[] stack = new StackItem[6];
+			stack[1].s_int = idx;
+			stack[2].s_int = row;
+			stack[3].s_int = column;
+			stack[4].s_int = rowSpan;
+			stack[5].s_int = columnSpan;
+			interceptor.Invoke("getItemPosition$$$$$", "getItemPosition(int, int*, int*, int*, int*)", stack);
+			row = stack[2].s_int;
+			column = stack[3].s_int;
+			rowSpan = stack[4].s_int;
+			columnSpan = stack[5].s_int;
+			return;
 		}
 		[SmokeMethod("addItem(QLayoutItem*)")]
 		public override void AddItem(QLayoutItem arg1) {

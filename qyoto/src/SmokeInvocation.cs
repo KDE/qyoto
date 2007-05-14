@@ -391,7 +391,7 @@ namespace Qyoto {
 			}
 		}
 
-		// A variant of Invoke() for use in method calls with 'out' argument types.
+		// A variant of Invoke() for use in method calls with 'ref' argument types.
 		// The caller is responsible for setting up the stack, and copying items
 		// back from the stack to the arguments after Invoke() has been called.
 		public void Invoke(string mungedName, string signature, StackItem[] stack) {

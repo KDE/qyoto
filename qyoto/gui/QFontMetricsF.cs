@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QFontMetricsF")]
 	public class QFontMetricsF : Object, IDisposable {
@@ -78,8 +79,40 @@ namespace Qyoto {
 		public QRectF BoundingRect(char arg1) {
 			return (QRectF) interceptor.Invoke("boundingRect#", "boundingRect(QChar) const", typeof(QRectF), typeof(char), arg1);
 		}
-		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops, int tabarray) {
-			return (QRectF) interceptor.Invoke("boundingRect#$$$$", "boundingRect(const QRectF&, int, const QString&, int, int*) const", typeof(QRectF), typeof(QRectF), r, typeof(int), flags, typeof(string), arg3, typeof(int), tabstops, typeof(int), tabarray);
+		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops, ref int tabarray) {
+			StackItem[] stack = new StackItem[6];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(r);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(r);
+#endif
+			stack[2].s_int = flags;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(arg3);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(arg3);
+#endif
+			stack[4].s_int = tabstops;
+			stack[5].s_int = tabarray;
+			interceptor.Invoke("boundingRect#$$$$", "boundingRect(const QRectF&, int, const QString&, int, int*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			tabarray = stack[5].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QRectF) returnValue;
 		}
 		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops) {
 			return (QRectF) interceptor.Invoke("boundingRect#$$$", "boundingRect(const QRectF&, int, const QString&, int) const", typeof(QRectF), typeof(QRectF), r, typeof(int), flags, typeof(string), arg3, typeof(int), tabstops);
@@ -87,8 +120,30 @@ namespace Qyoto {
 		public QRectF BoundingRect(QRectF r, int flags, string arg3) {
 			return (QRectF) interceptor.Invoke("boundingRect#$$", "boundingRect(const QRectF&, int, const QString&) const", typeof(QRectF), typeof(QRectF), r, typeof(int), flags, typeof(string), arg3);
 		}
-		public QSizeF Size(int flags, string str, int tabstops, int tabarray) {
-			return (QSizeF) interceptor.Invoke("size$$$$", "size(int, const QString&, int, int*) const", typeof(QSizeF), typeof(int), flags, typeof(string), str, typeof(int), tabstops, typeof(int), tabarray);
+		public QSizeF Size(int flags, string str, int tabstops, ref int tabarray) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = flags;
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(str);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(str);
+#endif
+			stack[3].s_int = tabstops;
+			stack[4].s_int = tabarray;
+			interceptor.Invoke("size$$$$", "size(int, const QString&, int, int*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			tabarray = stack[4].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QSizeF) returnValue;
 		}
 		public QSizeF Size(int flags, string str, int tabstops) {
 			return (QSizeF) interceptor.Invoke("size$$$", "size(int, const QString&, int) const", typeof(QSizeF), typeof(int), flags, typeof(string), str, typeof(int), tabstops);

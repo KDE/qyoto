@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QMetaObject")]
 	public class QMetaObject : Object {
@@ -124,8 +125,35 @@ namespace Qyoto {
 		public static QByteArray NormalizedType(string type) {
 			return (QByteArray) staticInterceptor.Invoke("normalizedType$", "normalizedType(const char*)", typeof(QByteArray), typeof(string), type);
 		}
-		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type, int types) {
-			return (bool) staticInterceptor.Invoke("connect#$#$$$", "connect(const QObject*, int, const QObject*, int, int, int*)", typeof(bool), typeof(QObject), sender, typeof(int), signal_index, typeof(QObject), receiver, typeof(int), method_index, typeof(int), type, typeof(int), types);
+		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type, ref int types) {
+			StackItem[] stack = new StackItem[7];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(sender);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(sender);
+#endif
+			stack[2].s_int = signal_index;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(receiver);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(receiver);
+#endif
+			stack[4].s_int = method_index;
+			stack[5].s_int = type;
+			stack[6].s_int = types;
+			staticInterceptor.Invoke("connect#$#$$$", "connect(const QObject*, int, const QObject*, int, int, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			types = stack[6].s_int;
+			return stack[0].s_bool;
 		}
 		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type) {
 			return (bool) staticInterceptor.Invoke("connect#$#$$", "connect(const QObject*, int, const QObject*, int, int)", typeof(bool), typeof(QObject), sender, typeof(int), signal_index, typeof(QObject), receiver, typeof(int), method_index, typeof(int), type);

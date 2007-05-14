@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Text;
 
 	[SmokeClass("QStringMatcher")]
 	public class QStringMatcher : Object, IDisposable {

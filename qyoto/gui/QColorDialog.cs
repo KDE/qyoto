@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QColorDialog")]
 	public class QColorDialog : QDialog {
@@ -25,11 +26,31 @@ namespace Qyoto {
 		public static QColor GetColor() {
 			return (QColor) staticInterceptor.Invoke("getColor", "getColor()", typeof(QColor));
 		}
-		public static uint GetRgba(uint arg1, bool ok, QWidget parent) {
-			return (uint) staticInterceptor.Invoke("getRgba$$#", "getRgba(QRgb, bool*, QWidget*)", typeof(uint), typeof(uint), arg1, typeof(bool), ok, typeof(QWidget), parent);
+		public static uint GetRgba(uint arg1, ref bool ok, QWidget parent) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_uint = arg1;
+			stack[2].s_bool = ok;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+			staticInterceptor.Invoke("getRgba$$#", "getRgba(QRgb, bool*, QWidget*)", stack);
+			ok = stack[2].s_bool;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			return stack[0].s_uint;
 		}
-		public static uint GetRgba(uint arg1, bool ok) {
-			return (uint) staticInterceptor.Invoke("getRgba$$", "getRgba(QRgb, bool*)", typeof(uint), typeof(uint), arg1, typeof(bool), ok);
+		public static uint GetRgba(uint arg1, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_uint = arg1;
+			stack[2].s_bool = ok;
+			staticInterceptor.Invoke("getRgba$$", "getRgba(QRgb, bool*)", stack);
+			ok = stack[2].s_bool;
+			return stack[0].s_uint;
 		}
 		public static uint GetRgba(uint arg1) {
 			return (uint) staticInterceptor.Invoke("getRgba$", "getRgba(QRgb)", typeof(uint), typeof(uint), arg1);

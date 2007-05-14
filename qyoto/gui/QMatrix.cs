@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QMatrix")]
 	public class QMatrix : Object, IDisposable {
@@ -49,11 +50,27 @@ namespace Qyoto {
 		public double Dy() {
 			return (double) interceptor.Invoke("dy", "dy() const", typeof(double));
 		}
-		public void Map(int x, int y, int tx, int ty) {
-			interceptor.Invoke("map$$$$", "map(int, int, int*, int*) const", typeof(void), typeof(int), x, typeof(int), y, typeof(int), tx, typeof(int), ty);
+		public void Map(int x, int y, ref int tx, ref int ty) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = x;
+			stack[2].s_int = y;
+			stack[3].s_int = tx;
+			stack[4].s_int = ty;
+			interceptor.Invoke("map$$$$", "map(int, int, int*, int*) const", stack);
+			tx = stack[3].s_int;
+			ty = stack[4].s_int;
+			return;
 		}
-		public void Map(double x, double y, double tx, double ty) {
-			interceptor.Invoke("map$$$$", "map(qreal, qreal, qreal*, qreal*) const", typeof(void), typeof(double), x, typeof(double), y, typeof(double), tx, typeof(double), ty);
+		public void Map(double x, double y, ref double tx, ref double ty) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = x;
+			stack[2].s_double = y;
+			stack[3].s_double = tx;
+			stack[4].s_double = ty;
+			interceptor.Invoke("map$$$$", "map(qreal, qreal, qreal*, qreal*) const", stack);
+			tx = stack[3].s_double;
+			ty = stack[4].s_double;
+			return;
 		}
 		public QRect MapRect(QRect arg1) {
 			return (QRect) interceptor.Invoke("mapRect#", "mapRect(const QRect&) const", typeof(QRect), typeof(QRect), arg1);
@@ -112,8 +129,18 @@ namespace Qyoto {
 		public double Det() {
 			return (double) interceptor.Invoke("det", "det() const", typeof(double));
 		}
-		public QMatrix Inverted(bool invertible) {
-			return (QMatrix) interceptor.Invoke("inverted$", "inverted(bool*) const", typeof(QMatrix), typeof(bool), invertible);
+		public QMatrix Inverted(ref bool invertible) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = invertible;
+			interceptor.Invoke("inverted$", "inverted(bool*) const", stack);
+			invertible = stack[1].s_bool;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QMatrix) returnValue;
 		}
 		public QMatrix Inverted() {
 			return (QMatrix) interceptor.Invoke("inverted", "inverted() const", typeof(QMatrix));

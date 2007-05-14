@@ -260,86 +260,173 @@ namespace Qyoto {
 		public List<QByteArray> Split(char sep) {
 			return (List<QByteArray>) interceptor.Invoke("split$", "split(char) const", typeof(List<QByteArray>), typeof(char), sep);
 		}
-		public short ToShort(bool ok, int arg2) {
-			return (short) interceptor.Invoke("toShort$$", "toShort(bool*, int) const", typeof(short), typeof(bool), ok, typeof(int), arg2);
+		public override bool Equals(object o) {
+			if (!(o is QByteArray)) { return false; }
+			return this == (QByteArray) o;
 		}
-		public short ToShort(bool ok) {
-			return (short) interceptor.Invoke("toShort$", "toShort(bool*) const", typeof(short), typeof(bool), ok);
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
+		public short ToShort(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toShort$$", "toShort(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_short;
+		}
+		public short ToShort(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toShort$", "toShort(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_short;
 		}
 		public short ToShort() {
 			return (short) interceptor.Invoke("toShort", "toShort() const", typeof(short));
 		}
-		public ushort ToUShort(bool ok, int arg2) {
-			return (ushort) interceptor.Invoke("toUShort$$", "toUShort(bool*, int) const", typeof(ushort), typeof(bool), ok, typeof(int), arg2);
+		public ushort ToUShort(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toUShort$$", "toUShort(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ushort;
 		}
-		public ushort ToUShort(bool ok) {
-			return (ushort) interceptor.Invoke("toUShort$", "toUShort(bool*) const", typeof(ushort), typeof(bool), ok);
+		public ushort ToUShort(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toUShort$", "toUShort(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ushort;
 		}
 		public ushort ToUShort() {
 			return (ushort) interceptor.Invoke("toUShort", "toUShort() const", typeof(ushort));
 		}
-		public int ToInt(bool ok, int arg2) {
-			return (int) interceptor.Invoke("toInt$$", "toInt(bool*, int) const", typeof(int), typeof(bool), ok, typeof(int), arg2);
+		public int ToInt(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toInt$$", "toInt(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_int;
 		}
-		public int ToInt(bool ok) {
-			return (int) interceptor.Invoke("toInt$", "toInt(bool*) const", typeof(int), typeof(bool), ok);
+		public int ToInt(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toInt$", "toInt(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_int;
 		}
 		public int ToInt() {
 			return (int) interceptor.Invoke("toInt", "toInt() const", typeof(int));
 		}
-		public uint ToUInt(bool ok, int arg2) {
-			return (uint) interceptor.Invoke("toUInt$$", "toUInt(bool*, int) const", typeof(uint), typeof(bool), ok, typeof(int), arg2);
+		public uint ToUInt(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toUInt$$", "toUInt(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_uint;
 		}
-		public uint ToUInt(bool ok) {
-			return (uint) interceptor.Invoke("toUInt$", "toUInt(bool*) const", typeof(uint), typeof(bool), ok);
+		public uint ToUInt(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toUInt$", "toUInt(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_uint;
 		}
 		public uint ToUInt() {
 			return (uint) interceptor.Invoke("toUInt", "toUInt() const", typeof(uint));
 		}
-		public long ToLong(bool ok, int arg2) {
-			return (long) interceptor.Invoke("toLong$$", "toLong(bool*, int) const", typeof(long), typeof(bool), ok, typeof(int), arg2);
+		public long ToLong(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toLong$$", "toLong(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_long;
 		}
-		public long ToLong(bool ok) {
-			return (long) interceptor.Invoke("toLong$", "toLong(bool*) const", typeof(long), typeof(bool), ok);
+		public long ToLong(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toLong$", "toLong(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_long;
 		}
 		public long ToLong() {
 			return (long) interceptor.Invoke("toLong", "toLong() const", typeof(long));
 		}
-		public ulong ToULong(bool ok, int arg2) {
-			return (ulong) interceptor.Invoke("toULong$$", "toULong(bool*, int) const", typeof(ulong), typeof(bool), ok, typeof(int), arg2);
+		public ulong ToULong(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toULong$$", "toULong(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ulong;
 		}
-		public ulong ToULong(bool ok) {
-			return (ulong) interceptor.Invoke("toULong$", "toULong(bool*) const", typeof(ulong), typeof(bool), ok);
+		public ulong ToULong(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toULong$", "toULong(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ulong;
 		}
 		public ulong ToULong() {
 			return (ulong) interceptor.Invoke("toULong", "toULong() const", typeof(ulong));
 		}
-		public long ToLongLong(bool ok, int arg2) {
-			return (long) interceptor.Invoke("toLongLong$$", "toLongLong(bool*, int) const", typeof(long), typeof(bool), ok, typeof(int), arg2);
+		public long ToLongLong(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toLongLong$$", "toLongLong(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_long;
 		}
-		public long ToLongLong(bool ok) {
-			return (long) interceptor.Invoke("toLongLong$", "toLongLong(bool*) const", typeof(long), typeof(bool), ok);
+		public long ToLongLong(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toLongLong$", "toLongLong(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_long;
 		}
 		public long ToLongLong() {
 			return (long) interceptor.Invoke("toLongLong", "toLongLong() const", typeof(long));
 		}
-		public ulong ToULongLong(bool ok, int arg2) {
-			return (ulong) interceptor.Invoke("toULongLong$$", "toULongLong(bool*, int) const", typeof(ulong), typeof(bool), ok, typeof(int), arg2);
+		public ulong ToULongLong(ref bool ok, int arg2) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+			stack[2].s_int = arg2;
+			interceptor.Invoke("toULongLong$$", "toULongLong(bool*, int) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ulong;
 		}
-		public ulong ToULongLong(bool ok) {
-			return (ulong) interceptor.Invoke("toULongLong$", "toULongLong(bool*) const", typeof(ulong), typeof(bool), ok);
+		public ulong ToULongLong(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toULongLong$", "toULongLong(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ulong;
 		}
 		public ulong ToULongLong() {
 			return (ulong) interceptor.Invoke("toULongLong", "toULongLong() const", typeof(ulong));
 		}
-		public float ToFloat(bool ok) {
-			return (float) interceptor.Invoke("toFloat$", "toFloat(bool*) const", typeof(float), typeof(bool), ok);
+		public float ToFloat(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toFloat$", "toFloat(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_float;
 		}
 		public float ToFloat() {
 			return (float) interceptor.Invoke("toFloat", "toFloat() const", typeof(float));
 		}
-		public double ToDouble(bool ok) {
-			return (double) interceptor.Invoke("toDouble$", "toDouble(bool*) const", typeof(double), typeof(bool), ok);
+		public double ToDouble(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toDouble$", "toDouble(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_double;
 		}
 		public double ToDouble() {
 			return (double) interceptor.Invoke("toDouble", "toDouble() const", typeof(double));
@@ -436,13 +523,6 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QByteArray", "~QByteArray()", typeof(void));
-		}
-		public override bool Equals(object o) {
-			if (!(o is QByteArray)) { return false; }
-			return this == (QByteArray) o;
-		}
-		public override int GetHashCode() {
-			return interceptor.GetHashCode();
 		}
 		public static bool operator==(QByteArray lhs, string s2) {
 			return (bool) staticInterceptor.Invoke("operator==$", "operator==(const QString&) const", typeof(bool), typeof(QByteArray), lhs, typeof(string), s2);

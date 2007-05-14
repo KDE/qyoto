@@ -171,8 +171,18 @@ namespace Qyoto {
 		}
 		[SmokeMethod("type() const")]
 		public abstract QPaintEngine.TypeOf type();
-		public void Fix_neg_rect(int x, int y, int w, int h) {
-			interceptor.Invoke("fix_neg_rect$$$$", "fix_neg_rect(int*, int*, int*, int*)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
+		public void Fix_neg_rect(ref int x, ref int y, ref int w, ref int h) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = x;
+			stack[2].s_int = y;
+			stack[3].s_int = w;
+			stack[4].s_int = h;
+			interceptor.Invoke("fix_neg_rect$$$$", "fix_neg_rect(int*, int*, int*, int*)", stack);
+			x = stack[1].s_int;
+			y = stack[2].s_int;
+			w = stack[3].s_int;
+			h = stack[4].s_int;
+			return;
 		}
 		public bool TestDirty(int df) {
 			return (bool) interceptor.Invoke("testDirty$", "testDirty(DirtyFlags)", typeof(bool), typeof(int), df);

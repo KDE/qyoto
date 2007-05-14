@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Text;
 
 	[SmokeClass("QDomDocument")]
@@ -80,11 +81,63 @@ namespace Qyoto {
 		public new QDomNode.NodeType NodeType() {
 			return (QDomNode.NodeType) interceptor.Invoke("nodeType", "nodeType() const", typeof(QDomNode.NodeType));
 		}
-		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent#$$$$", "setContent(const QByteArray&, bool, QString*, int*, int*)", typeof(bool), typeof(QByteArray), text, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[6];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+			stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			stack[5].s_int = errorColumn;
+			interceptor.Invoke("setContent#$$$$", "setContent(const QByteArray&, bool, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			errorColumn = stack[5].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent#$$$", "setContent(const QByteArray&, bool, QString*, int*)", typeof(bool), typeof(QByteArray), text, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+			stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			interceptor.Invoke("setContent#$$$", "setContent(const QByteArray&, bool, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent#$$", "setContent(const QByteArray&, bool, QString*)", typeof(bool), typeof(QByteArray), text, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg);
@@ -92,11 +145,63 @@ namespace Qyoto {
 		public bool SetContent(QByteArray text, bool namespaceProcessing) {
 			return (bool) interceptor.Invoke("setContent#$", "setContent(const QByteArray&, bool)", typeof(bool), typeof(QByteArray), text, typeof(bool), namespaceProcessing);
 		}
-		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent$$$$$", "setContent(const QString&, bool, QString*, int*, int*)", typeof(bool), typeof(string), text, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[6];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+			stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			stack[5].s_int = errorColumn;
+			interceptor.Invoke("setContent$$$$$", "setContent(const QString&, bool, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			errorColumn = stack[5].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent$$$$", "setContent(const QString&, bool, QString*, int*)", typeof(bool), typeof(string), text, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+			stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			interceptor.Invoke("setContent$$$$", "setContent(const QString&, bool, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent$$$", "setContent(const QString&, bool, QString*)", typeof(bool), typeof(string), text, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg);
@@ -104,11 +209,63 @@ namespace Qyoto {
 		public bool SetContent(string text, bool namespaceProcessing) {
 			return (bool) interceptor.Invoke("setContent$$", "setContent(const QString&, bool)", typeof(bool), typeof(string), text, typeof(bool), namespaceProcessing);
 		}
-		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent#$$$$", "setContent(QIODevice*, bool, QString*, int*, int*)", typeof(bool), typeof(QIODevice), dev, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[6];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dev);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(dev);
+#endif
+			stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			stack[5].s_int = errorColumn;
+			interceptor.Invoke("setContent#$$$$", "setContent(QIODevice*, bool, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			errorColumn = stack[5].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent#$$$", "setContent(QIODevice*, bool, QString*, int*)", typeof(bool), typeof(QIODevice), dev, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dev);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(dev);
+#endif
+			stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			interceptor.Invoke("setContent#$$$", "setContent(QIODevice*, bool, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent#$$", "setContent(QIODevice*, bool, QString*)", typeof(bool), typeof(QIODevice), dev, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg);
@@ -116,11 +273,61 @@ namespace Qyoto {
 		public bool SetContent(QIODevice dev, bool namespaceProcessing) {
 			return (bool) interceptor.Invoke("setContent#$", "setContent(QIODevice*, bool)", typeof(bool), typeof(QIODevice), dev, typeof(bool), namespaceProcessing);
 		}
-		public bool SetContent(QByteArray text, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent#$$$", "setContent(const QByteArray&, QString*, int*, int*)", typeof(bool), typeof(QByteArray), text, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(QByteArray text, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[3].s_int = errorLine;
+			stack[4].s_int = errorColumn;
+			interceptor.Invoke("setContent#$$$", "setContent(const QByteArray&, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			errorLine = stack[3].s_int;
+			errorColumn = stack[4].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(QByteArray text, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent#$$", "setContent(const QByteArray&, QString*, int*)", typeof(bool), typeof(QByteArray), text, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(QByteArray text, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[3].s_int = errorLine;
+			interceptor.Invoke("setContent#$$", "setContent(const QByteArray&, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			errorLine = stack[3].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(QByteArray text, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent#$", "setContent(const QByteArray&, QString*)", typeof(bool), typeof(QByteArray), text, typeof(StringBuilder), errorMsg);
@@ -128,11 +335,61 @@ namespace Qyoto {
 		public bool SetContent(QByteArray text) {
 			return (bool) interceptor.Invoke("setContent#", "setContent(const QByteArray&)", typeof(bool), typeof(QByteArray), text);
 		}
-		public bool SetContent(string text, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent$$$$", "setContent(const QString&, QString*, int*, int*)", typeof(bool), typeof(string), text, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(string text, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[3].s_int = errorLine;
+			stack[4].s_int = errorColumn;
+			interceptor.Invoke("setContent$$$$", "setContent(const QString&, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			errorLine = stack[3].s_int;
+			errorColumn = stack[4].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(string text, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent$$$", "setContent(const QString&, QString*, int*)", typeof(bool), typeof(string), text, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(string text, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(text);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(text);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[3].s_int = errorLine;
+			interceptor.Invoke("setContent$$$", "setContent(const QString&, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			errorLine = stack[3].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(string text, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent$$", "setContent(const QString&, QString*)", typeof(bool), typeof(string), text, typeof(StringBuilder), errorMsg);
@@ -140,11 +397,61 @@ namespace Qyoto {
 		public bool SetContent(string text) {
 			return (bool) interceptor.Invoke("setContent$", "setContent(const QString&)", typeof(bool), typeof(string), text);
 		}
-		public bool SetContent(QIODevice dev, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent#$$$", "setContent(QIODevice*, QString*, int*, int*)", typeof(bool), typeof(QIODevice), dev, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(QIODevice dev, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dev);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(dev);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[3].s_int = errorLine;
+			stack[4].s_int = errorColumn;
+			interceptor.Invoke("setContent#$$$", "setContent(QIODevice*, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			errorLine = stack[3].s_int;
+			errorColumn = stack[4].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(QIODevice dev, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent#$$", "setContent(QIODevice*, QString*, int*)", typeof(bool), typeof(QIODevice), dev, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(QIODevice dev, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dev);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(dev);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[3].s_int = errorLine;
+			interceptor.Invoke("setContent#$$", "setContent(QIODevice*, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			errorLine = stack[3].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(QIODevice dev, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent#$", "setContent(QIODevice*, QString*)", typeof(bool), typeof(QIODevice), dev, typeof(StringBuilder), errorMsg);
@@ -152,11 +459,81 @@ namespace Qyoto {
 		public bool SetContent(QIODevice dev) {
 			return (bool) interceptor.Invoke("setContent#", "setContent(QIODevice*)", typeof(bool), typeof(QIODevice), dev);
 		}
-		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, int errorLine, int errorColumn) {
-			return (bool) interceptor.Invoke("setContent##$$$", "setContent(QXmlInputSource*, QXmlReader*, QString*, int*, int*)", typeof(bool), typeof(QXmlInputSource), source, typeof(QXmlReader), reader, typeof(StringBuilder), errorMsg, typeof(int), errorLine, typeof(int), errorColumn);
+		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+			StackItem[] stack = new StackItem[6];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(source);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(source);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(reader);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(reader);
+#endif
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			stack[5].s_int = errorColumn;
+			interceptor.Invoke("setContent##$$$", "setContent(QXmlInputSource*, QXmlReader*, QString*, int*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			errorColumn = stack[5].s_int;
+			return stack[0].s_bool;
 		}
-		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, int errorLine) {
-			return (bool) interceptor.Invoke("setContent##$$", "setContent(QXmlInputSource*, QXmlReader*, QString*, int*)", typeof(bool), typeof(QXmlInputSource), source, typeof(QXmlReader), reader, typeof(StringBuilder), errorMsg, typeof(int), errorLine);
+		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, ref int errorLine) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(source);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(source);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(reader);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(reader);
+#endif
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+			stack[4].s_int = errorLine;
+			interceptor.Invoke("setContent##$$", "setContent(QXmlInputSource*, QXmlReader*, QString*, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			errorLine = stack[4].s_int;
+			return stack[0].s_bool;
 		}
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg) {
 			return (bool) interceptor.Invoke("setContent##$", "setContent(QXmlInputSource*, QXmlReader*, QString*)", typeof(bool), typeof(QXmlInputSource), source, typeof(QXmlReader), reader, typeof(StringBuilder), errorMsg);

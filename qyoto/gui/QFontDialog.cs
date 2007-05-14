@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QFontDialog")]
 	public class QFontDialog : QDialog {
@@ -16,20 +17,140 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		public static QFont GetFont(bool ok, QFont def, QWidget parent, string caption) {
-			return (QFont) staticInterceptor.Invoke("getFont$##$", "getFont(bool*, const QFont&, QWidget*, const QString&)", typeof(QFont), typeof(bool), ok, typeof(QFont), def, typeof(QWidget), parent, typeof(string), caption);
+		public static QFont GetFont(ref bool ok, QFont def, QWidget parent, string caption) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_bool = ok;
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(def);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(def);
+#endif
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+#if DEBUG
+			stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(caption);
+#else
+			stack[4].s_class = (IntPtr) GCHandle.Alloc(caption);
+#endif
+			staticInterceptor.Invoke("getFont$##$", "getFont(bool*, const QFont&, QWidget*, const QString&)", stack);
+			ok = stack[1].s_bool;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[4].s_class);
+#else
+			((GCHandle) stack[4].s_class).Free();
+#endif
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QFont) returnValue;
 		}
-		public static QFont GetFont(bool ok, QFont def, QWidget parent) {
-			return (QFont) staticInterceptor.Invoke("getFont$##", "getFont(bool*, const QFont&, QWidget*)", typeof(QFont), typeof(bool), ok, typeof(QFont), def, typeof(QWidget), parent);
+		public static QFont GetFont(ref bool ok, QFont def, QWidget parent) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_bool = ok;
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(def);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(def);
+#endif
+#if DEBUG
+			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+			stack[3].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+			staticInterceptor.Invoke("getFont$##", "getFont(bool*, const QFont&, QWidget*)", stack);
+			ok = stack[1].s_bool;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+			((GCHandle) stack[3].s_class).Free();
+#endif
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QFont) returnValue;
 		}
-		public static QFont GetFont(bool ok, QFont def) {
-			return (QFont) staticInterceptor.Invoke("getFont$#", "getFont(bool*, const QFont&)", typeof(QFont), typeof(bool), ok, typeof(QFont), def);
+		public static QFont GetFont(ref bool ok, QFont def) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(def);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(def);
+#endif
+			staticInterceptor.Invoke("getFont$#", "getFont(bool*, const QFont&)", stack);
+			ok = stack[1].s_bool;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QFont) returnValue;
 		}
-		public static QFont GetFont(bool ok, QWidget parent) {
-			return (QFont) staticInterceptor.Invoke("getFont$#", "getFont(bool*, QWidget*)", typeof(QFont), typeof(bool), ok, typeof(QWidget), parent);
+		public static QFont GetFont(ref bool ok, QWidget parent) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_bool = ok;
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+			staticInterceptor.Invoke("getFont$#", "getFont(bool*, QWidget*)", stack);
+			ok = stack[1].s_bool;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QFont) returnValue;
 		}
-		public static QFont GetFont(bool ok) {
-			return (QFont) staticInterceptor.Invoke("getFont$", "getFont(bool*)", typeof(QFont), typeof(bool), ok);
+		public static QFont GetFont(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			staticInterceptor.Invoke("getFont$", "getFont(bool*)", stack);
+			ok = stack[1].s_bool;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QFont) returnValue;
 		}
 		protected new IQFontDialogSignals Emit {
 			get { return (IQFontDialogSignals) Q_EMIT; }

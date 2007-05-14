@@ -30,7 +30,7 @@ namespace Qyoto {
 			return (QLocale) interceptor.Invoke("locale", "locale() const", typeof(QLocale));
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		public abstract int Validate(StringBuilder arg1, int arg2);
+		public abstract int Validate(StringBuilder arg1, ref int arg2);
 		[SmokeMethod("fixup(QString&) const")]
 		public virtual void Fixup(StringBuilder arg1) {
 			interceptor.Invoke("fixup$", "fixup(QString&) const", typeof(void), typeof(StringBuilder), arg1);

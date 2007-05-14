@@ -231,26 +231,42 @@ namespace Qyoto {
 		public bool IsDetached() {
 			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
-		public int ToInt(bool ok) {
-			return (int) interceptor.Invoke("toInt$", "toInt(bool*) const", typeof(int), typeof(bool), ok);
+		public int ToInt(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toInt$", "toInt(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_int;
 		}
 		public int ToInt() {
 			return (int) interceptor.Invoke("toInt", "toInt() const", typeof(int));
 		}
-		public uint ToUInt(bool ok) {
-			return (uint) interceptor.Invoke("toUInt$", "toUInt(bool*) const", typeof(uint), typeof(bool), ok);
+		public uint ToUInt(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toUInt$", "toUInt(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_uint;
 		}
 		public uint ToUInt() {
 			return (uint) interceptor.Invoke("toUInt", "toUInt() const", typeof(uint));
 		}
-		public long ToLongLong(bool ok) {
-			return (long) interceptor.Invoke("toLongLong$", "toLongLong(bool*) const", typeof(long), typeof(bool), ok);
+		public long ToLongLong(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toLongLong$", "toLongLong(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_long;
 		}
 		public long ToLongLong() {
 			return (long) interceptor.Invoke("toLongLong", "toLongLong() const", typeof(long));
 		}
-		public ulong ToULongLong(bool ok) {
-			return (ulong) interceptor.Invoke("toULongLong$", "toULongLong(bool*) const", typeof(ulong), typeof(bool), ok);
+		public ulong ToULongLong(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toULongLong$", "toULongLong(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_ulong;
 		}
 		public ulong ToULongLong() {
 			return (ulong) interceptor.Invoke("toULongLong", "toULongLong() const", typeof(ulong));
@@ -258,8 +274,12 @@ namespace Qyoto {
 		public bool ToBool() {
 			return (bool) interceptor.Invoke("toBool", "toBool() const", typeof(bool));
 		}
-		public double ToDouble(bool ok) {
-			return (double) interceptor.Invoke("toDouble$", "toDouble(bool*) const", typeof(double), typeof(bool), ok);
+		public double ToDouble(ref bool ok) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = ok;
+			interceptor.Invoke("toDouble$", "toDouble(bool*) const", stack);
+			ok = stack[1].s_bool;
+			return stack[0].s_double;
 		}
 		public double ToDouble() {
 			return (double) interceptor.Invoke("toDouble", "toDouble() const", typeof(double));

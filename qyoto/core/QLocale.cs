@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Collections.Generic;
 
 	[SmokeClass("QLocale")]
@@ -468,68 +469,270 @@ namespace Qyoto {
 		public string Name() {
 			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		public short ToShort(string s, bool ok, int arg3) {
-			return (short) interceptor.Invoke("toShort$$$", "toShort(const QString&, bool*, int) const", typeof(short), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
+		public short ToShort(string s, ref bool ok, int arg3) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("toShort$$$", "toShort(const QString&, bool*, int) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_short;
 		}
-		public short ToShort(string s, bool ok) {
-			return (short) interceptor.Invoke("toShort$$", "toShort(const QString&, bool*) const", typeof(short), typeof(string), s, typeof(bool), ok);
+		public short ToShort(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toShort$$", "toShort(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_short;
 		}
 		public short ToShort(string s) {
 			return (short) interceptor.Invoke("toShort$", "toShort(const QString&) const", typeof(short), typeof(string), s);
 		}
-		public ushort ToUShort(string s, bool ok, int arg3) {
-			return (ushort) interceptor.Invoke("toUShort$$$", "toUShort(const QString&, bool*, int) const", typeof(ushort), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
+		public ushort ToUShort(string s, ref bool ok, int arg3) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("toUShort$$$", "toUShort(const QString&, bool*, int) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_ushort;
 		}
-		public ushort ToUShort(string s, bool ok) {
-			return (ushort) interceptor.Invoke("toUShort$$", "toUShort(const QString&, bool*) const", typeof(ushort), typeof(string), s, typeof(bool), ok);
+		public ushort ToUShort(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toUShort$$", "toUShort(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_ushort;
 		}
 		public ushort ToUShort(string s) {
 			return (ushort) interceptor.Invoke("toUShort$", "toUShort(const QString&) const", typeof(ushort), typeof(string), s);
 		}
-		public int ToInt(string s, bool ok, int arg3) {
-			return (int) interceptor.Invoke("toInt$$$", "toInt(const QString&, bool*, int) const", typeof(int), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
+		public int ToInt(string s, ref bool ok, int arg3) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("toInt$$$", "toInt(const QString&, bool*, int) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_int;
 		}
-		public int ToInt(string s, bool ok) {
-			return (int) interceptor.Invoke("toInt$$", "toInt(const QString&, bool*) const", typeof(int), typeof(string), s, typeof(bool), ok);
+		public int ToInt(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toInt$$", "toInt(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_int;
 		}
 		public int ToInt(string s) {
 			return (int) interceptor.Invoke("toInt$", "toInt(const QString&) const", typeof(int), typeof(string), s);
 		}
-		public uint ToUInt(string s, bool ok, int arg3) {
-			return (uint) interceptor.Invoke("toUInt$$$", "toUInt(const QString&, bool*, int) const", typeof(uint), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
+		public uint ToUInt(string s, ref bool ok, int arg3) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("toUInt$$$", "toUInt(const QString&, bool*, int) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_uint;
 		}
-		public uint ToUInt(string s, bool ok) {
-			return (uint) interceptor.Invoke("toUInt$$", "toUInt(const QString&, bool*) const", typeof(uint), typeof(string), s, typeof(bool), ok);
+		public uint ToUInt(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toUInt$$", "toUInt(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_uint;
 		}
 		public uint ToUInt(string s) {
 			return (uint) interceptor.Invoke("toUInt$", "toUInt(const QString&) const", typeof(uint), typeof(string), s);
 		}
-		public long ToLongLong(string s, bool ok, int arg3) {
-			return (long) interceptor.Invoke("toLongLong$$$", "toLongLong(const QString&, bool*, int) const", typeof(long), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
+		public long ToLongLong(string s, ref bool ok, int arg3) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("toLongLong$$$", "toLongLong(const QString&, bool*, int) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_long;
 		}
-		public long ToLongLong(string s, bool ok) {
-			return (long) interceptor.Invoke("toLongLong$$", "toLongLong(const QString&, bool*) const", typeof(long), typeof(string), s, typeof(bool), ok);
+		public long ToLongLong(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toLongLong$$", "toLongLong(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_long;
 		}
 		public long ToLongLong(string s) {
 			return (long) interceptor.Invoke("toLongLong$", "toLongLong(const QString&) const", typeof(long), typeof(string), s);
 		}
-		public long ToULongLong(string s, bool ok, int arg3) {
-			return (long) interceptor.Invoke("toULongLong$$$", "toULongLong(const QString&, bool*, int) const", typeof(long), typeof(string), s, typeof(bool), ok, typeof(int), arg3);
+		public long ToULongLong(string s, ref bool ok, int arg3) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("toULongLong$$$", "toULongLong(const QString&, bool*, int) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_long;
 		}
-		public long ToULongLong(string s, bool ok) {
-			return (long) interceptor.Invoke("toULongLong$$", "toULongLong(const QString&, bool*) const", typeof(long), typeof(string), s, typeof(bool), ok);
+		public long ToULongLong(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toULongLong$$", "toULongLong(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_long;
 		}
 		public long ToULongLong(string s) {
 			return (long) interceptor.Invoke("toULongLong$", "toULongLong(const QString&) const", typeof(long), typeof(string), s);
 		}
-		public float ToFloat(string s, bool ok) {
-			return (float) interceptor.Invoke("toFloat$$", "toFloat(const QString&, bool*) const", typeof(float), typeof(string), s, typeof(bool), ok);
+		public float ToFloat(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toFloat$$", "toFloat(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_float;
 		}
 		public float ToFloat(string s) {
 			return (float) interceptor.Invoke("toFloat$", "toFloat(const QString&) const", typeof(float), typeof(string), s);
 		}
-		public double ToDouble(string s, bool ok) {
-			return (double) interceptor.Invoke("toDouble$$", "toDouble(const QString&, bool*) const", typeof(double), typeof(string), s, typeof(bool), ok);
+		public double ToDouble(string s, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(s);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(s);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("toDouble$$", "toDouble(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			return stack[0].s_double;
 		}
 		public double ToDouble(string s) {
 			return (double) interceptor.Invoke("toDouble$", "toDouble(const QString&) const", typeof(double), typeof(string), s);

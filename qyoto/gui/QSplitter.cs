@@ -97,8 +97,15 @@ namespace Qyoto {
 		public int Count() {
 			return (int) interceptor.Invoke("count", "count() const", typeof(int));
 		}
-		public void GetRange(int index, int arg2, int arg3) {
-			interceptor.Invoke("getRange$$$", "getRange(int, int*, int*) const", typeof(void), typeof(int), index, typeof(int), arg2, typeof(int), arg3);
+		public void GetRange(int index, ref int arg2, ref int arg3) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_int = index;
+			stack[2].s_int = arg2;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("getRange$$$", "getRange(int, int*, int*) const", stack);
+			arg2 = stack[2].s_int;
+			arg3 = stack[3].s_int;
+			return;
 		}
 		public void SetStretchFactor(int index, int stretch) {
 			interceptor.Invoke("setStretchFactor$$", "setStretchFactor(int, int)", typeof(void), typeof(int), index, typeof(int), stretch);

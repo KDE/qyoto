@@ -154,14 +154,34 @@ namespace Qyoto {
 		public void SetRect(int x, int y, int w, int h) {
 			interceptor.Invoke("setRect$$$$", "setRect(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		public void GetRect(int x, int y, int w, int h) {
-			interceptor.Invoke("getRect$$$$", "getRect(int*, int*, int*, int*) const", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
+		public void GetRect(ref int x, ref int y, ref int w, ref int h) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = x;
+			stack[2].s_int = y;
+			stack[3].s_int = w;
+			stack[4].s_int = h;
+			interceptor.Invoke("getRect$$$$", "getRect(int*, int*, int*, int*) const", stack);
+			x = stack[1].s_int;
+			y = stack[2].s_int;
+			w = stack[3].s_int;
+			h = stack[4].s_int;
+			return;
 		}
 		public void SetCoords(int x1, int y1, int x2, int y2) {
 			interceptor.Invoke("setCoords$$$$", "setCoords(int, int, int, int)", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2);
 		}
-		public void GetCoords(int x1, int y1, int x2, int y2) {
-			interceptor.Invoke("getCoords$$$$", "getCoords(int*, int*, int*, int*) const", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2);
+		public void GetCoords(ref int x1, ref int y1, ref int x2, ref int y2) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = x1;
+			stack[2].s_int = y1;
+			stack[3].s_int = x2;
+			stack[4].s_int = y2;
+			interceptor.Invoke("getCoords$$$$", "getCoords(int*, int*, int*, int*) const", stack);
+			x1 = stack[1].s_int;
+			y1 = stack[2].s_int;
+			x2 = stack[3].s_int;
+			y2 = stack[4].s_int;
+			return;
 		}
 		public void Adjust(int x1, int y1, int x2, int y2) {
 			interceptor.Invoke("adjust$$$$", "adjust(int, int, int, int)", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2);

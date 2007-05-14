@@ -28,11 +28,22 @@ namespace Qyoto {
 		public void Detach() {
 			interceptor.Invoke("detach", "detach()", typeof(void));
 		}
-		public void SetEntries(int count, int colors, int arg3) {
-			interceptor.Invoke("setEntries$?$", "setEntries(int, const QRgb*, int)", typeof(void), typeof(int), count, typeof(int), colors, typeof(int), arg3);
+		public void SetEntries(int count, ref int colors, int arg3) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_int = count;
+			stack[2].s_int = colors;
+			stack[3].s_int = arg3;
+			interceptor.Invoke("setEntries$?$", "setEntries(int, const QRgb*, int)", stack);
+			colors = stack[2].s_int;
+			return;
 		}
-		public void SetEntries(int count, int colors) {
-			interceptor.Invoke("setEntries$?", "setEntries(int, const QRgb*)", typeof(void), typeof(int), count, typeof(int), colors);
+		public void SetEntries(int count, ref int colors) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_int = count;
+			stack[2].s_int = colors;
+			interceptor.Invoke("setEntries$?", "setEntries(int, const QRgb*)", stack);
+			colors = stack[2].s_int;
+			return;
 		}
 		public void SetEntry(int idx, uint color) {
 			interceptor.Invoke("setEntry$$", "setEntry(int, QRgb)", typeof(void), typeof(int), idx, typeof(uint), color);

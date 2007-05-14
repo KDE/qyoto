@@ -157,6 +157,8 @@ extern Q_DECL_EXPORT void InstallConstructDictionary(ConstructDict callback);
 extern Q_DECL_EXPORT void InstallAddObjectObjectToDictionary(InvokeMethodFn callback);
 extern Q_DECL_EXPORT void InstallAddIntObjectToDictionary(AddIntObject callback);
 extern Q_DECL_EXPORT void InstallDictionaryToQMap(DictToMap callback);
+extern Q_DECL_EXPORT void InstallListUIntToQListQRgb(GetIntPtr callback);
+extern Q_DECL_EXPORT void InstallAddUIntToListUInt(AddUInt callback);
 
 extern Q_DECL_EXPORT void * ConstructPointerList();
 extern Q_DECL_EXPORT void AddObjectToPointerList(void * ptr, void * obj);

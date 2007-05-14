@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 
 	[SmokeClass("QTransform")]
 	public class QTransform : Object, IDisposable {
@@ -105,8 +106,18 @@ namespace Qyoto {
 		public void SetMatrix(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33) {
 			interceptor.Invoke("setMatrix$$$$$$$$$", "setMatrix(qreal, qreal, qreal, qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), m11, typeof(double), m12, typeof(double), m13, typeof(double), m21, typeof(double), m22, typeof(double), m23, typeof(double), m31, typeof(double), m32, typeof(double), m33);
 		}
-		public QTransform Inverted(bool invertible) {
-			return (QTransform) interceptor.Invoke("inverted$", "inverted(bool*) const", typeof(QTransform), typeof(bool), invertible);
+		public QTransform Inverted(ref bool invertible) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_bool = invertible;
+			interceptor.Invoke("inverted$", "inverted(bool*) const", stack);
+			invertible = stack[1].s_bool;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QTransform) returnValue;
 		}
 		public QTransform Inverted() {
 			return (QTransform) interceptor.Invoke("inverted", "inverted() const", typeof(QTransform));
@@ -181,11 +192,27 @@ namespace Qyoto {
 		public QRectF MapRect(QRectF arg1) {
 			return (QRectF) interceptor.Invoke("mapRect#", "mapRect(const QRectF&) const", typeof(QRectF), typeof(QRectF), arg1);
 		}
-		public void Map(int x, int y, int tx, int ty) {
-			interceptor.Invoke("map$$$$", "map(int, int, int*, int*) const", typeof(void), typeof(int), x, typeof(int), y, typeof(int), tx, typeof(int), ty);
+		public void Map(int x, int y, ref int tx, ref int ty) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = x;
+			stack[2].s_int = y;
+			stack[3].s_int = tx;
+			stack[4].s_int = ty;
+			interceptor.Invoke("map$$$$", "map(int, int, int*, int*) const", stack);
+			tx = stack[3].s_int;
+			ty = stack[4].s_int;
+			return;
 		}
-		public void Map(double x, double y, double tx, double ty) {
-			interceptor.Invoke("map$$$$", "map(qreal, qreal, qreal*, qreal*) const", typeof(void), typeof(double), x, typeof(double), y, typeof(double), tx, typeof(double), ty);
+		public void Map(double x, double y, ref double tx, ref double ty) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = x;
+			stack[2].s_double = y;
+			stack[3].s_double = tx;
+			stack[4].s_double = ty;
+			interceptor.Invoke("map$$$$", "map(qreal, qreal, qreal*, qreal*) const", stack);
+			tx = stack[3].s_double;
+			ty = stack[4].s_double;
+			return;
 		}
 		public QMatrix ToAffine() {
 			return (QMatrix) interceptor.Invoke("toAffine", "toAffine() const", typeof(QMatrix));

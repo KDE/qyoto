@@ -57,8 +57,13 @@ namespace Qyoto {
 		public bool SetSocketDescriptor(int socketDescriptor) {
 			return (bool) interceptor.Invoke("setSocketDescriptor$", "setSocketDescriptor(int)", typeof(bool), typeof(int), socketDescriptor);
 		}
-		public bool WaitForNewConnection(int msec, bool timedOut) {
-			return (bool) interceptor.Invoke("waitForNewConnection$$", "waitForNewConnection(int, bool*)", typeof(bool), typeof(int), msec, typeof(bool), timedOut);
+		public bool WaitForNewConnection(int msec, ref bool timedOut) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_int = msec;
+			stack[2].s_bool = timedOut;
+			interceptor.Invoke("waitForNewConnection$$", "waitForNewConnection(int, bool*)", stack);
+			timedOut = stack[2].s_bool;
+			return stack[0].s_bool;
 		}
 		public bool WaitForNewConnection(int msec) {
 			return (bool) interceptor.Invoke("waitForNewConnection$", "waitForNewConnection(int)", typeof(bool), typeof(int), msec);

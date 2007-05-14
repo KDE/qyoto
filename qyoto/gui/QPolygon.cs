@@ -41,9 +41,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QPolygon#", "QPolygon(const QRect&)", typeof(void), typeof(QRect), r);
 		}
-		public QPolygon(int nPoints, int points) : this((Type) null) {
+		public QPolygon(int nPoints, ref int points) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QPolygon$$", "QPolygon(int, const int*)", typeof(void), typeof(int), nPoints, typeof(int), points);
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_int = nPoints;
+			stack[2].s_int = points;
+			interceptor.Invoke("QPolygon$$", "QPolygon(int, const int*)", stack);
+			points = stack[2].s_int;
+			return;
 		}
 		public void Translate(int dx, int dy) {
 			interceptor.Invoke("translate$$", "translate(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
@@ -54,8 +59,15 @@ namespace Qyoto {
 		public QRect BoundingRect() {
 			return (QRect) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRect));
 		}
-		public void Point(int i, int x, int y) {
-			interceptor.Invoke("point$$$", "point(int, int*, int*) const", typeof(void), typeof(int), i, typeof(int), x, typeof(int), y);
+		public void Point(int i, ref int x, ref int y) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_int = i;
+			stack[2].s_int = x;
+			stack[3].s_int = y;
+			interceptor.Invoke("point$$$", "point(int, int*, int*) const", stack);
+			x = stack[2].s_int;
+			y = stack[3].s_int;
+			return;
 		}
 		public QPoint Point(int i) {
 			return (QPoint) interceptor.Invoke("point$", "point(int) const", typeof(QPoint), typeof(int), i);
@@ -66,11 +78,22 @@ namespace Qyoto {
 		public void SetPoint(int index, QPoint p) {
 			interceptor.Invoke("setPoint$#", "setPoint(int, const QPoint&)", typeof(void), typeof(int), index, typeof(QPoint), p);
 		}
-		public void SetPoints(int nPoints, int points) {
-			interceptor.Invoke("setPoints$$", "setPoints(int, const int*)", typeof(void), typeof(int), nPoints, typeof(int), points);
+		public void SetPoints(int nPoints, ref int points) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_int = nPoints;
+			stack[2].s_int = points;
+			interceptor.Invoke("setPoints$$", "setPoints(int, const int*)", stack);
+			points = stack[2].s_int;
+			return;
 		}
-		public void PutPoints(int index, int nPoints, int points) {
-			interceptor.Invoke("putPoints$$$", "putPoints(int, int, const int*)", typeof(void), typeof(int), index, typeof(int), nPoints, typeof(int), points);
+		public void PutPoints(int index, int nPoints, ref int points) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_int = index;
+			stack[2].s_int = nPoints;
+			stack[3].s_int = points;
+			interceptor.Invoke("putPoints$$$", "putPoints(int, int, const int*)", stack);
+			points = stack[3].s_int;
+			return;
 		}
 		public void PutPoints(int index, int nPoints, QPolygon from, int fromIndex) {
 			interceptor.Invoke("putPoints$$#$", "putPoints(int, int, const QPolygon&, int)", typeof(void), typeof(int), index, typeof(int), nPoints, typeof(QPolygon), from, typeof(int), fromIndex);

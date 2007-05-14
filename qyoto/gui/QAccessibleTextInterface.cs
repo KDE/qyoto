@@ -15,7 +15,7 @@ namespace Qyoto {
 		[SmokeMethod("addSelection(int, int)")]
 		public abstract void AddSelection(int startOffset, int endOffset);
 		[SmokeMethod("attributes(int, int*, int*)")]
-		public abstract string Attributes(int offset, int startOffset, int endOffset);
+		public abstract string Attributes(int offset, ref int startOffset, ref int endOffset);
 		[SmokeMethod("cursorPosition()")]
 		public abstract int CursorPosition();
 		[SmokeMethod("characterRect(int, QAccessible2::CoordinateType)")]
@@ -25,15 +25,15 @@ namespace Qyoto {
 		[SmokeMethod("offsetAtPoint(const QPoint&, QAccessible2::CoordinateType)")]
 		public abstract int OffsetAtPoint(QPoint point, QAccessible2.CoordinateType coordType);
 		[SmokeMethod("selection(int, int*, int*)")]
-		public abstract void Selection(int selectionIndex, int startOffset, int endOffset);
+		public abstract void Selection(int selectionIndex, ref int startOffset, ref int endOffset);
 		[SmokeMethod("text(int, int)")]
 		public abstract string Text(int startOffset, int endOffset);
 		[SmokeMethod("textBeforeOffset(int, QAccessible2::BoundaryType, int*, int*)")]
-		public abstract string TextBeforeOffset(int offset, QAccessible2.BoundaryType boundaryType, int startOffset, int endOffset);
+		public abstract string TextBeforeOffset(int offset, QAccessible2.BoundaryType boundaryType, ref int startOffset, ref int endOffset);
 		[SmokeMethod("textAfterOffset(int, QAccessible2::BoundaryType, int*, int*)")]
-		public abstract string TextAfterOffset(int offset, QAccessible2.BoundaryType boundaryType, int startOffset, int endOffset);
+		public abstract string TextAfterOffset(int offset, QAccessible2.BoundaryType boundaryType, ref int startOffset, ref int endOffset);
 		[SmokeMethod("textAtOffset(int, QAccessible2::BoundaryType, int*, int*)")]
-		public abstract string TextAtOffset(int offset, QAccessible2.BoundaryType boundaryType, int startOffset, int endOffset);
+		public abstract string TextAtOffset(int offset, QAccessible2.BoundaryType boundaryType, ref int startOffset, ref int endOffset);
 		[SmokeMethod("removeSelection(int)")]
 		public abstract void RemoveSelection(int selectionIndex);
 		[SmokeMethod("setCursorPosition(int)")]

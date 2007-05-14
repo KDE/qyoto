@@ -115,11 +115,29 @@ namespace Qyoto {
 		public void SetBlueF(double blue) {
 			interceptor.Invoke("setBlueF$", "setBlueF(qreal)", typeof(void), typeof(double), blue);
 		}
-		public void GetRgb(int r, int g, int b, int a) {
-			interceptor.Invoke("getRgb$$$$", "getRgb(int*, int*, int*, int*) const", typeof(void), typeof(int), r, typeof(int), g, typeof(int), b, typeof(int), a);
+		public void GetRgb(ref int r, ref int g, ref int b, ref int a) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = r;
+			stack[2].s_int = g;
+			stack[3].s_int = b;
+			stack[4].s_int = a;
+			interceptor.Invoke("getRgb$$$$", "getRgb(int*, int*, int*, int*) const", stack);
+			r = stack[1].s_int;
+			g = stack[2].s_int;
+			b = stack[3].s_int;
+			a = stack[4].s_int;
+			return;
 		}
-		public void GetRgb(int r, int g, int b) {
-			interceptor.Invoke("getRgb$$$", "getRgb(int*, int*, int*) const", typeof(void), typeof(int), r, typeof(int), g, typeof(int), b);
+		public void GetRgb(ref int r, ref int g, ref int b) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_int = r;
+			stack[2].s_int = g;
+			stack[3].s_int = b;
+			interceptor.Invoke("getRgb$$$", "getRgb(int*, int*, int*) const", stack);
+			r = stack[1].s_int;
+			g = stack[2].s_int;
+			b = stack[3].s_int;
+			return;
 		}
 		public void SetRgb(int r, int g, int b, int a) {
 			interceptor.Invoke("setRgb$$$$", "setRgb(int, int, int, int)", typeof(void), typeof(int), r, typeof(int), g, typeof(int), b, typeof(int), a);
@@ -127,11 +145,29 @@ namespace Qyoto {
 		public void SetRgb(int r, int g, int b) {
 			interceptor.Invoke("setRgb$$$", "setRgb(int, int, int)", typeof(void), typeof(int), r, typeof(int), g, typeof(int), b);
 		}
-		public void GetRgbF(double r, double g, double b, double a) {
-			interceptor.Invoke("getRgbF$$$$", "getRgbF(qreal*, qreal*, qreal*, qreal*) const", typeof(void), typeof(double), r, typeof(double), g, typeof(double), b, typeof(double), a);
+		public void GetRgbF(ref double r, ref double g, ref double b, ref double a) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = r;
+			stack[2].s_double = g;
+			stack[3].s_double = b;
+			stack[4].s_double = a;
+			interceptor.Invoke("getRgbF$$$$", "getRgbF(qreal*, qreal*, qreal*, qreal*) const", stack);
+			r = stack[1].s_double;
+			g = stack[2].s_double;
+			b = stack[3].s_double;
+			a = stack[4].s_double;
+			return;
 		}
-		public void GetRgbF(double r, double g, double b) {
-			interceptor.Invoke("getRgbF$$$", "getRgbF(qreal*, qreal*, qreal*) const", typeof(void), typeof(double), r, typeof(double), g, typeof(double), b);
+		public void GetRgbF(ref double r, ref double g, ref double b) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_double = r;
+			stack[2].s_double = g;
+			stack[3].s_double = b;
+			interceptor.Invoke("getRgbF$$$", "getRgbF(qreal*, qreal*, qreal*) const", stack);
+			r = stack[1].s_double;
+			g = stack[2].s_double;
+			b = stack[3].s_double;
+			return;
 		}
 		public void SetRgbF(double r, double g, double b, double a) {
 			interceptor.Invoke("setRgbF$$$$", "setRgbF(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), r, typeof(double), g, typeof(double), b, typeof(double), a);
@@ -169,11 +205,29 @@ namespace Qyoto {
 		public double ValueF() {
 			return (double) interceptor.Invoke("valueF", "valueF() const", typeof(double));
 		}
-		public void GetHsv(int h, int s, int v, int a) {
-			interceptor.Invoke("getHsv$$$$", "getHsv(int*, int*, int*, int*) const", typeof(void), typeof(int), h, typeof(int), s, typeof(int), v, typeof(int), a);
+		public void GetHsv(ref int h, ref int s, ref int v, ref int a) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = h;
+			stack[2].s_int = s;
+			stack[3].s_int = v;
+			stack[4].s_int = a;
+			interceptor.Invoke("getHsv$$$$", "getHsv(int*, int*, int*, int*) const", stack);
+			h = stack[1].s_int;
+			s = stack[2].s_int;
+			v = stack[3].s_int;
+			a = stack[4].s_int;
+			return;
 		}
-		public void GetHsv(int h, int s, int v) {
-			interceptor.Invoke("getHsv$$$", "getHsv(int*, int*, int*) const", typeof(void), typeof(int), h, typeof(int), s, typeof(int), v);
+		public void GetHsv(ref int h, ref int s, ref int v) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_int = h;
+			stack[2].s_int = s;
+			stack[3].s_int = v;
+			interceptor.Invoke("getHsv$$$", "getHsv(int*, int*, int*) const", stack);
+			h = stack[1].s_int;
+			s = stack[2].s_int;
+			v = stack[3].s_int;
+			return;
 		}
 		public void SetHsv(int h, int s, int v, int a) {
 			interceptor.Invoke("setHsv$$$$", "setHsv(int, int, int, int)", typeof(void), typeof(int), h, typeof(int), s, typeof(int), v, typeof(int), a);
@@ -181,11 +235,29 @@ namespace Qyoto {
 		public void SetHsv(int h, int s, int v) {
 			interceptor.Invoke("setHsv$$$", "setHsv(int, int, int)", typeof(void), typeof(int), h, typeof(int), s, typeof(int), v);
 		}
-		public void GetHsvF(double h, double s, double v, double a) {
-			interceptor.Invoke("getHsvF$$$$", "getHsvF(qreal*, qreal*, qreal*, qreal*) const", typeof(void), typeof(double), h, typeof(double), s, typeof(double), v, typeof(double), a);
+		public void GetHsvF(ref double h, ref double s, ref double v, ref double a) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = h;
+			stack[2].s_double = s;
+			stack[3].s_double = v;
+			stack[4].s_double = a;
+			interceptor.Invoke("getHsvF$$$$", "getHsvF(qreal*, qreal*, qreal*, qreal*) const", stack);
+			h = stack[1].s_double;
+			s = stack[2].s_double;
+			v = stack[3].s_double;
+			a = stack[4].s_double;
+			return;
 		}
-		public void GetHsvF(double h, double s, double v) {
-			interceptor.Invoke("getHsvF$$$", "getHsvF(qreal*, qreal*, qreal*) const", typeof(void), typeof(double), h, typeof(double), s, typeof(double), v);
+		public void GetHsvF(ref double h, ref double s, ref double v) {
+			StackItem[] stack = new StackItem[4];
+			stack[1].s_double = h;
+			stack[2].s_double = s;
+			stack[3].s_double = v;
+			interceptor.Invoke("getHsvF$$$", "getHsvF(qreal*, qreal*, qreal*) const", stack);
+			h = stack[1].s_double;
+			s = stack[2].s_double;
+			v = stack[3].s_double;
+			return;
 		}
 		public void SetHsvF(double h, double s, double v, double a) {
 			interceptor.Invoke("setHsvF$$$$", "setHsvF(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), h, typeof(double), s, typeof(double), v, typeof(double), a);
@@ -217,11 +289,33 @@ namespace Qyoto {
 		public double BlackF() {
 			return (double) interceptor.Invoke("blackF", "blackF() const", typeof(double));
 		}
-		public void GetCmyk(int c, int m, int y, int k, int a) {
-			interceptor.Invoke("getCmyk$$$$$", "getCmyk(int*, int*, int*, int*, int*)", typeof(void), typeof(int), c, typeof(int), m, typeof(int), y, typeof(int), k, typeof(int), a);
+		public void GetCmyk(ref int c, ref int m, ref int y, ref int k, ref int a) {
+			StackItem[] stack = new StackItem[6];
+			stack[1].s_int = c;
+			stack[2].s_int = m;
+			stack[3].s_int = y;
+			stack[4].s_int = k;
+			stack[5].s_int = a;
+			interceptor.Invoke("getCmyk$$$$$", "getCmyk(int*, int*, int*, int*, int*)", stack);
+			c = stack[1].s_int;
+			m = stack[2].s_int;
+			y = stack[3].s_int;
+			k = stack[4].s_int;
+			a = stack[5].s_int;
+			return;
 		}
-		public void GetCmyk(int c, int m, int y, int k) {
-			interceptor.Invoke("getCmyk$$$$", "getCmyk(int*, int*, int*, int*)", typeof(void), typeof(int), c, typeof(int), m, typeof(int), y, typeof(int), k);
+		public void GetCmyk(ref int c, ref int m, ref int y, ref int k) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = c;
+			stack[2].s_int = m;
+			stack[3].s_int = y;
+			stack[4].s_int = k;
+			interceptor.Invoke("getCmyk$$$$", "getCmyk(int*, int*, int*, int*)", stack);
+			c = stack[1].s_int;
+			m = stack[2].s_int;
+			y = stack[3].s_int;
+			k = stack[4].s_int;
+			return;
 		}
 		public void SetCmyk(int c, int m, int y, int k, int a) {
 			interceptor.Invoke("setCmyk$$$$$", "setCmyk(int, int, int, int, int)", typeof(void), typeof(int), c, typeof(int), m, typeof(int), y, typeof(int), k, typeof(int), a);
@@ -229,11 +323,33 @@ namespace Qyoto {
 		public void SetCmyk(int c, int m, int y, int k) {
 			interceptor.Invoke("setCmyk$$$$", "setCmyk(int, int, int, int)", typeof(void), typeof(int), c, typeof(int), m, typeof(int), y, typeof(int), k);
 		}
-		public void GetCmykF(double c, double m, double y, double k, double a) {
-			interceptor.Invoke("getCmykF$$$$$", "getCmykF(qreal*, qreal*, qreal*, qreal*, qreal*)", typeof(void), typeof(double), c, typeof(double), m, typeof(double), y, typeof(double), k, typeof(double), a);
+		public void GetCmykF(ref double c, ref double m, ref double y, ref double k, ref double a) {
+			StackItem[] stack = new StackItem[6];
+			stack[1].s_double = c;
+			stack[2].s_double = m;
+			stack[3].s_double = y;
+			stack[4].s_double = k;
+			stack[5].s_double = a;
+			interceptor.Invoke("getCmykF$$$$$", "getCmykF(qreal*, qreal*, qreal*, qreal*, qreal*)", stack);
+			c = stack[1].s_double;
+			m = stack[2].s_double;
+			y = stack[3].s_double;
+			k = stack[4].s_double;
+			a = stack[5].s_double;
+			return;
 		}
-		public void GetCmykF(double c, double m, double y, double k) {
-			interceptor.Invoke("getCmykF$$$$", "getCmykF(qreal*, qreal*, qreal*, qreal*)", typeof(void), typeof(double), c, typeof(double), m, typeof(double), y, typeof(double), k);
+		public void GetCmykF(ref double c, ref double m, ref double y, ref double k) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = c;
+			stack[2].s_double = m;
+			stack[3].s_double = y;
+			stack[4].s_double = k;
+			interceptor.Invoke("getCmykF$$$$", "getCmykF(qreal*, qreal*, qreal*, qreal*)", stack);
+			c = stack[1].s_double;
+			m = stack[2].s_double;
+			y = stack[3].s_double;
+			k = stack[4].s_double;
+			return;
 		}
 		public void SetCmykF(double c, double m, double y, double k, double a) {
 			interceptor.Invoke("setCmykF$$$$$", "setCmykF(qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), c, typeof(double), m, typeof(double), y, typeof(double), k, typeof(double), a);

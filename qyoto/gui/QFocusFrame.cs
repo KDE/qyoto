@@ -39,8 +39,8 @@ namespace Qyoto {
 		protected override void PaintEvent(QPaintEvent arg1) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
 		}
-		protected void InitStyleOption(int option) {
-			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOption*) const", typeof(void), typeof(int), option);
+		protected void InitStyleOption(QStyleOption option) {
+			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOption*) const", typeof(void), typeof(QStyleOption), option);
 		}
 		~QFocusFrame() {
 			interceptor.Invoke("~QFocusFrame", "~QFocusFrame()", typeof(void));

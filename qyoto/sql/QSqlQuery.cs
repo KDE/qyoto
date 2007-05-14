@@ -4,51 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	public interface IQSqlQuery {
-		bool IsValid();
-		bool IsActive();
-		bool IsNull(int field);
-		int At();
-		string LastQuery();
-		int NumRowsAffected();
-		QSqlError LastError();
-		bool IsSelect();
-		int Size();
-		QSqlDriver Driver();
-		QSqlResult Result();
-		bool IsForwardOnly();
-		QSqlRecord Record();
-		void SetForwardOnly(bool forward);
-		bool Exec(string query);
-		QVariant Value(int i);
-		void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy precisionPolicy);
-		QSql.NumericalPrecisionPolicy NumericalPrecisionPolicy();
-		bool Seek(int i, bool relative);
-		bool Seek(int i);
-		bool Next();
-		bool Previous();
-		bool First();
-		bool Last();
-		void Clear();
-		bool Exec();
-		bool ExecBatch(QSqlQuery.BatchExecutionMode mode);
-		bool ExecBatch();
-		bool Prepare(string query);
-		void BindValue(string placeholder, QVariant val, int type);
-		void BindValue(string placeholder, QVariant val);
-		void BindValue(int pos, QVariant val, int type);
-		void BindValue(int pos, QVariant val);
-		void AddBindValue(QVariant val, int type);
-		void AddBindValue(QVariant val);
-		QVariant BoundValue(string placeholder);
-		QVariant BoundValue(int pos);
-		Dictionary<string, QVariant> BoundValues();
-		string ExecutedQuery();
-		QVariant LastInsertId();
-	}
-
 	[SmokeClass("QSqlQuery")]
-	public class QSqlQuery : Object, IQSqlQuery, IDisposable {
+	public class QSqlQuery : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QSqlQuery(Type dummy) {}

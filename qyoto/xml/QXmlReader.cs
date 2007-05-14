@@ -15,7 +15,7 @@ namespace Qyoto {
 		// void* property(const QString& arg1); >>>> NOT CONVERTED
 		// void setProperty(const QString& arg1,void* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("feature(const QString&, bool*) const")]
-		public abstract bool Feature(string name, bool ok);
+		public abstract bool Feature(string name, ref bool ok);
 		[SmokeMethod("setFeature(const QString&, bool)")]
 		public abstract void SetFeature(string name, bool value);
 		[SmokeMethod("hasFeature(const QString&) const")]

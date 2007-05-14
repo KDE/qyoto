@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Text;
 	using System.Collections.Generic;
 
@@ -101,8 +102,18 @@ namespace Qyoto {
 		public QDBusArgument Read(bool arg) {
 			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(bool&) const", typeof(QDBusArgument), typeof(bool), arg);
 		}
-		public QDBusArgument Read(int arg) {
-			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(int&) const", typeof(QDBusArgument), typeof(int), arg);
+		public QDBusArgument Read(ref int arg) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_int = arg;
+			interceptor.Invoke("operator>>$", "operator>>(int&) const", stack);
+			arg = stack[1].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QDBusArgument) returnValue;
 		}
 		public QDBusArgument Read(uint arg) {
 			return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(uint&) const", typeof(QDBusArgument), typeof(uint), arg);

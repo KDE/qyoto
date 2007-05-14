@@ -4,63 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	public interface IQUrl {
-		void SetUrl(string url);
-		void SetUrl(string url, QUrl.ParsingMode mode);
-		void SetEncodedUrl(QByteArray url);
-		void SetEncodedUrl(QByteArray url, QUrl.ParsingMode mode);
-		bool IsValid();
-		bool IsEmpty();
-		void Clear();
-		void SetScheme(string scheme);
-		string Scheme();
-		void SetAuthority(string authority);
-		string Authority();
-		void SetUserInfo(string userInfo);
-		string UserInfo();
-		void SetUserName(string userName);
-		string UserName();
-		void SetPassword(string password);
-		string Password();
-		void SetHost(string host);
-		string Host();
-		void SetPort(int port);
-		int Port();
-		int Port(int defaultPort);
-		void SetPath(string path);
-		string Path();
-		bool HasQuery();
-		void SetEncodedQuery(QByteArray query);
-		QByteArray EncodedQuery();
-		void SetQueryDelimiters(char valueDelimiter, char pairDelimiter);
-		char QueryValueDelimiter();
-		char QueryPairDelimiter();
-		void SetQueryItems(List<QPair<string, string>> query);
-		void AddQueryItem(string key, string value);
-		List<QPair<string, string>> QueryItems();
-		bool HasQueryItem(string key);
-		string QueryItemValue(string key);
-		List<string> AllQueryItemValues(string key);
-		void RemoveQueryItem(string key);
-		void RemoveAllQueryItems(string key);
-		void SetFragment(string fragment);
-		string Fragment();
-		bool HasFragment();
-		QUrl Resolved(QUrl relative);
-		bool IsRelative();
-		bool IsParentOf(QUrl url);
-		string ToLocalFile();
-		string ToString(int options);
-		string ToString();
-		QByteArray ToEncoded(int options);
-		QByteArray ToEncoded();
-		void Detach();
-		bool IsDetached();
-		string ErrorString();
-	}
-
 	[SmokeClass("QUrl")]
-	public class QUrl : Object, IQUrl, IDisposable {
+	public class QUrl : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUrl(Type dummy) {}

@@ -132,8 +132,18 @@ namespace Qyoto {
 		public QTextDocumentFragment Selection() {
 			return (QTextDocumentFragment) interceptor.Invoke("selection", "selection() const", typeof(QTextDocumentFragment));
 		}
-		public void SelectedTableCells(int firstRow, int numRows, int firstColumn, int numColumns) {
-			interceptor.Invoke("selectedTableCells$$$$", "selectedTableCells(int*, int*, int*, int*) const", typeof(void), typeof(int), firstRow, typeof(int), numRows, typeof(int), firstColumn, typeof(int), numColumns);
+		public void SelectedTableCells(ref int firstRow, ref int numRows, ref int firstColumn, ref int numColumns) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_int = firstRow;
+			stack[2].s_int = numRows;
+			stack[3].s_int = firstColumn;
+			stack[4].s_int = numColumns;
+			interceptor.Invoke("selectedTableCells$$$$", "selectedTableCells(int*, int*, int*, int*) const", stack);
+			firstRow = stack[1].s_int;
+			numRows = stack[2].s_int;
+			firstColumn = stack[3].s_int;
+			numColumns = stack[4].s_int;
+			return;
 		}
 		public QTextBlock Block() {
 			return (QTextBlock) interceptor.Invoke("block", "block() const", typeof(QTextBlock));

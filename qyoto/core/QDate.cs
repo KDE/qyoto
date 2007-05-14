@@ -50,8 +50,12 @@ namespace Qyoto {
 		public int DaysInYear() {
 			return (int) interceptor.Invoke("daysInYear", "daysInYear() const", typeof(int));
 		}
-		public int WeekNumber(int yearNum) {
-			return (int) interceptor.Invoke("weekNumber$", "weekNumber(int*) const", typeof(int), typeof(int), yearNum);
+		public int WeekNumber(ref int yearNum) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_int = yearNum;
+			interceptor.Invoke("weekNumber$", "weekNumber(int*) const", stack);
+			yearNum = stack[1].s_int;
+			return stack[0].s_int;
 		}
 		public int WeekNumber() {
 			return (int) interceptor.Invoke("weekNumber", "weekNumber() const", typeof(int));
@@ -150,8 +154,17 @@ namespace Qyoto {
 		public static uint GregorianToJulian(int y, int m, int d) {
 			return (uint) staticInterceptor.Invoke("gregorianToJulian$$$", "gregorianToJulian(int, int, int)", typeof(uint), typeof(int), y, typeof(int), m, typeof(int), d);
 		}
-		public static void JulianToGregorian(uint jd, int y, int m, int d) {
-			staticInterceptor.Invoke("julianToGregorian$$$$", "julianToGregorian(uint, int&, int&, int&)", typeof(void), typeof(uint), jd, typeof(int), y, typeof(int), m, typeof(int), d);
+		public static void JulianToGregorian(uint jd, ref int y, ref int m, ref int d) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_uint = jd;
+			stack[2].s_int = y;
+			stack[3].s_int = m;
+			stack[4].s_int = d;
+			staticInterceptor.Invoke("julianToGregorian$$$$", "julianToGregorian(uint, int&, int&, int&)", stack);
+			y = stack[2].s_int;
+			m = stack[3].s_int;
+			d = stack[4].s_int;
+			return;
 		}
 		public static QDate FromJulianDay(int jd) {
 			return (QDate) staticInterceptor.Invoke("fromJulianDay$", "fromJulianDay(int)", typeof(QDate), typeof(int), jd);

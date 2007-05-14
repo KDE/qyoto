@@ -61,7 +61,7 @@ namespace Qyoto {
 		[SmokeMethod("unselectColumn(int)")]
 		public abstract void UnselectColumn(int column);
 		[SmokeMethod("cellAtIndex(int, int*, int*, int*, int*, bool*)")]
-		public abstract void CellAtIndex(int index, int row, int column, int rowSpan, int columnSpan, bool isSelected);
+		public abstract void CellAtIndex(int index, ref int row, ref int column, ref int rowSpan, ref int columnSpan, ref bool isSelected);
 		public QAccessibleTableInterface() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAccessibleTableInterface", "QAccessibleTableInterface()", typeof(void));

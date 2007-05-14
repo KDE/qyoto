@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Text;
 
 	///<remarks> See <see cref="IQDateTimeEditSignals"></see> for signals emitted by QDateTimeEdit
@@ -197,8 +198,22 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		protected new virtual int Validate(StringBuilder input, int pos) {
-			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), input, typeof(int), pos);
+		protected new virtual int Validate(StringBuilder input, ref int pos) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(input);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(input);
+#endif
+			stack[2].s_int = pos;
+			interceptor.Invoke("validate$$", "validate(QString&, int&) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			pos = stack[2].s_int;
+			return stack[0].s_int;
 		}
 		[SmokeMethod("fixup(QString&) const")]
 		protected new virtual void Fixup(StringBuilder input) {

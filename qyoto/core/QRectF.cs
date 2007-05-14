@@ -152,14 +152,34 @@ namespace Qyoto {
 		public void SetRect(double x, double y, double w, double h) {
 			interceptor.Invoke("setRect$$$$", "setRect(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
-		public void GetRect(double x, double y, double w, double h) {
-			interceptor.Invoke("getRect$$$$", "getRect(qreal*, qreal*, qreal*, qreal*) const", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
+		public void GetRect(ref double x, ref double y, ref double w, ref double h) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = x;
+			stack[2].s_double = y;
+			stack[3].s_double = w;
+			stack[4].s_double = h;
+			interceptor.Invoke("getRect$$$$", "getRect(qreal*, qreal*, qreal*, qreal*) const", stack);
+			x = stack[1].s_double;
+			y = stack[2].s_double;
+			w = stack[3].s_double;
+			h = stack[4].s_double;
+			return;
 		}
 		public void SetCoords(double x1, double y1, double x2, double y2) {
 			interceptor.Invoke("setCoords$$$$", "setCoords(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
 		}
-		public void GetCoords(double x1, double y1, double x2, double y2) {
-			interceptor.Invoke("getCoords$$$$", "getCoords(qreal*, qreal*, qreal*, qreal*) const", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
+		public void GetCoords(ref double x1, ref double y1, ref double x2, ref double y2) {
+			StackItem[] stack = new StackItem[5];
+			stack[1].s_double = x1;
+			stack[2].s_double = y1;
+			stack[3].s_double = x2;
+			stack[4].s_double = y2;
+			interceptor.Invoke("getCoords$$$$", "getCoords(qreal*, qreal*, qreal*, qreal*) const", stack);
+			x1 = stack[1].s_double;
+			y1 = stack[2].s_double;
+			x2 = stack[3].s_double;
+			y2 = stack[4].s_double;
+			return;
 		}
 		public void Adjust(double x1, double y1, double x2, double y2) {
 			interceptor.Invoke("adjust$$$$", "adjust(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);

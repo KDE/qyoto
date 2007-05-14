@@ -54,11 +54,26 @@ namespace Qyoto {
 		public QRectF NaturalTextRect() {
 			return (QRectF) interceptor.Invoke("naturalTextRect", "naturalTextRect() const", typeof(QRectF));
 		}
+		public double CursorToX(ref int cursorPos, QTextLine.Edge edge) {
+			StackItem[] stack = new StackItem[3];
+			stack[1].s_int = cursorPos;
+			stack[2].s_int = (int) edge;
+			interceptor.Invoke("cursorToX$$", "cursorToX(int*, QTextLine::Edge) const", stack);
+			cursorPos = stack[1].s_int;
+			return stack[0].s_double;
+		}
+		public double CursorToX(ref int cursorPos) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_int = cursorPos;
+			interceptor.Invoke("cursorToX$", "cursorToX(int*) const", stack);
+			cursorPos = stack[1].s_int;
+			return stack[0].s_double;
+		}
 		public double CursorToX(int cursorPos, QTextLine.Edge edge) {
-			return (double) interceptor.Invoke("cursorToX$$", "cursorToX(int*, QTextLine::Edge) const", typeof(double), typeof(int), cursorPos, typeof(QTextLine.Edge), edge);
+			return (double) interceptor.Invoke("cursorToX$$", "cursorToX(int, QTextLine::Edge) const", typeof(double), typeof(int), cursorPos, typeof(QTextLine.Edge), edge);
 		}
 		public double CursorToX(int cursorPos) {
-			return (double) interceptor.Invoke("cursorToX$", "cursorToX(int*) const", typeof(double), typeof(int), cursorPos);
+			return (double) interceptor.Invoke("cursorToX$", "cursorToX(int) const", typeof(double), typeof(int), cursorPos);
 		}
 		public int XToCursor(double x, QTextLine.CursorPosition arg2) {
 			return (int) interceptor.Invoke("xToCursor$$", "xToCursor(qreal, QTextLine::CursorPosition) const", typeof(int), typeof(double), x, typeof(QTextLine.CursorPosition), arg2);

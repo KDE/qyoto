@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Text;
 
 	[SmokeClass("QIntValidator")]
@@ -33,8 +34,22 @@ namespace Qyoto {
 			interceptor.Invoke("QIntValidator$$#", "QIntValidator(int, int, QObject*)", typeof(void), typeof(int), bottom, typeof(int), top, typeof(QObject), parent);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		public override int Validate(StringBuilder arg1, int arg2) {
-			return (int) interceptor.Invoke("validate$$", "validate(QString&, int&) const", typeof(int), typeof(StringBuilder), arg1, typeof(int), arg2);
+		public override int Validate(StringBuilder arg1, ref int arg2) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(arg1);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(arg1);
+#endif
+			stack[2].s_int = arg2;
+			interceptor.Invoke("validate$$", "validate(QString&, int&) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			arg2 = stack[2].s_int;
+			return stack[0].s_int;
 		}
 		[SmokeMethod("setRange(int, int)")]
 		public virtual void SetRange(int bottom, int top) {
