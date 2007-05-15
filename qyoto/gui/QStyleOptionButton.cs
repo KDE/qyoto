@@ -21,6 +21,7 @@ namespace Qyoto {
 			HasMenu = 0x02,
 			DefaultButton = 0x04,
 			AutoDefaultButton = 0x08,
+			CommandLinkButton = 0x10,
 		}
 		public QStyleOptionButton() : this((Type) null) {
 			CreateProxy();

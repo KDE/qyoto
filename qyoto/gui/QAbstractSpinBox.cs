@@ -32,11 +32,6 @@ namespace Qyoto {
 			CorrectToPreviousValue = 0,
 			CorrectToNearestValue = 1,
 		}
-		[Q_PROPERTY("bool", "modified")]
-		public bool Modified {
-			get { return (bool) interceptor.Invoke("isModified", "isModified()", typeof(bool)); }
-			set { interceptor.Invoke("setModified$", "setModified(bool)", typeof(void), typeof(bool), value); }
-		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
 			get { return (bool) interceptor.Invoke("wrapping", "wrapping()", typeof(bool)); }
@@ -81,17 +76,14 @@ namespace Qyoto {
 			get { return (QAbstractSpinBox.CorrectionMode) interceptor.Invoke("correctionMode", "correctionMode()", typeof(QAbstractSpinBox.CorrectionMode)); }
 			set { interceptor.Invoke("setCorrectionMode$", "setCorrectionMode(QAbstractSpinBox::CorrectionMode)", typeof(void), typeof(QAbstractSpinBox.CorrectionMode), value); }
 		}
-		[Q_PROPERTY("bool", "undoAvailable")]
-		public bool UndoAvailable {
-			get { return (bool) interceptor.Invoke("isUndoAvailable", "isUndoAvailable()", typeof(bool)); }
-		}
-		[Q_PROPERTY("bool", "redoAvailable")]
-		public bool RedoAvailable {
-			get { return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable()", typeof(bool)); }
-		}
 		[Q_PROPERTY("bool", "acceptableInput")]
 		public bool AcceptableInput {
 			get { return (bool) interceptor.Invoke("hasAcceptableInput", "hasAcceptableInput()", typeof(bool)); }
+		}
+		[Q_PROPERTY("bool", "keyboardTracking")]
+		public bool KeyboardTracking {
+			get { return (bool) interceptor.Invoke("keyboardTracking", "keyboardTracking()", typeof(bool)); }
+			set { interceptor.Invoke("setKeyboardTracking$", "setKeyboardTracking(bool)", typeof(void), typeof(bool), value); }
 		}
 		public QAbstractSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -158,14 +150,6 @@ namespace Qyoto {
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
-		}
-		[Q_SLOT("void undo()")]
-		public void Undo() {
-			interceptor.Invoke("undo", "undo()", typeof(void));
-		}
-		[Q_SLOT("void redo()")]
-		public void Redo() {
-			interceptor.Invoke("redo", "redo()", typeof(void));
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {

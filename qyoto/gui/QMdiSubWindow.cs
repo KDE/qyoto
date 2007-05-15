@@ -121,6 +121,14 @@ namespace Qyoto {
 		protected override void ResizeEvent(QResizeEvent resizeEvent) {
 			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), resizeEvent);
 		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
+		protected override void TimerEvent(QTimerEvent timerEvent) {
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), timerEvent);
+		}
+		[SmokeMethod("moveEvent(QMoveEvent*)")]
+		protected override void MoveEvent(QMoveEvent moveEvent) {
+			interceptor.Invoke("moveEvent#", "moveEvent(QMoveEvent*)", typeof(void), typeof(QMoveEvent), moveEvent);
+		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent paintEvent) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), paintEvent);

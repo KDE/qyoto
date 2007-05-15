@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAbstractProxyModel")]
 	public abstract class QAbstractProxyModel : QAbstractItemModel {
@@ -59,6 +60,10 @@ namespace Qyoto {
 		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
 			return (QVariant) interceptor.Invoke("headerData$$$", "headerData(int, Qt::Orientation, int) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(int), role);
+		}
+		[SmokeMethod("itemData(const QModelIndex&) const")]
+		public override Dictionary<int, QVariant> ItemData(QModelIndex index) {
+			return (Dictionary<int, QVariant>) interceptor.Invoke("itemData#", "itemData(const QModelIndex&) const", typeof(Dictionary<int, QVariant>), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
 		public override int Flags(QModelIndex index) {

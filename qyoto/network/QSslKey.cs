@@ -15,21 +15,41 @@ namespace Qyoto {
 		static QSslKey() {
 			staticInterceptor = new SmokeInvocation(typeof(QSslKey), null);
 		}
-		public enum TypeOf {
-			PrivateKey = 0,
-			PublicKey = 1,
-		}
-		public enum Algorithm {
-			Rsa = 0,
-			Dsa = 1,
-		}
-		public QSslKey(QByteArray encoded) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("QSslKey#", "QSslKey(const QByteArray&)", typeof(void), typeof(QByteArray), encoded);
-		}
 		public QSslKey() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslKey", "QSslKey()", typeof(void));
+		}
+		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type, QByteArray passPhrase) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$$$#", "QSslKey(const QByteArray&, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType, const QByteArray&)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type, typeof(QByteArray), passPhrase);
+		}
+		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$$$", "QSslKey(const QByteArray&, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type);
+		}
+		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm, QSsl.EncodingFormat format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$$", "QSslKey(const QByteArray&, QSsl::Algorithm, QSsl::EncodingFormat)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format);
+		}
+		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$", "QSslKey(const QByteArray&, QSsl::Algorithm)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm);
+		}
+		public QSslKey(QIODevice device, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type, QByteArray passPhrase) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$$$#", "QSslKey(QIODevice*, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType, const QByteArray&)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type, typeof(QByteArray), passPhrase);
+		}
+		public QSslKey(QIODevice device, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$$$", "QSslKey(QIODevice*, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type);
+		}
+		public QSslKey(QIODevice device, QSsl.Algorithm algorithm, QSsl.EncodingFormat format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$$", "QSslKey(QIODevice*, QSsl::Algorithm, QSsl::EncodingFormat)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format);
+		}
+		public QSslKey(QIODevice device, QSsl.Algorithm algorithm) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslKey#$", "QSslKey(QIODevice*, QSsl::Algorithm)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm);
 		}
 		public QSslKey(QSslKey other) : this((Type) null) {
 			CreateProxy();
@@ -44,14 +64,11 @@ namespace Qyoto {
 		public int Length() {
 			return (int) interceptor.Invoke("length", "length() const", typeof(int));
 		}
-		public char[] Data() {
-			return (char[]) interceptor.Invoke("data", "data() const", typeof(char[]));
+		public QSsl.KeyType type() {
+			return (QSsl.KeyType) interceptor.Invoke("type", "type() const", typeof(QSsl.KeyType));
 		}
-		public QSslKey.TypeOf type() {
-			return (QSslKey.TypeOf) interceptor.Invoke("type", "type() const", typeof(QSslKey.TypeOf));
-		}
-		public QSslKey.Algorithm algorithm() {
-			return (QSslKey.Algorithm) interceptor.Invoke("algorithm", "algorithm() const", typeof(QSslKey.Algorithm));
+		public QSsl.Algorithm Algorithm() {
+			return (QSsl.Algorithm) interceptor.Invoke("algorithm", "algorithm() const", typeof(QSsl.Algorithm));
 		}
 		public QByteArray ToPem(QByteArray passPhrase) {
 			return (QByteArray) interceptor.Invoke("toPem#", "toPem(const QByteArray&) const", typeof(QByteArray), typeof(QByteArray), passPhrase);
@@ -65,14 +82,24 @@ namespace Qyoto {
 		public QByteArray ToDer() {
 			return (QByteArray) interceptor.Invoke("toDer", "toDer() const", typeof(QByteArray));
 		}
+		public override bool Equals(object o) {
+			if (!(o is QSslKey)) { return false; }
+			return this == (QSslKey) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		~QSslKey() {
 			interceptor.Invoke("~QSslKey", "~QSslKey()", typeof(void));
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QSslKey", "~QSslKey()", typeof(void));
 		}
-		public static QPair<QSslKey, QSslKey> GenerateKeyPair(QSslKey.Algorithm algorithm, int keyLength) {
-			return (QPair<QSslKey, QSslKey>) staticInterceptor.Invoke("generateKeyPair$$", "generateKeyPair(QSslKey::Algorithm, int)", typeof(QPair<QSslKey, QSslKey>), typeof(QSslKey.Algorithm), algorithm, typeof(int), keyLength);
+		public static bool operator==(QSslKey lhs, QSslKey key) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QSslKey&) const", typeof(bool), typeof(QSslKey), lhs, typeof(QSslKey), key);
+		}
+		public static bool operator!=(QSslKey lhs, QSslKey key) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSslKey&) const", typeof(bool), typeof(QSslKey), lhs, typeof(QSslKey), key);
 		}
 	}
 }

@@ -1,3 +1,10 @@
+2007-05-15  Richard Dale  <rdale@foton.es>
+
+	* Regenerated the Qyoto sources from the current qt-copy snapshot as 
+	  there have been quite a few changes
+	* Added a QSsl class with enums, but this should really be a C# namespace
+	  as the C++ version is a namespace.
+
 2007-05-14  Richard Dale  <rdale@foton.es>
 
 	* Added code generation for 'ref' argument types

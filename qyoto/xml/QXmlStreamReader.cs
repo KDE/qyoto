@@ -27,11 +27,10 @@ namespace Qyoto {
 		}
 		public enum Error {
 			NoError = 0,
-			CustomError = 1,
-			UnexpectedElementError = 2,
-			InvalidDocumentError = 3,
-			XmlNotWellFormedError = 4,
-			PrematureEndOfDocumentError = 5,
+			UnexpectedElementError = 1,
+			CustomError = 2,
+			NotWellFormedError = 3,
+			PrematureEndOfDocumentError = 4,
 		}
 		public QXmlStreamReader() : this((Type) null) {
 			CreateProxy();
@@ -171,6 +170,9 @@ namespace Qyoto {
 		}
 		public QXmlStreamReader.Error error() {
 			return (QXmlStreamReader.Error) interceptor.Invoke("error", "error() const", typeof(QXmlStreamReader.Error));
+		}
+		public bool HasError() {
+			return (bool) interceptor.Invoke("hasError", "hasError() const", typeof(bool));
 		}
 		~QXmlStreamReader() {
 			interceptor.Invoke("~QXmlStreamReader", "~QXmlStreamReader()", typeof(void));

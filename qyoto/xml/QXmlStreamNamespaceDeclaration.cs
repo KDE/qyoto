@@ -43,10 +43,10 @@ namespace Qyoto {
 			interceptor.Invoke("~QXmlStreamNamespaceDeclaration", "~QXmlStreamNamespaceDeclaration()", typeof(void));
 		}
 		public static bool operator==(QXmlStreamNamespaceDeclaration lhs, QXmlStreamNamespaceDeclaration other) {
-			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamNamespaceDeclaration&)", typeof(bool), typeof(QXmlStreamNamespaceDeclaration), lhs, typeof(QXmlStreamNamespaceDeclaration), other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamNamespaceDeclaration&) const", typeof(bool), typeof(QXmlStreamNamespaceDeclaration), lhs, typeof(QXmlStreamNamespaceDeclaration), other);
 		}
 		public static bool operator!=(QXmlStreamNamespaceDeclaration lhs, QXmlStreamNamespaceDeclaration other) {
-			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamNamespaceDeclaration&)", typeof(bool), typeof(QXmlStreamNamespaceDeclaration), lhs, typeof(QXmlStreamNamespaceDeclaration), other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamNamespaceDeclaration&) const", typeof(bool), typeof(QXmlStreamNamespaceDeclaration), lhs, typeof(QXmlStreamNamespaceDeclaration), other);
 		}
 	}
 }

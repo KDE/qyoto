@@ -29,8 +29,7 @@ namespace Qyoto {
 		public virtual QModelIndex Index(int row, int column) {
 			return (QModelIndex) interceptor.Invoke("index$$", "index(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("index(int) const")]
-		public virtual QModelIndex Index(int row) {
+		public QModelIndex Index(int row) {
 			return (QModelIndex) interceptor.Invoke("index$", "index(int) const", typeof(QModelIndex), typeof(int), row);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]

@@ -16,11 +16,13 @@ namespace Qyoto {
 		static QTransform() {
 			staticInterceptor = new SmokeInvocation(typeof(QTransform), null);
 		}
-		public enum TransformationCodes {
-			TxNone = 0,
-			TxTranslate = 1,
-			TxScale = 2,
-			TxRotShear = 3,
+		public enum TransformationType {
+			TxNone = 0x00,
+			TxTranslate = 0x01,
+			TxScale = 0x02,
+			TxRotate = 0x04,
+			TxShear = 0x08,
+			TxProject = 0x10,
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QTransform() : this((Type) null) {
@@ -61,8 +63,8 @@ namespace Qyoto {
 		public bool IsTranslating() {
 			return (bool) interceptor.Invoke("isTranslating", "isTranslating() const", typeof(bool));
 		}
-		public int type() {
-			return (int) interceptor.Invoke("type", "type() const", typeof(int));
+		public QTransform.TransformationType type() {
+			return (QTransform.TransformationType) interceptor.Invoke("type", "type() const", typeof(QTransform.TransformationType));
 		}
 		public double Determinant() {
 			return (double) interceptor.Invoke("determinant", "determinant() const", typeof(double));
@@ -232,8 +234,11 @@ namespace Qyoto {
 		public static QTransform operator*(QTransform lhs, QTransform arg1) {
 			return (QTransform) staticInterceptor.Invoke("operator*=#", "operator*=(const QTransform&)", typeof(QTransform), typeof(QTransform), lhs, typeof(QTransform), arg1);
 		}
-		public static QTransform operator/(QTransform lhs, double o) {
-			return (QTransform) staticInterceptor.Invoke("operator/$", "operator/(qreal)", typeof(QTransform), typeof(QTransform), lhs, typeof(double), o);
+		public static QTransform operator*(QTransform lhs, double div) {
+			return (QTransform) staticInterceptor.Invoke("operator*=$", "operator*=(qreal)", typeof(QTransform), typeof(QTransform), lhs, typeof(double), div);
+		}
+		public static QTransform operator/(QTransform lhs, double div) {
+			return (QTransform) staticInterceptor.Invoke("operator/=$", "operator/=(qreal)", typeof(QTransform), typeof(QTransform), lhs, typeof(double), div);
 		}
 		public static bool SquareToQuad(QPolygonF square, QTransform result) {
 			return (bool) staticInterceptor.Invoke("squareToQuad##", "squareToQuad(const QPolygonF&, QTransform&)", typeof(bool), typeof(QPolygonF), square, typeof(QTransform), result);
@@ -267,6 +272,12 @@ namespace Qyoto {
 		}
 		public static QPainterPath operator*(QPainterPath p, QTransform m) {
 			return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QTransform&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QTransform), m);
+		}
+		public static QTransform operator+(QTransform a, double n) {
+			return (QTransform) staticInterceptor.Invoke("operator+#$", "operator+(const QTransform&, qreal)", typeof(QTransform), typeof(QTransform), a, typeof(double), n);
+		}
+		public static QTransform operator-(QTransform a, double n) {
+			return (QTransform) staticInterceptor.Invoke("operator-#$", "operator-(const QTransform&, qreal)", typeof(QTransform), typeof(QTransform), a, typeof(double), n);
 		}
 	}
 }

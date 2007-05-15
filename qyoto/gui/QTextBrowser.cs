@@ -32,6 +32,11 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("openExternalLinks", "openExternalLinks()", typeof(bool)); }
 			set { interceptor.Invoke("setOpenExternalLinks$", "setOpenExternalLinks(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("bool", "openLinks")]
+		public bool OpenLinks {
+			get { return (bool) interceptor.Invoke("openLinks", "openLinks()", typeof(bool)); }
+			set { interceptor.Invoke("setOpenLinks$", "setOpenLinks(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QTextBrowser(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextBrowser#", "QTextBrowser(QWidget*)", typeof(void), typeof(QWidget), parent);

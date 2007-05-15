@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	///<remarks> See <see cref="IQColumnViewSignals"></see> for signals emitted by QColumnView
 	///</remarks>
@@ -70,6 +71,12 @@ namespace Qyoto {
 		}
 		public void SetPreviewWidget(QWidget widget) {
 			interceptor.Invoke("setPreviewWidget#", "setPreviewWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
+		}
+		public void SetColumnWidths(List<int> list) {
+			interceptor.Invoke("setColumnWidths?", "setColumnWidths(const QList<int>&)", typeof(void), typeof(List<int>), list);
+		}
+		public List<int> ColumnWidths() {
+			return (List<int>) interceptor.Invoke("columnWidths", "columnWidths() const", typeof(List<int>));
 		}
 		[SmokeMethod("isIndexHidden(const QModelIndex&) const")]
 		protected override bool IsIndexHidden(QModelIndex index) {

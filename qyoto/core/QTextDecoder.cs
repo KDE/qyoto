@@ -25,6 +25,9 @@ namespace Qyoto {
 		public void ToUnicode(StringBuilder target, string chars, int len) {
 			interceptor.Invoke("toUnicode$$$", "toUnicode(QString*, const char*, int)", typeof(void), typeof(StringBuilder), target, typeof(string), chars, typeof(int), len);
 		}
+		public bool HasFailure() {
+			return (bool) interceptor.Invoke("hasFailure", "hasFailure() const", typeof(bool));
+		}
 		~QTextDecoder() {
 			interceptor.Invoke("~QTextDecoder", "~QTextDecoder()", typeof(void));
 		}

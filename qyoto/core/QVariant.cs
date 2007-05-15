@@ -75,6 +75,7 @@ namespace Qyoto {
 		// void* data(); >>>> NOT CONVERTED
 		// const void* constData(); >>>> NOT CONVERTED
 		// const void* data(); >>>> NOT CONVERTED
+		// QVariant::DataPtr& data_ptr(); >>>> NOT CONVERTED
 		// void create(int arg1,const void* arg2); >>>> NOT CONVERTED
 		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
 		public QVariant() : this((Type) null) {

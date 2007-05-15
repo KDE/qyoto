@@ -17,8 +17,8 @@ namespace Qyoto {
 		static QSslSocket() {
 			staticInterceptor = new SmokeInvocation(typeof(QSslSocket), null);
 		}
-		public enum Mode {
-			PlainMode = 0,
+		public enum SslMode {
+			UnencryptedMode = 0,
 			SslClientMode = 1,
 			SslServerMode = 2,
 		}
@@ -26,8 +26,9 @@ namespace Qyoto {
 			SslV3 = 0,
 			SslV2 = 1,
 			TlsV1 = 2,
-			Compat = 3,
+			AnyProtocol = 3,
 		}
+		// QList<QSslError> sslErrors(); >>>> NOT CONVERTED
 		public QSslSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslSocket#", "QSslSocket(QObject*)", typeof(void), typeof(QObject), parent);
@@ -42,8 +43,17 @@ namespace Qyoto {
 		public void ConnectToHostEncrypted(string hostName, ushort port) {
 			interceptor.Invoke("connectToHostEncrypted$$", "connectToHostEncrypted(const QString&, quint16)", typeof(void), typeof(string), hostName, typeof(ushort), port);
 		}
-		public QSslSocket.Mode mode() {
-			return (QSslSocket.Mode) interceptor.Invoke("mode", "mode() const", typeof(QSslSocket.Mode));
+		public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, int openMode) {
+			return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(int), openMode);
+		}
+		public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state) {
+			return (bool) interceptor.Invoke("setSocketDescriptor$$", "setSocketDescriptor(int, QAbstractSocket::SocketState)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state);
+		}
+		public new bool SetSocketDescriptor(int socketDescriptor) {
+			return (bool) interceptor.Invoke("setSocketDescriptor$", "setSocketDescriptor(int)", typeof(bool), typeof(int), socketDescriptor);
+		}
+		public QSslSocket.SslMode Mode() {
+			return (QSslSocket.SslMode) interceptor.Invoke("mode", "mode() const", typeof(QSslSocket.SslMode));
 		}
 		public bool IsEncrypted() {
 			return (bool) interceptor.Invoke("isEncrypted", "isEncrypted() const", typeof(bool));
@@ -74,8 +84,20 @@ namespace Qyoto {
 		public override bool AtEnd() {
 			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
+		public new bool Flush() {
+			return (bool) interceptor.Invoke("flush", "flush()", typeof(bool));
+		}
+		public new void Abort() {
+			interceptor.Invoke("abort", "abort()", typeof(void));
+		}
 		public void SetLocalCertificate(QSslCertificate certificate) {
 			interceptor.Invoke("setLocalCertificate#", "setLocalCertificate(const QSslCertificate&)", typeof(void), typeof(QSslCertificate), certificate);
+		}
+		public void SetLocalCertificate(string fileName, QSsl.EncodingFormat format) {
+			interceptor.Invoke("setLocalCertificate$$", "setLocalCertificate(const QString&, QSsl::EncodingFormat)", typeof(void), typeof(string), fileName, typeof(QSsl.EncodingFormat), format);
+		}
+		public void SetLocalCertificate(string fileName) {
+			interceptor.Invoke("setLocalCertificate$", "setLocalCertificate(const QString&)", typeof(void), typeof(string), fileName);
 		}
 		public QSslCertificate LocalCertificate() {
 			return (QSslCertificate) interceptor.Invoke("localCertificate", "localCertificate() const", typeof(QSslCertificate));
@@ -86,11 +108,23 @@ namespace Qyoto {
 		public List<QSslCertificate> PeerCertificateChain() {
 			return (List<QSslCertificate>) interceptor.Invoke("peerCertificateChain", "peerCertificateChain() const", typeof(List<QSslCertificate>));
 		}
-		public QSslCipher CurrentCipher() {
-			return (QSslCipher) interceptor.Invoke("currentCipher", "currentCipher() const", typeof(QSslCipher));
+		public QSslCipher SessionCipher() {
+			return (QSslCipher) interceptor.Invoke("sessionCipher", "sessionCipher() const", typeof(QSslCipher));
 		}
 		public void SetPrivateKey(QSslKey key) {
 			interceptor.Invoke("setPrivateKey#", "setPrivateKey(const QSslKey&)", typeof(void), typeof(QSslKey), key);
+		}
+		public void SetPrivateKey(string fileName, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QByteArray passPhrase) {
+			interceptor.Invoke("setPrivateKey$$$#", "setPrivateKey(const QString&, QSsl::Algorithm, QSsl::EncodingFormat, const QByteArray&)", typeof(void), typeof(string), fileName, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QByteArray), passPhrase);
+		}
+		public void SetPrivateKey(string fileName, QSsl.Algorithm algorithm, QSsl.EncodingFormat format) {
+			interceptor.Invoke("setPrivateKey$$$", "setPrivateKey(const QString&, QSsl::Algorithm, QSsl::EncodingFormat)", typeof(void), typeof(string), fileName, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format);
+		}
+		public void SetPrivateKey(string fileName, QSsl.Algorithm algorithm) {
+			interceptor.Invoke("setPrivateKey$$", "setPrivateKey(const QString&, QSsl::Algorithm)", typeof(void), typeof(string), fileName, typeof(QSsl.Algorithm), algorithm);
+		}
+		public void SetPrivateKey(string fileName) {
+			interceptor.Invoke("setPrivateKey$", "setPrivateKey(const QString&)", typeof(void), typeof(string), fileName);
 		}
 		public QSslKey PrivateKey() {
 			return (QSslKey) interceptor.Invoke("privateKey", "privateKey() const", typeof(QSslKey));
@@ -98,11 +132,17 @@ namespace Qyoto {
 		public List<QSslCipher> Ciphers() {
 			return (List<QSslCipher>) interceptor.Invoke("ciphers", "ciphers() const", typeof(List<QSslCipher>));
 		}
-		public void ResetCiphers() {
-			interceptor.Invoke("resetCiphers", "resetCiphers()", typeof(void));
-		}
 		public void SetCiphers(List<QSslCipher> ciphers) {
 			interceptor.Invoke("setCiphers?", "setCiphers(const QList<QSslCipher>&)", typeof(void), typeof(List<QSslCipher>), ciphers);
+		}
+		public void SetCiphers(string ciphers) {
+			interceptor.Invoke("setCiphers$", "setCiphers(const QString&)", typeof(void), typeof(string), ciphers);
+		}
+		public bool AddCaCertificates(string path, QSsl.EncodingFormat format, QRegExp.PatternSyntax syntax) {
+			return (bool) interceptor.Invoke("addCaCertificates$$$", "addCaCertificates(const QString&, QSsl::EncodingFormat, QRegExp::PatternSyntax)", typeof(bool), typeof(string), path, typeof(QSsl.EncodingFormat), format, typeof(QRegExp.PatternSyntax), syntax);
+		}
+		public bool AddCaCertificates(string path, QSsl.EncodingFormat format) {
+			return (bool) interceptor.Invoke("addCaCertificates$$", "addCaCertificates(const QString&, QSsl::EncodingFormat)", typeof(bool), typeof(string), path, typeof(QSsl.EncodingFormat), format);
 		}
 		public bool AddCaCertificates(string path) {
 			return (bool) interceptor.Invoke("addCaCertificates$", "addCaCertificates(const QString&)", typeof(bool), typeof(string), path);
@@ -116,30 +156,48 @@ namespace Qyoto {
 		public void SetCaCertificates(List<QSslCertificate> certificates) {
 			interceptor.Invoke("setCaCertificates?", "setCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
 		}
-		public void ResetCaCertificates() {
-			interceptor.Invoke("resetCaCertificates", "resetCaCertificates()", typeof(void));
-		}
 		public List<QSslCertificate> CaCertificates() {
 			return (List<QSslCertificate>) interceptor.Invoke("caCertificates", "caCertificates() const", typeof(List<QSslCertificate>));
 		}
+		public new bool WaitForConnected(int msecs) {
+			return (bool) interceptor.Invoke("waitForConnected$", "waitForConnected(int)", typeof(bool), typeof(int), msecs);
+		}
+		public new bool WaitForConnected() {
+			return (bool) interceptor.Invoke("waitForConnected", "waitForConnected()", typeof(bool));
+		}
 		public bool WaitForEncrypted(int msecs) {
 			return (bool) interceptor.Invoke("waitForEncrypted$", "waitForEncrypted(int)", typeof(bool), typeof(int), msecs);
+		}
+		public bool WaitForEncrypted() {
+			return (bool) interceptor.Invoke("waitForEncrypted", "waitForEncrypted()", typeof(bool));
 		}
 		[SmokeMethod("waitForReadyRead(int)")]
 		public override bool WaitForReadyRead(int msecs) {
 			return (bool) interceptor.Invoke("waitForReadyRead$", "waitForReadyRead(int)", typeof(bool), typeof(int), msecs);
 		}
+		public new bool WaitForReadyRead() {
+			return (bool) interceptor.Invoke("waitForReadyRead", "waitForReadyRead()", typeof(bool));
+		}
 		[SmokeMethod("waitForBytesWritten(int)")]
 		public override bool WaitForBytesWritten(int msecs) {
 			return (bool) interceptor.Invoke("waitForBytesWritten$", "waitForBytesWritten(int)", typeof(bool), typeof(int), msecs);
 		}
-		[Q_SLOT("void startClientHandShake()")]
-		public void StartClientHandShake() {
-			interceptor.Invoke("startClientHandShake", "startClientHandShake()", typeof(void));
+		public new bool WaitForBytesWritten() {
+			return (bool) interceptor.Invoke("waitForBytesWritten", "waitForBytesWritten()", typeof(bool));
 		}
-		[Q_SLOT("void startServerHandShake()")]
-		public void StartServerHandShake() {
-			interceptor.Invoke("startServerHandShake", "startServerHandShake()", typeof(void));
+		public new bool WaitForDisconnected(int msecs) {
+			return (bool) interceptor.Invoke("waitForDisconnected$", "waitForDisconnected(int)", typeof(bool), typeof(int), msecs);
+		}
+		public new bool WaitForDisconnected() {
+			return (bool) interceptor.Invoke("waitForDisconnected", "waitForDisconnected()", typeof(bool));
+		}
+		[Q_SLOT("void startClientEncryption()")]
+		public void StartClientEncryption() {
+			interceptor.Invoke("startClientEncryption", "startClientEncryption()", typeof(void));
+		}
+		[Q_SLOT("void startServerEncryption()")]
+		public void StartServerEncryption() {
+			interceptor.Invoke("startServerEncryption", "startServerEncryption()", typeof(void));
 		}
 		[Q_SLOT("void ignoreSslErrors()")]
 		public void IgnoreSslErrors() {
@@ -173,32 +231,35 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		public static void SetGlobalCiphers(List<QSslCipher> ciphers) {
-			staticInterceptor.Invoke("setGlobalCiphers?", "setGlobalCiphers(const QList<QSslCipher>&)", typeof(void), typeof(List<QSslCipher>), ciphers);
+		public static void SetDefaultCiphers(List<QSslCipher> ciphers) {
+			staticInterceptor.Invoke("setDefaultCiphers?", "setDefaultCiphers(const QList<QSslCipher>&)", typeof(void), typeof(List<QSslCipher>), ciphers);
 		}
-		public static void ResetGlobalCiphers() {
-			staticInterceptor.Invoke("resetGlobalCiphers", "resetGlobalCiphers()", typeof(void));
-		}
-		public static List<QSslCipher> GlobalCiphers() {
-			return (List<QSslCipher>) staticInterceptor.Invoke("globalCiphers", "globalCiphers()", typeof(List<QSslCipher>));
+		public static List<QSslCipher> DefaultCiphers() {
+			return (List<QSslCipher>) staticInterceptor.Invoke("defaultCiphers", "defaultCiphers()", typeof(List<QSslCipher>));
 		}
 		public static List<QSslCipher> SupportedCiphers() {
 			return (List<QSslCipher>) staticInterceptor.Invoke("supportedCiphers", "supportedCiphers()", typeof(List<QSslCipher>));
 		}
-		public static bool AddGlobalCaCertificates(string path) {
-			return (bool) staticInterceptor.Invoke("addGlobalCaCertificates$", "addGlobalCaCertificates(const QString&)", typeof(bool), typeof(string), path);
+		public static bool AddDefaultCaCertificates(string path, QSsl.EncodingFormat format, QRegExp.PatternSyntax syntax) {
+			return (bool) staticInterceptor.Invoke("addDefaultCaCertificates$$$", "addDefaultCaCertificates(const QString&, QSsl::EncodingFormat, QRegExp::PatternSyntax)", typeof(bool), typeof(string), path, typeof(QSsl.EncodingFormat), format, typeof(QRegExp.PatternSyntax), syntax);
 		}
-		public static void AddGlobalCaCertificate(QSslCertificate certificate) {
-			staticInterceptor.Invoke("addGlobalCaCertificate#", "addGlobalCaCertificate(const QSslCertificate&)", typeof(void), typeof(QSslCertificate), certificate);
+		public static bool AddDefaultCaCertificates(string path, QSsl.EncodingFormat format) {
+			return (bool) staticInterceptor.Invoke("addDefaultCaCertificates$$", "addDefaultCaCertificates(const QString&, QSsl::EncodingFormat)", typeof(bool), typeof(string), path, typeof(QSsl.EncodingFormat), format);
 		}
-		public static void AddGlobalCaCertificates(List<QSslCertificate> certificates) {
-			staticInterceptor.Invoke("addGlobalCaCertificates?", "addGlobalCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		public static bool AddDefaultCaCertificates(string path) {
+			return (bool) staticInterceptor.Invoke("addDefaultCaCertificates$", "addDefaultCaCertificates(const QString&)", typeof(bool), typeof(string), path);
 		}
-		public static void SetGlobalCaCertificates(List<QSslCertificate> certificates) {
-			staticInterceptor.Invoke("setGlobalCaCertificates?", "setGlobalCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		public static void AddDefaultCaCertificate(QSslCertificate certificate) {
+			staticInterceptor.Invoke("addDefaultCaCertificate#", "addDefaultCaCertificate(const QSslCertificate&)", typeof(void), typeof(QSslCertificate), certificate);
 		}
-		public static List<QSslCertificate> GlobalCaCertificates() {
-			return (List<QSslCertificate>) staticInterceptor.Invoke("globalCaCertificates", "globalCaCertificates()", typeof(List<QSslCertificate>));
+		public static void AddDefaultCaCertificates(List<QSslCertificate> certificates) {
+			staticInterceptor.Invoke("addDefaultCaCertificates?", "addDefaultCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		}
+		public static void SetDefaultCaCertificates(List<QSslCertificate> certificates) {
+			staticInterceptor.Invoke("setDefaultCaCertificates?", "setDefaultCaCertificates(const QList<QSslCertificate>&)", typeof(void), typeof(List<QSslCertificate>), certificates);
+		}
+		public static List<QSslCertificate> DefaultCaCertificates() {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("defaultCaCertificates", "defaultCaCertificates()", typeof(List<QSslCertificate>));
 		}
 		public static List<QSslCertificate> SystemCaCertificates() {
 			return (List<QSslCertificate>) staticInterceptor.Invoke("systemCaCertificates", "systemCaCertificates()", typeof(List<QSslCertificate>));
@@ -216,7 +277,7 @@ namespace Qyoto {
 		void Encrypted();
 		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
 		void SslErrors(List<QSslError> errors);
-		[Q_SIGNAL("void modeChanged(QSslSocket::Mode)")]
-		void ModeChanged(QSslSocket.Mode newMode);
+		[Q_SIGNAL("void modeChanged(QSslSocket::SslMode)")]
+		void ModeChanged(QSslSocket.SslMode newMode);
 	}
 }

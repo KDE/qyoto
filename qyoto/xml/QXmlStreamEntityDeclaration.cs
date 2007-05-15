@@ -52,10 +52,10 @@ namespace Qyoto {
 			interceptor.Invoke("~QXmlStreamEntityDeclaration", "~QXmlStreamEntityDeclaration()", typeof(void));
 		}
 		public static bool operator==(QXmlStreamEntityDeclaration lhs, QXmlStreamEntityDeclaration other) {
-			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamEntityDeclaration&)", typeof(bool), typeof(QXmlStreamEntityDeclaration), lhs, typeof(QXmlStreamEntityDeclaration), other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamEntityDeclaration&) const", typeof(bool), typeof(QXmlStreamEntityDeclaration), lhs, typeof(QXmlStreamEntityDeclaration), other);
 		}
 		public static bool operator!=(QXmlStreamEntityDeclaration lhs, QXmlStreamEntityDeclaration other) {
-			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamEntityDeclaration&)", typeof(bool), typeof(QXmlStreamEntityDeclaration), lhs, typeof(QXmlStreamEntityDeclaration), other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamEntityDeclaration&) const", typeof(bool), typeof(QXmlStreamEntityDeclaration), lhs, typeof(QXmlStreamEntityDeclaration), other);
 		}
 	}
 }

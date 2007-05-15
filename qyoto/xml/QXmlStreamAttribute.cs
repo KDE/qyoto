@@ -60,10 +60,10 @@ namespace Qyoto {
 			interceptor.Invoke("~QXmlStreamAttribute", "~QXmlStreamAttribute()", typeof(void));
 		}
 		public static bool operator==(QXmlStreamAttribute lhs, QXmlStreamAttribute other) {
-			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamAttribute&)", typeof(bool), typeof(QXmlStreamAttribute), lhs, typeof(QXmlStreamAttribute), other);
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamAttribute&) const", typeof(bool), typeof(QXmlStreamAttribute), lhs, typeof(QXmlStreamAttribute), other);
 		}
 		public static bool operator!=(QXmlStreamAttribute lhs, QXmlStreamAttribute other) {
-			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamAttribute&)", typeof(bool), typeof(QXmlStreamAttribute), lhs, typeof(QXmlStreamAttribute), other);
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QXmlStreamAttribute&) const", typeof(bool), typeof(QXmlStreamAttribute), lhs, typeof(QXmlStreamAttribute), other);
 		}
 	}
 }

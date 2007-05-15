@@ -227,6 +227,9 @@ namespace Qyoto {
 		public void InsertColumn(int column, List<QStandardItem> items) {
 			interceptor.Invoke("insertColumn$?", "insertColumn(int, const QList<QStandardItem*>&)", typeof(void), typeof(int), column, typeof(List<QStandardItem>), items);
 		}
+		public void InsertRows(int row, List<QStandardItem> items) {
+			interceptor.Invoke("insertRows$?", "insertRows(int, const QList<QStandardItem*>&)", typeof(void), typeof(int), row, typeof(List<QStandardItem>), items);
+		}
 		public void InsertRows(int row, int count) {
 			interceptor.Invoke("insertRows$$", "insertRows(int, int)", typeof(void), typeof(int), row, typeof(int), count);
 		}
@@ -247,6 +250,9 @@ namespace Qyoto {
 		}
 		public void AppendRow(List<QStandardItem> items) {
 			interceptor.Invoke("appendRow?", "appendRow(const QList<QStandardItem*>&)", typeof(void), typeof(List<QStandardItem>), items);
+		}
+		public void AppendRows(List<QStandardItem> items) {
+			interceptor.Invoke("appendRows?", "appendRows(const QList<QStandardItem*>&)", typeof(void), typeof(List<QStandardItem>), items);
 		}
 		public void AppendColumn(List<QStandardItem> items) {
 			interceptor.Invoke("appendColumn?", "appendColumn(const QList<QStandardItem*>&)", typeof(void), typeof(List<QStandardItem>), items);

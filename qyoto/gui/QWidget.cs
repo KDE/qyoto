@@ -17,6 +17,11 @@ namespace Qyoto {
 		static QWidget() {
 			staticInterceptor = new SmokeInvocation(typeof(QWidget), null);
 		}
+		public enum RenderFlag {
+			DrawWindowBackground = 0x1,
+			DrawChildren = 0x2,
+			IgnoreMask = 0x4,
+		}
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
 			get { return (bool) interceptor.Invoke("isModal", "isModal()", typeof(bool)); }
@@ -387,6 +392,18 @@ namespace Qyoto {
 		}
 		public void ClearMask() {
 			interceptor.Invoke("clearMask", "clearMask()", typeof(void));
+		}
+		public void Render(IQPaintDevice target, QPoint targetOffset, QRegion sourceRegion, int renderFlags) {
+			interceptor.Invoke("render###$", "render(QPaintDevice*, const QPoint&, const QRegion&, RenderFlags)", typeof(void), typeof(IQPaintDevice), target, typeof(QPoint), targetOffset, typeof(QRegion), sourceRegion, typeof(int), renderFlags);
+		}
+		public void Render(IQPaintDevice target, QPoint targetOffset, QRegion sourceRegion) {
+			interceptor.Invoke("render###", "render(QPaintDevice*, const QPoint&, const QRegion&)", typeof(void), typeof(IQPaintDevice), target, typeof(QPoint), targetOffset, typeof(QRegion), sourceRegion);
+		}
+		public void Render(IQPaintDevice target, QPoint targetOffset) {
+			interceptor.Invoke("render##", "render(QPaintDevice*, const QPoint&)", typeof(void), typeof(IQPaintDevice), target, typeof(QPoint), targetOffset);
+		}
+		public void Render(IQPaintDevice target) {
+			interceptor.Invoke("render#", "render(QPaintDevice*)", typeof(void), typeof(IQPaintDevice), target);
 		}
 		public void SetWindowRole(string arg1) {
 			interceptor.Invoke("setWindowRole$", "setWindowRole(const QString&)", typeof(void), typeof(string), arg1);

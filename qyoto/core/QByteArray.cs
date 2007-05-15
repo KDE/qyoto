@@ -18,6 +18,7 @@ namespace Qyoto {
 		}
 		//  operator const char *(); >>>> NOT CONVERTED
 		//  operator const void *(); >>>> NOT CONVERTED
+		// QByteArray::DataPtr& data_ptr(); >>>> NOT CONVERTED
 		public QByteArray() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QByteArray", "QByteArray()", typeof(void));

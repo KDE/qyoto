@@ -232,7 +232,9 @@ namespace Qyoto {
 			WA_LayoutUsesWidgetRect = 92,
 			WA_StyledBackground = 93,
 			WA_MSWindowsUseDirect3D = 94,
-			WA_AttributeCount = 95,
+			WA_CanHostQMdiSubWindowTitleBar = 95,
+			WA_MacAlwaysShowToolWindow = 96,
+			WA_AttributeCount = 97,
 		}
 		public enum ApplicationAttribute {
 			AA_ImmediateWidgetCreation = 0,

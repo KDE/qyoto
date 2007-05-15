@@ -24,9 +24,18 @@ namespace Qyoto {
 			CountryName = 4,
 			StateOrProvinceName = 5,
 		}
+		// QMultiMap<QSsl::AlternateNameEntry, QString> alternateSubjectNames(); >>>> NOT CONVERTED
+		public QSslCertificate(QIODevice device, QSsl.EncodingFormat format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslCertificate#$", "QSslCertificate(QIODevice*, QSsl::EncodingFormat)", typeof(void), typeof(QIODevice), device, typeof(QSsl.EncodingFormat), format);
+		}
 		public QSslCertificate(QIODevice device) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslCertificate#", "QSslCertificate(QIODevice*)", typeof(void), typeof(QIODevice), device);
+		}
+		public QSslCertificate(QByteArray encoded, QSsl.EncodingFormat format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QSslCertificate#$", "QSslCertificate(const QByteArray&, QSsl::EncodingFormat)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.EncodingFormat), format);
 		}
 		public QSslCertificate(QByteArray encoded) : this((Type) null) {
 			CreateProxy();
@@ -80,9 +89,6 @@ namespace Qyoto {
 		public string subjectInfo(QByteArray tag) {
 			return (string) interceptor.Invoke("subjectInfo#", "subjectInfo(const QByteArray&) const", typeof(string), typeof(QByteArray), tag);
 		}
-		public List<string> AlternateSubjectNames() {
-			return (List<string>) interceptor.Invoke("alternateSubjectNames", "alternateSubjectNames() const", typeof(List<string>));
-		}
 		public QDateTime NotValidBefore() {
 			return (QDateTime) interceptor.Invoke("notValidBefore", "notValidBefore() const", typeof(QDateTime));
 		}
@@ -110,8 +116,23 @@ namespace Qyoto {
 		public static bool operator!=(QSslCertificate lhs, QSslCertificate other) {
 			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSslCertificate&) const", typeof(bool), typeof(QSslCertificate), lhs, typeof(QSslCertificate), other);
 		}
+		public static List<QSslCertificate> FromPath(string path, QSsl.EncodingFormat format, QRegExp.PatternSyntax syntax) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromPath$$$", "fromPath(const QString&, QSsl::EncodingFormat, QRegExp::PatternSyntax)", typeof(List<QSslCertificate>), typeof(string), path, typeof(QSsl.EncodingFormat), format, typeof(QRegExp.PatternSyntax), syntax);
+		}
+		public static List<QSslCertificate> FromPath(string path, QSsl.EncodingFormat format) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromPath$$", "fromPath(const QString&, QSsl::EncodingFormat)", typeof(List<QSslCertificate>), typeof(string), path, typeof(QSsl.EncodingFormat), format);
+		}
+		public static List<QSslCertificate> FromPath(string path) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromPath$", "fromPath(const QString&)", typeof(List<QSslCertificate>), typeof(string), path);
+		}
+		public static List<QSslCertificate> FromDevice(QIODevice device, QSsl.EncodingFormat format) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromDevice#$", "fromDevice(QIODevice*, QSsl::EncodingFormat)", typeof(List<QSslCertificate>), typeof(QIODevice), device, typeof(QSsl.EncodingFormat), format);
+		}
 		public static List<QSslCertificate> FromDevice(QIODevice device) {
 			return (List<QSslCertificate>) staticInterceptor.Invoke("fromDevice#", "fromDevice(QIODevice*)", typeof(List<QSslCertificate>), typeof(QIODevice), device);
+		}
+		public static List<QSslCertificate> FromData(QByteArray data, QSsl.EncodingFormat format) {
+			return (List<QSslCertificate>) staticInterceptor.Invoke("fromData#$", "fromData(const QByteArray&, QSsl::EncodingFormat)", typeof(List<QSslCertificate>), typeof(QByteArray), data, typeof(QSsl.EncodingFormat), format);
 		}
 		public static List<QSslCertificate> FromData(QByteArray data) {
 			return (List<QSslCertificate>) staticInterceptor.Invoke("fromData#", "fromData(const QByteArray&)", typeof(List<QSslCertificate>), typeof(QByteArray), data);

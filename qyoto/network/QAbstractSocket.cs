@@ -157,7 +157,6 @@ namespace Qyoto {
 		public override bool WaitForReadyRead(int msecs) {
 			return (bool) interceptor.Invoke("waitForReadyRead$", "waitForReadyRead(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForReadyRead()")]
 		public bool WaitForReadyRead() {
 			return (bool) interceptor.Invoke("waitForReadyRead", "waitForReadyRead()", typeof(bool));
 		}
@@ -165,7 +164,6 @@ namespace Qyoto {
 		public override bool WaitForBytesWritten(int msecs) {
 			return (bool) interceptor.Invoke("waitForBytesWritten$", "waitForBytesWritten(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForBytesWritten()")]
 		public bool WaitForBytesWritten() {
 			return (bool) interceptor.Invoke("waitForBytesWritten", "waitForBytesWritten()", typeof(bool));
 		}

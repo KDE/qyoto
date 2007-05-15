@@ -44,6 +44,7 @@ namespace Qyoto {
 			CrashExit = 1,
 		}
 		// Q_PID pid(); >>>> NOT CONVERTED
+		// bool startDetached(const QString& arg1,const QStringList& arg2,const QString& arg3,qint64* arg4); >>>> NOT CONVERTED
 		public QProcess(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QProcess#", "QProcess(QObject*)", typeof(void), typeof(QObject), parent);
@@ -134,7 +135,6 @@ namespace Qyoto {
 		public override bool WaitForReadyRead(int msecs) {
 			return (bool) interceptor.Invoke("waitForReadyRead$", "waitForReadyRead(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForReadyRead()")]
 		public bool WaitForReadyRead() {
 			return (bool) interceptor.Invoke("waitForReadyRead", "waitForReadyRead()", typeof(bool));
 		}
@@ -142,7 +142,6 @@ namespace Qyoto {
 		public override bool WaitForBytesWritten(int msecs) {
 			return (bool) interceptor.Invoke("waitForBytesWritten$", "waitForBytesWritten(int)", typeof(bool), typeof(int), msecs);
 		}
-		[SmokeMethod("waitForBytesWritten()")]
 		public bool WaitForBytesWritten() {
 			return (bool) interceptor.Invoke("waitForBytesWritten", "waitForBytesWritten()", typeof(bool));
 		}
@@ -228,6 +227,9 @@ namespace Qyoto {
 		}
 		public static int Execute(string program) {
 			return (int) staticInterceptor.Invoke("execute$", "execute(const QString&)", typeof(int), typeof(string), program);
+		}
+		public static bool StartDetached(string program, List<string> arguments, string workingDirectory) {
+			return (bool) staticInterceptor.Invoke("startDetached$?$", "startDetached(const QString&, const QStringList&, const QString&)", typeof(bool), typeof(string), program, typeof(List<string>), arguments, typeof(string), workingDirectory);
 		}
 		public static bool StartDetached(string program, List<string> arguments) {
 			return (bool) staticInterceptor.Invoke("startDetached$?", "startDetached(const QString&, const QStringList&)", typeof(bool), typeof(string), program, typeof(List<string>), arguments);

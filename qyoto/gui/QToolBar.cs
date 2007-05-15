@@ -41,6 +41,15 @@ namespace Qyoto {
 			get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
 			set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
 		}
+		[Q_PROPERTY("bool", "floating")]
+		public bool Floating {
+			get { return (bool) interceptor.Invoke("isFloating", "isFloating()", typeof(bool)); }
+		}
+		[Q_PROPERTY("bool", "floatable")]
+		public bool Floatable {
+			get { return (bool) interceptor.Invoke("isFloatable", "isFloatable()", typeof(bool)); }
+			set { interceptor.Invoke("setFloatable$", "setFloatable(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QToolBar(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QToolBar$#", "QToolBar(const QString&, QWidget*)", typeof(void), typeof(string), title, typeof(QWidget), parent);

@@ -14,6 +14,19 @@ namespace Qyoto {
 			FloatLeft = 1,
 			FloatRight = 2,
 		}
+		public enum BorderStyle {
+			BorderStyle_None = 0,
+			BorderStyle_Dotted = 1,
+			BorderStyle_Dashed = 2,
+			BorderStyle_Solid = 3,
+			BorderStyle_Double = 4,
+			BorderStyle_DotDash = 5,
+			BorderStyle_DotDotDash = 6,
+			BorderStyle_Groove = 7,
+			BorderStyle_Ridge = 8,
+			BorderStyle_Inset = 9,
+			BorderStyle_Outset = 10,
+		}
 		public QTextFrameFormat() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextFrameFormat", "QTextFrameFormat()", typeof(void));
@@ -32,6 +45,18 @@ namespace Qyoto {
 		}
 		public double Border() {
 			return (double) interceptor.Invoke("border", "border() const", typeof(double));
+		}
+		public void SetBorderBrush(QBrush brush) {
+			interceptor.Invoke("setBorderBrush#", "setBorderBrush(const QBrush&)", typeof(void), typeof(QBrush), brush);
+		}
+		public QBrush BorderBrush() {
+			return (QBrush) interceptor.Invoke("borderBrush", "borderBrush() const", typeof(QBrush));
+		}
+		public void SetBorderStyle(QTextFrameFormat.BorderStyle style) {
+			interceptor.Invoke("setBorderStyle$", "setBorderStyle(QTextFrameFormat::BorderStyle)", typeof(void), typeof(QTextFrameFormat.BorderStyle), style);
+		}
+		public QTextFrameFormat.BorderStyle borderStyle() {
+			return (QTextFrameFormat.BorderStyle) interceptor.Invoke("borderStyle", "borderStyle() const", typeof(QTextFrameFormat.BorderStyle));
 		}
 		public void SetMargin(double margin) {
 			interceptor.Invoke("setMargin$", "setMargin(qreal)", typeof(void), typeof(double), margin);

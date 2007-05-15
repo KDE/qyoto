@@ -81,6 +81,16 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isNavigationBarVisible", "isNavigationBarVisible()", typeof(bool)); }
 			set { interceptor.Invoke("setNavigationBarVisible$", "setNavigationBarVisible(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("bool", "dateEditEnabled")]
+		public bool DateEditEnabled {
+			get { return (bool) interceptor.Invoke("isDateEditEnabled", "isDateEditEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setDateEditEnabled$", "setDateEditEnabled(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("int", "dateEditAcceptDelay")]
+		public int DateEditAcceptDelay {
+			get { return (int) interceptor.Invoke("dateEditAcceptDelay", "dateEditAcceptDelay()", typeof(int)); }
+			set { interceptor.Invoke("setDateEditAcceptDelay$", "setDateEditAcceptDelay(int)", typeof(void), typeof(int), value); }
+		}
 		public QCalendarWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QCalendarWidget#", "QCalendarWidget(QWidget*)", typeof(void), typeof(QWidget), parent);

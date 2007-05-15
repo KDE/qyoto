@@ -142,6 +142,7 @@ namespace Qyoto {
 			NonClientAreaMouseButtonRelease = 175,
 			NonClientAreaMouseButtonDblClick = 176,
 			MacSizeChange = 177,
+			ContentsRectChange = 178,
 			User = 1000,
 			MaxUser = 65535,
 		}

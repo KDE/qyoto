@@ -46,7 +46,6 @@ namespace Qyoto {
 			DontConfirmOverwrite = 0x04,
 			DontUseSheet = 0x08,
 			DontUseNativeDialog = 0x10,
-			StoreState = 0x20,
 		}
 		[Q_PROPERTY("QFileDialog::ViewMode", "viewMode")]
 		public QFileDialog.ViewMode viewMode {
@@ -62,11 +61,6 @@ namespace Qyoto {
 		public QFileDialog.AcceptMode acceptMode {
 			get { return (QFileDialog.AcceptMode) interceptor.Invoke("acceptMode", "acceptMode()", typeof(QFileDialog.AcceptMode)); }
 			set { interceptor.Invoke("setAcceptMode$", "setAcceptMode(QFileDialog::AcceptMode)", typeof(void), typeof(QFileDialog.AcceptMode), value); }
-		}
-		[Q_PROPERTY("bool", "detailsExpanded")]
-		public bool DetailsExpanded {
-			get { return (bool) interceptor.Invoke("isDetailsExpanded", "isDetailsExpanded()", typeof(bool)); }
-			set { interceptor.Invoke("setDetailsExpanded$", "setDetailsExpanded(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
@@ -192,10 +186,6 @@ namespace Qyoto {
 		[SmokeMethod("accept()")]
 		protected new virtual void Accept() {
 			interceptor.Invoke("accept", "accept()", typeof(void));
-		}
-		[SmokeMethod("timerEvent(QTimerEvent*)")]
-		protected override void TimerEvent(QTimerEvent arg1) {
-			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
 		}
 		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent e) {

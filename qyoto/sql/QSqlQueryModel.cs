@@ -106,7 +106,6 @@ namespace Qyoto {
 		public override void FetchMore(QModelIndex parent) {
 			interceptor.Invoke("fetchMore#", "fetchMore(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("fetchMore()")]
 		public void FetchMore() {
 			interceptor.Invoke("fetchMore", "fetchMore()", typeof(void));
 		}
@@ -114,7 +113,6 @@ namespace Qyoto {
 		public override bool CanFetchMore(QModelIndex parent) {
 			return (bool) interceptor.Invoke("canFetchMore#", "canFetchMore(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), parent);
 		}
-		[SmokeMethod("canFetchMore() const")]
 		public bool CanFetchMore() {
 			return (bool) interceptor.Invoke("canFetchMore", "canFetchMore() const", typeof(bool));
 		}

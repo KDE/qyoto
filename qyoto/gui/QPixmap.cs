@@ -15,6 +15,7 @@ namespace Qyoto {
 		}
 		// QPixmap* QPixmap(const char** arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
+		// QPixmap::DataPtr& data_ptr(); >>>> NOT CONVERTED
 		public QPixmap() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPixmap", "QPixmap()", typeof(void));

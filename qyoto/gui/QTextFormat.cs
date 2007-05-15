@@ -72,6 +72,8 @@ namespace Qyoto {
 			FrameBottomMargin = 0x4006,
 			FrameLeftMargin = 0x4007,
 			FrameRightMargin = 0x4008,
+			FrameBorderBrush = 0x4009,
+			FrameBorderStyle = 0x4010,
 			TableColumns = 0x4100,
 			TableColumnWidthConstraints = 0x4101,
 			TableCellSpacing = 0x4102,

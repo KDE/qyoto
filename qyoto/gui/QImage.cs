@@ -33,6 +33,7 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
 		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
+		// QImage::DataPtr& data_ptr(); >>>> NOT CONVERTED
 		public QImage() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QImage", "QImage()", typeof(void));

@@ -460,6 +460,8 @@ namespace Qyoto {
 			SH_ToolTip_Mask = 77,
 			SH_FocusFrame_AboveWidget = 78,
 			SH_TextControl_FocusIndicatorTextCharFormat = 79,
+			SH_WizardStyle = 80,
+			SH_ItemView_ArrowKeysNavigateIntoChildren = 81,
 			SH_CustomBase = 0xf0000000,
 		}
 		public enum StandardPixmap : uint {
@@ -519,6 +521,8 @@ namespace Qyoto {
 			SP_ArrowBack = 53,
 			SP_ArrowForward = 54,
 			SP_DirHomeIcon = 55,
+			SP_CommandLink = 56,
+			SP_VistaShield = 57,
 			SP_CustomBase = 0xf0000000,
 		}
 		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3,QStyleOption* arg4,QWidget* arg5); >>>> NOT CONVERTED

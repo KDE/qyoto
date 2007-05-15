@@ -192,6 +192,9 @@ namespace Qyoto {
 		public QSize Size(int flags, string str) {
 			return (QSize) interceptor.Invoke("size$$", "size(int, const QString&) const", typeof(QSize), typeof(int), flags, typeof(string), str);
 		}
+		public QRect TightBoundingRect(string text) {
+			return (QRect) interceptor.Invoke("tightBoundingRect$", "tightBoundingRect(const QString&) const", typeof(QRect), typeof(string), text);
+		}
 		public string ElidedText(string text, Qt.TextElideMode mode, int width, int flags) {
 			return (string) interceptor.Invoke("elidedText$$$$", "elidedText(const QString&, Qt::TextElideMode, int, int) const", typeof(string), typeof(string), text, typeof(Qt.TextElideMode), mode, typeof(int), width, typeof(int), flags);
 		}

@@ -16,6 +16,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QBrush), null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
+		// QBrush::DataPtr& data_ptr(); >>>> NOT CONVERTED
 		public QBrush() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QBrush", "QBrush()", typeof(void));
@@ -115,6 +116,9 @@ namespace Qyoto {
 		}
 		public override int GetHashCode() {
 			return interceptor.GetHashCode();
+		}
+		public bool IsDetached() {
+			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
 		~QBrush() {
 			interceptor.Invoke("~QBrush", "~QBrush()", typeof(void));
