@@ -133,7 +133,7 @@ extern Q_DECL_EXPORT bool QyotoUnregisterResourceData(int flag, const unsigned c
 
 extern Q_DECL_EXPORT void SetApplicationTerminated();
 extern Q_DECL_EXPORT int QyotoHash(void * obj);
-extern Q_DECL_EXPORT void CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items);
+extern Q_DECL_EXPORT void CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items, bool refArgs);
 extern Q_DECL_EXPORT bool SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int items);
 extern Q_DECL_EXPORT void * make_metaObject(	void * obj, void * parentMeta, 
 						const char* stringdata, int stringdata_count, 

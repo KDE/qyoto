@@ -491,6 +491,48 @@ public:
     bool cleanup() { return false; }
 };
 
+class RefArguments : public Marshall {
+    Smoke *_smoke;
+    Smoke::Index _method;
+    Smoke::StackItem * _retval;
+    Smoke::Stack _stack;
+    Smoke::Stack _sp;
+    Smoke::Index* _args;
+    int _items;
+    int _cur;
+public:
+	RefArguments(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::Stack sp, Smoke::Index* args, int items) :
+		_cur(0), _smoke(smoke), _method(method),  _stack(stack), _sp(sp), _args(args), _items(items)  {
+    }
+
+    const Smoke::Method &method() { return _smoke->methods[_method]; }
+    SmokeType type() { return SmokeType(_smoke, _args[_cur]); }
+    Marshall::Action action() { return Marshall::ToObject; }
+    Smoke::StackItem &item() { return _stack[_cur]; }
+    Smoke::StackItem &var() {
+    	return _sp[_cur];
+    }
+
+	void unsupported() {
+		qFatal(	"Cannot handle '%s' as return-type of %s::%s",
+				type().name(),
+				strcmp(_smoke->className(method().classId), "QGlobalSpace") == 0 ? "" : _smoke->className(method().classId),
+				_smoke->methodNames[method().name] );
+	}
+	Smoke *smoke() { return _smoke; }
+	void next() {
+		int oldcur = _cur;
+		_cur++;
+		while(_cur < _items) {
+			Marshall::HandlerFn fn = getMarshallFn(type());
+			(*fn)(this);
+			_cur++;
+		}
+		_cur = oldcur;
+	}
+	bool cleanup() { return false; }
+};
+
 class MethodCall : public Marshall {
     int _cur;
     Smoke *_smoke;
@@ -501,11 +543,13 @@ class MethodCall : public Marshall {
 	smokeqyoto_object * _o;
     Smoke::Stack _sp;
     int _items;
+    int numItems;
     Smoke::StackItem * _retval;
     bool _called;
+    bool _refArgs;
 public:
-    MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
-	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _called(false)
+    MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items, bool refArgs) :
+	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _refArgs(refArgs), _called(false)
 	{
 		if (!isConstructor() && !isStatic()) {
 			_o = (smokeqyoto_object*) (*GetSmokeObject)(_target);
@@ -524,6 +568,7 @@ public:
 	
 		_args = _smoke->argumentList + _smoke->methods[_method].args;
 		_items = _smoke->methods[_method].numArgs;
+		numItems = items;
 		_stack = new Smoke::StackItem[items + 1];
 		_retval = _sp;
     }
@@ -593,6 +638,10 @@ public:
 			(*SetSmokeObject)(_target, 0);
 			free_smokeqyoto_object(_o);
 		} else {
+			if (_refArgs) {
+				RefArguments ref(_smoke, _method, _stack, _sp, _args, numItems);
+				ref.next();
+			}
 			MethodReturnValue r(_smoke, _method, _stack, _retval);
 		}
 
@@ -1659,7 +1708,7 @@ QyotoHash(void * obj)
 }
 
 void
-CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
+CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items, bool refArgs)
 {
 #ifdef DEBUG
 	printf("ENTER CallSmokeMethod(methodId: %d target: 0x%8.8x items: %d)\n", methodId, obj, items);
@@ -1681,7 +1730,7 @@ CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 		items = 1;
 	}
 
-	MethodCall c(qt_Smoke, methodId, obj, sp, items);
+	MethodCall c(qt_Smoke, methodId, obj, sp, items, refArgs);
 	c.next();
 
 #ifdef DEBUG
