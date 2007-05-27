@@ -992,6 +992,7 @@ static void marshall_intR(Marshall *m) {
             if(m->cleanup() && m->type().isConst()) {
                 delete i;
             } else {
+            	m->var().s_int = *((int *)(m->item().s_voidp));
 //                m->item().s_voidp = new int((int)NUM2INT(rv));
             }
             }
@@ -1010,6 +1011,63 @@ static void marshall_intR(Marshall *m) {
     }
 }
 
+static void marshall_doubleR(Marshall *m) {
+    switch(m->action()) {
+        case Marshall::FromObject:
+            {
+            double * d = new double;
+            *d = m->var().s_double;
+            m->item().s_voidp = d;
+            m->next();
+            if(m->cleanup() && m->type().isConst()) {
+                delete d;
+            } else {
+            	m->var().s_double = *((double *)(m->item().s_voidp));
+            }
+            }
+            break;
+
+        case Marshall::ToObject:
+            {
+            double *dp = (double*)m->item().s_voidp;
+            m->var().s_double = *dp;
+            }
+            break;
+
+        default:
+            m->unsupported();
+            break;
+    }
+}
+
+static void marshall_boolR(Marshall *m) {
+    switch(m->action()) {
+        case Marshall::FromObject:
+            {
+            bool * b = new bool;
+            *b = m->var().s_bool;
+            m->item().s_voidp = b;
+            m->next();
+            if(m->cleanup() && m->type().isConst()) {
+                delete b;
+            } else {
+            	m->var().s_bool = *((bool *)(m->item().s_voidp));
+            }
+            }
+            break;
+
+        case Marshall::ToObject:
+            {
+            bool *bp = (bool*)m->item().s_voidp;
+            m->var().s_bool = *bp;
+            }
+            break;
+
+        default:
+            m->unsupported();
+            break;
+    }
+}
 
 static void marshall_charP_array(Marshall *m) {
 
@@ -1616,6 +1674,12 @@ TypeHandler Qt_handlers[] = {
     { "QString*", marshall_QString },
     { "int&", marshall_intR },
     { "int*", marshall_intR },
+    { "qreal&", marshall_doubleR },
+    { "qreal*", marshall_doubleR },
+    { "double&", marshall_doubleR },
+    { "double*", marshall_doubleR },
+    { "bool&", marshall_boolR },
+    { "bool*", marshall_boolR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
     { "QDBusVariant", marshall_QDBusVariant },

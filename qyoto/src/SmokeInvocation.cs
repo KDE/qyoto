@@ -53,7 +53,7 @@ namespace Qyoto {
 		static extern int FindMethodId(string className, string mungedName, string signature);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items, bool refArgs);
+		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int QyotoHash(IntPtr obj);
@@ -420,14 +420,14 @@ namespace Qyoto {
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					if (instance == null) {
-						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, stack.Length, true);
+						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, stack.Length);
 					} else {
 #if DEBUG
 						GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
 #else
 						GCHandle instanceHandle = GCHandle.Alloc(instance);
 #endif
-						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, stack.Length, true);
+						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, stack.Length);
 #if DEBUG
 						DebugGCHandle.Free(instanceHandle);
 #else
@@ -508,14 +508,14 @@ namespace Qyoto {
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					if (instance == null) {
-						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, args.Length / 2, false);
+						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, args.Length / 2);
 					} else {
 #if DEBUG
 						GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
 #else
 						GCHandle instanceHandle = GCHandle.Alloc(instance);
 #endif
-						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, args.Length / 2, false);
+						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, args.Length / 2);
 #if DEBUG
 						DebugGCHandle.Free(instanceHandle);
 #else
