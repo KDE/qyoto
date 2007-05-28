@@ -9,6 +9,8 @@
 	  before the method call, the value after the method call doesn't need
 	  to be copied back.
 	* Added a marshaller for 'short&' and 'short*' arg types
+	* Attempted to add a QyotoHash function that will compile on 64 bit 
+	  machines
 
 2007-05-27  Arno Rehn  <arno@arnorehn.de>
 

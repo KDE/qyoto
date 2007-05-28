@@ -1646,6 +1646,18 @@ SetApplicationTerminated()
 	application_terminated = true;
 }
 
+/* 
+	Based on this function from QtCore/qhash.h:
+
+	inline uint qHash(ulong key)
+	{
+		if (sizeof(ulong) > sizeof(uint)) {
+			return uint((key >> (8 * sizeof(uint) - 1)) ^ key);
+		} else {
+			return uint(key);
+		}
+	}
+*/
 int 
 QyotoHash(void * obj)
 {
@@ -1656,7 +1668,7 @@ QyotoHash(void * obj)
 		qint64 key = (qint64) o->ptr;
 		return (int) ((key >> (8 * sizeof(int) - 1)) ^ key);
 	} else {
-		return (int) o->ptr;
+		return (int) (o->ptr & 0xFFFFFFFF);
 	}
 }
 
