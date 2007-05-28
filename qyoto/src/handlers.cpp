@@ -982,91 +982,87 @@ static void marshall_QString(Marshall *m) {
 
 
 static void marshall_intR(Marshall *m) {
-    switch(m->action()) {
-        case Marshall::FromObject:
-            {
-            int * i = new int;
-            *i = m->var().s_int;
-            m->item().s_voidp = i;
-            m->next();
-            if(m->cleanup() && m->type().isConst()) {
-                delete i;
-            } else {
-            	m->var().s_int = *((int *)(m->item().s_voidp));
-//                m->item().s_voidp = new int((int)NUM2INT(rv));
-            }
-            }
-            break;
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_int);
+	}
+	break;
 
-        case Marshall::ToObject:
-            {
-            int *ip = (int*)m->item().s_voidp;
-            m->var().s_int = *ip;
-            }
-            break;
+	case Marshall::ToObject:
+	{
+		int *ip = (int*)m->item().s_voidp;
+		m->var().s_int = *ip;
+	}
+	break;
 
-        default:
-            m->unsupported();
-            break;
-    }
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
+static void marshall_shortR(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_short);
+	}
+	break;
+
+	case Marshall::ToObject:
+	{
+		short *ip = (short*)m->item().s_voidp;
+		m->var().s_short = *ip;
+	}
+	break;
+
+	default:
+		m->unsupported();
+		break;
+	}
 }
 
 static void marshall_doubleR(Marshall *m) {
     switch(m->action()) {
-        case Marshall::FromObject:
-            {
-            double * d = new double;
-            *d = m->var().s_double;
-            m->item().s_voidp = d;
-            m->next();
-            if(m->cleanup() && m->type().isConst()) {
-                delete d;
-            } else {
-            	m->var().s_double = *((double *)(m->item().s_voidp));
-            }
-            }
-            break;
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_double);
+	}
+	break;
 
-        case Marshall::ToObject:
-            {
-            double *dp = (double*)m->item().s_voidp;
-            m->var().s_double = *dp;
-            }
-            break;
+	case Marshall::ToObject:
+	{
+		double *dp = (double*)m->item().s_voidp;
+		m->var().s_double = *dp;
+	}
+	break;
 
-        default:
-            m->unsupported();
-            break;
-    }
+	default:
+		m->unsupported();
+		break;
+	}
 }
 
 static void marshall_boolR(Marshall *m) {
     switch(m->action()) {
-        case Marshall::FromObject:
-            {
-            bool * b = new bool;
-            *b = m->var().s_bool;
-            m->item().s_voidp = b;
-            m->next();
-            if(m->cleanup() && m->type().isConst()) {
-                delete b;
-            } else {
-            	m->var().s_bool = *((bool *)(m->item().s_voidp));
-            }
-            }
-            break;
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_bool);
+	}
+	break;
 
-        case Marshall::ToObject:
-            {
-            bool *bp = (bool*)m->item().s_voidp;
-            m->var().s_bool = *bp;
-            }
-            break;
+	case Marshall::ToObject:
+	{
+		bool *dp = (bool*)m->item().s_voidp;
+		m->var().s_bool = *dp;
+	}
+	break;
 
-        default:
-            m->unsupported();
-            break;
-    }
+	default:
+		m->unsupported();
+		break;
+	}
 }
 
 static void marshall_charP_array(Marshall *m) {
@@ -1680,6 +1676,8 @@ TypeHandler Qt_handlers[] = {
     { "double*", marshall_doubleR },
     { "bool&", marshall_boolR },
     { "bool*", marshall_boolR },
+    { "short*", marshall_shortR },
+    { "short&", marshall_shortR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
     { "QDBusVariant", marshall_QDBusVariant },
