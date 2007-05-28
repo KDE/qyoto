@@ -19,7 +19,6 @@ public class MyWidget : QWidget
 		new QApplication(args);
 
 		MyWidget w = new MyWidget();
-		w.SetGeometry( 100, 100, 200, 120 );
 		w.Show();
 		return QApplication.Exec();
 	}

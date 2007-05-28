@@ -18,7 +18,7 @@ public class MyWidget : QWidget
 
 		Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
 		Connect(slider, SIGNAL("valueChanged(int)"),
-            lcd, SLOT("display(int)"));
+			lcd, SLOT("display(int)"));
 
 		QVBoxLayout layout = new QVBoxLayout();
 		layout.AddWidget(quit);

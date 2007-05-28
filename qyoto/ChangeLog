@@ -1,3 +1,7 @@
+2007-05-28  Arno Rehn  <arno@arnorehn.de>
+
+	* Updated the code of the first tutorials to be more like C++ ones.
+
 2007-05-28  Richard Dale  <rdale@foton.es>
 
 	* Further simplified the marshalling of primitive reference types. As
