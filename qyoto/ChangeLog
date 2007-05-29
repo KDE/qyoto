@@ -1,3 +1,8 @@
+2007-05-29  Richard Dale  <rdale@foton.es>
+
+	* Try Arno's suggestion of 'return (int) (qint64) o->ptr;' in the
+	  QyotoHash f'n to make it compile on all architectures.
+
 2007-05-28  Arno Rehn  <arno@arnorehn.de>
 
 	* Updated the code of the first tutorials to be more like C++ ones.

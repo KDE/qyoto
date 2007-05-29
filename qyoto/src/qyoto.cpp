@@ -1668,7 +1668,7 @@ QyotoHash(void * obj)
 		qint64 key = (qint64) o->ptr;
 		return (int) ((key >> (8 * sizeof(int) - 1)) ^ key);
 	} else {
-		return (int) (o->ptr & 0xFFFFFFFF);
+		return (int) (qint64) o->ptr;
 	}
 }
 
