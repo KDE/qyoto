@@ -258,6 +258,14 @@ namespace Qyoto {
 		protected override bool IsIndexHidden(QModelIndex index) {
 			return (bool) interceptor.Invoke("isIndexHidden#", "isIndexHidden(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
+		[SmokeMethod("selectionChanged(const QItemSelection&, const QItemSelection&)")]
+		protected override void SelectionChanged(QItemSelection selected, QItemSelection deselected) {
+			interceptor.Invoke("selectionChanged##", "selectionChanged(const QItemSelection&, const QItemSelection&)", typeof(void), typeof(QItemSelection), selected, typeof(QItemSelection), deselected);
+		}
+		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
+		protected override void CurrentChanged(QModelIndex current, QModelIndex previous) {
+			interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), previous);
+		}
 		~QListView() {
 			interceptor.Invoke("~QListView", "~QListView()", typeof(void));
 		}

@@ -238,6 +238,9 @@ namespace Qyoto {
 		public override QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), query);
 		}
+		public new void Update() {
+			interceptor.Invoke("update", "update()", typeof(void));
+		}
 		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public virtual void Reset() {
@@ -278,9 +281,9 @@ namespace Qyoto {
 		public void ScrollToBottom() {
 			interceptor.Invoke("scrollToBottom", "scrollToBottom()", typeof(void));
 		}
-		[Q_SLOT("void updateIndex(const QModelIndex&)")]
-		public void UpdateIndex(QModelIndex index) {
-			interceptor.Invoke("updateIndex#", "updateIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
+		[Q_SLOT("void update(const QModelIndex&)")]
+		public void Update(QModelIndex index) {
+			interceptor.Invoke("update#", "update(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
 		protected void SetHorizontalStepsPerItem(int steps) {
 			interceptor.Invoke("setHorizontalStepsPerItem$", "setHorizontalStepsPerItem(int)", typeof(void), typeof(int), steps);

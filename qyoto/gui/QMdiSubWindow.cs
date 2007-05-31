@@ -17,9 +17,10 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QMdiSubWindow), null);
 		}
 		public enum SubWindowOption {
-			AllowOutsideArea = 0x1,
-			RubberBandResize = 0x2,
-			RubberBandMove = 0x4,
+			AllowOutsideAreaHorizontally = 0x1,
+			AllowOutsideAreaVertically = 0x2,
+			RubberBandResize = 0x4,
+			RubberBandMove = 0x8,
 		}
 		[Q_PROPERTY("int", "keyboardSingleStep")]
 		public int KeyboardSingleStep {

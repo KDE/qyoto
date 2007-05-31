@@ -15,19 +15,13 @@ namespace Qyoto {
 		static QSslCipher() {
 			staticInterceptor = new SmokeInvocation(typeof(QSslCipher), null);
 		}
-		public enum Protocol {
-			SslV3 = 0,
-			SslV2 = 1,
-			TlsV1 = 2,
-			Unknown = 3,
-		}
 		public QSslCipher() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslCipher", "QSslCipher()", typeof(void));
 		}
-		public QSslCipher(string name, QSslCipher.Protocol protocol) : this((Type) null) {
+		public QSslCipher(string name, QSsl.SslProtocol protocol) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslCipher$$", "QSslCipher(const QString&, QSslCipher::Protocol)", typeof(void), typeof(string), name, typeof(QSslCipher.Protocol), protocol);
+			interceptor.Invoke("QSslCipher$$", "QSslCipher(const QString&, QSsl::SslProtocol)", typeof(void), typeof(string), name, typeof(QSsl.SslProtocol), protocol);
 		}
 		public QSslCipher(QSslCipher other) : this((Type) null) {
 			CreateProxy();
@@ -64,8 +58,8 @@ namespace Qyoto {
 		public string ProtocolString() {
 			return (string) interceptor.Invoke("protocolString", "protocolString() const", typeof(string));
 		}
-		public QSslCipher.Protocol protocol() {
-			return (QSslCipher.Protocol) interceptor.Invoke("protocol", "protocol() const", typeof(QSslCipher.Protocol));
+		public QSsl.SslProtocol Protocol() {
+			return (QSsl.SslProtocol) interceptor.Invoke("protocol", "protocol() const", typeof(QSsl.SslProtocol));
 		}
 		~QSslCipher() {
 			interceptor.Invoke("~QSslCipher", "~QSslCipher()", typeof(void));

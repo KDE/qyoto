@@ -1,3 +1,7 @@
+2007-05-31  Richard Dale  <rdale@foton.es>
+
+	* Regenerated the Qyoto sources from the release version of Qt 4.3
+
 2007-05-29  Richard Dale  <rdale@foton.es>
 
 	* Try Arno's suggestion of 'return (int) (qint64) o->ptr;' in the

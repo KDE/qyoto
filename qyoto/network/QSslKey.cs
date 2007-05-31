@@ -19,37 +19,37 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QSslKey", "QSslKey()", typeof(void));
 		}
-		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type, QByteArray passPhrase) : this((Type) null) {
+		public QSslKey(QByteArray encoded, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type, QByteArray passPhrase) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$$$#", "QSslKey(const QByteArray&, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType, const QByteArray&)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type, typeof(QByteArray), passPhrase);
+			interceptor.Invoke("QSslKey#$$$#", "QSslKey(const QByteArray&, QSsl::KeyAlgorithm, QSsl::EncodingFormat, QSsl::KeyType, const QByteArray&)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type, typeof(QByteArray), passPhrase);
 		}
-		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type) : this((Type) null) {
+		public QSslKey(QByteArray encoded, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$$$", "QSslKey(const QByteArray&, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type);
+			interceptor.Invoke("QSslKey#$$$", "QSslKey(const QByteArray&, QSsl::KeyAlgorithm, QSsl::EncodingFormat, QSsl::KeyType)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type);
 		}
-		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm, QSsl.EncodingFormat format) : this((Type) null) {
+		public QSslKey(QByteArray encoded, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$$", "QSslKey(const QByteArray&, QSsl::Algorithm, QSsl::EncodingFormat)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format);
+			interceptor.Invoke("QSslKey#$$", "QSslKey(const QByteArray&, QSsl::KeyAlgorithm, QSsl::EncodingFormat)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format);
 		}
-		public QSslKey(QByteArray encoded, QSsl.Algorithm algorithm) : this((Type) null) {
+		public QSslKey(QByteArray encoded, QSsl.KeyAlgorithm algorithm) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$", "QSslKey(const QByteArray&, QSsl::Algorithm)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.Algorithm), algorithm);
+			interceptor.Invoke("QSslKey#$", "QSslKey(const QByteArray&, QSsl::KeyAlgorithm)", typeof(void), typeof(QByteArray), encoded, typeof(QSsl.KeyAlgorithm), algorithm);
 		}
-		public QSslKey(QIODevice device, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type, QByteArray passPhrase) : this((Type) null) {
+		public QSslKey(QIODevice device, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type, QByteArray passPhrase) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$$$#", "QSslKey(QIODevice*, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType, const QByteArray&)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type, typeof(QByteArray), passPhrase);
+			interceptor.Invoke("QSslKey#$$$#", "QSslKey(QIODevice*, QSsl::KeyAlgorithm, QSsl::EncodingFormat, QSsl::KeyType, const QByteArray&)", typeof(void), typeof(QIODevice), device, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type, typeof(QByteArray), passPhrase);
 		}
-		public QSslKey(QIODevice device, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type) : this((Type) null) {
+		public QSslKey(QIODevice device, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format, QSsl.KeyType type) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$$$", "QSslKey(QIODevice*, QSsl::Algorithm, QSsl::EncodingFormat, QSsl::KeyType)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type);
+			interceptor.Invoke("QSslKey#$$$", "QSslKey(QIODevice*, QSsl::KeyAlgorithm, QSsl::EncodingFormat, QSsl::KeyType)", typeof(void), typeof(QIODevice), device, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QSsl.KeyType), type);
 		}
-		public QSslKey(QIODevice device, QSsl.Algorithm algorithm, QSsl.EncodingFormat format) : this((Type) null) {
+		public QSslKey(QIODevice device, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$$", "QSslKey(QIODevice*, QSsl::Algorithm, QSsl::EncodingFormat)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format);
+			interceptor.Invoke("QSslKey#$$", "QSslKey(QIODevice*, QSsl::KeyAlgorithm, QSsl::EncodingFormat)", typeof(void), typeof(QIODevice), device, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format);
 		}
-		public QSslKey(QIODevice device, QSsl.Algorithm algorithm) : this((Type) null) {
+		public QSslKey(QIODevice device, QSsl.KeyAlgorithm algorithm) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSslKey#$", "QSslKey(QIODevice*, QSsl::Algorithm)", typeof(void), typeof(QIODevice), device, typeof(QSsl.Algorithm), algorithm);
+			interceptor.Invoke("QSslKey#$", "QSslKey(QIODevice*, QSsl::KeyAlgorithm)", typeof(void), typeof(QIODevice), device, typeof(QSsl.KeyAlgorithm), algorithm);
 		}
 		public QSslKey(QSslKey other) : this((Type) null) {
 			CreateProxy();
@@ -67,8 +67,8 @@ namespace Qyoto {
 		public QSsl.KeyType type() {
 			return (QSsl.KeyType) interceptor.Invoke("type", "type() const", typeof(QSsl.KeyType));
 		}
-		public QSsl.Algorithm Algorithm() {
-			return (QSsl.Algorithm) interceptor.Invoke("algorithm", "algorithm() const", typeof(QSsl.Algorithm));
+		public QSsl.KeyAlgorithm Algorithm() {
+			return (QSsl.KeyAlgorithm) interceptor.Invoke("algorithm", "algorithm() const", typeof(QSsl.KeyAlgorithm));
 		}
 		public QByteArray ToPem(QByteArray passPhrase) {
 			return (QByteArray) interceptor.Invoke("toPem#", "toPem(const QByteArray&) const", typeof(QByteArray), typeof(QByteArray), passPhrase);

@@ -212,7 +212,7 @@ namespace Qyoto {
 			CC_Q3ListView = 6,
 			CC_Dial = 7,
 			CC_GroupBox = 8,
-			CC_MDIControls = 9,
+			CC_MdiControls = 9,
 			CC_CustomBase = 0xf0000000,
 		}
 		public enum SubControl : uint {
@@ -257,9 +257,9 @@ namespace Qyoto {
 			SC_GroupBoxLabel = 0x00000002,
 			SC_GroupBoxContents = 0x00000004,
 			SC_GroupBoxFrame = 0x00000008,
-			SC_MDIMinButton = 0x00000001,
-			SC_MDINormalButton = 0x00000002,
-			SC_MDICloseButton = 0x00000004,
+			SC_MdiMinButton = 0x00000001,
+			SC_MdiNormalButton = 0x00000002,
+			SC_MdiCloseButton = 0x00000004,
 			SC_All = 0xffffffff,
 		}
 		public enum PixelMetric : uint {
@@ -309,8 +309,10 @@ namespace Qyoto {
 			PM_DialogButtonsSeparator = 43,
 			PM_DialogButtonsButtonWidth = 44,
 			PM_DialogButtonsButtonHeight = 45,
-			PM_MDIFrameWidth = 46,
-			PM_MDIMinimizedWidth = 47,
+			PM_MdiSubWindowFrameWidth = 46,
+			PM_MDIFrameWidth = PM_MdiSubWindowFrameWidth,
+			PM_MdiSubWindowMinimizedWidth = 47,
+			PM_MDIMinimizedWidth = PM_MdiSubWindowMinimizedWidth,
 			PM_HeaderMargin = 48,
 			PM_HeaderMarkSize = 49,
 			PM_HeaderGripMargin = 50,
@@ -375,7 +377,7 @@ namespace Qyoto {
 			CT_DialogButtons = 20,
 			CT_HeaderSection = 21,
 			CT_GroupBox = 22,
-			CT_MDIControls = 23,
+			CT_MdiControls = 23,
 			CT_CustomBase = 0xf0000000,
 		}
 		public enum StyleHint : uint {

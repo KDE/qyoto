@@ -24,11 +24,6 @@ namespace Qyoto {
 			CreationOrder = 0,
 			StackingOrder = 1,
 		}
-		[Q_PROPERTY("bool", "scrollBarsEnabled")]
-		public bool ScrollBarsEnabled {
-			get { return (bool) interceptor.Invoke("scrollBarsEnabled", "scrollBarsEnabled()", typeof(bool)); }
-			set { interceptor.Invoke("setScrollBarsEnabled$", "setScrollBarsEnabled(bool)", typeof(void), typeof(bool), value); }
-		}
 		[Q_PROPERTY("QBrush", "background")]
 		public QBrush Background {
 			get { return (QBrush) interceptor.Invoke("background", "background()", typeof(QBrush)); }
@@ -49,6 +44,9 @@ namespace Qyoto {
 		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
+		}
+		public QMdiSubWindow CurrentSubWindow() {
+			return (QMdiSubWindow) interceptor.Invoke("currentSubWindow", "currentSubWindow() const", typeof(QMdiSubWindow));
 		}
 		public QMdiSubWindow ActiveSubWindow() {
 			return (QMdiSubWindow) interceptor.Invoke("activeSubWindow", "activeSubWindow() const", typeof(QMdiSubWindow));

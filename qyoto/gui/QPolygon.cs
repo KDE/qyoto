@@ -101,8 +101,8 @@ namespace Qyoto {
 		public void PutPoints(int index, int nPoints, QPolygon from) {
 			interceptor.Invoke("putPoints$$#", "putPoints(int, int, const QPolygon&)", typeof(void), typeof(int), index, typeof(int), nPoints, typeof(QPolygon), from);
 		}
-		public bool ContainsPoint(QPointF pt, Qt.FillRule fillRule) {
-			return (bool) interceptor.Invoke("containsPoint#$", "containsPoint(const QPointF&, Qt::FillRule) const", typeof(bool), typeof(QPointF), pt, typeof(Qt.FillRule), fillRule);
+		public bool ContainsPoint(QPoint pt, Qt.FillRule fillRule) {
+			return (bool) interceptor.Invoke("containsPoint#$", "containsPoint(const QPoint&, Qt::FillRule) const", typeof(bool), typeof(QPoint), pt, typeof(Qt.FillRule), fillRule);
 		}
 		public QPolygon United(QPolygon r) {
 			return (QPolygon) interceptor.Invoke("united#", "united(const QPolygon&) const", typeof(QPolygon), typeof(QPolygon), r);

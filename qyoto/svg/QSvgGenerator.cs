@@ -31,8 +31,11 @@ namespace Qyoto {
 		public void SetOutputDevice(QIODevice outputDevice) {
 			interceptor.Invoke("setOutputDevice#", "setOutputDevice(QIODevice*)", typeof(void), typeof(QIODevice), outputDevice);
 		}
-		public void SetResolution(int resolution) {
-			interceptor.Invoke("setResolution$", "setResolution(int)", typeof(void), typeof(int), resolution);
+		public void SetResolution(int dpi) {
+			interceptor.Invoke("setResolution$", "setResolution(int)", typeof(void), typeof(int), dpi);
+		}
+		public int Resolution() {
+			return (int) interceptor.Invoke("resolution", "resolution() const", typeof(int));
 		}
 		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {

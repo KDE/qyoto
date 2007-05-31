@@ -291,8 +291,8 @@ namespace Qyoto {
 		void FilesSelected(List<string> files);
 		[Q_SIGNAL("void currentChanged(const QString&)")]
 		void CurrentChanged(string path);
-		[Q_SIGNAL("void dirEntered(const QString&)")]
-		void DirEntered(string directory);
+		[Q_SIGNAL("void directoryEntered(const QString&)")]
+		void DirectoryEntered(string directory);
 		[Q_SIGNAL("void filterSelected(const QString&)")]
 		void FilterSelected(string filter);
 	}

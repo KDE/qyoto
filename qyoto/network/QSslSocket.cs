@@ -22,12 +22,6 @@ namespace Qyoto {
 			SslClientMode = 1,
 			SslServerMode = 2,
 		}
-		public enum Protocol {
-			SslV3 = 0,
-			SslV2 = 1,
-			TlsV1 = 2,
-			AnyProtocol = 3,
-		}
 		// QList<QSslError> sslErrors(); >>>> NOT CONVERTED
 		public QSslSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -58,11 +52,11 @@ namespace Qyoto {
 		public bool IsEncrypted() {
 			return (bool) interceptor.Invoke("isEncrypted", "isEncrypted() const", typeof(bool));
 		}
-		public QSslSocket.Protocol protocol() {
-			return (QSslSocket.Protocol) interceptor.Invoke("protocol", "protocol() const", typeof(QSslSocket.Protocol));
+		public QSsl.SslProtocol Protocol() {
+			return (QSsl.SslProtocol) interceptor.Invoke("protocol", "protocol() const", typeof(QSsl.SslProtocol));
 		}
-		public void SetProtocol(QSslSocket.Protocol protocol) {
-			interceptor.Invoke("setProtocol$", "setProtocol(QSslSocket::Protocol)", typeof(void), typeof(QSslSocket.Protocol), protocol);
+		public void SetProtocol(QSsl.SslProtocol protocol) {
+			interceptor.Invoke("setProtocol$", "setProtocol(QSsl::SslProtocol)", typeof(void), typeof(QSsl.SslProtocol), protocol);
 		}
 		[SmokeMethod("bytesAvailable() const")]
 		public override long BytesAvailable() {
@@ -114,14 +108,14 @@ namespace Qyoto {
 		public void SetPrivateKey(QSslKey key) {
 			interceptor.Invoke("setPrivateKey#", "setPrivateKey(const QSslKey&)", typeof(void), typeof(QSslKey), key);
 		}
-		public void SetPrivateKey(string fileName, QSsl.Algorithm algorithm, QSsl.EncodingFormat format, QByteArray passPhrase) {
-			interceptor.Invoke("setPrivateKey$$$#", "setPrivateKey(const QString&, QSsl::Algorithm, QSsl::EncodingFormat, const QByteArray&)", typeof(void), typeof(string), fileName, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QByteArray), passPhrase);
+		public void SetPrivateKey(string fileName, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format, QByteArray passPhrase) {
+			interceptor.Invoke("setPrivateKey$$$#", "setPrivateKey(const QString&, QSsl::KeyAlgorithm, QSsl::EncodingFormat, const QByteArray&)", typeof(void), typeof(string), fileName, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format, typeof(QByteArray), passPhrase);
 		}
-		public void SetPrivateKey(string fileName, QSsl.Algorithm algorithm, QSsl.EncodingFormat format) {
-			interceptor.Invoke("setPrivateKey$$$", "setPrivateKey(const QString&, QSsl::Algorithm, QSsl::EncodingFormat)", typeof(void), typeof(string), fileName, typeof(QSsl.Algorithm), algorithm, typeof(QSsl.EncodingFormat), format);
+		public void SetPrivateKey(string fileName, QSsl.KeyAlgorithm algorithm, QSsl.EncodingFormat format) {
+			interceptor.Invoke("setPrivateKey$$$", "setPrivateKey(const QString&, QSsl::KeyAlgorithm, QSsl::EncodingFormat)", typeof(void), typeof(string), fileName, typeof(QSsl.KeyAlgorithm), algorithm, typeof(QSsl.EncodingFormat), format);
 		}
-		public void SetPrivateKey(string fileName, QSsl.Algorithm algorithm) {
-			interceptor.Invoke("setPrivateKey$$", "setPrivateKey(const QString&, QSsl::Algorithm)", typeof(void), typeof(string), fileName, typeof(QSsl.Algorithm), algorithm);
+		public void SetPrivateKey(string fileName, QSsl.KeyAlgorithm algorithm) {
+			interceptor.Invoke("setPrivateKey$$", "setPrivateKey(const QString&, QSsl::KeyAlgorithm)", typeof(void), typeof(string), fileName, typeof(QSsl.KeyAlgorithm), algorithm);
 		}
 		public void SetPrivateKey(string fileName) {
 			interceptor.Invoke("setPrivateKey$", "setPrivateKey(const QString&)", typeof(void), typeof(string), fileName);

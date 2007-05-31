@@ -13,9 +13,9 @@ namespace Qyoto {
 		static QGLFramebufferObject() {
 			staticInterceptor = new SmokeInvocation(typeof(QGLFramebufferObject), null);
 		}
-		public enum Attachments {
-			NoDepthStencil = 0,
-			DepthStencil = 1,
+		public enum Attachment {
+			NoAttachment = 0,
+			CombinedDepthStencil = 1,
 			Depth = 2,
 		}
 		public QGLFramebufferObject(QSize size, int target) : this((Type) null) {
@@ -34,29 +34,29 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QGLFramebufferObject$$", "QGLFramebufferObject(int, int)", typeof(void), typeof(int), width, typeof(int), height);
 		}
-		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachments attachments, int target, int internal_format) : this((Type) null) {
+		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachment attachment, int target, int internal_format) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFramebufferObject#$$$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachments, GLenum, GLenum)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target, typeof(int), internal_format);
+			interceptor.Invoke("QGLFramebufferObject#$$$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachment, GLenum, GLenum)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachment), attachment, typeof(int), target, typeof(int), internal_format);
 		}
-		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachments attachments, int target) : this((Type) null) {
+		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachment attachment, int target) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFramebufferObject#$$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachments, GLenum)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target);
+			interceptor.Invoke("QGLFramebufferObject#$$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachment, GLenum)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachment), attachment, typeof(int), target);
 		}
-		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachments attachments) : this((Type) null) {
+		public QGLFramebufferObject(QSize size, QGLFramebufferObject.Attachment attachment) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFramebufferObject#$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachments)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachments), attachments);
+			interceptor.Invoke("QGLFramebufferObject#$", "QGLFramebufferObject(const QSize&, QGLFramebufferObject::Attachment)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObject.Attachment), attachment);
 		}
-		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachments attachments, int target, int internal_format) : this((Type) null) {
+		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachment attachment, int target, int internal_format) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFramebufferObject$$$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachments, GLenum, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target, typeof(int), internal_format);
+			interceptor.Invoke("QGLFramebufferObject$$$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachment, GLenum, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachment), attachment, typeof(int), target, typeof(int), internal_format);
 		}
-		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachments attachments, int target) : this((Type) null) {
+		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachment attachment, int target) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFramebufferObject$$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachments, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachments), attachments, typeof(int), target);
+			interceptor.Invoke("QGLFramebufferObject$$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachment, GLenum)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachment), attachment, typeof(int), target);
 		}
-		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachments attachments) : this((Type) null) {
+		public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachment attachment) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFramebufferObject$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachments)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachments), attachments);
+			interceptor.Invoke("QGLFramebufferObject$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachment)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachment), attachment);
 		}
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
@@ -76,8 +76,8 @@ namespace Qyoto {
 		public QImage ToImage() {
 			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
 		}
-		public QGLFramebufferObject.Attachments attachments() {
-			return (QGLFramebufferObject.Attachments) interceptor.Invoke("attachments", "attachments() const", typeof(QGLFramebufferObject.Attachments));
+		public QGLFramebufferObject.Attachment attachment() {
+			return (QGLFramebufferObject.Attachment) interceptor.Invoke("attachment", "attachment() const", typeof(QGLFramebufferObject.Attachment));
 		}
 		[SmokeMethod("paintEngine() const")]
 		public override QPaintEngine PaintEngine() {

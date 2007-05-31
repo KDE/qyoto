@@ -13,8 +13,8 @@ namespace Qyoto {
 		}
 		public enum SslError {
 			NoError = 0,
-			UnableToGetIssuerCert = 1,
-			UnableToDecryptCertSignature = 2,
+			UnableToGetIssuerCertificate = 1,
+			UnableToDecryptCertificateSignature = 2,
 			UnableToDecodeIssuerPublicKey = 3,
 			CertificateSignatureFailed = 4,
 			CertificateNotYetValid = 5,

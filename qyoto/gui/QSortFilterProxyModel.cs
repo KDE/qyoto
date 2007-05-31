@@ -39,10 +39,10 @@ namespace Qyoto {
 			get { return (Qt.CaseSensitivity) interceptor.Invoke("sortCaseSensitivity", "sortCaseSensitivity()", typeof(Qt.CaseSensitivity)); }
 			set { interceptor.Invoke("setSortCaseSensitivity$", "setSortCaseSensitivity(Qt::CaseSensitivity)", typeof(void), typeof(Qt.CaseSensitivity), value); }
 		}
-		[Q_PROPERTY("bool", "sortLocalAware")]
-		public bool SortLocalAware {
-			get { return (bool) interceptor.Invoke("sortLocalAware", "sortLocalAware()", typeof(bool)); }
-			set { interceptor.Invoke("setSortLocalAware$", "setSortLocalAware(bool)", typeof(void), typeof(bool), value); }
+		[Q_PROPERTY("bool", "isSortLocaleAware")]
+		public bool IsSortLocaleAware {
+			get { return (bool) interceptor.Invoke("isSortLocaleAware", "isSortLocaleAware()", typeof(bool)); }
+			set { interceptor.Invoke("setSortLocaleAware$", "setSortLocaleAware(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
@@ -133,13 +133,25 @@ namespace Qyoto {
 		public override bool SetData(QModelIndex index, QVariant value, int role) {
 			return (bool) interceptor.Invoke("setData##$", "setData(const QModelIndex&, const QVariant&, int)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value, typeof(int), role);
 		}
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
+		public override bool SetData(QModelIndex index, QVariant value) {
+			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
+		}
 		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
 			return (QVariant) interceptor.Invoke("headerData$$$", "headerData(int, Qt::Orientation, int) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(int), role);
 		}
+		[SmokeMethod("headerData(int, Qt::Orientation) const")]
+		public override QVariant HeaderData(int section, Qt.Orientation orientation) {
+			return (QVariant) interceptor.Invoke("headerData$$", "headerData(int, Qt::Orientation) const", typeof(QVariant), typeof(int), section, typeof(Qt.Orientation), orientation);
+		}
 		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&, int)")]
 		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
 			return (bool) interceptor.Invoke("setHeaderData$$#$", "setHeaderData(int, Qt::Orientation, const QVariant&, int)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value, typeof(int), role);
+		}
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&)")]
+		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
+			return (bool) interceptor.Invoke("setHeaderData$$#", "setHeaderData(int, Qt::Orientation, const QVariant&)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value);
 		}
 		[SmokeMethod("mimeData(const QModelIndexList&) const")]
 		public override QMimeData MimeData(List<QModelIndex> indexes) {

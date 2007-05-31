@@ -14,13 +14,20 @@ namespace Qyoto {
 			Pem = 0,
 			Der = 1,
 		}
-		public enum Algorithm {
+		public enum KeyAlgorithm {
 			Rsa = 0,
 			Dsa = 1,
 		}
-		public enum AlternateNameEntry {
+		public enum AlternateNameEntryType {
 			EmailEntry = 0,
 			DnsEntry = 1,
+		}
+		public enum SslProtocol {
+			SslV3 = 0,
+			SslV2 = 1,
+			TlsV1 = 2,
+			AnyProtocol = 3,
+			UnknownProtocol = -1,
 		}
 	}
 }

@@ -20,9 +20,9 @@ namespace Qyoto {
 			DockWidgetClosable = 0x01,
 			DockWidgetMovable = 0x02,
 			DockWidgetFloatable = 0x04,
-			DockWidgetVerticalTitleBar = 0x10,
+			DockWidgetVerticalTitleBar = 0x08,
 			DockWidgetFeatureMask = 0x0f,
-			AllDockWidgetFeatures = DockWidgetFeatureMask,
+			AllDockWidgetFeatures = DockWidgetClosable|DockWidgetMovable|DockWidgetFloatable,
 			NoDockWidgetFeatures = 0x00,
 			Reserved = 0xff,
 		}

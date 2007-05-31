@@ -186,14 +186,8 @@ namespace Qyoto {
 		public bool SectionsHidden() {
 			return (bool) interceptor.Invoke("sectionsHidden", "sectionsHidden() const", typeof(bool));
 		}
-		public QByteArray SaveState(int version) {
-			return (QByteArray) interceptor.Invoke("saveState$", "saveState(int) const", typeof(QByteArray), typeof(int), version);
-		}
 		public QByteArray SaveState() {
 			return (QByteArray) interceptor.Invoke("saveState", "saveState() const", typeof(QByteArray));
-		}
-		public bool RestoreState(QByteArray state, int version) {
-			return (bool) interceptor.Invoke("restoreState#$", "restoreState(const QByteArray&, int)", typeof(bool), typeof(QByteArray), state, typeof(int), version);
 		}
 		public bool RestoreState(QByteArray state) {
 			return (bool) interceptor.Invoke("restoreState#", "restoreState(const QByteArray&)", typeof(bool), typeof(QByteArray), state);
@@ -364,8 +358,8 @@ namespace Qyoto {
 		void SectionPressed(int logicalIndex);
 		[Q_SIGNAL("void sectionClicked(int)")]
 		void SectionClicked(int logicalIndex);
-		[Q_SIGNAL("void sectionTouched(int)")]
-		void SectionTouched(int logicalIndex);
+		[Q_SIGNAL("void sectionEntered(int)")]
+		void SectionEntered(int logicalIndex);
 		[Q_SIGNAL("void sectionDoubleClicked(int)")]
 		void SectionDoubleClicked(int logicalIndex);
 		[Q_SIGNAL("void sectionCountChanged(int, int)")]

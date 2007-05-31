@@ -110,6 +110,7 @@ namespace Qyoto {
 			TextDontPrint = 0x4000,
 			TextIncludeTrailingSpaces = 0x08000000,
 			TextHideMnemonic = 0x8000,
+			TextJustificationForced = 0x10000,
 		}
 		public enum TextElideMode {
 			ElideLeft = 0,
@@ -234,7 +235,8 @@ namespace Qyoto {
 			WA_MSWindowsUseDirect3D = 94,
 			WA_CanHostQMdiSubWindowTitleBar = 95,
 			WA_MacAlwaysShowToolWindow = 96,
-			WA_AttributeCount = 97,
+			WA_StyleSheet = 97,
+			WA_AttributeCount = 98,
 		}
 		public enum ApplicationAttribute {
 			AA_ImmediateWidgetCreation = 0,

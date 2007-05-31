@@ -18,8 +18,8 @@ namespace Qyoto {
 		}
 		public enum ChildIndicatorPolicy {
 			ShowIndicator = 0,
-			HideIndicator = 1,
-			ShowForChildren = 2,
+			DontShowIndicator = 1,
+			DontShowIndicatorWhenChildless = 2,
 		}
 		public QTreeWidgetItem(int type) : this((Type) null) {
 			CreateProxy();
@@ -110,11 +110,11 @@ namespace Qyoto {
 		public bool IsExpanded() {
 			return (bool) interceptor.Invoke("isExpanded", "isExpanded() const", typeof(bool));
 		}
-		public void SetSpanning(bool span) {
-			interceptor.Invoke("setSpanning$", "setSpanning(bool)", typeof(void), typeof(bool), span);
+		public void SetFirstColumnSpanned(bool span) {
+			interceptor.Invoke("setFirstColumnSpanned$", "setFirstColumnSpanned(bool)", typeof(void), typeof(bool), span);
 		}
-		public bool IsSpanning() {
-			return (bool) interceptor.Invoke("isSpanning", "isSpanning() const", typeof(bool));
+		public bool IsFirstColumnSpanned() {
+			return (bool) interceptor.Invoke("isFirstColumnSpanned", "isFirstColumnSpanned() const", typeof(bool));
 		}
 		public void SetDisabled(bool disabled) {
 			interceptor.Invoke("setDisabled$", "setDisabled(bool)", typeof(void), typeof(bool), disabled);

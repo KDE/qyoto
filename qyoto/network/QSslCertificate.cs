@@ -24,7 +24,7 @@ namespace Qyoto {
 			CountryName = 4,
 			StateOrProvinceName = 5,
 		}
-		// QMultiMap<QSsl::AlternateNameEntry, QString> alternateSubjectNames(); >>>> NOT CONVERTED
+		// QMultiMap<QSsl::AlternateNameEntryType, QString> alternateSubjectNames(); >>>> NOT CONVERTED
 		public QSslCertificate(QIODevice device, QSsl.EncodingFormat format) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslCertificate#$", "QSslCertificate(QIODevice*, QSsl::EncodingFormat)", typeof(void), typeof(QIODevice), device, typeof(QSsl.EncodingFormat), format);
@@ -89,11 +89,11 @@ namespace Qyoto {
 		public string subjectInfo(QByteArray tag) {
 			return (string) interceptor.Invoke("subjectInfo#", "subjectInfo(const QByteArray&) const", typeof(string), typeof(QByteArray), tag);
 		}
-		public QDateTime NotValidBefore() {
-			return (QDateTime) interceptor.Invoke("notValidBefore", "notValidBefore() const", typeof(QDateTime));
+		public QDateTime EffectiveDate() {
+			return (QDateTime) interceptor.Invoke("effectiveDate", "effectiveDate() const", typeof(QDateTime));
 		}
-		public QDateTime NotValidAfter() {
-			return (QDateTime) interceptor.Invoke("notValidAfter", "notValidAfter() const", typeof(QDateTime));
+		public QDateTime ExpiryDate() {
+			return (QDateTime) interceptor.Invoke("expiryDate", "expiryDate() const", typeof(QDateTime));
 		}
 		public QSslKey PublicKey() {
 			return (QSslKey) interceptor.Invoke("publicKey", "publicKey() const", typeof(QSslKey));

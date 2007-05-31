@@ -157,11 +157,11 @@ namespace Qyoto {
 		public void SetItemExpanded(QTreeWidgetItem item, bool expand) {
 			interceptor.Invoke("setItemExpanded#$", "setItemExpanded(const QTreeWidgetItem*, bool)", typeof(void), typeof(QTreeWidgetItem), item, typeof(bool), expand);
 		}
-		public bool IsItemSpanning(QTreeWidgetItem item) {
-			return (bool) interceptor.Invoke("isItemSpanning#", "isItemSpanning(const QTreeWidgetItem*) const", typeof(bool), typeof(QTreeWidgetItem), item);
+		public bool IsFirstItemColumnSpanned(QTreeWidgetItem item) {
+			return (bool) interceptor.Invoke("isFirstItemColumnSpanned#", "isFirstItemColumnSpanned(const QTreeWidgetItem*) const", typeof(bool), typeof(QTreeWidgetItem), item);
 		}
-		public void SetItemSpanning(QTreeWidgetItem item, bool span) {
-			interceptor.Invoke("setItemSpanning#$", "setItemSpanning(const QTreeWidgetItem*, bool)", typeof(void), typeof(QTreeWidgetItem), item, typeof(bool), span);
+		public void SetFirstItemColumnSpanned(QTreeWidgetItem item, bool span) {
+			interceptor.Invoke("setFirstItemColumnSpanned#$", "setFirstItemColumnSpanned(const QTreeWidgetItem*, bool)", typeof(void), typeof(QTreeWidgetItem), item, typeof(bool), span);
 		}
 		public QTreeWidgetItem ItemAbove(QTreeWidgetItem item) {
 			return (QTreeWidgetItem) interceptor.Invoke("itemAbove#", "itemAbove(const QTreeWidgetItem*) const", typeof(QTreeWidgetItem), typeof(QTreeWidgetItem), item);
