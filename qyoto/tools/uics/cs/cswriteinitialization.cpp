@@ -746,7 +746,14 @@ void WriteInitialization::writeProperties(const QString &varName,
             propertyValue = p->elementEnum();
             if (propertyValue.contains(QLatin1String("::"))) {
                 QStringList parts = propertyValue.split("::");
-                propertyValue = parts[0] + QLatin1String(".") + propertyName.left(1).toUpper() + propertyName.mid(1) + QLatin1String(".") + parts[1];
+                QString csname = propertyName.left(1).toUpper() + propertyName.mid(1);
+                // hack for differing enum names
+                if (csname == "FrameShadow") {
+                    csname = "Shadow";
+                } else if (csname == "FrameShape") {
+                    csname = "Shape";
+                }
+                propertyValue = parts[0] + QLatin1String(".") + csname + QLatin1String(".") + parts[1];
             }
             if (!p->elementEnum().contains(QLatin1String("::")))
                 propertyValue.prepend(className + QLatin1String(QLatin1String(".")));
