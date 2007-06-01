@@ -1,3 +1,7 @@
+2007-06-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Special cased the QApplication constructor call to work correctly
+
 2007-05-31  Arno Rehn  <arno@arnorehn.de>
 
 	* Added a hack in uics for QFrame.Shape and QFrame.Shadow

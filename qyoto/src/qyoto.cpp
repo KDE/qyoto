@@ -584,6 +584,16 @@ public:
 			ptr = _smoke->cast(_o->ptr, _o->classId, method().classId);
 		}
 		_items = -1;
+		
+		/*
+		 * special case the QApplication constructor call
+		 * the int reference has to stay valid all the time, so create an additional pointer here
+		 */
+		if (isConstructor() && strcmp(_smoke->methodNames[method().name], "QApplication") == 0) {
+			int* i = new int(_sp[1].s_int);
+			_stack[1].s_voidp = i;
+		}
+		
 		(*fn)(method().method, ptr, _stack);
 
 		if (isConstructor()) {
