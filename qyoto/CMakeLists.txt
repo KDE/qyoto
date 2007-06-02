@@ -8,6 +8,7 @@ SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocation.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeMarshallers.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Qyoto.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/src/QyotoMetaData.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/src/AssemblyInfo.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/network/*.cs
@@ -16,6 +17,8 @@ SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocation.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/svg/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/opengl/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/qdbus/*.cs)
+
+SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
 
 # find Qt4
 FIND_PACKAGE (Qt4 REQUIRED)
@@ -27,10 +30,14 @@ INCLUDE_DIRECTORIES (${QT_INCLUDES} ${CMAKE_SOURCE_DIR}/smoke)
 ADD_LIBRARY (qyoto MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -debug -define:DEBUG -unsafe -warn:0 -out:qt-dotnet.dll -target:library ${SRC_CS}
-	COMMENT "Building qt-dotnet.dll")
+ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -debug -define:DEBUG -unsafe -warn:0
+			-out:qt-dotnet.dll -target:library -keyfile:${KEYFILE} ${SRC_CS}
+			COMMENT "Building qt-dotnet.dll")
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
+
+INSTALL(TARGETS qyoto LIBRARY DESTINATION lib)
+INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${GACUTIL_PATH} -i ${CMAKE_CURRENT_BINARY_DIR}/qt-dotnet.dll)")
 
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(examples)

@@ -586,10 +586,11 @@ public:
 		_items = -1;
 		
 		/*
-		 * special case the QApplication constructor call
+		 * special case the QApplication/QCoreApplication constructor call
 		 * the int reference has to stay valid all the time, so create an additional pointer here
 		 */
-		if (isConstructor() && strcmp(_smoke->methodNames[method().name], "QApplication") == 0) {
+		if (isConstructor() && (   strcmp(_smoke->methodNames[method().name], "QApplication") == 0
+					|| strcmp(_smoke->methodNames[method().name], "QCoreApplication") == 0)) {
 			int* i = new int(_sp[1].s_int);
 			_stack[1].s_voidp = i;
 		}

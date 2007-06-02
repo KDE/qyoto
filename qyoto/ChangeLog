@@ -1,3 +1,13 @@
+2007-06-02  Arno Rehn  <arno@arnorehn.de>
+
+	* Special cased the QCoreApplication constructor, too.
+	* Added AssemblyInfo.cs
+	* Added a keyfile for strong naming the qt-dotnet assembly so it can
+	  be added to the GAC. It won't be generated at compile time since there
+	  might occur problems when it is regenerated and the assembly is reinstalled.
+	* Added rules in CMakeLists.txt for installing libqyoto.so.
+	* Added rules in CMakeLists.txt for installing qt-dotnet.dll into the GAC.
+
 2007-06-01  Arno Rehn  <arno@arnorehn.de>
 
 	* Special cased the QApplication constructor call to work correctly
