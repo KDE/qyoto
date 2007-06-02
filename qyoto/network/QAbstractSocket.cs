@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQAbstractSocketSignals"></see> for signals emitted by QAbstractSocket
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractSocketSignals"></see> for signals emitted by QAbstractSocket
+	/// </remarks>
 
 	[SmokeClass("QAbstractSocket")]
 	public abstract class QAbstractSocket : QIODevice {

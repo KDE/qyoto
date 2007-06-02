@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQSplashScreenSignals"></see> for signals emitted by QSplashScreen
-	///</remarks>
+	/// <remarks> See <see cref="IQSplashScreenSignals"></see> for signals emitted by QSplashScreen
+	/// </remarks>
 
 	[SmokeClass("QSplashScreen")]
 	public class QSplashScreen : QWidget, IDisposable {

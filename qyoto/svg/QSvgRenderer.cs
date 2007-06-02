@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQSvgRendererSignals"></see> for signals emitted by QSvgRenderer
-	///</remarks>
+	/// <remarks> See <see cref="IQSvgRendererSignals"></see> for signals emitted by QSvgRenderer
+	/// </remarks>
 
 	[SmokeClass("QSvgRenderer")]
 	public class QSvgRenderer : QObject, IDisposable {

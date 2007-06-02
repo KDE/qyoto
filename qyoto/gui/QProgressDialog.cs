@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQProgressDialogSignals"></see> for signals emitted by QProgressDialog
-	///</remarks>
+	/// <remarks> See <see cref="IQProgressDialogSignals"></see> for signals emitted by QProgressDialog
+	/// </remarks>
 
 	[SmokeClass("QProgressDialog")]
 	public class QProgressDialog : QDialog, IDisposable {

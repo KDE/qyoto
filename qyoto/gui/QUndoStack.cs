@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQUndoStackSignals"></see> for signals emitted by QUndoStack
-	///</remarks>
+	/// <remarks> See <see cref="IQUndoStackSignals"></see> for signals emitted by QUndoStack
+	/// </remarks>
 
 	[SmokeClass("QUndoStack")]
 	public class QUndoStack : QObject, IDisposable {

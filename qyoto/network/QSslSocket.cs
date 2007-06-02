@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQSslSocketSignals"></see> for signals emitted by QSslSocket
-	///</remarks>
+	/// <remarks> See <see cref="IQSslSocketSignals"></see> for signals emitted by QSslSocket
+	/// </remarks>
 
 	[SmokeClass("QSslSocket")]
 	public class QSslSocket : QTcpSocket, IDisposable {

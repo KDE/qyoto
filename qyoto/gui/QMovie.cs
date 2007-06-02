@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQMovieSignals"></see> for signals emitted by QMovie
-	///</remarks>
+	/// <remarks> See <see cref="IQMovieSignals"></see> for signals emitted by QMovie
+	/// </remarks>
 
 	[SmokeClass("QMovie")]
 	public class QMovie : QObject, IDisposable {

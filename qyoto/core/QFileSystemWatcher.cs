@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQFileSystemWatcherSignals"></see> for signals emitted by QFileSystemWatcher
-	///</remarks>
+	/// <remarks> See <see cref="IQFileSystemWatcherSignals"></see> for signals emitted by QFileSystemWatcher
+	/// </remarks>
 
 	[SmokeClass("QFileSystemWatcher")]
 	public class QFileSystemWatcher : QObject, IDisposable {

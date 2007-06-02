@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQDialogButtonBoxSignals"></see> for signals emitted by QDialogButtonBox
-	///</remarks>
+	/// <remarks> See <see cref="IQDialogButtonBoxSignals"></see> for signals emitted by QDialogButtonBox
+	/// </remarks>
 
 	[SmokeClass("QDialogButtonBox")]
 	public class QDialogButtonBox : QWidget, IDisposable {

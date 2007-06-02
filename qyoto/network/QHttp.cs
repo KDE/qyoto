@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQHttpSignals"></see> for signals emitted by QHttp
-	///</remarks>
+	/// <remarks> See <see cref="IQHttpSignals"></see> for signals emitted by QHttp
+	/// </remarks>
 
 	[SmokeClass("QHttp")]
 	public class QHttp : QObject, IDisposable {

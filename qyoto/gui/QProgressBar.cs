@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQProgressBarSignals"></see> for signals emitted by QProgressBar
-	///</remarks>
+	/// <remarks> See <see cref="IQProgressBarSignals"></see> for signals emitted by QProgressBar
+	/// </remarks>
 
 	[SmokeClass("QProgressBar")]
 	public class QProgressBar : QWidget, IDisposable {

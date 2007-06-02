@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQGraphicsTextItemSignals"></see> for signals emitted by QGraphicsTextItem
-	///</remarks>
+	/// <remarks> See <see cref="IQGraphicsTextItemSignals"></see> for signals emitted by QGraphicsTextItem
+	/// </remarks>
 
 	[SmokeClass("QGraphicsTextItem")]
 	public class QGraphicsTextItem : QObject, IQGraphicsItem, IDisposable {
@@ -19,6 +19,16 @@ namespace Qyoto {
 		}
 		public const int Type = 8;
 
+		[Q_PROPERTY("bool", "openExternalLinks")]
+		public bool OpenExternalLinks {
+			get { return (bool) interceptor.Invoke("openExternalLinks", "openExternalLinks()", typeof(bool)); }
+			set { interceptor.Invoke("setOpenExternalLinks$", "setOpenExternalLinks(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("QTextCursor", "textCursor")]
+		public QTextCursor TextCursor {
+			get { return (QTextCursor) interceptor.Invoke("textCursor", "textCursor()", typeof(QTextCursor)); }
+			set { interceptor.Invoke("setTextCursor#", "setTextCursor(QTextCursor)", typeof(void), typeof(QTextCursor), value); }
+		}
 		public QGraphicsTextItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsTextItem##", "QGraphicsTextItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);
@@ -115,18 +125,6 @@ namespace Qyoto {
 		}
 		public int TextInteractionFlags() {
 			return (int) interceptor.Invoke("textInteractionFlags", "textInteractionFlags() const", typeof(int));
-		}
-		public void SetOpenExternalLinks(bool open) {
-			interceptor.Invoke("setOpenExternalLinks$", "setOpenExternalLinks(bool)", typeof(void), typeof(bool), open);
-		}
-		public bool OpenExternalLinks() {
-			return (bool) interceptor.Invoke("openExternalLinks", "openExternalLinks() const", typeof(bool));
-		}
-		public void SetTextCursor(QTextCursor cursor) {
-			interceptor.Invoke("setTextCursor#", "setTextCursor(const QTextCursor&)", typeof(void), typeof(QTextCursor), cursor);
-		}
-		public QTextCursor TextCursor() {
-			return (QTextCursor) interceptor.Invoke("textCursor", "textCursor() const", typeof(QTextCursor));
 		}
 		[SmokeMethod("sceneEvent(QEvent*)")]
 		protected virtual bool SceneEvent(QEvent arg1) {

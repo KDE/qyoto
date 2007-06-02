@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQAbstractEventDispatcherSignals"></see> for signals emitted by QAbstractEventDispatcher
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractEventDispatcherSignals"></see> for signals emitted by QAbstractEventDispatcher
+	/// </remarks>
 
 	[SmokeClass("QAbstractEventDispatcher")]
 	public abstract class QAbstractEventDispatcher : QObject {

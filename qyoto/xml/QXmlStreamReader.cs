@@ -32,6 +32,11 @@ namespace Qyoto {
 			NotWellFormedError = 3,
 			PrematureEndOfDocumentError = 4,
 		}
+		[Q_PROPERTY("bool", "namespaceProcessing")]
+		public bool NamespaceProcessing {
+			get { return (bool) interceptor.Invoke("namespaceProcessing", "namespaceProcessing()", typeof(bool)); }
+			set { interceptor.Invoke("setNamespaceProcessing$", "setNamespaceProcessing(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QXmlStreamReader() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QXmlStreamReader", "QXmlStreamReader()", typeof(void));
@@ -74,12 +79,6 @@ namespace Qyoto {
 		}
 		public string TokenString() {
 			return (string) interceptor.Invoke("tokenString", "tokenString() const", typeof(string));
-		}
-		public void SetNamespaceProcessing(bool arg1) {
-			interceptor.Invoke("setNamespaceProcessing$", "setNamespaceProcessing(bool)", typeof(void), typeof(bool), arg1);
-		}
-		public bool NamespaceProcessing() {
-			return (bool) interceptor.Invoke("namespaceProcessing", "namespaceProcessing() const", typeof(bool));
 		}
 		public bool IsStartDocument() {
 			return (bool) interceptor.Invoke("isStartDocument", "isStartDocument() const", typeof(bool));

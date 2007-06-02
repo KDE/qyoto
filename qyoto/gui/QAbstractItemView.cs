@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQAbstractItemViewSignals"></see> for signals emitted by QAbstractItemView
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractItemViewSignals"></see> for signals emitted by QAbstractItemView
+	/// </remarks>
 
 	[SmokeClass("QAbstractItemView")]
 	public abstract class QAbstractItemView : QAbstractScrollArea {

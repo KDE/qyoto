@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQAbstractItemDelegateSignals"></see> for signals emitted by QAbstractItemDelegate
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractItemDelegateSignals"></see> for signals emitted by QAbstractItemDelegate
+	/// </remarks>
 
 	[SmokeClass("QAbstractItemDelegate")]
 	public abstract class QAbstractItemDelegate : QObject {

@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQFontComboBoxSignals"></see> for signals emitted by QFontComboBox
-	///</remarks>
+	/// <remarks> See <see cref="IQFontComboBoxSignals"></see> for signals emitted by QFontComboBox
+	/// </remarks>
 
 	[SmokeClass("QFontComboBox")]
 	public class QFontComboBox : QComboBox, IDisposable {

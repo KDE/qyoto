@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQCompleterSignals"></see> for signals emitted by QCompleter
-	///</remarks>
+	/// <remarks> See <see cref="IQCompleterSignals"></see> for signals emitted by QCompleter
+	/// </remarks>
 
 	[SmokeClass("QCompleter")]
 	public class QCompleter : QObject, IDisposable {

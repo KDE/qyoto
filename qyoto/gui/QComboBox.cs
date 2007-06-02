@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQComboBoxSignals"></see> for signals emitted by QComboBox
-	///</remarks>
+	/// <remarks> See <see cref="IQComboBoxSignals"></see> for signals emitted by QComboBox
+	/// </remarks>
 
 	[SmokeClass("QComboBox")]
 	public class QComboBox : QWidget, IDisposable {

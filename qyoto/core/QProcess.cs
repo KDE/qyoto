@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQProcessSignals"></see> for signals emitted by QProcess
-	///</remarks>
+	/// <remarks> See <see cref="IQProcessSignals"></see> for signals emitted by QProcess
+	/// </remarks>
 
 	[SmokeClass("QProcess")]
 	public class QProcess : QIODevice, IDisposable {

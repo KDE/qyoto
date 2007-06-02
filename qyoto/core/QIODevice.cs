@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQIODeviceSignals"></see> for signals emitted by QIODevice
-	///</remarks>
+	/// <remarks> See <see cref="IQIODeviceSignals"></see> for signals emitted by QIODevice
+	/// </remarks>
 
 	[SmokeClass("QIODevice")]
 	public abstract class QIODevice : QObject {

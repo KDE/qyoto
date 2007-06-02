@@ -12,6 +12,11 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QXmlStreamWriter), this);
 		}
+		[Q_PROPERTY("bool", "autoFormatting")]
+		public bool AutoFormatting {
+			get { return (bool) interceptor.Invoke("autoFormatting", "autoFormatting()", typeof(bool)); }
+			set { interceptor.Invoke("setAutoFormatting$", "setAutoFormatting(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QXmlStreamWriter() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QXmlStreamWriter", "QXmlStreamWriter()", typeof(void));
@@ -42,12 +47,6 @@ namespace Qyoto {
 		}
 		public QTextCodec Codec() {
 			return (QTextCodec) interceptor.Invoke("codec", "codec() const", typeof(QTextCodec));
-		}
-		public void SetAutoFormatting(bool arg1) {
-			interceptor.Invoke("setAutoFormatting$", "setAutoFormatting(bool)", typeof(void), typeof(bool), arg1);
-		}
-		public bool AutoFormatting() {
-			return (bool) interceptor.Invoke("autoFormatting", "autoFormatting() const", typeof(bool));
 		}
 		public void WriteAttribute(string qualifiedName, string value) {
 			interceptor.Invoke("writeAttribute$$", "writeAttribute(const QString&, const QString&)", typeof(void), typeof(string), qualifiedName, typeof(string), value);

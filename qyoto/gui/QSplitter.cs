@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQSplitterSignals"></see> for signals emitted by QSplitter
-	///</remarks>
+	/// <remarks> See <see cref="IQSplitterSignals"></see> for signals emitted by QSplitter
+	/// </remarks>
 
 	[SmokeClass("QSplitter")]
 	public class QSplitter : QFrame, IDisposable {

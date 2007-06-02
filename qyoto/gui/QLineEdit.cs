@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQLineEditSignals"></see> for signals emitted by QLineEdit
-	///</remarks>
+	/// <remarks> See <see cref="IQLineEditSignals"></see> for signals emitted by QLineEdit
+	/// </remarks>
 
 	[SmokeClass("QLineEdit")]
 	public class QLineEdit : QWidget, IDisposable {

@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQTableWidgetSignals"></see> for signals emitted by QTableWidget
-	///</remarks>
+	/// <remarks> See <see cref="IQTableWidgetSignals"></see> for signals emitted by QTableWidget
+	/// </remarks>
 
 	[SmokeClass("QTableWidget")]
 	public class QTableWidget : QTableView, IDisposable {

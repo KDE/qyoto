@@ -980,7 +980,36 @@ static void marshall_QString(Marshall *m) {
     }
 }
 
+static void marshall_intR(Marshall *m) {
+    switch(m->action()) {
+        case Marshall::FromObject:
+            {
+            int * i = new int;
+            *i = m->var().s_int;
+            m->item().s_voidp = i;
+            m->next();
+            if(m->cleanup() && m->type().isConst()) {
+                delete i;
+            } else {
+//                m->item().s_voidp = new int((int)NUM2INT(rv));
+            }
+            }
+            break;
 
+        case Marshall::ToObject:
+            {
+            int *ip = (int*)m->item().s_voidp;
+            m->var().s_int = *ip;
+            }
+            break;
+
+        default:
+            m->unsupported();
+            break;
+    }
+}
+
+/*
 static void marshall_intR(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
@@ -1001,6 +1030,7 @@ static void marshall_intR(Marshall *m) {
 		break;
 	}
 }
+*/
 
 static void marshall_shortR(Marshall *m) {
 	switch(m->action()) {

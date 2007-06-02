@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQAbstractButtonSignals"></see> for signals emitted by QAbstractButton
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractButtonSignals"></see> for signals emitted by QAbstractButton
+	/// </remarks>
 
 	[SmokeClass("QAbstractButton")]
 	public abstract class QAbstractButton : QWidget {

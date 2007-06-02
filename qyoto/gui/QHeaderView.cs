@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQHeaderViewSignals"></see> for signals emitted by QHeaderView
-	///</remarks>
+	/// <remarks> See <see cref="IQHeaderViewSignals"></see> for signals emitted by QHeaderView
+	/// </remarks>
 
 	[SmokeClass("QHeaderView")]
 	public class QHeaderView : QAbstractItemView, IDisposable {

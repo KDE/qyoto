@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQFtpSignals"></see> for signals emitted by QFtp
-	///</remarks>
+	/// <remarks> See <see cref="IQFtpSignals"></see> for signals emitted by QFtp
+	/// </remarks>
 
 	[SmokeClass("QFtp")]
 	public class QFtp : QObject, IDisposable {

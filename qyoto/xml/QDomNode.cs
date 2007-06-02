@@ -171,10 +171,10 @@ namespace Qyoto {
 		public bool IsComment() {
 			return (bool) interceptor.Invoke("isComment", "isComment() const", typeof(bool));
 		}
-		///<remarks>
-		/// Shortcut to avoid dealing with QDomArrayList
-		/// all the time.
-		///     </remarks>		<short>    Shortcut to avoid dealing with QDomNodeList  all the time.</short>
+		/// <remarks>
+		///  Shortcut to avoid dealing with QDomArrayList
+		///  all the time.
+		///      </remarks>		<short>    Shortcut to avoid dealing with QDomNodeList  all the time.</short>
 		public QDomNode NamedItem(string name) {
 			return (QDomNode) interceptor.Invoke("namedItem$", "namedItem(const QString&) const", typeof(QDomNode), typeof(string), name);
 		}

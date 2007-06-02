@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQMdiAreaSignals"></see> for signals emitted by QMdiArea
-	///</remarks>
+	/// <remarks> See <see cref="IQMdiAreaSignals"></see> for signals emitted by QMdiArea
+	/// </remarks>
 
 	[SmokeClass("QMdiArea")]
 	public class QMdiArea : QAbstractScrollArea, IDisposable {

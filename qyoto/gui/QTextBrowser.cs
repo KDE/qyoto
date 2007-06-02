@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQTextBrowserSignals"></see> for signals emitted by QTextBrowser
-	///</remarks>
+	/// <remarks> See <see cref="IQTextBrowserSignals"></see> for signals emitted by QTextBrowser
+	/// </remarks>
 
 	[SmokeClass("QTextBrowser")]
 	public class QTextBrowser : QTextEdit, IDisposable {

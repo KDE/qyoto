@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQSystemTrayIconSignals"></see> for signals emitted by QSystemTrayIcon
-	///</remarks>
+	/// <remarks> See <see cref="IQSystemTrayIconSignals"></see> for signals emitted by QSystemTrayIcon
+	/// </remarks>
 
 	[SmokeClass("QSystemTrayIcon")]
 	public class QSystemTrayIcon : QObject, IDisposable {

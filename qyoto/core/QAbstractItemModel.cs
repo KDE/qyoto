@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQAbstractItemModelSignals"></see> for signals emitted by QAbstractItemModel
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractItemModelSignals"></see> for signals emitted by QAbstractItemModel
+	/// </remarks>
 
 	[SmokeClass("QAbstractItemModel")]
 	public abstract partial class QAbstractItemModel : QObject {

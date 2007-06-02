@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQItemSelectionModelSignals"></see> for signals emitted by QItemSelectionModel
-	///</remarks>
+	/// <remarks> See <see cref="IQItemSelectionModelSignals"></see> for signals emitted by QItemSelectionModel
+	/// </remarks>
 
 	[SmokeClass("QItemSelectionModel")]
 	public class QItemSelectionModel : QObject, IDisposable {

@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQDBusServerSignals"></see> for signals emitted by QDBusServer
-	///</remarks>
+	/// <remarks> See <see cref="IQDBusServerSignals"></see> for signals emitted by QDBusServer
+	/// </remarks>
 
 	[SmokeClass("QDBusServer")]
 	public class QDBusServer : QObject, IDisposable {

@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel
-	///</remarks>
+	/// <remarks> See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel
+	/// </remarks>
 
 	[SmokeClass("QStandardItemModel")]
 	public class QStandardItemModel : QAbstractItemModel, IDisposable {

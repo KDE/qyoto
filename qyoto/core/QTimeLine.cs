@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQTimeLineSignals"></see> for signals emitted by QTimeLine
-	///</remarks>
+	/// <remarks> See <see cref="IQTimeLineSignals"></see> for signals emitted by QTimeLine
+	/// </remarks>
 
 	[SmokeClass("QTimeLine")]
 	public class QTimeLine : QObject, IDisposable {

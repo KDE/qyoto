@@ -1,18 +1,20 @@
 /****************************************************************************
 **
-** Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
+** Copyright (C) 1992-2007 Trolltech ASA. All rights reserved.
 **
 ** This file is part of the tools applications of the Qt Toolkit.
 **
-** Licensees holding valid Qt Preview licenses may use this file in
-** accordance with the Qt Preview License Agreement provided with the
-** Software.
+** This file may be used under the terms of the GNU General Public
+** License version 2.0 as published by the Free Software Foundation
+** and appearing in the file LICENSE.GPL included in the packaging of
+** this file.  Please review the following information to ensure GNU
+** General Public Licensing requirements will be met:
+** http://www.trolltech.com/products/qt/opensource.html
 **
-** See http://www.trolltech.com/pricing.html or email sales@trolltech.com for
-** information about Qt Commercial License Agreements.
-**
-** Contact info@trolltech.com if any conditions of this licensing are
-** not clear to you.
+** If you are unsure which license is appropriate for your use, please
+** review the following information:
+** http://www.trolltech.com/products/qt/licensing.html or contact the
+** sales department at sales@trolltech.com.
 **
 ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
@@ -21,6 +23,8 @@
 
 #ifndef TREEWALKER_H
 #define TREEWALKER_H
+
+#include <QList>
 
 class DomUI;
 class DomLayoutDefault;
@@ -60,6 +64,7 @@ class DomConnections;
 class DomConnection;
 class DomConnectionHints;
 class DomConnectionHint;
+class DomScript;
 
 struct TreeWalker
 {
@@ -87,6 +92,9 @@ struct TreeWalker
     virtual void acceptTime(DomTime *time);
     virtual void acceptDateTime(DomDateTime *dateTime);
     virtual void acceptProperty(DomProperty *property);
+    typedef QList<DomScript *> DomScripts;
+    typedef QList<DomWidget *> DomWidgets;
+    virtual void acceptWidgetScripts(const DomScripts &, DomWidget *node, const  DomWidgets &childWidgets);
     virtual void acceptImages(DomImages *images);
     virtual void acceptImage(DomImage *image);
     virtual void acceptIncludes(DomIncludes *includes);

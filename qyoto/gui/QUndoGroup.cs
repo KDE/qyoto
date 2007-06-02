@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQUndoGroupSignals"></see> for signals emitted by QUndoGroup
-	///</remarks>
+	/// <remarks> See <see cref="IQUndoGroupSignals"></see> for signals emitted by QUndoGroup
+	/// </remarks>
 
 	[SmokeClass("QUndoGroup")]
 	public class QUndoGroup : QObject, IDisposable {

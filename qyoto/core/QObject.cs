@@ -5,8 +5,8 @@ namespace Qyoto {
 	using System.Reflection;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQObjectSignals"></see> for signals emitted by QObject
-	///</remarks>
+	/// <remarks> See <see cref="IQObjectSignals"></see> for signals emitted by QObject
+	/// </remarks>
 
 	[SmokeClass("QObject")]
 	public partial class QObject : Qt, IDisposable {

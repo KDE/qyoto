@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQWizardPageSignals"></see> for signals emitted by QWizardPage
-	///</remarks>
+	/// <remarks> See <see cref="IQWizardPageSignals"></see> for signals emitted by QWizardPage
+	/// </remarks>
 
 	[SmokeClass("QWizardPage")]
 	public class QWizardPage : QWidget, IDisposable {

@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQLabelSignals"></see> for signals emitted by QLabel
-	///</remarks>
+	/// <remarks> See <see cref="IQLabelSignals"></see> for signals emitted by QLabel
+	/// </remarks>
 
 	[SmokeClass("QLabel")]
 	public class QLabel : QFrame, IDisposable {

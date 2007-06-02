@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
-	///</remarks>
+	/// <remarks> See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
+	/// </remarks>
 
 	[SmokeClass("QMainWindow")]
 	public class QMainWindow : QWidget, IDisposable {

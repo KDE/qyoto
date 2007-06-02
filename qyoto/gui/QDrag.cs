@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQDragSignals"></see> for signals emitted by QDrag
-	///</remarks>
+	/// <remarks> See <see cref="IQDragSignals"></see> for signals emitted by QDrag
+	/// </remarks>
 
 	[SmokeClass("QDrag")]
 	public class QDrag : QObject, IDisposable {

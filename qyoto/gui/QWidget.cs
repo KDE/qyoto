@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQWidgetSignals"></see> for signals emitted by QWidget
-	///</remarks>
+	/// <remarks> See <see cref="IQWidgetSignals"></see> for signals emitted by QWidget
+	/// </remarks>
 
 	[SmokeClass("QWidget")]
 	public class QWidget : QObject, IQPaintDevice, IDisposable {
@@ -242,6 +242,11 @@ namespace Qyoto {
 		public new Qt.LayoutDirection LayoutDirection {
 			get { return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection)); }
 			set { interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), value); }
+		}
+		[Q_PROPERTY("Qt::WindowFlags", "windowFlags")]
+		public int WindowFlags {
+			get { return (int) interceptor.Invoke("windowFlags", "windowFlags()", typeof(int)); }
+			set { interceptor.Invoke("setWindowFlags$", "setWindowFlags(Qt::WindowFlags)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("bool", "autoFillBackground")]
 		public bool AutoFillBackground {
@@ -612,12 +617,6 @@ namespace Qyoto {
 		}
 		public QWidget ParentWidget() {
 			return (QWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QWidget));
-		}
-		public void SetWindowFlags(int type) {
-			interceptor.Invoke("setWindowFlags$", "setWindowFlags(Qt::WindowFlags)", typeof(void), typeof(int), type);
-		}
-		public int WindowFlags() {
-			return (int) interceptor.Invoke("windowFlags", "windowFlags() const", typeof(int));
 		}
 		public void OverrideWindowFlags(int type) {
 			interceptor.Invoke("overrideWindowFlags$", "overrideWindowFlags(Qt::WindowFlags)", typeof(void), typeof(int), type);

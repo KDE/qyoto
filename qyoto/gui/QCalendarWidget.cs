@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQCalendarWidgetSignals"></see> for signals emitted by QCalendarWidget
-	///</remarks>
+	/// <remarks> See <see cref="IQCalendarWidgetSignals"></see> for signals emitted by QCalendarWidget
+	/// </remarks>
 
 	[SmokeClass("QCalendarWidget")]
 	public class QCalendarWidget : QWidget, IDisposable {

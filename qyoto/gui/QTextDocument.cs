@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
-	///</remarks>
+	/// <remarks> See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
+	/// </remarks>
 
 	[SmokeClass("QTextDocument")]
 	public class QTextDocument : QObject, IDisposable {
@@ -78,6 +78,11 @@ namespace Qyoto {
 		public int MaximumBlockCount {
 			get { return (int) interceptor.Invoke("maximumBlockCount", "maximumBlockCount()", typeof(int)); }
 			set { interceptor.Invoke("setMaximumBlockCount$", "setMaximumBlockCount(int)", typeof(void), typeof(int), value); }
+		}
+		[Q_PROPERTY("QTextOption", "defaultTextOption")]
+		public QTextOption DefaultTextOption {
+			get { return (QTextOption) interceptor.Invoke("defaultTextOption", "defaultTextOption()", typeof(QTextOption)); }
+			set { interceptor.Invoke("setDefaultTextOption#", "setDefaultTextOption(QTextOption)", typeof(void), typeof(QTextOption), value); }
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
@@ -229,12 +234,6 @@ namespace Qyoto {
 		}
 		public void Redo(QTextCursor cursor) {
 			interceptor.Invoke("redo#", "redo(QTextCursor*)", typeof(void), typeof(QTextCursor), cursor);
-		}
-		public QTextOption DefaultTextOption() {
-			return (QTextOption) interceptor.Invoke("defaultTextOption", "defaultTextOption() const", typeof(QTextOption));
-		}
-		public void SetDefaultTextOption(QTextOption option) {
-			interceptor.Invoke("setDefaultTextOption#", "setDefaultTextOption(const QTextOption&)", typeof(void), typeof(QTextOption), option);
 		}
 		[Q_SLOT("void undo()")]
 		public void Undo() {

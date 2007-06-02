@@ -5,8 +5,8 @@ namespace Qyoto {
 	using System.Text;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQFileDialogSignals"></see> for signals emitted by QFileDialog
-	///</remarks>
+	/// <remarks> See <see cref="IQFileDialogSignals"></see> for signals emitted by QFileDialog
+	/// </remarks>
 
 	[SmokeClass("QFileDialog")]
 	public class QFileDialog : QDialog, IDisposable {

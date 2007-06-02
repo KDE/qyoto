@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQToolBarSignals"></see> for signals emitted by QToolBar
-	///</remarks>
+	/// <remarks> See <see cref="IQToolBarSignals"></see> for signals emitted by QToolBar
+	/// </remarks>
 
 	[SmokeClass("QToolBar")]
 	public class QToolBar : QWidget, IDisposable {

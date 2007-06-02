@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQShortcutSignals"></see> for signals emitted by QShortcut
-	///</remarks>
+	/// <remarks> See <see cref="IQShortcutSignals"></see> for signals emitted by QShortcut
+	/// </remarks>
 
 	[SmokeClass("QShortcut")]
 	public class QShortcut : QObject, IDisposable {

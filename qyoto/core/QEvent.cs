@@ -148,6 +148,11 @@ namespace Qyoto {
 			User = 1000,
 			MaxUser = 65535,
 		}
+		[Q_PROPERTY("bool", "accepted")]
+		public bool Accepted {
+			get { return (bool) interceptor.Invoke("isAccepted", "isAccepted()", typeof(bool)); }
+			set { interceptor.Invoke("setAccepted$", "setAccepted(bool)", typeof(void), typeof(bool), value); }
+		}
 		public QEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QEvent$", "QEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
@@ -157,12 +162,6 @@ namespace Qyoto {
 		}
 		public bool Spontaneous() {
 			return (bool) interceptor.Invoke("spontaneous", "spontaneous() const", typeof(bool));
-		}
-		public void SetAccepted(bool accepted) {
-			interceptor.Invoke("setAccepted$", "setAccepted(bool)", typeof(void), typeof(bool), accepted);
-		}
-		public bool IsAccepted() {
-			return (bool) interceptor.Invoke("isAccepted", "isAccepted() const", typeof(bool));
 		}
 		public void Accept() {
 			interceptor.Invoke("accept", "accept()", typeof(void));

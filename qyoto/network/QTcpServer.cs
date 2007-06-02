@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQTcpServerSignals"></see> for signals emitted by QTcpServer
-	///</remarks>
+	/// <remarks> See <see cref="IQTcpServerSignals"></see> for signals emitted by QTcpServer
+	/// </remarks>
 
 	[SmokeClass("QTcpServer")]
 	public class QTcpServer : QObject, IDisposable {

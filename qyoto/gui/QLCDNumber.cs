@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQLCDNumberSignals"></see> for signals emitted by QLCDNumber
-	///</remarks>
+	/// <remarks> See <see cref="IQLCDNumberSignals"></see> for signals emitted by QLCDNumber
+	/// </remarks>
 
 	[SmokeClass("QLCDNumber")]
 	public class QLCDNumber : QFrame, IDisposable {

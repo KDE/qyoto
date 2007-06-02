@@ -5,8 +5,8 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 	using System.Text;
 
-	///<remarks> See <see cref="IQDateTimeEditSignals"></see> for signals emitted by QDateTimeEdit
-	///</remarks>
+	/// <remarks> See <see cref="IQDateTimeEditSignals"></see> for signals emitted by QDateTimeEdit
+	/// </remarks>
 
 	[SmokeClass("QDateTimeEdit")]
 	public class QDateTimeEdit : QAbstractSpinBox, IDisposable {

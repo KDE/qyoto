@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQGraphicsSceneSignals"></see> for signals emitted by QGraphicsScene
-	///</remarks>
+	/// <remarks> See <see cref="IQGraphicsSceneSignals"></see> for signals emitted by QGraphicsScene
+	/// </remarks>
 
 	[SmokeClass("QGraphicsScene")]
 	public class QGraphicsScene : QObject, IDisposable {

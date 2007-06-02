@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQX11EmbedWidgetSignals"></see> for signals emitted by QX11EmbedWidget
-	///</remarks>
+	/// <remarks> See <see cref="IQX11EmbedWidgetSignals"></see> for signals emitted by QX11EmbedWidget
+	/// </remarks>
 
 	[SmokeClass("QX11EmbedWidget")]
 	public class QX11EmbedWidget : QWidget, IDisposable {

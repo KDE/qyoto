@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQSqlTableModelSignals"></see> for signals emitted by QSqlTableModel
-	///</remarks>
+	/// <remarks> See <see cref="IQSqlTableModelSignals"></see> for signals emitted by QSqlTableModel
+	/// </remarks>
 
 	[SmokeClass("QSqlTableModel")]
 	public class QSqlTableModel : QSqlQueryModel, IDisposable {

@@ -130,10 +130,10 @@ namespace Qyoto
 				return 0;
 			}
 			foreach (Type nt in t.GetNestedTypes()) {
-				if (nt.IsEnum) {
+				if (nt.IsEnum && Enum.GetUnderlyingType(nt) == typeof(int)) {
 					foreach (int i in Enum.GetValues(nt)) {
 						if (Enum.Format(nt, i, "f") == value) {
-							return i;
+							return (int) i;
 						}
 					}
 				}

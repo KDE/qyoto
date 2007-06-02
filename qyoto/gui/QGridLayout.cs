@@ -13,6 +13,16 @@ namespace Qyoto {
 		static QGridLayout() {
 			staticInterceptor = new SmokeInvocation(typeof(QGridLayout), null);
 		}
+		[Q_PROPERTY("int", "horizontalSpacing")]
+		public int HorizontalSpacing {
+			get { return (int) interceptor.Invoke("horizontalSpacing", "horizontalSpacing()", typeof(int)); }
+			set { interceptor.Invoke("setHorizontalSpacing$", "setHorizontalSpacing(int)", typeof(void), typeof(int), value); }
+		}
+		[Q_PROPERTY("int", "verticalSpacing")]
+		public int VerticalSpacing {
+			get { return (int) interceptor.Invoke("verticalSpacing", "verticalSpacing()", typeof(int)); }
+			set { interceptor.Invoke("setVerticalSpacing$", "setVerticalSpacing(int)", typeof(void), typeof(int), value); }
+		}
 		public QGridLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGridLayout#", "QGridLayout(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -32,18 +42,6 @@ namespace Qyoto {
 		[SmokeMethod("maximumSize() const")]
 		public override QSize MaximumSize() {
 			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
-		}
-		public void SetHorizontalSpacing(int spacing) {
-			interceptor.Invoke("setHorizontalSpacing$", "setHorizontalSpacing(int)", typeof(void), typeof(int), spacing);
-		}
-		public int HorizontalSpacing() {
-			return (int) interceptor.Invoke("horizontalSpacing", "horizontalSpacing() const", typeof(int));
-		}
-		public void SetVerticalSpacing(int spacing) {
-			interceptor.Invoke("setVerticalSpacing$", "setVerticalSpacing(int)", typeof(void), typeof(int), spacing);
-		}
-		public int VerticalSpacing() {
-			return (int) interceptor.Invoke("verticalSpacing", "verticalSpacing() const", typeof(int));
 		}
 		public void SetRowStretch(int row, int stretch) {
 			interceptor.Invoke("setRowStretch$$", "setRowStretch(int, int)", typeof(void), typeof(int), row, typeof(int), stretch);

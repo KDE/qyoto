@@ -1,3 +1,12 @@
+2007-06-02  Richard Dale  <rdale@foton.es>
+
+	* Updated the uics tool against the Qt 4.3 sources
+	* Changed the code generation to generate properties for QDOC_PROPERTY
+	  macros
+	* Added a space after the '///'s for the documentation tags so that they
+	  have Kate syntax highlighting
+	* Added a string to QKeySequence implicit type conversion
+
 2007-06-02  Arno Rehn  <arno@arnorehn.de>
 
 	* Special cased the QCoreApplication constructor, too.

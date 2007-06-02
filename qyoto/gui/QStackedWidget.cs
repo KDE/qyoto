@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQStackedWidgetSignals"></see> for signals emitted by QStackedWidget
-	///</remarks>
+	/// <remarks> See <see cref="IQStackedWidgetSignals"></see> for signals emitted by QStackedWidget
+	/// </remarks>
 
 	[SmokeClass("QStackedWidget")]
 	public class QStackedWidget : QFrame, IDisposable {

@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
-	///</remarks>
+	/// <remarks> See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
+	/// </remarks>
 
 	[SmokeClass("QGroupBox")]
 	public class QGroupBox : QWidget, IDisposable {

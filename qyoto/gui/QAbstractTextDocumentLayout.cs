@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQAbstractTextDocumentLayoutSignals"></see> for signals emitted by QAbstractTextDocumentLayout
-	///</remarks>
+	/// <remarks> See <see cref="IQAbstractTextDocumentLayoutSignals"></see> for signals emitted by QAbstractTextDocumentLayout
+	/// </remarks>
 
 	[SmokeClass("QAbstractTextDocumentLayout")]
 	public abstract class QAbstractTextDocumentLayout : QObject {

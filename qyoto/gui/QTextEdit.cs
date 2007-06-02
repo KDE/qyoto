@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQTextEditSignals"></see> for signals emitted by QTextEdit
-	///</remarks>
+	/// <remarks> See <see cref="IQTextEditSignals"></see> for signals emitted by QTextEdit
+	/// </remarks>
 
 	[SmokeClass("QTextEdit")]
 	public class QTextEdit : QAbstractScrollArea, IDisposable {
@@ -51,6 +51,11 @@ namespace Qyoto {
 		public QTextEdit.LineWrapMode lineWrapMode {
 			get { return (QTextEdit.LineWrapMode) interceptor.Invoke("lineWrapMode", "lineWrapMode()", typeof(QTextEdit.LineWrapMode)); }
 			set { interceptor.Invoke("setLineWrapMode$", "setLineWrapMode(QTextEdit::LineWrapMode)", typeof(void), typeof(QTextEdit.LineWrapMode), value); }
+		}
+		[Q_PROPERTY("QTextOption::WrapMode", "wordWrapMode")]
+		public QTextOption.WrapMode WordWrapMode {
+			get { return (QTextOption.WrapMode) interceptor.Invoke("wordWrapMode", "wordWrapMode()", typeof(QTextOption.WrapMode)); }
+			set { interceptor.Invoke("setWordWrapMode$", "setWordWrapMode(QTextOption::WrapMode)", typeof(void), typeof(QTextOption.WrapMode), value); }
 		}
 		[Q_PROPERTY("int", "lineWrapColumnOrWidth")]
 		public int LineWrapColumnOrWidth {
@@ -159,12 +164,6 @@ namespace Qyoto {
 		}
 		public QTextCharFormat CurrentCharFormat() {
 			return (QTextCharFormat) interceptor.Invoke("currentCharFormat", "currentCharFormat() const", typeof(QTextCharFormat));
-		}
-		public QTextOption.WrapMode WordWrapMode() {
-			return (QTextOption.WrapMode) interceptor.Invoke("wordWrapMode", "wordWrapMode() const", typeof(QTextOption.WrapMode));
-		}
-		public void SetWordWrapMode(QTextOption.WrapMode policy) {
-			interceptor.Invoke("setWordWrapMode$", "setWordWrapMode(QTextOption::WrapMode)", typeof(void), typeof(QTextOption.WrapMode), policy);
 		}
 		public bool Find(string exp, int options) {
 			return (bool) interceptor.Invoke("find$$", "find(const QString&, QTextDocument::FindFlags)", typeof(bool), typeof(string), exp, typeof(int), options);

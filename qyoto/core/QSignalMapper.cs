@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQSignalMapperSignals"></see> for signals emitted by QSignalMapper
-	///</remarks>
+	/// <remarks> See <see cref="IQSignalMapperSignals"></see> for signals emitted by QSignalMapper
+	/// </remarks>
 
 	[SmokeClass("QSignalMapper")]
 	public class QSignalMapper : QObject, IDisposable {

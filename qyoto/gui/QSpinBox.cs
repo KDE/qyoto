@@ -5,8 +5,8 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 	using System.Text;
 
-	///<remarks> See <see cref="IQSpinBoxSignals"></see> for signals emitted by QSpinBox
-	///</remarks>
+	/// <remarks> See <see cref="IQSpinBoxSignals"></see> for signals emitted by QSpinBox
+	/// </remarks>
 
 	[SmokeClass("QSpinBox")]
 	public class QSpinBox : QAbstractSpinBox, IDisposable {

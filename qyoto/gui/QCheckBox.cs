@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 
-	///<remarks> See <see cref="IQCheckBoxSignals"></see> for signals emitted by QCheckBox
-	///</remarks>
+	/// <remarks> See <see cref="IQCheckBoxSignals"></see> for signals emitted by QCheckBox
+	/// </remarks>
 
 	[SmokeClass("QCheckBox")]
 	public class QCheckBox : QAbstractButton, IDisposable {

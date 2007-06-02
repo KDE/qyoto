@@ -4,8 +4,8 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
-	///<remarks> See <see cref="IQMenuSignals"></see> for signals emitted by QMenu
-	///</remarks>
+	/// <remarks> See <see cref="IQMenuSignals"></see> for signals emitted by QMenu
+	/// </remarks>
 
 	[SmokeClass("QMenu")]
 	public class QMenu : QWidget, IDisposable {
