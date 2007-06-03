@@ -133,6 +133,7 @@ namespace Qyoto {
 				return new QVariant();
 			}
 		}
+
 		public static implicit operator QVariant(int arg) {
 			return new QVariant(arg);
 		}
@@ -158,52 +159,52 @@ namespace Qyoto {
 			return new QVariant(arg);
 		}
 		public static implicit operator QVariant(QColor arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QColor>(arg);
 		}
 		public static implicit operator QVariant(QCursor arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QCursor>(arg);
 		}
 		public static implicit operator QVariant(QFont arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QFont>(arg);
 		}
 		public static implicit operator QVariant(QIcon arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QIcon>(arg);
 		}
 		public static implicit operator QVariant(QImage arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QImage>(arg);
 		}
 		public static implicit operator QVariant(QKeySequence arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QKeySequence>(arg);
 		}
 		public static implicit operator QVariant(QMatrix arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QMatrix>(arg);
 		}
 		public static implicit operator QVariant(QPalette arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QPalette>(arg);
 		}
 		public static implicit operator QVariant(QPen arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QPen>(arg);
 		}
 		public static implicit operator QVariant(QPixmap arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QPixmap>(arg);
 		}
 		public static implicit operator QVariant(QPolygon arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QPolygon>(arg);
 		}
 		public static implicit operator QVariant(QRegion arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QRegion>(arg);
 		}
 		public static implicit operator QVariant(QSizePolicy arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QSizePolicy>(arg);
 		}
 		public static implicit operator QVariant(QTextFormat arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QTextFormat>(arg);
 		}
 		public static implicit operator QVariant(QTextLength arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QTextLength>(arg);
 		}
 		public static implicit operator QVariant(QTransform arg) {
-			return new QVariant(arg);
+			return QVariant.FromValue<QTransform>(arg);
 		}
 	}
 }
