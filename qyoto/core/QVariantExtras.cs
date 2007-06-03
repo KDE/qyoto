@@ -158,6 +158,12 @@ namespace Qyoto {
 		public static implicit operator QVariant(QByteArray arg) {
 			return new QVariant(arg);
 		}
+		public static implicit operator QVariant(QBitmap arg) {
+			return QVariant.FromValue<QBitmap>(arg);
+		}
+		public static implicit operator QVariant(QBrush arg) {
+			return QVariant.FromValue<QBrush>(arg);
+		}
 		public static implicit operator QVariant(QColor arg) {
 			return QVariant.FromValue<QColor>(arg);
 		}
