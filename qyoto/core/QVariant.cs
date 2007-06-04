@@ -69,9 +69,7 @@ namespace Qyoto {
 			LastType = 0xffffffff,
 		}
 		// QVariant* QVariant(int arg1,const void* arg2); >>>> NOT CONVERTED
-		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
 		// QVariant* QVariant(const QLatin1String& arg1); >>>> NOT CONVERTED
-		// QBitArray toBitArray(); >>>> NOT CONVERTED
 		// void* data(); >>>> NOT CONVERTED
 		// const void* constData(); >>>> NOT CONVERTED
 		// const void* data(); >>>> NOT CONVERTED
@@ -125,6 +123,10 @@ namespace Qyoto {
 		public QVariant(QByteArray bytearray) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QVariant#", "QVariant(const QByteArray&)", typeof(void), typeof(QByteArray), bytearray);
+		}
+		public QVariant(QBitArray bitarray) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QVariant#", "QVariant(const QBitArray&)", typeof(void), typeof(QBitArray), bitarray);
 		}
 		public QVariant(List<string> stringlist) : this((Type) null) {
 			CreateProxy();
@@ -287,6 +289,9 @@ namespace Qyoto {
 		}
 		public QByteArray ToByteArray() {
 			return (QByteArray) interceptor.Invoke("toByteArray", "toByteArray() const", typeof(QByteArray));
+		}
+		public QBitArray ToBitArray() {
+			return (QBitArray) interceptor.Invoke("toBitArray", "toBitArray() const", typeof(QBitArray));
 		}
 		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));

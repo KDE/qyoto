@@ -907,11 +907,6 @@ namespace Qyoto {
 		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
 		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
 		// int qvsnprintf(char* arg1,size_t arg2,const char* arg3,va_list arg4); >>>> NOT CONVERTED
-		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
 		// QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
 		// QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
 		// QTextStream& operator<<(QTextStream& arg1,QTextStreamManipulator arg2); >>>> NOT CONVERTED
@@ -1511,6 +1506,12 @@ namespace Qyoto {
 		}
 		public static QDataStream Read(QDataStream arg1, QDateTime arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDateTime), arg2);
+		}
+		public static QDataStream Write(QDataStream arg1, QBitArray arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
+		}
+		public static QDataStream Read(QDataStream arg1, QBitArray arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, char arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(char), arg2);

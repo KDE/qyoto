@@ -1,3 +1,7 @@
+2007-06-04  Richard Dale  <rdale@foton.es>
+
+	* Added the QBitArray class for completeness
+
 2007-06-03  Richard Dale  <rdale@foton.es>
 
 	* Fixed implicit type conversions code for non-QtCore classes to QVariants

@@ -19,6 +19,8 @@ namespace Qyoto {
 				return (T) (object) ToBool();
 			} else if (typeof(T) == typeof(double)) {
 				return (T) (object) ToDouble();
+			} else if (typeof(T) == typeof(QBitArray)) {
+				return (T) (object) ToBitArray();
 			} else if (typeof(T) == typeof(QByteArray)) {
 				return (T) (object) ToByteArray();
 			} else if (typeof(T) == typeof(char)) {
@@ -79,6 +81,8 @@ namespace Qyoto {
 				return new QVariant((bool) value);
 			} else if (typeof(T) == typeof(double)) {
 				return new QVariant((double) value);
+			} else if (typeof(T) == typeof(QBitArray)) {
+				return new QVariant((QBitArray) value);
 			} else if (typeof(T) == typeof(QByteArray)) {
 				return new QVariant((QByteArray) value);
 			} else if (typeof(T) == typeof(char)) {
@@ -153,6 +157,9 @@ namespace Qyoto {
 			return new QVariant(arg);
 		}
 		public static implicit operator QVariant(string arg) {
+			return new QVariant(arg);
+		}
+		public static implicit operator QVariant(QBitArray arg) {
 			return new QVariant(arg);
 		}
 		public static implicit operator QVariant(QByteArray arg) {
