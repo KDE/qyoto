@@ -1,3 +1,3 @@
 SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/listnames.cs)
-ADD_CUSTOM_TARGET (listnames.exe ALL ${GMCS_PATH} -unsafe -warn:0 -out:listnames.exe -r:../../../qt-dotnet.dll ${SRC_CS} COMMENT "Building listnames.exe")
-
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(listnames "${SRC_CS}" ALL)

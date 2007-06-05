@@ -1,3 +1,3 @@
 SET(SRC_T11 ${CMAKE_CURRENT_SOURCE_DIR}/cannonfield.cs ${CMAKE_CURRENT_SOURCE_DIR}/lcdrange.cs ${CMAKE_CURRENT_SOURCE_DIR}/main.cs)
-ADD_CUSTOM_TARGET (t11.exe ALL ${GMCS_PATH} -unsafe -warn:0 -out:t11.exe -r:../../../qt-dotnet.dll ${SRC_T11} COMMENT "Building t11.exe")
-
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(t11 "${SRC_T11}" ALL)

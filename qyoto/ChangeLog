@@ -1,3 +1,14 @@
+2007-06-05  Arno Rehn  <arno@arnorehn.de>
+
+	* Improved the build system:
+		* Added FindMono.cmake to find mono, gmcs, mcs and gacutil
+		* Added CSharpMacros.cmake which consists of macros for dealing with C#.
+		  It's now much easier to build C# libraries and executables and to
+		  install them.
+		  Further, a C# target is only built if the output file is missing
+		  or the sources were modified.
+	* Updated all CMakeLists.txt to work with the improved build system.
+
 2007-06-04  Richard Dale  <rdale@foton.es>
 
 	* Added the QBitArray class for completeness

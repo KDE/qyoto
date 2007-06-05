@@ -3,5 +3,3 @@ ADD_SUBDIRECTORY(qdbus)
 ADD_SUBDIRECTORY(tutorial)
 ADD_SUBDIRECTORY(widgets)
 ADD_SUBDIRECTORY(itemviews)
-
-

@@ -1,3 +1,3 @@
 SET(SRC_CS_CAR ${CMAKE_CURRENT_SOURCE_DIR}/car_adaptor.cs  ${CMAKE_CURRENT_SOURCE_DIR}/car.cs  ${CMAKE_CURRENT_SOURCE_DIR}/main.cs)
-ADD_CUSTOM_TARGET (car.exe ALL ${GMCS_PATH} -unsafe -warn:0 -out:car.exe -r:../../../../qt-dotnet.dll ${SRC_CS_CAR} COMMENT "Building car.exe")
-
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(car "${SRC_CS_CAR}" ALL)

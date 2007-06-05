@@ -1,2 +1,3 @@
 SET(SRC_T1 ${CMAKE_CURRENT_SOURCE_DIR}/t1.cs)
-ADD_CUSTOM_TARGET (t1.exe ALL ${GMCS_PATH} -unsafe -warn:0 -out:t1.exe -r:../../../qt-dotnet.dll ${SRC_T1} COMMENT "Building t1.exe")
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(t1 ${SRC_T1} ALL)

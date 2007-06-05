@@ -1,4 +1,6 @@
-PROJECT (kimono)
+PROJECT (qyoto)
+
+INCLUDE (CSharpMacros)
 
 # source files
 SET(SRC_CPP src/qyoto.cpp
@@ -21,23 +23,24 @@ SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocation.cs
 SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
 
 # find Qt4
-FIND_PACKAGE (Qt4 REQUIRED)
+IF (NOT QT4_FOUND)
+	FIND_PACKAGE (Qt4 REQUIRED)
+ENDIF (NOT QT4_FOUND)
 
-SET( UICS_PATH ${CMAKE_CURRENT_BINARY_DIR}/tools/uics/uics )
-SET( CSRCC_PATH ${CMAKE_CURRENT_BINARY_DIR}/tools/csrcc/csrcc )
+SET( UICS_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/uics/uics )
+SET( CSRCC_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/csrcc/csrcc )
 
 INCLUDE_DIRECTORIES (${QT_INCLUDES} ${CMAKE_SOURCE_DIR}/smoke)
 ADD_LIBRARY (qyoto MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -debug -define:DEBUG -unsafe -warn:0
-			-out:qt-dotnet.dll -target:library -keyfile:${KEYFILE} ${SRC_CS}
-			COMMENT "Building qt-dotnet.dll")
+SET(CS_FLAGS -debug -define:DEBUG -unsafe -warn:0 -keyfile:${KEYFILE})
+ADD_CS_LIBRARY(qt-dotnet "${SRC_CS}" ALL)
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
 
 INSTALL(TARGETS qyoto LIBRARY DESTINATION lib)
-INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${GACUTIL_PATH} -i ${CMAKE_CURRENT_BINARY_DIR}/qt-dotnet.dll)")
+INSTALL_GAC(qt-dotnet)
 
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(examples)

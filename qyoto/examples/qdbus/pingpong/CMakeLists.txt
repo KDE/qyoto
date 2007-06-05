@@ -1,6 +1,7 @@
 SET(SRC_CS_PING ${CMAKE_CURRENT_SOURCE_DIR}/ping.cs)
-ADD_CUSTOM_TARGET (ping.exe ALL ${GMCS_PATH} -debug -unsafe -warn:0 -out:ping.exe -r:../../../qt-dotnet.dll ${SRC_CS_PING} COMMENT "Building ping.exe")
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(ping "${SRC_CS_PING}" ALL)
 
 SET(SRC_CS_PONG ${CMAKE_CURRENT_SOURCE_DIR}/pong.cs)
-ADD_CUSTOM_TARGET (pong.exe ALL ${GMCS_PATH} -unsafe -warn:0 -out:pong.exe -r:../../../qt-dotnet.dll ${SRC_CS_PONG} COMMENT "Building pong.exe")
-
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(pong "${SRC_CS_PONG}" ALL)

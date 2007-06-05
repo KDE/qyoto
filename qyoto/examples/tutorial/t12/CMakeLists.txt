@@ -1,3 +1,3 @@
 SET(SRC_T12 ${CMAKE_CURRENT_SOURCE_DIR}/cannonfield.cs ${CMAKE_CURRENT_SOURCE_DIR}/lcdrange.cs ${CMAKE_CURRENT_SOURCE_DIR}/main.cs)
-ADD_CUSTOM_TARGET (t12.exe ALL ${GMCS_PATH} -unsafe -warn:0 -out:t12.exe -r:../../../qt-dotnet.dll ${SRC_T12} COMMENT "Building t12.exe")
-
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+ADD_CS_EXECUTABLE(t12 "${SRC_T12}" ALL)
