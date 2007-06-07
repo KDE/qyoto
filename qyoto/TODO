@@ -1,59 +1,14 @@
-* Implement a way of ensuring instances with 'owners' like
-QLayoutItem, QListWidgetItem, QTableWidgetItem, QWidget and QObject
-are not garbage collected when they are no referenced in the C# code.
-This matters if they have been subclassed in C#, as when they are
-referenced again and a new C# wrapper instance is created it will
-have lost the customised subclassing.
-
-* Implement Q_PROPERTYs by adding them to the the QMetaObject when it
-is constructed in the same way Q_SLOTS/Q_SIGNALs are. Find out what
-the 'flags' field is by looking at the moc code. The details need to
-be held in Dictionaries in a very similar way to slots, but
-referencing PropertyInfos rather than MethodInfos. Then add
-functionality to qt_metacall to handle reading and writing properties
-via new classes similar to InvokeSlot, called something like
-ReadProperty and WriteProperty. 
-
-* Write a C# version of the rcc tool, called csrcc as a lot of the Qt
-examples use rcc.
-
-* Implement QModelIndex.InternalPointer() and
-QAbstractItemModel.CreateIndex() with 'objects' as args instead
-of 'void *'s and convert to and from GCHandle when stored internally
-by Qt.
-
-* Implement C# versions of QObject.FindChild() and
-QObject.FindChildren()
-
-* Implement QTableModel and QListModel as subclasses of
-QAbstractTableModel. Special case the RowCount(), ColumnCount(),
-Data(), SetData(), Flags(), InsertRows(), InsertColumns(),
-RemoveRows() and RemoveColumns() methods. These classes can't be
-created from C# code, and only need dummy constructors with a Type
-arg so CreateInstance() can use it to create C# wrapper instances.
-
 * Translate more of the Qt examples to C# and fix any problems in
-Qyoto encountered.
+  Qyoto encountered.
 
 * Write a tool in C# to introspect on the Smoke library like rbqtapi.
+  (Not really necessary, you can look up all C# classes/methods with
+  monop/monop2. May be useful on Windows, though)
 
-* Make the construction of QMetaObjects work correctly when a QObject
-class is subclassed in C# and then subclassed again, with both
-subclasses having C# slots defined. It may work already, but I'm
-(rjd) not sure it does.
+* Write a dbusxml2cs tool based on the C++ one. This could actually be
+  impossible or very difficult since the resulting C++ code makes much use of
+  specific Qt casts and some macros.
 
-* Investigate the reason calls
-like 'QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");'
-cause a mono crash.
-
-* Write a dbusxml2cs tool based on the C++ one
-
-* Some C++ operator instance methods have been mapped onto C# static
-operator methods, and these calls will need to be special cased
-somewhere - at the moment they won't work.
-
-* Start making use of the sites David Canar has set up, and put
-translations of the cannon game tutorial, and a first release on
-them.
-
-
+* Find out what's going wrong with subclasses of QDBusAbstractAdaptor and fix
+  that. Currently methods with return types like QDBusVariants create problems
+  when called via D-Bus.

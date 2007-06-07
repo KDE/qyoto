@@ -1,0 +1,79 @@
+README
+------
+
+Qyoto is a set of C# classes wrapping the Qt library to be used with Mono/.NET.
+The API is pretty much the same, the only differences are the following:
+ - Method names begin with a capital letter.
+ - Q_PROPERTYs are mapped onto .NET properties (for example the property
+   'windowTitle' with the accessors 'setWindowTitle()' and 'windowTitle()'
+   becomes just 'WindowTitle' in .NET/Mono).
+ - The creation of signals/slots is working differently:
+
+To mark methods as slots, just add a Q_SLOT attribute to them.
+Example:
+
+[Q_SLOT]
+void ButtonClicked() {
+	// do something
+}
+
+
+To create custom signals, you first have to create an interface which inherits
+from the Signals interface of the parent class. In this interface you declare
+your signals, all marked with the Q_SIGNAL attribute.
+Then you have to override the Property 'Emit' of the class for which you want to
+create custom signals. The return value of 'Emit' is the protected variable
+Q_EMIT, casted to out signals interface.
+To emit a signal, use 'Emit.SignalName()'
+Example:
+
+class Test : QWidget {
+	// some code
+	
+	protected ITestSignals Emit {
+		get {
+			return (ITestSignals) Q_EMIT;
+		}
+	}
+	
+	public void EmitSignal() {
+		// here we emit our custom signal
+		Emit.TestSignal(5);
+	}
+	
+	// some code
+}
+
+interface ITestSignals {
+	[Q_SIGNAL]
+	void TestSignal(int arg1);
+}
+
+
+Signals and slots are connected in the normal way, e.g.
+Connect(qApp, SIGNAL("aboutToQuit()"), this, SLOT("quit()"));
+
+
+Qyoto also provides a set of tools for dealing with ui files and resources, uics and csrcc (ports of uic and rcc to produce C# code). The invocation is the same as for the C++ tools.
+To use your generated GUI code, first create an instance of the Ui class, then call SetupUi() with the current widget as parameter and your GUI will be set up, just like in C++.
+Example:
+
+class Test : QWidget {
+	Ui.Form ui;
+	
+	public Test() {
+		ui = new Ui.Form(),
+		ui.SetupUi(this);
+	}
+}
+
+To use ressources, just compile the generated code into your application and then call Q_INIT_RESOURCE() in Main().
+Excerpt from simpletreeview example:
+
+public static int Main(string[] args) {
+	Q_INIT_RESOURCE("simpletreemodel");
+	new QApplication(args);
+	QFile file = new QFile(":/default.txt");
+	
+	// more code...
+}
