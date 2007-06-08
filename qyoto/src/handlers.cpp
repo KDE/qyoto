@@ -1515,14 +1515,14 @@ void marshall_QListInt(Marshall *m) {
         Marshall::HandlerFn marshall_##ListIdent = marshall_ItemList<Item,ItemList,ListIdent##STR>;
 
 DEF_LIST_MARSHALLER( QAbstractButtonList, QList<QAbstractButton*>, QAbstractButton )
-DEF_LIST_MARSHALLER( QListWidgetItemList, QList<QListWidgetItem*>, QListWidgetItem )
-DEF_LIST_MARSHALLER( QTableWidgetItemList, QList<QTableWidgetItem*>, QTableWidgetItem )
-DEF_LIST_MARSHALLER( QObjectList, QList<QObject*>, QObject )
-DEF_LIST_MARSHALLER( QWidgetList, QList<QWidget*>, QWidget )
 DEF_LIST_MARSHALLER( QActionList, QList<QAction*>, QAction )
-DEF_LIST_MARSHALLER( QWidgetPtrList, QList<QWidget*>, QWidget )
+DEF_LIST_MARSHALLER( QListWidgetItemList, QList<QListWidgetItem*>, QListWidgetItem )
+DEF_LIST_MARSHALLER( QObjectList, QList<QObject*>, QObject )
+DEF_LIST_MARSHALLER( QTableWidgetItemList, QList<QTableWidgetItem*>, QTableWidgetItem )
 DEF_LIST_MARSHALLER( QTextFrameList, QList<QTextFrame*>, QTextFrame )
 DEF_LIST_MARSHALLER( QTreeWidgetItemList, QList<QTreeWidgetItem*>, QTreeWidgetItem )
+DEF_LIST_MARSHALLER( QWidgetList, QList<QWidget*>, QWidget )
+DEF_LIST_MARSHALLER( QWidgetPtrList, QList<QWidget*>, QWidget )
 
 #if QT_VERSION >= 0x40200
 DEF_LIST_MARSHALLER( QGraphicsItemList, QList<QGraphicsItem*>, QGraphicsItem )
@@ -1661,123 +1661,123 @@ void marshall_QRgbVector(Marshall *m)
 #define DEF_VALUELIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
         Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;
 
-DEF_VALUELIST_MARSHALLER( QTableWidgetSelectionRangeList, QList<QTableWidgetSelectionRange>, QTableWidgetSelectionRange )
-DEF_VALUELIST_MARSHALLER( QTextLayoutFormatRangeList, QList<QTextLayout::FormatRange>, QTextLayout::FormatRange)
-DEF_VALUELIST_MARSHALLER( QVariantList, QList<QVariant>, QVariant )
-DEF_VALUELIST_MARSHALLER( QPixmapList, QList<QPixmap>, QPixmap )
-DEF_VALUELIST_MARSHALLER( QModelIndexList, QList<QModelIndex>, QModelIndex )
-// DEF_VALUELIST_MARSHALLER( QHostAddressList, QList<QHostAddress>, QHostAddress )
-DEF_VALUELIST_MARSHALLER( QPolygonFList, QList<QPolygonF>, QPolygonF )
-DEF_VALUELIST_MARSHALLER( QImageTextKeyLangList, QList<QImageTextKeyLang>, QImageTextKeyLang )
-DEF_VALUELIST_MARSHALLER( QUrlList, QList<QUrl>, QUrl )
-DEF_VALUELIST_MARSHALLER( QFileInfoList, QFileInfoList, QFileInfo )
-DEF_VALUELIST_MARSHALLER( QTextBlockList, QList<QTextBlock>, QTextBlock )
 
 DEF_VALUELIST_MARSHALLER( QColorVector, QVector<QColor>, QColor )
-// DEF_VALUELIST_MARSHALLER( QRgbVector, QVector<QRgb>, QRgb )
-DEF_VALUELIST_MARSHALLER( QVariantVector, QVector<QVariant>, QVariant )
-DEF_VALUELIST_MARSHALLER( QTextFormatVector, QVector<QTextFormat>, QTextFormat )
-DEF_VALUELIST_MARSHALLER( QTextLengthVector, QVector<QTextLength>, QTextLength )
+DEF_VALUELIST_MARSHALLER( QFileInfoList, QFileInfoList, QFileInfo )
+// DEF_VALUELIST_MARSHALLER( QHostAddressList, QList<QHostAddress>, QHostAddress )
+DEF_VALUELIST_MARSHALLER( QImageTextKeyLangList, QList<QImageTextKeyLang>, QImageTextKeyLang )
+DEF_VALUELIST_MARSHALLER( QLineFVector, QVector<QLineF>, QLineF )
+DEF_VALUELIST_MARSHALLER( QLineVector, QVector<QLine>, QLine )
+DEF_VALUELIST_MARSHALLER( QModelIndexList, QList<QModelIndex>, QModelIndex )
+DEF_VALUELIST_MARSHALLER( QPixmapList, QList<QPixmap>, QPixmap )
 DEF_VALUELIST_MARSHALLER( QPointFVector, QVector<QPointF>, QPointF )
 DEF_VALUELIST_MARSHALLER( QPointVector, QVector<QPoint>, QPoint )
-DEF_VALUELIST_MARSHALLER( QLineVector, QVector<QLine>, QLine )
-DEF_VALUELIST_MARSHALLER( QLineFVector, QVector<QLineF>, QLineF )
-DEF_VALUELIST_MARSHALLER( QRectVector, QVector<QRect>, QRect )
+DEF_VALUELIST_MARSHALLER( QPolygonFList, QList<QPolygonF>, QPolygonF )
 DEF_VALUELIST_MARSHALLER( QRectFVector, QVector<QRectF>, QRectF )
+DEF_VALUELIST_MARSHALLER( QRectVector, QVector<QRect>, QRect )
+// DEF_VALUELIST_MARSHALLER( QRgbVector, QVector<QRgb>, QRgb )
+DEF_VALUELIST_MARSHALLER( QTableWidgetSelectionRangeList, QList<QTableWidgetSelectionRange>, QTableWidgetSelectionRange )
+DEF_VALUELIST_MARSHALLER( QTextBlockList, QList<QTextBlock>, QTextBlock )
+DEF_VALUELIST_MARSHALLER( QTextFormatVector, QVector<QTextFormat>, QTextFormat )
+DEF_VALUELIST_MARSHALLER( QTextLayoutFormatRangeList, QList<QTextLayout::FormatRange>, QTextLayout::FormatRange)
+DEF_VALUELIST_MARSHALLER( QTextLengthVector, QVector<QTextLength>, QTextLength )
+DEF_VALUELIST_MARSHALLER( QUrlList, QList<QUrl>, QUrl )
+DEF_VALUELIST_MARSHALLER( QVariantList, QList<QVariant>, QVariant )
+DEF_VALUELIST_MARSHALLER( QVariantVector, QVector<QVariant>, QVariant )
 
 #if QT_VERSION >= 0x40300
-DEF_VALUELIST_MARSHALLER( QXmlStreamEntityDeclarations, QVector<QXmlStreamEntityDeclaration>, QXmlStreamEntityDeclaration )
-DEF_VALUELIST_MARSHALLER( QXmlStreamNamespaceDeclarations, QVector<QXmlStreamNamespaceDeclaration>, QXmlStreamNamespaceDeclaration )
-DEF_VALUELIST_MARSHALLER( QXmlStreamNotationDeclarations, QVector<QXmlStreamNotationDeclaration>, QXmlStreamNotationDeclaration )
 DEF_VALUELIST_MARSHALLER( QSslCertificateList, QList<QSslCertificate>, QSslCertificate )
 DEF_VALUELIST_MARSHALLER( QSslCipherList, QList<QSslCipher>, QSslCipher )
 DEF_VALUELIST_MARSHALLER( QSslErrorList, QList<QSslError>, QSslError )
+DEF_VALUELIST_MARSHALLER( QXmlStreamEntityDeclarations, QVector<QXmlStreamEntityDeclaration>, QXmlStreamEntityDeclaration )
+DEF_VALUELIST_MARSHALLER( QXmlStreamNamespaceDeclarations, QVector<QXmlStreamNamespaceDeclaration>, QXmlStreamNamespaceDeclaration )
+DEF_VALUELIST_MARSHALLER( QXmlStreamNotationDeclarations, QVector<QXmlStreamNotationDeclaration>, QXmlStreamNotationDeclaration )
 #endif
 
 TypeHandler Qt_handlers[] = {
-    { "QString", marshall_QString },
-    { "QString&", marshall_QString },
-    { "QString*", marshall_QString },
-    { "int&", marshall_intR },
-    { "int*", marshall_intR },
-    { "qreal&", marshall_doubleR },
-    { "qreal*", marshall_doubleR },
-    { "double&", marshall_doubleR },
-    { "double*", marshall_doubleR },
-    { "bool&", marshall_boolR },
     { "bool*", marshall_boolR },
-    { "short*", marshall_shortR },
-    { "short&", marshall_shortR },
+    { "bool&", marshall_boolR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
+    { "double*", marshall_doubleR },
+    { "double&", marshall_doubleR },
+    { "int*", marshall_intR },
+    { "int&", marshall_intR },
     { "QDBusVariant", marshall_QDBusVariant },
     { "QDBusVariant&", marshall_QDBusVariant },
-    { "QStringList", marshall_QStringList },
-    { "QStringList&", marshall_QStringList },
-    { "QStringList*", marshall_QStringList },
-//    { "void**", marshall_voidP_array },
+    { "QFileInfoList", marshall_QFileInfoList },
     { "QList<int>", marshall_QListInt },
     { "QList<int>&", marshall_QListInt },
-    { "QList<QTableWidgetSelectionRange>", marshall_QTableWidgetSelectionRangeList },
-    { "QList<QTextLayout::FormatRange>", marshall_QTextLayoutFormatRangeList },
-    { "QList<QTextLayout::FormatRange>&", marshall_QTextLayoutFormatRangeList },
-    { "QList<QTextBlock>", marshall_QTextBlockList },
-    { "QList<QPolygonF>", marshall_QPolygonFList },
+    { "QList<QAbstractButton*>", marshall_QAbstractButtonList },
+    { "QList<QAction*>", marshall_QActionList },
    // { "QList<QHostAddress>", marshall_QHostAddressList },
    // { "QList<QHostAddress>&", marshall_QHostAddressList },
-    { "QList<QVariant>", marshall_QVariantList },
-    { "QList<QVariant>&", marshall_QVariantList },
-    { "QVariantList&", marshall_QVariantList },
-    { "QList<QPixmap>", marshall_QPixmapList },
+    { "QList<QImageTextKeyLang>", marshall_QImageTextKeyLangList },
+    { "QList<QListWidgetItem*>", marshall_QListWidgetItemList },
+    { "QList<QListWidgetItem*>&", marshall_QListWidgetItemList },
     { "QList<QModelIndex>", marshall_QModelIndexList },
     { "QList<QModelIndex>&", marshall_QModelIndexList },
-    { "QModelIndexList&", marshall_QModelIndexList },
-    { "QModelIndexList", marshall_QModelIndexList },
-    { "QList<QImageTextKeyLang>", marshall_QImageTextKeyLangList },
+    { "QList<QPixmap>", marshall_QPixmapList },
+    { "QList<QPolygonF>", marshall_QPolygonFList },
+    { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
+    { "QList<QTableWidgetItem*>&", marshall_QTableWidgetItemList },
+    { "QList<QTableWidgetSelectionRange>", marshall_QTableWidgetSelectionRangeList },
+    { "QList<QTextBlock>", marshall_QTextBlockList },
+    { "QList<QTextFrame*>", marshall_QTextFrameList },
+    { "QList<QTextLayout::FormatRange>", marshall_QTextLayoutFormatRangeList },
+    { "QList<QTextLayout::FormatRange>&", marshall_QTextLayoutFormatRangeList },
+    { "QList<QTreeWidgetItem*>", marshall_QTreeWidgetItemList },
+    { "QList<QTreeWidgetItem*>&", marshall_QTreeWidgetItemList },
     { "QList<QUrl>", marshall_QUrlList },
     { "QList<QUrl>&", marshall_QUrlList },
-    { "QVector<QPointF>", marshall_QPointFVector },
-    { "QVector<QPointF>&", marshall_QPointFVector },
-    { "QVector<QPoint>", marshall_QPointVector },
-    { "QVector<QPoint>&", marshall_QPointVector },
-    { "QVector<QLine>", marshall_QLineVector },
-    { "QVector<QLine>&", marshall_QLineVector },
-    { "QVector<QLineF>", marshall_QLineFVector },
-    { "QVector<QLineF>&", marshall_QLineFVector },
-    { "QVector<QRect>", marshall_QRectVector },
-    { "QVector<QRect>&", marshall_QRectVector },
-    { "QVector<QRectF>", marshall_QRectFVector },
-    { "QVector<QRectF>&", marshall_QRectFVector },
-    { "QVector<QColor>", marshall_QColorVector },
-    { "QVector<QColor>&", marshall_QColorVector },
-    { "QVector<QRgb>", marshall_QRgbVector },
-    { "QVector<QRgb>&", marshall_QRgbVector },
-    { "QVector<QVariant>", marshall_QVariantVector },
-    { "QVector<QVariant>&", marshall_QVariantVector },
-    { "QVector<QTextFormat>", marshall_QTextFormatVector },
-    { "QVector<QTextFormat>&", marshall_QTextFormatVector },
-    { "QVector<QTextLength>", marshall_QTextLengthVector },
-    { "QVector<QTextLength>&", marshall_QTextLengthVector },
+    { "QList<QVariant>", marshall_QVariantList },
+    { "QList<QVariant>&", marshall_QVariantList },
+    { "QList<QWidget*>", marshall_QWidgetPtrList },
     { "QMap<int,QVariant>", marshall_QMapintQVariant },
     { "QMap<QString,QString>", marshall_QMapQStringQString },
     { "QMap<QString,QString>&", marshall_QMapQStringQString },
     { "QMap<QString,QVariant>", marshall_QMapQStringQVariant },
     { "QMap<QString,QVariant>&", marshall_QMapQStringQVariant },
-    { "QList<QTextFrame*>", marshall_QTextFrameList },
-    { "QList<QAction*>", marshall_QActionList },
-    { "QList<QWidget*>", marshall_QWidgetPtrList },
-    { "QList<QTreeWidgetItem*>", marshall_QTreeWidgetItemList },
-    { "QList<QTreeWidgetItem*>&", marshall_QTreeWidgetItemList },
-    { "QList<QAbstractButton*>", marshall_QAbstractButtonList },
-    { "QList<QListWidgetItem*>", marshall_QListWidgetItemList },
-    { "QList<QListWidgetItem*>&", marshall_QListWidgetItemList },
-    { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
-    { "QList<QTableWidgetItem*>&", marshall_QTableWidgetItemList },
-    { "QWidgetList", marshall_QWidgetList },
-    { "QWidgetList&", marshall_QWidgetList },
+    { "QModelIndexList", marshall_QModelIndexList },
+    { "QModelIndexList&", marshall_QModelIndexList },
     { "QObjectList", marshall_QObjectList },
     { "QObjectList&", marshall_QObjectList },
-    { "QFileInfoList", marshall_QFileInfoList },
+    { "qreal*", marshall_doubleR },
+    { "qreal&", marshall_doubleR },
+    { "QStringList", marshall_QStringList },
+    { "QStringList*", marshall_QStringList },
+    { "QStringList&", marshall_QStringList },
+    { "QString", marshall_QString },
+    { "QString*", marshall_QString },
+    { "QString&", marshall_QString },
+    { "QVariantList&", marshall_QVariantList },
+    { "QVector<QColor>", marshall_QColorVector },
+    { "QVector<QColor>&", marshall_QColorVector },
+    { "QVector<QLineF>", marshall_QLineFVector },
+    { "QVector<QLineF>&", marshall_QLineFVector },
+    { "QVector<QLine>", marshall_QLineVector },
+    { "QVector<QLine>&", marshall_QLineVector },
+    { "QVector<QPointF>", marshall_QPointFVector },
+    { "QVector<QPointF>&", marshall_QPointFVector },
+    { "QVector<QPoint>", marshall_QPointVector },
+    { "QVector<QPoint>&", marshall_QPointVector },
+    { "QVector<QRectF>", marshall_QRectFVector },
+    { "QVector<QRectF>&", marshall_QRectFVector },
+    { "QVector<QRect>", marshall_QRectVector },
+    { "QVector<QRect>&", marshall_QRectVector },
+    { "QVector<QRgb>", marshall_QRgbVector },
+    { "QVector<QRgb>&", marshall_QRgbVector },
+    { "QVector<QTextFormat>", marshall_QTextFormatVector },
+    { "QVector<QTextFormat>&", marshall_QTextFormatVector },
+    { "QVector<QTextLength>", marshall_QTextLengthVector },
+    { "QVector<QTextLength>&", marshall_QTextLengthVector },
+    { "QVector<QVariant>", marshall_QVariantVector },
+    { "QVector<QVariant>&", marshall_QVariantVector },
+    { "QWidgetList", marshall_QWidgetList },
+    { "QWidgetList&", marshall_QWidgetList },
+    { "short*", marshall_shortR },
+    { "short&", marshall_shortR },
+//    { "void**", marshall_voidP_array },
 #if QT_VERSION >= 0x40200
     { "QList<QGraphicsItem*>", marshall_QGraphicsItemList },
     { "QList<QGraphicsItem*>&", marshall_QGraphicsItemList },
@@ -1787,15 +1787,15 @@ TypeHandler Qt_handlers[] = {
     { "QList<QUndoStack*>&", marshall_QUndoStackList },
 #endif
 #if QT_VERSION >= 0x40300
-    { "QXmlStreamEntityDeclarations", marshall_QXmlStreamEntityDeclarations },
-    { "QXmlStreamNamespaceDeclarations", marshall_QXmlStreamNamespaceDeclarations },
-    { "QXmlStreamNotationDeclarations", marshall_QXmlStreamNotationDeclarations },
     { "QList<QMdiSubWindow*>", marshall_QMdiSubWindowList },
     { "QList<QSslCertificate>", marshall_QSslCertificateList },
     { "QList<QSslCertificate>&", marshall_QSslCertificateList },
     { "QList<QSslCipher>", marshall_QSslCipherList },
     { "QList<QSslCipher>&", marshall_QSslCipherList },
     { "QList<QSslError>&", marshall_QSslErrorList },
+    { "QXmlStreamEntityDeclarations", marshall_QXmlStreamEntityDeclarations },
+    { "QXmlStreamNamespaceDeclarations", marshall_QXmlStreamNamespaceDeclarations },
+    { "QXmlStreamNotationDeclarations", marshall_QXmlStreamNotationDeclarations },
 #endif
     { 0, 0 }
 };
