@@ -1,3 +1,10 @@
+2007-06-10  Richard Dale  <rdale@foton.es>
+
+	* Added an event callback handler to look for ChildAdded and ChildRemoved
+	  events. It then creates or removes global references. Now call references
+	  'global refs' instead of 'strong refs' in the code.
+	* Added some more list marshallers.
+
 2007-06-07  Arno Rehn  <arno@arnorehn.de>
 
 	* Added README

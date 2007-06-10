@@ -88,6 +88,8 @@ extern "C" {
 extern Q_DECL_EXPORT void InstallFreeGCHandle(FromIntPtr callback);
 extern Q_DECL_EXPORT void InstallGetSmokeObject(GetIntPtr callback);
 extern Q_DECL_EXPORT void InstallSetSmokeObject(SetIntPtr callback);
+extern Q_DECL_EXPORT void InstallAddGlobalRef(SetIntPtr callback);
+extern Q_DECL_EXPORT void InstallRemoveGlobalRef(SetIntPtr callback);
 extern Q_DECL_EXPORT void InstallMapPointer(MapPointerFn callback);
 extern Q_DECL_EXPORT void InstallUnmapPointer(FromIntPtr callback);
 extern Q_DECL_EXPORT void InstallGetInstance(GetInstanceFn callback);

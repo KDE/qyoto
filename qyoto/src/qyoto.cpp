@@ -20,19 +20,19 @@
 #endif
 #include <stdio.h>
 
-#include <QtGui/qapplication.h>
-#include <QtCore/qstring.h>
-#include <QtCore/qhash.h>
-#include <QtCore/qobject.h>
-#include <QtCore/qbytearray.h>
-#include <QtCore/qregexp.h>
-#include <QtCore/qstringlist.h>
-#include <QMetaMethod>
-#include <QModelIndex>
-#include <QAbstractProxyModel>
 #include <QAbstractItemDelegate>
 #include <QAbstractItemView>
+#include <QAbstractProxyModel>
 #include <QAbstractTextDocumentLayout>
+#include <QMetaMethod>
+#include <QModelIndex>
+#include <QtCore/qbytearray.h>
+#include <QtCore/qhash.h>
+#include <QtCore/qobject.h>
+#include <QtCore/qregexp.h>
+#include <QtCore/qstring.h>
+#include <QtCore/qstringlist.h>
+#include <QtGui/qapplication.h>
 
 #undef DEBUG
 #ifndef __USE_POSIX
@@ -72,6 +72,9 @@ GetInstanceFn GetInstance;
 GetIntPtr GetSmokeObject;
 
 static SetIntPtr SetSmokeObject;
+
+static SetIntPtr AddGlobalRef;
+static SetIntPtr RemoveGlobalRef;
 
 static MapPointerFn MapPointer;
 static FromIntPtr UnmapPointer;
@@ -341,7 +344,7 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 		lastptr = ptr;
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
-			printf(	"mapPointer (%s*)%p -> %p strong ref: %s\n", 
+			printf(	"mapPointer (%s*)%p -> %p global ref: %s\n", 
 						className, 
 						ptr, 
 						(void*)obj,
@@ -1014,7 +1017,7 @@ public:
 			(*FreeGCHandle)(obj);
 			return true;
 		}
-		
+
 		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
 		if (overridenMethod == 0) {
 			(*FreeGCHandle)(obj);
@@ -1032,6 +1035,32 @@ public:
 };
 
 extern "C" {
+
+static bool 
+qyoto_event_notify(void **data)
+{
+    QEvent *event = (QEvent *) data[1];
+
+	// If a child has been given a parent then make a global ref to it, to prevent
+	// garbage collection. If a parent has been removed, then remove to global ref
+	// to the child also.
+	if (event->type() == QEvent::ChildAdded || event->type() == QEvent::ChildRemoved) {
+		QChildEvent *e = static_cast<QChildEvent *>(event);
+		void * childObj = (*GetInstance)(e->child(), true);
+		if (childObj != 0) {
+			// Maybe add a check whether the childObj is still a QObject here
+			if (e->added()) {
+				(*AddGlobalRef)(childObj, e->child());
+			} else {
+				(*RemoveGlobalRef)(childObj, e->child());
+			}
+
+			(*FreeGCHandle)(childObj);
+		}
+	}
+
+	return false;
+}
 
 void
 SetDebug(int channel) 
@@ -1598,6 +1627,18 @@ InstallSetSmokeObject(SetIntPtr callback)
 }
 
 void 
+InstallAddGlobalRef(SetIntPtr callback)
+{
+	AddGlobalRef = callback;
+}
+
+void 
+InstallRemoveGlobalRef(SetIntPtr callback)
+{
+	RemoveGlobalRef = callback;
+}
+
+void 
 InstallMapPointer(MapPointerFn callback)
 {
 	MapPointer = callback;
@@ -2044,6 +2085,8 @@ Init_qyoto()
         classStringName = className.toLatin1();
         classname.insert(i, strdup(classStringName.constData()));
     }
+
+    QInternal::registerCallback(QInternal::EventNotifyCallback, qyoto_event_notify);
 }
 
 }

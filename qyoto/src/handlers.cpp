@@ -1,52 +1,60 @@
-#include <QtCore/qstring.h>
-#include <QtCore/qregexp.h>
-#include <QtGui/qapplication.h>
-#include <QtGui/qlistwidget.h>
-#include <QtGui/qlayout.h>
-#include <QtCore/qmetaobject.h>
-#include <QtGui/qtablewidget.h>
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 
+#include <QtCore/qbytearray.h>
+#include <QtCore/qdir.h>
+#include <QtCore/qhash.h>
+#include <QtCore/qlinkedlist.h>
+#include <QtCore/qmetaobject.h>
+#include <QtCore/qobject.h>
+#include <QtCore/qpair.h>
+#include <QtCore/qprocess.h>
+#include <QtCore/qrect.h>
+#include <QtCore/qregexp.h>
+#include <QtCore/qstring.h>
+#include <QtCore/qtextcodec.h>
+#include <QtCore/qurl.h>
+#include <QtGui/qabstractbutton.h>
+#include <QtGui/qaction.h>
+#include <QtGui/qapplication.h>
+#include <QtGui/qdockwidget.h>
+#include <QtGui/qevent.h>
+#include <QtGui/qlayout.h>
+#include <QtGui/qlistwidget.h>
 #include <QtGui/qpainter.h>
 #include <QtGui/qpalette.h>
-#include <QtGui/qtablewidget.h>
-#include <QtGui/qtoolbar.h>
-#include <QtGui/qdockwidget.h>
-#include <QtNetwork/qurlinfo.h>
-#include <QtCore/qlinkedlist.h>
-#include <QtCore/qobject.h>
-#include <QtCore/qtextcodec.h>
-#include <QtCore/qprocess.h>
-#include <QtNetwork/qhostaddress.h>
-#include <QtCore/qpair.h>
-#include <QtGui/qevent.h>
 #include <QtGui/qpixmap.h>
-#include <QtGui/qaction.h>
-#include <QtGui/qtreewidget.h>
-#include <QtGui/qtextobject.h>
-#include <QtGui/qtextlayout.h>
-#include <QtGui/qabstractbutton.h>
-#include <QtGui/qlistwidget.h>
 #include <QtGui/qpolygon.h>
-#include <QtCore/qurl.h>
-#include <QtCore/qdir.h>
-#include <QtCore/qobject.h>
-#include <QtGui/qwidget.h>
 #include <QtGui/qtabbar.h>
-#include <QtCore/qhash.h>
+#include <QtGui/qtablewidget.h>
+#include <QtGui/qtextlayout.h>
+#include <QtGui/qtextobject.h>
+#include <QtGui/qtoolbar.h>
+#include <QtGui/qtreewidget.h>
+#include <QtGui/qwidget.h>
+#include <QtNetwork/qhostaddress.h>
+#include <QtNetwork/qnetworkinterface.h>
+#include <QtNetwork/qurlinfo.h>
 
 #if QT_VERSION >= 0x40200
-#include <QtGui/qgraphicsscene.h>
 #include <QtGui/qgraphicsitem.h>
+#include <QtGui/qgraphicsscene.h>
 #include <QtGui/qstandarditemmodel.h>
 #include <QtGui/qundostack.h>
 #endif
 
 #if QT_VERSION >= 0x40300
-#include <QtXml/qxmlstream.h>
 #include <QtGui/qmdisubwindow.h>
 #include <QtNetwork/qsslcertificate.h>
-#include <QtNetwork/qsslerror.h>
 #include <QtNetwork/qsslcipher.h>
+#include <QtNetwork/qsslerror.h>
+#include <QtXml/qxmlstream.h>
 #endif
 
 #include "smoke.h"
@@ -259,8 +267,7 @@ IsContainedInstance(smokeqyoto_object *o)
 {
     const char *className = o->smoke->classes[o->classId].className;
 		
-	if (	qstrcmp(className, "QObject") == 0
-			|| qstrcmp(className, "QListBoxItem") == 0
+	if (	qstrcmp(className, "QListBoxItem") == 0
 			|| qstrcmp(className, "QStyleSheetItem") == 0
 			|| qstrcmp(className, "QSqlCursor") == 0
 			|| qstrcmp(className, "QModelIndex") == 0 )
@@ -1515,12 +1522,15 @@ void marshall_QListInt(Marshall *m) {
         Marshall::HandlerFn marshall_##ListIdent = marshall_ItemList<Item,ItemList,ListIdent##STR>;
 
 DEF_LIST_MARSHALLER( QAbstractButtonList, QList<QAbstractButton*>, QAbstractButton )
+DEF_LIST_MARSHALLER( QActionGroupList, QList<QActionGroup*>, QActionGroup )
 DEF_LIST_MARSHALLER( QActionList, QList<QAction*>, QAction )
 DEF_LIST_MARSHALLER( QListWidgetItemList, QList<QListWidgetItem*>, QListWidgetItem )
 DEF_LIST_MARSHALLER( QObjectList, QList<QObject*>, QObject )
+DEF_LIST_MARSHALLER( QTableWidgetList, QList<QTableWidget*>, QTableWidget )
 DEF_LIST_MARSHALLER( QTableWidgetItemList, QList<QTableWidgetItem*>, QTableWidgetItem )
 DEF_LIST_MARSHALLER( QTextFrameList, QList<QTextFrame*>, QTextFrame )
 DEF_LIST_MARSHALLER( QTreeWidgetItemList, QList<QTreeWidgetItem*>, QTreeWidgetItem )
+DEF_LIST_MARSHALLER( QTreeWidgetList, QList<QTreeWidget*>, QTreeWidget )
 DEF_LIST_MARSHALLER( QWidgetList, QList<QWidget*>, QWidget )
 DEF_LIST_MARSHALLER( QWidgetPtrList, QList<QWidget*>, QWidget )
 
@@ -1662,17 +1672,22 @@ void marshall_QRgbVector(Marshall *m)
         Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;
 
 
+DEF_VALUELIST_MARSHALLER( QByteArrayList, QList<QByteArray>, QByteArray )
 DEF_VALUELIST_MARSHALLER( QColorVector, QVector<QColor>, QColor )
 DEF_VALUELIST_MARSHALLER( QFileInfoList, QFileInfoList, QFileInfo )
 // DEF_VALUELIST_MARSHALLER( QHostAddressList, QList<QHostAddress>, QHostAddress )
 DEF_VALUELIST_MARSHALLER( QImageTextKeyLangList, QList<QImageTextKeyLang>, QImageTextKeyLang )
+DEF_VALUELIST_MARSHALLER( QKeySequenceList, QList<QKeySequence>, QKeySequence )
 DEF_VALUELIST_MARSHALLER( QLineFVector, QVector<QLineF>, QLineF )
 DEF_VALUELIST_MARSHALLER( QLineVector, QVector<QLine>, QLine )
 DEF_VALUELIST_MARSHALLER( QModelIndexList, QList<QModelIndex>, QModelIndex )
+DEF_VALUELIST_MARSHALLER( QNetworkAddressEntryList, QList<QNetworkAddressEntry>, QNetworkAddressEntry )
+DEF_VALUELIST_MARSHALLER( QNetworkInterfaceList, QList<QNetworkInterface>, QNetworkInterface )
 DEF_VALUELIST_MARSHALLER( QPixmapList, QList<QPixmap>, QPixmap )
 DEF_VALUELIST_MARSHALLER( QPointFVector, QVector<QPointF>, QPointF )
 DEF_VALUELIST_MARSHALLER( QPointVector, QVector<QPoint>, QPoint )
 DEF_VALUELIST_MARSHALLER( QPolygonFList, QList<QPolygonF>, QPolygonF )
+DEF_VALUELIST_MARSHALLER( QRectFList, QList<QRectF>, QRectF )
 DEF_VALUELIST_MARSHALLER( QRectFVector, QVector<QRectF>, QRectF )
 DEF_VALUELIST_MARSHALLER( QRectVector, QVector<QRect>, QRect )
 // DEF_VALUELIST_MARSHALLER( QRgbVector, QVector<QRgb>, QRgb )
@@ -1709,16 +1724,32 @@ TypeHandler Qt_handlers[] = {
     { "QList<int>", marshall_QListInt },
     { "QList<int>&", marshall_QListInt },
     { "QList<QAbstractButton*>", marshall_QAbstractButtonList },
+    { "QList<QActionGroup*>", marshall_QActionGroupList },
     { "QList<QAction*>", marshall_QActionList },
+    { "QList<QAction*>&", marshall_QActionList },
+    { "QList<QByteArray>", marshall_QByteArrayList },
+    { "QList<QByteArray>*", marshall_QByteArrayList },
+    { "QList<QByteArray>&", marshall_QByteArrayList },
    // { "QList<QHostAddress>", marshall_QHostAddressList },
    // { "QList<QHostAddress>&", marshall_QHostAddressList },
     { "QList<QImageTextKeyLang>", marshall_QImageTextKeyLangList },
+    { "QList<QKeySequence>", marshall_QKeySequenceList },
+    { "QList<QKeySequence>&", marshall_QKeySequenceList },
     { "QList<QListWidgetItem*>", marshall_QListWidgetItemList },
     { "QList<QListWidgetItem*>&", marshall_QListWidgetItemList },
+    { "QList<QMdiSubWindow*>", marshall_QMdiSubWindowList },
     { "QList<QModelIndex>", marshall_QModelIndexList },
     { "QList<QModelIndex>&", marshall_QModelIndexList },
+    { "QList<QNetworkAddressEntry>", marshall_QNetworkAddressEntryList },
+    { "QList<QNetworkInterface>", marshall_QNetworkInterfaceList },
     { "QList<QPixmap>", marshall_QPixmapList },
     { "QList<QPolygonF>", marshall_QPolygonFList },
+    { "QList<QRectF>", marshall_QRectFList },
+    { "QList<QRectF>&", marshall_QRectFList },
+    { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
+    { "QList<QTableWidgetItem*>&", marshall_QTableWidgetItemList },
+    { "QList<QStandardItem*>", marshall_QStandardItemList },
+    { "QList<QStandardItem*>&", marshall_QStandardItemList },
     { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
     { "QList<QTableWidgetItem*>&", marshall_QTableWidgetItemList },
     { "QList<QTableWidgetSelectionRange>", marshall_QTableWidgetSelectionRangeList },
@@ -1728,11 +1759,15 @@ TypeHandler Qt_handlers[] = {
     { "QList<QTextLayout::FormatRange>&", marshall_QTextLayoutFormatRangeList },
     { "QList<QTreeWidgetItem*>", marshall_QTreeWidgetItemList },
     { "QList<QTreeWidgetItem*>&", marshall_QTreeWidgetItemList },
+    { "QList<QTreeWidget*>&", marshall_QTreeWidgetList },
+    { "QList<QUndoStack*>", marshall_QUndoStackList },
+    { "QList<QUndoStack*>&", marshall_QUndoStackList },
     { "QList<QUrl>", marshall_QUrlList },
     { "QList<QUrl>&", marshall_QUrlList },
     { "QList<QVariant>", marshall_QVariantList },
     { "QList<QVariant>&", marshall_QVariantList },
     { "QList<QWidget*>", marshall_QWidgetPtrList },
+    { "QList<QWidget*>&", marshall_QWidgetPtrList },
     { "QMap<int,QVariant>", marshall_QMapintQVariant },
     { "QMap<QString,QString>", marshall_QMapQStringQString },
     { "QMap<QString,QString>&", marshall_QMapQStringQString },

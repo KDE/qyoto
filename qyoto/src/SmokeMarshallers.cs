@@ -86,6 +86,12 @@ namespace Qyoto {
 		public static extern void InstallSetSmokeObject(SetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallAddGlobalRef(SetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallRemoveGlobalRef(SetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallMapPointer(MapPointerFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -175,7 +181,7 @@ namespace Qyoto {
 		public delegate IntPtr GetIntPtr(IntPtr instance);
 		public delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		public delegate void FromIntPtr(IntPtr ptr);
-		public delegate void MapPointerFn(IntPtr instance, IntPtr ptr, bool createStrongReference);
+		public delegate void MapPointerFn(IntPtr instance, IntPtr ptr, bool createGlobalReference);
 		public delegate IntPtr CreateListFn(string className);
 		public delegate IntPtr CreateInstanceFn(string className, IntPtr smokeObjectPtr);
 		public delegate IntPtr GetInstanceFn(IntPtr ptr, bool allInstances);
@@ -272,13 +278,38 @@ namespace Qyoto {
 		// delete the child when it is deleted. This Dictionary will prevent the
 		// child from being GCd even if there are no references to it in the Qyoto
 		// application code.
-		static private Dictionary<IntPtr, object> strongReferenceMap = new Dictionary<IntPtr, object>();
+		static private Dictionary<IntPtr, object> globalReferenceMap = new Dictionary<IntPtr, object>();
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
 		// and the value is a WeakReference to the C# instance.
 		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>(2179);
 
-		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createStrongReference) {
+		public static void AddGlobalRef(IntPtr instancePtr, IntPtr ptr) {
+			Object instance = ((GCHandle) instancePtr).Target;
+			globalReferenceMap[ptr] = instance;
+#if DEBUG
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				Console.WriteLine("AddGlobalRef() Creating global reference 0x{0:x8} -> {1}", (int) ptr, instance);
+			}
+#endif
+		}
+
+		public static void RemoveGlobalRef(IntPtr instancePtr, IntPtr ptr) {
+			Object instance = ((GCHandle) instancePtr).Target;
+			if (globalReferenceMap.ContainsKey(ptr)) {
+#if DEBUG
+				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					object reference;
+					if (globalReferenceMap.TryGetValue(ptr, out reference)) {
+						Console.WriteLine("RemoveGlobalRef() Removing global reference 0x{0:x8} -> {1}", (int) ptr, reference);
+					}
+				}
+#endif
+				globalReferenceMap.Remove(ptr);
+			}
+		}
+
+		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createGlobalReference) {
 			Object instance = ((GCHandle) instancePtr).Target;
 			WeakReference weakRef = new WeakReference(instance);
 			pointerMap[ptr] = weakRef;
@@ -287,11 +318,11 @@ namespace Qyoto {
 				Console.WriteLine("MapPointer() Creating weak reference 0x{0:x8} -> {1}", (int) ptr, instance);
 			}
 #endif
-			if (createStrongReference) {
-				strongReferenceMap[ptr] = instance;
+			if (createGlobalReference) {
+				globalReferenceMap[ptr] = instance;
 #if DEBUG
 				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("MapPointer() Creating strong reference 0x{0:x8} -> {1}", (int) ptr, instance);
+					Console.WriteLine("MapPointer() Creating global reference 0x{0:x8} -> {1}", (int) ptr, instance);
 				}
 #endif
 			}
@@ -304,16 +335,16 @@ namespace Qyoto {
 			}
 #endif
 			pointerMap.Remove(ptr);
-			if (strongReferenceMap.ContainsKey(ptr)) {
+			if (globalReferenceMap.ContainsKey(ptr)) {
 #if DEBUG
 				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 					object reference;
-					if (strongReferenceMap.TryGetValue(ptr, out reference)) {
-						Console.WriteLine("UnmapPointer() Removing strong reference 0x{0:x8} -> {1}", (int) ptr, reference);
+					if (globalReferenceMap.TryGetValue(ptr, out reference)) {
+						Console.WriteLine("UnmapPointer() Removing global reference 0x{0:x8} -> {1}", (int) ptr, reference);
 					}
 				}
 #endif
-				strongReferenceMap.Remove(ptr);
+				globalReferenceMap.Remove(ptr);
 			}
 		}
 		
@@ -656,6 +687,8 @@ namespace Qyoto {
 			InstallGetSmokeObject(GetSmokeObject);
 			InstallSetSmokeObject(SetSmokeObject);
 			
+			InstallAddGlobalRef(AddGlobalRef);
+			InstallRemoveGlobalRef(RemoveGlobalRef);
 			InstallMapPointer(MapPointer);
 			InstallUnmapPointer(UnmapPointer);
 			InstallGetInstance(GetInstance);
