@@ -452,7 +452,7 @@ public:
 
 	VirtualMethodCall(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, void * obj, void * overridenMethod) :
 		_smoke(smoke), _method(meth), _stack(stack), _obj(obj), _overridenMethod(overridenMethod), _cur(-1), _sp(0), _called(false) {
-		_sp = new Smoke::StackItem[method().numArgs];
+		_sp = new Smoke::StackItem[method().numArgs + 1];
 		_args = _smoke->argumentList + method().args;
     }
 

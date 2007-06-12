@@ -167,45 +167,45 @@ namespace Qyoto {
 
 				for (int i = 0; i < args.Length; i++) {
 					if (parameters[i].ParameterType == typeof(bool)) {
-						args[i] = stackPtr[i].s_bool;
+						args[i] = stackPtr[i+1].s_bool;
 					} else if (parameters[i].ParameterType == typeof(sbyte)) {
-						args[i] = stackPtr[i].s_char;
+						args[i] = stackPtr[i+1].s_char;
 					} else if (parameters[i].ParameterType == typeof(byte)) {
-						args[i] = stackPtr[i].s_uchar;
+						args[i] = stackPtr[i+1].s_uchar;
 					} else if (parameters[i].ParameterType == typeof(short)) {
-						args[i] = stackPtr[i].s_short;
+						args[i] = stackPtr[i+1].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
-						args[i] = stackPtr[i].s_ushort;
+						args[i] = stackPtr[i+1].s_ushort;
 					} else if (parameters[i].ParameterType == typeof(int)) {
-						args[i] = stackPtr[i].s_int;
+						args[i] = stackPtr[i+1].s_int;
 					} else if (parameters[i].ParameterType.IsEnum) {
-						args[i] = Enum.ToObject(parameters[i].ParameterType, stackPtr[i].s_int);
+						args[i] = Enum.ToObject(parameters[i].ParameterType, stackPtr[i+1].s_int);
 					} else if (parameters[i].ParameterType == typeof(uint)) {
-						args[i] = stackPtr[i].s_uint;
+						args[i] = stackPtr[i+1].s_uint;
 					} else if (parameters[i].ParameterType == typeof(long)) {
-						args[i] = stackPtr[i].s_long;
+						args[i] = stackPtr[i+1].s_long;
 					} else if (parameters[i].ParameterType == typeof(ulong)) {
-						args[i] = stackPtr[i].s_ulong;
+						args[i] = stackPtr[i+1].s_ulong;
 					} else if (parameters[i].ParameterType == typeof(float)) {
-						args[i] = stackPtr[i].s_float;
+						args[i] = stackPtr[i+1].s_float;
 					} else if (parameters[i].ParameterType == typeof(double)) {
-						args[i] = stackPtr[i].s_double;
+						args[i] = stackPtr[i+1].s_double;
 					} else if (parameters[i].ParameterType == typeof(string)) {
-						if (stackPtr[i].s_class != IntPtr.Zero) {
-							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
+						if (stackPtr[i+1].s_class != IntPtr.Zero) {
+							args[i] = (string) ((GCHandle) stackPtr[i+1].s_class).Target;
 #if DEBUG
-							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
+							DebugGCHandle.Free((GCHandle) stackPtr[i+1].s_class);
 #else
-							((GCHandle) stackPtr[i].s_class).Free();
+							((GCHandle) stackPtr[i+1].s_class).Free();
 #endif
 						}
 					} else {
-						if (stackPtr[i].s_class != IntPtr.Zero) {
-							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
+						if (stackPtr[i+1].s_class != IntPtr.Zero) {
+							args[i] = ((GCHandle) stackPtr[i+1].s_class).Target;
 #if DEBUG
-							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
+							DebugGCHandle.Free((GCHandle) stackPtr[i+1].s_class);
 #else
-							((GCHandle) stackPtr[i].s_class).Free();
+							((GCHandle) stackPtr[i+1].s_class).Free();
 #endif						
 						}
 					}
@@ -447,7 +447,7 @@ namespace Qyoto {
 									className,
 									signature, 
 									returnType, 
-									args.Length );
+									args.Length / 2 );
 			}
 #endif
 			

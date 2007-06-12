@@ -1,3 +1,12 @@
+2007-06-12  Richard Dale  <rdale@foton.es>
+
+	* When the stack was allocated for a virtual method callback, an entry 
+	  wasn't being included for the reply value
+	* When the arguments for a virtual method callback were copied to the
+	  C# arg stack, they were off by one
+	* The colliding mice example currently crashes with memory corruption
+	  problems
+
 2007-06-10  Richard Dale  <rdale@foton.es>
 
 	* Added an event callback handler to look for ChildAdded and ChildRemoved

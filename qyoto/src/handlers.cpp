@@ -1746,8 +1746,6 @@ TypeHandler Qt_handlers[] = {
     { "QList<QPolygonF>", marshall_QPolygonFList },
     { "QList<QRectF>", marshall_QRectFList },
     { "QList<QRectF>&", marshall_QRectFList },
-    { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
-    { "QList<QTableWidgetItem*>&", marshall_QTableWidgetItemList },
     { "QList<QStandardItem*>", marshall_QStandardItemList },
     { "QList<QStandardItem*>&", marshall_QStandardItemList },
     { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
@@ -1838,25 +1836,25 @@ TypeHandler Qt_handlers[] = {
 QHash<QString,TypeHandler *> type_handlers;
 
 void install_handlers(TypeHandler *h) {
-    while(h->name) {
-	type_handlers.insert(h->name, h);
-	h++;
-    }
+	while(h->name) {
+		type_handlers.insert(h->name, h);
+		h++;
+	}
 }
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type) {
-    if(type.elem())
-	return marshall_basetype;
-    if(!type.name())
-	return marshall_void;
+	if (type.elem())
+		return marshall_basetype;
+	if (!type.name())
+		return marshall_void;
 	TypeHandler *h = type_handlers[type.name()];
-    if(h == 0 && type.isConst() && strlen(type.name()) > strlen("const ")) {
+	if (h == 0 && type.isConst() && strlen(type.name()) > strlen("const ")) {
     	h = type_handlers[type.name() + strlen("const ")];
-    }
+	}
 	
-    if(h != 0) {
-	return h->fn;
-    }
+	if(h != 0) {
+		return h->fn;
+	}
 
-    return marshall_unknown;
+	return marshall_unknown;
 }
