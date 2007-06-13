@@ -68,11 +68,12 @@ public class Mouse : QGraphicsItem {
         Rotate(random.Next(360 * 16));
     }
     
+    private static double adjust = 0.5;
+    private QRectF boundingRect = new QRectF(-20 - adjust, -22 - adjust,
+                                             40 + adjust, 83 + adjust);
     public override QRectF BoundingRect()
     {
-        double adjust = 0.5;
-        return new QRectF(-20 - adjust, -22 - adjust,
-                      40 + adjust, 83 + adjust);
+         return boundingRect;
     }
     
     public QPainterPath Shape()
