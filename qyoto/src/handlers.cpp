@@ -304,6 +304,8 @@ IsContainedInstance(smokeqyoto_object *o)
 		}
 	} else if (isDerivedFromByName(o->smoke, className, "QTextBlockUserData")) {
 		return true;
+	} else if (isDerivedFromByName(o->smoke, className, "QGraphicsItem")) {
+		return true;
 	}
 	
     return false;
@@ -988,32 +990,24 @@ static void marshall_QString(Marshall *m) {
 }
 
 static void marshall_intR(Marshall *m) {
-    switch(m->action()) {
-        case Marshall::FromObject:
-            {
-            int * i = new int;
-            *i = m->var().s_int;
-            m->item().s_voidp = i;
-            m->next();
-            if(m->cleanup() && m->type().isConst()) {
-                delete i;
-            } else {
-//                m->item().s_voidp = new int((int)NUM2INT(rv));
-            }
-            }
-            break;
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_int);
+	}
+	break;
 
-        case Marshall::ToObject:
-            {
-            int *ip = (int*)m->item().s_voidp;
-            m->var().s_int = *ip;
-            }
-            break;
+	case Marshall::ToObject:
+	{
+		int *ip = (int*)m->item().s_voidp;
+		m->var().s_int = *ip;
+	}
+	break;
 
-        default:
-            m->unsupported();
-            break;
-    }
+	default:
+		m->unsupported();
+		break;
+	}
 }
 
 /*

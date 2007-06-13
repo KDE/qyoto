@@ -1,3 +1,10 @@
+2007-06-13  Richard Dale  <rdale@foton.es>
+
+	* Finished fixing the virtual method callback code
+	* Removed a memory leak from the 'int&' marshaller
+	* Fixed some other minor problems reported by valgrind
+	* Don't garbage collect QGraphicsItem instance for now
+
 2007-06-12  Richard Dale  <rdale@foton.es>
 
 	* When the stack was allocated for a virtual method callback, an entry 

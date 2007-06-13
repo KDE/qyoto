@@ -370,31 +370,33 @@ class VirtualMethodReturnValue : public Marshall {
     SmokeType _st;
     Smoke::StackItem * _retval;
 public:
-    const Smoke::Method &method() { return _smoke->methods[_method]; }
-    SmokeType type() { return _st; }
-    Marshall::Action action() { return Marshall::FromObject; }
-    Smoke::StackItem &item() { return _stack[0]; }
-    Smoke::StackItem &var() {
+
+	VirtualMethodReturnValue(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, Smoke::StackItem * retval) :
+    	_smoke(smoke), _method(meth), _stack(stack), _retval(retval) 
+	{
+		_st.set(_smoke, method().ret);
+		Marshall::HandlerFn fn = getMarshallFn(type());
+		(*fn)(this);
+	}
+
+	const Smoke::Method &method() { return _smoke->methods[_method]; }
+	SmokeType type() { return _st; }
+	Marshall::Action action() { return Marshall::FromObject; }
+	Smoke::StackItem &item() { return _stack[0]; }
+	Smoke::StackItem &var() {
     	return *_retval;
-    }
+	}
 
 	void unsupported() {
 		qFatal(	"Cannot handle '%s' as return-type of virtual method %s::%s",
 				type().name(),
 				_smoke->className(method().classId),
 				_smoke->methodNames[method().name] );
-    }
+	}
 
-    Smoke *smoke() { return _smoke; }
-    void next() {}
-    bool cleanup() { return false; }
-
-	VirtualMethodReturnValue(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, Smoke::StackItem * retval) :
-    	_smoke(smoke), _method(meth), _stack(stack), _retval(retval) {
-		_st.set(_smoke, method().ret);
-		Marshall::HandlerFn fn = getMarshallFn(type());
-		(*fn)(this);
-   }
+	Smoke *smoke() { return _smoke; }
+	void next() {}
+	bool cleanup() { return false; }
 };
 
 class VirtualMethodCall : public Marshall {
@@ -409,23 +411,37 @@ class VirtualMethodCall : public Marshall {
     bool _called;
 
 public:
-    SmokeType type() { return SmokeType(_smoke, _args[_cur]); }
-    Marshall::Action action() { return Marshall::ToObject; }
-    Smoke::StackItem &item() { return _stack[_cur + 1]; }
+	VirtualMethodCall(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, void * obj, void * overridenMethod) :
+		_smoke(smoke), _method(meth), _stack(stack), _obj(obj),
+		 _overridenMethod(overridenMethod), _cur(-1), _sp(0), _called(false) 
+	{
+		_sp = new Smoke::StackItem[method().numArgs + 1];
+		_args = _smoke->argumentList + method().args;
+    }
+
+    ~VirtualMethodCall() {
+		delete[] _sp;
+		(*FreeGCHandle)(_obj);
+		(*FreeGCHandle)(_overridenMethod);
+	}
+
+	SmokeType type() { return SmokeType(_smoke, _args[_cur]); }
+	Marshall::Action action() { return Marshall::ToObject; }
+	Smoke::StackItem &item() { return _stack[_cur + 1]; }
 
 	Smoke::StackItem &var() {
-		return _sp[_cur];
-    }
+		return _sp[_cur + 1];
+	}
 
 	const Smoke::Method &method() { return _smoke->methods[_method]; }
 
-    void unsupported() {
+	void unsupported() {
 		qFatal(	"Cannot handle '%s' as argument of virtual method %s::%s",
 				type().name(),
 				_smoke->className(method().classId),
 				_smoke->methodNames[method().name] );
-    }
-    Smoke *smoke() { return _smoke; }
+	}
+	Smoke *smoke() { return _smoke; }
 
 	void callMethod() {
 		if (_called) return;
@@ -434,7 +450,7 @@ public:
 		(*InvokeMethod)(_obj, _overridenMethod, _sp);
 		Smoke::StackItem * _retval = _sp;
 		VirtualMethodReturnValue r(_smoke, _method, _stack, _retval);
-    }
+	}
 
 	void next() {
 		int oldcur = _cur;
@@ -446,21 +462,9 @@ public:
 		}
 		callMethod();
 		_cur = oldcur;
-    }
+	}
 
-    bool cleanup() { return false; }   // is this right?
-
-	VirtualMethodCall(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, void * obj, void * overridenMethod) :
-		_smoke(smoke), _method(meth), _stack(stack), _obj(obj), _overridenMethod(overridenMethod), _cur(-1), _sp(0), _called(false) {
-		_sp = new Smoke::StackItem[method().numArgs + 1];
-		_args = _smoke->argumentList + method().args;
-    }
-
-    ~VirtualMethodCall() {
-		free(_sp);
-		(*FreeGCHandle)(_obj);
-		(*FreeGCHandle)(_overridenMethod);
-    }
+	bool cleanup() { return false; }   // is this right?
 };
 
 class MethodReturnValue : public Marshall {
@@ -613,7 +617,6 @@ public:
 		}
 
     }
-
 	void next() {
 		int oldcur = _cur;
 		_cur++;
@@ -819,6 +822,7 @@ public:
 		if (_mocret[0].argType != xmoc_void) {
 			SlotReturnValue r(_o, ret, _mocret);
 		}
+		delete[] ret;
 	}
 
 	void next() {
@@ -847,7 +851,7 @@ public:
 	~InvokeSlot() {
 		delete[] _stack;
 		delete[] _sp;
-		delete _args;
+		delete[] _args;
 	}
 };
 
@@ -978,10 +982,10 @@ public:
 		(*FreeGCHandle)(obj);
     }
 
-	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
+	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAbstract) {
 		void * obj = (*GetInstance)(ptr, false);
 
-		if (obj == 0) {
+		if (obj == 0 && !isAbstract) {
 			return false;
 		}
 
@@ -999,6 +1003,14 @@ public:
 			signature += " const";
 		}
 
+		if (obj == 0) {
+			printf(	"Fatal error: C# instance has been wrongly GC'd for virtual %p->%s::%s call\n", 
+						ptr,
+						smoke->classes[smoke->methods[method].classId].className,
+						(const char *) signature );
+			exit(1);
+		}
+
 		if (do_debug & qtdb_virtual) {
 			printf(	"virtual %p->%s::%s called\n", 
 						ptr,
@@ -1006,6 +1018,7 @@ public:
 						(const char *) signature );
 			fflush(stdout);
 		}
+
 		
 		if (strcmp(signature, "qt_metacall(QMetaObject::Call, int, void**)") == 0) {
 			QMetaObject::Call _c = (QMetaObject::Call)args[1].s_int;
@@ -1870,13 +1883,14 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 	MocArgument * args = GetMocArguments(replyType, sig);
 
 	const QMetaObject* meta = qobj->metaObject();
-	const char* signatureStr = sig.toLatin1();
 	int i;
 	for (i = 0; i < meta->methodCount(); i++) {
 		QMetaMethod m = meta->method(i);
-		if (m.methodType() == QMetaMethod::Signal &&
-			strcmp(m.signature(), signatureStr) == 0)
+		if (	m.methodType() == QMetaMethod::Signal 
+				&& strcmp(m.signature(), signature) == 0 )
+		{
 			break;
+		}
 	}
 	
 	EmitSignal signal(qobj, i, items, args, sp);
