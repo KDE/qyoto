@@ -1,3 +1,8 @@
+2007-06-18  Arno Rehn  <arno@arnorehn.de>
+
+	* Update CSharpMacros.cmake to work currectly with relative paths and improved
+	  the build-comments a bit.
+
 2007-06-18  Richard Dale  <rdale@foton.es>
 
 	* Removed the various commented out QAbstractItemModel methods as they

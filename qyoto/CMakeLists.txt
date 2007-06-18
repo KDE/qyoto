@@ -6,19 +6,19 @@ INCLUDE (CSharpMacros)
 SET(SRC_CPP src/qyoto.cpp
 	src/handlers.cpp)
 
-SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocation.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeMarshallers.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/src/Qyoto.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/src/QyotoMetaData.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/src/AssemblyInfo.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/network/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/sql/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/xml/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/svg/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/opengl/*.cs
-	${CMAKE_CURRENT_SOURCE_DIR}/qdbus/*.cs)
+SET(SRC_CS src/SmokeInvocation.cs
+	src/SmokeMarshallers.cs
+	src/Qyoto.cs
+	src/QyotoMetaData.cs
+	src/AssemblyInfo.cs
+	core/*.cs
+	gui/*.cs
+	network/*.cs
+	sql/*.cs
+	xml/*.cs
+	svg/*.cs
+	opengl/*.cs
+	qdbus/*.cs)
 
 SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
 
@@ -41,6 +41,9 @@ ADD_DEPENDENCIES (qt-dotnet qyoto)
 
 INSTALL(TARGETS qyoto LIBRARY DESTINATION lib)
 INSTALL_GAC(qt-dotnet)
+
+# MAKE_PROPER_FILE_LIST("${SRC_CS2}")
+# MESSAGE(${proper_file_list})
 
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(examples)
