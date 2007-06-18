@@ -89,7 +89,6 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("currentId", "currentId()", typeof(int)); }
 			set { interceptor.Invoke("currentIdChanged$", "currentIdChanged(int)", typeof(void), typeof(int), value); }
 		}
-		// void setButtonLayout(const QList<QWizard::WizardButton>& arg1); >>>> NOT CONVERTED
 		public QWizard(QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QWizard#$", "QWizard(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
@@ -148,6 +147,9 @@ namespace Qyoto {
 		}
 		public string ButtonText(QWizard.WizardButton which) {
 			return (string) interceptor.Invoke("buttonText$", "buttonText(QWizard::WizardButton) const", typeof(string), typeof(QWizard.WizardButton), which);
+		}
+		public void SetButtonLayout(List<QWizard.WizardButton> layout) {
+			interceptor.Invoke("setButtonLayout?", "setButtonLayout(const QList<QWizard::WizardButton>&)", typeof(void), typeof(List<QWizard.WizardButton>), layout);
 		}
 		public void SetButton(QWizard.WizardButton which, QAbstractButton button) {
 			interceptor.Invoke("setButton$#", "setButton(QWizard::WizardButton, QAbstractButton*)", typeof(void), typeof(QWizard.WizardButton), which, typeof(QAbstractButton), button);

@@ -1,3 +1,11 @@
+2007-06-18  Richard Dale  <rdale@foton.es>
+
+	* Removed the various commented out QAbstractItemModel methods as they
+	  aren't needed
+	* Fix the code generation for QWizard.cs so it has a C# List for the
+	  'const QList<QWizard::WizardButton>&', although it doesn't have a
+	  corresponding marshaller yet
+
 2007-06-13  Richard Dale  <rdale@foton.es>
 
 	* Finished fixing the virtual method callback code
