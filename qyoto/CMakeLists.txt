@@ -18,6 +18,7 @@ SET(SRC_CS src/SmokeInvocation.cs
 	xml/*.cs
 	svg/*.cs
 	opengl/*.cs
+	uitools/*.cs
 	qdbus/*.cs)
 
 SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)

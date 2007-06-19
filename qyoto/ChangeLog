@@ -1,3 +1,7 @@
+2007-06-19  Richard Dale  <rdale@foton.es>
+
+	* Added the missing QUiLoader class
+
 2007-06-18  Arno Rehn  <arno@arnorehn.de>
 
 	* Update CSharpMacros.cmake to work currectly with relative paths and improved
