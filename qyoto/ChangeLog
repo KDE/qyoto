@@ -1,3 +1,8 @@
+2007-06-21  Arno Rehn  <arno@arnorehn.de>
+
+	* When the assembly is installed, a symlink is created in the "2.0" directory, so
+	  it can be directly referenced from gmcs with -r:qt-dotnet
+
 2007-06-19  Richard Dale  <rdale@foton.es>
 
 	* Added the missing QUiLoader class

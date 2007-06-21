@@ -43,8 +43,5 @@ ADD_DEPENDENCIES (qt-dotnet qyoto)
 INSTALL(TARGETS qyoto LIBRARY DESTINATION lib)
 INSTALL_GAC(qt-dotnet)
 
-# MAKE_PROPER_FILE_LIST("${SRC_CS2}")
-# MESSAGE(${proper_file_list})
-
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(examples)
