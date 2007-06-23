@@ -1,6 +1,10 @@
 2007-06-23  Arno Rehn  <arno@arnorehn.de>
 
 	* Added classes for QScintilla2
+	* Added a marshaller for QList<QWizard::WizardButton>
+	* Added FindSmokeQt.cmake (might be useful when someone wants to create a standalone
+	  package)
+	* Added a LINK_DIRECTORIES rule in CMakeLists.txt
 
 2007-06-21  Arno Rehn  <arno@arnorehn.de>
 

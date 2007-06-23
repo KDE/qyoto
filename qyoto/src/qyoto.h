@@ -152,6 +152,7 @@ extern Q_DECL_EXPORT void InstallStringBuilderFromQString(SetIntPtrFromCharStar 
 extern Q_DECL_EXPORT void InstallStringListToQStringList(GetIntPtr callback);
 extern Q_DECL_EXPORT void InstallListToPointerList(GetIntPtr callback);
 extern Q_DECL_EXPORT void InstallListIntToQListInt(GetIntPtr callback);
+extern Q_DECL_EXPORT void InstallListWizardButtonToQListWizardButton(GetIntPtr callback);
 extern Q_DECL_EXPORT void InstallConstructList(CreateListFn callback);
 extern Q_DECL_EXPORT void InstallAddIntPtrToList(SetIntPtr callback);
 extern Q_DECL_EXPORT void InstallAddIntToListInt(AddInt callback);
@@ -165,7 +166,9 @@ extern Q_DECL_EXPORT void InstallAddUIntToListUInt(AddUInt callback);
 extern Q_DECL_EXPORT void * ConstructPointerList();
 extern Q_DECL_EXPORT void AddObjectToPointerList(void * ptr, void * obj);
 extern Q_DECL_EXPORT void * ConstructQListInt();
+extern Q_DECL_EXPORT void * ConstructQListWizardButton();
 extern Q_DECL_EXPORT void AddIntToQList(void * ptr, int i);
+extern Q_DECL_EXPORT void AddWizardButtonToQList(void * ptr, int i);
 extern Q_DECL_EXPORT void * ConstructQMap(int type);
 extern Q_DECL_EXPORT void AddIntQVariantToQMap(void * ptr, int i, void * qv);
 extern Q_DECL_EXPORT void AddQStringQStringToQMap(void * ptr, char* str1, char* str2);

@@ -50,6 +50,7 @@
 #endif
 
 #if QT_VERSION >= 0x40300
+#include <QtGui/qwizard.h>
 #include <QtGui/qmdisubwindow.h>
 #include <QtNetwork/qsslcertificate.h>
 #include <QtNetwork/qsslcipher.h>
@@ -86,6 +87,7 @@ static GetIntPtr StringListToQStringList;
 static GetIntPtr ListToPointerList;
 static GetIntPtr ListIntToQListInt;
 static GetIntPtr ListUIntToQListQRgb;
+static GetIntPtr ListWizardButtonToQListWizardButton;
 static CreateListFn ConstructList;
 static SetIntPtr AddIntPtrToList;
 static AddInt AddIntToListInt;
@@ -190,6 +192,11 @@ void InstallAddUIntToListUInt(AddUInt callback)
 	AddUIntToListUInt = callback;
 }
 
+void InstallListWizardButtonToQListWizardButton(GetIntPtr callback)
+{
+	ListWizardButtonToQListWizardButton = callback;
+}
+
 void* ConstructPointerList()
 {
 	void * list = (void*) new QList<void*>;
@@ -256,6 +263,19 @@ void AddUIntToQListQRgb(void* ptr, uint i)
 	QList<QRgb>* list = (QList<QRgb>*) ptr;
 	list->append(i);
 }
+
+#if QT_VERSION >= 0x40300
+void* ConstructQListWizardButton()
+{
+	return (void*) new QList<QWizard::WizardButton>();
+}
+
+void AddWizardButtonToQList(void* ptr, int i)
+{
+	QList<QWizard::WizardButton>* list = (QList<QWizard::WizardButton>*) ptr;
+	list->append((QWizard::WizardButton) i);
+}
+#endif
 
 };
 
@@ -1319,36 +1339,10 @@ void marshall_QStringList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-//			VALUE list = *(m->var());
-//			if (TYPE(list) != T_ARRAY) {
-//				m->item().s_voidp = 0;
-//				break;
-//			}
-
-//			int count = RARRAY(list)->len;
-// 			int count = 0;
-// 			QStringList *stringlist = new QStringList;
-
-// 			for (long i = 0; i < count; i++) {
-//				VALUE item = rb_ary_entry(list, i);
-//					if(TYPE(item) != T_STRING) {
-// 						stringlist->append(QString());
-//						continue;
-//					}
-//				stringlist->append(*(qstringFromRString(item)));
-// 			}
-			
 			QStringList *stringlist = (QStringList*) (*StringListToQStringList)(m->var().s_voidp);
 			
 			m->item().s_voidp = (void*) stringlist;
 			m->next();
-
-// 			if (stringlist != 0 && !m->type().isConst()) {
-//				rb_ary_clear(list);
-// 				for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
-//					rb_ary_push(list, rstringFromQString(&(*it)));
-// 				}
-// 			}
 			
 			if (m->cleanup()) {
 				delete stringlist;
@@ -1366,13 +1360,6 @@ void marshall_QStringList(Marshall *m) {
 			break;
 		}
 
-//		VALUE av = rb_ary_new();
-// 		for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
-//			VALUE rv = rstringFromQString(&(*it));
-//			rb_ary_push(av, rv);
-// 		}
-
-//		*(m->var()) = av;
 		void* al = (*ConstructList)("System.String");
 		for (int i = 0; i < stringlist->count(); i++) {
 			(*AddIntPtrToList)(al, (*IntPtrFromCharStar)((char*) (*stringlist)[i].toLatin1().constData()));
@@ -1391,6 +1378,36 @@ void marshall_QStringList(Marshall *m) {
 	break;
     }
 }
+
+#if QT_VERSION >= 0x40300
+void marshall_QListWizardButton(Marshall *m) {
+    switch(m->action()) {
+      case Marshall::FromObject:
+	{
+	    void* list = m->var().s_voidp;
+	    void* valuelist = (*ListWizardButtonToQListWizardButton)(list);
+	    m->item().s_voidp = valuelist;
+	    m->next();
+
+	    (*FreeGCHandle)(m->var().s_voidp);
+
+		/*if (m->cleanup()) {
+			delete valuelist;
+	    }*/
+	}
+	break;
+      case Marshall::ToObject:
+	{
+		// not needed yet
+		printf("Marshalling QList<QWizard::WizardButton> not yet implemented\n");
+	}
+	break;
+      default:
+	m->unsupported();
+	break;
+    }
+}
+#endif
 
 template <class Item, class ItemList, const char *ItemSTR >
 void marshall_ItemList(Marshall *m) {
@@ -1820,6 +1837,8 @@ TypeHandler Qt_handlers[] = {
     { "QList<QSslCipher>", marshall_QSslCipherList },
     { "QList<QSslCipher>&", marshall_QSslCipherList },
     { "QList<QSslError>&", marshall_QSslErrorList },
+    { "QList<QWizard::WizardButton>", marshall_QListWizardButton },
+    { "QList<QWizard::WizardButton>&", marshall_QListWizardButton },
     { "QXmlStreamEntityDeclarations", marshall_QXmlStreamEntityDeclarations },
     { "QXmlStreamNamespaceDeclarations", marshall_QXmlStreamNamespaceDeclarations },
     { "QXmlStreamNotationDeclarations", marshall_QXmlStreamNotationDeclarations },

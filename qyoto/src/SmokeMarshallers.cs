@@ -61,6 +61,12 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void AddUIntToQListQRgb(IntPtr ptr, uint i);
 		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern IntPtr ConstructQListWizardButton();
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void AddWizardButtonToQList(IntPtr ptr, int i);
+		
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr ConstructQMap(int type);
@@ -153,6 +159,9 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr InstallListUIntToQListQRgb(GetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallListWizardButtonToQListWizardButton(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallAddIntPtrToList(SetIntPtr callback);
@@ -564,6 +573,15 @@ namespace Qyoto {
 			return QList;
 		}
 
+		public static IntPtr ListWizardButtonToQListWizardButton(IntPtr ptr) {
+			List<QWizard.WizardButton> list = (List<QWizard.WizardButton>) ((GCHandle) ptr).Target;
+			IntPtr QList = ConstructQListWizardButton();
+			foreach (QWizard.WizardButton wb in list) {
+				AddWizardButtonToQList(QList, (int) wb);
+			}
+			return QList;
+		}
+		
 		public static IntPtr ListUIntToQListQRgb(IntPtr ptr) {
 			List<uint> il = (List<uint>) ((GCHandle) ptr).Target;
 			IntPtr QList = ConstructQListQRgb();
@@ -705,6 +723,7 @@ namespace Qyoto {
 			InstallListToPointerList(ListToPointerList);
 			InstallListIntToQListInt(ListIntToQListInt);
 			InstallListUIntToQListQRgb(ListUIntToQListQRgb);
+			InstallListWizardButtonToQListWizardButton(ListWizardButtonToQListWizardButton);
 			InstallAddIntPtrToList(AddIntPtrToList);
 			InstallAddIntToListInt(AddIntToListInt);
 			InstallAddUIntToListUInt(AddUIntToListUInt);
