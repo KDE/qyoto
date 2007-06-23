@@ -1,5 +1,6 @@
 PROJECT (qyoto)
 
+FIND_PACKAGE (QScintilla)
 INCLUDE (CSharpMacros)
 
 # source files
@@ -20,6 +21,10 @@ SET(SRC_CS src/SmokeInvocation.cs
 	opengl/*.cs
 	uitools/*.cs
 	qdbus/*.cs)
+IF (QSCINTILLA_FOUND)
+	MESSAGE (STATUS "Found QScintilla2, compiling Qyoto with QScintilla2 support")
+	SET(SRC_CS ${SRC_CS} qsci/*.cs)
+ENDIF (QSCINTILLA_FOUND)
 
 SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
 
