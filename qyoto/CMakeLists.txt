@@ -1,5 +1,9 @@
 PROJECT (qyoto)
 
+# find Qt4
+IF (NOT QT4_FOUND)
+	FIND_PACKAGE (Qt4 REQUIRED)
+ENDIF (NOT QT4_FOUND)
 FIND_PACKAGE (QScintilla)
 INCLUDE (CSharpMacros)
 
@@ -21,17 +25,11 @@ SET(SRC_CS src/SmokeInvocation.cs
 	opengl/*.cs
 	uitools/*.cs
 	qdbus/*.cs)
-IF (QSCINTILLA_FOUND)
-	MESSAGE (STATUS "Found QScintilla2, compiling Qyoto with QScintilla2 support")
-	SET(SRC_CS ${SRC_CS} qsci/*.cs)
-ENDIF (QSCINTILLA_FOUND)
+	
+SET(SRC_SCINTILLA src/AssemblyInfoQScintilla2.cs
+	qsci/*.cs)
 
 SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
-
-# find Qt4
-IF (NOT QT4_FOUND)
-	FIND_PACKAGE (Qt4 REQUIRED)
-ENDIF (NOT QT4_FOUND)
 
 SET( UICS_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/uics/uics )
 SET( CSRCC_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/csrcc/csrcc )
@@ -45,6 +43,14 @@ SET(CS_FLAGS -debug -define:DEBUG -unsafe -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(qt-dotnet "${SRC_CS}" ALL)
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
+
+IF (QSCINTILLA_FOUND)
+	MESSAGE (STATUS "Found QScintilla2, compiling Qyoto with QScintilla2 support (SMOKE has to be built with support for it, too)")
+	SET(CS_FLAGS -debug -define:DEBUG -warn:0 -keyfile:${KEYFILE} -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+	ADD_CS_LIBRARY(qscintilla "${SRC_SCINTILLA}" ALL)
+	ADD_DEPENDENCIES (qscintilla qt-dotnet)
+	INSTALL_GAC(qscintilla)
+ENDIF (QSCINTILLA_FOUND)
 
 INSTALL(TARGETS qyoto LIBRARY DESTINATION lib)
 INSTALL_GAC(qt-dotnet)

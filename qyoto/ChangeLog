@@ -1,3 +1,7 @@
+2007-06-25  Arno Rehn  <arno@arnorehn.de>
+
+	* Made a seperate assembly out of the QScintilla namespace.
+
 2007-06-19  Richard Dale  <rdale@foton.es>
 
 	* Moved the QScintilla classes to a QScintilla namespace instead of 
