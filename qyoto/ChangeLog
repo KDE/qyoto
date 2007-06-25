@@ -1,3 +1,10 @@
+2007-06-19  Richard Dale  <rdale@foton.es>
+
+	* Moved the QScintilla classes to a QScintilla namespace instead of 
+	  Qyoto.QScintilla as Qyoto should really just contain the Qt classes
+	* #ifdef'd the code to register a callback for events so the code
+	  compiles with Qt 4.2.x
+
 2007-06-23  Arno Rehn  <arno@arnorehn.de>
 
 	* Added classes for QScintilla2

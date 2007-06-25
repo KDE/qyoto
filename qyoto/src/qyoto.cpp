@@ -2029,7 +2029,9 @@ Init_qyoto()
         classname.insert(i, strdup(classStringName.constData()));
     }
 
+#if QT_VERSION >= 0x40300
     QInternal::registerCallback(QInternal::EventNotifyCallback, qyoto_event_notify);
+#endif
 }
 
 }
