@@ -44,8 +44,8 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "doubleClickInterval")]
 		public int DoubleClickInterval {
-			get { return (int) interceptor.Invoke("READ", "READ()", typeof(int)); }
-			set { interceptor.Invoke("WRITE$", "WRITE(int)", typeof(void), typeof(int), value); }
+			get { return (int) interceptor.Invoke("doubleClickInterval", "doubleClickInterval()", typeof(int)); }
+			set { interceptor.Invoke("setDoubleClickInterval$", "setDoubleClickInterval(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "keyboardInputInterval")]
 		public int KeyboardInputInterval {
@@ -54,8 +54,8 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "wheelScrollLines")]
 		public int WheelScrollLines {
-			get { return (int) interceptor.Invoke("READ", "READ()", typeof(int)); }
-			set { interceptor.Invoke("WRITE$", "WRITE(int)", typeof(void), typeof(int), value); }
+			get { return (int) interceptor.Invoke("wheelScrollLines", "wheelScrollLines()", typeof(int)); }
+			set { interceptor.Invoke("setWheelScrollLines$", "setWheelScrollLines(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QSize", "globalStrut")]
 		public QSize GlobalStrut {
@@ -64,18 +64,18 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "startDragTime")]
 		public int StartDragTime {
-			get { return (int) interceptor.Invoke("READ", "READ()", typeof(int)); }
-			set { interceptor.Invoke("WRITE$", "WRITE(int)", typeof(void), typeof(int), value); }
+			get { return (int) interceptor.Invoke("startDragTime", "startDragTime()", typeof(int)); }
+			set { interceptor.Invoke("setStartDragTime$", "setStartDragTime(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("int", "startDragDistance")]
 		public int StartDragDistance {
-			get { return (int) interceptor.Invoke("READ", "READ()", typeof(int)); }
-			set { interceptor.Invoke("WRITE$", "WRITE(int)", typeof(void), typeof(int), value); }
+			get { return (int) interceptor.Invoke("startDragDistance", "startDragDistance()", typeof(int)); }
+			set { interceptor.Invoke("setStartDragDistance$", "setStartDragDistance(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("bool", "quitOnLastWindowClosed")]
 		public bool QuitOnLastWindowClosed {
-			get { return (bool) interceptor.Invoke("READ", "READ()", typeof(bool)); }
-			set { interceptor.Invoke("WRITE$", "WRITE(bool)", typeof(void), typeof(bool), value); }
+			get { return (bool) interceptor.Invoke("quitOnLastWindowClosed", "quitOnLastWindowClosed()", typeof(bool)); }
+			set { interceptor.Invoke("setQuitOnLastWindowClosed$", "setQuitOnLastWindowClosed(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("QString", "styleSheet")]
 		public string StyleSheet {
@@ -256,30 +256,6 @@ namespace Qyoto {
 		public static bool DesktopSettingsAware() {
 			return (bool) staticInterceptor.Invoke("desktopSettingsAware", "desktopSettingsAware()", typeof(bool));
 		}
-		public static void SetDoubleClickInterval(int arg1) {
-			staticInterceptor.Invoke("setDoubleClickInterval$", "setDoubleClickInterval(int)", typeof(void), typeof(int), arg1);
-		}
-		public static int doubleClickInterval() {
-			return (int) staticInterceptor.Invoke("doubleClickInterval", "doubleClickInterval()", typeof(int));
-		}
-		public static void SetWheelScrollLines(int arg1) {
-			staticInterceptor.Invoke("setWheelScrollLines$", "setWheelScrollLines(int)", typeof(void), typeof(int), arg1);
-		}
-		public static int wheelScrollLines() {
-			return (int) staticInterceptor.Invoke("wheelScrollLines", "wheelScrollLines()", typeof(int));
-		}
-		public static void SetStartDragTime(int ms) {
-			staticInterceptor.Invoke("setStartDragTime$", "setStartDragTime(int)", typeof(void), typeof(int), ms);
-		}
-		public static int startDragTime() {
-			return (int) staticInterceptor.Invoke("startDragTime", "startDragTime()", typeof(int));
-		}
-		public static void SetStartDragDistance(int l) {
-			staticInterceptor.Invoke("setStartDragDistance$", "setStartDragDistance(int)", typeof(void), typeof(int), l);
-		}
-		public static int startDragDistance() {
-			return (int) staticInterceptor.Invoke("startDragDistance", "startDragDistance()", typeof(int));
-		}
 		public static bool IsRightToLeft() {
 			return (bool) staticInterceptor.Invoke("isRightToLeft", "isRightToLeft()", typeof(bool));
 		}
@@ -305,12 +281,6 @@ namespace Qyoto {
 			int result = (int) staticInterceptor.Invoke("exec", "exec()", typeof(int));
 			Qyoto.SetApplicationTerminated();
 			return result;
-		}
-		public static void SetQuitOnLastWindowClosed(bool quit) {
-			staticInterceptor.Invoke("setQuitOnLastWindowClosed$", "setQuitOnLastWindowClosed(bool)", typeof(void), typeof(bool), quit);
-		}
-		public static bool quitOnLastWindowClosed() {
-			return (bool) staticInterceptor.Invoke("quitOnLastWindowClosed", "quitOnLastWindowClosed()", typeof(bool));
 		}
 		public static void CloseAllWindows() {
 			staticInterceptor.Invoke("closeAllWindows", "closeAllWindows()", typeof(void));

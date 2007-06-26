@@ -39,7 +39,7 @@ namespace Qyoto {
 		[Q_PROPERTY("Qt::DockWidgetAreas", "allowedAreas")]
 		public int AllowedAreas {
 			get { return (int) interceptor.Invoke("allowedAreas", "allowedAreas()", typeof(int)); }
-			set { interceptor.Invoke("$", "(Qt::DockWidgetAreas)", typeof(void), typeof(int), value); }
+			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::DockWidgetAreas)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("QString", "windowTitle")]
 		public new string WindowTitle {

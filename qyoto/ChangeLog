@@ -1,3 +1,8 @@
+2007-06-26  Richard Dale  <rdale@foton.es>
+
+	* Fixed a bug parsing Q_PROPERTIES which messed up the code generation
+	* Code for nested classes is now generated
+
 2007-06-25  Arno Rehn  <arno@arnorehn.de>
 
 	* Made a seperate assembly out of the QScintilla namespace.

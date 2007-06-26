@@ -7,6 +7,52 @@ namespace Qyoto {
 	[SmokeClass("QTextFrame")]
 	public class QTextFrame : QTextObject, IDisposable {
  		protected QTextFrame(Type dummy) : base((Type) null) {}
+
+
+		[SmokeClass("QTextFrame::iterator")]
+		public class iterator : Object, IDisposable {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected iterator(Type dummy) {}
+			protected void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(iterator), this);
+			}
+			private static SmokeInvocation staticInterceptor = null;
+			static iterator() {
+				staticInterceptor = new SmokeInvocation(typeof(iterator), null);
+			}
+			public QTextFrame ParentFrame() {
+				return (QTextFrame) interceptor.Invoke("parentFrame", "parentFrame() const", typeof(QTextFrame));
+			}
+			public QTextFrame CurrentFrame() {
+				return (QTextFrame) interceptor.Invoke("currentFrame", "currentFrame() const", typeof(QTextFrame));
+			}
+			public QTextBlock CurrentBlock() {
+				return (QTextBlock) interceptor.Invoke("currentBlock", "currentBlock() const", typeof(QTextBlock));
+			}
+			public bool AtEnd() {
+				return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
+			}
+			public override bool Equals(object o) {
+				if (!(o is iterator)) { return false; }
+				return this == (iterator) o;
+			}
+			public override int GetHashCode() {
+				return interceptor.GetHashCode();
+			}
+			~iterator() {
+				interceptor.Invoke("~iterator", "~iterator()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~iterator", "~iterator()", typeof(void));
+			}
+			public static bool operator==(iterator lhs, QTextFrame.iterator o) {
+				return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFrame::iterator&) const", typeof(bool), typeof(iterator), lhs, typeof(QTextFrame.iterator), o);
+			}
+			public static bool operator!=(iterator lhs, QTextFrame.iterator o) {
+				return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFrame::iterator&) const", typeof(bool), typeof(iterator), lhs, typeof(QTextFrame.iterator), o);
+			}
+		}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTextFrame), this);
 		}

@@ -8,6 +8,46 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTextBlock(Type dummy) {}
+
+
+		[SmokeClass("QTextBlock::iterator")]
+		public class iterator : Object, IDisposable {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected iterator(Type dummy) {}
+			protected void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(iterator), this);
+			}
+			private static SmokeInvocation staticInterceptor = null;
+			static iterator() {
+				staticInterceptor = new SmokeInvocation(typeof(iterator), null);
+			}
+			public QTextFragment Fragment() {
+				return (QTextFragment) interceptor.Invoke("fragment", "fragment() const", typeof(QTextFragment));
+			}
+			public bool AtEnd() {
+				return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
+			}
+			public override bool Equals(object o) {
+				if (!(o is iterator)) { return false; }
+				return this == (iterator) o;
+			}
+			public override int GetHashCode() {
+				return interceptor.GetHashCode();
+			}
+			~iterator() {
+				interceptor.Invoke("~iterator", "~iterator()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~iterator", "~iterator()", typeof(void));
+			}
+			public static bool operator==(iterator lhs, QTextBlock.iterator o) {
+				return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextBlock::iterator&) const", typeof(bool), typeof(iterator), lhs, typeof(QTextBlock.iterator), o);
+			}
+			public static bool operator!=(iterator lhs, QTextBlock.iterator o) {
+				return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextBlock::iterator&) const", typeof(bool), typeof(iterator), lhs, typeof(QTextBlock.iterator), o);
+			}
+		}
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTextBlock), this);
 		}
