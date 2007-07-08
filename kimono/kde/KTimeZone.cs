@@ -254,7 +254,7 @@ namespace Kimono {
 			/// </remarks>		<return> number of leap seconds
 			///          </return>
 			/// 		<short>    Return the cumulative number of leap seconds to be added after this  change occurs.</short>
-			public int LeapSeconds() {
+			public int leapSeconds() {
 				return (int) interceptor.Invoke("leapSeconds", "leapSeconds() const", typeof(int));
 			}
 			/// <remarks>
@@ -662,7 +662,7 @@ namespace Kimono {
 		/// 		<see> transitionIndex</see>
 		/// 		<see> hasTransitions</see>
 		/// 		<see> transitions</see>
-		public KTimeZone.Transition Transition(QDateTime dt) {
+		public KTimeZone.Transition transition(QDateTime dt) {
 			return (KTimeZone.Transition) interceptor.Invoke("transition#", "transition(const QDateTime&) const", typeof(KTimeZone.Transition), typeof(QDateTime), dt);
 		}
 		/// <remarks>
