@@ -1748,7 +1748,6 @@ TypeHandler Qt_handlers[] = {
     { "QList<QKeySequence>&", marshall_QKeySequenceList },
     { "QList<QListWidgetItem*>", marshall_QListWidgetItemList },
     { "QList<QListWidgetItem*>&", marshall_QListWidgetItemList },
-    { "QList<QMdiSubWindow*>", marshall_QMdiSubWindowList },
     { "QList<QModelIndex>", marshall_QModelIndexList },
     { "QList<QModelIndex>&", marshall_QModelIndexList },
     { "QList<QNetworkAddressEntry>", marshall_QNetworkAddressEntryList },
