@@ -36,9 +36,9 @@ namespace Kimono {
 		/// </remarks>		<return> copy of this instance. This is a KTzfileTimeZoneData pointer.
 		///      </return>
 		/// 		<short>    Creates a new copy of this object.</short>
-		[SmokeMethod("clone()")]
+		[SmokeMethod("clone() const")]
 		public override KTimeZoneData Clone() {
-			return (KTimeZoneData) interceptor.Invoke("clone", "clone()", typeof(KTimeZoneData));
+			return (KTimeZoneData) interceptor.Invoke("clone", "clone() const", typeof(KTimeZoneData));
 		}
 		/// <remarks>
 		///  Return whether daylight saving transitions are available for the time zone.

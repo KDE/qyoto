@@ -28,6 +28,7 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("keepParentsVisible", "keepParentsVisible()", typeof(bool)); }
 			set { interceptor.Invoke("setKeepParentsVisible$", "setKeepParentsVisible(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QList<QTreeWidget*> treeWidgets(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KTreeWidgetSearchLine with \a treeWidget being the QTreeWidget to
 		///  be filtered.
@@ -80,9 +81,6 @@ namespace Kimono {
 		/// 		<see> setTreeWidgets</see>
 		/// 		<see> addTreeWidget</see>
 		/// 		<see> treeWidget</see>
-		public List<QTreeWidget> TreeWidgets() {
-			return (List<QTreeWidget>) interceptor.Invoke("treeWidgets", "treeWidgets() const", typeof(List<QTreeWidget>));
-		}
 		/// <remarks>
 		///  Adds a QTreeWidget to the list of listviews filtered by this search line.
 		///  If \a treeWidget is null then the widget will be disabled.

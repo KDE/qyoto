@@ -32,6 +32,7 @@ namespace Kimono {
 		static KEditToolBarWidget() {
 			staticInterceptor = new SmokeInvocation(typeof(KEditToolBarWidget), null);
 		}
+		// QList<KXMLGUIClient*> childClients(); >>>> NOT CONVERTED
 		// KXMLGUIClient::StateChange getActionsToChangeForState(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructor.  This is the only entry point to this class.  You
@@ -248,9 +249,6 @@ namespace Kimono {
 		/// <remarks>
 		///  Retrieves a list of all child clients.
 		///    </remarks>		<short>    Retrieves a list of all child clients.</short>
-		public List<KXMLGUIClient> ChildClients() {
-			return (List<KXMLGUIClient>) interceptor.Invoke("childClients", "childClients()", typeof(List<KXMLGUIClient>));
-		}
 		/// <remarks>
 		///  A client can have an own KXMLGUIBuilder.
 		///  Use this method to assign your builder instance to the client (so that the

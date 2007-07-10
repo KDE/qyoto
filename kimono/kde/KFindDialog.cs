@@ -143,8 +143,8 @@ namespace Kimono {
 		/// <remarks>
 		///  Set the options which are checked.
 		/// <param> name="options" The setting of the Options.
-		///      </param></remarks>		<short>    Set the options which are checked.</short>
-		/// 		<see> setOptions</see>
+		/// </param></remarks>		<short>    Set the options which are checked.</short>
+		/// 		<see> options</see>
 		/// 		<see> KFind.Options</see>
 		public void SetOptions(long options) {
 			interceptor.Invoke("setOptions$", "setOptions(long)", typeof(void), typeof(long), options);

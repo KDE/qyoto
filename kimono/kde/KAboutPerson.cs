@@ -46,9 +46,9 @@ namespace Kimono {
 		/// </param><param> name="emailAddress" The email address of the person.
 		/// </param><param> name="webAddress" Home page of the person.
 		///      </param></remarks>		<short>    Convenience constructor </short>
-		public KAboutPerson(KLocalizedString name, KLocalizedString task, QByteArray emailAddress, QByteArray ewebAddress) : this((Type) null) {
+		public KAboutPerson(KLocalizedString name, KLocalizedString task, QByteArray emailAddress, QByteArray webAddress) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KAboutPerson####", "KAboutPerson(const KLocalizedString&, const KLocalizedString&, const QByteArray&, const QByteArray&)", typeof(void), typeof(KLocalizedString), name, typeof(KLocalizedString), task, typeof(QByteArray), emailAddress, typeof(QByteArray), ewebAddress);
+			interceptor.Invoke("KAboutPerson####", "KAboutPerson(const KLocalizedString&, const KLocalizedString&, const QByteArray&, const QByteArray&)", typeof(void), typeof(KLocalizedString), name, typeof(KLocalizedString), task, typeof(QByteArray), emailAddress, typeof(QByteArray), webAddress);
 		}
 		public KAboutPerson(KLocalizedString name, KLocalizedString task, QByteArray emailAddress) : this((Type) null) {
 			CreateProxy();

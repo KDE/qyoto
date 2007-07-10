@@ -5,10 +5,10 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
-	///  @brief This is a convience KMessageHandler that use KPassivePopup.
+	///  @brief This is a convenience KMessageHandler that uses KPassivePopup.
 	/// </remarks>		<author> Michaël Larouche <michael.larouche@kdemail.net>
 	///  </author>
-	/// 		<short>    @brief This is a convience KMessageHandler that use KPassivePopup.</short>
+	/// 		<short>    @brief This is a convenience KMessageHandler that uses KPassivePopup.</short>
 
 	[SmokeClass("KPassivePopupMessageHandler")]
 	public class KPassivePopupMessageHandler : QObject, IKMessageHandler, IDisposable {

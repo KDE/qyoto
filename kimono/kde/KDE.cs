@@ -6,16 +6,8 @@ namespace Kimono {
 	using System.Runtime.InteropServices;
 
 	/// <remarks>
-	///  @name Typelist macros
-	///  Convenience macros for transforming flat type enumerations into the
-	///  recursive typelist structure. For a typelist with <code>N</code> items, the
-	///  <code>K_TYPELIST_N</code> macro is used. For example:
-	///  @code
-	///   typedef K_TYPELIST_4(char, short, int, long) IntegralTypes;
-	///  @endcode
-	///  However, the preferred way is to use the KMakeTypeList template.
-	///  @ingroup ktypelist
-	///  </remarks>		<short>    @name Typelist macros </short>
+	///  Namespace for general KDE functions.
+	///  </remarks>		<short>    Namespace for general KDE functions.</short>
 
 	[SmokeClass("KDE")]
 	public class KDE : Object {
@@ -33,10 +25,6 @@ namespace Kimono {
 		// int IconSize(K3Icon::Group arg1); >>>> NOT CONVERTED
 		// K3Icon::Group& operator++(K3Icon::Group& arg1); >>>> NOT CONVERTED
 		// K3Icon::Group operator++(K3Icon::Group& arg1,int arg2); >>>> NOT CONVERTED
-		// QString ASN1_UTCTIME_QString(ASN1_UTCTIME* arg1); >>>> NOT CONVERTED
-		// QDateTime ASN1_UTCTIME_QDateTime(ASN1_UTCTIME* arg1,int* arg2); >>>> NOT CONVERTED
-		// QString ASN1_INTEGER_QString(ASN1_INTEGER* arg1); >>>> NOT CONVERTED
-		// int KSSLPemCallback(char* arg1,int arg2,int arg3,void* arg4); >>>> NOT CONVERTED
 		/// <remarks>
 		///  @brief Returns the encoded number of KDE's version, see the KDE_VERSION macro.
 		///  In contrary to the macro KDE_VERSION
@@ -304,12 +292,6 @@ namespace Kimono {
 		}
 		public static QDataStream Read(QDataStream s, KFileItem a) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
-		}
-		public static QDataStream Write(QDataStream s, KSSLCertificate r) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KSSLCertificate&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KSSLCertificate), r);
-		}
-		public static QDataStream Read(QDataStream s, KSSLCertificate r) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KSSLCertificate&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KSSLCertificate), r);
 		}
 		public static KPrinter.PageSize PageNameToPageSize(string name, ref bool ok) {
 			StackItem[] stack = new StackItem[3];

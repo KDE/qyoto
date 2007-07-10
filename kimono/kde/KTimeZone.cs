@@ -817,12 +817,34 @@ namespace Kimono {
 			interceptor.Invoke("KTimeZone#$", "KTimeZone(KTimeZoneSource*, const QString&)", typeof(void), typeof(KTimeZoneSource), source, typeof(string), name);
 		}
 		/// <remarks>
-		///  Sets the detailed parsed data for the time zone.
+		///  Sets the detailed parsed data for the time zone, and optionally
+		///  a new time zone source object.
 		/// <param> name="data" parsed data
-		/// </param></remarks>		<short>    Sets the detailed parsed data for the time zone.</short>
+		/// </param><param> name="source" if non-null, the new source object for the time zone
+		/// </param></remarks>		<short>    Sets the detailed parsed data for the time zone, and optionally  a new time zone source object.</short>
 		/// 		<see> data</see>
+		protected void SetData(KTimeZoneData data, KTimeZoneSource source) {
+			interceptor.Invoke("setData##", "setData(KTimeZoneData*, KTimeZoneSource*)", typeof(void), typeof(KTimeZoneData), data, typeof(KTimeZoneSource), source);
+		}
 		protected void SetData(KTimeZoneData data) {
 			interceptor.Invoke("setData#", "setData(KTimeZoneData*)", typeof(void), typeof(KTimeZoneData), data);
+		}
+		/// <remarks>
+		///  Update the definition of the time zone to be identical to another
+		///  KTimeZone instance. A prerequisite is that the two instances must
+		///  have the same name.
+		///  The purpose of this method is to allow updates of the time zone
+		///  definition by derived classes without invalidating pointers to the
+		///  instance (particularly pointers held by KDateTime objects). Note
+		///  that the KTimeZoneData object and KTimeZoneSource pointer are not
+		///  updated: the derived class should do this itself by calling setData().
+		/// <param> name="other" time zone whose definition is to be used
+		/// </param></remarks>		<return> true if definition was updated (i.e. names are the same)
+		/// </return>
+		/// 		<short>    Update the definition of the time zone to be identical to another  KTimeZone instance.</short>
+		/// 		<see> setData</see>
+		protected bool UpdateBase(KTimeZone other) {
+			return (bool) interceptor.Invoke("updateBase#", "updateBase(const KTimeZone*)", typeof(bool), typeof(KTimeZone), other);
 		}
 		~KTimeZone() {
 			interceptor.Invoke("~KTimeZone", "~KTimeZone()", typeof(void));

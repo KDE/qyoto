@@ -10,6 +10,68 @@ namespace Kimono {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected KBookmark(Type dummy) {}
+
+		/// <remarks>
+		///  KUrl.Bookmark is a QList that contains bookmarks with a few
+		///  convenience methods.
+		/// </remarks>		<short>    KUrl.Bookmark is a QList that contains bookmarks with a few  convenience methods.</short>
+		/// 		<see> KBookmark</see>
+		/// 		<see> QList</see>
+
+		[SmokeClass("KBookmark::List")]
+		public class List : Object, IDisposable {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected List(Type dummy) {}
+			protected void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(List), this);
+			}
+			private static SmokeInvocation staticInterceptor = null;
+			static List() {
+				staticInterceptor = new SmokeInvocation(typeof(List), null);
+			}
+			public List() : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("List", "List()", typeof(void));
+			}
+			/// <remarks>
+			///  Adds this list of bookmark into the given QMimeData.
+			/// <param> name="mimeData" the QMimeData instance used to drag or copy this bookmark
+			///          </param></remarks>		<short>    Adds this list of bookmark into the given QMimeData.</short>
+			public void PopulateMimeData(QMimeData mimeData) {
+				interceptor.Invoke("populateMimeData#", "populateMimeData(QMimeData*) const", typeof(void), typeof(QMimeData), mimeData);
+			}
+			~List() {
+				interceptor.Invoke("~List", "~List()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~List", "~List()", typeof(void));
+			}
+			/// <remarks>
+			///  Return true if <code>mimeData</code> contains bookmarks
+			///          </remarks>		<short>    Return true if <code>mimeData</code> contains bookmarks          </short>
+			public static bool CanDecode(QMimeData mimeData) {
+				return (bool) staticInterceptor.Invoke("canDecode#", "canDecode(const QMimeData*)", typeof(bool), typeof(QMimeData), mimeData);
+			}
+			/// <remarks>
+			///  Return the list of mimeTypes that can be decoded by fromMimeData
+			///          </remarks>		<short>    Return the list of mimeTypes that can be decoded by fromMimeData          </short>
+			public static List<string> MimeDataTypes() {
+				return (List<string>) staticInterceptor.Invoke("mimeDataTypes", "mimeDataTypes()", typeof(List<string>));
+			}
+			/// <remarks>
+			///  Extract a list of bookmarks from the contents of <code>mimeData.</code>
+			///  Decoding will fail if <code>mimeData</code> does not contain any bookmarks.
+			/// <param> name="mimeData" the mime data to extract from; cannot be 0
+			/// </param></remarks>		<return> the list of bookmarks
+			///  @note those bookmarks are valid QDomElements, but their parent QDomDocument
+			///  is already deleted, do not use ownerDocument()
+			///          </return>
+			/// 		<short>    Extract a list of bookmarks from the contents of <code>mimeData.</code></short>
+			public static KBookmark.List FromMimeData(QMimeData mimeData) {
+				return (KBookmark.List) staticInterceptor.Invoke("fromMimeData#", "fromMimeData(const QMimeData*)", typeof(KBookmark.List), typeof(QMimeData), mimeData);
+			}
+		}
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KBookmark), this);
 		}
@@ -129,6 +191,12 @@ namespace Kimono {
 			return (string) interceptor.Invoke("address", "address() const", typeof(string));
 		}
 		/// <remarks>
+		///  Return the position in the parent, i.e. the last number in the address
+		///      </remarks>		<short>    Return the position in the parent, i.</short>
+		public int PositionInParent() {
+			return (int) interceptor.Invoke("positionInParent", "positionInParent() const", typeof(int));
+		}
+		/// <remarks>
 		///      </remarks>		<short>   </short>
 		public QDomElement InternalElement() {
 			return (QDomElement) interceptor.Invoke("internalElement", "internalElement() const", typeof(QDomElement));
@@ -171,11 +239,27 @@ namespace Kimono {
 		public void PopulateMimeData(QMimeData mimeData) {
 			interceptor.Invoke("populateMimeData#", "populateMimeData(QMimeData*) const", typeof(void), typeof(QMimeData), mimeData);
 		}
+		/// <remarks>
+		///  Comparison operator
+		///      </remarks>		<short>    Comparison operator      </short>
+		public override bool Equals(object o) {
+			if (!(o is KBookmark)) { return false; }
+			return this == (KBookmark) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		~KBookmark() {
 			interceptor.Invoke("~KBookmark", "~KBookmark()", typeof(void));
 		}
 		public void Dispose() {
 			interceptor.Invoke("~KBookmark", "~KBookmark()", typeof(void));
+		}
+		public static bool operator==(KBookmark lhs, KBookmark rhs) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const KBookmark&) const", typeof(bool), typeof(KBookmark), lhs, typeof(KBookmark), rhs);
+		}
+		public static bool operator!=(KBookmark lhs, KBookmark rhs) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const KBookmark&) const", typeof(bool), typeof(KBookmark), lhs, typeof(KBookmark), rhs);
 		}
 		public static KBookmark StandaloneBookmark(string text, KUrl url, string icon) {
 			return (KBookmark) staticInterceptor.Invoke("standaloneBookmark$#$", "standaloneBookmark(const QString&, const KUrl&, const QString&)", typeof(KBookmark), typeof(string), text, typeof(KUrl), url, typeof(string), icon);

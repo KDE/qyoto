@@ -21,7 +21,6 @@ namespace Kimono {
 		KXMLGUIClient ParentClient();
 		void InsertChildClient(KXMLGUIClient child);
 		void RemoveChildClient(KXMLGUIClient child);
-		List<KXMLGUIClient> ChildClients();
 		void SetClientBuilder(KXMLGUIBuilder builder);
 		KXMLGUIBuilder ClientBuilder();
 		void ReloadXML();
@@ -56,6 +55,7 @@ namespace Kimono {
 			StateNoReverse = 0,
 			StateReverse = 1,
 		}
+		// QList<KXMLGUIClient*> childClients(); >>>> NOT CONVERTED
 		// KXMLGUIClient::StateChange getActionsToChangeForState(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KXMLGUIClient which can be used with a
@@ -191,9 +191,6 @@ namespace Kimono {
 		/// <remarks>
 		///  Retrieves a list of all child clients.
 		///    </remarks>		<short>    Retrieves a list of all child clients.</short>
-		public List<KXMLGUIClient> ChildClients() {
-			return (List<KXMLGUIClient>) interceptor.Invoke("childClients", "childClients()", typeof(List<KXMLGUIClient>));
-		}
 		/// <remarks>
 		///  A client can have an own KXMLGUIBuilder.
 		///  Use this method to assign your builder instance to the client (so that the

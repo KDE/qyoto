@@ -90,8 +90,9 @@ namespace Kimono {
 		}
 		// void setupGUI(StandardWindowOptions arg1,const QString& arg2); >>>> NOT CONVERTED
 		// void setupGUI(StandardWindowOptions arg1); >>>> NOT CONVERTED
-		// void setupGUI(QSize arg1,StandardWindowOptions arg2,const QString& arg3); >>>> NOT CONVERTED
-		// void setupGUI(QSize arg1,StandardWindowOptions arg2); >>>> NOT CONVERTED
+		// void setupGUI(const QSize& arg1,StandardWindowOptions arg2,const QString& arg3); >>>> NOT CONVERTED
+		// void setupGUI(const QSize& arg1,StandardWindowOptions arg2); >>>> NOT CONVERTED
+		// QList<KXMLGUIClient*> childClients(); >>>> NOT CONVERTED
 		// KXMLGUIClient::StateChange getActionsToChangeForState(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a main window.
@@ -204,7 +205,7 @@ namespace Kimono {
 		/// </remarks>		<short>    Configures the current windows and its actions in the typical KDE  fashion.</short>
 		/// 		<see> StandardWindowOptions</see>
 		public void SetupGUI(QSize defaultSize) {
-			interceptor.Invoke("setupGUI#", "setupGUI(QSize)", typeof(void), typeof(QSize), defaultSize);
+			interceptor.Invoke("setupGUI#", "setupGUI(const QSize&)", typeof(void), typeof(QSize), defaultSize);
 		}
 		/// <remarks>
 		///  Returns a pointer to the mainwindows action responsible for the toolbars menu
@@ -489,9 +490,6 @@ namespace Kimono {
 		/// <remarks>
 		///  Retrieves a list of all child clients.
 		///    </remarks>		<short>    Retrieves a list of all child clients.</short>
-		public List<KXMLGUIClient> ChildClients() {
-			return (List<KXMLGUIClient>) interceptor.Invoke("childClients", "childClients()", typeof(List<KXMLGUIClient>));
-		}
 		/// <remarks>
 		///  A client can have an own KXMLGUIBuilder.
 		///  Use this method to assign your builder instance to the client (so that the

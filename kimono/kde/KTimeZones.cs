@@ -19,6 +19,9 @@ namespace Kimono {
 	///  it will often be necessary when dealing with multiple time zone sources to
 	///  create a separate KTimeZones instance for each source collection.
 	///  If you want to access system time zones, use the KSystemTimeZones class.
+	///  @warning Do not delete a KTimeZones instance, or call clear(), if any
+	///           KDateTime instances use any of the time zones in the collection:
+	///           if you subsequently use the KDateTime values, a crash is likely.
 	/// </remarks>		<author> S.R.Haque <srhaque@iee.org>.
 	///  </author>
 	/// 		<short> Represents a time zone database or collection  @ingroup timezones.</short>
@@ -114,6 +117,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Clears the collection.
 		///  All time zone instances owned by the collection are deleted.
+		///  @warning Do not call this method if any KDateTime instances use any of
+		///           the time zones in the collection: if you subsequently use the
+		///           KDateTime values, a crash is likely.
 		/// </remarks>		<short>    Clears the collection.</short>
 		/// 		<see> detach</see>
 		public void Clear() {

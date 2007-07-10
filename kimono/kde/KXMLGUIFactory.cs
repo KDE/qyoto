@@ -31,6 +31,7 @@ namespace Kimono {
 		static KXMLGUIFactory() {
 			staticInterceptor = new SmokeInvocation(typeof(KXMLGUIFactory), null);
 		}
+		// QList<KXMLGUIClient*> clients(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KXMLGUIFactory. The provided <code>builder</code> KXMLGUIBuilder will be called
 		///  for creating and removing container widgets, when clients are added/removed from the GUI.
@@ -75,9 +76,6 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns a list of all clients currently added to this factory
 		///    </remarks>		<short>    Returns a list of all clients currently added to this factory    </short>
-		public List<KXMLGUIClient> Clients() {
-			return (List<KXMLGUIClient>) interceptor.Invoke("clients", "clients() const", typeof(List<KXMLGUIClient>));
-		}
 		/// <remarks>
 		///  Use this method to get access to a container widget with the name specified with <code>containerName</code>
 		///  and which is owned by the <code>client.</code> The container name is specified with a "name" attribute in the

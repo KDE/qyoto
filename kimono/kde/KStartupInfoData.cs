@@ -29,7 +29,7 @@ namespace Kimono {
 			No = 1,
 			Unknown = 2,
 		}
-		// const QList<pid_t>& pids(); >>>> NOT CONVERTED
+		// QList<pid_t> pids(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Sets the binary name of the application ( e.g. 'kcontrol' ).
 		/// <param> name="bin" the new binary name of the application

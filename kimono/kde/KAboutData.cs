@@ -80,9 +80,12 @@ namespace Kimono {
 		/// </param><param> name="homePageAddress" The program homepage string.
 		///         Start the address with "http://". "http://some.domain" is
 		///         is correct, "some.domain" is not.
+		///  IMPORTANT: if you set a home page address, this will change the "organization domain"
+		///  of the application, which is used for automatic DBUS registration.
 		/// </param><param> name="bugsEmailAddress" The bug report email address string.
 		///         This defaults to the kde.org bug system.
 		/// </param>     </remarks>		<short>    Constructor.</short>
+		/// 		<see> setOrganizationDomain</see>
 		public KAboutData(QByteArray appName, QByteArray catalogName, KLocalizedString programName, QByteArray version, KLocalizedString shortDescription, KAboutData.LicenseKey licenseType, KLocalizedString copyrightStatement, KLocalizedString text, QByteArray homePageAddress, QByteArray bugsEmailAddress) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KAboutData#####$####", "KAboutData(const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&, KAboutData::LicenseKey, const KLocalizedString&, const KLocalizedString&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), appName, typeof(QByteArray), catalogName, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), shortDescription, typeof(KAboutData.LicenseKey), licenseType, typeof(KLocalizedString), copyrightStatement, typeof(KLocalizedString), text, typeof(QByteArray), homePageAddress, typeof(QByteArray), bugsEmailAddress);
@@ -176,7 +179,7 @@ namespace Kimono {
 			return (KAboutData) interceptor.Invoke("addCredit#", "addCredit(const KLocalizedString&)", typeof(KAboutData), typeof(KLocalizedString), name);
 		}
 		/// <remarks>
-		///  @brief Sets the name(s) of the translator(s) of the GUI. 
+		///  @brief Sets the name(s) of the translator(s) of the GUI.
 		///  Since this depends on the language, just use a dummy text marked for
 		///  translation.
 		///  The canonical use is:
@@ -308,9 +311,15 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Defines the Internet domain of the organization that wrote this application.
-		///  The domain is set to kde.org by default (or the domain of the homePageAddress argument).
+		///  The domain is set to kde.org by default, or the domain of the homePageAddress constructor argument,
+		///  if set.
 		///  Make sure to call setOrganizationDomain if your product is developed out of the
 		///  kde.org version-control system.
+		///  Used by the automatic registration to DBus done by KApplication and KUniqueApplication.
+		///  IMPORTANT: if the organization domain is set, the .desktop file that describes your
+		///  application should have an entry like X-DBUS-ServiceName=reversed_domain.kmyapp
+		///  For instance kwrite passes "http://www.kate-editor.org" as the homePageAddress so it needs
+		///  X-DBUS-ServiceName=org.kate-editor.kwrite in its kwrite.desktop file.
 		/// <param> name="domain" the domain name, for instance kde.org, koffice.org, kdevelop.org, etc.
 		///      </param></remarks>		<short>    Defines the Internet domain of the organization that wrote this application.</short>
 		public KAboutData SetOrganizationDomain(QByteArray domain) {
@@ -354,7 +363,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the domain name of the organization that wrote this application.
-		///  Used by KUniqueApplication's registration to DBus.
+		///  Used by the automatic registration to DBus done by KApplication and KUniqueApplication.
 		///      </remarks>		<short>    Returns the domain name of the organization that wrote this application.</short>
 		public string OrganizationDomain() {
 			return (string) interceptor.Invoke("organizationDomain", "organizationDomain() const", typeof(string));

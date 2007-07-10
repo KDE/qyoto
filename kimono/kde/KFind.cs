@@ -152,14 +152,16 @@ namespace Kimono {
 		///  Warning: this is usually the same value as the one passed to the constructor,
 		///  but options might change _during_ the replace operation:
 		///  e.g. the "All" button resets the PromptOnReplace flag.
-		///      </remarks>		<short>    Return the current options.</short>
+		/// </remarks>		<short>    Return the current options.</short>
+		/// 		<see> KFind.Options</see>
 		public long options() {
 			return (long) interceptor.Invoke("options", "options() const", typeof(long));
 		}
 		/// <remarks>
 		///  Set new options. Usually this is used for setting or clearing the
 		///  FindBackwards options.
-		///      </remarks>		<short>    Set new options.</short>
+		/// </remarks>		<short>    Set new options.</short>
+		/// 		<see> KFind.Options</see>
 		[SmokeMethod("setOptions(long)")]
 		public virtual void SetOptions(long options) {
 			interceptor.Invoke("setOptions$", "setOptions(long)", typeof(void), typeof(long), options);

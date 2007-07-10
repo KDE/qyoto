@@ -66,6 +66,7 @@ namespace Kimono {
 			SETTINGS_SHORTCUTS = 5,
 		}
 		// KGlobalSettings::KMouseSettings& mouseSettings(); >>>> NOT CONVERTED
+		// qreal contrastF(const KSharedConfigPtr& arg1); >>>> NOT CONVERTED
 		// QPalette createApplicationPalette(const KSharedConfigPtr& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Returns a threshold in pixels for drag & drop operations.
@@ -260,13 +261,12 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the contrast for borders as a floating point value.
-		/// </remarks>		<return> the contrast (between 0.0 for minimum and 1.0 for maximum
+		/// <param> name="config" pointer to the config from which to read the contrast
+		///  setting (the default is to use KGlobal.Config())
+		/// </param></remarks>		<return> the contrast (between 0.0 for minimum and 1.0 for maximum
 		///          contrast)
 		///      </return>
 		/// 		<short>    Returns the contrast for borders as a floating point value.</short>
-		public static double ContrastF() {
-			return (double) staticInterceptor.Invoke("contrastF", "contrastF()", typeof(double));
-		}
 		/// <remarks>
 		///  Returns if the sorted column in a K3ListView shall be drawn with a
 		///  shaded background color.

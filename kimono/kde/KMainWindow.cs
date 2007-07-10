@@ -70,6 +70,7 @@ namespace Kimono {
 		public bool InitialGeometrySet {
 			get { return (bool) interceptor.Invoke("initialGeometrySet", "initialGeometrySet()", typeof(bool)); }
 		}
+		// QList<KMainWindow*> memberList(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a main window.
 		/// <param> name="parent" The widget parent. This is usually 0 but it may also be the window
@@ -624,9 +625,6 @@ namespace Kimono {
 		/// <remarks>
 		///  List of members of KMainWindow class.
 		///      </remarks>		<short>    List of members of KMainWindow class.</short>
-		public static List<KMainWindow> MemberList() {
-			return (List<KMainWindow>) staticInterceptor.Invoke("memberList", "memberList()", typeof(List<KMainWindow>));
-		}
 		protected new IKMainWindowSignals Emit {
 			get { return (IKMainWindowSignals) Q_EMIT; }
 		}

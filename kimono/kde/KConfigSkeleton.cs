@@ -221,7 +221,7 @@ namespace Kimono {
 			/// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>		<short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
 			public ItemProperty(string _group, string _key, QVariant reference, QVariant defaultValue) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("ItemProperty$$##", "ItemProperty(const QString&, const QString&, QVariant&, QVariant)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(QVariant), reference, typeof(QVariant), defaultValue);
+				interceptor.Invoke("ItemProperty$$##", "ItemProperty(const QString&, const QString&, QVariant&, const QVariant&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(QVariant), reference, typeof(QVariant), defaultValue);
 			}
 			public ItemProperty(string _group, string _key, QVariant reference) : this((Type) null) {
 				CreateProxy();
@@ -1120,7 +1120,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type string.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1142,7 +1142,7 @@ namespace Kimono {
 		///  Register a password item of type string. The string value is written
 		///  encrypted to the config file. Note that the current encryption scheme
 		///  is very weak.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1164,7 +1164,7 @@ namespace Kimono {
 		///  Register a path item of type string. The string value is interpreted
 		///  as a path. This means, dollar expension is activated for this value, so
 		///  that e.g. $HOME gets expanded.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1186,7 +1186,7 @@ namespace Kimono {
 		///  Register a property item of type QVariant. Note that only the following
 		///  QVariant types are allowed: String, StringList, Font, Point, Rect, Size,
 		///  Color, Int, UInt, Bool, Double, DateTime and Date.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1206,7 +1206,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type bool.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1226,7 +1226,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type qint32.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1246,7 +1246,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type quint32.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1257,7 +1257,7 @@ namespace Kimono {
 		/// 		<short>    Register an item of type quint32.</short>
 		/// <remarks>
 		///  Register an item of type qint64.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1268,7 +1268,7 @@ namespace Kimono {
 		/// 		<short>    Register an item of type qint64.</short>
 		/// <remarks>
 		///  Register an item of type quint64
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1279,7 +1279,7 @@ namespace Kimono {
 		/// 		<short>    Register an item of type quint64 </short>
 		/// <remarks>
 		///  Register an item of type double.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1299,7 +1299,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QColor.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1319,7 +1319,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QFont.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1339,7 +1339,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QRect.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1359,7 +1359,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QPoint.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1379,7 +1379,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QSize.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1399,7 +1399,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QDateTime.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1419,7 +1419,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type List<string>.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file
@@ -1439,7 +1439,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Register an item of type QList<int>.
-		/// <param> name="name" Name used to indentify this setting. Names must be unique.
+		/// <param> name="name" Name used to identify this setting. Names must be unique.
 		/// </param><param> name="reference" Pointer to the variable, which is set by readConfig()
 		///  calls and read by writeConfig() calls.
 		/// </param><param> name="defaultValue" Default value, which is used when the config file

@@ -57,9 +57,9 @@ namespace Kimono {
 		/// </remarks>		<return> copy of this instance
 		///      </return>
 		/// 		<short>    Creates a new copy of this object.</short>
-		[SmokeMethod("clone()")]
+		[SmokeMethod("clone() const")]
 		public virtual KTimeZoneData Clone() {
-			return (KTimeZoneData) interceptor.Invoke("clone", "clone()", typeof(KTimeZoneData));
+			return (KTimeZoneData) interceptor.Invoke("clone", "clone() const", typeof(KTimeZoneData));
 		}
 		/// <remarks>
 		///  Returns the complete list of time zone abbreviations. This may include
@@ -166,7 +166,7 @@ namespace Kimono {
 		/// 		<see> transitionIndex</see>
 		/// 		<see> hasTransitions</see>
 		/// 		<see> transitions</see>
-		public KTimeZone.Transition Transition(QDateTime dt) {
+		public KTimeZone.Transition transition(QDateTime dt) {
 			return (KTimeZone.Transition) interceptor.Invoke("transition#", "transition(const QDateTime&) const", typeof(KTimeZone.Transition), typeof(QDateTime), dt);
 		}
 		/// <remarks>

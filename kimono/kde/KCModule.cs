@@ -75,6 +75,7 @@ namespace Kimono {
 			Apply = 4,
 		}
 		// Buttons buttons(); >>>> NOT CONVERTED
+		// QList<KConfigDialogManager*> configs(); >>>> NOT CONVERTED
 		// void setButtons(Buttons arg1); >>>> NOT CONVERTED
 		public KCModule(KComponentData componentData, QWidget parent, List<string> args) : this((Type) null) {
 			CreateProxy();
@@ -152,9 +153,6 @@ namespace Kimono {
 		/// </remarks>		<return> a list of @ref KConfigDialogManager's in use, if any.
 		///    </return>
 		/// 		<short>   </short>
-		public List<KConfigDialogManager> Configs() {
-			return (List<KConfigDialogManager>) interceptor.Invoke("configs", "configs() const", typeof(List<KConfigDialogManager>));
-		}
 		/// <remarks>
 		///  Load the configuration data into the module.
 		///  The load method sets the user interface elements of the

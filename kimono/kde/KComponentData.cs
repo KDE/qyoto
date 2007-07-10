@@ -28,6 +28,10 @@ namespace Kimono {
 		static KComponentData() {
 			staticInterceptor = new SmokeInvocation(typeof(KComponentData), null);
 		}
+		public enum MainComponentRegistration {
+			RegisterAsMainComponent = 0,
+			SkipMainComponentRegistration = 1,
+		}
 		// const KSharedConfig::Ptr& config(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates an invalid KComponentData object.
@@ -61,6 +65,10 @@ namespace Kimono {
 		/// </param><param> name="catalogName" the name of the translation catalog;
 		///                     if left empty <code>componentName</code> is used
 		///      </param></remarks>		<short>    Constructor.</short>
+		public KComponentData(QByteArray componentName, QByteArray catalogName, KComponentData.MainComponentRegistration arg3) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KComponentData##$", "KComponentData(const QByteArray&, const QByteArray&, KComponentData::MainComponentRegistration)", typeof(void), typeof(QByteArray), componentName, typeof(QByteArray), catalogName, typeof(KComponentData.MainComponentRegistration), arg3);
+		}
 		public KComponentData(QByteArray componentName, QByteArray catalogName) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KComponentData##", "KComponentData(const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), componentName, typeof(QByteArray), catalogName);
