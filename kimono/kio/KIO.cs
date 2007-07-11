@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Runtime.InteropServices;
 	using System.Text;
 	using System.Collections.Generic;
 
@@ -262,12 +263,12 @@ namespace Kimono {
 			/// </param><param> name="mergeMetaData" if set, the metadata received by the subjob is
 			///                       merged into this job.
 			///          </param></remarks>		<short>    Mark a sub job as being done.</short>
-			protected void RemoveSubjob(KJob job, bool mergeMetaData) {
-				interceptor.Invoke("removeSubjob#$", "removeSubjob(KJob*, bool)", typeof(void), typeof(KJob), job, typeof(bool), mergeMetaData);
+			protected bool RemoveSubjob(KJob job, bool mergeMetaData) {
+				return (bool) interceptor.Invoke("removeSubjob#$", "removeSubjob(KJob*, bool)", typeof(bool), typeof(KJob), job, typeof(bool), mergeMetaData);
 			}
 			[SmokeMethod("removeSubjob(KJob*)")]
-			protected override void RemoveSubjob(KJob job) {
-				interceptor.Invoke("removeSubjob#", "removeSubjob(KJob*)", typeof(void), typeof(KJob), job);
+			protected override bool RemoveSubjob(KJob job) {
+				return (bool) interceptor.Invoke("removeSubjob#", "removeSubjob(KJob*)", typeof(bool), typeof(KJob), job);
 			}
 			protected int ExtraFlags() {
 				return (int) interceptor.Invoke("extraFlags", "extraFlags()", typeof(int));

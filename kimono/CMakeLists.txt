@@ -2,6 +2,7 @@ SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/dom/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kde/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kio/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kparts/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/sonnet/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src/SmokeInvocation.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src/SmokeMarshallers.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src/Qyoto.cs

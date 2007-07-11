@@ -37,6 +37,7 @@ namespace Kimono {
 		// void loadPlugins(QObject* arg1,const QList<KParts::Plugin::PluginInfo>& arg2); >>>> NOT CONVERTED
 		// void loadPlugins(QObject* arg1,const QList<KParts::Plugin::PluginInfo>& arg2,const KComponentData& arg3); >>>> NOT CONVERTED
 		// QList<KParts::Plugin::PluginInfo> pluginInfos(const KComponentData& arg1); >>>> NOT CONVERTED
+		// QList<KXMLGUIClient*> childClients(); >>>> NOT CONVERTED
 		// KXMLGUIClient::StateChange getActionsToChangeForState(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a new KParts plugin.
@@ -166,9 +167,6 @@ namespace Kimono {
 		/// <remarks>
 		///  Retrieves a list of all child clients.
 		///    </remarks>		<short>    Retrieves a list of all child clients.</short>
-		public List<KXMLGUIClient> ChildClients() {
-			return (List<KXMLGUIClient>) interceptor.Invoke("childClients", "childClients()", typeof(List<KXMLGUIClient>));
-		}
 		/// <remarks>
 		///  A client can have an own KXMLGUIBuilder.
 		///  Use this method to assign your builder instance to the client (so that the

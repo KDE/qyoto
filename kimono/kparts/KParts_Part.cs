@@ -222,7 +222,7 @@ namespace Kimono {
 		///  because it loads the i18n catalogs.
 		///    </remarks>		<short>    Set the componentData(KComponentData) for this part.</short>
 		[SmokeMethod("setComponentData(const KComponentData&)")]
-		protected override void SetComponentData(KComponentData componentData) {
+		protected virtual void SetComponentData(KComponentData componentData) {
 			interceptor.Invoke("setComponentData#", "setComponentData(const KComponentData&)", typeof(void), typeof(KComponentData), componentData);
 		}
 		/// <remarks>

@@ -145,13 +145,6 @@ namespace Kimono {
 			staticInterceptor.Invoke("invokeBrowser$", "invokeBrowser(const QString&)", typeof(void), typeof(string), url);
 		}
 		/// <remarks>
-		///  Returns the DBus interface of the service launcher.
-		///  The returned object is owned by KApplication, do not delete it!
-		///    </remarks>		<short>    Returns the DBus interface of the service launcher.</short>
-		public static OrgKdeKLauncherInterface Klauncher() {
-			return (OrgKdeKLauncherInterface) staticInterceptor.Invoke("klauncher", "klauncher()", typeof(OrgKdeKLauncherInterface));
-		}
-		/// <remarks>
 		///  Starts a service based on the (translated) name of the service.
 		///  E.g. "Web Browser"
 		/// <param> name="_name" the name of the service

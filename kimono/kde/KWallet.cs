@@ -3,6 +3,8 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Text;
+	using System.Collections.Generic;
 
 
 	[SmokeClass("KWallet")]
