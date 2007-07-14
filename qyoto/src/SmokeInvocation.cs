@@ -365,6 +365,7 @@ namespace Qyoto {
 		}
 
 		static SmokeInvocation() {
+			Qyoto.Init_qyoto();
 			SmokeMarshallers.SetUp();
 		}
 		

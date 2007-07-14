@@ -1,3 +1,9 @@
+2007-07-15  Arno Rehn  <arno@arnorehn.de>
+
+	* Moved Init_qyoto() from the Q(Core)Application constructor to the
+	  static SmokeInvocation constructor. It's now called before anything
+	  else, even if you hadn't created a Q(Core)Application before.
+
 2007-06-26  Richard Dale  <rdale@foton.es>
 
 	* Fixed a bug parsing Q_PROPERTIES which messed up the code generation

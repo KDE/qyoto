@@ -7,7 +7,6 @@ namespace Qyoto {
 	public partial class QApplication : QCoreApplication, IDisposable {
 
 		public QApplication(string[] argv) : this((Type) null) {
-			Qyoto.Init_qyoto();
 			CreateProxy();
 			Qt.qApp = this;
       
@@ -21,7 +20,6 @@ namespace Qyoto {
 		}
 
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
-			Qyoto.Init_qyoto();
 			CreateProxy();
 			Qt.qApp = this;
 			
@@ -35,7 +33,6 @@ namespace Qyoto {
 		}
     
 		public QApplication(string[] argv, QApplication.TypeOf arg3) : this((Type) null) {
-			Qyoto.Init_qyoto();
 			CreateProxy();
 			Qt.qApp = this;
 			

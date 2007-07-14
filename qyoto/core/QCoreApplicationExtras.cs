@@ -6,7 +6,6 @@ namespace Qyoto {
 
 	public partial class QCoreApplication : QObject, IDisposable {
 		public QCoreApplication(string[] argv) : this((Type) null) {
-			Qyoto.Init_qyoto();
 			CreateProxy();
 			
 			string[] args = new string[argv.Length + 1];
