@@ -74,6 +74,35 @@ namespace Kimono {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		/// <remarks>
+		///  Returns the currently selected calendar system.
+		/// </remarks>		<return> a KCalendarSystem object
+		///      </return>
+		/// 		<short>    Returns the currently selected calendar system.</short>
+		public KCalendarSystem Calendar() {
+			return (KCalendarSystem) interceptor.Invoke("calendar", "calendar() const", typeof(KCalendarSystem));
+		}
+		/// <remarks>
+		///  Changes the calendar system to use.  Can use its own local locale if set.
+		/// <param> name="calendar" the calendar system object to use, defaults to global
+		/// </param></remarks>		<return> @c true if the calendar system was successfully set, @c false otherwise
+		///      </return>
+		/// 		<short>    Changes the calendar system to use.</short>
+		public bool SetCalendar(KCalendarSystem calendar) {
+			return (bool) interceptor.Invoke("setCalendar#", "setCalendar(KCalendarSystem*)", typeof(bool), typeof(KCalendarSystem), calendar);
+		}
+		public bool SetCalendar() {
+			return (bool) interceptor.Invoke("setCalendar", "setCalendar()", typeof(bool));
+		}
+		/// <remarks>
+		///  Changes the calendar system to use.  Will always use global locale.
+		/// <param> name="calendarType" the calendar system type to use
+		/// </param></remarks>		<return> @c true if the calendar system was successfully set, @c false otherwise
+		///      </return>
+		/// 		<short>    Changes the calendar system to use.</short>
+		public bool SetCalendar(string calendarType) {
+			return (bool) interceptor.Invoke("setCalendar$", "setCalendar(const QString&)", typeof(bool), typeof(string), calendarType);
+		}
+		/// <remarks>
 		///  Enables or disables the widget.
 		/// </remarks>		<short>    Enables or disables the widget.</short>
 		public void SetEnabled(bool arg1) {

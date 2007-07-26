@@ -82,13 +82,13 @@ namespace Kimono {
 		///  transformed via an i18n lookup, so the caller should previously have
 		///  set the time zone catalog:
 		///  <pre>
-		///    KGlobal.Locale().InsertCatalog( "timezones" );
+		///    KGlobal.Locale().InsertCatalog( "timezones4" );
 		///  </pre>
 		/// </remarks>		<return> formatted time zone name.
 		///      </return>
 		/// 		<short>    Format a time zone name in a standardised manner.</short>
 		public static string DisplayName(KTimeZone zone) {
-			return (string) staticInterceptor.Invoke("displayName#", "displayName(const KTimeZone*)", typeof(string), typeof(KTimeZone), zone);
+			return (string) staticInterceptor.Invoke("displayName#", "displayName(const KTimeZone&)", typeof(string), typeof(KTimeZone), zone);
 		}
 		protected new IKTimeZoneWidgetSignals Emit {
 			get { return (IKTimeZoneWidgetSignals) Q_EMIT; }

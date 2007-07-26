@@ -321,6 +321,8 @@ namespace Kimono {
 		///  dlg.SetBuffer( someText );
 		///  dlg.Show();
 		///  </pre>
+		///  You can change buffer inside a slot connected to done() signal
+		///  and spellcheck will continue with new data automatically.
 		///       See <see cref="IDialogSignals"></see> for signals emitted by Dialog
 		/// </remarks>		<short> Spellcheck dialog.</short>
 

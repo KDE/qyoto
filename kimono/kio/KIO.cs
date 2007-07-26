@@ -39,6 +39,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(Job), this);
 			}
+			// KIO::Job* Job(KIO::JobPrivate& arg1); >>>> NOT CONVERTED
 			[SmokeMethod("start()")]
 			public override void Start() {
 				interceptor.Invoke("start", "start()", typeof(void));
@@ -325,7 +326,6 @@ namespace Kimono {
 				interceptor = new SmokeInvocation(typeof(CopyJob), this);
 			}
 			// KIO::CopyJob* CopyJob(const KUrl::List& arg1,const KUrl& arg2,KIO::CopyJob::CopyMode arg3,bool arg4); >>>> NOT CONVERTED
-			// void slotEntries(KIO::Job* arg1,const KIO::UDSEntryList& arg2); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Do not create a CopyJob directly. Use KIO.Copy(),
 			///  KIO.Move(), KIO.Link() and friends instead.
@@ -373,81 +373,10 @@ namespace Kimono {
 			public override bool DoSuspend() {
 				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
 			}
-			protected void StatCurrentSrc() {
-				interceptor.Invoke("statCurrentSrc", "statCurrentSrc()", typeof(void));
-			}
-			protected void StatNextSrc() {
-				interceptor.Invoke("statNextSrc", "statNextSrc()", typeof(void));
-			}
-			protected void SlotResultStating(KJob job) {
-				interceptor.Invoke("slotResultStating#", "slotResultStating(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void StartListing(KUrl src) {
-				interceptor.Invoke("startListing#", "startListing(const KUrl&)", typeof(void), typeof(KUrl), src);
-			}
-			protected void SlotResultCreatingDirs(KJob job) {
-				interceptor.Invoke("slotResultCreatingDirs#", "slotResultCreatingDirs(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void SlotResultConflictCreatingDirs(KJob job) {
-				interceptor.Invoke("slotResultConflictCreatingDirs#", "slotResultConflictCreatingDirs(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void CreateNextDir() {
-				interceptor.Invoke("createNextDir", "createNextDir()", typeof(void));
-			}
-			protected void SlotResultCopyingFiles(KJob job) {
-				interceptor.Invoke("slotResultCopyingFiles#", "slotResultCopyingFiles(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void SlotResultConflictCopyingFiles(KJob job) {
-				interceptor.Invoke("slotResultConflictCopyingFiles#", "slotResultConflictCopyingFiles(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void CopyNextFile() {
-				interceptor.Invoke("copyNextFile", "copyNextFile()", typeof(void));
-			}
-			protected void SlotResultDeletingDirs(KJob job) {
-				interceptor.Invoke("slotResultDeletingDirs#", "slotResultDeletingDirs(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void DeleteNextDir() {
-				interceptor.Invoke("deleteNextDir", "deleteNextDir()", typeof(void));
-			}
-			protected void Skip(KUrl sourceURL) {
-				interceptor.Invoke("skip#", "skip(const KUrl&)", typeof(void), typeof(KUrl), sourceURL);
-			}
-			protected void SlotResultRenaming(KJob job) {
-				interceptor.Invoke("slotResultRenaming#", "slotResultRenaming(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void SlotResultSettingDirAttributes(KJob job) {
-				interceptor.Invoke("slotResultSettingDirAttributes#", "slotResultSettingDirAttributes(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			protected void SetNextDirAttribute() {
-				interceptor.Invoke("setNextDirAttribute", "setNextDirAttribute()", typeof(void));
-			}
-			[Q_SLOT("void slotStart()")]
-			protected void SlotStart() {
-				interceptor.Invoke("slotStart", "slotStart()", typeof(void));
-			}
 			[Q_SLOT("void slotResult(KJob*)")]
 			[SmokeMethod("slotResult(KJob*)")]
 			protected override void SlotResult(KJob job) {
 				interceptor.Invoke("slotResult#", "slotResult(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			///          </remarks>		<short>    Forward signal from subjob          </short>
-			[Q_SLOT("void slotProcessedSize(KJob*, qulonglong)")]
-			protected void SlotProcessedSize(KJob arg1, ulong data_size) {
-				interceptor.Invoke("slotProcessedSize#$", "slotProcessedSize(KJob*, qulonglong)", typeof(void), typeof(KJob), arg1, typeof(ulong), data_size);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			/// <param> name="size" the total size
-			///          </param></remarks>		<short>    Forward signal from subjob </short>
-			[Q_SLOT("void slotTotalSize(KJob*, qulonglong)")]
-			protected void SlotTotalSize(KJob arg1, ulong size) {
-				interceptor.Invoke("slotTotalSize#$", "slotTotalSize(KJob*, qulonglong)", typeof(void), typeof(KJob), arg1, typeof(ulong), size);
-			}
-			[Q_SLOT("void slotReport()")]
-			protected void SlotReport() {
-				interceptor.Invoke("slotReport", "slotReport()", typeof(void));
 			}
 			protected new ICopyJobSignals Emit {
 				get { return (ICopyJobSignals) Q_EMIT; }
@@ -658,11 +587,74 @@ namespace Kimono {
 
 		/// <remarks>
 		///  @private
+		///  This class provides a way to obtaining KIO.Connection connections.
+		///       See <see cref="IConnectionServerSignals"></see> for signals emitted by ConnectionServer
+		/// </remarks>		<short>    @private </short>
+
+		[SmokeClass("KIO::ConnectionServer")]
+		public class ConnectionServer : QObject, IDisposable {
+	 		protected ConnectionServer(Type dummy) : base((Type) null) {}
+			protected new void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(ConnectionServer), this);
+			}
+			public ConnectionServer(QObject parent) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("ConnectionServer#", "ConnectionServer(QObject*)", typeof(void), typeof(QObject), parent);
+			}
+			public ConnectionServer() : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("ConnectionServer", "ConnectionServer()", typeof(void));
+			}
+			/// <remarks>
+			///  Sets this connection to listen mode. Use address() to obtain the
+			///  address this is listening on.
+			///          </remarks>		<short>    Sets this connection to listen mode.</short>
+			public void ListenForRemote() {
+				interceptor.Invoke("listenForRemote", "listenForRemote()", typeof(void));
+			}
+			public bool IsListening() {
+				return (bool) interceptor.Invoke("isListening", "isListening() const", typeof(bool));
+			}
+			public void Close() {
+				interceptor.Invoke("close", "close()", typeof(void));
+			}
+			/// <remarks>
+			///  Returns the address for this connection if it is listening, an empty
+			///  string if not.
+			///          </remarks>		<short>    Returns the address for this connection if it is listening, an empty  string if not.</short>
+			public string Address() {
+				return (string) interceptor.Invoke("address", "address() const", typeof(string));
+			}
+			public KIO.Connection NextPendingConnection() {
+				return (KIO.Connection) interceptor.Invoke("nextPendingConnection", "nextPendingConnection()", typeof(KIO.Connection));
+			}
+			public void SetNextPendingConnection(KIO.Connection conn) {
+				interceptor.Invoke("setNextPendingConnection#", "setNextPendingConnection(KIO::Connection*)", typeof(void), typeof(KIO.Connection), conn);
+			}
+			~ConnectionServer() {
+				interceptor.Invoke("~ConnectionServer", "~ConnectionServer()", typeof(void));
+			}
+			public new void Dispose() {
+				interceptor.Invoke("~ConnectionServer", "~ConnectionServer()", typeof(void));
+			}
+			protected new IConnectionServerSignals Emit {
+				get { return (IConnectionServerSignals) Q_EMIT; }
+			}
+		}
+
+		public interface IConnectionServerSignals : IQObjectSignals {
+		[Q_SIGNAL("void newConnection()")]
+		void NewConnection();
+		}
+
+		/// <remarks>
+		///  @private
 		///  This class provides a simple means for IPC between two applications
 		///  via a pipe.
 		///  It handles a queue of commands to be sent which makes it possible to
 		///  queue data before an actual connection has been established.
-		///      </remarks>		<short>    @private </short>
+		///       See <see cref="IConnectionSignals"></see> for signals emitted by Connection
+		/// </remarks>		<short>    @private </short>
 
 		[SmokeClass("KIO::Connection")]
 		public class Connection : QObject, IDisposable {
@@ -670,57 +662,33 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(Connection), this);
 			}
-			// void init(KNetwork::KStreamSocket* arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Creates a new connection.
 			/// </remarks>		<short>    Creates a new connection.</short>
-			/// 		<see> init</see>
+			/// 		<see> connectToRemote</see>
+			/// 		<see> listenForRemote</see>
+			public Connection(QObject parent) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("Connection#", "Connection(QObject*)", typeof(void), typeof(QObject), parent);
+			}
 			public Connection() : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("Connection", "Connection()", typeof(void));
 			}
 			/// <remarks>
-			///  Initialize this connection to use the given socket.
-			/// <param> name="sock" the socket to use
-			/// </param></remarks>		<short>    Initialize this connection to use the given socket.</short>
-			/// 		<see> inited</see>
-			/// <remarks>
-			///  Initialize the connection to use the given file
-			///  descriptors.
-			/// <param> name="fd_in" the input file descriptor to use
-			/// </param><param> name="fd_out" the output file descriptor to use
-			/// </param></remarks>		<short>    Initialize the connection to use the given file  descriptors.</short>
-			/// 		<see> inited</see>
-			public void Init(int fd_in, int fd_out) {
-				interceptor.Invoke("init$$", "init(int, int)", typeof(void), typeof(int), fd_in, typeof(int), fd_out);
-			}
-			public void Connect(QObject receiver, string member) {
-				interceptor.Invoke("connect#$", "connect(QObject*, const char*)", typeof(void), typeof(QObject), receiver, typeof(string), member);
-			}
-			public void Connect(QObject receiver) {
-				interceptor.Invoke("connect#", "connect(QObject*)", typeof(void), typeof(QObject), receiver);
-			}
-			public void Connect() {
-				interceptor.Invoke("connect", "connect()", typeof(void));
+			///  Connects to the remote address.
+			///          </remarks>		<short>    Connects to the remote address.</short>
+			public void ConnectToRemote(string address) {
+				interceptor.Invoke("connectToRemote$", "connectToRemote(const QString&)", typeof(void), typeof(string), address);
 			}
 			public void Close() {
 				interceptor.Invoke("close", "close()", typeof(void));
 			}
-			/// <remarks>
-			///  Returns the input file descriptor.
-			/// </remarks>		<return> the input file descriptor
-			/// 	 </return>
-			/// 		<short>    Returns the input file descriptor.</short>
-			public int Fd_from() {
-				return (int) interceptor.Invoke("fd_from", "fd_from() const", typeof(int));
+			public string ErrorString() {
+				return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 			}
-			/// <remarks>
-			///  Returns the output file descriptor.
-			/// </remarks>		<return> the output file descriptor
-			/// 	 </return>
-			/// 		<short>    Returns the output file descriptor.</short>
-			public int Fd_to() {
-				return (int) interceptor.Invoke("fd_to", "fd_to() const", typeof(int));
+			public bool IsConnected() {
+				return (bool) interceptor.Invoke("isConnected", "isConnected() const", typeof(bool));
 			}
 			/// <remarks>
 			///  Checks whether the connection has been initialized.
@@ -753,6 +721,26 @@ namespace Kimono {
 			/// 		<short>    Sends the given command immediately.</short>
 			public bool Sendnow(int _cmd, QByteArray data) {
 				return (bool) interceptor.Invoke("sendnow$#", "sendnow(int, const QByteArray&)", typeof(bool), typeof(int), _cmd, typeof(QByteArray), data);
+			}
+			/// <remarks>
+			///  Returns true if there are packets to be read immediately,
+			///  false if waitForIncomingTask must be called before more data
+			///  is available.
+			///          </remarks>		<short>    Returns true if there are packets to be read immediately,  false if waitForIncomingTask must be called before more data  is available.</short>
+			public bool HasTaskAvailable() {
+				return (bool) interceptor.Invoke("hasTaskAvailable", "hasTaskAvailable() const", typeof(bool));
+			}
+			/// <remarks>
+			///  Waits for one more command to be handled and ready.
+			/// <param> name="ms" the time to wait in milliseconds
+			/// </param></remarks>		<return> true if one command can be read, false if we timed out
+			///          </return>
+			/// 		<short>    Waits for one more command to be handled and ready.</short>
+			public bool WaitForIncomingTask(int ms) {
+				return (bool) interceptor.Invoke("waitForIncomingTask$", "waitForIncomingTask(int)", typeof(bool), typeof(int), ms);
+			}
+			public bool WaitForIncomingTask() {
+				return (bool) interceptor.Invoke("waitForIncomingTask", "waitForIncomingTask()", typeof(bool));
 			}
 			/// <remarks>
 			///  Receive data.
@@ -799,10 +787,6 @@ namespace Kimono {
 			public bool Suspended() {
 				return (bool) interceptor.Invoke("suspended", "suspended() const", typeof(bool));
 			}
-			[Q_SLOT("void dequeue()")]
-			protected void Dequeue() {
-				interceptor.Invoke("dequeue", "dequeue()", typeof(void));
-			}
 			~Connection() {
 				interceptor.Invoke("~Connection", "~Connection()", typeof(void));
 			}
@@ -815,6 +799,8 @@ namespace Kimono {
 		}
 
 		public interface IConnectionSignals : IQObjectSignals {
+		[Q_SIGNAL("void readyRead()")]
+		void ReadyRead();
 		}
 
 		/// <remarks>
@@ -830,10 +816,6 @@ namespace Kimono {
 	 		protected SlaveInterface(Type dummy) : base((Type) null) {}
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(SlaveInterface), this);
-			}
-			public SlaveInterface(KIO.Connection connection) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("SlaveInterface#", "SlaveInterface(KIO::Connection*)", typeof(void), typeof(KIO.Connection), connection);
 			}
 			public void SetConnection(KIO.Connection connection) {
 				interceptor.Invoke("setConnection#", "setConnection(KIO::Connection*)", typeof(void), typeof(KIO.Connection), connection);
@@ -940,7 +922,14 @@ namespace Kimono {
 			static Slave() {
 				staticInterceptor = new SmokeInvocation(typeof(Slave), null);
 			}
-			// KIO::Slave* Slave(KNetwork::KServerSocket* arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
+			public Slave(string protocol, QObject parent) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("Slave$#", "Slave(const QString&, QObject*)", typeof(void), typeof(string), protocol, typeof(QObject), parent);
+			}
+			public Slave(string protocol) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("Slave$", "Slave(const QString&)", typeof(void), typeof(string), protocol);
+			}
 			public void SetPID(int arg1) {
 				interceptor.Invoke("setPID$", "setPID(pid_t)", typeof(void), typeof(int), arg1);
 			}
@@ -1117,9 +1106,6 @@ namespace Kimono {
 			public void Timeout() {
 				interceptor.Invoke("timeout", "timeout()", typeof(void));
 			}
-			protected void UnlinkSocket() {
-				interceptor.Invoke("unlinkSocket", "unlinkSocket()", typeof(void));
-			}
 			/// <remarks>
 			///  Creates a new slave.
 			/// <param> name="protocol" the protocol
@@ -1164,7 +1150,7 @@ namespace Kimono {
 	#else
 				((GCHandle) stack[4].s_class).Free();
 	#endif
-				return Enum.ToObject(typeof(KIO.Slave), stack[0].s_int);
+				return (KIO.Slave) Enum.ToObject(typeof(KIO.Slave), stack[0].s_int);
 			}
 			public static KIO.Slave HoldSlave(string protocol, KUrl url) {
 				return (KIO.Slave) staticInterceptor.Invoke("holdSlave$#", "holdSlave(const QString&, const KUrl&)", typeof(KIO.Slave), typeof(string), protocol, typeof(KUrl), url);
@@ -1302,122 +1288,6 @@ namespace Kimono {
 		}
 
 		public interface ISessionDataSignals : IQObjectSignals {
-		}
-
-		/// <remarks>
-		///  A field inside a UDSEntry, to store information about a file or URL.
-		///  Each field is for instance the name, the size, the modification time of the file, etc.
-		///  You never need to use this class directly, see UDSEntry for the public API.
-		///  </remarks>		<short>    A field inside a UDSEntry, to store information about a file or URL.</short>
-
-		[SmokeClass("KIO::UDSField")]
-		public class UDSField : Object, IDisposable {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected UDSField(Type dummy) {}
-			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(UDSField), this);
-			}
-			public UDSField() : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("UDSField", "UDSField()", typeof(void));
-			}
-			/// <remarks>
-			///  Create a field holding a string.
-			///  This constructor is called implicitly when doing
-			///  <pre>
-			///  entry.insert( KIO.UDS_XXX, myString )
-			///  </pre>
-			///    </remarks>		<short>    Create a field holding a string.</short>
-			public UDSField(string s) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("UDSField$", "UDSField(const QString&)", typeof(void), typeof(string), s);
-			}
-			/// <remarks>
-			///  Create a field holding a long long.
-			///  This constructor is called implicitly when doing
-			///  <pre>
-			///  entry.insert( KIO.UDS_XXX, myNumber )
-			///  </pre>
-			///    </remarks>		<short>    Create a field holding a long long.</short>
-			public UDSField(long l) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("UDSField$", "UDSField(long long)", typeof(void), typeof(long), l);
-			}
-			/// <remarks>
-			/// </remarks>		<return> the string value held by this UDSField
-			///    </return>
-			/// 		<short>   </short>
-			public new string ToString() {
-				return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
-			}
-			/// <remarks>
-			/// </remarks>		<return> the number value held by this UDSField
-			///    </return>
-			/// 		<short>   </short>
-			public long ToNumber() {
-				return (long) interceptor.Invoke("toNumber", "toNumber() const", typeof(long));
-			}
-			~UDSField() {
-				interceptor.Invoke("~UDSField", "~UDSField()", typeof(void));
-			}
-			public void Dispose() {
-				interceptor.Invoke("~UDSField", "~UDSField()", typeof(void));
-			}
-		}
-
-		/// <remarks>
-		///  Universal Directory Service
-		///  UDS entry is the data structure representing all the fields about a given URL
-		///  (file or directory).
-		///  The KIO.ListDir() and KIO:stat() operations use this data structure.
-		///  KIO defines a number of fields, see the UDS_XXX enums (see UDSFieldTypes).
-		///  UDSEntry is a hashtable, so you can retrieve fields directly.
-		///  For instance, to retrieve the name of the entry, use:
-		///  <pre>
-		///  string displayName = entry.stringValue( KIO.UDS_NAME );
-		///  </pre>
-		///  To know the modification time of the file/url:
-		///  <pre>
-		///   time_t mtime = entry.numberValue( KIO.UDS_MODIFICATION_TIME, -1 );
-		///   if ( mtime != -1 )
-		///       ...
-		///  </pre>
-		///  </remarks>		<short>    Universal Directory Service </short>
-
-		[SmokeClass("KIO::UDSEntry")]
-		public class UDSEntry : Object, IDisposable {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected UDSEntry(Type dummy) {}
-			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(UDSEntry), this);
-			}
-			public string StringValue(uint field) {
-				return (string) interceptor.Invoke("stringValue$", "stringValue(uint) const", typeof(string), typeof(uint), field);
-			}
-			public long NumberValue(uint field, long defaultValue) {
-				return (long) interceptor.Invoke("numberValue$$", "numberValue(uint, long long) const", typeof(long), typeof(uint), field, typeof(long), defaultValue);
-			}
-			public long NumberValue(uint field) {
-				return (long) interceptor.Invoke("numberValue$", "numberValue(uint) const", typeof(long), typeof(uint), field);
-			}
-			public bool IsDir() {
-				return (bool) interceptor.Invoke("isDir", "isDir() const", typeof(bool));
-			}
-			public bool IsLink() {
-				return (bool) interceptor.Invoke("isLink", "isLink() const", typeof(bool));
-			}
-			public UDSEntry() : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("UDSEntry", "UDSEntry()", typeof(void));
-			}
-			~UDSEntry() {
-				interceptor.Invoke("~UDSEntry", "~UDSEntry()", typeof(void));
-			}
-			public void Dispose() {
-				interceptor.Invoke("~UDSEntry", "~UDSEntry()", typeof(void));
-			}
 		}
 
 		/// <remarks>
@@ -1827,8 +1697,8 @@ namespace Kimono {
 			///  The slave emits the data through data().
 			/// <param> name="size" the requested amount of data
 			///      </param></remarks>		<short>    Read block </short>
-			public void Read(int size) {
-				interceptor.Invoke("read$", "read(int)", typeof(void), typeof(int), size);
+			public void Read(long size) {
+				interceptor.Invoke("read$", "read(KIO::filesize_t)", typeof(void), typeof(long), size);
 			}
 			/// <remarks>
 			///  Write block
@@ -1986,13 +1856,12 @@ namespace Kimono {
 		///     if (error == KIO.ERR_CONNECTION_BROKEN)
 		///         KIO.Scheduler.DisconnectSlave(slave);
 		///  </pre>
-		///  See <see cref="ISchedulerSignals"></see> for signals emitted by Scheduler
 		/// </remarks>		<short>    The KIO.Scheduler manages io-slaves for the application.</short>
 		/// 		<see> Slave</see>
 		/// 		<see> Job</see>
 
 		[SmokeClass("KIO::Scheduler")]
-		public class Scheduler : QObject, IDisposable {
+		public class Scheduler : QObject {
 	 		protected Scheduler(Type dummy) : base((Type) null) {}
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(Scheduler), this);
@@ -2001,67 +1870,8 @@ namespace Kimono {
 			static Scheduler() {
 				staticInterceptor = new SmokeInvocation(typeof(Scheduler), null);
 			}
-			// bool startJobScheduled(KIO::Scheduler::ProtocolInfo* arg1); >>>> NOT CONVERTED
 			public bool Connect(QObject sender, string signal, string member) {
 				return (bool) interceptor.Invoke("connect#$$", "connect(const QObject*, const char*, const char*)", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(string), member);
-			}
-			public void Debug_info() {
-				interceptor.Invoke("debug_info", "debug_info()", typeof(void));
-			}
-			[Q_SLOT("void slotSlaveDied(KIO::Slave*)")]
-			public void SlotSlaveDied(KIO.Slave slave) {
-				interceptor.Invoke("slotSlaveDied#", "slotSlaveDied(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
-			[Q_SLOT("void slotSlaveStatus(pid_t, const QByteArray&, const QString&, bool)")]
-			public void SlotSlaveStatus(int pid, QByteArray protocol, string host, bool connected) {
-				interceptor.Invoke("slotSlaveStatus$#$$", "slotSlaveStatus(pid_t, const QByteArray&, const QString&, bool)", typeof(void), typeof(int), pid, typeof(QByteArray), protocol, typeof(string), host, typeof(bool), connected);
-			}
-			[Q_SLOT("void slotReparseSlaveConfiguration(const QString&)")]
-			public void SlotReparseSlaveConfiguration(string arg1) {
-				interceptor.Invoke("slotReparseSlaveConfiguration$", "slotReparseSlaveConfiguration(const QString&)", typeof(void), typeof(string), arg1);
-			}
-			protected void SetupSlave(KIO.Slave slave, KUrl url, string protocol, string proxy, bool newSlave, KIO.MetaData config) {
-				interceptor.Invoke("setupSlave##$$$#", "setupSlave(KIO::Slave*, const KUrl&, const QString&, const QString&, bool, const KIO::MetaData*)", typeof(void), typeof(KIO.Slave), slave, typeof(KUrl), url, typeof(string), protocol, typeof(string), proxy, typeof(bool), newSlave, typeof(KIO.MetaData), config);
-			}
-			protected void SetupSlave(KIO.Slave slave, KUrl url, string protocol, string proxy, bool newSlave) {
-				interceptor.Invoke("setupSlave##$$$", "setupSlave(KIO::Slave*, const KUrl&, const QString&, const QString&, bool)", typeof(void), typeof(KIO.Slave), slave, typeof(KUrl), url, typeof(string), protocol, typeof(string), proxy, typeof(bool), newSlave);
-			}
-			protected bool StartJobDirect() {
-				return (bool) interceptor.Invoke("startJobDirect", "startJobDirect()", typeof(bool));
-			}
-			public Scheduler() : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("Scheduler", "Scheduler()", typeof(void));
-			}
-			[Q_SLOT("void startStep()")]
-			protected void StartStep() {
-				interceptor.Invoke("startStep", "startStep()", typeof(void));
-			}
-			[Q_SLOT("void slotCleanIdleSlaves()")]
-			protected void SlotCleanIdleSlaves() {
-				interceptor.Invoke("slotCleanIdleSlaves", "slotCleanIdleSlaves()", typeof(void));
-			}
-			[Q_SLOT("void slotSlaveConnected()")]
-			protected void SlotSlaveConnected() {
-				interceptor.Invoke("slotSlaveConnected", "slotSlaveConnected()", typeof(void));
-			}
-			[Q_SLOT("void slotSlaveError(int, const QString&)")]
-			protected void SlotSlaveError(int error, string errorMsg) {
-				interceptor.Invoke("slotSlaveError$$", "slotSlaveError(int, const QString&)", typeof(void), typeof(int), error, typeof(string), errorMsg);
-			}
-			[Q_SLOT("void slotScheduleCoSlave()")]
-			protected void SlotScheduleCoSlave() {
-				interceptor.Invoke("slotScheduleCoSlave", "slotScheduleCoSlave()", typeof(void));
-			}
-			[Q_SLOT("void slotUnregisterWindow(QObject*)")]
-			protected void SlotUnregisterWindow(QObject arg1) {
-				interceptor.Invoke("slotUnregisterWindow#", "slotUnregisterWindow(QObject*)", typeof(void), typeof(QObject), arg1);
-			}
-			~Scheduler() {
-				interceptor.Invoke("~Scheduler", "~Scheduler()", typeof(void));
-			}
-			public new void Dispose() {
-				interceptor.Invoke("~Scheduler", "~Scheduler()", typeof(void));
 			}
 			/// <remarks>
 			///  Register <code>job</code> with the scheduler.
@@ -2195,12 +2005,6 @@ namespace Kimono {
 		}
 
 		public interface ISchedulerSignals : IQObjectSignals {
-		[Q_SIGNAL("void slaveConnected(KIO::Slave*)")]
-		void SlaveConnected(KIO.Slave slave);
-		[Q_SIGNAL("void slaveError(KIO::Slave*, int, const QString&)")]
-		void SlaveError(KIO.Slave slave, int error, string errorMsg);
-		[Q_SIGNAL("void reparseSlaveConfiguration(const QString&)")]
-		void ReparseSlaveConfiguration(string arg1);
 		}
 
 		/// <remarks>
@@ -3502,6 +3306,8 @@ namespace Kimono {
 		void CloseConnection();
 		void Get(KUrl url);
 		void Open(KUrl url, int mode);
+		void Write(QByteArray data);
+		void Close();
 		void Put(KUrl url, int permissions, bool overwrite, bool resume);
 		void Stat(KUrl url);
 		void Mimetype(KUrl url);
@@ -3510,6 +3316,7 @@ namespace Kimono {
 		void Rename(KUrl src, KUrl dest, bool overwrite);
 		void Symlink(string target, KUrl dest, bool overwrite);
 		void Chmod(KUrl url, int permissions);
+		void Chown(KUrl url, string owner, string group);
 		void SetModificationTime(KUrl url, QDateTime mtime);
 		void Copy(KUrl src, KUrl dest, int permissions, bool overwrite);
 		void Del(KUrl url, bool isfile);
@@ -3524,8 +3331,8 @@ namespace Kimono {
 		int ReadTimeout();
 		void SetTimeoutSpecialCommand(int timeout, QByteArray data);
 		void SetTimeoutSpecialCommand(int timeout);
-		bool Dispatch();
 		void Dispatch(int command, QByteArray data);
+		void DispatchOpenCommand(int command, QByteArray data);
 		int ReadData(QByteArray buffer);
 		void ListEntry(KIO.UDSEntry _entry, bool ready);
 		void ConnectSlave(string path);
@@ -3569,6 +3376,8 @@ namespace Kimono {
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2); >>>> NOT CONVERTED
+			// void read(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
+			// void seek(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
 			public SlaveBase(QByteArray protocol, QByteArray pool_socket, QByteArray app_socket) : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("SlaveBase###", "SlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), pool_socket, typeof(QByteArray), app_socket);
@@ -3900,6 +3709,14 @@ namespace Kimono {
 			public virtual void Open(KUrl url, int mode) {
 				interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(int), mode);
 			}
+			[SmokeMethod("write(const QByteArray&)")]
+			public virtual void Write(QByteArray data) {
+				interceptor.Invoke("write#", "write(const QByteArray&)", typeof(void), typeof(QByteArray), data);
+			}
+			[SmokeMethod("close()")]
+			public virtual void Close() {
+				interceptor.Invoke("close", "close()", typeof(void));
+			}
 			/// <remarks>
 			///  put, i.e. write data into a file.
 			/// <param> name="url" where to write the file
@@ -3991,6 +3808,14 @@ namespace Kimono {
 			[SmokeMethod("chmod(const KUrl&, int)")]
 			public virtual void Chmod(KUrl url, int permissions) {
 				interceptor.Invoke("chmod#$", "chmod(const KUrl&, int)", typeof(void), typeof(KUrl), url, typeof(int), permissions);
+			}
+			/// <remarks>
+			///  Change ownership of <code>url</code>
+			///  The slave emits ERR_DOES_NOT_EXIST or ERR_CANNOT_CHOWN
+			///      </remarks>		<short>    Change ownership of <code>url</code>  The slave emits ERR_DOES_NOT_EXIST or ERR_CANNOT_CHOWN      </short>
+			[SmokeMethod("chown(const KUrl&, const QString&, const QString&)")]
+			public virtual void Chown(KUrl url, string owner, string group) {
+				interceptor.Invoke("chown#$$", "chown(const KUrl&, const QString&, const QString&)", typeof(void), typeof(KUrl), url, typeof(string), owner, typeof(string), group);
 			}
 			/// <remarks>
 			///  Sets the modification time for @url
@@ -4121,15 +3946,15 @@ namespace Kimono {
 			}
 			/// <remarks>
 			///      </remarks>		<short>   </short>
-			[SmokeMethod("dispatch()")]
-			public virtual bool Dispatch() {
-				return (bool) interceptor.Invoke("dispatch", "dispatch()", typeof(bool));
-			}
-			/// <remarks>
-			///      </remarks>		<short>   </short>
 			[SmokeMethod("dispatch(int, const QByteArray&)")]
 			public virtual void Dispatch(int command, QByteArray data) {
 				interceptor.Invoke("dispatch$#", "dispatch(int, const QByteArray&)", typeof(void), typeof(int), command, typeof(QByteArray), data);
+			}
+			/// <remarks>
+			///      </remarks>		<short>   </short>
+			[SmokeMethod("dispatchOpenCommand(int, const QByteArray&)")]
+			public virtual void DispatchOpenCommand(int command, QByteArray data) {
+				interceptor.Invoke("dispatchOpenCommand$#", "dispatchOpenCommand(int, const QByteArray&)", typeof(void), typeof(int), command, typeof(QByteArray), data);
 			}
 			/// <remarks>
 			///  Read data send by the job, after a dataReq
@@ -4651,6 +4476,8 @@ namespace Kimono {
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2); >>>> NOT CONVERTED
+			// void read(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
+			// void seek(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
 			public ForwardingSlaveBase(QByteArray protocol, QByteArray poolSocket, QByteArray appSocket) : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("ForwardingSlaveBase###", "ForwardingSlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), poolSocket, typeof(QByteArray), appSocket);
@@ -5064,6 +4891,22 @@ namespace Kimono {
 			public virtual void Open(KUrl url, int mode) {
 				interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(int), mode);
 			}
+			[SmokeMethod("write(const QByteArray&)")]
+			public virtual void Write(QByteArray data) {
+				interceptor.Invoke("write#", "write(const QByteArray&)", typeof(void), typeof(QByteArray), data);
+			}
+			[SmokeMethod("close()")]
+			public virtual void Close() {
+				interceptor.Invoke("close", "close()", typeof(void));
+			}
+			/// <remarks>
+			///  Change ownership of <code>url</code>
+			///  The slave emits ERR_DOES_NOT_EXIST or ERR_CANNOT_CHOWN
+			///      </remarks>		<short>    Change ownership of <code>url</code>  The slave emits ERR_DOES_NOT_EXIST or ERR_CANNOT_CHOWN      </short>
+			[SmokeMethod("chown(const KUrl&, const QString&, const QString&)")]
+			public virtual void Chown(KUrl url, string owner, string group) {
+				interceptor.Invoke("chown#$$", "chown(const KUrl&, const QString&, const QString&)", typeof(void), typeof(KUrl), url, typeof(string), owner, typeof(string), group);
+			}
 			/// <remarks>
 			///  Change the destination of a symlink
 			/// <param> name="url" the url of the symlink to modify
@@ -5158,15 +5001,15 @@ namespace Kimono {
 			}
 			/// <remarks>
 			///      </remarks>		<short>   </short>
-			[SmokeMethod("dispatch()")]
-			public virtual bool Dispatch() {
-				return (bool) interceptor.Invoke("dispatch", "dispatch()", typeof(bool));
-			}
-			/// <remarks>
-			///      </remarks>		<short>   </short>
 			[SmokeMethod("dispatch(int, const QByteArray&)")]
 			public virtual void Dispatch(int command, QByteArray data) {
 				interceptor.Invoke("dispatch$#", "dispatch(int, const QByteArray&)", typeof(void), typeof(int), command, typeof(QByteArray), data);
+			}
+			/// <remarks>
+			///      </remarks>		<short>   </short>
+			[SmokeMethod("dispatchOpenCommand(int, const QByteArray&)")]
+			public virtual void DispatchOpenCommand(int command, QByteArray data) {
+				interceptor.Invoke("dispatchOpenCommand$#", "dispatchOpenCommand(int, const QByteArray&)", typeof(void), typeof(int), command, typeof(QByteArray), data);
 			}
 			/// <remarks>
 			///  Read data send by the job, after a dataReq
@@ -5505,15 +5348,6 @@ namespace Kimono {
 			}
 			public void SetIgnoreMaximumSize() {
 				interceptor.Invoke("setIgnoreMaximumSize", "setIgnoreMaximumSize()", typeof(void));
-			}
-			protected void GetOrCreateThumbnail() {
-				interceptor.Invoke("getOrCreateThumbnail", "getOrCreateThumbnail()", typeof(void));
-			}
-			protected bool StatResultThumbnail() {
-				return (bool) interceptor.Invoke("statResultThumbnail", "statResultThumbnail()", typeof(bool));
-			}
-			protected void CreateThumbnail(string arg1) {
-				interceptor.Invoke("createThumbnail$", "createThumbnail(const QString&)", typeof(void), typeof(string), arg1);
 			}
 			[Q_SLOT("void slotResult(KJob*)")]
 			[SmokeMethod("slotResult(KJob*)")]
@@ -5937,6 +5771,119 @@ namespace Kimono {
 		[Q_SIGNAL("void result(KIO::SkipDialog*, int)")]
 		void Result(KIO.SkipDialog _this, int _button);
 		}
+
+		/// <remarks>
+		///  Universal Directory Service
+		///  UDS entry is the data structure representing all the fields about a given URL
+		///  (file or directory).
+		///  The KIO.ListDir() and KIO:stat() operations use this data structure.
+		///  KIO defines a number of standard fields, see the UDS_XXX enums (see StandardFieldTypes).
+		///  at the moment UDSEntry only provides fields with numeric indexes,
+		///  but there might be named fields with string indexes in the future.
+		///  For instance, to retrieve the name of the entry, use:
+		///  <pre>
+		///  string displayName = entry.stringValue( KIO.UDSEntry.UDS_NAME );
+		///  </pre>
+		///  To know the modification time of the file/url:
+		///  <pre>
+		///   time_t mtime = entry.numberValue( KIO.UDSEntry.UDS_MODIFICATION_TIME, -1 );
+		///   if ( mtime != -1 )
+		///       ...
+		///  </pre>
+		///      </remarks>		<short>    Universal Directory Service </short>
+
+		[SmokeClass("KIO::UDSEntry")]
+		public class UDSEntry : Object, IDisposable {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected UDSEntry(Type dummy) {}
+			protected void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(UDSEntry), this);
+			}
+			// QList<uint> listFields(); >>>> NOT CONVERTED
+			public UDSEntry() : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("UDSEntry", "UDSEntry()", typeof(void));
+			}
+			public UDSEntry(KIO.UDSEntry other) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("UDSEntry#", "UDSEntry(const KIO::UDSEntry&)", typeof(void), typeof(KIO.UDSEntry), other);
+			}
+			/// <remarks>
+			/// </remarks>		<return> value of a textual field
+			///          </return>
+			/// 		<short>   </short>
+			public string StringValue(uint field) {
+				return (string) interceptor.Invoke("stringValue$", "stringValue(uint) const", typeof(string), typeof(uint), field);
+			}
+			/// <remarks>
+			/// </remarks>		<return> value of a numeric field
+			///          </return>
+			/// 		<short>   </short>
+			public long NumberValue(uint field, long defaultValue) {
+				return (long) interceptor.Invoke("numberValue$$", "numberValue(uint, long long) const", typeof(long), typeof(uint), field, typeof(long), defaultValue);
+			}
+			public long NumberValue(uint field) {
+				return (long) interceptor.Invoke("numberValue$", "numberValue(uint) const", typeof(long), typeof(uint), field);
+			}
+			public bool IsDir() {
+				return (bool) interceptor.Invoke("isDir", "isDir() const", typeof(bool));
+			}
+			public bool IsLink() {
+				return (bool) interceptor.Invoke("isLink", "isLink() const", typeof(bool));
+			}
+			/// <remarks>
+			///  insert field with numeric value
+			/// <param> name="field" numeric field id
+			/// </param><param> name="value"          </param></remarks>		<short>    insert field with numeric value </short>
+			public void Insert(uint field, string value) {
+				interceptor.Invoke("insert$$", "insert(uint, QString)", typeof(void), typeof(uint), field, typeof(string), value);
+			}
+			/// <remarks>
+			///  insert field with string value
+			/// <param> name="field" numeric tield id
+			/// </param><param> name="l" value to set
+			///          </param></remarks>		<short>    insert field with string value </short>
+			public void Insert(uint field, long l) {
+				interceptor.Invoke("insert$$", "insert(uint, long long)", typeof(void), typeof(uint), field, typeof(long), l);
+			}
+			/// <remarks>
+			///  count fields
+			/// </remarks>		<return> the number of fields
+			///          </return>
+			/// 		<short>    count fields </short>
+			public int Count() {
+				return (int) interceptor.Invoke("count", "count() const", typeof(int));
+			}
+			/// <remarks>
+			///  check existence of a field
+			/// <param> name="field"          </param></remarks>		<short>    check existence of a field </short>
+			public bool Contains(uint field) {
+				return (bool) interceptor.Invoke("contains$", "contains(uint) const", typeof(bool), typeof(uint), field);
+			}
+			/// <remarks>
+			///  remove a field with a certain numeric id
+			/// <param> name="field" numeric type id
+			///          </param></remarks>		<short>    remove a field with a certain numeric id </short>
+			public bool Remove(uint field) {
+				return (bool) interceptor.Invoke("remove$", "remove(uint)", typeof(bool), typeof(uint), field);
+			}
+			/// <remarks>
+			///  lists all fields
+			///          </remarks>		<short>    lists all fields          </short>
+			/// <remarks>
+			///  remove all fields
+			///          </remarks>		<short>    remove all fields          </short>
+			public void Clear() {
+				interceptor.Invoke("clear", "clear()", typeof(void));
+			}
+			~UDSEntry() {
+				interceptor.Invoke("~UDSEntry", "~UDSEntry()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~UDSEntry", "~UDSEntry()", typeof(void));
+			}
+		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KIO() {
 			staticInterceptor = new SmokeInvocation(typeof(KIO), null);
@@ -6019,13 +5966,8 @@ namespace Kimono {
 			CMD_MULTI_GET = 'V',
 			CMD_SETLINKDEST = 'W',
 			CMD_OPEN = 'X',
-		}
-		/// <remarks>
-		///  Commands that can be invoked on a slave-file.
-		///  (Move this to a non-public header)
-		///    </remarks>		<short>   </short>
-		public enum FileCommand {
-			CMD_READ = 90,
+			CMD_CHOWN = 'Y',
+			CMD_READ = 'Z',
 			CMD_WRITE = 91,
 			CMD_SEEK = 92,
 			CMD_CLOSE = 93,
@@ -6099,6 +6041,7 @@ namespace Kimono {
 			ERR_POST_DENIED = KJob.UserDefinedError+65,
 			ERR_COULD_NOT_SEEK = KJob.UserDefinedError+66,
 			ERR_CANNOT_SETTIME = KJob.UserDefinedError+67,
+			ERR_CANNOT_CHOWN = KJob.UserDefinedError+68,
 		}
 		/// <remarks>
 		///  Specifies how to use the cache.
@@ -6111,37 +6054,6 @@ namespace Kimono {
 			CC_Verify = 2,
 			CC_Refresh = 3,
 			CC_Reload = 4,
-		}
-		/// <remarks>
-		///  Constants used to specify the type of a UDSField.
-		///    </remarks>		<short>    Constants used to specify the type of a UDSField.</short>
-		public enum UDSFieldTypes {
-			UDS_STRING = 0x01000000,
-			UDS_NUMBER = 0x02000000,
-			UDS_TIME = 0x04000000|UDS_NUMBER,
-			UDS_SIZE = 1|UDS_NUMBER,
-			UDS_SIZE_LARGE = 2|UDS_NUMBER,
-			UDS_USER = 3|UDS_STRING,
-			UDS_ICON_NAME = 4|UDS_STRING,
-			UDS_GROUP = 5|UDS_STRING,
-			UDS_NAME = 6|UDS_STRING,
-			UDS_LOCAL_PATH = 7|UDS_STRING,
-			UDS_HIDDEN = 8|UDS_NUMBER,
-			UDS_ACCESS = 9|UDS_NUMBER,
-			UDS_MODIFICATION_TIME = 10|UDS_TIME,
-			UDS_ACCESS_TIME = 11|UDS_TIME,
-			UDS_CREATION_TIME = 12|UDS_TIME,
-			UDS_FILE_TYPE = 13|UDS_NUMBER,
-			UDS_LINK_DEST = 14|UDS_STRING,
-			UDS_URL = 15|UDS_STRING,
-			UDS_MIME_TYPE = 16|UDS_STRING,
-			UDS_GUESSED_MIME_TYPE = 17|UDS_STRING,
-			UDS_XML_PROPERTIES = 18|UDS_STRING,
-			UDS_EXTENDED_ACL = 19|UDS_NUMBER,
-			UDS_ACL_STRING = 20|UDS_STRING,
-			UDS_DEFAULT_ACL_STRING = 21|UDS_STRING,
-			UDS_EXTRA = 100|UDS_STRING,
-			UDS_EXTRA_END = 140|UDS_STRING,
 		}
 		public enum RenameDialog_Mode {
 			M_OVERWRITE = 1,
@@ -6431,6 +6343,17 @@ namespace Kimono {
 		/// 		<short>    Changes permissions on a file or directory.</short>
 		public static KIO.SimpleJob Chmod(KUrl url, int permissions) {
 			return (KIO.SimpleJob) staticInterceptor.Invoke("chmod#$", "chmod(const KUrl&, int)", typeof(KIO.SimpleJob), typeof(KUrl), url, typeof(int), permissions);
+		}
+		/// <remarks>
+		///  Changes ownership and group of a file or directory.
+		/// <param> name="url" The URL of file or directory.
+		/// </param><param> name="owner" the new owner
+		/// </param><param> name="group" the new group
+		/// </param></remarks>		<return> the job handling the operation.
+		///      </return>
+		/// 		<short>    Changes ownership and group of a file or directory.</short>
+		public static KIO.SimpleJob Chown(KUrl url, string owner, string group) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("chown#$$", "chown(const KUrl&, const QString&, const QString&)", typeof(KIO.SimpleJob), typeof(KUrl), url, typeof(string), owner, typeof(string), group);
 		}
 		/// <remarks>
 		///  Changes the modification time on a file or directory.

@@ -117,7 +117,8 @@ namespace Kimono {
 		/// </param><param> name="value" initial value for the control
 		/// </param><param> name="base" numeric base used for display
 		/// </param><param> name="parent" parent QWidget
-		///      </param></remarks>		<short>    Constructor </short>
+		/// </param> \deprecated use the version without the below parameter instead.
+		///      </remarks>		<short>    Constructor </short>
 		public KIntNumInput(KNumInput below, int value, QWidget parent, int arg4) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KIntNumInput#$#$", "KIntNumInput(KNumInput*, int, QWidget*, int)", typeof(void), typeof(KNumInput), below, typeof(int), value, typeof(QWidget), parent, typeof(int), arg4);

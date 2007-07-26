@@ -74,6 +74,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Two KUser objects are equal if the uid() are identical.
+		///  Invalid users never compare equal.
 		///    </remarks>		<short>    Two KUser objects are equal if the uid() are identical.</short>
 		public override bool Equals(object o) {
 			if (!(o is KUser)) { return false; }

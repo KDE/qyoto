@@ -156,6 +156,13 @@ namespace Kimono {
 			ActiveShortcut = 0x1,
 			DefaultShortcut = 0x2,
 		}
+		/// <remarks>
+		///  An enum about global shortcut setter semantics
+		///      </remarks>		<short>    An enum about global shortcut setter semantics      </short>
+		public enum GlobalShortcutLoading {
+			Autoloading = 0x0,
+			NoAutoloading = 0x4,
+		}
 		[Q_PROPERTY("KShortcut", "shortcut")]
 		public new KShortcut Shortcut {
 			get { return (KShortcut) interceptor.Invoke("shortcut", "shortcut()", typeof(KShortcut)); }
@@ -180,6 +187,7 @@ namespace Kimono {
 		// void setShortcut(const KShortcut& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
 		// void setShortcut(const QKeySequence& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
 		// const KShortcut& globalShortcut(ShortcutTypes arg1); >>>> NOT CONVERTED
+		// void setGlobalShortcut(const KShortcut& arg1,ShortcutTypes arg2,KAction::GlobalShortcutLoading arg3); >>>> NOT CONVERTED
 		// void setGlobalShortcut(const KShortcut& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
 		// KShapeGesture shapeGesture(ShortcutTypes arg1); >>>> NOT CONVERTED
 		// KRockerGesture rockerGesture(ShortcutTypes arg1); >>>> NOT CONVERTED
@@ -274,6 +282,17 @@ namespace Kimono {
 		///      </remarks>		<short>    Assign a global shortcut for this action.</short>
 		public void SetGlobalShortcut(KShortcut shortcut) {
 			interceptor.Invoke("setGlobalShortcut#", "setGlobalShortcut(const KShortcut&)", typeof(void), typeof(KShortcut), shortcut);
+		}
+		/// <remarks>
+		///  Indicate whether the programmer and/or user may define a global shortcut for this action.
+		///  Defaults to false. Note that calling setGlobalShortcut() turns this on automatically.
+		///  \param allowed set to \e true if this action may have a global shortcut, otherwise \e false.
+		///      </remarks>		<short>    Indicate whether the programmer and/or user may define a global shortcut for this action.</short>
+		public void SetGlobalShortcutAllowed(bool allowed, KAction.GlobalShortcutLoading loading) {
+			interceptor.Invoke("setGlobalShortcutAllowed$$", "setGlobalShortcutAllowed(bool, KAction::GlobalShortcutLoading)", typeof(void), typeof(bool), allowed, typeof(KAction.GlobalShortcutLoading), loading);
+		}
+		public void SetGlobalShortcutAllowed(bool allowed) {
+			interceptor.Invoke("setGlobalShortcutAllowed$", "setGlobalShortcutAllowed(bool)", typeof(void), typeof(bool), allowed);
 		}
 		public void SetShapeGesture(KShapeGesture gest) {
 			interceptor.Invoke("setShapeGesture#", "setShapeGesture(const KShapeGesture&)", typeof(void), typeof(KShapeGesture), gest);

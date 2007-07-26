@@ -398,7 +398,7 @@ namespace Kimono {
 		///  <pre>
 		///  QColor computedDefault = qApp.Palette().color(QPalette.Active, QPalette.Text)
 		///  QColor color = config.ReadEntry(key, computedDefault).value<QColor>();
-		///  \encode
+		///  </pre>
 		///  Then it may wish to make the following check before
 		///  writing back changes:
 		///  <pre>

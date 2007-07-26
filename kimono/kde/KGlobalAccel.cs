@@ -32,24 +32,6 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("isEnabled", "isEnabled()", typeof(bool));
 		}
 		/// <remarks>
-		///  Assign saved shortcuts from kdeglobals to actions where
-		///  globalShortcutsAllowed() == true.
-		///      </remarks>		<short>    Assign saved shortcuts from kdeglobals to actions where  globalShortcutsAllowed() == true.</short>
-		public void ReadSettings() {
-			interceptor.Invoke("readSettings", "readSettings()", typeof(void));
-		}
-		/// <remarks>
-		///  Write the current global shortcuts to kdeglobals.
-		/// <param> name="oneAction" pass an action here if you only want its settings to be saved
-		///                   (eg. if you know this action is the only one which has changed).
-		///      </param></remarks>		<short>    Write the current global shortcuts to kdeglobals.</short>
-		public void WriteSettings(KAction oneAction) {
-			interceptor.Invoke("writeSettings#", "writeSettings(KAction*) const", typeof(void), typeof(KAction), oneAction);
-		}
-		public void WriteSettings() {
-			interceptor.Invoke("writeSettings", "writeSettings() const", typeof(void));
-		}
-		/// <remarks>
 		///  Returns (and creates if necessary) the singleton instance
 		///      </remarks>		<short>    Returns (and creates if necessary) the singleton instance      </short>
 		public static KGlobalAccel Self() {

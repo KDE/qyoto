@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  \short A wrapper around QIcon that provides KDE icon features
@@ -25,10 +26,13 @@ namespace Kimono {
 		///  \param iconName The name of the kde icon to load
 		///  \param iconLoader The icon loader to use in loading this icon, or
 		///                    null to use the default global icon loader.
-		///      </remarks>		<short>    Constructor which takes a kde style icon name, and optionally  a custom icon loader.</short>
-		public KIcon(string iconName, KIconLoader iconLoader, int overlays) : this((Type) null) {
+		/// <param> name="overlays" A list of overlays to apply to this icon. They are
+		///                  loaded from the emblems icons and up to four (one per
+		///                  corner) is currently supported
+		///      </param></remarks>		<short>    Constructor which takes a kde style icon name, and optionally  a custom icon loader.</short>
+		public KIcon(string iconName, KIconLoader iconLoader, List<string> overlays) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KIcon$#$", "KIcon(const QString&, KIconLoader*, int)", typeof(void), typeof(string), iconName, typeof(KIconLoader), iconLoader, typeof(int), overlays);
+			interceptor.Invoke("KIcon$#?", "KIcon(const QString&, KIconLoader*, const QStringList&)", typeof(void), typeof(string), iconName, typeof(KIconLoader), iconLoader, typeof(List<string>), overlays);
 		}
 		public KIcon(string iconName, KIconLoader iconLoader) : this((Type) null) {
 			CreateProxy();
@@ -53,12 +57,6 @@ namespace Kimono {
 		public KIcon() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KIcon", "KIcon()", typeof(void));
-		}
-		/// <remarks>
-		///  Add one or more overlays to the icon. See K3Icon.Overlays.
-		///      </remarks>		<short>    Add one or more overlays to the icon.</short>
-		public void SetOverlays(int overlays) {
-			interceptor.Invoke("setOverlays$", "setOverlays(int)", typeof(void), typeof(int), overlays);
 		}
 		~KIcon() {
 			interceptor.Invoke("~KIcon", "~KIcon()", typeof(void));

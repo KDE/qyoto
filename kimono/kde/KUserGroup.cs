@@ -65,11 +65,11 @@ namespace Kimono {
 			interceptor.Invoke("KUserGroup#", "KUserGroup(const KUserGroup&)", typeof(void), typeof(KUserGroup), group);
 		}
 		/// <remarks>
-		///  Two KUserGroup objects are equal if isValid() is true
-		///  and gid() are identical
+		///  Two KUserGroup objects are equal if their gid()s are identical.
+		///  Invalid groups never compare equal.
 		/// </remarks>		<return> true if the groups are identical
 		///    </return>
-		/// 		<short>    Two KUserGroup objects are equal if isValid() is true  and gid() are identical </short>
+		/// 		<short>    Two KUserGroup objects are equal if their gid()s are identical.</short>
 		public override bool Equals(object o) {
 			if (!(o is KUserGroup)) { return false; }
 			return this == (KUserGroup) o;

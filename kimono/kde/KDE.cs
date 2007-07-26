@@ -4,6 +4,7 @@ namespace Kimono {
 	using System;
 	using Qyoto;
 	using System.Runtime.InteropServices;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  Namespace for general KDE functions.
@@ -16,15 +17,15 @@ namespace Kimono {
 		static KDE() {
 			staticInterceptor = new SmokeInvocation(typeof(KDE), null);
 		}
+		// int IconSize(K3Icon::Group arg1); >>>> NOT CONVERTED
+		// K3Icon::Group& operator++(K3Icon::Group& arg1); >>>> NOT CONVERTED
+		// K3Icon::Group operator++(K3Icon::Group& arg1,int arg2); >>>> NOT CONVERTED
 		// bool operator<(const KEntryKey& arg1,const KEntryKey& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const KDateTime::Spec& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,KDateTime::Spec& arg2); >>>> NOT CONVERTED
 		// bool urlcmp(const QString& arg1,const QString& arg2,const KUrl::EqualsOptions& arg3); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,KProtocolInfo::ExtraField& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const KProtocolInfo::ExtraField& arg2); >>>> NOT CONVERTED
-		// int IconSize(K3Icon::Group arg1); >>>> NOT CONVERTED
-		// K3Icon::Group& operator++(K3Icon::Group& arg1); >>>> NOT CONVERTED
-		// K3Icon::Group operator++(K3Icon::Group& arg1,int arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  @brief Returns the encoded number of KDE's version, see the KDE_VERSION macro.
 		///  In contrary to the macro KDE_VERSION
@@ -73,6 +74,63 @@ namespace Kimono {
 		/// 		<short>    @brief Returns the KDE version as string, e.</short>
 		public static string VersionString() {
 			return (string) staticInterceptor.Invoke("versionString", "versionString()", typeof(string));
+		}
+		public static QPixmap DesktopIcon(string name, int size, int state, List<string> overlays) {
+			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$$?", "DesktopIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public static QPixmap DesktopIcon(string name, int size, int state) {
+			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$$", "DesktopIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
+		}
+		public static QPixmap DesktopIcon(string name, int size) {
+			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$", "DesktopIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
+		}
+		public static QPixmap DesktopIcon(string name) {
+			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$", "DesktopIcon(const QString&)", typeof(QPixmap), typeof(string), name);
+		}
+		public static QPixmap BarIcon(string name, int size, int state, List<string> overlays) {
+			return (QPixmap) staticInterceptor.Invoke("BarIcon$$$?", "BarIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public static QPixmap BarIcon(string name, int size, int state) {
+			return (QPixmap) staticInterceptor.Invoke("BarIcon$$$", "BarIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
+		}
+		public static QPixmap BarIcon(string name, int size) {
+			return (QPixmap) staticInterceptor.Invoke("BarIcon$$", "BarIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
+		}
+		public static QPixmap BarIcon(string name) {
+			return (QPixmap) staticInterceptor.Invoke("BarIcon$", "BarIcon(const QString&)", typeof(QPixmap), typeof(string), name);
+		}
+		public static QPixmap SmallIcon(string name, int size, int state, List<string> overlays) {
+			return (QPixmap) staticInterceptor.Invoke("SmallIcon$$$?", "SmallIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public static QPixmap SmallIcon(string name, int size, int state) {
+			return (QPixmap) staticInterceptor.Invoke("SmallIcon$$$", "SmallIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
+		}
+		public static QPixmap SmallIcon(string name, int size) {
+			return (QPixmap) staticInterceptor.Invoke("SmallIcon$$", "SmallIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
+		}
+		public static QPixmap SmallIcon(string name) {
+			return (QPixmap) staticInterceptor.Invoke("SmallIcon$", "SmallIcon(const QString&)", typeof(QPixmap), typeof(string), name);
+		}
+		public static QPixmap MainBarIcon(string name, int size, int state, List<string> overlays) {
+			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$$$?", "MainBarIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public static QPixmap MainBarIcon(string name, int size, int state) {
+			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$$$", "MainBarIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
+		}
+		public static QPixmap MainBarIcon(string name, int size) {
+			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$$", "MainBarIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
+		}
+		public static QPixmap MainBarIcon(string name) {
+			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$", "MainBarIcon(const QString&)", typeof(QPixmap), typeof(string), name);
+		}
+		public static QPixmap UserIcon(string name, int state, List<string> overlays) {
+			return (QPixmap) staticInterceptor.Invoke("UserIcon$$?", "UserIcon(const QString&, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public static QPixmap UserIcon(string name, int state) {
+			return (QPixmap) staticInterceptor.Invoke("UserIcon$$", "UserIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), state);
+		}
+		public static QPixmap UserIcon(string name) {
+			return (QPixmap) staticInterceptor.Invoke("UserIcon$", "UserIcon(const QString&)", typeof(QPixmap), typeof(string), name);
 		}
 		public static void KDrawNextButton(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill) {
 			staticInterceptor.Invoke("kDrawNextButton###$#", "kDrawNextButton(QPainter*, const QRect&, const QPalette&, bool, const QBrush*)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal, typeof(bool), sunken, typeof(QBrush), fill);
@@ -191,6 +249,9 @@ namespace Kimono {
 		public static uint QHash(KUrl kurl) {
 			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KUrl&)", typeof(uint), typeof(KUrl), kurl);
 		}
+		public static uint QHash(KPluginInfo arg1) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KPluginInfo&)", typeof(uint), typeof(KPluginInfo), arg1);
+		}
 		public static KLocalizedString Ki18n(string msg) {
 			return (KLocalizedString) staticInterceptor.Invoke("ki18n$", "ki18n(const char*)", typeof(KLocalizedString), typeof(string), msg);
 		}
@@ -224,48 +285,6 @@ namespace Kimono {
 		public static string KAsciiToUpper(string str) {
 			return (string) staticInterceptor.Invoke("kAsciiToUpper$", "kAsciiToUpper(char*)", typeof(string), typeof(string), str);
 		}
-		public static QPixmap DesktopIcon(string name, int size, int state) {
-			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$$", "DesktopIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
-		}
-		public static QPixmap DesktopIcon(string name, int size) {
-			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$", "DesktopIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
-		}
-		public static QPixmap DesktopIcon(string name) {
-			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$", "DesktopIcon(const QString&)", typeof(QPixmap), typeof(string), name);
-		}
-		public static QPixmap BarIcon(string name, int size, int state) {
-			return (QPixmap) staticInterceptor.Invoke("BarIcon$$$", "BarIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
-		}
-		public static QPixmap BarIcon(string name, int size) {
-			return (QPixmap) staticInterceptor.Invoke("BarIcon$$", "BarIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
-		}
-		public static QPixmap BarIcon(string name) {
-			return (QPixmap) staticInterceptor.Invoke("BarIcon$", "BarIcon(const QString&)", typeof(QPixmap), typeof(string), name);
-		}
-		public static QPixmap SmallIcon(string name, int size, int state) {
-			return (QPixmap) staticInterceptor.Invoke("SmallIcon$$$", "SmallIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
-		}
-		public static QPixmap SmallIcon(string name, int size) {
-			return (QPixmap) staticInterceptor.Invoke("SmallIcon$$", "SmallIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
-		}
-		public static QPixmap SmallIcon(string name) {
-			return (QPixmap) staticInterceptor.Invoke("SmallIcon$", "SmallIcon(const QString&)", typeof(QPixmap), typeof(string), name);
-		}
-		public static QPixmap MainBarIcon(string name, int size, int state) {
-			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$$$", "MainBarIcon(const QString&, int, int)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state);
-		}
-		public static QPixmap MainBarIcon(string name, int size) {
-			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$$", "MainBarIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), size);
-		}
-		public static QPixmap MainBarIcon(string name) {
-			return (QPixmap) staticInterceptor.Invoke("MainBarIcon$", "MainBarIcon(const QString&)", typeof(QPixmap), typeof(string), name);
-		}
-		public static QPixmap UserIcon(string name, int state) {
-			return (QPixmap) staticInterceptor.Invoke("UserIcon$$", "UserIcon(const QString&, int)", typeof(QPixmap), typeof(string), name, typeof(int), state);
-		}
-		public static QPixmap UserIcon(string name) {
-			return (QPixmap) staticInterceptor.Invoke("UserIcon$", "UserIcon(const QString&)", typeof(QPixmap), typeof(string), name);
-		}
 		public static uint QHash(int arg1) {
 			return (uint) staticInterceptor.Invoke("qHash$", "qHash(int)", typeof(uint), typeof(int), arg1);
 		}
@@ -281,17 +300,17 @@ namespace Kimono {
 		public static uint QHash(KRockerGesture key) {
 			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KRockerGesture&)", typeof(uint), typeof(KRockerGesture), key);
 		}
-		public static QDataStream Write(QDataStream s, KACL a) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
-		}
-		public static QDataStream Read(QDataStream s, KACL a) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
-		}
 		public static QDataStream Write(QDataStream s, KFileItem a) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
 		}
 		public static QDataStream Read(QDataStream s, KFileItem a) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
+		}
+		public static QDataStream Write(QDataStream s, KACL a) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
+		}
+		public static QDataStream Read(QDataStream s, KACL a) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
 		}
 		public static KPrinter.PageSize PageNameToPageSize(string name, ref bool ok) {
 			StackItem[] stack = new StackItem[3];
@@ -308,7 +327,7 @@ namespace Kimono {
 			((GCHandle) stack[1].s_class).Free();
 #endif
 			ok = stack[2].s_bool;
-			return Enum.ToObject(typeof(KPrinter.PageSize), stack[0].s_int);
+			return (KPrinter.PageSize) Enum.ToObject(typeof(KPrinter.PageSize), stack[0].s_int);
 		}
 		public static KPrinter.PageSize PageNameToPageSize(string name) {
 			return (KPrinter.PageSize) staticInterceptor.Invoke("pageNameToPageSize$", "pageNameToPageSize(const QString&)", typeof(KPrinter.PageSize), typeof(string), name);
@@ -316,11 +335,11 @@ namespace Kimono {
 		public static string PageSizeToPageName(KPrinter.PageSize s) {
 			return (string) staticInterceptor.Invoke("pageSizeToPageName$", "pageSizeToPageName(KPrinter::PageSize)", typeof(string), typeof(KPrinter.PageSize), s);
 		}
-		public static QDataStream Write(QDataStream s, KIO.UDSEntry e) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KIO::UDSEntry&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.UDSEntry), e);
+		public static QDataStream Write(QDataStream s, KIO.UDSEntry a) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KIO::UDSEntry&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.UDSEntry), a);
 		}
-		public static QDataStream Read(QDataStream s, KIO.UDSEntry e) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KIO::UDSEntry&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.UDSEntry), e);
+		public static QDataStream Read(QDataStream s, KIO.UDSEntry a) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KIO::UDSEntry&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.UDSEntry), a);
 		}
 	}
 }

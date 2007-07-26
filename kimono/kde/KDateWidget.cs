@@ -43,6 +43,35 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KDateWidget#", "KDateWidget(const QDate&)", typeof(void), typeof(QDate), date);
 		}
+		/// <remarks>
+		///  Returns the currently selected calendar system.
+		/// </remarks>		<return> a KCalendarSystem object
+		///      </return>
+		/// 		<short>    Returns the currently selected calendar system.</short>
+		public KCalendarSystem Calendar() {
+			return (KCalendarSystem) interceptor.Invoke("calendar", "calendar() const", typeof(KCalendarSystem));
+		}
+		/// <remarks>
+		///  Changes the calendar system to use.  Can use its own local locale if set.
+		/// <param> name="calendar" the calendar system object to use, defaults to global
+		/// </param></remarks>		<return> @c true if the calendar system was successfully set, @c false otherwise
+		///      </return>
+		/// 		<short>    Changes the calendar system to use.</short>
+		public bool SetCalendar(KCalendarSystem calendar) {
+			return (bool) interceptor.Invoke("setCalendar#", "setCalendar(KCalendarSystem*)", typeof(bool), typeof(KCalendarSystem), calendar);
+		}
+		public bool SetCalendar() {
+			return (bool) interceptor.Invoke("setCalendar", "setCalendar()", typeof(bool));
+		}
+		/// <remarks>
+		///  Changes the calendar system to use.  Will always use global locale.
+		/// <param> name="calendarType" the calendar system type to use
+		/// </param></remarks>		<return> @c true if the calendar system was successfully set, @c false otherwise
+		///      </return>
+		/// 		<short>    Changes the calendar system to use.</short>
+		public bool SetCalendar(string calendarType) {
+			return (bool) interceptor.Invoke("setCalendar$", "setCalendar(const QString&)", typeof(bool), typeof(string), calendarType);
+		}
 		protected void Init(QDate arg1) {
 			interceptor.Invoke("init#", "init(const QDate&)", typeof(void), typeof(QDate), arg1);
 		}

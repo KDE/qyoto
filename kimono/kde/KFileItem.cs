@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  A KFileItem is a generic class to handle a file, local or remote.
@@ -23,6 +24,17 @@ namespace Kimono {
 		private static SmokeInvocation staticInterceptor = null;
 		static KFileItem() {
 			staticInterceptor = new SmokeInvocation(typeof(KFileItem), null);
+		}
+		/// <remarks>
+		///  The timestamps associated with a file.
+		///  - ModificationTime: the time the file's contents were last modified
+		///  - AccessTime: the time the file was last accessed (last read or written to)
+		///  - CreationTime: the time the file was created
+		///      </remarks>		<short>    The timestamps associated with a file.</short>
+		public enum FileTimes {
+			ModificationTime = 0,
+			AccessTime = 1,
+			CreationTime = 2,
 		}
 		public const int Unknown = -1;
 
@@ -279,24 +291,24 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Requests the modification, access or creation time, depending on <code>which.</code>
-		/// <param> name="which" UDS_MODIFICATION_TIME, UDS_ACCESS_TIME or even UDS_CREATION_TIME
+		/// <param> name="which" the timestamp
 		/// </param></remarks>		<return> the time asked for, (time_t)0 if not available
 		/// </return>
 		/// 		<short>    Requests the modification, access or creation time, depending on <code>which.</code></short>
 		/// 		<see> timeString</see>
-		public int Time(uint which) {
-			return (int) interceptor.Invoke("time$", "time(unsigned int) const", typeof(int), typeof(uint), which);
+		public int Time(KFileItem.FileTimes which) {
+			return (int) interceptor.Invoke("time$", "time(KFileItem::FileTimes) const", typeof(int), typeof(KFileItem.FileTimes), which);
 		}
 		/// <remarks>
 		///  Requests the modification, access or creation time as a string, depending
 		///  on <code>which.</code>
-		/// <param> name="which" UDS_MODIFICATION_TIME, UDS_ACCESS_TIME or even UDS_CREATION_TIME
+		/// <param> name="which" the timestamp
 		/// </param></remarks>		<return> a formatted string of the requested time.
 		/// </return>
 		/// 		<short>    Requests the modification, access or creation time as a string, depending  on <code>which.</code></short>
 		/// 		<see> time</see>
-		public string TimeString(uint which) {
-			return (string) interceptor.Invoke("timeString$", "timeString(unsigned int) const", typeof(string), typeof(uint), which);
+		public string TimeString(KFileItem.FileTimes which) {
+			return (string) interceptor.Invoke("timeString$", "timeString(KFileItem::FileTimes) const", typeof(string), typeof(KFileItem.FileTimes), which);
 		}
 		public string TimeString() {
 			return (string) interceptor.Invoke("timeString", "timeString() const", typeof(string));
@@ -405,8 +417,8 @@ namespace Kimono {
 		/// </remarks>		<return> the overlays of the pixmap
 		///      </return>
 		/// 		<short>    Returns the overlays (bitfield of K3Icon. Overlay flags) that are used  for this item's pixmap.</short>
-		public int Overlays() {
-			return (int) interceptor.Invoke("overlays", "overlays() const", typeof(int));
+		public List<string> Overlays() {
+			return (List<string>) interceptor.Invoke("overlays", "overlays() const", typeof(List<string>));
 		}
 		/// <remarks>
 		///  Returns the string to be displayed in the statusbar,

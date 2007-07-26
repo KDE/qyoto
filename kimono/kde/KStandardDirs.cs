@@ -728,6 +728,16 @@ namespace Kimono {
 		public static string RealFilePath(string filename) {
 			return (string) staticInterceptor.Invoke("realFilePath$", "realFilePath(const QString&)", typeof(string), typeof(string), filename);
 		}
+		/// <remarks>
+		///  This function is just for convenience. It simply calls
+		///  instance.Dirs().<see> KStandardDirs.FindResource() findResource</see>(type, filename).
+		/// <param> name="type" The type of the wanted resource, see KStandardDirs
+		/// </param><param> name="filename" A relative filename of the resource
+		/// </param><param> name="cData" The KComponentData object
+		/// </param></remarks>		<return> A full path to the filename specified in the second
+		///          argument, or string() if not found
+		/// </return>
+		/// 		<short>    This function is just for convenience.</short>
 		public static string Locate(string type, string filename, KComponentData cData) {
 			return (string) staticInterceptor.Invoke("locate$$#", "locate(const char*, const QString&, const KComponentData&)", typeof(string), typeof(string), type, typeof(string), filename, typeof(KComponentData), cData);
 		}

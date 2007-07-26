@@ -50,9 +50,10 @@ namespace Kimono {
 			StyleChanged = 2,
 			SettingsChanged = 3,
 			IconChanged = 4,
-			ToolbarStyleChanged = 5,
-			ClipboardConfigChanged = 6,
-			BlockShortcuts = 7,
+			CursorChanged = 5,
+			ToolbarStyleChanged = 6,
+			ClipboardConfigChanged = 7,
+			BlockShortcuts = 8,
 		}
 		/// <remarks>
 		///  Valid values for the settingsChanged signal

@@ -60,12 +60,14 @@ namespace Kimono {
 		static KIconLoader() {
 			staticInterceptor = new SmokeInvocation(typeof(KIconLoader), null);
 		}
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,QString* arg5,bool arg6); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,QString* arg5); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6,bool arg7); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
 		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
 		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
 		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,QString* arg5); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
 		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
 		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
 		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
@@ -145,6 +147,9 @@ namespace Kimono {
 		/// </param><param> name="state" The icon state: <code>DefaultState</code>, <code>ActiveState</code> or
 		///  <code>DisabledState.</code> Depending on the user's preferences, the iconloader
 		///  may apply a visual effect to hint about its state.
+		/// </param><param> name="overlays" a list of emblem icons to overlay, by name. the emblem
+		///                  prefix is applied automatically to each name, e.g.
+		///                  "zip" becomes "emblem-zip"
 		/// </param><param> name="path_store" If not null, the path of the icon is stored here.
 		/// </param><param> name="canReturnNull" Can return a null pixmap? If false, the
 		///  "unknown" pixmap is returned when no appropriate icon has been found.
@@ -164,6 +169,9 @@ namespace Kimono {
 		///  <code>DisabledState.</code> Depending on the user's preferences, the iconloader
 		///  may apply a visual effect to hint about its state.
 		/// </param><param> name="path_store" If not null, the path of the icon is stored here.
+		/// </param><param> name="overlays" a list of emblem icons to overlay, by name. the emblem
+		///                  prefix is applied automatically to each name, e.g.
+		///                  "zip" becomes "emblem-zip"
 		/// </param></remarks>		<return> the QPixmap. Can not be null, the
 		///  "unknown" pixmap is returned when no appropriate icon has been found.
 		///      </return>

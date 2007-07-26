@@ -10,8 +10,6 @@ namespace Kimono {
 	///  Each individual time zone is defined in a KTimeZone instance, which provides
 	///  generic support for private or system time zones. The time zones in the
 	///  collection are indexed by name, which must be unique within the collection.
-	///  KTimeZone instances in the collection are owned by the KTimeZones instance,
-	///  and are deleted when the KTimeZones instance is destructed.
 	///  Different time zone sources could define the same time zone differently. (For
 	///  example, a calendar file originating from another system might hold its own
 	///  time zone definitions, which may not necessarily be identical to your own
@@ -19,9 +17,6 @@ namespace Kimono {
 	///  it will often be necessary when dealing with multiple time zone sources to
 	///  create a separate KTimeZones instance for each source collection.
 	///  If you want to access system time zones, use the KSystemTimeZones class.
-	///  @warning Do not delete a KTimeZones instance, or call clear(), if any
-	///           KDateTime instances use any of the time zones in the collection:
-	///           if you subsequently use the KDateTime values, a crash is likely.
 	/// </remarks>		<author> S.R.Haque <srhaque@iee.org>.
 	///  </author>
 	/// 		<short> Represents a time zone database or collection  @ingroup timezones.</short>
@@ -34,10 +29,6 @@ namespace Kimono {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KTimeZones), this);
 		}
-		private static SmokeInvocation staticInterceptor = null;
-		static KTimeZones() {
-			staticInterceptor = new SmokeInvocation(typeof(KTimeZones), null);
-		}
 		// const KTimeZones::ZoneMap zones(); >>>> NOT CONVERTED
 		public KTimeZones() : this((Type) null) {
 			CreateProxy();
@@ -45,8 +36,6 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the time zone with the given name.
-		///  Note that the KTimeZone returned remains a member of the KTimeZones
-		///  collection, and should not be deleted without calling detach() first.
 		/// <param> name="name" name of time zone
 		/// </param></remarks>		<return> time zone, or 0 if not found
 		///      </return>
@@ -61,67 +50,41 @@ namespace Kimono {
 		/// 		<short>    Returns all the time zones defined in this collection.</short>
 		/// <remarks>
 		///  Adds a time zone to the collection.
-		///  KTimeZones takes ownership of the KTimeZone instance, which will be deleted
-		///  when the KTimeZones instance is destructed.
 		///  The time zone's name must be unique within the collection.
 		/// <param> name="zone" time zone to add
 		/// </param></remarks>		<return> @c true if successful, @c false if zone's name duplicates one already in the collection
 		/// </return>
 		/// 		<short>    Adds a time zone to the collection.</short>
-		/// 		<see> addConst</see>
-		/// 		<see> detach</see>
+		/// 		<see> remove</see>
 		public bool Add(KTimeZone zone) {
-			return (bool) interceptor.Invoke("add#", "add(KTimeZone*)", typeof(bool), typeof(KTimeZone), zone);
-		}
-		/// <remarks>
-		///  Adds a time zone to the collection.
-		///  KTimeZones does not take ownership of the KTimeZone instance.
-		///  The time zone's name must be unique within the collection.
-		/// <param> name="zone" time zone to add
-		/// </param></remarks>		<return> @c true if successful, @c false if zone's name duplicates one already in the collection
-		/// </return>
-		/// 		<short>    Adds a time zone to the collection.</short>
-		/// 		<see> add</see>
-		/// 		<see> detach</see>
-		public bool AddConst(KTimeZone zone) {
-			return (bool) interceptor.Invoke("addConst#", "addConst(const KTimeZone*)", typeof(bool), typeof(KTimeZone), zone);
+			return (bool) interceptor.Invoke("add#", "add(const KTimeZone&)", typeof(bool), typeof(KTimeZone), zone);
 		}
 		/// <remarks>
 		///  Removes a time zone from the collection.
-		///  The caller assumes responsibility for deleting the removed KTimeZone. If
-		///  the removed KTimeZone was created by the caller, the constness of the return
-		///  value may safely be cast away.
 		/// <param> name="zone" time zone to remove
-		/// </param></remarks>		<return> the time zone which was removed, or 0 if not found or not a deletable object
+		/// </param></remarks>		<return> the time zone which was removed, or invalid if not found
 		/// </return>
 		/// 		<short>    Removes a time zone from the collection.</short>
 		/// 		<see> clear</see>
 		/// 		<see> add</see>
-		/// 		<see> addConst</see>
-		public KTimeZone Detach(KTimeZone zone) {
-			return (KTimeZone) interceptor.Invoke("detach#", "detach(const KTimeZone*)", typeof(KTimeZone), typeof(KTimeZone), zone);
+		public KTimeZone Remove(KTimeZone zone) {
+			return (KTimeZone) interceptor.Invoke("remove#", "remove(const KTimeZone&)", typeof(KTimeZone), typeof(KTimeZone), zone);
 		}
 		/// <remarks>
 		///  Removes a time zone from the collection.
-		///  The caller assumes responsibility for deleting the removed KTimeZone.
 		/// <param> name="name" name of time zone to remove
-		/// </param></remarks>		<return> the time zone which was removed, or 0 if not found or not a deletable object
+		/// </param></remarks>		<return> the time zone which was removed, or invalid if not found
 		/// </return>
 		/// 		<short>    Removes a time zone from the collection.</short>
 		/// 		<see> clear</see>
 		/// 		<see> add</see>
-		/// 		<see> addConst</see>
-		public KTimeZone Detach(string name) {
-			return (KTimeZone) interceptor.Invoke("detach$", "detach(const QString&)", typeof(KTimeZone), typeof(string), name);
+		public KTimeZone Remove(string name) {
+			return (KTimeZone) interceptor.Invoke("remove$", "remove(const QString&)", typeof(KTimeZone), typeof(string), name);
 		}
 		/// <remarks>
 		///  Clears the collection.
-		///  All time zone instances owned by the collection are deleted.
-		///  @warning Do not call this method if any KDateTime instances use any of
-		///           the time zones in the collection: if you subsequently use the
-		///           KDateTime values, a crash is likely.
 		/// </remarks>		<short>    Clears the collection.</short>
-		/// 		<see> detach</see>
+		/// 		<see> remove</see>
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
@@ -130,19 +93,6 @@ namespace Kimono {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~KTimeZones", "~KTimeZones()", typeof(void));
-		}
-		/// <remarks>
-		///  Returns a standard UTC time zone, with name "UTC".
-		///  @note The KTimeZone returned by this method does not belong to any
-		///  KTimeZones collection, and is statically allocated and therefore cannot
-		///  be deleted and cannot be added to a KTimeZones collection. Any KTimeZones
-		///  instance may contain its own UTC KTimeZone, but that will be a different
-		///  instance than this KTimeZone.
-		/// </remarks>		<return> UTC time zone
-		///      </return>
-		/// 		<short>    Returns a standard UTC time zone, with name "UTC".</short>
-		public static KTimeZone Utc() {
-			return (KTimeZone) staticInterceptor.Invoke("utc", "utc()", typeof(KTimeZone));
 		}
 	}
 }

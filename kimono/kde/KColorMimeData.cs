@@ -26,7 +26,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns true if the MIME data <code>mimeData</code> contains a color object.
-		///  First checks for application/x-color and if that failes for a text/plain entry, which
+		///  First checks for application/x-color and if that fails, for a text/plain entry, which
 		///  represents a color in the format \#hexnumbers
 		///      </remarks>		<short>    Returns true if the MIME data <code>mimeData</code> contains a color object.</short>
 		public static bool CanDecode(QMimeData mimeData) {
@@ -34,7 +34,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Decodes the MIME data <code>mimeData</code> and returns the resulting color.
-		///  First tries application/x-color and if that fails a text/plain entry, which
+		///  First tries application/x-color and if that fails, a text/plain entry, which
 		///  represents a color in the format \#hexnumbers. If this fails too,
 		///  an invalid QColor object is returned, use QColor.IsValid() to test it.
 		///      </remarks>		<short>    Decodes the MIME data <code>mimeData</code> and returns the resulting color.</short>

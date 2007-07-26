@@ -24,7 +24,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructs a KShellCompletion object.
-		///          </remarks>		<short>    Constructs a KShellCompletion object.</short>
+		///      </remarks>		<short>    Constructs a KShellCompletion object.</short>
 		public KShellCompletion() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KShellCompletion", "KShellCompletion()", typeof(void));
@@ -34,7 +34,7 @@ namespace Kimono {
 		///  The first match is returned and emitted in the signal match().
 		/// <param> name="text" the text to complete
 		/// </param></remarks>		<return> the first match, or string() if not found
-		/// 	 </return>
+		///      </return>
 		/// 		<short>    Finds completions to the given text.</short>
 		[SmokeMethod("makeCompletion(const QString&)")]
 		public override string MakeCompletion(string text) {

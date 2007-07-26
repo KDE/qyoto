@@ -156,12 +156,12 @@ namespace Kimono {
 			}
 			/// <remarks>
 			///  Constructs a time specification for a given time zone.
-			///  If <code>tz</code> is KTimeZones.Utc(), the time specification type is set to <code>UTC.</code>
+			///  If <code>tz</code> is KTimeZone.Utc(), the time specification type is set to <code>UTC.</code>
 			/// <param> name="tz" time zone
 			///          </param></remarks>		<short>    Constructs a time specification for a given time zone.</short>
 			public Spec(KTimeZone tz) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("Spec#", "Spec(const KTimeZone*)", typeof(void), typeof(KTimeZone), tz);
+				interceptor.Invoke("Spec#", "Spec(const KTimeZone&)", typeof(void), typeof(KTimeZone), tz);
 			}
 			/// <remarks>
 			///  Constructs a time specification.
@@ -183,7 +183,7 @@ namespace Kimono {
 			///  - <code>TimeZone</code>  : the specified time zone is returned.
 			///  - <code>UTC</code>       : a UTC time zone is returned.
 			///  - <code>LocalZone</code> : the current local time zone is returned.
-			/// </remarks>		<return> time zone as defined above, or null in all other cases
+			/// </remarks>		<return> time zone as defined above, or invalid in all other cases
 			/// </return>
 			/// 		<short>    Returns the time zone for the date/time, according to the time  specification type as follows:  - @c TimeZone  : the specified time zone is returned.</short>
 			/// 		<see> isUtc</see>
@@ -269,7 +269,7 @@ namespace Kimono {
 			/// </param></remarks>		<short>    Initialises the time specification.</short>
 			/// 		<see> type</see>
 			/// 		<see> setType(const</see>
-			/// 		<see> KTimeZone*)</see>
+			/// 		<see> KTimeZone&)</see>
 			/// <remarks>
 			///  Sets the time zone for the time specification.
 			///  To set the time zone to the current local system time zone,
@@ -279,7 +279,7 @@ namespace Kimono {
 			/// 		<see> timeZone</see>
 			/// 		<see> setType(SpecType)</see>
 			public void SetType(KTimeZone tz) {
-				interceptor.Invoke("setType#", "setType(const KTimeZone*)", typeof(void), typeof(KTimeZone), tz);
+				interceptor.Invoke("setType#", "setType(const KTimeZone&)", typeof(void), typeof(KTimeZone), tz);
 			}
 			/// <remarks>
 			///  Comparison operator.
@@ -549,7 +549,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns the time zone for the date/time. If the date/time is specified
 		///  as a UTC time, a UTC time zone is always returned.
-		/// </remarks>		<return> time zone, or null if a local time at a fixed UTC offset or a
+		/// </remarks>		<return> time zone, or invalid if a local time at a fixed UTC offset or a
 		///          local clock time
 		/// </return>
 		/// 		<short>    Returns the time zone for the date/time.</short>
@@ -768,7 +768,7 @@ namespace Kimono {
 		/// 		<see> toTimeSpec</see>
 		/// 		<see> KTimeZone.Convert</see>
 		public KDateTime ToZone(KTimeZone zone) {
-			return (KDateTime) interceptor.Invoke("toZone#", "toZone(const KTimeZone*) const", typeof(KDateTime), typeof(KTimeZone), zone);
+			return (KDateTime) interceptor.Invoke("toZone#", "toZone(const KTimeZone&) const", typeof(KDateTime), typeof(KTimeZone), zone);
 		}
 		/// <remarks>
 		///  Returns the time converted to a new time specification.

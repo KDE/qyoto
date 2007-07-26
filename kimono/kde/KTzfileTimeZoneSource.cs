@@ -46,9 +46,9 @@ namespace Kimono {
 		///          Null is returned on error.
 		///      </return>
 		/// 		<short>    Parses a tzfile file to extract detailed information for one time zone.</short>
-		[SmokeMethod("parse(const KTimeZone*) const")]
+		[SmokeMethod("parse(const KTimeZone&) const")]
 		public override KTimeZoneData Parse(KTimeZone zone) {
-			return (KTimeZoneData) interceptor.Invoke("parse#", "parse(const KTimeZone*) const", typeof(KTimeZoneData), typeof(KTimeZone), zone);
+			return (KTimeZoneData) interceptor.Invoke("parse#", "parse(const KTimeZone&) const", typeof(KTimeZoneData), typeof(KTimeZone), zone);
 		}
 		~KTzfileTimeZoneSource() {
 			interceptor.Invoke("~KTzfileTimeZoneSource", "~KTzfileTimeZoneSource()", typeof(void));

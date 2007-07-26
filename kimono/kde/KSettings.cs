@@ -47,7 +47,8 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(Dialog), this);
 			}
-			// QList<KPluginInfo*> pluginInfos(); >>>> NOT CONVERTED
+			// void addPluginInfos(const QList<KPluginInfo>& arg1); >>>> NOT CONVERTED
+			// QList<KPluginInfo> pluginInfos(); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Construct a new Preferences Dialog for the application. It uses all
 			///  KCMs with X-KDE-ParentApp set to KGlobal.MainComponent().componentName().
@@ -88,9 +89,6 @@ namespace Kimono {
 			///  If you use a Configurable dialog you need to pass KPluginInfo
 			///  objects that the dialog should configure.
 			///          </remarks>		<short>    If you use a Configurable dialog you need to pass KPluginInfo  objects that the dialog should configure.</short>
-			public void AddPluginInfos(List<KPluginInfo> plugininfos) {
-				interceptor.Invoke("addPluginInfos?", "addPluginInfos(const QList<KPluginInfo*>&)", typeof(void), typeof(List<KPluginInfo>), plugininfos);
-			}
 			/// <remarks>
 			///  Sets the argument list that is given to all the KControlModule's when
 			///  they are created.

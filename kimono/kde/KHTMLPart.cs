@@ -651,8 +651,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Sets the Zoom factor. The value is given in percent, larger values mean a
-		///  generally larger font and larger page contents. It is not guaranteed that
-		///  all parts of the page are scaled with the same factor though.
+		///  generally larger font and larger page contents.
 		///  The given value should be in the range of 20..300, values outside that
 		///  range are not guaranteed to work. A value of 100 will disable all zooming
 		///  and show the page with the sizes determined via the given lengths in the
@@ -666,6 +665,23 @@ namespace Kimono {
 		///    </remarks>		<short>    Returns the current zoom factor.</short>
 		public int ZoomFactor() {
 			return (int) interceptor.Invoke("zoomFactor", "zoomFactor() const", typeof(int));
+		}
+		/// <remarks>
+		///  Sets the scale factor to be applied to fonts. The value is given in percent, 
+		///  larger values mean generally larger fonts.
+		///  The given value should be in the range of 20..300, values outside that
+		///  range are not guaranteed to work. A value of 100 will disable all scaling of font sizes
+		///  and show the page with the sizes determined via the given lengths in the
+		///  stylesheets.
+		///    </remarks>		<short>    Sets the scale factor to be applied to fonts.</short>
+		public void SetFontScaleFactor(int percent) {
+			interceptor.Invoke("setFontScaleFactor$", "setFontScaleFactor(int)", typeof(void), typeof(int), percent);
+		}
+		/// <remarks>
+		///  Returns the current font scale factor.
+		///    </remarks>		<short>    Returns the current font scale factor.</short>
+		public int FontScaleFactor() {
+			return (int) interceptor.Invoke("fontScaleFactor", "fontScaleFactor() const", typeof(int));
 		}
 		/// <remarks>
 		///  Returns the text the user has marked.

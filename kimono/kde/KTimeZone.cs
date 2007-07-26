@@ -14,19 +14,30 @@ namespace Kimono {
 	///  and may also hold the actual details of the dates and times of daylight savings
 	///  changes, offsets from UTC, etc. They should be tailored to deal with the type and
 	///  format of data held by a particular type of time zone database.
-	///  If this base class is instantiated, it represents the UTC time zone.
+	///  If this base class is instantiated as a valid instance, it always represents the
+	///  UTC time zone.
 	///  KTimeZone is designed to work in partnership with KTimeZoneSource. KTimeZone
 	///  provides access to individual time zones, while classes derived from
 	///  KTimeZoneSource read and parse a particular format of time zone definition.
 	///  Because time zone sources can differ in what information they provide about time zones,
 	///  the parsed data retured by KTimeZoneSource can vary between different sources,
 	///  resulting in the need to create different KTimeZone classes to handle the data.
-	///  KTimeZone instances are often grouped into KTimeZones collections. If a KTimeZone is
-	///  part of such a collection, it is owned by the KTimeZones instance and should not be
-	///  deleted.
+	///  KTimeZone instances are often grouped into KTimeZones collections.
+	///  Copying KTimeZone instances is very efficient since the class data is explicitly
+	///  shared, meaning that only a pointer to the data is actually copied. To achieve
+	///  this, each class inherited from KTimeZone must have a corresponding backend
+	///  class derived from KTimeZoneBackend.
+	///  @note Classes derived from KTimeZone should not have their own d-pointer. The
+	///  d-pointer is instead contained in their backend class (derived from
+	///  KTimeZoneBackend). This allows KTimeZone's reference-counting of private data to
+	///  take care of the derived class's data as well, ensuring that instance data is
+	///  not deleted while any references to the class instance remains. All virtual
+	///  methods which override KTimeZone methods must be defined in the
+	///  backend class instead.
 	/// </remarks>		<author> S.R.Haque <srhaque@iee.org>.
 	///  </author>
 	/// 		<short> Base class representing a time zone.</short>
+	/// 		<see> KTimeZoneBackend</see>
 	/// 		<see> KTimeZoneSource</see>
 	/// 		<see> KTimeZoneData</see>
 	/// 		<see> @ingroup</see>
@@ -306,19 +317,48 @@ namespace Kimono {
 		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1); >>>> NOT CONVERTED
 		// QList<KTimeZone::LeapSeconds> leapSecondChanges(); >>>> NOT CONVERTED
 		/// <remarks>
-		///  Construct a UTC time zone.
-		///      </remarks>		<short>    Construct a UTC time zone.</short>
-		public KTimeZone(string name) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTimeZone$", "KTimeZone(const QString&)", typeof(void), typeof(string), name);
-		}
+		///  Constructs a null time zone. A null time zone is invalid.
+		/// </remarks>		<short>    Constructs a null time zone.</short>
+		/// 		<see> isValid</see>
 		public KTimeZone() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KTimeZone", "KTimeZone()", typeof(void));
 		}
-		public KTimeZone(KTimeZone arg1) : this((Type) null) {
+		/// <remarks>
+		///  Constructs a UTC time zone.
+		/// <param> name="name" name of the UTC time zone
+		///      </param></remarks>		<short>    Constructs a UTC time zone.</short>
+		public KTimeZone(string name) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KTimeZone#", "KTimeZone(const KTimeZone&)", typeof(void), typeof(KTimeZone), arg1);
+			interceptor.Invoke("KTimeZone$", "KTimeZone(const QString&)", typeof(void), typeof(string), name);
+		}
+		public KTimeZone(KTimeZone tz) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KTimeZone#", "KTimeZone(const KTimeZone&)", typeof(void), typeof(KTimeZone), tz);
+		}
+		/// <remarks>
+		///  Checks whether this is the same instance as another one.
+		///  Note that only the pointers to the time zone data are compared, not the
+		///  contents. So it will only return equality if one instance was copied
+		///  from the other.
+		/// <param> name="rhs" other instance
+		/// </param></remarks>		<return> true if the same instance, else false
+		///      </return>
+		/// 		<short>    Checks whether this is the same instance as another one.</short>
+		public override bool Equals(object o) {
+			if (!(o is KTimeZone)) { return false; }
+			return this == (KTimeZone) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
+		/// <remarks>
+		///  Checks whether the instance is valid.
+		/// </remarks>		<return> true if valid, false if invalid
+		///      </return>
+		/// 		<short>    Checks whether the instance is valid.</short>
+		public bool IsValid() {
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Returns the name of the time zone.
@@ -411,7 +451,7 @@ namespace Kimono {
 		/// 		<see> toUtc</see>
 		/// 		<see> toZoneTime</see>
 		public QDateTime Convert(KTimeZone newZone, QDateTime zoneDateTime) {
-			return (QDateTime) interceptor.Invoke("convert##", "convert(const KTimeZone*, const QDateTime&) const", typeof(QDateTime), typeof(KTimeZone), newZone, typeof(QDateTime), zoneDateTime);
+			return (QDateTime) interceptor.Invoke("convert##", "convert(const KTimeZone&, const QDateTime&) const", typeof(QDateTime), typeof(KTimeZone), newZone, typeof(QDateTime), zoneDateTime);
 		}
 		/// <remarks>
 		///  Converts a date/time, which is interpreted as local time in this time
@@ -785,36 +825,9 @@ namespace Kimono {
 		public KTimeZoneData Data() {
 			return (KTimeZoneData) interceptor.Invoke("data", "data() const", typeof(KTimeZoneData));
 		}
-		/// <remarks>
-		///  Constructs a time zone.
-		/// <param> name="source" reader/parser for the database containing this time zone. This will
-		///                     be an instance of a class derived from KTimeZoneSource.
-		/// </param><param> name="name" in system-dependent format. The name must be unique within any
-		///                     KTimeZones instance which contains this KTimeZone.
-		/// </param><param> name="countryCode" ISO 3166 2-character country code, empty if unknown
-		/// </param><param> name="latitude" in degrees (between -90 and +90), UNKNOWN if not known
-		/// </param><param> name="longitude" in degrees (between -180 and +180), UNKNOWN if not known
-		/// </param><param> name="comment" description of the time zone, if any
-		///      </param></remarks>		<short>    Constructs a time zone.</short>
-		public KTimeZone(KTimeZoneSource source, string name, string countryCode, float latitude, float longitude, string comment) : this((Type) null) {
+		public KTimeZone(KTimeZoneBackend impl) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KTimeZone#$$$$$", "KTimeZone(KTimeZoneSource*, const QString&, const QString&, float, float, const QString&)", typeof(void), typeof(KTimeZoneSource), source, typeof(string), name, typeof(string), countryCode, typeof(float), latitude, typeof(float), longitude, typeof(string), comment);
-		}
-		public KTimeZone(KTimeZoneSource source, string name, string countryCode, float latitude, float longitude) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTimeZone#$$$$", "KTimeZone(KTimeZoneSource*, const QString&, const QString&, float, float)", typeof(void), typeof(KTimeZoneSource), source, typeof(string), name, typeof(string), countryCode, typeof(float), latitude, typeof(float), longitude);
-		}
-		public KTimeZone(KTimeZoneSource source, string name, string countryCode, float latitude) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTimeZone#$$$", "KTimeZone(KTimeZoneSource*, const QString&, const QString&, float)", typeof(void), typeof(KTimeZoneSource), source, typeof(string), name, typeof(string), countryCode, typeof(float), latitude);
-		}
-		public KTimeZone(KTimeZoneSource source, string name, string countryCode) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTimeZone#$$", "KTimeZone(KTimeZoneSource*, const QString&, const QString&)", typeof(void), typeof(KTimeZoneSource), source, typeof(string), name, typeof(string), countryCode);
-		}
-		public KTimeZone(KTimeZoneSource source, string name) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTimeZone#$", "KTimeZone(KTimeZoneSource*, const QString&)", typeof(void), typeof(KTimeZoneSource), source, typeof(string), name);
+			interceptor.Invoke("KTimeZone#", "KTimeZone(KTimeZoneBackend*)", typeof(void), typeof(KTimeZoneBackend), impl);
 		}
 		/// <remarks>
 		///  Sets the detailed parsed data for the time zone, and optionally
@@ -844,13 +857,19 @@ namespace Kimono {
 		/// 		<short>    Update the definition of the time zone to be identical to another  KTimeZone instance.</short>
 		/// 		<see> setData</see>
 		protected bool UpdateBase(KTimeZone other) {
-			return (bool) interceptor.Invoke("updateBase#", "updateBase(const KTimeZone*)", typeof(bool), typeof(KTimeZone), other);
+			return (bool) interceptor.Invoke("updateBase#", "updateBase(const KTimeZone&)", typeof(bool), typeof(KTimeZone), other);
 		}
 		~KTimeZone() {
 			interceptor.Invoke("~KTimeZone", "~KTimeZone()", typeof(void));
 		}
 		public void Dispose() {
 			interceptor.Invoke("~KTimeZone", "~KTimeZone()", typeof(void));
+		}
+		public static bool operator==(KTimeZone lhs, KTimeZone rhs) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const KTimeZone&) const", typeof(bool), typeof(KTimeZone), lhs, typeof(KTimeZone), rhs);
+		}
+		public static bool operator!=(KTimeZone lhs, KTimeZone rhs) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const KTimeZone&) const", typeof(bool), typeof(KTimeZone), lhs, typeof(KTimeZone), rhs);
 		}
 		/// <remarks>
 		///  Converts a UTC time, measured in seconds since 00:00:00 UTC 1st January 1970
@@ -878,6 +897,18 @@ namespace Kimono {
 		/// 		<see> fromTime_t</see>
 		public static int ToTime_t(QDateTime utcDateTime) {
 			return (int) staticInterceptor.Invoke("toTime_t#", "toTime_t(const QDateTime&)", typeof(int), typeof(QDateTime), utcDateTime);
+		}
+		/// <remarks>
+		///  Returns a standard UTC time zone, with name "UTC".
+		///  @note The KTimeZone returned by this method does not belong to any
+		///  KTimeZones collection. Any KTimeZones instance may contain its own UTC
+		///  KTimeZone defined by its time zone source data, but that will be a
+		///  different instance than this KTimeZone.
+		/// </remarks>		<return> UTC time zone
+		///      </return>
+		/// 		<short>    Returns a standard UTC time zone, with name "UTC".</short>
+		public static KTimeZone Utc() {
+			return (KTimeZone) staticInterceptor.Invoke("utc", "utc()", typeof(KTimeZone));
 		}
 	}
 }

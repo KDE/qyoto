@@ -11,6 +11,7 @@ namespace Kimono {
 	/// </remarks>		<author> David Jarvie <software@astrojar.org.uk>.
 	///  </author>
 	/// 		<short> Represents a time zone defined in tzfile(5) format.</short>
+	/// 		<see> KTzfileTimeZoneBackend</see>
 	/// 		<see> KTzfileTimeZoneSource</see>
 	/// 		<see> KTzfileTimeZoneData</see>
 	/// 		<see> @ingroup</see>
@@ -50,15 +51,6 @@ namespace Kimono {
 		public KTzfileTimeZone(KTzfileTimeZoneSource source, string name) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KTzfileTimeZone#$", "KTzfileTimeZone(KTzfileTimeZoneSource*, const QString&)", typeof(void), typeof(KTzfileTimeZoneSource), source, typeof(string), name);
-		}
-		/// <remarks>
-		///  Return whether daylight saving transitions are available for the time zone.
-		/// </remarks>		<return> @c true
-		///      </return>
-		/// 		<short>    Return whether daylight saving transitions are available for the time zone.</short>
-		[SmokeMethod("hasTransitions() const")]
-		public override bool HasTransitions() {
-			return (bool) interceptor.Invoke("hasTransitions", "hasTransitions() const", typeof(bool));
 		}
 		~KTzfileTimeZone() {
 			interceptor.Invoke("~KTzfileTimeZone", "~KTzfileTimeZone()", typeof(void));

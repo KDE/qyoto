@@ -12,6 +12,7 @@ namespace Kimono {
 	///  Based on work by Hamish Rodda and Pascal Letourneau
 	///  </author>
 	/// 		<short> A model for a KIO-based directory tree. </short>
+	/// 		<see> KDirSortFilterProxyModel</see>
 
 	[SmokeClass("KDirModel")]
 	public class KDirModel : QAbstractItemModel, IDisposable {

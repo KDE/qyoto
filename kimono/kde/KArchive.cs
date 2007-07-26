@@ -18,7 +18,7 @@ namespace Kimono {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KArchive), this);
 		}
-		public const int UnknownTime = static_cast<time_t>(-1);
+		public const int UnknownTime = -1;
 
 		/// <remarks>
 		///  Opens the archive for reading or writing.

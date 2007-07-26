@@ -9,7 +9,7 @@ namespace Kimono {
 	///  Derive subclasses from KTimeZoneSource to read and parse time zone details
 	///  from a time zone database or other source of time zone information. If can know
 	///  in advance what KTimeZone instances to create without having to parse the source
-	///  data, you should reimplement the method parse(const KTimeZone). Otherwise,
+	///  data, you should reimplement the method parse(KTimeZone). Otherwise,
 	///  you need to define your own parse() methods with appropriate signatures, to both
 	///  read and parse the new data, and create new KTimeZone instances.
 	///  KTimeZoneSource itself may be used as a dummy source which returns empty
@@ -46,9 +46,9 @@ namespace Kimono {
 		///          Null is returned on error.
 		///      </return>
 		/// 		<short>    Extracts detail information for one time zone from the source database.</short>
-		[SmokeMethod("parse(const KTimeZone*) const")]
+		[SmokeMethod("parse(const KTimeZone&) const")]
 		public virtual KTimeZoneData Parse(KTimeZone zone) {
-			return (KTimeZoneData) interceptor.Invoke("parse#", "parse(const KTimeZone*) const", typeof(KTimeZoneData), typeof(KTimeZone), zone);
+			return (KTimeZoneData) interceptor.Invoke("parse#", "parse(const KTimeZone&) const", typeof(KTimeZoneData), typeof(KTimeZone), zone);
 		}
 		~KTimeZoneSource() {
 			interceptor.Invoke("~KTimeZoneSource", "~KTimeZoneSource()", typeof(void));

@@ -131,7 +131,8 @@ namespace Kimono {
 		/// </param><param> name="step" step size to use for up/down arrow clicks
 		/// </param><param> name="precision" number of digits after the decimal point
 		/// </param><param> name="parent" parent QWidget
-		///      </param></remarks>		<short>    Constructor </short>
+		/// </param> \deprecated use the version without below instead
+		///      </remarks>		<short>    Constructor </short>
 		public KDoubleNumInput(KNumInput below, double lower, double upper, double value, QWidget parent, double step, int precision) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KDoubleNumInput#$$$#$$", "KDoubleNumInput(KNumInput*, double, double, double, QWidget*, double, int)", typeof(void), typeof(KNumInput), below, typeof(double), lower, typeof(double), upper, typeof(double), value, typeof(QWidget), parent, typeof(double), step, typeof(int), precision);

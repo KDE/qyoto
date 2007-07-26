@@ -59,7 +59,7 @@ namespace Kimono {
 	///    dialog.SetMainWidget( widget );
 	///    connect( dialog, SIGNAL("applyClicked()"), widget, SLOT("save()") );
 	///    connect( dialog, SIGNAL("okClicked()"), widget, SLOT("save()") );
-	///    connect( widget, SIGNAL("changed( bool )"), dialog, SLOT("enabledButtonApply( bool )") );
+	///    connect( widget, SIGNAL("changed( bool )"), dialog, SLOT("enableButtonApply( bool )") );
 	///    dialog.EnableButtonApply( false );
 	///    dialog.Show();
 	///  </pre>
@@ -318,7 +318,7 @@ namespace Kimono {
 		///  global or application config file.
 		///  @note the group must be set before calling
 		/// <param> name="config" The config group to read from.
-		/// </param><param> name="options" passed to KConfigBase.WriteEntry
+		/// </param><param> name="options" passed to KConfigBase.WriteEntry()
 		///      </param></remarks>		<short>    Saves the dialogs size dependant on the screen dimension either to the  global or application config file.</short>
 		public void SaveDialogSize(KConfigGroup config) {
 			interceptor.Invoke("saveDialogSize#", "saveDialogSize(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), config);
@@ -328,8 +328,11 @@ namespace Kimono {
 		///   If no text has been defined,
 		///  "Get help..." (internationalized) is returned.
 		/// </remarks>		<return> The help link text.
-		///      </return>
+		/// </return>
 		/// 		<short>    Returns the help link text.</short>
+		/// 		<see> enableLinkedHelp</see>
+		/// 		<see> setHelpLinkText</see>
+		/// 		<see> setHelp</see>
 		public string HelpLinkText() {
 			return (string) interceptor.Invoke("helpLinkText", "helpLinkText() const", typeof(string));
 		}
@@ -453,7 +456,10 @@ namespace Kimono {
 		/// <remarks>
 		///  Display or hide the help link area on the top of the dialog.
 		/// <param> name="state" <code>true</code> will display the area.
-		///      </param></remarks>		<short>    Display or hide the help link area on the top of the dialog.</short>
+		/// </param></remarks>		<short>    Display or hide the help link area on the top of the dialog.</short>
+		/// 		<see> helpLinkText</see>
+		/// 		<see> setHelpLinkText</see>
+		/// 		<see> setHelp</see>
 		[Q_SLOT("void enableLinkedHelp(bool)")]
 		public void EnableLinkedHelp(bool state) {
 			interceptor.Invoke("enableLinkedHelp$", "enableLinkedHelp(bool)", typeof(void), typeof(bool), state);
@@ -463,7 +469,10 @@ namespace Kimono {
 		///  If text is empty,
 		///  the text "Get help..." (internationalized) is used instead.
 		/// <param> name="text" The link text.
-		///      </param></remarks>		<short>    Sets the text that is shown as the linked text.</short>
+		/// </param></remarks>		<short>    Sets the text that is shown as the linked text.</short>
+		/// 		<see> helpLinkText</see>
+		/// 		<see> enableLinkedHelp</see>
+		/// 		<see> setHelp</see>
 		[Q_SLOT("void setHelpLinkText(const QString&)")]
 		public void SetHelpLinkText(string text) {
 			interceptor.Invoke("setHelpLinkText$", "setHelpLinkText(const QString&)", typeof(void), typeof(string), text);

@@ -27,12 +27,12 @@ namespace Kimono {
 			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
 		[SmokeMethod("load(QDataStream&)")]
-		public override void Load(QDataStream arg1) {
-			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
+		public override void Load(QDataStream ds) {
+			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), ds);
 		}
 		[SmokeMethod("save(QDataStream&)")]
-		public override void Save(QDataStream arg1) {
-			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
+		public override void Save(QDataStream ds) {
+			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), ds);
 		}
 		~KServiceSeparator() {
 			interceptor.Invoke("~KServiceSeparator", "~KServiceSeparator()", typeof(void));

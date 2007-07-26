@@ -37,6 +37,7 @@ namespace Kimono {
 		/// <remarks>
 		/// <param> name="below" A pointer to another KNumInput.
 		/// </param><param> name="parent" parent widget
+		///  \deprecated - use the version without the below parameter instead
 		///      </param></remarks>		<short>   </short>
 		public KNumInput(QWidget parent, KNumInput below) : this((Type) null) {
 			CreateProxy();

@@ -87,6 +87,15 @@ namespace Kimono {
 		public QWidget ParentWidget() {
 			return (QWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QWidget));
 		}
+		/// <remarks>
+		///        Function to be used from function handling closing of the window associated 
+		///        with the tray icon (i.e. QWidget.CloseEvent(), KMainWindow.QueryClose() or 
+		///        similar). When false is returned, the window closing should proceed normally, 
+		///        when true is returned, special systray-related handling should take place.
+		///      </remarks>		<short>          Function to be used from function handling closing of the window associated         with the tray icon (i.</short>
+		public bool ParentWidgetTrayClose() {
+			return (bool) interceptor.Invoke("parentWidgetTrayClose", "parentWidgetTrayClose() const", typeof(bool));
+		}
 		[Q_SLOT("void toggleActive()")]
 		public void ToggleActive() {
 			interceptor.Invoke("toggleActive", "toggleActive()", typeof(void));

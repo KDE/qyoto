@@ -1026,6 +1026,7 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KConfigSkeleton), this);
 		}
+		// KConfigSkeleton* KConfigSkeleton(KSharedConfig::Ptr arg1,QObject* arg2); >>>> NOT CONVERTED
 		// KConfigSkeleton* KConfigSkeleton(KSharedConfig::Ptr arg1); >>>> NOT CONVERTED
 		// KConfigSkeleton::ItemUInt* addItemUInt(const QString& arg1,quint32& arg2,quint32 arg3,const QString& arg4); >>>> NOT CONVERTED
 		// KConfigSkeleton::ItemUInt* addItemUInt(const QString& arg1,quint32& arg2,quint32 arg3); >>>> NOT CONVERTED
@@ -1046,6 +1047,10 @@ namespace Kimono {
 		/// <param> name="configname" name of config file. If no name is given, the default
 		///  config file as returned by KGlobal.Config() is used.
 		///    </param></remarks>		<short>    Constructor.</short>
+		public KConfigSkeleton(string configname, QObject parent) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KConfigSkeleton$#", "KConfigSkeleton(const QString&, QObject*)", typeof(void), typeof(string), configname, typeof(QObject), parent);
+		}
 		public KConfigSkeleton(string configname) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KConfigSkeleton$", "KConfigSkeleton(const QString&)", typeof(void), typeof(string), configname);
@@ -1054,6 +1059,10 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KConfigSkeleton", "KConfigSkeleton()", typeof(void));
 		}
+		/// <remarks>
+		///  Constructor.
+		/// <param> name="config" configuration object to use.
+		///    </param></remarks>		<short>    Constructor.</short>
 		/// <remarks>
 		///  Set all registered items to their default values.
 		///  This method calls usrSetDefaults() after setting the defaults for the

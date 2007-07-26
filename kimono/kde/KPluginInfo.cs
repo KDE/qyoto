@@ -21,6 +21,10 @@ namespace Kimono {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KPluginInfo), this);
 		}
+		private static SmokeInvocation staticInterceptor = null;
+		static KPluginInfo() {
+			staticInterceptor = new SmokeInvocation(typeof(KPluginInfo), null);
+		}
 		// KPluginInfo* KPluginInfo(const KService::Ptr arg1); >>>> NOT CONVERTED
 		// KService::Ptr service(); >>>> NOT CONVERTED
 		// QList<KService::Ptr> kcmServices(); >>>> NOT CONVERTED
@@ -101,23 +105,19 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Set whether the plugin is currently loaded.
-		///  You might need to reimplement this method for special needs.
 		/// </remarks>		<short>    Set whether the plugin is currently loaded.</short>
 		/// 		<see> isPluginEnabled</see>
 		/// 		<see> save</see>
-		[SmokeMethod("setPluginEnabled(bool)")]
-		public virtual void SetPluginEnabled(bool enabled) {
+		public void SetPluginEnabled(bool enabled) {
 			interceptor.Invoke("setPluginEnabled$", "setPluginEnabled(bool)", typeof(void), typeof(bool), enabled);
 		}
 		/// <remarks>
-		///  You might need to reimplement this method for special needs.
 		/// </remarks>		<return> Whether the plugin is currently loaded.
 		/// </return>
 		/// 		<short>   </short>
 		/// 		<see> setPluginEnabled</see>
 		/// 		<see> load</see>
-		[SmokeMethod("isPluginEnabled() const")]
-		public virtual bool IsPluginEnabled() {
+		public bool IsPluginEnabled() {
 			return (bool) interceptor.Invoke("isPluginEnabled", "isPluginEnabled() const", typeof(bool));
 		}
 		/// <remarks>
@@ -133,9 +133,8 @@ namespace Kimono {
 		/// </remarks>		<return> The value associated the the <code>key.</code> You can use it if you
 		///          want to read custom values. To do this you need to define
 		///          your own servicetype and add it to the ServiceTypes keys.
-		/// </return>
+		///          </return>
 		/// 		<short>   </short>
-		/// 		<see> operator[]</see>
 		public QVariant Property(string key) {
 			return (QVariant) interceptor.Invoke("property$", "property(const QString&) const", typeof(QVariant), typeof(string), key);
 		}
@@ -164,8 +163,8 @@ namespace Kimono {
 		/// </remarks>		<return> The file containing the information about the plugin.
 		///          </return>
 		/// 		<short>   </short>
-		public string Specfile() {
-			return (string) interceptor.Invoke("specfile", "specfile() const", typeof(string));
+		public string DesktopEntryPath() {
+			return (string) interceptor.Invoke("desktopEntryPath", "desktopEntryPath() const", typeof(string));
 		}
 		/// <remarks>
 		/// </remarks>		<return> The author of this plugin.
@@ -249,52 +248,87 @@ namespace Kimono {
 		}
 		/// <remarks>
 		/// </remarks>		<return> If the KPluginInfo object has a KConfig object set return
-		///  it, else return 0.
+		///  it, else returns an invalid KConfigGroup.
 		///          </return>
 		/// 		<short>   </short>
 		public KConfigGroup Config() {
 			return (KConfigGroup) interceptor.Invoke("config", "config() const", typeof(KConfigGroup));
 		}
 		/// <remarks>
-		///  Save state of the plugin - enabled or not. This function is provided
-		///  for reimplementation if you need to save somewhere else.
+		///  Save state of the plugin - enabled or not.
 		/// <param> name="config" The KConfigGroup holding the information whether
 		///                   plugin is enabled.
 		///          </param></remarks>		<short>    Save state of the plugin - enabled or not.</short>
-		[SmokeMethod("save(KConfigGroup)")]
-		public virtual void Save(KConfigGroup config) {
+		public void Save(KConfigGroup config) {
 			interceptor.Invoke("save#", "save(KConfigGroup)", typeof(void), typeof(KConfigGroup), config);
 		}
-		[SmokeMethod("save()")]
-		public virtual void Save() {
+		public void Save() {
 			interceptor.Invoke("save", "save()", typeof(void));
 		}
 		/// <remarks>
-		///  Load the state of the plugin - enabled or not. This function is provided
-		///  for reimplementation if you need to save somewhere else.
+		///  Load the state of the plugin - enabled or not.
 		/// <param> name="config" The KConfigGroup holding the information whether
 		///                   plugin is enabled.
 		///          </param></remarks>		<short>    Load the state of the plugin - enabled or not.</short>
-		[SmokeMethod("load(const KConfigGroup&)")]
-		public virtual void Load(KConfigGroup config) {
+		public void Load(KConfigGroup config) {
 			interceptor.Invoke("load#", "load(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
 		}
-		[SmokeMethod("load()")]
-		public virtual void Load() {
+		public void Load() {
 			interceptor.Invoke("load", "load()", typeof(void));
 		}
 		/// <remarks>
 		///  Restore defaults (enabled or not).
 		///          </remarks>		<short>    Restore defaults (enabled or not).</short>
-		[SmokeMethod("defaults()")]
-		public virtual void Defaults() {
+		public void Defaults() {
 			interceptor.Invoke("defaults", "defaults()", typeof(void));
 		}
+		/// <remarks>
+		///  Returns whether the object is valid. Treat invalid KPluginInfo objects like you would
+		///  treat a null pointer.
+		///          </remarks>		<short>    Returns whether the object is valid.</short>
+		public bool IsValid() {
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Creates a KPluginInfo object that shares the data with <pre>copy</pre>.
+		///          </remarks>		<short>    Creates a KPluginInfo object that shares the data with \p copy.</short>
+		public KPluginInfo(KPluginInfo copy) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KPluginInfo#", "KPluginInfo(const KPluginInfo&)", typeof(void), typeof(KPluginInfo), copy);
+		}
+		/// <remarks>
+		///  Compares two objects whether they share the same data.
+		///          </remarks>		<short>    Compares two objects whether they share the same data.</short>
+		public override bool Equals(object o) {
+			if (!(o is KPluginInfo)) { return false; }
+			return this == (KPluginInfo) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
+		/// <remarks>
+		///  Less than relation comparing the categories and if they are the same using the names.
+		///          </remarks>		<short>    Less than relation comparing the categories and if they are the same using the names.</short>
+		/// <remarks>
+		///  Greater than relation comparing the categories and if they are the same using the names.
+		///          </remarks>		<short>    Greater than relation comparing the categories and if they are the same using the names.</short>
 		~KPluginInfo() {
 			interceptor.Invoke("~KPluginInfo", "~KPluginInfo()", typeof(void));
 		}
 		public void Dispose() {
 			interceptor.Invoke("~KPluginInfo", "~KPluginInfo()", typeof(void));
+		}
+		public static bool operator==(KPluginInfo lhs, KPluginInfo rhs) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const KPluginInfo&) const", typeof(bool), typeof(KPluginInfo), lhs, typeof(KPluginInfo), rhs);
+		}
+		public static bool operator!=(KPluginInfo lhs, KPluginInfo rhs) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const KPluginInfo&) const", typeof(bool), typeof(KPluginInfo), lhs, typeof(KPluginInfo), rhs);
+		}
+		public static bool operator<(KPluginInfo lhs, KPluginInfo rhs) {
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const KPluginInfo&) const", typeof(bool), typeof(KPluginInfo), lhs, typeof(KPluginInfo), rhs);
+		}
+		public static bool operator>(KPluginInfo lhs, KPluginInfo rhs) {
+			return (bool) staticInterceptor.Invoke("operator>#", "operator>(const KPluginInfo&) const", typeof(bool), typeof(KPluginInfo), lhs, typeof(KPluginInfo), rhs);
 		}
 		/// <remarks>
 		/// <param> name="services" The list of services to construct the list of KPluginInfo objects from

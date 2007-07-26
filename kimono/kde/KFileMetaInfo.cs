@@ -39,8 +39,6 @@ namespace Kimono {
 		// const QHash<QString, KFileMetaInfoItem>& items(); >>>> NOT CONVERTED
 		// KFileMetaInfoItem& item(const QString& arg1); >>>> NOT CONVERTED
 		// const KFileMetaInfoItem& item(const QString& arg1); >>>> NOT CONVERTED
-		// KFileMetaInfoGroupList preferredGroups(); >>>> NOT CONVERTED
-		// KFileMetaInfoGroupList supportedGroups(); >>>> NOT CONVERTED
 		// KFileMetaInfoGroupList groups(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  @brief Construct a KFileMetaInfo that contains metainformation about
@@ -100,12 +98,6 @@ namespace Kimono {
 		public List<string> SupportedKeys() {
 			return (List<string>) interceptor.Invoke("supportedKeys", "supportedKeys() const", typeof(List<string>));
 		}
-		/// <remarks>
-		///  Deprecated
-		/// </remarks>		<short>    Deprecated </short>
-		/// <remarks>
-		///  Deprecated
-		/// </remarks>		<short>    Deprecated </short>
 		public List<string> Keys() {
 			return (List<string>) interceptor.Invoke("keys", "keys() const", typeof(List<string>));
 		}

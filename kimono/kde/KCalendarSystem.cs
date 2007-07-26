@@ -27,9 +27,28 @@ namespace Kimono {
 		static KCalendarSystem() {
 			staticInterceptor = new SmokeInvocation(typeof(KCalendarSystem), null);
 		}
-		public enum DispalyForm {
-			LongForm = 0,
-			ShortForm = 1,
+		/// <remarks>
+		///  Format for returned year number / month number / day number as string.
+		///      </remarks>		<short>    Format for returned year number / month number / day number as string.</short>
+		public enum StringFormat {
+			ShortFormat = 0,
+			LongFormat = 1,
+		}
+		/// <remarks>
+		///  Format for returned month / day name.
+		///      </remarks>		<short>    Format for returned month / day name.</short>
+		public enum MonthNameFormat {
+			ShortName = 0,
+			LongName = 1,
+			ShortNamePossessive = 2,
+			LongNamePossessive = 3,
+		}
+		/// <remarks>
+		///  Format for returned month / day name.
+		///      </remarks>		<short>    Format for returned month / day name.</short>
+		public enum WeekDayNameFormat {
+			ShortDayName = 0,
+			LongDayName = 1,
 		}
 		/// <remarks>
 		///  Constructor of abstract calendar class. This will be called by the derived classes.
@@ -44,23 +63,115 @@ namespace Kimono {
 			interceptor.Invoke("KCalendarSystem", "KCalendarSystem()", typeof(void));
 		}
 		/// <remarks>
+		///  Returns the calendar system type
+		///  This is the same as the deprecated calendarName, but now matches
+		///  KLocale terminology of type in place of name.
+		/// </remarks>		<return> type of calendar system
+		///      </return>
+		/// 		<short>    Returns the calendar system type </short>
+		[SmokeMethod("calendarType() const")]
+		public abstract string CalendarType();
+		/// <remarks>
+		///  Returns a QDate holding the epoch of the calendar system.  Usually YMD
+		///  of 1/1/1, access the returned QDates method toJulianDay() if you
+		///  require the actual Julian Day number.  Note: a particular Calendar
+		///  System implementation may not include the epoch in its supported range,
+		///  or the Calendar System may be Proleptic in which case it supports dates
+		///  before the epoch.
+		/// </remarks>		<return> epoch of calendar system
+		///      </return>
+		/// 		<short>    Returns a QDate holding the epoch of the calendar system.</short>
+		/// 		<see> KCalendarSystem.EarliestValidDate</see>
+		/// 		<see> KCalendarSystem.LatestValidDate</see>
+		/// 		<see> KCalendarSystem.IsProleptic</see>
+		/// 		<see> KCalendarSystem.IsValid</see>
+		[SmokeMethod("epoch() const")]
+		public virtual QDate Epoch() {
+			return (QDate) interceptor.Invoke("epoch", "epoch() const", typeof(QDate));
+		}
+		/// <remarks>
+		///  Returns the earliest date valid in this calendar system implementation.
+		///  If calendar system proleptic then may be before epoch.
+		/// </remarks>		<return> date the earliest valid date
+		///      </return>
+		/// 		<short>    Returns the earliest date valid in this calendar system implementation.</short>
+		/// 		<see> KCalendarSystem.Epoch</see>
+		/// 		<see> KCalendarSystem.LatestValidDate</see>
+		[SmokeMethod("earliestValidDate() const")]
+		public virtual QDate EarliestValidDate() {
+			return (QDate) interceptor.Invoke("earliestValidDate", "earliestValidDate() const", typeof(QDate));
+		}
+		/// <remarks>
+		///  Returns the latest date valid in this calendar system implementation.
+		/// </remarks>		<return> date the latest valid date
+		///      </return>
+		/// 		<short>    Returns the latest date valid in this calendar system implementation.</short>
+		/// 		<see> KCalendarSystem.Epoch</see>
+		/// 		<see> KCalendarSystem.EarliestValidDate</see>
+		[SmokeMethod("latestValidDate() const")]
+		public virtual QDate LatestValidDate() {
+			return (QDate) interceptor.Invoke("latestValidDate", "latestValidDate() const", typeof(QDate));
+		}
+		/// <remarks>
+		///  Returns if a given date is valid in this calendar system
+		/// <param> name="year" the year portion of the date to check
+		/// </param><param> name="month" the month portion of the date to check
+		/// </param><param> name="day" the day portion of the date to check
+		/// </param></remarks>		<return> @c true if the date is valid, @c false otherwise
+		///      </return>
+		/// 		<short>    Returns if a given date is valid in this calendar system </short>
+		[SmokeMethod("isValid(int, int, int) const")]
+		public abstract bool IsValid(int year, int month, int day);
+		/// <remarks>
+		///  Returns if a given date is valid in this calendar system
+		/// <param> name="date" the date to check
+		/// </param></remarks>		<return> @c true if the date is valid, @c false otherwise
+		///      </return>
+		/// 		<short>    Returns if a given date is valid in this calendar system </short>
+		[SmokeMethod("isValid(const QDate&) const")]
+		public virtual bool IsValid(QDate date) {
+			return (bool) interceptor.Invoke("isValid#", "isValid(const QDate&) const", typeof(bool), typeof(QDate), date);
+		}
+		/// <remarks>
+		///  Changes the date's year, month and day. The range of the year, month
+		///  and day depends on which calendar is being used.  All years entered
+		///  are treated literally, i.e. no Y2K translation is applied to years
+		///  entered in the range 00 to 99.  Replaces setYMD.
+		/// <param> name="date" Date to change
+		/// </param><param> name="year" Year
+		/// </param><param> name="month" Month number
+		/// </param><param> name="day" Day of month
+		/// </param></remarks>		<return> @c true if the date is valid, @c false otherwise
+		///      </return>
+		/// 		<short>    Changes the date's year, month and day.</short>
+		[SmokeMethod("setDate(QDate&, int, int, int) const")]
+		public virtual bool SetDate(QDate date, int year, int month, int day) {
+			return (bool) interceptor.Invoke("setDate#$$$", "setDate(QDate&, int, int, int) const", typeof(bool), typeof(QDate), date, typeof(int), year, typeof(int), month, typeof(int), day);
+		}
+		/// <remarks>
 		///  Gets specific calendar type year for a given gregorian date
 		/// <param> name="date" gregorian date
 		/// </param></remarks>		<return> year
 		///    </return>
 		/// 		<short>    Gets specific calendar type year for a given gregorian date </short>
 		[SmokeMethod("year(const QDate&) const")]
-		public abstract int Year(QDate date);
+		public virtual int Year(QDate date) {
+			return (int) interceptor.Invoke("year#", "year(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Converts a date into a year literal
 		/// <param> name="pDate" The date to convert
-		/// </param><param> name="bShort" If the short version of should be used
+		/// </param><param> name="format" The format to return, either short or long
 		/// </param></remarks>		<return> The year literal of the date
-		///    </return>
+		///      </return>
 		/// 		<short>    Converts a date into a year literal </short>
-		[SmokeMethod("yearString(const QDate&, bool) const")]
-		public virtual string YearString(QDate pDate, bool bShort) {
-			return (string) interceptor.Invoke("yearString#$", "yearString(const QDate&, bool) const", typeof(string), typeof(QDate), pDate, typeof(bool), bShort);
+		[SmokeMethod("yearString(const QDate&, KCalendarSystem::StringFormat) const")]
+		public virtual string YearString(QDate pDate, KCalendarSystem.StringFormat format) {
+			return (string) interceptor.Invoke("yearString#$", "yearString(const QDate&, KCalendarSystem::StringFormat) const", typeof(string), typeof(QDate), pDate, typeof(KCalendarSystem.StringFormat), format);
+		}
+		[SmokeMethod("yearString(const QDate&) const")]
+		public virtual string YearString(QDate pDate) {
+			return (string) interceptor.Invoke("yearString#", "yearString(const QDate&) const", typeof(string), typeof(QDate), pDate);
 		}
 		/// <remarks>
 		///  Converts a year literal of a part of a string into a integer starting at the beginning of the string
@@ -94,17 +205,23 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type month for a given gregorian date </short>
 		[SmokeMethod("month(const QDate&) const")]
-		public abstract int Month(QDate date);
+		public virtual int Month(QDate date) {
+			return (int) interceptor.Invoke("month#", "month(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Converts a date into a month literal
 		/// <param> name="pDate" The date to convert
-		/// </param><param> name="bShort" If the short version of should be used
+		/// </param><param> name="format" The format to return, either short or long
 		/// </param></remarks>		<return> The month literal of the date
-		///    </return>
+		///      </return>
 		/// 		<short>    Converts a date into a month literal </short>
-		[SmokeMethod("monthString(const QDate&, bool) const")]
-		public virtual string MonthString(QDate pDate, bool bShort) {
-			return (string) interceptor.Invoke("monthString#$", "monthString(const QDate&, bool) const", typeof(string), typeof(QDate), pDate, typeof(bool), bShort);
+		[SmokeMethod("monthString(const QDate&, KCalendarSystem::StringFormat) const")]
+		public virtual string MonthString(QDate pDate, KCalendarSystem.StringFormat format) {
+			return (string) interceptor.Invoke("monthString#$", "monthString(const QDate&, KCalendarSystem::StringFormat) const", typeof(string), typeof(QDate), pDate, typeof(KCalendarSystem.StringFormat), format);
+		}
+		[SmokeMethod("monthString(const QDate&) const")]
+		public virtual string MonthString(QDate pDate) {
+			return (string) interceptor.Invoke("monthString#", "monthString(const QDate&) const", typeof(string), typeof(QDate), pDate);
 		}
 		/// <remarks>
 		///  Converts a month literal of a part of a string into a integer starting at the beginning of the string
@@ -138,17 +255,23 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type day number of month for a given date </short>
 		[SmokeMethod("day(const QDate&) const")]
-		public abstract int Day(QDate date);
+		public virtual int Day(QDate date) {
+			return (int) interceptor.Invoke("day#", "day(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Converts a date into a day literal
 		/// <param> name="pDate" The date to convert
-		/// </param><param> name="bShort" If the short version of should be used
+		/// </param><param> name="format" The format to return, either short or long
 		/// </param></remarks>		<return> The day literal of the date
-		///    </return>
+		///      </return>
 		/// 		<short>    Converts a date into a day literal </short>
-		[SmokeMethod("dayString(const QDate&, bool) const")]
-		public virtual string DayString(QDate pDate, bool bShort) {
-			return (string) interceptor.Invoke("dayString#$", "dayString(const QDate&, bool) const", typeof(string), typeof(QDate), pDate, typeof(bool), bShort);
+		[SmokeMethod("dayString(const QDate&, KCalendarSystem::StringFormat) const")]
+		public virtual string DayString(QDate pDate, KCalendarSystem.StringFormat format) {
+			return (string) interceptor.Invoke("dayString#$", "dayString(const QDate&, KCalendarSystem::StringFormat) const", typeof(string), typeof(QDate), pDate, typeof(KCalendarSystem.StringFormat), format);
+		}
+		[SmokeMethod("dayString(const QDate&) const")]
+		public virtual string DayString(QDate pDate) {
+			return (string) interceptor.Invoke("dayString#", "dayString(const QDate&) const", typeof(string), typeof(QDate), pDate);
 		}
 		/// <remarks>
 		///  Converts a day literal of a part of a string into a integer starting at the beginning of the string
@@ -183,7 +306,9 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type number of day of week number for a given  date </short>
 		[SmokeMethod("dayOfWeek(const QDate&) const")]
-		public abstract int DayOfWeek(QDate date);
+		public virtual int DayOfWeek(QDate date) {
+			return (int) interceptor.Invoke("dayOfWeek#", "dayOfWeek(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets specific calendar type day number of year for a given date
 		/// <param> name="date" gregorian date equivalent to the specific one
@@ -191,19 +316,9 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type day number of year for a given date </short>
 		[SmokeMethod("dayOfYear(const QDate&) const")]
-		public abstract int DayOfYear(QDate date);
-		/// <remarks>
-		///  Changes the date's year, month and day. The range of the year, month
-		///  and day depends on which calendar is being used.
-		/// <param> name="date" Date to change
-		/// </param><param> name="y" Year
-		/// </param><param> name="m" Month number
-		/// </param><param> name="d" Day of month
-		/// </param></remarks>		<return> true if the date is valid; otherwise returns false.
-		///    </return>
-		/// 		<short>    Changes the date's year, month and day.</short>
-		[SmokeMethod("setYMD(QDate&, int, int, int) const")]
-		public abstract bool SetYMD(QDate date, int y, int m, int d);
+		public virtual int DayOfYear(QDate date) {
+			return (int) interceptor.Invoke("dayOfYear#", "dayOfYear(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Returns a QDate object containing a date nyears later.
 		/// <param> name="date" The old date
@@ -212,7 +327,9 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Returns a QDate object containing a date nyears later.</short>
 		[SmokeMethod("addYears(const QDate&, int) const")]
-		public abstract QDate AddYears(QDate date, int nyears);
+		public virtual QDate AddYears(QDate date, int nyears) {
+			return (QDate) interceptor.Invoke("addYears#$", "addYears(const QDate&, int) const", typeof(QDate), typeof(QDate), date, typeof(int), nyears);
+		}
 		/// <remarks>
 		///  Returns a QDate object containing a date nmonths later.
 		/// <param> name="date" The old date
@@ -221,7 +338,9 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Returns a QDate object containing a date nmonths later.</short>
 		[SmokeMethod("addMonths(const QDate&, int) const")]
-		public abstract QDate AddMonths(QDate date, int nmonths);
+		public virtual QDate AddMonths(QDate date, int nmonths) {
+			return (QDate) interceptor.Invoke("addMonths#$", "addMonths(const QDate&, int) const", typeof(QDate), typeof(QDate), date, typeof(int), nmonths);
+		}
 		/// <remarks>
 		///  Returns a QDate object containing a date ndays later.
 		/// <param> name="date" The old date
@@ -230,7 +349,27 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Returns a QDate object containing a date ndays later.</short>
 		[SmokeMethod("addDays(const QDate&, int) const")]
-		public abstract QDate AddDays(QDate date, int ndays);
+		public virtual QDate AddDays(QDate date, int ndays) {
+			return (QDate) interceptor.Invoke("addDays#$", "addDays(const QDate&, int) const", typeof(QDate), typeof(QDate), date, typeof(int), ndays);
+		}
+		/// <remarks>
+		///  Returns if a given year is a leap year
+		/// <param> name="year" the year to check
+		/// </param></remarks>		<return> @c true if the year is a leap year, @c false otherwise
+		///      </return>
+		/// 		<short>    Returns if a given year is a leap year </short>
+		[SmokeMethod("isLeapYear(int) const")]
+		public abstract bool IsLeapYear(int year);
+		/// <remarks>
+		///  Returns if a given date falls in a leap year
+		/// <param> name="date" the date to check
+		/// </param></remarks>		<return> @c true if the date falls in a leap year, @c false otherwise
+		///      </return>
+		/// 		<short>    Returns if a given date falls in a leap year </short>
+		[SmokeMethod("isLeapYear(const QDate&) const")]
+		public virtual bool IsLeapYear(QDate date) {
+			return (bool) interceptor.Invoke("isLeapYear#", "isLeapYear(const QDate&) const", typeof(bool), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets specific calendar type number of month for a given year
 		/// <param> name="date" The date whose year to use
@@ -238,7 +377,9 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type number of month for a given year </short>
 		[SmokeMethod("monthsInYear(const QDate&) const")]
-		public abstract int MonthsInYear(QDate date);
+		public virtual int MonthsInYear(QDate date) {
+			return (int) interceptor.Invoke("monthsInYear#", "monthsInYear(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets the number of days in date whose years specified.
 		/// <param> name="date" Gregorian date equivalent to the specific one
@@ -246,7 +387,9 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets the number of days in date whose years specified.</short>
 		[SmokeMethod("daysInYear(const QDate&) const")]
-		public abstract int DaysInYear(QDate date);
+		public virtual int DaysInYear(QDate date) {
+			return (int) interceptor.Invoke("daysInYear#", "daysInYear(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets specific calendar type number of days in month for a given date
 		/// <param> name="date" gregorian date
@@ -254,7 +397,19 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type number of days in month for a given date </short>
 		[SmokeMethod("daysInMonth(const QDate&) const")]
-		public abstract int DaysInMonth(QDate date);
+		public virtual int DaysInMonth(QDate date) {
+			return (int) interceptor.Invoke("daysInMonth#", "daysInMonth(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
+		/// <remarks>
+		///  Returns the number of ISO weeks in a specified year
+		/// <param> name="date" the date to obtain year from
+		/// </param></remarks>		<return> number of weeks in year
+		///      </return>
+		/// 		<short>    Returns the number of ISO weeks in a specified year </short>
+		[SmokeMethod("weeksInYear(const QDate&) const")]
+		public virtual int WeeksInYear(QDate date) {
+			return (int) interceptor.Invoke("weeksInYear#", "weeksInYear(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets the number of weeks in a specified year
 		/// <param> name="year" the year
@@ -262,7 +417,33 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets the number of weeks in a specified year </short>
 		[SmokeMethod("weeksInYear(int) const")]
-		public abstract int WeeksInYear(int year);
+		public virtual int WeeksInYear(int year) {
+			return (int) interceptor.Invoke("weeksInYear$", "weeksInYear(int) const", typeof(int), typeof(int), year);
+		}
+		/// <remarks>
+		///  Returns the number of days in a specified week
+		/// <param> name="date" the date to obtain week from
+		/// </param></remarks>		<return> number of days in week
+		///      </return>
+		/// 		<short>    Returns the number of days in a specified week </short>
+		[SmokeMethod("daysInWeek(const QDate&) const")]
+		public virtual int DaysInWeek(QDate date) {
+			return (int) interceptor.Invoke("daysInWeek#", "daysInWeek(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
+		/// <remarks>
+		///  Use this to determine which day is the first day of the week.
+		///  Uses the calendar systems internal locale as set when instantiated,
+		///  which ensures the correct calendar system and locale settings are
+		///  respected, which would not occur in some cases if using the global
+		///  locale.  Defaults to global locale.
+		/// </remarks>		<return> an integer (Monday=1..Sunday=7)
+		///      </return>
+		/// 		<short>    Use this to determine which day is the first day of the week.</short>
+		/// 		<see> KLocale.WeekStartDay</see>
+		[SmokeMethod("weekStartDay() const")]
+		public virtual int WeekStartDay() {
+			return (int) interceptor.Invoke("weekStartDay", "weekStartDay() const", typeof(int));
+		}
 		/// <remarks>
 		///  Gets specific calendar type week number for a given date
 		/// <param> name="date" gregorian date
@@ -271,94 +452,78 @@ namespace Kimono {
 		///    </return>
 		/// 		<short>    Gets specific calendar type week number for a given date </short>
 		[SmokeMethod("weekNumber(const QDate&, int*) const")]
-		public abstract int WeekNumber(QDate date, ref int yearNum);
+		public virtual int WeekNumber(QDate date, ref int yearNum) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(date);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(date);
+#endif
+			stack[2].s_int = yearNum;
+			interceptor.Invoke("weekNumber#$", "weekNumber(const QDate&, int*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			yearNum = stack[2].s_int;
+			return stack[0].s_int;
+		}
+		[SmokeMethod("weekNumber(const QDate&) const")]
+		public virtual int WeekNumber(QDate date) {
+			return (int) interceptor.Invoke("weekNumber#", "weekNumber(const QDate&) const", typeof(int), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets specific calendar type month name for a given month number
 		///  If an invalid month is specified, string() is returned.
 		/// <param> name="month" The month number
 		/// </param><param> name="year" The year the month belongs to
-		/// </param><param> name="shortName" Specifies if the short month name should be used
+		/// </param><param> name="format" Specifies if the short month name or long month name should be used
 		/// </param></remarks>		<return> The name of the month
-		///    </return>
+		///      </return>
 		/// 		<short>    Gets specific calendar type month name for a given month number  If an invalid month is specified, string() is returned.</short>
-		[SmokeMethod("monthName(int, int, bool) const")]
-		public abstract string MonthName(int month, int year, bool shortName);
+		[SmokeMethod("monthName(int, int, KCalendarSystem::MonthNameFormat) const")]
+		public abstract string MonthName(int month, int year, KCalendarSystem.MonthNameFormat format);
 		/// <remarks>
-		///  Gets specific calendar type month name for a given gregorian date
-		/// <param> name="date" Gregorian date
-		/// </param><param> name="shortName" Specifies if the short month name should be used
+		///  Gets specific calendar type month name for a given date
+		/// <param> name="date" Date to obtain month from
+		/// </param><param> name="format" Specifies if the short month name or long month name should be used
 		/// </param></remarks>		<return> The name of the month
-		///    </return>
-		/// 		<short>    Gets specific calendar type month name for a given gregorian date </short>
-		[SmokeMethod("monthName(const QDate&, bool) const")]
-		public abstract string MonthName(QDate date, bool shortName);
-		/// <remarks>
-		///  Returns a string containing the possessive form of the month name.
-		///  ("of January", "of February", etc.)
-		///  It's needed in long format dates in some languages.
-		///  If an invalid month is specified, string() is returned.
-		///  Note: this method is intended to be used by the localization system to
-		///        format dates. Using this method directly in your application may result
-		///        in the inability to localize it properly.
-		/// <param> name="month" The month number
-		/// </param><param> name="year" The year the month belongs to
-		/// </param><param> name="shortName" Specifies if the short month name should be used
-		/// </param></remarks>		<return> The possessive form of the name of the month
-		///    </return>
-		/// 		<short>    Returns a string containing the possessive form of the month name.</short>
-		/// 		<see> KLocale.FormatDate</see>
-		[SmokeMethod("monthNamePossessive(int, int, bool) const")]
-		public abstract string MonthNamePossessive(int month, int year, bool shortName);
-		/// <remarks>
-		///  Returns a string containing the possessive form of the month name.
-		///  ("of January", "of February", etc.)
-		///  It's needed in long format dates in some languages.
-		///  Note: this method is intended to be used by the localization system to
-		///        format dates. Using this method directly in your application may result
-		///        in the inability to localize it properly.
-		/// <param> name="date" Gregorian date
-		/// </param><param> name="shortName" Specifies if the short month name should be used
-		/// </param></remarks>		<return> The possessive form of the name of the month
-		///    </return>
-		/// 		<short>    Returns a string containing the possessive form of the month name.</short>
-		/// 		<see> KLocale.FormatDate</see>
-		[SmokeMethod("monthNamePossessive(const QDate&, bool) const")]
-		public abstract string MonthNamePossessive(QDate date, bool shortName);
+		///      </return>
+		/// 		<short>    Gets specific calendar type month name for a given date </short>
+		[SmokeMethod("monthName(const QDate&, KCalendarSystem::MonthNameFormat) const")]
+		public virtual string MonthName(QDate date, KCalendarSystem.MonthNameFormat format) {
+			return (string) interceptor.Invoke("monthName#$", "monthName(const QDate&, KCalendarSystem::MonthNameFormat) const", typeof(string), typeof(QDate), date, typeof(KCalendarSystem.MonthNameFormat), format);
+		}
+		[SmokeMethod("monthName(const QDate&) const")]
+		public virtual string MonthName(QDate date) {
+			return (string) interceptor.Invoke("monthName#", "monthName(const QDate&) const", typeof(string), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets specific calendar type week day name
 		///  If an invalid week day is specified, string() is returned.
 		/// <param> name="weekDay" number of day in week (1 . Monday)
-		/// </param><param> name="shortName" short or complete day name
+		/// </param><param> name="format" Specifies if the short month name or long month name should be used
 		/// </param></remarks>		<return> day name
-		///    </return>
+		///      </return>
 		/// 		<short>    Gets specific calendar type week day name  If an invalid week day is specified, string() is returned.</short>
-		[SmokeMethod("weekDayName(int, bool) const")]
-		public abstract string WeekDayName(int weekDay, bool shortName);
+		[SmokeMethod("weekDayName(int, KCalendarSystem::WeekDayNameFormat) const")]
+		public abstract string WeekDayName(int weekDay, KCalendarSystem.WeekDayNameFormat format);
 		/// <remarks>
 		///  Gets specific calendar type week day name
 		/// <param> name="date" the date
-		/// </param><param> name="shortName" short or complete day name
+		/// </param><param> name="format" Specifies if the short month name or long month name should be used
 		/// </param></remarks>		<return> day name
-		///    </return>
+		///      </return>
 		/// 		<short>    Gets specific calendar type week day name </short>
-		[SmokeMethod("weekDayName(const QDate&, bool) const")]
-		public abstract string WeekDayName(QDate date, bool shortName);
-		/// <remarks>
-		///  Gets the first year value supported by specific calendar type
-		///  algorithms.
-		/// </remarks>		<return> first year supported
-		///    </return>
-		/// 		<short>    Gets the first year value supported by specific calendar type  algorithms.</short>
-		[SmokeMethod("minValidYear() const")]
-		public abstract int MinValidYear();
-		/// <remarks>
-		///  Gets the maximum year value supported by specific calendar type
-		///  algorithms (QDate, 8000)
-		/// </remarks>		<return> maximum year supported
-		///    </return>
-		/// 		<short>    Gets the maximum year value supported by specific calendar type  algorithms (QDate, 8000) </short>
-		[SmokeMethod("maxValidYear() const")]
-		public abstract int MaxValidYear();
+		[SmokeMethod("weekDayName(const QDate&, KCalendarSystem::WeekDayNameFormat) const")]
+		public virtual string WeekDayName(QDate date, KCalendarSystem.WeekDayNameFormat format) {
+			return (string) interceptor.Invoke("weekDayName#$", "weekDayName(const QDate&, KCalendarSystem::WeekDayNameFormat) const", typeof(string), typeof(QDate), date, typeof(KCalendarSystem.WeekDayNameFormat), format);
+		}
+		[SmokeMethod("weekDayName(const QDate&) const")]
+		public virtual string WeekDayName(QDate date) {
+			return (string) interceptor.Invoke("weekDayName#", "weekDayName(const QDate&) const", typeof(string), typeof(QDate), date);
+		}
 		/// <remarks>
 		///  Gets the day of the week traditionaly associated with pray
 		/// </remarks>		<return> day number
@@ -366,11 +531,6 @@ namespace Kimono {
 		/// 		<short>    Gets the day of the week traditionaly associated with pray </short>
 		[SmokeMethod("weekDayOfPray() const")]
 		public abstract int WeekDayOfPray();
-		/// <remarks>
-		///  Gets the string representing the calendar
-		///    </remarks>		<short>    Gets the string representing the calendar    </short>
-		[SmokeMethod("calendarName() const")]
-		public abstract string CalendarName();
 		/// <remarks>
 		///  Gets if the calendar is lunar based
 		/// </remarks>		<return> if the calendar is lunar based
@@ -392,19 +552,230 @@ namespace Kimono {
 		/// 		<short>    Gets if the calendar is solar based </short>
 		[SmokeMethod("isSolar() const")]
 		public abstract bool IsSolar();
+		/// <remarks>
+		///  Returns a string formatted to the current locale's conventions
+		///  regarding dates.
+		///  Uses the calendar systems internal locale as set when instantiated,
+		///  which ensures the correct calendar system and locale settings are
+		///  respected, which would not occur in some cases if using the global
+		///  locale.  Defaults to global locale.
+		/// <param> name="date" the date to be formatted.
+		/// </param><param> name="format" category of date format to use
+		/// </param></remarks>		<return> The date as a string
+		///      </return>
+		/// 		<short>    Returns a string formatted to the current locale's conventions  regarding dates.</short>
+		/// 		<see> KLocale.FormatDate</see>
+		[SmokeMethod("formatDate(const QDate&, KLocale::DateFormat) const")]
+		public virtual string FormatDate(QDate date, KLocale.DateFormat format) {
+			return (string) interceptor.Invoke("formatDate#$", "formatDate(const QDate&, KLocale::DateFormat) const", typeof(string), typeof(QDate), date, typeof(KLocale.DateFormat), format);
+		}
+		[SmokeMethod("formatDate(const QDate&) const")]
+		public virtual string FormatDate(QDate date) {
+			return (string) interceptor.Invoke("formatDate#", "formatDate(const QDate&) const", typeof(string), typeof(QDate), date);
+		}
+		/// <remarks>
+		///  Converts a localized date string to a QDate.
+		///  The bool pointed by ok will be invalid if the date entered was not valid.
+		///  Uses the calendar systems internal locale as set when instantiated,
+		///  which ensures the correct calendar system and locale settings are
+		///  respected, which would not occur in some cases if using the global
+		///  locale.  Defaults to global locale.
+		/// <param> name="str" the string we want to convert.
+		/// </param><param> name="ok" the boolean that is set to false if it's not a valid date.
+		///            If <code>ok</code> is 0, it will be ignored
+		/// </param></remarks>		<return> The string converted to a QDate
+		///      </return>
+		/// 		<short>    Converts a localized date string to a QDate.</short>
+		/// 		<see> KLocale.ReadDate</see>
+		[SmokeMethod("readDate(const QString&, bool*) const")]
+		public virtual QDate ReadDate(string str, ref bool ok) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(str);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(str);
+#endif
+			stack[2].s_bool = ok;
+			interceptor.Invoke("readDate$$", "readDate(const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[2].s_bool;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QDate) returnValue;
+		}
+		[SmokeMethod("readDate(const QString&) const")]
+		public virtual QDate ReadDate(string str) {
+			return (QDate) interceptor.Invoke("readDate$", "readDate(const QString&) const", typeof(QDate), typeof(string), str);
+		}
+		/// <remarks>
+		///  Converts a localized date string to a QDate, using the specified format.
+		///  You will usually not want to use this method.
+		/// </remarks>		<short>    Converts a localized date string to a QDate, using the specified format.</short>
+		/// 		<see> KLocale.ReadDate</see>
+		[SmokeMethod("readDate(const QString&, const QString&, bool*) const")]
+		public virtual QDate ReadDate(string intstr, string fmt, ref bool ok) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(intstr);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(intstr);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(fmt);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(fmt);
+#endif
+			stack[3].s_bool = ok;
+			interceptor.Invoke("readDate$$$", "readDate(const QString&, const QString&, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			ok = stack[3].s_bool;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QDate) returnValue;
+		}
+		[SmokeMethod("readDate(const QString&, const QString&) const")]
+		public virtual QDate ReadDate(string intstr, string fmt) {
+			return (QDate) interceptor.Invoke("readDate$$", "readDate(const QString&, const QString&) const", typeof(QDate), typeof(string), intstr, typeof(string), fmt);
+		}
+		/// <remarks>
+		///  Converts a localized date string to a QDate.
+		///  This method is stricter than readDate(str,&ok): it will either accept
+		///  a date in full format or a date in short format, depending on <code>flags.</code>
+		///  Uses the calendar systems internal locale as set when instantiated,
+		///  which ensures the correct calendar system and locale settings are
+		///  respected, which would not occur in some cases if using the global
+		///  locale.  Default case uses global locale.
+		/// <param> name="str" the string we want to convert.
+		/// </param><param> name="flags" whether the date string is to be in full format or in short format.
+		/// </param><param> name="ok" the boolean that is set to false if it's not a valid date.
+		///            If <code>ok</code> is 0, it will be ignored
+		/// </param></remarks>		<return> The string converted to a QDate
+		///      </return>
+		/// 		<short>    Converts a localized date string to a QDate.</short>
+		/// 		<see> KLocale.ReadDate</see>
+		[SmokeMethod("readDate(const QString&, KLocale::ReadDateFlags, bool*) const")]
+		public virtual QDate ReadDate(string str, KLocale.ReadDateFlags flags, ref bool ok) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(str);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(str);
+#endif
+			stack[2].s_int = (int) flags;
+			stack[3].s_bool = ok;
+			interceptor.Invoke("readDate$$$", "readDate(const QString&, KLocale::ReadDateFlags, bool*) const", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			ok = stack[3].s_bool;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (QDate) returnValue;
+		}
+		[SmokeMethod("readDate(const QString&, KLocale::ReadDateFlags) const")]
+		public virtual QDate ReadDate(string str, KLocale.ReadDateFlags flags) {
+			return (QDate) interceptor.Invoke("readDate$$", "readDate(const QString&, KLocale::ReadDateFlags) const", typeof(QDate), typeof(string), str, typeof(KLocale.ReadDateFlags), flags);
+		}
+		/// <remarks>
+		///  Returns if the calendar system is proleptic, i.e. dates before the epoch
+		///  are supported.
+		/// </remarks>		<return> if the calendar system is proleptic
+		///      </return>
+		/// 		<short>    Returns if the calendar system is proleptic, i.</short>
+		/// 		<see> KCalendarSystem.Epoch</see>
+		[SmokeMethod("isProleptic() const")]
+		public abstract bool IsProleptic();
+		/// <remarks>
+		///  Internal method to convert a Julian Day number into the YMD values for
+		///  this calendar system.
+		///  All calendar system implementations MUST implement julianDayToDate and
+		///  dateToJulianDay methods as all other methods can be expressed as
+		///  functions of these.
+		/// <param> name="jd" julian day number to convert to date
+		/// </param><param> name="year" Year number returned in this variable
+		/// </param><param> name="month" Month number returned in this variable
+		/// </param><param> name="day" Day of month returned in this variable
+		/// </param></remarks>		<return> @c true if the date is valid, @c false otherwise
+		///      </return>
+		/// 		<short>    Internal method to convert a Julian Day number into the YMD values for  this calendar system.</short>
+		/// 		<see> KCalendarSystem.DateToJulianDay</see>
+		[SmokeMethod("julianDayToDate(int, int&, int&, int&) const")]
+		protected abstract bool JulianDayToDate(int jd, ref int year, ref int month, ref int day);
+		/// <remarks>
+		///  Internal method to convert YMD values for this calendar system into a
+		///  Julian Day number.
+		///  All calendar system implementations MUST implement julianDayToDate and
+		///  dateToJulianDay methods as all other methods can be expressed as
+		///  functions of these.
+		/// <param> name="year" Year number returned in this variable
+		/// </param><param> name="month" Month number returned in this variable
+		/// </param><param> name="day" Day of month returned in this variable
+		/// </param><param> name="jd" julian day number returned in this variable
+		/// </param></remarks>		<return> @c true if the date is valid, @c false otherwise
+		///      </return>
+		/// 		<short>    Internal method to convert YMD values for this calendar system into a  Julian Day number.</short>
+		/// 		<see> KCalendarSystem.JulianDayToDate</see>
+		[SmokeMethod("dateToJulianDay(int, int, int, int&) const")]
+		protected abstract bool DateToJulianDay(int year, int month, int day, ref int jd);
+		/// <remarks>
+		///  Returns the locale to use for translations and formats for this 
+		///  calendar system instance.  This allows a calendar system instance to be
+		///  independant of the global translations and formats if required.  All 
+		///  implementations must refer to this locale.  Defaults to global.
+		///  Only for internal calendar system use, if public access is required then
+		///  provide public methods only for those methods actually required.  Any
+		///  app that creates an instance with its own locale overriding global will
+		///  have the original handle to the locale and can manipulate it that way if
+		///  required, e.g to change default date format.  Only expose those methods
+		///  that library widgets require access to internally.
+		/// </remarks>		<return> locale to use
+		///      </return>
+		/// 		<short>    Returns the locale to use for translations and formats for this   calendar system instance.</short>
+		/// 		<see> KCalendarSystem.FormatDate</see>
+		/// 		<see> KLocale.FormatDate</see>
+		/// 		<see> KCalendarSystem.WeekStartDay</see>
+		/// 		<see> KLocale.WeekStartDay</see>
+		/// 		<see> KCalendarSystem.ReadDate</see>
+		/// 		<see> KLoacle.ReadDate</see>
 		protected KLocale Locale() {
 			return (KLocale) interceptor.Invoke("locale", "locale() const", typeof(KLocale));
 		}
 		/// <remarks>
-		///  Gets specific calendar type number of days in previous month for a
-		///  given date
+		///  Creates specific calendar type
 		/// <param> name="calType" string identification of the specific calendar type
 		///  to be constructed
 		/// </param><param> name="locale" Locale used for translations. Use the global locale when
 		///  0 is specified.
 		/// </param></remarks>		<return> a KCalendarSystem object
 		///    </return>
-		/// 		<short>    Gets specific calendar type number of days in previous month for a  given date </short>
+		/// 		<short>    Creates specific calendar type </short>
 		public static KCalendarSystem Create(string calType, KLocale locale) {
 			return (KCalendarSystem) staticInterceptor.Invoke("create$#", "create(const QString&, const KLocale*)", typeof(KCalendarSystem), typeof(string), calType, typeof(KLocale), locale);
 		}
@@ -421,6 +792,17 @@ namespace Kimono {
 		/// 		<short>    Gets list of names of supported calendar systems </short>
 		public static List<string> CalendarSystems() {
 			return (List<string>) staticInterceptor.Invoke("calendarSystems", "calendarSystems()", typeof(List<string>));
+		}
+		/// <remarks>
+		///  Returns a typographically correct and translated label to display for
+		///  the calendar system type.  Use with method calendarSystems to neatly
+		///  format labels to display on combo widget of available calendar systems
+		/// <param> name="calendarType" the specific calendar type to return the label for
+		/// </param></remarks>		<return> label for calendar
+		///      </return>
+		/// 		<short>    Returns a typographically correct and translated label to display for  the calendar system type.</short>
+		public static string CalendarLabel(string calendarType) {
+			return (string) staticInterceptor.Invoke("calendarLabel$", "calendarLabel(const QString&)", typeof(string), typeof(string), calendarType);
 		}
 	}
 }
