@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QIcon")]
-	public class QIcon : Object, IDisposable {
+	public partial class QIcon : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QIcon(Type dummy) {}

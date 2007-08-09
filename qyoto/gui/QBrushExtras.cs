@@ -9,5 +9,14 @@ namespace Qyoto {
 		public static implicit operator QBrush(QColor arg) {
 			return new QBrush(arg);
 		}
+		public static implicit operator QBrush(QGradient arg) {
+			return new QBrush(arg);
+		}
+		public static implicit operator QBrush(QImage arg) {
+			return new QBrush(arg);
+		}
+		public static implicit operator QBrush(QPixmap arg) {
+			return new QBrush(arg);
+		}
 	}
 }

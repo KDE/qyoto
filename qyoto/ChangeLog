@@ -1,3 +1,8 @@
+2007-08-09  Richard Dale  <rdale@foton.es>
+
+	* Added some missing implicit type conversions to better match 
+	  the C++ api
+
 2007-07-15  Arno Rehn  <arno@arnorehn.de>
 
 	* Moved Init_qyoto() from the Q(Core)Application constructor to the

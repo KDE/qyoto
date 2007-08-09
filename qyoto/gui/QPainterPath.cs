@@ -9,28 +9,6 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPainterPath(Type dummy) {}
-
-
-		[SmokeClass("QPainterPath::Element")]
-		public class Element : Object {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected Element(Type dummy) {}
-			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(Element), this);
-			}
-			//  operator QPointF(); >>>> NOT CONVERTED
-			// bool operator==(); >>>> NOT CONVERTED
-			public bool IsMoveTo() {
-				return (bool) interceptor.Invoke("isMoveTo", "isMoveTo() const", typeof(bool));
-			}
-			public bool IsLineTo() {
-				return (bool) interceptor.Invoke("isLineTo", "isLineTo() const", typeof(bool));
-			}
-			public bool IsCurveTo() {
-				return (bool) interceptor.Invoke("isCurveTo", "isCurveTo() const", typeof(bool));
-			}
-		}
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QPainterPath), this);
 		}

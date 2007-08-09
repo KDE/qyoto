@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QCursor")]
-	public class QCursor : Object, IDisposable {
+	public partial class QCursor : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QCursor(Type dummy) {}

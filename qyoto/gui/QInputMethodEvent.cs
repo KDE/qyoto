@@ -6,15 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QInputMethodEvent")]
 	public class QInputMethodEvent : QEvent, IDisposable {
  		protected QInputMethodEvent(Type dummy) : base((Type) null) {}
-
-
-		[SmokeClass("QInputMethodEvent::Attribute")]
-		public class Attribute : Object {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected Attribute(Type dummy) {}
-			//  Attribute(,,,); >>>> NOT CONVERTED
-		}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QInputMethodEvent), this);
 		}

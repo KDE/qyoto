@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QPolygonF")]
-	public class QPolygonF : Object, IDisposable {
+	public partial class QPolygonF : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QPolygonF(Type dummy) {}

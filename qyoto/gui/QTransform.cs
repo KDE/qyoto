@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 
 	[SmokeClass("QTransform")]
-	public class QTransform : Object, IDisposable {
+	public partial class QTransform : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QTransform(Type dummy) {}

@@ -9,22 +9,6 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QAbstractFileEngine(Type dummy) {}
-
-
-		[SmokeClass("QAbstractFileEngine::ExtensionOption")]
-		public class ExtensionOption : Object {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected ExtensionOption(Type dummy) {}
-		}
-
-
-		[SmokeClass("QAbstractFileEngine::ExtensionReturn")]
-		public class ExtensionReturn : Object {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected ExtensionReturn(Type dummy) {}
-		}
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractFileEngine), this);
 		}

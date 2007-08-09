@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QLineF")]
-	public class QLineF : Object, IDisposable {
+	public partial class QLineF : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QLineF(Type dummy) {}
