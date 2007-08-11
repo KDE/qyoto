@@ -535,12 +535,11 @@ void WriteInitialization::acceptWidget(DomWidget *node)
         } else if (m_uic->customWidgetsInfo()->extends(className, QLatin1String("QToolBar"))) {
             QString area;
             if (const DomProperty *pstyle = attributes.value(QLatin1String("toolBarArea"))) {
-                area += QLatin1String("(Qt.ToolBarArea)(");
-                area += QString::number(pstyle->elementNumber());
-                area += "), ";
+                   area += QLatin1String("Qt.ToolBarArea.");
+                   area += pstyle->elementEnum();
             }
 
-            m_output << m_option.indent << parentWidget << ".AddToolBar(" << area << varName << ");\n";
+            m_output << m_option.indent << parentWidget << ".AddToolBar(" << area << ", " << varName << ");\n";
 
             if (const DomProperty *pbreak = attributes.value(QLatin1String("toolBarBreak"))) {
                 if (pbreak->elementBool() == QLatin1String("true")) {
@@ -551,12 +550,11 @@ void WriteInitialization::acceptWidget(DomWidget *node)
         } else if (m_uic->customWidgetsInfo()->extends(className, QLatin1String("QDockWidget"))) {
             QString area;
             if (const DomProperty *pstyle = attributes.value(QLatin1String("dockWidgetArea"))) {
-                area += QLatin1String("(Qt.DockWidgetArea)(");
-                area += QString::number(pstyle->elementNumber());
-                area += "), ";
+                area += QLatin1String("Qt.DockWidgetArea.");
+                area += pstyle->elementEnum();
             }
 
-            m_output << m_option.indent << parentWidget << ".AddDockWidget(" << area << varName << ");\n";
+            m_output << m_option.indent << parentWidget << ".AddDockWidget(" << area << ", " << varName << ");\n";
         } else if (m_uic->customWidgetsInfo()->extends(className, QLatin1String("QStatusBar"))) {
             m_output << m_option.indent << parentWidget << ".SetStatusBar(" << varName << ");\n";
         } else if (className == QLatin1String("QWidget")) {

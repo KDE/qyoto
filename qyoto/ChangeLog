@@ -1,7 +1,10 @@
 2007-08-11  Arno Rehn  <arno@arnorehn.de>
 
-	* Check for a GCHandle being zero before freeing it.
+	* If a marshaller is given a zero pointer, return zero and don't free
+	  the GCHandle.
 	* Added implicit type conversions for QUrl.
+	* Fixed generation of ToolBarArea and DockWidgetArea related stuff in
+	  uics.
 
 2007-08-09  Richard Dale  <rdale@foton.es>
 
