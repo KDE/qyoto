@@ -983,7 +983,7 @@ static void marshall_QString(Marshall *m) {
 			delete s;
 		}
 
-		(*FreeGCHandle)(m->var().s_voidp);
+		if (m->var().s_voidp != 0) (*FreeGCHandle)(m->var().s_voidp);
 	}
 	break;
       case Marshall::ToObject:
@@ -1153,7 +1153,6 @@ void marshall_QDBusVariant(Marshall *m) {
 	{
 		if (m->var().s_class == 0) {
 			m->item().s_class = 0;
-			(*FreeGCHandle)(m->var().s_class);
 			return;
 		}
 
@@ -1209,6 +1208,10 @@ void marshall_QMapintQVariant(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			QMap<int, QVariant>* map = (QMap<int, QVariant>*) (*DictionaryToQMap)(m->var().s_voidp, 0);
 			m->item().s_voidp = (void*) map;
 			m->next();
@@ -1251,6 +1254,10 @@ void marshall_QMapQStringQString(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			QMap<QString, QString>* map = (QMap<QString, QString>*) (*DictionaryToQMap)(m->var().s_voidp, 1);
 			m->item().s_voidp = (void*) map;
 			m->next();
@@ -1293,6 +1300,10 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) (*DictionaryToQMap)(m->var().s_voidp, 2);
 			m->item().s_voidp = (void*) map;
 			m->next();
@@ -1339,6 +1350,10 @@ void marshall_QStringList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			QStringList *stringlist = (QStringList*) (*StringListToQStringList)(m->var().s_voidp);
 			
 			m->item().s_voidp = (void*) stringlist;
@@ -1384,6 +1399,11 @@ void marshall_QListWizardButton(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
 	{
+	    if (m->var().s_voidp == 0) {
+		m->item().s_voidp = 0;
+		return;
+	    }
+
 	    void* list = m->var().s_voidp;
 	    void* valuelist = (*ListWizardButtonToQListWizardButton)(list);
 	    m->item().s_voidp = valuelist;
@@ -1414,6 +1434,10 @@ void marshall_ItemList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			ItemList *cpplist = new ItemList;
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 			
@@ -1488,6 +1512,10 @@ void marshall_QListInt(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
 	{
+	    if (m->var().s_voidp == 0) {
+		m->item().s_voidp = 0;
+		return;
+	    }
 	    void* list = m->var().s_voidp;
 	    void* valuelist = (*ListIntToQListInt)(list);
 	    m->item().s_voidp = valuelist;
@@ -1560,6 +1588,10 @@ void marshall_ValueListItem(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			ItemList *cpplist = new ItemList;
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 
@@ -1637,6 +1669,10 @@ void marshall_QRgbVector(Marshall *m)
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
+			if (m->var().s_voidp == 0) {
+				m->item().s_voidp = 0;
+				return;
+			}
 			QList<QRgb>* cpplist = (QList<QRgb>*) (*ListUIntToQListQRgb)(m->var().s_voidp);
 			m->item().s_voidp = cpplist;
 			m->next();

@@ -211,16 +211,14 @@ namespace Qyoto {
 #region marshalling functions
 
 		public static void FreeGCHandle(IntPtr handle) {
-#if DEBUG
-			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) {
-				if (handle == IntPtr.Zero) {
-					Console.WriteLine("In FreeGCHandle(IntPtr): handle == 0");
-					return;
-				}
+			if (handle == IntPtr.Zero) {
+				Console.WriteLine("In FreeGCHandle(IntPtr): handle == 0 - This should not happen!");
+				return;
 			}
+#if DEBUG
 			DebugGCHandle.Free((GCHandle) handle);
 #else
-			if (handle != IntPtr.Zero) ((GCHandle) handle).Free();
+			((GCHandle) handle).Free();
 #endif
 		}
 		
