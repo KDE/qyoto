@@ -5,6 +5,7 @@
 	* Added implicit type conversions for QUrl.
 	* Fixed generation of ToolBarArea and DockWidgetArea related stuff in
 	  uics.
+	* Improved Qyoto.GetPrimitiveString()
 
 2007-08-09  Richard Dale  <rdale@foton.es>
 

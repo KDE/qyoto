@@ -143,62 +143,54 @@ namespace Qyoto
 		
 		public static string GetPrimitiveString(Type type) {
 			string typeString = type.ToString();
-			string ret = type.ToString();
+			switch (typeString) {
+				case "System.Void":
+					return "";
+				case "System.Boolean":
+					return "bool";
+				case "System.Int32":
+					return "int";
+				case "System.Int64":
+					return "long";
+				case "System.UInt32":
+					return "uint";
+				case "System.UInt64":
+					return "ulong";
+				case "System.Int16":
+					return "short";
+				case "System.UInt16":
+					return "ushort";
+				case "System.Byte":
+					return "uchar";
+				case "System.SByte":
+					return "sbyte";
+				case "System.String":
+					return "QString";
+				case "System.Double":
+					return "double";
+				case "System.Single":
+					return "float";
+				case "System.Char":
+					return "char";
+			}
 
 			if (type.IsGenericType) {
 				return "FIXME: <generic type here>";
 			}
 
 			if (typeString.StartsWith("Qyoto.")) {
-				return typeString.Replace("Qyoto.", "");
-			}
-
-			switch (type.ToString()) {
-				case "System.Void":
-					ret = "";
-					break;
-				case "System.Boolean":
-					ret = "bool";
-					break;
-				case "System.Int32":
-					ret = "int";
-					break;
-				case "System.Int64":
-					ret = "long";
-					break;
-				case "System.UInt32":
-					ret = "uint";
-					break;
-				case "System.UInt64":
-					ret = "ulong";
-					break;
-				case "System.Int16":
-					ret = "short";
-					break;
-				case "System.UInt16":
-					ret = "ushort";
-					break;
-				case "System.Byte":
-					ret = "uchar";
-					break;
-				case "System.SByte":
-					ret = "sbyte";
-					break;
-				case "System.String":
-					ret = "QString";
-					break;
-				case "System.Double":
-					ret = "double";
-					break;
-				case "System.Single":
-					ret = "float";
-					break;
-				case "System.Char":
-					ret = "char";
-					break;
+				typeString = typeString.Replace("Qyoto.", "");
 			}
 			
-			return ret;
+			// pointer types
+			if (   type.IsSubclassOf(typeof(QObject))
+			    || typeString == "QListWidgetItem"
+			    || typeString == "QTreeWidgetItem"
+			    || typeString == "QTableWidgetItem"
+			    || typeString == "QStandardItem")
+				typeString += "*";
+			
+			return typeString;
 		}
 		
 		public static string SignatureFromMethodInfo(MethodInfo mi) {
