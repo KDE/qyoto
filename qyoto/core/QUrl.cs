@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QUrl")]
-	public class QUrl : Object, IDisposable {
+	public partial class QUrl : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QUrl(Type dummy) {}

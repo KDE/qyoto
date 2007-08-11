@@ -212,9 +212,15 @@ namespace Qyoto {
 
 		public static void FreeGCHandle(IntPtr handle) {
 #if DEBUG
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) {
+				if (handle == IntPtr.Zero) {
+					Console.WriteLine("In FreeGCHandle(IntPtr): handle == 0");
+					return;
+				}
+			}
 			DebugGCHandle.Free((GCHandle) handle);
 #else
-			((GCHandle) handle).Free();
+			if (handle != IntPtr.Zero) ((GCHandle) handle).Free();
 #endif
 		}
 		
