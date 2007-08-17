@@ -969,7 +969,7 @@ static void marshall_QString(Marshall *m) {
 				s = (QString *) (*StringBuilderToQString)(m->var().s_voidp);
 			}
 		} else {
-			s = new QString(QString::null);	//krazy:exclude=nullstrassign for old broken gcc
+			s = new QString();
 		}
 		
 		m->item().s_voidp = s;
