@@ -17,9 +17,9 @@ namespace Kimono {
 		static KDE() {
 			staticInterceptor = new SmokeInvocation(typeof(KDE), null);
 		}
-		// int IconSize(K3Icon::Group arg1); >>>> NOT CONVERTED
-		// K3Icon::Group& operator++(K3Icon::Group& arg1); >>>> NOT CONVERTED
-		// K3Icon::Group operator++(K3Icon::Group& arg1,int arg2); >>>> NOT CONVERTED
+		// int IconSize(KIconLoader::Group arg1); >>>> NOT CONVERTED
+		// KIconLoader::Group& operator++(KIconLoader::Group& arg1); >>>> NOT CONVERTED
+		// KIconLoader::Group operator++(KIconLoader::Group& arg1,int arg2); >>>> NOT CONVERTED
 		// bool operator<(const KEntryKey& arg1,const KEntryKey& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const KDateTime::Spec& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,KDateTime::Spec& arg2); >>>> NOT CONVERTED

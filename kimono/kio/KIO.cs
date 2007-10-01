@@ -6104,10 +6104,10 @@ namespace Kimono {
 			DAV_NOTIFY = 17,
 			HTTP_UNKNOWN = -1,
 		}
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,K3Icon::Group arg3,int arg4,int arg5,QString* arg6); >>>> NOT CONVERTED
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,K3Icon::Group arg3,int arg4,int arg5); >>>> NOT CONVERTED
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,K3Icon::Group arg3,int arg4); >>>> NOT CONVERTED
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,K3Icon::Group arg3); >>>> NOT CONVERTED
+		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3,int arg4,int arg5,QString* arg6); >>>> NOT CONVERTED
+		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3,int arg4,int arg5); >>>> NOT CONVERTED
+		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3,int arg4); >>>> NOT CONVERTED
+		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3); >>>> NOT CONVERTED
 		// KUiServerJobTracker* getJobTracker(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Converts <code>size</code> from bytes to the string representation.

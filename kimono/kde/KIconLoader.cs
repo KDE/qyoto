@@ -60,28 +60,28 @@ namespace Kimono {
 		static KIconLoader() {
 			staticInterceptor = new SmokeInvocation(typeof(KIconLoader), null);
 		}
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6,bool arg7); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
-		// QMovie* loadMovie(const QString& arg1,K3Icon::Group arg2,int arg3,QObject* arg4); >>>> NOT CONVERTED
-		// QMovie* loadMovie(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QMovie* loadMovie(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
-		// QString moviePath(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QString moviePath(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
-		// QStringList loadAnimated(const QString& arg1,K3Icon::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QStringList loadAnimated(const QString& arg1,K3Icon::Group arg2); >>>> NOT CONVERTED
-		// QStringList queryIcons(int arg1,K3Icon::Context arg2); >>>> NOT CONVERTED
-		// QStringList queryIconsByContext(int arg1,K3Icon::Context arg2); >>>> NOT CONVERTED
-		// bool hasContext(K3Icon::Context arg1); >>>> NOT CONVERTED
-		// int currentSize(K3Icon::Group arg1); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6,bool arg7); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
+		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
+		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
+		// QMovie* loadMovie(const QString& arg1,KIconLoader::Group arg2,int arg3,QObject* arg4); >>>> NOT CONVERTED
+		// QMovie* loadMovie(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
+		// QMovie* loadMovie(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
+		// QString moviePath(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
+		// QString moviePath(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
+		// QStringList loadAnimated(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
+		// QStringList loadAnimated(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
+		// QStringList queryIcons(int arg1,KIconLoader::Context arg2); >>>> NOT CONVERTED
+		// QStringList queryIconsByContext(int arg1,KIconLoader::Context arg2); >>>> NOT CONVERTED
+		// bool hasContext(KIconLoader::Context arg1); >>>> NOT CONVERTED
+		// int currentSize(KIconLoader::Group arg1); >>>> NOT CONVERTED
 		// KIconTheme* theme(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs an iconloader.
