@@ -24,15 +24,16 @@ SET(SRC_CS src/SmokeInvocation.cs
 	svg/*.cs
 	opengl/*.cs
 	uitools/*.cs
+        qwt/*.cs
 	qdbus/*.cs)
 	
 SET(SRC_SCINTILLA src/AssemblyInfoQScintilla2.cs
 	qsci/*.cs)
 
-SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
+SET(KEYFILE ${CMAKE_SOURCE_DIR}/csharp/qyoto/key.snk)
 
-SET( UICS_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/uics/uics )
-SET( CSRCC_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/csrcc/csrcc )
+SET( UICS_EXECUTABLE ${CMAKE_BINARY_DIR}/csharp/qyoto/tools/uics/uics )
+SET( CSRCC_EXECUTABLE ${CMAKE_BINARY_DIR}/csharp/qyoto/tools/csrcc/csrcc )
 
 INCLUDE_DIRECTORIES (${QT_INCLUDES} ${CMAKE_SOURCE_DIR}/smoke)
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
