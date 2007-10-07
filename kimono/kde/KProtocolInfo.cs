@@ -40,44 +40,10 @@ namespace Kimono {
 		// KProtocolInfo::ExtraFieldList extraFields(const KUrl& arg1); >>>> NOT CONVERTED
 		// KProtocolInfo::FileNameUsedForCopying fileNameUsedForCopying(); >>>> NOT CONVERTED
 		/// <remarks>
-		///  Returns whether the protocol description file is valid.
-		/// </remarks>		<return> true if valid, false otherwise
-		///    </return>
-		/// 		<short>    Returns whether the protocol description file is valid.</short>
-		[SmokeMethod("isValid() const")]
-		public override bool IsValid() {
-			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
-		}
-		/// <remarks>
-		///  Returns the name of the protocol.
-		///  This corresponds to the "protocol=" field in the protocol description file.
-		/// </remarks>		<return> the name of the protocol
-		/// </return>
-		/// 		<short>    Returns the name of the protocol.</short>
-		/// 		<see> KUrl.Protocol</see>
-		[SmokeMethod("name() const")]
-		public override string Name() {
-			return (string) interceptor.Invoke("name", "name() const", typeof(string));
-		}
-		/// <remarks>
 		///    </remarks>		<short>   </short>
 		public KProtocolInfo(QDataStream _str, int offset) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KProtocolInfo#$", "KProtocolInfo(QDataStream&, int)", typeof(void), typeof(QDataStream), _str, typeof(int), offset);
-		}
-		/// <remarks>
-		///  Load the protocol info from a stream.
-		///    </remarks>		<short>   </short>
-		[SmokeMethod("load(QDataStream&)")]
-		public override void Load(QDataStream arg1) {
-			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
-		}
-		/// <remarks>
-		///  Save the protocol info to a stream.
-		///    </remarks>		<short>   </short>
-		[SmokeMethod("save(QDataStream&)")]
-		public override void Save(QDataStream arg1) {
-			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
 		}
 		public bool SupportsListing() {
 			return (bool) interceptor.Invoke("supportsListing", "supportsListing() const", typeof(bool));
@@ -97,7 +63,7 @@ namespace Kimono {
 		~KProtocolInfo() {
 			interceptor.Invoke("~KProtocolInfo", "~KProtocolInfo()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~KProtocolInfo", "~KProtocolInfo()", typeof(void));
 		}
 		/// <remarks>
@@ -242,7 +208,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the documentation path for the specified protocol.
-		///  This corresponds to the "DocPath=" field in the protocol description file.
+		///  This corresponds to the "X-DocPath=" field in the protocol description file.
 		/// <param> name="protocol" the protocol to check
 		/// </param></remarks>		<return> the docpath of the protocol, or null if unknown
 		///    </return>

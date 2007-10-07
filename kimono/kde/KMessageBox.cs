@@ -103,8 +103,8 @@ namespace Kimono {
 		///           if the No-button is pressed.
 		/// </return>
 		/// 		<short>    Display a simple "question" dialog.</short>
-		public static int QuestionYesNo(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("questionYesNo#$$##$$", "questionYesNo(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int QuestionYesNo(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("questionYesNo#$$##$$", "questionYesNo(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int QuestionYesNo(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("questionYesNo#$$##$", "questionYesNo(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
@@ -125,23 +125,23 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int QuestionYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("questionYesNoWId$$$##$$", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int QuestionYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("questionYesNoWId$$$##$$", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int QuestionYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("questionYesNoWId$$$##$", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
+		public static int QuestionYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("questionYesNoWId$$$##$", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
 		}
-		public static int QuestionYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("questionYesNoWId$$$##", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int QuestionYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("questionYesNoWId$$$##", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int QuestionYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("questionYesNoWId$$$#", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int QuestionYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("questionYesNoWId$$$#", "questionYesNoWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int QuestionYesNoWId(ulong parent_id, string text, string caption) {
-			return (int) staticInterceptor.Invoke("questionYesNoWId$$$", "questionYesNoWId(WId, const QString&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static int QuestionYesNoWId(uint parent_id, string text, string caption) {
+			return (int) staticInterceptor.Invoke("questionYesNoWId$$$", "questionYesNoWId(WId, const QString&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static int QuestionYesNoWId(ulong parent_id, string text) {
-			return (int) staticInterceptor.Invoke("questionYesNoWId$$", "questionYesNoWId(WId, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text);
+		public static int QuestionYesNoWId(uint parent_id, string text) {
+			return (int) staticInterceptor.Invoke("questionYesNoWId$$", "questionYesNoWId(WId, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display a simple "question" dialog.
@@ -171,8 +171,8 @@ namespace Kimono {
 		///           if the No-button is pressed.
 		/// </return>
 		/// 		<short>    Display a simple "question" dialog.</short>
-		public static int QuestionYesNoCancel(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancel#$$###$$", "questionYesNoCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int QuestionYesNoCancel(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancel#$$###$$", "questionYesNoCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int QuestionYesNoCancel(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("questionYesNoCancel#$$###$", "questionYesNoCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
@@ -196,26 +196,26 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$###$$", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$###$$", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$###$", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$###$", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
 		}
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$###", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$###", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
 		}
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$##", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$##", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$#", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$#", "questionYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text, string caption) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$", "questionYesNoCancelWId(WId, const QString&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text, string caption) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$$", "questionYesNoCancelWId(WId, const QString&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static int QuestionYesNoCancelWId(ulong parent_id, string text) {
-			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$", "questionYesNoCancelWId(WId, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text);
+		public static int QuestionYesNoCancelWId(uint parent_id, string text) {
+			return (int) staticInterceptor.Invoke("questionYesNoCancelWId$$", "questionYesNoCancelWId(WId, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display a "question" dialog with a listbox to show information to the user
@@ -247,8 +247,8 @@ namespace Kimono {
 		///           if the No-button is pressed.
 		/// </return>
 		/// 		<short>    Display a "question" dialog with a listbox to show information to the user </short>
-		public static int QuestionYesNoList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("questionYesNoList#$?$##$$", "questionYesNoList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int QuestionYesNoList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("questionYesNoList#$?$##$$", "questionYesNoList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int QuestionYesNoList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("questionYesNoList#$?$##$", "questionYesNoList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
@@ -269,23 +269,23 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int QuestionYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$##$$", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int QuestionYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$##$$", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int QuestionYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$##$", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
+		public static int QuestionYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$##$", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
 		}
-		public static int QuestionYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$##", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int QuestionYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$##", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int QuestionYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$#", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int QuestionYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$#", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int QuestionYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption) {
-			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
+		public static int QuestionYesNoListWId(uint parent_id, string text, List<string> strlist, string caption) {
+			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?$", "questionYesNoListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
 		}
-		public static int QuestionYesNoListWId(ulong parent_id, string text, List<string> strlist) {
-			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?", "questionYesNoListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist);
+		public static int QuestionYesNoListWId(uint parent_id, string text, List<string> strlist) {
+			return (int) staticInterceptor.Invoke("questionYesNoListWId$$?", "questionYesNoListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist);
 		}
 		/// <remarks>
 		///  Display a "warning" dialog.
@@ -314,8 +314,8 @@ namespace Kimono {
 		///           if the No-button is pressed.
 		/// </return>
 		/// 		<short>    Display a "warning" dialog.</short>
-		public static int WarningYesNo(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNo#$$##$$", "warningYesNo(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNo(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNo#$$##$$", "warningYesNo(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int WarningYesNo(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("warningYesNo#$$##$", "warningYesNo(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
@@ -336,23 +336,23 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int WarningYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoWId$$$##$$", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoWId$$$##$$", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int WarningYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("warningYesNoWId$$$##$", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
+		public static int WarningYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("warningYesNoWId$$$##$", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
 		}
-		public static int WarningYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("warningYesNoWId$$$##", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int WarningYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("warningYesNoWId$$$##", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int WarningYesNoWId(ulong parent_id, string text, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("warningYesNoWId$$$#", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int WarningYesNoWId(uint parent_id, string text, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("warningYesNoWId$$$#", "warningYesNoWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int WarningYesNoWId(ulong parent_id, string text, string caption) {
-			return (int) staticInterceptor.Invoke("warningYesNoWId$$$", "warningYesNoWId(WId, const QString&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static int WarningYesNoWId(uint parent_id, string text, string caption) {
+			return (int) staticInterceptor.Invoke("warningYesNoWId$$$", "warningYesNoWId(WId, const QString&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static int WarningYesNoWId(ulong parent_id, string text) {
-			return (int) staticInterceptor.Invoke("warningYesNoWId$$", "warningYesNoWId(WId, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text);
+		public static int WarningYesNoWId(uint parent_id, string text) {
+			return (int) staticInterceptor.Invoke("warningYesNoWId$$", "warningYesNoWId(WId, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display a "warning" dialog with a listbox to show information to the user
@@ -384,8 +384,8 @@ namespace Kimono {
 		///           if the No-button is pressed.
 		/// </return>
 		/// 		<short>    Display a "warning" dialog with a listbox to show information to the user </short>
-		public static int WarningYesNoList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoList#$?$##$$", "warningYesNoList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoList#$?$##$$", "warningYesNoList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int WarningYesNoList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("warningYesNoList#$?$##$", "warningYesNoList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
@@ -406,23 +406,23 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int WarningYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$##$$", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$##$$", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int WarningYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$##$", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
+		public static int WarningYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$##$", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(string), dontAskAgainName);
 		}
-		public static int WarningYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$##", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int WarningYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$##", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int WarningYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$#", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int WarningYesNoListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$#", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int WarningYesNoListWId(ulong parent_id, string text, List<string> strlist, string caption) {
-			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
+		public static int WarningYesNoListWId(uint parent_id, string text, List<string> strlist, string caption) {
+			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?$", "warningYesNoListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
 		}
-		public static int WarningYesNoListWId(ulong parent_id, string text, List<string> strlist) {
-			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?", "warningYesNoListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist);
+		public static int WarningYesNoListWId(uint parent_id, string text, List<string> strlist) {
+			return (int) staticInterceptor.Invoke("warningYesNoListWId$$?", "warningYesNoListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist);
 		}
 		/// <remarks>
 		///  Display a "warning" dialog.
@@ -449,8 +449,8 @@ namespace Kimono {
 		///           <code>Cancel</code> is returned if the Cancel-button is pressed.
 		/// </return>
 		/// 		<short>    Display a "warning" dialog.</short>
-		public static int WarningContinueCancel(QWidget parent, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningContinueCancel#$$##$$", "warningContinueCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningContinueCancel(QWidget parent, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningContinueCancel#$$##$$", "warningContinueCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int WarningContinueCancel(QWidget parent, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("warningContinueCancel#$$##$", "warningContinueCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
@@ -471,23 +471,23 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int WarningContinueCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$##$$", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningContinueCancelWId(uint parent_id, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$##$$", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int WarningContinueCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$##$", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
+		public static int WarningContinueCancelWId(uint parent_id, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$##$", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
 		}
-		public static int WarningContinueCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$##", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel);
+		public static int WarningContinueCancelWId(uint parent_id, string text, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$##", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel);
 		}
-		public static int WarningContinueCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonContinue) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$#", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue);
+		public static int WarningContinueCancelWId(uint parent_id, string text, string caption, KGuiItem buttonContinue) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$#", "warningContinueCancelWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonContinue);
 		}
-		public static int WarningContinueCancelWId(ulong parent_id, string text, string caption) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$", "warningContinueCancelWId(WId, const QString&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static int WarningContinueCancelWId(uint parent_id, string text, string caption) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$$", "warningContinueCancelWId(WId, const QString&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static int WarningContinueCancelWId(ulong parent_id, string text) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$", "warningContinueCancelWId(WId, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text);
+		public static int WarningContinueCancelWId(uint parent_id, string text) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelWId$$", "warningContinueCancelWId(WId, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display a "warning" dialog with a listbox to show information to the user.
@@ -517,8 +517,8 @@ namespace Kimono {
 		///           <code>Cancel</code> is returned if the Cancel-button is pressed.
 		/// </return>
 		/// 		<short>    Display a "warning" dialog with a listbox to show information to the user.</short>
-		public static int WarningContinueCancelList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelList#$?$##$$", "warningContinueCancelList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningContinueCancelList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelList#$?$##$$", "warningContinueCancelList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int WarningContinueCancelList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("warningContinueCancelList#$?$##$", "warningContinueCancelList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
@@ -539,23 +539,23 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int WarningContinueCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$##$$", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningContinueCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$##$$", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int WarningContinueCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$##$", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
+		public static int WarningContinueCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$##$", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
 		}
-		public static int WarningContinueCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$##", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel);
+		public static int WarningContinueCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue, KGuiItem buttonCancel) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$##", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue, typeof(KGuiItem), buttonCancel);
 		}
-		public static int WarningContinueCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$#", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue);
+		public static int WarningContinueCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonContinue) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$#", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonContinue);
 		}
-		public static int WarningContinueCancelListWId(ulong parent_id, string text, List<string> strlist, string caption) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
+		public static int WarningContinueCancelListWId(uint parent_id, string text, List<string> strlist, string caption) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?$", "warningContinueCancelListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
 		}
-		public static int WarningContinueCancelListWId(ulong parent_id, string text, List<string> strlist) {
-			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?", "warningContinueCancelListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist);
+		public static int WarningContinueCancelListWId(uint parent_id, string text, List<string> strlist) {
+			return (int) staticInterceptor.Invoke("warningContinueCancelListWId$$?", "warningContinueCancelListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist);
 		}
 		/// <remarks>
 		///  Display a Yes/No/Cancel "warning" dialog.
@@ -589,8 +589,8 @@ namespace Kimono {
 		///           button is pressed.
 		/// </return>
 		/// 		<short>    Display a Yes/No/Cancel "warning" dialog.</short>
-		public static int WarningYesNoCancel(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancel#$$###$$", "warningYesNoCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoCancel(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancel#$$###$$", "warningYesNoCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int WarningYesNoCancel(QWidget parent, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("warningYesNoCancel#$$###$", "warningYesNoCancel(QWidget*, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
@@ -614,26 +614,26 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int WarningYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$###$$", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$###$$", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int WarningYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$###$", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
+		public static int WarningYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$###$", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
 		}
-		public static int WarningYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$###", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
+		public static int WarningYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$###", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
 		}
-		public static int WarningYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$##", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int WarningYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$##", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int WarningYesNoCancelWId(ulong parent_id, string text, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$#", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int WarningYesNoCancelWId(uint parent_id, string text, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$#", "warningYesNoCancelWId(WId, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int WarningYesNoCancelWId(ulong parent_id, string text, string caption) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$", "warningYesNoCancelWId(WId, const QString&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static int WarningYesNoCancelWId(uint parent_id, string text, string caption) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$$", "warningYesNoCancelWId(WId, const QString&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static int WarningYesNoCancelWId(ulong parent_id, string text) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$", "warningYesNoCancelWId(WId, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text);
+		public static int WarningYesNoCancelWId(uint parent_id, string text) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelWId$$", "warningYesNoCancelWId(WId, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display a Yes/No/Cancel "warning" dialog with a listbox to show information
@@ -671,8 +671,8 @@ namespace Kimono {
 		///           button is pressed.
 		/// </return>
 		/// 		<short>    Display a Yes/No/Cancel "warning" dialog with a listbox to show information  to the user.</short>
-		public static int WarningYesNoCancelList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelList#$?$###$$", "warningYesNoCancelList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoCancelList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelList#$?$###$$", "warningYesNoCancelList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
 		public static int WarningYesNoCancelList(QWidget parent, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
 			return (int) staticInterceptor.Invoke("warningYesNoCancelList#$?$###$", "warningYesNoCancelList(QWidget*, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
@@ -696,26 +696,26 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$###$$", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(int), options);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$###$$", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName, typeof(uint), options);
 		}
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$###$", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontAskAgainName) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$###$", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontAskAgainName);
 		}
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$###", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$###", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
 		}
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$##", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$##", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$#", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$#", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist, string caption) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist, string caption) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?$", "warningYesNoCancelListWId(WId, const QString&, const QStringList&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
 		}
-		public static int WarningYesNoCancelListWId(ulong parent_id, string text, List<string> strlist) {
-			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?", "warningYesNoCancelListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist);
+		public static int WarningYesNoCancelListWId(uint parent_id, string text, List<string> strlist) {
+			return (int) staticInterceptor.Invoke("warningYesNoCancelListWId$$?", "warningYesNoCancelListWId(WId, const QString&, const QStringList&)", typeof(int), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist);
 		}
 		/// <remarks>
 		///  Display an "Error" dialog.
@@ -734,8 +734,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///  NOTE: The OK button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Display an "Error" dialog.</short>
-		public static void Error(QWidget parent, string text, string caption, int options) {
-			staticInterceptor.Invoke("error#$$$", "error(QWidget*, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void Error(QWidget parent, string text, string caption, uint options) {
+			staticInterceptor.Invoke("error#$$$", "error(QWidget*, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
 		public static void Error(QWidget parent, string text, string caption) {
 			staticInterceptor.Invoke("error#$$", "error(QWidget*, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption);
@@ -747,14 +747,14 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void ErrorWId(ulong parent_id, string text, string caption, int options) {
-			staticInterceptor.Invoke("errorWId$$$$", "errorWId(WId, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void ErrorWId(uint parent_id, string text, string caption, uint options) {
+			staticInterceptor.Invoke("errorWId$$$$", "errorWId(WId, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
-		public static void ErrorWId(ulong parent_id, string text, string caption) {
-			staticInterceptor.Invoke("errorWId$$$", "errorWId(WId, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static void ErrorWId(uint parent_id, string text, string caption) {
+			staticInterceptor.Invoke("errorWId$$$", "errorWId(WId, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static void ErrorWId(ulong parent_id, string text) {
-			staticInterceptor.Invoke("errorWId$$", "errorWId(WId, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text);
+		public static void ErrorWId(uint parent_id, string text) {
+			staticInterceptor.Invoke("errorWId$$", "errorWId(WId, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display an "Error" dialog with a listbox.
@@ -776,8 +776,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///  NOTE: The OK button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Display an "Error" dialog with a listbox.</short>
-		public static void ErrorList(QWidget parent, string text, List<string> strlist, string caption, int options) {
-			staticInterceptor.Invoke("errorList#$?$$", "errorList(QWidget*, const QString&, const QStringList&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(int), options);
+		public static void ErrorList(QWidget parent, string text, List<string> strlist, string caption, uint options) {
+			staticInterceptor.Invoke("errorList#$?$$", "errorList(QWidget*, const QString&, const QStringList&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(uint), options);
 		}
 		public static void ErrorList(QWidget parent, string text, List<string> strlist, string caption) {
 			staticInterceptor.Invoke("errorList#$?$", "errorList(QWidget*, const QString&, const QStringList&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
@@ -789,14 +789,14 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void ErrorListWId(ulong parent_id, string text, List<string> strlist, string caption, int options) {
-			staticInterceptor.Invoke("errorListWId$$?$$", "errorListWId(WId, const QString&, const QStringList&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(int), options);
+		public static void ErrorListWId(uint parent_id, string text, List<string> strlist, string caption, uint options) {
+			staticInterceptor.Invoke("errorListWId$$?$$", "errorListWId(WId, const QString&, const QStringList&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(uint), options);
 		}
-		public static void ErrorListWId(ulong parent_id, string text, List<string> strlist, string caption) {
-			staticInterceptor.Invoke("errorListWId$$?$", "errorListWId(WId, const QString&, const QStringList&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
+		public static void ErrorListWId(uint parent_id, string text, List<string> strlist, string caption) {
+			staticInterceptor.Invoke("errorListWId$$?$", "errorListWId(WId, const QString&, const QStringList&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
 		}
-		public static void ErrorListWId(ulong parent_id, string text, List<string> strlist) {
-			staticInterceptor.Invoke("errorListWId$$?", "errorListWId(WId, const QString&, const QStringList&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist);
+		public static void ErrorListWId(uint parent_id, string text, List<string> strlist) {
+			staticInterceptor.Invoke("errorListWId$$?", "errorListWId(WId, const QString&, const QStringList&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist);
 		}
 		/// <remarks>
 		///  Displays an "Error" dialog with a "Details >>" button.
@@ -818,8 +818,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///  NOTE: The OK button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Displays an "Error" dialog with a "Details >>" button.</short>
-		public static void DetailedError(QWidget parent, string text, string details, string caption, int options) {
-			staticInterceptor.Invoke("detailedError#$$$$", "detailedError(QWidget*, const QString&, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(int), options);
+		public static void DetailedError(QWidget parent, string text, string details, string caption, uint options) {
+			staticInterceptor.Invoke("detailedError#$$$$", "detailedError(QWidget*, const QString&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(uint), options);
 		}
 		public static void DetailedError(QWidget parent, string text, string details, string caption) {
 			staticInterceptor.Invoke("detailedError#$$$", "detailedError(QWidget*, const QString&, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), details, typeof(string), caption);
@@ -831,14 +831,14 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void DetailedErrorWId(ulong parent_id, string text, string details, string caption, int options) {
-			staticInterceptor.Invoke("detailedErrorWId$$$$$", "detailedErrorWId(WId, const QString&, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(int), options);
+		public static void DetailedErrorWId(uint parent_id, string text, string details, string caption, uint options) {
+			staticInterceptor.Invoke("detailedErrorWId$$$$$", "detailedErrorWId(WId, const QString&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(uint), options);
 		}
-		public static void DetailedErrorWId(ulong parent_id, string text, string details, string caption) {
-			staticInterceptor.Invoke("detailedErrorWId$$$$", "detailedErrorWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption);
+		public static void DetailedErrorWId(uint parent_id, string text, string details, string caption) {
+			staticInterceptor.Invoke("detailedErrorWId$$$$", "detailedErrorWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption);
 		}
-		public static void DetailedErrorWId(ulong parent_id, string text, string details) {
-			staticInterceptor.Invoke("detailedErrorWId$$$", "detailedErrorWId(WId, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details);
+		public static void DetailedErrorWId(uint parent_id, string text, string details) {
+			staticInterceptor.Invoke("detailedErrorWId$$$", "detailedErrorWId(WId, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details);
 		}
 		/// <remarks>
 		///  Like detailedError
@@ -858,11 +858,11 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void QueuedDetailedErrorWId(ulong parent_id, string text, string details, string caption) {
-			staticInterceptor.Invoke("queuedDetailedErrorWId$$$$", "queuedDetailedErrorWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption);
+		public static void QueuedDetailedErrorWId(uint parent_id, string text, string details, string caption) {
+			staticInterceptor.Invoke("queuedDetailedErrorWId$$$$", "queuedDetailedErrorWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption);
 		}
-		public static void QueuedDetailedErrorWId(ulong parent_id, string text, string details) {
-			staticInterceptor.Invoke("queuedDetailedErrorWId$$$", "queuedDetailedErrorWId(WId, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details);
+		public static void QueuedDetailedErrorWId(uint parent_id, string text, string details) {
+			staticInterceptor.Invoke("queuedDetailedErrorWId$$$", "queuedDetailedErrorWId(WId, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details);
 		}
 		/// <remarks>
 		///  Display an "Sorry" dialog.
@@ -880,8 +880,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///  NOTE: The ok button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Display an "Sorry" dialog.</short>
-		public static void Sorry(QWidget parent, string text, string caption, int options) {
-			staticInterceptor.Invoke("sorry#$$$", "sorry(QWidget*, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void Sorry(QWidget parent, string text, string caption, uint options) {
+			staticInterceptor.Invoke("sorry#$$$", "sorry(QWidget*, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
 		public static void Sorry(QWidget parent, string text, string caption) {
 			staticInterceptor.Invoke("sorry#$$", "sorry(QWidget*, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption);
@@ -893,14 +893,14 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void SorryWId(ulong parent_id, string text, string caption, int options) {
-			staticInterceptor.Invoke("sorryWId$$$$", "sorryWId(WId, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void SorryWId(uint parent_id, string text, string caption, uint options) {
+			staticInterceptor.Invoke("sorryWId$$$$", "sorryWId(WId, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
-		public static void SorryWId(ulong parent_id, string text, string caption) {
-			staticInterceptor.Invoke("sorryWId$$$", "sorryWId(WId, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static void SorryWId(uint parent_id, string text, string caption) {
+			staticInterceptor.Invoke("sorryWId$$$", "sorryWId(WId, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static void SorryWId(ulong parent_id, string text) {
-			staticInterceptor.Invoke("sorryWId$$", "sorryWId(WId, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text);
+		public static void SorryWId(uint parent_id, string text) {
+			staticInterceptor.Invoke("sorryWId$$", "sorryWId(WId, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Displays a "Sorry" dialog with a "Details >>" button.
@@ -923,8 +923,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///  NOTE: The ok button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Displays a "Sorry" dialog with a "Details >>" button.</short>
-		public static void DetailedSorry(QWidget parent, string text, string details, string caption, int options) {
-			staticInterceptor.Invoke("detailedSorry#$$$$", "detailedSorry(QWidget*, const QString&, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(int), options);
+		public static void DetailedSorry(QWidget parent, string text, string details, string caption, uint options) {
+			staticInterceptor.Invoke("detailedSorry#$$$$", "detailedSorry(QWidget*, const QString&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(uint), options);
 		}
 		public static void DetailedSorry(QWidget parent, string text, string details, string caption) {
 			staticInterceptor.Invoke("detailedSorry#$$$", "detailedSorry(QWidget*, const QString&, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), details, typeof(string), caption);
@@ -936,14 +936,14 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void DetailedSorryWId(ulong parent_id, string text, string details, string caption, int options) {
-			staticInterceptor.Invoke("detailedSorryWId$$$$$", "detailedSorryWId(WId, const QString&, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(int), options);
+		public static void DetailedSorryWId(uint parent_id, string text, string details, string caption, uint options) {
+			staticInterceptor.Invoke("detailedSorryWId$$$$$", "detailedSorryWId(WId, const QString&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption, typeof(uint), options);
 		}
-		public static void DetailedSorryWId(ulong parent_id, string text, string details, string caption) {
-			staticInterceptor.Invoke("detailedSorryWId$$$$", "detailedSorryWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption);
+		public static void DetailedSorryWId(uint parent_id, string text, string details, string caption) {
+			staticInterceptor.Invoke("detailedSorryWId$$$$", "detailedSorryWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details, typeof(string), caption);
 		}
-		public static void DetailedSorryWId(ulong parent_id, string text, string details) {
-			staticInterceptor.Invoke("detailedSorryWId$$$", "detailedSorryWId(WId, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), details);
+		public static void DetailedSorryWId(uint parent_id, string text, string details) {
+			staticInterceptor.Invoke("detailedSorryWId$$$", "detailedSorryWId(WId, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), details);
 		}
 		/// <remarks>
 		///  Display an "Information" dialog.
@@ -965,8 +965,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///   NOTE: The OK button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Display an "Information" dialog.</short>
-		public static void Information(QWidget parent, string text, string caption, string dontShowAgainName, int options) {
-			staticInterceptor.Invoke("information#$$$$", "information(QWidget*, const QString&, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName, typeof(int), options);
+		public static void Information(QWidget parent, string text, string caption, string dontShowAgainName, uint options) {
+			staticInterceptor.Invoke("information#$$$$", "information(QWidget*, const QString&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName, typeof(uint), options);
 		}
 		public static void Information(QWidget parent, string text, string caption, string dontShowAgainName) {
 			staticInterceptor.Invoke("information#$$$", "information(QWidget*, const QString&, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName);
@@ -981,17 +981,17 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void InformationWId(ulong parent_id, string text, string caption, string dontShowAgainName, int options) {
-			staticInterceptor.Invoke("informationWId$$$$$", "informationWId(WId, const QString&, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName, typeof(int), options);
+		public static void InformationWId(uint parent_id, string text, string caption, string dontShowAgainName, uint options) {
+			staticInterceptor.Invoke("informationWId$$$$$", "informationWId(WId, const QString&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName, typeof(uint), options);
 		}
-		public static void InformationWId(ulong parent_id, string text, string caption, string dontShowAgainName) {
-			staticInterceptor.Invoke("informationWId$$$$", "informationWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName);
+		public static void InformationWId(uint parent_id, string text, string caption, string dontShowAgainName) {
+			staticInterceptor.Invoke("informationWId$$$$", "informationWId(WId, const QString&, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption, typeof(string), dontShowAgainName);
 		}
-		public static void InformationWId(ulong parent_id, string text, string caption) {
-			staticInterceptor.Invoke("informationWId$$$", "informationWId(WId, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(string), caption);
+		public static void InformationWId(uint parent_id, string text, string caption) {
+			staticInterceptor.Invoke("informationWId$$$", "informationWId(WId, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(string), caption);
 		}
-		public static void InformationWId(ulong parent_id, string text) {
-			staticInterceptor.Invoke("informationWId$$", "informationWId(WId, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text);
+		public static void InformationWId(uint parent_id, string text) {
+			staticInterceptor.Invoke("informationWId$$", "informationWId(WId, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text);
 		}
 		/// <remarks>
 		///  Display an "Information" dialog with a listbox.
@@ -1016,8 +1016,8 @@ namespace Kimono {
 		///  The default button is "&OK". Pressing "Esc" selects the OK-button.
 		///   NOTE: The OK button will always have the i18n'ed text '&OK'.
 		///   </remarks>		<short>    Display an "Information" dialog with a listbox.</short>
-		public static void InformationList(QWidget parent, string text, List<string> strlist, string caption, string dontShowAgainName, int options) {
-			staticInterceptor.Invoke("informationList#$?$$$", "informationList(QWidget*, const QString&, const QStringList&, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName, typeof(int), options);
+		public static void InformationList(QWidget parent, string text, List<string> strlist, string caption, string dontShowAgainName, uint options) {
+			staticInterceptor.Invoke("informationList#$?$$$", "informationList(QWidget*, const QString&, const QStringList&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName, typeof(uint), options);
 		}
 		public static void InformationList(QWidget parent, string text, List<string> strlist, string caption, string dontShowAgainName) {
 			staticInterceptor.Invoke("informationList#$?$$", "informationList(QWidget*, const QString&, const QStringList&, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName);
@@ -1032,17 +1032,17 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///   </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void InformationListWId(ulong parent_id, string text, List<string> strlist, string caption, string dontShowAgainName, int options) {
-			staticInterceptor.Invoke("informationListWId$$?$$$", "informationListWId(WId, const QString&, const QStringList&, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName, typeof(int), options);
+		public static void InformationListWId(uint parent_id, string text, List<string> strlist, string caption, string dontShowAgainName, uint options) {
+			staticInterceptor.Invoke("informationListWId$$?$$$", "informationListWId(WId, const QString&, const QStringList&, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName, typeof(uint), options);
 		}
-		public static void InformationListWId(ulong parent_id, string text, List<string> strlist, string caption, string dontShowAgainName) {
-			staticInterceptor.Invoke("informationListWId$$?$$", "informationListWId(WId, const QString&, const QStringList&, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName);
+		public static void InformationListWId(uint parent_id, string text, List<string> strlist, string caption, string dontShowAgainName) {
+			staticInterceptor.Invoke("informationListWId$$?$$", "informationListWId(WId, const QString&, const QStringList&, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption, typeof(string), dontShowAgainName);
 		}
-		public static void InformationListWId(ulong parent_id, string text, List<string> strlist, string caption) {
-			staticInterceptor.Invoke("informationListWId$$?$", "informationListWId(WId, const QString&, const QStringList&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
+		public static void InformationListWId(uint parent_id, string text, List<string> strlist, string caption) {
+			staticInterceptor.Invoke("informationListWId$$?$", "informationListWId(WId, const QString&, const QStringList&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist, typeof(string), caption);
 		}
-		public static void InformationListWId(ulong parent_id, string text, List<string> strlist) {
-			staticInterceptor.Invoke("informationListWId$$?", "informationListWId(WId, const QString&, const QStringList&)", typeof(void), typeof(ulong), parent_id, typeof(string), text, typeof(List<string>), strlist);
+		public static void InformationListWId(uint parent_id, string text, List<string> strlist) {
+			staticInterceptor.Invoke("informationListWId$$?", "informationListWId(WId, const QString&, const QStringList&)", typeof(void), typeof(uint), parent_id, typeof(string), text, typeof(List<string>), strlist);
 		}
 		/// <remarks>
 		///  Enable all messages which have been turned off with the
@@ -1074,8 +1074,8 @@ namespace Kimono {
 		///  The default button is "&OK".
 		///   NOTE: The ok button will always have the i18n'ed text '&OK'.
 		///    </remarks>		<short>    Display an "About" dialog.</short>
-		public static void About(QWidget parent, string text, string caption, int options) {
-			staticInterceptor.Invoke("about#$$$", "about(QWidget*, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void About(QWidget parent, string text, string caption, uint options) {
+			staticInterceptor.Invoke("about#$$$", "about(QWidget*, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
 		public static void About(QWidget parent, string text, string caption) {
 			staticInterceptor.Invoke("about#$$", "about(QWidget*, const QString&, const QString&)", typeof(void), typeof(QWidget), parent, typeof(string), text, typeof(string), caption);
@@ -1109,8 +1109,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> a button code, as defined in KMessageBox.
 		///      </return>
 		/// 		<short>    Alternate method to show a messagebox: </short>
-		public static int MessageBox(QWidget parent, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("messageBox#$$$###$$", "messageBox(QWidget*, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(QWidget), parent, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName, typeof(int), options);
+		public static int MessageBox(QWidget parent, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("messageBox#$$$###$$", "messageBox(QWidget*, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(QWidget), parent, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName, typeof(uint), options);
 		}
 		public static int MessageBox(QWidget parent, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName) {
 			return (int) staticInterceptor.Invoke("messageBox#$$$###$", "messageBox(QWidget*, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName);
@@ -1134,26 +1134,26 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///      </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName, int options) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$$###$$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, Options)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName, typeof(int), options);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName, uint options) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$$###$$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&, KMessageBox::Options)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName, typeof(uint), options);
 		}
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$$###$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel, string dontShowAskAgainName) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$$###$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel, typeof(string), dontShowAskAgainName);
 		}
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$$###", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo, KGuiItem buttonCancel) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$$###", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo, typeof(KGuiItem), buttonCancel);
 		}
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$$##", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes, KGuiItem buttonNo) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$$##", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes, typeof(KGuiItem), buttonNo);
 		}
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$$#", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption, KGuiItem buttonYes) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$$#", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, const KGuiItem&)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(KGuiItem), buttonYes);
 		}
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption);
 		}
-		public static int MessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text) {
-			return (int) staticInterceptor.Invoke("messageBoxWId$$$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&)", typeof(int), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text);
+		public static int MessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text) {
+			return (int) staticInterceptor.Invoke("messageBoxWId$$$", "messageBoxWId(WId, KMessageBox::DialogType, const QString&)", typeof(int), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text);
 		}
 		/// <remarks>
 		///  Like messageBox
@@ -1164,15 +1164,15 @@ namespace Kimono {
 		///  Note that if the parent gets deleted, the messagebox will not be
 		///  shown.
 		///      </remarks>		<short>    Like messageBox </short>
-		public static void QueuedMessageBox(QWidget parent, KMessageBox.DialogType type, string text, string caption, int options) {
-			staticInterceptor.Invoke("queuedMessageBox#$$$$", "queuedMessageBox(QWidget*, KMessageBox::DialogType, const QString&, const QString&, Options)", typeof(void), typeof(QWidget), parent, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void QueuedMessageBox(QWidget parent, KMessageBox.DialogType type, string text, string caption, uint options) {
+			staticInterceptor.Invoke("queuedMessageBox#$$$$", "queuedMessageBox(QWidget*, KMessageBox::DialogType, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(QWidget), parent, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
 		/// <remarks>
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///      </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void QueuedMessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption, int options) {
-			staticInterceptor.Invoke("queuedMessageBoxWId$$$$$", "queuedMessageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, Options)", typeof(void), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(int), options);
+		public static void QueuedMessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption, uint options) {
+			staticInterceptor.Invoke("queuedMessageBoxWId$$$$$", "queuedMessageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&, KMessageBox::Options)", typeof(void), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption, typeof(uint), options);
 		}
 		/// <remarks>
 		///  @overload
@@ -1189,11 +1189,11 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///      </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static void QueuedMessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text, string caption) {
-			staticInterceptor.Invoke("queuedMessageBoxWId$$$$", "queuedMessageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption);
+		public static void QueuedMessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text, string caption) {
+			staticInterceptor.Invoke("queuedMessageBoxWId$$$$", "queuedMessageBoxWId(WId, KMessageBox::DialogType, const QString&, const QString&)", typeof(void), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text, typeof(string), caption);
 		}
-		public static void QueuedMessageBoxWId(ulong parent_id, KMessageBox.DialogType type, string text) {
-			staticInterceptor.Invoke("queuedMessageBoxWId$$$", "queuedMessageBoxWId(WId, KMessageBox::DialogType, const QString&)", typeof(void), typeof(ulong), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text);
+		public static void QueuedMessageBoxWId(uint parent_id, KMessageBox.DialogType type, string text) {
+			staticInterceptor.Invoke("queuedMessageBoxWId$$$", "queuedMessageBoxWId(WId, KMessageBox::DialogType, const QString&)", typeof(void), typeof(uint), parent_id, typeof(KMessageBox.DialogType), type, typeof(string), text);
 		}
 		/// <remarks>
 		/// <param> name="dontShowAgainName" the name that identify the message box. If
@@ -1265,7 +1265,7 @@ namespace Kimono {
 		///          function. Do not delete it yourself.
 		///      </return>
 		/// 		<short>    Create content and layout of a standard dialog </short>
-		public static int CreateKMessageBox(KDialog dialog, QMessageBox.Icon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, int options, string details) {
+		public static int CreateKMessageBox(KDialog dialog, QMessageBox.Icon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, uint options, string details) {
 			StackItem[] stack = new StackItem[9];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dialog);
@@ -1289,13 +1289,13 @@ namespace Kimono {
 			stack[5].s_class = (IntPtr) GCHandle.Alloc(ask);
 #endif
 			stack[6].s_bool = checkboxReturn;
-			stack[7].s_int = options;
+			stack[7].s_uint = options;
 #if DEBUG
 			stack[8].s_class = (IntPtr) DebugGCHandle.Alloc(details);
 #else
 			stack[8].s_class = (IntPtr) GCHandle.Alloc(details);
 #endif
-			staticInterceptor.Invoke("createKMessageBox#$$?$$$$", "createKMessageBox(KDialog*, QMessageBox::Icon, const QString&, const QStringList&, const QString&, bool*, Options, const QString&)", stack);
+			staticInterceptor.Invoke("createKMessageBox#$$?$$$$", "createKMessageBox(KDialog*, QMessageBox::Icon, const QString&, const QStringList&, const QString&, bool*, KMessageBox::Options, const QString&)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
@@ -1324,7 +1324,7 @@ namespace Kimono {
 #endif
 			return stack[0].s_int;
 		}
-		public static int CreateKMessageBox(KDialog dialog, QMessageBox.Icon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, int options) {
+		public static int CreateKMessageBox(KDialog dialog, QMessageBox.Icon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, uint options) {
 			StackItem[] stack = new StackItem[8];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dialog);
@@ -1348,8 +1348,8 @@ namespace Kimono {
 			stack[5].s_class = (IntPtr) GCHandle.Alloc(ask);
 #endif
 			stack[6].s_bool = checkboxReturn;
-			stack[7].s_int = options;
-			staticInterceptor.Invoke("createKMessageBox#$$?$$$", "createKMessageBox(KDialog*, QMessageBox::Icon, const QString&, const QStringList&, const QString&, bool*, Options)", stack);
+			stack[7].s_uint = options;
+			staticInterceptor.Invoke("createKMessageBox#$$?$$$", "createKMessageBox(KDialog*, QMessageBox::Icon, const QString&, const QStringList&, const QString&, bool*, KMessageBox::Options)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
@@ -1398,7 +1398,7 @@ namespace Kimono {
 		///          function. Do not delete it yourself.
 		///      </return>
 		/// 		<short>    Create content and layout of a standard dialog </short>
-		public static int CreateKMessageBox(KDialog dialog, QIcon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, int options, string details, QMessageBox.Icon notifyType) {
+		public static int CreateKMessageBox(KDialog dialog, QIcon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, uint options, string details, QMessageBox.Icon notifyType) {
 			StackItem[] stack = new StackItem[10];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dialog);
@@ -1426,14 +1426,14 @@ namespace Kimono {
 			stack[5].s_class = (IntPtr) GCHandle.Alloc(ask);
 #endif
 			stack[6].s_bool = checkboxReturn;
-			stack[7].s_int = options;
+			stack[7].s_uint = options;
 #if DEBUG
 			stack[8].s_class = (IntPtr) DebugGCHandle.Alloc(details);
 #else
 			stack[8].s_class = (IntPtr) GCHandle.Alloc(details);
 #endif
 			stack[9].s_int = (int) notifyType;
-			staticInterceptor.Invoke("createKMessageBox##$?$$$$$", "createKMessageBox(KDialog*, const QIcon&, const QString&, const QStringList&, const QString&, bool*, Options, const QString&, QMessageBox::Icon)", stack);
+			staticInterceptor.Invoke("createKMessageBox##$?$$$$$", "createKMessageBox(KDialog*, const QIcon&, const QString&, const QStringList&, const QString&, bool*, KMessageBox::Options, const QString&, QMessageBox::Icon)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
@@ -1467,7 +1467,7 @@ namespace Kimono {
 #endif
 			return stack[0].s_int;
 		}
-		public static int CreateKMessageBox(KDialog dialog, QIcon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, int options, string details) {
+		public static int CreateKMessageBox(KDialog dialog, QIcon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, uint options, string details) {
 			StackItem[] stack = new StackItem[9];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dialog);
@@ -1495,13 +1495,13 @@ namespace Kimono {
 			stack[5].s_class = (IntPtr) GCHandle.Alloc(ask);
 #endif
 			stack[6].s_bool = checkboxReturn;
-			stack[7].s_int = options;
+			stack[7].s_uint = options;
 #if DEBUG
 			stack[8].s_class = (IntPtr) DebugGCHandle.Alloc(details);
 #else
 			stack[8].s_class = (IntPtr) GCHandle.Alloc(details);
 #endif
-			staticInterceptor.Invoke("createKMessageBox##$?$$$$", "createKMessageBox(KDialog*, const QIcon&, const QString&, const QStringList&, const QString&, bool*, Options, const QString&)", stack);
+			staticInterceptor.Invoke("createKMessageBox##$?$$$$", "createKMessageBox(KDialog*, const QIcon&, const QString&, const QStringList&, const QString&, bool*, KMessageBox::Options, const QString&)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
@@ -1535,7 +1535,7 @@ namespace Kimono {
 #endif
 			return stack[0].s_int;
 		}
-		public static int CreateKMessageBox(KDialog dialog, QIcon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, int options) {
+		public static int CreateKMessageBox(KDialog dialog, QIcon icon, string text, List<string> strlist, string ask, ref bool checkboxReturn, uint options) {
 			StackItem[] stack = new StackItem[8];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(dialog);
@@ -1563,8 +1563,8 @@ namespace Kimono {
 			stack[5].s_class = (IntPtr) GCHandle.Alloc(ask);
 #endif
 			stack[6].s_bool = checkboxReturn;
-			stack[7].s_int = options;
-			staticInterceptor.Invoke("createKMessageBox##$?$$$", "createKMessageBox(KDialog*, const QIcon&, const QString&, const QStringList&, const QString&, bool*, Options)", stack);
+			stack[7].s_uint = options;
+			staticInterceptor.Invoke("createKMessageBox##$?$$$", "createKMessageBox(KDialog*, const QIcon&, const QString&, const QStringList&, const QString&, bool*, KMessageBox::Options)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else

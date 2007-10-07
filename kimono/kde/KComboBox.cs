@@ -14,7 +14,7 @@ namespace Kimono {
 	///  key-bindings to activate these features, and a popup-menu item that can be
 	///  used to allow the user to change the text completion mode on the fly.
 	///  To support these new features KComboBox emits a few additional signals
-	///  such as completion( string ) and textRotation( KeyBindgingType ).
+	///  such as completion( string ) and textRotation( KeyBindingType ).
 	///  The completion signal can be connected to a slot that will assist the user in
 	///  filling out the remaining text while the rotation signal can be used to traverse
 	///  through all possible matches whenever text completion results in multiple matches.
@@ -330,16 +330,16 @@ namespace Kimono {
 		///  Reimplemented for internal reasons, the API is not affected.
 		///      </remarks>		<short>    Reimplemented for internal reasons, the API is not affected.</short>
 		[SmokeMethod("create(WId, bool, bool)")]
-		protected virtual void Create(ulong arg1, bool initializeWindow, bool destroyOldWindow) {
-			interceptor.Invoke("create$$$", "create(WId, bool, bool)", typeof(void), typeof(ulong), arg1, typeof(bool), initializeWindow, typeof(bool), destroyOldWindow);
+		protected virtual void Create(uint arg1, bool initializeWindow, bool destroyOldWindow) {
+			interceptor.Invoke("create$$$", "create(WId, bool, bool)", typeof(void), typeof(uint), arg1, typeof(bool), initializeWindow, typeof(bool), destroyOldWindow);
 		}
 		[SmokeMethod("create(WId, bool)")]
-		protected virtual void Create(ulong arg1, bool initializeWindow) {
-			interceptor.Invoke("create$$", "create(WId, bool)", typeof(void), typeof(ulong), arg1, typeof(bool), initializeWindow);
+		protected virtual void Create(uint arg1, bool initializeWindow) {
+			interceptor.Invoke("create$$", "create(WId, bool)", typeof(void), typeof(uint), arg1, typeof(bool), initializeWindow);
 		}
 		[SmokeMethod("create(WId)")]
-		protected virtual void Create(ulong arg1) {
-			interceptor.Invoke("create$", "create(WId)", typeof(void), typeof(ulong), arg1);
+		protected virtual void Create(uint arg1) {
+			interceptor.Invoke("create$", "create(WId)", typeof(void), typeof(uint), arg1);
 		}
 		[SmokeMethod("create()")]
 		protected virtual void Create() {

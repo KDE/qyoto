@@ -112,11 +112,6 @@ namespace Kimono {
 		public QWidget ReplaceExtension() {
 			return (QWidget) interceptor.Invoke("replaceExtension", "replaceExtension() const", typeof(QWidget));
 		}
-		[Q_SLOT("void slotOk()")]
-		protected new void SlotOk() {
-			interceptor.Invoke("slotOk", "slotOk()", typeof(void));
-		}
-		[Q_SLOT("void showEvent(QShowEvent*)")]
 		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
 			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);

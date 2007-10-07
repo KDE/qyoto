@@ -138,24 +138,6 @@ namespace Kimono {
 			return (bool) staticInterceptor.Invoke("changeCursorOverIcon", "changeCursorOverIcon()", typeof(bool));
 		}
 		/// <remarks>
-		///  Checks whether to show feedback when in item (specifically an
-		///  icon) is activated.
-		/// </remarks>		<return> whether to show some feedback when an item is activated.
-		///      </return>
-		/// 		<short>    Checks whether to show feedback when in item (specifically an  icon) is activated.</short>
-		public static bool VisualActivate() {
-			return (bool) staticInterceptor.Invoke("visualActivate", "visualActivate()", typeof(bool));
-		}
-		/// <remarks>
-		///  Returns the speed of the visual activation feedback.
-		/// </remarks>		<return> the speed of the visual activation feedback, between
-		///          0 for minimum and 100 for maximum speed
-		///      </return>
-		/// 		<short>    Returns the speed of the visual activation feedback.</short>
-		public static uint VisualActivateSpeed() {
-			return (uint) staticInterceptor.Invoke("visualActivateSpeed", "visualActivateSpeed()", typeof(uint));
-		}
-		/// <remarks>
 		///  Returns the KDE setting for the auto-select option.
 		/// </remarks>		<return> the auto-select delay or -1 if auto-select is disabled.
 		///      </return>
@@ -348,6 +330,13 @@ namespace Kimono {
 			return (QFont) staticInterceptor.Invoke("largeFont", "largeFont()", typeof(QFont));
 		}
 		/// <remarks>
+		///  Returns the smallest readable font. This can be used in dockers,
+		///  rulers and other places where space is at a premium.
+		///      </remarks>		<short>    Returns the smallest readable font.</short>
+		public static QFont SmallestReadableFont() {
+			return (QFont) staticInterceptor.Invoke("smallestReadableFont", "smallestReadableFont()", typeof(QFont));
+		}
+		/// <remarks>
 		///  Returns if the user specified multihead. In case the display
 		///  has multiple screens, the return value of this function specifies
 		///  if the user wants KDE to run on all of them or just on the primary
@@ -412,7 +401,7 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>    This function returns the desktop geometry for an application that needs  to set the geometry of a widget on the screen manually.</short>
 		public static QRect DesktopGeometry(QWidget w) {
-			return (QRect) staticInterceptor.Invoke("desktopGeometry#", "desktopGeometry(QWidget*)", typeof(QRect), typeof(QWidget), w);
+			return (QRect) staticInterceptor.Invoke("desktopGeometry#", "desktopGeometry(const QWidget*)", typeof(QRect), typeof(QWidget), w);
 		}
 		/// <remarks>
 		///  This function determines if the user wishes to see icons on the

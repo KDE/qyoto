@@ -25,7 +25,7 @@ namespace Kimono {
 		// K3FileTreeViewItem* root(); >>>> NOT CONVERTED
 		// K3FileTreeViewItem* findTVIByUrl(const KUrl& arg1); >>>> NOT CONVERTED
 		// bool populate(const KUrl& arg1,K3FileTreeViewItem* arg2); >>>> NOT CONVERTED
-		// K3FileTreeViewItem* createTreeViewItem(K3FileTreeViewItem* arg1,KFileItem* arg2); >>>> NOT CONVERTED
+		// K3FileTreeViewItem* createTreeViewItem(K3FileTreeViewItem* arg1,const KFileItem& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  constructs a branch for K3FileTreeView. Does not yet start to list it.
 		/// <param> name="url" start url of the branch.

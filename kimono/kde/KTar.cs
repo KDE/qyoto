@@ -79,16 +79,16 @@ namespace Kimono {
 		/// <param> name="mode" the mode of the file
 		///      </param></remarks>		<short>    Opens the archive for reading.</short>
 		[SmokeMethod("openArchive(QIODevice::OpenMode)")]
-		protected override bool OpenArchive(int mode) {
-			return (bool) interceptor.Invoke("openArchive$", "openArchive(QIODevice::OpenMode)", typeof(bool), typeof(int), mode);
+		protected override bool OpenArchive(uint mode) {
+			return (bool) interceptor.Invoke("openArchive$", "openArchive(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		[SmokeMethod("closeArchive()")]
 		protected override bool CloseArchive() {
 			return (bool) interceptor.Invoke("closeArchive", "closeArchive()", typeof(bool));
 		}
 		[SmokeMethod("createDevice(QIODevice::OpenMode)")]
-		protected override bool CreateDevice(int mode) {
-			return (bool) interceptor.Invoke("createDevice$", "createDevice(QIODevice::OpenMode)", typeof(bool), typeof(int), mode);
+		protected override bool CreateDevice(uint mode) {
+			return (bool) interceptor.Invoke("createDevice$", "createDevice(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		~KTar() {
 			interceptor.Invoke("~KTar", "~KTar()", typeof(void));

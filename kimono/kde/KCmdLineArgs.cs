@@ -152,9 +152,6 @@ namespace Kimono {
 			CmdLineArgNone = 0x00,
 			Reserved = 0xff,
 		}
-		// void init(int arg1,char** arg2,const QByteArray& arg3,const QByteArray& arg4,const KLocalizedString& arg5,const QByteArray& arg6,const KLocalizedString& arg7,StdCmdLineArgs arg8); >>>> NOT CONVERTED
-		// void init(int arg1,char** arg2,const KAboutData* arg3,StdCmdLineArgs arg4); >>>> NOT CONVERTED
-		// void addStdCmdLineOptions(StdCmdLineArgs arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///   Read out a string option.
 		///   The option must have a corresponding string[][] entry
@@ -278,6 +275,9 @@ namespace Kimono {
 		///                     Also marked for translation.
 		/// </param><param> name="stdargs" KDE/Qt or no default parameters
 		///    </param></remarks>		<short>    Initialize class.</short>
+		public static void Init(string argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version, KLocalizedString description, uint stdargs) {
+			staticInterceptor.Invoke("init$?#####$", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(string), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description, typeof(uint), stdargs);
+		}
 		public static void Init(string argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version, KLocalizedString description) {
 			staticInterceptor.Invoke("init$?#####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&)", typeof(void), typeof(string), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description);
 		}
@@ -293,6 +293,9 @@ namespace Kimono {
 		/// </param><param> name="about" A KAboutData object describing your program.
 		/// </param><param> name="stdargs" KDE/Qt or no default parameters
 		///    </param></remarks>		<short>    Initialize class.</short>
+		public static void Init(string _argv, KAboutData about, uint stdargs) {
+			staticInterceptor.Invoke("init$?#$", "init(int, char**, const KAboutData*, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(string), _argv, typeof(KAboutData), about, typeof(uint), stdargs);
+		}
 		public static void Init(string _argv, KAboutData about) {
 			staticInterceptor.Invoke("init$?#", "init(int, char**, const KAboutData*)", typeof(void), typeof(string), _argv, typeof(KAboutData), about);
 		}
@@ -313,6 +316,12 @@ namespace Kimono {
 		/// <remarks>
 		///  add standard Qt/KDE command-line args
 		///    </remarks>		<short>    add standard Qt/KDE command-line args    </short>
+		public static void AddStdCmdLineOptions(uint stdargs) {
+			staticInterceptor.Invoke("addStdCmdLineOptions$", "addStdCmdLineOptions(KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(uint), stdargs);
+		}
+		public static void AddStdCmdLineOptions() {
+			staticInterceptor.Invoke("addStdCmdLineOptions", "addStdCmdLineOptions()", typeof(void));
+		}
 		/// <remarks>
 		///  Add options to your application.
 		///  You must make sure that all possible options have been added before

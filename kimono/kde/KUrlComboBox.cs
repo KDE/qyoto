@@ -56,8 +56,6 @@ namespace Kimono {
 			get { return (int) interceptor.Invoke("maxItems", "maxItems()", typeof(int)); }
 			set { interceptor.Invoke("setMaxItems$", "setMaxItems(int)", typeof(void), typeof(int), value); }
 		}
-		// void insertUrlItem(const KUrlComboBox::KUrlComboItem* arg1); >>>> NOT CONVERTED
-		// void updateItem(const KUrlComboBox::KUrlComboItem* arg1,int arg2,const QIcon& arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KUrlComboBox.
 		/// <param> name="mode" is either Files, Directories or Both and controls the
@@ -165,24 +163,6 @@ namespace Kimono {
 		}
 		public void RemoveUrl(KUrl url) {
 			interceptor.Invoke("removeUrl#", "removeUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
-		}
-		protected void Init(KUrlComboBox.Mode mode) {
-			interceptor.Invoke("init$", "init(KUrlComboBox::Mode)", typeof(void), typeof(KUrlComboBox.Mode), mode);
-		}
-		/// <remarks>
-		///  Uses KMimeType.PixmapForUrl() to return a proper pixmap for <code>url.</code>
-		///  In directory mode, a folder icon is always returned.
-		///      </remarks>		<short>    Uses KMimeType.PixmapForUrl() to return a proper pixmap for <code>url.</code></short>
-		protected QIcon GetIcon(KUrl url) {
-			return (QIcon) interceptor.Invoke("getIcon#", "getIcon(const KUrl&) const", typeof(QIcon), typeof(KUrl), url);
-		}
-		/// <remarks>
-		///  Updates <code>item</code> with <code>icon</code> and sets the url instead of the text
-		///  of the KUrlComboItem.
-		///      </remarks>		<short>    Updates <code>item</code> with <code>icon</code> and sets the url instead of the text  of the KUrlComboItem.</short>
-		[Q_SLOT("void slotActivated(int)")]
-		protected void SlotActivated(int arg1) {
-			interceptor.Invoke("slotActivated$", "slotActivated(int)", typeof(void), typeof(int), arg1);
 		}
 		~KUrlComboBox() {
 			interceptor.Invoke("~KUrlComboBox", "~KUrlComboBox()", typeof(void));

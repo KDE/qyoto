@@ -4,6 +4,10 @@ namespace Kimono {
 	using System;
 	using Qyoto;
 
+	/// <remarks>
+	///  An action to select a font family.
+	///  On a toolbar this will show a combobox with all the fonts on the system.
+	///  </remarks>		<short>    An action to select a font family.</short>
 
 	[SmokeClass("KFontAction")]
 	public class KFontAction : KSelectAction, IDisposable {

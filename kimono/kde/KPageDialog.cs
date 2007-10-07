@@ -66,11 +66,11 @@ namespace Kimono {
 		///      
 		/// </li></remarks>		<short>   </short>
 		public enum FaceType {
-			Auto = KPageWidget.Auto,
-			Plain = KPageWidget.Plain,
-			List = KPageWidget.List,
-			Tree = KPageWidget.Tree,
-			Tabbed = KPageWidget.Tabbed,
+			Auto = KPageView.FaceType.Auto,
+			Plain = KPageView.FaceType.Plain,
+			List = KPageView.FaceType.List,
+			Tree = KPageView.FaceType.Tree,
+			Tabbed = KPageView.FaceType.Tabbed,
 		}
 		/// <remarks>
 		///  Creates a new page dialog.

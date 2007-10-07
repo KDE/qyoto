@@ -353,6 +353,16 @@ namespace Kimono {
 			return interceptor.GetHashCode();
 		}
 		/// <remarks>
+		///  Returns the class name of the data represented by this instance.
+		///  If a derived class object has been assigned to this instance, this
+		///  method will return the name of that class.
+		/// </remarks>		<return> "KTimeZone" or the class name of a derived class
+		///      </return>
+		/// 		<short>    Returns the class name of the data represented by this instance.</short>
+		public QByteArray type() {
+			return (QByteArray) interceptor.Invoke("type", "type() const", typeof(QByteArray));
+		}
+		/// <remarks>
 		///  Checks whether the instance is valid.
 		/// </remarks>		<return> true if valid, false if invalid
 		///      </return>
@@ -825,6 +835,23 @@ namespace Kimono {
 		public KTimeZoneData Data() {
 			return (KTimeZoneData) interceptor.Invoke("data", "data() const", typeof(KTimeZoneData));
 		}
+		/// <remarks>
+		///  Update the definition of the time zone to be identical to another
+		///  KTimeZone instance. A prerequisite is that the two instances must
+		///  have the same name.
+		///  The main purpose of this method is to allow updates of the time zone
+		///  definition by derived classes without invalidating pointers to the
+		///  instance (particularly pointers held by KDateTime objects). Note
+		///  that the KTimeZoneData object and KTimeZoneSource pointer are not
+		///  updated: the caller class should do this itself by calling setData().
+		/// <param> name="other" time zone whose definition is to be used
+		/// </param></remarks>		<return> true if definition was updated (i.e. names are the same)
+		/// </return>
+		/// 		<short>    Update the definition of the time zone to be identical to another  KTimeZone instance.</short>
+		/// 		<see> setData</see>
+		public bool UpdateBase(KTimeZone other) {
+			return (bool) interceptor.Invoke("updateBase#", "updateBase(const KTimeZone&)", typeof(bool), typeof(KTimeZone), other);
+		}
 		public KTimeZone(KTimeZoneBackend impl) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KTimeZone#", "KTimeZone(KTimeZoneBackend*)", typeof(void), typeof(KTimeZoneBackend), impl);
@@ -841,23 +868,6 @@ namespace Kimono {
 		}
 		protected void SetData(KTimeZoneData data) {
 			interceptor.Invoke("setData#", "setData(KTimeZoneData*)", typeof(void), typeof(KTimeZoneData), data);
-		}
-		/// <remarks>
-		///  Update the definition of the time zone to be identical to another
-		///  KTimeZone instance. A prerequisite is that the two instances must
-		///  have the same name.
-		///  The purpose of this method is to allow updates of the time zone
-		///  definition by derived classes without invalidating pointers to the
-		///  instance (particularly pointers held by KDateTime objects). Note
-		///  that the KTimeZoneData object and KTimeZoneSource pointer are not
-		///  updated: the derived class should do this itself by calling setData().
-		/// <param> name="other" time zone whose definition is to be used
-		/// </param></remarks>		<return> true if definition was updated (i.e. names are the same)
-		/// </return>
-		/// 		<short>    Update the definition of the time zone to be identical to another  KTimeZone instance.</short>
-		/// 		<see> setData</see>
-		protected bool UpdateBase(KTimeZone other) {
-			return (bool) interceptor.Invoke("updateBase#", "updateBase(const KTimeZone&)", typeof(bool), typeof(KTimeZone), other);
 		}
 		~KTimeZone() {
 			interceptor.Invoke("~KTimeZone", "~KTimeZone()", typeof(void));

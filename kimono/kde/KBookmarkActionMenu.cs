@@ -4,6 +4,9 @@ namespace Kimono {
 	using System;
 	using Qyoto;
 
+	/// <remarks>
+	///  A wrapper around KActionMenu to provide a nice constructor for bookmark groups.
+	///  </remarks>		<short>     A wrapper around KActionMenu to provide a nice constructor for bookmark groups.</short>
 
 	[SmokeClass("KBookmarkActionMenu")]
 	public class KBookmarkActionMenu : KActionMenu, IKBookmarkAction, IDisposable {
@@ -11,8 +14,6 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KBookmarkActionMenu), this);
 		}
-		// void contextMenu(const QPoint& arg1,KBookmarkManager* arg2,KBookmarkOwner* arg3); >>>> NOT CONVERTED
-		// void contextMenu(const QPoint& arg1,KBookmarkManager* arg2,KBookmarkOwner* arg3); >>>> NOT CONVERTED
 		public KBookmarkActionMenu(KBookmark bm, QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmarkActionMenu##", "KBookmarkActionMenu(const KBookmark&, QObject*)", typeof(void), typeof(KBookmark), bm, typeof(QObject), parent);
@@ -24,10 +25,10 @@ namespace Kimono {
 		~KBookmarkActionMenu() {
 			interceptor.Invoke("~KBookmarkActionMenu", "~KBookmarkActionMenu()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~KBookmarkActionMenu", "~KBookmarkActionMenu()", typeof(void));
 		}
-		protected KBookmark Bookmark() {
+		public KBookmark Bookmark() {
 			return (KBookmark) interceptor.Invoke("bookmark", "bookmark() const", typeof(KBookmark));
 		}
 		protected new IKBookmarkActionMenuSignals Emit {

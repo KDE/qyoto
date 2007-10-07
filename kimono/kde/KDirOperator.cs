@@ -29,10 +29,10 @@ namespace Kimono {
 	///    // some signals you might be interested in
 	///    connect(op, SIGNAL("urlEntered(KUrl)"),
 	///            SLOT("urlEntered(KUrl)"));
-	///    connect(op, SIGNAL("fileHighlighted(const KFileItem )"),
-	///            SLOT("fileHighlighted(const KFileItem )"));
-	///    connect(op, SIGNAL("fileSelected(const KFileItem )"),
-	///            SLOT("fileSelected(const KFileItem )"));
+	///    connect(op, SIGNAL("fileHighlighted(KFileItem)"),
+	///            SLOT("fileHighlighted(KFileItem)"));
+	///    connect(op, SIGNAL("fileSelected(KFileItem)"),
+	///            SLOT("fileSelected(KFileItem)"));
 	///    connect(op, SIGNAL("finishedLoading()"),
 	///            SLOT("slotLoadingFinished()"));
 	///    KConfigGroup grp(KGlobal.Config(),"Your KDiroperator ConfigGroup" );
@@ -61,7 +61,7 @@ namespace Kimono {
 		/// <remarks>
 		///  The various action types. These values can be or'd together
 		///      </remarks>		<short>    The various action types.</short>
-		public enum ActionTypes {
+		public enum ActionType {
 			SortActions = 1,
 			ViewActions = 2,
 			NavActions = 4,
@@ -110,7 +110,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Sets a filter like "*.cpp .h .o". Only files matching that filter
-		///  will be shown. Call updateDir() to apply it.
+		///  will be shown.
 		/// </remarks>		<short>    Sets a filter like " .</short>
 		/// 		<see> KDirLister.SetNameFilter</see>
 		/// 		<see> nameFilter</see>
@@ -190,44 +190,38 @@ namespace Kimono {
 		/// 		<see> KFileDetailView</see>
 		/// 		<see> KCombiView</see>
 		/// 		<see> view</see>
-		[SmokeMethod("setView(KFileView*)")]
-		public virtual void SetView(KFileView view) {
-			interceptor.Invoke("setView#", "setView(KFileView*)", typeof(void), typeof(KFileView), view);
+		[SmokeMethod("setView(QAbstractItemView*)")]
+		public virtual void SetView(QAbstractItemView view) {
+			interceptor.Invoke("setView#", "setView(QAbstractItemView*)", typeof(void), typeof(QAbstractItemView), view);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the currently used view.
 		/// </return>
 		/// 		<short>   </short>
 		/// 		<see> setView</see>
-		public KFileView View() {
-			return (KFileView) interceptor.Invoke("view", "view() const", typeof(KFileView));
+		public QAbstractItemView View() {
+			return (QAbstractItemView) interceptor.Invoke("view", "view() const", typeof(QAbstractItemView));
 		}
 		/// <remarks>
-		///  Returns the widget of the current view. null if there is no view/widget.
-		///  (KFileView itself is not a widget.)
-		///      </remarks>		<short>    Returns the widget of the current view.</short>
-		public QWidget ViewWidget() {
-			return (QWidget) interceptor.Invoke("viewWidget", "viewWidget() const", typeof(QWidget));
-		}
-		/// <remarks>
-		///  Sets one of the predefined fileviews
-		/// </remarks>		<short>    Sets one of the predefined fileviews </short>
+		///  Sets one of the predefined fileviews.
+		/// </remarks>		<short>    Sets one of the predefined fileviews.</short>
 		/// 		<see> KFile.FileView</see>
-		public void SetView(KFile.FileView view) {
-			interceptor.Invoke("setView$", "setView(KFile::FileView)", typeof(void), typeof(KFile.FileView), view);
+		[SmokeMethod("setView(KFile::FileView)")]
+		public virtual void SetView(int viewKind) {
+			interceptor.Invoke("setView?", "setView(KFile::FileView)", typeof(void), typeof(int), viewKind);
 		}
 		/// <remarks>
 		///  Sets the way to sort files and directories.
 		///      </remarks>		<short>    Sets the way to sort files and directories.</short>
-		public void SetSorting(int arg1) {
-			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(int), arg1);
+		public void SetSorting(uint arg1) {
+			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(uint), arg1);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the current way of sorting files and directories
 		///      </return>
 		/// 		<short>   </short>
-		public int Sorting() {
-			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
+		public uint Sorting() {
+			return (uint) interceptor.Invoke("sorting", "sorting() const", typeof(uint));
 		}
 		/// <remarks>
 		/// </remarks>		<return> true if we are displaying the root directory of the current url
@@ -285,12 +279,13 @@ namespace Kimono {
 		///  The ownership of <code>w</code> is transferred to KDirOperator, so don't
 		///  delete it yourself!
 		///      </remarks>		<short>    Sets a preview-widget to be shown next to the file-view.</short>
-		public void SetPreviewWidget(QWidget w) {
-			interceptor.Invoke("setPreviewWidget#", "setPreviewWidget(const QWidget*)", typeof(void), typeof(QWidget), w);
+		[SmokeMethod("setPreviewWidget(KPreviewWidgetBase*)")]
+		public virtual void SetPreviewWidget(KPreviewWidgetBase w) {
+			interceptor.Invoke("setPreviewWidget#", "setPreviewWidget(KPreviewWidgetBase*)", typeof(void), typeof(KPreviewWidgetBase), w);
 		}
 		/// <remarks>
 		/// </remarks>		<return> a list of all currently selected items. If there is no view,
-		///  then 0L is returned.
+		///  or there are no selected items, an empty list is returned.
 		///      </return>
 		/// 		<short>   </short>
 		public List<KFileItem> SelectedItems() {
@@ -301,7 +296,7 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>   </short>
 		public bool IsSelected(KFileItem item) {
-			return (bool) interceptor.Invoke("isSelected#", "isSelected(const KFileItem*) const", typeof(bool), typeof(KFileItem), item);
+			return (bool) interceptor.Invoke("isSelected#", "isSelected(const KFileItem&) const", typeof(bool), typeof(KFileItem), item);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the number of directories in the currently listed url.
@@ -374,10 +369,6 @@ namespace Kimono {
 		/// </li>
 		/// 
 		/// <li>
-		/// separator : a separator
-		/// </li>
-		/// 
-		/// <li>
 		/// mkdir : opens a dialog box to create a directory
 		/// </li>
 		/// 
@@ -394,23 +385,19 @@ namespace Kimono {
 		/// </li>
 		/// 
 		/// <li>
-		/// by date : sorts by date
-		/// </li>
-		/// 
-		/// <li>
 		/// by size : sorts by size
 		/// </li>
 		/// 
 		/// <li>
-		/// reversed : reverses the sort order
+		/// by date : sorts by date
 		/// </li>
 		/// 
 		/// <li>
-		/// dirs first : sorts directories before files
+		/// by type : sorts by type
 		/// </li>
 		/// 
 		/// <li>
-		/// case insensitive : sorts case insensitively
+		/// descending : reverses the sort order
 		/// </li>
 		/// 
 		/// <li>
@@ -430,15 +417,7 @@ namespace Kimono {
 		/// </li>
 		/// 
 		/// <li>
-		/// separate dirs : shows directories in a separate pane
-		/// </li>
-		/// 
-		/// <li>
 		/// preview  : shows a preview next to the fileview
-		/// </li>
-		/// 
-		/// <li>
-		/// single : hides the separate view for directories or the preview
 		/// </li>
 		/// 
 		/// <li>
@@ -535,26 +514,13 @@ namespace Kimono {
 		/// </remarks>		<return> true if the directory could be created.
 		///      </return>
 		/// 		<short>    Creates the given directory/url.</short>
-		public bool Mkdir(string directory, bool enterDirectory) {
+		[SmokeMethod("mkdir(const QString&, bool)")]
+		public virtual bool Mkdir(string directory, bool enterDirectory) {
 			return (bool) interceptor.Invoke("mkdir$$", "mkdir(const QString&, bool)", typeof(bool), typeof(string), directory, typeof(bool), enterDirectory);
 		}
-		public bool Mkdir(string directory) {
+		[SmokeMethod("mkdir(const QString&)")]
+		public virtual bool Mkdir(string directory) {
 			return (bool) interceptor.Invoke("mkdir$", "mkdir(const QString&)", typeof(bool), typeof(string), directory);
-		}
-		/// <remarks>
-		///  Starts and returns a KIO.DeleteJob to delete the given <code>items.</code>
-		/// <param> name="items" the list of items to be deleted
-		/// </param><param> name="ask" specifies whether a confirmation dialog should be shown
-		/// </param><param> name="showProgress" passed to the DeleteJob to show a progress dialog
-		///      </param></remarks>		<short>    Starts and returns a KIO.DeleteJob to delete the given <code>items.</code></short>
-		public KIO.DeleteJob Del(List<KFileItem> items, bool ask, bool showProgress) {
-			return (KIO.DeleteJob) interceptor.Invoke("del#$$", "del(const KFileItemList&, bool, bool)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items, typeof(bool), ask, typeof(bool), showProgress);
-		}
-		public KIO.DeleteJob Del(List<KFileItem> items, bool ask) {
-			return (KIO.DeleteJob) interceptor.Invoke("del#$", "del(const KFileItemList&, bool)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items, typeof(bool), ask);
-		}
-		public KIO.DeleteJob Del(List<KFileItem> items) {
-			return (KIO.DeleteJob) interceptor.Invoke("del#", "del(const KFileItemList&)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items);
 		}
 		/// <remarks>
 		///  Starts and returns a KIO.DeleteJob to delete the given <code>items.</code>
@@ -563,14 +529,21 @@ namespace Kimono {
 		/// </param><param> name="ask" specifies whether a confirmation dialog should be shown
 		/// </param><param> name="showProgress" passed to the DeleteJob to show a progress dialog
 		///      </param></remarks>		<short>    Starts and returns a KIO.DeleteJob to delete the given <code>items.</code></short>
-		public KIO.DeleteJob Del(List<KFileItem> items, QWidget parent, bool ask, bool showProgress) {
+		[SmokeMethod("del(const KFileItemList&, QWidget*, bool, bool)")]
+		public virtual KIO.DeleteJob Del(List<KFileItem> items, QWidget parent, bool ask, bool showProgress) {
 			return (KIO.DeleteJob) interceptor.Invoke("del##$$", "del(const KFileItemList&, QWidget*, bool, bool)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items, typeof(QWidget), parent, typeof(bool), ask, typeof(bool), showProgress);
 		}
-		public KIO.DeleteJob Del(List<KFileItem> items, QWidget parent, bool ask) {
+		[SmokeMethod("del(const KFileItemList&, QWidget*, bool)")]
+		public virtual KIO.DeleteJob Del(List<KFileItem> items, QWidget parent, bool ask) {
 			return (KIO.DeleteJob) interceptor.Invoke("del##$", "del(const KFileItemList&, QWidget*, bool)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items, typeof(QWidget), parent, typeof(bool), ask);
 		}
-		public KIO.DeleteJob Del(List<KFileItem> items, QWidget parent) {
+		[SmokeMethod("del(const KFileItemList&, QWidget*)")]
+		public virtual KIO.DeleteJob Del(List<KFileItem> items, QWidget parent) {
 			return (KIO.DeleteJob) interceptor.Invoke("del##", "del(const KFileItemList&, QWidget*)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items, typeof(QWidget), parent);
+		}
+		[SmokeMethod("del(const KFileItemList&)")]
+		public virtual KIO.DeleteJob Del(List<KFileItem> items) {
+			return (KIO.DeleteJob) interceptor.Invoke("del#", "del(const KFileItemList&)", typeof(KIO.DeleteJob), typeof(List<KFileItem>), items);
 		}
 		/// <remarks>
 		///  Clears the forward and backward history.
@@ -585,7 +558,8 @@ namespace Kimono {
 		///  be made the current item.
 		///  Default is off.
 		///      </remarks>		<short>    When going up in the directory hierarchy, KDirOperator can highlight  the directory that was just left.</short>
-		public void SetEnableDirHighlighting(bool enable) {
+		[SmokeMethod("setEnableDirHighlighting(bool)")]
+		public virtual void SetEnableDirHighlighting(bool enable) {
 			interceptor.Invoke("setEnableDirHighlighting$", "setEnableDirHighlighting(bool)", typeof(void), typeof(bool), enable);
 		}
 		/// <remarks>
@@ -635,41 +609,48 @@ namespace Kimono {
 		/// </param><param> name="ask" specifies whether a confirmation dialog should be shown
 		/// </param><param> name="showProgress" passed to the CopyJob to show a progress dialog
 		///      </param></remarks>		<short>    Starts and returns a KIO.CopyJob to trash the given <code>items.</code></short>
-		public KIO.CopyJob Trash(List<KFileItem> items, QWidget parent, bool ask, bool showProgress) {
+		[SmokeMethod("trash(const KFileItemList&, QWidget*, bool, bool)")]
+		public virtual KIO.CopyJob Trash(List<KFileItem> items, QWidget parent, bool ask, bool showProgress) {
 			return (KIO.CopyJob) interceptor.Invoke("trash##$$", "trash(const KFileItemList&, QWidget*, bool, bool)", typeof(KIO.CopyJob), typeof(List<KFileItem>), items, typeof(QWidget), parent, typeof(bool), ask, typeof(bool), showProgress);
 		}
-		public KIO.CopyJob Trash(List<KFileItem> items, QWidget parent, bool ask) {
+		[SmokeMethod("trash(const KFileItemList&, QWidget*, bool)")]
+		public virtual KIO.CopyJob Trash(List<KFileItem> items, QWidget parent, bool ask) {
 			return (KIO.CopyJob) interceptor.Invoke("trash##$", "trash(const KFileItemList&, QWidget*, bool)", typeof(KIO.CopyJob), typeof(List<KFileItem>), items, typeof(QWidget), parent, typeof(bool), ask);
 		}
-		public KIO.CopyJob Trash(List<KFileItem> items, QWidget parent) {
+		[SmokeMethod("trash(const KFileItemList&, QWidget*)")]
+		public virtual KIO.CopyJob Trash(List<KFileItem> items, QWidget parent) {
 			return (KIO.CopyJob) interceptor.Invoke("trash##", "trash(const KFileItemList&, QWidget*)", typeof(KIO.CopyJob), typeof(List<KFileItem>), items, typeof(QWidget), parent);
 		}
 		/// <remarks>
 		///  Goes one step back in the history and opens that url.
 		///      </remarks>		<short>    Goes one step back in the history and opens that url.</short>
 		[Q_SLOT("void back()")]
-		public void Back() {
+		[SmokeMethod("back()")]
+		public virtual void Back() {
 			interceptor.Invoke("back", "back()", typeof(void));
 		}
 		/// <remarks>
 		///  Goes one step forward in the history and opens that url.
 		///      </remarks>		<short>    Goes one step forward in the history and opens that url.</short>
 		[Q_SLOT("void forward()")]
-		public void Forward() {
+		[SmokeMethod("forward()")]
+		public virtual void Forward() {
 			interceptor.Invoke("forward", "forward()", typeof(void));
 		}
 		/// <remarks>
 		///  Enters the home directory.
 		///      </remarks>		<short>    Enters the home directory.</short>
 		[Q_SLOT("void home()")]
-		public void Home() {
+		[SmokeMethod("home()")]
+		public virtual void Home() {
 			interceptor.Invoke("home", "home()", typeof(void));
 		}
 		/// <remarks>
 		///  Goes one directory up from the current url.
 		///      </remarks>		<short>    Goes one directory up from the current url.</short>
 		[Q_SLOT("void cdUp()")]
-		public void CdUp() {
+		[SmokeMethod("cdUp()")]
+		public virtual void CdUp() {
 			interceptor.Invoke("cdUp", "cdUp()", typeof(void));
 		}
 		/// <remarks>
@@ -683,21 +664,24 @@ namespace Kimono {
 		///  Re-reads the current url.
 		///      </remarks>		<short>    Re-reads the current url.</short>
 		[Q_SLOT("void rereadDir()")]
-		public void RereadDir() {
+		[SmokeMethod("rereadDir()")]
+		public virtual void RereadDir() {
 			interceptor.Invoke("rereadDir", "rereadDir()", typeof(void));
 		}
 		/// <remarks>
 		///  Opens a dialog to create a new directory.
 		///      </remarks>		<short>    Opens a dialog to create a new directory.</short>
 		[Q_SLOT("void mkdir()")]
-		public void Mkdir() {
+		[SmokeMethod("mkdir()")]
+		public virtual void Mkdir() {
 			interceptor.Invoke("mkdir", "mkdir()", typeof(void));
 		}
 		/// <remarks>
 		///  Deletes the currently selected files/directories.
 		///      </remarks>		<short>    Deletes the currently selected files/directories.</short>
 		[Q_SLOT("void deleteSelected()")]
-		public void DeleteSelected() {
+		[SmokeMethod("deleteSelected()")]
+		public virtual void DeleteSelected() {
 			interceptor.Invoke("deleteSelected", "deleteSelected()", typeof(void));
 		}
 		/// <remarks>
@@ -736,28 +720,24 @@ namespace Kimono {
 			interceptor.Invoke("trashSelected", "trashSelected()", typeof(void));
 		}
 		/// <remarks>
-		///  A view factory for creating predefined fileviews. Called internally by setView
-		///  , but you can also call it directly. Reimplement this if you depend on self defined fileviews.
+		///  A view factory for creating predefined fileviews. Called internally by setView,
+		///  but you can also call it directly. Reimplement this if you depend on self defined fileviews.
 		/// <param> name="parent" is the QWidget to be set as parent
-		/// </param><param> name="view" is the predefined view to be set, note: this can be several ones OR:ed together.
+		/// </param><param> name="viewKind" is the predefined view to be set, note: this can be several ones OR:ed together
 		/// </param></remarks>		<return> the created KFileView
 		/// </return>
 		/// 		<short>    A view factory for creating predefined fileviews.</short>
-		/// 		<see> KFileView</see>
-		/// 		<see> KCombiView</see>
-		/// 		<see> KFileDetailView</see>
-		/// 		<see> KFileIconView</see>
-		/// 		<see> KFilePreview</see>
 		/// 		<see> KFile.FileView</see>
 		/// 		<see> setView</see>
 		[SmokeMethod("createView(QWidget*, KFile::FileView)")]
-		protected virtual KFileView CreateView(QWidget parent, KFile.FileView view) {
-			return (KFileView) interceptor.Invoke("createView#$", "createView(QWidget*, KFile::FileView)", typeof(KFileView), typeof(QWidget), parent, typeof(KFile.FileView), view);
+		protected virtual QAbstractItemView CreateView(QWidget parent, int viewKind) {
+			return (QAbstractItemView) interceptor.Invoke("createView#?", "createView(QWidget*, KFile::FileView)", typeof(QAbstractItemView), typeof(QWidget), parent, typeof(int), viewKind);
 		}
 		/// <remarks>
 		///  Sets a custom KDirLister to list directories.
 		///      </remarks>		<short>    Sets a custom KDirLister to list directories.</short>
-		protected void SetDirLister(KDirLister lister) {
+		[SmokeMethod("setDirLister(KDirLister*)")]
+		protected virtual void SetDirLister(KDirLister lister) {
 			interceptor.Invoke("setDirLister#", "setDirLister(KDirLister*)", typeof(void), typeof(KDirLister), lister);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
@@ -810,6 +790,13 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("checkPreviewSupport", "checkPreviewSupport()", typeof(bool));
 		}
 		/// <remarks>
+		///  Called upon right-click to activate the popupmenu.
+		///      </remarks>		<short>    Called upon right-click to activate the popupmenu.</short>
+		[SmokeMethod("activatedMenu(const KFileItem&, const QPoint&)")]
+		protected virtual void ActivatedMenu(KFileItem item, QPoint pos) {
+			interceptor.Invoke("activatedMenu##", "activatedMenu(const KFileItem&, const QPoint&)", typeof(void), typeof(KFileItem), item, typeof(QPoint), pos);
+		}
+		/// <remarks>
 		///  Restores the normal cursor after showing the busy-cursor. Also hides
 		///  the progressbar.
 		///      </remarks>		<short>    Restores the normal cursor after showing the busy-cursor.</short>
@@ -826,50 +813,26 @@ namespace Kimono {
 			interceptor.Invoke("pathChanged", "pathChanged()", typeof(void));
 		}
 		/// <remarks>
-		///  Adds a new list of KFileItems to the view
-		///  (coming from KDirLister)
-		///      </remarks>		<short>    Adds a new list of KFileItems to the view  (coming from KDirLister)      </short>
-		[Q_SLOT("void insertNewFiles(const KFileItemList&)")]
-		protected void InsertNewFiles(List<KFileItem> newone) {
-			interceptor.Invoke("insertNewFiles#", "insertNewFiles(const KFileItemList&)", typeof(void), typeof(List<KFileItem>), newone);
-		}
-		/// <remarks>
-		///  Removes the given KFileItem item from the view (usually called from
-		///  KDirLister).
-		///      </remarks>		<short>    Removes the given KFileItem item from the view (usually called from  KDirLister).</short>
-		[Q_SLOT("void itemDeleted(KFileItem*)")]
-		protected void ItemDeleted(KFileItem arg1) {
-			interceptor.Invoke("itemDeleted#", "itemDeleted(KFileItem*)", typeof(void), typeof(KFileItem), arg1);
-		}
-		/// <remarks>
 		///  Enters the directory specified by the given <code>item.</code>
 		///      </remarks>		<short>    Enters the directory specified by the given <code>item.</code></short>
-		[Q_SLOT("void selectDir(const KFileItem*)")]
-		[SmokeMethod("selectDir(const KFileItem*)")]
+		[Q_SLOT("void selectDir(const KFileItem&)")]
+		[SmokeMethod("selectDir(const KFileItem&)")]
 		protected virtual void SelectDir(KFileItem item) {
-			interceptor.Invoke("selectDir#", "selectDir(const KFileItem*)", typeof(void), typeof(KFileItem), item);
+			interceptor.Invoke("selectDir#", "selectDir(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
 		/// <remarks>
 		///  Emits fileSelected( item )
 		///      </remarks>		<short>    Emits fileSelected( item )      </short>
-		[Q_SLOT("void selectFile(const KFileItem*)")]
+		[Q_SLOT("void selectFile(const KFileItem&)")]
 		protected void SelectFile(KFileItem item) {
-			interceptor.Invoke("selectFile#", "selectFile(const KFileItem*)", typeof(void), typeof(KFileItem), item);
+			interceptor.Invoke("selectFile#", "selectFile(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
 		/// <remarks>
-		///  Emits fileHighlighted( i )
-		///      </remarks>		<short>    Emits fileHighlighted( i )      </short>
-		[Q_SLOT("void highlightFile(const KFileItem*)")]
-		protected void HighlightFile(KFileItem i) {
-			interceptor.Invoke("highlightFile#", "highlightFile(const KFileItem*)", typeof(void), typeof(KFileItem), i);
-		}
-		/// <remarks>
-		///  Called upon right-click to activate the popupmenu.
-		///      </remarks>		<short>    Called upon right-click to activate the popupmenu.</short>
-		[Q_SLOT("void activatedMenu(const KFileItem*, const QPoint&)")]
-		[SmokeMethod("activatedMenu(const KFileItem*, const QPoint&)")]
-		protected virtual void ActivatedMenu(KFileItem arg1, QPoint pos) {
-			interceptor.Invoke("activatedMenu##", "activatedMenu(const KFileItem*, const QPoint&)", typeof(void), typeof(KFileItem), arg1, typeof(QPoint), pos);
+		///  Emits fileHighlighted(item)
+		///      </remarks>		<short>    Emits fileHighlighted(item)      </short>
+		[Q_SLOT("void highlightFile(const KFileItem&)")]
+		protected void HighlightFile(KFileItem item) {
+			interceptor.Invoke("highlightFile#", "highlightFile(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
 		/// <remarks>
 		///  Changes sorting to sort by name
@@ -891,6 +854,13 @@ namespace Kimono {
 		[Q_SLOT("void sortByDate()")]
 		protected void SortByDate() {
 			interceptor.Invoke("sortByDate", "sortByDate()", typeof(void));
+		}
+		/// <remarks>
+		///  Changes sorting to sort by date
+		///      </remarks>		<short>    Changes sorting to sort by date      </short>
+		[Q_SLOT("void sortByType()")]
+		protected void SortByType() {
+			interceptor.Invoke("sortByType", "sortByType()", typeof(void));
 		}
 		/// <remarks>
 		///  Changes sorting to reverse sorting
@@ -949,18 +919,18 @@ namespace Kimono {
 		///  call to setView() or by the user selecting a different view thru
 		///  the GUI.
 		///      </remarks>		<short>    Emitted whenever the current fileview is changed, either by an explicit  call to setView() or by the user selecting a different view thru  the GUI.</short>
-		[Q_SIGNAL("void viewChanged(KFileView*)")]
-		void ViewChanged(KFileView newView);
+		[Q_SIGNAL("void viewChanged(QAbstractItemView*)")]
+		void ViewChanged(QAbstractItemView newView);
 		/// <remarks>
 		///  Emitted when a file is highlighted or generally the selection changes in
 		///  multiselection mode. In the latter case, <code>item</code> is null. You can access
 		///  the selected items with selectedItems().
 		///      </remarks>		<short>    Emitted when a file is highlighted or generally the selection changes in  multiselection mode.</short>
-		[Q_SIGNAL("void fileHighlighted(const KFileItem*)")]
+		[Q_SIGNAL("void fileHighlighted(const KFileItem&)")]
 		void FileHighlighted(KFileItem item);
-		[Q_SIGNAL("void dirActivated(const KFileItem*)")]
+		[Q_SIGNAL("void dirActivated(const KFileItem&)")]
 		void DirActivated(KFileItem item);
-		[Q_SIGNAL("void fileSelected(const KFileItem*)")]
+		[Q_SIGNAL("void fileSelected(const KFileItem&)")]
 		void FileSelected(KFileItem item);
 		/// <remarks>
 		///  Emitted when files are dropped. Dropping files is disabled by
@@ -969,7 +939,7 @@ namespace Kimono {
 		/// </param><param> name="event" the drop event itself.
 		/// </param><param> name="urls" the urls that where dropped.
 		///      </param></remarks>		<short>    Emitted when files are dropped.</short>
-		[Q_SIGNAL("void dropped(const KFileItem*, QDropEvent*, const KUrl::List&)")]
+		[Q_SIGNAL("void dropped(const KFileItem&, QDropEvent*, const KUrl::List&)")]
 		void Dropped(KFileItem item, QDropEvent arg2, List<KUrl> urls);
 	}
 }

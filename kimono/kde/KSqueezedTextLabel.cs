@@ -58,8 +58,8 @@ namespace Kimono {
 		///  Overridden for internal reasons; the API remains unaffected.
 		///    </remarks>		<short>    Overridden for internal reasons; the API remains unaffected.</short>
 		[SmokeMethod("setAlignment(Qt::Alignment)")]
-		public virtual void SetAlignment(int arg1) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), arg1);
+		public virtual void SetAlignment(uint arg1) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), arg1);
 		}
 		[Q_SLOT("void setText(const QString&)")]
 		public void SetText(string text) {

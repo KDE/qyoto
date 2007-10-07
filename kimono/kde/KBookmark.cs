@@ -86,10 +86,19 @@ namespace Kimono {
 		}
 		// KBookmarkGroup parentGroup(); >>>> NOT CONVERTED
 		// KBookmarkGroup toGroup(); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Constructs a null bookmark, i.e. a bookmark for which isNull() returns true
+		///  If you want to create a new bookmark use eitehr KBookmarkGroup.addBookmark
+		///  or if you want an interactive dialog use KBookmarkDialog.
+		///      </remarks>		<short>    Constructs a null bookmark, i.</short>
 		public KBookmark() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmark", "KBookmark()", typeof(void));
 		}
+		/// <remarks>
+		///  Creates the KBookmark wrapper for @param elem
+		///  Mostly for internal usage.
+		///      </remarks>		<short>    Creates the KBookmark wrapper for @param elem  Mostly for internal usage.</short>
 		public KBookmark(QDomElement elem) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmark#", "KBookmark(const QDomElement&)", typeof(void), typeof(QDomElement), elem);
@@ -175,6 +184,20 @@ namespace Kimono {
 			interceptor.Invoke("setIcon$", "setIcon(const QString&)", typeof(void), typeof(string), icon);
 		}
 		/// <remarks>
+		///      </remarks>		<return> if the bookmark should be shown in the toolbar
+		///  (used by the filtered toolbar)
+		/// </return>
+		/// 		<short>   </short>
+		public bool ShowInToolbar() {
+			return (bool) interceptor.Invoke("showInToolbar", "showInToolbar() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Set wheter this bookmark is show in a filterd toolbar
+		///      </remarks>		<short>    Set wheter this bookmark is show in a filterd toolbar      </short>
+		public void SetShowInToolbar(bool show) {
+			interceptor.Invoke("setShowInToolbar$", "setShowInToolbar(bool)", typeof(void), typeof(bool), show);
+		}
+		/// <remarks>
 		/// </remarks>		<return> the group containing this bookmark
 		///      </return>
 		/// 		<short>   </short>
@@ -186,7 +209,8 @@ namespace Kimono {
 		///  Return the "address" of this bookmark in the whole tree.
 		///  This is used when telling other processes about a change
 		///  in a given bookmark. The encoding of the address is "/4/2", for
-		///  instance, to design the 2nd child inside the 4th child of the root bk.
+		///  instance, to designate the 2nd child inside the 4th child of the 
+		///  root bookmark.
 		///      </remarks>		<short>    Return the "address" of this bookmark in the whole tree.</short>
 		public string Address() {
 			return (string) interceptor.Invoke("address", "address() const", typeof(string));
@@ -262,6 +286,9 @@ namespace Kimono {
 		public static bool operator!=(KBookmark lhs, KBookmark rhs) {
 			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const KBookmark&) const", typeof(bool), typeof(KBookmark), lhs, typeof(KBookmark), rhs);
 		}
+		/// <remarks>
+		///  Creates a stand alone bookmark. This is fairly expensive since a new QDom Tree is build.
+		///      </remarks>		<short>    Creates a stand alone bookmark.</short>
 		public static KBookmark StandaloneBookmark(string text, KUrl url, string icon) {
 			return (KBookmark) staticInterceptor.Invoke("standaloneBookmark$#$", "standaloneBookmark(const QString&, const KUrl&, const QString&)", typeof(KBookmark), typeof(string), text, typeof(KUrl), url, typeof(string), icon);
 		}

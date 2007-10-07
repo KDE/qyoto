@@ -99,9 +99,9 @@ namespace Kimono {
 		///  for the composer windows "composer#".
 		///      </remarks>		<short>    Construct a main window.</short>
 		/// 		<see> http://doc.trolltech.com/3.2/qt.html#WidgetFlags-enum</see>
-		public KMainWindow(QWidget parent, int f) : this((Type) null) {
+		public KMainWindow(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KMainWindow#$", "KMainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("KMainWindow#$", "KMainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KMainWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -7,19 +7,16 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
-	///  The KInputDialog class provides a simple dialog to get a single value
+	///  The KInputDialog namespace provides simple dialogs to get a single value
 	///  from the user. The value can be a string, a number (either an integer or
-	///  a float) or an item from a list. This class is designed to be source
-	///  compatible with QInputDialog.
-	///  Five static convenience functions are provided: getText(), getInteger().
-	///  getDouble(), getItem() and getItemList().
+	///  a float) or an item from a list.
 	/// </remarks>		<author> Nadeem Hasan <nhasan@kde.org>
 	///  </author>
-	/// 		<short>    The KInputDialog class provides a simple dialog to get a single value  from the user.</short>
+	/// 		<short>    The KInputDialog namespace provides simple dialogs to get a single value  from the user.</short>
 
 	[SmokeClass("KInputDialog")]
-	public class KInputDialog : KDialog {
- 		protected KInputDialog(Type dummy) : base((Type) null) {}
+	public class KInputDialog : Object {
+		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static KInputDialog() {
 			staticInterceptor = new SmokeInvocation(typeof(KInputDialog), null);
@@ -854,11 +851,5 @@ namespace Kimono {
 		public static List<string> GetItemList(string caption, string label) {
 			return (List<string>) staticInterceptor.Invoke("getItemList$$", "getItemList(const QString&, const QString&)", typeof(List<string>), typeof(string), caption, typeof(string), label);
 		}
-		protected new IKInputDialogSignals Emit {
-			get { return (IKInputDialogSignals) Q_EMIT; }
-		}
-	}
-
-	public interface IKInputDialogSignals : IKDialogSignals {
 	}
 }

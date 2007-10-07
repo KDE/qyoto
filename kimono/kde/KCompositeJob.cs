@@ -104,6 +104,9 @@ namespace Kimono {
 		protected new IKCompositeJobSignals Emit {
 			get { return (IKCompositeJobSignals) Q_EMIT; }
 		}
+		public override void Start() {
+		}
+
 	}
 
 	public interface IKCompositeJobSignals : IKJobSignals {

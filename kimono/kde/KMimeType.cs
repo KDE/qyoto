@@ -48,17 +48,7 @@ namespace Kimono {
 		// KMimeType::Ptr findByFileContent(const QString& arg1); >>>> NOT CONVERTED
 		// KMimeType::List allMimeTypes(); >>>> NOT CONVERTED
 		// KMimeType::Ptr defaultMimeTypePtr(); >>>> NOT CONVERTED
-		/// <remarks>
-		///  Returns the icon associated with this mime type. See also icon(url)
-		///  which takes an URL and returns a special icon for this URL.
-		///  For instance for a folder you can get the folder-specific icon instead
-		///  of the generic folder icon.
-		/// </remarks>		<return> the name of the icon, can be string().
-		///      </return>
-		/// 		<short>    Returns the icon associated with this mime type.</short>
-		public string IconName() {
-			return (string) interceptor.Invoke("iconName", "iconName() const", typeof(string));
-		}
+		// KMimeType* KMimeType(KMimeTypePrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Return the filename of the icon associated with the mimetype.
 		///  Use KIconLoader.LoadMimeTypeIcon to load the icon.
@@ -67,9 +57,11 @@ namespace Kimono {
 		/// </remarks>		<return> The path to the icon associated with this MIME type.
 		///      </return>
 		/// 		<short>    Return the filename of the icon associated with the mimetype.</short>
-		[SmokeMethod("iconName(const KUrl&) const")]
-		public virtual string IconName(KUrl arg1) {
-			return (string) interceptor.Invoke("iconName#", "iconName(const KUrl&) const", typeof(string), typeof(KUrl), arg1);
+		public string IconName(KUrl url) {
+			return (string) interceptor.Invoke("iconName#", "iconName(const KUrl&) const", typeof(string), typeof(KUrl), url);
+		}
+		public string IconName() {
+			return (string) interceptor.Invoke("iconName", "iconName() const", typeof(string));
 		}
 		/// <remarks>
 		///  Returns the descriptive comment associated with the MIME type.
@@ -78,12 +70,10 @@ namespace Kimono {
 		/// </remarks>		<return> The descriptive comment associated with the MIME type, if any.
 		///      </return>
 		/// 		<short>    Returns the descriptive comment associated with the MIME type.</short>
-		[SmokeMethod("comment(const KUrl&) const")]
-		public virtual string Comment(KUrl url) {
+		public string Comment(KUrl url) {
 			return (string) interceptor.Invoke("comment#", "comment(const KUrl&) const", typeof(string), typeof(KUrl), url);
 		}
-		[SmokeMethod("comment() const")]
-		public virtual string Comment() {
+		public new string Comment() {
 			return (string) interceptor.Invoke("comment", "comment() const", typeof(string));
 		}
 		/// <remarks>
@@ -94,44 +84,6 @@ namespace Kimono {
 		/// 		<short>    Retrieve the list of patterns associated with the MIME Type.</short>
 		public List<string> Patterns() {
 			return (List<string>) interceptor.Invoke("patterns", "patterns() const", typeof(List<string>));
-		}
-		/// <remarks>
-		///  Load the mimetype from a stream.
-		/// <param> name="qs" the stream to load from
-		///      </param></remarks>		<short>    Load the mimetype from a stream.</short>
-		[SmokeMethod("load(QDataStream&)")]
-		public override void Load(QDataStream qs) {
-			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), qs);
-		}
-		/// <remarks>
-		///  Save the mimetype to a stream.
-		/// <param> name="qs" the stream to save to
-		///      </param></remarks>		<short>    Save the mimetype to a stream.</short>
-		[SmokeMethod("save(QDataStream&)")]
-		public override void Save(QDataStream qs) {
-			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), qs);
-		}
-		/// <remarks>
-		///  Returns the property with the given <code>name.</code>
-		/// <param> name="name" the name of the property
-		/// </param></remarks>		<return> the value of the property
-		/// </return>
-		/// 		<short>    Returns the property with the given <code>name.</code></short>
-		/// 		<see> propertyNames</see>
-		[SmokeMethod("property(const QString&) const")]
-		public override QVariant Property(string name) {
-			return (QVariant) interceptor.Invoke("property$", "property(const QString&) const", typeof(QVariant), typeof(string), name);
-		}
-		/// <remarks>
-		///  Retrieves a list of all properties associated with this
-		///  KMimeType.
-		/// </remarks>		<return> a list of all property names
-		/// </return>
-		/// 		<short>    Retrieves a list of all properties associated with this  KMimeType.</short>
-		/// 		<see> property</see>
-		[SmokeMethod("propertyNames() const")]
-		public override List<string> PropertyNames() {
-			return (List<string>) interceptor.Invoke("propertyNames", "propertyNames() const", typeof(List<string>));
 		}
 		public bool IsDefault() {
 			return (bool) interceptor.Invoke("isDefault", "isDefault() const", typeof(bool));
@@ -179,6 +131,9 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KMimeType$$$", "KMimeType(const QString&, const QString&, const QString&)", typeof(void), typeof(string), fullpath, typeof(string), name, typeof(string), comment);
 		}
+		/// <remarks>
+		///  The stream must already be positioned at the correct offset
+		///      </remarks>		<short>   </short>
 		protected void AddPattern(string pattern) {
 			interceptor.Invoke("addPattern$", "addPattern(const QString&)", typeof(void), typeof(string), pattern);
 		}

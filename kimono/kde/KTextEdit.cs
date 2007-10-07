@@ -84,11 +84,11 @@ namespace Kimono {
 		public virtual void CreateHighlighter() {
 			interceptor.Invoke("createHighlighter", "createHighlighter()", typeof(void));
 		}
-		public Sonnet.Highlighter Hightighter() {
-			return (Sonnet.Highlighter) interceptor.Invoke("hightighter", "hightighter() const", typeof(Sonnet.Highlighter));
+		public Sonnet.Highlighter Highlighter() {
+			return (Sonnet.Highlighter) interceptor.Invoke("highlighter", "highlighter() const", typeof(Sonnet.Highlighter));
 		}
-		public void SetHightighter(Sonnet.Highlighter _highLighter) {
-			interceptor.Invoke("setHightighter#", "setHightighter(Sonnet::Highlighter*)", typeof(void), typeof(Sonnet.Highlighter), _highLighter);
+		public void SetHighlighter(Sonnet.Highlighter _highLighter) {
+			interceptor.Invoke("setHighlighter#", "setHighlighter(Sonnet::Highlighter*)", typeof(void), typeof(Sonnet.Highlighter), _highLighter);
 		}
 		/// <remarks>
 		///  Create a modal dialog to check the spelling.  This slot will not return

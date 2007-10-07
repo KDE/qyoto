@@ -12,6 +12,7 @@ namespace Kimono {
 	///  the national language.
 	///  KLocale supports translating, as well as specifying the format
 	///  for numbers, currency, time, and date.
+	///  Use KGlobal.Locale() to get pointer to the global KLocale object
 	/// </remarks>		<author> Stephan Kulow <coolo@kde.org>, Preston Brown <pbrown@kde.org>,
 	///  Hans Petter Bieker <bieker@kde.org>, Lukas Tinkl <lukas.tinkl@suse.cz>
 	/// </author>
@@ -79,7 +80,6 @@ namespace Kimono {
 			Imperial = 1,
 		}
 		// KLocale* KLocale(const QString& arg1,KSharedConfig::Ptr arg2); >>>> NOT CONVERTED
-		// QString formatDateTime(const KDateTime& arg1,KLocale::DateFormat arg2,DateTimeFormatOptions arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KLocale with the given catalog name.
 		///  The constructor looks for an entry Locale/Language in the
@@ -97,6 +97,18 @@ namespace Kimono {
 		public KLocale(string catalog) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KLocale$", "KLocale(const QString&)", typeof(void), typeof(string), catalog);
+		}
+		public KLocale(string catalog, string language, string country, KConfig config) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KLocale$$$#", "KLocale(const QString&, const QString&, const QString&, KConfig*)", typeof(void), typeof(string), catalog, typeof(string), language, typeof(string), country, typeof(KConfig), config);
+		}
+		public KLocale(string catalog, string language, string country) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KLocale$$$", "KLocale(const QString&, const QString&, const QString&)", typeof(void), typeof(string), catalog, typeof(string), language, typeof(string), country);
+		}
+		public KLocale(string catalog, string language) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KLocale$$", "KLocale(const QString&, const QString&)", typeof(void), typeof(string), catalog, typeof(string), language);
 		}
 		/// <remarks>
 		///  Copy constructor.
@@ -189,39 +201,6 @@ namespace Kimono {
 		/// 		<short>    Changes the current encoding.</short>
 		public bool SetEncoding(int mibEnum) {
 			return (bool) interceptor.Invoke("setEncoding$", "setEncoding(int)", typeof(bool), typeof(int), mibEnum);
-		}
-		/// <remarks>
-		///  Changes the current language. The current language will be left
-		///  unchanged if failed. It will force a reload of the country specific
-		///  configuration as well.
-		/// <param> name="language" the language code
-		/// </param></remarks>		<return> true on success
-		///    </return>
-		/// 		<short>    Changes the current language.</short>
-		public bool SetLanguage(string language) {
-			return (bool) interceptor.Invoke("setLanguage$", "setLanguage(const QString&)", typeof(bool), typeof(string), language);
-		}
-		/// <remarks>
-		///  Changes the list of preferred languages for the locale. The first valid
-		///  language in the list will be used, or the default language (en_US)
-		///  if none of the specified languages were available.
-		/// <param> name="languages" the list of language codes
-		/// </param></remarks>		<return> true if one of the specified languages were used
-		///    </return>
-		/// 		<short>    Changes the list of preferred languages for the locale.</short>
-		public bool SetLanguage(List<string> languages) {
-			return (bool) interceptor.Invoke("setLanguage?", "setLanguage(const QStringList&)", typeof(bool), typeof(List<string>), languages);
-		}
-		/// <remarks>
-		///  Changes the current country. The current country will be left
-		///  unchanged if failed. It will force a reload of the country specific
-		///  configuration.
-		/// <param> name="country" The ISO 3166 country code.
-		/// </param></remarks>		<return> True on success.
-		///    </return>
-		/// 		<short>    Changes the current country.</short>
-		public bool SetCountry(string country) {
-			return (bool) interceptor.Invoke("setCountry$", "setCountry(const QString&)", typeof(bool), typeof(string), country);
 		}
 		/// <remarks>
 		///  Returns what a decimal point should look like ("." or "," etc.)
@@ -481,6 +460,9 @@ namespace Kimono {
 		/// </param></remarks>		<return> The date and time as a string
 		///    </return>
 		/// 		<short>    Returns a string formatted to the current locale's conventions  regarding both date and time.</short>
+		public string FormatDateTime(KDateTime dateTime, KLocale.DateFormat format, uint options) {
+			return (string) interceptor.Invoke("formatDateTime#$$", "formatDateTime(const KDateTime&, KLocale::DateFormat, KLocale::DateTimeFormatOptions) const", typeof(string), typeof(KDateTime), dateTime, typeof(KLocale.DateFormat), format, typeof(uint), options);
+		}
 		public string FormatDateTime(KDateTime dateTime, KLocale.DateFormat format) {
 			return (string) interceptor.Invoke("formatDateTime#$", "formatDateTime(const KDateTime&, KLocale::DateFormat) const", typeof(string), typeof(KDateTime), dateTime, typeof(KLocale.DateFormat), format);
 		}
@@ -1287,6 +1269,45 @@ namespace Kimono {
 		public bool IsApplicationTranslatedInto(string language) {
 			return (bool) interceptor.Invoke("isApplicationTranslatedInto$", "isApplicationTranslatedInto(const QString&)", typeof(bool), typeof(string), language);
 		}
+		/// <remarks>
+		///  Copies the catalogs of this objct to an other KLocale object.
+		///    </remarks>		<short>    Copies the catalogs of this objct to an other KLocale object.</short>
+		public void CopyCatalogsTo(KLocale locale) {
+			interceptor.Invoke("copyCatalogsTo#", "copyCatalogsTo(KLocale*)", typeof(void), typeof(KLocale), locale);
+		}
+		/// <remarks>
+		///  Changes the current country. The current country will be left
+		///  unchanged if failed. It will force a reload of the country specific
+		///  configuration.
+		/// <param> name="country" The ISO 3166 country code.
+		/// </param></remarks>		<return> True on success.
+		///    </return>
+		/// 		<short>    Changes the current country.</short>
+		protected bool SetCountry(string country, KConfig config) {
+			return (bool) interceptor.Invoke("setCountry$#", "setCountry(const QString&, KConfig*)", typeof(bool), typeof(string), country, typeof(KConfig), config);
+		}
+		/// <remarks>
+		///  Changes the current language. The current language will be left
+		///  unchanged if failed. It will force a reload of the country specific
+		///  configuration as well.
+		/// <param> name="language" the language code
+		/// </param></remarks>		<return> true on success
+		///    </return>
+		/// 		<short>    Changes the current language.</short>
+		protected bool SetLanguage(string language, KConfig config) {
+			return (bool) interceptor.Invoke("setLanguage$#", "setLanguage(const QString&, KConfig*)", typeof(bool), typeof(string), language, typeof(KConfig), config);
+		}
+		/// <remarks>
+		///  Changes the list of preferred languages for the locale. The first valid
+		///  language in the list will be used, or the default language (en_US)
+		///  if none of the specified languages were available.
+		/// <param> name="languages" the list of language codes
+		/// </param></remarks>		<return> true if one of the specified languages were used
+		///    </return>
+		/// 		<short>    Changes the list of preferred languages for the locale.</short>
+		protected bool SetLanguage(List<string> languages) {
+			return (bool) interceptor.Invoke("setLanguage?", "setLanguage(const QStringList&)", typeof(bool), typeof(List<string>), languages);
+		}
 		~KLocale() {
 			interceptor.Invoke("~KLocale", "~KLocale()", typeof(void));
 		}
@@ -1341,17 +1362,6 @@ namespace Kimono {
 		/// 		<short>    Returns the name of the default country.</short>
 		public static string DefaultCountry() {
 			return (string) staticInterceptor.Invoke("defaultCountry", "defaultCountry()", typeof(string));
-		}
-		/// <remarks>
-		///    </remarks>		<short>   </short>
-		public static string _initLanguage(KConfigBase config) {
-			return (string) staticInterceptor.Invoke("_initLanguage#", "_initLanguage(KConfigBase*)", typeof(string), typeof(KConfigBase), config);
-		}
-		/// <remarks>
-		///  pointer.
-		///    </remarks>		<short>   </short>
-		protected static void InitInstance() {
-			staticInterceptor.Invoke("initInstance", "initInstance()", typeof(void));
 		}
 	}
 }

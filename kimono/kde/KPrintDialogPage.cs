@@ -66,7 +66,7 @@ namespace Kimono {
 		// KMPrinter* printer(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Standard constructor.
-		/// 	 </remarks>		<short>    Standard constructor.</short>
+		///      </remarks>		<short>    Standard constructor.</short>
 		public KPrintDialogPage(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KPrintDialogPage#", "KPrintDialogPage(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -77,7 +77,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Modified constructor. For internal use only.
-		/// 	 </remarks>		<short>    Modified constructor.</short>
+		///      </remarks>		<short>    Modified constructor.</short>
 		/// <remarks>
 		///  This function is called to fill the structure <code>opts</code> with the selected options from this dialog
 		///  page. If <code>incldef</code> is true, include also options with default values, otherwise discard them.
@@ -98,7 +98,7 @@ namespace Kimono {
 		///  This function is called to update the current page with the options contained in <code>opts.</code>
 		///  Reimplement it in subclasses.
 		/// <param> name="opts" the structure containing the options to update the page
-		/// 	 </param></remarks>		<short>    This function is called to update the current page with the options contained in <code>opts.</code></short>
+		///      </param></remarks>		<short>    This function is called to update the current page with the options contained in <code>opts.</code></short>
 		[SmokeMethod("setOptions(const QMap<QString, QString>&)")]
 		public virtual void SetOptions(Dictionary<string, string> opts) {
 			interceptor.Invoke("setOptions?", "setOptions(const QMap<QString, QString>&)", typeof(void), typeof(Dictionary<string, string>), opts);
@@ -109,7 +109,7 @@ namespace Kimono {
 		///  in the selected options.
 		/// <param> name="msg" should contain an error message when returning false
 		/// </param></remarks>		<return> valid status
-		/// 	 </return>
+		///      </return>
 		/// 		<short>    Returns true if options selected in the page are valid (no conflict), false otherwise.</short>
 		[SmokeMethod("isValid(QString&)")]
 		public virtual bool IsValid(StringBuilder msg) {
@@ -178,10 +178,10 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  For internal use only.
-		/// 	 </remarks>		<short>    For internal use only.</short>
+		///      </remarks>		<short>    For internal use only.</short>
 		/// <remarks>
 		///  For internal use only
-		/// 	 </remarks>		<short>    For internal use only 	 </short>
+		///      </remarks>		<short>    For internal use only      </short>
 		~KPrintDialogPage() {
 			interceptor.Invoke("~KPrintDialogPage", "~KPrintDialogPage()", typeof(void));
 		}

@@ -23,6 +23,7 @@ namespace Kimono {
 		// KServiceType::Ptr parentType(); >>>> NOT CONVERTED
 		// KServiceType::Ptr serviceType(const QString& arg1); >>>> NOT CONVERTED
 		// KServiceType::List allServiceTypes(); >>>> NOT CONVERTED
+		// KServiceType* KServiceType(KServiceTypePrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a service type and take all information from a desktop file.
 		/// <param> name="config" the configuration file
@@ -45,25 +46,6 @@ namespace Kimono {
 		/// 		<short>    Returns the descriptive comment associated, if any.</short>
 		public string Comment() {
 			return (string) interceptor.Invoke("comment", "comment() const", typeof(string));
-		}
-		/// <remarks>
-		///  Returns the name of this service type.
-		/// </remarks>		<return> the name of the service type
-		///      </return>
-		/// 		<short>    Returns the name of this service type.</short>
-		[SmokeMethod("name() const")]
-		public override string Name() {
-			return (string) interceptor.Invoke("name", "name() const", typeof(string));
-		}
-		/// <remarks>
-		///  Returns the relative path to the desktop entry file responsible for
-		///          this servicetype.
-		///  For instance inode/directory.desktop, or kpart.desktop
-		/// </remarks>		<return> the path of the desktop file
-		///      </return>
-		/// 		<short>    Returns the relative path to the desktop entry file responsible for          this servicetype.</short>
-		public string DesktopEntryPath() {
-			return (string) interceptor.Invoke("desktopEntryPath", "desktopEntryPath() const", typeof(string));
 		}
 		/// <remarks>
 		///  Checks whether this service type inherits another one.
@@ -91,43 +73,6 @@ namespace Kimono {
 		/// 		<short>    Checks whether this service type is or inherits from <code>servTypeName.</code></short>
 		public bool Inherits(string servTypeName) {
 			return (bool) interceptor.Invoke("inherits$", "inherits(const QString&) const", typeof(bool), typeof(string), servTypeName);
-		}
-		/// <remarks>
-		///  Returns the requested property. Some often used properties
-		///  have convenience access functions like name(),
-		///  comment().
-		/// <param> name="_name" the name of the property
-		/// </param></remarks>		<return> the property, or invalid if not found
-		///      </return>
-		/// 		<short>    Returns the requested property.</short>
-		[SmokeMethod("property(const QString&) const")]
-		public virtual QVariant Property(string _name) {
-			return (QVariant) interceptor.Invoke("property$", "property(const QString&) const", typeof(QVariant), typeof(string), _name);
-		}
-		/// <remarks>
-		///  Returns the list of all properties of this service type.
-		///  Properties, apart from Name, and Comment, are defined in
-		///  the servicetype .desktop file using
-		///  @code
-		///  [Property.MyPropertyName]
-		///  Type=<the name of a type supported by QVariant>
-		///  Value=<the value>
-		///  @endcode
-		/// </remarks>		<return> the list of properties
-		///      </return>
-		/// 		<short>    Returns the list of all properties of this service type.</short>
-		[SmokeMethod("propertyNames() const")]
-		public virtual List<string> PropertyNames() {
-			return (List<string>) interceptor.Invoke("propertyNames", "propertyNames() const", typeof(List<string>));
-		}
-		/// <remarks>
-		///  Checks whether the service type is valid.
-		/// </remarks>		<return> true if the service is valid (e.g. name is not empty)
-		///      </return>
-		/// 		<short>    Checks whether the service type is valid.</short>
-		[SmokeMethod("isValid() const")]
-		public override bool IsValid() {
-			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Returns the type of the property definition with the given <code>_name.</code>
@@ -159,20 +104,6 @@ namespace Kimono {
 			return (Dictionary<string, QVariant.TypeOf>) interceptor.Invoke("propertyDefs", "propertyDefs() const", typeof(Dictionary<string, QVariant.TypeOf>));
 		}
 		/// <remarks>
-		///  Save ourselves to the data stream.
-		///      </remarks>		<short>   </short>
-		[SmokeMethod("save(QDataStream&)")]
-		public override void Save(QDataStream arg1) {
-			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
-		}
-		/// <remarks>
-		///  Load ourselves from the data stream.
-		///      </remarks>		<short>   </short>
-		[SmokeMethod("load(QDataStream&)")]
-		public override void Load(QDataStream arg1) {
-			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
-		}
-		/// <remarks>
 		///  Pointer to parent service type
 		///      </remarks>		<short>   </short>
 		/// <remarks>
@@ -186,10 +117,13 @@ namespace Kimono {
 		public int ServiceOffersOffset() {
 			return (int) interceptor.Invoke("serviceOffersOffset", "serviceOffersOffset() const", typeof(int));
 		}
+		/// <remarks>
+		///  The stream must already be positionned at the correct offset
+		///       </remarks>		<short>   </short>
 		~KServiceType() {
 			interceptor.Invoke("~KServiceType", "~KServiceType()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~KServiceType", "~KServiceType()", typeof(void));
 		}
 		/// <remarks>

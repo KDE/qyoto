@@ -27,8 +27,8 @@ namespace Kimono {
 		///  If the KFilterBase's device is not opened, it will be opened.
 		///      </remarks>		<short>    Open for reading or writing.</short>
 		[SmokeMethod("open(QIODevice::OpenMode)")]
-		public virtual bool Open(int mode) {
-			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(int), mode);
+		public override bool Open(uint mode) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		/// <remarks>
 		///  Close after reading or writing.

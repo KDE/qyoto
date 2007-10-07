@@ -14,7 +14,7 @@ namespace Kimono {
 	/// 		<see> http://techbase.kde.org/Development/Architecture/KDE3/System_Configuration_Cache</see>
 
 	[SmokeClass("KSycocaEntry")]
-	public abstract class KSycocaEntry : KShared {
+	public class KSycocaEntry : KShared, IDisposable {
  		protected KSycocaEntry(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KSycocaEntry), this);
@@ -23,34 +23,30 @@ namespace Kimono {
 		static KSycocaEntry() {
 			staticInterceptor = new SmokeInvocation(typeof(KSycocaEntry), null);
 		}
-		[SmokeMethod("isType(KSycocaType) const")]
-		public virtual bool IsType(int t) {
+		// KSycocaEntry* KSycocaEntry(KSycocaEntryPrivate& arg1); >>>> NOT CONVERTED
+		public KSycocaEntry() : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KSycocaEntry", "KSycocaEntry()", typeof(void));
+		}
+		/// <remarks>
+		///  internal
+		///     </remarks>		<short>    internal     </short>
+		public bool IsType(int t) {
 			return (bool) interceptor.Invoke("isType?", "isType(KSycocaType) const", typeof(bool), typeof(int), t);
 		}
-		[SmokeMethod("sycocaType() const")]
-		public virtual int SycocaType() {
+		/// <remarks>
+		///  internal
+		///     </remarks>		<short>    internal     </short>
+		public int SycocaType() {
 			return (int) interceptor.Invoke("sycocaType", "sycocaType() const", typeof(int));
-		}
-		/// <remarks>
-		///  Default constructor
-		///     </remarks>		<short>    Default constructor     </short>
-		public KSycocaEntry(string path) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KSycocaEntry$", "KSycocaEntry(const QString&)", typeof(void), typeof(string), path);
-		}
-		/// <remarks>
-		///  Restores itself from a stream.
-		///     </remarks>		<short>   </short>
-		public KSycocaEntry(QDataStream _str, int iOffset) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KSycocaEntry#$", "KSycocaEntry(QDataStream&, int)", typeof(void), typeof(QDataStream), _str, typeof(int), iOffset);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the name of this entry
 		///     </return>
 		/// 		<short>   </short>
-		[SmokeMethod("name() const")]
-		public abstract string Name();
+		public string Name() {
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
+		}
 		/// <remarks>
 		/// </remarks>		<return> the path of this entry
 		///  The path can be absolute or relative.
@@ -64,8 +60,9 @@ namespace Kimono {
 		/// </remarks>		<return> true if valid
 		///     </return>
 		/// 		<short>   </short>
-		[SmokeMethod("isValid() const")]
-		public abstract bool IsValid();
+		public bool IsValid() {
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
+		}
 		/// <remarks>
 		/// </remarks>		<return> true if deleted
 		///     </return>
@@ -74,10 +71,33 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("isDeleted", "isDeleted() const", typeof(bool));
 		}
 		/// <remarks>
+		///  Returns the requested property. Some often used properties
+		///  have convenience access functions like exec(),
+		///  serviceTypes etc.
+		/// <param> name="_name" the name of the property
+		/// </param></remarks>		<return> the property, or invalid if not found
+		///      </return>
+		/// 		<short>    Returns the requested property.</short>
+		public QVariant Property(string name) {
+			return (QVariant) interceptor.Invoke("property$", "property(const QString&) const", typeof(QVariant), typeof(string), name);
+		}
+		/// <remarks>
+		///  Returns the list of all properties that this service can have.
+		///  That means, that some of these properties may be empty.
+		/// </remarks>		<return> the list of supported properties
+		///      </return>
+		/// 		<short>    Returns the list of all properties that this service can have.</short>
+		public List<string> PropertyNames() {
+			return (List<string>) interceptor.Invoke("propertyNames", "propertyNames() const", typeof(List<string>));
+		}
+		/// <remarks>
 		///  Sets whether or not this service is deleted
 		///     </remarks>		<short>    Sets whether or not this service is deleted     </short>
 		public void SetDeleted(bool deleted) {
 			interceptor.Invoke("setDeleted$", "setDeleted(bool)", typeof(void), typeof(bool), deleted);
+		}
+		public bool IsSeparator() {
+			return (bool) interceptor.Invoke("isSeparator", "isSeparator() const", typeof(bool));
 		}
 		/// <remarks>
 		/// </remarks>		<return> the position of the entry in the sycoca file
@@ -90,15 +110,15 @@ namespace Kimono {
 		///  Save ourselves to the database. Don't forget to call the parent class
 		///  first if you override this function.
 		///     </remarks>		<short>   </short>
-		[SmokeMethod("save(QDataStream&)")]
-		public virtual void Save(QDataStream s) {
+		public void Save(QDataStream s) {
 			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), s);
 		}
-		/// <remarks>
-		///  Load ourselves from the database. Don't call the parent class!
-		///     </remarks>		<short>   </short>
-		[SmokeMethod("load(QDataStream&)")]
-		public abstract void Load(QDataStream arg1);
+		~KSycocaEntry() {
+			interceptor.Invoke("~KSycocaEntry", "~KSycocaEntry()", typeof(void));
+		}
+		public void Dispose() {
+			interceptor.Invoke("~KSycocaEntry", "~KSycocaEntry()", typeof(void));
+		}
 		/// <remarks>
 		///  Safe demarshalling functions.
 		///     </remarks>		<short>    Safe demarshalling functions.</short>

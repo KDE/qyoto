@@ -31,7 +31,6 @@ namespace Kimono {
 		///  See <see cref="IJobSignals"></see> for signals emitted by Job
 		/// </remarks>		<short>    The base class for all jobs.</short>
 		/// 		<see> Scheduler</see>
-		/// 		<see> Slave</see>
 
 		[SmokeClass("KIO::Job")]
 		public class Job : KCompositeJob, IDisposable {
@@ -52,30 +51,6 @@ namespace Kimono {
 			/// 		<short>    Retrieves the UI delegate of this job.</short>
 			public KIO.JobUiDelegate Ui() {
 				return (KIO.JobUiDelegate) interceptor.Invoke("ui", "ui() const", typeof(KIO.JobUiDelegate));
-			}
-			/// <remarks>
-			///  Abort this job.
-			///  This kills all subjobs and deletes the job.
-			///          </remarks>		<short>    Abort this job.</short>
-			[SmokeMethod("doKill()")]
-			public new virtual bool DoKill() {
-				return (bool) interceptor.Invoke("doKill", "doKill()", typeof(bool));
-			}
-			/// <remarks>
-			///  Suspend this job
-			/// </remarks>		<short>    Suspend this job </short>
-			/// 		<see> resume</see>
-			[SmokeMethod("doSuspend()")]
-			public new virtual bool DoSuspend() {
-				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
-			}
-			/// <remarks>
-			///  Resume this job
-			/// </remarks>		<short>    Resume this job </short>
-			/// 		<see> suspend</see>
-			[SmokeMethod("doResume()")]
-			public new virtual bool DoResume() {
-				return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
 			}
 			/// <remarks>
 			///  Converts an error code and a non-i18n error message into an
@@ -213,33 +188,33 @@ namespace Kimono {
 			public string QueryMetaData(string key) {
 				return (string) interceptor.Invoke("queryMetaData$", "queryMetaData(const QString&)", typeof(string), typeof(string), key);
 			}
-			public void EmitMoving(KUrl src, KUrl dest) {
-				interceptor.Invoke("emitMoving##", "emitMoving(const KUrl&, const KUrl&)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest);
-			}
-			public void EmitCopying(KUrl src, KUrl dest) {
-				interceptor.Invoke("emitCopying##", "emitCopying(const KUrl&, const KUrl&)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest);
-			}
-			public void EmitCreatingDir(KUrl dir) {
-				interceptor.Invoke("emitCreatingDir#", "emitCreatingDir(const KUrl&)", typeof(void), typeof(KUrl), dir);
-			}
-			public void EmitDeleting(KUrl url) {
-				interceptor.Invoke("emitDeleting#", "emitDeleting(const KUrl&)", typeof(void), typeof(KUrl), url);
-			}
-			public void EmitStating(KUrl url) {
-				interceptor.Invoke("emitStating#", "emitStating(const KUrl&)", typeof(void), typeof(KUrl), url);
-			}
-			public void EmitTransferring(KUrl url) {
-				interceptor.Invoke("emitTransferring#", "emitTransferring(const KUrl&)", typeof(void), typeof(KUrl), url);
-			}
-			public void EmitMounting(string dev, string point) {
-				interceptor.Invoke("emitMounting$$", "emitMounting(const QString&, const QString&)", typeof(void), typeof(string), dev, typeof(string), point);
-			}
-			public void EmitUnmounting(string point) {
-				interceptor.Invoke("emitUnmounting$", "emitUnmounting(const QString&)", typeof(void), typeof(string), point);
-			}
 			public Job() : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("Job", "Job()", typeof(void));
+			}
+			/// <remarks>
+			///  Abort this job.
+			///  This kills all subjobs and deletes the job.
+			///          </remarks>		<short>    Abort this job.</short>
+			[SmokeMethod("doKill()")]
+			protected override bool DoKill() {
+				return (bool) interceptor.Invoke("doKill", "doKill()", typeof(bool));
+			}
+			/// <remarks>
+			///  Suspend this job
+			/// </remarks>		<short>    Suspend this job </short>
+			/// 		<see> resume</see>
+			[SmokeMethod("doSuspend()")]
+			protected override bool DoSuspend() {
+				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
+			}
+			/// <remarks>
+			///  Resume this job
+			/// </remarks>		<short>    Resume this job </short>
+			/// 		<see> suspend</see>
+			[SmokeMethod("doResume()")]
+			protected override bool DoResume() {
+				return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
 			}
 			/// <remarks>
 			///  Add a job that has to be finished before a result
@@ -270,19 +245,6 @@ namespace Kimono {
 			[SmokeMethod("removeSubjob(KJob*)")]
 			protected override bool RemoveSubjob(KJob job) {
 				return (bool) interceptor.Invoke("removeSubjob#", "removeSubjob(KJob*)", typeof(bool), typeof(KJob), job);
-			}
-			protected int ExtraFlags() {
-				return (int) interceptor.Invoke("extraFlags", "extraFlags()", typeof(int));
-			}
-			/// <remarks>
-			///  Forward signal from subjob.
-			/// <param> name="job" the subjob
-			/// </param><param> name="speed" the speed in bytes/s
-			/// </param></remarks>		<short>    Forward signal from subjob.</short>
-			/// 		<see> speed</see>
-			[Q_SLOT("void slotSpeed(KJob*, unsigned long)")]
-			protected void SlotSpeed(KJob job, ulong speed) {
-				interceptor.Invoke("slotSpeed#$", "slotSpeed(KJob*, unsigned long)", typeof(void), typeof(KJob), job, typeof(ulong), speed);
 			}
 			~Job() {
 				interceptor.Invoke("~Job", "~Job()", typeof(void));
@@ -325,22 +287,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(CopyJob), this);
 			}
-			// KIO::CopyJob* CopyJob(const KUrl::List& arg1,const KUrl& arg2,KIO::CopyJob::CopyMode arg3,bool arg4); >>>> NOT CONVERTED
-			/// <remarks>
-			///  Do not create a CopyJob directly. Use KIO.Copy(),
-			///  KIO.Move(), KIO.Link() and friends instead.
-			/// <param> name="src" the list of source URLs
-			/// </param><param> name="dest" the destination URL
-			/// </param><param> name="mode" specifies whether the job should copy, move or link
-			/// </param><param> name="asMethod" if true, behaves like KIO.CopyAs(),
-			///  KIO.MoveAs() or KIO.LinkAs()
-			/// </param></remarks>		<short>    Do not create a CopyJob directly.</short>
-			/// 		<see> copy</see>
-			/// 		<see> copyAs</see>
-			/// 		<see> move</see>
-			/// 		<see> moveAs</see>
-			/// 		<see> link</see>
-			/// 		<see> linkAs</see>
+			// KIO::CopyJob* CopyJob(KIO::CopyJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Returns the list of source URLs.
 			/// </remarks>		<return> the list of source URLs.
@@ -370,7 +317,7 @@ namespace Kimono {
 			///  Reimplemented for internal reasons
 			///          </remarks>		<short>    Reimplemented for internal reasons          </short>
 			[SmokeMethod("doSuspend()")]
-			public override bool DoSuspend() {
+			public new virtual bool DoSuspend() {
 				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
 			}
 			[Q_SLOT("void slotResult(KJob*)")]
@@ -496,17 +443,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(DeleteJob), this);
 			}
-			// void slotEntries(KIO::Job* arg1,const KIO::UDSEntryList& arg2); >>>> NOT CONVERTED
-			/// <remarks>
-			///  Do not create a DeleteJob directly. Use KIO.Del()
-			///  instead.
-			/// <param> name="src" the list of URLs to delete
-			/// </param></remarks>		<short>    Do not create a DeleteJob directly.</short>
-			/// 		<see> del</see>
-			public DeleteJob(List<KUrl> src) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("DeleteJob?", "DeleteJob(const KUrl::List&)", typeof(void), typeof(List<KUrl>), src);
-			}
+			// KIO::DeleteJob* DeleteJob(KIO::DeleteJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Returns the list of URLs.
 			/// </remarks>		<return> the list of URLs.
@@ -515,25 +452,10 @@ namespace Kimono {
 			public List<KUrl> Urls() {
 				return (List<KUrl>) interceptor.Invoke("urls", "urls() const", typeof(List<KUrl>));
 			}
-			[Q_SLOT("void slotStart()")]
-			protected void SlotStart() {
-				interceptor.Invoke("slotStart", "slotStart()", typeof(void));
-			}
 			[Q_SLOT("void slotResult(KJob*)")]
 			[SmokeMethod("slotResult(KJob*)")]
 			protected override void SlotResult(KJob job) {
 				interceptor.Invoke("slotResult#", "slotResult(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			///          </remarks>		<short>    Forward signal from subjob          </short>
-			[Q_SLOT("void slotProcessedSize(KJob*, qulonglong)")]
-			protected void SlotProcessedSize(KJob arg1, ulong data_size) {
-				interceptor.Invoke("slotProcessedSize#$", "slotProcessedSize(KJob*, qulonglong)", typeof(void), typeof(KJob), arg1, typeof(ulong), data_size);
-			}
-			[Q_SLOT("void slotReport()")]
-			protected void SlotReport() {
-				interceptor.Invoke("slotReport", "slotReport()", typeof(void));
 			}
 			~DeleteJob() {
 				interceptor.Invoke("~DeleteJob", "~DeleteJob()", typeof(void));
@@ -817,6 +739,8 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(SlaveInterface), this);
 			}
+			// void setOffset(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// KIO::filesize_t offset(); >>>> NOT CONVERTED
 			public void SetConnection(KIO.Connection connection) {
 				interceptor.Invoke("setConnection#", "setConnection(KIO::Connection*)", typeof(void), typeof(KIO.Connection), connection);
 			}
@@ -825,12 +749,6 @@ namespace Kimono {
 			}
 			public void SendResumeAnswer(bool resume) {
 				interceptor.Invoke("sendResumeAnswer$", "sendResumeAnswer(bool)", typeof(void), typeof(bool), resume);
-			}
-			public void SetOffset(long offset) {
-				interceptor.Invoke("setOffset$", "setOffset(KIO::filesize_t)", typeof(void), typeof(long), offset);
-			}
-			public long Offset() {
-				return (long) interceptor.Invoke("offset", "offset() const", typeof(long));
 			}
 			[SmokeMethod("dispatch()")]
 			protected virtual bool Dispatch() {
@@ -879,22 +797,17 @@ namespace Kimono {
 		void StatEntry(KIO.UDSEntry arg1);
 		[Q_SIGNAL("void needSubUrlData()")]
 		void NeedSubUrlData();
-		[Q_SIGNAL("void canResume(KIO::filesize_t)")]
-		void CanResume(long arg1);
+		// void canResume(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		[Q_SIGNAL("void open()")]
 		void Open();
-		[Q_SIGNAL("void written(KIO::filesize_t)")]
-		void Written(long arg1);
+		// void written(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		[Q_SIGNAL("void metaData(const KIO::MetaData&)")]
 		void MetaData(KIO.MetaData arg1);
-		[Q_SIGNAL("void totalSize(KIO::filesize_t)")]
-		void TotalSize(long arg1);
-		[Q_SIGNAL("void processedSize(KIO::filesize_t)")]
-		void ProcessedSize(long arg1);
+		// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		[Q_SIGNAL("void redirection(const KUrl&)")]
 		void Redirection(KUrl arg1);
-		[Q_SIGNAL("void position(KIO::filesize_t)")]
-		void Position(long arg1);
+		// void position(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		[Q_SIGNAL("void speed(long)")]
 		void Speed(long arg1);
 		[Q_SIGNAL("void errorPage()")]
@@ -1347,6 +1260,7 @@ namespace Kimono {
 			static NetAccess() {
 				staticInterceptor = new SmokeInvocation(typeof(NetAccess), null);
 			}
+			// bool exists(const KUrl& arg1,KIO::NetAccess::StatSide arg2,QWidget* arg3); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Downloads a file from an arbitrary URL (<code>src</code>) to a
 			///  temporary file on the local filesystem (<code>target</code>).
@@ -1479,8 +1393,7 @@ namespace Kimono {
 			/// <remarks>
 			///  Tests whether a URL exists.
 			/// <param> name="url" the URL we are testing
-			/// </param><param> name="source" if true, we want to read from that URL.
-			///                If false, we want to write to it.
+			/// </param><param> name="statSide" determines if we want to read or write.
 			///  IMPORTANT: see documentation for KIO.Stat for more details about this.
 			/// </param><param> name="window" main window associated with this job. This is used to
 			///                automatically cache and discard authentication information
@@ -1491,9 +1404,6 @@ namespace Kimono {
 			///               <code>source</code>, false otherwise
 			///      </return>
 			/// 		<short>    Tests whether a URL exists.</short>
-			public static bool Exists(KUrl url, bool source, QWidget window) {
-				return (bool) staticInterceptor.Invoke("exists#$#", "exists(const KUrl&, bool, QWidget*)", typeof(bool), typeof(KUrl), url, typeof(bool), source, typeof(QWidget), window);
-			}
 			/// <remarks>
 			///  Tests whether a URL exists and return information on it.
 			///  This is a convenience function for KIO.Stat
@@ -1590,15 +1500,15 @@ namespace Kimono {
 			///  This function executes a job in a synchronous way.
 			///  If a job fetches some data, pass a QByteArray pointer as data parameter to this function
 			///  and after the function returns it will contain all the data fetched by this job.
-			///  <code>
-			///  KIO.Job job = KIO.Get( url, false, false );
+			///  @code
+			///  KIO.Job job = KIO.Get( url );
 			///  QMap<string, string> metaData;
 			///  metaData.insert( "PropagateHttpHeader", "true" );
 			///  if ( NetAccess.SynchronousRun( job, 0, &data, &url, &metaData ) ) {
 			///    string responseHeaders = metaData[ "HTTP-Headers" ];
-			///    kDebug()<<"Response header = "<< responseHeaders << endl;
+			///    kDebug()<<"Response header = "<< responseHeaders;
 			///  }
-			///  </code>
+			///  @endcode
 			/// <param> name="job" job which the function will run. Note that after this function
 			///             finishes running, job is deleted and you can't access it anymore!
 			/// </param><param> name="window" main window associated with this job. This is used to
@@ -1686,20 +1596,15 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(FileJob), this);
 			}
-			/// <remarks>
-			///      </remarks>		<short>   </short>
-			public FileJob(KUrl url, QByteArray packedArgs) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("FileJob##", "FileJob(const KUrl&, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(QByteArray), packedArgs);
-			}
+			// void read(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void seek(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// KIO::filesize_t size(); >>>> NOT CONVERTED
+			// KIO::FileJob* FileJob(KIO::FileJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Read block
 			///  The slave emits the data through data().
 			/// <param> name="size" the requested amount of data
 			///      </param></remarks>		<short>    Read block </short>
-			public void Read(long size) {
-				interceptor.Invoke("read$", "read(KIO::filesize_t)", typeof(void), typeof(long), size);
-			}
 			/// <remarks>
 			///  Write block
 			/// <param> name="data" the data to write
@@ -1719,26 +1624,11 @@ namespace Kimono {
 			///  The slave emits position()
 			/// <param> name="offset" the position from start to go to
 			///      </param></remarks>		<short>    Seek </short>
-			public void Seek(long offset) {
-				interceptor.Invoke("seek$", "seek(KIO::filesize_t)", typeof(void), typeof(long), offset);
-			}
 			/// <remarks>
 			///  Size
 			/// </remarks>		<return> the file size
 			///      </return>
 			/// 		<short>    Size </short>
-			public long Size() {
-				return (long) interceptor.Invoke("size", "size()", typeof(long));
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///      </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
 			~FileJob() {
 				interceptor.Invoke("~FileJob", "~FileJob()", typeof(void));
 			}
@@ -1780,26 +1670,14 @@ namespace Kimono {
 		///      </param></remarks>		<short>    File is open, metadata has been determined and the  file-slave is ready to receive commands.</short>
 		[Q_SIGNAL("void open(KIO::Job*)")]
 		void Open(KIO.Job job);
-		/// <remarks>
-		///  Bytes written to the file.
-		/// <param> name="job" the job that emitted this signal
-		/// </param><param> name="written" bytes written.
-		///      </param></remarks>		<short>    Bytes written to the file.</short>
-		[Q_SIGNAL("void written(KIO::Job*, KIO::filesize_t)")]
-		void Written(KIO.Job job, long written);
+		// void written(KIO::Job* arg1,KIO::filesize_t arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  File is closed and will accept no more commands
 		/// <param> name="job" the job that emitted this signal
 		///      </param></remarks>		<short>    File is closed and will accept no more commands </short>
 		[Q_SIGNAL("void close(KIO::Job*)")]
 		void Close(KIO.Job job);
-		/// <remarks>
-		///  The file has reached this position. Emitted after seek.
-		/// <param> name="job" the job that emitted this signal
-		/// </param><param> name="offset" the new position
-		///      </param></remarks>		<short>    The file has reached this position.</short>
-		[Q_SIGNAL("void position(KIO::Job*, KIO::filesize_t)")]
-		void Position(KIO.Job job, long offset);
+		// void position(KIO::Job* arg1,KIO::filesize_t arg2); >>>> NOT CONVERTED
 		}
 
 		/// <remarks>
@@ -2018,6 +1896,12 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(JobUiDelegate), this);
 			}
+			// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9,time_t arg10,time_t arg11,time_t arg12); >>>> NOT CONVERTED
+			// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9,time_t arg10,time_t arg11); >>>> NOT CONVERTED
+			// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9,time_t arg10); >>>> NOT CONVERTED
+			// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9); >>>> NOT CONVERTED
+			// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8); >>>> NOT CONVERTED
+			// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Constructs a new KIO Job UI delegate.
 			///      </remarks>		<short>    Constructs a new KIO Job UI delegate.</short>
@@ -2054,30 +1938,6 @@ namespace Kimono {
 			/// </param></remarks>		<return> the result
 			///      </return>
 			/// 		<short>    <see cref="KIO.RenameDialog"></see>  Construct a modal, parent-less "rename" dialog, and return  a result code, as well as the new dest.</short>
-			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)")]
-			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc, int mtimeDest) {
-				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc, typeof(int), mtimeDest);
-			}
-			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)")]
-			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc) {
-				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc);
-			}
-			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t)")]
-			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest) {
-				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest);
-			}
-			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t)")]
-			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc) {
-				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc);
-			}
-			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t)")]
-			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest) {
-				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest);
-			}
-			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t)")]
-			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc) {
-				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc);
-			}
 			[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&)")]
 			public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest) {
 				return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest);
@@ -2120,37 +1980,7 @@ namespace Kimono {
 			static SimpleJob() {
 				staticInterceptor = new SmokeInvocation(typeof(SimpleJob), null);
 			}
-			/// <remarks>
-			///  Creates a new simple job. You don't need to use this constructor,
-			///  unless you create a new job that inherits from SimpleJob.
-			/// <param> name="url" the url of the job
-			/// </param><param> name="command" the command of the job
-			/// </param><param> name="packedArgs" the arguments
-			/// 	 </param></remarks>		<short>    Creates a new simple job.</short>
-			public SimpleJob(KUrl url, int command, QByteArray packedArgs) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("SimpleJob#$#", "SimpleJob(const KUrl&, int, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs);
-			}
-			[SmokeMethod("start()")]
-			public override void Start() {
-				interceptor.Invoke("start", "start()", typeof(void));
-			}
-			/// <remarks>
-			///  Suspend this job
-			/// </remarks>		<short>    Suspend this job </short>
-			/// 		<see> resume</see>
-			[SmokeMethod("doSuspend()")]
-			public override bool DoSuspend() {
-				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
-			}
-			/// <remarks>
-			///  Resume this job
-			/// </remarks>		<short>    Resume this job </short>
-			/// 		<see> suspend</see>
-			[SmokeMethod("doResume()")]
-			public override bool DoResume() {
-				return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
-			}
+			// KIO::SimpleJob* SimpleJob(KIO::SimpleJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Returns the SimpleJob's URL
 			/// </remarks>		<return> the url
@@ -2161,14 +1991,6 @@ namespace Kimono {
 			}
 			/// <remarks>
 			///  Abort job.
-			///  This kills all subjobs and deletes the job.
-			///          </remarks>		<short>    Abort job.</short>
-			[SmokeMethod("doKill()")]
-			public override bool DoKill() {
-				return (bool) interceptor.Invoke("doKill", "doKill()", typeof(bool));
-			}
-			/// <remarks>
-			///  Abort job.
 			///  Suspends slave to be reused by another job for the same request.
 			///          </remarks>		<short>    Abort job.</short>
 			[SmokeMethod("putOnHold()")]
@@ -2176,51 +1998,44 @@ namespace Kimono {
 				interceptor.Invoke("putOnHold", "putOnHold()", typeof(void));
 			}
 			/// <remarks>
-			///  Called by the scheduler when a slave gets to
-			///  work on this job.
-			/// </remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public virtual void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
-			/// <remarks>
-			///  Called to detach a slave from a job.
-			/// </remarks>		<short>   </short>
-			public void SlaveDone() {
-				interceptor.Invoke("slaveDone", "slaveDone()", typeof(void));
-			}
-			/// <remarks>
-			///  Slave in use by this job.
-			///          </remarks>		<short>   </short>
-			public KIO.Slave Slave() {
-				return (KIO.Slave) interceptor.Invoke("slave", "slave() const", typeof(KIO.Slave));
-			}
-			/// <remarks>
-			///          </remarks>		<short>   </short>
-			public int command() {
-				return (int) interceptor.Invoke("command", "command() const", typeof(int));
-			}
-			/// <remarks>
-			///  Forward signal from the slave
-			///  Can also be called by the parent job, when it knows the size.
-			/// <param> name="data_size" the total size
-			///          </param></remarks>		<short>    Forward signal from the slave  Can also be called by the parent job, when it knows the size.</short>
-			[Q_SLOT("void slotTotalSize(KIO::filesize_t)")]
-			public void SlotTotalSize(long data_size) {
-				interceptor.Invoke("slotTotalSize$", "slotTotalSize(KIO::filesize_t)", typeof(void), typeof(long), data_size);
-			}
-			/// <remarks>
 			///  Called on a slave's error.
 			///  Made public for the scheduler.
 			///          </remarks>		<short>   </short>
 			[Q_SLOT("void slotError(int, const QString&)")]
-			[SmokeMethod("slotError(int, const QString&)")]
-			public virtual void SlotError(int arg1, string arg2) {
+			public void SlotError(int arg1, string arg2) {
 				interceptor.Invoke("slotError$$", "slotError(int, const QString&)", typeof(void), typeof(int), arg1, typeof(string), arg2);
+			}
+			/// <remarks>
+			///  Suspend this job
+			/// </remarks>		<short>    Suspend this job </short>
+			/// 		<see> resume</see>
+			[SmokeMethod("doSuspend()")]
+			protected override bool DoSuspend() {
+				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
+			}
+			/// <remarks>
+			///  Resume this job
+			/// </remarks>		<short>    Resume this job </short>
+			/// 		<see> suspend</see>
+			[SmokeMethod("doResume()")]
+			protected override bool DoResume() {
+				return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
+			}
+			/// <remarks>
+			///  Abort job.
+			///  This kills all subjobs and deletes the job.
+			///          </remarks>		<short>    Abort job.</short>
+			[SmokeMethod("doKill()")]
+			protected override bool DoKill() {
+				return (bool) interceptor.Invoke("doKill", "doKill()", typeof(bool));
 			}
 			protected void StoreSSLSessionFromJob(KUrl m_redirectionURL) {
 				interceptor.Invoke("storeSSLSessionFromJob#", "storeSSLSessionFromJob(const KUrl&)", typeof(void), typeof(KUrl), m_redirectionURL);
 			}
+			/// <remarks>
+			///  Creates a new simple job. You don't need to use this constructor,
+			///  unless you create a new job that inherits from SimpleJob.
+			/// 	 </remarks>		<short>    Creates a new simple job.</short>
 			/// <remarks>
 			///  Called when the slave marks the job
 			///  as finished.
@@ -2247,32 +2062,6 @@ namespace Kimono {
 			[SmokeMethod("slotInfoMessage(const QString&)")]
 			protected virtual void SlotInfoMessage(string s) {
 				interceptor.Invoke("slotInfoMessage$", "slotInfoMessage(const QString&)", typeof(void), typeof(string), s);
-			}
-			/// <remarks>
-			///  Called on a slave's connected signal.
-			/// </remarks>		<short>    Called on a slave's connected signal.</short>
-			/// 		<see> connected</see>
-			[Q_SLOT("void slotConnected()")]
-			protected void SlotConnected() {
-				interceptor.Invoke("slotConnected", "slotConnected()", typeof(void));
-			}
-			/// <remarks>
-			///  Forward signal from the slave.
-			/// <param> name="data_size" the processed size in bytes
-			/// </param></remarks>		<short>    Forward signal from the slave.</short>
-			/// 		<see> processedSize</see>
-			[Q_SLOT("void slotProcessedSize(KIO::filesize_t)")]
-			protected void SlotProcessedSize(long data_size) {
-				interceptor.Invoke("slotProcessedSize$", "slotProcessedSize(KIO::filesize_t)", typeof(void), typeof(long), data_size);
-			}
-			/// <remarks>
-			///  Forward signal from the slave.
-			/// <param> name="speed" the speed in bytes/s
-			/// </param></remarks>		<short>    Forward signal from the slave.</short>
-			/// 		<see> speed</see>
-			[Q_SLOT("void slotSpeed(unsigned long)")]
-			protected void SlotSpeed(ulong speed) {
-				interceptor.Invoke("slotSpeed$", "slotSpeed(unsigned long)", typeof(void), typeof(ulong), speed);
 			}
 			/// <remarks>
 			///  MetaData from the slave is received.
@@ -2316,26 +2105,15 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(StatJob), this);
 			}
-			/// <remarks>
-			///  Do not use this constructor to create a StatJob, use KIO.Stat() instead.
-			/// <param> name="url" the url of the file or directory to check
-			/// </param><param> name="command" the command to issue
-			/// </param><param> name="packedArgs" the arguments
-			/// 	 </param></remarks>		<short>    Do not use this constructor to create a StatJob, use KIO.Stat() instead.</short>
-			public StatJob(KUrl url, int command, QByteArray packedArgs) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("StatJob#$#", "StatJob(const KUrl&, int, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs);
-			}
+			// void setSide(KIO::StatJob::StatSide arg1); >>>> NOT CONVERTED
+			// KIO::StatJob* StatJob(KIO::StatJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  A stat() can have two meanings. Either we want to read from this URL,
 			///  or to check if we can write to it. First case is "source", second is "dest".
 			///  It is necessary to know what the StatJob is for, to tune the kioslave's behavior
 			///  (e.g. with FTP).
-			/// <param> name="source" true for "source" mode, false for "dest" mode
+			/// <param> name="side" SourceSide or DestinationSide
 			///          </param></remarks>		<short>    A stat() can have two meanings.</short>
-			public void SetSide(bool source) {
-				interceptor.Invoke("setSide$", "setSide(bool)", typeof(void), typeof(bool), source);
-			}
 			/// <remarks>
 			///  Selects the level of <code>details</code> we want.
 			///  By default this is 2 (all details wanted, including modification time, size, etc.),
@@ -2356,23 +2134,6 @@ namespace Kimono {
 			/// 		<short>    Call this in the slot connected to result,  and only after making sure no error happened.</short>
 			public KIO.UDSEntry StatResult() {
 				return (KIO.UDSEntry) interceptor.Invoke("statResult", "statResult() const", typeof(KIO.UDSEntry));
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
-			[Q_SLOT("void slotStatEntry(const KIO::UDSEntry&)")]
-			protected void SlotStatEntry(KIO.UDSEntry entry) {
-				interceptor.Invoke("slotStatEntry#", "slotStatEntry(const KIO::UDSEntry&)", typeof(void), typeof(KIO.UDSEntry), entry);
-			}
-			[Q_SLOT("void slotRedirection(const KUrl&)")]
-			protected void SlotRedirection(KUrl url) {
-				interceptor.Invoke("slotRedirection#", "slotRedirection(const KUrl&)", typeof(void), typeof(KUrl), url);
 			}
 			[Q_SLOT("void slotFinished()")]
 			[SmokeMethod("slotFinished()")]
@@ -2417,119 +2178,6 @@ namespace Kimono {
 		}
 
 		/// <remarks>
-		///  A KIO job that creates a directory
-		///  See <see cref="IMkdirJobSignals"></see> for signals emitted by MkdirJob
-		/// </remarks>		<short>    A KIO job that creates a directory </short>
-		/// 		<see> mkdir</see>
-
-		[SmokeClass("KIO::MkdirJob")]
-		public class MkdirJob : KIO.SimpleJob, IDisposable {
-	 		protected MkdirJob(Type dummy) : base((Type) null) {}
-			protected new void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(MkdirJob), this);
-			}
-			/// <remarks>
-			///  Do not use this constructor to create a MkdirJob, use KIO.Mkdir() instead.
-			/// <param> name="url" the url of the file or directory to check
-			/// </param><param> name="command" the command to issue
-			/// </param><param> name="packedArgs" the arguments
-			/// 	 </param></remarks>		<short>    Do not use this constructor to create a MkdirJob, use KIO.Mkdir() instead.</short>
-			public MkdirJob(KUrl url, int command, QByteArray packedArgs) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("MkdirJob#$#", "MkdirJob(const KUrl&, int, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs);
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
-			[Q_SLOT("void slotRedirection(const KUrl&)")]
-			protected void SlotRedirection(KUrl url) {
-				interceptor.Invoke("slotRedirection#", "slotRedirection(const KUrl&)", typeof(void), typeof(KUrl), url);
-			}
-			[Q_SLOT("void slotFinished()")]
-			[SmokeMethod("slotFinished()")]
-			protected override void SlotFinished() {
-				interceptor.Invoke("slotFinished", "slotFinished()", typeof(void));
-			}
-			~MkdirJob() {
-				interceptor.Invoke("~MkdirJob", "~MkdirJob()", typeof(void));
-			}
-			public new void Dispose() {
-				interceptor.Invoke("~MkdirJob", "~MkdirJob()", typeof(void));
-			}
-			protected new IMkdirJobSignals Emit {
-				get { return (IMkdirJobSignals) Q_EMIT; }
-			}
-		}
-
-		public interface IMkdirJobSignals : KIO.ISimpleJobSignals {
-		/// <remarks>
-		///  Signals a redirection.
-		///  Use to update the URL shown to the user.
-		///  The redirection itself is handled internally.
-		/// <param> name="job" the job that is redirected
-		/// </param><param> name="url" the new url
-		///          </param></remarks>		<short>    Signals a redirection.</short>
-		[Q_SIGNAL("void redirection(KIO::Job*, const KUrl&)")]
-		void Redirection(KIO.Job job, KUrl url);
-		/// <remarks>
-		///  Signals a permanent redirection.
-		///  The redirection itself is handled internally.
-		/// <param> name="job" the job that is redirected
-		/// </param><param> name="fromUrl" the original URL
-		/// </param><param> name="toUrl" the new URL
-		///          </param></remarks>		<short>    Signals a permanent redirection.</short>
-		[Q_SIGNAL("void permanentRedirection(KIO::Job*, const KUrl&, const KUrl&)")]
-		void PermanentRedirection(KIO.Job job, KUrl fromUrl, KUrl toUrl);
-		}
-
-		/// <remarks>
-		///  Used for direct copy from or to the local filesystem (i.e. SlaveBase.Copy())
-		///       See <see cref="IDirectCopyJobSignals"></see> for signals emitted by DirectCopyJob
-		/// </remarks>		<short>   </short>
-
-		[SmokeClass("KIO::DirectCopyJob")]
-		public class DirectCopyJob : KIO.SimpleJob {
-	 		protected DirectCopyJob(Type dummy) : base((Type) null) {}
-			protected new void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(DirectCopyJob), this);
-			}
-			/// <remarks>
-			///  Do not create a DirectCopyJob. Use KIO.Copy() or KIO.File_copy() instead.
-			///          </remarks>		<short>    Do not create a DirectCopyJob.</short>
-			public DirectCopyJob(KUrl url, int command, QByteArray packedArgs) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("DirectCopyJob#$#", "DirectCopyJob(const KUrl&, int, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs);
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
-			protected new IDirectCopyJobSignals Emit {
-				get { return (IDirectCopyJobSignals) Q_EMIT; }
-			}
-		}
-
-		public interface IDirectCopyJobSignals : KIO.ISimpleJobSignals {
-		/// <remarks>
-		///  Emitted if the job found an existing partial file
-		///  and supports resuming. Used by FileCopyJob.
-		///          </remarks>		<short>   </short>
-		[Q_SIGNAL("void canResume(KIO::Job*, KIO::filesize_t)")]
-		void CanResume(KIO.Job job, long offset);
-		}
-
-		/// <remarks>
 		///  The transfer job pumps data into and/or out of a Slave.
 		///  Data is sent to the slave on request of the slave ( dataReq).
 		///  If data coming from the slave can not be handled, the
@@ -2543,60 +2191,13 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(TransferJob), this);
 			}
-			/// <remarks>
-			///  Do not create a TransferJob. Use KIO.Get() or KIO.Put()
-			///  instead.
-			/// <param> name="url" the url to get or put
-			/// </param><param> name="command" the command to issue
-			/// </param><param> name="packedArgs" the arguments
-			/// </param><param> name="_staticData" additional data to transmit (e.g. in a HTTP Post)
-			/// 	</param></remarks>		<short>    Do not create a TransferJob.</short>
-			public TransferJob(KUrl url, int command, QByteArray packedArgs, QByteArray _staticData) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("TransferJob#$##", "TransferJob(const KUrl&, int, const QByteArray&, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs, typeof(QByteArray), _staticData);
-			}
+			// KIO::TransferJob* TransferJob(KIO::TransferJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Sets the modification time of the file to be created (by KIO.Put)
 			///  Note that some kioslaves might ignore this.
 			///          </remarks>		<short>    Sets the modification time of the file to be created (by KIO.Put)  Note that some kioslaves might ignore this.</short>
 			public void SetModificationTime(QDateTime mtime) {
 				interceptor.Invoke("setModificationTime#", "setModificationTime(const QDateTime&)", typeof(void), typeof(QDateTime), mtime);
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
-			/// <remarks>
-			///  Called when m_subJob finishes.
-			/// <param> name="job" the job that finished
-			///          </param></remarks>		<short>    Called when m_subJob finishes.</short>
-			[SmokeMethod("slotResult(KJob*)")]
-			public new virtual void SlotResult(KJob job) {
-				interceptor.Invoke("slotResult#", "slotResult(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			/// <remarks>
-			///  Flow control. Suspend data processing from the slave.
-			///          </remarks>		<short>    Flow control.</short>
-			public void InternalSuspend() {
-				interceptor.Invoke("internalSuspend", "internalSuspend()", typeof(void));
-			}
-			/// <remarks>
-			///  Flow control. Resume data processing from the slave.
-			///          </remarks>		<short>    Flow control.</short>
-			public void InternalResume() {
-				interceptor.Invoke("internalResume", "internalResume()", typeof(void));
-			}
-			/// <remarks>
-			///  Reimplemented for internal reasons
-			///          </remarks>		<short>    Reimplemented for internal reasons          </short>
-			[SmokeMethod("resume()")]
-			public virtual void Resume() {
-				interceptor.Invoke("resume", "resume()", typeof(void));
 			}
 			/// <remarks>
 			///  Checks whether we got an error page. This currently only happens
@@ -2640,7 +2241,7 @@ namespace Kimono {
 			///  has been received (false)
 			///          </remarks>		<short>     Returns whether the job reports the amount of data that has been   sent (true), or whether the job reports the amount of data that  has been received (false)          </short>
 			public bool ReportDataSent() {
-				return (bool) interceptor.Invoke("reportDataSent", "reportDataSent()", typeof(bool));
+				return (bool) interceptor.Invoke("reportDataSent", "reportDataSent() const", typeof(bool));
 			}
 			/// <remarks>
 			///  Call this in the slot connected to result,
@@ -2650,6 +2251,21 @@ namespace Kimono {
 			/// 		<short>    Call this in the slot connected to result,  and only after making sure no error happened.</short>
 			public string Mimetype() {
 				return (string) interceptor.Invoke("mimetype", "mimetype() const", typeof(string));
+			}
+			/// <remarks>
+			///  Called when m_subJob finishes.
+			/// <param> name="job" the job that finished
+			///          </param></remarks>		<short>    Called when m_subJob finishes.</short>
+			[SmokeMethod("slotResult(KJob*)")]
+			protected override void SlotResult(KJob job) {
+				interceptor.Invoke("slotResult#", "slotResult(KJob*)", typeof(void), typeof(KJob), job);
+			}
+			/// <remarks>
+			///  Reimplemented for internal reasons
+			///          </remarks>		<short>    Reimplemented for internal reasons          </short>
+			[SmokeMethod("doResume()")]
+			protected override bool DoResume() {
+				return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
 			}
 			[Q_SLOT("void slotRedirection(const KUrl&)")]
 			[SmokeMethod("slotRedirection(const KUrl&)")]
@@ -2676,32 +2292,10 @@ namespace Kimono {
 			protected virtual void SlotMimetype(string mimetype) {
 				interceptor.Invoke("slotMimetype$", "slotMimetype(const QString&)", typeof(void), typeof(string), mimetype);
 			}
-			[Q_SLOT("void slotNeedSubUrlData()")]
-			[SmokeMethod("slotNeedSubUrlData()")]
-			protected virtual void SlotNeedSubUrlData() {
-				interceptor.Invoke("slotNeedSubUrlData", "slotNeedSubUrlData()", typeof(void));
-			}
-			[Q_SLOT("void slotSubUrlData(KIO::Job*, const QByteArray&)")]
-			[SmokeMethod("slotSubUrlData(KIO::Job*, const QByteArray&)")]
-			protected virtual void SlotSubUrlData(KIO.Job arg1, QByteArray arg2) {
-				interceptor.Invoke("slotSubUrlData##", "slotSubUrlData(KIO::Job*, const QByteArray&)", typeof(void), typeof(KIO.Job), arg1, typeof(QByteArray), arg2);
-			}
 			[Q_SLOT("void slotMetaData(const KIO::MetaData&)")]
 			[SmokeMethod("slotMetaData(const KIO::MetaData&)")]
 			protected override void SlotMetaData(KIO.MetaData _metaData) {
 				interceptor.Invoke("slotMetaData#", "slotMetaData(const KIO::MetaData&)", typeof(void), typeof(KIO.MetaData), _metaData);
-			}
-			[Q_SLOT("void slotErrorPage()")]
-			protected void SlotErrorPage() {
-				interceptor.Invoke("slotErrorPage", "slotErrorPage()", typeof(void));
-			}
-			[Q_SLOT("void slotCanResume(KIO::filesize_t)")]
-			protected void SlotCanResume(long offset) {
-				interceptor.Invoke("slotCanResume$", "slotCanResume(KIO::filesize_t)", typeof(void), typeof(long), offset);
-			}
-			[Q_SLOT("void slotPostRedirection()")]
-			protected void SlotPostRedirection() {
-				interceptor.Invoke("slotPostRedirection", "slotPostRedirection()", typeof(void));
 			}
 			~TransferJob() {
 				interceptor.Invoke("~TransferJob", "~TransferJob()", typeof(void));
@@ -2762,14 +2356,7 @@ namespace Kimono {
 		///          </param></remarks>		<short>    Mimetype determined.</short>
 		[Q_SIGNAL("void mimetype(KIO::Job*, const QString&)")]
 		void Mimetype(KIO.Job job, string type);
-		/// <remarks>
-		///  Emitted if the "put" job found an existing partial file
-		///  (in which case offset is the size of that file)
-		///  and emitted by the "get" job if it supports resuming to
-		///  the given offset - in this case <code>offset</code> is unused)
-		///          </remarks>		<short>   </short>
-		[Q_SIGNAL("void canResume(KIO::Job*, KIO::filesize_t)")]
-		void CanResume(KIO.Job job, long offset);
+		// void canResume(KIO::Job* arg1,KIO::filesize_t arg2); >>>> NOT CONVERTED
 		}
 
 		/// <remarks>
@@ -2795,18 +2382,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(StoredTransferJob), this);
 			}
-			/// <remarks>
-			///  Do not create a StoredTransferJob. Use storedGet() or storedPut()
-			///  instead.
-			/// <param> name="url" the url to get or put
-			/// </param><param> name="command" the command to issue
-			/// </param><param> name="packedArgs" the arguments
-			/// </param><param> name="_staticData" additional data to transmit (e.g. in a HTTP Post)
-			/// 	</param></remarks>		<short>    Do not create a StoredTransferJob.</short>
-			public StoredTransferJob(KUrl url, int command, QByteArray packedArgs, QByteArray _staticData) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("StoredTransferJob#$##", "StoredTransferJob(const KUrl&, int, const QByteArray&, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs, typeof(QByteArray), _staticData);
-			}
+			// KIO::StoredTransferJob* StoredTransferJob(KIO::StoredTransferJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Set data to be uploaded. This is for put jobs.
 			///  Automatically called by KIO.StoredPut(QByteArray, ...),
@@ -2850,24 +2426,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(MultiGetJob), this);
 			}
-			/// <remarks>
-			///  Do not create a MultiGetJob directly, use KIO.Multi_get()
-			///  instead.
-			/// <param> name="url" the first url to get
-			/// 	 </param></remarks>		<short>    Do not create a MultiGetJob directly, use KIO.Multi_get()  instead.</short>
-			public MultiGetJob(KUrl url) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("MultiGetJob#", "MultiGetJob(const KUrl&)", typeof(void), typeof(KUrl), url);
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
+			// KIO::MultiGetJob* MultiGetJob(KIO::MultiGetJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Get an additional file.
 			/// <param> name="id" the id of the file
@@ -2947,26 +2506,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(MimetypeJob), this);
 			}
-			/// <remarks>
-			///  Do not create a MimetypeJob directly. Use KIO.Mimetype()
-			///  instead.
-			/// <param> name="url" the url to get
-			/// </param><param> name="command" the command to issue
-			/// </param><param> name="packedArgs" the arguments
-			/// 	</param></remarks>		<short>    Do not create a MimetypeJob directly.</short>
-			public MimetypeJob(KUrl url, int command, QByteArray packedArgs) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("MimetypeJob#$#", "MimetypeJob(const KUrl&, int, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(int), command, typeof(QByteArray), packedArgs);
-			}
-			/// <remarks>
-			///  Called by the scheduler when a slave gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that works on the job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
+			// KIO::MimetypeJob* MimetypeJob(KIO::MimetypeJobPrivate& arg1); >>>> NOT CONVERTED
 			[Q_SLOT("void slotFinished()")]
 			[SmokeMethod("slotFinished()")]
 			protected override void SlotFinished() {
@@ -2999,28 +2539,13 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(FileCopyJob), this);
 			}
-			/// <remarks>
-			///  Do not create a FileCopyJob directly. Use KIO.File_move()
-			///  or KIO.File_copy() instead.
-			/// <param> name="src" the source URL
-			/// </param><param> name="dest" the destination URL
-			/// </param><param> name="permissions" the permissions of the resulting resource
-			/// </param><param> name="move" true to move, false to copy
-			/// </param><param> name="overwrite" true to allow overwriting, false otherwise
-			/// </param><param> name="resume" true to resume an operation, false otherwise
-			/// 	 </param></remarks>		<short>    Do not create a FileCopyJob directly.</short>
-			public FileCopyJob(KUrl src, KUrl dest, int permissions, bool move, bool overwrite, bool resume) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("FileCopyJob##$$$$", "FileCopyJob(const KUrl&, const KUrl&, int, bool, bool, bool)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), move, typeof(bool), overwrite, typeof(bool), resume);
-			}
+			// void setSourceSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// KIO::FileCopyJob* FileCopyJob(KIO::FileCopyJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  If you know the size of the source file, call this method
 			///  to inform this job. It will be displayed in the "resume" dialog.
 			/// <param> name="size" the size of the source file
 			///          </param></remarks>		<short>    If you know the size of the source file, call this method  to inform this job.</short>
-			public void SetSourceSize(long size) {
-				interceptor.Invoke("setSourceSize$", "setSourceSize(KIO::filesize_t)", typeof(void), typeof(long), size);
-			}
 			/// <remarks>
 			///  Sets the modification time of the file
 			///  Note that this is ignored if a direct copy (SlaveBase.Copy) can be done,
@@ -3046,43 +2571,12 @@ namespace Kimono {
 			public KUrl DestUrl() {
 				return (KUrl) interceptor.Invoke("destUrl", "destUrl() const", typeof(KUrl));
 			}
-			[Q_SLOT("void slotStart()")]
-			public void SlotStart() {
-				interceptor.Invoke("slotStart", "slotStart()", typeof(void));
-			}
-			[Q_SLOT("void slotData(KIO::Job*, const QByteArray&)")]
-			public void SlotData(KIO.Job arg1, QByteArray data) {
-				interceptor.Invoke("slotData##", "slotData(KIO::Job*, const QByteArray&)", typeof(void), typeof(KIO.Job), arg1, typeof(QByteArray), data);
-			}
-			[Q_SLOT("void slotDataReq(KIO::Job*, QByteArray&)")]
-			public void SlotDataReq(KIO.Job arg1, QByteArray data) {
-				interceptor.Invoke("slotDataReq##", "slotDataReq(KIO::Job*, QByteArray&)", typeof(void), typeof(KIO.Job), arg1, typeof(QByteArray), data);
-			}
-			[Q_SLOT("void slotMimetype(KIO::Job*, const QString&)")]
-			public void SlotMimetype(KIO.Job arg1, string type) {
-				interceptor.Invoke("slotMimetype#$", "slotMimetype(KIO::Job*, const QString&)", typeof(void), typeof(KIO.Job), arg1, typeof(string), type);
-			}
-			protected void StartCopyJob() {
-				interceptor.Invoke("startCopyJob", "startCopyJob()", typeof(void));
-			}
-			protected void StartCopyJob(KUrl slave_url) {
-				interceptor.Invoke("startCopyJob#", "startCopyJob(const KUrl&)", typeof(void), typeof(KUrl), slave_url);
-			}
-			protected void StartRenameJob(KUrl slave_url) {
-				interceptor.Invoke("startRenameJob#", "startRenameJob(const KUrl&)", typeof(void), typeof(KUrl), slave_url);
-			}
-			protected void StartDataPump() {
-				interceptor.Invoke("startDataPump", "startDataPump()", typeof(void));
-			}
-			protected void ConnectSubjob(KIO.SimpleJob job) {
-				interceptor.Invoke("connectSubjob#", "connectSubjob(KIO::SimpleJob*)", typeof(void), typeof(KIO.SimpleJob), job);
-			}
 			[SmokeMethod("doSuspend()")]
-			protected new virtual bool DoSuspend() {
+			public new virtual bool DoSuspend() {
 				return (bool) interceptor.Invoke("doSuspend", "doSuspend()", typeof(bool));
 			}
 			[SmokeMethod("doResume()")]
-			protected new virtual bool DoResume() {
+			public new virtual bool DoResume() {
 				return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
 			}
 			/// <remarks>
@@ -3093,42 +2587,6 @@ namespace Kimono {
 			[SmokeMethod("slotResult(KJob*)")]
 			protected override void SlotResult(KJob job) {
 				interceptor.Invoke("slotResult#", "slotResult(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			/// <param> name="job" the job that emitted this signal
-			/// </param><param> name="size" the processed size in bytes
-			///          </param></remarks>		<short>    Forward signal from subjob </short>
-			[Q_SLOT("void slotProcessedSize(KJob*, qulonglong)")]
-			protected void SlotProcessedSize(KJob job, ulong size) {
-				interceptor.Invoke("slotProcessedSize#$", "slotProcessedSize(KJob*, qulonglong)", typeof(void), typeof(KJob), job, typeof(ulong), size);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			/// <param> name="job" the job that emitted this signal
-			/// </param><param> name="size" the total size
-			///          </param></remarks>		<short>    Forward signal from subjob </short>
-			[Q_SLOT("void slotTotalSize(KJob*, qulonglong)")]
-			protected void SlotTotalSize(KJob job, ulong size) {
-				interceptor.Invoke("slotTotalSize#$", "slotTotalSize(KJob*, qulonglong)", typeof(void), typeof(KJob), job, typeof(ulong), size);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			/// <param> name="job" the job that emitted this signal
-			/// </param><param> name="pct" the percentage
-			///          </param></remarks>		<short>    Forward signal from subjob </short>
-			[Q_SLOT("void slotPercent(KJob*, unsigned long)")]
-			protected void SlotPercent(KJob job, ulong pct) {
-				interceptor.Invoke("slotPercent#$", "slotPercent(KJob*, unsigned long)", typeof(void), typeof(KJob), job, typeof(ulong), pct);
-			}
-			/// <remarks>
-			///  Forward signal from subjob
-			/// <param> name="job" the job that emitted this signal
-			/// </param><param> name="offset" the offset to resume from
-			///          </param></remarks>		<short>    Forward signal from subjob </short>
-			[Q_SLOT("void slotCanResume(KIO::Job*, KIO::filesize_t)")]
-			protected void SlotCanResume(KIO.Job job, long offset) {
-				interceptor.Invoke("slotCanResume#$", "slotCanResume(KIO::Job*, KIO::filesize_t)", typeof(void), typeof(KIO.Job), job, typeof(long), offset);
 			}
 			protected new IFileCopyJobSignals Emit {
 				get { return (IFileCopyJobSignals) Q_EMIT; }
@@ -3164,42 +2622,7 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(ListJob), this);
 			}
-			// void slotListEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
-			// void gotEntries(KIO::Job* arg1,const KIO::UDSEntryList& arg2); >>>> NOT CONVERTED
-			/// <remarks>
-			///  Do not create a ListJob directly. Use KIO.ListDir() or
-			///  KIO.ListRecursive() instead.
-			/// <param> name="url" the url of the directory
-			/// </param><param> name="recursive" true to get the data recursively from child directories,
-			///         false to get only the content of the specified dir
-			/// </param><param> name="prefix" the prefix of the files, or string() for no prefix
-			/// </param><param> name="includeHidden" true to include hidden files (those starting with '.')
-			/// 	</param></remarks>		<short>    Do not create a ListJob directly.</short>
-			public ListJob(KUrl url, bool recursive, string prefix, bool includeHidden) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("ListJob#$$$", "ListJob(const KUrl&, bool, const QString&, bool)", typeof(void), typeof(KUrl), url, typeof(bool), recursive, typeof(string), prefix, typeof(bool), includeHidden);
-			}
-			public ListJob(KUrl url, bool recursive, string prefix) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("ListJob#$$", "ListJob(const KUrl&, bool, const QString&)", typeof(void), typeof(KUrl), url, typeof(bool), recursive, typeof(string), prefix);
-			}
-			public ListJob(KUrl url, bool recursive) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("ListJob#$", "ListJob(const KUrl&, bool)", typeof(void), typeof(KUrl), url, typeof(bool), recursive);
-			}
-			public ListJob(KUrl url) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("ListJob#", "ListJob(const KUrl&)", typeof(void), typeof(KUrl), url);
-			}
-			/// <remarks>
-			///  Called by the scheduler when a <code>slave</code> gets to
-			///  work on this job.
-			/// <param> name="slave" the slave that starts working on this job
-			///          </param></remarks>		<short>   </short>
-			[SmokeMethod("start(KIO::Slave*)")]
-			public override void Start(KIO.Slave slave) {
-				interceptor.Invoke("start#", "start(KIO::Slave*)", typeof(void), typeof(KIO.Slave), slave);
-			}
+			// KIO::ListJob* ListJob(KIO::ListJobPrivate& arg1); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Returns the ListJob's redirection URL. This will be invalid if there
 			///  was no redirection.
@@ -3229,10 +2652,6 @@ namespace Kimono {
 			[SmokeMethod("slotResult(KJob*)")]
 			protected override void SlotResult(KJob job) {
 				interceptor.Invoke("slotResult#", "slotResult(KJob*)", typeof(void), typeof(KJob), job);
-			}
-			[Q_SLOT("void slotRedirection(const KUrl&)")]
-			protected void SlotRedirection(KUrl url) {
-				interceptor.Invoke("slotRedirection#", "slotRedirection(const KUrl&)", typeof(void), typeof(KUrl), url);
 			}
 			~ListJob() {
 				interceptor.Invoke("~ListJob", "~ListJob()", typeof(void));
@@ -3267,6 +2686,63 @@ namespace Kimono {
 		void PermanentRedirection(KIO.Job job, KUrl fromUrl, KUrl toUrl);
 		}
 
+		/// <remarks>
+		///  A class that sends a special command to an ioslave.
+		///  This allows you to send a binary blob to an ioslave and handle
+		///  its responses. The ioslave will receive the binary data as an
+		///  argument to the "special" function (inherited from SlaveBase.Special()).
+		///  Use this only on ioslaves that belong to your application. Sending
+		///  special commands to other ioslaves may cause unexpected behaviour.
+		/// </remarks>		<short>    A class that sends a special command to an ioslave.</short>
+		/// 		<see> special</see>
+
+		[SmokeClass("KIO::SpecialJob")]
+		public class SpecialJob : KIO.TransferJob, IDisposable {
+	 		protected SpecialJob(Type dummy) : base((Type) null) {}
+			protected new void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(SpecialJob), this);
+			}
+			/// <remarks>
+			///  Creates a KIO.SpecialJob.
+			/// <param> name="url" the URL to be passed to the ioslave
+			/// </param><param> name="data" the data to be sent to the SlaveBase.Special() function.
+			///          </param></remarks>		<short>    Creates a KIO.SpecialJob.</short>
+			public SpecialJob(KUrl url, QByteArray data) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("SpecialJob##", "SpecialJob(const KUrl&, const QByteArray&)", typeof(void), typeof(KUrl), url, typeof(QByteArray), data);
+			}
+			public SpecialJob(KUrl url) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("SpecialJob#", "SpecialJob(const KUrl&)", typeof(void), typeof(KUrl), url);
+			}
+			/// <remarks>
+			///  Sets the QByteArray that is passed to SlaveBase.Special() on
+			///  the ioslave.
+			///          </remarks>		<short>    Sets the QByteArray that is passed to SlaveBase.Special() on  the ioslave.</short>
+			public void SetArguments(QByteArray data) {
+				interceptor.Invoke("setArguments#", "setArguments(const QByteArray&)", typeof(void), typeof(QByteArray), data);
+			}
+			/// <remarks>
+			///  Returns the QByteArray data that will be sent (or has been sent) to the
+			///  ioslave.
+			///          </remarks>		<short>    Returns the QByteArray data that will be sent (or has been sent) to the  ioslave.</short>
+			public QByteArray Arguments() {
+				return (QByteArray) interceptor.Invoke("arguments", "arguments() const", typeof(QByteArray));
+			}
+			~SpecialJob() {
+				interceptor.Invoke("~SpecialJob", "~SpecialJob()", typeof(void));
+			}
+			public new void Dispose() {
+				interceptor.Invoke("~SpecialJob", "~SpecialJob()", typeof(void));
+			}
+			protected new ISpecialJobSignals Emit {
+				get { return (ISpecialJobSignals) Q_EMIT; }
+			}
+		}
+
+		public interface ISpecialJobSignals : KIO.ITransferJobSignals {
+		}
+
 		public interface ISlaveBase {
 		void Exit();
 		void DispatchLoop();
@@ -3281,12 +2757,6 @@ namespace Kimono {
 		void NeedSubUrlData();
 		void SlaveStatus(string host, bool connected);
 		void StatEntry(KIO.UDSEntry _entry);
-		bool CanResume(long offset);
-		void CanResume();
-		void TotalSize(long _bytes);
-		void ProcessedSize(long _bytes);
-		void Position(long _pos);
-		void Written(long _bytes);
 		void ProcessedPercent(float percent);
 		void Speed(ulong _bytes_per_second);
 		void Redirection(KUrl _url);
@@ -3305,20 +2775,20 @@ namespace Kimono {
 		void OpenConnection();
 		void CloseConnection();
 		void Get(KUrl url);
-		void Open(KUrl url, int mode);
+		void Open(KUrl url, uint mode);
 		void Write(QByteArray data);
 		void Close();
-		void Put(KUrl url, int permissions, bool overwrite, bool resume);
+		void Put(KUrl url, int permissions, uint flags);
 		void Stat(KUrl url);
 		void Mimetype(KUrl url);
 		void ListDir(KUrl url);
 		void Mkdir(KUrl url, int permissions);
-		void Rename(KUrl src, KUrl dest, bool overwrite);
-		void Symlink(string target, KUrl dest, bool overwrite);
+		void Rename(KUrl src, KUrl dest, uint flags);
+		void Symlink(string target, KUrl dest, uint flags);
 		void Chmod(KUrl url, int permissions);
 		void Chown(KUrl url, string owner, string group);
 		void SetModificationTime(KUrl url, QDateTime mtime);
-		void Copy(KUrl src, KUrl dest, int permissions, bool overwrite);
+		void Copy(KUrl src, KUrl dest, int permissions, uint flags);
 		void Del(KUrl url, bool isfile);
 		void SetLinkDest(KUrl url, string target);
 		void Special(QByteArray data);
@@ -3367,6 +2837,11 @@ namespace Kimono {
 				interceptor = new SmokeInvocation(typeof(SlaveBase), this);
 			}
 			// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
+			// bool canResume(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void position(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void written(KIO::filesize_t arg1); >>>> NOT CONVERTED
 			// int messageBox(KIO::SlaveBase::MessageBoxType arg1,const QString& arg2,const QString& arg3,const QString& arg4,const QString& arg5); >>>> NOT CONVERTED
 			// int messageBox(KIO::SlaveBase::MessageBoxType arg1,const QString& arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 			// int messageBox(KIO::SlaveBase::MessageBoxType arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
@@ -3376,8 +2851,8 @@ namespace Kimono {
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2); >>>> NOT CONVERTED
-			// void read(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
-			// void seek(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
+			// void read(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void seek(KIO::filesize_t arg1); >>>> NOT CONVERTED
 			public SlaveBase(QByteArray protocol, QByteArray pool_socket, QByteArray app_socket) : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("SlaveBase###", "SlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), pool_socket, typeof(QByteArray), app_socket);
@@ -3493,34 +2968,16 @@ namespace Kimono {
 			///  In this case, the boolean returns whether we can indeed resume or not
 			///  (we can't if the protocol doing the get() doesn't support setting an offset)
 			///      </remarks>		<short>    Call this at the beginning of put(), to give the size of the existing  partial file, if there is one.</short>
-			public bool CanResume(long offset) {
-				return (bool) interceptor.Invoke("canResume$", "canResume(KIO::filesize_t)", typeof(bool), typeof(long), offset);
-			}
-			public void CanResume() {
-				interceptor.Invoke("canResume", "canResume()", typeof(void));
-			}
 			/// <remarks>
 			///  Call this in get and copy, to give the total size
 			///  of the file
 			///  Call in listDir too, when you know the total number of items.
 			///      </remarks>		<short>    Call this in get and copy, to give the total size  of the file  Call in listDir too, when you know the total number of items.</short>
-			public void TotalSize(long _bytes) {
-				interceptor.Invoke("totalSize$", "totalSize(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
-			}
 			/// <remarks>
 			///  Call this during get and copy, once in a while,
 			///  to give some info about the current state.
 			///  Don't emit it in listDir, listEntries speaks for itself.
 			///      </remarks>		<short>    Call this during get and copy, once in a while,  to give some info about the current state.</short>
-			public void ProcessedSize(long _bytes) {
-				interceptor.Invoke("processedSize$", "processedSize(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
-			}
-			public void Position(long _pos) {
-				interceptor.Invoke("position$", "position(KIO::filesize_t)", typeof(void), typeof(long), _pos);
-			}
-			public void Written(long _bytes) {
-				interceptor.Invoke("written$", "written(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
-			}
 			/// <remarks>
 			///  Only use this if you can't know in advance the size of the
 			///  copied data. For example, if you're doing variable bitrate
@@ -3706,8 +3163,8 @@ namespace Kimono {
 			/// </param><param> name="mode" see \ref QIODevice.OpenMode
 			///      </param></remarks>		<short>    open.</short>
 			[SmokeMethod("open(const KUrl&, QIODevice::OpenMode)")]
-			public virtual void Open(KUrl url, int mode) {
-				interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(int), mode);
+			public virtual void Open(KUrl url, uint mode) {
+				interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(uint), mode);
 			}
 			[SmokeMethod("write(const QByteArray&)")]
 			public virtual void Write(QByteArray data) {
@@ -3721,17 +3178,17 @@ namespace Kimono {
 			///  put, i.e. write data into a file.
 			/// <param> name="url" where to write the file
 			/// </param><param> name="permissions" may be -1. In this case no special permission mode is set.
-			/// </param><param> name="overwrite" if true, any existing file will be overwritten.
+			/// </param><param> name="flags" : We support Overwrite here. Hopefully, we're going to
+			///  support Resume in the future, too.
 			///  If the file indeed already exists, the slave should NOT apply the
 			///  permissions change to it.
-			/// </param><param> name="resume" currently unused, please ignore.
-			///    The support for resuming using .part files is done by calling canResume().
+			///  The support for resuming using .part files is done by calling canResume().
 			/// </param> IMPORTANT: Use the "modified" metadata in order to set the modification time of the file.
 			/// </remarks>		<short>    put, i.</short>
 			/// 		<see> canResume</see>
-			[SmokeMethod("put(const KUrl&, int, bool, bool)")]
-			public virtual void Put(KUrl url, int permissions, bool overwrite, bool resume) {
-				interceptor.Invoke("put#$$$", "put(const KUrl&, int, bool, bool)", typeof(void), typeof(KUrl), url, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume);
+			[SmokeMethod("put(const KUrl&, int, KIO::JobFlags)")]
+			public virtual void Put(KUrl url, int permissions, uint flags) {
+				interceptor.Invoke("put#$$", "put(const KUrl&, int, KIO::JobFlags)", typeof(void), typeof(KUrl), url, typeof(int), permissions, typeof(uint), flags);
 			}
 			/// <remarks>
 			///  Finds all details for one file or directory.
@@ -3784,22 +3241,22 @@ namespace Kimono {
 			///  ask for copy + del instead.
 			/// <param> name="src" where to move the file from
 			/// </param><param> name="dest" where to move the file to
-			/// </param><param> name="overwrite" if true, any existing file will be overwritten
+			/// </param><param> name="flags" : We support Overwrite here
 			///      </param></remarks>		<short>    Rename <code>oldname</code> into <code>newname.</code></short>
-			[SmokeMethod("rename(const KUrl&, const KUrl&, bool)")]
-			public virtual void Rename(KUrl src, KUrl dest, bool overwrite) {
-				interceptor.Invoke("rename##$", "rename(const KUrl&, const KUrl&, bool)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), overwrite);
+			[SmokeMethod("rename(const KUrl&, const KUrl&, KIO::JobFlags)")]
+			public virtual void Rename(KUrl src, KUrl dest, uint flags) {
+				interceptor.Invoke("rename##$", "rename(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 			}
 			/// <remarks>
 			///  Creates a symbolic link named <code>dest</code>, pointing to <code>target</code>, which
 			///  may be a relative or an absolute path.
 			/// <param> name="target" The string that will become the "target" of the link (can be relative)
 			/// </param><param> name="dest" The symlink to create.
-			/// </param><param> name="overwrite" whether to automatically overwrite if the dest exists
+			/// </param><param> name="flags" : We support Overwrite here
 			///      </param></remarks>		<short>    Creates a symbolic link named <code>dest</code>, pointing to <code>target</code>, which  may be a relative or an absolute path.</short>
-			[SmokeMethod("symlink(const QString&, const KUrl&, bool)")]
-			public virtual void Symlink(string target, KUrl dest, bool overwrite) {
-				interceptor.Invoke("symlink$#$", "symlink(const QString&, const KUrl&, bool)", typeof(void), typeof(string), target, typeof(KUrl), dest, typeof(bool), overwrite);
+			[SmokeMethod("symlink(const QString&, const KUrl&, KIO::JobFlags)")]
+			public virtual void Symlink(string target, KUrl dest, uint flags) {
+				interceptor.Invoke("symlink$#$", "symlink(const QString&, const KUrl&, KIO::JobFlags)", typeof(void), typeof(string), target, typeof(KUrl), dest, typeof(uint), flags);
 			}
 			/// <remarks>
 			///  Change permissions on <code>url</code>
@@ -3835,12 +3292,12 @@ namespace Kimono {
 			/// <param> name="src" where to copy the file from (decoded)
 			/// </param><param> name="dest" where to copy the file to (decoded)
 			/// </param><param> name="permissions" may be -1. In this case no special permission mode is set.
-			/// </param><param> name="overwrite" if true, any existing file will be overwritten
+			/// </param><param> name="flags" : We support Overwrite here
 			/// </param> Don't forget to set the modification time of <code>dest</code> to be the modification time of <code>src.</code>
 			///      </remarks>		<short>    Copy <code>src</code> into <code>dest.</code></short>
-			[SmokeMethod("copy(const KUrl&, const KUrl&, int, bool)")]
-			public virtual void Copy(KUrl src, KUrl dest, int permissions, bool overwrite) {
-				interceptor.Invoke("copy##$$", "copy(const KUrl&, const KUrl&, int, bool)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite);
+			[SmokeMethod("copy(const KUrl&, const KUrl&, int, KIO::JobFlags)")]
+			public virtual void Copy(KUrl src, KUrl dest, int permissions, uint flags) {
+				interceptor.Invoke("copy##$$", "copy(const KUrl&, const KUrl&, int, KIO::JobFlags)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(uint), flags);
 			}
 			/// <remarks>
 			///  Delete a file or directory.
@@ -4467,6 +3924,11 @@ namespace Kimono {
 				interceptor = new SmokeInvocation(typeof(ForwardingSlaveBase), this);
 			}
 			// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
+			// bool canResume(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void position(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void written(KIO::filesize_t arg1); >>>> NOT CONVERTED
 			// int messageBox(KIO::SlaveBase::MessageBoxType arg1,const QString& arg2,const QString& arg3,const QString& arg4,const QString& arg5); >>>> NOT CONVERTED
 			// int messageBox(KIO::SlaveBase::MessageBoxType arg1,const QString& arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 			// int messageBox(KIO::SlaveBase::MessageBoxType arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
@@ -4476,8 +3938,8 @@ namespace Kimono {
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2,const QString& arg3); >>>> NOT CONVERTED
 			// int messageBox(const QString& arg1,KIO::SlaveBase::MessageBoxType arg2); >>>> NOT CONVERTED
-			// void read(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
-			// void seek(KIO::fileoffset_t arg1); >>>> NOT CONVERTED
+			// void read(KIO::filesize_t arg1); >>>> NOT CONVERTED
+			// void seek(KIO::filesize_t arg1); >>>> NOT CONVERTED
 			public ForwardingSlaveBase(QByteArray protocol, QByteArray poolSocket, QByteArray appSocket) : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("ForwardingSlaveBase###", "ForwardingSlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), poolSocket, typeof(QByteArray), appSocket);
@@ -4486,9 +3948,9 @@ namespace Kimono {
 			public virtual void Get(KUrl url) {
 				interceptor.Invoke("get#", "get(const KUrl&)", typeof(void), typeof(KUrl), url);
 			}
-			[SmokeMethod("put(const KUrl&, int, bool, bool)")]
-			public virtual void Put(KUrl url, int permissions, bool overwrite, bool resume) {
-				interceptor.Invoke("put#$$$", "put(const KUrl&, int, bool, bool)", typeof(void), typeof(KUrl), url, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume);
+			[SmokeMethod("put(const KUrl&, int, KIO::JobFlags)")]
+			public virtual void Put(KUrl url, int permissions, uint flags) {
+				interceptor.Invoke("put#$$", "put(const KUrl&, int, KIO::JobFlags)", typeof(void), typeof(KUrl), url, typeof(int), permissions, typeof(uint), flags);
 			}
 			[SmokeMethod("stat(const KUrl&)")]
 			public virtual void Stat(KUrl url) {
@@ -4506,13 +3968,13 @@ namespace Kimono {
 			public virtual void Mkdir(KUrl url, int permissions) {
 				interceptor.Invoke("mkdir#$", "mkdir(const KUrl&, int)", typeof(void), typeof(KUrl), url, typeof(int), permissions);
 			}
-			[SmokeMethod("rename(const KUrl&, const KUrl&, bool)")]
-			public virtual void Rename(KUrl src, KUrl dest, bool overwrite) {
-				interceptor.Invoke("rename##$", "rename(const KUrl&, const KUrl&, bool)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), overwrite);
+			[SmokeMethod("rename(const KUrl&, const KUrl&, KIO::JobFlags)")]
+			public virtual void Rename(KUrl src, KUrl dest, uint flags) {
+				interceptor.Invoke("rename##$", "rename(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 			}
-			[SmokeMethod("symlink(const QString&, const KUrl&, bool)")]
-			public virtual void Symlink(string target, KUrl dest, bool overwrite) {
-				interceptor.Invoke("symlink$#$", "symlink(const QString&, const KUrl&, bool)", typeof(void), typeof(string), target, typeof(KUrl), dest, typeof(bool), overwrite);
+			[SmokeMethod("symlink(const QString&, const KUrl&, KIO::JobFlags)")]
+			public virtual void Symlink(string target, KUrl dest, uint flags) {
+				interceptor.Invoke("symlink$#$", "symlink(const QString&, const KUrl&, KIO::JobFlags)", typeof(void), typeof(string), target, typeof(KUrl), dest, typeof(uint), flags);
 			}
 			[SmokeMethod("chmod(const KUrl&, int)")]
 			public virtual void Chmod(KUrl url, int permissions) {
@@ -4522,9 +3984,9 @@ namespace Kimono {
 			public virtual void SetModificationTime(KUrl url, QDateTime mtime) {
 				interceptor.Invoke("setModificationTime##", "setModificationTime(const KUrl&, const QDateTime&)", typeof(void), typeof(KUrl), url, typeof(QDateTime), mtime);
 			}
-			[SmokeMethod("copy(const KUrl&, const KUrl&, int, bool)")]
-			public virtual void Copy(KUrl src, KUrl dest, int permissions, bool overwrite) {
-				interceptor.Invoke("copy##$$", "copy(const KUrl&, const KUrl&, int, bool)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite);
+			[SmokeMethod("copy(const KUrl&, const KUrl&, int, KIO::JobFlags)")]
+			public virtual void Copy(KUrl src, KUrl dest, int permissions, uint flags) {
+				interceptor.Invoke("copy##$$", "copy(const KUrl&, const KUrl&, int, KIO::JobFlags)", typeof(void), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(uint), flags);
 			}
 			[SmokeMethod("del(const KUrl&, bool)")]
 			public virtual void Del(KUrl url, bool isfile) {
@@ -4685,34 +4147,16 @@ namespace Kimono {
 			///  In this case, the boolean returns whether we can indeed resume or not
 			///  (we can't if the protocol doing the get() doesn't support setting an offset)
 			///      </remarks>		<short>    Call this at the beginning of put(), to give the size of the existing  partial file, if there is one.</short>
-			public bool CanResume(long offset) {
-				return (bool) interceptor.Invoke("canResume$", "canResume(KIO::filesize_t)", typeof(bool), typeof(long), offset);
-			}
-			public void CanResume() {
-				interceptor.Invoke("canResume", "canResume()", typeof(void));
-			}
 			/// <remarks>
 			///  Call this in get and copy, to give the total size
 			///  of the file
 			///  Call in listDir too, when you know the total number of items.
 			///      </remarks>		<short>    Call this in get and copy, to give the total size  of the file  Call in listDir too, when you know the total number of items.</short>
-			public void TotalSize(long _bytes) {
-				interceptor.Invoke("totalSize$", "totalSize(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
-			}
 			/// <remarks>
 			///  Call this during get and copy, once in a while,
 			///  to give some info about the current state.
 			///  Don't emit it in listDir, listEntries speaks for itself.
 			///      </remarks>		<short>    Call this during get and copy, once in a while,  to give some info about the current state.</short>
-			public void ProcessedSize(long _bytes) {
-				interceptor.Invoke("processedSize$", "processedSize(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
-			}
-			public void Position(long _pos) {
-				interceptor.Invoke("position$", "position(KIO::filesize_t)", typeof(void), typeof(long), _pos);
-			}
-			public void Written(long _bytes) {
-				interceptor.Invoke("written$", "written(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
-			}
 			/// <remarks>
 			///  Only use this if you can't know in advance the size of the
 			///  copied data. For example, if you're doing variable bitrate
@@ -4888,8 +4332,8 @@ namespace Kimono {
 			/// </param><param> name="mode" see \ref QIODevice.OpenMode
 			///      </param></remarks>		<short>    open.</short>
 			[SmokeMethod("open(const KUrl&, QIODevice::OpenMode)")]
-			public virtual void Open(KUrl url, int mode) {
-				interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(int), mode);
+			public virtual void Open(KUrl url, uint mode) {
+				interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(uint), mode);
 			}
 			[SmokeMethod("write(const QByteArray&)")]
 			public virtual void Write(QByteArray data) {
@@ -5329,7 +4773,7 @@ namespace Kimono {
 			/// 	 </param></remarks>		<short>    Creates a new PreviewJob.</short>
 			public PreviewJob(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save, List<string> enabledPlugins) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("PreviewJob?$$$$$$?", "PreviewJob(const QList<KFileItem>&, int, int, int, int, bool, bool, const QStringList*)", typeof(void), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
+				interceptor.Invoke("PreviewJob#$$$$$$?", "PreviewJob(const KFileItemList&, int, int, int, int, bool, bool, const QStringList*)", typeof(void), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
 			}
 			/// <remarks>
 			///  Removes an item from preview processing. Use this if you passed
@@ -5414,11 +4858,6 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(MetaInfoJob), this);
 			}
-			// KIO::MetaInfoJob* MetaInfoJob(const QList<KFileItem>& arg1,KFileMetaInfo::WhatFlags arg2,int arg3,int arg4,const QStringList& arg5,const QStringList& arg6); >>>> NOT CONVERTED
-			// KIO::MetaInfoJob* MetaInfoJob(const QList<KFileItem>& arg1,KFileMetaInfo::WhatFlags arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
-			// KIO::MetaInfoJob* MetaInfoJob(const QList<KFileItem>& arg1,KFileMetaInfo::WhatFlags arg2,int arg3,int arg4); >>>> NOT CONVERTED
-			// KIO::MetaInfoJob* MetaInfoJob(const QList<KFileItem>& arg1,KFileMetaInfo::WhatFlags arg2,int arg3); >>>> NOT CONVERTED
-			// KIO::MetaInfoJob* MetaInfoJob(const QList<KFileItem>& arg1,KFileMetaInfo::WhatFlags arg2); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Creates a new MetaInfoJob.
 			/// <param> name="items" A list of KFileItems to get the metainfo for
@@ -5443,9 +4882,29 @@ namespace Kimono {
 			/// </param><param> name="requestedfields" The names of fields or groups of fields that should
 			///                   be retrieved first.
 			///          </param></remarks>		<short>    Creates a new MetaInfoJob.</short>
+			public MetaInfoJob(List<KFileItem> items, uint w, int iocost, int cpucost, List<string> requiredfields, List<string> requestedfields) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MetaInfoJob#$$$??", "MetaInfoJob(const KFileItemList&, KFileMetaInfo::WhatFlags, int, int, const QStringList&, const QStringList&)", typeof(void), typeof(List<KFileItem>), items, typeof(uint), w, typeof(int), iocost, typeof(int), cpucost, typeof(List<string>), requiredfields, typeof(List<string>), requestedfields);
+			}
+			public MetaInfoJob(List<KFileItem> items, uint w, int iocost, int cpucost, List<string> requiredfields) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MetaInfoJob#$$$?", "MetaInfoJob(const KFileItemList&, KFileMetaInfo::WhatFlags, int, int, const QStringList&)", typeof(void), typeof(List<KFileItem>), items, typeof(uint), w, typeof(int), iocost, typeof(int), cpucost, typeof(List<string>), requiredfields);
+			}
+			public MetaInfoJob(List<KFileItem> items, uint w, int iocost, int cpucost) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MetaInfoJob#$$$", "MetaInfoJob(const KFileItemList&, KFileMetaInfo::WhatFlags, int, int)", typeof(void), typeof(List<KFileItem>), items, typeof(uint), w, typeof(int), iocost, typeof(int), cpucost);
+			}
+			public MetaInfoJob(List<KFileItem> items, uint w, int iocost) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MetaInfoJob#$$", "MetaInfoJob(const KFileItemList&, KFileMetaInfo::WhatFlags, int)", typeof(void), typeof(List<KFileItem>), items, typeof(uint), w, typeof(int), iocost);
+			}
+			public MetaInfoJob(List<KFileItem> items, uint w) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MetaInfoJob#$", "MetaInfoJob(const KFileItemList&, KFileMetaInfo::WhatFlags)", typeof(void), typeof(List<KFileItem>), items, typeof(uint), w);
+			}
 			public MetaInfoJob(List<KFileItem> items) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("MetaInfoJob?", "MetaInfoJob(const QList<KFileItem>&)", typeof(void), typeof(List<KFileItem>), items);
+				interceptor.Invoke("MetaInfoJob#", "MetaInfoJob(const KFileItemList&)", typeof(void), typeof(List<KFileItem>), items);
 			}
 			/// <remarks>
 			///  Removes an item from metainfo extraction.
@@ -5508,14 +4967,6 @@ namespace Kimono {
 				interceptor = new SmokeInvocation(typeof(DavJob), this);
 			}
 			/// <remarks>
-			///  Use KIO.DavPropFind(), KIO.DavPropPatch() and
-			///  KIO.DavSearch() to create a new DavJob.
-			/// 	 </remarks>		<short>    Use KIO.DavPropFind(), KIO.DavPropPatch() and  KIO.DavSearch() to create a new DavJob.</short>
-			public DavJob(KUrl url, int method, string request) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("DavJob#$$", "DavJob(const KUrl&, int, const QString&)", typeof(void), typeof(KUrl), url, typeof(int), method, typeof(string), request);
-			}
-			/// <remarks>
 			///  Returns the response as a QDomDocument.
 			/// </remarks>		<return> the response document
 			/// 	 </return>
@@ -5561,6 +5012,12 @@ namespace Kimono {
 			static RenameDialog() {
 				staticInterceptor = new SmokeInvocation(typeof(RenameDialog), null);
 			}
+			// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9,time_t arg10,time_t arg11); >>>> NOT CONVERTED
+			// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9,time_t arg10); >>>> NOT CONVERTED
+			// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9); >>>> NOT CONVERTED
+			// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8); >>>> NOT CONVERTED
+			// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7); >>>> NOT CONVERTED
+			// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Construct a "rename" dialog.
 			/// <param> name="parent" parent widget (often 0)
@@ -5576,30 +5033,6 @@ namespace Kimono {
 			/// </param><param> name="mtimeDest" modification time of destination file
 			/// </param></remarks>		<short>    Construct a "rename" dialog.</short>
 			/// 		<see> RenameDialog_Mode</see>
-			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc, int mtimeDest) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("RenameDialog#$##$$$$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc, typeof(int), mtimeDest);
-			}
-			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("RenameDialog#$##$$$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc);
-			}
-			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("RenameDialog#$##$$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest);
-			}
-			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("RenameDialog#$##$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc);
-			}
-			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("RenameDialog#$##$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest);
-			}
-			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("RenameDialog#$##$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc);
-			}
 			public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode) : this((Type) null) {
 				CreateProxy();
 				interceptor.Invoke("RenameDialog#$##$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode);
@@ -5667,47 +5100,6 @@ namespace Kimono {
 			public static string SuggestName(KUrl baseURL, string oldName) {
 				return (string) staticInterceptor.Invoke("suggestName#$", "suggestName(const KUrl&, const QString&)", typeof(string), typeof(KUrl), baseURL, typeof(string), oldName);
 			}
-			/// <remarks>
-			///  <see cref="KIO.RenameDialog"></see>
-			///  Construct a modal, parent-less "rename" dialog, and return
-			///  a result code, as well as the new dest. Much easier to use than the
-			///  class RenameDialog directly.
-			/// <param> name="caption" the caption for the dialog box
-			/// </param><param> name="src" the URL of the file/dir we're trying to copy, as it's part of the text message
-			/// </param><param> name="dest" the URL of the destination file/dir, i.e. the one that already exists
-			/// </param><param> name="mode" parameters for the dialog (which buttons to show...),
-			///              see RenameDialog_Mode
-			/// </param><param> name="newDestPath" the new destination path, valid if R_RENAME was returned.
-			/// </param><param> name="sizeSrc" size of source file
-			/// </param><param> name="sizeDest" size of destination file
-			/// </param><param> name="ctimeSrc" creation time of source file
-			/// </param><param> name="ctimeDest" creation time of destination file
-			/// </param><param> name="mtimeSrc" modification time of source file
-			/// </param><param> name="mtimeDest" modification time of destination file
-			/// </param></remarks>		<return> the result
-			///    </return>
-			/// 		<short>    <see cref="KIO.RenameDialog"></see>  Construct a modal, parent-less "rename" dialog, and return  a result code, as well as the new dest.</short>
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc, int mtimeDest) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$$$$$$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc, typeof(int), mtimeDest);
-			}
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$$$$$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc);
-			}
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$$$$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest);
-			}
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath, long sizeSrc, long sizeDest, int ctimeSrc) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$$$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc);
-			}
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath, long sizeSrc, long sizeDest) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath, typeof(long), sizeSrc, typeof(long), sizeDest);
-			}
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath, long sizeSrc) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath, typeof(long), sizeSrc);
-			}
-			public static KIO.RenameDialog_Result Open(string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, StringBuilder newDestPath) {
-				return (KIO.RenameDialog_Result) staticInterceptor.Invoke("open$##$$", "open(const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, QString&)", typeof(KIO.RenameDialog_Result), typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDestPath);
-			}
 			protected new IRenameDialogSignals Emit {
 				get { return (IRenameDialogSignals) Q_EMIT; }
 			}
@@ -5725,14 +5117,6 @@ namespace Kimono {
 	 		protected SkipDialog(Type dummy) : base((Type) null) {}
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(SkipDialog), this);
-			}
-			private static SmokeInvocation staticInterceptor = null;
-			static SkipDialog() {
-				staticInterceptor = new SmokeInvocation(typeof(SkipDialog), null);
-			}
-			public SkipDialog(QWidget parent, bool _multi, string _error_text, bool _modal) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("SkipDialog#$$$", "SkipDialog(QWidget*, bool, const QString&, bool)", typeof(void), typeof(QWidget), parent, typeof(bool), _multi, typeof(string), _error_text, typeof(bool), _modal);
 			}
 			public SkipDialog(QWidget parent, bool _multi, string _error_text) : this((Type) null) {
 				CreateProxy();
@@ -5755,12 +5139,6 @@ namespace Kimono {
 			}
 			public new void Dispose() {
 				interceptor.Invoke("~SkipDialog", "~SkipDialog()", typeof(void));
-			}
-			public static KIO.SkipDialog_Result Open(bool _multi, string _error_text) {
-				return (KIO.SkipDialog_Result) staticInterceptor.Invoke("open$$", "open(bool, const QString&)", typeof(KIO.SkipDialog_Result), typeof(bool), _multi, typeof(string), _error_text);
-			}
-			public static KIO.SkipDialog_Result Open(bool _multi) {
-				return (KIO.SkipDialog_Result) staticInterceptor.Invoke("open$", "open(bool)", typeof(KIO.SkipDialog_Result), typeof(bool), _multi);
 			}
 			protected new ISkipDialogSignals Emit {
 				get { return (ISkipDialogSignals) Q_EMIT; }
@@ -5800,6 +5178,9 @@ namespace Kimono {
 			protected void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(UDSEntry), this);
 			}
+			// long long numberValue(uint arg1,long long arg2); >>>> NOT CONVERTED
+			// long long numberValue(uint arg1); >>>> NOT CONVERTED
+			// void insert(uint arg1,long long arg2); >>>> NOT CONVERTED
 			// QList<uint> listFields(); >>>> NOT CONVERTED
 			public UDSEntry() : this((Type) null) {
 				CreateProxy();
@@ -5820,12 +5201,6 @@ namespace Kimono {
 			/// </remarks>		<return> value of a numeric field
 			///          </return>
 			/// 		<short>   </short>
-			public long NumberValue(uint field, long defaultValue) {
-				return (long) interceptor.Invoke("numberValue$$", "numberValue(uint, long long) const", typeof(long), typeof(uint), field, typeof(long), defaultValue);
-			}
-			public long NumberValue(uint field) {
-				return (long) interceptor.Invoke("numberValue$", "numberValue(uint) const", typeof(long), typeof(uint), field);
-			}
 			public bool IsDir() {
 				return (bool) interceptor.Invoke("isDir", "isDir() const", typeof(bool));
 			}
@@ -5837,16 +5212,13 @@ namespace Kimono {
 			/// <param> name="field" numeric field id
 			/// </param><param> name="value"          </param></remarks>		<short>    insert field with numeric value </short>
 			public void Insert(uint field, string value) {
-				interceptor.Invoke("insert$$", "insert(uint, QString)", typeof(void), typeof(uint), field, typeof(string), value);
+				interceptor.Invoke("insert$$", "insert(uint, const QString&)", typeof(void), typeof(uint), field, typeof(string), value);
 			}
 			/// <remarks>
 			///  insert field with string value
 			/// <param> name="field" numeric tield id
 			/// </param><param> name="l" value to set
 			///          </param></remarks>		<short>    insert field with string value </short>
-			public void Insert(uint field, long l) {
-				interceptor.Invoke("insert$$", "insert(uint, long long)", typeof(void), typeof(uint), field, typeof(long), l);
-			}
 			/// <remarks>
 			///  count fields
 			/// </remarks>		<return> the number of fields
@@ -6055,6 +5427,21 @@ namespace Kimono {
 			CC_Refresh = 3,
 			CC_Reload = 4,
 		}
+		public enum LoadType {
+			Reload = 0,
+			NoReload = 1,
+		}
+		/// <remarks>
+		///  Flags for the job properties.
+		///  Not all flags are supported in all cases. Please see documentation of 
+		///  the calling function!
+		///      </remarks>		<short>    Flags for the job properties.</short>
+		public enum JobFlag {
+			DefaultFlags = 0,
+			HideProgressInfo = 1,
+			Resume = 2,
+			Overwrite = 4,
+		}
 		public enum RenameDialog_Mode {
 			M_OVERWRITE = 1,
 			M_OVERWRITE_ITSELF = 2,
@@ -6104,20 +5491,21 @@ namespace Kimono {
 			DAV_NOTIFY = 17,
 			HTTP_UNKNOWN = -1,
 		}
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3,int arg4,int arg5,QString* arg6); >>>> NOT CONVERTED
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3,int arg4,int arg5); >>>> NOT CONVERTED
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3,int arg4); >>>> NOT CONVERTED
-		// QPixmap pixmapForUrl(const KUrl& arg1,mode_t arg2,KIconLoader::Group arg3); >>>> NOT CONVERTED
-		// KUiServerJobTracker* getJobTracker(); >>>> NOT CONVERTED
+		// QString convertSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		// QString number(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		// QString convertSizeFromKiB(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		// unsigned int calculateRemainingSeconds(KIO::filesize_t arg1,KIO::filesize_t arg2,KIO::filesize_t arg3); >>>> NOT CONVERTED
+		// QTime calculateRemaining(KIO::filesize_t arg1,KIO::filesize_t arg2,KIO::filesize_t arg3); >>>> NOT CONVERTED
+		// QString itemsSummaryString(uint arg1,uint arg2,uint arg3,KIO::filesize_t arg4,bool arg5); >>>> NOT CONVERTED
+		// KJobTrackerInterface* getJobTracker(); >>>> NOT CONVERTED
+		// KIO::StatJob* stat(const KUrl& arg1,KIO::StatJob::StatSide arg2,short int arg3,KIO::JobFlags arg4); >>>> NOT CONVERTED
+		// KIO::StatJob* stat(const KUrl& arg1,KIO::StatJob::StatSide arg2,short int arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Converts <code>size</code> from bytes to the string representation.
 		/// <param> name="size" size in bytes
 		/// </param></remarks>		<return> converted size as a string - e.g. 123.4 KiB , 12.0 MiB
 		///    </return>
 		/// 		<short>    Converts <code>size</code> from bytes to the string representation.</short>
-		public static string ConvertSize(long size) {
-			return (string) staticInterceptor.Invoke("convertSize$", "convertSize(KIO::filesize_t)", typeof(string), typeof(long), size);
-		}
 		/// <remarks>
 		///  Converts a size to a string representation
 		///  Not unlike string.Number(...)
@@ -6125,18 +5513,12 @@ namespace Kimono {
 		/// </param></remarks>		<return> converted size as a string - e.g. 123456789
 		///    </return>
 		/// 		<short>    Converts a size to a string representation  Not unlike string.Number(.</short>
-		public static string Number(long size) {
-			return (string) staticInterceptor.Invoke("number$", "number(KIO::filesize_t)", typeof(string), typeof(long), size);
-		}
 		/// <remarks>
 		///  Converts size from kibi-bytes (2^10) to the string representation.
 		/// <param> name="kibSize" size in kibi-bytes (2^10)
 		/// </param></remarks>		<return> converted size as a string - e.g. 123.4 KiB , 12.0 MiB
 		///    </return>
 		/// 		<short>    Converts size from kibi-bytes (2^10) to the string representation.</short>
-		public static string ConvertSizeFromKiB(long kibSize) {
-			return (string) staticInterceptor.Invoke("convertSizeFromKiB$", "convertSizeFromKiB(KIO::filesize_t)", typeof(string), typeof(long), kibSize);
-		}
 		/// <remarks>
 		///  Calculates remaining time in seconds from total size, processed size and speed.
 		/// <param> name="totalSize" total size in bytes
@@ -6145,9 +5527,6 @@ namespace Kimono {
 		/// </param></remarks>		<return> calculated remaining time in seconds
 		///    </return>
 		/// 		<short>    Calculates remaining time in seconds from total size, processed size and speed.</short>
-		public static uint CalculateRemainingSeconds(long totalSize, long processedSize, long speed) {
-			return (uint) staticInterceptor.Invoke("calculateRemainingSeconds$$$", "calculateRemainingSeconds(KIO::filesize_t, KIO::filesize_t, KIO::filesize_t)", typeof(uint), typeof(long), totalSize, typeof(long), processedSize, typeof(long), speed);
-		}
 		/// <remarks>
 		///  Convert <code>seconds</code> to a string representing number of days, hours, minutes and seconds
 		/// <param> name="seconds" number of seconds to convert
@@ -6166,9 +5545,6 @@ namespace Kimono {
 		/// </param></remarks>		<return> calculated remaining time
 		///    </return>
 		/// 		<short>    Calculates remaining time from total size, processed size and speed.</short>
-		public static QTime CalculateRemaining(long totalSize, long processedSize, long speed) {
-			return (QTime) staticInterceptor.Invoke("calculateRemaining$$$", "calculateRemaining(KIO::filesize_t, KIO::filesize_t, KIO::filesize_t)", typeof(QTime), typeof(long), totalSize, typeof(long), processedSize, typeof(long), speed);
-		}
 		/// <remarks>
 		///  Helper for showing information about a set of files and directories
 		/// <param> name="items" the number of items (= <code>files</code> + <code>dirs</code> + number of symlinks :)
@@ -6179,9 +5555,6 @@ namespace Kimono {
 		/// </param></remarks>		<return> the summary string
 		///    </return>
 		/// 		<short>    Helper for showing information about a set of files and directories </short>
-		public static string ItemsSummaryString(uint items, uint files, uint dirs, long size, bool showSize) {
-			return (string) staticInterceptor.Invoke("itemsSummaryString$$$$$", "itemsSummaryString(uint, uint, uint, KIO::filesize_t, bool)", typeof(string), typeof(uint), items, typeof(uint), files, typeof(uint), dirs, typeof(long), size, typeof(bool), showSize);
-		}
 		/// <remarks>
 		///  Encodes (from the text displayed to the real filename)
 		///  This translates % into %% and / into %2f
@@ -6295,13 +5668,25 @@ namespace Kimono {
 		/// </param><param> name="_group" The icon group where the icon is going to be used.
 		/// </param><param> name="_force_size" Override globally configured icon size.
 		///         Use 0 for the default size
-		/// </param><param> name="_state" The icon state, one of: K3Icon.DefaultState,
-		///  K3Icon.ActiveState or K3Icon.DisabledState.
+		/// </param><param> name="_state" The icon state, one of: KIconLoader.DefaultState,
+		///  KIconLoader.ActiveState or KIconLoader.DisabledState.
 		/// </param><param> name="_path" Output parameter to get the full path. Seldom needed.
 		///               Ignored if 0
 		/// </param></remarks>		<return> the pixmap of the URL, can be a default icon if not found
 		///    </return>
 		/// 		<short>    Convenience method to find the pixmap for a URL.</short>
+		public static QPixmap PixmapForUrl(KUrl _url, long _mode, KIconLoader.Group _group, int _force_size, int _state, StringBuilder _path) {
+			return (QPixmap) staticInterceptor.Invoke("pixmapForUrl#$$$$$", "pixmapForUrl(const KUrl&, mode_t, KIconLoader::Group, int, int, QString*)", typeof(QPixmap), typeof(KUrl), _url, typeof(long), _mode, typeof(KIconLoader.Group), _group, typeof(int), _force_size, typeof(int), _state, typeof(StringBuilder), _path);
+		}
+		public static QPixmap PixmapForUrl(KUrl _url, long _mode, KIconLoader.Group _group, int _force_size, int _state) {
+			return (QPixmap) staticInterceptor.Invoke("pixmapForUrl#$$$$", "pixmapForUrl(const KUrl&, mode_t, KIconLoader::Group, int, int)", typeof(QPixmap), typeof(KUrl), _url, typeof(long), _mode, typeof(KIconLoader.Group), _group, typeof(int), _force_size, typeof(int), _state);
+		}
+		public static QPixmap PixmapForUrl(KUrl _url, long _mode, KIconLoader.Group _group, int _force_size) {
+			return (QPixmap) staticInterceptor.Invoke("pixmapForUrl#$$$", "pixmapForUrl(const KUrl&, mode_t, KIconLoader::Group, int)", typeof(QPixmap), typeof(KUrl), _url, typeof(long), _mode, typeof(KIconLoader.Group), _group, typeof(int), _force_size);
+		}
+		public static QPixmap PixmapForUrl(KUrl _url, long _mode, KIconLoader.Group _group) {
+			return (QPixmap) staticInterceptor.Invoke("pixmapForUrl#$$", "pixmapForUrl(const KUrl&, mode_t, KIconLoader::Group)", typeof(QPixmap), typeof(KUrl), _url, typeof(long), _mode, typeof(KIconLoader.Group), _group);
+		}
 		public static QPixmap PixmapForUrl(KUrl _url, long _mode) {
 			return (QPixmap) staticInterceptor.Invoke("pixmapForUrl#$", "pixmapForUrl(const KUrl&, mode_t)", typeof(QPixmap), typeof(KUrl), _url, typeof(long), _mode);
 		}
@@ -6372,12 +5757,15 @@ namespace Kimono {
 		///  Use move or file_move in this case.
 		/// <param> name="src" The original URL
 		/// </param><param> name="dest" The final URL
-		/// </param><param> name="overwrite" whether to automatically overwrite if the dest exists
+		/// </param><param> name="flags" Can be Overwrite here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Rename a file or directory.</short>
-		public static KIO.SimpleJob Rename(KUrl src, KUrl dest, bool overwrite) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("rename##$", "rename(const KUrl&, const KUrl&, bool)", typeof(KIO.SimpleJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), overwrite);
+		public static KIO.SimpleJob Rename(KUrl src, KUrl dest, uint flags) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("rename##$", "rename(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.SimpleJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
+		}
+		public static KIO.SimpleJob Rename(KUrl src, KUrl dest) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("rename##", "rename(const KUrl&, const KUrl&)", typeof(KIO.SimpleJob), typeof(KUrl), src, typeof(KUrl), dest);
 		}
 		/// <remarks>
 		///  Create or move a symlink.
@@ -6386,16 +5774,15 @@ namespace Kimono {
 		///  and it doesn't show rename and skip dialogs - use KIO.Link for that.
 		/// <param> name="target" The string that will become the "target" of the link (can be relative)
 		/// </param><param> name="dest" The symlink to create.
-		/// </param><param> name="overwrite" whether to automatically overwrite if the dest exists
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be Overwrite and HideProgressInfo
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Create or move a symlink.</short>
-		public static KIO.SimpleJob Symlink(string target, KUrl dest, bool overwrite, bool showProgressInfo) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("symlink$#$$", "symlink(const QString&, const KUrl&, bool, bool)", typeof(KIO.SimpleJob), typeof(string), target, typeof(KUrl), dest, typeof(bool), overwrite, typeof(bool), showProgressInfo);
+		public static KIO.SimpleJob Symlink(string target, KUrl dest, uint flags) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("symlink$#$", "symlink(const QString&, const KUrl&, KIO::JobFlags)", typeof(KIO.SimpleJob), typeof(string), target, typeof(KUrl), dest, typeof(uint), flags);
 		}
-		public static KIO.SimpleJob Symlink(string target, KUrl dest, bool overwrite) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("symlink$#$", "symlink(const QString&, const KUrl&, bool)", typeof(KIO.SimpleJob), typeof(string), target, typeof(KUrl), dest, typeof(bool), overwrite);
+		public static KIO.SimpleJob Symlink(string target, KUrl dest) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("symlink$#", "symlink(const QString&, const KUrl&)", typeof(KIO.SimpleJob), typeof(string), target, typeof(KUrl), dest);
 		}
 		/// <remarks>
 		///  Execute any command that is specific to one slave (protocol).
@@ -6404,12 +5791,12 @@ namespace Kimono {
 		///         which slave to send it to :-)
 		/// </param><param> name="data" Packed data.  The meaning is completely dependent on the
 		///         slave, but usually starts with an int for the command number.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Execute any command that is specific to one slave (protocol).</short>
-		public static KIO.SimpleJob Special(KUrl url, QByteArray data, bool showProgressInfo) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("special##$", "special(const KUrl&, const QByteArray&, bool)", typeof(KIO.SimpleJob), typeof(KUrl), url, typeof(QByteArray), data, typeof(bool), showProgressInfo);
+		public static KIO.SimpleJob Special(KUrl url, QByteArray data, uint flags) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("special##$", "special(const KUrl&, const QByteArray&, KIO::JobFlags)", typeof(KIO.SimpleJob), typeof(KUrl), url, typeof(QByteArray), data, typeof(uint), flags);
 		}
 		public static KIO.SimpleJob Special(KUrl url, QByteArray data) {
 			return (KIO.SimpleJob) staticInterceptor.Invoke("special##", "special(const KUrl&, const QByteArray&)", typeof(KIO.SimpleJob), typeof(KUrl), url, typeof(QByteArray), data);
@@ -6421,12 +5808,12 @@ namespace Kimono {
 		/// </param><param> name="fstype" File system type (e.g. "ext2", can be empty).
 		/// </param><param> name="dev" Device (e.g. /dev/sda0).
 		/// </param><param> name="point" Mount point, can be <code>null.</code>
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Mount filesystem.</short>
-		public static KIO.SimpleJob Mount(bool ro, QByteArray fstype, string dev, string point, bool showProgressInfo) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("mount$#$$$", "mount(bool, const QByteArray&, const QString&, const QString&, bool)", typeof(KIO.SimpleJob), typeof(bool), ro, typeof(QByteArray), fstype, typeof(string), dev, typeof(string), point, typeof(bool), showProgressInfo);
+		public static KIO.SimpleJob Mount(bool ro, QByteArray fstype, string dev, string point, uint flags) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("mount$#$$$", "mount(bool, const QByteArray&, const QString&, const QString&, KIO::JobFlags)", typeof(KIO.SimpleJob), typeof(bool), ro, typeof(QByteArray), fstype, typeof(string), dev, typeof(string), point, typeof(uint), flags);
 		}
 		public static KIO.SimpleJob Mount(bool ro, QByteArray fstype, string dev, string point) {
 			return (KIO.SimpleJob) staticInterceptor.Invoke("mount$#$$", "mount(bool, const QByteArray&, const QString&, const QString&)", typeof(KIO.SimpleJob), typeof(bool), ro, typeof(QByteArray), fstype, typeof(string), dev, typeof(string), point);
@@ -6435,12 +5822,12 @@ namespace Kimono {
 		///  Unmount filesystem.
 		///  Special job for <code>kio_file.</code>
 		/// <param> name="point" Point to unmount.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Unmount filesystem.</short>
-		public static KIO.SimpleJob Unmount(string point, bool showProgressInfo) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("unmount$$", "unmount(const QString&, bool)", typeof(KIO.SimpleJob), typeof(string), point, typeof(bool), showProgressInfo);
+		public static KIO.SimpleJob Unmount(string point, uint flags) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("unmount$$", "unmount(const QString&, KIO::JobFlags)", typeof(KIO.SimpleJob), typeof(string), point, typeof(uint), flags);
 		}
 		public static KIO.SimpleJob Unmount(string point) {
 			return (KIO.SimpleJob) staticInterceptor.Invoke("unmount$", "unmount(const QString&)", typeof(KIO.SimpleJob), typeof(string), point);
@@ -6460,16 +5847,48 @@ namespace Kimono {
 		/// <remarks>
 		///  Find all details for one file or directory.
 		/// <param> name="url" the URL of the file
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Find all details for one file or directory.</short>
-		public static KIO.StatJob Stat(KUrl url, bool showProgressInfo) {
-			return (KIO.StatJob) staticInterceptor.Invoke("stat#$", "stat(const KUrl&, bool)", typeof(KIO.StatJob), typeof(KUrl), url, typeof(bool), showProgressInfo);
+		public static KIO.StatJob Stat(KUrl url, uint flags) {
+			return (KIO.StatJob) staticInterceptor.Invoke("stat#$", "stat(const KUrl&, KIO::JobFlags)", typeof(KIO.StatJob), typeof(KUrl), url, typeof(uint), flags);
 		}
 		public static KIO.StatJob Stat(KUrl url) {
 			return (KIO.StatJob) staticInterceptor.Invoke("stat#", "stat(const KUrl&)", typeof(KIO.StatJob), typeof(KUrl), url);
 		}
+		/// <remarks>
+		///  Find all details for one file or directory.
+		///  This version of the call includes two additional booleans, <code>sideIsSource</code> and <code>details.</code>
+		/// <param> name="url" the URL of the file
+		/// </param><param> name="side" is SourceSide when stating a source file (we will do a get on it if
+		///  the stat works) and DestinationSide when stating a destination file (target of a copy).
+		///  The reason for this parameter is that in some cases the kioslave might not
+		///  be able to determine a file's existence (e.g. HTTP doesn't allow it, FTP
+		///  has issues with case-sensitivity on some systems).
+		///  When the slave can't reliably determine the existence of a file, it will:
+		/// </param>
+		/// <li>
+		/// be optimistic if SourceSide, i.e. it will assume the file exists,
+		///  and if it doesn't this will appear when actually trying to download it
+		/// </li>
+		/// 
+		/// <li>
+		/// be pessimistic if DestinationSide, i.e. it will assume the file
+		///  doesn't exist, to prevent showing "about to overwrite" errors to the user.
+		///  If you simply want to check for existence without downloading/uploading afterwards,
+		///  then you should use DestinationSide.
+		/// </li>
+		/// <param> name="details" selects the level of details we want.
+		///  By default this is 2 (all details wanted, including modification time, size, etc.),
+		///  setDetails(1) is used when deleting: we don't need all the information if it takes
+		///  too much time, no need to follow symlinks etc.
+		///  setDetails(0) is used for very simple probing: we'll only get the answer
+		///  "it's a file or a directory, or it doesn't exist". This is used by KRun.
+		/// </param><param> name="flags" Can be HideProgressInfo here
+		/// </param></remarks>		<return> the job handling the operation.
+		///      </return>
+		/// 		<short>    Find all details for one file or directory.</short>
 		/// <remarks>
 		///  Find all details for one file or directory.
 		///  This version of the call includes two additional booleans, <code>sideIsSource</code> and <code>details.</code>
@@ -6498,12 +5917,12 @@ namespace Kimono {
 		///  too much time, no need to follow symlinks etc.
 		///  setDetails(0) is used for very simple probing: we'll only get the answer
 		///  "it's a file or a directory, or it doesn't exist". This is used by KRun.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Find all details for one file or directory.</short>
-		public static KIO.StatJob Stat(KUrl url, bool sideIsSource, short details, bool showProgressInfo) {
-			return (KIO.StatJob) staticInterceptor.Invoke("stat#$$$", "stat(const KUrl&, bool, short int, bool)", typeof(KIO.StatJob), typeof(KUrl), url, typeof(bool), sideIsSource, typeof(short), details, typeof(bool), showProgressInfo);
+		public static KIO.StatJob Stat(KUrl url, bool sideIsSource, short details, uint flags) {
+			return (KIO.StatJob) staticInterceptor.Invoke("stat#$$$", "stat(const KUrl&, bool, short int, KIO::JobFlags)", typeof(KIO.StatJob), typeof(KUrl), url, typeof(bool), sideIsSource, typeof(short), details, typeof(uint), flags);
 		}
 		public static KIO.StatJob Stat(KUrl url, bool sideIsSource, short details) {
 			return (KIO.StatJob) staticInterceptor.Invoke("stat#$$", "stat(const KUrl&, bool, short int)", typeof(KIO.StatJob), typeof(KUrl), url, typeof(bool), sideIsSource, typeof(short), details);
@@ -6512,16 +5931,16 @@ namespace Kimono {
 		///  Get (a.k.a. read).
 		///  The slave emits the data through data().
 		/// <param> name="url" the URL of the file
-		/// </param><param> name="reload" true to reload the file, false if it can be taken from the cache
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="reload" : Reload to reload the file, NoReload if it can be taken from the cache
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Get (a.</short>
-		public static KIO.TransferJob Get(KUrl url, bool reload, bool showProgressInfo) {
-			return (KIO.TransferJob) staticInterceptor.Invoke("get#$$", "get(const KUrl&, bool, bool)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(bool), reload, typeof(bool), showProgressInfo);
+		public static KIO.TransferJob Get(KUrl url, KIO.LoadType reload, uint flags) {
+			return (KIO.TransferJob) staticInterceptor.Invoke("get#$$", "get(const KUrl&, KIO::LoadType, KIO::JobFlags)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(KIO.LoadType), reload, typeof(uint), flags);
 		}
-		public static KIO.TransferJob Get(KUrl url, bool reload) {
-			return (KIO.TransferJob) staticInterceptor.Invoke("get#$", "get(const KUrl&, bool)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(bool), reload);
+		public static KIO.TransferJob Get(KUrl url, KIO.LoadType reload) {
+			return (KIO.TransferJob) staticInterceptor.Invoke("get#$", "get(const KUrl&, KIO::LoadType)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(KIO.LoadType), reload);
 		}
 		public static KIO.TransferJob Get(KUrl url) {
 			return (KIO.TransferJob) staticInterceptor.Invoke("get#", "get(const KUrl&)", typeof(KIO.TransferJob), typeof(KUrl), url);
@@ -6535,32 +5954,30 @@ namespace Kimono {
 		///  (emitted as signals).
 		///      </return>
 		/// 		<short>    Open ( random access I/O ) </short>
-		public static KIO.FileJob Open(KUrl url, int mode) {
-			return (KIO.FileJob) staticInterceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(KIO.FileJob), typeof(KUrl), url, typeof(int), mode);
+		public static KIO.FileJob Open(KUrl url, uint mode) {
+			return (KIO.FileJob) staticInterceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(KIO.FileJob), typeof(KUrl), url, typeof(uint), mode);
 		}
 		/// <remarks>
 		///  Put (a.k.a. write)
 		/// <param> name="url" Where to write data.
 		/// </param><param> name="permissions" May be -1. In this case no special permission mode is set.
-		/// </param><param> name="overwrite" If true, any existing file will be overwritten.
-		/// </param><param> name="resume" true to resume an operation. Warning, setting this to true means
-		///                that the data will be appended to <code>dest</code> if <code>dest</code> exists.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo, Overwrite and Resume here. WARNING:
+		///  Setting Resume means that the data will be appended to <code>dest</code> if <code>dest</code> exists.
 		/// </param></remarks>		<return> the job handling the operation.
 		/// </return>
 		/// 		<short>    Put (a.</short>
 		/// 		<see> multi_get</see>
-		public static KIO.TransferJob Put(KUrl url, int permissions, bool overwrite, bool resume, bool showProgressInfo) {
-			return (KIO.TransferJob) staticInterceptor.Invoke("put#$$$$", "put(const KUrl&, int, bool, bool, bool)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume, typeof(bool), showProgressInfo);
+		public static KIO.TransferJob Put(KUrl url, int permissions, uint flags) {
+			return (KIO.TransferJob) staticInterceptor.Invoke("put#$$", "put(const KUrl&, int, KIO::JobFlags)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(int), permissions, typeof(uint), flags);
 		}
-		public static KIO.TransferJob Put(KUrl url, int permissions, bool overwrite, bool resume) {
-			return (KIO.TransferJob) staticInterceptor.Invoke("put#$$$", "put(const KUrl&, int, bool, bool)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume);
+		public static KIO.TransferJob Put(KUrl url, int permissions) {
+			return (KIO.TransferJob) staticInterceptor.Invoke("put#$", "put(const KUrl&, int)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(int), permissions);
 		}
 		/// <remarks>
 		///  HTTP POST (for form data).
 		///  Example:
 		///  <pre>
-		///     job = KIO.Http_post( url, postData, false );
+		///     job = KIO.Http_post( url, postData, KIO.HideProgressInfo );
 		///     job.AddMetaData("content-type", contentType );
 		///     job.AddMetaData("referrer", referrerURL);
 		///  </pre>
@@ -6576,12 +5993,12 @@ namespace Kimono {
 		///  %0A and %25.
 		/// <param> name="url" Where to write the data.
 		/// </param><param> name="postData" Encoded data to post.
-		/// </param><param> name="showProgressInfo" true to display
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    HTTP POST (for form data).</short>
-		public static KIO.TransferJob Http_post(KUrl url, QByteArray postData, bool showProgressInfo) {
-			return (KIO.TransferJob) staticInterceptor.Invoke("http_post##$", "http_post(const KUrl&, const QByteArray&, bool)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(QByteArray), postData, typeof(bool), showProgressInfo);
+		public static KIO.TransferJob Http_post(KUrl url, QByteArray postData, uint flags) {
+			return (KIO.TransferJob) staticInterceptor.Invoke("http_post##$", "http_post(const KUrl&, const QByteArray&, KIO::JobFlags)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(QByteArray), postData, typeof(uint), flags);
 		}
 		public static KIO.TransferJob Http_post(KUrl url, QByteArray postData) {
 			return (KIO.TransferJob) staticInterceptor.Invoke("http_post##", "http_post(const KUrl&, const QByteArray&)", typeof(KIO.TransferJob), typeof(KUrl), url, typeof(QByteArray), postData);
@@ -6589,17 +6006,17 @@ namespace Kimono {
 		/// <remarks>
 		///  Get (a.k.a. read), into a single QByteArray.
 		/// <param> name="url" the URL of the file
-		/// </param><param> name="reload" true to reload the file, false if it can be taken from the cache
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="reload" : Reload to reload the file, NoReload if it can be taken from the cache
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Get (a.</short>
 		/// 		<see> StoredTransferJob</see>
-		public static KIO.StoredTransferJob StoredGet(KUrl url, bool reload, bool showProgressInfo) {
-			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedGet#$$", "storedGet(const KUrl&, bool, bool)", typeof(KIO.StoredTransferJob), typeof(KUrl), url, typeof(bool), reload, typeof(bool), showProgressInfo);
+		public static KIO.StoredTransferJob StoredGet(KUrl url, KIO.LoadType reload, uint flags) {
+			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedGet#$$", "storedGet(const KUrl&, KIO::LoadType, KIO::JobFlags)", typeof(KIO.StoredTransferJob), typeof(KUrl), url, typeof(KIO.LoadType), reload, typeof(uint), flags);
 		}
-		public static KIO.StoredTransferJob StoredGet(KUrl url, bool reload) {
-			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedGet#$", "storedGet(const KUrl&, bool)", typeof(KIO.StoredTransferJob), typeof(KUrl), url, typeof(bool), reload);
+		public static KIO.StoredTransferJob StoredGet(KUrl url, KIO.LoadType reload) {
+			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedGet#$", "storedGet(const KUrl&, KIO::LoadType)", typeof(KIO.StoredTransferJob), typeof(KUrl), url, typeof(KIO.LoadType), reload);
 		}
 		public static KIO.StoredTransferJob StoredGet(KUrl url) {
 			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedGet#", "storedGet(const KUrl&)", typeof(KIO.StoredTransferJob), typeof(KUrl), url);
@@ -6609,19 +6026,17 @@ namespace Kimono {
 		/// <param> name="arr" The data to write
 		/// </param><param> name="url" Where to write data.
 		/// </param><param> name="permissions" May be -1. In this case no special permission mode is set.
-		/// </param><param> name="overwrite" If true, any existing file will be overwritten.
-		/// </param><param> name="resume" true to resume an operation. Warning, setting this to true means
-		///                that the data will be appended to <code>dest</code> if <code>dest</code> exists.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo, Overwrite and Resume here. WARNING:
+		///  Setting Resume means that the data will be appended to <code>dest</code> if <code>dest</code> exists.
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Put (a.</short>
 		/// 		<see> StoredTransferJob</see>
-		public static KIO.StoredTransferJob StoredPut(QByteArray arr, KUrl url, int permissions, bool overwrite, bool resume, bool showProgressInfo) {
-			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedPut##$$$$", "storedPut(const QByteArray&, const KUrl&, int, bool, bool, bool)", typeof(KIO.StoredTransferJob), typeof(QByteArray), arr, typeof(KUrl), url, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume, typeof(bool), showProgressInfo);
+		public static KIO.StoredTransferJob StoredPut(QByteArray arr, KUrl url, int permissions, uint flags) {
+			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedPut##$$", "storedPut(const QByteArray&, const KUrl&, int, KIO::JobFlags)", typeof(KIO.StoredTransferJob), typeof(QByteArray), arr, typeof(KUrl), url, typeof(int), permissions, typeof(uint), flags);
 		}
-		public static KIO.StoredTransferJob StoredPut(QByteArray arr, KUrl url, int permissions, bool overwrite, bool resume) {
-			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedPut##$$$", "storedPut(const QByteArray&, const KUrl&, int, bool, bool)", typeof(KIO.StoredTransferJob), typeof(QByteArray), arr, typeof(KUrl), url, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume);
+		public static KIO.StoredTransferJob StoredPut(QByteArray arr, KUrl url, int permissions) {
+			return (KIO.StoredTransferJob) staticInterceptor.Invoke("storedPut##$", "storedPut(const QByteArray&, const KUrl&, int)", typeof(KIO.StoredTransferJob), typeof(QByteArray), arr, typeof(KUrl), url, typeof(int), permissions);
 		}
 		/// <remarks>
 		///  Creates a new multiple get job.
@@ -6638,12 +6053,12 @@ namespace Kimono {
 		/// <remarks>
 		///  Find mimetype for one file or directory.
 		/// <param> name="url" the URL of the file
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Find mimetype for one file or directory.</short>
-		public static KIO.MimetypeJob Mimetype(KUrl url, bool showProgressInfo) {
-			return (KIO.MimetypeJob) staticInterceptor.Invoke("mimetype#$", "mimetype(const KUrl&, bool)", typeof(KIO.MimetypeJob), typeof(KUrl), url, typeof(bool), showProgressInfo);
+		public static KIO.MimetypeJob Mimetype(KUrl url, uint flags) {
+			return (KIO.MimetypeJob) staticInterceptor.Invoke("mimetype#$", "mimetype(const KUrl&, KIO::JobFlags)", typeof(KIO.MimetypeJob), typeof(KUrl), url, typeof(uint), flags);
 		}
 		public static KIO.MimetypeJob Mimetype(KUrl url) {
 			return (KIO.MimetypeJob) staticInterceptor.Invoke("mimetype#", "mimetype(const KUrl&)", typeof(KIO.MimetypeJob), typeof(KUrl), url);
@@ -6655,22 +6070,13 @@ namespace Kimono {
 		/// <param> name="src" Where to get the file.
 		/// </param><param> name="dest" Where to put the file.
 		/// </param><param> name="permissions" May be -1. In this case no special permission mode is set.
-		/// </param><param> name="overwrite" If true, any existing file will be overwritten.
-		/// </param><param> name="resume" true to resume an operation. Warning, setting this to true means
-		///                that <code>src</code> will be appended to <code>dest</code> if <code>dest</code> exists.
-		///                You probably don't want that, so leave it to false :)
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo, Overwrite and Resume here. WARNING:
+		///  Setting Resume means that the data will be appended to <code>dest</code> if <code>dest</code> exists.
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Copy a single file.</short>
-		public static KIO.FileCopyJob File_copy(KUrl src, KUrl dest, int permissions, bool overwrite, bool resume, bool showProgressInfo) {
-			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_copy##$$$$", "file_copy(const KUrl&, const KUrl&, int, bool, bool, bool)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume, typeof(bool), showProgressInfo);
-		}
-		public static KIO.FileCopyJob File_copy(KUrl src, KUrl dest, int permissions, bool overwrite, bool resume) {
-			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_copy##$$$", "file_copy(const KUrl&, const KUrl&, int, bool, bool)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume);
-		}
-		public static KIO.FileCopyJob File_copy(KUrl src, KUrl dest, int permissions, bool overwrite) {
-			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_copy##$$", "file_copy(const KUrl&, const KUrl&, int, bool)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite);
+		public static KIO.FileCopyJob File_copy(KUrl src, KUrl dest, int permissions, uint flags) {
+			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_copy##$$", "file_copy(const KUrl&, const KUrl&, int, KIO::JobFlags)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(uint), flags);
 		}
 		public static KIO.FileCopyJob File_copy(KUrl src, KUrl dest, int permissions) {
 			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_copy##$", "file_copy(const KUrl&, const KUrl&, int)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions);
@@ -6685,22 +6091,13 @@ namespace Kimono {
 		/// <param> name="src" Where to get the file.
 		/// </param><param> name="dest" Where to put the file.
 		/// </param><param> name="permissions" May be -1. In this case no special permission mode is set.
-		/// </param><param> name="overwrite" If <code>true</code>, any existing file will be overwritten.
-		/// </param><param> name="resume" true to resume an operation. Warning, setting this to true means
-		///                that <code>src</code> will be appended to <code>dest</code> if <code>dest</code> exists.
-		///                You probably don't want that, so leave it to false :)
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo, Overwrite and Resume here. WARNING:
+		///  Setting Resume means that the data will be appended to <code>dest</code> if <code>dest</code> exists.
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Move a single file.</short>
-		public static KIO.FileCopyJob File_move(KUrl src, KUrl dest, int permissions, bool overwrite, bool resume, bool showProgressInfo) {
-			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_move##$$$$", "file_move(const KUrl&, const KUrl&, int, bool, bool, bool)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume, typeof(bool), showProgressInfo);
-		}
-		public static KIO.FileCopyJob File_move(KUrl src, KUrl dest, int permissions, bool overwrite, bool resume) {
-			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_move##$$$", "file_move(const KUrl&, const KUrl&, int, bool, bool)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite, typeof(bool), resume);
-		}
-		public static KIO.FileCopyJob File_move(KUrl src, KUrl dest, int permissions, bool overwrite) {
-			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_move##$$", "file_move(const KUrl&, const KUrl&, int, bool)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(bool), overwrite);
+		public static KIO.FileCopyJob File_move(KUrl src, KUrl dest, int permissions, uint flags) {
+			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_move##$$", "file_move(const KUrl&, const KUrl&, int, KIO::JobFlags)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions, typeof(uint), flags);
 		}
 		public static KIO.FileCopyJob File_move(KUrl src, KUrl dest, int permissions) {
 			return (KIO.FileCopyJob) staticInterceptor.Invoke("file_move##$", "file_move(const KUrl&, const KUrl&, int)", typeof(KIO.FileCopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(int), permissions);
@@ -6711,12 +6108,12 @@ namespace Kimono {
 		/// <remarks>
 		///  Delete a single file.
 		/// <param> name="src" File to delete.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    Delete a single file.</short>
-		public static KIO.SimpleJob File_delete(KUrl src, bool showProgressInfo) {
-			return (KIO.SimpleJob) staticInterceptor.Invoke("file_delete#$", "file_delete(const KUrl&, bool)", typeof(KIO.SimpleJob), typeof(KUrl), src, typeof(bool), showProgressInfo);
+		public static KIO.SimpleJob File_delete(KUrl src, uint flags) {
+			return (KIO.SimpleJob) staticInterceptor.Invoke("file_delete#$", "file_delete(const KUrl&, KIO::JobFlags)", typeof(KIO.SimpleJob), typeof(KUrl), src, typeof(uint), flags);
 		}
 		public static KIO.SimpleJob File_delete(KUrl src) {
 			return (KIO.SimpleJob) staticInterceptor.Invoke("file_delete#", "file_delete(const KUrl&)", typeof(KIO.SimpleJob), typeof(KUrl), src);
@@ -6725,17 +6122,17 @@ namespace Kimono {
 		///  List the contents of <code>url</code>, which is assumed to be a directory.
 		///  "." and ".." are returned, filter them out if you don't want them.
 		/// <param> name="url" the url of the directory
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param><param> name="includeHidden" true for all files, false to cull out UNIX hidden
 		///                       files/dirs (whose names start with dot)
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    List the contents of <code>url</code>, which is assumed to be a directory.</short>
-		public static KIO.ListJob ListDir(KUrl url, bool showProgressInfo, bool includeHidden) {
-			return (KIO.ListJob) staticInterceptor.Invoke("listDir#$$", "listDir(const KUrl&, bool, bool)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(bool), showProgressInfo, typeof(bool), includeHidden);
+		public static KIO.ListJob ListDir(KUrl url, uint flags, bool includeHidden) {
+			return (KIO.ListJob) staticInterceptor.Invoke("listDir#$$", "listDir(const KUrl&, KIO::JobFlags, bool)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(uint), flags, typeof(bool), includeHidden);
 		}
-		public static KIO.ListJob ListDir(KUrl url, bool showProgressInfo) {
-			return (KIO.ListJob) staticInterceptor.Invoke("listDir#$", "listDir(const KUrl&, bool)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(bool), showProgressInfo);
+		public static KIO.ListJob ListDir(KUrl url, uint flags) {
+			return (KIO.ListJob) staticInterceptor.Invoke("listDir#$", "listDir(const KUrl&, KIO::JobFlags)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(uint), flags);
 		}
 		public static KIO.ListJob ListDir(KUrl url) {
 			return (KIO.ListJob) staticInterceptor.Invoke("listDir#", "listDir(const KUrl&)", typeof(KIO.ListJob), typeof(KUrl), url);
@@ -6746,17 +6143,17 @@ namespace Kimono {
 		///  "." and ".." are returned but only for the toplevel directory.
 		///  Filter them out if you don't want them.
 		/// <param> name="url" the url of the directory
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" Can be HideProgressInfo here
 		/// </param><param> name="includeHidden" true for all files, false to cull out UNIX hidden
 		///                       files/dirs (whose names start with dot)
 		/// </param></remarks>		<return> the job handling the operation.
 		///      </return>
 		/// 		<short>    The same as the previous method, but recurses subdirectories.</short>
-		public static KIO.ListJob ListRecursive(KUrl url, bool showProgressInfo, bool includeHidden) {
-			return (KIO.ListJob) staticInterceptor.Invoke("listRecursive#$$", "listRecursive(const KUrl&, bool, bool)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(bool), showProgressInfo, typeof(bool), includeHidden);
+		public static KIO.ListJob ListRecursive(KUrl url, uint flags, bool includeHidden) {
+			return (KIO.ListJob) staticInterceptor.Invoke("listRecursive#$$", "listRecursive(const KUrl&, KIO::JobFlags, bool)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(uint), flags, typeof(bool), includeHidden);
 		}
-		public static KIO.ListJob ListRecursive(KUrl url, bool showProgressInfo) {
-			return (KIO.ListJob) staticInterceptor.Invoke("listRecursive#$", "listRecursive(const KUrl&, bool)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(bool), showProgressInfo);
+		public static KIO.ListJob ListRecursive(KUrl url, uint flags) {
+			return (KIO.ListJob) staticInterceptor.Invoke("listRecursive#$", "listRecursive(const KUrl&, KIO::JobFlags)", typeof(KIO.ListJob), typeof(KUrl), url, typeof(uint), flags);
 		}
 		public static KIO.ListJob ListRecursive(KUrl url) {
 			return (KIO.ListJob) staticInterceptor.Invoke("listRecursive#", "listRecursive(const KUrl&)", typeof(KIO.ListJob), typeof(KUrl), url);
@@ -6768,13 +6165,13 @@ namespace Kimono {
 		///  This emulates the cp command completely.
 		/// <param> name="src" the file or directory to copy
 		/// </param><param> name="dest" the destination
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		/// </return>
 		/// 		<short>    Copy a file or directory <code>src</code> into the destination <code>dest</code>,  which can be a file (including the final filename) or a directory  (into which <code>src</code> will be copied).</short>
 		/// 		<see> copyAs</see>
-		public static KIO.CopyJob Copy(KUrl src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("copy##$", "copy(const KUrl&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Copy(KUrl src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("copy##$", "copy(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Copy(KUrl src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("copy##", "copy(const KUrl&, const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest);
@@ -6787,12 +6184,12 @@ namespace Kimono {
 		///  box if a directory already exists with the same name.
 		/// <param> name="src" the file or directory to copy
 		/// </param><param> name="dest" the destination
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here 
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Copy a file or directory <code>src</code> into the destination <code>dest</code>,  which is the destination name in any case, even for a directory.</short>
-		public static KIO.CopyJob CopyAs(KUrl src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("copyAs##$", "copyAs(const KUrl&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob CopyAs(KUrl src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("copyAs##$", "copyAs(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob CopyAs(KUrl src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("copyAs##", "copyAs(const KUrl&, const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest);
@@ -6801,12 +6198,12 @@ namespace Kimono {
 		///  Copy a list of file/dirs <code>src</code> into a destination directory <code>dest.</code>
 		/// <param> name="src" the list of files and/or directories
 		/// </param><param> name="dest" the destination
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Copy a list of file/dirs <code>src</code> into a destination directory <code>dest.</code></short>
-		public static KIO.CopyJob Copy(List<KUrl> src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("copy?#$", "copy(const KUrl::List&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Copy(List<KUrl> src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("copy?#$", "copy(const KUrl::List&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Copy(List<KUrl> src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("copy?#", "copy(const KUrl::List&, const KUrl&)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), dest);
@@ -6815,14 +6212,14 @@ namespace Kimono {
 		///  Moves a file or directory <code>src</code> to the given destination <code>dest.</code>
 		/// <param> name="src" the file or directory to copy
 		/// </param><param> name="dest" the destination
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		/// </return>
 		/// 		<short>    Moves a file or directory <code>src</code> to the given destination <code>dest.</code></short>
 		/// 		<see> copy</see>
 		/// 		<see> moveAs</see>
-		public static KIO.CopyJob Move(KUrl src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("move##$", "move(const KUrl&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Move(KUrl src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("move##$", "move(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Move(KUrl src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("move##", "move(const KUrl&, const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest);
@@ -6832,13 +6229,13 @@ namespace Kimono {
 		///  this operation will fail when the directory already exists.
 		/// <param> name="src" the file or directory to copy
 		/// </param><param> name="dest" the destination
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		/// </return>
 		/// 		<short>    Moves a file or directory <code>src</code> to the given destination <code>dest.</code></short>
 		/// 		<see> copyAs</see>
-		public static KIO.CopyJob MoveAs(KUrl src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("moveAs##$", "moveAs(const KUrl&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob MoveAs(KUrl src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("moveAs##$", "moveAs(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob MoveAs(KUrl src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("moveAs##", "moveAs(const KUrl&, const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest);
@@ -6847,13 +6244,13 @@ namespace Kimono {
 		///  Moves a list of files or directories <code>src</code> to the given destination <code>dest.</code>
 		/// <param> name="src" the list of files or directories to copy
 		/// </param><param> name="dest" the destination
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		/// </return>
 		/// 		<short>    Moves a list of files or directories <code>src</code> to the given destination <code>dest.</code></short>
 		/// 		<see> copy</see>
-		public static KIO.CopyJob Move(List<KUrl> src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("move?#$", "move(const KUrl::List&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Move(List<KUrl> src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("move?#$", "move(const KUrl::List&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Move(List<KUrl> src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("move?#", "move(const KUrl::List&, const KUrl&)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), dest);
@@ -6864,12 +6261,12 @@ namespace Kimono {
 		///  Otherwise, a .desktop file of Type Link and pointing to the src URL will be created.
 		/// <param> name="src" The existing file or directory, 'target' of the link.
 		/// </param><param> name="destDir" Destination directory where the link will be created.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Create a link.</short>
-		public static KIO.CopyJob Link(KUrl src, KUrl destDir, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("link##$", "link(const KUrl&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), destDir, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Link(KUrl src, KUrl destDir, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("link##$", "link(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), destDir, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Link(KUrl src, KUrl destDir) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("link##", "link(const KUrl&, const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), destDir);
@@ -6880,13 +6277,13 @@ namespace Kimono {
 		///  Otherwise, a .desktop file of Type Link and pointing to the src URL will be created.
 		/// <param> name="src" The existing files or directories, 'targets' of the link.
 		/// </param><param> name="destDir" Destination directory where the links will be created.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		/// </return>
 		/// 		<short>    Create several links  If the protocols and hosts are the same, a Unix symlink will be created.</short>
 		/// 		<see> link</see>
-		public static KIO.CopyJob Link(List<KUrl> src, KUrl destDir, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("link?#$", "link(const KUrl::List&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), destDir, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Link(List<KUrl> src, KUrl destDir, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("link?#$", "link(const KUrl::List&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), destDir, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Link(List<KUrl> src, KUrl destDir) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("link?#", "link(const KUrl::List&, const KUrl&)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(KUrl), destDir);
@@ -6898,14 +6295,14 @@ namespace Kimono {
 		///  Otherwise, a .desktop file of Type Link and pointing to the src URL will be created.
 		/// <param> name="src" The existing file or directory, 'target' of the link.
 		/// </param><param> name="dest" Destination directory where the link will be created.
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		/// </return>
 		/// 		<short>    Create a link.</short>
 		/// 		<see> link</see>
 		/// 		<see> copyAs</see>
-		public static KIO.CopyJob LinkAs(KUrl src, KUrl dest, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("linkAs##$", "linkAs(const KUrl&, const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob LinkAs(KUrl src, KUrl dest, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("linkAs##$", "linkAs(const KUrl&, const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest, typeof(uint), flags);
 		}
 		public static KIO.CopyJob LinkAs(KUrl src, KUrl dest) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("linkAs##", "linkAs(const KUrl&, const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(KUrl), dest);
@@ -6915,12 +6312,12 @@ namespace Kimono {
 		///  This is currently only supported for local files and directories.
 		///  Use "KUrl src; src.setPath( path );" to create a URL from a path.
 		/// <param> name="src" file to delete
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Trash a file or directory.</short>
-		public static KIO.CopyJob Trash(KUrl src, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("trash#$", "trash(const KUrl&, bool)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Trash(KUrl src, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("trash#$", "trash(const KUrl&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(KUrl), src, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Trash(KUrl src) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("trash#", "trash(const KUrl&)", typeof(KIO.CopyJob), typeof(KUrl), src);
@@ -6929,12 +6326,12 @@ namespace Kimono {
 		///  Trash a list of files or directories.
 		///  This is currently only supported for local files and directories.
 		/// <param> name="src" the files to delete
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Trash a list of files or directories.</short>
-		public static KIO.CopyJob Trash(List<KUrl> src, bool showProgressInfo) {
-			return (KIO.CopyJob) staticInterceptor.Invoke("trash?$", "trash(const KUrl::List&, bool)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(bool), showProgressInfo);
+		public static KIO.CopyJob Trash(List<KUrl> src, uint flags) {
+			return (KIO.CopyJob) staticInterceptor.Invoke("trash?$", "trash(const KUrl::List&, KIO::JobFlags)", typeof(KIO.CopyJob), typeof(List<KUrl>), src, typeof(uint), flags);
 		}
 		public static KIO.CopyJob Trash(List<KUrl> src) {
 			return (KIO.CopyJob) staticInterceptor.Invoke("trash?", "trash(const KUrl::List&)", typeof(KIO.CopyJob), typeof(List<KUrl>), src);
@@ -6942,16 +6339,12 @@ namespace Kimono {
 		/// <remarks>
 		///  Delete a file or directory.
 		/// <param> name="src" file to delete
-		/// </param><param> name="shred" obsolete (TODO remove in KDE4)
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Delete a file or directory.</short>
-		public static KIO.DeleteJob Del(KUrl src, bool shred, bool showProgressInfo) {
-			return (KIO.DeleteJob) staticInterceptor.Invoke("del#$$", "del(const KUrl&, bool, bool)", typeof(KIO.DeleteJob), typeof(KUrl), src, typeof(bool), shred, typeof(bool), showProgressInfo);
-		}
-		public static KIO.DeleteJob Del(KUrl src, bool shred) {
-			return (KIO.DeleteJob) staticInterceptor.Invoke("del#$", "del(const KUrl&, bool)", typeof(KIO.DeleteJob), typeof(KUrl), src, typeof(bool), shred);
+		public static KIO.DeleteJob Del(KUrl src, uint flags) {
+			return (KIO.DeleteJob) staticInterceptor.Invoke("del#$", "del(const KUrl&, KIO::JobFlags)", typeof(KIO.DeleteJob), typeof(KUrl), src, typeof(uint), flags);
 		}
 		public static KIO.DeleteJob Del(KUrl src) {
 			return (KIO.DeleteJob) staticInterceptor.Invoke("del#", "del(const KUrl&)", typeof(KIO.DeleteJob), typeof(KUrl), src);
@@ -6959,16 +6352,12 @@ namespace Kimono {
 		/// <remarks>
 		///  Deletes a list of files or directories.
 		/// <param> name="src" the files to delete
-		/// </param><param> name="shred" obsolete (TODO remove in KDE4)
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the job handling the operation
 		///      </return>
 		/// 		<short>    Deletes a list of files or directories.</short>
-		public static KIO.DeleteJob Del(List<KUrl> src, bool shred, bool showProgressInfo) {
-			return (KIO.DeleteJob) staticInterceptor.Invoke("del?$$", "del(const KUrl::List&, bool, bool)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src, typeof(bool), shred, typeof(bool), showProgressInfo);
-		}
-		public static KIO.DeleteJob Del(List<KUrl> src, bool shred) {
-			return (KIO.DeleteJob) staticInterceptor.Invoke("del?$", "del(const KUrl::List&, bool)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src, typeof(bool), shred);
+		public static KIO.DeleteJob Del(List<KUrl> src, uint flags) {
+			return (KIO.DeleteJob) staticInterceptor.Invoke("del?$", "del(const KUrl::List&, KIO::JobFlags)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src, typeof(uint), flags);
 		}
 		public static KIO.DeleteJob Del(List<KUrl> src) {
 			return (KIO.DeleteJob) staticInterceptor.Invoke("del?", "del(const KUrl::List&)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src);
@@ -7030,25 +6419,25 @@ namespace Kimono {
 		/// 		<short>    Creates a PreviewJob to generate or retrieve a preview image  for the given URL.</short>
 		/// 		<see> PreviewJob.AvailablePlugins</see>
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save, List<string> enabledPlugins) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$$?", "filePreview(const QList<KFileItem>&, int, int, int, int, bool, bool, const QStringList*)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$$?", "filePreview(const KFileItemList&, int, int, int, int, bool, bool, const QStringList*)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
 		}
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$$", "filePreview(const QList<KFileItem>&, int, int, int, int, bool, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$$", "filePreview(const KFileItemList&, int, int, int, int, bool, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save);
 		}
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$", "filePreview(const QList<KFileItem>&, int, int, int, int, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$", "filePreview(const KFileItemList&, int, int, int, int, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale);
 		}
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$", "filePreview(const QList<KFileItem>&, int, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$", "filePreview(const KFileItemList&, int, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha);
 		}
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$", "filePreview(const QList<KFileItem>&, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$", "filePreview(const KFileItemList&, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize);
 		}
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$", "filePreview(const QList<KFileItem>&, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$", "filePreview(const KFileItemList&, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height);
 		}
 		public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width) {
-			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$", "filePreview(const QList<KFileItem>&, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width);
+			return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$", "filePreview(const KFileItemList&, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width);
 		}
 		/// <remarks>
 		///  Creates a PreviewJob to generate or retrieve a preview image
@@ -7098,7 +6487,7 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>    Retrieves meta information for the given items.</short>
 		public static KIO.MetaInfoJob FileMetaInfo(List<KFileItem> items) {
-			return (KIO.MetaInfoJob) staticInterceptor.Invoke("fileMetaInfo?", "fileMetaInfo(const QList<KFileItem>&)", typeof(KIO.MetaInfoJob), typeof(List<KFileItem>), items);
+			return (KIO.MetaInfoJob) staticInterceptor.Invoke("fileMetaInfo#", "fileMetaInfo(const KFileItemList&)", typeof(KIO.MetaInfoJob), typeof(List<KFileItem>), items);
 		}
 		/// <remarks>
 		///  Retrieves meta information for the given items.
@@ -7116,12 +6505,12 @@ namespace Kimono {
 		/// </param><param> name="properties" a propfind document that describes the properties that
 		///         should be retrieved
 		/// </param><param> name="depth" the depth of the request. Can be "0", "1" or "infinity"
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the new DavJob
 		///     </return>
 		/// 		<short>    Creates a new DavJob that issues a PROPFIND command.</short>
-		public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth, bool showProgressInfo) {
-			return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$$", "davPropFind(const KUrl&, const QDomDocument&, const QString&, bool)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth, typeof(bool), showProgressInfo);
+		public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth, uint flags) {
+			return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$$", "davPropFind(const KUrl&, const QDomDocument&, const QString&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth, typeof(uint), flags);
 		}
 		public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth) {
 			return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$", "davPropFind(const KUrl&, const QDomDocument&, const QString&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth);
@@ -7132,12 +6521,12 @@ namespace Kimono {
 		/// <param> name="url" the URL of the resource
 		/// </param><param> name="properties" a PROPPACTCH document that describes the properties that
 		///         should be modified and its new values
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the new DavJob
 		///     </return>
 		/// 		<short>    Creates a new DavJob that issues a PROPPATCH command.</short>
-		public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties, bool showProgressInfo) {
-			return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##$", "davPropPatch(const KUrl&, const QDomDocument&, bool)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(bool), showProgressInfo);
+		public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties, uint flags) {
+			return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##$", "davPropPatch(const KUrl&, const QDomDocument&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(uint), flags);
 		}
 		public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties) {
 			return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##", "davPropPatch(const KUrl&, const QDomDocument&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties);
@@ -7148,12 +6537,12 @@ namespace Kimono {
 		/// </param><param> name="nsURI" the URI of the search method's qualified name
 		/// </param><param> name="qName" the local part of the search method's qualified name
 		/// </param><param> name="query" the search string
-		/// </param><param> name="showProgressInfo" true to show progress information
+		/// </param><param> name="flags" : We support HideProgressInfo here
 		/// </param></remarks>		<return> the new DavJob
 		///     </return>
 		/// 		<short>    Creates a new DavJob that issues a SEARCH command.</short>
-		public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query, bool showProgressInfo) {
-			return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&, bool)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query, typeof(bool), showProgressInfo);
+		public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query, uint flags) {
+			return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query, typeof(uint), flags);
 		}
 		public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query) {
 			return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query);

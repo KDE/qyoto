@@ -65,8 +65,8 @@ namespace Kimono {
 		/// </li>
 		///      </remarks>		<short>    Sets the text and alignment of the main description label.</short>
 		[SmokeMethod("setLabel(const QString&, Qt::Alignment)")]
-		public virtual void SetLabel(string label, int a) {
-			interceptor.Invoke("setLabel$$", "setLabel(const QString&, Qt::Alignment)", typeof(void), typeof(string), label, typeof(int), a);
+		public virtual void SetLabel(string label, uint a) {
+			interceptor.Invoke("setLabel$$", "setLabel(const QString&, Qt::Alignment)", typeof(void), typeof(string), label, typeof(uint), a);
 		}
 		[SmokeMethod("setLabel(const QString&)")]
 		public virtual void SetLabel(string label) {
@@ -86,13 +86,6 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Sets the spacing of tickmarks for the slider.</short>
 		public void SetSteps(int minor, int major) {
 			interceptor.Invoke("setSteps$$", "setSteps(int, int)", typeof(void), typeof(int), minor, typeof(int), major);
-		}
-		/// <remarks>
-		///  Specifies that this widget may stretch horizontally, but is
-		///  fixed vertically (like QSpinBox itself).
-		///      </remarks>		<short>    Specifies that this widget may stretch horizontally, but is  fixed vertically (like QSpinBox itself).</short>
-		public new QSizePolicy SizePolicy() {
-			return (QSizePolicy) interceptor.Invoke("sizePolicy", "sizePolicy() const", typeof(QSizePolicy));
 		}
 		/// <remarks>
 		///  Returns a size which fits the contents of the control.

@@ -98,8 +98,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> the result of the operation
 		/// 	 </return>
 		/// 		<short>    Checks if the given windows matches any existing startup notification.</short>
-		public KStartupInfo.startup_t CheckStartup(ulong w) {
-			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$", "checkStartup(WId)", typeof(KStartupInfo.startup_t), typeof(ulong), w);
+		public KStartupInfo.startup_t CheckStartup(uint w) {
+			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$", "checkStartup(WId)", typeof(KStartupInfo.startup_t), typeof(uint), w);
 		}
 		/// <remarks>
 		///  Checks if the given windows matches any existing startup notification, and
@@ -109,8 +109,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> the result of the operation
 		/// 	 </return>
 		/// 		<short>    Checks if the given windows matches any existing startup notification, and  if yes, returns the identification in id.</short>
-		public KStartupInfo.startup_t CheckStartup(ulong w, KStartupInfoId id) {
-			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$#", "checkStartup(WId, KStartupInfoId&)", typeof(KStartupInfo.startup_t), typeof(ulong), w, typeof(KStartupInfoId), id);
+		public KStartupInfo.startup_t CheckStartup(uint w, KStartupInfoId id) {
+			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$#", "checkStartup(WId, KStartupInfoId&)", typeof(KStartupInfo.startup_t), typeof(uint), w, typeof(KStartupInfoId), id);
 		}
 		/// <remarks>
 		///  Checks if the given windows matches any existing startup notification, and
@@ -120,8 +120,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> the result of the operation
 		/// 	 </return>
 		/// 		<short>    Checks if the given windows matches any existing startup notification, and  if yes, returns the notification data in data.</short>
-		public KStartupInfo.startup_t CheckStartup(ulong w, KStartupInfoData data) {
-			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$#", "checkStartup(WId, KStartupInfoData&)", typeof(KStartupInfo.startup_t), typeof(ulong), w, typeof(KStartupInfoData), data);
+		public KStartupInfo.startup_t CheckStartup(uint w, KStartupInfoData data) {
+			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$#", "checkStartup(WId, KStartupInfoData&)", typeof(KStartupInfo.startup_t), typeof(uint), w, typeof(KStartupInfoData), data);
 		}
 		/// <remarks>
 		///  Checks if the given windows matches any existing startup notification, and
@@ -132,8 +132,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> the result of the operation
 		/// 	 </return>
 		/// 		<short>    Checks if the given windows matches any existing startup notification, and  if yes, returns the identification in id and notification data in data.</short>
-		public KStartupInfo.startup_t CheckStartup(ulong w, KStartupInfoId id, KStartupInfoData data) {
-			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$##", "checkStartup(WId, KStartupInfoId&, KStartupInfoData&)", typeof(KStartupInfo.startup_t), typeof(ulong), w, typeof(KStartupInfoId), id, typeof(KStartupInfoData), data);
+		public KStartupInfo.startup_t CheckStartup(uint w, KStartupInfoId id, KStartupInfoData data) {
+			return (KStartupInfo.startup_t) interceptor.Invoke("checkStartup$##", "checkStartup(WId, KStartupInfoId&, KStartupInfoData&)", typeof(KStartupInfo.startup_t), typeof(uint), w, typeof(KStartupInfoId), id, typeof(KStartupInfoData), data);
 		}
 		/// <remarks>
 		///  Sets the timeout for notifications, after this timeout a notification is removed.
@@ -315,8 +315,8 @@ namespace Kimono {
 		/// <param> name="window" the id of the window
 		/// </param><param> name="id" the startup notification id
 		/// 	 </param></remarks>		<short>    Sets the startup notification window property on the given window.</short>
-		public static void SetWindowStartupId(ulong window, QByteArray id) {
-			staticInterceptor.Invoke("setWindowStartupId$#", "setWindowStartupId(WId, const QByteArray&)", typeof(void), typeof(ulong), window, typeof(QByteArray), id);
+		public static void SetWindowStartupId(uint window, QByteArray id) {
+			staticInterceptor.Invoke("setWindowStartupId$#", "setWindowStartupId(WId, const QByteArray&)", typeof(void), typeof(uint), window, typeof(QByteArray), id);
 		}
 		/// <remarks>
 		///  Returns startup notification identification of the given window.
@@ -324,8 +324,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> the startup notification id. Can be null if not found.
 		/// 	 </return>
 		/// 		<short>    Returns startup notification identification of the given window.</short>
-		public static QByteArray WindowStartupId(ulong w) {
-			return (QByteArray) staticInterceptor.Invoke("windowStartupId$", "windowStartupId(WId)", typeof(QByteArray), typeof(ulong), w);
+		public static QByteArray WindowStartupId(uint w) {
+			return (QByteArray) staticInterceptor.Invoke("windowStartupId$", "windowStartupId(WId)", typeof(QByteArray), typeof(uint), w);
 		}
 		/// <remarks>
 		///          </remarks>		<short>   </short>

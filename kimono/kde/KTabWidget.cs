@@ -50,9 +50,9 @@ namespace Kimono {
 		/// <param> name="parent" The parent widgets.
 		/// </param><param> name="flags" The Qt window flags @see QWidget.
 		///      </param></remarks>		<short>    Creates a new tab widget.</short>
-		public KTabWidget(QWidget parent, int flags) : this((Type) null) {
+		public KTabWidget(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KTabWidget#$", "KTabWidget(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KTabWidget#$", "KTabWidget(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KTabWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -157,7 +157,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  If \a enable is true, tabs will be resized to the width of the tab bar.
-		///  Does not work reliable with "QTabWidget foo=new KTabWidget()" and if
+		///  Does not work reliably with "QTabWidget foo=new KTabWidget()" and if
 		///  you change tabs via the tabbar or by accessing tabs directly.
 		///      </remarks>		<short>    If \a enable is true, tabs will be resized to the width of the tab bar.</short>
 		[Q_SLOT("void setAutomaticResizeTabs(bool)")]

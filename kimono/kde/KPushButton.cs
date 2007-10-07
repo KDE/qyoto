@@ -24,8 +24,6 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("isDragEnabled", "isDragEnabled()", typeof(bool)); }
 			set { interceptor.Invoke("setDragEnabled$", "setDragEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
-		// void setGuiItem(KStandardGuiItem::StandardItem arg1); >>>> NOT CONVERTED
-		// KStandardGuiItem::StandardItem guiItem(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Default constructor.
 		///      </remarks>		<short>    Default constructor.</short>
@@ -80,9 +78,15 @@ namespace Kimono {
 		/// <remarks>
 		///  Sets the standard KGuiItem for this button.
 		///     </remarks>		<short>    Sets the standard KGuiItem for this button.</short>
+		public void SetGuiItem(KStandardGuiItem.StandardItem item) {
+			interceptor.Invoke("setGuiItem$", "setGuiItem(KStandardGuiItem::StandardItem)", typeof(void), typeof(KStandardGuiItem.StandardItem), item);
+		}
 		/// <remarks>
 		///  Reads the standard KGuiItem for this button.
 		///      </remarks>		<short>    Reads the standard KGuiItem for this button.</short>
+		public KStandardGuiItem.StandardItem GuiItem() {
+			return (KStandardGuiItem.StandardItem) interceptor.Invoke("guiItem", "guiItem() const", typeof(KStandardGuiItem.StandardItem));
+		}
 		/// <remarks>
 		///  Sets the Icon Set for this button. It also takes into account hte
 		///  KGlobalSettings.ShowIconsOnPushButtons() setting.

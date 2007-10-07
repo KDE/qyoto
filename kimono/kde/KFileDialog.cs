@@ -196,9 +196,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Sets the filter to be used to <code>filter.</code>
 		///  You can set more
-		///  filters for the user to select separated by '\n'. Every
-		///  filter entry is defined through namefilter|text to diplay.
-		///  If no | is found in the expression, just the namefilter is
+		///  filters for the user to select separated by @c '\\n'. Every
+		///  filter entry is defined through <code>namefilter</code>|text to display.
+		///  If no @c '|' is found in the expression, just the namefilter is
 		///  shown. Examples:
 		///  <pre>
 		///  kfile.SetFilter("*.cpp|C++ Source Files\n.h|Header files");
@@ -210,9 +210,9 @@ namespace Kimono {
 		///  Note: The text to display is not parsed in any way. So, if you
 		///  want to show the suffix to select by a specific filter, you must
 		///  repeat it.
-		///  If the filter contains an unescaped '/', a mimetype-filter is assumed.
+		///  If the filter contains an unescaped @c '/', a mimetype-filter is assumed.
 		///  If you would like a '/' visible in your filter it can be escaped with
-		///  a '\'. You can specify multiple mimetypes like this (separated with
+		///  a @c '\'. You can specify multiple mimetypes like this (separated with
 		///  space):
 		///  <pre>
 		///  kfile.SetFilter( "image/png text/html text/plain" );
@@ -278,7 +278,12 @@ namespace Kimono {
 		/// <param> name="w" The widget to be used for the preview.
 		///      </param></remarks>		<short>    Adds a preview widget and enters the preview mode.</short>
 		public void SetPreviewWidget(KPreviewWidgetBase w) {
-			interceptor.Invoke("setPreviewWidget#", "setPreviewWidget(const KPreviewWidgetBase*)", typeof(void), typeof(KPreviewWidgetBase), w);
+			interceptor.Invoke("setPreviewWidget#", "setPreviewWidget(KPreviewWidgetBase*)", typeof(void), typeof(KPreviewWidgetBase), w);
+		}
+		/// <remarks> @see QWidget.SizeHint() </remarks>		<short>   @see QWidget.SizeHint() </short>
+		[SmokeMethod("sizeHint() const")]
+		public override QSize SizeHint() {
+			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		/// <remarks>
 		///  Sets the mode of the dialog.
@@ -454,8 +459,8 @@ namespace Kimono {
 		///  a widget in another process or if the parent widget is a
 		///  non-Qt widget. For example, in a GTK program.
 		///     </remarks>		<short>    Use this version only if you have no QWidget available as  parent widget.</short>
-		public static string GetOpenFileNameWId(KUrl startDir, string filter, ulong parent_id, string caption) {
-			return (string) staticInterceptor.Invoke("getOpenFileNameWId#$$$", "getOpenFileNameWId(const KUrl&, const QString&, WId, const QString&)", typeof(string), typeof(KUrl), startDir, typeof(string), filter, typeof(ulong), parent_id, typeof(string), caption);
+		public static string GetOpenFileNameWId(KUrl startDir, string filter, uint parent_id, string caption) {
+			return (string) staticInterceptor.Invoke("getOpenFileNameWId#$$$", "getOpenFileNameWId(const KUrl&, const QString&, WId, const QString&)", typeof(string), typeof(KUrl), startDir, typeof(string), filter, typeof(uint), parent_id, typeof(string), caption);
 		}
 		/// <remarks>
 		///  Creates a modal file dialog and returns the selected
@@ -661,8 +666,8 @@ namespace Kimono {
 		///  This function accepts the window id of the parent window, instead
 		///  of QWidget. It should be used only when necessary.
 		///      </remarks>		<short>    This function accepts the window id of the parent window, instead  of QWidget .</short>
-		public static string GetSaveFileNameWId(KUrl startDir, string filter, ulong parent_id, string caption) {
-			return (string) staticInterceptor.Invoke("getSaveFileNameWId#$$$", "getSaveFileNameWId(const KUrl&, const QString&, WId, const QString&)", typeof(string), typeof(KUrl), startDir, typeof(string), filter, typeof(ulong), parent_id, typeof(string), caption);
+		public static string GetSaveFileNameWId(KUrl startDir, string filter, uint parent_id, string caption) {
+			return (string) staticInterceptor.Invoke("getSaveFileNameWId#$$$", "getSaveFileNameWId(const KUrl&, const QString&, WId, const QString&)", typeof(string), typeof(KUrl), startDir, typeof(string), filter, typeof(uint), parent_id, typeof(string), caption);
 		}
 		/// <remarks>
 		///  Creates a modal file dialog and returns the selected

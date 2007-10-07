@@ -18,7 +18,7 @@ namespace Kimono {
 	///  Additionally, calls to constructor with same <code>categoryName</code>, will add new
 	///  items to the same category, even if plugins are from different categories
 	///  See <see cref="IKPluginSelectorSignals"></see> for signals emitted by KPluginSelector
-	/// </remarks>		<author> Rafael Fernández López <ereslibre@gmail.com>
+	/// </remarks>		<author> Rafael Fernández López <ereslibre@kde.org>
 	///   </author>
 	/// 		<short> A widget to select what plugins to load and configure the plugins. </short>
 

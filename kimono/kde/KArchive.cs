@@ -27,8 +27,8 @@ namespace Kimono {
 		/// </param></remarks>		<short>    Opens the archive for reading or writing.</short>
 		/// 		<see> close</see>
 		[SmokeMethod("open(QIODevice::OpenMode)")]
-		public virtual bool Open(int mode) {
-			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(int), mode);
+		public virtual bool Open(uint mode) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		/// <remarks>
 		///  Closes the archive.
@@ -55,8 +55,8 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Returns the mode in which the archive was opened </short>
 		/// 		<see> open</see>
-		public int Mode() {
-			return (int) interceptor.Invoke("mode", "mode() const", typeof(int));
+		public uint Mode() {
+			return (uint) interceptor.Invoke("mode", "mode() const", typeof(uint));
 		}
 		/// <remarks>
 		///  The underlying device.
@@ -293,7 +293,7 @@ namespace Kimono {
 		/// <param> name="mode" may be QIODevice.ReadOnly or QIODevice.WriteOnly
 		///      </param></remarks>		<short>    Opens an archive for reading or writing.</short>
 		[SmokeMethod("openArchive(QIODevice::OpenMode)")]
-		protected abstract bool OpenArchive(int mode);
+		protected abstract bool OpenArchive(uint mode);
 		/// <remarks>
 		///  Closes the archive.
 		///  Called by close.
@@ -382,8 +382,8 @@ namespace Kimono {
 		///  This method is called by open().
 		///      </remarks>		<short>    Can be reimplemented in order to change the creation of the device  (when using the fileName constructor).</short>
 		[SmokeMethod("createDevice(QIODevice::OpenMode)")]
-		protected virtual bool CreateDevice(int mode) {
-			return (bool) interceptor.Invoke("createDevice$", "createDevice(QIODevice::OpenMode)", typeof(bool), typeof(int), mode);
+		protected virtual bool CreateDevice(uint mode) {
+			return (bool) interceptor.Invoke("createDevice$", "createDevice(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		/// <remarks>
 		///  Can be called by derived classes in order to set the underlying device.

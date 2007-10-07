@@ -50,6 +50,8 @@ namespace Kimono {
 	///  for the read-write mode. This differs from QLineEdit's implementation
 	///  and is done to give visual distinction between the three different modes:
 	///  disabled, read-only, and read-write.
+	///  KLineEdit has also a password mode which depends of globals KDE settings.  Use
+	///  KLineEdit.SetPasswordMode instead of QLineEdit.EchoMode property to have a password field.
 	///  <li><b>Usage </b></li>
 	///  To enable the basic completion feature :
 	///  <pre>
@@ -186,13 +188,6 @@ namespace Kimono {
 		}
 		public void SetCompletionModeDisabled(KGlobalSettings.Completion mode) {
 			interceptor.Invoke("setCompletionModeDisabled$", "setCompletionModeDisabled(KGlobalSettings::Completion)", typeof(void), typeof(KGlobalSettings.Completion), mode);
-		}
-		/// <remarks>
-		///  Re-implemented for internal reasons.  API not affected.
-		///      </remarks>		<short>    Re-implemented for internal reasons.</short>
-		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
-			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
 		/// <remarks>
 		/// <param> name="create" Set this to false if you don't want the box to be created
@@ -336,6 +331,13 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Re-implemented for internal reasons.  API not affected.
+		///      </remarks>		<short>    Re-implemented for internal reasons.</short>
+		[SmokeMethod("event(QEvent*)")]
+		protected new virtual bool Event(QEvent arg1) {
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		/// <remarks>
+		///  Re-implemented for internal reasons.  API not affected.
 		///  See QLineEdit.ResizeEvent().
 		///     </remarks>		<short>    Re-implemented for internal reasons.</short>
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
@@ -412,16 +414,16 @@ namespace Kimono {
 		///  Reimplemented for internal reasons, the API is not affected.
 		///      </remarks>		<short>    Reimplemented for internal reasons, the API is not affected.</short>
 		[SmokeMethod("create(WId, bool, bool)")]
-		protected virtual void Create(ulong arg1, bool initializeWindow, bool destroyOldWindow) {
-			interceptor.Invoke("create$$$", "create(WId, bool, bool)", typeof(void), typeof(ulong), arg1, typeof(bool), initializeWindow, typeof(bool), destroyOldWindow);
+		protected virtual void Create(uint arg1, bool initializeWindow, bool destroyOldWindow) {
+			interceptor.Invoke("create$$$", "create(WId, bool, bool)", typeof(void), typeof(uint), arg1, typeof(bool), initializeWindow, typeof(bool), destroyOldWindow);
 		}
 		[SmokeMethod("create(WId, bool)")]
-		protected virtual void Create(ulong arg1, bool initializeWindow) {
-			interceptor.Invoke("create$$", "create(WId, bool)", typeof(void), typeof(ulong), arg1, typeof(bool), initializeWindow);
+		protected virtual void Create(uint arg1, bool initializeWindow) {
+			interceptor.Invoke("create$$", "create(WId, bool)", typeof(void), typeof(uint), arg1, typeof(bool), initializeWindow);
 		}
 		[SmokeMethod("create(WId)")]
-		protected virtual void Create(ulong arg1) {
-			interceptor.Invoke("create$", "create(WId)", typeof(void), typeof(ulong), arg1);
+		protected virtual void Create(uint arg1) {
+			interceptor.Invoke("create$", "create(WId)", typeof(void), typeof(uint), arg1);
 		}
 		[SmokeMethod("create()")]
 		protected virtual void Create() {

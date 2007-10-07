@@ -14,6 +14,10 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KFileFilterCombo), this);
 		}
+		/// <remarks>
+		///  Creates a new filter combo box.
+		/// <param> name="parent" The parent widget.
+		///      </param></remarks>		<short>    Creates a new filter combo box.</short>
 		public KFileFilterCombo(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KFileFilterCombo#", "KFileFilterCombo(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -22,6 +26,9 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KFileFilterCombo", "KFileFilterCombo()", typeof(void));
 		}
+		/// <remarks>
+		///  Sets the <code>filter</code> string.
+		///      </remarks>		<short>    Sets the <code>filter</code> string.</short>
 		public void SetFilter(string filter) {
 			interceptor.Invoke("setFilter$", "setFilter(const QString&)", typeof(void), typeof(string), filter);
 		}
@@ -82,8 +89,8 @@ namespace Kimono {
 			return (List<string>) interceptor.Invoke("filters", "filters() const", typeof(List<string>));
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
-		protected new virtual bool EventFilter(QObject o, QEvent e) {
-			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), o, typeof(QEvent), e);
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
 		~KFileFilterCombo() {
 			interceptor.Invoke("~KFileFilterCombo", "~KFileFilterCombo()", typeof(void));
@@ -97,6 +104,9 @@ namespace Kimono {
 	}
 
 	public interface IKFileFilterComboSignals : IKComboBoxSignals {
+		/// <remarks>
+		///  This signal is emitted whenever the filter has been changed.
+		///      </remarks>		<short>    This signal is emitted whenever the filter has been changed.</short>
 		[Q_SIGNAL("void filterChanged()")]
 		void FilterChanged();
 	}

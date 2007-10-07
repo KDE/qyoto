@@ -23,7 +23,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructs a date selection widget.
-		///    </remarks>		<short>    Constructs a date selection widget.</short>
+		///      </remarks>		<short>    Constructs a date selection widget.</short>
 		public KDateWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KDateWidget#", "KDateWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -34,7 +34,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructs a date selection widget with the initial date set to <code>date.</code>
-		///    </remarks>		<short>    Constructs a date selection widget with the initial date set to <code>date.</code></short>
+		///      </remarks>		<short>    Constructs a date selection widget with the initial date set to <code>date.</code></short>
 		public KDateWidget(QDate date, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KDateWidget##", "KDateWidget(const QDate&, QWidget*)", typeof(void), typeof(QDate), date, typeof(QWidget), parent);
@@ -72,8 +72,8 @@ namespace Kimono {
 		public bool SetCalendar(string calendarType) {
 			return (bool) interceptor.Invoke("setCalendar$", "setCalendar(const QString&)", typeof(bool), typeof(string), calendarType);
 		}
-		protected void Init(QDate arg1) {
-			interceptor.Invoke("init#", "init(const QDate&)", typeof(void), typeof(QDate), arg1);
+		protected void Init(QDate date) {
+			interceptor.Invoke("init#", "init(const QDate&)", typeof(void), typeof(QDate), date);
 		}
 		[Q_SLOT("void slotDateChanged()")]
 		protected void SlotDateChanged() {
@@ -94,8 +94,8 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted whenever the date of the widget
 		///  is changed, either with setDate() or via user selection.
-		///    </remarks>		<short>    Emitted whenever the date of the widget  is changed, either with setDate() or via user selection.</short>
+		///      </remarks>		<short>    Emitted whenever the date of the widget  is changed, either with setDate() or via user selection.</short>
 		[Q_SIGNAL("void changed(const QDate&)")]
-		void Changed(QDate arg1);
+		void Changed(QDate date);
 	}
 }

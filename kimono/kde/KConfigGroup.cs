@@ -7,44 +7,38 @@ namespace Kimono {
 
 	/// <remarks>
 	///  A class for one specific group in a KConfig object.
+	///  If you want to access the top-level entries of a KConfig
+	///  object, which are not associated with any group, use an
+	///  empty group name.
+	///  A KConfigGroup can be read-only if it is constructed from a const config object
+	///  or from a read-only group.
 	///  </remarks>		<short>    A class for one specific group in a KConfig object.</short>
 
 	[SmokeClass("KConfigGroup")]
-	public class KConfigGroup : KConfigFlags, IDisposable {
+	public class KConfigGroup : KConfigBase, IDisposable {
  		protected KConfigGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KConfigGroup), this);
 		}
-		// KConfigGroup* KConfigGroup(KSharedConfigPtr arg1,const QByteArray& arg2); >>>> NOT CONVERTED
-		// KConfigGroup* KConfigGroup(KSharedConfigPtr arg1,const QString& arg2); >>>> NOT CONVERTED
-		// KConfigGroup* KConfigGroup(KSharedConfigPtr arg1,const char* arg2); >>>> NOT CONVERTED
-		// void deleteGroup(WriteConfigFlags arg1); >>>> NOT CONVERTED
-		// void putData(const KEntryKey& arg1,const KEntry& arg2,bool arg3); >>>> NOT CONVERTED
-		// void putData(const KEntryKey& arg1,const KEntry& arg2); >>>> NOT CONVERTED
-		// KEntry lookupData(const KEntryKey& arg1); >>>> NOT CONVERTED
-		// template <typename T> T readEntry(const char* arg1,const T& arg2); >>>> NOT CONVERTED
+		private static SmokeInvocation staticInterceptor = null;
+		static KConfigGroup() {
+			staticInterceptor = new SmokeInvocation(typeof(KConfigGroup), null);
+		}
+		// KConfigGroup* KConfigGroup(KSharedConfigPtr& arg1,const QByteArray& arg2); >>>> NOT CONVERTED
+		// KConfigGroup* KConfigGroup(KSharedConfigPtr& arg1,const QString& arg2); >>>> NOT CONVERTED
+		// KConfigGroup* KConfigGroup(KSharedConfigPtr& arg1,const char* arg2); >>>> NOT CONVERTED
+		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const QString& arg2); >>>> NOT CONVERTED
+		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const QByteArray& arg2); >>>> NOT CONVERTED
+		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const char* arg2); >>>> NOT CONVERTED
+		// template <typename T> T readEntry(const QByteArray& arg1,const T& arg2); >>>> NOT CONVERTED
 		// template <typename T> T readEntry(const QString& arg1,const T& arg2); >>>> NOT CONVERTED
-		// template <typename T> QList<T> readEntry(const char* arg1,const QList<T>& arg2); >>>> NOT CONVERTED
-		// QVariantList readEntry(const char* arg1,const QVariantList& arg2); >>>> NOT CONVERTED
-		// void writeEntry(const char* arg1,const QString& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// void writeEntry(const char* arg1,const QVariant& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// template <typename T> void writeEntry(const char* arg1,const T& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// template <typename T> void writeEntry(const char* arg1,const T& arg2); >>>> NOT CONVERTED
-		// template <typename T> void writeEntry(const QString& arg1,const T& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
+		// template <typename T> T readEntry(const char* arg1,const T& arg2); >>>> NOT CONVERTED
+		// template <typename T> void writeEntry(const QByteArray& arg1,const T& arg2,KConfigBase::WriteConfigFlags arg3); >>>> NOT CONVERTED
+		// template <typename T> void writeEntry(const QByteArray& arg1,const T& arg2); >>>> NOT CONVERTED
+		// template <typename T> void writeEntry(const QString& arg1,const T& arg2,KConfigBase::WriteConfigFlags arg3); >>>> NOT CONVERTED
 		// template <typename T> void writeEntry(const QString& arg1,const T& arg2); >>>> NOT CONVERTED
-		// void writeEntry(const QString& arg1,const QStringList& arg2,char arg3,WriteConfigFlags arg4); >>>> NOT CONVERTED
-		// void writeEntry(const char* arg1,const QStringList& arg2,char arg3,WriteConfigFlags arg4); >>>> NOT CONVERTED
-		// template <typename T> void writeEntry(const char* arg1,const QList<T>& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// template <typename T> void writeEntry(const char* arg1,const QList<T>& arg2); >>>> NOT CONVERTED
-		// void writeEntry(const char* arg1,const QVariantList& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// void writeEntry(const char* arg1,const char* arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// void writeEntry(const char* arg1,const QByteArray& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// void writePathEntry(const QString& arg1,const QString& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// void writePathEntry(const char* arg1,const QString& arg2,WriteConfigFlags arg3); >>>> NOT CONVERTED
-		// void writePathEntry(const QString& arg1,const QStringList& arg2,char arg3,WriteConfigFlags arg4); >>>> NOT CONVERTED
-		// void writePathEntry(const char* arg1,const QStringList& arg2,char arg3,WriteConfigFlags arg4); >>>> NOT CONVERTED
-		// void deleteEntry(const QString& arg1,WriteConfigFlags arg2); >>>> NOT CONVERTED
-		// void deleteEntry(const char* arg1,WriteConfigFlags arg2); >>>> NOT CONVERTED
+		// template <typename T> void writeEntry(const char* arg1,const T& arg2,KConfigBase::WriteConfigFlags arg3); >>>> NOT CONVERTED
+		// template <typename T> void writeEntry(const char* arg1,const T& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a null group. A null group is invalid.
 		///  \see isValid
@@ -61,14 +55,13 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KConfigGroup##", "KConfigGroup(KConfigBase*, const QByteArray&)", typeof(void), typeof(KConfigBase), master, typeof(QByteArray), group);
 		}
-		/// <remarks>
-		///  This is an overloaded constructor provided for convenience.
-		///  It behaves essentially like the above function.
-		///  Construct a config group corresponding to <code>group</code> in <code>master</code>
-		///      </remarks>		<short>    This is an overloaded constructor provided for convenience.</short>
 		public KConfigGroup(KConfigBase master, string group) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KConfigGroup#$", "KConfigGroup(KConfigBase*, const QString&)", typeof(void), typeof(KConfigBase), master, typeof(string), group);
+		}
+		public KConfigGroup(KConfigGroup arg1) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KConfigGroup#", "KConfigGroup(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), arg1);
 		}
 		/// <remarks>
 		///  Returns <pre>true</pre> if the group is valid; otherwise returns <pre>false</pre>. A group is invalid if it
@@ -80,8 +73,14 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Delete all entries in the entire group
-		/// <param> name="pFlags" flags passed to KConfigBase.DeleteGroup
+		/// <param> name="pFlags" flags passed to KConfig.DeleteGroup
 		///      </param></remarks>		<short>    Delete all entries in the entire group </short>
+		public void DeleteGroup(uint pFlags) {
+			interceptor.Invoke("deleteGroup$", "deleteGroup(KConfigBase::WriteConfigFlags)", typeof(void), typeof(uint), pFlags);
+		}
+		public void DeleteGroup() {
+			interceptor.Invoke("deleteGroup", "deleteGroup()", typeof(void));
+		}
 		/// <remarks>
 		///  Returns a map (tree) of entries for all entries in this group.
 		///  Only the actual entry string is returned, none of the
@@ -92,71 +91,47 @@ namespace Kimono {
 		public Dictionary<string, string> EntryMap() {
 			return (Dictionary<string, string>) interceptor.Invoke("entryMap", "entryMap() const", typeof(Dictionary<string, string>));
 		}
-		public void SetDirty(bool _bDirty) {
-			interceptor.Invoke("setDirty$", "setDirty(bool)", typeof(void), typeof(bool), _bDirty);
-		}
-		public void Sync() {
+		/// <remarks>
+		///  Syncs the configuration object that this group belongs to.
+		///      </remarks>		<short>    Syncs the configuration object that this group belongs to.</short>
+		[SmokeMethod("sync()")]
+		public override void Sync() {
 			interceptor.Invoke("sync", "sync()", typeof(void));
 		}
 		/// <remarks>
 		///  Changes the group of the object. This is a convenience function and should
 		///  not be overused. Prefer another object for another group to avoid mixture of
-		///  groups.
-		///     </remarks>		<short>    Changes the group of the object.</short>
+		///  groups. A subgroup can only change to another subgroup of the parent.
+		///      </remarks>		<short>    Changes the group of the object.</short>
 		public void ChangeGroup(string group) {
-			interceptor.Invoke("changeGroup$", "changeGroup(const char*)", typeof(void), typeof(string), group);
+			interceptor.Invoke("changeGroup$", "changeGroup(const QString&)", typeof(void), typeof(string), group);
 		}
 		public void ChangeGroup(QByteArray group) {
 			interceptor.Invoke("changeGroup#", "changeGroup(const QByteArray&)", typeof(void), typeof(QByteArray), group);
 		}
-		public bool HasKey(string key) {
-			return (bool) interceptor.Invoke("hasKey$", "hasKey(const char*) const", typeof(bool), typeof(string), key);
-		}
-		public KConfigGroup(KConfigGroup arg1) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KConfigGroup#", "KConfigGroup(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), arg1);
-		}
-		public string Group() {
-			return (string) interceptor.Invoke("group", "group() const", typeof(string));
+		public string Name() {
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
 		public bool Exists() {
 			return (bool) interceptor.Invoke("exists", "exists() const", typeof(bool));
 		}
 		/// <remarks>
-		///  Return the config object behind this group.
-		///      </remarks>		<short>    Return the config object behind this group.</short>
-		public KConfigBase Config() {
-			return (KConfigBase) interceptor.Invoke("config", "config() const", typeof(KConfigBase));
+		///  Return the config object that this group belongs to.
+		///      </remarks>		<short>    Return the config object that this group belongs to.</short>
+		public KConfig Config() {
+			return (KConfig) interceptor.Invoke("config", "config()", typeof(KConfig));
 		}
-		/// <remarks>
-		///  Reads the value of an entry specified by <code>pKey</code> in the current group.
-		///  If you want to read a path, please use readPathEntry().
-		/// <param> name="pKey" The key to search for.
-		/// </param><param> name="aDefault" A default value returned if the key was not found.
-		/// </param></remarks>		<return> The value for this key. Can be string() if aDefault is null.
-		///      </return>
-		/// 		<short>    Reads the value of an entry specified by <code>pKey</code> in the current group.</short>
-		public string ReadEntry(string pKey, string aDefault) {
-			return (string) interceptor.Invoke("readEntry$$", "readEntry(const char*, const QString&) const", typeof(string), typeof(string), pKey, typeof(string), aDefault);
+		public string ReadEntry(string key, string aDefault) {
+			return (string) interceptor.Invoke("readEntry$$", "readEntry(const char*, const char*) const", typeof(string), typeof(string), key, typeof(string), aDefault);
 		}
-		public string ReadEntry(string pKey) {
-			return (string) interceptor.Invoke("readEntry$", "readEntry(const char*) const", typeof(string), typeof(string), pKey);
+		public string ReadEntry(string key) {
+			return (string) interceptor.Invoke("readEntry$", "readEntry(const char*) const", typeof(string), typeof(string), key);
 		}
-		/// <remarks>
-		///  Reads the value of an entry specified by <code>pKey</code> in the current group.
-		///  The value is treated as if it is of the type of the given default value.
-		///  @note Only the following QVariant types are allowed : String,
-		///  StringList, List, Font, Point, Rect, Size, Color, Int, UInt, Bool,
-		///  Double, LongLong, ULongLong, DateTime and Date.
-		/// <param> name="pKey" The key to search for.
-		/// </param><param> name="aDefault" A default value returned if the key was not found or
-		///  if the read value cannot be converted to the QVariant.Type.
-		/// </param></remarks>		<return> The value for the key or the default value if the key was not
-		///          found.
-		///      </return>
-		/// 		<short>    Reads the value of an entry specified by <code>pKey</code> in the current group.</short>
-		public QVariant ReadEntry(string pKey, QVariant aDefault) {
-			return (QVariant) interceptor.Invoke("readEntry$#", "readEntry(const char*, const QVariant&) const", typeof(QVariant), typeof(string), pKey, typeof(QVariant), aDefault);
+		public string ReadEntry(QByteArray key, string aDefault) {
+			return (string) interceptor.Invoke("readEntry#$", "readEntry(const QByteArray&, const char*) const", typeof(string), typeof(QByteArray), key, typeof(string), aDefault);
+		}
+		public string ReadEntry(QByteArray key) {
+			return (string) interceptor.Invoke("readEntry#", "readEntry(const QByteArray&) const", typeof(string), typeof(QByteArray), key);
 		}
 		/// <remarks>
 		///  Reads the value of an entry specified by <code>pKey</code> in the current group.
@@ -166,28 +141,14 @@ namespace Kimono {
 		///  The return type of the method is simply the same as the type of the default value.
 		///  @note readEntry("...", Qt.White) cannot compile because Qt.White is an enum.
 		///  You must turn it into readEntry("...", QColor(Qt.White)).
+		///  @note Only the following QVariant types are allowed : String,
+		///  StringList, List, Font, Point, Rect, Size, Color, Int, UInt, Bool,
+		///  Double, LongLong, ULongLong, DateTime and Date.
 		/// <param> name="pKey" The key to search for.
 		/// </param><param> name="aDefault" A default value returned if the key was not found.
 		/// </param></remarks>		<return> The value for this key, or <code>aDefault.</code>
 		///      </return>
 		/// 		<short>    Reads the value of an entry specified by <code>pKey</code> in the current group.</short>
-		/// <remarks>
-		///  Reads a list from the config object.
-		///  @note This function only works for those types that QVariant can convert
-		///  from string.
-		/// <param> name="pKey" The key to search for.
-		/// </param><param> name="aDefault" The default value to use if the key does not exist.
-		/// </param></remarks>		<return> The list.
-		///      </return>
-		/// 		<short>    Reads a list from the config object.</short>
-		/// <remarks>
-		///  Reads a list from the config object.
-		///  @copydoc readEntry(string, const QList<T>&) const
-		///  @warning This function doesn't convert the items returned
-		///           to any type. It's actually a list of QVariant.String's. If you
-		///           want the items converted to a specific type use
-		///           readEntry(string, const QList<T>&) const
-		///      </remarks>		<short>    Reads a list from the config object.</short>
 		/// <remarks>
 		///  Reads a list of strings from the config object.
 		/// <param> name="pKey" The key to search for.
@@ -201,6 +162,12 @@ namespace Kimono {
 		}
 		public List<string> ReadEntry(string pKey, List<string> aDefault) {
 			return (List<string>) interceptor.Invoke("readEntry$?", "readEntry(const char*, const QStringList&) const", typeof(List<string>), typeof(string), pKey, typeof(List<string>), aDefault);
+		}
+		public List<string> ReadEntry(QByteArray pKey, List<string> aDefault, char sep) {
+			return (List<string>) interceptor.Invoke("readEntry#?$", "readEntry(const QByteArray&, const QStringList&, char) const", typeof(List<string>), typeof(QByteArray), pKey, typeof(List<string>), aDefault, typeof(char), sep);
+		}
+		public List<string> ReadEntry(QByteArray pKey, List<string> aDefault) {
+			return (List<string>) interceptor.Invoke("readEntry#?", "readEntry(const QByteArray&, const QStringList&) const", typeof(List<string>), typeof(QByteArray), pKey, typeof(List<string>), aDefault);
 		}
 		/// <remarks>
 		///  Reads a path.
@@ -218,6 +185,12 @@ namespace Kimono {
 		public string ReadPathEntry(string pKey) {
 			return (string) interceptor.Invoke("readPathEntry$", "readPathEntry(const QString&) const", typeof(string), typeof(string), pKey);
 		}
+		public string ReadPathEntry(QByteArray key, string aDefault) {
+			return (string) interceptor.Invoke("readPathEntry#$", "readPathEntry(const QByteArray&, const QString&) const", typeof(string), typeof(QByteArray), key, typeof(string), aDefault);
+		}
+		public string ReadPathEntry(QByteArray key) {
+			return (string) interceptor.Invoke("readPathEntry#", "readPathEntry(const QByteArray&) const", typeof(string), typeof(QByteArray), key);
+		}
 		/// <remarks>
 		///  Reads a list of string paths.
 		///  Read the value of an entry specified by <code>pKey</code> in the current group
@@ -234,6 +207,12 @@ namespace Kimono {
 		public List<string> ReadPathListEntry(string pKey) {
 			return (List<string>) interceptor.Invoke("readPathListEntry$", "readPathListEntry(const QString&) const", typeof(List<string>), typeof(string), pKey);
 		}
+		public List<string> ReadPathListEntry(QByteArray key, char sep) {
+			return (List<string>) interceptor.Invoke("readPathListEntry#$", "readPathListEntry(const QByteArray&, char) const", typeof(List<string>), typeof(QByteArray), key, typeof(char), sep);
+		}
+		public List<string> ReadPathListEntry(QByteArray key) {
+			return (List<string>) interceptor.Invoke("readPathListEntry#", "readPathListEntry(const QByteArray&) const", typeof(List<string>), typeof(QByteArray), key);
+		}
 		/// <remarks>
 		///  Reads the value of an entry specified by <code>pKey</code> in the current group.
 		///  The untranslated entry is returned, you normally do not need this.
@@ -248,27 +227,11 @@ namespace Kimono {
 		public string ReadEntryUntranslated(string pKey) {
 			return (string) interceptor.Invoke("readEntryUntranslated$", "readEntryUntranslated(const QString&) const", typeof(string), typeof(string), pKey);
 		}
-		/// <remarks>
-		///  Writes a key/value pair.
-		///  This is stored in the most specific config file when destroying the
-		///  config object or when calling sync().
-		///  If you want to write a path, please use writePathEntry().
-		/// <param> name="pKey" The key to write.
-		/// </param><param> name="value" The value to write.
-		/// </param><param> name="pFlags" The flags to use when writing this entry.
-		///      </param></remarks>		<short>    Writes a key/value pair.</short>
-		public void WriteEntry(string pKey, string value) {
-			interceptor.Invoke("writeEntry$$", "writeEntry(const char*, const QString&)", typeof(void), typeof(string), pKey, typeof(string), value);
+		public string ReadEntryUntranslated(QByteArray key, string aDefault) {
+			return (string) interceptor.Invoke("readEntryUntranslated#$", "readEntryUntranslated(const QByteArray&, const QString&) const", typeof(string), typeof(QByteArray), key, typeof(string), aDefault);
 		}
-		/// <remarks>
-		///  writeEntry() Overridden to accept a property.
-		/// <param> name="pKey" The key to write
-		/// </param><param> name="value" The property to write
-		/// </param><param> name="pFlags" The flags to use when writing this entry.
-		/// </param></remarks>		<short>    writeEntry() Overridden to accept a property.</short>
-		/// 		<see> writeEntry</see>
-		public void WriteEntry(string pKey, QVariant value) {
-			interceptor.Invoke("writeEntry$#", "writeEntry(const char*, const QVariant&)", typeof(void), typeof(string), pKey, typeof(QVariant), value);
+		public string ReadEntryUntranslated(QByteArray key) {
+			return (string) interceptor.Invoke("readEntryUntranslated#", "readEntryUntranslated(const QByteArray&) const", typeof(string), typeof(QByteArray), key);
 		}
 		/// <remarks>
 		///  @copydoc writeEntry( string, string, WriteConfigFlags )
@@ -281,38 +244,23 @@ namespace Kimono {
 		/// </param><param> name="pFlags" The flags to use when writing this entry.
 		/// </param></remarks>		<short>    writeEntry() overridden to accept a list of strings.</short>
 		/// 		<see> writeEntry</see>
+		public void WriteEntry(string pKey, List<string> value, char sep, uint pFlags) {
+			interceptor.Invoke("writeEntry$?$$", "writeEntry(const QString&, const QStringList&, char, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), pKey, typeof(List<string>), value, typeof(char), sep, typeof(uint), pFlags);
+		}
 		public void WriteEntry(string pKey, List<string> value, char sep) {
 			interceptor.Invoke("writeEntry$?$", "writeEntry(const QString&, const QStringList&, char)", typeof(void), typeof(string), pKey, typeof(List<string>), value, typeof(char), sep);
 		}
 		public void WriteEntry(string pKey, List<string> value) {
 			interceptor.Invoke("writeEntry$?", "writeEntry(const QString&, const QStringList&)", typeof(void), typeof(string), pKey, typeof(List<string>), value);
 		}
-		/// <remarks>
-		///  writeEntry() overridden to accept a list.
-		/// <param> name="pKey" The key to write
-		/// </param><param> name="value" The list to write.
-		/// </param><param> name="pFlags" The flags to use when writing this entry.
-		/// </param></remarks>		<short>    writeEntry() overridden to accept a list.</short>
-		/// 		<see> writeEntry</see>
-		/// <remarks>
-		///  writeEntry() overridden to accept a list of variants.
-		///  @copydoc writeEntry(string, const QList<T>&, WriteConfigFlags)
-		///      </remarks>		<short>    writeEntry() overridden to accept a list of variants.</short>
-		public void WriteEntry(string pKey, List<QVariant> value) {
-			interceptor.Invoke("writeEntry$?", "writeEntry(const char*, const QVariantList&)", typeof(void), typeof(string), pKey, typeof(List<QVariant>), value);
+		public void WriteEntry(QByteArray key, List<string> value, char sep, uint pFlags) {
+			interceptor.Invoke("writeEntry#?$$", "writeEntry(const QByteArray&, const QStringList&, char, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), key, typeof(List<string>), value, typeof(char), sep, typeof(uint), pFlags);
 		}
-		/// <remarks>
-		///  Write a (key/value) pair where the value is a QByteArray.
-		///  This is stored to the most specific config file when destroying the
-		///  config object or when calling sync().
-		/// <param> name="pKey" The key to write.
-		/// </param><param> name="value" The value to write; assumed to be in latin1 encoding.
-		///                     If it contains the null character between 0 and size()-1,
-		///                     the string will be truncated at the null character.
-		/// </param><param> name="pFlags" The flags to use when writing this entry.
-		///      </param></remarks>		<short>    Write a (key/value) pair where the value is a QByteArray.</short>
-		public void WriteEntry(string pKey, QByteArray value) {
-			interceptor.Invoke("writeEntry$#", "writeEntry(const char*, const QByteArray&)", typeof(void), typeof(string), pKey, typeof(QByteArray), value);
+		public void WriteEntry(QByteArray key, List<string> value, char sep) {
+			interceptor.Invoke("writeEntry#?$", "writeEntry(const QByteArray&, const QStringList&, char)", typeof(void), typeof(QByteArray), key, typeof(List<string>), value, typeof(char), sep);
+		}
+		public void WriteEntry(QByteArray key, List<string> value) {
+			interceptor.Invoke("writeEntry#?", "writeEntry(const QByteArray&, const QStringList&)", typeof(void), typeof(QByteArray), key, typeof(List<string>), value);
 		}
 		/// <remarks>
 		///  Writes a file path.
@@ -323,8 +271,17 @@ namespace Kimono {
 		/// </param><param> name="path" The path to write.
 		/// </param><param> name="pFlags" The flags to use when writing this entry.
 		///      </param></remarks>		<short>    Writes a file path.</short>
+		public void WritePathEntry(string pKey, string path, uint pFlags) {
+			interceptor.Invoke("writePathEntry$$$", "writePathEntry(const QString&, const QString&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), pKey, typeof(string), path, typeof(uint), pFlags);
+		}
 		public void WritePathEntry(string pKey, string path) {
 			interceptor.Invoke("writePathEntry$$", "writePathEntry(const QString&, const QString&)", typeof(void), typeof(string), pKey, typeof(string), path);
+		}
+		public void WritePathEntry(QByteArray key, string path, uint pFlags) {
+			interceptor.Invoke("writePathEntry#$$", "writePathEntry(const QByteArray&, const QString&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), key, typeof(string), path, typeof(uint), pFlags);
+		}
+		public void WritePathEntry(QByteArray key, string path) {
+			interceptor.Invoke("writePathEntry#$", "writePathEntry(const QByteArray&, const QString&)", typeof(void), typeof(QByteArray), key, typeof(string), path);
 		}
 		/// <remarks>
 		///  writePathEntry() overridden to accept a list of paths (strings).
@@ -338,27 +295,63 @@ namespace Kimono {
 		/// </param></remarks>		<short>    writePathEntry() overridden to accept a list of paths (strings).</short>
 		/// 		<see> writePathEntry</see>
 		/// 		<see> readPathListEntry</see>
+		public void WritePathEntry(string pKey, List<string> value, char sep, uint pFlags) {
+			interceptor.Invoke("writePathEntry$?$$", "writePathEntry(const QString&, const QStringList&, char, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), pKey, typeof(List<string>), value, typeof(char), sep, typeof(uint), pFlags);
+		}
 		public void WritePathEntry(string pKey, List<string> value, char sep) {
 			interceptor.Invoke("writePathEntry$?$", "writePathEntry(const QString&, const QStringList&, char)", typeof(void), typeof(string), pKey, typeof(List<string>), value, typeof(char), sep);
 		}
 		public void WritePathEntry(string pKey, List<string> value) {
 			interceptor.Invoke("writePathEntry$?", "writePathEntry(const QString&, const QStringList&)", typeof(void), typeof(string), pKey, typeof(List<string>), value);
 		}
+		public void WritePathEntry(QByteArray key, List<string> value, char sep, uint pFlags) {
+			interceptor.Invoke("writePathEntry#?$$", "writePathEntry(const QByteArray&, const QStringList&, char, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), key, typeof(List<string>), value, typeof(char), sep, typeof(uint), pFlags);
+		}
+		public void WritePathEntry(QByteArray key, List<string> value, char sep) {
+			interceptor.Invoke("writePathEntry#?$", "writePathEntry(const QByteArray&, const QStringList&, char)", typeof(void), typeof(QByteArray), key, typeof(List<string>), value, typeof(char), sep);
+		}
+		public void WritePathEntry(QByteArray key, List<string> value) {
+			interceptor.Invoke("writePathEntry#?", "writePathEntry(const QByteArray&, const QStringList&)", typeof(void), typeof(QByteArray), key, typeof(List<string>), value);
+		}
 		/// <remarks>
 		///  Deletes the entry specified by <code>pKey</code> in the current group.
 		/// <param> name="pKey" The key to delete.
 		/// </param><param> name="pFlags" The flags to use when deleting this entry.
 		///      </param></remarks>		<short>    Deletes the entry specified by <code>pKey</code> in the current group.</short>
+		public void DeleteEntry(string pKey, uint pFlags) {
+			interceptor.Invoke("deleteEntry$$", "deleteEntry(const QString&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), pKey, typeof(uint), pFlags);
+		}
 		public void DeleteEntry(string pKey) {
 			interceptor.Invoke("deleteEntry$", "deleteEntry(const QString&)", typeof(void), typeof(string), pKey);
 		}
+		public void DeleteEntry(QByteArray key, uint flags) {
+			interceptor.Invoke("deleteEntry#$", "deleteEntry(const QByteArray&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), key, typeof(uint), flags);
+		}
+		public void DeleteEntry(QByteArray key) {
+			interceptor.Invoke("deleteEntry#", "deleteEntry(const QByteArray&)", typeof(void), typeof(QByteArray), key);
+		}
+		/// <remarks>
+		///  Checks whether the key has an entry in the currently active group.
+		///  Use this to determine whether a key is not specified for the current
+		///  group (hasKey() returns false). Keys with null data are considered
+		///  nonexistent.
+		/// <param> name="key" The key to search for.
+		/// </param></remarks>		<return> If true, the key is available.
+		///      </return>
+		/// 		<short>    Checks whether the key has an entry in the currently active group.</short>
+		public bool HasKey(QByteArray key) {
+			return (bool) interceptor.Invoke("hasKey#", "hasKey(const QByteArray&) const", typeof(bool), typeof(QByteArray), key);
+		}
+		public bool HasKey(string key) {
+			return (bool) interceptor.Invoke("hasKey$", "hasKey(const QString&) const", typeof(bool), typeof(string), key);
+		}
 		/// <remarks>
 		///  Checks whether it is possible to change the given group.
-		/// </remarks>		<return> whether changes may be made to this group in this configuration
-		///  file.
+		/// </remarks>		<return> whether changes may be made to this group.
 		///      </return>
 		/// 		<short>    Checks whether it is possible to change the given group.</short>
-		public bool IsImmutable() {
+		[SmokeMethod("isImmutable() const")]
+		public override bool IsImmutable() {
 			return (bool) interceptor.Invoke("isImmutable", "isImmutable() const", typeof(bool));
 		}
 		/// <remarks>
@@ -370,6 +363,9 @@ namespace Kimono {
 		/// 		<short>    Checks whether it is possible to change the given entry.</short>
 		public bool EntryIsImmutable(string key) {
 			return (bool) interceptor.Invoke("entryIsImmutable$", "entryIsImmutable(const QString&) const", typeof(bool), typeof(string), key);
+		}
+		public bool EntryIsImmutable(QByteArray key) {
+			return (bool) interceptor.Invoke("entryIsImmutable#", "entryIsImmutable(const QByteArray&) const", typeof(bool), typeof(QByteArray), key);
 		}
 		/// <remarks>
 		///  When set, all readEntry and readXXXEntry calls return the system
@@ -390,6 +386,9 @@ namespace Kimono {
 		public void RevertToDefault(string key) {
 			interceptor.Invoke("revertToDefault$", "revertToDefault(const QString&)", typeof(void), typeof(string), key);
 		}
+		public void RevertToDefault(QByteArray key) {
+			interceptor.Invoke("revertToDefault#", "revertToDefault(const QByteArray&)", typeof(void), typeof(QByteArray), key);
+		}
 		/// <remarks>
 		///  Returns whether a default is specified for an entry in either the
 		///  system wide configuration file or the global KDE config file.
@@ -397,7 +396,7 @@ namespace Kimono {
 		///  a certain entry, e.g. like:
 		///  <pre>
 		///  QColor computedDefault = qApp.Palette().color(QPalette.Active, QPalette.Text)
-		///  QColor color = config.ReadEntry(key, computedDefault).value<QColor>();
+		///  QColor color = config.ReadEntry(key, computedDefault);
 		///  </pre>
 		///  Then it may wish to make the following check before
 		///  writing back changes:
@@ -415,17 +414,69 @@ namespace Kimono {
 		public bool HasDefault(string key) {
 			return (bool) interceptor.Invoke("hasDefault$", "hasDefault(const QString&) const", typeof(bool), typeof(string), key);
 		}
-		protected QByteArray ReadEntryUtf8(string pKey) {
-			return (QByteArray) interceptor.Invoke("readEntryUtf8$", "readEntryUtf8(const char*) const", typeof(QByteArray), typeof(string), pKey);
+		public bool HasDefault(QByteArray key) {
+			return (bool) interceptor.Invoke("hasDefault#", "hasDefault(const QByteArray&) const", typeof(bool), typeof(QByteArray), key);
 		}
-		protected void Init(KConfigBase master) {
-			interceptor.Invoke("init#", "init(KConfigBase*)", typeof(void), typeof(KConfigBase), master);
+		[SmokeMethod("groupList() const")]
+		public override List<string> GroupList() {
+			return (List<string>) interceptor.Invoke("groupList", "groupList() const", typeof(List<string>));
+		}
+		public List<string> KeyList() {
+			return (List<string>) interceptor.Invoke("keyList", "keyList() const", typeof(List<string>));
+		}
+		[SmokeMethod("clean()")]
+		public override void Clean() {
+			interceptor.Invoke("clean", "clean()", typeof(void));
+		}
+		[SmokeMethod("getConfigState() const")]
+		public override KConfigBase.ConfigState GetConfigState() {
+			return (KConfigBase.ConfigState) interceptor.Invoke("getConfigState", "getConfigState() const", typeof(KConfigBase.ConfigState));
+		}
+		public void WriteEntry(string key, string value, uint pFlags) {
+			interceptor.Invoke("writeEntry$$$", "writeEntry(const char*, const char*, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), key, typeof(string), value, typeof(uint), pFlags);
+		}
+		public void WriteEntry(string key, string value) {
+			interceptor.Invoke("writeEntry$$", "writeEntry(const char*, const char*)", typeof(void), typeof(string), key, typeof(string), value);
+		}
+		public void WriteEntry(QByteArray key, string value, uint pFlags) {
+			interceptor.Invoke("writeEntry#$$", "writeEntry(const QByteArray&, const char*, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), key, typeof(string), value, typeof(uint), pFlags);
+		}
+		public void WriteEntry(QByteArray key, string value) {
+			interceptor.Invoke("writeEntry#$", "writeEntry(const QByteArray&, const char*)", typeof(void), typeof(QByteArray), key, typeof(string), value);
+		}
+		[SmokeMethod("hasGroupImpl(const QByteArray&) const")]
+		protected override bool HasGroupImpl(QByteArray group) {
+			return (bool) interceptor.Invoke("hasGroupImpl#", "hasGroupImpl(const QByteArray&) const", typeof(bool), typeof(QByteArray), group);
+		}
+		[SmokeMethod("groupImpl(const QByteArray&)")]
+		protected override KConfigGroup GroupImpl(QByteArray b) {
+			return (KConfigGroup) interceptor.Invoke("groupImpl#", "groupImpl(const QByteArray&)", typeof(KConfigGroup), typeof(QByteArray), b);
+		}
+		[SmokeMethod("deleteGroupImpl(const QByteArray&, KConfigBase::WriteConfigFlags)")]
+		protected override void DeleteGroupImpl(QByteArray group, uint flags) {
+			interceptor.Invoke("deleteGroupImpl#$", "deleteGroupImpl(const QByteArray&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), group, typeof(uint), flags);
+		}
+		[SmokeMethod("groupIsImmutableImpl(const QByteArray&) const")]
+		protected override bool GroupIsImmutableImpl(QByteArray aGroup) {
+			return (bool) interceptor.Invoke("groupIsImmutableImpl#", "groupIsImmutableImpl(const QByteArray&) const", typeof(bool), typeof(QByteArray), aGroup);
 		}
 		~KConfigGroup() {
 			interceptor.Invoke("~KConfigGroup", "~KConfigGroup()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~KConfigGroup", "~KConfigGroup()", typeof(void));
+		}
+		/// <remarks>
+		///  Return the data in <code>value</code> converted to a QVariant.
+		/// <param> name="pKey" The name of the entry being converted, this is only used for error
+		///  reporting.
+		/// </param><param> name="value" The UTF-8 data to be converted.
+		/// </param><param> name="aDefault" The default value if <code>pKey</code> is not found.
+		/// </param></remarks>		<return> <code>value</code> converted to QVariant, or <code>aDefault</code> if <code>value</code> is invalid or cannot be converted.
+		///      </return>
+		/// 		<short>    Return the data in <code>value</code> converted to a QVariant.</short>
+		public static QVariant ConvertToQVariant(string pKey, QByteArray value, QVariant aDefault) {
+			return (QVariant) staticInterceptor.Invoke("convertToQVariant$##", "convertToQVariant(const char*, const QByteArray&, const QVariant&)", typeof(QVariant), typeof(string), pKey, typeof(QByteArray), value, typeof(QVariant), aDefault);
 		}
 	}
 }

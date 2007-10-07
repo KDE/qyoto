@@ -35,7 +35,6 @@ namespace Kimono {
 			LinkedData = 0x80,
 			Everything = 0xffff,
 		}
-		// KFileMetaInfo* KFileMetaInfo(const QString& arg1,const QString& arg2,WhatFlags arg3); >>>> NOT CONVERTED
 		// const QHash<QString, KFileMetaInfoItem>& items(); >>>> NOT CONVERTED
 		// KFileMetaInfoItem& item(const QString& arg1); >>>> NOT CONVERTED
 		// const KFileMetaInfoItem& item(const QString& arg1); >>>> NOT CONVERTED
@@ -44,6 +43,10 @@ namespace Kimono {
 		///  @brief Construct a KFileMetaInfo that contains metainformation about
 		///  the resource pointed to by <code>path.</code>
 		/// </remarks>		<short>    @brief Construct a KFileMetaInfo that contains metainformation about  the resource pointed to by <code>path.</code></short>
+		public KFileMetaInfo(string path, string mimetype, uint w) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KFileMetaInfo$$$", "KFileMetaInfo(const QString&, const QString&, KFileMetaInfo::WhatFlags)", typeof(void), typeof(string), path, typeof(string), mimetype, typeof(uint), w);
+		}
 		public KFileMetaInfo(string path, string mimetype) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KFileMetaInfo$$", "KFileMetaInfo(const QString&, const QString&)", typeof(void), typeof(string), path, typeof(string), mimetype);

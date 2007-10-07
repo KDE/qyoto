@@ -195,9 +195,10 @@ namespace Kimono {
 		///       Construct string from a c string, guessing whether it is UTF8- or
 		///       Local8Bit-encoded.
 		/// <param> name="str" the input string
-		/// </param></remarks>		<return> the (hopefully correctly guessed) string representation of <code>str</code>
-		///      </return>
+		/// </param>     </remarks>		<return> the (hopefully correctly guessed) string representation of <code>str</code>
+		/// </return>
 		/// 		<short>         Construct string from a c string, guessing whether it is UTF8- or       Local8Bit-encoded.</short>
+		/// 		<see> KEncodingDetector</see>
 		public static string From8Bit(string str) {
 			return (string) staticInterceptor.Invoke("from8Bit$", "from8Bit(const char*)", typeof(string), typeof(string), str);
 		}

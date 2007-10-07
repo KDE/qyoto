@@ -21,6 +21,13 @@ namespace Kimono {
 		static KGlobal() {
 			staticInterceptor = new SmokeInvocation(typeof(KGlobal), null);
 		}
+		/// <remarks>
+		///  For setLocale
+		///      </remarks>		<short>    For setLocale      </short>
+		public enum CopyCatalogs {
+			DoCopyCatalogs = 0,
+			DontCopyCatalogs = 1,
+		}
 		// KSharedConfigPtr config(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Returns the global component data.  There is always at least
@@ -136,6 +143,9 @@ namespace Kimono {
 		/// 		<short>    Returns a text for the window caption.</short>
 		public static string Caption() {
 			return (string) staticInterceptor.Invoke("caption", "caption()", typeof(string));
+		}
+		public static void SetLocale(KLocale arg1, KGlobal.CopyCatalogs copy) {
+			staticInterceptor.Invoke("setLocale#$", "setLocale(KLocale*, KGlobal::CopyCatalogs)", typeof(void), typeof(KLocale), arg1, typeof(KGlobal.CopyCatalogs), copy);
 		}
 		public static void SetLocale(KLocale arg1) {
 			staticInterceptor.Invoke("setLocale#", "setLocale(KLocale*)", typeof(void), typeof(KLocale), arg1);

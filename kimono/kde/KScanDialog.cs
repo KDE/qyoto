@@ -25,8 +25,6 @@ namespace Kimono {
 	///  </pre>
 	///  This will create and show a non-modal scanning dialog. Connect to more
 	///  signals if you like.
-	///  If you implement an own scan-dialog, you also have to implement a
-	///  KScanDialogFactory.
 	///  See <see cref="IKScanDialogSignals"></see> for signals emitted by KScanDialog
 	/// </remarks>		<author> Carsten Pfeiffer <pfeiffer@kde.org>
 	///  </author>

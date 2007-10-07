@@ -1087,13 +1087,17 @@ namespace Kimono {
 		protected override bool OpenFile() {
 			return (bool) interceptor.Invoke("openFile", "openFile()", typeof(bool));
 		}
-		[SmokeMethod("urlSelected(const QString&, int, int, const QString&, KParts::URLArgs)")]
-		protected virtual void UrlSelected(string url, int button, int state, string _target, KParts.URLArgs args) {
-			interceptor.Invoke("urlSelected$$$$#", "urlSelected(const QString&, int, int, const QString&, KParts::URLArgs)", typeof(void), typeof(string), url, typeof(int), button, typeof(int), state, typeof(string), _target, typeof(KParts.URLArgs), args);
+		[SmokeMethod("urlSelected(const QString&, int, int, const QString&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)")]
+		protected virtual bool UrlSelected(string url, int button, int state, string _target, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs) {
+			return (bool) interceptor.Invoke("urlSelected$$$$##", "urlSelected(const QString&, int, int, const QString&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(bool), typeof(string), url, typeof(int), button, typeof(int), state, typeof(string), _target, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs);
+		}
+		[SmokeMethod("urlSelected(const QString&, int, int, const QString&, const KParts::OpenUrlArguments&)")]
+		protected virtual bool UrlSelected(string url, int button, int state, string _target, KParts.OpenUrlArguments args) {
+			return (bool) interceptor.Invoke("urlSelected$$$$#", "urlSelected(const QString&, int, int, const QString&, const KParts::OpenUrlArguments&)", typeof(bool), typeof(string), url, typeof(int), button, typeof(int), state, typeof(string), _target, typeof(KParts.OpenUrlArguments), args);
 		}
 		[SmokeMethod("urlSelected(const QString&, int, int, const QString&)")]
-		protected virtual void UrlSelected(string url, int button, int state, string _target) {
-			interceptor.Invoke("urlSelected$$$$", "urlSelected(const QString&, int, int, const QString&)", typeof(void), typeof(string), url, typeof(int), button, typeof(int), state, typeof(string), _target);
+		protected virtual bool UrlSelected(string url, int button, int state, string _target) {
+			return (bool) interceptor.Invoke("urlSelected$$$$", "urlSelected(const QString&, int, int, const QString&)", typeof(bool), typeof(string), url, typeof(int), button, typeof(int), state, typeof(string), _target);
 		}
 		/// <remarks>
 		///  This method is called when a new embedded object (include html frames) is to be created.

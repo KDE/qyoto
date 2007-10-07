@@ -141,15 +141,14 @@ namespace Kimono {
 			Error = 2,
 			Catastrophe = 3,
 		}
-		// KNotification* KNotification(const QString& arg1,QWidget* arg2,const NotificationFlags& arg3); >>>> NOT CONVERTED
+		// KNotification* KNotification(const QString& arg1,QWidget* arg2,const KNotification::NotificationFlags& arg3); >>>> NOT CONVERTED
 		// KNotification::ContextList contexts(); >>>> NOT CONVERTED
 		// void setContexts(const KNotification::ContextList& arg1); >>>> NOT CONVERTED
 		// void addContext(const KNotification::Context& arg1); >>>> NOT CONVERTED
-		// NotificationFlags flags(); >>>> NOT CONVERTED
-		// void setFlags(const NotificationFlags& arg1); >>>> NOT CONVERTED
-		// KNotification* event(const QString& arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const NotificationFlags& arg5,const KComponentData& arg6); >>>> NOT CONVERTED
-		// KNotification* event(const QString& arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const NotificationFlags& arg5); >>>> NOT CONVERTED
-		// KNotification* event(KNotification::StandardEvent arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const NotificationFlags& arg5); >>>> NOT CONVERTED
+		// void setFlags(const KNotification::NotificationFlags& arg1); >>>> NOT CONVERTED
+		// KNotification* event(const QString& arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const KNotification::NotificationFlags& arg5,const KComponentData& arg6); >>>> NOT CONVERTED
+		// KNotification* event(const QString& arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const KNotification::NotificationFlags& arg5); >>>> NOT CONVERTED
+		// KNotification* event(KNotification::StandardEvent arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const KNotification::NotificationFlags& arg5); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a new notification.
 		///  you need to use sendEvent to show the notification.
@@ -263,6 +262,9 @@ namespace Kimono {
 		/// </remarks>		<return> the notifications flags.
 		///      </return>
 		/// 		<short>   </short>
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
+		}
 		/// <remarks>
 		///  Set the notification flags.
 		///  should be called before sendEvent().

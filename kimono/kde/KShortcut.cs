@@ -98,7 +98,8 @@ namespace Kimono {
 		///  Creates a new shortcut that contains the key sequences described
 		///  in <code>description.</code> The format of description is the same as
 		///  used in QKeySequence.FromString(string).
-		///  Up to two key sequences separated by a semicolon ";" may be given.
+		///  Up to two key sequences separated by a semicolon followed by a
+		///  space "; " may be given.
 		/// <param> name="description" the description of key sequence(s)
 		/// </param></remarks>		<short>    Creates a new shortcut that contains the key sequences described  in <code>description.</code></short>
 		/// 		<see> QKeySequence.FromString(const</see>

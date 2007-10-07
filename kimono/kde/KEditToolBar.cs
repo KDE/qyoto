@@ -158,35 +158,6 @@ namespace Kimono {
 		protected override void HideEvent(QHideEvent arg1) {
 			interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), arg1);
 		}
-		/// <remarks>
-		///  Overridden in order to save any changes made to the toolbars
-		///    </remarks>		<short>    Overridden in order to save any changes made to the toolbars    </short>
-		[Q_SLOT("void slotOk()")]
-		[SmokeMethod("slotOk()")]
-		protected virtual void SlotOk() {
-			interceptor.Invoke("slotOk", "slotOk()", typeof(void));
-		}
-		/// <remarks>
-		///  idem
-		///    </remarks>		<short>    idem    </short>
-		[Q_SLOT("void slotApply()")]
-		[SmokeMethod("slotApply()")]
-		protected virtual void SlotApply() {
-			interceptor.Invoke("slotApply", "slotApply()", typeof(void));
-		}
-		/// <remarks> should OK really save?
-		/// </remarks>		<short>   should OK really save? </short>
-		[Q_SLOT("void acceptOK(bool)")]
-		protected void AcceptOK(bool b) {
-			interceptor.Invoke("acceptOK$", "acceptOK(bool)", typeof(void), typeof(bool), b);
-		}
-		/// <remarks>
-		///  Set toolbars to default value
-		/// </remarks>		<short>    Set toolbars to default value </short>
-		[Q_SLOT("void slotDefault()")]
-		protected void SlotDefault() {
-			interceptor.Invoke("slotDefault", "slotDefault()", typeof(void));
-		}
 		~KEditToolBar() {
 			interceptor.Invoke("~KEditToolBar", "~KEditToolBar()", typeof(void));
 		}

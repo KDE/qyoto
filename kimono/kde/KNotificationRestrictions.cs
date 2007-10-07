@@ -49,8 +49,18 @@ namespace Kimono {
 			NonCriticalServices = ScreenSaver|MessagingPopups|Notifications,
 			AllServices = NonCriticalServices|CriticalNotifications,
 		}
-		// KNotificationRestrictions* KNotificationRestrictions(Services arg1,QObject* arg2); >>>> NOT CONVERTED
-		// KNotificationRestrictions* KNotificationRestrictions(Services arg1); >>>> NOT CONVERTED
+		public KNotificationRestrictions(uint control, QObject parent) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KNotificationRestrictions$#", "KNotificationRestrictions(KNotificationRestrictions::Services, QObject*)", typeof(void), typeof(uint), control, typeof(QObject), parent);
+		}
+		public KNotificationRestrictions(uint control) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KNotificationRestrictions$", "KNotificationRestrictions(KNotificationRestrictions::Services)", typeof(void), typeof(uint), control);
+		}
+		public KNotificationRestrictions() : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KNotificationRestrictions", "KNotificationRestrictions()", typeof(void));
+		}
 		~KNotificationRestrictions() {
 			interceptor.Invoke("~KNotificationRestrictions", "~KNotificationRestrictions()", typeof(void));
 		}

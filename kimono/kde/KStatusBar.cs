@@ -125,8 +125,8 @@ namespace Kimono {
 		///  Sets the alignment of item <code>id.</code> By default all fields are aligned
 		///  <code>AlignHCenter</code> | <code>AlignVCenter.</code> See QLabel.SetAlignment for details.
 		///   </remarks>		<short>    Sets the alignment of item <code>id.</code></short>
-		public void SetItemAlignment(int id, int alignment) {
-			interceptor.Invoke("setItemAlignment$$", "setItemAlignment(int, Qt::Alignment)", typeof(void), typeof(int), id, typeof(int), alignment);
+		public void SetItemAlignment(int id, uint alignment) {
+			interceptor.Invoke("setItemAlignment$$", "setItemAlignment(int, Qt::Alignment)", typeof(void), typeof(int), id, typeof(uint), alignment);
 		}
 		/// <remarks>
 		///  Sets item <code>id</code> to have fixed width. This cannot be undone, but you can

@@ -42,15 +42,15 @@ namespace Kimono {
 	///     KVBox vb = new KVBox( pop );
 	///      new QLabel( vb, "<b>Isn't this great?</b>" );
 	///     KHBox box = new KHBox( vb );
-	///      new QPushButton( box, "Yes" );
-	///      new QPushButton( box, "No" );
+	///      new QPushButton( "Yes", box );
+	///      new QPushButton( "No", box );
 	///     pop.SetView( vb );
 	///     pop.Show();
 	///  </pre>
 	///  See <see cref="IKPassivePopupSignals"></see> for signals emitted by KPassivePopup
 	/// </remarks>		<author> Sascha Cunz, sascha.cunz@tiscali.de
 	///  </author>
-	/// 		<short> A dialog-like popup that displays messages without interupting the user. </short>
+	/// 		<short> A dialog-like popup that displays messages without interrupting the user. </short>
 
 	[SmokeClass("KPassivePopup")]
 	public class KPassivePopup : QFrame, IDisposable {
@@ -87,9 +87,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Creates a popup for the specified widget.
 		///      </remarks>		<short>    Creates a popup for the specified widget.</short>
-		public KPassivePopup(QWidget parent, int f) : this((Type) null) {
+		public KPassivePopup(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPassivePopup#$", "KPassivePopup(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("KPassivePopup#$", "KPassivePopup(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KPassivePopup(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -102,9 +102,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Creates a popup for the specified window.
 		///      </remarks>		<short>    Creates a popup for the specified window.</short>
-		public KPassivePopup(ulong parent) : this((Type) null) {
+		public KPassivePopup(uint parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPassivePopup$", "KPassivePopup(WId)", typeof(void), typeof(ulong), parent);
+			interceptor.Invoke("KPassivePopup$", "KPassivePopup(WId)", typeof(void), typeof(uint), parent);
 		}
 		/// <remarks>
 		///  Sets the main view to be the specified widget (which must be a child of the popup).
@@ -346,11 +346,11 @@ namespace Kimono {
 		///  Note that the returned object is destroyed when it is hidden.
 		/// </remarks>		<short>    Convenience method that displays popup with the specified icon, caption and  message beside the icon of the specified window.</short>
 		/// 		<see> setAutoDelete</see>
-		public static KPassivePopup Message(string caption, string text, QPixmap icon, ulong parent, int timeout) {
-			return (KPassivePopup) staticInterceptor.Invoke("message$$#$$", "message(const QString&, const QString&, const QPixmap&, WId, int)", typeof(KPassivePopup), typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(ulong), parent, typeof(int), timeout);
+		public static KPassivePopup Message(string caption, string text, QPixmap icon, uint parent, int timeout) {
+			return (KPassivePopup) staticInterceptor.Invoke("message$$#$$", "message(const QString&, const QString&, const QPixmap&, WId, int)", typeof(KPassivePopup), typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(uint), parent, typeof(int), timeout);
 		}
-		public static KPassivePopup Message(string caption, string text, QPixmap icon, ulong parent) {
-			return (KPassivePopup) staticInterceptor.Invoke("message$$#$", "message(const QString&, const QString&, const QPixmap&, WId)", typeof(KPassivePopup), typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(ulong), parent);
+		public static KPassivePopup Message(string caption, string text, QPixmap icon, uint parent) {
+			return (KPassivePopup) staticInterceptor.Invoke("message$$#$", "message(const QString&, const QString&, const QPixmap&, WId)", typeof(KPassivePopup), typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(uint), parent);
 		}
 		/// <remarks>
 		///  Convenience method that displays popup with the specified popup-style and message beside the
@@ -418,11 +418,11 @@ namespace Kimono {
 		///  Note that the returned object is destroyed when it is hidden.
 		/// </remarks>		<short>    Convenience method that displays popup with the specified popup-style, icon, caption and  message beside the icon of the specified window.</short>
 		/// 		<see> setAutoDelete</see>
-		public static KPassivePopup Message(int popupStyle, string caption, string text, QPixmap icon, ulong parent, int timeout) {
-			return (KPassivePopup) staticInterceptor.Invoke("message$$$#$$", "message(int, const QString&, const QString&, const QPixmap&, WId, int)", typeof(KPassivePopup), typeof(int), popupStyle, typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(ulong), parent, typeof(int), timeout);
+		public static KPassivePopup Message(int popupStyle, string caption, string text, QPixmap icon, uint parent, int timeout) {
+			return (KPassivePopup) staticInterceptor.Invoke("message$$$#$$", "message(int, const QString&, const QString&, const QPixmap&, WId, int)", typeof(KPassivePopup), typeof(int), popupStyle, typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(uint), parent, typeof(int), timeout);
 		}
-		public static KPassivePopup Message(int popupStyle, string caption, string text, QPixmap icon, ulong parent) {
-			return (KPassivePopup) staticInterceptor.Invoke("message$$$#$", "message(int, const QString&, const QString&, const QPixmap&, WId)", typeof(KPassivePopup), typeof(int), popupStyle, typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(ulong), parent);
+		public static KPassivePopup Message(int popupStyle, string caption, string text, QPixmap icon, uint parent) {
+			return (KPassivePopup) staticInterceptor.Invoke("message$$$#$", "message(int, const QString&, const QString&, const QPixmap&, WId)", typeof(KPassivePopup), typeof(int), popupStyle, typeof(string), caption, typeof(string), text, typeof(QPixmap), icon, typeof(uint), parent);
 		}
 		protected new IKPassivePopupSignals Emit {
 			get { return (IKPassivePopupSignals) Q_EMIT; }

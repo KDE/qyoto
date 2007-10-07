@@ -39,9 +39,9 @@ namespace Kimono {
 		///  @flags the window flags to give to the assistant dialog. The
 		///  default of zero is usually what you want.
 		///          </param></remarks>		<short>    Construct a new assistant dialog with <code>parent</code> as parent.</short>
-		public KAssistantDialog(QWidget parent, int flags) : this((Type) null) {
+		public KAssistantDialog(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KAssistantDialog#$", "KAssistantDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KAssistantDialog#$", "KAssistantDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KAssistantDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -120,9 +120,9 @@ namespace Kimono {
 		///  of zero is usually fine.
 		/// </param> Calls the KPageDialog(KPageWidget widget, QWidget parent, Qt.WFlags flags) constructor
 		///          </remarks>		<short>    Construct an assistant dialog from a single widget.</short>
-		public KAssistantDialog(KPageWidget widget, QWidget parent, int flags) : this((Type) null) {
+		public KAssistantDialog(KPageWidget widget, QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KAssistantDialog##$", "KAssistantDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KAssistantDialog##$", "KAssistantDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KAssistantDialog(KPageWidget widget, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -135,10 +135,6 @@ namespace Kimono {
 		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
 			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
-		}
-		[Q_SLOT("void slotCurrentPageChanged()")]
-		protected void SlotCurrentPageChanged() {
-			interceptor.Invoke("slotCurrentPageChanged", "slotCurrentPageChanged()", typeof(void));
 		}
 		~KAssistantDialog() {
 			interceptor.Invoke("~KAssistantDialog", "~KAssistantDialog()", typeof(void));

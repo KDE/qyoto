@@ -227,31 +227,6 @@ namespace Kimono {
 		protected virtual bool CanChooseColumnsCheck() {
 			return (bool) interceptor.Invoke("canChooseColumnsCheck", "canChooseColumnsCheck()", typeof(bool));
 		}
-		/// <remarks>
-		///  When keys are pressed a new search string is created and a timer is
-		///  activated.  The most recent search is activated when this timer runs out
-		///  if another key has not yet been pressed.
-		///  This method makes @param search the most recent search and starts the
-		///  timer.
-		///  Together with activateSearch() this makes it such that searches are not
-		///  started until there is a short break in the users typing.
-		/// </remarks>		<short>    When keys are pressed a new search string is created and a timer is  activated.</short>
-		/// 		<see> activateSearch</see>
-		[Q_SLOT("void queueSearch(const QString&)")]
-		protected void QueueSearch(string search) {
-			interceptor.Invoke("queueSearch$", "queueSearch(const QString&)", typeof(void), typeof(string), search);
-		}
-		/// <remarks>
-		///  When the timer started with queueSearch() expires this slot is called.
-		///  If there has been another timer started then this slot does nothing.
-		///  However if there are no other pending searches this starts the list view
-		///  search.
-		/// </remarks>		<short>    When the timer started with queueSearch() expires this slot is called.</short>
-		/// 		<see> queueSearch</see>
-		[Q_SLOT("void activateSearch()")]
-		protected void ActivateSearch() {
-			interceptor.Invoke("activateSearch", "activateSearch()", typeof(void));
-		}
 		~KTreeWidgetSearchLine() {
 			interceptor.Invoke("~KTreeWidgetSearchLine", "~KTreeWidgetSearchLine()", typeof(void));
 		}

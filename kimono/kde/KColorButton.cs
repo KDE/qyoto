@@ -64,6 +64,10 @@ namespace Kimono {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
+		[SmokeMethod("minimumSizeHint() const")]
+		public override QSize MinimumSizeHint() {
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
+		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent pe) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), pe);
@@ -87,10 +91,6 @@ namespace Kimono {
 		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent e) {
 			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), e);
-		}
-		[Q_SLOT("void chooseColor()")]
-		protected void ChooseColor() {
-			interceptor.Invoke("chooseColor", "chooseColor()", typeof(void));
 		}
 		~KColorButton() {
 			interceptor.Invoke("~KColorButton", "~KColorButton()", typeof(void));

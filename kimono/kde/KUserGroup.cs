@@ -26,9 +26,18 @@ namespace Kimono {
 		static KUserGroup() {
 			staticInterceptor = new SmokeInvocation(typeof(KUserGroup), null);
 		}
-		// KUserGroup* KUserGroup(gid_t arg1); >>>> NOT CONVERTED
+		// KUserGroup* KUserGroup(K_GID arg1); >>>> NOT CONVERTED
 		// KUserGroup* KUserGroup(const group* arg1); >>>> NOT CONVERTED
-		// gid_t gid(); >>>> NOT CONVERTED
+		// K_GID gid(); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Create an object from a group name.
+		///  If the group does not exist, isValid() will return false.
+		/// <param> name="name" the name of the group
+		///    </param></remarks>		<short>    Create an object from a group name.</short>
+		public KUserGroup(string name) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KUserGroup$", "KUserGroup(const QString&)", typeof(void), typeof(string), name);
+		}
 		/// <remarks>
 		///  Create an object from the group of the current user.
 		/// <param> name="mode" if #KUser.UseEffectiveUID is passed the effective user
@@ -46,15 +55,6 @@ namespace Kimono {
 		public KUserGroup() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KUserGroup", "KUserGroup()", typeof(void));
-		}
-		/// <remarks>
-		///  Create an object from a group name.
-		///  If the group does not exist, isValid() will return false.
-		/// <param> name="name" the name of the group
-		///    </param></remarks>		<short>    Create an object from a group name.</short>
-		public KUserGroup(string name) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KUserGroup$", "KUserGroup(const QString&)", typeof(void), typeof(string), name);
 		}
 		/// <remarks>
 		///  Creates a new KUserGroup instance from another KUserGroup object

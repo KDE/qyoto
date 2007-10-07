@@ -44,7 +44,6 @@ namespace Kimono {
 			FileCompletion = 2,
 			DirCompletion = 3,
 		}
-		// void slotEntries(KIO::Job* arg1,const KIO::UDSEntryList& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KUrlCompletion object in FileCompletion mode.
 		/// 	 </remarks>		<short>    Constructs a KUrlCompletion object in FileCompletion mode.</short>
@@ -178,7 +177,7 @@ namespace Kimono {
 		/// 	 </return>
 		/// 		<short>    Replaces username and/or environment variables, depending on the  current settings and returns the filtered url.</short>
 		public string ReplacedPath(string text) {
-			return (string) interceptor.Invoke("replacedPath$", "replacedPath(const QString&)", typeof(string), typeof(string), text);
+			return (string) interceptor.Invoke("replacedPath$", "replacedPath(const QString&) const", typeof(string), typeof(string), text);
 		}
 		[SmokeMethod("postProcessMatch(QString*) const")]
 		protected override void PostProcessMatch(StringBuilder match) {
@@ -191,10 +190,6 @@ namespace Kimono {
 		[SmokeMethod("customEvent(QEvent*)")]
 		protected override void CustomEvent(QEvent e) {
 			interceptor.Invoke("customEvent#", "customEvent(QEvent*)", typeof(void), typeof(QEvent), e);
-		}
-		[Q_SLOT("void slotIOFinished(KJob*)")]
-		protected void SlotIOFinished(KJob arg1) {
-			interceptor.Invoke("slotIOFinished#", "slotIOFinished(KJob*)", typeof(void), typeof(KJob), arg1);
 		}
 		~KUrlCompletion() {
 			interceptor.Invoke("~KUrlCompletion", "~KUrlCompletion()", typeof(void));

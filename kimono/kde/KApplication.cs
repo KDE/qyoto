@@ -253,11 +253,6 @@ namespace Kimono {
 		public static string CheckRecoverFile(string pFilename, bool bRecover) {
 			return (string) staticInterceptor.Invoke("checkRecoverFile$$", "checkRecoverFile(const QString&, bool&)", typeof(string), typeof(string), pFilename, typeof(bool), bRecover);
 		}
-		/// <remarks>
-		///    </remarks>		<short>   </short>
-		public static void StartKdeinit() {
-			staticInterceptor.Invoke("startKdeinit", "startKdeinit()", typeof(void));
-		}
 		protected new IKApplicationSignals Emit {
 			get { return (IKApplicationSignals) Q_EMIT; }
 		}
@@ -269,7 +264,7 @@ namespace Kimono {
 		///      This signal is provided for compatibility only. For new
 		///      applications, simply use KMainWindow. By reimplementing
 		///      KMainWindow.QueryClose(), KMainWindow.SaveProperties() and
-		///  KMainWindow.ReadProperties() you can simply handle session
+		///      KMainWindow.ReadProperties() you can simply handle session
 		///      management for applications with multiple toplevel windows.
 		///      For purposes without KMainWindow, create an instance of
 		///      KSessionManager and reimplement the functions

@@ -4,8 +4,11 @@ namespace Kimono {
 	using System;
 	using Qyoto;
 
-	/// <remarks> See <see cref="IKFontSizeActionSignals"></see> for signals emitted by KFontSizeAction
-	/// </remarks>
+	/// <remarks>
+	///  An action to allow changing of the font size.
+	///  This action will be shown as a combobox on a toolbar with a proper set of font sizes.
+	///   See <see cref="IKFontSizeActionSignals"></see> for signals emitted by KFontSizeAction
+	/// </remarks>		<short>    An action to allow changing of the font size.</short>
 
 	[SmokeClass("KFontSizeAction")]
 	public class KFontSizeAction : KSelectAction, IDisposable {

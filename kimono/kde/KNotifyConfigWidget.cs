@@ -14,7 +14,7 @@ namespace Kimono {
 	/// 		<short>    Configure the notification for a given application / context </short>
 
 	[SmokeClass("KNotifyConfigWidget")]
-	public class KNotifyConfigWidget : KVBox, IDisposable {
+	public class KNotifyConfigWidget : QWidget, IDisposable {
  		protected KNotifyConfigWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KNotifyConfigWidget), this);
@@ -79,7 +79,7 @@ namespace Kimono {
 		}
 	}
 
-	public interface IKNotifyConfigWidgetSignals : IKVBoxSignals {
+	public interface IKNotifyConfigWidgetSignals : IQWidgetSignals {
 		/// <remarks>
 		///  Indicate that the state of the modules contents has changed. 
 		///  This signal is emitted whenever the state of the configuration changes. 

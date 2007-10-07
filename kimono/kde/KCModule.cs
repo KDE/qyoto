@@ -74,12 +74,15 @@ namespace Kimono {
 			Default = 2,
 			Apply = 4,
 		}
-		// Buttons buttons(); >>>> NOT CONVERTED
 		// QList<KConfigDialogManager*> configs(); >>>> NOT CONVERTED
-		// void setButtons(Buttons arg1); >>>> NOT CONVERTED
-		public KCModule(KComponentData componentData, QWidget parent, List<string> args) : this((Type) null) {
+		/// <remarks>
+		///  Base class for all KControlModules.
+		///  @note do not emit changed signals here, since they are not yet connected
+		///        to any slot.
+		///    </remarks>		<short>    Base class for all KControlModules.</short>
+		public KCModule(KComponentData componentData, QWidget parent, List<QVariant> args) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KCModule##?", "KCModule(const KComponentData&, QWidget*, const QStringList&)", typeof(void), typeof(KComponentData), componentData, typeof(QWidget), parent, typeof(List<string>), args);
+			interceptor.Invoke("KCModule##?", "KCModule(const KComponentData&, QWidget*, const QVariantList&)", typeof(void), typeof(KComponentData), componentData, typeof(QWidget), parent, typeof(List<QVariant>), args);
 		}
 		public KCModule(KComponentData componentData, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -122,6 +125,9 @@ namespace Kimono {
 		///  the Button enumeration type.
 		/// </remarks>		<short>    Indicate which buttons will be used.</short>
 		/// 		<see> KCModule.SetButtons</see>
+		public uint Buttons() {
+			return (uint) interceptor.Invoke("buttons", "buttons() const", typeof(uint));
+		}
 		/// <remarks>
 		///  Get the RootOnly message for this module.
 		///  When the module must be run as root, or acts differently
@@ -233,6 +239,9 @@ namespace Kimono {
 		///  If Apply is not specified, kcmshell will show a "Close" button.
 		/// </remarks>		<short>    Sets the buttons to display.</short>
 		/// 		<see> KCModule.Buttons</see>
+		protected void SetButtons(uint btn) {
+			interceptor.Invoke("setButtons$", "setButtons(KCModule::Buttons)", typeof(void), typeof(uint), btn);
+		}
 		/// <remarks>
 		///  Sets the RootOnly message.
 		///  This message will be shown at the top of the module if useRootOnlyMessage is

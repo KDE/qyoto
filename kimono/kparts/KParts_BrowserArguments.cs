@@ -5,43 +5,35 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Collections.Generic;
 
 	/// <remarks>
-	///  URLArgs is a set of arguments bundled into a structure,
-	///  to allow specifying how a URL should be opened by openUrl().
-	///  In other words, this is like arguments to openUrl(), but without
-	///  have to change the signature of openUrl() (since openUrl is a
-	///  generic KParts method).
+	///  BrowserArguments is a set of web-browsing-specific arguments,
+	///  which allow specifying how a URL should be opened by openUrl()
+	///  (as a complement to KParts.OpenUrlArguments which are the non-web-specific arguments)
+	///  The arguments remain stored in the browser extension after that,
+	///  and can be used for instance to jump to the xOffset/yOffset position
+	///  once the url has finished loading.
 	///  The parts (with a browser extension) who care about urlargs will
 	///  use those arguments, others will ignore them.
 	///  This can also be used the other way round, when a part asks
 	///  for a URL to be opened (with openUrlRequest or createNewWindow).
-	///  </remarks>		<short>    URLArgs is a set of arguments bundled into a structure,  to allow specifying how a URL should be opened by openUrl().</short>
+	///  </remarks>		<short>    BrowserArguments is a set of web-browsing-specific arguments,  which allow specifying how a URL should be opened by openUrl()  (as a complement to KParts.OpenUrlArguments which are the non-web-specific arguments) </short>
 
-	[SmokeClass("KParts::URLArgs")]
-	public class URLArgs : Object, IDisposable {
+	[SmokeClass("KParts::BrowserArguments")]
+	public class BrowserArguments : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
-		protected URLArgs(Type dummy) {}
+		protected BrowserArguments(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(URLArgs), this);
+			interceptor = new SmokeInvocation(typeof(BrowserArguments), this);
 		}
-		public URLArgs() : this((Type) null) {
+		public BrowserArguments() : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("URLArgs", "URLArgs()", typeof(void));
+			interceptor.Invoke("BrowserArguments", "BrowserArguments()", typeof(void));
 		}
-		public URLArgs(KParts.URLArgs args) : this((Type) null) {
+		public BrowserArguments(KParts.BrowserArguments args) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("URLArgs#", "URLArgs(const KParts::URLArgs&)", typeof(void), typeof(KParts.URLArgs), args);
-		}
-		public URLArgs(bool reload, int xOffset, int yOffset, string serviceType) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("URLArgs$$$$", "URLArgs(bool, int, int, const QString&)", typeof(void), typeof(bool), reload, typeof(int), xOffset, typeof(int), yOffset, typeof(string), serviceType);
-		}
-		public URLArgs(bool reload, int xOffset, int yOffset) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("URLArgs$$$", "URLArgs(bool, int, int)", typeof(void), typeof(bool), reload, typeof(int), xOffset, typeof(int), yOffset);
+			interceptor.Invoke("BrowserArguments#", "BrowserArguments(const KParts::BrowserArguments&)", typeof(void), typeof(KParts.BrowserArguments), args);
 		}
 		/// <remarks>
 		///  KHTML-specific field, header defining the type of the POST data.
@@ -90,14 +82,6 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("newTab", "newTab() const", typeof(bool));
 		}
 		/// <remarks>
-		///  Meta-data to associate with the next KIO operation
-		/// </remarks>		<short>    Meta-data to associate with the next KIO operation </short>
-		/// 		<see> TransferJob</see>
-		/// 		<see> etc.</see>
-		public Dictionary<string, string> MetaData() {
-			return (Dictionary<string, string>) interceptor.Invoke("metaData", "metaData()", typeof(Dictionary<string, string>));
-		}
-		/// <remarks>
 		/// </remarks>		<return> true if the request was a result of a META refresh/redirect request or
 		///  HTTP redirect.
 		///    </return>
@@ -124,11 +108,11 @@ namespace Kimono {
 		public bool ForcesNewWindow() {
 			return (bool) interceptor.Invoke("forcesNewWindow", "forcesNewWindow() const", typeof(bool));
 		}
-		~URLArgs() {
-			interceptor.Invoke("~URLArgs", "~URLArgs()", typeof(void));
+		~BrowserArguments() {
+			interceptor.Invoke("~BrowserArguments", "~BrowserArguments()", typeof(void));
 		}
 		public void Dispose() {
-			interceptor.Invoke("~URLArgs", "~URLArgs()", typeof(void));
+			interceptor.Invoke("~BrowserArguments", "~BrowserArguments()", typeof(void));
 		}
 	}
 	}

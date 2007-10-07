@@ -31,14 +31,17 @@ namespace Kimono {
 			UpDown = 0x0004,
 			All = Add|Remove|UpDown,
 		}
+		[Q_PROPERTY("KEditListBox::Buttons", "buttons")]
+		public uint Buttons {
+			get { return (uint) interceptor.Invoke("buttons", "buttons()", typeof(uint)); }
+			set { interceptor.Invoke("setButtons$", "setButtons(KEditListBox::Buttons)", typeof(void), typeof(uint), value); }
+		}
 		[Q_PROPERTY("QStringList", "items")]
 		public List<string> Items {
 			get { return (List<string>) interceptor.Invoke("items", "items()", typeof(List<string>)); }
 			set { interceptor.Invoke("setItems?", "setItems(QStringList)", typeof(void), typeof(List<string>), value); }
 		}
-		// KEditListBox* KEditListBox(QWidget* arg1,const char* arg2,bool arg3,Buttons arg4); >>>> NOT CONVERTED
-		// KEditListBox* KEditListBox(const QString& arg1,QWidget* arg2,const char* arg3,bool arg4,Buttons arg5); >>>> NOT CONVERTED
-		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3,const char* arg4,bool arg5,Buttons arg6); >>>> NOT CONVERTED
+		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3,const char* arg4,bool arg5,KEditListBox::Buttons arg6); >>>> NOT CONVERTED
 		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3,const char* arg4,bool arg5); >>>> NOT CONVERTED
 		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3,const char* arg4); >>>> NOT CONVERTED
 		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3); >>>> NOT CONVERTED
@@ -54,6 +57,10 @@ namespace Kimono {
 		///  it will be checked if you press the Add-button. It is not
 		///  possible to enter items twice into the listbox.
 		///        </remarks>		<short>    Create an editable listbox.</short>
+		public KEditListBox(QWidget parent, string name, bool checkAtEntering, uint buttons) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KEditListBox#$$$", "KEditListBox(QWidget*, const char*, bool, KEditListBox::Buttons)", typeof(void), typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering, typeof(uint), buttons);
+		}
 		public KEditListBox(QWidget parent, string name, bool checkAtEntering) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KEditListBox#$$", "KEditListBox(QWidget*, const char*, bool)", typeof(void), typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering);
@@ -75,6 +82,10 @@ namespace Kimono {
 		///  The same as the other constructor, additionally it takes
 		///  <code>title</code>, which will be the title of the frame around the listbox.
 		///        </remarks>		<short>    Create an editable listbox.</short>
+		public KEditListBox(string title, QWidget parent, string name, bool checkAtEntering, uint buttons) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KEditListBox$#$$$", "KEditListBox(const QString&, QWidget*, const char*, bool, KEditListBox::Buttons)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering, typeof(uint), buttons);
+		}
 		public KEditListBox(string title, QWidget parent, string name, bool checkAtEntering) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KEditListBox$#$$", "KEditListBox(const QString&, QWidget*, const char*, bool)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering);

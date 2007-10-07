@@ -15,7 +15,7 @@ namespace Kimono {
 	///  Typical usage might look like:
 	///  @code
 	///  KAutostart autostart; // without an entryName arg, gets name from KAboutData
-	///  autostart.setAutoStart(true); // will now start up when the user logs in
+	///  autostart.setAutostarts(true); // will now start up when the user logs in
 	///  // set the value in our configuration settings to reflect whether or not
 	///  // we will actually start up on log in
 	///  config.setAutoStart(autostart.autoStarts());
@@ -48,7 +48,6 @@ namespace Kimono {
 			DesktopServices = 1,
 			Applications = 2,
 		}
-		// bool autostarts(const QString& arg1,Conditions arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new KAutostart object that represents the autostart
 		///  service "entryName". If the service already exists in the system
@@ -94,6 +93,9 @@ namespace Kimono {
 		/// </param><param> name="check" autostart conditions to check for (see commandToCheck())
 		/// </param></remarks>		<short>    Returns whether or not the service represented by entryName in the  autostart system is set to autostart at login or not </short>
 		/// 		<see> setAutostarts</see>
+		public bool Autostarts(string environment, uint check) {
+			return (bool) interceptor.Invoke("autostarts$$", "autostarts(const QString&, KAutostart::Conditions) const", typeof(bool), typeof(string), environment, typeof(uint), check);
+		}
 		public bool Autostarts(string environment) {
 			return (bool) interceptor.Invoke("autostarts$", "autostarts(const QString&) const", typeof(bool), typeof(string), environment);
 		}

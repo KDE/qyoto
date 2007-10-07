@@ -20,24 +20,24 @@ namespace Kimono {
 	///  The standard groups are defined below.
 	/// 
 	/// <li>
-	/// K3Icon.Desktop: Icons in the iconview of konqueror, kdesktop and similar apps.
+	/// KIconLoader.Desktop: Icons in the iconview of konqueror, kdesktop and similar apps.
 	/// </li>
 	/// 
 	/// <li>
-	/// K3Icon.Toolbar: Icons in toolbars.
+	/// KIconLoader.Toolbar: Icons in toolbars.
 	/// </li>
 	/// 
 	/// <li>
-	/// K3Icon.MainToolbar: Icons in the main toolbars.
+	/// KIconLoader.MainToolbar: Icons in the main toolbars.
 	/// </li>
 	/// 
 	/// <li>
-	/// K3Icon.Small: Various small (typical 16x16) places: titlebars, listviews
+	/// KIconLoader.Small: Various small (typical 16x16) places: titlebars, listviews
 	///  and menu entries.
 	/// </li>
 	/// 
 	/// <li>
-	/// K3Icon.Panel: Icons in kicker's panel
+	/// KIconLoader.Panel: Icons in kicker's panel
 	/// </li>
 	///  The icons are stored on disk in an icon theme or in a standalone
 	///  directory. The icon theme directories contain multiple sizes and/or
@@ -60,28 +60,74 @@ namespace Kimono {
 		static KIconLoader() {
 			staticInterceptor = new SmokeInvocation(typeof(KIconLoader), null);
 		}
-		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6,bool arg7); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QPixmap loadIcon(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5,QString* arg6); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4,const QStringList& arg5); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3,int arg4); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QPixmap loadMimeTypeIcon(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
-		// QMovie* loadMovie(const QString& arg1,KIconLoader::Group arg2,int arg3,QObject* arg4); >>>> NOT CONVERTED
-		// QMovie* loadMovie(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QMovie* loadMovie(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
-		// QString moviePath(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QString moviePath(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
-		// QStringList loadAnimated(const QString& arg1,KIconLoader::Group arg2,int arg3); >>>> NOT CONVERTED
-		// QStringList loadAnimated(const QString& arg1,KIconLoader::Group arg2); >>>> NOT CONVERTED
-		// QStringList queryIcons(int arg1,KIconLoader::Context arg2); >>>> NOT CONVERTED
-		// QStringList queryIconsByContext(int arg1,KIconLoader::Context arg2); >>>> NOT CONVERTED
-		// bool hasContext(KIconLoader::Context arg1); >>>> NOT CONVERTED
-		// int currentSize(KIconLoader::Group arg1); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Defines the context of the icon.
+		///      </remarks>		<short>    Defines the context of the icon.</short>
+		public enum Context {
+			Any = 0,
+			Action = 1,
+			Application = 2,
+			Device = 3,
+			FileSystem = 4,
+			MimeType = 5,
+			Animation = 6,
+			Category = 7,
+			Emblem = 8,
+			Emote = 9,
+			International = 10,
+			Place = 11,
+			StatusIcon = 12,
+		}
+		/// <remarks>
+		///  The type of the icon.
+		///      </remarks>		<short>    The type of the icon.</short>
+		public enum TypeOf {
+			Fixed = 0,
+			Scalable = 1,
+			Threshold = 2,
+		}
+		/// <remarks>
+		///  The type of a match.
+		///      </remarks>		<short>    The type of a match.</short>
+		public enum MatchType {
+			MatchExact = 0,
+			MatchBest = 1,
+		}
+		/// <remarks>
+		///  The group of the icon.
+		///      </remarks>		<short>    The group of the icon.</short>
+		public enum Group {
+			NoGroup = -1,
+			Desktop = 0,
+			FirstGroup = 0,
+			Toolbar = 1,
+			MainToolbar = 2,
+			Small = 3,
+			Panel = 4,
+			Dialog = 5,
+			LastGroup = 6,
+			User = 7,
+		}
+		/// <remarks>
+		///  These are the standard sizes for icons.
+		///      </remarks>		<short>    These are the standard sizes for icons.</short>
+		public enum StdSizes {
+			SizeSmall = 16,
+			SizeSmallMedium = 22,
+			SizeMedium = 32,
+			SizeLarge = 48,
+			SizeHuge = 64,
+			SizeEnormous = 128,
+		}
+		/// <remarks>
+		///  Defines the possible states of an icon.
+		///      </remarks>		<short>    Defines the possible states of an icon.</short>
+		public enum States {
+			DefaultState = 0,
+			ActiveState = 1,
+			DisabledState = 2,
+			LastState = 3,
+		}
 		// KIconTheme* theme(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs an iconloader.
@@ -143,7 +189,7 @@ namespace Kimono {
 		/// </param><param> name="group" The icon group. This will specify the size of and effects to
 		///  be applied to the icon.
 		/// </param><param> name="size" If nonzero, this overrides the size specified by <code>group.</code>
-		///              See K3Icon.StdSizes.
+		///              See KIconLoader.StdSizes.
 		/// </param><param> name="state" The icon state: <code>DefaultState</code>, <code>ActiveState</code> or
 		///  <code>DisabledState.</code> Depending on the user's preferences, the iconloader
 		///  may apply a visual effect to hint about its state.
@@ -157,6 +203,24 @@ namespace Kimono {
 		///          <code>canReturnNull.</code>
 		///      </return>
 		/// 		<short>    Loads an icon.</short>
+		public QPixmap LoadIcon(string name, KIconLoader.Group group, int size, int state, List<string> overlays, StringBuilder path_store, bool canReturnNull) {
+			return (QPixmap) interceptor.Invoke("loadIcon$$$$?$$", "loadIcon(const QString&, KIconLoader::Group, int, int, const QStringList&, QString*, bool) const", typeof(QPixmap), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state, typeof(List<string>), overlays, typeof(StringBuilder), path_store, typeof(bool), canReturnNull);
+		}
+		public QPixmap LoadIcon(string name, KIconLoader.Group group, int size, int state, List<string> overlays, StringBuilder path_store) {
+			return (QPixmap) interceptor.Invoke("loadIcon$$$$?$", "loadIcon(const QString&, KIconLoader::Group, int, int, const QStringList&, QString*) const", typeof(QPixmap), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state, typeof(List<string>), overlays, typeof(StringBuilder), path_store);
+		}
+		public QPixmap LoadIcon(string name, KIconLoader.Group group, int size, int state, List<string> overlays) {
+			return (QPixmap) interceptor.Invoke("loadIcon$$$$?", "loadIcon(const QString&, KIconLoader::Group, int, int, const QStringList&) const", typeof(QPixmap), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public QPixmap LoadIcon(string name, KIconLoader.Group group, int size, int state) {
+			return (QPixmap) interceptor.Invoke("loadIcon$$$$", "loadIcon(const QString&, KIconLoader::Group, int, int) const", typeof(QPixmap), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state);
+		}
+		public QPixmap LoadIcon(string name, KIconLoader.Group group, int size) {
+			return (QPixmap) interceptor.Invoke("loadIcon$$$", "loadIcon(const QString&, KIconLoader::Group, int) const", typeof(QPixmap), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size);
+		}
+		public QPixmap LoadIcon(string name, KIconLoader.Group group) {
+			return (QPixmap) interceptor.Invoke("loadIcon$$", "loadIcon(const QString&, KIconLoader::Group) const", typeof(QPixmap), typeof(string), name, typeof(KIconLoader.Group), group);
+		}
 		/// <remarks>
 		///  Loads an icon for a mimetype.
 		///  This is basically like loadIcon except that extra desktop themes are loaded if necessary.
@@ -164,7 +228,7 @@ namespace Kimono {
 		/// </param><param> name="group" The icon group. This will specify the size of and effects to
 		///  be applied to the icon.
 		/// </param><param> name="size" If nonzero, this overrides the size specified by <code>group.</code>
-		///              See K3Icon.StdSizes.
+		///              See KIconLoader.StdSizes.
 		/// </param><param> name="state" The icon state: <code>DefaultState</code>, <code>ActiveState</code> or
 		///  <code>DisabledState.</code> Depending on the user's preferences, the iconloader
 		///  may apply a visual effect to hint about its state.
@@ -176,6 +240,21 @@ namespace Kimono {
 		///  "unknown" pixmap is returned when no appropriate icon has been found.
 		///      </return>
 		/// 		<short>    Loads an icon for a mimetype.</short>
+		public QPixmap LoadMimeTypeIcon(string iconName, KIconLoader.Group group, int size, int state, List<string> overlays, StringBuilder path_store) {
+			return (QPixmap) interceptor.Invoke("loadMimeTypeIcon$$$$?$", "loadMimeTypeIcon(const QString&, KIconLoader::Group, int, int, const QStringList&, QString*) const", typeof(QPixmap), typeof(string), iconName, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state, typeof(List<string>), overlays, typeof(StringBuilder), path_store);
+		}
+		public QPixmap LoadMimeTypeIcon(string iconName, KIconLoader.Group group, int size, int state, List<string> overlays) {
+			return (QPixmap) interceptor.Invoke("loadMimeTypeIcon$$$$?", "loadMimeTypeIcon(const QString&, KIconLoader::Group, int, int, const QStringList&) const", typeof(QPixmap), typeof(string), iconName, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
+		}
+		public QPixmap LoadMimeTypeIcon(string iconName, KIconLoader.Group group, int size, int state) {
+			return (QPixmap) interceptor.Invoke("loadMimeTypeIcon$$$$", "loadMimeTypeIcon(const QString&, KIconLoader::Group, int, int) const", typeof(QPixmap), typeof(string), iconName, typeof(KIconLoader.Group), group, typeof(int), size, typeof(int), state);
+		}
+		public QPixmap LoadMimeTypeIcon(string iconName, KIconLoader.Group group, int size) {
+			return (QPixmap) interceptor.Invoke("loadMimeTypeIcon$$$", "loadMimeTypeIcon(const QString&, KIconLoader::Group, int) const", typeof(QPixmap), typeof(string), iconName, typeof(KIconLoader.Group), group, typeof(int), size);
+		}
+		public QPixmap LoadMimeTypeIcon(string iconName, KIconLoader.Group group) {
+			return (QPixmap) interceptor.Invoke("loadMimeTypeIcon$$", "loadMimeTypeIcon(const QString&, KIconLoader::Group) const", typeof(QPixmap), typeof(string), iconName, typeof(KIconLoader.Group), group);
+		}
 		/// <remarks>
 		///  Returns the path of an icon.
 		/// <param> name="name" The name of the icon, without extension. If an absolute
@@ -184,7 +263,7 @@ namespace Kimono {
 		/// </param><param> name="group_or_size" If positive, search icons whose size is
 		///  specified by the icon group <code>group_or_size.</code> If negative, search
 		///  icons whose size is - <code>group_or_size.</code>
-		///              See K3Icon.Group and K3Icon.StdSizes
+		///              See KIconLoader.Group and KIconLoader.StdSizes
 		/// </param><param> name="canReturnNull" Can return a null string? If not, a path to the
 		///                       "unknown" icon will be returned.
 		/// </param></remarks>		<return> the path of an icon, can be null or the "unknown" icon when
@@ -202,44 +281,68 @@ namespace Kimono {
 		/// <param> name="name" The name of the icon.
 		/// </param><param> name="group" The icon group. See loadIcon().
 		/// </param><param> name="size" Override the default size for <code>group.</code>
-		///              See K3Icon.StdSizes.
+		///              See KIconLoader.StdSizes.
 		/// </param><param> name="parent" The parent object of the returned QMovie.
 		/// </param></remarks>		<return> A QMovie object. Can be null if not found or not valid.
 		///          Ownership is passed to the caller.
 		///      </return>
 		/// 		<short>    Loads an animated icon.</short>
+		public QMovie LoadMovie(string name, KIconLoader.Group group, int size, QObject parent) {
+			return (QMovie) interceptor.Invoke("loadMovie$$$#", "loadMovie(const QString&, KIconLoader::Group, int, QObject*) const", typeof(QMovie), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size, typeof(QObject), parent);
+		}
+		public QMovie LoadMovie(string name, KIconLoader.Group group, int size) {
+			return (QMovie) interceptor.Invoke("loadMovie$$$", "loadMovie(const QString&, KIconLoader::Group, int) const", typeof(QMovie), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size);
+		}
+		public QMovie LoadMovie(string name, KIconLoader.Group group) {
+			return (QMovie) interceptor.Invoke("loadMovie$$", "loadMovie(const QString&, KIconLoader::Group) const", typeof(QMovie), typeof(string), name, typeof(KIconLoader.Group), group);
+		}
 		/// <remarks>
 		///  Returns the path to an animated icon.
 		/// <param> name="name" The name of the icon.
 		/// </param><param> name="group" The icon group. See loadIcon().
 		/// </param><param> name="size" Override the default size for <code>group.</code>
-		///              See K3Icon.StdSizes.
+		///              See KIconLoader.StdSizes.
 		/// </param></remarks>		<return> the full path to the movie, ready to be passed to QMovie's constructor.
 		///  Empty string if not found.
 		///      </return>
 		/// 		<short>    Returns the path to an animated icon.</short>
+		public string MoviePath(string name, KIconLoader.Group group, int size) {
+			return (string) interceptor.Invoke("moviePath$$$", "moviePath(const QString&, KIconLoader::Group, int) const", typeof(string), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size);
+		}
+		public string MoviePath(string name, KIconLoader.Group group) {
+			return (string) interceptor.Invoke("moviePath$$", "moviePath(const QString&, KIconLoader::Group) const", typeof(string), typeof(string), name, typeof(KIconLoader.Group), group);
+		}
 		/// <remarks>
 		///  Loads an animated icon as a series of still frames. If you want to load
 		///  a .mng animation as QMovie instead, please use loadMovie() instead.
 		/// <param> name="name" The name of the icon.
 		/// </param><param> name="group" The icon group. See loadIcon().
 		/// </param><param> name="size" Override the default size for <code>group.</code>
-		///              See K3Icon.StdSizes.
+		///              See KIconLoader.StdSizes.
 		/// </param></remarks>		<return> A List<string> containing the absolute path of all the frames
 		///  making up the animation.
 		///      </return>
 		/// 		<short>    Loads an animated icon as a series of still frames.</short>
+		public List<string> LoadAnimated(string name, KIconLoader.Group group, int size) {
+			return (List<string>) interceptor.Invoke("loadAnimated$$$", "loadAnimated(const QString&, KIconLoader::Group, int) const", typeof(List<string>), typeof(string), name, typeof(KIconLoader.Group), group, typeof(int), size);
+		}
+		public List<string> LoadAnimated(string name, KIconLoader.Group group) {
+			return (List<string>) interceptor.Invoke("loadAnimated$$", "loadAnimated(const QString&, KIconLoader::Group) const", typeof(List<string>), typeof(string), name, typeof(KIconLoader.Group), group);
+		}
 		/// <remarks>
 		///  Queries all available icons for a specific group, having a specific
 		///  context.
 		/// <param> name="group_or_size" If positive, search icons whose size is
 		///  specified by the icon group <code>group_or_size.</code> If negative, search
 		///  icons whose size is - <code>group_or_size.</code>
-		///              See K3Icon.Group and K3Icon.StdSizes
+		///              See KIconLoader.Group and KIconLoader.StdSizes
 		/// </param><param> name="context" The icon context.
 		/// </param></remarks>		<return> a list of all icons
 		///      </return>
 		/// 		<short>    Queries all available icons for a specific group, having a specific  context.</short>
+		public List<string> QueryIcons(int group_or_size, KIconLoader.Context context) {
+			return (List<string>) interceptor.Invoke("queryIcons$$", "queryIcons(int, KIconLoader::Context) const", typeof(List<string>), typeof(int), group_or_size, typeof(KIconLoader.Context), context);
+		}
 		public List<string> QueryIcons(int group_or_size) {
 			return (List<string>) interceptor.Invoke("queryIcons$", "queryIcons(int) const", typeof(List<string>), typeof(int), group_or_size);
 		}
@@ -248,18 +351,24 @@ namespace Kimono {
 		/// <param> name="group_or_size" The icon preferred group or size. If available
 		///  at this group or size, those icons will be returned, in other case,
 		///  icons of undefined size will be returned. Positive numbers are groups,
-		///  negative numbers are negated sizes. See K3Icon.Group and
-		///  K3Icon.StdSizes
+		///  negative numbers are negated sizes. See KIconLoader.Group and
+		///  KIconLoader.StdSizes
 		/// </param><param> name="context" The icon context.
 		/// </param></remarks>		<return> A List<string> containing the icon names
 		///  available for that context
 		///      </return>
 		/// 		<short>    Queries all available icons for a specific context.</short>
+		public List<string> QueryIconsByContext(int group_or_size, KIconLoader.Context context) {
+			return (List<string>) interceptor.Invoke("queryIconsByContext$$", "queryIconsByContext(int, KIconLoader::Context) const", typeof(List<string>), typeof(int), group_or_size, typeof(KIconLoader.Context), context);
+		}
 		public List<string> QueryIconsByContext(int group_or_size) {
 			return (List<string>) interceptor.Invoke("queryIconsByContext$", "queryIconsByContext(int) const", typeof(List<string>), typeof(int), group_or_size);
 		}
 		/// <remarks>
 		///      </remarks>		<short>   </short>
+		public bool HasContext(KIconLoader.Context context) {
+			return (bool) interceptor.Invoke("hasContext$", "hasContext(KIconLoader::Context) const", typeof(bool), typeof(KIconLoader.Context), context);
+		}
 		/// <remarks>
 		///  Returns a list of all icons (.png or .xpm extension) in the
 		///  given directory.
@@ -276,6 +385,9 @@ namespace Kimono {
 		/// </param></remarks>		<return> the current size for an icon group.
 		///      </return>
 		/// 		<short>    Returns the current size of the group.</short>
+		public int CurrentSize(KIconLoader.Group group) {
+			return (int) interceptor.Invoke("currentSize$", "currentSize(KIconLoader::Group) const", typeof(int), typeof(KIconLoader.Group), group);
+		}
 		/// <remarks>
 		///  Returns a pointer to the current theme. Can be used to query
 		///  available and default sizes for groups.

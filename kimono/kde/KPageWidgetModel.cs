@@ -92,8 +92,8 @@ namespace Kimono {
 			interceptor.Invoke("removePage#", "removePage(KPageWidgetItem*)", typeof(void), typeof(KPageWidgetItem), item);
 		}
 		/// <remarks>
-		///  These methods are reimplemented from QAsbtractItemModel.
-		///      </remarks>		<short>    These methods are reimplemented from QAsbtractItemModel.</short>
+		///  These methods are reimplemented from QAbstractItemModel.
+		///      </remarks>		<short>    These methods are reimplemented from QAbstractItemModel.</short>
 		[SmokeMethod("columnCount(const QModelIndex&) const")]
 		public override int ColumnCount(QModelIndex parent) {
 			return (int) interceptor.Invoke("columnCount#", "columnCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
@@ -119,8 +119,8 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("index(int, int, const QModelIndex&) const")]
 		public override QModelIndex Index(int row, int column, QModelIndex parent) {

@@ -41,6 +41,14 @@ namespace Kimono {
 		static KDirWatch() {
 			staticInterceptor = new SmokeInvocation(typeof(KDirWatch), null);
 		}
+		/// <remarks>
+		///  Available watch modes for directory monitoring
+		/// </remarks>		<short>    Available watch modes for directory monitoring </short>
+		public enum WatchMode {
+			WatchDirOnly = 0,
+			WatchFiles = 0x01,
+			WatchSubDirs = 0x02,
+		}
 		public enum Method {
 			FAM = 0,
 			INotify = 1,
@@ -63,21 +71,20 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Adds a directory to be watched.
-		///  The directory does not have to exist. When <code>watchFiles</code> is
-		///  false (the default), the signals dirty(), created(), deleted()
+		///  The directory does not have to exist. When <code>watchModes</code> is set to
+		///  WatchDirOnly (the default), the signals dirty(), created(), deleted()
 		///  can be emitted, all for the watched directory.
-		///  When <code>watchFiles</code> is true, all files in the watched directory
-		///  are watched for changes, too. Thus, the signals dirty(),
+		///  When <code>watchModes</code> is set to WatchFiles, all files in the watched
+		///  directory are watched for changes, too. Thus, the signals dirty(),
 		///  created(), deleted() can be emitted.
+		///  When <code>watchModes</code> is set to WatchSubDirs, all subdirs are watched using
+		///  the same flags specified in <code>watchModes</code> .
 		/// <param> name="path" the path to watch
-		/// </param><param> name="watchFiles" if true, the KDirWatch will also watch files - NOT IMPLEMENTED YET
-		/// </param><param> name="recursive" if true, all sub directories are also watched - NOT IMPLEMENTED YET
-		///     </param></remarks>		<short>    Adds a directory to be watched.</short>
-		public void AddDir(string path, bool watchFiles, bool recursive) {
-			interceptor.Invoke("addDir$$$", "addDir(const QString&, bool, bool)", typeof(void), typeof(string), path, typeof(bool), watchFiles, typeof(bool), recursive);
-		}
-		public void AddDir(string path, bool watchFiles) {
-			interceptor.Invoke("addDir$$", "addDir(const QString&, bool)", typeof(void), typeof(string), path, typeof(bool), watchFiles);
+		/// </param><param> name="watchModes" watch modes
+		/// </param> @sa  KDirWatch.WatchMode
+		///     </remarks>		<short>    Adds a directory to be watched.</short>
+		public void AddDir(string path, uint watchModes) {
+			interceptor.Invoke("addDir$$", "addDir(const QString&, KDirWatch::WatchModes)", typeof(void), typeof(string), path, typeof(uint), watchModes);
 		}
 		public void AddDir(string path) {
 			interceptor.Invoke("addDir$", "addDir(const QString&)", typeof(void), typeof(string), path);
@@ -96,7 +103,7 @@ namespace Kimono {
 		///     </return>
 		/// 		<short>    Returns the time the directory/file was last changed.</short>
 		public QDateTime Ctime(string path) {
-			return (QDateTime) interceptor.Invoke("ctime$", "ctime(const QString&)", typeof(QDateTime), typeof(string), path);
+			return (QDateTime) interceptor.Invoke("ctime$", "ctime(const QString&) const", typeof(QDateTime), typeof(string), path);
 		}
 		/// <remarks>
 		///  Removes a directory from the list of scanned directories.

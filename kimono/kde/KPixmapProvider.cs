@@ -25,7 +25,7 @@ namespace Kimono {
 		///  You may subclass this and return a pixmap of size <code>size</code> for <code>text.</code>
 		/// <param> name="text" the text that is associated with the pixmap
 		/// </param><param> name="size" the size of the icon in pixels, 0 for defaylt size.
-		///              See K3Icon.StdSize.
+		///              See KIconLoader.StdSize.
 		/// </param></remarks>		<return> the pixmap for the arguments, or null if there is none
 		///      </return>
 		/// 		<short>    You may subclass this and return a pixmap of size <code>size</code> for <code>text.</code></short>

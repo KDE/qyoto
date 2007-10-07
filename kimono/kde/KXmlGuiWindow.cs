@@ -88,10 +88,6 @@ namespace Kimono {
 		public new bool InitialGeometrySet {
 			get { return (bool) interceptor.Invoke("initialGeometrySet", "initialGeometrySet()", typeof(bool)); }
 		}
-		// void setupGUI(StandardWindowOptions arg1,const QString& arg2); >>>> NOT CONVERTED
-		// void setupGUI(StandardWindowOptions arg1); >>>> NOT CONVERTED
-		// void setupGUI(const QSize& arg1,StandardWindowOptions arg2,const QString& arg3); >>>> NOT CONVERTED
-		// void setupGUI(const QSize& arg1,StandardWindowOptions arg2); >>>> NOT CONVERTED
 		// QList<KXMLGUIClient*> childClients(); >>>> NOT CONVERTED
 		// KXMLGUIClient::StateChange getActionsToChangeForState(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
@@ -122,9 +118,9 @@ namespace Kimono {
 		///  for the composer windows "composer#".
 		///      </remarks>		<short>    Construct a main window.</short>
 		/// 		<see> http://doc.trolltech.com/3.2/qt.html#WidgetFlags-enum</see>
-		public KXmlGuiWindow(QWidget parent, int f) : this((Type) null) {
+		public KXmlGuiWindow(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KXmlGuiWindow#$", "KXmlGuiWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("KXmlGuiWindow#$", "KXmlGuiWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KXmlGuiWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -149,7 +145,7 @@ namespace Kimono {
 		///  Return <code>true</code> when the help menu is enabled
 		///      </remarks>		<short>    Return <code>true</code> when the help menu is enabled      </short>
 		public bool IsHelpMenuEnabled() {
-			return (bool) interceptor.Invoke("isHelpMenuEnabled", "isHelpMenuEnabled()", typeof(bool));
+			return (bool) interceptor.Invoke("isHelpMenuEnabled", "isHelpMenuEnabled() const", typeof(bool));
 		}
 		[SmokeMethod("guiFactory()")]
 		public virtual KXMLGUIFactory GuiFactory() {
@@ -196,6 +192,15 @@ namespace Kimono {
 		///  Typically this function replaces createGUI().
 		///      </remarks>		<short>    Configures the current windows and its actions in the typical KDE  fashion.</short>
 		/// 		<see> StandardWindowOptions</see>
+		public void SetupGUI(uint options, string xmlfile) {
+			interceptor.Invoke("setupGUI$$", "setupGUI(KXmlGuiWindow::StandardWindowOptions, const QString&)", typeof(void), typeof(uint), options, typeof(string), xmlfile);
+		}
+		public void SetupGUI(uint options) {
+			interceptor.Invoke("setupGUI$", "setupGUI(KXmlGuiWindow::StandardWindowOptions)", typeof(void), typeof(uint), options);
+		}
+		public void SetupGUI() {
+			interceptor.Invoke("setupGUI", "setupGUI()", typeof(void));
+		}
 		/// <remarks>
 		///  Configures the current windows and its actions in the typical KDE
 		///  fashion.  The options are all enabled by default but can be turned
@@ -204,6 +209,12 @@ namespace Kimono {
 		///  Typically this function replaces createGUI().
 		/// </remarks>		<short>    Configures the current windows and its actions in the typical KDE  fashion.</short>
 		/// 		<see> StandardWindowOptions</see>
+		public void SetupGUI(QSize defaultSize, uint options, string xmlfile) {
+			interceptor.Invoke("setupGUI#$$", "setupGUI(const QSize&, KXmlGuiWindow::StandardWindowOptions, const QString&)", typeof(void), typeof(QSize), defaultSize, typeof(uint), options, typeof(string), xmlfile);
+		}
+		public void SetupGUI(QSize defaultSize, uint options) {
+			interceptor.Invoke("setupGUI#$", "setupGUI(const QSize&, KXmlGuiWindow::StandardWindowOptions)", typeof(void), typeof(QSize), defaultSize, typeof(uint), options);
+		}
 		public void SetupGUI(QSize defaultSize) {
 			interceptor.Invoke("setupGUI#", "setupGUI(const QSize&)", typeof(void), typeof(QSize), defaultSize);
 		}
@@ -523,7 +534,7 @@ namespace Kimono {
 		///  menu file whose contents depend on the mimetype of the file that
 		///  is selected, then you can achieve this using ActionLists. It
 		///  works as follows:
-		///  In your xxxui.rc file ( the one that you set in setXMLFile()
+		///  In your xxxui.rc file ( the one that you set in setXMLFile() / pass to setupGUI()
 		///  ), you put an <p>\<ActionList name="xxx"\></p> tag.  E.g.
 		///  <pre>
 		///  <kpartgui name="xxx_part" version="1">
@@ -591,6 +602,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Sets the name of the rc file containing the XML for the part.
 		///  Call this in the Part-inherited class constructor.
+		///  If you're writing usual application, use KXmlGuiWindow.SetupGUI() with non-default arguments
 		/// <param> name="file" Either an absolute path for the file, or simply the
 		///              filename, which will then be assumed to be installed
 		///              in the "data" resource, under a directory named like

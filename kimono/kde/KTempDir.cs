@@ -69,6 +69,14 @@ namespace Kimono {
 			interceptor.Invoke("setAutoRemove$", "setAutoRemove(bool)", typeof(void), typeof(bool), autoRemove);
 		}
 		/// <remarks>
+		/// </remarks>		<return> whether auto remove is active
+		/// </return>
+		/// 		<short>   </short>
+		/// 		<see> setAutoRemove</see>
+		public bool AutoRemove() {
+			return (bool) interceptor.Invoke("autoRemove", "autoRemove() const", typeof(bool));
+		}
+		/// <remarks>
 		///  Returns the status of the directory creation  based on errno.
 		///  (see errno.h)
 		///  @note You should check the status after object creation to check

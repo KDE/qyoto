@@ -3,7 +3,6 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Collections.Generic;
 
 	/// <remarks>
 	///  A Widget for horizontal and vertical tabs.
@@ -21,10 +20,6 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KMultiTabBar), this);
 		}
-		public enum KMultiTabBarMode {
-			Horizontal = 0,
-			Vertical = 1,
-		}
 		public enum KMultiTabBarPosition {
 			Left = 0,
 			Right = 1,
@@ -33,24 +28,21 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  The list of available styles for KMultiTabBar
-		///    - VSNET - Visual Studio .Net like (only show the text of active tabs
-		///    - KDEV3 - Kdevelop 3 like (always show the text)
-		///    - KONQSBC - konqy's classic sidebar style (unthemed) (currently disabled)
+		///    - VSNET - Visual Studio .Net like, always shows icon, only show the text of active tabs
+		///    - KDEV3ICON - Kdevelop 3 like, always shows the text and icons
 		///      </remarks>		<short>    The list of available styles for KMultiTabBar    - VSNET - Visual Studio .</short>
 		public enum KMultiTabBarStyle {
 			VSNET = 0,
-			KDEV3 = 1,
-			KONQSBC = 2,
-			KDEV3ICON = 3,
+			KDEV3ICON = 2,
 			STYLELAST = 0xffff,
 		}
-		public KMultiTabBar(KMultiTabBar.KMultiTabBarMode bm, QWidget parent) : this((Type) null) {
+		public KMultiTabBar(KMultiTabBar.KMultiTabBarPosition pos, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KMultiTabBar$#", "KMultiTabBar(KMultiTabBar::KMultiTabBarMode, QWidget*)", typeof(void), typeof(KMultiTabBar.KMultiTabBarMode), bm, typeof(QWidget), parent);
+			interceptor.Invoke("KMultiTabBar$#", "KMultiTabBar(KMultiTabBar::KMultiTabBarPosition, QWidget*)", typeof(void), typeof(KMultiTabBar.KMultiTabBarPosition), pos, typeof(QWidget), parent);
 		}
-		public KMultiTabBar(KMultiTabBar.KMultiTabBarMode bm) : this((Type) null) {
+		public KMultiTabBar(KMultiTabBar.KMultiTabBarPosition pos) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KMultiTabBar$", "KMultiTabBar(KMultiTabBar::KMultiTabBarMode)", typeof(void), typeof(KMultiTabBar.KMultiTabBarMode), bm);
+			interceptor.Invoke("KMultiTabBar$", "KMultiTabBar(KMultiTabBar::KMultiTabBarPosition)", typeof(void), typeof(KMultiTabBar.KMultiTabBarPosition), pos);
 		}
 		/// <remarks>
 		///  append  a new button to the button area. The button can later on be accessed with button(ID)
@@ -154,31 +146,6 @@ namespace Kimono {
 		/// 		<short>    get the display style of the tabs </short>
 		public KMultiTabBar.KMultiTabBarStyle TabStyle() {
 			return (KMultiTabBar.KMultiTabBarStyle) interceptor.Invoke("tabStyle", "tabStyle() const", typeof(KMultiTabBar.KMultiTabBarStyle));
-		}
-		/// <remarks>
-		/// </remarks>		<return> the list of tabs
-		///  be careful, don't delete the tabs yourself
-		///      </return>
-		/// 		<short>   </short>
-		public List<KMultiTabBarTab> Tabs() {
-			return (List<KMultiTabBarTab>) interceptor.Invoke("tabs", "tabs() const", typeof(List<KMultiTabBarTab>));
-		}
-		/// <remarks>
-		/// </remarks>		<return> the list of buttons
-		///  be careful, don't delete the buttons yourself
-		///      </return>
-		/// 		<short>   </short>
-		public List<KMultiTabBarButton> Buttons() {
-			return (List<KMultiTabBarButton>) interceptor.Invoke("buttons", "buttons() const", typeof(List<KMultiTabBarButton>));
-		}
-		/// <remarks>
-		///  might vanish, not sure yet
-		///      </remarks>		<short>    might vanish, not sure yet      </short>
-		public void ShowActiveTabTexts(bool show) {
-			interceptor.Invoke("showActiveTabTexts$", "showActiveTabTexts(bool)", typeof(void), typeof(bool), show);
-		}
-		public void ShowActiveTabTexts() {
-			interceptor.Invoke("showActiveTabTexts", "showActiveTabTexts()", typeof(void));
 		}
 		[SmokeMethod("fontChange(const QFont&)")]
 		protected override void FontChange(QFont arg1) {

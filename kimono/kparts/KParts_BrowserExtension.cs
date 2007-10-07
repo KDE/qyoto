@@ -11,10 +11,10 @@ namespace Kimono {
 	///  The Browser Extension is an extension (yes, no kidding) to
 	///  KParts.ReadOnlyPart, which allows a better integration of parts
 	///  with browsers (in particular Konqueror).
-	///  Remember that ReadOnlyPart only has openUrl(KUrl), with no other settings.
+	///  Remember that ReadOnlyPart only has openUrl(KUrl) and a few arguments() but not much more.
 	///  For full-fledged browsing, we need much more than that, including
-	///  many arguments about how to open this URL (see URLArgs), allowing
-	///  parts to save and restore their data into the back/forward history,
+	///  enabling/disabling of standard actions (print, copy, paste...),
+	///  allowing parts to save and restore their data into the back/forward history,
 	///  allowing parts to control the location bar URL, to requests URLs
 	///  to be opened by the hosting browser, etc.
 	///  The part developer needs to define its own class derived from BrowserExtension,
@@ -116,10 +116,9 @@ namespace Kimono {
 		static BrowserExtension() {
 			staticInterceptor = new SmokeInvocation(typeof(BrowserExtension), null);
 		}
-		// void createNewWindow(const KUrl& arg1,const KParts::URLArgs& arg2,const KParts::WindowArgs& arg3,KParts::ReadOnlyPart*& arg4); >>>> NOT CONVERTED
-		// void popupMenu(KXMLGUIClient* arg1,const QPoint& arg2,const KFileItemList& arg3,const KParts::URLArgs& arg4,KParts::BrowserExtension::PopupFlags arg5); >>>> NOT CONVERTED
-		// void popupMenu(KXMLGUIClient* arg1,const QPoint& arg2,const KUrl& arg3,const KParts::URLArgs& arg4,KParts::BrowserExtension::PopupFlags arg5,mode_t arg6); >>>> NOT CONVERTED
-		// void popupMenu(KXMLGUIClient* arg1,const QPoint& arg2,const KUrl& arg3,const KParts::URLArgs& arg4,KParts::BrowserExtension::PopupFlags arg5); >>>> NOT CONVERTED
+		// void createNewWindow(const KUrl& arg1,const KParts::OpenUrlArguments& arg2,const KParts::BrowserArguments& arg3,const KParts::WindowArgs& arg4,KParts::ReadOnlyPart** arg5); >>>> NOT CONVERTED
+		// void popupMenu(const QPoint& arg1,const KFileItemList& arg2,const KParts::OpenUrlArguments& arg3,const KParts::BrowserArguments& arg4,KParts::BrowserExtension::PopupFlags arg5,const KParts::BrowserExtension::ActionGroupMap& arg6); >>>> NOT CONVERTED
+		// void popupMenu(const QPoint& arg1,const KUrl& arg2,mode_t arg3,const KParts::OpenUrlArguments& arg4,const KParts::BrowserArguments& arg5,KParts::BrowserExtension::PopupFlags arg6,const KParts::BrowserExtension::ActionGroupMap& arg7); >>>> NOT CONVERTED
 		// KParts::BrowserExtension::ActionSlotMap actionSlotMap(); >>>> NOT CONVERTED
 		// KParts::BrowserExtension::ActionSlotMap* actionSlotMapPtr(); >>>> NOT CONVERTED
 		/// <remarks>
@@ -134,18 +133,18 @@ namespace Kimono {
 		///  Set the parameters to use for opening the next URL.
 		///  This is called by the "hosting" application, to pass parameters to the part.
 		/// </remarks>		<short>    Set the parameters to use for opening the next URL.</short>
-		/// 		<see> URLArgs</see>
-		[SmokeMethod("setUrlArgs(const KParts::URLArgs&)")]
-		public virtual void SetUrlArgs(KParts.URLArgs args) {
-			interceptor.Invoke("setUrlArgs#", "setUrlArgs(const KParts::URLArgs&)", typeof(void), typeof(KParts.URLArgs), args);
+		/// 		<see> BrowserArguments</see>
+		[SmokeMethod("setBrowserArguments(const KParts::BrowserArguments&)")]
+		public virtual void SetBrowserArguments(KParts.BrowserArguments args) {
+			interceptor.Invoke("setBrowserArguments#", "setBrowserArguments(const KParts::BrowserArguments&)", typeof(void), typeof(KParts.BrowserArguments), args);
 		}
 		/// <remarks>
 		///  Retrieve the set of parameters to use for opening the URL
-		///  (this must be called from openURL() in the part).
-		/// </remarks>		<short>    Retrieve the set of parameters to use for opening the URL  (this must be called from openURL() in the part).</short>
-		/// 		<see> URLArgs</see>
-		public KParts.URLArgs UrlArgs() {
-			return (KParts.URLArgs) interceptor.Invoke("urlArgs", "urlArgs() const", typeof(KParts.URLArgs));
+		///  (this must be called from openUrl() in the part).
+		/// </remarks>		<short>    Retrieve the set of parameters to use for opening the URL  (this must be called from openUrl() in the part).</short>
+		/// 		<see> BrowserArguments</see>
+		public KParts.BrowserArguments BrowserArguments() {
+			return (KParts.BrowserArguments) interceptor.Invoke("browserArguments", "browserArguments() const", typeof(KParts.BrowserArguments));
 		}
 		/// <remarks>
 		///  Returns the current x offset.
@@ -236,8 +235,11 @@ namespace Kimono {
 		///  appropriate fields in the <code>args</code> structure.
 		///  Hosts should not connect to this signal but to openUrlRequestDelayed().
 		///    </remarks>		<short>    Asks the host (browser) to open <code>url.</code></short>
-		public void OpenUrlRequest(KUrl url, KParts.URLArgs args) {
-			interceptor.Invoke("openUrlRequest##", "openUrlRequest(const KUrl&, const KParts::URLArgs&)", typeof(void), typeof(KUrl), url, typeof(KParts.URLArgs), args);
+		public void OpenUrlRequest(KUrl url, KParts.OpenUrlArguments arguments, KParts.BrowserArguments browserArguments) {
+			interceptor.Invoke("openUrlRequest###", "openUrlRequest(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments, typeof(KParts.BrowserArguments), browserArguments);
+		}
+		public void OpenUrlRequest(KUrl url, KParts.OpenUrlArguments arguments) {
+			interceptor.Invoke("openUrlRequest##", "openUrlRequest(const KUrl&, const KParts::OpenUrlArguments&)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments);
 		}
 		public void OpenUrlRequest(KUrl url) {
 			interceptor.Invoke("openUrlRequest#", "openUrlRequest(const KUrl&)", typeof(void), typeof(KUrl), url);
@@ -248,11 +250,8 @@ namespace Kimono {
 		///  being destroyed. Parts should never use this signal, hosts should only connect
 		///  to this signal.
 		///    </remarks>		<short>    This signal is emitted when openUrlRequest() is called, after a 0-seconds timer.</short>
-		public void OpenUrlRequestDelayed(KUrl url, KParts.URLArgs args) {
-			interceptor.Invoke("openUrlRequestDelayed##", "openUrlRequestDelayed(const KUrl&, const KParts::URLArgs&)", typeof(void), typeof(KUrl), url, typeof(KParts.URLArgs), args);
-		}
-		public void OpenUrlRequestDelayed(KUrl url) {
-			interceptor.Invoke("openUrlRequestDelayed#", "openUrlRequestDelayed(const KUrl&)", typeof(void), typeof(KUrl), url);
+		public void OpenUrlRequestDelayed(KUrl url, KParts.OpenUrlArguments arguments, KParts.BrowserArguments browserArguments) {
+			interceptor.Invoke("openUrlRequestDelayed###", "openUrlRequestDelayed(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments, typeof(KParts.BrowserArguments), browserArguments);
 		}
 		/// <remarks>
 		///  Tells the hosting browser that the part opened a new URL (which can be
@@ -284,24 +283,28 @@ namespace Kimono {
 			interceptor.Invoke("setIconUrl#", "setIconUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
 		}
 		/// <remarks>
-		///  Asks the hosting browser to open a new window for the given <code>url.</code>
-		///  The <code>args</code> argument is optional additional information for the
-		///  browser,
-		/// </remarks>		<short>    Asks the hosting browser to open a new window for the given <code>url.</code></short>
-		/// 		<see> URLArgs</see>
-		public void CreateNewWindow(KUrl url, KParts.URLArgs args) {
-			interceptor.Invoke("createNewWindow##", "createNewWindow(const KUrl&, const KParts::URLArgs&)", typeof(void), typeof(KUrl), url, typeof(KParts.URLArgs), args);
+		///  Asks the hosting browser to open a new window for the given <code>url</code>
+		///  and return a reference to the content part.
+		///  <code>arguments</code> is optional additional information about how to open the url,
+		///  <code>browserArguments</code> is optional additional information for web browsers,
+		///  The request for a pointer to the part is only fulfilled/processed
+		///  if the mimeType is set in the <code>browserArguments.</code>
+		///  (otherwise the request cannot be processed synchronously).
+		///    </remarks>		<short>    Asks the hosting browser to open a new window for the given <code>url</code>  and return a reference to the content part.</short>
+		/// 		<see> OpenUrlArguments</see>
+		/// 		<see> BrowserArguments</see>
+		public void CreateNewWindow(KUrl url, KParts.OpenUrlArguments arguments, KParts.BrowserArguments browserArguments, KParts.WindowArgs windowArgs) {
+			interceptor.Invoke("createNewWindow####", "createNewWindow(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&, const KParts::WindowArgs&)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments, typeof(KParts.BrowserArguments), browserArguments, typeof(KParts.WindowArgs), windowArgs);
+		}
+		public void CreateNewWindow(KUrl url, KParts.OpenUrlArguments arguments, KParts.BrowserArguments browserArguments) {
+			interceptor.Invoke("createNewWindow###", "createNewWindow(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments, typeof(KParts.BrowserArguments), browserArguments);
+		}
+		public void CreateNewWindow(KUrl url, KParts.OpenUrlArguments arguments) {
+			interceptor.Invoke("createNewWindow##", "createNewWindow(const KUrl&, const KParts::OpenUrlArguments&)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments);
 		}
 		public void CreateNewWindow(KUrl url) {
 			interceptor.Invoke("createNewWindow#", "createNewWindow(const KUrl&)", typeof(void), typeof(KUrl), url);
 		}
-		/// <remarks>
-		///  Asks the hosting browser to open a new window for the given <code>url</code>
-		///  and return a reference to the content part.
-		///  The request for a reference to the part is only fulfilled/processed
-		///  if the serviceType is set in the <code>args</code> . (otherwise the request cannot be
-		///  processed synchronously.
-		///    </remarks>		<short>    Asks the hosting browser to open a new window for the given <code>url</code>  and return a reference to the content part.</short>
 		/// <remarks>
 		///  Since the part emits the jobid in the started() signal,
 		///  progress information is automatically displayed.
@@ -322,55 +325,53 @@ namespace Kimono {
 			interceptor.Invoke("infoMessage$", "infoMessage(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		/// <remarks>
-		///  Emit this to make the browser show a standard popup menu
-		///  at the point <code>global</code> for the files <code>items.</code>
-		///    </remarks>		<short>    Emit this to make the browser show a standard popup menu  at the point <code>global</code> for the files <code>items.</code></short>
+		///  Emit this to make the browser show a standard popup menu for the files <code>items.</code>
+		/// <param> name="global" global coordinates where the popup should be shown
+		/// </param><param> name="items" list of file items which the popup applies to
+		/// </param><param> name="args" OpenUrlArguments, mostly for metadata here
+		/// </param><param> name="browserArguments" BrowserArguments, mostly for referrer
+		/// </param><param> name="flags" enables/disables certain builtin actions in the popupmenu
+		/// </param><param> name="actionGroups" named groups of actions which should be inserted into the popup, see ActionGroupMap
+		///    </param></remarks>		<short>    Emit this to make the browser show a standard popup menu for the files <code>items.</code></short>
+		public void PopupMenu(QPoint global, List<KFileItem> items, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs, uint flags) {
+			interceptor.Invoke("popupMenu####$", "popupMenu(const QPoint&, const KFileItemList&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&, KParts::BrowserExtension::PopupFlags)", typeof(void), typeof(QPoint), global, typeof(List<KFileItem>), items, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs, typeof(uint), flags);
+		}
+		public void PopupMenu(QPoint global, List<KFileItem> items, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs) {
+			interceptor.Invoke("popupMenu####", "popupMenu(const QPoint&, const KFileItemList&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(void), typeof(QPoint), global, typeof(List<KFileItem>), items, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs);
+		}
+		public void PopupMenu(QPoint global, List<KFileItem> items, KParts.OpenUrlArguments args) {
+			interceptor.Invoke("popupMenu###", "popupMenu(const QPoint&, const KFileItemList&, const KParts::OpenUrlArguments&)", typeof(void), typeof(QPoint), global, typeof(List<KFileItem>), items, typeof(KParts.OpenUrlArguments), args);
+		}
 		public void PopupMenu(QPoint global, List<KFileItem> items) {
 			interceptor.Invoke("popupMenu##", "popupMenu(const QPoint&, const KFileItemList&)", typeof(void), typeof(QPoint), global, typeof(List<KFileItem>), items);
 		}
 		/// <remarks>
-		///  Emit this to make the browser show a standard popup menu
-		///  at the point <code>global</code> for the files <code>items.</code>
-		///  The GUI described by <code>client</code> is being merged with the popupmenu of the host
-		///    </remarks>		<short>    Emit this to make the browser show a standard popup menu  at the point <code>global</code> for the files <code>items.</code></short>
-		public void PopupMenu(KXMLGUIClient client, QPoint global, List<KFileItem> items) {
-			interceptor.Invoke("popupMenu###", "popupMenu(KXMLGUIClient*, const QPoint&, const KFileItemList&)", typeof(void), typeof(KXMLGUIClient), client, typeof(QPoint), global, typeof(List<KFileItem>), items);
+		///  Emit this to make the browser show a standard popup menu for the given <code>url.</code>
+		///  Give as much information about this URL as possible,
+		///  like <code>args.mimeType</code> and the file type <code>mode</code>
+		/// <param> name="global" global coordinates where the popup should be shown
+		/// </param><param> name="url" the URL this popup applies to
+		/// </param><param> name="mode" the file type of the url (S_IFREG, S_IFDIR...)
+		/// </param><param> name="args" OpenUrlArguments, set the mimetype of the URL using setMimeType()
+		/// </param><param> name="browserArguments" BrowserArguments, mostly for referrer
+		/// </param><param> name="flags" enables/disables certain builtin actions in the popupmenu
+		/// </param><param> name="actionGroups" named groups of actions which should be inserted into the popup, see ActionGroupMap
+		///    </param></remarks>		<short>    Emit this to make the browser show a standard popup menu for the given <code>url.</code></short>
+		public void PopupMenu(QPoint global, KUrl url, long mode, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs, uint flags) {
+			interceptor.Invoke("popupMenu##$##$", "popupMenu(const QPoint&, const KUrl&, mode_t, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&, KParts::BrowserExtension::PopupFlags)", typeof(void), typeof(QPoint), global, typeof(KUrl), url, typeof(long), mode, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs, typeof(uint), flags);
 		}
-		/// <remarks>
-		///  Emit this to make the browser show a standard popup menu
-		///  at the point <code>global</code> for the given <code>url.</code>
-		///  Give as much information
-		///  about this URL as possible, like the <code>mimeType</code> and the file type
-		///  (<code>mode</code>: S_IFREG, S_IFDIR...)
-		///    </remarks>		<short>    Emit this to make the browser show a standard popup menu  at the point <code>global</code> for the given <code>url.</code></short>
-		public void PopupMenu(QPoint global, KUrl url, string mimeType, long mode) {
-			interceptor.Invoke("popupMenu##$$", "popupMenu(const QPoint&, const KUrl&, const QString&, mode_t)", typeof(void), typeof(QPoint), global, typeof(KUrl), url, typeof(string), mimeType, typeof(long), mode);
+		public void PopupMenu(QPoint global, KUrl url, long mode, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs) {
+			interceptor.Invoke("popupMenu##$##", "popupMenu(const QPoint&, const KUrl&, mode_t, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(void), typeof(QPoint), global, typeof(KUrl), url, typeof(long), mode, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs);
 		}
-		public void PopupMenu(QPoint global, KUrl url, string mimeType) {
-			interceptor.Invoke("popupMenu##$", "popupMenu(const QPoint&, const KUrl&, const QString&)", typeof(void), typeof(QPoint), global, typeof(KUrl), url, typeof(string), mimeType);
+		public void PopupMenu(QPoint global, KUrl url, long mode, KParts.OpenUrlArguments args) {
+			interceptor.Invoke("popupMenu##$#", "popupMenu(const QPoint&, const KUrl&, mode_t, const KParts::OpenUrlArguments&)", typeof(void), typeof(QPoint), global, typeof(KUrl), url, typeof(long), mode, typeof(KParts.OpenUrlArguments), args);
 		}
-		/// <remarks>
-		///  Emit this to make the browser show a standard popup menu
-		///  at the point <code>global</code> for the given <code>url.</code>
-		///  Give as much information
-		///  about this URL as possible, like the <code>mimeType</code> and the file type
-		///  (<code>mode</code>: S_IFREG, S_IFDIR...)
-		///  The GUI described by <code>client</code> is being merged with the popupmenu of the host
-		///    </remarks>		<short>    Emit this to make the browser show a standard popup menu  at the point <code>global</code> for the given <code>url.</code></short>
-		public void PopupMenu(KXMLGUIClient client, QPoint global, KUrl url, string mimeType, long mode) {
-			interceptor.Invoke("popupMenu###$$", "popupMenu(KXMLGUIClient*, const QPoint&, const KUrl&, const QString&, mode_t)", typeof(void), typeof(KXMLGUIClient), client, typeof(QPoint), global, typeof(KUrl), url, typeof(string), mimeType, typeof(long), mode);
+		public void PopupMenu(QPoint global, KUrl url, long mode) {
+			interceptor.Invoke("popupMenu##$", "popupMenu(const QPoint&, const KUrl&, mode_t)", typeof(void), typeof(QPoint), global, typeof(KUrl), url, typeof(long), mode);
 		}
-		public void PopupMenu(KXMLGUIClient client, QPoint global, KUrl url, string mimeType) {
-			interceptor.Invoke("popupMenu###$", "popupMenu(KXMLGUIClient*, const QPoint&, const KUrl&, const QString&)", typeof(void), typeof(KXMLGUIClient), client, typeof(QPoint), global, typeof(KUrl), url, typeof(string), mimeType);
+		public void PopupMenu(QPoint global, KUrl url) {
+			interceptor.Invoke("popupMenu##", "popupMenu(const QPoint&, const KUrl&)", typeof(void), typeof(QPoint), global, typeof(KUrl), url);
 		}
-		/// <remarks>
-		///  Emit this to make the browser show a standard popup menu
-		///  at the point <code>global</code> for the given <code>url.</code>
-		///  Give as much information
-		///  about this URL as possible, like <code>args.mimeType</code> and the file type
-		///  (<code>mode</code>: S_IFREG, S_IFDIR...)
-		///  The GUI described by <code>client</code> is being merged with the popupmenu of the host
-		///    </remarks>		<short>    Emit this to make the browser show a standard popup menu  at the point <code>global</code> for the given <code>url.</code></short>
 		/// <remarks>
 		///  Inform the hosting application about the current selection.
 		///  Used when a set of files/URLs is selected (with full information
@@ -398,7 +399,7 @@ namespace Kimono {
 		///  Used when the mouse is on an URL.
 		///    </remarks>		<short>    Inform the hosting application that the user moved the mouse over an item.</short>
 		public void MouseOverInfo(KFileItem item) {
-			interceptor.Invoke("mouseOverInfo#", "mouseOverInfo(const KFileItem*)", typeof(void), typeof(KFileItem), item);
+			interceptor.Invoke("mouseOverInfo#", "mouseOverInfo(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
 		/// <remarks>
 		///  Ask the hosting application to add a new HTML (aka Mozilla/Netscape)

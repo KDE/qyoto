@@ -111,7 +111,7 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Get one of the predefined "basic" settings.</short>
 		public string GetSetting(KEMailSettings.Setting s) {
-			return (string) interceptor.Invoke("getSetting$", "getSetting(KEMailSettings::Setting)", typeof(string), typeof(KEMailSettings.Setting), s);
+			return (string) interceptor.Invoke("getSetting$", "getSetting(KEMailSettings::Setting) const", typeof(string), typeof(KEMailSettings.Setting), s);
 		}
 		/// <remarks>
 		///  Set one of the predefined "basic" settings.

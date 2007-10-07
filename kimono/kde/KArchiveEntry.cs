@@ -86,8 +86,8 @@ namespace Kimono {
 		/// </remarks>		<return> the symlink, or string()
 		///      </return>
 		/// 		<short>    Symlink if there is one.</short>
-		public string Symlink() {
-			return (string) interceptor.Invoke("symlink", "symlink() const", typeof(string));
+		public string SymLinkTarget() {
+			return (string) interceptor.Invoke("symLinkTarget", "symLinkTarget() const", typeof(string));
 		}
 		/// <remarks>
 		///  Checks whether the entry is a file.

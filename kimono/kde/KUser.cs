@@ -30,10 +30,16 @@ namespace Kimono {
 			UseEffectiveUID = 0,
 			UseRealUserID = 1,
 		}
-		// KUser* KUser(uid_t arg1); >>>> NOT CONVERTED
+		public enum UserProperty {
+			FullName = 0,
+			RoomNumber = 1,
+			WorkPhone = 2,
+			HomePhone = 3,
+		}
+		// KUser* KUser(K_UID arg1); >>>> NOT CONVERTED
 		// KUser* KUser(const passwd* arg1); >>>> NOT CONVERTED
-		// uid_t uid(); >>>> NOT CONVERTED
-		// gid_t gid(); >>>> NOT CONVERTED
+		// K_UID uid(); >>>> NOT CONVERTED
+		// K_GID gid(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates an object that contains information about the current user.
 		///  (as returned by getuid(2) or geteuid(2), taking $LOGNAME/$USER into
@@ -119,41 +125,6 @@ namespace Kimono {
 			return (string) interceptor.Invoke("loginName", "loginName() const", typeof(string));
 		}
 		/// <remarks>
-		///  The full name of the user.
-		/// </remarks>		<return> the full name of the user or string() if user is invalid
-		///    </return>
-		/// 		<short>    The full name of the user.</short>
-		public string FullName() {
-			return (string) interceptor.Invoke("fullName", "fullName() const", typeof(string));
-		}
-		/// <remarks>
-		///  The user's room number.
-		/// </remarks>		<return> the room number of the user or string() if not set or the
-		///          user is invalid
-		///    </return>
-		/// 		<short>    The user's room number.</short>
-		public string RoomNumber() {
-			return (string) interceptor.Invoke("roomNumber", "roomNumber() const", typeof(string));
-		}
-		/// <remarks>
-		///  The user's work phone.
-		/// </remarks>		<return> the work phone of the user or string() if not set or the
-		///          user is invalid
-		///    </return>
-		/// 		<short>    The user's work phone.</short>
-		public string WorkPhone() {
-			return (string) interceptor.Invoke("workPhone", "workPhone() const", typeof(string));
-		}
-		/// <remarks>
-		///  The user's home phone.
-		/// </remarks>		<return> the home phone of the user or string() if not set or the
-		///          user is invalid
-		///    </return>
-		/// 		<short>    The user's home phone.</short>
-		public string HomePhone() {
-			return (string) interceptor.Invoke("homePhone", "homePhone() const", typeof(string));
-		}
-		/// <remarks>
 		///  The path to the user's home directory.
 		/// </remarks>		<return> the home directory of the user or string() if the
 		///          user is invalid
@@ -161,6 +132,15 @@ namespace Kimono {
 		/// 		<short>    The path to the user's home directory.</short>
 		public string HomeDir() {
 			return (string) interceptor.Invoke("homeDir", "homeDir() const", typeof(string));
+		}
+		/// <remarks>
+		///  The path to the user's face file.
+		/// </remarks>		<return> the path to the user's face file or string() if no
+		///          face has been set
+		///    </return>
+		/// 		<short>    The path to the user's face file.</short>
+		public string FaceIconPath() {
+			return (string) interceptor.Invoke("faceIconPath", "faceIconPath() const", typeof(string));
 		}
 		/// <remarks>
 		///  The path to the user's login shell.
@@ -186,6 +166,16 @@ namespace Kimono {
 		/// 		<short>    Returns all group names of the user </short>
 		public List<string> GroupNames() {
 			return (List<string>) interceptor.Invoke("groupNames", "groupNames() const", typeof(List<string>));
+		}
+		/// <remarks>
+		///  Returns an extended property.
+		///  Under Windows, <code>RoomNumber</code>, <code>WorkPhone</code> and <code>HomePhone</code> are unsopported.
+		/// </remarks>		<return> a QVariant with the value of the property or an invalid QVariant,
+		///          if the property is not set
+		///    </return>
+		/// 		<short>    Returns an extended property.</short>
+		public QVariant Property(KUser.UserProperty which) {
+			return (QVariant) interceptor.Invoke("property$", "property(KUser::UserProperty) const", typeof(QVariant), typeof(KUser.UserProperty), which);
 		}
 		~KUser() {
 			interceptor.Invoke("~KUser", "~KUser()", typeof(void));

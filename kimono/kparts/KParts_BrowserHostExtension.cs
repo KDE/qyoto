@@ -53,11 +53,11 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Opens the given url in a hosted child frame. The frame name is specified in the
-		///  frameName variable in the urlArgs argument structure (see KParts.URLArgs ) .
+		///  frameName variable in the <code>browserArguments</code> parameter (see KParts.BrowserArguments ) .
 		///    </remarks>		<short>    Opens the given url in a hosted child frame.</short>
-		[SmokeMethod("openUrlInFrame(const KUrl&, const KParts::URLArgs&)")]
-		public virtual bool OpenUrlInFrame(KUrl url, KParts.URLArgs urlArgs) {
-			return (bool) interceptor.Invoke("openUrlInFrame##", "openUrlInFrame(const KUrl&, const KParts::URLArgs&)", typeof(bool), typeof(KUrl), url, typeof(KParts.URLArgs), urlArgs);
+		[SmokeMethod("openUrlInFrame(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)")]
+		public virtual bool OpenUrlInFrame(KUrl url, KParts.OpenUrlArguments arguments, KParts.BrowserArguments browserArguments) {
+			return (bool) interceptor.Invoke("openUrlInFrame###", "openUrlInFrame(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&)", typeof(bool), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), arguments, typeof(KParts.BrowserArguments), browserArguments);
 		}
 		~BrowserHostExtension() {
 			interceptor.Invoke("~BrowserHostExtension", "~BrowserHostExtension()", typeof(void));

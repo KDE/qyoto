@@ -15,7 +15,7 @@ namespace Kimono {
 	/// 		<see> KLibFactory.</see>
 
 	[SmokeClass("KParts::Factory")]
-	public abstract class Factory : KLibFactory {
+	public abstract class Factory : KPluginFactory {
  		protected Factory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(Factory), this);
@@ -110,7 +110,7 @@ namespace Kimono {
 		///  Reimplemented from KLibFactory. Calls createPart()
 		///      </remarks>		<short>    Reimplemented from KLibFactory.</short>
 		[SmokeMethod("createObject(QObject*, const char*, const QStringList&)")]
-		protected override QObject CreateObject(QObject parent, string classname, List<string> args) {
+		protected virtual QObject CreateObject(QObject parent, string classname, List<string> args) {
 			return (QObject) interceptor.Invoke("createObject#$?", "createObject(QObject*, const char*, const QStringList&)", typeof(QObject), typeof(QObject), parent, typeof(string), classname, typeof(List<string>), args);
 		}
 		[SmokeMethod("createObject(QObject*, const char*)")]
@@ -133,12 +133,6 @@ namespace Kimono {
 		public static KComponentData PartComponentDataFromLibrary(string libraryName) {
 			return (KComponentData) staticInterceptor.Invoke("partComponentDataFromLibrary$", "partComponentDataFromLibrary(const QString&)", typeof(KComponentData), typeof(string), libraryName);
 		}
-		protected new IFactorySignals Emit {
-			get { return (IFactorySignals) Q_EMIT; }
-		}
-	}
-
-	public interface IFactorySignals : IKLibFactorySignals {
 	}
 	}
 }

@@ -10,7 +10,7 @@ namespace Kimono {
 	///  group. For example, it can be used to make all disabled icons
 	///  in a toolbar gray.
 	/// </remarks>		<short>    Applies effects to icons.</short>
-	/// 		<see> K3Icon</see>
+	/// 		<see> KIcon</see>
 
 	[SmokeClass("KIconEffect")]
 	public class KIconEffect : Object, IDisposable {
@@ -77,14 +77,14 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Tests whether an effect has been configured for the given icon group.
-		/// <param> name="group" the group to check, see K3Icon.Group
-		/// </param><param> name="state" the state to check, see K3Icon.States
+		/// <param> name="group" the group to check, see KIconLoader.Group
+		/// </param><param> name="state" the state to check, see KIconLoader.States
 		/// </param></remarks>		<return> true if an effect is configured for the given <code>group</code>
 		///  in <code>state</code>, otherwise false.
 		/// </return>
 		/// 		<short>    Tests whether an effect has been configured for the given icon group.</short>
-		/// 		<see> K3Icon.Group</see>
-		/// 		<see> K3Icon.States</see>
+		/// 		<see> KIconLoader.Group</see>
+		/// 		<see> KIconLoader.States</see>
 		public bool HasEffect(int group, int state) {
 			return (bool) interceptor.Invoke("hasEffect$$", "hasEffect(int, int) const", typeof(bool), typeof(int), group, typeof(int), state);
 		}
@@ -92,8 +92,8 @@ namespace Kimono {
 		///  Returns a fingerprint for the effect by encoding
 		///  the given <code>group</code> and <code>state</code> into a string. This
 		///  is useful for caching.
-		/// <param> name="group" the group, see K3Icon.Group
-		/// </param><param> name="state" the state, see K3Icon.States
+		/// <param> name="group" the group, see KIconLoader.Group
+		/// </param><param> name="state" the state, see KIconLoader.States
 		/// </param></remarks>		<return> the fingerprint of the given <code>group</code>+<code>state</code>
 		///      </return>
 		/// 		<short>    Returns a fingerprint for the effect by encoding  the given <code>group</code> and <code>state</code> into a string.</short>
@@ -104,8 +104,8 @@ namespace Kimono {
 		///  Applies an effect to an image. The effect to apply depends on the
 		///  <code>group</code> and <code>state</code> parameters, and is configured by the user.
 		/// <param> name="src" The image.
-		/// </param><param> name="group" The group for the icon, see K3Icon.Group
-		/// </param><param> name="state" The icon's state, see K3Icon.States
+		/// </param><param> name="group" The group for the icon, see KIconLoader.Group
+		/// </param><param> name="state" The icon's state, see KIconLoader.States
 		/// </param></remarks>		<return> An image with the effect applied.
 		///      </return>
 		/// 		<short>    Applies an effect to an image.</short>
@@ -131,8 +131,8 @@ namespace Kimono {
 		/// <remarks>
 		///  Applies an effect to a pixmap.
 		/// <param> name="src" The pixmap.
-		/// </param><param> name="group" The group for the icon, see K3Icon.Group
-		/// </param><param> name="state" The icon's state, see K3Icon.States
+		/// </param><param> name="group" The group for the icon, see KIconLoader.Group
+		/// </param><param> name="state" The icon's state, see KIconLoader.States
 		/// </param></remarks>		<return> A pixmap with the effect applied.
 		///      </return>
 		/// 		<short>    Applies an effect to a pixmap.</short>
@@ -169,18 +169,6 @@ namespace Kimono {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~KIconEffect", "~KIconEffect()", typeof(void));
-		}
-		/// <remarks>
-		///  Provides visual feedback to show activation of an icon on a widget.
-		///  Not strictly an 'icon effect', but in practice that's what it looks
-		///  like.
-		///  This method does nothing if the global 'Visual feedback on activation'
-		///  option is not activated (See kcontrol/Peripherals/Mouse).
-		/// <param> name="widget" The widget on which the effect should be painted
-		/// </param><param> name="rect" This rectangle defines the effect's borders
-		///      </param></remarks>		<short>    Provides visual feedback to show activation of an icon on a widget.</short>
-		public static void VisualActivate(QWidget widget, QRect rect) {
-			staticInterceptor.Invoke("visualActivate##", "visualActivate(QWidget*, const QRect&)", typeof(void), typeof(QWidget), widget, typeof(QRect), rect);
 		}
 		/// <remarks>
 		///  Tints an image gray.

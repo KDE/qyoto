@@ -81,6 +81,9 @@ namespace Kimono {
 		public QWidget Widget() {
 			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
 		}
+		/// <remarks>
+		///  Sets whether the page widget item is enabled.
+		///          </remarks>		<short>    Sets whether the page widget item is enabled.</short>
 		[Q_SLOT("void setEnabled(bool)")]
 		public void SetEnabled(bool arg1) {
 			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);

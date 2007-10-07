@@ -53,6 +53,16 @@ namespace Kimono {
 			return (KTimeZoneBackend) interceptor.Invoke("clone", "clone() const", typeof(KTimeZoneBackend));
 		}
 		/// <remarks>
+		///  Returns the class name of the data represented by this instance.
+		///  @note Every inherited class must reimplement type().
+		/// </remarks>		<return> "KTimeZone" for this base class.
+		///      </return>
+		/// 		<short>    Returns the class name of the data represented by this instance.</short>
+		[SmokeMethod("type() const")]
+		public virtual QByteArray type() {
+			return (QByteArray) interceptor.Invoke("type", "type() const", typeof(QByteArray));
+		}
+		/// <remarks>
 		///  Implements KTimeZone.OffsetAtZoneTime().
 		/// <param> name="caller" calling KTimeZone object
 		///      </param></remarks>		<short>    Implements KTimeZone.OffsetAtZoneTime().</short>

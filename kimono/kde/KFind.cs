@@ -281,14 +281,6 @@ namespace Kimono {
 		protected QWidget DialogsParent() {
 			return (QWidget) interceptor.Invoke("dialogsParent", "dialogsParent() const", typeof(QWidget));
 		}
-		[Q_SLOT("void slotFindNext()")]
-		protected void SlotFindNext() {
-			interceptor.Invoke("slotFindNext", "slotFindNext()", typeof(void));
-		}
-		[Q_SLOT("void slotDialogClosed()")]
-		protected void SlotDialogClosed() {
-			interceptor.Invoke("slotDialogClosed", "slotDialogClosed()", typeof(void));
-		}
 		~KFind() {
 			interceptor.Invoke("~KFind", "~KFind()", typeof(void));
 		}

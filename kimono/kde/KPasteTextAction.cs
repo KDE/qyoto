@@ -66,14 +66,6 @@ namespace Kimono {
 		public void SetMixedMode(bool mode) {
 			interceptor.Invoke("setMixedMode$", "setMixedMode(bool)", typeof(void), typeof(bool), mode);
 		}
-		[Q_SLOT("void menuAboutToShow()")]
-		protected void MenuAboutToShow() {
-			interceptor.Invoke("menuAboutToShow", "menuAboutToShow()", typeof(void));
-		}
-		[Q_SLOT("void slotTriggered(QAction*)")]
-		protected void SlotTriggered(QAction action) {
-			interceptor.Invoke("slotTriggered#", "slotTriggered(QAction*)", typeof(void), typeof(QAction), action);
-		}
 		~KPasteTextAction() {
 			interceptor.Invoke("~KPasteTextAction", "~KPasteTextAction()", typeof(void));
 		}

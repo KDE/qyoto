@@ -48,6 +48,13 @@ namespace Kimono {
 		public new virtual QWidget CreateWidget(QWidget parent) {
 			return (QWidget) interceptor.Invoke("createWidget#", "createWidget(QWidget*)", typeof(QWidget), typeof(QWidget), parent);
 		}
+		/// <remarks>
+		///  Reimplemented from @see QWidgetAction.
+		///      </remarks>		<short>    Reimplemented from @see QWidgetAction.</short>
+		[SmokeMethod("deleteWidget(QWidget*)")]
+		public new virtual void DeleteWidget(QWidget widget) {
+			interceptor.Invoke("deleteWidget#", "deleteWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
+		}
 		~KToolBarSpacerAction() {
 			interceptor.Invoke("~KToolBarSpacerAction", "~KToolBarSpacerAction()", typeof(void));
 		}

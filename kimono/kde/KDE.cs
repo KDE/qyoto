@@ -17,10 +17,6 @@ namespace Kimono {
 		static KDE() {
 			staticInterceptor = new SmokeInvocation(typeof(KDE), null);
 		}
-		// int IconSize(KIconLoader::Group arg1); >>>> NOT CONVERTED
-		// KIconLoader::Group& operator++(KIconLoader::Group& arg1); >>>> NOT CONVERTED
-		// KIconLoader::Group operator++(KIconLoader::Group& arg1,int arg2); >>>> NOT CONVERTED
-		// bool operator<(const KEntryKey& arg1,const KEntryKey& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const KDateTime::Spec& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,KDateTime::Spec& arg2); >>>> NOT CONVERTED
 		// bool urlcmp(const QString& arg1,const QString& arg2,const KUrl::EqualsOptions& arg3); >>>> NOT CONVERTED
@@ -74,6 +70,57 @@ namespace Kimono {
 		/// 		<short>    @brief Returns the KDE version as string, e.</short>
 		public static string VersionString() {
 			return (string) staticInterceptor.Invoke("versionString", "versionString()", typeof(string));
+		}
+		public static QDataStream Write(QDataStream arg1, KDateTime dateTime) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(KDateTime), dateTime);
+		}
+		public static QDataStream Read(QDataStream arg1, KDateTime dateTime) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(KDateTime), dateTime);
+		}
+		public static bool Urlcmp(string _url1, string _url2) {
+			return (bool) staticInterceptor.Invoke("urlcmp$$", "urlcmp(const QString&, const QString&)", typeof(bool), typeof(string), _url1, typeof(string), _url2);
+		}
+		public static uint QHash(string key) {
+			return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QString&)", typeof(uint), typeof(string), key);
+		}
+		public static uint QHash(KUrl kurl) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KUrl&)", typeof(uint), typeof(KUrl), kurl);
+		}
+		public static uint QHash(KPluginInfo arg1) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KPluginInfo&)", typeof(uint), typeof(KPluginInfo), arg1);
+		}
+		public static KLocalizedString Ki18n(string msg) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18n$", "ki18n(const char*)", typeof(KLocalizedString), typeof(string), msg);
+		}
+		public static KLocalizedString Ki18nc(string ctxt, string msg) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18nc$$", "ki18nc(const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), msg);
+		}
+		public static KLocalizedString Ki18np(string singular, string plural) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18np$$", "ki18np(const char*, const char*)", typeof(KLocalizedString), typeof(string), singular, typeof(string), plural);
+		}
+		public static KLocalizedString Ki18ncp(string ctxt, string singular, string plural) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18ncp$$$", "ki18ncp(const char*, const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), singular, typeof(string), plural);
+		}
+		public static string Tr2i18n(string message, string comment) {
+			return (string) staticInterceptor.Invoke("tr2i18n$$", "tr2i18n(const char*, const char*)", typeof(string), typeof(string), message, typeof(string), comment);
+		}
+		public static string Tr2i18n(string message) {
+			return (string) staticInterceptor.Invoke("tr2i18n$", "tr2i18n(const char*)", typeof(string), typeof(string), message);
+		}
+		public static string I18n(string text) {
+			return (string) staticInterceptor.Invoke("i18n$", "i18n(const char*)", typeof(string), typeof(string), text);
+		}
+		public static string I18nc(string ctxt, string text) {
+			return (string) staticInterceptor.Invoke("i18nc$$", "i18nc(const char*, const char*)", typeof(string), typeof(string), ctxt, typeof(string), text);
+		}
+		public static int Kasciistricmp(string str1, string str2) {
+			return (int) staticInterceptor.Invoke("kasciistricmp$$", "kasciistricmp(const char*, const char*)", typeof(int), typeof(string), str1, typeof(string), str2);
+		}
+		public static string KAsciiToLower(string str) {
+			return (string) staticInterceptor.Invoke("kAsciiToLower$", "kAsciiToLower(char*)", typeof(string), typeof(string), str);
+		}
+		public static string KAsciiToUpper(string str) {
+			return (string) staticInterceptor.Invoke("kAsciiToUpper$", "kAsciiToUpper(char*)", typeof(string), typeof(string), str);
 		}
 		public static QPixmap DesktopIcon(string name, int size, int state, List<string> overlays) {
 			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$$?", "DesktopIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
@@ -132,158 +179,8 @@ namespace Kimono {
 		public static QPixmap UserIcon(string name) {
 			return (QPixmap) staticInterceptor.Invoke("UserIcon$", "UserIcon(const QString&)", typeof(QPixmap), typeof(string), name);
 		}
-		public static void KDrawNextButton(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill) {
-			staticInterceptor.Invoke("kDrawNextButton###$#", "kDrawNextButton(QPainter*, const QRect&, const QPalette&, bool, const QBrush*)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal, typeof(bool), sunken, typeof(QBrush), fill);
-		}
-		public static void KDrawNextButton(QPainter p, QRect r, QPalette pal, bool sunken) {
-			staticInterceptor.Invoke("kDrawNextButton###$", "kDrawNextButton(QPainter*, const QRect&, const QPalette&, bool)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal, typeof(bool), sunken);
-		}
-		public static void KDrawNextButton(QPainter p, QRect r, QPalette pal) {
-			staticInterceptor.Invoke("kDrawNextButton###", "kDrawNextButton(QPainter*, const QRect&, const QPalette&)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal);
-		}
-		public static void KDrawNextButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, QBrush fill) {
-			staticInterceptor.Invoke("kDrawNextButton#$$$$#$#", "kDrawNextButton(QPainter*, int, int, int, int, const QPalette&, bool, const QBrush*)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal, typeof(bool), sunken, typeof(QBrush), fill);
-		}
-		public static void KDrawNextButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			staticInterceptor.Invoke("kDrawNextButton#$$$$#$", "kDrawNextButton(QPainter*, int, int, int, int, const QPalette&, bool)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal, typeof(bool), sunken);
-		}
-		public static void KDrawNextButton(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			staticInterceptor.Invoke("kDrawNextButton#$$$$#", "kDrawNextButton(QPainter*, int, int, int, int, const QPalette&)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal);
-		}
-		public static void KDrawBeButton(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill) {
-			staticInterceptor.Invoke("kDrawBeButton###$#", "kDrawBeButton(QPainter*, QRect&, const QPalette&, bool, const QBrush*)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal, typeof(bool), sunken, typeof(QBrush), fill);
-		}
-		public static void KDrawBeButton(QPainter p, QRect r, QPalette pal, bool sunken) {
-			staticInterceptor.Invoke("kDrawBeButton###$", "kDrawBeButton(QPainter*, QRect&, const QPalette&, bool)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal, typeof(bool), sunken);
-		}
-		public static void KDrawBeButton(QPainter p, QRect r, QPalette pal) {
-			staticInterceptor.Invoke("kDrawBeButton###", "kDrawBeButton(QPainter*, QRect&, const QPalette&)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal);
-		}
-		public static void KDrawBeButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, QBrush fill) {
-			staticInterceptor.Invoke("kDrawBeButton#$$$$#$#", "kDrawBeButton(QPainter*, int, int, int, int, const QPalette&, bool, const QBrush*)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal, typeof(bool), sunken, typeof(QBrush), fill);
-		}
-		public static void KDrawBeButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			staticInterceptor.Invoke("kDrawBeButton#$$$$#$", "kDrawBeButton(QPainter*, int, int, int, int, const QPalette&, bool)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal, typeof(bool), sunken);
-		}
-		public static void KDrawBeButton(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			staticInterceptor.Invoke("kDrawBeButton#$$$$#", "kDrawBeButton(QPainter*, int, int, int, int, const QPalette&)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal);
-		}
-		public static void KDrawRoundButton(QPainter p, QRect r, QPalette pal, bool sunken) {
-			staticInterceptor.Invoke("kDrawRoundButton###$", "kDrawRoundButton(QPainter*, const QRect&, const QPalette&, bool)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal, typeof(bool), sunken);
-		}
-		public static void KDrawRoundButton(QPainter p, QRect r, QPalette pal) {
-			staticInterceptor.Invoke("kDrawRoundButton###", "kDrawRoundButton(QPainter*, const QRect&, const QPalette&)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QPalette), pal);
-		}
-		public static void KDrawRoundButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			staticInterceptor.Invoke("kDrawRoundButton#$$$$#$", "kDrawRoundButton(QPainter*, int, int, int, int, const QPalette&, bool)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal, typeof(bool), sunken);
-		}
-		public static void KDrawRoundButton(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			staticInterceptor.Invoke("kDrawRoundButton#$$$$#", "kDrawRoundButton(QPainter*, int, int, int, int, const QPalette&)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPalette), pal);
-		}
-		public static void KRoundMaskRegion(QRegion r, int x, int y, int w, int h) {
-			staticInterceptor.Invoke("kRoundMaskRegion#$$$$", "kRoundMaskRegion(QRegion&, int, int, int, int)", typeof(void), typeof(QRegion), r, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
-		}
-		public static void KDrawRoundMask(QPainter p, int x, int y, int w, int h, bool clear) {
-			staticInterceptor.Invoke("kDrawRoundMask#$$$$$", "kDrawRoundMask(QPainter*, int, int, int, int, bool)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), clear);
-		}
-		public static void KDrawRoundMask(QPainter p, int x, int y, int w, int h) {
-			staticInterceptor.Invoke("kDrawRoundMask#$$$$", "kDrawRoundMask(QPainter*, int, int, int, int)", typeof(void), typeof(QPainter), p, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, QBitmap lightColor, QBitmap midColor, QBitmap midlightColor, QBitmap darkColor, QBitmap blackColor, QBitmap whiteColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$######", "kColorBitmaps(QPainter*, const QPalette&, int, int, QBitmap*, QBitmap*, QBitmap*, QBitmap*, QBitmap*, QBitmap*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(QBitmap), lightColor, typeof(QBitmap), midColor, typeof(QBitmap), midlightColor, typeof(QBitmap), darkColor, typeof(QBitmap), blackColor, typeof(QBitmap), whiteColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, QBitmap lightColor, QBitmap midColor, QBitmap midlightColor, QBitmap darkColor, QBitmap blackColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$#####", "kColorBitmaps(QPainter*, const QPalette&, int, int, QBitmap*, QBitmap*, QBitmap*, QBitmap*, QBitmap*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(QBitmap), lightColor, typeof(QBitmap), midColor, typeof(QBitmap), midlightColor, typeof(QBitmap), darkColor, typeof(QBitmap), blackColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, QBitmap lightColor, QBitmap midColor, QBitmap midlightColor, QBitmap darkColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$####", "kColorBitmaps(QPainter*, const QPalette&, int, int, QBitmap*, QBitmap*, QBitmap*, QBitmap*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(QBitmap), lightColor, typeof(QBitmap), midColor, typeof(QBitmap), midlightColor, typeof(QBitmap), darkColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, QBitmap lightColor, QBitmap midColor, QBitmap midlightColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$###", "kColorBitmaps(QPainter*, const QPalette&, int, int, QBitmap*, QBitmap*, QBitmap*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(QBitmap), lightColor, typeof(QBitmap), midColor, typeof(QBitmap), midlightColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, QBitmap lightColor, QBitmap midColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$##", "kColorBitmaps(QPainter*, const QPalette&, int, int, QBitmap*, QBitmap*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(QBitmap), lightColor, typeof(QBitmap), midColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, QBitmap lightColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$#", "kColorBitmaps(QPainter*, const QPalette&, int, int, QBitmap*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(QBitmap), lightColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y) {
-			staticInterceptor.Invoke("kColorBitmaps##$$", "kColorBitmaps(QPainter*, const QPalette&, int, int)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps, char[] lightColor, char[] midColor, char[] midlightColor, char[] darkColor, char[] blackColor, char[] whiteColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$$$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool, const uchar*, const uchar*, const uchar*, const uchar*, const uchar*, const uchar*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps, typeof(char[]), lightColor, typeof(char[]), midColor, typeof(char[]), midlightColor, typeof(char[]), darkColor, typeof(char[]), blackColor, typeof(char[]), whiteColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps, char[] lightColor, char[] midColor, char[] midlightColor, char[] darkColor, char[] blackColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool, const uchar*, const uchar*, const uchar*, const uchar*, const uchar*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps, typeof(char[]), lightColor, typeof(char[]), midColor, typeof(char[]), midlightColor, typeof(char[]), darkColor, typeof(char[]), blackColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps, char[] lightColor, char[] midColor, char[] midlightColor, char[] darkColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool, const uchar*, const uchar*, const uchar*, const uchar*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps, typeof(char[]), lightColor, typeof(char[]), midColor, typeof(char[]), midlightColor, typeof(char[]), darkColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps, char[] lightColor, char[] midColor, char[] midlightColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool, const uchar*, const uchar*, const uchar*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps, typeof(char[]), lightColor, typeof(char[]), midColor, typeof(char[]), midlightColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps, char[] lightColor, char[] midColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool, const uchar*, const uchar*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps, typeof(char[]), lightColor, typeof(char[]), midColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps, char[] lightColor) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool, const uchar*)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps, typeof(char[]), lightColor);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h, bool isXBitmaps) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int, bool)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(bool), isXBitmaps);
-		}
-		public static void KColorBitmaps(QPainter p, QPalette pal, int x, int y, int w, int h) {
-			staticInterceptor.Invoke("kColorBitmaps##$$$$", "kColorBitmaps(QPainter*, const QPalette&, int, int, int, int)", typeof(void), typeof(QPainter), p, typeof(QPalette), pal, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
-		}
-		public static QDataStream Write(QDataStream arg1, KDateTime dateTime) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(KDateTime), dateTime);
-		}
-		public static QDataStream Read(QDataStream arg1, KDateTime dateTime) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(KDateTime), dateTime);
-		}
-		public static bool Urlcmp(string _url1, string _url2) {
-			return (bool) staticInterceptor.Invoke("urlcmp$$", "urlcmp(const QString&, const QString&)", typeof(bool), typeof(string), _url1, typeof(string), _url2);
-		}
-		public static uint QHash(string key) {
-			return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QString&)", typeof(uint), typeof(string), key);
-		}
-		public static uint QHash(KUrl kurl) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KUrl&)", typeof(uint), typeof(KUrl), kurl);
-		}
-		public static uint QHash(KPluginInfo arg1) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KPluginInfo&)", typeof(uint), typeof(KPluginInfo), arg1);
-		}
-		public static KLocalizedString Ki18n(string msg) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18n$", "ki18n(const char*)", typeof(KLocalizedString), typeof(string), msg);
-		}
-		public static KLocalizedString Ki18nc(string ctxt, string msg) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18nc$$", "ki18nc(const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), msg);
-		}
-		public static KLocalizedString Ki18np(string singular, string plural) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18np$$", "ki18np(const char*, const char*)", typeof(KLocalizedString), typeof(string), singular, typeof(string), plural);
-		}
-		public static KLocalizedString Ki18ncp(string ctxt, string singular, string plural) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18ncp$$$", "ki18ncp(const char*, const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), singular, typeof(string), plural);
-		}
-		public static string Tr2i18n(string message, string comment) {
-			return (string) staticInterceptor.Invoke("tr2i18n$$", "tr2i18n(const char*, const char*)", typeof(string), typeof(string), message, typeof(string), comment);
-		}
-		public static string Tr2i18n(string message) {
-			return (string) staticInterceptor.Invoke("tr2i18n$", "tr2i18n(const char*)", typeof(string), typeof(string), message);
-		}
-		public static string I18n(string text) {
-			return (string) staticInterceptor.Invoke("i18n$", "i18n(const char*)", typeof(string), typeof(string), text);
-		}
-		public static string I18nc(string ctxt, string text) {
-			return (string) staticInterceptor.Invoke("i18nc$$", "i18nc(const char*, const char*)", typeof(string), typeof(string), ctxt, typeof(string), text);
-		}
-		public static int Kasciistricmp(string str1, string str2) {
-			return (int) staticInterceptor.Invoke("kasciistricmp$$", "kasciistricmp(const char*, const char*)", typeof(int), typeof(string), str1, typeof(string), str2);
-		}
-		public static string KAsciiToLower(string str) {
-			return (string) staticInterceptor.Invoke("kAsciiToLower$", "kAsciiToLower(char*)", typeof(string), typeof(string), str);
-		}
-		public static string KAsciiToUpper(string str) {
-			return (string) staticInterceptor.Invoke("kAsciiToUpper$", "kAsciiToUpper(char*)", typeof(string), typeof(string), str);
+		public static int IconSize(KIconLoader.Group group) {
+			return (int) staticInterceptor.Invoke("IconSize$", "IconSize(KIconLoader::Group)", typeof(int), typeof(KIconLoader.Group), group);
 		}
 		public static uint QHash(int arg1) {
 			return (uint) staticInterceptor.Invoke("qHash$", "qHash(int)", typeof(uint), typeof(int), arg1);
@@ -300,17 +197,20 @@ namespace Kimono {
 		public static uint QHash(KRockerGesture key) {
 			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KRockerGesture&)", typeof(uint), typeof(KRockerGesture), key);
 		}
-		public static QDataStream Write(QDataStream s, KFileItem a) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
-		}
-		public static QDataStream Read(QDataStream s, KFileItem a) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
-		}
 		public static QDataStream Write(QDataStream s, KACL a) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
 		}
 		public static QDataStream Read(QDataStream s, KACL a) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
+		}
+		public static uint QHash(KFileItem item) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KFileItem&)", typeof(uint), typeof(KFileItem), item);
+		}
+		public static QDataStream Write(QDataStream s, KFileItem a) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
+		}
+		public static QDataStream Read(QDataStream s, KFileItem a) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
 		}
 		public static KPrinter.PageSize PageNameToPageSize(string name, ref bool ok) {
 			StackItem[] stack = new StackItem[3];

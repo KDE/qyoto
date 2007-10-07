@@ -111,17 +111,6 @@ namespace Kimono {
 		public virtual void SetTitle(string title) {
 			interceptor.Invoke("setTitle$", "setTitle(const QString&)", typeof(void), typeof(string), title);
 		}
-		protected void DisplaySampleText() {
-			interceptor.Invoke("displaySampleText", "displaySampleText()", typeof(void));
-		}
-		protected void SetToolTip() {
-			interceptor.Invoke("setToolTip", "setToolTip()", typeof(void));
-		}
-		[Q_SLOT("void buttonClicked()")]
-		[SmokeMethod("buttonClicked()")]
-		protected virtual void ButtonClicked() {
-			interceptor.Invoke("buttonClicked", "buttonClicked()", typeof(void));
-		}
 		~KFontRequester() {
 			interceptor.Invoke("~KFontRequester", "~KFontRequester()", typeof(void));
 		}

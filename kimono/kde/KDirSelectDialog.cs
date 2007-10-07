@@ -21,13 +21,12 @@ namespace Kimono {
 		static KDirSelectDialog() {
 			staticInterceptor = new SmokeInvocation(typeof(KDirSelectDialog), null);
 		}
-		// K3FileTreeView* view(); >>>> NOT CONVERTED
 		/// <remarks>
-		///  The constructor. Creates a dialog to select a directory (url).
+		///  Creates a new directory selection dialog.
 		/// <param> name="startDir" the directory, initially shown
 		/// </param><param> name="localOnly" unused. You can only select paths below the startDir
 		/// </param><param> name="parent" the parent for the dialog, usually null
-		///      </param></remarks>		<short>    The constructor.</short>
+		///      </param></remarks>		<short>    Creates a new directory selection dialog.</short>
 		public KDirSelectDialog(KUrl startDir, bool localOnly, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KDirSelectDialog#$#", "KDirSelectDialog(const KUrl&, bool, QWidget*)", typeof(void), typeof(KUrl), startDir, typeof(bool), localOnly, typeof(QWidget), parent);
@@ -45,13 +44,21 @@ namespace Kimono {
 			interceptor.Invoke("KDirSelectDialog", "KDirSelectDialog()", typeof(void));
 		}
 		/// <remarks>
-		///  Returns the currently-selected URL, or a blank URL if none is selected.
-		/// </remarks>		<return> The currently-selected URL, if one was selected.
+		/// </remarks>		<return> The currently selected URL, or an empty one if no item is selected.
 		///      </return>
-		/// 		<short>    Returns the currently-selected URL, or a blank URL if none is selected.</short>
+		/// 		<short>   </short>
 		public KUrl Url() {
 			return (KUrl) interceptor.Invoke("url", "url() const", typeof(KUrl));
 		}
+		/// <remarks>
+		///  Returns a pointer to the view which is used for displaying the directories.
+		///      </remarks>		<short>    Returns a pointer to the view which is used for displaying the directories.</short>
+		public QAbstractItemView View() {
+			return (QAbstractItemView) interceptor.Invoke("view", "view() const", typeof(QAbstractItemView));
+		}
+		/// <remarks>
+		///  Returns whether only local directories can be selected.
+		///      </remarks>		<short>    Returns whether only local directories can be selected.</short>
 		public bool LocalOnly() {
 			return (bool) interceptor.Invoke("localOnly", "localOnly() const", typeof(bool));
 		}
@@ -62,6 +69,9 @@ namespace Kimono {
 		public KUrl StartDir() {
 			return (KUrl) interceptor.Invoke("startDir", "startDir() const", typeof(KUrl));
 		}
+		/// <remarks>
+		///  Sets the current <code>url</code> in the dialog.
+		///      </remarks>		<short>    Sets the current <code>url</code> in the dialog.</short>
 		[Q_SLOT("void setCurrentUrl(const KUrl&)")]
 		public void SetCurrentUrl(KUrl url) {
 			interceptor.Invoke("setCurrentUrl#", "setCurrentUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
@@ -69,11 +79,6 @@ namespace Kimono {
 		[SmokeMethod("accept()")]
 		protected new virtual void Accept() {
 			interceptor.Invoke("accept", "accept()", typeof(void));
-		}
-		[Q_SLOT("void slotUser1()")]
-		[SmokeMethod("slotUser1()")]
-		protected virtual void SlotUser1() {
-			interceptor.Invoke("slotUser1", "slotUser1()", typeof(void));
 		}
 		~KDirSelectDialog() {
 			interceptor.Invoke("~KDirSelectDialog", "~KDirSelectDialog()", typeof(void));

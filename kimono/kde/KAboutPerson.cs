@@ -17,7 +17,7 @@ namespace Kimono {
 	///  with a program and re-using data from one of them:
 	///  @code
 	///  KAboutData about("khello", "khello", ki18n("KHello"), "0.1",
-	///                    k18n("A KDE version of Hello, world!"),
+	///                    ki18n("A KDE version of Hello, world!"),
 	///                    KAboutData.License_LGPL,
 	///                    ki18n("Copyright (c) 2003 Developer"));
 	///  about.addAuthor(ki18n("Joe Developer"), ki18n("developer"), "joe@host.com", 0);

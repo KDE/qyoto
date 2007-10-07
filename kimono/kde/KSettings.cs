@@ -204,9 +204,9 @@ namespace Kimono {
 			///  Standard KCModule constructor.
 			///  Automatically creates the KPluginSelector widget.
 			///          </remarks>		<short>    Standard KCModule constructor.</short>
-			public PluginPage(KComponentData componentData, QWidget parent, List<string> args) : this((Type) null) {
+			public PluginPage(KComponentData componentData, QWidget parent, List<QVariant> args) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("PluginPage##?", "PluginPage(const KComponentData&, QWidget*, const QStringList&)", typeof(void), typeof(KComponentData), componentData, typeof(QWidget), parent, typeof(List<string>), args);
+				interceptor.Invoke("PluginPage##?", "PluginPage(const KComponentData&, QWidget*, const QVariantList&)", typeof(void), typeof(KComponentData), componentData, typeof(QWidget), parent, typeof(List<QVariant>), args);
 			}
 			public PluginPage(KComponentData componentData, QWidget parent) : this((Type) null) {
 				CreateProxy();

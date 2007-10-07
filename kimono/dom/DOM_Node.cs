@@ -455,7 +455,7 @@ namespace Kimono {
 		///  // try to convert into an Element:
 		///  Element e = n;
 		///  if( e.isNull() )
-		///    kDebug(300) << "node isn't an element node" << endl;
+		///    kDebug(300) << "node isn't an element node";
 		///  </pre>
 		///      </remarks>		<short>    tests if this Node is 0.</short>
 		public bool IsNull() {

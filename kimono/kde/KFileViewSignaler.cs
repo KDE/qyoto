@@ -21,23 +21,23 @@ namespace Kimono {
 		///  double click configuration). Emits the appropriate signal.
 		/// </remarks>		<short>    Call this method when an item is selected (depends on single click /  double click configuration).</short>
 		public void Activate(KFileItem item) {
-			interceptor.Invoke("activate#", "activate(const KFileItem*)", typeof(void), typeof(KFileItem), item);
+			interceptor.Invoke("activate#", "activate(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
 		/// <remarks>
 		///  emits the highlighted signal for item. Call this in your view class
 		///  whenever the selection changes.
 		///      </remarks>		<short>    emits the highlighted signal for item.</short>
-		public void HighlightFile(KFileItem i) {
-			interceptor.Invoke("highlightFile#", "highlightFile(const KFileItem*)", typeof(void), typeof(KFileItem), i);
+		public void HighlightFile(KFileItem item) {
+			interceptor.Invoke("highlightFile#", "highlightFile(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
-		public void ActivateMenu(KFileItem i, QPoint pos) {
-			interceptor.Invoke("activateMenu##", "activateMenu(const KFileItem*, const QPoint&)", typeof(void), typeof(KFileItem), i, typeof(QPoint), pos);
+		public void ActivateMenu(KFileItem item, QPoint pos) {
+			interceptor.Invoke("activateMenu##", "activateMenu(const KFileItem&, const QPoint&)", typeof(void), typeof(KFileItem), item, typeof(QPoint), pos);
 		}
-		public void ChangeSorting(int sorting) {
-			interceptor.Invoke("changeSorting$", "changeSorting(QDir::SortFlags)", typeof(void), typeof(int), sorting);
+		public void ChangeSorting(uint sorting) {
+			interceptor.Invoke("changeSorting$", "changeSorting(QDir::SortFlags)", typeof(void), typeof(uint), sorting);
 		}
-		public void DropURLs(KFileItem i, QDropEvent e, List<KUrl> urls) {
-			interceptor.Invoke("dropURLs##?", "dropURLs(const KFileItem*, QDropEvent*, const KUrl::List&)", typeof(void), typeof(KFileItem), i, typeof(QDropEvent), e, typeof(List<KUrl>), urls);
+		public void DropURLs(KFileItem item, QDropEvent arg2, List<KUrl> urls) {
+			interceptor.Invoke("dropURLs##?", "dropURLs(const KFileItem&, QDropEvent*, const KUrl::List&)", typeof(void), typeof(KFileItem), item, typeof(QDropEvent), arg2, typeof(List<KUrl>), urls);
 		}
 		public KFileViewSignaler() : this((Type) null) {
 			CreateProxy();
@@ -55,21 +55,21 @@ namespace Kimono {
 	}
 
 	public interface IKFileViewSignalerSignals : IQObjectSignals {
-		[Q_SIGNAL("void dirActivated(const KFileItem*)")]
-		void DirActivated(KFileItem arg1);
+		[Q_SIGNAL("void dirActivated(const KFileItem&)")]
+		void DirActivated(KFileItem item);
 		[Q_SIGNAL("void sortingChanged(QDir::SortFlags)")]
-		void SortingChanged(int arg1);
+		void SortingChanged(uint arg1);
 		/// <remarks>
-		///  the item maybe be null, indicating that we're in multiselection mode and
+		///  the <code>item</code> maybe be a null item, indicating that we're in multiselection mode and
 		///  the selection has changed.
-		///      </remarks>		<short>    the item maybe be 0L, indicating that we're in multiselection mode and  the selection has changed.</short>
-		[Q_SIGNAL("void fileHighlighted(const KFileItem*)")]
-		void FileHighlighted(KFileItem arg1);
-		[Q_SIGNAL("void fileSelected(const KFileItem*)")]
-		void FileSelected(KFileItem arg1);
-		[Q_SIGNAL("void activatedMenu(const KFileItem*, const QPoint&)")]
-		void ActivatedMenu(KFileItem i, QPoint arg2);
-		[Q_SIGNAL("void dropped(const KFileItem*, QDropEvent*, const KUrl::List&)")]
-		void Dropped(KFileItem arg1, QDropEvent arg2, List<KUrl> arg3);
+		///      </remarks>		<short>    the <code>item</code> maybe be a null item, indicating that we're in multiselection mode and  the selection has changed.</short>
+		[Q_SIGNAL("void fileHighlighted(const KFileItem&)")]
+		void FileHighlighted(KFileItem item);
+		[Q_SIGNAL("void fileSelected(const KFileItem&)")]
+		void FileSelected(KFileItem item);
+		[Q_SIGNAL("void activatedMenu(const KFileItem&, const QPoint&)")]
+		void ActivatedMenu(KFileItem item, QPoint pos);
+		[Q_SIGNAL("void dropped(const KFileItem&, QDropEvent*, const KUrl::List&)")]
+		void Dropped(KFileItem item, QDropEvent arg2, List<KUrl> urls);
 	}
 }

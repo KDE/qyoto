@@ -5,15 +5,6 @@ namespace Kimono {
 	using Qyoto;
 	using System.Collections.Generic;
 
-	/// <remarks>
-	///  Access KDE Configuration entries.
-	///  This class implements KDE's default configuration system.
-	/// </remarks>		<author> Kalle Dalheimer <kalle@kde.org>, Preston Brown <pbrown@kde.org>
-	/// </author>
-	/// 		<short> KDE Configuration Management class.</short>
-	/// 		<see> KGlobal.Config</see>
-	/// 		<see> KConfigBase</see>
-	/// 		<see> KConfigGroup</see>
 
 	[SmokeClass("KConfig")]
 	public class KConfig : KConfigBase, IDisposable {
@@ -21,194 +12,52 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KConfig), this);
 		}
-		public enum OpenFlags {
-			NoGlobals = 0x01,
-			OnlyLocal = 0x02,
-			IncludeGlobals = 0x04,
+		public enum OpenFlag {
+			SimpleConfig = 0x00,
+			IncludeGlobals = 0x01,
+			CascadeConfig = 0x02,
+			DontMergeOnSync = 0x04,
+			FullConfig = IncludeGlobals|CascadeConfig,
 		}
-		// KLockFile::Ptr lockFile(bool arg1); >>>> NOT CONVERTED
-		// KLockFile::Ptr lockFile(); >>>> NOT CONVERTED
-		// void putData(const KEntryKey& arg1,const KEntry& arg2,bool arg3); >>>> NOT CONVERTED
-		// void putData(const KEntryKey& arg1,const KEntry& arg2); >>>> NOT CONVERTED
-		// KEntry lookupData(const KEntryKey& arg1); >>>> NOT CONVERTED
-		// KEntryMap internalEntryMap(const QString& arg1); >>>> NOT CONVERTED
-		// KEntryMap internalEntryMap(); >>>> NOT CONVERTED
-		/// <remarks>
-		///  Constructs a KConfig object.
-		/// <param> name="fileName" A file to parse in addition to the
-		///         system-wide file(s).  If it is not provided, only global
-		///         KDE configuration data will be read (depending on the value of
-		///         <code>flags</code>).
-		/// </param><param> name="flags" determines how the configuration file is created and accessed. Passing in
-		///         IncludeGlobals will result in entries in kdeglobals being parsed and included in the
-		///         merged settings
-		///    </param></remarks>		<short>    Constructs a KConfig object.</short>
-		public KConfig(string fileName, KConfig.OpenFlags flags) : this((Type) null) {
+		// KConfig* KConfig(KConfigPrivate& arg1); >>>> NOT CONVERTED
+		public KConfig(string file, uint mode, string resourceType) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfig$$", "KConfig(const QString&, KConfig::OpenFlags)", typeof(void), typeof(string), fileName, typeof(KConfig.OpenFlags), flags);
+			interceptor.Invoke("KConfig$$$", "KConfig(const QString&, KConfig::OpenFlags, const char*)", typeof(void), typeof(string), file, typeof(uint), mode, typeof(string), resourceType);
 		}
-		public KConfig(string fileName) : this((Type) null) {
+		public KConfig(string file, uint mode) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfig$", "KConfig(const QString&)", typeof(void), typeof(string), fileName);
+			interceptor.Invoke("KConfig$$", "KConfig(const QString&, KConfig::OpenFlags)", typeof(void), typeof(string), file, typeof(uint), mode);
+		}
+		public KConfig(string file) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KConfig$", "KConfig(const QString&)", typeof(void), typeof(string), file);
 		}
 		public KConfig() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KConfig", "KConfig()", typeof(void));
 		}
-		/// <remarks>
-		///  Constructs a KConfig object.
-		/// <param> name="resType" the place to look in (config, data, etc) See KStandardDirs.
-		/// </param><param> name="fileName" A file to parse in addition to the
-		///         system-wide file(s).  If it is not provided, only global
-		///         KDE configuration data will be read (depending on the value of
-		///         <code>flags</code>).
-		/// </param><param> name="flags" determines how the configuration file is created and accessed. Passing in
-		///         IncludeGlobals will result in entries in kdeglobals being parsed and included in the
-		///         merged settings
-		///    </param></remarks>		<short>    Constructs a KConfig object.</short>
-		public KConfig(string resType, string fileName, KConfig.OpenFlags flags) : this((Type) null) {
+		public KConfig(KComponentData componentData, string file, uint mode, string resourceType) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfig$$$", "KConfig(const char*, const QString&, KConfig::OpenFlags)", typeof(void), typeof(string), resType, typeof(string), fileName, typeof(KConfig.OpenFlags), flags);
+			interceptor.Invoke("KConfig#$$$", "KConfig(const KComponentData&, const QString&, KConfig::OpenFlags, const char*)", typeof(void), typeof(KComponentData), componentData, typeof(string), file, typeof(uint), mode, typeof(string), resourceType);
 		}
-		public KConfig(string resType, string fileName) : this((Type) null) {
+		public KConfig(KComponentData componentData, string file, uint mode) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfig$$", "KConfig(const char*, const QString&)", typeof(void), typeof(string), resType, typeof(string), fileName);
+			interceptor.Invoke("KConfig#$$", "KConfig(const KComponentData&, const QString&, KConfig::OpenFlags)", typeof(void), typeof(KComponentData), componentData, typeof(string), file, typeof(uint), mode);
 		}
-		/// <remarks>
-		///  Constructs a KConfig object.
-		/// <param> name="componentData" The KComponentData object of your component. If you don't know what this
-		///         is you likely want to use the above constructor.
-		/// </param><param> name="fileName" A file to parse in addition to the
-		///         system-wide file(s).  If it is not provided, only global
-		///         KDE configuration data will be read (depending on the value of
-		///         <code>flags</code>).
-		/// </param><param> name="flags" determines how the configuration file is created and accessed. Passing in
-		///         IncludeGlobals will result in entries in kdeglobals being parsed and included in the
-		///         merged settings
-		/// </param><param> name="resType" the place to look in (config, data, etc) See KStandardDirs.
-		///    </param></remarks>		<short>    Constructs a KConfig object.</short>
-		public KConfig(KComponentData componentData, string fileName, KConfig.OpenFlags flags, string resType) : this((Type) null) {
+		public KConfig(KComponentData componentData, string file) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfig#$$$", "KConfig(const KComponentData&, const QString&, KConfig::OpenFlags, const char*)", typeof(void), typeof(KComponentData), componentData, typeof(string), fileName, typeof(KConfig.OpenFlags), flags, typeof(string), resType);
-		}
-		public KConfig(KComponentData componentData, string fileName, KConfig.OpenFlags flags) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KConfig#$$", "KConfig(const KComponentData&, const QString&, KConfig::OpenFlags)", typeof(void), typeof(KComponentData), componentData, typeof(string), fileName, typeof(KConfig.OpenFlags), flags);
-		}
-		public KConfig(KComponentData componentData, string fileName) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KConfig#$", "KConfig(const KComponentData&, const QString&)", typeof(void), typeof(KComponentData), componentData, typeof(string), fileName);
+			interceptor.Invoke("KConfig#$", "KConfig(const KComponentData&, const QString&)", typeof(void), typeof(KComponentData), componentData, typeof(string), file);
 		}
 		public KConfig(KComponentData componentData) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KConfig#", "KConfig(const KComponentData&)", typeof(void), typeof(KComponentData), componentData);
 		}
-		public KConfig(KConfigBackEnd backEnd) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KConfig#", "KConfig(KConfigBackEnd*)", typeof(void), typeof(KConfigBackEnd), backEnd);
+		[SmokeMethod("sync()")]
+		public override void Sync() {
+			interceptor.Invoke("sync", "sync()", typeof(void));
 		}
-		/// <remarks>
-		///  Gets the extraConfigFiles in the merge stack.
-		///    </remarks>		<short>    Gets the extraConfigFiles in the merge stack.</short>
-		public List<string> ExtraConfigFiles() {
-			return (List<string>) interceptor.Invoke("extraConfigFiles", "extraConfigFiles() const", typeof(List<string>));
-		}
-		/// <remarks>
-		///  Sets the merge stack to the list of files. The stack is last in first out with
-		///  the top of the stack being the most specific config file.
-		/// <param> name="files" A list of extra config files containing the full path of the
-		///  local config file to remove from the stack.
-		///    </param></remarks>		<short>    Sets the merge stack to the list of files.</short>
-		public void SetExtraConfigFiles(List<string> files) {
-			interceptor.Invoke("setExtraConfigFiles?", "setExtraConfigFiles(const QStringList&)", typeof(void), typeof(List<string>), files);
-		}
-		/// <remarks>
-		///  Remove all files from merge stack. This does not include the local file that
-		///  was specified in the constructor.
-		///    </remarks>		<short>    Remove all files from merge stack.</short>
-		public void RemoveAllExtraConfigFiles() {
-			interceptor.Invoke("removeAllExtraConfigFiles", "removeAllExtraConfigFiles()", typeof(void));
-		}
-		/// <remarks>
-		///  Clears all entries out of the <code>dirtyEntryMap</code>, so the
-		///  values will not be written to disk on a later call to
-		///  sync().
-		/// <param> name="bDeep" If true, the dirty map is actually emptied.
-		///         otherwise, the config object's global dirty flag is set to
-		///         false, but the dirty entries remain in the dirty entry
-		///         map.
-		/// </param></remarks>		<short>    Clears all entries out of the <code>dirtyEntryMap</code>, so the  values will not be written to disk on a later call to  sync().</short>
-		/// 		<see> KConfigBase.Rollback</see>
-		[SmokeMethod("rollback(bool)")]
-		public override void Rollback(bool bDeep) {
-			interceptor.Invoke("rollback$", "rollback(bool)", typeof(void), typeof(bool), bDeep);
-		}
-		[SmokeMethod("rollback()")]
-		public override void Rollback() {
-			interceptor.Invoke("rollback", "rollback()", typeof(void));
-		}
-		/// <remarks>
-		///  Returns a list of groups that are known.
-		/// </remarks>		<return> a list of of groups
-		///    </return>
-		/// 		<short>    Returns a list of groups that are known.</short>
-		[SmokeMethod("groupList() const")]
-		public override List<string> GroupList() {
-			return (List<string>) interceptor.Invoke("groupList", "groupList() const", typeof(List<string>));
-		}
-		/// <remarks>
-		///  Returns a map (tree) of entries for all entries in a particular
-		///  group.
-		///   Only the actual entry string is returned, none of the
-		///  other internal data should be included.
-		/// <param> name="pGroup" A group to get keys from.
-		/// </param></remarks>		<return> A map of entries in the group specified, indexed by key.
-		///          The returned map may be empty if the group is not found.
-		///    </return>
-		/// 		<short>    Returns a map (tree) of entries for all entries in a particular  group.</short>
-		[SmokeMethod("entryMap(const QString&) const")]
-		public override Dictionary<string, string> EntryMap(string pGroup) {
-			return (Dictionary<string, string>) interceptor.Invoke("entryMap$", "entryMap(const QString&) const", typeof(Dictionary<string, string>), typeof(string), pGroup);
-		}
-		/// <remarks>
-		///  Clears all internal data structures and then reread
-		///  configuration information from disk.
-		///    </remarks>		<short>    Clears all internal data structures and then reread  configuration information from disk.</short>
-		[SmokeMethod("reparseConfiguration()")]
-		public override void ReparseConfiguration() {
-			interceptor.Invoke("reparseConfiguration", "reparseConfiguration()", typeof(void));
-		}
-		/// <remarks>
-		///  Set the file mode for newly created files.
-		/// <param> name="mode" the mode for new files as described in chmod(2)
-		/// </param></remarks>		<short>    Set the file mode for newly created files.</short>
-		/// 		<see> man:chmod(2)</see>
-		/// 		<see> for</see>
-		/// 		<see> a</see>
-		/// 		<see> description</see>
-		/// 		<see> of</see>
-		/// 		<see> @p</see>
-		/// 		<see> mode</see>
-		public void SetFileWriteMode(int mode) {
-			interceptor.Invoke("setFileWriteMode$", "setFileWriteMode(int)", typeof(void), typeof(int), mode);
-		}
-		/// <remarks>
-		///  Forces all following write-operations being performed on kdeglobals,
-		///  independent of the bGlobal flag in writeEntry().
-		/// <param> name="force" true to force writing in kdeglobals
-		/// </param></remarks>		<short>    Forces all following write-operations being performed on kdeglobals,  independent of the bGlobal flag in writeEntry().</short>
-		/// 		<see> forceGlobal</see>
-		public void SetForceGlobal(bool force) {
-			interceptor.Invoke("setForceGlobal$", "setForceGlobal(bool)", typeof(void), typeof(bool), force);
-		}
-		/// <remarks>
-		///  Returns true if all entries are being written into kdeglobals.
-		/// </remarks>		<return> true if all entries are being written into kdeglobals
-		/// </return>
-		/// 		<short>    Returns true if all entries are being written into kdeglobals.</short>
-		/// 		<see> setForceGlobal</see>
-		public bool ForceGlobal() {
-			return (bool) interceptor.Invoke("forceGlobal", "forceGlobal() const", typeof(bool));
+		public KComponentData ComponentData() {
+			return (KComponentData) interceptor.Invoke("componentData", "componentData() const", typeof(KComponentData));
 		}
 		/// <remarks>
 		///  Checks whether the config file contains the update <code>id</code>
@@ -221,9 +70,18 @@ namespace Kimono {
 		///  not been updated yet.
 		/// <param> name="id" the update to check
 		/// </param><param> name="updateFile" the file containing the update
-		///    </param></remarks>		<short>    Checks whether the config file contains the update <code>id</code>  as contained in <code>updateFile.</code></short>
+		///      </param></remarks>		<short>    Checks whether the config file contains the update <code>id</code>  as contained in <code>updateFile.</code></short>
 		public void CheckUpdate(string id, string updateFile) {
 			interceptor.Invoke("checkUpdate$$", "checkUpdate(const QString&, const QString&)", typeof(void), typeof(string), id, typeof(string), updateFile);
+		}
+		/// <remarks>
+		///  Cleans all entries in the entry map, so the
+		///  values will not be written to disk on a later call to
+		///  sync().
+		///      </remarks>		<short>    Cleans all entries in the entry map, so the  values will not be written to disk on a later call to  sync().</short>
+		[SmokeMethod("clean()")]
+		public override void Clean() {
+			interceptor.Invoke("clean", "clean()", typeof(void));
 		}
 		/// <remarks>
 		///  Copies all entries from this config object to a new config
@@ -232,7 +90,7 @@ namespace Kimono {
 		///  destructed or when sync() is called upon it.
 		/// <param> name="file" the new config object will save itself to.
 		/// </param><param> name="config" optional config object to reuse
-		///    </param></remarks>		<short>    Copies all entries from this config object to a new config  object that will save itself to <code>file.</code></short>
+		///      </param></remarks>		<short>    Copies all entries from this config object to a new config  object that will save itself to <code>file.</code></short>
 		public KConfig CopyTo(string file, KConfig config) {
 			return (KConfig) interceptor.Invoke("copyTo$#", "copyTo(const QString&, KConfig*) const", typeof(KConfig), typeof(string), file, typeof(KConfig), config);
 		}
@@ -240,67 +98,117 @@ namespace Kimono {
 			return (KConfig) interceptor.Invoke("copyTo$", "copyTo(const QString&) const", typeof(KConfig), typeof(string), file);
 		}
 		/// <remarks>
-		///  Returns a lock file object for the configuration file or 0 if
-		///  the backend does not support locking.
-		/// <param> name="bGlobal" if true, return the lock file for the global config file
-		/// </param> NOTE: KConfig.Sync() requires a lock on both the normal and global
-		///  config file. When calling KConfig.Sync() while having a lock on the
-		///  global config file, the normal config file MUST be locked AS WELL and the
-		///  normal config file MUST be locked BEFORE the global config file!
-		///  Otherwise there is a risk of deadlock.
-		///    </remarks>		<short>    Returns a lock file object for the configuration file or 0 if  the backend does not support locking.</short>
-		public KConfigGroup Group(string s) {
-			return (KConfigGroup) interceptor.Invoke("group$", "group(const char*)", typeof(KConfigGroup), typeof(string), s);
-		}
-		public KConfigGroup Group(QByteArray b) {
-			return (KConfigGroup) interceptor.Invoke("group#", "group(const QByteArray&)", typeof(KConfigGroup), typeof(QByteArray), b);
+		///  Clears all internal data structures and then reread
+		///  configuration information from persistent storage.
+		///      </remarks>		<short>    Clears all internal data structures and then reread  configuration information from persistent storage.</short>
+		public void ReparseConfiguration() {
+			interceptor.Invoke("reparseConfiguration", "reparseConfiguration()", typeof(void));
 		}
 		/// <remarks>
-		///  Inserts a (key, value) pair into the internal storage mechanism of
-		///  the configuration object.
-		/// <param> name="_key" The key to insert.  It contains information both on
-		///         the group of the key and the key itself. If the key already
-		///         exists, the old value will be replaced.
-		/// </param><param> name="_data" the KEntry that is to be stored.
-		/// </param><param> name="_checkGroup" When false, assume that the group already exists.
-		///    </param></remarks>		<short>    Inserts a (key, value) pair into the internal storage mechanism of  the configuration object.</short>
-		/// <remarks>
-		///  Looks up an entry in the config object's internal structure.
-		/// <param> name="_key" The key to look up  It contains information both on
-		///         the group of the key and the entry's key itself.
-		/// </param></remarks>		<return> the KEntry value (data) found for the key.  KEntry.aValue
-		///  will be the null string if nothing was located.
-		///    </return>
-		/// 		<short>    Looks up an entry in the config object's internal structure.</short>
-		/// <remarks>
-		///  Returns true if the specified group is known.
-		/// <param> name="group" The group to search for.
-		/// </param></remarks>		<return> true if the group exists.
-		///    </return>
-		/// 		<short>    Returns true if the specified group is known.</short>
-		[SmokeMethod("internalHasGroup(const QByteArray&) const")]
-		protected override bool InternalHasGroup(QByteArray group) {
-			return (bool) interceptor.Invoke("internalHasGroup#", "internalHasGroup(const QByteArray&) const", typeof(bool), typeof(QByteArray), group);
+		///  Returns the state of the config object.
+		/// </remarks>		<return> the state of the config object
+		///      </return>
+		/// 		<short>    Returns the state of the config object.</short>
+		/// 		<see> ConfigState</see>
+		[SmokeMethod("getConfigState() const")]
+		public override KConfigBase.ConfigState GetConfigState() {
+			return (KConfigBase.ConfigState) interceptor.Invoke("getConfigState", "getConfigState() const", typeof(KConfigBase.ConfigState));
+		}
+		public bool IsConfigWritable(bool warnUser) {
+			return (bool) interceptor.Invoke("isConfigWritable$", "isConfigWritable(bool)", typeof(bool), typeof(bool), warnUser);
 		}
 		/// <remarks>
-		///  Returns a map (tree) of the entries in the specified group.
-		///  Do not use this function, the implementation / return type are
-		///  subject to change.
-		/// <param> name="pGroup" the group to provide a KEntryMap for.
-		/// </param></remarks>		<return> The map of the entries in the group.
-		///    </return>
-		/// 		<short>   </short>
+		///  Sets the merge stack to the list of files. The stack is last in first out with
+		///  the top of the stack being the most specific config file.
+		/// <param> name="files" A list of extra config files containing the full paths of the
+		///  local config files to set.
+		///      </param></remarks>		<short>    Sets the merge stack to the list of files.</short>
+		public void AddConfigSources(List<string> sources) {
+			interceptor.Invoke("addConfigSources?", "addConfigSources(const QStringList&)", typeof(void), typeof(List<string>), sources);
+		}
 		/// <remarks>
-		///  Returns a copy of the internal map used to hold all entries.
-		///  Do not use this function, the implementation / return type are
-		///  subject to change.
-		/// </remarks>		<return> The map of the entries in the group.
-		///    </return>
-		/// 		<short>   </short>
+		///  Returns the current locale.
+		///      </remarks>		<short>    Returns the current locale.</short>
+		public string Locale() {
+			return (string) interceptor.Invoke("locale", "locale() const", typeof(string));
+		}
+		/// <remarks>
+		///  Sets the locale to <code>aLocale.</code>
+		///  The global locale is used as default.
+		///  @note If set to the empty string, <b></b>o locale will be matched. This effectively disables
+		///  Native Language Support.
+		/// </remarks>		<return> @c true if locale was changed and configuration was reparsed.
+		///      </return>
+		/// 		<short>    Sets the locale to <code>aLocale.</code></short>
+		public bool SetLocale(string aLocale) {
+			return (bool) interceptor.Invoke("setLocale$", "setLocale(const QString&)", typeof(bool), typeof(string), aLocale);
+		}
+		public void SetReadDefaults(bool b) {
+			interceptor.Invoke("setReadDefaults$", "setReadDefaults(bool)", typeof(void), typeof(bool), b);
+		}
+		public bool ReadDefaults() {
+			return (bool) interceptor.Invoke("readDefaults", "readDefaults() const", typeof(bool));
+		}
+		[SmokeMethod("isImmutable() const")]
+		public override bool IsImmutable() {
+			return (bool) interceptor.Invoke("isImmutable", "isImmutable() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Returns a list of groups that are known.
+		/// </remarks>		<return> a list of of groups
+		///      </return>
+		/// 		<short>    Returns a list of groups that are known.</short>
+		[SmokeMethod("groupList() const")]
+		public override List<string> GroupList() {
+			return (List<string>) interceptor.Invoke("groupList", "groupList() const", typeof(List<string>));
+		}
+		/// <remarks>
+		///  Returns the filename passed to the constructor.
+		///      </remarks>		<short>    Returns the filename passed to the constructor.</short>
+		public string Name() {
+			return (string) interceptor.Invoke("name", "name() const", typeof(string));
+		}
+		/// <remarks>
+		///  Returns a map (tree) of entries in a particular group.  Only the actual entry as a string
+		///  is returned, none of the other internal data is included.
+		/// <param> name="aGroup" The group to get keys from
+		///  - If <code>aGroup</code> is the empty string "", the entries from the <b>default</b> group are returned.
+		///  - If <code>aGroup</code> is null, the entries from the current group are returned.
+		/// </param></remarks>		<return> A map of entries in the group specified, indexed by key.
+		///          The returned map may be empty if the group is empty, or not found.
+		/// </return>
+		/// 		<short>    Returns a map (tree) of entries in a particular group.</short>
+		/// 		<see> QMap</see>
+		public Dictionary<string, string> EntryMap(string aGroup) {
+			return (Dictionary<string, string>) interceptor.Invoke("entryMap$", "entryMap(const QString&) const", typeof(Dictionary<string, string>), typeof(string), aGroup);
+		}
+		public Dictionary<string, string> EntryMap() {
+			return (Dictionary<string, string>) interceptor.Invoke("entryMap", "entryMap() const", typeof(Dictionary<string, string>));
+		}
+		[SmokeMethod("hasGroupImpl(const QByteArray&) const")]
+		protected override bool HasGroupImpl(QByteArray group) {
+			return (bool) interceptor.Invoke("hasGroupImpl#", "hasGroupImpl(const QByteArray&) const", typeof(bool), typeof(QByteArray), group);
+		}
+		[SmokeMethod("groupImpl(const QByteArray&)")]
+		protected override KConfigGroup GroupImpl(QByteArray b) {
+			return (KConfigGroup) interceptor.Invoke("groupImpl#", "groupImpl(const QByteArray&)", typeof(KConfigGroup), typeof(QByteArray), b);
+		}
+		[SmokeMethod("deleteGroupImpl(const QByteArray&, KConfigBase::WriteConfigFlags)")]
+		protected override void DeleteGroupImpl(QByteArray group, uint flags) {
+			interceptor.Invoke("deleteGroupImpl#$", "deleteGroupImpl(const QByteArray&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(QByteArray), group, typeof(uint), flags);
+		}
+		[SmokeMethod("deleteGroupImpl(const QByteArray&)")]
+		protected virtual void DeleteGroupImpl(QByteArray group) {
+			interceptor.Invoke("deleteGroupImpl#", "deleteGroupImpl(const QByteArray&)", typeof(void), typeof(QByteArray), group);
+		}
+		[SmokeMethod("groupIsImmutableImpl(const QByteArray&) const")]
+		protected override bool GroupIsImmutableImpl(QByteArray aGroup) {
+			return (bool) interceptor.Invoke("groupIsImmutableImpl#", "groupIsImmutableImpl(const QByteArray&) const", typeof(bool), typeof(QByteArray), aGroup);
+		}
 		~KConfig() {
 			interceptor.Invoke("~KConfig", "~KConfig()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~KConfig", "~KConfig()", typeof(void));
 		}
 	}

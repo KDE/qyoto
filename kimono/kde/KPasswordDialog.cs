@@ -45,8 +45,8 @@ namespace Kimono {
 			PasswordError = 2,
 			FatalError = 3,
 		}
-		// KPasswordDialog* KPasswordDialog(QWidget* arg1,const KPasswordDialogFlags& arg2,const KDialog::ButtonCodes arg3); >>>> NOT CONVERTED
-		// KPasswordDialog* KPasswordDialog(QWidget* arg1,const KPasswordDialogFlags& arg2); >>>> NOT CONVERTED
+		// KPasswordDialog* KPasswordDialog(QWidget* arg1,const KPasswordDialog::KPasswordDialogFlags& arg2,const KDialog::ButtonCodes arg3); >>>> NOT CONVERTED
+		// KPasswordDialog* KPasswordDialog(QWidget* arg1,const KPasswordDialog::KPasswordDialogFlags& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  create a password dialog 
 		/// <param> name="parent" the parent widget (default:NULL).

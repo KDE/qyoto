@@ -56,8 +56,8 @@ namespace Kimono {
 		///  and creates the KArchiveDirectory/KArchiveFile entries.
 		///      </remarks>		<short>    Opens the archive for reading.</short>
 		[SmokeMethod("openArchive(QIODevice::OpenMode)")]
-		protected override bool OpenArchive(int mode) {
-			return (bool) interceptor.Invoke("openArchive$", "openArchive(QIODevice::OpenMode)", typeof(bool), typeof(int), mode);
+		protected override bool OpenArchive(uint mode) {
+			return (bool) interceptor.Invoke("openArchive$", "openArchive(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		[SmokeMethod("closeArchive()")]
 		protected override bool CloseArchive() {

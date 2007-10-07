@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Text;
 	using System.Collections.Generic;
 
 	/// <remarks>
@@ -36,6 +37,17 @@ namespace Kimono {
 		}
 		// KService::Ptr preferredService(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
 		// KService::Ptr preferredService(const QString& arg1); >>>> NOT CONVERTED
+		// template <T>  T* createPartInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3,const QString& arg4,const QVariantList& arg5,QString* arg6); >>>> NOT CONVERTED
+		// template <T>  T* createPartInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3,const QString& arg4,const QVariantList& arg5); >>>> NOT CONVERTED
+		// template <T>  T* createPartInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3,const QString& arg4); >>>> NOT CONVERTED
+		// template <T>  T* createPartInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3); >>>> NOT CONVERTED
+		// template <T>  T* createPartInstanceFromQuery(const QString& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// template <T>  T* createPartInstanceFromQuery(const QString& arg1); >>>> NOT CONVERTED
+		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3,const QString& arg4,const QVariantList& arg5,QString* arg6); >>>> NOT CONVERTED
+		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3,const QString& arg4,const QVariantList& arg5); >>>> NOT CONVERTED
+		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3,const QString& arg4); >>>> NOT CONVERTED
+		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3); >>>> NOT CONVERTED
+		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  This method returns a list of services which are associated with a given mimetype.
 		///  Example usage:
@@ -80,6 +92,39 @@ namespace Kimono {
 		/// </param></remarks>		<return> the preferred service, or 0 if no service is available
 		///      </return>
 		/// 		<short>    Returns the preferred service for <code>mimeType</code> and <code>genericServiceType</code> </short>
+		/// <remarks>
+		///  This method creates and returns a part object from the trader query for a given <pre>mimeType</pre>.
+		///  Example:
+		///  <pre>
+		///  KParts.ReadOnlyPart part = KMimeTypeTrader.CreateInstanceFromQuery<KParts.ReadOnlyPart>("text/plain", parentWidget, parentObject);
+		///  if (part) {
+		///      part.OpenUrl(url);
+		///      part.Widget().Show();  // also insert the widget into a layout, or simply use a KVBox as parentWidget
+		///  }
+		///  </pre>
+		/// <param> name="mimeType" the mimetype which this part is associated with
+		/// </param><param> name="parentWidget" the parent widget, will be set as the parent of the part's widget
+		/// </param><param> name="parent" the parent object for the part itself
+		/// </param><param> name="constraint" an optional constraint to pass to the trader
+		/// </param><param> name="args" A list of arguments passed to the service component
+		/// </param><param> name="error" The string passed here will contain an error description.
+		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
+		///          factory was unable to create an object of the given type.
+		///      </return>
+		/// 		<short>    This method creates and returns a part object from the trader query for a given \p mimeType.</short>
+		/// <remarks>
+		///  This can be used to create a service instance from a mime type query
+		/// <param> name="mimeType" A mime type like 'text/plain' or 'text/html'.
+		/// </param><param> name="genericServiceType" a basic service type
+		/// </param><param> name="parent" the parent object for the plugin itself
+		/// </param><param> name="constraint" A constraint to limit the choices returned, string() to
+		///                     get all services that can handle the given <code>mimetype</code>
+		/// </param><param> name="args" A list of arguments passed to the service component
+		/// </param><param> name="error" The string passed here will contain an error description.
+		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
+		///          factory was unable to create an object of the given type.
+		///      </return>
+		/// 		<short>    This can be used to create a service instance from a mime type query </short>
 		/// <remarks>
 		///  This is a static pointer to the KMimeTypeTrader singleton.
 		///  You will need to use this to access the KMimeTypeTrader functionality since the

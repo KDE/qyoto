@@ -58,8 +58,6 @@ namespace Kimono {
 		public const int KilledJobError = 1;
 		public const int UserDefinedError = 100;
 
-		// Capabilities capabilities(); >>>> NOT CONVERTED
-		// void setCapabilities(Capabilities arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new KJob object.
 		/// <param> name="parent" the parent QObject
@@ -96,6 +94,9 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Returns the capabilities of this job.</short>
 		/// 		<see> setCapabilities</see>
+		public uint Capabilities() {
+			return (uint) interceptor.Invoke("capabilities", "capabilities() const", typeof(uint));
+		}
 		/// <remarks>
 		///  Returns if the job was suspended with the suspend() call.
 		/// </remarks>		<return> if the job was suspended
@@ -256,6 +257,9 @@ namespace Kimono {
 		/// <param> name="capabilities" are the capabilities supported by this job
 		/// </param></remarks>		<short>    Sets the capabilities for this job.</short>
 		/// 		<see> capabilities</see>
+		protected void SetCapabilities(uint capabilities) {
+			interceptor.Invoke("setCapabilities$", "setCapabilities(KJob::Capabilities)", typeof(void), typeof(uint), capabilities);
+		}
 		/// <remarks>
 		///  Sets the error code. It should be called when an error
 		///  is encountered in the job, just before calling emitResult().

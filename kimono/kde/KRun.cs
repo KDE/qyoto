@@ -163,10 +163,16 @@ namespace Kimono {
 		public string SuggestedFileName() {
 			return (string) interceptor.Invoke("suggestedFileName", "suggestedFileName() const", typeof(string));
 		}
+		/// <remarks>
+		///  Initializes the krun object.
+		///    </remarks>		<short>    Initializes the krun object.</short>
 		[SmokeMethod("init()")]
 		protected virtual void Init() {
 			interceptor.Invoke("init", "init()", typeof(void));
 		}
+		/// <remarks>
+		///  Start scanning a file.
+		///    </remarks>		<short>    Start scanning a file.</short>
 		[SmokeMethod("scanFile()")]
 		protected virtual void ScanFile() {
 			interceptor.Invoke("scanFile", "scanFile()", typeof(void));
@@ -180,22 +186,153 @@ namespace Kimono {
 		protected virtual void FoundMimeType(string type) {
 			interceptor.Invoke("foundMimeType$", "foundMimeType(const QString&)", typeof(void), typeof(string), type);
 		}
+		/// <remarks>
+		///  Kills the file scanning job.
+		///    </remarks>		<short>    Kills the file scanning job.</short>
 		[SmokeMethod("killJob()")]
 		protected virtual void KillJob() {
 			interceptor.Invoke("killJob", "killJob()", typeof(void));
 		}
+		/// <remarks>
+		///  Sets the url.
+		///    </remarks>		<short>    Sets the url.</short>
+		protected void SetUrl(KUrl url) {
+			interceptor.Invoke("setUrl#", "setUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
+		}
+		/// <remarks>
+		///  Returns the url.
+		///    </remarks>		<short>    Returns the url.</short>
+		protected KUrl Url() {
+			return (KUrl) interceptor.Invoke("url", "url() const", typeof(KUrl));
+		}
+		/// <remarks>
+		///  Sets whether an error has occured.
+		///    </remarks>		<short>    Sets whether an error has occured.</short>
+		protected void SetError(bool error) {
+			interceptor.Invoke("setError$", "setError(bool)", typeof(void), typeof(bool), error);
+		}
+		/// <remarks>
+		///  Sets whether progress information shall be shown.
+		///    </remarks>		<short>    Sets whether progress information shall be shown.</short>
+		protected void SetProgressInfo(bool progressInfo) {
+			interceptor.Invoke("setProgressInfo$", "setProgressInfo(bool)", typeof(void), typeof(bool), progressInfo);
+		}
+		/// <remarks>
+		///  Returns whether progress information are shown.
+		///    </remarks>		<short>    Returns whether progress information are shown.</short>
+		protected bool ProgressInfo() {
+			return (bool) interceptor.Invoke("progressInfo", "progressInfo() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Marks the job as finished.
+		///    </remarks>		<short>    Marks the job as finished.</short>
+		protected void SetFinished(bool finished) {
+			interceptor.Invoke("setFinished$", "setFinished(bool)", typeof(void), typeof(bool), finished);
+		}
+		/// <remarks>
+		///  Sets the job.
+		///    </remarks>		<short>    Sets the job.</short>
+		protected void SetJob(KIO.Job job) {
+			interceptor.Invoke("setJob#", "setJob(KIO::Job*)", typeof(void), typeof(KIO.Job), job);
+		}
+		/// <remarks>
+		///  Returns the job.
+		///    </remarks>		<short>    Returns the job.</short>
+		protected KIO.Job Job() {
+			return (KIO.Job) interceptor.Invoke("job", "job()", typeof(KIO.Job));
+		}
+		/// <remarks>
+		///  Returns the timer object.
+		///    </remarks>		<short>    Returns the timer object.</short>
+		protected QTimer Timer() {
+			return (QTimer) interceptor.Invoke("timer", "timer()", typeof(QTimer));
+		}
+		/// <remarks>
+		///  Sets whether the file shall be scanned.
+		///    </remarks>		<short>    Sets whether the file shall be scanned.</short>
+		protected void SetDoScanFile(bool scanFile) {
+			interceptor.Invoke("setDoScanFile$", "setDoScanFile(bool)", typeof(void), typeof(bool), scanFile);
+		}
+		/// <remarks>
+		///  Returns whether the file shall be scanned.
+		///    </remarks>		<short>    Returns whether the file shall be scanned.</short>
+		protected bool DoScanFile() {
+			return (bool) interceptor.Invoke("doScanFile", "doScanFile() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Sets whether it is a directory.
+		///    </remarks>		<short>    Sets whether it is a directory.</short>
+		protected void SetIsDirecory(bool isDirectory) {
+			interceptor.Invoke("setIsDirecory$", "setIsDirecory(bool)", typeof(void), typeof(bool), isDirectory);
+		}
+		/// <remarks>
+		///  Returns whether it is a directory.
+		///    </remarks>		<short>    Returns whether it is a directory.</short>
+		protected bool IsDirectory() {
+			return (bool) interceptor.Invoke("isDirectory", "isDirectory() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Returns whether the next action shall be initialized.
+		///    </remarks>		<short>    Returns whether the next action shall be initialized.</short>
+		protected void SetInitializeNextAction(bool initialize) {
+			interceptor.Invoke("setInitializeNextAction$", "setInitializeNextAction(bool)", typeof(void), typeof(bool), initialize);
+		}
+		/// <remarks>
+		///  Returns whether the next action shall be initialized.
+		///    </remarks>		<short>    Returns whether the next action shall be initialized.</short>
+		protected bool InitializeNextAction() {
+			return (bool) interceptor.Invoke("initializeNextAction", "initializeNextAction() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Sets whether it is a local file.
+		///    </remarks>		<short>    Sets whether it is a local file.</short>
+		protected void SetIsLocalFile(bool isLocalFile) {
+			interceptor.Invoke("setIsLocalFile$", "setIsLocalFile(bool)", typeof(void), typeof(bool), isLocalFile);
+		}
+		/// <remarks>
+		///  Returns whether it is a local file.
+		///    </remarks>		<short>    Returns whether it is a local file.</short>
+		protected bool IsLocalFile() {
+			return (bool) interceptor.Invoke("isLocalFile", "isLocalFile() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Sets the file mode.
+		///    </remarks>		<short>    Sets the file mode.</short>
+		protected void SetMode(long mode) {
+			interceptor.Invoke("setMode$", "setMode(mode_t)", typeof(void), typeof(long), mode);
+		}
+		/// <remarks>
+		///  Returns the file mode.
+		///    </remarks>		<short>    Returns the file mode.</short>
+		protected long Mode() {
+			return (long) interceptor.Invoke("mode", "mode() const", typeof(long));
+		}
+		/// <remarks>
+		///  This slot is called whenever the internal time has
+		///  a timeout.
+		///    </remarks>		<short>    This slot is called whenever the internal time has  a timeout.</short>
 		[Q_SLOT("void slotTimeout()")]
 		protected void SlotTimeout() {
 			interceptor.Invoke("slotTimeout", "slotTimeout()", typeof(void));
 		}
+		/// <remarks>
+		///  This slot is called when the scan job is finished.
+		///    </remarks>		<short>    This slot is called when the scan job is finished.</short>
 		[Q_SLOT("void slotScanFinished(KJob*)")]
 		protected void SlotScanFinished(KJob arg1) {
 			interceptor.Invoke("slotScanFinished#", "slotScanFinished(KJob*)", typeof(void), typeof(KJob), arg1);
 		}
+		/// <remarks>
+		///  This slot is called when the scan job has found out
+		///  the mime type.
+		///    </remarks>		<short>    This slot is called when the scan job has found out  the mime type.</short>
 		[Q_SLOT("void slotScanMimeType(KIO::Job*, const QString&)")]
 		protected void SlotScanMimeType(KIO.Job arg1, string type) {
 			interceptor.Invoke("slotScanMimeType#$", "slotScanMimeType(KIO::Job*, const QString&)", typeof(void), typeof(KIO.Job), arg1, typeof(string), type);
 		}
+		/// <remarks>
+		///  This slot is called when the 'stat' job has finished.
+		///    </remarks>		<short>    This slot is called when the 'stat' job has finished.</short>
 		[Q_SLOT("void slotStatResult(KJob*)")]
 		[SmokeMethod("slotStatResult(KJob*)")]
 		protected virtual void SlotStatResult(KJob arg1) {

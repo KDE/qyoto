@@ -38,11 +38,14 @@ namespace Kimono {
 		}
 		public const int Unknown = -1;
 
+		// KIO::filesize_t size(); >>>> NOT CONVERTED
 		// KMimeType::Ptr determineMimeType(); >>>> NOT CONVERTED
 		// KMimeType::Ptr mimeTypePtr(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Null KFileItem. Doesn't represent any file, only exists for convenience.
+		///  NOTE KDE 4.0 when porting from KFileItem to KFileItem&:
+		///  '(KFileItem)a==0'  becomes '(KFileItem)a.isNull()'
 		///      </remarks>		<short>    Null KFileItem.</short>
 		public KFileItem() : this((Type) null) {
 			CreateProxy();
@@ -286,9 +289,6 @@ namespace Kimono {
 		/// </remarks>		<return> the file size, or 0 if not known
 		///      </return>
 		/// 		<short>    Returns the size of the file, if known.</short>
-		public long Size() {
-			return (long) interceptor.Invoke("size", "size() const", typeof(long));
-		}
 		/// <remarks>
 		///  Requests the modification, access or creation time, depending on <code>which.</code>
 		/// <param> name="which" the timestamp
@@ -296,8 +296,8 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Requests the modification, access or creation time, depending on <code>which.</code></short>
 		/// 		<see> timeString</see>
-		public int Time(KFileItem.FileTimes which) {
-			return (int) interceptor.Invoke("time$", "time(KFileItem::FileTimes) const", typeof(int), typeof(KFileItem.FileTimes), which);
+		public KDateTime Time(KFileItem.FileTimes which) {
+			return (KDateTime) interceptor.Invoke("time$", "time(KFileItem::FileTimes) const", typeof(KDateTime), typeof(KFileItem.FileTimes), which);
 		}
 		/// <remarks>
 		///  Requests the modification, access or creation time as a string, depending
@@ -399,8 +399,8 @@ namespace Kimono {
 		///  Returns a pixmap representing the file.
 		/// <param> name="_size" Size for the pixmap in pixels. Zero will return the
 		///  globally configured default size.
-		/// </param><param> name="_state" The state of the icon: K3Icon.DefaultState,
-		///  K3Icon.ActiveState or K3Icon.DisabledState.
+		/// </param><param> name="_state" The state of the icon: KIconLoader.DefaultState,
+		///  KIconLoader.ActiveState or KIconLoader.DisabledState.
 		/// </param></remarks>		<return> the pixmap
 		///      </return>
 		/// 		<short>    Returns a pixmap representing the file.</short>
@@ -411,12 +411,12 @@ namespace Kimono {
 			return (QPixmap) interceptor.Invoke("pixmap$", "pixmap(int) const", typeof(QPixmap), typeof(int), _size);
 		}
 		/// <remarks>
-		///  Returns the overlays (bitfield of K3Icon.Overlay flags) that are used
+		///  Returns the overlays (bitfield of KIconLoader.Overlay flags) that are used
 		///  for this item's pixmap. Overlays are used to show for example, whether
 		///  a file can be modified.
 		/// </remarks>		<return> the overlays of the pixmap
 		///      </return>
-		/// 		<short>    Returns the overlays (bitfield of K3Icon. Overlay flags) that are used  for this item's pixmap.</short>
+		/// 		<short>    Returns the overlays (bitfield of KIconLoader. Overlay flags) that are used  for this item's pixmap.</short>
 		public List<string> Overlays() {
 			return (List<string>) interceptor.Invoke("overlays", "overlays() const", typeof(List<string>));
 		}
@@ -509,10 +509,11 @@ namespace Kimono {
 		///      </remarks>		<short>    Converts this KFileItem to a QVariant, this allows to use KFileItem  in QVariant() constructor      </short>
 		/// <remarks>
 		///  Sets the metainfo of this item to <code>info.</code>
+		///  Made const to avoid deep copy.
 		/// <param> name="info" the new meta info
 		///      </param></remarks>		<short>    Sets the metainfo of this item to <code>info.</code></short>
 		public void SetMetaInfo(KFileMetaInfo info) {
-			interceptor.Invoke("setMetaInfo#", "setMetaInfo(const KFileMetaInfo&)", typeof(void), typeof(KFileMetaInfo), info);
+			interceptor.Invoke("setMetaInfo#", "setMetaInfo(const KFileMetaInfo&) const", typeof(void), typeof(KFileMetaInfo), info);
 		}
 		/// <remarks>
 		///  Returns the metainfo of this item.

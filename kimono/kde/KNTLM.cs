@@ -57,9 +57,6 @@ namespace Kimono {
 			Force_V2 = 0x2,
 			Add_LM = 0x4,
 		}
-		// bool getAuth(QByteArray& arg1,const QByteArray& arg2,const QString& arg3,const QString& arg4,const QString& arg5,const QString& arg6,AuthFlags arg7); >>>> NOT CONVERTED
-		// QString getString(const QByteArray& arg1,const KNTLM::SecBuf& arg2,bool arg3); >>>> NOT CONVERTED
-		// QByteArray getBuf(const QByteArray& arg1,const KNTLM::SecBuf& arg2); >>>> NOT CONVERTED
 		public KNTLM() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KNTLM", "KNTLM()", typeof(void));
@@ -110,6 +107,9 @@ namespace Kimono {
 		///  no NTLMv2 supported, or no NTLM supported at all, and Add_LM not specified).
 		///    </return>
 		/// 		<short>    Creates the type 3 message which should be sent to the server after   the challenge (type 2) received.</short>
+		public static bool GetAuth(QByteArray auth, QByteArray challenge, string user, string password, string domain, string workstation, uint authflags) {
+			return (bool) staticInterceptor.Invoke("getAuth##$$$$$", "getAuth(QByteArray&, const QByteArray&, const QString&, const QString&, const QString&, const QString&, KNTLM::AuthFlags)", typeof(bool), typeof(QByteArray), auth, typeof(QByteArray), challenge, typeof(string), user, typeof(string), password, typeof(string), domain, typeof(string), workstation, typeof(uint), authflags);
+		}
 		public static bool GetAuth(QByteArray auth, QByteArray challenge, string user, string password, string domain, string workstation) {
 			return (bool) staticInterceptor.Invoke("getAuth##$$$$", "getAuth(QByteArray&, const QByteArray&, const QString&, const QString&, const QString&, const QString&)", typeof(bool), typeof(QByteArray), auth, typeof(QByteArray), challenge, typeof(string), user, typeof(string), password, typeof(string), domain, typeof(string), workstation);
 		}
@@ -172,18 +172,6 @@ namespace Kimono {
 		///    </remarks>		<short>    Calculates the LMv2 response.</short>
 		public static QByteArray Lmv2Response(QByteArray hash, QByteArray clientData, ushort challenge) {
 			return (QByteArray) staticInterceptor.Invoke("lmv2Response##$", "lmv2Response(const QByteArray&, const QByteArray&, const unsigned char*)", typeof(QByteArray), typeof(QByteArray), hash, typeof(QByteArray), clientData, typeof(ushort), challenge);
-		}
-		/// <remarks>
-		///  Extracts a string field from an NTLM structure.
-		///    </remarks>		<short>    Extracts a string field from an NTLM structure.</short>
-		/// <remarks>
-		///  Extracts a byte array from an NTLM structure.
-		///    </remarks>		<short>    Extracts a byte array from an NTLM structure.</short>
-		public static QByteArray CreateBlob(QByteArray targetinfo) {
-			return (QByteArray) staticInterceptor.Invoke("createBlob#", "createBlob(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), targetinfo);
-		}
-		public static QByteArray HmacMD5(QByteArray data, QByteArray key) {
-			return (QByteArray) staticInterceptor.Invoke("hmacMD5##", "hmacMD5(const QByteArray&, const QByteArray&)", typeof(QByteArray), typeof(QByteArray), data, typeof(QByteArray), key);
 		}
 	}
 }

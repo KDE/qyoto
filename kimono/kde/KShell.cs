@@ -45,11 +45,11 @@ namespace Kimono {
 		/// </param></remarks>		<return> a list of unquoted words or an empty list if an error occurred
 		///      </return>
 		/// 		<short>    Splits <code>cmd</code> according to POSIX shell word splitting and quoting rules.</short>
-		public static List<string> SplitArgs(string cmd, int flags, KShell.Errors err) {
-			return (List<string>) staticInterceptor.Invoke("splitArgs$$$", "splitArgs(const QString&, Options, KShell::Errors*)", typeof(List<string>), typeof(string), cmd, typeof(int), flags, typeof(KShell.Errors), err);
+		public static List<string> SplitArgs(string cmd, uint flags, KShell.Errors err) {
+			return (List<string>) staticInterceptor.Invoke("splitArgs$$$", "splitArgs(const QString&, KShell::Options, KShell::Errors*)", typeof(List<string>), typeof(string), cmd, typeof(uint), flags, typeof(KShell.Errors), err);
 		}
-		public static List<string> SplitArgs(string cmd, int flags) {
-			return (List<string>) staticInterceptor.Invoke("splitArgs$$", "splitArgs(const QString&, Options)", typeof(List<string>), typeof(string), cmd, typeof(int), flags);
+		public static List<string> SplitArgs(string cmd, uint flags) {
+			return (List<string>) staticInterceptor.Invoke("splitArgs$$", "splitArgs(const QString&, KShell::Options)", typeof(List<string>), typeof(string), cmd, typeof(uint), flags);
 		}
 		public static List<string> SplitArgs(string cmd) {
 			return (List<string>) staticInterceptor.Invoke("splitArgs$", "splitArgs(const QString&)", typeof(List<string>), typeof(string), cmd);
@@ -78,16 +78,14 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Performs tilde expansion on <code>path.</code> Interprets "~/path" and
-		///  "~user/path".
+		///  "~user/path". If the path starts with "\~" (i.e., an escaped tilde),
+		///  the backslash is removed and the path is returned as is.
 		/// <param> name="path" the path to tilde-expand
 		/// </param></remarks>		<return> the expanded path
 		///      </return>
 		/// 		<short>    Performs tilde expansion on <code>path.</code></short>
 		public static string TildeExpand(string path) {
 			return (string) staticInterceptor.Invoke("tildeExpand$", "tildeExpand(const QString&)", typeof(string), typeof(string), path);
-		}
-		public static bool MatchFileName(string filename, string pattern) {
-			return (bool) staticInterceptor.Invoke("matchFileName$$", "matchFileName(const QString&, const QString&)", typeof(bool), typeof(string), filename, typeof(string), pattern);
 		}
 	}
 }

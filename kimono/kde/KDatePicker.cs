@@ -105,13 +105,13 @@ namespace Kimono {
 		/// <remarks>
 		///  Enables or disables the widget.
 		/// </remarks>		<short>    Enables or disables the widget.</short>
-		public void SetEnabled(bool arg1) {
-			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), arg1);
+		public void SetEnabled(bool enable) {
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the KDateTable widget child of this KDatePicker
 		///  widget.
-		///    </return>
+		///      </return>
 		/// 		<short>   </short>
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
@@ -122,8 +122,8 @@ namespace Kimono {
 			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
 		[Q_SLOT("void dateChangedSlot(const QDate&)")]
-		protected void DateChangedSlot(QDate arg1) {
-			interceptor.Invoke("dateChangedSlot#", "dateChangedSlot(const QDate&)", typeof(void), typeof(QDate), arg1);
+		protected void DateChangedSlot(QDate date) {
+			interceptor.Invoke("dateChangedSlot#", "dateChangedSlot(const QDate&)", typeof(void), typeof(QDate), date);
 		}
 		[Q_SLOT("void tableClickedSlot()")]
 		protected void TableClickedSlot() {
@@ -184,24 +184,24 @@ namespace Kimono {
 		/// </remarks>		<short>   This signal is emitted each time the selected date is changed.</short>
 		/// 		<see> dateSelected</see>
 		[Q_SIGNAL("void dateChanged(const QDate&)")]
-		void DateChanged(QDate arg1);
+		void DateChanged(QDate date);
 		/// <remarks> This signal is emitted each time a day has been selected by
 		///   clicking on the table (hitting a day in the current month). It
 		///   has the same meaning as dateSelected() in older versions of
 		///   KDatePicker.
-		///    </remarks>		<short>   This signal is emitted each time a day has been selected by   clicking on the table (hitting a day in the current month).</short>
+		///      </remarks>		<short>   This signal is emitted each time a day has been selected by   clicking on the table (hitting a day in the current month).</short>
 		[Q_SIGNAL("void dateSelected(const QDate&)")]
-		void DateSelected(QDate arg1);
+		void DateSelected(QDate date);
 		/// <remarks> This signal is emitted when enter is pressed and a VALID date
 		///   has been entered before into the line edit. Connect to both
 		///   dateEntered() and dateSelected() to receive all events where the
 		///   user really enters a date.
-		///    </remarks>		<short>   This signal is emitted when enter is pressed and a VALID date   has been entered before into the line edit.</short>
+		///      </remarks>		<short>   This signal is emitted when enter is pressed and a VALID date   has been entered before into the line edit.</short>
 		[Q_SIGNAL("void dateEntered(const QDate&)")]
-		void DateEntered(QDate arg1);
+		void DateEntered(QDate date);
 		/// <remarks> This signal is emitted when the day has been selected by
 		///   clicking on it in the table.
-		///    </remarks>		<short>   This signal is emitted when the day has been selected by   clicking on it in the table.</short>
+		///      </remarks>		<short>   This signal is emitted when the day has been selected by   clicking on it in the table.</short>
 		[Q_SIGNAL("void tableClicked()")]
 		void TableClicked();
 	}

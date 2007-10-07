@@ -32,16 +32,13 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KListWidget", "KListWidget()", typeof(void));
 		}
-		protected void EmitExecute(QListWidgetItem item, QPoint pos) {
-			interceptor.Invoke("emitExecute##", "emitExecute(QListWidgetItem*, const QPoint&)", typeof(void), typeof(QListWidgetItem), item, typeof(QPoint), pos);
-		}
 		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected override void KeyPressEvent(QKeyEvent e) {
 			interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), e);
 		}
 		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
-		protected override void FocusOutEvent(QFocusEvent fe) {
-			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), fe);
+		protected override void FocusOutEvent(QFocusEvent e) {
+			interceptor.Invoke("focusOutEvent#", "focusOutEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), e);
 		}
 		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected override void LeaveEvent(QEvent e) {
@@ -54,25 +51,6 @@ namespace Kimono {
 		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected override void MouseDoubleClickEvent(QMouseEvent e) {
 			interceptor.Invoke("mouseDoubleClickEvent#", "mouseDoubleClickEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), e);
-		}
-		[Q_SLOT("void slotItemEntered(QListWidgetItem*)")]
-		protected void SlotItemEntered(QListWidgetItem item) {
-			interceptor.Invoke("slotItemEntered#", "slotItemEntered(QListWidgetItem*)", typeof(void), typeof(QListWidgetItem), item);
-		}
-		[Q_SLOT("void slotOnViewport()")]
-		protected void SlotOnViewport() {
-			interceptor.Invoke("slotOnViewport", "slotOnViewport()", typeof(void));
-		}
-		[Q_SLOT("void slotSettingsChanged(int)")]
-		protected void SlotSettingsChanged(int arg1) {
-			interceptor.Invoke("slotSettingsChanged$", "slotSettingsChanged(int)", typeof(void), typeof(int), arg1);
-		}
-		/// <remarks>
-		///  Auto selection happend.
-		///    </remarks>		<short>    Auto selection happend.</short>
-		[Q_SLOT("void slotAutoSelect()")]
-		protected void SlotAutoSelect() {
-			interceptor.Invoke("slotAutoSelect", "slotAutoSelect()", typeof(void));
 		}
 		~KListWidget() {
 			interceptor.Invoke("~KListWidget", "~KListWidget()", typeof(void));

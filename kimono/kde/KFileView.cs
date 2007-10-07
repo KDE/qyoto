@@ -17,14 +17,14 @@ namespace Kimono {
 		void UpdateView(KFileItem arg1);
 		void RemoveItem(KFileItem item);
 		void ListingCompleted();
-		int Sorting();
-		void SetSorting(int sort);
+		uint Sorting();
+		void SetSorting(uint sort);
 		bool IsReversed();
 		void SortReversed();
 		uint Count();
 		uint NumFiles();
 		uint NumDirs();
-		void SetSelectionMode(KFile.SelectionMode sm);
+		void SetSelectionMode(int sm);
 		void SetViewMode(KFileView.ViewMode vm);
 		KFileView.ViewMode viewMode();
 		string ViewName();
@@ -95,13 +95,17 @@ namespace Kimono {
 		public enum DropOptions {
 			AutoOpenDirs = 1,
 		}
+		// QString sortingKey(KIO::filesize_t arg1,bool arg2,QDir::SortFlags arg3); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Creates a new file view.
+		///      </remarks>		<short>    Creates a new file view.</short>
 		public KFileView() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KFileView", "KFileView()", typeof(void));
 		}
 		/// <remarks>
-		///  inserts a list of items.
-		/// </remarks>		<short>    inserts a list of items.</short>
+		///  Inserts a list of items.
+		/// </remarks>		<short>    Inserts a list of items.</short>
 		public void AddItemList(List<KFileItem> list) {
 			interceptor.Invoke("addItemList#", "addItemList(const KFileItemList&)", typeof(void), typeof(List<KFileItem>), list);
 		}
@@ -122,11 +126,11 @@ namespace Kimono {
 		///  Reimplement this to set <code>item</code> the current item in the view, e.g.
 		///  the item having focus.
 		///      </remarks>		<short>    Reimplement this to set <code>item</code> the current item in the view, e.</short>
-		[SmokeMethod("setCurrentItem(const KFileItem*)")]
+		[SmokeMethod("setCurrentItem(const KFileItem&)")]
 		public abstract void SetCurrentItem(KFileItem item);
 		/// <remarks>
 		/// </remarks>		<return> the "current" KFileItem, e.g. where the cursor is.
-		///  Returns 0L when there is no current item (e.g. in an empty view).
+		///  Returns an null file item when there is no current item (e.g. in an empty view).
 		///  Subclasses have to implement this.
 		///      </return>
 		/// 		<short>   </short>
@@ -154,17 +158,17 @@ namespace Kimono {
 		public virtual void UpdateView() {
 			interceptor.Invoke("updateView", "updateView()", typeof(void));
 		}
-		[SmokeMethod("updateView(const KFileItem*)")]
+		[SmokeMethod("updateView(const KFileItem&)")]
 		public virtual void UpdateView(KFileItem arg1) {
-			interceptor.Invoke("updateView#", "updateView(const KFileItem*)", typeof(void), typeof(KFileItem), arg1);
+			interceptor.Invoke("updateView#", "updateView(const KFileItem&)", typeof(void), typeof(KFileItem), arg1);
 		}
 		/// <remarks>
 		///  Removes an item from the list; has to be implemented by the view.
 		///  Call KFileView.RemoveItem( item ) after removing it.
 		///      </remarks>		<short>    Removes an item from the list; has to be implemented by the view.</short>
-		[SmokeMethod("removeItem(const KFileItem*)")]
+		[SmokeMethod("removeItem(const KFileItem&)")]
 		public virtual void RemoveItem(KFileItem item) {
-			interceptor.Invoke("removeItem#", "removeItem(const KFileItem*)", typeof(void), typeof(KFileItem), item);
+			interceptor.Invoke("removeItem#", "removeItem(const KFileItem&)", typeof(void), typeof(KFileItem), item);
 		}
 		/// <remarks>
 		///  This hook is called when all items of the currently listed directory
@@ -179,8 +183,8 @@ namespace Kimono {
 		///  Returns the sorting order of the internal list. Newly added files
 		///  are added through this sorting.
 		///       </remarks>		<short>    Returns the sorting order of the internal list.</short>
-		public int Sorting() {
-			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
+		public uint Sorting() {
+			return (uint) interceptor.Invoke("sorting", "sorting() const", typeof(uint));
 		}
 		/// <remarks>
 		///  Sets the sorting order of the view.
@@ -194,8 +198,8 @@ namespace Kimono {
 		/// </remarks>		<short>    Sets the sorting order of the view.</short>
 		/// 		<see> sortingKey</see>
 		[SmokeMethod("setSorting(QDir::SortFlags)")]
-		public virtual void SetSorting(int sort) {
-			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(int), sort);
+		public virtual void SetSorting(uint sort) {
+			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(uint), sort);
 		}
 		/// <remarks>
 		///  Tells whether the current items are in reversed order (shortcut to
@@ -229,8 +233,8 @@ namespace Kimono {
 			return (uint) interceptor.Invoke("numDirs", "numDirs() const", typeof(uint));
 		}
 		[SmokeMethod("setSelectionMode(KFile::SelectionMode)")]
-		public virtual void SetSelectionMode(KFile.SelectionMode sm) {
-			interceptor.Invoke("setSelectionMode$", "setSelectionMode(KFile::SelectionMode)", typeof(void), typeof(KFile.SelectionMode), sm);
+		public virtual void SetSelectionMode(int sm) {
+			interceptor.Invoke("setSelectionMode?", "setSelectionMode(KFile::SelectionMode)", typeof(void), typeof(int), sm);
 		}
 		[SmokeMethod("setViewMode(KFileView::ViewMode)")]
 		public virtual void SetViewMode(KFileView.ViewMode vm) {
@@ -266,9 +270,9 @@ namespace Kimono {
 		///  Make sure to call this implementation, i.e.
 		///  KFileView.InsertItem( i );
 		///      </remarks>		<short>    The derived view must implement this function to add  the file in the widget.</short>
-		[SmokeMethod("insertItem(KFileItem*)")]
+		[SmokeMethod("insertItem(const KFileItem&)")]
 		public virtual void InsertItem(KFileItem i) {
-			interceptor.Invoke("insertItem#", "insertItem(KFileItem*)", typeof(void), typeof(KFileItem), i);
+			interceptor.Invoke("insertItem#", "insertItem(const KFileItem&)", typeof(void), typeof(KFileItem), i);
 		}
 		/// <remarks>
 		///  pure function, that should be implemented to clear
@@ -280,7 +284,7 @@ namespace Kimono {
 		///  pure function, that should be implemented to make item i
 		///  visible, i.e. by scrolling the view appropriately.
 		///      </remarks>		<short>    pure virtual function, that should be implemented to make item i  visible, i.</short>
-		[SmokeMethod("ensureItemVisible(const KFileItem*)")]
+		[SmokeMethod("ensureItemVisible(const KFileItem&)")]
 		public abstract void EnsureItemVisible(KFileItem i);
 		/// <remarks>
 		///  Clears any selection, unhighlights everything. Must be implemented by
@@ -309,14 +313,14 @@ namespace Kimono {
 		///  Tells the view that it should highlight the item.
 		///  This function must be implemented by the view.
 		/// </remarks>		<short>    Tells the view that it should highlight the item.</short>
-		[SmokeMethod("setSelected(const KFileItem*, bool)")]
+		[SmokeMethod("setSelected(const KFileItem&, bool)")]
 		public abstract void SetSelected(KFileItem arg1, bool enable);
 		/// <remarks>
 		/// </remarks>		<return> whether the given item is currently selected.
 		///  Must be implemented by the view.
 		///      </return>
 		/// 		<short>   </short>
-		[SmokeMethod("isSelected(const KFileItem*) const")]
+		[SmokeMethod("isSelected(const KFileItem&) const")]
 		public abstract bool IsSelected(KFileItem arg1);
 		/// <remarks>
 		/// </remarks>		<return> all currently highlighted items.
@@ -334,9 +338,9 @@ namespace Kimono {
 		}
 		[SmokeMethod("firstFileItem() const")]
 		public abstract KFileItem FirstFileItem();
-		[SmokeMethod("nextItem(const KFileItem*) const")]
+		[SmokeMethod("nextItem(const KFileItem&) const")]
 		public abstract KFileItem NextItem(KFileItem arg1);
-		[SmokeMethod("prevItem(const KFileItem*) const")]
+		[SmokeMethod("prevItem(const KFileItem&) const")]
 		public abstract KFileItem PrevItem(KFileItem arg1);
 		/// <remarks>
 		///  This is a KFileDialog specific hack: we want to select directories with
@@ -364,7 +368,7 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>    increases the number of dirs and files.</short>
 		public bool UpdateNumbers(KFileItem i) {
-			return (bool) interceptor.Invoke("updateNumbers#", "updateNumbers(const KFileItem*)", typeof(bool), typeof(KFileItem), i);
+			return (bool) interceptor.Invoke("updateNumbers#", "updateNumbers(const KFileItem&)", typeof(bool), typeof(KFileItem), i);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the view-specific action-collection. Every view should
@@ -414,8 +418,8 @@ namespace Kimono {
 		///                   Currently, the values IgnoreCase, Reversed and
 		///                   DirsFirst are taken into account.
 		///      </param></remarks>		<short>    This method calculates a string from the given parameters, that is  suitable for sorting with e.</short>
-		public static string SortingKey(string value, bool isDir, int SortFlags) {
-			return (string) staticInterceptor.Invoke("sortingKey$$$", "sortingKey(const QString&, bool, QDir::SortFlags)", typeof(string), typeof(string), value, typeof(bool), isDir, typeof(int), SortFlags);
+		public static string SortingKey(string value, bool isDir, uint SortFlags) {
+			return (string) staticInterceptor.Invoke("sortingKey$$$", "sortingKey(const QString&, bool, QDir::SortFlags)", typeof(string), typeof(string), value, typeof(bool), isDir, typeof(uint), SortFlags);
 		}
 		/// <remarks>
 		///  An overloaded method that takes not a string, but a number as sort
@@ -423,9 +427,6 @@ namespace Kimono {
 		///  If you use a time_t, you need to cast that to KIO.Filesize_t because
 		///  of ambiguity problems.
 		///      </remarks>		<short>    An overloaded method that takes not a string, but a number as sort  criterion.</short>
-		public static string SortingKey(long value, bool isDir, int SortFlags) {
-			return (string) staticInterceptor.Invoke("sortingKey$$$", "sortingKey(KIO::filesize_t, bool, QDir::SortFlags)", typeof(string), typeof(long), value, typeof(bool), isDir, typeof(int), SortFlags);
-		}
 		/// <remarks>
 		///  delay before auto opening a directory
 		///      </remarks>		<short>   </short>

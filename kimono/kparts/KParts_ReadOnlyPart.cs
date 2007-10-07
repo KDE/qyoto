@@ -83,6 +83,19 @@ namespace Kimono {
 			return (KParts.BrowserExtension) interceptor.Invoke("browserExtension", "browserExtension() const", typeof(KParts.BrowserExtension));
 		}
 		/// <remarks>
+		///  Sets the arguments to use for the next openUrl call.
+		///      </remarks>		<short>    Sets the arguments to use for the next openUrl call.</short>
+		public void SetArguments(KParts.OpenUrlArguments arguments) {
+			interceptor.Invoke("setArguments#", "setArguments(const KParts::OpenUrlArguments&)", typeof(void), typeof(KParts.OpenUrlArguments), arguments);
+		}
+		/// <remarks>
+		/// </remarks>		<return> the arguments that were used to open this URL.
+		///      </return>
+		/// 		<short>   </short>
+		public KParts.OpenUrlArguments Arguments() {
+			return (KParts.OpenUrlArguments) interceptor.Invoke("arguments", "arguments() const", typeof(KParts.OpenUrlArguments));
+		}
+		/// <remarks>
 		///  Initiate sending data to this part.
 		///  This is an alternative to openUrl, which allows the user of the part
 		///  to load the data itself, and send it progressively to the part.

@@ -173,18 +173,6 @@ namespace Kimono {
 		public override void DisplayFinalDialog() {
 			interceptor.Invoke("displayFinalDialog", "displayFinalDialog() const", typeof(void));
 		}
-		[Q_SLOT("void slotSkip()")]
-		protected void SlotSkip() {
-			interceptor.Invoke("slotSkip", "slotSkip()", typeof(void));
-		}
-		[Q_SLOT("void slotReplace()")]
-		protected void SlotReplace() {
-			interceptor.Invoke("slotReplace", "slotReplace()", typeof(void));
-		}
-		[Q_SLOT("void slotReplaceAll()")]
-		protected void SlotReplaceAll() {
-			interceptor.Invoke("slotReplaceAll", "slotReplaceAll()", typeof(void));
-		}
 		~KReplace() {
 			interceptor.Invoke("~KReplace", "~KReplace()", typeof(void));
 		}

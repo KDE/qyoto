@@ -216,9 +216,19 @@ namespace Kimono {
 		public void ChangeItem(int index, string text) {
 			interceptor.Invoke("changeItem$$", "changeItem(int, const QString&)", typeof(void), typeof(int), index, typeof(string), text);
 		}
+		/// <remarks>
+		///  Reimplemented from @see QWidgetAction.
+		///      </remarks>		<short>    Reimplemented from @see QWidgetAction.</short>
 		[SmokeMethod("createWidget(QWidget*)")]
 		protected override QWidget CreateWidget(QWidget parent) {
 			return (QWidget) interceptor.Invoke("createWidget#", "createWidget(QWidget*)", typeof(QWidget), typeof(QWidget), parent);
+		}
+		/// <remarks>
+		///  Reimplemented from @see QWidgetAction.
+		///      </remarks>		<short>    Reimplemented from @see QWidgetAction.</short>
+		[SmokeMethod("deleteWidget(QWidget*)")]
+		protected override void DeleteWidget(QWidget widget) {
+			interceptor.Invoke("deleteWidget#", "deleteWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject watched, QEvent arg2) {

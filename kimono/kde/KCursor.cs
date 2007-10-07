@@ -5,9 +5,12 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
+	///  The KCursor class extends QCursor with the ability to create an arbitrary
+	///  named cursor from the cursor theme, and provides a set of static
+	///  convenience methods for auto-hiding cursors on widgets.
 	/// </remarks>		<author> Kurt Granroth <granroth@kde.org>
 	///  </author>
-	/// 		<short> A set of convenience methods for auto-hiding cursors on widgets. </short>
+	/// 		<short>    The KCursor class extends QCursor with the ability to create an arbitrary  named cursor from the cursor theme, and provides a set of static  convenience methods for auto-hiding cursors on widgets.</short>
 
 	[SmokeClass("KCursor")]
 	public class KCursor : QCursor, IDisposable {
@@ -21,15 +24,30 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Attempts to load the requested <code>name</code> cursor from the current theme.
-		///  If it fails, it falls back to the Qt.CursorShape provided as the
-		///  second parameter. This allows one to access cursors that may be in a
-		///  theme but not in the Qt.CursorShape enum.
+		///  This allows one to access cursors that may be in a theme but not in
+		///  the Qt.CursorShape enum.
+		///  If the specified cursor doesn't exist in the theme, or if KDE was
+		///  built without Xcursor support, the cursor will be loaded from the X11
+		///  cursor font instead. If the cursor doesn't exist in the cursor font,
+		///  it falls back to the Qt.CursorShape provided as the second parameter.
+		///  On platforms other than X11, the fallback shape is always used.
 		/// <param> name="name" the name of the cursor to try and load
 		/// </param><param> name="fallback" the cursor to load if <code>name</code> cursor can not be loaded
 		///      </param></remarks>		<short>    Attempts to load the requested <code>name</code> cursor from the current theme.</short>
 		public KCursor(string name, Qt.CursorShape fallback) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KCursor$$", "KCursor(const QString&, Qt::CursorShape)", typeof(void), typeof(string), name, typeof(Qt.CursorShape), fallback);
+		}
+		public KCursor(string name) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KCursor$", "KCursor(const QString&)", typeof(void), typeof(string), name);
+		}
+		/// <remarks>
+		///  Creates a copy of <code>cursor.</code>
+		///      </remarks>		<short>    Creates a copy of <code>cursor.</code></short>
+		public KCursor(QCursor cursor) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KCursor#", "KCursor(const QCursor&)", typeof(void), typeof(QCursor), cursor);
 		}
 		~KCursor() {
 			interceptor.Invoke("~KCursor", "~KCursor()", typeof(void));

@@ -30,21 +30,26 @@ namespace Kimono {
 			staticInterceptor = new SmokeInvocation(typeof(KDesktopFile), null);
 		}
 		/// <remarks>
-		///  Constructs a KDesktopFile object
+		///  Constructs a KDesktopFile object and make it either read-write
+		///  or read-only.
 		/// <param> name="fileName" The name or path of the desktop file. If it
 		///                   is not absolute, it will be located
 		///                   using the resource type <code>resType.</code>
+		/// </param><param> name="readOnly" Whether the object should be read-only.
 		/// </param><param> name="resType" Allows you to change what sort of resource
 		///                   to search for if <code>fileName</code> is not absolute.  For
 		///                   instance, you might want to specify "config".
-		///    </param></remarks>		<short>    Constructs a KDesktopFile object </short>
-		public KDesktopFile(string resType, string fileName) : this((Type) null) {
+		///    </param></remarks>		<short>    Constructs a KDesktopFile object and make it either read-write  or read-only.</short>
+		public KDesktopFile(string resourceType, string fileName) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KDesktopFile$$", "KDesktopFile(const char*, const QString&)", typeof(void), typeof(string), resType, typeof(string), fileName);
+			interceptor.Invoke("KDesktopFile$$", "KDesktopFile(const char*, const QString&)", typeof(void), typeof(string), resourceType, typeof(string), fileName);
 		}
 		public KDesktopFile(string fileName) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KDesktopFile$", "KDesktopFile(const QString&)", typeof(void), typeof(string), fileName);
+		}
+		public KConfigGroup DesktopGroup() {
+			return (KConfigGroup) interceptor.Invoke("desktopGroup", "desktopGroup() const", typeof(KConfigGroup));
 		}
 		/// <remarks>
 		///  Returns the value of the "Type=" entry.
@@ -119,10 +124,11 @@ namespace Kimono {
 			return (List<string>) interceptor.Invoke("readActions", "readActions() const", typeof(List<string>));
 		}
 		/// <remarks>
-		///  Returns the action group with the given name
-		///    </remarks>		<short>    Returns the action group with the given name    </short>
+		///  Sets the desktop action group.
+		/// <param> name="group" the new action group
+		///    </param></remarks>		<short>    Sets the desktop action group.</short>
 		public KConfigGroup ActionGroup(string group) {
-			return (KConfigGroup) interceptor.Invoke("actionGroup$", "actionGroup(const QString&) const", typeof(KConfigGroup), typeof(string), group);
+			return (KConfigGroup) interceptor.Invoke("actionGroup$", "actionGroup(const QString&)", typeof(KConfigGroup), typeof(string), group);
 		}
 		/// <remarks>
 		///  Returns true if the action group exists, false otherwise
@@ -176,25 +182,9 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("tryExec", "tryExec() const", typeof(bool));
 		}
 		/// <remarks>
-		///  Returns the file name.
-		/// </remarks>		<return> The filename as passed to the constructor.
-		///    </return>
-		/// 		<short>    Returns the file name.</short>
-		public string FileName() {
-			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
-		}
-		/// <remarks>
-		///  Returns the resource.
-		/// </remarks>		<return> The resource type as passed to the constructor.
-		///    </return>
-		/// 		<short>    Returns the resource.</short>
-		public string Resource() {
-			return (string) interceptor.Invoke("resource", "resource() const", typeof(string));
-		}
-		/// <remarks>
 		///  Returns the value of the "X-DocPath=" Or "DocPath=" entry.
-		///  X-DocPath should be used and DocPath is depreciated and will
-		///  one day be not supported.
+		///  X-DocPath should be used because DocPath is deprecated and will
+		///  one day not be supported.
 		/// </remarks>		<return> The value of the "X-DocPath=" Or "DocPath=" entry.
 		///    </return>
 		/// 		<short>    Returns the value of the "X-DocPath=" Or "DocPath=" entry.</short>
@@ -219,11 +209,11 @@ namespace Kimono {
 		public new KDesktopFile CopyTo(string file) {
 			return (KDesktopFile) interceptor.Invoke("copyTo$", "copyTo(const QString&) const", typeof(KDesktopFile), typeof(string), file);
 		}
-		/// <remarks>
-		///  Returns the raw data for direct access
-		///    </remarks>		<short>    Returns the raw data for direct access    </short>
-		public KConfigGroup DesktopGroup() {
-			return (KConfigGroup) interceptor.Invoke("desktopGroup", "desktopGroup()", typeof(KConfigGroup));
+		public string FileName() {
+			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
+		}
+		public string Resource() {
+			return (string) interceptor.Invoke("resource", "resource() const", typeof(string));
 		}
 		~KDesktopFile() {
 			interceptor.Invoke("~KDesktopFile", "~KDesktopFile()", typeof(void));

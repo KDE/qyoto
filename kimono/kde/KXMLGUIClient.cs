@@ -224,7 +224,7 @@ namespace Kimono {
 		///  menu file whose contents depend on the mimetype of the file that
 		///  is selected, then you can achieve this using ActionLists. It
 		///  works as follows:
-		///  In your xxxui.rc file ( the one that you set in setXMLFile()
+		///  In your xxxui.rc file ( the one that you set in setXMLFile() / pass to setupGUI()
 		///  ), you put an <p>\<ActionList name="xxx"\></p> tag.  E.g.
 		///  <pre>
 		///  <kpartgui name="xxx_part" version="1">
@@ -292,6 +292,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Sets the name of the rc file containing the XML for the part.
 		///  Call this in the Part-inherited class constructor.
+		///  If you're writing usual application, use KXmlGuiWindow.SetupGUI() with non-default arguments
 		/// <param> name="file" Either an absolute path for the file, or simply the
 		///              filename, which will then be assumed to be installed
 		///              in the "data" resource, under a directory named like

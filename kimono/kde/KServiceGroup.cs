@@ -3,7 +3,6 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Runtime.InteropServices;
 	using System.Collections.Generic;
 
 	/// <remarks>
@@ -40,11 +39,23 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KServiceGroup), this);
 		}
+		/// <remarks>
+		///  options for groupEntries and serviceEntries
+		///    </remarks>		<short>    options for groupEntries and serviceEntries    </short>
+		public enum EntriesOption {
+			NoOptions = 0x0,
+			SortEntries = 0x1,
+			ExcludeNoDisplay = 0x2,
+			AllowSeparators = 0x4,
+			SortByGenericName = 0x8,
+		}
 		// KServiceGroup::List entries(bool arg1,bool arg2,bool arg3,bool arg4); >>>> NOT CONVERTED
 		// KServiceGroup::List entries(bool arg1,bool arg2,bool arg3); >>>> NOT CONVERTED
 		// KServiceGroup::List entries(bool arg1,bool arg2); >>>> NOT CONVERTED
 		// KServiceGroup::List entries(bool arg1); >>>> NOT CONVERTED
 		// KServiceGroup::List entries(); >>>> NOT CONVERTED
+		// QList<KServiceGroup::Ptr> groupEntries(KServiceGroup::EntriesOptions arg1); >>>> NOT CONVERTED
+		// QList<KServiceGroup::Ptr> groupEntries(); >>>> NOT CONVERTED
 		// KServiceGroup::Ptr baseGroup(const QString& arg1); >>>> NOT CONVERTED
 		// KServiceGroup::Ptr root(); >>>> NOT CONVERTED
 		// KServiceGroup::Ptr group(const QString& arg1); >>>> NOT CONVERTED
@@ -75,30 +86,11 @@ namespace Kimono {
 			interceptor.Invoke("KServiceGroup#$$", "KServiceGroup(QDataStream&, int, bool)", typeof(void), typeof(QDataStream), _str, typeof(int), offset, typeof(bool), deep);
 		}
 		/// <remarks>
-		///  Checks whether the entry is valid, returns always true.
-		/// </remarks>		<return> true
-		///    </return>
-		/// 		<short>    Checks whether the entry is valid, returns always true.</short>
-		[SmokeMethod("isValid() const")]
-		public override bool IsValid() {
-			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
-		}
-		/// <remarks>
-		///  Name used for indexing.
-		/// </remarks>		<return> the service group's name
-		///    </return>
-		/// 		<short>    Name used for indexing.</short>
-		[SmokeMethod("name() const")]
-		public override string Name() {
-			return (string) interceptor.Invoke("name", "name() const", typeof(string));
-		}
-		/// <remarks>
 		///  Returns the relative path of the service group.
 		/// </remarks>		<return> the service group's relative path
 		///    </return>
 		/// 		<short>    Returns the relative path of the service group.</short>
-		[SmokeMethod("relPath() const")]
-		public virtual string RelPath() {
+		public string RelPath() {
 			return (string) interceptor.Invoke("relPath", "relPath() const", typeof(string));
 		}
 		/// <remarks>
@@ -218,20 +210,6 @@ namespace Kimono {
 			return (List<string>) interceptor.Invoke("layoutInfo", "layoutInfo() const", typeof(List<string>));
 		}
 		/// <remarks>
-		///  Load the service from a stream.
-		///    </remarks>		<short>   </short>
-		[SmokeMethod("load(QDataStream&)")]
-		public override void Load(QDataStream arg1) {
-			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
-		}
-		/// <remarks>
-		///  Save the service to a stream.
-		///    </remarks>		<short>   </short>
-		[SmokeMethod("save(QDataStream&)")]
-		public override void Save(QDataStream arg1) {
-			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
-		}
-		/// <remarks>
 		///  List of all Services and ServiceGroups within this
 		///  ServiceGroup.
 		/// <param> name="sorted" true to sort items
@@ -248,6 +226,18 @@ namespace Kimono {
 		/// </param></remarks>		<return> the list of entried
 		///    </return>
 		/// 		<short>    List of all Services and ServiceGroups within this  ServiceGroup.</short>
+		/// <remarks>
+		///  subgroups for this service group
+		///      </remarks>		<short>    subgroups for this service group      </short>
+		/// <remarks>
+		///  entries of this service group
+		///      </remarks>		<short>    entries of this service group      </short>
+		public List<KService> ServiceEntries(uint options) {
+			return (List<KService>) interceptor.Invoke("serviceEntries$", "serviceEntries(KServiceGroup::EntriesOptions)", typeof(List<KService>), typeof(uint), options);
+		}
+		public List<KService> ServiceEntries() {
+			return (List<KService>) interceptor.Invoke("serviceEntries", "serviceEntries()", typeof(List<KService>));
+		}
 		/// <remarks>
 		///  Returns a non-empty string if the group is a special base group.
 		///  By default, "Settings/" is the kcontrol base group ("settings")
@@ -269,36 +259,12 @@ namespace Kimono {
 			return (string) interceptor.Invoke("directoryEntryPath", "directoryEntryPath() const", typeof(string));
 		}
 		/// <remarks>
-		///  This function parse attributes into menu
-		///    </remarks>		<short>    This function parse attributes into menu    </short>
-		public void ParseAttribute(string item, bool showEmptyMenu, bool showInline, bool showInlineHeader, bool showInlineAlias, ref int inlineValue) {
-			StackItem[] stack = new StackItem[7];
-#if DEBUG
-			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(item);
-#else
-			stack[1].s_class = (IntPtr) GCHandle.Alloc(item);
-#endif
-			stack[2].s_bool = showEmptyMenu;
-			stack[3].s_bool = showInline;
-			stack[4].s_bool = showInlineHeader;
-			stack[5].s_bool = showInlineAlias;
-			stack[6].s_int = inlineValue;
-			interceptor.Invoke("parseAttribute$$$$$$", "parseAttribute(const QString&, bool&, bool&, bool&, bool&, int&)", stack);
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[1].s_class);
-#else
-			((GCHandle) stack[1].s_class).Free();
-#endif
-			inlineValue = stack[6].s_int;
-			return;
-		}
-		/// <remarks>
 		///  Add a service to this group
 		///    </remarks>		<short>   </short>
 		~KServiceGroup() {
 			interceptor.Invoke("~KServiceGroup", "~KServiceGroup()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~KServiceGroup", "~KServiceGroup()", typeof(void));
 		}
 		/// <remarks>

@@ -232,7 +232,7 @@ namespace Kimono {
 		///  be useful if you want an independent/clean KPrinter object.
 		/// <param> name="restore" if true, options will be restored/saved between successive KPrinter objects
 		/// </param><param> name="m" the mode to establish the KPrinter in (see QPrinter.PrinterMode)
-		/// 	 </param></remarks>		<short>    Constructor.</short>
+		///      </param></remarks>		<short>    Constructor.</short>
 		public KPrinter(bool restore, QPrinter.PrinterMode m) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KPrinter$$", "KPrinter(bool, QPrinter::PrinterMode)", typeof(void), typeof(bool), restore, typeof(QPrinter.PrinterMode), m);
@@ -247,187 +247,187 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  See QPrinter.NewPage().
-		/// 	 </remarks>		<short>    See QPrinter.NewPage().</short>
+		///      </remarks>		<short>    See QPrinter.NewPage().</short>
 		public bool NewPage() {
 			return (bool) interceptor.Invoke("newPage", "newPage()", typeof(bool));
 		}
 		/// <remarks>
 		///  See QPrinter.Abort().
-		/// 	 </remarks>		<short>    See QPrinter.Abort().</short>
+		///      </remarks>		<short>    See QPrinter.Abort().</short>
 		public bool Abort() {
 			return (bool) interceptor.Invoke("abort", "abort()", typeof(bool));
 		}
 		/// <remarks>
 		///  See QPrinter.Aborted()
-		/// 	 </remarks>		<short>    See QPrinter.Aborted() 	 </short>
+		///      </remarks>		<short>    See QPrinter.Aborted()      </short>
 		public bool Aborted() {
 			return (bool) interceptor.Invoke("aborted", "aborted() const", typeof(bool));
 		}
 		/// <remarks>
 		///  See QPrinter.OutputToFile().
-		/// 	 </remarks>		<short>    See QPrinter.OutputToFile().</short>
+		///      </remarks>		<short>    See QPrinter.OutputToFile().</short>
 		public bool OutputToFile() {
 			return (bool) interceptor.Invoke("outputToFile", "outputToFile() const", typeof(bool));
 		}
 		/// <remarks>
 		///  See QPrinter.SetOutputToFile().
-		/// 	 </remarks>		<short>    See QPrinter.SetOutputToFile().</short>
+		///      </remarks>		<short>    See QPrinter.SetOutputToFile().</short>
 		public void SetOutputToFile(bool arg1) {
 			interceptor.Invoke("setOutputToFile$", "setOutputToFile(bool)", typeof(void), typeof(bool), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.OutputFileName().
-		/// 	 </remarks>		<short>    See QPrinter.OutputFileName().</short>
+		///      </remarks>		<short>    See QPrinter.OutputFileName().</short>
 		public string OutputFileName() {
 			return (string) interceptor.Invoke("outputFileName", "outputFileName() const", typeof(string));
 		}
 		/// <remarks>
 		///  See QPrinter.SetOutputFileName().
-		/// 	 </remarks>		<short>    See QPrinter.SetOutputFileName().</short>
+		///      </remarks>		<short>    See QPrinter.SetOutputFileName().</short>
 		public void SetOutputFileName(string arg1) {
 			interceptor.Invoke("setOutputFileName$", "setOutputFileName(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.DocName().
-		/// 	 </remarks>		<short>    See QPrinter.DocName().</short>
+		///      </remarks>		<short>    See QPrinter.DocName().</short>
 		public string DocName() {
 			return (string) interceptor.Invoke("docName", "docName() const", typeof(string));
 		}
 		/// <remarks>
 		///  See QPrinter.SetDocName().
-		/// 	 </remarks>		<short>    See QPrinter.SetDocName().</short>
+		///      </remarks>		<short>    See QPrinter.SetDocName().</short>
 		public void SetDocName(string arg1) {
 			interceptor.Invoke("setDocName$", "setDocName(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.Creator().
-		/// 	 </remarks>		<short>    See QPrinter.Creator().</short>
+		///      </remarks>		<short>    See QPrinter.Creator().</short>
 		public string Creator() {
 			return (string) interceptor.Invoke("creator", "creator() const", typeof(string));
 		}
 		/// <remarks>
 		///  See QPrinter.SetCreator().
-		/// 	 </remarks>		<short>    See QPrinter.SetCreator().</short>
+		///      </remarks>		<short>    See QPrinter.SetCreator().</short>
 		public void SetCreator(string arg1) {
 			interceptor.Invoke("setCreator$", "setCreator(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.FullPage().
-		/// 	 </remarks>		<short>    See QPrinter.FullPage().</short>
+		///      </remarks>		<short>    See QPrinter.FullPage().</short>
 		public bool FullPage() {
 			return (bool) interceptor.Invoke("fullPage", "fullPage() const", typeof(bool));
 		}
 		/// <remarks>
 		///  See QPrinter.SetFullPage().
-		/// 	 </remarks>		<short>    See QPrinter.SetFullPage().</short>
+		///      </remarks>		<short>    See QPrinter.SetFullPage().</short>
 		public void SetFullPage(bool arg1) {
 			interceptor.Invoke("setFullPage$", "setFullPage(bool)", typeof(void), typeof(bool), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.ColorMode().
-		/// 	 </remarks>		<short>    See QPrinter.ColorMode().</short>
+		///      </remarks>		<short>    See QPrinter.ColorMode().</short>
 		public KPrinter.ColorMode colorMode() {
 			return (KPrinter.ColorMode) interceptor.Invoke("colorMode", "colorMode() const", typeof(KPrinter.ColorMode));
 		}
 		/// <remarks>
 		///  See QPrinter.SetColorMode().
-		/// 	 </remarks>		<short>    See QPrinter.SetColorMode().</short>
+		///      </remarks>		<short>    See QPrinter.SetColorMode().</short>
 		public void SetColorMode(KPrinter.ColorMode arg1) {
 			interceptor.Invoke("setColorMode$", "setColorMode(KPrinter::ColorMode)", typeof(void), typeof(KPrinter.ColorMode), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.NumCopies().
-		/// 	 </remarks>		<short>    See QPrinter.NumCopies().</short>
+		///      </remarks>		<short>    See QPrinter.NumCopies().</short>
 		public int NumCopies() {
 			return (int) interceptor.Invoke("numCopies", "numCopies() const", typeof(int));
 		}
 		/// <remarks>
 		///  See QPrinter.SetNumCopies().
-		/// 	 </remarks>		<short>    See QPrinter.SetNumCopies().</short>
+		///      </remarks>		<short>    See QPrinter.SetNumCopies().</short>
 		public void SetNumCopies(int n) {
 			interceptor.Invoke("setNumCopies$", "setNumCopies(int)", typeof(void), typeof(int), n);
 		}
 		/// <remarks>
 		///  See QPrinter.Orientation().
-		/// 	 </remarks>		<short>    See QPrinter.Orientation().</short>
+		///      </remarks>		<short>    See QPrinter.Orientation().</short>
 		public KPrinter.Orientation orientation() {
 			return (KPrinter.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(KPrinter.Orientation));
 		}
 		/// <remarks>
 		///  See QPrinter.SetOrientation().
-		/// 	 </remarks>		<short>    See QPrinter.SetOrientation().</short>
+		///      </remarks>		<short>    See QPrinter.SetOrientation().</short>
 		public void SetOrientation(KPrinter.Orientation arg1) {
 			interceptor.Invoke("setOrientation$", "setOrientation(KPrinter::Orientation)", typeof(void), typeof(KPrinter.Orientation), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.PageOrder().
-		/// 	 </remarks>		<short>    See QPrinter.PageOrder().</short>
+		///      </remarks>		<short>    See QPrinter.PageOrder().</short>
 		public KPrinter.PageOrder pageOrder() {
 			return (KPrinter.PageOrder) interceptor.Invoke("pageOrder", "pageOrder() const", typeof(KPrinter.PageOrder));
 		}
 		/// <remarks>
 		///  See QPrinter.SetPageOrder().
-		/// 	 </remarks>		<short>    See QPrinter.SetPageOrder().</short>
+		///      </remarks>		<short>    See QPrinter.SetPageOrder().</short>
 		public void SetPageOrder(KPrinter.PageOrder arg1) {
 			interceptor.Invoke("setPageOrder$", "setPageOrder(KPrinter::PageOrder)", typeof(void), typeof(KPrinter.PageOrder), arg1);
 		}
 		/// <remarks>
 		///  Returns the collate status of the current KPrinter.
-		/// 	 </remarks>		<short>    Returns the collate status of the current KPrinter.</short>
+		///      </remarks>		<short>    Returns the collate status of the current KPrinter.</short>
 		public KPrinter.CollateType Collate() {
 			return (KPrinter.CollateType) interceptor.Invoke("collate", "collate() const", typeof(KPrinter.CollateType));
 		}
 		/// <remarks>
 		///  Sets the collate status for the current KPrinter to <code>type.</code>
-		/// 	 </remarks>		<short>    Sets the collate status for the current KPrinter to <code>type.</code></short>
+		///      </remarks>		<short>    Sets the collate status for the current KPrinter to <code>type.</code></short>
 		public void SetCollate(KPrinter.CollateType type) {
 			interceptor.Invoke("setCollate$", "setCollate(KPrinter::CollateType)", typeof(void), typeof(KPrinter.CollateType), type);
 		}
 		/// <remarks>
 		///  See QPrinter.MinPage().
-		/// 	 </remarks>		<short>    See QPrinter.MinPage().</short>
+		///      </remarks>		<short>    See QPrinter.MinPage().</short>
 		public int MinPage() {
 			return (int) interceptor.Invoke("minPage", "minPage() const", typeof(int));
 		}
 		/// <remarks>
 		///  See QPrinter.MaxPage().
-		/// 	 </remarks>		<short>    See QPrinter.MaxPage().</short>
+		///      </remarks>		<short>    See QPrinter.MaxPage().</short>
 		public int MaxPage() {
 			return (int) interceptor.Invoke("maxPage", "maxPage() const", typeof(int));
 		}
 		/// <remarks>
 		///  See QPrinter.SetMinMax().
-		/// 	 </remarks>		<short>    See QPrinter.SetMinMax().</short>
+		///      </remarks>		<short>    See QPrinter.SetMinMax().</short>
 		public void SetMinMax(int min, int max) {
 			interceptor.Invoke("setMinMax$$", "setMinMax(int, int)", typeof(void), typeof(int), min, typeof(int), max);
 		}
 		/// <remarks>
 		///  Sets the first and last page to be printed. See QPrinter.SetFromTo().
-		/// 	 </remarks>		<short>    Sets the first and last page to be printed.</short>
+		///      </remarks>		<short>    Sets the first and last page to be printed.</short>
 		public void SetFromTo(int arg1, int arg2) {
 			interceptor.Invoke("setFromTo$$", "setFromTo(int, int)", typeof(void), typeof(int), arg1, typeof(int), arg2);
 		}
 		/// <remarks>
 		///  See QPrinter.PageSize().
-		/// 	 </remarks>		<short>    See QPrinter.PageSize().</short>
+		///      </remarks>		<short>    See QPrinter.PageSize().</short>
 		public KPrinter.PageSize pageSize() {
 			return (KPrinter.PageSize) interceptor.Invoke("pageSize", "pageSize() const", typeof(KPrinter.PageSize));
 		}
 		/// <remarks>
 		///  See QPrinter.SetPageSize().
-		/// 	 </remarks>		<short>    See QPrinter.SetPageSize().</short>
+		///      </remarks>		<short>    See QPrinter.SetPageSize().</short>
 		public void SetPageSize(KPrinter.PageSize arg1) {
 			interceptor.Invoke("setPageSize$", "setPageSize(KPrinter::PageSize)", typeof(void), typeof(KPrinter.PageSize), arg1);
 		}
 		/// <remarks>
 		///  See QPrinter.PrinterName().
-		/// 	 </remarks>		<short>    See QPrinter.PrinterName().</short>
+		///      </remarks>		<short>    See QPrinter.PrinterName().</short>
 		public string PrinterName() {
 			return (string) interceptor.Invoke("printerName", "printerName() const", typeof(string));
 		}
 		/// <remarks>
 		///  See QPrinter.SetPrinterName().
-		/// 	 </remarks>		<short>    See QPrinter.SetPrinterName().</short>
+		///      </remarks>		<short>    See QPrinter.SetPrinterName().</short>
 		public void SetPrinterName(string arg1) {
 			interceptor.Invoke("setPrinterName$", "setPrinterName(const QString&)", typeof(void), typeof(string), arg1);
 		}
@@ -481,13 +481,13 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  See QPrinter.PrinterSelectionOption(). Unused.
-		/// 	 </remarks>		<short>    See QPrinter.PrinterSelectionOption().</short>
+		///      </remarks>		<short>    See QPrinter.PrinterSelectionOption().</short>
 		public string PrinterSelectionOption() {
 			return (string) interceptor.Invoke("printerSelectionOption", "printerSelectionOption() const", typeof(string));
 		}
 		/// <remarks>
 		///  See QPrinter.SetPrinterSelectionOption(). Unused
-		/// 	 </remarks>		<short>    See QPrinter.SetPrinterSelectionOption().</short>
+		///      </remarks>		<short>    See QPrinter.SetPrinterSelectionOption().</short>
 		public void SetPrinterSelectionOption(string arg1) {
 			interceptor.Invoke("setPrinterSelectionOption$", "setPrinterSelectionOption(const QString&)", typeof(void), typeof(string), arg1);
 		}
@@ -522,7 +522,7 @@ namespace Kimono {
 		///  }
 		///  </pre>
 		/// <param> name="p" the current page number (starting from 1)
-		/// 	 </param></remarks>		<short>    Sets the current page number.</short>
+		///      </param></remarks>		<short>    Sets the current page number.</short>
 		public void SetCurrentPage(int p) {
 			interceptor.Invoke("setCurrentPage$", "setCurrentPage(int)", typeof(void), typeof(int), p);
 		}
@@ -531,7 +531,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the page set of the current KPrinter object.
-		/// 	 </remarks>		<short>    Returns the page set of the current KPrinter object.</short>
+		///      </remarks>		<short>    Returns the page set of the current KPrinter object.</short>
 		public KPrinter.PageSetType PageSet() {
 			return (KPrinter.PageSetType) interceptor.Invoke("pageSet", "pageSet() const", typeof(KPrinter.PageSetType));
 		}
@@ -541,7 +541,7 @@ namespace Kimono {
 		/// </param><param> name="caption" the caption to use in the print dialog
 		/// </param><param> name="forceExpand" force the expansion of the dialog (the show/hide button will be hidden)
 		/// </param></remarks>		<return> boolean value corresponding to the button clicked by the user
-		/// 	 </return>
+		///      </return>
 		/// 		<short>    Sets up the KPrinter object using the print dialog, returns true if the user clicked OK.</short>
 		public bool Setup(QWidget parent, string caption, bool forceExpand) {
 			return (bool) interceptor.Invoke("setup#$$", "setup(QWidget*, const QString&, bool)", typeof(bool), typeof(QWidget), parent, typeof(string), caption, typeof(bool), forceExpand);
@@ -557,13 +557,13 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  See QPrinter.Margins().
-		/// 	 </remarks>		<short>    See QPrinter.Margins().</short>
+		///      </remarks>		<short>    See QPrinter.Margins().</short>
 		public QSize Margins() {
 			return (QSize) interceptor.Invoke("margins", "margins() const", typeof(QSize));
 		}
 		/// <remarks>
 		///  Not used yet.
-		/// 	 </remarks>		<short>    Not used yet.</short>
+		///      </remarks>		<short>    Not used yet.</short>
 		public void SetMargins(QSize m) {
 			interceptor.Invoke("setMargins#", "setMargins(QSize)", typeof(void), typeof(QSize), m);
 		}
@@ -658,14 +658,14 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  For internal use only.
-		/// 	 </remarks>		<short>    For internal use only.</short>
+		///      </remarks>		<short>    For internal use only.</short>
 		/// <remarks>
 		///  Prints the files given in argument. This will first filter the files accorsing to the filtering
 		///  options selected by the user in the print dialog, then send the filtered files to the printer
 		///  with the print options selected. This function is called automatically when calling
 		///  QPainter.End() for a painter object constructed on KPrinter. In normal use, you don't need
 		///  this use this function explicitly.
-		/// 	 </remarks>		<short>    Prints the files given in argument.</short>
+		///      </remarks>		<short>    Prints the files given in argument.</short>
 		public bool PrintFiles(List<string> files, bool removeafter, bool startviewer) {
 			return (bool) interceptor.Invoke("printFiles?$$", "printFiles(const QStringList&, bool, bool)", typeof(bool), typeof(List<string>), files, typeof(bool), removeafter, typeof(bool), startviewer);
 		}
@@ -725,7 +725,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns the complete set of print options from the KPrinter object. For internal use.
 		/// </remarks>		<return> the option set as a QMap object
-		/// 	 </return>
+		///      </return>
 		/// 		<short>    Returns the complete set of print options from the KPrinter object.</short>
 		public Dictionary<string, string> Options() {
 			return (Dictionary<string, string>) interceptor.Invoke("options", "options() const", typeof(Dictionary<string, string>));
@@ -735,7 +735,7 @@ namespace Kimono {
 		///  the internal map with the one given in argument, but only for option in the form
 		///  "kde-...". For internal use only.
 		/// <param> name="opts" the option set to be merged in the KPrinter object
-		/// 	 </param></remarks>		<short>    Sets the option set in one operation.</short>
+		///      </param></remarks>		<short>    Sets the option set in one operation.</short>
 		public void SetOptions(Dictionary<string, string> opts) {
 			interceptor.Invoke("setOptions?", "setOptions(const QMap<QString, QString>&)", typeof(void), typeof(Dictionary<string, string>), opts);
 		}
@@ -769,7 +769,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns the last error message issued by the print system. Unimplemented yet.
 		/// </remarks>		<return> the last error message
-		/// 	 </return>
+		///      </return>
 		/// 		<short>    Returns the last error message issued by the print system.</short>
 		public string ErrorMessage() {
 			return (string) interceptor.Invoke("errorMessage", "errorMessage() const", typeof(string));
@@ -777,7 +777,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Sets the last error message. For internal use.
 		/// <param> name="msg" the error message
-		/// 	 </param></remarks>		<short>    Sets the last error message.</short>
+		///      </param></remarks>		<short>    Sets the last error message.</short>
 		public void SetErrorMessage(string msg) {
 			interceptor.Invoke("setErrorMessage$", "setErrorMessage(const QString&)", typeof(void), typeof(string), msg);
 		}

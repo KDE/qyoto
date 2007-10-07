@@ -45,6 +45,11 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KDirLister), this);
 		}
+		public enum OpenUrlFlag {
+			NoFlags = 0x0,
+			Keep = 0x1,
+			Reload = 0x2,
+		}
 		/// <remarks>
 		///  Used by items() and itemsForDir() to specify whether you want
 		///  all items for a directory or just the filtered ones.
@@ -115,25 +120,14 @@ namespace Kimono {
 		///  with KFileItems, up until the signal completed() is emitted
 		///  (and isFinished() returns true).
 		/// <param> name="_url" the directory URL.
-		/// </param><param> name="_keep" if true the previous directories aren't forgotten
-		///                  (they are still watched by kdirwatch and their items
-		///                  are kept for this KDirLister). This is useful for e.g.
-		///                  a treeview.
-		/// </param><param> name="_reload" indicates wether to use the cache (false) or to reread the
-		///                  directory from the disk.
-		///                  Use only when opening a dir not yet listed by this lister
-		///                  without using the cache. Otherwise use updateDirectory.
+		/// </param><param> name="_flags" whether to keep previous directories, and whether to reload, see OpenUrlFlags
 		/// </param></remarks>		<return> true    if successful,
 		///          false   otherwise (e.g. invalid <code>_url</code>)
 		///    </return>
 		/// 		<short>    Run the directory lister on the given url.</short>
-		[SmokeMethod("openUrl(const KUrl&, bool, bool)")]
-		public virtual bool OpenUrl(KUrl _url, bool _keep, bool _reload) {
-			return (bool) interceptor.Invoke("openUrl#$$", "openUrl(const KUrl&, bool, bool)", typeof(bool), typeof(KUrl), _url, typeof(bool), _keep, typeof(bool), _reload);
-		}
-		[SmokeMethod("openUrl(const KUrl&, bool)")]
-		public virtual bool OpenUrl(KUrl _url, bool _keep) {
-			return (bool) interceptor.Invoke("openUrl#$", "openUrl(const KUrl&, bool)", typeof(bool), typeof(KUrl), _url, typeof(bool), _keep);
+		[SmokeMethod("openUrl(const KUrl&, KDirLister::OpenUrlFlags)")]
+		public virtual bool OpenUrl(KUrl _url, uint _flags) {
+			return (bool) interceptor.Invoke("openUrl#$", "openUrl(const KUrl&, KDirLister::OpenUrlFlags)", typeof(bool), typeof(KUrl), _url, typeof(uint), _flags);
 		}
 		[SmokeMethod("openUrl(const KUrl&)")]
 		public virtual bool OpenUrl(KUrl _url) {
@@ -256,6 +250,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the file item of the URL.
+		///  Can return an empty KFileItem.
 		/// </remarks>		<return> the file item for url() itself (".")
 		///    </return>
 		/// 		<short>    Returns the file item of the URL.</short>
@@ -265,7 +260,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Find an item by its URL.
 		/// <param> name="_url" the item URL
-		/// </param></remarks>		<return> the pointer to the KFileItem
+		/// </param></remarks>		<return> the KFileItem
 		///    </return>
 		/// 		<short>    Find an item by its URL.</short>
 		[SmokeMethod("findByUrl(const KUrl&) const")]
@@ -275,7 +270,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Find an item by its name.
 		/// <param> name="name" the item name
-		/// </param></remarks>		<return> the pointer to the KFileItem
+		/// </param></remarks>		<return> the KFileItem
 		///    </return>
 		/// 		<short>    Find an item by its name.</short>
 		[SmokeMethod("findByName(const QString&) const")]
@@ -422,9 +417,9 @@ namespace Kimono {
 		/// 		<short>    Called for every new item before emitting newItems().</short>
 		/// 		<see> matchesFilter</see>
 		/// 		<see> setNameFilter</see>
-		[SmokeMethod("matchesFilter(const KFileItem*) const")]
+		[SmokeMethod("matchesFilter(const KFileItem&) const")]
 		protected virtual bool MatchesFilter(KFileItem arg1) {
-			return (bool) interceptor.Invoke("matchesFilter#", "matchesFilter(const KFileItem*) const", typeof(bool), typeof(KFileItem), arg1);
+			return (bool) interceptor.Invoke("matchesFilter#", "matchesFilter(const KFileItem&) const", typeof(bool), typeof(KFileItem), arg1);
 		}
 		/// <remarks>
 		///  Called for every new item before emitting newItems().
@@ -439,9 +434,9 @@ namespace Kimono {
 		/// 		<short>    Called for every new item before emitting newItems().</short>
 		/// 		<see> matchesMimeFilter</see>
 		/// 		<see> setMimeFilter</see>
-		[SmokeMethod("matchesMimeFilter(const KFileItem*) const")]
+		[SmokeMethod("matchesMimeFilter(const KFileItem&) const")]
 		protected virtual bool MatchesMimeFilter(KFileItem arg1) {
-			return (bool) interceptor.Invoke("matchesMimeFilter#", "matchesMimeFilter(const KFileItem*) const", typeof(bool), typeof(KFileItem), arg1);
+			return (bool) interceptor.Invoke("matchesMimeFilter#", "matchesMimeFilter(const KFileItem&) const", typeof(bool), typeof(KFileItem), arg1);
 		}
 		/// <remarks>
 		///  Called by the public matchesFilter() to do the
@@ -542,6 +537,7 @@ namespace Kimono {
 		void Clear(KUrl _url);
 		/// <remarks>
 		///  Signal new items.
+		///  So use this signal only if you want to modify original KFileItems
 		/// <param> name="items" a list of new items
 		///    </param></remarks>		<short>    Signal new items.</short>
 		[Q_SIGNAL("void newItems(const KFileItemList&)")]
@@ -554,21 +550,11 @@ namespace Kimono {
 		void ItemsFilteredByMime(List<KFileItem> items);
 		/// <remarks>
 		///  Signal an item to remove.
-		///  ATTENTION: if <code>_fileItem</code> == rootItem() the directory this lister
-		///             is holding was deleted and you HAVE to release especially the
-		///             rootItem() of this lister, otherwise your app will CRASH!!
-		///             The clear() signals have been emitted already.
 		/// <param> name="_fileItem" the fileItem to delete
 		///    </param></remarks>		<short>    Signal an item to remove.</short>
-		[Q_SIGNAL("void deleteItem(KFileItem*)")]
+		[Q_SIGNAL("void deleteItem(const KFileItem&)")]
 		void DeleteItem(KFileItem _fileItem);
-		/// <remarks>
-		///  Signal an item to refresh (its mimetype/icon/name has changed).
-		///  Note: KFileItem.Refresh has already been called on those items.
-		/// <param> name="items" the items to refresh
-		///    </param></remarks>		<short>    Signal an item to refresh (its mimetype/icon/name has changed).</short>
-		[Q_SIGNAL("void refreshItems(const KFileItemList&)")]
-		void RefreshItems(List<KFileItem> items);
+		// void refreshItems(const QList<QPair<KFileItem, KFileItem> >& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Emitted to display information about running jobs.
 		///  Examples of message are "Resolving host", "Connecting to host...", etc.
@@ -583,18 +569,8 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Progress signal showing the overall progress of the KDirLister.</short>
 		[Q_SIGNAL("void percent(int)")]
 		void Percent(int percent);
-		/// <remarks>
-		///  Emitted when we know the size of the jobs.
-		/// <param> name="size" the total size in bytes
-		///    </param></remarks>		<short>    Emitted when we know the size of the jobs.</short>
-		[Q_SIGNAL("void totalSize(KIO::filesize_t)")]
-		void TotalSize(long size);
-		/// <remarks>
-		///  Regularly emitted to show the progress of this KDirLister.
-		/// <param> name="size" the processed size in bytes
-		///    </param></remarks>		<short>    Regularly emitted to show the progress of this KDirLister.</short>
-		[Q_SIGNAL("void processedSize(KIO::filesize_t)")]
-		void ProcessedSize(long size);
+		// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Emitted to display information about the speed of the jobs.
 		/// <param> name="bytes_per_second" the speed in bytes/s

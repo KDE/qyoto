@@ -31,6 +31,12 @@ namespace Kimono {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KBookmarkOwner), this);
 		}
+		public enum BookmarkOption {
+			ShowAddBookmark = 0,
+			ShowEditBookmark = 1,
+		}
+		// void openFolderinTabs(const KBookmarkGroup& arg1); >>>> NOT CONVERTED
+		// KBookmarkDialog* bookmarkDialog(KBookmarkManager* arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  This function is called whenever the user wants to add the
 		///  current page to the bookmarks list.  The title will become the
@@ -69,25 +75,26 @@ namespace Kimono {
 		public virtual List<QPair<string, string>> CurrentBookmarkList() {
 			return (List<QPair<string, string>>) interceptor.Invoke("currentBookmarkList", "currentBookmarkList() const", typeof(List<QPair<string, string>>));
 		}
-		/// <remarks>
-		///  Returns true if the bookmark menu/toolbar should show an "Add Bookmark" Entry
-		///    </remarks>		<short>    Returns true if the bookmark menu/toolbar should show an "Add Bookmark" Entry    </short>
-		[SmokeMethod("addBookmarkEntry() const")]
-		public virtual bool AddBookmarkEntry() {
-			return (bool) interceptor.Invoke("addBookmarkEntry", "addBookmarkEntry() const", typeof(bool));
-		}
-		/// <remarks>
-		///  Returns true if the bookmark menu/toolbar should show an "Edit Bookmarks" Entry
-		///    </remarks>		<short>    Returns true if the bookmark menu/toolbar should show an "Edit Bookmarks" Entry    </short>
-		[SmokeMethod("editBookmarkEntry() const")]
-		public virtual bool EditBookmarkEntry() {
-			return (bool) interceptor.Invoke("editBookmarkEntry", "editBookmarkEntry() const", typeof(bool));
+		/// <remarks> Returns true if <pre>action</pre> should be shown in the menu
+		///   The default is to show both a add and editBookmark Entry
+		///   //TODO ContextMenuAction? to disable the contextMenu?
+		///          Delete and Propeties to disable those in the
+		///          context menu?
+		///    </remarks>		<short>   Returns true if \p action should be shown in the menu   The default is to show both a add and editBookmark Entry   //TODO ContextMenuAction? to disable the contextMenu?          Delete and Propeties to disable those in the          context menu?    </short>
+		[SmokeMethod("enableOption(KBookmarkOwner::BookmarkOption) const")]
+		public virtual bool EnableOption(KBookmarkOwner.BookmarkOption option) {
+			return (bool) interceptor.Invoke("enableOption$", "enableOption(KBookmarkOwner::BookmarkOption) const", typeof(bool), typeof(KBookmarkOwner.BookmarkOption), option);
 		}
 		/// <remarks>
 		///  Called if a bookmark is selected. You need to override this.
 		///    </remarks>		<short>    Called if a bookmark is selected.</short>
 		[SmokeMethod("openBookmark(const KBookmark&, Qt::MouseButtons, Qt::KeyboardModifiers)")]
-		public abstract void OpenBookmark(KBookmark bm, int mb, int km);
+		public abstract void OpenBookmark(KBookmark bm, uint mb, uint km);
+		/// <remarks>
+		///  Called if the user wants to open every bookmark in this folder in a new tab.
+		///  The default implementation does nothing.
+		///  This is only called if supportsTabs() returns true
+		///   </remarks>		<short>    Called if the user wants to open every bookmark in this folder in a new tab.</short>
 		public KBookmarkOwner() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmarkOwner", "KBookmarkOwner()", typeof(void));

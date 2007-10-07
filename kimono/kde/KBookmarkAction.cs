@@ -4,6 +4,11 @@ namespace Kimono {
 	using System;
 	using Qyoto;
 
+	/// <remarks>
+	///  This class is a KAction for bookmarks.
+	///  It provides a nice constructor.
+	///  And on triggered uses the owner to open the bookmark.
+	///  </remarks>		<short>     This class is a KAction for bookmarks.</short>
 
 	[SmokeClass("KBookmarkAction")]
 	public class KBookmarkAction : KAction, IKBookmarkAction, IDisposable {
@@ -11,23 +16,21 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KBookmarkAction), this);
 		}
-		// void contextMenu(const QPoint& arg1,KBookmarkManager* arg2,KBookmarkOwner* arg3); >>>> NOT CONVERTED
-		// void contextMenu(const QPoint& arg1,KBookmarkManager* arg2,KBookmarkOwner* arg3); >>>> NOT CONVERTED
 		public KBookmarkAction(KBookmark bk, KBookmarkOwner owner, QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmarkAction###", "KBookmarkAction(const KBookmark&, KBookmarkOwner*, QObject*)", typeof(void), typeof(KBookmark), bk, typeof(KBookmarkOwner), owner, typeof(QObject), parent);
 		}
 		[Q_SLOT("void slotSelected(Qt::MouseButtons, Qt::KeyboardModifiers)")]
-		public void SlotSelected(int mb, int km) {
-			interceptor.Invoke("slotSelected$$", "slotSelected(Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(int), mb, typeof(int), km);
+		public void SlotSelected(uint mb, uint km) {
+			interceptor.Invoke("slotSelected$$", "slotSelected(Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(uint), mb, typeof(uint), km);
 		}
 		~KBookmarkAction() {
 			interceptor.Invoke("~KBookmarkAction", "~KBookmarkAction()", typeof(void));
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			interceptor.Invoke("~KBookmarkAction", "~KBookmarkAction()", typeof(void));
 		}
-		protected KBookmark Bookmark() {
+		public KBookmark Bookmark() {
 			return (KBookmark) interceptor.Invoke("bookmark", "bookmark() const", typeof(KBookmark));
 		}
 		protected new IKBookmarkActionSignals Emit {

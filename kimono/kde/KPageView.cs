@@ -120,6 +120,13 @@ namespace Kimono {
 			return (QAbstractItemDelegate) interceptor.Invoke("itemDelegate", "itemDelegate() const", typeof(QAbstractItemDelegate));
 		}
 		/// <remarks>
+		///  Sets the <code>widget</code> which will be shown when a page is selected
+		///  that has no own widget set.
+		///      </remarks>		<short>    Sets the <code>widget</code> which will be shown when a page is selected  that has no own widget set.</short>
+		public void SetDefaultWidget(QWidget widget) {
+			interceptor.Invoke("setDefaultWidget#", "setDefaultWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
+		}
+		/// <remarks>
 		///  Returns the navigation view, depending on the current
 		///  face type.
 		///  This method can be reimplemented to provide custom
@@ -144,8 +151,9 @@ namespace Kimono {
 		///  This method can be reimplemented for adapting custom
 		///  views.
 		///      </remarks>		<short>    Returns the position where the navigation view should be  located according the page stack.</short>
-		protected int ViewPosition() {
-			return (int) interceptor.Invoke("viewPosition", "viewPosition() const", typeof(int));
+		[SmokeMethod("viewPosition() const")]
+		protected virtual uint ViewPosition() {
+			return (uint) interceptor.Invoke("viewPosition", "viewPosition() const", typeof(uint));
 		}
 		~KPageView() {
 			interceptor.Invoke("~KPageView", "~KPageView()", typeof(void));

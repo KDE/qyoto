@@ -64,10 +64,14 @@ namespace Kimono {
 		/// <param> name="componentName" the name of the component.
 		/// </param><param> name="catalogName" the name of the translation catalog;
 		///                     if left empty <code>componentName</code> is used
-		///      </param></remarks>		<short>    Constructor.</short>
-		public KComponentData(QByteArray componentName, QByteArray catalogName, KComponentData.MainComponentRegistration arg3) : this((Type) null) {
+		/// </param><param> name="registerAsMain" whether to register the component as the main component
+		///                        of the application. This has no effect, if the application
+		///                        already has a main component.
+		/// </param></remarks>		<short>    Constructor.</short>
+		/// 		<see> KGlobal.MainComponent</see>
+		public KComponentData(QByteArray componentName, QByteArray catalogName, KComponentData.MainComponentRegistration registerAsMain) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KComponentData##$", "KComponentData(const QByteArray&, const QByteArray&, KComponentData::MainComponentRegistration)", typeof(void), typeof(QByteArray), componentName, typeof(QByteArray), catalogName, typeof(KComponentData.MainComponentRegistration), arg3);
+			interceptor.Invoke("KComponentData##$", "KComponentData(const QByteArray&, const QByteArray&, KComponentData::MainComponentRegistration)", typeof(void), typeof(QByteArray), componentName, typeof(QByteArray), catalogName, typeof(KComponentData.MainComponentRegistration), registerAsMain);
 		}
 		public KComponentData(QByteArray componentName, QByteArray catalogName) : this((Type) null) {
 			CreateProxy();
@@ -79,18 +83,21 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructor.
-		///  When instanciating a KComponentData that is not your KApplication,
-		///  make sure that the KAboutData and the KComponentData have the same life time.
-		///  You have to destroy both, since KComponentData does not own the about data.
-		///  Do not create a KAboutData on the stack in this case!
-		///  Building a KAboutData on the stack is only ok for usage with
-		///  KCmdLineArgs and KApplication (not destroyed until the app exits).
+		///  A copy of the aboutData object is made.
 		/// <param> name="aboutData" data about this component
+		/// </param><param> name="registerAsMain" whether to register the component as the main component
+		///                        of the application. This has no effect, if the application
+		///                        already has a main component.
 		/// </param></remarks>		<short>    Constructor.</short>
+		/// 		<see> KGlobal.MainComponent</see>
 		/// 		<see> KAboutData</see>
+		public KComponentData(KAboutData aboutData, KComponentData.MainComponentRegistration registerAsMain) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KComponentData#$", "KComponentData(const KAboutData&, KComponentData::MainComponentRegistration)", typeof(void), typeof(KAboutData), aboutData, typeof(KComponentData.MainComponentRegistration), registerAsMain);
+		}
 		public KComponentData(KAboutData aboutData) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KComponentData#", "KComponentData(const KAboutData*)", typeof(void), typeof(KAboutData), aboutData);
+			interceptor.Invoke("KComponentData#", "KComponentData(const KAboutData&)", typeof(void), typeof(KAboutData), aboutData);
 		}
 		/// <remarks>
 		///  Returns whether this is a valid object.
@@ -145,9 +152,6 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Set name of default config file.</short>
 		protected void SetConfigName(string name) {
 			interceptor.Invoke("setConfigName$", "setConfigName(const QString&)", typeof(void), typeof(string), name);
-		}
-		protected void _checkConfig() {
-			interceptor.Invoke("_checkConfig", "_checkConfig()", typeof(void));
 		}
 		~KComponentData() {
 			interceptor.Invoke("~KComponentData", "~KComponentData()", typeof(void));

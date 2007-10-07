@@ -56,25 +56,24 @@ namespace Kimono {
 		///             till it is finished.
 		///      
 		/// </li></remarks>		<short>    Describes the DBUS Startup type of the service.</short>
-		public enum DBUSStartupType_t {
-			DBUS_None = 0,
-			DBUS_Unique = 1,
-			DBUS_Multi = 2,
-			DBUS_Wait = 3,
+		public enum DBusStartupType {
+			DBusNone = 0,
+			DBusUnique = 1,
+			DBusMulti = 2,
+			DBusWait = 3,
 		}
+		// template <T> T* createInstance(QObject* arg1,const QVariantList& arg2,QString* arg3); >>>> NOT CONVERTED
+		// template <T> T* createInstance(QObject* arg1,const QVariantList& arg2); >>>> NOT CONVERTED
+		// template <T> T* createInstance(QObject* arg1); >>>> NOT CONVERTED
+		// template <T> T* createInstance(); >>>> NOT CONVERTED
+		// template <T> T* createInstance(QWidget* arg1,QObject* arg2,const QVariantList& arg3,QString* arg4); >>>> NOT CONVERTED
+		// template <T> T* createInstance(QWidget* arg1,QObject* arg2,const QVariantList& arg3); >>>> NOT CONVERTED
+		// template <T> T* createInstance(QWidget* arg1,QObject* arg2); >>>> NOT CONVERTED
 		// KService::Ptr serviceByName(const QString& arg1); >>>> NOT CONVERTED
 		// KService::Ptr serviceByDesktopPath(const QString& arg1); >>>> NOT CONVERTED
 		// KService::Ptr serviceByDesktopName(const QString& arg1); >>>> NOT CONVERTED
 		// KService::Ptr serviceByMenuId(const QString& arg1); >>>> NOT CONVERTED
 		// KService::Ptr serviceByStorageId(const QString& arg1); >>>> NOT CONVERTED
-		// template <T>  T* createInstance(const KService::Ptr& arg1,QObject* arg2,const QStringList& arg3,int* arg4); >>>> NOT CONVERTED
-		// template <T>  T* createInstance(const KService::Ptr& arg1,QObject* arg2,const QStringList& arg3); >>>> NOT CONVERTED
-		// template <T>  T* createInstance(const KService::Ptr& arg1,QObject* arg2); >>>> NOT CONVERTED
-		// template <T>  T* createInstance(const KService::Ptr& arg1); >>>> NOT CONVERTED
-		// template <T, class ServiceIterator>  T* createInstance(ServiceIterator arg1,ServiceIterator arg2,QObject* arg3,const QStringList& arg4,int* arg5); >>>> NOT CONVERTED
-		// template <T, class ServiceIterator>  T* createInstance(ServiceIterator arg1,ServiceIterator arg2,QObject* arg3,const QStringList& arg4); >>>> NOT CONVERTED
-		// template <T, class ServiceIterator>  T* createInstance(ServiceIterator arg1,ServiceIterator arg2,QObject* arg3); >>>> NOT CONVERTED
-		// template <T, class ServiceIterator>  T* createInstance(ServiceIterator arg1,ServiceIterator arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a temporary service with a given name, exec-line and icon.
 		/// <param> name="name" the name of the service
@@ -117,16 +116,6 @@ namespace Kimono {
 		/// 		<short>    Services are either applications (executables) or dlopened libraries (plugins).</short>
 		public bool IsApplication() {
 			return (bool) interceptor.Invoke("isApplication", "isApplication() const", typeof(bool));
-		}
-		/// <remarks>
-		///  Returns the name of the service.
-		/// </remarks>		<return> the name of the service,
-		///          or string() if not set
-		///      </return>
-		/// 		<short>    Returns the name of the service.</short>
-		[SmokeMethod("name() const")]
-		public override string Name() {
-			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
 		/// <remarks>
 		///  Returns the executable.
@@ -195,20 +184,6 @@ namespace Kimono {
 			return (string) interceptor.Invoke("username", "username() const", typeof(string));
 		}
 		/// <remarks>
-		///  Returns the path to the location where the service desktop entry
-		///  is stored.
-		///  This is a relative path if the desktop entry was found in any
-		///  of the locations pointed to by $KDEDIRS (e.g. "Internet/kppp.desktop")
-		///  It is a full path if the desktop entry originates from another
-		///  location.
-		/// </remarks>		<return> the path of the service's desktop file,
-		///          or string() if not set
-		///      </return>
-		/// 		<short>    Returns the path to the location where the service desktop entry  is stored.</short>
-		public string DesktopEntryPath() {
-			return (string) interceptor.Invoke("desktopEntryPath", "desktopEntryPath() const", typeof(string));
-		}
-		/// <remarks>
 		///  Returns the filename of the service desktop entry without any
 		///  extension. E.g. "kppp"
 		/// </remarks>		<return> the name of the desktop entry without path or extension,
@@ -230,7 +205,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns a normalized ID suitable for storing in configuration files.
 		///  It will be based on the menu-id when available and otherwise falls
-		///  back to desktopEntryPath()
+		///  back to entryPath()
 		/// </remarks>		<return> the storage ID
 		///      </return>
 		/// 		<short>    Returns a normalized ID suitable for storing in configuration files.</short>
@@ -242,8 +217,8 @@ namespace Kimono {
 		/// </remarks>		<return> the DBUSStartupType supported by this service
 		///      </return>
 		/// 		<short>    Returns the DBUSStartupType supported by this service.</short>
-		public KService.DBUSStartupType_t DBUSStartupType() {
-			return (KService.DBUSStartupType_t) interceptor.Invoke("DBUSStartupType", "DBUSStartupType() const", typeof(KService.DBUSStartupType_t));
+		public KService.DBusStartupType DbusStartupType() {
+			return (KService.DBusStartupType) interceptor.Invoke("dbusStartupType", "dbusStartupType() const", typeof(KService.DBusStartupType));
 		}
 		/// <remarks>
 		///  Returns the working directory to run the program in.
@@ -388,18 +363,12 @@ namespace Kimono {
 			return (string) interceptor.Invoke("parentApp", "parentApp() const", typeof(string));
 		}
 		/// <remarks>
-		///  Returns the requested property. Some often used properties
-		///  have convenience access functions like exec(),
-		///  serviceTypes etc.
-		///  It depends upon the serviceTypes() of this service which
-		///  properties a service can have.
-		/// <param> name="_name" the name of the property
-		/// </param></remarks>		<return> the property, or invalid if not found
-		/// </return>
-		/// 		<short>    Returns the requested property.</short>
-		/// 		<see> KServiceType</see>
-		public QVariant Property(string _name) {
-			return (QVariant) interceptor.Invoke("property$", "property(const QString&) const", typeof(QVariant), typeof(string), _name);
+		///  The keyword to be used when constructing the plugin using KPluginFactory. The keyword is
+		///  defined with X-KDE-PluginKeyword in the .desktop file and with K_REGISTER_PLUGIN_WITH_KEYWORD
+		///  when implementing the plugin.
+		///      </remarks>		<short>    The keyword to be used when constructing the plugin using KPluginFactory.</short>
+		public string PluginKeyword() {
+			return (string) interceptor.Invoke("pluginKeyword", "pluginKeyword() const", typeof(string));
 		}
 		/// <remarks>
 		///  Returns the requested property.
@@ -413,24 +382,6 @@ namespace Kimono {
 			return (QVariant) interceptor.Invoke("property$$", "property(const QString&, QVariant::Type) const", typeof(QVariant), typeof(string), _name, typeof(QVariant.TypeOf), t);
 		}
 		/// <remarks>
-		///  Returns the list of all properties that this service can have.
-		///  That means, that some of these properties may be empty.
-		/// </remarks>		<return> the list of supported properties
-		///      </return>
-		/// 		<short>    Returns the list of all properties that this service can have.</short>
-		public List<string> PropertyNames() {
-			return (List<string>) interceptor.Invoke("propertyNames", "propertyNames() const", typeof(List<string>));
-		}
-		/// <remarks>
-		///  Checks whether the service is valid.
-		/// </remarks>		<return> true if the service is valid (e.g. name is not empty)
-		///      </return>
-		/// 		<short>    Checks whether the service is valid.</short>
-		[SmokeMethod("isValid() const")]
-		public override bool IsValid() {
-			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
-		}
-		/// <remarks>
 		///  Returns a path that can be used for saving changes to this
 		///  service
 		/// </remarks>		<return> path that can be used for saving changes to this service
@@ -438,20 +389,6 @@ namespace Kimono {
 		/// 		<short>    Returns a path that can be used for saving changes to this  service </short>
 		public string LocateLocal() {
 			return (string) interceptor.Invoke("locateLocal", "locateLocal() const", typeof(string));
-		}
-		/// <remarks>
-		///  Load the service from a stream.
-		///      </remarks>		<short>   </short>
-		[SmokeMethod("load(QDataStream&)")]
-		public override void Load(QDataStream arg1) {
-			interceptor.Invoke("load#", "load(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
-		}
-		/// <remarks>
-		///  Save the service to a stream.
-		///      </remarks>		<short>   </short>
-		[SmokeMethod("save(QDataStream&)")]
-		public override void Save(QDataStream arg1) {
-			interceptor.Invoke("save#", "save(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
 		}
 		/// <remarks>
 		///  Set the menu id
@@ -471,13 +408,36 @@ namespace Kimono {
 		public void SetTerminalOptions(string options) {
 			interceptor.Invoke("setTerminalOptions$", "setTerminalOptions(const QString&)", typeof(void), typeof(string), options);
 		}
+		/// <remarks>
+		///  This template allows to load the library for the specified service and ask the
+		///  factory to create an instance of the given template type.
+		/// <param> name="parent" The parent object (see QObject constructor)
+		/// </param><param> name="args" A list of arguments, passed to the factory and possibly
+		///              to the component (see KPluginFactory)
+		/// </param><param> name="error" A pointer to string which should receive the error description or 0
+		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
+		///          factory was unable to create an object of the given type.
+		///      </return>
+		/// 		<short>    This template allows to load the library for the specified service and ask the  factory to create an instance of the given template type.</short>
+		/// <remarks>
+		///  This template allows to load the library for the specified service and ask the
+		///  factory to create an instance of the given template type.
+		/// <param> name="parentWidget" A parent widget for the service. This is used e. g. for parts
+		/// </param><param> name="parent" The parent object (see QObject constructor)
+		/// </param><param> name="args" A list of arguments, passed to the factory and possibly
+		///              to the component (see KPluginFactory)
+		/// </param><param> name="error" A pointer to string which should receive the error description or 0
+		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
+		///          factory was unable to create an object of the given type.
+		///      </return>
+		/// 		<short>    This template allows to load the library for the specified service and ask the  factory to create an instance of the given template type.</short>
 		protected List<string> AccessServiceTypes() {
 			return (List<string>) interceptor.Invoke("accessServiceTypes", "accessServiceTypes()", typeof(List<string>));
 		}
 		~KService() {
 			interceptor.Invoke("~KService", "~KService()", typeof(void));
 		}
-		public void Dispose() {
+		public new void Dispose() {
 			interceptor.Invoke("~KService", "~KService()", typeof(void));
 		}
 		/// <remarks>
@@ -491,14 +451,14 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>    Find a service by name, i.</short>
 		/// <remarks>
-		///  Find a service based on its path as returned by desktopEntryPath().
+		///  Find a service based on its path as returned by entryPath().
 		///  It's usually better to use serviceByStorageId() instead.
 		/// <param> name="_path" the path of the configuration file
 		/// </param></remarks>		<return> a pointer to the requested service or 0 if the service is
 		///          unknown.
 		///  @em Very @em important: Don't store the result in a KService* !
 		///      </return>
-		/// 		<short>    Find a service based on its path as returned by desktopEntryPath().</short>
+		/// 		<short>    Find a service based on its path as returned by entryPath().</short>
 		/// <remarks>
 		///  Find a service by the name of its desktop file, not depending on
 		///  its actual location (as long as it's under the applnk or service
@@ -565,30 +525,5 @@ namespace Kimono {
 		public static string NewServicePath(bool showInMenu, string suggestedName) {
 			return (string) staticInterceptor.Invoke("newServicePath$$", "newServicePath(bool, const QString&)", typeof(string), typeof(bool), showInMenu, typeof(string), suggestedName);
 		}
-		/// <remarks>
-		///  This template allows to load the library for the specified service and ask the
-		///  factory to create an instance of the given template type.
-		/// <param> name="service" The service describing the library to open
-		/// </param><param> name="parent" The parent object (see QObject constructor)
-		/// </param><param> name="args" A list of string arguments, passed to the factory and possibly
-		///              to the component (see KLibFactory)
-		/// </param><param> name="error" see KLibLoader
-		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
-		///          factory was unable to create an object of the given type.
-		///      </return>
-		/// 		<short>    This template allows to load the library for the specified service and ask the  factory to create an instance of the given template type.</short>
-		/// <remarks>
-		///  This template allows to create a component from a list of services,
-		///  usually coming from a trader query. You probably want to use KServiceTypeTrader instead.
-		/// <param> name="begin" The start iterator to the service describing the library to open
-		/// </param><param> name="end" The end iterator to the service describing the library to open
-		/// </param><param> name="parent" The parent object (see QObject constructor)
-		/// </param><param> name="args" A list of string arguments, passed to the factory and possibly
-		///              to the component (see KLibFactory)
-		/// </param><param> name="error" see KLibLoader
-		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
-		///          factory was unable to create an object of the given type.
-		///      </return>
-		/// 		<short>    This template allows to create a component from a list of services,  usually coming from a trader query.</short>
 	}
 }

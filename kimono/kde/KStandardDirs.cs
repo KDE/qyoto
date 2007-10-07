@@ -241,18 +241,9 @@ namespace Kimono {
 			NoDuplicates = 2,
 			IgnoreExecBit = 4,
 		}
-		// quint32 calcResourceHash(const char* arg1,const QString& arg2,SearchOptions arg3); >>>> NOT CONVERTED
-		// QStringList findAllResources(const char* arg1,const QString& arg2,SearchOptions arg3); >>>> NOT CONVERTED
-		// QStringList findAllResources(const char* arg1,const QString& arg2,SearchOptions arg3,QStringList& arg4); >>>> NOT CONVERTED
-		// QString findExe(const QString& arg1,const QString& arg2,SearchOptions arg3); >>>> NOT CONVERTED
-		// int findAllExe(QStringList& arg1,const QString& arg2,const QString& arg3,SearchOptions arg4); >>>> NOT CONVERTED
 		/// <remarks>
 		///  KStandardDirs' constructor. It just initializes the caches.
 		/// </remarks>		<short>    KStandardDirs' constructor.</short>
-		public KStandardDirs(KComponentData componentData) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KStandardDirs#", "KStandardDirs(const KComponentData&)", typeof(void), typeof(KComponentData), componentData);
-		}
 		public KStandardDirs() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KStandardDirs", "KStandardDirs()", typeof(void));
@@ -396,6 +387,9 @@ namespace Kimono {
 		///           resource.
 		///      </return>
 		/// 		<short>    Returns a number that identifies this version of the resource.</short>
+		public uint CalcResourceHash(string type, string filename, uint options) {
+			return (uint) interceptor.Invoke("calcResourceHash$$$", "calcResourceHash(const char*, const QString&, KStandardDirs::SearchOptions) const", typeof(uint), typeof(string), type, typeof(string), filename, typeof(uint), options);
+		}
 		public uint CalcResourceHash(string type, string filename) {
 			return (uint) interceptor.Invoke("calcResourceHash$$", "calcResourceHash(const char*, const QString&) const", typeof(uint), typeof(string), type, typeof(string), filename);
 		}
@@ -459,6 +453,9 @@ namespace Kimono {
 		///          specified filter.
 		///      </return>
 		/// 		<short>    Tries to find all resources with the specified type.</short>
+		public List<string> FindAllResources(string type, string filter, uint options) {
+			return (List<string>) interceptor.Invoke("findAllResources$$$", "findAllResources(const char*, const QString&, KStandardDirs::SearchOptions) const", typeof(List<string>), typeof(string), type, typeof(string), filter, typeof(uint), options);
+		}
 		public List<string> FindAllResources(string type, string filter) {
 			return (List<string>) interceptor.Invoke("findAllResources$$", "findAllResources(const char*, const QString&) const", typeof(List<string>), typeof(string), type, typeof(string), filter);
 		}
@@ -484,16 +481,8 @@ namespace Kimono {
 		///          specified filter.
 		///      </return>
 		/// 		<short>    Tries to find all resources with the specified type.</short>
-		/// <remarks>
-		///  This function adds the defaults that are used by the current
-		///  KDE version.
-		///  It's a series of addResourceTypes()
-		///  and addPrefix() calls.
-		///  You normally wouldn't call this function because it's called
-		///  for you from KGlobal.
-		///      </remarks>		<short>    This function adds the defaults that are used by the current  KDE version.</short>
-		public void AddKDEDefaults() {
-			interceptor.Invoke("addKDEDefaults", "addKDEDefaults()", typeof(void));
+		public List<string> FindAllResources(string type, string filter, uint options, List<string> relPaths) {
+			return (List<string>) interceptor.Invoke("findAllResources$$$?", "findAllResources(const char*, const QString&, KStandardDirs::SearchOptions, QStringList&) const", typeof(List<string>), typeof(string), type, typeof(string), filter, typeof(uint), options, typeof(List<string>), relPaths);
 		}
 		/// <remarks>
 		///  Reads customized entries out of the given config object and add
@@ -646,6 +635,9 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Finds the executable in the system path.</short>
 		/// 		<see> findAllExe</see>
+		public static string FindExe(string appname, string pathstr, uint options) {
+			return (string) staticInterceptor.Invoke("findExe$$$", "findExe(const QString&, const QString&, KStandardDirs::SearchOptions)", typeof(string), typeof(string), appname, typeof(string), pathstr, typeof(uint), options);
+		}
 		public static string FindExe(string appname, string pathstr) {
 			return (string) staticInterceptor.Invoke("findExe$$", "findExe(const QString&, const QString&)", typeof(string), typeof(string), appname, typeof(string), pathstr);
 		}
@@ -668,6 +660,9 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Finds all occurrences of an executable in the system path.</short>
 		/// 		<see> findExe</see>
+		public static int FindAllExe(List<string> list, string appname, string pathstr, uint options) {
+			return (int) staticInterceptor.Invoke("findAllExe?$$$", "findAllExe(QStringList&, const QString&, const QString&, KStandardDirs::SearchOptions)", typeof(int), typeof(List<string>), list, typeof(string), appname, typeof(string), pathstr, typeof(uint), options);
+		}
 		public static int FindAllExe(List<string> list, string appname, string pathstr) {
 			return (int) staticInterceptor.Invoke("findAllExe?$$", "findAllExe(QStringList&, const QString&, const QString&)", typeof(int), typeof(List<string>), list, typeof(string), appname, typeof(string), pathstr);
 		}

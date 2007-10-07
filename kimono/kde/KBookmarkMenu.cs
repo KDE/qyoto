@@ -12,16 +12,12 @@ namespace Kimono {
 	///  everything.  These defaults reside in the classes
 	///  KBookmarkOwner (editing bookmarks) and KBookmarkManager
 	///  (almost everything else).  If you wish to change the defaults in
-	///  any way, you must reimplement and instantiate those classes
-	///  <em>before</em> this class is ever called.
+	///  any way, you must reimplement either this class or KBookmarkOwner.
 	///  Using this class is very simple:
 	///  1) Create a popup menu (either KActionMenu or KMenu will do)
 	///  2) Instantiate a new KBookmarkMenu object using the above popup
 	///     menu as a parameter
 	///  3) Insert your (now full) popup menu wherever you wish
-	///  Again, if you wish to modify any defaults, the procedure is:
-	///  1a) Reimplement your own KBookmarkOwner
-	///  1b) Reimplement and instantiate your own KBookmarkManager
 	///  </remarks>		<short>    This class provides a bookmark menu.</short>
 
 	[SmokeClass("KBookmarkMenu")]
@@ -32,6 +28,7 @@ namespace Kimono {
 		}
 		// KBookmarkMenu* KBookmarkMenu(KBookmarkManager* arg1,KBookmarkOwner* arg2,KMenu* arg3,KActionCollection* arg4); >>>> NOT CONVERTED
 		// KBookmarkMenu* KBookmarkMenu(KBookmarkManager* arg1,KBookmarkOwner* arg2,KMenu* arg3,const QString& arg4); >>>> NOT CONVERTED
+		// KBookmarkManager* manager(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Fills a bookmark menu
 		///  (one instance of KBookmarkMenu is created for the toplevel menu,
@@ -44,6 +41,9 @@ namespace Kimono {
 		/// </param><param> name="collec" parent collection for the KActions.
 		///    </param></remarks>		<short>    Fills a bookmark menu  (one instance of KBookmarkMenu is created for the toplevel menu,   but also one per submenu).</short>
 		/// <remarks>
+		///  Creates a bookmark submenu
+		///    </remarks>		<short>    Creates a bookmark submenu    </short>
+		/// <remarks>
 		///  Call ensureUpToDate() if you need KBookmarkMenu to adjust to its
 		///  final size before it is executed.
 		/// </remarks>		<short>    Call ensureUpToDate() if you need KBookmarkMenu to adjust to its  final size before it is executed.</short>
@@ -54,9 +54,6 @@ namespace Kimono {
 		public void SlotBookmarksChanged(string arg1) {
 			interceptor.Invoke("slotBookmarksChanged$", "slotBookmarksChanged(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		/// <remarks>
-		///  Creates a bookmark submenu
-		///    </remarks>		<short>    Creates a bookmark submenu    </short>
 		[SmokeMethod("clear()")]
 		protected virtual void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
@@ -68,6 +65,10 @@ namespace Kimono {
 		[SmokeMethod("actionForBookmark(const KBookmark&)")]
 		protected virtual QAction ActionForBookmark(KBookmark bm) {
 			return (QAction) interceptor.Invoke("actionForBookmark#", "actionForBookmark(const KBookmark&)", typeof(QAction), typeof(KBookmark), bm);
+		}
+		[SmokeMethod("contextMenu(QAction*)")]
+		protected virtual KMenu ContextMenu(QAction action) {
+			return (KMenu) interceptor.Invoke("contextMenu#", "contextMenu(QAction*)", typeof(KMenu), typeof(QAction), action);
 		}
 		protected void AddActions() {
 			interceptor.Invoke("addActions", "addActions()", typeof(void));
@@ -87,13 +88,34 @@ namespace Kimono {
 		protected void AddNewFolder() {
 			interceptor.Invoke("addNewFolder", "addNewFolder()", typeof(void));
 		}
+		protected void AddOpenInTabs() {
+			interceptor.Invoke("addOpenInTabs", "addOpenInTabs()", typeof(void));
+		}
+		protected bool IsRoot() {
+			return (bool) interceptor.Invoke("isRoot", "isRoot() const", typeof(bool));
+		}
+		protected bool IsDirty() {
+			return (bool) interceptor.Invoke("isDirty", "isDirty() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Parent bookmark for this menu.
+		///    </remarks>		<short>    Parent bookmark for this menu.</short>
+		protected string ParentAddress() {
+			return (string) interceptor.Invoke("parentAddress", "parentAddress() const", typeof(string));
+		}
+		protected KBookmarkOwner Owner() {
+			return (KBookmarkOwner) interceptor.Invoke("owner", "owner() const", typeof(KBookmarkOwner));
+		}
+		/// <remarks>
+		///  The menu in which we insert our actions
+		///  Supplied in the constructor.
+		///    </remarks>		<short>    The menu in which we insert our actions  Supplied in the constructor.</short>
+		protected KMenu ParentMenu() {
+			return (KMenu) interceptor.Invoke("parentMenu", "parentMenu() const", typeof(KMenu));
+		}
 		[Q_SLOT("void slotAboutToShow()")]
 		protected void SlotAboutToShow() {
 			interceptor.Invoke("slotAboutToShow", "slotAboutToShow()", typeof(void));
-		}
-		[Q_SLOT("void contextMenu(const QPoint&)")]
-		protected void ContextMenu(QPoint arg1) {
-			interceptor.Invoke("contextMenu#", "contextMenu(const QPoint&)", typeof(void), typeof(QPoint), arg1);
 		}
 		[Q_SLOT("void slotAddBookmarksList()")]
 		protected void SlotAddBookmarksList() {
@@ -106,6 +128,10 @@ namespace Kimono {
 		[Q_SLOT("void slotNewFolder()")]
 		protected void SlotNewFolder() {
 			interceptor.Invoke("slotNewFolder", "slotNewFolder()", typeof(void));
+		}
+		[Q_SLOT("void slotOpenFolderInTabs()")]
+		protected void SlotOpenFolderInTabs() {
+			interceptor.Invoke("slotOpenFolderInTabs", "slotOpenFolderInTabs()", typeof(void));
 		}
 		~KBookmarkMenu() {
 			interceptor.Invoke("~KBookmarkMenu", "~KBookmarkMenu()", typeof(void));

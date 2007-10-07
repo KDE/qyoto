@@ -12,6 +12,7 @@ namespace Kimono {
 	///   - <see cref="#gen_usage"></see>
 	///   - <see cref="#spec_usage"></see>
 	///   - <see cref="#subs_notes"></see>
+	///   - <see cref="#other_ref"></see>
 	///  \section gen_usage General Usage
 	///  This class should mostly not be used directly, but through wrapper i18n
 	///  calls which return string, for localization of user visible messages in
@@ -109,24 +110,23 @@ namespace Kimono {
 	///      allowed to drop its placeholder in either singular or plural form.
 	///  <li>If</li> none of the arguments supplied to a plural call is integer-valued,
 	///      you will get an error mark in message at runtime (in debug mode).
+	///  \section other_ref Further References
+	///  <a href="http://techbase.kde.org/">KDE Techbase</a> contains a
+	///  <a href="http://techbase.kde.org/Development/Tutorials/Localization/i18n">
+	///  series of tutorials</a> on preparing the code for localization (and on
+	///  internationalization process in general), where the intended patterns of
+	///  usage of i18n API are covered in great detail.
+	///  All i18n'd messages, whether sent to widgets expecting plain text or
+	///  allowing Qt rich text (HTML), support the new KDE semantic markup for
+	///  user interface text, KUIT in short. Semantic markup both increases the
+	///  consistency of visual presentation for the end user, and provides extra
+	///  information to translators, so that translations can be of higher quality.
+	///  KUIT is documented in an
+	///  <a href="http://techbase.kde.org/Development/Tutorials/Localization/i18n_Semantics">
+	///  Techbase article</a> as well.
 	/// </remarks>		<author> Chusslove Illich \<caslav.ilic@gmx.net\>
 	///  </author>
 	/// 		<short> Class for producing and handling localized messages.</short>
-	/// 		<see> <a</see>
-	/// 		<see> href="http://developer.kde.org/documentation/library/">[[Here</see>
-	/// 		<see> goes</see>
-	/// 		<see> the</see>
-	/// 		<see> link</see>
-	/// 		<see> to</see>
-	/// 		<see> Programmer's</see>
-	/// 		<see> i18n</see>
-	/// 		<see> howto</see>
-	/// 		<see> sec.</see>
-	/// 		<see> How</see>
-	/// 		<see> to</see>
-	/// 		<see> prepare</see>
-	/// 		<see> the</see>
-	/// 		<see> code]]</a></see>
 	/// 		<see> KLocale</see>
 
 	[SmokeClass("KLocalizedString")]
@@ -137,10 +137,7 @@ namespace Kimono {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KLocalizedString), this);
 		}
-		private static SmokeInvocation staticInterceptor = null;
-		static KLocalizedString() {
-			staticInterceptor = new SmokeInvocation(typeof(KLocalizedString), null);
-		}
+		// void notifyCatalogsUpdated(const QStringList& arg1,const QList<KCatalogName>& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs an empty message, which is not valid for finalization.
 		///  Usefull when you later need to assign KLocalizedString obtained by one
@@ -362,8 +359,5 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///      </remarks>		<short>   </short>
-		public static void NotifyCatalogsUpdated(List<string> languages, List<string> catalogs) {
-			staticInterceptor.Invoke("notifyCatalogsUpdated??", "notifyCatalogsUpdated(const QStringList&, const QStringList&)", typeof(void), typeof(List<string>), languages, typeof(List<string>), catalogs);
-		}
 	}
 }

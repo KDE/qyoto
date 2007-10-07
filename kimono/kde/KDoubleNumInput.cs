@@ -165,8 +165,8 @@ namespace Kimono {
 			interceptor.Invoke("setRange$$", "setRange(double, double)", typeof(void), typeof(double), min, typeof(double), max);
 		}
 		[SmokeMethod("setLabel(const QString&, Qt::Alignment)")]
-		public override void SetLabel(string label, int a) {
-			interceptor.Invoke("setLabel$$", "setLabel(const QString&, Qt::Alignment)", typeof(void), typeof(string), label, typeof(int), a);
+		public override void SetLabel(string label, uint a) {
+			interceptor.Invoke("setLabel$$", "setLabel(const QString&, Qt::Alignment)", typeof(void), typeof(string), label, typeof(uint), a);
 		}
 		[SmokeMethod("setLabel(const QString&)")]
 		public override void SetLabel(string label) {

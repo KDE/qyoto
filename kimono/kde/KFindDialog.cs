@@ -50,6 +50,10 @@ namespace Kimono {
 		/// </param><param> name="findStrings" The find history, see findHistory()
 		/// </param><param> name="hasSelection" Whether a selection exists
 		///      </param></remarks>		<short>    Construct a modal find dialog </short>
+		public KFindDialog(QWidget parent, long options, List<string> findStrings, bool hasSelection, bool replaceDialog) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KFindDialog#$?$$", "KFindDialog(QWidget*, long, const QStringList&, bool, bool)", typeof(void), typeof(QWidget), parent, typeof(long), options, typeof(List<string>), findStrings, typeof(bool), hasSelection, typeof(bool), replaceDialog);
+		}
 		public KFindDialog(QWidget parent, long options, List<string> findStrings, bool hasSelection) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KFindDialog#$?$", "KFindDialog(QWidget*, long, const QStringList&, bool)", typeof(void), typeof(QWidget), parent, typeof(long), options, typeof(List<string>), findStrings, typeof(bool), hasSelection);
@@ -182,26 +186,6 @@ namespace Kimono {
 		[SmokeMethod("showEvent(QShowEvent*)")]
 		protected override void ShowEvent(QShowEvent arg1) {
 			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
-		}
-		[Q_SLOT("void slotOk()")]
-		protected void SlotOk() {
-			interceptor.Invoke("slotOk", "slotOk()", typeof(void));
-		}
-		[Q_SLOT("void slotSelectedTextToggled(bool)")]
-		protected void SlotSelectedTextToggled(bool arg1) {
-			interceptor.Invoke("slotSelectedTextToggled$", "slotSelectedTextToggled(bool)", typeof(void), typeof(bool), arg1);
-		}
-		[Q_SLOT("void showPatterns()")]
-		protected void ShowPatterns() {
-			interceptor.Invoke("showPatterns", "showPatterns()", typeof(void));
-		}
-		[Q_SLOT("void showPlaceholders()")]
-		protected void ShowPlaceholders() {
-			interceptor.Invoke("showPlaceholders", "showPlaceholders()", typeof(void));
-		}
-		[Q_SLOT("void textSearchChanged(const QString&)")]
-		protected void TextSearchChanged(string arg1) {
-			interceptor.Invoke("textSearchChanged$", "textSearchChanged(const QString&)", typeof(void), typeof(string), arg1);
 		}
 		~KFindDialog() {
 			interceptor.Invoke("~KFindDialog", "~KFindDialog()", typeof(void));

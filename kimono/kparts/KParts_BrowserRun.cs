@@ -37,27 +37,47 @@ namespace Kimono {
 		// KParts::BrowserRun::NonEmbeddableResult handleNonEmbeddable(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		/// <param> name="url" the URL we're probing
-		/// </param><param> name="args" URL args - includes data for a HTTP POST, etc.
-		/// </param><param> name="part" the part going to open this URL - can be null if not created yet
+		/// </param><param> name="args" URL args - includes reload, metaData, etc.
+		/// </param><param> name="browserArgs" browser-related args - includes data for a HTTP POST, etc.
+		/// </param><param> name="part" the part going to open this URL - can be 0 if not created yet
 		/// </param><param> name="window" the mainwindow - passed to KIO.Job.SetWindow()
 		/// </param><param> name="removeReferrer" if true, the "referrer" metadata from <code>args</code> isn't passed on
 		/// </param><param> name="trustedSource" if false, a warning will be shown before launching an executable.
 		///           Always pass false for <code>trustedSource</code>, except for local directory views.
 		/// </param><param> name="hideErrorDialog" if true, no dialog will be shown in case of errors.
 		///          </param></remarks>		<short>   </short>
-		public BrowserRun(KUrl url, KParts.URLArgs args, KParts.ReadOnlyPart part, QWidget window, bool removeReferrer, bool trustedSource, bool hideErrorDialog) : this((Type) null) {
+		public BrowserRun(KUrl url, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs, KParts.ReadOnlyPart part, QWidget window, bool removeReferrer, bool trustedSource, bool hideErrorDialog) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("BrowserRun####$$$", "BrowserRun(const KUrl&, const KParts::URLArgs&, KParts::ReadOnlyPart*, QWidget*, bool, bool, bool)", typeof(void), typeof(KUrl), url, typeof(KParts.URLArgs), args, typeof(KParts.ReadOnlyPart), part, typeof(QWidget), window, typeof(bool), removeReferrer, typeof(bool), trustedSource, typeof(bool), hideErrorDialog);
+			interceptor.Invoke("BrowserRun#####$$$", "BrowserRun(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&, KParts::ReadOnlyPart*, QWidget*, bool, bool, bool)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs, typeof(KParts.ReadOnlyPart), part, typeof(QWidget), window, typeof(bool), removeReferrer, typeof(bool), trustedSource, typeof(bool), hideErrorDialog);
 		}
-		public BrowserRun(KUrl url, KParts.URLArgs args, KParts.ReadOnlyPart part, QWidget window, bool removeReferrer, bool trustedSource) : this((Type) null) {
+		public BrowserRun(KUrl url, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs, KParts.ReadOnlyPart part, QWidget window, bool removeReferrer, bool trustedSource) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("BrowserRun####$$", "BrowserRun(const KUrl&, const KParts::URLArgs&, KParts::ReadOnlyPart*, QWidget*, bool, bool)", typeof(void), typeof(KUrl), url, typeof(KParts.URLArgs), args, typeof(KParts.ReadOnlyPart), part, typeof(QWidget), window, typeof(bool), removeReferrer, typeof(bool), trustedSource);
+			interceptor.Invoke("BrowserRun#####$$", "BrowserRun(const KUrl&, const KParts::OpenUrlArguments&, const KParts::BrowserArguments&, KParts::ReadOnlyPart*, QWidget*, bool, bool)", typeof(void), typeof(KUrl), url, typeof(KParts.OpenUrlArguments), args, typeof(KParts.BrowserArguments), browserArgs, typeof(KParts.ReadOnlyPart), part, typeof(QWidget), window, typeof(bool), removeReferrer, typeof(bool), trustedSource);
 		}
-		public KUrl Url() {
+		public KParts.OpenUrlArguments Arguments() {
+			return (KParts.OpenUrlArguments) interceptor.Invoke("arguments", "arguments()", typeof(KParts.OpenUrlArguments));
+		}
+		public KParts.BrowserArguments BrowserArguments() {
+			return (KParts.BrowserArguments) interceptor.Invoke("browserArguments", "browserArguments()", typeof(KParts.BrowserArguments));
+		}
+		public KParts.ReadOnlyPart Part() {
+			return (KParts.ReadOnlyPart) interceptor.Invoke("part", "part() const", typeof(KParts.ReadOnlyPart));
+		}
+		public new KUrl Url() {
 			return (KUrl) interceptor.Invoke("url", "url() const", typeof(KUrl));
 		}
 		public bool HideErrorDialog() {
 			return (bool) interceptor.Invoke("hideErrorDialog", "hideErrorDialog() const", typeof(bool));
+		}
+		/// <remarks>
+		/// </remarks>		<return> Suggested disposition by the server (e.g. HTTP content-disposition)
+		///     	 </return>
+		/// 		<short>   </short>
+		public string ContentDisposition() {
+			return (string) interceptor.Invoke("contentDisposition", "contentDisposition() const", typeof(string));
+		}
+		public bool ServerSuggestsSave() {
+			return (bool) interceptor.Invoke("serverSuggestsSave", "serverSuggestsSave() const", typeof(bool));
 		}
 		[SmokeMethod("save(const KUrl&, const QString&)")]
 		public virtual void Save(KUrl url, string suggestedFileName) {
@@ -129,7 +149,7 @@ namespace Kimono {
 		/// <param> name="url" the URL in question
 		/// </param><param> name="mimeType" the mimetype of the URL
 		/// </param><param> name="suggestedFileName" optional filename suggested by the server
-		/// </param><param> name="flags" reserved for later use
+		/// </param><param> name="flags" set to AttachmentDisposition if suggested by the server
 		/// </param></remarks>		<return> Save, Open or Cancel.
 		///          </return>
 		/// 		<short>    Similar to askSave but for the case where the current application is  able to embed the url itself (instead of passing it to another app).</short>

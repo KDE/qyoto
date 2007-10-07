@@ -77,8 +77,8 @@ namespace Kimono {
 			/// <param> name="w" The window id to associate any dialogs with.
 			/// 		 </param></remarks>		<short>     Request to the wallet service to change the password of   the current wallet.</short>
 			[SmokeMethod("requestChangePassword(WId)")]
-			public virtual void RequestChangePassword(ulong w) {
-				interceptor.Invoke("requestChangePassword$", "requestChangePassword(WId)", typeof(void), typeof(ulong), w);
+			public virtual void RequestChangePassword(uint w) {
+				interceptor.Invoke("requestChangePassword$", "requestChangePassword(WId)", typeof(void), typeof(uint), w);
 			}
 			/// <remarks>
 			///   Obtain the list of all folders contained in the wallet.
@@ -417,8 +417,8 @@ namespace Kimono {
 			///           or a null pointer on error or if rejected.
 			/// 		 </return>
 			/// 		<short>     Open the wallet <code>name.</code></short>
-			public static KWallet.Wallet OpenWallet(string name, ulong w) {
-				return (KWallet.Wallet) staticInterceptor.Invoke("openWallet$$", "openWallet(const QString&, WId)", typeof(KWallet.Wallet), typeof(string), name, typeof(ulong), w);
+			public static KWallet.Wallet OpenWallet(string name, uint w) {
+				return (KWallet.Wallet) staticInterceptor.Invoke("openWallet$$", "openWallet(const QString&, WId)", typeof(KWallet.Wallet), typeof(string), name, typeof(uint), w);
 			}
 			/// <remarks>
 			///   List the applications that are using the wallet <code>wallet.</code>
@@ -466,8 +466,8 @@ namespace Kimono {
 			/// <param> name="name" The the wallet to change the password of.
 			/// </param><param> name="w" The window id to associate any dialogs with.
 			/// 		 </param></remarks>		<short>     Request to the wallet service to change the password of   the wallet <code>name.</code></short>
-			public static void ChangePassword(string name, ulong w) {
-				staticInterceptor.Invoke("changePassword$$", "changePassword(const QString&, WId)", typeof(void), typeof(string), name, typeof(ulong), w);
+			public static void ChangePassword(string name, uint w) {
+				staticInterceptor.Invoke("changePassword$$", "changePassword(const QString&, WId)", typeof(void), typeof(string), name, typeof(uint), w);
 			}
 			/// <remarks>
 			///   Determine if a folder does not exist in a wallet.  This

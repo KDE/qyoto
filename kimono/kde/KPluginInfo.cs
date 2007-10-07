@@ -163,8 +163,8 @@ namespace Kimono {
 		/// </remarks>		<return> The file containing the information about the plugin.
 		///          </return>
 		/// 		<short>   </short>
-		public string DesktopEntryPath() {
-			return (string) interceptor.Invoke("desktopEntryPath", "desktopEntryPath() const", typeof(string));
+		public string EntryPath() {
+			return (string) interceptor.Invoke("entryPath", "entryPath() const", typeof(string));
 		}
 		/// <remarks>
 		/// </remarks>		<return> The author of this plugin.

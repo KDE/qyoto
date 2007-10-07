@@ -139,9 +139,6 @@ namespace Kimono {
 	///  See <see cref="IKActionSignals"></see> for signals emitted by KAction
 	/// </remarks>		<short> Class to encapsulate user-driven action or event.</short>
 	/// 		<see> KStdAction</see>
-	/// 		<see> \todo</see>
-	/// 		<see> test</see>
-	/// 		<see> changes!</see>
 
 	[SmokeClass("KAction")]
 	public class KAction : QWidgetAction, IDisposable {
@@ -183,16 +180,6 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("globalShortcutAllowed", "globalShortcutAllowed()", typeof(bool)); }
 			set { interceptor.Invoke("setGlobalShortcutAllowed$", "setGlobalShortcutAllowed(bool)", typeof(void), typeof(bool), value); }
 		}
-		// KShortcut shortcut(ShortcutTypes arg1); >>>> NOT CONVERTED
-		// void setShortcut(const KShortcut& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
-		// void setShortcut(const QKeySequence& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
-		// const KShortcut& globalShortcut(ShortcutTypes arg1); >>>> NOT CONVERTED
-		// void setGlobalShortcut(const KShortcut& arg1,ShortcutTypes arg2,KAction::GlobalShortcutLoading arg3); >>>> NOT CONVERTED
-		// void setGlobalShortcut(const KShortcut& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
-		// KShapeGesture shapeGesture(ShortcutTypes arg1); >>>> NOT CONVERTED
-		// KRockerGesture rockerGesture(ShortcutTypes arg1); >>>> NOT CONVERTED
-		// void setShapeGesture(const KShapeGesture& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
-		// void setRockerGesture(const KRockerGesture& arg1,ShortcutTypes arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs an action.
 		///      </remarks>		<short>    Constructs an action.</short>
@@ -231,14 +218,23 @@ namespace Kimono {
 		///              active shortcut will be returned. Defaults to the active shortcut, if one exists.
 		///  \sa shortcuts()
 		///      </remarks>		<short>    Get the shortcut for this action.</short>
+		public KShortcut shortcut(uint types) {
+			return (KShortcut) interceptor.Invoke("shortcut$", "shortcut(KAction::ShortcutTypes) const", typeof(KShortcut), typeof(uint), types);
+		}
+		public KShortcut shortcut() {
+			return (KShortcut) interceptor.Invoke("shortcut", "shortcut() const", typeof(KShortcut));
+		}
 		/// <remarks>
 		///  Set the shortcut for this action.
 		///  This is preferred over QAction.SetShortcut(), as it allows for multiple shortcuts
 		///  per action.
 		///  \param shortcut shortcut(s) to use for this action in its specified shortcutContext()
 		///  \param type type of shortcut to be set: active shortcut,
-		///   default shortcut, or both (default argument value).
+		///   default shortcut, or both (the default).
 		///      </remarks>		<short>    Set the shortcut for this action.</short>
+		public void SetShortcut(KShortcut shortcut, uint type) {
+			interceptor.Invoke("setShortcut#$", "setShortcut(const KShortcut&, KAction::ShortcutTypes)", typeof(void), typeof(KShortcut), shortcut, typeof(uint), type);
+		}
 		public void SetShortcut(KShortcut shortcut) {
 			interceptor.Invoke("setShortcut#", "setShortcut(const KShortcut&)", typeof(void), typeof(KShortcut), shortcut);
 		}
@@ -251,6 +247,9 @@ namespace Kimono {
 		///  \param type type of shortcut to be set: active shortcut,
 		///   default shortcut, or both (default argument value).
 		///      </remarks>		<short>    \overload void setShortcut(KShortcut shortcut) </short>
+		public void SetShortcut(QKeySequence shortcut, uint type) {
+			interceptor.Invoke("setShortcut#$", "setShortcut(const QKeySequence&, KAction::ShortcutTypes)", typeof(void), typeof(QKeySequence), shortcut, typeof(uint), type);
+		}
 		public void SetShortcut(QKeySequence shortcut) {
 			interceptor.Invoke("setShortcut#", "setShortcut(const QKeySequence&)", typeof(void), typeof(QKeySequence), shortcut);
 		}
@@ -265,21 +264,42 @@ namespace Kimono {
 		///  \sa KGlobalAccel
 		///  \sa setGlobalShortcut()
 		///      </remarks>		<short>    Get the global shortcut for this action, if one exists.</short>
+		public KShortcut globalShortcut(uint type) {
+			return (KShortcut) interceptor.Invoke("globalShortcut$", "globalShortcut(KAction::ShortcutTypes) const", typeof(KShortcut), typeof(uint), type);
+		}
+		public KShortcut globalShortcut() {
+			return (KShortcut) interceptor.Invoke("globalShortcut", "globalShortcut() const", typeof(KShortcut));
+		}
 		/// <remarks>
 		///  Assign a global shortcut for this action. Global shortcuts
 		///  allow your actions to respond to keys independently of the focused window.
 		///  Unlike regular shortcuts, the application's window does not need focus
 		///  for them to be activated.
-		///  \param shortcut shortcut(s) to grab as global accelerators.
+		///  When an action, identified by main component name and text(), is assigned
+		///  a global shortcut for the first time on a KDE installation the assignment will
+		///  be saved and restored every time the action's globalShortcutAllowed flag
+		///  becomes true. \e This \e includes \e calling \e setGlobalShortcut()!
+		///  If you actually want to change the global shortcut you have to set
+		///  <code>loading</code> to NoAutoloading. The new shortcut will be saved again.
+		///  The only way to forget the action's global shortcut is to do
+		///  <pre>
+		///  setGlobalShortcut(KShortcut(), KAction.ActiveShortcut | KAction.DefaultShortcut,
+		///                    KAction.NoAutoloading)
+		///  </pre>
+		///  \param shortcut global shortcut(s) to assign
 		///  \param type the type of shortcut to be set, whether the active shortcut, the default shortcut,
-		///             or both (the default).
-		///  <b>Note:<> For convenience, passing a shortcut also sets the default (as this is by far
-		///        the most common use case; mostly active shortcuts are loaded from configuration
-		///        files).  Pass <b></b>alse for \a isDefault to just set this
-		///        shortcut.
+		///              or both (the default).
+		///  \param loading load the previous shortcut (Autoloading, the default) or really set a new
+		///                 shortcut (NoAutoloading).
 		///  \sa KGlobalAccel
 		///  \sa globalShortcut()
 		///      </remarks>		<short>    Assign a global shortcut for this action.</short>
+		public void SetGlobalShortcut(KShortcut shortcut, uint type, KAction.GlobalShortcutLoading loading) {
+			interceptor.Invoke("setGlobalShortcut#$$", "setGlobalShortcut(const KShortcut&, KAction::ShortcutTypes, KAction::GlobalShortcutLoading)", typeof(void), typeof(KShortcut), shortcut, typeof(uint), type, typeof(KAction.GlobalShortcutLoading), loading);
+		}
+		public void SetGlobalShortcut(KShortcut shortcut, uint type) {
+			interceptor.Invoke("setGlobalShortcut#$", "setGlobalShortcut(const KShortcut&, KAction::ShortcutTypes)", typeof(void), typeof(KShortcut), shortcut, typeof(uint), type);
+		}
 		public void SetGlobalShortcut(KShortcut shortcut) {
 			interceptor.Invoke("setGlobalShortcut#", "setGlobalShortcut(const KShortcut&)", typeof(void), typeof(KShortcut), shortcut);
 		}
@@ -294,8 +314,26 @@ namespace Kimono {
 		public void SetGlobalShortcutAllowed(bool allowed) {
 			interceptor.Invoke("setGlobalShortcutAllowed$", "setGlobalShortcutAllowed(bool)", typeof(void), typeof(bool), allowed);
 		}
+		public KShapeGesture ShapeGesture(uint type) {
+			return (KShapeGesture) interceptor.Invoke("shapeGesture$", "shapeGesture(KAction::ShortcutTypes) const", typeof(KShapeGesture), typeof(uint), type);
+		}
+		public KShapeGesture ShapeGesture() {
+			return (KShapeGesture) interceptor.Invoke("shapeGesture", "shapeGesture() const", typeof(KShapeGesture));
+		}
+		public KRockerGesture RockerGesture(uint type) {
+			return (KRockerGesture) interceptor.Invoke("rockerGesture$", "rockerGesture(KAction::ShortcutTypes) const", typeof(KRockerGesture), typeof(uint), type);
+		}
+		public KRockerGesture RockerGesture() {
+			return (KRockerGesture) interceptor.Invoke("rockerGesture", "rockerGesture() const", typeof(KRockerGesture));
+		}
+		public void SetShapeGesture(KShapeGesture gest, uint type) {
+			interceptor.Invoke("setShapeGesture#$", "setShapeGesture(const KShapeGesture&, KAction::ShortcutTypes)", typeof(void), typeof(KShapeGesture), gest, typeof(uint), type);
+		}
 		public void SetShapeGesture(KShapeGesture gest) {
 			interceptor.Invoke("setShapeGesture#", "setShapeGesture(const KShapeGesture&)", typeof(void), typeof(KShapeGesture), gest);
+		}
+		public void SetRockerGesture(KRockerGesture gest, uint type) {
+			interceptor.Invoke("setRockerGesture#$", "setRockerGesture(const KRockerGesture&, KAction::ShortcutTypes)", typeof(void), typeof(KRockerGesture), gest, typeof(uint), type);
 		}
 		public void SetRockerGesture(KRockerGesture gest) {
 			interceptor.Invoke("setRockerGesture#", "setRockerGesture(const KRockerGesture&)", typeof(void), typeof(KRockerGesture), gest);
@@ -317,6 +355,6 @@ namespace Kimono {
 		///  keyboard modifiers and mouse buttons at the time.
 		///      </remarks>		<short>    Emitted when the action is triggered.</short>
 		[Q_SIGNAL("void triggered(Qt::MouseButtons, Qt::KeyboardModifiers)")]
-		void Triggered(int buttons, int modifiers);
+		void Triggered(uint buttons, uint modifiers);
 	}
 }

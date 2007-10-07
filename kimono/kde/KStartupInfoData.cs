@@ -253,15 +253,15 @@ namespace Kimono {
 		///  The toplevel window of the application that caused this startup notification,
 		///  0 if unknown.
 		///          </remarks>		<short>    The toplevel window of the application that caused this startup notification,  0 if unknown.</short>
-		public ulong LaunchedBy() {
-			return (ulong) interceptor.Invoke("launchedBy", "launchedBy() const", typeof(ulong));
+		public uint LaunchedBy() {
+			return (uint) interceptor.Invoke("launchedBy", "launchedBy() const", typeof(uint));
 		}
 		/// <remarks>
 		///  Sets the toplevel window of the application that caused this startup notification.
 		/// <param> name="window" window ID of the toplevel window that is responsible for this startup
 		///          </param></remarks>		<short>    Sets the toplevel window of the application that caused this startup notification.</short>
-		public void SetLaunchedBy(ulong window) {
-			interceptor.Invoke("setLaunchedBy$", "setLaunchedBy(WId)", typeof(void), typeof(ulong), window);
+		public void SetLaunchedBy(uint window) {
+			interceptor.Invoke("setLaunchedBy$", "setLaunchedBy(WId)", typeof(void), typeof(uint), window);
 		}
 		/// <remarks>
 		///  Updates the notification data from the given data. Some data, such as the desktop

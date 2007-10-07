@@ -34,10 +34,16 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KIcon$#?", "KIcon(const QString&, KIconLoader*, const QStringList&)", typeof(void), typeof(string), iconName, typeof(KIconLoader), iconLoader, typeof(List<string>), overlays);
 		}
+		/// <remarks>
+		///  \overload
+		///      </remarks>		<short>    \overload      </short>
 		public KIcon(string iconName, KIconLoader iconLoader) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KIcon$#", "KIcon(const QString&, KIconLoader*)", typeof(void), typeof(string), iconName, typeof(KIconLoader), iconLoader);
 		}
+		/// <remarks>
+		///  \overload
+		///      </remarks>		<short>    \overload      </short>
 		public KIcon(string iconName) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KIcon$", "KIcon(const QString&)", typeof(void), typeof(string), iconName);

@@ -26,9 +26,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Constructor, same signature as KMainWindow.
 		///    </remarks>		<short>    Constructor, same signature as KMainWindow.</short>
-		public MainWindow(QWidget parent, int f) : this((Type) null) {
+		public MainWindow(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("MainWindow#$", "MainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("MainWindow#$", "MainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public MainWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -38,9 +38,9 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("MainWindow", "MainWindow()", typeof(void));
 		}
-		public MainWindow(QWidget parent, string name, int f) : this((Type) null) {
+		public MainWindow(QWidget parent, string name, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("MainWindow#$$", "MainWindow(QWidget*, const char*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(string), name, typeof(int), f);
+			interceptor.Invoke("MainWindow#$$", "MainWindow(QWidget*, const char*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(string), name, typeof(uint), f);
 		}
 		public MainWindow(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();

@@ -74,9 +74,9 @@ namespace Kimono {
 		/// <remarks>
 		///  This constructor can be used by subclasses to provide a custom KPageWidget.
 		///          </remarks>		<short>    This constructor can be used by subclasses to provide a custom KPageWidget.</short>
-		public KCMultiDialog(KPageWidget pageWidget, QWidget parent, int flags) : this((Type) null) {
+		public KCMultiDialog(KPageWidget pageWidget, QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KCMultiDialog##$", "KCMultiDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), pageWidget, typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KCMultiDialog##$", "KCMultiDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), pageWidget, typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KCMultiDialog(KPageWidget pageWidget, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -120,7 +120,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  This slot is called when the user presses the "Help" Button.
-		///  It reads the DocPath field of the currently selected KControl
+		///  It reads the X-DocPath field of the currently selected KControl
 		///  module's .desktop file to find the path to the documentation,
 		///  which it then attempts to load.
 		///  You can reimplement this slot if needed.

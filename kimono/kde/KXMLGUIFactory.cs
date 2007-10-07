@@ -83,7 +83,7 @@ namespace Kimono {
 		///  This function is particularly useful for getting hold of a popupmenu defined in an XMLUI file.
 		///  For instance:
 		///  <pre>
-		///  QMenu popup = (QMenu)(factory().Container("my_popup",this));
+		///  QMenu popup = (QMenu)(guiFactory().Container("my_popup",this));
 		///  </pre>
 		///  where <code></code>"my_popup" is the name of the menu in the XMLUI file, and
 		///  <code></code>"this" is XMLGUIClient which owns the popupmenu (e.g. the mainwindow, or the part, or the plugin...)

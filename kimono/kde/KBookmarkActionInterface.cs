@@ -5,24 +5,30 @@ namespace Kimono {
 	using Qyoto;
 
 	public interface IKBookmarkAction {
+		KBookmark Bookmark();
 	}
 
 
 	[SmokeClass("KBookmarkActionInterface")]
-	public abstract class KBookmarkActionInterface : Object, IKBookmarkAction {
+	public class KBookmarkActionInterface : Object, IKBookmarkAction, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected KBookmarkActionInterface(Type dummy) {}
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KBookmarkActionInterface), this);
 		}
-		// void contextMenu(const QPoint& arg1,KBookmarkManager* arg2,KBookmarkOwner* arg3); >>>> NOT CONVERTED
 		public KBookmarkActionInterface(KBookmark bk) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmarkActionInterface#", "KBookmarkActionInterface(const KBookmark&)", typeof(void), typeof(KBookmark), bk);
 		}
-		protected KBookmark Bookmark() {
+		public KBookmark Bookmark() {
 			return (KBookmark) interceptor.Invoke("bookmark", "bookmark() const", typeof(KBookmark));
+		}
+		~KBookmarkActionInterface() {
+			interceptor.Invoke("~KBookmarkActionInterface", "~KBookmarkActionInterface()", typeof(void));
+		}
+		public void Dispose() {
+			interceptor.Invoke("~KBookmarkActionInterface", "~KBookmarkActionInterface()", typeof(void));
 		}
 	}
 }

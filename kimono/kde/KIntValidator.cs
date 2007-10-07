@@ -49,7 +49,7 @@ namespace Kimono {
 		///  Validates the text, and return the result.  Does not modify the parameters.
 		///      </remarks>		<short>    Validates the text, and return the result.</short>
 		[SmokeMethod("validate(QString&, int&) const")]
-		public override int Validate(StringBuilder arg1, ref int arg2) {
+		public override QValidator.State Validate(StringBuilder arg1, ref int arg2) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(arg1);
@@ -64,7 +64,7 @@ namespace Kimono {
 			((GCHandle) stack[1].s_class).Free();
 #endif
 			arg2 = stack[2].s_int;
-			return stack[0].s_int;
+			return (QValidator.State) Enum.ToObject(typeof(QValidator.State), stack[0].s_int);
 		}
 		/// <remarks>
 		///  Fixes the text if possible, providing a valid string.  The parameter may be modified.

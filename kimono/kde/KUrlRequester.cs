@@ -148,9 +148,6 @@ namespace Kimono {
 		public void Clear() {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
-		protected void Init() {
-			interceptor.Invoke("init", "init()", typeof(void));
-		}
 		[SmokeMethod("changeEvent(QEvent*)")]
 		protected override void ChangeEvent(QEvent e) {
 			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
@@ -158,14 +155,6 @@ namespace Kimono {
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent ev) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), ev);
-		}
-		/// <remarks>
-		///  Called when the button is pressed to open the filedialog.
-		///  Also called when KStandardShortcut.Open (default is Ctrl-O) is pressed.
-		///      </remarks>		<short>    Called when the button is pressed to open the filedialog.</short>
-		[Q_SLOT("void slotOpenDialog()")]
-		protected void SlotOpenDialog() {
-			interceptor.Invoke("slotOpenDialog", "slotOpenDialog()", typeof(void));
 		}
 		~KUrlRequester() {
 			interceptor.Invoke("~KUrlRequester", "~KUrlRequester()", typeof(void));

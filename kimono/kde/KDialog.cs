@@ -120,17 +120,15 @@ namespace Kimono {
 			ModifiedCaption = 2,
 			HIGCompliantCaption = AppNameCaption,
 		}
-		// void setButtons(ButtonCodes arg1); >>>> NOT CONVERTED
-		// void saveDialogSize(KConfigGroup& arg1,KConfigBase::WriteConfigFlags arg2); >>>> NOT CONVERTED
-		// QString makeStandardCaption(const QString& arg1,QWidget* arg2,CaptionFlags arg3); >>>> NOT CONVERTED
+		// void saveDialogSize(KConfigGroup& arg1,KConfigGroup::WriteConfigFlags arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a dialog.
 		/// <param> name="parent" The parent of the dialog.
 		/// </param><param> name="flags" The widget flags passed to the QDialog constructor
 		///      </param></remarks>		<short>    Creates a dialog.</short>
-		public KDialog(QWidget parent, int flags) : this((Type) null) {
+		public KDialog(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KDialog#$", "KDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KDialog#$", "KDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -145,6 +143,9 @@ namespace Kimono {
 		///  This will reset all default KGuiItem of all button.
 		/// <param> name="buttonMask" Specifies what buttons will be made.
 		///      </param></remarks>		<short>    Creates (or recreates) the button box and all the buttons in it.</short>
+		public void SetButtons(uint buttonMask) {
+			interceptor.Invoke("setButtons$", "setButtons(KDialog::ButtonCodes)", typeof(void), typeof(uint), buttonMask);
+		}
 		/// <remarks>
 		///  Sets the orientation of the button box.
 		///  It can be <code>Vertical</code> or <code>Horizontal.</code> If <code>Horizontal</code>
@@ -318,7 +319,7 @@ namespace Kimono {
 		///  global or application config file.
 		///  @note the group must be set before calling
 		/// <param> name="config" The config group to read from.
-		/// </param><param> name="options" passed to KConfigBase.WriteEntry()
+		/// </param><param> name="options" passed to KConfigGroup.WriteEntry()
 		///      </param></remarks>		<short>    Saves the dialogs size dependant on the screen dimension either to the  global or application config file.</short>
 		public void SaveDialogSize(KConfigGroup config) {
 			interceptor.Invoke("saveDialogSize#", "saveDialogSize(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), config);
@@ -603,6 +604,9 @@ namespace Kimono {
 		/// </param></remarks>		<return> the created caption
 		///      </return>
 		/// 		<short>    Builds a caption that contains the application name along with the  userCaption using a standard layout.</short>
+		public static string MakeStandardCaption(string userCaption, QWidget window, uint flags) {
+			return (string) staticInterceptor.Invoke("makeStandardCaption$#$", "makeStandardCaption(const QString&, QWidget*, KDialog::CaptionFlags)", typeof(string), typeof(string), userCaption, typeof(QWidget), window, typeof(uint), flags);
+		}
 		public static string MakeStandardCaption(string userCaption, QWidget window) {
 			return (string) staticInterceptor.Invoke("makeStandardCaption$#", "makeStandardCaption(const QString&, QWidget*)", typeof(string), typeof(string), userCaption, typeof(QWidget), window);
 		}

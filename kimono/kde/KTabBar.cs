@@ -129,10 +129,22 @@ namespace Kimono {
 	}
 
 	public interface IKTabBarSignals : IQTabBarSignals {
+		/// <remarks> Emitted when the user right-clicks a tab. </remarks>		<short>   Emitted when the user right-clicks a tab.</short>
 		[Q_SIGNAL("void contextMenu(int, const QPoint&)")]
 		void ContextMenu(int arg1, QPoint arg2);
+		/// <remarks> Emitted when the user right-clicks the empty area on the tab bar. </remarks>		<short>   Emitted when the user right-clicks the empty area on the tab bar.</short>
+		[Q_SIGNAL("void emptyAreaContextMenu(const QPoint&)")]
+		void EmptyAreaContextMenu(QPoint arg1);
+		/// <remarks> @deprecated use tabDoubleClicked(int) and newTabRequest() instead. </remarks>		<short>   @deprecated use tabDoubleClicked(int) and newTabRequest() instead.</short>
 		[Q_SIGNAL("void mouseDoubleClick(int)")]
 		void MouseDoubleClick(int arg1);
+		/// <remarks> Emitted when a tab has been double-clicked. </remarks>		<short>   Emitted when a tab has been double-clicked.</short>
+		[Q_SIGNAL("void tabDoubleClicked(int)")]
+		void TabDoubleClicked(int arg1);
+		/// <remarks> Emitted when the user double-clicks the empty area on the tab bar. </remarks>		<short>   Emitted when the user double-clicks the empty area on the tab bar.</short>
+		[Q_SIGNAL("void newTabRequest()")]
+		void NewTabRequest();
+		/// <remarks> Emitted when a tab has been middle-clicked. </remarks>		<short>   Emitted when a tab has been middle-clicked.</short>
 		[Q_SIGNAL("void mouseMiddleClick(int)")]
 		void MouseMiddleClick(int arg1);
 		[Q_SIGNAL("void initiateDrag(int)")]

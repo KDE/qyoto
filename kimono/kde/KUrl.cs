@@ -124,12 +124,12 @@ namespace Kimono {
 			CompareWithoutTrailingSlash = 0x01,
 			CompareWithoutFragment = 0x02,
 		}
-		// QString encodedPathAndQuery(KUrl::AdjustPathOption arg1,const EncodedPathAndQueryOptions& arg2); >>>> NOT CONVERTED
-		// QMap<QString, QString> queryItems(const QueryItemsOptions& arg1); >>>> NOT CONVERTED
-		// QString fileName(const DirectoryOptions& arg1); >>>> NOT CONVERTED
-		// QString directory(const DirectoryOptions& arg1); >>>> NOT CONVERTED
+		// QString encodedPathAndQuery(KUrl::AdjustPathOption arg1,const KUrl::EncodedPathAndQueryOptions& arg2); >>>> NOT CONVERTED
+		// QMap<QString, QString> queryItems(const KUrl::QueryItemsOptions& arg1); >>>> NOT CONVERTED
+		// QString fileName(const KUrl::DirectoryOptions& arg1); >>>> NOT CONVERTED
+		// QString directory(const KUrl::DirectoryOptions& arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
-		// bool equals(const KUrl& arg1,const EqualsOptions& arg2); >>>> NOT CONVERTED
+		// bool equals(const KUrl& arg1,const KUrl::EqualsOptions& arg2); >>>> NOT CONVERTED
 		// void populateMimeData(QMimeData* arg1,const KUrl::MetaDataMap& arg2,KUrl::MimeDataFlags arg3); >>>> NOT CONVERTED
 		// void populateMimeData(QMimeData* arg1,const KUrl::MetaDataMap& arg2); >>>> NOT CONVERTED
 		/// <remarks>

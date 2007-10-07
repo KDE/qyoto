@@ -24,6 +24,13 @@ namespace Kimono {
 			interceptor = new SmokeInvocation(typeof(KUrlPixmapProvider), this);
 		}
 		/// <remarks>
+		///  Creates a new url pixmap provider.
+		///      </remarks>		<short>    Creates a new url pixmap provider.</short>
+		public KUrlPixmapProvider() : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KUrlPixmapProvider", "KUrlPixmapProvider()", typeof(void));
+		}
+		/// <remarks>
 		///  Returns a pixmap for <code>url</code> with size <code>size.</code>
 		///  Uses KMimeType.PixmapForURL().
 		/// <param> name="url" the URL to fetch a pixmap for
@@ -31,7 +38,7 @@ namespace Kimono {
 		/// </param></remarks>		<return> the resulting pixmap
 		/// </return>
 		/// 		<short>    Returns a pixmap for <code>url</code> with size <code>size.</code></short>
-		/// 		<see> K3Icon.StdSizes</see>
+		/// 		<see> KIconLoader.StdSizes</see>
 		[SmokeMethod("pixmapFor(const QString&, int)")]
 		public override QPixmap PixmapFor(string url, int size) {
 			return (QPixmap) interceptor.Invoke("pixmapFor$$", "pixmapFor(const QString&, int)", typeof(QPixmap), typeof(string), url, typeof(int), size);
@@ -39,10 +46,6 @@ namespace Kimono {
 		[SmokeMethod("pixmapFor(const QString&)")]
 		public virtual QPixmap PixmapFor(string url) {
 			return (QPixmap) interceptor.Invoke("pixmapFor$", "pixmapFor(const QString&)", typeof(QPixmap), typeof(string), url);
-		}
-		public KUrlPixmapProvider() : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KUrlPixmapProvider", "KUrlPixmapProvider()", typeof(void));
 		}
 		~KUrlPixmapProvider() {
 			interceptor.Invoke("~KUrlPixmapProvider", "~KUrlPixmapProvider()", typeof(void));

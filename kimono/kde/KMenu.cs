@@ -108,14 +108,14 @@ namespace Kimono {
 		/// <remarks>
 		///  Return the state of the mouse buttons when the last menuitem was activated.
 		///      </remarks>		<short>    Return the state of the mouse buttons when the last menuitem was activated.</short>
-		public int MouseButtons() {
-			return (int) interceptor.Invoke("mouseButtons", "mouseButtons() const", typeof(int));
+		public uint MouseButtons() {
+			return (uint) interceptor.Invoke("mouseButtons", "mouseButtons() const", typeof(uint));
 		}
 		/// <remarks>
 		///  Return the state of the keyboard modifiers when the last menuitem was activated.
 		///      </remarks>		<short>    Return the state of the keyboard modifiers when the last menuitem was activated.</short>
-		public int KeyboardModifiers() {
-			return (int) interceptor.Invoke("keyboardModifiers", "keyboardModifiers() const", typeof(int));
+		public uint KeyboardModifiers() {
+			return (uint) interceptor.Invoke("keyboardModifiers", "keyboardModifiers() const", typeof(uint));
 		}
 		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected override void CloseEvent(QCloseEvent arg1) {

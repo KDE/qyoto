@@ -8,6 +8,7 @@ namespace Kimono {
 	/// <remarks>
 	///  KDirModel implements the QAbstractItemModel interface (for use with Qt's model/view widgets)
 	///  around the directory listing for one directory or a tree of directories.
+	///  See <see cref="IKDirModelSignals"></see> for signals emitted by KDirModel
 	/// </remarks>		<author> David Faure
 	///  Based on work by Hamish Rodda and Pascal Letourneau
 	///  </author>
@@ -45,7 +46,6 @@ namespace Kimono {
 		}
 		public const int ChildCountUnknown = -1;
 
-		// void setDropsAllowed(DropsAllowed arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		/// <param> name="parent" parent qobject
 		///      </param></remarks>		<short>   </short>
@@ -85,8 +85,22 @@ namespace Kimono {
 		/// <remarks>
 		///  Return the index for a given url. This can be slow.
 		///      </remarks>		<short>    Return the index for a given url.</short>
-		public QModelIndex IndexForUrl(KUrl arg1) {
-			return (QModelIndex) interceptor.Invoke("indexForUrl#", "indexForUrl(const KUrl&) const", typeof(QModelIndex), typeof(KUrl), arg1);
+		public QModelIndex IndexForUrl(KUrl url) {
+			return (QModelIndex) interceptor.Invoke("indexForUrl#", "indexForUrl(const KUrl&) const", typeof(QModelIndex), typeof(KUrl), url);
+		}
+		/// <remarks>
+		///  When the model is used by a treeview, call KDirLister.OpenUrl with the base url of the tree,
+		///  then the treeview will take care of calling fetchMore() when the user opens directories.
+		///  However if you want the tree to show a given URL (i.e. open the tree recursively until that URL),
+		///  call expandToUrl().
+		///  Note that this is asynchronous; the necessary listing of subdirectories will take time so
+		///  the model will not immediately have this url available.
+		///  The model emits the signal expand() when an index has become available; this can be connected
+		///  to the treeview in order to let it open that index.
+		/// <param> name="url" the url of a subdirectory of the directory model
+		///      </param></remarks>		<short> Lists subdirectories using fetchMore() as needed until the given <code>url</code> exists in the model. </short>
+		public void ExpandToUrl(KUrl url) {
+			interceptor.Invoke("expandToUrl#", "expandToUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
 		}
 		/// <remarks>
 		///  Notify the model that the item at this index has changed.
@@ -96,6 +110,9 @@ namespace Kimono {
 		///      </remarks>		<short>    Notify the model that the item at this index has changed.</short>
 		public void ItemChanged(QModelIndex index) {
 			interceptor.Invoke("itemChanged#", "itemChanged(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
+		}
+		public void SetDropsAllowed(uint dropsAllowed) {
+			interceptor.Invoke("setDropsAllowed$", "setDropsAllowed(KDirModel::DropsAllowed)", typeof(void), typeof(uint), dropsAllowed);
 		}
 		[SmokeMethod("canFetchMore(const QModelIndex&) const")]
 		public override bool CanFetchMore(QModelIndex parent) {
@@ -126,8 +143,8 @@ namespace Kimono {
 			interceptor.Invoke("fetchMore#", "fetchMore(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("hasChildren(const QModelIndex&) const")]
 		public override bool HasChildren(QModelIndex parent) {
@@ -201,5 +218,11 @@ namespace Kimono {
 	}
 
 	public interface IKDirModelSignals : IQAbstractItemModelSignals {
+		/// <remarks>
+		///  Emitted for each subdirectory that is a parent of a url passed to expandToUrl
+		///  This allows to asynchronously open a tree view down to a given directory.
+		///      </remarks>		<short>    Emitted for each subdirectory that is a parent of a url passed to expandToUrl  This allows to asynchronously open a tree view down to a given directory.</short>
+		[Q_SIGNAL("void expand(const QModelIndex&)")]
+		void Expand(QModelIndex index);
 	}
 }
