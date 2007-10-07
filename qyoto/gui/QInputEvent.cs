@@ -9,16 +9,16 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QInputEvent), this);
 		}
-		public QInputEvent(QEvent.TypeOf type, int modifiers) : this((Type) null) {
+		public QInputEvent(QEvent.TypeOf type, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QInputEvent$$", "QInputEvent(QEvent::Type, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(int), modifiers);
+			interceptor.Invoke("QInputEvent$$", "QInputEvent(QEvent::Type, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(uint), modifiers);
 		}
 		public QInputEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QInputEvent$", "QInputEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);
 		}
-		public int Modifiers() {
-			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
+		public uint Modifiers() {
+			return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
 		}
 		~QInputEvent() {
 			interceptor.Invoke("~QInputEvent", "~QInputEvent()", typeof(void));

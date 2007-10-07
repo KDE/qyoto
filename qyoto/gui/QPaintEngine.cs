@@ -69,9 +69,9 @@ namespace Qyoto {
 			User = 50,
 			MaxUser = 100,
 		}
-		public QPaintEngine(int features) : this((Type) null) {
+		public QPaintEngine(uint features) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QPaintEngine$", "QPaintEngine(PaintEngineFeatures)", typeof(void), typeof(int), features);
+			interceptor.Invoke("QPaintEngine$", "QPaintEngine(QPaintEngine::PaintEngineFeatures)", typeof(void), typeof(uint), features);
 		}
 		public QPaintEngine() : this((Type) null) {
 			CreateProxy();
@@ -140,8 +140,8 @@ namespace Qyoto {
 			interceptor.Invoke("drawTiledPixmap###", "drawTiledPixmap(const QRectF&, const QPixmap&, const QPointF&)", typeof(void), typeof(QRectF), r, typeof(QPixmap), pixmap, typeof(QPointF), s);
 		}
 		[SmokeMethod("drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
-		public virtual void DrawImage(QRectF r, QImage pm, QRectF sr, int flags) {
-			interceptor.Invoke("drawImage###$", "drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QRectF), r, typeof(QImage), pm, typeof(QRectF), sr, typeof(int), flags);
+		public virtual void DrawImage(QRectF r, QImage pm, QRectF sr, uint flags) {
+			interceptor.Invoke("drawImage###$", "drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QRectF), r, typeof(QImage), pm, typeof(QRectF), sr, typeof(uint), flags);
 		}
 		[SmokeMethod("drawImage(const QRectF&, const QImage&, const QRectF&)")]
 		public virtual void DrawImage(QRectF r, QImage pm, QRectF sr) {
@@ -184,17 +184,17 @@ namespace Qyoto {
 			h = stack[4].s_int;
 			return;
 		}
-		public bool TestDirty(int df) {
-			return (bool) interceptor.Invoke("testDirty$", "testDirty(DirtyFlags)", typeof(bool), typeof(int), df);
+		public bool TestDirty(uint df) {
+			return (bool) interceptor.Invoke("testDirty$", "testDirty(QPaintEngine::DirtyFlags)", typeof(bool), typeof(uint), df);
 		}
-		public void SetDirty(int df) {
-			interceptor.Invoke("setDirty$", "setDirty(DirtyFlags)", typeof(void), typeof(int), df);
+		public void SetDirty(uint df) {
+			interceptor.Invoke("setDirty$", "setDirty(QPaintEngine::DirtyFlags)", typeof(void), typeof(uint), df);
 		}
-		public void ClearDirty(int df) {
-			interceptor.Invoke("clearDirty$", "clearDirty(DirtyFlags)", typeof(void), typeof(int), df);
+		public void ClearDirty(uint df) {
+			interceptor.Invoke("clearDirty$", "clearDirty(QPaintEngine::DirtyFlags)", typeof(void), typeof(uint), df);
 		}
-		public bool HasFeature(int feature) {
-			return (bool) interceptor.Invoke("hasFeature$", "hasFeature(PaintEngineFeatures) const", typeof(bool), typeof(int), feature);
+		public bool HasFeature(uint feature) {
+			return (bool) interceptor.Invoke("hasFeature$", "hasFeature(QPaintEngine::PaintEngineFeatures) const", typeof(bool), typeof(uint), feature);
 		}
 		public QPainter Painter() {
 			return (QPainter) interceptor.Invoke("painter", "painter() const", typeof(QPainter));

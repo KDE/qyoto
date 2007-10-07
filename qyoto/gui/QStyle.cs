@@ -527,9 +527,6 @@ namespace Qyoto {
 			SP_VistaShield = 57,
 			SP_CustomBase = 0xf0000000,
 		}
-		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3,QStyleOption* arg4,QWidget* arg5); >>>> NOT CONVERTED
-		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3,QStyleOption* arg4); >>>> NOT CONVERTED
-		// int combinedLayoutSpacing(QSizePolicy::ControlTypes arg1,QSizePolicy::ControlTypes arg2,Qt::Orientation arg3); >>>> NOT CONVERTED
 		// QStyle* QStyle(QStylePrivate& arg1); >>>> NOT CONVERTED
 		public QStyle() : this((Type) null) {
 			CreateProxy();
@@ -619,6 +616,15 @@ namespace Qyoto {
 		public int LayoutSpacing(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation) {
 			return (int) interceptor.Invoke("layoutSpacing$$$", "layoutSpacing(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation);
 		}
+		public int CombinedLayoutSpacing(uint controls1, uint controls2, Qt.Orientation orientation, QStyleOption option, QWidget widget) {
+			return (int) interceptor.Invoke("combinedLayoutSpacing$$$##", "combinedLayoutSpacing(QSizePolicy::ControlTypes, QSizePolicy::ControlTypes, Qt::Orientation, QStyleOption*, QWidget*) const", typeof(int), typeof(uint), controls1, typeof(uint), controls2, typeof(Qt.Orientation), orientation, typeof(QStyleOption), option, typeof(QWidget), widget);
+		}
+		public int CombinedLayoutSpacing(uint controls1, uint controls2, Qt.Orientation orientation, QStyleOption option) {
+			return (int) interceptor.Invoke("combinedLayoutSpacing$$$#", "combinedLayoutSpacing(QSizePolicy::ControlTypes, QSizePolicy::ControlTypes, Qt::Orientation, QStyleOption*) const", typeof(int), typeof(uint), controls1, typeof(uint), controls2, typeof(Qt.Orientation), orientation, typeof(QStyleOption), option);
+		}
+		public int CombinedLayoutSpacing(uint controls1, uint controls2, Qt.Orientation orientation) {
+			return (int) interceptor.Invoke("combinedLayoutSpacing$$$", "combinedLayoutSpacing(QSizePolicy::ControlTypes, QSizePolicy::ControlTypes, Qt::Orientation) const", typeof(int), typeof(uint), controls1, typeof(uint), controls2, typeof(Qt.Orientation), orientation);
+		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption opt, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), opt, typeof(QWidget), widget);
@@ -667,11 +673,11 @@ namespace Qyoto {
 		public static int SliderValueFromPosition(int min, int max, int pos, int space) {
 			return (int) staticInterceptor.Invoke("sliderValueFromPosition$$$$", "sliderValueFromPosition(int, int, int, int)", typeof(int), typeof(int), min, typeof(int), max, typeof(int), pos, typeof(int), space);
 		}
-		public static int VisualAlignment(Qt.LayoutDirection direction, int alignment) {
-			return (int) staticInterceptor.Invoke("visualAlignment$$", "visualAlignment(Qt::LayoutDirection, Qt::Alignment)", typeof(int), typeof(Qt.LayoutDirection), direction, typeof(int), alignment);
+		public static uint VisualAlignment(Qt.LayoutDirection direction, uint alignment) {
+			return (uint) staticInterceptor.Invoke("visualAlignment$$", "visualAlignment(Qt::LayoutDirection, Qt::Alignment)", typeof(uint), typeof(Qt.LayoutDirection), direction, typeof(uint), alignment);
 		}
-		public static QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle) {
-			return (QRect) staticInterceptor.Invoke("alignedRect$$##", "alignedRect(Qt::LayoutDirection, Qt::Alignment, const QSize&, const QRect&)", typeof(QRect), typeof(Qt.LayoutDirection), direction, typeof(int), alignment, typeof(QSize), size, typeof(QRect), rectangle);
+		public static QRect AlignedRect(Qt.LayoutDirection direction, uint alignment, QSize size, QRect rectangle) {
+			return (QRect) staticInterceptor.Invoke("alignedRect$$##", "alignedRect(Qt::LayoutDirection, Qt::Alignment, const QSize&, const QRect&)", typeof(QRect), typeof(Qt.LayoutDirection), direction, typeof(uint), alignment, typeof(QSize), size, typeof(QRect), rectangle);
 		}
 		protected new IQStyleSignals Emit {
 			get { return (IQStyleSignals) Q_EMIT; }

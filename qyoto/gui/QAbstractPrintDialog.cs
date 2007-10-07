@@ -38,11 +38,11 @@ namespace Qyoto {
 		public void AddEnabledOption(QAbstractPrintDialog.PrintDialogOption option) {
 			interceptor.Invoke("addEnabledOption$", "addEnabledOption(QAbstractPrintDialog::PrintDialogOption)", typeof(void), typeof(QAbstractPrintDialog.PrintDialogOption), option);
 		}
-		public void SetEnabledOptions(int options) {
-			interceptor.Invoke("setEnabledOptions$", "setEnabledOptions(PrintDialogOptions)", typeof(void), typeof(int), options);
+		public void SetEnabledOptions(uint options) {
+			interceptor.Invoke("setEnabledOptions$", "setEnabledOptions(QAbstractPrintDialog::PrintDialogOptions)", typeof(void), typeof(uint), options);
 		}
-		public int EnabledOptions() {
-			return (int) interceptor.Invoke("enabledOptions", "enabledOptions() const", typeof(int));
+		public uint EnabledOptions() {
+			return (uint) interceptor.Invoke("enabledOptions", "enabledOptions() const", typeof(uint));
 		}
 		public bool IsOptionEnabled(QAbstractPrintDialog.PrintDialogOption option) {
 			return (bool) interceptor.Invoke("isOptionEnabled$", "isOptionEnabled(QAbstractPrintDialog::PrintDialogOption) const", typeof(bool), typeof(QAbstractPrintDialog.PrintDialogOption), option);

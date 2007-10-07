@@ -153,11 +153,11 @@ namespace Qyoto {
 		public uint GroupId() {
 			return (uint) interceptor.Invoke("groupId", "groupId() const", typeof(uint));
 		}
-		public bool Permission(int permissions) {
-			return (bool) interceptor.Invoke("permission$", "permission(QFile::Permissions) const", typeof(bool), typeof(int), permissions);
+		public bool Permission(uint permissions) {
+			return (bool) interceptor.Invoke("permission$", "permission(QFile::Permissions) const", typeof(bool), typeof(uint), permissions);
 		}
-		public int Permissions() {
-			return (int) interceptor.Invoke("permissions", "permissions() const", typeof(int));
+		public uint Permissions() {
+			return (uint) interceptor.Invoke("permissions", "permissions() const", typeof(uint));
 		}
 		public long Size() {
 			return (long) interceptor.Invoke("size", "size() const", typeof(long));

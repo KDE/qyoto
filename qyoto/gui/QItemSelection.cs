@@ -33,8 +33,8 @@ namespace Qyoto {
 		public List<QModelIndex> Indexes() {
 			return (List<QModelIndex>) interceptor.Invoke("indexes", "indexes() const", typeof(List<QModelIndex>));
 		}
-		public void Merge(QItemSelection other, int command) {
-			interceptor.Invoke("merge#$", "merge(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), other, typeof(int), command);
+		public void Merge(QItemSelection other, uint command) {
+			interceptor.Invoke("merge#$", "merge(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), other, typeof(uint), command);
 		}
 		~QItemSelection() {
 			interceptor.Invoke("~QItemSelection", "~QItemSelection()", typeof(void));

@@ -9,21 +9,21 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QWheelEvent), this);
 		}
-		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
+		public QWheelEvent(QPoint pos, int delta, uint buttons, uint modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWheelEvent#$$$$", "QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", typeof(void), typeof(QPoint), pos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers, typeof(Qt.Orientation), orient);
+			interceptor.Invoke("QWheelEvent#$$$$", "QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", typeof(void), typeof(QPoint), pos, typeof(int), delta, typeof(uint), buttons, typeof(uint), modifiers, typeof(Qt.Orientation), orient);
 		}
-		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers) : this((Type) null) {
+		public QWheelEvent(QPoint pos, int delta, uint buttons, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWheelEvent#$$$", "QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers);
+			interceptor.Invoke("QWheelEvent#$$$", "QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), delta, typeof(uint), buttons, typeof(uint), modifiers);
 		}
-		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
+		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, uint buttons, uint modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWheelEvent##$$$$", "QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", typeof(void), typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers, typeof(Qt.Orientation), orient);
+			interceptor.Invoke("QWheelEvent##$$$$", "QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", typeof(void), typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(int), delta, typeof(uint), buttons, typeof(uint), modifiers, typeof(Qt.Orientation), orient);
 		}
-		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) : this((Type) null) {
+		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, uint buttons, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWheelEvent##$$$", "QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(int), delta, typeof(int), buttons, typeof(int), modifiers);
+			interceptor.Invoke("QWheelEvent##$$$", "QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(int), delta, typeof(uint), buttons, typeof(uint), modifiers);
 		}
 		public int Delta() {
 			return (int) interceptor.Invoke("delta", "delta() const", typeof(int));
@@ -46,8 +46,8 @@ namespace Qyoto {
 		public int GlobalY() {
 			return (int) interceptor.Invoke("globalY", "globalY() const", typeof(int));
 		}
-		public int Buttons() {
-			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
+		public uint Buttons() {
+			return (uint) interceptor.Invoke("buttons", "buttons() const", typeof(uint));
 		}
 		public Qt.Orientation Orientation() {
 			return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));

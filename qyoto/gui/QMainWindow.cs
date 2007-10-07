@@ -43,14 +43,19 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isDockNestingEnabled", "isDockNestingEnabled()", typeof(bool)); }
 			set { interceptor.Invoke("setDockNestingEnabled$", "setDockNestingEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("QMainWindow::DockOptions", "dockOptions")]
+		public uint DockOptions {
+			get { return (uint) interceptor.Invoke("dockOptions", "dockOptions()", typeof(uint)); }
+			set { interceptor.Invoke("setDockOptions$", "setDockOptions(QMainWindow::DockOptions)", typeof(void), typeof(uint), value); }
+		}
 		[Q_PROPERTY("bool", "unifiedTitleAndToolBarOnMac")]
 		public bool UnifiedTitleAndToolBarOnMac {
 			get { return (bool) interceptor.Invoke("unifiedTitleAndToolBarOnMac", "unifiedTitleAndToolBarOnMac()", typeof(bool)); }
 			set { interceptor.Invoke("setUnifiedTitleAndToolBarOnMac$", "setUnifiedTitleAndToolBarOnMac(bool)", typeof(void), typeof(bool), value); }
 		}
-		public QMainWindow(QWidget parent, int flags) : this((Type) null) {
+		public QMainWindow(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QMainWindow#$", "QMainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("QMainWindow#$", "QMainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public QMainWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();

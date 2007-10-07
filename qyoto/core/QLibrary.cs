@@ -23,6 +23,11 @@ namespace Qyoto {
 			get { return (string) interceptor.Invoke("fileName", "fileName()", typeof(string)); }
 			set { interceptor.Invoke("setFileName$", "setFileName(QString)", typeof(void), typeof(string), value); }
 		}
+		[Q_PROPERTY("QLibrary::LoadHints", "loadHints")]
+		public uint LoadHints {
+			get { return (uint) interceptor.Invoke("loadHints", "loadHints()", typeof(uint)); }
+			set { interceptor.Invoke("setLoadHints$", "setLoadHints(QLibrary::LoadHints)", typeof(void), typeof(uint), value); }
+		}
 		// void* resolve(const char* arg1); >>>> NOT CONVERTED
 		// void* resolve(const QString& arg1,const char* arg2); >>>> NOT CONVERTED
 		// void* resolve(const QString& arg1,int arg2,const char* arg3); >>>> NOT CONVERTED

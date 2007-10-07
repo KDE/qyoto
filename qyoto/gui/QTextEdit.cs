@@ -27,10 +27,10 @@ namespace Qyoto {
 			AutoBulletList = 0x00000001,
 			AutoAll = 0xffffffff,
 		}
-		[Q_PROPERTY("AutoFormatting", "autoFormatting")]
-		public int AutoFormatting {
-			get { return (int) interceptor.Invoke("autoFormatting", "autoFormatting()", typeof(int)); }
-			set { interceptor.Invoke("setAutoFormatting$", "setAutoFormatting(AutoFormatting)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("QTextEdit::AutoFormatting", "autoFormatting")]
+		public uint AutoFormatting {
+			get { return (uint) interceptor.Invoke("autoFormatting", "autoFormatting()", typeof(uint)); }
+			set { interceptor.Invoke("setAutoFormatting$", "setAutoFormatting(QTextEdit::AutoFormatting)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("bool", "tabChangesFocus")]
 		public bool TabChangesFocus {
@@ -98,9 +98,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setCursorWidth$", "setCursorWidth(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("Qt::TextInteractionFlags", "textInteractionFlags")]
-		public int TextInteractionFlags {
-			get { return (int) interceptor.Invoke("textInteractionFlags", "textInteractionFlags()", typeof(int)); }
-			set { interceptor.Invoke("setTextInteractionFlags$", "setTextInteractionFlags(Qt::TextInteractionFlags)", typeof(void), typeof(int), value); }
+		public uint TextInteractionFlags {
+			get { return (uint) interceptor.Invoke("textInteractionFlags", "textInteractionFlags()", typeof(uint)); }
+			set { interceptor.Invoke("setTextInteractionFlags$", "setTextInteractionFlags(Qt::TextInteractionFlags)", typeof(void), typeof(uint), value); }
 		}
 		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
 		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
@@ -153,8 +153,8 @@ namespace Qyoto {
 		public QFont CurrentFont() {
 			return (QFont) interceptor.Invoke("currentFont", "currentFont() const", typeof(QFont));
 		}
-		public int Alignment() {
-			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
+		public uint Alignment() {
+			return (uint) interceptor.Invoke("alignment", "alignment() const", typeof(uint));
 		}
 		public void MergeCurrentCharFormat(QTextCharFormat modifier) {
 			interceptor.Invoke("mergeCurrentCharFormat#", "mergeCurrentCharFormat(const QTextCharFormat&)", typeof(void), typeof(QTextCharFormat), modifier);
@@ -165,8 +165,8 @@ namespace Qyoto {
 		public QTextCharFormat CurrentCharFormat() {
 			return (QTextCharFormat) interceptor.Invoke("currentCharFormat", "currentCharFormat() const", typeof(QTextCharFormat));
 		}
-		public bool Find(string exp, int options) {
-			return (bool) interceptor.Invoke("find$$", "find(const QString&, QTextDocument::FindFlags)", typeof(bool), typeof(string), exp, typeof(int), options);
+		public bool Find(string exp, uint options) {
+			return (bool) interceptor.Invoke("find$$", "find(const QString&, QTextDocument::FindFlags)", typeof(bool), typeof(string), exp, typeof(uint), options);
 		}
 		public bool Find(string exp) {
 			return (bool) interceptor.Invoke("find$", "find(const QString&)", typeof(bool), typeof(string), exp);
@@ -234,8 +234,8 @@ namespace Qyoto {
 			interceptor.Invoke("setCurrentFont#", "setCurrentFont(const QFont&)", typeof(void), typeof(QFont), f);
 		}
 		[Q_SLOT("void setAlignment(Qt::Alignment)")]
-		public void SetAlignment(int a) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), a);
+		public void SetAlignment(uint a) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), a);
 		}
 		[Q_SLOT("void setPlainText(const QString&)")]
 		public void SetPlainText(string text) {

@@ -34,8 +34,8 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QIODevice#", "QIODevice(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		public int OpenMode() {
-			return (int) interceptor.Invoke("openMode", "openMode() const", typeof(int));
+		public uint OpenMode() {
+			return (uint) interceptor.Invoke("openMode", "openMode() const", typeof(uint));
 		}
 		public void SetTextModeEnabled(bool enabled) {
 			interceptor.Invoke("setTextModeEnabled$", "setTextModeEnabled(bool)", typeof(void), typeof(bool), enabled);
@@ -56,9 +56,9 @@ namespace Qyoto {
 		public virtual bool IsSequential() {
 			return (bool) interceptor.Invoke("isSequential", "isSequential() const", typeof(bool));
 		}
-		[SmokeMethod("open(OpenMode)")]
-		public virtual bool Open(int mode) {
-			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), mode);
+		[SmokeMethod("open(QIODevice::OpenMode)")]
+		public virtual bool Open(uint mode) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), mode);
 		}
 		[SmokeMethod("close()")]
 		public virtual void Close() {
@@ -154,8 +154,8 @@ namespace Qyoto {
 		}
 		[SmokeMethod("writeData(const char*, qint64)")]
 		protected abstract long WriteData(string data, long len);
-		protected void SetOpenMode(int openMode) {
-			interceptor.Invoke("setOpenMode$", "setOpenMode(OpenMode)", typeof(void), typeof(int), openMode);
+		protected void SetOpenMode(uint openMode) {
+			interceptor.Invoke("setOpenMode$", "setOpenMode(QIODevice::OpenMode)", typeof(void), typeof(uint), openMode);
 		}
 		protected void SetErrorString(string errorString) {
 			interceptor.Invoke("setErrorString$", "setErrorString(const QString&)", typeof(void), typeof(string), errorString);

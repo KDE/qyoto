@@ -95,11 +95,11 @@ namespace Qyoto {
 		public void SetFont(QFont font) {
 			interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), font);
 		}
-		public int TextAlignment() {
-			return (int) interceptor.Invoke("textAlignment", "textAlignment() const", typeof(int));
+		public uint TextAlignment() {
+			return (uint) interceptor.Invoke("textAlignment", "textAlignment() const", typeof(uint));
 		}
-		public void SetTextAlignment(int textAlignment) {
-			interceptor.Invoke("setTextAlignment$", "setTextAlignment(Qt::Alignment)", typeof(void), typeof(int), textAlignment);
+		public void SetTextAlignment(uint textAlignment) {
+			interceptor.Invoke("setTextAlignment$", "setTextAlignment(Qt::Alignment)", typeof(void), typeof(uint), textAlignment);
 		}
 		public QBrush Background() {
 			return (QBrush) interceptor.Invoke("background", "background() const", typeof(QBrush));
@@ -131,11 +131,11 @@ namespace Qyoto {
 		public void SetAccessibleDescription(string accessibleDescription) {
 			interceptor.Invoke("setAccessibleDescription$", "setAccessibleDescription(const QString&)", typeof(void), typeof(string), accessibleDescription);
 		}
-		public int Flags() {
-			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
 		}
-		public void SetFlags(int flags) {
-			interceptor.Invoke("setFlags$", "setFlags(Qt::ItemFlags)", typeof(void), typeof(int), flags);
+		public void SetFlags(uint flags) {
+			interceptor.Invoke("setFlags$", "setFlags(Qt::ItemFlags)", typeof(void), typeof(uint), flags);
 		}
 		public bool IsEnabled() {
 			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));

@@ -17,33 +17,33 @@ namespace Qyoto {
 			FollowSymlinks = 0x1,
 			Subdirectories = 0x2,
 		}
-		public QDirIterator(QDir dir, int flags) : this((Type) null) {
+		public QDirIterator(QDir dir, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirIterator#$", "QDirIterator(const QDir&, IteratorFlags)", typeof(void), typeof(QDir), dir, typeof(int), flags);
+			interceptor.Invoke("QDirIterator#$", "QDirIterator(const QDir&, QDirIterator::IteratorFlags)", typeof(void), typeof(QDir), dir, typeof(uint), flags);
 		}
 		public QDirIterator(QDir dir) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QDirIterator#", "QDirIterator(const QDir&)", typeof(void), typeof(QDir), dir);
 		}
-		public QDirIterator(string path, int flags) : this((Type) null) {
+		public QDirIterator(string path, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirIterator$$", "QDirIterator(const QString&, IteratorFlags)", typeof(void), typeof(string), path, typeof(int), flags);
+			interceptor.Invoke("QDirIterator$$", "QDirIterator(const QString&, QDirIterator::IteratorFlags)", typeof(void), typeof(string), path, typeof(uint), flags);
 		}
 		public QDirIterator(string path) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QDirIterator$", "QDirIterator(const QString&)", typeof(void), typeof(string), path);
 		}
-		public QDirIterator(string path, int filter, int flags) : this((Type) null) {
+		public QDirIterator(string path, uint filter, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirIterator$$$", "QDirIterator(const QString&, QDir::Filters, IteratorFlags)", typeof(void), typeof(string), path, typeof(int), filter, typeof(int), flags);
+			interceptor.Invoke("QDirIterator$$$", "QDirIterator(const QString&, QDir::Filters, QDirIterator::IteratorFlags)", typeof(void), typeof(string), path, typeof(uint), filter, typeof(uint), flags);
 		}
-		public QDirIterator(string path, List<string> nameFilters, int filters, int flags) : this((Type) null) {
+		public QDirIterator(string path, List<string> nameFilters, uint filters, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirIterator$?$$", "QDirIterator(const QString&, const QStringList&, QDir::Filters, IteratorFlags)", typeof(void), typeof(string), path, typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), flags);
+			interceptor.Invoke("QDirIterator$?$$", "QDirIterator(const QString&, const QStringList&, QDir::Filters, QDirIterator::IteratorFlags)", typeof(void), typeof(string), path, typeof(List<string>), nameFilters, typeof(uint), filters, typeof(uint), flags);
 		}
-		public QDirIterator(string path, List<string> nameFilters, int filters) : this((Type) null) {
+		public QDirIterator(string path, List<string> nameFilters, uint filters) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirIterator$?$", "QDirIterator(const QString&, const QStringList&, QDir::Filters)", typeof(void), typeof(string), path, typeof(List<string>), nameFilters, typeof(int), filters);
+			interceptor.Invoke("QDirIterator$?$", "QDirIterator(const QString&, const QStringList&, QDir::Filters)", typeof(void), typeof(string), path, typeof(List<string>), nameFilters, typeof(uint), filters);
 		}
 		public QDirIterator(string path, List<string> nameFilters) : this((Type) null) {
 			CreateProxy();

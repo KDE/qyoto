@@ -78,8 +78,8 @@ namespace Qyoto {
 		public void SetControlType(QSizePolicy.ControlType type) {
 			interceptor.Invoke("setControlType$", "setControlType(QSizePolicy::ControlType)", typeof(void), typeof(QSizePolicy.ControlType), type);
 		}
-		public int ExpandingDirections() {
-			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
+		public uint ExpandingDirections() {
+			return (uint) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(uint));
 		}
 		public void SetHeightForWidth(bool b) {
 			interceptor.Invoke("setHeightForWidth$", "setHeightForWidth(bool)", typeof(void), typeof(bool), b);

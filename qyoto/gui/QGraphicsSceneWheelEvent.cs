@@ -35,17 +35,17 @@ namespace Qyoto {
 		public void SetScreenPos(QPoint pos) {
 			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		public int Buttons() {
-			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
+		public uint Buttons() {
+			return (uint) interceptor.Invoke("buttons", "buttons() const", typeof(uint));
 		}
-		public void SetButtons(int buttons) {
-			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(int), buttons);
+		public void SetButtons(uint buttons) {
+			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(uint), buttons);
 		}
-		public int Modifiers() {
-			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
+		public uint Modifiers() {
+			return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
 		}
-		public void SetModifiers(int modifiers) {
-			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
+		public void SetModifiers(uint modifiers) {
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(uint), modifiers);
 		}
 		public int Delta() {
 			return (int) interceptor.Invoke("delta", "delta() const", typeof(int));

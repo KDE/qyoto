@@ -220,8 +220,8 @@ namespace Qyoto {
 			interceptor.Invoke("rowsAboutToBeRemoved#$$", "rowsAboutToBeRemoved(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
 		}
 		[SmokeMethod("moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
-		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers) {
-			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(int), modifiers);
+		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, uint modifiers) {
+			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(uint), modifiers);
 		}
 		[SmokeMethod("horizontalOffset() const")]
 		protected override int HorizontalOffset() {
@@ -232,8 +232,8 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("verticalOffset", "verticalOffset() const", typeof(int));
 		}
 		[SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
-		protected override void SetSelection(QRect rect, int command) {
-			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(int), command);
+		protected override void SetSelection(QRect rect, uint command) {
+			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(uint), command);
 		}
 		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {

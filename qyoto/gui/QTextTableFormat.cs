@@ -44,11 +44,11 @@ namespace Qyoto {
 		public void SetCellPadding(double padding) {
 			interceptor.Invoke("setCellPadding$", "setCellPadding(qreal)", typeof(void), typeof(double), padding);
 		}
-		public void SetAlignment(int alignment) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
+		public void SetAlignment(uint alignment) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), alignment);
 		}
-		public int Alignment() {
-			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
+		public uint Alignment() {
+			return (uint) interceptor.Invoke("alignment", "alignment() const", typeof(uint));
 		}
 		public void SetHeaderRowCount(int count) {
 			interceptor.Invoke("setHeaderRowCount$", "setHeaderRowCount(int)", typeof(void), typeof(int), count);

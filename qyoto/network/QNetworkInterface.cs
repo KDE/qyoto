@@ -38,8 +38,8 @@ namespace Qyoto {
 		public string Name() {
 			return (string) interceptor.Invoke("name", "name() const", typeof(string));
 		}
-		public int Flags() {
-			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
 		}
 		public string HardwareAddress() {
 			return (string) interceptor.Invoke("hardwareAddress", "hardwareAddress() const", typeof(string));

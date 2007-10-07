@@ -98,14 +98,14 @@ namespace Qyoto {
 		public QImage.Format format() {
 			return (QImage.Format) interceptor.Invoke("format", "format() const", typeof(QImage.Format));
 		}
-		public QImage ConvertToFormat(QImage.Format f, int flags) {
-			return (QImage) interceptor.Invoke("convertToFormat$$", "convertToFormat(QImage::Format, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(int), flags);
+		public QImage ConvertToFormat(QImage.Format f, uint flags) {
+			return (QImage) interceptor.Invoke("convertToFormat$$", "convertToFormat(QImage::Format, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(uint), flags);
 		}
 		public QImage ConvertToFormat(QImage.Format f) {
 			return (QImage) interceptor.Invoke("convertToFormat$", "convertToFormat(QImage::Format) const", typeof(QImage), typeof(QImage.Format), f);
 		}
-		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, int flags) {
-			return (QImage) interceptor.Invoke("convertToFormat$?$", "convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable, typeof(int), flags);
+		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, uint flags) {
+			return (QImage) interceptor.Invoke("convertToFormat$?$", "convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable, typeof(uint), flags);
 		}
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
 			return (QImage) interceptor.Invoke("convertToFormat$?", "convertToFormat(QImage::Format, const QVector<QRgb>&) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable);
@@ -197,8 +197,8 @@ namespace Qyoto {
 		public QImage AlphaChannel() {
 			return (QImage) interceptor.Invoke("alphaChannel", "alphaChannel() const", typeof(QImage));
 		}
-		public QImage CreateAlphaMask(int flags) {
-			return (QImage) interceptor.Invoke("createAlphaMask$", "createAlphaMask(Qt::ImageConversionFlags) const", typeof(QImage), typeof(int), flags);
+		public QImage CreateAlphaMask(uint flags) {
+			return (QImage) interceptor.Invoke("createAlphaMask$", "createAlphaMask(Qt::ImageConversionFlags) const", typeof(QImage), typeof(uint), flags);
 		}
 		public QImage CreateAlphaMask() {
 			return (QImage) interceptor.Invoke("createAlphaMask", "createAlphaMask() const", typeof(QImage));

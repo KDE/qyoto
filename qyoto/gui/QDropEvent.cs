@@ -9,25 +9,25 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QDropEvent), this);
 		}
-		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
+		public QDropEvent(QPoint pos, uint actions, QMimeData data, uint buttons, uint modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDropEvent#$#$$$", "QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers, typeof(QEvent.TypeOf), type);
+			interceptor.Invoke("QDropEvent#$#$$$", "QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", typeof(void), typeof(QPoint), pos, typeof(uint), actions, typeof(QMimeData), data, typeof(uint), buttons, typeof(uint), modifiers, typeof(QEvent.TypeOf), type);
 		}
-		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
+		public QDropEvent(QPoint pos, uint actions, QMimeData data, uint buttons, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDropEvent#$#$$", "QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers);
+			interceptor.Invoke("QDropEvent#$#$$", "QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(uint), actions, typeof(QMimeData), data, typeof(uint), buttons, typeof(uint), modifiers);
 		}
 		public QPoint Pos() {
 			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
 		}
-		public int MouseButtons() {
-			return (int) interceptor.Invoke("mouseButtons", "mouseButtons() const", typeof(int));
+		public uint MouseButtons() {
+			return (uint) interceptor.Invoke("mouseButtons", "mouseButtons() const", typeof(uint));
 		}
-		public int KeyboardModifiers() {
-			return (int) interceptor.Invoke("keyboardModifiers", "keyboardModifiers() const", typeof(int));
+		public uint KeyboardModifiers() {
+			return (uint) interceptor.Invoke("keyboardModifiers", "keyboardModifiers() const", typeof(uint));
 		}
-		public int PossibleActions() {
-			return (int) interceptor.Invoke("possibleActions", "possibleActions() const", typeof(int));
+		public uint PossibleActions() {
+			return (uint) interceptor.Invoke("possibleActions", "possibleActions() const", typeof(uint));
 		}
 		public Qt.DropAction ProposedAction() {
 			return (Qt.DropAction) interceptor.Invoke("proposedAction", "proposedAction() const", typeof(Qt.DropAction));

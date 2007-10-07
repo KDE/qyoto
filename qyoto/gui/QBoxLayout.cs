@@ -44,8 +44,8 @@ namespace Qyoto {
 		public void AddStretch() {
 			interceptor.Invoke("addStretch", "addStretch()", typeof(void));
 		}
-		public void AddWidget(QWidget arg1, int stretch, int alignment) {
-			interceptor.Invoke("addWidget#$$", "addWidget(QWidget*, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), stretch, typeof(int), alignment);
+		public void AddWidget(QWidget arg1, int stretch, uint alignment) {
+			interceptor.Invoke("addWidget#$$", "addWidget(QWidget*, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), stretch, typeof(uint), alignment);
 		}
 		public void AddWidget(QWidget arg1, int stretch) {
 			interceptor.Invoke("addWidget#$", "addWidget(QWidget*, int)", typeof(void), typeof(QWidget), arg1, typeof(int), stretch);
@@ -75,8 +75,8 @@ namespace Qyoto {
 		public void InsertStretch(int index) {
 			interceptor.Invoke("insertStretch$", "insertStretch(int)", typeof(void), typeof(int), index);
 		}
-		public void InsertWidget(int index, QWidget widget, int stretch, int alignment) {
-			interceptor.Invoke("insertWidget$#$$", "insertWidget(int, QWidget*, int, Qt::Alignment)", typeof(void), typeof(int), index, typeof(QWidget), widget, typeof(int), stretch, typeof(int), alignment);
+		public void InsertWidget(int index, QWidget widget, int stretch, uint alignment) {
+			interceptor.Invoke("insertWidget$#$$", "insertWidget(int, QWidget*, int, Qt::Alignment)", typeof(void), typeof(int), index, typeof(QWidget), widget, typeof(int), stretch, typeof(uint), alignment);
 		}
 		public void InsertWidget(int index, QWidget widget, int stretch) {
 			interceptor.Invoke("insertWidget$#$", "insertWidget(int, QWidget*, int)", typeof(void), typeof(int), index, typeof(QWidget), widget, typeof(int), stretch);
@@ -121,8 +121,8 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("minimumHeightForWidth$", "minimumHeightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
 		[SmokeMethod("expandingDirections() const")]
-		public override int ExpandingDirections() {
-			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
+		public override uint ExpandingDirections() {
+			return (uint) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(uint));
 		}
 		[SmokeMethod("invalidate()")]
 		public override void Invalidate() {

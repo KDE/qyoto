@@ -95,8 +95,8 @@ namespace Qyoto {
 		public bool Disconnect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
 			return (bool) interceptor.Invoke("disconnect$$$$$#$", "disconnect(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", typeof(bool), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(string), name, typeof(string), signature, typeof(QObject), receiver, typeof(string), slot);
 		}
-		public bool RegisterObject(string path, QObject arg2, int options) {
-			return (bool) interceptor.Invoke("registerObject$#$", "registerObject(const QString&, QObject*, RegisterOptions)", typeof(bool), typeof(string), path, typeof(QObject), arg2, typeof(int), options);
+		public bool RegisterObject(string path, QObject arg2, uint options) {
+			return (bool) interceptor.Invoke("registerObject$#$", "registerObject(const QString&, QObject*, QDBusConnection::RegisterOptions)", typeof(bool), typeof(string), path, typeof(QObject), arg2, typeof(uint), options);
 		}
 		public bool RegisterObject(string path, QObject arg2) {
 			return (bool) interceptor.Invoke("registerObject$#", "registerObject(const QString&, QObject*)", typeof(bool), typeof(string), path, typeof(QObject), arg2);

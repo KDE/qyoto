@@ -62,11 +62,11 @@ namespace Qyoto {
 		public bool IsSelected() {
 			return (bool) interceptor.Invoke("isSelected", "isSelected() const", typeof(bool));
 		}
-		public int Flags() {
-			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
 		}
-		public void SetFlags(int flags) {
-			interceptor.Invoke("setFlags$", "setFlags(Qt::ItemFlags)", typeof(void), typeof(int), flags);
+		public void SetFlags(uint flags) {
+			interceptor.Invoke("setFlags$", "setFlags(Qt::ItemFlags)", typeof(void), typeof(uint), flags);
 		}
 		public string Text() {
 			return (string) interceptor.Invoke("text", "text() const", typeof(string));

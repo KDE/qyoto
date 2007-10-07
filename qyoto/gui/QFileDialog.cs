@@ -83,9 +83,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setDefaultSuffix$", "setDefaultSuffix(QString)", typeof(void), typeof(string), value); }
 		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
-		public QFileDialog(QWidget parent, int f) : this((Type) null) {
+		public QFileDialog(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QFileDialog#$", "QFileDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QFileDialog#$", "QFileDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QFileDialog(QWidget parent, string caption, string directory, string filter) : this((Type) null) {
 			CreateProxy();
@@ -203,8 +203,8 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
-			return (string) staticInterceptor.Invoke("getOpenFileName#$$$$$", "getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(int), options);
+		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, uint options) {
+			return (string) staticInterceptor.Invoke("getOpenFileName#$$$$$", "getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*, QFileDialog::Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(uint), options);
 		}
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return (string) staticInterceptor.Invoke("getOpenFileName#$$$$", "getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter);
@@ -224,8 +224,8 @@ namespace Qyoto {
 		public static string GetOpenFileName() {
 			return (string) staticInterceptor.Invoke("getOpenFileName", "getOpenFileName()", typeof(string));
 		}
-		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
-			return (string) staticInterceptor.Invoke("getSaveFileName#$$$$$", "getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(int), options);
+		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, uint options) {
+			return (string) staticInterceptor.Invoke("getSaveFileName#$$$$$", "getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*, QFileDialog::Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(uint), options);
 		}
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return (string) staticInterceptor.Invoke("getSaveFileName#$$$$", "getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter);
@@ -245,8 +245,8 @@ namespace Qyoto {
 		public static string GetSaveFileName() {
 			return (string) staticInterceptor.Invoke("getSaveFileName", "getSaveFileName()", typeof(string));
 		}
-		public static string GetExistingDirectory(QWidget parent, string caption, string dir, int options) {
-			return (string) staticInterceptor.Invoke("getExistingDirectory#$$$", "getExistingDirectory(QWidget*, const QString&, const QString&, Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(int), options);
+		public static string GetExistingDirectory(QWidget parent, string caption, string dir, uint options) {
+			return (string) staticInterceptor.Invoke("getExistingDirectory#$$$", "getExistingDirectory(QWidget*, const QString&, const QString&, QFileDialog::Options)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(uint), options);
 		}
 		public static string GetExistingDirectory(QWidget parent, string caption, string dir) {
 			return (string) staticInterceptor.Invoke("getExistingDirectory#$$", "getExistingDirectory(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir);
@@ -260,8 +260,8 @@ namespace Qyoto {
 		public static string GetExistingDirectory() {
 			return (string) staticInterceptor.Invoke("getExistingDirectory", "getExistingDirectory()", typeof(string));
 		}
-		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
-			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$$$$", "getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*, Options)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(int), options);
+		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, uint options) {
+			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$$$$", "getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*, QFileDialog::Options)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter, typeof(uint), options);
 		}
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return (List<string>) staticInterceptor.Invoke("getOpenFileNames#$$$$", "getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*)", typeof(List<string>), typeof(QWidget), parent, typeof(string), caption, typeof(string), dir, typeof(string), filter, typeof(StringBuilder), selectedFilter);

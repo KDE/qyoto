@@ -30,18 +30,17 @@ namespace Qyoto {
 			OpenGL_ES_CommonLite_Version_1_1 = 0x00000400,
 			OpenGL_ES_Version_2_0 = 0x00000800,
 		}
-		// OpenGLVersionFlags openGLVersionFlags(); >>>> NOT CONVERTED
 		public QGLFormat() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGLFormat", "QGLFormat()", typeof(void));
 		}
-		public QGLFormat(int options, int plane) : this((Type) null) {
+		public QGLFormat(uint options, int plane) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFormat$$", "QGLFormat(QGL::FormatOptions, int)", typeof(void), typeof(int), options, typeof(int), plane);
+			interceptor.Invoke("QGLFormat$$", "QGLFormat(QGL::FormatOptions, int)", typeof(void), typeof(uint), options, typeof(int), plane);
 		}
-		public QGLFormat(int options) : this((Type) null) {
+		public QGLFormat(uint options) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLFormat$", "QGLFormat(QGL::FormatOptions)", typeof(void), typeof(int), options);
+			interceptor.Invoke("QGLFormat$", "QGLFormat(QGL::FormatOptions)", typeof(void), typeof(uint), options);
 		}
 		public QGLFormat(QGLFormat other) : this((Type) null) {
 			CreateProxy();
@@ -167,11 +166,11 @@ namespace Qyoto {
 		public void SetPlane(int plane) {
 			interceptor.Invoke("setPlane$", "setPlane(int)", typeof(void), typeof(int), plane);
 		}
-		public void SetOption(int opt) {
-			interceptor.Invoke("setOption$", "setOption(QGL::FormatOptions)", typeof(void), typeof(int), opt);
+		public void SetOption(uint opt) {
+			interceptor.Invoke("setOption$", "setOption(QGL::FormatOptions)", typeof(void), typeof(uint), opt);
 		}
-		public bool TestOption(int opt) {
-			return (bool) interceptor.Invoke("testOption$", "testOption(QGL::FormatOptions) const", typeof(bool), typeof(int), opt);
+		public bool TestOption(uint opt) {
+			return (bool) interceptor.Invoke("testOption$", "testOption(QGL::FormatOptions) const", typeof(bool), typeof(uint), opt);
 		}
 		~QGLFormat() {
 			interceptor.Invoke("~QGLFormat", "~QGLFormat()", typeof(void));
@@ -203,6 +202,9 @@ namespace Qyoto {
 		}
 		public static bool HasOpenGLOverlays() {
 			return (bool) staticInterceptor.Invoke("hasOpenGLOverlays", "hasOpenGLOverlays()", typeof(bool));
+		}
+		public static uint OpenGLVersionFlags() {
+			return (uint) staticInterceptor.Invoke("openGLVersionFlags", "openGLVersionFlags()", typeof(uint));
 		}
 		public static bool operator==(QGLFormat arg1, QGLFormat arg2) {
 			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QGLFormat&, const QGLFormat&)", typeof(bool), typeof(QGLFormat), arg1, typeof(QGLFormat), arg2);

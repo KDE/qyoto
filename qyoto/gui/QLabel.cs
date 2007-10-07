@@ -37,9 +37,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setScaledContents$", "setScaledContents(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
-		public int Alignment {
-			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
-			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
+		public uint Alignment {
+			get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("bool", "wordWrap")]
 		public bool WordWrap {
@@ -62,13 +62,13 @@ namespace Qyoto {
 			set { interceptor.Invoke("setOpenExternalLinks$", "setOpenExternalLinks(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::TextInteractionFlags", "textInteractionFlags")]
-		public int TextInteractionFlags {
-			get { return (int) interceptor.Invoke("textInteractionFlags", "textInteractionFlags()", typeof(int)); }
-			set { interceptor.Invoke("setTextInteractionFlags$", "setTextInteractionFlags(Qt::TextInteractionFlags)", typeof(void), typeof(int), value); }
+		public uint TextInteractionFlags {
+			get { return (uint) interceptor.Invoke("textInteractionFlags", "textInteractionFlags()", typeof(uint)); }
+			set { interceptor.Invoke("setTextInteractionFlags$", "setTextInteractionFlags(Qt::TextInteractionFlags)", typeof(void), typeof(uint), value); }
 		}
-		public QLabel(QWidget parent, int f) : this((Type) null) {
+		public QLabel(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QLabel#$", "QLabel(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QLabel#$", "QLabel(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QLabel(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -78,9 +78,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QLabel", "QLabel()", typeof(void));
 		}
-		public QLabel(string text, QWidget parent, int f) : this((Type) null) {
+		public QLabel(string text, QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QLabel$#$", "QLabel(const QString&, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), text, typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QLabel$#$", "QLabel(const QString&, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), text, typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QLabel(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -60,8 +60,8 @@ namespace Qyoto {
 		public QVariant Data() {
 			return (QVariant) interceptor.Invoke("data", "data() const", typeof(QVariant));
 		}
-		public int Flags() {
-			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
 		}
 		public QAbstractItemModel Model() {
 			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));

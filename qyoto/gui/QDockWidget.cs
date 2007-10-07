@@ -31,24 +31,24 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isFloating", "isFloating()", typeof(bool)); }
 			set { interceptor.Invoke("setFloating$", "setFloating(bool)", typeof(void), typeof(bool), value); }
 		}
-		[Q_PROPERTY("DockWidgetFeatures", "features")]
-		public int Features {
-			get { return (int) interceptor.Invoke("features", "features()", typeof(int)); }
-			set { interceptor.Invoke("setFeatures$", "setFeatures(DockWidgetFeatures)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("QDockWidget::DockWidgetFeatures", "features")]
+		public uint Features {
+			get { return (uint) interceptor.Invoke("features", "features()", typeof(uint)); }
+			set { interceptor.Invoke("setFeatures$", "setFeatures(QDockWidget::DockWidgetFeatures)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("Qt::DockWidgetAreas", "allowedAreas")]
-		public int AllowedAreas {
-			get { return (int) interceptor.Invoke("allowedAreas", "allowedAreas()", typeof(int)); }
-			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::DockWidgetAreas)", typeof(void), typeof(int), value); }
+		public uint AllowedAreas {
+			get { return (uint) interceptor.Invoke("allowedAreas", "allowedAreas()", typeof(uint)); }
+			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::DockWidgetAreas)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("QString", "windowTitle")]
 		public new string WindowTitle {
 			get { return (string) interceptor.Invoke("windowTitle", "windowTitle()", typeof(string)); }
 			set { interceptor.Invoke("setWindowTitle$", "setWindowTitle(QString)", typeof(void), typeof(string), value); }
 		}
-		public QDockWidget(string title, QWidget parent, int flags) : this((Type) null) {
+		public QDockWidget(string title, QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDockWidget$#$", "QDockWidget(const QString&, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("QDockWidget$#$", "QDockWidget(const QString&, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public QDockWidget(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -58,9 +58,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QDockWidget$", "QDockWidget(const QString&)", typeof(void), typeof(string), title);
 		}
-		public QDockWidget(QWidget parent, int flags) : this((Type) null) {
+		public QDockWidget(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDockWidget#$", "QDockWidget(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("QDockWidget#$", "QDockWidget(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public QDockWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -126,11 +126,11 @@ namespace Qyoto {
 
 	public interface IQDockWidgetSignals : IQWidgetSignals {
 		[Q_SIGNAL("void featuresChanged(QDockWidget::DockWidgetFeatures)")]
-		void FeaturesChanged(int features);
+		void FeaturesChanged(uint features);
 		[Q_SIGNAL("void topLevelChanged(bool)")]
 		void TopLevelChanged(bool topLevel);
 		[Q_SIGNAL("void allowedAreasChanged(Qt::DockWidgetAreas)")]
-		void AllowedAreasChanged(int allowedAreas);
+		void AllowedAreasChanged(uint allowedAreas);
 		[Q_SIGNAL("void visibilityChanged(bool)")]
 		void VisibilityChanged(bool visible);
 		[Q_SIGNAL("void dockLocationChanged(Qt::DockWidgetArea)")]

@@ -44,9 +44,9 @@ namespace Qyoto {
 		public QByteArray Data() {
 			return (QByteArray) interceptor.Invoke("data", "data() const", typeof(QByteArray));
 		}
-		[SmokeMethod("open(OpenMode)")]
-		public override bool Open(int openMode) {
-			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), openMode);
+		[SmokeMethod("open(QIODevice::OpenMode)")]
+		public override bool Open(uint openMode) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), openMode);
 		}
 		[SmokeMethod("close()")]
 		public override void Close() {

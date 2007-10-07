@@ -45,9 +45,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QDataStream#", "QDataStream(QIODevice*)", typeof(void), typeof(QIODevice), arg1);
 		}
-		public QDataStream(QByteArray arg1, int flags) : this((Type) null) {
+		public QDataStream(QByteArray arg1, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDataStream#$", "QDataStream(QByteArray*, QIODevice::OpenMode)", typeof(void), typeof(QByteArray), arg1, typeof(int), flags);
+			interceptor.Invoke("QDataStream#$", "QDataStream(QByteArray*, QIODevice::OpenMode)", typeof(void), typeof(QByteArray), arg1, typeof(uint), flags);
 		}
 		public QDataStream(QByteArray arg1) : this((Type) null) {
 			CreateProxy();

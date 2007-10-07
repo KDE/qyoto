@@ -19,9 +19,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setWidgetResizable$", "setWidgetResizable(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
-		public int Alignment {
-			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
-			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
+		public uint Alignment {
+			get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
 		public QScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();

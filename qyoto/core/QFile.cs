@@ -97,12 +97,12 @@ namespace Qyoto {
 		public override bool IsSequential() {
 			return (bool) interceptor.Invoke("isSequential", "isSequential() const", typeof(bool));
 		}
-		[SmokeMethod("open(OpenMode)")]
-		public override bool Open(int flags) {
-			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), flags);
+		[SmokeMethod("open(QIODevice::OpenMode)")]
+		public override bool Open(uint flags) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), flags);
 		}
-		public bool Open(int fd, int flags) {
-			return (bool) interceptor.Invoke("open$$", "open(int, OpenMode)", typeof(bool), typeof(int), fd, typeof(int), flags);
+		public bool Open(int fd, uint flags) {
+			return (bool) interceptor.Invoke("open$$", "open(int, QIODevice::OpenMode)", typeof(bool), typeof(int), fd, typeof(uint), flags);
 		}
 		[SmokeMethod("close()")]
 		public override void Close() {
@@ -130,11 +130,11 @@ namespace Qyoto {
 		public bool Resize(long sz) {
 			return (bool) interceptor.Invoke("resize$", "resize(qint64)", typeof(bool), typeof(long), sz);
 		}
-		public int Permissions() {
-			return (int) interceptor.Invoke("permissions", "permissions() const", typeof(int));
+		public uint Permissions() {
+			return (uint) interceptor.Invoke("permissions", "permissions() const", typeof(uint));
 		}
-		public bool SetPermissions(int permissionSpec) {
-			return (bool) interceptor.Invoke("setPermissions$", "setPermissions(Permissions)", typeof(bool), typeof(int), permissionSpec);
+		public bool SetPermissions(uint permissionSpec) {
+			return (bool) interceptor.Invoke("setPermissions$", "setPermissions(QFile::Permissions)", typeof(bool), typeof(uint), permissionSpec);
 		}
 		[SmokeMethod("fileEngine() const")]
 		public virtual QAbstractFileEngine FileEngine() {
@@ -197,11 +197,11 @@ namespace Qyoto {
 		public static bool Resize(string filename, long sz) {
 			return (bool) staticInterceptor.Invoke("resize$$", "resize(const QString&, qint64)", typeof(bool), typeof(string), filename, typeof(long), sz);
 		}
-		public static int Permissions(string filename) {
-			return (int) staticInterceptor.Invoke("permissions$", "permissions(const QString&)", typeof(int), typeof(string), filename);
+		public static uint Permissions(string filename) {
+			return (uint) staticInterceptor.Invoke("permissions$", "permissions(const QString&)", typeof(uint), typeof(string), filename);
 		}
-		public static bool SetPermissions(string filename, int permissionSpec) {
-			return (bool) staticInterceptor.Invoke("setPermissions$$", "setPermissions(const QString&, Permissions)", typeof(bool), typeof(string), filename, typeof(int), permissionSpec);
+		public static bool SetPermissions(string filename, uint permissionSpec) {
+			return (bool) staticInterceptor.Invoke("setPermissions$$", "setPermissions(const QString&, QFile::Permissions)", typeof(bool), typeof(string), filename, typeof(uint), permissionSpec);
 		}
 		protected new IQFileSignals Emit {
 			get { return (IQFileSignals) Q_EMIT; }

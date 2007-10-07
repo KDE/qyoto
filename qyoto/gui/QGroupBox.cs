@@ -22,9 +22,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setTitle$", "setTitle(QString)", typeof(void), typeof(string), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
-		public int Alignment {
-			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
-			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
+		public uint Alignment {
+			get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {

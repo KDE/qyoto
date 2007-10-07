@@ -43,9 +43,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setFrame$", "setFrame(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
-		public int Alignment {
-			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
-			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
+		public uint Alignment {
+			get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
@@ -109,7 +109,7 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		public virtual int Validate(StringBuilder input, ref int pos) {
+		public virtual QValidator.State Validate(StringBuilder input, ref int pos) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(input);
@@ -124,7 +124,7 @@ namespace Qyoto {
 			((GCHandle) stack[1].s_class).Free();
 #endif
 			pos = stack[2].s_int;
-			return stack[0].s_int;
+			return (QValidator.State) Enum.ToObject(typeof(QValidator.State), stack[0].s_int);
 		}
 		[SmokeMethod("fixup(QString&) const")]
 		public virtual void Fixup(StringBuilder input) {
@@ -225,8 +225,8 @@ namespace Qyoto {
 			interceptor.Invoke("setLineEdit#", "setLineEdit(QLineEdit*)", typeof(void), typeof(QLineEdit), edit);
 		}
 		[SmokeMethod("stepEnabled() const")]
-		protected virtual int StepEnabled() {
-			return (int) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(int));
+		protected virtual uint StepEnabled() {
+			return (uint) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(uint));
 		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

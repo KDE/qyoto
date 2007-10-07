@@ -113,14 +113,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QComboBox", "QComboBox()", typeof(void));
 		}
-		public int FindText(string text, int flags) {
-			return (int) interceptor.Invoke("findText$$", "findText(const QString&, Qt::MatchFlags) const", typeof(int), typeof(string), text, typeof(int), flags);
+		public int FindText(string text, uint flags) {
+			return (int) interceptor.Invoke("findText$$", "findText(const QString&, Qt::MatchFlags) const", typeof(int), typeof(string), text, typeof(uint), flags);
 		}
 		public int FindText(string text) {
 			return (int) interceptor.Invoke("findText$", "findText(const QString&) const", typeof(int), typeof(string), text);
 		}
-		public int FindData(QVariant data, int role, int flags) {
-			return (int) interceptor.Invoke("findData#$$", "findData(const QVariant&, int, Qt::MatchFlags) const", typeof(int), typeof(QVariant), data, typeof(int), role, typeof(int), flags);
+		public int FindData(QVariant data, int role, uint flags) {
+			return (int) interceptor.Invoke("findData#$$", "findData(const QVariant&, int, Qt::MatchFlags) const", typeof(int), typeof(QVariant), data, typeof(int), role, typeof(uint), flags);
 		}
 		public int FindData(QVariant data, int role) {
 			return (int) interceptor.Invoke("findData#$", "findData(const QVariant&, int) const", typeof(int), typeof(QVariant), data, typeof(int), role);

@@ -32,9 +32,9 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("keyboardPageStep", "keyboardPageStep()", typeof(int)); }
 			set { interceptor.Invoke("setKeyboardPageStep$", "setKeyboardPageStep(int)", typeof(void), typeof(int), value); }
 		}
-		public QMdiSubWindow(QWidget parent, int flags) : this((Type) null) {
+		public QMdiSubWindow(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QMdiSubWindow#$", "QMdiSubWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("QMdiSubWindow#$", "QMdiSubWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public QMdiSubWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -189,7 +189,7 @@ namespace Qyoto {
 
 	public interface IQMdiSubWindowSignals : IQWidgetSignals {
 		[Q_SIGNAL("void windowStateChanged(Qt::WindowStates, Qt::WindowStates)")]
-		void WindowStateChanged(int oldState, int newState);
+		void WindowStateChanged(uint oldState, uint newState);
 		[Q_SIGNAL("void aboutToActivate()")]
 		void AboutToActivate();
 	}

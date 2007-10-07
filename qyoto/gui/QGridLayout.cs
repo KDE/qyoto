@@ -89,8 +89,8 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("minimumHeightForWidth$", "minimumHeightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
 		[SmokeMethod("expandingDirections() const")]
-		public override int ExpandingDirections() {
-			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
+		public override uint ExpandingDirections() {
+			return (uint) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(uint));
 		}
 		[SmokeMethod("invalidate()")]
 		public override void Invalidate() {
@@ -99,26 +99,26 @@ namespace Qyoto {
 		public new void AddWidget(QWidget w) {
 			interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(void), typeof(QWidget), w);
 		}
-		public void AddWidget(QWidget arg1, int row, int column, int arg4) {
-			interceptor.Invoke("addWidget#$$$", "addWidget(QWidget*, int, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), arg4);
+		public void AddWidget(QWidget arg1, int row, int column, uint arg4) {
+			interceptor.Invoke("addWidget#$$$", "addWidget(QWidget*, int, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(uint), arg4);
 		}
 		public void AddWidget(QWidget arg1, int row, int column) {
 			interceptor.Invoke("addWidget#$$", "addWidget(QWidget*, int, int)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column);
 		}
-		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			interceptor.Invoke("addWidget#$$$$$", "addWidget(QWidget*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
+		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan, uint arg6) {
+			interceptor.Invoke("addWidget#$$$$$", "addWidget(QWidget*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(uint), arg6);
 		}
 		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan) {
 			interceptor.Invoke("addWidget#$$$$", "addWidget(QWidget*, int, int, int, int)", typeof(void), typeof(QWidget), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
 		}
-		public void AddLayout(QLayout arg1, int row, int column, int arg4) {
-			interceptor.Invoke("addLayout#$$$", "addLayout(QLayout*, int, int, Qt::Alignment)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), arg4);
+		public void AddLayout(QLayout arg1, int row, int column, uint arg4) {
+			interceptor.Invoke("addLayout#$$$", "addLayout(QLayout*, int, int, Qt::Alignment)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(uint), arg4);
 		}
 		public void AddLayout(QLayout arg1, int row, int column) {
 			interceptor.Invoke("addLayout#$$", "addLayout(QLayout*, int, int)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column);
 		}
-		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			interceptor.Invoke("addLayout#$$$$$", "addLayout(QLayout*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
+		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan, uint arg6) {
+			interceptor.Invoke("addLayout#$$$$$", "addLayout(QLayout*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(uint), arg6);
 		}
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan) {
 			interceptor.Invoke("addLayout#$$$$", "addLayout(QLayout*, int, int, int, int)", typeof(void), typeof(QLayout), arg1, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);
@@ -145,8 +145,8 @@ namespace Qyoto {
 		public override void SetGeometry(QRect arg1) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), arg1);
 		}
-		public void AddItem(QLayoutItem item, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			interceptor.Invoke("addItem#$$$$$", "addItem(QLayoutItem*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(int), arg6);
+		public void AddItem(QLayoutItem item, int row, int column, int rowSpan, int columnSpan, uint arg6) {
+			interceptor.Invoke("addItem#$$$$$", "addItem(QLayoutItem*, int, int, int, int, Qt::Alignment)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan, typeof(uint), arg6);
 		}
 		public void AddItem(QLayoutItem item, int row, int column, int rowSpan, int columnSpan) {
 			interceptor.Invoke("addItem#$$$$", "addItem(QLayoutItem*, int, int, int, int)", typeof(void), typeof(QLayoutItem), item, typeof(int), row, typeof(int), column, typeof(int), rowSpan, typeof(int), columnSpan);

@@ -36,7 +36,6 @@ namespace Qyoto {
 			get { return (QLayout.SizeConstraint) interceptor.Invoke("sizeConstraint", "sizeConstraint()", typeof(QLayout.SizeConstraint)); }
 			set { interceptor.Invoke("setSizeConstraint$", "setSizeConstraint(QLayout::SizeConstraint)", typeof(void), typeof(QLayout.SizeConstraint), value); }
 		}
-		// QSizePolicy::ControlTypes controlTypes(); >>>> NOT CONVERTED
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLayout#", "QLayout(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -64,14 +63,14 @@ namespace Qyoto {
 		public QRect ContentsRect() {
 			return (QRect) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRect));
 		}
-		public bool SetAlignment(QWidget w, int alignment) {
-			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QWidget*, Qt::Alignment)", typeof(bool), typeof(QWidget), w, typeof(int), alignment);
+		public bool SetAlignment(QWidget w, uint alignment) {
+			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QWidget*, Qt::Alignment)", typeof(bool), typeof(QWidget), w, typeof(uint), alignment);
 		}
-		public bool SetAlignment(QLayout l, int alignment) {
-			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QLayout*, Qt::Alignment)", typeof(bool), typeof(QLayout), l, typeof(int), alignment);
+		public bool SetAlignment(QLayout l, uint alignment) {
+			return (bool) interceptor.Invoke("setAlignment#$", "setAlignment(QLayout*, Qt::Alignment)", typeof(bool), typeof(QLayout), l, typeof(uint), alignment);
 		}
-		public void SetAlignment(int alignment) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
+		public void SetAlignment(uint alignment) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), alignment);
 		}
 		public void SetMenuBar(QWidget w) {
 			interceptor.Invoke("setMenuBar#", "setMenuBar(QWidget*)", typeof(void), typeof(QWidget), w);
@@ -108,8 +107,8 @@ namespace Qyoto {
 			interceptor.Invoke("removeItem#", "removeItem(QLayoutItem*)", typeof(void), typeof(QLayoutItem), arg1);
 		}
 		[SmokeMethod("expandingDirections() const")]
-		public virtual int ExpandingDirections() {
-			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
+		public virtual uint ExpandingDirections() {
+			return (uint) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(uint));
 		}
 		[SmokeMethod("minimumSize() const")]
 		public virtual QSize MinimumSize() {
@@ -195,8 +194,11 @@ namespace Qyoto {
 		public virtual QSpacerItem SpacerItem() {
 			return (QSpacerItem) interceptor.Invoke("spacerItem", "spacerItem()", typeof(QSpacerItem));
 		}
-		public int Alignment() {
-			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
+		public uint Alignment() {
+			return (uint) interceptor.Invoke("alignment", "alignment() const", typeof(uint));
+		}
+		public uint ControlTypes() {
+			return (uint) interceptor.Invoke("controlTypes", "controlTypes() const", typeof(uint));
 		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

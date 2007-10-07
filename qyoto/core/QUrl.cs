@@ -184,14 +184,14 @@ namespace Qyoto {
 		public string ToLocalFile() {
 			return (string) interceptor.Invoke("toLocalFile", "toLocalFile() const", typeof(string));
 		}
-		public string ToString(int options) {
-			return (string) interceptor.Invoke("toString$", "toString(FormattingOptions) const", typeof(string), typeof(int), options);
+		public string ToString(uint options) {
+			return (string) interceptor.Invoke("toString$", "toString(QUrl::FormattingOptions) const", typeof(string), typeof(uint), options);
 		}
 		public new string ToString() {
 			return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
 		}
-		public QByteArray ToEncoded(int options) {
-			return (QByteArray) interceptor.Invoke("toEncoded$", "toEncoded(FormattingOptions) const", typeof(QByteArray), typeof(int), options);
+		public QByteArray ToEncoded(uint options) {
+			return (QByteArray) interceptor.Invoke("toEncoded$", "toEncoded(QUrl::FormattingOptions) const", typeof(QByteArray), typeof(uint), options);
 		}
 		public QByteArray ToEncoded() {
 			return (QByteArray) interceptor.Invoke("toEncoded", "toEncoded() const", typeof(QByteArray));

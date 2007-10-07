@@ -203,14 +203,14 @@ namespace Qyoto {
 			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), e);
 		}
 		[SmokeMethod("startDrag(Qt::DropActions)")]
-		protected override void StartDrag(int supportedActions) {
-			interceptor.Invoke("startDrag$", "startDrag(Qt::DropActions)", typeof(void), typeof(int), supportedActions);
+		protected override void StartDrag(uint supportedActions) {
+			interceptor.Invoke("startDrag$", "startDrag(Qt::DropActions)", typeof(void), typeof(uint), supportedActions);
 		}
 		protected void InternalDrop(QDropEvent e) {
 			interceptor.Invoke("internalDrop#", "internalDrop(QDropEvent*)", typeof(void), typeof(QDropEvent), e);
 		}
-		protected void InternalDrag(int supportedActions) {
-			interceptor.Invoke("internalDrag$", "internalDrag(Qt::DropActions)", typeof(void), typeof(int), supportedActions);
+		protected void InternalDrag(uint supportedActions) {
+			interceptor.Invoke("internalDrag$", "internalDrag(Qt::DropActions)", typeof(void), typeof(uint), supportedActions);
 		}
 		[SmokeMethod("viewOptions() const")]
 		protected override QStyleOptionViewItem ViewOptions() {
@@ -229,8 +229,8 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("verticalOffset", "verticalOffset() const", typeof(int));
 		}
 		[SmokeMethod("moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
-		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers) {
-			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(int), modifiers);
+		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, uint modifiers) {
+			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(uint), modifiers);
 		}
 		protected QRect RectForIndex(QModelIndex index) {
 			return (QRect) interceptor.Invoke("rectForIndex#", "rectForIndex(const QModelIndex&) const", typeof(QRect), typeof(QModelIndex), index);
@@ -239,8 +239,8 @@ namespace Qyoto {
 			interceptor.Invoke("setPositionForIndex##", "setPositionForIndex(const QPoint&, const QModelIndex&)", typeof(void), typeof(QPoint), position, typeof(QModelIndex), index);
 		}
 		[SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
-		protected override void SetSelection(QRect rect, int command) {
-			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(int), command);
+		protected override void SetSelection(QRect rect, uint command) {
+			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(uint), command);
 		}
 		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {

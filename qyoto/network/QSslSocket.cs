@@ -31,14 +31,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QSslSocket", "QSslSocket()", typeof(void));
 		}
-		public void ConnectToHostEncrypted(string hostName, ushort port, int mode) {
-			interceptor.Invoke("connectToHostEncrypted$$$", "connectToHostEncrypted(const QString&, quint16, OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(int), mode);
+		public void ConnectToHostEncrypted(string hostName, ushort port, uint mode) {
+			interceptor.Invoke("connectToHostEncrypted$$$", "connectToHostEncrypted(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
 		}
 		public void ConnectToHostEncrypted(string hostName, ushort port) {
 			interceptor.Invoke("connectToHostEncrypted$$", "connectToHostEncrypted(const QString&, quint16)", typeof(void), typeof(string), hostName, typeof(ushort), port);
 		}
-		public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, int openMode) {
-			return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(int), openMode);
+		public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, uint openMode) {
+			return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, QIODevice::OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(uint), openMode);
 		}
 		public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state) {
 			return (bool) interceptor.Invoke("setSocketDescriptor$$", "setSocketDescriptor(int, QAbstractSocket::SocketState)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state);
@@ -205,9 +205,9 @@ namespace Qyoto {
 		protected override long WriteData(string data, long len) {
 			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
-		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
-		protected new void ConnectToHostImplementation(string hostName, ushort port, int openMode) {
-			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(int), openMode);
+		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)")]
+		protected new void ConnectToHostImplementation(string hostName, ushort port, uint openMode) {
+			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), openMode);
 		}
 		[Q_SLOT("void disconnectFromHostImplementation()")]
 		protected new void DisconnectFromHostImplementation() {

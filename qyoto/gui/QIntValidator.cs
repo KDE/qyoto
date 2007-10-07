@@ -34,7 +34,7 @@ namespace Qyoto {
 			interceptor.Invoke("QIntValidator$$#", "QIntValidator(int, int, QObject*)", typeof(void), typeof(int), bottom, typeof(int), top, typeof(QObject), parent);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		public override int Validate(StringBuilder arg1, ref int arg2) {
+		public override QValidator.State Validate(StringBuilder arg1, ref int arg2) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(arg1);
@@ -49,7 +49,7 @@ namespace Qyoto {
 			((GCHandle) stack[1].s_class).Free();
 #endif
 			arg2 = stack[2].s_int;
-			return stack[0].s_int;
+			return (QValidator.State) Enum.ToObject(typeof(QValidator.State), stack[0].s_int);
 		}
 		[SmokeMethod("setRange(int, int)")]
 		public virtual void SetRange(int bottom, int top) {

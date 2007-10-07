@@ -9,16 +9,16 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QWindowStateChangeEvent), this);
 		}
-		public QWindowStateChangeEvent(int aOldState) : this((Type) null) {
+		public QWindowStateChangeEvent(uint aOldState) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWindowStateChangeEvent$", "QWindowStateChangeEvent(Qt::WindowStates)", typeof(void), typeof(int), aOldState);
+			interceptor.Invoke("QWindowStateChangeEvent$", "QWindowStateChangeEvent(Qt::WindowStates)", typeof(void), typeof(uint), aOldState);
 		}
-		public QWindowStateChangeEvent(int aOldState, bool isOverride) : this((Type) null) {
+		public QWindowStateChangeEvent(uint aOldState, bool isOverride) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWindowStateChangeEvent$$", "QWindowStateChangeEvent(Qt::WindowStates, bool)", typeof(void), typeof(int), aOldState, typeof(bool), isOverride);
+			interceptor.Invoke("QWindowStateChangeEvent$$", "QWindowStateChangeEvent(Qt::WindowStates, bool)", typeof(void), typeof(uint), aOldState, typeof(bool), isOverride);
 		}
-		public int OldState() {
-			return (int) interceptor.Invoke("oldState", "oldState() const", typeof(int));
+		public uint OldState() {
+			return (uint) interceptor.Invoke("oldState", "oldState() const", typeof(uint));
 		}
 		public bool IsOverride() {
 			return (bool) interceptor.Invoke("isOverride", "isOverride() const", typeof(bool));

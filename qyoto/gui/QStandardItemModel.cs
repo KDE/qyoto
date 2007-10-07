@@ -139,12 +139,12 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("removeColumns$$", "removeColumns(int, int)", typeof(bool), typeof(int), column, typeof(int), count);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("supportedDropActions() const")]
-		public override int SupportedDropActions() {
-			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
+		public override uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
 		[SmokeMethod("itemData(const QModelIndex&) const")]
 		public override Dictionary<int, QVariant> ItemData(QModelIndex index) {
@@ -267,11 +267,11 @@ namespace Qyoto {
 		public void SetItemPrototype(QStandardItem item) {
 			interceptor.Invoke("setItemPrototype#", "setItemPrototype(const QStandardItem*)", typeof(void), typeof(QStandardItem), item);
 		}
-		public List<QStandardItem> FindItems(string text, int flags, int column) {
-			return (List<QStandardItem>) interceptor.Invoke("findItems$$$", "findItems(const QString&, Qt::MatchFlags, int) const", typeof(List<QStandardItem>), typeof(string), text, typeof(int), flags, typeof(int), column);
+		public List<QStandardItem> FindItems(string text, uint flags, int column) {
+			return (List<QStandardItem>) interceptor.Invoke("findItems$$$", "findItems(const QString&, Qt::MatchFlags, int) const", typeof(List<QStandardItem>), typeof(string), text, typeof(uint), flags, typeof(int), column);
 		}
-		public List<QStandardItem> FindItems(string text, int flags) {
-			return (List<QStandardItem>) interceptor.Invoke("findItems$$", "findItems(const QString&, Qt::MatchFlags) const", typeof(List<QStandardItem>), typeof(string), text, typeof(int), flags);
+		public List<QStandardItem> FindItems(string text, uint flags) {
+			return (List<QStandardItem>) interceptor.Invoke("findItems$$", "findItems(const QString&, Qt::MatchFlags) const", typeof(List<QStandardItem>), typeof(string), text, typeof(uint), flags);
 		}
 		public List<QStandardItem> FindItems(string text) {
 			return (List<QStandardItem>) interceptor.Invoke("findItems$", "findItems(const QString&) const", typeof(List<QStandardItem>), typeof(string), text);

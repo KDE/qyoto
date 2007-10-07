@@ -24,8 +24,8 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("indexOfChild#", "indexOfChild(const QAccessibleInterface*) const", typeof(int), typeof(QAccessibleInterface), arg1);
 		}
 		[SmokeMethod("relationTo(int, const QAccessibleInterface*, int) const")]
-		public override int RelationTo(int arg1, QAccessibleInterface arg2, int arg3) {
-			return (int) interceptor.Invoke("relationTo$#$", "relationTo(int, const QAccessibleInterface*, int) const", typeof(int), typeof(int), arg1, typeof(QAccessibleInterface), arg2, typeof(int), arg3);
+		public override uint RelationTo(int arg1, QAccessibleInterface arg2, int arg3) {
+			return (uint) interceptor.Invoke("relationTo$#$", "relationTo(int, const QAccessibleInterface*, int) const", typeof(uint), typeof(int), arg1, typeof(QAccessibleInterface), arg2, typeof(int), arg3);
 		}
 		[SmokeMethod("childAt(int, int) const")]
 		public override int ChildAt(int x, int y) {
@@ -40,8 +40,8 @@ namespace Qyoto {
 			return (QAccessible.Role) interceptor.Invoke("role$", "role(int) const", typeof(QAccessible.Role), typeof(int), child);
 		}
 		[SmokeMethod("state(int) const")]
-		public override int State(int child) {
-			return (int) interceptor.Invoke("state$", "state(int) const", typeof(int), typeof(int), child);
+		public override uint State(int child) {
+			return (uint) interceptor.Invoke("state$", "state(int) const", typeof(uint), typeof(int), child);
 		}
 		[SmokeMethod("userActionCount(int) const")]
 		public override int UserActionCount(int child) {

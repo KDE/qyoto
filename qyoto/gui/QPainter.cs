@@ -560,26 +560,26 @@ namespace Qyoto {
 		public void DrawPixmap(int x, int y, int w, int h, QPixmap pm) {
 			interceptor.Invoke("drawPixmap$$$$#", "drawPixmap(int, int, int, int, const QPixmap&)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QPixmap), pm);
 		}
-		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect, int flags) {
-			interceptor.Invoke("drawImage###$", "drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QRectF), targetRect, typeof(QImage), image, typeof(QRectF), sourceRect, typeof(int), flags);
+		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect, uint flags) {
+			interceptor.Invoke("drawImage###$", "drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QRectF), targetRect, typeof(QImage), image, typeof(QRectF), sourceRect, typeof(uint), flags);
 		}
 		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect) {
 			interceptor.Invoke("drawImage###", "drawImage(const QRectF&, const QImage&, const QRectF&)", typeof(void), typeof(QRectF), targetRect, typeof(QImage), image, typeof(QRectF), sourceRect);
 		}
-		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect, int flags) {
-			interceptor.Invoke("drawImage###$", "drawImage(const QRect&, const QImage&, const QRect&, Qt::ImageConversionFlags)", typeof(void), typeof(QRect), targetRect, typeof(QImage), image, typeof(QRect), sourceRect, typeof(int), flags);
+		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect, uint flags) {
+			interceptor.Invoke("drawImage###$", "drawImage(const QRect&, const QImage&, const QRect&, Qt::ImageConversionFlags)", typeof(void), typeof(QRect), targetRect, typeof(QImage), image, typeof(QRect), sourceRect, typeof(uint), flags);
 		}
 		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect) {
 			interceptor.Invoke("drawImage###", "drawImage(const QRect&, const QImage&, const QRect&)", typeof(void), typeof(QRect), targetRect, typeof(QImage), image, typeof(QRect), sourceRect);
 		}
-		public void DrawImage(QPointF p, QImage image, QRectF sr, int flags) {
-			interceptor.Invoke("drawImage###$", "drawImage(const QPointF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QPointF), p, typeof(QImage), image, typeof(QRectF), sr, typeof(int), flags);
+		public void DrawImage(QPointF p, QImage image, QRectF sr, uint flags) {
+			interceptor.Invoke("drawImage###$", "drawImage(const QPointF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)", typeof(void), typeof(QPointF), p, typeof(QImage), image, typeof(QRectF), sr, typeof(uint), flags);
 		}
 		public void DrawImage(QPointF p, QImage image, QRectF sr) {
 			interceptor.Invoke("drawImage###", "drawImage(const QPointF&, const QImage&, const QRectF&)", typeof(void), typeof(QPointF), p, typeof(QImage), image, typeof(QRectF), sr);
 		}
-		public void DrawImage(QPoint p, QImage image, QRect sr, int flags) {
-			interceptor.Invoke("drawImage###$", "drawImage(const QPoint&, const QImage&, const QRect&, Qt::ImageConversionFlags)", typeof(void), typeof(QPoint), p, typeof(QImage), image, typeof(QRect), sr, typeof(int), flags);
+		public void DrawImage(QPoint p, QImage image, QRect sr, uint flags) {
+			interceptor.Invoke("drawImage###$", "drawImage(const QPoint&, const QImage&, const QRect&, Qt::ImageConversionFlags)", typeof(void), typeof(QPoint), p, typeof(QImage), image, typeof(QRect), sr, typeof(uint), flags);
 		}
 		public void DrawImage(QPoint p, QImage image, QRect sr) {
 			interceptor.Invoke("drawImage###", "drawImage(const QPoint&, const QImage&, const QRect&)", typeof(void), typeof(QPoint), p, typeof(QImage), image, typeof(QRect), sr);
@@ -596,8 +596,8 @@ namespace Qyoto {
 		public void DrawImage(QPoint p, QImage image) {
 			interceptor.Invoke("drawImage##", "drawImage(const QPoint&, const QImage&)", typeof(void), typeof(QPoint), p, typeof(QImage), image);
 		}
-		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh, int flags) {
-			interceptor.Invoke("drawImage$$#$$$$$", "drawImage(int, int, const QImage&, int, int, int, int, Qt::ImageConversionFlags)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh, typeof(int), flags);
+		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh, uint flags) {
+			interceptor.Invoke("drawImage$$#$$$$$", "drawImage(int, int, const QImage&, int, int, int, int, Qt::ImageConversionFlags)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh, typeof(uint), flags);
 		}
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh) {
 			interceptor.Invoke("drawImage$$#$$$$", "drawImage(int, int, const QImage&, int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(QImage), image, typeof(int), sx, typeof(int), sy, typeof(int), sw, typeof(int), sh);
@@ -692,14 +692,14 @@ namespace Qyoto {
 		public void SetRenderHint(QPainter.RenderHint hint) {
 			interceptor.Invoke("setRenderHint$", "setRenderHint(QPainter::RenderHint)", typeof(void), typeof(QPainter.RenderHint), hint);
 		}
-		public void SetRenderHints(int hints, bool on) {
-			interceptor.Invoke("setRenderHints$$", "setRenderHints(RenderHints, bool)", typeof(void), typeof(int), hints, typeof(bool), on);
+		public void SetRenderHints(uint hints, bool on) {
+			interceptor.Invoke("setRenderHints$$", "setRenderHints(QPainter::RenderHints, bool)", typeof(void), typeof(uint), hints, typeof(bool), on);
 		}
-		public void SetRenderHints(int hints) {
-			interceptor.Invoke("setRenderHints$", "setRenderHints(RenderHints)", typeof(void), typeof(int), hints);
+		public void SetRenderHints(uint hints) {
+			interceptor.Invoke("setRenderHints$", "setRenderHints(QPainter::RenderHints)", typeof(void), typeof(uint), hints);
 		}
-		public int RenderHints() {
-			return (int) interceptor.Invoke("renderHints", "renderHints() const", typeof(int));
+		public uint RenderHints() {
+			return (uint) interceptor.Invoke("renderHints", "renderHints() const", typeof(uint));
 		}
 		public bool TestRenderHint(QPainter.RenderHint hint) {
 			return (bool) interceptor.Invoke("testRenderHint$", "testRenderHint(QPainter::RenderHint) const", typeof(bool), typeof(QPainter.RenderHint), hint);

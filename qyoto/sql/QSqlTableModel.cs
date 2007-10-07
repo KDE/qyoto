@@ -45,8 +45,8 @@ namespace Qyoto {
 			return (string) interceptor.Invoke("tableName", "tableName() const", typeof(string));
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public override QVariant Data(QModelIndex idx, int role) {

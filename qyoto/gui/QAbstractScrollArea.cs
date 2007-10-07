@@ -50,11 +50,11 @@ namespace Qyoto {
 		public void SetCornerWidget(QWidget widget) {
 			interceptor.Invoke("setCornerWidget#", "setCornerWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		public void AddScrollBarWidget(QWidget widget, int alignment) {
-			interceptor.Invoke("addScrollBarWidget#$", "addScrollBarWidget(QWidget*, Qt::Alignment)", typeof(void), typeof(QWidget), widget, typeof(int), alignment);
+		public void AddScrollBarWidget(QWidget widget, uint alignment) {
+			interceptor.Invoke("addScrollBarWidget#$", "addScrollBarWidget(QWidget*, Qt::Alignment)", typeof(void), typeof(QWidget), widget, typeof(uint), alignment);
 		}
-		public List<QWidget> ScrollBarWidgets(int alignment) {
-			return (List<QWidget>) interceptor.Invoke("scrollBarWidgets$", "scrollBarWidgets(Qt::Alignment)", typeof(List<QWidget>), typeof(int), alignment);
+		public List<QWidget> ScrollBarWidgets(uint alignment) {
+			return (List<QWidget>) interceptor.Invoke("scrollBarWidgets$", "scrollBarWidgets(Qt::Alignment)", typeof(List<QWidget>), typeof(uint), alignment);
 		}
 		public QWidget Viewport() {
 			return (QWidget) interceptor.Invoke("viewport", "viewport() const", typeof(QWidget));

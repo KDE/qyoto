@@ -148,8 +148,8 @@ namespace Qyoto {
 		public void SetPlainText(string text) {
 			interceptor.Invoke("setPlainText$", "setPlainText(const QString&)", typeof(void), typeof(string), text);
 		}
-		public QTextCursor Find(string subString, int from, int options) {
-			return (QTextCursor) interceptor.Invoke("find$$$", "find(const QString&, int, FindFlags) const", typeof(QTextCursor), typeof(string), subString, typeof(int), from, typeof(int), options);
+		public QTextCursor Find(string subString, int from, uint options) {
+			return (QTextCursor) interceptor.Invoke("find$$$", "find(const QString&, int, QTextDocument::FindFlags) const", typeof(QTextCursor), typeof(string), subString, typeof(int), from, typeof(uint), options);
 		}
 		public QTextCursor Find(string subString, int from) {
 			return (QTextCursor) interceptor.Invoke("find$$", "find(const QString&, int) const", typeof(QTextCursor), typeof(string), subString, typeof(int), from);
@@ -157,14 +157,14 @@ namespace Qyoto {
 		public QTextCursor Find(string subString) {
 			return (QTextCursor) interceptor.Invoke("find$", "find(const QString&) const", typeof(QTextCursor), typeof(string), subString);
 		}
-		public QTextCursor Find(string subString, QTextCursor from, int options) {
-			return (QTextCursor) interceptor.Invoke("find$#$", "find(const QString&, const QTextCursor&, FindFlags) const", typeof(QTextCursor), typeof(string), subString, typeof(QTextCursor), from, typeof(int), options);
+		public QTextCursor Find(string subString, QTextCursor from, uint options) {
+			return (QTextCursor) interceptor.Invoke("find$#$", "find(const QString&, const QTextCursor&, QTextDocument::FindFlags) const", typeof(QTextCursor), typeof(string), subString, typeof(QTextCursor), from, typeof(uint), options);
 		}
 		public QTextCursor Find(string subString, QTextCursor from) {
 			return (QTextCursor) interceptor.Invoke("find$#", "find(const QString&, const QTextCursor&) const", typeof(QTextCursor), typeof(string), subString, typeof(QTextCursor), from);
 		}
-		public QTextCursor Find(QRegExp expr, int from, int options) {
-			return (QTextCursor) interceptor.Invoke("find#$$", "find(const QRegExp&, int, FindFlags) const", typeof(QTextCursor), typeof(QRegExp), expr, typeof(int), from, typeof(int), options);
+		public QTextCursor Find(QRegExp expr, int from, uint options) {
+			return (QTextCursor) interceptor.Invoke("find#$$", "find(const QRegExp&, int, QTextDocument::FindFlags) const", typeof(QTextCursor), typeof(QRegExp), expr, typeof(int), from, typeof(uint), options);
 		}
 		public QTextCursor Find(QRegExp expr, int from) {
 			return (QTextCursor) interceptor.Invoke("find#$", "find(const QRegExp&, int) const", typeof(QTextCursor), typeof(QRegExp), expr, typeof(int), from);
@@ -172,8 +172,8 @@ namespace Qyoto {
 		public QTextCursor Find(QRegExp expr) {
 			return (QTextCursor) interceptor.Invoke("find#", "find(const QRegExp&) const", typeof(QTextCursor), typeof(QRegExp), expr);
 		}
-		public QTextCursor Find(QRegExp expr, QTextCursor from, int options) {
-			return (QTextCursor) interceptor.Invoke("find##$", "find(const QRegExp&, const QTextCursor&, FindFlags) const", typeof(QTextCursor), typeof(QRegExp), expr, typeof(QTextCursor), from, typeof(int), options);
+		public QTextCursor Find(QRegExp expr, QTextCursor from, uint options) {
+			return (QTextCursor) interceptor.Invoke("find##$", "find(const QRegExp&, const QTextCursor&, QTextDocument::FindFlags) const", typeof(QTextCursor), typeof(QRegExp), expr, typeof(QTextCursor), from, typeof(uint), options);
 		}
 		public QTextCursor Find(QRegExp expr, QTextCursor from) {
 			return (QTextCursor) interceptor.Invoke("find##", "find(const QRegExp&, const QTextCursor&) const", typeof(QTextCursor), typeof(QRegExp), expr, typeof(QTextCursor), from);

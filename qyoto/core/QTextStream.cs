@@ -52,17 +52,17 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextStream#", "QTextStream(QIODevice*)", typeof(void), typeof(QIODevice), device);
 		}
-		public QTextStream(StringBuilder arg1, int openMode) : this((Type) null) {
+		public QTextStream(StringBuilder arg1, uint openMode) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QTextStream$$", "QTextStream(QString*, QIODevice::OpenMode)", typeof(void), typeof(StringBuilder), arg1, typeof(int), openMode);
+			interceptor.Invoke("QTextStream$$", "QTextStream(QString*, QIODevice::OpenMode)", typeof(void), typeof(StringBuilder), arg1, typeof(uint), openMode);
 		}
 		public QTextStream(StringBuilder arg1) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextStream$", "QTextStream(QString*)", typeof(void), typeof(StringBuilder), arg1);
 		}
-		public QTextStream(QByteArray array, int openMode) : this((Type) null) {
+		public QTextStream(QByteArray array, uint openMode) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QTextStream#$", "QTextStream(QByteArray*, QIODevice::OpenMode)", typeof(void), typeof(QByteArray), array, typeof(int), openMode);
+			interceptor.Invoke("QTextStream#$", "QTextStream(QByteArray*, QIODevice::OpenMode)", typeof(void), typeof(QByteArray), array, typeof(uint), openMode);
 		}
 		public QTextStream(QByteArray array) : this((Type) null) {
 			CreateProxy();
@@ -95,8 +95,8 @@ namespace Qyoto {
 		public QIODevice Device() {
 			return (QIODevice) interceptor.Invoke("device", "device() const", typeof(QIODevice));
 		}
-		public void SetString(StringBuilder arg1, int openMode) {
-			interceptor.Invoke("setString$$", "setString(QString*, QIODevice::OpenMode)", typeof(void), typeof(StringBuilder), arg1, typeof(int), openMode);
+		public void SetString(StringBuilder arg1, uint openMode) {
+			interceptor.Invoke("setString$$", "setString(QString*, QIODevice::OpenMode)", typeof(void), typeof(StringBuilder), arg1, typeof(uint), openMode);
 		}
 		public void SetString(StringBuilder arg1) {
 			interceptor.Invoke("setString$", "setString(QString*)", typeof(void), typeof(StringBuilder), arg1);
@@ -161,11 +161,11 @@ namespace Qyoto {
 		public int FieldWidth() {
 			return (int) interceptor.Invoke("fieldWidth", "fieldWidth() const", typeof(int));
 		}
-		public void SetNumberFlags(int flags) {
-			interceptor.Invoke("setNumberFlags$", "setNumberFlags(NumberFlags)", typeof(void), typeof(int), flags);
+		public void SetNumberFlags(uint flags) {
+			interceptor.Invoke("setNumberFlags$", "setNumberFlags(QTextStream::NumberFlags)", typeof(void), typeof(uint), flags);
 		}
-		public int NumberFlags() {
-			return (int) interceptor.Invoke("numberFlags", "numberFlags() const", typeof(int));
+		public uint NumberFlags() {
+			return (uint) interceptor.Invoke("numberFlags", "numberFlags() const", typeof(uint));
 		}
 		public void SetIntegerBase(int arg1) {
 			interceptor.Invoke("setIntegerBase$", "setIntegerBase(int)", typeof(void), typeof(int), arg1);

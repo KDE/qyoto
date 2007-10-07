@@ -51,9 +51,9 @@ namespace Qyoto {
 		public override QAbstractFileEngine FileEngine() {
 			return (QAbstractFileEngine) interceptor.Invoke("fileEngine", "fileEngine() const", typeof(QAbstractFileEngine));
 		}
-		[SmokeMethod("open(OpenMode)")]
-		protected new virtual bool Open(int flags) {
-			return (bool) interceptor.Invoke("open$", "open(OpenMode)", typeof(bool), typeof(int), flags);
+		[SmokeMethod("open(QIODevice::OpenMode)")]
+		protected new virtual bool Open(uint flags) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), flags);
 		}
 		~QTemporaryFile() {
 			interceptor.Invoke("~QTemporaryFile", "~QTemporaryFile()", typeof(void));

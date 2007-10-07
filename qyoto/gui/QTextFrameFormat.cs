@@ -112,11 +112,11 @@ namespace Qyoto {
 		public QTextLength Height() {
 			return (QTextLength) interceptor.Invoke("height", "height() const", typeof(QTextLength));
 		}
-		public void SetPageBreakPolicy(int flags) {
-			interceptor.Invoke("setPageBreakPolicy$", "setPageBreakPolicy(PageBreakFlags)", typeof(void), typeof(int), flags);
+		public void SetPageBreakPolicy(uint flags) {
+			interceptor.Invoke("setPageBreakPolicy$", "setPageBreakPolicy(QTextFormat::PageBreakFlags)", typeof(void), typeof(uint), flags);
 		}
-		public int PageBreakPolicy() {
-			return (int) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(int));
+		public uint PageBreakPolicy() {
+			return (uint) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(uint));
 		}
 		~QTextFrameFormat() {
 			interceptor.Invoke("~QTextFrameFormat", "~QTextFrameFormat()", typeof(void));

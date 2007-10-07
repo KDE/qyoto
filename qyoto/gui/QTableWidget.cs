@@ -142,8 +142,8 @@ namespace Qyoto {
 		public List<QTableWidgetItem> SelectedItems() {
 			return (List<QTableWidgetItem>) interceptor.Invoke("selectedItems", "selectedItems()", typeof(List<QTableWidgetItem>));
 		}
-		public List<QTableWidgetItem> FindItems(string text, int flags) {
-			return (List<QTableWidgetItem>) interceptor.Invoke("findItems$$", "findItems(const QString&, Qt::MatchFlags) const", typeof(List<QTableWidgetItem>), typeof(string), text, typeof(int), flags);
+		public List<QTableWidgetItem> FindItems(string text, uint flags) {
+			return (List<QTableWidgetItem>) interceptor.Invoke("findItems$$", "findItems(const QString&, Qt::MatchFlags) const", typeof(List<QTableWidgetItem>), typeof(string), text, typeof(uint), flags);
 		}
 		public int VisualRow(int logicalRow) {
 			return (int) interceptor.Invoke("visualRow$", "visualRow(int) const", typeof(int), typeof(int), logicalRow);
@@ -215,8 +215,8 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("dropMimeData$$#$", "dropMimeData(int, int, const QMimeData*, Qt::DropAction)", typeof(bool), typeof(int), row, typeof(int), column, typeof(QMimeData), data, typeof(Qt.DropAction), action);
 		}
 		[SmokeMethod("supportedDropActions() const")]
-		protected virtual int SupportedDropActions() {
-			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
+		protected virtual uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
 		protected List<QTableWidgetItem> Items(QMimeData data) {
 			return (List<QTableWidgetItem>) interceptor.Invoke("items#", "items(const QMimeData*) const", typeof(List<QTableWidgetItem>), typeof(QMimeData), data);

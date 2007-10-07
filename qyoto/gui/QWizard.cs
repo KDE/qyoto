@@ -69,6 +69,11 @@ namespace Qyoto {
 			get { return (QWizard.WizardStyle) interceptor.Invoke("wizardStyle", "wizardStyle()", typeof(QWizard.WizardStyle)); }
 			set { interceptor.Invoke("setWizardStyle$", "setWizardStyle(QWizard::WizardStyle)", typeof(void), typeof(QWizard.WizardStyle), value); }
 		}
+		[Q_PROPERTY("QWizard::WizardOptions", "options")]
+		public uint Options {
+			get { return (uint) interceptor.Invoke("options", "options()", typeof(uint)); }
+			set { interceptor.Invoke("setOptions$", "setOptions(QWizard::WizardOptions)", typeof(void), typeof(uint), value); }
+		}
 		[Q_PROPERTY("Qt::TextFormat", "titleFormat")]
 		public Qt.TextFormat TitleFormat {
 			get { return (Qt.TextFormat) interceptor.Invoke("titleFormat", "titleFormat()", typeof(Qt.TextFormat)); }
@@ -89,9 +94,9 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("currentId", "currentId()", typeof(int)); }
 			set { interceptor.Invoke("currentIdChanged$", "currentIdChanged(int)", typeof(void), typeof(int), value); }
 		}
-		public QWizard(QWidget parent, int flags) : this((Type) null) {
+		public QWizard(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QWizard#$", "QWizard(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("QWizard#$", "QWizard(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public QWizard(QWidget parent) : this((Type) null) {
 			CreateProxy();

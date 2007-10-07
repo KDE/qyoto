@@ -60,24 +60,24 @@ namespace Qyoto {
 			set { interceptor.Invoke("setSceneRect#", "setSceneRect(QRectF)", typeof(void), typeof(QRectF), value); }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
-		public int Alignment {
-			get { return (int) interceptor.Invoke("alignment", "alignment()", typeof(int)); }
-			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), value); }
+		public uint Alignment {
+			get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
+			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("QPainter::RenderHints", "renderHints")]
-		public int RenderHints {
-			get { return (int) interceptor.Invoke("renderHints", "renderHints()", typeof(int)); }
-			set { interceptor.Invoke("setRenderHints$", "setRenderHints(QPainter::RenderHints)", typeof(void), typeof(int), value); }
+		public uint RenderHints {
+			get { return (uint) interceptor.Invoke("renderHints", "renderHints()", typeof(uint)); }
+			set { interceptor.Invoke("setRenderHints$", "setRenderHints(QPainter::RenderHints)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("QGraphicsView::DragMode", "dragMode")]
 		public QGraphicsView.DragMode dragMode {
 			get { return (QGraphicsView.DragMode) interceptor.Invoke("dragMode", "dragMode()", typeof(QGraphicsView.DragMode)); }
 			set { interceptor.Invoke("setDragMode$", "setDragMode(QGraphicsView::DragMode)", typeof(void), typeof(QGraphicsView.DragMode), value); }
 		}
-		[Q_PROPERTY("CacheMode", "cacheMode")]
-		public int CacheMode {
-			get { return (int) interceptor.Invoke("cacheMode", "cacheMode()", typeof(int)); }
-			set { interceptor.Invoke("setCacheMode$", "setCacheMode(CacheMode)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("QGraphicsView::CacheMode", "cacheMode")]
+		public uint CacheMode {
+			get { return (uint) interceptor.Invoke("cacheMode", "cacheMode()", typeof(uint)); }
+			set { interceptor.Invoke("setCacheMode$", "setCacheMode(QGraphicsView::CacheMode)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "transformationAnchor")]
 		public QGraphicsView.ViewportAnchor TransformationAnchor {
@@ -99,7 +99,11 @@ namespace Qyoto {
 			get { return (Qt.ItemSelectionMode) interceptor.Invoke("rubberBandSelectionMode", "rubberBandSelectionMode()", typeof(Qt.ItemSelectionMode)); }
 			set { interceptor.Invoke("setRubberBandSelectionMode$", "setRubberBandSelectionMode(Qt::ItemSelectionMode)", typeof(void), typeof(Qt.ItemSelectionMode), value); }
 		}
-		// void invalidateScene(const QRectF& arg1,QGraphicsScene::SceneLayers arg2); >>>> NOT CONVERTED
+		[Q_PROPERTY("QGraphicsView::OptimizationFlags", "optimizationFlags")]
+		public uint OptimizationFlags {
+			get { return (uint) interceptor.Invoke("optimizationFlags", "optimizationFlags()", typeof(uint)); }
+			set { interceptor.Invoke("setOptimizationFlags$", "setOptimizationFlags(QGraphicsView::OptimizationFlags)", typeof(void), typeof(uint), value); }
+		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -332,6 +336,10 @@ namespace Qyoto {
 		[Q_SLOT("void updateScene(const QList<QRectF>&)")]
 		public void UpdateScene(List<QRectF> rects) {
 			interceptor.Invoke("updateScene?", "updateScene(const QList<QRectF>&)", typeof(void), typeof(List<QRectF>), rects);
+		}
+		[Q_SLOT("void invalidateScene(const QRectF&, QGraphicsScene::SceneLayers)")]
+		public void InvalidateScene(QRectF rect, uint layers) {
+			interceptor.Invoke("invalidateScene#$", "invalidateScene(const QRectF&, QGraphicsScene::SceneLayers)", typeof(void), typeof(QRectF), rect, typeof(uint), layers);
 		}
 		[Q_SLOT("void invalidateScene(const QRectF&)")]
 		public void InvalidateScene(QRectF rect) {

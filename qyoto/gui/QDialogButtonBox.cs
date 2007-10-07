@@ -64,10 +64,10 @@ namespace Qyoto {
 			get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
 			set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
 		}
-		[Q_PROPERTY("StandardButtons", "standardButtons")]
-		public int StandardButtons {
-			get { return (int) interceptor.Invoke("standardButtons", "standardButtons()", typeof(int)); }
-			set { interceptor.Invoke("setStandardButtons$", "setStandardButtons(StandardButtons)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("QDialogButtonBox::StandardButtons", "standardButtons")]
+		public uint StandardButtons {
+			get { return (uint) interceptor.Invoke("standardButtons", "standardButtons()", typeof(uint)); }
+			set { interceptor.Invoke("setStandardButtons$", "setStandardButtons(QDialogButtonBox::StandardButtons)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("bool", "centerButtons")]
 		public bool CenterButtons {
@@ -90,17 +90,17 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QDialogButtonBox$", "QDialogButtonBox(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
 		}
-		public QDialogButtonBox(int buttons, Qt.Orientation orientation, QWidget parent) : this((Type) null) {
+		public QDialogButtonBox(uint buttons, Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDialogButtonBox$$#", "QDialogButtonBox(StandardButtons, Qt::Orientation, QWidget*)", typeof(void), typeof(int), buttons, typeof(Qt.Orientation), orientation, typeof(QWidget), parent);
+			interceptor.Invoke("QDialogButtonBox$$#", "QDialogButtonBox(QDialogButtonBox::StandardButtons, Qt::Orientation, QWidget*)", typeof(void), typeof(uint), buttons, typeof(Qt.Orientation), orientation, typeof(QWidget), parent);
 		}
-		public QDialogButtonBox(int buttons, Qt.Orientation orientation) : this((Type) null) {
+		public QDialogButtonBox(uint buttons, Qt.Orientation orientation) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDialogButtonBox$$", "QDialogButtonBox(StandardButtons, Qt::Orientation)", typeof(void), typeof(int), buttons, typeof(Qt.Orientation), orientation);
+			interceptor.Invoke("QDialogButtonBox$$", "QDialogButtonBox(QDialogButtonBox::StandardButtons, Qt::Orientation)", typeof(void), typeof(uint), buttons, typeof(Qt.Orientation), orientation);
 		}
-		public QDialogButtonBox(int buttons) : this((Type) null) {
+		public QDialogButtonBox(uint buttons) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDialogButtonBox$", "QDialogButtonBox(StandardButtons)", typeof(void), typeof(int), buttons);
+			interceptor.Invoke("QDialogButtonBox$", "QDialogButtonBox(QDialogButtonBox::StandardButtons)", typeof(void), typeof(uint), buttons);
 		}
 		public void AddButton(QAbstractButton button, QDialogButtonBox.ButtonRole role) {
 			interceptor.Invoke("addButton#$", "addButton(QAbstractButton*, QDialogButtonBox::ButtonRole)", typeof(void), typeof(QAbstractButton), button, typeof(QDialogButtonBox.ButtonRole), role);

@@ -52,8 +52,6 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("bspTreeDepth", "bspTreeDepth()", typeof(int)); }
 			set { interceptor.Invoke("setBspTreeDepth$", "setBspTreeDepth(int)", typeof(void), typeof(int), value); }
 		}
-		// void invalidate(qreal arg1,qreal arg2,qreal arg3,qreal arg4,SceneLayers arg5); >>>> NOT CONVERTED
-		// void invalidate(const QRectF& arg1,SceneLayers arg2); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsScene(QObject parent) : this((Type) null) {
@@ -288,6 +286,9 @@ namespace Qyoto {
 		public void Update(double x, double y, double w, double h) {
 			interceptor.Invoke("update$$$$", "update(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
+		public void Invalidate(double x, double y, double w, double h, uint layers) {
+			interceptor.Invoke("invalidate$$$$$", "invalidate(qreal, qreal, qreal, qreal, QGraphicsScene::SceneLayers)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(uint), layers);
+		}
 		public void Invalidate(double x, double y, double w, double h) {
 			interceptor.Invoke("invalidate$$$$", "invalidate(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
@@ -298,6 +299,10 @@ namespace Qyoto {
 		[Q_SLOT("void update()")]
 		public void Update() {
 			interceptor.Invoke("update", "update()", typeof(void));
+		}
+		[Q_SLOT("void invalidate(const QRectF&, QGraphicsScene::SceneLayers)")]
+		public void Invalidate(QRectF rect, uint layers) {
+			interceptor.Invoke("invalidate#$", "invalidate(const QRectF&, QGraphicsScene::SceneLayers)", typeof(void), typeof(QRectF), rect, typeof(uint), layers);
 		}
 		[Q_SLOT("void invalidate(const QRectF&)")]
 		public void Invalidate(QRectF rect) {

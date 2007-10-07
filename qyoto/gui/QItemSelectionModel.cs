@@ -81,18 +81,18 @@ namespace Qyoto {
 			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
 		[Q_SLOT("void setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
-		public void SetCurrentIndex(QModelIndex index, int command) {
-			interceptor.Invoke("setCurrentIndex#$", "setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(int), command);
+		public void SetCurrentIndex(QModelIndex index, uint command) {
+			interceptor.Invoke("setCurrentIndex#$", "setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(uint), command);
 		}
 		[Q_SLOT("void select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
-		public virtual void Select(QModelIndex index, int command) {
-			interceptor.Invoke("select#$", "select(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(int), command);
+		public virtual void Select(QModelIndex index, uint command) {
+			interceptor.Invoke("select#$", "select(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(uint), command);
 		}
 		[Q_SLOT("void select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
-		public virtual void Select(QItemSelection selection, int command) {
-			interceptor.Invoke("select#$", "select(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), selection, typeof(int), command);
+		public virtual void Select(QItemSelection selection, uint command) {
+			interceptor.Invoke("select#$", "select(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), selection, typeof(uint), command);
 		}
 		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]

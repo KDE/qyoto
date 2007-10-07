@@ -98,14 +98,14 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
 		[SmokeMethod("supportedDropActions() const")]
-		public virtual int SupportedDropActions() {
-			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
+		public virtual uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
-		public int SupportedDragActions() {
-			return (int) interceptor.Invoke("supportedDragActions", "supportedDragActions() const", typeof(int));
+		public uint SupportedDragActions() {
+			return (uint) interceptor.Invoke("supportedDragActions", "supportedDragActions() const", typeof(uint));
 		}
-		public void SetSupportedDragActions(int arg1) {
-			interceptor.Invoke("setSupportedDragActions$", "setSupportedDragActions(Qt::DropActions)", typeof(void), typeof(int), arg1);
+		public void SetSupportedDragActions(uint arg1) {
+			interceptor.Invoke("setSupportedDragActions$", "setSupportedDragActions(Qt::DropActions)", typeof(void), typeof(uint), arg1);
 		}
 		[SmokeMethod("insertRows(int, int, const QModelIndex&)")]
 		public virtual bool InsertRows(int row, int count, QModelIndex parent) {
@@ -172,8 +172,8 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("canFetchMore#", "canFetchMore(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), parent);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public virtual int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public virtual uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("sort(int, Qt::SortOrder)")]
 		public virtual void Sort(int column, Qt.SortOrder order) {
@@ -188,8 +188,8 @@ namespace Qyoto {
 			return (QModelIndex) interceptor.Invoke("buddy#", "buddy(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
-		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
-			return (List<QModelIndex>) interceptor.Invoke("match#$#$$", "match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits, typeof(int), flags);
+		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, uint flags) {
+			return (List<QModelIndex>) interceptor.Invoke("match#$#$$", "match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits, typeof(uint), flags);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {

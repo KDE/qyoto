@@ -24,9 +24,9 @@ namespace Qyoto {
 			Cursor = 2,
 			Eraser = 3,
 		}
-		public QTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) : this((Type) null) {
+		public QTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, uint keyState, long uniqueID) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QTabletEvent$###$$$$$$$$$$", "QTabletEvent(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)", typeof(void), typeof(QEvent.TypeOf), t, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(QPointF), hiResGlobalPos, typeof(int), device, typeof(int), pointerType, typeof(double), pressure, typeof(int), xTilt, typeof(int), yTilt, typeof(double), tangentialPressure, typeof(double), rotation, typeof(int), z, typeof(int), keyState, typeof(long), uniqueID);
+			interceptor.Invoke("QTabletEvent$###$$$$$$$$$$", "QTabletEvent(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)", typeof(void), typeof(QEvent.TypeOf), t, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(QPointF), hiResGlobalPos, typeof(int), device, typeof(int), pointerType, typeof(double), pressure, typeof(int), xTilt, typeof(int), yTilt, typeof(double), tangentialPressure, typeof(double), rotation, typeof(int), z, typeof(uint), keyState, typeof(long), uniqueID);
 		}
 		public QPoint Pos() {
 			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));

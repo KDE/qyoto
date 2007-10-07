@@ -30,9 +30,9 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isModal", "isModal()", typeof(bool)); }
 			set { interceptor.Invoke("setModal$", "setModal(bool)", typeof(void), typeof(bool), value); }
 		}
-		public QDialog(QWidget parent, int f) : this((Type) null) {
+		public QDialog(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDialog#$", "QDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QDialog#$", "QDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();

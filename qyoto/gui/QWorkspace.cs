@@ -48,8 +48,8 @@ namespace Qyoto {
 		public List<QWidget> WindowList() {
 			return (List<QWidget>) interceptor.Invoke("windowList", "windowList() const", typeof(List<QWidget>));
 		}
-		public QWidget AddWindow(QWidget w, int flags) {
-			return (QWidget) interceptor.Invoke("addWindow#$", "addWindow(QWidget*, Qt::WindowFlags)", typeof(QWidget), typeof(QWidget), w, typeof(int), flags);
+		public QWidget AddWindow(QWidget w, uint flags) {
+			return (QWidget) interceptor.Invoke("addWindow#$", "addWindow(QWidget*, Qt::WindowFlags)", typeof(QWidget), typeof(QWidget), w, typeof(uint), flags);
 		}
 		public QWidget AddWindow(QWidget w) {
 			return (QWidget) interceptor.Invoke("addWindow#", "addWindow(QWidget*)", typeof(QWidget), typeof(QWidget), w);

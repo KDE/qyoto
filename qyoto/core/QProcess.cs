@@ -53,14 +53,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QProcess", "QProcess()", typeof(void));
 		}
-		public void Start(string program, List<string> arguments, int mode) {
-			interceptor.Invoke("start$?$", "start(const QString&, const QStringList&, OpenMode)", typeof(void), typeof(string), program, typeof(List<string>), arguments, typeof(int), mode);
+		public void Start(string program, List<string> arguments, uint mode) {
+			interceptor.Invoke("start$?$", "start(const QString&, const QStringList&, QIODevice::OpenMode)", typeof(void), typeof(string), program, typeof(List<string>), arguments, typeof(uint), mode);
 		}
 		public void Start(string program, List<string> arguments) {
 			interceptor.Invoke("start$?", "start(const QString&, const QStringList&)", typeof(void), typeof(string), program, typeof(List<string>), arguments);
 		}
-		public void Start(string program, int mode) {
-			interceptor.Invoke("start$$", "start(const QString&, OpenMode)", typeof(void), typeof(string), program, typeof(int), mode);
+		public void Start(string program, uint mode) {
+			interceptor.Invoke("start$$", "start(const QString&, QIODevice::OpenMode)", typeof(void), typeof(string), program, typeof(uint), mode);
 		}
 		public void Start(string program) {
 			interceptor.Invoke("start$", "start(const QString&)", typeof(void), typeof(string), program);
@@ -92,14 +92,14 @@ namespace Qyoto {
 		public void SetStandardInputFile(string fileName) {
 			interceptor.Invoke("setStandardInputFile$", "setStandardInputFile(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		public void SetStandardOutputFile(string fileName, int mode) {
-			interceptor.Invoke("setStandardOutputFile$$", "setStandardOutputFile(const QString&, OpenMode)", typeof(void), typeof(string), fileName, typeof(int), mode);
+		public void SetStandardOutputFile(string fileName, uint mode) {
+			interceptor.Invoke("setStandardOutputFile$$", "setStandardOutputFile(const QString&, QIODevice::OpenMode)", typeof(void), typeof(string), fileName, typeof(uint), mode);
 		}
 		public void SetStandardOutputFile(string fileName) {
 			interceptor.Invoke("setStandardOutputFile$", "setStandardOutputFile(const QString&)", typeof(void), typeof(string), fileName);
 		}
-		public void SetStandardErrorFile(string fileName, int mode) {
-			interceptor.Invoke("setStandardErrorFile$$", "setStandardErrorFile(const QString&, OpenMode)", typeof(void), typeof(string), fileName, typeof(int), mode);
+		public void SetStandardErrorFile(string fileName, uint mode) {
+			interceptor.Invoke("setStandardErrorFile$$", "setStandardErrorFile(const QString&, QIODevice::OpenMode)", typeof(void), typeof(string), fileName, typeof(uint), mode);
 		}
 		public void SetStandardErrorFile(string fileName) {
 			interceptor.Invoke("setStandardErrorFile$", "setStandardErrorFile(const QString&)", typeof(void), typeof(string), fileName);

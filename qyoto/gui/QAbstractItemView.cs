@@ -87,10 +87,10 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("hasAutoScroll", "hasAutoScroll()", typeof(bool)); }
 			set { interceptor.Invoke("setAutoScroll$", "setAutoScroll(bool)", typeof(void), typeof(bool), value); }
 		}
-		[Q_PROPERTY("EditTriggers", "editTriggers")]
-		public int EditTriggers {
-			get { return (int) interceptor.Invoke("editTriggers", "editTriggers()", typeof(int)); }
-			set { interceptor.Invoke("setEditTriggers$", "setEditTriggers(EditTriggers)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("QAbstractItemView::EditTriggers", "editTriggers")]
+		public uint EditTriggers {
+			get { return (uint) interceptor.Invoke("editTriggers", "editTriggers()", typeof(uint)); }
+			set { interceptor.Invoke("setEditTriggers$", "setEditTriggers(QAbstractItemView::EditTriggers)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("bool", "tabKeyNavigation")]
 		public bool TabKeyNavigation {
@@ -298,7 +298,7 @@ namespace Qyoto {
 			return (int) interceptor.Invoke("verticalStepsPerItem", "verticalStepsPerItem() const", typeof(int));
 		}
 		[SmokeMethod("moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
-		protected abstract QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers);
+		protected abstract QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, uint modifiers);
 		[SmokeMethod("horizontalOffset() const")]
 		protected abstract int HorizontalOffset();
 		[SmokeMethod("verticalOffset() const")]
@@ -306,7 +306,7 @@ namespace Qyoto {
 		[SmokeMethod("isIndexHidden(const QModelIndex&) const")]
 		protected abstract bool IsIndexHidden(QModelIndex index);
 		[SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
-		protected abstract void SetSelection(QRect rect, int command);
+		protected abstract void SetSelection(QRect rect, uint command);
 		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
 		protected abstract QRegion VisualRegionForSelection(QItemSelection selection);
 		[SmokeMethod("selectedIndexes() const")]
@@ -318,16 +318,16 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("edit#$#", "edit(const QModelIndex&, QAbstractItemView::EditTrigger, QEvent*)", typeof(bool), typeof(QModelIndex), index, typeof(QAbstractItemView.EditTrigger), trigger, typeof(QEvent), arg3);
 		}
 		[SmokeMethod("selectionCommand(const QModelIndex&, const QEvent*) const")]
-		protected virtual int SelectionCommand(QModelIndex index, QEvent arg2) {
-			return (int) interceptor.Invoke("selectionCommand##", "selectionCommand(const QModelIndex&, const QEvent*) const", typeof(int), typeof(QModelIndex), index, typeof(QEvent), arg2);
+		protected virtual uint SelectionCommand(QModelIndex index, QEvent arg2) {
+			return (uint) interceptor.Invoke("selectionCommand##", "selectionCommand(const QModelIndex&, const QEvent*) const", typeof(uint), typeof(QModelIndex), index, typeof(QEvent), arg2);
 		}
 		[SmokeMethod("selectionCommand(const QModelIndex&) const")]
-		protected virtual int SelectionCommand(QModelIndex index) {
-			return (int) interceptor.Invoke("selectionCommand#", "selectionCommand(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		protected virtual uint SelectionCommand(QModelIndex index) {
+			return (uint) interceptor.Invoke("selectionCommand#", "selectionCommand(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("startDrag(Qt::DropActions)")]
-		protected virtual void StartDrag(int supportedActions) {
-			interceptor.Invoke("startDrag$", "startDrag(Qt::DropActions)", typeof(void), typeof(int), supportedActions);
+		protected virtual void StartDrag(uint supportedActions) {
+			interceptor.Invoke("startDrag$", "startDrag(Qt::DropActions)", typeof(void), typeof(uint), supportedActions);
 		}
 		[SmokeMethod("viewOptions() const")]
 		protected virtual QStyleOptionViewItem ViewOptions() {

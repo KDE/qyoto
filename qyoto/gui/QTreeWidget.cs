@@ -139,11 +139,11 @@ namespace Qyoto {
 		public List<QTreeWidgetItem> SelectedItems() {
 			return (List<QTreeWidgetItem>) interceptor.Invoke("selectedItems", "selectedItems() const", typeof(List<QTreeWidgetItem>));
 		}
-		public List<QTreeWidgetItem> FindItems(string text, int flags, int column) {
-			return (List<QTreeWidgetItem>) interceptor.Invoke("findItems$$$", "findItems(const QString&, Qt::MatchFlags, int) const", typeof(List<QTreeWidgetItem>), typeof(string), text, typeof(int), flags, typeof(int), column);
+		public List<QTreeWidgetItem> FindItems(string text, uint flags, int column) {
+			return (List<QTreeWidgetItem>) interceptor.Invoke("findItems$$$", "findItems(const QString&, Qt::MatchFlags, int) const", typeof(List<QTreeWidgetItem>), typeof(string), text, typeof(uint), flags, typeof(int), column);
 		}
-		public List<QTreeWidgetItem> FindItems(string text, int flags) {
-			return (List<QTreeWidgetItem>) interceptor.Invoke("findItems$$", "findItems(const QString&, Qt::MatchFlags) const", typeof(List<QTreeWidgetItem>), typeof(string), text, typeof(int), flags);
+		public List<QTreeWidgetItem> FindItems(string text, uint flags) {
+			return (List<QTreeWidgetItem>) interceptor.Invoke("findItems$$", "findItems(const QString&, Qt::MatchFlags) const", typeof(List<QTreeWidgetItem>), typeof(string), text, typeof(uint), flags);
 		}
 		public bool IsItemHidden(QTreeWidgetItem item) {
 			return (bool) interceptor.Invoke("isItemHidden#", "isItemHidden(const QTreeWidgetItem*) const", typeof(bool), typeof(QTreeWidgetItem), item);
@@ -206,8 +206,8 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("dropMimeData#$#$", "dropMimeData(QTreeWidgetItem*, int, const QMimeData*, Qt::DropAction)", typeof(bool), typeof(QTreeWidgetItem), parent, typeof(int), index, typeof(QMimeData), data, typeof(Qt.DropAction), action);
 		}
 		[SmokeMethod("supportedDropActions() const")]
-		protected virtual int SupportedDropActions() {
-			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
+		protected virtual uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
 		protected List<QTreeWidgetItem> Items(QMimeData data) {
 			return (List<QTreeWidgetItem>) interceptor.Invoke("items#", "items(const QMimeData*) const", typeof(List<QTreeWidgetItem>), typeof(QMimeData), data);

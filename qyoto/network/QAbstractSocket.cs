@@ -57,14 +57,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QAbstractSocket$#", "QAbstractSocket(QAbstractSocket::SocketType, QObject*)", typeof(void), typeof(QAbstractSocket.SocketType), socketType, typeof(QObject), parent);
 		}
-		public void ConnectToHost(string hostName, ushort port, int mode) {
-			interceptor.Invoke("connectToHost$$$", "connectToHost(const QString&, quint16, OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(int), mode);
+		public void ConnectToHost(string hostName, ushort port, uint mode) {
+			interceptor.Invoke("connectToHost$$$", "connectToHost(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
 		}
 		public void ConnectToHost(string hostName, ushort port) {
 			interceptor.Invoke("connectToHost$$", "connectToHost(const QString&, quint16)", typeof(void), typeof(string), hostName, typeof(ushort), port);
 		}
-		public void ConnectToHost(QHostAddress address, ushort port, int mode) {
-			interceptor.Invoke("connectToHost#$$", "connectToHost(const QHostAddress&, quint16, OpenMode)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port, typeof(int), mode);
+		public void ConnectToHost(QHostAddress address, ushort port, uint mode) {
+			interceptor.Invoke("connectToHost#$$", "connectToHost(const QHostAddress&, quint16, QIODevice::OpenMode)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port, typeof(uint), mode);
 		}
 		public void ConnectToHost(QHostAddress address, ushort port) {
 			interceptor.Invoke("connectToHost#$", "connectToHost(const QHostAddress&, quint16)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port);
@@ -114,8 +114,8 @@ namespace Qyoto {
 		public int SocketDescriptor() {
 			return (int) interceptor.Invoke("socketDescriptor", "socketDescriptor() const", typeof(int));
 		}
-		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, int openMode) {
-			return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(int), openMode);
+		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, uint openMode) {
+			return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, QIODevice::OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(uint), openMode);
 		}
 		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state) {
 			return (bool) interceptor.Invoke("setSocketDescriptor$$", "setSocketDescriptor(int, QAbstractSocket::SocketState)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state);
@@ -212,9 +212,9 @@ namespace Qyoto {
 		protected void SetPeerName(string name) {
 			interceptor.Invoke("setPeerName$", "setPeerName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
-		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
-			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(int), mode);
+		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)")]
+		protected void ConnectToHostImplementation(string hostName, ushort port, uint mode) {
+			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
 		}
 		[Q_SLOT("void connectToHostImplementation(const QString&, quint16)")]
 		protected void ConnectToHostImplementation(string hostName, ushort port) {

@@ -202,16 +202,16 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("canFetchMore#", "canFetchMore(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), parent);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("buddy(const QModelIndex&) const")]
 		public override QModelIndex Buddy(QModelIndex index) {
 			return (QModelIndex) interceptor.Invoke("buddy#", "buddy(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
-		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
-			return (List<QModelIndex>) interceptor.Invoke("match#$#$$", "match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits, typeof(int), flags);
+		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, uint flags) {
+			return (List<QModelIndex>) interceptor.Invoke("match#$#$$", "match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", typeof(List<QModelIndex>), typeof(QModelIndex), start, typeof(int), role, typeof(QVariant), value, typeof(int), hits, typeof(uint), flags);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int) const")]
 		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {
@@ -238,8 +238,8 @@ namespace Qyoto {
 			return (List<string>) interceptor.Invoke("mimeTypes", "mimeTypes() const", typeof(List<string>));
 		}
 		[SmokeMethod("supportedDropActions() const")]
-		public override int SupportedDropActions() {
-			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
+		public override uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
 		[Q_SLOT("void setFilterRegExp(const QString&)")]
 		public void SetFilterRegExp(string pattern) {

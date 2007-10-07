@@ -86,15 +86,15 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("savePrepare$", "savePrepare(const QString&)", typeof(bool), typeof(string), sqlquery);
 		}
 		[SmokeMethod("bindValue(int, const QVariant&, QSql::ParamType)")]
-		protected virtual void BindValue(int pos, QVariant val, int type) {
-			interceptor.Invoke("bindValue$#$", "bindValue(int, const QVariant&, QSql::ParamType)", typeof(void), typeof(int), pos, typeof(QVariant), val, typeof(int), type);
+		protected virtual void BindValue(int pos, QVariant val, uint type) {
+			interceptor.Invoke("bindValue$#$", "bindValue(int, const QVariant&, QSql::ParamType)", typeof(void), typeof(int), pos, typeof(QVariant), val, typeof(uint), type);
 		}
 		[SmokeMethod("bindValue(const QString&, const QVariant&, QSql::ParamType)")]
-		protected virtual void BindValue(string placeholder, QVariant val, int type) {
-			interceptor.Invoke("bindValue$#$", "bindValue(const QString&, const QVariant&, QSql::ParamType)", typeof(void), typeof(string), placeholder, typeof(QVariant), val, typeof(int), type);
+		protected virtual void BindValue(string placeholder, QVariant val, uint type) {
+			interceptor.Invoke("bindValue$#$", "bindValue(const QString&, const QVariant&, QSql::ParamType)", typeof(void), typeof(string), placeholder, typeof(QVariant), val, typeof(uint), type);
 		}
-		protected void AddBindValue(QVariant val, int type) {
-			interceptor.Invoke("addBindValue#$", "addBindValue(const QVariant&, QSql::ParamType)", typeof(void), typeof(QVariant), val, typeof(int), type);
+		protected void AddBindValue(QVariant val, uint type) {
+			interceptor.Invoke("addBindValue#$", "addBindValue(const QVariant&, QSql::ParamType)", typeof(void), typeof(QVariant), val, typeof(uint), type);
 		}
 		protected QVariant BoundValue(string placeholder) {
 			return (QVariant) interceptor.Invoke("boundValue$", "boundValue(const QString&) const", typeof(QVariant), typeof(string), placeholder);
@@ -102,11 +102,11 @@ namespace Qyoto {
 		protected QVariant BoundValue(int pos) {
 			return (QVariant) interceptor.Invoke("boundValue$", "boundValue(int) const", typeof(QVariant), typeof(int), pos);
 		}
-		protected int BindValueType(string placeholder) {
-			return (int) interceptor.Invoke("bindValueType$", "bindValueType(const QString&) const", typeof(int), typeof(string), placeholder);
+		protected uint BindValueType(string placeholder) {
+			return (uint) interceptor.Invoke("bindValueType$", "bindValueType(const QString&) const", typeof(uint), typeof(string), placeholder);
 		}
-		protected int BindValueType(int pos) {
-			return (int) interceptor.Invoke("bindValueType$", "bindValueType(int) const", typeof(int), typeof(int), pos);
+		protected uint BindValueType(int pos) {
+			return (uint) interceptor.Invoke("bindValueType$", "bindValueType(int) const", typeof(uint), typeof(int), pos);
 		}
 		protected int BoundValueCount() {
 			return (int) interceptor.Invoke("boundValueCount", "boundValueCount() const", typeof(int));

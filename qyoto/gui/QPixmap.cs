@@ -28,9 +28,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QPixmap#", "QPixmap(const QSize&)", typeof(void), typeof(QSize), arg1);
 		}
-		public QPixmap(string fileName, string format, int flags) : this((Type) null) {
+		public QPixmap(string fileName, string format, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QPixmap$$$", "QPixmap(const QString&, const char*, Qt::ImageConversionFlags)", typeof(void), typeof(string), fileName, typeof(string), format, typeof(int), flags);
+			interceptor.Invoke("QPixmap$$$", "QPixmap(const QString&, const char*, Qt::ImageConversionFlags)", typeof(void), typeof(string), fileName, typeof(string), format, typeof(uint), flags);
 		}
 		public QPixmap(string fileName, string format) : this((Type) null) {
 			CreateProxy();
@@ -153,8 +153,8 @@ namespace Qyoto {
 		public QImage ToImage() {
 			return (QImage) interceptor.Invoke("toImage", "toImage() const", typeof(QImage));
 		}
-		public bool Load(string fileName, string format, int flags) {
-			return (bool) interceptor.Invoke("load$$$", "load(const QString&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(string), fileName, typeof(string), format, typeof(int), flags);
+		public bool Load(string fileName, string format, uint flags) {
+			return (bool) interceptor.Invoke("load$$$", "load(const QString&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(string), fileName, typeof(string), format, typeof(uint), flags);
 		}
 		public bool Load(string fileName, string format) {
 			return (bool) interceptor.Invoke("load$$", "load(const QString&, const char*)", typeof(bool), typeof(string), fileName, typeof(string), format);
@@ -162,8 +162,8 @@ namespace Qyoto {
 		public bool Load(string fileName) {
 			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), fileName);
 		}
-		public bool LoadFromData(char[] buf, uint len, string format, int flags) {
-			return (bool) interceptor.Invoke("loadFromData$$$$", "loadFromData(const uchar*, uint, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(char[]), buf, typeof(uint), len, typeof(string), format, typeof(int), flags);
+		public bool LoadFromData(char[] buf, uint len, string format, uint flags) {
+			return (bool) interceptor.Invoke("loadFromData$$$$", "loadFromData(const uchar*, uint, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(char[]), buf, typeof(uint), len, typeof(string), format, typeof(uint), flags);
 		}
 		public bool LoadFromData(char[] buf, uint len, string format) {
 			return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, uint, const char*)", typeof(bool), typeof(char[]), buf, typeof(uint), len, typeof(string), format);
@@ -171,8 +171,8 @@ namespace Qyoto {
 		public bool LoadFromData(char[] buf, uint len) {
 			return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, uint)", typeof(bool), typeof(char[]), buf, typeof(uint), len);
 		}
-		public bool LoadFromData(QByteArray data, string format, int flags) {
-			return (bool) interceptor.Invoke("loadFromData#$$", "loadFromData(const QByteArray&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(QByteArray), data, typeof(string), format, typeof(int), flags);
+		public bool LoadFromData(QByteArray data, string format, uint flags) {
+			return (bool) interceptor.Invoke("loadFromData#$$", "loadFromData(const QByteArray&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(QByteArray), data, typeof(string), format, typeof(uint), flags);
 		}
 		public bool LoadFromData(QByteArray data, string format) {
 			return (bool) interceptor.Invoke("loadFromData#$", "loadFromData(const QByteArray&, const char*)", typeof(bool), typeof(QByteArray), data, typeof(string), format);
@@ -242,20 +242,20 @@ namespace Qyoto {
 		public static int DefaultDepth() {
 			return (int) staticInterceptor.Invoke("defaultDepth", "defaultDepth()", typeof(int));
 		}
-		public static QPixmap GrabWindow(ulong arg1, int x, int y, int w, int h) {
-			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$$", "grabWindow(WId, int, int, int, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
+		public static QPixmap GrabWindow(uint arg1, int x, int y, int w, int h) {
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$$", "grabWindow(WId, int, int, int, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
-		public static QPixmap GrabWindow(ulong arg1, int x, int y, int w) {
-			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$", "grabWindow(WId, int, int, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x, typeof(int), y, typeof(int), w);
+		public static QPixmap GrabWindow(uint arg1, int x, int y, int w) {
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$", "grabWindow(WId, int, int, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x, typeof(int), y, typeof(int), w);
 		}
-		public static QPixmap GrabWindow(ulong arg1, int x, int y) {
-			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$", "grabWindow(WId, int, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x, typeof(int), y);
+		public static QPixmap GrabWindow(uint arg1, int x, int y) {
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$$", "grabWindow(WId, int, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x, typeof(int), y);
 		}
-		public static QPixmap GrabWindow(ulong arg1, int x) {
-			return (QPixmap) staticInterceptor.Invoke("grabWindow$$", "grabWindow(WId, int)", typeof(QPixmap), typeof(ulong), arg1, typeof(int), x);
+		public static QPixmap GrabWindow(uint arg1, int x) {
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$$", "grabWindow(WId, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x);
 		}
-		public static QPixmap GrabWindow(ulong arg1) {
-			return (QPixmap) staticInterceptor.Invoke("grabWindow$", "grabWindow(WId)", typeof(QPixmap), typeof(ulong), arg1);
+		public static QPixmap GrabWindow(uint arg1) {
+			return (QPixmap) staticInterceptor.Invoke("grabWindow$", "grabWindow(WId)", typeof(QPixmap), typeof(uint), arg1);
 		}
 		public static QPixmap GrabWidget(QWidget widget, QRect rect) {
 			return (QPixmap) staticInterceptor.Invoke("grabWidget##", "grabWidget(QWidget*, const QRect&)", typeof(QPixmap), typeof(QWidget), widget, typeof(QRect), rect);
@@ -281,8 +281,8 @@ namespace Qyoto {
 		public static QTransform TrueMatrix(QTransform m, int w, int h) {
 			return (QTransform) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QTransform&, int, int)", typeof(QTransform), typeof(QTransform), m, typeof(int), w, typeof(int), h);
 		}
-		public static QPixmap FromImage(QImage image, int flags) {
-			return (QPixmap) staticInterceptor.Invoke("fromImage#$", "fromImage(const QImage&, Qt::ImageConversionFlags)", typeof(QPixmap), typeof(QImage), image, typeof(int), flags);
+		public static QPixmap FromImage(QImage image, uint flags) {
+			return (QPixmap) staticInterceptor.Invoke("fromImage#$", "fromImage(const QImage&, Qt::ImageConversionFlags)", typeof(QPixmap), typeof(QImage), image, typeof(uint), flags);
 		}
 		public static QPixmap FromImage(QImage image) {
 			return (QPixmap) staticInterceptor.Invoke("fromImage#", "fromImage(const QImage&)", typeof(QPixmap), typeof(QImage), image);

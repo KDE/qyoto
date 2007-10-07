@@ -37,11 +37,11 @@ namespace Qyoto {
 		public bool Bind() {
 			return (bool) interceptor.Invoke("bind", "bind()", typeof(bool));
 		}
-		public bool Bind(QHostAddress address, ushort port, int mode) {
-			return (bool) interceptor.Invoke("bind#$$", "bind(const QHostAddress&, quint16, BindMode)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port, typeof(int), mode);
+		public bool Bind(QHostAddress address, ushort port, uint mode) {
+			return (bool) interceptor.Invoke("bind#$$", "bind(const QHostAddress&, quint16, QUdpSocket::BindMode)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port, typeof(uint), mode);
 		}
-		public bool Bind(ushort port, int mode) {
-			return (bool) interceptor.Invoke("bind$$", "bind(quint16, BindMode)", typeof(bool), typeof(ushort), port, typeof(int), mode);
+		public bool Bind(ushort port, uint mode) {
+			return (bool) interceptor.Invoke("bind$$", "bind(quint16, QUdpSocket::BindMode)", typeof(bool), typeof(ushort), port, typeof(uint), mode);
 		}
 		public bool HasPendingDatagrams() {
 			return (bool) interceptor.Invoke("hasPendingDatagrams", "hasPendingDatagrams() const", typeof(bool));

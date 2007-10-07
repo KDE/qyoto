@@ -25,9 +25,9 @@ namespace Qyoto {
 		public int Count {
 			get { return (int) interceptor.Invoke("count", "count()", typeof(int)); }
 		}
-		public QToolBox(QWidget parent, int f) : this((Type) null) {
+		public QToolBox(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QToolBox#$", "QToolBox(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QToolBox#$", "QToolBox(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QToolBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

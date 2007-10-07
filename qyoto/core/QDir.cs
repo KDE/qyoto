@@ -62,13 +62,13 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QDir", "QDir()", typeof(void));
 		}
-		public QDir(string path, string nameFilter, int sort, int filter) : this((Type) null) {
+		public QDir(string path, string nameFilter, uint sort, uint filter) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDir$$$$", "QDir(const QString&, const QString&, SortFlags, Filters)", typeof(void), typeof(string), path, typeof(string), nameFilter, typeof(int), sort, typeof(int), filter);
+			interceptor.Invoke("QDir$$$$", "QDir(const QString&, const QString&, QDir::SortFlags, QDir::Filters)", typeof(void), typeof(string), path, typeof(string), nameFilter, typeof(uint), sort, typeof(uint), filter);
 		}
-		public QDir(string path, string nameFilter, int sort) : this((Type) null) {
+		public QDir(string path, string nameFilter, uint sort) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDir$$$", "QDir(const QString&, const QString&, SortFlags)", typeof(void), typeof(string), path, typeof(string), nameFilter, typeof(int), sort);
+			interceptor.Invoke("QDir$$$", "QDir(const QString&, const QString&, QDir::SortFlags)", typeof(void), typeof(string), path, typeof(string), nameFilter, typeof(uint), sort);
 		}
 		public QDir(string path, string nameFilter) : this((Type) null) {
 			CreateProxy();
@@ -110,53 +110,53 @@ namespace Qyoto {
 		public void SetNameFilters(List<string> nameFilters) {
 			interceptor.Invoke("setNameFilters?", "setNameFilters(const QStringList&)", typeof(void), typeof(List<string>), nameFilters);
 		}
-		public int filter() {
-			return (int) interceptor.Invoke("filter", "filter() const", typeof(int));
+		public uint filter() {
+			return (uint) interceptor.Invoke("filter", "filter() const", typeof(uint));
 		}
-		public void SetFilter(int filter) {
-			interceptor.Invoke("setFilter$", "setFilter(Filters)", typeof(void), typeof(int), filter);
+		public void SetFilter(uint filter) {
+			interceptor.Invoke("setFilter$", "setFilter(QDir::Filters)", typeof(void), typeof(uint), filter);
 		}
-		public int Sorting() {
-			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
+		public uint Sorting() {
+			return (uint) interceptor.Invoke("sorting", "sorting() const", typeof(uint));
 		}
-		public void SetSorting(int sort) {
-			interceptor.Invoke("setSorting$", "setSorting(SortFlags)", typeof(void), typeof(int), sort);
+		public void SetSorting(uint sort) {
+			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(uint), sort);
 		}
 		public uint Count() {
 			return (uint) interceptor.Invoke("count", "count() const", typeof(uint));
 		}
-		public List<string> EntryList(int filters, int sort) {
-			return (List<string>) interceptor.Invoke("entryList$$", "entryList(Filters, SortFlags) const", typeof(List<string>), typeof(int), filters, typeof(int), sort);
+		public List<string> EntryList(uint filters, uint sort) {
+			return (List<string>) interceptor.Invoke("entryList$$", "entryList(QDir::Filters, QDir::SortFlags) const", typeof(List<string>), typeof(uint), filters, typeof(uint), sort);
 		}
-		public List<string> EntryList(int filters) {
-			return (List<string>) interceptor.Invoke("entryList$", "entryList(Filters) const", typeof(List<string>), typeof(int), filters);
+		public List<string> EntryList(uint filters) {
+			return (List<string>) interceptor.Invoke("entryList$", "entryList(QDir::Filters) const", typeof(List<string>), typeof(uint), filters);
 		}
 		public List<string> EntryList() {
 			return (List<string>) interceptor.Invoke("entryList", "entryList() const", typeof(List<string>));
 		}
-		public List<string> EntryList(List<string> nameFilters, int filters, int sort) {
-			return (List<string>) interceptor.Invoke("entryList?$$", "entryList(const QStringList&, Filters, SortFlags) const", typeof(List<string>), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort);
+		public List<string> EntryList(List<string> nameFilters, uint filters, uint sort) {
+			return (List<string>) interceptor.Invoke("entryList?$$", "entryList(const QStringList&, QDir::Filters, QDir::SortFlags) const", typeof(List<string>), typeof(List<string>), nameFilters, typeof(uint), filters, typeof(uint), sort);
 		}
-		public List<string> EntryList(List<string> nameFilters, int filters) {
-			return (List<string>) interceptor.Invoke("entryList?$", "entryList(const QStringList&, Filters) const", typeof(List<string>), typeof(List<string>), nameFilters, typeof(int), filters);
+		public List<string> EntryList(List<string> nameFilters, uint filters) {
+			return (List<string>) interceptor.Invoke("entryList?$", "entryList(const QStringList&, QDir::Filters) const", typeof(List<string>), typeof(List<string>), nameFilters, typeof(uint), filters);
 		}
 		public List<string> EntryList(List<string> nameFilters) {
 			return (List<string>) interceptor.Invoke("entryList?", "entryList(const QStringList&) const", typeof(List<string>), typeof(List<string>), nameFilters);
 		}
-		public List<QFileInfo> EntryInfoList(int filters, int sort) {
-			return (List<QFileInfo>) interceptor.Invoke("entryInfoList$$", "entryInfoList(Filters, SortFlags) const", typeof(List<QFileInfo>), typeof(int), filters, typeof(int), sort);
+		public List<QFileInfo> EntryInfoList(uint filters, uint sort) {
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList$$", "entryInfoList(QDir::Filters, QDir::SortFlags) const", typeof(List<QFileInfo>), typeof(uint), filters, typeof(uint), sort);
 		}
-		public List<QFileInfo> EntryInfoList(int filters) {
-			return (List<QFileInfo>) interceptor.Invoke("entryInfoList$", "entryInfoList(Filters) const", typeof(List<QFileInfo>), typeof(int), filters);
+		public List<QFileInfo> EntryInfoList(uint filters) {
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList$", "entryInfoList(QDir::Filters) const", typeof(List<QFileInfo>), typeof(uint), filters);
 		}
 		public List<QFileInfo> EntryInfoList() {
 			return (List<QFileInfo>) interceptor.Invoke("entryInfoList", "entryInfoList() const", typeof(List<QFileInfo>));
 		}
-		public List<QFileInfo> EntryInfoList(List<string> nameFilters, int filters, int sort) {
-			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?$$", "entryInfoList(const QStringList&, Filters, SortFlags) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort);
+		public List<QFileInfo> EntryInfoList(List<string> nameFilters, uint filters, uint sort) {
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?$$", "entryInfoList(const QStringList&, QDir::Filters, QDir::SortFlags) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters, typeof(uint), filters, typeof(uint), sort);
 		}
-		public List<QFileInfo> EntryInfoList(List<string> nameFilters, int filters) {
-			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?$", "entryInfoList(const QStringList&, Filters) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters, typeof(int), filters);
+		public List<QFileInfo> EntryInfoList(List<string> nameFilters, uint filters) {
+			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?$", "entryInfoList(const QStringList&, QDir::Filters) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters, typeof(uint), filters);
 		}
 		public List<QFileInfo> EntryInfoList(List<string> nameFilters) {
 			return (List<QFileInfo>) interceptor.Invoke("entryInfoList?", "entryInfoList(const QStringList&) const", typeof(List<QFileInfo>), typeof(List<string>), nameFilters);

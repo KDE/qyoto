@@ -26,8 +26,8 @@ namespace Qyoto {
 			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
 		}
 		[SmokeMethod("expandingDirections() const")]
-		public override int ExpandingDirections() {
-			return (int) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(int));
+		public override uint ExpandingDirections() {
+			return (uint) interceptor.Invoke("expandingDirections", "expandingDirections() const", typeof(uint));
 		}
 		[SmokeMethod("isEmpty() const")]
 		public override bool IsEmpty() {

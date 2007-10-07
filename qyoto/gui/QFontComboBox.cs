@@ -28,10 +28,10 @@ namespace Qyoto {
 			get { return (QFontDatabase.WritingSystem) interceptor.Invoke("writingSystem", "writingSystem()", typeof(QFontDatabase.WritingSystem)); }
 			set { interceptor.Invoke("setWritingSystem$", "setWritingSystem(QFontDatabase::WritingSystem)", typeof(void), typeof(QFontDatabase.WritingSystem), value); }
 		}
-		[Q_PROPERTY("FontFilters", "fontFilters")]
-		public int FontFilters {
-			get { return (int) interceptor.Invoke("fontFilters", "fontFilters()", typeof(int)); }
-			set { interceptor.Invoke("setFontFilters$", "setFontFilters(FontFilters)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("QFontComboBox::FontFilters", "fontFilters")]
+		public uint FontFilters {
+			get { return (uint) interceptor.Invoke("fontFilters", "fontFilters()", typeof(uint)); }
+			set { interceptor.Invoke("setFontFilters$", "setFontFilters(QFontComboBox::FontFilters)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("QFont", "currentFont")]
 		public QFont CurrentFont {

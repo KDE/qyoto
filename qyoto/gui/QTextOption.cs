@@ -26,19 +26,19 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTextOption", "QTextOption()", typeof(void));
 		}
-		public QTextOption(int alignment) : this((Type) null) {
+		public QTextOption(uint alignment) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QTextOption$", "QTextOption(Qt::Alignment)", typeof(void), typeof(int), alignment);
+			interceptor.Invoke("QTextOption$", "QTextOption(Qt::Alignment)", typeof(void), typeof(uint), alignment);
 		}
 		public QTextOption(QTextOption o) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextOption#", "QTextOption(const QTextOption&)", typeof(void), typeof(QTextOption), o);
 		}
-		public void SetAlignment(int alignment) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
+		public void SetAlignment(uint alignment) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), alignment);
 		}
-		public int Alignment() {
-			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
+		public uint Alignment() {
+			return (uint) interceptor.Invoke("alignment", "alignment() const", typeof(uint));
 		}
 		public void SetTextDirection(Qt.LayoutDirection aDirection) {
 			interceptor.Invoke("setTextDirection$", "setTextDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), aDirection);
@@ -52,11 +52,11 @@ namespace Qyoto {
 		public QTextOption.WrapMode wrapMode() {
 			return (QTextOption.WrapMode) interceptor.Invoke("wrapMode", "wrapMode() const", typeof(QTextOption.WrapMode));
 		}
-		public void SetFlags(int flags) {
-			interceptor.Invoke("setFlags$", "setFlags(Flags)", typeof(void), typeof(int), flags);
+		public void SetFlags(uint flags) {
+			interceptor.Invoke("setFlags$", "setFlags(QTextOption::Flags)", typeof(void), typeof(uint), flags);
 		}
-		public int Flags() {
-			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
 		}
 		public void SetTabStop(double tabStop) {
 			interceptor.Invoke("setTabStop$", "setTabStop(qreal)", typeof(void), typeof(double), tabStop);

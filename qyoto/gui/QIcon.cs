@@ -83,26 +83,26 @@ namespace Qyoto {
 		public QSize ActualSize(QSize size) {
 			return (QSize) interceptor.Invoke("actualSize#", "actualSize(const QSize&) const", typeof(QSize), typeof(QSize), size);
 		}
-		public void Paint(QPainter painter, QRect rect, int alignment, QIcon.Mode mode, QIcon.State state) {
-			interceptor.Invoke("paint##$$$", "paint(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode, QIcon::State) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
+		public void Paint(QPainter painter, QRect rect, uint alignment, QIcon.Mode mode, QIcon.State state) {
+			interceptor.Invoke("paint##$$$", "paint(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode, QIcon::State) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(uint), alignment, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		public void Paint(QPainter painter, QRect rect, int alignment, QIcon.Mode mode) {
-			interceptor.Invoke("paint##$$", "paint(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment, typeof(QIcon.Mode), mode);
+		public void Paint(QPainter painter, QRect rect, uint alignment, QIcon.Mode mode) {
+			interceptor.Invoke("paint##$$", "paint(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(uint), alignment, typeof(QIcon.Mode), mode);
 		}
-		public void Paint(QPainter painter, QRect rect, int alignment) {
-			interceptor.Invoke("paint##$", "paint(QPainter*, const QRect&, Qt::Alignment) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(int), alignment);
+		public void Paint(QPainter painter, QRect rect, uint alignment) {
+			interceptor.Invoke("paint##$", "paint(QPainter*, const QRect&, Qt::Alignment) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(uint), alignment);
 		}
 		public void Paint(QPainter painter, QRect rect) {
 			interceptor.Invoke("paint##", "paint(QPainter*, const QRect&) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect);
 		}
-		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment, QIcon.Mode mode, QIcon.State state) {
-			interceptor.Invoke("paint#$$$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode, QIcon::State) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), alignment, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
+		public void Paint(QPainter painter, int x, int y, int w, int h, uint alignment, QIcon.Mode mode, QIcon.State state) {
+			interceptor.Invoke("paint#$$$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode, QIcon::State) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(uint), alignment, typeof(QIcon.Mode), mode, typeof(QIcon.State), state);
 		}
-		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment, QIcon.Mode mode) {
-			interceptor.Invoke("paint#$$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), alignment, typeof(QIcon.Mode), mode);
+		public void Paint(QPainter painter, int x, int y, int w, int h, uint alignment, QIcon.Mode mode) {
+			interceptor.Invoke("paint#$$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(uint), alignment, typeof(QIcon.Mode), mode);
 		}
-		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment) {
-			interceptor.Invoke("paint#$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(int), alignment);
+		public void Paint(QPainter painter, int x, int y, int w, int h, uint alignment) {
+			interceptor.Invoke("paint#$$$$$", "paint(QPainter*, int, int, int, int, Qt::Alignment) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(uint), alignment);
 		}
 		public void Paint(QPainter painter, int x, int y, int w, int h) {
 			interceptor.Invoke("paint#$$$$", "paint(QPainter*, int, int, int, int) const", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);

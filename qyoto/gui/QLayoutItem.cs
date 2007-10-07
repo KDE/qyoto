@@ -7,7 +7,7 @@ namespace Qyoto {
 		QSize SizeHint();
 		QSize MinimumSize();
 		QSize MaximumSize();
-		int ExpandingDirections();
+		uint ExpandingDirections();
 		void SetGeometry(QRect arg1);
 		QRect Geometry();
 		bool IsEmpty();
@@ -18,8 +18,9 @@ namespace Qyoto {
 		QWidget Widget();
 		QLayout Layout();
 		QSpacerItem SpacerItem();
-		int Alignment();
-		void SetAlignment(int a);
+		uint Alignment();
+		void SetAlignment(uint a);
+		uint ControlTypes();
 	}
 
 	[SmokeClass("QLayoutItem")]
@@ -30,10 +31,9 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QLayoutItem), this);
 		}
-		// QSizePolicy::ControlTypes controlTypes(); >>>> NOT CONVERTED
-		public QLayoutItem(int alignment) : this((Type) null) {
+		public QLayoutItem(uint alignment) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QLayoutItem$", "QLayoutItem(Qt::Alignment)", typeof(void), typeof(int), alignment);
+			interceptor.Invoke("QLayoutItem$", "QLayoutItem(Qt::Alignment)", typeof(void), typeof(uint), alignment);
 		}
 		public QLayoutItem() : this((Type) null) {
 			CreateProxy();
@@ -46,7 +46,7 @@ namespace Qyoto {
 		[SmokeMethod("maximumSize() const")]
 		public abstract QSize MaximumSize();
 		[SmokeMethod("expandingDirections() const")]
-		public abstract int ExpandingDirections();
+		public abstract uint ExpandingDirections();
 		[SmokeMethod("setGeometry(const QRect&)")]
 		public abstract void SetGeometry(QRect arg1);
 		[SmokeMethod("geometry() const")]
@@ -81,11 +81,14 @@ namespace Qyoto {
 		public virtual QSpacerItem SpacerItem() {
 			return (QSpacerItem) interceptor.Invoke("spacerItem", "spacerItem()", typeof(QSpacerItem));
 		}
-		public int Alignment() {
-			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
+		public uint Alignment() {
+			return (uint) interceptor.Invoke("alignment", "alignment() const", typeof(uint));
 		}
-		public void SetAlignment(int a) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), a);
+		public void SetAlignment(uint a) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), a);
+		}
+		public uint ControlTypes() {
+			return (uint) interceptor.Invoke("controlTypes", "controlTypes() const", typeof(uint));
 		}
 	}
 }

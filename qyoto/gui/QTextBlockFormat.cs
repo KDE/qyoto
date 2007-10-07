@@ -16,11 +16,11 @@ namespace Qyoto {
 		public new bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
-		public void SetAlignment(int alignment) {
-			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(int), alignment);
+		public void SetAlignment(uint alignment) {
+			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), alignment);
 		}
-		public int Alignment() {
-			return (int) interceptor.Invoke("alignment", "alignment() const", typeof(int));
+		public uint Alignment() {
+			return (uint) interceptor.Invoke("alignment", "alignment() const", typeof(uint));
 		}
 		public void SetTopMargin(double margin) {
 			interceptor.Invoke("setTopMargin$", "setTopMargin(qreal)", typeof(void), typeof(double), margin);
@@ -64,11 +64,11 @@ namespace Qyoto {
 		public bool NonBreakableLines() {
 			return (bool) interceptor.Invoke("nonBreakableLines", "nonBreakableLines() const", typeof(bool));
 		}
-		public void SetPageBreakPolicy(int flags) {
-			interceptor.Invoke("setPageBreakPolicy$", "setPageBreakPolicy(PageBreakFlags)", typeof(void), typeof(int), flags);
+		public void SetPageBreakPolicy(uint flags) {
+			interceptor.Invoke("setPageBreakPolicy$", "setPageBreakPolicy(QTextFormat::PageBreakFlags)", typeof(void), typeof(uint), flags);
 		}
-		public int PageBreakPolicy() {
-			return (int) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(int));
+		public uint PageBreakPolicy() {
+			return (uint) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(uint));
 		}
 		~QTextBlockFormat() {
 			interceptor.Invoke("~QTextBlockFormat", "~QTextBlockFormat()", typeof(void));

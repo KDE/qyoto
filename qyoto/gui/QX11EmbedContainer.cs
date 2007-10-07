@@ -30,14 +30,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QX11EmbedContainer", "QX11EmbedContainer()", typeof(void));
 		}
-		public void EmbedClient(ulong id) {
-			interceptor.Invoke("embedClient$", "embedClient(WId)", typeof(void), typeof(ulong), id);
+		public void EmbedClient(uint id) {
+			interceptor.Invoke("embedClient$", "embedClient(WId)", typeof(void), typeof(uint), id);
 		}
 		public void DiscardClient() {
 			interceptor.Invoke("discardClient", "discardClient()", typeof(void));
 		}
-		public ulong ClientWinId() {
-			return (ulong) interceptor.Invoke("clientWinId", "clientWinId() const", typeof(ulong));
+		public uint ClientWinId() {
+			return (uint) interceptor.Invoke("clientWinId", "clientWinId() const", typeof(uint));
 		}
 		[SmokeMethod("minimumSizeHint() const")]
 		public override QSize MinimumSizeHint() {

@@ -244,11 +244,11 @@ namespace Qyoto {
 		public static void Alert(QWidget widget) {
 			staticInterceptor.Invoke("alert#", "alert(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
-		public static int KeyboardModifiers() {
-			return (int) staticInterceptor.Invoke("keyboardModifiers", "keyboardModifiers()", typeof(int));
+		public static uint KeyboardModifiers() {
+			return (uint) staticInterceptor.Invoke("keyboardModifiers", "keyboardModifiers()", typeof(uint));
 		}
-		public static int MouseButtons() {
-			return (int) staticInterceptor.Invoke("mouseButtons", "mouseButtons()", typeof(int));
+		public static uint MouseButtons() {
+			return (uint) staticInterceptor.Invoke("mouseButtons", "mouseButtons()", typeof(uint));
 		}
 		public static void SetDesktopSettingsAware(bool arg1) {
 			staticInterceptor.Invoke("setDesktopSettingsAware$", "setDesktopSettingsAware(bool)", typeof(void), typeof(bool), arg1);

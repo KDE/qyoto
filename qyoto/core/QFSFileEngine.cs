@@ -28,8 +28,8 @@ namespace Qyoto {
 			interceptor.Invoke("QFSFileEngine$", "QFSFileEngine(const QString&)", typeof(void), typeof(string), file);
 		}
 		[SmokeMethod("open(QIODevice::OpenMode)")]
-		public override bool Open(int openMode) {
-			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(int), openMode);
+		public override bool Open(uint openMode) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), openMode);
 		}
 		[SmokeMethod("close()")]
 		public override bool Close() {
@@ -92,12 +92,12 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("isRelativePath", "isRelativePath() const", typeof(bool));
 		}
 		[SmokeMethod("entryList(QDir::Filters, const QStringList&) const")]
-		public override List<string> EntryList(int filters, List<string> filterNames) {
-			return (List<string>) interceptor.Invoke("entryList$?", "entryList(QDir::Filters, const QStringList&) const", typeof(List<string>), typeof(int), filters, typeof(List<string>), filterNames);
+		public override List<string> EntryList(uint filters, List<string> filterNames) {
+			return (List<string>) interceptor.Invoke("entryList$?", "entryList(QDir::Filters, const QStringList&) const", typeof(List<string>), typeof(uint), filters, typeof(List<string>), filterNames);
 		}
-		[SmokeMethod("fileFlags(FileFlags) const")]
-		public override int FileFlags(int type) {
-			return (int) interceptor.Invoke("fileFlags$", "fileFlags(FileFlags) const", typeof(int), typeof(int), type);
+		[SmokeMethod("fileFlags(QAbstractFileEngine::FileFlags) const")]
+		public override uint FileFlags(uint type) {
+			return (uint) interceptor.Invoke("fileFlags$", "fileFlags(QAbstractFileEngine::FileFlags) const", typeof(uint), typeof(uint), type);
 		}
 		[SmokeMethod("setPermissions(uint)")]
 		public override bool SetPermissions(uint perms) {
@@ -143,8 +143,8 @@ namespace Qyoto {
 		public override bool SupportsExtension(QAbstractFileEngine.Extension extension) {
 			return (bool) interceptor.Invoke("supportsExtension$", "supportsExtension(QAbstractFileEngine::Extension) const", typeof(bool), typeof(QAbstractFileEngine.Extension), extension);
 		}
-		public bool Open(int flags, int fd) {
-			return (bool) interceptor.Invoke("open$$", "open(QIODevice::OpenMode, int)", typeof(bool), typeof(int), flags, typeof(int), fd);
+		public bool Open(uint flags, int fd) {
+			return (bool) interceptor.Invoke("open$$", "open(QIODevice::OpenMode, int)", typeof(bool), typeof(uint), flags, typeof(int), fd);
 		}
 		~QFSFileEngine() {
 			interceptor.Invoke("~QFSFileEngine", "~QFSFileEngine()", typeof(void));

@@ -55,9 +55,9 @@ namespace Qyoto {
 			get { return (string) interceptor.Invoke("labelText", "labelText()", typeof(string)); }
 			set { interceptor.Invoke("setLabelText$", "setLabelText(QString)", typeof(void), typeof(string), value); }
 		}
-		public QProgressDialog(QWidget parent, int f) : this((Type) null) {
+		public QProgressDialog(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QProgressDialog#$", "QProgressDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QProgressDialog#$", "QProgressDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QProgressDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -67,9 +67,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QProgressDialog", "QProgressDialog()", typeof(void));
 		}
-		public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, int f) : this((Type) null) {
+		public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QProgressDialog$$$$#$", "QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum, typeof(QWidget), parent, typeof(int), f);
+			interceptor.Invoke("QProgressDialog$$$$#$", "QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum, typeof(QWidget), parent, typeof(uint), f);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent) : this((Type) null) {
 			CreateProxy();

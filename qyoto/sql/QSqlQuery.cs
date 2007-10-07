@@ -127,20 +127,20 @@ namespace Qyoto {
 		public bool Prepare(string query) {
 			return (bool) interceptor.Invoke("prepare$", "prepare(const QString&)", typeof(bool), typeof(string), query);
 		}
-		public void BindValue(string placeholder, QVariant val, int type) {
-			interceptor.Invoke("bindValue$#$", "bindValue(const QString&, const QVariant&, QSql::ParamType)", typeof(void), typeof(string), placeholder, typeof(QVariant), val, typeof(int), type);
+		public void BindValue(string placeholder, QVariant val, uint type) {
+			interceptor.Invoke("bindValue$#$", "bindValue(const QString&, const QVariant&, QSql::ParamType)", typeof(void), typeof(string), placeholder, typeof(QVariant), val, typeof(uint), type);
 		}
 		public void BindValue(string placeholder, QVariant val) {
 			interceptor.Invoke("bindValue$#", "bindValue(const QString&, const QVariant&)", typeof(void), typeof(string), placeholder, typeof(QVariant), val);
 		}
-		public void BindValue(int pos, QVariant val, int type) {
-			interceptor.Invoke("bindValue$#$", "bindValue(int, const QVariant&, QSql::ParamType)", typeof(void), typeof(int), pos, typeof(QVariant), val, typeof(int), type);
+		public void BindValue(int pos, QVariant val, uint type) {
+			interceptor.Invoke("bindValue$#$", "bindValue(int, const QVariant&, QSql::ParamType)", typeof(void), typeof(int), pos, typeof(QVariant), val, typeof(uint), type);
 		}
 		public void BindValue(int pos, QVariant val) {
 			interceptor.Invoke("bindValue$#", "bindValue(int, const QVariant&)", typeof(void), typeof(int), pos, typeof(QVariant), val);
 		}
-		public void AddBindValue(QVariant val, int type) {
-			interceptor.Invoke("addBindValue#$", "addBindValue(const QVariant&, QSql::ParamType)", typeof(void), typeof(QVariant), val, typeof(int), type);
+		public void AddBindValue(QVariant val, uint type) {
+			interceptor.Invoke("addBindValue#$", "addBindValue(const QVariant&, QSql::ParamType)", typeof(void), typeof(QVariant), val, typeof(uint), type);
 		}
 		public void AddBindValue(QVariant val) {
 			interceptor.Invoke("addBindValue#", "addBindValue(const QVariant&)", typeof(void), typeof(QVariant), val);

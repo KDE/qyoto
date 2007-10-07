@@ -14,9 +14,9 @@ namespace Qyoto {
 		}
 		public enum EntryInfoType {
 		}
-		public QAbstractFileEngineIterator(int filters, List<string> nameFilters) : this((Type) null) {
+		public QAbstractFileEngineIterator(uint filters, List<string> nameFilters) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QAbstractFileEngineIterator$?", "QAbstractFileEngineIterator(QDir::Filters, const QStringList&)", typeof(void), typeof(int), filters, typeof(List<string>), nameFilters);
+			interceptor.Invoke("QAbstractFileEngineIterator$?", "QAbstractFileEngineIterator(QDir::Filters, const QStringList&)", typeof(void), typeof(uint), filters, typeof(List<string>), nameFilters);
 		}
 		[SmokeMethod("next()")]
 		public abstract string Next();
@@ -28,8 +28,8 @@ namespace Qyoto {
 		public List<string> NameFilters() {
 			return (List<string>) interceptor.Invoke("nameFilters", "nameFilters() const", typeof(List<string>));
 		}
-		public int Filters() {
-			return (int) interceptor.Invoke("filters", "filters() const", typeof(int));
+		public uint Filters() {
+			return (uint) interceptor.Invoke("filters", "filters() const", typeof(uint));
 		}
 		[SmokeMethod("currentFileName() const")]
 		public abstract string CurrentFileName();

@@ -44,20 +44,20 @@ namespace Qyoto {
 		public QWidget Target() {
 			return (QWidget) interceptor.Invoke("target", "target() const", typeof(QWidget));
 		}
-		public Qt.DropAction Start(int supportedActions) {
-			return (Qt.DropAction) interceptor.Invoke("start$", "start(Qt::DropActions)", typeof(Qt.DropAction), typeof(int), supportedActions);
+		public Qt.DropAction Start(uint supportedActions) {
+			return (Qt.DropAction) interceptor.Invoke("start$", "start(Qt::DropActions)", typeof(Qt.DropAction), typeof(uint), supportedActions);
 		}
 		public Qt.DropAction Start() {
 			return (Qt.DropAction) interceptor.Invoke("start", "start()", typeof(Qt.DropAction));
 		}
-		public Qt.DropAction Exec(int supportedActions) {
-			return (Qt.DropAction) interceptor.Invoke("exec$", "exec(Qt::DropActions)", typeof(Qt.DropAction), typeof(int), supportedActions);
+		public Qt.DropAction Exec(uint supportedActions) {
+			return (Qt.DropAction) interceptor.Invoke("exec$", "exec(Qt::DropActions)", typeof(Qt.DropAction), typeof(uint), supportedActions);
 		}
 		public Qt.DropAction Exec() {
 			return (Qt.DropAction) interceptor.Invoke("exec", "exec()", typeof(Qt.DropAction));
 		}
-		public Qt.DropAction Exec(int supportedActions, Qt.DropAction defaultAction) {
-			return (Qt.DropAction) interceptor.Invoke("exec$$", "exec(Qt::DropActions, Qt::DropAction)", typeof(Qt.DropAction), typeof(int), supportedActions, typeof(Qt.DropAction), defaultAction);
+		public Qt.DropAction Exec(uint supportedActions, Qt.DropAction defaultAction) {
+			return (Qt.DropAction) interceptor.Invoke("exec$$", "exec(Qt::DropActions, Qt::DropAction)", typeof(Qt.DropAction), typeof(uint), supportedActions, typeof(Qt.DropAction), defaultAction);
 		}
 		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
 			interceptor.Invoke("setDragCursor#$", "setDragCursor(const QPixmap&, Qt::DropAction)", typeof(void), typeof(QPixmap), cursor, typeof(Qt.DropAction), action);

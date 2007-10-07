@@ -13,9 +13,9 @@ namespace Qyoto {
 		static QGLWidget() {
 			staticInterceptor = new SmokeInvocation(typeof(QGLWidget), null);
 		}
-		public QGLWidget(QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
+		public QGLWidget(QWidget parent, QGLWidget shareWidget, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLWidget##$", "QGLWidget(QWidget*, const QGLWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(QGLWidget), shareWidget, typeof(int), f);
+			interceptor.Invoke("QGLWidget##$", "QGLWidget(QWidget*, const QGLWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(QGLWidget), shareWidget, typeof(uint), f);
 		}
 		public QGLWidget(QWidget parent, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
@@ -29,9 +29,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QGLWidget", "QGLWidget()", typeof(void));
 		}
-		public QGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
+		public QGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLWidget###$", "QGLWidget(QGLContext*, QWidget*, const QGLWidget*, Qt::WindowFlags)", typeof(void), typeof(QGLContext), context, typeof(QWidget), parent, typeof(QGLWidget), shareWidget, typeof(int), f);
+			interceptor.Invoke("QGLWidget###$", "QGLWidget(QGLContext*, QWidget*, const QGLWidget*, Qt::WindowFlags)", typeof(void), typeof(QGLContext), context, typeof(QWidget), parent, typeof(QGLWidget), shareWidget, typeof(uint), f);
 		}
 		public QGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
@@ -45,9 +45,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QGLWidget#", "QGLWidget(QGLContext*)", typeof(void), typeof(QGLContext), context);
 		}
-		public QGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
+		public QGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QGLWidget###$", "QGLWidget(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WindowFlags)", typeof(void), typeof(QGLFormat), format, typeof(QWidget), parent, typeof(QGLWidget), shareWidget, typeof(int), f);
+			interceptor.Invoke("QGLWidget###$", "QGLWidget(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WindowFlags)", typeof(void), typeof(QGLFormat), format, typeof(QWidget), parent, typeof(QGLWidget), shareWidget, typeof(uint), f);
 		}
 		public QGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();

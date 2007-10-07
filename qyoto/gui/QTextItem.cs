@@ -27,8 +27,8 @@ namespace Qyoto {
 		public double Width() {
 			return (double) interceptor.Invoke("width", "width() const", typeof(double));
 		}
-		public int RenderFlags() {
-			return (int) interceptor.Invoke("renderFlags", "renderFlags() const", typeof(int));
+		public uint RenderFlags() {
+			return (uint) interceptor.Invoke("renderFlags", "renderFlags() const", typeof(uint));
 		}
 		public string Text() {
 			return (string) interceptor.Invoke("text", "text() const", typeof(string));

@@ -69,7 +69,7 @@ namespace Qyoto {
 			interceptor.Invoke("setRange$$", "setRange(double, double)", typeof(void), typeof(double), min, typeof(double), max);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		public override int Validate(StringBuilder input, ref int pos) {
+		public override QValidator.State Validate(StringBuilder input, ref int pos) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(input);
@@ -84,7 +84,7 @@ namespace Qyoto {
 			((GCHandle) stack[1].s_class).Free();
 #endif
 			pos = stack[2].s_int;
-			return stack[0].s_int;
+			return (QValidator.State) Enum.ToObject(typeof(QValidator.State), stack[0].s_int);
 		}
 		[SmokeMethod("valueFromText(const QString&) const")]
 		public virtual double ValueFromText(string text) {

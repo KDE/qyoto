@@ -71,11 +71,11 @@ namespace Qyoto {
 		public void SetLastScreenPos(QPoint pos) {
 			interceptor.Invoke("setLastScreenPos#", "setLastScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		public int Buttons() {
-			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
+		public uint Buttons() {
+			return (uint) interceptor.Invoke("buttons", "buttons() const", typeof(uint));
 		}
-		public void SetButtons(int buttons) {
-			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(int), buttons);
+		public void SetButtons(uint buttons) {
+			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(uint), buttons);
 		}
 		public Qt.MouseButton Button() {
 			return (Qt.MouseButton) interceptor.Invoke("button", "button() const", typeof(Qt.MouseButton));
@@ -83,11 +83,11 @@ namespace Qyoto {
 		public void SetButton(Qt.MouseButton button) {
 			interceptor.Invoke("setButton$", "setButton(Qt::MouseButton)", typeof(void), typeof(Qt.MouseButton), button);
 		}
-		public int Modifiers() {
-			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
+		public uint Modifiers() {
+			return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
 		}
-		public void SetModifiers(int modifiers) {
-			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
+		public void SetModifiers(uint modifiers) {
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(uint), modifiers);
 		}
 		~QGraphicsSceneMouseEvent() {
 			interceptor.Invoke("~QGraphicsSceneMouseEvent", "~QGraphicsSceneMouseEvent()", typeof(void));

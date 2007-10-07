@@ -35,23 +35,23 @@ namespace Qyoto {
 		public void SetScreenPos(QPoint pos) {
 			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		public int Buttons() {
-			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
+		public uint Buttons() {
+			return (uint) interceptor.Invoke("buttons", "buttons() const", typeof(uint));
 		}
-		public void SetButtons(int buttons) {
-			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(int), buttons);
+		public void SetButtons(uint buttons) {
+			interceptor.Invoke("setButtons$", "setButtons(Qt::MouseButtons)", typeof(void), typeof(uint), buttons);
 		}
-		public int Modifiers() {
-			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
+		public uint Modifiers() {
+			return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
 		}
-		public void SetModifiers(int modifiers) {
-			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
+		public void SetModifiers(uint modifiers) {
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(uint), modifiers);
 		}
-		public int PossibleActions() {
-			return (int) interceptor.Invoke("possibleActions", "possibleActions() const", typeof(int));
+		public uint PossibleActions() {
+			return (uint) interceptor.Invoke("possibleActions", "possibleActions() const", typeof(uint));
 		}
-		public void SetPossibleActions(int actions) {
-			interceptor.Invoke("setPossibleActions$", "setPossibleActions(Qt::DropActions)", typeof(void), typeof(int), actions);
+		public void SetPossibleActions(uint actions) {
+			interceptor.Invoke("setPossibleActions$", "setPossibleActions(Qt::DropActions)", typeof(void), typeof(uint), actions);
 		}
 		public Qt.DropAction ProposedAction() {
 			return (Qt.DropAction) interceptor.Invoke("proposedAction", "proposedAction() const", typeof(Qt.DropAction));

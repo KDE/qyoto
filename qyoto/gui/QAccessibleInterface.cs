@@ -21,7 +21,7 @@ namespace Qyoto {
 		[SmokeMethod("indexOfChild(const QAccessibleInterface*) const")]
 		public abstract int IndexOfChild(QAccessibleInterface arg1);
 		[SmokeMethod("relationTo(int, const QAccessibleInterface*, int) const")]
-		public abstract int RelationTo(int child, QAccessibleInterface other, int otherChild);
+		public abstract uint RelationTo(int child, QAccessibleInterface other, int otherChild);
 		[SmokeMethod("childAt(int, int) const")]
 		public abstract int ChildAt(int x, int y);
 		[SmokeMethod("text(QAccessible::Text, int) const")]
@@ -33,7 +33,7 @@ namespace Qyoto {
 		[SmokeMethod("role(int) const")]
 		public new abstract QAccessible.Role Role(int child);
 		[SmokeMethod("state(int) const")]
-		public abstract int State(int child);
+		public abstract uint State(int child);
 		[SmokeMethod("userActionCount(int) const")]
 		public abstract int UserActionCount(int child);
 		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]

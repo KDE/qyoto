@@ -840,11 +840,11 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return interceptor.GetHashCode();
 		}
-		public void SetNumberOptions(int options) {
-			interceptor.Invoke("setNumberOptions$", "setNumberOptions(NumberOptions)", typeof(void), typeof(int), options);
+		public void SetNumberOptions(uint options) {
+			interceptor.Invoke("setNumberOptions$", "setNumberOptions(QLocale::NumberOptions)", typeof(void), typeof(uint), options);
 		}
-		public int NumberOptions() {
-			return (int) interceptor.Invoke("numberOptions", "numberOptions() const", typeof(int));
+		public uint NumberOptions() {
+			return (uint) interceptor.Invoke("numberOptions", "numberOptions() const", typeof(uint));
 		}
 		~QLocale() {
 			interceptor.Invoke("~QLocale", "~QLocale()", typeof(void));

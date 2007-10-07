@@ -57,8 +57,8 @@ namespace Qyoto {
 		public List<QMdiSubWindow> SubWindowList() {
 			return (List<QMdiSubWindow>) interceptor.Invoke("subWindowList", "subWindowList() const", typeof(List<QMdiSubWindow>));
 		}
-		public QMdiSubWindow AddSubWindow(QWidget widget, int flags) {
-			return (QMdiSubWindow) interceptor.Invoke("addSubWindow#$", "addSubWindow(QWidget*, Qt::WindowFlags)", typeof(QMdiSubWindow), typeof(QWidget), widget, typeof(int), flags);
+		public QMdiSubWindow AddSubWindow(QWidget widget, uint flags) {
+			return (QMdiSubWindow) interceptor.Invoke("addSubWindow#$", "addSubWindow(QWidget*, Qt::WindowFlags)", typeof(QMdiSubWindow), typeof(QWidget), widget, typeof(uint), flags);
 		}
 		public QMdiSubWindow AddSubWindow(QWidget widget) {
 			return (QMdiSubWindow) interceptor.Invoke("addSubWindow#", "addSubWindow(QWidget*)", typeof(QMdiSubWindow), typeof(QWidget), widget);

@@ -52,8 +52,8 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("insertRows(int, int, const QModelIndex&)")]
 		public override bool InsertRows(int row, int count, QModelIndex parent) {

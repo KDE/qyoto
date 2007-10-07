@@ -73,8 +73,8 @@ namespace Qyoto {
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine* QAbstractFileEngine(QAbstractFileEnginePrivate& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("open(QIODevice::OpenMode)")]
-		public virtual bool Open(int openMode) {
-			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(int), openMode);
+		public virtual bool Open(uint openMode) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), openMode);
 		}
 		[SmokeMethod("close()")]
 		public virtual bool Close() {
@@ -137,16 +137,16 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("isRelativePath", "isRelativePath() const", typeof(bool));
 		}
 		[SmokeMethod("entryList(QDir::Filters, const QStringList&) const")]
-		public virtual List<string> EntryList(int filters, List<string> filterNames) {
-			return (List<string>) interceptor.Invoke("entryList$?", "entryList(QDir::Filters, const QStringList&) const", typeof(List<string>), typeof(int), filters, typeof(List<string>), filterNames);
+		public virtual List<string> EntryList(uint filters, List<string> filterNames) {
+			return (List<string>) interceptor.Invoke("entryList$?", "entryList(QDir::Filters, const QStringList&) const", typeof(List<string>), typeof(uint), filters, typeof(List<string>), filterNames);
 		}
-		[SmokeMethod("fileFlags(FileFlags) const")]
-		public virtual int FileFlags(int type) {
-			return (int) interceptor.Invoke("fileFlags$", "fileFlags(FileFlags) const", typeof(int), typeof(int), type);
+		[SmokeMethod("fileFlags(QAbstractFileEngine::FileFlags) const")]
+		public virtual uint FileFlags(uint type) {
+			return (uint) interceptor.Invoke("fileFlags$", "fileFlags(QAbstractFileEngine::FileFlags) const", typeof(uint), typeof(uint), type);
 		}
 		[SmokeMethod("fileFlags() const")]
-		public virtual int FileFlags() {
-			return (int) interceptor.Invoke("fileFlags", "fileFlags() const", typeof(int));
+		public virtual uint FileFlags() {
+			return (uint) interceptor.Invoke("fileFlags", "fileFlags() const", typeof(uint));
 		}
 		[SmokeMethod("setPermissions(uint)")]
 		public virtual bool SetPermissions(uint perms) {

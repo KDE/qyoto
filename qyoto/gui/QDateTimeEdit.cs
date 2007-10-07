@@ -71,9 +71,9 @@ namespace Qyoto {
 			get { return (QDateTimeEdit.Section) interceptor.Invoke("currentSection", "currentSection()", typeof(QDateTimeEdit.Section)); }
 			set { interceptor.Invoke("setCurrentSection$", "setCurrentSection(QDateTimeEdit::Section)", typeof(void), typeof(QDateTimeEdit.Section), value); }
 		}
-		[Q_PROPERTY("Sections", "displayedSections")]
-		public int DisplayedSections {
-			get { return (int) interceptor.Invoke("displayedSections", "displayedSections()", typeof(int)); }
+		[Q_PROPERTY("QDateTimeEdit::Sections", "displayedSections")]
+		public uint DisplayedSections {
+			get { return (uint) interceptor.Invoke("displayedSections", "displayedSections()", typeof(uint)); }
 		}
 		[Q_PROPERTY("QString", "displayFormat")]
 		public string DisplayFormat {
@@ -198,7 +198,7 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
-		protected new virtual int Validate(StringBuilder input, ref int pos) {
+		protected new virtual QValidator.State Validate(StringBuilder input, ref int pos) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(input);
@@ -213,7 +213,7 @@ namespace Qyoto {
 			((GCHandle) stack[1].s_class).Free();
 #endif
 			pos = stack[2].s_int;
-			return stack[0].s_int;
+			return (QValidator.State) Enum.ToObject(typeof(QValidator.State), stack[0].s_int);
 		}
 		[SmokeMethod("fixup(QString&) const")]
 		protected new virtual void Fixup(StringBuilder input) {
@@ -228,8 +228,8 @@ namespace Qyoto {
 			return (string) interceptor.Invoke("textFromDateTime#", "textFromDateTime(const QDateTime&) const", typeof(string), typeof(QDateTime), dt);
 		}
 		[SmokeMethod("stepEnabled() const")]
-		protected override int StepEnabled() {
-			return (int) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(int));
+		protected override uint StepEnabled() {
+			return (uint) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(uint));
 		}
 		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected override void MousePressEvent(QMouseEvent arg1) {

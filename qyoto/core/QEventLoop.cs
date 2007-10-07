@@ -29,17 +29,17 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QEventLoop", "QEventLoop()", typeof(void));
 		}
-		public bool ProcessEvents(int flags) {
-			return (bool) interceptor.Invoke("processEvents$", "processEvents(ProcessEventsFlags)", typeof(bool), typeof(int), flags);
+		public bool ProcessEvents(uint flags) {
+			return (bool) interceptor.Invoke("processEvents$", "processEvents(QEventLoop::ProcessEventsFlags)", typeof(bool), typeof(uint), flags);
 		}
 		public bool ProcessEvents() {
 			return (bool) interceptor.Invoke("processEvents", "processEvents()", typeof(bool));
 		}
-		public void ProcessEvents(int flags, int maximumTime) {
-			interceptor.Invoke("processEvents$$", "processEvents(ProcessEventsFlags, int)", typeof(void), typeof(int), flags, typeof(int), maximumTime);
+		public void ProcessEvents(uint flags, int maximumTime) {
+			interceptor.Invoke("processEvents$$", "processEvents(QEventLoop::ProcessEventsFlags, int)", typeof(void), typeof(uint), flags, typeof(int), maximumTime);
 		}
-		public int Exec(int flags) {
-			return (int) interceptor.Invoke("exec$", "exec(ProcessEventsFlags)", typeof(int), typeof(int), flags);
+		public int Exec(uint flags) {
+			return (int) interceptor.Invoke("exec$", "exec(QEventLoop::ProcessEventsFlags)", typeof(int), typeof(uint), flags);
 		}
 		public int Exec() {
 			return (int) interceptor.Invoke("exec", "exec()", typeof(int));

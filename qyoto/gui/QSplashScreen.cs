@@ -16,9 +16,9 @@ namespace Qyoto {
 		static QSplashScreen() {
 			staticInterceptor = new SmokeInvocation(typeof(QSplashScreen), null);
 		}
-		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
+		public QSplashScreen(QPixmap pixmap, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSplashScreen#$", "QSplashScreen(const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QPixmap), pixmap, typeof(int), f);
+			interceptor.Invoke("QSplashScreen#$", "QSplashScreen(const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QPixmap), pixmap, typeof(uint), f);
 		}
 		public QSplashScreen(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -28,9 +28,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QSplashScreen", "QSplashScreen()", typeof(void));
 		}
-		public QSplashScreen(QWidget parent, QPixmap pixmap, int f) : this((Type) null) {
+		public QSplashScreen(QWidget parent, QPixmap pixmap, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QSplashScreen##$", "QSplashScreen(QWidget*, const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(QPixmap), pixmap, typeof(int), f);
+			interceptor.Invoke("QSplashScreen##$", "QSplashScreen(QWidget*, const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(QPixmap), pixmap, typeof(uint), f);
 		}
 		public QSplashScreen(QWidget parent, QPixmap pixmap) : this((Type) null) {
 			CreateProxy();

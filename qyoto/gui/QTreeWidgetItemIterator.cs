@@ -41,17 +41,17 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QTreeWidgetItemIterator#", "QTreeWidgetItemIterator(const QTreeWidgetItemIterator&)", typeof(void), typeof(QTreeWidgetItemIterator), it);
 		}
-		public QTreeWidgetItemIterator(QTreeWidget widget, int flags) : this((Type) null) {
+		public QTreeWidgetItemIterator(QTreeWidget widget, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QTreeWidgetItemIterator#$", "QTreeWidgetItemIterator(QTreeWidget*, IteratorFlags)", typeof(void), typeof(QTreeWidget), widget, typeof(int), flags);
+			interceptor.Invoke("QTreeWidgetItemIterator#$", "QTreeWidgetItemIterator(QTreeWidget*, QTreeWidgetItemIterator::IteratorFlags)", typeof(void), typeof(QTreeWidget), widget, typeof(uint), flags);
 		}
 		public QTreeWidgetItemIterator(QTreeWidget widget) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTreeWidgetItemIterator#", "QTreeWidgetItemIterator(QTreeWidget*)", typeof(void), typeof(QTreeWidget), widget);
 		}
-		public QTreeWidgetItemIterator(QTreeWidgetItem item, int flags) : this((Type) null) {
+		public QTreeWidgetItemIterator(QTreeWidgetItem item, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QTreeWidgetItemIterator#$", "QTreeWidgetItemIterator(QTreeWidgetItem*, IteratorFlags)", typeof(void), typeof(QTreeWidgetItem), item, typeof(int), flags);
+			interceptor.Invoke("QTreeWidgetItemIterator#$", "QTreeWidgetItemIterator(QTreeWidgetItem*, QTreeWidgetItemIterator::IteratorFlags)", typeof(void), typeof(QTreeWidgetItem), item, typeof(uint), flags);
 		}
 		public QTreeWidgetItemIterator(QTreeWidgetItem item) : this((Type) null) {
 			CreateProxy();

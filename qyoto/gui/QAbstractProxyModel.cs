@@ -66,8 +66,8 @@ namespace Qyoto {
 			return (Dictionary<int, QVariant>) interceptor.Invoke("itemData#", "itemData(const QModelIndex&) const", typeof(Dictionary<int, QVariant>), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

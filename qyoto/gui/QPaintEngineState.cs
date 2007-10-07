@@ -11,8 +11,8 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QPaintEngineState), this);
 		}
-		public int State() {
-			return (int) interceptor.Invoke("state", "state() const", typeof(int));
+		public uint State() {
+			return (uint) interceptor.Invoke("state", "state() const", typeof(uint));
 		}
 		public QPen Pen() {
 			return (QPen) interceptor.Invoke("pen", "pen() const", typeof(QPen));
@@ -50,8 +50,8 @@ namespace Qyoto {
 		public bool IsClipEnabled() {
 			return (bool) interceptor.Invoke("isClipEnabled", "isClipEnabled() const", typeof(bool));
 		}
-		public int RenderHints() {
-			return (int) interceptor.Invoke("renderHints", "renderHints() const", typeof(int));
+		public uint RenderHints() {
+			return (uint) interceptor.Invoke("renderHints", "renderHints() const", typeof(uint));
 		}
 		public QPainter.CompositionMode CompositionMode() {
 			return (QPainter.CompositionMode) interceptor.Invoke("compositionMode", "compositionMode() const", typeof(QPainter.CompositionMode));

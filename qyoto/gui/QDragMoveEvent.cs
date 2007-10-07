@@ -9,13 +9,13 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QDragMoveEvent), this);
 		}
-		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
+		public QDragMoveEvent(QPoint pos, uint actions, QMimeData data, uint buttons, uint modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDragMoveEvent#$#$$$", "QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers, typeof(QEvent.TypeOf), type);
+			interceptor.Invoke("QDragMoveEvent#$#$$$", "QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", typeof(void), typeof(QPoint), pos, typeof(uint), actions, typeof(QMimeData), data, typeof(uint), buttons, typeof(uint), modifiers, typeof(QEvent.TypeOf), type);
 		}
-		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
+		public QDragMoveEvent(QPoint pos, uint actions, QMimeData data, uint buttons, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDragMoveEvent#$#$$", "QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(int), actions, typeof(QMimeData), data, typeof(int), buttons, typeof(int), modifiers);
+			interceptor.Invoke("QDragMoveEvent#$#$$", "QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QPoint), pos, typeof(uint), actions, typeof(QMimeData), data, typeof(uint), buttons, typeof(uint), modifiers);
 		}
 		public QRect AnswerRect() {
 			return (QRect) interceptor.Invoke("answerRect", "answerRect() const", typeof(QRect));

@@ -37,10 +37,10 @@ namespace Qyoto {
 		
 		protected override int HorizontalOffset () { return 0; }
 		protected override bool IsIndexHidden (QModelIndex index) { return false; }
-		protected override QModelIndex MoveCursor (CursorAction cursorAction, int modifiers) {
+		protected override QModelIndex MoveCursor (CursorAction cursorAction, uint modifiers) {
 			return new QModelIndex();
 		}
-		protected override void SetSelection (QRect rect, int command) {}
+		protected override void SetSelection (QRect rect, uint command) {}
 		protected override int VerticalOffset () { return 0; }
 		protected override QRegion VisualRegionForSelection (QItemSelection selection) { return new QRegion(); }
 	}

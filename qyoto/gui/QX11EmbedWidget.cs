@@ -30,11 +30,11 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QX11EmbedWidget", "QX11EmbedWidget()", typeof(void));
 		}
-		public void EmbedInto(ulong id) {
-			interceptor.Invoke("embedInto$", "embedInto(WId)", typeof(void), typeof(ulong), id);
+		public void EmbedInto(uint id) {
+			interceptor.Invoke("embedInto$", "embedInto(WId)", typeof(void), typeof(uint), id);
 		}
-		public ulong ContainerWinId() {
-			return (ulong) interceptor.Invoke("containerWinId", "containerWinId() const", typeof(ulong));
+		public uint ContainerWinId() {
+			return (uint) interceptor.Invoke("containerWinId", "containerWinId() const", typeof(uint));
 		}
 		public QX11EmbedWidget.Error error() {
 			return (QX11EmbedWidget.Error) interceptor.Invoke("error", "error() const", typeof(QX11EmbedWidget.Error));

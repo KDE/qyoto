@@ -9,13 +9,13 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QMouseEvent), this);
 		}
-		public QMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
+		public QMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, uint buttons, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QMouseEvent$#$$$", "QMouseEvent(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(Qt.MouseButton), button, typeof(int), buttons, typeof(int), modifiers);
+			interceptor.Invoke("QMouseEvent$#$$$", "QMouseEvent(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(Qt.MouseButton), button, typeof(uint), buttons, typeof(uint), modifiers);
 		}
-		public QMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
+		public QMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, uint buttons, uint modifiers) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QMouseEvent$##$$$", "QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(Qt.MouseButton), button, typeof(int), buttons, typeof(int), modifiers);
+			interceptor.Invoke("QMouseEvent$##$$$", "QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)", typeof(void), typeof(QEvent.TypeOf), type, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(Qt.MouseButton), button, typeof(uint), buttons, typeof(uint), modifiers);
 		}
 		public QPoint Pos() {
 			return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
@@ -38,8 +38,8 @@ namespace Qyoto {
 		public Qt.MouseButton Button() {
 			return (Qt.MouseButton) interceptor.Invoke("button", "button() const", typeof(Qt.MouseButton));
 		}
-		public int Buttons() {
-			return (int) interceptor.Invoke("buttons", "buttons() const", typeof(int));
+		public uint Buttons() {
+			return (uint) interceptor.Invoke("buttons", "buttons() const", typeof(uint));
 		}
 		~QMouseEvent() {
 			interceptor.Invoke("~QMouseEvent", "~QMouseEvent()", typeof(void));

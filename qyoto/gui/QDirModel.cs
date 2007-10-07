@@ -34,13 +34,13 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("lazyChildCount", "lazyChildCount()", typeof(bool)); }
 			set { interceptor.Invoke("setLazyChildCount$", "setLazyChildCount(bool)", typeof(void), typeof(bool), value); }
 		}
-		public QDirModel(List<string> nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
+		public QDirModel(List<string> nameFilters, uint filters, uint sort, QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirModel?$$#", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)", typeof(void), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort, typeof(QObject), parent);
+			interceptor.Invoke("QDirModel?$$#", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)", typeof(void), typeof(List<string>), nameFilters, typeof(uint), filters, typeof(uint), sort, typeof(QObject), parent);
 		}
-		public QDirModel(List<string> nameFilters, int filters, int sort) : this((Type) null) {
+		public QDirModel(List<string> nameFilters, uint filters, uint sort) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QDirModel?$$", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags)", typeof(void), typeof(List<string>), nameFilters, typeof(int), filters, typeof(int), sort);
+			interceptor.Invoke("QDirModel?$$", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags)", typeof(void), typeof(List<string>), nameFilters, typeof(uint), filters, typeof(uint), sort);
 		}
 		public QDirModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -111,8 +111,8 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("hasChildren", "hasChildren() const", typeof(bool));
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
-		public override int Flags(QModelIndex index) {
-			return (int) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(int), typeof(QModelIndex), index);
+		public override uint Flags(QModelIndex index) {
+			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("sort(int, Qt::SortOrder)")]
 		public override void Sort(int column, Qt.SortOrder order) {
@@ -135,8 +135,8 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
 		}
 		[SmokeMethod("supportedDropActions() const")]
-		public override int SupportedDropActions() {
-			return (int) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(int));
+		public override uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
 		public void SetIconProvider(QFileIconProvider provider) {
 			interceptor.Invoke("setIconProvider#", "setIconProvider(QFileIconProvider*)", typeof(void), typeof(QFileIconProvider), provider);
@@ -150,17 +150,17 @@ namespace Qyoto {
 		public List<string> NameFilters() {
 			return (List<string>) interceptor.Invoke("nameFilters", "nameFilters() const", typeof(List<string>));
 		}
-		public void SetFilter(int filters) {
-			interceptor.Invoke("setFilter$", "setFilter(QDir::Filters)", typeof(void), typeof(int), filters);
+		public void SetFilter(uint filters) {
+			interceptor.Invoke("setFilter$", "setFilter(QDir::Filters)", typeof(void), typeof(uint), filters);
 		}
-		public int Filter() {
-			return (int) interceptor.Invoke("filter", "filter() const", typeof(int));
+		public uint Filter() {
+			return (uint) interceptor.Invoke("filter", "filter() const", typeof(uint));
 		}
-		public void SetSorting(int sort) {
-			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(int), sort);
+		public void SetSorting(uint sort) {
+			interceptor.Invoke("setSorting$", "setSorting(QDir::SortFlags)", typeof(void), typeof(uint), sort);
 		}
-		public int Sorting() {
-			return (int) interceptor.Invoke("sorting", "sorting() const", typeof(int));
+		public uint Sorting() {
+			return (uint) interceptor.Invoke("sorting", "sorting() const", typeof(uint));
 		}
 		public QModelIndex Index(string path, int column) {
 			return (QModelIndex) interceptor.Invoke("index$$", "index(const QString&, int) const", typeof(QModelIndex), typeof(string), path, typeof(int), column);

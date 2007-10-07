@@ -22,9 +22,9 @@ namespace Qyoto {
 			set { interceptor.Invoke("setMovable$", "setMovable(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("Qt::ToolBarAreas", "allowedAreas")]
-		public int AllowedAreas {
-			get { return (int) interceptor.Invoke("allowedAreas", "allowedAreas()", typeof(int)); }
-			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::ToolBarAreas)", typeof(void), typeof(int), value); }
+		public uint AllowedAreas {
+			get { return (uint) interceptor.Invoke("allowedAreas", "allowedAreas()", typeof(uint)); }
+			set { interceptor.Invoke("setAllowedAreas$", "setAllowedAreas(Qt::ToolBarAreas)", typeof(void), typeof(uint), value); }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public new Qt.Orientation Orientation {
@@ -172,7 +172,7 @@ namespace Qyoto {
 		[Q_SIGNAL("void movableChanged(bool)")]
 		void MovableChanged(bool movable);
 		[Q_SIGNAL("void allowedAreasChanged(Qt::ToolBarAreas)")]
-		void AllowedAreasChanged(int allowedAreas);
+		void AllowedAreasChanged(uint allowedAreas);
 		[Q_SIGNAL("void orientationChanged(Qt::Orientation)")]
 		void OrientationChanged(Qt.Orientation orientation);
 		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]

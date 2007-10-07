@@ -99,8 +99,8 @@ namespace Qyoto {
 		public void SetGroup(QGraphicsItemGroup group) {
 			interceptor.Invoke("setGroup#", "setGroup(QGraphicsItemGroup*)", typeof(void), typeof(QGraphicsItemGroup), group);
 		}
-		public int Flags() {
-			return (int) interceptor.Invoke("flags", "flags() const", typeof(int));
+		public uint Flags() {
+			return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));
 		}
 		public void SetFlag(QGraphicsItem.GraphicsItemFlag flag, bool enabled) {
 			interceptor.Invoke("setFlag$$", "setFlag(QGraphicsItem::GraphicsItemFlag, bool)", typeof(void), typeof(QGraphicsItem.GraphicsItemFlag), flag, typeof(bool), enabled);
@@ -108,8 +108,8 @@ namespace Qyoto {
 		public void SetFlag(QGraphicsItem.GraphicsItemFlag flag) {
 			interceptor.Invoke("setFlag$", "setFlag(QGraphicsItem::GraphicsItemFlag)", typeof(void), typeof(QGraphicsItem.GraphicsItemFlag), flag);
 		}
-		public void SetFlags(int flags) {
-			interceptor.Invoke("setFlags$", "setFlags(GraphicsItemFlags)", typeof(void), typeof(int), flags);
+		public void SetFlags(uint flags) {
+			interceptor.Invoke("setFlags$", "setFlags(QGraphicsItem::GraphicsItemFlags)", typeof(void), typeof(uint), flags);
 		}
 		public string ToolTip() {
 			return (string) interceptor.Invoke("toolTip", "toolTip() const", typeof(string));
@@ -159,11 +159,11 @@ namespace Qyoto {
 		public void SetAcceptDrops(bool on) {
 			interceptor.Invoke("setAcceptDrops$", "setAcceptDrops(bool)", typeof(void), typeof(bool), on);
 		}
-		public int AcceptedMouseButtons() {
-			return (int) interceptor.Invoke("acceptedMouseButtons", "acceptedMouseButtons() const", typeof(int));
+		public uint AcceptedMouseButtons() {
+			return (uint) interceptor.Invoke("acceptedMouseButtons", "acceptedMouseButtons() const", typeof(uint));
 		}
-		public void SetAcceptedMouseButtons(int buttons) {
-			interceptor.Invoke("setAcceptedMouseButtons$", "setAcceptedMouseButtons(Qt::MouseButtons)", typeof(void), typeof(int), buttons);
+		public void SetAcceptedMouseButtons(uint buttons) {
+			interceptor.Invoke("setAcceptedMouseButtons$", "setAcceptedMouseButtons(Qt::MouseButtons)", typeof(void), typeof(uint), buttons);
 		}
 		public bool AcceptsHoverEvents() {
 			return (bool) interceptor.Invoke("acceptsHoverEvents", "acceptsHoverEvents() const", typeof(bool));

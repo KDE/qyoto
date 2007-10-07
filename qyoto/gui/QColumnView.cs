@@ -83,16 +83,16 @@ namespace Qyoto {
 			return (bool) interceptor.Invoke("isIndexHidden#", "isIndexHidden(const QModelIndex&) const", typeof(bool), typeof(QModelIndex), index);
 		}
 		[SmokeMethod("moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
-		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers) {
-			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(int), modifiers);
+		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, uint modifiers) {
+			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(uint), modifiers);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
 			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
 		[SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
-		protected override void SetSelection(QRect rect, int command) {
-			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(int), command);
+		protected override void SetSelection(QRect rect, uint command) {
+			interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(uint), command);
 		}
 		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {

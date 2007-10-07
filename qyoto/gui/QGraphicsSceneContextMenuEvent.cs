@@ -40,11 +40,11 @@ namespace Qyoto {
 		public void SetScreenPos(QPoint pos) {
 			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
-		public int Modifiers() {
-			return (int) interceptor.Invoke("modifiers", "modifiers() const", typeof(int));
+		public uint Modifiers() {
+			return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
 		}
-		public void SetModifiers(int modifiers) {
-			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(int), modifiers);
+		public void SetModifiers(uint modifiers) {
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(uint), modifiers);
 		}
 		public QGraphicsSceneContextMenuEvent.Reason reason() {
 			return (QGraphicsSceneContextMenuEvent.Reason) interceptor.Invoke("reason", "reason() const", typeof(QGraphicsSceneContextMenuEvent.Reason));

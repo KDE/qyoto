@@ -18,7 +18,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, ref bool ok, int f) {
+		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, ref bool ok, uint f) {
 			StackItem[] stack = new StackItem[8];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -42,7 +42,7 @@ namespace Qyoto {
 			stack[5].s_class = (IntPtr) GCHandle.Alloc(text);
 #endif
 			stack[6].s_bool = ok;
-			stack[7].s_int = f;
+			stack[7].s_uint = f;
 			staticInterceptor.Invoke("getText#$$$$$$", "getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
@@ -136,7 +136,7 @@ namespace Qyoto {
 		public static string GetText(QWidget parent, string title, string label) {
 			return (string) staticInterceptor.Invoke("getText#$$", "getText(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
 		}
-		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok, int f) {
+		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok, uint f) {
 			StackItem[] stack = new StackItem[10];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -158,7 +158,7 @@ namespace Qyoto {
 			stack[6].s_int = maxValue;
 			stack[7].s_int = step;
 			stack[8].s_bool = ok;
-			stack[9].s_int = f;
+			stack[9].s_uint = f;
 			staticInterceptor.Invoke("getInteger#$$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
@@ -234,7 +234,7 @@ namespace Qyoto {
 		public static int GetInteger(QWidget parent, string title, string label) {
 			return (int) staticInterceptor.Invoke("getInteger#$$", "getInteger(QWidget*, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
 		}
-		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, ref bool ok, int f) {
+		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, ref bool ok, uint f) {
 			StackItem[] stack = new StackItem[10];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -256,7 +256,7 @@ namespace Qyoto {
 			stack[6].s_double = maxValue;
 			stack[7].s_int = decimals;
 			stack[8].s_bool = ok;
-			stack[9].s_int = f;
+			stack[9].s_uint = f;
 			staticInterceptor.Invoke("getDouble#$$$$$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double, double, int, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
@@ -332,7 +332,7 @@ namespace Qyoto {
 		public static double GetDouble(QWidget parent, string title, string label) {
 			return (double) staticInterceptor.Invoke("getDouble#$$", "getDouble(QWidget*, const QString&, const QString&)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
 		}
-		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, ref bool ok, int f) {
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, ref bool ok, uint f) {
 			StackItem[] stack = new StackItem[9];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -357,7 +357,7 @@ namespace Qyoto {
 			stack[5].s_int = current;
 			stack[6].s_bool = editable;
 			stack[7].s_bool = ok;
-			stack[8].s_int = f;
+			stack[8].s_uint = f;
 			staticInterceptor.Invoke("getItem#$$?$$$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
