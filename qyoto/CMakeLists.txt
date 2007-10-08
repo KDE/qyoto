@@ -24,7 +24,6 @@ SET(SRC_CS src/SmokeInvocation.cs
 	svg/*.cs
 	opengl/*.cs
 	uitools/*.cs
-        qwt/*.cs
 	qdbus/*.cs)
 	
 SET(SRC_SCINTILLA src/AssemblyInfoQScintilla2.cs
