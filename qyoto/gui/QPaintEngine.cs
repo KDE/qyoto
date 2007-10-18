@@ -69,6 +69,8 @@ namespace Qyoto {
 			User = 50,
 			MaxUser = 100,
 		}
+		// QPaintEngine* QPaintEngine(QPaintEnginePrivate& arg1,QPaintEngine::PaintEngineFeatures arg2); >>>> NOT CONVERTED
+		// QPaintEngine* QPaintEngine(QPaintEnginePrivate& arg1); >>>> NOT CONVERTED
 		public QPaintEngine(uint features) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPaintEngine$", "QPaintEngine(QPaintEngine::PaintEngineFeatures)", typeof(void), typeof(uint), features);

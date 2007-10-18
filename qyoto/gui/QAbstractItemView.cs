@@ -152,6 +152,8 @@ namespace Qyoto {
 			get { return (QAbstractItemView.ScrollMode) interceptor.Invoke("horizontalScrollMode", "horizontalScrollMode()", typeof(QAbstractItemView.ScrollMode)); }
 			set { interceptor.Invoke("setHorizontalScrollMode$", "setHorizontalScrollMode(QAbstractItemView::ScrollMode)", typeof(void), typeof(QAbstractItemView.ScrollMode), value); }
 		}
+		// QAbstractItemView* QAbstractItemView(QAbstractItemViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QAbstractItemView* QAbstractItemView(QAbstractItemViewPrivate& arg1); >>>> NOT CONVERTED
 		public QAbstractItemView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractItemView#", "QAbstractItemView(QWidget*)", typeof(void), typeof(QWidget), parent);

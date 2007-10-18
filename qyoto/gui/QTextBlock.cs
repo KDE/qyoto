@@ -55,6 +55,7 @@ namespace Qyoto {
 		static QTextBlock() {
 			staticInterceptor = new SmokeInvocation(typeof(QTextBlock), null);
 		}
+		// QTextBlock* QTextBlock(QTextDocumentPrivate* arg1,int arg2); >>>> NOT CONVERTED
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		public QTextBlock() : this((Type) null) {
 			CreateProxy();

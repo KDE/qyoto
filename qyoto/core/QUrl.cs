@@ -202,6 +202,13 @@ namespace Qyoto {
 		public bool IsDetached() {
 			return (bool) interceptor.Invoke("isDetached", "isDetached() const", typeof(bool));
 		}
+		public override bool Equals(object o) {
+			if (!(o is QUrl)) { return false; }
+			return this == (QUrl) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		public string ErrorString() {
 			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
 		}
@@ -210,6 +217,19 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QUrl", "~QUrl()", typeof(void));
+		}
+		public static bool operator<(QUrl lhs, QUrl url) {
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QUrl&) const", typeof(bool), typeof(QUrl), lhs, typeof(QUrl), url);
+		}
+		public static bool operator>(QUrl lhs, QUrl url) {
+			return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QUrl&) const", typeof(bool), typeof(QUrl), lhs, typeof(QUrl), url)
+						&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QUrl&) const", typeof(bool), typeof(QUrl), lhs, typeof(QUrl), url);
+		}
+		public static bool operator==(QUrl lhs, QUrl url) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QUrl&) const", typeof(bool), typeof(QUrl), lhs, typeof(QUrl), url);
+		}
+		public static bool operator!=(QUrl lhs, QUrl url) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QUrl&) const", typeof(bool), typeof(QUrl), lhs, typeof(QUrl), url);
 		}
 		public static QUrl FromLocalFile(string localfile) {
 			return (QUrl) staticInterceptor.Invoke("fromLocalFile$", "fromLocalFile(const QString&)", typeof(QUrl), typeof(string), localfile);

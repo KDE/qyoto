@@ -892,7 +892,38 @@ namespace Qyoto {
 			NormalEventPriority = 0,
 			LowEventPriority = -1,
 		}
+		// QDebug operator<<(QDebug arg1,const QSqlRecord& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSqlDatabase& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSqlError& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSqlField& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSslError& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSslError::SslError& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QNetworkInterface& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QHostAddress& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSslCipher& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSslKey& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QAbstractSocket::SocketError arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QAbstractSocket::SocketState arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSslCertificate& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QSslCertificate::SubjectInfo arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QPen& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QBrush& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QColor& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QPolygon& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QPolygonF& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QMatrix& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QItemSelectionRange& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QTransform& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QRegion& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QEvent* arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QKeySequence& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QStyleOption::OptionType& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QStyleOption& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QStyle::State arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QGraphicsItem* arg2); >>>> NOT CONVERTED
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QDBusError& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QDBusMessage& arg2); >>>> NOT CONVERTED
 		// QDebug qWarning(); >>>> NOT CONVERTED
 		// QDebug qCritical(); >>>> NOT CONVERTED
 		// QDebug qDebug(); >>>> NOT CONVERTED
@@ -902,7 +933,22 @@ namespace Qyoto {
 		// QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
 		// QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
 		// QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QIODevice::OpenMode arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,QDir::Filters arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QDir& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QUrl& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QPoint& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QPointF& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QLine& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QLineF& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QRect& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QRectF& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSize& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QSizeF& arg2); >>>> NOT CONVERTED
 		// int qvsnprintf(char* arg1,size_t arg2,const char* arg3,va_list arg4); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QDate& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QTime& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QDateTime& arg2); >>>> NOT CONVERTED
 		// QDebug qDebug(); >>>> NOT CONVERTED
 		// QDebug qWarning(); >>>> NOT CONVERTED
 		// QDebug qCritical(); >>>> NOT CONVERTED
@@ -916,6 +962,11 @@ namespace Qyoto {
 		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
 		// bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
 		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QVariant& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QVariant::Type arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QModelIndex& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QPersistentModelIndex& arg2); >>>> NOT CONVERTED
+		// QDebug operator<<(QDebug arg1,const QObject* arg2); >>>> NOT CONVERTED
 		public static bool MightBeRichText(string arg1) {
 			return (bool) staticInterceptor.Invoke("mightBeRichText$", "mightBeRichText(const QString&)", typeof(bool), typeof(string), arg1);
 		}
@@ -1605,6 +1656,12 @@ namespace Qyoto {
 		}
 		public static QDataStream Write(QDataStream s, QVariant p) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QVariant&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant), p);
+		}
+		public static QDataStream Read(QDataStream s, QVariant.TypeOf p) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>#$", "operator>>(QDataStream&, QVariant::Type&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant.TypeOf), p);
+		}
+		public static QDataStream Write(QDataStream s, QVariant.TypeOf p) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<#$", "operator<<(QDataStream&, const QVariant::Type)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant.TypeOf), p);
 		}
 		public static uint QHash(QModelIndex index) {
 			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QModelIndex&)", typeof(uint), typeof(QModelIndex), index);

@@ -12,6 +12,9 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QHttpHeader), this);
 		}
+		// QHttpHeader* QHttpHeader(QHttpHeaderPrivate& arg1,const QString& arg2); >>>> NOT CONVERTED
+		// QHttpHeader* QHttpHeader(QHttpHeaderPrivate& arg1); >>>> NOT CONVERTED
+		// QHttpHeader* QHttpHeader(QHttpHeaderPrivate& arg1,const QHttpHeader& arg2); >>>> NOT CONVERTED
 		public QHttpHeader() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QHttpHeader", "QHttpHeader()", typeof(void));

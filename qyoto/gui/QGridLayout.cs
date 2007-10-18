@@ -43,6 +43,12 @@ namespace Qyoto {
 		public override QSize MaximumSize() {
 			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
 		}
+		public void SetSpacing(int spacing) {
+			interceptor.Invoke("setSpacing$", "setSpacing(int)", typeof(void), typeof(int), spacing);
+		}
+		public new int Spacing() {
+			return (int) interceptor.Invoke("spacing", "spacing() const", typeof(int));
+		}
 		public void SetRowStretch(int row, int stretch) {
 			interceptor.Invoke("setRowStretch$$", "setRowStretch(int, int)", typeof(void), typeof(int), row, typeof(int), stretch);
 		}

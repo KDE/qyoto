@@ -174,6 +174,7 @@ namespace Qyoto {
 		public const int Type = 1;
 		public const int UserType = 65536;
 
+		// QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
 		public QGraphicsItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsItem##", "QGraphicsItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);

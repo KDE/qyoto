@@ -17,6 +17,8 @@ namespace Qyoto {
 		static QAbstractItemModel() {
 			staticInterceptor = new SmokeInvocation(typeof(QAbstractItemModel), null);
 		}
+		// QAbstractItemModel* QAbstractItemModel(QAbstractItemModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QAbstractItemModel* QAbstractItemModel(QAbstractItemModelPrivate& arg1); >>>> NOT CONVERTED
 		// QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QAbstractItemModel(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -15,6 +15,7 @@ namespace Qyoto {
 		static QTextFragment() {
 			staticInterceptor = new SmokeInvocation(typeof(QTextFragment), null);
 		}
+		// QTextFragment* QTextFragment(const QTextDocumentPrivate* arg1,int arg2,int arg3); >>>> NOT CONVERTED
 		public QTextFragment() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextFragment", "QTextFragment()", typeof(void));

@@ -14,6 +14,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QTextObject), null);
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
+		// QTextObject* QTextObject(QTextObjectPrivate& arg1,QTextDocument* arg2); >>>> NOT CONVERTED
 		public QTextFormat Format() {
 			return (QTextFormat) interceptor.Invoke("format", "format() const", typeof(QTextFormat));
 		}

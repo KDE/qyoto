@@ -44,6 +44,8 @@ namespace Qyoto {
 			WriteOther = 0x0002,
 			ExeOther = 0x0001,
 		}
+		// QFile* QFile(QFilePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QFile* QFile(QFilePrivate& arg1); >>>> NOT CONVERTED
 		public QFile() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QFile", "QFile()", typeof(void));

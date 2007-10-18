@@ -23,6 +23,8 @@ namespace Qyoto {
 			SubmitModelCache = 3,
 			RevertModelCache = 4,
 		}
+		// QAbstractItemDelegate* QAbstractItemDelegate(QObjectPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QAbstractItemDelegate* QAbstractItemDelegate(QObjectPrivate& arg1); >>>> NOT CONVERTED
 		public QAbstractItemDelegate(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractItemDelegate#", "QAbstractItemDelegate(QObject*)", typeof(void), typeof(QObject), parent);

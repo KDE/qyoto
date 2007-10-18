@@ -105,6 +105,7 @@ namespace Qyoto {
 			get { return (QAction.MenuRole) interceptor.Invoke("menuRole", "menuRole()", typeof(QAction.MenuRole)); }
 			set { interceptor.Invoke("setMenuRole$", "setMenuRole(QAction::MenuRole)", typeof(void), typeof(QAction.MenuRole), value); }
 		}
+		// QAction* QAction(QActionPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public QAction(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAction#", "QAction(QObject*)", typeof(void), typeof(QObject), parent);

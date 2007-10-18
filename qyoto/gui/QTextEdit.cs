@@ -104,6 +104,7 @@ namespace Qyoto {
 		}
 		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
 		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
+		// QTextEdit* QTextEdit(QTextEditPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		public QTextEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextEdit#", "QTextEdit(QWidget*)", typeof(void), typeof(QWidget), parent);

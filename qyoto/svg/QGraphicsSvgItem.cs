@@ -16,6 +16,7 @@ namespace Qyoto {
 		}
 		public const int Type = 13;
 
+		// QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
 		public QGraphicsSvgItem(QGraphicsItem parentItem) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsSvgItem#", "QGraphicsSvgItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parentItem);

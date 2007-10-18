@@ -30,6 +30,7 @@ namespace Qyoto {
 			ToggleCurrent = Toggle|Current,
 			ClearAndSelect = Clear|Select,
 		}
+		// QItemSelectionModel* QItemSelectionModel(QItemSelectionModelPrivate& arg1,QAbstractItemModel* arg2); >>>> NOT CONVERTED
 		public QItemSelectionModel(QAbstractItemModel model) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QItemSelectionModel#", "QItemSelectionModel(QAbstractItemModel*)", typeof(void), typeof(QAbstractItemModel), model);

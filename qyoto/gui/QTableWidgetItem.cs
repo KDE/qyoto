@@ -11,6 +11,10 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTableWidgetItem), this);
 		}
+		private static SmokeInvocation staticInterceptor = null;
+		static QTableWidgetItem() {
+			staticInterceptor = new SmokeInvocation(typeof(QTableWidgetItem), null);
+		}
 		public enum ItemType {
 			Type = 0,
 			UserType = 1000,
@@ -170,6 +174,13 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QTableWidgetItem", "~QTableWidgetItem()", typeof(void));
+		}
+		public static bool operator<(QTableWidgetItem lhs, QTableWidgetItem other) {
+			return (bool) staticInterceptor.Invoke("operator<#", "operator<(const QTableWidgetItem&) const", typeof(bool), typeof(QTableWidgetItem), lhs, typeof(QTableWidgetItem), other);
+		}
+		public static bool operator>(QTableWidgetItem lhs, QTableWidgetItem other) {
+			return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QTableWidgetItem&) const", typeof(bool), typeof(QTableWidgetItem), lhs, typeof(QTableWidgetItem), other)
+						&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTableWidgetItem&) const", typeof(bool), typeof(QTableWidgetItem), lhs, typeof(QTableWidgetItem), other);
 		}
 	}
 }

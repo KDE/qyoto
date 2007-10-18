@@ -29,6 +29,7 @@ namespace Qyoto {
 			get { return (QTextCursor) interceptor.Invoke("textCursor", "textCursor()", typeof(QTextCursor)); }
 			set { interceptor.Invoke("setTextCursor#", "setTextCursor(QTextCursor)", typeof(void), typeof(QTextCursor), value); }
 		}
+		// QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
 		public QGraphicsTextItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsTextItem##", "QGraphicsTextItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);

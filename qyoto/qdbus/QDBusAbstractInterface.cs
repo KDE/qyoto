@@ -14,6 +14,7 @@ namespace Qyoto {
 		static QDBusAbstractInterface() {
 			staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), null);
 		}
+		// QDBusAbstractInterface* QDBusAbstractInterface(QDBusAbstractInterfacePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}

@@ -86,6 +86,7 @@ namespace Qyoto {
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
+		// QTextDocument* QTextDocument(QTextDocumentPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public QTextDocument(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextDocument#", "QTextDocument(QObject*)", typeof(void), typeof(QObject), parent);

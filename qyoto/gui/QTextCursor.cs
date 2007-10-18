@@ -48,6 +48,7 @@ namespace Qyoto {
 			BlockUnderCursor = 2,
 			Document = 3,
 		}
+		// QTextCursor* QTextCursor(QTextDocumentPrivate* arg1,int arg2); >>>> NOT CONVERTED
 		// QTextCursor* QTextCursor(QTextCursorPrivate* arg1); >>>> NOT CONVERTED
 		public QTextCursor() : this((Type) null) {
 			CreateProxy();

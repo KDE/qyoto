@@ -26,6 +26,8 @@ namespace Qyoto {
 			Text = 0x0010,
 			Unbuffered = 0x0020,
 		}
+		// QIODevice* QIODevice(QIODevicePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QIODevice* QIODevice(QIODevicePrivate& arg1); >>>> NOT CONVERTED
 		public QIODevice() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QIODevice", "QIODevice()", typeof(void));

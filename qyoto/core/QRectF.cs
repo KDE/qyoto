@@ -77,6 +77,12 @@ namespace Qyoto {
 		public void SetBottom(double pos) {
 			interceptor.Invoke("setBottom$", "setBottom(qreal)", typeof(void), typeof(double), pos);
 		}
+		public void SetX(double pos) {
+			interceptor.Invoke("setX$", "setX(qreal)", typeof(void), typeof(double), pos);
+		}
+		public void SetY(double pos) {
+			interceptor.Invoke("setY$", "setY(qreal)", typeof(void), typeof(double), pos);
+		}
 		public QPointF TopLeft() {
 			return (QPointF) interceptor.Invoke("topLeft", "topLeft() const", typeof(QPointF));
 		}

@@ -16,6 +16,7 @@ namespace Qyoto {
 		static QMatrix() {
 			staticInterceptor = new SmokeInvocation(typeof(QMatrix), null);
 		}
+		// QMatrix& operator*=(const QMatrix& arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QMatrix() : this((Type) null) {
 			CreateProxy();

@@ -128,11 +128,24 @@ namespace Qyoto {
 		public bool IsExecutable() {
 			return (bool) interceptor.Invoke("isExecutable", "isExecutable() const", typeof(bool));
 		}
+		public override bool Equals(object o) {
+			if (!(o is QUrlInfo)) { return false; }
+			return this == (QUrlInfo) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		~QUrlInfo() {
 			interceptor.Invoke("~QUrlInfo", "~QUrlInfo()", typeof(void));
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QUrlInfo", "~QUrlInfo()", typeof(void));
+		}
+		public static bool operator==(QUrlInfo lhs, QUrlInfo i) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QUrlInfo&) const", typeof(bool), typeof(QUrlInfo), lhs, typeof(QUrlInfo), i);
+		}
+		public static bool operator!=(QUrlInfo lhs, QUrlInfo i) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QUrlInfo&) const", typeof(bool), typeof(QUrlInfo), lhs, typeof(QUrlInfo), i);
 		}
 		public static bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
 			return (bool) staticInterceptor.Invoke("greaterThan##$", "greaterThan(const QUrlInfo&, const QUrlInfo&, int)", typeof(bool), typeof(QUrlInfo), i1, typeof(QUrlInfo), i2, typeof(int), sortBy);

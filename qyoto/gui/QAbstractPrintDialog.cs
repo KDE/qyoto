@@ -25,6 +25,8 @@ namespace Qyoto {
 			PrintPageRange = 0x0004,
 			PrintCollateCopies = 0x0010,
 		}
+		// QAbstractPrintDialog* QAbstractPrintDialog(QAbstractPrintDialogPrivate& arg1,QPrinter* arg2,QWidget* arg3); >>>> NOT CONVERTED
+		// QAbstractPrintDialog* QAbstractPrintDialog(QAbstractPrintDialogPrivate& arg1,QPrinter* arg2); >>>> NOT CONVERTED
 		public QAbstractPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractPrintDialog##", "QAbstractPrintDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);

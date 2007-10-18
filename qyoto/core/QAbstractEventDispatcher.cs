@@ -20,6 +20,7 @@ namespace Qyoto {
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
 		// bool filterEvent(void* arg1); >>>> NOT CONVERTED
 		// QAbstractEventDispatcher* instance(QThread* arg1); >>>> NOT CONVERTED
+		// QAbstractEventDispatcher* QAbstractEventDispatcher(QAbstractEventDispatcherPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public QAbstractEventDispatcher(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractEventDispatcher#", "QAbstractEventDispatcher(QObject*)", typeof(void), typeof(QObject), parent);

@@ -9,6 +9,8 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QGraphicsSceneEvent), this);
 		}
+		// QGraphicsSceneEvent* QGraphicsSceneEvent(QGraphicsSceneEventPrivate& arg1,QEvent::Type arg2); >>>> NOT CONVERTED
+		// QGraphicsSceneEvent* QGraphicsSceneEvent(QGraphicsSceneEventPrivate& arg1); >>>> NOT CONVERTED
 		public QGraphicsSceneEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QGraphicsSceneEvent$", "QGraphicsSceneEvent(QEvent::Type)", typeof(void), typeof(QEvent.TypeOf), type);

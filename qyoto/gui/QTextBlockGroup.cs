@@ -14,6 +14,7 @@ namespace Qyoto {
 		static QTextBlockGroup() {
 			staticInterceptor = new SmokeInvocation(typeof(QTextBlockGroup), null);
 		}
+		// QTextBlockGroup* QTextBlockGroup(QTextBlockGroupPrivate& arg1,QTextDocument* arg2); >>>> NOT CONVERTED
 		public QTextBlockGroup(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextBlockGroup#", "QTextBlockGroup(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);

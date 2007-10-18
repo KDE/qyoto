@@ -85,6 +85,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("keyboardTracking", "keyboardTracking()", typeof(bool)); }
 			set { interceptor.Invoke("setKeyboardTracking$", "setKeyboardTracking(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QAbstractSpinBox* QAbstractSpinBox(QAbstractSpinBoxPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QAbstractSpinBox* QAbstractSpinBox(QAbstractSpinBoxPrivate& arg1); >>>> NOT CONVERTED
 		public QAbstractSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractSpinBox#", "QAbstractSpinBox(QWidget*)", typeof(void), typeof(QWidget), parent);

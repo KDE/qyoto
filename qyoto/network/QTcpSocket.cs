@@ -13,6 +13,8 @@ namespace Qyoto {
 		static QTcpSocket() {
 			staticInterceptor = new SmokeInvocation(typeof(QTcpSocket), null);
 		}
+		// QTcpSocket* QTcpSocket(QTcpSocketPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QTcpSocket* QTcpSocket(QTcpSocketPrivate& arg1); >>>> NOT CONVERTED
 		public QTcpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTcpSocket#", "QTcpSocket(QObject*)", typeof(void), typeof(QObject), parent);

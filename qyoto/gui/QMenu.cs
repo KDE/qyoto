@@ -37,6 +37,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("separatorsCollapsible", "separatorsCollapsible()", typeof(bool)); }
 			set { interceptor.Invoke("setSeparatorsCollapsible$", "setSeparatorsCollapsible(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QMenu* QMenu(QMenuPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QMenu* QMenu(QMenuPrivate& arg1); >>>> NOT CONVERTED
 		public QMenu(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QMenu#", "QMenu(QWidget*)", typeof(void), typeof(QWidget), parent);

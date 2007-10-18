@@ -62,6 +62,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("wordWrap", "wordWrap()", typeof(bool)); }
 			set { interceptor.Invoke("setWordWrap$", "setWordWrap(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QTreeView* QTreeView(QTreeViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QTreeView* QTreeView(QTreeViewPrivate& arg1); >>>> NOT CONVERTED
 		public QTreeView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTreeView#", "QTreeView(QWidget*)", typeof(void), typeof(QWidget), parent);

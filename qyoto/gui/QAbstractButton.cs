@@ -71,6 +71,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isDown", "isDown()", typeof(bool)); }
 			set { interceptor.Invoke("setDown$", "setDown(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QAbstractButton* QAbstractButton(QAbstractButtonPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QAbstractButton* QAbstractButton(QAbstractButtonPrivate& arg1); >>>> NOT CONVERTED
 		public QAbstractButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractButton#", "QAbstractButton(QWidget*)", typeof(void), typeof(QWidget), parent);

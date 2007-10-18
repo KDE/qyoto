@@ -90,6 +90,12 @@ namespace Qyoto {
 		public void InsertLayout(int index, QLayout layout) {
 			interceptor.Invoke("insertLayout$#", "insertLayout(int, QLayout*)", typeof(void), typeof(int), index, typeof(QLayout), layout);
 		}
+		public new int Spacing() {
+			return (int) interceptor.Invoke("spacing", "spacing() const", typeof(int));
+		}
+		public void SetSpacing(int spacing) {
+			interceptor.Invoke("setSpacing$", "setSpacing(int)", typeof(void), typeof(int), spacing);
+		}
 		public bool SetStretchFactor(QWidget w, int stretch) {
 			return (bool) interceptor.Invoke("setStretchFactor#$", "setStretchFactor(QWidget*, int)", typeof(bool), typeof(QWidget), w, typeof(int), stretch);
 		}

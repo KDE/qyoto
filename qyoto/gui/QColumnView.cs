@@ -22,6 +22,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("resizeGripsVisible", "resizeGripsVisible()", typeof(bool)); }
 			set { interceptor.Invoke("setResizeGripsVisible$", "setResizeGripsVisible(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QColumnView* QColumnView(QColumnViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QColumnView* QColumnView(QColumnViewPrivate& arg1); >>>> NOT CONVERTED
 		public QColumnView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QColumnView#", "QColumnView(QWidget*)", typeof(void), typeof(QWidget), parent);

@@ -13,6 +13,8 @@ namespace Qyoto {
 		static QSqlQueryModel() {
 			staticInterceptor = new SmokeInvocation(typeof(QSqlQueryModel), null);
 		}
+		// QSqlQueryModel* QSqlQueryModel(QSqlQueryModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QSqlQueryModel* QSqlQueryModel(QSqlQueryModelPrivate& arg1); >>>> NOT CONVERTED
 		public QSqlQueryModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSqlQueryModel#", "QSqlQueryModel(QObject*)", typeof(void), typeof(QObject), parent);

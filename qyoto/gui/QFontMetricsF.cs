@@ -24,6 +24,10 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QFontMetricsF##", "QFontMetricsF(const QFont&, QPaintDevice*)", typeof(void), typeof(QFont), arg1, typeof(IQPaintDevice), pd);
 		}
+		public QFontMetricsF(QFontMetrics arg1) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QFontMetricsF#", "QFontMetricsF(const QFontMetrics&)", typeof(void), typeof(QFontMetrics), arg1);
+		}
 		public QFontMetricsF(QFontMetricsF arg1) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QFontMetricsF#", "QFontMetricsF(const QFontMetricsF&)", typeof(void), typeof(QFontMetricsF), arg1);

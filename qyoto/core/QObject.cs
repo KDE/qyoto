@@ -49,6 +49,8 @@ namespace Qyoto {
 		// void moveToThread(QThread* arg1); >>>> NOT CONVERTED
 		// void setUserData(uint arg1,QObjectUserData* arg2); >>>> NOT CONVERTED
 		// QObjectUserData* userData(uint arg1); >>>> NOT CONVERTED
+		// QObject* QObject(QObjectPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QObject* QObject(QObjectPrivate& arg1); >>>> NOT CONVERTED
 		public QObject(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QObject#", "QObject(QObject*)", typeof(void), typeof(QObject), parent);

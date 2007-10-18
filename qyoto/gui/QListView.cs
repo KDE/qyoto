@@ -103,6 +103,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isSelectionRectVisible", "isSelectionRectVisible()", typeof(bool)); }
 			set { interceptor.Invoke("setSelectionRectVisible$", "setSelectionRectVisible(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QListView* QListView(QListViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QListView* QListView(QListViewPrivate& arg1); >>>> NOT CONVERTED
 		public QListView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QListView#", "QListView(QWidget*)", typeof(void), typeof(QWidget), parent);

@@ -34,6 +34,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("lazyChildCount", "lazyChildCount()", typeof(bool)); }
 			set { interceptor.Invoke("setLazyChildCount$", "setLazyChildCount(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QDirModel* QDirModel(QDirModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QDirModel* QDirModel(QDirModelPrivate& arg1); >>>> NOT CONVERTED
 		public QDirModel(List<string> nameFilters, uint filters, uint sort, QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QDirModel?$$#", "QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)", typeof(void), typeof(List<string>), nameFilters, typeof(uint), filters, typeof(uint), sort, typeof(QObject), parent);

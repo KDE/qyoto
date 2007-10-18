@@ -105,6 +105,7 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("modelColumn", "modelColumn()", typeof(int)); }
 			set { interceptor.Invoke("setModelColumn$", "setModelColumn(int)", typeof(void), typeof(int), value); }
 		}
+		// QComboBox* QComboBox(QComboBoxPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		public QComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QComboBox#", "QComboBox(QWidget*)", typeof(void), typeof(QWidget), parent);

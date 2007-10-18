@@ -19,6 +19,8 @@ namespace Qyoto {
 			Intermediate = 1,
 			Acceptable = 2,
 		}
+		// QValidator* QValidator(QObjectPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QValidator* QValidator(QValidatorPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public QValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QValidator#", "QValidator(QObject*)", typeof(void), typeof(QObject), parent);

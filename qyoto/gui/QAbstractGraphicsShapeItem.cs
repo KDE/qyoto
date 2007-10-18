@@ -9,6 +9,7 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), this);
 		}
+		// QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem(QAbstractGraphicsShapeItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
 		public QAbstractGraphicsShapeItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractGraphicsShapeItem##", "QAbstractGraphicsShapeItem(QGraphicsItem*, QGraphicsScene*)", typeof(void), typeof(QGraphicsItem), parent, typeof(QGraphicsScene), scene);

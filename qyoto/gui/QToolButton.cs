@@ -41,6 +41,7 @@ namespace Qyoto {
 			get { return (Qt.ArrowType) interceptor.Invoke("arrowType", "arrowType()", typeof(Qt.ArrowType)); }
 			set { interceptor.Invoke("setArrowType$", "setArrowType(Qt::ArrowType)", typeof(void), typeof(Qt.ArrowType), value); }
 		}
+		// QToolButton* QToolButton(QToolButtonPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QToolButton#", "QToolButton(QWidget*)", typeof(void), typeof(QWidget), parent);

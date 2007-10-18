@@ -17,6 +17,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), null);
 		}
 		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
+		// QAbstractTextDocumentLayout* QAbstractTextDocumentLayout(QAbstractTextDocumentLayoutPrivate& arg1,QTextDocument* arg2); >>>> NOT CONVERTED
 		public QAbstractTextDocumentLayout(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractTextDocumentLayout#", "QAbstractTextDocumentLayout(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);

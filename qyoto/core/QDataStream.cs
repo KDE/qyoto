@@ -28,6 +28,8 @@ namespace Qyoto {
 			ReadPastEnd = 1,
 			ReadCorruptData = 2,
 		}
+		// ByteOrder byteOrder(); >>>> NOT CONVERTED
+		// void setByteOrder(ByteOrder arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(qint8& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(quint8& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(qint16& arg1); >>>> NOT CONVERTED

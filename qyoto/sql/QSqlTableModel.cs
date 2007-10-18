@@ -21,6 +21,9 @@ namespace Qyoto {
 			OnRowChange = 1,
 			OnManualSubmit = 2,
 		}
+		// QSqlTableModel* QSqlTableModel(QSqlTableModelPrivate& arg1,QObject* arg2,QSqlDatabase arg3); >>>> NOT CONVERTED
+		// QSqlTableModel* QSqlTableModel(QSqlTableModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QSqlTableModel* QSqlTableModel(QSqlTableModelPrivate& arg1); >>>> NOT CONVERTED
 		public QSqlTableModel(QObject parent, QSqlDatabase db) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSqlTableModel##", "QSqlTableModel(QObject*, QSqlDatabase)", typeof(void), typeof(QObject), parent, typeof(QSqlDatabase), db);

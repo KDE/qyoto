@@ -13,6 +13,8 @@ namespace Qyoto {
 		static QAbstractPageSetupDialog() {
 			staticInterceptor = new SmokeInvocation(typeof(QAbstractPageSetupDialog), null);
 		}
+		// QAbstractPageSetupDialog* QAbstractPageSetupDialog(QAbstractPageSetupDialogPrivate& arg1,QPrinter* arg2,QWidget* arg3); >>>> NOT CONVERTED
+		// QAbstractPageSetupDialog* QAbstractPageSetupDialog(QAbstractPageSetupDialogPrivate& arg1,QPrinter* arg2); >>>> NOT CONVERTED
 		public QAbstractPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractPageSetupDialog##", "QAbstractPageSetupDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);

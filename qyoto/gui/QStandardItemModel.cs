@@ -22,6 +22,8 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("sortRole", "sortRole()", typeof(int)); }
 			set { interceptor.Invoke("setSortRole$", "setSortRole(int)", typeof(void), typeof(int), value); }
 		}
+		// QStandardItemModel* QStandardItemModel(QStandardItemModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// QStandardItemModel* QStandardItemModel(QStandardItemModelPrivate& arg1); >>>> NOT CONVERTED
 		public QStandardItemModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QStandardItemModel#", "QStandardItemModel(QObject*)", typeof(void), typeof(QObject), parent);

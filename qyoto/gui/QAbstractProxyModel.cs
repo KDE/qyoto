@@ -14,6 +14,7 @@ namespace Qyoto {
 		static QAbstractProxyModel() {
 			staticInterceptor = new SmokeInvocation(typeof(QAbstractProxyModel), null);
 		}
+		// QAbstractProxyModel* QAbstractProxyModel(QAbstractProxyModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public QAbstractProxyModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractProxyModel#", "QAbstractProxyModel(QObject*)", typeof(void), typeof(QObject), parent);

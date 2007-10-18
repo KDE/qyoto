@@ -265,6 +265,7 @@ namespace Qyoto {
 		}
 		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
 		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
+		// QWidget* QWidget(QWidgetPrivate& arg1,QWidget* arg2,Qt::WindowFlags arg3); >>>> NOT CONVERTED
 		public QWidget(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QWidget#$", "QWidget(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);

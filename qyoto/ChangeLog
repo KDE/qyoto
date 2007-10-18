@@ -1,3 +1,8 @@
+2007-10-18  Richard Dale  <rdale@foton.es>
+
+* Simply the code to special case which classes and methods are to be skipped
+  when generating the bindings. Regenerate to add a few missing methods
+
 2007-08-11  Arno Rehn  <arno@arnorehn.de>
 
 	* If a marshaller is given a zero pointer, return zero and don't free

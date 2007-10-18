@@ -23,6 +23,8 @@ namespace Qyoto {
 			get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
 			set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
+		// QScrollArea* QScrollArea(QScrollAreaPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QScrollArea* QScrollArea(QScrollAreaPrivate& arg1); >>>> NOT CONVERTED
 		public QScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QScrollArea#", "QScrollArea(QWidget*)", typeof(void), typeof(QWidget), parent);

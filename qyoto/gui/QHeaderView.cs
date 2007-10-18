@@ -58,6 +58,8 @@ namespace Qyoto {
 			get { return (uint) interceptor.Invoke("defaultAlignment", "defaultAlignment()", typeof(uint)); }
 			set { interceptor.Invoke("setDefaultAlignment$", "setDefaultAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
 		}
+		// QHeaderView* QHeaderView(QHeaderViewPrivate& arg1,Qt::Orientation arg2,QWidget* arg3); >>>> NOT CONVERTED
+		// QHeaderView* QHeaderView(QHeaderViewPrivate& arg1,Qt::Orientation arg2); >>>> NOT CONVERTED
 		public QHeaderView(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QHeaderView$#", "QHeaderView(Qt::Orientation, QWidget*)", typeof(void), typeof(Qt.Orientation), orientation, typeof(QWidget), parent);

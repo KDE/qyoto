@@ -36,6 +36,7 @@ namespace Qyoto {
 			get { return (QLayout.SizeConstraint) interceptor.Invoke("sizeConstraint", "sizeConstraint()", typeof(QLayout.SizeConstraint)); }
 			set { interceptor.Invoke("setSizeConstraint$", "setSizeConstraint(QLayout::SizeConstraint)", typeof(void), typeof(QLayout.SizeConstraint), value); }
 		}
+		// QLayout* QLayout(QLayoutPrivate& arg1,QLayout* arg2,QWidget* arg3); >>>> NOT CONVERTED
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLayout#", "QLayout(QWidget*)", typeof(void), typeof(QWidget), parent);

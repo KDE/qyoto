@@ -15,7 +15,6 @@ namespace Qyoto {
 		static QPoint() {
 			staticInterceptor = new SmokeInvocation(typeof(QPoint), null);
 		}
-		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
 		public QPoint() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPoint", "QPoint()", typeof(void));
@@ -61,6 +60,9 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return interceptor.GetHashCode();
 		}
+		public static QPoint operator*(QPoint lhs, double c) {
+			return (QPoint) staticInterceptor.Invoke("operator*=$", "operator*=(qreal)", typeof(QPoint), typeof(QPoint), lhs, typeof(double), c);
+		}
 		public static QPoint operator/(QPoint lhs, double c) {
 			return (QPoint) staticInterceptor.Invoke("operator/=$", "operator/=(qreal)", typeof(QPoint), typeof(QPoint), lhs, typeof(double), c);
 		}
@@ -81,9 +83,6 @@ namespace Qyoto {
 		}
 		public static QPoint operator-(QPoint p1, QPoint p2) {
 			return (QPoint) staticInterceptor.Invoke("operator-##", "operator-(const QPoint&, const QPoint&)", typeof(QPoint), typeof(QPoint), p1, typeof(QPoint), p2);
-		}
-		public static QPoint operator*(QPoint p, double c) {
-			return (QPoint) staticInterceptor.Invoke("operator*#$", "operator*(const QPoint&, qreal)", typeof(QPoint), typeof(QPoint), p, typeof(double), c);
 		}
 		public static QPoint operator*(double c, QPoint p) {
 			return (QPoint) staticInterceptor.Invoke("operator*$#", "operator*(qreal, const QPoint&)", typeof(QPoint), typeof(double), c, typeof(QPoint), p);

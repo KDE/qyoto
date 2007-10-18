@@ -60,6 +60,9 @@ namespace Qyoto {
 			get { return (QRect) interceptor.Invoke("frameRect", "frameRect()", typeof(QRect)); }
 			set { interceptor.Invoke("setFrameRect#", "setFrameRect(QRect)", typeof(void), typeof(QRect), value); }
 		}
+		// QFrame* QFrame(QFramePrivate& arg1,QWidget* arg2,Qt::WindowFlags arg3); >>>> NOT CONVERTED
+		// QFrame* QFrame(QFramePrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QFrame* QFrame(QFramePrivate& arg1); >>>> NOT CONVERTED
 		public QFrame(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QFrame#$", "QFrame(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);

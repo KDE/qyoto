@@ -60,6 +60,7 @@ namespace Qyoto {
 		static QTextFrame() {
 			staticInterceptor = new SmokeInvocation(typeof(QTextFrame), null);
 		}
+		// QTextFrame* QTextFrame(QTextFramePrivate& arg1,QTextDocument* arg2); >>>> NOT CONVERTED
 		public QTextFrame(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextFrame#", "QTextFrame(QTextDocument*)", typeof(void), typeof(QTextDocument), doc);

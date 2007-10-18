@@ -24,6 +24,8 @@ namespace Qyoto {
 			get { return (Qt.ScrollBarPolicy) interceptor.Invoke("horizontalScrollBarPolicy", "horizontalScrollBarPolicy()", typeof(Qt.ScrollBarPolicy)); }
 			set { interceptor.Invoke("setHorizontalScrollBarPolicy$", "setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), value); }
 		}
+		// QAbstractScrollArea* QAbstractScrollArea(QAbstractScrollAreaPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QAbstractScrollArea* QAbstractScrollArea(QAbstractScrollAreaPrivate& arg1); >>>> NOT CONVERTED
 		public QAbstractScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractScrollArea#", "QAbstractScrollArea(QWidget*)", typeof(void), typeof(QWidget), parent);

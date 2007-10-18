@@ -39,6 +39,7 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isCornerButtonEnabled", "isCornerButtonEnabled()", typeof(bool)); }
 			set { interceptor.Invoke("setCornerButtonEnabled$", "setCornerButtonEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QTableView* QTableView(QTableViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		public QTableView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTableView#", "QTableView(QWidget*)", typeof(void), typeof(QWidget), parent);

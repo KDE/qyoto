@@ -87,6 +87,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isSliderDown", "isSliderDown()", typeof(bool)); }
 			set { interceptor.Invoke("setSliderDown$", "setSliderDown(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QAbstractSlider* QAbstractSlider(QAbstractSliderPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QAbstractSlider* QAbstractSlider(QAbstractSliderPrivate& arg1); >>>> NOT CONVERTED
 		public QAbstractSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QAbstractSlider#", "QAbstractSlider(QWidget*)", typeof(void), typeof(QWidget), parent);
