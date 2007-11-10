@@ -182,9 +182,6 @@ namespace Qyoto {
 		public void SetButtonText(int button, string text) {
 			interceptor.Invoke("setButtonText$$", "setButtonText(int, const QString&)", typeof(void), typeof(int), button, typeof(string), text);
 		}
-		public void SetWindowTitle(string title) {
-			interceptor.Invoke("setWindowTitle$", "setWindowTitle(const QString&)", typeof(void), typeof(string), title);
-		}
 		public void SetWindowModality(Qt.WindowModality windowModality) {
 			interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), windowModality);
 		}

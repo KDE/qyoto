@@ -1,7 +1,12 @@
+2007-11-10  Richard Dale  <rdale@foton.es>
+
+	* Fix regressions caused by attempt to tidy up the skipped methods code
+	  generation
+
 2007-10-18  Richard Dale  <rdale@foton.es>
 
-* Simply the code to special case which classes and methods are to be skipped
-  when generating the bindings. Regenerate to add a few missing methods
+	* Simply the code to special case which classes and methods are to be skipped
+	  when generating the bindings. Regenerate to add a few missing methods
 
 2007-08-11  Arno Rehn  <arno@arnorehn.de>
 
