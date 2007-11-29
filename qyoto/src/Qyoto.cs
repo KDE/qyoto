@@ -130,10 +130,18 @@ namespace Qyoto
 				return 0;
 			}
 			foreach (Type nt in t.GetNestedTypes()) {
-				if (nt.IsEnum && Enum.GetUnderlyingType(nt) == typeof(uint)) {
-					foreach (uint i in Enum.GetValues(nt)) {
-						if (Enum.Format(nt, i, "f") == value) {
-							return (uint) i;
+				if (nt.IsEnum) {
+					if (Enum.GetUnderlyingType(nt) == typeof(uint)) {
+						foreach (uint i in Enum.GetValues(nt)) {
+							if (Enum.Format(nt, i, "f") == value) {
+								return i;
+							}
+						}
+					} else if (Enum.GetUnderlyingType(nt) == typeof(int)) {
+						foreach (int i in Enum.GetValues(nt)) {
+							if (Enum.Format(nt, i, "f") == value) {
+								return (uint) i;
+							}
 						}
 					}
 				}
