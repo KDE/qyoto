@@ -51,11 +51,11 @@ class TreeModel : QAbstractItemModel {
 		return item.Data(index.Column());
 	}
 	
-	public override int Flags(QModelIndex index) {
+	public override uint Flags(QModelIndex index) {
 		if (!index.IsValid())
-			return (int) Qt.ItemFlag.ItemIsEnabled;
+			return (uint) Qt.ItemFlag.ItemIsEnabled;
 		
-		return (int) (Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable);
+		return (uint) (Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable);
 	}
 	
 	public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {

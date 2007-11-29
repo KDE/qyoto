@@ -124,16 +124,16 @@ namespace Qyoto
 		/// This hashtable has the class types as keys, and QMetaObjects as values
 		static Dictionary<Type, QMetaObject> metaObjects = new Dictionary<Type, QMetaObject> ();
 		
-		public static int GetCPPEnumValue(string c, string value) {
+		public static uint GetCPPEnumValue(string c, string value) {
 			Type t = Type.GetType("Qyoto." + c, false);
 			if (t == null) {
 				return 0;
 			}
 			foreach (Type nt in t.GetNestedTypes()) {
-				if (nt.IsEnum && Enum.GetUnderlyingType(nt) == typeof(int)) {
-					foreach (int i in Enum.GetValues(nt)) {
+				if (nt.IsEnum && Enum.GetUnderlyingType(nt) == typeof(uint)) {
+					foreach (uint i in Enum.GetValues(nt)) {
 						if (Enum.Format(nt, i, "f") == value) {
-							return (int) i;
+							return (uint) i;
 						}
 					}
 				}

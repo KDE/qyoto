@@ -1,3 +1,10 @@
+2007-11-29  Richard Dale  <rdale@foton.es>
+
+	* Fixed the simpletreemodel example so that the Flags() method returns
+	  a uint
+	* The GetCPPEnumValue() used by uics generate code now returns a uint
+	* Thanks to Jos van den Oever for reporting these two bugs
+
 2007-11-10  Richard Dale  <rdale@foton.es>
 
 	* Fix regressions caused by attempt to tidy up the skipped methods code
