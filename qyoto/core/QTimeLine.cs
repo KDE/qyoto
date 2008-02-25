@@ -31,6 +31,7 @@ namespace Qyoto {
 			EaseInOutCurve = 2,
 			LinearCurve = 3,
 			SineCurve = 4,
+			CosineCurve = 5,
 		}
 		[Q_PROPERTY("int", "duration")]
 		public int Duration {

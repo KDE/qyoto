@@ -186,7 +186,7 @@ namespace Qyoto {
 			interceptor.Invoke("setWindowModality$", "setWindowModality(Qt::WindowModality)", typeof(void), typeof(Qt.WindowModality), windowModality);
 		}
 		[SmokeMethod("event(QEvent*)")]
-		protected new virtual bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), e);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]

@@ -118,6 +118,10 @@ namespace Qyoto {
 		public uint PageBreakPolicy() {
 			return (uint) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(uint));
 		}
+		public QTextFrameFormat(QTextFormat fmt) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QTextFrameFormat#", "QTextFrameFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), fmt);
+		}
 		~QTextFrameFormat() {
 			interceptor.Invoke("~QTextFrameFormat", "~QTextFrameFormat()", typeof(void));
 		}

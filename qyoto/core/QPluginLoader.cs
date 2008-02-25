@@ -19,6 +19,11 @@ namespace Qyoto {
 			get { return (string) interceptor.Invoke("fileName", "fileName()", typeof(string)); }
 			set { interceptor.Invoke("setFileName$", "setFileName(QString)", typeof(void), typeof(string), value); }
 		}
+		[Q_PROPERTY("QLibrary::LoadHints", "loadHints")]
+		public uint LoadHints {
+			get { return (uint) interceptor.Invoke("loadHints", "loadHints()", typeof(uint)); }
+			set { interceptor.Invoke("setLoadHints$", "setLoadHints(QLibrary::LoadHints)", typeof(void), typeof(uint), value); }
+		}
 		public QPluginLoader(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPluginLoader#", "QPluginLoader(QObject*)", typeof(void), typeof(QObject), parent);

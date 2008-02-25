@@ -28,6 +28,8 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("isFlat", "isFlat()", typeof(bool)); }
 			set { interceptor.Invoke("setFlat$", "setFlat(bool)", typeof(void), typeof(bool), value); }
 		}
+		// QPushButton* QPushButton(QPushButtonPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// QPushButton* QPushButton(QPushButtonPrivate& arg1); >>>> NOT CONVERTED
 		public QPushButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPushButton#", "QPushButton(QWidget*)", typeof(void), typeof(QWidget), parent);

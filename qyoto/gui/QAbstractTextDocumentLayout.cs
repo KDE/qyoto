@@ -86,6 +86,8 @@ namespace Qyoto {
 		void Update(QRectF arg1);
 		[Q_SIGNAL("void update()")]
 		void Update();
+		[Q_SIGNAL("void updateBlock(const QTextBlock&)")]
+		void UpdateBlock(QTextBlock block);
 		[Q_SIGNAL("void documentSizeChanged(const QSizeF&)")]
 		void DocumentSizeChanged(QSizeF newSize);
 		[Q_SIGNAL("void pageCountChanged(int)")]

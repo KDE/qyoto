@@ -56,6 +56,10 @@ namespace Qyoto {
 		public int HeaderRowCount() {
 			return (int) interceptor.Invoke("headerRowCount", "headerRowCount() const", typeof(int));
 		}
+		public QTextTableFormat(QTextFormat fmt) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QTextTableFormat#", "QTextTableFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), fmt);
+		}
 		~QTextTableFormat() {
 			interceptor.Invoke("~QTextTableFormat", "~QTextTableFormat()", typeof(void));
 		}

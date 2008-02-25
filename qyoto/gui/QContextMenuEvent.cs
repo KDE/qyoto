@@ -14,6 +14,10 @@ namespace Qyoto {
 			Keyboard = 1,
 			Other = 2,
 		}
+		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos, uint modifiers) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QContextMenuEvent$##$", "QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, const QPoint&, Qt::KeyboardModifiers)", typeof(void), typeof(QContextMenuEvent.Reason), reason, typeof(QPoint), pos, typeof(QPoint), globalPos, typeof(uint), modifiers);
+		}
 		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QContextMenuEvent$##", "QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, const QPoint&)", typeof(void), typeof(QContextMenuEvent.Reason), reason, typeof(QPoint), pos, typeof(QPoint), globalPos);

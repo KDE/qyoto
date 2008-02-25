@@ -263,6 +263,11 @@ namespace Qyoto {
 			get { return (QLocale) interceptor.Invoke("locale", "locale()", typeof(QLocale)); }
 			set { interceptor.Invoke("setLocale#", "setLocale(QLocale)", typeof(void), typeof(QLocale), value); }
 		}
+		[Q_PROPERTY("QString", "windowFilePath")]
+		public string WindowFilePath {
+			get { return (string) interceptor.Invoke("windowFilePath", "windowFilePath()", typeof(string)); }
+			set { interceptor.Invoke("setWindowFilePath$", "setWindowFilePath(QString)", typeof(void), typeof(string), value); }
+		}
 		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
 		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
 		// QWidget* QWidget(QWidgetPrivate& arg1,QWidget* arg2,Qt::WindowFlags arg3); >>>> NOT CONVERTED
@@ -290,6 +295,9 @@ namespace Qyoto {
 		}
 		public uint InternalWinId() {
 			return (uint) interceptor.Invoke("internalWinId", "internalWinId() const", typeof(uint));
+		}
+		public uint EffectiveWinId() {
+			return (uint) interceptor.Invoke("effectiveWinId", "effectiveWinId() const", typeof(uint));
 		}
 		public QStyle Style() {
 			return (QStyle) interceptor.Invoke("style", "style() const", typeof(QStyle));
@@ -360,6 +368,9 @@ namespace Qyoto {
 		public QWidget Window() {
 			return (QWidget) interceptor.Invoke("window", "window() const", typeof(QWidget));
 		}
+		public QWidget NativeParentWidget() {
+			return (QWidget) interceptor.Invoke("nativeParentWidget", "nativeParentWidget() const", typeof(QWidget));
+		}
 		public QWidget TopLevelWidget() {
 			return (QWidget) interceptor.Invoke("topLevelWidget", "topLevelWidget() const", typeof(QWidget));
 		}
@@ -410,6 +421,18 @@ namespace Qyoto {
 		}
 		public void Render(IQPaintDevice target) {
 			interceptor.Invoke("render#", "render(QPaintDevice*)", typeof(void), typeof(IQPaintDevice), target);
+		}
+		public void Render(QPainter painter, QPoint targetOffset, QRegion sourceRegion, uint renderFlags) {
+			interceptor.Invoke("render###$", "render(QPainter*, const QPoint&, const QRegion&, QWidget::RenderFlags)", typeof(void), typeof(QPainter), painter, typeof(QPoint), targetOffset, typeof(QRegion), sourceRegion, typeof(uint), renderFlags);
+		}
+		public void Render(QPainter painter, QPoint targetOffset, QRegion sourceRegion) {
+			interceptor.Invoke("render###", "render(QPainter*, const QPoint&, const QRegion&)", typeof(void), typeof(QPainter), painter, typeof(QPoint), targetOffset, typeof(QRegion), sourceRegion);
+		}
+		public void Render(QPainter painter, QPoint targetOffset) {
+			interceptor.Invoke("render##", "render(QPainter*, const QPoint&)", typeof(void), typeof(QPainter), painter, typeof(QPoint), targetOffset);
+		}
+		public void Render(QPainter painter) {
+			interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), painter);
 		}
 		public void SetWindowRole(string arg1) {
 			interceptor.Invoke("setWindowRole$", "setWindowRole(const QString&)", typeof(void), typeof(string), arg1);
@@ -535,7 +558,7 @@ namespace Qyoto {
 			interceptor.Invoke("overrideWindowState$", "overrideWindowState(Qt::WindowStates)", typeof(void), typeof(uint), state);
 		}
 		[SmokeMethod("sizeHint() const")]
-		public virtual QSize SizeHint() {
+		public new virtual QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
 		[SmokeMethod("minimumSizeHint() const")]

@@ -167,6 +167,18 @@ namespace Qyoto {
 		public string FileName() {
 			return (string) interceptor.Invoke("fileName", "fileName() const", typeof(string));
 		}
+		public QSettings.Format format() {
+			return (QSettings.Format) interceptor.Invoke("format", "format() const", typeof(QSettings.Format));
+		}
+		public QSettings.Scope scope() {
+			return (QSettings.Scope) interceptor.Invoke("scope", "scope() const", typeof(QSettings.Scope));
+		}
+		public string OrganizationName() {
+			return (string) interceptor.Invoke("organizationName", "organizationName() const", typeof(string));
+		}
+		public string ApplicationName() {
+			return (string) interceptor.Invoke("applicationName", "applicationName() const", typeof(string));
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
@@ -182,6 +194,12 @@ namespace Qyoto {
 		}
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
+		}
+		public static void SetDefaultFormat(QSettings.Format format) {
+			staticInterceptor.Invoke("setDefaultFormat$", "setDefaultFormat(QSettings::Format)", typeof(void), typeof(QSettings.Format), format);
+		}
+		public static QSettings.Format DefaultFormat() {
+			return (QSettings.Format) staticInterceptor.Invoke("defaultFormat", "defaultFormat()", typeof(QSettings.Format));
 		}
 		public static void SetSystemIniPath(string dir) {
 			staticInterceptor.Invoke("setSystemIniPath$", "setSystemIniPath(const QString&)", typeof(void), typeof(string), dir);

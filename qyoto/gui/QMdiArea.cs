@@ -23,11 +23,36 @@ namespace Qyoto {
 		public enum WindowOrder {
 			CreationOrder = 0,
 			StackingOrder = 1,
+			ActivationHistoryOrder = 2,
+		}
+		public enum ViewMode {
+			SubWindowView = 0,
+			TabbedView = 1,
 		}
 		[Q_PROPERTY("QBrush", "background")]
 		public QBrush Background {
 			get { return (QBrush) interceptor.Invoke("background", "background()", typeof(QBrush)); }
 			set { interceptor.Invoke("setBackground#", "setBackground(QBrush)", typeof(void), typeof(QBrush), value); }
+		}
+		[Q_PROPERTY("QMdiArea::WindowOrder", "activationOrder")]
+		public QMdiArea.WindowOrder ActivationOrder {
+			get { return (QMdiArea.WindowOrder) interceptor.Invoke("activationOrder", "activationOrder()", typeof(QMdiArea.WindowOrder)); }
+			set { interceptor.Invoke("setActivationOrder$", "setActivationOrder(QMdiArea::WindowOrder)", typeof(void), typeof(QMdiArea.WindowOrder), value); }
+		}
+		[Q_PROPERTY("QMdiArea::ViewMode", "viewMode")]
+		public QMdiArea.ViewMode viewMode {
+			get { return (QMdiArea.ViewMode) interceptor.Invoke("viewMode", "viewMode()", typeof(QMdiArea.ViewMode)); }
+			set { interceptor.Invoke("setViewMode$", "setViewMode(QMdiArea::ViewMode)", typeof(void), typeof(QMdiArea.ViewMode), value); }
+		}
+		[Q_PROPERTY("QTabWidget::TabShape", "tabShape")]
+		public QTabWidget.TabShape TabShape {
+			get { return (QTabWidget.TabShape) interceptor.Invoke("tabShape", "tabShape()", typeof(QTabWidget.TabShape)); }
+			set { interceptor.Invoke("setTabShape$", "setTabShape(QTabWidget::TabShape)", typeof(void), typeof(QTabWidget.TabShape), value); }
+		}
+		[Q_PROPERTY("QTabWidget::TabPosition", "tabPosition")]
+		public QTabWidget.TabPosition TabPosition {
+			get { return (QTabWidget.TabPosition) interceptor.Invoke("tabPosition", "tabPosition()", typeof(QTabWidget.TabPosition)); }
+			set { interceptor.Invoke("setTabPosition$", "setTabPosition(QTabWidget::TabPosition)", typeof(void), typeof(QTabWidget.TabPosition), value); }
 		}
 		public QMdiArea(QWidget parent) : this((Type) null) {
 			CreateProxy();

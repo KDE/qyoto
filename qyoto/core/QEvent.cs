@@ -11,6 +11,10 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QEvent), this);
 		}
+		private static SmokeInvocation staticInterceptor = null;
+		static QEvent() {
+			staticInterceptor = new SmokeInvocation(typeof(QEvent), null);
+		}
 		public enum TypeOf {
 			None = 0,
 			Timer = 1,
@@ -145,6 +149,17 @@ namespace Qyoto {
 			NonClientAreaMouseButtonDblClick = 176,
 			MacSizeChange = 177,
 			ContentsRectChange = 178,
+			MacGLWindowChange = 179,
+			FutureCallOut = 180,
+			GraphicsSceneResize = 181,
+			GraphicsSceneMove = 182,
+			CursorChange = 183,
+			ToolTipChange = 184,
+			NetworkReplyUpdated = 185,
+			GrabMouse = 186,
+			UngrabMouse = 187,
+			GrabKeyboard = 188,
+			UngrabKeyboard = 189,
 			User = 1000,
 			MaxUser = 65535,
 		}
@@ -174,6 +189,12 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QEvent", "~QEvent()", typeof(void));
+		}
+		public static int RegisterEventType(int hint) {
+			return (int) staticInterceptor.Invoke("registerEventType$", "registerEventType(int)", typeof(int), typeof(int), hint);
+		}
+		public static int RegisterEventType() {
+			return (int) staticInterceptor.Invoke("registerEventType", "registerEventType()", typeof(int));
 		}
 	}
 }

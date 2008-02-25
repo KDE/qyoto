@@ -130,12 +130,15 @@ namespace Qyoto {
 			return (Qt.Corner) interceptor.Invoke("originCorner", "originCorner() const", typeof(Qt.Corner));
 		}
 		[SmokeMethod("itemAt(int) const")]
-		public override QLayoutItem ItemAt(int arg1) {
-			return (QLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(QLayoutItem), typeof(int), arg1);
+		public override QLayoutItem ItemAt(int index) {
+			return (QLayoutItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(QLayoutItem), typeof(int), index);
+		}
+		public QLayoutItem ItemAtPosition(int row, int column) {
+			return (QLayoutItem) interceptor.Invoke("itemAtPosition$$", "itemAtPosition(int, int) const", typeof(QLayoutItem), typeof(int), row, typeof(int), column);
 		}
 		[SmokeMethod("takeAt(int)")]
-		public override QLayoutItem TakeAt(int arg1) {
-			return (QLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(QLayoutItem), typeof(int), arg1);
+		public override QLayoutItem TakeAt(int index) {
+			return (QLayoutItem) interceptor.Invoke("takeAt$", "takeAt(int)", typeof(QLayoutItem), typeof(int), index);
 		}
 		[SmokeMethod("count() const")]
 		public override int Count() {

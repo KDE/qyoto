@@ -22,6 +22,12 @@ namespace Qyoto {
 			SslClientMode = 1,
 			SslServerMode = 2,
 		}
+		public enum PeerVerifyMode {
+			VerifyNone = 0,
+			QueryPeer = 1,
+			VerifyPeer = 2,
+			AutoVerifyPeer = 3,
+		}
 		// QList<QSslError> sslErrors(); >>>> NOT CONVERTED
 		public QSslSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -58,6 +64,18 @@ namespace Qyoto {
 		public void SetProtocol(QSsl.SslProtocol protocol) {
 			interceptor.Invoke("setProtocol$", "setProtocol(QSsl::SslProtocol)", typeof(void), typeof(QSsl.SslProtocol), protocol);
 		}
+		public QSslSocket.PeerVerifyMode peerVerifyMode() {
+			return (QSslSocket.PeerVerifyMode) interceptor.Invoke("peerVerifyMode", "peerVerifyMode() const", typeof(QSslSocket.PeerVerifyMode));
+		}
+		public void SetPeerVerifyMode(QSslSocket.PeerVerifyMode mode) {
+			interceptor.Invoke("setPeerVerifyMode$", "setPeerVerifyMode(QSslSocket::PeerVerifyMode)", typeof(void), typeof(QSslSocket.PeerVerifyMode), mode);
+		}
+		public int PeerVerifyDepth() {
+			return (int) interceptor.Invoke("peerVerifyDepth", "peerVerifyDepth() const", typeof(int));
+		}
+		public void SetPeerVerifyDepth(int depth) {
+			interceptor.Invoke("setPeerVerifyDepth$", "setPeerVerifyDepth(int)", typeof(void), typeof(int), depth);
+		}
 		[SmokeMethod("bytesAvailable() const")]
 		public override long BytesAvailable() {
 			return (long) interceptor.Invoke("bytesAvailable", "bytesAvailable() const", typeof(long));
@@ -83,6 +101,21 @@ namespace Qyoto {
 		}
 		public new void Abort() {
 			interceptor.Invoke("abort", "abort()", typeof(void));
+		}
+		public new void SetReadBufferSize(long size) {
+			interceptor.Invoke("setReadBufferSize$", "setReadBufferSize(qint64)", typeof(void), typeof(long), size);
+		}
+		public long EncryptedBytesAvailable() {
+			return (long) interceptor.Invoke("encryptedBytesAvailable", "encryptedBytesAvailable() const", typeof(long));
+		}
+		public long EncryptedBytesToWrite() {
+			return (long) interceptor.Invoke("encryptedBytesToWrite", "encryptedBytesToWrite() const", typeof(long));
+		}
+		public QSslConfiguration SslConfiguration() {
+			return (QSslConfiguration) interceptor.Invoke("sslConfiguration", "sslConfiguration() const", typeof(QSslConfiguration));
+		}
+		public void SetSslConfiguration(QSslConfiguration config) {
+			interceptor.Invoke("setSslConfiguration#", "setSslConfiguration(const QSslConfiguration&)", typeof(void), typeof(QSslConfiguration), config);
 		}
 		public void SetLocalCertificate(QSslCertificate certificate) {
 			interceptor.Invoke("setLocalCertificate#", "setLocalCertificate(const QSslCertificate&)", typeof(void), typeof(QSslCertificate), certificate);
@@ -269,9 +302,13 @@ namespace Qyoto {
 	public interface IQSslSocketSignals : IQTcpSocketSignals {
 		[Q_SIGNAL("void encrypted()")]
 		void Encrypted();
+		[Q_SIGNAL("void peerVerifyError(const QSslError&)")]
+		void PeerVerifyError(QSslError error);
 		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
 		void SslErrors(List<QSslError> errors);
 		[Q_SIGNAL("void modeChanged(QSslSocket::SslMode)")]
 		void ModeChanged(QSslSocket.SslMode newMode);
+		[Q_SIGNAL("void encryptedBytesWritten(qint64)")]
+		void EncryptedBytesWritten(long totalBytes);
 	}
 }

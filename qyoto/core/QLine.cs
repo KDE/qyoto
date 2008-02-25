@@ -60,6 +60,24 @@ namespace Qyoto {
 		public void Translate(int dx, int dy) {
 			interceptor.Invoke("translate$$", "translate(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
 		}
+		public QLine Translated(QPoint p) {
+			return (QLine) interceptor.Invoke("translated#", "translated(const QPoint&) const", typeof(QLine), typeof(QPoint), p);
+		}
+		public QLine Translated(int dx, int dy) {
+			return (QLine) interceptor.Invoke("translated$$", "translated(int, int) const", typeof(QLine), typeof(int), dx, typeof(int), dy);
+		}
+		public void SetP1(QPoint p1) {
+			interceptor.Invoke("setP1#", "setP1(const QPoint&)", typeof(void), typeof(QPoint), p1);
+		}
+		public void SetP2(QPoint p2) {
+			interceptor.Invoke("setP2#", "setP2(const QPoint&)", typeof(void), typeof(QPoint), p2);
+		}
+		public void SetPoints(QPoint p1, QPoint p2) {
+			interceptor.Invoke("setPoints##", "setPoints(const QPoint&, const QPoint&)", typeof(void), typeof(QPoint), p1, typeof(QPoint), p2);
+		}
+		public void SetLine(int x1, int y1, int x2, int y2) {
+			interceptor.Invoke("setLine$$$$", "setLine(int, int, int, int)", typeof(void), typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2);
+		}
 		public override bool Equals(object o) {
 			if (!(o is QLine)) { return false; }
 			return this == (QLine) o;

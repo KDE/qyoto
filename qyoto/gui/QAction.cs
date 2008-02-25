@@ -105,6 +105,11 @@ namespace Qyoto {
 			get { return (QAction.MenuRole) interceptor.Invoke("menuRole", "menuRole()", typeof(QAction.MenuRole)); }
 			set { interceptor.Invoke("setMenuRole$", "setMenuRole(QAction::MenuRole)", typeof(void), typeof(QAction.MenuRole), value); }
 		}
+		[Q_PROPERTY("bool", "iconVisibleInMenu")]
+		public bool IconVisibleInMenu {
+			get { return (bool) interceptor.Invoke("isIconVisibleInMenu", "isIconVisibleInMenu()", typeof(bool)); }
+			set { interceptor.Invoke("setIconVisibleInMenu$", "setIconVisibleInMenu(bool)", typeof(void), typeof(bool), value); }
+		}
 		// QAction* QAction(QActionPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		public QAction(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -69,6 +69,15 @@ namespace Qyoto {
 		public void SetLength(double len) {
 			interceptor.Invoke("setLength$", "setLength(qreal)", typeof(void), typeof(double), len);
 		}
+		public double Angle() {
+			return (double) interceptor.Invoke("angle", "angle() const", typeof(double));
+		}
+		public void SetAngle(double angle) {
+			interceptor.Invoke("setAngle$", "setAngle(qreal)", typeof(void), typeof(double), angle);
+		}
+		public double AngleTo(QLineF l) {
+			return (double) interceptor.Invoke("angleTo#", "angleTo(const QLineF&) const", typeof(double), typeof(QLineF), l);
+		}
 		public QLineF UnitVector() {
 			return (QLineF) interceptor.Invoke("unitVector", "unitVector() const", typeof(QLineF));
 		}
@@ -89,6 +98,24 @@ namespace Qyoto {
 		}
 		public void Translate(double dx, double dy) {
 			interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
+		}
+		public QLineF Translated(QPointF p) {
+			return (QLineF) interceptor.Invoke("translated#", "translated(const QPointF&) const", typeof(QLineF), typeof(QPointF), p);
+		}
+		public QLineF Translated(double dx, double dy) {
+			return (QLineF) interceptor.Invoke("translated$$", "translated(qreal, qreal) const", typeof(QLineF), typeof(double), dx, typeof(double), dy);
+		}
+		public void SetP1(QPointF p1) {
+			interceptor.Invoke("setP1#", "setP1(const QPointF&)", typeof(void), typeof(QPointF), p1);
+		}
+		public void SetP2(QPointF p2) {
+			interceptor.Invoke("setP2#", "setP2(const QPointF&)", typeof(void), typeof(QPointF), p2);
+		}
+		public void SetPoints(QPointF p1, QPointF p2) {
+			interceptor.Invoke("setPoints##", "setPoints(const QPointF&, const QPointF&)", typeof(void), typeof(QPointF), p1, typeof(QPointF), p2);
+		}
+		public void SetLine(double x1, double y1, double x2, double y2) {
+			interceptor.Invoke("setLine$$$$", "setLine(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x1, typeof(double), y1, typeof(double), x2, typeof(double), y2);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QLineF)) { return false; }
@@ -111,6 +138,9 @@ namespace Qyoto {
 		}
 		public static bool operator!=(QLineF lhs, QLineF d) {
 			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QLineF&) const", typeof(bool), typeof(QLineF), lhs, typeof(QLineF), d);
+		}
+		public static QLineF FromPolar(double length, double angle) {
+			return (QLineF) staticInterceptor.Invoke("fromPolar$$", "fromPolar(qreal, qreal)", typeof(QLineF), typeof(double), length, typeof(double), angle);
 		}
 		public static QLineF operator*(QLineF l, QMatrix m) {
 			return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QMatrix&)", typeof(QLineF), typeof(QLineF), l, typeof(QMatrix), m);

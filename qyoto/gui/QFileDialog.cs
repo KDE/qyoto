@@ -82,6 +82,11 @@ namespace Qyoto {
 			get { return (string) interceptor.Invoke("defaultSuffix", "defaultSuffix()", typeof(string)); }
 			set { interceptor.Invoke("setDefaultSuffix$", "setDefaultSuffix(QString)", typeof(void), typeof(string), value); }
 		}
+		[Q_PROPERTY("bool", "nameFilterDetailsVisible")]
+		public bool NameFilterDetailsVisible {
+			get { return (bool) interceptor.Invoke("isNameFilterDetailsVisible", "isNameFilterDetailsVisible()", typeof(bool)); }
+			set { interceptor.Invoke("setNameFilterDetailsVisible$", "setNameFilterDetailsVisible(bool)", typeof(void), typeof(bool), value); }
+		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
 		public QFileDialog(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
@@ -122,20 +127,26 @@ namespace Qyoto {
 		public List<string> SelectedFiles() {
 			return (List<string>) interceptor.Invoke("selectedFiles", "selectedFiles() const", typeof(List<string>));
 		}
-		public void SetFilter(string filter) {
-			interceptor.Invoke("setFilter$", "setFilter(const QString&)", typeof(void), typeof(string), filter);
+		public void SetNameFilter(string filter) {
+			interceptor.Invoke("setNameFilter$", "setNameFilter(const QString&)", typeof(void), typeof(string), filter);
 		}
-		public void SetFilters(List<string> filters) {
-			interceptor.Invoke("setFilters?", "setFilters(const QStringList&)", typeof(void), typeof(List<string>), filters);
+		public void SetNameFilters(List<string> filters) {
+			interceptor.Invoke("setNameFilters?", "setNameFilters(const QStringList&)", typeof(void), typeof(List<string>), filters);
 		}
-		public List<string> Filters() {
-			return (List<string>) interceptor.Invoke("filters", "filters() const", typeof(List<string>));
+		public List<string> NameFilters() {
+			return (List<string>) interceptor.Invoke("nameFilters", "nameFilters() const", typeof(List<string>));
 		}
-		public void SelectFilter(string filter) {
-			interceptor.Invoke("selectFilter$", "selectFilter(const QString&)", typeof(void), typeof(string), filter);
+		public void SelectNameFilter(string filter) {
+			interceptor.Invoke("selectNameFilter$", "selectNameFilter(const QString&)", typeof(void), typeof(string), filter);
 		}
-		public string SelectedFilter() {
-			return (string) interceptor.Invoke("selectedFilter", "selectedFilter() const", typeof(string));
+		public string SelectedNameFilter() {
+			return (string) interceptor.Invoke("selectedNameFilter", "selectedNameFilter() const", typeof(string));
+		}
+		public uint Filter() {
+			return (uint) interceptor.Invoke("filter", "filter() const", typeof(uint));
+		}
+		public void SetFilter(uint filters) {
+			interceptor.Invoke("setFilter$", "setFilter(QDir::Filters)", typeof(void), typeof(uint), filters);
 		}
 		public void SetSidebarUrls(List<QUrl> urls) {
 			interceptor.Invoke("setSidebarUrls?", "setSidebarUrls(const QList<QUrl>&)", typeof(void), typeof(List<QUrl>), urls);

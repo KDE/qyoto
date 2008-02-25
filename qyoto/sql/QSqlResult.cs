@@ -20,6 +20,7 @@ namespace Qyoto {
 			BatchOperation = 0,
 			DetachFromResultSet = 1,
 			SetNumericalPrecision = 2,
+			NextResult = 3,
 		}
 		public QSqlResult(QSqlDriver db) : this((Type) null) {
 			CreateProxy();
@@ -172,6 +173,9 @@ namespace Qyoto {
 		}
 		protected void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy policy) {
 			interceptor.Invoke("setNumericalPrecisionPolicy$", "setNumericalPrecisionPolicy(QSql::NumericalPrecisionPolicy)", typeof(void), typeof(QSql.NumericalPrecisionPolicy), policy);
+		}
+		protected bool NextResult() {
+			return (bool) interceptor.Invoke("nextResult", "nextResult()", typeof(bool));
 		}
 	}
 }

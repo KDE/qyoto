@@ -144,6 +144,10 @@ namespace Qyoto {
 		protected override void FocusInEvent(QFocusEvent arg1) {
 			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
 		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
+		protected override void TimerEvent(QTimerEvent arg1) {
+			interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);
+		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);

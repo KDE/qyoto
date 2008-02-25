@@ -111,6 +111,12 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return interceptor.GetHashCode();
 		}
+		public void SetUtcOffset(int seconds) {
+			interceptor.Invoke("setUtcOffset$", "setUtcOffset(int)", typeof(void), typeof(int), seconds);
+		}
+		public int UtcOffset() {
+			return (int) interceptor.Invoke("utcOffset", "utcOffset() const", typeof(int));
+		}
 		~QDateTime() {
 			interceptor.Invoke("~QDateTime", "~QDateTime()", typeof(void));
 		}

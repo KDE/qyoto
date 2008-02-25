@@ -82,6 +82,9 @@ namespace Qyoto {
 		public void EndLayout() {
 			interceptor.Invoke("endLayout", "endLayout()", typeof(void));
 		}
+		public void ClearLayout() {
+			interceptor.Invoke("clearLayout", "clearLayout()", typeof(void));
+		}
 		public QTextLine CreateLine() {
 			return (QTextLine) interceptor.Invoke("createLine", "createLine()", typeof(QTextLine));
 		}
@@ -132,6 +135,9 @@ namespace Qyoto {
 		}
 		public double MaximumWidth() {
 			return (double) interceptor.Invoke("maximumWidth", "maximumWidth() const", typeof(double));
+		}
+		public void SetFlags(int flags) {
+			interceptor.Invoke("setFlags$", "setFlags(int)", typeof(void), typeof(int), flags);
 		}
 		~QTextLayout() {
 			interceptor.Invoke("~QTextLayout", "~QTextLayout()", typeof(void));

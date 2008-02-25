@@ -82,6 +82,9 @@ namespace Qyoto {
 		public QMenu SystemMenu() {
 			return (QMenu) interceptor.Invoke("systemMenu", "systemMenu() const", typeof(QMenu));
 		}
+		public QMdiArea MdiArea() {
+			return (QMdiArea) interceptor.Invoke("mdiArea", "mdiArea() const", typeof(QMdiArea));
+		}
 		[Q_SLOT("void showSystemMenu()")]
 		public void ShowSystemMenu() {
 			interceptor.Invoke("showSystemMenu", "showSystemMenu()", typeof(void));

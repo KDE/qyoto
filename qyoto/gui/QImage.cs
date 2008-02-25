@@ -27,7 +27,15 @@ namespace Qyoto {
 			Format_ARGB32 = 5,
 			Format_ARGB32_Premultiplied = 6,
 			Format_RGB16 = 7,
-			NImageFormats = 8,
+			Format_ARGB8565_Premultiplied = 8,
+			Format_RGB666 = 9,
+			Format_ARGB6666_Premultiplied = 10,
+			Format_RGB555 = 11,
+			Format_ARGB8555_Premultiplied = 12,
+			Format_RGB888 = 13,
+			Format_RGB444 = 14,
+			Format_ARGB4444_Premultiplied = 15,
+			NImageFormats = 16,
 		}
 		// QImage* QImage(const char** arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED

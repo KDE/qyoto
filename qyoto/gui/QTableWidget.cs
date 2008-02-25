@@ -94,8 +94,14 @@ namespace Qyoto {
 		public void SetCurrentItem(QTableWidgetItem item) {
 			interceptor.Invoke("setCurrentItem#", "setCurrentItem(QTableWidgetItem*)", typeof(void), typeof(QTableWidgetItem), item);
 		}
+		public void SetCurrentItem(QTableWidgetItem item, uint command) {
+			interceptor.Invoke("setCurrentItem#$", "setCurrentItem(QTableWidgetItem*, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QTableWidgetItem), item, typeof(uint), command);
+		}
 		public void SetCurrentCell(int row, int column) {
 			interceptor.Invoke("setCurrentCell$$", "setCurrentCell(int, int)", typeof(void), typeof(int), row, typeof(int), column);
+		}
+		public void SetCurrentCell(int row, int column, uint command) {
+			interceptor.Invoke("setCurrentCell$$$", "setCurrentCell(int, int, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(int), row, typeof(int), column, typeof(uint), command);
 		}
 		public void SortItems(int column, Qt.SortOrder order) {
 			interceptor.Invoke("sortItems$$", "sortItems(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);

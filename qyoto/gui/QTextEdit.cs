@@ -151,6 +151,9 @@ namespace Qyoto {
 		public QColor TextColor() {
 			return (QColor) interceptor.Invoke("textColor", "textColor() const", typeof(QColor));
 		}
+		public QColor TextBackgroundColor() {
+			return (QColor) interceptor.Invoke("textBackgroundColor", "textBackgroundColor() const", typeof(QColor));
+		}
 		public QFont CurrentFont() {
 			return (QFont) interceptor.Invoke("currentFont", "currentFont() const", typeof(QFont));
 		}
@@ -181,6 +184,9 @@ namespace Qyoto {
 		}
 		public QMenu CreateStandardContextMenu() {
 			return (QMenu) interceptor.Invoke("createStandardContextMenu", "createStandardContextMenu()", typeof(QMenu));
+		}
+		public QMenu CreateStandardContextMenu(QPoint position) {
+			return (QMenu) interceptor.Invoke("createStandardContextMenu#", "createStandardContextMenu(const QPoint&)", typeof(QMenu), typeof(QPoint), position);
 		}
 		public QTextCursor CursorForPosition(QPoint pos) {
 			return (QTextCursor) interceptor.Invoke("cursorForPosition#", "cursorForPosition(const QPoint&) const", typeof(QTextCursor), typeof(QPoint), pos);
@@ -229,6 +235,10 @@ namespace Qyoto {
 		[Q_SLOT("void setTextColor(const QColor&)")]
 		public void SetTextColor(QColor c) {
 			interceptor.Invoke("setTextColor#", "setTextColor(const QColor&)", typeof(void), typeof(QColor), c);
+		}
+		[Q_SLOT("void setTextBackgroundColor(const QColor&)")]
+		public void SetTextBackgroundColor(QColor c) {
+			interceptor.Invoke("setTextBackgroundColor#", "setTextBackgroundColor(const QColor&)", typeof(void), typeof(QColor), c);
 		}
 		[Q_SLOT("void setCurrentFont(const QFont&)")]
 		public void SetCurrentFont(QFont f) {

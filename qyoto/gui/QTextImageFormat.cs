@@ -34,6 +34,10 @@ namespace Qyoto {
 		public double Height() {
 			return (double) interceptor.Invoke("height", "height() const", typeof(double));
 		}
+		public QTextImageFormat(QTextFormat format) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QTextImageFormat#", "QTextImageFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), format);
+		}
 		~QTextImageFormat() {
 			interceptor.Invoke("~QTextImageFormat", "~QTextImageFormat()", typeof(void));
 		}

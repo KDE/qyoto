@@ -207,6 +207,9 @@ namespace Qyoto {
 		public void InsertItems(int index, List<string> texts) {
 			interceptor.Invoke("insertItems$?", "insertItems(int, const QStringList&)", typeof(void), typeof(int), index, typeof(List<string>), texts);
 		}
+		public void InsertSeparator(int index) {
+			interceptor.Invoke("insertSeparator$", "insertSeparator(int)", typeof(void), typeof(int), index);
+		}
 		public void RemoveItem(int index) {
 			interceptor.Invoke("removeItem$", "removeItem(int)", typeof(void), typeof(int), index);
 		}

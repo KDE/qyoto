@@ -100,6 +100,12 @@ namespace Qyoto {
 		public bool MovePosition(QTextCursor.MoveOperation op) {
 			return (bool) interceptor.Invoke("movePosition$", "movePosition(QTextCursor::MoveOperation)", typeof(bool), typeof(QTextCursor.MoveOperation), op);
 		}
+		public bool VisualNavigation() {
+			return (bool) interceptor.Invoke("visualNavigation", "visualNavigation() const", typeof(bool));
+		}
+		public void SetVisualNavigation(bool b) {
+			interceptor.Invoke("setVisualNavigation$", "setVisualNavigation(bool)", typeof(void), typeof(bool), b);
+		}
 		public void DeleteChar() {
 			interceptor.Invoke("deleteChar", "deleteChar()", typeof(void));
 		}

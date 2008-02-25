@@ -305,6 +305,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QStandardItem#", "QStandardItem(const QStandardItem&)", typeof(void), typeof(QStandardItem), other);
 		}
+		protected void EmitDataChanged() {
+			interceptor.Invoke("emitDataChanged", "emitDataChanged()", typeof(void));
+		}
 		~QStandardItem() {
 			interceptor.Invoke("~QStandardItem", "~QStandardItem()", typeof(void));
 		}

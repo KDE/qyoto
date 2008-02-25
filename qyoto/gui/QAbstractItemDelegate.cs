@@ -36,7 +36,7 @@ namespace Qyoto {
 		[SmokeMethod("paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public abstract void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index);
 		[SmokeMethod("sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const")]
-		public abstract QSize SizeHint(QStyleOptionViewItem option, QModelIndex index);
+		public new abstract QSize SizeHint(QStyleOptionViewItem option, QModelIndex index);
 		[SmokeMethod("createEditor(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual QWidget CreateEditor(QWidget parent, QStyleOptionViewItem option, QModelIndex index) {
 			return (QWidget) interceptor.Invoke("createEditor###", "createEditor(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", typeof(QWidget), typeof(QWidget), parent, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
@@ -82,5 +82,7 @@ namespace Qyoto {
 		void CloseEditor(QWidget editor, QAbstractItemDelegate.EndEditHint hint);
 		[Q_SIGNAL("void closeEditor(QWidget*)")]
 		void CloseEditor(QWidget editor);
+		[Q_SIGNAL("void sizeHintChanged(const QModelIndex&)")]
+		void SizeHintChanged(QModelIndex arg1);
 	}
 }

@@ -90,6 +90,9 @@ namespace Qyoto {
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
+		public QMetaObject EnclosingMetaObject() {
+			return (QMetaObject) interceptor.Invoke("enclosingMetaObject", "enclosingMetaObject() const", typeof(QMetaObject));
+		}
 		~QMetaProperty() {
 			interceptor.Invoke("~QMetaProperty", "~QMetaProperty()", typeof(void));
 		}

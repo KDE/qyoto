@@ -35,6 +35,30 @@ namespace Qyoto {
 		public void SetScreenPos(QPoint pos) {
 			interceptor.Invoke("setScreenPos#", "setScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
 		}
+		public QPointF LastPos() {
+			return (QPointF) interceptor.Invoke("lastPos", "lastPos() const", typeof(QPointF));
+		}
+		public void SetLastPos(QPointF pos) {
+			interceptor.Invoke("setLastPos#", "setLastPos(const QPointF&)", typeof(void), typeof(QPointF), pos);
+		}
+		public QPointF LastScenePos() {
+			return (QPointF) interceptor.Invoke("lastScenePos", "lastScenePos() const", typeof(QPointF));
+		}
+		public void SetLastScenePos(QPointF pos) {
+			interceptor.Invoke("setLastScenePos#", "setLastScenePos(const QPointF&)", typeof(void), typeof(QPointF), pos);
+		}
+		public QPoint LastScreenPos() {
+			return (QPoint) interceptor.Invoke("lastScreenPos", "lastScreenPos() const", typeof(QPoint));
+		}
+		public void SetLastScreenPos(QPoint pos) {
+			interceptor.Invoke("setLastScreenPos#", "setLastScreenPos(const QPoint&)", typeof(void), typeof(QPoint), pos);
+		}
+		public uint Modifiers() {
+			return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
+		}
+		public void SetModifiers(uint modifiers) {
+			interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(uint), modifiers);
+		}
 		~QGraphicsSceneHoverEvent() {
 			interceptor.Invoke("~QGraphicsSceneHoverEvent", "~QGraphicsSceneHoverEvent()", typeof(void));
 		}

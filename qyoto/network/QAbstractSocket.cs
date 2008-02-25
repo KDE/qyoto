@@ -40,6 +40,7 @@ namespace Qyoto {
 			UnsupportedSocketOperationError = 10,
 			UnfinishedSocketOperationError = 11,
 			ProxyAuthenticationRequiredError = 12,
+			SslHandshakeFailedError = 13,
 			UnknownSocketError = -1,
 		}
 		public enum SocketState {

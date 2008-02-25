@@ -192,7 +192,7 @@ namespace Qyoto {
 			interceptor.Invoke("restart", "restart()", typeof(void));
 		}
 		[SmokeMethod("event(QEvent*)")]
-		protected new virtual bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]

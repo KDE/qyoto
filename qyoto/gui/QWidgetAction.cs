@@ -34,6 +34,10 @@ namespace Qyoto {
 		protected override bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
+		}
 		[SmokeMethod("createWidget(QWidget*)")]
 		protected virtual QWidget CreateWidget(QWidget parent) {
 			return (QWidget) interceptor.Invoke("createWidget#", "createWidget(QWidget*)", typeof(QWidget), typeof(QWidget), parent);

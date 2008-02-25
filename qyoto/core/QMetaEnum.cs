@@ -45,6 +45,9 @@ namespace Qyoto {
 		public QByteArray ValueToKeys(int value) {
 			return (QByteArray) interceptor.Invoke("valueToKeys$", "valueToKeys(int) const", typeof(QByteArray), typeof(int), value);
 		}
+		public QMetaObject EnclosingMetaObject() {
+			return (QMetaObject) interceptor.Invoke("enclosingMetaObject", "enclosingMetaObject() const", typeof(QMetaObject));
+		}
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}

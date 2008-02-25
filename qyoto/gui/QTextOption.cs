@@ -12,6 +12,12 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTextOption), this);
 		}
+		public enum TabType {
+			LeftTab = 0,
+			RightTab = 1,
+			CenterTab = 2,
+			DelimiterTab = 3,
+		}
 		public enum WrapMode {
 			NoWrap = 0,
 			WordWrap = 1,
@@ -22,6 +28,8 @@ namespace Qyoto {
 		public enum Flag : long {
 			IncludeTrailingSpaces = 0x80000000,
 		}
+		// void setTabs(QList<QTextOption::Tab> arg1); >>>> NOT CONVERTED
+		// QList<QTextOption::Tab> tabs(); >>>> NOT CONVERTED
 		public QTextOption() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextOption", "QTextOption()", typeof(void));

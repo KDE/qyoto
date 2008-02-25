@@ -37,6 +37,10 @@ namespace Qyoto {
 		public int Indent() {
 			return (int) interceptor.Invoke("indent", "indent() const", typeof(int));
 		}
+		public QTextListFormat(QTextFormat fmt) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QTextListFormat#", "QTextListFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), fmt);
+		}
 		~QTextListFormat() {
 			interceptor.Invoke("~QTextListFormat", "~QTextListFormat()", typeof(void));
 		}

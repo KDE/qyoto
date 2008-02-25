@@ -52,6 +52,16 @@ namespace Qyoto {
 			get { return (int) interceptor.Invoke("bspTreeDepth", "bspTreeDepth()", typeof(int)); }
 			set { interceptor.Invoke("setBspTreeDepth$", "setBspTreeDepth(int)", typeof(void), typeof(int), value); }
 		}
+		[Q_PROPERTY("QPalette", "palette")]
+		public QPalette Palette {
+			get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
+			set { interceptor.Invoke("setPalette#", "setPalette(QPalette)", typeof(void), typeof(QPalette), value); }
+		}
+		[Q_PROPERTY("QFont", "font")]
+		public QFont Font {
+			get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
+			set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
+		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsScene(QObject parent) : this((Type) null) {
@@ -156,9 +166,6 @@ namespace Qyoto {
 		public void SetSelectionArea(QPainterPath path, Qt.ItemSelectionMode arg2) {
 			interceptor.Invoke("setSelectionArea#$", "setSelectionArea(const QPainterPath&, Qt::ItemSelectionMode)", typeof(void), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), arg2);
 		}
-		public void ClearSelection() {
-			interceptor.Invoke("clearSelection", "clearSelection()", typeof(void));
-		}
 		public QGraphicsItemGroup CreateItemGroup(List<QGraphicsItem> items) {
 			return (QGraphicsItemGroup) interceptor.Invoke("createItemGroup?", "createItemGroup(const QList<QGraphicsItem*>&)", typeof(QGraphicsItemGroup), typeof(List<QGraphicsItem>), items);
 		}
@@ -224,6 +231,12 @@ namespace Qyoto {
 		}
 		public QGraphicsSimpleTextItem AddSimpleText(string text) {
 			return (QGraphicsSimpleTextItem) interceptor.Invoke("addSimpleText$", "addSimpleText(const QString&)", typeof(QGraphicsSimpleTextItem), typeof(string), text);
+		}
+		public QGraphicsProxyWidget AddWidget(QWidget widget, uint wFlags) {
+			return (QGraphicsProxyWidget) interceptor.Invoke("addWidget#$", "addWidget(QWidget*, Qt::WindowFlags)", typeof(QGraphicsProxyWidget), typeof(QWidget), widget, typeof(uint), wFlags);
+		}
+		public QGraphicsProxyWidget AddWidget(QWidget widget) {
+			return (QGraphicsProxyWidget) interceptor.Invoke("addWidget#", "addWidget(QWidget*)", typeof(QGraphicsProxyWidget), typeof(QWidget), widget);
 		}
 		public QGraphicsEllipseItem AddEllipse(double x, double y, double w, double h, QPen pen, QBrush brush) {
 			return (QGraphicsEllipseItem) interceptor.Invoke("addEllipse$$$$##", "addEllipse(qreal, qreal, qreal, qreal, const QPen&, const QBrush&)", typeof(QGraphicsEllipseItem), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(QPen), pen, typeof(QBrush), brush);
@@ -292,6 +305,18 @@ namespace Qyoto {
 		public void Invalidate(double x, double y, double w, double h) {
 			interceptor.Invoke("invalidate$$$$", "invalidate(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
+		public QStyle Style() {
+			return (QStyle) interceptor.Invoke("style", "style() const", typeof(QStyle));
+		}
+		public void SetStyle(QStyle style) {
+			interceptor.Invoke("setStyle#", "setStyle(QStyle*)", typeof(void), typeof(QStyle), style);
+		}
+		public QGraphicsWidget ActiveWindow() {
+			return (QGraphicsWidget) interceptor.Invoke("activeWindow", "activeWindow() const", typeof(QGraphicsWidget));
+		}
+		public void SetActiveWindow(QGraphicsWidget widget) {
+			interceptor.Invoke("setActiveWindow#", "setActiveWindow(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
+		}
 		[Q_SLOT("void update(const QRectF&)")]
 		public void Update(QRectF rect) {
 			interceptor.Invoke("update#", "update(const QRectF&)", typeof(void), typeof(QRectF), rect);
@@ -316,9 +341,21 @@ namespace Qyoto {
 		public void Advance() {
 			interceptor.Invoke("advance", "advance()", typeof(void));
 		}
+		[Q_SLOT("void clearSelection()")]
+		public void ClearSelection() {
+			interceptor.Invoke("clearSelection", "clearSelection()", typeof(void));
+		}
+		[Q_SLOT("void clear()")]
+		public void Clear() {
+			interceptor.Invoke("clear", "clear()", typeof(void));
+		}
 		[SmokeMethod("event(QEvent*)")]
 		protected new virtual bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
+		protected new virtual bool EventFilter(QObject watched, QEvent arg2) {
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
 		}
 		[SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
 		protected virtual void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
@@ -391,6 +428,10 @@ namespace Qyoto {
 		[SmokeMethod("drawForeground(QPainter*, const QRectF&)")]
 		protected virtual void DrawForeground(QPainter painter, QRectF rect) {
 			interceptor.Invoke("drawForeground##", "drawForeground(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect);
+		}
+		[Q_SLOT("bool focusNextPrevChild(bool)")]
+		protected bool FocusNextPrevChild(bool next) {
+			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
 		~QGraphicsScene() {
 			interceptor.Invoke("~QGraphicsScene", "~QGraphicsScene()", typeof(void));

@@ -71,6 +71,10 @@ namespace Qyoto {
 		public void ClearMessage() {
 			interceptor.Invoke("clearMessage", "clearMessage()", typeof(void));
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
+		protected override void ShowEvent(QShowEvent arg1) {
+			interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
+		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);

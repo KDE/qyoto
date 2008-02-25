@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAbstractPrintDialog")]
 	public abstract class QAbstractPrintDialog : QDialog {
@@ -23,7 +24,9 @@ namespace Qyoto {
 			PrintToFile = 0x0001,
 			PrintSelection = 0x0002,
 			PrintPageRange = 0x0004,
+			PrintShowPageSize = 0x0008,
 			PrintCollateCopies = 0x0010,
+			DontUseSheet = 0x0020,
 		}
 		// QAbstractPrintDialog* QAbstractPrintDialog(QAbstractPrintDialogPrivate& arg1,QPrinter* arg2,QWidget* arg3); >>>> NOT CONVERTED
 		// QAbstractPrintDialog* QAbstractPrintDialog(QAbstractPrintDialogPrivate& arg1,QPrinter* arg2); >>>> NOT CONVERTED
@@ -48,6 +51,9 @@ namespace Qyoto {
 		}
 		public bool IsOptionEnabled(QAbstractPrintDialog.PrintDialogOption option) {
 			return (bool) interceptor.Invoke("isOptionEnabled$", "isOptionEnabled(QAbstractPrintDialog::PrintDialogOption) const", typeof(bool), typeof(QAbstractPrintDialog.PrintDialogOption), option);
+		}
+		public void SetOptionTabs(List<QWidget> tabs) {
+			interceptor.Invoke("setOptionTabs?", "setOptionTabs(const QList<QWidget*>&)", typeof(void), typeof(List<QWidget>), tabs);
 		}
 		public void SetPrintRange(QAbstractPrintDialog.PrintRange range) {
 			interceptor.Invoke("setPrintRange$", "setPrintRange(QAbstractPrintDialog::PrintRange)", typeof(void), typeof(QAbstractPrintDialog.PrintRange), range);

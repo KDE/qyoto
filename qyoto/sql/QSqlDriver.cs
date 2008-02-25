@@ -4,6 +4,9 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 
+	/// <remarks> See <see cref="IQSqlDriverSignals"></see> for signals emitted by QSqlDriver
+	/// </remarks>
+
 	[SmokeClass("QSqlDriver")]
 	public abstract class QSqlDriver : QObject {
  		protected QSqlDriver(Type dummy) : base((Type) null) {}
@@ -26,6 +29,9 @@ namespace Qyoto {
 			BatchOperations = 8,
 			SimpleLocking = 9,
 			LowPrecisionNumbers = 10,
+			EventNotifications = 11,
+			FinishQuery = 12,
+			MultipleResultSets = 13,
 		}
 		public enum StatementType {
 			WhereStatement = 0,
@@ -104,6 +110,15 @@ namespace Qyoto {
 		public abstract QSqlResult CreateResult();
 		[SmokeMethod("open(const QString&, const QString&, const QString&, const QString&, int, const QString&)")]
 		public abstract bool Open(string db, string user, string password, string host, int port, string connOpts);
+		public bool SubscribeToNotification(string name) {
+			return (bool) interceptor.Invoke("subscribeToNotification$", "subscribeToNotification(const QString&)", typeof(bool), typeof(string), name);
+		}
+		public bool UnsubscribeFromNotification(string name) {
+			return (bool) interceptor.Invoke("unsubscribeFromNotification$", "unsubscribeFromNotification(const QString&)", typeof(bool), typeof(string), name);
+		}
+		public List<string> SubscribedToNotifications() {
+			return (List<string>) interceptor.Invoke("subscribedToNotifications", "subscribedToNotifications() const", typeof(List<string>));
+		}
 		[SmokeMethod("setOpen(bool)")]
 		protected virtual void SetOpen(bool o) {
 			interceptor.Invoke("setOpen$", "setOpen(bool)", typeof(void), typeof(bool), o);
@@ -115,6 +130,18 @@ namespace Qyoto {
 		[SmokeMethod("setLastError(const QSqlError&)")]
 		protected virtual void SetLastError(QSqlError e) {
 			interceptor.Invoke("setLastError#", "setLastError(const QSqlError&)", typeof(void), typeof(QSqlError), e);
+		}
+		[Q_SLOT("bool subscribeToNotificationImplementation(const QString&)")]
+		protected bool SubscribeToNotificationImplementation(string name) {
+			return (bool) interceptor.Invoke("subscribeToNotificationImplementation$", "subscribeToNotificationImplementation(const QString&)", typeof(bool), typeof(string), name);
+		}
+		[Q_SLOT("bool unsubscribeFromNotificationImplementation(const QString&)")]
+		protected bool UnsubscribeFromNotificationImplementation(string name) {
+			return (bool) interceptor.Invoke("unsubscribeFromNotificationImplementation$", "unsubscribeFromNotificationImplementation(const QString&)", typeof(bool), typeof(string), name);
+		}
+		[Q_SLOT("QStringList subscribedToNotificationsImplementation() const")]
+		protected List<string> SubscribedToNotificationsImplementation() {
+			return (List<string>) interceptor.Invoke("subscribedToNotificationsImplementation", "subscribedToNotificationsImplementation() const", typeof(List<string>));
 		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -128,5 +155,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSqlDriverSignals : IQObjectSignals {
+		[Q_SIGNAL("void notification(const QString&)")]
+		void Notification(string name);
 	}
 }

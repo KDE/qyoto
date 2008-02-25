@@ -180,5 +180,7 @@ namespace Qyoto {
 		void BytesWritten(long bytes);
 		[Q_SIGNAL("void aboutToClose()")]
 		void AboutToClose();
+		[Q_SIGNAL("void readChannelFinished()")]
+		void ReadChannelFinished();
 	}
 }

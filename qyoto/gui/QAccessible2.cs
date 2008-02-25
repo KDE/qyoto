@@ -6,6 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QAccessible2")]
 	public class QAccessible2 : Object {
 		protected SmokeInvocation interceptor = null;
+		public enum InterfaceType {
+			TextInterface = 0,
+			EditableTextInterface = 1,
+			ValueInterface = 2,
+			TableInterface = 3,
+		}
 		public enum CoordinateType {
 			RelativeToScreen = 0,
 			RelativeToParent = 1,
@@ -17,12 +23,6 @@ namespace Qyoto {
 			ParagraphBoundary = 3,
 			LineBoundary = 4,
 			NoBoundary = 5,
-		}
-		public enum InterfaceType {
-			TextInterface = 0,
-			EditableTextInterface = 1,
-			ValueInterface = 2,
-			TableInterface = 3,
 		}
 	}
 }

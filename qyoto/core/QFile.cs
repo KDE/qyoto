@@ -44,6 +44,9 @@ namespace Qyoto {
 			WriteOther = 0x0002,
 			ExeOther = 0x0001,
 		}
+		public enum MemoryMapFlags {
+			NoOptions = 0,
+		}
 		// QFile* QFile(QFilePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		// QFile* QFile(QFilePrivate& arg1); >>>> NOT CONVERTED
 		public QFile() : this((Type) null) {
@@ -137,6 +140,15 @@ namespace Qyoto {
 		}
 		public bool SetPermissions(uint permissionSpec) {
 			return (bool) interceptor.Invoke("setPermissions$", "setPermissions(QFile::Permissions)", typeof(bool), typeof(uint), permissionSpec);
+		}
+		public char[] Map(long offset, long size, QFile.MemoryMapFlags flags) {
+			return (char[]) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(char[]), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
+		}
+		public char[] Map(long offset, long size) {
+			return (char[]) interceptor.Invoke("map$$", "map(qint64, qint64)", typeof(char[]), typeof(long), offset, typeof(long), size);
+		}
+		public bool Unmap(char[] address) {
+			return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(char[]), address);
 		}
 		[SmokeMethod("fileEngine() const")]
 		public virtual QAbstractFileEngine FileEngine() {

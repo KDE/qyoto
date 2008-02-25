@@ -160,6 +160,12 @@ namespace Qyoto {
 		public QVariant LastInsertId() {
 			return (QVariant) interceptor.Invoke("lastInsertId", "lastInsertId() const", typeof(QVariant));
 		}
+		public void Finish() {
+			interceptor.Invoke("finish", "finish()", typeof(void));
+		}
+		public bool NextResult() {
+			return (bool) interceptor.Invoke("nextResult", "nextResult()", typeof(bool));
+		}
 		~QSqlQuery() {
 			interceptor.Invoke("~QSqlQuery", "~QSqlQuery()", typeof(void));
 		}

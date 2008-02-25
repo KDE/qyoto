@@ -85,6 +85,10 @@ namespace Qyoto {
 		public void SetStringList(List<string> strings) {
 			interceptor.Invoke("setStringList?", "setStringList(const QStringList&)", typeof(void), typeof(List<string>), strings);
 		}
+		[SmokeMethod("supportedDropActions() const")]
+		public override uint SupportedDropActions() {
+			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
+		}
 		~QStringListModel() {
 			interceptor.Invoke("~QStringListModel", "~QStringListModel()", typeof(void));
 		}

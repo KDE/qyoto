@@ -46,6 +46,16 @@ namespace Qyoto {
 			get { return (QTime) interceptor.Invoke("time", "time()", typeof(QTime)); }
 			set { interceptor.Invoke("setTime#", "setTime(QTime)", typeof(void), typeof(QTime), value); }
 		}
+		[Q_PROPERTY("QDateTime", "maximumDateTime")]
+		public QDateTime MaximumDateTime {
+			get { return (QDateTime) interceptor.Invoke("maximumDateTime", "maximumDateTime()", typeof(QDateTime)); }
+			set { interceptor.Invoke("setMaximumDateTime#", "setMaximumDateTime(QDateTime)", typeof(void), typeof(QDateTime), value); }
+		}
+		[Q_PROPERTY("QDateTime", "minimumDateTime")]
+		public QDateTime MinimumDateTime {
+			get { return (QDateTime) interceptor.Invoke("minimumDateTime", "minimumDateTime()", typeof(QDateTime)); }
+			set { interceptor.Invoke("setMinimumDateTime#", "setMinimumDateTime(QDateTime)", typeof(void), typeof(QDateTime), value); }
+		}
 		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
 			get { return (QDate) interceptor.Invoke("maximumDate", "maximumDate()", typeof(QDate)); }
@@ -94,6 +104,11 @@ namespace Qyoto {
 		public int SectionCount {
 			get { return (int) interceptor.Invoke("sectionCount", "sectionCount()", typeof(int)); }
 		}
+		[Q_PROPERTY("Qt::TimeSpec", "timeSpec")]
+		public new Qt.TimeSpec TimeSpec {
+			get { return (Qt.TimeSpec) interceptor.Invoke("timeSpec", "timeSpec()", typeof(Qt.TimeSpec)); }
+			set { interceptor.Invoke("setTimeSpec$", "setTimeSpec(Qt::TimeSpec)", typeof(void), typeof(Qt.TimeSpec), value); }
+		}
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -126,6 +141,15 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QDateTimeEdit#", "QDateTimeEdit(const QTime&)", typeof(void), typeof(QTime), t);
 		}
+		public void ClearMinimumDateTime() {
+			interceptor.Invoke("clearMinimumDateTime", "clearMinimumDateTime()", typeof(void));
+		}
+		public void ClearMaximumDateTime() {
+			interceptor.Invoke("clearMaximumDateTime", "clearMaximumDateTime()", typeof(void));
+		}
+		public void SetDateTimeRange(QDateTime min, QDateTime max) {
+			interceptor.Invoke("setDateTimeRange##", "setDateTimeRange(const QDateTime&, const QDateTime&)", typeof(void), typeof(QDateTime), min, typeof(QDateTime), max);
+		}
 		public void ClearMinimumDate() {
 			interceptor.Invoke("clearMinimumDate", "clearMinimumDate()", typeof(void));
 		}
@@ -146,6 +170,12 @@ namespace Qyoto {
 		}
 		public QDateTimeEdit.Section SectionAt(int index) {
 			return (QDateTimeEdit.Section) interceptor.Invoke("sectionAt$", "sectionAt(int) const", typeof(QDateTimeEdit.Section), typeof(int), index);
+		}
+		public QCalendarWidget CalendarWidget() {
+			return (QCalendarWidget) interceptor.Invoke("calendarWidget", "calendarWidget() const", typeof(QCalendarWidget));
+		}
+		public void SetCalendarWidget(QCalendarWidget calendarWidget) {
+			interceptor.Invoke("setCalendarWidget#", "setCalendarWidget(QCalendarWidget*)", typeof(void), typeof(QCalendarWidget), calendarWidget);
 		}
 		public void SetSelectedSection(QDateTimeEdit.Section section) {
 			interceptor.Invoke("setSelectedSection$", "setSelectedSection(QDateTimeEdit::Section)", typeof(void), typeof(QDateTimeEdit.Section), section);
@@ -241,6 +271,14 @@ namespace Qyoto {
 		}
 		protected new void InitStyleOption(QStyleOptionSpinBox option) {
 			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionSpinBox*) const", typeof(void), typeof(QStyleOptionSpinBox), option);
+		}
+		public QDateTimeEdit(QVariant val, QVariant.TypeOf parserType, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QDateTimeEdit#$#", "QDateTimeEdit(const QVariant&, QVariant::Type, QWidget*)", typeof(void), typeof(QVariant), val, typeof(QVariant.TypeOf), parserType, typeof(QWidget), parent);
+		}
+		public QDateTimeEdit(QVariant val, QVariant.TypeOf parserType) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QDateTimeEdit#$", "QDateTimeEdit(const QVariant&, QVariant::Type)", typeof(void), typeof(QVariant), val, typeof(QVariant.TypeOf), parserType);
 		}
 		~QDateTimeEdit() {
 			interceptor.Invoke("~QDateTimeEdit", "~QDateTimeEdit()", typeof(void));

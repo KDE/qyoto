@@ -11,6 +11,10 @@ namespace Qyoto {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QSslError), this);
 		}
+		private static SmokeInvocation staticInterceptor = null;
+		static QSslError() {
+			staticInterceptor = new SmokeInvocation(typeof(QSslError), null);
+		}
 		public enum SslError {
 			NoError = 0,
 			UnableToGetIssuerCertificate = 1,
@@ -54,6 +58,13 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QSslError#", "QSslError(const QSslError&)", typeof(void), typeof(QSslError), other);
 		}
+		public override bool Equals(object o) {
+			if (!(o is QSslError)) { return false; }
+			return this == (QSslError) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		public QSslError.SslError Error() {
 			return (QSslError.SslError) interceptor.Invoke("error", "error() const", typeof(QSslError.SslError));
 		}
@@ -68,6 +79,12 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QSslError", "~QSslError()", typeof(void));
+		}
+		public static bool operator==(QSslError lhs, QSslError other) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QSslError&) const", typeof(bool), typeof(QSslError), lhs, typeof(QSslError), other);
+		}
+		public static bool operator!=(QSslError lhs, QSslError other) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSslError&) const", typeof(bool), typeof(QSslError), lhs, typeof(QSslError), other);
 		}
 	}
 }

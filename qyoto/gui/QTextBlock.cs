@@ -87,6 +87,9 @@ namespace Qyoto {
 		public QTextLayout Layout() {
 			return (QTextLayout) interceptor.Invoke("layout", "layout() const", typeof(QTextLayout));
 		}
+		public void ClearLayout() {
+			interceptor.Invoke("clearLayout", "clearLayout()", typeof(void));
+		}
 		public QTextBlockFormat BlockFormat() {
 			return (QTextBlockFormat) interceptor.Invoke("blockFormat", "blockFormat() const", typeof(QTextBlockFormat));
 		}
@@ -119,6 +122,21 @@ namespace Qyoto {
 		}
 		public void SetUserState(int state) {
 			interceptor.Invoke("setUserState$", "setUserState(int)", typeof(void), typeof(int), state);
+		}
+		public int Revision() {
+			return (int) interceptor.Invoke("revision", "revision() const", typeof(int));
+		}
+		public void SetRevision(int rev) {
+			interceptor.Invoke("setRevision$", "setRevision(int)", typeof(void), typeof(int), rev);
+		}
+		public bool IsVisible() {
+			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
+		}
+		public void SetVisible(bool visible) {
+			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
+		}
+		public int BlockNumber() {
+			return (int) interceptor.Invoke("blockNumber", "blockNumber() const", typeof(int));
 		}
 		public QTextBlock Next() {
 			return (QTextBlock) interceptor.Invoke("next", "next() const", typeof(QTextBlock));

@@ -35,6 +35,9 @@ namespace Qyoto {
 			PPK_SuppressSystemPrintStatus = 20,
 			PPK_Duplex = 21,
 			PPK_PaperSources = 22,
+			PPK_CustomPaperSize = 23,
+			PPK_PageMargins = 24,
+			PPK_PaperSize = PPK_PageSize,
 			PPK_CustomBase = 0xff00,
 		}
 		[SmokeMethod("setProperty(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]

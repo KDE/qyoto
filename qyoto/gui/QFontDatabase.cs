@@ -149,5 +149,8 @@ namespace Qyoto {
 		public static bool RemoveAllApplicationFonts() {
 			return (bool) staticInterceptor.Invoke("removeAllApplicationFonts", "removeAllApplicationFonts()", typeof(bool));
 		}
+		public static bool SupportsThreadedFontRendering() {
+			return (bool) staticInterceptor.Invoke("supportsThreadedFontRendering", "supportsThreadedFontRendering()", typeof(bool));
+		}
 	}
 }

@@ -69,6 +69,9 @@ namespace Qyoto {
 		public void SetData(string mimetype, QByteArray data) {
 			interceptor.Invoke("setData$#", "setData(const QString&, const QByteArray&)", typeof(void), typeof(string), mimetype, typeof(QByteArray), data);
 		}
+		public void RemoveFormat(string mimetype) {
+			interceptor.Invoke("removeFormat$", "removeFormat(const QString&)", typeof(void), typeof(string), mimetype);
+		}
 		[SmokeMethod("hasFormat(const QString&) const")]
 		public virtual bool HasFormat(string mimetype) {
 			return (bool) interceptor.Invoke("hasFormat$", "hasFormat(const QString&) const", typeof(bool), typeof(string), mimetype);

@@ -85,6 +85,9 @@ namespace Qyoto {
 		public void EndMacro() {
 			interceptor.Invoke("endMacro", "endMacro()", typeof(void));
 		}
+		public QUndoCommand Command(int index) {
+			return (QUndoCommand) interceptor.Invoke("command$", "command(int) const", typeof(QUndoCommand), typeof(int), index);
+		}
 		[Q_SLOT("void setClean()")]
 		public void SetClean() {
 			interceptor.Invoke("setClean", "setClean()", typeof(void));

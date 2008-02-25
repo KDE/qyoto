@@ -13,6 +13,10 @@ namespace Qyoto {
 		static QPageSetupDialog() {
 			staticInterceptor = new SmokeInvocation(typeof(QPageSetupDialog), null);
 		}
+		public enum PageSetupDialogOption {
+			None = 0x0000,
+			DontUseSheet = 0x0001,
+		}
 		public QPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPageSetupDialog##", "QPageSetupDialog(QPrinter*, QWidget*)", typeof(void), typeof(QPrinter), printer, typeof(QWidget), parent);
@@ -20,6 +24,18 @@ namespace Qyoto {
 		public QPageSetupDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPageSetupDialog#", "QPageSetupDialog(QPrinter*)", typeof(void), typeof(QPrinter), printer);
+		}
+		public void AddEnabledOption(QPageSetupDialog.PageSetupDialogOption option) {
+			interceptor.Invoke("addEnabledOption$", "addEnabledOption(QPageSetupDialog::PageSetupDialogOption)", typeof(void), typeof(QPageSetupDialog.PageSetupDialogOption), option);
+		}
+		public void SetEnabledOptions(uint options) {
+			interceptor.Invoke("setEnabledOptions$", "setEnabledOptions(QPageSetupDialog::PageSetupDialogOptions)", typeof(void), typeof(uint), options);
+		}
+		public uint EnabledOptions() {
+			return (uint) interceptor.Invoke("enabledOptions", "enabledOptions() const", typeof(uint));
+		}
+		public bool IsOptionEnabled(QPageSetupDialog.PageSetupDialogOption option) {
+			return (bool) interceptor.Invoke("isOptionEnabled$", "isOptionEnabled(QPageSetupDialog::PageSetupDialogOption) const", typeof(bool), typeof(QPageSetupDialog.PageSetupDialogOption), option);
 		}
 		[SmokeMethod("exec()")]
 		public override int Exec() {

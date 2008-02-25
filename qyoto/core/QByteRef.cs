@@ -15,7 +15,7 @@ namespace Qyoto {
 		static QByteRef() {
 			staticInterceptor = new SmokeInvocation(typeof(QByteRef), null);
 		}
-		//  operator const char(); >>>> NOT CONVERTED
+		//  operator char(); >>>> NOT CONVERTED
 		public override bool Equals(object o) {
 			if (!(o is QByteRef)) { return false; }
 			return this == (QByteRef) o;

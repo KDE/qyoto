@@ -83,6 +83,18 @@ namespace Qyoto {
 		public override QPaintEngine PaintEngine() {
 			return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
 		}
+		public void DrawTexture(QRectF target, uint textureId, int textureTarget) {
+			interceptor.Invoke("drawTexture#$$", "drawTexture(const QRectF&, GLuint, GLenum)", typeof(void), typeof(QRectF), target, typeof(uint), textureId, typeof(int), textureTarget);
+		}
+		public void DrawTexture(QRectF target, uint textureId) {
+			interceptor.Invoke("drawTexture#$", "drawTexture(const QRectF&, GLuint)", typeof(void), typeof(QRectF), target, typeof(uint), textureId);
+		}
+		public void DrawTexture(QPointF point, uint textureId, int textureTarget) {
+			interceptor.Invoke("drawTexture#$$", "drawTexture(const QPointF&, GLuint, GLenum)", typeof(void), typeof(QPointF), point, typeof(uint), textureId, typeof(int), textureTarget);
+		}
+		public void DrawTexture(QPointF point, uint textureId) {
+			interceptor.Invoke("drawTexture#$", "drawTexture(const QPointF&, GLuint)", typeof(void), typeof(QPointF), point, typeof(uint), textureId);
+		}
 		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice metric) {
 			return (int) interceptor.Invoke("metric$", "metric(QPaintDevice::PaintDeviceMetric) const", typeof(int), typeof(IQPaintDevice), metric);

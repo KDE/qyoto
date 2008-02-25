@@ -182,6 +182,18 @@ namespace Qyoto {
 		public void DeleteTexture(uint tx_id) {
 			interceptor.Invoke("deleteTexture$", "deleteTexture(GLuint)", typeof(void), typeof(uint), tx_id);
 		}
+		public void DrawTexture(QRectF target, uint textureId, int textureTarget) {
+			interceptor.Invoke("drawTexture#$$", "drawTexture(const QRectF&, GLuint, GLenum)", typeof(void), typeof(QRectF), target, typeof(uint), textureId, typeof(int), textureTarget);
+		}
+		public void DrawTexture(QRectF target, uint textureId) {
+			interceptor.Invoke("drawTexture#$", "drawTexture(const QRectF&, GLuint)", typeof(void), typeof(QRectF), target, typeof(uint), textureId);
+		}
+		public void DrawTexture(QPointF point, uint textureId, int textureTarget) {
+			interceptor.Invoke("drawTexture#$$", "drawTexture(const QPointF&, GLuint, GLenum)", typeof(void), typeof(QPointF), point, typeof(uint), textureId, typeof(int), textureTarget);
+		}
+		public void DrawTexture(QPointF point, uint textureId) {
+			interceptor.Invoke("drawTexture#$", "drawTexture(const QPointF&, GLuint)", typeof(void), typeof(QPointF), point, typeof(uint), textureId);
+		}
 		[Q_SLOT("void updateGL()")]
 		[SmokeMethod("updateGL()")]
 		public virtual void UpdateGL() {

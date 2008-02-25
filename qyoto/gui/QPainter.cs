@@ -21,6 +21,7 @@ namespace Qyoto {
 			TextAntialiasing = 0x02,
 			SmoothPixmapTransform = 0x04,
 			HighQualityAntialiasing = 0x08,
+			NonCosmeticDefaultPen = 0x10,
 		}
 		public enum CompositionMode {
 			CompositionMode_SourceOver = 0,
@@ -395,6 +396,12 @@ namespace Qyoto {
 		public void DrawEllipse(int x, int y, int w, int h) {
 			interceptor.Invoke("drawEllipse$$$$", "drawEllipse(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
 		}
+		public void DrawEllipse(QPointF center, double rx, double ry) {
+			interceptor.Invoke("drawEllipse#$$", "drawEllipse(const QPointF&, qreal, qreal)", typeof(void), typeof(QPointF), center, typeof(double), rx, typeof(double), ry);
+		}
+		public void DrawEllipse(QPoint center, int rx, int ry) {
+			interceptor.Invoke("drawEllipse#$$", "drawEllipse(const QPoint&, int, int)", typeof(void), typeof(QPoint), center, typeof(int), rx, typeof(int), ry);
+		}
 		public void DrawPolyline(QPointF points, int pointCount) {
 			interceptor.Invoke("drawPolyline#$", "drawPolyline(const QPointF*, int)", typeof(void), typeof(QPointF), points, typeof(int), pointCount);
 		}
@@ -469,6 +476,24 @@ namespace Qyoto {
 		}
 		public void DrawChord(QRect arg1, int a, int alen) {
 			interceptor.Invoke("drawChord#$$", "drawChord(const QRect&, int, int)", typeof(void), typeof(QRect), arg1, typeof(int), a, typeof(int), alen);
+		}
+		public void DrawRoundedRect(QRectF rect, double xRadius, double yRadius, Qt.SizeMode mode) {
+			interceptor.Invoke("drawRoundedRect#$$$", "drawRoundedRect(const QRectF&, qreal, qreal, Qt::SizeMode)", typeof(void), typeof(QRectF), rect, typeof(double), xRadius, typeof(double), yRadius, typeof(Qt.SizeMode), mode);
+		}
+		public void DrawRoundedRect(QRectF rect, double xRadius, double yRadius) {
+			interceptor.Invoke("drawRoundedRect#$$", "drawRoundedRect(const QRectF&, qreal, qreal)", typeof(void), typeof(QRectF), rect, typeof(double), xRadius, typeof(double), yRadius);
+		}
+		public void DrawRoundedRect(int x, int y, int w, int h, double xRadius, double yRadius, Qt.SizeMode mode) {
+			interceptor.Invoke("drawRoundedRect$$$$$$$", "drawRoundedRect(int, int, int, int, qreal, qreal, Qt::SizeMode)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(double), xRadius, typeof(double), yRadius, typeof(Qt.SizeMode), mode);
+		}
+		public void DrawRoundedRect(int x, int y, int w, int h, double xRadius, double yRadius) {
+			interceptor.Invoke("drawRoundedRect$$$$$$", "drawRoundedRect(int, int, int, int, qreal, qreal)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(double), xRadius, typeof(double), yRadius);
+		}
+		public void DrawRoundedRect(QRect rect, double xRadius, double yRadius, Qt.SizeMode mode) {
+			interceptor.Invoke("drawRoundedRect#$$$", "drawRoundedRect(const QRect&, qreal, qreal, Qt::SizeMode)", typeof(void), typeof(QRect), rect, typeof(double), xRadius, typeof(double), yRadius, typeof(Qt.SizeMode), mode);
+		}
+		public void DrawRoundedRect(QRect rect, double xRadius, double yRadius) {
+			interceptor.Invoke("drawRoundedRect#$$", "drawRoundedRect(const QRect&, qreal, qreal)", typeof(void), typeof(QRect), rect, typeof(double), xRadius, typeof(double), yRadius);
 		}
 		public void DrawRoundRect(QRectF r, int xround, int yround) {
 			interceptor.Invoke("drawRoundRect#$$", "drawRoundRect(const QRectF&, int, int)", typeof(void), typeof(QRectF), r, typeof(int), xround, typeof(int), yround);
@@ -628,6 +653,9 @@ namespace Qyoto {
 		}
 		public void DrawText(int x, int y, string s) {
 			interceptor.Invoke("drawText$$$", "drawText(int, int, const QString&)", typeof(void), typeof(int), x, typeof(int), y, typeof(string), s);
+		}
+		public void DrawText(QPointF p, string str, int tf, int justificationPadding) {
+			interceptor.Invoke("drawText#$$$", "drawText(const QPointF&, const QString&, int, int)", typeof(void), typeof(QPointF), p, typeof(string), str, typeof(int), tf, typeof(int), justificationPadding);
 		}
 		public void DrawText(QRectF r, int flags, string text, QRectF br) {
 			interceptor.Invoke("drawText#$$#", "drawText(const QRectF&, int, const QString&, QRectF*)", typeof(void), typeof(QRectF), r, typeof(int), flags, typeof(string), text, typeof(QRectF), br);

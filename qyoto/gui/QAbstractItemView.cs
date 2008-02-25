@@ -87,6 +87,11 @@ namespace Qyoto {
 			get { return (bool) interceptor.Invoke("hasAutoScroll", "hasAutoScroll()", typeof(bool)); }
 			set { interceptor.Invoke("setAutoScroll$", "setAutoScroll(bool)", typeof(void), typeof(bool), value); }
 		}
+		[Q_PROPERTY("int", "autoScrollMargin")]
+		public int AutoScrollMargin {
+			get { return (int) interceptor.Invoke("autoScrollMargin", "autoScrollMargin()", typeof(int)); }
+			set { interceptor.Invoke("setAutoScrollMargin$", "setAutoScrollMargin(int)", typeof(void), typeof(int), value); }
+		}
 		[Q_PROPERTY("QAbstractItemView::EditTriggers", "editTriggers")]
 		public uint EditTriggers {
 			get { return (uint) interceptor.Invoke("editTriggers", "editTriggers()", typeof(uint)); }

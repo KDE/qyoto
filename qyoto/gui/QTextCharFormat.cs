@@ -65,6 +65,24 @@ namespace Qyoto {
 		public bool FontItalic() {
 			return (bool) interceptor.Invoke("fontItalic", "fontItalic() const", typeof(bool));
 		}
+		public void SetFontCapitalization(QFont.Capitalization capitalization) {
+			interceptor.Invoke("setFontCapitalization$", "setFontCapitalization(QFont::Capitalization)", typeof(void), typeof(QFont.Capitalization), capitalization);
+		}
+		public QFont.Capitalization FontCapitalization() {
+			return (QFont.Capitalization) interceptor.Invoke("fontCapitalization", "fontCapitalization() const", typeof(QFont.Capitalization));
+		}
+		public void SetFontLetterSpacing(double spacing) {
+			interceptor.Invoke("setFontLetterSpacing$", "setFontLetterSpacing(qreal)", typeof(void), typeof(double), spacing);
+		}
+		public double FontLetterSpacing() {
+			return (double) interceptor.Invoke("fontLetterSpacing", "fontLetterSpacing() const", typeof(double));
+		}
+		public void SetFontWordSpacing(double spacing) {
+			interceptor.Invoke("setFontWordSpacing$", "setFontWordSpacing(qreal)", typeof(void), typeof(double), spacing);
+		}
+		public double FontWordSpacing() {
+			return (double) interceptor.Invoke("fontWordSpacing", "fontWordSpacing() const", typeof(double));
+		}
 		public void SetFontUnderline(bool underline) {
 			interceptor.Invoke("setFontUnderline$", "setFontUnderline(bool)", typeof(void), typeof(bool), underline);
 		}
@@ -154,6 +172,10 @@ namespace Qyoto {
 		}
 		public int TableCellColumnSpan() {
 			return (int) interceptor.Invoke("tableCellColumnSpan", "tableCellColumnSpan() const", typeof(int));
+		}
+		public QTextCharFormat(QTextFormat fmt) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QTextCharFormat#", "QTextCharFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), fmt);
 		}
 		~QTextCharFormat() {
 			interceptor.Invoke("~QTextCharFormat", "~QTextCharFormat()", typeof(void));

@@ -57,6 +57,7 @@ namespace Qyoto {
 			PE_FrameLineEdit = 10,
 			PE_FrameMenu = 11,
 			PE_FrameStatusBar = 12,
+			PE_FrameStatusBarItem = PE_FrameStatusBar,
 			PE_FrameTabWidget = 13,
 			PE_FrameWindow = 14,
 			PE_FrameButtonBevel = 15,
@@ -75,6 +76,7 @@ namespace Qyoto {
 			PE_IndicatorBranch = 28,
 			PE_IndicatorButtonDropDown = 29,
 			PE_IndicatorViewItemCheck = 30,
+			PE_IndicatorItemViewItemCheck = PE_IndicatorViewItemCheck,
 			PE_IndicatorCheckBox = 31,
 			PE_IndicatorDockWidgetResizeHandle = 32,
 			PE_IndicatorHeaderArrow = 33,
@@ -92,6 +94,10 @@ namespace Qyoto {
 			PE_PanelScrollAreaCorner = 45,
 			PE_Widget = 46,
 			PE_IndicatorColumnViewArrow = 47,
+			PE_IndicatorItemViewItemDrop = 48,
+			PE_PanelItemViewItem = 49,
+			PE_PanelItemViewRow = 50,
+			PE_PanelStatusBar = 51,
 			PE_CustomBase = 0xf000000,
 		}
 		public enum ControlElement : uint {
@@ -141,6 +147,7 @@ namespace Qyoto {
 			CE_ToolBoxTabLabel = 43,
 			CE_HeaderEmptyArea = 44,
 			CE_ColumnViewGrip = 45,
+			CE_ItemViewItem = 46,
 			CE_CustomBase = 0xf0000000,
 		}
 		public enum SubElement : uint {
@@ -178,6 +185,7 @@ namespace Qyoto {
 			SE_TabWidgetLeftCorner = 31,
 			SE_TabWidgetRightCorner = 32,
 			SE_ViewItemCheckIndicator = 33,
+			SE_ItemViewItemCheckIndicator = SE_ViewItemCheckIndicator,
 			SE_TabBarTearIndicator = 34,
 			SE_TreeViewDisclosureItem = 35,
 			SE_LineEditContents = 36,
@@ -200,6 +208,9 @@ namespace Qyoto {
 			SE_FrameLayoutItem = 53,
 			SE_GroupBoxLayoutItem = 54,
 			SE_TabWidgetLayoutItem = 55,
+			SE_ItemViewItemDecoration = 56,
+			SE_ItemViewItemText = 57,
+			SE_ItemViewItemFocusRect = 58,
 			SE_CustomBase = 0xf0000000,
 		}
 		public enum ComplexControl : uint {
@@ -343,14 +354,16 @@ namespace Qyoto {
 			PM_DockWidgetTitleMargin = 75,
 			PM_MessageBoxIconSize = 76,
 			PM_ButtonIconSize = 77,
-			PM_DockWidgetTitleBarButtonMargin = 78,
-			PM_RadioButtonLabelSpacing = 79,
-			PM_LayoutLeftMargin = 80,
-			PM_LayoutTopMargin = 81,
-			PM_LayoutRightMargin = 82,
-			PM_LayoutBottomMargin = 83,
-			PM_LayoutHorizontalSpacing = 84,
-			PM_LayoutVerticalSpacing = 85,
+			PM_TextCursorWidth = 78,
+			PM_DockWidgetTitleBarButtonMargin = 79,
+			PM_RadioButtonLabelSpacing = 80,
+			PM_LayoutLeftMargin = 81,
+			PM_LayoutTopMargin = 82,
+			PM_LayoutRightMargin = 83,
+			PM_LayoutBottomMargin = 84,
+			PM_LayoutHorizontalSpacing = 85,
+			PM_LayoutVerticalSpacing = 86,
+			PM_TabBar_ScrollButtonOverlap = 87,
 			PM_CustomBase = 0xf0000000,
 		}
 		public enum ContentsType : uint {
@@ -378,6 +391,7 @@ namespace Qyoto {
 			CT_HeaderSection = 21,
 			CT_GroupBox = 22,
 			CT_MdiControls = 23,
+			CT_ItemViewItem = 24,
 			CT_CustomBase = 0xf0000000,
 		}
 		public enum StyleHint : uint {
@@ -464,6 +478,17 @@ namespace Qyoto {
 			SH_TextControl_FocusIndicatorTextCharFormat = 79,
 			SH_WizardStyle = 80,
 			SH_ItemView_ArrowKeysNavigateIntoChildren = 81,
+			SH_Menu_Mask = 82,
+			SH_Menu_FlashTriggeredItem = 83,
+			SH_Menu_FadeOutOnHide = 84,
+			SH_SpinBox_ClickAutoRepeatThreshold = 85,
+			SH_ItemView_PaintAlternatingRowColorsForEmptyArea = 86,
+			SH_FormLayoutWrapPolicy = 87,
+			SH_TabWidget_DefaultTabPosition = 88,
+			SH_ToolBar_Movable = 89,
+			SH_FormLayoutFieldGrowthPolicy = 90,
+			SH_FormLayoutFormAlignment = 91,
+			SH_FormLayoutLabelAlignment = 92,
 			SH_CustomBase = 0xf0000000,
 		}
 		public enum StandardPixmap : uint {
@@ -525,6 +550,8 @@ namespace Qyoto {
 			SP_DirHomeIcon = 55,
 			SP_CommandLink = 56,
 			SP_VistaShield = 57,
+			SP_BrowserReload = 58,
+			SP_BrowserStop = 59,
 			SP_CustomBase = 0xf0000000,
 		}
 		// QStyle* QStyle(QStylePrivate& arg1); >>>> NOT CONVERTED

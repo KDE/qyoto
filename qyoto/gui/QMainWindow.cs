@@ -146,6 +146,9 @@ namespace Qyoto {
 		public void RemoveDockWidget(QDockWidget dockwidget) {
 			interceptor.Invoke("removeDockWidget#", "removeDockWidget(QDockWidget*)", typeof(void), typeof(QDockWidget), dockwidget);
 		}
+		public bool RestoreDockWidget(QDockWidget dockwidget) {
+			return (bool) interceptor.Invoke("restoreDockWidget#", "restoreDockWidget(QDockWidget*)", typeof(bool), typeof(QDockWidget), dockwidget);
+		}
 		public new Qt.DockWidgetArea DockWidgetArea(QDockWidget dockwidget) {
 			return (Qt.DockWidgetArea) interceptor.Invoke("dockWidgetArea#", "dockWidgetArea(QDockWidget*) const", typeof(Qt.DockWidgetArea), typeof(QDockWidget), dockwidget);
 		}

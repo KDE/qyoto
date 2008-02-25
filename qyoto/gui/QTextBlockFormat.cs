@@ -9,6 +9,8 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QTextBlockFormat), this);
 		}
+		// void setTabPositions(const QList<QTextOption::Tab>& arg1); >>>> NOT CONVERTED
+		// QList<QTextOption::Tab> tabPositions(); >>>> NOT CONVERTED
 		public QTextBlockFormat() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QTextBlockFormat", "QTextBlockFormat()", typeof(void));
@@ -69,6 +71,10 @@ namespace Qyoto {
 		}
 		public uint PageBreakPolicy() {
 			return (uint) interceptor.Invoke("pageBreakPolicy", "pageBreakPolicy() const", typeof(uint));
+		}
+		public QTextBlockFormat(QTextFormat fmt) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QTextBlockFormat#", "QTextBlockFormat(const QTextFormat&)", typeof(void), typeof(QTextFormat), fmt);
 		}
 		~QTextBlockFormat() {
 			interceptor.Invoke("~QTextBlockFormat", "~QTextBlockFormat()", typeof(void));

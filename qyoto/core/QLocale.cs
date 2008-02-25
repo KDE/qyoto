@@ -432,6 +432,10 @@ namespace Qyoto {
 			SerbiaAndMontenegro = 241,
 			LastCountry = SerbiaAndMontenegro,
 		}
+		public enum MeasurementSystem {
+			MetricSystem = 0,
+			ImperialSystem = 1,
+		}
 		public enum FormatType {
 			LongFormat = 0,
 			ShortFormat = 1,
@@ -791,6 +795,15 @@ namespace Qyoto {
 		public string ToString(QTime time) {
 			return (string) interceptor.Invoke("toString#", "toString(const QTime&) const", typeof(string), typeof(QTime), time);
 		}
+		public string ToString(QDateTime dateTime, QLocale.FormatType format) {
+			return (string) interceptor.Invoke("toString#$", "toString(const QDateTime&, QLocale::FormatType) const", typeof(string), typeof(QDateTime), dateTime, typeof(QLocale.FormatType), format);
+		}
+		public string ToString(QDateTime dateTime) {
+			return (string) interceptor.Invoke("toString#", "toString(const QDateTime&) const", typeof(string), typeof(QDateTime), dateTime);
+		}
+		public string ToString(QDateTime dateTime, string format) {
+			return (string) interceptor.Invoke("toString#$", "toString(const QDateTime&, const QString&) const", typeof(string), typeof(QDateTime), dateTime, typeof(string), format);
+		}
 		public string DateFormat(QLocale.FormatType format) {
 			return (string) interceptor.Invoke("dateFormat$", "dateFormat(QLocale::FormatType) const", typeof(string), typeof(QLocale.FormatType), format);
 		}
@@ -802,6 +815,39 @@ namespace Qyoto {
 		}
 		public string TimeFormat() {
 			return (string) interceptor.Invoke("timeFormat", "timeFormat() const", typeof(string));
+		}
+		public string DateTimeFormat(QLocale.FormatType format) {
+			return (string) interceptor.Invoke("dateTimeFormat$", "dateTimeFormat(QLocale::FormatType) const", typeof(string), typeof(QLocale.FormatType), format);
+		}
+		public string DateTimeFormat() {
+			return (string) interceptor.Invoke("dateTimeFormat", "dateTimeFormat() const", typeof(string));
+		}
+		public QDate ToDate(string arg1, QLocale.FormatType arg2) {
+			return (QDate) interceptor.Invoke("toDate$$", "toDate(const QString&, QLocale::FormatType) const", typeof(QDate), typeof(string), arg1, typeof(QLocale.FormatType), arg2);
+		}
+		public QDate ToDate(string arg1) {
+			return (QDate) interceptor.Invoke("toDate$", "toDate(const QString&) const", typeof(QDate), typeof(string), arg1);
+		}
+		public QTime ToTime(string arg1, QLocale.FormatType arg2) {
+			return (QTime) interceptor.Invoke("toTime$$", "toTime(const QString&, QLocale::FormatType) const", typeof(QTime), typeof(string), arg1, typeof(QLocale.FormatType), arg2);
+		}
+		public QTime ToTime(string arg1) {
+			return (QTime) interceptor.Invoke("toTime$", "toTime(const QString&) const", typeof(QTime), typeof(string), arg1);
+		}
+		public QDateTime ToDateTime(string arg1, QLocale.FormatType format) {
+			return (QDateTime) interceptor.Invoke("toDateTime$$", "toDateTime(const QString&, QLocale::FormatType) const", typeof(QDateTime), typeof(string), arg1, typeof(QLocale.FormatType), format);
+		}
+		public QDateTime ToDateTime(string arg1) {
+			return (QDateTime) interceptor.Invoke("toDateTime$", "toDateTime(const QString&) const", typeof(QDateTime), typeof(string), arg1);
+		}
+		public QDate ToDate(string arg1, string format) {
+			return (QDate) interceptor.Invoke("toDate$$", "toDate(const QString&, const QString&) const", typeof(QDate), typeof(string), arg1, typeof(string), format);
+		}
+		public QTime ToTime(string arg1, string format) {
+			return (QTime) interceptor.Invoke("toTime$$", "toTime(const QString&, const QString&) const", typeof(QTime), typeof(string), arg1, typeof(string), format);
+		}
+		public QDateTime ToDateTime(string arg1, string format) {
+			return (QDateTime) interceptor.Invoke("toDateTime$$", "toDateTime(const QString&, const QString&) const", typeof(QDateTime), typeof(string), arg1, typeof(string), format);
 		}
 		public char DecimalPoint() {
 			return (char) interceptor.Invoke("decimalPoint", "decimalPoint() const", typeof(char));
@@ -832,6 +878,9 @@ namespace Qyoto {
 		}
 		public string DayName(int arg1) {
 			return (string) interceptor.Invoke("dayName$", "dayName(int) const", typeof(string), typeof(int), arg1);
+		}
+		public QLocale.MeasurementSystem measurementSystem() {
+			return (QLocale.MeasurementSystem) interceptor.Invoke("measurementSystem", "measurementSystem() const", typeof(QLocale.MeasurementSystem));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QLocale)) { return false; }

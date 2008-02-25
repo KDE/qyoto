@@ -38,9 +38,14 @@ namespace Qyoto {
 			BlockLeftMargin = 0x1032,
 			BlockRightMargin = 0x1033,
 			TextIndent = 0x1034,
+			TabPositions = 0x1035,
 			BlockIndent = 0x1040,
 			BlockNonBreakableLines = 0x1050,
 			BlockTrailingHorizontalRulerWidth = 0x1060,
+			FirstFontProperty = 0x1FE0,
+			FontCapitalization = FirstFontProperty,
+			FontLetterSpacing = 0x1FE1,
+			FontWordSpacing = 0x1FE2,
 			FontFamily = 0x2000,
 			FontPointSize = 0x2001,
 			FontSizeAdjustment = 0x2002,
@@ -52,6 +57,7 @@ namespace Qyoto {
 			FontStrikeOut = 0x2007,
 			FontFixedPitch = 0x2008,
 			FontPixelSize = 0x2009,
+			LastFontProperty = FontPixelSize,
 			TextUnderlineColor = 0x2010,
 			TextVerticalAlignment = 0x2021,
 			TextOutline = 0x2022,
@@ -81,6 +87,10 @@ namespace Qyoto {
 			TableHeaderRowCount = 0x4104,
 			TableCellRowSpan = 0x4810,
 			TableCellColumnSpan = 0x4811,
+			TableCellTopPadding = 0x4812,
+			TableCellBottomPadding = 0x4813,
+			TableCellLeftPadding = 0x4814,
+			TableCellRightPadding = 0x4815,
 			ImageName = 0x5000,
 			ImageWidth = 0x5010,
 			ImageHeight = 0x5011,
@@ -92,6 +102,7 @@ namespace Qyoto {
 			NoObject = 0,
 			ImageObject = 1,
 			TableObject = 2,
+			TableCellObject = 3,
 			UserObject = 0x1000,
 		}
 		public enum PageBreakFlag {
@@ -199,6 +210,9 @@ namespace Qyoto {
 		public bool IsTableFormat() {
 			return (bool) interceptor.Invoke("isTableFormat", "isTableFormat() const", typeof(bool));
 		}
+		public bool IsTableCellFormat() {
+			return (bool) interceptor.Invoke("isTableCellFormat", "isTableCellFormat() const", typeof(bool));
+		}
 		public QTextBlockFormat ToBlockFormat() {
 			return (QTextBlockFormat) interceptor.Invoke("toBlockFormat", "toBlockFormat() const", typeof(QTextBlockFormat));
 		}
@@ -216,6 +230,9 @@ namespace Qyoto {
 		}
 		public QTextImageFormat ToImageFormat() {
 			return (QTextImageFormat) interceptor.Invoke("toImageFormat", "toImageFormat() const", typeof(QTextImageFormat));
+		}
+		public QTextTableCellFormat ToTableCellFormat() {
+			return (QTextTableCellFormat) interceptor.Invoke("toTableCellFormat", "toTableCellFormat() const", typeof(QTextTableCellFormat));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextFormat)) { return false; }

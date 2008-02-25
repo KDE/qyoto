@@ -86,6 +86,9 @@ namespace Qyoto {
 		public virtual void SetLastModified(QDateTime dt) {
 			interceptor.Invoke("setLastModified#", "setLastModified(const QDateTime&)", typeof(void), typeof(QDateTime), dt);
 		}
+		public void SetLastRead(QDateTime dt) {
+			interceptor.Invoke("setLastRead#", "setLastRead(const QDateTime&)", typeof(void), typeof(QDateTime), dt);
+		}
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}

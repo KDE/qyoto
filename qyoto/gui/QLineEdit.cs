@@ -283,6 +283,9 @@ namespace Qyoto {
 		protected void InitStyleOption(QStyleOptionFrame option) {
 			interceptor.Invoke("initStyleOption#", "initStyleOption(QStyleOptionFrame*) const", typeof(void), typeof(QStyleOptionFrame), option);
 		}
+		protected QRect CursorRect() {
+			return (QRect) interceptor.Invoke("cursorRect", "cursorRect() const", typeof(QRect));
+		}
 		~QLineEdit() {
 			interceptor.Invoke("~QLineEdit", "~QLineEdit()", typeof(void));
 		}

@@ -133,6 +133,9 @@ namespace Qyoto {
 		public int ColumnSpan(int row, int column) {
 			return (int) interceptor.Invoke("columnSpan$$", "columnSpan(int, int) const", typeof(int), typeof(int), row, typeof(int), column);
 		}
+		public void ClearSpans() {
+			interceptor.Invoke("clearSpans", "clearSpans()", typeof(void));
+		}
 		public void SortByColumn(int column, Qt.SortOrder order) {
 			interceptor.Invoke("sortByColumn$$", "sortByColumn(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}

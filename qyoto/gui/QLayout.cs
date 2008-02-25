@@ -120,7 +120,9 @@ namespace Qyoto {
 			return (QSize) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSize));
 		}
 		[SmokeMethod("setGeometry(const QRect&)")]
-		public abstract void SetGeometry(QRect arg1);
+		public virtual void SetGeometry(QRect arg1) {
+			interceptor.Invoke("setGeometry#", "setGeometry(const QRect&)", typeof(void), typeof(QRect), arg1);
+		}
 		[SmokeMethod("itemAt(int) const")]
 		public abstract QLayoutItem ItemAt(int index);
 		[SmokeMethod("takeAt(int)")]

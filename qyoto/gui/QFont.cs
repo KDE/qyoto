@@ -64,6 +64,17 @@ namespace Qyoto {
 			ExtraExpanded = 150,
 			UltraExpanded = 200,
 		}
+		public enum Capitalization {
+			MixedCase = 0,
+			AllUppercase = 1,
+			AllLowercase = 2,
+			SmallCaps = 3,
+			Capitalize = 4,
+		}
+		public enum SpacingType {
+			PercentageSpacing = 0,
+			AbsoluteSpacing = 1,
+		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QFont() : this((Type) null) {
 			CreateProxy();
@@ -191,6 +202,27 @@ namespace Qyoto {
 		}
 		public void SetStretch(int arg1) {
 			interceptor.Invoke("setStretch$", "setStretch(int)", typeof(void), typeof(int), arg1);
+		}
+		public double LetterSpacing() {
+			return (double) interceptor.Invoke("letterSpacing", "letterSpacing() const", typeof(double));
+		}
+		public QFont.SpacingType LetterSpacingType() {
+			return (QFont.SpacingType) interceptor.Invoke("letterSpacingType", "letterSpacingType() const", typeof(QFont.SpacingType));
+		}
+		public void SetLetterSpacing(QFont.SpacingType type, double spacing) {
+			interceptor.Invoke("setLetterSpacing$$", "setLetterSpacing(QFont::SpacingType, qreal)", typeof(void), typeof(QFont.SpacingType), type, typeof(double), spacing);
+		}
+		public double WordSpacing() {
+			return (double) interceptor.Invoke("wordSpacing", "wordSpacing() const", typeof(double));
+		}
+		public void SetWordSpacing(double spacing) {
+			interceptor.Invoke("setWordSpacing$", "setWordSpacing(qreal)", typeof(void), typeof(double), spacing);
+		}
+		public void SetCapitalization(QFont.Capitalization arg1) {
+			interceptor.Invoke("setCapitalization$", "setCapitalization(QFont::Capitalization)", typeof(void), typeof(QFont.Capitalization), arg1);
+		}
+		public QFont.Capitalization capitalization() {
+			return (QFont.Capitalization) interceptor.Invoke("capitalization", "capitalization() const", typeof(QFont.Capitalization));
 		}
 		public bool RawMode() {
 			return (bool) interceptor.Invoke("rawMode", "rawMode() const", typeof(bool));

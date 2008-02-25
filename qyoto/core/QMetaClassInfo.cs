@@ -21,6 +21,9 @@ namespace Qyoto {
 		public string Value() {
 			return (string) interceptor.Invoke("value", "value() const", typeof(string));
 		}
+		public QMetaObject EnclosingMetaObject() {
+			return (QMetaObject) interceptor.Invoke("enclosingMetaObject", "enclosingMetaObject() const", typeof(QMetaObject));
+		}
 		~QMetaClassInfo() {
 			interceptor.Invoke("~QMetaClassInfo", "~QMetaClassInfo()", typeof(void));
 		}

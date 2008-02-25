@@ -58,6 +58,18 @@ namespace Qyoto {
 		public void ClearHistory() {
 			interceptor.Invoke("clearHistory", "clearHistory()", typeof(void));
 		}
+		public string HistoryTitle(int arg1) {
+			return (string) interceptor.Invoke("historyTitle$", "historyTitle(int) const", typeof(string), typeof(int), arg1);
+		}
+		public QUrl HistoryUrl(int arg1) {
+			return (QUrl) interceptor.Invoke("historyUrl$", "historyUrl(int) const", typeof(QUrl), typeof(int), arg1);
+		}
+		public int BackwardHistoryCount() {
+			return (int) interceptor.Invoke("backwardHistoryCount", "backwardHistoryCount() const", typeof(int));
+		}
+		public int ForwardHistoryCount() {
+			return (int) interceptor.Invoke("forwardHistoryCount", "forwardHistoryCount() const", typeof(int));
+		}
 		[Q_SLOT("void setSource(const QUrl&)")]
 		[SmokeMethod("setSource(const QUrl&)")]
 		public virtual void SetSource(QUrl name) {
@@ -137,6 +149,8 @@ namespace Qyoto {
 		void BackwardAvailable(bool arg1);
 		[Q_SIGNAL("void forwardAvailable(bool)")]
 		void ForwardAvailable(bool arg1);
+		[Q_SIGNAL("void historyChanged()")]
+		void HistoryChanged();
 		[Q_SIGNAL("void sourceChanged(const QUrl&)")]
 		void SourceChanged(QUrl arg1);
 		[Q_SIGNAL("void highlighted(const QUrl&)")]

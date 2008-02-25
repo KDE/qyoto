@@ -28,6 +28,7 @@ namespace Qyoto {
 			MaskedBrush = 0x00002000,
 			PerspectiveTransform = 0x00004000,
 			BlendModes = 0x00008000,
+			ObjectBoundingModeGradients = 0x00010000,
 			PaintOutsidePaintEvent = 0x20000000,
 			AllFeatures = 0xffffffff,
 		}
@@ -66,6 +67,7 @@ namespace Qyoto {
 			SVG = 9,
 			Raster = 10,
 			Direct3D = 11,
+			Pdf = 12,
 			User = 50,
 			MaxUser = 100,
 		}

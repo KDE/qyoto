@@ -22,6 +22,7 @@ namespace Qyoto {
 			Qt_4_1 = Qt_4_0,
 			Qt_4_2 = 8,
 			Qt_4_3 = 9,
+			Qt_4_4 = 10,
 		}
 		public enum Status {
 			Ok = 0,

@@ -20,6 +20,8 @@ namespace Qyoto {
 			Socks5Proxy = 1,
 			NoProxy = 2,
 			HttpProxy = 3,
+			HttpCachingProxy = 4,
+			FtpCachingProxy = 5,
 		}
 		public QNetworkProxy() : this((Type) null) {
 			CreateProxy();
@@ -54,6 +56,12 @@ namespace Qyoto {
 		}
 		public QNetworkProxy.ProxyType type() {
 			return (QNetworkProxy.ProxyType) interceptor.Invoke("type", "type() const", typeof(QNetworkProxy.ProxyType));
+		}
+		public bool IsCachingProxy() {
+			return (bool) interceptor.Invoke("isCachingProxy", "isCachingProxy() const", typeof(bool));
+		}
+		public bool IsTransparentProxy() {
+			return (bool) interceptor.Invoke("isTransparentProxy", "isTransparentProxy() const", typeof(bool));
 		}
 		public void SetUser(string userName) {
 			interceptor.Invoke("setUser$", "setUser(const QString&)", typeof(void), typeof(string), userName);

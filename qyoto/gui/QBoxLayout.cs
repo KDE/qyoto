@@ -44,6 +44,9 @@ namespace Qyoto {
 		public void AddStretch() {
 			interceptor.Invoke("addStretch", "addStretch()", typeof(void));
 		}
+		public void AddSpacerItem(QSpacerItem spacerItem) {
+			interceptor.Invoke("addSpacerItem#", "addSpacerItem(QSpacerItem*)", typeof(void), typeof(QSpacerItem), spacerItem);
+		}
 		public void AddWidget(QWidget arg1, int stretch, uint alignment) {
 			interceptor.Invoke("addWidget#$$", "addWidget(QWidget*, int, Qt::Alignment)", typeof(void), typeof(QWidget), arg1, typeof(int), stretch, typeof(uint), alignment);
 		}
@@ -74,6 +77,9 @@ namespace Qyoto {
 		}
 		public void InsertStretch(int index) {
 			interceptor.Invoke("insertStretch$", "insertStretch(int)", typeof(void), typeof(int), index);
+		}
+		public void InsertSpacerItem(int index, QSpacerItem spacerItem) {
+			interceptor.Invoke("insertSpacerItem$#", "insertSpacerItem(int, QSpacerItem*)", typeof(void), typeof(int), index, typeof(QSpacerItem), spacerItem);
 		}
 		public void InsertWidget(int index, QWidget widget, int stretch, uint alignment) {
 			interceptor.Invoke("insertWidget$#$$", "insertWidget(int, QWidget*, int, Qt::Alignment)", typeof(void), typeof(int), index, typeof(QWidget), widget, typeof(int), stretch, typeof(uint), alignment);

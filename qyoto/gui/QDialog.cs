@@ -71,10 +71,6 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
 		}
-		[SmokeMethod("event(QEvent*)")]
-		public new virtual bool Event(QEvent arg1) {
-			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
-		}
 		public void SetResult(int r) {
 			interceptor.Invoke("setResult$", "setResult(int)", typeof(void), typeof(int), r);
 		}

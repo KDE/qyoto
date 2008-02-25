@@ -64,6 +64,9 @@ namespace Qyoto {
 		protected QTextBlockUserData CurrentBlockUserData() {
 			return (QTextBlockUserData) interceptor.Invoke("currentBlockUserData", "currentBlockUserData() const", typeof(QTextBlockUserData));
 		}
+		protected QTextBlock CurrentBlock() {
+			return (QTextBlock) interceptor.Invoke("currentBlock", "currentBlock() const", typeof(QTextBlock));
+		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}

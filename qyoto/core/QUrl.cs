@@ -32,6 +32,8 @@ namespace Qyoto {
 			RemoveFragment = 0x80,
 			StripTrailingSlash = 0x10000,
 		}
+		// void setEncodedQueryItems(const QList<QPair<QByteArray, QByteArray> >& arg1); >>>> NOT CONVERTED
+		// QList<QPair<QByteArray, QByteArray> > encodedQueryItems(); >>>> NOT CONVERTED
 		// QUrl::DataPtr& data_ptr(); >>>> NOT CONVERTED
 		public QUrl() : this((Type) null) {
 			CreateProxy();
@@ -94,17 +96,35 @@ namespace Qyoto {
 		public string UserName() {
 			return (string) interceptor.Invoke("userName", "userName() const", typeof(string));
 		}
+		public void SetEncodedUserName(QByteArray userName) {
+			interceptor.Invoke("setEncodedUserName#", "setEncodedUserName(const QByteArray&)", typeof(void), typeof(QByteArray), userName);
+		}
+		public QByteArray EncodedUserName() {
+			return (QByteArray) interceptor.Invoke("encodedUserName", "encodedUserName() const", typeof(QByteArray));
+		}
 		public void SetPassword(string password) {
 			interceptor.Invoke("setPassword$", "setPassword(const QString&)", typeof(void), typeof(string), password);
 		}
 		public string Password() {
 			return (string) interceptor.Invoke("password", "password() const", typeof(string));
 		}
+		public void SetEncodedPassword(QByteArray password) {
+			interceptor.Invoke("setEncodedPassword#", "setEncodedPassword(const QByteArray&)", typeof(void), typeof(QByteArray), password);
+		}
+		public QByteArray EncodedPassword() {
+			return (QByteArray) interceptor.Invoke("encodedPassword", "encodedPassword() const", typeof(QByteArray));
+		}
 		public void SetHost(string host) {
 			interceptor.Invoke("setHost$", "setHost(const QString&)", typeof(void), typeof(string), host);
 		}
 		public string Host() {
 			return (string) interceptor.Invoke("host", "host() const", typeof(string));
+		}
+		public void SetEncodedHost(QByteArray host) {
+			interceptor.Invoke("setEncodedHost#", "setEncodedHost(const QByteArray&)", typeof(void), typeof(QByteArray), host);
+		}
+		public QByteArray EncodedHost() {
+			return (QByteArray) interceptor.Invoke("encodedHost", "encodedHost() const", typeof(QByteArray));
 		}
 		public void SetPort(int port) {
 			interceptor.Invoke("setPort$", "setPort(int)", typeof(void), typeof(int), port);
@@ -120,6 +140,12 @@ namespace Qyoto {
 		}
 		public string Path() {
 			return (string) interceptor.Invoke("path", "path() const", typeof(string));
+		}
+		public void SetEncodedPath(QByteArray path) {
+			interceptor.Invoke("setEncodedPath#", "setEncodedPath(const QByteArray&)", typeof(void), typeof(QByteArray), path);
+		}
+		public QByteArray EncodedPath() {
+			return (QByteArray) interceptor.Invoke("encodedPath", "encodedPath() const", typeof(QByteArray));
 		}
 		public bool HasQuery() {
 			return (bool) interceptor.Invoke("hasQuery", "hasQuery() const", typeof(bool));
@@ -163,11 +189,35 @@ namespace Qyoto {
 		public void RemoveAllQueryItems(string key) {
 			interceptor.Invoke("removeAllQueryItems$", "removeAllQueryItems(const QString&)", typeof(void), typeof(string), key);
 		}
+		public void AddEncodedQueryItem(QByteArray key, QByteArray value) {
+			interceptor.Invoke("addEncodedQueryItem##", "addEncodedQueryItem(const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), key, typeof(QByteArray), value);
+		}
+		public bool HasEncodedQueryItem(QByteArray key) {
+			return (bool) interceptor.Invoke("hasEncodedQueryItem#", "hasEncodedQueryItem(const QByteArray&) const", typeof(bool), typeof(QByteArray), key);
+		}
+		public QByteArray EncodedQueryItemValue(QByteArray key) {
+			return (QByteArray) interceptor.Invoke("encodedQueryItemValue#", "encodedQueryItemValue(const QByteArray&) const", typeof(QByteArray), typeof(QByteArray), key);
+		}
+		public List<QByteArray> AllEncodedQueryItemValues(QByteArray key) {
+			return (List<QByteArray>) interceptor.Invoke("allEncodedQueryItemValues#", "allEncodedQueryItemValues(const QByteArray&) const", typeof(List<QByteArray>), typeof(QByteArray), key);
+		}
+		public void RemoveEncodedQueryItem(QByteArray key) {
+			interceptor.Invoke("removeEncodedQueryItem#", "removeEncodedQueryItem(const QByteArray&)", typeof(void), typeof(QByteArray), key);
+		}
+		public void RemoveAllEncodedQueryItems(QByteArray key) {
+			interceptor.Invoke("removeAllEncodedQueryItems#", "removeAllEncodedQueryItems(const QByteArray&)", typeof(void), typeof(QByteArray), key);
+		}
 		public void SetFragment(string fragment) {
 			interceptor.Invoke("setFragment$", "setFragment(const QString&)", typeof(void), typeof(string), fragment);
 		}
 		public string Fragment() {
 			return (string) interceptor.Invoke("fragment", "fragment() const", typeof(string));
+		}
+		public void SetEncodedFragment(QByteArray fragment) {
+			interceptor.Invoke("setEncodedFragment#", "setEncodedFragment(const QByteArray&)", typeof(void), typeof(QByteArray), fragment);
+		}
+		public QByteArray EncodedFragment() {
+			return (QByteArray) interceptor.Invoke("encodedFragment", "encodedFragment() const", typeof(QByteArray));
 		}
 		public bool HasFragment() {
 			return (bool) interceptor.Invoke("hasFragment", "hasFragment() const", typeof(bool));

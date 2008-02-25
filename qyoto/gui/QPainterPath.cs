@@ -89,6 +89,9 @@ namespace Qyoto {
 		public void AddEllipse(double x, double y, double w, double h) {
 			interceptor.Invoke("addEllipse$$$$", "addEllipse(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
 		}
+		public void AddEllipse(QPointF center, double rx, double ry) {
+			interceptor.Invoke("addEllipse#$$", "addEllipse(const QPointF&, qreal, qreal)", typeof(void), typeof(QPointF), center, typeof(double), rx, typeof(double), ry);
+		}
 		public void AddPolygon(QPolygonF polygon) {
 			interceptor.Invoke("addPolygon#", "addPolygon(const QPolygonF&)", typeof(void), typeof(QPolygonF), polygon);
 		}
@@ -103,6 +106,18 @@ namespace Qyoto {
 		}
 		public void AddRegion(QRegion region) {
 			interceptor.Invoke("addRegion#", "addRegion(const QRegion&)", typeof(void), typeof(QRegion), region);
+		}
+		public void AddRoundedRect(QRectF rect, double xRadius, double yRadius, Qt.SizeMode mode) {
+			interceptor.Invoke("addRoundedRect#$$$", "addRoundedRect(const QRectF&, qreal, qreal, Qt::SizeMode)", typeof(void), typeof(QRectF), rect, typeof(double), xRadius, typeof(double), yRadius, typeof(Qt.SizeMode), mode);
+		}
+		public void AddRoundedRect(QRectF rect, double xRadius, double yRadius) {
+			interceptor.Invoke("addRoundedRect#$$", "addRoundedRect(const QRectF&, qreal, qreal)", typeof(void), typeof(QRectF), rect, typeof(double), xRadius, typeof(double), yRadius);
+		}
+		public void AddRoundedRect(double x, double y, double w, double h, double xRadius, double yRadius, Qt.SizeMode mode) {
+			interceptor.Invoke("addRoundedRect$$$$$$$", "addRoundedRect(qreal, qreal, qreal, qreal, qreal, qreal, Qt::SizeMode)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(double), xRadius, typeof(double), yRadius, typeof(Qt.SizeMode), mode);
+		}
+		public void AddRoundedRect(double x, double y, double w, double h, double xRadius, double yRadius) {
+			interceptor.Invoke("addRoundedRect$$$$$$", "addRoundedRect(qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(double), xRadius, typeof(double), yRadius);
 		}
 		public void AddRoundRect(QRectF rect, int xRnd, int yRnd) {
 			interceptor.Invoke("addRoundRect#$$", "addRoundRect(const QRectF&, int, int)", typeof(void), typeof(QRectF), rect, typeof(int), xRnd, typeof(int), yRnd);
@@ -211,6 +226,9 @@ namespace Qyoto {
 		}
 		public QPainterPath SubtractedInverted(QPainterPath r) {
 			return (QPainterPath) interceptor.Invoke("subtractedInverted#", "subtractedInverted(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), r);
+		}
+		public QPainterPath Simplified() {
+			return (QPainterPath) interceptor.Invoke("simplified", "simplified() const", typeof(QPainterPath));
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPainterPath)) { return false; }

@@ -24,6 +24,12 @@ namespace Qyoto {
 		public static void HideText() {
 			staticInterceptor.Invoke("hideText", "hideText()", typeof(void));
 		}
+		public static bool IsVisible() {
+			return (bool) staticInterceptor.Invoke("isVisible", "isVisible()", typeof(bool));
+		}
+		public static string Text() {
+			return (string) staticInterceptor.Invoke("text", "text()", typeof(string));
+		}
 		public static QPalette Palette() {
 			return (QPalette) staticInterceptor.Invoke("palette", "palette()", typeof(QPalette));
 		}

@@ -12,6 +12,7 @@ namespace Qyoto {
 			interceptor = new SmokeInvocation(typeof(QCharRef), this);
 		}
 		//  operator QChar(); >>>> NOT CONVERTED
+		// ushort& unicode(); >>>> NOT CONVERTED
 		public bool IsNull() {
 			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}

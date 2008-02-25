@@ -116,6 +116,9 @@ namespace Qyoto {
 		protected virtual QAbstractItemView CreateColumn(QModelIndex rootIndex) {
 			return (QAbstractItemView) interceptor.Invoke("createColumn#", "createColumn(const QModelIndex&)", typeof(QAbstractItemView), typeof(QModelIndex), rootIndex);
 		}
+		protected void InitializeColumn(QAbstractItemView column) {
+			interceptor.Invoke("initializeColumn#", "initializeColumn(QAbstractItemView*) const", typeof(void), typeof(QAbstractItemView), column);
+		}
 		[Q_SLOT("void currentChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
 		protected override void CurrentChanged(QModelIndex current, QModelIndex previous) {

@@ -105,5 +105,8 @@ namespace Qyoto {
 		public static bool IsRegistered(int type) {
 			return (bool) staticInterceptor.Invoke("isRegistered$", "isRegistered(int)", typeof(bool), typeof(int), type);
 		}
+		public static void UnregisterType(string typeName) {
+			staticInterceptor.Invoke("unregisterType$", "unregisterType(const char*)", typeof(void), typeof(string), typeName);
+		}
 	}
 }

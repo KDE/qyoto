@@ -118,6 +118,9 @@ namespace Qyoto {
 		public string ConnectOptions() {
 			return (string) interceptor.Invoke("connectOptions", "connectOptions() const", typeof(string));
 		}
+		public string ConnectionName() {
+			return (string) interceptor.Invoke("connectionName", "connectionName() const", typeof(string));
+		}
 		public QSqlDriver Driver() {
 			return (QSqlDriver) interceptor.Invoke("driver", "driver() const", typeof(QSqlDriver));
 		}

@@ -72,6 +72,12 @@ namespace Qyoto {
 		public void SetCurrentItem(QListWidgetItem item) {
 			interceptor.Invoke("setCurrentItem#", "setCurrentItem(QListWidgetItem*)", typeof(void), typeof(QListWidgetItem), item);
 		}
+		public void SetCurrentItem(QListWidgetItem item, uint command) {
+			interceptor.Invoke("setCurrentItem#$", "setCurrentItem(QListWidgetItem*, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QListWidgetItem), item, typeof(uint), command);
+		}
+		public void SetCurrentRow(int row, uint command) {
+			interceptor.Invoke("setCurrentRow$$", "setCurrentRow(int, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(int), row, typeof(uint), command);
+		}
 		public QListWidgetItem ItemAt(QPoint p) {
 			return (QListWidgetItem) interceptor.Invoke("itemAt#", "itemAt(const QPoint&) const", typeof(QListWidgetItem), typeof(QPoint), p);
 		}

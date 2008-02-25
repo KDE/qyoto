@@ -30,6 +30,11 @@ namespace Qyoto {
 			DateToStringShort = 15,
 			TimeToStringLong = 16,
 			TimeToStringShort = 17,
+			DateTimeFormatLong = 18,
+			DateTimeFormatShort = 19,
+			DateTimeToStringLong = 20,
+			DateTimeToStringShort = 21,
+			MeasurementSystem = 22,
 		}
 		public QSystemLocale() : this((Type) null) {
 			CreateProxy();

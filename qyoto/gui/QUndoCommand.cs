@@ -49,6 +49,12 @@ namespace Qyoto {
 		public virtual bool MergeWith(QUndoCommand other) {
 			return (bool) interceptor.Invoke("mergeWith#", "mergeWith(const QUndoCommand*)", typeof(bool), typeof(QUndoCommand), other);
 		}
+		public int ChildCount() {
+			return (int) interceptor.Invoke("childCount", "childCount() const", typeof(int));
+		}
+		public QUndoCommand Child(int index) {
+			return (QUndoCommand) interceptor.Invoke("child$", "child(int) const", typeof(QUndoCommand), typeof(int), index);
+		}
 		~QUndoCommand() {
 			interceptor.Invoke("~QUndoCommand", "~QUndoCommand()", typeof(void));
 		}

@@ -27,6 +27,11 @@ namespace Qyoto {
 			get { return (string) interceptor.Invoke("applicationName", "applicationName()", typeof(string)); }
 			set { interceptor.Invoke("setApplicationName$", "setApplicationName(QString)", typeof(void), typeof(string), value); }
 		}
+		[Q_PROPERTY("QString", "applicationVersion")]
+		public string ApplicationVersion {
+			get { return (string) interceptor.Invoke("applicationVersion", "applicationVersion()", typeof(string)); }
+			set { interceptor.Invoke("setApplicationVersion$", "setApplicationVersion(QString)", typeof(void), typeof(string), value); }
+		}
 		[Q_PROPERTY("QString", "organizationName")]
 		public string OrganizationName {
 			get { return (string) interceptor.Invoke("organizationName", "organizationName()", typeof(string)); }
@@ -130,6 +135,9 @@ namespace Qyoto {
 		}
 		public static string ApplicationFilePath() {
 			return (string) staticInterceptor.Invoke("applicationFilePath", "applicationFilePath()", typeof(string));
+		}
+		public static long ApplicationPid() {
+			return (long) staticInterceptor.Invoke("applicationPid", "applicationPid()", typeof(long));
 		}
 		public static void SetLibraryPaths(List<string> arg1) {
 			staticInterceptor.Invoke("setLibraryPaths?", "setLibraryPaths(const QStringList&)", typeof(void), typeof(List<string>), arg1);

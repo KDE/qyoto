@@ -9,6 +9,77 @@ namespace Qyoto {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QAbstractFileEngine(Type dummy) {}
+
+
+		[SmokeClass("QAbstractFileEngine::ExtensionOption")]
+		public class ExtensionOption {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected ExtensionOption(Type dummy) {}
+		}
+
+		[SmokeClass("QAbstractFileEngine::ExtensionReturn")]
+		public class ExtensionReturn {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected ExtensionReturn(Type dummy) {}
+		}
+
+		[SmokeClass("QAbstractFileEngine::MapExtensionOption")]
+		public class MapExtensionOption : QAbstractFileEngine.ExtensionOption, IDisposable {
+	 		protected MapExtensionOption(Type dummy) : base((Type) null) {}
+			protected new void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(MapExtensionOption), this);
+			}
+			public MapExtensionOption() : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MapExtensionOption", "MapExtensionOption()", typeof(void));
+			}
+			~MapExtensionOption() {
+				interceptor.Invoke("~MapExtensionOption", "~MapExtensionOption()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~MapExtensionOption", "~MapExtensionOption()", typeof(void));
+			}
+		}
+
+
+		[SmokeClass("QAbstractFileEngine::MapExtensionReturn")]
+		public class MapExtensionReturn : QAbstractFileEngine.ExtensionReturn, IDisposable {
+	 		protected MapExtensionReturn(Type dummy) : base((Type) null) {}
+			protected new void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(MapExtensionReturn), this);
+			}
+			public MapExtensionReturn() : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("MapExtensionReturn", "MapExtensionReturn()", typeof(void));
+			}
+			~MapExtensionReturn() {
+				interceptor.Invoke("~MapExtensionReturn", "~MapExtensionReturn()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~MapExtensionReturn", "~MapExtensionReturn()", typeof(void));
+			}
+		}
+
+
+		[SmokeClass("QAbstractFileEngine::UnMapExtensionOption")]
+		public class UnMapExtensionOption : QAbstractFileEngine.ExtensionOption, IDisposable {
+	 		protected UnMapExtensionOption(Type dummy) : base((Type) null) {}
+			protected new void CreateProxy() {
+				interceptor = new SmokeInvocation(typeof(UnMapExtensionOption), this);
+			}
+			public UnMapExtensionOption() : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("UnMapExtensionOption", "UnMapExtensionOption()", typeof(void));
+			}
+			~UnMapExtensionOption() {
+				interceptor.Invoke("~UnMapExtensionOption", "~UnMapExtensionOption()", typeof(void));
+			}
+			public void Dispose() {
+				interceptor.Invoke("~UnMapExtensionOption", "~UnMapExtensionOption()", typeof(void));
+			}
+		}
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAbstractFileEngine), this);
 		}
@@ -66,6 +137,8 @@ namespace Qyoto {
 		public enum Extension {
 			AtEndExtension = 0,
 			FastReadLineExtension = 1,
+			MapExtension = 2,
+			UnMapExtension = 3,
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
@@ -178,6 +251,12 @@ namespace Qyoto {
 		}
 		public bool AtEnd() {
 			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
+		}
+		public char[] Map(long offset, long size, QFile.MemoryMapFlags flags) {
+			return (char[]) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(char[]), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
+		}
+		public bool Unmap(char[] ptr) {
+			return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(char[]), ptr);
 		}
 		[SmokeMethod("read(char*, qint64)")]
 		public virtual long Read(string data, long maxlen) {

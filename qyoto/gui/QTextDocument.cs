@@ -19,6 +19,7 @@ namespace Qyoto {
 		}
 		public enum MetaInformation {
 			DocumentTitle = 0,
+			DocumentUrl = 1,
 		}
 		public enum FindFlag {
 			FindBackward = 0x00001,
@@ -68,6 +69,11 @@ namespace Qyoto {
 		[Q_PROPERTY("int", "blockCount")]
 		public int BlockCount {
 			get { return (int) interceptor.Invoke("blockCount", "blockCount()", typeof(int)); }
+		}
+		[Q_PROPERTY("qreal", "indentWidth")]
+		public double IndentWidth {
+			get { return (double) interceptor.Invoke("indentWidth", "indentWidth()", typeof(double)); }
+			set { interceptor.Invoke("setIndentWidth$", "setIndentWidth(qreal)", typeof(void), typeof(double), value); }
 		}
 		[Q_PROPERTY("QString", "defaultStyleSheet")]
 		public string DefaultStyleSheet {
@@ -121,6 +127,9 @@ namespace Qyoto {
 		}
 		public bool IsRedoAvailable() {
 			return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable() const", typeof(bool));
+		}
+		public int Revision() {
+			return (int) interceptor.Invoke("revision", "revision() const", typeof(int));
 		}
 		public void SetDocumentLayout(QAbstractTextDocumentLayout layout) {
 			interceptor.Invoke("setDocumentLayout#", "setDocumentLayout(QAbstractTextDocumentLayout*)", typeof(void), typeof(QAbstractTextDocumentLayout), layout);
@@ -194,11 +203,20 @@ namespace Qyoto {
 		public QTextBlock FindBlock(int pos) {
 			return (QTextBlock) interceptor.Invoke("findBlock$", "findBlock(int) const", typeof(QTextBlock), typeof(int), pos);
 		}
+		public QTextBlock FindBlockByNumber(int blockNumber) {
+			return (QTextBlock) interceptor.Invoke("findBlockByNumber$", "findBlockByNumber(int) const", typeof(QTextBlock), typeof(int), blockNumber);
+		}
 		public QTextBlock Begin() {
 			return (QTextBlock) interceptor.Invoke("begin", "begin() const", typeof(QTextBlock));
 		}
 		public QTextBlock End() {
 			return (QTextBlock) interceptor.Invoke("end", "end() const", typeof(QTextBlock));
+		}
+		public QTextBlock FirstBlock() {
+			return (QTextBlock) interceptor.Invoke("firstBlock", "firstBlock() const", typeof(QTextBlock));
+		}
+		public QTextBlock LastBlock() {
+			return (QTextBlock) interceptor.Invoke("lastBlock", "lastBlock() const", typeof(QTextBlock));
 		}
 		public int PageCount() {
 			return (int) interceptor.Invoke("pageCount", "pageCount() const", typeof(int));
@@ -286,11 +304,15 @@ namespace Qyoto {
 		void UndoAvailable(bool arg1);
 		[Q_SIGNAL("void redoAvailable(bool)")]
 		void RedoAvailable(bool arg1);
+		[Q_SIGNAL("void undoCommandAdded()")]
+		void UndoCommandAdded();
 		[Q_SIGNAL("void modificationChanged(bool)")]
 		void ModificationChanged(bool m);
 		[Q_SIGNAL("void cursorPositionChanged(const QTextCursor&)")]
 		void CursorPositionChanged(QTextCursor cursor);
 		[Q_SIGNAL("void blockCountChanged(int)")]
 		void BlockCountChanged(int newBlockCount);
+		[Q_SIGNAL("void documentLayoutChanged()")]
+		void DocumentLayoutChanged();
 	}
 }

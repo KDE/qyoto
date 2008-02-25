@@ -70,6 +70,22 @@ namespace Qyoto {
 		public override uint Flags(QModelIndex index) {
 			return (uint) interceptor.Invoke("flags#", "flags(const QModelIndex&) const", typeof(uint), typeof(QModelIndex), index);
 		}
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&, int)")]
+		public override bool SetData(QModelIndex index, QVariant value, int role) {
+			return (bool) interceptor.Invoke("setData##$", "setData(const QModelIndex&, const QVariant&, int)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value, typeof(int), role);
+		}
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
+		public override bool SetData(QModelIndex index, QVariant value) {
+			return (bool) interceptor.Invoke("setData##", "setData(const QModelIndex&, const QVariant&)", typeof(bool), typeof(QModelIndex), index, typeof(QVariant), value);
+		}
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&, int)")]
+		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
+			return (bool) interceptor.Invoke("setHeaderData$$#$", "setHeaderData(int, Qt::Orientation, const QVariant&, int)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value, typeof(int), role);
+		}
+		[SmokeMethod("setHeaderData(int, Qt::Orientation, const QVariant&)")]
+		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
+			return (bool) interceptor.Invoke("setHeaderData$$#", "setHeaderData(int, Qt::Orientation, const QVariant&)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value);
+		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
 		}

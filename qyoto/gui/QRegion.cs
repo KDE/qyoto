@@ -81,8 +81,14 @@ namespace Qyoto {
 		public QRegion Unite(QRegion r) {
 			return (QRegion) interceptor.Invoke("unite#", "unite(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
+		public QRegion Unite(QRect r) {
+			return (QRegion) interceptor.Invoke("unite#", "unite(const QRect&) const", typeof(QRegion), typeof(QRect), r);
+		}
 		public QRegion Intersect(QRegion r) {
 			return (QRegion) interceptor.Invoke("intersect#", "intersect(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
+		}
+		public QRegion Intersect(QRect r) {
+			return (QRegion) interceptor.Invoke("intersect#", "intersect(const QRect&) const", typeof(QRegion), typeof(QRect), r);
 		}
 		public QRegion Subtract(QRegion r) {
 			return (QRegion) interceptor.Invoke("subtract#", "subtract(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
@@ -93,8 +99,14 @@ namespace Qyoto {
 		public QRegion United(QRegion r) {
 			return (QRegion) interceptor.Invoke("united#", "united(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
 		}
+		public QRegion United(QRect r) {
+			return (QRegion) interceptor.Invoke("united#", "united(const QRect&) const", typeof(QRegion), typeof(QRect), r);
+		}
 		public QRegion Intersected(QRegion r) {
 			return (QRegion) interceptor.Invoke("intersected#", "intersected(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
+		}
+		public QRegion Intersected(QRect r) {
+			return (QRegion) interceptor.Invoke("intersected#", "intersected(const QRect&) const", typeof(QRegion), typeof(QRect), r);
 		}
 		public QRegion Subtracted(QRegion r) {
 			return (QRegion) interceptor.Invoke("subtracted#", "subtracted(const QRegion&) const", typeof(QRegion), typeof(QRegion), r);
@@ -117,6 +129,9 @@ namespace Qyoto {
 		public void SetRects(QRect rect, int num) {
 			interceptor.Invoke("setRects#$", "setRects(const QRect*, int)", typeof(void), typeof(QRect), rect, typeof(int), num);
 		}
+		public int NumRects() {
+			return (int) interceptor.Invoke("numRects", "numRects() const", typeof(int));
+		}
 		public override bool Equals(object o) {
 			if (!(o is QRegion)) { return false; }
 			return this == (QRegion) o;
@@ -136,8 +151,14 @@ namespace Qyoto {
 		public static QRegion operator+(QRegion lhs, QRegion r) {
 			return (QRegion) staticInterceptor.Invoke("operator+#", "operator+(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
 		}
+		public static QRegion operator+(QRegion lhs, QRect r) {
+			return (QRegion) staticInterceptor.Invoke("operator+#", "operator+(const QRect&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRect), r);
+		}
 		public static QRegion operator&(QRegion lhs, QRegion r) {
 			return (QRegion) staticInterceptor.Invoke("operator&#", "operator&(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);
+		}
+		public static QRegion operator&(QRegion lhs, QRect r) {
+			return (QRegion) staticInterceptor.Invoke("operator&#", "operator&(const QRect&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRect), r);
 		}
 		public static QRegion operator-(QRegion lhs, QRegion r) {
 			return (QRegion) staticInterceptor.Invoke("operator-#", "operator-(const QRegion&) const", typeof(QRegion), typeof(QRegion), lhs, typeof(QRegion), r);

@@ -16,6 +16,9 @@ namespace Qyoto {
 			None = 0x00,
 			WrapText = 0x01,
 			Alternate = 0x02,
+			HasCheckIndicator = 0x04,
+			HasDisplay = 0x08,
+			HasDecoration = 0x10,
 		}
 		public QStyleOptionViewItemV2() : this((Type) null) {
 			CreateProxy();

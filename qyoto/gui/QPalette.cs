@@ -42,7 +42,9 @@ namespace Qyoto {
 			Link = 14,
 			LinkVisited = 15,
 			AlternateBase = 16,
-			NoRole = 17,
+			ToolTipBase = 17,
+			ToolTipText = 18,
+			NoRole = 19,
 			NColorRoles = NoRole,
 			Foreground = WindowText,
 			Background = Window,
@@ -141,6 +143,12 @@ namespace Qyoto {
 		}
 		public QBrush AlternateBase() {
 			return (QBrush) interceptor.Invoke("alternateBase", "alternateBase() const", typeof(QBrush));
+		}
+		public QBrush ToolTipBase() {
+			return (QBrush) interceptor.Invoke("toolTipBase", "toolTipBase() const", typeof(QBrush));
+		}
+		public QBrush ToolTipText() {
+			return (QBrush) interceptor.Invoke("toolTipText", "toolTipText() const", typeof(QBrush));
 		}
 		public QBrush Background() {
 			return (QBrush) interceptor.Invoke("background", "background() const", typeof(QBrush));

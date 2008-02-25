@@ -198,6 +198,12 @@ namespace Qyoto {
 		protected virtual void PaintCell(QPainter painter, QRect rect, QDate date) {
 			interceptor.Invoke("paintCell###", "paintCell(QPainter*, const QRect&, const QDate&) const", typeof(void), typeof(QPainter), painter, typeof(QRect), rect, typeof(QDate), date);
 		}
+		protected void UpdateCell(QDate date) {
+			interceptor.Invoke("updateCell#", "updateCell(const QDate&)", typeof(void), typeof(QDate), date);
+		}
+		protected void UpdateCells() {
+			interceptor.Invoke("updateCells", "updateCells()", typeof(void));
+		}
 		~QCalendarWidget() {
 			interceptor.Invoke("~QCalendarWidget", "~QCalendarWidget()", typeof(void));
 		}

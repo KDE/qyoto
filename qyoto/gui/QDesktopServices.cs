@@ -15,6 +15,18 @@ namespace Qyoto {
 		static QDesktopServices() {
 			staticInterceptor = new SmokeInvocation(typeof(QDesktopServices), null);
 		}
+		public enum StandardLocation {
+			DesktopLocation = 0,
+			DocumentsLocation = 1,
+			FontsLocation = 2,
+			ApplicationsLocation = 3,
+			MusicLocation = 4,
+			MoviesLocation = 5,
+			PicturesLocation = 6,
+			TempLocation = 7,
+			HomeLocation = 8,
+			DataLocation = 9,
+		}
 		public QDesktopServices() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QDesktopServices", "QDesktopServices()", typeof(void));
@@ -33,6 +45,12 @@ namespace Qyoto {
 		}
 		public static void UnsetUrlHandler(string scheme) {
 			staticInterceptor.Invoke("unsetUrlHandler$", "unsetUrlHandler(const QString&)", typeof(void), typeof(string), scheme);
+		}
+		public static string StorageLocation(QDesktopServices.StandardLocation type) {
+			return (string) staticInterceptor.Invoke("storageLocation$", "storageLocation(const QDesktopServices::StandardLocation)", typeof(string), typeof(QDesktopServices.StandardLocation), type);
+		}
+		public static string DisplayName(QDesktopServices.StandardLocation type) {
+			return (string) staticInterceptor.Invoke("displayName$", "displayName(const QDesktopServices::StandardLocation)", typeof(string), typeof(QDesktopServices.StandardLocation), type);
 		}
 	}
 }

@@ -16,6 +16,9 @@ namespace Qyoto {
 		}
 		public const int Type = 13;
 
+		// QGraphicsWidget* parentWidget(); >>>> NOT CONVERTED
+		// QGraphicsWidget* topLevelWidget(); >>>> NOT CONVERTED
+		// QGraphicsWidget* window(); >>>> NOT CONVERTED
 		// QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
 		public QGraphicsSvgItem(QGraphicsItem parentItem) : this((Type) null) {
 			CreateProxy();
@@ -94,6 +97,15 @@ namespace Qyoto {
 		public new List<QGraphicsItem> Children() {
 			return (List<QGraphicsItem>) interceptor.Invoke("children", "children() const", typeof(List<QGraphicsItem>));
 		}
+		public List<QGraphicsItem> ChildItems() {
+			return (List<QGraphicsItem>) interceptor.Invoke("childItems", "childItems() const", typeof(List<QGraphicsItem>));
+		}
+		public bool IsWidget() {
+			return (bool) interceptor.Invoke("isWidget", "isWidget() const", typeof(bool));
+		}
+		public bool IsWindow() {
+			return (bool) interceptor.Invoke("isWindow", "isWindow() const", typeof(bool));
+		}
 		public QGraphicsItemGroup Group() {
 			return (QGraphicsItemGroup) interceptor.Invoke("group", "group() const", typeof(QGraphicsItemGroup));
 		}
@@ -111,6 +123,15 @@ namespace Qyoto {
 		}
 		public void SetFlags(uint flags) {
 			interceptor.Invoke("setFlags$", "setFlags(QGraphicsItem::GraphicsItemFlags)", typeof(void), typeof(uint), flags);
+		}
+		public QGraphicsItem.CacheMode cacheMode() {
+			return (QGraphicsItem.CacheMode) interceptor.Invoke("cacheMode", "cacheMode() const", typeof(QGraphicsItem.CacheMode));
+		}
+		public void SetCacheMode(QGraphicsItem.CacheMode mode, QSize cacheSize) {
+			interceptor.Invoke("setCacheMode$#", "setCacheMode(QGraphicsItem::CacheMode, const QSize&)", typeof(void), typeof(QGraphicsItem.CacheMode), mode, typeof(QSize), cacheSize);
+		}
+		public void SetCacheMode(QGraphicsItem.CacheMode mode) {
+			interceptor.Invoke("setCacheMode$", "setCacheMode(QGraphicsItem::CacheMode)", typeof(void), typeof(QGraphicsItem.CacheMode), mode);
 		}
 		public string ToolTip() {
 			return (string) interceptor.Invoke("toolTip", "toolTip() const", typeof(string));
@@ -132,6 +153,9 @@ namespace Qyoto {
 		}
 		public bool IsVisible() {
 			return (bool) interceptor.Invoke("isVisible", "isVisible() const", typeof(bool));
+		}
+		public bool IsVisibleTo(QGraphicsItem parent) {
+			return (bool) interceptor.Invoke("isVisibleTo#", "isVisibleTo(const QGraphicsItem*) const", typeof(bool), typeof(QGraphicsItem), parent);
 		}
 		public void SetVisible(bool visible) {
 			interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
@@ -172,6 +196,12 @@ namespace Qyoto {
 		public void SetAcceptsHoverEvents(bool enabled) {
 			interceptor.Invoke("setAcceptsHoverEvents$", "setAcceptsHoverEvents(bool)", typeof(void), typeof(bool), enabled);
 		}
+		public bool AcceptHoverEvents() {
+			return (bool) interceptor.Invoke("acceptHoverEvents", "acceptHoverEvents() const", typeof(bool));
+		}
+		public void SetAcceptHoverEvents(bool enabled) {
+			interceptor.Invoke("setAcceptHoverEvents$", "setAcceptHoverEvents(bool)", typeof(void), typeof(bool), enabled);
+		}
 		public bool HandlesChildEvents() {
 			return (bool) interceptor.Invoke("handlesChildEvents", "handlesChildEvents() const", typeof(bool));
 		}
@@ -189,6 +219,18 @@ namespace Qyoto {
 		}
 		public void ClearFocus() {
 			interceptor.Invoke("clearFocus", "clearFocus()", typeof(void));
+		}
+		public void GrabMouse() {
+			interceptor.Invoke("grabMouse", "grabMouse()", typeof(void));
+		}
+		public void UngrabMouse() {
+			interceptor.Invoke("ungrabMouse", "ungrabMouse()", typeof(void));
+		}
+		public void GrabKeyboard() {
+			interceptor.Invoke("grabKeyboard", "grabKeyboard()", typeof(void));
+		}
+		public void UngrabKeyboard() {
+			interceptor.Invoke("ungrabKeyboard", "ungrabKeyboard()", typeof(void));
 		}
 		public QPointF Pos() {
 			return (QPointF) interceptor.Invoke("pos", "pos() const", typeof(QPointF));
@@ -340,6 +382,15 @@ namespace Qyoto {
 		public virtual QPainterPath OpaqueArea() {
 			return (QPainterPath) interceptor.Invoke("opaqueArea", "opaqueArea() const", typeof(QPainterPath));
 		}
+		public QRegion BoundingRegion(QTransform itemToDeviceTransform) {
+			return (QRegion) interceptor.Invoke("boundingRegion#", "boundingRegion(const QTransform&) const", typeof(QRegion), typeof(QTransform), itemToDeviceTransform);
+		}
+		public double BoundingRegionGranularity() {
+			return (double) interceptor.Invoke("boundingRegionGranularity", "boundingRegionGranularity() const", typeof(double));
+		}
+		public void SetBoundingRegionGranularity(double granularity) {
+			interceptor.Invoke("setBoundingRegionGranularity$", "setBoundingRegionGranularity(qreal)", typeof(void), typeof(double), granularity);
+		}
 		public void Update(QRectF rect) {
 			interceptor.Invoke("update#", "update(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
@@ -348,6 +399,12 @@ namespace Qyoto {
 		}
 		public void Update(double x, double y, double width, double height) {
 			interceptor.Invoke("update$$$$", "update(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), x, typeof(double), y, typeof(double), width, typeof(double), height);
+		}
+		public void Scroll(double dx, double dy, QRectF rect) {
+			interceptor.Invoke("scroll$$#", "scroll(qreal, qreal, const QRectF&)", typeof(void), typeof(double), dx, typeof(double), dy, typeof(QRectF), rect);
+		}
+		public void Scroll(double dx, double dy) {
+			interceptor.Invoke("scroll$$", "scroll(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
 		}
 		public QPointF MapToItem(QGraphicsItem item, QPointF point) {
 			return (QPointF) interceptor.Invoke("mapToItem##", "mapToItem(const QGraphicsItem*, const QPointF&) const", typeof(QPointF), typeof(QGraphicsItem), item, typeof(QPointF), point);
@@ -459,6 +516,12 @@ namespace Qyoto {
 		}
 		public bool IsAncestorOf(QGraphicsItem child) {
 			return (bool) interceptor.Invoke("isAncestorOf#", "isAncestorOf(const QGraphicsItem*) const", typeof(bool), typeof(QGraphicsItem), child);
+		}
+		public QGraphicsItem CommonAncestorItem(QGraphicsItem other) {
+			return (QGraphicsItem) interceptor.Invoke("commonAncestorItem#", "commonAncestorItem(const QGraphicsItem*) const", typeof(QGraphicsItem), typeof(QGraphicsItem), other);
+		}
+		public bool IsUnderMouse() {
+			return (bool) interceptor.Invoke("isUnderMouse", "isUnderMouse() const", typeof(bool));
 		}
 		public QVariant Data(int key) {
 			return (QVariant) interceptor.Invoke("data$", "data(int) const", typeof(QVariant), typeof(int), key);

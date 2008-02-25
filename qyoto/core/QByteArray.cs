@@ -438,6 +438,18 @@ namespace Qyoto {
 		public QByteArray ToHex() {
 			return (QByteArray) interceptor.Invoke("toHex", "toHex() const", typeof(QByteArray));
 		}
+		public QByteArray ToPercentEncoding(QByteArray exclude, QByteArray include, char percent) {
+			return (QByteArray) interceptor.Invoke("toPercentEncoding##$", "toPercentEncoding(const QByteArray&, const QByteArray&, char) const", typeof(QByteArray), typeof(QByteArray), exclude, typeof(QByteArray), include, typeof(char), percent);
+		}
+		public QByteArray ToPercentEncoding(QByteArray exclude, QByteArray include) {
+			return (QByteArray) interceptor.Invoke("toPercentEncoding##", "toPercentEncoding(const QByteArray&, const QByteArray&) const", typeof(QByteArray), typeof(QByteArray), exclude, typeof(QByteArray), include);
+		}
+		public QByteArray ToPercentEncoding(QByteArray exclude) {
+			return (QByteArray) interceptor.Invoke("toPercentEncoding#", "toPercentEncoding(const QByteArray&) const", typeof(QByteArray), typeof(QByteArray), exclude);
+		}
+		public QByteArray ToPercentEncoding() {
+			return (QByteArray) interceptor.Invoke("toPercentEncoding", "toPercentEncoding() const", typeof(QByteArray));
+		}
 		public QByteArray SetNum(short arg1, int arg2) {
 			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(short, int)", typeof(QByteArray), typeof(short), arg1, typeof(int), arg2);
 		}
@@ -584,6 +596,12 @@ namespace Qyoto {
 		}
 		public static QByteArray FromHex(QByteArray hexEncoded) {
 			return (QByteArray) staticInterceptor.Invoke("fromHex#", "fromHex(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), hexEncoded);
+		}
+		public static QByteArray FromPercentEncoding(QByteArray pctEncoded, char percent) {
+			return (QByteArray) staticInterceptor.Invoke("fromPercentEncoding#$", "fromPercentEncoding(const QByteArray&, char)", typeof(QByteArray), typeof(QByteArray), pctEncoded, typeof(char), percent);
+		}
+		public static QByteArray FromPercentEncoding(QByteArray pctEncoded) {
+			return (QByteArray) staticInterceptor.Invoke("fromPercentEncoding#", "fromPercentEncoding(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), pctEncoded);
 		}
 		public static bool operator==(QByteArray a1, QByteArray a2) {
 			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);

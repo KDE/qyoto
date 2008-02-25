@@ -52,6 +52,7 @@ namespace Qyoto {
 			Tabloid = 29,
 			Custom = 30,
 			NPageSize = Custom,
+			NPaperSize = Custom,
 		}
 		public enum PageOrder {
 			FirstPageFirst = 0,
@@ -93,6 +94,25 @@ namespace Qyoto {
 			Selection = 1,
 			PageRange = 2,
 		}
+		public enum Unit {
+			Millimeter = 0,
+			Point = 1,
+			Inch = 2,
+			Pica = 3,
+			Didot = 4,
+			Cicero = 5,
+			DevicePixel = 6,
+		}
+		public enum DuplexMode {
+			DuplexNone = 0,
+			DuplexAuto = 1,
+			DuplexLongSide = 2,
+			DuplexShortSide = 3,
+		}
+		// QPrinter* QPrinter(const QPrinterInfo& arg1,QPrinter::PrinterMode arg2); >>>> NOT CONVERTED
+		// QPrinter* QPrinter(const QPrinterInfo& arg1); >>>> NOT CONVERTED
+		// void setPaperSize(QPrinter::PaperSize arg1); >>>> NOT CONVERTED
+		// QPrinter::PaperSize paperSize(); >>>> NOT CONVERTED
 		public QPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPrinter$", "QPrinter(QPrinter::PrinterMode)", typeof(void), typeof(QPrinter.PrinterMode), mode);
@@ -116,6 +136,9 @@ namespace Qyoto {
 		}
 		public string PrinterName() {
 			return (string) interceptor.Invoke("printerName", "printerName() const", typeof(string));
+		}
+		public bool IsValid() {
+			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}
 		public void SetOutputFileName(string arg1) {
 			interceptor.Invoke("setOutputFileName$", "setOutputFileName(const QString&)", typeof(void), typeof(string), arg1);
@@ -152,6 +175,12 @@ namespace Qyoto {
 		}
 		public QPrinter.PageSize pageSize() {
 			return (QPrinter.PageSize) interceptor.Invoke("pageSize", "pageSize() const", typeof(QPrinter.PageSize));
+		}
+		public void SetPaperSize(QSizeF paperSize, QPrinter.Unit unit) {
+			interceptor.Invoke("setPaperSize#$", "setPaperSize(const QSizeF&, QPrinter::Unit)", typeof(void), typeof(QSizeF), paperSize, typeof(QPrinter.Unit), unit);
+		}
+		public QSizeF PaperSize(QPrinter.Unit unit) {
+			return (QSizeF) interceptor.Invoke("paperSize$", "paperSize(QPrinter::Unit) const", typeof(QSizeF), typeof(QPrinter.Unit), unit);
 		}
 		public void SetPageOrder(QPrinter.PageOrder arg1) {
 			interceptor.Invoke("setPageOrder$", "setPageOrder(QPrinter::PageOrder)", typeof(void), typeof(QPrinter.PageOrder), arg1);
@@ -195,6 +224,12 @@ namespace Qyoto {
 		public QPrinter.PaperSource paperSource() {
 			return (QPrinter.PaperSource) interceptor.Invoke("paperSource", "paperSource() const", typeof(QPrinter.PaperSource));
 		}
+		public void SetDuplex(QPrinter.DuplexMode duplex) {
+			interceptor.Invoke("setDuplex$", "setDuplex(QPrinter::DuplexMode)", typeof(void), typeof(QPrinter.DuplexMode), duplex);
+		}
+		public QPrinter.DuplexMode Duplex() {
+			return (QPrinter.DuplexMode) interceptor.Invoke("duplex", "duplex() const", typeof(QPrinter.DuplexMode));
+		}
 		public List<int> SupportedResolutions() {
 			return (List<int>) interceptor.Invoke("supportedResolutions", "supportedResolutions() const", typeof(List<int>));
 		}
@@ -215,6 +250,12 @@ namespace Qyoto {
 		}
 		public QRect PageRect() {
 			return (QRect) interceptor.Invoke("pageRect", "pageRect() const", typeof(QRect));
+		}
+		public QRectF PaperRect(QPrinter.Unit arg1) {
+			return (QRectF) interceptor.Invoke("paperRect$", "paperRect(QPrinter::Unit) const", typeof(QRectF), typeof(QPrinter.Unit), arg1);
+		}
+		public QRectF PageRect(QPrinter.Unit arg1) {
+			return (QRectF) interceptor.Invoke("pageRect$", "pageRect(QPrinter::Unit) const", typeof(QRectF), typeof(QPrinter.Unit), arg1);
 		}
 		public bool NewPage() {
 			return (bool) interceptor.Invoke("newPage", "newPage()", typeof(bool));
@@ -246,6 +287,23 @@ namespace Qyoto {
 		}
 		public QPrinter.PrintRange printRange() {
 			return (QPrinter.PrintRange) interceptor.Invoke("printRange", "printRange() const", typeof(QPrinter.PrintRange));
+		}
+		public void SetPageMargins(double left, double top, double right, double bottom, QPrinter.Unit unit) {
+			interceptor.Invoke("setPageMargins$$$$$", "setPageMargins(qreal, qreal, qreal, qreal, QPrinter::Unit)", typeof(void), typeof(double), left, typeof(double), top, typeof(double), right, typeof(double), bottom, typeof(QPrinter.Unit), unit);
+		}
+		public void GetPageMargins(ref double left, ref double top, ref double right, ref double bottom, QPrinter.Unit unit) {
+			StackItem[] stack = new StackItem[6];
+			stack[1].s_double = left;
+			stack[2].s_double = top;
+			stack[3].s_double = right;
+			stack[4].s_double = bottom;
+			stack[5].s_int = (int) unit;
+			interceptor.Invoke("getPageMargins$$$$$", "getPageMargins(qreal*, qreal*, qreal*, qreal*, QPrinter::Unit) const", stack);
+			left = stack[1].s_double;
+			top = stack[2].s_double;
+			right = stack[3].s_double;
+			bottom = stack[4].s_double;
+			return;
 		}
 		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		protected override int Metric(IQPaintDevice arg1) {

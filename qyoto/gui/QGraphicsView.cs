@@ -33,6 +33,7 @@ namespace Qyoto {
 			MinimalViewportUpdate = 1,
 			SmartViewportUpdate = 2,
 			NoViewportUpdate = 3,
+			BoundingRectViewportUpdate = 4,
 		}
 		public enum OptimizationFlag {
 			DontClipPainter = 0x1,
@@ -251,7 +252,7 @@ namespace Qyoto {
 		public void Render(QPainter painter, QRectF target) {
 			interceptor.Invoke("render##", "render(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target);
 		}
-		public void Render(QPainter painter) {
+		public new void Render(QPainter painter) {
 			interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), painter);
 		}
 		public List<QGraphicsItem> Items() {
@@ -384,6 +385,10 @@ namespace Qyoto {
 		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
 			interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
+		}
+		[SmokeMethod("focusNextPrevChild(bool)")]
+		protected override bool FocusNextPrevChild(bool next) {
+			return (bool) interceptor.Invoke("focusNextPrevChild$", "focusNextPrevChild(bool)", typeof(bool), typeof(bool), next);
 		}
 		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected override void FocusOutEvent(QFocusEvent arg1) {
