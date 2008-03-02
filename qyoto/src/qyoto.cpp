@@ -983,6 +983,9 @@ public:
     }
 
 	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAbstract) {
+		// don't call anything if the application has already terminated
+		if (application_terminated) return false;
+
 		void * obj = (*GetInstance)(ptr, false);
 
 		if (obj == 0 && !isAbstract) {
@@ -1052,6 +1055,9 @@ extern "C" {
 static bool 
 qyoto_event_notify(void **data)
 {
+	// don't do anything if the application has already terminated
+	if (application_terminated) return false;
+
     QEvent *event = (QEvent *) data[1];
 
 	// If a child has been given a parent then make a global ref to it, to prevent

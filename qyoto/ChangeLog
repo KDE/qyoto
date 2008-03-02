@@ -1,3 +1,7 @@
+2008-02-03  Arno Rehn  <arno@arnorehn.de>
+
+	* Backported bugfixes from kdebindings-smoke2
+
 2007-11-29  Richard Dale  <rdale@foton.es>
 
 	* Fixed the simpletreemodel example so that the Flags() method returns
