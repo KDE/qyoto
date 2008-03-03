@@ -58,6 +58,13 @@
 #include <QtXml/qxmlstream.h>
 #endif
 
+#if QT_VERSION >= 0x040400
+#include <QtGui/qprinterinfo.h>
+#include <QtWebKit/qwebframe.h>
+#include <QtWebKit/qwebhistory.h>
+#include <QtNetwork/qnetworkcookie.h>
+#endif
+
 #include "smoke.h"
 
 #undef DEBUG
@@ -1583,6 +1590,10 @@ DEF_LIST_MARSHALLER( QUndoStackList, QList<QUndoStack*>, QUndoStack )
 DEF_LIST_MARSHALLER( QMdiSubWindowList, QList<QMdiSubWindow*>, QMdiSubWindow )
 #endif
 
+#if QT_VERSION >= 0x40400
+DEF_LIST_MARSHALLER( QWebFrameList, QList<QWebFrame*>, QWebFrame )
+#endif
+
 template <class Item, class ItemList, const char *ItemSTR >
 void marshall_ValueListItem(Marshall *m) {
 	switch(m->action()) {
@@ -1756,6 +1767,12 @@ DEF_VALUELIST_MARSHALLER( QXmlStreamNamespaceDeclarations, QVector<QXmlStreamNam
 DEF_VALUELIST_MARSHALLER( QXmlStreamNotationDeclarations, QVector<QXmlStreamNotationDeclaration>, QXmlStreamNotationDeclaration )
 #endif
 
+#if QT_VERSION >= 0x40400
+DEF_VALUELIST_MARSHALLER( QNetworkCookieList, QList<QNetworkCookie>, QNetworkCookie )
+DEF_VALUELIST_MARSHALLER( QPrinterInfoList, QList<QPrinterInfo>, QPrinterInfo )
+DEF_VALUELIST_MARSHALLER( QWebHistoryItemList, QList<QWebHistoryItem>, QWebHistoryItem )
+#endif
+
 TypeHandler Qt_handlers[] = {
     { "bool*", marshall_boolR },
     { "bool&", marshall_boolR },
@@ -1871,12 +1888,20 @@ TypeHandler Qt_handlers[] = {
     { "QList<QSslCertificate>&", marshall_QSslCertificateList },
     { "QList<QSslCipher>", marshall_QSslCipherList },
     { "QList<QSslCipher>&", marshall_QSslCipherList },
+    { "QList<QSslError>", marshall_QSslErrorList },
     { "QList<QSslError>&", marshall_QSslErrorList },
     { "QList<QWizard::WizardButton>", marshall_QListWizardButton },
     { "QList<QWizard::WizardButton>&", marshall_QListWizardButton },
     { "QXmlStreamEntityDeclarations", marshall_QXmlStreamEntityDeclarations },
     { "QXmlStreamNamespaceDeclarations", marshall_QXmlStreamNamespaceDeclarations },
     { "QXmlStreamNotationDeclarations", marshall_QXmlStreamNotationDeclarations },
+#endif
+#if QT_VERSION >= 0x040400
+    { "QList<QNetworkCookie>", marshall_QNetworkCookieList },
+    { "QList<QNetworkCookie>&", marshall_QNetworkCookieList },
+    { "QList<QPrinterInfo>", marshall_QPrinterInfoList },
+    { "QList<QWebFrame*>", marshall_QWebFrameList },
+    { "QList<QWebHistoryItem>", marshall_QWebHistoryItemList },
 #endif
     { 0, 0 }
 };
