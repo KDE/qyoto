@@ -42,9 +42,6 @@ namespace Qyoto {
 			get { return (double) interceptor.Invoke("textSizeMultiplier", "textSizeMultiplier()", typeof(double)); }
 			set { interceptor.Invoke("setTextSizeMultiplier$", "setTextSizeMultiplier(qreal)", typeof(void), typeof(double), value); }
 		}
-		// void load(const QNetworkRequest& arg1,QNetworkAccessManager::Operation arg2,const QByteArray& arg3); >>>> NOT CONVERTED
-		// void load(const QNetworkRequest& arg1,QNetworkAccessManager::Operation arg2); >>>> NOT CONVERTED
-		// void load(const QNetworkRequest& arg1); >>>> NOT CONVERTED
 		public QWebView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QWebView#", "QWebView(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -61,6 +58,15 @@ namespace Qyoto {
 		}
 		public void Load(QUrl url) {
 			interceptor.Invoke("load#", "load(const QUrl&)", typeof(void), typeof(QUrl), url);
+		}
+		public void Load(QNetworkRequest request, QNetworkAccessManager.Operation operation, QByteArray body) {
+			interceptor.Invoke("load#$#", "load(const QNetworkRequest&, QNetworkAccessManager::Operation, const QByteArray&)", typeof(void), typeof(QNetworkRequest), request, typeof(QNetworkAccessManager.Operation), operation, typeof(QByteArray), body);
+		}
+		public void Load(QNetworkRequest request, QNetworkAccessManager.Operation operation) {
+			interceptor.Invoke("load#$", "load(const QNetworkRequest&, QNetworkAccessManager::Operation)", typeof(void), typeof(QNetworkRequest), request, typeof(QNetworkAccessManager.Operation), operation);
+		}
+		public void Load(QNetworkRequest request) {
+			interceptor.Invoke("load#", "load(const QNetworkRequest&)", typeof(void), typeof(QNetworkRequest), request);
 		}
 		public void SetHtml(string html, QUrl baseUrl) {
 			interceptor.Invoke("setHtml$#", "setHtml(const QString&, const QUrl&)", typeof(void), typeof(string), html, typeof(QUrl), baseUrl);

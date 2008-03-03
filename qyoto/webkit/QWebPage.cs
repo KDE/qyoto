@@ -117,9 +117,6 @@ namespace Qyoto {
 			get { return (QWebPage.LinkDelegationPolicy) interceptor.Invoke("linkDelegationPolicy", "linkDelegationPolicy()", typeof(QWebPage.LinkDelegationPolicy)); }
 			set { interceptor.Invoke("setLinkDelegationPolicy$", "setLinkDelegationPolicy(QWebPage::LinkDelegationPolicy)", typeof(void), typeof(QWebPage.LinkDelegationPolicy), value); }
 		}
-		// void setNetworkAccessManager(QNetworkAccessManager* arg1); >>>> NOT CONVERTED
-		// QNetworkAccessManager* networkAccessManager(); >>>> NOT CONVERTED
-		// bool acceptNavigationRequest(QWebFrame* arg1,const QNetworkRequest& arg2,QWebPage::NavigationType arg3); >>>> NOT CONVERTED
 		public QWebPage(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QWebPage#", "QWebPage(QObject*)", typeof(void), typeof(QObject), parent);
@@ -148,6 +145,12 @@ namespace Qyoto {
 		}
 		public QUndoStack UndoStack() {
 			return (QUndoStack) interceptor.Invoke("undoStack", "undoStack() const", typeof(QUndoStack));
+		}
+		public void SetNetworkAccessManager(QNetworkAccessManager manager) {
+			interceptor.Invoke("setNetworkAccessManager#", "setNetworkAccessManager(QNetworkAccessManager*)", typeof(void), typeof(QNetworkAccessManager), manager);
+		}
+		public QNetworkAccessManager NetworkAccessManager() {
+			return (QNetworkAccessManager) interceptor.Invoke("networkAccessManager", "networkAccessManager() const", typeof(QNetworkAccessManager));
 		}
 		public ulong TotalBytes() {
 			return (ulong) interceptor.Invoke("totalBytes", "totalBytes() const", typeof(ulong));
@@ -189,6 +192,10 @@ namespace Qyoto {
 		[SmokeMethod("createPlugin(const QString&, const QUrl&, const QStringList&, const QStringList&)")]
 		protected virtual QObject CreatePlugin(string classid, QUrl url, List<string> paramNames, List<string> paramValues) {
 			return (QObject) interceptor.Invoke("createPlugin$#??", "createPlugin(const QString&, const QUrl&, const QStringList&, const QStringList&)", typeof(QObject), typeof(string), classid, typeof(QUrl), url, typeof(List<string>), paramNames, typeof(List<string>), paramValues);
+		}
+		[SmokeMethod("acceptNavigationRequest(QWebFrame*, const QNetworkRequest&, QWebPage::NavigationType)")]
+		protected virtual bool AcceptNavigationRequest(QWebFrame frame, QNetworkRequest request, QWebPage.NavigationType type) {
+			return (bool) interceptor.Invoke("acceptNavigationRequest##$", "acceptNavigationRequest(QWebFrame*, const QNetworkRequest&, QWebPage::NavigationType)", typeof(bool), typeof(QWebFrame), frame, typeof(QNetworkRequest), request, typeof(QWebPage.NavigationType), type);
 		}
 		[SmokeMethod("chooseFile(QWebFrame*, const QString&)")]
 		protected virtual string ChooseFile(QWebFrame originatingFrame, string oldFile) {
@@ -256,8 +263,10 @@ namespace Qyoto {
 		void StatusBarVisibilityChangeRequested(bool visible);
 		[Q_SIGNAL("void menuBarVisibilityChangeRequested(bool)")]
 		void MenuBarVisibilityChangeRequested(bool visible);
-		// void unsupportedContent(QNetworkReply* arg1); >>>> NOT CONVERTED
-		// void downloadRequested(const QNetworkRequest& arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void unsupportedContent(QNetworkReply*)")]
+		void UnsupportedContent(QNetworkReply reply);
+		[Q_SIGNAL("void downloadRequested(const QNetworkRequest&)")]
+		void DownloadRequested(QNetworkRequest request);
 		[Q_SIGNAL("void microFocusChanged()")]
 		void MicroFocusChanged();
 	}
