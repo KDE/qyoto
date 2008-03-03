@@ -2,6 +2,8 @@
 
 	* Added some more Qt 4.4 classes
 	* Added some marshallers for new Qt 4.4 QList types
+	* Brought the MonoDevelopment Qyoto project up to date with the current
+	  sources
 
 2008-02-25  Richard Dale  <richard.j.dale@gmail.com>
 

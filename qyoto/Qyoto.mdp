@@ -13,7 +13,6 @@
       <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="True" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
-  <DeployTargets />
   <Contents>
     <File name="./src/Qyoto.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/SmokeMarshallers.cs" subtype="Code" buildaction="Compile" />
@@ -112,6 +111,11 @@
     <File name="./core/QMetaType.cs" subtype="Code" buildaction="Compile" />
     <File name="./core/QBitArray.cs" subtype="Code" buildaction="Compile" />
     <File name="./core/QAbstractFileEngineIterator.cs" subtype="Code" buildaction="Compile" />
+    <File name="./core/QLineFExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./core/QPointFExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./core/QRectFExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./core/QSizeFExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./core/QUrlExtras.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QDragLeaveEvent.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QUndoStack.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QStyleOptionFrameV2.cs" subtype="Code" buildaction="Compile" />
@@ -431,9 +435,26 @@
     <File name="./gui/QGraphicsTextItem.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QCheckBox.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QTextFrameLayoutData.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QPrinterInfo.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QKeySequenceExtras.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QRegionExtras.cs" subtype="Code" buildaction="Compile" />
     <File name="./gui/QColorExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QCursorExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QIconExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QPenExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QPolygonExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QPolygonFExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QTransformExtras.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QTextTableCellFormat.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsGridLayout.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsLayout.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsLayoutItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsLinearLayout.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsProxyWidget.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsSceneMoveEvent.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsSceneResizeEvent.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QGraphicsWidget.cs" subtype="Code" buildaction="Compile" />
+    <File name="./gui/QCommandLinkButton.cs" subtype="Code" buildaction="Compile" />
     <File name="./network/QSslCertificate.cs" subtype="Code" buildaction="Compile" />
     <File name="./network/QNetworkProxy.cs" subtype="Code" buildaction="Compile" />
     <File name="./network/QSslCipher.cs" subtype="Code" buildaction="Compile" />
@@ -456,6 +477,14 @@
     <File name="./network/QNetworkAddressEntry.cs" subtype="Code" buildaction="Compile" />
     <File name="./network/QHostAddress.cs" subtype="Code" buildaction="Compile" />
     <File name="./network/QHttpHeader.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QNetworkAccessManager.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QSslConfiguration.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QNetworkCookie.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QNetworkCookieJar.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QNetworkReply.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QNetworkRequest.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QLocalServer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./network/QLocalSocket.cs" subtype="Code" buildaction="Compile" />
     <File name="./opengl/QGLColormap.cs" subtype="Code" buildaction="Compile" />
     <File name="./opengl/QGLFormat.cs" subtype="Code" buildaction="Compile" />
     <File name="./opengl/QGLWidget.cs" subtype="Code" buildaction="Compile" />
@@ -500,6 +529,14 @@
     <File name="./svg/QSvgWidget.cs" subtype="Code" buildaction="Compile" />
     <File name="./svg/QSvgGenerator.cs" subtype="Code" buildaction="Compile" />
     <File name="./svg/QSvgRenderer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./uitools/QUiLoader.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebFrame.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebHistory.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebHistoryInterface.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebHistoryItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebPage.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebSettings.cs" subtype="Code" buildaction="Compile" />
+    <File name="./webkit/QWebView.cs" subtype="Code" buildaction="Compile" />
     <File name="./xml/QXmlStreamAttribute.cs" subtype="Code" buildaction="Compile" />
     <File name="./xml/QXmlDTDHandler.cs" subtype="Code" buildaction="Compile" />
     <File name="./xml/QXmlSimpleReader.cs" subtype="Code" buildaction="Compile" />
@@ -539,7 +576,6 @@
     <File name="./xml/QXmlDeclHandler.cs" subtype="Code" buildaction="Compile" />
     <File name="./xml/QDomCharacterData.cs" subtype="Code" buildaction="Compile" />
     <File name="./xml/QDomElement.cs" subtype="Code" buildaction="Compile" />
-    <File name="./uitools/QUiLoader.cs" subtype="Code" buildaction="Compile" />
   </Contents>
-  <References />
+  <DeployTargets />
 </Project>
