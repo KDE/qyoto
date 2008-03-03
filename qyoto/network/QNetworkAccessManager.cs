@@ -24,16 +24,6 @@ namespace Qyoto {
 			PostOperation = 4,
 			UnknownOperation = 0,
 		}
-		// QNetworkCookieJar* cookieJar(); >>>> NOT CONVERTED
-		// void setCookieJar(QNetworkCookieJar* arg1); >>>> NOT CONVERTED
-		// QNetworkReply* head(const QNetworkRequest& arg1); >>>> NOT CONVERTED
-		// QNetworkReply* get(const QNetworkRequest& arg1); >>>> NOT CONVERTED
-		// QNetworkReply* post(const QNetworkRequest& arg1,QIODevice* arg2); >>>> NOT CONVERTED
-		// QNetworkReply* post(const QNetworkRequest& arg1,const QByteArray& arg2); >>>> NOT CONVERTED
-		// QNetworkReply* put(const QNetworkRequest& arg1,QIODevice* arg2); >>>> NOT CONVERTED
-		// QNetworkReply* put(const QNetworkRequest& arg1,const QByteArray& arg2); >>>> NOT CONVERTED
-		// QNetworkReply* createRequest(QNetworkAccessManager::Operation arg1,const QNetworkRequest& arg2,QIODevice* arg3); >>>> NOT CONVERTED
-		// QNetworkReply* createRequest(QNetworkAccessManager::Operation arg1,const QNetworkRequest& arg2); >>>> NOT CONVERTED
 		public QNetworkAccessManager(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QNetworkAccessManager#", "QNetworkAccessManager(QObject*)", typeof(void), typeof(QObject), parent);
@@ -47,6 +37,38 @@ namespace Qyoto {
 		}
 		public void SetProxy(QNetworkProxy proxy) {
 			interceptor.Invoke("setProxy#", "setProxy(const QNetworkProxy&)", typeof(void), typeof(QNetworkProxy), proxy);
+		}
+		public QNetworkCookieJar CookieJar() {
+			return (QNetworkCookieJar) interceptor.Invoke("cookieJar", "cookieJar() const", typeof(QNetworkCookieJar));
+		}
+		public void SetCookieJar(QNetworkCookieJar cookieJar) {
+			interceptor.Invoke("setCookieJar#", "setCookieJar(QNetworkCookieJar*)", typeof(void), typeof(QNetworkCookieJar), cookieJar);
+		}
+		public QNetworkReply Head(QNetworkRequest request) {
+			return (QNetworkReply) interceptor.Invoke("head#", "head(const QNetworkRequest&)", typeof(QNetworkReply), typeof(QNetworkRequest), request);
+		}
+		public QNetworkReply Get(QNetworkRequest request) {
+			return (QNetworkReply) interceptor.Invoke("get#", "get(const QNetworkRequest&)", typeof(QNetworkReply), typeof(QNetworkRequest), request);
+		}
+		public QNetworkReply Post(QNetworkRequest request, QIODevice data) {
+			return (QNetworkReply) interceptor.Invoke("post##", "post(const QNetworkRequest&, QIODevice*)", typeof(QNetworkReply), typeof(QNetworkRequest), request, typeof(QIODevice), data);
+		}
+		public QNetworkReply Post(QNetworkRequest request, QByteArray data) {
+			return (QNetworkReply) interceptor.Invoke("post##", "post(const QNetworkRequest&, const QByteArray&)", typeof(QNetworkReply), typeof(QNetworkRequest), request, typeof(QByteArray), data);
+		}
+		public QNetworkReply Put(QNetworkRequest request, QIODevice data) {
+			return (QNetworkReply) interceptor.Invoke("put##", "put(const QNetworkRequest&, QIODevice*)", typeof(QNetworkReply), typeof(QNetworkRequest), request, typeof(QIODevice), data);
+		}
+		public QNetworkReply Put(QNetworkRequest request, QByteArray data) {
+			return (QNetworkReply) interceptor.Invoke("put##", "put(const QNetworkRequest&, const QByteArray&)", typeof(QNetworkReply), typeof(QNetworkRequest), request, typeof(QByteArray), data);
+		}
+		[SmokeMethod("createRequest(QNetworkAccessManager::Operation, const QNetworkRequest&, QIODevice*)")]
+		protected virtual QNetworkReply CreateRequest(QNetworkAccessManager.Operation op, QNetworkRequest request, QIODevice outgoingData) {
+			return (QNetworkReply) interceptor.Invoke("createRequest$##", "createRequest(QNetworkAccessManager::Operation, const QNetworkRequest&, QIODevice*)", typeof(QNetworkReply), typeof(QNetworkAccessManager.Operation), op, typeof(QNetworkRequest), request, typeof(QIODevice), outgoingData);
+		}
+		[SmokeMethod("createRequest(QNetworkAccessManager::Operation, const QNetworkRequest&)")]
+		protected virtual QNetworkReply CreateRequest(QNetworkAccessManager.Operation op, QNetworkRequest request) {
+			return (QNetworkReply) interceptor.Invoke("createRequest$#", "createRequest(QNetworkAccessManager::Operation, const QNetworkRequest&)", typeof(QNetworkReply), typeof(QNetworkAccessManager.Operation), op, typeof(QNetworkRequest), request);
 		}
 		~QNetworkAccessManager() {
 			interceptor.Invoke("~QNetworkAccessManager", "~QNetworkAccessManager()", typeof(void));
@@ -68,8 +90,11 @@ namespace Qyoto {
 	public interface IQNetworkAccessManagerSignals : IQObjectSignals {
 		[Q_SIGNAL("void proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)")]
 		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator authenticator);
-		// void authenticationRequired(QNetworkReply* arg1,QAuthenticator* arg2); >>>> NOT CONVERTED
-		// void finished(QNetworkReply* arg1); >>>> NOT CONVERTED
-		// void sslErrors(QNetworkReply* arg1,const QList<QSslError>& arg2); >>>> NOT CONVERTED
+		[Q_SIGNAL("void authenticationRequired(QNetworkReply*, QAuthenticator*)")]
+		void AuthenticationRequired(QNetworkReply reply, QAuthenticator authenticator);
+		[Q_SIGNAL("void finished(QNetworkReply*)")]
+		void Finished(QNetworkReply reply);
+		[Q_SIGNAL("void sslErrors(QNetworkReply*, const QList<QSslError>&)")]
+		void SslErrors(QNetworkReply reply, List<QSslError> errors);
 	}
 }

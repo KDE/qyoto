@@ -28,7 +28,6 @@ namespace Qyoto {
 			VerifyPeer = 2,
 			AutoVerifyPeer = 3,
 		}
-		// QList<QSslError> sslErrors(); >>>> NOT CONVERTED
 		public QSslSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QSslSocket#", "QSslSocket(QObject*)", typeof(void), typeof(QObject), parent);
@@ -217,6 +216,9 @@ namespace Qyoto {
 		}
 		public new bool WaitForDisconnected() {
 			return (bool) interceptor.Invoke("waitForDisconnected", "waitForDisconnected()", typeof(bool));
+		}
+		public List<QSslError> SslErrors() {
+			return (List<QSslError>) interceptor.Invoke("sslErrors", "sslErrors() const", typeof(List<QSslError>));
 		}
 		[Q_SLOT("void startClientEncryption()")]
 		public void StartClientEncryption() {

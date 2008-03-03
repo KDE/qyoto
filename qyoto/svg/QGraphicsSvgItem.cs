@@ -16,9 +16,6 @@ namespace Qyoto {
 		}
 		public const int Type = 13;
 
-		// QGraphicsWidget* parentWidget(); >>>> NOT CONVERTED
-		// QGraphicsWidget* topLevelWidget(); >>>> NOT CONVERTED
-		// QGraphicsWidget* window(); >>>> NOT CONVERTED
 		// QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
 		public QGraphicsSvgItem(QGraphicsItem parentItem) : this((Type) null) {
 			CreateProxy();
@@ -90,6 +87,15 @@ namespace Qyoto {
 		}
 		public QGraphicsItem TopLevelItem() {
 			return (QGraphicsItem) interceptor.Invoke("topLevelItem", "topLevelItem() const", typeof(QGraphicsItem));
+		}
+		public QGraphicsWidget ParentWidget() {
+			return (QGraphicsWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QGraphicsWidget));
+		}
+		public QGraphicsWidget TopLevelWidget() {
+			return (QGraphicsWidget) interceptor.Invoke("topLevelWidget", "topLevelWidget() const", typeof(QGraphicsWidget));
+		}
+		public QGraphicsWidget Window() {
+			return (QGraphicsWidget) interceptor.Invoke("window", "window() const", typeof(QGraphicsWidget));
 		}
 		public void SetParentItem(QGraphicsItem parent) {
 			interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);

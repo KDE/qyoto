@@ -44,8 +44,11 @@ namespace Qyoto {
 		public void AddStretch() {
 			interceptor.Invoke("addStretch", "addStretch()", typeof(void));
 		}
-		public void AddGap(double spacing) {
-			interceptor.Invoke("addGap$", "addGap(qreal)", typeof(void), typeof(double), spacing);
+		public void AddSpacer(double minimumSize, double maximumSize) {
+			interceptor.Invoke("addSpacer$$", "addSpacer(qreal, qreal)", typeof(void), typeof(double), minimumSize, typeof(double), maximumSize);
+		}
+		public void AddSpacer(double minimumSize) {
+			interceptor.Invoke("addSpacer$", "addSpacer(qreal)", typeof(void), typeof(double), minimumSize);
 		}
 		public void InsertItem(int index, QGraphicsLayoutItem item) {
 			interceptor.Invoke("insertItem$#", "insertItem(int, QGraphicsLayoutItem*)", typeof(void), typeof(int), index, typeof(QGraphicsLayoutItem), item);
@@ -56,8 +59,11 @@ namespace Qyoto {
 		public void InsertStretch(int index) {
 			interceptor.Invoke("insertStretch$", "insertStretch(int)", typeof(void), typeof(int), index);
 		}
-		public void InsertGap(int index, double spacing) {
-			interceptor.Invoke("insertGap$$", "insertGap(int, qreal)", typeof(void), typeof(int), index, typeof(double), spacing);
+		public void InsertSpacer(int index, double minimumSize, double maximumSize) {
+			interceptor.Invoke("insertSpacer$$$", "insertSpacer(int, qreal, qreal)", typeof(void), typeof(int), index, typeof(double), minimumSize, typeof(double), maximumSize);
+		}
+		public void InsertSpacer(int index, double minimumSize) {
+			interceptor.Invoke("insertSpacer$$", "insertSpacer(int, qreal)", typeof(void), typeof(int), index, typeof(double), minimumSize);
 		}
 		public void RemoveItem(QGraphicsLayoutItem item) {
 			interceptor.Invoke("removeItem#", "removeItem(QGraphicsLayoutItem*)", typeof(void), typeof(QGraphicsLayoutItem), item);

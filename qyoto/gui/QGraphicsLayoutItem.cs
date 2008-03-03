@@ -26,6 +26,7 @@ namespace Qyoto {
 		QGraphicsLayoutItem ParentLayoutItem();
 		void SetParentLayoutItem(QGraphicsLayoutItem parent);
 		bool IsLayout();
+		QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint);
 	}
 
 	[SmokeClass("QGraphicsLayoutItem")]

@@ -109,8 +109,6 @@ namespace Qyoto {
 			DuplexLongSide = 2,
 			DuplexShortSide = 3,
 		}
-		// QPrinter* QPrinter(const QPrinterInfo& arg1,QPrinter::PrinterMode arg2); >>>> NOT CONVERTED
-		// QPrinter* QPrinter(const QPrinterInfo& arg1); >>>> NOT CONVERTED
 		// void setPaperSize(QPrinter::PaperSize arg1); >>>> NOT CONVERTED
 		// QPrinter::PaperSize paperSize(); >>>> NOT CONVERTED
 		public QPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
@@ -120,6 +118,14 @@ namespace Qyoto {
 		public QPrinter() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPrinter", "QPrinter()", typeof(void));
+		}
+		public QPrinter(QPrinterInfo printer, QPrinter.PrinterMode mode) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QPrinter#$", "QPrinter(const QPrinterInfo&, QPrinter::PrinterMode)", typeof(void), typeof(QPrinterInfo), printer, typeof(QPrinter.PrinterMode), mode);
+		}
+		public QPrinter(QPrinterInfo printer) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QPrinter#", "QPrinter(const QPrinterInfo&)", typeof(void), typeof(QPrinterInfo), printer);
 		}
 		[SmokeMethod("devType() const")]
 		public override int DevType() {

@@ -66,12 +66,6 @@ namespace Qyoto {
 		public static QPoint operator/(QPoint lhs, double c) {
 			return (QPoint) staticInterceptor.Invoke("operator/=$", "operator/=(qreal)", typeof(QPoint), typeof(QPoint), lhs, typeof(double), c);
 		}
-		public static QPoint operator*(QPoint p, QMatrix m) {
-			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
-		}
-		public static QPoint operator*(QPoint p, QTransform m) {
-			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QTransform&)", typeof(QPoint), typeof(QPoint), p, typeof(QTransform), m);
-		}
 		public static bool operator==(QPoint p1, QPoint p2) {
 			return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QPoint&, const QPoint&)", typeof(bool), typeof(QPoint), p1, typeof(QPoint), p2);
 		}
@@ -89,6 +83,12 @@ namespace Qyoto {
 		}
 		public static QPoint operator-(QPoint p) {
 			return (QPoint) staticInterceptor.Invoke("operator-#", "operator-(const QPoint&)", typeof(QPoint), typeof(QPoint), p);
+		}
+		public static QPoint operator*(QPoint p, QMatrix m) {
+			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
+		}
+		public static QPoint operator*(QPoint p, QTransform m) {
+			return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QTransform&)", typeof(QPoint), typeof(QPoint), p, typeof(QTransform), m);
 		}
 	}
 }

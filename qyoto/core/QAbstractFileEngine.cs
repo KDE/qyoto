@@ -12,18 +12,20 @@ namespace Qyoto {
 
 
 		[SmokeClass("QAbstractFileEngine::ExtensionOption")]
-		public class ExtensionOption {
+		public class ExtensionOption : Object {
 			protected SmokeInvocation interceptor = null;
 			private IntPtr smokeObject;
 			protected ExtensionOption(Type dummy) {}
 		}
 
+
 		[SmokeClass("QAbstractFileEngine::ExtensionReturn")]
-		public class ExtensionReturn {
+		public class ExtensionReturn : Object {
 			protected SmokeInvocation interceptor = null;
 			private IntPtr smokeObject;
 			protected ExtensionReturn(Type dummy) {}
 		}
+
 
 		[SmokeClass("QAbstractFileEngine::MapExtensionOption")]
 		public class MapExtensionOption : QAbstractFileEngine.ExtensionOption, IDisposable {

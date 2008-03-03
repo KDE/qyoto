@@ -203,9 +203,6 @@ namespace Qyoto {
 		public virtual QPainterPath Shape() {
 			return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));
 		}
-		public new List<QObject> Children() {
-			return (List<QObject>) interceptor.Invoke("children", "children() const", typeof(List<QObject>));
-		}
 		[Q_SLOT("bool close()")]
 		public bool Close() {
 			return (bool) interceptor.Invoke("close", "close()", typeof(bool));
@@ -223,7 +220,7 @@ namespace Qyoto {
 			return (QSizeF) interceptor.Invoke("sizeHint$", "sizeHint(Qt::SizeHint) const", typeof(QSizeF), typeof(Qt.SizeHint), which);
 		}
 		[SmokeMethod("updateGeometry()")]
-		protected new virtual void UpdateGeometry() {
+		public new virtual void UpdateGeometry() {
 			interceptor.Invoke("updateGeometry", "updateGeometry()", typeof(void));
 		}
 		[SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
@@ -340,6 +337,9 @@ namespace Qyoto {
 		}
 		public void SetParentItem(QGraphicsItem parent) {
 			interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(QGraphicsItem), parent);
+		}
+		public List<QGraphicsItem> Children() {
+			return (List<QGraphicsItem>) interceptor.Invoke("children", "children() const", typeof(List<QGraphicsItem>));
 		}
 		public List<QGraphicsItem> ChildItems() {
 			return (List<QGraphicsItem>) interceptor.Invoke("childItems", "childItems() const", typeof(List<QGraphicsItem>));
