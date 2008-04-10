@@ -32,6 +32,7 @@ namespace Qyoto {
 			OutlinePen = 0x810,
 			BackgroundBrush = 0x820,
 			ForegroundBrush = 0x821,
+			BackgroundImageUrl = 0x823,
 			BlockAlignment = 0x1010,
 			BlockTopMargin = 0x1030,
 			BlockBottomMargin = 0x1031,

@@ -1,3 +1,7 @@
+2008-04-10  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Regenerated the Qyoto sources from the Qt 4.4 rc1 headers
+
 2008-03-03  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Added some more Qt 4.4 classes

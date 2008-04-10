@@ -101,10 +101,6 @@ namespace Qyoto {
 		public void Resize(double w, double h) {
 			interceptor.Invoke("resize$$", "resize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
 		}
-		[SmokeMethod("geometry() const")]
-		public virtual QRectF Geometry() {
-			return (QRectF) interceptor.Invoke("geometry", "geometry() const", typeof(QRectF));
-		}
 		[SmokeMethod("setGeometry(const QRectF&)")]
 		public virtual void SetGeometry(QRectF rect) {
 			interceptor.Invoke("setGeometry#", "setGeometry(const QRectF&)", typeof(void), typeof(QRectF), rect);
@@ -866,6 +862,9 @@ namespace Qyoto {
 		public void SetSizePolicy(QSizePolicy.Policy hPolicy, QSizePolicy.Policy vPolicy, QSizePolicy.ControlType controlType) {
 			interceptor.Invoke("setSizePolicy$$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy, QSizePolicy::ControlType)", typeof(void), typeof(QSizePolicy.Policy), hPolicy, typeof(QSizePolicy.Policy), vPolicy, typeof(QSizePolicy.ControlType), controlType);
 		}
+		public void SetSizePolicy(QSizePolicy.Policy hPolicy, QSizePolicy.Policy vPolicy) {
+			interceptor.Invoke("setSizePolicy$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), hPolicy, typeof(QSizePolicy.Policy), vPolicy);
+		}
 		public QSizePolicy SizePolicy() {
 			return (QSizePolicy) interceptor.Invoke("sizePolicy", "sizePolicy() const", typeof(QSizePolicy));
 		}
@@ -878,6 +877,18 @@ namespace Qyoto {
 		public QSizeF MinimumSize() {
 			return (QSizeF) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSizeF));
 		}
+		public void SetMinimumWidth(double width) {
+			interceptor.Invoke("setMinimumWidth$", "setMinimumWidth(qreal)", typeof(void), typeof(double), width);
+		}
+		public double MinimumWidth() {
+			return (double) interceptor.Invoke("minimumWidth", "minimumWidth() const", typeof(double));
+		}
+		public void SetMinimumHeight(double height) {
+			interceptor.Invoke("setMinimumHeight$", "setMinimumHeight(qreal)", typeof(void), typeof(double), height);
+		}
+		public double MinimumHeight() {
+			return (double) interceptor.Invoke("minimumHeight", "minimumHeight() const", typeof(double));
+		}
 		public void SetPreferredSize(QSizeF size) {
 			interceptor.Invoke("setPreferredSize#", "setPreferredSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
 		}
@@ -887,6 +898,18 @@ namespace Qyoto {
 		public QSizeF PreferredSize() {
 			return (QSizeF) interceptor.Invoke("preferredSize", "preferredSize() const", typeof(QSizeF));
 		}
+		public void SetPreferredWidth(double width) {
+			interceptor.Invoke("setPreferredWidth$", "setPreferredWidth(qreal)", typeof(void), typeof(double), width);
+		}
+		public double PreferredWidth() {
+			return (double) interceptor.Invoke("preferredWidth", "preferredWidth() const", typeof(double));
+		}
+		public void SetPreferredHeight(double height) {
+			interceptor.Invoke("setPreferredHeight$", "setPreferredHeight(qreal)", typeof(void), typeof(double), height);
+		}
+		public double PreferredHeight() {
+			return (double) interceptor.Invoke("preferredHeight", "preferredHeight() const", typeof(double));
+		}
 		public void SetMaximumSize(QSizeF size) {
 			interceptor.Invoke("setMaximumSize#", "setMaximumSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
 		}
@@ -895,6 +918,21 @@ namespace Qyoto {
 		}
 		public QSizeF MaximumSize() {
 			return (QSizeF) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSizeF));
+		}
+		public void SetMaximumWidth(double width) {
+			interceptor.Invoke("setMaximumWidth$", "setMaximumWidth(qreal)", typeof(void), typeof(double), width);
+		}
+		public double MaximumWidth() {
+			return (double) interceptor.Invoke("maximumWidth", "maximumWidth() const", typeof(double));
+		}
+		public void SetMaximumHeight(double height) {
+			interceptor.Invoke("setMaximumHeight$", "setMaximumHeight(qreal)", typeof(void), typeof(double), height);
+		}
+		public double MaximumHeight() {
+			return (double) interceptor.Invoke("maximumHeight", "maximumHeight() const", typeof(double));
+		}
+		public QRectF Geometry() {
+			return (QRectF) interceptor.Invoke("geometry", "geometry() const", typeof(QRectF));
 		}
 		public QRectF ContentsRect() {
 			return (QRectF) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRectF));

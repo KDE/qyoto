@@ -44,12 +44,6 @@ namespace Qyoto {
 		public void AddStretch() {
 			interceptor.Invoke("addStretch", "addStretch()", typeof(void));
 		}
-		public void AddSpacer(double minimumSize, double maximumSize) {
-			interceptor.Invoke("addSpacer$$", "addSpacer(qreal, qreal)", typeof(void), typeof(double), minimumSize, typeof(double), maximumSize);
-		}
-		public void AddSpacer(double minimumSize) {
-			interceptor.Invoke("addSpacer$", "addSpacer(qreal)", typeof(void), typeof(double), minimumSize);
-		}
 		public void InsertItem(int index, QGraphicsLayoutItem item) {
 			interceptor.Invoke("insertItem$#", "insertItem(int, QGraphicsLayoutItem*)", typeof(void), typeof(int), index, typeof(QGraphicsLayoutItem), item);
 		}
@@ -59,18 +53,18 @@ namespace Qyoto {
 		public void InsertStretch(int index) {
 			interceptor.Invoke("insertStretch$", "insertStretch(int)", typeof(void), typeof(int), index);
 		}
-		public void InsertSpacer(int index, double minimumSize, double maximumSize) {
-			interceptor.Invoke("insertSpacer$$$", "insertSpacer(int, qreal, qreal)", typeof(void), typeof(int), index, typeof(double), minimumSize, typeof(double), maximumSize);
-		}
-		public void InsertSpacer(int index, double minimumSize) {
-			interceptor.Invoke("insertSpacer$$", "insertSpacer(int, qreal)", typeof(void), typeof(int), index, typeof(double), minimumSize);
-		}
 		public void RemoveItem(QGraphicsLayoutItem item) {
 			interceptor.Invoke("removeItem#", "removeItem(QGraphicsLayoutItem*)", typeof(void), typeof(QGraphicsLayoutItem), item);
 		}
 		[SmokeMethod("removeAt(int)")]
 		public override void RemoveAt(int index) {
 			interceptor.Invoke("removeAt$", "removeAt(int)", typeof(void), typeof(int), index);
+		}
+		public void SetItemSpacing(int index, double spacing) {
+			interceptor.Invoke("setItemSpacing$$", "setItemSpacing(int, qreal)", typeof(void), typeof(int), index, typeof(double), spacing);
+		}
+		public double ItemSpacing(int index) {
+			return (double) interceptor.Invoke("itemSpacing$", "itemSpacing(int) const", typeof(double), typeof(int), index);
 		}
 		public void SetStretchFactor(QGraphicsLayoutItem item, int stretch) {
 			interceptor.Invoke("setStretchFactor#$", "setStretchFactor(QGraphicsLayoutItem*, int)", typeof(void), typeof(QGraphicsLayoutItem), item, typeof(int), stretch);

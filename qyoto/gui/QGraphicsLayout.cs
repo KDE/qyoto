@@ -35,10 +35,6 @@ namespace Qyoto {
 			bottom = stack[4].s_double;
 			return;
 		}
-		[SmokeMethod("geometry() const")]
-		public override QRectF Geometry() {
-			return (QRectF) interceptor.Invoke("geometry", "geometry() const", typeof(QRectF));
-		}
 		public void Activate() {
 			interceptor.Invoke("activate", "activate()", typeof(void));
 		}

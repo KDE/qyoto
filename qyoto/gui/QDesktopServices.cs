@@ -47,10 +47,10 @@ namespace Qyoto {
 			staticInterceptor.Invoke("unsetUrlHandler$", "unsetUrlHandler(const QString&)", typeof(void), typeof(string), scheme);
 		}
 		public static string StorageLocation(QDesktopServices.StandardLocation type) {
-			return (string) staticInterceptor.Invoke("storageLocation$", "storageLocation(const QDesktopServices::StandardLocation)", typeof(string), typeof(QDesktopServices.StandardLocation), type);
+			return (string) staticInterceptor.Invoke("storageLocation$", "storageLocation(QDesktopServices::StandardLocation)", typeof(string), typeof(QDesktopServices.StandardLocation), type);
 		}
 		public static string DisplayName(QDesktopServices.StandardLocation type) {
-			return (string) staticInterceptor.Invoke("displayName$", "displayName(const QDesktopServices::StandardLocation)", typeof(string), typeof(QDesktopServices.StandardLocation), type);
+			return (string) staticInterceptor.Invoke("displayName$", "displayName(QDesktopServices::StandardLocation)", typeof(string), typeof(QDesktopServices.StandardLocation), type);
 		}
 	}
 }

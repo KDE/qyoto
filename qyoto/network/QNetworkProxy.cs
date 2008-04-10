@@ -51,6 +51,13 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QNetworkProxy#", "QNetworkProxy(const QNetworkProxy&)", typeof(void), typeof(QNetworkProxy), other);
 		}
+		public override bool Equals(object o) {
+			if (!(o is QNetworkProxy)) { return false; }
+			return this == (QNetworkProxy) o;
+		}
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
 		public void SetType(QNetworkProxy.ProxyType type) {
 			interceptor.Invoke("setType$", "setType(QNetworkProxy::ProxyType)", typeof(void), typeof(QNetworkProxy.ProxyType), type);
 		}
@@ -92,6 +99,12 @@ namespace Qyoto {
 		}
 		public void Dispose() {
 			interceptor.Invoke("~QNetworkProxy", "~QNetworkProxy()", typeof(void));
+		}
+		public static bool operator==(QNetworkProxy lhs, QNetworkProxy other) {
+			return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QNetworkProxy&) const", typeof(bool), typeof(QNetworkProxy), lhs, typeof(QNetworkProxy), other);
+		}
+		public static bool operator!=(QNetworkProxy lhs, QNetworkProxy other) {
+			return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QNetworkProxy&) const", typeof(bool), typeof(QNetworkProxy), lhs, typeof(QNetworkProxy), other);
 		}
 		public static void SetApplicationProxy(QNetworkProxy proxy) {
 			staticInterceptor.Invoke("setApplicationProxy#", "setApplicationProxy(const QNetworkProxy&)", typeof(void), typeof(QNetworkProxy), proxy);

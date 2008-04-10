@@ -235,7 +235,7 @@ namespace Qyoto {
 			WA_NativeWindow = 100,
 			WA_DontCreateNativeAncestors = 101,
 			WA_MacVariableSize = 102,
-			WA_GraphicsWidget = 103,
+			WA_DontShowOnScreen = 103,
 			WA_X11NetWmWindowTypeDesktop = 104,
 			WA_X11NetWmWindowTypeDock = 105,
 			WA_X11NetWmWindowTypeToolBar = 106,

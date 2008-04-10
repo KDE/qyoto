@@ -31,6 +31,7 @@ namespace Qyoto {
 		// void* resolve(const char* arg1); >>>> NOT CONVERTED
 		// void* resolve(const QString& arg1,const char* arg2); >>>> NOT CONVERTED
 		// void* resolve(const QString& arg1,int arg2,const char* arg3); >>>> NOT CONVERTED
+		// void* resolve(const QString& arg1,const QString& arg2,const char* arg3); >>>> NOT CONVERTED
 		public QLibrary(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLibrary#", "QLibrary(QObject*)", typeof(void), typeof(QObject), parent);
@@ -55,6 +56,14 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QLibrary$$", "QLibrary(const QString&, int)", typeof(void), typeof(string), fileName, typeof(int), verNum);
 		}
+		public QLibrary(string fileName, string version, QObject parent) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QLibrary$$#", "QLibrary(const QString&, const QString&, QObject*)", typeof(void), typeof(string), fileName, typeof(string), version, typeof(QObject), parent);
+		}
+		public QLibrary(string fileName, string version) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QLibrary$$", "QLibrary(const QString&, const QString&)", typeof(void), typeof(string), fileName, typeof(string), version);
+		}
 		public bool Load() {
 			return (bool) interceptor.Invoke("load", "load()", typeof(bool));
 		}
@@ -66,6 +75,9 @@ namespace Qyoto {
 		}
 		public void SetFileNameAndVersion(string fileName, int verNum) {
 			interceptor.Invoke("setFileNameAndVersion$$", "setFileNameAndVersion(const QString&, int)", typeof(void), typeof(string), fileName, typeof(int), verNum);
+		}
+		public void SetFileNameAndVersion(string fileName, string version) {
+			interceptor.Invoke("setFileNameAndVersion$$", "setFileNameAndVersion(const QString&, const QString&)", typeof(void), typeof(string), fileName, typeof(string), version);
 		}
 		public string ErrorString() {
 			return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));

@@ -32,6 +32,10 @@ namespace Qyoto {
 		public QIcon icon {
 			get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
 		}
+		[Q_PROPERTY("QSize", "contentsSize")]
+		public QSize ContentsSize {
+			get { return (QSize) interceptor.Invoke("contentsSize", "contentsSize()", typeof(QSize)); }
+		}
 		public QWebPage Page() {
 			return (QWebPage) interceptor.Invoke("page", "page() const", typeof(QWebPage));
 		}
@@ -118,6 +122,13 @@ namespace Qyoto {
 		}
 		public QRect Geometry() {
 			return (QRect) interceptor.Invoke("geometry", "geometry() const", typeof(QRect));
+		}
+		public QWebHitTestResult HitTestContent(QPoint pos) {
+			return (QWebHitTestResult) interceptor.Invoke("hitTestContent#", "hitTestContent(const QPoint&) const", typeof(QWebHitTestResult), typeof(QPoint), pos);
+		}
+		[SmokeMethod("event(QEvent*)")]
+		public override bool Event(QEvent arg1) {
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
 		[Q_SLOT("QVariant evaluateJavaScript(const QString&)")]
 		public QVariant EvaluateJavaScript(string scriptSource) {

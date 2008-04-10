@@ -16,10 +16,19 @@ namespace Qyoto {
 		static QStackedLayout() {
 			staticInterceptor = new SmokeInvocation(typeof(QStackedLayout), null);
 		}
+		public enum StackingMode {
+			StackOne = 0,
+			StackAll = 1,
+		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get { return (int) interceptor.Invoke("currentIndex", "currentIndex()", typeof(int)); }
 			set { interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), value); }
+		}
+		[Q_PROPERTY("QStackedLayout::StackingMode", "stackingMode")]
+		public QStackedLayout.StackingMode stackingMode {
+			get { return (QStackedLayout.StackingMode) interceptor.Invoke("stackingMode", "stackingMode()", typeof(QStackedLayout.StackingMode)); }
+			set { interceptor.Invoke("setStackingMode$", "setStackingMode(QStackedLayout::StackingMode)", typeof(void), typeof(QStackedLayout.StackingMode), value); }
 		}
 		public QStackedLayout() : this((Type) null) {
 			CreateProxy();

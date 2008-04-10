@@ -11,6 +11,22 @@ namespace Qyoto {
 	[SmokeClass("QWebPage")]
 	public class QWebPage : QObject, IDisposable {
  		protected QWebPage(Type dummy) : base((Type) null) {}
+
+
+		[SmokeClass("QWebPage::ExtensionOption")]
+		public class ExtensionOption : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected ExtensionOption(Type dummy) {}
+		}
+
+
+		[SmokeClass("QWebPage::ExtensionReturn")]
+		public class ExtensionReturn : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected ExtensionReturn(Type dummy) {}
+		}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QWebPage), this);
 		}
@@ -94,6 +110,8 @@ namespace Qyoto {
 			WebBrowserWindow = 0,
 			WebModalDialog = 1,
 		}
+		public enum Extension {
+		}
 		[Q_PROPERTY("bool", "modified")]
 		public bool Modified {
 			get { return (bool) interceptor.Invoke("isModified", "isModified()", typeof(bool)); }
@@ -117,6 +135,15 @@ namespace Qyoto {
 			get { return (QWebPage.LinkDelegationPolicy) interceptor.Invoke("linkDelegationPolicy", "linkDelegationPolicy()", typeof(QWebPage.LinkDelegationPolicy)); }
 			set { interceptor.Invoke("setLinkDelegationPolicy$", "setLinkDelegationPolicy(QWebPage::LinkDelegationPolicy)", typeof(void), typeof(QWebPage.LinkDelegationPolicy), value); }
 		}
+		[Q_PROPERTY("QPalette", "palette")]
+		public QPalette Palette {
+			get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
+			set { interceptor.Invoke("setPalette#", "setPalette(QPalette)", typeof(void), typeof(QPalette), value); }
+		}
+		// void setPluginFactory(QWebPluginFactory* arg1); >>>> NOT CONVERTED
+		// QWebPluginFactory* pluginFactory(); >>>> NOT CONVERTED
+		// bool extension(QWebPage::Extension arg1,const QWebPage::ExtensionOption* arg2,QWebPage::ExtensionReturn* arg3); >>>> NOT CONVERTED
+		// bool extension(QWebPage::Extension arg1,const QWebPage::ExtensionOption* arg2); >>>> NOT CONVERTED
 		public QWebPage(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QWebPage#", "QWebPage(QObject*)", typeof(void), typeof(QObject), parent);
@@ -184,6 +211,20 @@ namespace Qyoto {
 		}
 		public bool FindText(string subString) {
 			return (bool) interceptor.Invoke("findText$", "findText(const QString&)", typeof(bool), typeof(string), subString);
+		}
+		public bool SwallowContextMenuEvent(QContextMenuEvent arg1) {
+			return (bool) interceptor.Invoke("swallowContextMenuEvent#", "swallowContextMenuEvent(QContextMenuEvent*)", typeof(bool), typeof(QContextMenuEvent), arg1);
+		}
+		public void UpdatePositionDependentActions(QPoint pos) {
+			interceptor.Invoke("updatePositionDependentActions#", "updatePositionDependentActions(const QPoint&)", typeof(void), typeof(QPoint), pos);
+		}
+		[SmokeMethod("extension(QWebPage::Extension)")]
+		public virtual bool extension(QWebPage.Extension extension) {
+			return (bool) interceptor.Invoke("extension$", "extension(QWebPage::Extension)", typeof(bool), typeof(QWebPage.Extension), extension);
+		}
+		[SmokeMethod("supportsExtension(QWebPage::Extension) const")]
+		public virtual bool SupportsExtension(QWebPage.Extension extension) {
+			return (bool) interceptor.Invoke("supportsExtension$", "supportsExtension(QWebPage::Extension) const", typeof(bool), typeof(QWebPage.Extension), extension);
 		}
 		[SmokeMethod("createWindow(QWebPage::WebWindowType)")]
 		protected virtual QWebPage CreateWindow(QWebPage.WebWindowType type) {
@@ -255,6 +296,10 @@ namespace Qyoto {
 		void RepaintRequested(QRect dirtyRect);
 		[Q_SIGNAL("void scrollRequested(int, int, const QRect&)")]
 		void ScrollRequested(int dx, int dy, QRect scrollViewRect);
+		[Q_SIGNAL("void windowCloseRequested()")]
+		void WindowCloseRequested();
+		[Q_SIGNAL("void printRequested(QWebFrame*)")]
+		void PrintRequested(QWebFrame frame);
 		[Q_SIGNAL("void linkClicked(const QUrl&)")]
 		void LinkClicked(QUrl url);
 		[Q_SIGNAL("void toolBarVisibilityChangeRequested(bool)")]

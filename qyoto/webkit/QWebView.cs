@@ -118,6 +118,10 @@ namespace Qyoto {
 		public bool FindText(string subString) {
 			return (bool) interceptor.Invoke("findText$", "findText(const QString&)", typeof(bool), typeof(string), subString);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new virtual bool Event(QEvent arg1) {
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
 		[Q_SLOT("void stop()")]
 		public void Stop() {
 			interceptor.Invoke("stop", "stop()", typeof(void));
@@ -149,6 +153,10 @@ namespace Qyoto {
 		[SmokeMethod("createWindow(QWebPage::WebWindowType)")]
 		protected virtual QWebView CreateWindow(QWebPage.WebWindowType type) {
 			return (QWebView) interceptor.Invoke("createWindow$", "createWindow(QWebPage::WebWindowType)", typeof(QWebView), typeof(QWebPage.WebWindowType), type);
+		}
+		[SmokeMethod("changeEvent(QEvent*)")]
+		protected override void ChangeEvent(QEvent arg1) {
+			interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
 		}
 		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
