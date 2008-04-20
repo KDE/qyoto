@@ -460,12 +460,20 @@ namespace Qyoto {
 //			Debug.Assert(	result.proxyCreator != null, 
 //							"GetSmokeClassData(\"" + result.className + "\") no CreateProxy() found" );
 
-			result.smokeObjectField = t.GetField(	"smokeObject", 
-													BindingFlags.NonPublic 
-													| BindingFlags.GetField
-													| BindingFlags.Instance );
+			result.smokeObjectField = GetPrivateFieldInfo(t, "smokeObject");
 
 			return result;
+		}
+
+		public static FieldInfo GetPrivateFieldInfo(Type type, string name) {
+			Type t = type;
+			FieldInfo fi = null;
+			while (t != typeof(object)) {
+				fi = t.GetField(name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
+				if (fi != null) return fi;
+				t = t.BaseType;
+			}
+			return null;
 		}
 
 		// The class is not a custom subclass of a Qyoto class, and also is not
