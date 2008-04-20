@@ -1,3 +1,9 @@
+2008-04-20  Arno Rehn  <arno@arnorehn.de>
+
+	* Since Mono 1.9 inherited private members are not included in the search
+	  by Type.Get*. So now search in the whole hierarchy for the private field
+	  'smokeObject'.
+
 2008-04-10  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Regenerated the Qyoto sources from the Qt 4.4 rc1 headers
