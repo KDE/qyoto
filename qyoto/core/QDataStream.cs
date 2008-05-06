@@ -81,8 +81,8 @@ namespace Qyoto {
 		public void SetVersion(int arg1) {
 			interceptor.Invoke("setVersion$", "setVersion(int)", typeof(void), typeof(int), arg1);
 		}
-		public QDataStream Read(int& i) {
-			return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(qint32&)", typeof(QDataStream), typeof(int&), i);
+		public QDataStream Read(int i) {
+			return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(qint32&)", typeof(QDataStream), typeof(int), i);
 		}
 		public QDataStream Read(bool i) {
 			return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(bool&)", typeof(QDataStream), typeof(bool), i);
@@ -99,14 +99,11 @@ namespace Qyoto {
 		public QDataStream Write(char i) {
 			return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(qint8)", typeof(QDataStream), typeof(char), i);
 		}
-		public QDataStream Write(uchar i) {
-			return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(quint8)", typeof(QDataStream), typeof(uchar), i);
+		public QDataStream Write(ushort i) {
+			return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(quint8)", typeof(QDataStream), typeof(ushort), i);
 		}
 		public QDataStream Write(short i) {
 			return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(qint16)", typeof(QDataStream), typeof(short), i);
-		}
-		public QDataStream Write(ushort i) {
-			return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(quint16)", typeof(QDataStream), typeof(ushort), i);
 		}
 		public QDataStream Write(int i) {
 			return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(qint32)", typeof(QDataStream), typeof(int), i);
