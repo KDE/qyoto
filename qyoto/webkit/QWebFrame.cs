@@ -57,12 +57,6 @@ namespace Qyoto {
 		public void SetHtml(string html) {
 			interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), html);
 		}
-		public void SetHtml(QByteArray html, QUrl baseUrl) {
-			interceptor.Invoke("setHtml##", "setHtml(const QByteArray&, const QUrl&)", typeof(void), typeof(QByteArray), html, typeof(QUrl), baseUrl);
-		}
-		public void SetHtml(QByteArray html) {
-			interceptor.Invoke("setHtml#", "setHtml(const QByteArray&)", typeof(void), typeof(QByteArray), html);
-		}
 		public void SetContent(QByteArray data, string mimeType, QUrl baseUrl) {
 			interceptor.Invoke("setContent#$#", "setContent(const QByteArray&, const QString&, const QUrl&)", typeof(void), typeof(QByteArray), data, typeof(string), mimeType, typeof(QUrl), baseUrl);
 		}

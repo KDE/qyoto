@@ -74,12 +74,6 @@ namespace Qyoto {
 		public void SetHtml(string html) {
 			interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), html);
 		}
-		public void SetHtml(QByteArray html, QUrl baseUrl) {
-			interceptor.Invoke("setHtml##", "setHtml(const QByteArray&, const QUrl&)", typeof(void), typeof(QByteArray), html, typeof(QUrl), baseUrl);
-		}
-		public void SetHtml(QByteArray html) {
-			interceptor.Invoke("setHtml#", "setHtml(const QByteArray&)", typeof(void), typeof(QByteArray), html);
-		}
 		public void SetContent(QByteArray data, string mimeType, QUrl baseUrl) {
 			interceptor.Invoke("setContent#$#", "setContent(const QByteArray&, const QString&, const QUrl&)", typeof(void), typeof(QByteArray), data, typeof(string), mimeType, typeof(QUrl), baseUrl);
 		}
@@ -244,8 +238,8 @@ namespace Qyoto {
 		void LoadStarted();
 		[Q_SIGNAL("void loadProgress(int)")]
 		void LoadProgress(int progress);
-		[Q_SIGNAL("void loadFinished()")]
-		void LoadFinished();
+		[Q_SIGNAL("void loadFinished(bool)")]
+		void LoadFinished(bool arg1);
 		[Q_SIGNAL("void titleChanged(const QString&)")]
 		void TitleChanged(string title);
 		[Q_SIGNAL("void statusBarMessage(const QString&)")]

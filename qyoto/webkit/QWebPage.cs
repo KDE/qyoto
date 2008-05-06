@@ -280,8 +280,12 @@ namespace Qyoto {
 	}
 
 	public interface IQWebPageSignals : IQObjectSignals {
+		[Q_SIGNAL("void loadStarted()")]
+		void LoadStarted();
 		[Q_SIGNAL("void loadProgress(int)")]
 		void LoadProgress(int progress);
+		[Q_SIGNAL("void loadFinished(bool)")]
+		void LoadFinished(bool ok);
 		[Q_SIGNAL("void linkHovered(const QString&, const QString&, const QString&)")]
 		void LinkHovered(string link, string title, string textContent);
 		[Q_SIGNAL("void statusBarMessage(const QString&)")]

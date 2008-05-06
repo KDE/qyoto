@@ -1,3 +1,7 @@
+2008-05-06  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Regenerate the C# sources from the Qt 4.4 release headers
+
 2008-04-10  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Added the missing QWebHitTestResult.cs source. Thanks to annma for 

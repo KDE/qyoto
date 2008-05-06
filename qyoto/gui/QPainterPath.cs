@@ -19,6 +19,18 @@ namespace Qyoto {
 			protected void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(Element), this);
 			}
+			private double x() {
+				return (double) interceptor.Invoke("x", "x()", typeof(double));
+			}
+			public double X {
+				get { return x(); }
+			}
+			private double y() {
+				return (double) interceptor.Invoke("y", "y()", typeof(double));
+			}
+			public double Y {
+				get { return y(); }
+			}
 			//  operator QPointF(); >>>> NOT CONVERTED
 			// bool operator==(); >>>> NOT CONVERTED
 			public bool IsMoveTo() {

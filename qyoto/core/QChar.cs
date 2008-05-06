@@ -184,8 +184,8 @@ namespace Qyoto {
 		public bool HasMirrored() {
 			return (bool) interceptor.Invoke("hasMirrored", "hasMirrored() const", typeof(bool));
 		}
-		public ushort combiningClass() {
-			return (ushort) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(ushort));
+		public uchar combiningClass() {
+			return (uchar) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(uchar));
 		}
 		public char MirroredChar() {
 			return (char) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(char));
@@ -322,11 +322,11 @@ namespace Qyoto {
 		public static char joining(ushort ucs2) {
 			return (char) staticInterceptor.Invoke("joining$", "joining(ushort)", typeof(char), typeof(ushort), ucs2);
 		}
-		public static ushort combiningClass(uint ucs4) {
-			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(uint)", typeof(ushort), typeof(uint), ucs4);
+		public static uchar combiningClass(uint ucs4) {
+			return (uchar) staticInterceptor.Invoke("combiningClass$", "combiningClass(uint)", typeof(uchar), typeof(uint), ucs4);
 		}
-		public static ushort combiningClass(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(ushort)", typeof(ushort), typeof(ushort), ucs2);
+		public static uchar combiningClass(ushort ucs2) {
+			return (uchar) staticInterceptor.Invoke("combiningClass$", "combiningClass(ushort)", typeof(uchar), typeof(ushort), ucs2);
 		}
 		public static uint MirroredChar(uint ucs4) {
 			return (uint) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(uint)", typeof(uint), typeof(uint), ucs4);

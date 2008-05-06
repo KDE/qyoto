@@ -13,6 +13,24 @@ namespace Qyoto {
 			protected SmokeInvocation interceptor = null;
 			private IntPtr smokeObject;
 			protected Attribute(Type dummy) {}
+			private int start() {
+				return (int) interceptor.Invoke("start", "start()", typeof(int));
+			}
+			public int Start {
+				get { return start(); }
+			}
+			private int length() {
+				return (int) interceptor.Invoke("length", "length()", typeof(int));
+			}
+			public int Length {
+				get { return length(); }
+			}
+			private QVariant value() {
+				return (QVariant) interceptor.Invoke("value", "value()", typeof(QVariant));
+			}
+			public QVariant Value {
+				get { return value(); }
+			}
 			//  Attribute(,,,); >>>> NOT CONVERTED
 		}
 		protected new void CreateProxy() {
