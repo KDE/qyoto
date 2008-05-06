@@ -1834,6 +1834,8 @@ TypeHandler Qt_handlers[] = {
     { "QMap<QString,QString>&", marshall_QMapQStringQString },
     { "QMap<QString,QVariant>", marshall_QMapQStringQVariant },
     { "QMap<QString,QVariant>&", marshall_QMapQStringQVariant },
+    { "QVariantMap", marshall_QMapQStringQVariant },
+    { "QVariantMap&", marshall_QMapQStringQVariant },
     { "QModelIndexList", marshall_QModelIndexList },
     { "QModelIndexList&", marshall_QModelIndexList },
     { "QObjectList", marshall_QObjectList },

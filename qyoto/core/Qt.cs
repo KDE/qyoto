@@ -947,7 +947,6 @@ namespace Qyoto {
 			WhiteSpaceNoWrap = 2,
 			WhiteSpaceModeUndefined = -1,
 		}
-		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
 		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
 		// void* qMalloc(size_t arg1); >>>> NOT CONVERTED
 		// void qFree(void* arg1); >>>> NOT CONVERTED
@@ -1055,6 +1054,9 @@ namespace Qyoto {
 		}
 		public static QDBusArgument Write(QDBusArgument arg, List<QVariant> list) {
 			return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QVariantList&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(List<QVariant>), list);
+		}
+		public static QDBusArgument Write(QDBusArgument arg, Dictionary<string, QVariant> map) {
+			return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QVariantMap&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(Dictionary<string, QVariant>), map);
 		}
 		public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
 			return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QDomNode&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QDomNode), arg2);
