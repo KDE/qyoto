@@ -1,15 +1,25 @@
+/***************************************************************************
+    begin                : Wed Jun 16 2004
+    copyright            : (C) 2004 by Richard Dale
+    email                : Richard_Dale@tipitina.demon.co.uk
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+
 #include "writeproperty.h"
 #include "qyoto.h"
 #include <qt_smoke.h>
 
 WriteProperty::WriteProperty(void* obj, const char* propertyName, void** o)
 {
-	_stack = new Smoke::StackItem;
-	_result = new Smoke::StackItem;
-	
-	_stack->s_voidp = o[0];
-	
-	smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QVariant").index, _stack->s_voidp);
+	smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QVariant").index, o[0]);
 	void* variant = (*CreateInstance)("Qyoto.QVariant", sqo);
 	
 	// Set the C# property value
@@ -26,5 +36,4 @@ void
 WriteProperty::next() {}
 
 WriteProperty::~WriteProperty() {
-// 	delete _stack;
 }

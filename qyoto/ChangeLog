@@ -1,3 +1,8 @@
+2008-05-13  Arno Rehn  <arno@arnorehn.de>
+
+	* Fix memory leak in WriteProperty.
+	* Added missing license information.
+
 2008-05-06  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Regenerate the C# sources from the Qt 4.4 release headers
