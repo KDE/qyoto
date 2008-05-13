@@ -104,131 +104,131 @@ static InvokeMethodFn AddObjectObjectToDictionary;
 static AddIntObject AddIntObjectToDictionary;
 static DictToMap DictionaryToQMap;
 
-void InstallIntPtrToCharStarStar(GetIntPtr callback)
+Q_DECL_EXPORT void InstallIntPtrToCharStarStar(GetIntPtr callback)
 {
 	IntPtrToCharStarStar = callback;
 }
 
-void InstallIntPtrToCharStar(GetCharStarFromIntPtr callback)
+Q_DECL_EXPORT void InstallIntPtrToCharStar(GetCharStarFromIntPtr callback)
 {
 	IntPtrToCharStar = callback;
 }
 
-void InstallIntPtrFromCharStar(GetIntPtrFromCharStar callback)
+Q_DECL_EXPORT void InstallIntPtrFromCharStar(GetIntPtrFromCharStar callback)
 {
 	IntPtrFromCharStar = callback;
 }
 
-void InstallIntPtrToQString(GetIntPtr callback)
+Q_DECL_EXPORT void InstallIntPtrToQString(GetIntPtr callback)
 {
 	IntPtrToQString = callback;
 }
 
-void InstallIntPtrFromQString(GetIntPtr callback)
+Q_DECL_EXPORT void InstallIntPtrFromQString(GetIntPtr callback)
 {
 	IntPtrFromQString = callback;
 }
 
-void InstallStringBuilderToQString(GetIntPtr callback)
+Q_DECL_EXPORT void InstallStringBuilderToQString(GetIntPtr callback)
 {
 	StringBuilderToQString = callback;
 }
 
-void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback)
+Q_DECL_EXPORT void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback)
 {
 	StringBuilderFromQString = callback;
 }
 
-void InstallStringListToQStringList(GetIntPtr callback)
+Q_DECL_EXPORT void InstallStringListToQStringList(GetIntPtr callback)
 {
 	StringListToQStringList = callback;
 }
 
-void InstallListToPointerList(GetIntPtr callback)
+Q_DECL_EXPORT void InstallListToPointerList(GetIntPtr callback)
 {
 	ListToPointerList = callback;
 }
 
-void InstallListIntToQListInt(GetIntPtr callback)
+Q_DECL_EXPORT void InstallListIntToQListInt(GetIntPtr callback)
 {
 	ListIntToQListInt = callback;
 }
 
-void InstallConstructList(CreateListFn callback)
+Q_DECL_EXPORT void InstallConstructList(CreateListFn callback)
 {
 	ConstructList = callback;
 }
 
-void InstallAddIntPtrToList(SetIntPtr callback)
+Q_DECL_EXPORT void InstallAddIntPtrToList(SetIntPtr callback)
 {
 	AddIntPtrToList = callback;
 }
 
-void InstallAddIntToListInt(AddInt callback)
+Q_DECL_EXPORT void InstallAddIntToListInt(AddInt callback)
 {
 	AddIntToListInt = callback;
 }
 
-void InstallConstructDictionary(ConstructDict callback)
+Q_DECL_EXPORT void InstallConstructDictionary(ConstructDict callback)
 {
 	ConstructDictionary = callback;
 }
 
-void InstallAddObjectObjectToDictionary(InvokeMethodFn callback)
+Q_DECL_EXPORT void InstallAddObjectObjectToDictionary(InvokeMethodFn callback)
 {
 	AddObjectObjectToDictionary = callback;
 }
 
-void InstallAddIntObjectToDictionary(AddIntObject callback)
+Q_DECL_EXPORT void InstallAddIntObjectToDictionary(AddIntObject callback)
 {
 	AddIntObjectToDictionary = callback;
 }
 
-void InstallDictionaryToQMap(DictToMap callback)
+Q_DECL_EXPORT void InstallDictionaryToQMap(DictToMap callback)
 {
 	DictionaryToQMap = callback;
 }
 
-void InstallListUIntToQListQRgb(GetIntPtr callback)
+Q_DECL_EXPORT void InstallListUIntToQListQRgb(GetIntPtr callback)
 {
 	ListUIntToQListQRgb = callback;
 }
 
-void InstallAddUIntToListUInt(AddUInt callback)
+Q_DECL_EXPORT void InstallAddUIntToListUInt(AddUInt callback)
 {
 	AddUIntToListUInt = callback;
 }
 
-void InstallListWizardButtonToQListWizardButton(GetIntPtr callback)
+Q_DECL_EXPORT void InstallListWizardButtonToQListWizardButton(GetIntPtr callback)
 {
 	ListWizardButtonToQListWizardButton = callback;
 }
 
-void* ConstructPointerList()
+Q_DECL_EXPORT void* ConstructPointerList()
 {
 	void * list = (void*) new QList<void*>;
 	return list;
 }
 
-void AddObjectToPointerList(void* ptr, void* obj)
+Q_DECL_EXPORT void AddObjectToPointerList(void* ptr, void* obj)
 {
 	QList<void*> * list = (QList<void*>*) ptr;
 	list->append(obj);
 }
 
-void* ConstructQListInt()
+Q_DECL_EXPORT void* ConstructQListInt()
 {
 	void* list = (void*) new QList<int>;
 	return list;
 }
 
-void AddIntToQList(void* ptr, int i)
+Q_DECL_EXPORT void AddIntToQList(void* ptr, int i)
 {
 	QList<int>* list = (QList<int>*) ptr;
 	list->append(i);
 }
 
-void* ConstructQMap(int type)
+Q_DECL_EXPORT void* ConstructQMap(int type)
 {
 	if (type == 0) {
 		return (void*) new QMap<int, QVariant>();
@@ -240,44 +240,44 @@ void* ConstructQMap(int type)
 	return 0;
 }
 
-void AddIntQVariantToQMap(void* ptr, int i, void* qv)
+Q_DECL_EXPORT void AddIntQVariantToQMap(void* ptr, int i, void* qv)
 {
 	QMap<int, QVariant>* map = (QMap<int, QVariant>*) ptr;
 	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
 	map->insert(i, *variant);
 }
 
-void AddQStringQStringToQMap(void* ptr, char* str1, char* str2)
+Q_DECL_EXPORT void AddQStringQStringToQMap(void* ptr, char* str1, char* str2)
 {
 	QMap<QString, QString>* map = (QMap<QString, QString>*) ptr;
 	map->insert(QString(str1), QString(str2));
 }
 
-void AddQStringQVariantToQMap(void* ptr, char* str, void* qv)
+Q_DECL_EXPORT void AddQStringQVariantToQMap(void* ptr, char* str, void* qv)
 {
 	QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) ptr;
 	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
 	map->insert(QString(str), *variant);
 }
 
-void* ConstructQListQRgb()
+Q_DECL_EXPORT void* ConstructQListQRgb()
 {
 	return (void*) new QList<QRgb>;
 }
 
-void AddUIntToQListQRgb(void* ptr, uint i)
+Q_DECL_EXPORT void AddUIntToQListQRgb(void* ptr, uint i)
 {
 	QList<QRgb>* list = (QList<QRgb>*) ptr;
 	list->append(i);
 }
 
 #if QT_VERSION >= 0x40300
-void* ConstructQListWizardButton()
+Q_DECL_EXPORT void* ConstructQListWizardButton()
 {
 	return (void*) new QList<QWizard::WizardButton>();
 }
 
-void AddWizardButtonToQList(void* ptr, int i)
+Q_DECL_EXPORT void AddWizardButtonToQList(void* ptr, int i)
 {
 	QList<QWizard::WizardButton>* list = (QList<QWizard::WizardButton>*) ptr;
 	list->append((QWizard::WizardButton) i);
@@ -286,11 +286,11 @@ void AddWizardButtonToQList(void* ptr, int i)
 
 };
 
-extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
+// extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
 extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
-bool
-IsContainedInstance(smokeqyoto_object *o)
+Q_DECL_EXPORT bool
+IsContainedInstanceQt(smokeqyoto_object *o)
 {
     const char *className = o->smoke->classes[o->classId].className;
 		
@@ -300,8 +300,8 @@ IsContainedInstance(smokeqyoto_object *o)
 			|| qstrcmp(className, "QModelIndex") == 0 )
 	{
 		return true;
-	} else if (isDerivedFromByName(o->smoke, className, "QLayoutItem")) {
-		QLayoutItem * item = (QLayoutItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QLayoutItem"));
+	} else if (o->smoke->isDerivedFromByName(className, "QLayoutItem")) {
+		QLayoutItem * item = (QLayoutItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QLayoutItem").index);
 		if (item->layout() != 0 || item->widget() != 0 || item->spacerItem() != 0) {
 			return true;
 		}
@@ -310,28 +310,33 @@ IsContainedInstance(smokeqyoto_object *o)
 		if (item->listWidget() != 0) {
 			return true;
 		}
-	} else if (isDerivedFromByName(o->smoke, className, "QTableWidgetItem")) {
-		QTableWidgetItem * item = (QTableWidgetItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QTableWidgetItem"));
+	} else if (o->smoke->isDerivedFromByName(className, "QTableWidgetItem")) {
+		QTableWidgetItem * item = (QTableWidgetItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QTableWidgetItem").index);
 		if (item->tableWidget() != 0) {
 			return true;
 		}
-	} else if (isDerivedFromByName(o->smoke, className, "QWidget")) {
-		QWidget * qwidget = (QWidget *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QWidget"));
+	} else if (o->smoke->isDerivedFromByName(className, "QTreeWidgetItem")) {
+		QTreeWidgetItem * item = (QTreeWidgetItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QTreeWidgetItem").index);
+		if (item->treeWidget() != 0) {
+			return true;
+		}
+	} else if (o->smoke->isDerivedFromByName(className, "QWidget")) {
+		QWidget * qwidget = (QWidget *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QWidget").index);
 		if (qwidget->parentWidget() != 0) {
 			return true;
 		}
 		// Don't garbage collect custom subclasses of QWidget classes for now
 		const QMetaObject * meta = qwidget->metaObject();
-		Smoke::Index classId = o->smoke->idClass(meta->className());
-		return (classId == 0);
-	} else if (isDerivedFromByName(o->smoke, className, "QObject")) {
-		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
+		Smoke::ModuleIndex classId = o->smoke->idClass(meta->className());
+		return (classId.index == 0);
+	} else if (o->smoke->isDerivedFromByName(className, "QObject")) {
+		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
 		if (qobject->parent() != 0) {
 			return true;
 		}
-	} else if (isDerivedFromByName(o->smoke, className, "QTextBlockUserData")) {
+	} else if (o->smoke->isDerivedFromByName(className, "QTextBlockUserData")) {
 		return true;
-	} else if (isDerivedFromByName(o->smoke, className, "QGraphicsItem")) {
+	} else if (o->smoke->isDerivedFromByName(className, "QGraphicsItem")) {
 		return true;
 	}
 	
@@ -342,11 +347,11 @@ IsContainedInstance(smokeqyoto_object *o)
  * Given an approximate classname and a qt instance, try to improve the resolution of the name
  * by using the various Qt rtti mechanisms for QObjects, QEvents and QCanvasItems
  */
-static const char *
-resolve_classname(Smoke* smoke, int classId, void * ptr)
+Q_DECL_EXPORT const char *
+resolve_classname_Qt(Smoke* smoke, int classId, void * ptr)
 {
-	if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QEvent")) {
-		QEvent * qevent = (QEvent *) smoke->cast(ptr, classId, smoke->idClass("QEvent"));
+	if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QEvent")) {
+		QEvent * qevent = (QEvent *) smoke->cast(ptr, classId, smoke->idClass("QEvent").index);
 		switch (qevent->type()) {
 		case QEvent::Timer:
 				return "Qyoto.QTimerEvent";
@@ -495,8 +500,8 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		default:
 			break;
 		}
-	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QObject")) {
-		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject"));
+	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QObject")) {
+		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject").index);
 		const QMetaObject * meta = qobject->metaObject();
 
 		if (strcmp(smoke->classes[classId].className, "QAbstractItemModel") == 0)
@@ -513,15 +518,15 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 			return "Qyoto.QAbstractTextDocumentLayoutInternal";
 
 		while (meta != 0) {
-			Smoke::Index classId = smoke->idClass(meta->className());
-			if (classId != 0) {
-				return smoke->binding->className(classId);
+			Smoke::ModuleIndex classId = smoke->idClass(meta->className());
+			if (classId.index != 0) {
+				return smoke->binding->className(classId.index);
 			}
 
 			meta = meta->superClass();
 		}
-	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QGraphicsItem")) {
-		QGraphicsItem * item = (QGraphicsItem *) smoke->cast(ptr, classId, smoke->idClass("QGraphicsItem"));
+	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QGraphicsItem")) {
+		QGraphicsItem * item = (QGraphicsItem *) smoke->cast(ptr, classId, smoke->idClass("QGraphicsItem").index);
 		switch (item->type()) {
 		case 1:
 			return "Qyoto.QGraphicsItem";
@@ -546,8 +551,8 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		default:
 			return "Qyoto.QGraphicsItem";
 		}
-	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QLayoutItem")) {
-		QLayoutItem * item = (QLayoutItem *) smoke->cast(ptr, classId, smoke->idClass("QLayoutItem"));
+	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QLayoutItem")) {
+		QLayoutItem * item = (QLayoutItem *) smoke->cast(ptr, classId, smoke->idClass("QLayoutItem").index);
 		if (item->widget() != 0) {
 			return "Qyoto.QWidgetItem";
 		} else if (item->spacerItem() != 0) {
@@ -555,8 +560,8 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		} else {
 			return "Qyoto.QLayout";
 		}
-	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QListWidgetItem")) {
-		QListWidgetItem * item = (QListWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QListWidgetItem"));
+	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QListWidgetItem")) {
+		QListWidgetItem * item = (QListWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QListWidgetItem").index);
 		switch (item->type()) {
 		case 0:
 			return "Qyoto.QListWidgetItem";
@@ -564,8 +569,8 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 			return "Qyoto.QListWidgetItem";
 			break;
 		}
-	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QTableWidgetItem")) {
-		QTableWidgetItem * item = (QTableWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QTableWidgetItem"));
+	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QTableWidgetItem")) {
+		QTableWidgetItem * item = (QTableWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QTableWidgetItem").index);
 		switch (item->type()) {
 		case 0:
 			return "Qyoto.QTableWidgetItem";
@@ -594,37 +599,38 @@ construct_copy(smokeqyoto_object *o)
     char *ccSig = new char[classNameLen + 2];       // copy constructor signature
     strcpy(ccSig, className);
     strcat(ccSig, "#");
-    Smoke::Index ccId = o->smoke->idMethodName(ccSig);
+    Smoke::ModuleIndex ccId = o->smoke->findMethodName(className, ccSig);
     delete[] ccSig;
 
     char *ccArg = new char[classNameLen + 8];
     sprintf(ccArg, "const %s&", className);
 
-    Smoke::Index ccMeth = o->smoke->findMethod(o->classId, ccId);
+    Smoke::ModuleIndex classId = { o->smoke, o->classId };
+    Smoke::ModuleIndex ccMeth = o->smoke->findMethod(classId, ccId);
 
-    if(!ccMeth) {
+    if(!ccMeth.index) {
 	return 0;
     }
-	Smoke::Index method = o->smoke->methodMaps[ccMeth].method;
+	Smoke::Index method = ccMeth.smoke->methodMaps[ccMeth.index].method;
     if(method > 0) {
 	// Make sure it's a copy constructor
-	if(!matches_arg(o->smoke, method, 0, ccArg)) {
+	if(!matches_arg(ccMeth.smoke, method, 0, ccArg)) {
             delete[] ccArg;
 	    return 0;
         }
         delete[] ccArg;
-        ccMeth = method;
+        ccMeth.index = method;
     } else {
         // ambiguous method, pick the copy constructor
 	Smoke::Index i = -method;
 	while(o->smoke->ambiguousMethodList[i]) {
-	    if(matches_arg(o->smoke, o->smoke->ambiguousMethodList[i], 0, ccArg))
+	    if(matches_arg(ccMeth.smoke, ccMeth.smoke->ambiguousMethodList[i], 0, ccArg))
 		break;
             i++;
 	}
         delete[] ccArg;
-	ccMeth = o->smoke->ambiguousMethodList[i];
-	if(!ccMeth)
+	ccMeth.index = ccMeth.smoke->ambiguousMethodList[i];
+	if(!ccMeth.index)
 	    return 0;
     }
 
@@ -633,13 +639,13 @@ construct_copy(smokeqyoto_object *o)
     args[0].s_voidp = 0;
     args[1].s_voidp = o->ptr;
     Smoke::ClassFn fn = o->smoke->classes[o->classId].classFn;
-    (*fn)(o->smoke->methods[ccMeth].method, 0, args);
+    (*fn)(o->smoke->methods[ccMeth.index].method, 0, args);
     return args[0].s_voidp;
 }
 
 extern "C" {
 
-void *
+Q_DECL_EXPORT void *
 StringArrayToCharStarStar(int length, char ** strArray)
 {
 	char ** result = (char **) calloc(length, sizeof(char *));
@@ -650,21 +656,21 @@ StringArrayToCharStarStar(int length, char ** strArray)
 	return (void *) result;
 }
 
-void *
+Q_DECL_EXPORT void *
 StringToQString(char *str)
 {
 	QString * result = new QString(QString::fromUtf8(str));
 	return (void *) result;
 }
 
-char *
+Q_DECL_EXPORT char *
 StringFromQString(void *ptr)
 {
     QByteArray ba = ((QString *) ptr)->toUtf8();
     return strdup(ba.constData());
 }
 
-void *
+Q_DECL_EXPORT void *
 StringArrayToQStringList(int length, char ** strArray)
 {
 	QStringList * result = new QStringList();
@@ -867,7 +873,7 @@ marshall_basetype(Marshall *m)
 		ptr = o->smoke->cast(
 		    ptr,				// pointer
 		    o->classId,				// from
-		    o->smoke->idClass(c.className)	// to
+		    o->smoke->idClass(c.className).index	// to
 		);
 		m->item().s_class = ptr;
 		(*FreeGCHandle)(obj);
@@ -905,7 +911,7 @@ marshall_basetype(Marshall *m)
 		}
 
 		if(m->type().isStack()) {
-		    o->allocated = true;
+// 		    o->allocated = true;
 			// Keep a mapping of the pointer so that it is only wrapped once
 		    mapPointer(obj, o, o->classId, 0);
 		}
@@ -1140,7 +1146,7 @@ static void marshall_charP_array(Marshall *m) {
 
 }
 
-static void marshall_voidP_array(Marshall* m) {
+/*static void marshall_voidP_array(Marshall* m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
 		m->item().s_voidp = m->var().s_voidp;
@@ -1152,7 +1158,7 @@ static void marshall_voidP_array(Marshall* m) {
 		m->unsupported();
 		break;
 	}
-}
+}*/
 
 void marshall_QDBusVariant(Marshall *m) {
 	switch(m->action()) {
@@ -1160,6 +1166,7 @@ void marshall_QDBusVariant(Marshall *m) {
 	{
 		if (m->var().s_class == 0) {
 			m->item().s_class = 0;
+			(*FreeGCHandle)(m->var().s_class);
 			return;
 		}
 
@@ -1189,7 +1196,9 @@ void marshall_QDBusVariant(Marshall *m) {
 			m->var().s_voidp = obj;
 		    break;
 		}
-		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->smoke()->idClass("QVariant"), p);
+		
+		Smoke::ModuleIndex id = m->smoke()->findClass("QVariant");
+		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, id.smoke, id.index, p);
 		
 		obj = (*CreateInstance)("Qyoto.QDBusVariant", o);
 		if (do_debug & qtdb_calls) {
@@ -1197,7 +1206,7 @@ void marshall_QDBusVariant(Marshall *m) {
 		}
 
 		if (m->type().isStack()) {
-		    o->allocated = true;
+// 		    o->allocated = true;
 			// Keep a mapping of the pointer so that it is only wrapped once
 		    mapPointer(obj, o, o->classId, 0);
 		}
@@ -1215,8 +1224,8 @@ void marshall_QMapintQVariant(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			QMap<int, QVariant>* map = (QMap<int, QVariant>*) (*DictionaryToQMap)(m->var().s_voidp, 0);
@@ -1235,11 +1244,11 @@ void marshall_QMapintQVariant(Marshall *m) {
 			QMap<int, QVariant>* map = (QMap<int, QVariant>*) m->item().s_voidp;
 			void* dict = (*ConstructDictionary)("System.Int32", "Qyoto.QVariant");
 			
-			int id = m->smoke()->idClass("QVariant");
+			Smoke::ModuleIndex id = m->smoke()->findClass("QVariant");
 			
 			for (QMap<int, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
 				void* v = (void*) &(i.value());
-				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
+				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, id.smoke, id.index, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
 				(*AddIntObjectToDictionary)(dict, i.key(), value);
 				(*FreeGCHandle)(value);
@@ -1261,8 +1270,8 @@ void marshall_QMapQStringQString(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			QMap<QString, QString>* map = (QMap<QString, QString>*) (*DictionaryToQMap)(m->var().s_voidp, 1);
@@ -1307,8 +1316,8 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) (*DictionaryToQMap)(m->var().s_voidp, 2);
@@ -1327,11 +1336,11 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) m->item().s_voidp;
 			void* dict = (*ConstructDictionary)("System.String", "Qyoto.QVariant");
 			
-			int id = m->smoke()->idClass("QVariant");
+			Smoke::ModuleIndex id = m->smoke()->findClass("QVariant");
 			
 			for (QMap<QString, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
 				void* v = (void*) &(i.value());
-				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
+				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, id.smoke, id.index, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
 				void* string = (void*) StringFromQString((void*) &(i.key()));
 				(*AddObjectObjectToDictionary)(	dict,
@@ -1357,8 +1366,8 @@ void marshall_QStringList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			QStringList *stringlist = (QStringList*) (*StringListToQStringList)(m->var().s_voidp);
@@ -1406,11 +1415,10 @@ void marshall_QListWizardButton(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
 	{
-	    if (m->var().s_voidp == 0) {
-		m->item().s_voidp = 0;
+	    if (m->var().s_class == 0) {
+		m->item().s_class = 0;
 		return;
 	    }
-
 	    void* list = m->var().s_voidp;
 	    void* valuelist = (*ListWizardButtonToQListWizardButton)(list);
 	    m->item().s_voidp = valuelist;
@@ -1441,8 +1449,8 @@ void marshall_ItemList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			ItemList *cpplist = new ItemList;
@@ -1456,7 +1464,7 @@ void marshall_ItemList(Marshall *m) {
 				ptr = o->smoke->cast(
 					ptr,                            // pointer
 					o->classId,                             // from
-					o->smoke->idClass(ItemSTR)              // to
+					o->smoke->idClass(ItemSTR).index              // to
 				);
 				
 				cpplist->append((Item*) ptr);
@@ -1482,8 +1490,8 @@ void marshall_ItemList(Marshall *m) {
 				break;
 			}
 
-			int ix = m->smoke()->idClass(ItemSTR);
-			const char * className = m->smoke()->binding->className(ix);
+			Smoke::ModuleIndex ix = m->smoke()->findClass(ItemSTR);
+			const char * className = ix.smoke->binding->className(ix.index);
 			
 			void * al = (*ConstructList)(className);
 			
@@ -1491,7 +1499,7 @@ void marshall_ItemList(Marshall *m) {
 				void *p = (void *) list->at(i);
 				void * obj = (*GetInstance)(p, true);
 				if (obj == 0) {
-					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
 					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
 				}
 				(*AddIntPtrToList)(al, obj);
@@ -1519,8 +1527,8 @@ void marshall_QListInt(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
 	{
-	    if (m->var().s_voidp == 0) {
-		m->item().s_voidp = 0;
+	    if (m->var().s_class == 0) {
+		m->item().s_class = 0;
 		return;
 	    }
 	    void* list = m->var().s_voidp;
@@ -1599,8 +1607,8 @@ void marshall_ValueListItem(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			ItemList *cpplist = new ItemList;
@@ -1614,7 +1622,7 @@ void marshall_ValueListItem(Marshall *m) {
 				ptr = o->smoke->cast(
 					ptr,                            // pointer
 					o->classId,                             // from
-					o->smoke->idClass(ItemSTR)              // to
+					o->smoke->idClass(ItemSTR).index              // to
 				);
 				
 				cpplist->append(*(Item*) ptr);
@@ -1640,8 +1648,8 @@ void marshall_ValueListItem(Marshall *m) {
 				break;
 			}
 
-			int ix = m->smoke()->idClass(ItemSTR);
-			const char * className = m->smoke()->binding->className(ix);
+			Smoke::ModuleIndex ix = m->smoke()->findClass(ItemSTR);
+			const char * className = ix.smoke->binding->className(ix.index);
 			
 			void * al = (*ConstructList)(className);
 
@@ -1650,7 +1658,7 @@ void marshall_ValueListItem(Marshall *m) {
 				void * obj = (*GetInstance)(p, true);
 
 				if (obj == 0) {
-					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
 					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
 				}
 
@@ -1680,8 +1688,8 @@ void marshall_QRgbVector(Marshall *m)
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
-			if (m->var().s_voidp == 0) {
-				m->item().s_voidp = 0;
+			if (m->var().s_class == 0) {
+				m->item().s_class = 0;
 				return;
 			}
 			QList<QRgb>* cpplist = (QList<QRgb>*) (*ListUIntToQListQRgb)(m->var().s_voidp);
@@ -1773,7 +1781,7 @@ DEF_VALUELIST_MARSHALLER( QPrinterInfoList, QList<QPrinterInfo>, QPrinterInfo )
 DEF_VALUELIST_MARSHALLER( QWebHistoryItemList, QList<QWebHistoryItem>, QWebHistoryItem )
 #endif
 
-TypeHandler Qt_handlers[] = {
+Q_DECL_EXPORT TypeHandler Qt_handlers[] = {
     { "bool*", marshall_boolR },
     { "bool&", marshall_boolR },
     { "char*", marshall_charP },
@@ -1834,8 +1842,8 @@ TypeHandler Qt_handlers[] = {
     { "QMap<QString,QString>&", marshall_QMapQStringQString },
     { "QMap<QString,QVariant>", marshall_QMapQStringQVariant },
     { "QMap<QString,QVariant>&", marshall_QMapQStringQVariant },
-    { "QVariantMap", marshall_QMapQStringQVariant },
-    { "QVariantMap&", marshall_QMapQStringQVariant },
+    { "QVariantMap", marshall_QMapQStringQVariant },
+    { "QVariantMap&", marshall_QMapQStringQVariant },
     { "QModelIndexList", marshall_QModelIndexList },
     { "QModelIndexList&", marshall_QModelIndexList },
     { "QObjectList", marshall_QObjectList },

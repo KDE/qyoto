@@ -211,7 +211,7 @@ public:
 	return smoke()->cast(
 	    ptr(),
 	    classId(),
-	    smoke()->idClass(toc.className())
+	    smoke()->idClass(toc.className()).index
 	);
     }
     const char *className() { return c().className(); }

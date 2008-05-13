@@ -30,6 +30,11 @@ namespace Qyoto {
 	using System.Runtime.Remoting;
 	using System.Runtime.InteropServices;
 
+	public struct ModuleIndex {
+		public IntPtr smoke;
+		public short index;
+	}
+
 	[StructLayout(LayoutKind.Explicit)]
 	unsafe public struct StackItem {
 		[FieldOffset(0)] public void * s_voidp;
@@ -50,10 +55,10 @@ namespace Qyoto {
 	
 	public class SmokeInvocation {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int FindMethodId(string className, string mungedName, string signature);
+		static extern ModuleIndex FindMethodId(string className, string mungedName, string signature);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
+		[DllImport("libqyoto", CharSet=CharSet.Ansi, EntryPoint="CallSmokeMethod")]
+		static extern void CallSmokeMethod(IntPtr smoke, int methodId, IntPtr target, IntPtr sp, int items);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int QyotoHash(IntPtr obj);
@@ -372,9 +377,9 @@ namespace Qyoto {
 		private Type	classToProxy;
 		private Object	instance;
 		private string	className = "";
-		private Dictionary<string, int> methodIdCache;
+		private Dictionary<string, ModuleIndex> methodIdCache;
 
-		private static Dictionary<Type, Dictionary<string, int>> globalMethodIdCache = new Dictionary<Type, Dictionary<string, int>>();
+		private static Dictionary<Type, Dictionary<string, ModuleIndex>> globalMethodIdCache = new Dictionary<Type, Dictionary<string, ModuleIndex>>();
 		
 		public SmokeInvocation(Type klass, Object obj) 
 		{
@@ -383,7 +388,7 @@ namespace Qyoto {
 			className = SmokeMarshallers.SmokeClassName(klass);
 
 			if (!globalMethodIdCache.TryGetValue(classToProxy, out methodIdCache)) {
-				methodIdCache = new Dictionary<string, int>();
+				methodIdCache = new Dictionary<string, ModuleIndex>();
 				globalMethodIdCache[classToProxy] = methodIdCache;
 			}
 
@@ -404,11 +409,13 @@ namespace Qyoto {
 			}
 #endif
 			
-			int methodId = -1;
+			ModuleIndex methodId;
+			methodId.smoke = IntPtr.Zero;
+			methodId.index = -1;
 			if (!methodIdCache.TryGetValue(signature, out methodId)) {
 				methodId = FindMethodId(className, mungedName, signature);
 
-				if (methodId == -1) {
+				if (methodId.index == -1) {
 					Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
 												className,
 												signature );
@@ -421,14 +428,14 @@ namespace Qyoto {
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					if (instance == null) {
-						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, stack.Length);
+						CallSmokeMethod(methodId.smoke, (int) methodId.index, (IntPtr) 0, (IntPtr) stackPtr, stack.Length);
 					} else {
 #if DEBUG
 						GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
 #else
 						GCHandle instanceHandle = GCHandle.Alloc(instance);
 #endif
-						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, stack.Length);
+						CallSmokeMethod(methodId.smoke, methodId.index, (IntPtr) instanceHandle, (IntPtr) stackPtr, stack.Length);
 #if DEBUG
 						DebugGCHandle.Free(instanceHandle);
 #else
@@ -452,11 +459,13 @@ namespace Qyoto {
 			}
 #endif
 			
-			int methodId = -1;
+			ModuleIndex methodId;
+			methodId.smoke = IntPtr.Zero;
+			methodId.index = -1;
 			if (!methodIdCache.TryGetValue(signature, out methodId)) {
 				methodId = FindMethodId(className, mungedName, signature);
 
-				if (methodId == -1) {
+				if (methodId.index == -1) {
 					Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
 												className,
 												signature );
@@ -509,14 +518,14 @@ namespace Qyoto {
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					if (instance == null) {
-						CallSmokeMethod((int) methodId, (IntPtr) 0, (IntPtr) stackPtr, args.Length / 2);
+						CallSmokeMethod(methodId.smoke, (int) methodId.index, (IntPtr) 0, (IntPtr) stackPtr, args.Length / 2);
 					} else {
 #if DEBUG
 						GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
 #else
 						GCHandle instanceHandle = GCHandle.Alloc(instance);
 #endif
-						CallSmokeMethod(methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, args.Length / 2);
+						CallSmokeMethod(methodId.smoke, methodId.index, (IntPtr) instanceHandle, (IntPtr) stackPtr, args.Length / 2);
 #if DEBUG
 						DebugGCHandle.Free(instanceHandle);
 #else

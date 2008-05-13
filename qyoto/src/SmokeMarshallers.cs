@@ -236,7 +236,7 @@ namespace Qyoto {
 		
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
-//			Debug.Assert(instance != null);
+// 			Debug.Assert(instance != null);
 
 			SmokeClassData data = GetSmokeClassData(instance.GetType());
 			data.smokeObjectField.SetValue(instance, smokeObjectPtr);
@@ -505,7 +505,12 @@ namespace Qyoto {
 		// 'CreateProxy()' to create the transparent proxy to forward the method
 		// calls to SmokeInvocation.Invoke() is called.
 		public static IntPtr CreateInstance(string className, IntPtr smokeObjectPtr) {
-			SmokeClassData data = GetSmokeClassData(Type.GetType(className));
+			SmokeClassData data = null;
+			foreach(Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
+				Type t = a.GetType(className);
+				if (t != null)
+					data = GetSmokeClassData(t);
+			}
 			object result = data.constructorInfo.Invoke(data.constructorParamTypes);
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
