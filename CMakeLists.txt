@@ -1,5 +1,5 @@
 OPTION(ENABLE_QYOTO "build Qyoto" ON)
-OPTION(ENABLE_QSCINTILLA_SHARP "build QScintillaSharp" ON)
+OPTION(ENABLE_QSCINTILLA_SHARP "build QScintillaSharp" OFF)
 # OPTION(ENABLE_KIMONO "build Kimono" ON)
 
 set(QYOTO_ENABLED "no")
@@ -18,6 +18,7 @@ if(ENABLE_QYOTO)
 
     IF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE)
         add_subdirectory( qyoto )
+        add_subdirectory( kimono )
         set(QYOTO_ENABLED "yes")
     ENDIF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE)
 endif(ENABLE_QYOTO)
