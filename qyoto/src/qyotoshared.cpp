@@ -17,7 +17,7 @@ int do_debug = qtdb_none;
 #endif
 
 // modules
-QHash<Smoke*, QyotoModule> modules;
+QHash<Smoke*, QyotoModule> qyoto_modules;
 
 extern "C" {
 bool application_terminated = false;
@@ -282,14 +282,14 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 const char *
 resolve_classname(Smoke* smoke, int classId, void * ptr)
 {
-	return modules.value(smoke).resolve_classname(smoke, classId, ptr);
+	return qyoto_modules.value(smoke).resolve_classname(smoke, classId, ptr);
 }
 
 bool
 IsContainedInstance(smokeqyoto_object *o)
 {
 	QHash<Smoke*, QyotoModule>::const_iterator i;
-	for (i = modules.constBegin(); i != modules.constEnd(); ++i) {
+	for (i = qyoto_modules.constBegin(); i != qyoto_modules.constEnd(); ++i) {
 		if (i.value().IsContainedInstance(o))
 			return true;
 	}

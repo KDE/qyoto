@@ -81,7 +81,7 @@ typedef void * (*DictToMap)(void *, int);
 typedef void * (*ConstructDict)(const char*, const char*);
 typedef void (*SetPropertyFn)(void *, const char*, void *);
 
-extern Q_DECL_EXPORT QHash<Smoke*, QyotoModule> modules;
+extern Q_DECL_EXPORT QHash<Smoke*, QyotoModule> qyoto_modules;
 
 extern Q_DECL_EXPORT int do_debug; // evil
 

@@ -891,7 +891,7 @@ Init_qyoto()
     }
 
     QyotoModule module = { "Qyoto", resolve_classname_Qt, IsContainedInstanceQt };
-    modules.insert(qt_Smoke, module);
+    qyoto_modules[qt_Smoke] = module;
 
 #if QT_VERSION >= 0x40300
     QInternal::registerCallback(QInternal::EventNotifyCallback, qyoto_event_notify);

@@ -36,7 +36,8 @@ SET(SRC_CS src/SmokeInvocation.cs
 	svg/*.cs
 	opengl/*.cs
 	uitools/*.cs
-	qdbus/*.cs)
+	qdbus/*.cs
+	webkit/*.cs)
 
 SET( UICS_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/uics/uics )
 SET( CSRCC_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/tools/csrcc/csrcc )

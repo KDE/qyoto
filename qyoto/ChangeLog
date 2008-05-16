@@ -1,3 +1,10 @@
+2008-05-16  Richard Dale  <richard.j.dale@gmail.com>
+
+	* After the modular smoke changes, the QtWebKit classes were not being
+	  built
+	* Rename the 'modules' global variable qyoto_modules to reduce the chances
+	  of a name clash
+
 2008-05-13  Arno Rehn  <arno@arnorehn.de>
 
 	* Fix memory leak in WriteProperty.
