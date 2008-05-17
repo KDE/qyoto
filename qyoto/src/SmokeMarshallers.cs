@@ -112,6 +112,9 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallInvokeCustomSlot(InvokeCustomSlotFn callback);
 		
+		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		public static extern void InstallInvokeDelegate(InvokeDelegateFn callback);
+		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern bool InstallGetProperty(OverridenMethodFn callback);
 		
@@ -206,6 +209,7 @@ namespace Qyoto {
 		public delegate IntPtr DictToMap(IntPtr ptr, int type);
 		public delegate IntPtr ConstructDict(string type1, string type2);
 		public delegate void SetPropertyFn(IntPtr obj, string name, IntPtr variant);
+		public delegate void InvokeDelegateFn(Delegate d, IntPtr stack);
 #endregion
 		
 #region marshalling functions
@@ -756,6 +760,7 @@ namespace Qyoto {
 
 			InstallCreateInstance(CreateInstance);
 			InstallInvokeCustomSlot(SmokeInvocation.InvokeCustomSlot);
+			InstallInvokeDelegate(SmokeInvocation.InvokeDelegate);
 			
 			InstallGetProperty(GetProperty);
 			InstallSetProperty(SetProperty);

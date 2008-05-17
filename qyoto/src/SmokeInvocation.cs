@@ -369,6 +369,61 @@ namespace Qyoto {
 			}
 		}
 
+		static public void InvokeDelegate(Delegate d, IntPtr stack) {
+			unsafe {
+				MethodInfo mi = d.Method;
+				ParameterInfo[] parameters = mi.GetParameters();
+				object[] args = new object[parameters.Length];
+				StackItem* stackPtr = (StackItem*) stack;
+				for (int i = 0; i < args.Length; i++) {
+					if (parameters[i].ParameterType == typeof(bool)) {
+						args[i] = stackPtr[i].s_bool;
+					} else if (parameters[i].ParameterType == typeof(sbyte)) {
+						args[i] = stackPtr[i].s_char;
+					} else if (parameters[i].ParameterType == typeof(byte)) {
+						args[i] = stackPtr[i].s_uchar;
+					} else if (parameters[i].ParameterType == typeof(short)) {
+						args[i] = stackPtr[i].s_short;
+					} else if (parameters[i].ParameterType == typeof(ushort)) {
+						args[i] = stackPtr[i].s_ushort;
+					} else if (	parameters[i].ParameterType == typeof(int) 
+								|| parameters[i].ParameterType.IsEnum ) 
+					{
+						args[i] = stackPtr[i].s_int;
+					} else if (parameters[i].ParameterType == typeof(uint)) {
+						args[i] = stackPtr[i].s_uint;
+					} else if (parameters[i].ParameterType == typeof(long)) {
+						args[i] = stackPtr[i].s_long;
+					} else if (parameters[i].ParameterType == typeof(ulong)) {
+						args[i] = stackPtr[i].s_ulong;
+					} else if (parameters[i].ParameterType == typeof(float)) {
+						args[i] = stackPtr[i].s_float;
+					} else if (parameters[i].ParameterType == typeof(double)) {
+						args[i] = stackPtr[i].s_double;
+					} else if (parameters[i].ParameterType == typeof(string)) {
+						if (stackPtr[i].s_class != IntPtr.Zero) {
+							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
+#if DEBUG
+							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
+#else
+							((GCHandle) stackPtr[i].s_class).Free();
+#endif
+						}
+					} else {
+						if (stackPtr[i].s_class != IntPtr.Zero) {
+							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
+#if DEBUG
+							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
+#else
+							((GCHandle) stackPtr[i].s_class).Free();
+#endif
+						}
+					}
+				}
+				d.DynamicInvoke(args);
+			}
+		}
+
 		static SmokeInvocation() {
 			Qyoto.Init_qyoto();
 			SmokeMarshallers.SetUp();

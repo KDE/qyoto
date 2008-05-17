@@ -3,6 +3,13 @@
 	* Don't build kimono because the classes won't compile.
 	* Fixed resolve_classname.
 	* Changed 'modules' to 'qyoto_modules' in QScintillaSharp, too.
+	* Added delegate support. This is now possible:
+		Connect(slider, SIGNAL("valueChanged(int)"), delegate(int i) {
+			Console.WriteLine("value: {0}", i);
+		});
+	  For the above to work you need either Mono 1.9+ or specify -langversion:linq.
+	  Alternatively, you can give the parameter types as generic arguments, like
+	  Connect<int>(...)
 
 2008-05-16  Richard Dale  <richard.j.dale@gmail.com>
 

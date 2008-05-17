@@ -27,7 +27,7 @@ MethodCall::MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::
 					&& (!_o->allocated || IsContainedInstance(_o) || application_terminated) ) 
 			{
 				_called = true;
-				_o->allocated = false;
+// 				_o->allocated = false;
 			}
 		} else {
 			// not a constructor, not static, pointer invalid -> object already destroyed

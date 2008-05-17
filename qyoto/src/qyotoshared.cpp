@@ -9,6 +9,7 @@
 #include "writeproperty.h"
 #include "readproperty.h"
 #include "invokeslot.h"
+#include "delegateinvocation.h"
 
 #ifdef DEBUG
 int do_debug = qtdb_gc;
@@ -42,6 +43,8 @@ InvokeCustomSlotFn InvokeCustomSlot;
 
 OverridenMethodFn GetProperty;
 SetPropertyFn SetProperty;
+
+SetIntPtr InvokeDelegate;
 
 void
 smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args)
@@ -302,6 +305,22 @@ IsContainedInstance(smokeqyoto_object *o)
 
 extern "C"
 {
+
+Q_DECL_EXPORT void
+InstallInvokeDelegate(SetIntPtr callback)
+{
+	InvokeDelegate = callback;
+}
+
+Q_DECL_EXPORT bool
+ConnectDelegate(void* obj, const char* signal, void* delegate)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	QObject *qobject = (QObject*) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
+	new DelegateInvocation(qobject, signal, delegate);
+	(*FreeGCHandle)(obj);
+	return true;
+}
 
 Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj) {
 	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);

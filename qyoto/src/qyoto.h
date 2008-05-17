@@ -122,6 +122,8 @@ extern Q_DECL_EXPORT InvokeCustomSlotFn InvokeCustomSlot;
 extern Q_DECL_EXPORT OverridenMethodFn GetProperty;
 extern Q_DECL_EXPORT SetPropertyFn SetProperty;
 
+extern Q_DECL_EXPORT SetIntPtr InvokeDelegate;
+
 extern "C" {
 extern Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj);
 extern Q_DECL_EXPORT MocArgument* GetMocArgumentsNumber(QString replyType, QString member, int& number);

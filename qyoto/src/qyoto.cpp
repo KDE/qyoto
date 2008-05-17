@@ -19,6 +19,7 @@
 #define _GNU_SOURCE
 #endif
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <QAbstractItemDelegate>
 #include <QAbstractItemView>
@@ -690,8 +691,9 @@ QyotoHash(void * obj)
 Q_DECL_EXPORT void
 CallSmokeMethod(Smoke * smoke, int methodId, void * obj, Smoke::StackItem * sp, int items)
 {
+	Smoke::Method meth = smoke->methods[methodId];
 #ifdef DEBUG
-	printf("ENTER CallSmokeMethod(methodId: %d target: 0x%8.8x items: %d module: %s)\n", methodId, obj, items, smoke->moduleName());
+	printf("ENTER CallSmokeMethod(methodId: %d methodName: %s target: 0x%8.8x class: %s items: %d module: %s)\n", methodId, smoke->methodNames[meth.name], obj, smoke->className(meth.classId), items, smoke->moduleName());
 #endif
 
 	// C# operator methods must be static, and so some C++ instance methods with one argument
@@ -699,11 +701,10 @@ CallSmokeMethod(Smoke * smoke, int methodId, void * obj, Smoke::StackItem * sp, 
 	// examples of these and changes the args passed to the MethodCall() constructor. Note
 	// that 'operator>>' and 'operator<<' methods in C# must have a second arg of type int,
 	// and so they are mapped onto the instance methods Read() and Write() in C#.
-	Smoke::Method meth = smoke->methods[methodId];
 	if (	meth.numArgs == 1
-			&& qstrncmp("operator", qt_Smoke->methodNames[meth.name], sizeof("operator")) == 0
-			&& qstrncmp("operator<<", qt_Smoke->methodNames[meth.name], sizeof("operator<<")) != 0
-			&& qstrncmp("operator>>", qt_Smoke->methodNames[meth.name], sizeof("operator>>")) != 0 )
+			&& qstrncmp("operator", smoke->methodNames[meth.name], sizeof("operator")) == 0
+			&& qstrncmp("operator<<", smoke->methodNames[meth.name], sizeof("operator<<")) != 0
+			&& qstrncmp("operator>>", smoke->methodNames[meth.name], sizeof("operator>>")) != 0 )
 	{ // instance operator
 		obj = sp[1].s_class;
 		sp[1] = sp[2];
