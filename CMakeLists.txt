@@ -18,7 +18,7 @@ if(ENABLE_QYOTO)
 
     IF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE)
         add_subdirectory( qyoto )
-        add_subdirectory( kimono )
+#         add_subdirectory( kimono )
         set(QYOTO_ENABLED "yes")
     ENDIF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE)
 endif(ENABLE_QYOTO)

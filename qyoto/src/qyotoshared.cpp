@@ -282,6 +282,10 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 const char *
 resolve_classname(Smoke* smoke, int classId, void * ptr)
 {
+	if (smoke->classes[classId].external) {
+		Smoke::ModuleIndex mi = smoke->findClass(smoke->className(classId));
+		return qyoto_modules.value(mi.smoke).resolve_classname(mi.smoke, mi.index, ptr);
+	}
 	return qyoto_modules.value(smoke).resolve_classname(smoke, classId, ptr);
 }
 

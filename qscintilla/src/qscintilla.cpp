@@ -63,7 +63,7 @@ Init_qscintilla()
 	}
 	
 	QyotoModule module = { "QScintilla2", resolve_classname_Qsci, IsContainedInstanceQsci };
-	modules.insert(qsci_Smoke, module);
+	qyoto_modules.insert(qsci_Smoke, module);
 }
 
 }
