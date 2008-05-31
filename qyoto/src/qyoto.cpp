@@ -59,8 +59,6 @@
 #include "methodcall.h"
 #include "emitsignal.h"
 #include "invokeslot.h"
-#include "readproperty.h"
-#include "writeproperty.h"
 
 #define QYOTO_VERSION "0.0.1"
 // #define DEBUG
@@ -755,8 +753,9 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 	return true;
 }
 
-Q_DECL_EXPORT void* make_metaObject(void* obj, void* parentMeta, const char* stringdata, int stringdata_count,
-                      const uint* data, int data_count)
+Q_DECL_EXPORT void*
+make_metaObject(void* obj, void* parentMeta, const char* stringdata, int stringdata_count,
+                const uint* data, int data_count)
 {
 	QMetaObject* parent = 0;
 

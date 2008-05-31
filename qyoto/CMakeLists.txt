@@ -11,12 +11,10 @@ SET(SRC_CPP_SHARED src/emitsignal.cpp
 	src/invokeslot.cpp
 	src/methodcall.cpp
 	src/methodreturnvalue.cpp
-	src/readproperty.cpp
 	src/signalreturnvalue.cpp
 	src/slotreturnvalue.cpp
 	src/virtualmethodcall.cpp
 	src/virtualmethodreturnvalue.cpp
-	src/writeproperty.cpp
 	src/qyotosmokebinding.cpp
 	src/handlers.cpp
 	src/qyotoshared.cpp)
@@ -59,8 +57,8 @@ ADD_DEPENDENCIES (qt-dotnet qyoto)
 INSTALL(TARGETS qyoto LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(TARGETS qyotoshared LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES src/emitsignal.h src/invokeslot.h src/marshall.h src/methodcall.h src/methodreturnvalue.h
-src/qyoto.h src/qyotosmokebinding.h src/readproperty.h src/signalreturnvalue.h src/slotreturnvalue.h
-src/smokeqyoto.h src/virtualmethodcall.h src/virtualmethodreturnvalue.h src/writeproperty.h DESTINATION include/qyoto)
+src/qyoto.h src/qyotosmokebinding.h src/signalreturnvalue.h src/slotreturnvalue.h
+src/smokeqyoto.h src/virtualmethodcall.h src/virtualmethodreturnvalue.h DESTINATION include/qyoto)
 INSTALL_GAC(qt-dotnet)
 
 ADD_SUBDIRECTORY(tools)

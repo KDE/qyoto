@@ -2,6 +2,9 @@
 
 	* Updated AssemblyInfo.cs
 	* Regenerated the QScintilla sources from the 2.2 release.
+	* Removed the ReadProperty and WriteProperty classes and inlined the
+	  code instead. It's not worth to have 2 extra classes for 5 or 6
+	  lines of code.
 
 2008-05-17  Arno Rehn  <arno@arnorehn.de>
 

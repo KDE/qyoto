@@ -6,8 +6,6 @@
 
 #include "smokeqyoto.h"
 #include "qyoto.h"
-#include "writeproperty.h"
-#include "readproperty.h"
 #include "invokeslot.h"
 #include "delegateinvocation.h"
 
@@ -489,10 +487,16 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 		slot.next();
 	} else if (_c == QMetaObject::ReadProperty) {
 		QMetaProperty property = metaobject->property(_id);
-		ReadProperty prop(obj, property.name(), (void**)_o);
+		void* variant = (*GetProperty)(obj, property.name());
+		smokeqyoto_object* sqo = (smokeqyoto_object*) (*GetSmokeObject)(variant);
+		((void**)_o)[0] = sqo->ptr;
 	} else if (_c == QMetaObject::WriteProperty) {
 		QMetaProperty property = metaobject->property(_id);
-		WriteProperty prop(obj, property.name(), (void**)_o);
+		smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qt_Smoke,
+		                                                 qt_Smoke->idClass("QVariant").index,
+		                                                 ((void**)_o)[0]);
+		void* variant = (*CreateInstance)("Qyoto.QVariant", sqo);
+		(*SetProperty)(obj, property.name(), variant);
 	}
 	return _id - count;
 }
