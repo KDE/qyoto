@@ -4,55 +4,39 @@ namespace QScintilla {
 	using System;
 	using Qyoto;
 
-	[SmokeClass("QsciLexerPerl")]
-	public class QsciLexerPerl : QsciLexer, IDisposable {
- 		protected QsciLexerPerl(Type dummy) : base((Type) null) {}
+	[SmokeClass("QsciLexerVHDL")]
+	public class QsciLexerVHDL : QsciLexer, IDisposable {
+ 		protected QsciLexerVHDL(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciLexerPerl), this);
+			interceptor = new SmokeInvocationQsci(typeof(QsciLexerVHDL), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
-		static QsciLexerPerl() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerPerl), null);
+		static QsciLexerVHDL() {
+			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerVHDL), null);
 		}
 		public const int Default = 0;
-		public const int Error = 1;
-		public const int Comment = 2;
-		public const int POD = 3;
-		public const int Number = 4;
-		public const int Keyword = 5;
-		public const int DoubleQuotedString = 6;
-		public const int SingleQuotedString = 7;
-		public const int Operator = 10;
-		public const int Identifier = 11;
-		public const int Scalar = 12;
-		public const int Array = 13;
-		public const int Hash = 14;
-		public const int SymbolTable = 15;
-		public const int Regex = 17;
-		public const int Substitution = 18;
-		public const int Backticks = 20;
-		public const int DataSection = 21;
-		public const int HereDocumentDelimiter = 22;
-		public const int SingleQuotedHereDocument = 23;
-		public const int DoubleQuotedHereDocument = 24;
-		public const int BacktickHereDocument = 25;
-		public const int QuotedStringQ = 26;
-		public const int QuotedStringQQ = 27;
-		public const int QuotedStringQX = 28;
-		public const int QuotedStringQR = 29;
-		public const int QuotedStringQW = 30;
-		public const int PODVerbatim = 31;
-		public const int SubroutinePrototype = 40;
-		public const int FormatIdentifier = 41;
-		public const int FormatBody = 42;
+		public const int Comment = 1;
+		public const int CommentLine = 2;
+		public const int Number = 3;
+		public const int String = 4;
+		public const int Operator = 5;
+		public const int Identifier = 6;
+		public const int UnclosedString = 7;
+		public const int Keyword = 8;
+		public const int StandardOperator = 9;
+		public const int Attribute = 10;
+		public const int StandardFunction = 11;
+		public const int StandardPackage = 12;
+		public const int StandardType = 13;
+		public const int KeywordSet7 = 14;
 
-		public QsciLexerPerl(QObject parent) : this((Type) null) {
+		public QsciLexerVHDL(QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QsciLexerPerl#", "QsciLexerPerl(QObject*)", typeof(void), typeof(QObject), parent);
+			interceptor.Invoke("QsciLexerVHDL#", "QsciLexerVHDL(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		public QsciLexerPerl() : this((Type) null) {
+		public QsciLexerVHDL() : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QsciLexerPerl", "QsciLexerPerl()", typeof(void));
+			interceptor.Invoke("QsciLexerVHDL", "QsciLexerVHDL()", typeof(void));
 		}
 		[SmokeMethod("language() const")]
 		public override string Language() {
@@ -65,10 +49,6 @@ namespace QScintilla {
 		[SmokeMethod("braceStyle() const")]
 		public override int BraceStyle() {
 			return (int) interceptor.Invoke("braceStyle", "braceStyle() const", typeof(int));
-		}
-		[SmokeMethod("wordCharacters() const")]
-		public override string WordCharacters() {
-			return (string) interceptor.Invoke("wordCharacters", "wordCharacters() const", typeof(string));
 		}
 		[SmokeMethod("defaultColor(int) const")]
 		public override QColor DefaultColor(int style) {
@@ -104,6 +84,15 @@ namespace QScintilla {
 		public bool FoldCompact() {
 			return (bool) interceptor.Invoke("foldCompact", "foldCompact() const", typeof(bool));
 		}
+		public bool FoldAtElse() {
+			return (bool) interceptor.Invoke("foldAtElse", "foldAtElse() const", typeof(bool));
+		}
+		public bool FoldAtBegin() {
+			return (bool) interceptor.Invoke("foldAtBegin", "foldAtBegin() const", typeof(bool));
+		}
+		public bool FoldAtParenthesis() {
+			return (bool) interceptor.Invoke("foldAtParenthesis", "foldAtParenthesis() const", typeof(bool));
+		}
 		[Q_SLOT("void setFoldComments(bool)")]
 		[SmokeMethod("setFoldComments(bool)")]
 		public virtual void SetFoldComments(bool fold) {
@@ -114,6 +103,21 @@ namespace QScintilla {
 		public virtual void SetFoldCompact(bool fold) {
 			interceptor.Invoke("setFoldCompact$", "setFoldCompact(bool)", typeof(void), typeof(bool), fold);
 		}
+		[Q_SLOT("void setFoldAtElse(bool)")]
+		[SmokeMethod("setFoldAtElse(bool)")]
+		public virtual void SetFoldAtElse(bool fold) {
+			interceptor.Invoke("setFoldAtElse$", "setFoldAtElse(bool)", typeof(void), typeof(bool), fold);
+		}
+		[Q_SLOT("void setFoldAtBegin(bool)")]
+		[SmokeMethod("setFoldAtBegin(bool)")]
+		public virtual void SetFoldAtBegin(bool fold) {
+			interceptor.Invoke("setFoldAtBegin$", "setFoldAtBegin(bool)", typeof(void), typeof(bool), fold);
+		}
+		[Q_SLOT("void setFoldAtParenthesis(bool)")]
+		[SmokeMethod("setFoldAtParenthesis(bool)")]
+		public virtual void SetFoldAtParenthesis(bool fold) {
+			interceptor.Invoke("setFoldAtParenthesis$", "setFoldAtParenthesis(bool)", typeof(void), typeof(bool), fold);
+		}
 		[SmokeMethod("readProperties(QSettings&, const QString&)")]
 		protected override bool ReadProperties(QSettings qs, string prefix) {
 			return (bool) interceptor.Invoke("readProperties#$", "readProperties(QSettings&, const QString&)", typeof(bool), typeof(QSettings), qs, typeof(string), prefix);
@@ -122,11 +126,11 @@ namespace QScintilla {
 		protected override bool WriteProperties(QSettings qs, string prefix) {
 			return (bool) interceptor.Invoke("writeProperties#$", "writeProperties(QSettings&, const QString&) const", typeof(bool), typeof(QSettings), qs, typeof(string), prefix);
 		}
-		~QsciLexerPerl() {
-			interceptor.Invoke("~QsciLexerPerl", "~QsciLexerPerl()", typeof(void));
+		~QsciLexerVHDL() {
+			interceptor.Invoke("~QsciLexerVHDL", "~QsciLexerVHDL()", typeof(void));
 		}
 		public new void Dispose() {
-			interceptor.Invoke("~QsciLexerPerl", "~QsciLexerPerl()", typeof(void));
+			interceptor.Invoke("~QsciLexerVHDL", "~QsciLexerVHDL()", typeof(void));
 		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -134,11 +138,11 @@ namespace QScintilla {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		protected new IQsciLexerPerlSignals Emit {
-			get { return (IQsciLexerPerlSignals) Q_EMIT; }
+		protected new IQsciLexerVHDLSignals Emit {
+			get { return (IQsciLexerVHDLSignals) Q_EMIT; }
 		}
 	}
 
-	public interface IQsciLexerPerlSignals : IQsciLexerSignals {
+	public interface IQsciLexerVHDLSignals : IQsciLexerSignals {
 	}
 }

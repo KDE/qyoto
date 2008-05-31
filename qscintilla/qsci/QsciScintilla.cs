@@ -894,7 +894,7 @@ namespace QScintilla {
 		[Q_SIGNAL("void linesChanged()")]
 		void LinesChanged();
 		[Q_SIGNAL("void marginClicked(int, int, Qt::KeyboardModifiers)")]
-		void MarginClicked(int margin, int line, int state);
+		void MarginClicked(int margin, int line, uint state);
 		[Q_SIGNAL("void modificationAttempted()")]
 		void ModificationAttempted();
 		[Q_SIGNAL("void modificationChanged(bool)")]

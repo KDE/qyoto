@@ -6,47 +6,42 @@ namespace QScintilla {
 	using System.Runtime.InteropServices;
 	using System.Collections.Generic;
 
-	[SmokeClass("QsciLexerPython")]
-	public class QsciLexerPython : QsciLexer, IDisposable {
- 		protected QsciLexerPython(Type dummy) : base((Type) null) {}
+	[SmokeClass("QsciLexerD")]
+	public class QsciLexerD : QsciLexer, IDisposable {
+ 		protected QsciLexerD(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciLexerPython), this);
+			interceptor = new SmokeInvocationQsci(typeof(QsciLexerD), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
-		static QsciLexerPython() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerPython), null);
-		}
-		public enum IndentationWarning {
-			NoWarning = 0,
-			Inconsistent = 1,
-			TabsAfterSpaces = 2,
-			Spaces = 3,
-			Tabs = 4,
+		static QsciLexerD() {
+			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerD), null);
 		}
 		public const int Default = 0;
 		public const int Comment = 1;
-		public const int Number = 2;
-		public const int DoubleQuotedString = 3;
-		public const int SingleQuotedString = 4;
-		public const int Keyword = 5;
-		public const int TripleSingleQuotedString = 6;
-		public const int TripleDoubleQuotedString = 7;
-		public const int ClassName = 8;
-		public const int FunctionMethodName = 9;
-		public const int Operator = 10;
-		public const int Identifier = 11;
-		public const int CommentBlock = 12;
-		public const int UnclosedString = 13;
-		public const int HighlightedIdentifier = 14;
-		public const int Decorator = 15;
+		public const int CommentLine = 2;
+		public const int CommentDoc = 3;
+		public const int CommentNested = 4;
+		public const int Number = 5;
+		public const int Keyword = 6;
+		public const int KeywordSecondary = 7;
+		public const int KeywordDoc = 8;
+		public const int Typedefs = 9;
+		public const int String = 10;
+		public const int UnclosedString = 11;
+		public const int Character = 12;
+		public const int Operator = 13;
+		public const int Identifier = 14;
+		public const int CommentLineDoc = 15;
+		public const int CommentDocKeyword = 16;
+		public const int CommentDocKeywordError = 17;
 
-		public QsciLexerPython(QObject parent) : this((Type) null) {
+		public QsciLexerD(QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QsciLexerPython#", "QsciLexerPython(QObject*)", typeof(void), typeof(QObject), parent);
+			interceptor.Invoke("QsciLexerD#", "QsciLexerD(QObject*)", typeof(void), typeof(QObject), parent);
 		}
-		public QsciLexerPython() : this((Type) null) {
+		public QsciLexerD() : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QsciLexerPython", "QsciLexerPython()", typeof(void));
+			interceptor.Invoke("QsciLexerD", "QsciLexerD()", typeof(void));
 		}
 		[SmokeMethod("language() const")]
 		public override string Language() {
@@ -60,9 +55,23 @@ namespace QScintilla {
 		public override List<string> AutoCompletionWordSeparators() {
 			return (List<string>) interceptor.Invoke("autoCompletionWordSeparators", "autoCompletionWordSeparators() const", typeof(List<string>));
 		}
-		[SmokeMethod("blockLookback() const")]
-		public override int BlockLookback() {
-			return (int) interceptor.Invoke("blockLookback", "blockLookback() const", typeof(int));
+		[SmokeMethod("blockEnd(int*) const")]
+		public override string BlockEnd(ref int style) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_int = style;
+			interceptor.Invoke("blockEnd$", "blockEnd(int*) const", stack);
+			style = stack[1].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (string) returnValue;
+		}
+		[SmokeMethod("blockEnd() const")]
+		public override string BlockEnd() {
+			return (string) interceptor.Invoke("blockEnd", "blockEnd() const", typeof(string));
 		}
 		[SmokeMethod("blockStart(int*) const")]
 		public override string BlockStart(ref int style) {
@@ -82,9 +91,31 @@ namespace QScintilla {
 		public override string BlockStart() {
 			return (string) interceptor.Invoke("blockStart", "blockStart() const", typeof(string));
 		}
+		[SmokeMethod("blockStartKeyword(int*) const")]
+		public override string BlockStartKeyword(ref int style) {
+			StackItem[] stack = new StackItem[2];
+			stack[1].s_int = style;
+			interceptor.Invoke("blockStartKeyword$", "blockStartKeyword(int*) const", stack);
+			style = stack[1].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (string) returnValue;
+		}
+		[SmokeMethod("blockStartKeyword() const")]
+		public override string BlockStartKeyword() {
+			return (string) interceptor.Invoke("blockStartKeyword", "blockStartKeyword() const", typeof(string));
+		}
 		[SmokeMethod("braceStyle() const")]
 		public override int BraceStyle() {
 			return (int) interceptor.Invoke("braceStyle", "braceStyle() const", typeof(int));
+		}
+		[SmokeMethod("wordCharacters() const")]
+		public override string WordCharacters() {
+			return (string) interceptor.Invoke("wordCharacters", "wordCharacters() const", typeof(string));
 		}
 		[SmokeMethod("defaultColor(int) const")]
 		public override QColor DefaultColor(int style) {
@@ -102,10 +133,6 @@ namespace QScintilla {
 		public override QColor DefaultPaper(int style) {
 			return (QColor) interceptor.Invoke("defaultPaper$", "defaultPaper(int) const", typeof(QColor), typeof(int), style);
 		}
-		[SmokeMethod("indentationGuideView() const")]
-		public override int IndentationGuideView() {
-			return (int) interceptor.Invoke("indentationGuideView", "indentationGuideView() const", typeof(int));
-		}
 		[SmokeMethod("keywords(int) const")]
 		public override string Keywords(int set) {
 			return (string) interceptor.Invoke("keywords$", "keywords(int) const", typeof(string), typeof(int), set);
@@ -118,29 +145,29 @@ namespace QScintilla {
 		public override void RefreshProperties() {
 			interceptor.Invoke("refreshProperties", "refreshProperties()", typeof(void));
 		}
+		public bool FoldAtElse() {
+			return (bool) interceptor.Invoke("foldAtElse", "foldAtElse() const", typeof(bool));
+		}
 		public bool FoldComments() {
 			return (bool) interceptor.Invoke("foldComments", "foldComments() const", typeof(bool));
 		}
-		public bool FoldQuotes() {
-			return (bool) interceptor.Invoke("foldQuotes", "foldQuotes() const", typeof(bool));
+		public bool FoldCompact() {
+			return (bool) interceptor.Invoke("foldCompact", "foldCompact() const", typeof(bool));
 		}
-		public QsciLexerPython.IndentationWarning indentationWarning() {
-			return (QsciLexerPython.IndentationWarning) interceptor.Invoke("indentationWarning", "indentationWarning() const", typeof(QsciLexerPython.IndentationWarning));
+		[Q_SLOT("void setFoldAtElse(bool)")]
+		[SmokeMethod("setFoldAtElse(bool)")]
+		public virtual void SetFoldAtElse(bool fold) {
+			interceptor.Invoke("setFoldAtElse$", "setFoldAtElse(bool)", typeof(void), typeof(bool), fold);
 		}
 		[Q_SLOT("void setFoldComments(bool)")]
 		[SmokeMethod("setFoldComments(bool)")]
 		public virtual void SetFoldComments(bool fold) {
 			interceptor.Invoke("setFoldComments$", "setFoldComments(bool)", typeof(void), typeof(bool), fold);
 		}
-		[Q_SLOT("void setFoldQuotes(bool)")]
-		[SmokeMethod("setFoldQuotes(bool)")]
-		public virtual void SetFoldQuotes(bool fold) {
-			interceptor.Invoke("setFoldQuotes$", "setFoldQuotes(bool)", typeof(void), typeof(bool), fold);
-		}
-		[Q_SLOT("void setIndentationWarning(QsciLexerPython::IndentationWarning)")]
-		[SmokeMethod("setIndentationWarning(QsciLexerPython::IndentationWarning)")]
-		public virtual void SetIndentationWarning(QsciLexerPython.IndentationWarning warn) {
-			interceptor.Invoke("setIndentationWarning$", "setIndentationWarning(QsciLexerPython::IndentationWarning)", typeof(void), typeof(QsciLexerPython.IndentationWarning), warn);
+		[Q_SLOT("void setFoldCompact(bool)")]
+		[SmokeMethod("setFoldCompact(bool)")]
+		public virtual void SetFoldCompact(bool fold) {
+			interceptor.Invoke("setFoldCompact$", "setFoldCompact(bool)", typeof(void), typeof(bool), fold);
 		}
 		[SmokeMethod("readProperties(QSettings&, const QString&)")]
 		protected override bool ReadProperties(QSettings qs, string prefix) {
@@ -150,11 +177,11 @@ namespace QScintilla {
 		protected override bool WriteProperties(QSettings qs, string prefix) {
 			return (bool) interceptor.Invoke("writeProperties#$", "writeProperties(QSettings&, const QString&) const", typeof(bool), typeof(QSettings), qs, typeof(string), prefix);
 		}
-		~QsciLexerPython() {
-			interceptor.Invoke("~QsciLexerPython", "~QsciLexerPython()", typeof(void));
+		~QsciLexerD() {
+			interceptor.Invoke("~QsciLexerD", "~QsciLexerD()", typeof(void));
 		}
 		public new void Dispose() {
-			interceptor.Invoke("~QsciLexerPython", "~QsciLexerPython()", typeof(void));
+			interceptor.Invoke("~QsciLexerD", "~QsciLexerD()", typeof(void));
 		}
 		public static new string Tr(string s, string c) {
 			return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -162,11 +189,11 @@ namespace QScintilla {
 		public static new string Tr(string s) {
 			return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
 		}
-		protected new IQsciLexerPythonSignals Emit {
-			get { return (IQsciLexerPythonSignals) Q_EMIT; }
+		protected new IQsciLexerDSignals Emit {
+			get { return (IQsciLexerDSignals) Q_EMIT; }
 		}
 	}
 
-	public interface IQsciLexerPythonSignals : IQsciLexerSignals {
+	public interface IQsciLexerDSignals : IQsciLexerSignals {
 	}
 }

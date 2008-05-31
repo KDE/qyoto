@@ -123,6 +123,10 @@ namespace QScintilla {
 		public virtual QFont Font(int style) {
 			return (QFont) interceptor.Invoke("font$", "font(int) const", typeof(QFont), typeof(int), style);
 		}
+		[SmokeMethod("indentationGuideView() const")]
+		public virtual int IndentationGuideView() {
+			return (int) interceptor.Invoke("indentationGuideView", "indentationGuideView() const", typeof(int));
+		}
 		[SmokeMethod("keywords(int) const")]
 		public virtual string Keywords(int set) {
 			return (string) interceptor.Invoke("keywords$", "keywords(int) const", typeof(string), typeof(int), set);

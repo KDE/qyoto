@@ -462,6 +462,25 @@ namespace QScintilla {
 		public const int SCI_GETHOTSPOTACTIVEBACK = 2495;
 		public const int SCI_GETHOTSPOTACTIVEUNDERLINE = 2496;
 		public const int SCI_GETHOTSPOTSINGLELINE = 2497;
+		public const int SCI_SETINDICATORCURRENT = 2500;
+		public const int SCI_GETINDICATORCURRENT = 2501;
+		public const int SCI_SETINDICATORVALUE = 2502;
+		public const int SCI_GETINDICATORVALUE = 2503;
+		public const int SCI_INDICATORFILLRANGE = 2504;
+		public const int SCI_INDICATORCLEARRANGE = 2505;
+		public const int SCI_INDICATORALLONFOR = 2506;
+		public const int SCI_INDICATORVALUEAT = 2507;
+		public const int SCI_INDICATORSTART = 2508;
+		public const int SCI_INDICATOREND = 2509;
+		public const int SCI_INDICSETUNDER = 2510;
+		public const int SCI_INDICGETUNDER = 2511;
+		public const int SCI_SETCARETSTYLE = 2512;
+		public const int SCI_GETCARETSTYLE = 2513;
+		public const int SCI_SETPOSITIONCACHE = 2514;
+		public const int SCI_GETPOSITIONCACHE = 2515;
+		public const int SCI_SETSCROLLWIDTHTRACKING = 2516;
+		public const int SCI_GETSCROLLWIDTHTRACKING = 2517;
+		public const int SCI_DELWORDRIGHTEND = 2518;
 		public const int SCI_STARTRECORD = 3001;
 		public const int SCI_STOPRECORD = 3002;
 		public const int SCI_SETLEXER = 4001;
@@ -554,7 +573,7 @@ namespace QScintilla {
 		public const int STYLE_INDENTGUIDE = 37;
 		public const int STYLE_CALLTIP = 38;
 		public const int STYLE_LASTPREDEFINED = 39;
-		public const int STYLE_MAX = 127;
+		public const int STYLE_MAX = 255;
 
 		public const int SC_CHARSET_ANSI = 0;
 		public const int SC_CHARSET_DEFAULT = 1;
@@ -581,7 +600,12 @@ namespace QScintilla {
 		public const int SC_CASE_UPPER = 1;
 		public const int SC_CASE_LOWER = 2;
 
-		public const int INDIC_MAX = 7;
+		public const int SC_IV_NONE = 0;
+		public const int SC_IV_REAL = 1;
+		public const int SC_IV_LOOKFORWARD = 2;
+		public const int SC_IV_LOOKBOTH = 3;
+
+		public const int INDIC_MAX = 31;
 		public const int INDIC_PLAIN = 0;
 		public const int INDIC_SQUIGGLE = 1;
 		public const int INDIC_TT = 2;
@@ -590,6 +614,7 @@ namespace QScintilla {
 		public const int INDIC_HIDDEN = 5;
 		public const int INDIC_BOX = 6;
 		public const int INDIC_ROUNDBOX = 7;
+		public const int INDIC_CONTAINER = 8;
 		public const int INDIC0_MASK = 0x20;
 		public const int INDIC1_MASK = 0x40;
 		public const int INDIC2_MASK = 0x80;
@@ -649,6 +674,10 @@ namespace QScintilla {
 		public const int CARET_JUMPS = 0x10;
 		public const int CARET_EVEN = 0x08;
 
+		public const int CARETSTYLE_INVISIBLE = 0;
+		public const int CARETSTYLE_LINE = 1;
+		public const int CARETSTYLE_BLOCK = 2;
+
 		public const int SC_MOD_INSERTTEXT = 0x1;
 		public const int SC_MOD_DELETETEXT = 0x2;
 		public const int SC_MOD_CHANGESTYLE = 0x4;
@@ -663,7 +692,9 @@ namespace QScintilla {
 		public const int SC_MOD_BEFOREDELETE = 0x800;
 		public const int SC_MULTILINEUNDOREDO = 0x1000;
 		public const int SC_STARTACTION = 0x2000;
-		public const int SC_MODEVENTMASKALL = 0x2fff;
+		public const int SC_MOD_CHANGEINDICATOR = 0x4000;
+		public const int SC_MOD_CHANGELINESTATE = 0x8000;
+		public const int SC_MODEVENTMASKALL = 0xffff;
 
 		public const int SCK_DOWN = 300;
 		public const int SCK_UP = 301;
@@ -771,7 +802,15 @@ namespace QScintilla {
 		public const int SCLEX_SPICE = 78;
 		public const int SCLEX_D = 79;
 		public const int SCLEX_CMAKE = 80;
+		public const int SCLEX_GAP = 81;
+		public const int SCLEX_PLM = 82;
+		public const int SCLEX_PROGRESS = 83;
+		public const int SCLEX_ABAQUS = 84;
+		public const int SCLEX_ASYMPTOTE = 85;
+		public const int SCLEX_R = 86;
 
+		// long SendScintilla(unsigned int arg1,unsigned long arg2,void* arg3); >>>> NOT CONVERTED
+		// void* SendScintillaPtrResult(unsigned int arg1); >>>> NOT CONVERTED
 		public QsciScintillaBase(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QsciScintillaBase#", "QsciScintillaBase(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -928,8 +967,11 @@ namespace QScintilla {
 		void SCN_HOTSPOTCLICK(int position, int modifiers);
 		[Q_SIGNAL("void SCN_HOTSPOTDOUBLECLICK(int, int)")]
 		void SCN_HOTSPOTDOUBLECLICK(int position, int modifiers);
-		[Q_SIGNAL("void SCN_MACRORECORD(unsigned, long, long)")]
-		void SCN_MACRORECORD(uint arg1, long arg2, long arg3);
+		[Q_SIGNAL("void SCN_INDICATORCLICK(int, int)")]
+		void SCN_INDICATORCLICK(int position, int modifiers);
+		[Q_SIGNAL("void SCN_INDICATORRELEASE(int, int)")]
+		void SCN_INDICATORRELEASE(int position, int modifiers);
+		// void SCN_MACRORECORD(unsigned arg1,long arg2,void* arg3); >>>> NOT CONVERTED
 		[Q_SIGNAL("void SCN_MARGINCLICK(int, int, int)")]
 		void SCN_MARGINCLICK(int position, int modifiers, int margin);
 		[Q_SIGNAL("void SCN_MODIFIED(int, int, const char*, int, int, int, int, int)")]
