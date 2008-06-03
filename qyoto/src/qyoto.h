@@ -135,6 +135,6 @@ extern Q_DECL_EXPORT int DebugChannel();
 
 extern Q_DECL_EXPORT void SetApplicationTerminated();
 extern Q_DECL_EXPORT int qt_metacall(void* obj, int _c, int _id, void* _o);
-};
+}
 
 #endif
