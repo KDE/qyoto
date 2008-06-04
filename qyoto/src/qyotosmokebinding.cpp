@@ -13,6 +13,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <stdlib.h>
 #include "qyotosmokebinding.h"
 #include "qyoto.h"
 #include "virtualmethodcall.h"
