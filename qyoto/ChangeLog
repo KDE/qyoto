@@ -1,3 +1,9 @@
+2008-06-04  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Remove references to QtWebKit from the Qyoto handlers.cpp so it 
+	  links
+	* Remove superfluous semi-colon from an extern C block
+
 2008-05-31  Arno Rehn  <arno@arnorehn.de>
 
 	* Updated AssemblyInfo.cs
