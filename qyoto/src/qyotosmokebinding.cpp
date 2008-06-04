@@ -17,6 +17,8 @@
 #include "qyoto.h"
 #include "virtualmethodcall.h"
 
+#include <cstdlib>
+
 QyotoSmokeBinding::QyotoSmokeBinding(Smoke *s, QHash<int, char*> *classname) : SmokeBinding(s), _classname(classname) {}
 
 void
@@ -74,7 +76,7 @@ QyotoSmokeBinding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args,
 					ptr,
 					smoke->classes[smoke->methods[method].classId].className,
 					(const char *) signature );
-			exit(1);
+			std::exit(1);
 	}
 		if (do_debug & qtdb_virtual) {
 		printf(	"virtual %p->%s::%s called\n", 
