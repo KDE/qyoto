@@ -1,8 +1,8 @@
 #include <QtCore>
 #include <QtGui>
 
-#include <smoke.h>
-#include <qt/qt_smoke.h>
+#include <smoke/smoke.h>
+#include <smoke/qt_smoke.h>
 
 #include "smokeqyoto.h"
 #include "qyoto.h"
