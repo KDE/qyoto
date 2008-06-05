@@ -20,7 +20,7 @@ QHash<Smoke*, QyotoModule> qyoto_modules;
 
 extern "C" {
 bool application_terminated = false;
-};
+}
 
 FromIntPtr FreeGCHandle;
 CreateInstanceFn CreateInstance;
