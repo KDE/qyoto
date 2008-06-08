@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KVBox : KHBox, IDisposable {
  		protected KVBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KVBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KVBox), this);
 		}
 		/// <remarks>
 		///  Creates a new vbox.

@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KDoubleValidator : QDoubleValidator, IDisposable {
  		protected KDoubleValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDoubleValidator), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDoubleValidator), this);
 		}
 		[Q_PROPERTY("bool", "acceptLocalizedNumbers")]
 		public bool AcceptLocalizedNumbers {

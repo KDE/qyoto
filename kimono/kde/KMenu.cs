@@ -20,11 +20,11 @@ namespace Kimono {
 	public class KMenu : QMenu, IDisposable {
  		protected KMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMenu), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMenu), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMenu() {
-			staticInterceptor = new SmokeInvocation(typeof(KMenu), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KMenu), null);
 		}
 		/// <remarks>
 		///  Constructs a KMenu.

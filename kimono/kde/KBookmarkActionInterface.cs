@@ -15,7 +15,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KBookmarkActionInterface(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBookmarkActionInterface), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBookmarkActionInterface), this);
 		}
 		public KBookmarkActionInterface(KBookmark bk) : this((Type) null) {
 			CreateProxy();

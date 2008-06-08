@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  Class representing data about an application startup notification.
@@ -20,7 +21,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KStartupInfoData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KStartupInfoData), this);
+			interceptor = new SmokeInvocationKDE(typeof(KStartupInfoData), this);
 		}
 		/// <remarks>
 		/// 	 </remarks>		<short>   </short>
@@ -29,7 +30,6 @@ namespace Kimono {
 			No = 1,
 			Unknown = 2,
 		}
-		// QList<pid_t> pids(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Sets the binary name of the application ( e.g. 'kcontrol' ).
 		/// <param> name="bin" the new binary name of the application
@@ -179,6 +179,9 @@ namespace Kimono {
 		/// </remarks>		<return> the list of all PIDs
 		/// 	 </return>
 		/// 		<short>    Returns all PIDs for the startup notification.</short>
+		public List<int> Pids() {
+			return (List<int>) interceptor.Invoke("pids", "pids() const", typeof(List<int>));
+		}
 		/// <remarks>
 		///  Checks whether the given <code>pid</code> is in the list of PIDs for starup
 		///  notification.

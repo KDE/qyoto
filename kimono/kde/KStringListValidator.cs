@@ -35,7 +35,7 @@ namespace Kimono {
 	public class KStringListValidator : QValidator, IDisposable {
  		protected KStringListValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KStringListValidator), this);
+			interceptor = new SmokeInvocationKDE(typeof(KStringListValidator), this);
 		}
 		[Q_PROPERTY("QStringList", "stringList")]
 		public List<string> StringList {

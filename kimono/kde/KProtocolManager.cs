@@ -29,11 +29,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KProtocolManager(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KProtocolManager), this);
+			interceptor = new SmokeInvocationKDE(typeof(KProtocolManager), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KProtocolManager() {
-			staticInterceptor = new SmokeInvocation(typeof(KProtocolManager), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KProtocolManager), null);
 		}
 		/// <remarks>
 		///  Types of proxy configuration
@@ -92,15 +92,16 @@ namespace Kimono {
 			interceptor.Invoke("~KProtocolManager", "~KProtocolManager()", typeof(void));
 		}
 		/// <remarks>
-		///  Returns the default user-agent string.
+		///  Returns the default user-agent string used for web browsing.
 		/// </remarks>		<return> the default user-agent string
 		///    </return>
-		/// 		<short>    Returns the default user-agent string.</short>
+		/// 		<short>    Returns the default user-agent string used for web browsing.</short>
 		public static string DefaultUserAgent() {
 			return (string) staticInterceptor.Invoke("defaultUserAgent", "defaultUserAgent()", typeof(string));
 		}
 		/// <remarks>
-		///  Returns the default user-agent value.
+		///  Returns the default user-agent value used for web browsing, for example
+		///  "Mozilla/5.0 (compatible; Konqueror/4.0; Linux; X11; i686; en_US) KHTML/4.0.1 (like Gecko)"
 		/// <param> name="keys" can be any of the following:
 		/// </param>
 		/// <li>
@@ -112,7 +113,7 @@ namespace Kimono {
 		/// </li>
 		/// 
 		/// <li>
-		/// 'p'	Show platform
+		/// 'p'	Show platform (only for X11)
 		/// </li>
 		/// 
 		/// <li>
@@ -124,22 +125,43 @@ namespace Kimono {
 		/// </li>
 		/// </remarks>		<return> the default user-agent value with the given <code>keys</code>
 		///    </return>
-		/// 		<short>    Returns the default user-agent value.</short>
+		/// 		<short>    Returns the default user-agent value used for web browsing, for example  "Mozilla/5.</short>
 		public static string DefaultUserAgent(string keys) {
 			return (string) staticInterceptor.Invoke("defaultUserAgent$", "defaultUserAgent(const QString&)", typeof(string), typeof(string), keys);
 		}
 		/// <remarks>
-		///  Returns the userAgent string configured for the
+		///  Returns the application's user-agent string.
+		///  Example string is "KMail/1.9.50 (Windows/6.0; KDE/3.97.1; i686; svn-762186; 2008-01-15)",
+		///  where "KMail" is the <code>appName</code> parameter, "1.9.50" is the <code>appVersion</code> parameter,
+		///  "Windows/6.0; KDE/3.97.1; i686" part is added automatically and "svn-762186; 2008-01-15"
+		///  is provided by <code>extraInfo</code> list.
+		/// <param> name="appName" name of the application
+		/// </param><param> name="appVersion" name of the application
+		/// </param><param> name="extraInfo" a list of elements that will be appended to the string as extra information
+		/// </param></remarks>		<return> the application's user-agent string
+		/// </return>
+		/// 		<short>    Returns the application's user-agent string.</short>
+		public static string UserAgentForApplication(string appName, string appVersion, List<string> extraInfo) {
+			return (string) staticInterceptor.Invoke("userAgentForApplication$$?", "userAgentForApplication(const QString&, const QString&, const QStringList&)", typeof(string), typeof(string), appName, typeof(string), appVersion, typeof(List<string>), extraInfo);
+		}
+		public static string UserAgentForApplication(string appName, string appVersion) {
+			return (string) staticInterceptor.Invoke("userAgentForApplication$$", "userAgentForApplication(const QString&, const QString&)", typeof(string), typeof(string), appName, typeof(string), appVersion);
+		}
+		/// <remarks>
+		///  Returns the user-agent string configured for the
 		///  specified host.
 		///  If hostname is not found or is empty (i.e. "" or
 		///  string()) this function will return the default
 		///  user agent.
 		/// <param> name="hostname" name of the host
-		/// </param></remarks>		<return> specified userAgent string
+		/// </param></remarks>		<return> specified user-agent string
 		///    </return>
-		/// 		<short>    Returns the userAgent string configured for the  specified host.</short>
+		/// 		<short>    Returns the user-agent string configured for the  specified host.</short>
 		public static string UserAgentForHost(string hostname) {
 			return (string) staticInterceptor.Invoke("userAgentForHost$", "userAgentForHost(const QString&)", typeof(string), typeof(string), hostname);
+		}
+		public static bool GetSystemNameVersionAndMachine(StringBuilder systemName, StringBuilder systemVersion, StringBuilder machine) {
+			return (bool) staticInterceptor.Invoke("getSystemNameVersionAndMachine$$$", "getSystemNameVersionAndMachine(QString&, QString&, QString&)", typeof(bool), typeof(StringBuilder), systemName, typeof(StringBuilder), systemVersion, typeof(StringBuilder), machine);
 		}
 		/// <remarks>
 		///  Returns the preferred timeout value for reading from
@@ -596,6 +618,18 @@ namespace Kimono {
 		/// 		<short>    Returns whether the protocol can act as a source protocol.</short>
 		public static bool IsSourceProtocol(KUrl url) {
 			return (bool) staticInterceptor.Invoke("isSourceProtocol#", "isSourceProtocol(const KUrl&)", typeof(bool), typeof(KUrl), url);
+		}
+		/// <remarks>
+		///  Returns which protocol handles this mimetype, if it's an archive mimetype.
+		///  For instance zip:/ handles application/x-zip.
+		///  This is defined in the protocol description file using an entry like
+		///  "archiveMimetype=application/x-zip"
+		/// <param> name="mimetype" the mimetype to check
+		/// </param></remarks>		<return> the protocol that can handle this archive mimetype, for instance "zip".
+		/// </return>
+		/// 		<short>    Returns which protocol handles this mimetype, if it's an archive mimetype.</short>
+		public static string ProtocolForArchiveMimetype(string mimeType) {
+			return (string) staticInterceptor.Invoke("protocolForArchiveMimetype$", "protocolForArchiveMimetype(const QString&)", typeof(string), typeof(string), mimeType);
 		}
 		/// <remarks>
 		///  Force a reload of the general config file of

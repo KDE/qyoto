@@ -9,12 +9,12 @@ namespace Kimono {
 	///  The KShortcut class is used to represent a keyboard shortcut to an action.
 	///  A shortcut is normally a single key with modifiers, such as Ctrl+V.
 	///  A KShortcut object may also contain an alternate key sequence which will also
-	///  activate the action it's associated to, as long as no other actions have
+	///  activate the action it's associated with, as long as no other actions have
 	///  defined that key as their primary key. Ex: Ctrl+V;Shift+Insert.
 	///  This can be used to add additional accelerators to a KAction. For example,
 	///  the below code binds the escape key to the close action.
 	///  <pre>
-	///   KAction closeAction = KStdAction.Close(this, SLOT("close()"), actionCollection());
+	///   KAction closeAction = KStandardAction.Close(this, SLOT("close()"), actionCollection());
 	///   KShortcut closeShortcut = closeAction.Shortcut();
 	///   closeShortcut.setAlternate(Qt.Key_Escape);
 	///   closeAction.SetShortcut(closeShortcut);
@@ -27,11 +27,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KShortcut(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KShortcut), this);
+			interceptor = new SmokeInvocationKDE(typeof(KShortcut), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KShortcut() {
-			staticInterceptor = new SmokeInvocation(typeof(KShortcut), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KShortcut), null);
 		}
 		/// <remarks>
 		///  An enum about the behavior of operations that treat a KShortcut like a list of QKeySequences.

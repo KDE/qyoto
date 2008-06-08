@@ -8,11 +8,12 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KMacroExpanderBase kmacroexpander.h <KMacroExpanderBase>
 	///  Abstract base class for the worker classes behind the KMacroExpander namespace
 	///  and the KCharMacroExpander and KWordMacroExpander classes.
 	/// </remarks>		<author> Oswald Buddenhagen <ossi@kde.org>
 	///  </author>
-	/// 		<short>    Abstract base class for the worker classes behind the KMacroExpander namespace  and the KCharMacroExpander and KWordMacroExpander classes.</short>
+	/// 		<short>    \class KMacroExpanderBase kmacroexpander.</short>
 
 	[SmokeClass("KMacroExpanderBase")]
 	public class KMacroExpanderBase : Object, IDisposable {
@@ -20,7 +21,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMacroExpanderBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMacroExpanderBase), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMacroExpanderBase), this);
 		}
 		/// <remarks>
 		///  Constructor.
@@ -41,6 +42,44 @@ namespace Kimono {
 		public void ExpandMacros(StringBuilder str) {
 			interceptor.Invoke("expandMacros$", "expandMacros(QString&)", typeof(void), typeof(StringBuilder), str);
 		}
+		/// <remarks>
+		///  Perform safe macro expansion (substitution) on a string for use
+		///  in shell commands.
+		///  <h3>NIX notes</h3>
+		///  Explicitly supported shell constructs:
+		///    \ '' "" $'' $"" {} () $(()) ${} $() ``
+		///  Implicitly supported shell constructs:
+		///    (())
+		///  Unsupported shell constructs that will cause problems:
+		///   Shortened &quot;<tt>case $v in pat)</tt>&quot; syntax. Use
+		///    &quot;<tt>case $v in (pat)</tt>&quot; instead.
+		///  The rest of the shell (incl. bash) syntax is simply ignored,
+		///  as it is not expected to cause problems.
+		///  Note that bash contains a bug which makes macro expansion within 
+		///  double quoted substitutions (<tt>"${VAR:-%macro}"</tt>) inherently
+		///  insecure.
+		///  For security reasons, <b>never</b> put expandos in command line arguments
+		///  that are shell commands by themselves -
+		///  &quot;<tt>sh -c 'foo \%f'</tt>&quot; is taboo.
+		///  &quot;<tt>file=\%f sh -c 'foo "$file"'</tt>&quot; is OK.
+		///  <h3>Windows notes</h3>
+		///  All quoting syntax supported by KShell is supported here as well.
+		///  Additionally, command grouping via parentheses is recognized - note
+		///  however, that the parser is much stricter about unquoted parentheses
+		///  than cmd itself.
+		///  The rest of the cmd syntax is simply ignored, as it is not expected
+		///  to cause problems - do not use commands that embed other commands,
+		///  though - &quot;<tt>for /f ...</tt>&quot; is taboo.
+		/// <param> name="str" the string in which macros are expanded in-place
+		/// </param><param> name="pos" the position inside the string at which parsing/substitution
+		///   should start, and upon exit where processing stopped
+		/// </param></remarks>		<return> false if the string could not be parsed and therefore no safe
+		///   substitution was possible. Note that macros will have been processed
+		///   up to the point where the error occurred. An unmatched closing paren
+		///   or brace outside any shell construct is @em not an error (unlike in
+		///   the function below), but still prematurely terminates processing.
+		///      </return>
+		/// 		<short>    Perform safe macro expansion (substitution) on a string for use  in shell commands.</short>
 		public bool ExpandMacrosShellQuote(StringBuilder str, ref int pos) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
@@ -88,10 +127,10 @@ namespace Kimono {
 		/// <param> name="str" the input string
 		/// </param><param> name="pos" the offset within <code>str</code>
 		/// </param><param> name="ret" return value: the string to substitute for the macro
-		/// </param></remarks>		<return> if greater than zero, the number of chars at <code>pos</code> in <code>str</code>
-		///   to substitute with <code>ret</code> (i.e., a valid macro was found). if less
+		/// </param></remarks>		<return> If greater than zero, the number of chars at <code>pos</code> in <code>str</code>
+		///   to substitute with <code>ret</code> (i.e., a valid macro was found). If less
 		///   than zero, subtract this value from <code>pos</code> (to skip a macro, i.e.,
-		///   substitute it with itself). zero requests no special action.
+		///   substitute it with itself). If zero, no macro starts at <code>pos.</code>
 		///      </return>
 		/// 		<short>    This function is called for every single char within the string if  the escape char is char.Null.</short>
 		[SmokeMethod("expandPlainMacro(const QString&, int, QStringList&)")]
@@ -107,10 +146,11 @@ namespace Kimono {
 		/// </param><param> name="pos" the offset within <code>str.</code> Note that this is the position of
 		///   the occurrence of the escape char
 		/// </param><param> name="ret" return value: the string to substitute for the macro
-		/// </param></remarks>		<return> if greater than zero, the number of chars at <code>pos</code> in <code>str</code>
-		///   to substitute with <code>ret</code> (i.e., a valid macro was found). if less
+		/// </param></remarks>		<return> If greater than zero, the number of chars at <code>pos</code> in <code>str</code>
+		///   to substitute with <code>ret</code> (i.e., a valid macro was found). If less
 		///   than zero, subtract this value from <code>pos</code> (to skip a macro, i.e.,
-		///   substitute it with itself). zero requests no special action.
+		///   substitute it with itself). If zero, scanning continues as if no
+		///   escape char was encountered at all.
 		///      </return>
 		/// 		<short>    This function is called every time the escape char is found if it is  not char.Null.</short>
 		[SmokeMethod("expandEscapedMacro(const QString&, int, QStringList&)")]

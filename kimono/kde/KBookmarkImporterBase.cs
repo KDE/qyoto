@@ -15,11 +15,11 @@ namespace Kimono {
 	public abstract class KBookmarkImporterBase : QObject {
  		protected KBookmarkImporterBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBookmarkImporterBase), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBookmarkImporterBase), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KBookmarkImporterBase() {
-			staticInterceptor = new SmokeInvocation(typeof(KBookmarkImporterBase), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KBookmarkImporterBase), null);
 		}
 		public KBookmarkImporterBase() : this((Type) null) {
 			CreateProxy();

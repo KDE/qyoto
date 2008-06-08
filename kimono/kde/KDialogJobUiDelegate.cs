@@ -5,14 +5,14 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
-	///  A UI delegate using KMessageBox for interaction.
-	///  </remarks>		<short>    A UI delegate using KMessageBox for interaction.</short>
+	///  A UI delegate using KMessageBox for interaction (showing errors and warnings).
+	///  </remarks>		<short>    A UI delegate using KMessageBox for interaction (showing errors and warnings).</short>
 
 	[SmokeClass("KDialogJobUiDelegate")]
 	public class KDialogJobUiDelegate : KJobUiDelegate, IDisposable {
  		protected KDialogJobUiDelegate(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDialogJobUiDelegate), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDialogJobUiDelegate), this);
 		}
 		/// <remarks>
 		///  Constructs a new KDialogJobUiDelegate.

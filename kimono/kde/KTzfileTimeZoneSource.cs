@@ -8,7 +8,7 @@ namespace Kimono {
 	///  A class to read and parse tzfile time zone definition files.
 	///  tzfile is the format used by zoneinfo files in the system time zone database.
 	///  The format is documented in the tzfile(5) manpage.
-	/// </remarks>		<author> David Jarvie <software@astrojar.org.uk>.
+	/// </remarks>		<author> David Jarvie <djarvie@kde.org>.
 	///  </author>
 	/// 		<short> Reads and parses tzfile(5) time zone definition files.</short>
 	/// 		<see> KTzfileTimeZone</see>
@@ -20,23 +20,19 @@ namespace Kimono {
 	public class KTzfileTimeZoneSource : KTimeZoneSource, IDisposable {
  		protected KTzfileTimeZoneSource(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTzfileTimeZoneSource), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTzfileTimeZoneSource), this);
 		}
 		/// <remarks>
 		///  Constructs a time zone source.
+		///  The directory containing the time zone definition files is given by the
+		///  <code>location</code> parameter, which will usually be the zoneinfo directory. For
+		///  tzfile files in other locations, bear in mind that the name generated
+		///  for each KTzfileTimeZone is its file path relative to <code>location.</code>
 		/// <param> name="location" the local directory containing the time zone definition files
 		///      </param></remarks>		<short>    Constructs a time zone source.</short>
 		public KTzfileTimeZoneSource(string location) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KTzfileTimeZoneSource$", "KTzfileTimeZoneSource(const QString&)", typeof(void), typeof(string), location);
-		}
-		/// <remarks>
-		///  Returns the local directory containing the time zone definition files.
-		/// </remarks>		<return> path to time zone definition files
-		///      </return>
-		/// 		<short>    Returns the local directory containing the time zone definition files.</short>
-		public string Location() {
-			return (string) interceptor.Invoke("location", "location()", typeof(string));
 		}
 		/// <remarks>
 		///  Parses a tzfile file to extract detailed information for one time zone.

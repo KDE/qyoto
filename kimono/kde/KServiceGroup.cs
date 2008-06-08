@@ -37,7 +37,7 @@ namespace Kimono {
 	public class KServiceGroup : KSycocaEntry, IDisposable {
  		protected KServiceGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KServiceGroup), this);
+			interceptor = new SmokeInvocationKDE(typeof(KServiceGroup), this);
 		}
 		/// <remarks>
 		///  options for groupEntries and serviceEntries

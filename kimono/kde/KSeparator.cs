@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KSeparator : QFrame, IDisposable {
  		protected KSeparator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSeparator), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSeparator), this);
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public new Qt.Orientation Orientation {

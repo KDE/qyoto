@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KPassivePopupMessageHandler : QObject, IKMessageHandler, IDisposable {
  		protected KPassivePopupMessageHandler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPassivePopupMessageHandler), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPassivePopupMessageHandler), this);
 		}
 		/// <remarks>
 		///  @brief Create a new KPassivePopupMessageHandler

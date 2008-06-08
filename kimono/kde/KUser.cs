@@ -6,6 +6,7 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KUser kuser.h <KUser>
 	///  This class represents a user on your system. You can either get
 	///  information about the current user, of fetch information about
 	///  a user on the system. Instances of this class will be explicitly shared,
@@ -20,11 +21,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KUser(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUser), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUser), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUser() {
-			staticInterceptor = new SmokeInvocation(typeof(KUser), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KUser), null);
 		}
 		public enum UIDMode {
 			UseEffectiveUID = 0,
@@ -169,7 +170,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns an extended property.
-		///  Under Windows, <code>RoomNumber</code>, <code>WorkPhone</code> and <code>HomePhone</code> are unsopported.
+		///  Under Windows, <code>RoomNumber</code>, <code>WorkPhone</code> and <code>HomePhone</code> are unsupported.
 		/// </remarks>		<return> a QVariant with the value of the property or an invalid QVariant,
 		///          if the property is not set
 		///    </return>

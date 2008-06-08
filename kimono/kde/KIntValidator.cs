@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KIntValidator : QValidator, IDisposable {
  		protected KIntValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KIntValidator), this);
+			interceptor = new SmokeInvocationKDE(typeof(KIntValidator), this);
 		}
 		/// <remarks>
 		///       Constuctor.  Also sets the base value.

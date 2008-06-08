@@ -23,7 +23,7 @@ namespace Kimono {
 	public class KUrlRequester : KHBox, IDisposable {
  		protected KUrlRequester(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUrlRequester), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUrlRequester), this);
 		}
 		[Q_PROPERTY("KUrl", "url")]
 		public KUrl Url {

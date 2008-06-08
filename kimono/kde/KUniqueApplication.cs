@@ -5,14 +5,18 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
-	///  Maintains only a single instance of a running application at a time.
-	///  Please note that this supports only one instance per KDE session. If
+	///  KUniqueApplication is a KApplication which only uses a single process.  When
+	///  a KUniqueApplication is started, it attempts to contact an existing copy 
+	///  of the application.  If successful, the program asks the 
+	///  existing process to create a new instance by calling its newInstance() method
+	///  and then exits.  If there is no existing process then the program forks and
+	///  calls the newInstance() method.  When newInstance() is called, the application
+	///  will typically create a new window or activate an existing one.
+	///  Instances of KUniqueApplication can be made to behave like a normal application by passing
+	///  the StartFlag.NonUniqueInstance flag to start().
+	///  Please note that this supports only one process per KDE session. If
 	///  your application can only be opened once per user or once per host, you
 	///  need to ensure this independently of KUniqueApplication.
-	///  If another instance
-	///  is started, it will determine (via DBUS) whether it is the first instance
-	///  or a second instance.  If it is a second instance, it will forward on
-	///  the information to the first instance and then quit.
 	///  The .desktop file for the application should state X-DBUS-StartupType=Unique,
 	///  see ktoolinvocation.h
 	///  If your application is used to open files, it should also support the --tempfile
@@ -20,18 +24,25 @@ namespace Kimono {
 	///  Add X-KDE-HasTempFileOption=true to the .desktop file to indicate this.
 	/// </remarks>		<author> Preston Brown <pbrown@kde.org>
 	///  </author>
-	/// 		<short>    Maintains only a single instance of a running application at a time.</short>
+	/// 		<short>    KUniqueApplication is a KApplication which only uses a single process.</short>
 	/// 		<see> KApplication</see>
 
 	[SmokeClass("KUniqueApplication")]
 	public class KUniqueApplication : KApplication, IDisposable {
  		protected KUniqueApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUniqueApplication), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUniqueApplication), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUniqueApplication() {
-			staticInterceptor = new SmokeInvocation(typeof(KUniqueApplication), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KUniqueApplication), null);
+		}
+		/// <remarks> 
+		///  These flags can be used to specify how new instances of 
+		///  unique applications are created.
+		///    </remarks>		<short>     These flags can be used to specify how new instances of   unique applications are created.</short>
+		public enum StartFlag {
+			NonUniqueInstance = 0x1,
 		}
 		/// <remarks>
 		///  Constructor. Takes command line arguments from KCmdLineArgs
@@ -61,11 +72,31 @@ namespace Kimono {
 		///  Command line arguments have been passed to KCmdLineArgs before this
 		///  function is called and can be checked in the usual way.
 		///  The default implementation ensures the mainwindow of the already
-		///  running instance is shown and activated if necessary. You should
-		///  prefer using it from your overridden method instead of doing
-		///  it directly.
+		///  running instance is shown and activated if necessary. If your
+		///  application has only one mainwindow, you should call this default
+		///  implementation and only add your special handling if needed.
 		///  Note that newInstance() is called also in the first started
 		///  application process.
+		///  For applications that share one process for several mainwindows,
+		///  the reimplementation could be:
+		///  <pre>
+		///     int MyApp.NewInstance()
+		///     {
+		///     KCmdLineArgs.SetCwd(QDir.CurrentPath().toUtf8());
+		///     KCmdLineArgs args = KCmdLineArgs.ParsedArgs();
+		///     static bool first = true;
+		///     if (args.Count() > 0) {
+		///         for (int i = 0; i < args.Count(); ++i) {
+		///             openWindow(args.Url(i));
+		///         }
+		///     } else if( !first || !isSessionRestored()) {
+		///         openWindow(KUrl()); // create a new window
+		///     }
+		///     first = false;
+		///     args.Clear();
+		///     return 0;
+		///     }
+		///  </pre>
 		/// </remarks>		<return> An exit value. The calling process will exit with this value.
 		///    </return>
 		/// 		<short>    Creates a new "instance" of the application.</short>
@@ -118,10 +149,15 @@ namespace Kimono {
 		///  been called yet, without any performance impact.
 		///  Also note that you MUST call KUniqueApplication.AddCmdLineOptions(),
 		///  if you use command line options before start() is called.
-		/// </remarks>		<return> true if registration is successful.
+		/// <param> name="flags" Optional flags which control how a new instance 
+		///  				of the application is started.
+		/// </param></remarks>		<return> true if registration is successful.
 		///          false if another process was already running.
 		///    </return>
 		/// 		<short>    Forks and registers with D-Bus.</short>
+		public static bool Start(uint flags) {
+			return (bool) staticInterceptor.Invoke("start$", "start(KUniqueApplication::StartFlags)", typeof(bool), typeof(uint), flags);
+		}
 		public static bool Start() {
 			return (bool) staticInterceptor.Invoke("start", "start()", typeof(bool));
 		}

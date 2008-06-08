@@ -29,11 +29,11 @@ namespace Kimono {
 	public class KDataToolAction : KAction, IDisposable {
  		protected KDataToolAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDataToolAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDataToolAction), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDataToolAction() {
-			staticInterceptor = new SmokeInvocation(typeof(KDataToolAction), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KDataToolAction), null);
 		}
 		/// <remarks>
 		///  Constructs a new KDataToolAction.

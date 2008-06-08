@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KIcon : QIcon, IDisposable {
  		protected KIcon(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KIcon), this);
+			interceptor = new SmokeInvocationKDE(typeof(KIcon), this);
 		}
 		/// <remarks>
 		///  Constructor which takes a kde style icon name, and optionally

@@ -19,7 +19,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KEMailSettings(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KEMailSettings), this);
+			interceptor = new SmokeInvocationKDE(typeof(KEMailSettings), this);
 		}
 		/// <remarks>
 		///  The list of settings that I thought of when I wrote this 

@@ -5,6 +5,7 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
+	///  \class KTempDir ktempdir.h <KTempDir>
 	///  @brief Create a unique directory for temporary use.
 	///  The KTempDir class creates a unique directory for temporary use.
 	///  This is especially useful if you need to create a directory in a world
@@ -19,7 +20,7 @@ namespace Kimono {
 	///  KTempDir does not create any missing directories, but locateLocal() does.
 	/// </remarks>		<author> Joseph Wenninger <jowenn@kde.org>
 	///  </author>
-	/// 		<short>    @brief Create a unique directory for temporary use.</short>
+	/// 		<short>    \class KTempDir ktempdir.</short>
 	/// 		<see> KStandardDirs</see>
 	/// 		<see> KTemporaryFile</see>
 
@@ -29,11 +30,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTempDir(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTempDir), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTempDir), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTempDir() {
-			staticInterceptor = new SmokeInvocation(typeof(KTempDir), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KTempDir), null);
 		}
 		/// <remarks>
 		///  Creates a temporary directory with the name:

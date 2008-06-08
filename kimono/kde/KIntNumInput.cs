@@ -10,8 +10,8 @@ namespace Kimono {
 	///  parameter. This is especially nice for configuration dialogs,
 	///  which can have many such combinated controls.
 	///  The slider is created only when the user specifies a range
-	///  for the control using the setRange function with the slider
-	///  parameter set to "true".
+	///  for the control using the setRange function or when the user
+	///  calls setSliderEnabled.
 	///  A special feature of KIntNumInput, designed specifically for
 	///  the situation when there are several KIntNumInputs in a column,
 	///  is that you can specify what portion of the control is taken by the
@@ -28,7 +28,7 @@ namespace Kimono {
 	public class KIntNumInput : KNumInput, IDisposable {
  		protected KIntNumInput(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KIntNumInput), this);
+			interceptor = new SmokeInvocationKDE(typeof(KIntNumInput), this);
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
@@ -110,7 +110,7 @@ namespace Kimono {
 		///  this instance that it is visually put below some other KNumInput widget.
 		///  Note that these two KNumInput's need not to have the same parent widget
 		///  or be in the same layout group.
-		///  The effect is that it'll adjust it's layout in correspondence
+		///  The effect is that it'll adjust its layout in correspondence
 		///  with the layout of the other KNumInput's (you can build an arbitrary long
 		///  chain).
 		/// <param> name="below" append KIntNumInput to the KNumInput chain
@@ -128,19 +128,27 @@ namespace Kimono {
 			interceptor.Invoke("KIntNumInput#$#", "KIntNumInput(KNumInput*, int, QWidget*)", typeof(void), typeof(KNumInput), below, typeof(int), value, typeof(QWidget), parent);
 		}
 		/// <remarks>
+		///  Sets the allowed input range and the step size for the slider and the
+		///  spin box.
 		/// <param> name="min" minimum value
 		/// </param><param> name="max" maximum value
-		/// </param><param> name="step" step size for the QSlider
-		/// </param><param> name="slider" whether the slider is created or not
-		///      </param></remarks>		<short>   </short>
-		public void SetRange(int min, int max, int step, bool slider) {
-			interceptor.Invoke("setRange$$$$", "setRange(int, int, int, bool)", typeof(void), typeof(int), min, typeof(int), max, typeof(int), step, typeof(bool), slider);
-		}
+		/// </param><param> name="step" step size
+		///      </param></remarks>		<short>    Sets the allowed input range and the step size for the slider and the  spin box.</short>
 		public void SetRange(int min, int max, int step) {
 			interceptor.Invoke("setRange$$$", "setRange(int, int, int)", typeof(void), typeof(int), min, typeof(int), max, typeof(int), step);
 		}
 		public void SetRange(int min, int max) {
 			interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
+		}
+		/// <remarks>
+		/// <param> name="enabled" Show the slider
+		///  @default enabled
+		///       </param></remarks>		<short>   </short>
+		public void SetSliderEnabled(bool enabled) {
+			interceptor.Invoke("setSliderEnabled$", "setSliderEnabled(bool)", typeof(void), typeof(bool), enabled);
+		}
+		public void SetSliderEnabled() {
+			interceptor.Invoke("setSliderEnabled", "setSliderEnabled()", typeof(void));
 		}
 		[SmokeMethod("setLabel(const QString&, Qt::Alignment)")]
 		public override void SetLabel(string label, uint a) {

@@ -6,19 +6,20 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KCharMacroExpander kmacroexpander.h <KMacroExpanderBase>
 	///  Abstract base class for single char macro substitutors. Use this instead of
 	///  the functions in the KMacroExpander namespace if speculatively pre-filling
 	///  the substitution map would be too expensive.
 	///  See KWordMacroExpander for a sample application.
 	/// </remarks>		<author> Oswald Buddenhagen <ossi@kde.org>
 	///  </author>
-	/// 		<short>    Abstract base class for single char macro substitutors.</short>
+	/// 		<short>    \class KCharMacroExpander kmacroexpander.</short>
 
 	[SmokeClass("KCharMacroExpander")]
 	public abstract class KCharMacroExpander : KMacroExpanderBase {
  		protected KCharMacroExpander(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCharMacroExpander), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCharMacroExpander), this);
 		}
 		/// <remarks>
 		///  Constructor.

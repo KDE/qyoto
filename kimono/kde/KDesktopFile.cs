@@ -6,12 +6,13 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KDesktopFile kdesktopfile.h <KDesktopFile>
 	///  %KDE Desktop File Management.
 	///  This class implements %KDE's support for the freedesktop.org
 	///  <em>Desktop Entry Spec</em>.
 	/// </remarks>		<author> Pietro Iglio <iglio@kde.org>
 	/// </author>
-	/// 		<short>    %KDE Desktop File Management.</short>
+	/// 		<short>    \class KDesktopFile kdesktopfile.</short>
 	/// 		<see> KConfigBase</see>
 	/// 		<see> KConfig</see>
 	/// 		<see> <a</see>
@@ -23,11 +24,11 @@ namespace Kimono {
 	public class KDesktopFile : KConfig, IDisposable {
  		protected KDesktopFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDesktopFile), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDesktopFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDesktopFile() {
-			staticInterceptor = new SmokeInvocation(typeof(KDesktopFile), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KDesktopFile), null);
 		}
 		/// <remarks>
 		///  Constructs a KDesktopFile object and make it either read-write
@@ -183,8 +184,6 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the value of the "X-DocPath=" Or "DocPath=" entry.
-		///  X-DocPath should be used because DocPath is deprecated and will
-		///  one day not be supported.
 		/// </remarks>		<return> The value of the "X-DocPath=" Or "DocPath=" entry.
 		///    </return>
 		/// 		<short>    Returns the value of the "X-DocPath=" Or "DocPath=" entry.</short>
@@ -198,6 +197,15 @@ namespace Kimono {
 		/// 		<short>    Returns the entry of the "SortOrder=" entry.</short>
 		public List<string> SortOrder() {
 			return (List<string>) interceptor.Invoke("sortOrder", "sortOrder() const", typeof(List<string>));
+		}
+		/// <remarks>
+		///  Whether the entry should be suppressed in menus.
+		///  This handles the NoDisplay key, but also OnlyShowIn / NotShowIn.
+		/// </remarks>		<return> true to suppress this service
+		/// </return>
+		/// 		<short>    Whether the entry should be suppressed in menus.</short>
+		public bool NoDisplay() {
+			return (bool) interceptor.Invoke("noDisplay", "noDisplay() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Copies all entries from this config object to a new

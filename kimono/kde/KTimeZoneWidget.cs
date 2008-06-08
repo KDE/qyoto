@@ -30,11 +30,11 @@ namespace Kimono {
 	public class KTimeZoneWidget : QTreeWidget, IDisposable {
  		protected KTimeZoneWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTimeZoneWidget), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTimeZoneWidget), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTimeZoneWidget() {
-			staticInterceptor = new SmokeInvocation(typeof(KTimeZoneWidget), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KTimeZoneWidget), null);
 		}
 		/// <remarks>
 		///  Constructs a time zone selection widget.

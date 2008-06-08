@@ -13,9 +13,10 @@ namespace Kimono {
 	///  Currently, the values set here are shown by the "About" box
 	///  (see KAboutDialog), used by the bug report dialog (see KBugReport),
 	///  and by the help shown on command line (see KCmdLineArgs).
+	///  They are also used for the icon and the name of the program's windows.
 	///  @note Instead of the more usual i18n calls, for translatable text the ki18n
 	///  calls are used to produce KLocalizedStrings, which can delay the translation
-	///  lookup. This is necessary because the translation catalogs are usualy not
+	///  lookup. This is necessary because the translation catalogs are usually not
 	///  yet initialized at the point where KAboutData is constructed.
 	/// </remarks>		<author> Espen Sand (espen@kde.org), David Faure (faure@kde.org)
 	///  </author>
@@ -27,15 +28,15 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAboutData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KAboutData), this);
+			interceptor = new SmokeInvocationKDE(typeof(KAboutData), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAboutData() {
-			staticInterceptor = new SmokeInvocation(typeof(KAboutData), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KAboutData), null);
 		}
 		/// <remarks>
-		///  Descibes the license of the software.
-		///    </remarks>		<short>    Descibes the license of the software.</short>
+		///  Describes the license of the software.
+		///    </remarks>		<short>    Describes the license of the software.</short>
 		public enum LicenseKey {
 			License_Custom = -2,
 			License_File = -1,
@@ -48,6 +49,8 @@ namespace Kimono {
 			License_Artistic = 4,
 			License_QPL = 5,
 			License_QPL_V1_0 = 5,
+			License_GPL_V3 = 6,
+			License_LGPL_V3 = 7,
 		}
 		/// <remarks>
 		///  Format of the license name.
@@ -69,10 +72,10 @@ namespace Kimono {
 		/// </param><param> name="shortDescription" A short description of what the program does.
 		///         This string should be marked for translation.
 		///         Example: ki18n("A simple text editor.")
-		/// </param><param> name="licenseType" The license identifier. Use setLicenseText if
-		///         you use a license not predefined here.
+		/// </param><param> name="licenseType" The license identifier. Use setLicenseText or
+		///               setLicenseTextFile if you use a license not predefined here.
 		/// </param><param> name="copyrightStatement" A copyright statement, that can look like this:
-		///         ki18n("(c) 1999-2000, Name"). The string specified here is not
+		///         ki18n("(c) 1999-2000, Name"). The string specified here is
 		///         taken verbatim; the author information from addAuthor is not used.
 		/// </param><param> name="text" Some free form text, that can contain any kind of
 		///         information. The text can contain newlines. This string
@@ -210,11 +213,41 @@ namespace Kimono {
 			return (KAboutData) interceptor.Invoke("setLicenseText#", "setLicenseText(const KLocalizedString&)", typeof(KAboutData), typeof(KLocalizedString), license);
 		}
 		/// <remarks>
+		///  Adds a license text, which is marked for translation.
+		///  If there is only one unknown license set, e.g. by using the default
+		///  parameter in the constructor, that one is replaced.
+		///  Example:
+		///  <pre>
+		///  addLicenseText( ki18n("This is my license") );
+		///  </pre>
+		/// <param> name="license" The license text.
+		/// </param></remarks>		<short>    Adds a license text, which is marked for translation.</short>
+		/// 		<see> setLicenseText</see>
+		/// 		<see> addLicense</see>
+		/// 		<see> addLicenseTextFile</see>
+		public KAboutData AddLicenseText(KLocalizedString license) {
+			return (KAboutData) interceptor.Invoke("addLicenseText#", "addLicenseText(const KLocalizedString&)", typeof(KAboutData), typeof(KLocalizedString), license);
+		}
+		/// <remarks>
 		///  Defines a license text by pointing to a file where it resides.
-		/// <param> name="file" File containing the license text.
+		///  The file format has to be plain text in an encoding compatible to the locale.
+		/// <param> name="file" Path to the file in the local filesystem containing the license text.
 		///      </param></remarks>		<short>    Defines a license text by pointing to a file where it resides.</short>
 		public KAboutData SetLicenseTextFile(string file) {
 			return (KAboutData) interceptor.Invoke("setLicenseTextFile$", "setLicenseTextFile(const QString&)", typeof(KAboutData), typeof(string), file);
+		}
+		/// <remarks>
+		///  Adds a license text by pointing to a file where it resides.
+		///  The file format has to be plain text in an encoding compatible to the locale.
+		///  If there is only one unknown license set, e.g. by using the default
+		///  parameter in the constructor, that one is replaced.
+		/// <param> name="file" Path to the file in the local filesystem containing the license text.
+		/// </param></remarks>		<short>    Adds a license text by pointing to a file where it resides.</short>
+		/// 		<see> addLicenseText</see>
+		/// 		<see> addLicense</see>
+		/// 		<see> setLicenseTextFile</see>
+		public KAboutData AddLicenseTextFile(string file) {
+			return (KAboutData) interceptor.Invoke("addLicenseTextFile$", "addLicenseTextFile(const QString&)", typeof(KAboutData), typeof(string), file);
 		}
 		/// <remarks>
 		///  Defines the program name used internally.
@@ -231,6 +264,16 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Defines the displayable program name string.</short>
 		public KAboutData SetProgramName(KLocalizedString programName) {
 			return (KAboutData) interceptor.Invoke("setProgramName#", "setProgramName(const KLocalizedString&)", typeof(KAboutData), typeof(KLocalizedString), programName);
+		}
+		/// <remarks>
+		///  Defines the program icon.
+		///  Use this if you need to have an application icon
+		///  whose name is different than the application name.
+		/// <param> name="iconName" name of the icon. Example: "accessories-text-editor"
+		/// </param></remarks>		<short>    Defines the program icon.</short>
+		/// 		<see> programIconName</see>
+		public KAboutData SetProgramIconName(string iconName) {
+			return (KAboutData) interceptor.Invoke("setProgramIconName$", "setProgramIconName(const QString&)", typeof(KAboutData), typeof(string), iconName);
 		}
 		/// <remarks>
 		///  Defines the program logo.
@@ -270,9 +313,24 @@ namespace Kimono {
 		/// <remarks>
 		///  Defines the license identifier.
 		/// <param> name="licenseKey" The license identifier.
-		///      </param></remarks>		<short>    Defines the license identifier.</short>
+		/// </param></remarks>		<short>    Defines the license identifier.</short>
+		/// 		<see> addLicenseText</see>
+		/// 		<see> setLicenseText</see>
+		/// 		<see> setLicenseTextFile</see>
 		public KAboutData SetLicense(KAboutData.LicenseKey licenseKey) {
 			return (KAboutData) interceptor.Invoke("setLicense$", "setLicense(KAboutData::LicenseKey)", typeof(KAboutData), typeof(KAboutData.LicenseKey), licenseKey);
+		}
+		/// <remarks>
+		///  Adds a license identifier.
+		///  If there is only one unknown license set, e.g. by using the default
+		///  parameter in the constructor, that one is replaced.
+		/// <param> name="licenseKey" The license identifier.
+		/// </param></remarks>		<short>    Adds a license identifier.</short>
+		/// 		<see> setLicenseText</see>
+		/// 		<see> addLicenseText</see>
+		/// 		<see> addLicenseTextFile</see>
+		public KAboutData AddLicense(KAboutData.LicenseKey licenseKey) {
+			return (KAboutData) interceptor.Invoke("addLicense$", "addLicense(KAboutData::LicenseKey)", typeof(KAboutData), typeof(KAboutData.LicenseKey), licenseKey);
 		}
 		/// <remarks>
 		///  Defines the copyright statement to show when displaying the license.
@@ -381,6 +439,18 @@ namespace Kimono {
 			interceptor.Invoke("translateInternalProgramName", "translateInternalProgramName() const", typeof(void));
 		}
 		/// <remarks>
+		///  Returns the program's icon name.
+		///  The default value is <code>appName</code> .
+		///  Use <code>setProgramIconName</code> if you need to have an icon
+		///  whose name is different from the internal application name.
+		/// </remarks>		<return> the program's icon name.
+		/// </return>
+		/// 		<short>    Returns the program's icon name.</short>
+		/// 		<see> setProgramIconName</see>
+		public string ProgramIconName() {
+			return (string) interceptor.Invoke("programIconName", "programIconName() const", typeof(string));
+		}
+		/// <remarks>
 		///  Returns the program logo image.
 		///  Because KAboutData is in kdecore it cannot use QImage directly,
 		///  so this is a QVariant containing a QImage.
@@ -478,22 +548,12 @@ namespace Kimono {
 			return (string) interceptor.Invoke("otherText", "otherText() const", typeof(string));
 		}
 		/// <remarks>
-		///  Returns the license. If the licenseType argument of the constructor has been
-		///  used, any text defined by setLicenseText is ignored,
-		///  and the standard text for the chosen license will be returned.
-		/// </remarks>		<return> The license text.
-		///      </return>
-		/// 		<short>    Returns the license.</short>
-		public string License() {
-			return (string) interceptor.Invoke("license", "license() const", typeof(string));
-		}
-		/// <remarks>
-		///  Returns the license name.
-		/// </remarks>		<return> The license name as a string.
-		///      </return>
-		/// 		<short>    Returns the license name.</short>
-		public string LicenseName(KAboutData.NameFormat formatName) {
-			return (string) interceptor.Invoke("licenseName$", "licenseName(KAboutData::NameFormat) const", typeof(string), typeof(KAboutData.NameFormat), formatName);
+		///  Returns a list of licenses.
+		/// </remarks>		<return> licenses information (list of licenses)
+		/// </return>
+		/// 		<short>    Returns a list of licenses.</short>
+		public List<KAboutLicense> Licenses() {
+			return (List<KAboutLicense>) interceptor.Invoke("licenses", "licenses() const", typeof(List<KAboutLicense>));
 		}
 		/// <remarks>
 		///  Returns the copyright statement.

@@ -69,11 +69,11 @@ namespace Kimono {
 	public class KFind : QObject, IDisposable {
  		protected KFind(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFind), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFind), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFind() {
-			staticInterceptor = new SmokeInvocation(typeof(KFind), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KFind), null);
 		}
 		public enum Options {
 			WholeWordsOnly = 1,
@@ -96,6 +96,16 @@ namespace Kimono {
 		public KFind(string pattern, long options, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KFind$$#", "KFind(const QString&, long, QWidget*)", typeof(void), typeof(string), pattern, typeof(long), options, typeof(QWidget), parent);
+		}
+		/// <remarks>
+		///  This is the recommended constructor if you also use KFindDialog (non-modal).
+		///  You should pass the pointer to it here, so that when a message box
+		///  appears it has the right parent. Don't worry about deletion, KFind
+		///  will notice if the find dialog is closed.
+		///      </remarks>		<short>    This is the recommended constructor if you also use KFindDialog (non-modal).</short>
+		public KFind(string pattern, long options, QWidget parent, QWidget findDialog) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KFind$$##", "KFind(const QString&, long, QWidget*, QWidget*)", typeof(void), typeof(string), pattern, typeof(long), options, typeof(QWidget), parent, typeof(QWidget), findDialog);
 		}
 		/// <remarks>
 		/// </remarks>		<return> true if the application must supply a new text fragment

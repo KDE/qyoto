@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KToolBarPopupAction : KAction, IDisposable {
  		protected KToolBarPopupAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KToolBarPopupAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KToolBarPopupAction), this);
 		}
 		[Q_PROPERTY("bool", "delayed")]
 		public bool Delayed {

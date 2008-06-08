@@ -3,10 +3,11 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///   This class is an action to handle a recent files submenu.
-	///   The best way to create the action is to use KStdAction.OpenRecent.
+	///   The best way to create the action is to use KStandardAction.OpenRecent.
 	///   Then you simply need to call loadEntries on startup, saveEntries
 	///   on shutdown, addURL when your application loads/saves a file.
 	///  See <see cref="IKRecentFilesActionSignals"></see> for signals emitted by KRecentFilesAction
@@ -18,7 +19,7 @@ namespace Kimono {
 	public class KRecentFilesAction : KSelectAction, IDisposable {
  		protected KRecentFilesAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRecentFilesAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRecentFilesAction), this);
 		}
 		[Q_PROPERTY("int", "maxItems")]
 		public int MaxItems {
@@ -115,6 +116,12 @@ namespace Kimono {
 		///    </param></remarks>		<short>     Remove an URL from the recent files list.</short>
 		public void RemoveUrl(KUrl url) {
 			interceptor.Invoke("removeUrl#", "removeUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
+		}
+		/// <remarks>
+		///   Retrieve a list of all URLs in the recent files list.
+		///    </remarks>		<short>     Retrieve a list of all URLs in the recent files list.</short>
+		public List<KUrl> Urls() {
+			return (List<KUrl>) interceptor.Invoke("urls", "urls() const", typeof(List<KUrl>));
 		}
 		~KRecentFilesAction() {
 			interceptor.Invoke("~KRecentFilesAction", "~KRecentFilesAction()", typeof(void));

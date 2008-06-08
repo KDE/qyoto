@@ -41,7 +41,7 @@ namespace Kimono {
 	public class KFindDialog : KDialog, IDisposable {
  		protected KFindDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFindDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFindDialog), this);
 		}
 		/// <remarks>
 		///  Construct a modal find dialog

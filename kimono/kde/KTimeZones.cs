@@ -27,7 +27,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTimeZones(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTimeZones), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTimeZones), this);
 		}
 		// const KTimeZones::ZoneMap zones(); >>>> NOT CONVERTED
 		public KTimeZones() : this((Type) null) {

@@ -25,7 +25,7 @@ namespace Kimono {
 	public class KReplaceDialog : KFindDialog, IDisposable {
  		protected KReplaceDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KReplaceDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KReplaceDialog), this);
 		}
 		public enum Options {
 			PromptOnReplace = 256,

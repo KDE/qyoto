@@ -38,7 +38,7 @@ namespace Kimono {
 	public class KUrlLabel : QLabel, IDisposable {
  		protected KUrlLabel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUrlLabel), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUrlLabel), this);
 		}
 		[Q_PROPERTY("QString", "url")]
 		public string Url {

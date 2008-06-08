@@ -7,7 +7,7 @@ namespace Kimono {
 	/// <remarks>
 	///  \brief %KDE System Tray Window class
 	///  This class implements system tray windows.
-	///  A tray window is a small window (typically 24x24 pixel) that docks
+	///  A tray window is a small window (typically 22x22 pixel) that docks
 	///  into the system tray in the desktop panel. It usually displays an
 	///  icon or an animated icon there. The icon represents
 	///  the application, similar to a taskbar button, but consumes less
@@ -16,6 +16,10 @@ namespace Kimono {
 	///  main application window is shown/raised and activated. With the
 	///  right mouse button, she gets a popupmenu with application specific
 	///  commands, including "Minimize/Restore" and "Quit".
+	///  Please note that QSystemTrayIcon.ShowMessage(..) should not be
+	///  used for KDE application because the popup message has no KDE standard
+	///  look & feel and cannot be controlled by KDE configurations. 
+	///  Use KNotify or KPassivePopup instead.
 	///  See <see cref="IKSystemTrayIconSignals"></see> for signals emitted by KSystemTrayIcon
 	/// </remarks>		<author> Matthias Ettrich <ettrich@kde.org>
 	/// </author>
@@ -25,11 +29,11 @@ namespace Kimono {
 	public class KSystemTrayIcon : QSystemTrayIcon, IDisposable {
  		protected KSystemTrayIcon(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSystemTrayIcon), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSystemTrayIcon), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSystemTrayIcon() {
-			staticInterceptor = new SmokeInvocation(typeof(KSystemTrayIcon), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KSystemTrayIcon), null);
 		}
 		/// <remarks>
 		///  Construct a system tray icon.
@@ -39,7 +43,7 @@ namespace Kimono {
 		///  window is visible. This is the desired behavior. After all,
 		///  the tray window <code>is</code> the parent's taskbar icon.
 		///  Furthermore, the parent widget is shown or raised respectively
-		///  when the user clicks on the trray window with the left mouse
+		///  when the user clicks on the tray window with the left mouse
 		///  button.
 		/// </remarks>		<short>    Construct a system tray icon.</short>
 		public KSystemTrayIcon(QWidget parent) : this((Type) null) {
@@ -76,8 +80,8 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///        Easy access to the actions in the context menu
-		///        Currently includes KStdAction.Quit and minimizeRestore
-		///     </remarks>		<short>          Easy access to the actions in the context menu        Currently includes KStdAction.Quit and minimizeRestore     </short>
+		///        Currently includes KStandardAction.Quit and minimizeRestore
+		///     </remarks>		<short>          Easy access to the actions in the context menu        Currently includes KStandardAction.Quit and minimizeRestore     </short>
 		public KActionCollection ActionCollection() {
 			return (KActionCollection) interceptor.Invoke("actionCollection", "actionCollection()", typeof(KActionCollection));
 		}
@@ -95,6 +99,24 @@ namespace Kimono {
 		///      </remarks>		<short>          Function to be used from function handling closing of the window associated         with the tray icon (i.</short>
 		public bool ParentWidgetTrayClose() {
 			return (bool) interceptor.Invoke("parentWidgetTrayClose", "parentWidgetTrayClose() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Sets the context menu title action to <code>action.</code>
+		///  The following code shows how to change the current title.
+		///  <code>
+		///  QAction titleAction = contextMenuTitle();
+		///  titleAction.SetText("New Title");
+		///  setContextMenuTitle(titleAction);
+		///  </code>
+		/// </remarks>		<short>    Sets the context menu title action to <code>action.</code></short>
+		public void SetContextMenuTitle(QAction action) {
+			interceptor.Invoke("setContextMenuTitle#", "setContextMenuTitle(QAction*)", typeof(void), typeof(QAction), action);
+		}
+		/// <remarks>
+		///  Returns the context menu title action.
+		/// </remarks>		<short>    Returns the context menu title action.</short>
+		public QAction ContextMenuTitle() {
+			return (QAction) interceptor.Invoke("contextMenuTitle", "contextMenuTitle() const", typeof(QAction));
 		}
 		[Q_SLOT("void toggleActive()")]
 		public void ToggleActive() {

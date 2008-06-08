@@ -13,10 +13,14 @@ namespace Kimono {
 	public class KMultiTabBarButton : QPushButton, IDisposable {
  		protected KMultiTabBarButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMultiTabBarButton), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMultiTabBarButton), this);
 		}
 		public int Id() {
 			return (int) interceptor.Invoke("id", "id() const", typeof(int));
+		}
+		[Q_SLOT("void setText(const QString&)")]
+		public void SetText(string text) {
+			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}
 		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected override void HideEvent(QHideEvent arg1) {

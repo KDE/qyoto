@@ -22,7 +22,7 @@ namespace Kimono {
 	public class KProgressDialog : KDialog, IDisposable {
  		protected KProgressDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KProgressDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KProgressDialog), this);
 		}
 		/// <remarks>
 		///  Constructs a KProgressDialog

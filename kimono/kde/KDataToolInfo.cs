@@ -20,14 +20,13 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KDataToolInfo(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDataToolInfo), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDataToolInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDataToolInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(KDataToolInfo), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KDataToolInfo), null);
 		}
 		// KDataToolInfo* KDataToolInfo(const KService::Ptr& arg1,const KComponentData& arg2); >>>> NOT CONVERTED
-		// KService::Ptr service(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create an invalid KDataToolInfo.
 		///      </remarks>		<short>    Create an invalid KDataToolInfo.</short>
@@ -132,6 +131,9 @@ namespace Kimono {
 		/// </remarks>		<return> the service
 		///      </return>
 		/// 		<short>    The KDataToolInfo's service that is represented by this class.</short>
+		public KService Service() {
+			return (KService) interceptor.Invoke("service", "service() const", typeof(KService));
+		}
 		/// <remarks>
 		///  The instance of the service.
 		/// </remarks>		<return> the instance

@@ -17,16 +17,16 @@ namespace Kimono {
 	public class KNFSShare : QObject {
  		protected KNFSShare(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KNFSShare), this);
+			interceptor = new SmokeInvocationKDE(typeof(KNFSShare), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KNFSShare() {
-			staticInterceptor = new SmokeInvocation(typeof(KNFSShare), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KNFSShare), null);
 		}
 		/// <remarks>
 		///  Whether or not the given path is shared by NFS.
 		/// <param> name="path" the path to check if it is shared by NFS.
-		/// </param></remarks>		<return> wether the given path is shared by NFS.
+		/// </param></remarks>		<return> whether the given path is shared by NFS.
 		///    </return>
 		/// 		<short>    Whether or not the given path is shared by NFS.</short>
 		public bool IsDirectoryShared(string path) {

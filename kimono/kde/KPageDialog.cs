@@ -33,7 +33,7 @@ namespace Kimono {
 	public class KPageDialog : KDialog, IDisposable {
  		protected KPageDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPageDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPageDialog), this);
 		}
 		/// <remarks>
 		/// 
@@ -72,12 +72,14 @@ namespace Kimono {
 			Tree = KPageView.FaceType.Tree,
 			Tabbed = KPageView.FaceType.Tabbed,
 		}
+		// KPageDialog* KPageDialog(KPageDialogPrivate& arg1,KPageWidget* arg2,QWidget* arg3,Qt::WFlags arg4); >>>> NOT CONVERTED
+		// KPageDialog* KPageDialog(KPageDialogPrivate& arg1,KPageWidget* arg2,QWidget* arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new page dialog.
 		///      </remarks>		<short>    Creates a new page dialog.</short>
-		public KPageDialog(QWidget parent, int flags) : this((Type) null) {
+		public KPageDialog(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPageDialog#$", "KPageDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KPageDialog#$", "KPageDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KPageDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -175,9 +177,9 @@ namespace Kimono {
 		///  \param widget The KPageWidget object will be reparented to this object, so you can create
 		///  it without parent and you are not allowed to delete it.
 		///      </remarks>		<short>    This constructor can be used by subclasses to provide a custom page widget.</short>
-		public KPageDialog(KPageWidget widget, QWidget parent, int flags) : this((Type) null) {
+		public KPageDialog(KPageWidget widget, QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPageDialog##$", "KPageDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(int), flags);
+			interceptor.Invoke("KPageDialog##$", "KPageDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KPageDialog(KPageWidget widget, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -207,5 +209,11 @@ namespace Kimono {
 		///      </param></remarks>		<short>    This signal is emitted whenever the current page has changed.</short>
 		[Q_SIGNAL("void currentPageChanged(KPageWidgetItem*, KPageWidgetItem*)")]
 		void CurrentPageChanged(KPageWidgetItem current, KPageWidgetItem before);
+		/// <remarks>
+		///  This signal is emitted whenever a page has been removed.
+		/// <param> name="page" The page which has been removed
+		/// </param></remarks>		<short>    This signal is emitted whenever a page has been removed.</short>
+		[Q_SIGNAL("void pageRemoved(KPageWidgetItem*)")]
+		void PageRemoved(KPageWidgetItem page);
 	}
 }

@@ -32,7 +32,7 @@ namespace Kimono {
 	public abstract class KDataTool : QObject {
  		protected KDataTool(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDataTool), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDataTool), this);
 		}
 		// bool run(const QString& arg1,void* arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
 		/// <remarks>

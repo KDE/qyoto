@@ -26,7 +26,7 @@ namespace Kimono {
 	///  @endcode
 	///  @note Instead of the more usual i18n calls, for translatable text the ki18n
 	///  calls are used to produce KLocalizedStrings, which can delay the translation
-	///  lookup. This is necessary because the translation catalogs are usualy not
+	///  lookup. This is necessary because the translation catalogs are usually not
 	///  yet initialized at the point where KAboutData is constructed.
 	///  @bc KDE4
 	///  </remarks>		<short>    This class is used to store information about a person or developer.</short>
@@ -37,7 +37,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAboutPerson(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KAboutPerson), this);
+			interceptor = new SmokeInvocationKDE(typeof(KAboutPerson), this);
 		}
 		/// <remarks>
 		///  Convenience constructor

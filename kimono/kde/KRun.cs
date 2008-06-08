@@ -25,11 +25,11 @@ namespace Kimono {
 	public class KRun : QObject, IDisposable {
  		protected KRun(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRun), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRun), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KRun() {
-			staticInterceptor = new SmokeInvocation(typeof(KRun), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KRun), null);
 		}
 		/// <remarks>
 		/// <param> name="url" the URL of the file or directory to 'run'
@@ -178,9 +178,10 @@ namespace Kimono {
 			interceptor.Invoke("scanFile", "scanFile()", typeof(void));
 		}
 		/// <remarks>
-		///  Called if the mimetype has been detected. The function checks
-		///  whether the document <XXX - what?> and appends the gzip protocol to the
-		///  URL. Otherwise runUrl is called to finish the job.
+		///  Called if the mimetype has been detected. The function runs
+		///  the application associated with this mimetype.
+		///  Reimplement this method to implement a different behavior,
+		///  like opening the component for displaying the URL embedded.
 		///    </remarks>		<short>    Called if the mimetype has been detected.</short>
 		[SmokeMethod("foundMimeType(const QString&)")]
 		protected virtual void FoundMimeType(string type) {
@@ -224,8 +225,8 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("progressInfo", "progressInfo() const", typeof(bool));
 		}
 		/// <remarks>
-		///  Marks the job as finished.
-		///    </remarks>		<short>    Marks the job as finished.</short>
+		///  Marks this 'KRun' instance as finished.
+		///    </remarks>		<short>    Marks this 'KRun' instance as finished.</short>
 		protected void SetFinished(bool finished) {
 			interceptor.Invoke("setFinished$", "setFinished(bool)", typeof(void), typeof(bool), finished);
 		}
@@ -248,40 +249,10 @@ namespace Kimono {
 			return (QTimer) interceptor.Invoke("timer", "timer()", typeof(QTimer));
 		}
 		/// <remarks>
-		///  Sets whether the file shall be scanned.
-		///    </remarks>		<short>    Sets whether the file shall be scanned.</short>
-		protected void SetDoScanFile(bool scanFile) {
-			interceptor.Invoke("setDoScanFile$", "setDoScanFile(bool)", typeof(void), typeof(bool), scanFile);
-		}
-		/// <remarks>
-		///  Returns whether the file shall be scanned.
-		///    </remarks>		<short>    Returns whether the file shall be scanned.</short>
-		protected bool DoScanFile() {
-			return (bool) interceptor.Invoke("doScanFile", "doScanFile() const", typeof(bool));
-		}
-		/// <remarks>
-		///  Sets whether it is a directory.
-		///    </remarks>		<short>    Sets whether it is a directory.</short>
-		protected void SetIsDirecory(bool isDirectory) {
-			interceptor.Invoke("setIsDirecory$", "setIsDirecory(bool)", typeof(void), typeof(bool), isDirectory);
-		}
-		/// <remarks>
 		///  Returns whether it is a directory.
 		///    </remarks>		<short>    Returns whether it is a directory.</short>
 		protected bool IsDirectory() {
 			return (bool) interceptor.Invoke("isDirectory", "isDirectory() const", typeof(bool));
-		}
-		/// <remarks>
-		///  Returns whether the next action shall be initialized.
-		///    </remarks>		<short>    Returns whether the next action shall be initialized.</short>
-		protected void SetInitializeNextAction(bool initialize) {
-			interceptor.Invoke("setInitializeNextAction$", "setInitializeNextAction(bool)", typeof(void), typeof(bool), initialize);
-		}
-		/// <remarks>
-		///  Returns whether the next action shall be initialized.
-		///    </remarks>		<short>    Returns whether the next action shall be initialized.</short>
-		protected bool InitializeNextAction() {
-			return (bool) interceptor.Invoke("initializeNextAction", "initializeNextAction() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Sets whether it is a local file.
@@ -329,6 +300,14 @@ namespace Kimono {
 		[Q_SLOT("void slotScanMimeType(KIO::Job*, const QString&)")]
 		protected void SlotScanMimeType(KIO.Job arg1, string type) {
 			interceptor.Invoke("slotScanMimeType#$", "slotScanMimeType(KIO::Job*, const QString&)", typeof(void), typeof(KIO.Job), arg1, typeof(string), type);
+		}
+		/// <remarks>
+		///  Call this from subclasses when you have determined the mimetype.
+		///  It will call foundMimeType, but also sets up protection against deletion during message boxes.
+		/// </remarks>		<short>    Call this from subclasses when you have determined the mimetype.</short>
+		[Q_SLOT("void mimeTypeDetermined(const QString&)")]
+		protected void MimeTypeDetermined(string mimeType) {
+			interceptor.Invoke("mimeTypeDetermined$", "mimeTypeDetermined(const QString&)", typeof(void), typeof(string), mimeType);
 		}
 		/// <remarks>
 		///  This slot is called when the 'stat' job has finished.

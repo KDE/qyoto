@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KColorButton : QPushButton, IDisposable {
  		protected KColorButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KColorButton), this);
+			interceptor = new SmokeInvocationKDE(typeof(KColorButton), this);
 		}
 		[Q_PROPERTY("QColor", "color")]
 		public QColor Color {

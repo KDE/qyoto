@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KMultiTabBarTab : KMultiTabBarButton {
  		protected KMultiTabBarTab(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMultiTabBarTab), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMultiTabBarTab), this);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public override QSize SizeHint() {

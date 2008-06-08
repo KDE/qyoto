@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KTabWidget : QTabWidget, IDisposable {
  		protected KTabWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTabWidget), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTabWidget), this);
 		}
 		[Q_PROPERTY("bool", "tabReorderingEnabled")]
 		public bool TabReorderingEnabled {
@@ -34,6 +34,11 @@ namespace Kimono {
 		public bool HoverCloseButtonDelayed {
 			get { return (bool) interceptor.Invoke("hoverCloseButtonDelayed", "hoverCloseButtonDelayed()", typeof(bool)); }
 			set { interceptor.Invoke("setHoverCloseButtonDelayed$", "setHoverCloseButtonDelayed(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("bool", "closeButtonEnabled")]
+		public bool CloseButtonEnabled {
+			get { return (bool) interceptor.Invoke("isCloseButtonEnabled", "isCloseButtonEnabled()", typeof(bool)); }
+			set { interceptor.Invoke("setCloseButtonEnabled$", "setCloseButtonEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		[Q_PROPERTY("bool", "tabCloseActivatePrevious")]
 		public bool TabCloseActivatePrevious {
@@ -131,21 +136,13 @@ namespace Kimono {
 			interceptor.Invoke("setTabReorderingEnabled$", "setTabReorderingEnabled(bool)", typeof(void), typeof(bool), enable);
 		}
 		/// <remarks>
-		///  If \a enable is true, a close button will be shown on mouse hover
-		///  over tab icons which will emit signal closeRequest( QWidget  )
-		///  when pressed.
-		///      </remarks>		<short>    If \a enable is true, a close button will be shown on mouse hover  over tab icons which will emit signal closeRequest( QWidget   )  when pressed.</short>
-		[Q_SLOT("void setHoverCloseButton(bool)")]
-		public void SetHoverCloseButton(bool enable) {
-			interceptor.Invoke("setHoverCloseButton$", "setHoverCloseButton(bool)", typeof(void), typeof(bool), enable);
-		}
-		/// <remarks>
-		///  If \a delayed is true, a close button will be shown on mouse hover
-		///  over tab icons after mouse double click delay else immediately.
-		///      </remarks>		<short>    If \a delayed is true, a close button will be shown on mouse hover  over tab icons after mouse double click delay else immediately.</short>
-		[Q_SLOT("void setHoverCloseButtonDelayed(bool)")]
-		public void SetHoverCloseButtonDelayed(bool delayed) {
-			interceptor.Invoke("setHoverCloseButtonDelayed$", "setHoverCloseButtonDelayed(bool)", typeof(void), typeof(bool), delayed);
+		///  If enabled, a close button is available for each tab. The
+		///  signal KTabWidget.CloseRequest() is emitted, if the close button
+		///  has been clicked.
+		/// </remarks>		<short>    If enabled, a close button is available for each tab.</short>
+		[Q_SLOT("void setCloseButtonEnabled(bool)")]
+		public void SetCloseButtonEnabled(bool arg1) {
+			interceptor.Invoke("setCloseButtonEnabled$", "setCloseButtonEnabled(bool)", typeof(void), typeof(bool), arg1);
 		}
 		/// <remarks>
 		///  If \a previous is true, closing the current tab activates the
@@ -310,7 +307,7 @@ namespace Kimono {
 		void MouseMiddleClick(QWidget arg1);
 		/// <remarks>
 		///  The close button of a widget's tab was clicked. This signal is
-		///  only possible after you have called setHoverCloseButton( true ).
+		///  only possible after you have called setCloseButtonEnabled( true ).
 		///      </remarks>		<short>    The close button of a widget's tab was clicked.</short>
 		[Q_SIGNAL("void closeRequest(QWidget*)")]
 		void CloseRequest(QWidget arg1);

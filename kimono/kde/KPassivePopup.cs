@@ -56,11 +56,11 @@ namespace Kimono {
 	public class KPassivePopup : QFrame, IDisposable {
  		protected KPassivePopup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPassivePopup), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPassivePopup), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KPassivePopup() {
-			staticInterceptor = new SmokeInvocation(typeof(KPassivePopup), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KPassivePopup), null);
 		}
 		/// <remarks>
 		///  Styles that a KPassivePopup can have.

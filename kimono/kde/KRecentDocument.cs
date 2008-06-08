@@ -26,11 +26,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRecentDocument(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRecentDocument), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRecentDocument), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KRecentDocument() {
-			staticInterceptor = new SmokeInvocation(typeof(KRecentDocument), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KRecentDocument), null);
 		}
 		public KRecentDocument() : this((Type) null) {
 			CreateProxy();

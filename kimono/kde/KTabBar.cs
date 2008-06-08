@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KTabBar : QTabBar, IDisposable {
  		protected KTabBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTabBar), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTabBar), this);
 		}
 		/// <remarks>
 		///  Creates a new tab bar.
@@ -41,17 +41,19 @@ namespace Kimono {
 		public bool IsTabReorderingEnabled() {
 			return (bool) interceptor.Invoke("isTabReorderingEnabled", "isTabReorderingEnabled() const", typeof(bool));
 		}
-		public void SetHoverCloseButton(bool arg1) {
-			interceptor.Invoke("setHoverCloseButton$", "setHoverCloseButton(bool)", typeof(void), typeof(bool), arg1);
+		/// <remarks>
+		///  If enabled, a close button is available for each tab. The
+		///  signal KTabBar.CloseRequest() is emitted, if the close button
+		///  has been clicked.
+		/// </remarks>		<short>    If enabled, a close button is available for each tab.</short>
+		public void SetCloseButtonEnabled(bool arg1) {
+			interceptor.Invoke("setCloseButtonEnabled$", "setCloseButtonEnabled(bool)", typeof(void), typeof(bool), arg1);
 		}
-		public bool HoverCloseButton() {
-			return (bool) interceptor.Invoke("hoverCloseButton", "hoverCloseButton() const", typeof(bool));
-		}
-		public void SetHoverCloseButtonDelayed(bool arg1) {
-			interceptor.Invoke("setHoverCloseButtonDelayed$", "setHoverCloseButtonDelayed(bool)", typeof(void), typeof(bool), arg1);
-		}
-		public bool HoverCloseButtonDelayed() {
-			return (bool) interceptor.Invoke("hoverCloseButtonDelayed", "hoverCloseButtonDelayed() const", typeof(bool));
+		/// <remarks>
+		///  Returns true if the close button is shown on tabs.
+		/// </remarks>		<short>    Returns true if the close button is shown on tabs.</short>
+		public bool IsCloseButtonEnabled() {
+			return (bool) interceptor.Invoke("isCloseButtonEnabled", "isCloseButtonEnabled() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Sets the 'activate previous tab on close' feature enabled
@@ -108,9 +110,31 @@ namespace Kimono {
 		protected override void DropEvent(QDropEvent arg1) {
 			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		protected override void PaintEvent(QPaintEvent arg1) {
+			interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
+		}
+		[SmokeMethod("leaveEvent(QEvent*)")]
+		protected override void LeaveEvent(QEvent arg1) {
+			interceptor.Invoke("leaveEvent#", "leaveEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+		}
+		[SmokeMethod("tabSizeHint(int) const")]
+		protected override QSize TabSizeHint(int index) {
+			return (QSize) interceptor.Invoke("tabSizeHint$", "tabSizeHint(int) const", typeof(QSize), typeof(int), index);
+		}
 		[SmokeMethod("tabLayoutChange()")]
 		protected override void TabLayoutChange() {
 			interceptor.Invoke("tabLayoutChange", "tabLayoutChange()", typeof(void));
+		}
+		/// <remarks> @deprecated </remarks>		<short>   @deprecated </short>
+		[Q_SLOT("void closeButtonClicked()")]
+		protected void CloseButtonClicked() {
+			interceptor.Invoke("closeButtonClicked", "closeButtonClicked()", typeof(void));
+		}
+		/// <remarks> @deprecated </remarks>		<short>   @deprecated </short>
+		[Q_SLOT("void enableCloseButton()")]
+		protected void EnableCloseButton() {
+			interceptor.Invoke("enableCloseButton", "enableCloseButton()", typeof(void));
 		}
 		[Q_SLOT("void activateDragSwitchTab()")]
 		[SmokeMethod("activateDragSwitchTab()")]

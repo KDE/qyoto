@@ -18,11 +18,11 @@ namespace Kimono {
 	public class KMimeType : KServiceType, IDisposable {
  		protected KMimeType(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMimeType), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMimeType), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMimeType() {
-			staticInterceptor = new SmokeInvocation(typeof(KMimeType), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KMimeType), null);
 		}
 		public enum FindByNameOption {
 			DontResolveAlias = 0,
@@ -49,6 +49,7 @@ namespace Kimono {
 		// KMimeType::List allMimeTypes(); >>>> NOT CONVERTED
 		// KMimeType::Ptr defaultMimeTypePtr(); >>>> NOT CONVERTED
 		// KMimeType* KMimeType(KMimeTypePrivate& arg1); >>>> NOT CONVERTED
+		// KMimeType* KMimeType(KMimeTypePrivate& arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Return the filename of the icon associated with the mimetype.
 		///  Use KIconLoader.LoadMimeTypeIcon to load the icon.
@@ -89,21 +90,32 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("isDefault", "isDefault() const", typeof(bool));
 		}
 		/// <remarks>
-		///  If this mimetype inherits from ("is also") another mimetype,
-		///  return the name of the parent.
-		///  For instance a text/x-log is a special kind of text/plain,
-		///  so the definition of text/x-log can say
+		///  If this mimetype is a subclass of one or more other mimetypes,
+		///  return the list of those mimetypes.
+		///  For instance a application/javascript is a special kind of text/plain,
+		///  so the definition of application/javascript says
 		///       sub-class-of type="text/plain"
-		///  Or an smb-workgroup is a special kind of inode/directory, etc.
-		///  This mechanism can also be used to rename mimetypes and preserve compat.
-		///  Note that this notion doesn't map to the servicetype inheritance mechanism,
+		///  Another example: application/x-shellscript is a subclass of two other mimetypes,
+		///  application/x-executable and text/plain.
+		///  (Note that this notion doesn't map to the servicetype inheritance mechanism,
 		///  since an application that handles the specific type doesn't necessarily handle
-		///  the base type. The opposite is true though.
-		/// </remarks>		<return> the parent mime type, or string() if not set
-		///      </return>
-		/// 		<short>    If this mimetype inherits from ("is also") another mimetype,  return the name of the parent.</short>
-		public string ParentMimeType() {
-			return (string) interceptor.Invoke("parentMimeType", "parentMimeType() const", typeof(string));
+		///  the base type. The opposite is true though.)
+		/// </remarks>		<return> the list of parent mimetypes
+		/// </return>
+		/// 		<short>    If this mimetype is a subclass of one or more other mimetypes,  return the list of those mimetypes.</short>
+		public List<string> ParentMimeTypes() {
+			return (List<string>) interceptor.Invoke("parentMimeTypes", "parentMimeTypes() const", typeof(List<string>));
+		}
+		/// <remarks>
+		///  Return all parent mimetypes of this mimetype, direct or indirect.
+		///  This includes the parent(s) of its parent(s), etc.
+		///  If this mimetype is an alias, the list also contains the canonical
+		///  name for this mimetype.
+		///  The usual reason to use this method is to look for a setting which
+		///  is stored per mimetype (like PreviewJob does).
+		/// </remarks>		<short>    Return all parent mimetypes of this mimetype, direct or indirect.</short>
+		public List<string> AllParentMimeTypes() {
+			return (List<string>) interceptor.Invoke("allParentMimeTypes", "allParentMimeTypes() const", typeof(List<string>));
 		}
 		/// <remarks>
 		///  Do not use name()=="somename" anymore, to check for a given mimetype.
@@ -134,8 +146,14 @@ namespace Kimono {
 		/// <remarks>
 		///  The stream must already be positioned at the correct offset
 		///      </remarks>		<short>   </short>
-		protected void AddPattern(string pattern) {
-			interceptor.Invoke("addPattern$", "addPattern(const QString&)", typeof(void), typeof(string), pattern);
+		/// <remarks>
+		///  Construct a mimetype and take all information from an XML file.
+		/// <param> name="fullpath" the path to the xml that describes the mime type
+		/// </param><param> name="name" the name of the mimetype (usually the end of the path)
+		/// </param><param> name="comment" the comment associated with the mimetype
+		///      </param></remarks>		<short>    Construct a mimetype and take all information from an XML file.</short>
+		protected void SetPatterns(List<string> patterns) {
+			interceptor.Invoke("setPatterns?", "setPatterns(const QStringList&)", typeof(void), typeof(List<string>), patterns);
 		}
 		protected void SetParentMimeType(string parent) {
 			interceptor.Invoke("setParentMimeType$", "setParentMimeType(const QString&)", typeof(void), typeof(string), parent);

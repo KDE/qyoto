@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KCompletionBox : KListWidget, IDisposable {
  		protected KCompletionBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCompletionBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCompletionBox), this);
 		}
 		[Q_PROPERTY("bool", "isTabHandling")]
 		public bool IsTabHandling {
@@ -98,17 +98,18 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Makes this widget (when visible) capture Tab-key events to traverse the
-		///  items in the dropdown list.
-		///  Default off, as it conflicts with the usual behavior of Tab to traverse
-		///  widgets. It is useful for cases like Konqueror's Location Bar, though.
-		/// </remarks>		<short>    Makes this widget (when visible) capture Tab-key events to traverse the  items in the dropdown list.</short>
+		///  items in the dropdown list (Tab goes down, Shift+Tab goes up).
+		///  On by default, but should be turned off when used in combination with KUrlCompletion.
+		///  When off, KLineEdit handles Tab itself, making it select the current item from the completion box,
+		///  which is particularly useful when using KUrlCompletion.
+		/// </remarks>		<short>    Makes this widget (when visible) capture Tab-key events to traverse the  items in the dropdown list (Tab goes down, Shift+Tab goes up).</short>
 		/// 		<see> isTabHandling</see>
 		[Q_SLOT("void setTabHandling(bool)")]
 		public void SetTabHandling(bool enable) {
 			interceptor.Invoke("setTabHandling$", "setTabHandling(bool)", typeof(void), typeof(bool), enable);
 		}
 		/// <remarks>
-		///  Default is false.
+		///  Default is true.
 		/// </remarks>		<return> true if this widget is handling Tab-key events to traverse the
 		///  items in the dropdown list, otherwise false.
 		/// </return>
@@ -219,6 +220,14 @@ namespace Kimono {
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
+		}
+		/// <remarks>
+		///  The preferred global coordinate at which the completion box's top left corner
+		///  should be positioned.
+		///      </remarks>		<short>    The preferred global coordinate at which the completion box's top left corner  should be positioned.</short>
+		[SmokeMethod("globalPositionHint() const")]
+		protected virtual QPoint GlobalPositionHint() {
+			return (QPoint) interceptor.Invoke("globalPositionHint", "globalPositionHint() const", typeof(QPoint));
 		}
 		/// <remarks>
 		///  Called when an item was activated. Emits

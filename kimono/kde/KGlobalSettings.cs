@@ -15,7 +15,7 @@ namespace Kimono {
  		protected KGlobalSettings(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KGlobalSettings() {
-			staticInterceptor = new SmokeInvocation(typeof(KGlobalSettings), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KGlobalSettings), null);
 		}
 		/// <remarks>
 		///  This enum describes the return type for insertTearOffHandle() whether to insert
@@ -39,6 +39,12 @@ namespace Kimono {
 			CompletionShell = 4,
 			CompletionPopup = 5,
 			CompletionPopupAuto = 6,
+		}
+		public enum GraphicEffect {
+			NoEffects = 0x0000,
+			GradientEffects = 0x0001,
+			SimpleAnimationEffects = 0x0002,
+			ComplexAnimationEffects = 0x0006,
 		}
 		/// <remarks>
 		///  An identifier for change signals.
@@ -144,15 +150,6 @@ namespace Kimono {
 		/// 		<short>    Returns the KDE setting for the auto-select option.</short>
 		public static int AutoSelectDelay() {
 			return (int) staticInterceptor.Invoke("autoSelectDelay", "autoSelectDelay()", typeof(int));
-		}
-		/// <remarks>
-		///  Returns the KDE setting for the shortcut key to open
-		///  context menus.
-		/// </remarks>		<return> the key that pops up context menus.
-		///      </return>
-		/// 		<short>    Returns the KDE setting for the shortcut key to open  context menus.</short>
-		public static int ContextMenuKey() {
-			return (int) staticInterceptor.Invoke("contextMenuKey", "contextMenuKey()", typeof(int));
 		}
 		/// <remarks>
 		///  Returns the KDE setting for context menus.
@@ -413,6 +410,19 @@ namespace Kimono {
 			return (bool) staticInterceptor.Invoke("showIconsOnPushButtons", "showIconsOnPushButtons()", typeof(bool));
 		}
 		/// <remarks>
+		///  This function determines the desired level of effects on the GUI.
+		/// </remarks>		<short>    This function determines the desired level of effects on the GUI.</short>
+		public static uint GraphicEffectsLevel() {
+			return (uint) staticInterceptor.Invoke("graphicEffectsLevel", "graphicEffectsLevel()", typeof(uint));
+		}
+		/// <remarks>
+		///  This function determines the default level of effects on the GUI
+		///  depending on the system capabilities.
+		/// </remarks>		<short>    This function determines the default level of effects on the GUI  depending on the system capabilities.</short>
+		public static uint GraphicEffectsLevelDefault() {
+			return (uint) staticInterceptor.Invoke("graphicEffectsLevelDefault", "graphicEffectsLevelDefault()", typeof(uint));
+		}
+		/// <remarks>
 		///  This function determines if the user wishes to see previews
 		///  for the selected url
 		/// </remarks>		<return> Returns true if user wants to show previews.
@@ -433,9 +443,8 @@ namespace Kimono {
 		/// <remarks>
 		///  The layout scheme to use for dialog buttons
 		/// </remarks>		<return> Returns the number of the scheme to use.
-		/// </return>
+		///      </return>
 		/// 		<short>    The layout scheme to use for dialog buttons </short>
-		/// 		<see> KDialog.SetButtonStyle</see>
 		public static int ButtonLayout() {
 			return (int) staticInterceptor.Invoke("buttonLayout", "buttonLayout()", typeof(int));
 		}
@@ -443,7 +452,9 @@ namespace Kimono {
 		///  Used to obtain the QPalette that will be used to set the application palette.
 		///  This is only useful for configuration modules such as krdb and should not be
 		///  used in normal circumstances.
-		/// </remarks>		<return> the QPalette
+		/// <param> name="config" KConfig from which to load the colors (passed as-is to
+		///  .KColorScheme).
+		/// </param></remarks>		<return> the QPalette
 		///      </return>
 		/// 		<short>    Used to obtain the QPalette that will be used to set the application palette.</short>
 		/// <remarks>

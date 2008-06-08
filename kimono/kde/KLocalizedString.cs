@@ -57,6 +57,15 @@ namespace Kimono {
 	///  giving error at compile time. This is in order to prevent misnamed calls:
 	///  it may happen that you add context or plural to previously basic message,
 	///  but forget to change the name of the call.
+	///  All message strings are expected to pass for well-formed XML, whether or
+	///  not the output device supports some form of markup.
+	///  Thus, predefined XML entities are always available: &amp;lt;, &amp;gt;,
+	///  &amp;amp;, &amp;apos;, and &amp;quot;. E.g. if you need a non-tag
+	///  less-than sign, use &amp;lt; entity instead.
+	///  The exception to the well-formed XML requirement is the ampersand (&amp;),
+	///  which is used a lot for marking accelerators, so you should not write it
+	///  as &amp;amp; (except in the very unlikely case when the construct with
+	///  the naked ampersand can be interpreted as an entity in itself).
 	///  \section spec_usage Specialized Usage
 	///  There are some situations where i18n calls are not sufficient or
 	///  convenient. For one, if you need to substitute many arguments. Or, if you
@@ -96,6 +105,22 @@ namespace Kimono {
 	///    ...
 	///    ki18n("Welcome").toString(myLocale);
 	///  </pre>
+	///  Translators have a capability to script translations at runtime, which is
+	///  for the most part transparent to the programmer. However, sometimes the
+	///  programmer may help by providing some @e dynamic context to the message,
+	///  using the inContext method of KLocalizedString.  Unlike the ordinary
+	///  context, this one changes at runtime; translators have the means to fetch
+	///  it and use it to script the translation properly. An example:
+	///  <pre>
+	///    KLocalizedString ks = ki18nc("%1 is user name; may have "
+	///                                 "dynamic context gender=[male,female]",
+	///                                 "%1 went offline");
+	///    if (knownUsers.contains(user) && !knownUsers[user].gender.isEmpty()) {
+	///      ks = ks.inContext("gender", knownUsers[user].gender);
+	///    }
+	///    string msg = ks.subs(user).toString();
+	///  </pre>
+	///   Several dynamic contexts, with different keys, can be added like this.
 	///  \section subs_notes Placeholder Substitution
 	///  Hopefully, for the most part placeholders are being substituted the way
 	///  you would intuitively expect them to be. Nevertheless:
@@ -110,9 +135,16 @@ namespace Kimono {
 	///      allowed to drop its placeholder in either singular or plural form.
 	///  <li>If</li> none of the arguments supplied to a plural call is integer-valued,
 	///      you will get an error mark in message at runtime (in debug mode).
+	///  <li>Plain</li> number arguments will be normally formatted as if they denote
+	///      amounts, according to language rules (thousands separation, etc.)
+	///      But sometimes a number is a numerical identifier (e.g. port number),
+	///      and to be treated as such, wrap the placeholder with the numid tag:
+	///      <pre>
+	///        string msg = i18n("Using port <numid>%1</numid>", port);
+	///      </pre>
 	///  \section other_ref Further References
 	///  <a href="http://techbase.kde.org/">KDE Techbase</a> contains a
-	///  <a href="http://techbase.kde.org/Development/Tutorials/Localization/i18n">
+	///  <a href="http://techbase.kde.org/Development/Tutorials/Localization">
 	///  series of tutorials</a> on preparing the code for localization (and on
 	///  internationalization process in general), where the intended patterns of
 	///  usage of i18n API are covered in great detail.
@@ -135,12 +167,12 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KLocalizedString(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KLocalizedString), this);
+			interceptor = new SmokeInvocationKDE(typeof(KLocalizedString), this);
 		}
 		// void notifyCatalogsUpdated(const QStringList& arg1,const QList<KCatalogName>& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs an empty message, which is not valid for finalization.
-		///  Usefull when you later need to assign KLocalizedString obtained by one
+		///  Useful when you later need to assign KLocalizedString obtained by one
 		///  of ki18n calls.
 		/// </remarks>		<short>    Constructs an empty message, which is not valid for finalization.</short>
 		/// 		<see> isEmpty</see>
@@ -350,6 +382,16 @@ namespace Kimono {
 		}
 		public KLocalizedString Subs(string a) {
 			return (KLocalizedString) interceptor.Invoke("subs$", "subs(const QString&) const", typeof(KLocalizedString), typeof(string), a);
+		}
+		/// <remarks>
+		///  Adds dynamic context to the message.
+		/// <param> name="key" context key
+		/// </param><param> name="text" context value
+		/// </param></remarks>		<return> resultant KLocalizedString
+		///      </return>
+		/// 		<short>    Adds dynamic context to the message.</short>
+		public KLocalizedString InContext(string key, string text) {
+			return (KLocalizedString) interceptor.Invoke("inContext$$", "inContext(const QString&, const QString&) const", typeof(KLocalizedString), typeof(string), key, typeof(string), text);
 		}
 		~KLocalizedString() {
 			interceptor.Invoke("~KLocalizedString", "~KLocalizedString()", typeof(void));

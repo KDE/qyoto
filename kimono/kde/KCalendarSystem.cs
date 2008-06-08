@@ -17,11 +17,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCalendarSystem(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCalendarSystem), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCalendarSystem), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KCalendarSystem() {
-			staticInterceptor = new SmokeInvocation(typeof(KCalendarSystem), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KCalendarSystem), null);
 		}
 		/// <remarks>
 		///  Format for returned year number / month number / day number as string.

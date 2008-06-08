@@ -3,7 +3,6 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Text;
 	using System.Collections.Generic;
 
 	/// <remarks>
@@ -53,22 +52,12 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KServiceTypeTrader(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KServiceTypeTrader), this);
+			interceptor = new SmokeInvocationKDE(typeof(KServiceTypeTrader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KServiceTypeTrader() {
-			staticInterceptor = new SmokeInvocation(typeof(KServiceTypeTrader), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KServiceTypeTrader), null);
 		}
-		// KService::Ptr preferredService(const QString& arg1); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3,const QVariantList& arg4,QString* arg5); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3,const QVariantList& arg4); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2,QObject* arg3); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3,const QString& arg4,const QVariantList& arg5,QString* arg6); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3,const QString& arg4,const QVariantList& arg5); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3,const QString& arg4); >>>> NOT CONVERTED
-		// template <T>  T* createInstanceFromQuery(const QString& arg1,QWidget* arg2,QObject* arg3); >>>> NOT CONVERTED
 		// void applyConstraints(KService::List& arg1,const QString& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  The main function in the KServiceTypeTrader class.
@@ -116,6 +105,9 @@ namespace Kimono {
 		/// </param></remarks>		<return> the preferred service, or 0 if no service is available
 		///      </return>
 		/// 		<short>    Returns the preferred service for <code>serviceType.</code></short>
+		public KService PreferredService(string serviceType) {
+			return (KService) interceptor.Invoke("preferredService$", "preferredService(const QString&) const", typeof(KService), typeof(string), serviceType);
+		}
 		/// <remarks>
 		///  This is a static pointer to the KServiceTypeTrader singleton.
 		///  You will need to use this to access the KServiceTypeTrader functionality since the
@@ -126,36 +118,6 @@ namespace Kimono {
 		public static KServiceTypeTrader Self() {
 			return (KServiceTypeTrader) staticInterceptor.Invoke("self", "self()", typeof(KServiceTypeTrader));
 		}
-		/// <remarks>
-		///  This method creates and returns a plugin, from the trader query for a given serviceType.
-		///  Example:
-		///  <pre>
-		///  KMyAppPlugin plugin = KServiceTypeTrader.CreateInstanceFromQuery<KMyAppPlugin>( serviceType, string(), parentObject );
-		///  if ( plugin ) {
-		///      ....
-		///  }
-		///  </pre>
-		/// <param> name="serviceType" the type of service for which to find a plugin
-		/// </param><param> name="constraint" an optional constraint to pass to the trader (see KTrader)
-		/// </param><param> name="parent" the parent object for the part itself
-		/// </param><param> name="args" A list of arguments passed to the service component
-		/// </param><param> name="error" The string passed here will contain an error description.
-		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
-		///          factory was unable to create an object of the given type.
-		///      </return>
-		/// 		<short>    This method creates and returns a plugin, from the trader query for a given serviceType.</short>
-		/// <remarks>
-		///  This method works like the previous one, but you can specify an additional parent widget.
-		///  This is used for example for parts
-		/// <param> name="serviceType" the type of service for which to find a plugin
-		/// </param><param> name="constraint" an optional constraint to pass to the trader (see KTrader)
-		/// </param><param> name="parent" the parent object for the part itself
-		/// </param><param> name="args" A list of arguments passed to the service component
-		/// </param><param> name="error" The string passed here will contain an error description.
-		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
-		///          factory was unable to create an object of the given type.
-		///      </return>
-		/// 		<short>    This method works like the previous one, but you can specify an additional parent widget.</short>
 		/// <remarks>
 		///      </remarks>		<short>   </short>
 	}

@@ -25,13 +25,12 @@ namespace Kimono {
 	public class KXMLGUIFactory : QObject, IDisposable {
  		protected KXMLGUIFactory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KXMLGUIFactory), this);
+			interceptor = new SmokeInvocationKDE(typeof(KXMLGUIFactory), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KXMLGUIFactory() {
-			staticInterceptor = new SmokeInvocation(typeof(KXMLGUIFactory), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KXMLGUIFactory), null);
 		}
-		// QList<KXMLGUIClient*> clients(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KXMLGUIFactory. The provided <code>builder</code> KXMLGUIBuilder will be called
 		///  for creating and removing container widgets, when clients are added/removed from the GUI.
@@ -76,6 +75,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns a list of all clients currently added to this factory
 		///    </remarks>		<short>    Returns a list of all clients currently added to this factory    </short>
+		public List<KXMLGUIClient> Clients() {
+			return (List<KXMLGUIClient>) interceptor.Invoke("clients", "clients() const", typeof(List<KXMLGUIClient>));
+		}
 		/// <remarks>
 		///  Use this method to get access to a container widget with the name specified with <code>containerName</code>
 		///  and which is owned by the <code>client.</code> The container name is specified with a "name" attribute in the
@@ -91,7 +93,7 @@ namespace Kimono {
 		/// </param><param> name="client" Owner of the container widget
 		/// </param><param> name="useTagName" Specifies whether to compare the specified name with the name attribute or
 		///         the tag name.
-		/// </param> This method may return null if no container with the given name exists or is not owned by the client.
+		/// </param> This method may return 0 if no container with the given name exists or is not owned by the client.
 		///    </remarks>		<short>    Use this method to get access to a container widget with the name specified with <code>containerName</code>  and which is owned by the <code>client.</code></short>
 		public QWidget Container(string containerName, KXMLGUIClient client, bool useTagName) {
 			return (QWidget) interceptor.Invoke("container$#$", "container(const QString&, KXMLGUIClient*, bool)", typeof(QWidget), typeof(string), containerName, typeof(KXMLGUIClient), client, typeof(bool), useTagName);
@@ -107,7 +109,7 @@ namespace Kimono {
 		///  tree and therefore resets the internal state of the class. Please note that the actual GUI is
 		///  NOT touched at all, meaning no containers are deleted nor any actions unplugged. That is
 		///  something you have to do on your own. So use this method only if you know what you are doing :-)
-		///  (also note that this will call KXMLGUIClient.SetFactory( null ) for all inserted clients)
+		///  (also note that this will call KXMLGUIClient.SetFactory( 0 ) for all inserted clients)
 		///    </remarks>		<short>    Use this method to free all memory allocated by the KXMLGUIFactory.</short>
 		public void Reset() {
 			interceptor.Invoke("reset", "reset()", typeof(void));
@@ -117,7 +119,7 @@ namespace Kimono {
 		///  including all child containers and actions. This deletes the internal node subtree for the
 		///  specified container. The actual GUI is not touched, no containers are deleted or any actions
 		///  unplugged. Use this method only if you know what you are doing :-)
-		///  (also note that this will call KXMLGUIClient.SetFactory( null ) for all clients of the
+		///  (also note that this will call KXMLGUIClient.SetFactory( 0 ) for all clients of the
 		///  container)
 		///    </remarks>		<short>    Use this method to free all memory allocated by the KXMLGUIFactory for a specific container,  including all child containers and actions.</short>
 		public void ResetContainer(string containerName, bool useTagName) {
@@ -131,7 +133,7 @@ namespace Kimono {
 		///  This slot can be connected directly to the action to configure shortcuts. This is very simple to
 		///  do that by adding a single line
 		///  <pre>
-		///  KStdAction.KeyBindings( guiFactory(), SLOT("configureShortcuts()"), actionCollection() );
+		///  KStandardAction.KeyBindings( guiFactory(), SLOT("configureShortcuts()"), actionCollection() );
 		///  </pre>
 		/// <param> name="bAllowLetterShortcuts" Set to false if unmodified alphanumeric
 		///       keys ('A', '1', etc.) are not permissible shortcuts.
@@ -156,12 +158,6 @@ namespace Kimono {
 		public new void Dispose() {
 			interceptor.Invoke("~KXMLGUIFactory", "~KXMLGUIFactory()", typeof(void));
 		}
-		public static string ReadConfigFile(string filename, bool never_null, KComponentData componentData) {
-			return (string) staticInterceptor.Invoke("readConfigFile$$#", "readConfigFile(const QString&, bool, const KComponentData&)", typeof(string), typeof(string), filename, typeof(bool), never_null, typeof(KComponentData), componentData);
-		}
-		public static string ReadConfigFile(string filename, bool never_null) {
-			return (string) staticInterceptor.Invoke("readConfigFile$$", "readConfigFile(const QString&, bool)", typeof(string), typeof(string), filename, typeof(bool), never_null);
-		}
 		public static string ReadConfigFile(string filename, KComponentData componentData) {
 			return (string) staticInterceptor.Invoke("readConfigFile$#", "readConfigFile(const QString&, const KComponentData&)", typeof(string), typeof(string), filename, typeof(KComponentData), componentData);
 		}
@@ -173,18 +169,6 @@ namespace Kimono {
 		}
 		public static bool SaveConfigFile(QDomDocument doc, string filename) {
 			return (bool) staticInterceptor.Invoke("saveConfigFile#$", "saveConfigFile(const QDomDocument&, const QString&)", typeof(bool), typeof(QDomDocument), doc, typeof(string), filename);
-		}
-		public static string DocumentToXML(QDomDocument doc) {
-			return (string) staticInterceptor.Invoke("documentToXML#", "documentToXML(const QDomDocument&)", typeof(string), typeof(QDomDocument), doc);
-		}
-		public static string ElementToXML(QDomElement elem) {
-			return (string) staticInterceptor.Invoke("elementToXML#", "elementToXML(const QDomElement&)", typeof(string), typeof(QDomElement), elem);
-		}
-		/// <remarks>
-		///  Removes all QDomComment objects from the specified node and all its children.
-		///    </remarks>		<short>    Removes all QDomComment objects from the specified node and all its children.</short>
-		public static void RemoveDOMComments(QDomNode node) {
-			staticInterceptor.Invoke("removeDOMComments#", "removeDOMComments(QDomNode&)", typeof(void), typeof(QDomNode), node);
 		}
 		/// <remarks>
 		///  Find or create the ActionProperties element, used when saving custom action properties

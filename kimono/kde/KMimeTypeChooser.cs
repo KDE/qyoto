@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KMimeTypeChooser : KVBox, IDisposable {
  		protected KMimeTypeChooser(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMimeTypeChooser), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMimeTypeChooser), this);
 		}
 		/// <remarks>
 		///  Buttons and data for display.

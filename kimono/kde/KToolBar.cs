@@ -19,11 +19,11 @@ namespace Kimono {
 	public class KToolBar : QToolBar, IDisposable {
  		protected KToolBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KToolBar), this);
+			interceptor = new SmokeInvocationKDE(typeof(KToolBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KToolBar() {
-			staticInterceptor = new SmokeInvocation(typeof(KToolBar), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KToolBar), null);
 		}
 		/// <remarks>
 		///  Normal constructor.
@@ -147,15 +147,6 @@ namespace Kimono {
 		[SmokeMethod("actionEvent(QActionEvent*)")]
 		protected override void ActionEvent(QActionEvent arg1) {
 			interceptor.Invoke("actionEvent#", "actionEvent(QActionEvent*)", typeof(void), typeof(QActionEvent), arg1);
-		}
-		protected void ApplyAppearanceSettings(KConfigGroup cg, bool forceGlobal) {
-			interceptor.Invoke("applyAppearanceSettings#$", "applyAppearanceSettings(KConfigGroup&, bool)", typeof(void), typeof(KConfigGroup), cg, typeof(bool), forceGlobal);
-		}
-		protected void ApplyAppearanceSettings(KConfigGroup cg) {
-			interceptor.Invoke("applyAppearanceSettings#", "applyAppearanceSettings(KConfigGroup&)", typeof(void), typeof(KConfigGroup), cg);
-		}
-		protected string SettingsGroup() {
-			return (string) interceptor.Invoke("settingsGroup", "settingsGroup() const", typeof(string));
 		}
 		[SmokeMethod("dragEnterEvent(QDragEnterEvent*)")]
 		protected override void DragEnterEvent(QDragEnterEvent arg1) {

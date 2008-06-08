@@ -24,11 +24,8 @@ namespace Kimono {
 	public class KBookmarkMenu : QObject, IDisposable {
  		protected KBookmarkMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBookmarkMenu), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBookmarkMenu), this);
 		}
-		// KBookmarkMenu* KBookmarkMenu(KBookmarkManager* arg1,KBookmarkOwner* arg2,KMenu* arg3,KActionCollection* arg4); >>>> NOT CONVERTED
-		// KBookmarkMenu* KBookmarkMenu(KBookmarkManager* arg1,KBookmarkOwner* arg2,KMenu* arg3,const QString& arg4); >>>> NOT CONVERTED
-		// KBookmarkManager* manager(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Fills a bookmark menu
 		///  (one instance of KBookmarkMenu is created for the toplevel menu,
@@ -40,9 +37,17 @@ namespace Kimono {
 		/// </param><param> name="parentMenu" menu to be filled
 		/// </param><param> name="collec" parent collection for the KActions.
 		///    </param></remarks>		<short>    Fills a bookmark menu  (one instance of KBookmarkMenu is created for the toplevel menu,   but also one per submenu).</short>
+		public KBookmarkMenu(KBookmarkManager mgr, KBookmarkOwner owner, KMenu parentMenu, KActionCollection collec) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KBookmarkMenu####", "KBookmarkMenu(KBookmarkManager*, KBookmarkOwner*, KMenu*, KActionCollection*)", typeof(void), typeof(KBookmarkManager), mgr, typeof(KBookmarkOwner), owner, typeof(KMenu), parentMenu, typeof(KActionCollection), collec);
+		}
 		/// <remarks>
 		///  Creates a bookmark submenu
 		///    </remarks>		<short>    Creates a bookmark submenu    </short>
+		public KBookmarkMenu(KBookmarkManager mgr, KBookmarkOwner owner, KMenu parentMenu, string parentAddress) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KBookmarkMenu###$", "KBookmarkMenu(KBookmarkManager*, KBookmarkOwner*, KMenu*, const QString&)", typeof(void), typeof(KBookmarkManager), mgr, typeof(KBookmarkOwner), owner, typeof(KMenu), parentMenu, typeof(string), parentAddress);
+		}
 		/// <remarks>
 		///  Call ensureUpToDate() if you need KBookmarkMenu to adjust to its
 		///  final size before it is executed.
@@ -102,6 +107,9 @@ namespace Kimono {
 		///    </remarks>		<short>    Parent bookmark for this menu.</short>
 		protected string ParentAddress() {
 			return (string) interceptor.Invoke("parentAddress", "parentAddress() const", typeof(string));
+		}
+		protected KBookmarkManager Manager() {
+			return (KBookmarkManager) interceptor.Invoke("manager", "manager() const", typeof(KBookmarkManager));
 		}
 		protected KBookmarkOwner Owner() {
 			return (KBookmarkOwner) interceptor.Invoke("owner", "owner() const", typeof(KBookmarkOwner));

@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KJobUiDelegate : QObject, IDisposable {
  		protected KJobUiDelegate(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KJobUiDelegate), this);
+			interceptor = new SmokeInvocationKDE(typeof(KJobUiDelegate), this);
 		}
 		/// <remarks>
 		///  Constructs a new KJobUiDelegate.

@@ -12,7 +12,7 @@ namespace Kimono {
 	///  including, when available, a complete list of daylight savings time
 	///  changes and leap seconds adjustments.
 	///  This base class can be instantiated, but contains no data.
-	/// </remarks>		<author> David Jarvie <software@astrojar.org.uk>.
+	/// </remarks>		<author> David Jarvie <djarvie@kde.org>.
 	///  </author>
 	/// 		<short> Base class for parsed time zone data.</short>
 	/// 		<see> KTimeZone</see>
@@ -26,21 +26,15 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTimeZoneData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTimeZoneData), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTimeZoneData), this);
 		}
-		// QList<KTimeZone::Phase> phases(); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(const QDateTime& arg1,const QDateTime& arg2); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(const QDateTime& arg1); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(); >>>> NOT CONVERTED
 		// const KTimeZone::Transition* transition(const QDateTime& arg1,const KTimeZone::Transition** arg2,bool* arg3); >>>> NOT CONVERTED
 		// const KTimeZone::Transition* transition(const QDateTime& arg1,const KTimeZone::Transition** arg2); >>>> NOT CONVERTED
-		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1,const QDateTime& arg2,const QDateTime& arg3); >>>> NOT CONVERTED
-		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1,const QDateTime& arg2); >>>> NOT CONVERTED
-		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1); >>>> NOT CONVERTED
-		// QList<KTimeZone::LeapSeconds> leapSecondChanges(); >>>> NOT CONVERTED
-		// void setPhases(const QList<KTimeZone::Phase>& arg1,int arg2); >>>> NOT CONVERTED
+		// const KTimeZone::Transition* transition(const QDateTime& arg1); >>>> NOT CONVERTED
 		// void setTransitions(const QList<KTimeZone::Transition>& arg1); >>>> NOT CONVERTED
-		// void setLeapSecondChanges(const QList<KTimeZone::LeapSeconds>& arg1); >>>> NOT CONVERTED
 		public KTimeZoneData() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KTimeZoneData", "KTimeZoneData()", typeof(void));
@@ -115,6 +109,9 @@ namespace Kimono {
 		/// </remarks>		<return> list of phases
 		///      </return>
 		/// 		<short>    Return all daylight savings time phases.</short>
+		public List<KTimeZone.Phase> Phases() {
+			return (List<KTimeZone.Phase>) interceptor.Invoke("phases", "phases() const", typeof(List<KTimeZone.Phase>));
+		}
 		/// <remarks>
 		///  Return whether daylight saving transitions are available for the time zone.
 		///  The base class returns <code>false.</code>
@@ -166,9 +163,6 @@ namespace Kimono {
 		/// 		<see> transitionIndex</see>
 		/// 		<see> hasTransitions</see>
 		/// 		<see> transitions</see>
-		public KTimeZone.Transition transition(QDateTime dt) {
-			return (KTimeZone.Transition) interceptor.Invoke("transition#", "transition(const QDateTime&) const", typeof(KTimeZone.Transition), typeof(QDateTime), dt);
-		}
 		/// <remarks>
 		///  Find the index to the last daylight savings time transition at or before
 		///  a given UTC or local time. The return value is the index into the transition
@@ -251,6 +245,15 @@ namespace Kimono {
 		/// 		<see> hasTransitions</see>
 		/// 		<see> transition</see>
 		/// 		<see> transitions</see>
+		public List<QDateTime> TransitionTimes(KTimeZone.Phase phase, QDateTime start, QDateTime end) {
+			return (List<QDateTime>) interceptor.Invoke("transitionTimes###", "transitionTimes(const KTimeZone::Phase&, const QDateTime&, const QDateTime&) const", typeof(List<QDateTime>), typeof(KTimeZone.Phase), phase, typeof(QDateTime), start, typeof(QDateTime), end);
+		}
+		public List<QDateTime> TransitionTimes(KTimeZone.Phase phase, QDateTime start) {
+			return (List<QDateTime>) interceptor.Invoke("transitionTimes##", "transitionTimes(const KTimeZone::Phase&, const QDateTime&) const", typeof(List<QDateTime>), typeof(KTimeZone.Phase), phase, typeof(QDateTime), start);
+		}
+		public List<QDateTime> TransitionTimes(KTimeZone.Phase phase) {
+			return (List<QDateTime>) interceptor.Invoke("transitionTimes#", "transitionTimes(const KTimeZone::Phase&) const", typeof(List<QDateTime>), typeof(KTimeZone.Phase), phase);
+		}
 		/// <remarks>
 		///  Return all leap second adjustments, in time order.
 		///  Note that some time zone data sources (such as system time zones accessed
@@ -259,6 +262,9 @@ namespace Kimono {
 		/// </remarks>		<return> list of adjustments
 		///      </return>
 		/// 		<short>    Return all leap second adjustments, in time order.</short>
+		public List<KTimeZone.LeapSeconds> LeapSecondChanges() {
+			return (List<KTimeZone.LeapSeconds>) interceptor.Invoke("leapSecondChanges", "leapSecondChanges() const", typeof(List<KTimeZone.LeapSeconds>));
+		}
 		/// <remarks>
 		///  Find the leap second adjustment which is applicable at a given UTC time.
 		/// <param> name="utc" UTC date/time. An error occurs if <code>utc.timeSpec</code>() is not Qt.UTC.
@@ -276,6 +282,9 @@ namespace Kimono {
 		///                           phase
 		/// </param></remarks>		<short>    Initialise the daylight savings time phase list.</short>
 		/// 		<see> phases</see>
+		protected void SetPhases(List<KTimeZone.Phase> phases, int previousUtcOffset) {
+			interceptor.Invoke("setPhases?$", "setPhases(const QList<KTimeZone::Phase>&, int)", typeof(void), typeof(List<KTimeZone.Phase>), phases, typeof(int), previousUtcOffset);
+		}
 		/// <remarks>
 		///  Initialise the daylight savings time transition list.
 		/// <param> name="transitions" list of transitions
@@ -286,6 +295,9 @@ namespace Kimono {
 		/// <param> name="adjusts" list of adjustments
 		/// </param></remarks>		<short>    Initialise the leap seconds adjustment list.</short>
 		/// 		<see> leapSecondChanges</see>
+		protected void SetLeapSecondChanges(List<KTimeZone.LeapSeconds> adjusts) {
+			interceptor.Invoke("setLeapSecondChanges?", "setLeapSecondChanges(const QList<KTimeZone::LeapSeconds>&)", typeof(void), typeof(List<KTimeZone.LeapSeconds>), adjusts);
+		}
 		~KTimeZoneData() {
 			interceptor.Invoke("~KTimeZoneData", "~KTimeZoneData()", typeof(void));
 		}

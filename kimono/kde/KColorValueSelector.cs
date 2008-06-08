@@ -9,7 +9,7 @@ namespace Kimono {
 	public class KColorValueSelector : KSelector, IDisposable {
  		protected KColorValueSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KColorValueSelector), this);
+			interceptor = new SmokeInvocationKDE(typeof(KColorValueSelector), this);
 		}
 		// void setChooserMode(KColorChooserMode arg1); >>>> NOT CONVERTED
 		// KColorChooserMode chooserMode(); >>>> NOT CONVERTED

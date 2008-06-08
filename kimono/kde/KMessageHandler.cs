@@ -9,13 +9,14 @@ namespace Kimono {
 	}
 
 	/// <remarks>
+	///  \class KMessageHandler kmessage.h <KMessageHandler>
 	///  @brief Abstract class for KMessage handler.
 	///  This class define how KMessage display a message.
 	///  Reimplement the methods then set your custom
 	///  KMessageHandler using KMessage.SetMessageHandler()
 	/// </remarks>		<author> Michaël Larouche <michael.larouche@kdemail.net>
 	///  </author>
-	/// 		<short>    @brief Abstract class for KMessage handler.</short>
+	/// 		<short>    \class KMessageHandler kmessage.</short>
 
 	[SmokeClass("KMessageHandler")]
 	public abstract class KMessageHandler : Object, IKMessageHandler {
@@ -23,7 +24,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMessageHandler(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMessageHandler), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMessageHandler), this);
 		}
 		/// <remarks>
 		///  @brief Display a long message of a certain type.

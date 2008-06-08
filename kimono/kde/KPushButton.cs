@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KPushButton : QPushButton, IDisposable {
  		protected KPushButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPushButton), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPushButton), this);
 		}
 		[Q_PROPERTY("bool", "isDragEnabled")]
 		public bool IsDragEnabled {

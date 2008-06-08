@@ -17,7 +17,7 @@ namespace Kimono {
 	///   {
 	///      // Initialize command line args
 	///      KCmdLineArgs.Init(args, appName, programName, version, description);
-	///      // Define the command line options using string[][]
+	///      // Define the command line options using KCmdLineOptions
 	///      KCmdLineOptions options;
 	///      ....
 	///      // Register the supported options
@@ -139,11 +139,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCmdLineArgs(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCmdLineArgs), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCmdLineArgs), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KCmdLineArgs() {
-			staticInterceptor = new SmokeInvocation(typeof(KCmdLineArgs), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KCmdLineArgs), null);
 		}
 		public enum StdCmdLineArg {
 			CmdLineArgQt = 0x01,
@@ -154,7 +154,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///   Read out a string option.
-		///   The option must have a corresponding string[][] entry
+		///   The option must have a corresponding KCmdLineOptions entry
 		///   of the form:
 		///   @code
 		///     options.add("option \<argument>", ki18n("Description"), "default");
@@ -173,7 +173,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///   Read out all occurrences of a string option.
-		///   The option must have a corresponding string[][] entry
+		///   The option must have a corresponding KCmdLineOptions entry
 		///   of the form:
 		///   @code
 		///     options.add("option \<argument>", ki18n("Description"), "default");
@@ -193,7 +193,7 @@ namespace Kimono {
 		/// <param> name="option" The name of the option without '-' or '-no'.
 		/// </param></remarks>		<return> The value of the option. It will be true if the option
 		///   was specifically turned on in the command line, or if the option
-		///   is turned on by default (in the string[][] list) and was
+		///   is turned on by default (in the KCmdLineOptions list) and was
 		///   not specifically turned off in the command line. Equivalently,
 		///   it will be false if the option was specifically turned off in
 		///   the command line, or if the option is turned off by default (in
@@ -255,9 +255,9 @@ namespace Kimono {
 		/// <remarks>
 		///   Constructor.
 		///    </remarks>		<short>   </short>
-		public KCmdLineArgs(string[][] _options, KLocalizedString _name, QByteArray _id) : this((Type) null) {
+		public KCmdLineArgs(KCmdLineOptions _options, KLocalizedString _name, QByteArray _id) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KCmdLineArgs?##", "KCmdLineArgs(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(string[][]), _options, typeof(KLocalizedString), _name, typeof(QByteArray), _id);
+			interceptor.Invoke("KCmdLineArgs###", "KCmdLineArgs(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(KCmdLineOptions), _options, typeof(KLocalizedString), _name, typeof(QByteArray), _id);
 		}
 		/// <remarks>
 		///  Initialize class.
@@ -328,7 +328,7 @@ namespace Kimono {
 		///  any class uses the command line arguments.
 		///  The list of options should look like this:
 		///  @code
-		///  string[][] options;
+		///  KCmdLineOptions options;
 		///  options.add("option1 \<argument>", ki18n("Description 1"), "my_extra_arg");
 		///  options.add("o");
 		///  options.add("option2", ki18n("Description 2"));
@@ -418,17 +418,17 @@ namespace Kimono {
 		/// </param><param> name="id" A name with which these options can be identified, can be empty.
 		/// </param><param> name="afterId" The options are inserted after this set of options, can be empty.
 		///    </param></remarks>		<short>    Add options to your application.</short>
-		public static void AddCmdLineOptions(string[][] options, KLocalizedString name, QByteArray id, QByteArray afterId) {
-			staticInterceptor.Invoke("addCmdLineOptions?###", "addCmdLineOptions(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&, const QByteArray&)", typeof(void), typeof(string[][]), options, typeof(KLocalizedString), name, typeof(QByteArray), id, typeof(QByteArray), afterId);
+		public static void AddCmdLineOptions(KCmdLineOptions options, KLocalizedString name, QByteArray id, QByteArray afterId) {
+			staticInterceptor.Invoke("addCmdLineOptions####", "addCmdLineOptions(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&, const QByteArray&)", typeof(void), typeof(KCmdLineOptions), options, typeof(KLocalizedString), name, typeof(QByteArray), id, typeof(QByteArray), afterId);
 		}
-		public static void AddCmdLineOptions(string[][] options, KLocalizedString name, QByteArray id) {
-			staticInterceptor.Invoke("addCmdLineOptions?##", "addCmdLineOptions(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(string[][]), options, typeof(KLocalizedString), name, typeof(QByteArray), id);
+		public static void AddCmdLineOptions(KCmdLineOptions options, KLocalizedString name, QByteArray id) {
+			staticInterceptor.Invoke("addCmdLineOptions###", "addCmdLineOptions(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(KCmdLineOptions), options, typeof(KLocalizedString), name, typeof(QByteArray), id);
 		}
-		public static void AddCmdLineOptions(string[][] options, KLocalizedString name) {
-			staticInterceptor.Invoke("addCmdLineOptions?#", "addCmdLineOptions(const KCmdLineOptions&, const KLocalizedString&)", typeof(void), typeof(string[][]), options, typeof(KLocalizedString), name);
+		public static void AddCmdLineOptions(KCmdLineOptions options, KLocalizedString name) {
+			staticInterceptor.Invoke("addCmdLineOptions##", "addCmdLineOptions(const KCmdLineOptions&, const KLocalizedString&)", typeof(void), typeof(KCmdLineOptions), options, typeof(KLocalizedString), name);
 		}
-		public static void AddCmdLineOptions(string[][] options) {
-			staticInterceptor.Invoke("addCmdLineOptions?", "addCmdLineOptions(const KCmdLineOptions&)", typeof(void), typeof(string[][]), options);
+		public static void AddCmdLineOptions(KCmdLineOptions options) {
+			staticInterceptor.Invoke("addCmdLineOptions#", "addCmdLineOptions(const KCmdLineOptions&)", typeof(void), typeof(KCmdLineOptions), options);
 		}
 		/// <remarks>
 		///  Access parsed arguments.
@@ -523,6 +523,12 @@ namespace Kimono {
 		///    </remarks>		<short>    Load arguments from a stream.</short>
 		public static void LoadAppArgs(QDataStream arg1) {
 			staticInterceptor.Invoke("loadAppArgs#", "loadAppArgs(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
+		}
+		/// <remarks>
+		///  Save all but the Qt and KDE arguments to a stream.
+		///    </remarks>		<short>   </short>
+		public static void SaveAppArgs(QDataStream arg1) {
+			staticInterceptor.Invoke("saveAppArgs#", "saveAppArgs(QDataStream&)", typeof(void), typeof(QDataStream), arg1);
 		}
 		/// <remarks>
 		///  Add standard option --tempfile

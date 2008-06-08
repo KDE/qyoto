@@ -16,7 +16,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KArchiveEntry(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KArchiveEntry), this);
+			interceptor = new SmokeInvocationKDE(typeof(KArchiveEntry), this);
 		}
 		/// <remarks>
 		///  Creates a new entry.

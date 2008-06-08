@@ -53,17 +53,17 @@ namespace Kimono {
 	///  KLineEdit has also a password mode which depends of globals KDE settings.  Use
 	///  KLineEdit.SetPasswordMode instead of QLineEdit.EchoMode property to have a password field.
 	///  <li><b>Usage </b></li>
-	///  To enable the basic completion feature :
+	///  To enable the basic completion feature:
 	///  <pre>
-	///  KLineEdit edit = new KLineEdit( this, "mywidget" );
+	///  KLineEdit edit = new KLineEdit( this );
 	///  KCompletion comp = edit.CompletionObject();
 	///  // Connect to the return pressed signal - optional
 	///  connect(edit,SIGNAL("returnPressed(string)"),comp,SLOT("addItem(string)"));
 	///  </pre>
 	///  To use a customized completion objects or your
-	///  own completion object :
+	///  own completion object:
 	///  <pre>
-	///  KLineEdit edit = new KLineEdit( this,"mywidget" );
+	///  KLineEdit edit = new KLineEdit( this );
 	///  KUrlCompletion comp = new KUrlCompletion();
 	///  edit.SetCompletionObject( comp );
 	///  // Connect to the return pressed signal - optional
@@ -82,9 +82,7 @@ namespace Kimono {
 	///  // Set your own key-bindings for a text completion mode.
 	///  edit.SetKeyBinding( KCompletionBase.TextCompletion, Qt.End );
 	///  // Hide the context (popup) menu
-	///  edit.SetContextMenuEnabled( false );
-	///  // Temporarily disable signal (both completion & iteration) emitions
-	///  edit.DisableSignals();
+	///  edit.SetContextMenuPolicy( Qt.NoContextMenu );
 	///  // Default the key-bindings back to the default system settings.
 	///  edit.UseGlobalKeyBindings();
 	///  </pre>
@@ -97,7 +95,7 @@ namespace Kimono {
 	public class KLineEdit : QLineEdit, IKCompletionBase, IDisposable {
  		protected KLineEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KLineEdit), this);
+			interceptor = new SmokeInvocationKDE(typeof(KLineEdit), this);
 		}
 		[Q_PROPERTY("bool", "contextMenuEnabled")]
 		public bool ContextMenuEnabled {
@@ -399,6 +397,11 @@ namespace Kimono {
 		protected override void DropEvent(QDropEvent arg1) {
 			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), arg1);
 		}
+		/// <remarks>
+		///  This function simply sets the lineedit text and
+		///  highlights the text appropriately if the boolean
+		///  value is set to true.
+		/// <param> name="marked"     </param></remarks>		<short>    This function simply sets the lineedit text and  highlights the text appropriately if the boolean  value is set to true.</short>
 		[SmokeMethod("setCompletedText(const QString&, bool)")]
 		protected virtual void SetCompletedText(string arg1, bool arg2) {
 			interceptor.Invoke("setCompletedText$$", "setCompletedText(const QString&, bool)", typeof(void), typeof(string), arg1, typeof(bool), arg2);

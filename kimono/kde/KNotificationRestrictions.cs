@@ -25,7 +25,7 @@ namespace Kimono {
 	public class KNotificationRestrictions : QObject, IDisposable {
  		protected KNotificationRestrictions(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KNotificationRestrictions), this);
+			interceptor = new SmokeInvocationKDE(typeof(KNotificationRestrictions), this);
 		}
 		/// <remarks>
 		///  @enum Service

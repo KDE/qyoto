@@ -19,21 +19,14 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KPluginInfo(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPluginInfo), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPluginInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KPluginInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(KPluginInfo), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KPluginInfo), null);
 		}
-		// KPluginInfo* KPluginInfo(const KService::Ptr arg1); >>>> NOT CONVERTED
-		// KService::Ptr service(); >>>> NOT CONVERTED
-		// QList<KService::Ptr> kcmServices(); >>>> NOT CONVERTED
 		// KPluginInfo::List fromServices(const KService::List& arg1,const KConfigGroup& arg2); >>>> NOT CONVERTED
 		// KPluginInfo::List fromServices(const KService::List& arg1); >>>> NOT CONVERTED
-		// KPluginInfo::List fromFiles(const QStringList& arg1,const KConfigGroup& arg2); >>>> NOT CONVERTED
-		// KPluginInfo::List fromFiles(const QStringList& arg1); >>>> NOT CONVERTED
-		// KPluginInfo::List fromKPartsInstanceName(const QString& arg1,const KConfigGroup& arg2); >>>> NOT CONVERTED
-		// KPluginInfo::List fromKPartsInstanceName(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Read plugin info from <code>filename.</code>
 		///  The file should be of the following form:
@@ -96,6 +89,18 @@ namespace Kimono {
 		///            </pre>
 		///  In the first three entries the Icon entry is optional.
 		///          </remarks>		<short>    Read plugin info from a KService object.</short>
+		public KPluginInfo(KService service) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KPluginInfo#", "KPluginInfo(const KService::Ptr)", typeof(void), typeof(KService), service);
+		}
+		/// <remarks>
+		///  Creates an invalid plugin.
+		///  \see isValid
+		///          </remarks>		<short>    Creates an invalid plugin.</short>
+		public KPluginInfo() : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KPluginInfo", "KPluginInfo()", typeof(void));
+		}
 		/// <remarks>
 		/// </remarks>		<return> Whether the plugin should be hidden.
 		///          </return>
@@ -210,11 +215,25 @@ namespace Kimono {
 			return (string) interceptor.Invoke("website", "website() const", typeof(string));
 		}
 		/// <remarks>
-		/// </remarks>		<return> The license of this plugin.
+		/// </remarks>		<return> The license keyword of this plugin.
 		///          </return>
 		/// 		<short>   </short>
 		public string License() {
 			return (string) interceptor.Invoke("license", "license() const", typeof(string));
+		}
+		/// <remarks>
+		/// </remarks>		<return> The full license object, according to the license keyword.
+		///          It can be used to present friendlier and more detailed
+		///          license info to the user, when the license is one of the
+		///          widespread within KDE. For other licenses, the license
+		///          object will state not very useful, "custom license" info
+		///          (this can be identified by KAboutLicense.Key() returning
+		///           KAboutData.License_Custom).
+		/// </return>
+		/// 		<short>   </short>
+		/// 		<see> KAboutLicense.ByKeyword</see>
+		public KAboutLicense FullLicense() {
+			return (KAboutLicense) interceptor.Invoke("fullLicense", "fullLicense() const", typeof(KAboutLicense));
 		}
 		/// <remarks>
 		/// </remarks>		<return> A list of plugins required for this plugin to be enabled. Use
@@ -233,11 +252,17 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>   </short>
 		/// 		<see> property</see>
+		public KService Service() {
+			return (KService) interceptor.Invoke("service", "service() const", typeof(KService));
+		}
 		/// <remarks>
 		/// </remarks>		<return> A list of Service pointers if the plugin installs one or more
 		///          KCModule
 		///          </return>
 		/// 		<short>   </short>
+		public List<KService> KcmServices() {
+			return (List<KService>) interceptor.Invoke("kcmServices", "kcmServices() const", typeof(List<KService>));
+		}
 		/// <remarks>
 		///  Set the KConfigGroup to use for load()ing and save()ing the
 		///  configuration. This will be overridden by the KConfigGroup passed to
@@ -347,6 +372,12 @@ namespace Kimono {
 		///  function.
 		/// </return>
 		/// 		<short>   </short>
+		public static List<KPluginInfo> FromFiles(List<string> files, KConfigGroup config) {
+			return (List<KPluginInfo>) staticInterceptor.Invoke("fromFiles?#", "fromFiles(const QStringList&, const KConfigGroup&)", typeof(List<KPluginInfo>), typeof(List<string>), files, typeof(KConfigGroup), config);
+		}
+		public static List<KPluginInfo> FromFiles(List<string> files) {
+			return (List<KPluginInfo>) staticInterceptor.Invoke("fromFiles?", "fromFiles(const QStringList&)", typeof(List<KPluginInfo>), typeof(List<string>), files);
+		}
 		/// <remarks>
 		/// <param> name="componentName" Use the component name to look up all KParts plugins for it.
 		/// </param><param> name="config" The config group where to save/load whether the plugin is enabled/disabled
@@ -355,5 +386,11 @@ namespace Kimono {
 		///  KComponentData object.
 		/// </return>
 		/// 		<short>   </short>
+		public static List<KPluginInfo> FromKPartsInstanceName(string componentName, KConfigGroup config) {
+			return (List<KPluginInfo>) staticInterceptor.Invoke("fromKPartsInstanceName$#", "fromKPartsInstanceName(const QString&, const KConfigGroup&)", typeof(List<KPluginInfo>), typeof(string), componentName, typeof(KConfigGroup), config);
+		}
+		public static List<KPluginInfo> FromKPartsInstanceName(string componentName) {
+			return (List<KPluginInfo>) staticInterceptor.Invoke("fromKPartsInstanceName$", "fromKPartsInstanceName(const QString&)", typeof(List<KPluginInfo>), typeof(string), componentName);
+		}
 	}
 }

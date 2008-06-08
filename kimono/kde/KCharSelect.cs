@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  This widget allows the user to select a character of a
@@ -28,7 +29,7 @@ namespace Kimono {
 	public class KCharSelect : QWidget, IDisposable {
  		protected KCharSelect(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCharSelect), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCharSelect), this);
 		}
 		/// <remarks>
 		///  Flags to set the shown widgets
@@ -53,8 +54,8 @@ namespace Kimono {
 			set { interceptor.Invoke("setCurrentChar#", "setCurrentChar(QChar)", typeof(void), typeof(char), value); }
 		}
 		[Q_PROPERTY("QList<QChar>", "displayedChars")]
-		public char DisplayedChars {
-			get { return (char) interceptor.Invoke("displayedChars", "displayedChars()", typeof(char)); }
+		public List<char> DisplayedChars {
+			get { return (List<char>) interceptor.Invoke("displayedChars", "displayedChars()", typeof(List<char>)); }
 		}
 		// KCharSelect* KCharSelect(QWidget* arg1,const Controls arg2); >>>> NOT CONVERTED
 		public KCharSelect(QWidget parent) : this((Type) null) {

@@ -13,7 +13,7 @@ namespace Kimono {
 	///  to work together with reference counting of private data.
 	///  @note Classes derived from KTimeZoneBackend should not normally implement their
 	///  own copy constructor or assignment operator, and must have a non-const d-pointer.
-	/// </remarks>		<author> David Jarvie <software@astrojar.org.uk>.
+	/// </remarks>		<author> David Jarvie <djarvie@kde.org>.
 	///  </author>
 	/// 		<short> Base backend class for KTimeZone classes.</short>
 	/// 		<see> KTimeZone</see>
@@ -26,7 +26,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTimeZoneBackend(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTimeZoneBackend), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTimeZoneBackend), this);
 		}
 		/// <remarks> Implements KTimeZone.KTimeZone(). </remarks>		<short>   Implements KTimeZone.KTimeZone().</short>
 		public KTimeZoneBackend() : this((Type) null) {

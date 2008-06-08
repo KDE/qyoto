@@ -11,11 +11,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KShapeGesture(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KShapeGesture), this);
+			interceptor = new SmokeInvocationKDE(typeof(KShapeGesture), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KShapeGesture() {
-			staticInterceptor = new SmokeInvocation(typeof(KShapeGesture), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KShapeGesture), null);
 		}
 		/// <remarks>
 		///  Create a new invalid shape gesture.

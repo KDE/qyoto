@@ -14,13 +14,14 @@ namespace Kimono {
 	public class KSycoca : QObject, IDisposable {
  		protected KSycoca(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSycoca), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSycoca), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSycoca() {
-			staticInterceptor = new SmokeInvocation(typeof(KSycoca), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KSycoca), null);
 		}
 		// void addFactory(KSycocaFactory* arg1); >>>> NOT CONVERTED
+		// QString absoluteFilePath(KSycoca::DatabaseType arg1); >>>> NOT CONVERTED
 		// KSycocaFactoryList* factories(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Read-only database
@@ -122,6 +123,13 @@ namespace Kimono {
 		public static bool IsAvailable() {
 			return (bool) staticInterceptor.Invoke("isAvailable", "isAvailable()", typeof(bool));
 		}
+		/// <remarks>
+		///  for global database type the database is searched under 
+		///  the 'services' install path. 
+		///  Otherwise, the value from the environment variable KDESYCOCA 
+		///  is returned if set. If not set the path is build based on  
+		///  KStandardDirs cache save location. 
+		///     </remarks>		<short>   </short>
 		/// <remarks>
 		///  When you receive a "databaseChanged" signal, you can query here if
 		///  a change has occurred in a specific resource type.

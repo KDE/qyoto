@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KIntSpinBox : QSpinBox, IDisposable {
  		protected KIntSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KIntSpinBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KIntSpinBox), this);
 		}
 		[Q_PROPERTY("int", "base")]
 		public int Base {

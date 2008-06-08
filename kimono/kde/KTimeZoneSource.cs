@@ -28,7 +28,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTimeZoneSource(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTimeZoneSource), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTimeZoneSource), this);
 		}
 		public KTimeZoneSource() : this((Type) null) {
 			CreateProxy();
@@ -38,7 +38,10 @@ namespace Kimono {
 		///  Extracts detail information for one time zone from the source database.
 		///  In this base class, the method always succeeds and returns an empty data
 		///  instance. Derived classes should reimplement this method to return an
-		///  appropriate data class derived from KTimeZoneData.
+		///  appropriate data class derived from KTimeZoneData. Some source databases
+		///  may not be compatible with this method of parsing. In these cases, they
+		///  should use the constructor KTimeZoneSource(false) and calling this method
+		///  will produce a fatal error.
 		/// <param> name="zone" the time zone for which data is to be extracted.
 		/// </param></remarks>		<return> an instance of a class derived from KTimeZoneData containing
 		///          the parsed data. The caller is responsible for deleting the
@@ -49,6 +52,34 @@ namespace Kimono {
 		[SmokeMethod("parse(const KTimeZone&) const")]
 		public virtual KTimeZoneData Parse(KTimeZone zone) {
 			return (KTimeZoneData) interceptor.Invoke("parse#", "parse(const KTimeZone&) const", typeof(KTimeZoneData), typeof(KTimeZone), zone);
+		}
+		/// <remarks>
+		///  Return whether the source database supports the ad hoc extraction of data for
+		///  individual time zones using parse(KTimeZone).
+		/// </remarks>		<return> true if parse(KTimeZone) works, false if parsing must be
+		///          performed by other methods
+		///      </return>
+		/// 		<short>    Return whether the source database supports the ad hoc extraction of data for  individual time zones using parse(KTimeZone).</short>
+		public bool UseZoneParse() {
+			return (bool) interceptor.Invoke("useZoneParse", "useZoneParse() const", typeof(bool));
+		}
+		/// <remarks>
+		///  Constructor for use by derived classes, which specifies whether the
+		///  source database supports the ad hoc extraction of data for individual
+		///  time zones using parse(KTimeZone).
+		///  If parse(KTimeZone) cannot be used, KTimeZone derived classes
+		///  which use this KTimeZoneSource derived class must create a
+		///  KTimeZoneData object at construction time so that KTimeZone.Data()
+		///  will always return a data object.
+		///  Note the default constructor is equivalent to KTimeZoneSource(true), i.e.
+		///  it is only necessary to use this constructor if parse(KTimeZone)
+		///  does not work.
+		/// <param> name="useZoneParse" true if parse(KTimeZone) works, false if
+		///                      parsing must be performed by other methods
+		///      </param></remarks>		<short>    Constructor for use by derived classes, which specifies whether the  source database supports the ad hoc extraction of data for individual  time zones using parse(KTimeZone).</short>
+		public KTimeZoneSource(bool useZoneParse) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KTimeZoneSource$", "KTimeZoneSource(bool)", typeof(void), typeof(bool), useZoneParse);
 		}
 		~KTimeZoneSource() {
 			interceptor.Invoke("~KTimeZoneSource", "~KTimeZoneSource()", typeof(void));

@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KUrlComboBox : KComboBox, IDisposable {
  		protected KUrlComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUrlComboBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUrlComboBox), this);
 		}
 		/// <remarks>
 		///  This enum describes which kind of items is shown in the combo box.
@@ -163,6 +163,14 @@ namespace Kimono {
 		}
 		public void RemoveUrl(KUrl url) {
 			interceptor.Invoke("removeUrl#", "removeUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
+		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		protected override void MousePressEvent(QMouseEvent arg1) {
+			interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		protected override void MouseMoveEvent(QMouseEvent arg1) {
+			interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
 		}
 		~KUrlComboBox() {
 			interceptor.Invoke("~KUrlComboBox", "~KUrlComboBox()", typeof(void));

@@ -11,16 +11,24 @@ namespace Kimono {
 	///  from the window manager). Also don't try to track the window state
 	///  yourself. Rely on this action's state (isChecked()) instead.
 	///  Important: If you need to set/change the fullscreen state manually,
-	///  use the relevant QWidget function (showFullScreen etc.), do not
-	///  call directly the slot connected to the toggled() signal. The slot
+	///  use KToggleFullScreenAction.SetFullScreen() or a similar function,
+	///  do not call directly the slot connected to the toggled() signal. The slot
 	///  still needs to explicitly set the window state though.
+	///  Note: Do NOT use QWidget.ShowFullScreen() or QWidget.ShowNormal().
+	///  They have several side-effects besides just switching the fullscreen
+	///  state (for example, showNormal() resets all window states, not just
+	///  fullscreen). Use the KToggleFullScreenAction.SetFullScreen() helper function.
 	///  </remarks>		<short>    An action for switching between to/from full screen mode.</short>
 
 	[SmokeClass("KToggleFullScreenAction")]
 	public class KToggleFullScreenAction : KToggleAction, IDisposable {
  		protected KToggleFullScreenAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KToggleFullScreenAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KToggleFullScreenAction), this);
+		}
+		private static SmokeInvocation staticInterceptor = null;
+		static KToggleFullScreenAction() {
+			staticInterceptor = new SmokeInvocationKDE(typeof(KToggleFullScreenAction), null);
 		}
 		/// <remarks>
 		///  Create a KToggleFullScreenAction. Call setWindow() to associate this
@@ -47,7 +55,7 @@ namespace Kimono {
 			interceptor.Invoke("setWindow#", "setWindow(QWidget*)", typeof(void), typeof(QWidget), window);
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
-		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
+		protected override bool EventFilter(QObject arg1, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
 		~KToggleFullScreenAction() {
@@ -55,6 +63,13 @@ namespace Kimono {
 		}
 		public new void Dispose() {
 			interceptor.Invoke("~KToggleFullScreenAction", "~KToggleFullScreenAction()", typeof(void));
+		}
+		/// <remarks>
+		///  Helper function to set or reset the fullscreen state of a window.
+		///  Use this function rather than showFullScreen()/showNormal() QWidget functions.
+		/// </remarks>		<short>    Helper function to set or reset the fullscreen state of a window.</short>
+		public static void SetFullScreen(QWidget window, bool set) {
+			staticInterceptor.Invoke("setFullScreen#$", "setFullScreen(QWidget*, bool)", typeof(void), typeof(QWidget), window, typeof(bool), set);
 		}
 		protected new IKToggleFullScreenActionSignals Emit {
 			get { return (IKToggleFullScreenActionSignals) Q_EMIT; }

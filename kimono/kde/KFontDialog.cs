@@ -30,11 +30,11 @@ namespace Kimono {
 	public class KFontDialog : KDialog, IDisposable {
  		protected KFontDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFontDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFontDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFontDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KFontDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KFontDialog), null);
 		}
 		// KFontDialog* KFontDialog(QWidget* arg1,const KFontChooser::DisplayFlags& arg2,const QStringList& arg3,Qt::CheckState* arg4); >>>> NOT CONVERTED
 		// KFontDialog* KFontDialog(QWidget* arg1,const KFontChooser::DisplayFlags& arg2,const QStringList& arg3); >>>> NOT CONVERTED

@@ -3,7 +3,6 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Runtime.InteropServices;
 	using System.Collections.Generic;
 
 	public interface IKXMLGUIBuilder {
@@ -13,8 +12,7 @@ namespace Kimono {
 		void SetBuilderComponentData(KComponentData componentData);
 		QWidget Widget();
 		List<string> ContainerTags();
-		QWidget CreateContainer(QWidget parent, int index, QDomElement element, ref int id);
-		void RemoveContainer(QWidget container, QWidget parent, QDomElement element, int id);
+		void RemoveContainer(QWidget container, QWidget parent, QDomElement element, QAction containerAction);
 		List<string> CustomTags();
 		QAction CreateCustomElement(QWidget parent, int index, QDomElement element);
 		void RemoveCustomElement(QWidget parent, QAction action);
@@ -22,11 +20,11 @@ namespace Kimono {
 	}
 
 	/// <remarks>
-	///  Abstract interface for a "GUI builder", used by the GUIFactory
-	///  This interface is implemented by KMainWindow for the case where
-	///  the toplevel widget is a KMainWindow. Other implementations may appear
-	///  in the future (dialogs for instance)
-	///  </remarks>		<short>    Abstract interface for a "GUI builder", used by the GUIFactory  This interface is implemented by KMainWindow for the case where  the toplevel widget is a KMainWindow.</short>
+	///  Implements the creation of the GUI (menubar, menus and toolbars)
+	///  as requested by the GUI factory.
+	///  The methods are mostly for historical reasons, there isn't really
+	///  a need to derive from KXMLGUIBuilder anymore.
+	///  </remarks>		<short>    Implements the creation of the GUI (menubar, menus and toolbars)  as requested by the GUI factory.</short>
 
 	[SmokeClass("KXMLGUIBuilder")]
 	public class KXMLGUIBuilder : Object, IKXMLGUIBuilder, IDisposable {
@@ -34,8 +32,9 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KXMLGUIBuilder(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KXMLGUIBuilder), this);
+			interceptor = new SmokeInvocationKDE(typeof(KXMLGUIBuilder), this);
 		}
+		// QWidget* createContainer(QWidget* arg1,int arg2,const QDomElement& arg3,QAction*& arg4); >>>> NOT CONVERTED
 		public KXMLGUIBuilder(QWidget widget) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KXMLGUIBuilder#", "KXMLGUIBuilder(QWidget*)", typeof(void), typeof(QWidget), widget);
@@ -68,50 +67,15 @@ namespace Kimono {
 		/// </param><param> name="element" The element from the DOM tree describing the
 		///                 container (use it to access container specified
 		///                 attributes or child elements)
-		/// </param><param> name="id" The id to be used for this container
+		/// </param><param> name="action" The action created for this container; used for e.g. passing to removeContainer.
 		///    </param></remarks>		<short>    Creates a container (menubar/menu/toolbar/statusbar/separator/.</short>
-		[SmokeMethod("createContainer(QWidget*, int, const QDomElement&, int&)")]
-		public virtual QWidget CreateContainer(QWidget parent, int index, QDomElement element, ref int id) {
-			StackItem[] stack = new StackItem[5];
-#if DEBUG
-			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
-#else
-			stack[1].s_class = (IntPtr) GCHandle.Alloc(parent);
-#endif
-			stack[2].s_int = index;
-#if DEBUG
-			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(element);
-#else
-			stack[3].s_class = (IntPtr) GCHandle.Alloc(element);
-#endif
-			stack[4].s_int = id;
-			interceptor.Invoke("createContainer#$#$", "createContainer(QWidget*, int, const QDomElement&, int&)", stack);
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[1].s_class);
-#else
-			((GCHandle) stack[1].s_class).Free();
-#endif
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[3].s_class);
-#else
-			((GCHandle) stack[3].s_class).Free();
-#endif
-			id = stack[4].s_int;
-			object returnValue = ((GCHandle) stack[0].s_class).Target;
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[0].s_class);
-#else
-			((GCHandle) stack[0].s_class).Free();
-#endif
-			return (QWidget) returnValue;
-		}
 		/// <remarks>
 		///  Removes the given (and previously via createContainer )
 		///  created container.
 		///    </remarks>		<short>    Removes the given (and previously via createContainer )  created container.</short>
-		[SmokeMethod("removeContainer(QWidget*, QWidget*, QDomElement&, int)")]
-		public virtual void RemoveContainer(QWidget container, QWidget parent, QDomElement element, int id) {
-			interceptor.Invoke("removeContainer###$", "removeContainer(QWidget*, QWidget*, QDomElement&, int)", typeof(void), typeof(QWidget), container, typeof(QWidget), parent, typeof(QDomElement), element, typeof(int), id);
+		[SmokeMethod("removeContainer(QWidget*, QWidget*, QDomElement&, QAction*)")]
+		public virtual void RemoveContainer(QWidget container, QWidget parent, QDomElement element, QAction containerAction) {
+			interceptor.Invoke("removeContainer####", "removeContainer(QWidget*, QWidget*, QDomElement&, QAction*)", typeof(void), typeof(QWidget), container, typeof(QWidget), parent, typeof(QDomElement), element, typeof(QAction), containerAction);
 		}
 		[SmokeMethod("customTags() const")]
 		public virtual List<string> CustomTags() {

@@ -95,7 +95,7 @@ namespace Kimono {
 	public class KComboBox : QComboBox, IKCompletionBase, IDisposable {
  		protected KComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KComboBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KComboBox), this);
 		}
 		[Q_PROPERTY("bool", "autoCompletion")]
 		public new bool AutoCompletion {
@@ -254,6 +254,8 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Re-implemented for internal reasons.  API remains unaffected.
+		///  Note that QComboBox.SetLineEdit is not in Qt4, do not
+		///  use a KComboBox in a QComboBox pointer.
 		///  NOTE: Only editable comboboxes can have a line editor. As such
 		///  any attempt to assign a line-edit to a non-editable combobox will
 		///  simply be ignored.
@@ -261,6 +263,15 @@ namespace Kimono {
 		[SmokeMethod("setLineEdit(QLineEdit*)")]
 		public virtual void SetLineEdit(QLineEdit arg1) {
 			interceptor.Invoke("setLineEdit#", "setLineEdit(QLineEdit*)", typeof(void), typeof(QLineEdit), arg1);
+		}
+		/// <remarks>
+		///  "Re-implemented" so that setEditable(true) creates a KLineEdit
+		///  instead of QLineEdit.
+		///  Note that QComboBox.SetEditable is not virtual, so do not
+		///  use a KComboBox in a QComboBox pointer.
+		///      </remarks>		<short>    "Re-implemented" so that setEditable(true) creates a KLineEdit  instead of QLineEdit.</short>
+		public void SetEditable(bool editable) {
+			interceptor.Invoke("setEditable$", "setEditable(bool)", typeof(void), typeof(bool), editable);
 		}
 		/// <remarks>
 		///  Iterates through all possible matches of the completed text

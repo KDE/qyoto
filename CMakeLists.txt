@@ -1,6 +1,6 @@
 OPTION(ENABLE_QYOTO "build Qyoto" ON)
 OPTION(ENABLE_QSCINTILLA_SHARP "build QScintillaSharp" OFF)
-# OPTION(ENABLE_KIMONO "build Kimono" ON)
+OPTION(ENABLE_KIMONO "build Kimono" OFF)
 
 set(QYOTO_ENABLED "no")
 
@@ -35,16 +35,16 @@ IF(ENABLE_QSCINTILLA_SHARP)
 	ADD_SUBDIRECTORY(qscintilla)
 ENDIF(ENABLE_QSCINTILLA_SHARP)
 
-# SET(KIMONO_ENABLED "no")
-# 
-# IF(ENABLE_KIMONO)
-# 	IF (NOT QYOTO_ENABLED)
-# 		MESSAGE(FATAL_ERROR "Qyoto is needed for Kimono. You either didn't enable it or some of it's dependencies aren't met.")
-# 	ENDIF (NOT QYOTO_ENABLED)
-# 	
-# 	SET(KIMONO_ENABLED "yes")
-# 	ADD_SUBDIRECTORY(kimono)
-# ENDIF(ENABLE_KIMONO)
+SET(KIMONO_ENABLED "no")
+
+IF(ENABLE_KIMONO)
+	IF (NOT QYOTO_ENABLED)
+		MESSAGE(FATAL_ERROR "Qyoto is needed for Kimono. You either didn't enable it or some of it's dependencies aren't met.")
+	ENDIF (NOT QYOTO_ENABLED)
+	
+	SET(KIMONO_ENABLED "yes")
+	ADD_SUBDIRECTORY(kimono)
+ENDIF(ENABLE_KIMONO)
 
 message(STATUS "Build Qyoto... " ${QYOTO_ENABLED})
 message(STATUS "Build QScintillaSharp... " ${QSCINTILLA_SHARP_ENABLED})

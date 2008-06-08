@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KFontAction : KSelectAction, IDisposable {
  		protected KFontAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFontAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFontAction), this);
 		}
 		[Q_PROPERTY("QString", "font")]
 		public new string Font {

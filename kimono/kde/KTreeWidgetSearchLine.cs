@@ -10,13 +10,14 @@ namespace Kimono {
 	///  listviews based on a simple text search.
 	///  No changes to the application other than instantiating this class with
 	///  appropriate QTreeWidgets should be needed.
-	///  </remarks>		<short>    This class makes it easy to add a search line for filtering the items in  listviews based on a simple text search.</short>
+	///   See <see cref="IKTreeWidgetSearchLineSignals"></see> for signals emitted by KTreeWidgetSearchLine
+	/// </remarks>		<short>    This class makes it easy to add a search line for filtering the items in  listviews based on a simple text search.</short>
 
 	[SmokeClass("KTreeWidgetSearchLine")]
 	public class KTreeWidgetSearchLine : KLineEdit, IDisposable {
  		protected KTreeWidgetSearchLine(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTreeWidgetSearchLine), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTreeWidgetSearchLine), this);
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "caseSensitity")]
 		public Qt.CaseSensitivity CaseSensitity {
@@ -28,7 +29,6 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("keepParentsVisible", "keepParentsVisible()", typeof(bool)); }
 			set { interceptor.Invoke("setKeepParentsVisible$", "setKeepParentsVisible(bool)", typeof(void), typeof(bool), value); }
 		}
-		// QList<QTreeWidget*> treeWidgets(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KTreeWidgetSearchLine with \a treeWidget being the QTreeWidget to
 		///  be filtered.
@@ -81,6 +81,9 @@ namespace Kimono {
 		/// 		<see> setTreeWidgets</see>
 		/// 		<see> addTreeWidget</see>
 		/// 		<see> treeWidget</see>
+		public List<QTreeWidget> TreeWidgets() {
+			return (List<QTreeWidget>) interceptor.Invoke("treeWidgets", "treeWidgets() const", typeof(List<QTreeWidget>));
+		}
 		/// <remarks>
 		///  Adds a QTreeWidget to the list of listviews filtered by this search line.
 		///  If \a treeWidget is null then the widget will be disabled.
@@ -132,6 +135,9 @@ namespace Kimono {
 		///  will be hidden and as such so too will any children that match.
 		///  If this is set to true (the default) then the parents of matching items
 		///  will be shown.
+		///  \warning setKeepParentsVisible(true) does not have the expected effect
+		///  on items being added to or removed from the view while a search is active.
+		///  When a new search starts afterwards the behavior will be normal.
 		/// </remarks>		<short>    When a search is active on a list that's organized into a tree view if  a parent or ancesestor of an item is does not match the search then it  will be hidden and as such so too will any children that match.</short>
 		/// 		<see> keepParentsVisible</see>
 		[Q_SLOT("void setKeepParentsVisible(bool)")]
@@ -227,6 +233,13 @@ namespace Kimono {
 		protected virtual bool CanChooseColumnsCheck() {
 			return (bool) interceptor.Invoke("canChooseColumnsCheck", "canChooseColumnsCheck()", typeof(bool));
 		}
+		/// <remarks>
+		///  Re-implemented for internal reasons.  API not affected.
+		///      </remarks>		<short>    Re-implemented for internal reasons.</short>
+		[SmokeMethod("event(QEvent*)")]
+		protected override bool Event(QEvent arg1) {
+			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+		}
 		~KTreeWidgetSearchLine() {
 			interceptor.Invoke("~KTreeWidgetSearchLine", "~KTreeWidgetSearchLine()", typeof(void));
 		}
@@ -239,5 +252,11 @@ namespace Kimono {
 	}
 
 	public interface IKTreeWidgetSearchLineSignals : IKLineEditSignals {
+		/// <remarks>
+		///  This signal is emitted whenever an item gets hidden or unhidden due
+		///  to it not matching or matching the search string.
+		///      </remarks>		<short>    This signal is emitted whenever an item gets hidden or unhidden due  to it not matching or matching the search string.</short>
+		[Q_SIGNAL("void hiddenChanged(QTreeWidgetItem*, bool)")]
+		void HiddenChanged(QTreeWidgetItem arg1, bool arg2);
 	}
 }

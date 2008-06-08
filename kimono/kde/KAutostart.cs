@@ -26,11 +26,11 @@ namespace Kimono {
 	public class KAutostart : QObject, IDisposable {
  		protected KAutostart(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KAutostart), this);
+			interceptor = new SmokeInvocationKDE(typeof(KAutostart), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAutostart() {
-			staticInterceptor = new SmokeInvocation(typeof(KAutostart), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KAutostart), null);
 		}
 		/// <remarks>
 		///  Flags for each of the conditions that may affect whether or not

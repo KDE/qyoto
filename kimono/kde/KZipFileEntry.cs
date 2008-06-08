@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KZipFileEntry : KArchiveFile, IDisposable {
  		protected KZipFileEntry(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KZipFileEntry), this);
+			interceptor = new SmokeInvocationKDE(typeof(KZipFileEntry), this);
 		}
 		/// <remarks>
 		///  Creates a new zip file entry. Do not call this, KZip takes care of it.

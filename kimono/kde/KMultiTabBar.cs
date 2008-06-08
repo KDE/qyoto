@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KMultiTabBar : QWidget, IDisposable {
  		protected KMultiTabBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMultiTabBar), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMultiTabBar), this);
 		}
 		public enum KMultiTabBarPosition {
 			Left = 0,
@@ -101,8 +101,8 @@ namespace Kimono {
 			interceptor.Invoke("setTab$$", "setTab(int, bool)", typeof(void), typeof(int), id, typeof(bool), state);
 		}
 		/// <remarks>
-		///  return the state of a tab, identified by it's ID
-		///      </remarks>		<short>    return the state of a tab, identified by it's ID      </short>
+		///  return the state of a tab, identified by its ID
+		///      </remarks>		<short>    return the state of a tab, identified by its ID      </short>
 		public bool IsTabRaised(int id) {
 			return (bool) interceptor.Invoke("isTabRaised$", "isTabRaised(int) const", typeof(bool), typeof(int), id);
 		}

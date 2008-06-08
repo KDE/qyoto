@@ -16,7 +16,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KGuiItem(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KGuiItem), this);
+			interceptor = new SmokeInvocationKDE(typeof(KGuiItem), this);
 		}
 		public KGuiItem() : this((Type) null) {
 			CreateProxy();

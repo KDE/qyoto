@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KSelectAction : KAction, IDisposable {
  		protected KSelectAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSelectAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSelectAction), this);
 		}
 		public enum ToolBarMode {
 			MenuMode = 0,
@@ -64,6 +64,7 @@ namespace Kimono {
 			get { return (List<string>) interceptor.Invoke("items", "items()", typeof(List<string>)); }
 			set { interceptor.Invoke("setItems?", "setItems(QStringList)", typeof(void), typeof(List<string>), value); }
 		}
+		// KSelectAction* KSelectAction(KSelectActionPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a selection action with the specified parent.
 		/// <param> name="parent" The action's parent object.
@@ -231,9 +232,14 @@ namespace Kimono {
 			interceptor.Invoke("deleteWidget#", "deleteWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
-		protected new virtual bool EventFilter(QObject watched, QEvent arg2) {
+		protected override bool EventFilter(QObject watched, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
 		}
+		/// <remarks>
+		///  Creates a new KSelectAction object.
+		/// <param> name="dd" the private d member
+		/// </param><param> name="parent" The action's parent object.
+		///      </param></remarks>		<short>   </short>
 		/// <remarks>
 		///  This function is called whenever an action from the selections is triggered.
 		///      </remarks>		<short>    This function is called whenever an action from the selections is triggered.</short>

@@ -3,22 +3,27 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Runtime.InteropServices;
 	using System.Collections.Generic;
 
 	/// <remarks>
-	///  Namespace for general KDE functions.
-	///  </remarks>		<short>    Namespace for general KDE functions.</short>
+	///  @name Typelist macros
+	///  Convenience macros for transforming flat type enumerations into the
+	///  recursive typelist structure. For a typelist with <code>N</code> items, the
+	///  <code>K_TYPELIST_N</code> macro is used. For example:
+	///  @code
+	///   typedef K_TYPELIST_4(char, short, int, long) IntegralTypes;
+	///  @endcode
+	///  However, the preferred way is to use the KMakeTypeList template.
+	///  @ingroup ktypelist
+	///  </remarks>		<short>    @name Typelist macros </short>
 
 	[SmokeClass("KDE")]
 	public class KDE : Object {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static KDE() {
-			staticInterceptor = new SmokeInvocation(typeof(KDE), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KDE), null);
 		}
-		// QDataStream& operator<<(QDataStream& arg1,const KDateTime::Spec& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,KDateTime::Spec& arg2); >>>> NOT CONVERTED
 		// bool urlcmp(const QString& arg1,const QString& arg2,const KUrl::EqualsOptions& arg3); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,KProtocolInfo::ExtraField& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const KProtocolInfo::ExtraField& arg2); >>>> NOT CONVERTED
@@ -71,47 +76,17 @@ namespace Kimono {
 		public static string VersionString() {
 			return (string) staticInterceptor.Invoke("versionString", "versionString()", typeof(string));
 		}
-		public static QDataStream Write(QDataStream arg1, KDateTime dateTime) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(KDateTime), dateTime);
+		public static uint QHash(int arg1) {
+			return (uint) staticInterceptor.Invoke("qHash$", "qHash(int)", typeof(uint), typeof(int), arg1);
 		}
-		public static QDataStream Read(QDataStream arg1, KDateTime dateTime) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(KDateTime), dateTime);
+		public static uint QHash(KShortcut key) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KShortcut&)", typeof(uint), typeof(KShortcut), key);
 		}
-		public static bool Urlcmp(string _url1, string _url2) {
-			return (bool) staticInterceptor.Invoke("urlcmp$$", "urlcmp(const QString&, const QString&)", typeof(bool), typeof(string), _url1, typeof(string), _url2);
-		}
-		public static uint QHash(string key) {
-			return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QString&)", typeof(uint), typeof(string), key);
-		}
-		public static uint QHash(KUrl kurl) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KUrl&)", typeof(uint), typeof(KUrl), kurl);
+		public static uint QHash(QKeySequence key) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QKeySequence&)", typeof(uint), typeof(QKeySequence), key);
 		}
 		public static uint QHash(KPluginInfo arg1) {
 			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KPluginInfo&)", typeof(uint), typeof(KPluginInfo), arg1);
-		}
-		public static KLocalizedString Ki18n(string msg) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18n$", "ki18n(const char*)", typeof(KLocalizedString), typeof(string), msg);
-		}
-		public static KLocalizedString Ki18nc(string ctxt, string msg) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18nc$$", "ki18nc(const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), msg);
-		}
-		public static KLocalizedString Ki18np(string singular, string plural) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18np$$", "ki18np(const char*, const char*)", typeof(KLocalizedString), typeof(string), singular, typeof(string), plural);
-		}
-		public static KLocalizedString Ki18ncp(string ctxt, string singular, string plural) {
-			return (KLocalizedString) staticInterceptor.Invoke("ki18ncp$$$", "ki18ncp(const char*, const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), singular, typeof(string), plural);
-		}
-		public static string Tr2i18n(string message, string comment) {
-			return (string) staticInterceptor.Invoke("tr2i18n$$", "tr2i18n(const char*, const char*)", typeof(string), typeof(string), message, typeof(string), comment);
-		}
-		public static string Tr2i18n(string message) {
-			return (string) staticInterceptor.Invoke("tr2i18n$", "tr2i18n(const char*)", typeof(string), typeof(string), message);
-		}
-		public static string I18n(string text) {
-			return (string) staticInterceptor.Invoke("i18n$", "i18n(const char*)", typeof(string), typeof(string), text);
-		}
-		public static string I18nc(string ctxt, string text) {
-			return (string) staticInterceptor.Invoke("i18nc$$", "i18nc(const char*, const char*)", typeof(string), typeof(string), ctxt, typeof(string), text);
 		}
 		public static int Kasciistricmp(string str1, string str2) {
 			return (int) staticInterceptor.Invoke("kasciistricmp$$", "kasciistricmp(const char*, const char*)", typeof(int), typeof(string), str1, typeof(string), str2);
@@ -121,6 +96,36 @@ namespace Kimono {
 		}
 		public static string KAsciiToUpper(string str) {
 			return (string) staticInterceptor.Invoke("kAsciiToUpper$", "kAsciiToUpper(char*)", typeof(string), typeof(string), str);
+		}
+		public static uint QHash(string key) {
+			return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QString&)", typeof(uint), typeof(string), key);
+		}
+		public static uint QHash(KFileItem item) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KFileItem&)", typeof(uint), typeof(KFileItem), item);
+		}
+		public static QDataStream Write(QDataStream s, KFileItem a) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
+		}
+		public static QDataStream Read(QDataStream s, KFileItem a) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
+		}
+		public static QDataStream Write(QDataStream s, KACL a) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
+		}
+		public static QDataStream Read(QDataStream s, KACL a) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
+		}
+		public static uint QHash(KShapeGesture key) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KShapeGesture&)", typeof(uint), typeof(KShapeGesture), key);
+		}
+		public static uint QHash(KRockerGesture key) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KRockerGesture&)", typeof(uint), typeof(KRockerGesture), key);
+		}
+		public static bool Urlcmp(string _url1, string _url2) {
+			return (bool) staticInterceptor.Invoke("urlcmp$$", "urlcmp(const QString&, const QString&)", typeof(bool), typeof(string), _url1, typeof(string), _url2);
+		}
+		public static uint QHash(KUrl kurl) {
+			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KUrl&)", typeof(uint), typeof(KUrl), kurl);
 		}
 		public static QPixmap DesktopIcon(string name, int size, int state, List<string> overlays) {
 			return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$$?", "DesktopIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);
@@ -182,58 +187,35 @@ namespace Kimono {
 		public static int IconSize(KIconLoader.Group group) {
 			return (int) staticInterceptor.Invoke("IconSize$", "IconSize(KIconLoader::Group)", typeof(int), typeof(KIconLoader.Group), group);
 		}
-		public static uint QHash(int arg1) {
-			return (uint) staticInterceptor.Invoke("qHash$", "qHash(int)", typeof(uint), typeof(int), arg1);
+		public static KLocalizedString Ki18n(string msg) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18n$", "ki18n(const char*)", typeof(KLocalizedString), typeof(string), msg);
 		}
-		public static uint QHash(KShortcut key) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KShortcut&)", typeof(uint), typeof(KShortcut), key);
+		public static KLocalizedString Ki18nc(string ctxt, string msg) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18nc$$", "ki18nc(const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), msg);
 		}
-		public static uint QHash(QKeySequence key) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QKeySequence&)", typeof(uint), typeof(QKeySequence), key);
+		public static KLocalizedString Ki18np(string singular, string plural) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18np$$", "ki18np(const char*, const char*)", typeof(KLocalizedString), typeof(string), singular, typeof(string), plural);
 		}
-		public static uint QHash(KShapeGesture key) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KShapeGesture&)", typeof(uint), typeof(KShapeGesture), key);
+		public static KLocalizedString Ki18ncp(string ctxt, string singular, string plural) {
+			return (KLocalizedString) staticInterceptor.Invoke("ki18ncp$$$", "ki18ncp(const char*, const char*, const char*)", typeof(KLocalizedString), typeof(string), ctxt, typeof(string), singular, typeof(string), plural);
 		}
-		public static uint QHash(KRockerGesture key) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KRockerGesture&)", typeof(uint), typeof(KRockerGesture), key);
+		public static string Tr2i18n(string message, string comment) {
+			return (string) staticInterceptor.Invoke("tr2i18n$$", "tr2i18n(const char*, const char*)", typeof(string), typeof(string), message, typeof(string), comment);
 		}
-		public static QDataStream Write(QDataStream s, KACL a) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
+		public static string Tr2i18n(string message) {
+			return (string) staticInterceptor.Invoke("tr2i18n$", "tr2i18n(const char*)", typeof(string), typeof(string), message);
 		}
-		public static QDataStream Read(QDataStream s, KACL a) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KACL&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KACL), a);
+		public static string I18n(string text) {
+			return (string) staticInterceptor.Invoke("i18n$", "i18n(const char*)", typeof(string), typeof(string), text);
 		}
-		public static uint QHash(KFileItem item) {
-			return (uint) staticInterceptor.Invoke("qHash#", "qHash(const KFileItem&)", typeof(uint), typeof(KFileItem), item);
+		public static string I18nc(string ctxt, string text) {
+			return (string) staticInterceptor.Invoke("i18nc$$", "i18nc(const char*, const char*)", typeof(string), typeof(string), ctxt, typeof(string), text);
 		}
-		public static QDataStream Write(QDataStream s, KFileItem a) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
+		public static QDataStream Read(QDataStream str, KServiceAction act) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KServiceAction&)", typeof(QDataStream), typeof(QDataStream), str, typeof(KServiceAction), act);
 		}
-		public static QDataStream Read(QDataStream s, KFileItem a) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KFileItem&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KFileItem), a);
-		}
-		public static KPrinter.PageSize PageNameToPageSize(string name, ref bool ok) {
-			StackItem[] stack = new StackItem[3];
-#if DEBUG
-			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
-#else
-			stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
-#endif
-			stack[2].s_bool = ok;
-			staticInterceptor.Invoke("pageNameToPageSize$$", "pageNameToPageSize(const QString&, bool*)", stack);
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[1].s_class);
-#else
-			((GCHandle) stack[1].s_class).Free();
-#endif
-			ok = stack[2].s_bool;
-			return (KPrinter.PageSize) Enum.ToObject(typeof(KPrinter.PageSize), stack[0].s_int);
-		}
-		public static KPrinter.PageSize PageNameToPageSize(string name) {
-			return (KPrinter.PageSize) staticInterceptor.Invoke("pageNameToPageSize$", "pageNameToPageSize(const QString&)", typeof(KPrinter.PageSize), typeof(string), name);
-		}
-		public static string PageSizeToPageName(KPrinter.PageSize s) {
-			return (string) staticInterceptor.Invoke("pageSizeToPageName$", "pageSizeToPageName(KPrinter::PageSize)", typeof(string), typeof(KPrinter.PageSize), s);
+		public static QDataStream Write(QDataStream str, KServiceAction act) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KServiceAction&)", typeof(QDataStream), typeof(QDataStream), str, typeof(KServiceAction), act);
 		}
 		public static QDataStream Write(QDataStream s, KIO.UDSEntry a) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KIO::UDSEntry&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.UDSEntry), a);

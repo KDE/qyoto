@@ -3,7 +3,6 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
-	using System.Runtime.InteropServices;
 	using System.Text;
 	using System.Collections.Generic;
 
@@ -50,11 +49,11 @@ namespace Kimono {
 	public class KXmlGuiWindow : KMainWindow, IKXMLGUIBuilder, IKXMLGUIClient, IDisposable {
  		protected KXmlGuiWindow(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KXmlGuiWindow), this);
+			interceptor = new SmokeInvocationKDE(typeof(KXmlGuiWindow), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KXmlGuiWindow() {
-			staticInterceptor = new SmokeInvocation(typeof(KXmlGuiWindow), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KXmlGuiWindow), null);
 		}
 		/// <remarks>
 		/// </remarks>		<short>   </short>
@@ -88,7 +87,7 @@ namespace Kimono {
 		public new bool InitialGeometrySet {
 			get { return (bool) interceptor.Invoke("initialGeometrySet", "initialGeometrySet()", typeof(bool)); }
 		}
-		// QList<KXMLGUIClient*> childClients(); >>>> NOT CONVERTED
+		// QWidget* createContainer(QWidget* arg1,int arg2,const QDomElement& arg3,QAction*& arg4); >>>> NOT CONVERTED
 		// KXMLGUIClient::StateChange getActionsToChangeForState(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a main window.
@@ -251,7 +250,7 @@ namespace Kimono {
 		///  This slot can be connected directly to the action to configure toolbar.
 		///  This is very simple to do that by adding a single line
 		///  <pre>
-		///  KStdAction.ConfigureToolbars( this, SLOT("configureToolbars()"),
+		///  KStandardAction.ConfigureToolbars( this, SLOT("configureToolbars()"),
 		///                                 actionCollection() );
 		///  </pre>
 		///      </remarks>		<short>    Show a standard configure toolbar dialog.</short>
@@ -331,50 +330,15 @@ namespace Kimono {
 		/// </param><param> name="element" The element from the DOM tree describing the
 		///                 container (use it to access container specified
 		///                 attributes or child elements)
-		/// </param><param> name="id" The id to be used for this container
+		/// </param><param> name="action" The action created for this container; used for e.g. passing to removeContainer.
 		///    </param></remarks>		<short>    Creates a container (menubar/menu/toolbar/statusbar/separator/.</short>
-		[SmokeMethod("createContainer(QWidget*, int, const QDomElement&, int&)")]
-		public virtual QWidget CreateContainer(QWidget parent, int index, QDomElement element, ref int id) {
-			StackItem[] stack = new StackItem[5];
-#if DEBUG
-			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
-#else
-			stack[1].s_class = (IntPtr) GCHandle.Alloc(parent);
-#endif
-			stack[2].s_int = index;
-#if DEBUG
-			stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(element);
-#else
-			stack[3].s_class = (IntPtr) GCHandle.Alloc(element);
-#endif
-			stack[4].s_int = id;
-			interceptor.Invoke("createContainer#$#$", "createContainer(QWidget*, int, const QDomElement&, int&)", stack);
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[1].s_class);
-#else
-			((GCHandle) stack[1].s_class).Free();
-#endif
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[3].s_class);
-#else
-			((GCHandle) stack[3].s_class).Free();
-#endif
-			id = stack[4].s_int;
-			object returnValue = ((GCHandle) stack[0].s_class).Target;
-#if DEBUG
-			DebugGCHandle.Free((GCHandle) stack[0].s_class);
-#else
-			((GCHandle) stack[0].s_class).Free();
-#endif
-			return (QWidget) returnValue;
-		}
 		/// <remarks>
 		///  Removes the given (and previously via createContainer )
 		///  created container.
 		///    </remarks>		<short>    Removes the given (and previously via createContainer )  created container.</short>
-		[SmokeMethod("removeContainer(QWidget*, QWidget*, QDomElement&, int)")]
-		public virtual void RemoveContainer(QWidget container, QWidget parent, QDomElement element, int id) {
-			interceptor.Invoke("removeContainer###$", "removeContainer(QWidget*, QWidget*, QDomElement&, int)", typeof(void), typeof(QWidget), container, typeof(QWidget), parent, typeof(QDomElement), element, typeof(int), id);
+		[SmokeMethod("removeContainer(QWidget*, QWidget*, QDomElement&, QAction*)")]
+		public virtual void RemoveContainer(QWidget container, QWidget parent, QDomElement element, QAction containerAction) {
+			interceptor.Invoke("removeContainer####", "removeContainer(QWidget*, QWidget*, QDomElement&, QAction*)", typeof(void), typeof(QWidget), container, typeof(QWidget), parent, typeof(QDomElement), element, typeof(QAction), containerAction);
 		}
 		[SmokeMethod("customTags() const")]
 		public virtual List<string> CustomTags() {
@@ -469,15 +433,15 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Retrieves a pointer to the KXMLGUIFactory this client is
-		///  associated with (will return null if the client's GUI has not been built
+		///  associated with (will return 0 if the client's GUI has not been built
 		///  by a KXMLGUIFactory.
-		///    </remarks>		<short>    Retrieves a pointer to the KXMLGUIFactory this client is  associated with (will return 0L if the client's GUI has not been built  by a KXMLGUIFactory.</short>
+		///    </remarks>		<short>    Retrieves a pointer to the KXMLGUIFactory this client is  associated with (will return 0 if the client's GUI has not been built  by a KXMLGUIFactory.</short>
 		public KXMLGUIFactory Factory() {
 			return (KXMLGUIFactory) interceptor.Invoke("factory", "factory() const", typeof(KXMLGUIFactory));
 		}
 		/// <remarks>
 		///  KXMLGUIClients can form a simple child/parent object tree. This
-		///  method returns a pointer to the parent client or null if it has no
+		///  method returns a pointer to the parent client or 0 if it has no
 		///  parent client assigned.
 		///    </remarks>		<short>    KXMLGUIClients can form a simple child/parent object tree.</short>
 		public KXMLGUIClient ParentClient() {
@@ -501,6 +465,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Retrieves a list of all child clients.
 		///    </remarks>		<short>    Retrieves a list of all child clients.</short>
+		public List<KXMLGUIClient> ChildClients() {
+			return (List<KXMLGUIClient>) interceptor.Invoke("childClients", "childClients()", typeof(List<KXMLGUIClient>));
+		}
 		/// <remarks>
 		///  A client can have an own KXMLGUIBuilder.
 		///  Use this method to assign your builder instance to the client (so that the
@@ -512,9 +479,9 @@ namespace Kimono {
 			interceptor.Invoke("setClientBuilder#", "setClientBuilder(KXMLGUIBuilder*)", typeof(void), typeof(KXMLGUIBuilder), builder);
 		}
 		/// <remarks>
-		///  Retrieves the client's GUI builder or null if no client specific
+		///  Retrieves the client's GUI builder or 0 if no client specific
 		///  builder has been assigned via setClientBuilder()
-		///    </remarks>		<short>    Retrieves the client's GUI builder or 0L if no client specific  builder has been assigned via setClientBuilder()    </short>
+		///    </remarks>		<short>    Retrieves the client's GUI builder or 0 if no client specific  builder has been assigned via setClientBuilder()    </short>
 		public KXMLGUIBuilder ClientBuilder() {
 			return (KXMLGUIBuilder) interceptor.Invoke("clientBuilder", "clientBuilder() const", typeof(KXMLGUIBuilder));
 		}
@@ -535,7 +502,8 @@ namespace Kimono {
 		///  is selected, then you can achieve this using ActionLists. It
 		///  works as follows:
 		///  In your xxxui.rc file ( the one that you set in setXMLFile() / pass to setupGUI()
-		///  ), you put an <p>\<ActionList name="xxx"\></p> tag.  E.g.
+		///  ), you put a tag <tt>\<ActionList name="xxx"\></tt>.
+		///  Example:
 		///  <pre>
 		///  <kpartgui name="xxx_part" version="1">
 		///  <MenuBar>
@@ -565,13 +533,18 @@ namespace Kimono {
 		///  <b>Note:<> Forgetting to call unplugActionList() before
 		///        plugActionList() would leave the previous actions in the
 		///        menu too..
+		///  \see unplugActionList()
 		///    </remarks>		<short>    ActionLists are a way for XMLGUI to support dynamic lists of  actions.</short>
 		public void PlugActionList(string name, List<QAction> actionList) {
 			interceptor.Invoke("plugActionList$?", "plugActionList(const QString&, const QList<QAction*>&)", typeof(void), typeof(string), name, typeof(List<QAction>), actionList);
 		}
 		/// <remarks>
-		///  The complement of plugActionList() ...
-		///    </remarks>		<short>    The complement of plugActionList() .</short>
+		///  Unplugs the action list <pre>name</pre> from the XMLGUI.
+		///  Calling this removes the specified action list, i.e. this is the
+		///  complement to plugActionList(). See plugActionList() for a more
+		///  detailed example.
+		///  \see plugActionList()
+		///    </remarks>		<short>    Unplugs the action list \p name from the XMLGUI.</short>
 		public void UnplugActionList(string name) {
 			interceptor.Invoke("unplugActionList$", "unplugActionList(const QString&)", typeof(void), typeof(string), name);
 		}

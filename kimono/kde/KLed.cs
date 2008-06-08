@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KLed : QWidget, IDisposable {
  		protected KLed(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KLed), this);
+			interceptor = new SmokeInvocationKDE(typeof(KLed), this);
 		}
 		/// <remarks>
 		///  Status of the light is on/off.

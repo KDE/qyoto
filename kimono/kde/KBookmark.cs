@@ -25,11 +25,11 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected List(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(List), this);
+				interceptor = new SmokeInvocationKDE(typeof(List), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static List() {
-				staticInterceptor = new SmokeInvocation(typeof(List), null);
+				staticInterceptor = new SmokeInvocationKDE(typeof(List), null);
 			}
 			public List() : this((Type) null) {
 				CreateProxy();
@@ -74,18 +74,16 @@ namespace Kimono {
 			}
 		}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBookmark), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBookmark), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KBookmark() {
-			staticInterceptor = new SmokeInvocation(typeof(KBookmark), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KBookmark), null);
 		}
 		public enum MetaDataOverwriteMode {
 			OverwriteMetaData = 0,
 			DontOverwriteMetaData = 1,
 		}
-		// KBookmarkGroup parentGroup(); >>>> NOT CONVERTED
-		// KBookmarkGroup toGroup(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a null bookmark, i.e. a bookmark for which isNull() returns true
 		///  If you want to create a new bookmark use eitehr KBookmarkGroup.addBookmark
@@ -184,6 +182,20 @@ namespace Kimono {
 			interceptor.Invoke("setIcon$", "setIcon(const QString&)", typeof(void), typeof(string), icon);
 		}
 		/// <remarks>
+		/// </remarks>		<return> Mime-Type of this item
+		/// </return>
+		/// 		<short>   </short>
+		public string MimeType() {
+			return (string) interceptor.Invoke("mimeType", "mimeType() const", typeof(string));
+		}
+		/// <remarks>
+		///  Set the Mime-Type of this item
+		/// <param> name="Mime" -Type
+		/// </param></remarks>		<short>    Set the Mime-Type of this item </short>
+		public void SetMimeType(string mimeType) {
+			interceptor.Invoke("setMimeType$", "setMimeType(const QString&)", typeof(void), typeof(string), mimeType);
+		}
+		/// <remarks>
 		///      </remarks>		<return> if the bookmark should be shown in the toolbar
 		///  (used by the filtered toolbar)
 		/// </return>
@@ -192,8 +204,8 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("showInToolbar", "showInToolbar() const", typeof(bool));
 		}
 		/// <remarks>
-		///  Set wheter this bookmark is show in a filterd toolbar
-		///      </remarks>		<short>    Set wheter this bookmark is show in a filterd toolbar      </short>
+		///  Set whether this bookmark is show in a filterd toolbar
+		///      </remarks>		<short>    Set whether this bookmark is show in a filterd toolbar      </short>
 		public void SetShowInToolbar(bool show) {
 			interceptor.Invoke("setShowInToolbar$", "setShowInToolbar(bool)", typeof(void), typeof(bool), show);
 		}
@@ -201,10 +213,16 @@ namespace Kimono {
 		/// </remarks>		<return> the group containing this bookmark
 		///      </return>
 		/// 		<short>   </short>
+		public KBookmarkGroup ParentGroup() {
+			return (KBookmarkGroup) interceptor.Invoke("parentGroup", "parentGroup() const", typeof(KBookmarkGroup));
+		}
 		/// <remarks>
 		///  Convert this to a group - do this only if
 		///  isGroup() returns true.
 		///      </remarks>		<short>    Convert this to a group - do this only if  isGroup() returns true.</short>
+		public KBookmarkGroup ToGroup() {
+			return (KBookmarkGroup) interceptor.Invoke("toGroup", "toGroup() const", typeof(KBookmarkGroup));
+		}
 		/// <remarks>
 		///  Return the "address" of this bookmark in the whole tree.
 		///  This is used when telling other processes about a change
@@ -234,22 +252,29 @@ namespace Kimono {
 			interceptor.Invoke("updateAccessMetadata", "updateAccessMetadata()", typeof(void));
 		}
 		/// <remarks>
-		///  Get the value of a specific metadata item.
+		/// </remarks>		<return> the metadata container node for a certain matadata owner
+		/// </return>
+		/// 		<short>   </short>
+		public QDomNode MetaData(string owner, bool create) {
+			return (QDomNode) interceptor.Invoke("metaData$$", "metaData(const QString&, bool) const", typeof(QDomNode), typeof(string), owner, typeof(bool), create);
+		}
+		/// <remarks>
+		///  Get the value of a specific metadata item (owner = "http://www.kde.org").
 		/// <param> name="key" Name of the metadata item
 		/// </param></remarks>		<return> Value of the metadata item. string() is returned in case
 		///  the specified key does not exist.
 		///      </return>
-		/// 		<short>    Get the value of a specific metadata item.</short>
+		/// 		<short>    Get the value of a specific metadata item (owner = "http://www.</short>
 		public string MetaDataItem(string key) {
 			return (string) interceptor.Invoke("metaDataItem$", "metaDataItem(const QString&) const", typeof(string), typeof(string), key);
 		}
 		/// <remarks>
 		///  Change the value of a specific metadata item, or create the given item
-		///  if it doesn't exist already.
+		///  if it doesn't exist already (owner = "http://www.kde.org").     
 		/// <param> name="key" Name of the metadata item to change
 		/// </param><param> name="value" Value to use for the specified metadata item
 		/// </param><param> name="mode" Whether to overwrite the item's value if it exists already or not.
-		///      </param></remarks>		<short>    Change the value of a specific metadata item, or create the given item  if it doesn't exist already.</short>
+		///      </param></remarks>		<short>    Change the value of a specific metadata item, or create the given item  if it doesn't exist already (owner = "http://www.</short>
 		public void SetMetaDataItem(string key, string value, KBookmark.MetaDataOverwriteMode mode) {
 			interceptor.Invoke("setMetaDataItem$$$", "setMetaDataItem(const QString&, const QString&, KBookmark::MetaDataOverwriteMode)", typeof(void), typeof(string), key, typeof(string), value, typeof(KBookmark.MetaDataOverwriteMode), mode);
 		}

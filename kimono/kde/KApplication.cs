@@ -39,11 +39,11 @@ namespace Kimono {
 	public class KApplication : QApplication, IDisposable {
  		protected KApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KApplication), this);
+			interceptor = new SmokeInvocationKDE(typeof(KApplication), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KApplication() {
-			staticInterceptor = new SmokeInvocation(typeof(KApplication), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KApplication), null);
 		}
 		public static bool LoadedByKdeinit() {
 			return (bool) staticInterceptor.Invoke("loadedByKdeinit", "loadedByKdeinit()", typeof(bool));
@@ -184,12 +184,12 @@ namespace Kimono {
 			return (ulong) interceptor.Invoke("userTimestamp", "userTimestamp() const", typeof(ulong));
 		}
 		/// <remarks>
-		///  Updates the last user action timestamp in the application registered to DCOP with dcopId
+		///  Updates the last user action timestamp in the application registered to DBUS with id service
 		///  to the given time, or to this application's user time, if 0 is given.
 		///  Use before causing user interaction in the remote application, e.g. invoking a dialog
 		///  in the application using a DCOP call.
 		///  Consult focus stealing prevention section in kdebase/kwin/README.
-		///    </remarks>		<short>    Updates the last user action timestamp in the application registered to DCOP with dcopId  to the given time, or to this application's user time, if 0 is given.</short>
+		///    </remarks>		<short>    Updates the last user action timestamp in the application registered to DBUS with id service  to the given time, or to this application's user time, if 0 is given.</short>
 		public void UpdateRemoteUserTimestamp(string service, int time) {
 			interceptor.Invoke("updateRemoteUserTimestamp$$", "updateRemoteUserTimestamp(const QString&, int)", typeof(void), typeof(string), service, typeof(int), time);
 		}
@@ -240,6 +240,19 @@ namespace Kimono {
 		}
 		public new void Dispose() {
 			interceptor.Invoke("~KApplication", "~KApplication()", typeof(void));
+		}
+		/// <remarks>
+		///  Returns the current application object.
+		///  This is similar to the global QApplication pointer qApp. It
+		///  allows access to the single global KApplication object, since
+		///  more than one cannot be created in the same application. It
+		///  saves you the trouble of having to pass the pointer explicitly
+		///  to every function that may require it.
+		/// </remarks>		<return> the current application object
+		///    </return>
+		/// 		<short>    Returns the current application object.</short>
+		public static KApplication kApplication() {
+			return (KApplication) staticInterceptor.Invoke("kApplication", "kApplication()", typeof(KApplication));
 		}
 		/// <remarks>
 		///  Check whether  an auto-save file exists for the document you want to

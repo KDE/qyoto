@@ -16,11 +16,11 @@ namespace Kimono {
 	public class KCursor : QCursor, IDisposable {
  		protected KCursor(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCursor), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCursor), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KCursor() {
-			staticInterceptor = new SmokeInvocation(typeof(KCursor), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KCursor), null);
 		}
 		/// <remarks>
 		///  Attempts to load the requested <code>name</code> cursor from the current theme.

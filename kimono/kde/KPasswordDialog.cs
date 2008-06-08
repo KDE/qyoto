@@ -31,19 +31,23 @@ namespace Kimono {
 	public class KPasswordDialog : KDialog, IDisposable {
  		protected KPasswordDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPasswordDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPasswordDialog), this);
 		}
 		public enum KPasswordDialogFlag {
 			NoFlags = 0x00,
 			ShowKeepPassword = 0x01,
 			ShowUsernameLine = 0x02,
 			UsernameReadOnly = 0x04,
+			ShowAnonymousLoginCheckBox = 0x08,
+			ShowDomainLine = 0x10,
+			DomainReadOnly = 0x20,
 		}
 		public enum ErrorType {
 			UnknownError = 0,
-			/***Aproblemwiththeusernameasentered**/UsernameError = 1,
+			UsernameError = 1,
 			PasswordError = 2,
 			FatalError = 3,
+			DomainError = 4,
 		}
 		// KPasswordDialog* KPasswordDialog(QWidget* arg1,const KPasswordDialog::KPasswordDialogFlags& arg2,const KDialog::ButtonCodes arg3); >>>> NOT CONVERTED
 		// KPasswordDialog* KPasswordDialog(QWidget* arg1,const KPasswordDialog::KPasswordDialogFlags& arg2); >>>> NOT CONVERTED
@@ -129,6 +133,33 @@ namespace Kimono {
 		/// 		<short>    Returns the username entered by the user.</short>
 		public string Username() {
 			return (string) interceptor.Invoke("username", "username() const", typeof(string));
+		}
+		/// <remarks>
+		///  set the default domain.
+		/// </remarks>		<short>    set the default domain.</short>
+		public void SetDomain(string arg1) {
+			interceptor.Invoke("setDomain$", "setDomain(const QString&)", typeof(void), typeof(string), arg1);
+		}
+		/// <remarks>
+		///  Returns the domain entered by the user.
+		/// </remarks>		<return> the domain name
+		/// </return>
+		/// 		<short>    Returns the domain entered by the user.</short>
+		public string Domain() {
+			return (string) interceptor.Invoke("domain", "domain() const", typeof(string));
+		}
+		/// <remarks>
+		///  set anonymous mode (all other fields will be grayed out)
+		/// </remarks>		<short>    set anonymous mode (all other fields will be grayed out) </short>
+		public void SetAnonymousMode(bool anonymous) {
+			interceptor.Invoke("setAnonymousMode$", "setAnonymousMode(bool)", typeof(void), typeof(bool), anonymous);
+		}
+		/// <remarks>
+		/// </remarks>		<return> anonymous mode has been selected.
+		/// </return>
+		/// 		<short>   </short>
+		public bool AnonymousMode() {
+			return (bool) interceptor.Invoke("anonymousMode", "anonymousMode() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Determines whether supplied authorization should

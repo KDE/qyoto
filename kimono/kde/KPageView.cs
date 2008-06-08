@@ -26,7 +26,7 @@ namespace Kimono {
 	public class KPageView : QWidget, IDisposable {
  		protected KPageView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPageView), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPageView), this);
 		}
 		/// <remarks>
 		///  This enum is used to decide which type of navigation view
@@ -68,6 +68,7 @@ namespace Kimono {
 			get { return (KPageView.FaceType) interceptor.Invoke("faceType", "faceType()", typeof(KPageView.FaceType)); }
 			set { interceptor.Invoke("setFaceType$", "setFaceType(KPageView::FaceType)", typeof(void), typeof(KPageView.FaceType), value); }
 		}
+		// KPageView* KPageView(KPageViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a page view with given parent.
 		///      </remarks>		<short>    Creates a page view with given parent.</short>

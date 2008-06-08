@@ -34,11 +34,11 @@ namespace Kimono {
 	public class KScanDialog : KPageDialog, IDisposable {
  		protected KScanDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KScanDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KScanDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KScanDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KScanDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KScanDialog), null);
 		}
 		/// <remarks>
 		///  Reimplement this if you need to set up some things, before showing the

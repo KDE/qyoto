@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  It shows the list of available plugins
@@ -26,19 +27,14 @@ namespace Kimono {
 	public class KPluginSelector : QWidget, IDisposable {
  		protected KPluginSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPluginSelector), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPluginSelector), this);
 		}
 		public enum PluginLoadMethod {
 			ReadConfigFile = 0,
 			IgnoreConfigFile = 1,
 		}
-		// void addPlugins(const QString& arg1,const QString& arg2,const QString& arg3,KSharedConfig::Ptr arg4); >>>> NOT CONVERTED
 		// void addPlugins(const KComponentData& arg1,const QString& arg2,const QString& arg3,const KSharedConfig::Ptr& arg4); >>>> NOT CONVERTED
 		// void addPlugins(const QList<KPluginInfo>& arg1,KPluginSelector::PluginLoadMethod arg2,const QString& arg3,const QString& arg4,const KSharedConfig::Ptr& arg5); >>>> NOT CONVERTED
-		// void addPlugins(const QList<KPluginInfo>& arg1,KPluginSelector::PluginLoadMethod arg2,const QString& arg3,const QString& arg4); >>>> NOT CONVERTED
-		// void addPlugins(const QList<KPluginInfo>& arg1,KPluginSelector::PluginLoadMethod arg2,const QString& arg3); >>>> NOT CONVERTED
-		// void addPlugins(const QList<KPluginInfo>& arg1,KPluginSelector::PluginLoadMethod arg2); >>>> NOT CONVERTED
-		// void addPlugins(const QList<KPluginInfo>& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a new KPluginSelector
 		///       </remarks>		<short>    Create a new KPluginSelector       </short>
@@ -78,6 +74,9 @@ namespace Kimono {
 		///                       For example KViewCanvas passes KConfig(
 		///                       "kviewcanvas" )
 		///       </param></remarks>		<short>    Add a list of KParts plugins </short>
+		public void AddPlugins(string componentName, string categoryName, string categoryKey, KSharedConfig config) {
+			interceptor.Invoke("addPlugins$$$#", "addPlugins(const QString&, const QString&, const QString&, KSharedConfig::Ptr)", typeof(void), typeof(string), componentName, typeof(string), categoryName, typeof(string), categoryKey, typeof(KSharedConfig), config);
+		}
 		public void AddPlugins(string componentName, string categoryName, string categoryKey) {
 			interceptor.Invoke("addPlugins$$$", "addPlugins(const QString&, const QString&, const QString&)", typeof(void), typeof(string), componentName, typeof(string), categoryName, typeof(string), categoryKey);
 		}
@@ -139,6 +138,18 @@ namespace Kimono {
 		///          will load and save their information from there. For those that
 		///          weren't any config object, <code>config</code> will be used
 		///       </remarks>		<short>    Add a list of non-KParts plugins </short>
+		public void AddPlugins(List<KPluginInfo> pluginInfoList, KPluginSelector.PluginLoadMethod pluginLoadMethod, string categoryName, string categoryKey) {
+			interceptor.Invoke("addPlugins?$$$", "addPlugins(const QList<KPluginInfo>&, KPluginSelector::PluginLoadMethod, const QString&, const QString&)", typeof(void), typeof(List<KPluginInfo>), pluginInfoList, typeof(KPluginSelector.PluginLoadMethod), pluginLoadMethod, typeof(string), categoryName, typeof(string), categoryKey);
+		}
+		public void AddPlugins(List<KPluginInfo> pluginInfoList, KPluginSelector.PluginLoadMethod pluginLoadMethod, string categoryName) {
+			interceptor.Invoke("addPlugins?$$", "addPlugins(const QList<KPluginInfo>&, KPluginSelector::PluginLoadMethod, const QString&)", typeof(void), typeof(List<KPluginInfo>), pluginInfoList, typeof(KPluginSelector.PluginLoadMethod), pluginLoadMethod, typeof(string), categoryName);
+		}
+		public void AddPlugins(List<KPluginInfo> pluginInfoList, KPluginSelector.PluginLoadMethod pluginLoadMethod) {
+			interceptor.Invoke("addPlugins?$", "addPlugins(const QList<KPluginInfo>&, KPluginSelector::PluginLoadMethod)", typeof(void), typeof(List<KPluginInfo>), pluginInfoList, typeof(KPluginSelector.PluginLoadMethod), pluginLoadMethod);
+		}
+		public void AddPlugins(List<KPluginInfo> pluginInfoList) {
+			interceptor.Invoke("addPlugins?", "addPlugins(const QList<KPluginInfo>&)", typeof(void), typeof(List<KPluginInfo>), pluginInfoList);
+		}
 		/// <remarks>
 		///  Load the state of the plugins (selected or not) from the KPluginInfo
 		///  objects

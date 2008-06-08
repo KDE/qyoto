@@ -15,7 +15,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCleanUpGlobalStatic(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCleanUpGlobalStatic), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCleanUpGlobalStatic), this);
 		}
 		public KCleanUpGlobalStatic() : this((Type) null) {
 			CreateProxy();

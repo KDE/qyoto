@@ -23,7 +23,7 @@ namespace Kimono {
 	public class KRestrictedLine : KLineEdit, IDisposable {
  		protected KRestrictedLine(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRestrictedLine), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRestrictedLine), this);
 		}
 		[Q_PROPERTY("QString", "validChars")]
 		public string ValidChars {

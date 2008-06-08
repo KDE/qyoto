@@ -9,57 +9,30 @@ namespace Kimono {
 	///  framework for creating menus and toolbars.  It depends on the XML
 	///  files to describe the toolbar layouts and it requires the actions
 	///  to determine which buttons are active.
-	///  Typically, you would include the KStdAction.ConfigureToolBars()
-	///  standard action in your application.  In your slot to this action,
-	///  you would have something like so:
+	///  Typically you do not need to use it directly as KXmlGuiWindow.SetupGUI
+	///  takes care of it.
+	///  If you use plugListAction you need to overload saveNewToolbarConfig()
+	///  to plug actions again:
 	///  <pre>
-	///  KEditToolBar dlg(actionCollection());
-	///  if (dlg.exec())
+	///  void MyClass.SaveNewToolbarConfig()
 	///  {
-	///    createGUI();
+	///    KXmlGuiWindow.SaveNewToolbarConfig();
+	///    plugActionList( "list1", list1Actions );
+	///    plugActionList( "list2", list2Actions );
 	///  }
 	///  </pre>
-	///  That code snippet also takes care of redrawing the menu and
-	///  toolbars if you have made any changes.
-	///  If you are using KMainWindow's settings methods (either save/apply manually
-	///  or autoSaveSettings), you should write something like:
-	///  <pre>
-	///  void MyClass.SlotConfigureToolBars()
-	///  {
-	///    saveMainWindowSettings( KGlobal.Config(), "MainWindow" );
-	///    KEditToolBar dlg(actionCollection());
-	///    connect(&dlg,SIGNAL("newToolBarConfig()"),this,SLOT("slotNewToolBarConfig()"));
-	///    dlg.exec();
-	///  }
-	///  void MyClass.SlotNewToolBarConfig() // This is called when OK, Apply or Defaults is clicked
-	///  {
-	///     ...if you use any action list, use plugActionList on each here...
-	///     createGUI();
-	///     applyMainWindowSettings( KGlobal.Config(), "MainWindow" );
-	///  }
-	///  </pre>
-	///  Note that the procedure is a bit different for KParts applications.
-	///  In this case, you need only pass along a pointer to your
-	///  application's KXMLGUIFactory object.  The editor will take care of
-	///  finding all of the action collections and XML files.  The editor
-	///  aims to be semi-intelligent about where it assigns any
-	///  modifications.  In other words, it will not write out part specific
-	///  changes to your shell's XML file.
-	///  An example would be:
-	///  <pre>
-	///  saveMainWindowSettings( KGlobal.Config(), "MainWindow" );
-	///  KEditToolBar dlg(factory());
-	///  connect(&dlg,SIGNAL("newToolBarConfig()"),this,SLOT("slotNewToolBarConfig()"));
-	///  dlg.exec();
-	///  void MyClass.SlotNewToolBarConfig() // This is called when OK, Apply or Defaults is clicked
-	///  {
-	///     ...if you use any action list, use plugActionList on each here...
-	///     // Do NOT call createGUI()!
-	///     applyMainWindowSettings( KGlobal.Config(), "MainWindow" );
-	///  }
-	///  </pre>
+	///  When created, KEditToolBar takes a KXMLGUIFactory object, and uses it to
+	///  find all of the action collections and XML files (there is one of each for the
+	///  mainwindow, but there could be more, when adding other XMLGUI clients like
+	///  KParts or plugins). The editor aims to be semi-intelligent about where it
+	///  assigns any modifications. In other words, it will not write out part specific
+	///  changes to your application's main XML file.
+	///  KXmlGuiWindow and KParts.MainWindow take care of creating KEditToolBar correctly
+	///  and connecting to its newToolBarConfig slot, but if you really really want to do it
+	///  yourself, see the KXmlGuiWindow.ConfigureToolbars() and KXmlGuiWindow.SaveNewToolbarConfig() code.
 	///  See <see cref="IKEditToolBarSignals"></see> for signals emitted by KEditToolBar
 	/// </remarks>		<author> Kurt Granroth <granroth@kde.org>
+	///  @maintainer David Faure <faure@kde.org>
 	///  </author>
 	/// 		<short> A dialog used to customize or configure toolbars. </short>
 
@@ -67,25 +40,22 @@ namespace Kimono {
 	public class KEditToolBar : KDialog, IDisposable {
  		protected KEditToolBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KEditToolBar), this);
+			interceptor = new SmokeInvocationKDE(typeof(KEditToolBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KEditToolBar() {
-			staticInterceptor = new SmokeInvocation(typeof(KEditToolBar), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KEditToolBar), null);
 		}
 		/// <remarks>
-		///  Constructor for apps that do not use components.
-		///  This is the
-		///  only entry point to this class.  You <b>must</b> pass along your
-		///  collection of actions (some of which appear in your toolbars).
+		///  Old constructor for apps that do not use components.
+		///  This constructor is somewhat deprecated, since it doesn't work
+		///  with any KXMLGuiClient being added to the mainwindow.
+		///  You really want to use the other constructor.
+		///  You <b>must</b> pass along your collection of actions (some of which appear in your toolbars).
 		///  The other two parameters are optional.
 		/// <param> name="collection" The collection of actions to work on.
-		/// </param><param> name="defaultToolBar" The toolbar with this name will appear for editing.
-		///                        Pass in string() for the default behaviour,
-		///                        generallyd desired for apps that do not use
-		///                        components.
 		/// </param><param> name="parent" The parent of the dialog.
-		///    </param></remarks>		<short>    Constructor for apps that do not use components.</short>
+		///    </param></remarks>		<short>    Old constructor for apps that do not use components.</short>
 		public KEditToolBar(KActionCollection collection, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KEditToolBar##", "KEditToolBar(KActionCollection*, QWidget*)", typeof(void), typeof(KActionCollection), collection, typeof(QWidget), parent);
@@ -95,7 +65,7 @@ namespace Kimono {
 			interceptor.Invoke("KEditToolBar#", "KEditToolBar(KActionCollection*)", typeof(void), typeof(KActionCollection), collection);
 		}
 		/// <remarks>
-		///  Constructor for KParts based apps.
+		///  Main constructor.
 		///  The main parameter, factory(), is a pointer to the
 		///  XML GUI factory object for your application.  It contains a list
 		///  of all of the GUI clients (along with the action collections and
@@ -103,14 +73,12 @@ namespace Kimono {
 		///  Use this like so:
 		///  <pre>
 		///  KEditToolBar edit(factory());
-		///  if ( edit.exec() )
+		///  if (edit.exec())
 		///  ...
 		///  </pre>
 		/// <param> name="factory" Your application's factory object
-		/// </param><param> name="defaultToolBar" The toolbar with this name will appear for editing.
-		///                        Pass in string() for default behavior.
 		/// </param><param> name="parent" The usual parent for the dialog.
-		///    </param></remarks>		<short>    Constructor for KParts based apps.</short>
+		///    </param></remarks>		<short>    Main constructor.</short>
 		public KEditToolBar(KXMLGUIFactory factory, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KEditToolBar##", "KEditToolBar(KXMLGUIFactory*, QWidget*)", typeof(void), typeof(KXMLGUIFactory), factory, typeof(QWidget), parent);

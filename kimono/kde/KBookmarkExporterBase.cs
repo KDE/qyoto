@@ -10,7 +10,14 @@ namespace Kimono {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected KBookmarkExporterBase(Type dummy) {}
-		// KBookmarkExporterBase* KBookmarkExporterBase(KBookmarkManager* arg1,const QString& arg2); >>>> NOT CONVERTED
-		// void write(const KBookmarkGroup& arg1); >>>> NOT CONVERTED
+		protected void CreateProxy() {
+			interceptor = new SmokeInvocationKDE(typeof(KBookmarkExporterBase), this);
+		}
+		public KBookmarkExporterBase(KBookmarkManager mgr, string fileName) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KBookmarkExporterBase#$", "KBookmarkExporterBase(KBookmarkManager*, const QString&)", typeof(void), typeof(KBookmarkManager), mgr, typeof(string), fileName);
+		}
+		[SmokeMethod("write(const KBookmarkGroup&)")]
+		public abstract void Write(KBookmarkGroup arg1);
 	}
 }

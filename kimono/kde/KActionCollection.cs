@@ -7,12 +7,15 @@ namespace Kimono {
 
 	/// <remarks>
 	///  \short A container for a set of QAction objects.
-	///  KActionCollection acts as the owning QObject for a set of QAction objects.  It
+	///  KActionCollection manages a set of QAction objects.  It
 	///  allows them to be grouped for organized presentation of configuration to the user,
 	///  saving + loading of configuration, and optionally for automatic plugging into
 	///  specified widget(s).
 	///  Additionally, KActionCollection provides several convenience functions for locating
 	///  named actions, and actions grouped by QActionGroup.
+	///  <b>Note:<> If you create your own action collection and need to assign shortcuts
+	///  to the actions within, you have to call associateWidget() or
+	///  addAssociatedWidget() to have them working.
 	///   See <see cref="IKActionCollectionSignals"></see> for signals emitted by KActionCollection
 	/// </remarks>		<short>    \short A container for a set of QAction objects.</short>
 
@@ -20,11 +23,11 @@ namespace Kimono {
 	public class KActionCollection : QObject, IDisposable {
  		protected KActionCollection(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KActionCollection), this);
+			interceptor = new SmokeInvocationKDE(typeof(KActionCollection), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KActionCollection() {
-			staticInterceptor = new SmokeInvocation(typeof(KActionCollection), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KActionCollection), null);
 		}
 		[Q_PROPERTY("QString", "configGroup")]
 		public string ConfigGroup {
@@ -36,9 +39,6 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("configIsGlobal", "configIsGlobal()", typeof(bool)); }
 			set { interceptor.Invoke("setConfigGlobal$", "setConfigGlobal(bool)", typeof(void), typeof(bool), value); }
 		}
-		// template<ActionType> ActionType* add(const QString& arg1,const QObject* arg2,const char* arg3); >>>> NOT CONVERTED
-		// template<ActionType> ActionType* add(const QString& arg1,const QObject* arg2); >>>> NOT CONVERTED
-		// template<ActionType> ActionType* add(const QString& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructor.  Allows specification of a KComponentData other than the default
 		///  global KComponentData, where needed.
@@ -58,47 +58,43 @@ namespace Kimono {
 			interceptor.Invoke("clear", "clear()", typeof(void));
 		}
 		/// <remarks>
-		///  Set an associated widget (clears any others).  Associated widgets automatically have all actions
-		///  in the action collection added to themselves.
-		///  \sa addAssociatedWidget(), removeAssociatedWidget(), clearAssociatedWidgets() and associatedWidgets().
-		///    </remarks>		<short>    Set an associated widget (clears any others).</short>
-		public void SetAssociatedWidget(QWidget widget) {
-			interceptor.Invoke("setAssociatedWidget#", "setAssociatedWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
+		///  Associate all actions in this collection to the given \a widget.
+		///  Unlike addAssociatedWidget, this method only adds all current actions
+		///  in the collection to the given widget. Any action added after this call
+		///  will not be added to the given widget automatically.
+		///  So this is just a shortcut for a foreach loop and a widget.AddAction call.
+		///    </remarks>		<short>    Associate all actions in this collection to the given \a widget.</short>
+		public void AssociateWidget(QWidget widget) {
+			interceptor.Invoke("associateWidget#", "associateWidget(QWidget*) const", typeof(void), typeof(QWidget), widget);
 		}
 		/// <remarks>
-		///  Add an associated widget.  Associated widgets automatically have all actions
-		///  in the action collection added to themselves.
-		///  \sa setAssociatedWidget(), removeAssociatedWidget(), clearAssociatedWidgets() and associatedWidgets().
-		///    </remarks>		<short>    Add an associated widget.</short>
+		///  Associate all actions in this collection to the given \a widget, including any actions
+		///  added after this association is made.
+		///  This does not change the action's shortcut context, so if you need to have the actions only
+		///  trigger when the widget has focus, you'll need to set the shortcut context on each action
+		///  to Qt.WidgetShortcut (or better still, Qt.WidgetWithChildrenShortcut with Qt 4.4+)
+		///    </remarks>		<short>    Associate all actions in this collection to the given \a widget, including any actions  added after this association is made.</short>
 		public void AddAssociatedWidget(QWidget widget) {
 			interceptor.Invoke("addAssociatedWidget#", "addAssociatedWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		/// <remarks>
-		///  Remove an associated widget.  Removes all actions in this collection from
-		///  the removed associated widget.
-		///  \sa addAssociatedWidget(), setAssociatedWidget(), clearAssociatedWidgets(), and associatedWidgets().
-		///    </remarks>		<short>    Remove an associated widget.</short>
+		///  Remove an association between all actions in this collection and the given \a widget, i.e.
+		///  remove those actions from the widget, and stop associating newly added actions as well.
+		///    </remarks>		<short>    Remove an association between all actions in this collection and the given \a widget, i.</short>
 		public void RemoveAssociatedWidget(QWidget widget) {
 			interceptor.Invoke("removeAssociatedWidget#", "removeAssociatedWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}
 		/// <remarks>
-		///  Clears all associated widgets.  All actions in this collection will be removed
-		///  from associated widgets.
-		///  \sa addAssociatedWidget(), setAssociatedWidget(), removeAssociatedWidget(), and associatedWidgets().
-		///    </remarks>		<short>    Clears all associated widgets.</short>
-		public void ClearAssociatedWidgets() {
-			interceptor.Invoke("clearAssociatedWidgets", "clearAssociatedWidgets()", typeof(void));
-		}
-		/// <remarks>
-		///  Returns a list of widgets currently associated with this action collection.
-		///  Associations are created to enable custom widgets to provide keyboard interactivity
-		///  via KActions without having to use QWidget.GrabShortcut().  An example of its use
-		///  is katepart, which creates actions for each editor command and then sets its view
-		///  as an associated widget.
-		///  \sa addAssociatedWidget(), setAssociatedWidget(), removeAssociatedWidget(), and clearAssociatedWidgets().
-		///    </remarks>		<short>    Returns a list of widgets currently associated with this action collection.</short>
+		///  Return a list of all associated widgets.
+		///    </remarks>		<short>    Return a list of all associated widgets.</short>
 		public List<QWidget> AssociatedWidgets() {
 			return (List<QWidget>) interceptor.Invoke("associatedWidgets", "associatedWidgets() const", typeof(List<QWidget>));
+		}
+		/// <remarks>
+		///  Clear all associated widgets and remove the actions from those widgets.
+		///    </remarks>		<short>    Clear all associated widgets and remove the actions from those widgets.</short>
+		public void ClearAssociatedWidgets() {
+			interceptor.Invoke("clearAssociatedWidgets", "clearAssociatedWidgets()", typeof(void));
 		}
 		/// <remarks>
 		///  Read all key associations from <code>config.</code>
@@ -113,14 +109,38 @@ namespace Kimono {
 			interceptor.Invoke("readSettings", "readSettings()", typeof(void));
 		}
 		/// <remarks>
-		///  Write the current configurable key associations to <code>config</code>,
-		///  or (if <code>config</code> is zero) to the application's
+		///  Import from <code>config</code> all configurable global key associations.
+		///  \since 4.1
+		///  \param config Config object to read from
+		///     </remarks>		<short>    Import from <code>config</code> all configurable global key associations.</short>
+		public void ImportGlobalShortcuts(KConfigGroup config) {
+			interceptor.Invoke("importGlobalShortcuts#", "importGlobalShortcuts(KConfigGroup*)", typeof(void), typeof(KConfigGroup), config);
+		}
+		/// <remarks>
+		///  Export the current configurable global key associations to <code>config.</code>
+		///  \since 4.1
+		///  \param config Config object to save to
+		///  \param writeDefaults set to true to write settings which are already at defaults.
+		///     </remarks>		<short>    Export the current configurable global key associations to <code>config.</code></short>
+		public void ExportGlobalShortcuts(KConfigGroup config, bool writeDefaults) {
+			interceptor.Invoke("exportGlobalShortcuts#$", "exportGlobalShortcuts(KConfigGroup*, bool) const", typeof(void), typeof(KConfigGroup), config, typeof(bool), writeDefaults);
+		}
+		public void ExportGlobalShortcuts(KConfigGroup config) {
+			interceptor.Invoke("exportGlobalShortcuts#", "exportGlobalShortcuts(KConfigGroup*) const", typeof(void), typeof(KConfigGroup), config);
+		}
+		/// <remarks>
+		///  Write the current configurable key associations to <b>config</b>. What the
+		///  function does if <b>config</b> is zero depends. If this action collection
+		///  belongs to a KXMLGuiClient the setting are saved to the kxmlgui
+		///  definition file. If not the settings are written to the applications
+		///  config file.
+		///  <b>Note:<> oneAction() and writeDefaults() have no meaning for the kxmlgui
 		///  configuration file.
-		///  \param config Config object to save to, or null to use the application's config object.
+		///  \param config Config object to save to, or null (see above)
 		///  \param writeDefaults set to true to write settings which are already at defaults.
 		///  \param oneAction pass an action here if you just want to save the values for one action, eg.
 		///                   if you know that action is the only one which has changed.
-		///     </remarks>		<short>    Write the current configurable key associations to <code>config</code>,  or (if <code>config</code> is zero) to the application's  configuration file.</short>
+		///     </remarks>		<short>    Write the current configurable key associations to <b>config</b>.</short>
 		public void WriteSettings(KConfigGroup config, bool writeDefaults, QAction oneAction) {
 			interceptor.Invoke("writeSettings#$#", "writeSettings(KConfigGroup*, bool, QAction*) const", typeof(void), typeof(KConfigGroup), config, typeof(bool), writeDefaults, typeof(QAction), oneAction);
 		}
@@ -154,12 +174,12 @@ namespace Kimono {
 			return (QAction) interceptor.Invoke("action$", "action(int) const", typeof(QAction), typeof(int), index);
 		}
 		/// <remarks>
-		///  Find the first action with a given \a name in the action collection.
-		/// <param> name="name" Name of the KAction, or null to match all actions
-		/// </param></remarks>		<return> A pointer to the first KAction in the collection which matches the parameters or
+		///  Get the action with the given \a name from the action collection.
+		/// <param> name="name" Name of the KAction
+		/// </param></remarks>		<return> A pointer to the KAction in the collection which matches the parameters or
 		///  null if nothing matches.
 		///    </return>
-		/// 		<short>    Find the first action with a given \a name in the action collection.</short>
+		/// 		<short>    Get the action with the given \a name from the action collection.</short>
 		public QAction Action(string name) {
 			return (QAction) interceptor.Invoke("action$", "action(const QString&) const", typeof(QAction), typeof(string), name);
 		}
@@ -183,6 +203,8 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Set the \a componentData associated with this action collection.
+		///  \warning Don't call this method on a KActionCollection that contains
+		///  actions. This is not supported.
 		///  \param componentData the KComponentData which is to be associated with this action collection,
 		///  or an invalid KComponentData instance to indicate the default KComponentData.
 		///    </remarks>		<short>    Set the \a componentData associated with this action collection.</short>
@@ -212,6 +234,9 @@ namespace Kimono {
 		public QAction AddAction(string name, QAction action) {
 			return (QAction) interceptor.Invoke("addAction$#", "addAction(const QString&, QAction*)", typeof(QAction), typeof(string), name, typeof(QAction), action);
 		}
+		public KAction AddAction(string name, KAction action) {
+			return (KAction) interceptor.Invoke("addAction$#", "addAction(const QString&, KAction*)", typeof(KAction), typeof(string), name, typeof(KAction), action);
+		}
 		/// <remarks>
 		///  Removes an action from the collection and deletes it.
 		/// <param> name="action" The action to remove.
@@ -232,28 +257,28 @@ namespace Kimono {
 		///  The action can be retrieved later from the collection by its standard name as per
 		///  KStandardAction.StdName.
 		///    </remarks>		<short>    Creates a new standard action, adds it to the collection and connects the action's triggered() signal to the  specified receiver/member.</short>
-		public QAction AddAction(KStandardAction.StandardAction actionType, QObject receiver, string member) {
-			return (QAction) interceptor.Invoke("addAction$#$", "addAction(KStandardAction::StandardAction, const QObject*, const char*)", typeof(QAction), typeof(KStandardAction.StandardAction), actionType, typeof(QObject), receiver, typeof(string), member);
+		public KAction AddAction(KStandardAction.StandardAction actionType, QObject receiver, string member) {
+			return (KAction) interceptor.Invoke("addAction$#$", "addAction(KStandardAction::StandardAction, const QObject*, const char*)", typeof(KAction), typeof(KStandardAction.StandardAction), actionType, typeof(QObject), receiver, typeof(string), member);
 		}
-		public QAction AddAction(KStandardAction.StandardAction actionType, QObject receiver) {
-			return (QAction) interceptor.Invoke("addAction$#", "addAction(KStandardAction::StandardAction, const QObject*)", typeof(QAction), typeof(KStandardAction.StandardAction), actionType, typeof(QObject), receiver);
+		public KAction AddAction(KStandardAction.StandardAction actionType, QObject receiver) {
+			return (KAction) interceptor.Invoke("addAction$#", "addAction(KStandardAction::StandardAction, const QObject*)", typeof(KAction), typeof(KStandardAction.StandardAction), actionType, typeof(QObject), receiver);
 		}
-		public QAction AddAction(KStandardAction.StandardAction actionType) {
-			return (QAction) interceptor.Invoke("addAction$", "addAction(KStandardAction::StandardAction)", typeof(QAction), typeof(KStandardAction.StandardAction), actionType);
+		public KAction AddAction(KStandardAction.StandardAction actionType) {
+			return (KAction) interceptor.Invoke("addAction$", "addAction(KStandardAction::StandardAction)", typeof(KAction), typeof(KStandardAction.StandardAction), actionType);
 		}
 		/// <remarks>
 		///  Creates a new standard action, adds to the collection under the given name and connects the action's triggered() signal to the
 		///  specified receiver/member. The newly created action is also returned.
 		///  The action can be retrieved later from the collection by the specified name.
 		///    </remarks>		<short>    Creates a new standard action, adds to the collection under the given name and connects the action's triggered() signal to the  specified receiver/member.</short>
-		public QAction AddAction(KStandardAction.StandardAction actionType, string name, QObject receiver, string member) {
-			return (QAction) interceptor.Invoke("addAction$$#$", "addAction(KStandardAction::StandardAction, const QString&, const QObject*, const char*)", typeof(QAction), typeof(KStandardAction.StandardAction), actionType, typeof(string), name, typeof(QObject), receiver, typeof(string), member);
+		public KAction AddAction(KStandardAction.StandardAction actionType, string name, QObject receiver, string member) {
+			return (KAction) interceptor.Invoke("addAction$$#$", "addAction(KStandardAction::StandardAction, const QString&, const QObject*, const char*)", typeof(KAction), typeof(KStandardAction.StandardAction), actionType, typeof(string), name, typeof(QObject), receiver, typeof(string), member);
 		}
-		public QAction AddAction(KStandardAction.StandardAction actionType, string name, QObject receiver) {
-			return (QAction) interceptor.Invoke("addAction$$#", "addAction(KStandardAction::StandardAction, const QString&, const QObject*)", typeof(QAction), typeof(KStandardAction.StandardAction), actionType, typeof(string), name, typeof(QObject), receiver);
+		public KAction AddAction(KStandardAction.StandardAction actionType, string name, QObject receiver) {
+			return (KAction) interceptor.Invoke("addAction$$#", "addAction(KStandardAction::StandardAction, const QString&, const QObject*)", typeof(KAction), typeof(KStandardAction.StandardAction), actionType, typeof(string), name, typeof(QObject), receiver);
 		}
-		public QAction AddAction(KStandardAction.StandardAction actionType, string name) {
-			return (QAction) interceptor.Invoke("addAction$$", "addAction(KStandardAction::StandardAction, const QString&)", typeof(QAction), typeof(KStandardAction.StandardAction), actionType, typeof(string), name);
+		public KAction AddAction(KStandardAction.StandardAction actionType, string name) {
+			return (KAction) interceptor.Invoke("addAction$$", "addAction(KStandardAction::StandardAction, const QString&)", typeof(KAction), typeof(KStandardAction.StandardAction), actionType, typeof(string), name);
 		}
 		/// <remarks>
 		///  Creates a new action under the given name to the collection and connects the action's triggered()
@@ -266,31 +291,24 @@ namespace Kimono {
 		/// <param> name="name" The name by which the action be retrieved again from the collection.
 		/// </param><param> name="action" The action to add.
 		///    </param></remarks>		<short>    Creates a new action under the given name to the collection and connects the action's triggered()  signal to the specified receiver/member.</short>
-		public QAction AddAction(string name, QObject receiver, string member) {
-			return (QAction) interceptor.Invoke("addAction$#$", "addAction(const QString&, const QObject*, const char*)", typeof(QAction), typeof(string), name, typeof(QObject), receiver, typeof(string), member);
+		public KAction AddAction(string name, QObject receiver, string member) {
+			return (KAction) interceptor.Invoke("addAction$#$", "addAction(const QString&, const QObject*, const char*)", typeof(KAction), typeof(string), name, typeof(QObject), receiver, typeof(string), member);
 		}
-		public QAction AddAction(string name, QObject receiver) {
-			return (QAction) interceptor.Invoke("addAction$#", "addAction(const QString&, const QObject*)", typeof(QAction), typeof(string), name, typeof(QObject), receiver);
+		public KAction AddAction(string name, QObject receiver) {
+			return (KAction) interceptor.Invoke("addAction$#", "addAction(const QString&, const QObject*)", typeof(KAction), typeof(string), name, typeof(QObject), receiver);
 		}
-		public QAction AddAction(string name) {
-			return (QAction) interceptor.Invoke("addAction$", "addAction(const QString&)", typeof(QAction), typeof(string), name);
+		public KAction AddAction(string name) {
+			return (KAction) interceptor.Invoke("addAction$", "addAction(const QString&)", typeof(KAction), typeof(string), name);
 		}
-		/// <remarks>
-		///  Creates a new action under the given name, adds it to the collection and connects the action's triggered()
-		///  signal to the specified receiver/member. The type of the action is specified by the template
-		///  parameter ActionType.
-		///    </remarks>		<short>    Creates a new action under the given name, adds it to the collection and connects the action's triggered()  signal to the specified receiver/member.</short>
+		[Q_SLOT("void connectNotify(const char*)")]
 		[SmokeMethod("connectNotify(const char*)")]
 		protected override void ConnectNotify(string signal) {
 			interceptor.Invoke("connectNotify$", "connectNotify(const char*)", typeof(void), typeof(string), signal);
 		}
+		[Q_SLOT("void slotActionTriggered()")]
 		[SmokeMethod("slotActionTriggered()")]
 		protected virtual void SlotActionTriggered() {
 			interceptor.Invoke("slotActionTriggered", "slotActionTriggered()", typeof(void));
-		}
-		[SmokeMethod("slotActionHighlighted()")]
-		protected virtual void SlotActionHighlighted() {
-			interceptor.Invoke("slotActionHighlighted", "slotActionHighlighted()", typeof(void));
 		}
 		~KActionCollection() {
 			interceptor.Invoke("~KActionCollection", "~KActionCollection()", typeof(void));
@@ -316,15 +334,10 @@ namespace Kimono {
 		[Q_SIGNAL("void inserted(QAction*)")]
 		void Inserted(QAction action);
 		/// <remarks>
-		///  Indicates that \a action was removed from this action collection.
-		///    </remarks>		<short>    Indicates that \a action was removed from this action collection.</short>
-		[Q_SIGNAL("void removed(QAction*)")]
-		void Removed(QAction action);
-		/// <remarks>
-		///  Indicates that \a action was highlighted
-		///    </remarks>		<short>    Indicates that \a action was highlighted    </short>
-		[Q_SIGNAL("void actionHighlighted(QAction*)")]
-		void ActionHighlighted(QAction action);
+		///  Indicates that \a action was hovered.
+		///    </remarks>		<short>    Indicates that \a action was hovered.</short>
+		[Q_SIGNAL("void actionHovered(QAction*)")]
+		void ActionHovered(QAction action);
 		/// <remarks>
 		///  Indicates that \a action was triggered
 		///    </remarks>		<short>    Indicates that \a action was triggered    </short>

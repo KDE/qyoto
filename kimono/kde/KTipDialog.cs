@@ -16,25 +16,19 @@ namespace Kimono {
 	public class KTipDialog : KDialog, IDisposable {
  		protected KTipDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTipDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTipDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTipDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KTipDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KTipDialog), null);
 		}
+		// KTipDialog* KTipDialog(KTipDatabase* arg1,QWidget* arg2); >>>> NOT CONVERTED
+		// KTipDialog* KTipDialog(KTipDatabase* arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a tip dialog.
 		/// <param> name="database" TipDatabase that should be used by the TipDialog.
 		/// </param><param> name="parent" Parent widget of TipDialog.
 		///      </param></remarks>		<short>    Construct a tip dialog.</short>
-		public KTipDialog(KTipDatabase database, QWidget parent) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTipDialog##", "KTipDialog(KTipDatabase*, QWidget*)", typeof(void), typeof(KTipDatabase), database, typeof(QWidget), parent);
-		}
-		public KTipDialog(KTipDatabase database) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KTipDialog#", "KTipDialog(KTipDatabase*)", typeof(void), typeof(KTipDatabase), database);
-		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected override bool EventFilter(QObject arg1, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);

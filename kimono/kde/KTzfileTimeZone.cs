@@ -8,7 +8,7 @@ namespace Kimono {
 	///  The KTzfileTimeZone class represents a time zone defined in tzfile(5) format.
 	///  It works in partnership with the KTzfileTimeZoneSource class which reads and parses the
 	///  time zone definition files.
-	/// </remarks>		<author> David Jarvie <software@astrojar.org.uk>.
+	/// </remarks>		<author> David Jarvie <djarvie@kde.org>.
 	///  </author>
 	/// 		<short> Represents a time zone defined in tzfile(5) format.</short>
 	/// 		<see> KTzfileTimeZoneBackend</see>
@@ -21,12 +21,13 @@ namespace Kimono {
 	public class KTzfileTimeZone : KTimeZone, IDisposable {
  		protected KTzfileTimeZone(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTzfileTimeZone), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTzfileTimeZone), this);
 		}
 		/// <remarks>
 		///  Creates a time zone.
 		/// <param> name="source" tzfile reader and parser
-		/// </param><param> name="name" time zone's unique name
+		/// </param><param> name="name" time zone's unique name, which must be the tzfile path relative
+		///                     to the location specified for <code>source</code>
 		/// </param><param> name="countryCode" ISO 3166 2-character country code, empty if unknown
 		/// </param><param> name="latitude" in degrees (between -90 and +90), UNKNOWN if not known
 		/// </param><param> name="longitude" in degrees (between -180 and +180), UNKNOWN if not known

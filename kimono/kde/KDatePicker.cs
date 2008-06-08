@@ -23,7 +23,7 @@ namespace Kimono {
 	public class KDatePicker : QFrame, IDisposable {
  		protected KDatePicker(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDatePicker), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDatePicker), this);
 		}
 		[Q_PROPERTY("QDate", "date")]
 		public QDate Date {
@@ -40,7 +40,6 @@ namespace Kimono {
 			get { return (int) interceptor.Invoke("fontSize", "fontSize()", typeof(int)); }
 			set { interceptor.Invoke("setFontSize$", "setFontSize(int)", typeof(void), typeof(int), value); }
 		}
-		// KDateTable* dateTable(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  The constructor. The current date will be displayed initially.
 		/// </remarks>		<short>    The constructor.</short>
@@ -113,6 +112,9 @@ namespace Kimono {
 		///  widget.
 		///      </return>
 		/// 		<short>   </short>
+		public KDateTable DateTable() {
+			return (KDateTable) interceptor.Invoke("dateTable", "dateTable() const", typeof(KDateTable));
+		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), o, typeof(QEvent), e);

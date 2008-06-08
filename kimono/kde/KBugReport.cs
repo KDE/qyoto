@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KBugReport : KDialog, IDisposable {
  		protected KBugReport(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBugReport), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBugReport), this);
 		}
 		/// <remarks>
 		///  Creates a bug-report dialog.

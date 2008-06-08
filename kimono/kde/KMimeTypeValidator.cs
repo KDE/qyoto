@@ -24,7 +24,7 @@ namespace Kimono {
 	public class KMimeTypeValidator : QValidator, IDisposable {
  		protected KMimeTypeValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMimeTypeValidator), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMimeTypeValidator), this);
 		}
 		/// <remarks>
 		///  Creates a new mime type validator.

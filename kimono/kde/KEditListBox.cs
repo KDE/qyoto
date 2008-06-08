@@ -18,8 +18,33 @@ namespace Kimono {
 	[SmokeClass("KEditListBox")]
 	public class KEditListBox : QGroupBox, IDisposable {
  		protected KEditListBox(Type dummy) : base((Type) null) {}
+
+		/// <remarks>
+		///  Custom editor class
+		/// </remarks>		<short>    Custom editor class </short>
+
+		[SmokeClass("KEditListBox::CustomEditor")]
+		public class CustomEditor : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected CustomEditor(Type dummy) {}
+			protected void CreateProxy() {
+				interceptor = new SmokeInvocationKDE(typeof(CustomEditor), this);
+			}
+			//  CustomEditor(); >>>> NOT CONVERTED
+			//  CustomEditor(QWidget* arg1,KLineEdit* arg2); >>>> NOT CONVERTED
+			//  CustomEditor(KComboBox* arg1); >>>> NOT CONVERTED
+			// QWidget * representationWidget(); >>>> NOT CONVERTED
+			// KLineEdit * lineEdit(); >>>> NOT CONVERTED
+			public void SetRepresentationWidget(QWidget repWidget) {
+				interceptor.Invoke("setRepresentationWidget#", "setRepresentationWidget(QWidget*)", typeof(void), typeof(QWidget), repWidget);
+			}
+			public void SetLineEdit(KLineEdit edit) {
+				interceptor.Invoke("setLineEdit#", "setLineEdit(KLineEdit*)", typeof(void), typeof(KLineEdit), edit);
+			}
+		}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KEditListBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KEditListBox), this);
 		}
 		/// <remarks>
 		///  Enumeration of the buttons, the listbox offers. Specify them in the
@@ -46,29 +71,10 @@ namespace Kimono {
 		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3,const char* arg4); >>>> NOT CONVERTED
 		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2,QWidget* arg3); >>>> NOT CONVERTED
 		// KEditListBox* KEditListBox(const QString& arg1,const KEditListBox::CustomEditor& arg2); >>>> NOT CONVERTED
+		// void setCustomEditor(const KEditListBox::CustomEditor& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create an editable listbox.
-		///  If <code>checkAtEntering</code> is true, after every character you type
-		///  in the line edit KEditListBox will enable or disable
-		///  the Add-button, depending whether the current content of the
-		///  line edit is already in the listbox. Maybe this can become a
-		///  performance hit with large lists on slow machines.
-		///  If <code>checkAtEntering</code> is false,
-		///  it will be checked if you press the Add-button. It is not
-		///  possible to enter items twice into the listbox.
 		///        </remarks>		<short>    Create an editable listbox.</short>
-		public KEditListBox(QWidget parent, string name, bool checkAtEntering, uint buttons) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KEditListBox#$$$", "KEditListBox(QWidget*, const char*, bool, KEditListBox::Buttons)", typeof(void), typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering, typeof(uint), buttons);
-		}
-		public KEditListBox(QWidget parent, string name, bool checkAtEntering) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KEditListBox#$$", "KEditListBox(QWidget*, const char*, bool)", typeof(void), typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering);
-		}
-		public KEditListBox(QWidget parent, string name) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KEditListBox#$", "KEditListBox(QWidget*, const char*)", typeof(void), typeof(QWidget), parent, typeof(string), name);
-		}
 		public KEditListBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KEditListBox#", "KEditListBox(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -80,20 +86,8 @@ namespace Kimono {
 		/// <remarks>
 		///  Create an editable listbox.
 		///  The same as the other constructor, additionally it takes
-		///  <code>title</code>, which will be the title of the frame around the listbox.
+		///  <code>title</code>, which will be the title of the groupbox around the listbox.
 		///        </remarks>		<short>    Create an editable listbox.</short>
-		public KEditListBox(string title, QWidget parent, string name, bool checkAtEntering, uint buttons) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KEditListBox$#$$$", "KEditListBox(const QString&, QWidget*, const char*, bool, KEditListBox::Buttons)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering, typeof(uint), buttons);
-		}
-		public KEditListBox(string title, QWidget parent, string name, bool checkAtEntering) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KEditListBox$#$$", "KEditListBox(const QString&, QWidget*, const char*, bool)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(string), name, typeof(bool), checkAtEntering);
-		}
-		public KEditListBox(string title, QWidget parent, string name) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KEditListBox$#$", "KEditListBox(const QString&, QWidget*, const char*)", typeof(void), typeof(string), title, typeof(QWidget), parent, typeof(string), name);
-		}
 		public KEditListBox(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KEditListBox$#", "KEditListBox(const QString&, QWidget*)", typeof(void), typeof(string), title, typeof(QWidget), parent);
@@ -112,6 +106,7 @@ namespace Kimono {
 		///  the representation widget.
 		/// </remarks>		<short>    Another constructor, which allows to use a custom editing widget  instead of the standard KLineEdit widget.</short>
 		/// 		<see> KUrlRequester.CustomEditor</see>
+		/// 		<see> setCustomEditor</see>
 		/// <remarks>
 		///  Return a pointer to the embedded QListView.
 		///        </remarks>		<short>    Return a pointer to the embedded QListView.</short>
@@ -195,6 +190,42 @@ namespace Kimono {
 		///        </remarks>		<short>    See QListBox.CurrentText()        </short>
 		public string CurrentText() {
 			return (string) interceptor.Invoke("currentText", "currentText() const", typeof(string));
+		}
+		/// <remarks>
+		///  If <code>check</code> is true, after every character you type
+		///  in the line edit KEditListBox will enable or disable
+		///  the Add-button, depending whether the current content of the
+		///  line edit is already in the listbox. Maybe this can become a
+		///  performance hit with large lists on slow machines.
+		///  If <code>check</code> is false,
+		///  it will be checked if you press the Add-button. It is not
+		///  possible to enter items twice into the listbox.
+		///  Default is false.
+		///        </remarks>		<short>    If <code>check</code> is true, after every character you type  in the line edit KEditListBox will enable or disable  the Add-button, depending whether the current content of the  line edit is already in the listbox.</short>
+		public void SetCheckAtEntering(bool check) {
+			interceptor.Invoke("setCheckAtEntering$", "setCheckAtEntering(bool)", typeof(void), typeof(bool), check);
+		}
+		/// <remarks>
+		///  Returns true if check at entering is enabled.
+		///        </remarks>		<short>    Returns true if check at entering is enabled.</short>
+		public bool CheckAtEntering() {
+			return (bool) interceptor.Invoke("checkAtEntering", "checkAtEntering()", typeof(bool));
+		}
+		/// <remarks>
+		///  Allows to use a custom editing widget
+		///  instead of the standard KLineEdit widget. E.g. you can use a
+		///  KUrlRequester or a KComboBox as input widget. The custom
+		///  editor must consist of a lineedit and optionally another widget that
+		///  is used as representation. A KComboBox or a KUrlRequester have a
+		///  KLineEdit as child-widget for example, so the KComboBox is used as
+		///  the representation widget.
+		/// </remarks>		<short>    Allows to use a custom editing widget  instead of the standard KLineEdit widget.</short>
+		/// <remarks>
+		///  Reimplented for interal reasons. The API is not affected.
+		///        </remarks>		<short>    Reimplented for interal reasons.</short>
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
+		public override bool EventFilter(QObject o, QEvent e) {
+			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), o, typeof(QEvent), e);
 		}
 		[Q_SLOT("void moveItemUp()")]
 		protected void MoveItemUp() {

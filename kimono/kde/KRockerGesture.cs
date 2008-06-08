@@ -11,11 +11,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRockerGesture(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRockerGesture), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRockerGesture), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KRockerGesture() {
-			staticInterceptor = new SmokeInvocation(typeof(KRockerGesture), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KRockerGesture), null);
 		}
 		/// <remarks>
 		///  Create a new invalid rocker gesture.

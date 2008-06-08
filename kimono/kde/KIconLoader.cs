@@ -54,11 +54,11 @@ namespace Kimono {
 	public class KIconLoader : QObject, IDisposable {
  		protected KIconLoader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KIconLoader), this);
+			interceptor = new SmokeInvocationKDE(typeof(KIconLoader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KIconLoader() {
-			staticInterceptor = new SmokeInvocation(typeof(KIconLoader), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KIconLoader), null);
 		}
 		/// <remarks>
 		///  Defines the context of the icon.
@@ -391,6 +391,8 @@ namespace Kimono {
 		/// <remarks>
 		///  Returns a pointer to the current theme. Can be used to query
 		///  available and default sizes for groups.
+		///  @note The KIconTheme will change if reconfigure() is called and
+		///  therefore it's not recommed to store the pointer somewhere.
 		/// </remarks>		<return> a pointer to the current theme. 0 if no theme set.
 		///      </return>
 		/// 		<short>    Returns a pointer to the current theme.</short>

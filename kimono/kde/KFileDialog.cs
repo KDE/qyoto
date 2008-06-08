@@ -27,11 +27,11 @@ namespace Kimono {
 	public class KFileDialog : KDialog, IDisposable {
  		protected KFileDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFileDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFileDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFileDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KFileDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KFileDialog), null);
 		}
 		/// <remarks>
 		///  Defines some default behavior of the filedialog.
@@ -51,6 +51,7 @@ namespace Kimono {
 		// void setMode(KFile::Modes arg1); >>>> NOT CONVERTED
 		// KFile::Modes mode(); >>>> NOT CONVERTED
 		// KAbstractFileWidget* fileWidget(); >>>> NOT CONVERTED
+		// KFileFilterCombo* filterWidget(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a file dialog.
 		/// <param> name="startDir" This can either be
@@ -235,7 +236,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the mimetype for the desired output format.
-		///  This is only valid if setFilterMimeType() has been called
+		///  This is only valid if setMimeFilter() has been called
 		///  previously.
 		/// </remarks>		<short>    Returns the mimetype for the desired output format.</short>
 		/// 		<see> setFilterMimeType</see>
@@ -365,9 +366,6 @@ namespace Kimono {
 		///  You need to link to libkfile to use this widget.
 		///      </return>
 		/// 		<short>   </short>
-		public KFileFilterCombo FilterWidget() {
-			return (KFileFilterCombo) interceptor.Invoke("filterWidget", "filterWidget() const", typeof(KFileFilterCombo));
-		}
 		/// <remarks>
 		/// </remarks>		<return> a pointer to the action collection, holding all the used KActions.
 		///      </return>

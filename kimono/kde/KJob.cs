@@ -31,6 +31,10 @@ namespace Kimono {
 	///       // Do something
 	///   }
 	///  </pre>
+	///  @note: KJob and its subclasses is meant to be used 
+	///  in a fire-and-forget way. It's deleting itself when
+	///  it has finished using deleteLater() so the job
+	///  instance disappears after the next event loop run.
 	///   See <see cref="IKJobSignals"></see> for signals emitted by KJob
 	/// </remarks>		<short>    The base class for all jobs.</short>
 
@@ -38,7 +42,7 @@ namespace Kimono {
 	public abstract class KJob : QObject {
  		protected KJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KJob), this);
+			interceptor = new SmokeInvocationKDE(typeof(KJob), this);
 		}
 		public enum Unit {
 			Bytes = 0,
@@ -58,18 +62,6 @@ namespace Kimono {
 		public const int KilledJobError = 1;
 		public const int UserDefinedError = 100;
 
-		/// <remarks>
-		///  Creates a new KJob object.
-		/// <param> name="parent" the parent QObject
-		///      </param></remarks>		<short>    Creates a new KJob object.</short>
-		public KJob(QObject parent) : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KJob#", "KJob(QObject*)", typeof(void), typeof(QObject), parent);
-		}
-		public KJob() : this((Type) null) {
-			CreateProxy();
-			interceptor.Invoke("KJob", "KJob()", typeof(void));
-		}
 		/// <remarks>
 		///  Attach a UI delegate to this job.
 		///  If the job had another UI delegate, it's automatically deleted. Once
@@ -148,7 +140,7 @@ namespace Kimono {
 		///  message using %1.
 		///  Example for errid == ERR_CANNOT_OPEN_FOR_READING:
 		///  <pre>
-		///    i18n( "Could not read\n%1" ).arg( errorText() );
+		///    i18n( "Could not read\n%1" , errorText() );
 		///  </pre>
 		///  Do not call it if error() is not 0.
 		/// </remarks>		<return> the error message and if there is no error, a message
@@ -185,6 +177,26 @@ namespace Kimono {
 		/// 		<short>    Returns the overall progress of this job.</short>
 		public ulong Percent() {
 			return (ulong) interceptor.Invoke("percent", "percent() const", typeof(ulong));
+		}
+		/// <remarks>
+		///  set the auto-delete property of the job. If <code>autodelete</code> is
+		///  set to false the job will not delete itself once its finished.
+		///  The default for any KJob is to automatically delete itself.
+		/// <param> name="autodelete" set to false to disable automatic deletion
+		///  of the job.
+		///      </param></remarks>		<short>    set the auto-delete property of the job.</short>
+		public void SetAutoDelete(bool autodelete) {
+			interceptor.Invoke("setAutoDelete$", "setAutoDelete(bool)", typeof(void), typeof(bool), autodelete);
+		}
+		/// <remarks>
+		///  Returns whether this job automatically deletes itself once
+		///  the job is finished.
+		/// </remarks>		<return> whether the job is deleted automatically after
+		///  finishing.
+		///      </return>
+		/// 		<short>    Returns whether this job automatically deletes itself once  the job is finished.</short>
+		public bool IsAutoDelete() {
+			return (bool) interceptor.Invoke("isAutoDelete", "isAutoDelete() const", typeof(bool));
 		}
 		/// <remarks>
 		///  Aborts this job.
@@ -310,6 +322,7 @@ namespace Kimono {
 		///  Utility function to emit the result signal, and suicide this job.
 		///  It first notifies the observers to hide the progress for this job using
 		///  the finished() signal.
+		///  @note: Deletes this job using deleteLater().
 		/// </remarks>		<short>    Utility function to emit the result signal, and suicide this job.</short>
 		/// 		<see> result</see>
 		/// 		<see> finished</see>
@@ -341,22 +354,6 @@ namespace Kimono {
 	}
 
 	public interface IKJobSignals : IQObjectSignals {
-		// void description(KJob* arg1,const QString& arg2,const QPair<QString, QString>& field1(QString(), QString()) arg3,const QPair<QString, QString>& field2(QString(), QString()) arg4); >>>> NOT CONVERTED
-		// void description(KJob* arg1,const QString& arg2,const QPair<QString, QString>& field1(QString(), QString()) arg3); >>>> NOT CONVERTED
-		/// <remarks>
-		///  Emitted to display general description of this job. A description has
-		///  a title and two optional fields which can be used to complete the
-		///  description.
-		///  Examples of titles are "Copying", "Creating resource", etc.
-		///  The fields of the description can be "Source" with an URL, and,
-		///  "Destination" with an URL for a "Copying" description.
-		/// <param> name="job" the job that emitted this signal
-		/// </param><param> name="title" the general description of the job
-		/// </param><param> name="field1" first field (localized name and value)
-		/// </param><param> name="field2" second field (localized name and value)
-		///      </param></remarks>		<short>    Emitted to display general description of this job.</short>
-		[Q_SIGNAL("void description(KJob*, const QString&)")]
-		void Description(KJob job, string title);
 		/// <remarks>
 		///  Emitted to display state information about this job.
 		///  Examples of message are "Resolving host", "Connecting to host...", etc.

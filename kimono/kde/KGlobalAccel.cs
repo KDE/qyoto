@@ -17,11 +17,11 @@ namespace Kimono {
 	public class KGlobalAccel : QObject {
  		protected KGlobalAccel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KGlobalAccel), this);
+			interceptor = new SmokeInvocationKDE(typeof(KGlobalAccel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KGlobalAccel() {
-			staticInterceptor = new SmokeInvocation(typeof(KGlobalAccel), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KGlobalAccel), null);
 		}
 		/// <remarks>
 		///  Checks whether the accelerators are enabled.
@@ -32,20 +32,27 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
 		}
 		/// <remarks>
-		///  Set the KComponentData for which to manipulate shortcuts. This is for exceptional
-		///  situations, when you want to modify the shortcuts of another application
-		///  as if they were yours.
-		///  You cannot have your own working global shortcuts in a module/application using this
-		///  special functionality. All global shortcuts of KActions will essentially be proxies.
-		///  Be sure to set the default global shortcuts of the proxy KActions to the same as
-		///  those on the receiving end.
-		///  An example use case is the KControl Module for the window manager KWin, which has
-		///  no own facility for users to change its global shortcuts.
-		/// <param> name="componentData" a KComponentData about the application for which you want to
-		///                       manipulate shortcuts.
-		///      </param></remarks>		<short>    Set the KComponentData for which to manipulate shortcuts.</short>
-		public void OverrideMainComponentData(KComponentData componentData) {
-			interceptor.Invoke("overrideMainComponentData#", "overrideMainComponentData(const KComponentData&)", typeof(void), typeof(KComponentData), componentData);
+		///  Enables or disables the KGlobalAccel
+		/// <param> name="enabled" true if the KGlobalAccel should be enabled, false if it
+		///   should be disabled.
+		///      </param></remarks>		<short>    Enables or disables the KGlobalAccel </short>
+		public void SetEnabled(bool enabled) {
+			interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), enabled);
+		}
+		/// <remarks>
+		///  Return the unique and common names of all main components that have global shortcuts.
+		///  The action strings of the returned actionId stringlists will be empty.
+		///      </remarks>		<short>    Return the unique and common names of all main components that have global shortcuts.</short>
+		public List<List<string>> AllMainComponents() {
+			return (List<List<string>>) interceptor.Invoke("allMainComponents", "allMainComponents()", typeof(List<List<string>>));
+		}
+		/// <remarks>
+		///  Return the full actionIds of all actions with global shortcuts for the main component
+		///  specified by actionId. Only the the ComponentUnique part of actionId will be used;
+		///  the other members of the actionId List<string> will be ignored.
+		///      </remarks>		<short>    Return the full actionIds of all actions with global shortcuts for the main component  specified by actionId.</short>
+		public List<List<string>> AllActionsForComponent(List<string> actionId) {
+			return (List<List<string>>) interceptor.Invoke("allActionsForComponent?", "allActionsForComponent(const QStringList&)", typeof(List<List<string>>), typeof(List<string>), actionId);
 		}
 		/// <remarks>
 		///  Returns (and creates if necessary) the singleton instance

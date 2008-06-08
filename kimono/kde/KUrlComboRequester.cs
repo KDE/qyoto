@@ -9,7 +9,7 @@ namespace Kimono {
 	public class KUrlComboRequester : KUrlRequester, IDisposable {
  		protected KUrlComboRequester(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUrlComboRequester), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUrlComboRequester), this);
 		}
 		/// <remarks>
 		///  Constructs a KUrlRequester widget with a combobox.

@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  The KAction class (and derived and super classes) extends QAction,
@@ -35,7 +36,7 @@ namespace Kimono {
 	///  GUI element you want.  The KAction class will then take care of
 	///  correctly defining the menu item (with icons, accelerators, text,
 	///  etc), toolbar button, or other.  From then on, if you
-	///  manipulate the action at all, the effect will propogate through all
+	///  manipulate the action at all, the effect will propagate through all
 	///  GUI representations of it.  Back to the "cut" example: if you want
 	///  to disable the Cut Action, you would simply call
 	///  'cutAction.SetEnabled(false)' and both the menuitem and button would
@@ -94,14 +95,26 @@ namespace Kimono {
 	///  \section kaction_example Detailed Example
 	///  Here is an example of enabling a "New [document]" action
 	///  <pre>
-	///  KAction newAct = new KAction("filenew", i18n("&New"), actionCollection(), "new");
-	///  newAct.SetShortcut(KStandardShortcut.Shortcut(KStandardShortcut.New));
-	///  connect(newAct, SIGNAL("triggered(bool)"), SLOT("fileNew()"));
+	///  KAction newAct = actionCollection().AddAction(
+	///               KStandardAction.New,   //< see KStandardAction
+	///               this,                   //< Receiver
+	///               SLOT("fileNew()")  );     //< SLOT
 	///  </pre>
-	///  This section creates our action.  It says that wherever this action is
-	///  displayed, it will use "&New" as the text, the standard icon, and
-	///  the standard shortcut.  It further says that whenever this action
-	///  is invoked, it will use the fileNew() slot to execute it.
+	///  This section creates our action. Text, Icon and Shortcut will be set from
+	///  KStandardAction. KStandardAction ensures your application complies to the
+	///  platform standards. When triggered the <code>fileNew</code>() slot will be called.
+	///  If you want to create your own non standard action use
+	///  <pre>
+	///  KAction newAct = actionCollection().AddAction("quick-connect");
+	///  newAct.SetText(i18n("Quick Connect"))
+	///  newAct.SetIcon(KIcon("quick-connect"));
+	///  newAct.SetShortcut(Qt.Key_F6);
+	///  connect(newAct, SIGNAL("triggered()"), this, SLOT("quickConnect()"));
+	///  </pre>
+	///  This section creates our action. It will display the text "Quick Connect"
+	///  and use the Icon "quick-connect". <code>F6</code> will trigger the action. It further
+	///  says that whenever this action is invoked, it will use the quickConnect()
+	///  slot to execute it.
 	///  <pre>
 	///  QMenu file = new QMenu;
 	///  file.AddAction(newAct);
@@ -129,7 +142,7 @@ namespace Kimono {
 	///   is not virtual.
 	///  <b>Note:<> if you are using a "standard" action like "new", "paste",
 	///  "quit", or any other action described in the KDE UI Standards,
-	///  please use the methods in the KStdAction class rather than
+	///  please use the methods in the KStandardAction class rather than
 	///  defining your own.
 	///  \section kaction_xmlgui Usage Within the XML Framework
 	///  If you are using KAction within the context of the XML menu and
@@ -138,13 +151,17 @@ namespace Kimono {
 	///  does that for you.
 	///  See <see cref="IKActionSignals"></see> for signals emitted by KAction
 	/// </remarks>		<short> Class to encapsulate user-driven action or event.</short>
-	/// 		<see> KStdAction</see>
+	/// 		<see> KStandardAction</see>
+	/// 		<see> for</see>
+	/// 		<see> more</see>
+	/// 		<see> information.</see>
+	/// 		<see> KStandardAction</see>
 
 	[SmokeClass("KAction")]
 	public class KAction : QWidgetAction, IDisposable {
  		protected KAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KAction), this);
 		}
 		/// <remarks>
 		///  An enumeration about the two types of shortcuts in a KAction
@@ -179,6 +196,10 @@ namespace Kimono {
 		public bool GlobalShortcutAllowed {
 			get { return (bool) interceptor.Invoke("globalShortcutAllowed", "globalShortcutAllowed()", typeof(bool)); }
 			set { interceptor.Invoke("setGlobalShortcutAllowed$", "setGlobalShortcutAllowed(bool)", typeof(void), typeof(bool), value); }
+		}
+		[Q_PROPERTY("bool", "globalShortcutEnabled")]
+		public bool GlobalShortcutEnabled {
+			get { return (bool) interceptor.Invoke("isGlobalShortcutEnabled", "isGlobalShortcutEnabled()", typeof(bool)); }
 		}
 		/// <remarks>
 		///  Constructs an action.
@@ -254,6 +275,21 @@ namespace Kimono {
 			interceptor.Invoke("setShortcut#", "setShortcut(const QKeySequence&)", typeof(void), typeof(QKeySequence), shortcut);
 		}
 		/// <remarks>
+		///  \overload void setShortcuts(const QList\<QKeySequence\>& shortcuts).
+		///  Set the shortcuts for this action.
+		///  This function is there to explicitly override QAction.SetShortcut(const QList\<QKeySequence\>&).
+		///  QAction.SetShortcuts() will bypass everything in KAction and may lead to unexpected behavior.
+		///  \param shortcut shortcut(s) to use for this action in its specified shortcutContext()
+		///  \param type type of shortcut to be set: active shortcut,
+		///   default shortcut, or both (default argument value).
+		///      </remarks>		<short>    \overload void setShortcuts(const QList\<QKeySequence\>& shortcuts).</short>
+		public void SetShortcuts(List<QKeySequence> shortcuts, uint type) {
+			interceptor.Invoke("setShortcuts?$", "setShortcuts(const QList<QKeySequence>&, KAction::ShortcutTypes)", typeof(void), typeof(List<QKeySequence>), shortcuts, typeof(uint), type);
+		}
+		public new void SetShortcuts(List<QKeySequence> shortcuts) {
+			interceptor.Invoke("setShortcuts?", "setShortcuts(const QList<QKeySequence>&)", typeof(void), typeof(List<QKeySequence>), shortcuts);
+		}
+		/// <remarks>
 		///  Get the global shortcut for this action, if one exists. Global shortcuts
 		///  allow your actions to respond to accellerators independently of the focused window.
 		///  Unlike regular shortcuts, the application's window does not need focus
@@ -272,26 +308,32 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Assign a global shortcut for this action. Global shortcuts
-		///  allow your actions to respond to keys independently of the focused window.
-		///  Unlike regular shortcuts, the application's window does not need focus
-		///  for them to be activated.
-		///  When an action, identified by main component name and text(), is assigned
+		///  allow an action to respond to key shortcuts independently of the focused window,
+		///  i.e. the action will trigger if the keys were pressed no matter where in the X session.
+		///  The action must have a per main component unique
+		///  objectName() to enable cross-application bookeeping. If the objectName() is empty this method will
+		///  do nothing, otherwise the isGlobalShortcutEnabled() property will be set to true and the 
+		///  shortcut will be enabled.
+		///  It is mandatory that the objectName() doesn't change once isGlobalshortcutEnabled()
+		///  has become true.
+		///  <b>Note:<> KActionCollection.Insert(name, action) will set action's objectName to name so you often
+		///  don't have to set an objectName explicitly.
+		///  When an action, identified by main component name and objectName(), is assigned
 		///  a global shortcut for the first time on a KDE installation the assignment will
-		///  be saved and restored every time the action's globalShortcutAllowed flag
-		///  becomes true. \e This \e includes \e calling \e setGlobalShortcut()!
+		///  be saved. The shortcut will then be restored every time setGlobalShortcut() is
+		///  called with <code>loading</code> == Autoloading.
 		///  If you actually want to change the global shortcut you have to set
-		///  <code>loading</code> to NoAutoloading. The new shortcut will be saved again.
-		///  The only way to forget the action's global shortcut is to do
-		///  <pre>
-		///  setGlobalShortcut(KShortcut(), KAction.ActiveShortcut | KAction.DefaultShortcut,
-		///                    KAction.NoAutoloading)
-		///  </pre>
-		///  \param shortcut global shortcut(s) to assign
+		///  <code>loading</code> to NoAutoloading. The new shortcut will be automatically saved again.
+		///  \param shortcut global shortcut(s) to assign. Will be ignored unless <pre>loading</pre> is set to NoAutoloading or this is the first time ever you call this method (see above).
 		///  \param type the type of shortcut to be set, whether the active shortcut, the default shortcut,
 		///              or both (the default).
-		///  \param loading load the previous shortcut (Autoloading, the default) or really set a new
-		///                 shortcut (NoAutoloading).
-		///  \sa KGlobalAccel
+		///  \param loading if Autoloading, assign the global shortcut this action has previously had if any.
+		///                    That way user preferences and changes made to avoid clashes will be conserved.
+		///                 if NoAutoloading the given shortcut will be assigned without looking up old values.
+		///                    You should only do this if the user wants to change the shortcut or if you have
+		///                    another very good reason. Key combinations that clash with other shortcuts will be
+		///                    dropped.
+		///  <b>Note:<> the default shortcut will never be influenced by autoloading - it will be set as given.
 		///  \sa globalShortcut()
 		///      </remarks>		<short>    Assign a global shortcut for this action.</short>
 		public void SetGlobalShortcut(KShortcut shortcut, uint type, KAction.GlobalShortcutLoading loading) {
@@ -304,15 +346,15 @@ namespace Kimono {
 			interceptor.Invoke("setGlobalShortcut#", "setGlobalShortcut(const KShortcut&)", typeof(void), typeof(KShortcut), shortcut);
 		}
 		/// <remarks>
-		///  Indicate whether the programmer and/or user may define a global shortcut for this action.
-		///  Defaults to false. Note that calling setGlobalShortcut() turns this on automatically.
-		///  \param allowed set to \e true if this action may have a global shortcut, otherwise \e false.
-		///      </remarks>		<short>    Indicate whether the programmer and/or user may define a global shortcut for this action.</short>
-		public void SetGlobalShortcutAllowed(bool allowed, KAction.GlobalShortcutLoading loading) {
-			interceptor.Invoke("setGlobalShortcutAllowed$$", "setGlobalShortcutAllowed(bool, KAction::GlobalShortcutLoading)", typeof(void), typeof(bool), allowed, typeof(KAction.GlobalShortcutLoading), loading);
-		}
-		public void SetGlobalShortcutAllowed(bool allowed) {
-			interceptor.Invoke("setGlobalShortcutAllowed$", "setGlobalShortcutAllowed(bool)", typeof(void), typeof(bool), allowed);
+		///  Sets the globalShortcutEnabled property to false and sets the global shortcut to an
+		///  empty shortcut.
+		///  This will also wipe out knowlegde about the existence of this action's global shorctut
+		///  so it will not be considered anymore for shortcut conflict resolution. It will also not be
+		///  visible anymore in the shortcuts KControl module.
+		///  This method should not be used unless these effects are explicitly desired.
+		/// </remarks>		<short>    Sets the globalShortcutEnabled property to false and sets the global shortcut to an  empty shortcut.</short>
+		public void ForgetGlobalShortcut() {
+			interceptor.Invoke("forgetGlobalShortcut", "forgetGlobalShortcut()", typeof(void));
 		}
 		public KShapeGesture ShapeGesture(uint type) {
 			return (KShapeGesture) interceptor.Invoke("shapeGesture$", "shapeGesture(KAction::ShortcutTypes) const", typeof(KShapeGesture), typeof(uint), type);

@@ -5,6 +5,7 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
+	///  \class KSaveFile ksavefile.h <KSaveFile>
 	///  @brief Class to allow for atomic file I/O, as well as utility functions.
 	///  The KSaveFile class has been made to write out changes to an existing
 	///  file atomically. This means that either <b>ALL</b> changes will be written
@@ -52,18 +53,18 @@ namespace Kimono {
 	///  affecting the target file.
 	/// </remarks>		<author> Waldo Bastian <bastian@kde.org>
 	///  </author>
-	/// 		<short>    @brief Class to allow for atomic file I/O, as well as utility functions.</short>
+	/// 		<short>    \class KSaveFile ksavefile.</short>
 	/// 		<see> QFile</see>
 
 	[SmokeClass("KSaveFile")]
 	public class KSaveFile : QFile, IDisposable {
  		protected KSaveFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSaveFile), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSaveFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSaveFile() {
-			staticInterceptor = new SmokeInvocation(typeof(KSaveFile), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KSaveFile), null);
 		}
 		/// <remarks>
 		///  Default constructor.
@@ -128,10 +129,17 @@ namespace Kimono {
 		///  This function will open the save file by creating a temporary file to write
 		///  to. It will also check to ensure that there are sufficient permissions to
 		///  write to the target file.
-		/// </remarks>		<return> true if successful, or false if an error has occurred.
+		/// <param> name="flags" Sets the QIODevice.OpenMode. It should contain the write flag, otherwise you
+		///  have a save file you cannot save to.
+		/// </param></remarks>		<return> true if successful, or false if an error has occurred.
 		///      </return>
 		/// 		<short>    @brief Open the save file.</short>
-		public bool Open() {
+		[SmokeMethod("open(QIODevice::OpenMode)")]
+		public override bool Open(uint flags) {
+			return (bool) interceptor.Invoke("open$", "open(QIODevice::OpenMode)", typeof(bool), typeof(uint), flags);
+		}
+		[SmokeMethod("open()")]
+		public virtual bool Open() {
 			return (bool) interceptor.Invoke("open", "open()", typeof(bool));
 		}
 		/// <remarks>

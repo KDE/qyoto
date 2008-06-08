@@ -19,8 +19,9 @@ namespace Kimono {
 	public class KPageWidget : KPageView, IDisposable {
  		protected KPageWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPageWidget), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPageWidget), this);
 		}
+		// KPageWidget* KPageWidget(KPageWidgetPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new page widget.
 		/// <param> name="parent" The parent widget.
@@ -134,5 +135,11 @@ namespace Kimono {
 		///      </remarks>		<short>    This signal is emitted whenever a checkable page changes its state.</short>
 		[Q_SIGNAL("void pageToggled(KPageWidgetItem*, bool)")]
 		void PageToggled(KPageWidgetItem page, bool arg2);
+		/// <remarks>
+		///  This signal is emitted when a page is removed.
+		/// <param> name="page" The page which is removed
+		///  </param></remarks>		<short>    This signal is emitted when a page is removed.</short>
+		[Q_SIGNAL("void pageRemoved(KPageWidgetItem*)")]
+		void PageRemoved(KPageWidgetItem page);
 	}
 }

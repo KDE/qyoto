@@ -8,7 +8,8 @@ namespace Kimono {
 
 	/// <remarks>
 	///  Easy message dialog box.
-	///  Provides convenience functions for some i18n'ed standard dialogs.
+	///  Provides convenience functions for some i18n'ed standard dialogs,
+	///  as well as audible notification via <see cref="KNotification"></see>
 	///  The text in message boxes is wrapped automatically. The text may either
 	///  be plaintext or richtext. If the text is plaintext, a newline-character
 	///  may be used to indicate the end of a paragraph.
@@ -34,11 +35,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMessageBox(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMessageBox), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMessageBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMessageBox() {
-			staticInterceptor = new SmokeInvocation(typeof(KMessageBox), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KMessageBox), null);
 		}
 		/// <remarks>
 		///  Button types.
@@ -86,9 +87,9 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Question").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -152,11 +153,11 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Question").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="buttonCancel" The text for the third button.
-		///                   The default is i18n("&Cancel").
+		///                   The default is KStandardGuiItem.Cancel().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -228,9 +229,9 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Question").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -296,9 +297,9 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Warning").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -365,9 +366,9 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Question").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -433,7 +434,9 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Warning").
 		/// </param><param> name="buttonContinue" The text for the first button.
+		///                        The default is KStandardGuiItem.Cont().
 		/// </param><param> name="buttonCancel" The text for the second button.
+		///                      The default is KStandardGuiItem.Cancel().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -501,7 +504,9 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Warning").
 		/// </param><param> name="buttonContinue" The text for the first button.
+		///                        The default is KStandardGuiItem.Cont().
 		/// </param><param> name="buttonCancel" The text for the second button.
+		///                      The default is KStandardGuiItem.Cancel().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further confirmation can be turned off.
 		///                 The string is used to lookup and store the setting
@@ -566,11 +571,11 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Warning").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="buttonCancel" The text for the third button.
-		///                   The default is i18n("&Cancel").
+		///                   The default is KStandardGuiItem.Cancel().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further questions can be turned off. If turned off
 		///                 all questions will be automatically answered with the
@@ -648,11 +653,11 @@ namespace Kimono {
 		/// </param><param> name="caption" Message box title. The application name is added to
 		///                 the title. The default title is i18n("Warning").
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="buttonCancel" The text for the third button.
-		///                   The default is i18n("&Cancel").
+		///                   The default is KStandardGuiItem.Cancel().
 		/// </param><param> name="dontAskAgainName" If provided, a checkbox is added with which
 		///                 further questions can be turned off. If turned off
 		///                 all questions will be automatically answered with the
@@ -1092,11 +1097,11 @@ namespace Kimono {
 		/// </param><param> name="text" Message string.
 		/// </param><param> name="caption" Message box title.
 		/// </param><param> name="buttonYes" The text for the first button.
-		///                   The default is i18n("&Yes").
+		///                   The default is KStandardGuiItem.Yes().
 		/// </param><param> name="buttonNo" The text for the second button.
-		///                   The default is i18n("&No").
+		///                   The default is KStandardGuiItem.No().
 		/// </param><param> name="buttonCancel" The text for the third button.
-		///                   The default is i18n("&Cancel").
+		///                   The default is KStandardGuiItem.Cancel().
 		/// </param><param> name="dontShowAskAgainName" If provided, a checkbox is added with which
 		///                 further questions/information can be turned off. If turned off
 		///                 all questions will be automatically answered with the
@@ -1261,7 +1266,8 @@ namespace Kimono {
 		///          KMessageBox.Yes [3]). Will return KMessageBox.Cancel
 		///          if the message box is queued for display instead of 
 		///          exec()ed immediately or if the option NoExec is set.
-		///  @note   The <code>dialog</code> that is passed in is deleted by this
+		///  @note   Unless NoExec is used,
+		///          the <code>dialog</code> that is passed in is deleted by this
 		///          function. Do not delete it yourself.
 		///      </return>
 		/// 		<short>    Create content and layout of a standard dialog </short>
@@ -1394,7 +1400,8 @@ namespace Kimono {
 		///          KMessageBox.Yes [3]). Will return KMessageBox.Cancel
 		///          if the message box is queued for display instead of 
 		///          exec()ed immediately or if the option NoExec is set.
-		///  @note   The <code>dialog</code> that is passed in is deleted by this
+		///  @note   Unless NoExec is used,
+		///          the <code>dialog</code> that is passed in is deleted by this
 		///          function. Do not delete it yourself.
 		///      </return>
 		/// 		<short>    Create content and layout of a standard dialog </short>

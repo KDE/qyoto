@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KPasteTextAction : KAction, IDisposable {
  		protected KPasteTextAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPasteTextAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPasteTextAction), this);
 		}
 		/// <remarks>
 		///  Constructs an action with the specified parent.

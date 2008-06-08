@@ -22,7 +22,7 @@ namespace Kimono {
 	public class KTextBrowser : QTextBrowser, IDisposable {
  		protected KTextBrowser(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTextBrowser), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTextBrowser), this);
 		}
 		[Q_PROPERTY("bool", "notifyClick")]
 		public bool NotifyClick {

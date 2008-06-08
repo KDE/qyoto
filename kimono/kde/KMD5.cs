@@ -46,7 +46,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMD5(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMD5), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMD5), this);
 		}
 		// const KMD5::Digest& rawDigest(); >>>> NOT CONVERTED
 		// void rawDigest(KMD5::Digest& arg1); >>>> NOT CONVERTED

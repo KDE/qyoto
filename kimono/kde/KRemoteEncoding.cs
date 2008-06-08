@@ -23,7 +23,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRemoteEncoding(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRemoteEncoding), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRemoteEncoding), this);
 		}
 		/// <remarks>
 		///  Constructor.

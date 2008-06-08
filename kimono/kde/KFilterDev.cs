@@ -13,14 +13,14 @@ namespace Kimono {
 	/// 		<short>    A class for reading and writing compressed data onto a device  (e.</short>
 
 	[SmokeClass("KFilterDev")]
-	public class KFilterDev : QIODevice {
+	public abstract class KFilterDev : QIODevice {
  		protected KFilterDev(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFilterDev), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFilterDev), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFilterDev() {
-			staticInterceptor = new SmokeInvocation(typeof(KFilterDev), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KFilterDev), null);
 		}
 		/// <remarks>
 		///  Open for reading or writing.

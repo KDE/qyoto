@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KFontRequester : QWidget, IDisposable {
  		protected KFontRequester(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFontRequester), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFontRequester), this);
 		}
 		[Q_PROPERTY("QString", "title")]
 		public string Title {

@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KDateTimeWidget : QWidget, IDisposable {
  		protected KDateTimeWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDateTimeWidget), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDateTimeWidget), this);
 		}
 		[Q_PROPERTY("QDateTime", "dateTime")]
 		public QDateTime DateTime {

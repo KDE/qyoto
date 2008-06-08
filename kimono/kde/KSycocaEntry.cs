@@ -14,14 +14,16 @@ namespace Kimono {
 	/// 		<see> http://techbase.kde.org/Development/Architecture/KDE3/System_Configuration_Cache</see>
 
 	[SmokeClass("KSycocaEntry")]
-	public class KSycocaEntry : KShared, IDisposable {
- 		protected KSycocaEntry(Type dummy) : base((Type) null) {}
-		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSycocaEntry), this);
+	public class KSycocaEntry : Object, IDisposable {
+		protected SmokeInvocation interceptor = null;
+		private IntPtr smokeObject;
+		protected KSycocaEntry(Type dummy) {}
+		protected void CreateProxy() {
+			interceptor = new SmokeInvocationKDE(typeof(KSycocaEntry), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSycocaEntry() {
-			staticInterceptor = new SmokeInvocation(typeof(KSycocaEntry), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KSycocaEntry), null);
 		}
 		// KSycocaEntry* KSycocaEntry(KSycocaEntryPrivate& arg1); >>>> NOT CONVERTED
 		public KSycocaEntry() : this((Type) null) {

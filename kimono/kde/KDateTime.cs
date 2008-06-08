@@ -99,7 +99,7 @@ namespace Kimono {
 	///  provide automatic time zone handling for date/time values, QDateTime was
 	///  chosen as the basis for KDateTime. For those who need an extended date
 	///  range, other classes exist.
-	/// </remarks>		<author> David Jarvie \<software@astrojar.org.uk\>.
+	/// </remarks>		<author> David Jarvie \<djarvie@kde.org\>.
 	///  </author>
 	/// 		<short> A class representing a date and time with an associated time zone.</short>
 	/// 		<see> KTimeZone</see>
@@ -128,41 +128,33 @@ namespace Kimono {
 		///      </remarks>		<short>    The full time specification of a KDateTime instance.</short>
 
 		[SmokeClass("KDateTime::Spec")]
-		public class Spec : Object, IDisposable {
+		public class Spec : Object {
 			protected SmokeInvocation interceptor = null;
 			private IntPtr smokeObject;
 			protected Spec(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(Spec), this);
+				interceptor = new SmokeInvocationKDE(typeof(Spec), this);
 			}
-			// KDateTime::Spec* Spec(SpecType arg1,int arg2); >>>> NOT CONVERTED
-			// KDateTime::Spec* Spec(SpecType arg1); >>>> NOT CONVERTED
-			// KDateTime::Spec* Spec(const KDateTime::Spec& arg1); >>>> NOT CONVERTED
+			private static SmokeInvocation staticInterceptor = null;
+			static Spec() {
+				staticInterceptor = new SmokeInvocationKDE(typeof(Spec), null);
+			}
+			//  Spec(); >>>> NOT CONVERTED
+			//  Spec(const KTimeZone& arg1); >>>> NOT CONVERTED
+			//  Spec(,); >>>> NOT CONVERTED
+			//  Spec(); >>>> NOT CONVERTED
 			// SpecType type(); >>>> NOT CONVERTED
-			// void setType(SpecType arg1,int arg2); >>>> NOT CONVERTED
-			// void setType(SpecType arg1); >>>> NOT CONVERTED
-			// bool operator==(const KDateTime::Spec& arg1); >>>> NOT CONVERTED
-			// bool equivalentTo(const KDateTime::Spec& arg1); >>>> NOT CONVERTED
-			// KDateTime::Spec UTC(); >>>> NOT CONVERTED
-			// KDateTime::Spec ClockTime(); >>>> NOT CONVERTED
-			// KDateTime::Spec OffsetFromUTC(int arg1); >>>> NOT CONVERTED
-			// KDateTime::Spec LocalZone(); >>>> NOT CONVERTED
+			// void setType(,); >>>> NOT CONVERTED
+			// bool operator==(); >>>> NOT CONVERTED
+			// bool equivalentTo(); >>>> NOT CONVERTED
 			/// <remarks>
 			///  Constructs an invalid time specification.
 			///          </remarks>		<short>    Constructs an invalid time specification.</short>
-			public Spec() : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("Spec", "Spec()", typeof(void));
-			}
 			/// <remarks>
 			///  Constructs a time specification for a given time zone.
 			///  If <code>tz</code> is KTimeZone.Utc(), the time specification type is set to <code>UTC.</code>
 			/// <param> name="tz" time zone
 			///          </param></remarks>		<short>    Constructs a time specification for a given time zone.</short>
-			public Spec(KTimeZone tz) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("Spec#", "Spec(const KTimeZone&)", typeof(void), typeof(KTimeZone), tz);
-			}
 			/// <remarks>
 			///  Constructs a time specification.
 			/// <param> name="type" time specification type, which should not be <code>TimeZone</code>
@@ -300,20 +292,20 @@ namespace Kimono {
 			/// </return>
 			/// 		<short>    Checks whether this instance is equivalent to another.</short>
 			/// 		<see> operator==</see>
-			~Spec() {
-				interceptor.Invoke("~Spec", "~Spec()", typeof(void));
-			}
-			public void Dispose() {
-				interceptor.Invoke("~Spec", "~Spec()", typeof(void));
-			}
 			/// <remarks>
 			///  The UTC time specification.
 			///  Provided as a shorthand for KDateTime.Spec(KDateTime.UTC).
 			///          </remarks>		<short>    The UTC time specification.</short>
+			public static int UTC() {
+				return (int) staticInterceptor.Invoke("UTC", "UTC()", typeof(int));
+			}
 			/// <remarks>
 			///  The ClockTime time specification.
 			///  Provided as a shorthand for KDateTime.Spec(KDateTime.ClockTime).
 			///          </remarks>		<short>    The ClockTime time specification.</short>
+			public static int ClockTime() {
+				return (int) staticInterceptor.Invoke("ClockTime", "ClockTime()", typeof(int));
+			}
 			/// <remarks>
 			///  Returns a UTC offset time specification.
 			///  Provided as a shorthand for KDateTime.Spec(KDateTime.OffsetFromUTC, utcOffset).
@@ -321,19 +313,25 @@ namespace Kimono {
 			/// </param></remarks>		<return> UTC offset time specification
 			///          </return>
 			/// 		<short>    Returns a UTC offset time specification.</short>
+			public static int OffsetFromUTC(int utcOffset) {
+				return (int) staticInterceptor.Invoke("OffsetFromUTC$", "OffsetFromUTC(int)", typeof(int), typeof(int), utcOffset);
+			}
 			/// <remarks>
 			///  Returns a local time zone time specification.
 			///  Provided as a shorthand for KDateTime.Spec(KDateTime.LocalZone).
 			/// </remarks>		<return> Local zone time specification
 			///          </return>
 			/// 		<short>    Returns a local time zone time specification.</short>
+			public static int LocalZone() {
+				return (int) staticInterceptor.Invoke("LocalZone", "LocalZone()", typeof(int));
+			}
 		}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDateTime), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDateTime), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDateTime() {
-			staticInterceptor = new SmokeInvocation(typeof(KDateTime), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KDateTime), null);
 		}
 		/// <remarks>
 		///  The time specification type of a KDateTime instance.

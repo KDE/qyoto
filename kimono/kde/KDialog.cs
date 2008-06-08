@@ -76,11 +76,11 @@ namespace Kimono {
 	public class KDialog : QDialog, IDisposable {
  		protected KDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KDialog), null);
 		}
 		public enum ButtonCode {
 			None = 0x00000000,
@@ -93,6 +93,7 @@ namespace Kimono {
 			Close = 0x00000040,
 			No = 0x00000080,
 			Yes = 0x00000100,
+			Reset = 0x00000200,
 			Details = 0x00000400,
 			User1 = 0x00001000,
 			User2 = 0x00002000,
@@ -121,6 +122,8 @@ namespace Kimono {
 			HIGCompliantCaption = AppNameCaption,
 		}
 		// void saveDialogSize(KConfigGroup& arg1,KConfigGroup::WriteConfigFlags arg2); >>>> NOT CONVERTED
+		// KDialog* KDialog(KDialogPrivate& arg1,QWidget* arg2,Qt::WFlags arg3); >>>> NOT CONVERTED
+		// KDialog* KDialog(KDialogPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a dialog.
 		/// <param> name="parent" The parent of the dialog.
@@ -306,21 +309,21 @@ namespace Kimono {
 			interceptor.Invoke("incrementInitialSize#", "incrementInitialSize(const QSize&)", typeof(void), typeof(QSize), size);
 		}
 		/// <remarks>
-		///  Restores the dialogs size from the configuration according to
+		///  Restores the dialog's size from the configuration according to
 		///  the screen size.
 		///  @note the group must be set before calling
 		/// <param> name="config" The config group to read from.
-		///      </param></remarks>		<short>    Restores the dialogs size from the configuration according to  the screen size.</short>
+		///      </param></remarks>		<short>    Restores the dialog's size from the configuration according to  the screen size.</short>
 		public void RestoreDialogSize(KConfigGroup config) {
 			interceptor.Invoke("restoreDialogSize#", "restoreDialogSize(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
 		}
 		/// <remarks>
-		///  Saves the dialogs size dependant on the screen dimension either to the
+		///  Saves the dialog's size dependent on the screen dimension either to the
 		///  global or application config file.
 		///  @note the group must be set before calling
 		/// <param> name="config" The config group to read from.
 		/// </param><param> name="options" passed to KConfigGroup.WriteEntry()
-		///      </param></remarks>		<short>    Saves the dialogs size dependant on the screen dimension either to the  global or application config file.</short>
+		///      </param></remarks>		<short>    Saves the dialog's size dependent on the screen dimension either to the  global or application config file.</short>
 		public void SaveDialogSize(KConfigGroup config) {
 			interceptor.Invoke("saveDialogSize#", "saveDialogSize(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), config);
 		}
@@ -554,7 +557,20 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Activated when the button <code>button</code> is clicked
-		/// <param> name="button" is the type ButtonCode
+		///  Sample that shows how to catch and handle button clicks within
+		///  an own dialog;
+		///  @code
+		///  class MyDialog : public KDialog {
+		///      protected Q_SLOTS:
+		///          void slotButtonClicked(int button) {
+		///              if (button == KDialog.Ok)
+		///                  accept();
+		///              else
+		///                  KDialog.SlotButtonClicked(button);
+		///          }
+		///  }
+		///  @endcode
+		/// <param> name="button" is the type <b>KDialog.ButtonCode</b>
 		///      </param></remarks>		<short>    Activated when the button <code>button</code> is clicked </short>
 		[Q_SLOT("void slotButtonClicked(int)")]
 		[SmokeMethod("slotButtonClicked(int)")]
@@ -687,6 +703,12 @@ namespace Kimono {
 		///      </remarks>		<short>    The Default button was pressed.</short>
 		[Q_SIGNAL("void defaultClicked()")]
 		void DefaultClicked();
+		/// <remarks>
+		///  The Reset button was pressed. This signal is only emitted if
+		///  slotButtonClicked() is not replaced
+		///      </remarks>		<short>    The Reset button was pressed.</short>
+		[Q_SIGNAL("void resetClicked()")]
+		void ResetClicked();
 		/// <remarks>
 		///  The User3 button was pressed. This signal is only emitted if
 		///  slotButtonClicked() is not replaced

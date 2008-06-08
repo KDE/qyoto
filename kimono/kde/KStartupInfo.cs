@@ -26,11 +26,11 @@ namespace Kimono {
 	public class KStartupInfo : QObject, IDisposable {
  		protected KStartupInfo(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KStartupInfo), this);
+			interceptor = new SmokeInvocationKDE(typeof(KStartupInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KStartupInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(KStartupInfo), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KStartupInfo), null);
 		}
 		/// <remarks>
 		/// 

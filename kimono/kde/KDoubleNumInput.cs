@@ -31,7 +31,7 @@ namespace Kimono {
 	public class KDoubleNumInput : KNumInput, IDisposable {
  		protected KDoubleNumInput(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDoubleNumInput), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDoubleNumInput), this);
 		}
 		[Q_PROPERTY("double", "value")]
 		public double Value {
@@ -63,10 +63,10 @@ namespace Kimono {
 			get { return (string) interceptor.Invoke("specialValueText", "specialValueText()", typeof(string)); }
 			set { interceptor.Invoke("setSpecialValueText$", "setSpecialValueText(QString)", typeof(void), typeof(string), value); }
 		}
-		[Q_PROPERTY("int", "precision")]
-		public int Precision {
-			get { return (int) interceptor.Invoke("precision", "precision()", typeof(int)); }
-			set { interceptor.Invoke("setPrecision$", "setPrecision(int)", typeof(void), typeof(int), value); }
+		[Q_PROPERTY("int", "decimals")]
+		public int Decimals {
+			get { return (int) interceptor.Invoke("decimals", "decimals()", typeof(int)); }
+			set { interceptor.Invoke("setDecimals$", "setDecimals(int)", typeof(void), typeof(int), value); }
 		}
 		[Q_PROPERTY("double", "referencePoint")]
 		public double ReferencePoint {
@@ -121,7 +121,7 @@ namespace Kimono {
 		///  instance that it is visually put below some other KNumInput
 		///  widget.  Note that these two KNumInput's need not to have the
 		///  same parent widget or be in the same layout group.  The effect
-		///  is that it'll adjust it's layout in correspondence with the
+		///  is that it'll adjust its layout in correspondence with the
 		///  layout of the other KNumInput's (you can build an arbitrary long
 		///  chain).
 		/// <param> name="below" append KDoubleNumInput to the KDoubleNumInput chain

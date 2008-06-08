@@ -5,6 +5,7 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
+	///  \class KTemporaryFile ktemporaryfile.h <KTemporaryFile>
 	///  @brief A QTemporaryFile that will save in the KDE temp directory.
 	///  This class derives from QTemporaryFile and makes sure that your temporary
 	///  files go in the temporary directory defined by KDE. (This is retrieved by
@@ -48,14 +49,14 @@ namespace Kimono {
 	///  good reason for leaving your temp files around.
 	/// </remarks>		<author> Jaison Lee <lee.jaison@gmail.com>
 	///  </author>
-	/// 		<short>    @brief A QTemporaryFile that will save in the KDE temp directory.</short>
+	/// 		<short>    \class KTemporaryFile ktemporaryfile.</short>
 	/// 		<see> QTemporaryFile</see>
 
 	[SmokeClass("KTemporaryFile")]
 	public class KTemporaryFile : QTemporaryFile, IDisposable {
  		protected KTemporaryFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTemporaryFile), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTemporaryFile), this);
 		}
 		/// <remarks>
 		///  Construct a new KTemporaryFile. The file will be stored in the temporary

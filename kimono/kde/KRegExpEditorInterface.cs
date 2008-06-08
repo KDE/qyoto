@@ -38,7 +38,7 @@ namespace Kimono {
 	///  dialog, then you must do it in the following way:
 	///  <pre>
 	///  QWidget editorWidget =
-	///  KServiceTypeTrader.CreateInstanceFromQuery<QWidget>( 
+	///  KServiceTypeTrader.CreateInstanceFromQuery<QWidget>(
 	///      "KRegExpEditor/KRegExpEditor", string(), parent );
 	///  if ( editorWidget ) {
 	///    // kdeutils was installed, so the widget was found fetch the editor interface
@@ -63,7 +63,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRegExpEditorInterface(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRegExpEditorInterface), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRegExpEditorInterface), this);
 		}
 		// void doSomething(QString arg1,void* arg2); >>>> NOT CONVERTED
 		/// <remarks>
@@ -92,7 +92,7 @@ namespace Kimono {
 		public abstract void SetMatchText(string arg1);
 		/// <remarks>
 		///  This method allows for future changes that will not break binary
-		///  compatibility. DONT USE!
+		///  compatibility. DO NOT USE!
 		///  KDE has a policy of keeping binary compatibility for all major
 		///  version of KDE. This means that new methods can not be added to this
 		///  API before KDE version 4.0.

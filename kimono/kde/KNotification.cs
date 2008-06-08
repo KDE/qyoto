@@ -6,60 +6,62 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
-	///  KNotification is used to notify some event to the user.
+	///  KNotification is used to notify the user of an event.
 	///  \section introduction
-	///  There is mainly two kind of notifications 
+	///  There are two main kinds of notifications:
 	/// 
 	/// <li>
 	/// Feedback events:
 	///  For notifying the user that he/she just performed an operation, like maximizing a
 	///  window. This allows us to play sounds when a dialog appears.
-	///  This is an instant notification.  It ends automatically after a small timeout
+	///  This is an instant notification.  It ends automatically after a small timeout.
 	/// </li>
 	/// 
 	/// <li>
 	/// persistant notifications:
-	///  Notify when one received a new message, or when something important happened
-	///  the user has to know.  This notification has a start and a end.  It start when
-	///  the event actually occurs, and finish when the message is acknowledged or read.
+	///  Notify when the user received a new message, or when something else important happened
+	///  the user has to know about.  This notification has a start and a end.  It begins when
+	///  the event actually occurs, and finishes when the message is acknowledged or read.
 	/// </li>
-	///  Example of a persistant notification in an instant messaging application:
-	///  The application emit the notification whe the message actually received, and close it only
+	///  Example of a persistent notification in an instant messaging application:
+	///  The application emits the notification when the message is actually received, and closes it only
 	///  when the user has read the message (when the message window has received the focus) using the close() slot
-	///  Persistant notification must have the Persistant flag.
-	///  In order to do a notification, you need to create a description files, which contains 
-	///  default parametters of the notification, and use KNotification.Event at the place of the
-	///  code where the notification occurs.
-	///  the returned KNotification pointer may be used to connect signals or slots
+	///  Persistent notifications must have the Persistent flag.
+	///  In order to perform a notification, you need to create a description file, which contains
+	///  default parameters of the notification, and use KNotification.Event at the place in the
+	///  application code where the notification occurs.
+	///  The returned KNotification pointer may be used to connect signals or slots
 	///  \section file The global config file
-	///  On installation, there should be a file called 
+	///  Your application should install a file called:
 	///   <em>$KDEDIR/share/apps/appname/appname.notifyrc</em>
+	///  You can do this with the following CMake command:
+	///  install( FILES appname.notifyrc  DESTINATION ${DATA_INSTALL_DIR}/appname))
 	///   This file contains  mainly 3 parts
 	///    <ol><li>\ref global "Global information"</li>
 	///        <li>\ref context "Context information"</li>
-	///        <li>\ref events "Information about every events"</li></ol>
+	///        <li>\ref events "Definition of individual events"</li></ol>
 	///   \subsection global Global information
 	///  The global part looks like that
 	///  <pre>
 	/// 		   [Global]
 	/// 		   IconName=Filename
-	/// 		   Comment=Freindly Name of app
+	/// 		   Comment=Friendly Name of app
 	///  </pre>
 	///    The icon filename is just the name, without extension,  it's found with the KIconLoader
 	///  \subsection context Context information
-	///  This part is only hints for the configuration widget
+	///  This part consists of hints for the configuration widget
 	///   <pre>
 	/// 		   [Context/group]
 	/// 		   Name=Group name
-	/// 		   Comment=The name of the group of the contact
+	/// 		   Comment=The name of the group for contacts
 	/// 		   [Context/folder]
 	/// 		   Name=Group name
 	///   </pre>
-	///   the second part of the groupname is the context identifier.
-	///   It should not contains special characters.
+	///   The second part of the groupname is the context identifier.
+	///   It should not contain special characters.
 	///   The Name field is the one the user will see (and which is translated)
-	///  \subsection events Description of Events
-	///  Now comes the most important,  the description of each events.
+	///  \subsection events Definition of Events
+	///  The definition of the events forms the most important part of the config file
 	///  <pre>
 	/// 		   [Event/newmail]
 	/// 		   Name=New email
@@ -73,14 +75,14 @@ namespace Kimono {
 	/// 		   Sound=filetoplay.ogg
 	/// 		   Action=None
 	///   </pre>
-	///    All you put there are the default value.
-	///    Action is a bitmask of KNotification.NotifyPresentation
+	///   These are the default settings for each notifiable event.
+	///   Action is a bitmask of KNotification.NotifyPresentation
 	///   Contexts is a comma separated list of possible context for this event.
 	///   \section userfile The user's config file
-	///   This is only an implementation detail, for your information.
-	///  On the config file, there is two parts:  the events configuration, and the context information
+	///   This is an implementation detail, and is described here for your information.
+	///   In the config file, there are two parts:  the event configuration, and the context information
 	///  \subsection context Context information
-	///   This is only hints for the configuration dialog. It contains both the internal id of the context, and the user visible string.
+	///   These are hints for the configuration dialog. They contain both the internal id of the context, and the user visible string.
 	///   <pre>
 	/// 		   [Context/group]
 	/// 		   Values=1:Friends,2:Work,3:Family
@@ -100,7 +102,7 @@ namespace Kimono {
 	///  \section example Example of code
 	///  This portion of code will fire the event for the "contactOnline" event
 	///  @code
-	/// 	KNotification notification= new KNotification ( "contactOnline" );
+	/// 	KNotification notification= new KNotification ( "contactOnline", widget );
 	/// 	notification.SetText( i18n("The contact <i>%1</i> has gone online").arg( contact.Name() ) );
 	/// 	notification.SetPixmap( contact.Pixmap() );
 	/// 	notification.SetActions( List<string>( i18n( "Open chat" ) ) );
@@ -113,23 +115,24 @@ namespace Kimono {
 	///  See <see cref="IKNotificationSignals"></see> for signals emitted by KNotification
 	/// </remarks>		<author> Olivier Goffart  \<ogoffart at kde.org\>
 	///  </author>
-	/// 		<short>    KNotification is used to notify some event to the user.</short>
+	/// 		<short>    KNotification is used to notify the user of an event.</short>
 
 	[SmokeClass("KNotification")]
 	public class KNotification : QObject, IDisposable {
  		protected KNotification(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KNotification), this);
+			interceptor = new SmokeInvocationKDE(typeof(KNotification), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KNotification() {
-			staticInterceptor = new SmokeInvocation(typeof(KNotification), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KNotification), null);
 		}
 		public enum NotificationFlag {
 			RaiseWidgetOnActivation = 0x01,
 			CloseOnTimeout = 0x00,
-			Persistant = 0x02,
+			Persistent = 0x02,
 			CloseWhenWidgetActivated = 0x04,
+			Persistant = Persistent,
 			DefaultEvent = 0xF000,
 		}
 		/// <remarks>
@@ -151,10 +154,11 @@ namespace Kimono {
 		// KNotification* event(KNotification::StandardEvent arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const KNotification::NotificationFlags& arg5); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a new notification.
-		///  you need to use sendEvent to show the notification.
+		///  You have to use sendEvent to show the notification.
 		///  The pointer is automatically deleted when the event is closed.
-		///  Make sure you use one of the CloseOnTimeOut or CloseWhenWidgetActivated, if not,
-		///  you have to close yourself the notification.
+		///  Make sure you use one of the NotificationFlags CloseOnTimeOut or 
+		///  CloseWhenWidgetActivated, if not,
+		///  you have to close the notification yourself.
 		/// <param> name="eventId" is the name of the event
 		/// </param><param> name="widget" is a widget where the notification reports to
 		/// </param><param> name="flags" is a bitmask of NotificationFlag
@@ -169,10 +173,10 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  @brief the widget associated to the notification
-		///  If the widget is destroyed, the notification will be automatically canceled.
-		///  If the widget is activated, the notificaiton will be automatically closed if the flags said that
+		///  If the widget is destroyed, the notification will be automatically cancelled.
+		///  If the widget is activated, the notification will be automatically closed if the NotificationFlags specify that
 		///  When the notification is activated, the widget might be raised.
-		///  Depending of the configuration, the taskbar entry of the window containing the widget may blink.
+		///  Depending on the configuration, the taskbar entry of the window containing the widget may blink.
 		/// 	 </remarks>		<short>    @brief the widget associated to the notification </short>
 		public QWidget Widget() {
 			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));
@@ -202,11 +206,11 @@ namespace Kimono {
 			return (string) interceptor.Invoke("text", "text() const", typeof(string));
 		}
 		/// <remarks>
-		///  Set the notification text that will appears in the popup.
-		///  The text is shown in a QLabel, you should make sure to escape the html is needed.
+		///  Set the notification text that will appear in the popup.
+		///  The text is shown in a QLabel, you should make sure to escape any html that is needed.
 		///  You can use some of the qt basic html tags.
 		/// <param> name="text" the text
-		/// 	 </param></remarks>		<short>    Set the notification text that will appears in the popup.</short>
+		/// 	 </param></remarks>		<short>    Set the notification text that will appear in the popup.</short>
 		public void SetText(string text) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -243,9 +247,9 @@ namespace Kimono {
 		/// 	 </return>
 		/// 		<short>   </short>
 		/// <remarks>
-		///  set the list of context, see KNotification.Context
-		///  The list of context must be set before calling sendEvent;
-		/// 	 </remarks>		<short>    set the list of context, see KNotification.Context </short>
+		///  set the list of contexts, see KNotification.Context
+		///  The list of contexts must be set before calling sendEvent;
+		/// 	 </remarks>		<short>    set the list of contexts, see KNotification.Context </short>
 		/// <remarks>
 		///  append a context at the list of contexts, see KNotificaiton.Context
 		/// <param> name="context" the context which is added
@@ -259,7 +263,7 @@ namespace Kimono {
 			interceptor.Invoke("addContext$$", "addContext(const QString&, const QString&)", typeof(void), typeof(string), context_key, typeof(string), context_value);
 		}
 		/// <remarks>
-		/// </remarks>		<return> the notifications flags.
+		/// </remarks>		<return> the notification flags.
 		///      </return>
 		/// 		<short>   </short>
 		public uint Flags() {
@@ -277,9 +281,9 @@ namespace Kimono {
 			interceptor.Invoke("setComponentData#", "setComponentData(const KComponentData&)", typeof(void), typeof(KComponentData), componentData);
 		}
 		/// <remarks>
-		///  @brief Active the action specified action
+		///  @brief Activate the action specified action
 		///  If the action is zero, then the default action is activated
-		/// 	 </remarks>		<short>    @brief Active the action specified action  If the action is zero, then the default action is activated 	 </short>
+		/// 	 </remarks>		<short>    @brief Activate the action specified action  If the action is zero, then the default action is activated 	 </short>
 		[Q_SLOT("void activate(unsigned int)")]
 		public void Activate(uint action) {
 			interceptor.Invoke("activate$", "activate(unsigned int)", typeof(void), typeof(uint), action);
@@ -289,9 +293,9 @@ namespace Kimono {
 			interceptor.Invoke("activate", "activate()", typeof(void));
 		}
 		/// <remarks>
-		///  close the notification without activate it.
-		///  This will delete the notification
-		/// 	 </remarks>		<short>    close the notification without activate it.</short>
+		///  Close the notification without activating it.
+		///  This will delete the notification.
+		/// 	 </remarks>		<short>    Close the notification without activating it.</short>
 		[Q_SLOT("void close()")]
 		public void Close() {
 			interceptor.Invoke("close", "close()", typeof(void));
@@ -305,11 +309,11 @@ namespace Kimono {
 			interceptor.Invoke("raiseWidget", "raiseWidget()", typeof(void));
 		}
 		/// <remarks>
-		///  The notification will automatically be closed if all presentation are finished.
+		///  The notification will automatically be closed if all presentations are finished.
 		///  if you want to show your own presentation in your application, you should use this
 		///  function, so it will not be automatically closed when there is nothing to show.
 		///  don't forgot to deref, or the notification may be never closed if there is no timeout.
-		/// </remarks>		<short>    The notification will automatically be closed if all presentation are finished.</short>
+		/// </remarks>		<short>    The notification will automatically be closed if all presentations are finished.</short>
 		/// 		<see> ref</see>
 		[Q_SLOT("void ref()")]
 		public void Ref() {
@@ -332,8 +336,15 @@ namespace Kimono {
 			interceptor.Invoke("sendEvent", "sendEvent()", typeof(void));
 		}
 		/// <remarks>
-		///  reimplemented for internals raison
-		/// 	 </remarks>		<short>    reimplemented for internals raison 	 </short>
+		///  update the texts, the icon, and the actions of one existing notification
+		/// 	 </remarks>		<short>   </short>
+		[Q_SLOT("void update()")]
+		public void Update() {
+			interceptor.Invoke("update", "update()", typeof(void));
+		}
+		/// <remarks>
+		///  reimplemented for internal reasons
+		/// 	 </remarks>		<short>    reimplemented for internal reasons 	 </short>
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		protected new virtual bool EventFilter(QObject watched, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
@@ -374,15 +385,15 @@ namespace Kimono {
 			return (KNotification) staticInterceptor.Invoke("event$", "event(const QString&)", typeof(KNotification), typeof(string), eventId);
 		}
 		/// <remarks>
-		///  @brief emit standard an event
+		///  @brief emit a standard event
 		///  @overload
 		///  This will emit a standard event
 		/// <param> name="eventId" is the name of the event
-		/// </param><param> name="text" is the text of the notification to show in the popup.
-		/// </param><param> name="pixmap" is a picture which may be shown in the popup.
+		/// </param><param> name="text" is the text of the notification to show in the popup
+		/// </param><param> name="pixmap" is a picture which may be shown in the popup
 		/// </param><param> name="widget" is a widget where the notification reports to
 		/// </param><param> name="flags" is a bitmask of NotificationFlag 
-		/// 	 </param></remarks>		<short>    @brief emit standard an event  @overload </short>
+		/// 	 </param></remarks>		<short>    @brief emit a standard event  @overload </short>
 		public static KNotification Event(KNotification.StandardEvent eventId, string text, QPixmap pixmap, QWidget widget) {
 			return (KNotification) staticInterceptor.Invoke("event$$##", "event(KNotification::StandardEvent, const QString&, const QPixmap&, QWidget*)", typeof(KNotification), typeof(KNotification.StandardEvent), eventId, typeof(string), text, typeof(QPixmap), pixmap, typeof(QWidget), widget);
 		}
@@ -397,8 +408,8 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  This is a simple substitution for QApplication.Beep()
-		/// <param> name="reason" a small text explaining what's happen (may be null)
-		/// </param><param> name="widget" the widget where the notification refer to 
+		/// <param> name="reason" a short text explaining what has happened (may be empty)
+		/// </param><param> name="widget" the widget the notification refers to
 		/// 	 </param></remarks>		<short>    This is a simple substitution for QApplication.Beep() </short>
 		public static void Beep(string reason, QWidget widget) {
 			staticInterceptor.Invoke("beep$#", "beep(const QString&, QWidget*)", typeof(void), typeof(string), reason, typeof(QWidget), widget);
@@ -422,13 +433,13 @@ namespace Kimono {
 		void Activated();
 		/// <remarks>
 		///  Emit when an action has been activated.
-		/// <param> name="action" will be 0 is the default aciton was activated, or any actiton id
+		/// <param> name="action" will be 0 is the default aciton was activated, or any action id
 		/// 	 </param></remarks>		<short>    Emit when an action has been activated.</short>
 		[Q_SIGNAL("void activated(unsigned int)")]
 		void Activated(uint action);
 		/// <remarks>
-		///  Convenance signal that is emitted when the first action is activated.
-		///      </remarks>		<short>    Convenance signal that is emitted when the first action is activated.</short>
+		///  Convenience signal that is emitted when the first action is activated.
+		///      </remarks>		<short>    Convenience signal that is emitted when the first action is activated.</short>
 		[Q_SIGNAL("void action1Activated()")]
 		void Action1Activated();
 		/// <remarks>
@@ -442,8 +453,8 @@ namespace Kimono {
 		[Q_SIGNAL("void action3Activated()")]
 		void Action3Activated();
 		/// <remarks>
-		///  Emit when the notification is closed. Both if it's activated or just ignored
-		/// 	 </remarks>		<short>    Emit when the notification is closed.</short>
+		///  Emitted when the notification is closed. Both when it is activated or if it is just ignored.
+		/// 	 </remarks>		<short>    Emitted when the notification is closed.</short>
 		[Q_SIGNAL("void closed()")]
 		void Closed();
 		/// <remarks>

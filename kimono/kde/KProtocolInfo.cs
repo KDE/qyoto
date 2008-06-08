@@ -6,6 +6,7 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KProtocolInfo kprotocolinfo.h <KProtocolInfo>
 	///  Information about I/O (Internet, etc.) protocols supported by KDE.
 	///  This class is useful if you want to know which protocols
 	///  KDE supports. In addition you can find out lots of information
@@ -16,21 +17,25 @@ namespace Kimono {
 	///  .protocol files are installed in the "services" resource.
 	/// </remarks>		<author> Torben Weis <weis@kde.org>
 	///  </author>
-	/// 		<short>    Information about I/O (Internet, etc.</short>
+	/// 		<short>    \class KProtocolInfo kprotocolinfo.</short>
 
 	[SmokeClass("KProtocolInfo")]
 	public class KProtocolInfo : KSycocaEntry, IDisposable {
  		protected KProtocolInfo(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KProtocolInfo), this);
+			interceptor = new SmokeInvocationKDE(typeof(KProtocolInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KProtocolInfo() {
-			staticInterceptor = new SmokeInvocation(typeof(KProtocolInfo), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KProtocolInfo), null);
 		}
 		/// <remarks>
 		///  Describes the type of a protocol.
-		///    </remarks>		<short>    Describes the type of a protocol.</short>
+		///  For instance ftp:// appears as a filesystem with folders and files,
+		///  while bzip2:// appears as a single file (a stream of data),
+		///  and telnet:// doesn't output anything.
+		/// </remarks>		<short>    Describes the type of a protocol.</short>
+		/// 		<see> outputType</see>
 		public enum TypeOf {
 			T_STREAM = 0,
 			T_FILESYSTEM = 1,
@@ -50,6 +55,9 @@ namespace Kimono {
 		}
 		public string DefaultMimeType() {
 			return (string) interceptor.Invoke("defaultMimeType", "defaultMimeType() const", typeof(string));
+		}
+		public List<string> ArchiveMimeTypes() {
+			return (List<string>) interceptor.Invoke("archiveMimeTypes", "archiveMimeTypes() const", typeof(List<string>));
 		}
 		protected bool CanRenameFromFile() {
 			return (bool) interceptor.Invoke("canRenameFromFile", "canRenameFromFile() const", typeof(bool));
@@ -208,7 +216,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns the documentation path for the specified protocol.
-		///  This corresponds to the "X-DocPath=" field in the protocol description file.
+		///  This corresponds to the "X-DocPath=" or "DocPath=" field in the protocol description file.
 		/// <param> name="protocol" the protocol to check
 		/// </param></remarks>		<return> the docpath of the protocol, or null if unknown
 		///    </return>

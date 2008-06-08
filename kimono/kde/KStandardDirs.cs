@@ -229,11 +229,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KStandardDirs(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KStandardDirs), this);
+			interceptor = new SmokeInvocationKDE(typeof(KStandardDirs), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KStandardDirs() {
-			staticInterceptor = new SmokeInvocation(typeof(KStandardDirs), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KStandardDirs), null);
 		}
 		public enum SearchOption {
 			NoSearchOptions = 0,
@@ -320,7 +320,7 @@ namespace Kimono {
 		/// <param> name="type" Specifies a short descriptive string to access files
 		///  of this type.
 		/// </param><param> name="absdir" Points to directory where to look for this specific
-		///  type. Non-existant directories may be saved but pruned.
+		///  type. Non-existent directories may be saved but pruned.
 		/// </param><param> name="priority" if true, the directory is added before any other,
 		///  otherwise after
 		/// </param></remarks>		<return> true if successful, false otherwise.
@@ -625,6 +625,9 @@ namespace Kimono {
 		///  A valid executable must
 		///  be a file and have its executable bit set.
 		/// <param> name="appname" The name of the executable file for which to search.
+		///                 if this contains a path separator, it will be resolved
+		///                 according to the current working directory 
+		///                 (shell-like behaviour).
 		/// </param><param> name="pathstr" The path which will be searched. If this is
 		///                 null (default), the @c $PATH environment variable will
 		///                 be searched.
@@ -787,7 +790,7 @@ namespace Kimono {
 		///  is part of mode, it is checked if there is write access to
 		///  the directory. If yes, checkAccess() returns true.
 		///  In all other cases checkAccess() returns false.
-		///  Other than access() this function EXPLICITLY ignores non-existant
+		///  Other than access() this function EXPLICITLY ignores non-existent
 		///  files if checking for write access.
 		/// <param> name="pathname" The full path of the file you want to test
 		/// </param><param> name="mode" The access mode, as in the access() system call.

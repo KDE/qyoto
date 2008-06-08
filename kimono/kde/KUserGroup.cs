@@ -6,6 +6,7 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KUserGroup kuser.h <KUserGroup>
 	///  This class represents a group on your system. You can either get
 	///  information about the group of the current user, of fetch information about
 	///  a group on the system. Instances of this class will be explicitly shared,
@@ -20,11 +21,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KUserGroup(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KUserGroup), this);
+			interceptor = new SmokeInvocationKDE(typeof(KUserGroup), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUserGroup() {
-			staticInterceptor = new SmokeInvocation(typeof(KUserGroup), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KUserGroup), null);
 		}
 		// KUserGroup* KUserGroup(K_GID arg1); >>>> NOT CONVERTED
 		// KUserGroup* KUserGroup(const group* arg1); >>>> NOT CONVERTED
@@ -78,12 +79,12 @@ namespace Kimono {
 			return interceptor.GetHashCode();
 		}
 		/// <remarks>
-		///  Returns wether the group is valid.
+		///  Returns whether the group is valid.
 		///  A KUserGroup object can be invalid if it is
 		///  created with a non-existing gid or name.
 		/// </remarks>		<return> true if the group is valid
 		///    </return>
-		/// 		<short>    Returns wether the group is valid.</short>
+		/// 		<short>    Returns whether the group is valid.</short>
 		public bool IsValid() {
 			return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
 		}

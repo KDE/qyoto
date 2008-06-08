@@ -11,11 +11,12 @@ namespace Kimono {
 	///  </remarks>		<short>    The base class for all jobs able to be composed of one  or more subjobs.</short>
 
 	[SmokeClass("KCompositeJob")]
-	public class KCompositeJob : KJob, IDisposable {
+	public abstract class KCompositeJob : KJob, IDisposable {
  		protected KCompositeJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KCompositeJob), this);
+			interceptor = new SmokeInvocationKDE(typeof(KCompositeJob), this);
 		}
+		// KCompositeJob* KCompositeJob(KCompositeJobPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new KCompositeJob object.
 		/// <param> name="parent" the parent QObject
@@ -104,9 +105,6 @@ namespace Kimono {
 		protected new IKCompositeJobSignals Emit {
 			get { return (IKCompositeJobSignals) Q_EMIT; }
 		}
-		public override void Start() {
-		}
-
 	}
 
 	public interface IKCompositeJobSignals : IKJobSignals {

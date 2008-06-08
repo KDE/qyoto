@@ -12,7 +12,12 @@ namespace Kimono {
 	///  the national language.
 	///  KLocale supports translating, as well as specifying the format
 	///  for numbers, currency, time, and date.
-	///  Use KGlobal.Locale() to get pointer to the global KLocale object
+	///  Use KGlobal.Locale() to get pointer to the global KLocale object,
+	///  containing the applications current locale settings.
+	///  For example, to format the date May 17, 1995 in the current locale, use:
+	///  <pre>
+	///    string date = KGlobal.Locale().FormatDate(QDate(1995,5,17));
+	///  </pre>
 	/// </remarks>		<author> Stephan Kulow <coolo@kde.org>, Preston Brown <pbrown@kde.org>,
 	///  Hans Petter Bieker <bieker@kde.org>, Lukas Tinkl <lukas.tinkl@suse.cz>
 	/// </author>
@@ -24,11 +29,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KLocale(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KLocale), this);
+			interceptor = new SmokeInvocationKDE(typeof(KLocale), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KLocale() {
-			staticInterceptor = new SmokeInvocation(typeof(KLocale), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KLocale), null);
 		}
 		/// <remarks>
 		///  Various positions for where to place the positive or negative
@@ -79,7 +84,6 @@ namespace Kimono {
 			Metric = 0,
 			Imperial = 1,
 		}
-		// KLocale* KLocale(const QString& arg1,KSharedConfig::Ptr arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KLocale with the given catalog name.
 		///  The constructor looks for an entry Locale/Language in the
@@ -94,6 +98,10 @@ namespace Kimono {
 		/// <param> name="catalog" The name of the main language file
 		/// </param><param> name="config" The configuration file to use.
 		///    </param></remarks>		<short>    Constructs a KLocale with the given catalog name.</short>
+		public KLocale(string catalog, KSharedConfig config) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KLocale$#", "KLocale(const QString&, KSharedConfig::Ptr)", typeof(void), typeof(string), catalog, typeof(KSharedConfig), config);
+		}
 		public KLocale(string catalog) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KLocale$", "KLocale(const QString&)", typeof(void), typeof(string), catalog);
@@ -1283,7 +1291,7 @@ namespace Kimono {
 		/// </param></remarks>		<return> True on success.
 		///    </return>
 		/// 		<short>    Changes the current country.</short>
-		protected bool SetCountry(string country, KConfig config) {
+		public bool SetCountry(string country, KConfig config) {
 			return (bool) interceptor.Invoke("setCountry$#", "setCountry(const QString&, KConfig*)", typeof(bool), typeof(string), country, typeof(KConfig), config);
 		}
 		/// <remarks>
@@ -1294,7 +1302,7 @@ namespace Kimono {
 		/// </param></remarks>		<return> true on success
 		///    </return>
 		/// 		<short>    Changes the current language.</short>
-		protected bool SetLanguage(string language, KConfig config) {
+		public bool SetLanguage(string language, KConfig config) {
 			return (bool) interceptor.Invoke("setLanguage$#", "setLanguage(const QString&, KConfig*)", typeof(bool), typeof(string), language, typeof(KConfig), config);
 		}
 		/// <remarks>
@@ -1305,8 +1313,28 @@ namespace Kimono {
 		/// </param></remarks>		<return> true if one of the specified languages were used
 		///    </return>
 		/// 		<short>    Changes the list of preferred languages for the locale.</short>
-		protected bool SetLanguage(List<string> languages) {
+		public bool SetLanguage(List<string> languages) {
 			return (bool) interceptor.Invoke("setLanguage?", "setLanguage(const QStringList&)", typeof(bool), typeof(List<string>), languages);
+		}
+		/// <remarks>
+		///  Tries to find a path to the localized file for the given original path.
+		///  This is intended mainly for non-text resources (images, sounds, etc.),
+		///  whereas text resources should be handled in more specific ways.
+		///  The possible localized paths are checked in turn by priority of set
+		///  languages, in form of dirname/l10n/ll/basename, where dirname and
+		///  basename are those of the original path, and ll is the language code.
+		///  KDE core classes which resolve paths internally (e.g. KStandardDirs)
+		///  will usually perform this lookup behind the scene.
+		///  In general, you should pipe resource paths through this method only
+		///  on explicit translators' request, or when a resource is an obvious
+		///  candidate for localization (e.g. a splash screen or a custom icon
+		///  with some text drawn on it).
+		/// <param> name="filePath" path to the original file
+		/// </param></remarks>		<return> path to the localized file if found, original path otherwise
+		///    </return>
+		/// 		<short>   </short>
+		public string LocalizedFilePath(string filePath) {
+			return (string) interceptor.Invoke("localizedFilePath$", "localizedFilePath(const QString&) const", typeof(string), typeof(string), filePath);
 		}
 		~KLocale() {
 			interceptor.Invoke("~KLocale", "~KLocale()", typeof(void));
@@ -1335,17 +1363,6 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Use this as main catalog for  all  KLocales, if not the appname  will be used.</short>
 		public static void SetMainCatalog(string catalog) {
 			staticInterceptor.Invoke("setMainCatalog$", "setMainCatalog(const char*)", typeof(void), typeof(string), catalog);
-		}
-		/// <remarks>
-		///  Finds localized resource in resourceDir( rtype ) + \<lang> + fname.
-		/// <param> name="fname" relative path to find
-		/// </param><param> name="rtype" resource type to use
-		///    </param></remarks>		<short>    Finds localized resource in resourceDir( rtype ) + \<lang> + fname.</short>
-		public static string LangLookup(string fname, string rtype) {
-			return (string) staticInterceptor.Invoke("langLookup$$", "langLookup(const QString&, const char*)", typeof(string), typeof(string), fname, typeof(string), rtype);
-		}
-		public static string LangLookup(string fname) {
-			return (string) staticInterceptor.Invoke("langLookup$", "langLookup(const QString&)", typeof(string), typeof(string), fname);
 		}
 		/// <remarks>
 		///  Returns the name of the internal language.

@@ -42,7 +42,7 @@ namespace Kimono {
 	public class KActionSelector : QWidget, IDisposable {
  		protected KActionSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KActionSelector), this);
+			interceptor = new SmokeInvocationKDE(typeof(KActionSelector), this);
 		}
 		/// <remarks>
 		///     This enum indentifies the moving buttons

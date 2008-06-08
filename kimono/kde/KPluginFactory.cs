@@ -6,6 +6,7 @@ namespace Kimono {
 	using System.Collections.Generic;
 
 	/// <remarks>
+	///  \class KPluginFactory kpluginfactory.h <KPluginFactory>
 	///  If you develop a library that is to be loaded dynamically at runtime, then
 	///  you should return a pointer to a KPluginFactory.
 	///  For most cases it is enough to use the K_PLUGIN_FACTORY macro to create the factory.
@@ -50,7 +51,7 @@ namespace Kimono {
 	///  }
 	///  </pre>
 	///  If you want to load a library use KPluginLoader.
-	///  The application that wants to instantiate plugin classes later on can do the following:
+	///  The application that wants to instantiate plugin classes can do the following:
 	///  <pre>
 	///  KPluginFactory factory = KPluginLoader("libraryname").factory();
 	///  if (factory) {
@@ -63,13 +64,13 @@ namespace Kimono {
 	///  \author Matthias Kretz <kretz@kde.org>
 	///  \author Bernhard Loos <nhuh.put@web.de>
 	///   See <see cref="IKPluginFactorySignals"></see> for signals emitted by KPluginFactory
-	/// </remarks>		<short>    If you develop a library that is to be loaded dynamically at runtime, then  you should return a pointer to a KPluginFactory.</short>
+	/// </remarks>		<short>    \class KPluginFactory kpluginfactory.</short>
 
 	[SmokeClass("KPluginFactory")]
 	public class KPluginFactory : QObject, IDisposable {
  		protected KPluginFactory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPluginFactory), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPluginFactory), this);
 		}
 		// KPluginFactory* KPluginFactory(const char* arg1,const char* arg2,QObject* arg3); >>>> NOT CONVERTED
 		// KPluginFactory* KPluginFactory(const char* arg1,const char* arg2); >>>> NOT CONVERTED
@@ -77,21 +78,8 @@ namespace Kimono {
 		// KPluginFactory* KPluginFactory(); >>>> NOT CONVERTED
 		// KPluginFactory* KPluginFactory(const KAboutData& arg1,QObject* arg2); >>>> NOT CONVERTED
 		// KPluginFactory* KPluginFactory(const KAboutData& arg1); >>>> NOT CONVERTED
-		// template<typename T> T* create(QObject* arg1,const QVariantList& arg2); >>>> NOT CONVERTED
-		// template<typename T> T* create(QObject* arg1); >>>> NOT CONVERTED
-		// template<typename T> T* create(); >>>> NOT CONVERTED
-		// template<typename T> T* create(const QString& arg1,QObject* arg2,const QVariantList& arg3); >>>> NOT CONVERTED
-		// template<typename T> T* create(const QString& arg1,QObject* arg2); >>>> NOT CONVERTED
-		// template<typename T> T* create(const QString& arg1); >>>> NOT CONVERTED
-		// template<typename T> T* create(QWidget* arg1,QObject* arg2,const QString& arg3,const QVariantList& arg4); >>>> NOT CONVERTED
-		// template<typename T> T* create(QWidget* arg1,QObject* arg2,const QString& arg3); >>>> NOT CONVERTED
-		// template<typename T> T* create(QWidget* arg1,QObject* arg2); >>>> NOT CONVERTED
-		// template<T> void registerPlugin(const QString& arg1,CreateInstanceFunction instanceFunction.createInstanceFunction(reinterpret_cast<T*>(0)) arg2); >>>> NOT CONVERTED
-		// template<T> void registerPlugin(const QString& arg1); >>>> NOT CONVERTED
-		// template<T> void registerPlugin(); >>>> NOT CONVERTED
-		// QVariantList stringListToVariantList(const QStringList& arg1); >>>> NOT CONVERTED
-		// template<impl, class ParentType>  QObject* createInstance(QWidget* arg1,QObject* arg2,const QVariantList& arg3); >>>> NOT CONVERTED
-		// template<impl>  QObject* createPartInstance(QWidget* arg1,QObject* arg2,const QVariantList& arg3); >>>> NOT CONVERTED
+		// KPluginFactory* KPluginFactory(KPluginFactoryPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
+		// KPluginFactory* KPluginFactory(KPluginFactoryPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  This constructor creates a factory for a plugin with the given <pre>componentName</pre> and
 		///  <pre>catalogName</pre>. Those values are used to initialize a KComponentData object for the plugin.
@@ -120,68 +108,15 @@ namespace Kimono {
 			return (KComponentData) interceptor.Invoke("componentData", "componentData() const", typeof(KComponentData));
 		}
 		/// <remarks>
-		///  Use this methode to created an object. It will try to created an object which inherits
-		///  <pre>T</pre>. If it has multiple choices, you will get a fatal error (kFatal()), so be creaful
-		///  to request a unique interface or use keywords.
-		///  \param T The interface for which an object should be created. The object will inherit <pre>T</pre>.
-		///  \param parent The parent of the object. If <pre>parent</pre> is a widget type, it will also passed
-		///                to the parentWidget argument of the CreateInstanceFunction for the object.
-		///  \param args Additional arguments which will be passed to the object.
-		///  \returns A pointer to the created object is returned, or 0 if an error occured.
-		///      </remarks>		<short>    Use this methode to created an object.</short>
-		/// <remarks>
-		///  Use this methode to created an object. It will try to created an object which inherits
-		///  <pre>T</pre> and was registered with <pre>keyword</pre>.
-		///  \param T The interface for which an object should be created. The object will inherit <pre>T</pre>.
-		///  \param keyword The keyword of the object.
-		///  \param parent The parent of the object. If <pre>parent</pre> is a widget type, it will also passed
-		///                to the parentWidget argument of the CreateInstanceFunction for the object.
-		///  \param args Additional arguments which will be passed to the object.
-		///  \returns A pointer to the created object is returned, or 0 if an error occured.
-		///      </remarks>		<short>    Use this methode to created an object.</short>
-		/// <remarks>
-		///  Use this methode to created an object. It will try to created an object which inherits
-		///  <pre>T</pre> and was registered with <pre>keyword</pre>.
-		///  This overload has an additional <pre>parentWidget</pre> argument, which is used by some plugins (e.g. Parts).
-		///  \param T The interface for which an object should be created. The object will inherit <pre>T</pre>.
-		///  \param parentWidget An additional parent widget.
-		///  \param parent The parent of the object. If <pre>parent</pre> is a widget type, it will also passed
-		///                to the parentWidget argument of the CreateInstanceFunction for the object.
-		///  \param keyword The keyword of the object.
-		///  \param args Additional arguments which will be passed to the object.
-		///  \returns A pointer to the created object is returned, or 0 if an error occured.
-		///      </remarks>		<short>    Use this methode to created an object.</short>
-		/// <remarks>
-		///  Registers a plugin with the factory. Call this function from the constructor of the
-		///  KPluginFactory subclass to make the create function able to instantiate the plugin when asked
-		///  for an interface the plugin implements.
-		///  You can register as many plugin classes as you want as long as either the plugin interface or
-		///  the <pre>keyword</pre> makes it unique. E.g. it is possible to register a KCModule and a
-		///  KParts.Part without having to specify keywords since their interfaces differ.
-		///  \param T The name of the plugin class
-		///  \param keyword An optional keyword as unique identifier for the plugin. This allows you to
-		///  put more than one plugin with the same interface into the same library using the same
-		///  factory. X-KDE-PluginKeyword is a convenient way to specify the keyword in a desktop file.
-		///  \param instanceFunction A function pointer to a function that creates an instance of the
-		///  plugin. The default function that will be used depends on the type of interface. If the
-		///  interface inherits from
-		///  \li <code>KParts</code>.Part the function will call
-		///  <pre>
-		///  new T(QWidget parentWidget, QObject parent, QVariantListargs)
-		///  </pre>
-		///  \li <code>QWidget</code> the function will call
-		///  <pre>
-		///  new T(QWidget parent, QVariantListargs)
-		///  </pre>
-		///  <li>else</li> the function will call
-		///  <pre>
-		///  new T(QObject parent, QVariantListargs)
-		///  </pre>
-		///      </remarks>		<short>    Registers a plugin with the factory.</short>
+		///  Function pointer type to a function that instantiates a plugin.
+		///      </remarks>		<short>    Function pointer type to a function that instantiates a plugin.</short>
 		/// <remarks>
 		///  \internal
 		///  Converts a List<string> to a QVariantList
 		///      </remarks>		<short>    \internal  Converts a List<string> to a QVariantList      </short>
+		protected List<QVariant> StringListToVariantList(List<string> list) {
+			return (List<QVariant>) interceptor.Invoke("stringListToVariantList?", "stringListToVariantList(const QStringList&)", typeof(List<QVariant>), typeof(List<string>), list);
+		}
 		/// <remarks>
 		///  \internal
 		///  Converts a QVariantList of strings to a List<string>

@@ -29,7 +29,7 @@ namespace Kimono {
 	public class KStatusBar : QStatusBar, IDisposable {
  		protected KStatusBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KStatusBar), this);
+			interceptor = new SmokeInvocationKDE(typeof(KStatusBar), this);
 		}
 		/// <remarks>
 		///   Constructs a status bar. <code>parent</code> is usually KMainWindow.
@@ -114,7 +114,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Changes the text in a status bar field.
 		///  The item will be resized to fit the text. If you change text to be empty,
-		///  item will not be visible (untill you add some text).
+		///  item will not be visible (until you add some text).
 		/// <param> name="text" The label's text string
 		/// </param><param> name="id" The id of item.
 		///    </param></remarks>		<short>    Changes the text in a status bar field.</short>

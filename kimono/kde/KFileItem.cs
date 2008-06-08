@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KFileItem(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFileItem), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFileItem), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFileItem() {
-			staticInterceptor = new SmokeInvocation(typeof(KFileItem), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KFileItem), null);
 		}
 		/// <remarks>
 		///  The timestamps associated with a file.
@@ -42,6 +42,10 @@ namespace Kimono {
 		// KMimeType::Ptr determineMimeType(); >>>> NOT CONVERTED
 		// KMimeType::Ptr mimeTypePtr(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
+		// void setMetaInfo(const KFileMetaInfo& arg1); >>>> NOT CONVERTED
+		// KFileMetaInfo metaInfo(bool arg1,int arg2); >>>> NOT CONVERTED
+		// KFileMetaInfo metaInfo(bool arg1); >>>> NOT CONVERTED
+		// KFileMetaInfo metaInfo(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Null KFileItem. Doesn't represent any file, only exists for convenience.
 		///  NOTE KDE 4.0 when porting from KFileItem to KFileItem&:
@@ -55,24 +59,25 @@ namespace Kimono {
 		///  Creates an item representing a file, from a UDSEntry.
 		///  This is the preferred constructor when using KIO.ListDir().
 		/// <param> name="entry" the KIO entry used to get the file, contains info about it
-		/// </param><param> name="url" the file url
+		/// </param><param> name="directoryUrl" the URL of the directory containing this item. This is the URL
+		///             that was passed to the KIO list job which emitted this UDSEntry.
 		/// </param><param> name="delayedMimeTypes" specifies if the mimetype of the given
 		///        URL should be determined immediately or on demand.
 		///        See the bool delayedMimeTypes in the KDirLister constructor.
 		/// </param><param> name="urlIsDirectory" specifies if the url is just the directory of the
 		///        fileitem and the filename from the UDSEntry should be used.
 		///      </param></remarks>		<short>    Creates an item representing a file, from a UDSEntry.</short>
-		public KFileItem(KIO.UDSEntry entry, KUrl url, bool delayedMimeTypes, bool urlIsDirectory) : this((Type) null) {
+		public KFileItem(KIO.UDSEntry entry, KUrl directoryUrl, bool delayedMimeTypes, bool urlIsDirectory) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KFileItem##$$", "KFileItem(const KIO::UDSEntry&, const KUrl&, bool, bool)", typeof(void), typeof(KIO.UDSEntry), entry, typeof(KUrl), url, typeof(bool), delayedMimeTypes, typeof(bool), urlIsDirectory);
+			interceptor.Invoke("KFileItem##$$", "KFileItem(const KIO::UDSEntry&, const KUrl&, bool, bool)", typeof(void), typeof(KIO.UDSEntry), entry, typeof(KUrl), directoryUrl, typeof(bool), delayedMimeTypes, typeof(bool), urlIsDirectory);
 		}
-		public KFileItem(KIO.UDSEntry entry, KUrl url, bool delayedMimeTypes) : this((Type) null) {
+		public KFileItem(KIO.UDSEntry entry, KUrl directoryUrl, bool delayedMimeTypes) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KFileItem##$", "KFileItem(const KIO::UDSEntry&, const KUrl&, bool)", typeof(void), typeof(KIO.UDSEntry), entry, typeof(KUrl), url, typeof(bool), delayedMimeTypes);
+			interceptor.Invoke("KFileItem##$", "KFileItem(const KIO::UDSEntry&, const KUrl&, bool)", typeof(void), typeof(KIO.UDSEntry), entry, typeof(KUrl), directoryUrl, typeof(bool), delayedMimeTypes);
 		}
-		public KFileItem(KIO.UDSEntry entry, KUrl url) : this((Type) null) {
+		public KFileItem(KIO.UDSEntry entry, KUrl directoryUrl) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KFileItem##", "KFileItem(const KIO::UDSEntry&, const KUrl&)", typeof(void), typeof(KIO.UDSEntry), entry, typeof(KUrl), url);
+			interceptor.Invoke("KFileItem##", "KFileItem(const KIO::UDSEntry&, const KUrl&)", typeof(void), typeof(KIO.UDSEntry), entry, typeof(KUrl), directoryUrl);
 		}
 		/// <remarks>
 		///  Creates an item representing a file, from all the necessary info for it.
@@ -268,12 +273,30 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("isHidden", "isHidden() const", typeof(bool));
 		}
 		/// <remarks>
+		///  Checks whether the file is a readable local .desktop file,
+		///  i.e. a file whose path can be given to KDesktopFile
+		/// </remarks>		<return> true if the file is a desktop file.
+		/// </return>
+		/// 		<short>    Checks whether the file is a readable local .</short>
+		public bool IsDesktopFile() {
+			return (bool) interceptor.Invoke("isDesktopFile", "isDesktopFile() const", typeof(bool));
+		}
+		/// <remarks>
 		///  Returns the link destination if isLink() == true.
 		/// </remarks>		<return> the link destination. string() if the item is not a link
 		///      </return>
 		/// 		<short>    Returns the link destination if isLink() == true.</short>
 		public string LinkDest() {
 			return (string) interceptor.Invoke("linkDest", "linkDest() const", typeof(string));
+		}
+		/// <remarks>
+		///  Returns the target url of the file, which is the same as url()
+		///  in cases where the slave doesn't specify UDS_TARGET_URL
+		/// </remarks>		<return> the target url.
+		/// </return>
+		/// 		<short>    Returns the target url of the file, which is the same as url()  in cases where the slave doesn't specify UDS_TARGET_URL </short>
+		public KUrl TargetUrl() {
+			return (KUrl) interceptor.Invoke("targetUrl", "targetUrl() const", typeof(KUrl));
 		}
 		/// <remarks>
 		///  Returns the local path if isLocalFile() == true or the KIO item has
@@ -512,23 +535,11 @@ namespace Kimono {
 		///  Made const to avoid deep copy.
 		/// <param> name="info" the new meta info
 		///      </param></remarks>		<short>    Sets the metainfo of this item to <code>info.</code></short>
-		public void SetMetaInfo(KFileMetaInfo info) {
-			interceptor.Invoke("setMetaInfo#", "setMetaInfo(const KFileMetaInfo&) const", typeof(void), typeof(KFileMetaInfo), info);
-		}
 		/// <remarks>
 		///  Returns the metainfo of this item.
 		/// <param> name="autoget" if true, the metainfo will automatically be created
 		/// </param><param> name="what" ignored
 		///      </param></remarks>		<short>    Returns the metainfo of this item.</short>
-		public KFileMetaInfo MetaInfo(bool autoget, int what) {
-			return (KFileMetaInfo) interceptor.Invoke("metaInfo$$", "metaInfo(bool, int) const", typeof(KFileMetaInfo), typeof(bool), autoget, typeof(int), what);
-		}
-		public KFileMetaInfo MetaInfo(bool autoget) {
-			return (KFileMetaInfo) interceptor.Invoke("metaInfo$", "metaInfo(bool) const", typeof(KFileMetaInfo), typeof(bool), autoget);
-		}
-		public KFileMetaInfo MetaInfo() {
-			return (KFileMetaInfo) interceptor.Invoke("metaInfo", "metaInfo() const", typeof(KFileMetaInfo));
-		}
 		/// <remarks>
 		///  Tries to give a local URL for this file item if possible.
 		///  The given boolean indicates if the returned url is local or not.

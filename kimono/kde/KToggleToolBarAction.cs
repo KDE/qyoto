@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KToggleToolBarAction : KToggleAction, IDisposable {
  		protected KToggleToolBarAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KToggleToolBarAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KToggleToolBarAction), this);
 		}
 		/// <remarks>
 		///  Create a KToggleToolbarAction that manages the toolbar
@@ -54,7 +54,7 @@ namespace Kimono {
 		///  Reimplemented from @see QObject.
 		///      </remarks>		<short>    Reimplemented from @see QObject.</short>
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
-		public override bool EventFilter(QObject watched, QEvent arg2) {
+		public new virtual bool EventFilter(QObject watched, QEvent arg2) {
 			return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
 		}
 		~KToggleToolBarAction() {

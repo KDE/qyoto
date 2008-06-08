@@ -50,17 +50,52 @@ namespace Kimono {
 		protected KTimeZone(Type dummy) {}
 
 
+		[SmokeClass("KTimeZone::Transition")]
+		public class Transition : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected Transition(Type dummy) {}
+			protected void CreateProxy() {
+				interceptor = new SmokeInvocationKDE(typeof(Transition), this);
+			}
+			//  Transition(); >>>> NOT CONVERTED
+			//  Transition(,); >>>> NOT CONVERTED
+			//  Transition(); >>>> NOT CONVERTED
+			// Phase phase(); >>>> NOT CONVERTED
+			// bool operator<(); >>>> NOT CONVERTED
+			/// <remarks>
+			///  Return the UTC time of the transition.
+			/// </remarks>		<return> UTC time
+			///          </return>
+			/// 		<short>    Return the UTC time of the transition.</short>
+			public QDateTime Time() {
+				return (QDateTime) interceptor.Invoke("time", "time() const", typeof(QDateTime));
+			}
+			/// <remarks>
+			///  Return the time zone phase which takes effect after the transition.
+			/// </remarks>		<return> time zone phase
+			///          </return>
+			/// 		<short>    Return the time zone phase which takes effect after the transition.</short>
+			/// <remarks>
+			///  Compare the date/time values of two transitions.
+			/// <param> name="rhs" other instance
+			/// </param></remarks>		<return> @c true if this Transition is earlier than <code>rhs</code>
+			///          </return>
+			/// 		<short>    Compare the date/time values of two transitions.</short>
+		}
+
+
 		[SmokeClass("KTimeZone::Phase")]
 		public class Phase : Object, IDisposable {
 			protected SmokeInvocation interceptor = null;
 			private IntPtr smokeObject;
 			protected Phase(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(Phase), this);
+				interceptor = new SmokeInvocationKDE(typeof(Phase), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static Phase() {
-				staticInterceptor = new SmokeInvocation(typeof(Phase), null);
+				staticInterceptor = new SmokeInvocationKDE(typeof(Phase), null);
 			}
 			public Phase() : this((Type) null) {
 				CreateProxy();
@@ -158,74 +193,17 @@ namespace Kimono {
 		}
 
 
-		[SmokeClass("KTimeZone::Transition")]
-		public class Transition : Object, IDisposable {
-			protected SmokeInvocation interceptor = null;
-			private IntPtr smokeObject;
-			protected Transition(Type dummy) {}
-			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(Transition), this);
-			}
-			private static SmokeInvocation staticInterceptor = null;
-			static Transition() {
-				staticInterceptor = new SmokeInvocation(typeof(Transition), null);
-			}
-			// KTimeZone::Transition* Transition(const QDateTime& arg1,const Phase& arg2); >>>> NOT CONVERTED
-			// Phase phase(); >>>> NOT CONVERTED
-			public Transition() : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("Transition", "Transition()", typeof(void));
-			}
-			public Transition(KTimeZone.Transition t) : this((Type) null) {
-				CreateProxy();
-				interceptor.Invoke("Transition#", "Transition(const KTimeZone::Transition&)", typeof(void), typeof(KTimeZone.Transition), t);
-			}
-			/// <remarks>
-			///  Return the UTC time of the transition.
-			/// </remarks>		<return> UTC time
-			///          </return>
-			/// 		<short>    Return the UTC time of the transition.</short>
-			public QDateTime Time() {
-				return (QDateTime) interceptor.Invoke("time", "time() const", typeof(QDateTime));
-			}
-			/// <remarks>
-			///  Return the time zone phase which takes effect after the transition.
-			/// </remarks>		<return> time zone phase
-			///          </return>
-			/// 		<short>    Return the time zone phase which takes effect after the transition.</short>
-			/// <remarks>
-			///  Compare the date/time values of two transitions.
-			/// <param> name="rhs" other instance
-			/// </param></remarks>		<return> @c true if this Transition is earlier than <code>rhs</code>
-			///          </return>
-			/// 		<short>    Compare the date/time values of two transitions.</short>
-			~Transition() {
-				interceptor.Invoke("~Transition", "~Transition()", typeof(void));
-			}
-			public void Dispose() {
-				interceptor.Invoke("~Transition", "~Transition()", typeof(void));
-			}
-			public static bool operator<(Transition lhs, KTimeZone.Transition rhs) {
-				return (bool) staticInterceptor.Invoke("operator<#", "operator<(const KTimeZone::Transition&) const", typeof(bool), typeof(Transition), lhs, typeof(KTimeZone.Transition), rhs);
-			}
-			public static bool operator>(Transition lhs, KTimeZone.Transition rhs) {
-				return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const KTimeZone::Transition&) const", typeof(bool), typeof(Transition), lhs, typeof(KTimeZone.Transition), rhs)
-							&& !(bool) staticInterceptor.Invoke("operator==#", "operator==(const KTimeZone::Transition&) const", typeof(bool), typeof(Transition), lhs, typeof(KTimeZone.Transition), rhs);
-			}
-		}
-
-
 		[SmokeClass("KTimeZone::LeapSeconds")]
 		public class LeapSeconds : Object, IDisposable {
 			protected SmokeInvocation interceptor = null;
 			private IntPtr smokeObject;
 			protected LeapSeconds(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocation(typeof(LeapSeconds), this);
+				interceptor = new SmokeInvocationKDE(typeof(LeapSeconds), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static LeapSeconds() {
-				staticInterceptor = new SmokeInvocation(typeof(LeapSeconds), null);
+				staticInterceptor = new SmokeInvocationKDE(typeof(LeapSeconds), null);
 			}
 			public LeapSeconds() : this((Type) null) {
 				CreateProxy();
@@ -291,11 +269,11 @@ namespace Kimono {
 			}
 		}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KTimeZone), this);
+			interceptor = new SmokeInvocationKDE(typeof(KTimeZone), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTimeZone() {
-			staticInterceptor = new SmokeInvocation(typeof(KTimeZone), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KTimeZone), null);
 		}
 		public static int InvalidOffset() {
 			return (int) staticInterceptor.Invoke("InvalidOffset", "InvalidOffset()", typeof(int));
@@ -306,16 +284,12 @@ namespace Kimono {
 		public static float UNKNOWN() {
 			return (float) staticInterceptor.Invoke("UNKNOWN", "UNKNOWN()", typeof(float));
 		}
-		// QList<KTimeZone::Phase> phases(); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(const QDateTime& arg1,const QDateTime& arg2); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(const QDateTime& arg1); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(); >>>> NOT CONVERTED
 		// const KTimeZone::Transition* transition(const QDateTime& arg1,const KTimeZone::Transition** arg2,bool* arg3); >>>> NOT CONVERTED
 		// const KTimeZone::Transition* transition(const QDateTime& arg1,const KTimeZone::Transition** arg2); >>>> NOT CONVERTED
-		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1,const QDateTime& arg2,const QDateTime& arg3); >>>> NOT CONVERTED
-		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1,const QDateTime& arg2); >>>> NOT CONVERTED
-		// QList<QDateTime> transitionTimes(const KTimeZone::Phase& arg1); >>>> NOT CONVERTED
-		// QList<KTimeZone::LeapSeconds> leapSecondChanges(); >>>> NOT CONVERTED
+		// const KTimeZone::Transition* transition(const QDateTime& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a null time zone. A null time zone is invalid.
 		/// </remarks>		<short>    Constructs a null time zone.</short>
@@ -661,6 +635,9 @@ namespace Kimono {
 		/// </remarks>		<return> list of phases
 		///      </return>
 		/// 		<short>    Return all daylight savings time phases for the time zone.</short>
+		public List<KTimeZone.Phase> Phases() {
+			return (List<KTimeZone.Phase>) interceptor.Invoke("phases", "phases() const", typeof(List<KTimeZone.Phase>));
+		}
 		/// <remarks>
 		///  Return whether daylight saving transitions are available for the time zone.
 		///  The base class returns <code>false.</code>
@@ -712,9 +689,6 @@ namespace Kimono {
 		/// 		<see> transitionIndex</see>
 		/// 		<see> hasTransitions</see>
 		/// 		<see> transitions</see>
-		public KTimeZone.Transition transition(QDateTime dt) {
-			return (KTimeZone.Transition) interceptor.Invoke("transition#", "transition(const QDateTime&) const", typeof(KTimeZone.Transition), typeof(QDateTime), dt);
-		}
 		/// <remarks>
 		///  Find the index to the last daylight savings time transition at or before
 		///  a given UTC or local time. The return value is the index into the transition
@@ -797,6 +771,15 @@ namespace Kimono {
 		/// 		<see> hasTransitions</see>
 		/// 		<see> transition</see>
 		/// 		<see> transitions</see>
+		public List<QDateTime> TransitionTimes(KTimeZone.Phase phase, QDateTime start, QDateTime end) {
+			return (List<QDateTime>) interceptor.Invoke("transitionTimes###", "transitionTimes(const KTimeZone::Phase&, const QDateTime&, const QDateTime&) const", typeof(List<QDateTime>), typeof(KTimeZone.Phase), phase, typeof(QDateTime), start, typeof(QDateTime), end);
+		}
+		public List<QDateTime> TransitionTimes(KTimeZone.Phase phase, QDateTime start) {
+			return (List<QDateTime>) interceptor.Invoke("transitionTimes##", "transitionTimes(const KTimeZone::Phase&, const QDateTime&) const", typeof(List<QDateTime>), typeof(KTimeZone.Phase), phase, typeof(QDateTime), start);
+		}
+		public List<QDateTime> TransitionTimes(KTimeZone.Phase phase) {
+			return (List<QDateTime>) interceptor.Invoke("transitionTimes#", "transitionTimes(const KTimeZone::Phase&) const", typeof(List<QDateTime>), typeof(KTimeZone.Phase), phase);
+		}
 		/// <remarks>
 		///  Return all leap second adjustments, in time order.
 		///  Note that some time zone data sources (such as system time zones accessed
@@ -805,6 +788,9 @@ namespace Kimono {
 		/// </remarks>		<return> list of adjustments
 		///      </return>
 		/// 		<short>    Return all leap second adjustments, in time order.</short>
+		public List<KTimeZone.LeapSeconds> LeapSecondChanges() {
+			return (List<KTimeZone.LeapSeconds>) interceptor.Invoke("leapSecondChanges", "leapSecondChanges() const", typeof(List<KTimeZone.LeapSeconds>));
+		}
 		/// <remarks>
 		///  Returns the source reader/parser for the time zone's source database.
 		/// </remarks>		<return> reader/parser

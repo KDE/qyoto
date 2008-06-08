@@ -46,7 +46,7 @@ namespace Kimono {
  		protected KToolInvocation(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KToolInvocation() {
-			staticInterceptor = new SmokeInvocation(typeof(KToolInvocation), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KToolInvocation), null);
 		}
 		public static KToolInvocation Self() {
 			return (KToolInvocation) staticInterceptor.Invoke("self", "self()", typeof(KToolInvocation));
@@ -143,6 +143,29 @@ namespace Kimono {
 		}
 		public static void InvokeBrowser(string url) {
 			staticInterceptor.Invoke("invokeBrowser$", "invokeBrowser(const QString&)", typeof(void), typeof(string), url);
+		}
+		/// <remarks>
+		///  Invokes the standard terminal application.
+		/// <param> name="command" the command to execute, can be empty.
+		/// </param><param> name="workdir" the initial working directory, can be empty.
+		/// </param><param> name="startup_id" for app startup notification, "0" for none,
+		///            "" ( empty string ) is the default
+		/// </param></remarks>		<short>    Invokes the standard terminal application.</short>
+		public static void InvokeTerminal(string command, string workdir, QByteArray startup_id) {
+			staticInterceptor.Invoke("invokeTerminal$$#", "invokeTerminal(const QString&, const QString&, const QByteArray&)", typeof(void), typeof(string), command, typeof(string), workdir, typeof(QByteArray), startup_id);
+		}
+		public static void InvokeTerminal(string command, string workdir) {
+			staticInterceptor.Invoke("invokeTerminal$$", "invokeTerminal(const QString&, const QString&)", typeof(void), typeof(string), command, typeof(string), workdir);
+		}
+		public static void InvokeTerminal(string command) {
+			staticInterceptor.Invoke("invokeTerminal$", "invokeTerminal(const QString&)", typeof(void), typeof(string), command);
+		}
+		/// <remarks>
+		///  Returns the DBus interface of the service launcher.
+		///  The returned object is owned by KApplication, do not delete it!
+		///    </remarks>		<short>    Returns the DBus interface of the service launcher.</short>
+		public static OrgKdeKLauncherInterface Klauncher() {
+			return (OrgKdeKLauncherInterface) staticInterceptor.Invoke("klauncher", "klauncher()", typeof(OrgKdeKLauncherInterface));
 		}
 		/// <remarks>
 		///  Starts a service based on the (translated) name of the service.

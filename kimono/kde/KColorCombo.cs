@@ -3,6 +3,7 @@ namespace Kimono {
 
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 
 	/// <remarks>
 	///  Combobox for colors.
@@ -15,12 +16,17 @@ namespace Kimono {
 	public class KColorCombo : QComboBox, IDisposable {
  		protected KColorCombo(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KColorCombo), this);
+			interceptor = new SmokeInvocationKDE(typeof(KColorCombo), this);
 		}
 		[Q_PROPERTY("QColor", "color")]
 		public QColor Color {
 			get { return (QColor) interceptor.Invoke("color", "color()", typeof(QColor)); }
 			set { interceptor.Invoke("setColor#", "setColor(QColor)", typeof(void), typeof(QColor), value); }
+		}
+		[Q_PROPERTY("QList<QColor>", "colors")]
+		public List<QColor> Colors {
+			get { return (List<QColor>) interceptor.Invoke("colors", "colors()", typeof(List<QColor>)); }
+			set { interceptor.Invoke("setColors?", "setColors(QList<QColor>)", typeof(void), typeof(List<QColor>), value); }
 		}
 		/// <remarks>
 		///  Constructs a color combo box.

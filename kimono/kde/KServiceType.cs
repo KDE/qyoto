@@ -18,12 +18,13 @@ namespace Kimono {
 	public class KServiceType : KSycocaEntry, IDisposable {
  		protected KServiceType(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KServiceType), this);
+			interceptor = new SmokeInvocationKDE(typeof(KServiceType), this);
 		}
 		// KServiceType::Ptr parentType(); >>>> NOT CONVERTED
 		// KServiceType::Ptr serviceType(const QString& arg1); >>>> NOT CONVERTED
 		// KServiceType::List allServiceTypes(); >>>> NOT CONVERTED
 		// KServiceType* KServiceType(KServiceTypePrivate& arg1); >>>> NOT CONVERTED
+		// KServiceType* KServiceType(KServiceTypePrivate& arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a service type and take all information from a desktop file.
 		/// <param> name="config" the configuration file
@@ -120,6 +121,11 @@ namespace Kimono {
 		/// <remarks>
 		///  The stream must already be positionned at the correct offset
 		///       </remarks>		<short>   </short>
+		/// <remarks>
+		///  Constructor for KMimeType.
+		/// <param> name="_name" the name of the service type
+		/// </param><param> name="_comment" a comment (can be empty)
+		///      </param></remarks>		<short>    Constructor for KMimeType.</short>
 		~KServiceType() {
 			interceptor.Invoke("~KServiceType", "~KServiceType()", typeof(void));
 		}

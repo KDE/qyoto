@@ -13,11 +13,11 @@ namespace Kimono {
 	public class KOCRDialog : KPageDialog, IDisposable {
  		protected KOCRDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KOCRDialog), this);
+			interceptor = new SmokeInvocationKDE(typeof(KOCRDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KOCRDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KOCRDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KOCRDialog), null);
 		}
 		/// <remarks>
 		///  Constructs the OCR dialog. If you implement an own dialog, you can

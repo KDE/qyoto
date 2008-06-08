@@ -14,7 +14,7 @@ namespace Kimono {
  		protected KBuildSycocaProgressDialog(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KBuildSycocaProgressDialog() {
-			staticInterceptor = new SmokeInvocation(typeof(KBuildSycocaProgressDialog), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KBuildSycocaProgressDialog), null);
 		}
 		/// <remarks>
 		///  Rebuild KSycoca and show a progress dialog while doing so.

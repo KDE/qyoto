@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KSplashScreen : QSplashScreen, IDisposable {
  		protected KSplashScreen(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSplashScreen), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSplashScreen), this);
 		}
 		/// <remarks>
 		///   Constructs a splash screen.

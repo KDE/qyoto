@@ -43,7 +43,7 @@ namespace Kimono {
 	public class KDirLister : QObject, IDisposable {
  		protected KDirLister(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDirLister), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDirLister), this);
 		}
 		public enum OpenUrlFlag {
 			NoFlags = 0x0,
@@ -99,7 +99,6 @@ namespace Kimono {
 			get { return (List<string>) interceptor.Invoke("mimeFilters", "mimeFilters()", typeof(List<string>)); }
 			set { interceptor.Invoke("setMimeFilter?", "setMimeFilter(QStringList)", typeof(void), typeof(List<string>), value); }
 		}
-		// bool doNameFilter(const QString& arg1,const QList<QRegExp>& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a directory lister.
 		///    </remarks>		<short>    Create a directory lister.</short>
@@ -445,6 +444,10 @@ namespace Kimono {
 		/// <param> name="name" the name to filter
 		/// </param><param> name="filters" a list of regular expressions for filtering
 		///    </param></remarks>		<short>    Called by the public matchesFilter() to do the  actual filtering.</short>
+		[SmokeMethod("doNameFilter(const QString&, const QList<QRegExp>&) const")]
+		protected virtual bool DoNameFilter(string name, List<QRegExp> filters) {
+			return (bool) interceptor.Invoke("doNameFilter$?", "doNameFilter(const QString&, const QList<QRegExp>&) const", typeof(bool), typeof(string), name, typeof(List<QRegExp>), filters);
+		}
 		/// <remarks>
 		///  Called by the public matchesMimeFilter() to do the
 		///  actual filtering. Those methods may be reimplemented to customize
@@ -554,7 +557,16 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Signal an item to remove.</short>
 		[Q_SIGNAL("void deleteItem(const KFileItem&)")]
 		void DeleteItem(KFileItem _fileItem);
-		// void refreshItems(const QList<QPair<KFileItem, KFileItem> >& arg1); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Signal an item to refresh (its mimetype/icon/name has changed).
+		///  Note: KFileItem.Refresh has already been called on those items.
+		/// <param> name="items" the items to refresh. This is a list of pairs, where
+		///  the first item in the pair is the OLD item, and the second item is the
+		///  NEW item. This allows to track which item has changed, especially after
+		///  a renaming.
+		///    </param></remarks>		<short>    Signal an item to refresh (its mimetype/icon/name has changed).</short>
+		[Q_SIGNAL("void refreshItems(const QList<QPair<KFileItem, KFileItem> >&)")]
+		void RefreshItems(List<QPair<KFileItem, KFileItem>> items);
 		/// <remarks>
 		///  Emitted to display information about running jobs.
 		///  Examples of message are "Resolving host", "Connecting to host...", etc.

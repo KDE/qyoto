@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KMimeTypeResolver : QObject, IDisposable {
  		protected KMimeTypeResolver(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMimeTypeResolver), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMimeTypeResolver), this);
 		}
 		/// <remarks>
 		///  The mimetype resolver is made a child of the view.

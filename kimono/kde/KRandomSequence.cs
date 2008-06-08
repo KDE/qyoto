@@ -5,6 +5,7 @@ namespace Kimono {
 	using Qyoto;
 
 	/// <remarks>
+	///  \class KRandomSequence krandomsequence.h <KRandomSequence>
 	///  A class to create a pseudo-random sequence
 	///  Given a seed number, this class will produce a sequence of
 	///  pseudo-random numbers.  This would typically be used in
@@ -15,7 +16,7 @@ namespace Kimono {
 	///  number in the sequence.
 	/// </remarks>		<author> Sean Harmer <sh@astro.keele.ac.uk>
 	///  </author>
-	/// 		<short>    A class to create a pseudo-random sequence </short>
+	/// 		<short>    \class KRandomSequence krandomsequence.</short>
 
 	[SmokeClass("KRandomSequence")]
 	public class KRandomSequence : Object, IDisposable {
@@ -23,9 +24,8 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRandomSequence(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KRandomSequence), this);
+			interceptor = new SmokeInvocationKDE(typeof(KRandomSequence), this);
 		}
-		// template<typename T> void randomize(QList<T>& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a pseudo-random sequence based on the seed lngSeed.
 		///  A Pseudo-random sequence is different for each seed but can be
@@ -88,11 +88,6 @@ namespace Kimono {
 		public bool GetBool() {
 			return (bool) interceptor.Invoke("getBool", "getBool()", typeof(bool));
 		}
-		/// <remarks>
-		///  Put a list in random order.
-		/// <param> name="list" the list whose order will be modified
-		///  @note modifies the list in place
-		///    </param></remarks>		<short>    Put a list in random order.</short>
 		/// <remarks>
 		///  Modulate the random sequence.
 		///  If S(i) is the sequence of numbers that will follow

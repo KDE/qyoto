@@ -29,13 +29,12 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KBookmarkOwner(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBookmarkOwner), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBookmarkOwner), this);
 		}
 		public enum BookmarkOption {
 			ShowAddBookmark = 0,
 			ShowEditBookmark = 1,
 		}
-		// void openFolderinTabs(const KBookmarkGroup& arg1); >>>> NOT CONVERTED
 		// KBookmarkDialog* bookmarkDialog(KBookmarkManager* arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  This function is called whenever the user wants to add the
@@ -95,6 +94,10 @@ namespace Kimono {
 		///  The default implementation does nothing.
 		///  This is only called if supportsTabs() returns true
 		///   </remarks>		<short>    Called if the user wants to open every bookmark in this folder in a new tab.</short>
+		[SmokeMethod("openFolderinTabs(const KBookmarkGroup&)")]
+		public virtual void OpenFolderinTabs(KBookmarkGroup bm) {
+			interceptor.Invoke("openFolderinTabs#", "openFolderinTabs(const KBookmarkGroup&)", typeof(void), typeof(KBookmarkGroup), bm);
+		}
 		public KBookmarkOwner() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KBookmarkOwner", "KBookmarkOwner()", typeof(void));

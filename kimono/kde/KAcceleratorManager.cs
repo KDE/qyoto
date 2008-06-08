@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAcceleratorManager(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KAcceleratorManager), this);
+			interceptor = new SmokeInvocationKDE(typeof(KAcceleratorManager), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAcceleratorManager() {
-			staticInterceptor = new SmokeInvocation(typeof(KAcceleratorManager), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KAcceleratorManager), null);
 		}
 		public KAcceleratorManager() : this((Type) null) {
 			CreateProxy();
@@ -63,8 +63,8 @@ namespace Kimono {
 			staticInterceptor.Invoke("last_manage$$$", "last_manage(QString&, QString&, QString&)", typeof(void), typeof(StringBuilder), added, typeof(StringBuilder), changed, typeof(StringBuilder), removed);
 		}
 		/// <remarks>
-		///  Use this method for a widget (and it's children) you want no accels to be set on.
-		///      </remarks>		<short>    Use this method for a widget (and it's children) you want no accels to be set on.</short>
+		///  Use this method for a widget (and its children) you want no accels to be set on.
+		///      </remarks>		<short>    Use this method for a widget (and its children) you want no accels to be set on.</short>
 		public static void SetNoAccel(QWidget widget) {
 			staticInterceptor.Invoke("setNoAccel#", "setNoAccel(QWidget*)", typeof(void), typeof(QWidget), widget);
 		}

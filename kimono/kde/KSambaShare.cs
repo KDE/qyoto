@@ -16,11 +16,11 @@ namespace Kimono {
 	public class KSambaShare : QObject {
  		protected KSambaShare(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KSambaShare), this);
+			interceptor = new SmokeInvocationKDE(typeof(KSambaShare), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSambaShare() {
-			staticInterceptor = new SmokeInvocation(typeof(KSambaShare), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KSambaShare), null);
 		}
 		/// <remarks>
 		///  Whether or not the given path is shared by Samba.

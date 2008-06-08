@@ -35,12 +35,11 @@ namespace Kimono {
 	///  queryClose() and/or queryExit().
 	///  There are also kRestoreMainWindows convenience functions which
 	///  can restore all your windows on next login.
-	///   Note that a KMainWindow per-default is created with the
-	///   WDestructiveClose flag, i.e. it is automatically destroyed when the
-	///   window is closed. If you do not want this behavior, specify 0 as
-	///   widget flag in the constructor.
-	///  </remarks>		<author> Reginald Stadlbauer (reggie@kde.org) Stephan Kulow (coolo@kde.org), Matthias Ettrich (ettrich@kde.org), Chris Schlaeger (cs@kde.org), Sven Radej (radej@kde.org). Maintained by Sven Radej (radej@kde.org)
-	/// </author>
+	///  Note that KMainWindow uses KGlobal.Ref() and KGlobal.Deref() so that closing
+	///  the last mainwindow will quit the application unless there is still something
+	///  that holds a ref in KGlobal - like a KIO job, or a systray icon.
+	/// </remarks>		<author> Reginald Stadlbauer (reggie@kde.org) Stephan Kulow (coolo@kde.org), Matthias Ettrich (ettrich@kde.org), Chris Schlaeger (cs@kde.org), Sven Radej (radej@kde.org). Maintained by David Faure (faure@kde.org)
+	///  </author>
 	/// 		<short> %KDE top level main window.</short>
 	/// 		<see> KApplication</see>
 
@@ -48,11 +47,11 @@ namespace Kimono {
 	public class KMainWindow : QMainWindow, IDisposable {
  		protected KMainWindow(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KMainWindow), this);
+			interceptor = new SmokeInvocationKDE(typeof(KMainWindow), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMainWindow() {
-			staticInterceptor = new SmokeInvocation(typeof(KMainWindow), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KMainWindow), null);
 		}
 		[Q_PROPERTY("bool", "hasMenuBar")]
 		public bool HasMenuBar {
@@ -70,19 +69,18 @@ namespace Kimono {
 		public bool InitialGeometrySet {
 			get { return (bool) interceptor.Invoke("initialGeometrySet", "initialGeometrySet()", typeof(bool)); }
 		}
-		// QList<KMainWindow*> memberList(); >>>> NOT CONVERTED
+		// KMainWindow* KMainWindow(KMainWindowPrivate& arg1,QWidget* arg2,Qt::WFlags arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a main window.
 		/// <param> name="parent" The widget parent. This is usually 0 but it may also be the window
 		///  group leader. In that case, the KMainWindow becomes sort of a
 		///  secondary window.
-		/// </param><param> name="f" Specify the widget flags. The default is
-		///  WType_TopLevel and WDestructiveClose.  TopLevel indicates that a
-		///  main window is a toplevel window, regardless of whether it has a
-		///  parent or not. DestructiveClose indicates that a main window is
-		///  automatically destroyed when its window is closed. Pass 0 if
-		///  you do not want this behavior.
-		/// </param> KMainWindows must be created on the heap with 'new', like:
+		/// </param><param> name="f" Specify the window flags. The default is none.
+		/// </param> Note that a KMainWindow per-default is created with the
+		///  WA_DeleteOnClose attribute, i.e. it is automatically destroyed when the
+		///  window is closed. If you do not want this behavior, call
+		///  setAttribute(Qt.WA_DeleteOnClose, false);
+		///  KMainWindows must be created on the heap with 'new', like:
 		///  <pre>
 		///  KMainWindow kmw = new KMainWindow(...);
 		///  kmw.SetObjectName(...);
@@ -98,7 +96,6 @@ namespace Kimono {
 		///  mails, the name for the folders window should be e.g. "mainwindow" and
 		///  for the composer windows "composer#".
 		///      </remarks>		<short>    Construct a main window.</short>
-		/// 		<see> http://doc.trolltech.com/3.2/qt.html#WidgetFlags-enum</see>
 		public KMainWindow(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KMainWindow#$", "KMainWindow(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
@@ -113,14 +110,14 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Retrieve the standard help menu.
-		///  It contains entires for the
+		///  It contains entries for the
 		///  help system (activated by F1), an optional "What's This?" entry
 		///  (activated by Shift F1), an application specific dialog box,
 		///  and an "About KDE" dialog box.
 		///  Example (adding a standard help menu to your application):
 		///  <pre>
 		///  KMenu help = helpMenu( <myTextString> );
-		///  menuBar().InsertItem( i18n("&Help"), help );
+		///  menuBar().AddMenu( help );
 		///  </pre>
 		/// <param> name="aboutAppText" The string that is used in the application
 		///         specific dialog box. If you leave this string empty the
@@ -152,7 +149,7 @@ namespace Kimono {
 		///  information.
 		///  Example (adding a help menu to your application):
 		///  <pre>
-		///  menuBar().InsertItem( i18n("&Help"), customHelpMenu() );
+		///  menuBar().AddMenu( customHelpMenu() );
 		///  </pre>
 		/// <param> name="showWhatsThis" Set this to <code>false</code> if you do not want to include
 		///         the "What's This" menu entry.
@@ -255,6 +252,16 @@ namespace Kimono {
 			interceptor.Invoke("setAutoSaveSettings", "setAutoSaveSettings()", typeof(void));
 		}
 		/// <remarks>
+		///  Overload that lets you specify a KConfigGroup.
+		///  This allows the settings to be saved into another file than KGlobal.Config().
+		/// </remarks>		<short>    Overload that lets you specify a KConfigGroup.</short>
+		public void SetAutoSaveSettings(KConfigGroup group, bool saveWindowSize) {
+			interceptor.Invoke("setAutoSaveSettings#$", "setAutoSaveSettings(const KConfigGroup&, bool)", typeof(void), typeof(KConfigGroup), group, typeof(bool), saveWindowSize);
+		}
+		public void SetAutoSaveSettings(KConfigGroup group) {
+			interceptor.Invoke("setAutoSaveSettings#", "setAutoSaveSettings(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), group);
+		}
+		/// <remarks>
 		///  Disable the auto-save-settings feature.
 		///  You don't normally need to call this, ever.
 		///      </remarks>		<short>    Disable the auto-save-settings feature.</short>
@@ -290,11 +297,17 @@ namespace Kimono {
 			interceptor.Invoke("ignoreInitialGeometry", "ignoreInitialGeometry()", typeof(void));
 		}
 		/// <remarks>
-		///  Makes a KDE compliant caption.
+		///  Returns the path under which this window's D-Bus object is exported.
+		/// </remarks>		<short>    Returns the path under which this window's D-Bus object is exported.</short>
+		public string DbusName() {
+			return (string) interceptor.Invoke("dbusName", "dbusName() const", typeof(string));
+		}
+		/// <remarks>
+		///  Makes a KDE compliant caption (window title).
 		/// <param> name="caption" Your caption. <b>Do</b> <b>not</b> include the application name
 		///  in this string. It will be added automatically according to the KDE
 		///  standard.
-		///      </param></remarks>		<short>    Makes a KDE compliant caption.</short>
+		///      </param></remarks>		<short>    Makes a KDE compliant caption (window title).</short>
 		[Q_SLOT("void setCaption(const QString&)")]
 		[SmokeMethod("setCaption(const QString&)")]
 		public virtual void SetCaption(string caption) {
@@ -333,10 +346,8 @@ namespace Kimono {
 		///  want to provide access to the help system from the help menu.
 		///  Example (adding a help button to the first toolbar):
 		///  <pre>
-		///  KIconLoader &loader = KGlobal.IconLoader();
-		///  QPixmap pixmap = loader.loadIcon( "help-contents" );
-		///  toolBar(0).InsertButton( pixmap, 0, SIGNAL("clicked()"),
-		///    this, SLOT("appHelpActivated()"), true, i18n("Help") );
+		///  toolBar(0).AddAction(KIcon("help-contents"), i18n("Help"),
+		///                        this, SLOT("appHelpActivated()"));
 		///  </pre>
 		///      </remarks>		<short>    Open the help page for the application.</short>
 		[Q_SLOT("void appHelpActivated()")]
@@ -515,7 +526,7 @@ namespace Kimono {
 		///  void MyMainLevel.SetupInterface()
 		///  {
 		///    ..
-		///    menuBar().InsertItem( i18n("&Help"), customHelpMenu() );
+		///    menuBar().AddMenu( customHelpMenu() );
 		///    ..
 		///  }
 		///  void MyMainLevel.ShowAboutApplication()
@@ -625,6 +636,9 @@ namespace Kimono {
 		/// <remarks>
 		///  List of members of KMainWindow class.
 		///      </remarks>		<short>    List of members of KMainWindow class.</short>
+		public static List<KMainWindow> MemberList() {
+			return (List<KMainWindow>) staticInterceptor.Invoke("memberList", "memberList()", typeof(List<KMainWindow>));
+		}
 		protected new IKMainWindowSignals Emit {
 			get { return (IKMainWindowSignals) Q_EMIT; }
 		}

@@ -30,10 +30,10 @@ namespace Kimono {
 	/// 		<see> KPageView</see>
 
 	[SmokeClass("KPageModel")]
-	public class KPageModel : QAbstractItemModel, IDisposable {
+	public abstract class KPageModel : QAbstractItemModel, IDisposable {
  		protected KPageModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KPageModel), this);
+			interceptor = new SmokeInvocationKDE(typeof(KPageModel), this);
 		}
 		/// <remarks>
 		///  Additional roles that KPageView uses.
@@ -42,6 +42,7 @@ namespace Kimono {
 			HeaderRole = Qt.ItemDataRole.UserRole+1,
 			WidgetRole = 0,
 		}
+		// KPageModel* KPageModel(KPageModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a page model with the given parent.
 		///      </remarks>		<short>    Constructs a page model with the given parent.</short>

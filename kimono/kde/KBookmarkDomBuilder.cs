@@ -9,9 +9,12 @@ namespace Kimono {
 	public class KBookmarkDomBuilder : QObject, IDisposable {
  		protected KBookmarkDomBuilder(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KBookmarkDomBuilder), this);
+			interceptor = new SmokeInvocationKDE(typeof(KBookmarkDomBuilder), this);
 		}
-		// KBookmarkDomBuilder* KBookmarkDomBuilder(const KBookmarkGroup& arg1,KBookmarkManager* arg2); >>>> NOT CONVERTED
+		public KBookmarkDomBuilder(KBookmarkGroup group, KBookmarkManager arg2) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KBookmarkDomBuilder##", "KBookmarkDomBuilder(const KBookmarkGroup&, KBookmarkManager*)", typeof(void), typeof(KBookmarkGroup), group, typeof(KBookmarkManager), arg2);
+		}
 		public void ConnectImporter(QObject arg1) {
 			interceptor.Invoke("connectImporter#", "connectImporter(const QObject*)", typeof(void), typeof(QObject), arg1);
 		}

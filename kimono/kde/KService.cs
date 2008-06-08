@@ -26,11 +26,11 @@ namespace Kimono {
 	public class KService : KSycocaEntry, IDisposable {
  		protected KService(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KService), this);
+			interceptor = new SmokeInvocationKDE(typeof(KService), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KService() {
-			staticInterceptor = new SmokeInvocation(typeof(KService), null);
+			staticInterceptor = new SmokeInvocationKDE(typeof(KService), null);
 		}
 		/// <remarks>
 		///  Describes the DBUS Startup type of the service.
@@ -62,18 +62,7 @@ namespace Kimono {
 			DBusMulti = 2,
 			DBusWait = 3,
 		}
-		// template <T> T* createInstance(QObject* arg1,const QVariantList& arg2,QString* arg3); >>>> NOT CONVERTED
-		// template <T> T* createInstance(QObject* arg1,const QVariantList& arg2); >>>> NOT CONVERTED
-		// template <T> T* createInstance(QObject* arg1); >>>> NOT CONVERTED
-		// template <T> T* createInstance(); >>>> NOT CONVERTED
-		// template <T> T* createInstance(QWidget* arg1,QObject* arg2,const QVariantList& arg3,QString* arg4); >>>> NOT CONVERTED
-		// template <T> T* createInstance(QWidget* arg1,QObject* arg2,const QVariantList& arg3); >>>> NOT CONVERTED
-		// template <T> T* createInstance(QWidget* arg1,QObject* arg2); >>>> NOT CONVERTED
-		// KService::Ptr serviceByName(const QString& arg1); >>>> NOT CONVERTED
-		// KService::Ptr serviceByDesktopPath(const QString& arg1); >>>> NOT CONVERTED
-		// KService::Ptr serviceByDesktopName(const QString& arg1); >>>> NOT CONVERTED
-		// KService::Ptr serviceByMenuId(const QString& arg1); >>>> NOT CONVERTED
-		// KService::Ptr serviceByStorageId(const QString& arg1); >>>> NOT CONVERTED
+		// QVector<KService::ServiceTypeAndPreference>& _k_accessServiceTypes(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a temporary service with a given name, exec-line and icon.
 		/// <param> name="name" the name of the service
@@ -326,6 +315,12 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("allowAsDefault", "allowAsDefault() const", typeof(bool));
 		}
 		/// <remarks>
+		///  Returns the actions defined in this desktop file
+		///      </remarks>		<short>    Returns the actions defined in this desktop file      </short>
+		public List<KServiceAction> Actions() {
+			return (List<KServiceAction>) interceptor.Invoke("actions", "actions() const", typeof(List<KServiceAction>));
+		}
+		/// <remarks>
 		///  Checks whether this service can handle several files as
 		///  startup arguments.
 		/// </remarks>		<return> true if multiple files may be passed to this service at
@@ -408,32 +403,6 @@ namespace Kimono {
 		public void SetTerminalOptions(string options) {
 			interceptor.Invoke("setTerminalOptions$", "setTerminalOptions(const QString&)", typeof(void), typeof(string), options);
 		}
-		/// <remarks>
-		///  This template allows to load the library for the specified service and ask the
-		///  factory to create an instance of the given template type.
-		/// <param> name="parent" The parent object (see QObject constructor)
-		/// </param><param> name="args" A list of arguments, passed to the factory and possibly
-		///              to the component (see KPluginFactory)
-		/// </param><param> name="error" A pointer to string which should receive the error description or 0
-		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
-		///          factory was unable to create an object of the given type.
-		///      </return>
-		/// 		<short>    This template allows to load the library for the specified service and ask the  factory to create an instance of the given template type.</short>
-		/// <remarks>
-		///  This template allows to load the library for the specified service and ask the
-		///  factory to create an instance of the given template type.
-		/// <param> name="parentWidget" A parent widget for the service. This is used e. g. for parts
-		/// </param><param> name="parent" The parent object (see QObject constructor)
-		/// </param><param> name="args" A list of arguments, passed to the factory and possibly
-		///              to the component (see KPluginFactory)
-		/// </param><param> name="error" A pointer to string which should receive the error description or 0
-		/// </param></remarks>		<return> A pointer to the newly created object or a null pointer if the
-		///          factory was unable to create an object of the given type.
-		///      </return>
-		/// 		<short>    This template allows to load the library for the specified service and ask the  factory to create an instance of the given template type.</short>
-		protected List<string> AccessServiceTypes() {
-			return (List<string>) interceptor.Invoke("accessServiceTypes", "accessServiceTypes()", typeof(List<string>));
-		}
 		~KService() {
 			interceptor.Invoke("~KService", "~KService()", typeof(void));
 		}
@@ -450,6 +419,9 @@ namespace Kimono {
 		///  @em Very @em important: Don't store the result in a KService* !
 		///      </return>
 		/// 		<short>    Find a service by name, i.</short>
+		public static KService ServiceByName(string _name) {
+			return (KService) staticInterceptor.Invoke("serviceByName$", "serviceByName(const QString&)", typeof(KService), typeof(string), _name);
+		}
 		/// <remarks>
 		///  Find a service based on its path as returned by entryPath().
 		///  It's usually better to use serviceByStorageId() instead.
@@ -459,6 +431,9 @@ namespace Kimono {
 		///  @em Very @em important: Don't store the result in a KService* !
 		///      </return>
 		/// 		<short>    Find a service based on its path as returned by entryPath().</short>
+		public static KService ServiceByDesktopPath(string _path) {
+			return (KService) staticInterceptor.Invoke("serviceByDesktopPath$", "serviceByDesktopPath(const QString&)", typeof(KService), typeof(string), _path);
+		}
 		/// <remarks>
 		///  Find a service by the name of its desktop file, not depending on
 		///  its actual location (as long as it's under the applnk or service
@@ -472,6 +447,9 @@ namespace Kimono {
 		///  @em Very @em important: Don't store the result in a KService* !
 		///      </return>
 		/// 		<short>    Find a service by the name of its desktop file, not depending on  its actual location (as long as it's under the applnk or service  directories).</short>
+		public static KService ServiceByDesktopName(string _name) {
+			return (KService) staticInterceptor.Invoke("serviceByDesktopName$", "serviceByDesktopName(const QString&)", typeof(KService), typeof(string), _name);
+		}
 		/// <remarks>
 		///  Find a service by its menu-id
 		/// <param> name="_menuId" the menu id of the service
@@ -480,6 +458,9 @@ namespace Kimono {
 		///  @em Very @em important: Don't store the result in a KService* !
 		///      </return>
 		/// 		<short>    Find a service by its menu-id </short>
+		public static KService ServiceByMenuId(string _menuId) {
+			return (KService) staticInterceptor.Invoke("serviceByMenuId$", "serviceByMenuId(const QString&)", typeof(KService), typeof(string), _menuId);
+		}
 		/// <remarks>
 		///  Find a service by its storage-id or desktop-file path. This
 		///  function will try very hard to find a matching service.
@@ -489,6 +470,9 @@ namespace Kimono {
 		///  @em Very @em important: Don't store the result in a KService* !
 		///      </return>
 		/// 		<short>    Find a service by its storage-id or desktop-file path.</short>
+		public static KService ServiceByStorageId(string _storageId) {
+			return (KService) staticInterceptor.Invoke("serviceByStorageId$", "serviceByStorageId(const QString&)", typeof(KService), typeof(string), _storageId);
+		}
 		/// <remarks>
 		///  Returns the whole list of services.
 		///   Useful for being able to
@@ -506,6 +490,7 @@ namespace Kimono {
 		///  on <code>suggestedName.</code>
 		/// <param> name="showInMenu" true, if the service should be shown in the KDE menu
 		///         false, if the service should be hidden from the menu
+		///         This argument isn't used anymore, use NoDisplay=true to hide the service.
 		/// </param><param> name="suggestedName" name to base the file on, if a service with such
 		///         name already exists, a prefix will be added to make it unique.
 		/// </param><param> name="menuId" If provided, menuId will be set to the menu id to use for

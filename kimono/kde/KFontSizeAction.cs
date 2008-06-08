@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KFontSizeAction : KSelectAction, IDisposable {
  		protected KFontSizeAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KFontSizeAction), this);
+			interceptor = new SmokeInvocationKDE(typeof(KFontSizeAction), this);
 		}
 		[Q_PROPERTY("int", "fontSize")]
 		public int FontSize {

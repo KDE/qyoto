@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KDateWidget : QWidget, IDisposable {
  		protected KDateWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocation(typeof(KDateWidget), this);
+			interceptor = new SmokeInvocationKDE(typeof(KDateWidget), this);
 		}
 		[Q_PROPERTY("QDate", "date")]
 		public QDate Date {
