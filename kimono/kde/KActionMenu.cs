@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KActionMenu : KAction, IDisposable {
  		protected KActionMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KActionMenu), this);
+			interceptor = new SmokeInvocation(typeof(KActionMenu), this);
 		}
 		[Q_PROPERTY("bool", "delayed")]
 		public bool Delayed {

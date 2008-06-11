@@ -13,7 +13,7 @@ namespace Kimono {
 	public abstract class KNumInput : QWidget {
  		protected KNumInput(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KNumInput), this);
+			interceptor = new SmokeInvocation(typeof(KNumInput), this);
 		}
 		[Q_PROPERTY("QString", "label")]
 		public string Label {

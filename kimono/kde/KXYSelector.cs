@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KXYSelector : QWidget, IDisposable {
  		protected KXYSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KXYSelector), this);
+			interceptor = new SmokeInvocation(typeof(KXYSelector), this);
 		}
 		[Q_PROPERTY("int", "xValue")]
 		public int XValue {

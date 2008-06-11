@@ -45,7 +45,7 @@ namespace Kimono {
  		protected KSystemTimeZones(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSystemTimeZones() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSystemTimeZones), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSystemTimeZones), null);
 		}
 		// const KTimeZones::ZoneMap zones(); >>>> NOT CONVERTED
 		/// <remarks>

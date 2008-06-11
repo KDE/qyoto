@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KSqueezedTextLabel : QLabel, IDisposable {
  		protected KSqueezedTextLabel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSqueezedTextLabel), this);
+			interceptor = new SmokeInvocation(typeof(KSqueezedTextLabel), this);
 		}
 		[Q_PROPERTY("Qt::TextElideMode", "textElideMode")]
 		public new Qt.TextElideMode TextElideMode {

@@ -21,7 +21,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCmdLineOptions(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCmdLineOptions), this);
+			interceptor = new SmokeInvocation(typeof(KCmdLineOptions), this);
 		}
 		/// <remarks>
 		///  Constructor.

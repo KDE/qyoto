@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KDirModel : QAbstractItemModel, IDisposable {
  		protected KDirModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDirModel), this);
+			interceptor = new SmokeInvocation(typeof(KDirModel), this);
 		}
 		/// <remarks>
 		///  Useful "default" columns. Views can use a proxy to have more control over this.

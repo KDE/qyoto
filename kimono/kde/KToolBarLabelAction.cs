@@ -27,7 +27,7 @@ namespace Kimono {
 	public class KToolBarLabelAction : KAction, IDisposable {
  		protected KToolBarLabelAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KToolBarLabelAction), this);
+			interceptor = new SmokeInvocation(typeof(KToolBarLabelAction), this);
 		}
 		/// <remarks>
 		///  Creates a toolbar label.

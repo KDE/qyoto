@@ -21,11 +21,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KUserGroup(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUserGroup), this);
+			interceptor = new SmokeInvocation(typeof(KUserGroup), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUserGroup() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KUserGroup), null);
+			staticInterceptor = new SmokeInvocation(typeof(KUserGroup), null);
 		}
 		// KUserGroup* KUserGroup(K_GID arg1); >>>> NOT CONVERTED
 		// KUserGroup* KUserGroup(const group* arg1); >>>> NOT CONVERTED

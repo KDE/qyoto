@@ -17,7 +17,7 @@ namespace KIO {
 	public class MultiGetJob : KIO.TransferJob, IDisposable {
  		protected MultiGetJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(MultiGetJob), this);
+			interceptor = new SmokeInvocation(typeof(MultiGetJob), this);
 		}
 		// KIO::MultiGetJob* MultiGetJob(KIO::MultiGetJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>

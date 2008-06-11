@@ -63,7 +63,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRegExpEditorInterface(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KRegExpEditorInterface), this);
+			interceptor = new SmokeInvocation(typeof(KRegExpEditorInterface), this);
 		}
 		// void doSomething(QString arg1,void* arg2); >>>> NOT CONVERTED
 		/// <remarks>

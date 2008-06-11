@@ -27,11 +27,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KShortcut(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KShortcut), this);
+			interceptor = new SmokeInvocation(typeof(KShortcut), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KShortcut() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KShortcut), null);
+			staticInterceptor = new SmokeInvocation(typeof(KShortcut), null);
 		}
 		/// <remarks>
 		///  An enum about the behavior of operations that treat a KShortcut like a list of QKeySequences.

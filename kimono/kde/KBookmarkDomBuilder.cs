@@ -9,7 +9,7 @@ namespace Kimono {
 	public class KBookmarkDomBuilder : QObject, IDisposable {
  		protected KBookmarkDomBuilder(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkDomBuilder), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkDomBuilder), this);
 		}
 		public KBookmarkDomBuilder(KBookmarkGroup group, KBookmarkManager arg2) : this((Type) null) {
 			CreateProxy();

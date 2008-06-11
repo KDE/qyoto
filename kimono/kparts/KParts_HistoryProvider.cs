@@ -22,11 +22,11 @@ namespace KParts {
 	public class HistoryProvider : QObject {
  		protected HistoryProvider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(HistoryProvider), this);
+			interceptor = new SmokeInvocation(typeof(HistoryProvider), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static HistoryProvider() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(HistoryProvider), null);
+			staticInterceptor = new SmokeInvocation(typeof(HistoryProvider), null);
 		}
 		/// <remarks>
 		/// </remarks>		<return> true if <code>item</code> is present in the history.

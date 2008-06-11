@@ -16,7 +16,7 @@ namespace Kimono {
 	public class KCategorizedView : QListView, IDisposable {
  		protected KCategorizedView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCategorizedView), this);
+			interceptor = new SmokeInvocation(typeof(KCategorizedView), this);
 		}
 		// KCategoryDrawer* categoryDrawer(); >>>> NOT CONVERTED
 		// void setCategoryDrawer(KCategoryDrawer* arg1); >>>> NOT CONVERTED

@@ -13,7 +13,7 @@ namespace Kimono {
 	public abstract class KAbstractWidgetJobTracker : KJobTrackerInterface {
  		protected KAbstractWidgetJobTracker(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAbstractWidgetJobTracker), this);
+			interceptor = new SmokeInvocation(typeof(KAbstractWidgetJobTracker), this);
 		}
 		/// <remarks>
 		///  Creates a new KAbstractWidgetJobTracker

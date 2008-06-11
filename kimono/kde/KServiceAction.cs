@@ -17,7 +17,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KServiceAction(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KServiceAction), this);
+			interceptor = new SmokeInvocation(typeof(KServiceAction), this);
 		}
 		/// <remarks>
 		///  Creates a KServiceAction.

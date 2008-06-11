@@ -16,11 +16,11 @@ namespace KParts {
 	public class BrowserHostExtension : QObject, IDisposable {
  		protected BrowserHostExtension(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(BrowserHostExtension), this);
+			interceptor = new SmokeInvocation(typeof(BrowserHostExtension), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static BrowserHostExtension() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(BrowserHostExtension), null);
+			staticInterceptor = new SmokeInvocation(typeof(BrowserHostExtension), null);
 		}
 		public BrowserHostExtension(KParts.ReadOnlyPart parent) : this((Type) null) {
 			CreateProxy();

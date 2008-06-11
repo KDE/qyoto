@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KColorPatch : QFrame, IDisposable {
  		protected KColorPatch(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KColorPatch), this);
+			interceptor = new SmokeInvocation(typeof(KColorPatch), this);
 		}
 		public KColorPatch(QWidget parent) : this((Type) null) {
 			CreateProxy();

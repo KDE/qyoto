@@ -67,11 +67,11 @@ namespace KIO {
 	public class Scheduler : QObject {
  		protected Scheduler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Scheduler), this);
+			interceptor = new SmokeInvocation(typeof(Scheduler), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Scheduler() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Scheduler), null);
+			staticInterceptor = new SmokeInvocation(typeof(Scheduler), null);
 		}
 		public bool Connect(QObject sender, string signal, string member) {
 			return (bool) interceptor.Invoke("connect#$$", "connect(const QObject*, const char*, const char*)", typeof(bool), typeof(QObject), sender, typeof(string), signal, typeof(string), member);

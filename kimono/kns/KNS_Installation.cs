@@ -19,7 +19,7 @@ namespace KNS {
 		private IntPtr smokeObject;
 		protected Installation(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Installation), this);
+			interceptor = new SmokeInvocation(typeof(Installation), this);
 		}
 		public enum Policy {
 			CheckNever = 0,

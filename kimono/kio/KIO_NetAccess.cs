@@ -28,7 +28,7 @@ namespace KIO {
  		protected NetAccess(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static NetAccess() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(NetAccess), null);
+			staticInterceptor = new SmokeInvocation(typeof(NetAccess), null);
 		}
 		public enum StatSide {
 			SourceSide = 0,

@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KDateTable : QWidget, IDisposable {
  		protected KDateTable(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDateTable), this);
+			interceptor = new SmokeInvocation(typeof(KDateTable), this);
 		}
 		public enum BackgroundMode {
 			NoBgMode = 0,

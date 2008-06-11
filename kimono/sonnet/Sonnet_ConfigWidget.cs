@@ -12,7 +12,7 @@ namespace Sonnet {
 	public class ConfigWidget : QWidget, IDisposable {
  		protected ConfigWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(ConfigWidget), this);
+			interceptor = new SmokeInvocation(typeof(ConfigWidget), this);
 		}
 		public ConfigWidget(KConfig config, QWidget parent) : this((Type) null) {
 			CreateProxy();

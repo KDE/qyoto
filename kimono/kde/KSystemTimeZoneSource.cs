@@ -20,11 +20,11 @@ namespace Kimono {
 	public class KSystemTimeZoneSource : KTimeZoneSource, IDisposable {
  		protected KSystemTimeZoneSource(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSystemTimeZoneSource), this);
+			interceptor = new SmokeInvocation(typeof(KSystemTimeZoneSource), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSystemTimeZoneSource() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSystemTimeZoneSource), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSystemTimeZoneSource), null);
 		}
 		/// <remarks>
 		///  Constructs a system time zone source.

@@ -229,11 +229,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KStandardDirs(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KStandardDirs), this);
+			interceptor = new SmokeInvocation(typeof(KStandardDirs), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KStandardDirs() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KStandardDirs), null);
+			staticInterceptor = new SmokeInvocation(typeof(KStandardDirs), null);
 		}
 		public enum SearchOption {
 			NoSearchOptions = 0,

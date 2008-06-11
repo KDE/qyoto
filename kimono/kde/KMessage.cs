@@ -37,7 +37,7 @@ namespace KMessage {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		/// <remarks>
 		///  @brief Display a long message of a certain type.

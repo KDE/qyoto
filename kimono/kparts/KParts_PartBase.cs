@@ -17,7 +17,7 @@ namespace KParts {
 	public class PartBase : KXMLGUIClient, IDisposable {
  		protected PartBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(PartBase), this);
+			interceptor = new SmokeInvocation(typeof(PartBase), this);
 		}
 		/// <remarks>
 		///  We have three different policies, whether to load new plugins or not. The

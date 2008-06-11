@@ -14,11 +14,11 @@ namespace KIO {
 	public class Slave : KIO.SlaveInterface {
  		protected Slave(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Slave), this);
+			interceptor = new SmokeInvocation(typeof(Slave), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Slave() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Slave), null);
+			staticInterceptor = new SmokeInvocation(typeof(Slave), null);
 		}
 		public Slave(string protocol, QObject parent) : this((Type) null) {
 			CreateProxy();

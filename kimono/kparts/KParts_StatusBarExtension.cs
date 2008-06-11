@@ -16,11 +16,11 @@ namespace KParts {
 	public class StatusBarExtension : QObject, IDisposable {
  		protected StatusBarExtension(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(StatusBarExtension), this);
+			interceptor = new SmokeInvocation(typeof(StatusBarExtension), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static StatusBarExtension() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(StatusBarExtension), null);
+			staticInterceptor = new SmokeInvocation(typeof(StatusBarExtension), null);
 		}
 		public StatusBarExtension(KParts.ReadOnlyPart parent) : this((Type) null) {
 			CreateProxy();

@@ -32,7 +32,7 @@ namespace Kimono {
 	public class KConfig : KConfigBase, IDisposable {
  		protected KConfig(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KConfig), this);
+			interceptor = new SmokeInvocation(typeof(KConfig), this);
 		}
 		public enum OpenFlag {
 			IncludeGlobals = 0x01,

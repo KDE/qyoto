@@ -12,7 +12,7 @@ namespace KIO {
 		private IntPtr smokeObject;
 		protected CopyInfo(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(CopyInfo), this);
+			interceptor = new SmokeInvocation(typeof(CopyInfo), this);
 		}
 		public CopyInfo() : this((Type) null) {
 			CreateProxy();

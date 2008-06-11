@@ -167,7 +167,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KLocalizedString(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KLocalizedString), this);
+			interceptor = new SmokeInvocation(typeof(KLocalizedString), this);
 		}
 		// void notifyCatalogsUpdated(const QStringList& arg1,const QList<KCatalogName>& arg2); >>>> NOT CONVERTED
 		/// <remarks>

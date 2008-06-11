@@ -17,7 +17,7 @@ namespace KMacroExpander {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		// QString expandMacros(const QString& arg1,const QHash<QString, QString>& arg2,QChar arg3); >>>> NOT CONVERTED
 		// QString expandMacros(const QString& arg1,const QHash<QString, QString>& arg2); >>>> NOT CONVERTED

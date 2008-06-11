@@ -22,7 +22,7 @@ namespace Kimono {
 	public class KListWidget : QListWidget, IDisposable {
  		protected KListWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KListWidget), this);
+			interceptor = new SmokeInvocation(typeof(KListWidget), this);
 		}
 		public KListWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

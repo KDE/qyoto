@@ -76,11 +76,11 @@ namespace Kimono {
 	public class KDialog : QDialog, IDisposable {
  		protected KDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDialog), this);
+			interceptor = new SmokeInvocation(typeof(KDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDialog), null);
 		}
 		public enum ButtonCode {
 			None = 0x00000000,

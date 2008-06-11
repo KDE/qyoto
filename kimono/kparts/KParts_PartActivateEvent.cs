@@ -18,11 +18,11 @@ namespace KParts {
 	public class PartActivateEvent : KParts.Event, IDisposable {
  		protected PartActivateEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(PartActivateEvent), this);
+			interceptor = new SmokeInvocation(typeof(PartActivateEvent), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static PartActivateEvent() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(PartActivateEvent), null);
+			staticInterceptor = new SmokeInvocation(typeof(PartActivateEvent), null);
 		}
 		public PartActivateEvent(bool activated, KParts.Part part, QWidget widget) : this((Type) null) {
 			CreateProxy();

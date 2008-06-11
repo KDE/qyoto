@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KShellCompletion : KUrlCompletion, IDisposable {
  		protected KShellCompletion(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KShellCompletion), this);
+			interceptor = new SmokeInvocation(typeof(KShellCompletion), this);
 		}
 		/// <remarks>
 		///  Constructs a KShellCompletion object.

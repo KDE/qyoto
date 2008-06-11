@@ -26,11 +26,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMimeTypeTrader(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMimeTypeTrader), this);
+			interceptor = new SmokeInvocation(typeof(KMimeTypeTrader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMimeTypeTrader() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KMimeTypeTrader), null);
+			staticInterceptor = new SmokeInvocation(typeof(KMimeTypeTrader), null);
 		}
 		/// <remarks>
 		///  This method returns a list of services which are associated with a given mimetype.

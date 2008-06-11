@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KButtonGroup : QGroupBox, IDisposable {
  		protected KButtonGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KButtonGroup), this);
+			interceptor = new SmokeInvocation(typeof(KButtonGroup), this);
 		}
 		[Q_PROPERTY("int", "current")]
 		public int Current {

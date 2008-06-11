@@ -66,11 +66,11 @@ namespace Kimono {
 	public class KReplace : KFind, IDisposable {
  		protected KReplace(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KReplace), this);
+			interceptor = new SmokeInvocation(typeof(KReplace), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KReplace() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KReplace), null);
+			staticInterceptor = new SmokeInvocation(typeof(KReplace), null);
 		}
 		/// <remarks>
 		///  Only use this constructor if you don't use KFindDialog, or if

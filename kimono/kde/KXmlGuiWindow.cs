@@ -49,11 +49,11 @@ namespace Kimono {
 	public class KXmlGuiWindow : KMainWindow, IKXMLGUIBuilder, IKXMLGUIClient, IDisposable {
  		protected KXmlGuiWindow(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KXmlGuiWindow), this);
+			interceptor = new SmokeInvocation(typeof(KXmlGuiWindow), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KXmlGuiWindow() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KXmlGuiWindow), null);
+			staticInterceptor = new SmokeInvocation(typeof(KXmlGuiWindow), null);
 		}
 		/// <remarks>
 		/// </remarks>		<short>   </short>

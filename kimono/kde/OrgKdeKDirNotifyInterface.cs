@@ -12,11 +12,11 @@ namespace Kimono {
 	public class OrgKdeKDirNotifyInterface : QDBusAbstractInterface, IDisposable {
  		protected OrgKdeKDirNotifyInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(OrgKdeKDirNotifyInterface), this);
+			interceptor = new SmokeInvocation(typeof(OrgKdeKDirNotifyInterface), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static OrgKdeKDirNotifyInterface() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(OrgKdeKDirNotifyInterface), null);
+			staticInterceptor = new SmokeInvocation(typeof(OrgKdeKDirNotifyInterface), null);
 		}
 		public OrgKdeKDirNotifyInterface(string service, string path, QDBusConnection connection, QObject parent) : this((Type) null) {
 			CreateProxy();

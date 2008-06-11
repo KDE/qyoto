@@ -70,7 +70,7 @@ namespace Kimono {
 	public class KPluginFactory : QObject, IDisposable {
  		protected KPluginFactory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPluginFactory), this);
+			interceptor = new SmokeInvocation(typeof(KPluginFactory), this);
 		}
 		// KPluginFactory* KPluginFactory(const char* arg1,const char* arg2,QObject* arg3); >>>> NOT CONVERTED
 		// KPluginFactory* KPluginFactory(const char* arg1,const char* arg2); >>>> NOT CONVERTED

@@ -17,11 +17,11 @@ namespace KParts {
 	public class GUIActivateEvent : KParts.Event, IDisposable {
  		protected GUIActivateEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(GUIActivateEvent), this);
+			interceptor = new SmokeInvocation(typeof(GUIActivateEvent), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static GUIActivateEvent() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(GUIActivateEvent), null);
+			staticInterceptor = new SmokeInvocation(typeof(GUIActivateEvent), null);
 		}
 		public GUIActivateEvent(bool activated) : this((Type) null) {
 			CreateProxy();

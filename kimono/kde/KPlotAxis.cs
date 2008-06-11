@@ -19,7 +19,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KPlotAxis(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPlotAxis), this);
+			interceptor = new SmokeInvocation(typeof(KPlotAxis), this);
 		}
 		/// <remarks>
 		///  Constructor, constructs an axis with the label <code>label.</code>

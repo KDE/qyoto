@@ -18,7 +18,7 @@ namespace KColorMimeData {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		/// <remarks>
 		///  Sets the color and text representation fields for the specified color in the mimedata object:

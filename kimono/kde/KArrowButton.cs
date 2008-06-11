@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KArrowButton : QPushButton, IDisposable {
  		protected KArrowButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KArrowButton), this);
+			interceptor = new SmokeInvocation(typeof(KArrowButton), this);
 		}
 		[Q_PROPERTY("int", "arrowType")]
 		public new int ArrowType {

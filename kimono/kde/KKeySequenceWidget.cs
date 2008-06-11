@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KKeySequenceWidget : QWidget, IDisposable {
  		protected KKeySequenceWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KKeySequenceWidget), this);
+			interceptor = new SmokeInvocation(typeof(KKeySequenceWidget), this);
 		}
 		public enum Validation {
 			Validate = 0,

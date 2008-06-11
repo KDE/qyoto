@@ -22,7 +22,7 @@ namespace KInputDialog {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		/// <remarks>
 		///  Static convenience function to get a string from the user.

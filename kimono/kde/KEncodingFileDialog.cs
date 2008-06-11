@@ -23,7 +23,7 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected Result(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(Result), this);
+				interceptor = new SmokeInvocation(typeof(Result), this);
 			}
 			public Result() : this((Type) null) {
 				CreateProxy();
@@ -37,11 +37,11 @@ namespace Kimono {
 			}
 		}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KEncodingFileDialog), this);
+			interceptor = new SmokeInvocation(typeof(KEncodingFileDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KEncodingFileDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KEncodingFileDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(KEncodingFileDialog), null);
 		}
 		/// <remarks>
 		///  Constructs a file dialog for text files with encoding selection possibility.

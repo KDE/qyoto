@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KUrlComboBox : KComboBox, IDisposable {
  		protected KUrlComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUrlComboBox), this);
+			interceptor = new SmokeInvocation(typeof(KUrlComboBox), this);
 		}
 		/// <remarks>
 		///  This enum describes which kind of items is shown in the combo box.

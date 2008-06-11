@@ -16,7 +16,7 @@ namespace Kimono {
 	public class KMenuBar : QMenuBar, IDisposable {
  		protected KMenuBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMenuBar), this);
+			interceptor = new SmokeInvocation(typeof(KMenuBar), this);
 		}
 		[Q_PROPERTY("bool", "topLevelMenu")]
 		public bool TopLevelMenu {

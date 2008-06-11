@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KDialogJobUiDelegate : KJobUiDelegate, IDisposable {
  		protected KDialogJobUiDelegate(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDialogJobUiDelegate), this);
+			interceptor = new SmokeInvocation(typeof(KDialogJobUiDelegate), this);
 		}
 		/// <remarks>
 		///  Constructs a new KDialogJobUiDelegate.

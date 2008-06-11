@@ -26,7 +26,7 @@ namespace Kimono {
 	public class KPageView : QWidget, IDisposable {
  		protected KPageView(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPageView), this);
+			interceptor = new SmokeInvocation(typeof(KPageView), this);
 		}
 		/// <remarks>
 		///  This enum is used to decide which type of navigation view

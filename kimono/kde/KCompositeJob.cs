@@ -14,7 +14,7 @@ namespace Kimono {
 	public abstract class KCompositeJob : KJob, IDisposable {
  		protected KCompositeJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCompositeJob), this);
+			interceptor = new SmokeInvocation(typeof(KCompositeJob), this);
 		}
 		// KCompositeJob* KCompositeJob(KCompositeJobPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		/// <remarks>

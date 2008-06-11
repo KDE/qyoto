@@ -15,7 +15,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KConfigBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KConfigBase), this);
+			interceptor = new SmokeInvocation(typeof(KConfigBase), this);
 		}
 		/// <remarks>
 		///  Flags to control write entry

@@ -29,7 +29,7 @@ namespace KIO {
 		private IntPtr smokeObject;
 		protected AuthInfo(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(AuthInfo), this);
+			interceptor = new SmokeInvocation(typeof(AuthInfo), this);
 		}
 		/// <remarks>
 		///  Flags for extra fields

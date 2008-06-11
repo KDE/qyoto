@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KSelectAction : KAction, IDisposable {
  		protected KSelectAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSelectAction), this);
+			interceptor = new SmokeInvocation(typeof(KSelectAction), this);
 		}
 		public enum ToolBarMode {
 			MenuMode = 0,

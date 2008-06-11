@@ -95,7 +95,7 @@ namespace Kimono {
 	public class KComboBox : QComboBox, IKCompletionBase, IDisposable {
  		protected KComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KComboBox), this);
+			interceptor = new SmokeInvocation(typeof(KComboBox), this);
 		}
 		[Q_PROPERTY("bool", "autoCompletion")]
 		public new bool AutoCompletion {

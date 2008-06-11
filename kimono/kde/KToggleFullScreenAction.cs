@@ -24,11 +24,11 @@ namespace Kimono {
 	public class KToggleFullScreenAction : KToggleAction, IDisposable {
  		protected KToggleFullScreenAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KToggleFullScreenAction), this);
+			interceptor = new SmokeInvocation(typeof(KToggleFullScreenAction), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KToggleFullScreenAction() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KToggleFullScreenAction), null);
+			staticInterceptor = new SmokeInvocation(typeof(KToggleFullScreenAction), null);
 		}
 		/// <remarks>
 		///  Create a KToggleFullScreenAction. Call setWindow() to associate this

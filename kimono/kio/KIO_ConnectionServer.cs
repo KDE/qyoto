@@ -15,7 +15,7 @@ namespace KIO {
 	public class ConnectionServer : QObject, IDisposable {
  		protected ConnectionServer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(ConnectionServer), this);
+			interceptor = new SmokeInvocation(typeof(ConnectionServer), this);
 		}
 		public ConnectionServer(QObject parent) : this((Type) null) {
 			CreateProxy();

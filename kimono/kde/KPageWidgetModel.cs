@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KPageWidgetModel : KPageModel, IDisposable {
  		protected KPageWidgetModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPageWidgetModel), this);
+			interceptor = new SmokeInvocation(typeof(KPageWidgetModel), this);
 		}
 		/// <remarks>
 		///  Creates a new page widget model.

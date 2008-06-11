@@ -84,11 +84,11 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected List(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(List), this);
+				interceptor = new SmokeInvocation(typeof(List), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static List() {
-				staticInterceptor = new SmokeInvocationKDE(typeof(List), null);
+				staticInterceptor = new SmokeInvocation(typeof(List), null);
 			}
 			//  List(); >>>> NOT CONVERTED
 			//  List(const KUrl& arg1); >>>> NOT CONVERTED
@@ -163,11 +163,11 @@ namespace Kimono {
 			/// 		<short>    Extract a list of KUrls from the contents of <code>mimeData.</code></short>
 		}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUrl), this);
+			interceptor = new SmokeInvocation(typeof(KUrl), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUrl() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KUrl), null);
+			staticInterceptor = new SmokeInvocation(typeof(KUrl), null);
 		}
 		public enum MimeDataFlags {
 			DefaultMimeDataFlags = 0,

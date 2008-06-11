@@ -67,11 +67,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KUriFilter(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUriFilter), this);
+			interceptor = new SmokeInvocation(typeof(KUriFilter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUriFilter() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KUriFilter), null);
+			staticInterceptor = new SmokeInvocation(typeof(KUriFilter), null);
 		}
 		/// <remarks>
 		///  Filters the URI given by the object UriFilterData.

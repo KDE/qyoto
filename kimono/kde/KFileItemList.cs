@@ -16,7 +16,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KFileItemList(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFileItemList), this);
+			interceptor = new SmokeInvocation(typeof(KFileItemList), this);
 		}
 		public KFileItemList() : this((Type) null) {
 			CreateProxy();

@@ -29,11 +29,11 @@ namespace Kimono {
 	public class KSystemTrayIcon : QSystemTrayIcon, IDisposable {
  		protected KSystemTrayIcon(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSystemTrayIcon), this);
+			interceptor = new SmokeInvocation(typeof(KSystemTrayIcon), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSystemTrayIcon() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSystemTrayIcon), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSystemTrayIcon), null);
 		}
 		/// <remarks>
 		///  Construct a system tray icon.

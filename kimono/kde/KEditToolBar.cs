@@ -40,11 +40,11 @@ namespace Kimono {
 	public class KEditToolBar : KDialog, IDisposable {
  		protected KEditToolBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KEditToolBar), this);
+			interceptor = new SmokeInvocation(typeof(KEditToolBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KEditToolBar() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KEditToolBar), null);
+			staticInterceptor = new SmokeInvocation(typeof(KEditToolBar), null);
 		}
 		/// <remarks>
 		///  Old constructor for apps that do not use components.

@@ -13,11 +13,11 @@ namespace Sonnet {
 	public class Highlighter : QSyntaxHighlighter, IDisposable {
  		protected Highlighter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Highlighter), this);
+			interceptor = new SmokeInvocation(typeof(Highlighter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Highlighter() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Highlighter), null);
+			staticInterceptor = new SmokeInvocation(typeof(Highlighter), null);
 		}
 		public Highlighter(QTextEdit textEdit, string configFile, QColor col) : this((Type) null) {
 			CreateProxy();

@@ -24,7 +24,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KRandomSequence(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KRandomSequence), this);
+			interceptor = new SmokeInvocation(typeof(KRandomSequence), this);
 		}
 		/// <remarks>
 		///  Creates a pseudo-random sequence based on the seed lngSeed.

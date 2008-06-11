@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KCategorizedSortFilterProxyModel : QSortFilterProxyModel, IDisposable {
  		protected KCategorizedSortFilterProxyModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCategorizedSortFilterProxyModel), this);
+			interceptor = new SmokeInvocation(typeof(KCategorizedSortFilterProxyModel), this);
 		}
 		public enum AdditionalRoles {
 			CategoryDisplayRole = 0x17CE990A,

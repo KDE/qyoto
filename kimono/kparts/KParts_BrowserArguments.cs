@@ -24,7 +24,7 @@ namespace KParts {
 		private IntPtr smokeObject;
 		protected BrowserArguments(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(BrowserArguments), this);
+			interceptor = new SmokeInvocation(typeof(BrowserArguments), this);
 		}
 		public BrowserArguments() : this((Type) null) {
 			CreateProxy();

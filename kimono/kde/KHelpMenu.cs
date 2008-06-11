@@ -63,7 +63,7 @@ namespace Kimono {
 	public class KHelpMenu : QObject, IDisposable {
  		protected KHelpMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KHelpMenu), this);
+			interceptor = new SmokeInvocation(typeof(KHelpMenu), this);
 		}
 		public enum MenuId {
 			menuHelpContents = 0,

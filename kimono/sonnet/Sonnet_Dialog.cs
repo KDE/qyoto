@@ -23,7 +23,7 @@ namespace Sonnet {
 	public class Dialog : KDialog, IDisposable {
  		protected Dialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Dialog), this);
+			interceptor = new SmokeInvocation(typeof(Dialog), this);
 		}
 		public Dialog(Sonnet.BackgroundChecker checker, QWidget parent) : this((Type) null) {
 			CreateProxy();

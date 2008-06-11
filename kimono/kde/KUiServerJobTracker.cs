@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KUiServerJobTracker : KJobTrackerInterface, IDisposable {
  		protected KUiServerJobTracker(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUiServerJobTracker), this);
+			interceptor = new SmokeInvocation(typeof(KUiServerJobTracker), this);
 		}
 		/// <remarks>
 		///  Creates a new KJobTrackerInterface

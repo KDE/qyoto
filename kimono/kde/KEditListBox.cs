@@ -29,7 +29,7 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected CustomEditor(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(CustomEditor), this);
+				interceptor = new SmokeInvocation(typeof(CustomEditor), this);
 			}
 			//  CustomEditor(); >>>> NOT CONVERTED
 			//  CustomEditor(QWidget* arg1,KLineEdit* arg2); >>>> NOT CONVERTED
@@ -44,7 +44,7 @@ namespace Kimono {
 			}
 		}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KEditListBox), this);
+			interceptor = new SmokeInvocation(typeof(KEditListBox), this);
 		}
 		/// <remarks>
 		///  Enumeration of the buttons, the listbox offers. Specify them in the

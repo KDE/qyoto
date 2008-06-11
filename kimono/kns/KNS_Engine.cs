@@ -21,11 +21,11 @@ namespace KNS {
 		private IntPtr smokeObject;
 		protected Engine(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Engine), this);
+			interceptor = new SmokeInvocation(typeof(Engine), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Engine() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Engine), null);
+			staticInterceptor = new SmokeInvocation(typeof(Engine), null);
 		}
 		// KNS::Entry::List downloadDialogModal(QWidget* arg1); >>>> NOT CONVERTED
 		// KNS::Entry::List downloadDialogModal(); >>>> NOT CONVERTED

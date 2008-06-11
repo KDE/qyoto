@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KGradientSelector : KSelector, IDisposable {
  		protected KGradientSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KGradientSelector), this);
+			interceptor = new SmokeInvocation(typeof(KGradientSelector), this);
 		}
 		[Q_PROPERTY("QColor", "firstColor")]
 		public QColor FirstColor {

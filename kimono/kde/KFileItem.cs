@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KFileItem(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFileItem), this);
+			interceptor = new SmokeInvocation(typeof(KFileItem), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFileItem() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KFileItem), null);
+			staticInterceptor = new SmokeInvocation(typeof(KFileItem), null);
 		}
 		/// <remarks>
 		///  The timestamps associated with a file.

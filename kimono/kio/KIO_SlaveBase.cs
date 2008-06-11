@@ -106,7 +106,7 @@ namespace KIO {
 		private IntPtr smokeObject;
 		protected SlaveBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SlaveBase), this);
+			interceptor = new SmokeInvocation(typeof(SlaveBase), this);
 		}
 		public enum MessageBoxType {
 			QuestionYesNo = 1,

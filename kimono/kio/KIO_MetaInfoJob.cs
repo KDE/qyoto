@@ -15,7 +15,7 @@ namespace KIO {
 	public class MetaInfoJob : KIO.Job, IDisposable {
  		protected MetaInfoJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(MetaInfoJob), this);
+			interceptor = new SmokeInvocation(typeof(MetaInfoJob), this);
 		}
 		/// <remarks>
 		///  Creates a new MetaInfoJob.

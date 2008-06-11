@@ -52,7 +52,7 @@ namespace Kimono {
 	public abstract class KWordMacroExpander : KMacroExpanderBase {
  		protected KWordMacroExpander(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KWordMacroExpander), this);
+			interceptor = new SmokeInvocation(typeof(KWordMacroExpander), this);
 		}
 		/// <remarks>
 		///  Constructor.

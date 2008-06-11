@@ -69,11 +69,11 @@ namespace Kimono {
 	public class KFind : QObject, IDisposable {
  		protected KFind(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFind), this);
+			interceptor = new SmokeInvocation(typeof(KFind), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFind() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KFind), null);
+			staticInterceptor = new SmokeInvocation(typeof(KFind), null);
 		}
 		public enum Options {
 			WholeWordsOnly = 1,

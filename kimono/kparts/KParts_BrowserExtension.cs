@@ -80,11 +80,11 @@ namespace KParts {
 	public class BrowserExtension : QObject, IDisposable {
  		protected BrowserExtension(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(BrowserExtension), this);
+			interceptor = new SmokeInvocation(typeof(BrowserExtension), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static BrowserExtension() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(BrowserExtension), null);
+			staticInterceptor = new SmokeInvocation(typeof(BrowserExtension), null);
 		}
 		/// <remarks>
 		///  Set of flags passed via the popupMenu signal, to ask for some items in the popup menu.

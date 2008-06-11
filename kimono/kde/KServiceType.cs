@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KServiceType : KSycocaEntry, IDisposable {
  		protected KServiceType(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KServiceType), this);
+			interceptor = new SmokeInvocation(typeof(KServiceType), this);
 		}
 		// KServiceType::Ptr parentType(); >>>> NOT CONVERTED
 		// KServiceType::Ptr serviceType(const QString& arg1); >>>> NOT CONVERTED

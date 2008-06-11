@@ -35,7 +35,7 @@ namespace KShell {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		/// <remarks>
 		///  Splits <code>cmd</code> according to system shell word splitting and quoting rules.

@@ -25,11 +25,11 @@ namespace KIO {
 	public class SlaveConfig : QObject {
  		protected SlaveConfig(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SlaveConfig), this);
+			interceptor = new SmokeInvocation(typeof(SlaveConfig), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static SlaveConfig() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(SlaveConfig), null);
+			staticInterceptor = new SmokeInvocation(typeof(SlaveConfig), null);
 		}
 		/// <remarks>
 		///  Configure slaves of type <code>protocol</code> by setting <code>key</code> to <code>value.</code>

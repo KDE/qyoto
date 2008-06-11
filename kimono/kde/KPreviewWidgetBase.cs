@@ -21,7 +21,7 @@ namespace Kimono {
 	public abstract class KPreviewWidgetBase : QWidget {
  		protected KPreviewWidgetBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPreviewWidgetBase), this);
+			interceptor = new SmokeInvocation(typeof(KPreviewWidgetBase), this);
 		}
 		/// <remarks>
 		///  Constructor. Construct the user interface of your preview widget here

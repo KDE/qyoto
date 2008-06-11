@@ -39,11 +39,11 @@ namespace Kimono {
 	public class KApplication : QApplication, IDisposable {
  		protected KApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KApplication), this);
+			interceptor = new SmokeInvocation(typeof(KApplication), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KApplication() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KApplication), null);
+			staticInterceptor = new SmokeInvocation(typeof(KApplication), null);
 		}
 		public static bool LoadedByKdeinit() {
 			return (bool) staticInterceptor.Invoke("loadedByKdeinit", "loadedByKdeinit()", typeof(bool));

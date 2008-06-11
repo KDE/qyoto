@@ -60,11 +60,11 @@ namespace Kimono {
 	public class KSaveFile : QFile, IDisposable {
  		protected KSaveFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSaveFile), this);
+			interceptor = new SmokeInvocation(typeof(KSaveFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSaveFile() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSaveFile), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSaveFile), null);
 		}
 		/// <remarks>
 		///  Default constructor.

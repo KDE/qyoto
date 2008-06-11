@@ -12,7 +12,7 @@ namespace KIO {
 	public class SessionData : QObject, IDisposable {
  		protected SessionData(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SessionData), this);
+			interceptor = new SmokeInvocation(typeof(SessionData), this);
 		}
 		public SessionData() : this((Type) null) {
 			CreateProxy();

@@ -18,7 +18,7 @@ namespace KParts {
 	public class MainWindow : KXmlGuiWindow, KParts.IPartBase, IDisposable {
  		protected MainWindow(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(MainWindow), this);
+			interceptor = new SmokeInvocation(typeof(MainWindow), this);
 		}
 		// KParts::PartBase* PartBase(KParts::PartBasePrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>

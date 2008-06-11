@@ -29,11 +29,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KLocale(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KLocale), this);
+			interceptor = new SmokeInvocation(typeof(KLocale), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KLocale() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KLocale), null);
+			staticInterceptor = new SmokeInvocation(typeof(KLocale), null);
 		}
 		/// <remarks>
 		///  Various positions for where to place the positive or negative

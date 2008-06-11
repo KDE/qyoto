@@ -13,7 +13,7 @@ namespace KIO {
 	public class SkipDialog : KDialog, IDisposable {
  		protected SkipDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SkipDialog), this);
+			interceptor = new SmokeInvocation(typeof(SkipDialog), this);
 		}
 		public SkipDialog(QWidget parent, bool _multi, string _error_text) : this((Type) null) {
 			CreateProxy();

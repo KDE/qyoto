@@ -16,7 +16,7 @@ namespace Kimono {
  		protected KSharedConfig(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSharedConfig() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSharedConfig), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSharedConfig), null);
 		}
 		/// <remarks>
 		///  Constructs a KSharedConfig object.

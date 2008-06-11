@@ -14,11 +14,11 @@ namespace Kimono {
 	public class KSycoca : QObject, IDisposable {
  		protected KSycoca(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSycoca), this);
+			interceptor = new SmokeInvocation(typeof(KSycoca), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSycoca() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSycoca), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSycoca), null);
 		}
 		// void addFactory(KSycocaFactory* arg1); >>>> NOT CONVERTED
 		// QString absoluteFilePath(KSycoca::DatabaseType arg1); >>>> NOT CONVERTED

@@ -43,7 +43,7 @@ namespace Kimono {
 	public class KDirLister : QObject, IDisposable {
  		protected KDirLister(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDirLister), this);
+			interceptor = new SmokeInvocation(typeof(KDirLister), this);
 		}
 		public enum OpenUrlFlag {
 			NoFlags = 0x0,

@@ -21,11 +21,11 @@ namespace Kimono {
 	public class KShortcutsDialog : KDialog, IDisposable {
  		protected KShortcutsDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KShortcutsDialog), this);
+			interceptor = new SmokeInvocation(typeof(KShortcutsDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KShortcutsDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KShortcutsDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(KShortcutsDialog), null);
 		}
 		/// <remarks>
 		///  Constructs a KShortcutsDialog as a child of <code>parent.</code>

@@ -37,7 +37,7 @@ namespace KCodecs {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		/// <remarks>
 		///  Encodes the given data using the quoted-printable algorithm.

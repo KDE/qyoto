@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KUndoStack : QUndoStack, IDisposable {
  		protected KUndoStack(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUndoStack), this);
+			interceptor = new SmokeInvocation(typeof(KUndoStack), this);
 		}
 		/// <remarks>
 		///  Constructs a KUndoStack with <code>parent</code> as parent

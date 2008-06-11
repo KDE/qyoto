@@ -16,11 +16,11 @@ namespace KParts {
 	public class OpenUrlEvent : KParts.Event, IDisposable {
  		protected OpenUrlEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(OpenUrlEvent), this);
+			interceptor = new SmokeInvocation(typeof(OpenUrlEvent), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static OpenUrlEvent() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(OpenUrlEvent), null);
+			staticInterceptor = new SmokeInvocation(typeof(OpenUrlEvent), null);
 		}
 		public OpenUrlEvent(KParts.ReadOnlyPart part, KUrl url, KParts.OpenUrlArguments args, KParts.BrowserArguments browserArgs) : this((Type) null) {
 			CreateProxy();

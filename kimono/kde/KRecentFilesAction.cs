@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KRecentFilesAction : KSelectAction, IDisposable {
  		protected KRecentFilesAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KRecentFilesAction), this);
+			interceptor = new SmokeInvocation(typeof(KRecentFilesAction), this);
 		}
 		[Q_PROPERTY("int", "maxItems")]
 		public int MaxItems {

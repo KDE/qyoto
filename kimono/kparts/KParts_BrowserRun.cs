@@ -22,11 +22,11 @@ namespace KParts {
 	public class BrowserRun : KRun, IDisposable {
  		protected BrowserRun(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(BrowserRun), this);
+			interceptor = new SmokeInvocation(typeof(BrowserRun), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static BrowserRun() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(BrowserRun), null);
+			staticInterceptor = new SmokeInvocation(typeof(BrowserRun), null);
 		}
 		public enum AskSaveResult {
 			Save = 0,

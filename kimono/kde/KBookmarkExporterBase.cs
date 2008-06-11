@@ -11,7 +11,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KBookmarkExporterBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkExporterBase), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkExporterBase), this);
 		}
 		public KBookmarkExporterBase(KBookmarkManager mgr, string fileName) : this((Type) null) {
 			CreateProxy();

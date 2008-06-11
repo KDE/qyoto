@@ -19,7 +19,7 @@ namespace KNS {
 		private IntPtr smokeObject;
 		protected Author(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Author), this);
+			interceptor = new SmokeInvocation(typeof(Author), this);
 		}
 		/// <remarks>
 		///  Constructor.

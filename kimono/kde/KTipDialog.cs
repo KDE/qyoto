@@ -16,11 +16,11 @@ namespace Kimono {
 	public class KTipDialog : KDialog, IDisposable {
  		protected KTipDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTipDialog), this);
+			interceptor = new SmokeInvocation(typeof(KTipDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTipDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KTipDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(KTipDialog), null);
 		}
 		// KTipDialog* KTipDialog(KTipDatabase* arg1,QWidget* arg2); >>>> NOT CONVERTED
 		// KTipDialog* KTipDialog(KTipDatabase* arg1); >>>> NOT CONVERTED

@@ -16,7 +16,7 @@ namespace KIO {
 	public class MimetypeJob : KIO.TransferJob, IDisposable {
  		protected MimetypeJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(MimetypeJob), this);
+			interceptor = new SmokeInvocation(typeof(MimetypeJob), this);
 		}
 		// KIO::MimetypeJob* MimetypeJob(KIO::MimetypeJobPrivate& arg1); >>>> NOT CONVERTED
 		[Q_SLOT("void slotFinished()")]

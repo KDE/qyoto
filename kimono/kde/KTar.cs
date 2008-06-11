@@ -16,7 +16,7 @@ namespace Kimono {
 	public class KTar : KArchive, IDisposable {
  		protected KTar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTar), this);
+			interceptor = new SmokeInvocation(typeof(KTar), this);
 		}
 		/// <remarks>
 		///  Creates an instance that operates on the given filename

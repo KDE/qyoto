@@ -44,11 +44,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KColorScheme(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KColorScheme), this);
+			interceptor = new SmokeInvocation(typeof(KColorScheme), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KColorScheme() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KColorScheme), null);
+			staticInterceptor = new SmokeInvocation(typeof(KColorScheme), null);
 		}
 		/// <remarks>
 		///  This enumeration describes the color set for which a color is being

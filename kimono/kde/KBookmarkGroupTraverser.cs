@@ -11,7 +11,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KBookmarkGroupTraverser(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkGroupTraverser), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkGroupTraverser), this);
 		}
 		public KBookmarkGroupTraverser() : this((Type) null) {
 			CreateProxy();

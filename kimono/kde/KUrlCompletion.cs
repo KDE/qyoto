@@ -17,11 +17,11 @@ namespace Kimono {
 	public class KUrlCompletion : KCompletion, IDisposable {
  		protected KUrlCompletion(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUrlCompletion), this);
+			interceptor = new SmokeInvocation(typeof(KUrlCompletion), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUrlCompletion() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KUrlCompletion), null);
+			staticInterceptor = new SmokeInvocation(typeof(KUrlCompletion), null);
 		}
 		/// <remarks>
 		///  Determines how completion is done.

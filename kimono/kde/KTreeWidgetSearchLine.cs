@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KTreeWidgetSearchLine : KLineEdit, IDisposable {
  		protected KTreeWidgetSearchLine(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTreeWidgetSearchLine), this);
+			interceptor = new SmokeInvocation(typeof(KTreeWidgetSearchLine), this);
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "caseSensitity")]
 		public Qt.CaseSensitivity CaseSensitity {

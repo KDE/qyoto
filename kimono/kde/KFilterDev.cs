@@ -16,11 +16,11 @@ namespace Kimono {
 	public abstract class KFilterDev : QIODevice {
  		protected KFilterDev(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFilterDev), this);
+			interceptor = new SmokeInvocation(typeof(KFilterDev), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFilterDev() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KFilterDev), null);
+			staticInterceptor = new SmokeInvocation(typeof(KFilterDev), null);
 		}
 		/// <remarks>
 		///  Open for reading or writing.

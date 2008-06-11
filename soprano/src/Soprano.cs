@@ -9,7 +9,7 @@ namespace Soprano {
 		[DllImport("libsoprano-sharp", CharSet=CharSet.Ansi)]
 		static extern void Init_soprano();
 		
-		static InitSoprano() {
+		public static void InitSmoke() {
 			Init_soprano();
 		}
 	}

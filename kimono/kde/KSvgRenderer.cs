@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KSvgRenderer : QSvgRenderer, IDisposable {
  		protected KSvgRenderer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSvgRenderer), this);
+			interceptor = new SmokeInvocation(typeof(KSvgRenderer), this);
 		}
 		public KSvgRenderer(QObject parent) : this((Type) null) {
 			CreateProxy();

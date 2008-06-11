@@ -25,11 +25,11 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected List(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(List), this);
+				interceptor = new SmokeInvocation(typeof(List), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static List() {
-				staticInterceptor = new SmokeInvocationKDE(typeof(List), null);
+				staticInterceptor = new SmokeInvocation(typeof(List), null);
 			}
 			public List() : this((Type) null) {
 				CreateProxy();
@@ -74,11 +74,11 @@ namespace Kimono {
 			}
 		}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmark), this);
+			interceptor = new SmokeInvocation(typeof(KBookmark), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KBookmark() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KBookmark), null);
+			staticInterceptor = new SmokeInvocation(typeof(KBookmark), null);
 		}
 		public enum MetaDataOverwriteMode {
 			OverwriteMetaData = 0,

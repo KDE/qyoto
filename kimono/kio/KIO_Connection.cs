@@ -19,7 +19,7 @@ namespace KIO {
 	public class Connection : QObject, IDisposable {
  		protected Connection(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Connection), this);
+			interceptor = new SmokeInvocation(typeof(Connection), this);
 		}
 		/// <remarks>
 		///  Creates a new connection.

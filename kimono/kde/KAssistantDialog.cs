@@ -31,7 +31,7 @@ namespace Kimono {
 	public class KAssistantDialog : KPageDialog, IDisposable {
  		protected KAssistantDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAssistantDialog), this);
+			interceptor = new SmokeInvocation(typeof(KAssistantDialog), this);
 		}
 		/// <remarks>
 		///  Construct a new assistant dialog with <code>parent</code> as parent.

@@ -23,7 +23,7 @@ namespace KParts {
 	public abstract class ReadWritePart : KParts.ReadOnlyPart {
  		protected ReadWritePart(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(ReadWritePart), this);
+			interceptor = new SmokeInvocation(typeof(ReadWritePart), this);
 		}
 		/// <remarks>
 		///  Constructor

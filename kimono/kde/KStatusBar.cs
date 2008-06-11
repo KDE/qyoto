@@ -29,7 +29,7 @@ namespace Kimono {
 	public class KStatusBar : QStatusBar, IDisposable {
  		protected KStatusBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KStatusBar), this);
+			interceptor = new SmokeInvocation(typeof(KStatusBar), this);
 		}
 		/// <remarks>
 		///   Constructs a status bar. <code>parent</code> is usually KMainWindow.

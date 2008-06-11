@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KToggleToolBarAction : KToggleAction, IDisposable {
  		protected KToggleToolBarAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KToggleToolBarAction), this);
+			interceptor = new SmokeInvocation(typeof(KToggleToolBarAction), this);
 		}
 		/// <remarks>
 		///  Create a KToggleToolbarAction that manages the toolbar

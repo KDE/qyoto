@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KMessageBoxMessageHandler : QObject, IKMessageHandler, IDisposable {
  		protected KMessageBoxMessageHandler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMessageBoxMessageHandler), this);
+			interceptor = new SmokeInvocation(typeof(KMessageBoxMessageHandler), this);
 		}
 		/// <remarks>
 		///  @brief Create a new KMessageBoxMessageHandler

@@ -17,11 +17,11 @@ namespace KParts {
 	public abstract class Factory : KPluginFactory {
  		protected Factory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Factory), this);
+			interceptor = new SmokeInvocation(typeof(Factory), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Factory() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Factory), null);
+			staticInterceptor = new SmokeInvocation(typeof(Factory), null);
 		}
 		public Factory(QObject parent) : this((Type) null) {
 			CreateProxy();

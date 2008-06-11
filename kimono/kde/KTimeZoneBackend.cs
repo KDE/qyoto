@@ -26,7 +26,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTimeZoneBackend(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTimeZoneBackend), this);
+			interceptor = new SmokeInvocation(typeof(KTimeZoneBackend), this);
 		}
 		/// <remarks> Implements KTimeZone.KTimeZone(). </remarks>		<short>   Implements KTimeZone.KTimeZone().</short>
 		public KTimeZoneBackend() : this((Type) null) {

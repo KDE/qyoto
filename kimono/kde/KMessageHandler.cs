@@ -24,7 +24,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMessageHandler(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMessageHandler), this);
+			interceptor = new SmokeInvocation(typeof(KMessageHandler), this);
 		}
 		/// <remarks>
 		///  @brief Display a long message of a certain type.

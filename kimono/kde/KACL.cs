@@ -17,11 +17,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KACL(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KACL), this);
+			interceptor = new SmokeInvocation(typeof(KACL), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KACL() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KACL), null);
+			staticInterceptor = new SmokeInvocation(typeof(KACL), null);
 		}
 		/// <remarks>
 		///  Creates a new KACL from <code>aclString.</code> If the string is a valid acl

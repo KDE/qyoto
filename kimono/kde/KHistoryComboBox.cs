@@ -25,7 +25,7 @@ namespace Kimono {
 	public class KHistoryComboBox : KComboBox, IDisposable {
  		protected KHistoryComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KHistoryComboBox), this);
+			interceptor = new SmokeInvocation(typeof(KHistoryComboBox), this);
 		}
 		[Q_PROPERTY("QStringList", "historyItems")]
 		public List<string> HistoryItems {

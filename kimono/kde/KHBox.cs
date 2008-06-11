@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KHBox : QFrame, IDisposable {
  		protected KHBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KHBox), this);
+			interceptor = new SmokeInvocation(typeof(KHBox), this);
 		}
 		/// <remarks>
 		///  Creates a new hbox.

@@ -16,7 +16,7 @@ namespace KIO {
 	public class FileJob : KIO.SimpleJob, IDisposable {
  		protected FileJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(FileJob), this);
+			interceptor = new SmokeInvocation(typeof(FileJob), this);
 		}
 		// void read(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		// void seek(KIO::filesize_t arg1); >>>> NOT CONVERTED

@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KListWidgetSearchLine : KLineEdit, IDisposable {
  		protected KListWidgetSearchLine(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KListWidgetSearchLine), this);
+			interceptor = new SmokeInvocation(typeof(KListWidgetSearchLine), this);
 		}
 		/// <remarks>
 		///  Constructs a KListWidgetSearchLine with \a listWidget being the QListWidget to

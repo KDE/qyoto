@@ -45,7 +45,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCompletionBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCompletionBase), this);
+			interceptor = new SmokeInvocation(typeof(KCompletionBase), this);
 		}
 		/// <remarks>
 		///  Constants that represent the items whose short-cut

@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KCompletionBox : KListWidget, IDisposable {
  		protected KCompletionBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCompletionBox), this);
+			interceptor = new SmokeInvocation(typeof(KCompletionBox), this);
 		}
 		[Q_PROPERTY("bool", "isTabHandling")]
 		public bool IsTabHandling {

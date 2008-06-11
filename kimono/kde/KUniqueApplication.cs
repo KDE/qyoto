@@ -31,11 +31,11 @@ namespace Kimono {
 	public class KUniqueApplication : KApplication, IDisposable {
  		protected KUniqueApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUniqueApplication), this);
+			interceptor = new SmokeInvocation(typeof(KUniqueApplication), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUniqueApplication() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KUniqueApplication), null);
+			staticInterceptor = new SmokeInvocation(typeof(KUniqueApplication), null);
 		}
 		/// <remarks> 
 		///  These flags can be used to specify how new instances of 

@@ -15,7 +15,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KPty(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPty), this);
+			interceptor = new SmokeInvocation(typeof(KPty), this);
 		}
 		// bool tcGetAttr(struct ::termios* arg1); >>>> NOT CONVERTED
 		// bool tcSetAttr(struct ::termios* arg1); >>>> NOT CONVERTED

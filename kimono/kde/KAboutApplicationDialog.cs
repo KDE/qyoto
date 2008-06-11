@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KAboutApplicationDialog : KDialog, IDisposable {
  		protected KAboutApplicationDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAboutApplicationDialog), this);
+			interceptor = new SmokeInvocation(typeof(KAboutApplicationDialog), this);
 		}
 		/// <remarks>
 		///  Constructor. Creates a fully featured "About Application" dialog box.

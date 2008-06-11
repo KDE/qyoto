@@ -56,7 +56,7 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected Transition(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(Transition), this);
+				interceptor = new SmokeInvocation(typeof(Transition), this);
 			}
 			//  Transition(); >>>> NOT CONVERTED
 			//  Transition(,); >>>> NOT CONVERTED
@@ -91,11 +91,11 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected Phase(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(Phase), this);
+				interceptor = new SmokeInvocation(typeof(Phase), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static Phase() {
-				staticInterceptor = new SmokeInvocationKDE(typeof(Phase), null);
+				staticInterceptor = new SmokeInvocation(typeof(Phase), null);
 			}
 			public Phase() : this((Type) null) {
 				CreateProxy();
@@ -199,11 +199,11 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected LeapSeconds(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(LeapSeconds), this);
+				interceptor = new SmokeInvocation(typeof(LeapSeconds), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static LeapSeconds() {
-				staticInterceptor = new SmokeInvocationKDE(typeof(LeapSeconds), null);
+				staticInterceptor = new SmokeInvocation(typeof(LeapSeconds), null);
 			}
 			public LeapSeconds() : this((Type) null) {
 				CreateProxy();
@@ -269,11 +269,11 @@ namespace Kimono {
 			}
 		}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTimeZone), this);
+			interceptor = new SmokeInvocation(typeof(KTimeZone), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTimeZone() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KTimeZone), null);
+			staticInterceptor = new SmokeInvocation(typeof(KTimeZone), null);
 		}
 		public static int InvalidOffset() {
 			return (int) staticInterceptor.Invoke("InvalidOffset", "InvalidOffset()", typeof(int));

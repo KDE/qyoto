@@ -14,7 +14,7 @@ namespace KIO {
 	public class DirectorySizeJob : KIO.Job, IDisposable {
  		protected DirectorySizeJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(DirectorySizeJob), this);
+			interceptor = new SmokeInvocation(typeof(DirectorySizeJob), this);
 		}
 		// KIO::filesize_t totalSize(); >>>> NOT CONVERTED
 		// KIO::filesize_t totalFiles(); >>>> NOT CONVERTED

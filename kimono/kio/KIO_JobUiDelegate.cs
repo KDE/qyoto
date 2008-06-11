@@ -15,7 +15,7 @@ namespace KIO {
 	public class JobUiDelegate : KDialogJobUiDelegate, IDisposable {
  		protected JobUiDelegate(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(JobUiDelegate), this);
+			interceptor = new SmokeInvocation(typeof(JobUiDelegate), this);
 		}
 		/// <remarks>
 		///  The type of deletion: real deletion, or moving the files to the trash

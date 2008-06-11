@@ -17,7 +17,7 @@ namespace KIO {
 	public class SlaveInterface : QObject {
  		protected SlaveInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SlaveInterface), this);
+			interceptor = new SmokeInvocation(typeof(SlaveInterface), this);
 		}
 		// void setOffset(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		// KIO::filesize_t offset(); >>>> NOT CONVERTED

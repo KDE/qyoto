@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KCodecAction : KSelectAction, IDisposable {
  		protected KCodecAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCodecAction), this);
+			interceptor = new SmokeInvocation(typeof(KCodecAction), this);
 		}
 		[Q_PROPERTY("QString", "codecName")]
 		public string CodecName {

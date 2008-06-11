@@ -25,7 +25,7 @@ namespace Kimono {
 	public class KPageWidgetItem : QObject, IDisposable {
  		protected KPageWidgetItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPageWidgetItem), this);
+			interceptor = new SmokeInvocation(typeof(KPageWidgetItem), this);
 		}
 		[Q_PROPERTY("QString", "name")]
 		public string Name {

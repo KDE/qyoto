@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KTreeWidgetSearchLineWidget : QWidget, IDisposable {
  		protected KTreeWidgetSearchLineWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTreeWidgetSearchLineWidget), this);
+			interceptor = new SmokeInvocation(typeof(KTreeWidgetSearchLineWidget), this);
 		}
 		/// <remarks>
 		///  Creates a KTreeWidgetSearchLineWidget for \a treeWidget with \a parent as the

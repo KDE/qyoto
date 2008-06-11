@@ -23,7 +23,7 @@ namespace Kimono {
 	public class KTzfileTimeZoneBackend : KTimeZoneBackend, IDisposable {
  		protected KTzfileTimeZoneBackend(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTzfileTimeZoneBackend), this);
+			interceptor = new SmokeInvocation(typeof(KTzfileTimeZoneBackend), this);
 		}
 		/// <remarks> Implements KTzfileTimeZone.KTzfileTimeZone(). </remarks>		<short>   Implements KTzfileTimeZone.KTzfileTimeZone().</short>
 		public KTzfileTimeZoneBackend(KTzfileTimeZoneSource source, string name, string countryCode, float latitude, float longitude, string comment) : this((Type) null) {

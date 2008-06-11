@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KToggleAction : KAction, IDisposable {
  		protected KToggleAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KToggleAction), this);
+			interceptor = new SmokeInvocation(typeof(KToggleAction), this);
 		}
 		/// <remarks>
 		///  Constructs an action with the specified parent.

@@ -26,7 +26,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTimeZoneData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTimeZoneData), this);
+			interceptor = new SmokeInvocation(typeof(KTimeZoneData), this);
 		}
 		// QList<KTimeZone::Transition> transitions(const QDateTime& arg1,const QDateTime& arg2); >>>> NOT CONVERTED
 		// QList<KTimeZone::Transition> transitions(const QDateTime& arg1); >>>> NOT CONVERTED

@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KDateValidator : QValidator, IDisposable {
  		protected KDateValidator(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDateValidator), this);
+			interceptor = new SmokeInvocation(typeof(KDateValidator), this);
 		}
 		public KDateValidator(QWidget parent) : this((Type) null) {
 			CreateProxy();

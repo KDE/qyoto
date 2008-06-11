@@ -9,7 +9,7 @@ namespace Kimono {
 	public class KBookmarkContextMenu : KMenu, IDisposable {
  		protected KBookmarkContextMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkContextMenu), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkContextMenu), this);
 		}
 		public KBookmarkContextMenu(KBookmark bm, KBookmarkManager manager, KBookmarkOwner owner, QWidget parent) : this((Type) null) {
 			CreateProxy();

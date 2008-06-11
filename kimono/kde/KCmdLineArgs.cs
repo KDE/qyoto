@@ -139,11 +139,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCmdLineArgs(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCmdLineArgs), this);
+			interceptor = new SmokeInvocation(typeof(KCmdLineArgs), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KCmdLineArgs() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KCmdLineArgs), null);
+			staticInterceptor = new SmokeInvocation(typeof(KCmdLineArgs), null);
 		}
 		public enum StdCmdLineArg {
 			CmdLineArgQt = 0x01,

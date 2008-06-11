@@ -22,11 +22,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KComponentData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KComponentData), this);
+			interceptor = new SmokeInvocation(typeof(KComponentData), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KComponentData() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KComponentData), null);
+			staticInterceptor = new SmokeInvocation(typeof(KComponentData), null);
 		}
 		public enum MainComponentRegistration {
 			RegisterAsMainComponent = 0,

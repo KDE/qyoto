@@ -15,7 +15,7 @@ namespace Kimono {
  		protected KGlobalSettings(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KGlobalSettings() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KGlobalSettings), null);
+			staticInterceptor = new SmokeInvocation(typeof(KGlobalSettings), null);
 		}
 		/// <remarks>
 		///  This enum describes the return type for insertTearOffHandle() whether to insert

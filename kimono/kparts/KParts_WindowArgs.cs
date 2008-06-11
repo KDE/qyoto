@@ -17,7 +17,7 @@ namespace KParts {
 		private IntPtr smokeObject;
 		protected WindowArgs(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(WindowArgs), this);
+			interceptor = new SmokeInvocation(typeof(WindowArgs), this);
 		}
 		public WindowArgs() : this((Type) null) {
 			CreateProxy();

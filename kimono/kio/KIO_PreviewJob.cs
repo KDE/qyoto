@@ -13,11 +13,11 @@ namespace KIO {
 	public class PreviewJob : KIO.Job, IDisposable {
  		protected PreviewJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(PreviewJob), this);
+			interceptor = new SmokeInvocation(typeof(PreviewJob), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static PreviewJob() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(PreviewJob), null);
+			staticInterceptor = new SmokeInvocation(typeof(PreviewJob), null);
 		}
 		// KIO::filesize_t maximumFileSize(); >>>> NOT CONVERTED
 		/// <remarks>

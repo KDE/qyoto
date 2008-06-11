@@ -98,7 +98,7 @@ namespace Kimono {
 	public class KCompletion : QObject, IDisposable {
  		protected KCompletion(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCompletion), this);
+			interceptor = new SmokeInvocation(typeof(KCompletion), this);
 		}
 		/// <remarks>
 		///  Constants that represent the order in which KCompletion performs

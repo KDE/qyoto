@@ -24,7 +24,7 @@ namespace Kimono {
 	public class KBookmarkMenu : QObject, IDisposable {
  		protected KBookmarkMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkMenu), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkMenu), this);
 		}
 		/// <remarks>
 		///  Fills a bookmark menu

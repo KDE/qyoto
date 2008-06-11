@@ -19,7 +19,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KPixmapProvider(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPixmapProvider), this);
+			interceptor = new SmokeInvocation(typeof(KPixmapProvider), this);
 		}
 		/// <remarks>
 		///  You may subclass this and return a pixmap of size <code>size</code> for <code>text.</code>

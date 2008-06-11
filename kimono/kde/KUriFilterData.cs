@@ -40,7 +40,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KUriFilterData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUriFilterData), this);
+			interceptor = new SmokeInvocation(typeof(KUriFilterData), this);
 		}
 		/// <remarks>
 		///  Describes the type of the URI that was filtered.

@@ -17,11 +17,11 @@ namespace Kimono {
 	public class KGlobalAccel : QObject {
  		protected KGlobalAccel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KGlobalAccel), this);
+			interceptor = new SmokeInvocation(typeof(KGlobalAccel), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KGlobalAccel() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KGlobalAccel), null);
+			staticInterceptor = new SmokeInvocation(typeof(KGlobalAccel), null);
 		}
 		/// <remarks>
 		///  Checks whether the accelerators are enabled.

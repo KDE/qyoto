@@ -17,7 +17,7 @@ namespace KIO {
 	public class TCPSlaveBase : KIO.SlaveBase {
  		protected TCPSlaveBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(TCPSlaveBase), this);
+			interceptor = new SmokeInvocation(typeof(TCPSlaveBase), this);
 		}
 		public enum SslResultDetail {
 			ResultOk = 1,

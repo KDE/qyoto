@@ -35,11 +35,11 @@ namespace Kimono {
 	public class KDirWatch : QObject, IDisposable {
  		protected KDirWatch(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDirWatch), this);
+			interceptor = new SmokeInvocation(typeof(KDirWatch), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDirWatch() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDirWatch), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDirWatch), null);
 		}
 		/// <remarks>
 		///  Available watch modes for directory monitoring

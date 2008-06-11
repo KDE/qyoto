@@ -24,11 +24,11 @@ namespace Kimono {
 	public class KDesktopFile : KConfig, IDisposable {
  		protected KDesktopFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDesktopFile), this);
+			interceptor = new SmokeInvocation(typeof(KDesktopFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDesktopFile() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDesktopFile), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDesktopFile), null);
 		}
 		/// <remarks>
 		///  Constructs a KDesktopFile object and make it either read-write

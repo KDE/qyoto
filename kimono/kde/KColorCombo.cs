@@ -16,7 +16,7 @@ namespace Kimono {
 	public class KColorCombo : QComboBox, IDisposable {
  		protected KColorCombo(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KColorCombo), this);
+			interceptor = new SmokeInvocation(typeof(KColorCombo), this);
 		}
 		[Q_PROPERTY("QColor", "color")]
 		public QColor Color {

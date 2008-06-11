@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KSycocaEntry(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSycocaEntry), this);
+			interceptor = new SmokeInvocation(typeof(KSycocaEntry), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KSycocaEntry() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KSycocaEntry), null);
+			staticInterceptor = new SmokeInvocation(typeof(KSycocaEntry), null);
 		}
 		// KSycocaEntry* KSycocaEntry(KSycocaEntryPrivate& arg1); >>>> NOT CONVERTED
 		public KSycocaEntry() : this((Type) null) {

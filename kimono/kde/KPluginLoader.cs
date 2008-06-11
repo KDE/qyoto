@@ -45,7 +45,7 @@ namespace Kimono {
 	public class KPluginLoader : QPluginLoader, IDisposable {
  		protected KPluginLoader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPluginLoader), this);
+			interceptor = new SmokeInvocation(typeof(KPluginLoader), this);
 		}
 		[Q_PROPERTY("QString", "fileName")]
 		public new string FileName {

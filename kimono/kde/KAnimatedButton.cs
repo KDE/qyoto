@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KAnimatedButton : QToolButton, IDisposable {
  		protected KAnimatedButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAnimatedButton), this);
+			interceptor = new SmokeInvocation(typeof(KAnimatedButton), this);
 		}
 		[Q_PROPERTY("QString", "icons")]
 		public string Icons {

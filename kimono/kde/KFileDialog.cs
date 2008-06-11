@@ -27,11 +27,11 @@ namespace Kimono {
 	public class KFileDialog : KDialog, IDisposable {
  		protected KFileDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFileDialog), this);
+			interceptor = new SmokeInvocation(typeof(KFileDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFileDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KFileDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(KFileDialog), null);
 		}
 		/// <remarks>
 		///  Defines some default behavior of the filedialog.

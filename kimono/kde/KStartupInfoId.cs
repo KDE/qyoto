@@ -20,11 +20,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KStartupInfoId(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KStartupInfoId), this);
+			interceptor = new SmokeInvocation(typeof(KStartupInfoId), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KStartupInfoId() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KStartupInfoId), null);
+			staticInterceptor = new SmokeInvocation(typeof(KStartupInfoId), null);
 		}
 		/// <remarks>
 		///  Overloaded operator.

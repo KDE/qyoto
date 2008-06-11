@@ -14,7 +14,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KPlotPoint(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPlotPoint), this);
+			interceptor = new SmokeInvocation(typeof(KPlotPoint), this);
 		}
 		/// <remarks>
 		///  Default constructor.

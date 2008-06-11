@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KPluginInfo(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPluginInfo), this);
+			interceptor = new SmokeInvocation(typeof(KPluginInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KPluginInfo() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KPluginInfo), null);
+			staticInterceptor = new SmokeInvocation(typeof(KPluginInfo), null);
 		}
 		// KPluginInfo::List fromServices(const KService::List& arg1,const KConfigGroup& arg2); >>>> NOT CONVERTED
 		// KPluginInfo::List fromServices(const KService::List& arg1); >>>> NOT CONVERTED

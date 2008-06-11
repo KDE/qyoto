@@ -1,17 +1,25 @@
-SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/SmokeInvocationKDE.cs
+PROJECT(kimono)
+
+SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/Kimono.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/src/AssemblyInfo.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kde/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kio/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kparts/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/sonnet/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/kns/*.cs)
 
-# ADD_CUSTOM_TARGET (kde-dotnet ALL ${GMCS_PATH} -define:DEBUG -unsafe -warn:0 -out:kde-dotnet.dll -target:library ${SRC_CS}
-#	COMMENT "Building kde-dotnet.dll")
+SET(SRC_CPP src/kimono.cpp)
 
-SET(CS_FLAGS -debug -define:DEBUG -unsafe -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
+	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
+LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
+KDE4_ADD_LIBRARY(kimono MODULE ${SRC_CPP})
+ADD_DEPENDENCIES(kimono smokekde)
+TARGET_LINK_LIBRARIES(kimono smokekde qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(kde-dotnet "${SRC_CS}" ALL)
-ADD_DEPENDENCIES (kde-dotnet qt-dotnet)
-#ADD_DEPENDENCIES (kde-dotnet ../qyoto/qt-dotnet)
-#INSTALL(TARGETS kde-dotnet LIBRARY DESTINATION lib)
+ADD_DEPENDENCIES (kde-dotnet qt-dotnet kimono)
 
-
+INSTALL(TARGETS kimono LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+INSTALL_GAC(kde-dotnet)

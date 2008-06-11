@@ -18,11 +18,11 @@ namespace Kimono {
 	public class KMimeType : KServiceType, IDisposable {
  		protected KMimeType(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMimeType), this);
+			interceptor = new SmokeInvocation(typeof(KMimeType), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMimeType() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KMimeType), null);
+			staticInterceptor = new SmokeInvocation(typeof(KMimeType), null);
 		}
 		public enum FindByNameOption {
 			DontResolveAlias = 0,

@@ -19,7 +19,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KLockFile(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KLockFile), this);
+			interceptor = new SmokeInvocation(typeof(KLockFile), this);
 		}
 		/// <remarks>
 		///  Possible return values of the lock function.

@@ -54,11 +54,11 @@ namespace Kimono {
 	public class KIconLoader : QObject, IDisposable {
  		protected KIconLoader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KIconLoader), this);
+			interceptor = new SmokeInvocation(typeof(KIconLoader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KIconLoader() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KIconLoader), null);
+			staticInterceptor = new SmokeInvocation(typeof(KIconLoader), null);
 		}
 		/// <remarks>
 		///  Defines the context of the icon.

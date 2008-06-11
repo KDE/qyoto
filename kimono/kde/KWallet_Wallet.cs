@@ -20,11 +20,11 @@ namespace KWallet {
 	public class Wallet : QObject, IDisposable {
  		protected Wallet(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Wallet), this);
+			interceptor = new SmokeInvocation(typeof(Wallet), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Wallet() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Wallet), null);
+			staticInterceptor = new SmokeInvocation(typeof(Wallet), null);
 		}
 		public enum EntryType {
 			Unknown = 0,

@@ -18,11 +18,11 @@ namespace KParts {
 	public class LiveConnectExtension : QObject, IDisposable {
  		protected LiveConnectExtension(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(LiveConnectExtension), this);
+			interceptor = new SmokeInvocation(typeof(LiveConnectExtension), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static LiveConnectExtension() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(LiveConnectExtension), null);
+			staticInterceptor = new SmokeInvocation(typeof(LiveConnectExtension), null);
 		}
 		public enum TypeOf {
 			TypeVoid = 0,

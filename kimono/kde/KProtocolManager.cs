@@ -29,11 +29,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KProtocolManager(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KProtocolManager), this);
+			interceptor = new SmokeInvocation(typeof(KProtocolManager), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KProtocolManager() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KProtocolManager), null);
+			staticInterceptor = new SmokeInvocation(typeof(KProtocolManager), null);
 		}
 		/// <remarks>
 		///  Types of proxy configuration

@@ -27,11 +27,11 @@ namespace KParts {
 	public class Plugin : QObject, IKXMLGUIClient, IDisposable {
  		protected Plugin(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Plugin), this);
+			interceptor = new SmokeInvocation(typeof(Plugin), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Plugin() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Plugin), null);
+			staticInterceptor = new SmokeInvocation(typeof(Plugin), null);
 		}
 		// void loadPlugins(QObject* arg1,const QList<KParts::Plugin::PluginInfo>& arg2); >>>> NOT CONVERTED
 		// void loadPlugins(QObject* arg1,const QList<KParts::Plugin::PluginInfo>& arg2,const KComponentData& arg3); >>>> NOT CONVERTED

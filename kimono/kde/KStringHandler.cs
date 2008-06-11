@@ -35,7 +35,7 @@ namespace KStringHandler {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		/// <remarks> Capitalizes each word in the string
 		///  "hello there" becomes "Hello There"        (string)

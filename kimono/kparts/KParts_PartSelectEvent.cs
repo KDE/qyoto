@@ -14,11 +14,11 @@ namespace KParts {
 	public class PartSelectEvent : KParts.Event, IDisposable {
  		protected PartSelectEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(PartSelectEvent), this);
+			interceptor = new SmokeInvocation(typeof(PartSelectEvent), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static PartSelectEvent() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(PartSelectEvent), null);
+			staticInterceptor = new SmokeInvocation(typeof(PartSelectEvent), null);
 		}
 		public PartSelectEvent(bool selected, KParts.Part part, QWidget widget) : this((Type) null) {
 			CreateProxy();

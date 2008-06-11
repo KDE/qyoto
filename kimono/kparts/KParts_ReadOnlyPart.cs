@@ -27,7 +27,7 @@ namespace KParts {
 	public abstract class ReadOnlyPart : KParts.Part {
  		protected ReadOnlyPart(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(ReadOnlyPart), this);
+			interceptor = new SmokeInvocation(typeof(ReadOnlyPart), this);
 		}
 		[Q_PROPERTY("KUrl", "url")]
 		public KUrl Url {

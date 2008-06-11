@@ -17,7 +17,7 @@ namespace KIO {
 	public class DeleteJob : KIO.Job, IDisposable {
  		protected DeleteJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(DeleteJob), this);
+			interceptor = new SmokeInvocation(typeof(DeleteJob), this);
 		}
 		// KIO::DeleteJob* DeleteJob(KIO::DeleteJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>

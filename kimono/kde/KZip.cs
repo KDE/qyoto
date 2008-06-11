@@ -29,7 +29,7 @@ namespace Kimono {
 	public class KZip : KArchive, IDisposable {
  		protected KZip(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KZip), this);
+			interceptor = new SmokeInvocation(typeof(KZip), this);
 		}
 		/// <remarks>
 		///  Describes the contents of the "extra field" for a given file in the Zip archive.

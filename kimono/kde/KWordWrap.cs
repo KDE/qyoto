@@ -39,11 +39,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KWordWrap(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KWordWrap), this);
+			interceptor = new SmokeInvocation(typeof(KWordWrap), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KWordWrap() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KWordWrap), null);
+			staticInterceptor = new SmokeInvocation(typeof(KWordWrap), null);
 		}
 		public const int FadeOut = 0x10000000;
 		public const int Truncate = 0x20000000;

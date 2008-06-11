@@ -95,7 +95,7 @@ namespace Kimono {
 	public class KLineEdit : QLineEdit, IKCompletionBase, IDisposable {
  		protected KLineEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KLineEdit), this);
+			interceptor = new SmokeInvocation(typeof(KLineEdit), this);
 		}
 		[Q_PROPERTY("bool", "contextMenuEnabled")]
 		public bool ContextMenuEnabled {

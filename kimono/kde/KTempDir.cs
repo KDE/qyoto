@@ -30,11 +30,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KTempDir(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTempDir), this);
+			interceptor = new SmokeInvocation(typeof(KTempDir), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KTempDir() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KTempDir), null);
+			staticInterceptor = new SmokeInvocation(typeof(KTempDir), null);
 		}
 		/// <remarks>
 		///  Creates a temporary directory with the name:

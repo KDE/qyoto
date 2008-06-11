@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KShortcutWidget : QWidget, IDisposable {
  		protected KShortcutWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KShortcutWidget), this);
+			interceptor = new SmokeInvocation(typeof(KShortcutWidget), this);
 		}
 		public KShortcutWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

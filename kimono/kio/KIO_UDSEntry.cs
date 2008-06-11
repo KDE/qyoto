@@ -32,7 +32,7 @@ namespace KIO {
 		private IntPtr smokeObject;
 		protected UDSEntry(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(UDSEntry), this);
+			interceptor = new SmokeInvocation(typeof(UDSEntry), this);
 		}
 		/// <remarks>
 		///  Constants used to specify the type of a UDSField.

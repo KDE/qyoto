@@ -22,7 +22,7 @@ namespace KNS {
 		private IntPtr smokeObject;
 		protected Entry(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Entry), this);
+			interceptor = new SmokeInvocation(typeof(Entry), this);
 		}
 		/// <remarks>
 		///  Status of the entry. An entry will be downloadable from the provider's

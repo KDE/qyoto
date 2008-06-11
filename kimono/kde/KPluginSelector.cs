@@ -27,7 +27,7 @@ namespace Kimono {
 	public class KPluginSelector : QWidget, IDisposable {
  		protected KPluginSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPluginSelector), this);
+			interceptor = new SmokeInvocation(typeof(KPluginSelector), this);
 		}
 		public enum PluginLoadMethod {
 			ReadConfigFile = 0,

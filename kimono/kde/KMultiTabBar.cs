@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KMultiTabBar : QWidget, IDisposable {
  		protected KMultiTabBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMultiTabBar), this);
+			interceptor = new SmokeInvocation(typeof(KMultiTabBar), this);
 		}
 		public enum KMultiTabBarPosition {
 			Left = 0,

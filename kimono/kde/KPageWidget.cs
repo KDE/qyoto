@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KPageWidget : KPageView, IDisposable {
  		protected KPageWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPageWidget), this);
+			interceptor = new SmokeInvocation(typeof(KPageWidget), this);
 		}
 		// KPageWidget* KPageWidget(KPageWidgetPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>

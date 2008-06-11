@@ -16,11 +16,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KFilterBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFilterBase), this);
+			interceptor = new SmokeInvocation(typeof(KFilterBase), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFilterBase() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KFilterBase), null);
+			staticInterceptor = new SmokeInvocation(typeof(KFilterBase), null);
 		}
 		/// <remarks> \internal </remarks>		<short>   \internal </short>
 		public enum Result {

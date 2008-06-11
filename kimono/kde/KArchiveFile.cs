@@ -14,7 +14,7 @@ namespace Kimono {
 	public class KArchiveFile : KArchiveEntry, IDisposable {
  		protected KArchiveFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KArchiveFile), this);
+			interceptor = new SmokeInvocation(typeof(KArchiveFile), this);
 		}
 		/// <remarks>
 		///  Creates a new file entry. Do not call this, KArchive takes care of it.

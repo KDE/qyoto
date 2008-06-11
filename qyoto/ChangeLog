@@ -1,3 +1,15 @@
+2008-06-11  Arno Rehn  <arno@arnorehn.de>
+
+	* Added the AssemblySmokeInitializer Attribute. It takes a Type of
+	  another class as an argument and is intended to initialize the
+	  underlying smoke lib for the binding. A method named 'InitSmoke'
+	  has to exist in the class specifed by the 'Type' argument and this
+	  will be called once to initialize the smoke lib. It is applied like
+	  this:
+	      [assembly: AssemblySmokeInitializer(typeof(InitSoprano))]
+	* Added C++ sources to the kimono bindings. They work now.
+	* Applied this change to the Kimono and Soprano# bindings.
+
 2008-06-04  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Remove references to QtWebKit from the Qyoto handlers.cpp so it 

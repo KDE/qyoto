@@ -16,7 +16,7 @@ namespace KIO {
 		private IntPtr smokeObject;
 		protected MetaData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(MetaData), this);
+			interceptor = new SmokeInvocation(typeof(MetaData), this);
 		}
 		/// <remarks>
 		///  Creates an empty meta data map.

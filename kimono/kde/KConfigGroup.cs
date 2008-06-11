@@ -19,7 +19,7 @@ namespace Kimono {
 	public abstract partial class KConfigGroup : KConfigBase, IDisposable {
  		protected KConfigGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KConfigGroup), this);
+			interceptor = new SmokeInvocation(typeof(KConfigGroup), this);
 		}
 		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const QString& arg2); >>>> NOT CONVERTED
 		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const char* arg2); >>>> NOT CONVERTED

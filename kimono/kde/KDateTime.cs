@@ -133,11 +133,11 @@ namespace Kimono {
 			private IntPtr smokeObject;
 			protected Spec(Type dummy) {}
 			protected void CreateProxy() {
-				interceptor = new SmokeInvocationKDE(typeof(Spec), this);
+				interceptor = new SmokeInvocation(typeof(Spec), this);
 			}
 			private static SmokeInvocation staticInterceptor = null;
 			static Spec() {
-				staticInterceptor = new SmokeInvocationKDE(typeof(Spec), null);
+				staticInterceptor = new SmokeInvocation(typeof(Spec), null);
 			}
 			//  Spec(); >>>> NOT CONVERTED
 			//  Spec(const KTimeZone& arg1); >>>> NOT CONVERTED
@@ -327,11 +327,11 @@ namespace Kimono {
 			}
 		}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDateTime), this);
+			interceptor = new SmokeInvocation(typeof(KDateTime), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDateTime() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDateTime), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDateTime), null);
 		}
 		/// <remarks>
 		///  The time specification type of a KDateTime instance.

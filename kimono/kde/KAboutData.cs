@@ -28,11 +28,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAboutData(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAboutData), this);
+			interceptor = new SmokeInvocation(typeof(KAboutData), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAboutData() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KAboutData), null);
+			staticInterceptor = new SmokeInvocation(typeof(KAboutData), null);
 		}
 		/// <remarks>
 		///  Describes the license of the software.

@@ -26,7 +26,7 @@ namespace KIO {
 	public class StoredTransferJob : KIO.TransferJob, IDisposable {
  		protected StoredTransferJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(StoredTransferJob), this);
+			interceptor = new SmokeInvocation(typeof(StoredTransferJob), this);
 		}
 		// KIO::StoredTransferJob* StoredTransferJob(KIO::StoredTransferJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>

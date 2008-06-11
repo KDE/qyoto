@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KMultiTabBarButton : QPushButton, IDisposable {
  		protected KMultiTabBarButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMultiTabBarButton), this);
+			interceptor = new SmokeInvocation(typeof(KMultiTabBarButton), this);
 		}
 		public int Id() {
 			return (int) interceptor.Invoke("id", "id() const", typeof(int));

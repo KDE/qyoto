@@ -25,11 +25,11 @@ namespace Kimono {
 	public class KXMLGUIFactory : QObject, IDisposable {
  		protected KXMLGUIFactory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KXMLGUIFactory), this);
+			interceptor = new SmokeInvocation(typeof(KXMLGUIFactory), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KXMLGUIFactory() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KXMLGUIFactory), null);
+			staticInterceptor = new SmokeInvocation(typeof(KXMLGUIFactory), null);
 		}
 		/// <remarks>
 		///  Constructs a KXMLGUIFactory. The provided <code>builder</code> KXMLGUIBuilder will be called

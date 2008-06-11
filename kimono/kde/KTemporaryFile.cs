@@ -56,7 +56,7 @@ namespace Kimono {
 	public class KTemporaryFile : QTemporaryFile, IDisposable {
  		protected KTemporaryFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTemporaryFile), this);
+			interceptor = new SmokeInvocation(typeof(KTemporaryFile), this);
 		}
 		/// <remarks>
 		///  Construct a new KTemporaryFile. The file will be stored in the temporary

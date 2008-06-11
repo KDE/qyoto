@@ -18,7 +18,7 @@ namespace Kimono {
 	public class KTabWidget : QTabWidget, IDisposable {
  		protected KTabWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTabWidget), this);
+			interceptor = new SmokeInvocation(typeof(KTabWidget), this);
 		}
 		[Q_PROPERTY("bool", "tabReorderingEnabled")]
 		public bool TabReorderingEnabled {

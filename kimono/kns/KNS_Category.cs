@@ -16,7 +16,7 @@ namespace KNS {
 		private IntPtr smokeObject;
 		protected Category(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Category), this);
+			interceptor = new SmokeInvocation(typeof(Category), this);
 		}
 		/// <remarks>
 		///  Constructor.

@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KPopupFrame : QFrame, IDisposable {
  		protected KPopupFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPopupFrame), this);
+			interceptor = new SmokeInvocation(typeof(KPopupFrame), this);
 		}
 		/// <remarks>
 		///  The contructor. Creates a dialog without buttons.

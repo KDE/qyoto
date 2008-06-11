@@ -21,11 +21,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KUser(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUser), this);
+			interceptor = new SmokeInvocation(typeof(KUser), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KUser() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KUser), null);
+			staticInterceptor = new SmokeInvocation(typeof(KUser), null);
 		}
 		public enum UIDMode {
 			UseEffectiveUID = 0,

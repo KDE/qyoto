@@ -26,11 +26,11 @@ namespace Kimono {
 	public class KService : KSycocaEntry, IDisposable {
  		protected KService(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KService), this);
+			interceptor = new SmokeInvocation(typeof(KService), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KService() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KService), null);
+			staticInterceptor = new SmokeInvocation(typeof(KService), null);
 		}
 		/// <remarks>
 		///  Describes the DBUS Startup type of the service.

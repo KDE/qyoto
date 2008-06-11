@@ -27,7 +27,7 @@ namespace KParts {
 	public class BrowserInterface : QObject, IDisposable {
  		protected BrowserInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(BrowserInterface), this);
+			interceptor = new SmokeInvocation(typeof(BrowserInterface), this);
 		}
 		public BrowserInterface(QObject parent) : this((Type) null) {
 			CreateProxy();

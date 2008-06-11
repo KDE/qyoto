@@ -29,7 +29,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KBookmarkOwner(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkOwner), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkOwner), this);
 		}
 		public enum BookmarkOption {
 			ShowAddBookmark = 0,

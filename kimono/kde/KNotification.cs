@@ -121,11 +121,11 @@ namespace Kimono {
 	public class KNotification : QObject, IDisposable {
  		protected KNotification(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KNotification), this);
+			interceptor = new SmokeInvocation(typeof(KNotification), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KNotification() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KNotification), null);
+			staticInterceptor = new SmokeInvocation(typeof(KNotification), null);
 		}
 		public enum NotificationFlag {
 			RaiseWidgetOnActivation = 0x01,

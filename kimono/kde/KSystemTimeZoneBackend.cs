@@ -24,7 +24,7 @@ namespace Kimono {
 	public class KSystemTimeZoneBackend : KTimeZoneBackend, IDisposable {
  		protected KSystemTimeZoneBackend(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSystemTimeZoneBackend), this);
+			interceptor = new SmokeInvocation(typeof(KSystemTimeZoneBackend), this);
 		}
 		/// <remarks> Implements KSystemTimeZone.KSystemTimeZone(). </remarks>		<short>   Implements KSystemTimeZone.KSystemTimeZone().</short>
 		public KSystemTimeZoneBackend(KSystemTimeZoneSource source, string name, string countryCode, float latitude, float longitude, string comment) : this((Type) null) {

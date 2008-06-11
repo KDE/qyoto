@@ -28,7 +28,7 @@ namespace Kimono {
 	public class KIntNumInput : KNumInput, IDisposable {
  		protected KIntNumInput(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KIntNumInput), this);
+			interceptor = new SmokeInvocation(typeof(KIntNumInput), this);
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {

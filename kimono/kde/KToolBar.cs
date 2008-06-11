@@ -19,11 +19,11 @@ namespace Kimono {
 	public class KToolBar : QToolBar, IDisposable {
  		protected KToolBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KToolBar), this);
+			interceptor = new SmokeInvocation(typeof(KToolBar), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KToolBar() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KToolBar), null);
+			staticInterceptor = new SmokeInvocation(typeof(KToolBar), null);
 		}
 		/// <remarks>
 		///  Normal constructor.

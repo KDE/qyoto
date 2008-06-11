@@ -32,7 +32,7 @@ namespace Kimono {
 	public class KNewPasswordDialog : KDialog, IDisposable {
  		protected KNewPasswordDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KNewPasswordDialog), this);
+			interceptor = new SmokeInvocation(typeof(KNewPasswordDialog), this);
 		}
 		/// <remarks>
 		///  Constructs a password dialog.

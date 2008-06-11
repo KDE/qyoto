@@ -35,7 +35,7 @@ namespace Kimono {
 	public class KTitleWidget : QWidget, IDisposable {
  		protected KTitleWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTitleWidget), this);
+			interceptor = new SmokeInvocation(typeof(KTitleWidget), this);
 		}
 		/// <remarks>
 		///  Possible title pixmap alignments.

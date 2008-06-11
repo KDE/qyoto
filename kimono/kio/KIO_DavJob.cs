@@ -19,7 +19,7 @@ namespace KIO {
 	public class DavJob : KIO.TransferJob, IDisposable {
  		protected DavJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(DavJob), this);
+			interceptor = new SmokeInvocation(typeof(DavJob), this);
 		}
 		// KIO::DavJob* DavJob(KIO::DavJobPrivate& arg1,int arg2,const QString& arg3); >>>> NOT CONVERTED
 		/// <remarks>

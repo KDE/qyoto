@@ -23,11 +23,11 @@ namespace Kimono {
 	public class KActionCollection : QObject, IDisposable {
  		protected KActionCollection(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KActionCollection), this);
+			interceptor = new SmokeInvocation(typeof(KActionCollection), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KActionCollection() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KActionCollection), null);
+			staticInterceptor = new SmokeInvocation(typeof(KActionCollection), null);
 		}
 		[Q_PROPERTY("QString", "configGroup")]
 		public string ConfigGroup {

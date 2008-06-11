@@ -21,7 +21,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMacroExpanderBase(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMacroExpanderBase), this);
+			interceptor = new SmokeInvocation(typeof(KMacroExpanderBase), this);
 		}
 		/// <remarks>
 		///  Constructor.

@@ -30,11 +30,11 @@ namespace Kimono {
 	public class KBookmarkManager : QObject {
  		protected KBookmarkManager(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkManager), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkManager), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KBookmarkManager() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KBookmarkManager), null);
+			staticInterceptor = new SmokeInvocation(typeof(KBookmarkManager), null);
 		}
 		/// <remarks>
 		///  Set the update flag. Defaults to true.

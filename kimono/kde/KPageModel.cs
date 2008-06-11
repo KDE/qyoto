@@ -33,7 +33,7 @@ namespace Kimono {
 	public abstract class KPageModel : QAbstractItemModel, IDisposable {
  		protected KPageModel(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPageModel), this);
+			interceptor = new SmokeInvocation(typeof(KPageModel), this);
 		}
 		/// <remarks>
 		///  Additional roles that KPageView uses.

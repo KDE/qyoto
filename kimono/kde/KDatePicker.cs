@@ -23,7 +23,7 @@ namespace Kimono {
 	public class KDatePicker : QFrame, IDisposable {
  		protected KDatePicker(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDatePicker), this);
+			interceptor = new SmokeInvocation(typeof(KDatePicker), this);
 		}
 		[Q_PROPERTY("QDate", "date")]
 		public QDate Date {

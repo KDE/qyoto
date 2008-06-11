@@ -20,11 +20,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KDataToolInfo(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDataToolInfo), this);
+			interceptor = new SmokeInvocation(typeof(KDataToolInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDataToolInfo() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDataToolInfo), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDataToolInfo), null);
 		}
 		// KDataToolInfo* KDataToolInfo(const KService::Ptr& arg1,const KComponentData& arg2); >>>> NOT CONVERTED
 		/// <remarks>

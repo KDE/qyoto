@@ -22,7 +22,7 @@ namespace Kimono {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static KDE() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDE), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDE), null);
 		}
 		// bool urlcmp(const QString& arg1,const QString& arg2,const KUrl::EqualsOptions& arg3); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,KProtocolInfo::ExtraField& arg2); >>>> NOT CONVERTED

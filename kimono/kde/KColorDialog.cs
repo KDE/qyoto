@@ -47,11 +47,11 @@ namespace Kimono {
 	public class KColorDialog : KDialog, IDisposable {
  		protected KColorDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KColorDialog), this);
+			interceptor = new SmokeInvocation(typeof(KColorDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KColorDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KColorDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(KColorDialog), null);
 		}
 		/// <remarks>
 		///  Constructs a color selection dialog.

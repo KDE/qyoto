@@ -16,7 +16,7 @@ namespace Sonnet {
 		private IntPtr smokeObject;
 		protected Speller(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Speller), this);
+			interceptor = new SmokeInvocation(typeof(Speller), this);
 		}
 		public enum Attribute {
 			CheckUppercase = 0,

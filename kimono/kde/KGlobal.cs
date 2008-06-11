@@ -29,7 +29,7 @@ namespace KGlobal {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		public static KCharsets Charsets() {
 			return (KCharsets) staticInterceptor.Invoke("charsets", "charsets()", typeof(KCharsets));

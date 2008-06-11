@@ -29,7 +29,7 @@ namespace Kimono {
 	public class KCharSelect : QWidget, IDisposable {
  		protected KCharSelect(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCharSelect), this);
+			interceptor = new SmokeInvocation(typeof(KCharSelect), this);
 		}
 		/// <remarks>
 		///  Flags to set the shown widgets

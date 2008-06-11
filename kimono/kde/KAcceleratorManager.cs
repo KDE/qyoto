@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAcceleratorManager(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAcceleratorManager), this);
+			interceptor = new SmokeInvocation(typeof(KAcceleratorManager), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAcceleratorManager() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KAcceleratorManager), null);
+			staticInterceptor = new SmokeInvocation(typeof(KAcceleratorManager), null);
 		}
 		public KAcceleratorManager() : this((Type) null) {
 			CreateProxy();

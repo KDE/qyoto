@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KArchiveDirectory : KArchiveEntry, IDisposable {
  		protected KArchiveDirectory(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KArchiveDirectory), this);
+			interceptor = new SmokeInvocation(typeof(KArchiveDirectory), this);
 		}
 		/// <remarks>
 		///  Creates a new directory entry.

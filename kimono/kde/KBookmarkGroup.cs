@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KBookmarkGroup : KBookmark, IDisposable {
  		protected KBookmarkGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkGroup), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkGroup), this);
 		}
 		/// <remarks>
 		///  Create an invalid group. This is mostly for use in QValueList,

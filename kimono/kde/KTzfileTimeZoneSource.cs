@@ -20,7 +20,7 @@ namespace Kimono {
 	public class KTzfileTimeZoneSource : KTimeZoneSource, IDisposable {
  		protected KTzfileTimeZoneSource(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTzfileTimeZoneSource), this);
+			interceptor = new SmokeInvocation(typeof(KTzfileTimeZoneSource), this);
 		}
 		/// <remarks>
 		///  Constructs a time zone source.

@@ -33,7 +33,7 @@ namespace Kimono {
 	public class KPageDialog : KDialog, IDisposable {
  		protected KPageDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPageDialog), this);
+			interceptor = new SmokeInvocation(typeof(KPageDialog), this);
 		}
 		/// <remarks>
 		/// 

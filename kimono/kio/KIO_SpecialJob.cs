@@ -19,7 +19,7 @@ namespace KIO {
 	public class SpecialJob : KIO.TransferJob, IDisposable {
  		protected SpecialJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SpecialJob), this);
+			interceptor = new SmokeInvocation(typeof(SpecialJob), this);
 		}
 		/// <remarks>
 		///  Creates a KIO.SpecialJob.

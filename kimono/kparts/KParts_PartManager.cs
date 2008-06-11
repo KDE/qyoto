@@ -21,7 +21,7 @@ namespace KParts {
 	public class PartManager : QObject, IDisposable {
  		protected PartManager(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(PartManager), this);
+			interceptor = new SmokeInvocation(typeof(PartManager), this);
 		}
 		public enum SelectionPolicy {
 			Direct = 0,

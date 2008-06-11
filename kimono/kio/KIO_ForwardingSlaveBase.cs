@@ -56,7 +56,7 @@ namespace KIO {
 	public abstract class ForwardingSlaveBase : QObject, KIO.ISlaveBase {
  		protected ForwardingSlaveBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(ForwardingSlaveBase), this);
+			interceptor = new SmokeInvocation(typeof(ForwardingSlaveBase), this);
 		}
 		// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
 		// bool canResume(KIO::filesize_t arg1); >>>> NOT CONVERTED

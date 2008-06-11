@@ -19,7 +19,7 @@ namespace Kimono {
 	public class KSystemTimeZoneData : KTimeZoneData, IDisposable {
  		protected KSystemTimeZoneData(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSystemTimeZoneData), this);
+			interceptor = new SmokeInvocation(typeof(KSystemTimeZoneData), this);
 		}
 		public KSystemTimeZoneData() : this((Type) null) {
 			CreateProxy();

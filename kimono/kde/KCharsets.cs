@@ -19,11 +19,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KCharsets(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KCharsets), this);
+			interceptor = new SmokeInvocation(typeof(KCharsets), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KCharsets() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KCharsets), null);
+			staticInterceptor = new SmokeInvocation(typeof(KCharsets), null);
 		}
 		/// <remarks>
 		///  Provided for compatibility.

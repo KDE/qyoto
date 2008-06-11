@@ -20,11 +20,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KColorCollection(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KColorCollection), this);
+			interceptor = new SmokeInvocation(typeof(KColorCollection), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KColorCollection() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KColorCollection), null);
+			staticInterceptor = new SmokeInvocation(typeof(KColorCollection), null);
 		}
 		/// <remarks>
 		///  Used to specify whether a collection may be edited.

@@ -44,7 +44,7 @@ namespace Kimono {
 	public class KRuler : QAbstractSlider, IDisposable {
  		protected KRuler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KRuler), this);
+			interceptor = new SmokeInvocation(typeof(KRuler), this);
 		}
 		/// <remarks>
 		///  The types of units used.

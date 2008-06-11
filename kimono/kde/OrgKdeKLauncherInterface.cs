@@ -13,11 +13,11 @@ namespace Kimono {
 	public class OrgKdeKLauncherInterface : QDBusAbstractInterface, IDisposable {
  		protected OrgKdeKLauncherInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(OrgKdeKLauncherInterface), this);
+			interceptor = new SmokeInvocation(typeof(OrgKdeKLauncherInterface), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static OrgKdeKLauncherInterface() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(OrgKdeKLauncherInterface), null);
+			staticInterceptor = new SmokeInvocation(typeof(OrgKdeKLauncherInterface), null);
 		}
 		// QDBusReply<void> autoStart(); >>>> NOT CONVERTED
 		// QDBusReply<void> autoStart(int arg1); >>>> NOT CONVERTED

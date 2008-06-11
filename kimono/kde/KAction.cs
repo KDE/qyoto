@@ -161,7 +161,7 @@ namespace Kimono {
 	public class KAction : QWidgetAction, IDisposable {
  		protected KAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAction), this);
+			interceptor = new SmokeInvocation(typeof(KAction), this);
 		}
 		/// <remarks>
 		///  An enumeration about the two types of shortcuts in a KAction

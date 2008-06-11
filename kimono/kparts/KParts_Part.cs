@@ -36,7 +36,7 @@ namespace KParts {
 	public class Part : QObject, KParts.IPartBase, IDisposable {
  		protected Part(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Part), this);
+			interceptor = new SmokeInvocation(typeof(Part), this);
 		}
 		// KParts::Part* Part(KParts::PartPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		// KParts::PartBase* PartBase(KParts::PartBasePrivate& arg1); >>>> NOT CONVERTED

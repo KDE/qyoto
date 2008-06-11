@@ -23,7 +23,7 @@ namespace KIO {
 	public class CopyJob : KIO.Job {
  		protected CopyJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(CopyJob), this);
+			interceptor = new SmokeInvocation(typeof(CopyJob), this);
 		}
 		/// <remarks>
 		///  Defines the mode of the operation

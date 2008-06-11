@@ -37,7 +37,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAboutPerson(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAboutPerson), this);
+			interceptor = new SmokeInvocation(typeof(KAboutPerson), this);
 		}
 		/// <remarks>
 		///  Convenience constructor

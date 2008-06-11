@@ -16,11 +16,11 @@ namespace KIO {
 	public class SimpleJob : KIO.Job, IDisposable {
  		protected SimpleJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(SimpleJob), this);
+			interceptor = new SmokeInvocation(typeof(SimpleJob), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static SimpleJob() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(SimpleJob), null);
+			staticInterceptor = new SmokeInvocation(typeof(SimpleJob), null);
 		}
 		// KIO::SimpleJob* SimpleJob(KIO::SimpleJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>

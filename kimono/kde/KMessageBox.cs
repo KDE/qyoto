@@ -35,11 +35,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KMessageBox(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMessageBox), this);
+			interceptor = new SmokeInvocation(typeof(KMessageBox), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMessageBox() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KMessageBox), null);
+			staticInterceptor = new SmokeInvocation(typeof(KMessageBox), null);
 		}
 		/// <remarks>
 		///  Button types.

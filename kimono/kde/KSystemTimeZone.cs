@@ -31,7 +31,7 @@ namespace Kimono {
 	public class KSystemTimeZone : KTimeZone, IDisposable {
  		protected KSystemTimeZone(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSystemTimeZone), this);
+			interceptor = new SmokeInvocation(typeof(KSystemTimeZone), this);
 		}
 		/// <remarks>
 		///  Creates a time zone.

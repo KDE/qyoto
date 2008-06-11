@@ -96,11 +96,11 @@ namespace Kimono {
 	public class KAutoSaveFile : QFile, IDisposable {
  		protected KAutoSaveFile(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAutoSaveFile), this);
+			interceptor = new SmokeInvocation(typeof(KAutoSaveFile), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAutoSaveFile() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KAutoSaveFile), null);
+			staticInterceptor = new SmokeInvocation(typeof(KAutoSaveFile), null);
 		}
 		/// <remarks>
 		///  Constructs a KAutoSaveFile for file <code>filename.</code> The temporary

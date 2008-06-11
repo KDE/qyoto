@@ -31,7 +31,7 @@ namespace Kimono {
 	public class KDoubleNumInput : KNumInput, IDisposable {
  		protected KDoubleNumInput(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDoubleNumInput), this);
+			interceptor = new SmokeInvocation(typeof(KDoubleNumInput), this);
 		}
 		[Q_PROPERTY("double", "value")]
 		public double Value {

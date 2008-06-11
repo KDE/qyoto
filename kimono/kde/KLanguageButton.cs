@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KLanguageButton : QWidget, IDisposable {
  		protected KLanguageButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KLanguageButton), this);
+			interceptor = new SmokeInvocation(typeof(KLanguageButton), this);
 		}
 		/// <remarks>
 		///  Constructs a button whose text is determined by the current language

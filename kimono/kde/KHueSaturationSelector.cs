@@ -9,7 +9,7 @@ namespace Kimono {
 	public class KHueSaturationSelector : KXYSelector, IDisposable {
  		protected KHueSaturationSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KHueSaturationSelector), this);
+			interceptor = new SmokeInvocation(typeof(KHueSaturationSelector), this);
 		}
 		// void setChooserMode(KColorChooserMode arg1); >>>> NOT CONVERTED
 		// KColorChooserMode chooserMode(); >>>> NOT CONVERTED

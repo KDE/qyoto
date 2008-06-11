@@ -16,7 +16,7 @@ namespace KIO {
 	public class FileCopyJob : KIO.Job {
  		protected FileCopyJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(FileCopyJob), this);
+			interceptor = new SmokeInvocation(typeof(FileCopyJob), this);
 		}
 		// void setSourceSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		// KIO::FileCopyJob* FileCopyJob(KIO::FileCopyJobPrivate& arg1); >>>> NOT CONVERTED

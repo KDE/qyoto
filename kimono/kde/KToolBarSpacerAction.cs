@@ -16,7 +16,7 @@ namespace Kimono {
 	public class KToolBarSpacerAction : KAction, IDisposable {
  		protected KToolBarSpacerAction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KToolBarSpacerAction), this);
+			interceptor = new SmokeInvocation(typeof(KToolBarSpacerAction), this);
 		}
 		[Q_PROPERTY("int", "width")]
 		public int Width {

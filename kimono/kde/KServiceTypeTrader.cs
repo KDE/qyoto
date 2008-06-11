@@ -52,11 +52,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KServiceTypeTrader(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KServiceTypeTrader), this);
+			interceptor = new SmokeInvocation(typeof(KServiceTypeTrader), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KServiceTypeTrader() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KServiceTypeTrader), null);
+			staticInterceptor = new SmokeInvocation(typeof(KServiceTypeTrader), null);
 		}
 		// void applyConstraints(KService::List& arg1,const QString& arg2); >>>> NOT CONVERTED
 		/// <remarks>

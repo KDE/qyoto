@@ -17,7 +17,7 @@ namespace Kimono {
 	public class KSelector : QAbstractSlider, IDisposable {
  		protected KSelector(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KSelector), this);
+			interceptor = new SmokeInvocation(typeof(KSelector), this);
 		}
 		[Q_PROPERTY("int", "value")]
 		public new int Value {

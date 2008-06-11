@@ -23,11 +23,11 @@ namespace Kimono {
 	public class KProtocolInfo : KSycocaEntry, IDisposable {
  		protected KProtocolInfo(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KProtocolInfo), this);
+			interceptor = new SmokeInvocation(typeof(KProtocolInfo), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KProtocolInfo() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KProtocolInfo), null);
+			staticInterceptor = new SmokeInvocation(typeof(KProtocolInfo), null);
 		}
 		/// <remarks>
 		///  Describes the type of a protocol.

@@ -15,7 +15,7 @@ namespace Kimono {
 	public class KColorCells : QTableWidget, IDisposable {
  		protected KColorCells(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KColorCells), this);
+			interceptor = new SmokeInvocation(typeof(KColorCells), this);
 		}
 		/// <remarks> 
 		///  Constructs a new table of color cells, consisting of

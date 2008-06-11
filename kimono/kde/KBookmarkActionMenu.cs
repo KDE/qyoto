@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KBookmarkActionMenu : KActionMenu, IKBookmarkAction, IDisposable {
  		protected KBookmarkActionMenu(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KBookmarkActionMenu), this);
+			interceptor = new SmokeInvocation(typeof(KBookmarkActionMenu), this);
 		}
 		public KBookmarkActionMenu(KBookmark bm, QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -12,7 +12,7 @@ namespace Kimono {
 	public class KJobTrackerInterface : QObject, IDisposable {
  		protected KJobTrackerInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KJobTrackerInterface), this);
+			interceptor = new SmokeInvocation(typeof(KJobTrackerInterface), this);
 		}
 		/// <remarks>
 		///  Creates a new KJobTrackerInterface

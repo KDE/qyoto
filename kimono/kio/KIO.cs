@@ -248,7 +248,7 @@ namespace KIO {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		// QString convertSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		// QString number(KIO::filesize_t arg1); >>>> NOT CONVERTED

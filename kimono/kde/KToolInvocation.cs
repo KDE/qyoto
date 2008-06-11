@@ -46,7 +46,7 @@ namespace Kimono {
  		protected KToolInvocation(Type dummy) : base((Type) null) {}
 		private static SmokeInvocation staticInterceptor = null;
 		static KToolInvocation() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KToolInvocation), null);
+			staticInterceptor = new SmokeInvocation(typeof(KToolInvocation), null);
 		}
 		public static KToolInvocation Self() {
 			return (KToolInvocation) staticInterceptor.Invoke("self", "self()", typeof(KToolInvocation));

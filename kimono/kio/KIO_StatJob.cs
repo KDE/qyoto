@@ -15,7 +15,7 @@ namespace KIO {
 	public class StatJob : KIO.SimpleJob, IDisposable {
  		protected StatJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(StatJob), this);
+			interceptor = new SmokeInvocation(typeof(StatJob), this);
 		}
 		public enum StatSide {
 			SourceSide = 0,

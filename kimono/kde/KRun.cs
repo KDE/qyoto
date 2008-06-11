@@ -25,11 +25,11 @@ namespace Kimono {
 	public class KRun : QObject, IDisposable {
  		protected KRun(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KRun), this);
+			interceptor = new SmokeInvocation(typeof(KRun), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KRun() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KRun), null);
+			staticInterceptor = new SmokeInvocation(typeof(KRun), null);
 		}
 		/// <remarks>
 		/// <param> name="url" the URL of the file or directory to 'run'

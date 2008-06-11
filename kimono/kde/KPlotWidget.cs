@@ -48,7 +48,7 @@ namespace Kimono {
 	public class KPlotWidget : QFrame, IDisposable {
  		protected KPlotWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KPlotWidget), this);
+			interceptor = new SmokeInvocation(typeof(KPlotWidget), this);
 		}
 		/// <remarks>
 		///  The four types of plot axes.

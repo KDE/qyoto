@@ -13,7 +13,7 @@ namespace Kimono {
 	public class KTabBar : QTabBar, IDisposable {
  		protected KTabBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTabBar), this);
+			interceptor = new SmokeInvocation(typeof(KTabBar), this);
 		}
 		/// <remarks>
 		///  Creates a new tab bar.

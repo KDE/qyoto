@@ -23,7 +23,7 @@ namespace Kimono {
 	public class KTextEdit : QTextEdit, IDisposable {
  		protected KTextEdit(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTextEdit), this);
+			interceptor = new SmokeInvocation(typeof(KTextEdit), this);
 		}
 		/// <remarks>
 		///  Constructs a KTextEdit object. See QTextEdit.QTextEdit

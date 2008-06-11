@@ -87,6 +87,23 @@ namespace Qyoto
 
 #endif
 
+	[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
+	public class AssemblySmokeInitializer : Attribute {
+		private Type type;
+		
+		public AssemblySmokeInitializer(Type t) {
+			type = t;
+		}
+		
+		public void CallInitSmoke() {
+			type.InvokeMember("InitSmoke", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, null, null, null);
+		}
+		
+		public Type InitSmokeType {
+			get { return type; }
+		}
+	}
+
 	public class Qyoto : System.Object
 	{
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]

@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KTzfileTimeZone : KTimeZone, IDisposable {
  		protected KTzfileTimeZone(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KTzfileTimeZone), this);
+			interceptor = new SmokeInvocation(typeof(KTzfileTimeZone), this);
 		}
 		/// <remarks>
 		///  Creates a time zone.

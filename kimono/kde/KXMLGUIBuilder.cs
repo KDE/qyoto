@@ -32,7 +32,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KXMLGUIBuilder(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KXMLGUIBuilder), this);
+			interceptor = new SmokeInvocation(typeof(KXMLGUIBuilder), this);
 		}
 		// QWidget* createContainer(QWidget* arg1,int arg2,const QDomElement& arg3,QAction*& arg4); >>>> NOT CONVERTED
 		public KXMLGUIBuilder(QWidget widget) : this((Type) null) {

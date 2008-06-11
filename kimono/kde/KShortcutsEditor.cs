@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KShortcutsEditor : QWidget, IDisposable {
  		protected KShortcutsEditor(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KShortcutsEditor), this);
+			interceptor = new SmokeInvocation(typeof(KShortcutsEditor), this);
 		}
 		public enum ActionType : uint {
 			WidgetAction = Qt.ShortcutContext.WidgetShortcut,

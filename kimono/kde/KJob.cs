@@ -42,7 +42,7 @@ namespace Kimono {
 	public abstract class KJob : QObject {
  		protected KJob(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KJob), this);
+			interceptor = new SmokeInvocation(typeof(KJob), this);
 		}
 		public enum Unit {
 			Bytes = 0,

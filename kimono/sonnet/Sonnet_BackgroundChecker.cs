@@ -25,7 +25,7 @@ namespace Sonnet {
 	public class BackgroundChecker : QObject, IDisposable {
  		protected BackgroundChecker(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(BackgroundChecker), this);
+			interceptor = new SmokeInvocation(typeof(BackgroundChecker), this);
 		}
 		public BackgroundChecker(QObject parent) : this((Type) null) {
 			CreateProxy();

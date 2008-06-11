@@ -28,7 +28,7 @@ namespace KIO {
 	public class Job : KCompositeJob, IDisposable {
  		protected Job(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Job), this);
+			interceptor = new SmokeInvocation(typeof(Job), this);
 		}
 		// KIO::Job* Job(KIO::JobPrivate& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("start()")]

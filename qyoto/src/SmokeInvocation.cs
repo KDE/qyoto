@@ -427,6 +427,12 @@ namespace Qyoto {
 		static SmokeInvocation() {
 			Qyoto.Init_qyoto();
 			SmokeMarshallers.SetUp();
+			
+			// initialize other referenced smoke bindings
+			foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
+				AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
+				if (attr != null) attr.CallInitSmoke();
+			}
 		}
 		
 		private Type	classToProxy;

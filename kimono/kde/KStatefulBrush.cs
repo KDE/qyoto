@@ -30,7 +30,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KStatefulBrush(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KStatefulBrush), this);
+			interceptor = new SmokeInvocation(typeof(KStatefulBrush), this);
 		}
 		/// <remarks>
 		///  Construct a "default" stateful brush. For such an instance, all

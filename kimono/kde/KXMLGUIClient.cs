@@ -46,11 +46,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KXMLGUIClient(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KXMLGUIClient), this);
+			interceptor = new SmokeInvocation(typeof(KXMLGUIClient), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KXMLGUIClient() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KXMLGUIClient), null);
+			staticInterceptor = new SmokeInvocation(typeof(KXMLGUIClient), null);
 		}
 		public enum ReverseStateChange {
 			StateNoReverse = 0,

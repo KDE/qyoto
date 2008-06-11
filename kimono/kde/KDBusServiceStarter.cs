@@ -22,11 +22,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KDBusServiceStarter(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KDBusServiceStarter), this);
+			interceptor = new SmokeInvocation(typeof(KDBusServiceStarter), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KDBusServiceStarter() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KDBusServiceStarter), null);
+			staticInterceptor = new SmokeInvocation(typeof(KDBusServiceStarter), null);
 		}
 		/// <remarks>
 		///  Check if a given DBus service is available - from the serviceType it's supposed to implement.

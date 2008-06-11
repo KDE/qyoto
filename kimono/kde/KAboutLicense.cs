@@ -25,11 +25,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KAboutLicense(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KAboutLicense), this);
+			interceptor = new SmokeInvocation(typeof(KAboutLicense), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KAboutLicense() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KAboutLicense), null);
+			staticInterceptor = new SmokeInvocation(typeof(KAboutLicense), null);
 		}
 		/// <remarks>
 		///  Copy constructor.  Performs a deep copy.

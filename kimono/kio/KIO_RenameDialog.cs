@@ -13,11 +13,11 @@ namespace KIO {
 	public class RenameDialog : QDialog, IDisposable {
  		protected RenameDialog(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(RenameDialog), this);
+			interceptor = new SmokeInvocation(typeof(RenameDialog), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static RenameDialog() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(RenameDialog), null);
+			staticInterceptor = new SmokeInvocation(typeof(RenameDialog), null);
 		}
 		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9,time_t arg10,time_t arg11); >>>> NOT CONVERTED
 		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9,time_t arg10); >>>> NOT CONVERTED

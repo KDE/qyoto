@@ -47,11 +47,11 @@ namespace Kimono {
 	public class KMainWindow : QMainWindow, IDisposable {
  		protected KMainWindow(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KMainWindow), this);
+			interceptor = new SmokeInvocation(typeof(KMainWindow), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KMainWindow() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KMainWindow), null);
+			staticInterceptor = new SmokeInvocation(typeof(KMainWindow), null);
 		}
 		[Q_PROPERTY("bool", "hasMenuBar")]
 		public bool HasMenuBar {

@@ -16,7 +16,7 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KArchive(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KArchive), this);
+			interceptor = new SmokeInvocation(typeof(KArchive), this);
 		}
 		public const int UnknownTime = -1;
 

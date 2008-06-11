@@ -21,7 +21,7 @@ namespace Kimono {
 	public class KUrlPixmapProvider : KPixmapProvider, IDisposable {
  		protected KUrlPixmapProvider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KUrlPixmapProvider), this);
+			interceptor = new SmokeInvocation(typeof(KUrlPixmapProvider), this);
 		}
 		/// <remarks>
 		///  Creates a new url pixmap provider.

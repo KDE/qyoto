@@ -13,11 +13,11 @@ namespace KParts {
 	public class Event : QEvent, IDisposable {
  		protected Event(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(Event), this);
+			interceptor = new SmokeInvocation(typeof(Event), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static Event() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Event), null);
+			staticInterceptor = new SmokeInvocation(typeof(Event), null);
 		}
 		public Event(string eventName) : this((Type) null) {
 			CreateProxy();

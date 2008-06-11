@@ -20,11 +20,11 @@ namespace Kimono {
 	public class KFontChooser : QWidget, IDisposable {
  		protected KFontChooser(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KFontChooser), this);
+			interceptor = new SmokeInvocation(typeof(KFontChooser), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KFontChooser() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KFontChooser), null);
+			staticInterceptor = new SmokeInvocation(typeof(KFontChooser), null);
 		}
 		/// <remarks>
 		/// 

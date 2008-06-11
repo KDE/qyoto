@@ -18,7 +18,7 @@ namespace KKeyServer {
 		protected SmokeInvocation interceptor = null;
 		private static SmokeInvocation staticInterceptor = null;
 		static Global() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(Global), null);
+			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
 		public static int MODE_SWITCH() {
 			return (int) staticInterceptor.Invoke("MODE_SWITCH", "MODE_SWITCH()", typeof(int));

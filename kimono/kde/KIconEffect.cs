@@ -18,11 +18,11 @@ namespace Kimono {
 		private IntPtr smokeObject;
 		protected KIconEffect(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationKDE(typeof(KIconEffect), this);
+			interceptor = new SmokeInvocation(typeof(KIconEffect), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static KIconEffect() {
-			staticInterceptor = new SmokeInvocationKDE(typeof(KIconEffect), null);
+			staticInterceptor = new SmokeInvocation(typeof(KIconEffect), null);
 		}
 		/// <remarks>
 		///  This is the enumeration of all possible icon effects.
