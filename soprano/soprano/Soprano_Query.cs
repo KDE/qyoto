@@ -14,11 +14,14 @@ namespace Soprano.Query {
 	public enum QueryLanguage {
 		QueryLanguageNone = 0x0,
 		QueryLanguageSparql = 0x1,
-		QUERY_LANGUAGE_NONE = QueryLanguage.QueryLanguageNone,
-		QUERY_LANGUAGE_SPARQL = QueryLanguage.QueryLanguageSparql,
-//		QUERY_LANGUAGE_RDQL = QueryLanguage.QueryLanguageRdql,
-//		QUERY_LANGUAGE_SERQL = QueryLanguage.QueryLanguageSerql,
-//		QUERY_LANGUAGE_USER = QueryLanguage.QueryLanguageUser,
+		QueryLanguageRdql = 0x2,
+		QueryLanguageSerql = 0x4,
+		QueryLanguageUser = 0x1000,
+		QUERY_LANGUAGE_NONE = QueryLanguageNone,
+		QUERY_LANGUAGE_SPARQL = QueryLanguageSparql,
+		QUERY_LANGUAGE_RDQL = QueryLanguageRdql,
+		QUERY_LANGUAGE_SERQL = QueryLanguageSerql,
+		QUERY_LANGUAGE_USER = QueryLanguageUser,
 	}
 
 
