@@ -343,46 +343,46 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 
 /*
  * Given an approximate classname and a qt instance, try to improve the resolution of the name
- * by using the various Qt rtti mechanisms for QObjects, QEvents and QCanvasItems
+ * by using the various Qt rtti mechanisms for QObjects, QEvents and so on
  */
 Q_DECL_EXPORT const char *
-resolve_classname_Qt(Smoke* smoke, int classId, void * ptr)
+resolve_classname_Qt(smokeqyoto_object * o)
 {
-	if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QEvent")) {
-		QEvent * qevent = (QEvent *) smoke->cast(ptr, classId, smoke->idClass("QEvent").index);
+	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QEvent")) {
+		QEvent * qevent = (QEvent *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QEvent").index);
 		switch (qevent->type()) {
 		case QEvent::Timer:
-				return "Qyoto.QTimerEvent";
+			o->classId = o->smoke->idClass("QTimerEvent").index;
 		case QEvent::MouseButtonPress:
 		case QEvent::MouseButtonRelease:
 		case QEvent::MouseButtonDblClick:
 		case QEvent::MouseMove:
-				return "Qyoto.QMouseEvent";
+			o->classId = o->smoke->idClass("QMouseEvent").index;
 		case QEvent::KeyPress:
 		case QEvent::KeyRelease:
 		case QEvent::ShortcutOverride:
-				return "Qyoto.QKeyEvent";
+			o->classId = o->smoke->idClass("QKeyEvent").index;
 		case QEvent::FocusIn:
 		case QEvent::FocusOut:
-				return "Qyoto.QFocusEvent";
+			o->classId = o->smoke->idClass("QFocusEvent").index;
 		case QEvent::Enter:
 		case QEvent::Leave:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::Paint:
-				return "Qyoto.QPaintEvent";
+			o->classId = o->smoke->idClass("QPaintEvent").index;
 		case QEvent::Move:
-				return "Qyoto.QMoveEvent";
+			o->classId = o->smoke->idClass("QMoveEvent").index;
 		case QEvent::Resize:
-				return "Qyoto.QResizeEvent";
+			o->classId = o->smoke->idClass("QResizeEvent").index;
 		case QEvent::Create:
 		case QEvent::Destroy:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::Show:
-				return "Qyoto.QShowEvent";
+			o->classId = o->smoke->idClass("QShowEvent").index;
 		case QEvent::Hide:
-				return "Qyoto.QHideEvent";
+			o->classId = o->smoke->idClass("QHideEvent").index;
 		case QEvent::Close:
-				return "Qyoto.QCloseEvent";
+			o->classId = o->smoke->idClass("QCloseEvent").index;
 		case QEvent::Quit:
 		case QEvent::ParentChange:
 		case QEvent::ParentAboutToChange:
@@ -391,9 +391,9 @@ resolve_classname_Qt(Smoke* smoke, int classId, void * ptr)
 		case QEvent::WindowDeactivate:
 		case QEvent::ShowToParent:
 		case QEvent::HideToParent:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::Wheel:
-				return "Qyoto.QWheelEvent";
+			o->classId = o->smoke->idClass("QWheelEvent").index;
 		case QEvent::WindowTitleChange:
 		case QEvent::WindowIconChange:
 		case QEvent::ApplicationWindowIconChange:
@@ -401,29 +401,29 @@ resolve_classname_Qt(Smoke* smoke, int classId, void * ptr)
 		case QEvent::ApplicationLayoutDirectionChange:
 		case QEvent::ApplicationPaletteChange:
 		case QEvent::PaletteChange:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::Clipboard:
-				return "Qyoto.QClipboardEvent";
+			o->classId = o->smoke->idClass("QClipboardEvent").index;
 		case QEvent::Speech:
 		case QEvent::MetaCall:
 		case QEvent::SockAct:
 		case QEvent::WinEventAct:
 		case QEvent::DeferredDelete:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::DragEnter:
-				return "Qyoto.QDragEnterEvent";
+			o->classId = o->smoke->idClass("QDragEnterEvent").index;
 		case QEvent::DragLeave:
-				return "Qyoto.QDragLeaveEvent";
+			o->classId = o->smoke->idClass("QDragLeaveEvent").index;
 		case QEvent::DragMove:
-				return "Qyoto.QDragMoveEvent";
+			o->classId = o->smoke->idClass("QDragMoveEvent").index;
 		case QEvent::Drop:
-				return "Qyoto.QDropEvent";
+			o->classId = o->smoke->idClass("QDropEvent").index;
 		case QEvent::DragResponse:
-				return "Qyoto.QDragResponseEvent";
+			o->classId = o->smoke->idClass("QDragResponseEvent").index;
 		case QEvent::ChildAdded:
 		case QEvent::ChildRemoved:
 		case QEvent::ChildPolished:
-				return "Qyoto.QChildEvent";
+			o->classId = o->smoke->idClass("QChildEvent").index;
 		case QEvent::ShowWindowRequest:
 		case QEvent::PolishRequest:
 		case QEvent::Polish:
@@ -432,26 +432,26 @@ resolve_classname_Qt(Smoke* smoke, int classId, void * ptr)
 		case QEvent::EmbeddingControl:
 		case QEvent::ActivateControl:
 		case QEvent::DeactivateControl:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::ContextMenu:
-				return "Qyoto.QContextMenuEvent";
+			o->classId = o->smoke->idClass("QContextMenuEvent").index;
 		case QEvent::InputMethod:
-				return "Qyoto.QInputMethodEvent";
+			o->classId = o->smoke->idClass("QInputMethodEvent").index;
 		case QEvent::AccessibilityPrepare:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::TabletMove:
 		case QEvent::TabletPress:
 		case QEvent::TabletRelease:
-				return "Qyoto.QTabletEvent";
+			o->classId = o->smoke->idClass("QTabletEvent").index;
 		case QEvent::LocaleChange:
 		case QEvent::LanguageChange:
 		case QEvent::LayoutDirectionChange:
 		case QEvent::Style:
 		case QEvent::OkRequest:
 		case QEvent::HelpRequest:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::IconDrag:
-				return "Qyoto.QIconDragEvent";
+			o->classId = o->smoke->idClass("QIconDragEvent").index;
 		case QEvent::FontChange:
 		case QEvent::EnabledChange:
 		case QEvent::ActivationChange:
@@ -459,126 +459,131 @@ resolve_classname_Qt(Smoke* smoke, int classId, void * ptr)
 		case QEvent::IconTextChange:
 		case QEvent::ModifiedChange:
 		case QEvent::MouseTrackingChange:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::WindowBlocked:
 		case QEvent::WindowUnblocked:
 		case QEvent::WindowStateChange:
-				return "Qyoto.QWindowStateChangeEvent";
+			o->classId = o->smoke->idClass("QWindowStateChangeEvent").index;
 		case QEvent::ToolTip:
 		case QEvent::WhatsThis:
-				return "Qyoto.QHelpEvent";
+			o->classId = o->smoke->idClass("QHelpEvent").index;
 		case QEvent::StatusTip:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::ActionChanged:
 		case QEvent::ActionAdded:
 		case QEvent::ActionRemoved:
-				return "Qyoto.QActionEvent";
+			o->classId = o->smoke->idClass("QActionEvent").index;
 		case QEvent::FileOpen:
-				return "Qyoto.QFileOpenEvent";
+			o->classId = o->smoke->idClass("QFileOpenEvent").index;
 		case QEvent::Shortcut:
-				return "Qyoto.QShortcutEvent";
+			o->classId = o->smoke->idClass("QShortcutEvent").index;
 		case QEvent::WhatsThisClicked:
-				return "Qyoto.QWhatsThisClickedEvent";
+			o->classId = o->smoke->idClass("QWhatsThisClickedEvent").index;
 		case QEvent::ToolBarChange:
-				return "Qyoto.QToolBarChangeEvent";
+			o->classId = o->smoke->idClass("QToolBarChangeEvent").index;
 		case QEvent::ApplicationActivated:
 		case QEvent::ApplicationDeactivated:
 		case QEvent::QueryWhatsThis:
 		case QEvent::EnterWhatsThisMode:
 		case QEvent::LeaveWhatsThisMode:
 		case QEvent::ZOrderChange:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
 		case QEvent::HoverEnter:
 		case QEvent::HoverLeave:
 		case QEvent::HoverMove:
-				return "Qyoto.QHoverEvent";
+			o->classId = o->smoke->idClass("QHoverEvent").index;
 		case QEvent::AccessibilityHelp:
 		case QEvent::AccessibilityDescription:
-				return "Qyoto.QEvent";
+			o->classId = o->smoke->idClass("QEvent").index;
+#if QT_VERSION >= 0x40200
+		case QEvent::GraphicsSceneMouseMove:
+		case QEvent::GraphicsSceneMousePress:
+		case QEvent::GraphicsSceneMouseRelease:
+		case QEvent::GraphicsSceneMouseDoubleClick:
+			o->classId = o->smoke->idClass("QGraphicsSceneMouseEvent").index;
+		case QEvent::GraphicsSceneContextMenu:
+			o->classId = o->smoke->idClass("QGraphicsSceneContextMenuEvent").index;
+		case QEvent::GraphicsSceneHoverEnter:
+		case QEvent::GraphicsSceneHoverMove:
+		case QEvent::GraphicsSceneHoverLeave:
+			o->classId = o->smoke->idClass("QGraphicsSceneHoverEvent").index;
+		case QEvent::GraphicsSceneHelp:
+			o->classId = o->smoke->idClass("QGraphicsSceneHelpEvent").index;
+		case QEvent::GraphicsSceneDragEnter:
+		case QEvent::GraphicsSceneDragMove:
+		case QEvent::GraphicsSceneDragLeave:
+		case QEvent::GraphicsSceneDrop:
+			o->classId = o->smoke->idClass("QGraphicsSceneDragDropEvent").index;
+		case QEvent::GraphicsSceneWheel:
+			o->classId = o->smoke->idClass("QGraphicsSceneWheelEvent").index;
+		case QEvent::KeyboardLayoutChange:
+			o->classId = o->smoke->idClass("QEvent").index;
+#endif
 		default:
 			break;
 		}
-	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QObject")) {
-		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject").index);
+	} else if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QObject")) {
+		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
 		const QMetaObject * meta = qobject->metaObject();
 
-		if (strcmp(smoke->classes[classId].className, "QAbstractItemModel") == 0)
+		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemModel") == 0)
 			return "Qyoto.QItemModel";
-		if (strcmp(smoke->classes[classId].className, "QAbstractButton") == 0)
+		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractButton") == 0)
 			return "Qyoto.QAbstractButtonInternal";
-		if (strcmp(smoke->classes[classId].className, "QAbstractProxyModel") == 0)
+		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractProxyModel") == 0)
 			return "Qyoto.QAbstractProxyModelInternal";
-		if (strcmp(smoke->classes[classId].className, "QAbstractItemDelegate") == 0)
+		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemDelegate") == 0)
 			return "Qyoto.QAbstractItemDelegateInternal";
-		if (strcmp(smoke->classes[classId].className, "QAbstractItemView") == 0)
+		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemView") == 0)
 			return "Qyoto.QAbstractItemViewInternal";
-		if (strcmp(smoke->classes[classId].className, "QAbstractTextDocumentLayout") == 0)
+		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractTextDocumentLayout") == 0)
 			return "Qyoto.QAbstractTextDocumentLayoutInternal";
 
 		while (meta != 0) {
-			Smoke::ModuleIndex classId = smoke->idClass(meta->className());
-			if (classId.index != 0) {
-				return smoke->binding->className(classId.index);
+			o->smoke = Smoke::classMap[meta->className()];
+			if (o->smoke != 0) {
+				o->classId = o->smoke->idClass(meta->className()).index;
+				if (o->classId != 0) {
+					return o->smoke->binding->className(o->classId);
+				}
 			}
 
 			meta = meta->superClass();
 		}
-	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QGraphicsItem")) {
-		QGraphicsItem * item = (QGraphicsItem *) smoke->cast(ptr, classId, smoke->idClass("QGraphicsItem").index);
+	} else if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QGraphicsItem")) {
+		QGraphicsItem * item = (QGraphicsItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsItem").index);
 		switch (item->type()) {
 		case 1:
-			return "Qyoto.QGraphicsItem";
+			o->classId = o->smoke->idClass("QGraphicsItem").index;
 		case 2:
-			return "Qyoto.QGraphicsPathItem";
+			o->classId = o->smoke->idClass("QGraphicsPathItem").index;
 		case 3:
-			return "Qyoto.QGraphicsRectItem";
+			o->classId = o->smoke->idClass("QGraphicsRectItem").index;
 		case 4:
-			return "Qyoto.QGraphicsEllipseItem";
+			o->classId = o->smoke->idClass("QGraphicsEllipseItem").index;
 		case 5:
-			return "Qyoto.QGraphicsPolygonItem";
+			o->classId = o->smoke->idClass("QGraphicsPolygonItem").index;
 		case 6:
-			return "Qyoto.QGraphicsLineItem";
+			o->classId = o->smoke->idClass("QGraphicsLineItem").index;
 		case 7:
-			return "Qyoto.QGraphicsPixmapItem";
+			o->classId = o->smoke->idClass("QGraphicsItem").index;
 		case 8:
-			return "Qyoto.QGraphicsTextItem";
+			o->classId = o->smoke->idClass("QGraphicsTextItem").index;
 		case 9:
-			return "Qyoto.QGraphicsSimpleTextItem";
+			o->classId = o->smoke->idClass("QGraphicsSimpleTextItem").index;
 		case 10:
-			return "Qyoto.QGraphicsItemGroup";
-		default:
-			return "Qyoto.QGraphicsItem";
+			o->classId = o->smoke->idClass("QGraphicsItemGroup").index;
 		}
-	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QLayoutItem")) {
-		QLayoutItem * item = (QLayoutItem *) smoke->cast(ptr, classId, smoke->idClass("QLayoutItem").index);
+	} else if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QLayoutItem")) {
+		QLayoutItem * item = (QLayoutItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QLayoutItem").index);
 		if (item->widget() != 0) {
-			return "Qyoto.QWidgetItem";
+			o->classId = o->smoke->idClass("QWidgetItem").index;
 		} else if (item->spacerItem() != 0) {
-			return "Qyoto.QSpacerItem";
-		} else {
-			return "Qyoto.QLayout";
-		}
-	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QListWidgetItem")) {
-		QListWidgetItem * item = (QListWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QListWidgetItem").index);
-		switch (item->type()) {
-		case 0:
-			return "Qyoto.QListWidgetItem";
-		default:
-			return "Qyoto.QListWidgetItem";
-			break;
-		}
-	} else if (smoke->isDerivedFromByName(smoke->classes[classId].className, "QTableWidgetItem")) {
-		QTableWidgetItem * item = (QTableWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QTableWidgetItem").index);
-		switch (item->type()) {
-		case 0:
-			return "Qyoto.QTableWidgetItem";
-		default:
-			return "Qyoto.QTableWidgetItem";
-			break;
+			o->classId = o->smoke->idClass("QSpacerItem").index;
 		}
 	}
 	
-	return smoke->binding->className(classId);
+	return o->smoke->binding->className(o->classId);
 }
 
 bool
@@ -893,7 +898,7 @@ marshall_basetype(Marshall *m)
 		}
 
 		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->type().classId(), p);
-		const char * classname = resolve_classname(o->smoke, o->classId, o->ptr);
+		const char * classname = resolve_classname(o);
 
 		if(m->type().isConst() && m->type().isRef()) {
 			p = construct_copy( o );
@@ -1498,7 +1503,7 @@ void marshall_ItemList(Marshall *m) {
 				void * obj = (*GetInstance)(p, true);
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
-					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
+					obj = (*CreateInstance)(resolve_classname(o), o);
 				}
 				(*AddIntPtrToList)(al, obj);
 				(*FreeGCHandle)(obj);
@@ -1653,7 +1658,7 @@ void marshall_ValueListItem(Marshall *m) {
 
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
-					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
+					obj = (*CreateInstance)(resolve_classname(o), o);
 				}
 
 				(*AddIntPtrToList)(al, obj);

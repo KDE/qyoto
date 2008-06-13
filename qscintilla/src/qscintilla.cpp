@@ -25,15 +25,15 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <qt_smoke.h>
-#include <qsci_smoke.h>
+#include <smoke/qt_smoke.h>
+#include <smoke/qsci_smoke.h>
 
 QHash<int, char*> classNames;
 
 const char *
-resolve_classname_Qsci(Smoke* smoke, int classId, void* /*ptr*/)
+resolve_classname_Qsci(smokeqyoto_object * o)
 {
-	return smoke->binding->className(classId);
+	return o->smoke->binding->className(o->classId);
 }
 
 bool

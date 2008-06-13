@@ -75,7 +75,7 @@ extern TypeHandler Qt_handlers[];
 extern void install_handlers(TypeHandler *);
 
 extern bool IsContainedInstanceQt(smokeqyoto_object *o);
-extern const char * resolve_classname_Qt(Smoke* smoke, int classId, void * ptr);
+extern const char * resolve_classname_Qt(smokeqyoto_object * o);
 
 extern "C" {
 

@@ -31,9 +31,9 @@
 QHash<int, char*> classNames;
 
 const char *
-resolve_classname_KDE(Smoke* smoke, int classId, void* /*ptr*/)
+resolve_classname_KDE(smokeqyoto_object * o)
 {
-	return smoke->binding->className(classId);
+	return o->smoke->binding->className(o->classId);
 }
 
 bool

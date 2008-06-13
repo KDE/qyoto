@@ -37,7 +37,7 @@ struct TypeHandler {
     Marshall::HandlerFn fn;
 };
 
-typedef const char* (*resolveClassNameFn)(Smoke* smoke, int classId, void * ptr);
+typedef const char* (*resolveClassNameFn)(smokeqyoto_object * o);
 typedef bool (*IsContainedInstanceFn)(smokeqyoto_object *o);
 
 struct QyotoModule {
@@ -95,7 +95,7 @@ extern Q_DECL_EXPORT void mapPointer(void * obj, smokeqyoto_object *o, Smoke::In
 extern Q_DECL_EXPORT void unmapPointer(smokeqyoto_object *, Smoke::Index, void *);
 
 extern Q_DECL_EXPORT bool IsContainedInstance(smokeqyoto_object *o);
-extern Q_DECL_EXPORT const char* resolve_classname(Smoke* smoke, int classId, void * ptr);
+extern Q_DECL_EXPORT const char* resolve_classname(smokeqyoto_object * o);
 
 extern Q_DECL_EXPORT void smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args);
 extern Q_DECL_EXPORT void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* args);

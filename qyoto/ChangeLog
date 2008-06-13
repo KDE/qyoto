@@ -1,3 +1,8 @@
+2008-06-13  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Pass the resolve_classname() functions a 'smokeqyoto_object *' so that
+	  they can change the smoke lib and classId on it.
+
 2008-06-11  Arno Rehn  <arno@arnorehn.de>
 
 	* Added the AssemblySmokeInitializer Attribute. It takes a Type of
