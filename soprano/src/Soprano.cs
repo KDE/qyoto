@@ -1,7 +1,5 @@
 namespace Soprano {
-
 	using Qyoto;
-
 	using System;
 	using System.Runtime.InteropServices;
 
