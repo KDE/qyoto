@@ -8,11 +8,11 @@ namespace QScintilla {
 	public class QsciMacro : QObject, IDisposable {
  		protected QsciMacro(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciMacro), this);
+			interceptor = new SmokeInvocation(typeof(QsciMacro), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciMacro() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciMacro), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciMacro), null);
 		}
 		public QsciMacro(QsciScintilla parent) : this((Type) null) {
 			CreateProxy();

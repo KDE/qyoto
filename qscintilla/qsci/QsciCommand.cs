@@ -10,11 +10,11 @@ namespace QScintilla {
 		private IntPtr smokeObject;
 		protected QsciCommand(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciCommand), this);
+			interceptor = new SmokeInvocation(typeof(QsciCommand), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciCommand() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciCommand), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciCommand), null);
 		}
 		public void SetKey(int key) {
 			interceptor.Invoke("setKey$", "setKey(int)", typeof(void), typeof(int), key);

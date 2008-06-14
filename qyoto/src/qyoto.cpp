@@ -147,7 +147,7 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 		if (i == 0) {		// shouldn't happen
 	    	return negativeIndex;
 		} else if (i > 0) {	// single match
-	    	Smoke::Method &methodRef = qt_Smoke->methods[i];
+	    	Smoke::Method &methodRef = meth.smoke->methods[i];
 			if ((methodRef.flags & Smoke::mf_internal) == 0) {
 				Smoke::ModuleIndex ret = { meth.smoke, i };
 				return ret;

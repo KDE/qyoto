@@ -10,7 +10,7 @@ ENDIF (NOT QT4_FOUND)
 
 SET(SRC_CPP src/qscintilla.cpp)
 
-SET(SRC_CS src/SmokeInvocationQsci.cs
+SET(SRC_CS src/QScintilla.cs
 	src/AssemblyInfo.cs
 	qsci/*.cs)
 

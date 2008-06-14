@@ -12,11 +12,11 @@ namespace QScintilla {
 	public class QsciScintilla : QsciScintillaBase, IDisposable {
  		protected QsciScintilla(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciScintilla), this);
+			interceptor = new SmokeInvocation(typeof(QsciScintilla), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciScintilla() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciScintilla), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciScintilla), null);
 		}
 		public enum AutoCompletionSource {
 			AcsNone = 0,

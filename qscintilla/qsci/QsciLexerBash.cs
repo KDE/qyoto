@@ -8,11 +8,11 @@ namespace QScintilla {
 	public class QsciLexerBash : QsciLexer, IDisposable {
  		protected QsciLexerBash(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciLexerBash), this);
+			interceptor = new SmokeInvocation(typeof(QsciLexerBash), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciLexerBash() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerBash), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciLexerBash), null);
 		}
 		public const int Default = 0;
 		public const int Error = 1;

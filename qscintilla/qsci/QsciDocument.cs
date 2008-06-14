@@ -10,7 +10,7 @@ namespace QScintilla {
 		private IntPtr smokeObject;
 		protected QsciDocument(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciDocument), this);
+			interceptor = new SmokeInvocation(typeof(QsciDocument), this);
 		}
 		public QsciDocument() : this((Type) null) {
 			CreateProxy();

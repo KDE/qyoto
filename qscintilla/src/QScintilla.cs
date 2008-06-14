@@ -5,14 +5,12 @@ namespace QScintilla {
 	using System;
 	using System.Runtime.InteropServices;
 
-	public class SmokeInvocationQsci : SmokeInvocation {
+	public class InitQScintilla {
 		[DllImport("libqscintilla-sharp", CharSet=CharSet.Ansi)]
 		static extern void Init_qscintilla();
 		
-		static SmokeInvocationQsci() {
+		public static void InitSmoke() {
 			Init_qscintilla();
 		}
-		
-		public SmokeInvocationQsci(Type klass, Object obj) : base(klass, obj) {}
 	}
 }

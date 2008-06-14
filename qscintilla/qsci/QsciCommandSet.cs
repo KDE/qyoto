@@ -10,7 +10,7 @@ namespace QScintilla {
 		private IntPtr smokeObject;
 		protected QsciCommandSet(Type dummy) {}
 		protected void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciCommandSet), this);
+			interceptor = new SmokeInvocation(typeof(QsciCommandSet), this);
 		}
 		// QList<QsciCommand*>& commands(); >>>> NOT CONVERTED
 		public bool ReadSettings(QSettings qs, string prefix) {

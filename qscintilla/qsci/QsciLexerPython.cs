@@ -10,11 +10,11 @@ namespace QScintilla {
 	public class QsciLexerPython : QsciLexer, IDisposable {
  		protected QsciLexerPython(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciLexerPython), this);
+			interceptor = new SmokeInvocation(typeof(QsciLexerPython), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciLexerPython() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerPython), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciLexerPython), null);
 		}
 		public enum IndentationWarning {
 			NoWarning = 0,

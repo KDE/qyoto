@@ -11,11 +11,11 @@ namespace QScintilla {
 	public class QsciScintillaBase : QAbstractScrollArea, IDisposable {
  		protected QsciScintillaBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciScintillaBase), this);
+			interceptor = new SmokeInvocation(typeof(QsciScintillaBase), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciScintillaBase() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciScintillaBase), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciScintillaBase), null);
 		}
 		public const int SCI_START = 2000;
 		public const int SCI_OPTIONAL_START = 3000;

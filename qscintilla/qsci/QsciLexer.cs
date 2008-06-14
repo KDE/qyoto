@@ -13,11 +13,11 @@ namespace QScintilla {
 	public abstract class QsciLexer : QObject {
  		protected QsciLexer(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciLexer), this);
+			interceptor = new SmokeInvocation(typeof(QsciLexer), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciLexer() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexer), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciLexer), null);
 		}
 		public QsciLexer(QObject parent) : this((Type) null) {
 			CreateProxy();

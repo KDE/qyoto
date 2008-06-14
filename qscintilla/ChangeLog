@@ -1,0 +1,3 @@
+2008-06-14  Arno Rehn  <arno@arnorehn.de>
+
+	* Got rid of SmokeInvocationQsci and converted to AssemblySmokeInitializer.

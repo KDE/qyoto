@@ -9,11 +9,11 @@ namespace QScintilla {
 	public class QsciLexerRuby : QsciLexer, IDisposable {
  		protected QsciLexerRuby(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciLexerRuby), this);
+			interceptor = new SmokeInvocation(typeof(QsciLexerRuby), this);
 		}
 		private static SmokeInvocation staticInterceptor = null;
 		static QsciLexerRuby() {
-			staticInterceptor = new SmokeInvocationQsci(typeof(QsciLexerRuby), null);
+			staticInterceptor = new SmokeInvocation(typeof(QsciLexerRuby), null);
 		}
 		public const int Default = 0;
 		public const int Error = 1;

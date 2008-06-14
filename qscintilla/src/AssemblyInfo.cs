@@ -1,3 +1,4 @@
+using Qyoto;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -8,3 +9,5 @@ using System.Runtime.CompilerServices;
 // Unnecessary, as the keyfile is given to the compiler as a parameter.
 // It may be useful to have it here, though.
 [assembly: AssemblyKeyFile ("key.snk")]
+
+[assembly: AssemblySmokeInitializer(typeof(QScintilla.InitQScintilla))]

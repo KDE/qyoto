@@ -8,7 +8,7 @@ namespace QScintilla {
 	public class QsciPrinter : QPrinter, IDisposable {
  		protected QsciPrinter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
-			interceptor = new SmokeInvocationQsci(typeof(QsciPrinter), this);
+			interceptor = new SmokeInvocation(typeof(QsciPrinter), this);
 		}
 		public QsciPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
 			CreateProxy();
