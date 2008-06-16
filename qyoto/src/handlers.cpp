@@ -79,8 +79,13 @@
 #include "marshall.h"
 #include "qyoto.h"
 #include "smokeqyoto.h"
+#include "marshall_macros.h"
 
 extern "C" {
+Q_DECL_EXPORT GetIntPtr ListToPointerList;
+Q_DECL_EXPORT CreateListFn ConstructList;
+Q_DECL_EXPORT SetIntPtr AddIntPtrToList;
+
 static GetIntPtr IntPtrToCharStarStar;
 static GetCharStarFromIntPtr IntPtrToCharStar;
 static GetIntPtrFromCharStar IntPtrFromCharStar;
@@ -89,12 +94,9 @@ static GetIntPtr IntPtrFromQString;
 static GetIntPtr StringBuilderToQString;
 static SetIntPtrFromCharStar StringBuilderFromQString;
 static GetIntPtr StringListToQStringList;
-static GetIntPtr ListToPointerList;
 static GetIntPtr ListIntToQListInt;
 static GetIntPtr ListUIntToQListQRgb;
 static GetIntPtr ListWizardButtonToQListWizardButton;
-static CreateListFn ConstructList;
-static SetIntPtr AddIntPtrToList;
 static AddInt AddIntToListInt;
 static AddUInt AddUIntToListUInt;
 static ConstructDict ConstructDictionary;
@@ -1447,85 +1449,6 @@ void marshall_QListWizardButton(Marshall *m) {
 }
 #endif
 
-template <class Item, class ItemList, const char *ItemSTR >
-void marshall_ItemList(Marshall *m) {
-	switch(m->action()) {
-		case Marshall::FromObject:
-		{
-			if (m->var().s_class == 0) {
-				m->item().s_class = 0;
-				return;
-			}
-			ItemList *cpplist = new ItemList;
-			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
-			
-			for (int i = 0; i < list->size(); ++i) {
-				void* obj = list->at(i);
-				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
-				
-				void* ptr = o->ptr;
-				ptr = o->smoke->cast(
-					ptr,                            // pointer
-					o->classId,                             // from
-					o->smoke->idClass(ItemSTR).index              // to
-				);
-				
-				cpplist->append((Item*) ptr);
-				(*FreeGCHandle)(obj);
-			}
-			
-			m->item().s_voidp = cpplist;
-			m->next();
-			
-			delete list;
-			(*FreeGCHandle)(m->var().s_voidp);
-			
-			if (m->cleanup()) {
-				delete cpplist;
-			}
-		}
-		break;
-      
-		case Marshall::ToObject:
-		{
-			ItemList *list = (ItemList*)m->item().s_voidp;
-			if (list == 0) {
-				break;
-			}
-
-			Smoke::ModuleIndex ix = m->smoke()->findClass(ItemSTR);
-			const char * className = ix.smoke->binding->className(ix.index);
-			
-			void * al = (*ConstructList)(className);
-			
-			for (int i=0; i < list->size() ; ++i) {
-				void *p = (void *) list->at(i);
-				void * obj = (*GetInstance)(p, true);
-				if (obj == 0) {
-					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
-					obj = (*CreateInstance)(resolve_classname(o), o);
-				}
-				(*AddIntPtrToList)(al, obj);
-				(*FreeGCHandle)(obj);
-			}
-
-			m->var().s_voidp = al;
-			m->next();
-
-			if (m->cleanup()) {
-				delete list;
-			}
-			
-
-		}
-		break;
-      
-		default:
-			m->unsupported();
-		break;
-	}
-}
-
 void marshall_QListInt(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
@@ -1575,9 +1498,6 @@ void marshall_QListInt(Marshall *m) {
     }
 }
 
-#define DEF_LIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; }  \
-        Marshall::HandlerFn marshall_##ListIdent = marshall_ItemList<Item,ItemList,ListIdent##STR>;
-
 DEF_LIST_MARSHALLER( QAbstractButtonList, QList<QAbstractButton*>, QAbstractButton )
 DEF_LIST_MARSHALLER( QActionGroupList, QList<QActionGroup*>, QActionGroup )
 DEF_LIST_MARSHALLER( QActionList, QList<QAction*>, QAction )
@@ -1600,87 +1520,6 @@ DEF_LIST_MARSHALLER( QUndoStackList, QList<QUndoStack*>, QUndoStack )
 #if QT_VERSION >= 0x40300
 DEF_LIST_MARSHALLER( QMdiSubWindowList, QList<QMdiSubWindow*>, QMdiSubWindow )
 #endif
-
-template <class Item, class ItemList, const char *ItemSTR >
-void marshall_ValueListItem(Marshall *m) {
-	switch(m->action()) {
-		case Marshall::FromObject:
-		{
-			if (m->var().s_class == 0) {
-				m->item().s_class = 0;
-				return;
-			}
-			ItemList *cpplist = new ItemList;
-			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
-
-			for (int i = 0; i < list->size(); ++i) {
-				void* obj = list->at(i);
-				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
-				
-				void* ptr = o->ptr;
-				ptr = o->smoke->cast(
-					ptr,                            // pointer
-					o->classId,                             // from
-					o->smoke->idClass(ItemSTR).index              // to
-				);
-				
-				cpplist->append(*(Item*) ptr);
-				(*FreeGCHandle)(obj);
-			}
-			
-			m->item().s_voidp = cpplist;
-			m->next();
-			
-			delete list;
-			(*FreeGCHandle)(m->var().s_voidp);
-
-			if (m->cleanup()) {
-				delete cpplist;
-			}
-		}
-		break;
-      
-		case Marshall::ToObject:
-		{
-			ItemList *valuelist = (ItemList*)m->item().s_voidp;
-			if (valuelist == 0) {
-				break;
-			}
-
-			Smoke::ModuleIndex ix = m->smoke()->findClass(ItemSTR);
-			const char * className = ix.smoke->binding->className(ix.index);
-			
-			void * al = (*ConstructList)(className);
-
-			for (int i=0; i < valuelist->size() ; ++i) {
-				void *p = (void *) &(valuelist->at(i));
-				void * obj = (*GetInstance)(p, true);
-
-				if (obj == 0) {
-					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
-					obj = (*CreateInstance)(resolve_classname(o), o);
-				}
-
-				(*AddIntPtrToList)(al, obj);
-				(*FreeGCHandle)(obj);
-			}
-
-			m->var().s_voidp = al;
-			m->next();
-
-			if (m->cleanup()) {
-				delete valuelist;
-			}
-			
-
-		}
-		break;
-      
-		default:
-			m->unsupported();
-		break;
-	}
-}
 
 void marshall_QRgbVector(Marshall *m)
 {
@@ -1732,10 +1571,6 @@ void marshall_QRgbVector(Marshall *m)
 		break;
 	}
 }
-
-#define DEF_VALUELIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; }  \
-        Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;
-
 
 DEF_VALUELIST_MARSHALLER( QByteArrayList, QList<QByteArray>, QByteArray )
 DEF_VALUELIST_MARSHALLER( QColorVector, QVector<QColor>, QColor )

@@ -1,3 +1,10 @@
+2008-06-16  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Add a header 'marshall_macros.h' with the template methods and macros
+	  for QList and QVector pointer and value based marshallers.
+	* Regenerate the Qt sources with the recent changes in code generation
+	  for namespaces and nested structs
+
 2008-06-13  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Pass the resolve_classname() functions a 'smokeqyoto_object *' so that
