@@ -14,7 +14,7 @@ SET(SRC_CS src/QScintilla.cs
 	src/AssemblyInfo.cs
 	qsci/*.cs)
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke ${CMAKE_SOURCE_DIR}/smoke/qt ${CMAKE_SOURCE_DIR}/smoke/qsci
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qscintilla-sharp MODULE ${SRC_CPP})
