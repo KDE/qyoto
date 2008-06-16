@@ -58,7 +58,6 @@ namespace Kimono {
 		public const int NoError = 0;
 		public const int KilledJobError = 1;
 		public const int UserDefinedError = 100;
-
 		/// <remarks>
 		///  Attach a UI delegate to this job.
 		///  If the job had another UI delegate, it's automatically deleted. Once

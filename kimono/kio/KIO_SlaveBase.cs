@@ -17,6 +17,12 @@ namespace KIO {
 		void NeedSubUrlData();
 		void SlaveStatus(string host, bool connected);
 		void StatEntry(KIO.UDSEntry _entry);
+		bool CanResume(long offset);
+		void CanResume();
+		void TotalSize(long _bytes);
+		void ProcessedSize(long _bytes);
+		void Position(long _pos);
+		void Written(long _bytes);
 		void ProcessedPercent(float percent);
 		void Speed(ulong _bytes_per_second);
 		void Redirection(KUrl _url);
@@ -45,7 +51,9 @@ namespace KIO {
 		void CloseConnection();
 		void Get(KUrl url);
 		void Open(KUrl url, uint mode);
+		void Read(long size);
 		void Write(QByteArray data);
+		void Seek(long offset);
 		void Close();
 		void Put(KUrl url, int permissions, uint flags);
 		void Stat(KUrl url);
@@ -114,13 +122,6 @@ namespace KIO {
 			SSLMessageBox = 6,
 		}
 		// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
-		// bool canResume(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void position(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void written(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void read(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void seek(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		public SlaveBase(QByteArray protocol, QByteArray pool_socket, QByteArray app_socket) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("SlaveBase###", "SlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), pool_socket, typeof(QByteArray), app_socket);
@@ -228,16 +229,38 @@ namespace KIO {
 		///  In this case, the boolean returns whether we can indeed resume or not
 		///  (we can't if the protocol doing the get() doesn't support setting an offset)
 		///      </remarks>		<short>    Call this at the beginning of put(), to give the size of the existing  partial file, if there is one.</short>
+		public bool CanResume(long offset) {
+			return (bool) interceptor.Invoke("canResume$", "canResume(KIO::filesize_t)", typeof(bool), typeof(long), offset);
+		}
+		/// <remarks>
+		///  Call this at the beginning of get(), if the "resume" metadata was set
+		///  and resuming is implemented by this protocol.
+		///      </remarks>		<short>    Call this at the beginning of get(), if the "resume" metadata was set  and resuming is implemented by this protocol.</short>
+		public void CanResume() {
+			interceptor.Invoke("canResume", "canResume()", typeof(void));
+		}
 		/// <remarks>
 		///  Call this in get and copy, to give the total size
 		///  of the file
 		///  Call in listDir too, when you know the total number of items.
 		///      </remarks>		<short>    Call this in get and copy, to give the total size  of the file  Call in listDir too, when you know the total number of items.</short>
+		public void TotalSize(long _bytes) {
+			interceptor.Invoke("totalSize$", "totalSize(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
+		}
 		/// <remarks>
 		///  Call this during get and copy, once in a while,
 		///  to give some info about the current state.
 		///  Don't emit it in listDir, listEntries speaks for itself.
 		///      </remarks>		<short>    Call this during get and copy, once in a while,  to give some info about the current state.</short>
+		public void ProcessedSize(long _bytes) {
+			interceptor.Invoke("processedSize$", "processedSize(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
+		}
+		public void Position(long _pos) {
+			interceptor.Invoke("position$", "position(KIO::filesize_t)", typeof(void), typeof(long), _pos);
+		}
+		public void Written(long _bytes) {
+			interceptor.Invoke("written$", "written(KIO::filesize_t)", typeof(void), typeof(long), _bytes);
+		}
 		/// <remarks>
 		///  Only use this if you can't know in advance the size of the
 		///  copied data. For example, if you're doing variable bitrate
@@ -453,9 +476,17 @@ namespace KIO {
 		public virtual void Open(KUrl url, uint mode) {
 			interceptor.Invoke("open#$", "open(const KUrl&, QIODevice::OpenMode)", typeof(void), typeof(KUrl), url, typeof(uint), mode);
 		}
+		[SmokeMethod("read(KIO::filesize_t)")]
+		public virtual void Read(long size) {
+			interceptor.Invoke("read$", "read(KIO::filesize_t)", typeof(void), typeof(long), size);
+		}
 		[SmokeMethod("write(const QByteArray&)")]
 		public virtual void Write(QByteArray data) {
 			interceptor.Invoke("write#", "write(const QByteArray&)", typeof(void), typeof(QByteArray), data);
+		}
+		[SmokeMethod("seek(KIO::filesize_t)")]
+		public virtual void Seek(long offset) {
+			interceptor.Invoke("seek$", "seek(KIO::filesize_t)", typeof(void), typeof(long), offset);
 		}
 		[SmokeMethod("close()")]
 		public virtual void Close() {

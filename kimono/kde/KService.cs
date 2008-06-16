@@ -22,6 +22,20 @@ namespace Kimono {
 	[SmokeClass("KService")]
 	public class KService : KSycocaEntry, IDisposable {
  		protected KService(Type dummy) : base((Type) null) {}
+		[SmokeClass("KService::ServiceTypeAndPreference")]
+		public class ServiceTypeAndPreference : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected ServiceTypeAndPreference(Type dummy) {}
+			public int Preference {
+				get { return (int) interceptor.Invoke("preference", "preference()", typeof(int)); }
+			}
+			public string ServiceType {
+				get { return (string) interceptor.Invoke("serviceType", "serviceType()", typeof(string)); }
+			}
+			//  ServiceTypeAndPreference(); >>>> NOT CONVERTED
+			//  ServiceTypeAndPreference(int arg1,const QString& arg2); >>>> NOT CONVERTED
+		}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KService), this);
 		}

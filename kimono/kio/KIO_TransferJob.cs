@@ -181,6 +181,13 @@ namespace KIO {
 		///          </param></remarks>		<short>    Mimetype determined.</short>
 		[Q_SIGNAL("void mimetype(KIO::Job*, const QString&)")]
 		void Mimetype(KIO.Job job, string type);
-		// void canResume(KIO::Job* arg1,KIO::filesize_t arg2); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Emitted if the "put" job found an existing partial file
+		///  (in which case offset is the size of that file)
+		///  and emitted by the "get" job if it supports resuming to
+		///  the given offset - in this case <code>offset</code> is unused)
+		///          </remarks>		<short>   </short>
+		[Q_SIGNAL("void canResume(KIO::Job*, KIO::filesize_t)")]
+		void CanResume(KIO.Job job, long offset);
 	}
 }

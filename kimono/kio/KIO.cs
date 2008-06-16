@@ -244,18 +244,15 @@ namespace KIO {
 		static Global() {
 			staticInterceptor = new SmokeInvocation(typeof(Global), null);
 		}
-		// QString convertSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// QString number(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// QString convertSizeFromKiB(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// unsigned int calculateRemainingSeconds(KIO::filesize_t arg1,KIO::filesize_t arg2,KIO::filesize_t arg3); >>>> NOT CONVERTED
-		// QTime calculateRemaining(KIO::filesize_t arg1,KIO::filesize_t arg2,KIO::filesize_t arg3); >>>> NOT CONVERTED
-		// QString itemsSummaryString(uint arg1,uint arg2,uint arg3,KIO::filesize_t arg4,bool arg5); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Converts <code>size</code> from bytes to the string representation.
 		/// <param> name="size" size in bytes
 		/// </param></remarks>		<return> converted size as a string - e.g. 123.4 KiB , 12.0 MiB
 		///    </return>
 		/// 		<short>    Converts <code>size</code> from bytes to the string representation.</short>
+		public static string ConvertSize(long size) {
+			return (string) staticInterceptor.Invoke("convertSize$", "convertSize(KIO::filesize_t)", typeof(string), typeof(long), size);
+		}
 		/// <remarks>
 		///  Converts a size to a string representation
 		///  Not unlike string.Number(...)
@@ -263,12 +260,18 @@ namespace KIO {
 		/// </param></remarks>		<return> converted size as a string - e.g. 123456789
 		///    </return>
 		/// 		<short>    Converts a size to a string representation  Not unlike string.Number(.</short>
+		public static string Number(long size) {
+			return (string) staticInterceptor.Invoke("number$", "number(KIO::filesize_t)", typeof(string), typeof(long), size);
+		}
 		/// <remarks>
 		///  Converts size from kibi-bytes (2^10) to the string representation.
 		/// <param> name="kibSize" size in kibi-bytes (2^10)
 		/// </param></remarks>		<return> converted size as a string - e.g. 123.4 KiB , 12.0 MiB
 		///    </return>
 		/// 		<short>    Converts size from kibi-bytes (2^10) to the string representation.</short>
+		public static string ConvertSizeFromKiB(long kibSize) {
+			return (string) staticInterceptor.Invoke("convertSizeFromKiB$", "convertSizeFromKiB(KIO::filesize_t)", typeof(string), typeof(long), kibSize);
+		}
 		/// <remarks>
 		///  Calculates remaining time in seconds from total size, processed size and speed.
 		/// <param> name="totalSize" total size in bytes
@@ -277,6 +280,9 @@ namespace KIO {
 		/// </param></remarks>		<return> calculated remaining time in seconds
 		///    </return>
 		/// 		<short>    Calculates remaining time in seconds from total size, processed size and speed.</short>
+		public static uint CalculateRemainingSeconds(long totalSize, long processedSize, long speed) {
+			return (uint) staticInterceptor.Invoke("calculateRemainingSeconds$$$", "calculateRemainingSeconds(KIO::filesize_t, KIO::filesize_t, KIO::filesize_t)", typeof(uint), typeof(long), totalSize, typeof(long), processedSize, typeof(long), speed);
+		}
 		/// <remarks>
 		///  Convert <code>seconds</code> to a string representing number of days, hours, minutes and seconds
 		/// <param> name="seconds" number of seconds to convert
@@ -295,6 +301,9 @@ namespace KIO {
 		/// </param></remarks>		<return> calculated remaining time
 		///    </return>
 		/// 		<short>    Calculates remaining time from total size, processed size and speed.</short>
+		public static QTime CalculateRemaining(long totalSize, long processedSize, long speed) {
+			return (QTime) staticInterceptor.Invoke("calculateRemaining$$$", "calculateRemaining(KIO::filesize_t, KIO::filesize_t, KIO::filesize_t)", typeof(QTime), typeof(long), totalSize, typeof(long), processedSize, typeof(long), speed);
+		}
 		/// <remarks>
 		///  Helper for showing information about a set of files and directories
 		/// <param> name="items" the number of items (= <code>files</code> + <code>dirs</code> + number of symlinks :)
@@ -305,6 +314,9 @@ namespace KIO {
 		/// </param></remarks>		<return> the summary string
 		///    </return>
 		/// 		<short>    Helper for showing information about a set of files and directories </short>
+		public static string ItemsSummaryString(uint items, uint files, uint dirs, long size, bool showSize) {
+			return (string) staticInterceptor.Invoke("itemsSummaryString$$$$$", "itemsSummaryString(uint, uint, uint, KIO::filesize_t, bool)", typeof(string), typeof(uint), items, typeof(uint), files, typeof(uint), dirs, typeof(long), size, typeof(bool), showSize);
+		}
 		/// <remarks>
 		///  Encodes (from the text displayed to the real filename)
 		///  This translates % into %% and / into %2f

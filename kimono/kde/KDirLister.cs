@@ -578,8 +578,18 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Progress signal showing the overall progress of the KDirLister.</short>
 		[Q_SIGNAL("void percent(int)")]
 		void Percent(int percent);
-		// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Emitted when we know the size of the jobs.
+		/// <param> name="size" the total size in bytes
+		///    </param></remarks>		<short>    Emitted when we know the size of the jobs.</short>
+		[Q_SIGNAL("void totalSize(KIO::filesize_t)")]
+		void TotalSize(long size);
+		/// <remarks>
+		///  Regularly emitted to show the progress of this KDirLister.
+		/// <param> name="size" the processed size in bytes
+		///    </param></remarks>		<short>    Regularly emitted to show the progress of this KDirLister.</short>
+		[Q_SIGNAL("void processedSize(KIO::filesize_t)")]
+		void ProcessedSize(long size);
 		/// <remarks>
 		///  Emitted to display information about the speed of the jobs.
 		/// <param> name="bytes_per_second" the speed in bytes/s

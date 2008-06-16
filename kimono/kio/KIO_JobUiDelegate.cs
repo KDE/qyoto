@@ -31,12 +31,6 @@ namespace KIO {
 			DefaultConfirmation = 0,
 			ForceConfirmation = 1,
 		}
-		// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9,time_t arg10,time_t arg11,time_t arg12); >>>> NOT CONVERTED
-		// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9,time_t arg10,time_t arg11); >>>> NOT CONVERTED
-		// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9,time_t arg10); >>>> NOT CONVERTED
-		// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8,time_t arg9); >>>> NOT CONVERTED
-		// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7,KIO::filesize_t arg8); >>>> NOT CONVERTED
-		// KIO::RenameDialog_Result askFileRename(KJob* arg1,const QString& arg2,const QString& arg3,const QString& arg4,KIO::RenameDialog_Mode arg5,QString& arg6,KIO::filesize_t arg7); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a new KIO Job UI delegate.
 		///      </remarks>		<short>    Constructs a new KIO Job UI delegate.</short>
@@ -73,6 +67,30 @@ namespace KIO {
 		/// </param></remarks>		<return> the result
 		///      </return>
 		/// 		<short>    <see cref="KIO.RenameDialog"></see>  Construct a modal, parent-less "rename" dialog, and return  a result code, as well as the new dest.</short>
+		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)")]
+		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc, int mtimeDest) {
+			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc, typeof(int), mtimeDest);
+		}
+		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)")]
+		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc) {
+			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc);
+		}
+		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t)")]
+		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest) {
+			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest);
+		}
+		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t)")]
+		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest, int ctimeSrc) {
+			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t, time_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc);
+		}
+		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t)")]
+		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc, long sizeDest) {
+			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t, KIO::filesize_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc, typeof(long), sizeDest);
+		}
+		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t)")]
+		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest, long sizeSrc) {
+			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&, KIO::filesize_t)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest, typeof(long), sizeSrc);
+		}
 		[SmokeMethod("askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&)")]
 		public virtual KIO.RenameDialog_Result AskFileRename(KJob job, string caption, string src, string dest, KIO.RenameDialog_Mode mode, StringBuilder newDest) {
 			return (KIO.RenameDialog_Result) interceptor.Invoke("askFileRename#$$$$$", "askFileRename(KJob*, const QString&, const QString&, const QString&, KIO::RenameDialog_Mode, QString&)", typeof(KIO.RenameDialog_Result), typeof(KJob), job, typeof(string), caption, typeof(string), src, typeof(string), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(StringBuilder), newDest);

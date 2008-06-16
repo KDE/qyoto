@@ -15,15 +15,15 @@ namespace KIO {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(FileJob), this);
 		}
-		// void read(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void seek(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// KIO::filesize_t size(); >>>> NOT CONVERTED
 		// KIO::FileJob* FileJob(KIO::FileJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Read block
 		///  The slave emits the data through data().
 		/// <param> name="size" the requested amount of data
 		///      </param></remarks>		<short>    Read block </short>
+		public void Read(long size) {
+			interceptor.Invoke("read$", "read(KIO::filesize_t)", typeof(void), typeof(long), size);
+		}
 		/// <remarks>
 		///  Write block
 		/// <param> name="data" the data to write
@@ -43,11 +43,17 @@ namespace KIO {
 		///  The slave emits position()
 		/// <param> name="offset" the position from start to go to
 		///      </param></remarks>		<short>    Seek </short>
+		public void Seek(long offset) {
+			interceptor.Invoke("seek$", "seek(KIO::filesize_t)", typeof(void), typeof(long), offset);
+		}
 		/// <remarks>
 		///  Size
 		/// </remarks>		<return> the file size
 		///      </return>
 		/// 		<short>    Size </short>
+		public long Size() {
+			return (long) interceptor.Invoke("size", "size()", typeof(long));
+		}
 		~FileJob() {
 			interceptor.Invoke("~FileJob", "~FileJob()", typeof(void));
 		}
@@ -89,13 +95,25 @@ namespace KIO {
 		///      </param></remarks>		<short>    File is open, metadata has been determined and the  file-slave is ready to receive commands.</short>
 		[Q_SIGNAL("void open(KIO::Job*)")]
 		void Open(KIO.Job job);
-		// void written(KIO::Job* arg1,KIO::filesize_t arg2); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Bytes written to the file.
+		/// <param> name="job" the job that emitted this signal
+		/// </param><param> name="written" bytes written.
+		///      </param></remarks>		<short>    Bytes written to the file.</short>
+		[Q_SIGNAL("void written(KIO::Job*, KIO::filesize_t)")]
+		void Written(KIO.Job job, long written);
 		/// <remarks>
 		///  File is closed and will accept no more commands
 		/// <param> name="job" the job that emitted this signal
 		///      </param></remarks>		<short>    File is closed and will accept no more commands </short>
 		[Q_SIGNAL("void close(KIO::Job*)")]
 		void Close(KIO.Job job);
-		// void position(KIO::Job* arg1,KIO::filesize_t arg2); >>>> NOT CONVERTED
+		/// <remarks>
+		///  The file has reached this position. Emitted after seek.
+		/// <param> name="job" the job that emitted this signal
+		/// </param><param> name="offset" the new position
+		///      </param></remarks>		<short>    The file has reached this position.</short>
+		[Q_SIGNAL("void position(KIO::Job*, KIO::filesize_t)")]
+		void Position(KIO.Job job, long offset);
 	}
 }

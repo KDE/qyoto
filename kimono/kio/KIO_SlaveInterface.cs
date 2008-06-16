@@ -16,8 +16,6 @@ namespace KIO {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(SlaveInterface), this);
 		}
-		// void setOffset(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// KIO::filesize_t offset(); >>>> NOT CONVERTED
 		// KIO::SlaveInterface* SlaveInterface(KIO::SlaveInterfacePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
 		// KIO::SlaveInterface* SlaveInterface(KIO::SlaveInterfacePrivate& arg1); >>>> NOT CONVERTED
 		public void SetConnection(KIO.Connection connection) {
@@ -28,6 +26,12 @@ namespace KIO {
 		}
 		public void SendResumeAnswer(bool resume) {
 			interceptor.Invoke("sendResumeAnswer$", "sendResumeAnswer(bool)", typeof(void), typeof(bool), resume);
+		}
+		public void SetOffset(long offset) {
+			interceptor.Invoke("setOffset$", "setOffset(KIO::filesize_t)", typeof(void), typeof(long), offset);
+		}
+		public long Offset() {
+			return (long) interceptor.Invoke("offset", "offset() const", typeof(long));
 		}
 		[SmokeMethod("dispatch()")]
 		protected virtual bool Dispatch() {
@@ -76,17 +80,22 @@ namespace KIO {
 		void StatEntry(KIO.UDSEntry arg1);
 		[Q_SIGNAL("void needSubUrlData()")]
 		void NeedSubUrlData();
-		// void canResume(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void canResume(KIO::filesize_t)")]
+		void CanResume(long arg1);
 		[Q_SIGNAL("void open()")]
 		void Open();
-		// void written(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void written(KIO::filesize_t)")]
+		void Written(long arg1);
 		[Q_SIGNAL("void metaData(const KIO::MetaData&)")]
 		void MetaData(KIO.MetaData arg1);
-		// void totalSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
-		// void processedSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void totalSize(KIO::filesize_t)")]
+		void TotalSize(long arg1);
+		[Q_SIGNAL("void processedSize(KIO::filesize_t)")]
+		void ProcessedSize(long arg1);
 		[Q_SIGNAL("void redirection(const KUrl&)")]
 		void Redirection(KUrl arg1);
-		// void position(KIO::filesize_t arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void position(KIO::filesize_t)")]
+		void Position(long arg1);
 		[Q_SIGNAL("void speed(long)")]
 		void Speed(long arg1);
 		[Q_SIGNAL("void errorPage()")]

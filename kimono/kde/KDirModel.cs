@@ -42,7 +42,6 @@ namespace Kimono {
 			DropOnLocalExecutable = 4,
 		}
 		public const int ChildCountUnknown = -1;
-
 		/// <remarks>
 		/// <param> name="parent" parent qobject
 		///      </param></remarks>		<short>   </short>

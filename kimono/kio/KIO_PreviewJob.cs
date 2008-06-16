@@ -16,7 +16,6 @@ namespace KIO {
 		static PreviewJob() {
 			staticInterceptor = new SmokeInvocation(typeof(PreviewJob), null);
 		}
-		// KIO::filesize_t maximumFileSize(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new PreviewJob.
 		/// <param> name="items" a list of files to create previews for
@@ -88,6 +87,9 @@ namespace KIO {
 		///  Returns the default "maximum file size", in bytes, used by PreviewJob.
 		///  This is useful for applications providing a GUI for letting the user change the size.
 		/// </remarks>		<short>    Returns the default "maximum file size", in bytes, used by PreviewJob.</short>
+		public static long MaximumFileSize() {
+			return (long) staticInterceptor.Invoke("maximumFileSize", "maximumFileSize()", typeof(long));
+		}
 		protected new IPreviewJobSignals Emit {
 			get { return (IPreviewJobSignals) Q_EMIT; }
 		}

@@ -34,8 +34,6 @@ namespace Kimono {
 			CreationTime = 2,
 		}
 		public const int Unknown = -1;
-
-		// KIO::filesize_t size(); >>>> NOT CONVERTED
 		// KMimeType::Ptr determineMimeType(); >>>> NOT CONVERTED
 		// KMimeType::Ptr mimeTypePtr(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
@@ -309,6 +307,9 @@ namespace Kimono {
 		/// </remarks>		<return> the file size, or 0 if not known
 		///      </return>
 		/// 		<short>    Returns the size of the file, if known.</short>
+		public long Size() {
+			return (long) interceptor.Invoke("size", "size() const", typeof(long));
+		}
 		/// <remarks>
 		///  Requests the modification, access or creation time, depending on <code>which.</code>
 		/// <param> name="which" the timestamp

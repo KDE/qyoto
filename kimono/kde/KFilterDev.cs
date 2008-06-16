@@ -62,12 +62,12 @@ namespace Kimono {
 		public override bool AtEnd() {
 			return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("writeData(const char*, qint64)")]
 		protected override long WriteData(string data, long len) {
 			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("readData(char*, qint64)")]
 		protected override long ReadData(string data, long maxlen) {
 			return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);

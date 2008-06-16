@@ -16,12 +16,6 @@ namespace KIO {
 		static RenameDialog() {
 			staticInterceptor = new SmokeInvocation(typeof(RenameDialog), null);
 		}
-		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9,time_t arg10,time_t arg11); >>>> NOT CONVERTED
-		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9,time_t arg10); >>>> NOT CONVERTED
-		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8,time_t arg9); >>>> NOT CONVERTED
-		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7,time_t arg8); >>>> NOT CONVERTED
-		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6,KIO::filesize_t arg7); >>>> NOT CONVERTED
-		// KIO::RenameDialog* RenameDialog(QWidget* arg1,const QString& arg2,const KUrl& arg3,const KUrl& arg4,KIO::RenameDialog_Mode arg5,KIO::filesize_t arg6); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a "rename" dialog.
 		/// <param> name="parent" parent widget (often 0)
@@ -37,6 +31,30 @@ namespace KIO {
 		/// </param><param> name="mtimeDest" modification time of destination file
 		/// </param></remarks>		<short>    Construct a "rename" dialog.</short>
 		/// 		<see> RenameDialog_Mode</see>
+		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc, int mtimeDest) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("RenameDialog#$##$$$$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc, typeof(int), mtimeDest);
+		}
+		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest, int mtimeSrc) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("RenameDialog#$##$$$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t, time_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest, typeof(int), mtimeSrc);
+		}
+		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc, int ctimeDest) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("RenameDialog#$##$$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc, typeof(int), ctimeDest);
+		}
+		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest, int ctimeSrc) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("RenameDialog#$##$$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t, time_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest, typeof(int), ctimeSrc);
+		}
+		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc, long sizeDest) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("RenameDialog#$##$$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t, KIO::filesize_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc, typeof(long), sizeDest);
+		}
+		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode, long sizeSrc) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("RenameDialog#$##$$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode, KIO::filesize_t)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode, typeof(long), sizeSrc);
+		}
 		public RenameDialog(QWidget parent, string caption, KUrl src, KUrl dest, KIO.RenameDialog_Mode mode) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("RenameDialog#$##$", "RenameDialog(QWidget*, const QString&, const KUrl&, const KUrl&, KIO::RenameDialog_Mode)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(KUrl), src, typeof(KUrl), dest, typeof(KIO.RenameDialog_Mode), mode);

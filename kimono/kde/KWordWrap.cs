@@ -44,7 +44,6 @@ namespace Kimono {
 		}
 		public const int FadeOut = 0x10000000;
 		public const int Truncate = 0x20000000;
-
 		/// <remarks>
 		/// </remarks>		<return> the bounding rect, calculated by formatText. The width is the
 		///          width of the widest text line, and never wider than

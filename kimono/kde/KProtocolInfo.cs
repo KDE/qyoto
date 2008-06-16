@@ -19,6 +19,31 @@ namespace Kimono {
 	[SmokeClass("KProtocolInfo")]
 	public class KProtocolInfo : KSycocaEntry, IDisposable {
  		protected KProtocolInfo(Type dummy) : base((Type) null) {}
+		/// <remarks>
+		///  Definition of an extra field in the UDS entries, returned by a listDir operation.
+		///  The name is the name of the column, translated.
+		///  The type name comes from QVariant.TypeName()
+		///  Currently supported types: "string", "QDateTime" (ISO-8601 format)
+		///    </remarks>		<short>    Definition of an extra field in the UDS entries, returned by a listDir operation.</short>
+		[SmokeClass("KProtocolInfo::ExtraField")]
+		public class ExtraField : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected ExtraField(Type dummy) {}
+			public enum TypeOf {
+				String = (int)QVariant.TypeOf.String,
+				DateTime = (int)QVariant.TypeOf.DateTime,
+				Invalid = (int)QVariant.TypeOf.Invalid,
+			}
+			public string Name {
+				get { return (string) interceptor.Invoke("name", "name()", typeof(string)); }
+			}
+			public int Type {
+				get { return (int) interceptor.Invoke("type", "type()", typeof(int)); }
+			}
+			//  ExtraField(); >>>> NOT CONVERTED
+			//  ExtraField(,); >>>> NOT CONVERTED
+		}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KProtocolInfo), this);
 		}

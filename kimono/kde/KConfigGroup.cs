@@ -438,15 +438,10 @@ namespace Kimono {
 		protected override bool IsGroupImmutableImpl(QByteArray aGroup) {
 			return (bool) interceptor.Invoke("isGroupImmutableImpl#", "isGroupImmutableImpl(const QByteArray&) const", typeof(bool), typeof(QByteArray), aGroup);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("groupImpl(const QByteArray&)")]
 		protected override KConfigGroup GroupImpl(QByteArray b) {
 			return (KConfigGroup) interceptor.Invoke("groupImpl#", "groupImpl(const QByteArray&)", typeof(KConfigGroup), typeof(QByteArray), b);
-		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
-		[SmokeMethod("deleteGroupImpl(const QByteArray&)")]
-		protected virtual void DeleteGroupImpl(QByteArray group) {
-			interceptor.Invoke("deleteGroupImpl#", "deleteGroupImpl(const QByteArray&)", typeof(void), typeof(QByteArray), group);
 		}
 		~KConfigGroup() {
 			interceptor.Invoke("~KConfigGroup", "~KConfigGroup()", typeof(void));

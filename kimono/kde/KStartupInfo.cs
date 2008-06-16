@@ -52,7 +52,6 @@ namespace Kimono {
 		public const int CleanOnCantDetect = 1<<0;
 		public const int DisableKWinModule = 1<<1;
 		public const int AnnounceSilenceChanges = 1<<2;
-
 		// bool sendStartupX(Display* arg1,const KStartupInfoId& arg2,const KStartupInfoData& arg3); >>>> NOT CONVERTED
 		// bool sendChangeX(Display* arg1,const KStartupInfoId& arg2,const KStartupInfoData& arg3); >>>> NOT CONVERTED
 		// bool sendFinishX(Display* arg1,const KStartupInfoId& arg2); >>>> NOT CONVERTED

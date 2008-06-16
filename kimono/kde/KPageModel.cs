@@ -51,7 +51,7 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KPageModel", "KPageModel()", typeof(void));
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("columnCount(const QModelIndex&) const")]
 		public override int ColumnCount(QModelIndex parent) {
 			return (int) interceptor.Invoke("columnCount#", "columnCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
@@ -60,7 +60,7 @@ namespace Kimono {
 		public virtual int ColumnCount() {
 			return (int) interceptor.Invoke("columnCount", "columnCount() const", typeof(int));
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("index(int, int, const QModelIndex&) const")]
 		public override QModelIndex Index(int row, int column, QModelIndex parent) {
 			return (QModelIndex) interceptor.Invoke("index$$#", "index(int, int, const QModelIndex&) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
@@ -69,7 +69,7 @@ namespace Kimono {
 		public virtual QModelIndex Index(int row, int column) {
 			return (QModelIndex) interceptor.Invoke("index$$", "index(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("rowCount(const QModelIndex&) const")]
 		public override int RowCount(QModelIndex parent) {
 			return (int) interceptor.Invoke("rowCount#", "rowCount(const QModelIndex&) const", typeof(int), typeof(QModelIndex), parent);
@@ -78,12 +78,12 @@ namespace Kimono {
 		public virtual int RowCount() {
 			return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("parent(const QModelIndex&) const")]
 		public override QModelIndex Parent(QModelIndex child) {
 			return (QModelIndex) interceptor.Invoke("parent#", "parent(const QModelIndex&) const", typeof(QModelIndex), typeof(QModelIndex), child);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public override QVariant Data(QModelIndex index, int role) {
 			return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), index, typeof(int), role);

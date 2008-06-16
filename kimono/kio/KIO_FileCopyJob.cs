@@ -15,13 +15,15 @@ namespace KIO {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(FileCopyJob), this);
 		}
-		// void setSourceSize(KIO::filesize_t arg1); >>>> NOT CONVERTED
 		// KIO::FileCopyJob* FileCopyJob(KIO::FileCopyJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  If you know the size of the source file, call this method
 		///  to inform this job. It will be displayed in the "resume" dialog.
 		/// <param> name="size" the size of the source file
 		///          </param></remarks>		<short>    If you know the size of the source file, call this method  to inform this job.</short>
+		public void SetSourceSize(long size) {
+			interceptor.Invoke("setSourceSize$", "setSourceSize(KIO::filesize_t)", typeof(void), typeof(long), size);
+		}
 		/// <remarks>
 		///  Sets the modification time of the file
 		///  Note that this is ignored if a direct copy (SlaveBase.Copy) can be done,

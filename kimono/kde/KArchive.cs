@@ -16,7 +16,6 @@ namespace Kimono {
 			interceptor = new SmokeInvocation(typeof(KArchive), this);
 		}
 		public const int UnknownTime = -1;
-
 		/// <remarks>
 		///  Opens the archive for reading or writing.
 		///  Inherited classes might want to reimplement openArchive instead.

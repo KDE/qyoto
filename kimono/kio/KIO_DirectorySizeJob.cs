@@ -13,25 +13,31 @@ namespace KIO {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(DirectorySizeJob), this);
 		}
-		// KIO::filesize_t totalSize(); >>>> NOT CONVERTED
-		// KIO::filesize_t totalFiles(); >>>> NOT CONVERTED
-		// KIO::filesize_t totalSubdirs(); >>>> NOT CONVERTED
 		// KIO::DirectorySizeJob* DirectorySizeJob(KIO::DirectorySizeJobPrivate& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		/// </remarks>		<return> the size we found
 		///      </return>
 		/// 		<short>   </short>
+		public long TotalSize() {
+			return (long) interceptor.Invoke("totalSize", "totalSize() const", typeof(long));
+		}
 		/// <remarks>
 		/// </remarks>		<return> the total number of files (counting symlinks to files, sockets
 		///  and character devices as files) in this directory and all sub-directories
 		///      </return>
 		/// 		<short>   </short>
+		public long TotalFiles() {
+			return (long) interceptor.Invoke("totalFiles", "totalFiles() const", typeof(long));
+		}
 		/// <remarks>
 		/// </remarks>		<return> the total number of sub-directories found (not including the
 		///  directory the search started from and treating symlinks to directories
 		///  as directories)
 		///      </return>
 		/// 		<short>   </short>
+		public long TotalSubdirs() {
+			return (long) interceptor.Invoke("totalSubdirs", "totalSubdirs() const", typeof(long));
+		}
 		[Q_SLOT("void slotResult(KJob*)")]
 		[SmokeMethod("slotResult(KJob*)")]
 		protected override void SlotResult(KJob job) {

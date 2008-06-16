@@ -23,6 +23,21 @@ namespace KParts {
 	[SmokeClass("KParts::Plugin")]
 	public class Plugin : QObject, IKXMLGUIClient, IDisposable {
  		protected Plugin(Type dummy) : base((Type) null) {}
+		[SmokeClass("KParts::Plugin::PluginInfo")]
+		public class PluginInfo : Object {
+			protected SmokeInvocation interceptor = null;
+			private IntPtr smokeObject;
+			protected PluginInfo(Type dummy) {}
+			public string M_relXMLFileName {
+				get { return (string) interceptor.Invoke("m_relXMLFileName", "m_relXMLFileName()", typeof(string)); }
+			}
+			public string M_absXMLFileName {
+				get { return (string) interceptor.Invoke("m_absXMLFileName", "m_absXMLFileName()", typeof(string)); }
+			}
+			public QDomDocument M_document {
+				get { return (QDomDocument) interceptor.Invoke("m_document", "m_document()", typeof(QDomDocument)); }
+			}
+		}
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(Plugin), this);
 		}

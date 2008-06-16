@@ -93,7 +93,7 @@ namespace Kimono {
 		protected virtual void SlotInfoMessage(KJob job, string plain, string rich) {
 			interceptor.Invoke("slotInfoMessage#$$", "slotInfoMessage(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("start()")]
 		public override void Start() {
 			interceptor.Invoke("start", "start()", typeof(void));
