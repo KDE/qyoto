@@ -43,6 +43,8 @@ IsContainedInstanceKDE(smokeqyoto_object* /*o*/)
 	return false;
 }
 
+extern TypeHandler KDE_handlers[];
+
 extern "C" {
 
 extern Q_DECL_EXPORT void Init_kimono();
@@ -64,6 +66,8 @@ Init_kimono()
 	
 	QyotoModule module = { "Kimono", resolve_classname_KDE, IsContainedInstanceKDE };
 	qyoto_modules[kde_Smoke] = module;
+
+    install_handlers(KDE_handlers);
 }
 
 }
