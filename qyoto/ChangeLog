@@ -1,3 +1,8 @@
+2008-06-17  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Added an implicit constructor operator for converting strings to
+	  QByteArrays as it is useful for the KAboutData classes
+
 2008-06-16  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Add a header 'marshall_macros.h' with the template methods and macros

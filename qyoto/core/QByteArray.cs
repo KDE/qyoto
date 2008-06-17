@@ -3,7 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Collections.Generic;
 	[SmokeClass("QByteArray")]
-	public class QByteArray : Object, IDisposable {
+	public partial class QByteArray : Object, IDisposable {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected QByteArray(Type dummy) {}
