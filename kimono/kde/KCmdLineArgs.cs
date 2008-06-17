@@ -131,7 +131,7 @@ namespace Kimono {
 	///  </version>
 	/// 		<short> A class for command-line argument handling. </short>
 	[SmokeClass("KCmdLineArgs")]
-	public class KCmdLineArgs : Object {
+	public partial class KCmdLineArgs : Object {
 		protected SmokeInvocation interceptor = null;
 		private IntPtr smokeObject;
 		protected KCmdLineArgs(Type dummy) {}
@@ -255,46 +255,6 @@ namespace Kimono {
 		public KCmdLineArgs(KCmdLineOptions _options, KLocalizedString _name, QByteArray _id) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KCmdLineArgs###", "KCmdLineArgs(const KCmdLineOptions&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(KCmdLineOptions), _options, typeof(KLocalizedString), _name, typeof(QByteArray), _id);
-		}
-		/// <remarks>
-		///  Initialize class.
-		///  This function should be called as the very first thing in
-		///   your application.
-		/// <param> name="argv" As passed to <code>main</code>(...).
-		/// </param><param> name="appname" The untranslated name of your application. This should
-		///                 match with <code>argv</code>[0].
-		/// </param><param> name="catalog" Translation catalog name, if empty <code>appname</code> will be used.
-		/// </param><param> name="programName" A program name string to be used for display
-		///         purposes. This string should be marked for translation.
-		///         Example: ki18n("KEdit")
-		/// </param><param> name="version" A version.
-		/// </param><param> name="description" A short description of what your application is about.
-		///                     Also marked for translation.
-		/// </param><param> name="stdargs" KDE/Qt or no default parameters
-		///    </param></remarks>		<short>    Initialize class.</short>
-		public static void Init(string argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version, KLocalizedString description, uint stdargs) {
-			staticInterceptor.Invoke("init$?#####$", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(string), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description, typeof(uint), stdargs);
-		}
-		public static void Init(string argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version, KLocalizedString description) {
-			staticInterceptor.Invoke("init$?#####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&)", typeof(void), typeof(string), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description);
-		}
-		public static void Init(string argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version) {
-			staticInterceptor.Invoke("init$?####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(string), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version);
-		}
-		/// <remarks>
-		///  Initialize class.
-		///  This function should be called as the very first thing in
-		///   your application. It uses KAboutData to replace some of the
-		///   arguments that would otherwise be required.
-		/// <param> name="_argv" As passed to <code>main</code>(...).
-		/// </param><param> name="about" A KAboutData object describing your program.
-		/// </param><param> name="stdargs" KDE/Qt or no default parameters
-		///    </param></remarks>		<short>    Initialize class.</short>
-		public static void Init(string _argv, KAboutData about, uint stdargs) {
-			staticInterceptor.Invoke("init$?#$", "init(int, char**, const KAboutData*, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(string), _argv, typeof(KAboutData), about, typeof(uint), stdargs);
-		}
-		public static void Init(string _argv, KAboutData about) {
-			staticInterceptor.Invoke("init$?#", "init(int, char**, const KAboutData*)", typeof(void), typeof(string), _argv, typeof(KAboutData), about);
 		}
 		/// <remarks>
 		///  Initialize Class

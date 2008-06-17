@@ -1,0 +1,5 @@
+2008-06-17  Richard Dale  <richard.j.dale@gmail.com>
+
+* Added marshallers for the various types of lists in the KDE classes
+* Special case the Init() methods in KCmdLineArgs to take string[] args,
+  for the C++ 'int, char[] *' pairs.
