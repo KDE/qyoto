@@ -2,7 +2,8 @@ OPTION(ENABLE_QYOTO "build Qyoto" ON)
 OPTION(ENABLE_QSCINTILLA_SHARP "build QScintillaSharp" OFF)
 OPTION(ENABLE_SOPRANO_SHARP "build SopranoSharp" OFF)
 OPTION(ENABLE_PLASMA_SHARP "build PlasmaSharp" OFF)
-OPTION(ENABLE_KIMONO "build Kimono" OFF)
+OPTION(ENABLE_KIMONO "build Kimono" ON)
+OPTION(ENABLE_KHTML "build KHTML" ON)
 
 set(QYOTO_ENABLED "no")
 
@@ -68,8 +69,18 @@ IF(ENABLE_KIMONO)
 	ADD_SUBDIRECTORY(kimono)
 ENDIF(ENABLE_KIMONO)
 
+IF(ENABLE_KHTML)
+	IF (NOT QYOTO_ENABLED)
+		MESSAGE(FATAL_ERROR "Qyoto is needed for KHTML. You either didn't enable it or some of its dependencies aren't met.")
+	ENDIF (NOT QYOTO_ENABLED)
+	
+	SET(KHTML_ENABLED "yes")
+	ADD_SUBDIRECTORY(khtml)
+ENDIF(ENABLE_KHTML)
+
 message(STATUS "Build Qyoto... " ${QYOTO_ENABLED})
 message(STATUS "Build QScintillaSharp... " ${QSCINTILLA_SHARP_ENABLED})
 message(STATUS "Build SopranoSharp... " ${SOPRANO_SHARP_ENABLED})
 message(STATUS "Build PlasmaSharp... " ${PLASMA_SHARP_ENABLED})
 message(STATUS "Build Kimono... " ${KIMONO_ENABLED})
+message(STATUS "Build KHTML... " ${KHTML_ENABLED})
