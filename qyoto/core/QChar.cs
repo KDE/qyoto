@@ -170,14 +170,18 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QChar$", "QChar(int)", typeof(void), typeof(int), rc);
 		}
-		public char category() {
-			return (char) interceptor.Invoke("category", "category() const", typeof(char));
+		public QChar(QChar.SpecialCharacter sc) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QChar$", "QChar(QChar::SpecialCharacter)", typeof(void), typeof(QChar.SpecialCharacter), sc);
 		}
-		public char direction() {
-			return (char) interceptor.Invoke("direction", "direction() const", typeof(char));
+		public QChar.Category category() {
+			return (QChar.Category) interceptor.Invoke("category", "category() const", typeof(QChar.Category));
 		}
-		public char joining() {
-			return (char) interceptor.Invoke("joining", "joining() const", typeof(char));
+		public QChar.Direction direction() {
+			return (QChar.Direction) interceptor.Invoke("direction", "direction() const", typeof(QChar.Direction));
+		}
+		public QChar.Joining joining() {
+			return (QChar.Joining) interceptor.Invoke("joining", "joining() const", typeof(QChar.Joining));
 		}
 		public bool HasMirrored() {
 			return (bool) interceptor.Invoke("hasMirrored", "hasMirrored() const", typeof(bool));
@@ -185,32 +189,32 @@ namespace Qyoto {
 		public ushort combiningClass() {
 			return (ushort) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(ushort));
 		}
-		public char MirroredChar() {
-			return (char) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(char));
+		public QChar MirroredChar() {
+			return (QChar) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(QChar));
 		}
 		public string decomposition() {
 			return (string) interceptor.Invoke("decomposition", "decomposition() const", typeof(string));
 		}
-		public char DecompositionTag() {
-			return (char) interceptor.Invoke("decompositionTag", "decompositionTag() const", typeof(char));
+		public QChar.Decomposition DecompositionTag() {
+			return (QChar.Decomposition) interceptor.Invoke("decompositionTag", "decompositionTag() const", typeof(QChar.Decomposition));
 		}
 		public int DigitValue() {
 			return (int) interceptor.Invoke("digitValue", "digitValue() const", typeof(int));
 		}
-		public char ToLower() {
-			return (char) interceptor.Invoke("toLower", "toLower() const", typeof(char));
+		public QChar ToLower() {
+			return (QChar) interceptor.Invoke("toLower", "toLower() const", typeof(QChar));
 		}
-		public char ToUpper() {
-			return (char) interceptor.Invoke("toUpper", "toUpper() const", typeof(char));
+		public QChar ToUpper() {
+			return (QChar) interceptor.Invoke("toUpper", "toUpper() const", typeof(QChar));
 		}
-		public char ToTitleCase() {
-			return (char) interceptor.Invoke("toTitleCase", "toTitleCase() const", typeof(char));
+		public QChar ToTitleCase() {
+			return (QChar) interceptor.Invoke("toTitleCase", "toTitleCase() const", typeof(QChar));
 		}
-		public char ToCaseFolded() {
-			return (char) interceptor.Invoke("toCaseFolded", "toCaseFolded() const", typeof(char));
+		public QChar ToCaseFolded() {
+			return (QChar) interceptor.Invoke("toCaseFolded", "toCaseFolded() const", typeof(QChar));
 		}
-		public char unicodeVersion() {
-			return (char) interceptor.Invoke("unicodeVersion", "unicodeVersion() const", typeof(char));
+		public QChar.UnicodeVersion unicodeVersion() {
+			return (QChar.UnicodeVersion) interceptor.Invoke("unicodeVersion", "unicodeVersion() const", typeof(QChar.UnicodeVersion));
 		}
 		public char ToAscii() {
 			return (char) interceptor.Invoke("toAscii", "toAscii() const", typeof(char));
@@ -284,17 +288,24 @@ namespace Qyoto {
 		public void Dispose() {
 			interceptor.Invoke("~QChar", "~QChar()", typeof(void));
 		}
-		public static char FromAscii(char c) {
-			return (char) staticInterceptor.Invoke("fromAscii$", "fromAscii(char)", typeof(char), typeof(char), c);
+		public override bool Equals(object o) {
+			if (!(o is QChar)) { return false; }
+			return this == (QChar) o;
 		}
-		public static char FromLatin1(char c) {
-			return (char) staticInterceptor.Invoke("fromLatin1$", "fromLatin1(char)", typeof(char), typeof(char), c);
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
+		public static QChar FromAscii(char c) {
+			return (QChar) staticInterceptor.Invoke("fromAscii$", "fromAscii(char)", typeof(QChar), typeof(char), c);
+		}
+		public static QChar FromLatin1(char c) {
+			return (QChar) staticInterceptor.Invoke("fromLatin1$", "fromLatin1(char)", typeof(QChar), typeof(char), c);
 		}
 		public static uint SurrogateToUcs4(ushort high, ushort low) {
 			return (uint) staticInterceptor.Invoke("surrogateToUcs4$$", "surrogateToUcs4(ushort, ushort)", typeof(uint), typeof(ushort), high, typeof(ushort), low);
 		}
-		public static uint SurrogateToUcs4(char high, char low) {
-			return (uint) staticInterceptor.Invoke("surrogateToUcs4##", "surrogateToUcs4(QChar, QChar)", typeof(uint), typeof(char), high, typeof(char), low);
+		public static uint SurrogateToUcs4(QChar high, QChar low) {
+			return (uint) staticInterceptor.Invoke("surrogateToUcs4##", "surrogateToUcs4(QChar, QChar)", typeof(uint), typeof(QChar), high, typeof(QChar), low);
 		}
 		public static ushort HighSurrogate(uint ucs4) {
 			return (ushort) staticInterceptor.Invoke("highSurrogate$", "highSurrogate(uint)", typeof(ushort), typeof(uint), ucs4);
@@ -302,23 +313,23 @@ namespace Qyoto {
 		public static ushort LowSurrogate(uint ucs4) {
 			return (ushort) staticInterceptor.Invoke("lowSurrogate$", "lowSurrogate(uint)", typeof(ushort), typeof(uint), ucs4);
 		}
-		public static char category(uint ucs4) {
-			return (char) staticInterceptor.Invoke("category$", "category(uint)", typeof(char), typeof(uint), ucs4);
+		public static QChar.Category category(uint ucs4) {
+			return (QChar.Category) staticInterceptor.Invoke("category$", "category(uint)", typeof(QChar.Category), typeof(uint), ucs4);
 		}
-		public static char category(ushort ucs2) {
-			return (char) staticInterceptor.Invoke("category$", "category(ushort)", typeof(char), typeof(ushort), ucs2);
+		public static QChar.Category category(ushort ucs2) {
+			return (QChar.Category) staticInterceptor.Invoke("category$", "category(ushort)", typeof(QChar.Category), typeof(ushort), ucs2);
 		}
-		public static char direction(uint ucs4) {
-			return (char) staticInterceptor.Invoke("direction$", "direction(uint)", typeof(char), typeof(uint), ucs4);
+		public static QChar.Direction direction(uint ucs4) {
+			return (QChar.Direction) staticInterceptor.Invoke("direction$", "direction(uint)", typeof(QChar.Direction), typeof(uint), ucs4);
 		}
-		public static char direction(ushort ucs2) {
-			return (char) staticInterceptor.Invoke("direction$", "direction(ushort)", typeof(char), typeof(ushort), ucs2);
+		public static QChar.Direction direction(ushort ucs2) {
+			return (QChar.Direction) staticInterceptor.Invoke("direction$", "direction(ushort)", typeof(QChar.Direction), typeof(ushort), ucs2);
 		}
-		public static char joining(uint ucs4) {
-			return (char) staticInterceptor.Invoke("joining$", "joining(uint)", typeof(char), typeof(uint), ucs4);
+		public static QChar.Joining joining(uint ucs4) {
+			return (QChar.Joining) staticInterceptor.Invoke("joining$", "joining(uint)", typeof(QChar.Joining), typeof(uint), ucs4);
 		}
-		public static char joining(ushort ucs2) {
-			return (char) staticInterceptor.Invoke("joining$", "joining(ushort)", typeof(char), typeof(ushort), ucs2);
+		public static QChar.Joining joining(ushort ucs2) {
+			return (QChar.Joining) staticInterceptor.Invoke("joining$", "joining(ushort)", typeof(QChar.Joining), typeof(ushort), ucs2);
 		}
 		public static ushort combiningClass(uint ucs4) {
 			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(uint)", typeof(ushort), typeof(uint), ucs4);
@@ -332,8 +343,8 @@ namespace Qyoto {
 		public static ushort MirroredChar(ushort ucs2) {
 			return (ushort) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(ushort)", typeof(ushort), typeof(ushort), ucs2);
 		}
-		public static char DecompositionTag(uint ucs4) {
-			return (char) staticInterceptor.Invoke("decompositionTag$", "decompositionTag(uint)", typeof(char), typeof(uint), ucs4);
+		public static QChar.Decomposition DecompositionTag(uint ucs4) {
+			return (QChar.Decomposition) staticInterceptor.Invoke("decompositionTag$", "decompositionTag(uint)", typeof(QChar.Decomposition), typeof(uint), ucs4);
 		}
 		public static int DigitValue(uint ucs4) {
 			return (int) staticInterceptor.Invoke("digitValue$", "digitValue(uint)", typeof(int), typeof(uint), ucs4);
@@ -365,14 +376,38 @@ namespace Qyoto {
 		public static ushort ToCaseFolded(ushort ucs2) {
 			return (ushort) staticInterceptor.Invoke("toCaseFolded$", "toCaseFolded(ushort)", typeof(ushort), typeof(ushort), ucs2);
 		}
-		public static char unicodeVersion(uint ucs4) {
-			return (char) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(uint)", typeof(char), typeof(uint), ucs4);
+		public static QChar.UnicodeVersion unicodeVersion(uint ucs4) {
+			return (QChar.UnicodeVersion) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(uint)", typeof(QChar.UnicodeVersion), typeof(uint), ucs4);
 		}
-		public static char unicodeVersion(ushort ucs2) {
-			return (char) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(ushort)", typeof(char), typeof(ushort), ucs2);
+		public static QChar.UnicodeVersion unicodeVersion(ushort ucs2) {
+			return (QChar.UnicodeVersion) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(ushort)", typeof(QChar.UnicodeVersion), typeof(ushort), ucs2);
 		}
 		public static string decomposition(uint ucs4) {
 			return (string) staticInterceptor.Invoke("decomposition$", "decomposition(uint)", typeof(string), typeof(uint), ucs4);
+		}
+		public static string operator+(string s1, QChar s2) {
+			return (string) staticInterceptor.Invoke("operator+$#", "operator+(const QString&, QChar)", typeof(string), typeof(string), s1, typeof(QChar), s2);
+		}
+		public static string operator+(QChar s1, string s2) {
+			return (string) staticInterceptor.Invoke("operator+#$", "operator+(QChar, const QString&)", typeof(string), typeof(QChar), s1, typeof(string), s2);
+		}
+		public static bool operator==(QChar c1, QChar c2) {
+			return (bool) staticInterceptor.Invoke("operator==##", "operator==(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
+		}
+		public static bool operator!=(QChar c1, QChar c2) {
+			return !(bool) staticInterceptor.Invoke("operator==##", "operator==(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
+		}
+		public static bool operator<=(QChar c1, QChar c2) {
+			return (bool) staticInterceptor.Invoke("operator<=##", "operator<=(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
+		}
+		public static bool operator>=(QChar c1, QChar c2) {
+			return (bool) staticInterceptor.Invoke("operator>=##", "operator>=(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
+		}
+		public static bool operator<(QChar c1, QChar c2) {
+			return (bool) staticInterceptor.Invoke("operator<##", "operator<(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
+		}
+		public static bool operator>(QChar c1, QChar c2) {
+			return (bool) staticInterceptor.Invoke("operator>##", "operator>(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
 		}
 	}
 }

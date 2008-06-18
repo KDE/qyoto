@@ -250,8 +250,8 @@ namespace Qyoto {
 		public static List<QFileInfo> Drives() {
 			return (List<QFileInfo>) staticInterceptor.Invoke("drives", "drives()", typeof(List<QFileInfo>));
 		}
-		public static char Separator() {
-			return (char) staticInterceptor.Invoke("separator", "separator()", typeof(char));
+		public static QChar Separator() {
+			return (QChar) staticInterceptor.Invoke("separator", "separator()", typeof(QChar));
 		}
 		public static bool SetCurrent(string path) {
 			return (bool) staticInterceptor.Invoke("setCurrent$", "setCurrent(const QString&)", typeof(bool), typeof(string), path);

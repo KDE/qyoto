@@ -16,8 +16,8 @@ namespace Qyoto {
 		public QByteArray FromUnicode(string str) {
 			return (QByteArray) interceptor.Invoke("fromUnicode$", "fromUnicode(const QString&)", typeof(QByteArray), typeof(string), str);
 		}
-		public QByteArray FromUnicode(char uc, int len) {
-			return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int)", typeof(QByteArray), typeof(char), uc, typeof(int), len);
+		public QByteArray FromUnicode(QChar uc, int len) {
+			return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int)", typeof(QByteArray), typeof(QChar), uc, typeof(int), len);
 		}
 		~QTextEncoder() {
 			interceptor.Invoke("~QTextEncoder", "~QTextEncoder()", typeof(void));

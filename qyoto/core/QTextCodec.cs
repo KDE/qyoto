@@ -42,8 +42,8 @@ namespace Qyoto {
 		public QTextEncoder MakeEncoder() {
 			return (QTextEncoder) interceptor.Invoke("makeEncoder", "makeEncoder() const", typeof(QTextEncoder));
 		}
-		public bool CanEncode(char arg1) {
-			return (bool) interceptor.Invoke("canEncode#", "canEncode(QChar) const", typeof(bool), typeof(char), arg1);
+		public bool CanEncode(QChar arg1) {
+			return (bool) interceptor.Invoke("canEncode#", "canEncode(QChar) const", typeof(bool), typeof(QChar), arg1);
 		}
 		public bool CanEncode(string arg1) {
 			return (bool) interceptor.Invoke("canEncode$", "canEncode(const QString&) const", typeof(bool), typeof(string), arg1);
@@ -60,8 +60,8 @@ namespace Qyoto {
 		public string ToUnicode(string arg1, int length) {
 			return (string) interceptor.Invoke("toUnicode$$", "toUnicode(const char*, int) const", typeof(string), typeof(string), arg1, typeof(int), length);
 		}
-		public QByteArray FromUnicode(char arg1, int length) {
-			return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int) const", typeof(QByteArray), typeof(char), arg1, typeof(int), length);
+		public QByteArray FromUnicode(QChar arg1, int length) {
+			return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int) const", typeof(QByteArray), typeof(QChar), arg1, typeof(int), length);
 		}
 		[SmokeMethod("name() const")]
 		public abstract QByteArray Name();

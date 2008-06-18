@@ -1254,11 +1254,11 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QDateTime arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDateTime), arg2);
 		}
-		public static int QFindString(char haystack, int haystackLen, int from, char needle, int needleLen, Qt.CaseSensitivity cs) {
-			return (int) staticInterceptor.Invoke("qFindString#$$#$$", "qFindString(const QChar*, int, int, const QChar*, int, Qt::CaseSensitivity)", typeof(int), typeof(char), haystack, typeof(int), haystackLen, typeof(int), from, typeof(char), needle, typeof(int), needleLen, typeof(Qt.CaseSensitivity), cs);
+		public static int QFindString(QChar haystack, int haystackLen, int from, QChar needle, int needleLen, Qt.CaseSensitivity cs) {
+			return (int) staticInterceptor.Invoke("qFindString#$$#$$", "qFindString(const QChar*, int, int, const QChar*, int, Qt::CaseSensitivity)", typeof(int), typeof(QChar), haystack, typeof(int), haystackLen, typeof(int), from, typeof(QChar), needle, typeof(int), needleLen, typeof(Qt.CaseSensitivity), cs);
 		}
-		public static int QFindStringBoyerMoore(char haystack, int haystackLen, int from, char needle, int needleLen, Qt.CaseSensitivity cs) {
-			return (int) staticInterceptor.Invoke("qFindStringBoyerMoore#$$#$$", "qFindStringBoyerMoore(const QChar*, int, int, const QChar*, int, Qt::CaseSensitivity)", typeof(int), typeof(char), haystack, typeof(int), haystackLen, typeof(int), from, typeof(char), needle, typeof(int), needleLen, typeof(Qt.CaseSensitivity), cs);
+		public static int QFindStringBoyerMoore(QChar haystack, int haystackLen, int from, QChar needle, int needleLen, Qt.CaseSensitivity cs) {
+			return (int) staticInterceptor.Invoke("qFindStringBoyerMoore#$$#$$", "qFindStringBoyerMoore(const QChar*, int, int, const QChar*, int, Qt::CaseSensitivity)", typeof(int), typeof(QChar), haystack, typeof(int), haystackLen, typeof(int), from, typeof(QChar), needle, typeof(int), needleLen, typeof(Qt.CaseSensitivity), cs);
 		}
 		public static QDataStream Write(QDataStream arg1, QBitArray arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
@@ -1266,11 +1266,11 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QBitArray arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
 		}
-		public static QDataStream Write(QDataStream arg1, char arg2) {
-			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(char), arg2);
+		public static QDataStream Write(QDataStream arg1, QChar arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QChar), arg2);
 		}
-		public static QDataStream Read(QDataStream arg1, char arg2) {
-			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(char), arg2);
+		public static QDataStream Read(QDataStream arg1, QChar arg2) {
+			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QChar), arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QPoint arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPoint&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPoint), arg2);

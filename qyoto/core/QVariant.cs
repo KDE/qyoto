@@ -152,9 +152,9 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QVariant?", "QVariant(const QStringList&)", typeof(void), typeof(List<string>), stringlist);
 		}
-		public QVariant(char qchar) : this((Type) null) {
+		public QVariant(QChar qchar) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QVariant#", "QVariant(const QChar&)", typeof(void), typeof(char), qchar);
+			interceptor.Invoke("QVariant#", "QVariant(const QChar&)", typeof(void), typeof(QChar), qchar);
 		}
 		public QVariant(QDate date) : this((Type) null) {
 			CreateProxy();
@@ -319,8 +319,8 @@ namespace Qyoto {
 		public List<string> ToStringList() {
 			return (List<string>) interceptor.Invoke("toStringList", "toStringList() const", typeof(List<string>));
 		}
-		public char ToChar() {
-			return (char) interceptor.Invoke("toChar", "toChar() const", typeof(char));
+		public QChar ToChar() {
+			return (QChar) interceptor.Invoke("toChar", "toChar() const", typeof(QChar));
 		}
 		public QDate ToDate() {
 			return (QDate) interceptor.Invoke("toDate", "toDate() const", typeof(QDate));

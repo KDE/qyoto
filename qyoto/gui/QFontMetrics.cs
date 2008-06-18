@@ -56,14 +56,14 @@ namespace Qyoto {
 		public int AverageCharWidth() {
 			return (int) interceptor.Invoke("averageCharWidth", "averageCharWidth() const", typeof(int));
 		}
-		public bool InFont(char arg1) {
-			return (bool) interceptor.Invoke("inFont#", "inFont(QChar) const", typeof(bool), typeof(char), arg1);
+		public bool InFont(QChar arg1) {
+			return (bool) interceptor.Invoke("inFont#", "inFont(QChar) const", typeof(bool), typeof(QChar), arg1);
 		}
-		public int LeftBearing(char arg1) {
-			return (int) interceptor.Invoke("leftBearing#", "leftBearing(QChar) const", typeof(int), typeof(char), arg1);
+		public int LeftBearing(QChar arg1) {
+			return (int) interceptor.Invoke("leftBearing#", "leftBearing(QChar) const", typeof(int), typeof(QChar), arg1);
 		}
-		public int RightBearing(char arg1) {
-			return (int) interceptor.Invoke("rightBearing#", "rightBearing(QChar) const", typeof(int), typeof(char), arg1);
+		public int RightBearing(QChar arg1) {
+			return (int) interceptor.Invoke("rightBearing#", "rightBearing(QChar) const", typeof(int), typeof(QChar), arg1);
 		}
 		public int Width(string arg1, int len) {
 			return (int) interceptor.Invoke("width$$", "width(const QString&, int) const", typeof(int), typeof(string), arg1, typeof(int), len);
@@ -71,14 +71,14 @@ namespace Qyoto {
 		public int Width(string arg1) {
 			return (int) interceptor.Invoke("width$", "width(const QString&) const", typeof(int), typeof(string), arg1);
 		}
-		public int Width(char arg1) {
-			return (int) interceptor.Invoke("width#", "width(QChar) const", typeof(int), typeof(char), arg1);
+		public int Width(QChar arg1) {
+			return (int) interceptor.Invoke("width#", "width(QChar) const", typeof(int), typeof(QChar), arg1);
 		}
 		public int CharWidth(string str, int pos) {
 			return (int) interceptor.Invoke("charWidth$$", "charWidth(const QString&, int) const", typeof(int), typeof(string), str, typeof(int), pos);
 		}
-		public QRect BoundingRect(char arg1) {
-			return (QRect) interceptor.Invoke("boundingRect#", "boundingRect(QChar) const", typeof(QRect), typeof(char), arg1);
+		public QRect BoundingRect(QChar arg1) {
+			return (QRect) interceptor.Invoke("boundingRect#", "boundingRect(QChar) const", typeof(QRect), typeof(QChar), arg1);
 		}
 		public QRect BoundingRect(string text) {
 			return (QRect) interceptor.Invoke("boundingRect$", "boundingRect(const QString&) const", typeof(QRect), typeof(string), text);

@@ -60,26 +60,26 @@ namespace Qyoto {
 		public double AverageCharWidth() {
 			return (double) interceptor.Invoke("averageCharWidth", "averageCharWidth() const", typeof(double));
 		}
-		public bool InFont(char arg1) {
-			return (bool) interceptor.Invoke("inFont#", "inFont(QChar) const", typeof(bool), typeof(char), arg1);
+		public bool InFont(QChar arg1) {
+			return (bool) interceptor.Invoke("inFont#", "inFont(QChar) const", typeof(bool), typeof(QChar), arg1);
 		}
-		public double LeftBearing(char arg1) {
-			return (double) interceptor.Invoke("leftBearing#", "leftBearing(QChar) const", typeof(double), typeof(char), arg1);
+		public double LeftBearing(QChar arg1) {
+			return (double) interceptor.Invoke("leftBearing#", "leftBearing(QChar) const", typeof(double), typeof(QChar), arg1);
 		}
-		public double RightBearing(char arg1) {
-			return (double) interceptor.Invoke("rightBearing#", "rightBearing(QChar) const", typeof(double), typeof(char), arg1);
+		public double RightBearing(QChar arg1) {
+			return (double) interceptor.Invoke("rightBearing#", "rightBearing(QChar) const", typeof(double), typeof(QChar), arg1);
 		}
 		public double Width(string arg1) {
 			return (double) interceptor.Invoke("width$", "width(const QString&) const", typeof(double), typeof(string), arg1);
 		}
-		public double Width(char arg1) {
-			return (double) interceptor.Invoke("width#", "width(QChar) const", typeof(double), typeof(char), arg1);
+		public double Width(QChar arg1) {
+			return (double) interceptor.Invoke("width#", "width(QChar) const", typeof(double), typeof(QChar), arg1);
 		}
 		public QRectF BoundingRect(string arg1) {
 			return (QRectF) interceptor.Invoke("boundingRect$", "boundingRect(const QString&) const", typeof(QRectF), typeof(string), arg1);
 		}
-		public QRectF BoundingRect(char arg1) {
-			return (QRectF) interceptor.Invoke("boundingRect#", "boundingRect(QChar) const", typeof(QRectF), typeof(char), arg1);
+		public QRectF BoundingRect(QChar arg1) {
+			return (QRectF) interceptor.Invoke("boundingRect#", "boundingRect(QChar) const", typeof(QRectF), typeof(QChar), arg1);
 		}
 		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops, ref int tabarray) {
 			StackItem[] stack = new StackItem[6];

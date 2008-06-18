@@ -50,41 +50,41 @@ namespace Qyoto {
 		public int DigitValue() {
 			return (int) interceptor.Invoke("digitValue", "digitValue() const", typeof(int));
 		}
-		public char ToLower() {
-			return (char) interceptor.Invoke("toLower", "toLower() const", typeof(char));
+		public QChar ToLower() {
+			return (QChar) interceptor.Invoke("toLower", "toLower() const", typeof(QChar));
 		}
-		public char ToUpper() {
-			return (char) interceptor.Invoke("toUpper", "toUpper() const", typeof(char));
+		public QChar ToUpper() {
+			return (QChar) interceptor.Invoke("toUpper", "toUpper() const", typeof(QChar));
 		}
-		public char ToTitleCase() {
-			return (char) interceptor.Invoke("toTitleCase", "toTitleCase() const", typeof(char));
+		public QChar ToTitleCase() {
+			return (QChar) interceptor.Invoke("toTitleCase", "toTitleCase() const", typeof(QChar));
 		}
-		public char Category() {
-			return (char) interceptor.Invoke("category", "category() const", typeof(char));
+		public QChar.Category Category() {
+			return (QChar.Category) interceptor.Invoke("category", "category() const", typeof(QChar.Category));
 		}
-		public char Direction() {
-			return (char) interceptor.Invoke("direction", "direction() const", typeof(char));
+		public QChar.Direction Direction() {
+			return (QChar.Direction) interceptor.Invoke("direction", "direction() const", typeof(QChar.Direction));
 		}
-		public char Joining() {
-			return (char) interceptor.Invoke("joining", "joining() const", typeof(char));
+		public QChar.Joining Joining() {
+			return (QChar.Joining) interceptor.Invoke("joining", "joining() const", typeof(QChar.Joining));
 		}
 		public bool HasMirrored() {
 			return (bool) interceptor.Invoke("hasMirrored", "hasMirrored() const", typeof(bool));
 		}
-		public char MirroredChar() {
-			return (char) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(char));
+		public QChar MirroredChar() {
+			return (QChar) interceptor.Invoke("mirroredChar", "mirroredChar() const", typeof(QChar));
 		}
 		public string Decomposition() {
 			return (string) interceptor.Invoke("decomposition", "decomposition() const", typeof(string));
 		}
-		public char DecompositionTag() {
-			return (char) interceptor.Invoke("decompositionTag", "decompositionTag() const", typeof(char));
+		public QChar.Decomposition DecompositionTag() {
+			return (QChar.Decomposition) interceptor.Invoke("decompositionTag", "decompositionTag() const", typeof(QChar.Decomposition));
 		}
 		public ushort CombiningClass() {
 			return (ushort) interceptor.Invoke("combiningClass", "combiningClass() const", typeof(ushort));
 		}
-		public char UnicodeVersion() {
-			return (char) interceptor.Invoke("unicodeVersion", "unicodeVersion() const", typeof(char));
+		public QChar.UnicodeVersion UnicodeVersion() {
+			return (QChar.UnicodeVersion) interceptor.Invoke("unicodeVersion", "unicodeVersion() const", typeof(QChar.UnicodeVersion));
 		}
 		public ushort Cell() {
 			return (ushort) interceptor.Invoke("cell", "cell() const", typeof(ushort));

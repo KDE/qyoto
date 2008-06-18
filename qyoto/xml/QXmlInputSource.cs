@@ -44,8 +44,8 @@ namespace Qyoto {
 			return (string) interceptor.Invoke("data", "data() const", typeof(string));
 		}
 		[SmokeMethod("next()")]
-		public virtual char Next() {
-			return (char) interceptor.Invoke("next", "next()", typeof(char));
+		public virtual QChar Next() {
+			return (QChar) interceptor.Invoke("next", "next()", typeof(QChar));
 		}
 		[SmokeMethod("reset()")]
 		public virtual void Reset() {

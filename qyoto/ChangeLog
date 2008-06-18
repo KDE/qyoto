@@ -1,3 +1,7 @@
+2008-06-18  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Don't convert QChars to C# chars, keep them as QChars
+
 2008-06-17  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Added an implicit constructor operator for converting strings to

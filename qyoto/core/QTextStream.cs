@@ -147,11 +147,11 @@ namespace Qyoto {
 		public QTextStream.FieldAlignment fieldAlignment() {
 			return (QTextStream.FieldAlignment) interceptor.Invoke("fieldAlignment", "fieldAlignment() const", typeof(QTextStream.FieldAlignment));
 		}
-		public void SetPadChar(char ch) {
-			interceptor.Invoke("setPadChar#", "setPadChar(QChar)", typeof(void), typeof(char), ch);
+		public void SetPadChar(QChar ch) {
+			interceptor.Invoke("setPadChar#", "setPadChar(QChar)", typeof(void), typeof(QChar), ch);
 		}
-		public char PadChar() {
-			return (char) interceptor.Invoke("padChar", "padChar() const", typeof(char));
+		public QChar PadChar() {
+			return (QChar) interceptor.Invoke("padChar", "padChar() const", typeof(QChar));
 		}
 		public void SetFieldWidth(int width) {
 			interceptor.Invoke("setFieldWidth$", "setFieldWidth(int)", typeof(void), typeof(int), width);
@@ -183,8 +183,11 @@ namespace Qyoto {
 		public int RealNumberPrecision() {
 			return (int) interceptor.Invoke("realNumberPrecision", "realNumberPrecision() const", typeof(int));
 		}
+		public QTextStream Read(QChar ch) {
+			return (QTextStream) interceptor.Invoke("operator>>#", "operator>>(QChar&)", typeof(QTextStream), typeof(QChar), ch);
+		}
 		public QTextStream Read(char ch) {
-			return (QTextStream) interceptor.Invoke("operator>>#", "operator>>(QChar&)", typeof(QTextStream), typeof(char), ch);
+			return (QTextStream) interceptor.Invoke("operator>>$", "operator>>(char&)", typeof(QTextStream), typeof(char), ch);
 		}
 		public QTextStream Read(ushort i) {
 			return (QTextStream) interceptor.Invoke("operator>>$", "operator>>(unsigned short&)", typeof(QTextStream), typeof(ushort), i);
@@ -213,8 +216,11 @@ namespace Qyoto {
 		public QTextStream Write(QBool b) {
 			return (QTextStream) interceptor.Invoke("operator<<#", "operator<<(QBool)", typeof(QTextStream), typeof(QBool), b);
 		}
+		public QTextStream Write(QChar ch) {
+			return (QTextStream) interceptor.Invoke("operator<<#", "operator<<(QChar)", typeof(QTextStream), typeof(QChar), ch);
+		}
 		public QTextStream Write(char ch) {
-			return (QTextStream) interceptor.Invoke("operator<<#", "operator<<(QChar)", typeof(QTextStream), typeof(char), ch);
+			return (QTextStream) interceptor.Invoke("operator<<$", "operator<<(char)", typeof(QTextStream), typeof(char), ch);
 		}
 		public QTextStream Write(ushort i) {
 			return (QTextStream) interceptor.Invoke("operator<<$", "operator<<(unsigned short)", typeof(QTextStream), typeof(ushort), i);

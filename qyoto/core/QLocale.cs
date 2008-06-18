@@ -866,23 +866,23 @@ namespace Qyoto {
 		public QDateTime ToDateTime(string arg1, string format) {
 			return (QDateTime) interceptor.Invoke("toDateTime$$", "toDateTime(const QString&, const QString&) const", typeof(QDateTime), typeof(string), arg1, typeof(string), format);
 		}
-		public char DecimalPoint() {
-			return (char) interceptor.Invoke("decimalPoint", "decimalPoint() const", typeof(char));
+		public QChar DecimalPoint() {
+			return (QChar) interceptor.Invoke("decimalPoint", "decimalPoint() const", typeof(QChar));
 		}
-		public char GroupSeparator() {
-			return (char) interceptor.Invoke("groupSeparator", "groupSeparator() const", typeof(char));
+		public QChar GroupSeparator() {
+			return (QChar) interceptor.Invoke("groupSeparator", "groupSeparator() const", typeof(QChar));
 		}
-		public char Percent() {
-			return (char) interceptor.Invoke("percent", "percent() const", typeof(char));
+		public QChar Percent() {
+			return (QChar) interceptor.Invoke("percent", "percent() const", typeof(QChar));
 		}
-		public char ZeroDigit() {
-			return (char) interceptor.Invoke("zeroDigit", "zeroDigit() const", typeof(char));
+		public QChar ZeroDigit() {
+			return (QChar) interceptor.Invoke("zeroDigit", "zeroDigit() const", typeof(QChar));
 		}
-		public char NegativeSign() {
-			return (char) interceptor.Invoke("negativeSign", "negativeSign() const", typeof(char));
+		public QChar NegativeSign() {
+			return (QChar) interceptor.Invoke("negativeSign", "negativeSign() const", typeof(QChar));
 		}
-		public char Exponential() {
-			return (char) interceptor.Invoke("exponential", "exponential() const", typeof(char));
+		public QChar Exponential() {
+			return (QChar) interceptor.Invoke("exponential", "exponential() const", typeof(QChar));
 		}
 		public string MonthName(int arg1, QLocale.FormatType format) {
 			return (string) interceptor.Invoke("monthName$$", "monthName(int, QLocale::FormatType) const", typeof(string), typeof(int), arg1, typeof(QLocale.FormatType), format);
