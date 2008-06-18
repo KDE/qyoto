@@ -22,11 +22,11 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructor.
-		/// <param> name="c" escape char indicating start of macros, or char.Null for none
+		/// <param> name="c" escape char indicating start of macros, or QChar.Null for none
 		///      </param></remarks>		<short>    Constructor.</short>
-		public KMacroExpanderBase(char c) : this((Type) null) {
+		public KMacroExpanderBase(QChar c) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KMacroExpanderBase#", "KMacroExpanderBase(QChar)", typeof(void), typeof(char), c);
+			interceptor.Invoke("KMacroExpanderBase#", "KMacroExpanderBase(QChar)", typeof(void), typeof(QChar), c);
 		}
 		public KMacroExpanderBase() : this((Type) null) {
 			CreateProxy();
@@ -103,22 +103,22 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Set the macro escape character.
-		/// <param> name="c" escape char indicating start of macros, or char.Null if none
+		/// <param> name="c" escape char indicating start of macros, or QChar.Null if none
 		///      </param></remarks>		<short>    Set the macro escape character.</short>
-		public void SetEscapeChar(char c) {
-			interceptor.Invoke("setEscapeChar#", "setEscapeChar(QChar)", typeof(void), typeof(char), c);
+		public void SetEscapeChar(QChar c) {
+			interceptor.Invoke("setEscapeChar#", "setEscapeChar(QChar)", typeof(void), typeof(QChar), c);
 		}
 		/// <remarks>
 		///  Obtain the macro escape character.
-		/// </remarks>		<return> escape char indicating start of macros, or char.Null if none
+		/// </remarks>		<return> escape char indicating start of macros, or QChar.Null if none
 		///      </return>
 		/// 		<short>    Obtain the macro escape character.</short>
-		public char EscapeChar() {
-			return (char) interceptor.Invoke("escapeChar", "escapeChar() const", typeof(char));
+		public QChar EscapeChar() {
+			return (QChar) interceptor.Invoke("escapeChar", "escapeChar() const", typeof(QChar));
 		}
 		/// <remarks>
 		///  This function is called for every single char within the string if
-		///  the escape char is char.Null. It should determine whether the
+		///  the escape char is QChar.Null. It should determine whether the
 		///  string starting at <code>pos</code> within <code>str</code> is a valid macro and return
 		///  the substitution value for it if so.
 		/// <param> name="str" the input string
@@ -129,14 +129,14 @@ namespace Kimono {
 		///   than zero, subtract this value from <code>pos</code> (to skip a macro, i.e.,
 		///   substitute it with itself). If zero, no macro starts at <code>pos.</code>
 		///      </return>
-		/// 		<short>    This function is called for every single char within the string if  the escape char is char.Null.</short>
+		/// 		<short>    This function is called for every single char within the string if  the escape char is QChar.Null.</short>
 		[SmokeMethod("expandPlainMacro(const QString&, int, QStringList&)")]
 		protected virtual int ExpandPlainMacro(string str, int pos, List<string> ret) {
 			return (int) interceptor.Invoke("expandPlainMacro$$?", "expandPlainMacro(const QString&, int, QStringList&)", typeof(int), typeof(string), str, typeof(int), pos, typeof(List<string>), ret);
 		}
 		/// <remarks>
 		///  This function is called every time the escape char is found if it is
-		///  not char.Null. It should determine whether the
+		///  not QChar.Null. It should determine whether the
 		///  string starting at <code>pos</code> witin <code>str</code> is a valid macro and return
 		///  the substitution value for it if so.
 		/// <param> name="str" the input string
@@ -149,7 +149,7 @@ namespace Kimono {
 		///   substitute it with itself). If zero, scanning continues as if no
 		///   escape char was encountered at all.
 		///      </return>
-		/// 		<short>    This function is called every time the escape char is found if it is  not char.Null.</short>
+		/// 		<short>    This function is called every time the escape char is found if it is  not QChar.Null.</short>
 		[SmokeMethod("expandEscapedMacro(const QString&, int, QStringList&)")]
 		protected virtual int ExpandEscapedMacro(string str, int pos, List<string> ret) {
 			return (int) interceptor.Invoke("expandEscapedMacro$$?", "expandEscapedMacro(const QString&, int, QStringList&)", typeof(int), typeof(string), str, typeof(int), pos, typeof(List<string>), ret);

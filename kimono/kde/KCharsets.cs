@@ -105,11 +105,11 @@ namespace Kimono {
 		///  The string must contain only the
 		///  entity without the trailing ';'.
 		/// <param> name="str" the entity
-		/// </param></remarks>		<return> char.Null if the entity could not be decoded.
+		/// </param></remarks>		<return> QChar.Null if the entity could not be decoded.
 		///      </return>
 		/// 		<short>    @brief Converts an entity to a character.</short>
-		public static char FromEntity(string str) {
-			return (char) staticInterceptor.Invoke("fromEntity$", "fromEntity(const QString&)", typeof(char), typeof(string), str);
+		public static QChar FromEntity(string str) {
+			return (QChar) staticInterceptor.Invoke("fromEntity$", "fromEntity(const QString&)", typeof(QChar), typeof(string), str);
 		}
 		/// <remarks>
 		///  Overloaded member function. Tries to find an entity in the
@@ -117,11 +117,11 @@ namespace Kimono {
 		/// <param> name="str" the string containing entified
 		/// </param><param> name="len" is a return value, that gives the length of the decoded
 		///  entity.
-		/// </param></remarks>		<return> a decoded entity if one could be found, char.Null
+		/// </param></remarks>		<return> a decoded entity if one could be found, QChar.Null
 		///  otherwise
 		///      </return>
 		/// 		<short>    Overloaded member function.</short>
-		public static char FromEntity(string str, ref int len) {
+		public static QChar FromEntity(string str, ref int len) {
 			StackItem[] stack = new StackItem[3];
 #if DEBUG
 			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(str);
@@ -142,17 +142,17 @@ namespace Kimono {
 #else
 			((GCHandle) stack[0].s_class).Free();
 #endif
-			return (char) returnValue;
+			return (QChar) returnValue;
 		}
 		/// <remarks>
-		///  Converts a char to an entity. The returned string does already
+		///  Converts a QChar to an entity. The returned string does already
 		///  contain the leading '&' and the trailing ';'.
 		/// <param> name="ch" the char to convert
 		/// </param></remarks>		<return> the entity
 		///      </return>
-		/// 		<short>    Converts a char to an entity.</short>
-		public static string ToEntity(char ch) {
-			return (string) staticInterceptor.Invoke("toEntity#", "toEntity(const QChar&)", typeof(string), typeof(char), ch);
+		/// 		<short>    Converts a QChar to an entity.</short>
+		public static string ToEntity(QChar ch) {
+			return (string) staticInterceptor.Invoke("toEntity#", "toEntity(const QChar&)", typeof(string), typeof(QChar), ch);
 		}
 		/// <remarks>
 		///  Scans the given string for entities (like &amp;amp;) and resolves them

@@ -1,3 +1,12 @@
+2008-06-18  Richard Dale  <richard.j.dale@gmail.com>
+
+* Added tutorial examples p3 and p4. p4 crashes on a call to 
+  KHTMLPart.Widget(), which could be a problem with modular smoke
+  either method lookup or return value marshalling.
+* Don't convert QChars to C# chars, keep them as QChars
+* Added the name of the current Assembly as the first entry in the args
+  array passed to KCmdLineArgs.Init().
+
 2008-06-17  Richard Dale  <richard.j.dale@gmail.com>
 
 * Added marshallers for the various types of lists in the KDE classes

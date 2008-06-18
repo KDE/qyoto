@@ -121,13 +121,13 @@ namespace Kimono {
 		///  a string object. string objects will be sorted with string.LocaleAwareCompare if
 		///  sortCategoriesByNaturalComparison() is true.
 		///  @note Please have present that:
-		///        string(char(char.ObjectReplacementCharacter)) >
-		///        string(char(char.ReplacementCharacter)) >
+		///        string(QChar(QChar.ObjectReplacementCharacter)) >
+		///        string(QChar(QChar.ReplacementCharacter)) >
 		///        [ all possible strings ] >
 		///        string();
 		///        This means that string() will be sorted the first one, while
-		///        string(char(char.ObjectReplacementCharacter)) and
-		///        string(char(char.ReplacementCharacter)) will be sorted in last
+		///        string(QChar(QChar.ObjectReplacementCharacter)) and
+		///        string(QChar(QChar.ReplacementCharacter)) will be sorted in last
 		///        position.
 		///  @warning Please note that data() method of the model should return always
 		///           information of the same type. If you return a string for an index,

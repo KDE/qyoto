@@ -438,7 +438,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Converts a year literal of a part of a string into a integer starting at the beginning of the string
 		/// <param> name="sNum" The string to parse
-		/// </param><param> name="iLength" The number of chars used, and 0 if no valid symbols was found in the string
+		/// </param><param> name="iLength" The number of QChars used, and 0 if no valid symbols was found in the string
 		/// </param></remarks>		<return> An integer corresponding to the year
 		///      </return>
 		/// 		<short>    Converts a year literal of a part of a string into a integer starting at the beginning of the string </short>
@@ -463,7 +463,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Converts a month literal of a part of a string into a integer starting at the beginning of the string
 		/// <param> name="sNum" The string to parse
-		/// </param><param> name="iLength" The number of chars used, and 0 if no valid symbols was found in the string
+		/// </param><param> name="iLength" The number of QChars used, and 0 if no valid symbols was found in the string
 		/// </param></remarks>		<return> An integer corresponding to the month
 		///      </return>
 		/// 		<short>    Converts a month literal of a part of a string into a integer starting at the beginning of the string </short>
@@ -488,7 +488,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Converts a day literal of a part of a string into a integer starting at the beginning of the string
 		/// <param> name="sNum" The string to parse
-		/// </param><param> name="iLength" The number of chars used, and 0 if no valid symbols was found in the string
+		/// </param><param> name="iLength" The number of QChars used, and 0 if no valid symbols was found in the string
 		/// </param></remarks>		<return> An integer corresponding to the day
 		///      </return>
 		/// 		<short>    Converts a day literal of a part of a string into a integer starting at the beginning of the string </short>

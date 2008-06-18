@@ -13,7 +13,6 @@ public class P2
         a.SetTopWidget(hello);
         hello.Show();
 
-        KApplication.Exec();
-        return 0;
+        return KApplication.Exec();
     }
 }

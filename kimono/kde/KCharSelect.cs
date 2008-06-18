@@ -46,13 +46,13 @@ namespace Kimono {
 			set { interceptor.Invoke("setCurrentFont#", "setCurrentFont(QFont)", typeof(void), typeof(QFont), value); }
 		}
 		[Q_PROPERTY("QChar", "currentChar")]
-		public char CurrentChar {
-			get { return (char) interceptor.Invoke("currentChar", "currentChar()", typeof(char)); }
-			set { interceptor.Invoke("setCurrentChar#", "setCurrentChar(QChar)", typeof(void), typeof(char), value); }
+		public QChar CurrentChar {
+			get { return (QChar) interceptor.Invoke("currentChar", "currentChar()", typeof(QChar)); }
+			set { interceptor.Invoke("setCurrentChar#", "setCurrentChar(QChar)", typeof(void), typeof(QChar), value); }
 		}
 		[Q_PROPERTY("QList<QChar>", "displayedChars")]
-		public List<char> DisplayedChars {
-			get { return (List<char>) interceptor.Invoke("displayedChars", "displayedChars()", typeof(List<char>)); }
+		public List<QChar> DisplayedChars {
+			get { return (List<QChar>) interceptor.Invoke("displayedChars", "displayedChars()", typeof(List<QChar>)); }
 		}
 		// KCharSelect* KCharSelect(QWidget* arg1,const Controls arg2); >>>> NOT CONVERTED
 		public KCharSelect(QWidget parent) : this((Type) null) {
@@ -70,8 +70,8 @@ namespace Kimono {
 		///  Highlights the character <code>c.</code> If the character is not displayed, the block is changed.
 		///      </remarks>		<short>    Highlights the character <code>c.</code></short>
 		[Q_SLOT("void setCurrentChar(const QChar&)")]
-		public void SetCurrentChar(char c) {
-			interceptor.Invoke("setCurrentChar#", "setCurrentChar(const QChar&)", typeof(void), typeof(char), c);
+		public void SetCurrentChar(QChar c) {
+			interceptor.Invoke("setCurrentChar#", "setCurrentChar(const QChar&)", typeof(void), typeof(QChar), c);
 		}
 		/// <remarks>
 		///  Sets the font which is displayed to <code>font</code>
@@ -101,7 +101,7 @@ namespace Kimono {
 		///  The current character is changed.
 		///      </remarks>		<short>    The current character is changed.</short>
 		[Q_SIGNAL("void currentCharChanged(const QChar&)")]
-		void CurrentCharChanged(char c);
+		void CurrentCharChanged(QChar c);
 		/// <remarks>
 		///  The currently displayed characters are changed (search results or block).
 		///      </remarks>		<short>    The currently displayed characters are changed (search results or block).</short>
@@ -111,6 +111,6 @@ namespace Kimono {
 		///  A character is selected to be inserted somewhere.
 		///      </remarks>		<short>    A character is selected to be inserted somewhere.</short>
 		[Q_SIGNAL("void charSelected(const QChar&)")]
-		void CharSelected(char c);
+		void CharSelected(QChar c);
 	}
 }

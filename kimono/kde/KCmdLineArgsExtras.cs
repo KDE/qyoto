@@ -22,13 +22,22 @@ namespace Kimono {
 		/// </param><param> name="stdargs" KDE/Qt or no default parameters
 		///    </param></remarks>		<short>    Initialize class.</short>
 		public static void Init(string[] argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version, KLocalizedString description, uint stdargs) {
-			staticInterceptor.Invoke("init$?#####$", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(int), argv.Length, typeof(string[]), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description, typeof(uint), stdargs);
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			staticInterceptor.Invoke("init$?#####$", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description, typeof(uint), stdargs);
 		}
 		public static void Init(string[] argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version, KLocalizedString description) {
-			staticInterceptor.Invoke("init$?#####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&)", typeof(void), typeof(int), argv.Length, typeof(string[]), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description);
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			staticInterceptor.Invoke("init$?#####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&, const KLocalizedString&)", typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version, typeof(KLocalizedString), description);
 		}
 		public static void Init(string[] argv, QByteArray appname, QByteArray catalog, KLocalizedString programName, QByteArray version) {
-			staticInterceptor.Invoke("init$?####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(int), argv.Length, typeof(string[]), argv, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version);
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			staticInterceptor.Invoke("init$?####", "init(int, char**, const QByteArray&, const QByteArray&, const KLocalizedString&, const QByteArray&)", typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(QByteArray), appname, typeof(QByteArray), catalog, typeof(KLocalizedString), programName, typeof(QByteArray), version);
 		}
 		/// <remarks>
 		///  Initialize class.
@@ -39,11 +48,17 @@ namespace Kimono {
 		/// </param><param> name="about" A KAboutData object describing your program.
 		/// </param><param> name="stdargs" KDE/Qt or no default parameters
 		///    </param></remarks>		<short>    Initialize class.</short>
-		public static void Init(string[] _argv, KAboutData about, uint stdargs) {
-			staticInterceptor.Invoke("init$?#$", "init(int, char**, const KAboutData*, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(string), _argv, typeof(KAboutData), about, typeof(uint), stdargs);
+		public static void Init(string[] argv, KAboutData about, uint stdargs) {
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			staticInterceptor.Invoke("init$?#$", "init(int, char**, const KAboutData*, KCmdLineArgs::StdCmdLineArgs)", typeof(void), typeof(string), args, typeof(KAboutData), about, typeof(uint), stdargs);
 		}
-		public static void Init(string[] _argv, KAboutData about) {
-			staticInterceptor.Invoke("init$?#", "init(int, char**, const KAboutData*)", typeof(void), typeof(int), _argv.Length, typeof(string[]), _argv, typeof(KAboutData), about);
+		public static void Init(string[] argv, KAboutData about) {
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			staticInterceptor.Invoke("init$?#", "init(int, char**, const KAboutData*)", typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(KAboutData), about);
 		}
 	}
 }

@@ -20,11 +20,11 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructor.
-		/// <param> name="c" escape char indicating start of macros, or char.Null for none
+		/// <param> name="c" escape char indicating start of macros, or QChar.Null for none
 		///      </param></remarks>		<short>    Constructor.</short>
-		public KCharMacroExpander(char c) : this((Type) null) {
+		public KCharMacroExpander(QChar c) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KCharMacroExpander#", "KCharMacroExpander(QChar)", typeof(void), typeof(char), c);
+			interceptor.Invoke("KCharMacroExpander#", "KCharMacroExpander(QChar)", typeof(void), typeof(QChar), c);
 		}
 		public KCharMacroExpander() : this((Type) null) {
 			CreateProxy();
@@ -47,6 +47,6 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>    Return substitution list <code>ret</code> for single-character macro <code>chr.</code></short>
 		[SmokeMethod("expandMacro(QChar, QStringList&)")]
-		protected abstract bool ExpandMacro(char chr, List<string> ret);
+		protected abstract bool ExpandMacro(QChar chr, List<string> ret);
 	}
 }

@@ -53,11 +53,11 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Constructor.
-		/// <param> name="c" escape char indicating start of macros, or char.Null for none
+		/// <param> name="c" escape char indicating start of macros, or QChar.Null for none
 		///      </param></remarks>		<short>    Constructor.</short>
-		public KWordMacroExpander(char c) : this((Type) null) {
+		public KWordMacroExpander(QChar c) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KWordMacroExpander#", "KWordMacroExpander(QChar)", typeof(void), typeof(char), c);
+			interceptor.Invoke("KWordMacroExpander#", "KWordMacroExpander(QChar)", typeof(void), typeof(QChar), c);
 		}
 		public KWordMacroExpander() : this((Type) null) {
 			CreateProxy();

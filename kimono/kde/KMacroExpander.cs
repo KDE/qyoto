@@ -9,16 +9,20 @@ namespace KMacroExpander {
 	///  </remarks>		<short>    A group of functions providing macro expansion (substitution) in strings,  optionally with quoting appropriate for shell execution.</short>
 	[SmokeClass("KMacroExpander")]
 	public class Global {
-		private static SmokeInvocation staticInterceptor = null;
-		static Global() {
-			staticInterceptor = new SmokeInvocation(typeof(Global), null);
-		}
+		// QString expandMacros(const QString& arg1,const QHash<QChar, QString>& arg2,QChar arg3); >>>> NOT CONVERTED
+		// QString expandMacros(const QString& arg1,const QHash<QChar, QString>& arg2); >>>> NOT CONVERTED
+		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QChar, QString>& arg2,QChar arg3); >>>> NOT CONVERTED
+		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QChar, QString>& arg2); >>>> NOT CONVERTED
 		// QString expandMacros(const QString& arg1,const QHash<QString, QString>& arg2,QChar arg3); >>>> NOT CONVERTED
 		// QString expandMacros(const QString& arg1,const QHash<QString, QString>& arg2); >>>> NOT CONVERTED
 		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QString, QString>& arg2,QChar arg3); >>>> NOT CONVERTED
 		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QString, QString>& arg2); >>>> NOT CONVERTED
+		// QString expandMacros(const QString& arg1,const QHash<QChar, QStringList>& arg2,QChar arg3); >>>> NOT CONVERTED
+		// QString expandMacros(const QString& arg1,const QHash<QChar, QStringList>& arg2); >>>> NOT CONVERTED
 		// QString expandMacros(const QString& arg1,const QHash<QString, QStringList>& arg2,QChar arg3); >>>> NOT CONVERTED
 		// QString expandMacros(const QString& arg1,const QHash<QString, QStringList>& arg2); >>>> NOT CONVERTED
+		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QChar, QStringList>& arg2,QChar arg3); >>>> NOT CONVERTED
+		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QChar, QStringList>& arg2); >>>> NOT CONVERTED
 		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QString, QStringList>& arg2,QChar arg3); >>>> NOT CONVERTED
 		// QString expandMacrosShellQuote(const QString& arg1,const QHash<QString, QStringList>& arg2); >>>> NOT CONVERTED
 		/// <remarks>
@@ -27,10 +31,10 @@ namespace KMacroExpander {
 		///  representation in the resulting string.
 		/// <param> name="str" The string to expand
 		/// </param><param> name="map" map with substitutions
-		/// </param><param> name="c" escape char indicating start of macro, or char.Null if none
+		/// </param><param> name="c" escape char indicating start of macro, or QChar.Null if none
 		/// </param> <pre>
 		///  // Code example
-		///  QHash<char,string> map;
+		///  QHash<QChar,string> map;
 		///  map.insert('u', "/tmp/myfile.txt");
 		///  map.insert('n', "My File");
 		///  string s = "%% Title: %u:%n";
@@ -40,12 +44,6 @@ namespace KMacroExpander {
 		///      </remarks>		<return> the string with all valid macros expanded
 		/// </return>
 		/// 		<short>    Perform safe macro expansion (substitution) on a string.</short>
-		public static string ExpandMacros(string str, char map, char c) {
-			return (string) staticInterceptor.Invoke("expandMacros$?#", "expandMacros(const QString&, const QHash<QChar, QString>&, QChar)", typeof(string), typeof(string), str, typeof(char), map, typeof(char), c);
-		}
-		public static string ExpandMacros(string str, char map) {
-			return (string) staticInterceptor.Invoke("expandMacros$?", "expandMacros(const QString&, const QHash<QChar, QString>&)", typeof(string), typeof(string), str, typeof(char), map);
-		}
 		/// <remarks>
 		///  Perform safe macro expansion (substitution) on a string for use
 		///  in shell commands.
@@ -53,67 +51,13 @@ namespace KMacroExpander {
 		///  representation in the resulting string.
 		/// <param> name="str" The string to expand
 		/// </param><param> name="map" map with substitutions
-		/// </param><param> name="c" escape char indicating start of macro, or char.Null if none
+		/// </param><param> name="c" escape char indicating start of macro, or QChar.Null if none
 		/// </param> <pre>
 		///  // Code example
-		///  QHash<char,string> map;
+		///  QHash<QChar,string> map;
 		///  map.insert('u', "/tmp/myfile.txt");
 		///  map.insert('n', "My File");
 		///  string s = "kedit --caption %n %u";
-		///  s = KMacroExpander.ExpandMacrosShellQuote(s, map);
-		///  // s is now "kedit --caption 'My File' '/tmp/myfile.txt'";
-		///  system(QFile.EncodeName(s));
-		///  </pre>
-		///      </remarks>		<return> the string with all valid macros expanded, or a null string
-		///   if a shell syntax error was detected in the command
-		/// </return>
-		/// 		<short>    Perform safe macro expansion (substitution) on a string for use  in shell commands.</short>
-		public static string ExpandMacrosShellQuote(string str, char map, char c) {
-			return (string) staticInterceptor.Invoke("expandMacrosShellQuote$?#", "expandMacrosShellQuote(const QString&, const QHash<QChar, QString>&, QChar)", typeof(string), typeof(string), str, typeof(char), map, typeof(char), c);
-		}
-		public static string ExpandMacrosShellQuote(string str, char map) {
-			return (string) staticInterceptor.Invoke("expandMacrosShellQuote$?", "expandMacrosShellQuote(const QString&, const QHash<QChar, QString>&)", typeof(string), typeof(string), str, typeof(char), map);
-		}
-		/// <remarks>
-		///  Perform safe macro expansion (substitution) on a string.
-		///  The escape char must be quoted with itself to obtain its literal
-		///  representation in the resulting string.
-		///  Macro names can consist of chars in the range [A-Za-z0-9_];
-		///  use braces to delimit macros from following words starting
-		///  with these chars, or to use other chars for macro names.
-		/// <param> name="str" The string to expand
-		/// </param><param> name="map" map with substitutions
-		/// </param><param> name="c" escape char indicating start of macro, or char.Null if none
-		/// </param> <pre>
-		///  // Code example
-		///  QHash<string,string> map;
-		///  map.insert("url", "/tmp/myfile.txt");
-		///  map.insert("name", "My File");
-		///  string s = "Title: %{url}-%name";
-		///  s = KMacroExpander.ExpandMacros(s, map);
-		///  // s is now "Title: /tmp/myfile.txt-My File";
-		///  </pre>
-		///      </remarks>		<return> the string with all valid macros expanded
-		/// </return>
-		/// 		<short>    Perform safe macro expansion (substitution) on a string.</short>
-		/// <remarks>
-		///  Perform safe macro expansion (substitution) on a string for use
-		///  in shell commands. See KMacroExpanderBase.ExpandMacrosShellQuote()
-		///  for the exact semantics.
-		///  The escape char must be quoted with itself to obtain its literal
-		///  representation in the resulting string.
-		///  Macro names can consist of chars in the range [A-Za-z0-9_];
-		///  use braces to delimit macros from following words starting
-		///  with these chars, or to use other chars for macro names.
-		/// <param> name="str" The string to expand
-		/// </param><param> name="map" map with substitutions
-		/// </param><param> name="c" escape char indicating start of macro, or char.Null if none
-		/// </param> <pre>
-		///  // Code example
-		///  QHash<string,string> map;
-		///  map.insert("url", "/tmp/myfile.txt");
-		///  map.insert("name", "My File");
-		///  string s = "kedit --caption %name %{url}";
 		///  s = KMacroExpander.ExpandMacrosShellQuote(s, map);
 		///  // s is now "kedit --caption 'My File' '/tmp/myfile.txt'";
 		///  system(QFile.EncodeName(s));

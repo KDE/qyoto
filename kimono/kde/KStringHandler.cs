@@ -126,11 +126,11 @@ namespace KStringHandler {
 		/// </param></remarks>		<return> A List<string> containing tokens extracted from s.
 		///      </return>
 		/// 		<short>    Split a string into a List<string> in a similar fashion to the static  List<string> function in Qt, except you can specify a maximum number  of tokens.</short>
-		public static List<string> PerlSplit(char sep, string s, int max) {
-			return (List<string>) staticInterceptor.Invoke("perlSplit#$$", "perlSplit(const QChar&, const QString&, int)", typeof(List<string>), typeof(char), sep, typeof(string), s, typeof(int), max);
+		public static List<string> PerlSplit(QChar sep, string s, int max) {
+			return (List<string>) staticInterceptor.Invoke("perlSplit#$$", "perlSplit(const QChar&, const QString&, int)", typeof(List<string>), typeof(QChar), sep, typeof(string), s, typeof(int), max);
 		}
-		public static List<string> PerlSplit(char sep, string s) {
-			return (List<string>) staticInterceptor.Invoke("perlSplit#$", "perlSplit(const QChar&, const QString&)", typeof(List<string>), typeof(char), sep, typeof(string), s);
+		public static List<string> PerlSplit(QChar sep, string s) {
+			return (List<string>) staticInterceptor.Invoke("perlSplit#$", "perlSplit(const QChar&, const QString&)", typeof(List<string>), typeof(QChar), sep, typeof(string), s);
 		}
 		/// <remarks>
 		///  Split a string into a List<string> in a similar fashion to the static

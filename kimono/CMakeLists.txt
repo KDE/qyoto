@@ -1,4 +1,5 @@
 PROJECT(kimono)
+add_subdirectory(tutorials)
 
 SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/src/Kimono.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/src/AssemblyInfo.cs
