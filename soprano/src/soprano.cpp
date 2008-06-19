@@ -43,6 +43,8 @@ IsContainedInstanceSoprano(smokeqyoto_object* /*o*/)
 	return false;
 }
 
+extern TypeHandler Soprano_handlers[];
+
 extern "C" {
 
 extern Q_DECL_EXPORT void Init_soprano();
@@ -52,18 +54,17 @@ Init_soprano()
 {
 	init_soprano_Smoke();
 	soprano_Smoke->binding = new QyotoSmokeBinding(soprano_Smoke, &classNames);
-	QString prefix("Soprano.");
-	QString className;
-	QByteArray classStringName;
 	
 	for (int i = 1; i <= soprano_Smoke->numClasses; i++) {
-		className = prefix + soprano_Smoke->classes[i].className;
-		classStringName = className.toLatin1();
-		classNames.insert(i, strdup(classStringName.constData()));
+		QByteArray name(soprano_Smoke->classes[i].className);
+		name.replace("::", ".");
+		classNames.insert(i, strdup(name.constData()));
 	}
 	
 	QyotoModule module = { "Soprano", resolve_classname_Soprano, IsContainedInstanceSoprano };
 	qyoto_modules[soprano_Smoke] = module;
+
+    install_handlers(Soprano_handlers);
 }
 
 }

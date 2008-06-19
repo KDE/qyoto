@@ -10,7 +10,7 @@ IF (NOT QT4_FOUND)
 	FIND_PACKAGE(Qt4 REQUIRED)
 ENDIF (NOT QT4_FOUND)
 
-SET(SRC_CPP src/soprano.cpp)
+SET(SRC_CPP src/soprano.cpp src/sopranohandlers.cpp)
 
 SET(SRC_CS src/AssemblyInfo.cs 
  src/Soprano.cs 
