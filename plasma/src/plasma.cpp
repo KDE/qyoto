@@ -56,7 +56,7 @@ Init_plasma()
 	plasma_Smoke->binding = new QyotoSmokeBinding(plasma_Smoke, &classNames);
 	
 	for (int i = 1; i <= plasma_Smoke->numClasses; i++) {
-		QByteArray name(khtml_Smoke->classes[i].className);
+		QByteArray name(plasma_Smoke->classes[i].className);
 		name.replace("::", ".");
 		classNames.insert(i, strdup(name.constData()));
 	}
