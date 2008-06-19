@@ -880,14 +880,16 @@ Init_qyoto()
     init_qt_Smoke();
     qt_Smoke->binding = new QyotoSmokeBinding(qt_Smoke, &classname);
     install_handlers(Qt_handlers);
-    QString classPrefix("Qyoto.");
-    QString className;
-    QByteArray classStringName;
+    QByteArray prefix("Qyoto.");
 
     for (int i = 1; i <= qt_Smoke->numClasses; i++) {
-        className = classPrefix + qt_Smoke->classes[i].className;
-        classStringName = className.toLatin1();
-        classname.insert(i, strdup(classStringName.constData()));
+		QByteArray name(qt_Smoke->classes[i].className);
+		name.replace("::", ".");
+		if (name != "QAccessible2" && name != "QDBus" && name != "QGL" && name != "QSql" && name != "QSsl") {
+			name = prefix + name;
+		}
+
+		classname.insert(i, strdup(name.constData()));
     }
 
     QyotoModule module = { "Qyoto", resolve_classname_Qt, IsContainedInstanceQt };

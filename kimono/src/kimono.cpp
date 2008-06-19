@@ -54,14 +54,21 @@ Init_kimono()
 {
 	init_kde_Smoke();
 	kde_Smoke->binding = new QyotoSmokeBinding(kde_Smoke, &classNames);
-	QString prefix("Kimono.");
-	QString className;
-	QByteArray classStringName;
+	QByteArray prefix("Kimono.");
 	
 	for (int i = 1; i <= kde_Smoke->numClasses; i++) {
-		className = prefix + kde_Smoke->classes[i].className;
-		classStringName = className.toLatin1();
-		classNames.insert(i, strdup(classStringName.constData()));
+		QByteArray name(kde_Smoke->classes[i].className);
+		name.replace("::", ".");
+		if (	!name.startsWith("KParts") 
+				&& !name.startsWith("Sonnet")
+				&& !name.startsWith("KIO")
+				&& !name.startsWith("KWallet")
+				&& !name.startsWith("KNS") ) 
+		{
+			name = prefix + name;
+		}
+
+		classNames.insert(i, strdup(name.constData()));
 	}
 	
 	QyotoModule module = { "Kimono", resolve_classname_KDE, IsContainedInstanceKDE };

@@ -1,3 +1,11 @@
+2008-06-19  Richard Dale  <richard.j.dale@gmail.com>
+
+	* If SmokeMarshallers.CreateInstance() couldn't find a C# class with
+	  the name passed to it, it just crashed. So output an error message
+	  so it is obvious what is going on.
+	* The names of the C# classes were not being set up correctly in the
+	  C++ to C# name maps.
+
 2008-06-18  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Don't convert QChars to C# chars, keep them as QChars

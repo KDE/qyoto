@@ -54,14 +54,11 @@ Init_plasma()
 {
 	init_plasma_Smoke();
 	plasma_Smoke->binding = new QyotoSmokeBinding(plasma_Smoke, &classNames);
-	QString prefix("Plasma.");
-	QString className;
-	QByteArray classStringName;
 	
 	for (int i = 1; i <= plasma_Smoke->numClasses; i++) {
-		className = prefix + plasma_Smoke->classes[i].className;
-		classStringName = className.toLatin1();
-		classNames.insert(i, strdup(classStringName.constData()));
+		QByteArray name(khtml_Smoke->classes[i].className);
+		name.replace("::", ".");
+		classNames.insert(i, strdup(name.constData()));
 	}
 	
 	QyotoModule module = { "Plasma", resolve_classname_Plasma, IsContainedInstancePlasma };

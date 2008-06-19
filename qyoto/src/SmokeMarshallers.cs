@@ -515,6 +515,11 @@ namespace Qyoto {
 				if (t != null)
 					data = GetSmokeClassData(t);
 			}
+
+			if (data == null) {
+				Console.Error.WriteLine("CreateInstance() ** Missing class ** {0}", className);
+			}
+
 			object result = data.constructorInfo.Invoke(data.constructorParamTypes);
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {

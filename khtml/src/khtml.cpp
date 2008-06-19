@@ -54,14 +54,16 @@ Init_khtml()
 {
 	init_khtml_Smoke();
 	khtml_Smoke->binding = new QyotoSmokeBinding(khtml_Smoke, &classNames);
-	QString prefix("KHTML.");
-	QString className;
-	QByteArray classStringName;
+	QByteArray prefix("Kimono.");
 	
 	for (int i = 1; i <= khtml_Smoke->numClasses; i++) {
-		className = prefix + khtml_Smoke->classes[i].className;
-		classStringName = className.toLatin1();
-		classNames.insert(i, strdup(classStringName.constData()));
+		QByteArray name(khtml_Smoke->classes[i].className);
+		name.replace("::", ".");
+		if (!name.startsWith("KParts") && !name.startsWith("DOM")) {
+			name = prefix + name;
+		}
+
+		classNames.insert(i, strdup(name.constData()));
 	}
 	
 	QyotoModule module = { "KHTML", resolve_classname_khtml, IsContainedInstanceKHTML };
