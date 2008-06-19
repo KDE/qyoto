@@ -53,7 +53,7 @@ public class Browser : KXmlGuiWindow {
         location.Text = "http://localhost";
 
         KConfig config = KApplication.kApplication().SessionConfig();
-//        location.Text = config.Group("Settings").ReadEntry("defaultPage", "http://localhost");
+        location.Text = config.Group("Settings").ReadEntry("defaultPage", "http://localhost");
 
         Connect( location , SIGNAL("returnPressed()"),
                     this, SLOT("ChangeLocation()") );

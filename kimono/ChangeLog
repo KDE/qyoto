@@ -1,3 +1,7 @@
+2008-06-19  Arno Rehn  <arno@arnorehn.de>
+
+	* Prefer const methods over non-const methods.
+
 2008-06-18  Richard Dale  <richard.j.dale@gmail.com>
 
 * Added tutorial examples p3 and p4. p4 crashes on a call to 
