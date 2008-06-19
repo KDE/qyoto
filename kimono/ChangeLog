@@ -6,6 +6,13 @@
 * Don't convert QChars to C# chars, keep them as QChars
 * Added the name of the current Assembly as the first entry in the args
   array passed to KCmdLineArgs.Init().
+* Added the p7 tutorial. There is a problem with this line:
+
+    KConfig config = KApplication.kApplication().SessionConfig();
+    location.Text = 
+      config.Group("Settings").ReadEntry("defaultPage", "http://localhost");
+
+  The Group() method isn't found in the smoke lib
 
 2008-06-17  Richard Dale  <richard.j.dale@gmail.com>
 
