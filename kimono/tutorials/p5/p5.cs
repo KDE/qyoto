@@ -9,12 +9,12 @@ public class MainWindow : KMainWindow {
 
     public MainWindow(string name) : base((QWidget) null) {
         ObjectName = name;
-        SetCaption("KDE Tutorial - p4");
+        SetCaption("KDE Tutorial - p5");
 
         QMenu filemenu = new QMenu(KDE.I18n("&File"), this);
         filemenu.AddAction(KDE.I18n("&Quit"), KApplication.kApplication(), SLOT("quit()"));
         
-        string about = KDE.I18n("p4 1.0\n\n" +
+        string about = KDE.I18n("p5 1.0\n\n" +
                  "(C) 1999-2002 Antonio Larrosa Jimenez\n" +
                  "larrosa@kde.org\t\tantlarr@supercable.es\n" +
                  "Malaga (Spain)\n\n" +
@@ -31,19 +31,26 @@ public class MainWindow : KMainWindow {
  
         location = new QLineEdit();
         location.Text = "http://localhost";
- 
-        browser = new KHTMLPart();
-        browser.OpenUrl(new KUrl(location.Text));
+
+        Connect( location , SIGNAL("returnPressed()"),
+                    this, SLOT("changeLocation()") );
+
+        QSplitter split = new QSplitter();
+        split.OpaqueResize = true;
 
         QWidget widget = new QWidget(this);
 
         QVBoxLayout vbox = new QVBoxLayout(widget);
         vbox.AddWidget(location);
-        vbox.AddWidget(browser.Widget());
+        vbox.AddWidget(split);
 
-        Connect( location, SIGNAL("returnPressed()"),
-                    this, SLOT("ChangeLocation()") );
+        QPushButton bookmark = new QPushButton(KDE.I18n("Add to Bookmarks"), split);
  
+        Connect(bookmark, SIGNAL("clicked()"), this, SLOT("BookLocation()"));
+
+        browser = new KHTMLPart(split);
+        browser.OpenUrl(new KUrl(location.Text));
+
         Connect( browser.BrowserExtension(),
                  SIGNAL("openUrlRequest(KUrl, KParts::OpenUrlArguments)"),
                  this, SLOT("OpenUrlRequest(KUrl, KParts::OpenUrlArguments)") );
@@ -61,15 +68,33 @@ public class MainWindow : KMainWindow {
         location.Text = url.Url();
         ChangeLocation();
     }
+
+    [Q_SLOT()]
+    public void BookLocation() {
+        QDBusInterface iface = new QDBusInterface("org.kde.BookMarkList", "/", "", QDBusConnection.SessionBus());
+        if (iface.IsValid()) {
+            iface.Call("add", location.Text);
+        } else {
+            Console.Error.WriteLine("Error with DBUS\n");
+        }
+    }
 }
 
-public class P4
+public class P5
 {
     public static int Main(String[] args) {
-        KAboutData about = new KAboutData("p4", "Tutorial - p4", KDE.Ki18n(""), "0.1");
+        KAboutData about = new KAboutData("p5", "Tutorial - p5", KDE.Ki18n(""), "0.1");
         KCmdLineArgs.Init(args, about);
         KApplication a = new KApplication();
-        MainWindow window = new MainWindow("Tutorial - p4");
+
+        if (!QDBusConnection.SessionBus().IsConnected()) {
+            Console.Error.WriteLine("Cannot connect to the D-BUS session bus.\n" +
+                                     "To start it, run:\n" +
+                                     "\teval `dbus-launch --auto-syntax`\n");
+            return 1;
+        }
+
+        MainWindow window = new MainWindow("Tutorial - p5");
         window.Resize(300, 200);
         window.Show();
 
