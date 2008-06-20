@@ -1,3 +1,9 @@
+2008-06-20  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Call QMetaObject.NormalizedSignature() on the Q_SLOT and Q_SIGNAL
+	  strings when creating a QMetaObject with them, otherwise space and 
+	  other things will be significant.
+
 2008-06-19  Richard Dale  <richard.j.dale@gmail.com>
 
 	* If SmokeMarshallers.CreateInstance() couldn't find a C# class with

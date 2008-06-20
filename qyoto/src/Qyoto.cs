@@ -278,6 +278,8 @@ namespace Qyoto
 					string sig = attr.Signature;
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi);
+
+					sig = QMetaObject.NormalizedSignature(sig).Data();
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
 					
@@ -333,6 +335,7 @@ namespace Qyoto
 					string sig = attr.Signature;
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi).Trim();
+					sig = QMetaObject.NormalizedSignature(sig).Data();
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
 					
