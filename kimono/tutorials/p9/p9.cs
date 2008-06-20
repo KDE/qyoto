@@ -14,7 +14,7 @@ public class Browser : KXmlGuiWindow {
 
     public Browser(string name) : base((QWidget) null) {
         ObjectName = name;
-        SetCaption("KDE Tutorial - p7");
+        SetCaption("KDE Tutorial - p9");
 
         QMenu filemenu = new QMenu(KDE.I18n("&File"), this);
 
@@ -29,7 +29,7 @@ public class Browser : KXmlGuiWindow {
         backAction.Enabled = false;
         quitAction = KStandardAction.Global.Quit(KApplication.kApplication(), SLOT("quit()"), ActionCollection());
         
-        string about = KDE.I18n("p7 1.0\n\n" +
+        string about = KDE.I18n("p9 1.0\n\n" +
                  "(C) 1999-2002 Antonio Larrosa Jimenez\n" +
                  "larrosa@kde.org\t\tantlarr@supercable.es\n" +
                  "Malaga (Spain)\n\n" +
@@ -112,7 +112,7 @@ public class Browser : KXmlGuiWindow {
         if (iface.IsValid()) {
             iface.Call("Add", location.Text);
         } else {
-            Console.Error.WriteLine("Error with DBUS\n");
+            Console.Error.WriteLine("Error with DBUS");
         }
     }
  
@@ -123,11 +123,27 @@ public class Browser : KXmlGuiWindow {
     }
 }
 
-public class P7
+public class P9
 {
     public static int Main(String[] args) {
-        KAboutData about = new KAboutData("p7", "Tutorial - p7", KDE.Ki18n(""), "0.1");
-        KCmdLineArgs.Init(args, about);
+        KAboutData aboutdata = new KAboutData(  "p9", 
+                                                "Tutorial - p9", KDE.Ki18n(""),
+                                                "1.0", 
+                                                KDE.Ki18n("Step 9 of a simple tutorial"), 
+                                                KAboutData.LicenseKey.License_GPL,
+                                                KDE.Ki18n("(C) 2000, 2001 Antonio Larrosa Jimenez"), 
+                                                KDE.Ki18n(""),
+                                                "http://devel-home.kde.org/~larrosa/tutorial.html" );
+        aboutdata.AddAuthor(    KDE.Ki18n("Antonio Larrosa Jimenez"),
+                                KDE.Ki18n("Original Developer/Maintainer"), 
+                                "larrosa@kde.org",
+                                "http://devel-home.kde.org/~larrosa/index.html" );
+        aboutdata.AddAuthor(    KDE.Ki18n("Richard Dale"),
+                                KDE.Ki18n("C# port"), 
+                                "richard.j.dale@gmail.com", 
+                                "" );
+
+        KCmdLineArgs.Init(args, aboutdata);
         KUniqueApplication a = new KUniqueApplication();
 
         if (!QDBusConnection.SessionBus().IsConnected()) {
@@ -142,7 +158,7 @@ public class P7
             return 1;
         }
 
-        Browser window = new Browser("Tutorial - p7");
+        Browser window = new Browser("Tutorial - p9");
         window.Resize(300, 200);
         window.Show();
 
