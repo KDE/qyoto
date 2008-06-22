@@ -75,7 +75,7 @@ extern TypeHandler Qt_handlers[];
 extern void install_handlers(TypeHandler *);
 
 extern bool IsContainedInstanceQt(smokeqyoto_object *o);
-extern const char * resolve_classname_Qt(smokeqyoto_object * o);
+extern const char * resolve_classname_qt(smokeqyoto_object * o);
 
 extern "C" {
 
@@ -892,7 +892,7 @@ Init_qyoto()
 		classname.insert(i, strdup(name.constData()));
     }
 
-    QyotoModule module = { "Qyoto", resolve_classname_Qt, IsContainedInstanceQt };
+    QyotoModule module = { "Qyoto", resolve_classname_qt, IsContainedInstanceQt };
     qyoto_modules[qt_Smoke] = module;
 
 #if QT_VERSION >= 0x40300
