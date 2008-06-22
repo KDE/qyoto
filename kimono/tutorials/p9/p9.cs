@@ -11,6 +11,7 @@ public class Browser : KXmlGuiWindow {
     public KAction addBookmarkAction;
     public KAction backAction;
     public KAction quitAction;
+    public KConfigGroup config;
 
     public Browser(string name) : base((QWidget) null) {
         ObjectName = name;
@@ -24,10 +25,10 @@ public class Browser : KXmlGuiWindow {
         Connect(	setDefaultPageAction, SIGNAL("triggered(bool)"), 
                     this, SLOT("FileSetDefaultPage()") );
 
-        addBookmarkAction = KStandardAction.Global.AddBookmark(this, SLOT("BookLocation()"), ActionCollection());
-        backAction = KStandardAction.Global.Back(this, SLOT("GotoPreviousPage()"), ActionCollection());
+        addBookmarkAction = KStandardAction.AddBookmark(this, SLOT("BookLocation()"), ActionCollection());
+        backAction = KStandardAction.Back(this, SLOT("GotoPreviousPage()"), ActionCollection());
         backAction.Enabled = false;
-        quitAction = KStandardAction.Global.Quit(KApplication.kApplication(), SLOT("quit()"), ActionCollection());
+        quitAction = KStandardAction.Quit(KApplication.kApplication(), SLOT("quit()"), ActionCollection());
         
         string about = KDE.I18n("p9 1.0\n\n" +
                  "(C) 1999-2002 Antonio Larrosa Jimenez\n" +
@@ -52,11 +53,10 @@ public class Browser : KXmlGuiWindow {
         location = new QLineEdit();
         location.Text = "http://localhost";
 
-        KConfig config = KApplication.kApplication().SessionConfig();
-        location.Text = config.Group("Settings").ReadEntry("defaultPage", "http://localhost");
+        config = new KConfigGroup(KGlobal.Config(), "Settings");
+        location.Text = config.ReadEntry("defaultPage", "http://localhost");
 
-        Connect( location , SIGNAL("returnPressed()"),
-                    this, SLOT("ChangeLocation()") );
+        Connect(location, SIGNAL("returnPressed()"), this, SLOT("ChangeLocation()"));
 
         QSplitter split = new QSplitter();
         split.OpaqueResize = true;
@@ -118,8 +118,8 @@ public class Browser : KXmlGuiWindow {
  
     [Q_SLOT()]
     public void FileSetDefaultPage() {
-        KConfig config = KApplication.kApplication().SessionConfig();
-        config.Group("Settings").WriteEntry("defaultPage", browser.Url.Url());
+        config.WriteEntry("defaultPage", browser.Url.Url());
+        config.Sync();
     }
 }
 

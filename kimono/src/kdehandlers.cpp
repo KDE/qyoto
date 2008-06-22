@@ -49,12 +49,70 @@
 #include <kurl.h>
 #include <kuser.h>
 
+void marshall_KSharedConfigPtr(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		if (m->var().s_class == 0) {
+			m->item().s_class = 0;
+			(*FreeGCHandle)(m->var().s_class);
+			return;
+		}
 
-#if defined (__i386__) && defined (__GNUC__) && __GNUC__ >= 2
-#  define BREAKPOINT { __asm__ __volatile__ ("int $03"); }
-#else
-#  define BREAKPOINT { fprintf(stderr, "hit ctrl-c\n"); int b = 0; while (b == 0) { ; } }
-#endif
+		smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(m->var().s_class);
+		if (o == 0 || o->ptr == 0) {
+			if (m->type().isRef()) {
+				m->unsupported();
+			}
+		    m->item().s_class = 0;
+		    break;
+		}
+		m->item().s_class = new KSharedConfigPtr((KSharedConfig*) o->ptr);
+		(*FreeGCHandle)(m->var().s_class);
+		break;
+	}
+	case Marshall::ToObject:
+	{
+		if (m->item().s_voidp == 0) {
+			m->var().s_voidp = 0;
+		    break;
+		}
+
+		KSharedPtr<KSharedConfig> *ptr = new KSharedPtr<KSharedConfig>(*(KSharedPtr<KSharedConfig>*)m->item().s_voidp);
+		if (ptr == 0) {
+			m->var().s_voidp = 0;
+			break;
+		}
+	    KSharedConfig * config = ptr->data();
+
+		void * obj = (*GetInstance)(config, true);
+		if(obj != 0) {
+			m->var().s_voidp = obj;
+		    break;
+		}
+		
+		Smoke::ModuleIndex id = m->smoke()->findClass("KConfig");
+		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, id.smoke, id.index, config);
+		
+		obj = (*CreateInstance)("Kimono.KSharedConfig", o);
+		if (do_debug & qtdb_calls) {
+			printf("allocating %s %p -> %p\n", "KConfig", o->ptr, (void*)obj);
+		}
+
+		if (m->type().isStack()) {
+// 		    o->allocated = true;
+			// Keep a mapping of the pointer so that it is only wrapped once
+		    mapPointer(obj, o, o->classId, 0);
+		}
+		
+		m->var().s_class = obj;
+		break;
+	}
+	default:
+		m->unsupported();
+		break;
+	}
+}
 
 DEF_LIST_MARSHALLER( KActionList, QList<KAction*>, KAction )
 DEF_LIST_MARSHALLER( KActionCollectionList, QList<KActionCollection*>, KActionCollection )
@@ -103,10 +161,10 @@ TypeHandler KDE_handlers[] = {
     { "KPluginInfo::List&", marshall_KPluginInfoList },
 //    { "KService::List", marshall_KServiceList },
 //    { "KService::Ptr", marshall_KServicePtr },
-//    { "KSharedConfig::Ptr", marshall_KSharedConfigPtr },
-//    { "KSharedConfig::Ptr&", marshall_KSharedConfigPtr },
-//    { "KSharedConfigPtr", marshall_KSharedConfigPtr },
-//    { "KSharedConfigPtr&", marshall_KSharedConfigPtr },
+    { "KSharedConfig::Ptr", marshall_KSharedConfigPtr },
+    { "KSharedConfig::Ptr&", marshall_KSharedConfigPtr },
+    { "KSharedConfigPtr", marshall_KSharedConfigPtr },
+    { "KSharedConfigPtr&", marshall_KSharedConfigPtr },
     { "KUrl::List", marshall_KUrlList },
     { "KUrl::List&", marshall_KUrlList },
     { "KUrlList", marshall_KUrlList },

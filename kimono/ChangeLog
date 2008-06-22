@@ -1,3 +1,9 @@
+2008-06-18  Richard Dale  <richard.j.dale@gmail.com>
+	* Change some namespaces to classes as calling the methods via 'Global'
+	  looked a bit clumsy. For instance, KConfig.Global.Config() or
+	  KStandardAction.Global.Quit() looked wrong.
+	* Add a KSharedConfigPtr marshaller
+
 2008-06-19  Arno Rehn  <arno@arnorehn.de>
 
 	* Prefer const methods over non-const methods.
