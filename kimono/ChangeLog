@@ -1,4 +1,14 @@
+2008-06-24  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Make both the smoke lib and the kimono bindings use non-const methods
+	  in preference to const ones. This is because KConfigBase::group() 
+	  behaves differently according to whether the const on non-const
+	  version is called via overloading in C++. The non-const variant
+	  will now be called in C#, otherwise it appears that the KConfigGroup 
+	  returned would silently fail to write anything to disc.
+
 2008-06-18  Richard Dale  <richard.j.dale@gmail.com>
+
 	* Change some namespaces to classes as calling the methods via 'Global'
 	  looked a bit clumsy. For instance, KConfig.Global.Config() or
 	  KStandardAction.Global.Quit() looked wrong.

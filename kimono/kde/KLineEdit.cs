@@ -235,6 +235,13 @@ namespace Kimono {
 			interceptor.Invoke("setCompletionBox#", "setCompletionBox(KCompletionBox*)", typeof(void), typeof(KCompletionBox), box);
 		}
 		/// <remarks>
+		/// </remarks>		<return> the size used by the clear button
+		/// </return>
+		/// 		<short>   </short>
+		public QSize ClearButtonUsedSize() {
+			return (QSize) interceptor.Invoke("clearButtonUsedSize", "clearButtonUsedSize() const", typeof(QSize));
+		}
+		/// <remarks>
 		///  Re-implemented for internal reasons. API not changed.
 		///      </remarks>		<short>    Re-implemented for internal reasons.</short>
 		[Q_SLOT("void setReadOnly(bool)")]

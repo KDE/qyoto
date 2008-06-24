@@ -357,6 +357,10 @@ namespace Kimono {
 		protected override void WheelEvent(QWheelEvent ev) {
 			interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), ev);
 		}
+		[SmokeMethod("minimumSizeHint() const")]
+		protected new virtual QSize MinimumSizeHint() {
+			return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
+		}
 		/// <remarks>
 		///  Completes text according to the completion mode.
 		///  Note: this method is <code>not</code> invoked if the completion mode is

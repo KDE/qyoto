@@ -5,43 +5,15 @@ namespace Kimono {
 	using System.Text;
 	using System.Collections.Generic;
 	/// <remarks>
-	///  Top level widget that provides toolbars, a status line and a frame.
-	///  It should be used as a top level (parent-less) widget.
-	///  It manages the geometry for all its children, including your
-	///  main widget.
-	///  Normally, you will inherit from KMainWindow,
-	///  then construct (or use some existing) widget as
-	///  your main view. You can set only one main view.
-	///  You can add as many toolbars as you like. There can be only one menubar
-	///  and only one statusbar.
-	///  The toolbars, menubar, and statusbar can be created by the
-	///  KMainWindow and - unlike the old KMainWindow - may, but do not
-	///  have to, be deleted by you. KMainWindow will handle that internally.
-	///  Height and width can be operated independently from each other. Simply
-	///  define the minimum/maximum height/width of your main widget and
-	///  KMainWindow will take this into account. For fixed size windows set
-	///  your main widget to a fixed size.
-	///  Fixed aspect ratios (heightForWidth()) and fixed width widgets are
-	///  not supported.
-	///  KMainWindow will set icon, mini icon and caption, which it gets
-	///  from KApplication. It provides full session management, and
-	///  will save its position, geometry and positions of toolbars and
-	///  menubar on logout. If you want to save additional data, reimplement
-	///  saveProperties() and (to read them again on next login)
-	///  readProperties(). To save special data about your data, reimplement
-	///  saveGlobalProperties(). To warn user that application or
-	///  windows have unsaved data on close or logout, reimplement
-	///  queryClose() and/or queryExit().
-	///  There are also kRestoreMainWindows convenience functions which
-	///  can restore all your windows on next login.
-	///   Note that a KMainWindow per-default is created with the
-	///   WDestructiveClose flag, i.e. it is automatically destroyed when the
-	///   window is closed. If you do not want this behavior, specify 0 as
-	///   widget flag in the constructor.
+	///  Instead of creating a KMainWindow manually and assigning menus, menu entries,
+	///  toolbar buttons and actions to it by hand, this class can be used to load an
+	///  rc file to manage the main window's actions.
+	///  See http://techbase.kde.org/Development/Tutorials/Using_KActions#XMLGUI
+	///  for essential information on the XML file format and usage of this class.
 	///  </remarks>		<author> Reginald Stadlbauer (reggie@kde.org) Stephan Kulow (coolo@kde.org), Matthias Ettrich (ettrich@kde.org), Chris Schlaeger (cs@kde.org), Sven Radej (radej@kde.org). Maintained by Sven Radej (radej@kde.org)
 	/// </author>
-	/// 		<short> %KDE top level main window.</short>
-	/// 		<see> KApplication</see>
+	/// 		<short> %KDE top level main window with predefined action layout.</short>
+	/// 		<see> KMainWindow</see>
 	[SmokeClass("KXmlGuiWindow")]
 	public class KXmlGuiWindow : KMainWindow, IKXMLGUIBuilder, IKXMLGUIClient, IDisposable {
  		protected KXmlGuiWindow(Type dummy) : base((Type) null) {}

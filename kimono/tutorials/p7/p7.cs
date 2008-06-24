@@ -51,8 +51,6 @@ public class Browser : KXmlGuiWindow {
         StandardToolBarMenuEnabled = true;
  
         location = new QLineEdit();
-        location.Text = "http://localhost";
-
         config = new KConfigGroup(KGlobal.Config(), "Settings");
         location.Text = config.ReadEntry("defaultPage", "http://localhost");
 

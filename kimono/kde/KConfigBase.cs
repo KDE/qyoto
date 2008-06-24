@@ -51,13 +51,17 @@ namespace Kimono {
 			return (bool) interceptor.Invoke("hasGroup#", "hasGroup(const QByteArray&) const", typeof(bool), typeof(QByteArray), group);
 		}
 		/// <remarks>
-		///  @overload
-		/// </remarks>		<short>    @overload </short>
+		///  Returns an object for the named subgroup.
+		/// <param> name="group" the group to open. Pass a null string on to the KConfig
+		///    object to obtain a handle on the root group.
+		/// </param></remarks>		<return> The list of groups.
+		/// </return>
+		/// 		<short>    Returns an object for the named subgroup.</short>
 		public KConfigGroup Group(QByteArray group) {
-			return (KConfigGroup) interceptor.Invoke("group#", "group(const QByteArray&) const", typeof(KConfigGroup), typeof(QByteArray), group);
+			return (KConfigGroup) interceptor.Invoke("group#", "group(const QByteArray&)", typeof(KConfigGroup), typeof(QByteArray), group);
 		}
 		public KConfigGroup Group(string group) {
-			return (KConfigGroup) interceptor.Invoke("group$", "group(const QString&) const", typeof(KConfigGroup), typeof(string), group);
+			return (KConfigGroup) interceptor.Invoke("group$", "group(const QString&)", typeof(KConfigGroup), typeof(string), group);
 		}
 		/// <remarks>
 		///  Delete <code>aGroup.</code> This marks <code>aGroup</code> as <b>deleted</b> in the config object. This effectively

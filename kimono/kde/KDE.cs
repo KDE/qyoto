@@ -17,7 +17,7 @@ namespace Kimono {
 		// QDataStream& operator<<(QDataStream& arg1,const KProtocolInfo::ExtraField& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  @brief Returns the encoded number of KDE's version, see the KDE_VERSION macro.
-		///  In contrary to the macro KDE_VERSION
+		///  In contrast to the macro KDE_VERSION
 		///  this function returns the number of the actually
 		///  installed KDE version, not the number of the KDE version that was
 		///  installed when the program was compiled.
