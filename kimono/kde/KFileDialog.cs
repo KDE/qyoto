@@ -45,8 +45,6 @@ namespace Kimono {
 			Saving = 2,
 		}
 		// KMimeType::Ptr currentFilterMimeType(); >>>> NOT CONVERTED
-		// void setMode(KFile::Modes arg1); >>>> NOT CONVERTED
-		// KFile::Modes mode(); >>>> NOT CONVERTED
 		// KAbstractFileWidget* fileWidget(); >>>> NOT CONVERTED
 		// KFileFilterCombo* filterWidget(); >>>> NOT CONVERTED
 		/// <remarks>
@@ -303,10 +301,16 @@ namespace Kimono {
 		///  setMode( mode );
 		///  </pre>
 		///      </remarks>		<short>    Sets the mode of the dialog.</short>
+		public void SetMode(uint m) {
+			interceptor.Invoke("setMode$", "setMode(KFile::Modes)", typeof(void), typeof(uint), m);
+		}
 		/// <remarks>
 		///  Returns the mode of the filedialog.
 		/// </remarks>		<short>    Returns the mode of the filedialog.</short>
 		/// 		<see> setMode</see>
+		public uint Mode() {
+			return (uint) interceptor.Invoke("mode", "mode() const", typeof(uint));
+		}
 		/// <remarks>
 		///  Sets the text to be displayed in front of the selection.
 		///  The default is "Location".

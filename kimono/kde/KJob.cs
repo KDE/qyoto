@@ -6,28 +6,37 @@ namespace Kimono {
 	///  The base class for all jobs.
 	///  For all jobs created in an application, the code looks like
 	///  <pre>
+	///  void SomeClass.MethodWithAsynchronousJobCall()
+	///  {
 	///    KJob  job = someoperation( some parameters );
 	///    connect( job, SIGNAL("result( KJob  )"),
-	///             this, SLOT("slotResult( KJob  )") );
+	///             this, SLOT("handleResult( KJob  )") );
 	///    job.Start();
+	///  }
 	///  </pre>
 	///    (other connects, specific to the job)
-	///  And slotResult is usually at least:
+	///  And handleResult is usually at least:
 	///  <pre>
-	///   if ( job.Error() )
-	///       doSomething();
+	///  void SomeClass.HandleResult( KJob job )
+	///  {
+	///    if ( job.Error() )
+	///        doSomething();
+	///  }
 	///  </pre>
 	///  With the synchronous interface the code looks like
 	///  <pre>
-	///   KJob job = someoperation( some parameters );
-	///   if ( !job.Exec() )
-	///   {
-	///       // An error occurred
-	///   }
-	///   else
-	///   {
-	///       // Do something
-	///   }
+	///  void SomeClass.MethodWithSynchronousJobCall()
+	///  {
+	///    KJob job = someoperation( some parameters );
+	///    if ( !job.Exec() )
+	///    {
+	///        // An error occurred
+	///    }
+	///    else
+	///    {
+	///        // Do something
+	///    }
+	///  }
 	///  </pre>
 	///  @note: KJob and its subclasses is meant to be used 
 	///  in a fire-and-forget way. It's deleting itself when

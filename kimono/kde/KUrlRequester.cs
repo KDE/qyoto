@@ -32,6 +32,11 @@ namespace Kimono {
 			get { return (string) interceptor.Invoke("filter", "filter()", typeof(string)); }
 			set { interceptor.Invoke("setFilter$", "setFilter(QString)", typeof(void), typeof(string), value); }
 		}
+		[Q_PROPERTY("KFile::Modes", "mode")]
+		public uint Mode {
+			get { return (uint) interceptor.Invoke("mode", "mode()", typeof(uint)); }
+			set { interceptor.Invoke("setMode$", "setMode(KFile::Modes)", typeof(void), typeof(uint), value); }
+		}
 		// const KEditListBox::CustomEditor& customEditor(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KUrlRequester widget.
