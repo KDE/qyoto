@@ -28,9 +28,11 @@ namespace Sonnet {
 			interceptor.Invoke("setLanguage$", "setLanguage(const QString&)", typeof(void), typeof(string), language);
 		}
 		/// <remarks>
+		///  Get the currently selected language for spell checking.  Returns an empty string if
+		///  kdelibs was built without any spellchecking plugins.
 		/// </remarks>		<return> the language currently selected in the language combobox
 		/// </return>
-		/// 		<short>   </short>
+		/// 		<short>    Get the currently selected language for spell checking.</short>
 		public string Language() {
 			return (string) interceptor.Invoke("language", "language() const", typeof(string));
 		}
