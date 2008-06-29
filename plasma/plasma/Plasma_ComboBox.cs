@@ -25,9 +25,9 @@ namespace Plasma {
 			get { return (string) interceptor.Invoke("stylesheet", "stylesheet()", typeof(string)); }
 			set { interceptor.Invoke("setStylesheet$", "setStylesheet(QString)", typeof(void), typeof(string), value); }
 		}
-		[Q_PROPERTY("QComboBox*", "nativeWidget")]
-		public QComboBox NativeWidget {
-			get { return (QComboBox) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QComboBox)); }
+		[Q_PROPERTY("KComboBox*", "nativeWidget")]
+		public KComboBox NativeWidget {
+			get { return (KComboBox) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KComboBox)); }
 		}
 		public ComboBox(QGraphicsWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -28,6 +28,7 @@ namespace Plasma {
 		/// <remarks>
 		///  Creates a KConfigSkeleton populated using the definition found in
 		///  the XML data passed in.
+		///  FIXME/WARNING: DOES NOT WORK IN KDE 4.1 - FIX KCONFIGSKELETON
 		/// <param> name="config" the configuration object to use
 		/// </param><param> name="xml" the xml data; must be valid KConfigXT data
 		/// </param><param> name="parent" optional QObject parent
@@ -43,6 +44,7 @@ namespace Plasma {
 		/// <remarks>
 		///  Creates a KConfigSkeleton populated using the definition found in
 		///  the XML data passed in.
+		///  FIXME/WARNING: DOES NOT WORK IN KDE 4.1 - FIX KCONFIGSKELETON
 		/// <param> name="config" the group to use as the root for configuration items
 		/// </param><param> name="xml" the xml data; must be valid KConfigXT data
 		/// </param><param> name="parent" optional QObject parent

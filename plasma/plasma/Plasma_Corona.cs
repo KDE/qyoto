@@ -143,6 +143,14 @@ namespace Plasma {
 			interceptor.Invoke("setImmutability$", "setImmutability(const Plasma::ImmutabilityType)", typeof(void), typeof(Plasma.ImmutabilityType), immutable);
 		}
 		/// <remarks>
+		///  Schedules a flush-to-disk synchronization of the configuration state
+		///  at the next convenient moment.
+		///      </remarks>		<short>    Schedules a flush-to-disk synchronization of the configuration state  at the next convenient moment.</short>
+		[Q_SLOT("void requestConfigSync()")]
+		public void RequestConfigSync() {
+			interceptor.Invoke("requestConfigSync", "requestConfigSync()", typeof(void));
+		}
+		/// <remarks>
 		///  Loads the default (system wide) layout for this user
 		/// </remarks>		<short>    Loads the default (system wide) layout for this user </short>
 		[SmokeMethod("loadDefaultLayout()")]
@@ -196,5 +204,10 @@ namespace Plasma {
 		///      </remarks>		<short>    This signal indicates that an application launch, window  creation or window focus event was triggered.</short>
 		[Q_SIGNAL("void releaseVisualFocus()")]
 		void ReleaseVisualFocus();
+		/// <remarks>
+		///  This signal indicates that the configuration file was flushed to disc.
+		///      </remarks>		<short>    This signal indicates that the configuration file was flushed to disc.</short>
+		[Q_SIGNAL("void configSynced()")]
+		void ConfigSynced();
 	}
 }

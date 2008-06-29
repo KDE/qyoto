@@ -26,9 +26,9 @@ namespace Plasma {
 			get { return (string) interceptor.Invoke("stylesheet", "stylesheet()", typeof(string)); }
 			set { interceptor.Invoke("setStylesheet$", "setStylesheet(QString)", typeof(void), typeof(string), value); }
 		}
-		[Q_PROPERTY("QLineEdit*", "nativeWidget")]
-		public QLineEdit NativeWidget {
-			get { return (QLineEdit) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QLineEdit)); }
+		[Q_PROPERTY("KLineEdit*", "nativeWidget")]
+		public KLineEdit NativeWidget {
+			get { return (KLineEdit) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KLineEdit)); }
 		}
 		public LineEdit(QGraphicsWidget parent) : this((Type) null) {
 			CreateProxy();

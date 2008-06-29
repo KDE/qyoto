@@ -101,15 +101,24 @@ namespace Plasma {
 			return (KConfigGroup) interceptor.Invoke("config$", "config(const QString&) const", typeof(KConfigGroup), typeof(string), group);
 		}
 		/// <remarks>
-		///  Saves state information about this applet.
-		/// </remarks>		<short>    Saves state information about this applet.</short>
+		///  Saves state information about this applet that will
+		///  be accessed when next instantiated in the restore(KConfigGroup&) method.
+		///  This method does not need to be reimplmented by Applet
+		///  subclasses, but can be useful for Applet specializations
+		///  (such as Containment) to do so.
+		///  Applet subclasses may instead want to reimplement saveState().
+		/// </remarks>		<short>    Saves state information about this applet that will  be accessed when next instantiated in the restore(KConfigGroup&) method.</short>
 		[SmokeMethod("save(KConfigGroup&) const")]
 		public virtual void Save(KConfigGroup group) {
 			interceptor.Invoke("save#", "save(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), group);
 		}
 		/// <remarks>
-		///  Restores state information about this applet.
-		/// </remarks>		<short>    Restores state information about this applet.</short>
+		///  Restores state information about this applet saved previously
+		///  in save(KConfigGroup&).
+		///  This method does not need to be reimplmented by Applet
+		///  subclasses, but can be useful for Applet specializations
+		///  (such as Containment) to do so.
+		/// </remarks>		<short>    Restores state information about this applet saved previously  in save(KConfigGroup&).</short>
 		[SmokeMethod("restore(KConfigGroup&)")]
 		public virtual void Restore(KConfigGroup group) {
 			interceptor.Invoke("restore#", "restore(KConfigGroup&)", typeof(void), typeof(KConfigGroup), group);
@@ -290,6 +299,13 @@ namespace Plasma {
 			interceptor.Invoke("addAction$#", "addAction(QString, QAction*)", typeof(void), typeof(string), name, typeof(QAction), action);
 		}
 		/// <remarks>
+		///  Sets the BackgroundHints for this applet @see BackgroundHint
+		/// <param> name="hints" the BackgroundHint combination for this applet
+		///          </param></remarks>		<short>    Sets the BackgroundHints for this applet @see BackgroundHint </short>
+		public void SetBackgroundHints(uint hints) {
+			interceptor.Invoke("setBackgroundHints$", "setBackgroundHints(const Plasma::Applet::BackgroundHints)", typeof(void), typeof(uint), hints);
+		}
+		/// <remarks>
 		/// </remarks>		<return> BackgroundHints flags combination telling if the standard background is shown
 		///          and if it has a drop shadow
 		///          </return>
@@ -399,9 +415,15 @@ namespace Plasma {
 		///  Lets the user interact with the plasmoid options.
 		///  Called when the user selects the configure entry
 		///  from the context menu.
+		///  Unless there is good reason for overriding this method,
+		///  Applet subclasses should actually override createConfigurationInterface
+		///  instead. A good example of when this isn't plausible is
+		///  when using a dialog prepared by another library, such
+		///  as KPropertiesDialog from libkfile.
 		///          </remarks>		<short>    Lets the user interact with the plasmoid options.</short>
 		[Q_SLOT("void showConfigurationInterface()")]
-		public void ShowConfigurationInterface() {
+		[SmokeMethod("showConfigurationInterface()")]
+		public virtual void ShowConfigurationInterface() {
 			interceptor.Invoke("showConfigurationInterface", "showConfigurationInterface()", typeof(void));
 		}
 		/// <remarks>
@@ -467,12 +489,32 @@ namespace Plasma {
 			interceptor.Invoke("setFailedToLaunch$", "setFailedToLaunch(bool)", typeof(void), typeof(bool), failed);
 		}
 		/// <remarks>
-		///  Called when a request to save the state of the applet is made
-		///  during runtime
-		/// </remarks>		<short>    Called when a request to save the state of the applet is made  during runtime </short>
+		///  When called, the Applet should write any information needed as part
+		///  of the Applet's running state to the configuration object in config()
+		///  and/or globalConfig().
+		///  Applets that always sync their settings/state with the config
+		///  objects when these settings/states change do not need to reimplement
+		///  this method.
+		/// </remarks>		<short>    When called, the Applet should write any information needed as part  of the Applet's running state to the configuration object in config()  and/or globalConfig().</short>
 		[SmokeMethod("saveState(KConfigGroup&) const")]
 		protected virtual void SaveState(KConfigGroup config) {
 			interceptor.Invoke("saveState#", "saveState(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), config);
+		}
+		/// <remarks>
+		///  When the applet needs to be configured before being usable, this
+		///  method can be called to show a standard interface prompting the user
+		///  to configure the applet
+		///  Not that all children items will be deleted when this method is
+		///  called. If you have pointers to these items, you will need to
+		///  reset them after calling this method.
+		/// <param> name="needsConfiguring" true if the applet needs to be configured,
+		///                          or false if it doesn't
+		///          </param></remarks>		<short>    When the applet needs to be configured before being usable, this  method can be called to show a standard interface prompting the user  to configure the applet </short>
+		protected void SetConfigurationRequired(bool needsConfiguring, string reason) {
+			interceptor.Invoke("setConfigurationRequired$$", "setConfigurationRequired(bool, const QString&)", typeof(void), typeof(bool), needsConfiguring, typeof(string), reason);
+		}
+		protected void SetConfigurationRequired(bool needsConfiguring) {
+			interceptor.Invoke("setConfigurationRequired$", "setConfigurationRequired(bool)", typeof(void), typeof(bool), needsConfiguring);
 		}
 		/// <remarks>
 		///  Reimplement this method so provide a configuration interface,
@@ -503,13 +545,6 @@ namespace Plasma {
 		[SmokeMethod("constraintsEvent(Plasma::Constraints)")]
 		protected virtual void ConstraintsEvent(uint constraints) {
 			interceptor.Invoke("constraintsEvent$", "constraintsEvent(Plasma::Constraints)", typeof(void), typeof(uint), constraints);
-		}
-		/// <remarks>
-		///  Sets the BackgroundHints for this applet @see BackgroundHint
-		/// <param> name="hints" the BackgroundHint combination for this applet
-		///          </param></remarks>		<short>    Sets the BackgroundHints for this applet @see BackgroundHint </short>
-		protected void SetBackgroundHints(uint hints) {
-			interceptor.Invoke("setBackgroundHints$", "setBackgroundHints(const Plasma::Applet::BackgroundHints)", typeof(void), typeof(uint), hints);
 		}
 		/// <remarks>
 		///  Register the widgets that manage mouse clicks but you still want
@@ -580,6 +615,13 @@ namespace Plasma {
 		[SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
 		protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
 			return (QVariant) interceptor.Invoke("itemChange$#", "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)", typeof(QVariant), typeof(QGraphicsItem.GraphicsItemChange), change, typeof(QVariant), value);
+		}
+		/// <remarks>
+		///  Reimplemented from QGraphicsItem
+		///          </remarks>		<short>    Reimplemented from QGraphicsItem          </short>
+		[SmokeMethod("shape() const")]
+		protected new virtual QPainterPath Shape() {
+			return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));
 		}
 		/// <remarks>
 		///  Reimplemented from QGraphicsLayoutItem

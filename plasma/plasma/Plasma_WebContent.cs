@@ -30,11 +30,26 @@ namespace Plasma {
 		/// <remarks>
 		///  Sets the html to be shown along with a base URL to be used
 		///  to resolve relative references.
-		/// <param> name="html" the html to display in the content area
+		/// <param> name="html" the html (in utf8) to display in the content area
 		/// </param><param> name="baseUrl" the base url for relative references
 		///          </param></remarks>		<short>    Sets the html to be shown along with a base URL to be used  to resolve relative references.</short>
 		public void SetHtml(QByteArray html, QUrl baseUrl) {
 			interceptor.Invoke("setHtml##", "setHtml(const QByteArray&, const QUrl&)", typeof(void), typeof(QByteArray), html, typeof(QUrl), baseUrl);
+		}
+		public void SetHtml(QByteArray html) {
+			interceptor.Invoke("setHtml#", "setHtml(const QByteArray&)", typeof(void), typeof(QByteArray), html);
+		}
+		/// <remarks>
+		///  Sets the html to be shown along with a base URL to be used
+		///  to resolve relative references.
+		/// <param> name="html" the html (in utf8) to display in the content area
+		/// </param><param> name="baseUrl" the base url for relative references
+		///          </param></remarks>		<short>    Sets the html to be shown along with a base URL to be used  to resolve relative references.</short>
+		public void SetHtml(string html, QUrl baseUrl) {
+			interceptor.Invoke("setHtml$#", "setHtml(const QString&, const QUrl&)", typeof(void), typeof(string), html, typeof(QUrl), baseUrl);
+		}
+		public void SetHtml(string html) {
+			interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), html);
 		}
 		/// <remarks>
 		///  Reimplementation

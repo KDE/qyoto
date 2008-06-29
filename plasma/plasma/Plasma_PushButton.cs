@@ -31,9 +31,9 @@ namespace Plasma {
 			get { return (string) interceptor.Invoke("stylesheet", "stylesheet()", typeof(string)); }
 			set { interceptor.Invoke("setStylesheet$", "setStylesheet(QString)", typeof(void), typeof(string), value); }
 		}
-		[Q_PROPERTY("QPushButton*", "nativeWidget")]
-		public QPushButton NativeWidget {
-			get { return (QPushButton) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QPushButton)); }
+		[Q_PROPERTY("KPushButton*", "nativeWidget")]
+		public KPushButton NativeWidget {
+			get { return (KPushButton) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KPushButton)); }
 		}
 		public PushButton(QGraphicsWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -76,6 +76,13 @@ namespace Plasma {
 			return (List<QAction>) interceptor.Invoke("contextualActions", "contextualActions()", typeof(List<QAction>));
 		}
 		/// <remarks>
+		///  Returns the shape of the widget, defaults to the bounding rect
+		///      </remarks>		<short>    Returns the shape of the widget, defaults to the bounding rect      </short>
+		[SmokeMethod("shape() const")]
+		public virtual QPainterPath Shape() {
+			return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));
+		}
+		/// <remarks>
 		///  Show a configuration dialog.
 		///      </remarks>		<short>    Show a configuration dialog.</short>
 		[Q_SLOT("void showConfigurationInterface()")]
