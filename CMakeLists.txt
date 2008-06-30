@@ -2,8 +2,8 @@ OPTION(ENABLE_QYOTO "build Qyoto" ON)
 OPTION(ENABLE_QSCINTILLA_SHARP "build QScintillaSharp" OFF)
 OPTION(ENABLE_SOPRANO_SHARP "build SopranoSharp" ON)
 OPTION(ENABLE_PLASMA_SHARP "build PlasmaSharp" OFF)
-OPTION(ENABLE_KIMONO "build Kimono" ON)
 OPTION(ENABLE_KHTML_SHARP "build KHTML" ON)
+OPTION(ENABLE_KIMONO "build Kimono" ON)
 
 set(QYOTO_ENABLED "no")
 
@@ -38,26 +38,6 @@ IF(ENABLE_QSCINTILLA_SHARP AND QSCINTILLA_FOUND)
 	ADD_SUBDIRECTORY(qscintilla)
 ENDIF(ENABLE_QSCINTILLA_SHARP AND QSCINTILLA_FOUND)
 
-SET(SOPRANO_SHARP_ENABLED "no")
-
-IF(ENABLE_SOPRANO_SHARP AND Soprano_FOUND)
-	IF (NOT QYOTO_ENABLED)
-		MESSAGE(FATAL_ERROR "Qyoto is needed for SopranoSharp. You either didn't enable it or some of its dependencies aren't met.")
-	ENDIF (NOT QYOTO_ENABLED)
-	
-	SET(SOPRANO_SHARP_ENABLED "yes")
-	ADD_SUBDIRECTORY(soprano)
-ENDIF(ENABLE_SOPRANO_SHARP AND Soprano_FOUND)
-
-IF(ENABLE_PLASMA_SHARP)
-	IF (NOT QYOTO_ENABLED)
-		MESSAGE(FATAL_ERROR "Qyoto is needed for PlasmaSharp. You either didn't enable it or some of its dependencies aren't met.")
-	ENDIF (NOT QYOTO_ENABLED)
-	
-	SET(PLASMA_SHARP_ENABLED "yes")
-	ADD_SUBDIRECTORY(plasma)
-ENDIF(ENABLE_PLASMA_SHARP)
-
 SET(KIMONO_ENABLED "no")
 
 IF(ENABLE_KIMONO)
@@ -77,6 +57,26 @@ IF(ENABLE_KHTML_SHARP)
 	SET(KHTML_ENABLED "yes")
 	ADD_SUBDIRECTORY(khtml)
 ENDIF(ENABLE_KHTML_SHARP)
+
+SET(SOPRANO_SHARP_ENABLED "no")
+
+IF(ENABLE_SOPRANO_SHARP AND Soprano_FOUND)
+	IF (NOT QYOTO_ENABLED)
+		MESSAGE(FATAL_ERROR "Qyoto is needed for SopranoSharp. You either didn't enable it or some of its dependencies aren't met.")
+	ENDIF (NOT QYOTO_ENABLED)
+	
+	SET(SOPRANO_SHARP_ENABLED "yes")
+	ADD_SUBDIRECTORY(soprano)
+ENDIF(ENABLE_SOPRANO_SHARP AND Soprano_FOUND)
+
+IF(ENABLE_PLASMA_SHARP)
+	IF (NOT QYOTO_ENABLED)
+		MESSAGE(FATAL_ERROR "Qyoto is needed for PlasmaSharp. You either didn't enable it or some of its dependencies aren't met.")
+	ENDIF (NOT QYOTO_ENABLED)
+	
+	SET(PLASMA_SHARP_ENABLED "yes")
+	ADD_SUBDIRECTORY(plasma)
+ENDIF(ENABLE_PLASMA_SHARP)
 
 message(STATUS "Build Qyoto... " ${QYOTO_ENABLED})
 message(STATUS "Build QScintillaSharp... " ${QSCINTILLA_SHARP_ENABLED})
