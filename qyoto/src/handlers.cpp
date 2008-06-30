@@ -933,7 +933,7 @@ marshall_basetype(Marshall *m)
 		ptr = o->smoke->cast(
 		    ptr,				// pointer
 		    o->classId,				// from
-		    o->smoke->idClass(c.className).index	// to
+		    o->smoke->idClass(c.className, true).index	// to
 		);
 		m->item().s_class = ptr;
 		(*FreeGCHandle)(obj);
