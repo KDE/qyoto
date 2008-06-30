@@ -64,8 +64,13 @@ void MethodCall::callMethod()
 	_called = true;
 	Smoke::ClassFn fn = _smoke->classes[method().classId].classFn;
 	void *ptr = 0;
+
 	if (_o != 0 && _o->ptr != 0) {
-		ptr = _smoke->cast(_o->ptr, _o->classId, method().classId);
+		const Smoke::Class &cl = _smoke->classes[method().classId];
+
+		ptr = _o->smoke->cast(	_o->ptr,
+								_o->classId,
+								_o->smoke->idClass(cl.className, true).index );
 	}
 	_items = -1;
 	
