@@ -39,11 +39,11 @@
 
 class QWidget;
 
-class KMonoPluginFactory : public KPluginFactory
+class KimonoPluginFactory : public KPluginFactory
 {
 public:
-	KMonoPluginFactory();
-	virtual ~KMonoPluginFactory();
+	KimonoPluginFactory();
+	virtual ~KimonoPluginFactory();
 
 protected:
 	virtual QObject* create(const char *iface, QWidget *parentWidget,
@@ -66,14 +66,14 @@ private:
 	
 	bool qyotoInitialized;
 };
-K_EXPORT_PLUGIN(KMonoPluginFactory)
+K_EXPORT_PLUGIN(KimonoPluginFactory)
 
-KMonoPluginFactory::KMonoPluginFactory()
+KimonoPluginFactory::KimonoPluginFactory()
 	: domain(0), qyotoAssembly(0), qyotoImage(0), qyotoInitialized(false)
 {
 }
 
-KMonoPluginFactory::~KMonoPluginFactory()
+KimonoPluginFactory::~KimonoPluginFactory()
 {
 	foreach(guint32 handle, handles)
 		mono_gchandle_free(handle);
@@ -94,7 +94,7 @@ KMonoPluginFactory::~KMonoPluginFactory()
 }
 
 void
-KMonoPluginFactory::InitQyotoRuntime()
+KimonoPluginFactory::InitQyotoRuntime()
 {
 	if (qyotoInitialized)
 		return;
@@ -112,7 +112,7 @@ KMonoPluginFactory::InitQyotoRuntime()
 }
 
 QObject*
-KMonoPluginFactory::create(const char *iface, QWidget *parentWidget,
+KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	                       QObject *parent, const QVariantList &args,
 	                       const QString &keyword)
 {
