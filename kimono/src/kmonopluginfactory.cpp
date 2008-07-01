@@ -54,20 +54,40 @@ private:
 	void InitQyotoRuntime();
 
 	MonoDomain* domain;
-	MonoAssembly* assembly;
-	MonoObject* object;
-	guint32 handle;
+	
+	QHash<QString, MonoAssembly*> assemblies;
+	QHash<MonoAssembly*, MonoImage*> images;
+	
+	MonoAssembly* qyotoAssembly;
+	MonoImage* qyotoImage;
+	
+	QList<MonoObject*> objects;
+	QList<guint32> handles;
+	
+	bool qyotoInitialized;
 };
 K_EXPORT_PLUGIN(KMonoPluginFactory)
 
 KMonoPluginFactory::KMonoPluginFactory()
-	: domain(0), assembly(0), object(0), handle(0)
+	: domain(0), qyotoAssembly(0), qyotoImage(0), qyotoInitialized(false)
 {
 }
 
 KMonoPluginFactory::~KMonoPluginFactory()
 {
-	mono_gchandle_free(handle);
+	foreach(guint32 handle, handles)
+		mono_gchandle_free(handle);
+	
+	if (qyotoImage)
+		mono_image_close(qyotoImage);
+	if (qyotoAssembly)
+		mono_assembly_close(qyotoAssembly);
+	
+	foreach(MonoImage* img, images)
+		mono_image_close(img);
+	foreach(MonoAssembly* a, assemblies)
+		mono_assembly_close(a);
+	
 	// FIXME: this should actually work
 	/*if (domain)
 		mono_jit_cleanup(domain);*/
@@ -76,14 +96,19 @@ KMonoPluginFactory::~KMonoPluginFactory()
 void
 KMonoPluginFactory::InitQyotoRuntime()
 {
+	if (qyotoInitialized)
+		return;
+
 	// open the assembly 'qt-dotnet', look for Qyoto.SmokeInvocation.InitRuntime() and call it
 	// it seems that there's now way to call static c'tors explicitly, hence the extra method
-	MonoAssembly* qyotoAssembly = mono_domain_assembly_open(domain, "qt-dotnet");
-	MonoImage* qyotoImage = mono_assembly_get_image(qyotoAssembly);
+	qyotoAssembly = mono_domain_assembly_open(domain, "qt-dotnet");
+	qyotoImage = mono_assembly_get_image(qyotoAssembly);
 	MonoMethodDesc* desc = mono_method_desc_new("Qyoto.SmokeInvocation:InitRuntime()", true);
 	MonoClass* klass = mono_class_from_name(qyotoImage, "Qyoto", "SmokeInvocation");
 	MonoMethod* meth = mono_method_desc_search_in_class(desc, klass);
 	mono_runtime_invoke(meth, NULL, NULL, NULL);
+	
+	qyotoInitialized = true;
 }
 
 QObject*
@@ -102,16 +127,29 @@ KMonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 		return 0;
 	}
 
-	// initialize the JIT and open the assembly
-	domain = mono_jit_init((const char*) path.toLatin1());
-	assembly = mono_domain_assembly_open(domain, (const char*) path.toLatin1());
-
-	if (!assembly) {
-		kWarning() << "Couldn't open assembly" << path;
-		return 0;
+	// initialize the JIT
+	if (!domain)
+		domain = mono_jit_init((const char*) path.toLatin1());
+	
+	MonoAssembly* assembly;
+	if (assemblies.contains(path)) {
+		assembly = assemblies[path];
+	} else {
+		assembly = mono_domain_assembly_open(domain, (const char*) path.toLatin1());
+		if (!assembly) {
+			kWarning() << "Couldn't open assembly" << path;
+			return 0;
+		}
+		assemblies[path] = assembly;
 	}
 
-	MonoImage* image = mono_assembly_get_image(assembly);
+	MonoImage* image;
+	if (images.contains(assembly)) {
+		image = images[assembly];
+	} else {
+		image = mono_assembly_get_image(assembly);
+		images[assembly] = image;
+	}
 
 	// a path in the form Foo/Bar.dll results in the class Bar in the namespace Foo
 	QFileInfo file(path);
@@ -131,12 +169,14 @@ KMonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	}
 	
 	// create an instance of the class
-	object = mono_object_new(domain, klass);
+	MonoObject* object = mono_object_new(domain, klass);
 	
 	if (!object) {
 		kWarning() << "Failed to create instance of class" << nameSpace + "." + className;
 		return 0;
 	}
+	
+	objects << object;
 	
 	// initialize the Qyoto runtime
 	InitQyotoRuntime();
@@ -164,11 +204,15 @@ KMonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	(*FreeGCHandle)(list);
 	
 	// get a handle to the object and pin it, so it won't be collected
-	handle = mono_gchandle_new(object, true);
+	guint32 handle = mono_gchandle_new(object, true);
+	handles << handle;
 	
 	// return the newly created QObject
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)((void*) handle);
-	QObject* qobject = reinterpret_cast<QObject*>(o->ptr);
-	qobject->setParent(parent);
-	return qobject;
+	if (o) {
+		QObject* qobject = reinterpret_cast<QObject*>(o->ptr);
+		qobject->setParent(parent);
+		return qobject;
+	} else
+		return 0;
 }
