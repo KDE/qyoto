@@ -1,3 +1,9 @@
+2008-07-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Moved the runtime initialization from the static SmokeInvocation
+	  constructor to a new method 'InitRuntime'. This is necessary for
+	  KMonoPluginFactory to work.
+
 2008-06-30  Richard Dale  <richard.j.dale@gmail.com>
 
 	* When a C# value was marshalled to C++, and the actual type of

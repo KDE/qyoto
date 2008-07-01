@@ -1,3 +1,11 @@
+2008-07-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Added KMonoPluginFactory. Behaves similar to KRubyPluginFactory:
+		* If the keyword is Foo/Bar.dll, a class 'Bar' is searched in the
+		  namespace 'Foo'.
+		* This class has to have a constructor that takes a QObject (the
+		  parent) and a List<QVariant> (the arguments).
+
 2008-06-24  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Make both the smoke lib and the kimono bindings use non-const methods

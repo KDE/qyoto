@@ -424,7 +424,11 @@ namespace Qyoto {
 			}
 		}
 
-		static SmokeInvocation() {
+		static bool runtimeInitialized = false;
+
+		public static void InitRuntime() {
+			if (runtimeInitialized)
+				return;
 			Qyoto.Init_qyoto();
 			SmokeMarshallers.SetUp();
 			
@@ -433,6 +437,11 @@ namespace Qyoto {
 				AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
 				if (attr != null) attr.CallInitSmoke();
 			}
+			runtimeInitialized = true;
+		}
+
+		static SmokeInvocation() {
+			InitRuntime();
 		}
 		
 		private Type	classToProxy;
