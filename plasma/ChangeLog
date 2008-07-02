@@ -1,0 +1,6 @@
+2008-07-02  Richard Dale  <richard.j.dale@gmail.com>
+* Added a PlasmaScripting.Applet class which will be subclassed to implement
+  ScriptEngine based C# plasmoids. The Plasma.Applet source was copied and
+  enums and static methods were removed. The code in the public methods was
+  changed to forward the method call to the underlying applet. To do this for
+  the protected methods, reflection will need to be used.
