@@ -606,3 +606,15 @@ namespace PlasmaScripting {
 		void Activate();
 	}
 }
+
+namespace Plasma {
+	using Plasma;
+	using Qyoto;
+
+	public partial class Applet : QGraphicsWidget, IDisposable {
+		public static implicit operator Applet(PlasmaScript.Applet arg) {
+			return arg.Applet;
+		}
+	}
+}
+

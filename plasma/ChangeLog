@@ -4,3 +4,5 @@
   enums and static methods were removed. The code in the public methods was
   changed to forward the method call to the underlying applet. To do this for
   the protected methods, reflection will need to be used.
+* Added an implicit type conversion operator so that a PlasmaScripting.Applet
+  can be used in the Plasma api everywhere a Plasma.Applet would be expected.
