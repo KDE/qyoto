@@ -551,6 +551,9 @@ namespace PlasmaScripting {
 		}
 		public new void Dispose() {
 		}
+		public static implicit operator Plasma.Applet(PlasmaScript.Applet arg) {
+			return arg.Applet;
+		}
 		protected new IAppletSignals Emit {
 			get { return (IAppletSignals) Q_EMIT; }
 		}
@@ -588,15 +591,3 @@ namespace PlasmaScripting {
 		void Activate();
 	}
 }
-
-namespace Plasma {
-	using Plasma;
-	using Qyoto;
-
-	public partial class Applet : QGraphicsWidget, IDisposable {
-		public static implicit operator Applet(PlasmaScript.Applet arg) {
-			return arg.Applet;
-		}
-	}
-}
-
