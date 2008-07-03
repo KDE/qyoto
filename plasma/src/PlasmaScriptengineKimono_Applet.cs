@@ -1,4 +1,4 @@
-namespace KimonoAppletScript {
+namespace PlasmaScriptengineKimono {
 	using Plasma;
 	using System;
 	using Kimono;
