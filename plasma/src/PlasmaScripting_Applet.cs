@@ -18,10 +18,10 @@ namespace PlasmaScripting {
 	///   See <see cref="IAppletSignals"></see> for signals emitted by Applet
 	/// </remarks>		<short> The base Applet class.</short>
 	public class Applet : QObject, IDisposable {
-		private KimonoAppletScript.Applet appletScript;
+		private AppletScript appletScript;
 		private Plasma.Applet applet;
 
-		public Plasma.Applet Applet {
+		public Plasma.Applet PlasmaApplet {
 			get { return applet; }
 		}
 		[Q_PROPERTY("bool", "hasConfigurationInterface")]
@@ -36,11 +36,11 @@ namespace PlasmaScripting {
 		public string Category {
 			get { return applet.Category; }
 		}
-		[Q_PROPERTY("Plasma::ImmutabilityType", "immutability")]
+		/*[Q_PROPERTY("Plasma::ImmutabilityType", "immutability")]
 		public Plasma.ImmutabilityType Immutability {
 			get { return applet.ImmutabilityType; }
 			set { applet.ImmutabilityType = value; }
-		}
+		}*/
 		[Q_PROPERTY("bool", "hasFailedToLaunch")]
 		public bool HasFailedToLaunch {
 			get { return applet.HasFailedToLaunch; }
@@ -94,7 +94,7 @@ namespace PlasmaScripting {
 		///  Applet subclasses may instead want to reimplement saveState().
 		/// </remarks>		<short>    Saves state information about this applet that will  be accessed when next instantiated in the restore(KConfigGroup&) method.</short>
 		public virtual void Save(KConfigGroup group) {
-			return applet.Save(group);
+			applet.Save(group);
 		}
 		/// <remarks>
 		///  Restores state information about this applet saved previously
@@ -104,7 +104,7 @@ namespace PlasmaScripting {
 		///  (such as Containment) to do so.
 		/// </remarks>		<short>    Restores state information about this applet saved previously  in save(KConfigGroup&).</short>
 		public virtual void Restore(KConfigGroup group) {
-			return applet.Restore(group);
+			applet.Restore(group);
 		}
 		/// <remarks>
 		///  Returns a KConfigGroup object to be shared by all applets of this
@@ -189,10 +189,10 @@ namespace PlasmaScripting {
 		/// <param> name="constraints" the type of constraints that were updated
 		///          </param></remarks>		<short>    Called when any of the geometry constraints have been updated.</short>
 		public void UpdateConstraints(uint constraints) {
-			return applet.UpdateConstraints(constraints);
+			applet.UpdateConstraints(constraints);
 		}
 		public void UpdateConstraints() {
-			return applet.UpdateConstraints();
+			applet.UpdateConstraints();
 		}
 		/// <remarks>
 		///  Returns the current form factor the applet is being displayed in.
@@ -219,7 +219,7 @@ namespace PlasmaScripting {
 		///  Sets the preferred aspect ratio mode for placement and resizing
 		///          </remarks>		<short>    Sets the preferred aspect ratio mode for placement and resizing          </short>
 		public void SetAspectRatioMode(Plasma.AspectRatioMode arg1) {
-			return applet.SetAspectRatioMode(arg1);
+			applet.SetAspectRatioMode(arg1);
 		}
 		/// <remarks>
 		///  This method is called when the interface should be painted.
@@ -249,8 +249,8 @@ namespace PlasmaScripting {
 		public string Icon() {
 			return applet.Icon();
 		}
-		public override void PaintWindowFrame(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
-			return applet.PaintWindowFrame(painter, option, widget);
+		public virtual void PaintWindowFrame(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+			applet.PaintWindowFrame(painter, option, widget);
 		}
 		/// <remarks>
 		///  Returns a list of context-related QAction instances.
@@ -267,20 +267,20 @@ namespace PlasmaScripting {
 		///  Returns the QAction with the given name from our collection
 		///          </remarks>		<short>    Returns the QAction with the given name from our collection          </short>
 		public QAction Action(string name) {
-			return applet.Action();
+			return applet.Action(name);
 		}
 		/// <remarks>
 		///  Adds the action to our collection under the given name
 		///          </remarks>		<short>    Adds the action to our collection under the given name          </short>
 		public void AddAction(string name, QAction action) {
-			return applet.AddAction(name, action);
+			applet.AddAction(name, action);
 		}
 		/// <remarks>
 		///  Sets the BackgroundHints for this applet @see BackgroundHint
 		/// <param> name="hints" the BackgroundHint combination for this applet
 		///          </param></remarks>		<short>    Sets the BackgroundHints for this applet @see BackgroundHint </short>
 		public void SetBackgroundHints(uint hints) {
-			return applet.SetBackgroundHints(hints);
+			applet.SetBackgroundHints(hints);
 		}
 		/// <remarks>
 		/// </remarks>		<return> BackgroundHints flags combination telling if the standard background is shown
@@ -321,7 +321,7 @@ namespace PlasmaScripting {
 		///  Sets the global shorcut to associate with this widget.
 		///          </remarks>		<short>    Sets the global shorcut to associate with this widget.</short>
 		public void SetGlobalShortcut(KShortcut shortcut) {
-			return applet.SetGlobalShortcut(shortcut);
+			applet.SetGlobalShortcut(shortcut);
 		}
 		/// <remarks>
 		/// </remarks>		<return> the global shortcut associated with this wiget, or
@@ -336,14 +336,14 @@ namespace PlasmaScripting {
 		///  needed to make keyboard shortcuts work.
 		///          </remarks>		<short>    associate actions with this widget, including ones added after this call.</short>
 		public virtual void AddAssociatedWidget(QWidget widget) {
-			return applet.AddAssociatedWidget(widget);
+			applet.AddAssociatedWidget(widget);
 		}
 		/// <remarks>
 		///  un-associate actions from this widget, including ones added after this call.
 		///  needed to make keyboard shortcuts work.
 		///          </remarks>		<short>    un-associate actions from this widget, including ones added after this call.</short>
 		public virtual void RemoveAssociatedWidget(QWidget widget) {
-			return applet.RemoveAssociatedWidget(widget);
+			applet.RemoveAssociatedWidget(widget);
 		}
 		/// <remarks>
 		///  Sets the immutability type for this applet (not immutable, user immutable or system immutable)
@@ -351,7 +351,7 @@ namespace PlasmaScripting {
 		///          </remarks>		<short>    Sets the immutability type for this applet (not immutable, user immutable or system immutable)  @arg immutable the new immutability type of this applet          </short>
 		[Q_SLOT("void setImmutability(const Plasma::ImmutabilityType)")]
 		public void SetImmutability(Plasma.ImmutabilityType immutable) {
-			return applet.SetImmutability(immutable);
+			applet.SetImmutability(immutable);
 		}
 		/// <remarks>
 		///  Destroys the applet; it will be removed nicely and deleted.
@@ -359,35 +359,35 @@ namespace PlasmaScripting {
 		///          </remarks>		<short>    Destroys the applet; it will be removed nicely and deleted.</short>
 		[Q_SLOT("void destroy()")]
 		public virtual void Destroy() {
-			return applet.Destroy();
+			applet.Destroy();
 		}
 		/// <remarks>
 		///  Lets the user interact with the plasmoid options.
 		///  Called when the user selects the configure entry
 		///  from the context menu.
 		///  Unless there is good reason for overriding this method,
-		///  Applet subclasses should actually override createConfigurationInterface
+		///  Applet subclasses should actually virtual createConfigurationInterface
 		///  instead. A good example of when this isn't plausible is
 		///  when using a dialog prepared by another library, such
 		///  as KPropertiesDialog from libkfile.
 		///          </remarks>		<short>    Lets the user interact with the plasmoid options.</short>
 		[Q_SLOT("void showConfigurationInterface()")]
 		public virtual void ShowConfigurationInterface() {
-			return applet.ShowConfigurationInterface();
+			applet.ShowConfigurationInterface();
 		}
 		/// <remarks>
 		///  Causes this applet to raise above all other applets.
 		///          </remarks>		<short>    Causes this applet to raise above all other applets.</short>
 		[Q_SLOT("void raise()")]
 		public void Raise() {
-			return applet.Raise();
+			applet.Raise();
 		}
 		/// <remarks>
 		///  Causes this applet to lower below all the other applets.
 		///          </remarks>		<short>    Causes this applet to lower below all the other applets.</short>
 		[Q_SLOT("void lower()")]
 		public void Lower() {
-			return applet.Lower();
+			applet.Lower();
 		}
 		/// <remarks>
 		///  Sends all pending contraints updates to the applet. Will usually
@@ -395,7 +395,7 @@ namespace PlasmaScripting {
 		///          </remarks>		<short>    Sends all pending contraints updates to the applet.</short>
 		[Q_SLOT("void flushPendingConstraintsEvents()")]
 		public void FlushPendingConstraintsEvents() {
-			return applet.FlushPendingConstraintsEvents();
+			applet.FlushPendingConstraintsEvents();
 		}
 		/// <remarks>
 		///  This method is called once the applet is loaded and added to a Corona.
@@ -406,7 +406,7 @@ namespace PlasmaScripting {
 		[Q_SLOT("void init()")]
 		public virtual void Init() {
 		}
-		public Applet(KimonoAppletScript.Applet parent) : base(parent) {
+		public Applet(AppletScript parent) : base(parent) {
 			appletScript = parent;
 			applet = parent.Applet();
 			Connect(applet, SIGNAL("releaseVisualFocus()"), this, SIGNAL("releaseVisualFocus()"));
@@ -498,64 +498,72 @@ namespace PlasmaScripting {
 		///          </return>
 		/// 		<short>   </short>
 		protected bool IsRegisteredAsDragHandle(QGraphicsItem item) {
+			return false;
 		}
 		/// <remarks>
 		/// </remarks>		<short>   </short>
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
+			return false;
 		}
 		/// <remarks>
 		///          </remarks>		<short>   </short>
-		protected override bool SceneEventFilter(QGraphicsItem watched, QEvent arg2) {
+		protected virtual bool SceneEventFilter(QGraphicsItem watched, QEvent arg2) {
+			return false;
 		}
 		/// <remarks>
 		///          </remarks>		<short>   </short>
-		protected override void MouseMoveEvent(QGraphicsSceneMouseEvent arg1) {
+		protected virtual void MouseMoveEvent(QGraphicsSceneMouseEvent arg1) {
 		}
 		/// <remarks>
 		///          </remarks>		<short>   </short>
-		protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
+		protected virtual void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
 		}
 		/// <remarks>
 		///  Reimplemented from QGraphicsItem
 		///          </remarks>		<short>    Reimplemented from QGraphicsItem          </short>
-		protected override void FocusInEvent(QFocusEvent arg1) {
+		protected virtual void FocusInEvent(QFocusEvent arg1) {
 		}
 		/// <remarks>
 		///  Reimplemented from QGraphicsItem
 		///          </remarks>		<short>    Reimplemented from QGraphicsItem          </short>
-		protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
+		protected virtual void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
 		}
 		/// <remarks>
 		///  Reimplemented from QGraphicsItem
 		///          </remarks>		<short>    Reimplemented from QGraphicsItem          </short>
-		protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
+		protected virtual QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
+			return new QVariant();
 		}
 		/// <remarks>
 		///  Reimplemented from QGraphicsItem
 		///          </remarks>		<short>    Reimplemented from QGraphicsItem          </short>
 		protected new virtual QPainterPath Shape() {
+			return new QPainterPath();
 		}
 		/// <remarks>
 		///  Reimplemented from QGraphicsLayoutItem
 		///          </remarks>		<short>    Reimplemented from QGraphicsLayoutItem          </short>
-		public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+		public virtual QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+			return new QSizeF();
 		}
-		protected override QSizeF SizeHint(Qt.SizeHint which) {
+		protected virtual QSizeF SizeHint(Qt.SizeHint which) {
+			return new QSizeF();
 		}
 		/// <remarks>
 		///  Reimplemented from QObject
 		///           </remarks>		<short>    Reimplemented from QObject           </short>
-		protected override void TimerEvent(QTimerEvent arg1) {
+		protected virtual void TimerEvent(QTimerEvent arg1) {
 		}
 		~Applet() {
 		}
 		public new void Dispose() {
 		}
-		public static implicit operator Plasma.Applet(PlasmaScript.Applet arg) {
-			return arg.Applet;
-		}
 		protected new IAppletSignals Emit {
 			get { return (IAppletSignals) Q_EMIT; }
+		}
+		
+		public static implicit operator Plasma.Applet(Applet arg) {
+			return arg.PlasmaApplet;
 		}
 	}
 

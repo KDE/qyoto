@@ -13,14 +13,15 @@ namespace PlasmaScriptengineKimono {
 
 		public virtual bool Init() {
 			QFileInfo program = new QFileInfo(MainScript());
+			return false;
 		}
 
-		public virtual bool SourceRequestEvent(string name) {
+		/*public virtual bool SourceRequestEvent(string name) {
 			dataEngine.SourceRequestEvent(name);
-		}
+		}*/
 
-		public virtual bool UpdateSourceEvent(string source) {
+		/*public virtual bool UpdateSourceEvent(string source) {
 			dataEngine.UpdateSourceEvent(source);
-		}
+		}*/
 	}
 }

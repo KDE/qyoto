@@ -18,10 +18,10 @@ namespace PlasmaScripting {
 	///  See <see cref="IDataEngineSignals"></see> for signals emitted by DataEngine
 	/// </remarks>		<short>    @class DataEngine  @brief Data provider for plasmoids (Plasma plugins) </short>
 	public class DataEngine : QObject, IDisposable {
-		private KimonoAppletScript.DataEngine dataEngineScript;
+		private DataEngineScript dataEngineScript;
 		private Plasma.DataEngine dataEngine;
 
-		public Plasma.DataEngine DataEngine {
+		public Plasma.DataEngine PlasmaDataEngine {
 			get { return dataEngine; }
 		}
 		[Q_PROPERTY("QStringList", "sources")]
@@ -41,7 +41,7 @@ namespace PlasmaScripting {
 		///  Constructor.
 		/// <param> name="parent" The parent object.
 		/// </param></remarks>		<short>    Constructor.</short>
-		public DataEngine(KimonoAppletScript.DataEngine parent) : base(parent) {
+		public DataEngine(DataEngineScript parent) : base(parent) {
 			dataEngineScript = parent;
 			dataEngine = parent.DataEngine();
 			Connect(dataEngine, SIGNAL("sourceAdded(QString)"), this, SIGNAL("sourceAdded(QString)"));
@@ -97,13 +97,13 @@ namespace PlasmaScripting {
 		/// </param><param> name="intervalAlignment" the number of ms to align the interval to
 		/// </param></remarks>		<short>    Connects a source to an object for data updates.</short>
 		public void ConnectSource(string source, QObject visualization, uint pollingInterval, Plasma.IntervalAlignment intervalAlignment) {
-			return dataEngine.ConnectSource(source, visualization, pollingInterval, intervalAlignment);
+			dataEngine.ConnectSource(source, visualization, pollingInterval, intervalAlignment);
 		}
 		public void ConnectSource(string source, QObject visualization, uint pollingInterval) {
-			return dataEngine.ConnectSource(source, visualization, pollingInterval);
+			dataEngine.ConnectSource(source, visualization, pollingInterval);
 		}
 		public void ConnectSource(string source, QObject visualization) {
-			return dataEngine.ConnectSource(source, visualization);
+			dataEngine.ConnectSource(source, visualization);
 		}
 		/// <remarks>
 		///  Connects all currently existing sources to an object for data updates.
@@ -128,13 +128,13 @@ namespace PlasmaScripting {
 		/// </param><param> name="intervalAlignment" the number of ms to align the interval to
 		/// </param></remarks>		<short>    Connects all currently existing sources to an object for data updates.</short>
 		public void ConnectAllSources(QObject visualization, uint pollingInterval, Plasma.IntervalAlignment intervalAlignment) {
-			return dataEngine.ConnectAllSources(visualization, pollingInterval, intervalAlignment);
+			dataEngine.ConnectAllSources(visualization, pollingInterval, intervalAlignment);
 		}
 		public void ConnectAllSources(QObject visualization, uint pollingInterval) {
-			return dataEngine.ConnectAllSources(visualization, pollingInterval);
+			dataEngine.ConnectAllSources(visualization, pollingInterval);
 		}
 		public void ConnectAllSources(QObject visualization) {
-			return dataEngine.ConnectAllSources(visualization);
+			dataEngine.ConnectAllSources(visualization);
 		}
 		/// <remarks>
 		///  Disconnects a source to an object that was receiving data updates.
@@ -142,7 +142,7 @@ namespace PlasmaScripting {
 		/// </param><param> name="visualization" the object to connect the data source to
 		/// </param></remarks>		<short>    Disconnects a source to an object that was receiving data updates.</short>
 		public void DisconnectSource(string source, QObject visualization) {
-			return dataEngine.DisconnectSource(source, visualization);
+			dataEngine.DisconnectSource(source, visualization);
 		}
 		/// <remarks>
 		///  Retrevies a pointer to the DataContainer for a given source. This method
@@ -211,6 +211,7 @@ namespace PlasmaScripting {
 		///          </return>
 		/// 		<short>    When a source that does not currently exist is requested by the  consumer, this method is called to give the DataEngine the  opportunity to create one.</short>
 		protected virtual bool SourceRequestEvent(string source) {
+			return false;
 		}
 		/// <remarks>
 		///  Called by internal updating mechanisms to trigger the engine
@@ -223,6 +224,7 @@ namespace PlasmaScripting {
 		/// 		<short>    Called by internal updating mechanisms to trigger the engine  to refresh the data contained in a given source.</short>
 		/// 		<see> setPollingInterval</see>
 		protected virtual bool UpdateSourceEvent(string source) {
+			return false;
 		}
 		/// <remarks>
 		///  Sets a value for a data source. If the source
@@ -294,6 +296,7 @@ namespace PlasmaScripting {
 		/// </return>
 		/// 		<short>   </short>
 		protected int MinimumPollingInterval() {
+			return 0;
 		}
 		/// <remarks>
 		///  Sets up an internal update tick for all data sources. On every update,
@@ -314,6 +317,7 @@ namespace PlasmaScripting {
 		///          </return>
 		/// 		<short>   </short>
 		protected Dictionary<string, Plasma.DataContainer> ContainerDict() {
+			return new Dictionary<string, Plasma.DataContainer>();
 		}
 		/// <remarks>
 		///  Reimplemented from QObject

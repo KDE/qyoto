@@ -12,7 +12,17 @@ SET(SRC_CPP src/plasma.cpp src/plasmahandlers.cpp)
 
 SET(SRC_CS src/AssemblyInfo.cs 
  src/Plasma.cs 
+ src/PlasmaScripting_Applet.cs
+ src/PlasmaScripting_DataEngine.cs
 plasma/*.cs)
+
+SET(SRC_PLASMASCRIPTING src/PlasmaScripting_Applet.cs)
+
+SET(SRC_PLASMASCRIPTENGINEKIMONO_APPLET
+	src/PlasmaScriptengineKimono_Applet.cs)
+
+SET(SRC_PLASMASCRIPTENGINEKIMONO_DATAENGINE
+	src/PlasmaScriptengineKimono_DataEngine.cs)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
@@ -24,5 +34,16 @@ TARGET_LINK_LIBRARIES(plasma-sharp smokeqt smokekde smokeplasma qyotoshared ${PL
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(plasma "${SRC_CS}" ALL)
 
+SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma.dll -warn:0 -keyfile:${KEYFILE})
+ADD_CS_LIBRARY(Applet "${SRC_PLASMASCRIPTENGINEKIMONO_APPLET}" ALL)
+ADD_DEPENDENCIES(Applet plasma)
+
+SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma.dll -warn:0 -keyfile:${KEYFILE})
+ADD_CS_LIBRARY(DataEngine "${SRC_PLASMASCRIPTENGINEKIMONO_DATAENGINE}" ALL)
+ADD_DEPENDENCIES(DataEngine plasma)
+
 INSTALL(TARGETS plasma-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(plasma)
+
+install(FILES ${LIBRARY_OUTPUT_PATH}/Applet.dll DESTINATION ${DATA_INSTALL_DIR}/PlasmaScriptengineKimono)
+install(FILES plasma-scriptengine-mono-applet.desktop DESTINATION ${SERVICES_INSTALL_DIR})

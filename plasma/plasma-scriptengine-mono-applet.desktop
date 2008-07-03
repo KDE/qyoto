@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Mono/.NET Widget
+X-KDE-ServiceTypes=Plasma/ScriptEngine
+Type=Service
+Icon=text-x-script
+X-KDE-Library=kimonopluginfactory
+X-KDE-PluginKeyword=PlasmaScriptengineKimono/Applet.dll
+X-EngineName=kimono-applet-script
+X-Plasma-API=mono-script
+X-Plasma-PackageFormat=Monoid
+X-Plasma-ComponentTypes=Applet
