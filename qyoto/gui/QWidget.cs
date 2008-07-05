@@ -692,11 +692,11 @@ namespace Qyoto {
 		public void SetWindowModified(bool arg1) {
 			interceptor.Invoke("setWindowModified$", "setWindowModified(bool)", typeof(void), typeof(bool), arg1);
 		}
-		[Q_SLOT("void setWindowTitle(const QString&)")]
+		[Q_SLOT("void setWindowTitle(QString)")]
 		public void SetWindowTitle(string arg1) {
 			interceptor.Invoke("setWindowTitle$", "setWindowTitle(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[Q_SLOT("void setStyleSheet(const QString&)")]
+		[Q_SLOT("void setStyleSheet(QString)")]
 		public void SetStyleSheet(string styleSheet) {
 			interceptor.Invoke("setStyleSheet$", "setStyleSheet(const QString&)", typeof(void), typeof(string), styleSheet);
 		}
@@ -992,7 +992,7 @@ namespace Qyoto {
 	}
 
 	public interface IQWidgetSignals : IQObjectSignals {
-		[Q_SIGNAL("void customContextMenuRequested(const QPoint&)")]
+		[Q_SIGNAL("void customContextMenuRequested(QPoint)")]
 		void CustomContextMenuRequested(QPoint pos);
 	}
 }

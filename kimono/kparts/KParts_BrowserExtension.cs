@@ -105,10 +105,10 @@ namespace KParts {
 			set { interceptor.Invoke("setURLDropHandlingEnabled$", "setURLDropHandlingEnabled(bool)", typeof(void), typeof(bool), value); }
 		}
 		// void createNewWindow(const KUrl& arg1,const KParts::OpenUrlArguments& arg2,const KParts::BrowserArguments& arg3,const KParts::WindowArgs& arg4,KParts::ReadOnlyPart** arg5); >>>> NOT CONVERTED
-		// void popupMenu(const QPoint& arg1,const KFileItemList& arg2,const KParts::OpenUrlArguments& arg3,const KParts::BrowserArguments& arg4,KParts::BrowserExtension::PopupFlags arg5,const KParts::BrowserExtension::ActionGroupMap& arg6); >>>> NOT CONVERTED
-		// void popupMenu(const QPoint& arg1,const KUrl& arg2,mode_t arg3,const KParts::OpenUrlArguments& arg4,const KParts::BrowserArguments& arg5,KParts::BrowserExtension::PopupFlags arg6,const KParts::BrowserExtension::ActionGroupMap& arg7); >>>> NOT CONVERTED
-		// KParts::BrowserExtension::ActionSlotMap actionSlotMap(); >>>> NOT CONVERTED
-		// KParts::BrowserExtension::ActionSlotMap* actionSlotMapPtr(); >>>> NOT CONVERTED
+		// void popupMenu(const QPoint& arg1,const KFileItemList& arg2,const KParts::OpenUrlArguments& arg3,const KParts::BrowserArguments& arg4,KParts::BrowserExtension::PopupFlags arg5,const QMap<QString, QList<QAction*> >& arg6); >>>> NOT CONVERTED
+		// void popupMenu(const QPoint& arg1,const KUrl& arg2,mode_t arg3,const KParts::OpenUrlArguments& arg4,const KParts::BrowserArguments& arg5,KParts::BrowserExtension::PopupFlags arg6,const QMap<QString, QList<QAction*> >& arg7); >>>> NOT CONVERTED
+		// QMap<QByteArray, QByteArray> actionSlotMap(); >>>> NOT CONVERTED
+		// QMap<QByteArray, QByteArray>* actionSlotMapPtr(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructor
 		/// <param> name="parent" The KParts.ReadOnlyPart that this extension ... "extends" :)

@@ -134,7 +134,7 @@ namespace KParts {
 		///  If you reimplement it, don't forget to set the caption, usually with
 		///  emit setWindowCaption( url.prettyUrl() );
 		///      </remarks>		<short>    Only reimplement openUrl if you don't want the network transparency support  to download from the url into a temporary file (when the url isn't local).</short>
-		[Q_SLOT("bool openUrl(const KUrl&)")]
+		[Q_SLOT("bool openUrl(KUrl)")]
 		[SmokeMethod("openUrl(const KUrl&)")]
 		public virtual bool OpenUrl(KUrl url) {
 			return (bool) interceptor.Invoke("openUrl#", "openUrl(const KUrl&)", typeof(bool), typeof(KUrl), url);
@@ -210,7 +210,7 @@ namespace KParts {
 		///  Emit this if loading is canceled by the user or by an error.
 		/// <param> name="errMsg" the error message, empty if the user canceled the loading voluntarily.
 		///      </param></remarks>		<short>    Emit this if loading is canceled by the user or by an error.</short>
-		[Q_SIGNAL("void canceled(const QString&)")]
+		[Q_SIGNAL("void canceled(QString)")]
 		void Canceled(string errMsg);
 	}
 }

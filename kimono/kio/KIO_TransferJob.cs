@@ -92,7 +92,7 @@ namespace KIO {
 		protected override bool DoResume() {
 			return (bool) interceptor.Invoke("doResume", "doResume()", typeof(bool));
 		}
-		[Q_SLOT("void slotRedirection(const KUrl&)")]
+		[Q_SLOT("void slotRedirection(KUrl)")]
 		[SmokeMethod("slotRedirection(const KUrl&)")]
 		protected virtual void SlotRedirection(KUrl url) {
 			interceptor.Invoke("slotRedirection#", "slotRedirection(const KUrl&)", typeof(void), typeof(KUrl), url);
@@ -102,7 +102,7 @@ namespace KIO {
 		protected override void SlotFinished() {
 			interceptor.Invoke("slotFinished", "slotFinished()", typeof(void));
 		}
-		[Q_SLOT("void slotData(const QByteArray&)")]
+		[Q_SLOT("void slotData(QByteArray)")]
 		[SmokeMethod("slotData(const QByteArray&)")]
 		protected virtual void SlotData(QByteArray data) {
 			interceptor.Invoke("slotData#", "slotData(const QByteArray&)", typeof(void), typeof(QByteArray), data);
@@ -112,12 +112,12 @@ namespace KIO {
 		protected virtual void SlotDataReq() {
 			interceptor.Invoke("slotDataReq", "slotDataReq()", typeof(void));
 		}
-		[Q_SLOT("void slotMimetype(const QString&)")]
+		[Q_SLOT("void slotMimetype(QString)")]
 		[SmokeMethod("slotMimetype(const QString&)")]
 		protected virtual void SlotMimetype(string mimetype) {
 			interceptor.Invoke("slotMimetype$", "slotMimetype(const QString&)", typeof(void), typeof(string), mimetype);
 		}
-		[Q_SLOT("void slotMetaData(const KIO::MetaData&)")]
+		[Q_SLOT("void slotMetaData(KIO::MetaData)")]
 		[SmokeMethod("slotMetaData(const KIO::MetaData&)")]
 		protected override void SlotMetaData(KIO.MetaData _metaData) {
 			interceptor.Invoke("slotMetaData#", "slotMetaData(const KIO::MetaData&)", typeof(void), typeof(KIO.MetaData), _metaData);
@@ -142,7 +142,7 @@ namespace KIO {
 		///  should not be certain of data.size() == 0 ever happening (e.g. in case
 		///  of an error), so you should rely on result() instead.
 		///          </remarks>		<short>    Data from the slave has arrived.</short>
-		[Q_SIGNAL("void data(KIO::Job*, const QByteArray&)")]
+		[Q_SIGNAL("void data(KIO::Job*, QByteArray)")]
 		void Data(KIO.Job job, QByteArray data);
 		/// <remarks>
 		///  Request for data.
@@ -154,7 +154,7 @@ namespace KIO {
 		/// </param><param> name="data" buffer to fill with data to send to the
 		///  slave. An empty buffer indicates end of data. (EOD)
 		///          </param></remarks>		<short>    Request for data.</short>
-		[Q_SIGNAL("void dataReq(KIO::Job*, QByteArray&)")]
+		[Q_SIGNAL("void dataReq(KIO::Job*, QByteArray)")]
 		void DataReq(KIO.Job job, QByteArray data);
 		/// <remarks>
 		///  Signals a redirection.
@@ -163,7 +163,7 @@ namespace KIO {
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="url" the new URL
 		///          </param></remarks>		<short>    Signals a redirection.</short>
-		[Q_SIGNAL("void redirection(KIO::Job*, const KUrl&)")]
+		[Q_SIGNAL("void redirection(KIO::Job*, KUrl)")]
 		void Redirection(KIO.Job job, KUrl url);
 		/// <remarks>
 		///  Signals a permanent redirection.
@@ -172,14 +172,14 @@ namespace KIO {
 		/// </param><param> name="fromUrl" the original URL
 		/// </param><param> name="toUrl" the new URL
 		///          </param></remarks>		<short>    Signals a permanent redirection.</short>
-		[Q_SIGNAL("void permanentRedirection(KIO::Job*, const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void permanentRedirection(KIO::Job*, KUrl, KUrl)")]
 		void PermanentRedirection(KIO.Job job, KUrl fromUrl, KUrl toUrl);
 		/// <remarks>
 		///  Mimetype determined.
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="type" the mime type
 		///          </param></remarks>		<short>    Mimetype determined.</short>
-		[Q_SIGNAL("void mimetype(KIO::Job*, const QString&)")]
+		[Q_SIGNAL("void mimetype(KIO::Job*, QString)")]
 		void Mimetype(KIO.Job job, string type);
 		/// <remarks>
 		///  Emitted if the "put" job found an existing partial file

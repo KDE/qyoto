@@ -116,7 +116,7 @@ namespace Qyoto {
 		protected void InitializeColumn(QAbstractItemView column) {
 			interceptor.Invoke("initializeColumn#", "initializeColumn(QAbstractItemView*) const", typeof(void), typeof(QAbstractItemView), column);
 		}
-		[Q_SLOT("void currentChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void currentChanged(QModelIndex, QModelIndex)")]
 		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
 		protected override void CurrentChanged(QModelIndex current, QModelIndex previous) {
 			interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), previous);
@@ -139,7 +139,7 @@ namespace Qyoto {
 	}
 
 	public interface IQColumnViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void updatePreviewWidget(const QModelIndex&)")]
+		[Q_SIGNAL("void updatePreviewWidget(QModelIndex)")]
 		void UpdatePreviewWidget(QModelIndex index);
 	}
 }

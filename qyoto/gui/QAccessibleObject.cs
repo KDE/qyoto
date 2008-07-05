@@ -32,9 +32,9 @@ namespace Qyoto {
 		public override int UserActionCount(int child) {
 			return (int) interceptor.Invoke("userActionCount$", "userActionCount(int) const", typeof(int), typeof(int), child);
 		}
-		[SmokeMethod("doAction(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction(int, int, const QList<QVariant>&)")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QVariantList&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
+			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QList<QVariant>&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
 		}
 		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {

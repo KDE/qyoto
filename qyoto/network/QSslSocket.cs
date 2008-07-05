@@ -34,10 +34,10 @@ namespace Qyoto {
 			interceptor.Invoke("QSslSocket", "QSslSocket()", typeof(void));
 		}
 		public void ConnectToHostEncrypted(string hostName, ushort port, uint mode) {
-			interceptor.Invoke("connectToHostEncrypted$$$", "connectToHostEncrypted(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
+			interceptor.Invoke("connectToHostEncrypted$$$", "connectToHostEncrypted(const QString&, unsigned short, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
 		}
 		public void ConnectToHostEncrypted(string hostName, ushort port) {
-			interceptor.Invoke("connectToHostEncrypted$$", "connectToHostEncrypted(const QString&, quint16)", typeof(void), typeof(string), hostName, typeof(ushort), port);
+			interceptor.Invoke("connectToHostEncrypted$$", "connectToHostEncrypted(const QString&, unsigned short)", typeof(void), typeof(string), hostName, typeof(ushort), port);
 		}
 		public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, uint openMode) {
 			return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, QIODevice::OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(uint), openMode);
@@ -237,9 +237,9 @@ namespace Qyoto {
 		protected override long WriteData(string data, long len) {
 			return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
 		}
-		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)")]
+		[Q_SLOT("void connectToHostImplementation(QString, quint16, OpenMode)")]
 		protected new void ConnectToHostImplementation(string hostName, ushort port, uint openMode) {
-			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), openMode);
+			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, unsigned short, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), openMode);
 		}
 		[Q_SLOT("void disconnectFromHostImplementation()")]
 		protected new void DisconnectFromHostImplementation() {
@@ -301,9 +301,9 @@ namespace Qyoto {
 	public interface IQSslSocketSignals : IQTcpSocketSignals {
 		[Q_SIGNAL("void encrypted()")]
 		void Encrypted();
-		[Q_SIGNAL("void peerVerifyError(const QSslError&)")]
+		[Q_SIGNAL("void peerVerifyError(QSslError)")]
 		void PeerVerifyError(QSslError error);
-		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
+		[Q_SIGNAL("void sslErrors(QList<QSslError>)")]
 		void SslErrors(List<QSslError> errors);
 		[Q_SIGNAL("void modeChanged(QSslSocket::SslMode)")]
 		void ModeChanged(QSslSocket.SslMode newMode);

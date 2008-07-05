@@ -97,7 +97,7 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Constructs a KLocale with the given catalog name.</short>
 		public KLocale(string catalog, KSharedConfig config) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KLocale$#", "KLocale(const QString&, KSharedConfig::Ptr)", typeof(void), typeof(string), catalog, typeof(KSharedConfig), config);
+			interceptor.Invoke("KLocale$?", "KLocale(const QString&, KSharedPtr<KSharedConfig>)", typeof(void), typeof(string), catalog, typeof(KSharedConfig), config);
 		}
 		public KLocale(string catalog) : this((Type) null) {
 			CreateProxy();
@@ -873,7 +873,7 @@ namespace Kimono {
 		///  be replaced:
 		/// 
 		/// <li>
-		/// %Y with the century (e.g. "19" for "1984")
+		/// %Y with the whole year (e.g. "1984" for "1984")
 		/// </li>
 		/// 
 		/// <li>
@@ -925,7 +925,7 @@ namespace Kimono {
 		///  be replaced:
 		/// 
 		/// <li>
-		/// %Y with the century (e.g. "19" for "1984")
+		/// %Y with the whole year (e.g. "1984" for "1984")
 		/// </li>
 		/// 
 		/// <li>

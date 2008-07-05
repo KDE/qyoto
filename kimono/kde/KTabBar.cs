@@ -151,10 +151,10 @@ namespace Kimono {
 
 	public interface IKTabBarSignals : IQTabBarSignals {
 		/// <remarks> Emitted when the user right-clicks a tab. </remarks>		<short>   Emitted when the user right-clicks a tab.</short>
-		[Q_SIGNAL("void contextMenu(int, const QPoint&)")]
+		[Q_SIGNAL("void contextMenu(int, QPoint)")]
 		void ContextMenu(int arg1, QPoint arg2);
 		/// <remarks> Emitted when the user right-clicks the empty area on the tab bar. </remarks>		<short>   Emitted when the user right-clicks the empty area on the tab bar.</short>
-		[Q_SIGNAL("void emptyAreaContextMenu(const QPoint&)")]
+		[Q_SIGNAL("void emptyAreaContextMenu(QPoint)")]
 		void EmptyAreaContextMenu(QPoint arg1);
 		/// <remarks> @deprecated use tabDoubleClicked(int) and newTabRequest() instead. </remarks>		<short>   @deprecated use tabDoubleClicked(int) and newTabRequest() instead.</short>
 		[Q_SIGNAL("void mouseDoubleClick(int)")]
@@ -170,7 +170,7 @@ namespace Kimono {
 		void MouseMiddleClick(int arg1);
 		[Q_SIGNAL("void initiateDrag(int)")]
 		void InitiateDrag(int arg1);
-		[Q_SIGNAL("void testCanDecode(const QDragMoveEvent*, bool&)")]
+		[Q_SIGNAL("void testCanDecode(QDragMoveEvent*, bool)")]
 		void TestCanDecode(QDragMoveEvent arg1, bool arg2);
 		[Q_SIGNAL("void receivedDropEvent(int, QDropEvent*)")]
 		void ReceivedDropEvent(int arg1, QDropEvent arg2);

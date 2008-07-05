@@ -34,11 +34,11 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[Q_SLOT("void load(const QString&)")]
+		[Q_SLOT("void load(QString)")]
 		public void Load(string file) {
 			interceptor.Invoke("load$", "load(const QString&)", typeof(void), typeof(string), file);
 		}
-		[Q_SLOT("void load(const QByteArray&)")]
+		[Q_SLOT("void load(QByteArray)")]
 		public void Load(QByteArray contents) {
 			interceptor.Invoke("load#", "load(const QByteArray&)", typeof(void), typeof(QByteArray), contents);
 		}

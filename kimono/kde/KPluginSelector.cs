@@ -30,8 +30,6 @@ namespace Kimono {
 			ReadConfigFile = 0,
 			IgnoreConfigFile = 1,
 		}
-		// void addPlugins(const KComponentData& arg1,const QString& arg2,const QString& arg3,const KSharedConfig::Ptr& arg4); >>>> NOT CONVERTED
-		// void addPlugins(const QList<KPluginInfo>& arg1,KPluginSelector::PluginLoadMethod arg2,const QString& arg3,const QString& arg4,const KSharedConfig::Ptr& arg5); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a new KPluginSelector
 		///       </remarks>		<short>    Create a new KPluginSelector       </short>
@@ -72,7 +70,7 @@ namespace Kimono {
 		///                       "kviewcanvas" )
 		///       </param></remarks>		<short>    Add a list of KParts plugins </short>
 		public void AddPlugins(string componentName, string categoryName, string categoryKey, KSharedConfig config) {
-			interceptor.Invoke("addPlugins$$$#", "addPlugins(const QString&, const QString&, const QString&, KSharedConfig::Ptr)", typeof(void), typeof(string), componentName, typeof(string), categoryName, typeof(string), categoryKey, typeof(KSharedConfig), config);
+			interceptor.Invoke("addPlugins$$$?", "addPlugins(const QString&, const QString&, const QString&, KSharedPtr<KSharedConfig>)", typeof(void), typeof(string), componentName, typeof(string), categoryName, typeof(string), categoryKey, typeof(KSharedConfig), config);
 		}
 		public void AddPlugins(string componentName, string categoryName, string categoryKey) {
 			interceptor.Invoke("addPlugins$$$", "addPlugins(const QString&, const QString&, const QString&)", typeof(void), typeof(string), componentName, typeof(string), categoryName, typeof(string), categoryKey);
@@ -87,6 +85,9 @@ namespace Kimono {
 		///  Add a list of KParts plugins. Convenience method for the one above.
 		///  If not set explicitly, <code>config</code> is set to componentData.config()
 		///       </remarks>		<short>    Add a list of KParts plugins.</short>
+		public void AddPlugins(KComponentData instance, string categoryName, string categoryKey, KSharedConfig config) {
+			interceptor.Invoke("addPlugins#$$?", "addPlugins(const KComponentData&, const QString&, const QString&, const KSharedPtr<KSharedConfig>&)", typeof(void), typeof(KComponentData), instance, typeof(string), categoryName, typeof(string), categoryKey, typeof(KSharedConfig), config);
+		}
 		public void AddPlugins(KComponentData instance, string categoryName, string categoryKey) {
 			interceptor.Invoke("addPlugins#$$", "addPlugins(const KComponentData&, const QString&, const QString&)", typeof(void), typeof(KComponentData), instance, typeof(string), categoryName, typeof(string), categoryKey);
 		}
@@ -135,6 +136,9 @@ namespace Kimono {
 		///          will load and save their information from there. For those that
 		///          weren't any config object, <code>config</code> will be used
 		///       </remarks>		<short>    Add a list of non-KParts plugins </short>
+		public void AddPlugins(List<KPluginInfo> pluginInfoList, KPluginSelector.PluginLoadMethod pluginLoadMethod, string categoryName, string categoryKey, KSharedConfig config) {
+			interceptor.Invoke("addPlugins?$$$?", "addPlugins(const QList<KPluginInfo>&, KPluginSelector::PluginLoadMethod, const QString&, const QString&, const KSharedPtr<KSharedConfig>&)", typeof(void), typeof(List<KPluginInfo>), pluginInfoList, typeof(KPluginSelector.PluginLoadMethod), pluginLoadMethod, typeof(string), categoryName, typeof(string), categoryKey, typeof(KSharedConfig), config);
+		}
 		public void AddPlugins(List<KPluginInfo> pluginInfoList, KPluginSelector.PluginLoadMethod pluginLoadMethod, string categoryName, string categoryKey) {
 			interceptor.Invoke("addPlugins?$$$", "addPlugins(const QList<KPluginInfo>&, KPluginSelector::PluginLoadMethod, const QString&, const QString&)", typeof(void), typeof(List<KPluginInfo>), pluginInfoList, typeof(KPluginSelector.PluginLoadMethod), pluginLoadMethod, typeof(string), categoryName, typeof(string), categoryKey);
 		}
@@ -205,7 +209,7 @@ namespace Kimono {
 		///  argument is the name of the parent component that needs to reload
 		///  its config
 		///       </remarks>		<short>    Emitted after the config of an embedded KCM has been saved.</short>
-		[Q_SIGNAL("void configCommitted(const QByteArray&)")]
+		[Q_SIGNAL("void configCommitted(QByteArray)")]
 		void ConfigCommitted(QByteArray componentName);
 	}
 }

@@ -79,7 +79,7 @@ namespace Kimono {
 		/// </param><param> name="field1" first field (localized name and value)
 		/// </param><param> name="field2" second field (localized name and value)
 		///      </param></remarks>		<short>    Called to display general description of a job.</short>
-		[Q_SLOT("void description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)")]
+		[Q_SLOT("void description(KJob*, QString, QPair<QString, QString>, QPair<QString, QString>)")]
 		[SmokeMethod("description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)")]
 		protected virtual void Description(KJob job, string title, QPair<string, string> field1, QPair<string, string> field2) {
 			interceptor.Invoke("description#$??", "description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)", typeof(void), typeof(KJob), job, typeof(string), title, typeof(QPair<string, string>), field1, typeof(QPair<string, string>), field2);
@@ -91,7 +91,7 @@ namespace Kimono {
 		/// </param><param> name="plain" the info message
 		/// </param><param> name="rich" the rich text version of the message, or string() is none is available
 		///      </param></remarks>		<short>    Called to display state information about a job.</short>
-		[Q_SLOT("void infoMessage(KJob*, const QString&, const QString&)")]
+		[Q_SLOT("void infoMessage(KJob*, QString, QString)")]
 		[SmokeMethod("infoMessage(KJob*, const QString&, const QString&)")]
 		protected virtual void InfoMessage(KJob job, string plain, string rich) {
 			interceptor.Invoke("infoMessage#$$", "infoMessage(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);
@@ -102,7 +102,7 @@ namespace Kimono {
 		/// </param><param> name="plain" the warning message
 		/// </param><param> name="rich" the rich text version of the message, or string() is none is available
 		///      </param></remarks>		<short>    Emitted to display a warning about a job.</short>
-		[Q_SLOT("void warning(KJob*, const QString&, const QString&)")]
+		[Q_SLOT("void warning(KJob*, QString, QString)")]
 		[SmokeMethod("warning(KJob*, const QString&, const QString&)")]
 		protected virtual void Warning(KJob job, string plain, string rich) {
 			interceptor.Invoke("warning#$$", "warning(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);

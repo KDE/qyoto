@@ -202,7 +202,7 @@ namespace Kimono {
 		///  Connect to this to monitor the font as it is selected if you are
 		///  not running modal.
 		///    </remarks>		<short>    Emitted whenever the currently selected font changes.</short>
-		[Q_SIGNAL("void fontSelected(const QFont&)")]
+		[Q_SIGNAL("void fontSelected(QFont)")]
 		void FontSelected(QFont font);
 	}
 }

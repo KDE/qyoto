@@ -130,11 +130,11 @@ namespace Qyoto {
 		public new virtual void DropEvent(QDropEvent arg1) {
 			interceptor.Invoke("dropEvent#", "dropEvent(QDropEvent*)", typeof(void), typeof(QDropEvent), arg1);
 		}
-		[Q_SLOT("void scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[Q_SLOT("void scrollToItem(QListWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QListWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			interceptor.Invoke("scrollToItem#$", "scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)", typeof(void), typeof(QListWidgetItem), item, typeof(QAbstractItemView.ScrollHint), hint);
 		}
-		[Q_SLOT("void scrollToItem(const QListWidgetItem*)")]
+		[Q_SLOT("void scrollToItem(QListWidgetItem*)")]
 		public void ScrollToItem(QListWidgetItem item) {
 			interceptor.Invoke("scrollToItem#", "scrollToItem(const QListWidgetItem*)", typeof(void), typeof(QListWidgetItem), item);
 		}
@@ -203,7 +203,7 @@ namespace Qyoto {
 		void ItemChanged(QListWidgetItem item);
 		[Q_SIGNAL("void currentItemChanged(QListWidgetItem*, QListWidgetItem*)")]
 		void CurrentItemChanged(QListWidgetItem current, QListWidgetItem previous);
-		[Q_SIGNAL("void currentTextChanged(const QString&)")]
+		[Q_SIGNAL("void currentTextChanged(QString)")]
 		void CurrentTextChanged(string currentText);
 		[Q_SIGNAL("void currentRowChanged(int)")]
 		void CurrentRowChanged(int currentRow);

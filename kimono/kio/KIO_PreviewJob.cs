@@ -102,7 +102,7 @@ namespace KIO {
 		/// <param> name="item" the file of the preview
 		/// </param><param> name="preview" the preview image
 		///          </param></remarks>		<short>    Emitted when a thumbnail picture for <code>item</code> has been successfully  retrieved.</short>
-		[Q_SIGNAL("void gotPreview(const KFileItem&, const QPixmap&)")]
+		[Q_SIGNAL("void gotPreview(KFileItem, QPixmap)")]
 		void GotPreview(KFileItem item, QPixmap preview);
 		/// <remarks>
 		///  Emitted when a thumbnail for <code>item</code> could not be created,
@@ -110,7 +110,7 @@ namespace KIO {
 		///  exist, or because something went wrong.
 		/// <param> name="item" the file that failed
 		///          </param></remarks>		<short>    Emitted when a thumbnail for <code>item</code> could not be created,  either because a ThumbCreator for its MIME type does not  exist, or because something went wrong.</short>
-		[Q_SIGNAL("void failed(const KFileItem&)")]
+		[Q_SIGNAL("void failed(KFileItem)")]
 		void Failed(KFileItem item);
 	}
 }

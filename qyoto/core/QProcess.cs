@@ -40,7 +40,6 @@ namespace Qyoto {
 			NormalExit = 0,
 			CrashExit = 1,
 		}
-		// Q_PID pid(); >>>> NOT CONVERTED
 		// bool startDetached(const QString& arg1,const QStringList& arg2,const QString& arg3,qint64* arg4); >>>> NOT CONVERTED
 		public QProcess(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -121,6 +120,9 @@ namespace Qyoto {
 		}
 		public QProcess.ProcessState State() {
 			return (QProcess.ProcessState) interceptor.Invoke("state", "state() const", typeof(QProcess.ProcessState));
+		}
+		public long Pid() {
+			return (long) interceptor.Invoke("pid", "pid() const", typeof(long));
 		}
 		public bool WaitForStarted(int msecs) {
 			return (bool) interceptor.Invoke("waitForStarted$", "waitForStarted(int)", typeof(bool), typeof(int), msecs);

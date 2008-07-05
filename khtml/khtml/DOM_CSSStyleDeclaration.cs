@@ -141,19 +141,8 @@ namespace DOM {
 		public void SetProperty(DOM.DOMString propertyName, DOM.DOMString value, DOM.DOMString priority) {
 			interceptor.Invoke("setProperty###", "setProperty(const DOM::DOMString&, const DOM::DOMString&, const DOM::DOMString&)", typeof(void), typeof(DOM.DOMString), propertyName, typeof(DOM.DOMString), value, typeof(DOM.DOMString), priority);
 		}
-		/// <remarks>
-		///  Used to retrieve the properties that have been explicitly set
-		///  in this declaration block. The order of the properties
-		///  retrieved using this method does not have to be the order in
-		///  which they were set. This method can be used to iterate over
-		///  all properties in this declaration block.
-		/// <param> name="index" Index of the property name to retrieve.
-		/// </param>     </remarks>		<return> The name of the property at this ordinal position. The
-		///  empty string if no property exists at this position.
-		/// </return>
-		/// 		<short>    Used to retrieve the properties that have been explicitly set  in this declaration block.</short>
 		public DOM.DOMString Item(ulong index) {
-			return (DOM.DOMString) interceptor.Invoke("item$", "item(unsigned long) const", typeof(DOM.DOMString), typeof(ulong), index);
+			return (DOM.DOMString) interceptor.Invoke("item$", "item(unsigned long)", typeof(DOM.DOMString), typeof(ulong), index);
 		}
 		public bool IsNull() {
 			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));

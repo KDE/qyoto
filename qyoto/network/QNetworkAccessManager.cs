@@ -85,13 +85,13 @@ namespace Qyoto {
 	}
 
 	public interface IQNetworkAccessManagerSignals : IQObjectSignals {
-		[Q_SIGNAL("void proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)")]
+		[Q_SIGNAL("void proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)")]
 		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator authenticator);
 		[Q_SIGNAL("void authenticationRequired(QNetworkReply*, QAuthenticator*)")]
 		void AuthenticationRequired(QNetworkReply reply, QAuthenticator authenticator);
 		[Q_SIGNAL("void finished(QNetworkReply*)")]
 		void Finished(QNetworkReply reply);
-		[Q_SIGNAL("void sslErrors(QNetworkReply*, const QList<QSslError>&)")]
+		[Q_SIGNAL("void sslErrors(QNetworkReply*, QList<QSslError>)")]
 		void SslErrors(QNetworkReply reply, List<QSslError> errors);
 	}
 }

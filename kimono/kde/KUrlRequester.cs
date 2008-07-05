@@ -129,7 +129,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Sets the url in the lineedit to <code>url.</code>
 		///      </remarks>		<short>    Sets the url in the lineedit to <code>url.</code></short>
-		[Q_SLOT("void setUrl(const KUrl&)")]
+		[Q_SLOT("void setUrl(KUrl)")]
 		public void SetUrl(KUrl url) {
 			interceptor.Invoke("setUrl#", "setUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
 		}
@@ -139,7 +139,7 @@ namespace Kimono {
 		///  This method is mostly for "local paths only" url requesters,
 		///  for instance those set up with setMode(KFile.File|KFile.ExistingOnly|KFile.LocalOnly)
 		///      </remarks>		<short>    Sets the url in the lineedit to <code>KUrl</code>.FromPath(path).</short>
-		[Q_SLOT("void setPath(const QString&)")]
+		[Q_SLOT("void setPath(QString)")]
 		public void SetPath(string path) {
 			interceptor.Invoke("setPath$", "setPath(const QString&)", typeof(void), typeof(string), path);
 		}
@@ -174,7 +174,7 @@ namespace Kimono {
 		///  Emitted when the text in the lineedit changes.
 		///  The parameter contains the contents of the lineedit.
 		///      </remarks>		<short>    Emitted when the text in the lineedit changes.</short>
-		[Q_SIGNAL("void textChanged(const QString&)")]
+		[Q_SIGNAL("void textChanged(QString)")]
 		void TextChanged(string arg1);
 		/// <remarks>
 		///  Emitted when return or enter was pressed in the lineedit.
@@ -185,7 +185,7 @@ namespace Kimono {
 		///  Emitted when return or enter was pressed in the lineedit.
 		///  The parameter contains the contents of the lineedit.
 		///      </remarks>		<short>    Emitted when return or enter was pressed in the lineedit.</short>
-		[Q_SIGNAL("void returnPressed(const QString&)")]
+		[Q_SIGNAL("void returnPressed(QString)")]
 		void ReturnPressed(string arg1);
 		/// <remarks>
 		///  Emitted before the filedialog is going to open. Connect
@@ -203,7 +203,7 @@ namespace Kimono {
 		///  Emitted when the user changed the URL via the file dialog.
 		///  The parameter contains the contents of the lineedit.
 		///      </remarks>		<short>    Emitted when the user changed the URL via the file dialog.</short>
-		[Q_SIGNAL("void urlSelected(const KUrl&)")]
+		[Q_SIGNAL("void urlSelected(KUrl)")]
 		void UrlSelected(KUrl arg1);
 	}
 }

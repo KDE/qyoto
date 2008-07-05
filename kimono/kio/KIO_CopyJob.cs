@@ -102,7 +102,7 @@ namespace KIO {
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="files" a list of items that are about to be created.
 		/// 	 </param></remarks>		<short>    Emitted when it is known which files / directories are going  to be created.</short>
-		[Q_SIGNAL("void aboutToCreate(KIO::Job*, const QList<KIO::CopyInfo>&)")]
+		[Q_SIGNAL("void aboutToCreate(KIO::Job*, QList<KIO::CopyInfo>)")]
 		void AboutToCreate(KIO.Job job, List<KIO.CopyInfo> files);
 		/// <remarks>
 		///  Sends the number of processed files.
@@ -127,7 +127,7 @@ namespace KIO {
 		///              being copied
 		/// </param><param> name="dest" the destination of the current operation
 		///          </param></remarks>		<short>    The job is copying a file or directory.</short>
-		[Q_SIGNAL("void copying(KIO::Job*, const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void copying(KIO::Job*, KUrl, KUrl)")]
 		void Copying(KIO.Job job, KUrl src, KUrl dest);
 		/// <remarks>
 		///  The job is creating a symbolic link.
@@ -138,7 +138,7 @@ namespace KIO {
 		///              being linked
 		/// </param><param> name="to" the destination of the current operation
 		///          </param></remarks>		<short>    The job is creating a symbolic link.</short>
-		[Q_SIGNAL("void linking(KIO::Job*, const QString&, const KUrl&)")]
+		[Q_SIGNAL("void linking(KIO::Job*, QString, KUrl)")]
 		void Linking(KIO.Job job, string target, KUrl to);
 		/// <remarks>
 		///  The job is moving a file or directory.
@@ -149,7 +149,7 @@ namespace KIO {
 		///              being moved
 		/// </param><param> name="to" the destination of the current operation
 		///          </param></remarks>		<short>    The job is moving a file or directory.</short>
-		[Q_SIGNAL("void moving(KIO::Job*, const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void moving(KIO::Job*, KUrl, KUrl)")]
 		void Moving(KIO.Job job, KUrl from, KUrl to);
 		/// <remarks>
 		///  The job is creating the directory <code>dir.</code>
@@ -157,7 +157,7 @@ namespace KIO {
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="dir" the directory that is currently being created
 		///          </param></remarks>		<short>    The job is creating the directory <code>dir.</code></short>
-		[Q_SIGNAL("void creatingDir(KIO::Job*, const KUrl&)")]
+		[Q_SIGNAL("void creatingDir(KIO::Job*, KUrl)")]
 		void CreatingDir(KIO.Job job, KUrl dir);
 		/// <remarks>
 		///  The user chose to rename <code>from</code> to <code>to.</code>
@@ -165,7 +165,7 @@ namespace KIO {
 		/// </param><param> name="from" the original name
 		/// </param><param> name="to" the new name
 		///          </param></remarks>		<short>    The user chose to rename <code>from</code> to <code>to.</code></short>
-		[Q_SIGNAL("void renamed(KIO::Job*, const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void renamed(KIO::Job*, KUrl, KUrl)")]
 		void Renamed(KIO.Job job, KUrl from, KUrl to);
 		/// <remarks>
 		///  The job emits this signal when copying or moving a file or directory successfully finished.
@@ -181,7 +181,7 @@ namespace KIO {
 		/// </param><param> name="renamed" indicates that the destination URL was created using a
 		///  rename operation (i.e. fast directory moving). true if is has been renamed
 		///          </param></remarks>		<short>    The job emits this signal when copying or moving a file or directory successfully finished.</short>
-		[Q_SIGNAL("void copyingDone(KIO::Job*, const KUrl&, const KUrl&, time_t, bool, bool)")]
+		[Q_SIGNAL("void copyingDone(KIO::Job*, KUrl, KUrl, time_t, bool, bool)")]
 		void CopyingDone(KIO.Job job, KUrl from, KUrl to, int mtime, bool directory, bool renamed);
 		/// <remarks>
 		///  The job is copying or moving a symbolic link, that points to target.
@@ -192,7 +192,7 @@ namespace KIO {
 		/// </param><param> name="target" the target
 		/// </param><param> name="to" the destination URL
 		///          </param></remarks>		<short>    The job is copying or moving a symbolic link, that points to target.</short>
-		[Q_SIGNAL("void copyingLinkDone(KIO::Job*, const KUrl&, const QString&, const KUrl&)")]
+		[Q_SIGNAL("void copyingLinkDone(KIO::Job*, KUrl, QString, KUrl)")]
 		void CopyingLinkDone(KIO.Job job, KUrl from, string target, KUrl to);
 	}
 }

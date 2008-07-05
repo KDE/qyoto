@@ -123,14 +123,14 @@ namespace Kimono {
 		///  Sets the URL for this label to <code>url.</code>
 		/// </remarks>		<short>    Sets the URL for this label to <code>url.</code></short>
 		/// 		<see> url</see>
-		[Q_SLOT("void setUrl(const QString&)")]
+		[Q_SLOT("void setUrl(QString)")]
 		public void SetUrl(string url) {
 			interceptor.Invoke("setUrl$", "setUrl(const QString&)", typeof(void), typeof(string), url);
 		}
 		/// <remarks>
 		///  Overridden for internal reasons; the API remains unaffected.
 		///      </remarks>		<short>    Overridden for internal reasons; the API remains unaffected.</short>
-		[Q_SLOT("void setFont(const QFont&)")]
+		[Q_SLOT("void setFont(QFont)")]
 		[SmokeMethod("setFont(const QFont&)")]
 		public virtual void SetFont(QFont font) {
 			interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), font);
@@ -154,7 +154,7 @@ namespace Kimono {
 		///  If this is not used, the tip will default to the URL.
 		/// </remarks>		<short>    Specifies what text to display when tooltips are turned on.</short>
 		/// 		<see> setUseTips</see>
-		[Q_SLOT("void setTipText(const QString&)")]
+		[Q_SLOT("void setTipText(QString)")]
 		public void SetTipText(string tip) {
 			interceptor.Invoke("setTipText$", "setTipText(const QString&)", typeof(void), typeof(string), tip);
 		}
@@ -163,7 +163,7 @@ namespace Kimono {
 		///  This is the default foreground
 		///  color (non-selected).  By default, it is <code>blue.</code>
 		///      </remarks>		<short>    Sets the highlight color.</short>
-		[Q_SLOT("void setHighlightedColor(const QColor&)")]
+		[Q_SLOT("void setHighlightedColor(QColor)")]
 		public void SetHighlightedColor(QColor highcolor) {
 			interceptor.Invoke("setHighlightedColor#", "setHighlightedColor(const QColor&)", typeof(void), typeof(QColor), highcolor);
 		}
@@ -171,7 +171,7 @@ namespace Kimono {
 		///  This is an overloaded version for convenience.
 		/// </remarks>		<short>    This is an overloaded version for convenience.</short>
 		/// 		<see> setHighlightedColor</see>
-		[Q_SLOT("void setHighlightedColor(const QString&)")]
+		[Q_SLOT("void setHighlightedColor(QString)")]
 		public void SetHighlightedColor(string highcolor) {
 			interceptor.Invoke("setHighlightedColor$", "setHighlightedColor(const QString&)", typeof(void), typeof(string), highcolor);
 		}
@@ -181,7 +181,7 @@ namespace Kimono {
 		///  to when either a mouse passes over it and "glow" mode is on or
 		///  when it is selected (clicked).  By default, it is <code>red.</code>
 		///      </remarks>		<short>    Sets the selected color.</short>
-		[Q_SLOT("void setSelectedColor(const QColor&)")]
+		[Q_SLOT("void setSelectedColor(QColor)")]
 		public void SetSelectedColor(QColor color) {
 			interceptor.Invoke("setSelectedColor#", "setSelectedColor(const QColor&)", typeof(void), typeof(QColor), color);
 		}
@@ -189,7 +189,7 @@ namespace Kimono {
 		///  This is an overloaded version for convenience.
 		/// </remarks>		<short>    This is an overloaded version for convenience.</short>
 		/// 		<see> setSelectedColor</see>
-		[Q_SLOT("void setSelectedColor(const QString&)")]
+		[Q_SLOT("void setSelectedColor(QString)")]
 		public void SetSelectedColor(string color) {
 			interceptor.Invoke("setSelectedColor$", "setSelectedColor(const QString&)", typeof(void), typeof(string), color);
 		}
@@ -248,7 +248,7 @@ namespace Kimono {
 		///  trick done with 'onMouseOver' in javascript.
 		/// </remarks>		<short>    Sets the "alt" pixmap.</short>
 		/// 		<see> alternatePixmap</see>
-		[Q_SLOT("void setAlternatePixmap(const QPixmap&)")]
+		[Q_SLOT("void setAlternatePixmap(QPixmap)")]
 		public void SetAlternatePixmap(QPixmap pixmap) {
 			interceptor.Invoke("setAlternatePixmap#", "setAlternatePixmap(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
@@ -296,7 +296,7 @@ namespace Kimono {
 		///  Emitted when the mouse has passed over the label.
 		/// <param> name="url" The URL for this label.
 		///      </param></remarks>		<short>    Emitted when the mouse has passed over the label.</short>
-		[Q_SIGNAL("void enteredUrl(const QString&)")]
+		[Q_SIGNAL("void enteredUrl(QString)")]
 		void EnteredUrl(string url);
 		/// <remarks>
 		///  Emitted when the mouse has passed over the label.
@@ -307,7 +307,7 @@ namespace Kimono {
 		///  Emitted when the mouse is no longer over the label.
 		/// <param> name="url" The URL for this label.
 		///      </param></remarks>		<short>    Emitted when the mouse is no longer over the label.</short>
-		[Q_SIGNAL("void leftUrl(const QString&)")]
+		[Q_SIGNAL("void leftUrl(QString)")]
 		void LeftUrl(string url);
 		/// <remarks>
 		///  Emitted when the mouse is no longer over the label.
@@ -318,7 +318,7 @@ namespace Kimono {
 		///  Emitted when the user clicked the left mouse button on this label.
 		/// <param> name="url" The URL for this label.
 		///      </param></remarks>		<short>    Emitted when the user clicked the left mouse button on this label.</short>
-		[Q_SIGNAL("void leftClickedUrl(const QString&)")]
+		[Q_SIGNAL("void leftClickedUrl(QString)")]
 		void LeftClickedUrl(string url);
 		/// <remarks>
 		///  Emitted when the user clicked the left mouse button on this label.
@@ -329,7 +329,7 @@ namespace Kimono {
 		///  Emitted when the user clicked the right mouse button on this label.
 		/// <param> name="url" The URL for this label.
 		///      </param></remarks>		<short>    Emitted when the user clicked the right mouse button on this label.</short>
-		[Q_SIGNAL("void rightClickedUrl(const QString&)")]
+		[Q_SIGNAL("void rightClickedUrl(QString)")]
 		void RightClickedUrl(string url);
 		/// <remarks>
 		///  Emitted when the user clicked the right mouse button on this label.
@@ -340,7 +340,7 @@ namespace Kimono {
 		///  Emitted when the user clicked the middle mouse button on this label.
 		/// <param> name="url" The URL for this label.
 		///      </param></remarks>		<short>    Emitted when the user clicked the middle mouse button on this label.</short>
-		[Q_SIGNAL("void middleClickedUrl(const QString&)")]
+		[Q_SIGNAL("void middleClickedUrl(QString)")]
 		void MiddleClickedUrl(string url);
 		/// <remarks>
 		///  Emitted when the user clicked the left mouse button on this label.

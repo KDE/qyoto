@@ -20,7 +20,7 @@ namespace Qyoto {
 			Off = 1,
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
-		// QIcon::DataPtr& data_ptr(); >>>> NOT CONVERTED
+		// QIconPrivate*& data_ptr(); >>>> NOT CONVERTED
 		public QIcon() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QIcon", "QIcon()", typeof(void));

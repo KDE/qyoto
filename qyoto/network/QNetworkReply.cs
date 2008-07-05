@@ -148,7 +148,7 @@ namespace Qyoto {
 		void Finished();
 		[Q_SIGNAL("void error(QNetworkReply::NetworkError)")]
 		void Error(QNetworkReply.NetworkError arg1);
-		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
+		[Q_SIGNAL("void sslErrors(QList<QSslError>)")]
 		void SslErrors(List<QSslError> errors);
 		[Q_SIGNAL("void uploadProgress(qint64, qint64)")]
 		void UploadProgress(long bytesSent, long bytesTotal);

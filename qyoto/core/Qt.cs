@@ -1051,10 +1051,10 @@ namespace Qyoto {
 			return (QDBusArgument) staticInterceptor.Invoke("operator<<##", "operator<<(QDBusArgument&, const QLineF&)", typeof(QDBusArgument), typeof(QDBusArgument), a, typeof(QLineF), line);
 		}
 		public static QDBusArgument Write(QDBusArgument arg, List<QVariant> list) {
-			return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QVariantList&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(List<QVariant>), list);
+			return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QList<QVariant>&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(List<QVariant>), list);
 		}
 		public static QDBusArgument Write(QDBusArgument arg, Dictionary<string, QVariant> map) {
-			return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QVariantMap&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(Dictionary<string, QVariant>), map);
+			return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QMap<QString, QVariant>&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(Dictionary<string, QVariant>), map);
 		}
 		public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
 			return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QDomNode&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QDomNode), arg2);
@@ -1591,16 +1591,16 @@ namespace Qyoto {
 			return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBrush&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBrush), arg2);
 		}
 		public static int QRed(uint rgb) {
-			return (int) staticInterceptor.Invoke("qRed$", "qRed(QRgb)", typeof(int), typeof(uint), rgb);
+			return (int) staticInterceptor.Invoke("qRed$", "qRed(unsigned int)", typeof(int), typeof(uint), rgb);
 		}
 		public static int QGreen(uint rgb) {
-			return (int) staticInterceptor.Invoke("qGreen$", "qGreen(QRgb)", typeof(int), typeof(uint), rgb);
+			return (int) staticInterceptor.Invoke("qGreen$", "qGreen(unsigned int)", typeof(int), typeof(uint), rgb);
 		}
 		public static int QBlue(uint rgb) {
-			return (int) staticInterceptor.Invoke("qBlue$", "qBlue(QRgb)", typeof(int), typeof(uint), rgb);
+			return (int) staticInterceptor.Invoke("qBlue$", "qBlue(unsigned int)", typeof(int), typeof(uint), rgb);
 		}
 		public static int QAlpha(uint rgb) {
-			return (int) staticInterceptor.Invoke("qAlpha$", "qAlpha(QRgb)", typeof(int), typeof(uint), rgb);
+			return (int) staticInterceptor.Invoke("qAlpha$", "qAlpha(unsigned int)", typeof(int), typeof(uint), rgb);
 		}
 		public static uint QRgb(int r, int g, int b) {
 			return (uint) staticInterceptor.Invoke("qRgb$$$", "qRgb(int, int, int)", typeof(uint), typeof(int), r, typeof(int), g, typeof(int), b);
@@ -1612,10 +1612,10 @@ namespace Qyoto {
 			return (int) staticInterceptor.Invoke("qGray$$$", "qGray(int, int, int)", typeof(int), typeof(int), r, typeof(int), g, typeof(int), b);
 		}
 		public static int QGray(uint rgb) {
-			return (int) staticInterceptor.Invoke("qGray$", "qGray(QRgb)", typeof(int), typeof(uint), rgb);
+			return (int) staticInterceptor.Invoke("qGray$", "qGray(unsigned int)", typeof(int), typeof(uint), rgb);
 		}
 		public static bool QIsGray(uint rgb) {
-			return (bool) staticInterceptor.Invoke("qIsGray$", "qIsGray(QRgb)", typeof(bool), typeof(uint), rgb);
+			return (bool) staticInterceptor.Invoke("qIsGray$", "qIsGray(unsigned int)", typeof(bool), typeof(uint), rgb);
 		}
 		public static QDataStream Write(QDataStream arg1, QPainterPath arg2) {
 			return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPainterPath&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPainterPath), arg2);

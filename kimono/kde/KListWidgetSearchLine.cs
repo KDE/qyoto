@@ -50,7 +50,7 @@ namespace Kimono {
 		///  Updates search to only make visible the items that match \a s.  If
 		///  \a s is null then the line edit's text will be used.
 		///      </remarks>		<short>    Updates search to only make visible the items that match \a s.</short>
-		[Q_SLOT("void updateSearch(const QString&)")]
+		[Q_SLOT("void updateSearch(QString)")]
 		[SmokeMethod("updateSearch(const QString&)")]
 		public virtual void UpdateSearch(string s) {
 			interceptor.Invoke("updateSearch$", "updateSearch(const QString&)", typeof(void), typeof(string), s);

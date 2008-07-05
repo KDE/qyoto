@@ -232,7 +232,7 @@ namespace Kimono {
 		///  Apply a state change
 		///  Enable and disable actions as defined in the XML rc file
 		///      </remarks>		<short>    Apply a state change </short>
-		[Q_SLOT("void slotStateChanged(const QString&)")]
+		[Q_SLOT("void slotStateChanged(QString)")]
 		[SmokeMethod("slotStateChanged(const QString&)")]
 		public virtual void SlotStateChanged(string newstate) {
 			interceptor.Invoke("slotStateChanged$", "slotStateChanged(const QString&)", typeof(void), typeof(string), newstate);
@@ -243,7 +243,7 @@ namespace Kimono {
 		///  can "reverse" the state (disable the actions which should be
 		///  enabled, and vice-versa) if specified.
 		///      </remarks>		<short>    Apply a state change </short>
-		[Q_SLOT("void slotStateChanged(const QString&, bool)")]
+		[Q_SLOT("void slotStateChanged(QString, bool)")]
 		public void SlotStateChanged(string newstate, bool reverse) {
 			interceptor.Invoke("slotStateChanged$$", "slotStateChanged(const QString&, bool)", typeof(void), typeof(string), newstate, typeof(bool), reverse);
 		}

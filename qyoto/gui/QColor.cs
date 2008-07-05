@@ -39,7 +39,7 @@ namespace Qyoto {
 		}
 		public QColor(uint rgb) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QColor$", "QColor(QRgb)", typeof(void), typeof(uint), rgb);
+			interceptor.Invoke("QColor$", "QColor(unsigned int)", typeof(void), typeof(uint), rgb);
 		}
 		public QColor(string name) : this((Type) null) {
 			CreateProxy();
@@ -177,13 +177,13 @@ namespace Qyoto {
 			return (uint) interceptor.Invoke("rgba", "rgba() const", typeof(uint));
 		}
 		public void SetRgba(uint rgba) {
-			interceptor.Invoke("setRgba$", "setRgba(QRgb)", typeof(void), typeof(uint), rgba);
+			interceptor.Invoke("setRgba$", "setRgba(unsigned int)", typeof(void), typeof(uint), rgba);
 		}
 		public uint Rgb() {
 			return (uint) interceptor.Invoke("rgb", "rgb() const", typeof(uint));
 		}
 		public void SetRgb(uint rgb) {
-			interceptor.Invoke("setRgb$", "setRgb(QRgb)", typeof(void), typeof(uint), rgb);
+			interceptor.Invoke("setRgb$", "setRgb(unsigned int)", typeof(void), typeof(uint), rgb);
 		}
 		public int Hue() {
 			return (int) interceptor.Invoke("hue", "hue() const", typeof(int));
@@ -414,10 +414,10 @@ namespace Qyoto {
 			return (List<string>) staticInterceptor.Invoke("colorNames", "colorNames()", typeof(List<string>));
 		}
 		public static QColor FromRgb(uint rgb) {
-			return (QColor) staticInterceptor.Invoke("fromRgb$", "fromRgb(QRgb)", typeof(QColor), typeof(uint), rgb);
+			return (QColor) staticInterceptor.Invoke("fromRgb$", "fromRgb(unsigned int)", typeof(QColor), typeof(uint), rgb);
 		}
 		public static QColor FromRgba(uint rgba) {
-			return (QColor) staticInterceptor.Invoke("fromRgba$", "fromRgba(QRgb)", typeof(QColor), typeof(uint), rgba);
+			return (QColor) staticInterceptor.Invoke("fromRgba$", "fromRgba(unsigned int)", typeof(QColor), typeof(uint), rgba);
 		}
 		public static QColor FromRgb(int r, int g, int b, int a) {
 			return (QColor) staticInterceptor.Invoke("fromRgb$$$$", "fromRgb(int, int, int, int)", typeof(QColor), typeof(int), r, typeof(int), g, typeof(int), b, typeof(int), a);

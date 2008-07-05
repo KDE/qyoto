@@ -3,6 +3,7 @@ namespace KIO {
 	using Kimono;
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 	/// <remarks>
 	///  A ListJob is allows you to get the get the content of a directory.
 	///  Don't create the job directly, but use KIO.ListRecursive() or
@@ -38,7 +39,7 @@ namespace KIO {
 		protected override void SlotFinished() {
 			interceptor.Invoke("slotFinished", "slotFinished()", typeof(void));
 		}
-		[Q_SLOT("void slotMetaData(const KIO::MetaData&)")]
+		[Q_SLOT("void slotMetaData(KIO::MetaData)")]
 		[SmokeMethod("slotMetaData(const KIO::MetaData&)")]
 		protected override void SlotMetaData(KIO.MetaData _metaData) {
 			interceptor.Invoke("slotMetaData#", "slotMetaData(const KIO::MetaData&)", typeof(void), typeof(KIO.MetaData), _metaData);
@@ -60,7 +61,17 @@ namespace KIO {
 	}
 
 	public interface IListJobSignals : KIO.ISimpleJobSignals {
-		// void entries(KIO::Job* arg1,const KIO::UDSEntryList& arg2); >>>> NOT CONVERTED
+		/// <remarks>
+		///  This signal emits the entry found by the job while listing.
+		///  The progress signals aren't specific to ListJob. It simply
+		///  uses SimpleJob's processedSize (number of entries listed) and
+		///  totalSize (total number of entries, if known),
+		///  as well as percent.
+		/// <param> name="job" the job that emitted this signal
+		/// </param><param> name="list" the list of UDSEntries
+		///          </param></remarks>		<short>    This signal emits the entry found by the job while listing.</short>
+		[Q_SIGNAL("void entries(KIO::Job*, KIO::UDSEntryList)")]
+		void Entries(KIO.Job job, List<KIO.UDSEntry> list);
 		/// <remarks>
 		///  Signals a redirection.
 		///  Use to update the URL shown to the user.
@@ -68,7 +79,7 @@ namespace KIO {
 		/// <param> name="job" the job that is redirected
 		/// </param><param> name="url" the new url
 		///          </param></remarks>		<short>    Signals a redirection.</short>
-		[Q_SIGNAL("void redirection(KIO::Job*, const KUrl&)")]
+		[Q_SIGNAL("void redirection(KIO::Job*, KUrl)")]
 		void Redirection(KIO.Job job, KUrl url);
 		/// <remarks>
 		///  Signals a permanent redirection.
@@ -77,7 +88,7 @@ namespace KIO {
 		/// </param><param> name="fromUrl" the original URL
 		/// </param><param> name="toUrl" the new URL
 		///          </param></remarks>		<short>    Signals a permanent redirection.</short>
-		[Q_SIGNAL("void permanentRedirection(KIO::Job*, const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void permanentRedirection(KIO::Job*, KUrl, KUrl)")]
 		void PermanentRedirection(KIO.Job job, KUrl fromUrl, KUrl toUrl);
 	}
 }

@@ -53,27 +53,27 @@ namespace Soprano {
 		/// <remarks>
 		///  \param backend The Backend that created this model.
 		///          </remarks>		<short>    \param backend The Backend that created this model.</short>
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("addStatement(const Soprano::Statement&)")]
 		public override Soprano.Error.ErrorCode AddStatement(Soprano.Statement statement) {
 			return (Soprano.Error.ErrorCode) interceptor.Invoke("addStatement#", "addStatement(const Soprano::Statement&)", typeof(Soprano.Error.ErrorCode), typeof(Soprano.Statement), statement);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("createBlankNode()")]
 		public override Soprano.Node CreateBlankNode() {
 			return (Soprano.Node) interceptor.Invoke("createBlankNode", "createBlankNode()", typeof(Soprano.Node));
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("removeStatement(const Soprano::Statement&)")]
 		public override Soprano.Error.ErrorCode RemoveStatement(Soprano.Statement statement) {
 			return (Soprano.Error.ErrorCode) interceptor.Invoke("removeStatement#", "removeStatement(const Soprano::Statement&)", typeof(Soprano.Error.ErrorCode), typeof(Soprano.Statement), statement);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("listStatements(const Soprano::Statement&) const")]
 		public override Soprano.StatementIterator ListStatements(Soprano.Statement partial) {
 			return (Soprano.StatementIterator) interceptor.Invoke("listStatements#", "listStatements(const Soprano::Statement&) const", typeof(Soprano.StatementIterator), typeof(Soprano.Statement), partial);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("executeQuery(const QString&, Soprano::Query::QueryLanguage, const QString&) const")]
 		public override Soprano.QueryResultIterator ExecuteQuery(string query, Soprano.Query.QueryLanguage language, string userQueryLanguage) {
 			return (Soprano.QueryResultIterator) interceptor.Invoke("executeQuery$$$", "executeQuery(const QString&, Soprano::Query::QueryLanguage, const QString&) const", typeof(Soprano.QueryResultIterator), typeof(string), query, typeof(Soprano.Query.QueryLanguage), language, typeof(string), userQueryLanguage);
@@ -82,12 +82,12 @@ namespace Soprano {
 		public virtual Soprano.QueryResultIterator ExecuteQuery(string query, Soprano.Query.QueryLanguage language) {
 			return (Soprano.QueryResultIterator) interceptor.Invoke("executeQuery$$", "executeQuery(const QString&, Soprano::Query::QueryLanguage) const", typeof(Soprano.QueryResultIterator), typeof(string), query, typeof(Soprano.Query.QueryLanguage), language);
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("listContexts() const")]
 		public override Soprano.NodeIterator ListContexts() {
 			return (Soprano.NodeIterator) interceptor.Invoke("listContexts", "listContexts() const", typeof(Soprano.NodeIterator));
 		}
-		// WARNING THIS METHOD IS AN UNIMPLEMENTED PURE VIRTUAL IN C++ - DO NOT CALL
+		// WARNING: Unimplemented C++ pure virtual - DO NOT CALL
 		[SmokeMethod("statementCount() const")]
 		public override int StatementCount() {
 			return (int) interceptor.Invoke("statementCount", "statementCount() const", typeof(int));

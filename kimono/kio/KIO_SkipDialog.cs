@@ -28,7 +28,7 @@ namespace KIO {
 	}
 
 	public interface ISkipDialogSignals : IKDialogSignals {
-		[Q_SIGNAL("void result(KIO::SkipDialog*, int)")]
+		[Q_SIGNAL("void result(SkipDialog*, int)")]
 		void Result(KIO.SkipDialog _this, int _button);
 	}
 }

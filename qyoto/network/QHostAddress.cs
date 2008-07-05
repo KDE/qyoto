@@ -21,20 +21,22 @@ namespace Qyoto {
 			Any = 4,
 			AnyIPv6 = 5,
 		}
-		// QHostAddress* QHostAddress(quint8* arg1); >>>> NOT CONVERTED
-		// QHostAddress* QHostAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
+		// QHostAddress* QHostAddress(const QIPv6Address& arg1); >>>> NOT CONVERTED
 		// QHostAddress* QHostAddress(const sockaddr* arg1); >>>> NOT CONVERTED
-		// void setAddress(quint8* arg1); >>>> NOT CONVERTED
-		// void setAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
+		// void setAddress(const QIPv6Address& arg1); >>>> NOT CONVERTED
 		// void setAddress(const sockaddr* arg1); >>>> NOT CONVERTED
-		// Q_IPV6ADDR toIPv6Address(); >>>> NOT CONVERTED
+		// QIPv6Address toIPv6Address(); >>>> NOT CONVERTED
 		public QHostAddress() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QHostAddress", "QHostAddress()", typeof(void));
 		}
 		public QHostAddress(uint ip4Addr) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QHostAddress$", "QHostAddress(quint32)", typeof(void), typeof(uint), ip4Addr);
+			interceptor.Invoke("QHostAddress$", "QHostAddress(unsigned int)", typeof(void), typeof(uint), ip4Addr);
+		}
+		public QHostAddress(ushort ip6Addr) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("QHostAddress$", "QHostAddress(unsigned char*)", typeof(void), typeof(ushort), ip6Addr);
 		}
 		public QHostAddress(string address) : this((Type) null) {
 			CreateProxy();
@@ -49,7 +51,10 @@ namespace Qyoto {
 			interceptor.Invoke("QHostAddress$", "QHostAddress(QHostAddress::SpecialAddress)", typeof(void), typeof(QHostAddress.SpecialAddress), address);
 		}
 		public void SetAddress(uint ip4Addr) {
-			interceptor.Invoke("setAddress$", "setAddress(quint32)", typeof(void), typeof(uint), ip4Addr);
+			interceptor.Invoke("setAddress$", "setAddress(unsigned int)", typeof(void), typeof(uint), ip4Addr);
+		}
+		public void SetAddress(ushort ip6Addr) {
+			interceptor.Invoke("setAddress$", "setAddress(unsigned char*)", typeof(void), typeof(ushort), ip6Addr);
 		}
 		public bool SetAddress(string address) {
 			return (bool) interceptor.Invoke("setAddress$", "setAddress(const QString&)", typeof(bool), typeof(string), address);

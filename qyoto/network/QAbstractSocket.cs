@@ -56,16 +56,16 @@ namespace Qyoto {
 			interceptor.Invoke("QAbstractSocket$#", "QAbstractSocket(QAbstractSocket::SocketType, QObject*)", typeof(void), typeof(QAbstractSocket.SocketType), socketType, typeof(QObject), parent);
 		}
 		public void ConnectToHost(string hostName, ushort port, uint mode) {
-			interceptor.Invoke("connectToHost$$$", "connectToHost(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
+			interceptor.Invoke("connectToHost$$$", "connectToHost(const QString&, unsigned short, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
 		}
 		public void ConnectToHost(string hostName, ushort port) {
-			interceptor.Invoke("connectToHost$$", "connectToHost(const QString&, quint16)", typeof(void), typeof(string), hostName, typeof(ushort), port);
+			interceptor.Invoke("connectToHost$$", "connectToHost(const QString&, unsigned short)", typeof(void), typeof(string), hostName, typeof(ushort), port);
 		}
 		public void ConnectToHost(QHostAddress address, ushort port, uint mode) {
-			interceptor.Invoke("connectToHost#$$", "connectToHost(const QHostAddress&, quint16, QIODevice::OpenMode)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port, typeof(uint), mode);
+			interceptor.Invoke("connectToHost#$$", "connectToHost(const QHostAddress&, unsigned short, QIODevice::OpenMode)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port, typeof(uint), mode);
 		}
 		public void ConnectToHost(QHostAddress address, ushort port) {
-			interceptor.Invoke("connectToHost#$", "connectToHost(const QHostAddress&, quint16)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port);
+			interceptor.Invoke("connectToHost#$", "connectToHost(const QHostAddress&, unsigned short)", typeof(void), typeof(QHostAddress), address, typeof(ushort), port);
 		}
 		public void DisconnectFromHost() {
 			interceptor.Invoke("disconnectFromHost", "disconnectFromHost()", typeof(void));
@@ -196,13 +196,13 @@ namespace Qyoto {
 			interceptor.Invoke("setSocketError$", "setSocketError(QAbstractSocket::SocketError)", typeof(void), typeof(QAbstractSocket.SocketError), socketError);
 		}
 		protected void SetLocalPort(ushort port) {
-			interceptor.Invoke("setLocalPort$", "setLocalPort(quint16)", typeof(void), typeof(ushort), port);
+			interceptor.Invoke("setLocalPort$", "setLocalPort(unsigned short)", typeof(void), typeof(ushort), port);
 		}
 		protected void SetLocalAddress(QHostAddress address) {
 			interceptor.Invoke("setLocalAddress#", "setLocalAddress(const QHostAddress&)", typeof(void), typeof(QHostAddress), address);
 		}
 		protected void SetPeerPort(ushort port) {
-			interceptor.Invoke("setPeerPort$", "setPeerPort(quint16)", typeof(void), typeof(ushort), port);
+			interceptor.Invoke("setPeerPort$", "setPeerPort(unsigned short)", typeof(void), typeof(ushort), port);
 		}
 		protected void SetPeerAddress(QHostAddress address) {
 			interceptor.Invoke("setPeerAddress#", "setPeerAddress(const QHostAddress&)", typeof(void), typeof(QHostAddress), address);
@@ -210,13 +210,13 @@ namespace Qyoto {
 		protected void SetPeerName(string name) {
 			interceptor.Invoke("setPeerName$", "setPeerName(const QString&)", typeof(void), typeof(string), name);
 		}
-		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)")]
+		[Q_SLOT("void connectToHostImplementation(QString, quint16, OpenMode)")]
 		protected void ConnectToHostImplementation(string hostName, ushort port, uint mode) {
-			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, quint16, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
+			interceptor.Invoke("connectToHostImplementation$$$", "connectToHostImplementation(const QString&, unsigned short, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(uint), mode);
 		}
-		[Q_SLOT("void connectToHostImplementation(const QString&, quint16)")]
+		[Q_SLOT("void connectToHostImplementation(QString, quint16)")]
 		protected void ConnectToHostImplementation(string hostName, ushort port) {
-			interceptor.Invoke("connectToHostImplementation$$", "connectToHostImplementation(const QString&, quint16)", typeof(void), typeof(string), hostName, typeof(ushort), port);
+			interceptor.Invoke("connectToHostImplementation$$", "connectToHostImplementation(const QString&, unsigned short)", typeof(void), typeof(string), hostName, typeof(ushort), port);
 		}
 		[Q_SLOT("void disconnectFromHostImplementation()")]
 		protected void DisconnectFromHostImplementation() {
@@ -244,7 +244,7 @@ namespace Qyoto {
 		void StateChanged(QAbstractSocket.SocketState arg1);
 		[Q_SIGNAL("void error(QAbstractSocket::SocketError)")]
 		void Error(QAbstractSocket.SocketError arg1);
-		[Q_SIGNAL("void proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)")]
+		[Q_SIGNAL("void proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)")]
 		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator authenticator);
 	}
 }

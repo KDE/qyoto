@@ -455,10 +455,10 @@ namespace Qyoto {
 			return (QByteArray) interceptor.Invoke("setNum$", "setNum(short)", typeof(QByteArray), typeof(short), arg1);
 		}
 		public QByteArray SetNum(ushort arg1, int arg2) {
-			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(ushort, int)", typeof(QByteArray), typeof(ushort), arg1, typeof(int), arg2);
+			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(unsigned short, int)", typeof(QByteArray), typeof(ushort), arg1, typeof(int), arg2);
 		}
 		public QByteArray SetNum(ushort arg1) {
-			return (QByteArray) interceptor.Invoke("setNum$", "setNum(ushort)", typeof(QByteArray), typeof(ushort), arg1);
+			return (QByteArray) interceptor.Invoke("setNum$", "setNum(unsigned short)", typeof(QByteArray), typeof(ushort), arg1);
 		}
 		public QByteArray SetNum(int arg1, int arg2) {
 			return (QByteArray) interceptor.Invoke("setNum$$", "setNum(int, int)", typeof(QByteArray), typeof(int), arg1, typeof(int), arg2);

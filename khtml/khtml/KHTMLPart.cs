@@ -833,7 +833,7 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///  Returns whether a frame with the specified name is exists or not.
-		///  In contrary to the findFrame method this one also returns <code>true</code>
+		///  In contrast to the findFrame method this one also returns <code>true</code>
 		///  if the frame is defined but no displaying component has been
 		///  found/loaded, yet.
 		///    </remarks>		<short>    Returns whether a frame with the specified name is exists or not.</short>
@@ -976,7 +976,7 @@ namespace Kimono {
 		///  See activeNode
 		/// <param> name="node" The node to focus
 		///    </param></remarks>		<short>    Sets the focused node of the document to the specified node.</short>
-		[Q_SLOT("void setActiveNode(const DOM::Node&)")]
+		[Q_SLOT("void setActiveNode(DOM::Node)")]
 		public void SetActiveNode(DOM.Node node) {
 			interceptor.Invoke("setActiveNode#", "setActiveNode(const DOM::Node&)", typeof(void), typeof(DOM.Node), node);
 		}
@@ -1035,15 +1035,15 @@ namespace Kimono {
 		public void SetCaretVisible(bool show) {
 			interceptor.Invoke("setCaretVisible$", "setCaretVisible(bool)", typeof(void), typeof(bool), show);
 		}
-		[Q_SLOT("void submitFormProxy(const char*, const QString&, const QByteArray&, const QString&, const QString&, const QString&)")]
+		[Q_SLOT("void submitFormProxy(char*, QString, QByteArray, QString, QString, QString)")]
 		public void SubmitFormProxy(string action, string url, QByteArray formData, string target, string contentType, string boundary) {
 			interceptor.Invoke("submitFormProxy$$#$$$", "submitFormProxy(const char*, const QString&, const QByteArray&, const QString&, const QString&, const QString&)", typeof(void), typeof(string), action, typeof(string), url, typeof(QByteArray), formData, typeof(string), target, typeof(string), contentType, typeof(string), boundary);
 		}
-		[Q_SLOT("void submitFormProxy(const char*, const QString&, const QByteArray&, const QString&, const QString&)")]
+		[Q_SLOT("void submitFormProxy(char*, QString, QByteArray, QString, QString)")]
 		public void SubmitFormProxy(string action, string url, QByteArray formData, string target, string contentType) {
 			interceptor.Invoke("submitFormProxy$$#$$", "submitFormProxy(const char*, const QString&, const QByteArray&, const QString&, const QString&)", typeof(void), typeof(string), action, typeof(string), url, typeof(QByteArray), formData, typeof(string), target, typeof(string), contentType);
 		}
-		[Q_SLOT("void submitFormProxy(const char*, const QString&, const QByteArray&, const QString&)")]
+		[Q_SLOT("void submitFormProxy(char*, QString, QByteArray, QString)")]
 		public void SubmitFormProxy(string action, string url, QByteArray formData, string target) {
 			interceptor.Invoke("submitFormProxy$$#$", "submitFormProxy(const char*, const QString&, const QByteArray&, const QString&)", typeof(void), typeof(string), action, typeof(string), url, typeof(QByteArray), formData, typeof(string), target);
 		}
@@ -1187,14 +1187,14 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted if the cursor is moved over an URL.
 		///    </remarks>		<short>    Emitted if the cursor is moved over an URL.</short>
-		[Q_SIGNAL("void onURL(const QString&)")]
+		[Q_SIGNAL("void onURL(QString)")]
 		void OnURL(string url);
 		/// <remarks>
 		///  Emitted when the user clicks the right mouse button on the document.
 		///  See KParts.BrowserExtension for two more popupMenu signals emitted by khtml,
 		///  with much more information in the signal.
 		///    </remarks>		<short>    Emitted when the user clicks the right mouse button on the document.</short>
-		[Q_SIGNAL("void popupMenu(const QString&, const QPoint&)")]
+		[Q_SIGNAL("void popupMenu(QString, QPoint)")]
 		void PopupMenu(string url, QPoint point);
 		/// <remarks>
 		///  This signal is emitted when the selection changes.
@@ -1208,7 +1208,7 @@ namespace Kimono {
 		///  has explicitly been deactivated without a new one
 		///  becoming active.
 		///    </remarks>		<short>    This signal is emitted when an element retrieves the  keyboard focus.</short>
-		[Q_SIGNAL("void nodeActivated(const DOM::Node&)")]
+		[Q_SIGNAL("void nodeActivated(DOM::Node)")]
 		void NodeActivated(DOM.Node arg1);
 		/// <remarks>
 		///   void docCreated();
@@ -1221,14 +1221,14 @@ namespace Kimono {
 		/// </param><param> name="offset" offset within the node. If the node is null, the offset
 		/// 	is meaningless.
 		///    </param></remarks>		<short>   </short>
-		[Q_SIGNAL("void caretPositionChanged(const DOM::Node&, long)")]
+		[Q_SIGNAL("void caretPositionChanged(DOM::Node, long)")]
 		void CaretPositionChanged(DOM.Node node, long offset);
 		/// <remarks>
 		///  If form notification is on, this will be emitted either for a form
 		///  submit or before the form submit according to the setting.
 		///  ### KDE4 remove me
 		///    </remarks>		<short>    If form notification is on, this will be emitted either for a form  submit or before the form submit according to the setting.</short>
-		[Q_SIGNAL("void formSubmitNotification(const char*, const QString&, const QByteArray&, const QString&, const QString&, const QString&)")]
+		[Q_SIGNAL("void formSubmitNotification(char*, QString, QByteArray, QString, QString, QString)")]
 		void FormSubmitNotification(string action, string url, QByteArray formData, string target, string contentType, string boundary);
 		/// <remarks>
 		///  Emitted whenever the configuration has changed

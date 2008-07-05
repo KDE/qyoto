@@ -61,9 +61,9 @@ namespace Qyoto {
 		public override string ActionText(int action, QAccessible.Text t, int child) {
 			return (string) interceptor.Invoke("actionText$$$", "actionText(int, QAccessible::Text, int) const", typeof(string), typeof(int), action, typeof(QAccessible.Text), t, typeof(int), child);
 		}
-		[SmokeMethod("doAction(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction(int, int, const QList<QVariant>&)")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QVariantList&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
+			return (bool) interceptor.Invoke("doAction$$?", "doAction(int, int, const QList<QVariant>&)", typeof(bool), typeof(int), action, typeof(int), child, typeof(List<QVariant>), arg3);
 		}
 		protected QWidget Widget() {
 			return (QWidget) interceptor.Invoke("widget", "widget() const", typeof(QWidget));

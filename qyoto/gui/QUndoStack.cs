@@ -135,9 +135,9 @@ namespace Qyoto {
 		void CanUndoChanged(bool canUndo);
 		[Q_SIGNAL("void canRedoChanged(bool)")]
 		void CanRedoChanged(bool canRedo);
-		[Q_SIGNAL("void undoTextChanged(const QString&)")]
+		[Q_SIGNAL("void undoTextChanged(QString)")]
 		void UndoTextChanged(string undoText);
-		[Q_SIGNAL("void redoTextChanged(const QString&)")]
+		[Q_SIGNAL("void redoTextChanged(QString)")]
 		void RedoTextChanged(string redoText);
 	}
 }

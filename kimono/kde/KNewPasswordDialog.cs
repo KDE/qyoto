@@ -178,7 +178,7 @@ namespace Kimono {
 		/// <remarks>
 		///  The dialog has been accepted, and the new password is <code>password</code>
 		///      </remarks>		<short>    The dialog has been accepted, and the new password is <code>password</code>      </short>
-		[Q_SIGNAL("void newPassword(const QString&)")]
+		[Q_SIGNAL("void newPassword(QString)")]
 		void NewPassword(string password);
 	}
 }

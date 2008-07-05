@@ -36,6 +36,10 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KServiceGroup), this);
 		}
+		private static SmokeInvocation staticInterceptor = null;
+		static KServiceGroup() {
+			staticInterceptor = new SmokeInvocation(typeof(KServiceGroup), null);
+		}
 		/// <remarks>
 		///  options for groupEntries and serviceEntries
 		///    </remarks>		<short>    options for groupEntries and serviceEntries    </short>
@@ -46,18 +50,6 @@ namespace Kimono {
 			AllowSeparators = 0x4,
 			SortByGenericName = 0x8,
 		}
-		// KServiceGroup::List entries(bool arg1,bool arg2,bool arg3,bool arg4); >>>> NOT CONVERTED
-		// KServiceGroup::List entries(bool arg1,bool arg2,bool arg3); >>>> NOT CONVERTED
-		// KServiceGroup::List entries(bool arg1,bool arg2); >>>> NOT CONVERTED
-		// KServiceGroup::List entries(bool arg1); >>>> NOT CONVERTED
-		// KServiceGroup::List entries(); >>>> NOT CONVERTED
-		// QList<KServiceGroup::Ptr> groupEntries(KServiceGroup::EntriesOptions arg1); >>>> NOT CONVERTED
-		// QList<KServiceGroup::Ptr> groupEntries(); >>>> NOT CONVERTED
-		// KServiceGroup::Ptr baseGroup(const QString& arg1); >>>> NOT CONVERTED
-		// KServiceGroup::Ptr root(); >>>> NOT CONVERTED
-		// KServiceGroup::Ptr group(const QString& arg1); >>>> NOT CONVERTED
-		// KServiceGroup::Ptr childGroup(const QString& arg1); >>>> NOT CONVERTED
-		// void addEntry(const KSycocaEntry::Ptr& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a dummy servicegroup indexed with <code>name.</code>
 		/// <param> name="name" the name of the service group
@@ -216,6 +208,15 @@ namespace Kimono {
 		/// </param></remarks>		<return> the list of entries
 		///    </return>
 		/// 		<short>    List of all Services and ServiceGroups within this  ServiceGroup.</short>
+		public List<KSycocaEntry> Entries(bool sorted, bool excludeNoDisplay, bool allowSeparators, bool sortByGenericName) {
+			return (List<KSycocaEntry>) interceptor.Invoke("entries$$$$", "entries(bool, bool, bool, bool)", typeof(List<KSycocaEntry>), typeof(bool), sorted, typeof(bool), excludeNoDisplay, typeof(bool), allowSeparators, typeof(bool), sortByGenericName);
+		}
+		public List<KSycocaEntry> Entries(bool sorted, bool excludeNoDisplay, bool allowSeparators) {
+			return (List<KSycocaEntry>) interceptor.Invoke("entries$$$", "entries(bool, bool, bool)", typeof(List<KSycocaEntry>), typeof(bool), sorted, typeof(bool), excludeNoDisplay, typeof(bool), allowSeparators);
+		}
+		public List<KSycocaEntry> Entries(bool sorted, bool excludeNoDisplay) {
+			return (List<KSycocaEntry>) interceptor.Invoke("entries$$", "entries(bool, bool)", typeof(List<KSycocaEntry>), typeof(bool), sorted, typeof(bool), excludeNoDisplay);
+		}
 		/// <remarks>
 		///  List of all Services and ServiceGroups within this
 		///  ServiceGroup.
@@ -223,9 +224,21 @@ namespace Kimono {
 		/// </param></remarks>		<return> the list of entried
 		///    </return>
 		/// 		<short>    List of all Services and ServiceGroups within this  ServiceGroup.</short>
+		public List<KSycocaEntry> Entries(bool sorted) {
+			return (List<KSycocaEntry>) interceptor.Invoke("entries$", "entries(bool)", typeof(List<KSycocaEntry>), typeof(bool), sorted);
+		}
+		public List<KSycocaEntry> Entries() {
+			return (List<KSycocaEntry>) interceptor.Invoke("entries", "entries()", typeof(List<KSycocaEntry>));
+		}
 		/// <remarks>
 		///  subgroups for this service group
 		///      </remarks>		<short>    subgroups for this service group      </short>
+		public List<KServiceGroup> GroupEntries(uint options) {
+			return (List<KServiceGroup>) interceptor.Invoke("groupEntries$", "groupEntries(KServiceGroup::EntriesOptions)", typeof(List<KServiceGroup>), typeof(uint), options);
+		}
+		public List<KServiceGroup> GroupEntries() {
+			return (List<KServiceGroup>) interceptor.Invoke("groupEntries", "groupEntries()", typeof(List<KServiceGroup>));
+		}
 		/// <remarks>
 		///  entries of this service group
 		///      </remarks>		<short>    entries of this service group      </short>
@@ -258,6 +271,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Add a service to this group
 		///    </remarks>		<short>   </short>
+		protected void AddEntry(KSycocaEntry entry) {
+			interceptor.Invoke("addEntry?", "addEntry(const KSharedPtr<KSycocaEntry>&)", typeof(void), typeof(KSycocaEntry), entry);
+		}
 		~KServiceGroup() {
 			interceptor.Invoke("~KServiceGroup", "~KServiceGroup()", typeof(void));
 		}
@@ -270,17 +286,26 @@ namespace Kimono {
 		/// </remarks>		<return> the base group with the given name, or 0 if not available.
 		///    </return>
 		/// 		<short>    Returns the group for the given baseGroupName.</short>
+		public static KServiceGroup BaseGroup(string baseGroupName) {
+			return (KServiceGroup) staticInterceptor.Invoke("baseGroup$", "baseGroup(const QString&)", typeof(KServiceGroup), typeof(string), baseGroupName);
+		}
 		/// <remarks>
 		///  Returns the root service group.
 		/// </remarks>		<return> the root service group
 		///    </return>
 		/// 		<short>    Returns the root service group.</short>
+		public static KServiceGroup Root() {
+			return (KServiceGroup) staticInterceptor.Invoke("root", "root()", typeof(KServiceGroup));
+		}
 		/// <remarks>
 		///  Returns the group with the given relative path.
 		/// <param> name="relPath" the path of the service group
 		/// </param></remarks>		<return> the group with the given relative path name.
 		///    </return>
 		/// 		<short>    Returns the group with the given relative path.</short>
+		public static KServiceGroup Group(string relPath) {
+			return (KServiceGroup) staticInterceptor.Invoke("group$", "group(const QString&)", typeof(KServiceGroup), typeof(string), relPath);
+		}
 		/// <remarks>
 		///  Returns the group of services that have X-KDE-ParentApp equal
 		///  to <code>parent</code> (siblings).
@@ -288,5 +313,8 @@ namespace Kimono {
 		/// </param></remarks>		<return> the services group
 		///    </return>
 		/// 		<short>    Returns the group of services that have X-KDE-ParentApp equal  to <code>parent</code> (siblings).</short>
+		public static KServiceGroup ChildGroup(string parent) {
+			return (KServiceGroup) staticInterceptor.Invoke("childGroup$", "childGroup(const QString&)", typeof(KServiceGroup), typeof(string), parent);
+		}
 	}
 }

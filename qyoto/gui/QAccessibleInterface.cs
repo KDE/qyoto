@@ -36,10 +36,10 @@ namespace Qyoto {
 		public abstract int UserActionCount(int child);
 		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
 		public abstract string ActionText(int action, QAccessible.Text t, int child);
-		[SmokeMethod("doAction(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction(int, int, const QList<QVariant>&)")]
 		public abstract bool DoAction(int action, int child, List<QVariant> arg3);
 		public QVariant InvokeMethod(QAccessible.Method method, int child, List<QVariant> arg3) {
-			return (QVariant) interceptor.Invoke("invokeMethod$$?", "invokeMethod(QAccessible::Method, int, const QVariantList&)", typeof(QVariant), typeof(QAccessible.Method), method, typeof(int), child, typeof(List<QVariant>), arg3);
+			return (QVariant) interceptor.Invoke("invokeMethod$$?", "invokeMethod(QAccessible::Method, int, const QList<QVariant>&)", typeof(QVariant), typeof(QAccessible.Method), method, typeof(int), child, typeof(List<QVariant>), arg3);
 		}
 		public QVariant InvokeMethod(QAccessible.Method method, int child) {
 			return (QVariant) interceptor.Invoke("invokeMethod$$", "invokeMethod(QAccessible::Method, int)", typeof(QVariant), typeof(QAccessible.Method), method, typeof(int), child);

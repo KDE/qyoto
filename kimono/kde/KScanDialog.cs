@@ -133,7 +133,7 @@ namespace Kimono {
 		/// <param> name="img" the image
 		/// </param><param> name="id" the image's id
 		///      </param></remarks>		<short>    Informs you that an image has been previewed.</short>
-		[Q_SIGNAL("void preview(const QImage&, int)")]
+		[Q_SIGNAL("void preview(QImage, int)")]
 		void Preview(QImage img, int id);
 		/// <remarks>
 		///  Informs you that an image has scanned. <code>id</code> is the same as in the
@@ -143,7 +143,7 @@ namespace Kimono {
 		/// <param> name="img" the image
 		/// </param><param> name="id" the image's id
 		///      </param></remarks>		<short>    Informs you that an image has scanned.</short>
-		[Q_SIGNAL("void finalImage(const QImage&, int)")]
+		[Q_SIGNAL("void finalImage(QImage, int)")]
 		void FinalImage(QImage img, int id);
 		/// <remarks>
 		///  Informs you that the image with the id <code>id</code> has been run through
@@ -152,7 +152,7 @@ namespace Kimono {
 		/// <param> name="text" the text that has been recognized
 		/// </param><param> name="id" the id of the image
 		///      </param></remarks>		<short>    Informs you that the image with the id <code>id</code> has been run through  text-recognition.</short>
-		[Q_SIGNAL("void textRecognized(const QString&, int)")]
+		[Q_SIGNAL("void textRecognized(QString, int)")]
 		void TextRecognized(string text, int id);
 	}
 }

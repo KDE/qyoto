@@ -51,9 +51,9 @@ namespace KIO {
 		/// </param><param> name="user" to login as
 		/// </param><param> name="passwd" to login with
 		///          </param></remarks>		<short>    Set host for url </short>
-		[SmokeMethod("setHost(const QString&, quint16, const QString&, const QString&)")]
+		[SmokeMethod("setHost(const QString&, unsigned short, const QString&, const QString&)")]
 		public virtual void SetHost(string host, ushort port, string user, string passwd) {
-			interceptor.Invoke("setHost$$$$", "setHost(const QString&, quint16, const QString&, const QString&)", typeof(void), typeof(string), host, typeof(ushort), port, typeof(string), user, typeof(string), passwd);
+			interceptor.Invoke("setHost$$$$", "setHost(const QString&, unsigned short, const QString&, const QString&)", typeof(void), typeof(string), host, typeof(ushort), port, typeof(string), user, typeof(string), passwd);
 		}
 		/// <remarks>
 		///  Clear host info.

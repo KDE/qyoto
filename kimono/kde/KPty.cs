@@ -15,7 +15,7 @@ namespace Kimono {
 			interceptor = new SmokeInvocation(typeof(KPty), this);
 		}
 		// bool tcGetAttr(struct ::termios* arg1); >>>> NOT CONVERTED
-		// bool tcSetAttr(struct ::termios* arg1); >>>> NOT CONVERTED
+		// bool tcSetAttr(termios* arg1); >>>> NOT CONVERTED
 		// KPty* KPty(KPtyPrivate* arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructor

@@ -54,7 +54,7 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Creates a new tab widget.</short>
 		public KTabWidget(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KTabWidget#$", "KTabWidget(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
+			interceptor.Invoke("KTabWidget#$", "KTabWidget(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KTabWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -207,7 +207,7 @@ namespace Kimono {
 		protected virtual void InitiateDrag(int arg1) {
 			interceptor.Invoke("initiateDrag$", "initiateDrag(int)", typeof(void), typeof(int), arg1);
 		}
-		[Q_SLOT("void contextMenu(int, const QPoint&)")]
+		[Q_SLOT("void contextMenu(int, QPoint)")]
 		[SmokeMethod("contextMenu(int, const QPoint&)")]
 		protected virtual void ContextMenu(int arg1, QPoint arg2) {
 			interceptor.Invoke("contextMenu$#", "contextMenu(int, const QPoint&)", typeof(void), typeof(int), arg1, typeof(QPoint), arg2);
@@ -247,7 +247,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Connect to this and set accept to true if you can and want to decode the event.
 		///      </remarks>		<short>    Connect to this and set accept to true if you can and want to decode the event.</short>
-		[Q_SIGNAL("void testCanDecode(const QDragMoveEvent*, bool&)")]
+		[Q_SIGNAL("void testCanDecode(QDragMoveEvent*, bool)")]
 		void TestCanDecode(QDragMoveEvent e, bool accept);
 		/// <remarks>
 		///  Received an event in the empty space beside tabbar. Usually creates a new tab.
@@ -269,12 +269,12 @@ namespace Kimono {
 		/// <remarks>
 		///  The right mouse button was pressed over empty space besides tabbar.
 		///      </remarks>		<short>    The right mouse button was pressed over empty space besides tabbar.</short>
-		[Q_SIGNAL("void contextMenu(const QPoint&)")]
+		[Q_SIGNAL("void contextMenu(QPoint)")]
 		void ContextMenu(QPoint arg1);
 		/// <remarks>
 		///  The right mouse button was pressed over a widget.
 		///      </remarks>		<short>    The right mouse button was pressed over a widget.</short>
-		[Q_SIGNAL("void contextMenu(QWidget*, const QPoint&)")]
+		[Q_SIGNAL("void contextMenu(QWidget*, QPoint)")]
 		void ContextMenu(QWidget arg1, QPoint arg2);
 		/// <remarks>
 		///  A tab was moved from first to second index. This signal is only

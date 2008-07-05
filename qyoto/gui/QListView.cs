@@ -283,7 +283,7 @@ namespace Qyoto {
 	}
 
 	public interface IQListViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void indexesMoved(const QModelIndexList&)")]
+		[Q_SIGNAL("void indexesMoved(QModelIndexList)")]
 		void IndexesMoved(List<QModelIndex> indexes);
 	}
 }

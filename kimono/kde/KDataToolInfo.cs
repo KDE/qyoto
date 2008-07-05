@@ -23,7 +23,6 @@ namespace Kimono {
 		static KDataToolInfo() {
 			staticInterceptor = new SmokeInvocation(typeof(KDataToolInfo), null);
 		}
-		// KDataToolInfo* KDataToolInfo(const KService::Ptr& arg1,const KComponentData& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create an invalid KDataToolInfo.
 		///      </remarks>		<short>    Create an invalid KDataToolInfo.</short>
@@ -36,6 +35,10 @@ namespace Kimono {
 		/// <param> name="service" the corresponding service
 		/// </param><param> name="instance" the instance to use
 		///      </param></remarks>		<short>    Create a valid KDataToolInfo.</short>
+		public KDataToolInfo(KService service, KComponentData instance) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KDataToolInfo?#", "KDataToolInfo(const KSharedPtr<KService>&, const KComponentData&)", typeof(void), typeof(KService), service, typeof(KComponentData), instance);
+		}
 		/// <remarks>
 		///  Copy constructor.
 		///      </remarks>		<short>    Copy constructor.</short>

@@ -81,7 +81,7 @@ namespace Qyoto {
 		public QButtonGroup Group() {
 			return (QButtonGroup) interceptor.Invoke("group", "group() const", typeof(QButtonGroup));
 		}
-		[Q_SLOT("void setIconSize(const QSize&)")]
+		[Q_SLOT("void setIconSize(QSize)")]
 		public void SetIconSize(QSize size) {
 			interceptor.Invoke("setIconSize#", "setIconSize(const QSize&)", typeof(void), typeof(QSize), size);
 		}

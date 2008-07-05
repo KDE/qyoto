@@ -52,7 +52,7 @@ namespace Kimono {
 		public void EnsureUpToDate() {
 			interceptor.Invoke("ensureUpToDate", "ensureUpToDate()", typeof(void));
 		}
-		[Q_SLOT("void slotBookmarksChanged(const QString&)")]
+		[Q_SLOT("void slotBookmarksChanged(QString)")]
 		public void SlotBookmarksChanged(string arg1) {
 			interceptor.Invoke("slotBookmarksChanged$", "slotBookmarksChanged(const QString&)", typeof(void), typeof(string), arg1);
 		}

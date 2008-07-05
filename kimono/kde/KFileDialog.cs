@@ -44,7 +44,6 @@ namespace Kimono {
 			Opening = 1,
 			Saving = 2,
 		}
-		// KMimeType::Ptr currentFilterMimeType(); >>>> NOT CONVERTED
 		// KAbstractFileWidget* fileWidget(); >>>> NOT CONVERTED
 		// KFileFilterCombo* filterWidget(); >>>> NOT CONVERTED
 		/// <remarks>
@@ -235,6 +234,9 @@ namespace Kimono {
 		///  previously.
 		/// </remarks>		<short>    Returns the mimetype for the desired output format.</short>
 		/// 		<see> setFilterMimeType</see>
+		public KMimeType CurrentFilterMimeType() {
+			return (KMimeType) interceptor.Invoke("currentFilterMimeType", "currentFilterMimeType()", typeof(KMimeType));
+		}
 		/// <remarks>
 		///  Sets the filter up to specify the output type.
 		/// <param> name="types" a list of mimetypes that can be used as output format
@@ -888,12 +890,12 @@ namespace Kimono {
 		///  and call selectedFile(), selectedFiles(),
 		///  selectedUrl() or selectedUrls().
 		///       </remarks>		<short>    Emitted when the user selects a file.</short>
-		[Q_SIGNAL("void fileSelected(const QString&)")]
+		[Q_SIGNAL("void fileSelected(QString)")]
 		void FileSelected(string arg1);
 		/// <remarks>
 		///  Emitted when the user highlights a file.
 		///       </remarks>		<short>    Emitted when the user highlights a file.</short>
-		[Q_SIGNAL("void fileHighlighted(const QString&)")]
+		[Q_SIGNAL("void fileHighlighted(QString)")]
 		void FileHighlighted(string arg1);
 		/// <remarks>
 		///  Emitted when the user hilights one or more files in multiselection mode.
@@ -912,7 +914,7 @@ namespace Kimono {
 		/// </param></remarks>		<short>    Emitted when the filter changed, i.</short>
 		/// 		<see> setFilter</see>
 		/// 		<see> currentFilter</see>
-		[Q_SIGNAL("void filterChanged(const QString&)")]
+		[Q_SIGNAL("void filterChanged(QString)")]
 		void FilterChanged(string filter);
 	}
 }

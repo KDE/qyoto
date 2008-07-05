@@ -34,7 +34,7 @@ namespace Qyoto {
 		}
 		public QUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QUuid$$$$$$$$$$$", "QUuid(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)", typeof(void), typeof(uint), l, typeof(ushort), w1, typeof(ushort), w2, typeof(ushort), b1, typeof(ushort), b2, typeof(ushort), b3, typeof(ushort), b4, typeof(ushort), b5, typeof(ushort), b6, typeof(ushort), b7, typeof(ushort), b8);
+			interceptor.Invoke("QUuid$$$$$$$$$$$", "QUuid(uint, unsigned short, unsigned short, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)", typeof(void), typeof(uint), l, typeof(ushort), w1, typeof(ushort), w2, typeof(ushort), b1, typeof(ushort), b2, typeof(ushort), b3, typeof(ushort), b4, typeof(ushort), b5, typeof(ushort), b6, typeof(ushort), b7, typeof(ushort), b8);
 		}
 		public QUuid(string arg1) : this((Type) null) {
 			CreateProxy();

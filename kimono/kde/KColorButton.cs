@@ -105,7 +105,7 @@ namespace Kimono {
 		///  Emitted when the color of the widget
 		///  is changed, either with setColor() or via user selection.
 		///      </remarks>		<short>    Emitted when the color of the widget  is changed, either with setColor() or via user selection.</short>
-		[Q_SIGNAL("void changed(const QColor&)")]
+		[Q_SIGNAL("void changed(QColor)")]
 		void Changed(QColor newColor);
 	}
 }

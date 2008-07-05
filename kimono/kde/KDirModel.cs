@@ -166,9 +166,9 @@ namespace Kimono {
 		public virtual QModelIndex Index(int row, int column) {
 			return (QModelIndex) interceptor.Invoke("index$$", "index(int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column);
 		}
-		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		[SmokeMethod("mimeData(const QList<QModelIndex>&) const")]
 		public override QMimeData MimeData(List<QModelIndex> indexes) {
-			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QModelIndexList&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
+			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QList<QModelIndex>&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
 		}
 		[SmokeMethod("mimeTypes() const")]
 		public override List<string> MimeTypes() {
@@ -218,7 +218,7 @@ namespace Kimono {
 		///  Emitted for each subdirectory that is a parent of a url passed to expandToUrl
 		///  This allows to asynchronously open a tree view down to a given directory.
 		///      </remarks>		<short>    Emitted for each subdirectory that is a parent of a url passed to expandToUrl  This allows to asynchronously open a tree view down to a given directory.</short>
-		[Q_SIGNAL("void expand(const QModelIndex&)")]
+		[Q_SIGNAL("void expand(QModelIndex)")]
 		void Expand(QModelIndex index);
 	}
 }

@@ -118,8 +118,7 @@ namespace Kimono {
 			ModifiedCaption = 2,
 			HIGCompliantCaption = AppNameCaption,
 		}
-		// void saveDialogSize(KConfigGroup& arg1,KConfigGroup::WriteConfigFlags arg2); >>>> NOT CONVERTED
-		// KDialog* KDialog(KDialogPrivate& arg1,QWidget* arg2,Qt::WFlags arg3); >>>> NOT CONVERTED
+		// KDialog* KDialog(KDialogPrivate& arg1,QWidget* arg2,Qt::WindowFlags arg3); >>>> NOT CONVERTED
 		// KDialog* KDialog(KDialogPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a dialog.
@@ -128,7 +127,7 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Creates a dialog.</short>
 		public KDialog(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KDialog#$", "KDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
+			interceptor.Invoke("KDialog#$", "KDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -321,6 +320,9 @@ namespace Kimono {
 		/// <param> name="config" The config group to read from.
 		/// </param><param> name="options" passed to KConfigGroup.WriteEntry()
 		///      </param></remarks>		<short>    Saves the dialog's size dependent on the screen dimension either to the  global or application config file.</short>
+		public void SaveDialogSize(KConfigGroup config, uint options) {
+			interceptor.Invoke("saveDialogSize#$", "saveDialogSize(KConfigGroup&, KConfigBase::WriteConfigFlags) const", typeof(void), typeof(KConfigGroup), config, typeof(uint), options);
+		}
 		public void SaveDialogSize(KConfigGroup config) {
 			interceptor.Invoke("saveDialogSize#", "saveDialogSize(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), config);
 		}
@@ -393,7 +395,7 @@ namespace Kimono {
 		///  in this string. It will be added automatically according to the KDE
 		///  standard.
 		///      </param></remarks>		<short>    Make a KDE compliant caption.</short>
-		[Q_SLOT("void setCaption(const QString&)")]
+		[Q_SLOT("void setCaption(QString)")]
 		[SmokeMethod("setCaption(const QString&)")]
 		public virtual void SetCaption(string caption) {
 			interceptor.Invoke("setCaption$", "setCaption(const QString&)", typeof(void), typeof(string), caption);
@@ -406,7 +408,7 @@ namespace Kimono {
 		/// </param><param> name="modified" Specify whether the document is modified. This displays
 		///  an additional sign in the title bar, usually "**".
 		///      </param></remarks>		<short>    Makes a KDE compliant caption.</short>
-		[Q_SLOT("void setCaption(const QString&, bool)")]
+		[Q_SLOT("void setCaption(QString, bool)")]
 		[SmokeMethod("setCaption(const QString&, bool)")]
 		public virtual void SetCaption(string caption, bool modified) {
 			interceptor.Invoke("setCaption$$", "setCaption(const QString&, bool)", typeof(void), typeof(string), caption, typeof(bool), modified);
@@ -416,7 +418,7 @@ namespace Kimono {
 		/// <param> name="caption" Your caption. This is the string that will be
 		///  displayed in the window title.
 		///      </param></remarks>		<short>    Make a plain caption without any modifications.</short>
-		[Q_SLOT("void setPlainCaption(const QString&)")]
+		[Q_SLOT("void setPlainCaption(QString)")]
 		[SmokeMethod("setPlainCaption(const QString&)")]
 		public virtual void SetPlainCaption(string caption) {
 			interceptor.Invoke("setPlainCaption$", "setPlainCaption(const QString&)", typeof(void), typeof(string), caption);
@@ -426,7 +428,7 @@ namespace Kimono {
 		/// <param> name="id" Button identifier.
 		/// </param><param> name="state" <code>true</code> enables the button(s).
 		///      </param></remarks>		<short>    Enable or disable (gray out) a general action button.</short>
-		[Q_SLOT("void enableButton(KDialog::ButtonCode, bool)")]
+		[Q_SLOT("void enableButton(ButtonCode, bool)")]
 		public void EnableButton(KDialog.ButtonCode id, bool state) {
 			interceptor.Invoke("enableButton$$", "enableButton(KDialog::ButtonCode, bool)", typeof(void), typeof(KDialog.ButtonCode), id, typeof(bool), state);
 		}
@@ -474,7 +476,7 @@ namespace Kimono {
 		/// 		<see> helpLinkText</see>
 		/// 		<see> enableLinkedHelp</see>
 		/// 		<see> setHelp</see>
-		[Q_SLOT("void setHelpLinkText(const QString&)")]
+		[Q_SLOT("void setHelpLinkText(QString)")]
 		public void SetHelpLinkText(string text) {
 			interceptor.Invoke("setHelpLinkText$", "setHelpLinkText(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -488,11 +490,11 @@ namespace Kimono {
 		///  function for Dialogs of that type.  See
 		///  KCMultiDialog.SlotHelp() for more information.
 		///      </remarks>		<short>    Sets the help path and topic.</short>
-		[Q_SLOT("void setHelp(const QString&, const QString&)")]
+		[Q_SLOT("void setHelp(QString, QString)")]
 		public void SetHelp(string anchor, string appname) {
 			interceptor.Invoke("setHelp$$", "setHelp(const QString&, const QString&)", typeof(void), typeof(string), anchor, typeof(string), appname);
 		}
-		[Q_SLOT("void setHelp(const QString&)")]
+		[Q_SLOT("void setHelp(QString)")]
 		public void SetHelp(string anchor) {
 			interceptor.Invoke("setHelp$", "setHelp(const QString&)", typeof(void), typeof(string), anchor);
 		}

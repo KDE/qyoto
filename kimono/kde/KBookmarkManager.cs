@@ -154,7 +154,7 @@ namespace Kimono {
 		public void SlotEditBookmarks() {
 			interceptor.Invoke("slotEditBookmarks", "slotEditBookmarks()", typeof(void));
 		}
-		[Q_SLOT("void slotEditBookmarksAtAddress(const QString&)")]
+		[Q_SLOT("void slotEditBookmarksAtAddress(QString)")]
 		public void SlotEditBookmarksAtAddress(string address) {
 			interceptor.Invoke("slotEditBookmarksAtAddress$", "slotEditBookmarksAtAddress(const QString&)", typeof(void), typeof(string), address);
 		}
@@ -163,7 +163,7 @@ namespace Kimono {
 		///  Doesn't send signal over DBUS to the other Bookmark Managers
 		///  You probably want to use emitChanged()
 		///      </remarks>		<short>    Reparse the whole bookmarks file and notify about the change  Doesn't send signal over DBUS to the other Bookmark Managers  You probably want to use emitChanged() </short>
-		[Q_SLOT("void notifyCompleteChange(const QString&)")]
+		[Q_SLOT("void notifyCompleteChange(QString)")]
 		public void NotifyCompleteChange(string caller) {
 			interceptor.Invoke("notifyCompleteChange$", "notifyCompleteChange(const QString&)", typeof(void), typeof(string), caller);
 		}
@@ -205,7 +205,7 @@ namespace Kimono {
 		/// 		<see> to</see>
 		/// 		<see> call</see>
 		/// 		<see> emitChanged</see>
-		[Q_SLOT("void notifyChanged(const QString&, const QDBusMessage&)")]
+		[Q_SLOT("void notifyChanged(QString, QDBusMessage)")]
 		public void NotifyChanged(string groupAddress, QDBusMessage msg) {
 			interceptor.Invoke("notifyChanged$#", "notifyChanged(const QString&, const QDBusMessage&)", typeof(void), typeof(string), groupAddress, typeof(QDBusMessage), msg);
 		}

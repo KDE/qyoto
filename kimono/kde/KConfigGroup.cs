@@ -18,8 +18,6 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KConfigGroup), this);
 		}
-		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const QString& arg2); >>>> NOT CONVERTED
-		// KConfigGroup* KConfigGroup(const KSharedConfigPtr& arg1,const char* arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a null group. A null group is invalid.
 		///  \see isValid
@@ -36,6 +34,10 @@ namespace Kimono {
 		public KConfigGroup(KConfigBase master, string group) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KConfigGroup#$", "KConfigGroup(KConfigBase*, const QString&)", typeof(void), typeof(KConfigBase), master, typeof(string), group);
+		}
+		public KConfigGroup(KSharedConfig master, string group) : this((Type) null) {
+			CreateProxy();
+			interceptor.Invoke("KConfigGroup?$", "KConfigGroup(const KSharedPtr<KSharedConfig>&, const QString&)", typeof(void), typeof(KSharedConfig), master, typeof(string), group);
 		}
 		public KConfigGroup(KConfigGroup arg1) : this((Type) null) {
 			CreateProxy();
@@ -165,7 +167,7 @@ namespace Kimono {
 		///           readEntry(string, const QList<T>&) const
 		///      </remarks>		<short>    Reads a list from the config object.</short>
 		public List<QVariant> ReadEntry(string key, List<QVariant> aDefault) {
-			return (List<QVariant>) interceptor.Invoke("readEntry$?", "readEntry(const QString&, const QVariantList&) const", typeof(List<QVariant>), typeof(string), key, typeof(List<QVariant>), aDefault);
+			return (List<QVariant>) interceptor.Invoke("readEntry$?", "readEntry(const QString&, const QList<QVariant>&) const", typeof(List<QVariant>), typeof(string), key, typeof(List<QVariant>), aDefault);
 		}
 		/// <remarks>
 		///  Reads a list of strings from the config object.
@@ -288,10 +290,10 @@ namespace Kimono {
 		/// </param></remarks>		<short>    writeEntry() overridden to accept a list of QVariant values.</short>
 		/// 		<see> writeEntry</see>
 		public void WriteEntry(string key, List<QVariant> value, uint pFlags) {
-			interceptor.Invoke("writeEntry$?$", "writeEntry(const QString&, const QVariantList&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), key, typeof(List<QVariant>), value, typeof(uint), pFlags);
+			interceptor.Invoke("writeEntry$?$", "writeEntry(const QString&, const QList<QVariant>&, KConfigBase::WriteConfigFlags)", typeof(void), typeof(string), key, typeof(List<QVariant>), value, typeof(uint), pFlags);
 		}
 		public void WriteEntry(string key, List<QVariant> value) {
-			interceptor.Invoke("writeEntry$?", "writeEntry(const QString&, const QVariantList&)", typeof(void), typeof(string), key, typeof(List<QVariant>), value);
+			interceptor.Invoke("writeEntry$?", "writeEntry(const QString&, const QList<QVariant>&)", typeof(void), typeof(string), key, typeof(List<QVariant>), value);
 		}
 		/// <remarks>
 		///  Writes a list of strings to the config object, following XDG

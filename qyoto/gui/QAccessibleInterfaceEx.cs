@@ -8,7 +8,7 @@ namespace Qyoto {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(QAccessibleInterfaceEx), this);
 		}
-		[SmokeMethod("invokeMethodEx(QAccessible::Method, int, const QVariantList&)")]
+		[SmokeMethod("invokeMethodEx(QAccessible::Method, int, const QList<QVariant>&)")]
 		public abstract QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3);
 		[SmokeMethod("interface_cast(QAccessible2::InterfaceType)")]
 		public virtual QAccessible2Interface Interface_cast(QAccessible2.InterfaceType arg1) {

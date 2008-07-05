@@ -88,9 +88,9 @@ namespace Qyoto {
 		public virtual List<string> MimeTypes() {
 			return (List<string>) interceptor.Invoke("mimeTypes", "mimeTypes() const", typeof(List<string>));
 		}
-		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		[SmokeMethod("mimeData(const QList<QModelIndex>&) const")]
 		public virtual QMimeData MimeData(List<QModelIndex> indexes) {
-			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QModelIndexList&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
+			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QList<QModelIndex>&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public virtual bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
@@ -222,10 +222,10 @@ namespace Qyoto {
 			return (QModelIndex) interceptor.Invoke("createIndex$$$", "createIndex(int, int, int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(int), id);
 		}
 		protected QModelIndex CreateIndex(int row, int column, uint id) {
-			return (QModelIndex) interceptor.Invoke("createIndex$$$", "createIndex(int, int, quint32) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(uint), id);
+			return (QModelIndex) interceptor.Invoke("createIndex$$$", "createIndex(int, int, unsigned int) const", typeof(QModelIndex), typeof(int), row, typeof(int), column, typeof(uint), id);
 		}
 		protected void EncodeData(List<QModelIndex> indexes, QDataStream stream) {
-			interceptor.Invoke("encodeData?#", "encodeData(const QModelIndexList&, QDataStream&) const", typeof(void), typeof(List<QModelIndex>), indexes, typeof(QDataStream), stream);
+			interceptor.Invoke("encodeData?#", "encodeData(const QList<QModelIndex>&, QDataStream&) const", typeof(void), typeof(List<QModelIndex>), indexes, typeof(QDataStream), stream);
 		}
 		protected bool DecodeData(int row, int column, QModelIndex parent, QDataStream stream) {
 			return (bool) interceptor.Invoke("decodeData$$##", "decodeData(int, int, const QModelIndex&, QDataStream&)", typeof(bool), typeof(int), row, typeof(int), column, typeof(QModelIndex), parent, typeof(QDataStream), stream);
@@ -261,7 +261,7 @@ namespace Qyoto {
 			interceptor.Invoke("changePersistentIndex##", "changePersistentIndex(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), from, typeof(QModelIndex), to);
 		}
 		protected void ChangePersistentIndexList(List<QModelIndex> from, List<QModelIndex> to) {
-			interceptor.Invoke("changePersistentIndexList??", "changePersistentIndexList(const QModelIndexList&, const QModelIndexList&)", typeof(void), typeof(List<QModelIndex>), from, typeof(List<QModelIndex>), to);
+			interceptor.Invoke("changePersistentIndexList??", "changePersistentIndexList(const QList<QModelIndex>&, const QList<QModelIndex>&)", typeof(void), typeof(List<QModelIndex>), from, typeof(List<QModelIndex>), to);
 		}
 		protected List<QModelIndex> PersistentIndexList() {
 			return (List<QModelIndex>) interceptor.Invoke("persistentIndexList", "persistentIndexList() const", typeof(List<QModelIndex>));
@@ -278,7 +278,7 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractItemModelSignals : IQObjectSignals {
-		[Q_SIGNAL("void dataChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void dataChanged(QModelIndex, QModelIndex)")]
 		void DataChanged(QModelIndex topLeft, QModelIndex bottomRight);
 		[Q_SIGNAL("void headerDataChanged(Qt::Orientation, int, int)")]
 		void HeaderDataChanged(Qt.Orientation orientation, int first, int last);

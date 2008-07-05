@@ -142,9 +142,6 @@ namespace Kimono {
 			Catastrophe = 3,
 		}
 		// KNotification* KNotification(const QString& arg1,QWidget* arg2,const KNotification::NotificationFlags& arg3); >>>> NOT CONVERTED
-		// KNotification::ContextList contexts(); >>>> NOT CONVERTED
-		// void setContexts(const KNotification::ContextList& arg1); >>>> NOT CONVERTED
-		// void addContext(const KNotification::Context& arg1); >>>> NOT CONVERTED
 		// void setFlags(const KNotification::NotificationFlags& arg1); >>>> NOT CONVERTED
 		// KNotification* event(const QString& arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const KNotification::NotificationFlags& arg5,const KComponentData& arg6); >>>> NOT CONVERTED
 		// KNotification* event(const QString& arg1,const QString& arg2,const QPixmap& arg3,QWidget* arg4,const KNotification::NotificationFlags& arg5); >>>> NOT CONVERTED
@@ -243,14 +240,23 @@ namespace Kimono {
 		/// </remarks>		<return> the list of contexts, see KNotification.Context
 		/// 	 </return>
 		/// 		<short>   </short>
+		public List<QPair<string, string>> Contexts() {
+			return (List<QPair<string, string>>) interceptor.Invoke("contexts", "contexts() const", typeof(List<QPair<string, string>>));
+		}
 		/// <remarks>
 		///  set the list of contexts, see KNotification.Context
 		///  The list of contexts must be set before calling sendEvent;
 		/// 	 </remarks>		<short>    set the list of contexts, see KNotification.Context </short>
+		public void SetContexts(List<QPair<string, string>> contexts) {
+			interceptor.Invoke("setContexts?", "setContexts(const QList<QPair<QString, QString> >&)", typeof(void), typeof(List<QPair<string, string>>), contexts);
+		}
 		/// <remarks>
 		///  append a context at the list of contexts, see KNotificaiton.Context
 		/// <param> name="context" the context which is added
 		/// 	 </param></remarks>		<short>    append a context at the list of contexts, see KNotificaiton.Context </short>
+		public void AddContext(QPair<string, string> context) {
+			interceptor.Invoke("addContext?", "addContext(const QPair<QString, QString>&)", typeof(void), typeof(QPair<string, string>), context);
+		}
 		/// <remarks>
 		///  @overload
 		/// <param> name="context_key" is the key of the context

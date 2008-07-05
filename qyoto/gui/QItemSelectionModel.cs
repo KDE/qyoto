@@ -78,16 +78,16 @@ namespace Qyoto {
 		public QAbstractItemModel Model() {
 			return (QAbstractItemModel) interceptor.Invoke("model", "model() const", typeof(QAbstractItemModel));
 		}
-		[Q_SLOT("void setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
+		[Q_SLOT("void setCurrentIndex(QModelIndex, QItemSelectionModel::SelectionFlags)")]
 		public void SetCurrentIndex(QModelIndex index, uint command) {
 			interceptor.Invoke("setCurrentIndex#$", "setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(uint), command);
 		}
-		[Q_SLOT("void select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
+		[Q_SLOT("void select(QModelIndex, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QModelIndex index, uint command) {
 			interceptor.Invoke("select#$", "select(const QModelIndex&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QModelIndex), index, typeof(uint), command);
 		}
-		[Q_SLOT("void select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
+		[Q_SLOT("void select(QItemSelection, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QItemSelection selection, uint command) {
 			interceptor.Invoke("select#$", "select(const QItemSelection&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QItemSelection), selection, typeof(uint), command);
@@ -127,13 +127,13 @@ namespace Qyoto {
 	}
 
 	public interface IQItemSelectionModelSignals : IQObjectSignals {
-		[Q_SIGNAL("void selectionChanged(const QItemSelection&, const QItemSelection&)")]
+		[Q_SIGNAL("void selectionChanged(QItemSelection, QItemSelection)")]
 		void SelectionChanged(QItemSelection selected, QItemSelection deselected);
-		[Q_SIGNAL("void currentChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void currentChanged(QModelIndex, QModelIndex)")]
 		void CurrentChanged(QModelIndex current, QModelIndex previous);
-		[Q_SIGNAL("void currentRowChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void currentRowChanged(QModelIndex, QModelIndex)")]
 		void CurrentRowChanged(QModelIndex current, QModelIndex previous);
-		[Q_SIGNAL("void currentColumnChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void currentColumnChanged(QModelIndex, QModelIndex)")]
 		void CurrentColumnChanged(QModelIndex current, QModelIndex previous);
 	}
 }

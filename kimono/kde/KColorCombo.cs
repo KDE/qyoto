@@ -68,12 +68,12 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted when a new color box has been selected.
 		///      </remarks>		<short>    Emitted when a new color box has been selected.</short>
-		[Q_SIGNAL("void activated(const QColor&)")]
+		[Q_SIGNAL("void activated(QColor)")]
 		void Activated(QColor col);
 		/// <remarks>
 		///  Emitted when a new item has been highlighted.
 		///      </remarks>		<short>    Emitted when a new item has been highlighted.</short>
-		[Q_SIGNAL("void highlighted(const QColor&)")]
+		[Q_SIGNAL("void highlighted(QColor)")]
 		void Highlighted(QColor col);
 	}
 }

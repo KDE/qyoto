@@ -91,14 +91,14 @@ namespace Kimono {
 		/// <param> name="name" The destination name. It is string() at the moment.
 		/// </param><param> name="address" The destination address.
 		///      </param></remarks>		<short>    Emitted when a mail link has been activated and the widget has  been configured to emit the signal.</short>
-		[Q_SIGNAL("void mailClick(const QString&, const QString&)")]
+		[Q_SIGNAL("void mailClick(QString, QString)")]
 		void MailClick(string name, string address);
 		/// <remarks>
 		///  Emitted if mailClick() is not emitted and the widget has been
 		///  configured to emit the signal.
 		/// <param> name="url" The destination address.
 		///      </param></remarks>		<short>    Emitted if mailClick() is not emitted and the widget has been  configured to emit the signal.</short>
-		[Q_SIGNAL("void urlClick(const QString&)")]
+		[Q_SIGNAL("void urlClick(QString)")]
 		void UrlClick(string url);
 	}
 }

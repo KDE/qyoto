@@ -73,11 +73,11 @@ namespace Qyoto {
 		public QMatrix MatrixForElement(string id) {
 			return (QMatrix) interceptor.Invoke("matrixForElement$", "matrixForElement(const QString&) const", typeof(QMatrix), typeof(string), id);
 		}
-		[Q_SLOT("bool load(const QString&)")]
+		[Q_SLOT("bool load(QString)")]
 		public bool Load(string filename) {
 			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), filename);
 		}
-		[Q_SLOT("bool load(const QByteArray&)")]
+		[Q_SLOT("bool load(QByteArray)")]
 		public bool Load(QByteArray contents) {
 			return (bool) interceptor.Invoke("load#", "load(const QByteArray&)", typeof(bool), typeof(QByteArray), contents);
 		}
@@ -85,15 +85,15 @@ namespace Qyoto {
 		public void Render(QPainter p) {
 			interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), p);
 		}
-		[Q_SLOT("void render(QPainter*, const QRectF&)")]
+		[Q_SLOT("void render(QPainter*, QRectF)")]
 		public void Render(QPainter p, QRectF bounds) {
 			interceptor.Invoke("render##", "render(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), p, typeof(QRectF), bounds);
 		}
-		[Q_SLOT("void render(QPainter*, const QString&, const QRectF&)")]
+		[Q_SLOT("void render(QPainter*, QString, QRectF)")]
 		public void Render(QPainter p, string elementId, QRectF bounds) {
 			interceptor.Invoke("render#$#", "render(QPainter*, const QString&, const QRectF&)", typeof(void), typeof(QPainter), p, typeof(string), elementId, typeof(QRectF), bounds);
 		}
-		[Q_SLOT("void render(QPainter*, const QString&)")]
+		[Q_SLOT("void render(QPainter*, QString)")]
 		public void Render(QPainter p, string elementId) {
 			interceptor.Invoke("render#$", "render(QPainter*, const QString&)", typeof(void), typeof(QPainter), p, typeof(string), elementId);
 		}

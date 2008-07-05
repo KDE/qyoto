@@ -103,7 +103,7 @@ namespace KIO {
 		public void SuggestNewNamePressed() {
 			interceptor.Invoke("suggestNewNamePressed", "suggestNewNamePressed()", typeof(void));
 		}
-		[Q_SLOT("void enableRenameButton(const QString&)")]
+		[Q_SLOT("void enableRenameButton(QString)")]
 		protected void EnableRenameButton(string arg1) {
 			interceptor.Invoke("enableRenameButton$", "enableRenameButton(const QString&)", typeof(void), typeof(string), arg1);
 		}

@@ -30,7 +30,7 @@ namespace Qyoto {
 			RemoveFragment = 0x80,
 			StripTrailingSlash = 0x10000,
 		}
-		// QUrl::DataPtr& data_ptr(); >>>> NOT CONVERTED
+		// QUrlPrivate*& data_ptr(); >>>> NOT CONVERTED
 		public QUrl() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QUrl", "QUrl()", typeof(void));

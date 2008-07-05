@@ -47,7 +47,7 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[Q_SLOT("void setCurrentFont(const QFont&)")]
+		[Q_SLOT("void setCurrentFont(QFont)")]
 		public void SetCurrentFont(QFont f) {
 			interceptor.Invoke("setCurrentFont#", "setCurrentFont(const QFont&)", typeof(void), typeof(QFont), f);
 		}
@@ -73,7 +73,7 @@ namespace Qyoto {
 	}
 
 	public interface IQFontComboBoxSignals : IQComboBoxSignals {
-		[Q_SIGNAL("void currentFontChanged(const QFont&)")]
+		[Q_SIGNAL("void currentFontChanged(QFont)")]
 		void CurrentFontChanged(QFont f);
 	}
 }

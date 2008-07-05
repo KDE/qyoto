@@ -210,7 +210,7 @@ namespace Kimono {
 		/// </param></remarks>		<return> true if the operation is supported and succeeded, false otherwise
 		///      </return>
 		/// 		<short>    Aborts this job.</short>
-		[Q_SLOT("bool kill(KJob::KillVerbosity)")]
+		[Q_SLOT("bool kill(KillVerbosity)")]
 		public bool Kill(KJob.KillVerbosity verbosity) {
 			return (bool) interceptor.Invoke("kill$", "kill(KJob::KillVerbosity)", typeof(bool), typeof(KJob.KillVerbosity), verbosity);
 		}
@@ -362,7 +362,7 @@ namespace Kimono {
 		/// </param><param> name="plain" the info message
 		/// </param><param> name="rich" the rich text version of the message, or string() is none is available
 		///      </param></remarks>		<short>    Emitted to display state information about this job.</short>
-		[Q_SIGNAL("void infoMessage(KJob*, const QString&, const QString&)")]
+		[Q_SIGNAL("void infoMessage(KJob*, QString, QString)")]
 		void InfoMessage(KJob job, string plain, string rich);
 		/// <remarks>
 		///  Emitted to display state information about this job.
@@ -371,7 +371,7 @@ namespace Kimono {
 		/// </param><param> name="plain" the info message
 		/// </param><param> name="rich" the rich text version of the message, or string() is none is available
 		///      </param></remarks>		<short>    Emitted to display state information about this job.</short>
-		[Q_SIGNAL("void infoMessage(KJob*, const QString&)")]
+		[Q_SIGNAL("void infoMessage(KJob*, QString)")]
 		void InfoMessage(KJob job, string plain);
 		/// <remarks>
 		///  Emitted to display a warning about this job.
@@ -379,7 +379,7 @@ namespace Kimono {
 		/// </param><param> name="plain" the warning message
 		/// </param><param> name="rich" the rich text version of the message, or string() is none is available
 		///      </param></remarks>		<short>    Emitted to display a warning about this job.</short>
-		[Q_SIGNAL("void warning(KJob*, const QString&, const QString&)")]
+		[Q_SIGNAL("void warning(KJob*, QString, QString)")]
 		void Warning(KJob job, string plain, string rich);
 		/// <remarks>
 		///  Emitted to display a warning about this job.
@@ -387,7 +387,7 @@ namespace Kimono {
 		/// </param><param> name="plain" the warning message
 		/// </param><param> name="rich" the rich text version of the message, or string() is none is available
 		///      </param></remarks>		<short>    Emitted to display a warning about this job.</short>
-		[Q_SIGNAL("void warning(KJob*, const QString&)")]
+		[Q_SIGNAL("void warning(KJob*, QString)")]
 		void Warning(KJob job, string plain);
 	}
 }

@@ -120,7 +120,7 @@ namespace Kimono {
 		protected override void ResizeEvent(QResizeEvent arg1) {
 			interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
 		}
-		[Q_SLOT("void dateChangedSlot(const QDate&)")]
+		[Q_SLOT("void dateChangedSlot(QDate)")]
 		protected void DateChangedSlot(QDate date) {
 			interceptor.Invoke("dateChangedSlot#", "dateChangedSlot(const QDate&)", typeof(void), typeof(QDate), date);
 		}
@@ -182,21 +182,21 @@ namespace Kimono {
 		///   selected.
 		/// </remarks>		<short>   This signal is emitted each time the selected date is changed.</short>
 		/// 		<see> dateSelected</see>
-		[Q_SIGNAL("void dateChanged(const QDate&)")]
+		[Q_SIGNAL("void dateChanged(QDate)")]
 		void DateChanged(QDate date);
 		/// <remarks> This signal is emitted each time a day has been selected by
 		///   clicking on the table (hitting a day in the current month). It
 		///   has the same meaning as dateSelected() in older versions of
 		///   KDatePicker.
 		///      </remarks>		<short>   This signal is emitted each time a day has been selected by   clicking on the table (hitting a day in the current month).</short>
-		[Q_SIGNAL("void dateSelected(const QDate&)")]
+		[Q_SIGNAL("void dateSelected(QDate)")]
 		void DateSelected(QDate date);
 		/// <remarks> This signal is emitted when enter is pressed and a VALID date
 		///   has been entered before into the line edit. Connect to both
 		///   dateEntered() and dateSelected() to receive all events where the
 		///   user really enters a date.
 		///      </remarks>		<short>   This signal is emitted when enter is pressed and a VALID date   has been entered before into the line edit.</short>
-		[Q_SIGNAL("void dateEntered(const QDate&)")]
+		[Q_SIGNAL("void dateEntered(QDate)")]
 		void DateEntered(QDate date);
 		/// <remarks> This signal is emitted when the day has been selected by
 		///   clicking on it in the table.

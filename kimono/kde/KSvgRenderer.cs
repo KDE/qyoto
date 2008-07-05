@@ -36,11 +36,11 @@ namespace Kimono {
 			CreateProxy();
 			interceptor.Invoke("KSvgRenderer#", "KSvgRenderer(const QByteArray&)", typeof(void), typeof(QByteArray), contents);
 		}
-		[Q_SLOT("bool load(const QString&)")]
+		[Q_SLOT("bool load(QString)")]
 		public new bool Load(string filename) {
 			return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), filename);
 		}
-		[Q_SLOT("bool load(const QByteArray&)")]
+		[Q_SLOT("bool load(QByteArray)")]
 		public new bool Load(QByteArray contents) {
 			return (bool) interceptor.Invoke("load#", "load(const QByteArray&)", typeof(bool), typeof(QByteArray), contents);
 		}

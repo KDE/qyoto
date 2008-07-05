@@ -90,7 +90,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Preselects a color.
 		///      </remarks>		<short>    Preselects a color.</short>
-		[Q_SLOT("void setColor(const QColor&)")]
+		[Q_SLOT("void setColor(QColor)")]
 		public void SetColor(QColor col) {
 			interceptor.Invoke("setColor#", "setColor(const QColor&)", typeof(void), typeof(QColor), col);
 		}
@@ -167,7 +167,7 @@ namespace Kimono {
 		///  Connect to this to monitor the color as it as selected if you are
 		///  not running modal.
 		///      </remarks>		<short>    Emitted when a color is selected.</short>
-		[Q_SIGNAL("void colorSelected(const QColor&)")]
+		[Q_SIGNAL("void colorSelected(QColor)")]
 		void ColorSelected(QColor col);
 	}
 }

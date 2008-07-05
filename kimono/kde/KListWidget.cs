@@ -80,7 +80,7 @@ namespace Kimono {
 		/// </param> Note that you may not delete any QListWidgetItem objects in slots
 		///  connected to this signal.
 		///    </remarks>		<short>    Emitted whenever the user executes an listbox item.</short>
-		[Q_SIGNAL("void executed(QListWidgetItem*, const QPoint&)")]
+		[Q_SIGNAL("void executed(QListWidgetItem*, QPoint)")]
 		void Executed(QListWidgetItem item, QPoint pos);
 		/// <remarks>
 		///  This signal gets emitted whenever the user double clicks into the
@@ -93,7 +93,7 @@ namespace Kimono {
 		///  You should normally not need to use this. In most cases it's better
 		///  to use executed() instead.
 		///    </remarks>		<short>    This signal gets emitted whenever the user double clicks into the  listbox.</short>
-		[Q_SIGNAL("void doubleClicked(QListWidgetItem*, const QPoint&)")]
+		[Q_SIGNAL("void doubleClicked(QListWidgetItem*, QPoint)")]
 		void DoubleClicked(QListWidgetItem item, QPoint pos);
 	}
 }

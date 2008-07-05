@@ -137,7 +137,6 @@ namespace Qyoto {
 			Unicode_4_1 = 8,
 			Unicode_5_0 = 9,
 		}
-		// ushort& unicode(); >>>> NOT CONVERTED
 		public QChar() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QChar", "QChar()", typeof(void));
@@ -223,7 +222,7 @@ namespace Qyoto {
 			return (char) interceptor.Invoke("toLatin1", "toLatin1() const", typeof(char));
 		}
 		public ushort Unicode() {
-			return (ushort) interceptor.Invoke("unicode", "unicode() const", typeof(ushort));
+			return (ushort) interceptor.Invoke("unicode", "unicode()", typeof(ushort));
 		}
 		public bool IsNull() {
 			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
@@ -302,7 +301,7 @@ namespace Qyoto {
 			return (QChar) staticInterceptor.Invoke("fromLatin1$", "fromLatin1(char)", typeof(QChar), typeof(char), c);
 		}
 		public static uint SurrogateToUcs4(ushort high, ushort low) {
-			return (uint) staticInterceptor.Invoke("surrogateToUcs4$$", "surrogateToUcs4(ushort, ushort)", typeof(uint), typeof(ushort), high, typeof(ushort), low);
+			return (uint) staticInterceptor.Invoke("surrogateToUcs4$$", "surrogateToUcs4(unsigned short, unsigned short)", typeof(uint), typeof(ushort), high, typeof(ushort), low);
 		}
 		public static uint SurrogateToUcs4(QChar high, QChar low) {
 			return (uint) staticInterceptor.Invoke("surrogateToUcs4##", "surrogateToUcs4(QChar, QChar)", typeof(uint), typeof(QChar), high, typeof(QChar), low);
@@ -317,31 +316,31 @@ namespace Qyoto {
 			return (QChar.Category) staticInterceptor.Invoke("category$", "category(uint)", typeof(QChar.Category), typeof(uint), ucs4);
 		}
 		public static QChar.Category category(ushort ucs2) {
-			return (QChar.Category) staticInterceptor.Invoke("category$", "category(ushort)", typeof(QChar.Category), typeof(ushort), ucs2);
+			return (QChar.Category) staticInterceptor.Invoke("category$", "category(unsigned short)", typeof(QChar.Category), typeof(ushort), ucs2);
 		}
 		public static QChar.Direction direction(uint ucs4) {
 			return (QChar.Direction) staticInterceptor.Invoke("direction$", "direction(uint)", typeof(QChar.Direction), typeof(uint), ucs4);
 		}
 		public static QChar.Direction direction(ushort ucs2) {
-			return (QChar.Direction) staticInterceptor.Invoke("direction$", "direction(ushort)", typeof(QChar.Direction), typeof(ushort), ucs2);
+			return (QChar.Direction) staticInterceptor.Invoke("direction$", "direction(unsigned short)", typeof(QChar.Direction), typeof(ushort), ucs2);
 		}
 		public static QChar.Joining joining(uint ucs4) {
 			return (QChar.Joining) staticInterceptor.Invoke("joining$", "joining(uint)", typeof(QChar.Joining), typeof(uint), ucs4);
 		}
 		public static QChar.Joining joining(ushort ucs2) {
-			return (QChar.Joining) staticInterceptor.Invoke("joining$", "joining(ushort)", typeof(QChar.Joining), typeof(ushort), ucs2);
+			return (QChar.Joining) staticInterceptor.Invoke("joining$", "joining(unsigned short)", typeof(QChar.Joining), typeof(ushort), ucs2);
 		}
 		public static ushort combiningClass(uint ucs4) {
 			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(uint)", typeof(ushort), typeof(uint), ucs4);
 		}
 		public static ushort combiningClass(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(ushort)", typeof(ushort), typeof(ushort), ucs2);
+			return (ushort) staticInterceptor.Invoke("combiningClass$", "combiningClass(unsigned short)", typeof(ushort), typeof(ushort), ucs2);
 		}
 		public static uint MirroredChar(uint ucs4) {
 			return (uint) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(uint)", typeof(uint), typeof(uint), ucs4);
 		}
 		public static ushort MirroredChar(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(ushort)", typeof(ushort), typeof(ushort), ucs2);
+			return (ushort) staticInterceptor.Invoke("mirroredChar$", "mirroredChar(unsigned short)", typeof(ushort), typeof(ushort), ucs2);
 		}
 		public static QChar.Decomposition DecompositionTag(uint ucs4) {
 			return (QChar.Decomposition) staticInterceptor.Invoke("decompositionTag$", "decompositionTag(uint)", typeof(QChar.Decomposition), typeof(uint), ucs4);
@@ -350,37 +349,37 @@ namespace Qyoto {
 			return (int) staticInterceptor.Invoke("digitValue$", "digitValue(uint)", typeof(int), typeof(uint), ucs4);
 		}
 		public static int DigitValue(ushort ucs2) {
-			return (int) staticInterceptor.Invoke("digitValue$", "digitValue(ushort)", typeof(int), typeof(ushort), ucs2);
+			return (int) staticInterceptor.Invoke("digitValue$", "digitValue(unsigned short)", typeof(int), typeof(ushort), ucs2);
 		}
 		public static uint ToLower(uint ucs4) {
 			return (uint) staticInterceptor.Invoke("toLower$", "toLower(uint)", typeof(uint), typeof(uint), ucs4);
 		}
 		public static ushort ToLower(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("toLower$", "toLower(ushort)", typeof(ushort), typeof(ushort), ucs2);
+			return (ushort) staticInterceptor.Invoke("toLower$", "toLower(unsigned short)", typeof(ushort), typeof(ushort), ucs2);
 		}
 		public static uint ToUpper(uint ucs4) {
 			return (uint) staticInterceptor.Invoke("toUpper$", "toUpper(uint)", typeof(uint), typeof(uint), ucs4);
 		}
 		public static ushort ToUpper(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("toUpper$", "toUpper(ushort)", typeof(ushort), typeof(ushort), ucs2);
+			return (ushort) staticInterceptor.Invoke("toUpper$", "toUpper(unsigned short)", typeof(ushort), typeof(ushort), ucs2);
 		}
 		public static uint ToTitleCase(uint ucs4) {
 			return (uint) staticInterceptor.Invoke("toTitleCase$", "toTitleCase(uint)", typeof(uint), typeof(uint), ucs4);
 		}
 		public static ushort ToTitleCase(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("toTitleCase$", "toTitleCase(ushort)", typeof(ushort), typeof(ushort), ucs2);
+			return (ushort) staticInterceptor.Invoke("toTitleCase$", "toTitleCase(unsigned short)", typeof(ushort), typeof(ushort), ucs2);
 		}
 		public static uint ToCaseFolded(uint ucs4) {
 			return (uint) staticInterceptor.Invoke("toCaseFolded$", "toCaseFolded(uint)", typeof(uint), typeof(uint), ucs4);
 		}
 		public static ushort ToCaseFolded(ushort ucs2) {
-			return (ushort) staticInterceptor.Invoke("toCaseFolded$", "toCaseFolded(ushort)", typeof(ushort), typeof(ushort), ucs2);
+			return (ushort) staticInterceptor.Invoke("toCaseFolded$", "toCaseFolded(unsigned short)", typeof(ushort), typeof(ushort), ucs2);
 		}
 		public static QChar.UnicodeVersion unicodeVersion(uint ucs4) {
 			return (QChar.UnicodeVersion) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(uint)", typeof(QChar.UnicodeVersion), typeof(uint), ucs4);
 		}
 		public static QChar.UnicodeVersion unicodeVersion(ushort ucs2) {
-			return (QChar.UnicodeVersion) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(ushort)", typeof(QChar.UnicodeVersion), typeof(ushort), ucs2);
+			return (QChar.UnicodeVersion) staticInterceptor.Invoke("unicodeVersion$", "unicodeVersion(unsigned short)", typeof(QChar.UnicodeVersion), typeof(ushort), ucs2);
 		}
 		public static string decomposition(uint ucs4) {
 			return (string) staticInterceptor.Invoke("decomposition$", "decomposition(uint)", typeof(string), typeof(uint), ucs4);

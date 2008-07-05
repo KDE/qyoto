@@ -22,8 +22,6 @@ namespace Kimono {
 		static KPluginInfo() {
 			staticInterceptor = new SmokeInvocation(typeof(KPluginInfo), null);
 		}
-		// KPluginInfo::List fromServices(const KService::List& arg1,const KConfigGroup& arg2); >>>> NOT CONVERTED
-		// KPluginInfo::List fromServices(const KService::List& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Read plugin info from <code>filename.</code>
 		///  The file should be of the following form:
@@ -88,7 +86,7 @@ namespace Kimono {
 		///          </remarks>		<short>    Read plugin info from a KService object.</short>
 		public KPluginInfo(KService service) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPluginInfo#", "KPluginInfo(const KService::Ptr)", typeof(void), typeof(KService), service);
+			interceptor.Invoke("KPluginInfo?", "KPluginInfo(const KSharedPtr<KService>)", typeof(void), typeof(KService), service);
 		}
 		/// <remarks>
 		///  Creates an invalid plugin.
@@ -360,6 +358,12 @@ namespace Kimono {
 		///  to use you can just pass them to this function.
 		/// </return>
 		/// 		<short>   </short>
+		public static List<KPluginInfo> FromServices(List<KService> services, KConfigGroup config) {
+			return (List<KPluginInfo>) staticInterceptor.Invoke("fromServices?#", "fromServices(const QList<KSharedPtr<KService> >&, const KConfigGroup&)", typeof(List<KPluginInfo>), typeof(List<KService>), services, typeof(KConfigGroup), config);
+		}
+		public static List<KPluginInfo> FromServices(List<KService> services) {
+			return (List<KPluginInfo>) staticInterceptor.Invoke("fromServices?", "fromServices(const QList<KSharedPtr<KService> >&)", typeof(List<KPluginInfo>), typeof(List<KService>), services);
+		}
 		/// <remarks>
 		/// <param> name="files" The list of files to construct the list of KPluginInfo objects from
 		/// </param><param> name="config" The config group where to save/load whether the plugin is enabled/disabled

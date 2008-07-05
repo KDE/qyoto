@@ -91,7 +91,7 @@ namespace Kimono {
 		///  This signal is emmitted whenever the text of this action
 		///  is changed.
 		///      </remarks>		<short>    This signal is emmitted whenever the text of this action  is changed.</short>
-		[Q_SIGNAL("void textChanged(const QString&)")]
+		[Q_SIGNAL("void textChanged(QString)")]
 		void TextChanged(string newText);
 	}
 }

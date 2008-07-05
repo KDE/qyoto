@@ -25,7 +25,7 @@ namespace Kimono {
 		/// </param></remarks>		<short>    Constructor.</short>
 		public KSeparator(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KSeparator#$", "KSeparator(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
+			interceptor.Invoke("KSeparator#$", "KSeparator(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KSeparator(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -44,7 +44,7 @@ namespace Kimono {
 		/// </param></remarks>		<short>    Constructor.</short>
 		public KSeparator(Qt.Orientation orientation, QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KSeparator$#$", "KSeparator(Qt::Orientation, QWidget*, Qt::WFlags)", typeof(void), typeof(Qt.Orientation), orientation, typeof(QWidget), parent, typeof(uint), f);
+			interceptor.Invoke("KSeparator$#$", "KSeparator(Qt::Orientation, QWidget*, Qt::WindowFlags)", typeof(void), typeof(Qt.Orientation), orientation, typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KSeparator(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();

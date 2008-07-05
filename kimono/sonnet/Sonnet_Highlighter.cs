@@ -157,7 +157,7 @@ namespace Sonnet {
 		/// <param> name="description" is a i18n description of the new state,
 		///         with an optional reason
 		///          </param></remarks>		<short>    Emitted when as-you-type spell checking is enabled or disabled.</short>
-		[Q_SIGNAL("void activeChanged(const QString&)")]
+		[Q_SIGNAL("void activeChanged(QString)")]
 		void ActiveChanged(string description);
 	}
 }

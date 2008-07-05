@@ -2,6 +2,7 @@
 namespace Kimono {
 	using System;
 	using Qyoto;
+	using System.Runtime.InteropServices;
 	using System.Collections.Generic;
 	/// <remarks>
 	///  Represent a mime type, like "text/plain", and the data that is associated
@@ -25,26 +26,6 @@ namespace Kimono {
 			DontResolveAlias = 0,
 			ResolveAliases = 1,
 		}
-		// KMimeType::Ptr mimeType(const QString& arg1,KMimeType::FindByNameOption arg2); >>>> NOT CONVERTED
-		// KMimeType::Ptr mimeType(const QString& arg1); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByUrl(const KUrl& arg1,mode_t arg2,bool arg3,bool arg4,int* arg5); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByUrl(const KUrl& arg1,mode_t arg2,bool arg3,bool arg4); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByUrl(const KUrl& arg1,mode_t arg2,bool arg3); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByUrl(const KUrl& arg1,mode_t arg2); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByUrl(const KUrl& arg1); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByPath(const QString& arg1,mode_t arg2,bool arg3,int* arg4); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByPath(const QString& arg1,mode_t arg2,bool arg3); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByPath(const QString& arg1,mode_t arg2); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByPath(const QString& arg1); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByContent(const QByteArray& arg1,int* arg2); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByContent(const QByteArray& arg1); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByNameAndContent(const QString& arg1,const QByteArray& arg2,mode_t arg3,int* arg4); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByNameAndContent(const QString& arg1,const QByteArray& arg2,mode_t arg3); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByNameAndContent(const QString& arg1,const QByteArray& arg2); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByFileContent(const QString& arg1,int* arg2); >>>> NOT CONVERTED
-		// KMimeType::Ptr findByFileContent(const QString& arg1); >>>> NOT CONVERTED
-		// KMimeType::List allMimeTypes(); >>>> NOT CONVERTED
-		// KMimeType::Ptr defaultMimeTypePtr(); >>>> NOT CONVERTED
 		// KMimeType* KMimeType(KMimeTypePrivate& arg1); >>>> NOT CONVERTED
 		// KMimeType* KMimeType(KMimeTypePrivate& arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
 		/// <remarks>
@@ -204,6 +185,12 @@ namespace Kimono {
 		/// </return>
 		/// 		<short>    Retrieve a pointer to the mime type <code>name</code> .</short>
 		/// 		<see> KServiceType.ServiceType</see>
+		public static KMimeType MimeType(string name, KMimeType.FindByNameOption options) {
+			return (KMimeType) staticInterceptor.Invoke("mimeType$$", "mimeType(const QString&, KMimeType::FindByNameOption)", typeof(KMimeType), typeof(string), name, typeof(KMimeType.FindByNameOption), options);
+		}
+		public static KMimeType MimeType(string name) {
+			return (KMimeType) staticInterceptor.Invoke("mimeType$", "mimeType(const QString&)", typeof(KMimeType), typeof(string), name);
+		}
 		/// <remarks>
 		///  Finds a KMimeType with the given <code>url.</code>
 		///  This function looks at mode_t first.
@@ -237,6 +224,44 @@ namespace Kimono {
 		///  @em Very @em Important: Don't store the result in a KMimeType* !
 		///      </return>
 		/// 		<short>    Finds a KMimeType with the given <code>url.</code></short>
+		public static KMimeType FindByUrl(KUrl url, long mode, bool is_local_file, bool fast_mode, ref int accuracy) {
+			StackItem[] stack = new StackItem[6];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(url);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(url);
+#endif
+			stack[2].s_long = mode;
+			stack[3].s_bool = is_local_file;
+			stack[4].s_bool = fast_mode;
+			stack[5].s_int = accuracy;
+			staticInterceptor.Invoke("findByUrl#$$$$", "findByUrl(const KUrl&, mode_t, bool, bool, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			accuracy = stack[5].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (KMimeType) returnValue;
+		}
+		public static KMimeType FindByUrl(KUrl url, long mode, bool is_local_file, bool fast_mode) {
+			return (KMimeType) staticInterceptor.Invoke("findByUrl#$$$", "findByUrl(const KUrl&, mode_t, bool, bool)", typeof(KMimeType), typeof(KUrl), url, typeof(long), mode, typeof(bool), is_local_file, typeof(bool), fast_mode);
+		}
+		public static KMimeType FindByUrl(KUrl url, long mode, bool is_local_file) {
+			return (KMimeType) staticInterceptor.Invoke("findByUrl#$$", "findByUrl(const KUrl&, mode_t, bool)", typeof(KMimeType), typeof(KUrl), url, typeof(long), mode, typeof(bool), is_local_file);
+		}
+		public static KMimeType FindByUrl(KUrl url, long mode) {
+			return (KMimeType) staticInterceptor.Invoke("findByUrl#$", "findByUrl(const KUrl&, mode_t)", typeof(KMimeType), typeof(KUrl), url, typeof(long), mode);
+		}
+		public static KMimeType FindByUrl(KUrl url) {
+			return (KMimeType) staticInterceptor.Invoke("findByUrl#", "findByUrl(const KUrl&)", typeof(KMimeType), typeof(KUrl), url);
+		}
 		/// <remarks>
 		///  Finds a KMimeType with the given <code>url.</code>
 		///  This function looks at mode_t first.
@@ -264,6 +289,40 @@ namespace Kimono {
 		/// </param></remarks>		<return> A pointer to the matching mimetype. 0 is never returned.
 		///      </return>
 		/// 		<short>    Finds a KMimeType with the given <code>url.</code></short>
+		public static KMimeType FindByPath(string path, long mode, bool fast_mode, ref int accuracy) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(path);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(path);
+#endif
+			stack[2].s_long = mode;
+			stack[3].s_bool = fast_mode;
+			stack[4].s_int = accuracy;
+			staticInterceptor.Invoke("findByPath$$$$", "findByPath(const QString&, mode_t, bool, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			accuracy = stack[4].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (KMimeType) returnValue;
+		}
+		public static KMimeType FindByPath(string path, long mode, bool fast_mode) {
+			return (KMimeType) staticInterceptor.Invoke("findByPath$$$", "findByPath(const QString&, mode_t, bool)", typeof(KMimeType), typeof(string), path, typeof(long), mode, typeof(bool), fast_mode);
+		}
+		public static KMimeType FindByPath(string path, long mode) {
+			return (KMimeType) staticInterceptor.Invoke("findByPath$$", "findByPath(const QString&, mode_t)", typeof(KMimeType), typeof(string), path, typeof(long), mode);
+		}
+		public static KMimeType FindByPath(string path) {
+			return (KMimeType) staticInterceptor.Invoke("findByPath$", "findByPath(const QString&)", typeof(KMimeType), typeof(string), path);
+		}
 		/// <remarks>
 		///  Tries to find out the MIME type of a data chunk by looking for
 		///  certain magic numbers and characteristic strings in it.
@@ -274,6 +333,32 @@ namespace Kimono {
 		///          type can not be found this way.
 		///      </return>
 		/// 		<short>    Tries to find out the MIME type of a data chunk by looking for  certain magic numbers and characteristic strings in it.</short>
+		public static KMimeType FindByContent(QByteArray data, ref int accuracy) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(data);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(data);
+#endif
+			stack[2].s_int = accuracy;
+			staticInterceptor.Invoke("findByContent#$", "findByContent(const QByteArray&, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			accuracy = stack[2].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (KMimeType) returnValue;
+		}
+		public static KMimeType FindByContent(QByteArray data) {
+			return (KMimeType) staticInterceptor.Invoke("findByContent#", "findByContent(const QByteArray&)", typeof(KMimeType), typeof(QByteArray), data);
+		}
 		/// <remarks>
 		///  Tries to find out the MIME type of filename/url and a data chunk.
 		///  Whether to trust the extension or the data depends on the results of both approaches,
@@ -287,6 +372,46 @@ namespace Kimono {
 		/// </param><param> name="accuracy" If not a null pointer, accuracy is set to the
 		///           accuracy of the match (which is in the range 0..100)
 		///      </param></remarks>		<short>    Tries to find out the MIME type of filename/url and a data chunk.</short>
+		public static KMimeType FindByNameAndContent(string name, QByteArray data, long mode, ref int accuracy) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+#if DEBUG
+			stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(data);
+#else
+			stack[2].s_class = (IntPtr) GCHandle.Alloc(data);
+#endif
+			stack[3].s_long = mode;
+			stack[4].s_int = accuracy;
+			staticInterceptor.Invoke("findByNameAndContent$#$$", "findByNameAndContent(const QString&, const QByteArray&, mode_t, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+			((GCHandle) stack[2].s_class).Free();
+#endif
+			accuracy = stack[4].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (KMimeType) returnValue;
+		}
+		public static KMimeType FindByNameAndContent(string name, QByteArray data, long mode) {
+			return (KMimeType) staticInterceptor.Invoke("findByNameAndContent$#$", "findByNameAndContent(const QString&, const QByteArray&, mode_t)", typeof(KMimeType), typeof(string), name, typeof(QByteArray), data, typeof(long), mode);
+		}
+		public static KMimeType FindByNameAndContent(string name, QByteArray data) {
+			return (KMimeType) staticInterceptor.Invoke("findByNameAndContent$#", "findByNameAndContent(const QString&, const QByteArray&)", typeof(KMimeType), typeof(string), name, typeof(QByteArray), data);
+		}
 		/// <remarks>
 		///  Tries to find out the MIME type of a file by looking for
 		///  certain magic numbers and characteristic strings in it.
@@ -300,6 +425,32 @@ namespace Kimono {
 		///          (application/octet-stream) if the file cannot be opened.
 		///      </return>
 		/// 		<short>    Tries to find out the MIME type of a file by looking for  certain magic numbers and characteristic strings in it.</short>
+		public static KMimeType FindByFileContent(string fileName, ref int accuracy) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(fileName);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(fileName);
+#endif
+			stack[2].s_int = accuracy;
+			staticInterceptor.Invoke("findByFileContent$$", "findByFileContent(const QString&, int*)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			accuracy = stack[2].s_int;
+			object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+			((GCHandle) stack[0].s_class).Free();
+#endif
+			return (KMimeType) returnValue;
+		}
+		public static KMimeType FindByFileContent(string fileName) {
+			return (KMimeType) staticInterceptor.Invoke("findByFileContent$", "findByFileContent(const QString&)", typeof(KMimeType), typeof(string), fileName);
+		}
 		/// <remarks>
 		///  Returns whether a file has an internal format that is not human readable.
 		///  This is much more generic than "not mime.Is(text/plain)".
@@ -327,6 +478,9 @@ namespace Kimono {
 		/// </remarks>		<return> the list of all existing KMimeTypes
 		///      </return>
 		/// 		<short>    Get all the mimetypes.</short>
+		public static List<KMimeType> AllMimeTypes() {
+			return (List<KMimeType>) staticInterceptor.Invoke("allMimeTypes", "allMimeTypes()", typeof(List<KMimeType>));
+		}
 		/// <remarks>
 		///  Returns the name of the default mimetype.
 		///  Always application/octet-stream, but this method exists
@@ -345,6 +499,9 @@ namespace Kimono {
 		/// </remarks>		<return> the "application/octet-stream" mimetype pointer.
 		///      </return>
 		/// 		<short>    Returns the default mimetype.</short>
+		public static KMimeType DefaultMimeTypePtr() {
+			return (KMimeType) staticInterceptor.Invoke("defaultMimeTypePtr", "defaultMimeTypePtr()", typeof(KMimeType));
+		}
 		/// <remarks>
 		///  Determines the extension from a filename (or full path) using the mimetype database.
 		///  This allows to extract "tar.bz2" for foo.tar.bz2

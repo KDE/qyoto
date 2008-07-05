@@ -32,7 +32,7 @@ namespace KIO {
 		protected override void SlotFinished() {
 			interceptor.Invoke("slotFinished", "slotFinished()", typeof(void));
 		}
-		[Q_SLOT("void slotData(const QByteArray&)")]
+		[Q_SLOT("void slotData(QByteArray)")]
 		[SmokeMethod("slotData(const QByteArray&)")]
 		protected override void SlotData(QByteArray data) {
 			interceptor.Invoke("slotData#", "slotData(const QByteArray&)", typeof(void), typeof(QByteArray), data);

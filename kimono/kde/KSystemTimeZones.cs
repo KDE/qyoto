@@ -44,7 +44,7 @@ namespace Kimono {
 		static KSystemTimeZones() {
 			staticInterceptor = new SmokeInvocation(typeof(KSystemTimeZones), null);
 		}
-		// const KTimeZones::ZoneMap zones(); >>>> NOT CONVERTED
+		// const QMap<QString, KTimeZone> zones(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Returns the unique KTimeZones instance containing the system time zones
 		///  collection. It is first created if it does not already exist.

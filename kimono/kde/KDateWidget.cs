@@ -92,7 +92,7 @@ namespace Kimono {
 		///  Emitted whenever the date of the widget
 		///  is changed, either with setDate() or via user selection.
 		///      </remarks>		<short>    Emitted whenever the date of the widget  is changed, either with setDate() or via user selection.</short>
-		[Q_SIGNAL("void changed(const QDate&)")]
+		[Q_SIGNAL("void changed(QDate)")]
 		void Changed(QDate date);
 	}
 }

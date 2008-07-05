@@ -62,10 +62,10 @@ namespace Qyoto {
 			interceptor.Invoke("QFtp", "QFtp()", typeof(void));
 		}
 		public int SetProxy(string host, ushort port) {
-			return (int) interceptor.Invoke("setProxy$$", "setProxy(const QString&, quint16)", typeof(int), typeof(string), host, typeof(ushort), port);
+			return (int) interceptor.Invoke("setProxy$$", "setProxy(const QString&, unsigned short)", typeof(int), typeof(string), host, typeof(ushort), port);
 		}
 		public int ConnectToHost(string host, ushort port) {
-			return (int) interceptor.Invoke("connectToHost$$", "connectToHost(const QString&, quint16)", typeof(int), typeof(string), host, typeof(ushort), port);
+			return (int) interceptor.Invoke("connectToHost$$", "connectToHost(const QString&, unsigned short)", typeof(int), typeof(string), host, typeof(ushort), port);
 		}
 		public int ConnectToHost(string host) {
 			return (int) interceptor.Invoke("connectToHost$", "connectToHost(const QString&)", typeof(int), typeof(string), host);
@@ -187,13 +187,13 @@ namespace Qyoto {
 	public interface IQFtpSignals : IQObjectSignals {
 		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("void listInfo(const QUrlInfo&)")]
+		[Q_SIGNAL("void listInfo(QUrlInfo)")]
 		void ListInfo(QUrlInfo arg1);
 		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
 		[Q_SIGNAL("void dataTransferProgress(qint64, qint64)")]
 		void DataTransferProgress(long arg1, long arg2);
-		[Q_SIGNAL("void rawCommandReply(int, const QString&)")]
+		[Q_SIGNAL("void rawCommandReply(int, QString)")]
 		void RawCommandReply(int arg1, string arg2);
 		[Q_SIGNAL("void commandStarted(int)")]
 		void CommandStarted(int arg1);

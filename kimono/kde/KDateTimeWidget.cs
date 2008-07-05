@@ -47,7 +47,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Changes the selected date and time to <code>datetime.</code>
 		///    </remarks>		<short>    Changes the selected date and time to <code>datetime.</code></short>
-		[Q_SLOT("void setDateTime(const QDateTime&)")]
+		[Q_SLOT("void setDateTime(QDateTime)")]
 		public void SetDateTime(QDateTime datetime) {
 			interceptor.Invoke("setDateTime#", "setDateTime(const QDateTime&)", typeof(void), typeof(QDateTime), datetime);
 		}
@@ -67,7 +67,7 @@ namespace Kimono {
 		///  Emitted whenever the date or time of the widget
 		///  is changed, either with setDateTime() or via user selection.
 		///    </remarks>		<short>    Emitted whenever the date or time of the widget  is changed, either with setDateTime() or via user selection.</short>
-		[Q_SIGNAL("void valueChanged(const QDateTime&)")]
+		[Q_SIGNAL("void valueChanged(QDateTime)")]
 		void ValueChanged(QDateTime datetime);
 	}
 }

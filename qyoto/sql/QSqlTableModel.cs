@@ -217,11 +217,11 @@ namespace Qyoto {
 	}
 
 	public interface IQSqlTableModelSignals : IQSqlQueryModelSignals {
-		[Q_SIGNAL("void primeInsert(int, QSqlRecord&)")]
+		[Q_SIGNAL("void primeInsert(int, QSqlRecord)")]
 		void PrimeInsert(int row, QSqlRecord record);
-		[Q_SIGNAL("void beforeInsert(QSqlRecord&)")]
+		[Q_SIGNAL("void beforeInsert(QSqlRecord)")]
 		void BeforeInsert(QSqlRecord record);
-		[Q_SIGNAL("void beforeUpdate(int, QSqlRecord&)")]
+		[Q_SIGNAL("void beforeUpdate(int, QSqlRecord)")]
 		void BeforeUpdate(int row, QSqlRecord record);
 		[Q_SIGNAL("void beforeDelete(int)")]
 		void BeforeDelete(int row);

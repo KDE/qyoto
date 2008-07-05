@@ -107,8 +107,6 @@ namespace Qyoto {
 			DuplexLongSide = 2,
 			DuplexShortSide = 3,
 		}
-		// void setPaperSize(QPrinter::PaperSize arg1); >>>> NOT CONVERTED
-		// QPrinter::PaperSize paperSize(); >>>> NOT CONVERTED
 		public QPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPrinter$", "QPrinter(QPrinter::PrinterMode)", typeof(void), typeof(QPrinter.PrinterMode), mode);
@@ -179,6 +177,12 @@ namespace Qyoto {
 		}
 		public QPrinter.PageSize pageSize() {
 			return (QPrinter.PageSize) interceptor.Invoke("pageSize", "pageSize() const", typeof(QPrinter.PageSize));
+		}
+		public void SetPaperSize(QPrinter.PageSize arg1) {
+			interceptor.Invoke("setPaperSize$", "setPaperSize(QPrinter::PageSize)", typeof(void), typeof(QPrinter.PageSize), arg1);
+		}
+		public QPrinter.PageSize PaperSize() {
+			return (QPrinter.PageSize) interceptor.Invoke("paperSize", "paperSize() const", typeof(QPrinter.PageSize));
 		}
 		public void SetPaperSize(QSizeF paperSize, QPrinter.Unit unit) {
 			interceptor.Invoke("setPaperSize#$", "setPaperSize(const QSizeF&, QPrinter::Unit)", typeof(void), typeof(QSizeF), paperSize, typeof(QPrinter.Unit), unit);

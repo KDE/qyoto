@@ -76,7 +76,7 @@ namespace Qyoto {
 	public interface IQSignalMapperSignals : IQObjectSignals {
 		[Q_SIGNAL("void mapped(int)")]
 		void Mapped(int arg1);
-		[Q_SIGNAL("void mapped(const QString&)")]
+		[Q_SIGNAL("void mapped(QString)")]
 		void Mapped(string arg1);
 		[Q_SIGNAL("void mapped(QWidget*)")]
 		void Mapped(QWidget arg1);

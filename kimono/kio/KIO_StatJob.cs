@@ -55,7 +55,7 @@ namespace KIO {
 		protected override void SlotFinished() {
 			interceptor.Invoke("slotFinished", "slotFinished()", typeof(void));
 		}
-		[Q_SLOT("void slotMetaData(const KIO::MetaData&)")]
+		[Q_SLOT("void slotMetaData(KIO::MetaData)")]
 		[SmokeMethod("slotMetaData(const KIO::MetaData&)")]
 		protected override void SlotMetaData(KIO.MetaData _metaData) {
 			interceptor.Invoke("slotMetaData#", "slotMetaData(const KIO::MetaData&)", typeof(void), typeof(KIO.MetaData), _metaData);
@@ -79,7 +79,7 @@ namespace KIO {
 		/// <param> name="job" the job that is redirected
 		/// </param><param> name="url" the new url
 		///          </param></remarks>		<short>    Signals a redirection.</short>
-		[Q_SIGNAL("void redirection(KIO::Job*, const KUrl&)")]
+		[Q_SIGNAL("void redirection(KIO::Job*, KUrl)")]
 		void Redirection(KIO.Job job, KUrl url);
 		/// <remarks>
 		///  Signals a permanent redirection.
@@ -88,7 +88,7 @@ namespace KIO {
 		/// </param><param> name="fromUrl" the original URL
 		/// </param><param> name="toUrl" the new URL
 		///          </param></remarks>		<short>    Signals a permanent redirection.</short>
-		[Q_SIGNAL("void permanentRedirection(KIO::Job*, const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void permanentRedirection(KIO::Job*, KUrl, KUrl)")]
 		void PermanentRedirection(KIO.Job job, KUrl fromUrl, KUrl toUrl);
 	}
 }

@@ -159,7 +159,7 @@ namespace Kimono {
 		///      </remarks>		<short>    Construct a palette from given color set and state, using the colors  from the given KConfig (if null, the system colors are used).</short>
 		public KColorScheme(QPalette.ColorGroup arg1, KColorScheme.ColorSet arg2, KSharedConfig arg3) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KColorScheme$$#", "KColorScheme(QPalette::ColorGroup, KColorScheme::ColorSet, KSharedConfigPtr)", typeof(void), typeof(QPalette.ColorGroup), arg1, typeof(KColorScheme.ColorSet), arg2, typeof(KSharedConfig), arg3);
+			interceptor.Invoke("KColorScheme$$?", "KColorScheme(QPalette::ColorGroup, KColorScheme::ColorSet, KSharedPtr<KSharedConfig>)", typeof(void), typeof(QPalette.ColorGroup), arg1, typeof(KColorScheme.ColorSet), arg2, typeof(KSharedConfig), arg3);
 		}
 		public KColorScheme(QPalette.ColorGroup arg1, KColorScheme.ColorSet arg2) : this((Type) null) {
 			CreateProxy();
@@ -256,7 +256,7 @@ namespace Kimono {
 		///  method, it's bad usability to do so. Just say "no".
 		///      </remarks>		<short>    Adjust a QPalette by replacing the specified QPalette.ColorRole with  the requested background color for all states.</short>
 		public static void AdjustBackground(QPalette arg1, KColorScheme.BackgroundRole newRole, QPalette.ColorRole color, KColorScheme.ColorSet set, KSharedConfig arg5) {
-			staticInterceptor.Invoke("adjustBackground#$$$#", "adjustBackground(QPalette&, KColorScheme::BackgroundRole, QPalette::ColorRole, KColorScheme::ColorSet, KSharedConfigPtr)", typeof(void), typeof(QPalette), arg1, typeof(KColorScheme.BackgroundRole), newRole, typeof(QPalette.ColorRole), color, typeof(KColorScheme.ColorSet), set, typeof(KSharedConfig), arg5);
+			staticInterceptor.Invoke("adjustBackground#$$$?", "adjustBackground(QPalette&, KColorScheme::BackgroundRole, QPalette::ColorRole, KColorScheme::ColorSet, KSharedPtr<KSharedConfig>)", typeof(void), typeof(QPalette), arg1, typeof(KColorScheme.BackgroundRole), newRole, typeof(QPalette.ColorRole), color, typeof(KColorScheme.ColorSet), set, typeof(KSharedConfig), arg5);
 		}
 		public static void AdjustBackground(QPalette arg1, KColorScheme.BackgroundRole newRole, QPalette.ColorRole color, KColorScheme.ColorSet set) {
 			staticInterceptor.Invoke("adjustBackground#$$$", "adjustBackground(QPalette&, KColorScheme::BackgroundRole, QPalette::ColorRole, KColorScheme::ColorSet)", typeof(void), typeof(QPalette), arg1, typeof(KColorScheme.BackgroundRole), newRole, typeof(QPalette.ColorRole), color, typeof(KColorScheme.ColorSet), set);
@@ -279,7 +279,7 @@ namespace Kimono {
 		///  method, it's bad usability to do so. Just say "no".
 		///      </remarks>		<short>    Adjust a QPalette by replacing the specified QPalette.ColorRole with  the requested foreground color for all states.</short>
 		public static void AdjustForeground(QPalette arg1, KColorScheme.ForegroundRole newRole, QPalette.ColorRole color, KColorScheme.ColorSet set, KSharedConfig arg5) {
-			staticInterceptor.Invoke("adjustForeground#$$$#", "adjustForeground(QPalette&, KColorScheme::ForegroundRole, QPalette::ColorRole, KColorScheme::ColorSet, KSharedConfigPtr)", typeof(void), typeof(QPalette), arg1, typeof(KColorScheme.ForegroundRole), newRole, typeof(QPalette.ColorRole), color, typeof(KColorScheme.ColorSet), set, typeof(KSharedConfig), arg5);
+			staticInterceptor.Invoke("adjustForeground#$$$?", "adjustForeground(QPalette&, KColorScheme::ForegroundRole, QPalette::ColorRole, KColorScheme::ColorSet, KSharedPtr<KSharedConfig>)", typeof(void), typeof(QPalette), arg1, typeof(KColorScheme.ForegroundRole), newRole, typeof(QPalette.ColorRole), color, typeof(KColorScheme.ColorSet), set, typeof(KSharedConfig), arg5);
 		}
 		public static void AdjustForeground(QPalette arg1, KColorScheme.ForegroundRole newRole, QPalette.ColorRole color, KColorScheme.ColorSet set) {
 			staticInterceptor.Invoke("adjustForeground#$$$", "adjustForeground(QPalette&, KColorScheme::ForegroundRole, QPalette::ColorRole, KColorScheme::ColorSet)", typeof(void), typeof(QPalette), arg1, typeof(KColorScheme.ForegroundRole), newRole, typeof(QPalette.ColorRole), color, typeof(KColorScheme.ColorSet), set);

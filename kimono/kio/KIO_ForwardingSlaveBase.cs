@@ -4,6 +4,7 @@ namespace KIO {
 	using System;
 	using Qyoto;
 	using System.Runtime.InteropServices;
+	using System.Collections.Generic;
 	/// <remarks>
 	///  This class should be used as a base for ioslaves acting as a
 	///  forwarder to other ioslaves. It has been designed to support only
@@ -55,7 +56,6 @@ namespace KIO {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(ForwardingSlaveBase), this);
 		}
-		// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
 		public ForwardingSlaveBase(QByteArray protocol, QByteArray poolSocket, QByteArray appSocket) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("ForwardingSlaveBase###", "ForwardingSlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), poolSocket, typeof(QByteArray), appSocket);
@@ -248,6 +248,9 @@ namespace KIO {
 		///  to report.
 		/// <param> name="_entry" The UDSEntry containing all of the object attributes.
 		///      </param></remarks>		<short>    Call this in listDir, each time you have a bunch of entries  to report.</short>
+		public void ListEntries(List<KIO.UDSEntry> _entry) {
+			interceptor.Invoke("listEntries?", "listEntries(const QList<KIO::UDSEntry>&)", typeof(void), typeof(List<KIO.UDSEntry>), _entry);
+		}
 		/// <remarks>
 		///  Call this at the beginning of put(), to give the size of the existing
 		///  partial file, if there is one. The <code>offset</code> argument notifies the
@@ -447,9 +450,9 @@ namespace KIO {
 		///  SlaveInterface, unlike the other methods.
 		/// </param> This method is called whenever a change in host, port or user occurs.
 		///      </remarks>		<short>    Set the host </short>
-		[SmokeMethod("setHost(const QString&, quint16, const QString&, const QString&)")]
+		[SmokeMethod("setHost(const QString&, unsigned short, const QString&, const QString&)")]
 		public virtual void SetHost(string host, ushort port, string user, string pass) {
-			interceptor.Invoke("setHost$$$$", "setHost(const QString&, quint16, const QString&, const QString&)", typeof(void), typeof(string), host, typeof(ushort), port, typeof(string), user, typeof(string), pass);
+			interceptor.Invoke("setHost$$$$", "setHost(const QString&, unsigned short, const QString&, const QString&)", typeof(void), typeof(string), host, typeof(ushort), port, typeof(string), user, typeof(string), pass);
 		}
 		/// <remarks>
 		///  Prepare slave for streaming operation

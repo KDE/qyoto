@@ -67,7 +67,7 @@ namespace Qyoto {
 		public int ForwardHistoryCount() {
 			return (int) interceptor.Invoke("forwardHistoryCount", "forwardHistoryCount() const", typeof(int));
 		}
-		[Q_SLOT("void setSource(const QUrl&)")]
+		[Q_SLOT("void setSource(QUrl)")]
 		[SmokeMethod("setSource(const QUrl&)")]
 		public virtual void SetSource(QUrl name) {
 			interceptor.Invoke("setSource#", "setSource(const QUrl&)", typeof(void), typeof(QUrl), name);
@@ -148,13 +148,13 @@ namespace Qyoto {
 		void ForwardAvailable(bool arg1);
 		[Q_SIGNAL("void historyChanged()")]
 		void HistoryChanged();
-		[Q_SIGNAL("void sourceChanged(const QUrl&)")]
+		[Q_SIGNAL("void sourceChanged(QUrl)")]
 		void SourceChanged(QUrl arg1);
-		[Q_SIGNAL("void highlighted(const QUrl&)")]
+		[Q_SIGNAL("void highlighted(QUrl)")]
 		void Highlighted(QUrl arg1);
-		[Q_SIGNAL("void highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(QString)")]
 		void Highlighted(string arg1);
-		[Q_SIGNAL("void anchorClicked(const QUrl&)")]
+		[Q_SIGNAL("void anchorClicked(QUrl)")]
 		void AnchorClicked(QUrl arg1);
 	}
 }

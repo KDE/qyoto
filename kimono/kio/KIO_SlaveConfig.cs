@@ -88,7 +88,7 @@ namespace KIO {
 		///  configuration changes with setConfigData based on the
 		///  host.
 		///          </remarks>		<short>    This signal is raised when a slave of type <code>protocol</code> deals  with <code>host</code> for the first time.</short>
-		[Q_SIGNAL("void configNeeded(const QString&, const QString&)")]
+		[Q_SIGNAL("void configNeeded(QString, QString)")]
 		void ConfigNeeded(string protocol, string host);
 	}
 }

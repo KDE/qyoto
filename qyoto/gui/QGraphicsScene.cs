@@ -314,7 +314,7 @@ namespace Qyoto {
 		public void SetActiveWindow(QGraphicsWidget widget) {
 			interceptor.Invoke("setActiveWindow#", "setActiveWindow(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
 		}
-		[Q_SLOT("void update(const QRectF&)")]
+		[Q_SLOT("void update(QRectF)")]
 		public void Update(QRectF rect) {
 			interceptor.Invoke("update#", "update(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
@@ -322,11 +322,11 @@ namespace Qyoto {
 		public void Update() {
 			interceptor.Invoke("update", "update()", typeof(void));
 		}
-		[Q_SLOT("void invalidate(const QRectF&, QGraphicsScene::SceneLayers)")]
+		[Q_SLOT("void invalidate(QRectF, SceneLayers)")]
 		public void Invalidate(QRectF rect, uint layers) {
 			interceptor.Invoke("invalidate#$", "invalidate(const QRectF&, QGraphicsScene::SceneLayers)", typeof(void), typeof(QRectF), rect, typeof(uint), layers);
 		}
-		[Q_SLOT("void invalidate(const QRectF&)")]
+		[Q_SLOT("void invalidate(QRectF)")]
 		public void Invalidate(QRectF rect) {
 			interceptor.Invoke("invalidate#", "invalidate(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
@@ -448,9 +448,9 @@ namespace Qyoto {
 	}
 
 	public interface IQGraphicsSceneSignals : IQObjectSignals {
-		[Q_SIGNAL("void changed(const QList<QRectF>&)")]
+		[Q_SIGNAL("void changed(QList<QRectF>)")]
 		void Changed(List<QRectF> region);
-		[Q_SIGNAL("void sceneRectChanged(const QRectF&)")]
+		[Q_SIGNAL("void sceneRectChanged(QRectF)")]
 		void SceneRectChanged(QRectF rect);
 		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();

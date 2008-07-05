@@ -292,13 +292,13 @@ namespace KParts {
 		///  Emitted by the part, to set the caption of the window(s)
 		///  hosting this part
 		///      </remarks>		<short>    Emitted by the part, to set the caption of the window(s)  hosting this part      </short>
-		[Q_SIGNAL("void setWindowCaption(const QString&)")]
+		[Q_SIGNAL("void setWindowCaption(QString)")]
 		void SetWindowCaption(string caption);
 		/// <remarks>
 		///  Emited by the part, to set a text in the statusbar of the window(s)
 		///  hosting this part
 		///      </remarks>		<short>    Emited by the part, to set a text in the statusbar of the window(s)  hosting this part      </short>
-		[Q_SIGNAL("void setStatusBarText(const QString&)")]
+		[Q_SIGNAL("void setStatusBarText(QString)")]
 		void SetStatusBarText(string text);
 	}
 }

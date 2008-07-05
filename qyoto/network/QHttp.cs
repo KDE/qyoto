@@ -49,11 +49,11 @@ namespace Qyoto {
 		}
 		public QHttp(string hostname, ushort port, QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QHttp$$#", "QHttp(const QString&, quint16, QObject*)", typeof(void), typeof(string), hostname, typeof(ushort), port, typeof(QObject), parent);
+			interceptor.Invoke("QHttp$$#", "QHttp(const QString&, unsigned short, QObject*)", typeof(void), typeof(string), hostname, typeof(ushort), port, typeof(QObject), parent);
 		}
 		public QHttp(string hostname, ushort port) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QHttp$$", "QHttp(const QString&, quint16)", typeof(void), typeof(string), hostname, typeof(ushort), port);
+			interceptor.Invoke("QHttp$$", "QHttp(const QString&, unsigned short)", typeof(void), typeof(string), hostname, typeof(ushort), port);
 		}
 		public QHttp(string hostname) : this((Type) null) {
 			CreateProxy();
@@ -61,24 +61,24 @@ namespace Qyoto {
 		}
 		public QHttp(string hostname, QHttp.ConnectionMode mode, ushort port, QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QHttp$$$#", "QHttp(const QString&, QHttp::ConnectionMode, quint16, QObject*)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port, typeof(QObject), parent);
+			interceptor.Invoke("QHttp$$$#", "QHttp(const QString&, QHttp::ConnectionMode, unsigned short, QObject*)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port, typeof(QObject), parent);
 		}
 		public QHttp(string hostname, QHttp.ConnectionMode mode, ushort port) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QHttp$$$", "QHttp(const QString&, QHttp::ConnectionMode, quint16)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port);
+			interceptor.Invoke("QHttp$$$", "QHttp(const QString&, QHttp::ConnectionMode, unsigned short)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port);
 		}
 		public QHttp(string hostname, QHttp.ConnectionMode mode) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QHttp$$", "QHttp(const QString&, QHttp::ConnectionMode)", typeof(void), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode);
 		}
 		public int SetHost(string hostname, ushort port) {
-			return (int) interceptor.Invoke("setHost$$", "setHost(const QString&, quint16)", typeof(int), typeof(string), hostname, typeof(ushort), port);
+			return (int) interceptor.Invoke("setHost$$", "setHost(const QString&, unsigned short)", typeof(int), typeof(string), hostname, typeof(ushort), port);
 		}
 		public int SetHost(string hostname) {
 			return (int) interceptor.Invoke("setHost$", "setHost(const QString&)", typeof(int), typeof(string), hostname);
 		}
 		public int SetHost(string hostname, QHttp.ConnectionMode mode, ushort port) {
-			return (int) interceptor.Invoke("setHost$$$", "setHost(const QString&, QHttp::ConnectionMode, quint16)", typeof(int), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port);
+			return (int) interceptor.Invoke("setHost$$$", "setHost(const QString&, QHttp::ConnectionMode, unsigned short)", typeof(int), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode, typeof(ushort), port);
 		}
 		public int SetHost(string hostname, QHttp.ConnectionMode mode) {
 			return (int) interceptor.Invoke("setHost$$", "setHost(const QString&, QHttp::ConnectionMode)", typeof(int), typeof(string), hostname, typeof(QHttp.ConnectionMode), mode);
@@ -213,9 +213,9 @@ namespace Qyoto {
 	public interface IQHttpSignals : IQObjectSignals {
 		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("void responseHeaderReceived(const QHttpResponseHeader&)")]
+		[Q_SIGNAL("void responseHeaderReceived(QHttpResponseHeader)")]
 		void ResponseHeaderReceived(QHttpResponseHeader resp);
-		[Q_SIGNAL("void readyRead(const QHttpResponseHeader&)")]
+		[Q_SIGNAL("void readyRead(QHttpResponseHeader)")]
 		void ReadyRead(QHttpResponseHeader resp);
 		[Q_SIGNAL("void dataSendProgress(int, int)")]
 		void DataSendProgress(int arg1, int arg2);
@@ -227,11 +227,11 @@ namespace Qyoto {
 		void RequestFinished(int arg1, bool arg2);
 		[Q_SIGNAL("void done(bool)")]
 		void Done(bool arg1);
-		[Q_SIGNAL("void proxyAuthenticationRequired(const QNetworkProxy&, QAuthenticator*)")]
+		[Q_SIGNAL("void proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)")]
 		void ProxyAuthenticationRequired(QNetworkProxy proxy, QAuthenticator arg2);
-		[Q_SIGNAL("void authenticationRequired(const QString&, quint16, QAuthenticator*)")]
+		[Q_SIGNAL("void authenticationRequired(QString, quint16, QAuthenticator*)")]
 		void AuthenticationRequired(string hostname, ushort port, QAuthenticator arg3);
-		[Q_SIGNAL("void sslErrors(const QList<QSslError>&)")]
+		[Q_SIGNAL("void sslErrors(QList<QSslError>)")]
 		void SslErrors(List<QSslError> errors);
 	}
 }

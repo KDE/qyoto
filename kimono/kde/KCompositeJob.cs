@@ -88,7 +88,7 @@ namespace Kimono {
 		/// </param><param> name="rich" the info message in rich text version
 		/// </param></remarks>		<short>    Forward signal from subjob.</short>
 		/// 		<see> infoMessage</see>
-		[Q_SLOT("void slotInfoMessage(KJob*, const QString&, const QString&)")]
+		[Q_SLOT("void slotInfoMessage(KJob*, QString, QString)")]
 		[SmokeMethod("slotInfoMessage(KJob*, const QString&, const QString&)")]
 		protected virtual void SlotInfoMessage(KJob job, string plain, string rich) {
 			interceptor.Invoke("slotInfoMessage#$$", "slotInfoMessage(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);

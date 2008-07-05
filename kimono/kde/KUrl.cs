@@ -3,6 +3,7 @@ namespace Kimono {
 	using System;
 	using Qyoto;
 	using System.Runtime.InteropServices;
+	using System.Text;
 	using System.Collections.Generic;
 	/// <remarks>
 	///  \class KUrl kurl.h <KUrl>
@@ -219,8 +220,6 @@ namespace Kimono {
 		// QString directory(const KUrl::DirectoryOptions& arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		// bool equals(const KUrl& arg1,const KUrl::EqualsOptions& arg2); >>>> NOT CONVERTED
-		// void populateMimeData(QMimeData* arg1,const KUrl::MetaDataMap& arg2,KUrl::MimeDataFlags arg3); >>>> NOT CONVERTED
-		// void populateMimeData(QMimeData* arg1,const KUrl::MetaDataMap& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs an empty URL.
 		///    </remarks>		<short>    Constructs an empty URL.</short>
@@ -777,6 +776,12 @@ namespace Kimono {
 		/// </param><param> name="flags" set NoTextExport to prevent setting plain/text data into <code>mimeData</code>
 		///  In such a case, setExportAsText( false ) should be called.
 		///    </param></remarks>		<short>    Adds URL data into the given QMimeData.</short>
+		public void PopulateMimeData(QMimeData mimeData, Dictionary<string, string> metaData, KUrl.MimeDataFlags flags) {
+			interceptor.Invoke("populateMimeData#?$", "populateMimeData(QMimeData*, const QMap<QString, QString>&, KUrl::MimeDataFlags) const", typeof(void), typeof(QMimeData), mimeData, typeof(Dictionary<string, string>), metaData, typeof(KUrl.MimeDataFlags), flags);
+		}
+		public void PopulateMimeData(QMimeData mimeData, Dictionary<string, string> metaData) {
+			interceptor.Invoke("populateMimeData#?", "populateMimeData(QMimeData*, const QMap<QString, QString>&) const", typeof(void), typeof(QMimeData), mimeData, typeof(Dictionary<string, string>), metaData);
+		}
 		public void PopulateMimeData(QMimeData mimeData) {
 			interceptor.Invoke("populateMimeData#", "populateMimeData(QMimeData*) const", typeof(void), typeof(QMimeData), mimeData);
 		}

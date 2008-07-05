@@ -22,8 +22,6 @@ namespace Kimono {
 		public int CodecMib {
 			get { return (int) interceptor.Invoke("currentCodecMib", "currentCodecMib()", typeof(int)); }
 		}
-		// KEncodingDetector::AutoDetectScript currentAutoDetectScript(); >>>> NOT CONVERTED
-		// bool setCurrentAutoDetectScript(KEncodingDetector::AutoDetectScript arg1); >>>> NOT CONVERTED
 		public KCodecAction(QObject parent, bool showAutoOptions) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KCodecAction#$", "KCodecAction(QObject*, bool)", typeof(void), typeof(QObject), parent, typeof(bool), showAutoOptions);
@@ -85,10 +83,16 @@ namespace Kimono {
 		/// </remarks>		<return> KEncodingDetector.None if specific encoding is selected, not autodetection, otherwise... you know it!
 		///          </return>
 		/// 		<short>    Applicable only if showAutoOptions in c'tor was true </short>
+		public KEncodingDetector.AutoDetectScript CurrentAutoDetectScript() {
+			return (KEncodingDetector.AutoDetectScript) interceptor.Invoke("currentAutoDetectScript", "currentAutoDetectScript() const", typeof(KEncodingDetector.AutoDetectScript));
+		}
 		/// <remarks>
 		///  Applicable only if showAutoOptions in c'tor was true
 		///  KEncodingDetector.SemiautomaticDetection means 'Default' item
 		///          </remarks>		<short>    Applicable only if showAutoOptions in c'tor was true </short>
+		public bool SetCurrentAutoDetectScript(KEncodingDetector.AutoDetectScript arg1) {
+			return (bool) interceptor.Invoke("setCurrentAutoDetectScript$", "setCurrentAutoDetectScript(KEncodingDetector::AutoDetectScript)", typeof(bool), typeof(KEncodingDetector.AutoDetectScript), arg1);
+		}
 		[Q_SLOT("void actionTriggered(QAction*)")]
 		[SmokeMethod("actionTriggered(QAction*)")]
 		protected override void ActionTriggered(QAction arg1) {
@@ -116,9 +120,15 @@ namespace Kimono {
 		/// </remarks>		<return> codec name
 		///          </return>
 		/// 		<short>    Specific (proper) codec was selected </short>
-		[Q_SIGNAL("void triggered(const QString&)")]
+		[Q_SIGNAL("void triggered(QString)")]
 		void Triggered(string arg1);
-		// void triggered(KEncodingDetector::AutoDetectScript arg1); >>>> NOT CONVERTED
+		/// <remarks>
+		///  Autodetection has been selected.
+		///  emits KEncodingDetector.SemiautomaticDetection if Default was selected.
+		///  Applicable only if showAutoOptions in c'tor was true
+		///          </remarks>		<short>    Autodetection has been selected.</short>
+		[Q_SIGNAL("void triggered(KEncodingDetector::AutoDetectScript)")]
+		void Triggered(KEncodingDetector.AutoDetectScript arg1);
 		/// <remarks>
 		///  If showAutoOptions==true, then better handle triggered(KEncodingDetector.AutoDetectScript) signal
 		///          </remarks>		<short>    If showAutoOptions==true, then better handle triggered(KEncodingDetector.AutoDetectScript) signal          </short>

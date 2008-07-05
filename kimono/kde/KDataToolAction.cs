@@ -79,7 +79,7 @@ namespace Kimono {
 		/// <param> name="info" a description of the activated tools
 		/// </param><param> name="command" the command for the tool
 		///      </param></remarks>		<short>    Emitted when a tool has been activated.</short>
-		[Q_SIGNAL("void toolActivated(const KDataToolInfo&, const QString&)")]
+		[Q_SIGNAL("void toolActivated(KDataToolInfo, QString)")]
 		void ToolActivated(KDataToolInfo info, string command);
 	}
 }

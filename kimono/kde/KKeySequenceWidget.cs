@@ -90,11 +90,11 @@ namespace Kimono {
 		///  If <code>val</code> == Validate, and the call is actually changing the key sequence,
 		///  conflictuous shortcut will be checked.
 		/// 	 </remarks>		<short>    Set the key sequence.</short>
-		[Q_SLOT("void setKeySequence(const QKeySequence&, KKeySequenceWidget::Validation)")]
+		[Q_SLOT("void setKeySequence(QKeySequence, Validation)")]
 		public void SetKeySequence(QKeySequence seq, KKeySequenceWidget.Validation val) {
 			interceptor.Invoke("setKeySequence#$", "setKeySequence(const QKeySequence&, KKeySequenceWidget::Validation)", typeof(void), typeof(QKeySequence), seq, typeof(KKeySequenceWidget.Validation), val);
 		}
-		[Q_SLOT("void setKeySequence(const QKeySequence&)")]
+		[Q_SLOT("void setKeySequence(QKeySequence)")]
 		public void SetKeySequence(QKeySequence seq) {
 			interceptor.Invoke("setKeySequence#", "setKeySequence(const QKeySequence&)", typeof(void), typeof(QKeySequence), seq);
 		}
@@ -131,7 +131,7 @@ namespace Kimono {
 		///  This signal is emitted when the current key sequence has changed, be it by user
 		///  input or programmatically.
 		/// 	 </remarks>		<short>    This signal is emitted when the current key sequence has changed, be it by user  input or programmatically.</short>
-		[Q_SIGNAL("void keySequenceChanged(const QKeySequence&)")]
+		[Q_SIGNAL("void keySequenceChanged(QKeySequence)")]
 		void KeySequenceChanged(QKeySequence seq);
 	}
 }

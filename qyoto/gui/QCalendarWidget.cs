@@ -131,11 +131,11 @@ namespace Qyoto {
 		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
 			interceptor.Invoke("setDateTextFormat##", "setDateTextFormat(const QDate&, const QTextCharFormat&)", typeof(void), typeof(QDate), date, typeof(QTextCharFormat), color);
 		}
-		[Q_SLOT("void setSelectedDate(const QDate&)")]
+		[Q_SLOT("void setSelectedDate(QDate)")]
 		public void SetSelectedDate(QDate date) {
 			interceptor.Invoke("setSelectedDate#", "setSelectedDate(const QDate&)", typeof(void), typeof(QDate), date);
 		}
-		[Q_SLOT("void setDateRange(const QDate&, const QDate&)")]
+		[Q_SLOT("void setDateRange(QDate, QDate)")]
 		public void SetDateRange(QDate min, QDate max) {
 			interceptor.Invoke("setDateRange##", "setDateRange(const QDate&, const QDate&)", typeof(void), typeof(QDate), min, typeof(QDate), max);
 		}
@@ -221,9 +221,9 @@ namespace Qyoto {
 	public interface IQCalendarWidgetSignals : IQWidgetSignals {
 		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("void clicked(const QDate&)")]
+		[Q_SIGNAL("void clicked(QDate)")]
 		void Clicked(QDate date);
-		[Q_SIGNAL("void activated(const QDate&)")]
+		[Q_SIGNAL("void activated(QDate)")]
 		void Activated(QDate date);
 		[Q_SIGNAL("void currentPageChanged(int, int)")]
 		void CurrentPageChanged(int year, int month);

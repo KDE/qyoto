@@ -2,6 +2,7 @@
 namespace Kimono {
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 	/// <remarks>
 	///  KFileItemDelegate is intended to be used to provide a KDE file system
 	///  view, when using one of the standard item views in Qt with KDirModel.
@@ -62,6 +63,11 @@ namespace Kimono {
 			MimeType = 9,
 			FriendlyMimeType = 10,
 		}
+		[Q_PROPERTY("QList<KFileItemDelegate::Information>", "information")]
+		public List<KFileItemDelegate.Information> information {
+			get { return (List<KFileItemDelegate.Information>) interceptor.Invoke("showInformation", "showInformation()", typeof(List<KFileItemDelegate.Information>)); }
+			set { interceptor.Invoke("setShowInformation?", "setShowInformation(QList<KFileItemDelegate::Information>)", typeof(void), typeof(List<KFileItemDelegate.Information>), value); }
+		}
 		[Q_PROPERTY("QColor", "shadowColor")]
 		public QColor ShadowColor {
 			get { return (QColor) interceptor.Invoke("shadowColor", "shadowColor()", typeof(QColor)); }
@@ -82,7 +88,6 @@ namespace Kimono {
 			get { return (QSize) interceptor.Invoke("maximumSize", "maximumSize()", typeof(QSize)); }
 			set { interceptor.Invoke("setMaximumSize#", "setMaximumSize(QSize)", typeof(void), typeof(QSize), value); }
 		}
-		// void setShowInformation(const KFileItemDelegate::InformationList& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a new KFileItemDelegate.
 		/// <param> name="parent" The parent object for the delegate.
@@ -188,6 +193,9 @@ namespace Kimono {
 		///  lines as will fit in the available space.
 		/// <param> name="list" A list of information items that should be shown
 		///          </param></remarks>		<short>    Sets the list of information lines that are shown below the icon label in list views.</short>
+		public void SetShowInformation(List<KFileItemDelegate.Information> list) {
+			interceptor.Invoke("setShowInformation?", "setShowInformation(const QList<KFileItemDelegate::Information>&)", typeof(void), typeof(List<KFileItemDelegate.Information>), list);
+		}
 		/// <remarks>
 		///  Reimplemented from <see cref="QAbstractItemDelegate"></see>.
 		///          </remarks>		<short>    Reimplemented from @ref QAbstractItemDelegate.</short>
@@ -198,7 +206,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Reimplemented from <see cref="QAbstractItemDelegate"></see>.
 		///          </remarks>		<short>    Reimplemented from @ref QAbstractItemDelegate.</short>
-		[Q_SLOT("bool helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)")]
+		[Q_SLOT("bool helpEvent(QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem, QModelIndex)")]
 		public new bool HelpEvent(QHelpEvent arg1, QAbstractItemView view, QStyleOptionViewItem option, QModelIndex index) {
 			return (bool) interceptor.Invoke("helpEvent####", "helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QHelpEvent), arg1, typeof(QAbstractItemView), view, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}

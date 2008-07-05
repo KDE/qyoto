@@ -659,23 +659,23 @@ namespace Qyoto {
 		public int CombinedLayoutSpacing(uint controls1, uint controls2, Qt.Orientation orientation) {
 			return (int) interceptor.Invoke("combinedLayoutSpacing$$$", "combinedLayoutSpacing(QSizePolicy::ControlTypes, QSizePolicy::ControlTypes, Qt::Orientation) const", typeof(int), typeof(uint), controls1, typeof(uint), controls2, typeof(Qt.Orientation), orientation);
 		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		[Q_SLOT("QIcon standardIconImplementation(StandardPixmap, QStyleOption*, QWidget*) const")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption opt, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), opt, typeof(QWidget), widget);
 		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
+		[Q_SLOT("QIcon standardIconImplementation(StandardPixmap, QStyleOption*) const")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption opt) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), opt);
 		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
+		[Q_SLOT("QIcon standardIconImplementation(StandardPixmap) const")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$", "standardIconImplementation(QStyle::StandardPixmap) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon);
 		}
-		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const")]
+		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, QStyleOption*, QWidget*) const")]
 		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, QStyleOption option, QWidget widget) {
 			return (int) interceptor.Invoke("layoutSpacingImplementation$$$##", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*, const QWidget*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(QStyleOption), option, typeof(QWidget), widget);
 		}
-		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const")]
+		[Q_SLOT("int layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, QStyleOption*) const")]
 		protected int LayoutSpacingImplementation(QSizePolicy.ControlType control1, QSizePolicy.ControlType control2, Qt.Orientation orientation, QStyleOption option) {
 			return (int) interceptor.Invoke("layoutSpacingImplementation$$$#", "layoutSpacingImplementation(QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption*) const", typeof(int), typeof(QSizePolicy.ControlType), control1, typeof(QSizePolicy.ControlType), control2, typeof(Qt.Orientation), orientation, typeof(QStyleOption), option);
 		}

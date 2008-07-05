@@ -179,7 +179,7 @@ namespace Kimono {
 		/// <remarks>
 		///  The selected date changed.
 		///      </remarks>		<short>    The selected date changed.</short>
-		[Q_SIGNAL("void dateChanged(const QDate&)")]
+		[Q_SIGNAL("void dateChanged(QDate)")]
 		void DateChanged(QDate date);
 		/// <remarks>
 		///  This function behaves essentially like the one above.
@@ -187,7 +187,7 @@ namespace Kimono {
 		/// <param> name="cur" The current date
 		/// </param><param> name="old" The date before the date was changed
 		///      </param></remarks>		<short>    This function behaves essentially like the one above.</short>
-		[Q_SIGNAL("void dateChanged(const QDate&, const QDate&)")]
+		[Q_SIGNAL("void dateChanged(QDate, QDate)")]
 		void DateChanged(QDate cur, QDate old);
 		/// <remarks>
 		///  A date has been selected by clicking on the table.
@@ -199,7 +199,7 @@ namespace Kimono {
 		///  right clicks on that date and the popup menu is enabled). Connect
 		///  the slot where you fill the menu to this signal.
 		///      </remarks>		<short>    A popup menu for a given date is about to be shown (as when the user  right clicks on that date and the popup menu is enabled).</short>
-		[Q_SIGNAL("void aboutToShowContextMenu(KMenu*, const QDate&)")]
+		[Q_SIGNAL("void aboutToShowContextMenu(KMenu*, QDate)")]
 		void AboutToShowContextMenu(KMenu menu, QDate date);
 	}
 }

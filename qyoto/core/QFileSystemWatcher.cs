@@ -66,9 +66,9 @@ namespace Qyoto {
 	}
 
 	public interface IQFileSystemWatcherSignals : IQObjectSignals {
-		[Q_SIGNAL("void fileChanged(const QString&)")]
+		[Q_SIGNAL("void fileChanged(QString)")]
 		void FileChanged(string path);
-		[Q_SIGNAL("void directoryChanged(const QString&)")]
+		[Q_SIGNAL("void directoryChanged(QString)")]
 		void DirectoryChanged(string path);
 	}
 }

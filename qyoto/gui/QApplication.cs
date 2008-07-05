@@ -107,7 +107,7 @@ namespace Qyoto {
 		public override bool Notify(QObject arg1, QEvent arg2) {
 			return (bool) interceptor.Invoke("notify##", "notify(QObject*, QEvent*)", typeof(bool), typeof(QObject), arg1, typeof(QEvent), arg2);
 		}
-		[Q_SLOT("void setStyleSheet(const QString&)")]
+		[Q_SLOT("void setStyleSheet(QString)")]
 		public void SetStyleSheet(string sheet) {
 			interceptor.Invoke("setStyleSheet$", "setStyleSheet(const QString&)", typeof(void), typeof(string), sheet);
 		}
@@ -295,9 +295,9 @@ namespace Qyoto {
 		void LastWindowClosed();
 		[Q_SIGNAL("void focusChanged(QWidget*, QWidget*)")]
 		void FocusChanged(QWidget old, QWidget now);
-		[Q_SIGNAL("void commitDataRequest(QSessionManager&)")]
+		[Q_SIGNAL("void commitDataRequest(QSessionManager)")]
 		void CommitDataRequest(QSessionManager sessionManager);
-		[Q_SIGNAL("void saveStateRequest(QSessionManager&)")]
+		[Q_SIGNAL("void saveStateRequest(QSessionManager)")]
 		void SaveStateRequest(QSessionManager sessionManager);
 	}
 }

@@ -86,7 +86,7 @@ namespace Kimono {
 		protected KJob Job() {
 			return (KJob) interceptor.Invoke("job", "job()", typeof(KJob));
 		}
-		[Q_SLOT("void slotWarning(KJob*, const QString&, const QString&)")]
+		[Q_SLOT("void slotWarning(KJob*, QString, QString)")]
 		[SmokeMethod("slotWarning(KJob*, const QString&, const QString&)")]
 		protected virtual void SlotWarning(KJob job, string plain, string rich) {
 			interceptor.Invoke("slotWarning#$$", "slotWarning(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);

@@ -271,14 +271,14 @@ namespace Kimono {
 		/// <remarks>
 		///  Signal sends when spell checking is finished/stopped/completed
 		/// </remarks>		<short>    Signal sends when spell checking is finished/stopped/completed </short>
-		[Q_SIGNAL("void spellCheckStatus(const QString&)")]
+		[Q_SIGNAL("void spellCheckStatus(QString)")]
 		void SpellCheckStatus(string arg1);
 		/// <remarks>
 		///  Emitted when the user changes the language in the spellcheck dialog
 		///  shown by checkSpelling().
 		/// <param> name="language" the new language the user selected
 		/// </param></remarks>		<short>    Emitted when the user changes the language in the spellcheck dialog  shown by checkSpelling().</short>
-		[Q_SIGNAL("void languageChanged(const QString&)")]
+		[Q_SIGNAL("void languageChanged(QString)")]
 		void LanguageChanged(string language);
 	}
 }

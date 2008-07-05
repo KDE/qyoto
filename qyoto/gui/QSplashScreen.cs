@@ -49,15 +49,15 @@ namespace Qyoto {
 		public new void Repaint() {
 			interceptor.Invoke("repaint", "repaint()", typeof(void));
 		}
-		[Q_SLOT("void showMessage(const QString&, int, const QColor&)")]
+		[Q_SLOT("void showMessage(QString, int, QColor)")]
 		public void ShowMessage(string message, int alignment, QColor color) {
 			interceptor.Invoke("showMessage$$#", "showMessage(const QString&, int, const QColor&)", typeof(void), typeof(string), message, typeof(int), alignment, typeof(QColor), color);
 		}
-		[Q_SLOT("void showMessage(const QString&, int)")]
+		[Q_SLOT("void showMessage(QString, int)")]
 		public void ShowMessage(string message, int alignment) {
 			interceptor.Invoke("showMessage$$", "showMessage(const QString&, int)", typeof(void), typeof(string), message, typeof(int), alignment);
 		}
-		[Q_SLOT("void showMessage(const QString&)")]
+		[Q_SLOT("void showMessage(QString)")]
 		public void ShowMessage(string message) {
 			interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), message);
 		}
@@ -95,7 +95,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSplashScreenSignals : IQWidgetSignals {
-		[Q_SIGNAL("void messageChanged(const QString&)")]
+		[Q_SIGNAL("void messageChanged(QString)")]
 		void MessageChanged(string message);
 	}
 }

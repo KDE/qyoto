@@ -135,11 +135,11 @@ namespace Qyoto {
 		public override void Unpolish(QApplication app) {
 			interceptor.Invoke("unpolish#", "unpolish(QApplication*)", typeof(void), typeof(QApplication), app);
 		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		[Q_SLOT("QIcon standardIconImplementation(StandardPixmap, QStyleOption*, QWidget*) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption option, QWidget widget) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), option, typeof(QWidget), widget);
 		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
+		[Q_SLOT("QIcon standardIconImplementation(StandardPixmap, QStyleOption*) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption option) {
 			return (QIcon) interceptor.Invoke("standardIconImplementation$#", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), option);
 		}

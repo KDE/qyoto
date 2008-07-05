@@ -76,7 +76,7 @@ namespace KIO {
 		/// </param><param> name="file" the URL of the file or directory that is being
 		///         deleted
 		/// 	 </param></remarks>		<short>    Sends the URL of the file that is currently being deleted.</short>
-		[Q_SIGNAL("void deleting(KIO::Job*, const KUrl&)")]
+		[Q_SIGNAL("void deleting(KIO::Job*, KUrl)")]
 		void Deleting(KIO.Job job, KUrl file);
 	}
 }

@@ -38,7 +38,7 @@ namespace Kimono {
 		///          </param></remarks>		<short>    Construct a new assistant dialog with <code>parent</code> as parent.</short>
 		public KAssistantDialog(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KAssistantDialog#$", "KAssistantDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
+			interceptor.Invoke("KAssistantDialog#$", "KAssistantDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KAssistantDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -119,7 +119,7 @@ namespace Kimono {
 		///          </remarks>		<short>    Construct an assistant dialog from a single widget.</short>
 		public KAssistantDialog(KPageWidget widget, QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KAssistantDialog##$", "KAssistantDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(uint), flags);
+			interceptor.Invoke("KAssistantDialog##$", "KAssistantDialog(KPageWidget*, QWidget*, Qt::WindowFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KAssistantDialog(KPageWidget widget, QWidget parent) : this((Type) null) {
 			CreateProxy();

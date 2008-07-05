@@ -89,7 +89,7 @@ namespace Qyoto {
 		//  operator QString(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		//  operator int(); >>>> NOT CONVERTED
-		// QKeySequence::DataPtr& data_ptr(); >>>> NOT CONVERTED
+		// QKeySequencePrivate*& data_ptr(); >>>> NOT CONVERTED
 		public QKeySequence() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QKeySequence", "QKeySequence()", typeof(void));

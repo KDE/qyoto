@@ -55,7 +55,6 @@ namespace Kimono {
 		static KServiceTypeTrader() {
 			staticInterceptor = new SmokeInvocation(typeof(KServiceTypeTrader), null);
 		}
-		// void applyConstraints(KService::List& arg1,const QString& arg2); >>>> NOT CONVERTED
 		/// <remarks>
 		///  The main function in the KServiceTypeTrader class.
 		///  It will return a list of services that match your
@@ -117,5 +116,8 @@ namespace Kimono {
 		}
 		/// <remarks>
 		///      </remarks>		<short>   </short>
+		public static void ApplyConstraints(List<KService> lst, string constraint) {
+			staticInterceptor.Invoke("applyConstraints?$", "applyConstraints(QList<KSharedPtr<KService> >&, const QString&)", typeof(void), typeof(List<KService>), lst, typeof(string), constraint);
+		}
 	}
 }

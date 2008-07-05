@@ -33,8 +33,8 @@ namespace Soprano.Server {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(DBusExportIterator), this);
 		}
-		// Soprano::Error lastError(); >>>> NOT CONVERTED
-		// void setError(const Soprano::Error& arg1); >>>> NOT CONVERTED
+		// Error lastError(); >>>> NOT CONVERTED
+		// void setError(const Error& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a new instance to export a StatementIterator
 		///              </remarks>		<short>    Create a new instance to export a StatementIterator              </short>
@@ -126,11 +126,11 @@ namespace Soprano.Server {
 		///  will be closed once the client dies. In combination with setDeleteOnClose
 		///  this class can thus be used in a fire-and-forget manner.
 		///              </remarks>		<short>    Register the iterator under the given D-Bus object path.</short>
-		[Q_SLOT("bool registerIterator(const QString&, const QString&)")]
+		[Q_SLOT("bool registerIterator(QString, QString)")]
 		public bool RegisterIterator(string dbusObjectPath, string dbusClient) {
 			return (bool) interceptor.Invoke("registerIterator$$", "registerIterator(const QString&, const QString&)", typeof(bool), typeof(string), dbusObjectPath, typeof(string), dbusClient);
 		}
-		[Q_SLOT("bool registerIterator(const QString&)")]
+		[Q_SLOT("bool registerIterator(QString)")]
 		public bool RegisterIterator(string dbusObjectPath) {
 			return (bool) interceptor.Invoke("registerIterator$", "registerIterator(const QString&)", typeof(bool), typeof(string), dbusObjectPath);
 		}

@@ -29,7 +29,6 @@ namespace KParts {
 			TypeObject = 4,
 			TypeString = 5,
 		}
-		// void partEvent(const unsigned long arg1,const QString& arg2,const KParts::LiveConnectExtension::ArgList& arg3); >>>> NOT CONVERTED
 		public LiveConnectExtension(KParts.ReadOnlyPart parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("LiveConnectExtension#", "LiveConnectExtension(KParts::ReadOnlyPart*)", typeof(void), typeof(KParts.ReadOnlyPart), parent);
@@ -65,6 +64,9 @@ namespace KParts {
 		/// <remarks>
 		///  notify a event from the part of object objid
 		///    </remarks>		<short>    notify a event from the part of object objid    </short>
+		public void PartEvent(ulong objid, string arg2, List<QPair<string, KParts.LiveConnectExtension.TypeOf>> args) {
+			interceptor.Invoke("partEvent$$?", "partEvent(const unsigned long, const QString&, const QList<QPair<KParts::LiveConnectExtension::Type, QString> >&)", typeof(void), typeof(ulong), objid, typeof(string), arg2, typeof(List<QPair<string, KParts.LiveConnectExtension.TypeOf>>), args);
+		}
 		~LiveConnectExtension() {
 			interceptor.Invoke("~LiveConnectExtension", "~LiveConnectExtension()", typeof(void));
 		}

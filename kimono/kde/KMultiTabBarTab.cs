@@ -43,11 +43,11 @@ namespace Kimono {
 		public void SetState(bool state) {
 			interceptor.Invoke("setState$", "setState(bool)", typeof(void), typeof(bool), state);
 		}
-		[Q_SLOT("void setIcon(const QString&)")]
+		[Q_SLOT("void setIcon(QString)")]
 		public void SetIcon(string arg1) {
 			interceptor.Invoke("setIcon$", "setIcon(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[Q_SLOT("void setIcon(const QPixmap&)")]
+		[Q_SLOT("void setIcon(QPixmap)")]
 		public void SetIcon(QPixmap arg1) {
 			interceptor.Invoke("setIcon#", "setIcon(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}

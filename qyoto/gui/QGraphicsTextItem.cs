@@ -696,9 +696,9 @@ namespace Qyoto {
 	}
 
 	public interface IQGraphicsTextItemSignals : IQObjectSignals {
-		[Q_SIGNAL("void linkActivated(const QString&)")]
+		[Q_SIGNAL("void linkActivated(QString)")]
 		void LinkActivated(string arg1);
-		[Q_SIGNAL("void linkHovered(const QString&)")]
+		[Q_SIGNAL("void linkHovered(QString)")]
 		void LinkHovered(string arg1);
 	}
 }

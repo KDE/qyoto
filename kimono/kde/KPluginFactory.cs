@@ -132,7 +132,7 @@ namespace Kimono {
 		///  Converts a QVariantList of strings to a List<string>
 		///      </remarks>		<short>    \internal  Converts a QVariantList of strings to a List<string>      </short>
 		protected List<string> VariantListToStringList(List<QVariant> list) {
-			return (List<string>) interceptor.Invoke("variantListToStringList?", "variantListToStringList(const QVariantList&)", typeof(List<string>), typeof(List<QVariant>), list);
+			return (List<string>) interceptor.Invoke("variantListToStringList?", "variantListToStringList(const QList<QVariant>&)", typeof(List<string>), typeof(List<QVariant>), list);
 		}
 		[SmokeMethod("setupTranslations()")]
 		protected virtual void SetupTranslations() {
@@ -162,9 +162,9 @@ namespace Kimono {
 		///  \param keyword A string that uniquely identifies the plugin. If a KService is used this
 		///  keyword is read from the X-KDE-PluginKeyword entry in the .desktop file.
 		///      </remarks>		<short>    This function is called when the factory asked to create an Object.</short>
-		[SmokeMethod("create(const char*, QWidget*, QObject*, const QVariantList&, const QString&)")]
+		[SmokeMethod("create(const char*, QWidget*, QObject*, const QList<QVariant>&, const QString&)")]
 		protected virtual QObject Create(string iface, QWidget parentWidget, QObject parent, List<QVariant> args, string keyword) {
-			return (QObject) interceptor.Invoke("create$##?$", "create(const char*, QWidget*, QObject*, const QVariantList&, const QString&)", typeof(QObject), typeof(string), iface, typeof(QWidget), parentWidget, typeof(QObject), parent, typeof(List<QVariant>), args, typeof(string), keyword);
+			return (QObject) interceptor.Invoke("create$##?$", "create(const char*, QWidget*, QObject*, const QList<QVariant>&, const QString&)", typeof(QObject), typeof(string), iface, typeof(QWidget), parentWidget, typeof(QObject), parent, typeof(List<QVariant>), args, typeof(string), keyword);
 		}
 		~KPluginFactory() {
 			interceptor.Invoke("~KPluginFactory", "~KPluginFactory()", typeof(void));

@@ -511,7 +511,7 @@ namespace KWallet {
 		///   Emitted when a folder in this wallet is updated.
 		/// <param> name="folder" The folder that was updated.
 		/// 		 </param></remarks>		<short>     Emitted when a folder in this wallet is updated.</short>
-		[Q_SIGNAL("void folderUpdated(const QString&)")]
+		[Q_SIGNAL("void folderUpdated(QString)")]
 		void FolderUpdated(string folder);
 		/// <remarks>
 		///   Emitted when the folder list is changed in this wallet.
@@ -522,7 +522,7 @@ namespace KWallet {
 		///   Emitted when a folder in this wallet is removed.
 		/// <param> name="folder" The folder that was removed.
 		/// 		 </param></remarks>		<short>     Emitted when a folder in this wallet is removed.</short>
-		[Q_SIGNAL("void folderRemoved(const QString&)")]
+		[Q_SIGNAL("void folderRemoved(QString)")]
 		void FolderRemoved(string folder);
 		/// <remarks>
 		///   Emitted when a wallet is opened in asynchronous mode.

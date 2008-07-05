@@ -56,11 +56,11 @@ namespace Qyoto {
 		public string CurrentMessage() {
 			return (string) interceptor.Invoke("currentMessage", "currentMessage() const", typeof(string));
 		}
-		[Q_SLOT("void showMessage(const QString&, int)")]
+		[Q_SLOT("void showMessage(QString, int)")]
 		public void ShowMessage(string text, int timeout) {
 			interceptor.Invoke("showMessage$$", "showMessage(const QString&, int)", typeof(void), typeof(string), text, typeof(int), timeout);
 		}
-		[Q_SLOT("void showMessage(const QString&)")]
+		[Q_SLOT("void showMessage(QString)")]
 		public void ShowMessage(string text) {
 			interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -108,7 +108,7 @@ namespace Qyoto {
 	}
 
 	public interface IQStatusBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void messageChanged(const QString&)")]
+		[Q_SIGNAL("void messageChanged(QString)")]
 		void MessageChanged(string text);
 	}
 }

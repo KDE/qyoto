@@ -102,7 +102,7 @@ namespace Kimono {
 		/// <param> name="text" the text that has been recognized
 		/// </param><param> name="id" the id of the image
 		///      </param></remarks>		<short>    Informs you that the image with the id <code>id</code> has been run through  text-recognition.</short>
-		[Q_SIGNAL("void textRecognized(const QString&, int)")]
+		[Q_SIGNAL("void textRecognized(QString, int)")]
 		void TextRecognized(string text, int id);
 	}
 }

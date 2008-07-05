@@ -80,7 +80,7 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
 		}
-		[Q_SLOT("void display(const QString&)")]
+		[Q_SLOT("void display(QString)")]
 		public void Display(string str) {
 			interceptor.Invoke("display$", "display(const QString&)", typeof(void), typeof(string), str);
 		}

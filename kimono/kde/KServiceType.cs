@@ -17,9 +17,10 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KServiceType), this);
 		}
-		// KServiceType::Ptr parentType(); >>>> NOT CONVERTED
-		// KServiceType::Ptr serviceType(const QString& arg1); >>>> NOT CONVERTED
-		// KServiceType::List allServiceTypes(); >>>> NOT CONVERTED
+		private static SmokeInvocation staticInterceptor = null;
+		static KServiceType() {
+			staticInterceptor = new SmokeInvocation(typeof(KServiceType), null);
+		}
 		// KServiceType* KServiceType(KServiceTypePrivate& arg1); >>>> NOT CONVERTED
 		// KServiceType* KServiceType(KServiceTypePrivate& arg1,const QString& arg2,const QString& arg3); >>>> NOT CONVERTED
 		/// <remarks>
@@ -104,6 +105,9 @@ namespace Kimono {
 		/// <remarks>
 		///  Pointer to parent service type
 		///      </remarks>		<short>   </short>
+		public KServiceType ParentType() {
+			return (KServiceType) interceptor.Invoke("parentType", "parentType()", typeof(KServiceType));
+		}
 		/// <remarks>
 		///  Register offset into offers list
 		///      </remarks>		<short>   </short>
@@ -137,6 +141,9 @@ namespace Kimono {
 		/// </param></remarks>		<return> the pointer to the service type, or 0
 		///      </return>
 		/// 		<short>    Returns a pointer to the servicetype '_name' or 0L if the          service type is unknown.</short>
+		public static KServiceType ServiceType(string _name) {
+			return (KServiceType) staticInterceptor.Invoke("serviceType$", "serviceType(const QString&)", typeof(KServiceType), typeof(string), _name);
+		}
 		/// <remarks>
 		///  Returns a list of all the supported servicetypes. Useful for
 		///          showing the list of available servicetypes in a listbox,
@@ -146,5 +153,8 @@ namespace Kimono {
 		/// </remarks>		<return> the list of all services
 		///      </return>
 		/// 		<short>    Returns a list of all the supported servicetypes.</short>
+		public static List<KServiceType> AllServiceTypes() {
+			return (List<KServiceType>) staticInterceptor.Invoke("allServiceTypes", "allServiceTypes()", typeof(List<KServiceType>));
+		}
 	}
 }

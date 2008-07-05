@@ -27,15 +27,15 @@ namespace Qyoto {
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user, string password) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QNetworkProxy$$$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, quint16, const QString&, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port, typeof(string), user, typeof(string), password);
+			interceptor.Invoke("QNetworkProxy$$$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, unsigned short, const QString&, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port, typeof(string), user, typeof(string), password);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QNetworkProxy$$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, quint16, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port, typeof(string), user);
+			interceptor.Invoke("QNetworkProxy$$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, unsigned short, const QString&)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port, typeof(string), user);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("QNetworkProxy$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, quint16)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port);
+			interceptor.Invoke("QNetworkProxy$$$", "QNetworkProxy(QNetworkProxy::ProxyType, const QString&, unsigned short)", typeof(void), typeof(QNetworkProxy.ProxyType), type, typeof(string), hostName, typeof(ushort), port);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName) : this((Type) null) {
 			CreateProxy();
@@ -87,7 +87,7 @@ namespace Qyoto {
 			return (string) interceptor.Invoke("hostName", "hostName() const", typeof(string));
 		}
 		public void SetPort(ushort port) {
-			interceptor.Invoke("setPort$", "setPort(quint16)", typeof(void), typeof(ushort), port);
+			interceptor.Invoke("setPort$", "setPort(unsigned short)", typeof(void), typeof(ushort), port);
 		}
 		public ushort Port() {
 			return (ushort) interceptor.Invoke("port", "port() const", typeof(ushort));

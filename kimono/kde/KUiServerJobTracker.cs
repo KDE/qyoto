@@ -57,12 +57,12 @@ namespace Kimono {
 		protected override void Resumed(KJob job) {
 			interceptor.Invoke("resumed#", "resumed(KJob*)", typeof(void), typeof(KJob), job);
 		}
-		[Q_SLOT("void description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)")]
+		[Q_SLOT("void description(KJob*, QString, QPair<QString, QString>, QPair<QString, QString>)")]
 		[SmokeMethod("description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)")]
 		protected override void Description(KJob job, string title, QPair<string, string> field1, QPair<string, string> field2) {
 			interceptor.Invoke("description#$??", "description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)", typeof(void), typeof(KJob), job, typeof(string), title, typeof(QPair<string, string>), field1, typeof(QPair<string, string>), field2);
 		}
-		[Q_SLOT("void infoMessage(KJob*, const QString&, const QString&)")]
+		[Q_SLOT("void infoMessage(KJob*, QString, QString)")]
 		[SmokeMethod("infoMessage(KJob*, const QString&, const QString&)")]
 		protected override void InfoMessage(KJob job, string plain, string rich) {
 			interceptor.Invoke("infoMessage#$$", "infoMessage(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);

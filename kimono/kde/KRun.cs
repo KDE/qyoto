@@ -294,7 +294,7 @@ namespace Kimono {
 		///  This slot is called when the scan job has found out
 		///  the mime type.
 		///    </remarks>		<short>    This slot is called when the scan job has found out  the mime type.</short>
-		[Q_SLOT("void slotScanMimeType(KIO::Job*, const QString&)")]
+		[Q_SLOT("void slotScanMimeType(KIO::Job*, QString)")]
 		protected void SlotScanMimeType(KIO.Job arg1, string type) {
 			interceptor.Invoke("slotScanMimeType#$", "slotScanMimeType(KIO::Job*, const QString&)", typeof(void), typeof(KIO.Job), arg1, typeof(string), type);
 		}
@@ -302,7 +302,7 @@ namespace Kimono {
 		///  Call this from subclasses when you have determined the mimetype.
 		///  It will call foundMimeType, but also sets up protection against deletion during message boxes.
 		/// </remarks>		<short>    Call this from subclasses when you have determined the mimetype.</short>
-		[Q_SLOT("void mimeTypeDetermined(const QString&)")]
+		[Q_SLOT("void mimeTypeDetermined(QString)")]
 		protected void MimeTypeDetermined(string mimeType) {
 			interceptor.Invoke("mimeTypeDetermined$", "mimeTypeDetermined(const QString&)", typeof(void), typeof(string), mimeType);
 		}

@@ -157,7 +157,7 @@ namespace Kimono {
 		/// </remarks>		<short>    Adds an item to the end of the history list and to the completion list.</short>
 		/// 		<see> removeFromHistory</see>
 		/// 		<see> QComboBox.SetDuplicatesEnabled</see>
-		[Q_SLOT("void addToHistory(const QString&)")]
+		[Q_SLOT("void addToHistory(QString)")]
 		public void AddToHistory(string item) {
 			interceptor.Invoke("addToHistory$", "addToHistory(const QString&)", typeof(void), typeof(string), item);
 		}

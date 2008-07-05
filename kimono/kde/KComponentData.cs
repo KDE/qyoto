@@ -29,7 +29,6 @@ namespace Kimono {
 			RegisterAsMainComponent = 0,
 			SkipMainComponentRegistration = 1,
 		}
-		// const KSharedConfig::Ptr& config(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates an invalid KComponentData object.
 		/// </remarks>		<short>    Creates an invalid KComponentData object.</short>
@@ -117,6 +116,9 @@ namespace Kimono {
 		/// </remarks>		<return> the KConfig object for the component.
 		///      </return>
 		/// 		<short>    Returns the general config object ("appnamerc").</short>
+		public KSharedConfig Config() {
+			return (KSharedConfig) interceptor.Invoke("config", "config() const", typeof(KSharedConfig));
+		}
 		/// <remarks>
 		///  Returns the about data of this component.
 		/// </remarks>		<return> The about data of the component. If none has been set in the

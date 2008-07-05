@@ -170,7 +170,7 @@ namespace Qyoto {
 		public void SortByColumn(int column, Qt.SortOrder order) {
 			interceptor.Invoke("sortByColumn$$", "sortByColumn(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
 		}
-		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void dataChanged(QModelIndex, QModelIndex)")]
 		[SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
 		public new virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			interceptor.Invoke("dataChanged##", "dataChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);
@@ -183,11 +183,11 @@ namespace Qyoto {
 		public void ShowColumn(int column) {
 			interceptor.Invoke("showColumn$", "showColumn(int)", typeof(void), typeof(int), column);
 		}
-		[Q_SLOT("void expand(const QModelIndex&)")]
+		[Q_SLOT("void expand(QModelIndex)")]
 		public void Expand(QModelIndex index) {
 			interceptor.Invoke("expand#", "expand(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
-		[Q_SLOT("void collapse(const QModelIndex&)")]
+		[Q_SLOT("void collapse(QModelIndex)")]
 		public void Collapse(QModelIndex index) {
 			interceptor.Invoke("collapse#", "collapse(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
@@ -345,7 +345,7 @@ namespace Qyoto {
 		protected void Reexpand() {
 			interceptor.Invoke("reexpand", "reexpand()", typeof(void));
 		}
-		[Q_SLOT("void rowsRemoved(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsRemoved(QModelIndex, int, int)")]
 		protected void RowsRemoved(QModelIndex parent, int first, int last) {
 			interceptor.Invoke("rowsRemoved#$$", "rowsRemoved(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), first, typeof(int), last);
 		}
@@ -367,9 +367,9 @@ namespace Qyoto {
 	}
 
 	public interface IQTreeViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void expanded(const QModelIndex&)")]
+		[Q_SIGNAL("void expanded(QModelIndex)")]
 		void Expanded(QModelIndex index);
-		[Q_SIGNAL("void collapsed(const QModelIndex&)")]
+		[Q_SIGNAL("void collapsed(QModelIndex)")]
 		void Collapsed(QModelIndex index);
 	}
 }

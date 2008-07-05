@@ -13,7 +13,6 @@ namespace Qyoto {
 			interceptor = new SmokeInvocation(typeof(QDBusArgument), this);
 		}
 		// const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
-		// const QDBusArgument& operator>>(ushort& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
 		// QDBusArgument* QDBusArgument(QDBusArgumentPrivate* arg1); >>>> NOT CONVERTED

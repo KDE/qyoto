@@ -48,7 +48,7 @@ namespace Qyoto {
 	}
 
 	public interface IQDBusServerSignals : IQObjectSignals {
-		[Q_SIGNAL("void newConnection(const QDBusConnection&)")]
+		[Q_SIGNAL("void newConnection(QDBusConnection)")]
 		void NewConnection(QDBusConnection connection);
 	}
 }

@@ -64,18 +64,18 @@ namespace Kimono {
 		///  <code>index</code> determines at which position <code>items</code> will be inserted.
 		///  (defaults to appending them at the end)
 		///      </remarks>		<short>    Inserts <code>items</code> into the box.</short>
-		[Q_SLOT("void insertItems(const QStringList&, int)")]
+		[Q_SLOT("void insertItems(QStringList, int)")]
 		public void InsertItems(List<string> items, int index) {
 			interceptor.Invoke("insertItems?$", "insertItems(const QStringList&, int)", typeof(void), typeof(List<string>), items, typeof(int), index);
 		}
-		[Q_SLOT("void insertItems(const QStringList&)")]
+		[Q_SLOT("void insertItems(QStringList)")]
 		public void InsertItems(List<string> items) {
 			interceptor.Invoke("insertItems?", "insertItems(const QStringList&)", typeof(void), typeof(List<string>), items);
 		}
 		/// <remarks>
 		///  Clears the box and inserts <code>items.</code>
 		///      </remarks>		<short>    Clears the box and inserts <code>items.</code></short>
-		[Q_SLOT("void setItems(const QStringList&)")]
+		[Q_SLOT("void setItems(QStringList)")]
 		public void SetItems(List<string> items) {
 			interceptor.Invoke("setItems?", "setItems(const QStringList&)", typeof(void), typeof(List<string>), items);
 		}
@@ -125,7 +125,7 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Sets the text to be emitted if the user chooses not to  pick from the available matches.</short>
 		/// 		<see> userCancelled(</see>
 		/// 		<see> const</see>
-		[Q_SLOT("void setCancelledText(const QString&)")]
+		[Q_SLOT("void setCancelledText(QString)")]
 		public void SetCancelledText(string txt) {
 			interceptor.Invoke("setCancelledText$", "setCancelledText(const QString&)", typeof(void), typeof(string), txt);
 		}
@@ -251,13 +251,13 @@ namespace Kimono {
 		///  Emitted when an item was selected, contains the text of
 		///  the selected item.
 		///      </remarks>		<short>    Emitted when an item was selected, contains the text of  the selected item.</short>
-		[Q_SIGNAL("void activated(const QString&)")]
+		[Q_SIGNAL("void activated(QString)")]
 		void Activated(string arg1);
 		/// <remarks>
 		///  Emitted whenever the user chooses to ignore the available
 		///  selections and close the this box.
 		///      </remarks>		<short>    Emitted whenever the user chooses to ignore the available  selections and close the this box.</short>
-		[Q_SIGNAL("void userCancelled(const QString&)")]
+		[Q_SIGNAL("void userCancelled(QString)")]
 		void UserCancelled(string arg1);
 	}
 }

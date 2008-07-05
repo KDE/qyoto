@@ -129,7 +129,7 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("passwordMode", "passwordMode()", typeof(bool)); }
 			set { interceptor.Invoke("setPasswordMode$", "setPasswordMode(bool)", typeof(void), typeof(bool), value); }
 		}
-		// KCompletionBase::KeyBindingMap getKeyBindings(); >>>> NOT CONVERTED
+		// QMap<KCompletionBase::KeyBindingType, KShortcut> getKeyBindings(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a KLineEdit object with a default text, a parent,
 		///  and a name.
@@ -264,7 +264,7 @@ namespace Kimono {
 		/// <remarks>
 		///  See KCompletionBase.SetCompletedText.
 		///      </remarks>		<short>    See KCompletionBase.SetCompletedText.</short>
-		[Q_SLOT("void setCompletedText(const QString&)")]
+		[Q_SLOT("void setCompletedText(QString)")]
 		[SmokeMethod("setCompletedText(const QString&)")]
 		public virtual void SetCompletedText(string arg1) {
 			interceptor.Invoke("setCompletedText$", "setCompletedText(const QString&)", typeof(void), typeof(string), arg1);
@@ -275,12 +275,12 @@ namespace Kimono {
 		/// <param> name="items" list of completion matches to be shown in the completion box.
 		/// </param><param> name="autoSuggest" true if you want automatic text completion (suggestion) enabled.
 		///      </param></remarks>		<short>    Same as the above function except it allows you to temporarily  turn off text completion in CompletionPopupAuto mode.</short>
-		[Q_SLOT("void setCompletedItems(const QStringList&, bool)")]
+		[Q_SLOT("void setCompletedItems(QStringList, bool)")]
 		[SmokeMethod("setCompletedItems(const QStringList&, bool)")]
 		public virtual void SetCompletedItems(List<string> items, bool autoSuggest) {
 			interceptor.Invoke("setCompletedItems?$", "setCompletedItems(const QStringList&, bool)", typeof(void), typeof(List<string>), items, typeof(bool), autoSuggest);
 		}
-		[Q_SLOT("void setCompletedItems(const QStringList&)")]
+		[Q_SLOT("void setCompletedItems(QStringList)")]
 		[SmokeMethod("setCompletedItems(const QStringList&)")]
 		public virtual void SetCompletedItems(List<string> items) {
 			interceptor.Invoke("setCompletedItems?", "setCompletedItems(const QStringList&)", typeof(void), typeof(List<string>), items);
@@ -298,14 +298,14 @@ namespace Kimono {
 		///  Squeezes <code>text</code> into the line edit.
 		///  This can only be used with read-only line-edits.
 		///      </remarks>		<short>    Squeezes <code>text</code> into the line edit.</short>
-		[Q_SLOT("void setSqueezedText(const QString&)")]
+		[Q_SLOT("void setSqueezedText(QString)")]
 		public void SetSqueezedText(string text) {
 			interceptor.Invoke("setSqueezedText$", "setSqueezedText(const QString&)", typeof(void), typeof(string), text);
 		}
 		/// <remarks>
 		///  Re-implemented to enable text squeezing. API is not affected.
 		///      </remarks>		<short>    Re-implemented to enable text squeezing.</short>
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		[SmokeMethod("setText(const QString&)")]
 		public virtual void SetText(string arg1) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
@@ -458,7 +458,7 @@ namespace Kimono {
 		///  Completes the remaining text with a matching one from
 		///  a given list.
 		///     </remarks>		<short>    Completes the remaining text with a matching one from  a given list.</short>
-		[Q_SLOT("void makeCompletion(const QString&)")]
+		[Q_SLOT("void makeCompletion(QString)")]
 		[SmokeMethod("makeCompletion(const QString&)")]
 		protected virtual void MakeCompletion(string arg1) {
 			interceptor.Invoke("makeCompletion$", "makeCompletion(const QString&)", typeof(void), typeof(string), arg1);
@@ -468,7 +468,7 @@ namespace Kimono {
 		///  Call this function to revert a text completion if the user
 		///  cancels the request. Mostly applies to popup completions.
 		///      </remarks>		<short>    Resets the current displayed text.</short>
-		[Q_SLOT("void userCancelled(const QString&)")]
+		[Q_SLOT("void userCancelled(QString)")]
 		protected void UserCancelled(string cancelText) {
 			interceptor.Invoke("userCancelled$", "userCancelled(const QString&)", typeof(void), typeof(string), cancelText);
 		}
@@ -693,7 +693,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted whenever the completion box is activated.
 		///      </remarks>		<short>    Emitted whenever the completion box is activated.</short>
-		[Q_SIGNAL("void completionBoxActivated(const QString&)")]
+		[Q_SIGNAL("void completionBoxActivated(QString)")]
 		void CompletionBoxActivated(string arg1);
 		/// <remarks>
 		///  Emitted when the user presses the return key.
@@ -701,7 +701,7 @@ namespace Kimono {
 		///  signal is <b>not</b> emitted if the widget's <code>EchoMode</code> is set to
 		///  QLineEdit.EchoMode.
 		///      </remarks>		<short>    Emitted when the user presses the return key.</short>
-		[Q_SIGNAL("void returnPressed(const QString&)")]
+		[Q_SIGNAL("void returnPressed(QString)")]
 		void ReturnPressed(string arg1);
 		/// <remarks>
 		///  Emitted when the completion key is pressed.
@@ -709,12 +709,12 @@ namespace Kimono {
 		///  completion mode is set to <code>CompletionNone</code> or <code>EchoMode</code> is
 		///  <b>normal</b>.
 		///      </remarks>		<short>    Emitted when the completion key is pressed.</short>
-		[Q_SIGNAL("void completion(const QString&)")]
+		[Q_SIGNAL("void completion(QString)")]
 		void Completion(string arg1);
 		/// <remarks>
 		///  Emitted when the shortcut for substring completion is pressed.
 		///      </remarks>		<short>    Emitted when the shortcut for substring completion is pressed.</short>
-		[Q_SIGNAL("void substringCompletion(const QString&)")]
+		[Q_SIGNAL("void substringCompletion(QString)")]
 		void SubstringCompletion(string arg1);
 		/// <remarks>
 		///  Emitted when the text rotation key-bindings are pressed.

@@ -126,9 +126,9 @@ namespace Qyoto {
 		public override List<string> MimeTypes() {
 			return (List<string>) interceptor.Invoke("mimeTypes", "mimeTypes() const", typeof(List<string>));
 		}
-		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		[SmokeMethod("mimeData(const QList<QModelIndex>&) const")]
 		public override QMimeData MimeData(List<QModelIndex> indexes) {
-			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QModelIndexList&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
+			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QList<QModelIndex>&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
@@ -195,7 +195,7 @@ namespace Qyoto {
 		public new QObject Parent() {
 			return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
 		}
-		[Q_SLOT("void refresh(const QModelIndex&)")]
+		[Q_SLOT("void refresh(QModelIndex)")]
 		public void Refresh(QModelIndex parent) {
 			interceptor.Invoke("refresh#", "refresh(const QModelIndex&)", typeof(void), typeof(QModelIndex), parent);
 		}

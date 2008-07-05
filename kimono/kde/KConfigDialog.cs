@@ -210,7 +210,7 @@ namespace Kimono {
 		///  the user clicked on the Apply or Ok button.
 		/// <param> name="dialogName" the name of the dialog.
 		///    </param></remarks>		<short>    One or more of the settings have been permanently changed such as if  the user clicked on the Apply or Ok button.</short>
-		[Q_SIGNAL("void settingsChanged(const QString&)")]
+		[Q_SIGNAL("void settingsChanged(QString)")]
 		void SettingsChanged(string dialogName);
 	}
 }

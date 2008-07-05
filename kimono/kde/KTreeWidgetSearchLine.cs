@@ -108,7 +108,7 @@ namespace Kimono {
 		///  Updates search to only make visible the items that match \a pattern.  If
 		///  \a s is null then the line edit's text will be used.
 		///      </remarks>		<short>    Updates search to only make visible the items that match \a pattern.</short>
-		[Q_SLOT("void updateSearch(const QString&)")]
+		[Q_SLOT("void updateSearch(QString)")]
 		[SmokeMethod("updateSearch(const QString&)")]
 		public virtual void UpdateSearch(string pattern) {
 			interceptor.Invoke("updateSearch$", "updateSearch(const QString&)", typeof(void), typeof(string), pattern);
@@ -149,7 +149,7 @@ namespace Kimono {
 		///  this method has no effect.
 		/// </remarks>		<short>    Sets the list of columns to be searched.</short>
 		/// 		<see> searchColumns</see>
-		[Q_SLOT("void setSearchColumns(const QList<int>&)")]
+		[Q_SLOT("void setSearchColumns(QList<int>)")]
 		public void SetSearchColumns(List<int> columns) {
 			interceptor.Invoke("setSearchColumns?", "setSearchColumns(const QList<int>&)", typeof(void), typeof(List<int>), columns);
 		}
@@ -172,7 +172,7 @@ namespace Kimono {
 		/// 		<see> treeWidgets</see>
 		/// 		<see> addTreeWidget</see>
 		/// 		<see> setTreeWidget</see>
-		[Q_SLOT("void setTreeWidgets(const QList<QTreeWidget*>&)")]
+		[Q_SLOT("void setTreeWidgets(QList<QTreeWidget* >)")]
 		public void SetTreeWidgets(List<QTreeWidget> treeWidgets) {
 			interceptor.Invoke("setTreeWidgets?", "setTreeWidgets(const QList<QTreeWidget*>&)", typeof(void), typeof(List<QTreeWidget>), treeWidgets);
 		}

@@ -113,11 +113,11 @@ namespace Qyoto {
 		public void SetValue(int progress) {
 			interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), progress);
 		}
-		[Q_SLOT("void setLabelText(const QString&)")]
+		[Q_SLOT("void setLabelText(QString)")]
 		public void SetLabelText(string arg1) {
 			interceptor.Invoke("setLabelText$", "setLabelText(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[Q_SLOT("void setCancelButtonText(const QString&)")]
+		[Q_SLOT("void setCancelButtonText(QString)")]
 		public void SetCancelButtonText(string arg1) {
 			interceptor.Invoke("setCancelButtonText$", "setCancelButtonText(const QString&)", typeof(void), typeof(string), arg1);
 		}

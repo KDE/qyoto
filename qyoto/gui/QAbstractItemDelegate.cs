@@ -54,7 +54,7 @@ namespace Qyoto {
 		public virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
 			return (bool) interceptor.Invoke("editorEvent####", "editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QEvent), arg1, typeof(QAbstractItemModel), model, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
-		[Q_SLOT("bool helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)")]
+		[Q_SLOT("bool helpEvent(QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem, QModelIndex)")]
 		public bool HelpEvent(QHelpEvent arg1, QAbstractItemView view, QStyleOptionViewItem option, QModelIndex index) {
 			return (bool) interceptor.Invoke("helpEvent####", "helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QHelpEvent), arg1, typeof(QAbstractItemView), view, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		void CloseEditor(QWidget editor, QAbstractItemDelegate.EndEditHint hint);
 		[Q_SIGNAL("void closeEditor(QWidget*)")]
 		void CloseEditor(QWidget editor);
-		[Q_SIGNAL("void sizeHintChanged(const QModelIndex&)")]
+		[Q_SIGNAL("void sizeHintChanged(QModelIndex)")]
 		void SizeHintChanged(QModelIndex arg1);
 	}
 }

@@ -14,7 +14,6 @@ namespace Qyoto {
 		static QPrinterInfo() {
 			staticInterceptor = new SmokeInvocation(typeof(QPrinterInfo), null);
 		}
-		// QList<QPrinter::PaperSize> supportedPaperSizes(); >>>> NOT CONVERTED
 		public QPrinterInfo() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QPrinterInfo", "QPrinterInfo()", typeof(void));
@@ -35,6 +34,9 @@ namespace Qyoto {
 		}
 		public bool IsDefault() {
 			return (bool) interceptor.Invoke("isDefault", "isDefault() const", typeof(bool));
+		}
+		public List<QPrinter.PageSize> SupportedPaperSizes() {
+			return (List<QPrinter.PageSize>) interceptor.Invoke("supportedPaperSizes", "supportedPaperSizes() const", typeof(List<QPrinter.PageSize>));
 		}
 		~QPrinterInfo() {
 			interceptor.Invoke("~QPrinterInfo", "~QPrinterInfo()", typeof(void));

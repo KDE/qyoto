@@ -81,7 +81,7 @@ namespace KIO {
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="type" the mime type
 		///          </param></remarks>		<short>    Mimetype determined during a file copy.</short>
-		[Q_SIGNAL("void mimetype(KIO::Job*, const QString&)")]
+		[Q_SIGNAL("void mimetype(KIO::Job*, QString)")]
 		void Mimetype(KIO.Job job, string type);
 	}
 }

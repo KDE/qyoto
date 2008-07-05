@@ -15,11 +15,11 @@ namespace Kimono {
 		public void ConnectImporter(QObject arg1) {
 			interceptor.Invoke("connectImporter#", "connectImporter(const QObject*)", typeof(void), typeof(QObject), arg1);
 		}
-		[Q_SLOT("void newBookmark(const QString&, const QString&, const QString&)")]
+		[Q_SLOT("void newBookmark(QString, QString, QString)")]
 		protected void NewBookmark(string text, string url, string additionalInfo) {
 			interceptor.Invoke("newBookmark$$$", "newBookmark(const QString&, const QString&, const QString&)", typeof(void), typeof(string), text, typeof(string), url, typeof(string), additionalInfo);
 		}
-		[Q_SLOT("void newFolder(const QString&, bool, const QString&)")]
+		[Q_SLOT("void newFolder(QString, bool, QString)")]
 		protected void NewFolder(string text, bool open, string additionalInfo) {
 			interceptor.Invoke("newFolder$$$", "newFolder(const QString&, bool, const QString&)", typeof(void), typeof(string), text, typeof(bool), open, typeof(string), additionalInfo);
 		}

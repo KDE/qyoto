@@ -152,13 +152,13 @@ namespace Kimono {
 		///  This signal is emitted when a new item is activated.
 		/// <param> name="languageCode" code of the activated language
 		///    </param></remarks>		<short>    This signal is emitted when a new item is activated.</short>
-		[Q_SIGNAL("void activated(const QString&)")]
+		[Q_SIGNAL("void activated(QString)")]
 		void Activated(string languageCode);
 		/// <remarks>
 		///  This signal is emitted when a new item is highlighted.
 		/// <param> name="languageCode" code of the highlighted language
 		///    </param></remarks>		<short>    This signal is emitted when a new item is highlighted.</short>
-		[Q_SIGNAL("void highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(QString)")]
 		void Highlighted(string languageCode);
 	}
 }

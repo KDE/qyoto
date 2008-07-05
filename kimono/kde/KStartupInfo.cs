@@ -340,14 +340,14 @@ namespace Kimono {
 		/// <param> name="id" the notification identification
 		/// </param><param> name="data" the notification data
 		/// 	 </param></remarks>		<short>    Emitted when a new startup notification is created (i.</short>
-		[Q_SIGNAL("void gotNewStartup(const KStartupInfoId&, const KStartupInfoData&)")]
+		[Q_SIGNAL("void gotNewStartup(KStartupInfoId, KStartupInfoData)")]
 		void GotNewStartup(KStartupInfoId id, KStartupInfoData data);
 		/// <remarks>
 		///  Emitted when a startup notification changes.
 		/// <param> name="id" the notification identification
 		/// </param><param> name="data" the notification data
 		/// 	 </param></remarks>		<short>    Emitted when a startup notification changes.</short>
-		[Q_SIGNAL("void gotStartupChange(const KStartupInfoId&, const KStartupInfoData&)")]
+		[Q_SIGNAL("void gotStartupChange(KStartupInfoId, KStartupInfoData)")]
 		void GotStartupChange(KStartupInfoId id, KStartupInfoData data);
 		/// <remarks>
 		///  Emitted when a startup notification is removed (either because it was detected
@@ -355,7 +355,7 @@ namespace Kimono {
 		/// <param> name="id" the notification identification
 		/// </param><param> name="data" the notification data
 		/// 	 </param></remarks>		<short>    Emitted when a startup notification is removed (either because it was detected  that the application is ready or because of a timeout).</short>
-		[Q_SIGNAL("void gotRemoveStartup(const KStartupInfoId&, const KStartupInfoData&)")]
+		[Q_SIGNAL("void gotRemoveStartup(KStartupInfoId, KStartupInfoData)")]
 		void GotRemoveStartup(KStartupInfoId id, KStartupInfoData data);
 	}
 }

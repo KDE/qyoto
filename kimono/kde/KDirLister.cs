@@ -481,7 +481,7 @@ namespace Kimono {
 		///  but the view also needs to know when an automatic update happens.
 		/// <param> name="_url" the URL to list
 		///    </param></remarks>		<short>    Tell the view that we started to list <code>_url.</code></short>
-		[Q_SIGNAL("void started(const KUrl&)")]
+		[Q_SIGNAL("void started(KUrl)")]
 		void Started(KUrl _url);
 		/// <remarks>
 		///  Tell the view that listing is finished. There are no jobs running anymore.
@@ -493,7 +493,7 @@ namespace Kimono {
 		///  There might be other running jobs left.
 		/// <param> name="_url" the directory URL
 		///    </param></remarks>		<short>    Tell the view that the listing of the directory <code>_url</code> is finished.</short>
-		[Q_SIGNAL("void completed(const KUrl&)")]
+		[Q_SIGNAL("void completed(KUrl)")]
 		void Completed(KUrl _url);
 		/// <remarks>
 		///  Tell the view that the user canceled the listing. No running jobs are left.
@@ -505,7 +505,7 @@ namespace Kimono {
 		///  There might be other running jobs left.
 		/// <param> name="_url" the directory URL
 		///    </param></remarks>		<short>    Tell the view that the listing of the directory <code>_url</code> was canceled.</short>
-		[Q_SIGNAL("void canceled(const KUrl&)")]
+		[Q_SIGNAL("void canceled(KUrl)")]
 		void Canceled(KUrl _url);
 		/// <remarks>
 		///  Signal a redirection.
@@ -513,14 +513,14 @@ namespace Kimono {
 		///  probably openUrl() has been called with <code>_keep</code> == <code>false.</code>
 		/// <param> name="_url" the new URL
 		///    </param></remarks>		<short>    Signal a redirection.</short>
-		[Q_SIGNAL("void redirection(const KUrl&)")]
+		[Q_SIGNAL("void redirection(KUrl)")]
 		void Redirection(KUrl _url);
 		/// <remarks>
 		///  Signal a redirection.
 		/// <param> name="oldUrl" the original URL
 		/// </param><param> name="newUrl" the new URL
 		///    </param></remarks>		<short>    Signal a redirection.</short>
-		[Q_SIGNAL("void redirection(const KUrl&, const KUrl&)")]
+		[Q_SIGNAL("void redirection(KUrl, KUrl)")]
 		void Redirection(KUrl oldUrl, KUrl newUrl);
 		/// <remarks>
 		///  Signal to clear all items.
@@ -533,26 +533,26 @@ namespace Kimono {
 		///  It is only emitted if the lister is holding more than one directory.
 		/// <param> name="_url" the directory that will be emptied
 		///    </param></remarks>		<short>    Signal to empty the directory <code>_url.</code></short>
-		[Q_SIGNAL("void clear(const KUrl&)")]
+		[Q_SIGNAL("void clear(KUrl)")]
 		void Clear(KUrl _url);
 		/// <remarks>
 		///  Signal new items.
 		///  So use this signal only if you want to modify original KFileItems
 		/// <param> name="items" a list of new items
 		///    </param></remarks>		<short>    Signal new items.</short>
-		[Q_SIGNAL("void newItems(const KFileItemList&)")]
+		[Q_SIGNAL("void newItems(KFileItemList)")]
 		void NewItems(List<KFileItem> items);
 		/// <remarks>
 		///  Send a list of items filtered-out by mime-type.
 		/// <param> name="items" the list of filtered items
 		///    </param></remarks>		<short>    Send a list of items filtered-out by mime-type.</short>
-		[Q_SIGNAL("void itemsFilteredByMime(const KFileItemList&)")]
+		[Q_SIGNAL("void itemsFilteredByMime(KFileItemList)")]
 		void ItemsFilteredByMime(List<KFileItem> items);
 		/// <remarks>
 		///  Signal an item to remove.
 		/// <param> name="_fileItem" the fileItem to delete
 		///    </param></remarks>		<short>    Signal an item to remove.</short>
-		[Q_SIGNAL("void deleteItem(const KFileItem&)")]
+		[Q_SIGNAL("void deleteItem(KFileItem)")]
 		void DeleteItem(KFileItem _fileItem);
 		/// <remarks>
 		///  Signal an item to refresh (its mimetype/icon/name has changed).
@@ -562,14 +562,14 @@ namespace Kimono {
 		///  NEW item. This allows to track which item has changed, especially after
 		///  a renaming.
 		///    </param></remarks>		<short>    Signal an item to refresh (its mimetype/icon/name has changed).</short>
-		[Q_SIGNAL("void refreshItems(const QList<QPair<KFileItem, KFileItem> >&)")]
+		[Q_SIGNAL("void refreshItems(QList<QPair<KFileItem, KFileItem> >)")]
 		void RefreshItems(List<QPair<KFileItem, KFileItem>> items);
 		/// <remarks>
 		///  Emitted to display information about running jobs.
 		///  Examples of message are "Resolving host", "Connecting to host...", etc.
 		/// <param> name="msg" the info message
 		///    </param></remarks>		<short>    Emitted to display information about running jobs.</short>
-		[Q_SIGNAL("void infoMessage(const QString&)")]
+		[Q_SIGNAL("void infoMessage(QString)")]
 		void InfoMessage(string msg);
 		/// <remarks>
 		///  Progress signal showing the overall progress of the KDirLister.

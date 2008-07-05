@@ -80,7 +80,7 @@ namespace KIO {
 		///      </return>
 		/// 		<short>    Performs the initial TCP connection stuff and/or  SSL handshaking as necessary.</short>
 		protected bool ConnectToHost(string protocol, string host, ushort port) {
-			return (bool) interceptor.Invoke("connectToHost$$$", "connectToHost(const QString&, const QString&, quint16)", typeof(bool), typeof(string), protocol, typeof(string), host, typeof(ushort), port);
+			return (bool) interceptor.Invoke("connectToHost$$$", "connectToHost(const QString&, const QString&, unsigned short)", typeof(bool), typeof(string), protocol, typeof(string), host, typeof(ushort), port);
 		}
 		/// <remarks>
 		///  the current port for this service

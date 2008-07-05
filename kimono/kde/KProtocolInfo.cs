@@ -64,7 +64,7 @@ namespace Kimono {
 			T_NONE = 2,
 			T_ERROR = 3,
 		}
-		// KProtocolInfo::ExtraFieldList extraFields(const KUrl& arg1); >>>> NOT CONVERTED
+		// QList<KProtocolInfo::ExtraField> extraFields(const KUrl& arg1); >>>> NOT CONVERTED
 		// KProtocolInfo::FileNameUsedForCopying fileNameUsedForCopying(); >>>> NOT CONVERTED
 		/// <remarks>
 		///    </remarks>		<short>   </short>

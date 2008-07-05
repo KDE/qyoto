@@ -237,7 +237,7 @@ namespace Qyoto {
 		public void SetFontPointSize(double s) {
 			interceptor.Invoke("setFontPointSize$", "setFontPointSize(qreal)", typeof(void), typeof(double), s);
 		}
-		[Q_SLOT("void setFontFamily(const QString&)")]
+		[Q_SLOT("void setFontFamily(QString)")]
 		public void SetFontFamily(string fontFamily) {
 			interceptor.Invoke("setFontFamily$", "setFontFamily(const QString&)", typeof(void), typeof(string), fontFamily);
 		}
@@ -253,15 +253,15 @@ namespace Qyoto {
 		public void SetFontItalic(bool b) {
 			interceptor.Invoke("setFontItalic$", "setFontItalic(bool)", typeof(void), typeof(bool), b);
 		}
-		[Q_SLOT("void setTextColor(const QColor&)")]
+		[Q_SLOT("void setTextColor(QColor)")]
 		public void SetTextColor(QColor c) {
 			interceptor.Invoke("setTextColor#", "setTextColor(const QColor&)", typeof(void), typeof(QColor), c);
 		}
-		[Q_SLOT("void setTextBackgroundColor(const QColor&)")]
+		[Q_SLOT("void setTextBackgroundColor(QColor)")]
 		public void SetTextBackgroundColor(QColor c) {
 			interceptor.Invoke("setTextBackgroundColor#", "setTextBackgroundColor(const QColor&)", typeof(void), typeof(QColor), c);
 		}
-		[Q_SLOT("void setCurrentFont(const QFont&)")]
+		[Q_SLOT("void setCurrentFont(QFont)")]
 		public void SetCurrentFont(QFont f) {
 			interceptor.Invoke("setCurrentFont#", "setCurrentFont(const QFont&)", typeof(void), typeof(QFont), f);
 		}
@@ -269,15 +269,15 @@ namespace Qyoto {
 		public void SetAlignment(uint a) {
 			interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), a);
 		}
-		[Q_SLOT("void setPlainText(const QString&)")]
+		[Q_SLOT("void setPlainText(QString)")]
 		public void SetPlainText(string text) {
 			interceptor.Invoke("setPlainText$", "setPlainText(const QString&)", typeof(void), typeof(string), text);
 		}
-		[Q_SLOT("void setHtml(const QString&)")]
+		[Q_SLOT("void setHtml(QString)")]
 		public void SetHtml(string text) {
 			interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), text);
 		}
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		public void SetText(string text) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -309,19 +309,19 @@ namespace Qyoto {
 		public void SelectAll() {
 			interceptor.Invoke("selectAll", "selectAll()", typeof(void));
 		}
-		[Q_SLOT("void insertPlainText(const QString&)")]
+		[Q_SLOT("void insertPlainText(QString)")]
 		public void InsertPlainText(string text) {
 			interceptor.Invoke("insertPlainText$", "insertPlainText(const QString&)", typeof(void), typeof(string), text);
 		}
-		[Q_SLOT("void insertHtml(const QString&)")]
+		[Q_SLOT("void insertHtml(QString)")]
 		public void InsertHtml(string text) {
 			interceptor.Invoke("insertHtml$", "insertHtml(const QString&)", typeof(void), typeof(string), text);
 		}
-		[Q_SLOT("void append(const QString&)")]
+		[Q_SLOT("void append(QString)")]
 		public void Append(string text) {
 			interceptor.Invoke("append$", "append(const QString&)", typeof(void), typeof(string), text);
 		}
-		[Q_SLOT("void scrollToAnchor(const QString&)")]
+		[Q_SLOT("void scrollToAnchor(QString)")]
 		public void ScrollToAnchor(string name) {
 			interceptor.Invoke("scrollToAnchor$", "scrollToAnchor(const QString&)", typeof(void), typeof(string), name);
 		}
@@ -473,7 +473,7 @@ namespace Qyoto {
 		void UndoAvailable(bool b);
 		[Q_SIGNAL("void redoAvailable(bool)")]
 		void RedoAvailable(bool b);
-		[Q_SIGNAL("void currentCharFormatChanged(const QTextCharFormat&)")]
+		[Q_SIGNAL("void currentCharFormatChanged(QTextCharFormat)")]
 		void CurrentCharFormatChanged(QTextCharFormat format);
 		[Q_SIGNAL("void copyAvailable(bool)")]
 		void CopyAvailable(bool b);

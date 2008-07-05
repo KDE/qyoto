@@ -288,7 +288,7 @@ namespace Kimono {
 		/// </param><param> name="replacedLength" Length of the replacement string
 		/// </param><param> name="matchedLength" Length of the matched string
 		///      </param></remarks>		<short>    Connect to this slot to implement updating of replaced text during the replace  operation.</short>
-		[Q_SIGNAL("void replace(const QString&, int, int, int)")]
+		[Q_SIGNAL("void replace(QString, int, int, int)")]
 		void Replace(string text, int replacementIndex, int replacedLength, int matchedLength);
 	}
 }

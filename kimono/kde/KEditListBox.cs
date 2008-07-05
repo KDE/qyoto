@@ -238,11 +238,11 @@ namespace Kimono {
 		protected void RemoveItem() {
 			interceptor.Invoke("removeItem", "removeItem()", typeof(void));
 		}
-		[Q_SLOT("void enableMoveButtons(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void enableMoveButtons(QModelIndex, QModelIndex)")]
 		protected void EnableMoveButtons(QModelIndex arg1, QModelIndex arg2) {
 			interceptor.Invoke("enableMoveButtons##", "enableMoveButtons(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), arg1, typeof(QModelIndex), arg2);
 		}
-		[Q_SLOT("void typedSomething(const QString&)")]
+		[Q_SLOT("void typedSomething(QString)")]
 		protected void TypedSomething(string text) {
 			interceptor.Invoke("typedSomething$", "typedSomething(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -264,13 +264,13 @@ namespace Kimono {
 		///  This signal is emitted when the user adds a new string to the list,
 		///  the parameter is the added string.
 		///        </remarks>		<short>    This signal is emitted when the user adds a new string to the list,  the parameter is the added string.</short>
-		[Q_SIGNAL("void added(const QString&)")]
+		[Q_SIGNAL("void added(QString)")]
 		void Added(string text);
 		/// <remarks>
 		///  This signal is emitted when the user removes a string from the list,
 		///  the parameter is the removed string.
 		///        </remarks>		<short>    This signal is emitted when the user removes a string from the list,  the parameter is the removed string.</short>
-		[Q_SIGNAL("void removed(const QString&)")]
+		[Q_SIGNAL("void removed(QString)")]
 		void Removed(string text);
 	}
 }

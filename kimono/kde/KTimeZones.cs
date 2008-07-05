@@ -26,7 +26,7 @@ namespace Kimono {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KTimeZones), this);
 		}
-		// const KTimeZones::ZoneMap zones(); >>>> NOT CONVERTED
+		// const QMap<QString, KTimeZone> zones(); >>>> NOT CONVERTED
 		public KTimeZones() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("KTimeZones", "KTimeZones()", typeof(void));

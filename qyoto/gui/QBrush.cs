@@ -14,7 +14,7 @@ namespace Qyoto {
 			staticInterceptor = new SmokeInvocation(typeof(QBrush), null);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
-		// QBrush::DataPtr& data_ptr(); >>>> NOT CONVERTED
+		// QBrushData*& data_ptr(); >>>> NOT CONVERTED
 		public QBrush() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QBrush", "QBrush()", typeof(void));

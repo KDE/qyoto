@@ -304,16 +304,16 @@ namespace Kimono {
 		///      </return>
 		/// 		<short>    Substitutes an unsigned long argument into the message.</short>
 		public KLocalizedString Subs(ulong a, int fieldWidth, int arg3, QChar fillChar) {
-			return (KLocalizedString) interceptor.Invoke("subs$$$#", "subs(ulong, int, int, const QChar&) const", typeof(KLocalizedString), typeof(ulong), a, typeof(int), fieldWidth, typeof(int), arg3, typeof(QChar), fillChar);
+			return (KLocalizedString) interceptor.Invoke("subs$$$#", "subs(unsigned long, int, int, const QChar&) const", typeof(KLocalizedString), typeof(ulong), a, typeof(int), fieldWidth, typeof(int), arg3, typeof(QChar), fillChar);
 		}
 		public KLocalizedString Subs(ulong a, int fieldWidth, int arg3) {
-			return (KLocalizedString) interceptor.Invoke("subs$$$", "subs(ulong, int, int) const", typeof(KLocalizedString), typeof(ulong), a, typeof(int), fieldWidth, typeof(int), arg3);
+			return (KLocalizedString) interceptor.Invoke("subs$$$", "subs(unsigned long, int, int) const", typeof(KLocalizedString), typeof(ulong), a, typeof(int), fieldWidth, typeof(int), arg3);
 		}
 		public KLocalizedString Subs(ulong a, int fieldWidth) {
-			return (KLocalizedString) interceptor.Invoke("subs$$", "subs(ulong, int) const", typeof(KLocalizedString), typeof(ulong), a, typeof(int), fieldWidth);
+			return (KLocalizedString) interceptor.Invoke("subs$$", "subs(unsigned long, int) const", typeof(KLocalizedString), typeof(ulong), a, typeof(int), fieldWidth);
 		}
 		public KLocalizedString Subs(ulong a) {
-			return (KLocalizedString) interceptor.Invoke("subs$", "subs(ulong) const", typeof(KLocalizedString), typeof(ulong), a);
+			return (KLocalizedString) interceptor.Invoke("subs$", "subs(unsigned long) const", typeof(KLocalizedString), typeof(ulong), a);
 		}
 		/// <remarks>
 		///  Substitutes a double argument into the message.

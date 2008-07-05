@@ -31,7 +31,7 @@ namespace Qyoto {
 			stack[1].s_int = count;
 			stack[2].s_int = colors;
 			stack[3].s_int = arg3;
-			interceptor.Invoke("setEntries$?$", "setEntries(int, const QRgb*, int)", stack);
+			interceptor.Invoke("setEntries$$$", "setEntries(int, const unsigned int*, int)", stack);
 			colors = stack[2].s_int;
 			return;
 		}
@@ -39,12 +39,12 @@ namespace Qyoto {
 			StackItem[] stack = new StackItem[3];
 			stack[1].s_int = count;
 			stack[2].s_int = colors;
-			interceptor.Invoke("setEntries$?", "setEntries(int, const QRgb*)", stack);
+			interceptor.Invoke("setEntries$$", "setEntries(int, const unsigned int*)", stack);
 			colors = stack[2].s_int;
 			return;
 		}
 		public void SetEntry(int idx, uint color) {
-			interceptor.Invoke("setEntry$$", "setEntry(int, QRgb)", typeof(void), typeof(int), idx, typeof(uint), color);
+			interceptor.Invoke("setEntry$$", "setEntry(int, unsigned int)", typeof(void), typeof(int), idx, typeof(uint), color);
 		}
 		public void SetEntry(int idx, QColor color) {
 			interceptor.Invoke("setEntry$#", "setEntry(int, const QColor&)", typeof(void), typeof(int), idx, typeof(QColor), color);
@@ -56,10 +56,10 @@ namespace Qyoto {
 			return (QColor) interceptor.Invoke("entryColor$", "entryColor(int) const", typeof(QColor), typeof(int), idx);
 		}
 		public int Find(uint color) {
-			return (int) interceptor.Invoke("find$", "find(QRgb) const", typeof(int), typeof(uint), color);
+			return (int) interceptor.Invoke("find$", "find(unsigned int) const", typeof(int), typeof(uint), color);
 		}
 		public int FindNearest(uint color) {
-			return (int) interceptor.Invoke("findNearest$", "findNearest(QRgb) const", typeof(int), typeof(uint), color);
+			return (int) interceptor.Invoke("findNearest$", "findNearest(unsigned int) const", typeof(int), typeof(uint), color);
 		}
 		protected void SetHandle(uint ahandle) {
 			interceptor.Invoke("setHandle$", "setHandle(Qt::HANDLE)", typeof(void), typeof(uint), ahandle);

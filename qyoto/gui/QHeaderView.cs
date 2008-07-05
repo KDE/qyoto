@@ -323,11 +323,11 @@ namespace Qyoto {
 		protected void ResizeSections() {
 			interceptor.Invoke("resizeSections", "resizeSections()", typeof(void));
 		}
-		[Q_SLOT("void sectionsInserted(const QModelIndex&, int, int)")]
+		[Q_SLOT("void sectionsInserted(QModelIndex, int, int)")]
 		protected void SectionsInserted(QModelIndex parent, int logicalFirst, int logicalLast) {
 			interceptor.Invoke("sectionsInserted#$$", "sectionsInserted(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), logicalFirst, typeof(int), logicalLast);
 		}
-		[Q_SLOT("void sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
+		[Q_SLOT("void sectionsAboutToBeRemoved(QModelIndex, int, int)")]
 		protected void SectionsAboutToBeRemoved(QModelIndex parent, int logicalFirst, int logicalLast) {
 			interceptor.Invoke("sectionsAboutToBeRemoved#$$", "sectionsAboutToBeRemoved(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), logicalFirst, typeof(int), logicalLast);
 		}

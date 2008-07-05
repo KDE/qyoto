@@ -123,7 +123,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted when a new <code>font</code> has been selected in the underlying dialog
 		///      </remarks>		<short>    Emitted when a new <code>font</code> has been selected in the underlying dialog      </short>
-		[Q_SIGNAL("void fontSelected(const QFont&)")]
+		[Q_SIGNAL("void fontSelected(QFont)")]
 		void FontSelected(QFont font);
 	}
 }

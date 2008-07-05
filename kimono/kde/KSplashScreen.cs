@@ -21,7 +21,7 @@ namespace Kimono {
 		///    </remarks>		<short>     Constructs a splash screen.</short>
 		public KSplashScreen(QPixmap pixmap, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KSplashScreen#$", "KSplashScreen(const QPixmap&, Qt::WFlags)", typeof(void), typeof(QPixmap), pixmap, typeof(uint), f);
+			interceptor.Invoke("KSplashScreen#$", "KSplashScreen(const QPixmap&, Qt::WindowFlags)", typeof(void), typeof(QPixmap), pixmap, typeof(uint), f);
 		}
 		public KSplashScreen(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();

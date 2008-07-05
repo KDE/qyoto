@@ -33,7 +33,7 @@ namespace Qyoto {
 #else
 			stack[3].s_class = (IntPtr) GCHandle.Alloc(parent);
 #endif
-			staticInterceptor.Invoke("getRgba$$#", "getRgba(QRgb, bool*, QWidget*)", stack);
+			staticInterceptor.Invoke("getRgba$$#", "getRgba(unsigned int, bool*, QWidget*)", stack);
 			ok = stack[2].s_bool;
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[3].s_class);
@@ -46,12 +46,12 @@ namespace Qyoto {
 			StackItem[] stack = new StackItem[3];
 			stack[1].s_uint = arg1;
 			stack[2].s_bool = ok;
-			staticInterceptor.Invoke("getRgba$$", "getRgba(QRgb, bool*)", stack);
+			staticInterceptor.Invoke("getRgba$$", "getRgba(unsigned int, bool*)", stack);
 			ok = stack[2].s_bool;
 			return stack[0].s_uint;
 		}
 		public static uint GetRgba(uint arg1) {
-			return (uint) staticInterceptor.Invoke("getRgba$", "getRgba(QRgb)", typeof(uint), typeof(uint), arg1);
+			return (uint) staticInterceptor.Invoke("getRgba$", "getRgba(unsigned int)", typeof(uint), typeof(uint), arg1);
 		}
 		public static uint GetRgba() {
 			return (uint) staticInterceptor.Invoke("getRgba", "getRgba()", typeof(uint));
@@ -63,10 +63,10 @@ namespace Qyoto {
 			return (uint) staticInterceptor.Invoke("customColor$", "customColor(int)", typeof(uint), typeof(int), arg1);
 		}
 		public static void SetCustomColor(int arg1, uint arg2) {
-			staticInterceptor.Invoke("setCustomColor$$", "setCustomColor(int, QRgb)", typeof(void), typeof(int), arg1, typeof(uint), arg2);
+			staticInterceptor.Invoke("setCustomColor$$", "setCustomColor(int, unsigned int)", typeof(void), typeof(int), arg1, typeof(uint), arg2);
 		}
 		public static void SetStandardColor(int arg1, uint arg2) {
-			staticInterceptor.Invoke("setStandardColor$$", "setStandardColor(int, QRgb)", typeof(void), typeof(int), arg1, typeof(uint), arg2);
+			staticInterceptor.Invoke("setStandardColor$$", "setStandardColor(int, unsigned int)", typeof(void), typeof(int), arg1, typeof(uint), arg2);
 		}
 		protected new IQColorDialogSignals Emit {
 			get { return (IQColorDialogSignals) Q_EMIT; }

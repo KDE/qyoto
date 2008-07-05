@@ -381,7 +381,7 @@ namespace Kimono {
 		///  setData(), but can also be an earlier set data block.
 		/// </remarks>		<short>    Connect to this signal to implement highlighting of found text during the find  operation.</short>
 		/// 		<see> setData</see>
-		[Q_SIGNAL("void highlight(const QString&, int, int)")]
+		[Q_SIGNAL("void highlight(QString, int, int)")]
 		void Highlight(string text, int matchingIndex, int matchedLength);
 		/// <remarks>
 		///  Connect to this signal to implement highlighting of found text during the find

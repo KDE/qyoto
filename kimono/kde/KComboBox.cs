@@ -109,7 +109,7 @@ namespace Kimono {
 			get { return (bool) interceptor.Invoke("trapReturnKey", "trapReturnKey()", typeof(bool)); }
 			set { interceptor.Invoke("setTrapReturnKey$", "setTrapReturnKey(bool)", typeof(void), typeof(bool), value); }
 		}
-		// KCompletionBase::KeyBindingMap getKeyBindings(); >>>> NOT CONVERTED
+		// QMap<KCompletionBase::KeyBindingType, KShortcut> getKeyBindings(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructs a read-only or rather select-only combo box with a
 		///  parent object and a name.
@@ -294,7 +294,7 @@ namespace Kimono {
 		///  This function is an implementation for
 		///  KCompletionBase.SetCompletedText.
 		///      </remarks>		<short>    Sets the completed text in the line-edit appropriately.</short>
-		[Q_SLOT("void setCompletedText(const QString&)")]
+		[Q_SLOT("void setCompletedText(QString)")]
 		[SmokeMethod("setCompletedText(const QString&)")]
 		public virtual void SetCompletedText(string arg1) {
 			interceptor.Invoke("setCompletedText$", "setCompletedText(const QString&)", typeof(void), typeof(string), arg1);
@@ -303,12 +303,12 @@ namespace Kimono {
 		///  Sets <code>items</code> into the completion-box if completionMode() is
 		///  CompletionPopup. The popup will be shown immediately.
 		///      </remarks>		<short>    Sets <code>items</code> into the completion-box if completionMode() is  CompletionPopup.</short>
-		[Q_SLOT("void setCompletedItems(const QStringList&, bool)")]
+		[Q_SLOT("void setCompletedItems(QStringList, bool)")]
 		[SmokeMethod("setCompletedItems(const QStringList&, bool)")]
 		public virtual void SetCompletedItems(List<string> items, bool autosubject) {
 			interceptor.Invoke("setCompletedItems?$", "setCompletedItems(const QStringList&, bool)", typeof(void), typeof(List<string>), items, typeof(bool), autosubject);
 		}
-		[Q_SLOT("void setCompletedItems(const QStringList&)")]
+		[Q_SLOT("void setCompletedItems(QStringList)")]
 		[SmokeMethod("setCompletedItems(const QStringList&)")]
 		public virtual void SetCompletedItems(List<string> items) {
 			interceptor.Invoke("setCompletedItems?", "setCompletedItems(const QStringList&)", typeof(void), typeof(List<string>), items);
@@ -318,15 +318,15 @@ namespace Kimono {
 		///  it is inserted at position <code>index</code> if <code>insert</code> is true. Otherwise,
 		///  no item is selected.
 		///      </remarks>		<short>    Selects the first item that matches <code>item.</code></short>
-		[Q_SLOT("void setCurrentItem(const QString&, bool, int)")]
+		[Q_SLOT("void setCurrentItem(QString, bool, int)")]
 		public void SetCurrentItem(string item, bool insert, int index) {
 			interceptor.Invoke("setCurrentItem$$$", "setCurrentItem(const QString&, bool, int)", typeof(void), typeof(string), item, typeof(bool), insert, typeof(int), index);
 		}
-		[Q_SLOT("void setCurrentItem(const QString&, bool)")]
+		[Q_SLOT("void setCurrentItem(QString, bool)")]
 		public void SetCurrentItem(string item, bool insert) {
 			interceptor.Invoke("setCurrentItem$$", "setCurrentItem(const QString&, bool)", typeof(void), typeof(string), item, typeof(bool), insert);
 		}
-		[Q_SLOT("void setCurrentItem(const QString&)")]
+		[Q_SLOT("void setCurrentItem(QString)")]
 		public void SetCurrentItem(string item) {
 			interceptor.Invoke("setCurrentItem$", "setCurrentItem(const QString&)", typeof(void), typeof(string), item);
 		}
@@ -371,7 +371,7 @@ namespace Kimono {
 		///  through the remaining matches.  This way the rotation functionality
 		///  is left to iterate through the list as usual.
 		///     </remarks>		<short>    Completes text according to the completion mode.</short>
-		[Q_SLOT("void makeCompletion(const QString&)")]
+		[Q_SLOT("void makeCompletion(QString)")]
 		[SmokeMethod("makeCompletion(const QString&)")]
 		protected virtual void MakeCompletion(string arg1) {
 			interceptor.Invoke("makeCompletion$", "makeCompletion(const QString&)", typeof(void), typeof(string), arg1);
@@ -665,7 +665,7 @@ namespace Kimono {
 		///  Note that this signal is only emitted when the
 		///  widget is editable.
 		///     </remarks>		<short>    Emitted when the user presses the Enter key.</short>
-		[Q_SIGNAL("void returnPressed(const QString&)")]
+		[Q_SIGNAL("void returnPressed(QString)")]
 		void ReturnPressed(string arg1);
 		/// <remarks>
 		///  Emitted when the completion key is pressed.
@@ -673,12 +673,12 @@ namespace Kimono {
 		///  Note that this signal is <b>not</b> available when the widget is non-editable
 		///  or the completion mode is set to <code>KGlobalSettings</code>.CompletionNone.
 		///     </remarks>		<short>    Emitted when the completion key is pressed.</short>
-		[Q_SIGNAL("void completion(const QString&)")]
+		[Q_SIGNAL("void completion(QString)")]
 		void Completion(string arg1);
 		/// <remarks>
 		///  Emitted when the shortcut for substring completion is pressed.
 		///      </remarks>		<short>    Emitted when the shortcut for substring completion is pressed.</short>
-		[Q_SIGNAL("void substringCompletion(const QString&)")]
+		[Q_SIGNAL("void substringCompletion(QString)")]
 		void SubstringCompletion(string arg1);
 		/// <remarks>
 		///  Emitted when the text rotation key-bindings are pressed.

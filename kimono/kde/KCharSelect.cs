@@ -69,14 +69,14 @@ namespace Kimono {
 		/// <remarks>
 		///  Highlights the character <code>c.</code> If the character is not displayed, the block is changed.
 		///      </remarks>		<short>    Highlights the character <code>c.</code></short>
-		[Q_SLOT("void setCurrentChar(const QChar&)")]
+		[Q_SLOT("void setCurrentChar(QChar)")]
 		public void SetCurrentChar(QChar c) {
 			interceptor.Invoke("setCurrentChar#", "setCurrentChar(const QChar&)", typeof(void), typeof(QChar), c);
 		}
 		/// <remarks>
 		///  Sets the font which is displayed to <code>font</code>
 		///      </remarks>		<short>    Sets the font which is displayed to <code>font</code>      </short>
-		[Q_SLOT("void setCurrentFont(const QFont&)")]
+		[Q_SLOT("void setCurrentFont(QFont)")]
 		public void SetCurrentFont(QFont font) {
 			interceptor.Invoke("setCurrentFont#", "setCurrentFont(const QFont&)", typeof(void), typeof(QFont), font);
 		}
@@ -95,12 +95,12 @@ namespace Kimono {
 		/// <remarks>
 		///  A new font is selected or the font size changed.
 		///      </remarks>		<short>    A new font is selected or the font size changed.</short>
-		[Q_SIGNAL("void currentFontChanged(const QFont&)")]
+		[Q_SIGNAL("void currentFontChanged(QFont)")]
 		void CurrentFontChanged(QFont _font);
 		/// <remarks>
 		///  The current character is changed.
 		///      </remarks>		<short>    The current character is changed.</short>
-		[Q_SIGNAL("void currentCharChanged(const QChar&)")]
+		[Q_SIGNAL("void currentCharChanged(QChar)")]
 		void CurrentCharChanged(QChar c);
 		/// <remarks>
 		///  The currently displayed characters are changed (search results or block).
@@ -110,7 +110,7 @@ namespace Kimono {
 		/// <remarks>
 		///  A character is selected to be inserted somewhere.
 		///      </remarks>		<short>    A character is selected to be inserted somewhere.</short>
-		[Q_SIGNAL("void charSelected(const QChar&)")]
+		[Q_SIGNAL("void charSelected(QChar)")]
 		void CharSelected(QChar c);
 	}
 }

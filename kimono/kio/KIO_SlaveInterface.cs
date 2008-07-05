@@ -3,6 +3,7 @@ namespace KIO {
 	using Kimono;
 	using System;
 	using Qyoto;
+	using System.Collections.Generic;
 	/// <remarks>
 	///  There are two classes that specifies the protocol between application
 	///  ( KIO.Job) and kioslave. SlaveInterface is the class to use on the application
@@ -63,20 +64,21 @@ namespace KIO {
 	}
 
 	public interface ISlaveInterfaceSignals : IQObjectSignals {
-		[Q_SIGNAL("void data(const QByteArray&)")]
+		[Q_SIGNAL("void data(QByteArray)")]
 		void Data(QByteArray arg1);
 		[Q_SIGNAL("void dataReq()")]
 		void DataReq();
-		[Q_SIGNAL("void error(int, const QString&)")]
+		[Q_SIGNAL("void error(int, QString)")]
 		void Error(int arg1, string arg2);
 		[Q_SIGNAL("void connected()")]
 		void Connected();
 		[Q_SIGNAL("void finished()")]
 		void Finished();
-		[Q_SIGNAL("void slaveStatus(pid_t, const QByteArray&, const QString&, bool)")]
+		[Q_SIGNAL("void slaveStatus(pid_t, QByteArray, QString, bool)")]
 		void SlaveStatus(int arg1, QByteArray arg2, string arg3, bool arg4);
-		// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
-		[Q_SIGNAL("void statEntry(const KIO::UDSEntry&)")]
+		[Q_SIGNAL("void listEntries(KIO::UDSEntryList)")]
+		void ListEntries(List<KIO.UDSEntry> arg1);
+		[Q_SIGNAL("void statEntry(KIO::UDSEntry)")]
 		void StatEntry(KIO.UDSEntry arg1);
 		[Q_SIGNAL("void needSubUrlData()")]
 		void NeedSubUrlData();
@@ -86,25 +88,25 @@ namespace KIO {
 		void Open();
 		[Q_SIGNAL("void written(KIO::filesize_t)")]
 		void Written(long arg1);
-		[Q_SIGNAL("void metaData(const KIO::MetaData&)")]
+		[Q_SIGNAL("void metaData(KIO::MetaData)")]
 		void MetaData(KIO.MetaData arg1);
 		[Q_SIGNAL("void totalSize(KIO::filesize_t)")]
 		void TotalSize(long arg1);
 		[Q_SIGNAL("void processedSize(KIO::filesize_t)")]
 		void ProcessedSize(long arg1);
-		[Q_SIGNAL("void redirection(const KUrl&)")]
+		[Q_SIGNAL("void redirection(KUrl)")]
 		void Redirection(KUrl arg1);
 		[Q_SIGNAL("void position(KIO::filesize_t)")]
 		void Position(long arg1);
-		[Q_SIGNAL("void speed(long)")]
+		[Q_SIGNAL("void speed(unsigned)")]
 		void Speed(long arg1);
 		[Q_SIGNAL("void errorPage()")]
 		void ErrorPage();
-		[Q_SIGNAL("void mimeType(const QString&)")]
+		[Q_SIGNAL("void mimeType(QString)")]
 		void MimeType(string arg1);
-		[Q_SIGNAL("void warning(const QString&)")]
+		[Q_SIGNAL("void warning(QString)")]
 		void Warning(string arg1);
-		[Q_SIGNAL("void infoMessage(const QString&)")]
+		[Q_SIGNAL("void infoMessage(QString)")]
 		void InfoMessage(string arg1);
 	}
 }

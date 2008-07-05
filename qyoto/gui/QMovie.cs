@@ -168,9 +168,9 @@ namespace Qyoto {
 	public interface IQMovieSignals : IQObjectSignals {
 		[Q_SIGNAL("void started()")]
 		void Started();
-		[Q_SIGNAL("void resized(const QSize&)")]
+		[Q_SIGNAL("void resized(QSize)")]
 		void Resized(QSize size);
-		[Q_SIGNAL("void updated(const QRect&)")]
+		[Q_SIGNAL("void updated(QRect)")]
 		void Updated(QRect rect);
 		[Q_SIGNAL("void stateChanged(QMovie::MovieState)")]
 		void StateChanged(QMovie.MovieState state);

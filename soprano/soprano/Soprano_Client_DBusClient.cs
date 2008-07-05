@@ -20,9 +20,9 @@ namespace Soprano.Client {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(DBusClient), this);
 		}
-		// Soprano::Client::DBusModel* createModel(const QString& arg1,const Soprano::BackendSettings& arg2); >>>> NOT CONVERTED
-		// Soprano::Error lastError(); >>>> NOT CONVERTED
-		// void setError(const Soprano::Error& arg1); >>>> NOT CONVERTED
+		// Soprano::Client::DBusModel* createModel(const QString& arg1,const QList<Soprano::BackendSetting>& arg2); >>>> NOT CONVERTED
+		// Error lastError(); >>>> NOT CONVERTED
+		// void setError(const Error& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Create a new DBus client.
 		///  \param service The DBus service name. If empty the client will use the

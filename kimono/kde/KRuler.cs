@@ -158,7 +158,7 @@ namespace Kimono {
 		/// </param></remarks>		<short>    Constructs a ruler with orientation <code>orient.</code></short>
 		public KRuler(Qt.Orientation orient, QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KRuler$#$", "KRuler(Qt::Orientation, QWidget*, Qt::WFlags)", typeof(void), typeof(Qt.Orientation), orient, typeof(QWidget), parent, typeof(uint), f);
+			interceptor.Invoke("KRuler$#$", "KRuler(Qt::Orientation, QWidget*, Qt::WindowFlags)", typeof(void), typeof(Qt.Orientation), orient, typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KRuler(Qt.Orientation orient, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -181,7 +181,7 @@ namespace Kimono {
 		/// </param>   </remarks>		<short>    Constructs a ruler with orientation <code>orient</code> and initial width <code>widgetWidth.</code></short>
 		public KRuler(Qt.Orientation orient, int widgetWidth, QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KRuler$$#$", "KRuler(Qt::Orientation, int, QWidget*, Qt::WFlags)", typeof(void), typeof(Qt.Orientation), orient, typeof(int), widgetWidth, typeof(QWidget), parent, typeof(uint), f);
+			interceptor.Invoke("KRuler$$#$", "KRuler(Qt::Orientation, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(Qt.Orientation), orient, typeof(int), widgetWidth, typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KRuler(Qt.Orientation orient, int widgetWidth, QWidget parent) : this((Type) null) {
 			CreateProxy();

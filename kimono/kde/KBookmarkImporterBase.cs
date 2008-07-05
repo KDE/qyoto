@@ -45,13 +45,13 @@ namespace Kimono {
 		///  Notify about a new bookmark
 		///  Use "html" for the icon
 		///      </remarks>		<short>    Notify about a new bookmark  Use "html" for the icon      </short>
-		[Q_SIGNAL("void newBookmark(const QString&, const QString&, const QString&)")]
+		[Q_SIGNAL("void newBookmark(QString, QString, QString)")]
 		void NewBookmark(string text, string url, string additionalInfo);
 		/// <remarks>
 		///  Notify about a new folder
 		///  Use "bookmark_folder" for the icon
 		///      </remarks>		<short>    Notify about a new folder  Use "bookmark_folder" for the icon      </short>
-		[Q_SIGNAL("void newFolder(const QString&, bool, const QString&)")]
+		[Q_SIGNAL("void newFolder(QString, bool, QString)")]
 		void NewFolder(string text, bool open, string additionalInfo);
 		/// <remarks>
 		///  Notify about a new separator

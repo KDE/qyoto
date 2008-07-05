@@ -169,7 +169,7 @@ namespace Kimono {
 		///  This signal is emitted whenever the current page changes.
 		///  The previous page index is replaced by the current index.
 		///      </remarks>		<short>    This signal is emitted whenever the current page changes.</short>
-		[Q_SIGNAL("void currentPageChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void currentPageChanged(QModelIndex, QModelIndex)")]
 		void CurrentPageChanged(QModelIndex current, QModelIndex previous);
 	}
 }

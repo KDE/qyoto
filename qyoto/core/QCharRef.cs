@@ -10,7 +10,6 @@ namespace Qyoto {
 			interceptor = new SmokeInvocation(typeof(QCharRef), this);
 		}
 		//  operator QChar(); >>>> NOT CONVERTED
-		// ushort& unicode(); >>>> NOT CONVERTED
 		public bool IsNull() {
 			return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
 		}
@@ -105,7 +104,7 @@ namespace Qyoto {
 			return (char) interceptor.Invoke("toLatin1", "toLatin1() const", typeof(char));
 		}
 		public ushort Unicode() {
-			return (ushort) interceptor.Invoke("unicode", "unicode() const", typeof(ushort));
+			return (ushort) interceptor.Invoke("unicode", "unicode()", typeof(ushort));
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace DOM {
 		}
 		public RGBColor(uint color) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("RGBColor$", "RGBColor(QRgb)", typeof(void), typeof(uint), color);
+			interceptor.Invoke("RGBColor$", "RGBColor(unsigned int)", typeof(void), typeof(uint), color);
 		}
 		public RGBColor(DOM.RGBColor other) : this((Type) null) {
 			CreateProxy();

@@ -169,19 +169,19 @@ namespace Qyoto {
 		public QTreeWidgetItem ItemBelow(QTreeWidgetItem item) {
 			return (QTreeWidgetItem) interceptor.Invoke("itemBelow#", "itemBelow(const QTreeWidgetItem*) const", typeof(QTreeWidgetItem), typeof(QTreeWidgetItem), item);
 		}
-		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[Q_SLOT("void scrollToItem(QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTreeWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			interceptor.Invoke("scrollToItem#$", "scrollToItem(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)", typeof(void), typeof(QTreeWidgetItem), item, typeof(QAbstractItemView.ScrollHint), hint);
 		}
-		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*)")]
+		[Q_SLOT("void scrollToItem(QTreeWidgetItem*)")]
 		public void ScrollToItem(QTreeWidgetItem item) {
 			interceptor.Invoke("scrollToItem#", "scrollToItem(const QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), item);
 		}
-		[Q_SLOT("void expandItem(const QTreeWidgetItem*)")]
+		[Q_SLOT("void expandItem(QTreeWidgetItem*)")]
 		public void ExpandItem(QTreeWidgetItem item) {
 			interceptor.Invoke("expandItem#", "expandItem(const QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), item);
 		}
-		[Q_SLOT("void collapseItem(const QTreeWidgetItem*)")]
+		[Q_SLOT("void collapseItem(QTreeWidgetItem*)")]
 		public void CollapseItem(QTreeWidgetItem item) {
 			interceptor.Invoke("collapseItem#", "collapseItem(const QTreeWidgetItem*)", typeof(void), typeof(QTreeWidgetItem), item);
 		}

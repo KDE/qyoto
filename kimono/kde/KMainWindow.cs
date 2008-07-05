@@ -66,7 +66,7 @@ namespace Kimono {
 		public bool InitialGeometrySet {
 			get { return (bool) interceptor.Invoke("initialGeometrySet", "initialGeometrySet()", typeof(bool)); }
 		}
-		// KMainWindow* KMainWindow(KMainWindowPrivate& arg1,QWidget* arg2,Qt::WFlags arg3); >>>> NOT CONVERTED
+		// KMainWindow* KMainWindow(KMainWindowPrivate& arg1,QWidget* arg2,Qt::WindowFlags arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Construct a main window.
 		/// <param> name="parent" The widget parent. This is usually 0 but it may also be the window
@@ -266,6 +266,15 @@ namespace Kimono {
 			interceptor.Invoke("resetAutoSaveSettings", "resetAutoSaveSettings()", typeof(void));
 		}
 		/// <remarks>
+		/// </remarks>		<return> the group used for setting-autosaving.
+		///  Only meaningful if setAutoSaveSettings() was called.
+		///  This can be useful for forcing an apply, e.g. after using KEditToolbar.
+		/// </return>
+		/// 		<short>   </short>
+		public KConfigGroup AutoSaveConfigGroup() {
+			return (KConfigGroup) interceptor.Invoke("autoSaveConfigGroup", "autoSaveConfigGroup() const", typeof(KConfigGroup));
+		}
+		/// <remarks>
 		///  Read settings for statusbar, menubar and toolbar from their respective
 		///  groups in the config file and apply them.
 		/// <param> name="config" Config group to read the settings from.
@@ -305,7 +314,7 @@ namespace Kimono {
 		///  in this string. It will be added automatically according to the KDE
 		///  standard.
 		///      </param></remarks>		<short>    Makes a KDE compliant caption (window title).</short>
-		[Q_SLOT("void setCaption(const QString&)")]
+		[Q_SLOT("void setCaption(QString)")]
 		[SmokeMethod("setCaption(const QString&)")]
 		public virtual void SetCaption(string caption) {
 			interceptor.Invoke("setCaption$", "setCaption(const QString&)", typeof(void), typeof(string), caption);
@@ -318,7 +327,7 @@ namespace Kimono {
 		/// </param><param> name="modified" Specify whether the document is modified. This displays
 		///  an additional sign in the title bar, usually "**".
 		///      </param></remarks>		<short>    Makes a KDE compliant caption.</short>
-		[Q_SLOT("void setCaption(const QString&, bool)")]
+		[Q_SLOT("void setCaption(QString, bool)")]
 		[SmokeMethod("setCaption(const QString&, bool)")]
 		public virtual void SetCaption(string caption, bool modified) {
 			interceptor.Invoke("setCaption$$", "setCaption(const QString&, bool)", typeof(void), typeof(string), caption, typeof(bool), modified);
@@ -328,7 +337,7 @@ namespace Kimono {
 		/// <param> name="caption" Your caption. This is the string that will be
 		///  displayed in the window title.
 		///      </param></remarks>		<short>    Make a plain caption without any modifications.</short>
-		[Q_SLOT("void setPlainCaption(const QString&)")]
+		[Q_SLOT("void setPlainCaption(QString)")]
 		[SmokeMethod("setPlainCaption(const QString&)")]
 		public virtual void SetPlainCaption(string caption) {
 			interceptor.Invoke("setPlainCaption$", "setPlainCaption(const QString&)", typeof(void), typeof(string), caption);

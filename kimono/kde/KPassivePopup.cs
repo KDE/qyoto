@@ -86,7 +86,7 @@ namespace Kimono {
 		///      </remarks>		<short>    Creates a popup for the specified widget.</short>
 		public KPassivePopup(QWidget parent, uint f) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPassivePopup#$", "KPassivePopup(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
+			interceptor.Invoke("KPassivePopup#$", "KPassivePopup(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
 		}
 		public KPassivePopup(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -214,7 +214,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Shows the popup in the given point
 		///      </remarks>		<short>    Shows the popup in the given point      </short>
-		[Q_SLOT("void show(const QPoint&)")]
+		[Q_SLOT("void show(QPoint)")]
 		public void Show(QPoint p) {
 			interceptor.Invoke("show#", "show(const QPoint&)", typeof(void), typeof(QPoint), p);
 		}
@@ -435,7 +435,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted when the popup is clicked.
 		///      </remarks>		<short>    Emitted when the popup is clicked.</short>
-		[Q_SIGNAL("void clicked(const QPoint&)")]
+		[Q_SIGNAL("void clicked(QPoint)")]
 		void Clicked(QPoint pos);
 	}
 }

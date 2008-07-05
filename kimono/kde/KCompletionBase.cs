@@ -55,7 +55,7 @@ namespace Kimono {
 			NextCompletionMatch = 2,
 			SubstringCompletion = 3,
 		}
-		// KCompletionBase::KeyBindingMap getKeyBindings(); >>>> NOT CONVERTED
+		// QMap<KCompletionBase::KeyBindingType, KShortcut> getKeyBindings(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Default constructor.
 		///      </remarks>		<short>    Default constructor.</short>

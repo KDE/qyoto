@@ -40,7 +40,7 @@ namespace KIO {
 		///  Called on a slave's error.
 		///  Made public for the scheduler.
 		///          </remarks>		<short>   </short>
-		[Q_SLOT("void slotError(int, const QString&)")]
+		[Q_SLOT("void slotError(int, QString)")]
 		public void SlotError(int arg1, string arg2) {
 			interceptor.Invoke("slotError$$", "slotError(int, const QString&)", typeof(void), typeof(int), arg1, typeof(string), arg2);
 		}
@@ -87,7 +87,7 @@ namespace KIO {
 		/// <remarks>
 		///  Called on a slave's warning.
 		///          </remarks>		<short>   </short>
-		[Q_SLOT("void slotWarning(const QString&)")]
+		[Q_SLOT("void slotWarning(QString)")]
 		[SmokeMethod("slotWarning(const QString&)")]
 		protected virtual void SlotWarning(string arg1) {
 			interceptor.Invoke("slotWarning$", "slotWarning(const QString&)", typeof(void), typeof(string), arg1);
@@ -97,7 +97,7 @@ namespace KIO {
 		/// <param> name="_metaData" the meta data
 		/// </param></remarks>		<short>    MetaData from the slave is received.</short>
 		/// 		<see> metaData</see>
-		[Q_SLOT("void slotMetaData(const KIO::MetaData&)")]
+		[Q_SLOT("void slotMetaData(KIO::MetaData)")]
 		[SmokeMethod("slotMetaData(const KIO::MetaData&)")]
 		protected virtual void SlotMetaData(KIO.MetaData _metaData) {
 			interceptor.Invoke("slotMetaData#", "slotMetaData(const KIO::MetaData&)", typeof(void), typeof(KIO.MetaData), _metaData);

@@ -128,11 +128,11 @@ namespace Qyoto {
 		protected virtual void SetLastError(QSqlError e) {
 			interceptor.Invoke("setLastError#", "setLastError(const QSqlError&)", typeof(void), typeof(QSqlError), e);
 		}
-		[Q_SLOT("bool subscribeToNotificationImplementation(const QString&)")]
+		[Q_SLOT("bool subscribeToNotificationImplementation(QString)")]
 		protected bool SubscribeToNotificationImplementation(string name) {
 			return (bool) interceptor.Invoke("subscribeToNotificationImplementation$", "subscribeToNotificationImplementation(const QString&)", typeof(bool), typeof(string), name);
 		}
-		[Q_SLOT("bool unsubscribeFromNotificationImplementation(const QString&)")]
+		[Q_SLOT("bool unsubscribeFromNotificationImplementation(QString)")]
 		protected bool UnsubscribeFromNotificationImplementation(string name) {
 			return (bool) interceptor.Invoke("unsubscribeFromNotificationImplementation$", "unsubscribeFromNotificationImplementation(const QString&)", typeof(bool), typeof(string), name);
 		}
@@ -152,7 +152,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSqlDriverSignals : IQObjectSignals {
-		[Q_SIGNAL("void notification(const QString&)")]
+		[Q_SIGNAL("void notification(QString)")]
 		void Notification(string name);
 	}
 }

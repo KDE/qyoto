@@ -45,8 +45,8 @@ namespace Soprano {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(Model), this);
 		}
-		// Soprano::Error lastError(); >>>> NOT CONVERTED
-		// void setError(const Soprano::Error& arg1); >>>> NOT CONVERTED
+		// Error lastError(); >>>> NOT CONVERTED
+		// void setError(const Error& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Add the Statement to the Model.
 		///  \param statement The Statement to add.
@@ -303,7 +303,7 @@ namespace Soprano {
 		///  Notification signal for new statements. Model implementations
 		///  should emit this signal for each newly added statement.
 		///          </remarks>		<short>    Notification signal for new statements.</short>
-		[Q_SIGNAL("void statementAdded(const Soprano::Statement&)")]
+		[Q_SIGNAL("void statementAdded(Soprano::Statement)")]
 		void StatementAdded(Soprano.Statement statement);
 		/// <remarks>
 		///  Notification signal for removed statements. Model implementations
@@ -313,7 +313,7 @@ namespace Soprano {
 		///  invalid statement as used in removeAllStatements()) to
 		///  prevent massive performance loss.
 		///          </remarks>		<short>    Notification signal for removed statements.</short>
-		[Q_SIGNAL("void statementRemoved(const Soprano::Statement&)")]
+		[Q_SIGNAL("void statementRemoved(Soprano::Statement)")]
 		void StatementRemoved(Soprano.Statement statement);
 	}
 }

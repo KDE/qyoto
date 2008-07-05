@@ -203,7 +203,7 @@ namespace Kimono {
 		///  to something like " cm".
 		/// </remarks>		<short>    Sets the suffix to be displayed to <code>suffix.</code></short>
 		/// 		<see> setSuffix</see>
-		[Q_SLOT("void setSuffix(const QString&)")]
+		[Q_SLOT("void setSuffix(QString)")]
 		public void SetSuffix(string suffix) {
 			interceptor.Invoke("setSuffix$", "setSuffix(const QString&)", typeof(void), typeof(string), suffix);
 		}
@@ -213,7 +213,7 @@ namespace Kimono {
 		///  spacing.
 		/// </remarks>		<short>    Sets the prefix to be displayed to <code>prefix.</code></short>
 		/// 		<see> setPrefix</see>
-		[Q_SLOT("void setPrefix(const QString&)")]
+		[Q_SLOT("void setPrefix(QString)")]
 		public void SetPrefix(string prefix) {
 			interceptor.Invoke("setPrefix$", "setPrefix(const QString&)", typeof(void), typeof(string), prefix);
 		}

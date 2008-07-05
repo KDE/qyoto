@@ -69,14 +69,14 @@ namespace Kimono {
 			Tree = KPageView.FaceType.Tree,
 			Tabbed = KPageView.FaceType.Tabbed,
 		}
-		// KPageDialog* KPageDialog(KPageDialogPrivate& arg1,KPageWidget* arg2,QWidget* arg3,Qt::WFlags arg4); >>>> NOT CONVERTED
+		// KPageDialog* KPageDialog(KPageDialogPrivate& arg1,KPageWidget* arg2,QWidget* arg3,Qt::WindowFlags arg4); >>>> NOT CONVERTED
 		// KPageDialog* KPageDialog(KPageDialogPrivate& arg1,KPageWidget* arg2,QWidget* arg3); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates a new page dialog.
 		///      </remarks>		<short>    Creates a new page dialog.</short>
 		public KPageDialog(QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPageDialog#$", "KPageDialog(QWidget*, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
+			interceptor.Invoke("KPageDialog#$", "KPageDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KPageDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -176,7 +176,7 @@ namespace Kimono {
 		///      </remarks>		<short>    This constructor can be used by subclasses to provide a custom page widget.</short>
 		public KPageDialog(KPageWidget widget, QWidget parent, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KPageDialog##$", "KPageDialog(KPageWidget*, QWidget*, Qt::WFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(uint), flags);
+			interceptor.Invoke("KPageDialog##$", "KPageDialog(KPageWidget*, QWidget*, Qt::WindowFlags)", typeof(void), typeof(KPageWidget), widget, typeof(QWidget), parent, typeof(uint), flags);
 		}
 		public KPageDialog(KPageWidget widget, QWidget parent) : this((Type) null) {
 			CreateProxy();

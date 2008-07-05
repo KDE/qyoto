@@ -126,7 +126,7 @@ namespace KParts {
 		protected void SlotBrowserScanFinished(KJob job) {
 			interceptor.Invoke("slotBrowserScanFinished#", "slotBrowserScanFinished(KJob*)", typeof(void), typeof(KJob), job);
 		}
-		[Q_SLOT("void slotBrowserMimetype(KIO::Job*, const QString&)")]
+		[Q_SLOT("void slotBrowserMimetype(KIO::Job*, QString)")]
 		protected void SlotBrowserMimetype(KIO.Job job, string type) {
 			interceptor.Invoke("slotBrowserMimetype#$", "slotBrowserMimetype(KIO::Job*, const QString&)", typeof(void), typeof(KIO.Job), job, typeof(string), type);
 		}
@@ -155,10 +155,10 @@ namespace KParts {
 		///          </return>
 		/// 		<short>    Ask the user whether to save or open a url in another application.</short>
 		public static KParts.BrowserRun.AskSaveResult AskSave(KUrl url, KService offer, string mimeType, string suggestedFileName) {
-			return (KParts.BrowserRun.AskSaveResult) staticInterceptor.Invoke("askSave##$$", "askSave(const KUrl&, KService::Ptr, const QString&, const QString&)", typeof(KParts.BrowserRun.AskSaveResult), typeof(KUrl), url, typeof(KService), offer, typeof(string), mimeType, typeof(string), suggestedFileName);
+			return (KParts.BrowserRun.AskSaveResult) staticInterceptor.Invoke("askSave#?$$", "askSave(const KUrl&, KSharedPtr<KService>, const QString&, const QString&)", typeof(KParts.BrowserRun.AskSaveResult), typeof(KUrl), url, typeof(KService), offer, typeof(string), mimeType, typeof(string), suggestedFileName);
 		}
 		public static KParts.BrowserRun.AskSaveResult AskSave(KUrl url, KService offer, string mimeType) {
-			return (KParts.BrowserRun.AskSaveResult) staticInterceptor.Invoke("askSave##$", "askSave(const KUrl&, KService::Ptr, const QString&)", typeof(KParts.BrowserRun.AskSaveResult), typeof(KUrl), url, typeof(KService), offer, typeof(string), mimeType);
+			return (KParts.BrowserRun.AskSaveResult) staticInterceptor.Invoke("askSave#?$", "askSave(const KUrl&, KSharedPtr<KService>, const QString&)", typeof(KParts.BrowserRun.AskSaveResult), typeof(KUrl), url, typeof(KService), offer, typeof(string), mimeType);
 		}
 		/// <remarks>
 		///  Similar to askSave but for the case where the current application is

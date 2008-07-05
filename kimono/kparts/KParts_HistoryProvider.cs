@@ -85,12 +85,12 @@ namespace KParts {
 		///  history has changed. Put those items that were added or removed from the
 		///  history into <code>items.</code>
 		///      </remarks>		<short>    This signal is never emitted from this class, it is only meant as an  interface for subclasses.</short>
-		[Q_SIGNAL("void updated(const QStringList&)")]
+		[Q_SIGNAL("void updated(QStringList)")]
 		void Updated(List<string> items);
 		/// <remarks>
 		///  Emitted after the item has been inserted
 		///      </remarks>		<short>    Emitted after the item has been inserted      </short>
-		[Q_SIGNAL("void inserted(const QString&)")]
+		[Q_SIGNAL("void inserted(QString)")]
 		void Inserted(string item);
 	}
 }

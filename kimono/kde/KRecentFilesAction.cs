@@ -136,7 +136,7 @@ namespace Kimono {
 		///   This signal gets emitted when the user selects an URL.
 		/// <param> name="url" The URL thats the user selected.
 		///    </param></remarks>		<short>     This signal gets emitted when the user selects an URL.</short>
-		[Q_SIGNAL("void urlSelected(const KUrl&)")]
+		[Q_SIGNAL("void urlSelected(KUrl)")]
 		void UrlSelected(KUrl url);
 	}
 }

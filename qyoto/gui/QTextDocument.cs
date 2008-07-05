@@ -305,7 +305,7 @@ namespace Qyoto {
 		void UndoCommandAdded();
 		[Q_SIGNAL("void modificationChanged(bool)")]
 		void ModificationChanged(bool m);
-		[Q_SIGNAL("void cursorPositionChanged(const QTextCursor&)")]
+		[Q_SIGNAL("void cursorPositionChanged(QTextCursor)")]
 		void CursorPositionChanged(QTextCursor cursor);
 		[Q_SIGNAL("void blockCountChanged(int)")]
 		void BlockCountChanged(int newBlockCount);

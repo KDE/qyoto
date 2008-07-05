@@ -280,7 +280,7 @@ namespace Kimono {
 		///  This signal is emitted when an item is selected; @param text indicates
 		///  the item selected.
 		///      </remarks>		<short>    This signal is emitted when an item is selected; @param text indicates  the item selected.</short>
-		[Q_SIGNAL("void triggered(const QString&)")]
+		[Q_SIGNAL("void triggered(QString)")]
 		void Triggered(string text);
 	}
 }

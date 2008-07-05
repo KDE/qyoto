@@ -45,7 +45,7 @@ namespace Kimono {
 		///      </remarks>		<short>    Construct a stateful brush from given color set and foreground role,  using the colors from the given KConfig (if null, the system colors are  used).</short>
 		public KStatefulBrush(KColorScheme.ColorSet arg1, KColorScheme.ForegroundRole arg2, KSharedConfig arg3) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KStatefulBrush$$#", "KStatefulBrush(KColorScheme::ColorSet, KColorScheme::ForegroundRole, KSharedConfigPtr)", typeof(void), typeof(KColorScheme.ColorSet), arg1, typeof(KColorScheme.ForegroundRole), arg2, typeof(KSharedConfig), arg3);
+			interceptor.Invoke("KStatefulBrush$$?", "KStatefulBrush(KColorScheme::ColorSet, KColorScheme::ForegroundRole, KSharedPtr<KSharedConfig>)", typeof(void), typeof(KColorScheme.ColorSet), arg1, typeof(KColorScheme.ForegroundRole), arg2, typeof(KSharedConfig), arg3);
 		}
 		public KStatefulBrush(KColorScheme.ColorSet arg1, KColorScheme.ForegroundRole arg2) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +58,7 @@ namespace Kimono {
 		///      </remarks>		<short>    Construct a stateful brush from given color set and background role,  using the colors from the given KConfig (if null, the system colors are  used).</short>
 		public KStatefulBrush(KColorScheme.ColorSet arg1, KColorScheme.BackgroundRole arg2, KSharedConfig arg3) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KStatefulBrush$$#", "KStatefulBrush(KColorScheme::ColorSet, KColorScheme::BackgroundRole, KSharedConfigPtr)", typeof(void), typeof(KColorScheme.ColorSet), arg1, typeof(KColorScheme.BackgroundRole), arg2, typeof(KSharedConfig), arg3);
+			interceptor.Invoke("KStatefulBrush$$?", "KStatefulBrush(KColorScheme::ColorSet, KColorScheme::BackgroundRole, KSharedPtr<KSharedConfig>)", typeof(void), typeof(KColorScheme.ColorSet), arg1, typeof(KColorScheme.BackgroundRole), arg2, typeof(KSharedConfig), arg3);
 		}
 		public KStatefulBrush(KColorScheme.ColorSet arg1, KColorScheme.BackgroundRole arg2) : this((Type) null) {
 			CreateProxy();
@@ -71,7 +71,7 @@ namespace Kimono {
 		///      </remarks>		<short>    Construct a stateful brush from given color set and decoration role,  using the colors from the given KConfig (if null, the system colors are  used).</short>
 		public KStatefulBrush(KColorScheme.ColorSet arg1, KColorScheme.DecorationRole arg2, KSharedConfig arg3) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KStatefulBrush$$#", "KStatefulBrush(KColorScheme::ColorSet, KColorScheme::DecorationRole, KSharedConfigPtr)", typeof(void), typeof(KColorScheme.ColorSet), arg1, typeof(KColorScheme.DecorationRole), arg2, typeof(KSharedConfig), arg3);
+			interceptor.Invoke("KStatefulBrush$$?", "KStatefulBrush(KColorScheme::ColorSet, KColorScheme::DecorationRole, KSharedPtr<KSharedConfig>)", typeof(void), typeof(KColorScheme.ColorSet), arg1, typeof(KColorScheme.DecorationRole), arg2, typeof(KSharedConfig), arg3);
 		}
 		public KStatefulBrush(KColorScheme.ColorSet arg1, KColorScheme.DecorationRole arg2) : this((Type) null) {
 			CreateProxy();
@@ -87,7 +87,7 @@ namespace Kimono {
 		///      </remarks>		<short>    Construct a stateful background brush from a specified QBrush (or  QColor, via QBrush's implicit constructor).</short>
 		public KStatefulBrush(QBrush arg1, KSharedConfig arg2) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KStatefulBrush##", "KStatefulBrush(const QBrush&, KSharedConfigPtr)", typeof(void), typeof(QBrush), arg1, typeof(KSharedConfig), arg2);
+			interceptor.Invoke("KStatefulBrush#?", "KStatefulBrush(const QBrush&, KSharedPtr<KSharedConfig>)", typeof(void), typeof(QBrush), arg1, typeof(KSharedConfig), arg2);
 		}
 		public KStatefulBrush(QBrush arg1) : this((Type) null) {
 			CreateProxy();
@@ -106,7 +106,7 @@ namespace Kimono {
 		///      </param></remarks>		<short>    Construct a stateful foreground/decoration brush from a specified  QBrush (or QColor, via QBrush's implicit constructor).</short>
 		public KStatefulBrush(QBrush arg1, QBrush background, KSharedConfig arg3) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KStatefulBrush###", "KStatefulBrush(const QBrush&, const QBrush&, KSharedConfigPtr)", typeof(void), typeof(QBrush), arg1, typeof(QBrush), background, typeof(KSharedConfig), arg3);
+			interceptor.Invoke("KStatefulBrush##?", "KStatefulBrush(const QBrush&, const QBrush&, KSharedPtr<KSharedConfig>)", typeof(void), typeof(QBrush), arg1, typeof(QBrush), background, typeof(KSharedConfig), arg3);
 		}
 		public KStatefulBrush(QBrush arg1, QBrush background) : this((Type) null) {
 			CreateProxy();

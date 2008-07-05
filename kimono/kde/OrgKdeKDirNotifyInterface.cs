@@ -56,17 +56,17 @@ namespace Kimono {
 	}
 
 	public interface IOrgKdeKDirNotifyInterfaceSignals : IQDBusAbstractInterfaceSignals {
-		[Q_SIGNAL("void FileRenamed(const QString&, const QString&)")]
+		[Q_SIGNAL("void FileRenamed(QString, QString)")]
 		void FileRenamed(string src, string dst);
-		[Q_SIGNAL("void FilesAdded(const QString&)")]
+		[Q_SIGNAL("void FilesAdded(QString)")]
 		void FilesAdded(string directory);
-		[Q_SIGNAL("void FilesChanged(const QStringList&)")]
+		[Q_SIGNAL("void FilesChanged(QStringList)")]
 		void FilesChanged(List<string> fileList);
-		[Q_SIGNAL("void FilesRemoved(const QStringList&)")]
+		[Q_SIGNAL("void FilesRemoved(QStringList)")]
 		void FilesRemoved(List<string> fileList);
-		[Q_SIGNAL("void enteredDirectory(const QString&)")]
+		[Q_SIGNAL("void enteredDirectory(QString)")]
 		void EnteredDirectory(string url);
-		[Q_SIGNAL("void leftDirectory(const QString&)")]
+		[Q_SIGNAL("void leftDirectory(QString)")]
 		void LeftDirectory(string url);
 	}
 }

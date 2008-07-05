@@ -29,7 +29,7 @@ namespace Soprano {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(NodeIterator), this);
 		}
-		// Soprano::NodeIterator* NodeIterator(IteratorBackend<Soprano::Node>* arg1); >>>> NOT CONVERTED
+		// Soprano::NodeIterator* NodeIterator(Soprano::IteratorBackend<Soprano::Node>* arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Creates and empty, invalid iterator.
 		///          </remarks>		<short>    Creates and empty, invalid iterator.</short>

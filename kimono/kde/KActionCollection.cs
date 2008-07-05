@@ -297,7 +297,7 @@ namespace Kimono {
 		public KAction AddAction(string name) {
 			return (KAction) interceptor.Invoke("addAction$", "addAction(const QString&)", typeof(KAction), typeof(string), name);
 		}
-		[Q_SLOT("void connectNotify(const char*)")]
+		[Q_SLOT("void connectNotify(char*)")]
 		[SmokeMethod("connectNotify(const char*)")]
 		protected override void ConnectNotify(string signal) {
 			interceptor.Invoke("connectNotify$", "connectNotify(const char*)", typeof(void), typeof(string), signal);

@@ -127,11 +127,11 @@ namespace Qyoto {
 		public virtual List<string> SplitPath(string path) {
 			return (List<string>) interceptor.Invoke("splitPath$", "splitPath(const QString&) const", typeof(List<string>), typeof(string), path);
 		}
-		[Q_SLOT("void setCompletionPrefix(const QString&)")]
+		[Q_SLOT("void setCompletionPrefix(QString)")]
 		public void SetCompletionPrefix(string prefix) {
 			interceptor.Invoke("setCompletionPrefix$", "setCompletionPrefix(const QString&)", typeof(void), typeof(string), prefix);
 		}
-		[Q_SLOT("void complete(const QRect&)")]
+		[Q_SLOT("void complete(QRect)")]
 		public void Complete(QRect rect) {
 			interceptor.Invoke("complete#", "complete(const QRect&)", typeof(void), typeof(QRect), rect);
 		}
@@ -169,13 +169,13 @@ namespace Qyoto {
 	}
 
 	public interface IQCompleterSignals : IQObjectSignals {
-		[Q_SIGNAL("void activated(const QString&)")]
+		[Q_SIGNAL("void activated(QString)")]
 		void Activated(string text);
-		[Q_SIGNAL("void activated(const QModelIndex&)")]
+		[Q_SIGNAL("void activated(QModelIndex)")]
 		void Activated(QModelIndex index);
-		[Q_SIGNAL("void highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(QString)")]
 		void Highlighted(string text);
-		[Q_SIGNAL("void highlighted(const QModelIndex&)")]
+		[Q_SIGNAL("void highlighted(QModelIndex)")]
 		void Highlighted(QModelIndex index);
 	}
 }

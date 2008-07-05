@@ -34,8 +34,6 @@ namespace Kimono {
 			CreationTime = 2,
 		}
 		public const int Unknown = -1;
-		// KMimeType::Ptr determineMimeType(); >>>> NOT CONVERTED
-		// KMimeType::Ptr mimeTypePtr(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		// void setMetaInfo(const KFileMetaInfo& arg1); >>>> NOT CONVERTED
 		// KFileMetaInfo metaInfo(bool arg1,int arg2); >>>> NOT CONVERTED
@@ -382,12 +380,18 @@ namespace Kimono {
 		/// </remarks>		<return> the mime type
 		///      </return>
 		/// 		<short>    Returns the mimetype of the file item.</short>
+		public KMimeType DetermineMimeType() {
+			return (KMimeType) interceptor.Invoke("determineMimeType", "determineMimeType() const", typeof(KMimeType));
+		}
 		/// <remarks>
 		///  Returns the currently known mimetype of the file item.
 		///  This will not try to determine the mimetype if unknown.
 		/// </remarks>		<return> the known mime type
 		///      </return>
 		/// 		<short>    Returns the currently known mimetype of the file item.</short>
+		public KMimeType MimeTypePtr() {
+			return (KMimeType) interceptor.Invoke("mimeTypePtr", "mimeTypePtr() const", typeof(KMimeType));
+		}
 		/// <remarks>
 		/// </remarks>		<return> true if we have determined the mimetype of this file already,
 		///  i.e. if determineMimeType() will be fast. Otherwise it will have to

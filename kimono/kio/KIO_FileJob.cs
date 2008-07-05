@@ -71,7 +71,7 @@ namespace KIO {
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="data" data received from the slave.
 		///      </param></remarks>		<short>    Data from the slave has arrived.</short>
-		[Q_SIGNAL("void data(KIO::Job*, const QByteArray&)")]
+		[Q_SIGNAL("void data(KIO::Job*, QByteArray)")]
 		void Data(KIO.Job job, QByteArray data);
 		/// <remarks>
 		///  Signals the file is a redirection.
@@ -79,14 +79,14 @@ namespace KIO {
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="url" the new URL
 		///      </param></remarks>		<short>    Signals the file is a redirection.</short>
-		[Q_SIGNAL("void redirection(KIO::Job*, const KUrl&)")]
+		[Q_SIGNAL("void redirection(KIO::Job*, KUrl)")]
 		void Redirection(KIO.Job job, KUrl url);
 		/// <remarks>
 		///  Mimetype determined.
 		/// <param> name="job" the job that emitted this signal
 		/// </param><param> name="type" the mime type
 		///      </param></remarks>		<short>    Mimetype determined.</short>
-		[Q_SIGNAL("void mimetype(KIO::Job*, const QString&)")]
+		[Q_SIGNAL("void mimetype(KIO::Job*, QString)")]
 		void Mimetype(KIO.Job job, string type);
 		/// <remarks>
 		///  File is open, metadata has been determined and the

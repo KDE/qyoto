@@ -275,20 +275,20 @@ namespace Kimono {
 		///  The new ctime is set before the signal is emitted.
 		/// <param> name="path" the path of the file or directory
 		///     </param></remarks>		<short>    Emitted when a watched object is changed.</short>
-		[Q_SIGNAL("void dirty(const QString&)")]
+		[Q_SIGNAL("void dirty(QString)")]
 		void Dirty(string path);
 		/// <remarks>
 		///  Emitted when a file or directory is created.
 		/// <param> name="path" the path of the file or directory
 		///     </param></remarks>		<short>    Emitted when a file or directory is created.</short>
-		[Q_SIGNAL("void created(const QString&)")]
+		[Q_SIGNAL("void created(QString)")]
 		void Created(string path);
 		/// <remarks>
 		///  Emitted when a file or directory is deleted.
 		///  The object is still watched for new creation.
 		/// <param> name="path" the path of the file or directory
 		///     </param></remarks>		<short>    Emitted when a file or directory is deleted.</short>
-		[Q_SIGNAL("void deleted(const QString&)")]
+		[Q_SIGNAL("void deleted(QString)")]
 		void Deleted(string path);
 	}
 }

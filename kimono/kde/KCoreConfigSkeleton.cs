@@ -2,6 +2,7 @@
 namespace Kimono {
 	using System;
 	using Qyoto;
+	using System.Runtime.InteropServices;
 	using System.Text;
 	using System.Collections.Generic;
 	/// <remarks>
@@ -295,13 +296,62 @@ namespace Kimono {
 				interceptor = new SmokeInvocation(typeof(ItemInt), this);
 			}
 			/// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>		<short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
-			public ItemInt(string _group, string _key, int reference, int defaultValue) : this((Type) null) {
+			public ItemInt(string _group, string _key, ref int reference, int defaultValue) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("ItemInt$$$$", "ItemInt(const QString&, const QString&, qint32&, qint32)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(int), reference, typeof(int), defaultValue);
+				StackItem[] stack = new StackItem[5];
+	#if DEBUG
+				stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+	#else
+				stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+	#endif
+	#if DEBUG
+				stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+	#else
+				stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+	#endif
+				stack[3].s_int = reference;
+				stack[4].s_int = defaultValue;
+				interceptor.Invoke("ItemInt$$$$", "ItemInt(const QString&, const QString&, int&, int)", stack);
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[1].s_class);
+	#else
+				((GCHandle) stack[1].s_class).Free();
+	#endif
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[2].s_class);
+	#else
+				((GCHandle) stack[2].s_class).Free();
+	#endif
+				reference = stack[3].s_int;
+				return;
 			}
-			public ItemInt(string _group, string _key, int reference) : this((Type) null) {
+			public ItemInt(string _group, string _key, ref int reference) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("ItemInt$$$", "ItemInt(const QString&, const QString&, qint32&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(int), reference);
+				StackItem[] stack = new StackItem[4];
+	#if DEBUG
+				stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+	#else
+				stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+	#endif
+	#if DEBUG
+				stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+	#else
+				stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+	#endif
+				stack[3].s_int = reference;
+				interceptor.Invoke("ItemInt$$$", "ItemInt(const QString&, const QString&, int&)", stack);
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[1].s_class);
+	#else
+				((GCHandle) stack[1].s_class).Free();
+	#endif
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[2].s_class);
+	#else
+				((GCHandle) stack[2].s_class).Free();
+	#endif
+				reference = stack[3].s_int;
+				return;
 			}
 			/// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>		<short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
 			public void ReadConfig(KConfig config) {
@@ -331,13 +381,13 @@ namespace Kimono {
 			///         @sa minValue()
 			///      </remarks>		<short>   Set the minimum value for the item         @sa minValue()      </short>
 			public void SetMinValue(int arg1) {
-				interceptor.Invoke("setMinValue$", "setMinValue(qint32)", typeof(void), typeof(int), arg1);
+				interceptor.Invoke("setMinValue$", "setMinValue(int)", typeof(void), typeof(int), arg1);
 			}
 			/// <remarks> Set the maximum value for the item
 			///         @sa maxValue
 			///      </remarks>		<short>   Set the maximum value for the item         @sa maxValue      </short>
 			public void SetMaxValue(int arg1) {
-				interceptor.Invoke("setMaxValue$", "setMaxValue(qint32)", typeof(void), typeof(int), arg1);
+				interceptor.Invoke("setMaxValue$", "setMaxValue(int)", typeof(void), typeof(int), arg1);
 			}
 			~ItemInt() {
 				interceptor.Invoke("~ItemInt", "~ItemInt()", typeof(void));
@@ -425,17 +475,70 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(ItemEnum), this);
 			}
+/*
 			/// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem
 			/// <param> name="choices" The list of enums that can be stored in this item
 			///       </param></remarks>		<short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
-			public ItemEnum(string _group, string _key, int reference, List<KCoreConfigSkeleton.ItemEnum.Choice> choices, int defaultValue) : this((Type) null) {
+			public ItemEnum(string _group, string _key, ref int reference, List<KCoreConfigSkeleton.ItemEnum.Choice> choices, int defaultValue) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("ItemEnum$$$?$", "ItemEnum(const QString&, const QString&, qint32&, const QList<KCoreConfigSkeleton::ItemEnum::Choice>&, qint32)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(int), reference, typeof(List<KCoreConfigSkeleton.ItemEnum.Choice>), choices, typeof(int), defaultValue);
+				StackItem[] stack = new StackItem[6];
+	#if DEBUG
+				stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+	#else
+				stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+	#endif
+	#if DEBUG
+				stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+	#else
+				stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+	#endif
+				stack[3].s_int = reference;
+				stack[4].s_int = (int) choices;
+				stack[5].s_int = defaultValue;
+				interceptor.Invoke("ItemEnum$$$?$", "ItemEnum(const QString&, const QString&, int&, const QList<KCoreConfigSkeleton::ItemEnum::Choice>&, int)", stack);
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[1].s_class);
+	#else
+				((GCHandle) stack[1].s_class).Free();
+	#endif
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[2].s_class);
+	#else
+				((GCHandle) stack[2].s_class).Free();
+	#endif
+				reference = stack[3].s_int;
+				return;
 			}
-			public ItemEnum(string _group, string _key, int reference, List<KCoreConfigSkeleton.ItemEnum.Choice> choices) : this((Type) null) {
+			public ItemEnum(string _group, string _key, ref int reference, List<KCoreConfigSkeleton.ItemEnum.Choice> choices) : this((Type) null) {
 				CreateProxy();
-				interceptor.Invoke("ItemEnum$$$?", "ItemEnum(const QString&, const QString&, qint32&, const QList<KCoreConfigSkeleton::ItemEnum::Choice>&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(int), reference, typeof(List<KCoreConfigSkeleton.ItemEnum.Choice>), choices);
+				StackItem[] stack = new StackItem[5];
+	#if DEBUG
+				stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+	#else
+				stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+	#endif
+	#if DEBUG
+				stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+	#else
+				stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+	#endif
+				stack[3].s_int = reference;
+				stack[4].s_int = (int) choices;
+				interceptor.Invoke("ItemEnum$$$?", "ItemEnum(const QString&, const QString&, int&, const QList<KCoreConfigSkeleton::ItemEnum::Choice>&)", stack);
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[1].s_class);
+	#else
+				((GCHandle) stack[1].s_class).Free();
+	#endif
+	#if DEBUG
+				DebugGCHandle.Free((GCHandle) stack[2].s_class);
+	#else
+				((GCHandle) stack[2].s_class).Free();
+	#endif
+				reference = stack[3].s_int;
+				return;
 			}
+*/
 			public List<KCoreConfigSkeleton.ItemEnum.Choice> Choices() {
 				return (List<KCoreConfigSkeleton.ItemEnum.Choice>) interceptor.Invoke("choices", "choices() const", typeof(List<KCoreConfigSkeleton.ItemEnum.Choice>));
 			}
@@ -463,9 +566,15 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(ItemUInt), this);
 			}
-			// KCoreConfigSkeleton::ItemUInt* ItemUInt(const QString& arg1,const QString& arg2,quint32& arg3,quint32 arg4); >>>> NOT CONVERTED
-			// KCoreConfigSkeleton::ItemUInt* ItemUInt(const QString& arg1,const QString& arg2,quint32& arg3); >>>> NOT CONVERTED
 			/// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>		<short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
+			public ItemUInt(string _group, string _key, uint reference, uint defaultValue) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("ItemUInt$$$$", "ItemUInt(const QString&, const QString&, unsigned int&, unsigned int)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(uint), reference, typeof(uint), defaultValue);
+			}
+			public ItemUInt(string _group, string _key, uint reference) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("ItemUInt$$$", "ItemUInt(const QString&, const QString&, unsigned int&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(uint), reference);
+			}
 			/// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>		<short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
 			public void ReadConfig(KConfig config) {
 				interceptor.Invoke("readConfig#", "readConfig(KConfig*)", typeof(void), typeof(KConfig), config);
@@ -492,11 +601,11 @@ namespace Kimono {
 			}
 			/// <remarks> @copydoc ItemInt.SetMinValue(qint32) </remarks>		<short>   @copydoc ItemInt.SetMinValue(qint32) </short>
 			public void SetMinValue(uint arg1) {
-				interceptor.Invoke("setMinValue$", "setMinValue(quint32)", typeof(void), typeof(uint), arg1);
+				interceptor.Invoke("setMinValue$", "setMinValue(unsigned int)", typeof(void), typeof(uint), arg1);
 			}
 			/// <remarks> @copydoc ItemInt.SetMaxValue(qint32) </remarks>		<short>   @copydoc ItemInt.SetMaxValue(qint32) </short>
 			public void SetMaxValue(uint arg1) {
-				interceptor.Invoke("setMaxValue$", "setMaxValue(quint32)", typeof(void), typeof(uint), arg1);
+				interceptor.Invoke("setMaxValue$", "setMaxValue(unsigned int)", typeof(void), typeof(uint), arg1);
 			}
 			~ItemUInt() {
 				interceptor.Invoke("~ItemUInt", "~ItemUInt()", typeof(void));
@@ -905,9 +1014,15 @@ namespace Kimono {
 			protected new void CreateProxy() {
 				interceptor = new SmokeInvocation(typeof(ItemIntList), this);
 			}
-			// KCoreConfigSkeleton::ItemIntList* ItemIntList(const QString& arg1,const QString& arg2,QList <int>& arg3,const QList <int>& arg4); >>>> NOT CONVERTED
-			// KCoreConfigSkeleton::ItemIntList* ItemIntList(const QString& arg1,const QString& arg2,QList <int>& arg3); >>>> NOT CONVERTED
 			/// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>		<short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
+			public ItemIntList(string _group, string _key, List<int> reference, List<int> defaultValue) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("ItemIntList$$??", "ItemIntList(const QString&, const QString&, QList<int>&, const QList<int>&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(List<int>), reference, typeof(List<int>), defaultValue);
+			}
+			public ItemIntList(string _group, string _key, List<int> reference) : this((Type) null) {
+				CreateProxy();
+				interceptor.Invoke("ItemIntList$$?", "ItemIntList(const QString&, const QString&, QList<int>&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(List<int>), reference);
+			}
 			/// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>		<short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
 			public void ReadConfig(KConfig config) {
 				interceptor.Invoke("readConfig#", "readConfig(KConfig*)", typeof(void), typeof(KConfig), config);
@@ -934,19 +1049,12 @@ namespace Kimono {
 		protected new void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(KCoreConfigSkeleton), this);
 		}
-		// KCoreConfigSkeleton::ItemUInt* addItemUInt(const QString& arg1,quint32& arg2,quint32 arg3,const QString& arg4); >>>> NOT CONVERTED
-		// KCoreConfigSkeleton::ItemUInt* addItemUInt(const QString& arg1,quint32& arg2,quint32 arg3); >>>> NOT CONVERTED
-		// KCoreConfigSkeleton::ItemUInt* addItemUInt(const QString& arg1,quint32& arg2); >>>> NOT CONVERTED
 		// KCoreConfigSkeleton::ItemLongLong* addItemLongLong(const QString& arg1,qint64& arg2,qint64 arg3,const QString& arg4); >>>> NOT CONVERTED
 		// KCoreConfigSkeleton::ItemLongLong* addItemLongLong(const QString& arg1,qint64& arg2,qint64 arg3); >>>> NOT CONVERTED
 		// KCoreConfigSkeleton::ItemLongLong* addItemLongLong(const QString& arg1,qint64& arg2); >>>> NOT CONVERTED
 		// KCoreConfigSkeleton::ItemULongLong* addItemULongLong(const QString& arg1,quint64& arg2,quint64 arg3,const QString& arg4); >>>> NOT CONVERTED
 		// KCoreConfigSkeleton::ItemULongLong* addItemULongLong(const QString& arg1,quint64& arg2,quint64 arg3); >>>> NOT CONVERTED
 		// KCoreConfigSkeleton::ItemULongLong* addItemULongLong(const QString& arg1,quint64& arg2); >>>> NOT CONVERTED
-		// KCoreConfigSkeleton::ItemIntList* addItemIntList(const QString& arg1,QList <int>& arg2,const QList <int>& arg3,const QString& arg4); >>>> NOT CONVERTED
-		// KCoreConfigSkeleton::ItemIntList* addItemIntList(const QString& arg1,QList <int>& arg2,const QList <int>& arg3); >>>> NOT CONVERTED
-		// KCoreConfigSkeleton::ItemIntList* addItemIntList(const QString& arg1,QList <int>& arg2); >>>> NOT CONVERTED
-		// KConfigSkeletonItem::List items(); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Constructor.
 		/// <param> name="configname" name of config file. If no name is given, the default
@@ -970,11 +1078,11 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Constructor.</short>
 		public KCoreConfigSkeleton(KSharedConfig config, QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KCoreConfigSkeleton##", "KCoreConfigSkeleton(KSharedConfig::Ptr, QObject*)", typeof(void), typeof(KSharedConfig), config, typeof(QObject), parent);
+			interceptor.Invoke("KCoreConfigSkeleton?#", "KCoreConfigSkeleton(KSharedPtr<KSharedConfig>, QObject*)", typeof(void), typeof(KSharedConfig), config, typeof(QObject), parent);
 		}
 		public KCoreConfigSkeleton(KSharedConfig config) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KCoreConfigSkeleton#", "KCoreConfigSkeleton(KSharedConfig::Ptr)", typeof(void), typeof(KSharedConfig), config);
+			interceptor.Invoke("KCoreConfigSkeleton?", "KCoreConfigSkeleton(KSharedPtr<KSharedConfig>)", typeof(void), typeof(KSharedConfig), config);
 		}
 		/// <remarks>
 		///  Set all registered items to their default values.
@@ -1157,14 +1265,68 @@ namespace Kimono {
 		/// </param></remarks>		<return> The created item
 		///    </return>
 		/// 		<short>    Register an item of type qint32.</short>
-		public KCoreConfigSkeleton.ItemInt AddItemInt(string name, int reference, int defaultValue, string key) {
-			return (KCoreConfigSkeleton.ItemInt) interceptor.Invoke("addItemInt$$$$", "addItemInt(const QString&, qint32&, qint32, const QString&)", typeof(KCoreConfigSkeleton.ItemInt), typeof(string), name, typeof(int), reference, typeof(int), defaultValue, typeof(string), key);
+		public KCoreConfigSkeleton.ItemInt AddItemInt(string name, ref int reference, int defaultValue, string key) {
+			StackItem[] stack = new StackItem[5];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+			stack[2].s_int = reference;
+			stack[3].s_int = defaultValue;
+#if DEBUG
+			stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(key);
+#else
+			stack[4].s_class = (IntPtr) GCHandle.Alloc(key);
+#endif
+			interceptor.Invoke("addItemInt$$$$", "addItemInt(const QString&, int&, int, const QString&)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			reference = stack[2].s_int;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[4].s_class);
+#else
+			((GCHandle) stack[4].s_class).Free();
+#endif
+			return (KCoreConfigSkeleton.ItemInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemInt), stack[0].s_int);
 		}
-		public KCoreConfigSkeleton.ItemInt AddItemInt(string name, int reference, int defaultValue) {
-			return (KCoreConfigSkeleton.ItemInt) interceptor.Invoke("addItemInt$$$", "addItemInt(const QString&, qint32&, qint32)", typeof(KCoreConfigSkeleton.ItemInt), typeof(string), name, typeof(int), reference, typeof(int), defaultValue);
+		public KCoreConfigSkeleton.ItemInt AddItemInt(string name, ref int reference, int defaultValue) {
+			StackItem[] stack = new StackItem[4];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+			stack[2].s_int = reference;
+			stack[3].s_int = defaultValue;
+			interceptor.Invoke("addItemInt$$$", "addItemInt(const QString&, int&, int)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			reference = stack[2].s_int;
+			return (KCoreConfigSkeleton.ItemInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemInt), stack[0].s_int);
 		}
-		public KCoreConfigSkeleton.ItemInt AddItemInt(string name, int reference) {
-			return (KCoreConfigSkeleton.ItemInt) interceptor.Invoke("addItemInt$$", "addItemInt(const QString&, qint32&)", typeof(KCoreConfigSkeleton.ItemInt), typeof(string), name, typeof(int), reference);
+		public KCoreConfigSkeleton.ItemInt AddItemInt(string name, ref int reference) {
+			StackItem[] stack = new StackItem[3];
+#if DEBUG
+			stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+			stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+			stack[2].s_int = reference;
+			interceptor.Invoke("addItemInt$$", "addItemInt(const QString&, int&)", stack);
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+			((GCHandle) stack[1].s_class).Free();
+#endif
+			reference = stack[2].s_int;
+			return (KCoreConfigSkeleton.ItemInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemInt), stack[0].s_int);
 		}
 		/// <remarks>
 		///  Register an item of type quint32.
@@ -1177,6 +1339,15 @@ namespace Kimono {
 		/// </param></remarks>		<return> The created item
 		///    </return>
 		/// 		<short>    Register an item of type quint32.</short>
+		public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, uint reference, uint defaultValue, string key) {
+			return (KCoreConfigSkeleton.ItemUInt) interceptor.Invoke("addItemUInt$$$$", "addItemUInt(const QString&, unsigned int&, unsigned int, const QString&)", typeof(KCoreConfigSkeleton.ItemUInt), typeof(string), name, typeof(uint), reference, typeof(uint), defaultValue, typeof(string), key);
+		}
+		public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, uint reference, uint defaultValue) {
+			return (KCoreConfigSkeleton.ItemUInt) interceptor.Invoke("addItemUInt$$$", "addItemUInt(const QString&, unsigned int&, unsigned int)", typeof(KCoreConfigSkeleton.ItemUInt), typeof(string), name, typeof(uint), reference, typeof(uint), defaultValue);
+		}
+		public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, uint reference) {
+			return (KCoreConfigSkeleton.ItemUInt) interceptor.Invoke("addItemUInt$$", "addItemUInt(const QString&, unsigned int&)", typeof(KCoreConfigSkeleton.ItemUInt), typeof(string), name, typeof(uint), reference);
+		}
 		/// <remarks>
 		///  Register an item of type qint64.
 		/// <param> name="name" Name used to identify this setting. Names must be unique.
@@ -1330,6 +1501,15 @@ namespace Kimono {
 		/// </param></remarks>		<return> The created item
 		///    </return>
 		/// 		<short>    Register an item of type QList<int>.</short>
+		public KCoreConfigSkeleton.ItemIntList AddItemIntList(string name, List<int> reference, List<int> defaultValue, string key) {
+			return (KCoreConfigSkeleton.ItemIntList) interceptor.Invoke("addItemIntList$??$", "addItemIntList(const QString&, QList<int>&, const QList<int>&, const QString&)", typeof(KCoreConfigSkeleton.ItemIntList), typeof(string), name, typeof(List<int>), reference, typeof(List<int>), defaultValue, typeof(string), key);
+		}
+		public KCoreConfigSkeleton.ItemIntList AddItemIntList(string name, List<int> reference, List<int> defaultValue) {
+			return (KCoreConfigSkeleton.ItemIntList) interceptor.Invoke("addItemIntList$??", "addItemIntList(const QString&, QList<int>&, const QList<int>&)", typeof(KCoreConfigSkeleton.ItemIntList), typeof(string), name, typeof(List<int>), reference, typeof(List<int>), defaultValue);
+		}
+		public KCoreConfigSkeleton.ItemIntList AddItemIntList(string name, List<int> reference) {
+			return (KCoreConfigSkeleton.ItemIntList) interceptor.Invoke("addItemIntList$?", "addItemIntList(const QString&, QList<int>&)", typeof(KCoreConfigSkeleton.ItemIntList), typeof(string), name, typeof(List<int>), reference);
+		}
 		/// <remarks>
 		///  Return the <see cref="KConfig"></see> object used for reading and writing the settings.
 		///    </remarks>		<short>    Return the @ref KConfig object used for reading and writing the settings.</short>
@@ -1340,11 +1520,14 @@ namespace Kimono {
 		///  Set the <see cref="KSharedConfig"></see> object used for reading and writing the settings.
 		///    </remarks>		<short>    Set the @ref KSharedConfig object used for reading and writing the settings.</short>
 		public void SetSharedConfig(KSharedConfig pConfig) {
-			interceptor.Invoke("setSharedConfig#", "setSharedConfig(KSharedConfig::Ptr)", typeof(void), typeof(KSharedConfig), pConfig);
+			interceptor.Invoke("setSharedConfig?", "setSharedConfig(KSharedPtr<KSharedConfig>)", typeof(void), typeof(KSharedConfig), pConfig);
 		}
 		/// <remarks>
 		///  Return list of items managed by this KCoreConfigSkeleton object.
 		///    </remarks>		<short>    Return list of items managed by this KCoreConfigSkeleton object.</short>
+		public List<KConfigSkeletonItem> Items() {
+			return (List<KConfigSkeletonItem>) interceptor.Invoke("items", "items() const", typeof(List<KConfigSkeletonItem>));
+		}
 		/// <remarks>
 		///  Return whether a certain item is immutable
 		///    </remarks>		<short>    Return whether a certain item is immutable    </short>

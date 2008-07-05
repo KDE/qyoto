@@ -250,7 +250,7 @@ namespace Qyoto {
 		public virtual void Reset() {
 			interceptor.Invoke("reset", "reset()", typeof(void));
 		}
-		[Q_SLOT("void setRootIndex(const QModelIndex&)")]
+		[Q_SLOT("void setRootIndex(QModelIndex)")]
 		[SmokeMethod("setRootIndex(const QModelIndex&)")]
 		public virtual void SetRootIndex(QModelIndex index) {
 			interceptor.Invoke("setRootIndex#", "setRootIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
@@ -265,7 +265,7 @@ namespace Qyoto {
 		public virtual void SelectAll() {
 			interceptor.Invoke("selectAll", "selectAll()", typeof(void));
 		}
-		[Q_SLOT("void edit(const QModelIndex&)")]
+		[Q_SLOT("void edit(QModelIndex)")]
 		public void Edit(QModelIndex index) {
 			interceptor.Invoke("edit#", "edit(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
@@ -273,7 +273,7 @@ namespace Qyoto {
 		public void ClearSelection() {
 			interceptor.Invoke("clearSelection", "clearSelection()", typeof(void));
 		}
-		[Q_SLOT("void setCurrentIndex(const QModelIndex&)")]
+		[Q_SLOT("void setCurrentIndex(QModelIndex)")]
 		public void SetCurrentIndex(QModelIndex index) {
 			interceptor.Invoke("setCurrentIndex#", "setCurrentIndex(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
@@ -285,7 +285,7 @@ namespace Qyoto {
 		public void ScrollToBottom() {
 			interceptor.Invoke("scrollToBottom", "scrollToBottom()", typeof(void));
 		}
-		[Q_SLOT("void update(const QModelIndex&)")]
+		[Q_SLOT("void update(QModelIndex)")]
 		public void Update(QModelIndex index) {
 			interceptor.Invoke("update#", "update(const QModelIndex&)", typeof(void), typeof(QModelIndex), index);
 		}
@@ -438,27 +438,27 @@ namespace Qyoto {
 		protected QAbstractItemView.DropIndicatorPosition dropIndicatorPosition() {
 			return (QAbstractItemView.DropIndicatorPosition) interceptor.Invoke("dropIndicatorPosition", "dropIndicatorPosition() const", typeof(QAbstractItemView.DropIndicatorPosition));
 		}
-		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void dataChanged(QModelIndex, QModelIndex)")]
 		[SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
 		protected virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			interceptor.Invoke("dataChanged##", "dataChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);
 		}
-		[Q_SLOT("void rowsInserted(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsInserted(QModelIndex, int, int)")]
 		[SmokeMethod("rowsInserted(const QModelIndex&, int, int)")]
 		protected virtual void RowsInserted(QModelIndex parent, int start, int end) {
 			interceptor.Invoke("rowsInserted#$$", "rowsInserted(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
 		}
-		[Q_SLOT("void rowsAboutToBeRemoved(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsAboutToBeRemoved(QModelIndex, int, int)")]
 		[SmokeMethod("rowsAboutToBeRemoved(const QModelIndex&, int, int)")]
 		protected virtual void RowsAboutToBeRemoved(QModelIndex parent, int start, int end) {
 			interceptor.Invoke("rowsAboutToBeRemoved#$$", "rowsAboutToBeRemoved(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
 		}
-		[Q_SLOT("void selectionChanged(const QItemSelection&, const QItemSelection&)")]
+		[Q_SLOT("void selectionChanged(QItemSelection, QItemSelection)")]
 		[SmokeMethod("selectionChanged(const QItemSelection&, const QItemSelection&)")]
 		protected virtual void SelectionChanged(QItemSelection selected, QItemSelection deselected) {
 			interceptor.Invoke("selectionChanged##", "selectionChanged(const QItemSelection&, const QItemSelection&)", typeof(void), typeof(QItemSelection), selected, typeof(QItemSelection), deselected);
 		}
-		[Q_SLOT("void currentChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void currentChanged(QModelIndex, QModelIndex)")]
 		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
 		protected virtual void CurrentChanged(QModelIndex current, QModelIndex previous) {
 			interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), previous);
@@ -525,15 +525,15 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractItemViewSignals : IQAbstractScrollAreaSignals {
-		[Q_SIGNAL("void pressed(const QModelIndex&)")]
+		[Q_SIGNAL("void pressed(QModelIndex)")]
 		void Pressed(QModelIndex index);
-		[Q_SIGNAL("void clicked(const QModelIndex&)")]
+		[Q_SIGNAL("void clicked(QModelIndex)")]
 		void Clicked(QModelIndex index);
-		[Q_SIGNAL("void doubleClicked(const QModelIndex&)")]
+		[Q_SIGNAL("void doubleClicked(QModelIndex)")]
 		void DoubleClicked(QModelIndex index);
-		[Q_SIGNAL("void activated(const QModelIndex&)")]
+		[Q_SIGNAL("void activated(QModelIndex)")]
 		void Activated(QModelIndex index);
-		[Q_SIGNAL("void entered(const QModelIndex&)")]
+		[Q_SIGNAL("void entered(QModelIndex)")]
 		void Entered(QModelIndex index);
 		[Q_SIGNAL("void viewportEntered()")]
 		void ViewportEntered();

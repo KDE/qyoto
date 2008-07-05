@@ -290,7 +290,7 @@ namespace Kimono {
 		/// <remarks>
 		///  Emitted whenever the selected font changes.
 		///    </remarks>		<short>    Emitted whenever the selected font changes.</short>
-		[Q_SIGNAL("void fontSelected(const QFont&)")]
+		[Q_SIGNAL("void fontSelected(QFont)")]
 		void FontSelected(QFont font);
 	}
 }

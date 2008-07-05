@@ -51,7 +51,7 @@ namespace Sonnet {
 		///  cancel it).
 		/// <param> name="language" the language which the user has selected
 		/// </param></remarks>		<short>    This is emitted when the user closed the dialog (and did not  cancel it).</short>
-		[Q_SIGNAL("void languageChanged(const QString&)")]
+		[Q_SIGNAL("void languageChanged(QString)")]
 		void LanguageChanged(string language);
 	}
 }

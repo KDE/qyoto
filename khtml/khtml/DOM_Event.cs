@@ -33,7 +33,6 @@ namespace DOM {
 			AT_TARGET = 2,
 			BUBBLING_PHASE = 3,
 		}
-		// DOM::DOMTimeStamp timeStamp(); >>>> NOT CONVERTED
 		// DOM::Event* Event(DOM::EventImpl* arg1); >>>> NOT CONVERTED
 		public Event() : this((Type) null) {
 			CreateProxy();
@@ -92,6 +91,9 @@ namespace DOM {
 		///  all events. When not available, a value of 0 will be returned. Examples
 		///  of epoch time are the time of the system start or 0:0:0 UTC 1st January 1970.
 		///      </remarks>		<short>    Used to specify the time (in milliseconds relative to the epoch) at  which the event was created.</short>
+		public ulong TimeStamp() {
+			return (ulong) interceptor.Invoke("timeStamp", "timeStamp() const", typeof(ulong));
+		}
 		/// <remarks>
 		///  The stopPropagation method is used prevent further propagation of an
 		///  event during event flow. If this method is called by any EventListener

@@ -84,8 +84,6 @@ namespace Kimono {
 			SETTINGS_SHORTCUTS = 5,
 		}
 		// KGlobalSettings::KMouseSettings& mouseSettings(); >>>> NOT CONVERTED
-		// qreal contrastF(const KSharedConfigPtr& arg1); >>>> NOT CONVERTED
-		// QPalette createApplicationPalette(const KSharedConfigPtr& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Returns a threshold in pixels for drag & drop operations.
 		///  As long as the mouse movement has not exceeded this number
@@ -258,6 +256,12 @@ namespace Kimono {
 		///          contrast)
 		///      </return>
 		/// 		<short>    Returns the contrast for borders as a floating point value.</short>
+		public static double ContrastF(KSharedConfig config) {
+			return (double) staticInterceptor.Invoke("contrastF?", "contrastF(const KSharedPtr<KSharedConfig>&)", typeof(double), typeof(KSharedConfig), config);
+		}
+		public static double ContrastF() {
+			return (double) staticInterceptor.Invoke("contrastF", "contrastF()", typeof(double));
+		}
 		/// <remarks>
 		///  Returns if the sorted column in a K3ListView shall be drawn with a
 		///  shaded background color.
@@ -468,6 +472,12 @@ namespace Kimono {
 		/// </param></remarks>		<return> the QPalette
 		///      </return>
 		/// 		<short>    Used to obtain the QPalette that will be used to set the application palette.</short>
+		public static QPalette CreateApplicationPalette(KSharedConfig config) {
+			return (QPalette) staticInterceptor.Invoke("createApplicationPalette?", "createApplicationPalette(const KSharedPtr<KSharedConfig>&)", typeof(QPalette), typeof(KSharedConfig), config);
+		}
+		public static QPalette CreateApplicationPalette() {
+			return (QPalette) staticInterceptor.Invoke("createApplicationPalette", "createApplicationPalette()", typeof(QPalette));
+		}
 		/// <remarks>
 		///  Notifies all KDE applications on the current display of a change.
 		///  This is typically called by kcontrol modules after changing the corresponding

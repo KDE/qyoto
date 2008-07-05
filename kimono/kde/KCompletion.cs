@@ -363,7 +363,7 @@ namespace Kimono {
 		/// <param> name="string" the string to complete
 		/// </param></remarks>		<short>    Attempts to complete "string" and emits the completion via match().</short>
 		/// 		<see> makeCompletion</see>
-		[Q_SLOT("void slotMakeCompletion(const QString&)")]
+		[Q_SLOT("void slotMakeCompletion(QString)")]
 		public void SlotMakeCompletion(string arg1) {
 			interceptor.Invoke("slotMakeCompletion$", "slotMakeCompletion(const QString&)", typeof(void), typeof(string), arg1);
 		}
@@ -390,7 +390,7 @@ namespace Kimono {
 		///  Does the same as setItems(), but does not call clear() before.
 		/// <param> name="items" the items to insert
 		///      </param></remarks>		<short>    Inserts <code>items</code> into the list of possible completions.</short>
-		[Q_SLOT("void insertItems(const QStringList&)")]
+		[Q_SLOT("void insertItems(QStringList)")]
 		public void InsertItems(List<string> items) {
 			interceptor.Invoke("insertItems?", "insertItems(const QStringList&)", typeof(void), typeof(List<string>), items);
 		}
@@ -406,7 +406,7 @@ namespace Kimono {
 		/// <param> name="list" the list of items that are available for completion
 		/// </param></remarks>		<short>    Sets the list of items available for completion.</short>
 		/// 		<see> items</see>
-		[Q_SLOT("void setItems(const QStringList&)")]
+		[Q_SLOT("void setItems(QStringList)")]
 		[SmokeMethod("setItems(const QStringList&)")]
 		public virtual void SetItems(List<string> list) {
 			interceptor.Invoke("setItems?", "setItems(const QStringList&)", typeof(void), typeof(List<string>), list);
@@ -417,7 +417,7 @@ namespace Kimono {
 		///  won't work anymore).
 		/// <param> name="item" the item to add
 		///      </param></remarks>		<short>    Adds an item to the list of available completions.</short>
-		[Q_SLOT("void addItem(const QString&)")]
+		[Q_SLOT("void addItem(QString)")]
 		public void AddItem(string item) {
 			interceptor.Invoke("addItem$", "addItem(const QString&)", typeof(void), typeof(string), item);
 		}
@@ -431,7 +431,7 @@ namespace Kimono {
 		/// <param> name="item" the item to add
 		/// </param><param> name="weight" the weight of the item, default is 1
 		///      </param></remarks>		<short>    Adds an item to the list of available completions.</short>
-		[Q_SLOT("void addItem(const QString&, uint)")]
+		[Q_SLOT("void addItem(QString, uint)")]
 		public void AddItem(string item, uint weight) {
 			interceptor.Invoke("addItem$$", "addItem(const QString&, uint)", typeof(void), typeof(string), item, typeof(uint), weight);
 		}
@@ -441,7 +441,7 @@ namespace Kimono {
 		///  won't work anymore).
 		/// <param> name="item" the item to remove
 		///      </param></remarks>		<short>    Removes an item from the list of available completions.</short>
-		[Q_SLOT("void removeItem(const QString&)")]
+		[Q_SLOT("void removeItem(QString)")]
 		public void RemoveItem(string item) {
 			interceptor.Invoke("removeItem$", "removeItem(const QString&)", typeof(void), typeof(string), item);
 		}
@@ -500,7 +500,7 @@ namespace Kimono {
 		///  is no matching item.
 		/// <param> name="item" the match, or string() if there is none
 		///      </param></remarks>		<short>    The matching item.</short>
-		[Q_SIGNAL("void match(const QString&)")]
+		[Q_SIGNAL("void match(QString)")]
 		void Match(string item);
 		/// <remarks>
 		///  All matching items. Will be emitted by makeCompletion() in shell-
@@ -508,7 +508,7 @@ namespace Kimono {
 		///  or more often.
 		/// <param> name="matchlist" the list of matches
 		///      </param></remarks>		<short>    All matching items.</short>
-		[Q_SIGNAL("void matches(const QStringList&)")]
+		[Q_SIGNAL("void matches(QStringList)")]
 		void Matches(List<string> matchlist);
 		/// <remarks>
 		///  This signal is emitted, when calling makeCompletion() and more than

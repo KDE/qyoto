@@ -72,7 +72,7 @@ namespace Kimono {
 		///  </pre>
 		/// <param> name="mode" The new text.
 		///    </param></remarks>		<short>    Sets the text.</short>
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		public void SetText(string text) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}

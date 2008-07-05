@@ -31,10 +31,10 @@ namespace Qyoto {
 			ConnectedState = QAbstractSocket.SocketState.ConnectedState,
 			ClosingState = QAbstractSocket.SocketState.ClosingState,
 		}
-		// bool setSocketDescriptor(quintptr arg1,QLocalSocket::LocalSocketState arg2,QIODevice::OpenMode arg3); >>>> NOT CONVERTED
-		// bool setSocketDescriptor(quintptr arg1,QLocalSocket::LocalSocketState arg2); >>>> NOT CONVERTED
-		// bool setSocketDescriptor(quintptr arg1); >>>> NOT CONVERTED
-		// quintptr socketDescriptor(); >>>> NOT CONVERTED
+		// bool setSocketDescriptor(QUintForType<void*>::Type arg1,QLocalSocket::LocalSocketState arg2,QIODevice::OpenMode arg3); >>>> NOT CONVERTED
+		// bool setSocketDescriptor(QUintForType<void*>::Type arg1,QLocalSocket::LocalSocketState arg2); >>>> NOT CONVERTED
+		// bool setSocketDescriptor(QUintForType<void*>::Type arg1); >>>> NOT CONVERTED
+		// QUintForType<void*>::Type socketDescriptor(); >>>> NOT CONVERTED
 		public QLocalSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QLocalSocket#", "QLocalSocket(QObject*)", typeof(void), typeof(QObject), parent);

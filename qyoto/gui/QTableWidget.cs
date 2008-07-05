@@ -169,11 +169,11 @@ namespace Qyoto {
 		public void SetItemPrototype(QTableWidgetItem item) {
 			interceptor.Invoke("setItemPrototype#", "setItemPrototype(const QTableWidgetItem*)", typeof(void), typeof(QTableWidgetItem), item);
 		}
-		[Q_SLOT("void scrollToItem(const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[Q_SLOT("void scrollToItem(QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTableWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			interceptor.Invoke("scrollToItem#$", "scrollToItem(const QTableWidgetItem*, QAbstractItemView::ScrollHint)", typeof(void), typeof(QTableWidgetItem), item, typeof(QAbstractItemView.ScrollHint), hint);
 		}
-		[Q_SLOT("void scrollToItem(const QTableWidgetItem*)")]
+		[Q_SLOT("void scrollToItem(QTableWidgetItem*)")]
 		public void ScrollToItem(QTableWidgetItem item) {
 			interceptor.Invoke("scrollToItem#", "scrollToItem(const QTableWidgetItem*)", typeof(void), typeof(QTableWidgetItem), item);
 		}

@@ -42,7 +42,7 @@ namespace Kimono {
 		public void SetCheckActionCollections(List<KActionCollection> actionCollections) {
 			interceptor.Invoke("setCheckActionCollections?", "setCheckActionCollections(const QList<KActionCollection*>&)", typeof(void), typeof(List<KActionCollection>), actionCollections);
 		}
-		[Q_SLOT("void setShortcut(const KShortcut&)")]
+		[Q_SLOT("void setShortcut(KShortcut)")]
 		public void SetShortcut(KShortcut cut) {
 			interceptor.Invoke("setShortcut#", "setShortcut(const KShortcut&)", typeof(void), typeof(KShortcut), cut);
 		}
@@ -72,7 +72,7 @@ namespace Kimono {
 	}
 
 	public interface IKShortcutWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void shortcutChanged(const KShortcut&)")]
+		[Q_SIGNAL("void shortcutChanged(KShortcut)")]
 		void ShortcutChanged(KShortcut cut);
 	}
 }

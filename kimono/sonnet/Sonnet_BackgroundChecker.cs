@@ -79,11 +79,11 @@ namespace Sonnet {
 		public virtual void Stop() {
 			interceptor.Invoke("stop", "stop()", typeof(void));
 		}
-		[Q_SLOT("void replace(int, const QString&, const QString&)")]
+		[Q_SLOT("void replace(int, QString, QString)")]
 		public void Replace(int start, string oldText, string newText) {
 			interceptor.Invoke("replace$$$", "replace(int, const QString&, const QString&)", typeof(void), typeof(int), start, typeof(string), oldText, typeof(string), newText);
 		}
-		[Q_SLOT("void changeLanguage(const QString&)")]
+		[Q_SLOT("void changeLanguage(QString)")]
 		public void ChangeLanguage(string lang) {
 			interceptor.Invoke("changeLanguage$", "changeLanguage(const QString&)", typeof(void), typeof(string), lang);
 		}
@@ -136,7 +136,7 @@ namespace Sonnet {
 		/// <remarks>
 		///  Emitted whenever a misspelled word is found
 		///          </remarks>		<short>    Emitted whenever a misspelled word is found          </short>
-		[Q_SIGNAL("void misspelling(const QString&, int)")]
+		[Q_SIGNAL("void misspelling(QString, int)")]
 		void Misspelling(string word, int start);
 		/// <remarks>
 		///  Emitted after the whole text has been spell checked.

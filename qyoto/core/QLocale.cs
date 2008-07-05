@@ -768,7 +768,7 @@ namespace Qyoto {
 			return (string) interceptor.Invoke("toString$", "toString(short) const", typeof(string), typeof(short), i);
 		}
 		public string ToString(ushort i) {
-			return (string) interceptor.Invoke("toString$", "toString(ushort) const", typeof(string), typeof(ushort), i);
+			return (string) interceptor.Invoke("toString$", "toString(unsigned short) const", typeof(string), typeof(ushort), i);
 		}
 		public string ToString(int i) {
 			return (string) interceptor.Invoke("toString$", "toString(int) const", typeof(string), typeof(int), i);

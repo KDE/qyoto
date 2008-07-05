@@ -94,7 +94,7 @@ namespace KIO {
 		///  retrieved.
 		/// <param> name="item" the KFileItem describing the fetched item
 		///          </param></remarks>		<short>    Emitted when the meta info for <code>item</code> has been successfully  retrieved.</short>
-		[Q_SIGNAL("void gotMetaInfo(const KFileItem&)")]
+		[Q_SIGNAL("void gotMetaInfo(KFileItem)")]
 		void GotMetaInfo(KFileItem item);
 		/// <remarks>
 		///  Emitted when metainfo for <code>item</code> could not be extracted,
@@ -102,7 +102,7 @@ namespace KIO {
 		///  exist, or because something went wrong.
 		/// <param> name="item" the KFileItem of the file that failed
 		///          </param></remarks>		<short>    Emitted when metainfo for <code>item</code> could not be extracted,  either because a plugin for its MIME type does not  exist, or because something went wrong.</short>
-		[Q_SIGNAL("void failed(const KFileItem&)")]
+		[Q_SIGNAL("void failed(KFileItem)")]
 		void Failed(KFileItem item);
 	}
 }

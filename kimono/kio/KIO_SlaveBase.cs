@@ -4,6 +4,7 @@ namespace KIO {
 	using System;
 	using Qyoto;
 	using System.Runtime.InteropServices;
+	using System.Collections.Generic;
 
 	public interface ISlaveBase {
 		void Exit();
@@ -17,6 +18,7 @@ namespace KIO {
 		void NeedSubUrlData();
 		void SlaveStatus(string host, bool connected);
 		void StatEntry(KIO.UDSEntry _entry);
+		void ListEntries(List<KIO.UDSEntry> _entry);
 		bool CanResume(long offset);
 		void CanResume();
 		void TotalSize(long _bytes);
@@ -121,7 +123,6 @@ namespace KIO {
 			Information = 5,
 			SSLMessageBox = 6,
 		}
-		// void listEntries(const KIO::UDSEntryList& arg1); >>>> NOT CONVERTED
 		public SlaveBase(QByteArray protocol, QByteArray pool_socket, QByteArray app_socket) : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("SlaveBase###", "SlaveBase(const QByteArray&, const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), protocol, typeof(QByteArray), pool_socket, typeof(QByteArray), app_socket);
@@ -222,6 +223,9 @@ namespace KIO {
 		///  to report.
 		/// <param> name="_entry" The UDSEntry containing all of the object attributes.
 		///      </param></remarks>		<short>    Call this in listDir, each time you have a bunch of entries  to report.</short>
+		public void ListEntries(List<KIO.UDSEntry> _entry) {
+			interceptor.Invoke("listEntries?", "listEntries(const QList<KIO::UDSEntry>&)", typeof(void), typeof(List<KIO.UDSEntry>), _entry);
+		}
 		/// <remarks>
 		///  Call this at the beginning of put(), to give the size of the existing
 		///  partial file, if there is one. The <code>offset</code> argument notifies the
@@ -421,9 +425,9 @@ namespace KIO {
 		///  SlaveInterface, unlike the other methods.
 		/// </param> This method is called whenever a change in host, port or user occurs.
 		///      </remarks>		<short>    Set the host </short>
-		[SmokeMethod("setHost(const QString&, quint16, const QString&, const QString&)")]
+		[SmokeMethod("setHost(const QString&, unsigned short, const QString&, const QString&)")]
 		public virtual void SetHost(string host, ushort port, string user, string pass) {
-			interceptor.Invoke("setHost$$$$", "setHost(const QString&, quint16, const QString&, const QString&)", typeof(void), typeof(string), host, typeof(ushort), port, typeof(string), user, typeof(string), pass);
+			interceptor.Invoke("setHost$$$$", "setHost(const QString&, unsigned short, const QString&, const QString&)", typeof(void), typeof(string), host, typeof(ushort), port, typeof(string), user, typeof(string), pass);
 		}
 		/// <remarks>
 		///  Prepare slave for streaming operation

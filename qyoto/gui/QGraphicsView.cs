@@ -332,15 +332,15 @@ namespace Qyoto {
 		public override QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), query);
 		}
-		[Q_SLOT("void updateScene(const QList<QRectF>&)")]
+		[Q_SLOT("void updateScene(QList<QRectF>)")]
 		public void UpdateScene(List<QRectF> rects) {
 			interceptor.Invoke("updateScene?", "updateScene(const QList<QRectF>&)", typeof(void), typeof(List<QRectF>), rects);
 		}
-		[Q_SLOT("void invalidateScene(const QRectF&, QGraphicsScene::SceneLayers)")]
+		[Q_SLOT("void invalidateScene(QRectF, QGraphicsScene::SceneLayers)")]
 		public void InvalidateScene(QRectF rect, uint layers) {
 			interceptor.Invoke("invalidateScene#$", "invalidateScene(const QRectF&, QGraphicsScene::SceneLayers)", typeof(void), typeof(QRectF), rect, typeof(uint), layers);
 		}
-		[Q_SLOT("void invalidateScene(const QRectF&)")]
+		[Q_SLOT("void invalidateScene(QRectF)")]
 		public void InvalidateScene(QRectF rect) {
 			interceptor.Invoke("invalidateScene#", "invalidateScene(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}
@@ -348,7 +348,7 @@ namespace Qyoto {
 		public void InvalidateScene() {
 			interceptor.Invoke("invalidateScene", "invalidateScene()", typeof(void));
 		}
-		[Q_SLOT("void updateSceneRect(const QRectF&)")]
+		[Q_SLOT("void updateSceneRect(QRectF)")]
 		public void UpdateSceneRect(QRectF rect) {
 			interceptor.Invoke("updateSceneRect#", "updateSceneRect(const QRectF&)", typeof(void), typeof(QRectF), rect);
 		}

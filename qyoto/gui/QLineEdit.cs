@@ -185,7 +185,7 @@ namespace Qyoto {
 		public new virtual bool Event(QEvent arg1) {
 			return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
 		}
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		public void SetText(string arg1) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
 		}
@@ -301,9 +301,9 @@ namespace Qyoto {
 	}
 
 	public interface IQLineEditSignals : IQWidgetSignals {
-		[Q_SIGNAL("void textChanged(const QString&)")]
+		[Q_SIGNAL("void textChanged(QString)")]
 		void TextChanged(string arg1);
-		[Q_SIGNAL("void textEdited(const QString&)")]
+		[Q_SIGNAL("void textEdited(QString)")]
 		void TextEdited(string arg1);
 		[Q_SIGNAL("void cursorPositionChanged(int, int)")]
 		void CursorPositionChanged(int arg1, int arg2);

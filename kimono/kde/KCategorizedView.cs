@@ -93,17 +93,17 @@ namespace Kimono {
 		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, uint modifiers) {
 			return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), cursorAction, typeof(uint), modifiers);
 		}
-		[Q_SLOT("void rowsInserted(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsInserted(QModelIndex, int, int)")]
 		[SmokeMethod("rowsInserted(const QModelIndex&, int, int)")]
 		protected override void RowsInserted(QModelIndex parent, int start, int end) {
 			interceptor.Invoke("rowsInserted#$$", "rowsInserted(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
 		}
-		[Q_SLOT("void rowsInsertedArtifficial(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsInsertedArtifficial(QModelIndex, int, int)")]
 		[SmokeMethod("rowsInsertedArtifficial(const QModelIndex&, int, int)")]
 		protected virtual void RowsInsertedArtifficial(QModelIndex parent, int start, int end) {
 			interceptor.Invoke("rowsInsertedArtifficial#$$", "rowsInsertedArtifficial(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
 		}
-		[Q_SLOT("void rowsRemoved(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsRemoved(QModelIndex, int, int)")]
 		[SmokeMethod("rowsRemoved(const QModelIndex&, int, int)")]
 		protected virtual void RowsRemoved(QModelIndex parent, int start, int end) {
 			interceptor.Invoke("rowsRemoved#$$", "rowsRemoved(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
@@ -118,12 +118,12 @@ namespace Kimono {
 		protected virtual void SlotLayoutChanged() {
 			interceptor.Invoke("slotLayoutChanged", "slotLayoutChanged()", typeof(void));
 		}
-		[Q_SLOT("void currentChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void currentChanged(QModelIndex, QModelIndex)")]
 		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
 		protected override void CurrentChanged(QModelIndex current, QModelIndex previous) {
 			interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), previous);
 		}
-		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void dataChanged(QModelIndex, QModelIndex)")]
 		[SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
 		protected override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			interceptor.Invoke("dataChanged##", "dataChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);

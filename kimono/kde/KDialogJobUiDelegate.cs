@@ -52,7 +52,7 @@ namespace Kimono {
 		public override void ShowErrorMessage() {
 			interceptor.Invoke("showErrorMessage", "showErrorMessage()", typeof(void));
 		}
-		[Q_SLOT("void slotWarning(KJob*, const QString&, const QString&)")]
+		[Q_SLOT("void slotWarning(KJob*, QString, QString)")]
 		[SmokeMethod("slotWarning(KJob*, const QString&, const QString&)")]
 		protected override void SlotWarning(KJob job, string plain, string rich) {
 			interceptor.Invoke("slotWarning#$$", "slotWarning(KJob*, const QString&, const QString&)", typeof(void), typeof(KJob), job, typeof(string), plain, typeof(string), rich);

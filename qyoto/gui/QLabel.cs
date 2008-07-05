@@ -111,15 +111,15 @@ namespace Qyoto {
 		public override int HeightForWidth(int arg1) {
 			return (int) interceptor.Invoke("heightForWidth$", "heightForWidth(int) const", typeof(int), typeof(int), arg1);
 		}
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		public void SetText(string arg1) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), arg1);
 		}
-		[Q_SLOT("void setPixmap(const QPixmap&)")]
+		[Q_SLOT("void setPixmap(QPixmap)")]
 		public void SetPixmap(QPixmap arg1) {
 			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), arg1);
 		}
-		[Q_SLOT("void setPicture(const QPicture&)")]
+		[Q_SLOT("void setPicture(QPicture)")]
 		public void SetPicture(QPicture arg1) {
 			interceptor.Invoke("setPicture#", "setPicture(const QPicture&)", typeof(void), typeof(QPicture), arg1);
 		}
@@ -201,9 +201,9 @@ namespace Qyoto {
 	}
 
 	public interface IQLabelSignals : IQFrameSignals {
-		[Q_SIGNAL("void linkActivated(const QString&)")]
+		[Q_SIGNAL("void linkActivated(QString)")]
 		void LinkActivated(string link);
-		[Q_SIGNAL("void linkHovered(const QString&)")]
+		[Q_SIGNAL("void linkHovered(QString)")]
 		void LinkHovered(string link);
 	}
 }

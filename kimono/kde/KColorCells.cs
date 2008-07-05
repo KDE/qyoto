@@ -110,10 +110,10 @@ namespace Kimono {
 
 	public interface IKColorCellsSignals : IQTableWidgetSignals {
 		/// <remarks> Emitted when a color is selected in the table </remarks>		<short>   Emitted when a color is selected in the table </short>
-		[Q_SIGNAL("void colorSelected(int, const QColor&)")]
+		[Q_SIGNAL("void colorSelected(int, QColor)")]
 		void ColorSelected(int index, QColor color);
 		/// <remarks> Emitted when a color in the table is double-clicked </remarks>		<short>   Emitted when a color in the table is double-clicked </short>
-		[Q_SIGNAL("void colorDoubleClicked(int, const QColor&)")]
+		[Q_SIGNAL("void colorDoubleClicked(int, QColor)")]
 		void ColorDoubleClicked(int index, QColor color);
 	}
 }

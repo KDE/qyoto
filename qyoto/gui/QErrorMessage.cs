@@ -19,7 +19,7 @@ namespace Qyoto {
 			CreateProxy();
 			interceptor.Invoke("QErrorMessage", "QErrorMessage()", typeof(void));
 		}
-		[Q_SLOT("void showMessage(const QString&)")]
+		[Q_SLOT("void showMessage(QString)")]
 		public void ShowMessage(string message) {
 			interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), message);
 		}

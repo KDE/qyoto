@@ -256,7 +256,7 @@ namespace Qyoto {
 		public void ClearEditText() {
 			interceptor.Invoke("clearEditText", "clearEditText()", typeof(void));
 		}
-		[Q_SLOT("void setEditText(const QString&)")]
+		[Q_SLOT("void setEditText(QString)")]
 		public void SetEditText(string text) {
 			interceptor.Invoke("setEditText$", "setEditText(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -345,19 +345,19 @@ namespace Qyoto {
 	}
 
 	public interface IQComboBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void editTextChanged(const QString&)")]
+		[Q_SIGNAL("void editTextChanged(QString)")]
 		void EditTextChanged(string arg1);
 		[Q_SIGNAL("void activated(int)")]
 		void Activated(int index);
-		[Q_SIGNAL("void activated(const QString&)")]
+		[Q_SIGNAL("void activated(QString)")]
 		void Activated(string arg1);
 		[Q_SIGNAL("void highlighted(int)")]
 		void Highlighted(int index);
-		[Q_SIGNAL("void highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(QString)")]
 		void Highlighted(string arg1);
 		[Q_SIGNAL("void currentIndexChanged(int)")]
 		void CurrentIndexChanged(int index);
-		[Q_SIGNAL("void currentIndexChanged(const QString&)")]
+		[Q_SIGNAL("void currentIndexChanged(QString)")]
 		void CurrentIndexChanged(string arg1);
 	}
 }

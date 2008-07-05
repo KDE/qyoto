@@ -111,7 +111,7 @@ namespace Qyoto {
 		public QWidget WidgetForAction(QAction action) {
 			return (QWidget) interceptor.Invoke("widgetForAction#", "widgetForAction(QAction*) const", typeof(QWidget), typeof(QAction), action);
 		}
-		[Q_SLOT("void setIconSize(const QSize&)")]
+		[Q_SLOT("void setIconSize(QSize)")]
 		public void SetIconSize(QSize iconSize) {
 			interceptor.Invoke("setIconSize#", "setIconSize(const QSize&)", typeof(void), typeof(QSize), iconSize);
 		}
@@ -172,7 +172,7 @@ namespace Qyoto {
 		void AllowedAreasChanged(uint allowedAreas);
 		[Q_SIGNAL("void orientationChanged(Qt::Orientation)")]
 		void OrientationChanged(Qt.Orientation orientation);
-		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]
+		[Q_SIGNAL("void iconSizeChanged(QSize)")]
 		void IconSizeChanged(QSize iconSize);
 		[Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
 		void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);

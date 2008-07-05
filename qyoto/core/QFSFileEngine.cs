@@ -12,8 +12,6 @@ namespace Qyoto {
 		static QFSFileEngine() {
 			staticInterceptor = new SmokeInvocation(typeof(QFSFileEngine), null);
 		}
-		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
-		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
 		// QFSFileEngine* QFSFileEngine(QFSFileEnginePrivate& arg1); >>>> NOT CONVERTED
@@ -120,6 +118,14 @@ namespace Qyoto {
 		[SmokeMethod("setFileName(const QString&)")]
 		public override void SetFileName(string file) {
 			interceptor.Invoke("setFileName$", "setFileName(const QString&)", typeof(void), typeof(string), file);
+		}
+		[SmokeMethod("beginEntryList(QDir::Filters, const QStringList&)")]
+		public override QAbstractFileEngineIterator BeginEntryList(uint filters, List<string> filterNames) {
+			return (QAbstractFileEngineIterator) interceptor.Invoke("beginEntryList$?", "beginEntryList(QDir::Filters, const QStringList&)", typeof(QAbstractFileEngineIterator), typeof(uint), filters, typeof(List<string>), filterNames);
+		}
+		[SmokeMethod("endEntryList()")]
+		public override QAbstractFileEngineIterator EndEntryList() {
+			return (QAbstractFileEngineIterator) interceptor.Invoke("endEntryList", "endEntryList()", typeof(QAbstractFileEngineIterator));
 		}
 		[SmokeMethod("read(char*, qint64)")]
 		public override long Read(string data, long maxlen) {

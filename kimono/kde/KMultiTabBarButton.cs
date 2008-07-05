@@ -15,7 +15,7 @@ namespace Kimono {
 		public int Id() {
 			return (int) interceptor.Invoke("id", "id() const", typeof(int));
 		}
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		public void SetText(string text) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}

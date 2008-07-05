@@ -39,7 +39,7 @@ namespace Qyoto {
 		//  operator QVariant(); >>>> NOT CONVERTED
 		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
 		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
-		// QImage::DataPtr& data_ptr(); >>>> NOT CONVERTED
+		// QImageData*& data_ptr(); >>>> NOT CONVERTED
 		public QImage() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("QImage", "QImage()", typeof(void));
@@ -111,10 +111,10 @@ namespace Qyoto {
 			return (QImage) interceptor.Invoke("convertToFormat$", "convertToFormat(QImage::Format) const", typeof(QImage), typeof(QImage.Format), f);
 		}
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, uint flags) {
-			return (QImage) interceptor.Invoke("convertToFormat$?$", "convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable, typeof(uint), flags);
+			return (QImage) interceptor.Invoke("convertToFormat$?$", "convertToFormat(QImage::Format, const QVector<unsigned int>&, Qt::ImageConversionFlags) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable, typeof(uint), flags);
 		}
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
-			return (QImage) interceptor.Invoke("convertToFormat$?", "convertToFormat(QImage::Format, const QVector<QRgb>&) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable);
+			return (QImage) interceptor.Invoke("convertToFormat$?", "convertToFormat(QImage::Format, const QVector<unsigned int>&) const", typeof(QImage), typeof(QImage.Format), f, typeof(List<uint>), colorTable);
 		}
 		public new int Width() {
 			return (int) interceptor.Invoke("width", "width() const", typeof(int));
@@ -138,7 +138,7 @@ namespace Qyoto {
 			return (uint) interceptor.Invoke("color$", "color(int) const", typeof(uint), typeof(int), i);
 		}
 		public void SetColor(int i, uint c) {
-			interceptor.Invoke("setColor$$", "setColor(int, QRgb)", typeof(void), typeof(int), i, typeof(uint), c);
+			interceptor.Invoke("setColor$$", "setColor(int, unsigned int)", typeof(void), typeof(int), i, typeof(uint), c);
 		}
 		public void SetNumColors(int arg1) {
 			interceptor.Invoke("setNumColors$", "setNumColors(int)", typeof(void), typeof(int), arg1);
@@ -189,7 +189,7 @@ namespace Qyoto {
 			return (List<uint>) interceptor.Invoke("colorTable", "colorTable() const", typeof(List<uint>));
 		}
 		public void SetColorTable(List<uint> colors) {
-			interceptor.Invoke("setColorTable?", "setColorTable(const QVector<QRgb>)", typeof(void), typeof(List<uint>), colors);
+			interceptor.Invoke("setColorTable?", "setColorTable(const QVector<unsigned int>)", typeof(void), typeof(List<uint>), colors);
 		}
 		public void Fill(uint pixel) {
 			interceptor.Invoke("fill$", "fill(uint)", typeof(void), typeof(uint), pixel);
@@ -216,10 +216,10 @@ namespace Qyoto {
 			return (QImage) interceptor.Invoke("createHeuristicMask", "createHeuristicMask() const", typeof(QImage));
 		}
 		public QImage CreateMaskFromColor(uint color, Qt.MaskMode mode) {
-			return (QImage) interceptor.Invoke("createMaskFromColor$$", "createMaskFromColor(QRgb, Qt::MaskMode) const", typeof(QImage), typeof(uint), color, typeof(Qt.MaskMode), mode);
+			return (QImage) interceptor.Invoke("createMaskFromColor$$", "createMaskFromColor(unsigned int, Qt::MaskMode) const", typeof(QImage), typeof(uint), color, typeof(Qt.MaskMode), mode);
 		}
 		public QImage CreateMaskFromColor(uint color) {
-			return (QImage) interceptor.Invoke("createMaskFromColor$", "createMaskFromColor(QRgb) const", typeof(QImage), typeof(uint), color);
+			return (QImage) interceptor.Invoke("createMaskFromColor$", "createMaskFromColor(unsigned int) const", typeof(QImage), typeof(uint), color);
 		}
 		public QImage Scaled(int w, int h, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return (QImage) interceptor.Invoke("scaled$$$$", "scaled(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const", typeof(QImage), typeof(int), w, typeof(int), h, typeof(Qt.AspectRatioMode), aspectMode, typeof(Qt.TransformationMode), mode);

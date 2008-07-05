@@ -199,7 +199,7 @@ namespace Qyoto {
 	}
 
 	public interface IQMainWindowSignals : IQWidgetSignals {
-		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]
+		[Q_SIGNAL("void iconSizeChanged(QSize)")]
 		void IconSizeChanged(QSize iconSize);
 		[Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
 		void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);

@@ -22,7 +22,7 @@ namespace Qyoto {
 			interceptor.Invoke("QTcpServer", "QTcpServer()", typeof(void));
 		}
 		public bool Listen(QHostAddress address, ushort port) {
-			return (bool) interceptor.Invoke("listen#$", "listen(const QHostAddress&, quint16)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port);
+			return (bool) interceptor.Invoke("listen#$", "listen(const QHostAddress&, unsigned short)", typeof(bool), typeof(QHostAddress), address, typeof(ushort), port);
 		}
 		public bool Listen(QHostAddress address) {
 			return (bool) interceptor.Invoke("listen#", "listen(const QHostAddress&)", typeof(bool), typeof(QHostAddress), address);

@@ -30,7 +30,7 @@ namespace Kimono {
 		///          </param></remarks>		<short>    Constructs a KProgressDialog </short>
 		public KProgressDialog(QWidget parent, string caption, string text, uint flags) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KProgressDialog#$$$", "KProgressDialog(QWidget*, const QString&, const QString&, Qt::WFlags)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(string), text, typeof(uint), flags);
+			interceptor.Invoke("KProgressDialog#$$$", "KProgressDialog(QWidget*, const QString&, const QString&, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(string), caption, typeof(string), text, typeof(uint), flags);
 		}
 		public KProgressDialog(QWidget parent, string caption, string text) : this((Type) null) {
 			CreateProxy();

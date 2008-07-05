@@ -114,11 +114,11 @@ namespace Kimono {
 		/// </param><param> name="alignment" Alignment of the text. Default is left and vertical centered.
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> text</see>
-		[Q_SLOT("void setText(const QString&, Qt::Alignment)")]
+		[Q_SLOT("void setText(QString, Qt::Alignment)")]
 		public void SetText(string text, uint alignment) {
 			interceptor.Invoke("setText$$", "setText(const QString&, Qt::Alignment)", typeof(void), typeof(string), text, typeof(uint), alignment);
 		}
-		[Q_SLOT("void setText(const QString&)")]
+		[Q_SLOT("void setText(QString)")]
 		public void SetText(string text) {
 			interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
 		}
@@ -128,7 +128,7 @@ namespace Kimono {
 		/// </param><param> name="type" The sort of message it is; will also set the icon accordingly @see MessageType
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> text</see>
-		[Q_SLOT("void setText(const QString&, KTitleWidget::MessageType)")]
+		[Q_SLOT("void setText(QString, MessageType)")]
 		public void SetText(string text, KTitleWidget.MessageType type) {
 			interceptor.Invoke("setText$$", "setText(const QString&, KTitleWidget::MessageType)", typeof(void), typeof(string), text, typeof(KTitleWidget.MessageType), type);
 		}
@@ -138,11 +138,11 @@ namespace Kimono {
 		/// </param><param> name="type" The sort of message it is. @see MessageType
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> comment</see>
-		[Q_SLOT("void setComment(const QString&, KTitleWidget::MessageType)")]
+		[Q_SLOT("void setComment(QString, MessageType)")]
 		public void SetComment(string comment, KTitleWidget.MessageType type) {
 			interceptor.Invoke("setComment$$", "setComment(const QString&, KTitleWidget::MessageType)", typeof(void), typeof(string), comment, typeof(KTitleWidget.MessageType), type);
 		}
-		[Q_SLOT("void setComment(const QString&)")]
+		[Q_SLOT("void setComment(QString)")]
 		public void SetComment(string comment) {
 			interceptor.Invoke("setComment$", "setComment(const QString&)", typeof(void), typeof(string), comment);
 		}
@@ -151,11 +151,11 @@ namespace Kimono {
 		/// </param><param> name="alignment" can be used to display it also left.
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> pixmap</see>
-		[Q_SLOT("void setPixmap(const QPixmap&, KTitleWidget::ImageAlignment)")]
+		[Q_SLOT("void setPixmap(QPixmap, ImageAlignment)")]
 		public void SetPixmap(QPixmap pixmap, KTitleWidget.ImageAlignment alignment) {
 			interceptor.Invoke("setPixmap#$", "setPixmap(const QPixmap&, KTitleWidget::ImageAlignment)", typeof(void), typeof(QPixmap), pixmap, typeof(KTitleWidget.ImageAlignment), alignment);
 		}
-		[Q_SLOT("void setPixmap(const QPixmap&)")]
+		[Q_SLOT("void setPixmap(QPixmap)")]
 		public void SetPixmap(QPixmap pixmap) {
 			interceptor.Invoke("setPixmap#", "setPixmap(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
 		}
@@ -164,11 +164,11 @@ namespace Kimono {
 		/// </param><param> name="alignment" can be used to display it also left.
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> pixmap</see>
-		[Q_SLOT("void setPixmap(const QString&, KTitleWidget::ImageAlignment)")]
+		[Q_SLOT("void setPixmap(QString, ImageAlignment)")]
 		public void SetPixmap(string icon, KTitleWidget.ImageAlignment alignment) {
 			interceptor.Invoke("setPixmap$$", "setPixmap(const QString&, KTitleWidget::ImageAlignment)", typeof(void), typeof(string), icon, typeof(KTitleWidget.ImageAlignment), alignment);
 		}
-		[Q_SLOT("void setPixmap(const QString&)")]
+		[Q_SLOT("void setPixmap(QString)")]
 		public void SetPixmap(string icon) {
 			interceptor.Invoke("setPixmap$", "setPixmap(const QString&)", typeof(void), typeof(string), icon);
 		}
@@ -177,11 +177,11 @@ namespace Kimono {
 		/// </param><param> name="alignment" can be used to display it also left.
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> pixmap</see>
-		[Q_SLOT("void setPixmap(const QIcon&, KTitleWidget::ImageAlignment)")]
+		[Q_SLOT("void setPixmap(QIcon, ImageAlignment)")]
 		public void SetPixmap(QIcon icon, KTitleWidget.ImageAlignment alignment) {
 			interceptor.Invoke("setPixmap#$", "setPixmap(const QIcon&, KTitleWidget::ImageAlignment)", typeof(void), typeof(QIcon), icon, typeof(KTitleWidget.ImageAlignment), alignment);
 		}
-		[Q_SLOT("void setPixmap(const QIcon&)")]
+		[Q_SLOT("void setPixmap(QIcon)")]
 		public void SetPixmap(QIcon icon) {
 			interceptor.Invoke("setPixmap#", "setPixmap(const QIcon&)", typeof(void), typeof(QIcon), icon);
 		}
@@ -190,11 +190,11 @@ namespace Kimono {
 		/// </param><param> name="alignment" can be used to display it also left.
 		/// </param></remarks>		<short>   </short>
 		/// 		<see> pixmap</see>
-		[Q_SLOT("void setPixmap(KTitleWidget::MessageType, KTitleWidget::ImageAlignment)")]
+		[Q_SLOT("void setPixmap(MessageType, ImageAlignment)")]
 		public void SetPixmap(KTitleWidget.MessageType type, KTitleWidget.ImageAlignment alignment) {
 			interceptor.Invoke("setPixmap$$", "setPixmap(KTitleWidget::MessageType, KTitleWidget::ImageAlignment)", typeof(void), typeof(KTitleWidget.MessageType), type, typeof(KTitleWidget.ImageAlignment), alignment);
 		}
-		[Q_SLOT("void setPixmap(KTitleWidget::MessageType)")]
+		[Q_SLOT("void setPixmap(MessageType)")]
 		public void SetPixmap(KTitleWidget.MessageType type) {
 			interceptor.Invoke("setPixmap$", "setPixmap(KTitleWidget::MessageType)", typeof(void), typeof(KTitleWidget.MessageType), type);
 		}

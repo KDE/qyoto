@@ -186,7 +186,7 @@ namespace Kimono {
 		/// <param> name="url" is the url of the now current item. If it is a local url,
 		///  it won't have a protocol (file:/), otherwise it will.
 		///      </param></remarks>		<short>    Emitted when an item was clicked at.</short>
-		[Q_SIGNAL("void urlActivated(const KUrl&)")]
+		[Q_SIGNAL("void urlActivated(KUrl)")]
 		void UrlActivated(KUrl url);
 	}
 }

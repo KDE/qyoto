@@ -118,11 +118,11 @@ namespace Kimono {
 		///    </param></remarks>		<short>    Constructor.</short>
 		public KConfigSkeleton(KSharedConfig config, QObject parent) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfigSkeleton##", "KConfigSkeleton(KSharedConfig::Ptr, QObject*)", typeof(void), typeof(KSharedConfig), config, typeof(QObject), parent);
+			interceptor.Invoke("KConfigSkeleton?#", "KConfigSkeleton(KSharedPtr<KSharedConfig>, QObject*)", typeof(void), typeof(KSharedConfig), config, typeof(QObject), parent);
 		}
 		public KConfigSkeleton(KSharedConfig config) : this((Type) null) {
 			CreateProxy();
-			interceptor.Invoke("KConfigSkeleton#", "KConfigSkeleton(KSharedConfig::Ptr)", typeof(void), typeof(KSharedConfig), config);
+			interceptor.Invoke("KConfigSkeleton?", "KConfigSkeleton(KSharedPtr<KSharedConfig>)", typeof(void), typeof(KSharedConfig), config);
 		}
 		/// <remarks>
 		///  Register an item of type QColor.

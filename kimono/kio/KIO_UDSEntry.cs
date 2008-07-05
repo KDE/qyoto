@@ -64,9 +64,6 @@ namespace KIO {
 			UDS_EXTRA = 100|UDS_STRING,
 			UDS_EXTRA_END = 140|UDS_STRING,
 		}
-		// long long numberValue(uint arg1,long long arg2); >>>> NOT CONVERTED
-		// long long numberValue(uint arg1); >>>> NOT CONVERTED
-		// void insert(uint arg1,long long arg2); >>>> NOT CONVERTED
 		public UDSEntry() : this((Type) null) {
 			CreateProxy();
 			interceptor.Invoke("UDSEntry", "UDSEntry()", typeof(void));
@@ -86,6 +83,12 @@ namespace KIO {
 		/// </remarks>		<return> value of a numeric field
 		///          </return>
 		/// 		<short>   </short>
+		public long NumberValue(uint field, long defaultValue) {
+			return (long) interceptor.Invoke("numberValue$$", "numberValue(uint, long long) const", typeof(long), typeof(uint), field, typeof(long), defaultValue);
+		}
+		public long NumberValue(uint field) {
+			return (long) interceptor.Invoke("numberValue$", "numberValue(uint) const", typeof(long), typeof(uint), field);
+		}
 		public bool IsDir() {
 			return (bool) interceptor.Invoke("isDir", "isDir() const", typeof(bool));
 		}
@@ -104,6 +107,9 @@ namespace KIO {
 		/// <param> name="field" numeric tield id
 		/// </param><param> name="l" value to set
 		///          </param></remarks>		<short>    insert field with string value </short>
+		public void Insert(uint field, long l) {
+			interceptor.Invoke("insert$$", "insert(uint, long long)", typeof(void), typeof(uint), field, typeof(long), l);
+		}
 		/// <remarks>
 		///  count fields
 		/// </remarks>		<return> the number of fields

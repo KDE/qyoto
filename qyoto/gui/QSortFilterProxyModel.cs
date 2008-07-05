@@ -151,9 +151,9 @@ namespace Qyoto {
 		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
 			return (bool) interceptor.Invoke("setHeaderData$$#", "setHeaderData(int, Qt::Orientation, const QVariant&)", typeof(bool), typeof(int), section, typeof(Qt.Orientation), orientation, typeof(QVariant), value);
 		}
-		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		[SmokeMethod("mimeData(const QList<QModelIndex>&) const")]
 		public override QMimeData MimeData(List<QModelIndex> indexes) {
-			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QModelIndexList&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
+			return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QList<QModelIndex>&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
@@ -239,15 +239,15 @@ namespace Qyoto {
 		public override uint SupportedDropActions() {
 			return (uint) interceptor.Invoke("supportedDropActions", "supportedDropActions() const", typeof(uint));
 		}
-		[Q_SLOT("void setFilterRegExp(const QString&)")]
+		[Q_SLOT("void setFilterRegExp(QString)")]
 		public void SetFilterRegExp(string pattern) {
 			interceptor.Invoke("setFilterRegExp$", "setFilterRegExp(const QString&)", typeof(void), typeof(string), pattern);
 		}
-		[Q_SLOT("void setFilterWildcard(const QString&)")]
+		[Q_SLOT("void setFilterWildcard(QString)")]
 		public void SetFilterWildcard(string pattern) {
 			interceptor.Invoke("setFilterWildcard$", "setFilterWildcard(const QString&)", typeof(void), typeof(string), pattern);
 		}
-		[Q_SLOT("void setFilterFixedString(const QString&)")]
+		[Q_SLOT("void setFilterFixedString(QString)")]
 		public void SetFilterFixedString(string pattern) {
 			interceptor.Invoke("setFilterFixedString$", "setFilterFixedString(const QString&)", typeof(void), typeof(string), pattern);
 		}

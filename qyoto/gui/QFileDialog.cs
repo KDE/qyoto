@@ -295,13 +295,13 @@ namespace Qyoto {
 	}
 
 	public interface IQFileDialogSignals : IQDialogSignals {
-		[Q_SIGNAL("void filesSelected(const QStringList&)")]
+		[Q_SIGNAL("void filesSelected(QStringList)")]
 		void FilesSelected(List<string> files);
-		[Q_SIGNAL("void currentChanged(const QString&)")]
+		[Q_SIGNAL("void currentChanged(QString)")]
 		void CurrentChanged(string path);
-		[Q_SIGNAL("void directoryEntered(const QString&)")]
+		[Q_SIGNAL("void directoryEntered(QString)")]
 		void DirectoryEntered(string directory);
-		[Q_SIGNAL("void filterSelected(const QString&)")]
+		[Q_SIGNAL("void filterSelected(QString)")]
 		void FilterSelected(string filter);
 	}
 }

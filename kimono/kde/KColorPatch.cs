@@ -49,7 +49,7 @@ namespace Kimono {
 	}
 
 	public interface IKColorPatchSignals : IQFrameSignals {
-		[Q_SIGNAL("void colorChanged(const QColor&)")]
+		[Q_SIGNAL("void colorChanged(QColor)")]
 		void ColorChanged(QColor arg1);
 	}
 }

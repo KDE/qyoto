@@ -71,7 +71,7 @@ namespace KParts {
 		///  Reimplement if your mainwindow has a complex statusbar
 		///  (with several items)
 		///    </remarks>		<short>    Called when the active part wants to change the statusbar message  Reimplement if your mainwindow has a complex statusbar  (with several items)    </short>
-		[Q_SLOT("void slotSetStatusBarText(const QString&)")]
+		[Q_SLOT("void slotSetStatusBarText(QString)")]
 		[SmokeMethod("slotSetStatusBarText(const QString&)")]
 		protected virtual void SlotSetStatusBarText(string arg1) {
 			interceptor.Invoke("slotSetStatusBarText$", "slotSetStatusBarText(const QString&)", typeof(void), typeof(string), arg1);

@@ -25,8 +25,8 @@ namespace Soprano.Error {
 		protected void CreateProxy() {
 			interceptor = new SmokeInvocation(typeof(ErrorCache), this);
 		}
-		// Soprano::Error lastError(); >>>> NOT CONVERTED
-		// void setError(const Soprano::Error& arg1); >>>> NOT CONVERTED
+		// Error lastError(); >>>> NOT CONVERTED
+		// void setError(const Error& arg1); >>>> NOT CONVERTED
 		/// <remarks>
 		///  Get the last error that occured in the current thread.
 		///              </remarks>		<short>    Get the last error that occured in the current thread.</short>
