@@ -37,6 +37,9 @@
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
 
+#include <stdlib.h>
+#include <stdio.h>
+
 class QWidget;
 
 class KimonoPluginFactory : public KPluginFactory
@@ -51,9 +54,7 @@ protected:
 	                        const QString &keyword);
 
 private:
-	void InitQyotoRuntime();
-
-	MonoDomain* domain;
+	void initQyotoRuntime();
 	
 	QHash<QString, MonoAssembly*> assemblies;
 	QHash<MonoAssembly*, MonoImage*> images;
@@ -68,33 +69,28 @@ private:
 };
 K_EXPORT_PLUGIN(KimonoPluginFactory)
 
+// Make this one global to be accessible from atexitfn().
+MonoDomain* domain = 0;
+
+// This seems to be the only way, since calling mono_jit_cleanup()
+// from the destructor of KimonoPluginFactory makes mono crash.
+void atexitfn()
+{
+// 	printf("(kimonopluginfactory.cpp:%d) calling mono_jit_cleanup(%p)\n", __LINE__, domain);
+	mono_jit_cleanup(domain);
+}
+
 KimonoPluginFactory::KimonoPluginFactory()
-	: domain(0), qyotoAssembly(0), qyotoImage(0), qyotoInitialized(false)
+	: qyotoAssembly(0), qyotoImage(0), qyotoInitialized(false)
 {
 }
 
 KimonoPluginFactory::~KimonoPluginFactory()
 {
-	foreach(guint32 handle, handles)
-		mono_gchandle_free(handle);
-	
-	if (qyotoImage)
-		mono_image_close(qyotoImage);
-	if (qyotoAssembly)
-		mono_assembly_close(qyotoAssembly);
-	
-	foreach(MonoImage* img, images)
-		mono_image_close(img);
-	foreach(MonoAssembly* a, assemblies)
-		mono_assembly_close(a);
-	
-	// FIXME: this should actually work
-	/*if (domain)
-		mono_jit_cleanup(domain);*/
 }
 
 void
-KimonoPluginFactory::InitQyotoRuntime()
+KimonoPluginFactory::initQyotoRuntime()
 {
 	if (qyotoInitialized)
 		return;
@@ -128,8 +124,11 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	}
 
 	// initialize the JIT
-	if (!domain)
+	if (!domain) {
 		domain = mono_jit_init((const char*) path.toLatin1());
+// 		printf("(kimonopluginfactory.cpp:%d) new domain (ptr: %p)\n", __LINE__, domain);
+		atexit(atexitfn);
+	}
 	
 	MonoAssembly* assembly;
 	if (assemblies.contains(path)) {
@@ -179,7 +178,7 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	objects << object;
 	
 	// initialize the Qyoto runtime
-	InitQyotoRuntime();
+	initQyotoRuntime();
 	
 	// wrap the parent QObject
 	smokeqyoto_object* po = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QObject").index, parent);

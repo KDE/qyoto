@@ -1,3 +1,9 @@
+2008-07-06  Arno Rehn  <arno@arnorehn.de>
+
+	* mono_jit_cleanup() is now called from a function that is registered
+	  via atexit(). This seems to be the only way to do that, since calling
+	  it from the destructor of KimonoPluginFactory makes mono crash.
+
 2008-07-01  Arno Rehn  <arno@arnorehn.de>
 
 	* Added KMonoPluginFactory. Behaves similar to KRubyPluginFactory:
