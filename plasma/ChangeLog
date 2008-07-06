@@ -1,3 +1,9 @@
+2008-07-06  Arno Rehn  <arno@arnorehn.de>
+
+	* Moved the PlasmaScripting.* classes back into the main plasma assembly,
+	  since we can't reference Applet.dll and DataEngine.dll for C# Plasma
+	  plugins.
+
 2008-07-06  Richard Dale  <richard.j.dale@gmail.com>
 * Add a PlasmaScripting.QGraphicsWidget class with all the public methods in
   the QGraphicsWidget/QGraphicsItem/QGraphicsLayoutItem heirarchy implemented

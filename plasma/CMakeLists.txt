@@ -11,19 +11,19 @@ ENDIF (NOT QT4_FOUND)
 SET(SRC_CPP src/plasma.cpp src/plasmahandlers.cpp)
 
 SET(SRC_CS src/AssemblyInfo.cs 
+ src/PlasmaScripting_DataEngine.cs
+ src/PlasmaScripting_Applet.cs
+ src/PlasmaScripting_QGraphicsWidget.cs
  src/Plasma.cs 
 plasma/*.cs)
 
 SET(SRC_PLASMASCRIPTING src/PlasmaScripting_Applet.cs)
 
 SET(SRC_PLASMASCRIPTENGINEKIMONO_APPLET
-    src/PlasmaScriptengineKimono_Applet.cs
-    src/PlasmaScripting_Applet.cs
-    src/PlasmaScripting_QGraphicsWidget.cs)
+    src/PlasmaScriptengineKimono_Applet.cs)
 
 SET(SRC_PLASMASCRIPTENGINEKIMONO_DATAENGINE
-    src/PlasmaScriptengineKimono_DataEngine.cs
-    src/PlasmaScripting_DataEngine.cs)
+    src/PlasmaScriptengineKimono_DataEngine.cs)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})

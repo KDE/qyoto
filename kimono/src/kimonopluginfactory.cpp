@@ -55,6 +55,7 @@ protected:
 
 private:
 	void initQyotoRuntime();
+	QByteArray camelize(QByteArray name);
 	
 	QHash<QString, MonoAssembly*> assemblies;
 	QHash<MonoAssembly*, MonoImage*> images;
@@ -87,6 +88,25 @@ KimonoPluginFactory::KimonoPluginFactory()
 
 KimonoPluginFactory::~KimonoPluginFactory()
 {
+}
+
+QByteArray
+KimonoPluginFactory::camelize(QByteArray name)
+{
+    // Convert foo_bar_baz to FooBarBaz
+    QByteArray camelCaseName = name.left(1).toUpper();
+    for (int i = 1; i < name.size(); i++) {
+        if (name[i] == '_' || name[i] == '-') {
+            i++;
+            if (i < name.size()) {
+                 camelCaseName += name.mid(i, 1).toUpper();
+            }
+        } else {
+             camelCaseName += name[i];
+        }
+    }
+
+    return camelCaseName;
 }
 
 void
@@ -152,8 +172,8 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 
 	// a path in the form Foo/Bar.dll results in the class Bar in the namespace Foo
 	QFileInfo file(path);
-	QString nameSpace = file.dir().dirName();
-	QString className = file.completeBaseName();
+	QString nameSpace = camelize(file.dir().dirName().toLatin1());
+	QString className = camelize(file.completeBaseName().toLatin1());
 	MonoClass* klass = mono_class_from_name(image, (const char*) nameSpace.toLatin1(), (const char*) className.toLatin1());
 
 	// we want the Foo.Bar:.ctor(QObject, List<QVariant>)
