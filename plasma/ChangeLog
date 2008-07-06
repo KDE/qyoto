@@ -1,3 +1,15 @@
+2008-07-06  Richard Dale  <richard.j.dale@gmail.com>
+* Add a PlasmaScripting.QGraphicsWidget class with all the public methods in
+  the QGraphicsWidget/QGraphicsItem/QGraphicsLayoutItem heirarchy implemented
+  by forwarding the calls to the underlying Plasma.Applet.
+* Implemented event handling method overrides via an event filter in the
+  Applet ScriptEngine
+* Added a .desktop file for the DataEngine script engine
+* The Plasma sources have been regenerated with tabs replaced with spaces.
+  The methods on the Plasma.DataEngineScripting class special cased so that
+  they are public otherwise it wasn't very convenient for this particular
+  implementation of a scripting data engine.
+
 2008-07-02  Richard Dale  <richard.j.dale@gmail.com>
 * Added a PlasmaScripting.DataEngine class, which will be part of the main
   plasma .dll, and two classes 'KimonoAppletScript.DataEngine' and 

@@ -12,17 +12,18 @@ SET(SRC_CPP src/plasma.cpp src/plasmahandlers.cpp)
 
 SET(SRC_CS src/AssemblyInfo.cs 
  src/Plasma.cs 
- src/PlasmaScripting_Applet.cs
- src/PlasmaScripting_DataEngine.cs
 plasma/*.cs)
 
 SET(SRC_PLASMASCRIPTING src/PlasmaScripting_Applet.cs)
 
 SET(SRC_PLASMASCRIPTENGINEKIMONO_APPLET
-	src/PlasmaScriptengineKimono_Applet.cs)
+    src/PlasmaScriptengineKimono_Applet.cs
+    src/PlasmaScripting_Applet.cs
+    src/PlasmaScripting_QGraphicsWidget.cs)
 
 SET(SRC_PLASMASCRIPTENGINEKIMONO_DATAENGINE
-	src/PlasmaScriptengineKimono_DataEngine.cs)
+    src/PlasmaScriptengineKimono_DataEngine.cs
+    src/PlasmaScripting_DataEngine.cs)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
@@ -45,5 +46,8 @@ ADD_DEPENDENCIES(DataEngine plasma)
 INSTALL(TARGETS plasma-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(plasma)
 
-install(FILES ${LIBRARY_OUTPUT_PATH}/Applet.dll DESTINATION ${DATA_INSTALL_DIR}/PlasmaScriptengineKimono)
-install(FILES plasma-scriptengine-mono-applet.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(FILES ${LIBRARY_OUTPUT_PATH}/Applet.dll DESTINATION ${DATA_INSTALL_DIR}/plasma_scriptengine_kimono)
+install(FILES plasma-scriptengine-kimono-applet.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+
+install(FILES ${LIBRARY_OUTPUT_PATH}/DataEngine.dll DESTINATION ${DATA_INSTALL_DIR}/plasma_scriptengine_kimono)
+install(FILES plasma-scriptengine-kimono-dataengine.desktop DESTINATION ${SERVICES_INSTALL_DIR})
