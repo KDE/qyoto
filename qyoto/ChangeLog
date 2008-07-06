@@ -1,3 +1,15 @@
+2008-07-06  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Where multiple inheritance was catered for in the Qyoto bindings each
+	  superclass class other than the 'main' one was supposed to be an
+	  interface type in method calls rather than the real type of the class.
+	  For instance, QGraphicsWidget inherits from QObject, QGraphicsItem and
+	  QGraphicsLayoutItem, and the last two classes have interfaces 
+	  IQGraphicsItem IQGraphicsLayoutItem respectively The two classes were
+	  correctly implementing the interfaces, but the types in the method calls
+	  were not using these interface types. So fix that.
+	* In the generated code, tabs are now replaced with 4 spaces.
+
 2008-07-01  Arno Rehn  <arno@arnorehn.de>
 
 	* Moved the runtime initialization from the static SmokeInvocation
