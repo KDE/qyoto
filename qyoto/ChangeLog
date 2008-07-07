@@ -1,3 +1,8 @@
+2008-07-07  Arno Rehn  <arno@arnorehn.de>
+
+	* Allow to call InitRuntime() multiple times to make sure every binding
+	  is initialized.
+
 2008-07-06  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Where multiple inheritance was catered for in the Qyoto bindings each

@@ -1,3 +1,11 @@
+2008-07-07  Arno Rehn  <arno@arnorehn.de>
+
+	* KimonoPluginFactory: If a class isn't found in the assembly, look
+	  through all of the classes and pick the first one that implements
+	  the interface and has a matching constructor.
+	* Allow to call InitRuntime() multiple times to make sure that every
+	  binding is initialized.
+
 2008-07-06  Arno Rehn  <arno@arnorehn.de>
 
 	* mono_jit_cleanup() is now called from a function that is registered
