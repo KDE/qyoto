@@ -8,6 +8,8 @@ IF (NOT QT4_FOUND)
 	FIND_PACKAGE(Qt4 REQUIRED)
 ENDIF (NOT QT4_FOUND)
 
+add_subdirectory( examples )
+
 SET(SRC_CPP src/plasma.cpp src/plasmahandlers.cpp)
 
 SET(SRC_CS src/AssemblyInfo.cs 

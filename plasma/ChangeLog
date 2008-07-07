@@ -2,6 +2,11 @@
 * Added a tiger example C# applet. It wasn't possible to build an executable
   called 'main' as mono gave an error about it not having an extension.
   Maybe some sort of special cmake macro is needed for building C# plasmoids.
+* When looking for event handlers which have been overriden use the 
+  BindingFlags.Declared option on GetMethod() to avoid picking up the
+  inherited ones, which will always be there. TODO: The code should really
+  look at all types in the heirachy for event handlers until it reaches the
+  PlasmaScripting.Applet type.
 
 2008-07-06  Arno Rehn  <arno@arnorehn.de>
 

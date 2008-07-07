@@ -41,8 +41,8 @@ namespace PlasmaScriptengineKimono {
             Applet().Resize(200, 200);
             QFileInfo program = new QFileInfo(MainScript());
 
-            appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
             Console.WriteLine("Loading main script {0}", program.AbsoluteFilePath());
+            appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
             string typeName = Camelize(Package().Metadata().PluginName()) + ".";  // namespace
             typeName += Camelize(program.CompleteBaseName());
             Console.WriteLine("GetType() for {0}", typeName);
@@ -85,7 +85,6 @@ namespace PlasmaScriptengineKimono {
         }
 
         private void SetUpEventHandlers() {
-            Type[] paramTypes = new Type[1];
             MethodInfo eventHandler = null;
             Assembly assembly = null;
 
@@ -99,110 +98,128 @@ namespace PlasmaScriptengineKimono {
                 return;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneContextMenuEvent");
-            eventHandler = appletType.GetMethod("ContextMenuEvent", paramTypes);
+            eventHandler = appletType.GetMethod("ContextMenuEvent", BindingFlags.DeclaredOnly 
+                                                                    | BindingFlags.Instance 
+                                                                    | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneContextMenu] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneDragDropEvent");
-            eventHandler = appletType.GetMethod("DragEnterEvent", paramTypes);
+            eventHandler = appletType.GetMethod("DragEnterEvent", BindingFlags.DeclaredOnly 
+                                                                  | BindingFlags.Instance 
+                                                                  | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneDragEnter] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneDragDropEvent");
-            eventHandler = appletType.GetMethod("DragLeaveEvent", paramTypes);
+            eventHandler = appletType.GetMethod("DragLeaveEvent", BindingFlags.DeclaredOnly 
+                                                                  | BindingFlags.Instance 
+                                                                  | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneDragLeave] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneDragDropEvent");
-            eventHandler = appletType.GetMethod("DragMoveEvent", paramTypes);
+            eventHandler = appletType.GetMethod("DragMoveEvent", BindingFlags.DeclaredOnly 
+                                                                 | BindingFlags.Instance 
+                                                                 | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneDragMove] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneDragDropEvent");
-            eventHandler = appletType.GetMethod("DropEvent", paramTypes);
+            eventHandler = appletType.GetMethod("DropEvent", BindingFlags.DeclaredOnly 
+                                                             | BindingFlags.Instance 
+                                                             | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneDrop] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QFocusEvent");
-            eventHandler = appletType.GetMethod("FocusInEvent", paramTypes);
+            eventHandler = appletType.GetMethod("FocusInEvent", BindingFlags.DeclaredOnly 
+                                                                | BindingFlags.Instance 
+                                                                | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.FocusIn] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QFocusEvent");
-            eventHandler = appletType.GetMethod("FocusOutEvent", paramTypes);
+            eventHandler = appletType.GetMethod("FocusOutEvent", BindingFlags.DeclaredOnly 
+                                                                 | BindingFlags.Instance 
+                                                                 | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.FocusOut] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneHoverEvent");
-            eventHandler = appletType.GetMethod("HoverEnterEvent", paramTypes);
+            eventHandler = appletType.GetMethod("HoverEnterEvent", BindingFlags.DeclaredOnly 
+                                                                   | BindingFlags.Instance 
+                                                                   | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneHoverEnter] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneHoverEvent");
-            eventHandler = appletType.GetMethod("HoverMoveEvent", paramTypes);
+            eventHandler = appletType.GetMethod("HoverMoveEvent", BindingFlags.DeclaredOnly 
+                                                                  | BindingFlags.Instance 
+                                                                  | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneHoverMove] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneHoverEvent");
-            eventHandler = appletType.GetMethod("HoverLeaveEvent", paramTypes);
+            eventHandler = appletType.GetMethod("HoverLeaveEvent", BindingFlags.DeclaredOnly 
+                                                                   | BindingFlags.Instance 
+                                                                   | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneHoverLeave] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QKeyEvent");
-            eventHandler = appletType.GetMethod("KeyPressEvent", paramTypes);
+            eventHandler = appletType.GetMethod("KeyPressEvent", BindingFlags.DeclaredOnly 
+                                                                 | BindingFlags.Instance 
+                                                                 | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.KeyPress] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QKeyEvent");
-            eventHandler = appletType.GetMethod("KeyReleaseEvent", paramTypes);
+            eventHandler = appletType.GetMethod("KeyReleaseEvent", BindingFlags.DeclaredOnly 
+                                                                   | BindingFlags.Instance 
+                                                                   | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.KeyRelease] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneMouseEvent");
-            eventHandler = appletType.GetMethod("MousePressEvent", paramTypes);
+            eventHandler = appletType.GetMethod("MousePressEvent", BindingFlags.DeclaredOnly 
+                                                                   | BindingFlags.Instance 
+                                                                   | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneMousePress] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneMouseEvent");
-            eventHandler = appletType.GetMethod("MouseMoveEvent", paramTypes);
+            eventHandler = appletType.GetMethod("MouseMoveEvent", BindingFlags.DeclaredOnly 
+                                                                  | BindingFlags.Instance 
+                                                                  | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneMouseMove] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneMouseEvent");
-            eventHandler = appletType.GetMethod("MouseReleaseEvent", paramTypes);
+            eventHandler = appletType.GetMethod("MouseReleaseEvent", BindingFlags.DeclaredOnly 
+                                                                     | BindingFlags.Instance 
+                                                                     | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneMouseRelease] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneMouseEvent");
-            eventHandler = appletType.GetMethod("MouseDoubleClickEvent", paramTypes);
+            eventHandler = appletType.GetMethod("MouseDoubleClickEvent", BindingFlags.DeclaredOnly 
+                                                                         | BindingFlags.Instance 
+                                                                         | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneMouseDoubleClick] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QGraphicsSceneWheelEvent");
-            eventHandler = appletType.GetMethod("WheelEvent", paramTypes);
+            eventHandler = appletType.GetMethod("WheelEvent", BindingFlags.DeclaredOnly 
+                                                              | BindingFlags.Instance 
+                                                              | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.GraphicsSceneWheel] = eventHandler;
             }
 
-            paramTypes[0] = assembly.GetType("Qyoto.QInputMethodEvent");
-            eventHandler = appletType.GetMethod("InputMethodEvent", paramTypes);
+            eventHandler = appletType.GetMethod("InputMethodEvent", BindingFlags.DeclaredOnly 
+                                                                    | BindingFlags.Instance 
+                                                                    | BindingFlags.NonPublic);
             if (eventHandler != null) {
                 eventHandlers[QEvent.TypeOf.InputMethod] = eventHandler;
             }
