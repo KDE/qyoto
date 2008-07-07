@@ -1,3 +1,8 @@
+2008-07-07  Richard Dale  <richard.j.dale@gmail.com>
+* Added a tiger example C# applet. It wasn't possible to build an executable
+  called 'main' as mono gave an error about it not having an extension.
+  Maybe some sort of special cmake macro is needed for building C# plasmoids.
+
 2008-07-06  Arno Rehn  <arno@arnorehn.de>
 
 	* Moved the PlasmaScripting.* classes back into the main plasma assembly,
