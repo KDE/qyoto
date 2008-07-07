@@ -129,7 +129,7 @@ KimonoPluginFactory::assemblyGetClasses(const char* path)
 	static MonoProperty* typeFullName = mono_class_get_property_from_name(type, "FullName");
 	
 	QList<const char*> ret;
-	for (int i = 0; i < mono_array_length(types); i++) {
+	for (unsigned int i = 0; i < mono_array_length(types); i++) {
 		MonoObject* obj = mono_array_get(types, MonoObject*, i);
 		ret << mono_string_to_utf8((MonoString*) mono_property_get_value(typeFullName, obj, NULL, NULL));
 	}
@@ -197,29 +197,29 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 
 	// a path in the form Foo/Bar.dll results in the class Bar in the namespace Foo
 	QFileInfo file(path);
-	QString nameSpace = camelize(file.dir().dirName().toLatin1());
-	QString className = camelize(file.completeBaseName().toLatin1());
-	MonoClass* klass = mono_class_from_name(image, (const char*) nameSpace.toLatin1(), (const char*) className.toLatin1());
+	QByteArray nameSpace = KimonoPluginFactory::camelize(QFile::encodeName(file.dir().dirName()));
+	QByteArray className = KimonoPluginFactory::camelize(file.baseName().toLatin1());
+	MonoClass* klass = mono_class_from_name(image, nameSpace, className);
 
 	MonoMethod* ctor = 0;
 	if (klass) {
 		// we want the Foo.Bar:.ctor(QObject, List<QVariant>)
-		QString methodName = nameSpace + "." + className + ":.ctor(Qyoto.QObject,System.Collections.Generic.List`1)";
-		MonoMethodDesc* desc = mono_method_desc_new((const char*) methodName.toLatin1(), true);
+		QByteArray methodName = nameSpace + "." + className + ":.ctor(Qyoto.QObject,System.Collections.Generic.List`1)";
+		MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
 		ctor = mono_method_desc_search_in_class(desc, klass);
 	} else {
 		QString ifacestr(iface);
 		ifacestr.replace("::", ".");
-		foreach(QString name, assemblyGetClasses((const char*) path.toLatin1())) {
+		foreach(QByteArray name, assemblyGetClasses((const char*) path.toLatin1())) {
 			nameSpace = name.left(name.lastIndexOf("."));
 			className = name.right(name.size() - name.lastIndexOf(".") - 1);
-			klass = mono_class_from_name(image, (const char*) nameSpace.toLatin1(), (const char*) className.toLatin1());
+			klass = mono_class_from_name(image, nameSpace, className);
 			MonoClass* p = klass;
 			do {
 				if (ifacestr != mono_type_get_name(mono_class_get_type(p)))
 					continue;
-				QString methodName = nameSpace + "." + className + ":.ctor(Qyoto.QObject,System.Collections.Generic.List`1)";
-				MonoMethodDesc* desc = mono_method_desc_new((const char*) methodName.toLatin1(), true);
+				QByteArray methodName = nameSpace + "." + className + ":.ctor(Qyoto.QObject,System.Collections.Generic.List`1)";
+				MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
 				ctor = mono_method_desc_search_in_class(desc, klass);
 				if (ctor) break;
 			} while ((p = mono_class_get_parent(p)));
