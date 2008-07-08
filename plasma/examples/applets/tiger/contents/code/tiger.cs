@@ -1,7 +1,5 @@
 namespace Tiger {
-    using System;
     using Qyoto;
-    using Kimono;
     using Plasma;
 
     public class Main : PlasmaScripting.Applet {
@@ -9,14 +7,14 @@ namespace Tiger {
 
         public Main(AppletScript parent) : base(parent) {}
 
-        public void Init() {
+        public override void Init() {
             svg = new Plasma.Svg(this);
             svg.FilePath = "widgets/tiger";
         }
 
-        public void PaintInterface( QPainter painter,
-                                    QStyleOptionGraphicsItem option,
-                                    QRect contentsRect )
+        public override void PaintInterface(    QPainter painter,
+                                                QStyleOptionGraphicsItem option,
+                                                QRect contentsRect )
         {
             svg.Resize(Size);
             svg.Paint(painter, 0, 0);
