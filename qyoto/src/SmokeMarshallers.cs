@@ -69,6 +69,18 @@ namespace Qyoto {
 		
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern IntPtr ConstructQHash(int type);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void AddIntQVariantToQHash(IntPtr ptr, int i, IntPtr qv);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void AddQStringQStringToQHash(IntPtr ptr, string str1, string str2);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void AddQStringQVariantToQHash(IntPtr ptr, string str, IntPtr qv);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr ConstructQMap(int type);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -182,6 +194,9 @@ namespace Qyoto {
 		public static extern void InstallAddIntObjectToDictionary(AddIntObject callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallDictionaryToQHash(DictToHash callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallDictionaryToQMap(DictToMap callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -206,6 +221,7 @@ namespace Qyoto {
 		public delegate void AddInt(IntPtr obj, int i);
 		public delegate void AddUInt(IntPtr obj, uint i);
 		public delegate void AddIntObject(IntPtr hash, int key, IntPtr val);
+		public delegate IntPtr DictToHash(IntPtr ptr, int type);
 		public delegate IntPtr DictToMap(IntPtr ptr, int type);
 		public delegate IntPtr ConstructDict(string type1, string type2);
 		public delegate void SetPropertyFn(IntPtr obj, string name, IntPtr variant);
@@ -692,6 +708,37 @@ namespace Qyoto {
 			d.GetType().GetMethod("Add").Invoke(d, args);
 		}
 
+		public static IntPtr DictionaryToQHash(IntPtr dict, int type) {
+			object d = ((GCHandle) dict).Target;
+			IntPtr hash = ConstructQHash(type);
+			
+			if (type == 0) {
+				Dictionary<int, QVariant> d1 = (Dictionary<int, QVariant>) d;
+				foreach (KeyValuePair<int, QVariant> kvp in d1) {
+#if DEBUG
+					AddIntQVariantToQHash(hash, kvp.Key, (IntPtr) DebugGCHandle.Alloc(kvp.Value));
+#else
+					AddIntQVariantToQHash(hash, kvp.Key, (IntPtr) GCHandle.Alloc(kvp.Value));
+#endif
+				}
+			} else if (type == 1) {
+				Dictionary<string, string> d1 = (Dictionary<string, string>) d;
+				foreach (KeyValuePair<string, string> kvp in d1) {
+					AddQStringQStringToQHash(hash, kvp.Key, kvp.Value);
+				}
+			} else if (type == 2) {
+				Dictionary<string, QVariant> d1 = (Dictionary<string, QVariant>) d;
+				foreach (KeyValuePair<string, QVariant> kvp in d1) {
+#if DEBUG
+					AddQStringQVariantToQHash(hash, kvp.Key, (IntPtr) DebugGCHandle.Alloc(kvp.Value));
+#else
+					AddQStringQVariantToQHash(hash, kvp.Key, (IntPtr) GCHandle.Alloc(kvp.Value));
+#endif
+				}
+			}
+			return hash;
+		}		
+
 		public static IntPtr DictionaryToQMap(IntPtr dict, int type) {
 			object d = ((GCHandle) dict).Target;
 			IntPtr map = ConstructQMap(type);
@@ -758,6 +805,7 @@ namespace Qyoto {
 			InstallAddObjectObjectToDictionary(AddObjectObjectToDictionary);
 			InstallAddIntObjectToDictionary(AddIntObjectToDictionary);
 			
+			InstallDictionaryToQHash(DictionaryToQHash);
 			InstallDictionaryToQMap(DictionaryToQMap);
 
 			InstallOverridenMethod(SmokeInvocation.OverridenMethod);

@@ -85,6 +85,10 @@ extern "C" {
 Q_DECL_EXPORT GetIntPtr ListToPointerList;
 Q_DECL_EXPORT CreateListFn ConstructList;
 Q_DECL_EXPORT SetIntPtr AddIntPtrToList;
+Q_DECL_EXPORT ConstructDict ConstructDictionary;
+Q_DECL_EXPORT DictToMap DictionaryToQMap;
+Q_DECL_EXPORT DictToHash DictionaryToQHash;
+Q_DECL_EXPORT InvokeMethodFn AddObjectObjectToDictionary;
 
 static GetIntPtr IntPtrToCharStarStar;
 static GetCharStarFromIntPtr IntPtrToCharStar;
@@ -99,10 +103,7 @@ static GetIntPtr ListUIntToQListQRgb;
 static GetIntPtr ListWizardButtonToQListWizardButton;
 static AddInt AddIntToListInt;
 static AddUInt AddUIntToListUInt;
-static ConstructDict ConstructDictionary;
-static InvokeMethodFn AddObjectObjectToDictionary;
 static AddIntObject AddIntObjectToDictionary;
-static DictToMap DictionaryToQMap;
 
 Q_DECL_EXPORT void InstallIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -184,6 +185,11 @@ Q_DECL_EXPORT void InstallAddIntObjectToDictionary(AddIntObject callback)
 	AddIntObjectToDictionary = callback;
 }
 
+Q_DECL_EXPORT void InstallDictionaryToQHash(DictToHash callback)
+{
+	DictionaryToQHash = callback;
+}
+
 Q_DECL_EXPORT void InstallDictionaryToQMap(DictToMap callback)
 {
 	DictionaryToQMap = callback;
@@ -226,6 +232,37 @@ Q_DECL_EXPORT void AddIntToQList(void* ptr, int i)
 {
 	QList<int>* list = (QList<int>*) ptr;
 	list->append(i);
+}
+Q_DECL_EXPORT void* ConstructQHash(int type)
+{
+	if (type == 0) {
+		return (void*) new QHash<int, QVariant>();
+	} else if (type == 1) {
+		return (void*) new QHash<QString, QString>();
+	} else if (type == 2) {
+		return (void*) new QHash<QString, QVariant>();
+	}
+	return 0;
+}
+
+Q_DECL_EXPORT void AddIntQVariantToQHash(void* ptr, int i, void* qv)
+{
+	QHash<int, QVariant>* hash = (QHash<int, QVariant>*) ptr;
+	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
+	hash->insert(i, *variant);
+}
+
+Q_DECL_EXPORT void AddQStringQStringToQHash(void* ptr, char* str1, char* str2)
+{
+	QHash<QString, QString>* hash = (QHash<QString, QString>*) ptr;
+	hash->insert(QString(str1), QString(str2));
+}
+
+Q_DECL_EXPORT void AddQStringQVariantToQHash(void* ptr, char* str, void* qv)
+{
+	QHash<QString, QVariant>* hash = (QHash<QString, QVariant>*) ptr;
+	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
+	hash->insert(QString(str), *variant);
 }
 
 Q_DECL_EXPORT void* ConstructQMap(int type)

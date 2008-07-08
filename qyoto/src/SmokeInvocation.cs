@@ -425,25 +425,19 @@ namespace Qyoto {
 		}
 
 		static bool runtimeInitialized = false;
-		static List<Assembly> initializedAssemblies = new List<Assembly>();
 
 		public static void InitRuntime() {
-			if (!runtimeInitialized) {
-				Qyoto.Init_qyoto();
-				SmokeMarshallers.SetUp();
-				runtimeInitialized = true;
-			}
+			if (runtimeInitialized)
+				return;
+			Qyoto.Init_qyoto();
+			SmokeMarshallers.SetUp();
 			
 			// initialize other referenced smoke bindings
 			foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
-				if (initializedAssemblies.Contains(a)) return;
 				AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
-				if (attr != null) {
-					Console.WriteLine("Init {0}", a);
-					attr.CallInitSmoke();
-				}
-				initializedAssemblies.Add(a);
+				if (attr != null) attr.CallInitSmoke();
 			}
+			runtimeInitialized = true;
 		}
 
 		static SmokeInvocation() {

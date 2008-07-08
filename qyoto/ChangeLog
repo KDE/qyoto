@@ -1,3 +1,8 @@
+2008-07-08  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Add marshallers for QHash types such as QHash<QString, QVariant> based
+	  on the QMap marshalling code.
+
 2008-07-07  Arno Rehn  <arno@arnorehn.de>
 
 	* Allow to call InitRuntime() multiple times to make sure every binding

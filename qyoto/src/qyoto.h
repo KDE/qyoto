@@ -78,6 +78,7 @@ typedef void (*AddInt)(void *, int);
 typedef void (*AddUInt)(void *, uint);
 typedef void (*AddIntObject)(void *, int, void *);
 typedef void * (*DictToMap)(void *, int);
+typedef void * (*DictToHash)(void *, int);
 typedef void * (*ConstructDict)(const char*, const char*);
 typedef void (*SetPropertyFn)(void *, const char*, void *);
 
@@ -139,6 +140,12 @@ extern Q_DECL_EXPORT int qt_metacall(void* obj, int _c, int _id, void* _o);
 extern GetIntPtr ListToPointerList;
 extern CreateListFn ConstructList;
 extern SetIntPtr AddIntPtrToList;
+
+extern ConstructDict ConstructDictionary;
+extern DictToHash DictionaryToQHash;
+extern DictToMap DictionaryToQMap;
+extern char *StringFromQString(void *ptr);
+extern InvokeMethodFn AddObjectObjectToDictionary;
 }
 
 #endif
