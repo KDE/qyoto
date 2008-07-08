@@ -1,3 +1,9 @@
+2008-07-08  Richard Dale  <richard.j.dale@gmail.com>
+* Added a marshaller for the Plasma::DataEngine::Data type so that 
+  DateUpdated() slots should work
+* Fixed overriden virtual methods in the Tiger applet so they work by addding
+  the 'override' keyword to the declarations.
+
 2008-07-07  Richard Dale  <richard.j.dale@gmail.com>
 * Added a tiger example C# applet. It wasn't possible to build an executable
   called 'main' as mono gave an error about it not having an extension.

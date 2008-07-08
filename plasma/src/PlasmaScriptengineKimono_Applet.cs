@@ -41,11 +41,9 @@ namespace PlasmaScriptengineKimono {
             Applet().Resize(200, 200);
             QFileInfo program = new QFileInfo(MainScript());
 
-            Console.WriteLine("Loading main script {0}", program.AbsoluteFilePath());
             appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
             string typeName = Camelize(Package().Metadata().PluginName()) + ".";  // namespace
             typeName += Camelize(program.CompleteBaseName());
-            Console.WriteLine("GetType() for {0}", typeName);
             appletType = appletAssembly.GetType(typeName);
 
             applet = (PlasmaScripting.Applet) Activator.CreateInstance(appletType, new object[] { this });
