@@ -21,10 +21,8 @@ plasma/*.cs)
 
 SET(SRC_PLASMASCRIPTING src/PlasmaScripting_Applet.cs)
 
-SET(SRC_PLASMASCRIPTENGINEKIMONO_APPLET
-    src/PlasmaScriptengineKimono_Applet.cs)
-
-SET(SRC_PLASMASCRIPTENGINEKIMONO_DATAENGINE
+SET(SRC_PLASMASCRIPTENGINEKIMONO
+    src/PlasmaScriptengineKimono_Applet.cs
     src/PlasmaScriptengineKimono_DataEngine.cs)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
@@ -38,18 +36,13 @@ SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/k
 ADD_CS_LIBRARY(plasma "${SRC_CS}" ALL)
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(Applet "${SRC_PLASMASCRIPTENGINEKIMONO_APPLET}" ALL)
-ADD_DEPENDENCIES(Applet plasma)
-
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(DataEngine "${SRC_PLASMASCRIPTENGINEKIMONO_DATAENGINE}" ALL)
-ADD_DEPENDENCIES(DataEngine plasma)
+ADD_CS_LIBRARY(PlasmaScriptengineKimono "${SRC_PLASMASCRIPTENGINEKIMONO}" ALL)
+ADD_DEPENDENCIES(PlasmaScriptengineKimono plasma)
 
 INSTALL(TARGETS plasma-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(plasma)
 
-install(FILES ${LIBRARY_OUTPUT_PATH}/Applet.dll DESTINATION ${DATA_INSTALL_DIR}/plasma_scriptengine_kimono)
-install(FILES plasma-scriptengine-kimono-applet.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(FILES ${LIBRARY_OUTPUT_PATH}/PlasmaScriptengineKimono.dll DESTINATION ${DATA_INSTALL_DIR}/plasma_scriptengine_kimono)
 
-install(FILES ${LIBRARY_OUTPUT_PATH}/DataEngine.dll DESTINATION ${DATA_INSTALL_DIR}/plasma_scriptengine_kimono)
+install(FILES plasma-scriptengine-kimono-applet.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 install(FILES plasma-scriptengine-kimono-dataengine.desktop DESTINATION ${SERVICES_INSTALL_DIR})
