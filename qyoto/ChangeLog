@@ -1,3 +1,9 @@
+2008-07-09  Richard Dale  <richard.j.dale@gmail.com>
+
+	* When looking up the smoke type of a slot or signal argument, iterate 
+	  through all the loaded smoke modules, rather than just looking in the
+	  qt one.
+
 2008-07-08  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Add marshallers for QHash types such as QHash<QString, QVariant> based

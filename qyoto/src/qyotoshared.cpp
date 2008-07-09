@@ -343,40 +343,48 @@ setMocType(MocArgument *arg, int idx, const char * name_value, const char * stat
 {
 	QByteArray name(name_value);
 	Smoke::Index typeId = 0;
+	Smoke * smoke = qt_Smoke;
 
 	if (strcmp(static_type, "ptr") == 0) {
 		arg[idx].argType = xmoc_ptr;
-		typeId = qt_Smoke->idType((const char *) name);
-		if (typeId == 0 && !name.contains('*')) {
-			name += "&";
-			typeId = qt_Smoke->idType((const char *) name);
+		QHash<Smoke*, QyotoModule>::const_iterator it;
+		for (it = qyoto_modules.constBegin(); it != qyoto_modules.constEnd(); ++it) {
+			smoke = it.key();
+			typeId = smoke->idType((const char *) name);
+
+			if (typeId == 0 && !name.contains('*')) {
+				name += "&";
+				typeId = smoke->idType((const char *) name);
+			}
+
+			if (typeId != 0) {
+				break;
+			}
 		}
 	} else if (strcmp(static_type, "bool") == 0) {
 		arg[idx].argType = xmoc_bool;
-		typeId = qt_Smoke->idType((const char *) name);
+		typeId = smoke->idType((const char *) name);
 	} else if (strcmp(static_type, "int") == 0) {
 		arg[idx].argType = xmoc_int;
-		typeId = qt_Smoke->idType((const char *) name);
+		typeId = smoke->idType((const char *) name);
 	} else if (strcmp(static_type, "double") == 0) {
 		arg[idx].argType = xmoc_double;
-		typeId = qt_Smoke->idType((const char *) name);
+		typeId = smoke->idType((const char *) name);
 	} else if (strcmp(static_type, "char*") == 0) {
 		arg[idx].argType = xmoc_charstar;
-		typeId = qt_Smoke->idType((const char *) name);
+		typeId = smoke->idType((const char *) name);
 	} else if (strcmp(static_type, "QString") == 0) {
 		arg[idx].argType = xmoc_QString;
 		name += "*";
-		typeId = qt_Smoke->idType((const char *) name);
+		typeId = smoke->idType((const char *) name);
 	}
 	
 	if (typeId == 0) {
-#ifdef DEBUG
-		printf("In setMocType(): no typeId %s\n", name_value);
-#endif
+		qFatal("Cannot handle '%s' as slot argument", name_value);
 		return false;
 	}
 
-	arg[idx].st.set(qt_Smoke, typeId);
+	arg[idx].st.set(smoke, typeId);
 	return true;
 }
 
@@ -420,7 +428,7 @@ GetMocArgumentsNumber(QString replyType, QString member, int& number)
 			QByteArray name = (*it).toLatin1();
 			QByteArray static_type = a.toLatin1();
 			if (!setMocType(mocargs, i, name.constData(), static_type.constData())) {
-				return 0;
+				return mocargs;
 			}
 		}
     }
