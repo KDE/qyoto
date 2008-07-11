@@ -1,3 +1,8 @@
+2008-07-11  Arno Rehn  <arno@arnorehn.de>
+
+    * Use IntPtrFromQString instead of StringFromQString.
+    * Export the rest of the C# marshalling functions.
+
 2008-07-09  Richard Dale  <richard.j.dale@gmail.com>
 
 	* When looking up the smoke type of a slot or signal argument, iterate 

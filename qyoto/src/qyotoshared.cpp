@@ -353,7 +353,7 @@ setMocType(MocArgument *arg, int idx, const char * name_value, const char * stat
 			typeId = smoke->idType((const char *) name);
 
 			if (typeId == 0 && !name.contains('*')) {
-				name += "&";
+				if (!name.contains("&")) name += "&";
 				typeId = smoke->idType((const char *) name);
 			}
 

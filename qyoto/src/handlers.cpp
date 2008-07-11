@@ -90,20 +90,20 @@ Q_DECL_EXPORT DictToMap DictionaryToQMap;
 Q_DECL_EXPORT DictToHash DictionaryToQHash;
 Q_DECL_EXPORT InvokeMethodFn AddObjectObjectToDictionary;
 
-static GetIntPtr IntPtrToCharStarStar;
-static GetCharStarFromIntPtr IntPtrToCharStar;
-static GetIntPtrFromCharStar IntPtrFromCharStar;
-static GetIntPtr IntPtrToQString;
-static GetIntPtr IntPtrFromQString;
-static GetIntPtr StringBuilderToQString;
-static SetIntPtrFromCharStar StringBuilderFromQString;
-static GetIntPtr StringListToQStringList;
-static GetIntPtr ListIntToQListInt;
-static GetIntPtr ListUIntToQListQRgb;
-static GetIntPtr ListWizardButtonToQListWizardButton;
-static AddInt AddIntToListInt;
-static AddUInt AddUIntToListUInt;
-static AddIntObject AddIntObjectToDictionary;
+Q_DECL_EXPORT GetIntPtr IntPtrToCharStarStar;
+Q_DECL_EXPORT GetCharStarFromIntPtr IntPtrToCharStar;
+Q_DECL_EXPORT GetIntPtrFromCharStar IntPtrFromCharStar;
+Q_DECL_EXPORT GetIntPtr IntPtrToQString;
+Q_DECL_EXPORT GetIntPtr IntPtrFromQString;
+Q_DECL_EXPORT GetIntPtr StringBuilderToQString;
+Q_DECL_EXPORT SetIntPtrFromCharStar StringBuilderFromQString;
+Q_DECL_EXPORT GetIntPtr StringListToQStringList;
+Q_DECL_EXPORT GetIntPtr ListIntToQListInt;
+Q_DECL_EXPORT GetIntPtr ListUIntToQListQRgb;
+Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
+Q_DECL_EXPORT AddInt AddIntToListInt;
+Q_DECL_EXPORT AddUInt AddUIntToListUInt;
+Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
 
 Q_DECL_EXPORT void InstallIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -1388,8 +1388,8 @@ void marshall_QMapQStringQString(Marshall *m) {
 			void* dict = (*ConstructDictionary)("System.String", "System.String");
 			
 			for (QMap<QString, QString>::iterator i = map->begin(); i != map->end(); ++i) {
-				void* string1 = (void*) StringFromQString((void*) &(i.key()));
-				void* string2 = (void*) StringFromQString((void*) &(i.value()));
+				void* string1 = (void*) (*IntPtrFromQString)((void*) &(i.key()));
+				void* string2 = (void*) (*IntPtrFromQString)((void*) &(i.value()));
 				(*AddObjectObjectToDictionary)(	dict,
 								string1,
 								string2);
@@ -1439,7 +1439,7 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, id.smoke, id.index, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
-				void* string = (void*) StringFromQString((void*) &(i.key()));
+				void* string = (void*) (*IntPtrFromQString)((void*) &(i.key()));
 				(*AddObjectObjectToDictionary)(	dict,
 								string,
 								value);

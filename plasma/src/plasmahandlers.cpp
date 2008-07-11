@@ -92,7 +92,7 @@ void marshall_QHashQStringQVariant(Marshall *m) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, id.smoke, id.index, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
-				void* string = (void*) StringFromQString((void*) &(i.key()));
+				void* string = (*IntPtrFromQString)((void*) &(i.key()));
 				(*AddObjectObjectToDictionary)(	dict,
 								string,
 								value);

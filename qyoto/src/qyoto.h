@@ -146,6 +146,21 @@ extern DictToHash DictionaryToQHash;
 extern DictToMap DictionaryToQMap;
 extern char *StringFromQString(void *ptr);
 extern InvokeMethodFn AddObjectObjectToDictionary;
+
+extern Q_DECL_EXPORT GetIntPtr IntPtrToCharStarStar;
+extern Q_DECL_EXPORT GetCharStarFromIntPtr IntPtrToCharStar;
+extern Q_DECL_EXPORT GetIntPtrFromCharStar IntPtrFromCharStar;
+extern Q_DECL_EXPORT GetIntPtr IntPtrToQString;
+extern Q_DECL_EXPORT GetIntPtr IntPtrFromQString;
+extern Q_DECL_EXPORT GetIntPtr StringBuilderToQString;
+extern Q_DECL_EXPORT SetIntPtrFromCharStar StringBuilderFromQString;
+extern Q_DECL_EXPORT GetIntPtr StringListToQStringList;
+extern Q_DECL_EXPORT GetIntPtr ListIntToQListInt;
+extern Q_DECL_EXPORT GetIntPtr ListUIntToQListQRgb;
+extern Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
+extern Q_DECL_EXPORT AddInt AddIntToListInt;
+extern Q_DECL_EXPORT AddUInt AddUIntToListUInt;
+extern Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
 }
 
 #endif
