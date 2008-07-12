@@ -1303,7 +1303,7 @@ void marshall_QDBusVariant(Marshall *m) {
 		}
 
 		if (m->type().isStack()) {
-// 		    o->allocated = true;
+		    o->allocated = true;
 			// Keep a mapping of the pointer so that it is only wrapped once
 		    mapPointer(obj, o, o->classId, 0);
 		}

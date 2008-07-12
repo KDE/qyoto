@@ -300,6 +300,12 @@ QVariantValue(char * typeName, void * variant)
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(variant);
 	void * value = QMetaType::construct(	QMetaType::type(typeName), 
 											(void *) ((QVariant *)o->ptr)->constData() );
+	if (qstrcmp(typeName, "QDBusVariant") == 0) {
+		Smoke::ModuleIndex id = o->smoke->findClass("QVariant");
+		smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, (void *) value);
+		(*FreeGCHandle)(variant);
+		return (*CreateInstance)("Qyoto.QDBusVariant", vo);
+	}
 	Smoke::ModuleIndex id = o->smoke->findClass(typeName);
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, (void *) value);
 	(*FreeGCHandle)(variant);

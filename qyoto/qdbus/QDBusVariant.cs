@@ -3,7 +3,7 @@ namespace Qyoto {
 	using System;
 
 	public class QDBusVariant : QVariant {
-
+		protected QDBusVariant(Type dummy) : base((Type) null) {}
 		public QDBusVariant() : base() { }
 		public QDBusVariant(QVariant variant) : base(variant) { }
 

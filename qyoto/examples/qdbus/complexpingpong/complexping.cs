@@ -60,9 +60,9 @@ class Ping : QObject
             } else if (line.StartsWith("value=")) {
                 iface.SetProperty("value", new QVariant(line.Substring(6)));            
             } else {
-               QDBusReply<QVariant> reply = new QDBusReply<QVariant>(iface.Call("query", new QVariant(line)));
+               QDBusReply<string> reply = new QDBusReply<string>(iface.Call("query", new QVariant(line)));
                 if (reply.IsValid())
-                    Console.WriteLine("Reply was: {0}", reply.Value().ToString());
+                    Console.WriteLine("Reply was: {0}", reply.Value());
             }
 
             if (iface.LastError().IsValid())
@@ -85,8 +85,10 @@ class Ping : QObject
                      SIGNAL("serviceOwnerChanged(QString,QString,QString)"),
                      SLOT("Start(QString,QString,QString)"));
 
-        QProcess pong = new QProcess();
-        pong.Start("mono ./complexpong.exe");
+        // start the process manually - doesn't work this way..
+        // QProcess pong = new QProcess(qApp);
+        // pong.Start("mono ./complexpong.exe");
+        // pong.WaitForStarted();
 
         return QCoreApplication.Exec();
     }

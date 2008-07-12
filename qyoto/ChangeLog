@@ -1,3 +1,9 @@
+2008-07-12  Arno Rehn  <arno@arnorehn.de>
+
+    * Special case QDBusVariant in SlotReturnValue.
+    * Make QDBusVariant work with CreateInstance()
+    * Make QDBusReply similar to C++'s QDBusReply.
+
 2008-07-12  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Change the slot/signal argument parsing code to work the same way as in
