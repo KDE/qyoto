@@ -62,4 +62,4 @@ src/smokeqyoto.h src/virtualmethodcall.h src/virtualmethodreturnvalue.h DESTINAT
 INSTALL_GAC(qt-dotnet)
 
 ADD_SUBDIRECTORY(tools)
-ADD_SUBDIRECTORY(examples)
+ADD_SUBDIRECTORY(examples EXCLUDE_FROM_ALL)
