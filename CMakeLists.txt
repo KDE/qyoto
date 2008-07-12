@@ -25,7 +25,24 @@ if(ENABLE_QYOTO)
         MESSAGE (STATUS "gacutil was not found on your system but is needed for Qyoto.")
     ENDIF (NOT GACUTIL_EXECUTABLE)
 
-    IF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE)
+    # following does check for mono-cecil which may packaged into an own package
+    # depending on your distributor. cecil is needed within CSharpMacros.cmake for
+    # the INSTALL_GAC macro. So, let's check here if cecil is available rather then
+    # assuming it is and then break compile (happens e.g. on kubuntu 7.10).
+    INCLUDE(FindPkgConfig)
+    IF(NOT WIN32)
+        PKG_SEARCH_MODULE(MONO_CECIL mono-cecil)
+        PKG_SEARCH_MODULE(MONO_CECIL cecil)
+        IF (NOT MONO_CECIL_FOUND AND NOT CECIL_FOUND)
+            message("Failed to find mono-cecil needed by CSharp. Please install libmono-devel.")
+        ELSE (NOT MONO_CECIL_FOUND AND NOT CECIL_FOUND)
+            set(MONO_CECIL_FOUND "yes")
+        ENDIF (NOT MONO_CECIL_FOUND AND NOT CECIL_FOUND)
+    ELSE(NOT WIN32)
+        set(MONO_CECIL_FOUND "yes")
+    ENDIF(NOT WIN32)
+
+    IF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE AND MONO_CECIL_FOUND)
         add_subdirectory( qyoto )
         set(QYOTO_ENABLED "yes")
 
@@ -55,7 +72,7 @@ if(ENABLE_QYOTO)
 		ADD_SUBDIRECTORY(plasma)
 	ENDIF(ENABLE_PLASMA_SHARP)
 
-    ENDIF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE)
+    ENDIF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE AND MONO_CECIL_FOUND)
 endif(ENABLE_QYOTO)
 
 message(STATUS "Build Qyoto... " ${QYOTO_ENABLED})
