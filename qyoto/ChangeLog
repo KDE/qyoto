@@ -3,6 +3,10 @@
 	* Change the slot/signal argument parsing code to work the same way as in
 	  QtRuby. Use a QList<MocArgument*> type instead of just an array of
 	  'MocArgument *'.
+	* The type of a slot arg should always be in the smoke module of the slot
+	  being invoked. However, that isn't true for a dataUpdated() slot in a 
+      PlasmaScripting.Applet. So make GetMocArguments search through all the
+	  loaded smoke modules if the arg type isn't found at first.
 
 2008-07-11  Arno Rehn  <arno@arnorehn.de>
 

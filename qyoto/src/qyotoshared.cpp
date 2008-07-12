@@ -369,8 +369,7 @@ static QRegExp * rx = 0;
 	foreach (QByteArray name, methodTypes) {
 		MocArgument *arg = new MocArgument;
 		Smoke::Index typeId = 0;
-
-		if (name.isEmpty()) {
+		if (name.isEmpty() || name == "void") {
 			arg->argType = xmoc_void;
 			result.append(arg);
 		} else {
@@ -378,10 +377,37 @@ static QRegExp * rx = 0;
 			QString staticType = (rx->indexIn(name) != -1 ? rx->cap(1) : "ptr");
 			if (staticType == "ptr") {
 				arg->argType = xmoc_ptr;
-				typeId = smoke->idType(name.constData());
+				QByteArray targetType = name;
+				typeId = smoke->idType(targetType.constData());
 				if (typeId == 0 && !name.contains('*')) {
-					if (!name.contains("&")) name += "&";
-					typeId = smoke->idType(name.constData());
+					if (!name.contains("&")) {
+						targetType += "&";
+					}
+					typeId = smoke->idType(targetType.constData());
+				}
+
+				// This shouldn't be necessary because the type of the slot arg should always be in the 
+				// smoke module of the slot being invoked. However, that isn't true for a dataUpdated()
+				// slot in a PlasmaScripting.Applet
+				if (typeId == 0) {
+					QHash<Smoke*, QyotoModule>::const_iterator it;
+					for (it = qyoto_modules.constBegin(); it != qyoto_modules.constEnd(); ++it) {
+						smoke = it.key();
+						targetType = name;
+						typeId = smoke->idType(targetType.constData());
+	
+						if (typeId == 0 && !name.contains('*')) {
+							if (!name.contains("&")) {
+								targetType += "&";
+							}
+
+							typeId = smoke->idType(targetType.constData());
+	
+							if (typeId != 0) {
+								break;
+							}
+						}
+					}
 				}
 			} else if (staticType == "bool") {
 				arg->argType = xmoc_bool;
@@ -469,7 +495,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 			metaobject->activate(qobj, _id, (void**) _o);
 			return _id - count;
 		}
-	
+
 		QList<MocArgument*> mocArgs = GetMocArguments(o->smoke, method.typeName(), method.parameterTypes());
 		
 		// invoke slot
