@@ -733,8 +733,6 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 	QString sig(signature);
 	QString replyType(type);
 
-	MocArgument * args = GetMocArguments(replyType, sig);
-
 	const QMetaObject* meta = qobj->metaObject();
 	int i;
 	for (i = 0; i < meta->methodCount(); i++) {
@@ -745,6 +743,8 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 			break;
 		}
 	}
+
+	QList<MocArgument*> args = GetMocArguments(o->smoke, meta->method(i).typeName(), meta->method(i).parameterTypes());
 	
 	EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();

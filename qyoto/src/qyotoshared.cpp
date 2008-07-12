@@ -45,30 +45,38 @@ SetPropertyFn SetProperty;
 SetIntPtr InvokeDelegate;
 
 void
-smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args)
+smokeStackToQtStack(Smoke::Stack stack, void ** o, int start, int end, QList<MocArgument*> args)
 {
-	for (int i = 0; i < items; i++) {
-		Smoke::StackItem *si = stack + i;
-		//printf("si->s_int: %d, i: %d\n", si->s_int, i);
-		switch(args[i].argType) {
+	for (int i = start, j = 0; i < end; i++, j++) {
+		Smoke::StackItem *si = stack + j;
+		switch(args[i]->argType) {
 		case xmoc_bool:
-			o[i] = &si->s_bool;
+			o[j] = &si->s_bool;
 			break;
 		case xmoc_int:
-			o[i] = &si->s_int;
+			o[j] = &si->s_int;
+			break;
+		case xmoc_uint:
+			o[j] = &si->s_uint;
+			break;
+		case xmoc_long:
+			o[j] = &si->s_long;
+			break;
+		case xmoc_ulong:
+			o[j] = &si->s_ulong;
 			break;
 		case xmoc_double:
-			o[i] = &si->s_double;
+			o[j] = &si->s_double;
 			break;
 		case xmoc_charstar:
-			o[i] = &si->s_voidp;
+			o[j] = &si->s_voidp;
 			break;
 		case xmoc_QString:
-			o[i] = si->s_voidp;
+			o[j] = si->s_voidp;
 			break;
 		default:
 		{
-			const SmokeType &t = args[i].st;
+			const SmokeType &t = args[i]->st;
 			void *p;
 			switch(t.elem()) {
 			case Smoke::t_bool:
@@ -109,7 +117,7 @@ smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args)
 				// allocate a new enum value
 				Smoke::EnumFn fn = SmokeClass(t).enumFn();
 				if (!fn) {
-					printf("Unknown enumeration %s\n", t.name());
+					qWarning("Unknown enumeration %s\n", t.name());
 					p = new int((int)si->s_enum);
 					break;
 				}
@@ -131,89 +139,98 @@ smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args)
 				p = 0;
 				break;
 			}
-			o[i] = p;
+			o[j] = p;
 		}
 		}
 	}
 }
 
 void
-smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* args)
+smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int start, int end, QList<MocArgument*> args)
 {
-	for (int i = 0; i < items; i++) {
-		void *o = _o[i];
-		switch(args[i].argType) {
+	for (int i = start, j = 0; i < end; i++, j++) {
+		void *o = _o[j];
+		switch(args[i]->argType) {
 		case xmoc_bool:
-		stack[i].s_bool = *(bool*)o;
-		break;
+			stack[j].s_bool = *(bool*)o;
+			break;
 		case xmoc_int:
-		stack[i].s_int = *(int*)o;
-		break;
+			stack[j].s_int = *(int*)o;
+			break;
+		case xmoc_uint:
+			stack[j].s_uint = *(uint*)o;
+			break;
+		case xmoc_long:
+			stack[j].s_long = *(long*)o;
+			break;
+		case xmoc_ulong:
+			stack[j].s_ulong = *(ulong*)o;
+			break;
 		case xmoc_double:
-		stack[i].s_double = *(double*)o;
-		break;
+			stack[j].s_double = *(double*)o;
+			break;
 		case xmoc_charstar:
-		stack[i].s_voidp = o;
-		break;
+			stack[j].s_voidp = o;
+			break;
 		case xmoc_QString:
-		stack[i].s_voidp = o;
-		break;
+			stack[j].s_voidp = o;
+			break;
 		default:	// case xmoc_ptr:
 		{
-			const SmokeType &t = args[i].st;
+			const SmokeType &t = args[i]->st;
 			void *p = o;
 			switch(t.elem()) {
 			case Smoke::t_bool:
-			stack[i].s_bool = **(bool**)o;
+			stack[j].s_bool = **(bool**)o;
 			break;
 			case Smoke::t_char:
-			stack[i].s_char = **(char**)o;
+			stack[j].s_char = **(char**)o;
 			break;
 			case Smoke::t_uchar:
-			stack[i].s_uchar = **(unsigned char**)o;
+			stack[j].s_uchar = **(unsigned char**)o;
 			break;
 			case Smoke::t_short:
-			stack[i].s_short = **(short**)p;
+			stack[j].s_short = **(short**)p;
 			break;
 			case Smoke::t_ushort:
-			stack[i].s_ushort = **(unsigned short**)p;
+			stack[j].s_ushort = **(unsigned short**)p;
 			break;
 			case Smoke::t_int:
-			stack[i].s_int = **(int**)p;
+			stack[j].s_int = **(int**)p;
 			break;
 			case Smoke::t_uint:
-			stack[i].s_uint = **(unsigned int**)p;
+			stack[j].s_uint = **(unsigned int**)p;
 			break;
 			case Smoke::t_long:
-			stack[i].s_long = **(long**)p;
+			stack[j].s_long = **(long**)p;
 			break;
 			case Smoke::t_ulong:
-			stack[i].s_ulong = **(unsigned long**)p;
+			stack[j].s_ulong = **(unsigned long**)p;
 			break;
 			case Smoke::t_float:
-			stack[i].s_float = **(float**)p;
+			stack[j].s_float = **(float**)p;
 			break;
 			case Smoke::t_double:
-			stack[i].s_double = **(double**)p;
+			stack[j].s_double = **(double**)p;
 			break;
 			case Smoke::t_enum:
 			{
 				Smoke::EnumFn fn = SmokeClass(t).enumFn();
 				if (!fn) {
-					printf("Unknown enumeration %s\n", t.name());
-					stack[i].s_enum = **(int**)p;
+					qWarning("Unknown enumeration %s\n", t.name());
+					stack[j].s_enum = **(int**)p;
 					break;
 				}
 				Smoke::Index id = t.typeId();
-				(*fn)(Smoke::EnumToLong, id, p, stack[i].s_enum);
+				(*fn)(Smoke::EnumToLong, id, p, stack[j].s_enum);
 			}
 			break;
 			case Smoke::t_class:
 			case Smoke::t_voidp:
 				if (strchr(t.name(), '*') != 0) {
-					stack[i].s_voidp = *(void **)p;
+					stack[j].s_voidp = *(void **)p;
 				} else {
-					stack[i].s_voidp = p;
+					stack[j].s_voidp = p;
 				}
 			break;
 			}
@@ -317,7 +334,7 @@ ConnectDelegate(void* obj, const char* signal, void* delegate)
 {
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	QObject *qobject = (QObject*) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
-	new DelegateInvocation(qobject, signal, delegate);
+	new DelegateInvocation(qobject, signal, delegate, o);
 	(*FreeGCHandle)(obj);
 	return true;
 }
@@ -338,108 +355,72 @@ Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj) {
 	return (QMetaObject*) i[0].s_voidp;
 }
 
-static bool
-setMocType(MocArgument *arg, int idx, const char * name_value, const char * static_type)
+QList<MocArgument*>
+GetMocArguments(Smoke* smoke, const char * typeName, QList<QByteArray> methodTypes)
 {
-	QByteArray name(name_value);
-	Smoke::Index typeId = 0;
-	Smoke * smoke = qt_Smoke;
-
-	if (strcmp(static_type, "ptr") == 0) {
-		arg[idx].argType = xmoc_ptr;
-		QHash<Smoke*, QyotoModule>::const_iterator it;
-		for (it = qyoto_modules.constBegin(); it != qyoto_modules.constEnd(); ++it) {
-			smoke = it.key();
-			typeId = smoke->idType((const char *) name);
-
-			if (typeId == 0 && !name.contains('*')) {
-				if (!name.contains("&")) name += "&";
-				typeId = smoke->idType((const char *) name);
-			}
-
-			if (typeId != 0) {
-				break;
-			}
-		}
-	} else if (strcmp(static_type, "bool") == 0) {
-		arg[idx].argType = xmoc_bool;
-		typeId = smoke->idType((const char *) name);
-	} else if (strcmp(static_type, "int") == 0) {
-		arg[idx].argType = xmoc_int;
-		typeId = smoke->idType((const char *) name);
-	} else if (strcmp(static_type, "double") == 0) {
-		arg[idx].argType = xmoc_double;
-		typeId = smoke->idType((const char *) name);
-	} else if (strcmp(static_type, "char*") == 0) {
-		arg[idx].argType = xmoc_charstar;
-		typeId = smoke->idType((const char *) name);
-	} else if (strcmp(static_type, "QString") == 0) {
-		arg[idx].argType = xmoc_QString;
-		name += "*";
-		typeId = smoke->idType((const char *) name);
-	}
-	
-	if (typeId == 0) {
-		qFatal("Cannot handle '%s' as slot argument", name_value);
-		return false;
+static QRegExp * rx = 0;
+	if (rx == 0) {
+		rx = new QRegExp("^(bool|int|uint|long|ulong|double|char\\*|QString)&?$");
 	}
 
-	arg[idx].st.set(smoke, typeId);
-	return true;
-}
+	methodTypes.prepend(QByteArray(typeName));
+	QList<MocArgument*> result;
 
-Q_DECL_EXPORT MocArgument *
-GetMocArgumentsNumber(QString replyType, QString member, int& number) 
-{
-	QRegExp rx1("^.*\\((.*)\\)$");
-	QRegExp rx2("^(bool|int|double|char\\*|QString)&?$");
-	int match = rx1.indexIn(member);
-	if (match == -1) {
-		return 0;
-	}
+	foreach (QByteArray name, methodTypes) {
+		MocArgument *arg = new MocArgument;
+		Smoke::Index typeId = 0;
 
-	if (replyType.isEmpty()) {
-		replyType = "void";
-	}
-	QStringList args(replyType);
-
-	QString argStr = rx1.cap(1);
-
-    if (!argStr.isEmpty()) {
-		args << argStr.split(",");
-	}
-
-	number = args.size() - 1;
-
-	MocArgument * mocargs = new MocArgument[args.size()];
-	int i = 0;
-	for (	QStringList::Iterator it = args.begin(); 
-			it != args.end(); 
-			++it, i++ ) 
-	{
-		QString a = (*it);
-
-		if (a == "void" || a == "" || a == " ") {
-			mocargs[i].argType = xmoc_void;
+		if (name.isEmpty()) {
+			arg->argType = xmoc_void;
+			result.append(arg);
 		} else {
-			a.replace(QRegExp("^const\\s+"), "");
-			a = (rx2.indexIn(a) == -1) ? "ptr" : rx2.cap(1);
-
-			QByteArray name = (*it).toLatin1();
-			QByteArray static_type = a.toLatin1();
-			if (!setMocType(mocargs, i, name.constData(), static_type.constData())) {
-				return mocargs;
+			name.replace("const ", "");
+			QString staticType = (rx->indexIn(name) != -1 ? rx->cap(1) : "ptr");
+			if (staticType == "ptr") {
+				arg->argType = xmoc_ptr;
+				typeId = smoke->idType(name.constData());
+				if (typeId == 0 && !name.contains('*')) {
+					if (!name.contains("&")) name += "&";
+					typeId = smoke->idType(name.constData());
+				}
+			} else if (staticType == "bool") {
+				arg->argType = xmoc_bool;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "int") {
+				arg->argType = xmoc_int;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "uint") {
+				arg->argType = xmoc_uint;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "long") {
+				arg->argType = xmoc_long;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "ulong") {
+				arg->argType = xmoc_ulong;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "double") {
+				arg->argType = xmoc_double;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "char*") {
+				arg->argType = xmoc_charstar;
+				typeId = smoke->idType(name.constData());
+			} else if (staticType == "QString") {
+				arg->argType = xmoc_QString;
+				name += "*";
+				typeId = smoke->idType(name.constData());
 			}
+
+			if (typeId == 0) {
+				qFatal("Cannot handle '%s' as slot argument", name.constData());
+				return result;
+			}
+
+			arg->st.set(smoke, typeId);
+			result.append(arg);
 		}
-    }
+	}
 
-	return mocargs;
-}
-
-Q_DECL_EXPORT MocArgument *
-GetMocArguments(QString type, QString member) {
-	int tmp;
-	return GetMocArgumentsNumber(type, member, tmp);
+	return result;
 }
 
 int qt_metacall(void* obj, int _c, int _id, void* _o) {
@@ -489,11 +470,10 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 			return _id - count;
 		}
 	
-		int items;
-		MocArgument* mocArgs = GetMocArgumentsNumber(type, name, items);
+		QList<MocArgument*> mocArgs = GetMocArguments(o->smoke, method.typeName(), method.parameterTypes());
 		
 		// invoke slot
-		InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o);
+		InvokeSlot slot(obj, method.signature(), mocArgs, (void**)_o);
 		slot.next();
 	} else if (_c == QMetaObject::ReadProperty) {
 		QMetaProperty property = metaobject->property(_id);

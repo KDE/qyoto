@@ -26,10 +26,10 @@
 struct MocArgument;
 
 struct smokeqyoto_object {
+    void *ptr;
     bool allocated;
     Smoke *smoke;
     int classId;
-    void *ptr;
 };
 
 struct TypeHandler {
@@ -98,8 +98,8 @@ extern Q_DECL_EXPORT void unmapPointer(smokeqyoto_object *, Smoke::Index, void *
 extern Q_DECL_EXPORT bool IsContainedInstance(smokeqyoto_object *o);
 extern Q_DECL_EXPORT const char* resolve_classname(smokeqyoto_object * o);
 
-extern Q_DECL_EXPORT void smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args);
-extern Q_DECL_EXPORT void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* args);
+extern Q_DECL_EXPORT void smokeStackToQtStack(Smoke::Stack stack, void ** o, int start, int end, QList<MocArgument*> args);
+extern Q_DECL_EXPORT void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int start, int end, QList<MocArgument*> args);
 
 extern Q_DECL_EXPORT void install_handlers(TypeHandler *h);
 
@@ -127,8 +127,7 @@ extern Q_DECL_EXPORT SetIntPtr InvokeDelegate;
 
 extern "C" {
 extern Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj);
-extern Q_DECL_EXPORT MocArgument* GetMocArgumentsNumber(QString replyType, QString member, int& number);
-extern Q_DECL_EXPORT MocArgument* GetMocArguments(QString type, QString member);
+extern Q_DECL_EXPORT QList<MocArgument*> GetMocArguments(Smoke* smoke, const char * typeName, QList<QByteArray> methodTypes);
 extern Q_DECL_EXPORT bool application_terminated;
 
 extern Q_DECL_EXPORT void SetDebug(int channel);

@@ -22,15 +22,15 @@
 
 class Q_DECL_EXPORT SlotReturnValue : public Marshall {
 private:
-	MocArgument * _replyType;
+	QList<MocArgument*> _replyType;
 	Smoke::Stack _stack;
 	Smoke::StackItem * _result;
 public:
-	SlotReturnValue(void ** o, Smoke::StackItem * result, MocArgument * replyType);
+	SlotReturnValue(void ** o, Smoke::StackItem * result, QList<MocArgument*> replyType);
 
 	~SlotReturnValue();
 
-	SmokeType type() { return _replyType[0].st; }
+	SmokeType type() { return _replyType[0]->st; }
 	Marshall::Action action() { return Marshall::FromObject; }
 	Smoke::StackItem &item() { return _stack[0]; }
 	Smoke::StackItem &var() { return *_result; }

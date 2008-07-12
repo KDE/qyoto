@@ -18,16 +18,19 @@
 #include "qyoto.h"
 #include "signalreturnvalue.h"
 
-EmitSignal::EmitSignal(QObject *qobj, int id, int items, MocArgument * args, Smoke::StackItem *sp) :
-	_qobj(qobj), _id(id), _args(args), _sp(sp), _items(items),
+EmitSignal::EmitSignal(QObject *qobj, int id, int items, QList<MocArgument*> args, Smoke::StackItem *sp) :
+	_qobj(qobj), _id(id), _args(args), _sp(sp),
 	_cur(-1), _called(false)
 {
+	_items = args.count();
 	_stack = new Smoke::StackItem[_items];
 }
 
 EmitSignal::~EmitSignal() {
 	delete[] _stack;
-	delete[] _args;
+	foreach (MocArgument * arg, _args) {
+		delete arg;
+	}
 }
 
 void
@@ -41,12 +44,13 @@ EmitSignal::emitSignal() {
 	if (_called) return;
 	_called = true;
 
-	void** o = new void*[_items + 1];
-	smokeStackToQtStack(_stack, o + 1, _items, _args + 1);
+	void** o = new void*[_items];
+	smokeStackToQtStack(_stack, o + 1, 1, _items, _args);
 	_qobj->metaObject()->activate(_qobj, _id, o);
 
-	if (_args[0].argType != xmoc_void)
+	if (_args[0]->argType != xmoc_void) {
 		SignalReturnValue r(o, _sp, _args);
+	}
 
 	delete[] o;
 }
@@ -56,7 +60,7 @@ EmitSignal::next() {
 	int oldcur = _cur;
 	_cur++;
 
-	while(!_called && _cur < _items) {
+	while(!_called && _cur < _items - 1) {
 		Marshall::HandlerFn fn = getMarshallFn(type());
 		(*fn)(this);
 		_cur++;

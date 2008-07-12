@@ -16,7 +16,7 @@
 #include "slotreturnvalue.h"
 #include "qyoto.h"
 
-SlotReturnValue::SlotReturnValue(void ** o, Smoke::StackItem * result, MocArgument * replyType)
+SlotReturnValue::SlotReturnValue(void ** o, Smoke::StackItem * result, QList<MocArgument*> replyType)
 {
 	_result = result;
 	_replyType = replyType;
@@ -26,7 +26,7 @@ SlotReturnValue::SlotReturnValue(void ** o, Smoke::StackItem * result, MocArgume
 	// Save any address in zeroth element of the arrary of 'void*'s passed to 
 	// qt_metacall()
 	void * ptr = o[0];
-	smokeStackToQtStack(_stack, o, 1, _replyType);
+	smokeStackToQtStack(_stack, o, 0, 1, _replyType);
 
 	// Only if the zeroth element of the arrary of 'void*'s passed to qt_metacall()
 	// contains an address, is the return value of the slot needed.

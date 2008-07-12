@@ -14,8 +14,8 @@
 class DelegateInvocation : public QObject, public Marshall
 {
 public:
-    DelegateInvocation(QObject *obj, const char *aSignal, void *delegate)
-        : QObject(obj), _delegate(delegate), _cur(-1)
+    DelegateInvocation(QObject *obj, const char *aSignal, void *delegate, smokeqyoto_object * o)
+        : QObject(obj), _delegate(delegate), _cur(-1), _o(o)
     {
 #ifdef Q_CC_BOR
         const int memberOffset = QObject::staticMetaObject.methodCount();
@@ -44,7 +44,7 @@ public:
             return;
         }
         sig = ba;
-        _mocargs = GetMocArgumentsNumber("", sig, _items);
+        _mocargs = GetMocArguments(_o->smoke, "", mo->method(sigIndex).parameterTypes());
         _sp = new Smoke::StackItem[_items];
         _stack = new Smoke::StackItem[_items];
     }
@@ -52,7 +52,9 @@ public:
     ~DelegateInvocation() {
         delete[] _stack;
         delete[] _sp;
-        delete[] _mocargs;
+        foreach (MocArgument * arg, _mocargs) {
+            delete arg;
+        }
     }
 
     inline bool isValid() const { return !sig.isEmpty(); }
@@ -67,7 +69,7 @@ public:
 
         if (call == QMetaObject::InvokeMetaMethod) {
             if (id == 0) {
-                smokeStackFromQtStack(_stack, a + 1, _items, _mocargs + 1);
+                smokeStackFromQtStack(_stack, a + 1, _items, 1, _mocargs);
                 next();
                 (*InvokeDelegate)(_delegate, _sp);
             }
@@ -76,7 +78,7 @@ public:
         return id;
     }
 
-	inline const MocArgument &arg() { return _mocargs[_cur + 1]; }
+	inline const MocArgument &arg() { return *_mocargs[_cur + 1]; }
 	inline SmokeType type() { return arg().st; }
 	inline Marshall::Action action() { return Marshall::ToObject; }
 	inline Smoke::StackItem &item() { return _stack[_cur]; }
@@ -103,12 +105,13 @@ private:
     // the full, normalized signal name
     QByteArray sig;
 
-    MocArgument *_mocargs;
+    QList<MocArgument*> _mocargs;
     void *_delegate;
     int _cur;
     int _items;
     Smoke::Stack _sp;
     Smoke::Stack _stack;
+    smokeqyoto_object * _o;
 };
 
 #endif

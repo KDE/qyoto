@@ -1,3 +1,9 @@
+2008-07-12  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Change the slot/signal argument parsing code to work the same way as in
+	  QtRuby. Use a QList<MocArgument*> type instead of just an array of
+	  'MocArgument *'.
+
 2008-07-11  Arno Rehn  <arno@arnorehn.de>
 
     * Use IntPtrFromQString instead of StringFromQString.

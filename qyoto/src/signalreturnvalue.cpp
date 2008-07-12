@@ -16,12 +16,12 @@
 #include "signalreturnvalue.h"
 #include "qyoto.h"
 
-SignalReturnValue::SignalReturnValue(void ** o, Smoke::StackItem * result, MocArgument * replyType)
+SignalReturnValue::SignalReturnValue(void ** o, Smoke::StackItem * result, QList<MocArgument*> replyType)
 {
 	_result = result;
 	_replyType = replyType;
 	_stack = new Smoke::StackItem[1];
-	smokeStackFromQtStack(_stack, o, 1, _replyType);
+	smokeStackFromQtStack(_stack, o, 0, 1, _replyType);
 	Marshall::HandlerFn fn = getMarshallFn(type());
 	(*fn)(this);
 }
