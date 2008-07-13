@@ -39,6 +39,8 @@ IsContainedInstanceQtScript(smokeqyoto_object* /*o*/)
 	return false;
 }
 
+extern TypeHandler QtScript_handlers[];
+
 extern "C" {
 
 extern Q_DECL_EXPORT void Init_qtscript();
@@ -48,7 +50,7 @@ Init_qtscript()
 {
 	init_qtscript_Smoke();
 	qtscript_Smoke->binding = new QyotoSmokeBinding(qtscript_Smoke, &classNames);
-	QString prefix("QtScript.");
+	QString prefix("Qyoto.");
 	QString className;
 	QByteArray classStringName;
 	
@@ -60,6 +62,8 @@ Init_qtscript()
 	
 	QyotoModule module = { "QtScript", resolve_classname_qtscript, IsContainedInstanceQtScript };
 	qyoto_modules.insert(qtscript_Smoke, module);
+
+    install_handlers(QtScript_handlers);
 }
 
 }

@@ -25,5 +25,6 @@ DEF_VALUELIST_MARSHALLER( QScriptValueList, QList<QScriptValue>, QScriptValue )
 
 TypeHandler QtScript_handlers[] = {
     { "QList<QScriptValue>&", marshall_QScriptValueList },
+    { "QScriptValueList&", marshall_QScriptValueList },
     { 0, 0 }
 };

@@ -7,10 +7,10 @@ namespace QtScript {
 
 	public class InitQtScript {
 		[DllImport("libqtscript-sharp", CharSet=CharSet.Ansi)]
-		static extern void Init_QtScript();
+		static extern void Init_qtscript();
 		
 		public static void InitSmoke() {
-			Init_QtScript();
+			Init_qtscript();
 		}
 	}
 }
