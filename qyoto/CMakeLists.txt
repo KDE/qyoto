@@ -34,8 +34,7 @@ SET(SRC_CS_QYOTO src/SmokeInvocation.cs
     svg/*.cs
     opengl/*.cs
     uitools/*.cs
-    qdbus/*.cs
-    webkit/*.cs)
+    qdbus/*.cs)
 
 SET( UICS_EXECUTABLE ${PROJECT_BINARY_DIR}/tools/uics/uics )
 SET( CSRCC_EXECUTABLE ${PROJECT_BINARY_DIR}/tools/csrcc/csrcc )
@@ -44,7 +43,7 @@ INCLUDE_DIRECTORIES (${QT_INCLUDES} ${CMAKE_SOURCE_DIR}/smoke ${CMAKE_SOURCE_DIR
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 
 ADD_LIBRARY (qyotoshared SHARED ${SRC_QYOTO_SHARED})
-TARGET_LINK_LIBRARIES (qyotoshared smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTWEBKIT_LIBRARY})
+TARGET_LINK_LIBRARIES (qyotoshared smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 ADD_LIBRARY (qyoto MODULE ${SRC_QYOTO})
 TARGET_LINK_LIBRARIES (qyoto qyotoshared smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
