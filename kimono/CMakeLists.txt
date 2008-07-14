@@ -1,5 +1,4 @@
 PROJECT(kimono)
-add_subdirectory(tutorials)
 
 INCLUDE(UsePkgConfig)
 
@@ -39,3 +38,5 @@ ADD_DEPENDENCIES (kde-dotnet qt-dotnet kimono)
 INSTALL(TARGETS kimono LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(kde-dotnet)
 INSTALL(TARGETS kimonopluginfactory DESTINATION ${PLUGIN_INSTALL_DIR})
+
+add_subdirectory(tutorials EXCLUDE_FROM_ALL)
