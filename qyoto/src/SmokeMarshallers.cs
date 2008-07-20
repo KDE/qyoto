@@ -639,7 +639,6 @@ namespace Qyoto {
 		}
 
 		public static IntPtr ListToPointerList(IntPtr ptr) {
-			Console.WriteLine("*** In ListToPointerList: ptr: {0}", ptr);
 			if (ptr.ToInt64() < 0) {
 				Console.WriteLine("The IntPtr is invalid!");
 				return IntPtr.Zero;
