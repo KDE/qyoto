@@ -22,6 +22,8 @@
 
 class QObject;
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT EmitSignal : public Marshall {
 private:
 	QObject *_qobj;
@@ -53,5 +55,7 @@ public:
 
 	inline bool cleanup() { return true; }
 };
+
+}
 
 #endif // EMIT_SIGNAL_H

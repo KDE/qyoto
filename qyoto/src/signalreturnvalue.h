@@ -20,6 +20,8 @@
 #include "marshall.h"
 #include "smokeqyoto.h"
 
+namespace Qyoto {
+
 /*
 	Converts a C++ value returned by a signal invocation to a C# 
 	reply type
@@ -45,5 +47,6 @@ public:
 	void next();
 };
 
+}
 
 #endif // SIGNAL_RETURN_VALUE_H

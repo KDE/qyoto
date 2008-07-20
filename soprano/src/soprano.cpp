@@ -33,7 +33,7 @@ QHash<int, char*> classNames;
 const char *
 resolve_classname_Soprano(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -49,11 +49,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_soprano();
 
+static Qyoto::Binding binding;
+
 void
 Init_soprano()
 {
 	init_soprano_Smoke();
-	soprano_Smoke->binding = new QyotoSmokeBinding(soprano_Smoke, &classNames);
 	
 	for (int i = 1; i <= soprano_Smoke->numClasses; i++) {
 		QByteArray name(soprano_Smoke->classes[i].className);
@@ -61,10 +62,11 @@ Init_soprano()
 		classNames.insert(i, strdup(name.constData()));
 	}
 	
-	QyotoModule module = { "Soprano", resolve_classname_Soprano, IsContainedInstanceSoprano };
+	binding = Qyoto::Binding(soprano_Smoke, &classNames);
+	QyotoModule module = { "Soprano", resolve_classname_Soprano, IsContainedInstanceSoprano, &binding };
 	qyoto_modules[soprano_Smoke] = module;
 
-    install_handlers(Soprano_handlers);
+    qyoto_install_handlers(Soprano_handlers);
 }
 
 }

@@ -18,6 +18,8 @@
 #include "qyoto.h"
 #include "slotreturnvalue.h"
 
+namespace Qyoto {
+
 InvokeSlot::InvokeSlot(void * obj, const char * slotname, QList<MocArgument*> args, void** o) :
 	_obj(obj), _slotname(slotname), _args(args), _o(o), _cur(-1), _called(false)
 {
@@ -75,4 +77,6 @@ InvokeSlot::~InvokeSlot() {
 	foreach (MocArgument * arg, _args) {
 		delete arg;
 	}
+}
+
 }

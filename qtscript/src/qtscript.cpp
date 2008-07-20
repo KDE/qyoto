@@ -24,12 +24,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/qtscript_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> classNames;
 
 const char *
 resolve_classname_qtscript(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -45,11 +45,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_qtscript();
 
+static Qyoto::Binding binding;
+
 void
 Init_qtscript()
 {
 	init_qtscript_Smoke();
-	qtscript_Smoke->binding = new QyotoSmokeBinding(qtscript_Smoke, &classNames);
 	QString prefix("Qyoto.");
 	QString className;
 	QByteArray classStringName;
@@ -60,10 +61,11 @@ Init_qtscript()
 		classNames.insert(i, strdup(classStringName.constData()));
 	}
 	
-	QyotoModule module = { "QtScript", resolve_classname_qtscript, IsContainedInstanceQtScript };
+	binding = Qyoto::Binding(qtscript_Smoke, &classNames);
+	QyotoModule module = { "QtScript", resolve_classname_qtscript, IsContainedInstanceQtScript, &binding };
 	qyoto_modules.insert(qtscript_Smoke, module);
 
-    install_handlers(QtScript_handlers);
+    qyoto_install_handlers(QtScript_handlers);
 }
 
 }

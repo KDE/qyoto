@@ -113,7 +113,7 @@ namespace Qyoto
 		public static extern void SetApplicationTerminated();
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr make_metaObject(	IntPtr obj, IntPtr parentMeta,
+		static extern IntPtr qyoto_make_metaObject(	IntPtr obj, IntPtr parentMeta,
 												IntPtr stringdata, int stringdataCount, 
 											 	IntPtr data, int dataCount );
 		
@@ -255,7 +255,6 @@ namespace Qyoto
 		// Returns declared slots
 		public static Dictionary<string, CPPMethod> GetSlotSignatures(Type t) {
 			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate array with the MethodInfo, signature and return type the value.
-
 			Dictionary<string, CPPMethod> slots;
 			if (slotSignatures.TryGetValue(t, out slots)) {
 				return slots;
@@ -280,6 +279,7 @@ namespace Qyoto
 						sig = SignatureFromMethodInfo(mi);
 
 					sig = QMetaObject.NormalizedSignature(sig).Data();
+					Console.WriteLine("sig: {0}", sig);
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
 					
@@ -464,7 +464,7 @@ namespace Qyoto
 						parentMetaPtr = (IntPtr) GCHandle.Alloc(parentMeta);
 #endif
 					}
-					metaObject = make_metaObject(	(IntPtr)objHandle, 
+					metaObject = qyoto_make_metaObject(	(IntPtr)objHandle, 
 													parentMetaPtr,
 												 	(IntPtr)stringdata, metaData.StringData.Length,
 												 	(IntPtr)data, metaData.Data.Length );

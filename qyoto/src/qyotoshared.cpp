@@ -298,7 +298,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 }
 
 const char *
-resolve_classname(smokeqyoto_object * o)
+qyoto_resolve_classname(smokeqyoto_object * o)
 {
 	if (o->smoke->classes[o->classId].external) {
 		Smoke::ModuleIndex mi = o->smoke->findClass(o->smoke->className(o->classId));
@@ -499,7 +499,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 		QList<MocArgument*> mocArgs = GetMocArguments(o->smoke, method.typeName(), method.parameterTypes());
 		
 		// invoke slot
-		InvokeSlot slot(obj, method.signature(), mocArgs, (void**)_o);
+		Qyoto::InvokeSlot slot(obj, method.signature(), mocArgs, (void**)_o);
 		slot.next();
 	} else if (_c == QMetaObject::ReadProperty) {
 		QMetaProperty property = metaobject->property(_id);

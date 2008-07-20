@@ -24,12 +24,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/qtuitools_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> classNames;
 
 const char *
 resolve_classname_qtuitools(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -45,11 +45,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_qtuitools();
 
+static Qyoto::Binding binding;
+
 void
 Init_qtuitools()
 {
 	init_qtuitools_Smoke();
-	qtuitools_Smoke->binding = new QyotoSmokeBinding(qtuitools_Smoke, &classNames);
 	QString prefix("Qyoto.");
 	QString className;
 	QByteArray classStringName;
@@ -60,10 +61,11 @@ Init_qtuitools()
 		classNames.insert(i, strdup(classStringName.constData()));
 	}
 	
-	QyotoModule module = { "QtUiTools", resolve_classname_qtuitools, IsContainedInstanceQtUiTools };
+	binding = Qyoto::Binding(qtuitools_Smoke, &classNames);
+	QyotoModule module = { "QtUiTools", resolve_classname_qtuitools, IsContainedInstanceQtUiTools, &binding };
 	qyoto_modules.insert(qtuitools_Smoke, module);
 
-    install_handlers(QtUiTools_handlers);
+    qyoto_install_handlers(QtUiTools_handlers);
 }
 
 }

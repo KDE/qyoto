@@ -23,6 +23,8 @@
 
 #include "marshall.h"
 
+class SmokeBinding;
+
 struct MocArgument;
 
 struct smokeqyoto_object {
@@ -44,6 +46,7 @@ struct QyotoModule {
     const char *name;
     resolveClassNameFn resolve_classname;
     IsContainedInstanceFn IsContainedInstance;
+    SmokeBinding* binding;
 };
 
 // keep this enum in sync with Qyoto.cs
@@ -96,12 +99,12 @@ extern Q_DECL_EXPORT void mapPointer(void * obj, smokeqyoto_object *o, Smoke::In
 extern Q_DECL_EXPORT void unmapPointer(smokeqyoto_object *, Smoke::Index, void *);
 
 extern Q_DECL_EXPORT bool IsContainedInstance(smokeqyoto_object *o);
-extern Q_DECL_EXPORT const char* resolve_classname(smokeqyoto_object * o);
+extern Q_DECL_EXPORT const char* qyoto_resolve_classname(smokeqyoto_object * o);
 
 extern Q_DECL_EXPORT void smokeStackToQtStack(Smoke::Stack stack, void ** o, int start, int end, QList<MocArgument*> args);
 extern Q_DECL_EXPORT void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int start, int end, QList<MocArgument*> args);
 
-extern Q_DECL_EXPORT void install_handlers(TypeHandler *h);
+extern Q_DECL_EXPORT void qyoto_install_handlers(TypeHandler *h);
 
 extern Q_DECL_EXPORT FromIntPtr FreeGCHandle;
 extern Q_DECL_EXPORT CreateInstanceFn CreateInstance;

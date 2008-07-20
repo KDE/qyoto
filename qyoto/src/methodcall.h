@@ -22,6 +22,8 @@
 
 struct smokeqyoto_object;
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT MethodCall : public Marshall {
 private:
 	int _cur;
@@ -60,5 +62,7 @@ public:
 	void callMethod();
 	void next();
 };
+
+}
 
 #endif // METHOD_CALL_H

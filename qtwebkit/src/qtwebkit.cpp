@@ -24,12 +24,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/qtwebkit_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> classNames;
 
 const char *
 resolve_classname_qtwebkit(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -45,11 +45,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_qtwebkit();
 
+static Qyoto::Binding binding;
+
 void
 Init_qtwebkit()
 {
 	init_qtwebkit_Smoke();
-	qtwebkit_Smoke->binding = new QyotoSmokeBinding(qtwebkit_Smoke, &classNames);
 	QString prefix("Qyoto.");
 	QString className;
 	QByteArray classStringName;
@@ -60,10 +61,11 @@ Init_qtwebkit()
 		classNames.insert(i, strdup(classStringName.constData()));
 	}
 	
-	QyotoModule module = { "QtWebKit", resolve_classname_qtwebkit, IsContainedInstanceQtWebKit };
+	binding = Qyoto::Binding(qtwebkit_Smoke, &classNames);
+	QyotoModule module = { "QtWebKit", resolve_classname_qtwebkit, IsContainedInstanceQtWebKit, &binding };
 	qyoto_modules.insert(qtwebkit_Smoke, module);
 
-    install_handlers(QtWebKit_handlers);
+    qyoto_install_handlers(QtWebKit_handlers);
 }
 
 }

@@ -24,12 +24,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/nepomuk_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> classNames;
 
 const char *
 resolve_classname_nepomuk(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -45,11 +45,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_nepomuk();
 
+static Qyoto::Binding binding;
+
 void
 Init_nepomuk()
 {
 	init_nepomuk_Smoke();
-	nepomuk_Smoke->binding = new QyotoSmokeBinding(nepomuk_Smoke, &classNames);
 	QString prefix("Qyoto.");
 	QString className;
 	QByteArray classStringName;
@@ -60,10 +61,11 @@ Init_nepomuk()
 		classNames.insert(i, strdup(classStringName.constData()));
 	}
 	
-	QyotoModule module = { "Nepomuk", resolve_classname_nepomuk, IsContainedInstanceNepomuk };
+	binding = Qyoto::Binding(nepomuk_Smoke, &classNames);
+	QyotoModule module = { "Nepomuk", resolve_classname_nepomuk, IsContainedInstanceNepomuk, &binding };
 	qyoto_modules.insert(nepomuk_Smoke, module);
 
-    install_handlers(Nepomuk_handlers);
+    qyoto_install_handlers(Nepomuk_handlers);
 }
 
 }

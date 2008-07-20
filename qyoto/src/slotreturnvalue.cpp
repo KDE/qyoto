@@ -18,6 +18,8 @@
 #include "slotreturnvalue.h"
 #include "qyoto.h"
 
+namespace Qyoto {
+
 SlotReturnValue::SlotReturnValue(void ** o, Smoke::StackItem * result, QList<MocArgument*> replyType)
 {
 	_result = result;
@@ -55,4 +57,6 @@ SlotReturnValue::next() {}
 
 SlotReturnValue::~SlotReturnValue() {
 	delete[] _stack;
+}
+
 }

@@ -20,6 +20,8 @@
 #include "marshall.h"
 #include "smokeqyoto.h"
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT MethodReturnValue : public Marshall {
 private:
 	Smoke *_smoke;
@@ -40,5 +42,7 @@ public:
 	void unsupported();
 	void next();
 };
+
+}
 
 #endif // METHOD_RETURN_VALUE_H

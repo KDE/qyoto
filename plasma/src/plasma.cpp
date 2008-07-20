@@ -28,12 +28,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/plasma_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> plasmaClassNames;
 
 const char *
 resolve_classname_Plasma(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -49,22 +49,24 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_plasma();
 
+static Qyoto::Binding binding;
+
 void
 Init_plasma()
 {
 	init_plasma_Smoke();
-	plasma_Smoke->binding = new QyotoSmokeBinding(plasma_Smoke, &classNames);
 	
 	for (int i = 1; i <= plasma_Smoke->numClasses; i++) {
 		QByteArray name(plasma_Smoke->classes[i].className);
 		name.replace("::", ".");
-		classNames.insert(i, strdup(name.constData()));
+		plasmaClassNames.insert(i, strdup(name.constData()));
 	}
 	
-	QyotoModule module = { "Plasma", resolve_classname_Plasma, IsContainedInstancePlasma };
+	binding = Qyoto::Binding(plasma_Smoke, &plasmaClassNames);
+	QyotoModule module = { "Plasma", resolve_classname_Plasma, IsContainedInstancePlasma, &binding };
 	qyoto_modules[plasma_Smoke] = module;
 
-    install_handlers(Plasma_handlers);
+    qyoto_install_handlers(Plasma_handlers);
 }
 
 }

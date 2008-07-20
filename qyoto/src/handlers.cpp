@@ -385,7 +385,7 @@ IsContainedInstanceQt(smokeqyoto_object *o)
  * by using the various Qt rtti mechanisms for QObjects, QEvents and so on
  */
 Q_DECL_EXPORT const char *
-resolve_classname_qt(smokeqyoto_object * o)
+qyoto_resolve_classname_qt(smokeqyoto_object * o)
 {
 	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QEvent")) {
 		QEvent * qevent = (QEvent *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QEvent").index);
@@ -629,7 +629,7 @@ resolve_classname_qt(smokeqyoto_object * o)
 			if (o->smoke != 0) {
 				o->classId = o->smoke->idClass(meta->className()).index;
 				if (o->classId != 0) {
-					return o->smoke->binding->className(o->classId);
+					return qyoto_modules[o->smoke].binding->className(o->classId);
 				}
 			}
 
@@ -677,7 +677,7 @@ resolve_classname_qt(smokeqyoto_object * o)
 		}
 	}
 	
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -992,7 +992,7 @@ marshall_basetype(Marshall *m)
 		}
 
 		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->type().classId(), p);
-		const char * classname = resolve_classname(o);
+		const char * classname = qyoto_resolve_classname(o);
 
 		if(m->type().isConst() && m->type().isRef()) {
 			p = construct_copy( o );
@@ -1706,7 +1706,7 @@ DEF_VALUELIST_MARSHALLER( QNetworkCookieList, QList<QNetworkCookie>, QNetworkCoo
 DEF_VALUELIST_MARSHALLER( QPrinterInfoList, QList<QPrinterInfo>, QPrinterInfo )
 #endif
 
-Q_DECL_EXPORT TypeHandler Qt_handlers[] = {
+Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "bool*", marshall_boolR },
     { "bool&", marshall_boolR },
     { "char*", marshall_charP },
@@ -1839,11 +1839,11 @@ Q_DECL_EXPORT TypeHandler Qt_handlers[] = {
     { 0, 0 }
 };
 
-QHash<QString,TypeHandler *> type_handlers;
+QHash<QString,TypeHandler *> qyoto_type_handlers;
 
-void install_handlers(TypeHandler *h) {
+void qyoto_install_handlers(TypeHandler *h) {
 	while(h->name) {
-		type_handlers.insert(h->name, h);
+		qyoto_type_handlers.insert(h->name, h);
 		h++;
 	}
 }
@@ -1853,9 +1853,9 @@ Marshall::HandlerFn getMarshallFn(const SmokeType &type) {
 		return marshall_basetype;
 	if (!type.name())
 		return marshall_void;
-	TypeHandler *h = type_handlers[type.name()];
+	TypeHandler *h = qyoto_type_handlers[type.name()];
 	if (h == 0 && type.isConst() && strlen(type.name()) > strlen("const ")) {
-    	h = type_handlers[type.name() + strlen("const ")];
+    	h = qyoto_type_handlers[type.name() + strlen("const ")];
 	}
 	
 	if(h != 0) {

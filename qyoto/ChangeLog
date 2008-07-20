@@ -1,3 +1,9 @@
+2008-07-20  Arno Rehn  <arno@arnorehn.de>
+
+	* Put the classes derived from Marshall in the 'Qyoto' namespace.
+	* Set the SmokeBinding for each class individually by calling the
+	  method with index 0 on the instance.
+
 2008-07-12  Arno Rehn  <arno@arnorehn.de>
 
     * Special case QDBusVariant in SlotReturnValue.

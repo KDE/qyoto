@@ -17,6 +17,8 @@
 #include "qyoto.h"
 #include "virtualmethodreturnvalue.h"
 
+namespace Qyoto {
+
 VirtualMethodCall::VirtualMethodCall(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, void *obj, void *overridenMethod) :
 	_smoke(smoke), _method(meth), _stack(stack), _obj(obj),
 	 _overridenMethod(overridenMethod), _cur(-1), _sp(0), _called(false) 
@@ -60,4 +62,6 @@ VirtualMethodCall::next() {
 	}
 	callMethod();
 	_cur = oldcur;
+}
+
 }

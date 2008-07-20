@@ -18,6 +18,8 @@
 #include "qyoto.h"
 #include "signalreturnvalue.h"
 
+namespace Qyoto {
+
 EmitSignal::EmitSignal(QObject *qobj, int id, int items, QList<MocArgument*> args, Smoke::StackItem *sp) :
 	_qobj(qobj), _id(id), _args(args), _sp(sp),
 	_cur(-1), _called(false)
@@ -68,4 +70,6 @@ EmitSignal::next() {
 
 	emitSignal();
 	_cur = oldcur;
+}
+
 }

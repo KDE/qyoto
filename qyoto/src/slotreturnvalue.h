@@ -20,6 +20,8 @@
 #include "marshall.h"
 #include "smokeqyoto.h"
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT SlotReturnValue : public Marshall {
 private:
 	QList<MocArgument*> _replyType;
@@ -40,5 +42,7 @@ public:
 	void unsupported();
 	void next();
 };
+
+}
 
 #endif // SLOT_RETURN_VALUE_H

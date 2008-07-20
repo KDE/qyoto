@@ -20,6 +20,8 @@
 #include "marshall.h"
 #include "smokeqyoto.h"
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT InvokeSlot : public Marshall {
 private:
 	void * _obj;
@@ -49,5 +51,7 @@ public:
 	void invokeSlot();
 	void next();
 };
+
+}
 
 #endif // INVOKE_SLOT_H

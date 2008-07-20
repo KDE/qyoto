@@ -16,6 +16,8 @@
 #include "signalreturnvalue.h"
 #include "qyoto.h"
 
+namespace Qyoto {
+
 SignalReturnValue::SignalReturnValue(void ** o, Smoke::StackItem * result, QList<MocArgument*> replyType)
 {
 	_result = result;
@@ -38,4 +40,6 @@ SignalReturnValue::next() {}
 SignalReturnValue::~SignalReturnValue()
 {
 	delete[] _stack;
+}
+
 }

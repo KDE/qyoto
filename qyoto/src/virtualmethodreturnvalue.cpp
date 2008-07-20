@@ -16,6 +16,8 @@
 #include "virtualmethodreturnvalue.h"
 #include "qyoto.h"
 
+namespace Qyoto {
+
 VirtualMethodReturnValue::VirtualMethodReturnValue(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, Smoke::StackItem * retval) :
 	_smoke(smoke), _method(meth), _stack(stack), _retval(retval) 
 {
@@ -35,3 +37,5 @@ VirtualMethodReturnValue::unsupported()
 
 void
 VirtualMethodReturnValue::next() {}
+
+}
