@@ -16,6 +16,8 @@
 #include "methodreturnvalue.h"
 #include "qyoto.h"
 
+namespace Qyoto {
+
 MethodReturnValue::MethodReturnValue(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::StackItem * retval) :
 	_smoke(smoke), _method(method), _retval(retval), _stack(stack)
 {
@@ -34,3 +36,5 @@ MethodReturnValue::unsupported()
 
 void
 MethodReturnValue::next() {}
+
+}

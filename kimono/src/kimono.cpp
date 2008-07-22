@@ -33,7 +33,7 @@ QHash<int, char*> classNames;
 const char *
 resolve_classname_KDE(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -49,11 +49,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_kimono();
 
+static Qyoto::Binding binding;
+
 void
 Init_kimono()
 {
 	init_kde_Smoke();
-	kde_Smoke->binding = new QyotoSmokeBinding(kde_Smoke, &classNames);
 	QByteArray prefix("Kimono.");
 	
 	for (int i = 1; i <= kde_Smoke->numClasses; i++) {
@@ -71,10 +72,11 @@ Init_kimono()
 		classNames.insert(i, strdup(name.constData()));
 	}
 	
-	QyotoModule module = { "Kimono", resolve_classname_KDE, IsContainedInstanceKDE };
+	binding = Qyoto::Binding(kde_Smoke, &classNames);
+	QyotoModule module = { "Kimono", resolve_classname_KDE, IsContainedInstanceKDE, &binding };
 	qyoto_modules[kde_Smoke] = module;
 
-    install_handlers(KDE_handlers);
+    qyoto_install_handlers(KDE_handlers);
 }
 
 }

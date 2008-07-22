@@ -66,6 +66,7 @@ namespace Plasma {
             DesktopContainment = 0,
             PanelContainment = 1,
             CustomContainment = 127,
+            CustomPanelContainment = 128,
         }
         /// <remarks>
         /// <param> name="parent" the QGraphicsItem this applet is parented to

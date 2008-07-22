@@ -620,6 +620,13 @@ namespace Plasma {
         /// <remarks>
         ///  Reimplemented from QGraphicsItem
         ///          </remarks>        <short>    Reimplemented from QGraphicsItem          </short>
+        [SmokeMethod("sceneEvent(QEvent*)")]
+        protected override bool SceneEvent(QEvent arg1) {
+            return (bool) interceptor.Invoke("sceneEvent#", "sceneEvent(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+        }
+        /// <remarks>
+        ///  Reimplemented from QGraphicsItem
+        ///          </remarks>        <short>    Reimplemented from QGraphicsItem          </short>
         [SmokeMethod("shape() const")]
         protected new virtual QPainterPath Shape() {
             return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));

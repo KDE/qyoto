@@ -18,12 +18,14 @@
 #include "qyoto.h"
 #include "slotreturnvalue.h"
 
-InvokeSlot::InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o) :
-	_obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
+namespace Qyoto {
+
+InvokeSlot::InvokeSlot(void * obj, const char * slotname, QList<MocArgument*> args, void** o) :
+	_obj(obj), _slotname(slotname), _args(args), _o(o), _cur(-1), _called(false)
 {
+	_items = args.count();
 	_sp = new Smoke::StackItem[_items];
 	_stack = new Smoke::StackItem[_items];
-	_mocret = args;
 	copyArguments();
 }
 
@@ -36,7 +38,7 @@ InvokeSlot::unsupported()
 void
 InvokeSlot::copyArguments()
 {
-	smokeStackFromQtStack(_stack, _o + 1, _items, _args + 1);
+	smokeStackFromQtStack(_stack, _o + 1, 1, _items, _args);
 }
 
 void
@@ -47,8 +49,8 @@ InvokeSlot::invokeSlot()
 	Smoke::StackItem* ret = new Smoke::StackItem[1];
 	(*InvokeCustomSlot)(_obj, _slotname, _sp, ret);
 	
-	if (_mocret[0].argType != xmoc_void) {
-		SlotReturnValue r(_o, ret, _mocret);
+	if (_args[0]->argType != xmoc_void) {
+		SlotReturnValue r(_o, ret, _args);
 	}
 	delete[] ret;
 }
@@ -59,7 +61,7 @@ InvokeSlot::next()
 	int oldcur = _cur;
 	_cur++;
 
-	while (!_called && _cur < _items) {
+	while (!_called && _cur < _items - 1) {
 		Marshall::HandlerFn fn = getMarshallFn(type());
 		(*fn)(this);
 		_cur++;
@@ -72,5 +74,9 @@ InvokeSlot::next()
 InvokeSlot::~InvokeSlot() {
 	delete[] _stack;
 	delete[] _sp;
-	delete[] _args;
+	foreach (MocArgument * arg, _args) {
+		delete arg;
+	}
+}
+
 }

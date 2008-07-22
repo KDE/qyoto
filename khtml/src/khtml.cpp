@@ -28,12 +28,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/khtml_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> classNames;
 
 const char *
 resolve_classname_khtml(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -49,11 +49,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_khtml();
 
+static Qyoto::Binding binding;
+
 void
 Init_khtml()
 {
 	init_khtml_Smoke();
-	khtml_Smoke->binding = new QyotoSmokeBinding(khtml_Smoke, &classNames);
 	QByteArray prefix("Kimono.");
 	
 	for (int i = 1; i <= khtml_Smoke->numClasses; i++) {
@@ -66,10 +67,11 @@ Init_khtml()
 		classNames.insert(i, strdup(name.constData()));
 	}
 	
-	QyotoModule module = { "KHTML", resolve_classname_khtml, IsContainedInstanceKHTML };
+	binding = Qyoto::Binding(khtml_Smoke, &classNames);
+	QyotoModule module = { "KHTML", resolve_classname_khtml, IsContainedInstanceKHTML, &binding };
 	qyoto_modules[khtml_Smoke] = module;
 
-    install_handlers(KHTML_handlers);
+    qyoto_install_handlers(KHTML_handlers);
 }
 
 }

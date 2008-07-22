@@ -1,0 +1,10 @@
+OPTION(ENABLE_QTUITOOLS "build QtUiTools" OFF)
+
+set(QTUITOOLS_ENABLED "no")
+
+    if(ENABLE_QTUITOOLS)
+        add_subdirectory( qtuitools )
+        set(QTUITOOLS_ENABLED "yes")
+    endif(ENABLE_QTUITOOLS)
+
+message(STATUS "Build QtUiTools... " ${QTUITOOLS_ENABLED})

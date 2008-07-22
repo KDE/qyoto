@@ -28,12 +28,12 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/qsci_smoke.h>
 
-QHash<int, char*> classNames;
+static QHash<int, char*> classNames;
 
 const char *
 resolve_classname_Qsci(smokeqyoto_object * o)
 {
-	return o->smoke->binding->className(o->classId);
+	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 
 bool
@@ -47,11 +47,12 @@ extern "C" {
 
 extern Q_DECL_EXPORT void Init_qscintilla();
 
+static Qyoto::Binding binding;
+
 void
 Init_qscintilla()
 {
 	init_qsci_Smoke();
-	qsci_Smoke->binding = new QyotoSmokeBinding(qsci_Smoke, &classNames);
 	QString prefix("QScintilla.");
 	QString className;
 	QByteArray classStringName;
@@ -62,6 +63,7 @@ Init_qscintilla()
 		classNames.insert(i, strdup(classStringName.constData()));
 	}
 	
+	binding = Qyoto::Binding(qsci_Smoke, &className);
 	QyotoModule module = { "QScintilla2", resolve_classname_Qsci, IsContainedInstanceQsci };
 	qyoto_modules.insert(qsci_Smoke, module);
 }

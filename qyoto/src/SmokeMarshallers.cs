@@ -639,7 +639,17 @@ namespace Qyoto {
 		}
 
 		public static IntPtr ListToPointerList(IntPtr ptr) {
-			object l = ((GCHandle) ptr).Target;
+			if (ptr.ToInt64() < 0) {
+				Console.WriteLine("The IntPtr is invalid!");
+				return IntPtr.Zero;
+			}
+			object l;
+			try {
+				l = ((GCHandle) ptr).Target;
+			} catch (Exception e) {
+				Console.WriteLine("An error occured when retrieving the target: {0}", e);
+				return ConstructPointerList();
+			}
 			// convert the list to an array via reflection. this is probably the easiest way
 			object[] oa = (object[]) l.GetType().GetMethod("ToArray").Invoke(l, null);
 			

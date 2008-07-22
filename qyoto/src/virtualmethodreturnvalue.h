@@ -20,6 +20,8 @@
 #include "smokeqyoto.h"
 #include "marshall.h"
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT VirtualMethodReturnValue : public Marshall {
 private:
 	Smoke *_smoke;
@@ -41,5 +43,7 @@ public:
 	void unsupported();
 	void next();
 };
+
+}
 
 #endif // VIRTUAL_METHOD_RETURN_VALUE_H

@@ -1,3 +1,36 @@
+2008-07-20  Arno Rehn  <arno@arnorehn.de>
+
+	* Put the classes derived from Marshall in the 'Qyoto' namespace.
+	* Set the SmokeBinding for each class individually by calling the
+	  method with index 0 on the instance.
+
+2008-07-12  Arno Rehn  <arno@arnorehn.de>
+
+    * Special case QDBusVariant in SlotReturnValue.
+    * Make QDBusVariant work with CreateInstance()
+    * Make QDBusReply similar to C++'s QDBusReply.
+
+2008-07-12  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Change the slot/signal argument parsing code to work the same way as in
+	  QtRuby. Use a QList<MocArgument*> type instead of just an array of
+	  'MocArgument *'.
+	* The type of a slot arg should always be in the smoke module of the slot
+	  being invoked. However, that isn't true for a dataUpdated() slot in a 
+      PlasmaScripting.Applet. So make GetMocArguments search through all the
+	  loaded smoke modules if the arg type isn't found at first.
+
+2008-07-11  Arno Rehn  <arno@arnorehn.de>
+
+    * Use IntPtrFromQString instead of StringFromQString.
+    * Export the rest of the C# marshalling functions.
+
+2008-07-09  Richard Dale  <richard.j.dale@gmail.com>
+
+	* When looking up the smoke type of a slot or signal argument, iterate 
+	  through all the loaded smoke modules, rather than just looking in the
+	  qt one.
+
 2008-07-08  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Add marshallers for QHash types such as QHash<QString, QVariant> based

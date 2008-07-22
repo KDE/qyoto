@@ -20,21 +20,23 @@
 #include "marshall.h"
 #include "smokeqyoto.h"
 
+namespace Qyoto {
+
 /*
 	Converts a C++ value returned by a signal invocation to a C# 
 	reply type
 */
 class Q_DECL_EXPORT SignalReturnValue : public Marshall {
 private:
-	MocArgument * _replyType;
+	QList<MocArgument*> _replyType;
 	Smoke::Stack _stack;
 	Smoke::StackItem * _result;
 public:
-	SignalReturnValue(void ** o, Smoke::StackItem * result, MocArgument * replyType);
+	SignalReturnValue(void ** o, Smoke::StackItem * result, QList<MocArgument*> replyType);
 
 	~SignalReturnValue();
 
-	inline SmokeType type() { return _replyType[0].st; }
+	inline SmokeType type() { return _replyType[0]->st; }
 	inline Marshall::Action action() { return Marshall::ToObject; }
 	inline Smoke::StackItem &item() { return _stack[0]; }
 	inline Smoke::StackItem &var() { return *_result; }
@@ -45,5 +47,6 @@ public:
 	void next();
 };
 
+}
 
 #endif // SIGNAL_RETURN_VALUE_H

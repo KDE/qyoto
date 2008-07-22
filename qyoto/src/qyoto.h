@@ -23,13 +23,15 @@
 
 #include "marshall.h"
 
+class SmokeBinding;
+
 struct MocArgument;
 
 struct smokeqyoto_object {
+    void *ptr;
     bool allocated;
     Smoke *smoke;
     int classId;
-    void *ptr;
 };
 
 struct TypeHandler {
@@ -44,6 +46,7 @@ struct QyotoModule {
     const char *name;
     resolveClassNameFn resolve_classname;
     IsContainedInstanceFn IsContainedInstance;
+    SmokeBinding* binding;
 };
 
 // keep this enum in sync with Qyoto.cs
@@ -96,12 +99,12 @@ extern Q_DECL_EXPORT void mapPointer(void * obj, smokeqyoto_object *o, Smoke::In
 extern Q_DECL_EXPORT void unmapPointer(smokeqyoto_object *, Smoke::Index, void *);
 
 extern Q_DECL_EXPORT bool IsContainedInstance(smokeqyoto_object *o);
-extern Q_DECL_EXPORT const char* resolve_classname(smokeqyoto_object * o);
+extern Q_DECL_EXPORT const char* qyoto_resolve_classname(smokeqyoto_object * o);
 
-extern Q_DECL_EXPORT void smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args);
-extern Q_DECL_EXPORT void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* args);
+extern Q_DECL_EXPORT void smokeStackToQtStack(Smoke::Stack stack, void ** o, int start, int end, QList<MocArgument*> args);
+extern Q_DECL_EXPORT void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int start, int end, QList<MocArgument*> args);
 
-extern Q_DECL_EXPORT void install_handlers(TypeHandler *h);
+extern Q_DECL_EXPORT void qyoto_install_handlers(TypeHandler *h);
 
 extern Q_DECL_EXPORT FromIntPtr FreeGCHandle;
 extern Q_DECL_EXPORT CreateInstanceFn CreateInstance;
@@ -127,8 +130,7 @@ extern Q_DECL_EXPORT SetIntPtr InvokeDelegate;
 
 extern "C" {
 extern Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj);
-extern Q_DECL_EXPORT MocArgument* GetMocArgumentsNumber(QString replyType, QString member, int& number);
-extern Q_DECL_EXPORT MocArgument* GetMocArguments(QString type, QString member);
+extern Q_DECL_EXPORT QList<MocArgument*> GetMocArguments(Smoke* smoke, const char * typeName, QList<QByteArray> methodTypes);
 extern Q_DECL_EXPORT bool application_terminated;
 
 extern Q_DECL_EXPORT void SetDebug(int channel);
@@ -146,6 +148,21 @@ extern DictToHash DictionaryToQHash;
 extern DictToMap DictionaryToQMap;
 extern char *StringFromQString(void *ptr);
 extern InvokeMethodFn AddObjectObjectToDictionary;
+
+extern Q_DECL_EXPORT GetIntPtr IntPtrToCharStarStar;
+extern Q_DECL_EXPORT GetCharStarFromIntPtr IntPtrToCharStar;
+extern Q_DECL_EXPORT GetIntPtrFromCharStar IntPtrFromCharStar;
+extern Q_DECL_EXPORT GetIntPtr IntPtrToQString;
+extern Q_DECL_EXPORT GetIntPtr IntPtrFromQString;
+extern Q_DECL_EXPORT GetIntPtr StringBuilderToQString;
+extern Q_DECL_EXPORT SetIntPtrFromCharStar StringBuilderFromQString;
+extern Q_DECL_EXPORT GetIntPtr StringListToQStringList;
+extern Q_DECL_EXPORT GetIntPtr ListIntToQListInt;
+extern Q_DECL_EXPORT GetIntPtr ListUIntToQListQRgb;
+extern Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
+extern Q_DECL_EXPORT AddInt AddIntToListInt;
+extern Q_DECL_EXPORT AddUInt AddUIntToListUInt;
+extern Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
 }
 
 #endif

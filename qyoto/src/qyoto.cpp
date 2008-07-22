@@ -71,11 +71,11 @@ QHash<int,char *> classname;
 extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 
-extern TypeHandler Qt_handlers[];
+extern TypeHandler Qyoto_handlers[];
 extern void install_handlers(TypeHandler *);
 
 extern bool IsContainedInstanceQt(smokeqyoto_object *o);
-extern const char * resolve_classname_qt(smokeqyoto_object * o);
+extern const char * qyoto_resolve_classname_qt(smokeqyoto_object * o);
 
 extern "C" {
 
@@ -300,8 +300,14 @@ QVariantValue(char * typeName, void * variant)
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(variant);
 	void * value = QMetaType::construct(	QMetaType::type(typeName), 
 											(void *) ((QVariant *)o->ptr)->constData() );
+	if (qstrcmp(typeName, "QDBusVariant") == 0) {
+		Smoke::ModuleIndex id = o->smoke->findClass("QVariant");
+		smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, value);
+		(*FreeGCHandle)(variant);
+		return (*CreateInstance)("Qyoto.QDBusVariant", vo);
+	}
 	Smoke::ModuleIndex id = o->smoke->findClass(typeName);
-	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, (void *) value);
+	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, value);
 	(*FreeGCHandle)(variant);
 	return (*CreateInstance)((QString("Qyoto.") + typeName).toLatin1(), vo);
 }
@@ -696,7 +702,7 @@ CallSmokeMethod(Smoke * smoke, int methodId, void * obj, Smoke::StackItem * sp, 
 
 	// C# operator methods must be static, and so some C++ instance methods with one argument
 	// are mapped onto C# static methods with two arguments in the Qyoto classes. So look for
-	// examples of these and changes the args passed to the MethodCall() constructor. Note
+	// examples of these and changes the args passed to the QyotoMethodCall() constructor. Note
 	// that 'operator>>' and 'operator<<' methods in C# must have a second arg of type int,
 	// and so they are mapped onto the instance methods Read() and Write() in C#.
 	if (	meth.numArgs == 1
@@ -709,7 +715,7 @@ CallSmokeMethod(Smoke * smoke, int methodId, void * obj, Smoke::StackItem * sp, 
 		items = 1;
 	}
 
-	MethodCall c(smoke, methodId, obj, sp, items);
+	Qyoto::MethodCall c(smoke, methodId, obj, sp, items);
 	c.next();
 
 #ifdef DEBUG
@@ -733,8 +739,6 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 	QString sig(signature);
 	QString replyType(type);
 
-	MocArgument * args = GetMocArguments(replyType, sig);
-
 	const QMetaObject* meta = qobj->metaObject();
 	int i;
 	for (i = 0; i < meta->methodCount(); i++) {
@@ -745,8 +749,10 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 			break;
 		}
 	}
+
+	QList<MocArgument*> args = GetMocArguments(o->smoke, meta->method(i).typeName(), meta->method(i).parameterTypes());
 	
-	EmitSignal signal(qobj, i, items, args, sp);
+	Qyoto::EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();
 
 	(*FreeGCHandle)(obj);
@@ -754,7 +760,7 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 }
 
 Q_DECL_EXPORT void*
-make_metaObject(void* obj, void* parentMeta, const char* stringdata, int stringdata_count,
+qyoto_make_metaObject(void* obj, void* parentMeta, const char* stringdata, int stringdata_count,
                 const uint* data, int data_count)
 {
 	QMetaObject* parent = 0;
@@ -874,12 +880,13 @@ make_metaObject(void* obj, void* parentMeta, const char* stringdata, int stringd
 	return (*CreateInstance)("Qyoto.QMetaObject", m);
 }
 
+static Qyoto::Binding binding;
+
 Q_DECL_EXPORT void
 Init_qyoto()
 {
     init_qt_Smoke();
-    qt_Smoke->binding = new QyotoSmokeBinding(qt_Smoke, &classname);
-    install_handlers(Qt_handlers);
+    qyoto_install_handlers(Qyoto_handlers);
     QByteArray prefix("Qyoto.");
 
     for (int i = 1; i <= qt_Smoke->numClasses; i++) {
@@ -892,7 +899,8 @@ Init_qyoto()
 		classname.insert(i, strdup(name.constData()));
     }
 
-    QyotoModule module = { "Qyoto", resolve_classname_qt, IsContainedInstanceQt };
+    binding = Qyoto::Binding(qt_Smoke, &classname);
+	QyotoModule module = { "Qyoto", qyoto_resolve_classname_qt, IsContainedInstanceQt, &binding };
     qyoto_modules[qt_Smoke] = module;
 
 #if QT_VERSION >= 0x40300

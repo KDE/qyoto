@@ -1,0 +1,10 @@
+OPTION(ENABLE_NEPOMUK "build Nepomuk" OFF)
+
+set(NEPOMUK_ENABLED "no")
+
+    if(ENABLE_NEPOMUK)
+        add_subdirectory( nepomuk )
+        set(NEPOMUK_ENABLED "yes")
+    endif(ENABLE_NEPOMUK)
+
+message(STATUS "Build Nepomuk... " ${NEPOMUK_ENABLED})

@@ -20,6 +20,8 @@
 #include "marshall.h"
 #include "smokeqyoto.h"
 
+namespace Qyoto {
+
 class Q_DECL_EXPORT VirtualMethodCall : public Marshall {
 private:
 	Smoke *_smoke;
@@ -48,5 +50,7 @@ public:
 	void callMethod();
 	void next();
 };
+
+}
 
 #endif // VIRTUAL_METHOD_CALL_H

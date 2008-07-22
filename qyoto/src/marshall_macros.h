@@ -63,7 +63,7 @@ void marshall_ItemList(Marshall *m) {
 			}
 
 			Smoke::ModuleIndex ix = m->smoke()->findClass(ItemSTR);
-			const char * className = ix.smoke->binding->className(ix.index);
+			const char * className = qyoto_modules[ix.smoke].binding->className(ix.index);
 			
 			void * al = (*ConstructList)(className);
 			
@@ -72,7 +72,7 @@ void marshall_ItemList(Marshall *m) {
 				void * obj = (*GetInstance)(p, true);
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
-					obj = (*CreateInstance)(resolve_classname(o), o);
+					obj = (*CreateInstance)(qyoto_resolve_classname(o), o);
 				}
 				(*AddIntPtrToList)(al, obj);
 				(*FreeGCHandle)(obj);
@@ -145,7 +145,7 @@ void marshall_ValueListItem(Marshall *m) {
 			}
 
 			Smoke::ModuleIndex ix = m->smoke()->findClass(ItemSTR);
-			const char * className = ix.smoke->binding->className(ix.index);
+			const char * className = qyoto_modules[ix.smoke].binding->className(ix.index);
 			
 			void * al = (*ConstructList)(className);
 
@@ -155,7 +155,7 @@ void marshall_ValueListItem(Marshall *m) {
 
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, ix.smoke, ix.index, p);
-					obj = (*CreateInstance)(resolve_classname(o), o);
+					obj = (*CreateInstance)(qyoto_resolve_classname(o), o);
 				}
 
 				(*AddIntPtrToList)(al, obj);

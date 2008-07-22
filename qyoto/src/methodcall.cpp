@@ -17,6 +17,8 @@
 #include "qyoto.h"
 #include "methodreturnvalue.h"
 
+namespace Qyoto {
+
 MethodCall::MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _called(false)
 {
@@ -87,6 +89,9 @@ void MethodCall::callMethod()
 	(*fn)(method().method, ptr, _stack);
 	
 	if (isConstructor()) {
+		Smoke::StackItem _s[2];
+		_s[1].s_class = qyoto_modules[_smoke].binding;
+		fn(0, _stack[0].s_voidp, _s);
 		_o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
 		(*SetSmokeObject)(_target, _o);
 		mapPointer(_target, _o, _o->classId, 0);
@@ -95,7 +100,7 @@ void MethodCall::callMethod()
 		(*SetSmokeObject)(_target, 0);
 		free_smokeqyoto_object(_o);
 	} else {
-		MethodReturnValue r(_smoke, _method, _stack, _retval);
+		Qyoto::MethodReturnValue r(_smoke, _method, _stack, _retval);
 	}
 }
 
@@ -110,4 +115,6 @@ void MethodCall::next()
 	}
 	callMethod();
 	_cur = oldcur;
+}
+
 }

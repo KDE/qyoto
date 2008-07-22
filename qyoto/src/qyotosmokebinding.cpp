@@ -20,10 +20,13 @@
 
 #include <cstdlib>
 
-QyotoSmokeBinding::QyotoSmokeBinding(Smoke *s, QHash<int, char*> *classname) : SmokeBinding(s), _classname(classname) {}
+namespace Qyoto {
+
+Binding::Binding() : SmokeBinding(0) {}
+Binding::Binding(Smoke *s, QHash<int, char*> *classname) : SmokeBinding(s), _classname(classname) {}
 
 void
-QyotoSmokeBinding::deleted(Smoke::Index classId, void *ptr)
+Binding::deleted(Smoke::Index classId, void *ptr)
 {
 	void * obj = (*GetInstance)(ptr, true);
 	if (obj == 0) {
@@ -48,7 +51,7 @@ QyotoSmokeBinding::deleted(Smoke::Index classId, void *ptr)
 }
 
 bool
-QyotoSmokeBinding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAbstract)
+Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAbstract)
 {
 	// don't call anything if the application has already terminated
 	if (application_terminated) return false;
@@ -103,13 +106,15 @@ QyotoSmokeBinding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args,
 		return false;
 	}
 
-	VirtualMethodCall c(smoke, method, args, obj, overridenMethod);
+	Qyoto::VirtualMethodCall c(smoke, method, args, obj, overridenMethod);
 	c.next();
 	return true;
 }
 
 char*
-QyotoSmokeBinding::className(Smoke::Index classId)
+Binding::className(Smoke::Index classId)
 {
 	return _classname->value((int) classId);
+}
+
 }
