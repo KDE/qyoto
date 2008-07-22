@@ -1,3 +1,3 @@
 SET(SRC_T1 ${CMAKE_CURRENT_SOURCE_DIR}/t1.cs)
-SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/qtscript.dll)
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
 ADD_CS_EXECUTABLE(t1 ${SRC_T1} ALL)
