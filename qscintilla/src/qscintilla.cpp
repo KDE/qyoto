@@ -63,8 +63,8 @@ Init_qscintilla()
 		classNames.insert(i, strdup(classStringName.constData()));
 	}
 	
-	binding = Qyoto::Binding(qsci_Smoke, &className);
-	QyotoModule module = { "QScintilla2", resolve_classname_Qsci, IsContainedInstanceQsci };
+	binding = Qyoto::Binding(qsci_Smoke, &classNames);
+	QyotoModule module = { "QScintilla2", resolve_classname_Qsci, IsContainedInstanceQsci, &binding };
 	qyoto_modules.insert(qsci_Smoke, module);
 }
 
