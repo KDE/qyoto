@@ -140,7 +140,7 @@ namespace KIO {
         ///         <see> setMetaData</see>
         ///         <see> mergeMetaData</see>
         public void AddMetaData(Dictionary<string, string> values) {
-            interceptor.Invoke("addMetaData?", "addMetaData(const QMap<QString, QString>&)", typeof(void), typeof(Dictionary<string, string>), values);
+            interceptor.Invoke("addMetaData?", "addMetaData(const QMap<QString,QString>&)", typeof(void), typeof(Dictionary<string, string>), values);
         }
         /// <remarks>
         ///  Add key/value pairs to the meta data that is sent to the slave.
@@ -150,7 +150,7 @@ namespace KIO {
         ///         <see> setMetaData</see>
         ///         <see> addMetaData</see>
         public void MergeMetaData(Dictionary<string, string> values) {
-            interceptor.Invoke("mergeMetaData?", "mergeMetaData(const QMap<QString, QString>&)", typeof(void), typeof(Dictionary<string, string>), values);
+            interceptor.Invoke("mergeMetaData?", "mergeMetaData(const QMap<QString,QString>&)", typeof(void), typeof(Dictionary<string, string>), values);
         }
         /// <remarks>
         ///          </remarks>        <short>   </short>

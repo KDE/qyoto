@@ -1054,7 +1054,7 @@ namespace Qyoto {
             return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QList<QVariant>&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(List<QVariant>), list);
         }
         public static QDBusArgument Write(QDBusArgument arg, Dictionary<string, QVariant> map) {
-            return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QMap<QString, QVariant>&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(Dictionary<string, QVariant>), map);
+            return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QMap<QString,QVariant>&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(Dictionary<string, QVariant>), map);
         }
         public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
             return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QDomNode&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QDomNode), arg2);

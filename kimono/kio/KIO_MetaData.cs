@@ -27,7 +27,7 @@ namespace KIO {
         ///    </remarks>        <short>    Copy constructor.</short>
         public MetaData(Dictionary<string, string> metaData) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("MetaData?", "MetaData(const QMap<QString, QString>&)", typeof(void), typeof(Dictionary<string, string>), metaData);
+            interceptor.Invoke("MetaData?", "MetaData(const QMap<QString,QString>&)", typeof(void), typeof(Dictionary<string, string>), metaData);
         }
         ~MetaData() {
             interceptor.Invoke("~MetaData", "~MetaData()", typeof(void));

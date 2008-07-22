@@ -208,7 +208,7 @@ namespace Kimono {
         /// <param> name="knownLogins" map of known logins: the keys are usernames, the values are passwords.
         ///      </param></remarks>        <short>    Presets a number of login+password pairs that the user can choose from.</short>
         public void SetKnownLogins(Dictionary<string, string> knownLogins) {
-            interceptor.Invoke("setKnownLogins?", "setKnownLogins(const QMap<QString, QString>&)", typeof(void), typeof(Dictionary<string, string>), knownLogins);
+            interceptor.Invoke("setKnownLogins?", "setKnownLogins(const QMap<QString,QString>&)", typeof(void), typeof(Dictionary<string, string>), knownLogins);
         }
         /// <remarks>
         ///      </remarks>        <short>   </short>

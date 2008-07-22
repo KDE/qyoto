@@ -82,7 +82,7 @@ namespace Qyoto {
         }
         [SmokeMethod("setItemData(const QModelIndex&, const QMap<int, QVariant>&)")]
         public virtual bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
-            return (bool) interceptor.Invoke("setItemData#?", "setItemData(const QModelIndex&, const QMap<int, QVariant>&)", typeof(bool), typeof(QModelIndex), index, typeof(Dictionary<int, QVariant>), roles);
+            return (bool) interceptor.Invoke("setItemData#?", "setItemData(const QModelIndex&, const QMap<int,QVariant>&)", typeof(bool), typeof(QModelIndex), index, typeof(Dictionary<int, QVariant>), roles);
         }
         [SmokeMethod("mimeTypes() const")]
         public virtual List<string> MimeTypes() {
