@@ -33,7 +33,6 @@ SET(SRC_CS_QYOTO src/SmokeInvocation.cs
     xml/*.cs
     svg/*.cs
     opengl/*.cs
-    uitools/*.cs
     qdbus/*.cs)
 
 SET( UICS_EXECUTABLE ${PROJECT_BINARY_DIR}/tools/uics/uics )
