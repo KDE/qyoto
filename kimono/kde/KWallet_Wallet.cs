@@ -189,9 +189,9 @@ namespace KWallet {
         ///           written as a map.
         /// 		 </return>
         ///         <short>     Read the map entry <code>key</code> from the current folder.</short>
-        [SmokeMethod("readMap(const QString&, QMap<QString, QString>&)")]
+        [SmokeMethod("readMap(const QString&, QMap<QString,QString>&)")]
         public virtual int ReadMap(string key, Dictionary<string, string> value) {
-            return (int) interceptor.Invoke("readMap$?", "readMap(const QString&, QMap<QString, QString>&)", typeof(int), typeof(string), key, typeof(Dictionary<string, string>), value);
+            return (int) interceptor.Invoke("readMap$?", "readMap(const QString&, QMap<QString,QString>&)", typeof(int), typeof(string), key, typeof(Dictionary<string, string>), value);
         }
         /// <remarks>
         ///   Read the password entry <code>key</code> from the current folder.
@@ -219,7 +219,7 @@ namespace KWallet {
         /// 		 </return>
         ///         <short>     Read the entries matching <code>key</code> from the current folder.</short>
         public int ReadEntryList(string key, StringBuilder value) {
-            return (int) interceptor.Invoke("readEntryList$?", "readEntryList(const QString&, QMap<QString, QByteArray>&)", typeof(int), typeof(string), key, typeof(StringBuilder), value);
+            return (int) interceptor.Invoke("readEntryList$?", "readEntryList(const QString&, QMap<QString,QByteArray>&)", typeof(int), typeof(string), key, typeof(StringBuilder), value);
         }
         /// <remarks>
         ///   Read the map entry <code>key</code> from the current folder.
@@ -233,7 +233,7 @@ namespace KWallet {
         /// 		 </return>
         ///         <short>     Read the map entry <code>key</code> from the current folder.</short>
         public int ReadMapList(string key, StringBuilder value) {
-            return (int) interceptor.Invoke("readMapList$?", "readMapList(const QString&, QMap<QString, QMap<QString, QString> >&)", typeof(int), typeof(string), key, typeof(StringBuilder), value);
+            return (int) interceptor.Invoke("readMapList$?", "readMapList(const QString&, QMap<QString,QMap<QString,QString> >&)", typeof(int), typeof(string), key, typeof(StringBuilder), value);
         }
         /// <remarks>
         ///   Read the password entry <code>key</code> from the current folder.
@@ -247,7 +247,7 @@ namespace KWallet {
         /// 		 </return>
         ///         <short>     Read the password entry <code>key</code> from the current folder.</short>
         public int ReadPasswordList(string key, Dictionary<string, string> value) {
-            return (int) interceptor.Invoke("readPasswordList$?", "readPasswordList(const QString&, QMap<QString, QString>&)", typeof(int), typeof(string), key, typeof(Dictionary<string, string>), value);
+            return (int) interceptor.Invoke("readPasswordList$?", "readPasswordList(const QString&, QMap<QString,QString>&)", typeof(int), typeof(string), key, typeof(Dictionary<string, string>), value);
         }
         /// <remarks>
         ///   Write <code>key</code> = <code>value</code> as a binary entry to the current
@@ -283,9 +283,9 @@ namespace KWallet {
         /// </param></remarks>        <return> Returns 0 on success, non-zero on error.
         /// 		 </return>
         ///         <short>     Write <code>key</code> = <code>value</code> as a map to the current folder.</short>
-        [SmokeMethod("writeMap(const QString&, const QMap<QString, QString>&)")]
+        [SmokeMethod("writeMap(const QString&, const QMap<QString,QString>&)")]
         public virtual int WriteMap(string key, Dictionary<string, string> value) {
-            return (int) interceptor.Invoke("writeMap$?", "writeMap(const QString&, const QMap<QString, QString>&)", typeof(int), typeof(string), key, typeof(Dictionary<string, string>), value);
+            return (int) interceptor.Invoke("writeMap$?", "writeMap(const QString&, const QMap<QString,QString>&)", typeof(int), typeof(string), key, typeof(Dictionary<string, string>), value);
         }
         /// <remarks>
         ///   Write <code>key</code> = <code>value</code> as a password to the current folder.

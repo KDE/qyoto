@@ -141,7 +141,7 @@ namespace Plasma {
         ///      </remarks>        <short>    Used when connecting to a DataEngine      </short>
         [Q_SLOT("void dataUpdated(QString, Plasma::DataEngine::Data)")]
         public void DataUpdated(string sourceName, Dictionary<string, QVariant> data) {
-            interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString, QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);
+            interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);
         }
         /// <remarks>
         ///  Reimplemented from Plasma.Widget

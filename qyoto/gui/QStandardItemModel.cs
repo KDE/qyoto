@@ -151,7 +151,7 @@ namespace Qyoto {
         }
         [SmokeMethod("setItemData(const QModelIndex&, const QMap<int, QVariant>&)")]
         public override bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
-            return (bool) interceptor.Invoke("setItemData#?", "setItemData(const QModelIndex&, const QMap<int, QVariant>&)", typeof(bool), typeof(QModelIndex), index, typeof(Dictionary<int, QVariant>), roles);
+            return (bool) interceptor.Invoke("setItemData#?", "setItemData(const QModelIndex&, const QMap<int,QVariant>&)", typeof(bool), typeof(QModelIndex), index, typeof(Dictionary<int, QVariant>), roles);
         }
         public void Clear() {
             interceptor.Invoke("clear", "clear()", typeof(void));

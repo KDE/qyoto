@@ -269,7 +269,7 @@ namespace Plasma {
         /// </param><param> name="data" the data to add to the source
         /// </param></remarks>        <short>    Adds a set of data to a data source.</short>
         protected void SetData(string source, Dictionary<string, QVariant> data) {
-            interceptor.Invoke("setData$?", "setData(const QString&, const QHash<QString, QVariant>&)", typeof(void), typeof(string), source, typeof(Dictionary<string, QVariant>), data);
+            interceptor.Invoke("setData$?", "setData(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), source, typeof(Dictionary<string, QVariant>), data);
         }
         /// <remarks>
         ///  Removes all the data associated with a data source.

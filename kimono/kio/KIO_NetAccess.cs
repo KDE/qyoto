@@ -311,7 +311,7 @@ namespace KIO {
         ///      </return>
         ///         <short>    This function executes a job in a synchronous way.</short>
         public static bool SynchronousRun(KIO.Job job, QWidget window, QByteArray data, KUrl finalURL, StringBuilder metaData) {
-            return (bool) staticInterceptor.Invoke("synchronousRun####?", "synchronousRun(KIO::Job*, QWidget*, QByteArray*, KUrl*, QMap<QString, QString>*)", typeof(bool), typeof(KIO.Job), job, typeof(QWidget), window, typeof(QByteArray), data, typeof(KUrl), finalURL, typeof(StringBuilder), metaData);
+            return (bool) staticInterceptor.Invoke("synchronousRun####?", "synchronousRun(KIO::Job*, QWidget*, QByteArray*, KUrl*, QMap<QString,QString>*)", typeof(bool), typeof(KIO.Job), job, typeof(QWidget), window, typeof(QByteArray), data, typeof(KUrl), finalURL, typeof(StringBuilder), metaData);
         }
         public static bool SynchronousRun(KIO.Job job, QWidget window, QByteArray data, KUrl finalURL) {
             return (bool) staticInterceptor.Invoke("synchronousRun####", "synchronousRun(KIO::Job*, QWidget*, QByteArray*, KUrl*)", typeof(bool), typeof(KIO.Job), job, typeof(QWidget), window, typeof(QByteArray), data, typeof(KUrl), finalURL);

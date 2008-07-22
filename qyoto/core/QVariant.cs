@@ -173,7 +173,7 @@ namespace Qyoto {
         }
         public QVariant(Dictionary<string, QVariant> map) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QVariant?", "QVariant(const QMap<QString, QVariant>&)", typeof(void), typeof(Dictionary<string, QVariant>), map);
+            interceptor.Invoke("QVariant?", "QVariant(const QMap<QString,QVariant>&)", typeof(void), typeof(Dictionary<string, QVariant>), map);
         }
         public QVariant(QSize size) : this((Type) null) {
             CreateProxy();

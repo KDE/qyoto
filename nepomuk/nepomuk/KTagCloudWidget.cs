@@ -38,7 +38,7 @@ namespace Kimono {
         ///      </remarks>        <short>    Add a set of tags with weight factors      </short>
         [Q_SLOT("void addTags(QMap<QString, int>)")]
         public void AddTags(Dictionary<string, int> tags) {
-            interceptor.Invoke("addTags?", "addTags(const QMap<QString, int>&)", typeof(void), typeof(Dictionary<string, int>), tags);
+            interceptor.Invoke("addTags?", "addTags(const QMap<QString,int>&)", typeof(void), typeof(Dictionary<string, int>), tags);
         }
         /// <remarks>
         ///  Remove all tags from the cloud.
