@@ -1,0 +1,10 @@
+OPTION(ENABLE_AKONADI "build Akonadi" OFF)
+
+set(AKONADI_ENABLED "no")
+
+    if(ENABLE_AKONADI)
+        add_subdirectory( akonadi )
+        set(AKONADI_ENABLED "yes")
+    endif(ENABLE_AKONADI)
+
+message(STATUS "Build Akonadi... " ${AKONADI_ENABLED})
