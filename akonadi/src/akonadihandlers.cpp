@@ -28,11 +28,11 @@
 #include <akonadi/item.h>
 
 DEF_LIST_MARSHALLER( AkonadiAttributeList, QList<Akonadi::Attribute*>, Akonadi::Attribute )
+
 DEF_VALUELIST_MARSHALLER( AkonadiAgentInstanceList, QList<Akonadi::AgentInstance>, Akonadi::AgentInstance )
 DEF_VALUELIST_MARSHALLER( AkonadiAgentTypeList, QList<Akonadi::AgentType>, Akonadi::AgentType )
 DEF_VALUELIST_MARSHALLER( AkonadiCollectionList, QList<Akonadi::Collection>, Akonadi::Collection )
 DEF_VALUELIST_MARSHALLER( AkonadiItemList, QList<Akonadi::Item>, Akonadi::Item )
-DEF_VALUELIST_MARSHALLER( QModelIndexList, QList<QModelIndex>, QModelIndex )
 
 TypeHandler Akonadi_handlers[] = {
     { "QList<Akonadi::AgentInstance>", marshall_AkonadiAgentInstanceList },
@@ -42,7 +42,5 @@ TypeHandler Akonadi_handlers[] = {
     { "QList<Akonadi::Collection>&", marshall_AkonadiCollectionList },
     { "QList<Akonadi::Item>", marshall_AkonadiItemList },
     { "QList<Akonadi::Item>&", marshall_AkonadiItemList },
-    { "QList<QModelIndex>", marshall_QModelIndexList },
-    { "QList<QModelIndex>&", marshall_QModelIndexList },
     { 0, 0 }
 };
