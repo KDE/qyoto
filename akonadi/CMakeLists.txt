@@ -22,7 +22,7 @@ TARGET_LINK_LIBRARIES(akonadi-sharp smokeqt smokeakonadi qyotoshared ${QT_QTCORE
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(akonadi "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(akonadi-sharp smokeakonadi)
+ADD_DEPENDENCIES(akonadi kde-dotnet akonadi-sharp smokeakonadi)
 
 INSTALL(TARGETS akonadi-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(akonadi)
