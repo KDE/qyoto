@@ -779,42 +779,6 @@ namespace Qyoto {
 			}
 			return map;
 		}
-		
-		public static IntPtr DictionaryGetKeyList(IntPtr dict) {
-			IDictionary d = (IDictionary) ((GCHandle) dict).Target;
-			IntPtr list = ConstructPointerList();
-			foreach (object key in d.Keys) {
-#if DEBUG
-				AddObjectToPointerList(list, (IntPtr) DebugGCHandle.Alloc(key));
-#else
-				AddObjectToPointerList(list, (IntPtr) GCHandle.Alloc(key));
-#endif
-			}
-			return list;
-		}
-
-		public static IntPtr DictionaryGetIntKeyList(IntPtr dict) {
-			IDictionary d = (IDictionary) ((GCHandle) dict).Target;
-			IntPtr list = ConstructQListInt();
-			foreach (int key in d.Keys) {
-				AddIntToQList(list, key);
-			}
-			return list;
-		}
-
-		public static IntPtr DictionaryGetValueList(IntPtr dict) {
-			IDictionary d = (IDictionary) ((GCHandle) dict).Target;
-			IntPtr list = ConstructPointerList();
-			foreach (object key in d.Values) {
-#if DEBUG
-				AddObjectToPointerList(list, (IntPtr) DebugGCHandle.Alloc(key));
-#else
-				AddObjectToPointerList(list, (IntPtr) GCHandle.Alloc(key));
-#endif
-			}
-			return list;
-		}
-
 #endregion
 		
 #region Setup

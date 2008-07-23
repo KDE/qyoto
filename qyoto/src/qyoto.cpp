@@ -145,17 +145,14 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 	} else if(meth.index > 0) {
 		Smoke::Index i = meth.smoke->methodMaps[meth.index].method;
 		if (i == 0) {		// shouldn't happen
-			printf("fuck!\n");
 	    	return negativeIndex;
 		} else if (i > 0) {	// single match
-			printf("index > 0\n");
 	    	Smoke::Method &methodRef = meth.smoke->methods[i];
 			if ((methodRef.flags & Smoke::mf_internal) == 0) {
 				Smoke::ModuleIndex ret = { meth.smoke, i };
 				return ret;
 			}
 		} else {		// multiple match
-			printf("index < 0\n");
 	    	int ambiguousId = -i;		// turn into ambiguousMethodList index
 			while (meth.smoke->ambiguousMethodList[ambiguousId] != 0) {
 				Smoke::Method &methodRef = meth.smoke->methods[meth.smoke->ambiguousMethodList[ambiguousId]];
