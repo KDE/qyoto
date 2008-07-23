@@ -18,7 +18,7 @@ TARGET_LINK_LIBRARIES(qtuitools-sharp smokeqt smokeqtuitools qyotoshared ${QT_QT
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(qtuitools "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(qtuitools-sharp smokeqtuitools)
+ADD_DEPENDENCIES(qtuitools qt-dotnet qtuitools-sharp smokeqtuitools)
 
 INSTALL(TARGETS qtuitools-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qtuitools)

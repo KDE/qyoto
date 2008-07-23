@@ -25,6 +25,7 @@ TARGET_LINK_LIBRARIES(soprano-sharp smokeqt smokesoprano qyotoshared ${QT_QTCORE
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(soprano "${SRC_CS}" ALL)
+ADD_DEPENDENCIES(soprano qt-dotnet soprano-sharp)
 
 INSTALL(TARGETS soprano-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(soprano)
