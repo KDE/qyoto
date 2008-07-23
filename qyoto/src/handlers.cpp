@@ -1706,6 +1706,8 @@ DEF_VALUELIST_MARSHALLER( QNetworkCookieList, QList<QNetworkCookie>, QNetworkCoo
 DEF_VALUELIST_MARSHALLER( QPrinterInfoList, QList<QPrinterInfo>, QPrinterInfo )
 #endif
 
+DEF_QMAP_MARSHALLER(QString, QVariant, QString, QVariant)
+
 Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "bool*", marshall_boolR },
     { "bool&", marshall_boolR },
@@ -1765,8 +1767,8 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "QMap<int,QVariant>", marshall_QMapintQVariant },
     { "QMap<QString,QString>", marshall_QMapQStringQString },
     { "QMap<QString,QString>&", marshall_QMapQStringQString },
-    { "QMap<QString,QVariant>", marshall_QMapQStringQVariant },
-    { "QMap<QString,QVariant>&", marshall_QMapQStringQVariant },
+    { "QMap<QString,QVariant>", marshall_QMap_QString_QVariant },
+    { "QMap<QString,QVariant>&", marshall_QMap_QString_QVariant },
     { "QVariantMap", marshall_QMapQStringQVariant },
     { "QVariantMap&", marshall_QMapQStringQVariant },
     { "QModelIndexList", marshall_QModelIndexList },

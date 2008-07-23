@@ -32,8 +32,9 @@ ADD_LIBRARY(plasma-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(plasma-sharp smokeplasma kde-dotnet)
 TARGET_LINK_LIBRARIES(plasma-sharp smokeqt smokekde smokeplasma qyotoshared ${PLASMA_LIBS})
 
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
+SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/qtwebkit.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(plasma "${SRC_CS}" ALL)
+ADD_DEPENDENCIES(plasma qtwebkit)
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(PlasmaScriptengineKimono "${SRC_PLASMASCRIPTENGINEKIMONO}" ALL)
