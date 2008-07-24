@@ -11,10 +11,10 @@ public class Editor
 
         KParts.MainWindow w = new KParts.MainWindow(null, 0);
 
-//      This doesn't compile, not sure why:
-//      KTextEditor.Editor editor = KTextEditor.Editor("katepart");
+        KTextEditor.Editor editor = KTextEditor.Global.Editor("katepart");
 
-        KTextEditor.Editor editor = KTextEditor.EditorChooser.Editor();
+//      other possibility
+//      KTextEditor.Editor editor = KTextEditor.EditorChooser.Editor();
         editor.SetSimpleMode(true);
         KTextEditor.Document doc = editor.CreateDocument(w);
         KTextEditor.View view = doc.CreateView(w);
