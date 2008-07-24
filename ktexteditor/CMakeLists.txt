@@ -29,3 +29,5 @@ ADD_DEPENDENCIES(ktexteditor-sharp smokektexteditor qyotoshared)
 
 INSTALL(TARGETS ktexteditor-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(ktexteditor-dotnet)
+
+add_subdirectory(examples EXCLUDE_FROM_ALL)
