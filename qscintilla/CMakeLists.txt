@@ -22,7 +22,7 @@ TARGET_LINK_LIBRARIES(qscintilla-sharp smokeqt smokeqsci qyotoshared ${QT_QTCORE
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(qscintilla "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(qscintilla-sharp smokeqsci)
+ADD_DEPENDENCIES(qscintilla qt-dotnet qscintilla-sharp smokeqsci)
 
 INSTALL(TARGETS qscintilla-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qscintilla)

@@ -19,7 +19,7 @@ TARGET_LINK_LIBRARIES(qtscript-sharp smokeqt smokeqtscript qyotoshared ${QT_QTCO
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(qtscript "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(qtscript-sharp smokeqtscript)
+ADD_DEPENDENCIES(qtscript qt-dotnet qtscript-sharp smokeqtscript)
 
 INSTALL(TARGETS qtscript-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qtscript)
