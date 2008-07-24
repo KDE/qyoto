@@ -17,7 +17,7 @@ namespace KTextEditor {
     ///   See <see cref="IConfigPageSignals"></see> for signals emitted by ConfigPage
     /// </remarks>        <short>    \brief Config page interface for the Editor.</short>
     [SmokeClass("KTextEditor::ConfigPage")]
-    public abstract class ConfigPage : QWidget {
+    public class ConfigPage : QWidget, IDisposable {
         protected ConfigPage(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(ConfigPage), this);
@@ -58,6 +58,12 @@ namespace KTextEditor {
         [SmokeMethod("defaults()")]
         public virtual void Defaults() {
             interceptor.Invoke("defaults", "defaults()", typeof(void));
+        }
+        ~ConfigPage() {
+            interceptor.Invoke("~ConfigPage", "~ConfigPage()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~ConfigPage", "~ConfigPage()", typeof(void));
         }
         protected new IConfigPageSignals Emit {
             get { return (IConfigPageSignals) Q_EMIT; }

@@ -70,7 +70,7 @@ namespace KTextEditor {
     ///  \author Hamish Rodda \<rodda@kde.org\>
     ///  </remarks>        <short>    \brief A Document extension interface for handling SmartCursor%s and SmartRange%s.</short>
     [SmokeClass("KTextEditor::SmartInterface")]
-    public abstract class SmartInterface : Object {
+    public class SmartInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected SmartInterface(Type dummy) {}
@@ -504,6 +504,12 @@ namespace KTextEditor {
         [SmokeMethod("attributeNotDynamic(KSharedPtr<KTextEditor::Attribute>)")]
         protected virtual void AttributeNotDynamic(KTextEditor.Attribute a) {
             interceptor.Invoke("attributeNotDynamic?", "attributeNotDynamic(KSharedPtr<KTextEditor::Attribute>)", typeof(void), typeof(KTextEditor.Attribute), a);
+        }
+        ~SmartInterface() {
+            interceptor.Invoke("~SmartInterface", "~SmartInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~SmartInterface", "~SmartInterface()", typeof(void));
         }
     }
 }

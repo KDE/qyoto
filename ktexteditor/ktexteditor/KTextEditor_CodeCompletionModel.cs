@@ -34,7 +34,7 @@ namespace KTextEditor {
     ///  </author>
     ///         <short>    \short An item model for providing code completion, and meta information for         enhanced presentation.</short>
     [SmokeClass("KTextEditor::CodeCompletionModel")]
-    public class CodeCompletionModel : QAbstractItemModel, IDisposable {
+    public partial class CodeCompletionModel : QAbstractItemModel, IDisposable {
         protected CodeCompletionModel(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(CodeCompletionModel), this);
@@ -189,15 +189,6 @@ namespace KTextEditor {
         [SmokeMethod("rowCount() const")]
         public virtual int RowCount() {
             return (int) interceptor.Invoke("rowCount", "rowCount() const", typeof(int));
-        }
-        // WARNING: Unimplemented C++ pure virtual - DO NOT CALL
-        [SmokeMethod("data(const QModelIndex&, int) const")]
-        public override QVariant Data(QModelIndex index, int role) {
-            return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), index, typeof(int), role);
-        }
-        [SmokeMethod("data(const QModelIndex&) const")]
-        public virtual QVariant Data(QModelIndex index) {
-            return (QVariant) interceptor.Invoke("data#", "data(const QModelIndex&) const", typeof(QVariant), typeof(QModelIndex), index);
         }
         ~CodeCompletionModel() {
             interceptor.Invoke("~CodeCompletionModel", "~CodeCompletionModel()", typeof(void));

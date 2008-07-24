@@ -31,15 +31,6 @@ namespace KTextEditor {
         public virtual void ExecuteCompletionItem2(KTextEditor.Document document, KTextEditor.Range word, QModelIndex index) {
             interceptor.Invoke("executeCompletionItem2###", "executeCompletionItem2(KTextEditor::Document*, const KTextEditor::Range&, const QModelIndex&) const", typeof(void), typeof(KTextEditor.Document), document, typeof(KTextEditor.Range), word, typeof(QModelIndex), index);
         }
-        // WARNING: Unimplemented C++ pure virtual - DO NOT CALL
-        [SmokeMethod("data(const QModelIndex&, int) const")]
-        public override QVariant Data(QModelIndex index, int role) {
-            return (QVariant) interceptor.Invoke("data#$", "data(const QModelIndex&, int) const", typeof(QVariant), typeof(QModelIndex), index, typeof(int), role);
-        }
-        [SmokeMethod("data(const QModelIndex&) const")]
-        public virtual QVariant Data(QModelIndex index) {
-            return (QVariant) interceptor.Invoke("data#", "data(const QModelIndex&) const", typeof(QVariant), typeof(QModelIndex), index);
-        }
         ~CodeCompletionModel2() {
             interceptor.Invoke("~CodeCompletionModel2", "~CodeCompletionModel2()", typeof(void));
         }

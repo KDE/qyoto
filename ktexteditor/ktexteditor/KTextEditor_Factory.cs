@@ -45,7 +45,7 @@ namespace KTextEditor {
     ///  \author Christoph Cullmann \<cullmann@kde.org\>
     ///  </remarks>        <short>    \brief Accessor to the Editor implementation.</short>
     [SmokeClass("KTextEditor::Factory")]
-    public abstract class Factory : KParts.Factory {
+    public partial class Factory : KParts.Factory, IDisposable {
         protected Factory(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(Factory), this);
@@ -68,6 +68,12 @@ namespace KTextEditor {
         [SmokeMethod("editor()")]
         public virtual KTextEditor.Editor Editor() {
             return (KTextEditor.Editor) interceptor.Invoke("editor", "editor()", typeof(KTextEditor.Editor));
+        }
+        ~Factory() {
+            interceptor.Invoke("~Factory", "~Factory()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~Factory", "~Factory()", typeof(void));
         }
     }
 }

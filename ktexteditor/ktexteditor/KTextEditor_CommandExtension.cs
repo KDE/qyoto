@@ -22,7 +22,7 @@ namespace KTextEditor {
     ///  \author Christoph Cullmann \<cullmann@kde.org\>
     ///  </remarks>        <short>    \brief Extension interface for a Command.</short>
     [SmokeClass("KTextEditor::CommandExtension")]
-    public abstract class CommandExtension : Object {
+    public class CommandExtension : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected CommandExtension(Type dummy) {}
@@ -87,6 +87,12 @@ namespace KTextEditor {
         public CommandExtension() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("CommandExtension", "CommandExtension()", typeof(void));
+        }
+        ~CommandExtension() {
+            interceptor.Invoke("~CommandExtension", "~CommandExtension()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~CommandExtension", "~CommandExtension()", typeof(void));
         }
     }
 }

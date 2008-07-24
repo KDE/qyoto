@@ -42,7 +42,7 @@ namespace KTextEditor {
     ///  \see KTextEditor.AnnotationModel, KTextEditor.AnnotationViewInterface
     ///  </remarks>        <short>    \brief A Document extension interface for handling Annotation%s </short>
     [SmokeClass("KTextEditor::AnnotationInterface")]
-    public abstract class AnnotationInterface : Object {
+    public class AnnotationInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected AnnotationInterface(Type dummy) {}
@@ -71,6 +71,12 @@ namespace KTextEditor {
         public AnnotationInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("AnnotationInterface", "AnnotationInterface()", typeof(void));
+        }
+        ~AnnotationInterface() {
+            interceptor.Invoke("~AnnotationInterface", "~AnnotationInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~AnnotationInterface", "~AnnotationInterface()", typeof(void));
         }
     }
 }

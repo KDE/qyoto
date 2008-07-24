@@ -37,7 +37,7 @@ namespace KTextEditor {
     ///  \author Anders Lund \<anders@alweb.dk\>
     ///  </remarks>        <short>    \brief Variable/Modeline extension interface for the Document.</short>
     [SmokeClass("KTextEditor::VariableInterface")]
-    public abstract class VariableInterface : Object {
+    public class VariableInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected VariableInterface(Type dummy) {}
@@ -68,6 +68,12 @@ namespace KTextEditor {
         [SmokeMethod("variableChanged(KTextEditor::Document*, const QString&, const QString&)")]
         public virtual void VariableChanged(KTextEditor.Document document, string variable, string value) {
             interceptor.Invoke("variableChanged#$$", "variableChanged(KTextEditor::Document*, const QString&, const QString&)", typeof(void), typeof(KTextEditor.Document), document, typeof(string), variable, typeof(string), value);
+        }
+        ~VariableInterface() {
+            interceptor.Invoke("~VariableInterface", "~VariableInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~VariableInterface", "~VariableInterface()", typeof(void));
         }
     }
 }

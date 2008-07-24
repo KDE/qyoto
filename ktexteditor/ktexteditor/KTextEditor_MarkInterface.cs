@@ -49,7 +49,7 @@ namespace KTextEditor {
     ///  \author Christoph Cullmann \<cullmann@kde.org\>
     ///  </remarks>        <short>    \brief Mark extension interface for the Document.</short>
     [SmokeClass("KTextEditor::MarkInterface")]
-    public abstract class MarkInterface : Object {
+    public class MarkInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected MarkInterface(Type dummy) {}
@@ -284,6 +284,12 @@ namespace KTextEditor {
         [SmokeMethod("markChanged(KTextEditor::Document*, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction)")]
         public virtual void MarkChanged(KTextEditor.Document document, KTextEditor.Mark mark, KTextEditor.MarkInterface.MarkChangeAction action) {
             interceptor.Invoke("markChanged##$", "markChanged(KTextEditor::Document*, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction)", typeof(void), typeof(KTextEditor.Document), document, typeof(KTextEditor.Mark), mark, typeof(KTextEditor.MarkInterface.MarkChangeAction), action);
+        }
+        ~MarkInterface() {
+            interceptor.Invoke("~MarkInterface", "~MarkInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~MarkInterface", "~MarkInterface()", typeof(void));
         }
         /// <remarks>
         ///  Get the number of predefined mark types we have so far.

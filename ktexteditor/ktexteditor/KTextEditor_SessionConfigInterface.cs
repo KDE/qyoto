@@ -40,7 +40,7 @@ namespace KTextEditor {
     ///  \author Christoph Cullmann \<cullmann@kde.org\>
     ///  </remarks>        <short>    \brief Session config interface extension for the Document, View and Plugin.</short>
     [SmokeClass("KTextEditor::SessionConfigInterface")]
-    public abstract class SessionConfigInterface : Object {
+    public class SessionConfigInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected SessionConfigInterface(Type dummy) {}
@@ -76,6 +76,12 @@ namespace KTextEditor {
         [SmokeMethod("writeSessionConfig(KConfigGroup&)")]
         public virtual void WriteSessionConfig(KConfigGroup config) {
             interceptor.Invoke("writeSessionConfig#", "writeSessionConfig(KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
+        }
+        ~SessionConfigInterface() {
+            interceptor.Invoke("~SessionConfigInterface", "~SessionConfigInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~SessionConfigInterface", "~SessionConfigInterface()", typeof(void));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace KTextEditor {
     ///  \author Hamish Rodda \<rodda@kde.org\>
     ///  </remarks>        <short>    \short A Cursor which is bound to a specific Document, and maintains its position.</short>
     [SmokeClass("KTextEditor::SmartCursor")]
-    public abstract class SmartCursor : KTextEditor.Cursor {
+    public class SmartCursor : KTextEditor.Cursor, IDisposable {
         protected SmartCursor(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(SmartCursor), this);
@@ -228,6 +228,12 @@ namespace KTextEditor {
         public SmartCursor(KTextEditor.Cursor position, KTextEditor.Document doc, KTextEditor.SmartCursor.InsertBehavior insertBehavior) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("SmartCursor##$", "SmartCursor(const KTextEditor::Cursor&, KTextEditor::Document*, KTextEditor::SmartCursor::InsertBehavior)", typeof(void), typeof(KTextEditor.Cursor), position, typeof(KTextEditor.Document), doc, typeof(KTextEditor.SmartCursor.InsertBehavior), insertBehavior);
+        }
+        ~SmartCursor() {
+            interceptor.Invoke("~SmartCursor", "~SmartCursor()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~SmartCursor", "~SmartCursor()", typeof(void));
         }
     }
 }

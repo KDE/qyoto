@@ -18,7 +18,7 @@ namespace KTextEditor {
     ///   See <see cref="IAnnotationModelSignals"></see> for signals emitted by AnnotationModel
     /// </remarks>        <short>    \brief An model for providing line annotation information </short>
     [SmokeClass("KTextEditor::AnnotationModel")]
-    public abstract class AnnotationModel : QObject {
+    public class AnnotationModel : QObject, IDisposable {
         protected AnnotationModel(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(AnnotationModel), this);
@@ -43,6 +43,12 @@ namespace KTextEditor {
         public AnnotationModel() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("AnnotationModel", "AnnotationModel()", typeof(void));
+        }
+        ~AnnotationModel() {
+            interceptor.Invoke("~AnnotationModel", "~AnnotationModel()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~AnnotationModel", "~AnnotationModel()", typeof(void));
         }
         protected new IAnnotationModelSignals Emit {
             get { return (IAnnotationModelSignals) Q_EMIT; }

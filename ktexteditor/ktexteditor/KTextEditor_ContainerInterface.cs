@@ -28,7 +28,7 @@ namespace KTextEditor {
     ///  It is then up to the kpart to use it.
     ///  </remarks>        <short>    \brief Class that allows the kpart host to provide some extensions.</short>
     [SmokeClass("KTextEditor::ContainerInterface")]
-    public abstract class ContainerInterface : Object {
+    public class ContainerInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected ContainerInterface(Type dummy) {}
@@ -77,6 +77,12 @@ namespace KTextEditor {
         [SmokeMethod("container()")]
         public virtual QObject Container() {
             return (QObject) interceptor.Invoke("container", "container()", typeof(QObject));
+        }
+        ~ContainerInterface() {
+            interceptor.Invoke("~ContainerInterface", "~ContainerInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~ContainerInterface", "~ContainerInterface()", typeof(void));
         }
     }
 }

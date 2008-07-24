@@ -91,7 +91,7 @@ namespace KTextEditor {
     ///   See <see cref="IViewSignals"></see> for signals emitted by View
     /// </remarks>        <short>    \brief A text widget with KXMLGUIClient that represents a Document.</short>
     [SmokeClass("KTextEditor::View")]
-    public abstract class View : QWidget, IKXMLGUIClient {
+    public class View : QWidget, IKXMLGUIClient, IDisposable {
         protected View(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(View), this);
@@ -394,6 +394,12 @@ namespace KTextEditor {
         [SmokeMethod("insertText(const QString&)")]
         public virtual bool InsertText(string text) {
             return (bool) interceptor.Invoke("insertText$", "insertText(const QString&)", typeof(bool), typeof(string), text);
+        }
+        ~View() {
+            interceptor.Invoke("~View", "~View()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~View", "~View()", typeof(void));
         }
         /// <remarks>
         ///  Retrieves an action of the client by name.  If not found, it looks in its child clients.

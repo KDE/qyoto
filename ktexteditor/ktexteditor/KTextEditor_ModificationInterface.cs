@@ -33,7 +33,7 @@ namespace KTextEditor {
     ///  \author Christoph Cullmann \<cullmann@kde.org\>
     ///  </remarks>        <short>    \brief External modification extension interface for the Document.</short>
     [SmokeClass("KTextEditor::ModificationInterface")]
-    public abstract class ModificationInterface : Object {
+    public class ModificationInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected ModificationInterface(Type dummy) {}
@@ -103,6 +103,12 @@ namespace KTextEditor {
         [SmokeMethod("modifiedOnDisk(KTextEditor::Document*, bool, KTextEditor::ModificationInterface::ModifiedOnDiskReason)")]
         public virtual void ModifiedOnDisk(KTextEditor.Document document, bool isModified, KTextEditor.ModificationInterface.ModifiedOnDiskReason reason) {
             interceptor.Invoke("modifiedOnDisk#$$", "modifiedOnDisk(KTextEditor::Document*, bool, KTextEditor::ModificationInterface::ModifiedOnDiskReason)", typeof(void), typeof(KTextEditor.Document), document, typeof(bool), isModified, typeof(KTextEditor.ModificationInterface.ModifiedOnDiskReason), reason);
+        }
+        ~ModificationInterface() {
+            interceptor.Invoke("~ModificationInterface", "~ModificationInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~ModificationInterface", "~ModificationInterface()", typeof(void));
         }
     }
 }

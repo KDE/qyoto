@@ -50,7 +50,7 @@ namespace KTextEditor {
     ///  \see KTextEditor.View, KTextEditor.CodeCompletionModel
     ///  </remarks>        <short>    \brief Code completion extension interface for the View.</short>
     [SmokeClass("KTextEditor::CodeCompletionInterface")]
-    public abstract class CodeCompletionInterface : Object {
+    public class CodeCompletionInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected CodeCompletionInterface(Type dummy) {}
@@ -128,6 +128,12 @@ namespace KTextEditor {
         public CodeCompletionInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("CodeCompletionInterface", "CodeCompletionInterface()", typeof(void));
+        }
+        ~CodeCompletionInterface() {
+            interceptor.Invoke("~CodeCompletionInterface", "~CodeCompletionInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~CodeCompletionInterface", "~CodeCompletionInterface()", typeof(void));
         }
     }
 }

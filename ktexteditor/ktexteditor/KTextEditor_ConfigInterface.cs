@@ -43,7 +43,7 @@ namespace KTextEditor {
     ///  \author Matt Broadstone \<mbroadst@gmail.com\>
     ///  </remarks>        <short>    \brief Config interface extension for the View.</short>
     [SmokeClass("KTextEditor::ConfigInterface")]
-    public abstract class ConfigInterface : Object {
+    public class ConfigInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected ConfigInterface(Type dummy) {}
@@ -74,6 +74,12 @@ namespace KTextEditor {
         [SmokeMethod("setConfigValue(const QString&, const QVariant&)")]
         public virtual void SetConfigValue(string key, QVariant value) {
             interceptor.Invoke("setConfigValue$#", "setConfigValue(const QString&, const QVariant&)", typeof(void), typeof(string), key, typeof(QVariant), value);
+        }
+        ~ConfigInterface() {
+            interceptor.Invoke("~ConfigInterface", "~ConfigInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~ConfigInterface", "~ConfigInterface()", typeof(void));
         }
     }
 }

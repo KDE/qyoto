@@ -9,7 +9,7 @@ namespace KTextEditor {
     ///  \ingroup kte_group_view_extensions
     ///  </remarks>        <short>    This is an interface for the KTextEditor.View class.</short>
     [SmokeClass("KTextEditor::TextHintInterface")]
-    public abstract class TextHintInterface : Object {
+    public class TextHintInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected TextHintInterface(Type dummy) {}
@@ -44,6 +44,12 @@ namespace KTextEditor {
         [SmokeMethod("needTextHint(const KTextEditor::Cursor&, QString&)")]
         public virtual void NeedTextHint(KTextEditor.Cursor position, StringBuilder text) {
             interceptor.Invoke("needTextHint#$", "needTextHint(const KTextEditor::Cursor&, QString&)", typeof(void), typeof(KTextEditor.Cursor), position, typeof(StringBuilder), text);
+        }
+        ~TextHintInterface() {
+            interceptor.Invoke("~TextHintInterface", "~TextHintInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~TextHintInterface", "~TextHintInterface()", typeof(void));
         }
     }
 }

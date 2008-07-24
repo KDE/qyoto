@@ -10,7 +10,7 @@ namespace KTextEditor {
     ///  \ingroup kte_group_view_extensions
     ///  </remarks>        <short>    This is an interface for inserting template strings with user editable  fields into a document.</short>
     [SmokeClass("KTextEditor::TemplateInterface")]
-    public abstract class TemplateInterface : Object {
+    public class TemplateInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected TemplateInterface(Type dummy) {}
@@ -72,6 +72,12 @@ namespace KTextEditor {
         [SmokeMethod("insertTemplateTextImplementation(const KTextEditor::Cursor&, const QString&, const QMap<QString,QString>&)")]
         protected virtual bool InsertTemplateTextImplementation(KTextEditor.Cursor insertPosition, string templateString, Dictionary<string, string> initialValues) {
             return (bool) interceptor.Invoke("insertTemplateTextImplementation#$?", "insertTemplateTextImplementation(const KTextEditor::Cursor&, const QString&, const QMap<QString,QString>&)", typeof(bool), typeof(KTextEditor.Cursor), insertPosition, typeof(string), templateString, typeof(Dictionary<string, string>), initialValues);
+        }
+        ~TemplateInterface() {
+            interceptor.Invoke("~TemplateInterface", "~TemplateInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~TemplateInterface", "~TemplateInterface()", typeof(void));
         }
         /// <remarks>
         ///  Parses <pre>templateString</pre> for macros in the form [$%]{NAME} and finds

@@ -57,7 +57,7 @@ namespace KTextEditor {
     ///   See <see cref="IEditorSignals"></see> for signals emitted by Editor
     /// </remarks>        <short>    \brief Accessor interface for Editor part.</short>
     [SmokeClass("KTextEditor::Editor")]
-    public abstract class Editor : QObject {
+    public class Editor : QObject, IDisposable {
         protected Editor(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(Editor), this);
@@ -229,6 +229,12 @@ namespace KTextEditor {
         [SmokeMethod("configPageIcon(int) const")]
         public virtual KIcon ConfigPageIcon(int number) {
             return (KIcon) interceptor.Invoke("configPageIcon$", "configPageIcon(int) const", typeof(KIcon), typeof(int), number);
+        }
+        ~Editor() {
+            interceptor.Invoke("~Editor", "~Editor()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~Editor", "~Editor()", typeof(void));
         }
         protected new IEditorSignals Emit {
             get { return (IEditorSignals) Q_EMIT; }

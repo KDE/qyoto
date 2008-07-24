@@ -61,7 +61,7 @@ namespace KTextEditor {
     ///   See <see cref="IDocumentSignals"></see> for signals emitted by Document
     /// </remarks>        <short>    \brief A KParts derived class representing a text document.</short>
     [SmokeClass("KTextEditor::Document")]
-    public abstract class Document : KParts.ReadWritePart {
+    public partial class Document : KParts.ReadWritePart, IDisposable {
         protected Document(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(Document), this);
@@ -612,6 +612,12 @@ namespace KTextEditor {
         }
         protected void SetOpeningErrorMessage(string message) {
             interceptor.Invoke("setOpeningErrorMessage$", "setOpeningErrorMessage(const QString&)", typeof(void), typeof(string), message);
+        }
+        ~Document() {
+            interceptor.Invoke("~Document", "~Document()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~Document", "~Document()", typeof(void));
         }
         protected new IDocumentSignals Emit {
             get { return (IDocumentSignals) Q_EMIT; }

@@ -37,7 +37,7 @@ namespace KTextEditor {
     ///  \author Hamish Rodda \<rodda@kde.org\>
     ///  </remarks>        <short>    \short A Range which is bound to a specific Document, and maintains its position.</short>
     [SmokeClass("KTextEditor::SmartRange")]
-    public abstract class SmartRange : KTextEditor.Range {
+    public class SmartRange : KTextEditor.Range, IDisposable {
         protected SmartRange(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(SmartRange), this);
@@ -458,6 +458,12 @@ namespace KTextEditor {
         [SmokeMethod("createNotifier()")]
         protected virtual KTextEditor.SmartRangeNotifier CreateNotifier() {
             return (KTextEditor.SmartRangeNotifier) interceptor.Invoke("createNotifier", "createNotifier()", typeof(KTextEditor.SmartRangeNotifier));
+        }
+        ~SmartRange() {
+            interceptor.Invoke("~SmartRange", "~SmartRange()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~SmartRange", "~SmartRange()", typeof(void));
         }
     }
 }

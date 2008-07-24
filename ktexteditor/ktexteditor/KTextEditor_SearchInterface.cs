@@ -29,7 +29,7 @@ namespace KTextEditor {
     ///  \author Christoph Cullmann \<cullmann@kde.org\>
     ///  </remarks>        <short>    \brief Search interface extension for the Document.</short>
     [SmokeClass("KTextEditor::SearchInterface")]
-    public abstract class SearchInterface : Object {
+    public class SearchInterface : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected SearchInterface(Type dummy) {}
@@ -79,6 +79,12 @@ namespace KTextEditor {
         [SmokeMethod("supportedSearchOptions() const")]
         public virtual uint SupportedSearchOptions() {
             return (uint) interceptor.Invoke("supportedSearchOptions", "supportedSearchOptions() const", typeof(uint));
+        }
+        ~SearchInterface() {
+            interceptor.Invoke("~SearchInterface", "~SearchInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~SearchInterface", "~SearchInterface()", typeof(void));
         }
     }
 }

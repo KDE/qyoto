@@ -44,7 +44,7 @@ namespace KTextEditor {
     ///  </pre>
     ///  </remarks>        <short>    A container for MDI-capable kpart hosts.</short>
     [SmokeClass("KTextEditor::MdiContainer")]
-    public abstract class MdiContainer : Object {
+    public class MdiContainer : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected MdiContainer(Type dummy) {}
@@ -139,6 +139,12 @@ namespace KTextEditor {
         [SmokeMethod("closeView(KTextEditor::View*)")]
         public virtual bool CloseView(KTextEditor.View view) {
             return (bool) interceptor.Invoke("closeView#", "closeView(KTextEditor::View*)", typeof(bool), typeof(KTextEditor.View), view);
+        }
+        ~MdiContainer() {
+            interceptor.Invoke("~MdiContainer", "~MdiContainer()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~MdiContainer", "~MdiContainer()", typeof(void));
         }
     }
 }

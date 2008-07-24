@@ -33,7 +33,7 @@ namespace KTextEditor {
     ///  \since 4.1
     ///  </remarks>        <short>    \brief Annotation interface for the View </short>
     [SmokeClass("KTextEditor::AnnotationViewInterface")]
-    public abstract class AnnotationViewInterface : KTextEditor.AnnotationInterface {
+    public class AnnotationViewInterface : KTextEditor.AnnotationInterface, IDisposable {
         protected AnnotationViewInterface(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(AnnotationViewInterface), this);
@@ -91,6 +91,12 @@ namespace KTextEditor {
         public AnnotationViewInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("AnnotationViewInterface", "AnnotationViewInterface()", typeof(void));
+        }
+        ~AnnotationViewInterface() {
+            interceptor.Invoke("~AnnotationViewInterface", "~AnnotationViewInterface()", typeof(void));
+        }
+        public void Dispose() {
+            interceptor.Invoke("~AnnotationViewInterface", "~AnnotationViewInterface()", typeof(void));
         }
     }
 }
