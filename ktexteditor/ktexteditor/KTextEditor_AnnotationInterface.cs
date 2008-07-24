@@ -55,7 +55,9 @@ namespace KTextEditor {
         ///  \param model the new AnnotationModel
         ///      </remarks>        <short>    Sets a new \ref AnnotationModel for this document to provide  annotation information for each line.</short>
         [SmokeMethod("setAnnotationModel(KTextEditor::AnnotationModel*)")]
-        public abstract void SetAnnotationModel(KTextEditor.AnnotationModel model);
+        public virtual void SetAnnotationModel(KTextEditor.AnnotationModel model) {
+            interceptor.Invoke("setAnnotationModel#", "setAnnotationModel(KTextEditor::AnnotationModel*)", typeof(void), typeof(KTextEditor.AnnotationModel), model);
+        }
         /// <remarks>
         ///  returns the currently set \ref AnnotationModel or 0 if there's none
         ///  set
@@ -63,7 +65,9 @@ namespace KTextEditor {
         ///      </return>
         ///         <short>    returns the currently set \ref AnnotationModel or 0 if there's none  set </short>
         [SmokeMethod("annotationModel() const")]
-        public abstract KTextEditor.AnnotationModel AnnotationModel();
+        public virtual KTextEditor.AnnotationModel AnnotationModel() {
+            return (KTextEditor.AnnotationModel) interceptor.Invoke("annotationModel", "annotationModel() const", typeof(KTextEditor.AnnotationModel));
+        }
         public AnnotationInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("AnnotationInterface", "AnnotationInterface()", typeof(void));

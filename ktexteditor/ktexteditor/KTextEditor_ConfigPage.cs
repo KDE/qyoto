@@ -35,21 +35,30 @@ namespace KTextEditor {
         ///  This slot is called whenever the button \e Apply or \e OK was clicked.
         ///  Apply the changed settings made in the config page now.
         ///      </remarks>        <short>    This slot is called whenever the button \e Apply or \e OK was clicked.</short>
+        [Q_SLOT("void apply()")]
         [SmokeMethod("apply()")]
-        public abstract void Apply();
+        public virtual void Apply() {
+            interceptor.Invoke("apply", "apply()", typeof(void));
+        }
         /// <remarks>
         ///  This slot is called whenever the button \e Reset was clicked.
         ///  Reset the config page settings to the initial state.
         ///      </remarks>        <short>    This slot is called whenever the button \e Reset was clicked.</short>
+        [Q_SLOT("void reset()")]
         [SmokeMethod("reset()")]
-        public abstract void Reset();
+        public virtual void Reset() {
+            interceptor.Invoke("reset", "reset()", typeof(void));
+        }
         /// <remarks>
         ///  Sets default options
         ///  This slot is called whenever the button \e Defaults was clicked.
         ///  Set the config page settings to the default values.
         ///      </remarks>        <short>    Sets default options  This slot is called whenever the button \e Defaults was clicked.</short>
+        [Q_SLOT("void defaults()")]
         [SmokeMethod("defaults()")]
-        public abstract void Defaults();
+        public virtual void Defaults() {
+            interceptor.Invoke("defaults", "defaults()", typeof(void));
+        }
         protected new IConfigPageSignals Emit {
             get { return (IConfigPageSignals) Q_EMIT; }
         }

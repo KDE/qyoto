@@ -40,7 +40,9 @@ namespace KTextEditor {
         ///  \param list flag list
         ///      </remarks>        <short>    Fill in a \p list of flags to complete from.</short>
         [SmokeMethod("flagCompletions(QStringList&)")]
-        public abstract void FlagCompletions(List<string> list);
+        public virtual void FlagCompletions(List<string> list) {
+            interceptor.Invoke("flagCompletions?", "flagCompletions(QStringList&)", typeof(void), typeof(List<string>), list);
+        }
         /// <remarks>
         ///  Return a KCompletion object that will substitute the command line
         ///  default one while typing the first argument of the command <pre>cmdname</pre>.
@@ -52,7 +54,9 @@ namespace KTextEditor {
         ///          completion object
         ///      </remarks>        <short>    Return a KCompletion object that will substitute the command line  default one while typing the first argument of the command \p cmdname.</short>
         [SmokeMethod("completionObject(KTextEditor::View*, const QString&)")]
-        public abstract KCompletion CompletionObject(KTextEditor.View view, string cmdname);
+        public virtual KCompletion CompletionObject(KTextEditor.View view, string cmdname) {
+            return (KCompletion) interceptor.Invoke("completionObject#$", "completionObject(KTextEditor::View*, const QString&)", typeof(KCompletion), typeof(KTextEditor.View), view, typeof(string), cmdname);
+        }
         /// <remarks>
         ///  Check, whether the command wants to process text interactively for the
         ///  given command with name <pre>cmdname</pre>.
@@ -66,7 +70,9 @@ namespace KTextEditor {
         ///  \see processText()
         ///      </remarks>        <short>    Check, whether the command wants to process text interactively for the  given command with name \p cmdname.</short>
         [SmokeMethod("wantsToProcessText(const QString&)")]
-        public abstract bool WantsToProcessText(string cmdname);
+        public virtual bool WantsToProcessText(string cmdname) {
+            return (bool) interceptor.Invoke("wantsToProcessText$", "wantsToProcessText(const QString&)", typeof(bool), typeof(string), cmdname);
+        }
         /// <remarks>
         ///  This is called by the command line each time the argument text for the
         ///  command changed, if wantsToProcessText() returns \e true.
@@ -75,7 +81,9 @@ namespace KTextEditor {
         ///  \see wantsToProcessText()
         ///      </remarks>        <short>    This is called by the command line each time the argument text for the  command changed, if wantsToProcessText() returns \e true.</short>
         [SmokeMethod("processText(KTextEditor::View*, const QString&)")]
-        public abstract void ProcessText(KTextEditor.View view, string text);
+        public virtual void ProcessText(KTextEditor.View view, string text) {
+            interceptor.Invoke("processText#$", "processText(KTextEditor::View*, const QString&)", typeof(void), typeof(KTextEditor.View), view, typeof(string), text);
+        }
         public CommandExtension() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("CommandExtension", "CommandExtension()", typeof(void));

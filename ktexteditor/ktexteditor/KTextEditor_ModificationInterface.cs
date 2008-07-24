@@ -62,7 +62,9 @@ namespace KTextEditor {
         ///  \see ModifiedOnDiskReason, modifiedOnDisk()
         ///      </remarks>        <short>    Set the document's modified-on-disk state to \p reason.</short>
         [SmokeMethod("setModifiedOnDisk(KTextEditor::ModificationInterface::ModifiedOnDiskReason)")]
-        public abstract void SetModifiedOnDisk(KTextEditor.ModificationInterface.ModifiedOnDiskReason reason);
+        public virtual void SetModifiedOnDisk(KTextEditor.ModificationInterface.ModifiedOnDiskReason reason) {
+            interceptor.Invoke("setModifiedOnDisk$", "setModifiedOnDisk(KTextEditor::ModificationInterface::ModifiedOnDiskReason)", typeof(void), typeof(KTextEditor.ModificationInterface.ModifiedOnDiskReason), reason);
+        }
         /// <remarks>
         ///  Control, whether the editor should show a warning dialog whenever a file
         ///  was modified on disk. If <pre>on</pre> is \e true the editor will show warning
@@ -71,7 +73,9 @@ namespace KTextEditor {
         ///         files modified on disk
         ///     </remarks>        <short>    Control, whether the editor should show a warning dialog whenever a file  was modified on disk.</short>
         [SmokeMethod("setModifiedOnDiskWarning(bool)")]
-        public abstract void SetModifiedOnDiskWarning(bool on);
+        public virtual void SetModifiedOnDiskWarning(bool on) {
+            interceptor.Invoke("setModifiedOnDiskWarning$", "setModifiedOnDiskWarning(bool)", typeof(void), typeof(bool), on);
+        }
         /// <remarks>
         ///  Ask the user what to do, if the file was modified on disk.
         ///  The argument <pre>view</pre> is used to avoid asking again, when the editor
@@ -80,7 +84,13 @@ namespace KTextEditor {
         ///  \see setModifiedOnDisk(), modifiedOnDisk()
         ///      </remarks>        <short>    Ask the user what to do, if the file was modified on disk.</short>
         [SmokeMethod("slotModifiedOnDisk(KTextEditor::View*)")]
-        public abstract void SlotModifiedOnDisk(KTextEditor.View view);
+        public virtual void SlotModifiedOnDisk(KTextEditor.View view) {
+            interceptor.Invoke("slotModifiedOnDisk#", "slotModifiedOnDisk(KTextEditor::View*)", typeof(void), typeof(KTextEditor.View), view);
+        }
+        [SmokeMethod("slotModifiedOnDisk()")]
+        public virtual void SlotModifiedOnDisk() {
+            interceptor.Invoke("slotModifiedOnDisk", "slotModifiedOnDisk()", typeof(void));
+        }
         /// <remarks>
         ///  This signal is emitted whenever the <pre>document</pre> changed its
         ///  modified-on-disk state.
@@ -91,6 +101,8 @@ namespace KTextEditor {
         ///  \see setModifiedOnDisk()
         ///      </remarks>        <short>    This signal is emitted whenever the \p document changed its  modified-on-disk state.</short>
         [SmokeMethod("modifiedOnDisk(KTextEditor::Document*, bool, KTextEditor::ModificationInterface::ModifiedOnDiskReason)")]
-        public abstract void ModifiedOnDisk(KTextEditor.Document document, bool isModified, KTextEditor.ModificationInterface.ModifiedOnDiskReason reason);
+        public virtual void ModifiedOnDisk(KTextEditor.Document document, bool isModified, KTextEditor.ModificationInterface.ModifiedOnDiskReason reason) {
+            interceptor.Invoke("modifiedOnDisk#$$", "modifiedOnDisk(KTextEditor::Document*, bool, KTextEditor::ModificationInterface::ModifiedOnDiskReason)", typeof(void), typeof(KTextEditor.Document), document, typeof(bool), isModified, typeof(KTextEditor.ModificationInterface.ModifiedOnDiskReason), reason);
+        }
     }
 }

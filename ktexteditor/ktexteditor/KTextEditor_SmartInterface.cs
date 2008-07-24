@@ -97,7 +97,9 @@ namespace KTextEditor {
         ///  Deletion occurs without modification to the underlying text.
         ///      </remarks>        <short>    Clears or deletes all instances of smart objects, ie:  \li deletes all SmartCursor%s  \li deletes all SmartRange%s  \li clears all arbitrary highlight ranges  \li clears all action binding </short>
         [SmokeMethod("clearSmartInterface()")]
-        public abstract void ClearSmartInterface();
+        public virtual void ClearSmartInterface() {
+            interceptor.Invoke("clearSmartInterface", "clearSmartInterface()", typeof(void));
+        }
         /// <remarks>
         ///  Returns whether the smart interface will be cleared on reload of the document.
         ///  Defaults to true.
@@ -118,13 +120,17 @@ namespace KTextEditor {
         ///  Once you have finished with the token, release it with releaseRevision();
         ///      </remarks>        <short>    Retrieve a token representing the current version of the document.</short>
         [SmokeMethod("currentRevision() const")]
-        public abstract int CurrentRevision();
+        public virtual int CurrentRevision() {
+            return (int) interceptor.Invoke("currentRevision", "currentRevision() const", typeof(int));
+        }
         /// <remarks>
         ///  Release a revision token provided by currentRevision().  You will no longer be able to
         ///  create cursors and ranges agaist this revision.
         ///      </remarks>        <short>    Release a revision token provided by currentRevision().</short>
         [SmokeMethod("releaseRevision(int) const")]
-        public abstract void ReleaseRevision(int revision);
+        public virtual void ReleaseRevision(int revision) {
+            interceptor.Invoke("releaseRevision$", "releaseRevision(int) const", typeof(void), typeof(int), revision);
+        }
         /// <remarks>
         ///  Tell the smart interface to work against the given \a revision when creating cursors and
         ///  ranges.
@@ -132,7 +138,9 @@ namespace KTextEditor {
         ///                  clear any previous setting and use the current document revision.
         ///      </remarks>        <short>    Tell the smart interface to work against the given \a revision when creating cursors and  ranges.</short>
         [SmokeMethod("useRevision(int)")]
-        public abstract void UseRevision(int revision);
+        public virtual void UseRevision(int revision) {
+            interceptor.Invoke("useRevision$", "useRevision(int)", typeof(void), typeof(int), revision);
+        }
         /// <remarks>
         ///  Clear any previous setting to use a specific revision.
         ///      </remarks>        <short>    Clear any previous setting to use a specific revision.</short>
@@ -175,7 +183,17 @@ namespace KTextEditor {
         ///  \param insertBehavior Define whether the cursor should move when text is inserted at the cursor position.
         ///      </remarks>        <short>    Creates a new SmartCursor.</short>
         [SmokeMethod("newSmartCursor(const KTextEditor::Cursor&, KTextEditor::SmartCursor::InsertBehavior)")]
-        public abstract KTextEditor.SmartCursor NewSmartCursor(KTextEditor.Cursor position, KTextEditor.SmartCursor.InsertBehavior insertBehavior);
+        public virtual KTextEditor.SmartCursor NewSmartCursor(KTextEditor.Cursor position, KTextEditor.SmartCursor.InsertBehavior insertBehavior) {
+            return (KTextEditor.SmartCursor) interceptor.Invoke("newSmartCursor#$", "newSmartCursor(const KTextEditor::Cursor&, KTextEditor::SmartCursor::InsertBehavior)", typeof(KTextEditor.SmartCursor), typeof(KTextEditor.Cursor), position, typeof(KTextEditor.SmartCursor.InsertBehavior), insertBehavior);
+        }
+        [SmokeMethod("newSmartCursor(const KTextEditor::Cursor&)")]
+        public virtual KTextEditor.SmartCursor NewSmartCursor(KTextEditor.Cursor position) {
+            return (KTextEditor.SmartCursor) interceptor.Invoke("newSmartCursor#", "newSmartCursor(const KTextEditor::Cursor&)", typeof(KTextEditor.SmartCursor), typeof(KTextEditor.Cursor), position);
+        }
+        [SmokeMethod("newSmartCursor()")]
+        public virtual KTextEditor.SmartCursor NewSmartCursor() {
+            return (KTextEditor.SmartCursor) interceptor.Invoke("newSmartCursor", "newSmartCursor()", typeof(KTextEditor.SmartCursor));
+        }
         /// <remarks>
         ///  \overload
         ///  \n \n
@@ -198,7 +216,9 @@ namespace KTextEditor {
         ///  cursors currently bound to ranges.
         ///      </remarks>        <short>    Delete all SmartCursor%s from this document, with the exception of those  cursors currently bound to ranges.</short>
         [SmokeMethod("deleteCursors()")]
-        public abstract void DeleteCursors();
+        public virtual void DeleteCursors() {
+            interceptor.Invoke("deleteCursors", "deleteCursors()", typeof(void));
+        }
         /// <remarks>
         ///  Creates a new SmartRange.
         ///  \param range The initial text range assumed by the new range.
@@ -206,7 +226,21 @@ namespace KTextEditor {
         ///  \param insertBehavior Define whether the range should expand when text is inserted adjacent to the range.
         ///      </remarks>        <short>    Creates a new SmartRange.</short>
         [SmokeMethod("newSmartRange(const KTextEditor::Range&, KTextEditor::SmartRange*, KTextEditor::SmartRange::InsertBehaviors)")]
-        public abstract KTextEditor.SmartRange NewSmartRange(KTextEditor.Range range, KTextEditor.SmartRange parent, uint insertBehavior);
+        public virtual KTextEditor.SmartRange NewSmartRange(KTextEditor.Range range, KTextEditor.SmartRange parent, uint insertBehavior) {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange##$", "newSmartRange(const KTextEditor::Range&, KTextEditor::SmartRange*, KTextEditor::SmartRange::InsertBehaviors)", typeof(KTextEditor.SmartRange), typeof(KTextEditor.Range), range, typeof(KTextEditor.SmartRange), parent, typeof(uint), insertBehavior);
+        }
+        [SmokeMethod("newSmartRange(const KTextEditor::Range&, KTextEditor::SmartRange*)")]
+        public virtual KTextEditor.SmartRange NewSmartRange(KTextEditor.Range range, KTextEditor.SmartRange parent) {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange##", "newSmartRange(const KTextEditor::Range&, KTextEditor::SmartRange*)", typeof(KTextEditor.SmartRange), typeof(KTextEditor.Range), range, typeof(KTextEditor.SmartRange), parent);
+        }
+        [SmokeMethod("newSmartRange(const KTextEditor::Range&)")]
+        public virtual KTextEditor.SmartRange NewSmartRange(KTextEditor.Range range) {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange#", "newSmartRange(const KTextEditor::Range&)", typeof(KTextEditor.SmartRange), typeof(KTextEditor.Range), range);
+        }
+        [SmokeMethod("newSmartRange()")]
+        public virtual KTextEditor.SmartRange NewSmartRange() {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange", "newSmartRange()", typeof(KTextEditor.SmartRange));
+        }
         /// <remarks>
         ///  \overload
         ///  \n \n
@@ -253,7 +287,17 @@ namespace KTextEditor {
         ///  \param insertBehavior Define whether the range should expand when text is inserted at ends of the range.
         ///      </remarks>        <short>    Creates a new SmartRange from pre-existing SmartCursor%s.</short>
         [SmokeMethod("newSmartRange(KTextEditor::SmartCursor*, KTextEditor::SmartCursor*, KTextEditor::SmartRange*, KTextEditor::SmartRange::InsertBehaviors)")]
-        public abstract KTextEditor.SmartRange NewSmartRange(KTextEditor.SmartCursor start, KTextEditor.SmartCursor end, KTextEditor.SmartRange parent, uint insertBehavior);
+        public virtual KTextEditor.SmartRange NewSmartRange(KTextEditor.SmartCursor start, KTextEditor.SmartCursor end, KTextEditor.SmartRange parent, uint insertBehavior) {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange###$", "newSmartRange(KTextEditor::SmartCursor*, KTextEditor::SmartCursor*, KTextEditor::SmartRange*, KTextEditor::SmartRange::InsertBehaviors)", typeof(KTextEditor.SmartRange), typeof(KTextEditor.SmartCursor), start, typeof(KTextEditor.SmartCursor), end, typeof(KTextEditor.SmartRange), parent, typeof(uint), insertBehavior);
+        }
+        [SmokeMethod("newSmartRange(KTextEditor::SmartCursor*, KTextEditor::SmartCursor*, KTextEditor::SmartRange*)")]
+        public virtual KTextEditor.SmartRange NewSmartRange(KTextEditor.SmartCursor start, KTextEditor.SmartCursor end, KTextEditor.SmartRange parent) {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange###", "newSmartRange(KTextEditor::SmartCursor*, KTextEditor::SmartCursor*, KTextEditor::SmartRange*)", typeof(KTextEditor.SmartRange), typeof(KTextEditor.SmartCursor), start, typeof(KTextEditor.SmartCursor), end, typeof(KTextEditor.SmartRange), parent);
+        }
+        [SmokeMethod("newSmartRange(KTextEditor::SmartCursor*, KTextEditor::SmartCursor*)")]
+        public virtual KTextEditor.SmartRange NewSmartRange(KTextEditor.SmartCursor start, KTextEditor.SmartCursor end) {
+            return (KTextEditor.SmartRange) interceptor.Invoke("newSmartRange##", "newSmartRange(KTextEditor::SmartCursor*, KTextEditor::SmartCursor*)", typeof(KTextEditor.SmartRange), typeof(KTextEditor.SmartCursor), start, typeof(KTextEditor.SmartCursor), end);
+        }
         /// <remarks>
         ///  Delete a SmartRange without deleting the SmartCursor%s which make up its start() and end().
         ///  First, extract the cursors yourself using:
@@ -265,14 +309,18 @@ namespace KTextEditor {
         ///  \param range the range to dissociate from its smart cursors, and delete
         ///      </remarks>        <short>    Delete a SmartRange without deleting the SmartCursor%s which make up its start() and end().</short>
         [SmokeMethod("unbindSmartRange(KTextEditor::SmartRange*)")]
-        public abstract void UnbindSmartRange(KTextEditor.SmartRange range);
+        public virtual void UnbindSmartRange(KTextEditor.SmartRange range) {
+            interceptor.Invoke("unbindSmartRange#", "unbindSmartRange(KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.SmartRange), range);
+        }
         /// <remarks>
         ///  Delete all SmartRange%s from this document. This will also delete all
         ///  cursors currently bound to ranges.
         ///  This will not affect any underlying text.
         ///      </remarks>        <short>    Delete all SmartRange%s from this document.</short>
         [SmokeMethod("deleteRanges()")]
-        public abstract void DeleteRanges();
+        public virtual void DeleteRanges() {
+            interceptor.Invoke("deleteRanges", "deleteRanges()", typeof(void));
+        }
         /// <remarks>
         ///  Register a SmartRange tree as providing arbitrary highlighting information,
         ///  and that it should be rendered on all of the views of a document.
@@ -280,26 +328,38 @@ namespace KTextEditor {
         ///  \param supportDynamic support dynamic highlighting attributes
         ///      </remarks>        <short>    Register a SmartRange tree as providing arbitrary highlighting information,  and that it should be rendered on all of the views of a document.</short>
         [SmokeMethod("addHighlightToDocument(KTextEditor::SmartRange*, bool)")]
-        public abstract void AddHighlightToDocument(KTextEditor.SmartRange topRange, bool supportDynamic);
+        public virtual void AddHighlightToDocument(KTextEditor.SmartRange topRange, bool supportDynamic) {
+            interceptor.Invoke("addHighlightToDocument#$", "addHighlightToDocument(KTextEditor::SmartRange*, bool)", typeof(void), typeof(KTextEditor.SmartRange), topRange, typeof(bool), supportDynamic);
+        }
+        [SmokeMethod("addHighlightToDocument(KTextEditor::SmartRange*)")]
+        public virtual void AddHighlightToDocument(KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("addHighlightToDocument#", "addHighlightToDocument(KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Remove a SmartRange tree from providing arbitrary highlighting information
         ///  to all of the views of a document.
         ///  \param topRange the top range of the tree to remove
         ///      </remarks>        <short>    Remove a SmartRange tree from providing arbitrary highlighting information  to all of the views of a document.</short>
         [SmokeMethod("removeHighlightFromDocument(KTextEditor::SmartRange*)")]
-        public abstract void RemoveHighlightFromDocument(KTextEditor.SmartRange topRange);
+        public virtual void RemoveHighlightFromDocument(KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("removeHighlightFromDocument#", "removeHighlightFromDocument(KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Return a list of SmartRange%s which are currently registered as
         ///  providing arbitrary highlighting information to all of the views of a
         ///  document.
         ///      </remarks>        <short>    Return a list of SmartRange%s which are currently registered as  providing arbitrary highlighting information to all of the views of a  document.</short>
         [SmokeMethod("documentHighlights() const")]
-        public abstract List<KTextEditor.SmartRange> DocumentHighlights();
+        public virtual List<KTextEditor.SmartRange> DocumentHighlights() {
+            return (List<KTextEditor.SmartRange>) interceptor.Invoke("documentHighlights", "documentHighlights() const", typeof(List<KTextEditor.SmartRange>));
+        }
         /// <remarks>
         ///  Clear the highlight ranges from a Document.
         ///      </remarks>        <short>    Clear the highlight ranges from a Document.</short>
         [SmokeMethod("clearDocumentHighlights()")]
-        public abstract void ClearDocumentHighlights();
+        public virtual void ClearDocumentHighlights() {
+            interceptor.Invoke("clearDocumentHighlights", "clearDocumentHighlights()", typeof(void));
+        }
         /// <remarks>
         ///  Register a SmartRange tree as providing arbitrary highlighting information,
         ///  and that it should be rendered on the specified <pre>view</pre>.
@@ -308,7 +368,13 @@ namespace KTextEditor {
         ///  \param supportDynamic support dynamic highlighting attributes
         ///      </remarks>        <short>    Register a SmartRange tree as providing arbitrary highlighting information,  and that it should be rendered on the specified \p view.</short>
         [SmokeMethod("addHighlightToView(KTextEditor::View*, KTextEditor::SmartRange*, bool)")]
-        public abstract void AddHighlightToView(KTextEditor.View view, KTextEditor.SmartRange topRange, bool supportDynamic);
+        public virtual void AddHighlightToView(KTextEditor.View view, KTextEditor.SmartRange topRange, bool supportDynamic) {
+            interceptor.Invoke("addHighlightToView##$", "addHighlightToView(KTextEditor::View*, KTextEditor::SmartRange*, bool)", typeof(void), typeof(KTextEditor.View), view, typeof(KTextEditor.SmartRange), topRange, typeof(bool), supportDynamic);
+        }
+        [SmokeMethod("addHighlightToView(KTextEditor::View*, KTextEditor::SmartRange*)")]
+        public virtual void AddHighlightToView(KTextEditor.View view, KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("addHighlightToView##", "addHighlightToView(KTextEditor::View*, KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.View), view, typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Remove a SmartRange tree from providing arbitrary highlighting information
         ///  to a specific view of a document.
@@ -319,7 +385,9 @@ namespace KTextEditor {
         ///  \param topRange the top range of the tree to remove
         ///      </remarks>        <short>    Remove a SmartRange tree from providing arbitrary highlighting information  to a specific view of a document.</short>
         [SmokeMethod("removeHighlightFromView(KTextEditor::View*, KTextEditor::SmartRange*)")]
-        public abstract void RemoveHighlightFromView(KTextEditor.View view, KTextEditor.SmartRange topRange);
+        public virtual void RemoveHighlightFromView(KTextEditor.View view, KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("removeHighlightFromView##", "removeHighlightFromView(KTextEditor::View*, KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.View), view, typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Return a list of SmartRange%s which are currently registered as
         ///  providing arbitrary highlighting information to a specific view of a
@@ -330,38 +398,50 @@ namespace KTextEditor {
         ///  \param view view to query for the highlight list
         ///      </remarks>        <short>    Return a list of SmartRange%s which are currently registered as  providing arbitrary highlighting information to a specific view of a  document.</short>
         [SmokeMethod("viewHighlights(KTextEditor::View*) const")]
-        public abstract List<KTextEditor.SmartRange> ViewHighlights(KTextEditor.View view);
+        public virtual List<KTextEditor.SmartRange> ViewHighlights(KTextEditor.View view) {
+            return (List<KTextEditor.SmartRange>) interceptor.Invoke("viewHighlights#", "viewHighlights(KTextEditor::View*) const", typeof(List<KTextEditor.SmartRange>), typeof(KTextEditor.View), view);
+        }
         /// <remarks>
         ///  Clear the highlight ranges from a View.
         ///  \param view view to clear highlights from
         ///      </remarks>        <short>    Clear the highlight ranges from a View.</short>
         [SmokeMethod("clearViewHighlights(KTextEditor::View*)")]
-        public abstract void ClearViewHighlights(KTextEditor.View view);
+        public virtual void ClearViewHighlights(KTextEditor.View view) {
+            interceptor.Invoke("clearViewHighlights#", "clearViewHighlights(KTextEditor::View*)", typeof(void), typeof(KTextEditor.View), view);
+        }
         /// <remarks>
         ///  Register a SmartRange tree as providing bound actions,
         ///  and that they should interact with all of the views of a document.
         ///  \param topRange the top range of the tree to add
         ///      </remarks>        <short>    Register a SmartRange tree as providing bound actions,  and that they should interact with all of the views of a document.</short>
         [SmokeMethod("addActionsToDocument(KTextEditor::SmartRange*)")]
-        public abstract void AddActionsToDocument(KTextEditor.SmartRange topRange);
+        public virtual void AddActionsToDocument(KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("addActionsToDocument#", "addActionsToDocument(KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Remove a SmartRange tree from providing bound actions
         ///  to all of the views of a document.
         ///  \param topRange the top range of the tree to remove
         ///      </remarks>        <short>    Remove a SmartRange tree from providing bound actions  to all of the views of a document.</short>
         [SmokeMethod("removeActionsFromDocument(KTextEditor::SmartRange*)")]
-        public abstract void RemoveActionsFromDocument(KTextEditor.SmartRange topRange);
+        public virtual void RemoveActionsFromDocument(KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("removeActionsFromDocument#", "removeActionsFromDocument(KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Return a list of SmartRange%s which are currently registered as
         ///  providing bound actions to all of the views of a document.
         ///      </remarks>        <short>    Return a list of SmartRange%s which are currently registered as  providing bound actions to all of the views of a document.</short>
         [SmokeMethod("documentActions() const")]
-        public abstract List<KTextEditor.SmartRange> DocumentActions();
+        public virtual List<KTextEditor.SmartRange> DocumentActions() {
+            return (List<KTextEditor.SmartRange>) interceptor.Invoke("documentActions", "documentActions() const", typeof(List<KTextEditor.SmartRange>));
+        }
         /// <remarks>
         ///  Remove all bound SmartRange%s which provide actions to the document.
         ///      </remarks>        <short>    Remove all bound SmartRange%s which provide actions to the document.</short>
         [SmokeMethod("clearDocumentActions()")]
-        public abstract void ClearDocumentActions();
+        public virtual void ClearDocumentActions() {
+            interceptor.Invoke("clearDocumentActions", "clearDocumentActions()", typeof(void));
+        }
         /// <remarks>
         ///  Register a SmartRange tree as providing bound actions,
         ///  and that they should interact with the specified <pre>view</pre>.
@@ -369,7 +449,9 @@ namespace KTextEditor {
         ///  \param topRange the top range of the tree to add
         ///      </remarks>        <short>    Register a SmartRange tree as providing bound actions,  and that they should interact with the specified \p view.</short>
         [SmokeMethod("addActionsToView(KTextEditor::View*, KTextEditor::SmartRange*)")]
-        public abstract void AddActionsToView(KTextEditor.View view, KTextEditor.SmartRange topRange);
+        public virtual void AddActionsToView(KTextEditor.View view, KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("addActionsToView##", "addActionsToView(KTextEditor::View*, KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.View), view, typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Remove a SmartRange tree from providing bound actions
         ///  to the specified <pre>view</pre>.
@@ -380,7 +462,9 @@ namespace KTextEditor {
         ///  \param topRange the top range of the tree to remove
         ///      </remarks>        <short>    Remove a SmartRange tree from providing bound actions  to the specified \p view.</short>
         [SmokeMethod("removeActionsFromView(KTextEditor::View*, KTextEditor::SmartRange*)")]
-        public abstract void RemoveActionsFromView(KTextEditor.View view, KTextEditor.SmartRange topRange);
+        public virtual void RemoveActionsFromView(KTextEditor.View view, KTextEditor.SmartRange topRange) {
+            interceptor.Invoke("removeActionsFromView##", "removeActionsFromView(KTextEditor::View*, KTextEditor::SmartRange*)", typeof(void), typeof(KTextEditor.View), view, typeof(KTextEditor.SmartRange), topRange);
+        }
         /// <remarks>
         ///  Return a list of SmartRange%s which are currently registered as
         ///  providing bound actions to the specified <pre>view</pre>.
@@ -390,13 +474,17 @@ namespace KTextEditor {
         ///  \param view view to query for the action list
         ///      </remarks>        <short>    Return a list of SmartRange%s which are currently registered as  providing bound actions to the specified \p view.</short>
         [SmokeMethod("viewActions(KTextEditor::View*) const")]
-        public abstract List<KTextEditor.SmartRange> ViewActions(KTextEditor.View view);
+        public virtual List<KTextEditor.SmartRange> ViewActions(KTextEditor.View view) {
+            return (List<KTextEditor.SmartRange>) interceptor.Invoke("viewActions#", "viewActions(KTextEditor::View*) const", typeof(List<KTextEditor.SmartRange>), typeof(KTextEditor.View), view);
+        }
         /// <remarks>
         ///  Remove all bound SmartRange%s which provide actions to the specified <pre>view</pre>.
         ///  \param view view from which to remove actions
         ///      </remarks>        <short>    Remove all bound SmartRange%s which provide actions to the specified \p view.</short>
         [SmokeMethod("clearViewActions(KTextEditor::View*)")]
-        public abstract void ClearViewActions(KTextEditor.View view);
+        public virtual void ClearViewActions(KTextEditor.View view) {
+            interceptor.Invoke("clearViewActions#", "clearViewActions(KTextEditor::View*)", typeof(void), typeof(KTextEditor.View), view);
+        }
         /// <remarks>
         ///  \internal
         ///  Used to notify implementations that an Attribute has gained
@@ -404,7 +492,9 @@ namespace KTextEditor {
         ///  tracking.
         ///      </remarks>        <short>    \internal  Used to notify implementations that an Attribute has gained  a dynamic component and needs to be included in mouse and/or cursor  tracking.</short>
         [SmokeMethod("attributeDynamic(KSharedPtr<KTextEditor::Attribute>)")]
-        protected abstract void AttributeDynamic(KTextEditor.Attribute a);
+        protected virtual void AttributeDynamic(KTextEditor.Attribute a) {
+            interceptor.Invoke("attributeDynamic?", "attributeDynamic(KSharedPtr<KTextEditor::Attribute>)", typeof(void), typeof(KTextEditor.Attribute), a);
+        }
         /// <remarks>
         ///  \internal
         ///  Used to notify implementations that an Attribute has lost
@@ -412,6 +502,8 @@ namespace KTextEditor {
         ///  tracking.
         ///      </remarks>        <short>    \internal  Used to notify implementations that an Attribute has lost  all dynamic components and no longer needs to be included in mouse and cursor  tracking.</short>
         [SmokeMethod("attributeNotDynamic(KSharedPtr<KTextEditor::Attribute>)")]
-        protected abstract void AttributeNotDynamic(KTextEditor.Attribute a);
+        protected virtual void AttributeNotDynamic(KTextEditor.Attribute a) {
+            interceptor.Invoke("attributeNotDynamic?", "attributeNotDynamic(KSharedPtr<KTextEditor::Attribute>)", typeof(void), typeof(KTextEditor.Attribute), a);
+        }
     }
 }

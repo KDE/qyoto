@@ -65,7 +65,7 @@ namespace KTextEditor {
         ///  To add a new standard mark type, edit this interface and document
         ///  the type.
         ///      </remarks>        <short>    Predefined mark types.</short>
-        public enum MarkTypes : long {
+        public enum MarkTypes : uint {
             markType01 = 0x1,
             markType02 = 0x2,
             markType03 = 0x4,
@@ -127,7 +127,9 @@ namespace KTextEditor {
         ///  \see addMark(), removeMark()
         ///      </remarks>        <short>    Get all marks set on the \p line.</short>
         [SmokeMethod("mark(int)")]
-        public abstract uint Mark(int line);
+        public virtual uint Mark(int line) {
+            return (uint) interceptor.Invoke("mark$", "mark(int)", typeof(uint), typeof(int), line);
+        }
         /// <remarks>
         ///  Set the <pre>line</pre>'s mark types to <pre>markType</pre>.
         ///  If <pre>line</pre> already contains a mark of the given type it has no effect.
@@ -142,14 +144,18 @@ namespace KTextEditor {
         ///  \see clearMark(), addMark(), mark()
         ///      </remarks>        <short>    Set the \p line's mark types to \p markType.</short>
         [SmokeMethod("setMark(int, uint)")]
-        public abstract void SetMark(int line, uint markType);
+        public virtual void SetMark(int line, uint markType) {
+            interceptor.Invoke("setMark$$", "setMark(int, uint)", typeof(void), typeof(int), line, typeof(uint), markType);
+        }
         /// <remarks>
         ///  Clear all marks set in the <pre>line</pre>.
         ///  \param line line to clear marks
         ///  \see clearMarks(), removeMark(), addMark()
         ///      </remarks>        <short>    Clear all marks set in the \p line.</short>
         [SmokeMethod("clearMark(int)")]
-        public abstract void ClearMark(int line);
+        public virtual void ClearMark(int line) {
+            interceptor.Invoke("clearMark$", "clearMark(int)", typeof(void), typeof(int), line);
+        }
         /// <remarks>
         ///  Add marks of type <pre>markType</pre> to <pre>line</pre>. Existing marks on this line
         ///  are preserved. If the mark <pre>markType</pre> already is set, nothing
@@ -159,7 +165,9 @@ namespace KTextEditor {
         ///  \see removeMark(), setMark()
         ///      </remarks>        <short>    Add marks of type \p markType to \p line.</short>
         [SmokeMethod("addMark(int, uint)")]
-        public abstract void AddMark(int line, uint markType);
+        public virtual void AddMark(int line, uint markType) {
+            interceptor.Invoke("addMark$$", "addMark(int, uint)", typeof(void), typeof(int), line, typeof(uint), markType);
+        }
         /// <remarks>
         ///  Remove the mark mask of type <pre>markType</pre> from <pre>line</pre>.
         ///  \param line line to remove the mark
@@ -167,7 +175,9 @@ namespace KTextEditor {
         ///  \see clearMark()
         ///      </remarks>        <short>    Remove the mark mask of type \p markType from \p line.</short>
         [SmokeMethod("removeMark(int, uint)")]
-        public abstract void RemoveMark(int line, uint markType);
+        public virtual void RemoveMark(int line, uint markType) {
+            interceptor.Invoke("removeMark$$", "removeMark(int, uint)", typeof(void), typeof(int), line, typeof(uint), markType);
+        }
         /// <remarks>
         ///  Get a hash holding all marks in the document.
         ///  The hash key for a mark is its line.
@@ -178,14 +188,18 @@ namespace KTextEditor {
         ///  \see clearMark(), removeMark()
         ///      </remarks>        <short>    Clear all marks in the entire document.</short>
         [SmokeMethod("clearMarks()")]
-        public abstract void ClearMarks();
+        public virtual void ClearMarks() {
+            interceptor.Invoke("clearMarks", "clearMarks()", typeof(void));
+        }
         /// <remarks>
         ///  The <pre>document</pre> emits this signal whenever a mark mask changed.
         ///  \param document document which emitted this signal
         ///  \see markChanged()
         ///      </remarks>        <short>    The \p document emits this signal whenever a mark mask changed.</short>
         [SmokeMethod("marksChanged(KTextEditor::Document*)")]
-        public abstract void MarksChanged(KTextEditor.Document document);
+        public virtual void MarksChanged(KTextEditor.Document document) {
+            interceptor.Invoke("marksChanged#", "marksChanged(KTextEditor::Document*)", typeof(void), typeof(KTextEditor.Document), document);
+        }
         /// <remarks>
         ///  Set the <pre>mark</pre>'s pixmap to <pre>pixmap</pre>.
         ///  \param mark mark to which the pixmap will be attached
@@ -193,7 +207,9 @@ namespace KTextEditor {
         ///  \see setMarkDescription()
         ///      </remarks>        <short>    Set the \p mark's pixmap to \p pixmap.</short>
         [SmokeMethod("setMarkPixmap(KTextEditor::MarkInterface::MarkTypes, const QPixmap&)")]
-        public abstract void SetMarkPixmap(KTextEditor.MarkInterface.MarkTypes mark, QPixmap pixmap);
+        public virtual void SetMarkPixmap(KTextEditor.MarkInterface.MarkTypes mark, QPixmap pixmap) {
+            interceptor.Invoke("setMarkPixmap$#", "setMarkPixmap(KTextEditor::MarkInterface::MarkTypes, const QPixmap&)", typeof(void), typeof(KTextEditor.MarkInterface.MarkTypes), mark, typeof(QPixmap), pixmap);
+        }
         /// <remarks>
         ///  Get the <pre>mark</pre>'s pixmap.
         ///  \param mark mark type. If the pixmap does not exist the resulting is null
@@ -201,7 +217,9 @@ namespace KTextEditor {
         ///  \see setMarkDescription()
         ///      </remarks>        <short>    Get the \p mark's pixmap.</short>
         [SmokeMethod("markPixmap(KTextEditor::MarkInterface::MarkTypes) const")]
-        public abstract QPixmap MarkPixmap(KTextEditor.MarkInterface.MarkTypes mark);
+        public virtual QPixmap MarkPixmap(KTextEditor.MarkInterface.MarkTypes mark) {
+            return (QPixmap) interceptor.Invoke("markPixmap$", "markPixmap(KTextEditor::MarkInterface::MarkTypes) const", typeof(QPixmap), typeof(KTextEditor.MarkInterface.MarkTypes), mark);
+        }
         /// <remarks>
         ///  Set the <pre>mark</pre>'s description to <pre>text</pre>.
         ///  \param mark mark to set the description
@@ -209,7 +227,9 @@ namespace KTextEditor {
         ///  \see markDescription(), setMarkPixmap()
         ///      </remarks>        <short>    Set the \p mark's description to \p text.</short>
         [SmokeMethod("setMarkDescription(KTextEditor::MarkInterface::MarkTypes, const QString&)")]
-        public abstract void SetMarkDescription(KTextEditor.MarkInterface.MarkTypes mark, string text);
+        public virtual void SetMarkDescription(KTextEditor.MarkInterface.MarkTypes mark, string text) {
+            interceptor.Invoke("setMarkDescription$$", "setMarkDescription(KTextEditor::MarkInterface::MarkTypes, const QString&)", typeof(void), typeof(KTextEditor.MarkInterface.MarkTypes), mark, typeof(string), text);
+        }
         /// <remarks>
         ///  Get the <pre>mark</pre>'s description to text.
         ///  \param mark mark to set the description
@@ -218,7 +238,9 @@ namespace KTextEditor {
         ///  \see setMarkDescription(), setMarkPixmap()
         ///      </remarks>        <short>    Get the \p mark's description to text.</short>
         [SmokeMethod("markDescription(KTextEditor::MarkInterface::MarkTypes) const")]
-        public abstract string MarkDescription(KTextEditor.MarkInterface.MarkTypes mark);
+        public virtual string MarkDescription(KTextEditor.MarkInterface.MarkTypes mark) {
+            return (string) interceptor.Invoke("markDescription$", "markDescription(KTextEditor::MarkInterface::MarkTypes) const", typeof(string), typeof(KTextEditor.MarkInterface.MarkTypes), mark);
+        }
         /// <remarks>
         ///  Set the mark mask the user is allowed to toggle to <pre>markMask</pre>.
         ///  I.e. concatenate all editable marks with a logical OR. If the user should
@@ -238,7 +260,9 @@ namespace KTextEditor {
         ///  \see editableMarks(), setMarkPixmap(), setMarkDescription()
         ///      </remarks>        <short>    Set the mark mask the user is allowed to toggle to \p markMask.</short>
         [SmokeMethod("setEditableMarks(uint)")]
-        public abstract void SetEditableMarks(uint markMask);
+        public virtual void SetEditableMarks(uint markMask) {
+            interceptor.Invoke("setEditableMarks$", "setEditableMarks(uint)", typeof(void), typeof(uint), markMask);
+        }
         /// <remarks>
         ///  Get, which marks can be toggled by the user.
         ///  The returned value is a mark mask containing all editable marks combined
@@ -247,7 +271,9 @@ namespace KTextEditor {
         ///  \see setEditableMarks()
         ///      </remarks>        <short>    Get, which marks can be toggled by the user.</short>
         [SmokeMethod("editableMarks() const")]
-        public abstract uint EditableMarks();
+        public virtual uint EditableMarks() {
+            return (uint) interceptor.Invoke("editableMarks", "editableMarks() const", typeof(uint));
+        }
         /// <remarks>
         ///  The <pre>document</pre> emits this signal whenever the <pre>mark</pre> changes.
         ///  \param document the document which emitted the signal
@@ -256,7 +282,9 @@ namespace KTextEditor {
         ///  \see marksChanged()
         ///      </remarks>        <short>    The \p document emits this signal whenever the \p mark changes.</short>
         [SmokeMethod("markChanged(KTextEditor::Document*, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction)")]
-        public abstract void MarkChanged(KTextEditor.Document document, KTextEditor.Mark mark, KTextEditor.MarkInterface.MarkChangeAction action);
+        public virtual void MarkChanged(KTextEditor.Document document, KTextEditor.Mark mark, KTextEditor.MarkInterface.MarkChangeAction action) {
+            interceptor.Invoke("markChanged##$", "markChanged(KTextEditor::Document*, KTextEditor::Mark, KTextEditor::MarkInterface::MarkChangeAction)", typeof(void), typeof(KTextEditor.Document), document, typeof(KTextEditor.Mark), mark, typeof(KTextEditor.MarkInterface.MarkChangeAction), action);
+        }
         /// <remarks>
         ///  Get the number of predefined mark types we have so far.
         ///  <b>Note:<> FIXME: If you change this you have to make sure katepart

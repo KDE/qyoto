@@ -44,12 +44,16 @@ namespace KTextEditor {
         /// <param> name="visible" if \e true the annotation border is shown, otherwise hidden
         ///      </param></remarks>        <short>    This function can be used to show or hide the annotation border  The annotation border is hidden by default.</short>
         [SmokeMethod("setAnnotationBorderVisible(bool)")]
-        public abstract void SetAnnotationBorderVisible(bool visible);
+        public virtual void SetAnnotationBorderVisible(bool visible) {
+            interceptor.Invoke("setAnnotationBorderVisible$", "setAnnotationBorderVisible(bool)", typeof(void), typeof(bool), visible);
+        }
         /// <remarks>
         ///  Checks whether the View's annotation border is visible.
         ///      </remarks>        <short>    Checks whether the View's annotation border is visible.</short>
         [SmokeMethod("isAnnotationBorderVisible() const")]
-        public abstract bool IsAnnotationBorderVisible();
+        public virtual bool IsAnnotationBorderVisible() {
+            return (bool) interceptor.Invoke("isAnnotationBorderVisible", "isAnnotationBorderVisible() const", typeof(bool));
+        }
         /// <remarks>
         ///  This signal is emitted before a context menu is shown on the annotation
         ///  border for the given line and view.
@@ -61,7 +65,9 @@ namespace KTextEditor {
         ///  \see setAnnotationContextMenu()
         ///      </remarks>        <short>    This signal is emitted before a context menu is shown on the annotation  border for the given line and view.</short>
         [SmokeMethod("annotationContextMenuAboutToShow(KTextEditor::View*, QMenu*, int)")]
-        public abstract void AnnotationContextMenuAboutToShow(KTextEditor.View view, QMenu menu, int line);
+        public virtual void AnnotationContextMenuAboutToShow(KTextEditor.View view, QMenu menu, int line) {
+            interceptor.Invoke("annotationContextMenuAboutToShow##$", "annotationContextMenuAboutToShow(KTextEditor::View*, QMenu*, int)", typeof(void), typeof(KTextEditor.View), view, typeof(QMenu), menu, typeof(int), line);
+        }
         /// <remarks>
         ///  This signal is emitted when an entry on the annotation border was activated,
         ///  for example by clicking or double-clicking it. This follows the KDE wide
@@ -70,14 +76,18 @@ namespace KTextEditor {
         ///  \param line the document line that the activated posistion belongs to
         ///      </remarks>        <short>    This signal is emitted when an entry on the annotation border was activated,  for example by clicking or double-clicking it.</short>
         [SmokeMethod("annotationActivated(KTextEditor::View*, int)")]
-        public abstract void AnnotationActivated(KTextEditor.View view, int line);
+        public virtual void AnnotationActivated(KTextEditor.View view, int line) {
+            interceptor.Invoke("annotationActivated#$", "annotationActivated(KTextEditor::View*, int)", typeof(void), typeof(KTextEditor.View), view, typeof(int), line);
+        }
         /// <remarks>
         ///  This signal is emitted when the annotation border is shown or hidden.
         ///  \param view the view to which the border belongs to
         ///  \param visible the current visibility state
         ///      </remarks>        <short>    This signal is emitted when the annotation border is shown or hidden.</short>
         [SmokeMethod("annotationBorderVisibilityChanged(KTextEditor::View*, bool)")]
-        public abstract void AnnotationBorderVisibilityChanged(KTextEditor.View view, bool visible);
+        public virtual void AnnotationBorderVisibilityChanged(KTextEditor.View view, bool visible) {
+            interceptor.Invoke("annotationBorderVisibilityChanged#$", "annotationBorderVisibilityChanged(KTextEditor::View*, bool)", typeof(void), typeof(KTextEditor.View), view, typeof(bool), visible);
+        }
         public AnnotationViewInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("AnnotationViewInterface", "AnnotationViewInterface()", typeof(void));

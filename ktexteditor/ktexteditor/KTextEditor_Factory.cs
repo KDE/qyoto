@@ -66,6 +66,8 @@ namespace KTextEditor {
         ///  \return global KTextEditor.Editor object
         ///      </remarks>        <short>    Get the global Editor object.</short>
         [SmokeMethod("editor()")]
-        public abstract KTextEditor.Editor Editor();
+        public virtual KTextEditor.Editor Editor() {
+            return (KTextEditor.Editor) interceptor.Invoke("editor", "editor()", typeof(KTextEditor.Editor));
+        }
     }
 }

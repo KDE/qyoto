@@ -48,7 +48,9 @@ namespace KTextEditor {
         ///  \return list of supported commands
         ///      </remarks>        <short>    Return a list of strings a command may begin with.</short>
         [SmokeMethod("cmds()")]
-        public abstract List<string> Cmds();
+        public virtual List<string> Cmds() {
+            return (List<string>) interceptor.Invoke("cmds", "cmds()", typeof(List<string>));
+        }
         /// <remarks>
         ///  Execute the command for the given <pre>view</pre> and <pre>cmd</pre> string.
         ///  Return the success value and a <pre>msg</pre> for status. As example we
@@ -59,7 +61,9 @@ namespace KTextEditor {
         ///  \return \e true on success, otherwise \e false
         ///      </remarks>        <short>    Execute the command for the given \p view and \p cmd string.</short>
         [SmokeMethod("exec(KTextEditor::View*, const QString&, QString&)")]
-        public abstract bool Exec(KTextEditor.View view, string cmd, StringBuilder msg);
+        public virtual bool Exec(KTextEditor.View view, string cmd, StringBuilder msg) {
+            return (bool) interceptor.Invoke("exec#$$", "exec(KTextEditor::View*, const QString&, QString&)", typeof(bool), typeof(KTextEditor.View), view, typeof(string), cmd, typeof(StringBuilder), msg);
+        }
         /// <remarks>
         ///  Shows help for the given <pre>view</pre> and <pre>cmd</pre> string.
         ///  If your command has a help text for <pre>cmd</pre> you have to return \e true
@@ -68,7 +72,9 @@ namespace KTextEditor {
         ///  \return \e true if your command has a help text, otherwise \e false
         ///      </remarks>        <short>    Shows help for the given \p view and \p cmd string.</short>
         [SmokeMethod("help(KTextEditor::View*, const QString&, QString&)")]
-        public abstract bool Help(KTextEditor.View view, string cmd, StringBuilder msg);
+        public virtual bool Help(KTextEditor.View view, string cmd, StringBuilder msg) {
+            return (bool) interceptor.Invoke("help#$$", "help(KTextEditor::View*, const QString&, QString&)", typeof(bool), typeof(KTextEditor.View), view, typeof(string), cmd, typeof(StringBuilder), msg);
+        }
         public Command() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("Command", "Command()", typeof(void));

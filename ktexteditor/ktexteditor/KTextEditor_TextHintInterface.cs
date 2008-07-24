@@ -26,18 +26,24 @@ namespace KTextEditor {
         ///  for a certain time, specifiedin the timeout parameter.
         ///      </remarks>        <short>    enable Texthints.</short>
         [SmokeMethod("enableTextHints(int)")]
-        public abstract void EnableTextHints(int timeout);
+        public virtual void EnableTextHints(int timeout) {
+            interceptor.Invoke("enableTextHints$", "enableTextHints(int)", typeof(void), typeof(int), timeout);
+        }
         /// <remarks>
         ///  Disable texthints. Per default they are disabled.
         ///      </remarks>        <short>    Disable texthints.</short>
         [SmokeMethod("disableTextHints()")]
-        public abstract void DisableTextHints();
+        public virtual void DisableTextHints() {
+            interceptor.Invoke("disableTextHints", "disableTextHints()", typeof(void));
+        }
         /// <remarks>
         ///  emit this signal, if a tooltip text is needed for displaying.
         ///  I you don't want a tooltip to be displayd set text to an emtpy string in a connected slot,
         ///  otherwise set text to the string you want the editor to display
         ///      </remarks>        <short>    emit this signal, if a tooltip text is needed for displaying.</short>
         [SmokeMethod("needTextHint(const KTextEditor::Cursor&, QString&)")]
-        public abstract void NeedTextHint(KTextEditor.Cursor position, StringBuilder text);
+        public virtual void NeedTextHint(KTextEditor.Cursor position, StringBuilder text) {
+            interceptor.Invoke("needTextHint#$", "needTextHint(const KTextEditor::Cursor&, QString&)", typeof(void), typeof(KTextEditor.Cursor), position, typeof(StringBuilder), text);
+        }
     }
 }

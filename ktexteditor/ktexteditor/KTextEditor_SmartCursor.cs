@@ -168,7 +168,9 @@ namespace KTextEditor {
         ///  \return \e true if a notifier already exists, otherwise \e false
         ///      </remarks>        <short>    Determine if a notifier already exists for this smart cursor.</short>
         [SmokeMethod("hasNotifier() const")]
-        public abstract bool HasNotifier();
+        public virtual bool HasNotifier() {
+            return (bool) interceptor.Invoke("hasNotifier", "hasNotifier() const", typeof(bool));
+        }
         /// <remarks>
         ///  Returns the current SmartCursorNotifier.  If one does not already exist,
         ///  it will be created.
@@ -180,27 +182,39 @@ namespace KTextEditor {
         ///          If one does not already exist, it will be created.
         ///      </remarks>        <short>    Returns the current SmartCursorNotifier.</short>
         [SmokeMethod("notifier()")]
-        public abstract KTextEditor.SmartCursorNotifier Notifier();
+        public virtual KTextEditor.SmartCursorNotifier Notifier() {
+            return (KTextEditor.SmartCursorNotifier) interceptor.Invoke("notifier", "notifier()", typeof(KTextEditor.SmartCursorNotifier));
+        }
         /// <remarks>
         ///  Deletes the current SmartCursorNotifier.
         ///  When finished with a notifier, call this method to save memory, and potentially
         ///  editor logic processing time, by having the SmartCursorNotifier deleted.
         ///      </remarks>        <short>    Deletes the current SmartCursorNotifier.</short>
         [SmokeMethod("deleteNotifier()")]
-        public abstract void DeleteNotifier();
+        public virtual void DeleteNotifier() {
+            interceptor.Invoke("deleteNotifier", "deleteNotifier()", typeof(void));
+        }
         /// <remarks>
         ///  Returns a pointer to the current SmartCursorWatcher, if one has been set.
         ///  \return the current SmartCursorWatcher pointer if one exists, otherwise null.
         ///      </remarks>        <short>    Returns a pointer to the current SmartCursorWatcher, if one has been set.</short>
         [SmokeMethod("watcher() const")]
-        public abstract KTextEditor.SmartCursorWatcher Watcher();
+        public virtual KTextEditor.SmartCursorWatcher Watcher() {
+            return (KTextEditor.SmartCursorWatcher) interceptor.Invoke("watcher", "watcher() const", typeof(KTextEditor.SmartCursorWatcher));
+        }
         /// <remarks>
         ///  Provide a SmartCursorWatcher to receive calls indicating change of state of this cursor.
         ///  To finish receiving notifications, call this function with <pre>watcher</pre> set to null.
         ///  \param watcher the class which will receive notifications about changes to this cursor.
         ///      </remarks>        <short>    Provide a SmartCursorWatcher to receive calls indicating change of state of this cursor.</short>
         [SmokeMethod("setWatcher(KTextEditor::SmartCursorWatcher*)")]
-        public abstract void SetWatcher(KTextEditor.SmartCursorWatcher watcher);
+        public virtual void SetWatcher(KTextEditor.SmartCursorWatcher watcher) {
+            interceptor.Invoke("setWatcher#", "setWatcher(KTextEditor::SmartCursorWatcher*)", typeof(void), typeof(KTextEditor.SmartCursorWatcher), watcher);
+        }
+        [SmokeMethod("setWatcher()")]
+        public virtual void SetWatcher() {
+            interceptor.Invoke("setWatcher", "setWatcher()", typeof(void));
+        }
         /// <remarks>
         ///  \internal
         ///  Constructor for subclasses to utilise.  Protected to prevent direct

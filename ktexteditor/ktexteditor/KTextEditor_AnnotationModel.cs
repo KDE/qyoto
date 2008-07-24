@@ -37,7 +37,9 @@ namespace KTextEditor {
         ///  \ref Qt.ForegroundRole - a brush to be used to paint the text on the border
         ///      </remarks>        <short>    data() is used to retrieve the information needed to present the  annotation information from the annotation model.</short>
         [SmokeMethod("data(int, Qt::ItemDataRole) const")]
-        public abstract QVariant Data(int line, Qt.ItemDataRole role);
+        public virtual QVariant Data(int line, Qt.ItemDataRole role) {
+            return (QVariant) interceptor.Invoke("data$$", "data(int, Qt::ItemDataRole) const", typeof(QVariant), typeof(int), line, typeof(Qt.ItemDataRole), role);
+        }
         public AnnotationModel() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("AnnotationModel", "AnnotationModel()", typeof(void));

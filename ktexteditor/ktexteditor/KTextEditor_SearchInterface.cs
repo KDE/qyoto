@@ -63,7 +63,13 @@ namespace KTextEditor {
         ///  \author Sebastian Pipping \<webmaster@hartwork.org\>
         ///      </remarks>        <short>    \brief Searches the given input range for a text pattern.</short>
         [SmokeMethod("searchText(const KTextEditor::Range&, const QString&, const KTextEditor::Search::SearchOptions)")]
-        public abstract List<KTextEditor.Range> SearchText(KTextEditor.Range range, string pattern, uint options);
+        public virtual List<KTextEditor.Range> SearchText(KTextEditor.Range range, string pattern, uint options) {
+            return (List<KTextEditor.Range>) interceptor.Invoke("searchText#$$", "searchText(const KTextEditor::Range&, const QString&, const KTextEditor::Search::SearchOptions)", typeof(List<KTextEditor.Range>), typeof(KTextEditor.Range), range, typeof(string), pattern, typeof(uint), options);
+        }
+        [SmokeMethod("searchText(const KTextEditor::Range&, const QString&)")]
+        public virtual List<KTextEditor.Range> SearchText(KTextEditor.Range range, string pattern) {
+            return (List<KTextEditor.Range>) interceptor.Invoke("searchText#$", "searchText(const KTextEditor::Range&, const QString&)", typeof(List<KTextEditor.Range>), typeof(KTextEditor.Range), range, typeof(string), pattern);
+        }
         /// <remarks>
         ///  \brief Specifies all options supported by searchText.
         ///  \return  Combination of all flags supported by searchText
@@ -71,6 +77,8 @@ namespace KTextEditor {
         ///  \author Sebastian Pipping \<webmaster@hartwork.org\>
         ///      </remarks>        <short>    \brief Specifies all options supported by searchText.</short>
         [SmokeMethod("supportedSearchOptions() const")]
-        public abstract uint SupportedSearchOptions();
+        public virtual uint SupportedSearchOptions() {
+            return (uint) interceptor.Invoke("supportedSearchOptions", "supportedSearchOptions() const", typeof(uint));
+        }
     }
 }

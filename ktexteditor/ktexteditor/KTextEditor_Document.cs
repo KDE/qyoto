@@ -88,7 +88,9 @@ namespace KTextEditor {
         ///  \see KTextEditor.Editor
         ///      </remarks>        <short>    Get the global editor object.</short>
         [SmokeMethod("editor()")]
-        public abstract KTextEditor.Editor Editor();
+        public virtual KTextEditor.Editor Editor() {
+            return (KTextEditor.Editor) interceptor.Invoke("editor", "editor()", typeof(KTextEditor.Editor));
+        }
         /// <remarks>
         ///  Create a new view attached to <code>parent.</code>
         /// <param> name="parent" parent widget
@@ -96,17 +98,23 @@ namespace KTextEditor {
         ///      </return>
         ///         <short>    Create a new view attached to <code>parent.</code></short>
         [SmokeMethod("createView(QWidget*)")]
-        public abstract KTextEditor.View CreateView(QWidget parent);
+        public virtual KTextEditor.View CreateView(QWidget parent) {
+            return (KTextEditor.View) interceptor.Invoke("createView#", "createView(QWidget*)", typeof(KTextEditor.View), typeof(QWidget), parent);
+        }
         /// <remarks>
         ///  Return the view which currently has user focus, if any.
         ///      </remarks>        <short>    Return the view which currently has user focus, if any.</short>
         [SmokeMethod("activeView() const")]
-        public abstract KTextEditor.View ActiveView();
+        public virtual KTextEditor.View ActiveView() {
+            return (KTextEditor.View) interceptor.Invoke("activeView", "activeView() const", typeof(KTextEditor.View));
+        }
         /// <remarks>
         ///  Returns the views pre-casted to KTextEditor.View%s
         ///      </remarks>        <short>    Returns the views pre-casted to KTextEditor.View%s      </short>
         [SmokeMethod("views() const")]
-        public abstract List<KTextEditor.View> Views();
+        public virtual List<KTextEditor.View> Views() {
+            return (List<KTextEditor.View>) interceptor.Invoke("views", "views() const", typeof(List<KTextEditor.View>));
+        }
         /// <remarks>
         ///  Get this document's name.
         ///  The editor part should provide some meaningful name, like some unique
@@ -115,13 +123,17 @@ namespace KTextEditor {
         ///  \return readable document name
         ///      </remarks>        <short>    Get this document's name.</short>
         [SmokeMethod("documentName() const")]
-        public abstract string DocumentName();
+        public virtual string DocumentName() {
+            return (string) interceptor.Invoke("documentName", "documentName() const", typeof(string));
+        }
         /// <remarks>
         ///  Get this document's mimetype.
         ///  \return mimetype
         ///      </remarks>        <short>    Get this document's mimetype.</short>
         [SmokeMethod("mimeType()")]
-        public abstract string MimeType();
+        public virtual string MimeType() {
+            return (string) interceptor.Invoke("mimeType", "mimeType()", typeof(string));
+        }
         /// <remarks>
         ///  Set the encoding for this document. This encoding will be used
         ///  while loading and saving files, it will \e not affect the already
@@ -136,7 +148,9 @@ namespace KTextEditor {
         ///  \see encoding()
         ///      </remarks>        <short>    Set the encoding for this document.</short>
         [SmokeMethod("setEncoding(const QString&)")]
-        public abstract bool SetEncoding(string encoding);
+        public virtual bool SetEncoding(string encoding) {
+            return (bool) interceptor.Invoke("setEncoding$", "setEncoding(const QString&)", typeof(bool), typeof(string), encoding);
+        }
         /// <remarks>
         ///  Get the current chosen encoding. The return value is an empty string,
         ///  if the document uses the default encoding of the editor and no own
@@ -145,7 +159,9 @@ namespace KTextEditor {
         ///  \see setEncoding()
         ///      </remarks>        <short>    Get the current chosen encoding.</short>
         [SmokeMethod("encoding() const")]
-        public abstract string Encoding();
+        public virtual string Encoding() {
+            return (string) interceptor.Invoke("encoding", "encoding() const", typeof(string));
+        }
         /// <remarks>
         ///  Reload the current file.
         ///  The user will be prompted by the part on changes and more and can
@@ -154,7 +170,9 @@ namespace KTextEditor {
         ///          the document has no url set, it will just return \e false.
         ///      </remarks>        <short>    Reload the current file.</short>
         [SmokeMethod("documentReload()")]
-        public abstract bool DocumentReload();
+        public virtual bool DocumentReload() {
+            return (bool) interceptor.Invoke("documentReload", "documentReload()", typeof(bool));
+        }
         /// <remarks>
         ///  Save the current file.
         ///  The user will be asked for a filename if needed and more.
@@ -162,7 +180,9 @@ namespace KTextEditor {
         ///          \e false
         ///      </remarks>        <short>    Save the current file.</short>
         [SmokeMethod("documentSave()")]
-        public abstract bool DocumentSave();
+        public virtual bool DocumentSave() {
+            return (bool) interceptor.Invoke("documentSave", "documentSave()", typeof(bool));
+        }
         /// <remarks>
         ///  Save the current file to another location.
         ///  The user will be asked for a filename and more.
@@ -170,7 +190,9 @@ namespace KTextEditor {
         ///          \e false
         ///      </remarks>        <short>    Save the current file to another location.</short>
         [SmokeMethod("documentSaveAs()")]
-        public abstract bool DocumentSaveAs();
+        public virtual bool DocumentSaveAs() {
+            return (bool) interceptor.Invoke("documentSaveAs", "documentSaveAs()", typeof(bool));
+        }
         /// <remarks>
         ///  Begin an editing sequence.
         ///  Edit commands during this sequence will be bunched together so that
@@ -190,7 +212,9 @@ namespace KTextEditor {
         ///  \see endEditing()
         ///      </remarks>        <short>    Begin an editing sequence.</short>
         [SmokeMethod("startEditing()")]
-        public abstract bool StartEditing();
+        public virtual bool StartEditing() {
+            return (bool) interceptor.Invoke("startEditing", "startEditing()", typeof(bool));
+        }
         /// <remarks>
         ///  End an editing sequence.
         ///  \return \e true on success, otherwise \e false. Parts not supporting
@@ -198,14 +222,18 @@ namespace KTextEditor {
         ///  \see startEditing() for more details
         ///      </remarks>        <short>    End an editing sequence.</short>
         [SmokeMethod("endEditing()")]
-        public abstract bool EndEditing();
+        public virtual bool EndEditing() {
+            return (bool) interceptor.Invoke("endEditing", "endEditing()", typeof(bool));
+        }
         /// <remarks>
         ///  Get the document content.
         ///  \return the complete document content
         ///  \see setText()
         ///      </remarks>        <short>    Get the document content.</short>
         [SmokeMethod("text() const")]
-        public abstract string Text();
+        public virtual string Text() {
+            return (string) interceptor.Invoke("text", "text() const", typeof(string));
+        }
         /// <remarks>
         ///  Get the document content within the given <pre>range</pre>.
         ///  \param range the range of text to retrieve
@@ -215,7 +243,13 @@ namespace KTextEditor {
         ///  \see setText()
         ///      </remarks>        <short>    Get the document content within the given \p range.</short>
         [SmokeMethod("text(const KTextEditor::Range&, bool) const")]
-        public abstract string Text(KTextEditor.Range range, bool block);
+        public virtual string Text(KTextEditor.Range range, bool block) {
+            return (string) interceptor.Invoke("text#$", "text(const KTextEditor::Range&, bool) const", typeof(string), typeof(KTextEditor.Range), range, typeof(bool), block);
+        }
+        [SmokeMethod("text(const KTextEditor::Range&) const")]
+        public virtual string Text(KTextEditor.Range range) {
+            return (string) interceptor.Invoke("text#", "text(const KTextEditor::Range&) const", typeof(string), typeof(KTextEditor.Range), range);
+        }
         /// <remarks>
         ///  Get the character at <pre>cursor</pre>.
         ///  \param position the location of the character to retrieve
@@ -223,7 +257,9 @@ namespace KTextEditor {
         ///  \see setText()
         ///      </remarks>        <short>    Get the character at \p cursor.</short>
         [SmokeMethod("character(const KTextEditor::Cursor&) const")]
-        public abstract QChar Character(KTextEditor.Cursor position);
+        public virtual QChar Character(KTextEditor.Cursor position) {
+            return (QChar) interceptor.Invoke("character#", "character(const KTextEditor::Cursor&) const", typeof(QChar), typeof(KTextEditor.Cursor), position);
+        }
         /// <remarks>
         ///  Get the document content within the given <pre>range</pre>.
         ///  \param range the range of text to retrieve
@@ -234,7 +270,13 @@ namespace KTextEditor {
         ///  \see setText()
         ///      </remarks>        <short>    Get the document content within the given \p range.</short>
         [SmokeMethod("textLines(const KTextEditor::Range&, bool) const")]
-        public abstract List<string> TextLines(KTextEditor.Range range, bool block);
+        public virtual List<string> TextLines(KTextEditor.Range range, bool block) {
+            return (List<string>) interceptor.Invoke("textLines#$", "textLines(const KTextEditor::Range&, bool) const", typeof(List<string>), typeof(KTextEditor.Range), range, typeof(bool), block);
+        }
+        [SmokeMethod("textLines(const KTextEditor::Range&) const")]
+        public virtual List<string> TextLines(KTextEditor.Range range) {
+            return (List<string>) interceptor.Invoke("textLines#", "textLines(const KTextEditor::Range&) const", typeof(List<string>), typeof(KTextEditor.Range), range);
+        }
         /// <remarks>
         ///  Get a single text line.
         ///  \param line the wanted line
@@ -242,21 +284,27 @@ namespace KTextEditor {
         ///  \see text(), lineLength()
         ///      </remarks>        <short>    Get a single text line.</short>
         [SmokeMethod("line(int) const")]
-        public abstract string Line(int line);
+        public virtual string Line(int line) {
+            return (string) interceptor.Invoke("line$", "line(int) const", typeof(string), typeof(int), line);
+        }
         /// <remarks>
         ///  Get the count of lines of the document.
         ///  \return the current number of lines in the document
         ///  \see length()
         ///      </remarks>        <short>    Get the count of lines of the document.</short>
         [SmokeMethod("lines() const")]
-        public abstract int Lines();
+        public virtual int Lines() {
+            return (int) interceptor.Invoke("lines", "lines() const", typeof(int));
+        }
         /// <remarks>
         ///  End position of the document.
         ///  \return The last column on the last line of the document
         ///  \see all()
         ///      </remarks>        <short>    End position of the document.</short>
         [SmokeMethod("documentEnd() const")]
-        public abstract KTextEditor.Cursor DocumentEnd();
+        public virtual KTextEditor.Cursor DocumentEnd() {
+            return (KTextEditor.Cursor) interceptor.Invoke("documentEnd", "documentEnd() const", typeof(KTextEditor.Cursor));
+        }
         /// <remarks>
         ///  A Range which encompasses the whole document.
         ///  \return A range from the start to the end of the document
@@ -271,7 +319,9 @@ namespace KTextEditor {
         ///  \see lines()
         ///      </remarks>        <short>    Get the count of characters in the document.</short>
         [SmokeMethod("totalCharacters() const")]
-        public abstract int TotalCharacters();
+        public virtual int TotalCharacters() {
+            return (int) interceptor.Invoke("totalCharacters", "totalCharacters() const", typeof(int));
+        }
         /// <remarks>
         ///  Returns if the document is empty.
         ///      </remarks>        <short>    Returns if the document is empty.</short>
@@ -287,7 +337,9 @@ namespace KTextEditor {
         ///  \see line()
         ///      </remarks>        <short>    Get the length of a given line in characters.</short>
         [SmokeMethod("lineLength(int) const")]
-        public abstract int LineLength(int line);
+        public virtual int LineLength(int line) {
+            return (int) interceptor.Invoke("lineLength$", "lineLength(int) const", typeof(int), typeof(int), line);
+        }
         /// <remarks>
         ///  Get the end cursor position of line <pre>line</pre>.
         ///  \param line line
@@ -303,7 +355,9 @@ namespace KTextEditor {
         ///  \see text()
         ///      </remarks>        <short>    Set the given text as new document content.</short>
         [SmokeMethod("setText(const QString&)")]
-        public abstract bool SetText(string text);
+        public virtual bool SetText(string text) {
+            return (bool) interceptor.Invoke("setText$", "setText(const QString&)", typeof(bool), typeof(string), text);
+        }
         /// <remarks>
         ///  Set the given text as new document content.
         ///  \param text new content for the document
@@ -311,14 +365,18 @@ namespace KTextEditor {
         ///  \see text()
         ///      </remarks>        <short>    Set the given text as new document content.</short>
         [SmokeMethod("setText(const QStringList&)")]
-        public abstract bool SetText(List<string> text);
+        public virtual bool SetText(List<string> text) {
+            return (bool) interceptor.Invoke("setText?", "setText(const QStringList&)", typeof(bool), typeof(List<string>), text);
+        }
         /// <remarks>
         ///  Remove the whole content of the document.
         ///  \return \e true on success, otherwise \e false
         ///  \see removeText(), removeLine()
         ///      </remarks>        <short>    Remove the whole content of the document.</short>
         [SmokeMethod("clear()")]
-        public abstract bool Clear();
+        public virtual bool Clear() {
+            return (bool) interceptor.Invoke("clear", "clear()", typeof(bool));
+        }
         /// <remarks>
         ///  Insert <pre>text</pre> at <pre>position</pre>.
         ///  \param position position to insert the text
@@ -328,7 +386,13 @@ namespace KTextEditor {
         ///  \see setText(), removeText()
         ///      </remarks>        <short>    Insert \p text at \p position.</short>
         [SmokeMethod("insertText(const KTextEditor::Cursor&, const QString&, bool)")]
-        public abstract bool InsertText(KTextEditor.Cursor position, string text, bool block);
+        public virtual bool InsertText(KTextEditor.Cursor position, string text, bool block) {
+            return (bool) interceptor.Invoke("insertText#$$", "insertText(const KTextEditor::Cursor&, const QString&, bool)", typeof(bool), typeof(KTextEditor.Cursor), position, typeof(string), text, typeof(bool), block);
+        }
+        [SmokeMethod("insertText(const KTextEditor::Cursor&, const QString&)")]
+        public virtual bool InsertText(KTextEditor.Cursor position, string text) {
+            return (bool) interceptor.Invoke("insertText#$", "insertText(const KTextEditor::Cursor&, const QString&)", typeof(bool), typeof(KTextEditor.Cursor), position, typeof(string), text);
+        }
         /// <remarks>
         ///  Insert <pre>text</pre> at <pre>position</pre>.
         ///  \param position position to insert the text
@@ -338,7 +402,13 @@ namespace KTextEditor {
         ///  \see setText(), removeText()
         ///      </remarks>        <short>    Insert \p text at \p position.</short>
         [SmokeMethod("insertText(const KTextEditor::Cursor&, const QStringList&, bool)")]
-        public abstract bool InsertText(KTextEditor.Cursor position, List<string> text, bool block);
+        public virtual bool InsertText(KTextEditor.Cursor position, List<string> text, bool block) {
+            return (bool) interceptor.Invoke("insertText#?$", "insertText(const KTextEditor::Cursor&, const QStringList&, bool)", typeof(bool), typeof(KTextEditor.Cursor), position, typeof(List<string>), text, typeof(bool), block);
+        }
+        [SmokeMethod("insertText(const KTextEditor::Cursor&, const QStringList&)")]
+        public virtual bool InsertText(KTextEditor.Cursor position, List<string> text) {
+            return (bool) interceptor.Invoke("insertText#?", "insertText(const KTextEditor::Cursor&, const QStringList&)", typeof(bool), typeof(KTextEditor.Cursor), position, typeof(List<string>), text);
+        }
         /// <remarks>
         ///  Replace text from <pre>range</pre> with specified <pre>text</pre>.
         ///  \param range range of text to replace
@@ -379,7 +449,13 @@ namespace KTextEditor {
         ///  \see setText(), insertText()
         ///      </remarks>        <short>    Remove the text specified in \p range.</short>
         [SmokeMethod("removeText(const KTextEditor::Range&, bool)")]
-        public abstract bool RemoveText(KTextEditor.Range range, bool block);
+        public virtual bool RemoveText(KTextEditor.Range range, bool block) {
+            return (bool) interceptor.Invoke("removeText#$", "removeText(const KTextEditor::Range&, bool)", typeof(bool), typeof(KTextEditor.Range), range, typeof(bool), block);
+        }
+        [SmokeMethod("removeText(const KTextEditor::Range&)")]
+        public virtual bool RemoveText(KTextEditor.Range range) {
+            return (bool) interceptor.Invoke("removeText#", "removeText(const KTextEditor::Range&)", typeof(bool), typeof(KTextEditor.Range), range);
+        }
         /// <remarks>
         ///  Checks whether the <pre>cursor</pre> specifies a valid position in a document.
         ///  It can optionally be overridden by an implementation.
@@ -404,7 +480,9 @@ namespace KTextEditor {
         ///  \see insertText()
         ///      </remarks>        <short>    Insert line(s) at the given line number.</short>
         [SmokeMethod("insertLine(int, const QString&)")]
-        public abstract bool InsertLine(int line, string text);
+        public virtual bool InsertLine(int line, string text) {
+            return (bool) interceptor.Invoke("insertLine$$", "insertLine(int, const QString&)", typeof(bool), typeof(int), line, typeof(string), text);
+        }
         /// <remarks>
         ///  Insert line(s) at the given line number. The newline character '\\n'
         ///  is treated as line delimiter, so it is possible to insert multiple
@@ -418,7 +496,9 @@ namespace KTextEditor {
         ///  \see insertText()
         ///      </remarks>        <short>    Insert line(s) at the given line number.</short>
         [SmokeMethod("insertLines(int, const QStringList&)")]
-        public abstract bool InsertLines(int line, List<string> text);
+        public virtual bool InsertLines(int line, List<string> text) {
+            return (bool) interceptor.Invoke("insertLines$?", "insertLines(int, const QStringList&)", typeof(bool), typeof(int), line, typeof(List<string>), text);
+        }
         /// <remarks>
         ///  Remove <pre>line</pre> from the document.
         ///  \param line line to remove
@@ -426,35 +506,45 @@ namespace KTextEditor {
         ///  \see removeText(), clear()
         ///      </remarks>        <short>    Remove \p line from the document.</short>
         [SmokeMethod("removeLine(int)")]
-        public abstract bool RemoveLine(int line);
+        public virtual bool RemoveLine(int line) {
+            return (bool) interceptor.Invoke("removeLine$", "removeLine(int)", typeof(bool), typeof(int), line);
+        }
         /// <remarks>
         ///  Return the name of the currently used mode
         ///  \return name of the used mode
         ///  \see modes(), setMode()
         ///      </remarks>        <short>    Return the name of the currently used mode  \return name of the used mode  \see modes(), setMode()      </short>
         [SmokeMethod("mode() const")]
-        public abstract string Mode();
+        public virtual string Mode() {
+            return (string) interceptor.Invoke("mode", "mode() const", typeof(string));
+        }
         /// <remarks>
         ///  Return the name of the currently used mode
         ///  \return name of the used mode
         ///  \see highlightingModes(), setHighlightingMode()
         ///      </remarks>        <short>    Return the name of the currently used mode  \return name of the used mode  \see highlightingModes(), setHighlightingMode()      </short>
         [SmokeMethod("highlightingMode() const")]
-        public abstract string HighlightingMode();
+        public virtual string HighlightingMode() {
+            return (string) interceptor.Invoke("highlightingMode", "highlightingMode() const", typeof(string));
+        }
         /// <remarks>
         ///  Return a list of the names of all possible modes
         ///  \return list of mode names
         ///  \see mode(), setMode()
         ///      </remarks>        <short>    Return a list of the names of all possible modes  \return list of mode names  \see mode(), setMode()      </short>
         [SmokeMethod("modes() const")]
-        public abstract List<string> Modes();
+        public virtual List<string> Modes() {
+            return (List<string>) interceptor.Invoke("modes", "modes() const", typeof(List<string>));
+        }
         /// <remarks>
         ///  Return a list of the names of all possible modes
         ///  \return list of mode names
         ///  \see highlightingMode(), setHighlightingMode()
         ///      </remarks>        <short>    Return a list of the names of all possible modes  \return list of mode names  \see highlightingMode(), setHighlightingMode()      </short>
         [SmokeMethod("highlightingModes() const")]
-        public abstract List<string> HighlightingModes();
+        public virtual List<string> HighlightingModes() {
+            return (List<string>) interceptor.Invoke("highlightingModes", "highlightingModes() const", typeof(List<string>));
+        }
         /// <remarks>
         ///  Set the current mode of the document by giving its name
         ///  \param name name of the mode to use for this document
@@ -462,7 +552,9 @@ namespace KTextEditor {
         ///  \see mode(), modes(), modeChanged()
         ///      </remarks>        <short>    Set the current mode of the document by giving its name  \param name name of the mode to use for this document  \return \e true on success, otherwise \e false  \see mode(), modes(), modeChanged()      </short>
         [SmokeMethod("setMode(const QString&)")]
-        public abstract bool SetMode(string name);
+        public virtual bool SetMode(string name) {
+            return (bool) interceptor.Invoke("setMode$", "setMode(const QString&)", typeof(bool), typeof(string), name);
+        }
         /// <remarks>
         ///  Set the current mode of the document by giving its name
         ///  \param name name of the mode to use for this document
@@ -470,7 +562,9 @@ namespace KTextEditor {
         ///  \see highlightingMode(), highlightingModes(), highlightingModeChanged()
         ///      </remarks>        <short>    Set the current mode of the document by giving its name  \param name name of the mode to use for this document  \return \e true on success, otherwise \e false  \see highlightingMode(), highlightingModes(), highlightingModeChanged()      </short>
         [SmokeMethod("setHighlightingMode(const QString&)")]
-        public abstract bool SetHighlightingMode(string name);
+        public virtual bool SetHighlightingMode(string name) {
+            return (bool) interceptor.Invoke("setHighlightingMode$", "setHighlightingMode(const QString&)", typeof(bool), typeof(string), name);
+        }
         /// <remarks>
         ///  Returns the name of the section for a highlight given its index in the highlight
         ///  list (as returned by highlightModes()).
@@ -478,7 +572,9 @@ namespace KTextEditor {
         ///  \param name the name of the highlight for which to find the section name.
         ///      </remarks>        <short>    Returns the name of the section for a highlight given its index in the highlight  list (as returned by highlightModes()).</short>
         [SmokeMethod("highlightingModeSection(int) const")]
-        public abstract string HighlightingModeSection(int index);
+        public virtual string HighlightingModeSection(int index) {
+            return (string) interceptor.Invoke("highlightingModeSection$", "highlightingModeSection(int) const", typeof(string), typeof(int), index);
+        }
         /// <remarks>
         ///  Returns the name of the section for a mode given its index in the highlight
         ///  list (as returned by modes()).
@@ -486,7 +582,9 @@ namespace KTextEditor {
         ///  \param name the name of the highlight for which to find the section name.
         ///      </remarks>        <short>    Returns the name of the section for a mode given its index in the highlight  list (as returned by modes()).</short>
         [SmokeMethod("modeSection(int) const")]
-        public abstract string ModeSection(int index);
+        public virtual string ModeSection(int index) {
+            return (string) interceptor.Invoke("modeSection$", "modeSection(int) const", typeof(string), typeof(int), index);
+        }
         /// <remarks>
         ///  by default dialogs should be displayed.
         ///  In any case (dialog shown or suppressed)

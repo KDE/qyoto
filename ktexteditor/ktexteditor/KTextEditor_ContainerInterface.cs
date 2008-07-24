@@ -49,7 +49,9 @@ namespace KTextEditor {
         ///  \sa container
         ///      </remarks>        <short>    Set the KTextEditor container.</short>
         [SmokeMethod("setContainer(QObject*)")]
-        public abstract void SetContainer(QObject container);
+        public virtual void SetContainer(QObject container) {
+            interceptor.Invoke("setContainer#", "setContainer(QObject*)", typeof(void), typeof(QObject), container);
+        }
         /// <remarks>
         ///  Fetch the container extension.
         ///  This method is used by the KTextEditor component to know
@@ -73,6 +75,8 @@ namespace KTextEditor {
         ///  \sa setContainer
         ///      </remarks>        <short>    Fetch the container extension.</short>
         [SmokeMethod("container()")]
-        public abstract QObject Container();
+        public virtual QObject Container() {
+            return (QObject) interceptor.Invoke("container", "container()", typeof(QObject));
+        }
     }
 }

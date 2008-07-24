@@ -64,7 +64,9 @@ namespace KTextEditor {
         ///  \see writeSessionConfig()
         ///      </remarks>        <short>    Read session settings from the given \p config.</short>
         [SmokeMethod("readSessionConfig(const KConfigGroup&)")]
-        public abstract void ReadSessionConfig(KConfigGroup config);
+        public virtual void ReadSessionConfig(KConfigGroup config) {
+            interceptor.Invoke("readSessionConfig#", "readSessionConfig(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
+        }
         /// <remarks>
         ///  Write session settings to the <pre>config</pre>.
         ///  See readSessionConfig() for more details.
@@ -72,6 +74,8 @@ namespace KTextEditor {
         ///  \see readSessionConfig()
         ///      </remarks>        <short>    Write session settings to the \p config.</short>
         [SmokeMethod("writeSessionConfig(KConfigGroup&)")]
-        public abstract void WriteSessionConfig(KConfigGroup config);
+        public virtual void WriteSessionConfig(KConfigGroup config) {
+            interceptor.Invoke("writeSessionConfig#", "writeSessionConfig(KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
+        }
     }
 }

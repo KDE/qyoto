@@ -61,14 +61,18 @@ namespace KTextEditor {
         ///  \sa activeView
         ///      </remarks>        <short>    Set the \p view requested by the part as the active view.</short>
         [SmokeMethod("setActiveView(KTextEditor::View*)")]
-        public abstract void SetActiveView(KTextEditor.View view);
+        public virtual void SetActiveView(KTextEditor.View view) {
+            interceptor.Invoke("setActiveView#", "setActiveView(KTextEditor::View*)", typeof(void), typeof(KTextEditor.View), view);
+        }
         /// <remarks>
         ///  Get the current activew view.
         ///  \return the active view.
         ///  \sa setActiveView
         ///      </remarks>        <short>    Get the current activew view.</short>
         [SmokeMethod("activeView()")]
-        public abstract KTextEditor.View ActiveView();
+        public virtual KTextEditor.View ActiveView() {
+            return (KTextEditor.View) interceptor.Invoke("activeView", "activeView()", typeof(KTextEditor.View));
+        }
         /// <remarks>
         ///  Create a new Document and return it to the kpart.
         ///  Canonical implementation is:
@@ -87,7 +91,9 @@ namespace KTextEditor {
         ///  \return a pointer to the new Document object.
         ///      </remarks>        <short>    Create a new Document and return it to the kpart.</short>
         [SmokeMethod("createDocument()")]
-        public abstract KTextEditor.Document CreateDocument();
+        public virtual KTextEditor.Document CreateDocument() {
+            return (KTextEditor.Document) interceptor.Invoke("createDocument", "createDocument()", typeof(KTextEditor.Document));
+        }
         /// <remarks>
         ///  Closes of document <pre>doc</pre> .
         ///  The document is about to be closed but is still valid when this
@@ -101,7 +107,9 @@ namespace KTextEditor {
         ///      by the container.
         ///      </remarks>        <short>    Closes of document \p doc .</short>
         [SmokeMethod("closeDocument(KTextEditor::Document*)")]
-        public abstract bool CloseDocument(KTextEditor.Document doc);
+        public virtual bool CloseDocument(KTextEditor.Document doc) {
+            return (bool) interceptor.Invoke("closeDocument#", "closeDocument(KTextEditor::Document*)", typeof(bool), typeof(KTextEditor.Document), doc);
+        }
         /// <remarks>
         ///  Creates a new View and return it to the kpart.
         ///  Canonical implementation is:
@@ -117,7 +125,9 @@ namespace KTextEditor {
         ///  \return a pointer to the new View created.
         ///      </remarks>        <short>    Creates a new View and return it to the kpart.</short>
         [SmokeMethod("createView(KTextEditor::Document*)")]
-        public abstract KTextEditor.View CreateView(KTextEditor.Document doc);
+        public virtual KTextEditor.View CreateView(KTextEditor.Document doc) {
+            return (KTextEditor.View) interceptor.Invoke("createView#", "createView(KTextEditor::Document*)", typeof(KTextEditor.View), typeof(KTextEditor.Document), doc);
+        }
         /// <remarks>
         ///  Closes the View <pre>view</pre> .
         ///  The view is still valid when this call is made but will be deleted
@@ -127,6 +137,8 @@ namespace KTextEditor {
         ///      the kpart, or
         ///      </remarks>        <short>    Closes the View \p view .</short>
         [SmokeMethod("closeView(KTextEditor::View*)")]
-        public abstract bool CloseView(KTextEditor.View view);
+        public virtual bool CloseView(KTextEditor.View view) {
+            return (bool) interceptor.Invoke("closeView#", "closeView(KTextEditor::View*)", typeof(bool), typeof(KTextEditor.View), view);
+        }
     }
 }

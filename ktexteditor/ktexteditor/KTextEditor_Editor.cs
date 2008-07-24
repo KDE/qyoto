@@ -96,20 +96,26 @@ namespace KTextEditor {
         ///  \see documents()
         ///      </remarks>        <short>    Create a new document object with \p parent.</short>
         [SmokeMethod("createDocument(QObject*)")]
-        public abstract KTextEditor.Document CreateDocument(QObject parent);
+        public virtual KTextEditor.Document CreateDocument(QObject parent) {
+            return (KTextEditor.Document) interceptor.Invoke("createDocument#", "createDocument(QObject*)", typeof(KTextEditor.Document), typeof(QObject), parent);
+        }
         /// <remarks>
         ///  Get a list of all documents of this editor.
         ///  \return list of all existing documents
         ///  \see createDocument()
         ///      </remarks>        <short>    Get a list of all documents of this editor.</short>
         [SmokeMethod("documents()")]
-        public abstract List<KTextEditor.Document> Documents();
+        public virtual List<KTextEditor.Document> Documents() {
+            return (List<KTextEditor.Document>) interceptor.Invoke("documents", "documents()", typeof(List<KTextEditor.Document>));
+        }
         /// <remarks>
         ///  Get the about data of this Editor part.
         ///  \return about data
         ///      </remarks>        <short>    Get the about data of this Editor part.</short>
         [SmokeMethod("aboutData() const")]
-        public abstract KAboutData AboutData();
+        public virtual KAboutData AboutData() {
+            return (KAboutData) interceptor.Invoke("aboutData", "aboutData() const", typeof(KAboutData));
+        }
         /// <remarks>
         ///  Read editor configuration from KConfig <pre>config</pre>.
         ///  <b>Note:<> Implementation Notes: If <pre>config</pre> is NULL you should use
@@ -119,7 +125,13 @@ namespace KTextEditor {
         ///  \see writeConfig()
         ///      </remarks>        <short>    Read editor configuration from KConfig \p config.</short>
         [SmokeMethod("readConfig(KConfig*)")]
-        public abstract void ReadConfig(KConfig config);
+        public virtual void ReadConfig(KConfig config) {
+            interceptor.Invoke("readConfig#", "readConfig(KConfig*)", typeof(void), typeof(KConfig), config);
+        }
+        [SmokeMethod("readConfig()")]
+        public virtual void ReadConfig() {
+            interceptor.Invoke("readConfig", "readConfig()", typeof(void));
+        }
         /// <remarks>
         ///  Write editor configuration to KConfig <pre>config</pre>.
         ///  <b>Note:<> Implementation Notes: If <pre>config</pre> is NULL you should use
@@ -129,7 +141,13 @@ namespace KTextEditor {
         ///  \see readConfig()
         ///      </remarks>        <short>    Write editor configuration to KConfig \p config.</short>
         [SmokeMethod("writeConfig(KConfig*)")]
-        public abstract void WriteConfig(KConfig config);
+        public virtual void WriteConfig(KConfig config) {
+            interceptor.Invoke("writeConfig#", "writeConfig(KConfig*)", typeof(void), typeof(KConfig), config);
+        }
+        [SmokeMethod("writeConfig()")]
+        public virtual void WriteConfig() {
+            interceptor.Invoke("writeConfig", "writeConfig()", typeof(void));
+        }
         /// <remarks>
         ///  Check, whether this editor has a configuration dialog.
         ///  \return \e true, if the editor has a configuration dialog,
@@ -137,7 +155,9 @@ namespace KTextEditor {
         ///  \see configDialog()
         ///      </remarks>        <short>    Check, whether this editor has a configuration dialog.</short>
         [SmokeMethod("configDialogSupported() const")]
-        public abstract bool ConfigDialogSupported();
+        public virtual bool ConfigDialogSupported() {
+            return (bool) interceptor.Invoke("configDialogSupported", "configDialogSupported() const", typeof(bool));
+        }
         /// <remarks>
         ///  Show the editor's config dialog, changes will be applied to the
         ///  editor, but not saved anywhere automagically, call <pre>writeConfig</pre>()
@@ -149,7 +169,9 @@ namespace KTextEditor {
         ///  \see configDialogSupported()
         ///      </remarks>        <short>    Show the editor's config dialog, changes will be applied to the  editor, but not saved anywhere automagically, call \p writeConfig()  to save them.</short>
         [SmokeMethod("configDialog(QWidget*)")]
-        public abstract void ConfigDialog(QWidget parent);
+        public virtual void ConfigDialog(QWidget parent) {
+            interceptor.Invoke("configDialog#", "configDialog(QWidget*)", typeof(void), typeof(QWidget), parent);
+        }
         /// <remarks>
         ///  Get the number of available config pages.
         ///  If the editor returns a number < 1, it does not support config pages
@@ -158,7 +180,9 @@ namespace KTextEditor {
         ///  \see configPage(), configDialog()
         ///      </remarks>        <short>    Get the number of available config pages.</short>
         [SmokeMethod("configPages() const")]
-        public abstract int ConfigPages();
+        public virtual int ConfigPages() {
+            return (int) interceptor.Invoke("configPages", "configPages() const", typeof(int));
+        }
         /// <remarks>
         ///  Get the config page with the <pre>number</pre>, config pages from 0 to
         ///  configPages()-1 are available if configPages() > 0.
@@ -168,7 +192,9 @@ namespace KTextEditor {
         ///  \see configPages()
         ///      </remarks>        <short>    Get the config page with the \p number, config pages from 0 to  configPages()-1 are available if configPages() > 0.</short>
         [SmokeMethod("configPage(int, QWidget*)")]
-        public abstract KTextEditor.ConfigPage ConfigPage(int number, QWidget parent);
+        public virtual KTextEditor.ConfigPage ConfigPage(int number, QWidget parent) {
+            return (KTextEditor.ConfigPage) interceptor.Invoke("configPage$#", "configPage(int, QWidget*)", typeof(KTextEditor.ConfigPage), typeof(int), number, typeof(QWidget), parent);
+        }
         /// <remarks>
         ///  Get a readable name for the config page <pre>number</pre>. The name should be
         ///  translated.
@@ -177,7 +203,9 @@ namespace KTextEditor {
         ///  \see configPageFullName(), configPagePixmap()
         ///      </remarks>        <short>    Get a readable name for the config page \p number.</short>
         [SmokeMethod("configPageName(int) const")]
-        public abstract string ConfigPageName(int number);
+        public virtual string ConfigPageName(int number) {
+            return (string) interceptor.Invoke("configPageName$", "configPageName(int) const", typeof(string), typeof(int), number);
+        }
         /// <remarks>
         ///  Get a readable full name for the config page \e number. The name
         ///  should be translated.
@@ -189,7 +217,9 @@ namespace KTextEditor {
         ///  \see configPageName(), configPagePixmap()
         ///      </remarks>        <short>    Get a readable full name for the config page \e number.</short>
         [SmokeMethod("configPageFullName(int) const")]
-        public abstract string ConfigPageFullName(int number);
+        public virtual string ConfigPageFullName(int number) {
+            return (string) interceptor.Invoke("configPageFullName$", "configPageFullName(int) const", typeof(string), typeof(int), number);
+        }
         /// <remarks>
         ///  Get a pixmap with <pre>size</pre> for the config page <pre>number</pre>.
         ///  \param number index of config page
@@ -197,7 +227,9 @@ namespace KTextEditor {
         ///  \see configPageName(), configPageFullName()
         ///      </remarks>        <short>    Get a pixmap with \p size for the config page \p number.</short>
         [SmokeMethod("configPageIcon(int) const")]
-        public abstract KIcon ConfigPageIcon(int number);
+        public virtual KIcon ConfigPageIcon(int number) {
+            return (KIcon) interceptor.Invoke("configPageIcon$", "configPageIcon(int) const", typeof(KIcon), typeof(int), number);
+        }
         protected new IEditorSignals Emit {
             get { return (IEditorSignals) Q_EMIT; }
         }

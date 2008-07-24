@@ -456,6 +456,8 @@ namespace KTextEditor {
         ///  Called to request creation of a new SmartRangeNotifier for this object.
         ///      </remarks>        <short>    \internal </short>
         [SmokeMethod("createNotifier()")]
-        protected abstract KTextEditor.SmartRangeNotifier CreateNotifier();
+        protected virtual KTextEditor.SmartRangeNotifier CreateNotifier() {
+            return (KTextEditor.SmartRangeNotifier) interceptor.Invoke("createNotifier", "createNotifier()", typeof(KTextEditor.SmartRangeNotifier));
+        }
     }
 }

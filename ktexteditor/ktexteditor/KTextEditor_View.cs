@@ -126,7 +126,9 @@ namespace KTextEditor {
         ///  \return the view's document
         ///      </remarks>        <short>    Get the view's \e document, that means the view is a view of the  returned document.</short>
         [SmokeMethod("document() const")]
-        public abstract KTextEditor.Document Document();
+        public virtual KTextEditor.Document Document() {
+            return (KTextEditor.Document) interceptor.Invoke("document", "document() const", typeof(KTextEditor.Document));
+        }
         /// <remarks>
         ///  Check whether this view is the document's active view.
         ///  This is equal to the code:
@@ -148,7 +150,9 @@ namespace KTextEditor {
         ///  \see viewModeChanged()
         ///      </remarks>        <short>    Get the current view mode/state.</short>
         [SmokeMethod("viewMode() const")]
-        public abstract string ViewMode();
+        public virtual string ViewMode() {
+            return (string) interceptor.Invoke("viewMode", "viewMode() const", typeof(string));
+        }
         /// <remarks>
         ///  Get the view's current edit mode.
         ///  The current mode can be \e insert mode, \e replace mode or any other
@@ -165,7 +169,9 @@ namespace KTextEditor {
         ///  \see contextMenu()
         ///      </remarks>        <short>    Set a context menu for this view to \p menu.</short>
         [SmokeMethod("setContextMenu(QMenu*)")]
-        public abstract void SetContextMenu(QMenu menu);
+        public virtual void SetContextMenu(QMenu menu) {
+            interceptor.Invoke("setContextMenu#", "setContextMenu(QMenu*)", typeof(void), typeof(QMenu), menu);
+        }
         /// <remarks>
         ///  Get the context menu for this view. The return value can be NULL
         ///  if no context menu object was set.
@@ -173,7 +179,9 @@ namespace KTextEditor {
         ///  \see setContextMenu()
         ///      </remarks>        <short>    Get the context menu for this view.</short>
         [SmokeMethod("contextMenu() const")]
-        public abstract QMenu ContextMenu();
+        public virtual QMenu ContextMenu() {
+            return (QMenu) interceptor.Invoke("contextMenu", "contextMenu() const", typeof(QMenu));
+        }
         /// <remarks>
         ///  Populate \a menu with default text editor actions.  If \a menu is
         ///  null, a menu will be created with the view as its parent.
@@ -183,7 +191,13 @@ namespace KTextEditor {
         ///  \return the menu, whether created or passed initially
         ///      </remarks>        <short>    Populate \a menu with default text editor actions.</short>
         [SmokeMethod("defaultContextMenu(QMenu*) const")]
-        public abstract QMenu DefaultContextMenu(QMenu menu);
+        public virtual QMenu DefaultContextMenu(QMenu menu) {
+            return (QMenu) interceptor.Invoke("defaultContextMenu#", "defaultContextMenu(QMenu*) const", typeof(QMenu), typeof(QMenu), menu);
+        }
+        [SmokeMethod("defaultContextMenu() const")]
+        public virtual QMenu DefaultContextMenu() {
+            return (QMenu) interceptor.Invoke("defaultContextMenu", "defaultContextMenu() const", typeof(QMenu));
+        }
         /// <remarks>
         ///  Set the view's new cursor to <pre>position</pre>. A \e TAB character
         ///  is handeled as only on character.
@@ -192,7 +206,9 @@ namespace KTextEditor {
         ///  \see cursorPosition()
         ///      </remarks>        <short>    Set the view's new cursor to \p position.</short>
         [SmokeMethod("setCursorPosition(KTextEditor::Cursor)")]
-        public abstract bool SetCursorPosition(KTextEditor.Cursor position);
+        public virtual bool SetCursorPosition(KTextEditor.Cursor position) {
+            return (bool) interceptor.Invoke("setCursorPosition#", "setCursorPosition(KTextEditor::Cursor)", typeof(bool), typeof(KTextEditor.Cursor), position);
+        }
         /// <remarks>
         ///  Get the view's current cursor position. A \e TAB character is
         ///  handeled as only one character.
@@ -200,7 +216,9 @@ namespace KTextEditor {
         ///  \see setCursorPosition()
         ///      </remarks>        <short>    Get the view's current cursor position.</short>
         [SmokeMethod("cursorPosition() const")]
-        public abstract KTextEditor.Cursor CursorPosition();
+        public virtual KTextEditor.Cursor CursorPosition() {
+            return (KTextEditor.Cursor) interceptor.Invoke("cursorPosition", "cursorPosition() const", typeof(KTextEditor.Cursor));
+        }
         /// <remarks>
         ///  Get the current \e cursor position, \e means the
         ///  tabulator character (TAB) counts \e multiple characters, as configured
@@ -211,7 +229,9 @@ namespace KTextEditor {
         ///  \see cursorPosition()
         ///      </remarks>        <short>    Get the current \e virtual cursor position, \e virtual means the  tabulator character (TAB) counts \e multiple characters, as configured  by the user (e.</short>
         [SmokeMethod("cursorPositionVirtual() const")]
-        public abstract KTextEditor.Cursor CursorPositionVirtual();
+        public virtual KTextEditor.Cursor CursorPositionVirtual() {
+            return (KTextEditor.Cursor) interceptor.Invoke("cursorPositionVirtual", "cursorPositionVirtual() const", typeof(KTextEditor.Cursor));
+        }
         /// <remarks>
         ///  Get the screen coordinates (x, y) of the supplied \a cursor relative
         ///  to the view widget in pixels. Thus, 0,0 represents the top left hand of
@@ -220,13 +240,17 @@ namespace KTextEditor {
         ///  \return cursor screen coordinates relative to the view widget
         ///      </remarks>        <short>    Get the screen coordinates (x, y) of the supplied \a cursor relative  to the view widget in pixels.</short>
         [SmokeMethod("cursorToCoordinate(const KTextEditor::Cursor&) const")]
-        public abstract QPoint CursorToCoordinate(KTextEditor.Cursor cursor);
+        public virtual QPoint CursorToCoordinate(KTextEditor.Cursor cursor) {
+            return (QPoint) interceptor.Invoke("cursorToCoordinate#", "cursorToCoordinate(const KTextEditor::Cursor&) const", typeof(QPoint), typeof(KTextEditor.Cursor), cursor);
+        }
         /// <remarks>
         ///  Get the screen coordinates (x/y) of the cursor position in pixels.
         ///  \return cursor screen coordinates
         ///      </remarks>        <short>    Get the screen coordinates (x/y) of the cursor position in pixels.</short>
         [SmokeMethod("cursorPositionCoordinates() const")]
-        public abstract QPoint CursorPositionCoordinates();
+        public virtual QPoint CursorPositionCoordinates() {
+            return (QPoint) interceptor.Invoke("cursorPositionCoordinates", "cursorPositionCoordinates() const", typeof(QPoint));
+        }
         /// <remarks>
         ///  Check, whether mouse tracking is enabled.
         ///  Mouse tracking is required to have the signal mousePositionChanged()
@@ -235,7 +259,9 @@ namespace KTextEditor {
         ///  \see setMouseTrackingEnabled(), mousePositionChanged()
         ///      </remarks>        <short>    Check, whether mouse tracking is enabled.</short>
         [SmokeMethod("mouseTrackingEnabled() const")]
-        public abstract bool MouseTrackingEnabled();
+        public virtual bool MouseTrackingEnabled() {
+            return (bool) interceptor.Invoke("mouseTrackingEnabled", "mouseTrackingEnabled() const", typeof(bool));
+        }
         /// <remarks>
         ///  Try to enable or disable mouse tracking according to <pre>enable</pre>.
         ///  The return value contains the state of mouse tracking \e after the
@@ -250,7 +276,9 @@ namespace KTextEditor {
         ///  \see mouseTrackingEnabled(), mousePositionChanged()
         ///      </remarks>        <short>    Try to enable or disable mouse tracking according to \p enable.</short>
         [SmokeMethod("setMouseTrackingEnabled(bool)")]
-        public abstract bool SetMouseTrackingEnabled(bool enable);
+        public virtual bool SetMouseTrackingEnabled(bool enable) {
+            return (bool) interceptor.Invoke("setMouseTrackingEnabled$", "setMouseTrackingEnabled(bool)", typeof(bool), typeof(bool), enable);
+        }
         /// <remarks>
         ///  Set the view's selection to the range <pre>selection</pre>.
         ///  The old selection will be discarded.
@@ -260,7 +288,9 @@ namespace KTextEditor {
         ///  \see selectionRange(), selection()
         ///      </remarks>        <short>    Set the view's selection to the range \p selection.</short>
         [SmokeMethod("setSelection(const KTextEditor::Range&)")]
-        public abstract bool SetSelection(KTextEditor.Range range);
+        public virtual bool SetSelection(KTextEditor.Range range) {
+            return (bool) interceptor.Invoke("setSelection#", "setSelection(const KTextEditor::Range&)", typeof(bool), typeof(KTextEditor.Range), range);
+        }
         /// <remarks>
         ///  This is an overloaded member function, provided for convenience, it
         ///  differs from the above function only in what argument(s) it accepts.
@@ -291,21 +321,27 @@ namespace KTextEditor {
         ///  \see setSelection(), selectionRange()
         ///      </remarks>        <short>    Query the view whether it has selected text, i.</short>
         [SmokeMethod("selection() const")]
-        public abstract bool Selection();
+        public virtual bool Selection() {
+            return (bool) interceptor.Invoke("selection", "selection() const", typeof(bool));
+        }
         /// <remarks>
         ///  Get the range occupied by the current selection.
         ///  \return selection range, valid only if a selection currently exists.
         ///  \see setSelection()
         ///      </remarks>        <short>    Get the range occupied by the current selection.</short>
         [SmokeMethod("selectionRange() const")]
-        public abstract KTextEditor.Range SelectionRange();
+        public virtual KTextEditor.Range SelectionRange() {
+            return (KTextEditor.Range) interceptor.Invoke("selectionRange", "selectionRange() const", typeof(KTextEditor.Range));
+        }
         /// <remarks>
         ///  Get the view's selected text.
         ///  \return the selected text
         ///  \see setSelection()
         ///      </remarks>        <short>    Get the view's selected text.</short>
         [SmokeMethod("selectionText() const")]
-        public abstract string SelectionText();
+        public virtual string SelectionText() {
+            return (string) interceptor.Invoke("selectionText", "selectionText() const", typeof(string));
+        }
         /// <remarks>
         ///  Remove the view's current selection, \e without deleting the selected
         ///  text.
@@ -313,14 +349,18 @@ namespace KTextEditor {
         ///  \see removeSelectionText()
         ///      </remarks>        <short>    Remove the view's current selection, \e without deleting the selected  text.</short>
         [SmokeMethod("removeSelection()")]
-        public abstract bool RemoveSelection();
+        public virtual bool RemoveSelection() {
+            return (bool) interceptor.Invoke("removeSelection", "removeSelection()", typeof(bool));
+        }
         /// <remarks>
         ///  Remove the view's current selection \e including the selected text.
         ///  \return \e true on success, otherwise \e false
         ///  \see removeSelection()
         ///      </remarks>        <short>    Remove the view's current selection \e including the selected text.</short>
         [SmokeMethod("removeSelectionText()")]
-        public abstract bool RemoveSelectionText();
+        public virtual bool RemoveSelectionText() {
+            return (bool) interceptor.Invoke("removeSelectionText", "removeSelectionText()", typeof(bool));
+        }
         /// <remarks>
         ///  Set block selection mode to state <pre>on</pre>.
         ///  \param on if \e true, block selection mode is turned on, otherwise off
@@ -328,7 +368,9 @@ namespace KTextEditor {
         ///  \see blockSelection()
         ///     </remarks>        <short>    Set block selection mode to state \p on.</short>
         [SmokeMethod("setBlockSelection(bool)")]
-        public abstract bool SetBlockSelection(bool on);
+        public virtual bool SetBlockSelection(bool on) {
+            return (bool) interceptor.Invoke("setBlockSelection$", "setBlockSelection(bool)", typeof(bool), typeof(bool), on);
+        }
         /// <remarks>
         ///  Get the status of the selection mode. \e true indicates that block
         ///  selection mode is on. If this is \e true, selections applied via the
@@ -338,7 +380,9 @@ namespace KTextEditor {
         ///  \see setBlockSelection()
         ///     </remarks>        <short>    Get the status of the selection mode.</short>
         [SmokeMethod("blockSelection() const")]
-        public abstract bool BlockSelection();
+        public virtual bool BlockSelection() {
+            return (bool) interceptor.Invoke("blockSelection", "blockSelection() const", typeof(bool));
+        }
         /// <remarks>
         ///  This is a convenience function which inserts <pre>text</pre> at the view's
         ///  current cursor position. You do not necessarily need to reimplement

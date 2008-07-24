@@ -58,16 +58,22 @@ namespace KTextEditor {
         ///  Get a list of all available keys.
         ///      </remarks>        <short>    Get a list of all available keys.</short>
         [SmokeMethod("configKeys() const")]
-        public abstract List<string> ConfigKeys();
+        public virtual List<string> ConfigKeys() {
+            return (List<string>) interceptor.Invoke("configKeys", "configKeys() const", typeof(List<string>));
+        }
         /// <remarks>
         ///  Get a value for the <pre>key</pre>.
         ///      </remarks>        <short>    Get a value for the \p key.</short>
         [SmokeMethod("configValue(const QString&)")]
-        public abstract QVariant ConfigValue(string key);
+        public virtual QVariant ConfigValue(string key) {
+            return (QVariant) interceptor.Invoke("configValue$", "configValue(const QString&)", typeof(QVariant), typeof(string), key);
+        }
         /// <remarks>
         ///  Set a the <pre>key</pre>'s value to <pre>value</pre>.
         ///      </remarks>        <short>    Set a the \p key's value to \p value.</short>
         [SmokeMethod("setConfigValue(const QString&, const QVariant&)")]
-        public abstract void SetConfigValue(string key, QVariant value);
+        public virtual void SetConfigValue(string key, QVariant value) {
+            interceptor.Invoke("setConfigValue$#", "setConfigValue(const QString&, const QVariant&)", typeof(void), typeof(string), key, typeof(QVariant), value);
+        }
     }
 }

@@ -61,12 +61,16 @@ namespace KTextEditor {
         ///  Query whether the code completion box is currently displayed.
         ///      </remarks>        <short>    Query whether the code completion box is currently displayed.</short>
         [SmokeMethod("isCompletionActive() const")]
-        public abstract bool IsCompletionActive();
+        public virtual bool IsCompletionActive() {
+            return (bool) interceptor.Invoke("isCompletionActive", "isCompletionActive() const", typeof(bool));
+        }
         /// <remarks>
         ///  Invoke code completion over a given range, with a specific \a model.
         ///      </remarks>        <short>    Invoke code completion over a given range, with a specific \a model.</short>
         [SmokeMethod("startCompletion(const KTextEditor::Range&, KTextEditor::CodeCompletionModel*)")]
-        public abstract void StartCompletion(KTextEditor.Range word, KTextEditor.CodeCompletionModel model);
+        public virtual void StartCompletion(KTextEditor.Range word, KTextEditor.CodeCompletionModel model) {
+            interceptor.Invoke("startCompletion##", "startCompletion(const KTextEditor::Range&, KTextEditor::CodeCompletionModel*)", typeof(void), typeof(KTextEditor.Range), word, typeof(KTextEditor.CodeCompletionModel), model);
+        }
         /// <remarks>
         ///  Abort the currently displayed code completion without executing any currently
         ///  selected completion. This is safe, even when the completion box is not currently
@@ -74,37 +78,53 @@ namespace KTextEditor {
         ///  \see isCompletionActive()
         ///      </remarks>        <short>    Abort the currently displayed code completion without executing any currently  selected completion.</short>
         [SmokeMethod("abortCompletion()")]
-        public abstract void AbortCompletion();
+        public virtual void AbortCompletion() {
+            interceptor.Invoke("abortCompletion", "abortCompletion()", typeof(void));
+        }
         /// <remarks>
         ///  Force execution of the currently selected completion, and hide the code completion
         ///  box.
         ///      </remarks>        <short>    Force execution of the currently selected completion, and hide the code completion  box.</short>
         [SmokeMethod("forceCompletion()")]
-        public abstract void ForceCompletion();
+        public virtual void ForceCompletion() {
+            interceptor.Invoke("forceCompletion", "forceCompletion()", typeof(void));
+        }
         /// <remarks>
         ///  Register a new code completion <pre>model</pre>.
         ///  \param model new completion model
         ///  \see unregisterCompletionModel()
         ///      </remarks>        <short>    Register a new code completion \p model.</short>
         [SmokeMethod("registerCompletionModel(KTextEditor::CodeCompletionModel*)")]
-        public abstract void RegisterCompletionModel(KTextEditor.CodeCompletionModel model);
+        public virtual void RegisterCompletionModel(KTextEditor.CodeCompletionModel model) {
+            interceptor.Invoke("registerCompletionModel#", "registerCompletionModel(KTextEditor::CodeCompletionModel*)", typeof(void), typeof(KTextEditor.CodeCompletionModel), model);
+        }
         /// <remarks>
         ///  Unregister a code completion <pre>model</pre>.
         ///  \param model the model that should be unregistered
         ///  \see registerCompletionModel()
         ///      </remarks>        <short>    Unregister a code completion \p model.</short>
         [SmokeMethod("unregisterCompletionModel(KTextEditor::CodeCompletionModel*)")]
-        public abstract void UnregisterCompletionModel(KTextEditor.CodeCompletionModel model);
+        public virtual void UnregisterCompletionModel(KTextEditor.CodeCompletionModel model) {
+            interceptor.Invoke("unregisterCompletionModel#", "unregisterCompletionModel(KTextEditor::CodeCompletionModel*)", typeof(void), typeof(KTextEditor.CodeCompletionModel), model);
+        }
         /// <remarks>
         ///  Determine the status of automatic code completion invocation.
         ///      </remarks>        <short>    Determine the status of automatic code completion invocation.</short>
         [SmokeMethod("isAutomaticInvocationEnabled() const")]
-        public abstract bool IsAutomaticInvocationEnabled();
+        public virtual bool IsAutomaticInvocationEnabled() {
+            return (bool) interceptor.Invoke("isAutomaticInvocationEnabled", "isAutomaticInvocationEnabled() const", typeof(bool));
+        }
         /// <remarks>
         ///  Enable or disable automatic code completion invocation.
         ///      </remarks>        <short>    Enable or disable automatic code completion invocation.</short>
         [SmokeMethod("setAutomaticInvocationEnabled(bool)")]
-        public abstract void SetAutomaticInvocationEnabled(bool enabled);
+        public virtual void SetAutomaticInvocationEnabled(bool enabled) {
+            interceptor.Invoke("setAutomaticInvocationEnabled$", "setAutomaticInvocationEnabled(bool)", typeof(void), typeof(bool), enabled);
+        }
+        [SmokeMethod("setAutomaticInvocationEnabled()")]
+        public virtual void SetAutomaticInvocationEnabled() {
+            interceptor.Invoke("setAutomaticInvocationEnabled", "setAutomaticInvocationEnabled()", typeof(void));
+        }
         public CodeCompletionInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("CodeCompletionInterface", "CodeCompletionInterface()", typeof(void));

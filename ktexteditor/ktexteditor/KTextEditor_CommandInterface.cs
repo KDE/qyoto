@@ -46,7 +46,9 @@ namespace KTextEditor {
         ///  \see unregisterCommand()
         ///      </remarks>        <short>    Register a the new command \p cmd.</short>
         [SmokeMethod("registerCommand(KTextEditor::Command*)")]
-        public abstract bool RegisterCommand(KTextEditor.Command cmd);
+        public virtual bool RegisterCommand(KTextEditor.Command cmd) {
+            return (bool) interceptor.Invoke("registerCommand#", "registerCommand(KTextEditor::Command*)", typeof(bool), typeof(KTextEditor.Command), cmd);
+        }
         /// <remarks>
         ///  Unregister the command <pre>cmd</pre>. The command will be unregistered for
         ///  all documents.
@@ -55,7 +57,9 @@ namespace KTextEditor {
         ///  \see registerCommand()
         ///      </remarks>        <short>    Unregister the command \p cmd.</short>
         [SmokeMethod("unregisterCommand(KTextEditor::Command*)")]
-        public abstract bool UnregisterCommand(KTextEditor.Command cmd);
+        public virtual bool UnregisterCommand(KTextEditor.Command cmd) {
+            return (bool) interceptor.Invoke("unregisterCommand#", "unregisterCommand(KTextEditor::Command*)", typeof(bool), typeof(KTextEditor.Command), cmd);
+        }
         /// <remarks>
         ///  Query for the command <pre>cmd</pre>.
         ///  If the command <pre>cmd</pre> does not exist the return value is NULL.
@@ -63,21 +67,27 @@ namespace KTextEditor {
         ///  \return the found command or NULL if no such command exists
         ///      </remarks>        <short>    Query for the command \p cmd.</short>
         [SmokeMethod("queryCommand(const QString&) const")]
-        public abstract KTextEditor.Command QueryCommand(string cmd);
+        public virtual KTextEditor.Command QueryCommand(string cmd) {
+            return (KTextEditor.Command) interceptor.Invoke("queryCommand$", "queryCommand(const QString&) const", typeof(KTextEditor.Command), typeof(string), cmd);
+        }
         /// <remarks>
         ///  Get a list of all registered commands.
         ///  \return list of all commands
         ///  \see queryCommand(), commandList()
         ///      </remarks>        <short>    Get a list of all registered commands.</short>
         [SmokeMethod("commands() const")]
-        public abstract List<KTextEditor.Command> Commands();
+        public virtual List<KTextEditor.Command> Commands() {
+            return (List<KTextEditor.Command>) interceptor.Invoke("commands", "commands() const", typeof(List<KTextEditor.Command>));
+        }
         /// <remarks>
         ///  Get a list of available command line strings.
         ///  \return command line strings
         ///  \see commands()
         ///      </remarks>        <short>    Get a list of available command line strings.</short>
         [SmokeMethod("commandList() const")]
-        public abstract List<string> CommandList();
+        public virtual List<string> CommandList() {
+            return (List<string>) interceptor.Invoke("commandList", "commandList() const", typeof(List<string>));
+        }
         public CommandInterface() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("CommandInterface", "CommandInterface()", typeof(void));

@@ -54,7 +54,9 @@ namespace KTextEditor {
         ///          no value.
         ///      </remarks>        <short>    Get the value of the variable \p name.</short>
         [SmokeMethod("variable(const QString&) const")]
-        public abstract string Variable(string name);
+        public virtual string Variable(string name) {
+            return (string) interceptor.Invoke("variable$", "variable(const QString&) const", typeof(string), typeof(string), name);
+        }
         /// <remarks>
         ///  The <pre>document</pre> emits this signal whenever the <pre>value</pre> of the
         ///  <pre>variable</pre> changed, this includes when a variable was initially set.
@@ -64,6 +66,8 @@ namespace KTextEditor {
         ///  \see variable()
         ///      </remarks>        <short>    The \p document emits this signal whenever the \p value of the  \p variable changed, this includes when a variable was initially set.</short>
         [SmokeMethod("variableChanged(KTextEditor::Document*, const QString&, const QString&)")]
-        public abstract void VariableChanged(KTextEditor.Document document, string variable, string value);
+        public virtual void VariableChanged(KTextEditor.Document document, string variable, string value) {
+            interceptor.Invoke("variableChanged#$$", "variableChanged(KTextEditor::Document*, const QString&, const QString&)", typeof(void), typeof(KTextEditor.Document), document, typeof(string), variable, typeof(string), value);
+        }
     }
 }

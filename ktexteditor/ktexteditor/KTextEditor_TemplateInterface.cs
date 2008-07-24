@@ -70,7 +70,9 @@ namespace KTextEditor {
         ///  \return true if any text was inserted.
         ///      </remarks>        <short>    You must implement this, it is called by insertTemplateText, after all  default values are inserted.</short>
         [SmokeMethod("insertTemplateTextImplementation(const KTextEditor::Cursor&, const QString&, const QMap<QString,QString>&)")]
-        protected abstract bool InsertTemplateTextImplementation(KTextEditor.Cursor insertPosition, string templateString, Dictionary<string, string> initialValues);
+        protected virtual bool InsertTemplateTextImplementation(KTextEditor.Cursor insertPosition, string templateString, Dictionary<string, string> initialValues) {
+            return (bool) interceptor.Invoke("insertTemplateTextImplementation#$?", "insertTemplateTextImplementation(const KTextEditor::Cursor&, const QString&, const QMap<QString,QString>&)", typeof(bool), typeof(KTextEditor.Cursor), insertPosition, typeof(string), templateString, typeof(Dictionary<string, string>), initialValues);
+        }
         /// <remarks>
         ///  Parses <pre>templateString</pre> for macros in the form [$%]{NAME} and finds
         ///  the value corresponding to NAME if any. The NAME string may contain
