@@ -1,0 +1,11 @@
+2008-07-25  Richard Dale  <richard.j.dale@gmail.com>
+
+* Add a port of the KWrite shell to C#
+* There are some problems to be solved:
+	* Accessing some functionality requires qobject_cast<>'s
+	* How should mono KDE apps be installed? Should they be installed into
+	  the bin dir, or they should they be started from a C++ shell like Ruby
+	  KDE apps?
+	* Couldn't see how to convert this call:
+		QTextStream input(stdin, QIODevice::ReadOnly);
+	* The KUrl.List class needs more work to be usuable with drag and drop
