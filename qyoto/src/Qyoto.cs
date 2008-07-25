@@ -279,7 +279,6 @@ namespace Qyoto
 						sig = SignatureFromMethodInfo(mi);
 
 					sig = QMetaObject.NormalizedSignature(sig).Data();
-					Console.WriteLine("sig: {0}", sig);
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
 					
