@@ -47,7 +47,7 @@ public class KWrite : KParts.MainWindow {
     private QPixmap m_modmodPm;
     private QPixmap m_noPm;
 
-    KWrite() : this(null) {}
+    KWrite() : this((KTextEditor.Document) null) {}
 
     KWrite(KTextEditor.Document doc) : base(null, 0) {
         if (doc == null) {
@@ -92,7 +92,7 @@ public class KWrite : KParts.MainWindow {
         AcceptDrops = true;
         Connect(m_view, SIGNAL("dropEventPass(QDropEvent *)"), this, SLOT("SlotDropEvent(QDropEvent *)"));
 
-        SetXMLFile("kwriteui.rc");
+        SetXMLFile("kwrite-sharpui.rc");
         CreateShellGUI(true);
         GuiFactory().AddClient(m_view);
 
@@ -145,7 +145,7 @@ public class KWrite : KParts.MainWindow {
         Connect(a, SIGNAL("triggered()"), this, SLOT("NewView()"));
         a.WhatsThis = KDE.I18n("Create another view containing the current document");
 
-        ActionCollection().AddAction(KStandardAction.StandardAction.Quit, this, SLOT("Close()"))
+        ActionCollection().AddAction(KStandardAction.StandardAction.Quit, this, SLOT("close()"))
            .WhatsThis = KDE.I18n("Close the current document view");
 
         // setup Settings menu
@@ -246,20 +246,21 @@ public class KWrite : KParts.MainWindow {
                                                                                     this,
                                                                                     KDE.I18n("Open File") );
 
-//        for (KUrl.List.Iterator i=r.URLs.begin(); i != r.URLs.end(); ++i) {
-//            encoding = r.encoding;
-//            slotOpen(i);
-//        }
+        foreach (KUrl url in r.URLs) {
+            encoding = r.Encoding;
+            SlotOpen(url);
+        }
+
     }
 
     [Q_SLOT("SlotOpen(KUrl)")]
     public void SlotOpen(KUrl url) {
         if (url.IsEmpty()) return;
 
-        if (!KIO.NetAccess.Exists(url, KIO.NetAccess.StatSide.SourceSide, this)) {
-            KMessageBox.Error(this, KDE.I18n("The file given could not be read; check whether it exists or is readable for the current user."));
-            return;
-        }
+//        if (!KIO.NetAccess.Exists(url, KIO.NetAccess.StatSide.SourceSide, this)) {
+//            KMessageBox.Error(this, KDE.I18n("The file given could not be read; check whether it exists or is readable for the current user."));
+//            return;
+//        }
 
         if (m_view.Document().IsModified() || !m_view.Document().Url.IsEmpty()) {
             KWrite t = new KWrite();
@@ -630,6 +631,7 @@ public class KWrite : KParts.MainWindow {
         KCmdLineArgs.AddCmdLineOptions(options);
 
         KApplication a = new KApplication();
+
         KGlobal.Locale().InsertCatalog("katepart4");
         KCmdLineArgs args = KCmdLineArgs.ParsedArgs();
 
@@ -639,20 +641,25 @@ public class KWrite : KParts.MainWindow {
             bool nav = false;
             int line = 0, column = 0;
 
+            // The code below that uses KCmdLineArgs doesn't work, so avoid it for now
+            KWrite t2 = new KWrite();
+            return KApplication.Exec();
+
             QTextCodec codec = args.IsSet("encoding") ? QTextCodec.CodecForName(args.GetOption("encoding")) : null;
+
 
             if (args.IsSet("line")) {
                 line = System.Convert.ToInt32(args.GetOption("line")) - 1;
                 nav = true;
             }
 
-            if (args.IsSet ("column")) {
+            if (args.IsSet("column")) {
                 column = System.Convert.ToInt32(args.GetOption("column")) - 1;
                 nav = true;
             }
 
             if (args.Count() == 0) {
-                KWrite t = new KWrite();
+                KWrite t = new KWrite((KTextEditor.Document) null);
 
                 if (args.IsSet("stdin")) {
                     // FIXME: the first argument should be stdin here
