@@ -1,3 +1,7 @@
+2008-07-26  Arno Rehn  <arno@arnorehn.de>
+
+	* Add a qobject_cast based on C# reflection and qt_metacast.
+
 2008-07-25  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Add implicit conversion operations for converting QVariants to types

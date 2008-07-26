@@ -1,11 +1,15 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Collections;
 	using System.Text;
 	using System.Reflection;
 
 	public partial class Qt : Object {
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		private static extern IntPtr qyoto_qt_metacast(IntPtr obj, string target);
+
 		public static QApplication qApp = null;
 
 		public static string SIGNAL(string signal) {
@@ -59,6 +63,25 @@ namespace Qyoto {
 
 		public static string QT_TRANSLATE_NOOP(string klass, string text) {
 			return text;
+		}
+
+		public static T qobject_cast<T>(QObject obj) where T : class {
+			if (obj == null) return null;
+			Type t = typeof(T);
+			try {
+				return (T) (object) obj;
+			} catch {}
+			if (!SmokeMarshallers.IsSmokeClass(t)) return null;
+			string className = SmokeMarshallers.SmokeClassName(t);
+			IntPtr ret = qyoto_qt_metacast((IntPtr) GCHandle.Alloc(obj), className);
+			if (ret == IntPtr.Zero) {
+				return null;
+			} else {
+				GCHandle handle = (GCHandle) ret;
+				object target = handle.Target;
+				handle.Free();
+				return (T) target;
+			}
 		}
 
 		// These should really use generic types like the C++ originals, but

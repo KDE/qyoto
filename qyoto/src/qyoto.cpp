@@ -291,6 +291,31 @@ FindQObjectChild(void* parent, char * childName)
 	return cs_qFindChildHelper(parent, name, *mo);
 }
 
+Q_DECL_EXPORT void*
+qyoto_qt_metacast(void* obj, char* target)
+{
+	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	(*FreeGCHandle)(obj);
+	QObject* qobj = (QObject*) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
+	void* ret = qobj->qt_metacast(target);
+	if (!ret) return 0;
+	void* instance = (*GetInstance)(ret, true);
+	if (instance) {
+#ifdef DEBUG
+		printf("qyoto_qt_metacast: found instance, returning 0x%8.8x\n", instance);
+#endif
+		return instance;
+	}
+	Smoke* s = Smoke::classMap[target];
+	smokeqyoto_object* to = alloc_smokeqyoto_object(false, s, s->idClass(target).index, ret);
+	instance = (*CreateInstance)(qyoto_resolve_classname(to), to);
+	mapPointer(instance, to, to->classId, 0);
+#ifdef DEBUG
+	printf("qyoto_qt_metacast: created new instance of type %s (%p)\n", target, to->ptr);
+#endif
+	return instance;
+}
+
 Q_DECL_EXPORT void *
 QVariantValue(char * typeName, void * variant)
 {
