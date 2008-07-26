@@ -15,6 +15,7 @@
       rather than '.'s. So the start up code for a Qyoto module needs to use
       C# reflection to get each C# class and obtain the corresponding Smoke
       class and put them in the lookup map.
+* Added some KTextEditor marshallers
 
 2008-07-25  Richard Dale  <richard.j.dale@gmail.com>
 
