@@ -65,7 +65,7 @@ namespace KParts {
         ///  notify a event from the part of object objid
         ///    </remarks>        <short>    notify a event from the part of object objid    </short>
         public void PartEvent(ulong objid, string arg2, List<QPair<string, KParts.LiveConnectExtension.TypeOf>> args) {
-            interceptor.Invoke("partEvent$$?", "partEvent(const unsigned long, const QString&, const QList<QPair<KParts::LiveConnectExtension::Type, QString> >&)", typeof(void), typeof(ulong), objid, typeof(string), arg2, typeof(List<QPair<string, KParts.LiveConnectExtension.TypeOf>>), args);
+            interceptor.Invoke("partEvent$$?", "partEvent(const unsigned long, const QString&, const QList<QPair<KParts::LiveConnectExtension::Type,QString> >&)", typeof(void), typeof(ulong), objid, typeof(string), arg2, typeof(List<QPair<string, KParts.LiveConnectExtension.TypeOf>>), args);
         }
         ~LiveConnectExtension() {
             interceptor.Invoke("~LiveConnectExtension", "~LiveConnectExtension()", typeof(void));

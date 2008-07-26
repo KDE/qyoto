@@ -3,6 +3,7 @@ namespace KParts {
     using Kimono;
     using System;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  BrowserArguments is a set of web-browsing-specific arguments,
     ///  which allow specifying how a URL should be opened by openUrl()
@@ -22,6 +23,26 @@ namespace KParts {
         protected BrowserArguments(Type dummy) {}
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(BrowserArguments), this);
+        }
+        public List<string> DocState {
+            get { return (List<string>) interceptor.Invoke("docState", "docState()", typeof(List<string>)); }
+            set { interceptor.Invoke("setDocState?", "setDocState(QStringList)", typeof(void), typeof(List<string>), value); }
+        }
+        public bool SoftReload {
+            get { return (bool) interceptor.Invoke("softReload", "softReload()", typeof(bool)); }
+            set { interceptor.Invoke("setSoftReload$", "setSoftReload(bool)", typeof(void), typeof(bool), value); }
+        }
+        public QByteArray PostData {
+            get { return (QByteArray) interceptor.Invoke("postData", "postData()", typeof(QByteArray)); }
+            set { interceptor.Invoke("setPostData#", "setPostData(QByteArray)", typeof(void), typeof(QByteArray), value); }
+        }
+        public string FrameName {
+            get { return (string) interceptor.Invoke("frameName", "frameName()", typeof(string)); }
+            set { interceptor.Invoke("setFrameName$", "setFrameName(QString)", typeof(void), typeof(string), value); }
+        }
+        public bool TrustedSource {
+            get { return (bool) interceptor.Invoke("trustedSource", "trustedSource()", typeof(bool)); }
+            set { interceptor.Invoke("setTrustedSource$", "setTrustedSource(bool)", typeof(void), typeof(bool), value); }
         }
         public BrowserArguments() : this((Type) null) {
             CreateProxy();

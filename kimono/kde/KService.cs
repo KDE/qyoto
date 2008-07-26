@@ -29,9 +29,11 @@ namespace Kimono {
             protected ServiceTypeAndPreference(Type dummy) {}
             public int Preference {
                 get { return (int) interceptor.Invoke("preference", "preference()", typeof(int)); }
+                set { interceptor.Invoke("setPreference$", "setPreference(int)", typeof(void), typeof(int), value); }
             }
             public string ServiceType {
                 get { return (string) interceptor.Invoke("serviceType", "serviceType()", typeof(string)); }
+                set { interceptor.Invoke("setServiceType$", "setServiceType(QString)", typeof(void), typeof(string), value); }
             }
             //  ServiceTypeAndPreference(); >>>> NOT CONVERTED
             //  ServiceTypeAndPreference(int arg1,const QString& arg2); >>>> NOT CONVERTED

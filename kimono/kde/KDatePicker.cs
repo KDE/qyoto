@@ -152,6 +152,10 @@ namespace Kimono {
         protected void SelectYearClicked() {
             interceptor.Invoke("selectYearClicked", "selectYearClicked()", typeof(void));
         }
+        [Q_SLOT("void uncheckYearSelector()")]
+        protected void UncheckYearSelector() {
+            interceptor.Invoke("uncheckYearSelector", "uncheckYearSelector()", typeof(void));
+        }
         [Q_SLOT("void lineEnterPressed()")]
         protected void LineEnterPressed() {
             interceptor.Invoke("lineEnterPressed", "lineEnterPressed()", typeof(void));

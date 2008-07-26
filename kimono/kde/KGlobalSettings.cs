@@ -22,6 +22,7 @@ namespace Kimono {
             public const int LeftHanded = 1;
             public int Handed {
                 get { return (int) interceptor.Invoke("handed", "handed()", typeof(int)); }
+                set { interceptor.Invoke("setHanded$", "setHanded(int)", typeof(void), typeof(int), value); }
             }
         }
         private static SmokeInvocation staticInterceptor = null;
@@ -135,6 +136,14 @@ namespace Kimono {
         ///         <short>    Returns whether KDE runs in single (default) or double click  mode.</short>
         public static bool SingleClick() {
             return (bool) staticInterceptor.Invoke("singleClick", "singleClick()", typeof(bool));
+        }
+        /// <remarks>
+        ///  Returns if item views should force smooth scrolling.
+        /// </remarks>        <return> true if smooth scrolling is enabled for item view, false otherwise.
+        /// </return>
+        ///         <short>    Returns if item views should force smooth scrolling.</short>
+        public static bool SmoothScroll() {
+            return (bool) staticInterceptor.Invoke("smoothScroll", "smoothScroll()", typeof(bool));
         }
         /// <remarks>
         ///  Returns whether tear-off handles are inserted in KMenus.

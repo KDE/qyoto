@@ -73,7 +73,7 @@ namespace Kimono {
         ///  convenience methods.
         /// </remarks>        <short>    \class List kurl.</short>
         ///         <see> KUrl</see>
-        ///         <see> QValueList</see>
+        ///         <see> QList</see>
         [SmokeClass("KUrl::List")]
         public class List : Object {
             protected SmokeInvocation interceptor = null;
@@ -717,6 +717,13 @@ namespace Kimono {
             return (string) interceptor.Invoke("pathOrUrl", "pathOrUrl() const", typeof(string));
         }
         /// <remarks>
+        ///  Overload with <code>trailing</code> parameter
+        /// <param> name="trailing" use to add or remove a trailing slash to/from the path. see adjustPath.
+        /// </param></remarks>        <short>    Overload with <code>trailing</code> parameter </short>
+        public string PathOrUrl(KUrl.AdjustPathOption trailing) {
+            return (string) interceptor.Invoke("pathOrUrl$", "pathOrUrl(KUrl::AdjustPathOption) const", typeof(string), typeof(KUrl.AdjustPathOption), trailing);
+        }
+        /// <remarks>
         ///  Returns the URL as a string, using the standard conventions for mime data
         ///  (drag-n-drop or copy-n-paste).
         ///  Internally used by KUrl.List.FromMimeData, which is probably what you want to use instead.
@@ -751,7 +758,8 @@ namespace Kimono {
         ///  Compares this url with <code>u.</code>
         /// <param> name="u" the URL to compare this one with.
         /// </param><param> name="options" a set of EqualsOption flags
-        /// </param></remarks>        <return> true if both urls are the same
+        /// </param></remarks>        <return> True if both urls are the same. If at least one of the urls is invalid,
+        ///  false is returned.
         /// </return>
         ///         <short>    Compares this url with <code>u.</code></short>
         ///         <see> operator==.</see>

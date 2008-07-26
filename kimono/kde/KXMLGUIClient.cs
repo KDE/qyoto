@@ -49,9 +49,11 @@ namespace Kimono {
             protected StateChange(Type dummy) {}
             public List<string> ActionsToEnable {
                 get { return (List<string>) interceptor.Invoke("actionsToEnable", "actionsToEnable()", typeof(List<string>)); }
+                set { interceptor.Invoke("setActionsToEnable?", "setActionsToEnable(QStringList)", typeof(void), typeof(List<string>), value); }
             }
             public List<string> ActionsToDisable {
                 get { return (List<string>) interceptor.Invoke("actionsToDisable", "actionsToDisable()", typeof(List<string>)); }
+                set { interceptor.Invoke("setActionsToDisable?", "setActionsToDisable(QStringList)", typeof(void), typeof(List<string>), value); }
             }
         }
         protected void CreateProxy() {

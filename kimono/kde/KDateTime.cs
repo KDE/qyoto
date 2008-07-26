@@ -799,7 +799,7 @@ namespace Kimono {
         /// <remarks>
         ///  Converts the time to a UTC time, measured in seconds since 00:00:00 UTC
         ///  1st January 1970 (as returned by time(2)).
-        /// </remarks>        <return> converted time, or -1 if the date is out of range
+        /// </remarks>        <return> converted time, or @c uint(-1) if the date is out of range or invalid
         /// </return>
         ///         <short>    Converts the time to a UTC time, measured in seconds since 00:00:00 UTC  1st January 1970 (as returned by time(2)).</short>
         ///         <see> setTime_t</see>

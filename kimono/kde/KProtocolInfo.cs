@@ -37,9 +37,11 @@ namespace Kimono {
             }
             public string Name {
                 get { return (string) interceptor.Invoke("name", "name()", typeof(string)); }
+                set { interceptor.Invoke("setName$", "setName(QString)", typeof(void), typeof(string), value); }
             }
-            public int Type {
-                get { return (int) interceptor.Invoke("type", "type()", typeof(int)); }
+            public KProtocolInfo.ExtraField.TypeOf Type {
+                get { return (KProtocolInfo.ExtraField.TypeOf) interceptor.Invoke("type", "type()", typeof(KProtocolInfo.ExtraField.TypeOf)); }
+                set { interceptor.Invoke("setType#", "setType(KProtocolInfo::ExtraField::Type)", typeof(void), typeof(KProtocolInfo.ExtraField.TypeOf), value); }
             }
             //  ExtraField(); >>>> NOT CONVERTED
             //  ExtraField(,); >>>> NOT CONVERTED

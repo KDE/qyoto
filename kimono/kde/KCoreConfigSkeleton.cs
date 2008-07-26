@@ -461,6 +461,18 @@ namespace Kimono {
                 protected void CreateProxy() {
                     interceptor = new SmokeInvocation(typeof(Choice), this);
                 }
+                public string Name {
+                    get { return (string) interceptor.Invoke("name", "name()", typeof(string)); }
+                    set { interceptor.Invoke("setName$", "setName(QString)", typeof(void), typeof(string), value); }
+                }
+                public string Label {
+                    get { return (string) interceptor.Invoke("label", "label()", typeof(string)); }
+                    set { interceptor.Invoke("setLabel$", "setLabel(QString)", typeof(void), typeof(string), value); }
+                }
+                public string WhatsThis {
+                    get { return (string) interceptor.Invoke("whatsThis", "whatsThis()", typeof(string)); }
+                    set { interceptor.Invoke("setWhatsThis$", "setWhatsThis(QString)", typeof(void), typeof(string), value); }
+                }
                 public Choice() : this((Type) null) {
                     CreateProxy();
                     interceptor.Invoke("Choice", "Choice()", typeof(void));

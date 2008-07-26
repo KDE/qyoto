@@ -45,6 +45,9 @@ namespace Kimono {
         public static bool LoadedByKdeinit() {
             return (bool) staticInterceptor.Invoke("loadedByKdeinit", "loadedByKdeinit()", typeof(bool));
         }
+        public static KApplication KApp() {
+            return (KApplication) staticInterceptor.Invoke("KApp", "KApp()", typeof(KApplication));
+        }
         // int xErrhandler(Display* arg1,void* arg2); >>>> NOT CONVERTED
         // int xioErrhandler(Display* arg1); >>>> NOT CONVERTED
         // void iceIOErrorHandler(_IceConn* arg1); >>>> NOT CONVERTED

@@ -30,12 +30,15 @@ namespace KParts {
             protected PluginInfo(Type dummy) {}
             public string M_relXMLFileName {
                 get { return (string) interceptor.Invoke("m_relXMLFileName", "m_relXMLFileName()", typeof(string)); }
+                set { interceptor.Invoke("setM_relXMLFileName$", "setM_relXMLFileName(QString)", typeof(void), typeof(string), value); }
             }
             public string M_absXMLFileName {
                 get { return (string) interceptor.Invoke("m_absXMLFileName", "m_absXMLFileName()", typeof(string)); }
+                set { interceptor.Invoke("setM_absXMLFileName$", "setM_absXMLFileName(QString)", typeof(void), typeof(string), value); }
             }
             public QDomDocument M_document {
                 get { return (QDomDocument) interceptor.Invoke("m_document", "m_document()", typeof(QDomDocument)); }
+                set { interceptor.Invoke("setM_document#", "setM_document(QDomDocument)", typeof(void), typeof(QDomDocument), value); }
             }
         }
         protected new void CreateProxy() {

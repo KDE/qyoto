@@ -2,6 +2,7 @@
 namespace Kimono {
     using System;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  Provides a user (and developer) friendly way to
     ///  select files with support for choosing encoding
@@ -19,6 +20,18 @@ namespace Kimono {
             protected Result(Type dummy) {}
             protected void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(Result), this);
+            }
+            public List<string> FileNames {
+                get { return (List<string>) interceptor.Invoke("fileNames", "fileNames()", typeof(List<string>)); }
+                set { interceptor.Invoke("setFileNames?", "setFileNames(QStringList)", typeof(void), typeof(List<string>), value); }
+            }
+            public List<KUrl> URLs {
+                get { return (List<KUrl>) interceptor.Invoke("URLs", "URLs()", typeof(List<KUrl>)); }
+                set { interceptor.Invoke("setURLs?", "setURLs(KUrl::List)", typeof(void), typeof(List<KUrl>), value); }
+            }
+            public string Encoding {
+                get { return (string) interceptor.Invoke("encoding", "encoding()", typeof(string)); }
+                set { interceptor.Invoke("setEncoding$", "setEncoding(QString)", typeof(void), typeof(string), value); }
             }
             public Result() : this((Type) null) {
                 CreateProxy();
