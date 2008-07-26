@@ -666,7 +666,15 @@ namespace Qyoto {
 
 		public static IntPtr ConstructList(string type) {
 			Type basetype = typeof(List<>);
-			Type[] generic = { Type.GetType(type) };
+			Type t = null;
+			foreach(Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
+				t = a.GetType(type);
+				if (t != null) {
+					break;
+				}
+			}
+
+			Type[] generic = { t };
 			Type merged = basetype.MakeGenericType(generic);
 			
 			object o = Activator.CreateInstance(merged);
