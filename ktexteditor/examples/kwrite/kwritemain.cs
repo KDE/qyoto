@@ -65,8 +65,8 @@ public class KWrite : KParts.MainWindow {
             doc = editor.CreateDocument(null);
 
             // enable the modified on disk warning dialogs if any
-            //if (qobject_cast<KTextEditor::ModificationInterface *>(doc))
-            //    qobject_cast<KTextEditor::ModificationInterface *>(doc).setModifiedOnDiskWarning (true);
+            if (qobject_cast<KTextEditor.ModificationInterface>(doc) != null)
+                qobject_cast<KTextEditor.ModificationInterface>(doc).SetModifiedOnDiskWarning(true);
 
             docList.Add(doc);
         }
@@ -407,8 +407,9 @@ public class KWrite : KParts.MainWindow {
     private void ReadProperties(KSharedConfig config) {
         ReadConfig(config);
 
-        //if (KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(m_view))
-        //    iface.readSessionConfig(KConfigGroup(config, "General Options"));
+        KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(m_view);
+        if (iface != null)
+            iface.ReadSessionConfig(new KConfigGroup(config, "General Options"));
     }
 
     private void SaveProperties(KSharedConfig config) {
@@ -417,10 +418,11 @@ public class KWrite : KParts.MainWindow {
         KConfigGroup group = new KConfigGroup(config, "");
         group.WriteEntry("DocumentNumber", docList.IndexOf(m_view.Document()) + 1);
 
-        //if (KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(m_view)) {
-        //    KConfigGroup cg( config, "General Options" );
-        //    iface.writeSessionConfig(cg);
-        //}
+        KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(m_view);
+        if (iface != null) {
+            KConfigGroup cg = new KConfigGroup( config, "General Options" );
+            iface.WriteSessionConfig(cg);
+        }
     }
 
     private void SaveGlobalProperties(KConfig config) {
@@ -432,8 +434,9 @@ public class KWrite : KParts.MainWindow {
             KConfigGroup cg = new KConfigGroup(config, buf);
             KTextEditor.Document doc = docList[z - 1];
 
-            //if (KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(doc))
-            //    iface.writeSessionConfig(cg);
+            KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(doc);
+            if (iface != null)
+                iface.WriteSessionConfig(cg);
             z++;
         }
 
@@ -479,8 +482,9 @@ public class KWrite : KParts.MainWindow {
             KConfigGroup cg = new KConfigGroup(config, buf);
             doc = editor.CreateDocument(null);
 
-            //if (KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(doc))
-            //    iface.readSessionConfig(cg);
+            KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(doc);
+            if (iface != null)
+                iface.ReadSessionConfig(cg);
             docList.Add(doc);
         }
 

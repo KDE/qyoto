@@ -1,3 +1,7 @@
+2008-07-26  Arno Rehn  <arno@arnorehn.de>
+
+* Use qobject_cast in the KWrite example.
+
 2008-07-26  Richard Dale  <richard.j.dale@gmail.com>
 
 * Fix some issues with the KWrite example

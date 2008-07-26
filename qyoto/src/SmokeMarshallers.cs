@@ -533,6 +533,11 @@ namespace Qyoto {
 			}
 
 			if (data == null) {
+				if (className.Contains(".")) {
+					StringBuilder sb = new StringBuilder(className);
+					sb[className.LastIndexOf(".")] = '+';
+					return CreateInstance(sb.ToString(), smokeObjectPtr);
+				}
 				Console.Error.WriteLine("CreateInstance() ** Missing class ** {0}", className);
 			}
 

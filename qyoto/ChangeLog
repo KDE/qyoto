@@ -1,3 +1,8 @@
+2008-07-26  Arno Rehn  <arno@arnorehn.de>
+
+	* If CreateInstance() doesn't find a type, it now replaces the last '.'
+	  with a '+' and tries again to find nested classes.
+
 2008-07-26  Richard Dale  <richard.j.dale@gmail.com>
 
 	* Look in all loaded Assemblies for types in lists that might not be in
