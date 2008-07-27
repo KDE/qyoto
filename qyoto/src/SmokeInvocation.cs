@@ -400,15 +400,6 @@ namespace Qyoto {
 						args[i] = stackPtr[i].s_float;
 					} else if (parameters[i].ParameterType == typeof(double)) {
 						args[i] = stackPtr[i].s_double;
-					} else if (parameters[i].ParameterType == typeof(string)) {
-						if (stackPtr[i].s_class != IntPtr.Zero) {
-							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
-#if DEBUG
-							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
-#else
-							((GCHandle) stackPtr[i].s_class).Free();
-#endif
-						}
 					} else {
 						if (stackPtr[i].s_class != IntPtr.Zero) {
 							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
