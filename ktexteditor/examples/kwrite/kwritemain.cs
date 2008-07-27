@@ -666,8 +666,7 @@ public class KWrite : KParts.MainWindow {
                 KWrite t = new KWrite((KTextEditor.Document) null);
 
                 if (args.IsSet("stdin")) {
-                    // FIXME: the first argument should be stdin here
-                    QTextStream input = new QTextStream(new StringBuilder(), (uint) QIODevice.OpenModeFlag.ReadOnly);
+                    QTextStream input = new QTextStream(Console.OpenStandardInput());
 
                     // set chosen codec
                     if (codec != null)
