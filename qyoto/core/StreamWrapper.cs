@@ -19,7 +19,6 @@ namespace Qyoto {
 		public StreamWrapper(Stream stream) : this(stream, true) {}
 
 		protected override unsafe long ReadData(Pointer<sbyte> data, long maxsize) {
-			m_stream.Position = Pos();
 			int max = (maxsize > int.MaxValue)? int.MaxValue : (int) maxsize;
 			byte[] buffer = new byte[max];
 			int read = m_stream.Read(buffer, 0, max);
@@ -37,7 +36,18 @@ namespace Qyoto {
 			return i;
 		}
 		
+		public override bool Seek(long pos) {
+			base.Seek(pos);
+			try {
+				m_stream.Seek(pos, SeekOrigin.Begin);
+				return true;
+			} catch {
+				return false;
+			}
+		}
+		
 		public override long Size() {
+			if (!m_stream.CanSeek) return base.Size();
 			return m_stream.Length;
 		}
 		
