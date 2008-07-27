@@ -7,10 +7,10 @@ namespace QtWebKit {
 
 	public class InitQtWebKit {
 		[DllImport("libqtwebkit-sharp", CharSet=CharSet.Ansi)]
-		static extern void Init_QtWebKit();
+		static extern void Init_qtwebkit();
 		
 		public static void InitSmoke() {
-			Init_QtWebKit();
+			Init_qtwebkit();
 		}
 	}
 }

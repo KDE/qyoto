@@ -7,10 +7,10 @@ namespace Nepomuk {
 
 	public class InitNepomuk {
 		[DllImport("libnepomuk-sharp", CharSet=CharSet.Ansi)]
-		static extern void Init_Nepomuk();
+		static extern void Init_nepomuk();
 		
 		public static void InitSmoke() {
-			Init_Nepomuk();
+			Init_nepomuk();
 		}
 	}
 }
