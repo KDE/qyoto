@@ -91,8 +91,8 @@ namespace Qyoto {
         public virtual long BytesToWrite() {
             return (long) interceptor.Invoke("bytesToWrite", "bytesToWrite() const", typeof(long));
         }
-        public long Read(string data, long maxlen) {
-            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public long Read(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         public QByteArray Read(long maxlen) {
             return (QByteArray) interceptor.Invoke("read$", "read(qint64)", typeof(QByteArray), typeof(long), maxlen);
@@ -100,8 +100,8 @@ namespace Qyoto {
         public QByteArray ReadAll() {
             return (QByteArray) interceptor.Invoke("readAll", "readAll()", typeof(QByteArray));
         }
-        public long ReadLine(string data, long maxlen) {
-            return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public long ReadLine(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         public QByteArray ReadLine(long maxlen) {
             return (QByteArray) interceptor.Invoke("readLine$", "readLine(qint64)", typeof(QByteArray), typeof(long), maxlen);
@@ -119,8 +119,8 @@ namespace Qyoto {
         public long Write(QByteArray data) {
             return (long) interceptor.Invoke("write#", "write(const QByteArray&)", typeof(long), typeof(QByteArray), data);
         }
-        public long Peek(string data, long maxlen) {
-            return (long) interceptor.Invoke("peek$$", "peek(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public long Peek(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("peek$$", "peek(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         public QByteArray Peek(long maxlen) {
             return (QByteArray) interceptor.Invoke("peek$", "peek(qint64)", typeof(QByteArray), typeof(long), maxlen);
@@ -139,17 +139,17 @@ namespace Qyoto {
         public bool PutChar(char c) {
             return (bool) interceptor.Invoke("putChar$", "putChar(char)", typeof(bool), typeof(char), c);
         }
-        public bool GetChar(string c) {
-            return (bool) interceptor.Invoke("getChar$", "getChar(char*)", typeof(bool), typeof(string), c);
+        public bool GetChar(Pointer<sbyte> c) {
+            return (bool) interceptor.Invoke("getChar$", "getChar(char*)", typeof(bool), typeof(Pointer<sbyte>), c);
         }
         public string ErrorString() {
             return (string) interceptor.Invoke("errorString", "errorString() const", typeof(string));
         }
         [SmokeMethod("readData(char*, qint64)")]
-        protected abstract long ReadData(string data, long maxlen);
+        protected abstract long ReadData(Pointer<sbyte> data, long maxlen);
         [SmokeMethod("readLineData(char*, qint64)")]
-        protected virtual long ReadLineData(string data, long maxlen) {
-            return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        protected virtual long ReadLineData(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("writeData(const char*, qint64)")]
         protected abstract long WriteData(string data, long len);

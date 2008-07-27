@@ -47,7 +47,7 @@ namespace Qyoto {
         public long PendingDatagramSize() {
             return (long) interceptor.Invoke("pendingDatagramSize", "pendingDatagramSize() const", typeof(long));
         }
-        public long ReadDatagram(string data, long maxlen, QHostAddress host, ref short port) {
+        public long ReadDatagram(Pointer<sbyte> data, long maxlen, QHostAddress host, ref short port) {
             StackItem[] stack = new StackItem[5];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(data);
@@ -75,11 +75,11 @@ namespace Qyoto {
             port = stack[4].s_short;
             return stack[0].s_long;
         }
-        public long ReadDatagram(string data, long maxlen, QHostAddress host) {
-            return (long) interceptor.Invoke("readDatagram$$#", "readDatagram(char*, qint64, QHostAddress*)", typeof(long), typeof(string), data, typeof(long), maxlen, typeof(QHostAddress), host);
+        public long ReadDatagram(Pointer<sbyte> data, long maxlen, QHostAddress host) {
+            return (long) interceptor.Invoke("readDatagram$$#", "readDatagram(char*, qint64, QHostAddress*)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen, typeof(QHostAddress), host);
         }
-        public long ReadDatagram(string data, long maxlen) {
-            return (long) interceptor.Invoke("readDatagram$$", "readDatagram(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public long ReadDatagram(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readDatagram$$", "readDatagram(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         public long WriteDatagram(string data, long len, QHostAddress host, ushort port) {
             return (long) interceptor.Invoke("writeDatagram$$#$", "writeDatagram(const char*, qint64, const QHostAddress&, unsigned short)", typeof(long), typeof(string), data, typeof(long), len, typeof(QHostAddress), host, typeof(ushort), port);

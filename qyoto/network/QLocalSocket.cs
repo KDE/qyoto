@@ -126,8 +126,8 @@ namespace Qyoto {
             return (bool) interceptor.Invoke("waitForReadyRead", "waitForReadyRead()", typeof(bool));
         }
         [SmokeMethod("readData(char*, qint64)")]
-        protected override long ReadData(string arg1, long arg2) {
-            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), arg1, typeof(long), arg2);
+        protected override long ReadData(Pointer<sbyte> arg1, long arg2) {
+            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), arg1, typeof(long), arg2);
         }
         [SmokeMethod("writeData(const char*, qint64)")]
         protected override long WriteData(string arg1, long arg2) {

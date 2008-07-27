@@ -201,6 +201,12 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallAddUIntToListUInt(AddUInt callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallGenericPointerGetIntPtr(GetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallCreateGenericPointer(CreateInstanceFn callback);
 #endregion
 		
 #region delegates
@@ -792,6 +798,18 @@ namespace Qyoto {
 			}
 			return map;
 		}
+		
+		public static IntPtr GenericPointerGetIntPtr(IntPtr obj) {
+			object o = ((GCHandle) obj).Target;
+			return (IntPtr) o.GetType().GetMethod("ToIntPtr").Invoke(o, null);
+		}
+		
+		public static IntPtr CreateGenericPointer(string type, IntPtr ptr) {
+			Type t = typeof(Pointer<>);
+			t = t.MakeGenericType( new Type[] { Type.GetType(type) } );
+			object o = Activator.CreateInstance(t, new object[] { ptr });
+			return (IntPtr) GCHandle.Alloc(o);
+		}
 #endregion
 		
 #region Setup
@@ -840,6 +858,9 @@ namespace Qyoto {
 			
 			InstallGetProperty(GetProperty);
 			InstallSetProperty(SetProperty);
+			
+			InstallGenericPointerGetIntPtr(GenericPointerGetIntPtr);
+			InstallCreateGenericPointer(CreateGenericPointer);
 		}
 #endregion
 

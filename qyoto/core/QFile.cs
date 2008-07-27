@@ -139,30 +139,30 @@ namespace Qyoto {
         public bool SetPermissions(uint permissionSpec) {
             return (bool) interceptor.Invoke("setPermissions$", "setPermissions(QFile::Permissions)", typeof(bool), typeof(uint), permissionSpec);
         }
-        public char[] Map(long offset, long size, QFile.MemoryMapFlags flags) {
-            return (char[]) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(char[]), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
+        public Pointer<byte> Map(long offset, long size, QFile.MemoryMapFlags flags) {
+            return (Pointer<byte>) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(Pointer<byte>), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
         }
-        public char[] Map(long offset, long size) {
-            return (char[]) interceptor.Invoke("map$$", "map(qint64, qint64)", typeof(char[]), typeof(long), offset, typeof(long), size);
+        public Pointer<byte> Map(long offset, long size) {
+            return (Pointer<byte>) interceptor.Invoke("map$$", "map(qint64, qint64)", typeof(Pointer<byte>), typeof(long), offset, typeof(long), size);
         }
-        public bool Unmap(char[] address) {
-            return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(char[]), address);
+        public bool Unmap(Pointer<byte> address) {
+            return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(Pointer<byte>), address);
         }
         [SmokeMethod("fileEngine() const")]
         public virtual QAbstractFileEngine FileEngine() {
             return (QAbstractFileEngine) interceptor.Invoke("fileEngine", "fileEngine() const", typeof(QAbstractFileEngine));
         }
         [SmokeMethod("readData(char*, qint64)")]
-        protected override long ReadData(string data, long maxlen) {
-            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        protected override long ReadData(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("writeData(const char*, qint64)")]
         protected override long WriteData(string data, long len) {
             return (long) interceptor.Invoke("writeData$$", "writeData(const char*, qint64)", typeof(long), typeof(string), data, typeof(long), len);
         }
         [SmokeMethod("readLineData(char*, qint64)")]
-        protected override long ReadLineData(string data, long maxlen) {
-            return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        protected override long ReadLineData(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         ~QFile() {
             interceptor.Invoke("~QFile", "~QFile()", typeof(void));

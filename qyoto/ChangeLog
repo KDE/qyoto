@@ -1,3 +1,22 @@
+2008-07-27  Arno Rehn  <arno@arnorehn.de>
+
+	* Created a generic Pointer<T> type, which holds an IntPtr pointing to
+	  an unmanaged value. It's needed for methods that expect a pointer to
+	  an array and because we can't wrap a System.Array around an unmanaged
+	  pointer and pointers inside C# can't be boxed and passed to
+	  MethodInfo.Invoke() (needed for overriding virtual methods). So
+		void Foo(byte[] bytes)
+		void Foo(byte* bytes)
+	  are not possible. For now it looke like
+		void Foo(Pointer<byte> bytes)
+	  The Pointer<T> type behaves much like a real pointer, so you can do
+	  bytes[3]. To dereference it, just call bytes.Value.
+	  For now it's only used as Pointer<sbyte> when the C++ side expects a char*.
+	  This fixes a bug reported by Christoph Spielmann some months ago.
+	  There are probably more classes that need to be regenerated than just those
+	  I checked in.
+	* Add some more marshallers for reference types.
+
 2008-07-26  Arno Rehn  <arno@arnorehn.de>
 
 	* If CreateInstance() doesn't find a type, it now replaces the last '.'

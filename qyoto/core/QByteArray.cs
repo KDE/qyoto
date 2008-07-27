@@ -61,8 +61,8 @@ namespace Qyoto {
         public void Squeeze() {
             interceptor.Invoke("squeeze", "squeeze()", typeof(void));
         }
-        public string Data() {
-            return (string) interceptor.Invoke("data", "data()", typeof(string));
+        public Pointer<sbyte> Data() {
+            return (Pointer<sbyte>) interceptor.Invoke("data", "data()", typeof(Pointer<sbyte>));
         }
         public string ConstData() {
             return (string) interceptor.Invoke("constData", "constData() const", typeof(string));

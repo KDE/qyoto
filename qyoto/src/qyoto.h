@@ -163,6 +163,9 @@ extern Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
 extern Q_DECL_EXPORT AddInt AddIntToListInt;
 extern Q_DECL_EXPORT AddUInt AddUIntToListUInt;
 extern Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
+
+extern Q_DECL_EXPORT GetIntPtr GenericPointerGetIntPtr;
+extern Q_DECL_EXPORT CreateInstanceFn CreateGenericPointer;
 }
 
 #endif

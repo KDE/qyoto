@@ -30,11 +30,8 @@ namespace Qyoto {
         }
         // ByteOrder byteOrder(); >>>> NOT CONVERTED
         // void setByteOrder(ByteOrder arg1); >>>> NOT CONVERTED
-        // QDataStream& operator>>(signed char& arg1); >>>> NOT CONVERTED
-        // QDataStream& operator>>(short& arg1); >>>> NOT CONVERTED
-        // QDataStream& operator>>(qint64& arg1); >>>> NOT CONVERTED
-        // QDataStream& operator>>(quint64& arg1); >>>> NOT CONVERTED
         // QDataStream& operator<<(signed char arg1); >>>> NOT CONVERTED
+        // QDataStream& operator<<(quint64 arg1); >>>> NOT CONVERTED
         public QDataStream() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QDataStream", "QDataStream()", typeof(void));
@@ -78,8 +75,24 @@ namespace Qyoto {
         public void SetVersion(int arg1) {
             interceptor.Invoke("setVersion$", "setVersion(int)", typeof(void), typeof(int), arg1);
         }
-        public QDataStream Read(ushort i) {
-            return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(unsigned char&)", typeof(QDataStream), typeof(ushort), i);
+        public QDataStream Read(Pointer<sbyte> i) {
+            return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(signed char&)", typeof(QDataStream), typeof(Pointer<sbyte>), i);
+        }
+        public QDataStream Read(Pointer<byte> i) {
+            return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(unsigned char&)", typeof(QDataStream), typeof(Pointer<byte>), i);
+        }
+        public QDataStream Read(ref short i) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_short = i;
+            interceptor.Invoke("operator>>$", "operator>>(short&)", stack);
+            i = stack[1].s_short;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDataStream) returnValue;
         }
         public QDataStream Read(ref int i) {
             StackItem[] stack = new StackItem[2];
@@ -94,20 +107,60 @@ namespace Qyoto {
 #endif
             return (QDataStream) returnValue;
         }
-        public QDataStream Read(uint i) {
-            return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(unsigned int&)", typeof(QDataStream), typeof(uint), i);
+        public QDataStream Read(ref long i) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_long = i;
+            interceptor.Invoke("operator>>?", "operator>>(qint64&)", stack);
+            i = stack[1].s_long;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDataStream) returnValue;
+        }
+        public QDataStream Read(ref ulong i) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_ulong = i;
+            interceptor.Invoke("operator>>?", "operator>>(quint64&)", stack);
+            i = stack[1].s_ulong;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDataStream) returnValue;
         }
         public QDataStream Read(bool i) {
             return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(bool&)", typeof(QDataStream), typeof(bool), i);
         }
-        public QDataStream Read(float f) {
-            return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(float&)", typeof(QDataStream), typeof(float), f);
+        public QDataStream Read(ref float f) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_float = f;
+            interceptor.Invoke("operator>>$", "operator>>(float&)", stack);
+            f = stack[1].s_float;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDataStream) returnValue;
         }
-        public QDataStream Read(double f) {
-            return (QDataStream) interceptor.Invoke("operator>>$", "operator>>(double&)", typeof(QDataStream), typeof(double), f);
-        }
-        public QDataStream Read(string str) {
-            return (QDataStream) interceptor.Invoke("operator>>?", "operator>>(char*&)", typeof(QDataStream), typeof(string), str);
+        public QDataStream Read(ref double f) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_double = f;
+            interceptor.Invoke("operator>>$", "operator>>(double&)", stack);
+            f = stack[1].s_double;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDataStream) returnValue;
         }
         public QDataStream Write(ushort i) {
             return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(unsigned char)", typeof(QDataStream), typeof(ushort), i);
@@ -124,9 +177,6 @@ namespace Qyoto {
         public QDataStream Write(long i) {
             return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(qint64)", typeof(QDataStream), typeof(long), i);
         }
-        public QDataStream Write(ulong i) {
-            return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(quint64)", typeof(QDataStream), typeof(ulong), i);
-        }
         public QDataStream Write(bool i) {
             return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(bool)", typeof(QDataStream), typeof(bool), i);
         }
@@ -139,11 +189,11 @@ namespace Qyoto {
         public QDataStream Write(string str) {
             return (QDataStream) interceptor.Invoke("operator<<$", "operator<<(const char*)", typeof(QDataStream), typeof(string), str);
         }
-        public QDataStream ReadBytes(string arg1, uint len) {
-            return (QDataStream) interceptor.Invoke("readBytes?$", "readBytes(char*&, uint&)", typeof(QDataStream), typeof(string), arg1, typeof(uint), len);
+        public QDataStream ReadBytes(Pointer<sbyte> arg1, uint len) {
+            return (QDataStream) interceptor.Invoke("readBytes?$", "readBytes(char*&, uint&)", typeof(QDataStream), typeof(Pointer<sbyte>), arg1, typeof(uint), len);
         }
-        public int ReadRawData(string arg1, int len) {
-            return (int) interceptor.Invoke("readRawData$$", "readRawData(char*, int)", typeof(int), typeof(string), arg1, typeof(int), len);
+        public int ReadRawData(Pointer<sbyte> arg1, int len) {
+            return (int) interceptor.Invoke("readRawData$$", "readRawData(char*, int)", typeof(int), typeof(Pointer<sbyte>), arg1, typeof(int), len);
         }
         public QDataStream WriteBytes(string arg1, uint len) {
             return (QDataStream) interceptor.Invoke("writeBytes$$", "writeBytes(const char*, uint)", typeof(QDataStream), typeof(string), arg1, typeof(uint), len);

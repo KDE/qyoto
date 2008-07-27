@@ -87,6 +87,93 @@ namespace Qyoto
 
 #endif
 
+	public unsafe class Pointer<T> where T : struct {
+		private IntPtr m_ptr;
+		
+		public Pointer(IntPtr ptr) {
+			m_ptr = ptr;
+		}
+		
+		public T this[int index] {
+			get {
+				return (T) GetPointerValue(m_ptr, typeof(T), index);
+			}
+			set {
+				SetPointerValue(m_ptr, typeof(T), index, value);
+			}
+		}
+		
+		public T Value {
+			get { return this[0]; }
+			set { this[0] = value; }
+		}
+		
+		public IntPtr ToIntPtr() {
+			return m_ptr;
+		}
+		
+		private object GetPointerValue(IntPtr ptr, Type t, int i) {
+			if (t == typeof(bool)) {
+				return ((bool*) ptr)[i];
+			} else if (t == typeof(sbyte)) {
+				return ((sbyte*) ptr)[i];
+			} else if (t == typeof(byte)) {
+				return ((byte*) ptr)[i];
+			} else if (t == typeof(short)) {
+				return ((short*) ptr)[i];
+			} else if (t == typeof(ushort)) {
+				return ((ushort*) ptr)[i];
+			} else if (t == typeof(int)) {
+				return ((int*) ptr)[i];
+			} else if (t == typeof(uint)) {
+				return ((uint*) ptr)[i];
+			} else if (t == typeof(long)) {
+				return ((long*) ptr)[i];
+			} else if (t == typeof(ulong)) {
+				return ((ulong*) ptr)[i];
+			} else if (t == typeof(float)) {
+				return ((float*) ptr)[i];
+			} else if (t == typeof(double)) {
+				return ((double*) ptr)[i];
+			}
+			return null;
+		}
+		
+		private void SetPointerValue(IntPtr ptr, Type t, int i, object value) {
+			if (t == typeof(bool)) {
+				((bool*) ptr)[i] = (bool) value;
+			} else if (t == typeof(sbyte)) {
+				((sbyte*) ptr)[i] = (sbyte) value;
+			} else if (t == typeof(byte)) {
+				((byte*) ptr)[i] = (byte) value;
+			} else if (t == typeof(short)) {
+				((short*) ptr)[i] = (short) value;
+			} else if (t == typeof(ushort)) {
+				((ushort*) ptr)[i] = (ushort) value;
+			} else if (t == typeof(int)) {
+				((int*) ptr)[i] = (int) value;
+			} else if (t == typeof(uint)) {
+				((uint*) ptr)[i] = (uint) value;
+			} else if (t == typeof(long)) {
+				((long*) ptr)[i] = (long) value;
+			} else if (t == typeof(ulong)) {
+				((ulong*) ptr)[i] = (ulong) value;
+			} else if (t == typeof(float)) {
+				((float*) ptr)[i] = (float) value;
+			} else if (t == typeof(double)) {
+				((double*) ptr)[i] = (double) value;
+			}
+		}
+		
+		public static implicit operator IntPtr (Pointer<T> rhs) {
+			return rhs.ToIntPtr();
+		}
+		
+		public static implicit operator Pointer<T>(IntPtr rhs) {
+			return new Pointer<T>(rhs);
+		}
+	}
+
 	[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false)]
 	public class AssemblySmokeInitializer : Attribute {
 		private Type type;
@@ -278,7 +365,7 @@ namespace Qyoto
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi);
 
-					sig = QMetaObject.NormalizedSignature(sig).Data();
+					sig = QMetaObject.NormalizedSignature(sig).ConstData();
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
 					
@@ -334,7 +421,7 @@ namespace Qyoto
 					string sig = attr.Signature;
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi).Trim();
-					sig = QMetaObject.NormalizedSignature(sig).Data();
+					sig = QMetaObject.NormalizedSignature(sig).ConstData();
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
 					
