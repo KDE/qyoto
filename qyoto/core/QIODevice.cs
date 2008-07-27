@@ -4,7 +4,7 @@ namespace Qyoto {
     /// <remarks> See <see cref="IQIODeviceSignals"></see> for signals emitted by QIODevice
     /// </remarks>
     [SmokeClass("QIODevice")]
-    public abstract class QIODevice : QObject {
+    public abstract partial class QIODevice : QObject {
         protected QIODevice(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QIODevice), this);

@@ -1,3 +1,10 @@
+2008-07-28  Arno Rehn  <arno@arnorehn.de>
+
+	* Various fixes for the signal->delegate connection stuff.
+	* Added a class 'StreamWrapper'. It inherits from QIODevice and maps the
+	  calls to a System.IO.Stream. Also added an implicit conversion to QIODevice
+	  so Streams can be directly passed to methods that expect a QIODevice.
+
 2008-07-27  Arno Rehn  <arno@arnorehn.de>
 
 	* Created a generic Pointer<T> type, which holds an IntPtr pointing to
