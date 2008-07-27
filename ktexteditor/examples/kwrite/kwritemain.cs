@@ -645,10 +645,6 @@ public class KWrite : KParts.MainWindow {
             bool nav = false;
             int line = 0, column = 0;
 
-            // The code below that uses KCmdLineArgs doesn't work, so avoid it for now
-            KWrite t2 = new KWrite();
-            return KApplication.Exec();
-
             QTextCodec codec = args.IsSet("encoding") ? QTextCodec.CodecForName(args.GetOption("encoding")) : null;
 
 
@@ -678,7 +674,7 @@ public class KWrite : KParts.MainWindow {
                     do {
                         inputLine = input.ReadLine();
                         text += (inputLine + "\n");
-                    } while(inputLine.Length != 0);
+                    } while (inputLine != null);
 
 
                     KTextEditor.Document doc = t.View().Document();
