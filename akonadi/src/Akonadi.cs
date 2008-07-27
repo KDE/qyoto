@@ -7,10 +7,10 @@ namespace Akonadi {
 
 	public class InitAkonadi {
 		[DllImport("libakonadi-sharp", CharSet=CharSet.Ansi)]
-		static extern void Init_Akonadi();
+		static extern void Init_akonadi();
 		
 		public static void InitSmoke() {
-			Init_Akonadi();
+			Init_akonadi();
 		}
 	}
 }

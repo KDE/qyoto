@@ -7,10 +7,10 @@ namespace QtUiTools {
 
 	public class InitQtUiTools {
 		[DllImport("libqtuitools-sharp", CharSet=CharSet.Ansi)]
-		static extern void Init_QtUiTools();
+		static extern void Init_qtuitools();
 		
 		public static void InitSmoke() {
-			Init_QtUiTools();
+			Init_qtuitools();
 		}
 	}
 }
