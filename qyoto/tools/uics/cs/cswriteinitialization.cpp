@@ -550,8 +550,8 @@ void WriteInitialization::acceptWidget(DomWidget *node)
         } else if (m_uic->customWidgetsInfo()->extends(className, QLatin1String("QDockWidget"))) {
             QString area;
             if (const DomProperty *pstyle = attributes.value(QLatin1String("dockWidgetArea"))) {
-                area += QLatin1String("Qt.DockWidgetArea.");
-                area += pstyle->elementEnum();
+                area += QLatin1String("(Qt.DockWidgetArea) ");
+                area += QString::number(pstyle->elementNumber());
             }
 
             m_output << m_option.indent << parentWidget << ".AddDockWidget(" << area << ", " << varName << ");\n";
