@@ -45,6 +45,8 @@ public:
         }
         sig = ba;
         _mocargs = GetMocArguments(_o->smoke, "", mo->method(sigIndex).parameterTypes());
+        _mocargs.removeFirst();  // junk the return type - we don't care about that at the moment.
+        _items = _mocargs.size();
         _sp = new Smoke::StackItem[_items];
         _stack = new Smoke::StackItem[_items];
     }
@@ -69,7 +71,7 @@ public:
 
         if (call == QMetaObject::InvokeMetaMethod) {
             if (id == 0) {
-                smokeStackFromQtStack(_stack, a + 1, _items, 1, _mocargs);
+                smokeStackFromQtStack(_stack, a + 1, 0, _items, _mocargs);
                 next();
                 (*InvokeDelegate)(_delegate, _sp);
             }
@@ -78,7 +80,7 @@ public:
         return id;
     }
 
-	inline const MocArgument &arg() { return *_mocargs[_cur + 1]; }
+	inline const MocArgument &arg() { return *_mocargs[_cur]; }
 	inline SmokeType type() { return arg().st; }
 	inline Marshall::Action action() { return Marshall::ToObject; }
 	inline Smoke::StackItem &item() { return _stack[_cur]; }
