@@ -25,26 +25,33 @@ namespace Qyoto {
 		private static extern bool ConnectDelegate(IntPtr obj, string signal, Delegate d);
 		
 		public static bool Connect(QObject obj, string signal, NoArgDelegate d) {
+			// allocate a gchandle so the delegate won't be collected
+			GCHandle.Alloc(d);
 			return ConnectDelegate((IntPtr) GCHandle.Alloc(obj), signal, d);
 		}
 		
 		public static bool Connect<T>(QObject obj, string signal, OneArgDelegate<T> d) {
+			GCHandle.Alloc(d);
 			return ConnectDelegate((IntPtr) GCHandle.Alloc(obj), signal, d);
 		}
 		
 		public static bool Connect<T1, T2>(QObject obj, string signal, TwoArgDelegate<T1, T2> d) {
+			GCHandle.Alloc(d);
 			return ConnectDelegate((IntPtr) GCHandle.Alloc(obj), signal, d);
 		}
 
 		public static bool Connect<T1, T2, T3>(QObject obj, string signal, ThreeArgDelegate<T1, T2, T3> d) {
+			GCHandle.Alloc(d);
 			return ConnectDelegate((IntPtr) GCHandle.Alloc(obj), signal, d);
 		}
 
 		public static bool Connect<T1, T2, T3, T4>(QObject obj, string signal, FourArgDelegate<T1, T2, T3, T4> d) {
+			GCHandle.Alloc(d);
 			return ConnectDelegate((IntPtr) GCHandle.Alloc(obj), signal, d);
 		}
 
 		public static bool Connect<T1, T2, T3, T4, T5>(QObject obj, string signal, FiveArgDelegate<T1, T2, T3, T4, T5> d) {
+			GCHandle.Alloc(d);
 			return ConnectDelegate((IntPtr) GCHandle.Alloc(obj), signal, d);
 		}
 
