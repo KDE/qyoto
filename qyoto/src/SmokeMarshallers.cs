@@ -207,6 +207,9 @@ namespace Qyoto {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallCreateGenericPointer(CreateInstanceFn callback);
+
+		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		public static extern void InstallTryDispose(FromIntPtr callback);
 #endregion
 		
 #region delegates
@@ -810,6 +813,18 @@ namespace Qyoto {
 			object o = Activator.CreateInstance(t, new object[] { ptr });
 			return (IntPtr) GCHandle.Alloc(o);
 		}
+		
+		public static void TryDispose(IntPtr obj) {
+			object o = ((GCHandle) obj).Target;
+			if (IsSmokeClass(o.GetType())) return;
+			try {
+				((IDisposable) o).Dispose();
+			} catch (Exception e) {
+#if DEBUG
+				Console.WriteLine("Disposing {0} failed, reason: {1}", obj, e);
+#endif
+			}
+		}
 #endregion
 		
 #region Setup
@@ -861,6 +876,8 @@ namespace Qyoto {
 			
 			InstallGenericPointerGetIntPtr(GenericPointerGetIntPtr);
 			InstallCreateGenericPointer(CreateGenericPointer);
+			
+			InstallTryDispose(TryDispose);
 		}
 #endregion
 

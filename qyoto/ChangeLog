@@ -1,3 +1,9 @@
+2008-07-31  Arno Rehn  <arno@arnorehn.de>
+
+	* If a custom subclass of one of the binding's classes is destroyed, try to
+	  call the Dispose() method of it. This might be useful since finalizers are
+	  usually called much to late by the GC for doing a proper cleanup.
+
 2008-07-28  Arno Rehn  <arno@arnorehn.de>
 
 	* Various fixes for the signal->delegate connection stuff.

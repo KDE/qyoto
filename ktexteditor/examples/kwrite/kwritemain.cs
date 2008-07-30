@@ -114,11 +114,7 @@ public class KWrite : KParts.MainWindow, IDisposable {
         Show();
     }
 
-    private bool isDisposed = false;
-
     public new void Dispose() {
-        if (isDisposed) return;
-        isDisposed = true;
         winList.Remove(this);
 
         if (m_view.Document().Views().Count == 1) {
@@ -127,10 +123,6 @@ public class KWrite : KParts.MainWindow, IDisposable {
         }
 
         KGlobal.Config().Sync();
-    }
-
-    ~KWrite() {
-        Dispose();
     }
 
     private void SetupActions() {
@@ -225,14 +217,11 @@ public class KWrite : KParts.MainWindow, IDisposable {
 
     // is closing the window wanted by user?
     protected override bool QueryClose() {
-        if (m_view.Document().Views().Count > 1) {
-            Dispose();
+        if (m_view.Document().Views().Count > 1)
             return true;
-        }
 
         if (m_view.Document().QueryClose()) {
             WriteConfig();
-            Dispose();
             return true;
         }
 

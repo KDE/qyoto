@@ -127,6 +127,7 @@ extern Q_DECL_EXPORT OverridenMethodFn GetProperty;
 extern Q_DECL_EXPORT SetPropertyFn SetProperty;
 
 extern Q_DECL_EXPORT SetIntPtr InvokeDelegate;
+extern Q_DECL_EXPORT FromIntPtr TryDispose;
 
 extern "C" {
 extern Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj);

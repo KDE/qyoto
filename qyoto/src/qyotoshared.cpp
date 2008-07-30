@@ -43,6 +43,7 @@ OverridenMethodFn GetProperty;
 SetPropertyFn SetProperty;
 
 SetIntPtr InvokeDelegate;
+FromIntPtr TryDispose;
 
 void
 smokeStackToQtStack(Smoke::Stack stack, void ** o, int start, int end, QList<MocArgument*> args)
@@ -322,6 +323,12 @@ IsContainedInstance(smokeqyoto_object *o)
 
 extern "C"
 {
+
+Q_DECL_EXPORT void
+InstallTryDispose(FromIntPtr callback)
+{
+	TryDispose = callback;
+}
 
 Q_DECL_EXPORT void
 InstallInvokeDelegate(SetIntPtr callback)
