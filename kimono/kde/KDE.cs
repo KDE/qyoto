@@ -111,11 +111,11 @@ namespace Kimono {
         public static int Kasciistricmp(string str1, string str2) {
             return (int) staticInterceptor.Invoke("kasciistricmp$$", "kasciistricmp(const char*, const char*)", typeof(int), typeof(string), str1, typeof(string), str2);
         }
-        public static string KAsciiToLower(string str) {
-            return (string) staticInterceptor.Invoke("kAsciiToLower$", "kAsciiToLower(char*)", typeof(string), typeof(string), str);
+        public static Pointer<sbyte> KAsciiToLower(Pointer<sbyte> str) {
+            return (Pointer<sbyte>) staticInterceptor.Invoke("kAsciiToLower$", "kAsciiToLower(char*)", typeof(Pointer<sbyte>), typeof(Pointer<sbyte>), str);
         }
-        public static string KAsciiToUpper(string str) {
-            return (string) staticInterceptor.Invoke("kAsciiToUpper$", "kAsciiToUpper(char*)", typeof(string), typeof(string), str);
+        public static Pointer<sbyte> KAsciiToUpper(Pointer<sbyte> str) {
+            return (Pointer<sbyte>) staticInterceptor.Invoke("kAsciiToUpper$", "kAsciiToUpper(char*)", typeof(Pointer<sbyte>), typeof(Pointer<sbyte>), str);
         }
         public static QPixmap DesktopIcon(string name, int size, int state, List<string> overlays) {
             return (QPixmap) staticInterceptor.Invoke("DesktopIcon$$$?", "DesktopIcon(const QString&, int, int, const QStringList&)", typeof(QPixmap), typeof(string), name, typeof(int), size, typeof(int), state, typeof(List<string>), overlays);

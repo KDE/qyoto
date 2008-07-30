@@ -91,11 +91,11 @@ namespace Kimono {
         /// <remarks>
         ///  @overload
         ///    </remarks>        <short>    @overload    </short>
-        public void Update(ushort arg1, int len) {
-            interceptor.Invoke("update$$", "update(const unsigned char*, int)", typeof(void), typeof(ushort), arg1, typeof(int), len);
+        public void Update(Pointer<byte> arg1, int len) {
+            interceptor.Invoke("update$$", "update(const unsigned char*, int)", typeof(void), typeof(Pointer<byte>), arg1, typeof(int), len);
         }
-        public void Update(ushort arg1) {
-            interceptor.Invoke("update$", "update(const unsigned char*)", typeof(void), typeof(ushort), arg1);
+        public void Update(Pointer<byte> arg1) {
+            interceptor.Invoke("update$", "update(const unsigned char*)", typeof(void), typeof(Pointer<byte>), arg1);
         }
         /// <remarks>
         ///  @overload

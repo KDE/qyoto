@@ -72,7 +72,7 @@ namespace Kimono {
         public abstract bool WriteHeader(QByteArray filename);
         /// <remarks> \internal </remarks>        <short>   \internal </short>
         [SmokeMethod("setOutBuffer(char*, uint)")]
-        public abstract void SetOutBuffer(string data, uint maxlen);
+        public abstract void SetOutBuffer(Pointer<sbyte> data, uint maxlen);
         /// <remarks> \internal </remarks>        <short>   \internal </short>
         [SmokeMethod("setInBuffer(const char*, uint)")]
         public abstract void SetInBuffer(string data, uint size);

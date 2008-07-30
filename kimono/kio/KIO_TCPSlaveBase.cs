@@ -53,14 +53,14 @@ namespace KIO {
         /// </param></remarks>        <return> the actual size of data that was obtained
         ///      </return>
         ///         <short>    Read incoming data from the remote host.</short>
-        protected int Read(string data, int len) {
-            return (int) interceptor.Invoke("read$?", "read(char*, ssize_t)", typeof(int), typeof(string), data, typeof(int), len);
+        protected int Read(Pointer<sbyte> data, int len) {
+            return (int) interceptor.Invoke("read$?", "read(char*, ssize_t)", typeof(int), typeof(Pointer<sbyte>), data, typeof(int), len);
         }
         /// <remarks>
         ///  Same as read() except it reads data one line at a time.
         ///      </remarks>        <short>    Same as read() except it reads data one line at a time.</short>
-        protected int ReadLine(string data, int len) {
-            return (int) interceptor.Invoke("readLine$?", "readLine(char*, ssize_t)", typeof(int), typeof(string), data, typeof(int), len);
+        protected int ReadLine(Pointer<sbyte> data, int len) {
+            return (int) interceptor.Invoke("readLine$?", "readLine(char*, ssize_t)", typeof(int), typeof(Pointer<sbyte>), data, typeof(int), len);
         }
         /// <remarks>
         ///  Performs the initial TCP connection stuff and/or

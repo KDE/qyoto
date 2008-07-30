@@ -3,6 +3,7 @@ namespace KParts {
     using Kimono;
     using System;
     using Qyoto;
+    using System.Runtime.InteropServices;
     using System.Text;
     using System.Collections.Generic;
     /// <remarks>
@@ -37,8 +38,34 @@ namespace KParts {
         ///  get a field value from objid, return true on success
         ///    </remarks>        <short>    get a field value from objid, return true on success    </short>
         [SmokeMethod("get(const unsigned long, const QString&, KParts::LiveConnectExtension::Type&, unsigned long&, QString&)")]
-        public virtual bool Get(ulong objid, string field, KParts.LiveConnectExtension.TypeOf type, ulong retobjid, StringBuilder value) {
-            return (bool) interceptor.Invoke("get$$$$$", "get(const unsigned long, const QString&, KParts::LiveConnectExtension::Type&, unsigned long&, QString&)", typeof(bool), typeof(ulong), objid, typeof(string), field, typeof(KParts.LiveConnectExtension.TypeOf), type, typeof(ulong), retobjid, typeof(StringBuilder), value);
+        public virtual bool Get(ulong objid, string field, KParts.LiveConnectExtension.TypeOf type, ref ulong retobjid, StringBuilder value) {
+            StackItem[] stack = new StackItem[6];
+            stack[1].s_ulong = objid;
+#if DEBUG
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(field);
+#else
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(field);
+#endif
+            stack[3].s_int = (int) type;
+            stack[4].s_ulong = retobjid;
+#if DEBUG
+            stack[5].s_class = (IntPtr) DebugGCHandle.Alloc(value);
+#else
+            stack[5].s_class = (IntPtr) GCHandle.Alloc(value);
+#endif
+            interceptor.Invoke("get$$$$$", "get(const unsigned long, const QString&, KParts::LiveConnectExtension::Type&, unsigned long&, QString&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+            ((GCHandle) stack[2].s_class).Free();
+#endif
+            retobjid = stack[4].s_ulong;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[5].s_class);
+#else
+            ((GCHandle) stack[5].s_class).Free();
+#endif
+            return stack[0].s_bool;
         }
         /// <remarks>
         ///  put a field value in objid, return true on success
@@ -51,8 +78,44 @@ namespace KParts {
         ///  calls a function of objid, return true on success
         ///    </remarks>        <short>    calls a function of objid, return true on success    </short>
         [SmokeMethod("call(const unsigned long, const QString&, const QStringList&, KParts::LiveConnectExtension::Type&, unsigned long&, QString&)")]
-        public virtual bool Call(ulong objid, string func, List<string> args, KParts.LiveConnectExtension.TypeOf type, ulong retobjid, StringBuilder value) {
-            return (bool) interceptor.Invoke("call$$?$$$", "call(const unsigned long, const QString&, const QStringList&, KParts::LiveConnectExtension::Type&, unsigned long&, QString&)", typeof(bool), typeof(ulong), objid, typeof(string), func, typeof(List<string>), args, typeof(KParts.LiveConnectExtension.TypeOf), type, typeof(ulong), retobjid, typeof(StringBuilder), value);
+        public virtual bool Call(ulong objid, string func, List<string> args, KParts.LiveConnectExtension.TypeOf type, ref ulong retobjid, StringBuilder value) {
+            StackItem[] stack = new StackItem[7];
+            stack[1].s_ulong = objid;
+#if DEBUG
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(func);
+#else
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(func);
+#endif
+#if DEBUG
+            stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(args);
+#else
+            stack[3].s_class = (IntPtr) GCHandle.Alloc(args);
+#endif
+            stack[4].s_int = (int) type;
+            stack[5].s_ulong = retobjid;
+#if DEBUG
+            stack[6].s_class = (IntPtr) DebugGCHandle.Alloc(value);
+#else
+            stack[6].s_class = (IntPtr) GCHandle.Alloc(value);
+#endif
+            interceptor.Invoke("call$$?$$$", "call(const unsigned long, const QString&, const QStringList&, KParts::LiveConnectExtension::Type&, unsigned long&, QString&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+            ((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+            ((GCHandle) stack[3].s_class).Free();
+#endif
+            retobjid = stack[5].s_ulong;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[6].s_class);
+#else
+            ((GCHandle) stack[6].s_class).Free();
+#endif
+            return stack[0].s_bool;
         }
         /// <remarks>
         ///  notifies the part that there is no reference anymore to objid

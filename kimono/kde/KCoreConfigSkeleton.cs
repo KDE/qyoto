@@ -405,9 +405,64 @@ namespace Kimono {
             protected new void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(ItemLongLong), this);
             }
-            // KCoreConfigSkeleton::ItemLongLong* ItemLongLong(const QString& arg1,const QString& arg2,qint64& arg3,qint64 arg4); >>>> NOT CONVERTED
-            // KCoreConfigSkeleton::ItemLongLong* ItemLongLong(const QString& arg1,const QString& arg2,qint64& arg3); >>>> NOT CONVERTED
             /// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>        <short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
+            public ItemLongLong(string _group, string _key, ref long reference, long defaultValue) : this((Type) null) {
+                CreateProxy();
+                StackItem[] stack = new StackItem[5];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_long = reference;
+                stack[4].s_long = defaultValue;
+                interceptor.Invoke("ItemLongLong$$?$", "ItemLongLong(const QString&, const QString&, qint64&, qint64)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_long;
+                return;
+            }
+            public ItemLongLong(string _group, string _key, ref long reference) : this((Type) null) {
+                CreateProxy();
+                StackItem[] stack = new StackItem[4];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_long = reference;
+                interceptor.Invoke("ItemLongLong$$?", "ItemLongLong(const QString&, const QString&, qint64&)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_long;
+                return;
+            }
             /// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>        <short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
             public void ReadConfig(KConfig config) {
                 interceptor.Invoke("readConfig#", "readConfig(KConfig*)", typeof(void), typeof(KConfig), config);
@@ -579,13 +634,62 @@ namespace Kimono {
                 interceptor = new SmokeInvocation(typeof(ItemUInt), this);
             }
             /// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>        <short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
-            public ItemUInt(string _group, string _key, uint reference, uint defaultValue) : this((Type) null) {
+            public ItemUInt(string _group, string _key, ref int reference, uint defaultValue) : this((Type) null) {
                 CreateProxy();
-                interceptor.Invoke("ItemUInt$$$$", "ItemUInt(const QString&, const QString&, unsigned int&, unsigned int)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(uint), reference, typeof(uint), defaultValue);
+                StackItem[] stack = new StackItem[5];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_int = reference;
+                stack[4].s_uint = defaultValue;
+                interceptor.Invoke("ItemUInt$$$$", "ItemUInt(const QString&, const QString&, unsigned int&, unsigned int)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_int;
+                return;
             }
-            public ItemUInt(string _group, string _key, uint reference) : this((Type) null) {
+            public ItemUInt(string _group, string _key, ref int reference) : this((Type) null) {
                 CreateProxy();
-                interceptor.Invoke("ItemUInt$$$", "ItemUInt(const QString&, const QString&, unsigned int&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(uint), reference);
+                StackItem[] stack = new StackItem[4];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_int = reference;
+                interceptor.Invoke("ItemUInt$$$", "ItemUInt(const QString&, const QString&, unsigned int&)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_int;
+                return;
             }
             /// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>        <short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
             public void ReadConfig(KConfig config) {
@@ -636,8 +740,37 @@ namespace Kimono {
                 interceptor = new SmokeInvocation(typeof(ItemULongLong), this);
             }
             // KCoreConfigSkeleton::ItemULongLong* ItemULongLong(const QString& arg1,const QString& arg2,quint64& arg3,quint64 arg4); >>>> NOT CONVERTED
-            // KCoreConfigSkeleton::ItemULongLong* ItemULongLong(const QString& arg1,const QString& arg2,quint64& arg3); >>>> NOT CONVERTED
+            // void setMinValue(quint64 arg1); >>>> NOT CONVERTED
+            // void setMaxValue(quint64 arg1); >>>> NOT CONVERTED
             /// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>        <short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
+            public ItemULongLong(string _group, string _key, ref ulong reference) : this((Type) null) {
+                CreateProxy();
+                StackItem[] stack = new StackItem[4];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_ulong = reference;
+                interceptor.Invoke("ItemULongLong$$?", "ItemULongLong(const QString&, const QString&, quint64&)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_ulong;
+                return;
+            }
             /// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>        <short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
             public void ReadConfig(KConfig config) {
                 interceptor.Invoke("readConfig#", "readConfig(KConfig*)", typeof(void), typeof(KConfig), config);
@@ -663,13 +796,7 @@ namespace Kimono {
                 return (QVariant) interceptor.Invoke("maxValue", "maxValue() const", typeof(QVariant));
             }
             /// <remarks> @copydoc ItemInt.SetMinValue(qint32) </remarks>        <short>   @copydoc ItemInt.SetMinValue(qint32) </short>
-            public void SetMinValue(ulong arg1) {
-                interceptor.Invoke("setMinValue$", "setMinValue(quint64)", typeof(void), typeof(ulong), arg1);
-            }
             /// <remarks> @copydoc ItemInt.SetMaxValue(qint32) </remarks>        <short>   @copydoc ItemInt.SetMaxValue(qint32) </short>
-            public void SetMaxValue(ulong arg1) {
-                interceptor.Invoke("setMaxValue$", "setMaxValue(quint64)", typeof(void), typeof(ulong), arg1);
-            }
             ~ItemULongLong() {
                 interceptor.Invoke("~ItemULongLong", "~ItemULongLong()", typeof(void));
             }
@@ -687,13 +814,62 @@ namespace Kimono {
                 interceptor = new SmokeInvocation(typeof(ItemDouble), this);
             }
             /// <remarks> @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </remarks>        <short>   @copydoc KConfigSkeletonGenericItem.KConfigSkeletonGenericItem </short>
-            public ItemDouble(string _group, string _key, double reference, double defaultValue) : this((Type) null) {
+            public ItemDouble(string _group, string _key, ref double reference, double defaultValue) : this((Type) null) {
                 CreateProxy();
-                interceptor.Invoke("ItemDouble$$$$", "ItemDouble(const QString&, const QString&, double&, double)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(double), reference, typeof(double), defaultValue);
+                StackItem[] stack = new StackItem[5];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_double = reference;
+                stack[4].s_double = defaultValue;
+                interceptor.Invoke("ItemDouble$$$$", "ItemDouble(const QString&, const QString&, double&, double)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_double;
+                return;
             }
-            public ItemDouble(string _group, string _key, double reference) : this((Type) null) {
+            public ItemDouble(string _group, string _key, ref double reference) : this((Type) null) {
                 CreateProxy();
-                interceptor.Invoke("ItemDouble$$$", "ItemDouble(const QString&, const QString&, double&)", typeof(void), typeof(string), _group, typeof(string), _key, typeof(double), reference);
+                StackItem[] stack = new StackItem[4];
+    #if DEBUG
+                stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(_group);
+    #else
+                stack[1].s_class = (IntPtr) GCHandle.Alloc(_group);
+    #endif
+    #if DEBUG
+                stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(_key);
+    #else
+                stack[2].s_class = (IntPtr) GCHandle.Alloc(_key);
+    #endif
+                stack[3].s_double = reference;
+                interceptor.Invoke("ItemDouble$$$", "ItemDouble(const QString&, const QString&, double&)", stack);
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[1].s_class);
+    #else
+                ((GCHandle) stack[1].s_class).Free();
+    #endif
+    #if DEBUG
+                DebugGCHandle.Free((GCHandle) stack[2].s_class);
+    #else
+                ((GCHandle) stack[2].s_class).Free();
+    #endif
+                reference = stack[3].s_double;
+                return;
             }
             /// <remarks> @copydoc KConfigSkeletonItem.ReadConfig(KConfig) </remarks>        <short>   @copydoc KConfigSkeletonItem.ReadConfig(KConfig ) </short>
             public void ReadConfig(KConfig config) {
@@ -1061,12 +1237,8 @@ namespace Kimono {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KCoreConfigSkeleton), this);
         }
-        // KCoreConfigSkeleton::ItemLongLong* addItemLongLong(const QString& arg1,qint64& arg2,qint64 arg3,const QString& arg4); >>>> NOT CONVERTED
-        // KCoreConfigSkeleton::ItemLongLong* addItemLongLong(const QString& arg1,qint64& arg2,qint64 arg3); >>>> NOT CONVERTED
-        // KCoreConfigSkeleton::ItemLongLong* addItemLongLong(const QString& arg1,qint64& arg2); >>>> NOT CONVERTED
         // KCoreConfigSkeleton::ItemULongLong* addItemULongLong(const QString& arg1,quint64& arg2,quint64 arg3,const QString& arg4); >>>> NOT CONVERTED
         // KCoreConfigSkeleton::ItemULongLong* addItemULongLong(const QString& arg1,quint64& arg2,quint64 arg3); >>>> NOT CONVERTED
-        // KCoreConfigSkeleton::ItemULongLong* addItemULongLong(const QString& arg1,quint64& arg2); >>>> NOT CONVERTED
         /// <remarks>
         ///  Constructor.
         /// <param> name="configname" name of config file. If no name is given, the default
@@ -1351,14 +1523,68 @@ namespace Kimono {
         /// </param></remarks>        <return> The created item
         ///    </return>
         ///         <short>    Register an item of type quint32.</short>
-        public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, uint reference, uint defaultValue, string key) {
-            return (KCoreConfigSkeleton.ItemUInt) interceptor.Invoke("addItemUInt$$$$", "addItemUInt(const QString&, unsigned int&, unsigned int, const QString&)", typeof(KCoreConfigSkeleton.ItemUInt), typeof(string), name, typeof(uint), reference, typeof(uint), defaultValue, typeof(string), key);
+        public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, ref int reference, uint defaultValue, string key) {
+            StackItem[] stack = new StackItem[5];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_int = reference;
+            stack[3].s_uint = defaultValue;
+#if DEBUG
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(key);
+#else
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(key);
+#endif
+            interceptor.Invoke("addItemUInt$$$$", "addItemUInt(const QString&, unsigned int&, unsigned int, const QString&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_int;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[4].s_class);
+#else
+            ((GCHandle) stack[4].s_class).Free();
+#endif
+            return (KCoreConfigSkeleton.ItemUInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemUInt), stack[0].s_int);
         }
-        public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, uint reference, uint defaultValue) {
-            return (KCoreConfigSkeleton.ItemUInt) interceptor.Invoke("addItemUInt$$$", "addItemUInt(const QString&, unsigned int&, unsigned int)", typeof(KCoreConfigSkeleton.ItemUInt), typeof(string), name, typeof(uint), reference, typeof(uint), defaultValue);
+        public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, ref int reference, uint defaultValue) {
+            StackItem[] stack = new StackItem[4];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_int = reference;
+            stack[3].s_uint = defaultValue;
+            interceptor.Invoke("addItemUInt$$$", "addItemUInt(const QString&, unsigned int&, unsigned int)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_int;
+            return (KCoreConfigSkeleton.ItemUInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemUInt), stack[0].s_int);
         }
-        public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, uint reference) {
-            return (KCoreConfigSkeleton.ItemUInt) interceptor.Invoke("addItemUInt$$", "addItemUInt(const QString&, unsigned int&)", typeof(KCoreConfigSkeleton.ItemUInt), typeof(string), name, typeof(uint), reference);
+        public KCoreConfigSkeleton.ItemUInt AddItemUInt(string name, ref int reference) {
+            StackItem[] stack = new StackItem[3];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_int = reference;
+            interceptor.Invoke("addItemUInt$$", "addItemUInt(const QString&, unsigned int&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_int;
+            return (KCoreConfigSkeleton.ItemUInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemUInt), stack[0].s_int);
         }
         /// <remarks>
         ///  Register an item of type qint64.
@@ -1371,6 +1597,69 @@ namespace Kimono {
         /// </param></remarks>        <return> The created item
         ///    </return>
         ///         <short>    Register an item of type qint64.</short>
+        public KCoreConfigSkeleton.ItemLongLong AddItemLongLong(string name, ref long reference, long defaultValue, string key) {
+            StackItem[] stack = new StackItem[5];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_long = reference;
+            stack[3].s_long = defaultValue;
+#if DEBUG
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(key);
+#else
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(key);
+#endif
+            interceptor.Invoke("addItemLongLong$?$$", "addItemLongLong(const QString&, qint64&, qint64, const QString&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_long;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[4].s_class);
+#else
+            ((GCHandle) stack[4].s_class).Free();
+#endif
+            return (KCoreConfigSkeleton.ItemLongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemLongLong), stack[0].s_int);
+        }
+        public KCoreConfigSkeleton.ItemLongLong AddItemLongLong(string name, ref long reference, long defaultValue) {
+            StackItem[] stack = new StackItem[4];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_long = reference;
+            stack[3].s_long = defaultValue;
+            interceptor.Invoke("addItemLongLong$?$", "addItemLongLong(const QString&, qint64&, qint64)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_long;
+            return (KCoreConfigSkeleton.ItemLongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemLongLong), stack[0].s_int);
+        }
+        public KCoreConfigSkeleton.ItemLongLong AddItemLongLong(string name, ref long reference) {
+            StackItem[] stack = new StackItem[3];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_long = reference;
+            interceptor.Invoke("addItemLongLong$?", "addItemLongLong(const QString&, qint64&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_long;
+            return (KCoreConfigSkeleton.ItemLongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemLongLong), stack[0].s_int);
+        }
         /// <remarks>
         ///  Register an item of type quint64
         /// <param> name="name" Name used to identify this setting. Names must be unique.
@@ -1382,6 +1671,23 @@ namespace Kimono {
         /// </param></remarks>        <return> The created item
         ///    </return>
         ///         <short>    Register an item of type quint64 </short>
+        public KCoreConfigSkeleton.ItemULongLong AddItemULongLong(string name, ref ulong reference) {
+            StackItem[] stack = new StackItem[3];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_ulong = reference;
+            interceptor.Invoke("addItemULongLong$?", "addItemULongLong(const QString&, quint64&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_ulong;
+            return (KCoreConfigSkeleton.ItemULongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemULongLong), stack[0].s_int);
+        }
         /// <remarks>
         ///  Register an item of type double.
         /// <param> name="name" Name used to identify this setting. Names must be unique.
@@ -1393,14 +1699,68 @@ namespace Kimono {
         /// </param></remarks>        <return> The created item
         ///    </return>
         ///         <short>    Register an item of type double.</short>
-        public KCoreConfigSkeleton.ItemDouble AddItemDouble(string name, double reference, double defaultValue, string key) {
-            return (KCoreConfigSkeleton.ItemDouble) interceptor.Invoke("addItemDouble$$$$", "addItemDouble(const QString&, double&, double, const QString&)", typeof(KCoreConfigSkeleton.ItemDouble), typeof(string), name, typeof(double), reference, typeof(double), defaultValue, typeof(string), key);
+        public KCoreConfigSkeleton.ItemDouble AddItemDouble(string name, ref double reference, double defaultValue, string key) {
+            StackItem[] stack = new StackItem[5];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_double = reference;
+            stack[3].s_double = defaultValue;
+#if DEBUG
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(key);
+#else
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(key);
+#endif
+            interceptor.Invoke("addItemDouble$$$$", "addItemDouble(const QString&, double&, double, const QString&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_double;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[4].s_class);
+#else
+            ((GCHandle) stack[4].s_class).Free();
+#endif
+            return (KCoreConfigSkeleton.ItemDouble) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemDouble), stack[0].s_int);
         }
-        public KCoreConfigSkeleton.ItemDouble AddItemDouble(string name, double reference, double defaultValue) {
-            return (KCoreConfigSkeleton.ItemDouble) interceptor.Invoke("addItemDouble$$$", "addItemDouble(const QString&, double&, double)", typeof(KCoreConfigSkeleton.ItemDouble), typeof(string), name, typeof(double), reference, typeof(double), defaultValue);
+        public KCoreConfigSkeleton.ItemDouble AddItemDouble(string name, ref double reference, double defaultValue) {
+            StackItem[] stack = new StackItem[4];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_double = reference;
+            stack[3].s_double = defaultValue;
+            interceptor.Invoke("addItemDouble$$$", "addItemDouble(const QString&, double&, double)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_double;
+            return (KCoreConfigSkeleton.ItemDouble) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemDouble), stack[0].s_int);
         }
-        public KCoreConfigSkeleton.ItemDouble AddItemDouble(string name, double reference) {
-            return (KCoreConfigSkeleton.ItemDouble) interceptor.Invoke("addItemDouble$$", "addItemDouble(const QString&, double&)", typeof(KCoreConfigSkeleton.ItemDouble), typeof(string), name, typeof(double), reference);
+        public KCoreConfigSkeleton.ItemDouble AddItemDouble(string name, ref double reference) {
+            StackItem[] stack = new StackItem[3];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(name);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(name);
+#endif
+            stack[2].s_double = reference;
+            interceptor.Invoke("addItemDouble$$", "addItemDouble(const QString&, double&)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+            reference = stack[2].s_double;
+            return (KCoreConfigSkeleton.ItemDouble) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemDouble), stack[0].s_int);
         }
         /// <remarks>
         ///  Register an item of type QRect.

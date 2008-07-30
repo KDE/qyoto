@@ -136,8 +136,8 @@ namespace Kimono {
         ///  This nice method will kill all 0 bytes (or double bytes)
         ///  and remember if this was a binary or not ;)
         ///      </remarks>        <short>    This nice method will kill all 0 bytes (or double bytes)  and remember if this was a binary or not ;)      </short>
-        protected bool ProcessNull(string data, int length) {
-            return (bool) interceptor.Invoke("processNull$$", "processNull(char*, int)", typeof(bool), typeof(string), data, typeof(int), length);
+        protected bool ProcessNull(Pointer<sbyte> data, int length) {
+            return (bool) interceptor.Invoke("processNull$$", "processNull(char*, int)", typeof(bool), typeof(Pointer<sbyte>), data, typeof(int), length);
         }
         /// <remarks>
         ///  Check if we are really utf8. Taken from kate
