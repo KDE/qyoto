@@ -407,7 +407,7 @@ public class KWrite : KParts.MainWindow {
     private void ReadProperties(KSharedConfig config) {
         ReadConfig(config);
 
-        KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(m_view);
+        KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface>(m_view);
         if (iface != null)
             iface.ReadSessionConfig(new KConfigGroup(config, "General Options"));
     }
@@ -418,7 +418,7 @@ public class KWrite : KParts.MainWindow {
         KConfigGroup group = new KConfigGroup(config, "");
         group.WriteEntry("DocumentNumber", docList.IndexOf(m_view.Document()) + 1);
 
-        KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(m_view);
+        KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface>(m_view);
         if (iface != null) {
             KConfigGroup cg = new KConfigGroup( config, "General Options" );
             iface.WriteSessionConfig(cg);
@@ -434,7 +434,7 @@ public class KWrite : KParts.MainWindow {
             KConfigGroup cg = new KConfigGroup(config, buf);
             KTextEditor.Document doc = docList[z - 1];
 
-            KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(doc);
+            KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface>(doc);
             if (iface != null)
                 iface.WriteSessionConfig(cg);
             z++;
@@ -482,7 +482,7 @@ public class KWrite : KParts.MainWindow {
             KConfigGroup cg = new KConfigGroup(config, buf);
             doc = editor.CreateDocument(null);
 
-            KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface >(doc);
+            KTextEditor.SessionConfigInterface iface = qobject_cast<KTextEditor.SessionConfigInterface>(doc);
             if (iface != null)
                 iface.ReadSessionConfig(cg);
             docList.Add(doc);
@@ -580,6 +580,8 @@ public class KWrite : KParts.MainWindow {
         m_modeLabel.Text = document.Mode();
     }
 
+    private static KApplication kapp = null;
+
     public static int Main(String[] argv) {
         KAboutData aboutData = new KAboutData(  "kwrite-sharp", "Simple Text Editor",
                                                 KDE.Ki18n("KWrite"),
@@ -634,12 +636,12 @@ public class KWrite : KParts.MainWindow {
         options.Add("+[URL]", KDE.Ki18n("Document to open"));
         KCmdLineArgs.AddCmdLineOptions(options);
 
-        KApplication a = new KApplication();
+        kapp = new KApplication();
 
         KGlobal.Locale().InsertCatalog("katepart4");
         KCmdLineArgs args = KCmdLineArgs.ParsedArgs();
 
-        if (a.IsSessionRestored()) {
+        if (kapp.IsSessionRestored()) {
             KWrite.Restore();
         } else {
             bool nav = false;

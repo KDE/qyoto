@@ -1,3 +1,10 @@
+2008-07-30  Richard Dale  <richard.j.dale@gmail.com>
+
+* When the KApplication for the kwrite example was created, it was assigned
+  to a local variable 'a' in the Main() method. However, mono 1.2.4 garbage
+  collected it before the Main() method was exited. It a static variable in
+  the KWrite class is used, the problem goes away.
+
 2008-07-26  Arno Rehn  <arno@arnorehn.de>
 
 * Use qobject_cast in the KWrite example.
