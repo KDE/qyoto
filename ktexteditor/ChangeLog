@@ -1,3 +1,10 @@
+2008-07-31  Arno Rehn  <arno@arnorehn.de>
+
+* KWrite example:
+  Implement the IDisposable interface and do the cleanup there. The
+  finalizer of KWrite is called too late by the GC - the underlying
+  C++ instance has already been destroyed by then.
+
 2008-07-30  Richard Dale  <richard.j.dale@gmail.com>
 
 * When the KApplication for the kwrite example was created, it was assigned

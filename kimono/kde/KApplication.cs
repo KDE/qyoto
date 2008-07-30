@@ -63,10 +63,12 @@ namespace Kimono {
         public KApplication(bool GUIenabled) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("KApplication$", "KApplication(bool)", typeof(void), typeof(bool), GUIenabled);
+            qApp = this;
         }
         public KApplication() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("KApplication", "KApplication()", typeof(void));
+            qApp = this;
         }
         /// <remarks>
         ///  Returns the application session config object.
@@ -238,6 +240,7 @@ namespace Kimono {
         public KApplication(bool GUIenabled, KComponentData cData) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("KApplication$#", "KApplication(bool, const KComponentData&)", typeof(void), typeof(bool), GUIenabled, typeof(KComponentData), cData);
+            qApp = this;
         }
         ~KApplication() {
             interceptor.Invoke("~KApplication", "~KApplication()", typeof(void));

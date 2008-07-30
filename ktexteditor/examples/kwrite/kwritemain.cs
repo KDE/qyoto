@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using Qyoto;
 using Kimono;
 
-public class KWrite : KParts.MainWindow {
+public class KWrite : KParts.MainWindow, IDisposable {
     private KTextEditor.View m_view = null;
 
     private KRecentFilesAction m_recentFiles = null;
@@ -114,15 +114,23 @@ public class KWrite : KParts.MainWindow {
         Show();
     }
 
-    ~KWrite() {
+    private bool isDisposed = false;
+
+    public new void Dispose() {
+        if (isDisposed) return;
+        isDisposed = true;
         winList.Remove(this);
 
         if (m_view.Document().Views().Count == 1) {
             docList.Remove(m_view.Document());
-            // m_view.Document().Dispose();
+            m_view.Document().Dispose();
         }
 
         KGlobal.Config().Sync();
+    }
+
+    ~KWrite() {
+        Dispose();
     }
 
     private void SetupActions() {
@@ -217,11 +225,14 @@ public class KWrite : KParts.MainWindow {
 
     // is closing the window wanted by user?
     protected override bool QueryClose() {
-        if (m_view.Document().Views().Count > 1)
+        if (m_view.Document().Views().Count > 1) {
+            Dispose();
             return true;
+        }
 
         if (m_view.Document().QueryClose()) {
-            // WriteConfig();
+            WriteConfig();
+            Dispose();
             return true;
         }
 
@@ -580,8 +591,6 @@ public class KWrite : KParts.MainWindow {
         m_modeLabel.Text = document.Mode();
     }
 
-    private static KApplication kapp = null;
-
     public static int Main(String[] argv) {
         KAboutData aboutData = new KAboutData(  "kwrite-sharp", "Simple Text Editor",
                                                 KDE.Ki18n("KWrite"),
@@ -636,7 +645,7 @@ public class KWrite : KParts.MainWindow {
         options.Add("+[URL]", KDE.Ki18n("Document to open"));
         KCmdLineArgs.AddCmdLineOptions(options);
 
-        kapp = new KApplication();
+        KApplication kapp = new KApplication();
 
         KGlobal.Locale().InsertCatalog("katepart4");
         KCmdLineArgs args = KCmdLineArgs.ParsedArgs();
