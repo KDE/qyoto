@@ -320,10 +320,10 @@ public class KWrite : KParts.MainWindow, IDisposable {
     }
 
     protected override void DragEnterEvent(QDragEnterEvent e) {
-//        KUrl.List uriList = KUrl.List.FromMimeData(e.MimeData());
-//        if (!uriList.IsEmpty()) {
-//            e.Accept();
-//        }
+       KUrl.List uriList = KUrl.List.FromMimeData(e.MimeData());
+       if (uriList.Count != 0) {
+           e.Accept();
+       }
     }
 
     protected override void DropEvent(QDropEvent e) {
@@ -332,15 +332,15 @@ public class KWrite : KParts.MainWindow, IDisposable {
 
     [Q_SLOT("SlotDropEvent(QDropEvent*)")]
     public void SlotDropEvent(QDropEvent e) {
-//        KUrl.List textlist = KUrl.List.FromMimeData(e.mimeData());
+       KUrl.List textlist = KUrl.List.FromMimeData(e.MimeData());
 
-//        if (textlist.IsEmpty()) {
-//            return;
-//        }
+       if (textlist.Count == 0) {
+           return;
+       }
 
-//        for (KUrl.List.Iterator i=textlist.begin(); i != textlist.end(); ++i) {
-//            SlotOpen(i);
-//        }
+       foreach (KUrl url in textlist) {
+           SlotOpen(url);
+       }
     }
 
     [Q_SLOT()]

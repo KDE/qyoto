@@ -1,5 +1,5 @@
 /***************************************************************************
-                        soprano.cpp  -  description
+                        kimono.cpp  -  description
                              -------------------
     begin                : Mon Sep 10 2007
     copyright            : (C) 2007 by Arno Rehn

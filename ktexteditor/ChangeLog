@@ -1,3 +1,7 @@
+2008-08-03  Arno Rehn  <arno@arnorehn.de>
+
+* Make use of KUrl.List in the KWrite example. This makes drag&drop work.
+
 2008-07-31  Arno Rehn  <arno@arnorehn.de>
 
 * KWrite example:
