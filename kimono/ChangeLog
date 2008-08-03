@@ -1,3 +1,7 @@
+2008-08-03  Arno Rehn  <arno@arnorehn.de>
+
+	* Implemented KUrl.List.
+
 2008-07-31  Arno Rehn  <arno@arnorehn.de>
 
 	* Assign a new KApplication instance to the qApp global variable.
