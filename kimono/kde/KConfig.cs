@@ -78,7 +78,7 @@ namespace Kimono {
         ///  @arg file the file to be parsed
         ///  @arg backend the backend to load
         ///  @arg resourceType where to look for the file if an absolute path is not provided
-        /// </remarks>        <short>    Creates a KConfig oject using the specified backend.</short>
+        /// </remarks>        <short>   </short>
         public KConfig(string file, string backend, string resourceType) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("KConfig$$$", "KConfig(const QString&, const QString&, const char*)", typeof(void), typeof(string), file, typeof(string), backend, typeof(string), resourceType);

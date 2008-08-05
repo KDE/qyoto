@@ -150,9 +150,33 @@ namespace KIO {
         public static KIO.Slave GetConnectedSlave(KUrl url) {
             return (KIO.Slave) staticInterceptor.Invoke("getConnectedSlave#", "getConnectedSlave(const KUrl&)", typeof(KIO.Slave), typeof(KUrl), url);
         }
+        /// <remarks>
+        ///  Uses <code>slave</code> to do <code>job.</code>
+        ///  This function should be called immediately after creating a Job.
+        /// <param> name="slave" The slave to use. The slave must have been obtained
+        ///               with a call to getConnectedSlave and must not
+        ///               be currently assigned to any other job.
+        /// </param><param> name="job" The job to do.
+        /// </param></remarks>        <return> true is successful, false otherwise.
+        /// </return>
+        ///         <short>    Uses <code>slave</code> to do <code>job.</code></short>
+        ///         <see> getConnectedSlave</see>
+        ///         <see> disconnectSlave</see>
+        ///         <see> slaveConnected</see>
+        ///         <see> slaveError</see>
         public static bool AssignJobToSlave(KIO.Slave slave, KIO.SimpleJob job) {
             return (bool) staticInterceptor.Invoke("assignJobToSlave##", "assignJobToSlave(KIO::Slave*, KIO::SimpleJob*)", typeof(bool), typeof(KIO.Slave), slave, typeof(KIO.SimpleJob), job);
         }
+        /// <remarks>
+        ///  Disconnects <code>slave.</code>
+        /// <param> name="slave" The slave to disconnect. The slave must have been
+        ///               obtained with a call to getConnectedSlave
+        ///               and must not be assigned to any job.
+        /// </param></remarks>        <return> true is successful, false otherwise.
+        /// </return>
+        ///         <short>    Disconnects <code>slave.</code></short>
+        ///         <see> getConnectedSlave</see>
+        ///         <see> assignJobToSlave</see>
         public static bool DisconnectSlave(KIO.Slave slave) {
             return (bool) staticInterceptor.Invoke("disconnectSlave#", "disconnectSlave(KIO::Slave*)", typeof(bool), typeof(KIO.Slave), slave);
         }

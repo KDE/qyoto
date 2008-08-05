@@ -17,7 +17,7 @@ namespace Kimono {
     ///  Please note that QSystemTrayIcon.ShowMessage(..) should not be
     ///  used for KDE application because the popup message has no KDE standard
     ///  look & feel and cannot be controlled by KDE configurations. 
-    ///  Use KNotify or KPassivePopup instead.
+    ///  Use KNotification or KPassivePopup instead.
     ///  See <see cref="IKSystemTrayIconSignals"></see> for signals emitted by KSystemTrayIcon
     /// </remarks>        <author> Matthias Ettrich <ettrich@kde.org>
     /// </author>

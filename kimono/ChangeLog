@@ -1,3 +1,10 @@
+2008-08-05  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Make KApplication and KUniqueApplication partial classes and add the
+	  code to set the 'qApp' global variable in *Extras.cs files instead of
+	  generating it in the source code generator as it's more easily
+	  maintained that way.
+
 2008-08-03  Arno Rehn  <arno@arnorehn.de>
 
 	* Implemented KUrl.List.

@@ -36,6 +36,20 @@ namespace Kimono {
             interceptor.Invoke("KKeySequenceWidget", "KKeySequenceWidget()", typeof(void));
         }
         /// <remarks>
+        ///  Set if a key sequence should be checked against kde's standard
+        ///  shortcuts (@see KStandardShortcut).
+        ///  It is a good idea to enable this when caputing a key sequence for a
+        ///  global shortcut. The default is not to check against standard
+        ///  shortcuts.
+        /// <param> name="check" True . Check against standard shortcuts
+        /// </param></remarks>        <short>    Set if a key sequence should be checked against kde's standard  shortcuts (@see KStandardShortcut).</short>
+        public bool CheckAgainstStandardShortcuts() {
+            return (bool) interceptor.Invoke("checkAgainstStandardShortcuts", "checkAgainstStandardShortcuts() const", typeof(bool));
+        }
+        public void SetCheckAgainstStandardShortcuts(bool check) {
+            interceptor.Invoke("setCheckAgainstStandardShortcuts$", "setCheckAgainstStandardShortcuts(bool)", typeof(void), typeof(bool), check);
+        }
+        /// <remarks>
         ///  This only applies to user input, not to setShortcut().
         ///  Set whether to accept "plain" keys without modifiers (like Ctrl, Alt, Meta).
         ///  Plain keys by our definition include letter and symbol keys and
@@ -44,6 +58,15 @@ namespace Kimono {
         /// 	 </remarks>        <short>    This only applies to user input, not to setShortcut().</short>
         public void SetModifierlessAllowed(bool allow) {
             interceptor.Invoke("setModifierlessAllowed$", "setModifierlessAllowed(bool)", typeof(void), typeof(bool), allow);
+        }
+        /// <remarks>
+        ///  Checks whether the key sequence <b>seq</b> is available to grab.
+        ///  The sequence is checked under the same rules as if it has been typed by
+        ///  the user. This method is useful if you get key sequences from another
+        ///  input source and want to check if it is save to set them.
+        /// </remarks>        <short>    Checks whether the key sequence <b>seq</b> is available to grab.</short>
+        public bool IsKeySequenceAvailable(QKeySequence seq) {
+            return (bool) interceptor.Invoke("isKeySequenceAvailable#", "isKeySequenceAvailable(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), seq);
         }
         /// <remarks>
         /// </remarks>        <short>   </short>
@@ -66,11 +89,15 @@ namespace Kimono {
         }
         /// <remarks>
         ///  Set a list of action collections to check against for conflictuous shortcut.
-        ///  If there is a conflictuous shortcut with a KAction, and its shortcut can be configured
-        ///  (KAction.IsShortcutConfigurable() returns true) the user will be prompted whether to steal
-        ///  the shortcut from this action.
-        ///  Global shortcuts are automatically checked for conflicts
-        ///  Don't forget to call applyStealShortcut to actually steal the shortcut.
+        ///  If a KAction with a conflicting shortcut is found inside this list and
+        ///  its shortcut can be configured (KAction.IsShortcutConfigurable()
+        ///  returns true) the user will be prompted whether to steal the shortcut
+        ///  from this action.
+        ///  Global shortcuts are automatically checked for conflicts. For checking
+        ///  against KStandardShortcuts - @see checkAgainstStandardShortcuts().
+        ///  Don't forget to call applyStealShortcut to actually steal the shortcut
+        ///  and read it's documentation for some limitation when handling global
+        ///  shortcuts.
         /// </remarks>        <short>    Set a list of action collections to check against for conflictuous shortcut.</short>
         public void SetCheckActionCollections(List<KActionCollection> actionCollections) {
             interceptor.Invoke("setCheckActionCollections?", "setCheckActionCollections(const QList<KActionCollection*>&)", typeof(void), typeof(List<KActionCollection>), actionCollections);
@@ -107,9 +134,13 @@ namespace Kimono {
         }
         /// <remarks>
         ///  Actually remove the shortcut that the user wanted to steal, from the
-        ///  action that was using it.
-        ///  To be called before you apply your changes.
-        ///  No shortcuts are stolen until this function is called.
+        ///  action that was using it. This only applies to actions provided to us
+        ///  by setCheckActionCollections() and setCheckActionList().
+        ///  Global and Standard Shortcuts have to be stolen immediately when the
+        ///  user gives his consent (technical reasons). That means those changes
+        ///  will be active even if you never call applyStealShortcut().
+        ///  To be called before you apply your changes. No local shortcuts are
+        ///  stolen until this function is called.
         /// 	 </remarks>        <short>    Actually remove the shortcut that the user wanted to steal, from the  action that was using it.</short>
         [Q_SLOT("void applyStealShortcut()")]
         public void ApplyStealShortcut() {

@@ -102,7 +102,7 @@ namespace Kimono {
         }
         /// <remarks>
         ///  Save the changes.
-        ///  Before saving the changes are commited. This saves the actions to disk.
+        ///  Before saving the changes are committed. This saves the actions to disk.
         ///  Any KActionCollection objects with the xmlFile() value set will be
         ///  written to an XML file.  All other will be written to the application's
         ///  rc file.
