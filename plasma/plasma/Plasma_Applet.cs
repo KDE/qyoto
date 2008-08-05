@@ -76,6 +76,8 @@ namespace Plasma {
         public bool ShouldConserveResources {
             get { return (bool) interceptor.Invoke("shouldConserveResources", "shouldConserveResources()", typeof(bool)); }
         }
+        // void initExtenderItem(Plasma::ExtenderItem* arg1); >>>> NOT CONVERTED
+        // Plasma::Extender* extender(); >>>> NOT CONVERTED
         /// <remarks>
         /// </remarks>        <return> the id of this applet
         ///          </return>
@@ -461,6 +463,22 @@ namespace Plasma {
             interceptor.Invoke("init", "init()", typeof(void));
         }
         /// <remarks>
+        ///  Get's called when and extender item has to be initialized after a plasma restart. If you
+        ///  create ExtenderItems in your applet, you should implement this function to again create
+        ///  the widget that should be shown in this extender item. This function might look something
+        ///  like this:
+        ///  @code
+        ///  SuperCoolWidget widget = new SuperCoolWidget();
+        ///  dataEngine("engine").ConnectSource(item.Config("dataSourceName"), widget);
+        ///  item.SetWidget(widget);
+        ///  @endcode
+        ///  You can also add one or more custom qactions to this extender item in this function.
+        ///          </remarks>        <short>    Get's called when and extender item has to be initialized after a plasma restart.</short>
+        /// <remarks>
+        /// </remarks>        <return> the extender this applet has.
+        ///          </return>
+        ///         <short>   </short>
+        /// <remarks>
         ///  This constructor is to be used with the plugin loading systems
         ///  found in KPluginInfo and KService. The argument list is expected
         ///  to have two elements: the KService service ID for the desktop entry
@@ -785,6 +803,11 @@ namespace Plasma {
         ///          </remarks>        <short>    Emitted whenever the applet makes a geometry change, so that views  can coordinate themselves with these changes if they desire.</short>
         [Q_SIGNAL("void geometryChanged()")]
         void GeometryChanged();
+        /// <remarks>
+        ///  Emitted by Applet subclasses when they change a sizeHint and wants to announce the change
+        ///          </remarks>        <short>    Emitted by Applet subclasses when they change a sizeHint and wants to announce the change          </short>
+        [Q_SIGNAL("void sizeHintChanged(Qt::SizeHint)")]
+        void SizeHintChanged(Qt.SizeHint which);
         /// <remarks>
         ///  Emitted when an applet has changed values in its configuration
         ///  and wishes for them to be saved at the next save point. As this implies

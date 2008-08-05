@@ -187,13 +187,23 @@ namespace Plasma {
         /// <remarks>
         ///  Paints the loaded SVG with the elements that represents the border
         ///  @arg painter the QPainter to use
-        ///  @arg rect the exposed rect to draw into
-        ///          </remarks>        <short>    Paints the loaded SVG with the elements that represents the border  @arg painter the QPainter to use  @arg rect the exposed rect to draw into          </short>
-        public void PaintPanel(QPainter painter, QRectF rect, QPointF pos) {
-            interceptor.Invoke("paintPanel###", "paintPanel(QPainter*, const QRectF&, const QPointF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect, typeof(QPointF), pos);
+        ///  @arg target the target rectangle on the paint device
+        ///  @arg source the portion rectangle of the source image
+        ///          </remarks>        <short>    Paints the loaded SVG with the elements that represents the border  @arg painter the QPainter to use  @arg target the target rectangle on the paint device  @arg source the portion rectangle of the source image          </short>
+        public void PaintPanel(QPainter painter, QRectF target, QRectF source) {
+            interceptor.Invoke("paintPanel###", "paintPanel(QPainter*, const QRectF&, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target, typeof(QRectF), source);
         }
-        public void PaintPanel(QPainter painter, QRectF rect) {
-            interceptor.Invoke("paintPanel##", "paintPanel(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect);
+        /// <remarks>
+        ///  Paints the loaded SVG with the elements that represents the border
+        ///  This is an overloaded member provided for convenience
+        ///  @arg painter the QPainter to use
+        ///  @arg pos where to paint the svg
+        ///          </remarks>        <short>    Paints the loaded SVG with the elements that represents the border  This is an overloaded member provided for convenience  @arg painter the QPainter to use  @arg pos where to paint the svg          </short>
+        public void PaintPanel(QPainter painter, QPointF pos) {
+            interceptor.Invoke("paintPanel##", "paintPanel(QPainter*, const QPointF&)", typeof(void), typeof(QPainter), painter, typeof(QPointF), pos);
+        }
+        public void PaintPanel(QPainter painter) {
+            interceptor.Invoke("paintPanel#", "paintPanel(QPainter*)", typeof(void), typeof(QPainter), painter);
         }
         ~PanelSvg() {
             interceptor.Invoke("~PanelSvg", "~PanelSvg()", typeof(void));

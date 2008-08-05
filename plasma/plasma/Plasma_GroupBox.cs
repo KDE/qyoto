@@ -21,8 +21,8 @@ namespace Plasma {
         }
         [Q_PROPERTY("QString", "stylesheet")]
         public string Stylesheet {
-            get { return (string) interceptor.Invoke("stylesheet", "stylesheet()", typeof(string)); }
-            set { interceptor.Invoke("setStylesheet$", "setStylesheet(QString)", typeof(void), typeof(string), value); }
+            get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
+            set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
         }
         [Q_PROPERTY("QGroupBox*", "nativeWidget")]
         public QGroupBox NativeWidget {

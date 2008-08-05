@@ -288,7 +288,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Adds an already constructed data source. The DataEngine takes
-        ///  ownership of the DataContainer object.
+        ///  ownership of the DataContainer object. The objectName of the source
+        ///  is used for the source name.
         /// <param> name="source" the DataContainer to add to the DataEngine
         /// </param></remarks>        <short>    Adds an already constructed data source.</short>
         protected void AddSource(Plasma.DataContainer source) {

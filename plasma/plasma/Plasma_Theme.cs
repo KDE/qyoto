@@ -31,6 +31,8 @@ namespace Plasma {
             TextColor = 0,
             HighlightColor = 1,
             BackgroundColor = 2,
+            ButtonTextColor = 4,
+            ButtonBackgroundColor = 8,
         }
         public enum FontRole {
             DefaultFont = 0,

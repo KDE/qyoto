@@ -113,6 +113,7 @@ namespace Plasma {
     ///  Defines the aspect ratio used when scaling an applet
     ///  </remarks>        <short>    Defines the aspect ratio used when scaling an applet  </short>
     public enum AspectRatioMode {
+        InvalidAspectRatioMode = -1,
         IgnoreAspectRatio = 0,
         KeepAspectRatio = 1,
         Square = 2,
@@ -164,6 +165,25 @@ namespace Plasma {
         /// </param></remarks>        <short>    Converts a location to a direction.</short>
         public static Plasma.Direction LocationToDirection(Plasma.Location location) {
             return (Plasma.Direction) staticInterceptor.Invoke("locationToDirection$", "locationToDirection(Plasma::Location)", typeof(Plasma.Direction), typeof(Plasma.Location), location);
+        }
+        /// <remarks>
+        ///  Reccomended position for a popup window like a menu or a tooltip
+        ///  given its size
+        /// <param> name="s" size of the popup
+        /// </param></remarks>        <return> reccomended position
+        ///  </return>
+        ///         <short>    Reccomended position for a popup window like a menu or a tooltip  given its size </short>
+        public static QPoint PopupPosition(IQGraphicsItem item, QSize s) {
+            return (QPoint) staticInterceptor.Invoke("popupPosition##", "popupPosition(const QGraphicsItem*, const QSize&)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), s);
+        }
+        /// <remarks>
+        ///  Returns the most appropriate QGraphicsView for the item.
+        ///  @arg item the QGraphicsItem to locate a view for
+        /// </remarks>        <return> pointer to a view, or 0 if none was found
+        ///  </return>
+        ///         <short>    Returns the most appropriate QGraphicsView for the item.</short>
+        public static QGraphicsView ViewFor(IQGraphicsItem item) {
+            return (QGraphicsView) staticInterceptor.Invoke("viewFor#", "viewFor(const QGraphicsItem*)", typeof(QGraphicsView), typeof(IQGraphicsItem), item);
         }
         /// <remarks>
         ///  @arg types a set of ComponentTypes flags for which to look up the

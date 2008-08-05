@@ -60,6 +60,15 @@ namespace Plasma {
         public KConfigSkeletonItem FindItem(string group, string key) {
             return (KConfigSkeletonItem) interceptor.Invoke("findItem$$", "findItem(const QString&, const QString&)", typeof(KConfigSkeletonItem), typeof(string), group, typeof(string), key);
         }
+        /// <remarks>
+        ///  Check to see if a group exists
+        /// <param> name="group" the name of the group to check for
+        /// </param></remarks>        <return> true if the group exists, or false if it does not
+        ///      </return>
+        ///         <short>    Check to see if a group exists </short>
+        public bool HasGroup(string group) {
+            return (bool) interceptor.Invoke("hasGroup$", "hasGroup(const QString&) const", typeof(bool), typeof(string), group);
+        }
         ~ConfigXml() {
             interceptor.Invoke("~ConfigXml", "~ConfigXml()", typeof(void));
         }

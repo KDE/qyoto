@@ -1,3 +1,8 @@
+2008-08-05  Richard Dale  <richard.j.dale@gmail.com>
+* Add some new plasma classes Plasma::Frame, Plasma::PaintUtils, 
+  Plasma::PopupApplet, Plasma::Slider, Plasma::TabBar and 
+  Plasma::ToolTipManager
+
 2008-07-08  Arno Rehn  <arno@arnorehn.de>
 * Put the PlasmaScriptengineKimono.* classes all in one assembly.
 

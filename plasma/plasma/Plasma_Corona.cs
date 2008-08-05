@@ -79,6 +79,22 @@ namespace Plasma {
             return (Plasma.Containment) interceptor.Invoke("containmentForScreen$", "containmentForScreen(int) const", typeof(Plasma.Containment), typeof(int), screen);
         }
         /// <remarks>
+        ///  Adds a widget in the topleft quadrant in the scene. Widgets in the topleft quadrant are
+        ///  normally never shown unless you specifically aim a view at it, which makes it ideal for
+        ///  toplevel views etc.
+        /// <param> name="widget" the widget to add.
+        ///      </param></remarks>        <short>    Adds a widget in the topleft quadrant in the scene.</short>
+        public void AddOffscreenWidget(QGraphicsWidget widget) {
+            interceptor.Invoke("addOffscreenWidget#", "addOffscreenWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
+        }
+        /// <remarks>
+        ///  Removes a widget from the topleft quadrant in the scene.
+        /// <param> name="widget" the widget to remove.
+        ///      </param></remarks>        <short>    Removes a widget from the topleft quadrant in the scene.</short>
+        public void RemoveOffscreenWidget(QGraphicsWidget widget) {
+            interceptor.Invoke("removeOffscreenWidget#", "removeOffscreenWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
+        }
+        /// <remarks>
         ///  Initializes the layout from a config file. This will first clear any existing
         ///  Containments, load a layout from the requested configuration file, request the
         ///  default layout if needed and update immutability.
@@ -120,13 +136,6 @@ namespace Plasma {
             interceptor.Invoke("saveLayout", "saveLayout() const", typeof(void));
         }
         /// <remarks>
-        ///  Removes a given containment from the corona
-        ///      </remarks>        <short>    Removes a given containment from the corona      </short>
-        [Q_SLOT("void destroyContainment(Containment*)")]
-        public void DestroyContainment(Plasma.Containment containment) {
-            interceptor.Invoke("destroyContainment#", "destroyContainment(Plasma::Containment*)", typeof(void), typeof(Plasma.Containment), containment);
-        }
-        /// <remarks>
         /// </remarks>        <return> The type of immutability of this Corona
         ///      </return>
         ///         <short>   </short>
@@ -156,6 +165,25 @@ namespace Plasma {
         [SmokeMethod("loadDefaultLayout()")]
         protected virtual void LoadDefaultLayout() {
             interceptor.Invoke("loadDefaultLayout", "loadDefaultLayout()", typeof(void));
+        }
+        /// <remarks>
+        ///  Loads a containment with delayed initialization, primarily useful
+        ///  for implementations of loadDefaultLayout. The caller is responsible
+        ///  for all initializating, saving and notification of a new containment.
+        /// <param> name="name" the plugin name for the containment, as given by
+        ///         KPluginInfo.PluginName(). If an empty string is passed in, the defalt
+        ///         containment plugin will be used (usually DesktopContainment). If the
+        ///         string literal "null" is passed in, then no plugin will be loaded and
+        ///         a simple Containment object will be created instead.
+        /// </param><param> name="args" argument list to pass to the containment
+        /// </param></remarks>        <return> a pointer to the containment on success, or 0 on failure
+        /// </return>
+        ///         <short>    Loads a containment with delayed initialization, primarily useful  for implementations of loadDefaultLayout.</short>
+        protected Plasma.Containment AddContainmentDelayed(string name, List<QVariant> args) {
+            return (Plasma.Containment) interceptor.Invoke("addContainmentDelayed$?", "addContainmentDelayed(const QString&, const QList<QVariant>&)", typeof(Plasma.Containment), typeof(string), name, typeof(List<QVariant>), args);
+        }
+        protected Plasma.Containment AddContainmentDelayed(string name) {
+            return (Plasma.Containment) interceptor.Invoke("addContainmentDelayed$", "addContainmentDelayed(const QString&)", typeof(Plasma.Containment), typeof(string), name);
         }
         [SmokeMethod("dragEnterEvent(QGraphicsSceneDragDropEvent*)")]
         protected override void DragEnterEvent(QGraphicsSceneDragDropEvent arg1) {

@@ -35,6 +35,10 @@ namespace Plasma {
             public enum StyleOptionVersion {
                 Version = QStyleOptionGraphicsItem.StyleOptionVersion.Version+1,
             }
+            public Plasma.View View {
+                get { return (Plasma.View) interceptor.Invoke("view", "view()", typeof(Plasma.View)); }
+                set { interceptor.Invoke("setView#", "setView(Plasma::View*)", typeof(void), typeof(Plasma.View), value); }
+            }
             public StyleOption() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("StyleOption", "StyleOption()", typeof(void));
@@ -66,6 +70,7 @@ namespace Plasma {
             DesktopContainment = 0,
             PanelContainment = 1,
             CustomContainment = 127,
+            CustomPanelContainment = 128,
         }
         /// <remarks>
         /// <param> name="parent" the QGraphicsItem this applet is parented to
@@ -127,10 +132,8 @@ namespace Plasma {
         /// <param> name="name" the plugin name for the applet, as given by
         ///         KPluginInfo.PluginName()
         /// </param><param> name="args" argument list to pass to the plasmoid
-        /// </param><param> name="id" to assign to this applet, or 0 to auto-assign it a new id
         /// </param><param> name="geometry" where to place the applet, or to auto-place it if an invalid
         ///                  is provided
-        /// </param><param> name="delayedInit" if true, init() will not be called on the applet
         /// </param></remarks>        <return> a pointer to the applet on success, or 0 on failure
         ///          </return>
         ///         <short>    Adds an applet to this Containment </short>

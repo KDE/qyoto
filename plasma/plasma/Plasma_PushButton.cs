@@ -28,8 +28,8 @@ namespace Plasma {
         }
         [Q_PROPERTY("QString", "stylesheet")]
         public string Stylesheet {
-            get { return (string) interceptor.Invoke("stylesheet", "stylesheet()", typeof(string)); }
-            set { interceptor.Invoke("setStylesheet$", "setStylesheet(QString)", typeof(void), typeof(string), value); }
+            get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
+            set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
         }
         [Q_PROPERTY("KPushButton*", "nativeWidget")]
         public KPushButton NativeWidget {
@@ -43,9 +43,25 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("PushButton", "PushButton()", typeof(void));
         }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+            interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
+        }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
+            interceptor.Invoke("paint##", "paint(QPainter*, const QStyleOptionGraphicsItem*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option);
+        }
         [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverEnterEvent#", "hoverEnterEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
         }
         ~PushButton() {
             interceptor.Invoke("~PushButton", "~PushButton()", typeof(void));
