@@ -21,8 +21,8 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
             set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
         }
-        [Q_PROPERTY("QString", "stylesheet")]
-        public string Stylesheet {
+        [Q_PROPERTY("QString", "styleSheet")]
+        public string StyleSheet {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
             set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
         }

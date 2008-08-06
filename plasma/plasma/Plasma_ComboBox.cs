@@ -20,8 +20,8 @@ namespace Plasma {
         public string Text {
             get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
         }
-        [Q_PROPERTY("QString", "stylesheet")]
-        public string Stylesheet {
+        [Q_PROPERTY("QString", "styleSheet")]
+        public string StyleSheet {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
             set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
         }
