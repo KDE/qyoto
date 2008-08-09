@@ -1,3 +1,7 @@
+2008-08-09  Arno Rehn  <arno@arnorehn.de>
+
+	* Fix TryDispose() for custom subclasses that don't implement Dispose().
+
 2008-07-31  Arno Rehn  <arno@arnorehn.de>
 
 	* If a custom subclass of one of the binding's classes is destroyed, try to

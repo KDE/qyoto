@@ -816,14 +816,11 @@ namespace Qyoto {
 		
 		public static void TryDispose(IntPtr obj) {
 			object o = ((GCHandle) obj).Target;
-			if (IsSmokeClass(o.GetType())) return;
-			try {
-				((IDisposable) o).Dispose();
-			} catch (Exception e) {
-#if DEBUG
-				Console.WriteLine("Disposing {0} failed, reason: {1}", obj, e);
-#endif
-			}
+			Type t = o.GetType();
+			MethodInfo mi = t.GetMethod("Dispose");
+			if (mi == null) return;
+			if (IsSmokeClass(mi.DeclaringType)) return;
+			((IDisposable) o).Dispose();
 		}
 #endregion
 		
