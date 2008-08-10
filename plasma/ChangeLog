@@ -1,5 +1,6 @@
 2008-08-10  Arno Rehn  <arno@arnorehn.de>
 * Add some missing classes.
+* Fix ShowConfigurationDialog() for the ScriptEngine.
 
 2008-08-09  Arno Rehn  <arno@arnorehn.de>
 * If necessary, initialize additional bindings in the ScriptEngine.

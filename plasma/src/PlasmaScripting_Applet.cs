@@ -377,6 +377,8 @@ namespace PlasmaScripting {
         public virtual void Destroy() {
             applet.Destroy();
         }
+        KConfigSkeleton nullManager;
+        KConfigDialog dialog;
         /// <remarks>
         ///  Lets the user interact with the plasmoid options.
         ///  Called when the user selects the configure entry
@@ -391,8 +393,8 @@ namespace PlasmaScripting {
         public virtual void ShowConfigurationInterface() {
             string dialogId = applet.Id() + "settings" + applet.Name;
             string windowTitle = KDE.I18nc("@title:window", applet.Name + " Settings");
-            KConfigSkeleton nullManager = new KConfigSkeleton((KSharedConfig) null);
-            KConfigDialog dialog = new KConfigDialog(null, dialogId, nullManager);
+            nullManager = new KConfigSkeleton();
+            dialog = new KConfigDialog(null, dialogId, nullManager);
             dialog.SetFaceType(KPageDialog.FaceType.Auto);
             dialog.SetWindowTitle(windowTitle);
             dialog.SetAttribute(Qt.WidgetAttribute.WA_DeleteOnClose, true);

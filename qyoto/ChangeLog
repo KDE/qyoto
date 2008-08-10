@@ -1,6 +1,7 @@
 2008-08-10  Arno Rehn  <arno@arnorehn.de>
 
     * Make uics work with KDE classes.
+    * Support uint as a method return type.
 
 2008-08-09  Arno Rehn  <arno@arnorehn.de>
 

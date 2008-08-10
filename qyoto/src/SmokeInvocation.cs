@@ -614,6 +614,8 @@ namespace Qyoto {
 						returnValue = stack[0].s_long;
 					} else if (returnType == typeof(ushort)) {
 						returnValue = stack[0].s_ushort;
+					} else if (returnType == typeof(uint)) {
+						returnValue = stack[0].s_uint;
 					} else if (returnType.IsEnum) {
 						returnValue = Enum.ToObject(returnType, stack[0].s_int);
 					} else if (returnType == typeof(ulong)) {
