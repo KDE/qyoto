@@ -415,6 +415,9 @@ namespace Qyoto {
 			}
 		}
 
+		// list of assemblies on which CallInitSmoke() has already been called.
+		public static List<Assembly> InitializedAssemblies = new List<Assembly>();
+		// whether the qyoto (core) runtime has been initialized
 		static bool runtimeInitialized = false;
 
 		public static void InitRuntime() {
@@ -427,6 +430,7 @@ namespace Qyoto {
 			foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
 				AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
 				if (attr != null) attr.CallInitSmoke();
+				InitializedAssemblies.Add(a);
 			}
 			runtimeInitialized = true;
 		}
