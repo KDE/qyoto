@@ -1,3 +1,6 @@
+2008-08-10  Arno Rehn  <arno@arnorehn.de>
+* Add some missing classes.
+
 2008-08-09  Arno Rehn  <arno@arnorehn.de>
 * If necessary, initialize additional bindings in the ScriptEngine.
 * If the class with the name of the main assembly and in the namespace

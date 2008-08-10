@@ -34,22 +34,11 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("Dialog", "Dialog()", typeof(void));
         }
-        /// <remarks>
-        ///  @arg event the event that is used to position the dialog. Usually, you want
-        ///  to pass this on from the mouseevent.
-        ///  @arg boundingRect the boundingRect() from the applet.
-        ///  @arg scenePos the absolute position on the scene.
-        ///          </remarks>        <short>    @arg event the event that is used to position the dialog.</short>
-        public void position(QGraphicsSceneEvent arg1, QRectF boundingRect, QPointF scenePos) {
-            interceptor.Invoke("position###", "position(QGraphicsSceneEvent*, const QRectF, QPointF)", typeof(void), typeof(QGraphicsSceneEvent), arg1, typeof(QRectF), boundingRect, typeof(QPointF), scenePos);
+        public void SetGraphicsWidget(QGraphicsWidget widget) {
+            interceptor.Invoke("setGraphicsWidget#", "setGraphicsWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
-        /// <remarks>
-        ///  @arg view The QGV where is displayed the applet
-        ///  @arg scenePos the absolute position on the scene.
-        ///  @arg boundingRect the boundingRect() from the applet.
-        ///          </remarks>        <short>    @arg view The QGV where is displayed the applet  @arg scenePos the absolute position on the scene.</short>
-        public void position(QGraphicsView view, QRectF boundingRect, QPointF scenePos) {
-            interceptor.Invoke("position###", "position(QGraphicsView*, const QRectF, QPointF)", typeof(void), typeof(QGraphicsView), view, typeof(QRectF), boundingRect, typeof(QPointF), scenePos);
+        public QGraphicsWidget GraphicsWidget() {
+            return (QGraphicsWidget) interceptor.Invoke("graphicsWidget", "graphicsWidget()", typeof(QGraphicsWidget));
         }
         /// <remarks>
         ///  Reimplemented from QWidget
@@ -61,6 +50,10 @@ namespace Plasma {
         [SmokeMethod("resizeEvent(QResizeEvent*)")]
         protected override void ResizeEvent(QResizeEvent e) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), e);
+        }
+        [SmokeMethod("eventFilter(QObject*, QEvent*)")]
+        protected new virtual bool EventFilter(QObject watched, QEvent arg2) {
+            return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
         }
         ~Dialog() {
             interceptor.Invoke("~Dialog", "~Dialog()", typeof(void));

@@ -76,8 +76,6 @@ namespace Plasma {
         public bool ShouldConserveResources {
             get { return (bool) interceptor.Invoke("shouldConserveResources", "shouldConserveResources()", typeof(bool)); }
         }
-        // void initExtenderItem(Plasma::ExtenderItem* arg1); >>>> NOT CONVERTED
-        // Plasma::Extender* extender(); >>>> NOT CONVERTED
         /// <remarks>
         /// </remarks>        <return> the id of this applet
         ///          </return>
@@ -474,10 +472,19 @@ namespace Plasma {
         ///  @endcode
         ///  You can also add one or more custom qactions to this extender item in this function.
         ///          </remarks>        <short>    Get's called when and extender item has to be initialized after a plasma restart.</short>
+        [Q_SLOT("void initExtenderItem(ExtenderItem*)")]
+        [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]
+        public virtual void InitExtenderItem(Plasma.ExtenderItem item) {
+            interceptor.Invoke("initExtenderItem#", "initExtenderItem(Plasma::ExtenderItem*)", typeof(void), typeof(Plasma.ExtenderItem), item);
+        }
         /// <remarks>
         /// </remarks>        <return> the extender this applet has.
         ///          </return>
         ///         <short>   </short>
+        [Q_SLOT("Plasma::Extender* extender()")]
+        public Plasma.Extender Extender() {
+            return (Plasma.Extender) interceptor.Invoke("extender", "extender() const", typeof(Plasma.Extender));
+        }
         /// <remarks>
         ///  This constructor is to be used with the plugin loading systems
         ///  found in KPluginInfo and KService. The argument list is expected
