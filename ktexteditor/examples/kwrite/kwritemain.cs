@@ -112,6 +112,8 @@ public class KWrite : KParts.MainWindow, IDisposable {
 
         UpdateStatus();
         Show();
+        
+        m_view.SetFocus();
     }
 
     public new void Dispose() {
