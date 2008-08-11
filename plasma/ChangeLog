@@ -1,3 +1,6 @@
+2008-08-11  Arno Rehn  <arno@arnorehn.de>
+* Add the analog-clock applet converted to C#.
+
 2008-08-10  Arno Rehn  <arno@arnorehn.de>
 * Add some missing classes.
 * Fix ShowConfigurationDialog() for the ScriptEngine.
