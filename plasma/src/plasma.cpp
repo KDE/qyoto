@@ -37,9 +37,11 @@ resolve_classname_Plasma(smokeqyoto_object * o)
 }
 
 bool
-IsContainedInstancePlasma(smokeqyoto_object* /*o*/)
+IsContainedInstancePlasma(smokeqyoto_object* o)
 {
-	// all cases are handled in the qyoto module
+	// plasma extenders are always contained instances
+	if (strcmp(o->smoke->className(o->classId), "Plasma::Extender") == 0)
+		return true;
 	return false;
 }
 
