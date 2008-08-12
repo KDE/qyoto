@@ -1,3 +1,7 @@
+2008-08-12  Arno Rehn  <arno@arnorehn.de>
+* Sizes of applets are now correctly restored.
+* debug--
+
 2008-08-11  Arno Rehn  <arno@arnorehn.de>
 * Add the analog-clock applet converted to C#.
 

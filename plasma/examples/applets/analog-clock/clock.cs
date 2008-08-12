@@ -33,11 +33,6 @@ public class Clock : ClockApplet, IDisposable {
         reference = this;
     }
 
-    public new void Dispose() {
-        DumpObjectInfo();
-        Console.WriteLine("Clock.Dispose()");
-    }
-
     public override void Init() {
         base.Init();
 
@@ -49,7 +44,7 @@ public class Clock : ClockApplet, IDisposable {
 
         ConnectToEngine();
     }
-    
+
     public override void PaintInterface(QPainter p, QStyleOptionGraphicsItem option, QRect rect) {
         QRectF tempRect = new QRectF(0, 0, 0, 0);
 
