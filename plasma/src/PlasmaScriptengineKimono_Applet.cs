@@ -41,6 +41,8 @@ namespace PlasmaScriptengineKimono {
             QSizeF oldSize = Applet().Size;
             QFileInfo program = new QFileInfo(MainScript());
 
+            appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
+            
             // the newly loaded assembly might contain reference other bindings that need to be initialized
             foreach (AssemblyName an in appletAssembly.GetReferencedAssemblies()) {
                 // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
@@ -50,11 +52,21 @@ namespace PlasmaScriptengineKimono {
                 if (attr != null) attr.CallInitSmoke();
                 SmokeInvocation.InitializedAssemblies.Add(a);
             }
-
-            appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
+            
             string typeName = Camelize(Package().Metadata().PluginName()) + ".";  // namespace
             typeName += Camelize(program.CompleteBaseName());
             appletType = appletAssembly.GetType(typeName);
+            if (appletType == null) {
+                foreach (Type t in appletAssembly.GetTypes()) {
+                    for (Type tmp = t.BaseType; tmp != null; tmp = tmp.BaseType) {
+                        if (tmp == typeof(PlasmaScripting.Applet)) {
+                            appletType = t;
+                            break;
+                        }
+                    }
+                    if (appletType != null) break;
+                }
+            }
 
             applet = (PlasmaScripting.Applet) Activator.CreateInstance(appletType, new object[] { this });
             applet.Init();
