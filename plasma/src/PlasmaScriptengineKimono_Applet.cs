@@ -38,8 +38,18 @@ namespace PlasmaScriptengineKimono {
         public Applet(QObject parent, List<QVariant> args) : base(parent) {}
 
         public override bool Init() {
-            Applet().Resize(200, 200);
+            QSizeF oldSize = Applet().Size;
             QFileInfo program = new QFileInfo(MainScript());
+
+            // the newly loaded assembly might contain reference other bindings that need to be initialized
+            foreach (AssemblyName an in appletAssembly.GetReferencedAssemblies()) {
+                // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
+                Assembly a = Assembly.Load(an);
+                if (SmokeInvocation.InitializedAssemblies.Contains(a)) continue;
+                AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
+                if (attr != null) attr.CallInitSmoke();
+                SmokeInvocation.InitializedAssemblies.Add(a);
+            }
 
             appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
             string typeName = Camelize(Package().Metadata().PluginName()) + ".";  // namespace
@@ -48,6 +58,8 @@ namespace PlasmaScriptengineKimono {
 
             applet = (PlasmaScripting.Applet) Activator.CreateInstance(appletType, new object[] { this });
             applet.Init();
+            if (oldSize.Width() > 10 && oldSize.Height() > 10)
+                Applet().Size = oldSize;
             SetUpEventHandlers();
             return true;
         }
