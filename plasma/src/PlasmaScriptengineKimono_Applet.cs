@@ -44,8 +44,9 @@ namespace PlasmaScriptengineKimono {
             appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
             
             // the newly loaded assembly might contain reference other bindings that need to be initialized
-            foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
+            foreach (AssemblyName an in appletAssembly.GetReferencedAssemblies()) {
                 // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
+                Assembly a = Assembly.Load(an);
                 if (SmokeInvocation.InitializedAssemblies.Contains(a)) continue;
                 AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
                 if (attr != null) attr.CallInitSmoke();
