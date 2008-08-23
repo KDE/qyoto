@@ -19,6 +19,8 @@ SET(KHTML_SHARP_ENABLED "no")
 SET(KTEXTEDITOR_SHARP_ENABLED "no")
 
 SET(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
+SET( UICS_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/qyoto/tools/uics/uics )
+SET( CSRCC_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/qyoto/tools/csrcc/csrcc )
 
 if(ENABLE_QYOTO)
     macro_optional_find_package (Mono)
@@ -51,8 +53,6 @@ if(ENABLE_QYOTO)
     IF (GMCS_EXECUTABLE AND GACUTIL_EXECUTABLE AND MONO_CECIL_FOUND)
         add_subdirectory( qyoto )
         set(QYOTO_ENABLED "yes")
-        SET( UICS_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/qyoto/tools/uics/uics )
-        SET( CSRCC_EXECUTABLE ${CMAKE_CURRENT_BINARY_DIR}/qyoto/tools/csrcc/csrcc )
 
 	IF(ENABLE_QTSCRIPT_SHARP)
 		SET(QTSCRIPT_SHARP_ENABLED "yes")
