@@ -1,3 +1,6 @@
+2008-08-23  Arno Rehn  <arno@arnorehn.de>
+* Also check for referenced assemblies in the same path as the main assembly.
+
 2008-08-12  Arno Rehn  <arno@arnorehn.de>
 * Sizes of applets are now correctly restored.
 * debug--
