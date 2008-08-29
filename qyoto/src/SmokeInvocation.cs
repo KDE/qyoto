@@ -624,6 +624,8 @@ namespace Qyoto {
 						returnValue = stack[0].s_char;
 					} else if (returnType == typeof(byte)) {
 						returnValue = stack[0].s_uchar;
+					} else if (returnType == typeof(char)) {
+						returnValue = (char) stack[0].s_char;
 					} else {
 						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
 							returnValue = null;
