@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="ISliderSignals"></see> for signals emitted by Slider
-    /// </remarks>
+    /// <remarks>
+    ///  @class Slider plasma/widgets/slider.h <Plasma/Widgets/Slider>
+    ///  See <see cref="ISliderSignals"></see> for signals emitted by Slider
+    /// </remarks>        <short> Provides a plasma-themed QSlider.  </short>
     [SmokeClass("Plasma::Slider")]
     public class Slider : QGraphicsProxyWidget, IDisposable {
         protected Slider(Type dummy) : base((Type) null) {}
@@ -89,6 +91,10 @@ namespace Plasma {
         [Q_SLOT("void setOrientation(Qt::Orientation)")]
         public void SetOrientation(Qt.Orientation orientation) {
             interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
+        }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+            interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
         }
         ~Slider() {
             interceptor.Invoke("~Slider", "~Slider()", typeof(void));

@@ -4,6 +4,29 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    /// <remarks>
+    ///  @class PanelSvg plasma/panelsvg.h <Plasma/PanelSvg>
+    ///  When using SVG images for a background of an object that may change
+    ///  its aspect ratio, such as a dialog, simply scaling a single image
+    ///  may not be enough.
+    ///  PanelSvg allows SVGs to provide several elements for borders as well
+    ///  as a central element, each of which are scaled individually.  These
+    ///  elements should be named
+    ///   - <code>center</code>  - the central element, which will be scaled in both directions
+    ///   - <code>top</code>     - the top border; the height is fixed, but it will be scaled
+    ///                  horizontally to the same width as <code>center</code>
+    ///   - <code>bottom</code>  - the bottom border; scaled in the same way as <code>top</code>
+    ///   - <code>left</code>    - the left border; the width is fixed, but it will be scaled
+    ///                  vertically to the same height as <code>center</code>
+    ///   - <code>right</code>   - the right border; scaled in the same way as <code>left</code>
+    ///   - <code>topleft</code> - fixed size; must be the same height as <code>top</code> and the same
+    ///                  width as <code>left</code>
+    ///   - <code>bottomleft</code>, <code>topright</code>, <code>bottomright</code> - similar to <code>topleft</code>
+    ///  <code>center</code> must exist, but all the others are optional.  <code>topleft</code> and
+    ///  <code>topright</code> will be ignored if <code>top</code> does not exist, and similarly for
+    ///  <code>bottomleft</code> and <code>bottomright.</code>
+    /// </remarks>        <short> Provides an SVG with borders. </short>
+    ///         <see> Plamsa.Svg</see>
     [SmokeClass("Plasma::PanelSvg")]
     public class PanelSvg : Plasma.Svg, IDisposable {
         protected PanelSvg(Type dummy) : base((Type) null) {}
@@ -101,6 +124,13 @@ namespace Plasma {
             right = stack[3].s_double;
             bottom = stack[4].s_double;
             return;
+        }
+        /// <remarks>
+        /// </remarks>        <return> the rectangle of the center element, taking the margins into account.
+        ///          </return>
+        ///         <short>   </short>
+        public QRectF ContentsRect() {
+            return (QRectF) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRectF));
         }
         /// <remarks>
         ///  Sets the prefix (@see setElementPrefix) to 'north', 'south', 'west' and 'east'

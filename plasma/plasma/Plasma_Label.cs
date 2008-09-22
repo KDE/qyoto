@@ -5,6 +5,9 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     using System.Collections.Generic;
+    /// <remarks>
+    ///  @class Label plasma/widgets/label.h <Plasma/Widgets/Label>
+    /// </remarks>        <short> Provides a plasma-themed QLabel.  </short>
     [SmokeClass("Plasma::Label")]
     public class Label : QGraphicsProxyWidget, IDisposable {
         protected Label(Type dummy) : base((Type) null) {}

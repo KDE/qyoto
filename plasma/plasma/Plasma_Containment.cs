@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class Containment plasma/containment.h <Plasma/Containment>
     ///  Containment objects provide the means to group applets into functional sets.
     ///  They also provide the following:
     ///  creation of focussing event
@@ -72,6 +73,7 @@ namespace Plasma {
             CustomContainment = 127,
             CustomPanelContainment = 128,
         }
+        // Plasma::Wallpaper* wallpaper(); >>>> NOT CONVERTED
         /// <remarks>
         /// <param> name="parent" the QGraphicsItem this applet is parented to
         /// </param><param> name="serviceId" the name of the .desktop file containing the
@@ -147,11 +149,14 @@ namespace Plasma {
             return (Plasma.Applet) interceptor.Invoke("addApplet$", "addApplet(const QString&)", typeof(Plasma.Applet), typeof(string), name);
         }
         /// <remarks>
-        ///  add existing applet to this containment at pos
+        ///  Add an existing applet to this Containment
+        ///  If dontInit is true, the pending constraints are not flushed either.
+        ///  So it is your responsibility to call both init() and
+        ///  flushPendingConstraints() on the applet.
         /// <param> name="applet" the applet that should be added
         /// </param><param> name="pos" the containment-relative position
         /// </param><param> name="dontInit" if true, init() will not be called on the applet
-        ///          </param></remarks>        <short>    add existing applet to this containment at pos </short>
+        ///          </param></remarks>        <short>    Add an existing applet to this Containment </short>
         public void AddApplet(Plasma.Applet applet, QPointF pos, bool dontInit) {
             interceptor.Invoke("addApplet##$", "addApplet(Plasma::Applet*, const QPointF&, bool)", typeof(void), typeof(Plasma.Applet), applet, typeof(QPointF), pos, typeof(bool), dontInit);
         }
@@ -254,6 +259,50 @@ namespace Plasma {
             interceptor.Invoke("removeAssociatedWidget#", "removeAssociatedWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
         }
         /// <remarks>
+        ///  Return whether wallpaper is painted or not.
+        ///          </remarks>        <short>    Return whether wallpaper is painted or not.</short>
+        public bool DrawWallpaper() {
+            return (bool) interceptor.Invoke("drawWallpaper", "drawWallpaper()", typeof(bool));
+        }
+        /// <remarks>
+        ///  Sets wallpaper plugin.
+        /// <param> name="pluginName" the name of the wallpaper to attempt to load
+        /// </param><param> name="mode" optional mode or the wallpaper plugin (e.g. "Slideshow").
+        ///         These values are pugin specific and enumerated in the plugin's
+        ///         .desktop file.
+        ///          </param></remarks>        <short>    Sets wallpaper plugin.</short>
+        public void SetWallpaper(string pluginName, string mode) {
+            interceptor.Invoke("setWallpaper$$", "setWallpaper(const QString&, const QString&)", typeof(void), typeof(string), pluginName, typeof(string), mode);
+        }
+        public void SetWallpaper(string pluginName) {
+            interceptor.Invoke("setWallpaper$", "setWallpaper(const QString&)", typeof(void), typeof(string), pluginName);
+        }
+        /// <remarks>
+        ///  Return wallpaper plugin.
+        ///          </remarks>        <short>    Return wallpaper plugin.</short>
+        /// <remarks>
+        ///  Sets the current activity by name
+        /// <param> name="activity" the name of the activity; if it doesn't exist in the
+        ///         semantic store, it will be created.
+        ///          </param></remarks>        <short>    Sets the current activity by name </short>
+        public void SetActivity(string activity) {
+            interceptor.Invoke("setActivity$", "setActivity(const QString&)", typeof(void), typeof(string), activity);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the current activity associated with this activity
+        ///          </return>
+        ///         <short>   </short>
+        public string Activity() {
+            return (string) interceptor.Invoke("activity", "activity() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Shows the context menu for the containment directly, bypassing Applets
+        ///  altogether.
+        ///          </remarks>        <short>    Shows the context menu for the containment directly, bypassing Applets  altogether.</short>
+        public void ShowContextMenu(QPointF containmentPos, QPoint screenPos) {
+            interceptor.Invoke("showContextMenu##", "showContextMenu(const QPointF&, const QPoint&)", typeof(void), typeof(QPointF), containmentPos, typeof(QPoint), screenPos);
+        }
+        /// <remarks>
         ///  Informs the Corona as to what position it is in. This is informational
         ///  only, as the Corona doesn't change it's actual location. This is,
         ///  however, passed on to Applets that may be managed by this Corona.
@@ -304,10 +353,26 @@ namespace Plasma {
             interceptor.Invoke("destroy", "destroy()", typeof(void));
         }
         /// <remarks>
+        ///  Destroys this containment and all its applets (after a confirmation dialog);
+        ///  it will be removed nicely and deleted.
+        ///  Its configuration will also be deleted.
+        ///  @arg confirm whether or not confirmation from the user should be requested
+        ///          </remarks>        <short>    Destroys this containment and all its applets (after a confirmation dialog);  it will be removed nicely and deleted.</short>
+        [Q_SLOT("void destroy(bool)")]
+        public void Destroy(bool confirm) {
+            interceptor.Invoke("destroy$", "destroy(bool)", typeof(void), typeof(bool), confirm);
+        }
+        /// <remarks>
         ///  Sets the type of this containment.
         ///          </remarks>        <short>    Sets the type of this containment.</short>
         protected void SetContainmentType(Plasma.Containment.TypeOf type) {
             interceptor.Invoke("setContainmentType$", "setContainmentType(Plasma::Containment::Type)", typeof(void), typeof(Plasma.Containment.TypeOf), type);
+        }
+        /// <remarks>
+        ///  Sets whether wallpaper is painted or not.
+        ///          </remarks>        <short>    Sets whether wallpaper is painted or not.</short>
+        protected void SetDrawWallpaper(bool drawWallpaper) {
+            interceptor.Invoke("setDrawWallpaper$", "setDrawWallpaper(bool)", typeof(void), typeof(bool), drawWallpaper);
         }
         /// <remarks>
         ///  Called when the contents of the containment should be saved. By default this saves
@@ -327,6 +392,18 @@ namespace Plasma {
         protected virtual void RestoreContents(KConfigGroup group) {
             interceptor.Invoke("restoreContents#", "restoreContents(KConfigGroup&)", typeof(void), typeof(KConfigGroup), group);
         }
+        [SmokeMethod("mouseMoveEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MouseMoveEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
+        [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
+        [SmokeMethod("mouseReleaseEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MouseReleaseEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
         [SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
         protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
             interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
@@ -342,6 +419,10 @@ namespace Plasma {
         [SmokeMethod("keyPressEvent(QKeyEvent*)")]
         protected override void KeyPressEvent(QKeyEvent arg1) {
             interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
+        }
+        [SmokeMethod("wheelEvent(QGraphicsSceneWheelEvent*)")]
+        protected override void WheelEvent(QGraphicsSceneWheelEvent arg1) {
+            interceptor.Invoke("wheelEvent#", "wheelEvent(QGraphicsSceneWheelEvent*)", typeof(void), typeof(QGraphicsSceneWheelEvent), arg1);
         }
         [SmokeMethod("sceneEventFilter(QGraphicsItem*, QEvent*)")]
         protected override bool SceneEventFilter(IQGraphicsItem watched, QEvent arg2) {
@@ -445,5 +526,15 @@ namespace Plasma {
         ///          </remarks>        <short>    Emitted when the containment wants to become active.</short>
         [Q_SIGNAL("void focusRequested(Plasma::Containment*)")]
         void FocusRequested(Plasma.Containment containment);
+        /// <remarks>
+        ///  Emitted when the user wants to configure/change containment.
+        ///          </remarks>        <short>    Emitted when the user wants to configure/change containment.</short>
+        [Q_SIGNAL("void configureRequested()")]
+        void ConfigureRequested();
+        /// <remarks>
+        ///  The activity associated to this containemnt has changed
+        ///          </remarks>        <short>    The activity associated to this containemnt has changed          </short>
+        [Q_SIGNAL("void contextChanged(Plasma::Context*)")]
+        void ContextChanged(Plasma.Context context);
     }
 }

@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class DataContainer plasma/datacontainer.h <Plasma/DataContainer>
     ///  @brief A set of data exported via a DataEngine
     ///  Plasma.DataContainer wraps the data exported by a DataEngine
     ///  implementation, providing a generic wrapper for the data.
@@ -13,8 +14,19 @@ namespace Plasma {
     ///  are keyed by strings. The data itself is stored as QVariants. This allows
     ///  easy and flexible retrieval of the information associated with this object
     ///  without writing DataContainer or DataEngine specific code in visualizations.
+    ///  If you are creating your own DataContainer objects (and are passing them to
+    ///  DataEngine.AddSource()), you normally just need to listen to the
+    ///  updateRequested() signal (as well as any other methods you might have of
+    ///  being notified of new data) and call setData() to actually update the data.
+    ///  Then you need to either trigger the scheduleSourcesUpdated signal of the
+    ///  parent DataEngine or call checkForUpdate() on the DataContainer.
+    ///  You also need to set a suitable name for the source with setObjectName().
+    ///  See DataEngine.AddSource() for more information.
+    ///  Note that there is normally no need to subclass DataContainer, except as
+    ///  a way of encapsulating the data retreival for a source, since all notifications
+    ///  are done via signals rather than methods.
     ///  See <see cref="IDataContainerSignals"></see> for signals emitted by DataContainer
-    /// </remarks>        <short>    @brief A set of data exported via a DataEngine </short>
+    /// </remarks>        <short>    @class DataContainer plasma/datacontainer.</short>
     [SmokeClass("Plasma::DataContainer")]
     public class DataContainer : QObject, IDisposable {
         protected DataContainer(Type dummy) : base((Type) null) {}
@@ -22,9 +34,9 @@ namespace Plasma {
             interceptor = new SmokeInvocation(typeof(DataContainer), this);
         }
         /// <remarks>
-        ///  Constructs a default DataContainer, which has no name or data
+        ///  Constructs a default DataContainer that has no name or data
         ///  associated with it
-        /// </remarks>        <short>    Constructs a default DataContainer, which has no name or data  associated with it </short>
+        /// </remarks>        <short>    Constructs a default DataContainer that has no name or data  associated with it </short>
         public DataContainer(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("DataContainer#", "DataContainer(QObject*)", typeof(void), typeof(QObject), parent);
@@ -40,9 +52,12 @@ namespace Plasma {
             return (Dictionary<string, QVariant>) interceptor.Invoke("data", "data() const", typeof(Dictionary<string, QVariant>));
         }
         /// <remarks>
-        ///  Set a value for a key. This also marks this source as needing
-        ///  to signal an update. After calling this, a call to checkForUpdate()
-        ///  is done by the engine. This allows for batching updates.
+        ///  Set a value for a key.
+        ///  This also marks this source as needing to signal an update.
+        ///  If you call setData() directly on a DataContainer, you need to
+        ///  either trigger the scheduleSourcesUpdated() slot for the
+        ///  data engine it belongs to or call checkForUpdate() on the
+        ///  DataContainer.
         /// <param> name="key" a string used as the key for the data
         /// </param><param> name="value" a QVariant holding the actual data. If a null or invalid
         ///               QVariant is passed in and the key currently exists in the
@@ -53,6 +68,10 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Removes all data currently associated with this source
+        ///  If you call removeAllData() on a DataContainer, you need to
+        ///  either trigger the scheduleSourcesUpdated() slot for the
+        ///  data engine it belongs to or call checkForUpdate() on the
+        ///  DataContainer.
         /// </remarks>        <short>    Removes all data currently associated with this source </short>
         public void RemoveAllData() {
             interceptor.Invoke("removeAllData", "removeAllData()", typeof(void));
@@ -65,8 +84,9 @@ namespace Plasma {
             return (bool) interceptor.Invoke("visualizationIsConnected#", "visualizationIsConnected(QObject*) const", typeof(bool), typeof(QObject), visualization);
         }
         /// <remarks>
-        ///  Connects an object to this DataContainer. May be called repeatedly
-        ///  for the same visualization without side effects
+        ///  Connects an object to this DataContainer.
+        ///  May be called repeatedly for the same visualization without
+        ///  side effects
         /// <param> name="visualization" the object to connect to this DataContainer
         /// </param><param> name="pollingInterval" the time in milliseconds between updates
         /// </param></remarks>        <short>    Connects an object to this DataContainer.</short>
@@ -75,30 +95,34 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Disconnects an object from this DataContainer.
+        ///  Note that if this source was created by DataEngine.SourceRequestEvent(),
+        ///  it will be deleted by DataEngine once control returns to the event loop.
         /// </remarks>        <short>    Disconnects an object from this DataContainer.</short>
         [Q_SLOT("void disconnectVisualization(QObject*)")]
         public void DisconnectVisualization(QObject visualization) {
             interceptor.Invoke("disconnectVisualization#", "disconnectVisualization(QObject*)", typeof(void), typeof(QObject), visualization);
         }
         /// <remarks>
-        ///  Checks for whether the data has changed and therefore an update
-        ///  signal needs to be emitted.
-        /// </remarks>        <short>    Checks for whether the data has changed and therefore an update  signal needs to be emitted.</short>
+        ///  Checks whether any data has changed and, if so, emits dataUpdated().
+        /// </remarks>        <short>    Checks whether any data has changed and, if so, emits dataUpdated().</short>
         protected void CheckForUpdate() {
             interceptor.Invoke("checkForUpdate", "checkForUpdate()", typeof(void));
         }
         /// <remarks>
-        ///  Returns how long ago, in msecs, that the data in this container was last updated
-        /// </remarks>        <short>    Returns how long ago, in msecs, that the data in this container was last updated </short>
+        ///  Returns how long ago, in msecs, that the data in this container was last updated.
+        ///  This is used by DataEngine to compress updates that happen more quickly than the
+        ///  minimum polling interval by calling setNeedsUpdate() instead of calling
+        ///  updateSourceEvent() immediately.
+        /// </remarks>        <short>    Returns how long ago, in msecs, that the data in this container was last updated.</short>
         protected uint TimeSinceLastUpdate() {
             return (uint) interceptor.Invoke("timeSinceLastUpdate", "timeSinceLastUpdate() const", typeof(uint));
         }
         /// <remarks>
         ///  Indicates that the data should be treated as dirty the next time hasUpdates() is called.
-        ///  why? because if one SignalRelay times out just after another, the minimum update
-        ///  interval stops a real update from being done - but that relay still needs to be given
-        ///  data, because it won't have been in the queue and won't have gotten that last update.
-        ///  when it checks hasUpdates() we'll lie, and then everything will return to normal.
+        ///  This is needed for the case where updateRequested() is triggered but we don't want to
+        ///  update the data immediately because it has just been updated.  The second request won't
+        ///  be fulfilled in this case, because we never updated the data and so never called
+        ///  checkForUpdate().  So we claim it needs an update anyway.
         /// </remarks>        <short>    Indicates that the data should be treated as dirty the next time hasUpdates() is called.</short>
         protected void SetNeedsUpdate(bool update) {
             interceptor.Invoke("setNeedsUpdate$", "setNeedsUpdate(bool)", typeof(void), typeof(bool), update);
@@ -109,8 +133,9 @@ namespace Plasma {
         /// <remarks>
         ///  Check if the DataContainer is still in use.
         ///  If not the signal "becameUnused" will be emitted.
-        ///  Warning: The DataContainer may be invalid after calling this function.
-        ///          </remarks>        <short>    Check if the DataContainer is still in use.</short>
+        ///  Warning: The DataContainer may be invalid after calling this function, because a listener
+        ///  to becameUnused() may have deleted it.
+        /// </remarks>        <short>    Check if the DataContainer is still in use.</short>
         [Q_SLOT("void checkUsage()")]
         protected void CheckUsage() {
             interceptor.Invoke("checkUsage", "checkUsage()", typeof(void));
@@ -128,20 +153,35 @@ namespace Plasma {
 
     public interface IDataContainerSignals : IQObjectSignals {
         /// <remarks>
-        ///  Emitted when the data has been updated, allowing visualization to
+        ///  Emitted when the data has been updated, allowing visualizations to
         ///  reflect the new data.
-        /// </remarks>        <short>    Emitted when the data has been updated, allowing visualization to  reflect the new data.</short>
+        ///  Note that you should not normally emit this directly.  Instead, use
+        ///  checkForUpdates() or the DataEngine.ScheduleSourcesUpdated() slot.
+        /// <param> name="source" the objectName() of the DataContainer (and hence the name
+        ///                of the source) that updated its data
+        /// </param><param> name="data" the updated data
+        /// </param></remarks>        <short>    Emitted when the data has been updated, allowing visualizations to  reflect the new data.</short>
         [Q_SIGNAL("void dataUpdated(QString, Plasma::DataEngine::Data)")]
         void DataUpdated(string source, Dictionary<string, QVariant> data);
         /// <remarks>
-        ///  Emitted when this source becomes unused
-        /// </remarks>        <short>    Emitted when this source becomes unused </short>
+        ///  Emitted when the last visualization is disconnected.
+        ///  Note that if this source was created by DataEngine.SourceRequestEvent(),
+        ///  it will be deleted by DataEngine once control returns to the event loop
+        ///  after this signal is emitted.
+        /// <param> name="source" the name of the source that became unused
+        /// </param></remarks>        <short>    Emitted when the last visualization is disconnected.</short>
         [Q_SIGNAL("void becameUnused(QString)")]
         void BecameUnused(string source);
         /// <remarks>
-        ///  Emitted when the source, usually due to an internal timer firing,
-        ///  requests to be updated.
-        /// </remarks>        <short>    Emitted when the source, usually due to an internal timer firing,  requests to be updated.</short>
+        ///  Emitted when an update is requested.
+        ///  If a polling interval was passed connectVisualization(), this signal
+        ///  will be emitted every time the interval expires.
+        ///  Note that if you create your own DataContainer (and pass it to
+        ///  DataEngine.AddSource()), you will need to listen to this signal
+        ///  and refresh the data when it is triggered.
+        /// <param> name="source" the datacontainer the update was requested for.  Useful
+        ///                 for classes that update the data for several containers.
+        /// </param></remarks>        <short>    Emitted when an update is requested.</short>
         [Q_SIGNAL("void updateRequested(DataContainer*)")]
         void UpdateRequested(Plasma.DataContainer source);
     }

@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class Corona plasma/corona.h <Plasma/Corona>
     ///  See <see cref="ICoronaSignals"></see> for signals emitted by Corona
     /// </remarks>        <short> A QGraphicsScene for Plasma.Applets.</short>
     [SmokeClass("Plasma::Corona")]

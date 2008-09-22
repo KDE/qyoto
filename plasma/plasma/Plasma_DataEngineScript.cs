@@ -4,6 +4,9 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    /// <remarks>
+    ///  @class DataEngineScript plasma/scripting/dataenginescript.h <Plasma/Scripting/DataEngineScript>
+    /// </remarks>        <short> Provides a restricted interface for scripting a DataEngine.</short>
     [SmokeClass("Plasma::DataEngineScript")]
     public class DataEngineScript : Plasma.ScriptEngine, IDisposable {
         protected DataEngineScript(Type dummy) : base((Type) null) {}

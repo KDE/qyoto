@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class RunnerContext plasma/runnercontext.h <Plasma/RunnerContext>
     ///  See <see cref="IRunnerContextSignals"></see> for signals emitted by RunnerContext
     /// </remarks>        <short> The RunnerContext class provides information related to a search,         including the search term, metadata on the search term and collected         matches.  </short>
     [SmokeClass("Plasma::RunnerContext")]

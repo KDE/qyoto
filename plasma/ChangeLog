@@ -1,3 +1,8 @@
+2008-09-22  Richard Dale  <richard.j.dale@gmail.com>
+* Regenerate the C# sources from the current plasma headers, add ScrollBar 
+  and TreeView widgets
+* Add the missing calendar.ui file to the clock example
+
 2008-08-23  Arno Rehn  <arno@arnorehn.de>
 * Also check for referenced assemblies in the same path as the main assembly.
 

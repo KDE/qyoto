@@ -5,6 +5,9 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     using System.Collections.Generic;
+    /// <remarks>
+    ///  @class AppletScript plasma/scripting/appletscript.h <Plasma/Scripting/AppletScript>
+    /// </remarks>        <short> Provides a restricted interface for scripted applets.  </short>
     [SmokeClass("Plasma::AppletScript")]
     public class AppletScript : Plasma.ScriptEngine, IDisposable {
         protected AppletScript(Type dummy) : base((Type) null) {}
@@ -83,12 +86,27 @@ namespace Plasma {
             return (QPainterPath) interceptor.Invoke("shape", "shape() const", typeof(QPainterPath));
         }
         /// <remarks>
+        ///  Sets whether or not this script has a configuration interface or not
+        ///  @arg hasInterface true if the applet is user configurable
+        ///      </remarks>        <short>    Sets whether or not this script has a configuration interface or not </short>
+        public void SetHasConfigurationInterface(bool hasInterface) {
+            interceptor.Invoke("setHasConfigurationInterface$", "setHasConfigurationInterface(bool)", typeof(void), typeof(bool), hasInterface);
+        }
+        /// <remarks>
         ///  Show a configuration dialog.
         ///      </remarks>        <short>    Show a configuration dialog.</short>
         [Q_SLOT("void showConfigurationInterface()")]
         [SmokeMethod("showConfigurationInterface()")]
         public virtual void ShowConfigurationInterface() {
             interceptor.Invoke("showConfigurationInterface", "showConfigurationInterface()", typeof(void));
+        }
+        /// <remarks>
+        ///  Configure was changed.
+        ///      </remarks>        <short>    Configure was changed.</short>
+        [Q_SLOT("void configChanged()")]
+        [SmokeMethod("configChanged()")]
+        public virtual void ConfigChanged() {
+            interceptor.Invoke("configChanged", "configChanged()", typeof(void));
         }
         /// <remarks>
         ///  @arg engine name of the engine

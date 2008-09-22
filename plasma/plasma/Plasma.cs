@@ -17,7 +17,8 @@ namespace Plasma {
         SizeConstraint = 8,
         ImmutableConstraint = 16,
         StartupCompletedConstraint = 32,
-        AllConstraints = FormFactorConstraint|LocationConstraint|ScreenConstraint|SizeConstraint|ImmutableConstraint,
+        ContextConstraint = 64,
+        AllConstraints = FormFactorConstraint|LocationConstraint|ScreenConstraint|SizeConstraint|ImmutableConstraint|ContextConstraint,
     }
     /// <remarks>
     ///  The FormFactor enumeration describes how a Plasma.Applet should arrange
@@ -73,6 +74,20 @@ namespace Plasma {
         CenterPositioned = 4,
     }
     /// <remarks>
+    ///  The popup position enumeration relatively to his attached widget
+    /// </remarks>        <short>    The popup position enumeration relatively to his attached widget </short>
+    public enum PopupPlacement {
+        FloatingPopup = 0,
+        TopPosedLeftAlignedPopup = 1,
+        TopPosedRightAlignedPopup = 2,
+        LeftPosedTopAlignedPopup = 3,
+        LeftPosedBottomAlignedPopup = 4,
+        BottomPosedLeftAlignedPopup = 5,
+        BottomPosedRightAlignedPopup = 6,
+        RightPosedTopAlignedPopup = 7,
+        RightPosedBottomAlignedPopup = 8,
+    }
+    /// <remarks>
     ///  Flip enumeration
     ///  </remarks>        <short>    Flip enumeration  </short>
     public enum FlipDirection {
@@ -118,6 +133,7 @@ namespace Plasma {
         KeepAspectRatio = 1,
         Square = 2,
         ConstrainedSquare = 3,
+        FixedSize = 4,
     }
     /// <remarks>
     ///  The ComonentType enumeration refers to the various types of components,
@@ -137,13 +153,13 @@ namespace Plasma {
         RightMargin = 3,
     }
     /// <remarks>
-    ///  This class provides a generic Icon for the Plasma desktop. An icon, in this
-    ///  sense, is not restricted to just an image, but can also contain text. Currently,
-    ///  the Icon class is primarily used for desktop items, but is designed to be used
-    ///  anywhere an icon is needed in an applet.
+    ///  @class Icon plasma/widgets/icon.h <Plasma/Widgets/Icon>
+    ///  An icon, in this sense, is not restricted to just an image, but can also
+    ///  contain text. Currently, the Icon class is primarily used for desktop items,
+    ///  but is designed to be used anywhere an icon is needed in an applet.
     /// </remarks>        <author> Matt Broadstone <mbroadst@gmail.com>
     ///  </author>
-    ///         <short>    This class provides a generic Icon for the Plasma desktop.</short>
+    ///         <short> Provides a generic icon. </short>
     [SmokeClass("Plasma")]
     public class Global {
         private static SmokeInvocation staticInterceptor = null;

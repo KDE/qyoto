@@ -5,6 +5,7 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
+    ///  @class Animator plasma/animator.h <Plasma/Animator>
     /// </remarks>        <short> A system for applying effects to Plasma elements.</short>
     [SmokeClass("Plasma::Animator")]
     public class Animator : QObject {

@@ -6,7 +6,8 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
-    ///  </remarks>        <short> Plasma Applet that is fully rendered using OpengGL.</short>
+    ///  @class GLApplet plasma/glapplet.h <Plasma/GLApplet>
+    /// </remarks>        <short> Plasma Applet that is fully rendered using OpengGL.</short>
     [SmokeClass("Plasma::GLApplet")]
     public class GLApplet : Plasma.Applet, IDisposable {
         protected GLApplet(Type dummy) : base((Type) null) {}

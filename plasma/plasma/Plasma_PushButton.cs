@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="IPushButtonSignals"></see> for signals emitted by PushButton
-    /// </remarks>
+    /// <remarks>
+    ///  @class PushButton plasma/widgets/pushbutton.h <Plasma/Widgets/PushButton>
+    ///  See <see cref="IPushButtonSignals"></see> for signals emitted by PushButton
+    /// </remarks>        <short> Provides a plasma-themed KPushButton.  </short>
     [SmokeClass("Plasma::PushButton")]
     public class PushButton : QGraphicsProxyWidget, IDisposable {
         protected PushButton(Type dummy) : base((Type) null) {}

@@ -4,6 +4,9 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    /// <remarks>
+    ///  @class RunnerScript plasma/scripting/runnerscript.h <Plasma/Scripting/RunnerScript>
+    /// </remarks>        <short> Provides a restricted interface for scripting a runner.  </short>
     [SmokeClass("Plasma::RunnerScript")]
     public class RunnerScript : Plasma.ScriptEngine, IDisposable {
         protected RunnerScript(Type dummy) : base((Type) null) {}

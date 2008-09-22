@@ -6,10 +6,10 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
-    ///  @brief DataEngine loader and life time manager
+    ///  @class DataEngineManager plasma/dataenginemanager.h <Plasma/DataEngineManager>
     ///  Plasma.DataEngineManager provides facilities for listing, loading and
     ///  according to reference count unloading of DataEngines.
-    /// </remarks>        <short>    @brief DataEngine loader and life time manager </short>
+    /// </remarks>        <short> DataEngine loader and life time manager.</short>
     [SmokeClass("Plasma::DataEngineManager")]
     public class DataEngineManager : QObject {
         protected DataEngineManager(Type dummy) : base((Type) null) {}

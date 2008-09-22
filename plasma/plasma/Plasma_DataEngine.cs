@@ -6,8 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
-    ///  @class DataEngine
-    ///  @brief Data provider for plasmoids (Plasma plugins)
+    ///  @class DataEngine plasma/dataengine.h <Plasma/DataEngine>
     ///  This is the base class for DataEngines, which provide access to bodies of
     ///  data via a common and consistent interface. The common use of a DataEngine
     ///  is to provide data to a widget for display. This allows a user interface
@@ -17,7 +16,7 @@ namespace Plasma {
     ///  data sources which are identified by name. For instance, a network
     ///  DataEngine might provide a data source for each network interface.
     ///  See <see cref="IDataEngineSignals"></see> for signals emitted by DataEngine
-    /// </remarks>        <short>    @class DataEngine  @brief Data provider for plasmoids (Plasma plugins) </short>
+    /// </remarks>        <short> Data provider for plasmoids (Plasma plugins).</short>
     [SmokeClass("Plasma::DataEngine")]
     public class DataEngine : QObject, IDisposable {
         protected DataEngine(Type dummy) : base((Type) null) {}
@@ -391,12 +390,20 @@ namespace Plasma {
     public interface IDataEngineSignals : IQObjectSignals {
         /// <remarks>
         ///  Emitted when a new data source is created
+        ///  Note that you do not need to emit this yourself unless
+        ///  you are reimplementing sources() and want to advertise
+        ///  that a new source is available (but hasn't been created
+        ///  yet).
         /// <param> name="source" the name of the new data source
         /// </param></remarks>        <short>    Emitted when a new data source is created </short>
         [Q_SIGNAL("void sourceAdded(QString)")]
         void SourceAdded(string source);
         /// <remarks>
         ///  Emitted when a data source is removed.
+        ///  Note that you do not need to emit this yourself unless
+        ///  you have reimplemented sources() and want to signal that
+        ///  a source that was available but was never created is no
+        ///  longer available.
         /// <param> name="source" the name of the data source that was removed
         /// </param></remarks>        <short>    Emitted when a data source is removed.</short>
         [Q_SIGNAL("void sourceRemoved(QString)")]

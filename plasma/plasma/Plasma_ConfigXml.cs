@@ -4,6 +4,7 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    using System.Collections.Generic;
     [SmokeClass("Plasma::ConfigXml")]
     public class ConfigXml : KConfigSkeleton, IDisposable {
         protected ConfigXml(Type dummy) : base((Type) null) {}
@@ -57,6 +58,13 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("ConfigXml##", "ConfigXml(const KConfigGroup*, QIODevice*)", typeof(void), typeof(KConfigGroup), config, typeof(QIODevice), xml);
         }
+        /// <remarks>
+        ///  Finds the item for the given group and key.
+        ///  @arg group the group in the config file to look in
+        ///  @arg key the configuration key to find
+        /// </remarks>        <return> the associated KConfigSkeletonItem, or 0 if none
+        ///      </return>
+        ///         <short>    Finds the item for the given group and key.</short>
         public KConfigSkeletonItem FindItem(string group, string key) {
             return (KConfigSkeletonItem) interceptor.Invoke("findItem$$", "findItem(const QString&, const QString&)", typeof(KConfigSkeletonItem), typeof(string), group, typeof(string), key);
         }
@@ -68,6 +76,13 @@ namespace Plasma {
         ///         <short>    Check to see if a group exists </short>
         public bool HasGroup(string group) {
             return (bool) interceptor.Invoke("hasGroup$", "hasGroup(const QString&) const", typeof(bool), typeof(string), group);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the list of groups defined by the XML
+        ///      </return>
+        ///         <short>   </short>
+        public List<string> GroupList() {
+            return (List<string>) interceptor.Invoke("groupList", "groupList() const", typeof(List<string>));
         }
         ~ConfigXml() {
             interceptor.Invoke("~ConfigXml", "~ConfigXml()", typeof(void));

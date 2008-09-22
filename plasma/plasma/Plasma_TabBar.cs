@@ -5,8 +5,12 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  See <see cref="ITabBarSignals"></see> for signals emitted by TabBar
-    /// </remarks>        <short> A tab bar widget, to be used for tabbed interfaces.  Provides a Tab bar for use in a tabbed interface where each page is a QGraphicsLayoutItem.  Only one of them is displayed at a given time. It is possible to add and remove tabs  or modify their text label or their icon.  </short>
+    ///  @class TabBar plasma/widgets/tabbar.h <Plasma/Widgets/TabBar>
+    ///  Provides a Tab bar for use in a tabbed interface where each page is a QGraphicsLayoutItem.
+    ///  Only one of them is displayed at a given time. It is possible to add and remove tabs
+    ///  or modify their text label or their icon.
+    ///   See <see cref="ITabBarSignals"></see> for signals emitted by TabBar
+    /// </remarks>        <short> A tab bar widget, to be used for tabbed interfaces. </short>
     [SmokeClass("Plasma::TabBar")]
     public class TabBar : QGraphicsWidget, IDisposable {
         protected TabBar(Type dummy) : base((Type) null) {}

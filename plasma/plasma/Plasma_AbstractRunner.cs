@@ -6,22 +6,24 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
-    ///  An abstract base class for Plasma Runner plugins
+    ///  @class AbstractRunner plasma/abstractrunner.h <Plasma/AbstractRunner>
     ///  Be aware that runners have to be thread-safe. This is due to
     ///  the fact that each runner is executed in its own thread for
     ///  each new term. Thus, a runner may be executed more than once
     ///  at the same time.
-    ///  </remarks>        <short>    An abstract base class for Plasma Runner plugins </short>
+    ///  </remarks>        <short> An abstract base class for Plasma Runner plugins. </short>
     [SmokeClass("Plasma::AbstractRunner")]
     public abstract class AbstractRunner : QObject {
         protected AbstractRunner(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(AbstractRunner), this);
         }
+        /// <remarks> Specifies a nominal speed for the runner </remarks>        <short>   Specifies a nominal speed for the runner </short>
         public enum Speed {
             SlowSpeed = 0,
             NormalSpeed = 1,
         }
+        /// <remarks> Specifies a priority for the runner </remarks>        <short>   Specifies a priority for the runner </short>
         public enum Priority {
             LowestPriority = 0,
             LowPriority = 1,
@@ -134,6 +136,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Accessor for the associated Package object if any.
+        ///  Note that the returned pointer is only valid for the lifetime of
+        ///  the runner.
         /// </remarks>        <return> the Package object, or 0 if none
         /// </return>
         ///         <short>    Accessor for the associated Package object if any.</short>

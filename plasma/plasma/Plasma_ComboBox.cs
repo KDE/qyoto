@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="IComboBoxSignals"></see> for signals emitted by ComboBox
-    /// </remarks>
+    /// <remarks>
+    ///  @class ComboBox plasma/widgets/combobox.h <Plasma/Widgets/ComboBox>
+    ///  See <see cref="IComboBoxSignals"></see> for signals emitted by ComboBox
+    /// </remarks>        <short> Provides a Plasma-themed combo box.  </short>
     [SmokeClass("Plasma::ComboBox")]
     public class ComboBox : QGraphicsProxyWidget, IDisposable {
         protected ComboBox(Type dummy) : base((Type) null) {}

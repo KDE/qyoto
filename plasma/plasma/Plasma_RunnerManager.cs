@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class RunnerManager plasma/runnermanager.h <Plasma/RunnerManager>
     ///  See <see cref="IRunnerManagerSignals"></see> for signals emitted by RunnerManager
     /// </remarks>        <short> The RunnerManager class decides what installed runners are runnable,         and their ratings. It is the main proxy to the runners.  </short>
     [SmokeClass("Plasma::RunnerManager")]
@@ -33,7 +34,7 @@ namespace Plasma {
         /// <remarks>
         ///  Finds and returns a loaded runner or NULL
         ///  @arg name the name of the runner
-        /// </remarks>        <return> Pointer to the runner 
+        /// </remarks>        <return> Pointer to the runner
         ///          </return>
         ///         <short>    Finds and returns a loaded runner or NULL  @arg name the name of the runner </short>
         public Plasma.AbstractRunner Runner(string name) {
@@ -83,11 +84,11 @@ namespace Plasma {
             interceptor.Invoke("reloadConfiguration", "reloadConfiguration()", typeof(void));
         }
         /// <remarks>
-        ///  Launch a query, this will create threads and return inmediately. 
-        ///  When the information will be available can be known using the 
+        ///  Launch a query, this will create threads and return inmediately.
+        ///  When the information will be available can be known using the
         ///  matchesChanged signal.
         ///  @arg term the term we want to find matches for
-        ///  @arg runner optional, if only one specific runner is to be used 
+        ///  @arg runner optional, if only one specific runner is to be used
         ///          </remarks>        <short>    Launch a query, this will create threads and return inmediately.</short>
         [Q_SLOT("void launchQuery(QString, QString)")]
         public void LaunchQuery(string term, string runnerName) {

@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="ILineEditSignals"></see> for signals emitted by LineEdit
-    /// </remarks>
+    /// <remarks>
+    ///  @class LineEdit plasma/widgets/lineedit.h <Plasma/Widgets/LineEdit>
+    ///  See <see cref="ILineEditSignals"></see> for signals emitted by LineEdit
+    /// </remarks>        <short> Provides a plasma-themed KLineEdit.  </short>
     [SmokeClass("Plasma::LineEdit")]
     public class LineEdit : QGraphicsProxyWidget, IDisposable {
         protected LineEdit(Type dummy) : base((Type) null) {}

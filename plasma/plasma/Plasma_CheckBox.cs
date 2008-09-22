@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="ICheckBoxSignals"></see> for signals emitted by CheckBox
-    /// </remarks>
+    /// <remarks>
+    ///  @class CheckBox plasma/widgets/checkbox.h <Plasma/Widgets/CheckBox>
+    ///  See <see cref="ICheckBoxSignals"></see> for signals emitted by CheckBox
+    /// </remarks>        <short> Provides a Plasma-themed checkbox.  </short>
     [SmokeClass("Plasma::CheckBox")]
     public class CheckBox : QGraphicsProxyWidget, IDisposable {
         protected CheckBox(Type dummy) : base((Type) null) {}

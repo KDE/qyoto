@@ -4,9 +4,15 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
-    ///  See <see cref="IViewSignals"></see> for signals emitted by View
-    /// </remarks>        <short> A QGraphicsView for Plasma.Applets. Each View is associated with  a Plasma.Containment and tracks geometry changes, maps to the current desktop  (if any) among other helpful utilities. It isn't stricly required to use  a Plasma.View with Plasma enabled applications, but it can make some  things easier.  </short>
+    ///  @class View plasma/view.h <Plasma/View>
+    ///  Each View is associated with a Plasma.Containment and tracks geometry
+    ///  changes, maps to the current desktop (if any) among other helpful
+    ///  utilities. It isn't stricly required to use a Plasma.View with Plasma
+    ///  enabled applications, but it can make some things easier.
+    ///   See <see cref="IViewSignals"></see> for signals emitted by View
+    /// </remarks>        <short> A QGraphicsView for a single Containment.</short>
     [SmokeClass("Plasma::View")]
     public class View : QGraphicsView, IDisposable {
         protected View(Type dummy) : base((Type) null) {}
@@ -106,6 +112,18 @@ namespace Plasma {
             return (Plasma.Containment) interceptor.Invoke("containment", "containment() const", typeof(Plasma.Containment));
         }
         /// <remarks>
+        ///  Swap the containment for this view, which will also cause the view
+        ///  to track the geometry of the containment.
+        /// <param> name="name" the plugin name for the new containment.
+        /// </param><param> name="args" argument list to pass to the containment
+        ///      </param></remarks>        <short>    Swap the containment for this view, which will also cause the view  to track the geometry of the containment.</short>
+        public Plasma.Containment SwapContainment(string name, List<QVariant> args) {
+            return (Plasma.Containment) interceptor.Invoke("swapContainment$?", "swapContainment(const QString&, const QList<QVariant>&)", typeof(Plasma.Containment), typeof(string), name, typeof(List<QVariant>), args);
+        }
+        public Plasma.Containment SwapContainment(string name) {
+            return (Plasma.Containment) interceptor.Invoke("swapContainment$", "swapContainment(const QString&)", typeof(Plasma.Containment), typeof(string), name);
+        }
+        /// <remarks>
         ///  Set whether or not the view should adjust its size when the associated
         ///  containment does.
         ///  @arg trackChanges true to syncronize the view's size with the containment's
@@ -133,7 +151,7 @@ namespace Plasma {
         ///  to track the geometry of the containment.
         ///  @arg containment the containment to center the view on
         ///      </remarks>        <short>    Sets the containment for this view, which will also cause the view  to track the geometry of the containment.</short>
-        [Q_SLOT("void setContainment(Containment*)")]
+        [Q_SLOT("void setContainment(Plasma::Containment*)")]
         [SmokeMethod("setContainment(Plasma::Containment*)")]
         public virtual void SetContainment(Plasma.Containment containment) {
             interceptor.Invoke("setContainment#", "setContainment(Plasma::Containment*)", typeof(void), typeof(Plasma.Containment), containment);

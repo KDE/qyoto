@@ -6,7 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
-    ///  @brief A description of the expected file structure of a given package type
+    ///  @class PackageStructure plasma/packagestructure.h <Plasma/PackageStructure>
     ///  PackageStructure defines what is in a package. This information is used
     ///  to create packages and provides a way to programatically refer to contents.
     ///  An example usage of this class might be:
@@ -27,7 +27,7 @@ namespace Plasma {
     ///  in the constructor.
     ///  Either way, PackageStructure creates a sort of "contract" between the packager and
     ///  the application which is also self-documenting.
-    /// </remarks>        <short>    @brief A description of the expected file structure of a given package type </short>
+    /// </remarks>        <short> A description of the expected file structure of a given package type.</short>
     [SmokeClass("Plasma::PackageStructure")]
     public class PackageStructure : QObject, IDisposable {
         protected PackageStructure(Type dummy) : base((Type) null) {}

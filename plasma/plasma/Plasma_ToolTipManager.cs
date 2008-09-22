@@ -5,22 +5,37 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  Manage tooltips on QGraphicsWidget. First you have to register your widget by calling
-    ///  registerWidget on the ToolTipManager singleton. After this you have to set the content of
-    ///  the tooltip by calling setToolTipContent using the struct ToolTipContent. Calling
-    ///  setToolTipContent on a widget that is not registered will cause it to be registered.
-    ///  The tooltip manager unregister automatically the widget when it is destroyed but if 
-    ///  you want to do it manually call unregisterWidget. 
+    ///  @class ToolTipManager plasma/tooltipmanager.h <Plasma/ToolTipManager>
+    ///  If you want a widget to have a tooltip displayed when the mouse is hovered over
+    ///  it, you should do something like:
+    ///  @code
+    ///  // widget is a QGraphicsWidget
+    ///  Plasma.ToolTipManager.ToolTipContent data;
+    ///  data.mainText = i18n("My Title");
+    ///  data.subText = i18n("This is a little tooltip");
+    ///  data.image = KIcon("some-icon").pixmap(IconSize(KIconLoader.Desktop));
+    ///  Plasma.ToolTipManager.Self().SetToolTipContent(widget, data);
+    ///  @endcode
+    ///  Note that, since a Plasma.Applet is a QGraphicsWidget, you can use
+    ///  Plasma.ToolTipManager.Self().SetToolTipContent(this, data); in the
+    ///  applet's init() method to set a tooltip for the whole applet.
+    ///  The tooltip will be registered automatically by setToolTipContent().  It will be
+    ///  automatically unregistered when the associated widget is deleted, freeing the
+    ///  memory used by the tooltip, but you can manually unregister it at any time by
+    ///  calling unregisterWidget().
     ///  When a tooltip for a widget is about to be shown, the widget's toolTipAboutToShow slot will be
-    ///  invoked if it exists. Similarly, when a tooltip is hidden, the widget's toolTipHidden() slow
+    ///  invoked if it exists. Similarly, when a tooltip is hidden, the widget's toolTipHidden() slot
     ///  will be invoked if it exists. This allows widgets to provide on-demand tooltip data.
-    ///   </remarks>        <short> The class to manage tooltips on QGraphicsWidget in Plasma.</short>
+    ///  </remarks>        <short> Manages tooltips for QGraphicsWidgets in Plasma.</short>
     [SmokeClass("Plasma::ToolTipManager")]
     public class ToolTipManager : QObject, IDisposable {
         protected ToolTipManager(Type dummy) : base((Type) null) {}
         /// <remarks>
-        ///  Content of a tooltip
-        ///       </remarks>        <short>    Content of a tooltip       </short>
+        ///  @struct ToolTipContent plasma/tooltipmanager.h <Plasma/ToolTipManager>
+        ///  This provides the content for a tooltip.
+        ///  Normally you will want to set at least the <code>mainText</code> and
+        ///  <code>subText.</code>
+        ///      </remarks>        <short>    @struct ToolTipContent plasma/tooltipmanager.</short>
         [SmokeClass("Plasma::ToolTipManager::ToolTipContent")]
         public class ToolTipContent : Object, IDisposable {
             protected SmokeInvocation interceptor = null;
@@ -45,10 +60,12 @@ namespace Plasma {
                 get { return (uint) interceptor.Invoke("windowToPreview", "windowToPreview()", typeof(uint)); }
                 set { interceptor.Invoke("setWindowToPreview$", "setWindowToPreview(WId)", typeof(void), typeof(uint), value); }
             }
+            /// <remarks> Creates an empty ToolTipContent </remarks>        <short>   Creates an empty ToolTipContent </short>
             public ToolTipContent() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("ToolTipContent", "ToolTipContent()", typeof(void));
             }
+            /// <remarks> @return true if all the fields are empty </remarks>        <short>   @return true if all the fields are empty </short>
             public bool IsEmpty() {
                 return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
             }
@@ -67,8 +84,9 @@ namespace Plasma {
             staticInterceptor = new SmokeInvocation(typeof(ToolTipManager), null);
         }
         /// <remarks>
-        ///  Default constructor. Usually you want to use the singleton instead.
-        ///         </remarks>        <short>    Default constructor.</short>
+        ///  Default constructor.
+        ///  You should normall use self() instead.
+        ///      </remarks>        <short>    Default constructor.</short>
         public ToolTipManager(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("ToolTipManager#", "ToolTipManager(QObject*)", typeof(void), typeof(QObject), parent);
@@ -78,67 +96,95 @@ namespace Plasma {
             interceptor.Invoke("ToolTipManager", "ToolTipManager()", typeof(void));
         }
         /// <remarks>
-        ///  Function to show a tooltip of a widget registered in the tooltip manager
-        /// <param> name="widget" the widget on which the tooltip will be displayed
-        ///       </param></remarks>        <short>    Function to show a tooltip of a widget registered in the tooltip manager </short>
+        ///  Show the tooltip for a widget registered in the tooltip manager
+        /// <param> name="widget" the widget for which the tooltip will be displayed
+        ///      </param></remarks>        <short>    Show the tooltip for a widget registered in the tooltip manager </short>
         public void ShowToolTip(QGraphicsWidget widget) {
             interceptor.Invoke("showToolTip#", "showToolTip(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Function to know if a tooltip of a widget is displayed
-        /// <param> name="widget" the desired widget
-        /// </param></remarks>        <return> true if te tooltip of the widget is currently displayed, otherwhise no
-        ///       </return>
-        ///         <short>    Function to know if a tooltip of a widget is displayed </short>
+        ///  Find out whether the tooltip for a given widget is currently being displayed.
+        /// <param> name="widget" the widget to check the tooltip for
+        /// </param></remarks>        <return> true if the tooltip of the widget is currently displayed,
+        ///          false if not
+        ///      </return>
+        ///         <short>    Find out whether the tooltip for a given widget is currently being displayed.</short>
         public bool IsWidgetToolTipDisplayed(QGraphicsWidget widget) {
             return (bool) interceptor.Invoke("isWidgetToolTipDisplayed#", "isWidgetToolTipDisplayed(QGraphicsWidget*)", typeof(bool), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Function to launch a delayed hide of the current displayed tooltip
-        /// <param> name="widget" the desired widget
-        ///       </param></remarks>        <short>    Function to launch a delayed hide of the current displayed tooltip </short>
+        ///  Hides the currently showing tooltip after a short amount of time.
+        ///      </remarks>        <short>    Hides the currently showing tooltip after a short amount of time.</short>
         public void DelayedHideToolTip() {
             interceptor.Invoke("delayedHideToolTip", "delayedHideToolTip()", typeof(void));
         }
         /// <remarks>
-        ///  Function to hide the tooltip of the desired widget
-        /// <param> name="widget" the desired widget
-        ///       </param></remarks>        <short>    Function to hide the tooltip of the desired widget </short>
+        ///  Hides the tooltip for a widget immediately.
+        /// <param> name="widget" the widget to hide the tooltip for
+        ///      </param></remarks>        <short>    Hides the tooltip for a widget immediately.</short>
         public void HideToolTip(QGraphicsWidget widget) {
             interceptor.Invoke("hideToolTip#", "hideToolTip(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Function to register a widget to the tooltip manager, after this a setWidgetToolTipContent
-        ///  must be called
+        ///  Registers a widget with the tooltip manager.
+        ///  Note that setToolTipContent() will register the widget if it
+        ///  has not already been registered, and so you do not normally
+        ///  need to use the method.
+        ///  This is useful for creating tooltip content on demand.  You can
+        ///  register your widget with registerWidget(), then implement
+        ///  a slot named toolTipAboutToShow for the widget.  This will be
+        ///  called before the tooltip is shown, allowing you to set the
+        ///  data with setToolTipContent().
+        ///  If the widget also has a toolTipHidden slot, this will be called
+        ///  after the tooltip is hidden.
         /// <param> name="widget" the desired widget
-        ///       </param></remarks>        <short>    Function to register a widget to the tooltip manager, after this a setWidgetToolTipContent  must be called </short>
+        ///      </param></remarks>        <short>    Registers a widget with the tooltip manager.</short>
         public void RegisterWidget(QGraphicsWidget widget) {
             interceptor.Invoke("registerWidget#", "registerWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Function to unregister a widget in the tooltip manager, i.e. means that memory will be free
+        ///  Unregisters a widget from the tooltip manager.
+        ///  This will free the memory used by the tooltip associated with the widget.
         /// <param> name="widget" the desired widget to delete
-        ///       </param></remarks>        <short>    Function to unregister a widget in the tooltip manager, i.</short>
+        ///      </param></remarks>        <short>    Unregisters a widget from the tooltip manager.</short>
         public void UnregisterWidget(QGraphicsWidget widget) {
             interceptor.Invoke("unregisterWidget#", "unregisterWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Function to set the content of a tooltip on a desired widget.
-        /// <param> name="widget" the desired widget
-        /// </param><param> name="data" the content of the tooltip. If an empty ToolTipContent is passed in,
-        ///         the tooltip content will be reset.
-        ///        </param></remarks>        <short>    Function to set the content of a tooltip on a desired widget.</short>
+        ///  Sets the content for the tooltip associated with a widget.
+        ///  Note that this will register the widget with the ToolTipManager if
+        ///  necessary, so there is usually no need to call registerWidget().
+        /// <param> name="widget" the widget the tooltip should be associated with
+        /// </param><param> name="data" the content of the tooltip. If an empty ToolTipContent
+        ///                is passed in, the tooltip content will be reset.
+        ///      </param></remarks>        <short>    Sets the content for the tooltip associated with a widget.</short>
         public void SetToolTipContent(QGraphicsWidget widget, Plasma.ToolTipManager.ToolTipContent data) {
             interceptor.Invoke("setToolTipContent##", "setToolTipContent(QGraphicsWidget*, const Plasma::ToolTipManager::ToolTipContent&)", typeof(void), typeof(QGraphicsWidget), widget, typeof(Plasma.ToolTipManager.ToolTipContent), data);
         }
         /// <remarks>
-        ///  Function to know if widget has a tooltip registered in the tooltip manager
-        /// <param> name="widget" the widget
-        /// </param></remarks>        <return> true if this widget has a tooltip
-        ///       </return>
-        ///         <short>    Function to know if widget has a tooltip registered in the tooltip manager </short>
+        ///  Checks whether a widget has a tooltip associated with it.
+        /// <param> name="widget" the widget to check for an associated tooltip
+        /// </param></remarks>        <return> true if the widget has a tooltip associated,
+        ///          false if it does not
+        ///      </return>
+        ///         <short>    Checks whether a widget has a tooltip associated with it.</short>
         public bool WidgetHasToolTip(QGraphicsWidget widget) {
             return (bool) interceptor.Invoke("widgetHasToolTip#", "widgetHasToolTip(QGraphicsWidget*) const", typeof(bool), typeof(QGraphicsWidget), widget);
+        }
+        /// <remarks>
+        ///   Enable/or disable a Tooltip, this method is usefull is we want
+        ///   to have a tooltip activated on demand.
+        /// <param> name="widget" the widget to change tooltip behaviour
+        /// </param><param> name="enable" if we need the tooltip or not
+        ///      </param></remarks>        <short>     Enable/or disable a Tooltip, this method is usefull is we want   to have a tooltip activated on demand.</short>
+        public void SetToolTipActivated(QGraphicsWidget widget, bool enable) {
+            interceptor.Invoke("setToolTipActivated#$", "setToolTipActivated(QGraphicsWidget*, bool)", typeof(void), typeof(QGraphicsWidget), widget, typeof(bool), enable);
+        }
+        /// <remarks>
+        ///  Return true is the tooltip will be displayed, false otherwise
+        ///      </remarks>        <short>    Return true is the tooltip will be displayed, false otherwise      </short>
+        public bool IsToolTipActivated(QGraphicsWidget widget) {
+            return (bool) interceptor.Invoke("isToolTipActivated#", "isToolTipActivated(QGraphicsWidget*)", typeof(bool), typeof(QGraphicsWidget), widget);
         }
         ~ToolTipManager() {
             interceptor.Invoke("~ToolTipManager", "~ToolTipManager()", typeof(void));
@@ -148,7 +194,7 @@ namespace Plasma {
         }
         /// <remarks>
         /// </remarks>        <return> The singleton instance of the manager.
-        /// </return>
+        ///      </return>
         ///         <short>   </short>
         public static Plasma.ToolTipManager Self() {
             return (Plasma.ToolTipManager) staticInterceptor.Invoke("self", "self()", typeof(Plasma.ToolTipManager));

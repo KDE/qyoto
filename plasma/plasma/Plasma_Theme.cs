@@ -5,6 +5,7 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
+    ///  @class Theme plasma/theme.h <Plasma/Theme>
     ///  Accessed via Plasma.Theme.DefaultTheme() e.g:
     ///  <pre>
     ///  string imagePath = Plasma.Theme.DefaultTheme().ImagePath("widgets/clock")

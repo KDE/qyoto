@@ -5,10 +5,11 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
+    ///  @class ExtenderItem plasma/extenderitem.h <Plasma/ExtenderItem>
     ///  This class wraps around a QGraphicsWidget and provides drag&drop handling, a draghandle,
     ///  title and ability to display qactions as a row of icon, ability to expand, collapse, return
     ///  to source and tracks configuration associated with this item for you.
-    ///  </remarks>        <short>    This class wraps around a QGraphicsWidget and provides drag&drop handling, a draghandle,  title and ability to display qactions as a row of icon, ability to expand, collapse, return  to source and tracks configuration associated with this item for you.</short>
+    ///  </remarks>        <short> Provides detachable items for an Extender.</short>
     [SmokeClass("Plasma::ExtenderItem")]
     public class ExtenderItem : QGraphicsWidget, IDisposable {
         protected ExtenderItem(Type dummy) : base((Type) null) {}

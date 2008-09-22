@@ -5,8 +5,7 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  @brief The base class for scripting interfaces to be used in loading
-    ///         plasmoids of a given language.
+    ///  @class ScriptEngine plasma/scripting/scriptengine.h <Plasma/Scripting/ScriptEngine>
     ///  All ScriptEngines should export as consistent an interface as possible
     ///  so that the learning curve is limited. In particular, the following
     ///  API should be made available in the script environment:
@@ -15,7 +14,7 @@ namespace Plasma {
     ///  LoadUserInterface(String uiFile) - loads and returns a given UI file
     ///  LoadImage - loads an image resource out of the plasmoid's package
     ///  PlasmaSvg - creates and returns an Svg file
-    /// </remarks>        <short>    @brief The base class for scripting interfaces to be used in loading         plasmoids of a given language.</short>
+    /// </remarks>        <short> The base class for scripting interfaces to be used in loading         plasmoids of a given language. </short>
     [SmokeClass("Plasma::ScriptEngine")]
     public class ScriptEngine : QObject, IDisposable {
         protected ScriptEngine(Type dummy) : base((Type) null) {}

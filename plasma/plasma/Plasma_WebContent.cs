@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="IWebContentSignals"></see> for signals emitted by WebContent
-    /// </remarks>
+    /// <remarks>
+    ///  @class WebContent plasma/widgets/webcontent.h <Plasma/Widgets/WebContent>
+    ///  See <see cref="IWebContentSignals"></see> for signals emitted by WebContent
+    /// </remarks>        <short> Provides a widget to display html content in Plasma.  </short>
     [SmokeClass("Plasma::WebContent")]
     public class WebContent : QGraphicsWidget, IDisposable {
         protected WebContent(Type dummy) : base((Type) null) {}

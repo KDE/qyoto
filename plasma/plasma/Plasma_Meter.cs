@@ -6,7 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
-    ///  This class provides generic meter widget for the Plasma desktop.
+    ///  @class Meter plasma/widgets/meter.h <Plasma/Widgets/Meter>
     ///  Analog and bar meters are supported.
     ///  Svgs can have following ids:
     ///  - background: Drawn first to the bottom
@@ -19,7 +19,7 @@ namespace Plasma {
     ///  - foreground: Is drawn to top
     /// </remarks>        <author> Petri Damstén
     ///  </author>
-    ///         <short>    This class provides generic meter widget for the Plasma desktop.</short>
+    ///         <short> Provides generic meter widget for Plasma.</short>
     [SmokeClass("Plasma::Meter")]
     public class Meter : QGraphicsWidget, IDisposable {
         protected Meter(Type dummy) : base((Type) null) {}

@@ -125,6 +125,17 @@ namespace Plasma {
             return (bool) staticInterceptor.Invoke("installPackage$$", "installPackage(const QString&, const QString&)", typeof(bool), typeof(string), package, typeof(string), packageRoot);
         }
         /// <remarks>
+        ///  Uninstalls a package.
+        /// <param> name="package" path to the Plasmagik package
+        /// </param><param> name="packageRoot" path to the directory where the package should be
+        ///                     installed to
+        /// </param></remarks>        <return> true on successful uninstallation, false otherwise
+        /// </return>
+        ///         <short>    Uninstalls a package.</short>
+        public static bool UninstallPackage(string package, string packageRoot) {
+            return (bool) staticInterceptor.Invoke("uninstallPackage$$", "uninstallPackage(const QString&, const QString&)", typeof(bool), typeof(string), package, typeof(string), packageRoot);
+        }
+        /// <remarks>
         ///  Registers a package described by the given desktop file
         ///  @arg the full path to the desktop file (must be KPluginInfo compatible)
         /// </remarks>        <return> true on success, false on failure

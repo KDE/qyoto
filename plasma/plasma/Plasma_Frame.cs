@@ -5,7 +5,10 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    /// </remarks>        <short> A widget that provides a simple frame  A simple frame to group widgets, it can have a plain, sunken or raise aspect  the default aspect is plain.</short>
+    ///  @class Frame plasma/widgets/frame.h <Plasma/Widgets/Frame>
+    ///  A simple frame to group widgets, it can have a plain, sunken or raise aspect
+    ///  the default aspect is plain
+    ///  </remarks>        <short> A widget that provides a simple frame.</short>
     [SmokeClass("Plasma::Frame")]
     public class Frame : QGraphicsWidget, IDisposable {
         protected Frame(Type dummy) : base((Type) null) {}

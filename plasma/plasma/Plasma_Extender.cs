@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class Extender plasma/extender.h <Plasma/Extender>
     ///  An Extender is a widget that visually extends the normal contents of an applet with
     ///  additional dynamic widgets called ExtenderItems. These ExtenderItems can be
     ///  detached by the user and dropped either on another Extender or on the canvas directly.
@@ -16,7 +17,7 @@ namespace Plasma {
     ///  If you wish to have a different presentation of extender items, you can choose to subclass
     ///  Extender and reimplement the extenderItem events and, optionally, the saveState function.
     ///   See <see cref="IExtenderSignals"></see> for signals emitted by Extender
-    /// </remarks>        <short>    An Extender is a widget that visually extends the normal contents of an applet with  additional dynamic widgets called ExtenderItems.</short>
+    /// </remarks>        <short> Extends applets to allow detachable parts.</short>
     [SmokeClass("Plasma::Extender")]
     public class Extender : QGraphicsWidget, IDisposable {
         protected Extender(Type dummy) : base((Type) null) {}

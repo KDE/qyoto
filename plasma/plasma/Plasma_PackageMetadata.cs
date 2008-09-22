@@ -4,6 +4,9 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    /// <remarks>
+    ///  @class PackageMetadata plasma/packagemetadata.h <Plasma/PackageMetadata>
+    /// </remarks>        <short> Provides metadata for a Package. </short>
     [SmokeClass("Plasma::PackageMetadata")]
     public class PackageMetadata : Object, IDisposable {
         protected SmokeInvocation interceptor = null;

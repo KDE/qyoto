@@ -4,6 +4,9 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    /// <remarks>
+    ///  @class GroupBox plasma/widgets/groupbox.h <Plasma/Widgets/GroupBox>
+    /// </remarks>        <short> Provides a plasma-themed QGroupBox.  </short>
     [SmokeClass("Plasma::GroupBox")]
     public class GroupBox : QGraphicsProxyWidget, IDisposable {
         protected GroupBox(Type dummy) : base((Type) null) {}

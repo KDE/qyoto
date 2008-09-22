@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     using System.Collections.Generic;
     /// <remarks>
+    ///  @class Applet plasma/applet.h <Plasma/Applet>
     ///  Applet provides several important roles for add-ons widgets in Plasma.
     ///  First, it is the base class for the plugin system and therefore is the
     ///  interface to applets for host applications. It also handles the life time
@@ -227,6 +228,12 @@ namespace Plasma {
         [SmokeMethod("location() const")]
         public virtual Plasma.Location location() {
             return (Plasma.Location) interceptor.Invoke("location", "location() const", typeof(Plasma.Location));
+        }
+        /// <remarks>
+        ///  Returns the workspace context which the applet is operating in
+        ///          </remarks>        <short>    Returns the workspace context which the applet is operating in          </short>
+        public Plasma.Context Context() {
+            return (Plasma.Context) interceptor.Invoke("context", "context() const", typeof(Plasma.Context));
         }
         /// <remarks>
         /// </remarks>        <return> the preferred aspect ratio mode for placement and resizing
@@ -461,6 +468,14 @@ namespace Plasma {
             interceptor.Invoke("init", "init()", typeof(void));
         }
         /// <remarks>
+        ///  Called when applet configuration values has changed.
+        ///          </remarks>        <short>    Called when applet configuration values has changed.</short>
+        [Q_SLOT("void configChanged()")]
+        [SmokeMethod("configChanged()")]
+        public virtual void ConfigChanged() {
+            interceptor.Invoke("configChanged", "configChanged()", typeof(void));
+        }
+        /// <remarks>
         ///  Get's called when and extender item has to be initialized after a plasma restart. If you
         ///  create ExtenderItems in your applet, you should implement this function to again create
         ///  the widget that should be shown in this extender item. This function might look something
@@ -471,6 +486,8 @@ namespace Plasma {
         ///  item.SetWidget(widget);
         ///  @endcode
         ///  You can also add one or more custom qactions to this extender item in this function.
+        ///  Note that by default, not all ExtenderItems are persistent. Only items that are detached,
+        ///  will have there configuration stored when plasma exists.
         ///          </remarks>        <short>    Get's called when and extender item has to be initialized after a plasma restart.</short>
         [Q_SLOT("void initExtenderItem(ExtenderItem*)")]
         [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]

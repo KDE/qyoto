@@ -4,8 +4,10 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="IRadioButtonSignals"></see> for signals emitted by RadioButton
-    /// </remarks>
+    /// <remarks>
+    ///  @class RadioButton plasma/widgets/radiobutton.h <Plasma/Widgets/RadioButton>
+    ///  See <see cref="IRadioButtonSignals"></see> for signals emitted by RadioButton
+    /// </remarks>        <short> Provides a plasma-themed QRadioButton.  </short>
     [SmokeClass("Plasma::RadioButton")]
     public class RadioButton : QGraphicsProxyWidget, IDisposable {
         protected RadioButton(Type dummy) : base((Type) null) {}

@@ -5,8 +5,10 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     using System.Collections.Generic;
-    /// <remarks> See <see cref="ITextEditSignals"></see> for signals emitted by TextEdit
-    /// </remarks>
+    /// <remarks>
+    ///  @class TextEdit plasma/widgets/textedit.h <Plasma/Widgets/TextEdit>
+    ///  See <see cref="ITextEditSignals"></see> for signals emitted by TextEdit
+    /// </remarks>        <short> Provides a plasma-themed KTextEdit.  </short>
     [SmokeClass("Plasma::TextEdit")]
     public class TextEdit : QGraphicsProxyWidget, IDisposable {
         protected TextEdit(Type dummy) : base((Type) null) {}

@@ -5,13 +5,14 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
+    ///  @class Delegate plasma/delegate.h <Plasma/Delegate>
     ///  Item delegate for rendering items in Plasma menus implemented with item views.
     ///  The delegate makes use of its own data roles that are:
     ///  SubTitleRole: the text of the subtitle
     ///  SubTitleMandatoryRole: if the subtitle is to always be displayed (as default the subtitle is displayed only on mouse over)
     ///  ColumnTypeRole: if the column is a main column (with title and subtitle)
     ///  or a secondary action column (only a little icon that appears on mouse over is displayed)
-    ///  </remarks>        <short>    Item delegate for rendering items in Plasma menus implemented with item views.</short>
+    ///  </remarks>        <short>    @class Delegate plasma/delegate.</short>
     [SmokeClass("Plasma::Delegate")]
     public class Delegate : QAbstractItemDelegate, IDisposable {
         protected Delegate(Type dummy) : base((Type) null) {}

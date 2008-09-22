@@ -5,6 +5,9 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     using System.Collections.Generic;
+    /// <remarks>
+    ///  @class SignalPlotter plasma/widgets/signalplotter.h <Plasma/Widgets/SignalPlotter>
+    /// </remarks>        <short> Provides a signal plotter for plasma.  </short>
     [SmokeClass("Plasma::SignalPlotter")]
     public class SignalPlotter : QGraphicsWidget, IDisposable {
         protected SignalPlotter(Type dummy) : base((Type) null) {}

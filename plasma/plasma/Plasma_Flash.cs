@@ -5,8 +5,8 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  Class that allows to flash text or icons inside plasma
-    ///  </remarks>        <short>    Class that allows to flash text or icons inside plasma  </short>
+    ///  @class Flash plasma/widgets/flash.h <Plasma/Widgets/Flash>
+    /// </remarks>        <short> Provides flashing text or icons inside Plasma.</short>
     [SmokeClass("Plasma::Flash")]
     public class Flash : QGraphicsWidget, IDisposable {
         protected Flash(Type dummy) : base((Type) null) {}

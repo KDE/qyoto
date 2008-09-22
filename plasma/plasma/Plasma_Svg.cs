@@ -5,13 +5,14 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  @brief A theme aware image-centric SVG class
+    ///  @class Svg plasma/svg.h <Plasma/Svg>
     ///  Plasma.Svg provides a class for rendering SVG images to a QPainter in a
     ///  convenient manner. Unless an absolute path to a file is provided, it loads
     ///  the SVG document using Plasma.Theme. It also provides a number of internal
     ///  optimizations to help lower the cost of painting SVGs, such as caching.
     ///  See <see cref="ISvgSignals"></see> for signals emitted by Svg
-    /// </remarks>        <short>    @brief A theme aware image-centric SVG class </short>
+    /// </remarks>        <short> A theme aware image-centric SVG class.</short>
+    ///         <see> Plasma.PanelSvg</see>
     [SmokeClass("Plasma::Svg")]
     public class Svg : QObject, IDisposable {
         protected Svg(Type dummy) : base((Type) null) {}
@@ -27,8 +28,8 @@ namespace Plasma {
             get { return (bool) interceptor.Invoke("containsMultipleImages", "containsMultipleImages()", typeof(bool)); }
             set { interceptor.Invoke("setContainsMultipleImages$", "setContainsMultipleImages(bool)", typeof(void), typeof(bool), value); }
         }
-        [Q_PROPERTY("QString", "filePath")]
-        public string FilePath {
+        [Q_PROPERTY("QString", "imagePath")]
+        public string ImagePath {
             get { return (string) interceptor.Invoke("imagePath", "imagePath()", typeof(string)); }
             set { interceptor.Invoke("setImagePath$", "setImagePath(QString)", typeof(void), typeof(string), value); }
         }
