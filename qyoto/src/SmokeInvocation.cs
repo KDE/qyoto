@@ -415,6 +415,9 @@ namespace Qyoto {
 			}
 		}
 
+		// list of assemblies on which CallInitSmoke() has already been called.
+		public static List<Assembly> InitializedAssemblies = new List<Assembly>();
+		// whether the qyoto (core) runtime has been initialized
 		static bool runtimeInitialized = false;
 
 		public static void InitRuntime() {
@@ -427,6 +430,7 @@ namespace Qyoto {
 			foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
 				AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
 				if (attr != null) attr.CallInitSmoke();
+				InitializedAssemblies.Add(a);
 			}
 			runtimeInitialized = true;
 		}
@@ -610,6 +614,8 @@ namespace Qyoto {
 						returnValue = stack[0].s_long;
 					} else if (returnType == typeof(ushort)) {
 						returnValue = stack[0].s_ushort;
+					} else if (returnType == typeof(uint)) {
+						returnValue = stack[0].s_uint;
 					} else if (returnType.IsEnum) {
 						returnValue = Enum.ToObject(returnType, stack[0].s_int);
 					} else if (returnType == typeof(ulong)) {
@@ -618,6 +624,8 @@ namespace Qyoto {
 						returnValue = stack[0].s_char;
 					} else if (returnType == typeof(byte)) {
 						returnValue = stack[0].s_uchar;
+					} else if (returnType == typeof(char)) {
+						returnValue = (char) stack[0].s_char;
 					} else {
 						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
 							returnValue = null;

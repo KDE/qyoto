@@ -1,5 +1,5 @@
 /***************************************************************************
-                        soprano.cpp  -  description
+                        kimono.cpp  -  description
                              -------------------
     begin                : Mon Sep 10 2007
     copyright            : (C) 2007 by Arno Rehn
@@ -28,6 +28,11 @@
 #include <smoke/qt_smoke.h>
 #include <smoke/kde_smoke.h>
 
+#include <QMimeData>
+#include <QStringList>
+
+#include <KUrl>
+
 QHash<int, char*> classNames;
 
 const char *
@@ -46,6 +51,65 @@ IsContainedInstanceKDE(smokeqyoto_object* /*o*/)
 extern TypeHandler KDE_handlers[];
 
 extern "C" {
+
+typedef bool (*GetNextDictionaryEntryFn)(void** key, void** value);
+
+Q_DECL_EXPORT void
+KUrlListPopulateMimeData(NoArgs getNextItem, void* mimeData,
+	GetNextDictionaryEntryFn getNextDictionaryEntry, uint flags)
+{
+	QMimeData* md = (QMimeData*) ((smokeqyoto_object*) (*GetSmokeObject)(mimeData))->ptr;
+	(*FreeGCHandle)(mimeData);
+	KUrl::List list;
+	for (void* handle = (*getNextItem)(); handle; handle = (*getNextItem)()) {
+		list.append(*(KUrl*) ((smokeqyoto_object*) (*GetSmokeObject)(mimeData))->ptr);
+		(*FreeGCHandle)(handle);
+	}
+	QMap<QString, QString> map;
+	for (void *key = 0, *value = 0; getNextDictionaryEntry(&key, &value); ) {
+		QString k = QString::fromUtf8((char*) (*IntPtrToCharStar)(key));
+		QString v = QString::fromUtf8((char*) (*IntPtrToCharStar)(value));
+		map.insert(k, v);
+		(*FreeGCHandle)(key);
+		(*FreeGCHandle)(value);
+	}
+	list.populateMimeData(md, map, (KUrl::MimeDataFlags) flags);
+}
+
+Q_DECL_EXPORT void
+KUrlListMimeDataTypes(FromIntPtr addfn)
+{
+	foreach(QString str, KUrl::List::mimeDataTypes())
+		(*addfn)((*IntPtrFromQString)(&str));
+}
+
+Q_DECL_EXPORT bool
+KUrlListCanDecode(void* mimeData)
+{
+	QMimeData* md = (QMimeData*) ((smokeqyoto_object*) (*GetSmokeObject)(mimeData))->ptr;
+	(*FreeGCHandle)(mimeData);
+	return KUrl::List::canDecode(md);
+}
+
+Q_DECL_EXPORT void
+KUrlListFromMimeData(FromIntPtr addfn, void* mimeData, GetNextDictionaryEntryFn getNextDictionaryEntry)
+{
+	QMimeData* md = (QMimeData*) ((smokeqyoto_object*) (*GetSmokeObject)(mimeData))->ptr;
+	(*FreeGCHandle)(mimeData);
+	QMap<QString, QString> map;
+	for (void *key = 0, *value = 0; getNextDictionaryEntry(&key, &value); ) {
+		QString k = QString::fromUtf8((char*) (*IntPtrToCharStar)(key));
+		QString v = QString::fromUtf8((char*) (*IntPtrToCharStar)(value));
+		map.insert(k, v);
+		(*FreeGCHandle)(key);
+		(*FreeGCHandle)(value);
+	}
+	Smoke::Index id = kde_Smoke->idClass("KUrl").index;
+	foreach(KUrl url, KUrl::List::fromMimeData(md, (map.size() > 0)? &map : 0)) {
+		smokeqyoto_object *o = alloc_smokeqyoto_object(true, kde_Smoke, id, new KUrl(url));
+		(*addfn)((*CreateInstance)("Kimono.KUrl", o));
+	}
+}
 
 extern Q_DECL_EXPORT void Init_kimono();
 

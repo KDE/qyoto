@@ -69,8 +69,8 @@ namespace Kimono {
         }
         // WARNING: Unimplemented C++ pure virtual - DO NOT CALL
         [SmokeMethod("readData(char*, qint64)")]
-        protected override long ReadData(string data, long maxlen) {
-            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        protected override long ReadData(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         /// <remarks>
         ///  Creates an i/o device that is able to read from <code>fileName</code>,

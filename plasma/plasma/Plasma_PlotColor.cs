@@ -12,6 +12,14 @@ namespace Plasma {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(PlotColor), this);
         }
+        public QColor Color {
+            get { return (QColor) interceptor.Invoke("color", "color()", typeof(QColor)); }
+            set { interceptor.Invoke("setColor#", "setColor(QColor)", typeof(void), typeof(QColor), value); }
+        }
+        public QColor DarkColor {
+            get { return (QColor) interceptor.Invoke("darkColor", "darkColor()", typeof(QColor)); }
+            set { interceptor.Invoke("setDarkColor#", "setDarkColor(QColor)", typeof(void), typeof(QColor), value); }
+        }
         public PlotColor() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("PlotColor", "PlotColor()", typeof(void));

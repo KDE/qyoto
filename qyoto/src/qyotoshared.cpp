@@ -43,6 +43,7 @@ OverridenMethodFn GetProperty;
 SetPropertyFn SetProperty;
 
 SetIntPtr InvokeDelegate;
+FromIntPtr TryDispose;
 
 void
 smokeStackToQtStack(Smoke::Stack stack, void ** o, int start, int end, QList<MocArgument*> args)
@@ -324,6 +325,12 @@ extern "C"
 {
 
 Q_DECL_EXPORT void
+InstallTryDispose(FromIntPtr callback)
+{
+	TryDispose = callback;
+}
+
+Q_DECL_EXPORT void
 InstallInvokeDelegate(SetIntPtr callback)
 {
 	InvokeDelegate = callback;
@@ -395,6 +402,9 @@ static QRegExp * rx = 0;
 						smoke = it.key();
 						targetType = name;
 						typeId = smoke->idType(targetType.constData());
+						if (typeId != 0) {
+							break;
+						}
 	
 						if (typeId == 0 && !name.contains('*')) {
 							if (!name.contains("&")) {
@@ -411,28 +421,36 @@ static QRegExp * rx = 0;
 				}
 			} else if (staticType == "bool") {
 				arg->argType = xmoc_bool;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "int") {
 				arg->argType = xmoc_int;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "uint") {
 				arg->argType = xmoc_uint;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "long") {
 				arg->argType = xmoc_long;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "ulong") {
 				arg->argType = xmoc_ulong;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "double") {
 				arg->argType = xmoc_double;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "char*") {
 				arg->argType = xmoc_charstar;
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "QString") {
 				arg->argType = xmoc_QString;
 				name += "*";
+				smoke = qt_Smoke;
 				typeId = smoke->idType(name.constData());
 			}
 

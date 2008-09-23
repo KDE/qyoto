@@ -58,7 +58,8 @@ WriteIncludes::WriteIncludes(Uic *uic)
 
 void WriteIncludes::acceptUI(DomUI *node)
 {
-/*    m_includes.clear();
+    QStringList use;
+    m_includes.clear();
     m_customWidgets.clear();
 
     if (node->elementIncludes())
@@ -66,22 +67,6 @@ void WriteIncludes::acceptUI(DomUI *node)
 
     if (node->elementCustomWidgets())
         TreeWalker::acceptCustomWidgets(node->elementCustomWidgets());
-
-    add(QLatin1String("QApplication"));
-    add(QLatin1String("QVariant"));
-    add(QLatin1String("QAction"));
-
-    add(QLatin1String("QButtonGroup")); // ### only if it is really necessary
-
-    if (uic->hasExternalPixmap() && uic->pixmapFunction() == QLatin1String("qPixmapFromMimeSource"))
-        add(QLatin1String("Q3Mimefactory"));
-
-    if (uic->databaseInfo()->connections().size()) {
-        add(QLatin1String("QSqlDatabase"));
-        add(QLatin1String("Q3SqlCursor"));
-        add(QLatin1String("QSqlRecord"));
-        add(QLatin1String("Q3SqlForm"));
-    }
 
     TreeWalker::acceptUI(node);
 
@@ -93,13 +78,16 @@ void WriteIncludes::acceptUI(DomUI *node)
         if (header.trimmed().isEmpty())
             continue;
 
-        if (it.value())
-            output << "#include <" << header << ">\n";
-        else
-            output << "#include \"" << header << "\"\n";
+        if (header.toLower().startsWith("k") && !use.contains("Kimono"))
+            use << "Kimono";
+        else if (header.toLower().startsWith("ktexteditor") && !use.contains("KTextEditor"))
+            use << "KTextEditor";
     }
-    output << "\n";*/
-    output << "using Qyoto;\n\n";
+    output << "using Qyoto;\n";
+    foreach (QString str, use) {
+        output << "using " << str << ";\n";
+    }
+    output << "\n";
 }
 
 void WriteIncludes::acceptWidget(DomWidget *node)

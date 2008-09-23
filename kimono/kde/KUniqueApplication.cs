@@ -25,7 +25,7 @@ namespace Kimono {
     ///         <short>    KUniqueApplication is a KApplication which only uses a single process.</short>
     ///         <see> KApplication</see>
     [SmokeClass("KUniqueApplication")]
-    public class KUniqueApplication : KApplication, IDisposable {
+    public partial class KUniqueApplication : KApplication, IDisposable {
         protected KUniqueApplication(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KUniqueApplication), this);
@@ -40,26 +40,6 @@ namespace Kimono {
         ///    </remarks>        <short>     These flags can be used to specify how new instances of   unique applications are created.</short>
         public enum StartFlag {
             NonUniqueInstance = 0x1,
-        }
-        /// <remarks>
-        ///  Constructor. Takes command line arguments from KCmdLineArgs
-        /// <param> name="GUIenabled" Set to false to disable all GUI stuff. This implies
-        ///  no styles either.
-        /// </param><param> name="configUnique" If true, the uniqueness of the application will
-        ///                  depend on the value of the "MultipleInstances"
-        ///                  key in the "KDE" group of the application config file.
-        ///    </param></remarks>        <short>    Constructor.</short>
-        public KUniqueApplication(bool GUIenabled, bool configUnique) : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("KUniqueApplication$$", "KUniqueApplication(bool, bool)", typeof(void), typeof(bool), GUIenabled, typeof(bool), configUnique);
-        }
-        public KUniqueApplication(bool GUIenabled) : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("KUniqueApplication$", "KUniqueApplication(bool)", typeof(void), typeof(bool), GUIenabled);
-        }
-        public KUniqueApplication() : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("KUniqueApplication", "KUniqueApplication()", typeof(void));
         }
         /// <remarks>
         ///  Creates a new "instance" of the application.

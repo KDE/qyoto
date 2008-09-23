@@ -247,14 +247,14 @@ namespace Kimono {
         ///  The list of contexts must be set before calling sendEvent;
         /// 	 </remarks>        <short>    set the list of contexts, see KNotification.Context </short>
         public void SetContexts(List<QPair<string, string>> contexts) {
-            interceptor.Invoke("setContexts?", "setContexts(const QList<QPair<QString, QString> >&)", typeof(void), typeof(List<QPair<string, string>>), contexts);
+            interceptor.Invoke("setContexts?", "setContexts(const QList<QPair<QString,QString> >&)", typeof(void), typeof(List<QPair<string, string>>), contexts);
         }
         /// <remarks>
         ///  append a context at the list of contexts, see KNotificaiton.Context
         /// <param> name="context" the context which is added
         /// 	 </param></remarks>        <short>    append a context at the list of contexts, see KNotificaiton.Context </short>
         public void AddContext(QPair<string, string> context) {
-            interceptor.Invoke("addContext?", "addContext(const QPair<QString, QString>&)", typeof(void), typeof(QPair<string, string>), context);
+            interceptor.Invoke("addContext?", "addContext(const QPair<QString,QString>&)", typeof(void), typeof(QPair<string, string>), context);
         }
         /// <remarks>
         ///  @overload

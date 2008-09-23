@@ -95,27 +95,22 @@ namespace Kimono {
             interceptor.Invoke("addCollection#", "addCollection(KActionCollection*)", typeof(void), typeof(KActionCollection), arg1);
         }
         /// <remarks>
-        ///  Undo all change made since the last commit().
-        /// 	 </remarks>        <short>    Undo all change made since the last commit().</short>
+        ///  Undo all change made since the last save().
+        /// 	 </remarks>        <short>    Undo all change made since the last save().</short>
         public void UndoChanges() {
             interceptor.Invoke("undoChanges", "undoChanges()", typeof(void));
         }
         /// <remarks>
         ///  Save the changes.
-        ///  Before saving the changes are commited. This saves the actions to disk.
-        ///  Any KActionCollection objects with the xmlFile() value set will be
-        ///  written to an XML file.  All other will be written to the application's
-        ///  rc file.
-        ///      </remarks>        <short>    Save the changes.</short>
+        ///  Well this function doesn't save actually for global shortcuts. It makes sure the editor
+        ///  doesn't undo all changes when it is deleted.
+        ///  This saves the actions to disk.
+        ///  Any KActionCollection objects with the xmlFile() value set
+        ///  will be written to an XML file.  All other will be written
+        ///  to the application's rc file.
+        /// 	 </remarks>        <short>    Save the changes.</short>
         public void Save() {
             interceptor.Invoke("save", "save()", typeof(void));
-        }
-        /// <remarks>
-        ///  Commit the changes without saving.
-        ///  This commits the changes without saving.
-        /// </remarks>        <short>    Commit the changes without saving.</short>
-        public void Commit() {
-            interceptor.Invoke("commit", "commit()", typeof(void));
         }
         /// <remarks>
         ///  Write the current settings to the <pre>config</pre> object.

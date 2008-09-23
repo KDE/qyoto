@@ -40,6 +40,8 @@ Binding::deleted(Smoke::Index classId, void *ptr)
 		fflush(stdout);
 	}
 
+	(*TryDispose)(obj);
+
 	if (o == 0 || o->ptr == 0) {
 		(*FreeGCHandle)(obj);
 		return;

@@ -36,6 +36,54 @@ namespace KIO {
             ExtraFieldReadOnly = 1<<1,
             ExtraFieldMandatory = 1<<2,
         }
+        public KUrl Url {
+            get { return (KUrl) interceptor.Invoke("url", "url()", typeof(KUrl)); }
+            set { interceptor.Invoke("setUrl#", "setUrl(KUrl)", typeof(void), typeof(KUrl), value); }
+        }
+        public string Username {
+            get { return (string) interceptor.Invoke("username", "username()", typeof(string)); }
+            set { interceptor.Invoke("setUsername$", "setUsername(QString)", typeof(void), typeof(string), value); }
+        }
+        public string Password {
+            get { return (string) interceptor.Invoke("password", "password()", typeof(string)); }
+            set { interceptor.Invoke("setPassword$", "setPassword(QString)", typeof(void), typeof(string), value); }
+        }
+        public string Prompt {
+            get { return (string) interceptor.Invoke("prompt", "prompt()", typeof(string)); }
+            set { interceptor.Invoke("setPrompt$", "setPrompt(QString)", typeof(void), typeof(string), value); }
+        }
+        public string Caption {
+            get { return (string) interceptor.Invoke("caption", "caption()", typeof(string)); }
+            set { interceptor.Invoke("setCaption$", "setCaption(QString)", typeof(void), typeof(string), value); }
+        }
+        public string Comment {
+            get { return (string) interceptor.Invoke("comment", "comment()", typeof(string)); }
+            set { interceptor.Invoke("setComment$", "setComment(QString)", typeof(void), typeof(string), value); }
+        }
+        public string CommentLabel {
+            get { return (string) interceptor.Invoke("commentLabel", "commentLabel()", typeof(string)); }
+            set { interceptor.Invoke("setCommentLabel$", "setCommentLabel(QString)", typeof(void), typeof(string), value); }
+        }
+        public string RealmValue {
+            get { return (string) interceptor.Invoke("realmValue", "realmValue()", typeof(string)); }
+            set { interceptor.Invoke("setRealmValue$", "setRealmValue(QString)", typeof(void), typeof(string), value); }
+        }
+        public string DigestInfo {
+            get { return (string) interceptor.Invoke("digestInfo", "digestInfo()", typeof(string)); }
+            set { interceptor.Invoke("setDigestInfo$", "setDigestInfo(QString)", typeof(void), typeof(string), value); }
+        }
+        public bool VerifyPath {
+            get { return (bool) interceptor.Invoke("verifyPath", "verifyPath()", typeof(bool)); }
+            set { interceptor.Invoke("setVerifyPath$", "setVerifyPath(bool)", typeof(void), typeof(bool), value); }
+        }
+        public bool ReadOnly {
+            get { return (bool) interceptor.Invoke("readOnly", "readOnly()", typeof(bool)); }
+            set { interceptor.Invoke("setReadOnly$", "setReadOnly(bool)", typeof(void), typeof(bool), value); }
+        }
+        public bool KeepPassword {
+            get { return (bool) interceptor.Invoke("keepPassword", "keepPassword()", typeof(bool)); }
+            set { interceptor.Invoke("setKeepPassword$", "setKeepPassword(bool)", typeof(void), typeof(bool), value); }
+        }
         /// <remarks>
         ///  Default constructor.
         ///     </remarks>        <short>    Default constructor.</short>

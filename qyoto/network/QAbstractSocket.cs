@@ -178,12 +178,12 @@ namespace Qyoto {
             return (QNetworkProxy) interceptor.Invoke("proxy", "proxy() const", typeof(QNetworkProxy));
         }
         [SmokeMethod("readData(char*, qint64)")]
-        protected override long ReadData(string data, long maxlen) {
-            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        protected override long ReadData(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("readLineData(char*, qint64)")]
-        protected override long ReadLineData(string data, long maxlen) {
-            return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        protected override long ReadLineData(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readLineData$$", "readLineData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("writeData(const char*, qint64)")]
         protected override long WriteData(string data, long len) {

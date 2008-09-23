@@ -127,6 +127,7 @@ extern Q_DECL_EXPORT OverridenMethodFn GetProperty;
 extern Q_DECL_EXPORT SetPropertyFn SetProperty;
 
 extern Q_DECL_EXPORT SetIntPtr InvokeDelegate;
+extern Q_DECL_EXPORT FromIntPtr TryDispose;
 
 extern "C" {
 extern Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj);
@@ -163,6 +164,9 @@ extern Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
 extern Q_DECL_EXPORT AddInt AddIntToListInt;
 extern Q_DECL_EXPORT AddUInt AddUIntToListUInt;
 extern Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
+
+extern Q_DECL_EXPORT GetIntPtr GenericPointerGetIntPtr;
+extern Q_DECL_EXPORT CreateInstanceFn CreateGenericPointer;
 }
 
 #endif

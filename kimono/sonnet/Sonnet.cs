@@ -4,7 +4,7 @@ namespace Sonnet {
     using System;
     using Qyoto;
     /// <remarks>
-    ///  configdialog.h
+    ///  backgroundchecker.h
     ///  Copyright (C)  2004  Zack Rusin <zack@kde.org>
     ///  This library is free software; you can redistribute it and/or
     ///  modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@ namespace Sonnet {
     ///  License along with this library; if not, write to the Free Software
     ///  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
     ///  02110-1301  USA
-    ///  </remarks>        <short>    configdialog.</short>
+    ///  </remarks>        <short>    backgroundchecker.</short>
     [SmokeClass("Sonnet")]
     public class Global {
     }

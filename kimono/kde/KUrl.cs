@@ -3,7 +3,6 @@ namespace Kimono {
     using System;
     using Qyoto;
     using System.Runtime.InteropServices;
-    using System.Text;
     using System.Collections.Generic;
     /// <remarks>
     ///  \class KUrl kurl.h <KUrl>
@@ -65,99 +64,8 @@ namespace Kimono {
     ///  context.
     ///  </remarks>        <short>    \class KUrl kurl.</short>
     [SmokeClass("KUrl")]
-    public class KUrl : QUrl, IDisposable {
+    public partial class KUrl : QUrl, IDisposable {
         protected KUrl(Type dummy) : base((Type) null) {}
-        /// <remarks>
-        ///  \class List kurl.h <KUrl>
-        ///  KUrl.List is a QList that contains KUrls with a few
-        ///  convenience methods.
-        /// </remarks>        <short>    \class List kurl.</short>
-        ///         <see> KUrl</see>
-        ///         <see> QValueList</see>
-        [SmokeClass("KUrl::List")]
-        public class List : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected List(Type dummy) {}
-            protected void CreateProxy() {
-                interceptor = new SmokeInvocation(typeof(List), this);
-            }
-            private static SmokeInvocation staticInterceptor = null;
-            static List() {
-                staticInterceptor = new SmokeInvocation(typeof(List), null);
-            }
-            //  List(); >>>> NOT CONVERTED
-            //  List(const KUrl& arg1); >>>> NOT CONVERTED
-            //  List(const QStringList& arg1); >>>> NOT CONVERTED
-            //  List(); >>>> NOT CONVERTED
-            //  operator QVariant(); >>>> NOT CONVERTED
-            // void populateMimeData(,,); >>>> NOT CONVERTED
-            // KUrl::List fromMimeData(,); >>>> NOT CONVERTED
-            /// <remarks>
-            ///  Creates an empty List.
-            ///      </remarks>        <short>    Creates an empty List.</short>
-            /// <remarks>
-            ///  Creates a list that contains the given URL as only
-            ///  item.
-            /// <param> name="url" the url to add.
-            ///        </param></remarks>        <short>    Creates a list that contains the given URL as only  item.</short>
-            /// <remarks>
-            ///  Creates a list that contains the URLs from the given
-            ///  list of strings.
-            /// <param> name="list" the list containing the URLs as strings
-            ///        </param></remarks>        <short>    Creates a list that contains the URLs from the given  list of strings.</short>
-            /// <remarks>
-            ///  Creates a list that contains the URLs from the given QList<KUrl>.
-            /// <param> name="list" the list containing the URLs
-            ///        </param></remarks>        <short>    Creates a list that contains the URLs from the given QList<KUrl>.</short>
-            /// <remarks>
-            ///  Converts the URLs of this list to a list of strings.
-            /// </remarks>        <return> the list of strings
-            ///        </return>
-            ///         <short>    Converts the URLs of this list to a list of strings.</short>
-            public List<string> ToStringList() {
-                return (List<string>) interceptor.Invoke("toStringList", "toStringList() const", typeof(List<string>));
-            }
-            /// <remarks>
-            ///  Converts this KUrl.List to a QVariant, this allows to use KUrl.List
-            ///  in QVariant() constructor
-            ///        </remarks>        <short>    Converts this KUrl.List to a QVariant, this allows to use KUrl.List  in QVariant() constructor        </short>
-            /// <remarks>
-            ///  Adds URLs data into the given QMimeData.
-            ///  By default, populateMimeData also exports the URLs as plain text, for e.g. dropping
-            ///  onto a text editor.
-            ///  But in some cases this might not be wanted, e.g. if adding other mime data
-            ///  which provides better plain text data.
-            ///  WARNING: do not call this method multiple times on the same mimedata object,
-            ///  you can add urls only once. But you can add other things, e.g. images, XML...
-            /// <param> name="mimeData" the QMimeData instance used to drag or copy this URL
-            /// </param><param> name="metaData" KIO metadata shipped in the mime data, which is used for instance to
-            ///  set a correct HTTP referrer (some websites require it for downloading e.g. an image)
-            /// </param><param> name="flags" set NoTextExport to prevent setting plain/text data into <code>mimeData</code>
-            ///  In such a case, setExportAsText( false ) should be called.
-            ///        </param></remarks>        <short>    Adds URLs data into the given QMimeData.</short>
-            /// <remarks>
-            ///  Return true if <code>mimeData</code> contains URI data
-            ///        </remarks>        <short>    Return true if <code>mimeData</code> contains URI data        </short>
-            public static bool CanDecode(QMimeData mimeData) {
-                return (bool) staticInterceptor.Invoke("canDecode#", "canDecode(const QMimeData*)", typeof(bool), typeof(QMimeData), mimeData);
-            }
-            /// <remarks>
-            ///  Return the list of mimeTypes that can be decoded by fromMimeData
-            ///         </remarks>        <short>    Return the list of mimeTypes that can be decoded by fromMimeData         </short>
-            public static List<string> MimeDataTypes() {
-                return (List<string>) staticInterceptor.Invoke("mimeDataTypes", "mimeDataTypes()", typeof(List<string>));
-            }
-            /// <remarks>
-            ///  Extract a list of KUrls from the contents of <code>mimeData.</code>
-            ///  Decoding will fail if <code>mimeData</code> does not contain any URLs, or if at
-            ///  least one extracted URL is not valid.
-            /// <param> name="mimeData" the mime data to extract from; cannot be 0
-            /// </param><param> name="metaData" optional pointer to a map holding the metadata
-            /// </param></remarks>        <return> the list of urls
-            ///        </return>
-            ///         <short>    Extract a list of KUrls from the contents of <code>mimeData.</code></short>
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KUrl), this);
         }
@@ -751,7 +659,8 @@ namespace Kimono {
         ///  Compares this url with <code>u.</code>
         /// <param> name="u" the URL to compare this one with.
         /// </param><param> name="options" a set of EqualsOption flags
-        /// </param></remarks>        <return> true if both urls are the same
+        /// </param></remarks>        <return> True if both urls are the same. If at least one of the urls is invalid,
+        ///  false is returned.
         /// </return>
         ///         <short>    Compares this url with <code>u.</code></short>
         ///         <see> operator==.</see>

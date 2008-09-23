@@ -168,19 +168,6 @@ namespace Kimono {
             return (List<string>) staticInterceptor.Invoke("stdNames", "stdNames()", typeof(List<string>));
         }
         /// <remarks>
-        ///  Returns a list of all actionIds.
-        /// </remarks>        <short>    Returns a list of all actionIds.</short>
-        public static List<KStandardAction.StandardAction> ActionIds() {
-            return (List<KStandardAction.StandardAction>) staticInterceptor.Invoke("actionIds", "actionIds()", typeof(List<KStandardAction.StandardAction>));
-        }
-        /// <remarks>
-        ///  Returns the standardshortcut associated with <b>actionId</b>.
-        /// <param> name="actionId" The actionId whose associated shortcut is wanted.
-        /// </param></remarks>        <short>    Returns the standardshortcut associated with <b>actionId</b>.</short>
-        public static KStandardShortcut.StandardShortcut ShortcutForActionId(KStandardAction.StandardAction id) {
-            return (KStandardShortcut.StandardShortcut) staticInterceptor.Invoke("shortcutForActionId$", "shortcutForActionId(KStandardAction::StandardAction)", typeof(KStandardShortcut.StandardShortcut), typeof(KStandardAction.StandardAction), id);
-        }
-        /// <remarks>
         ///  Create a new document or window.
         ///    </remarks>        <short>    Create a new document or window.</short>
         public static KAction OpenNew(QObject recvr, string slot, QObject parent) {

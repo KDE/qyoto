@@ -105,6 +105,9 @@ Q_DECL_EXPORT AddInt AddIntToListInt;
 Q_DECL_EXPORT AddUInt AddUIntToListUInt;
 Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
 
+Q_DECL_EXPORT GetIntPtr GenericPointerGetIntPtr;
+Q_DECL_EXPORT CreateInstanceFn CreateGenericPointer;
+
 Q_DECL_EXPORT void InstallIntPtrToCharStarStar(GetIntPtr callback)
 {
 	IntPtrToCharStarStar = callback;
@@ -208,6 +211,16 @@ Q_DECL_EXPORT void InstallAddUIntToListUInt(AddUInt callback)
 Q_DECL_EXPORT void InstallListWizardButtonToQListWizardButton(GetIntPtr callback)
 {
 	ListWizardButtonToQListWizardButton = callback;
+}
+
+Q_DECL_EXPORT void InstallGenericPointerGetIntPtr(GetIntPtr callback)
+{
+	GenericPointerGetIntPtr = callback;
+}
+
+Q_DECL_EXPORT void InstallCreateGenericPointer(CreateInstanceFn callback)
+{
+	CreateGenericPointer = callback;
 }
 
 Q_DECL_EXPORT void* ConstructPointerList()
@@ -1037,6 +1050,11 @@ static void marshall_charP(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
 	{
+		if (!m->type().isConst()) {
+			m->item().s_voidp = (*GenericPointerGetIntPtr)(m->var().s_class);
+			(*FreeGCHandle)(m->var().s_voidp);
+			return;
+		}
 		if (m->var().s_class == 0) {
 			m->item().s_voidp = 0;
 		} else {
@@ -1049,6 +1067,10 @@ static void marshall_charP(Marshall *m) {
 	case Marshall::ToObject:
 	{
 		char *p = (char*) m->item().s_voidp;
+		if (!m->type().isConst()) {
+			m->var().s_class = (*CreateGenericPointer)("System.SByte", p);
+			return;
+		}
 	    if (p != 0) {
 			m->var().s_class = (*IntPtrFromCharStar)(strdup(p));
 	    } else {
@@ -1140,19 +1162,18 @@ static void marshall_intR(Marshall *m) {
 	}
 }
 
-/*
-static void marshall_intR(Marshall *m) {
+static void marshall_uintR(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
 	{
-		m->item().s_voidp = &(m->var().s_int);
+		m->item().s_voidp = &(m->var().s_uint);
 	}
 	break;
 
 	case Marshall::ToObject:
 	{
-		int *ip = (int*)m->item().s_voidp;
-		m->var().s_int = *ip;
+		uint *ip = (uint*)m->item().s_voidp;
+		m->var().s_uint = *ip;
 	}
 	break;
 
@@ -1161,7 +1182,48 @@ static void marshall_intR(Marshall *m) {
 		break;
 	}
 }
-*/
+
+static void marshall_longR(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_long);
+	}
+	break;
+
+	case Marshall::ToObject:
+	{
+		long *ip = (long*)m->item().s_voidp;
+		m->var().s_long = *ip;
+	}
+	break;
+
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
+static void marshall_ulongR(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_ulong);
+	}
+	break;
+
+	case Marshall::ToObject:
+	{
+		unsigned long *ip = (unsigned long*)m->item().s_voidp;
+		m->var().s_ulong = *ip;
+	}
+	break;
+
+	default:
+		m->unsupported();
+		break;
+	}
+}
 
 static void marshall_shortR(Marshall *m) {
 	switch(m->action()) {
@@ -1175,6 +1237,48 @@ static void marshall_shortR(Marshall *m) {
 	{
 		short *ip = (short*)m->item().s_voidp;
 		m->var().s_short = *ip;
+	}
+	break;
+
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
+static void marshall_ushortR(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_ushort);
+	}
+	break;
+
+	case Marshall::ToObject:
+	{
+		unsigned short *ip = (unsigned short*)m->item().s_voidp;
+		m->var().s_ushort = *ip;
+	}
+	break;
+
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
+static void marshall_floatR(Marshall *m) {
+    switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = &(m->var().s_float);
+	}
+	break;
+
+	case Marshall::ToObject:
+	{
+		float *dp = (float*)m->item().s_voidp;
+		m->var().s_float = *dp;
 	}
 	break;
 
@@ -1713,8 +1817,12 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "char**", marshall_charP_array },
     { "double*", marshall_doubleR },
     { "double&", marshall_doubleR },
+    { "float*", marshall_floatR },
+    { "float&", marshall_floatR },
     { "int*", marshall_intR },
     { "int&", marshall_intR },
+    { "long*", marshall_longR },
+    { "long&", marshall_longR },
     { "QDBusVariant", marshall_QDBusVariant },
     { "QDBusVariant&", marshall_QDBusVariant },
     { "QFileInfoList", marshall_QFileInfoList },
@@ -1808,6 +1916,18 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "QWidgetList&", marshall_QWidgetList },
     { "short*", marshall_shortR },
     { "short&", marshall_shortR },
+    { "signed int*", marshall_intR },
+    { "sigend int&", marshall_intR },
+    { "signed long*", marshall_longR },
+    { "signed long&", marshall_longR },
+    { "uint*", marshall_uintR },
+    { "uint&", marshall_uintR },
+    { "unsigned int*", marshall_uintR },
+    { "unsigned int&", marshall_uintR },
+    { "unsigned long*", marshall_ulongR },
+    { "unsigned long&", marshall_ulongR },
+    { "unsigned short*", marshall_ushortR },
+    { "unsigned short&", marshall_ushortR },
 //    { "void**", marshall_voidP_array },
 #if QT_VERSION >= 0x40200
     { "QList<QGraphicsItem*>", marshall_QGraphicsItemList },

@@ -201,6 +201,15 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallAddUIntToListUInt(AddUInt callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallGenericPointerGetIntPtr(GetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallCreateGenericPointer(CreateInstanceFn callback);
+
+		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		public static extern void InstallTryDispose(FromIntPtr callback);
 #endregion
 		
 #region delegates
@@ -533,6 +542,11 @@ namespace Qyoto {
 			}
 
 			if (data == null) {
+				if (className.Contains(".")) {
+					StringBuilder sb = new StringBuilder(className);
+					sb[className.LastIndexOf(".")] = '+';
+					return CreateInstance(sb.ToString(), smokeObjectPtr);
+				}
 				Console.Error.WriteLine("CreateInstance() ** Missing class ** {0}", className);
 			}
 
@@ -666,7 +680,15 @@ namespace Qyoto {
 
 		public static IntPtr ConstructList(string type) {
 			Type basetype = typeof(List<>);
-			Type[] generic = { Type.GetType(type) };
+			Type t = null;
+			foreach(Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
+				t = a.GetType(type);
+				if (t != null) {
+					break;
+				}
+			}
+
+			Type[] generic = { t };
 			Type merged = basetype.MakeGenericType(generic);
 			
 			object o = Activator.CreateInstance(merged);
@@ -779,6 +801,27 @@ namespace Qyoto {
 			}
 			return map;
 		}
+		
+		public static IntPtr GenericPointerGetIntPtr(IntPtr obj) {
+			object o = ((GCHandle) obj).Target;
+			return (IntPtr) o.GetType().GetMethod("ToIntPtr").Invoke(o, null);
+		}
+		
+		public static IntPtr CreateGenericPointer(string type, IntPtr ptr) {
+			Type t = typeof(Pointer<>);
+			t = t.MakeGenericType( new Type[] { Type.GetType(type) } );
+			object o = Activator.CreateInstance(t, new object[] { ptr });
+			return (IntPtr) GCHandle.Alloc(o);
+		}
+		
+		public static void TryDispose(IntPtr obj) {
+			object o = ((GCHandle) obj).Target;
+			Type t = o.GetType();
+			MethodInfo mi = t.GetMethod("Dispose");
+			if (mi == null) return;
+			if (IsSmokeClass(mi.DeclaringType)) return;
+			((IDisposable) o).Dispose();
+		}
 #endregion
 		
 #region Setup
@@ -827,6 +870,11 @@ namespace Qyoto {
 			
 			InstallGetProperty(GetProperty);
 			InstallSetProperty(SetProperty);
+			
+			InstallGenericPointerGetIntPtr(GenericPointerGetIntPtr);
+			InstallCreateGenericPointer(CreateGenericPointer);
+			
+			InstallTryDispose(TryDispose);
 		}
 #endregion
 

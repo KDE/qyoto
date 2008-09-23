@@ -134,6 +134,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Accessor for the associated Package object if any.
+        ///  Note that the returned pointer is only valid for the lifetime of
+        ///  the runner.
         /// </remarks>        <return> the Package object, or 0 if none
         /// </return>
         ///         <short>    Accessor for the associated Package object if any.</short>

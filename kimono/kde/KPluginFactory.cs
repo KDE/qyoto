@@ -66,19 +66,6 @@ namespace Kimono {
     [SmokeClass("KPluginFactory")]
     public class KPluginFactory : QObject, IDisposable {
         protected KPluginFactory(Type dummy) : base((Type) null) {}
-        /// <remarks>
-        ///  This is used to detect the arguments need for the constructor of plugin classes.
-        ///  You can inherit it, if you want to add new classes and still keep support for the old ones.
-        ///      </remarks>        <short>    This is used to detect the arguments need for the constructor of plugin classes.</short>
-        [SmokeClass("KPluginFactory::InheritanceChecker")]
-        public class InheritanceChecker : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected InheritanceChecker(Type dummy) {}
-            // CreateInstanceFunction createInstanceFunction(KParts::Part* arg1); >>>> NOT CONVERTED
-            // CreateInstanceFunction createInstanceFunction(QWidget* arg1); >>>> NOT CONVERTED
-            // CreateInstanceFunction createInstanceFunction(); >>>> NOT CONVERTED
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KPluginFactory), this);
         }

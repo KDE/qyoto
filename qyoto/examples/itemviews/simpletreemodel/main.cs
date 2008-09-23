@@ -10,7 +10,7 @@ class MainClass : Qt {
 		
 		QFile file = new QFile(":/default.txt");
 		file.Open((int) QIODevice.OpenModeFlag.ReadOnly);
-		TreeModel model = new TreeModel(file.ReadAll().Data());
+		TreeModel model = new TreeModel(file.ReadAll().ConstData());
 		file.Close();
 		
 		QTreeView view = new QTreeView();

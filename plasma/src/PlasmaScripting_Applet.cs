@@ -377,6 +377,8 @@ namespace PlasmaScripting {
         public virtual void Destroy() {
             applet.Destroy();
         }
+        KConfigSkeleton nullManager;
+        KConfigDialog dialog;
         /// <remarks>
         ///  Lets the user interact with the plasmoid options.
         ///  Called when the user selects the configure entry
@@ -391,8 +393,8 @@ namespace PlasmaScripting {
         public virtual void ShowConfigurationInterface() {
             string dialogId = applet.Id() + "settings" + applet.Name;
             string windowTitle = KDE.I18nc("@title:window", applet.Name + " Settings");
-            KConfigSkeleton nullManager = new KConfigSkeleton((KSharedConfig) null);
-            KConfigDialog dialog = new KConfigDialog(null, dialogId, nullManager);
+            nullManager = new KConfigSkeleton();
+            dialog = new KConfigDialog(null, dialogId, nullManager);
             dialog.SetFaceType(KPageDialog.FaceType.Auto);
             dialog.SetWindowTitle(windowTitle);
             dialog.SetAttribute(Qt.WidgetAttribute.WA_DeleteOnClose, true);
@@ -433,6 +435,19 @@ namespace PlasmaScripting {
         /// </remarks>        <short>    This method is called once the applet is loaded and added to a Corona.</short>
         [Q_SLOT("void init()")]
         public virtual void Init() {
+        }
+        [Q_SLOT("void initExtenderItem(ExtenderItem*)")]
+        [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]
+        public virtual void InitExtenderItem(Plasma.ExtenderItem item) {
+            applet.InitExtenderItem(item);
+        }
+         /// <remarks>
+         /// </remarks>        <return> the extender this applet has.
+         ///          </return>
+         ///         <short>   </short>
+        [Q_SLOT("Plasma::Extender* extender()")]
+        public Plasma.Extender Extender() {
+            return applet.Extender();
         }
         public Applet(AppletScript parent) : base(parent) {
             Connect(applet, SIGNAL("releaseVisualFocus()"), this, SIGNAL("releaseVisualFocus()"));

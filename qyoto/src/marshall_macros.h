@@ -141,6 +141,7 @@ void marshall_ValueListItem(Marshall *m) {
 		{
 			ItemList *valuelist = (ItemList*)m->item().s_voidp;
 			if (valuelist == 0) {
+				m->var().s_voidp = 0;
 				break;
 			}
 

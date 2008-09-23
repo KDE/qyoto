@@ -54,8 +54,6 @@ namespace Kimono {
             SeparateDirs = 4,
             PreviewContents = 8,
             PreviewInfo = 16,
-            Tree = 32,
-            DetailTree = 64,
             FileViewMax = 65536,
         }
         public enum SelectionMode {
@@ -99,12 +97,6 @@ namespace Kimono {
         }
         public static bool IsPreviewInfo(KFile.FileView view) {
             return (bool) staticInterceptor.Invoke("isPreviewInfo$", "isPreviewInfo(const KFile::FileView&)", typeof(bool), typeof(KFile.FileView), view);
-        }
-        public static bool IsTreeView(KFile.FileView view) {
-            return (bool) staticInterceptor.Invoke("isTreeView$", "isTreeView(const KFile::FileView&)", typeof(bool), typeof(KFile.FileView), view);
-        }
-        public static bool IsDetailTreeView(KFile.FileView view) {
-            return (bool) staticInterceptor.Invoke("isDetailTreeView$", "isDetailTreeView(const KFile::FileView&)", typeof(bool), typeof(KFile.FileView), view);
         }
     }
 }

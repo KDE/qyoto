@@ -133,8 +133,8 @@ namespace Qyoto {
         public long BytesAvailable() {
             return (long) interceptor.Invoke("bytesAvailable", "bytesAvailable() const", typeof(long));
         }
-        public long Read(string data, long maxlen) {
-            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public long Read(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         public QByteArray ReadAll() {
             return (QByteArray) interceptor.Invoke("readAll", "readAll()", typeof(QByteArray));

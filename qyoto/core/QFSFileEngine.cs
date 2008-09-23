@@ -128,12 +128,12 @@ namespace Qyoto {
             return (QAbstractFileEngineIterator) interceptor.Invoke("endEntryList", "endEntryList()", typeof(QAbstractFileEngineIterator));
         }
         [SmokeMethod("read(char*, qint64)")]
-        public override long Read(string data, long maxlen) {
-            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public override long Read(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("readLine(char*, qint64)")]
-        public override long ReadLine(string data, long maxlen) {
-            return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public override long ReadLine(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("write(const char*, qint64)")]
         public override long Write(string data, long len) {

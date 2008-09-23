@@ -511,8 +511,8 @@ namespace Kimono {
         ///  any options specified after '--' will be ignored.
         /// </remarks>        <short>    Returns command line options for consumption by Qt after parsing them in a way that  is consistent with KDE's general command line handling.</short>
         ///         <see> qt_argc</see>
-        public static string QtArgv() {
-            return (string) staticInterceptor.Invoke("qtArgv", "qtArgv()", typeof(string));
+        public static Pointer<sbyte> QtArgv() {
+            return (Pointer<sbyte>) staticInterceptor.Invoke("qtArgv", "qtArgv()", typeof(Pointer<sbyte>));
         }
         /// <remarks>
         ///  Returns the KAboutData for consumption by KComponentData

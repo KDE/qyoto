@@ -49,7 +49,11 @@
 #include <kurl.h>
 #include <kuser.h>
 
-void marshall_KSharedConfigPtr(Marshall *m) {
+#define DEF_KSHAREDPTR_MARSHALLER(Item) namespace { char Item##STR[] = #Item; }  \
+        Marshall::HandlerFn marshall_KSharedPtr_##Item = marshall_KSharedPtr<Item,Item##STR>;
+
+template<class Item, const char *ItemSTR>
+void marshall_KSharedPtr(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
 	{
@@ -67,7 +71,7 @@ void marshall_KSharedConfigPtr(Marshall *m) {
 		    m->item().s_class = 0;
 		    break;
 		}
-		m->item().s_class = new KSharedConfigPtr((KSharedConfig*) o->ptr);
+		m->item().s_class = new KSharedPtr<Item>((Item*) o->ptr);
 		(*FreeGCHandle)(m->var().s_class);
 		break;
 	}
@@ -78,12 +82,12 @@ void marshall_KSharedConfigPtr(Marshall *m) {
 		    break;
 		}
 
-		KSharedPtr<KSharedConfig> *ptr = new KSharedPtr<KSharedConfig>(*(KSharedPtr<KSharedConfig>*)m->item().s_voidp);
+		KSharedPtr<Item> *ptr = new KSharedPtr<Item>(*(KSharedPtr<Item>*)m->item().s_voidp);
 		if (ptr == 0) {
 			m->var().s_voidp = 0;
 			break;
 		}
-	    KSharedConfig * config = ptr->data();
+	    Item * config = ptr->data();
 
 		void * obj = (*GetInstance)(config, true);
 		if(obj != 0) {
@@ -91,12 +95,12 @@ void marshall_KSharedConfigPtr(Marshall *m) {
 		    break;
 		}
 		
-		Smoke::ModuleIndex id = m->smoke()->findClass("KConfig");
+		Smoke::ModuleIndex id = m->smoke()->findClass(ItemSTR);
 		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, id.smoke, id.index, config);
-		
-		obj = (*CreateInstance)("Kimono.KSharedConfig", o);
+		const char *resolved = qyoto_modules[id.smoke].resolve_classname(o);
+		obj = (*CreateInstance)(resolved, o);
 		if (do_debug & qtdb_calls) {
-			printf("allocating %s %p -> %p\n", "KConfig", o->ptr, (void*)obj);
+			printf("allocating %s %p -> %p\n", ItemSTR, o->ptr, (void*)obj);
 		}
 
 		if (m->type().isStack()) {
@@ -113,6 +117,9 @@ void marshall_KSharedConfigPtr(Marshall *m) {
 		break;
 	}
 }
+
+DEF_KSHAREDPTR_MARSHALLER(KSharedConfig)
+DEF_KSHAREDPTR_MARSHALLER(KMimeType)
 
 DEF_LIST_MARSHALLER( KActionList, QList<KAction*>, KAction )
 DEF_LIST_MARSHALLER( KActionCollectionList, QList<KActionCollection*>, KActionCollection )
@@ -156,17 +163,19 @@ TypeHandler KDE_handlers[] = {
     { "KFileItemList", marshall_KFileItemList },
     { "KFileItemList*", marshall_KFileItemList },
     { "KFileItemList&", marshall_KFileItemList },
+    { "KSharedPtr<KMimeType>", marshall_KSharedPtr_KMimeType },
+    { "KSharedPtr<KMimeType>&", marshall_KSharedPtr_KMimeType },
     { "KNS::Entry::List", marshall_KNSEntryList },
     { "KPluginInfo::List", marshall_KPluginInfoList },
     { "KPluginInfo::List&", marshall_KPluginInfoList },
 //    { "KService::List", marshall_KServiceList },
 //    { "KService::Ptr", marshall_KServicePtr },
-    { "KSharedConfig::Ptr", marshall_KSharedConfigPtr },
-    { "KSharedConfig::Ptr&", marshall_KSharedConfigPtr },
-    { "KSharedConfigPtr", marshall_KSharedConfigPtr },
-    { "KSharedConfigPtr&", marshall_KSharedConfigPtr },
-    { "KSharedPtr<KSharedConfig>", marshall_KSharedConfigPtr },
-    { "KSharedPtr<KSharedConfig>&", marshall_KSharedConfigPtr },
+    { "KSharedConfig::Ptr", marshall_KSharedPtr_KSharedConfig },
+    { "KSharedConfig::Ptr&", marshall_KSharedPtr_KSharedConfig },
+    { "KSharedConfigPtr", marshall_KSharedPtr_KSharedConfig },
+    { "KSharedConfigPtr&", marshall_KSharedPtr_KSharedConfig },
+    { "KSharedPtr<KSharedConfig>", marshall_KSharedPtr_KSharedConfig },
+    { "KSharedPtr<KSharedConfig>&", marshall_KSharedPtr_KSharedConfig },
     { "KUrl::List", marshall_KUrlList },
     { "KUrl::List&", marshall_KUrlList },
     { "KUrlList", marshall_KUrlList },

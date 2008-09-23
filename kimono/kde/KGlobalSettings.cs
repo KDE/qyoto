@@ -10,20 +10,6 @@ namespace Kimono {
     [SmokeClass("KGlobalSettings")]
     public class KGlobalSettings : QObject {
         protected KGlobalSettings(Type dummy) : base((Type) null) {}
-        /// <remarks>
-        ///  Describes the mouse settings.
-        ///      </remarks>        <short>    Describes the mouse settings.</short>
-        [SmokeClass("KGlobalSettings::KMouseSettings")]
-        public class KMouseSettings : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected KMouseSettings(Type dummy) {}
-            public const int RightHanded = 0;
-            public const int LeftHanded = 1;
-            public int Handed {
-                get { return (int) interceptor.Invoke("handed", "handed()", typeof(int)); }
-            }
-        }
         private static SmokeInvocation staticInterceptor = null;
         static KGlobalSettings() {
             staticInterceptor = new SmokeInvocation(typeof(KGlobalSettings), null);

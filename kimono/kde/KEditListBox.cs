@@ -15,29 +15,6 @@ namespace Kimono {
     [SmokeClass("KEditListBox")]
     public class KEditListBox : QGroupBox, IDisposable {
         protected KEditListBox(Type dummy) : base((Type) null) {}
-        /// <remarks>
-        ///  Custom editor class
-        /// </remarks>        <short>    Custom editor class </short>
-        [SmokeClass("KEditListBox::CustomEditor")]
-        public class CustomEditor : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected CustomEditor(Type dummy) {}
-            protected void CreateProxy() {
-                interceptor = new SmokeInvocation(typeof(CustomEditor), this);
-            }
-            //  CustomEditor(); >>>> NOT CONVERTED
-            //  CustomEditor(QWidget* arg1,KLineEdit* arg2); >>>> NOT CONVERTED
-            //  CustomEditor(KComboBox* arg1); >>>> NOT CONVERTED
-            // QWidget * representationWidget(); >>>> NOT CONVERTED
-            // KLineEdit * lineEdit(); >>>> NOT CONVERTED
-            public void SetRepresentationWidget(QWidget repWidget) {
-                interceptor.Invoke("setRepresentationWidget#", "setRepresentationWidget(QWidget*)", typeof(void), typeof(QWidget), repWidget);
-            }
-            public void SetLineEdit(KLineEdit edit) {
-                interceptor.Invoke("setLineEdit#", "setLineEdit(KLineEdit*)", typeof(void), typeof(KLineEdit), edit);
-            }
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KEditListBox), this);
         }

@@ -36,6 +36,7 @@
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
+#include <mono/metadata/mono-config.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -171,6 +172,7 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	// initialize the JIT
 	if (!domain) {
 		domain = mono_jit_init((const char*) path.toLatin1());
+		mono_config_parse(NULL);
 // 		printf("(kimonopluginfactory.cpp:%d) new domain (ptr: %p)\n", __LINE__, domain);
 		atexit(atexitfn);
 	}

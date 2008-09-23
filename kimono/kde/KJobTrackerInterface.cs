@@ -82,9 +82,9 @@ namespace Kimono {
         /// </param><param> name="field2" second field (localized name and value)
         ///      </param></remarks>        <short>    Called to display general description of a job.</short>
         [Q_SLOT("void description(KJob*, QString, QPair<QString, QString>, QPair<QString, QString>)")]
-        [SmokeMethod("description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)")]
+        [SmokeMethod("description(KJob*, const QString&, const QPair<QString,QString>&, const QPair<QString,QString>&)")]
         protected virtual void Description(KJob job, string title, QPair<string, string> field1, QPair<string, string> field2) {
-            interceptor.Invoke("description#$??", "description(KJob*, const QString&, const QPair<QString, QString>&, const QPair<QString, QString>&)", typeof(void), typeof(KJob), job, typeof(string), title, typeof(QPair<string, string>), field1, typeof(QPair<string, string>), field2);
+            interceptor.Invoke("description#$??", "description(KJob*, const QString&, const QPair<QString,QString>&, const QPair<QString,QString>&)", typeof(void), typeof(KJob), job, typeof(string), title, typeof(QPair<string, string>), field1, typeof(QPair<string, string>), field2);
         }
         /// <remarks>
         ///  Called to display state information about a job.

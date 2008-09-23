@@ -25,6 +25,18 @@ namespace Qyoto {
             protected new void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(MapExtensionOption), this);
             }
+            public long Offset {
+                get { return (long) interceptor.Invoke("offset", "offset()", typeof(long)); }
+                set { interceptor.Invoke("setOffset$", "setOffset(qint64)", typeof(void), typeof(long), value); }
+            }
+            public long Size {
+                get { return (long) interceptor.Invoke("size", "size()", typeof(long)); }
+                set { interceptor.Invoke("setSize$", "setSize(qint64)", typeof(void), typeof(long), value); }
+            }
+            public QFile.MemoryMapFlags Flags {
+                get { return (QFile.MemoryMapFlags) interceptor.Invoke("flags", "flags()", typeof(QFile.MemoryMapFlags)); }
+                set { interceptor.Invoke("setFlags$", "setFlags(QFile::MemoryMapFlags)", typeof(void), typeof(QFile.MemoryMapFlags), value); }
+            }
             public MapExtensionOption() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("MapExtensionOption", "MapExtensionOption()", typeof(void));
@@ -42,6 +54,10 @@ namespace Qyoto {
             protected new void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(MapExtensionReturn), this);
             }
+            public Pointer<byte> Address {
+                get { return (Pointer<byte>) interceptor.Invoke("address", "address()", typeof(Pointer<byte>)); }
+                set { interceptor.Invoke("setAddress$", "setAddress(uchar*)", typeof(void), typeof(Pointer<byte>), value); }
+            }
             public MapExtensionReturn() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("MapExtensionReturn", "MapExtensionReturn()", typeof(void));
@@ -58,6 +74,10 @@ namespace Qyoto {
             protected UnMapExtensionOption(Type dummy) : base((Type) null) {}
             protected new void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(UnMapExtensionOption), this);
+            }
+            public Pointer<byte> Address {
+                get { return (Pointer<byte>) interceptor.Invoke("address", "address()", typeof(Pointer<byte>)); }
+                set { interceptor.Invoke("setAddress$", "setAddress(uchar*)", typeof(void), typeof(Pointer<byte>), value); }
             }
             public UnMapExtensionOption() : this((Type) null) {
                 CreateProxy();
@@ -240,11 +260,11 @@ namespace Qyoto {
         public bool AtEnd() {
             return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
         }
-        public char[] Map(long offset, long size, QFile.MemoryMapFlags flags) {
-            return (char[]) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(char[]), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
+        public Pointer<byte> Map(long offset, long size, QFile.MemoryMapFlags flags) {
+            return (Pointer<byte>) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(Pointer<byte>), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
         }
-        public bool Unmap(char[] ptr) {
-            return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(char[]), ptr);
+        public bool Unmap(Pointer<byte> ptr) {
+            return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(Pointer<byte>), ptr);
         }
         [SmokeMethod("beginEntryList(QDir::Filters, const QStringList&)")]
         public virtual QAbstractFileEngineIterator BeginEntryList(uint filters, List<string> filterNames) {
@@ -255,12 +275,12 @@ namespace Qyoto {
             return (QAbstractFileEngineIterator) interceptor.Invoke("endEntryList", "endEntryList()", typeof(QAbstractFileEngineIterator));
         }
         [SmokeMethod("read(char*, qint64)")]
-        public virtual long Read(string data, long maxlen) {
-            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public virtual long Read(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("read$$", "read(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("readLine(char*, qint64)")]
-        public virtual long ReadLine(string data, long maxlen) {
-            return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(string), data, typeof(long), maxlen);
+        public virtual long ReadLine(Pointer<sbyte> data, long maxlen) {
+            return (long) interceptor.Invoke("readLine$$", "readLine(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);
         }
         [SmokeMethod("write(const char*, qint64)")]
         public virtual long Write(string data, long len) {

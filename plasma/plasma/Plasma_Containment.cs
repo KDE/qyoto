@@ -35,6 +35,10 @@ namespace Plasma {
             public enum StyleOptionVersion {
                 Version = QStyleOptionGraphicsItem.StyleOptionVersion.Version+1,
             }
+            public Plasma.View View {
+                get { return (Plasma.View) interceptor.Invoke("view", "view()", typeof(Plasma.View)); }
+                set { interceptor.Invoke("setView#", "setView(Plasma::View*)", typeof(void), typeof(Plasma.View), value); }
+            }
             public StyleOption() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("StyleOption", "StyleOption()", typeof(void));
@@ -145,11 +149,14 @@ namespace Plasma {
             return (Plasma.Applet) interceptor.Invoke("addApplet$", "addApplet(const QString&)", typeof(Plasma.Applet), typeof(string), name);
         }
         /// <remarks>
-        ///  add existing applet to this containment at pos
+        ///  Add an existing applet to this Containment
+        ///  If dontInit is true, the pending constraints are not flushed either.
+        ///  So it is your responsibility to call both init() and
+        ///  flushPendingConstraints() on the applet.
         /// <param> name="applet" the applet that should be added
         /// </param><param> name="pos" the containment-relative position
         /// </param><param> name="dontInit" if true, init() will not be called on the applet
-        ///          </param></remarks>        <short>    add existing applet to this containment at pos </short>
+        ///          </param></remarks>        <short>    Add an existing applet to this Containment </short>
         public void AddApplet(Plasma.Applet applet, QPointF pos, bool dontInit) {
             interceptor.Invoke("addApplet##$", "addApplet(Plasma::Applet*, const QPointF&, bool)", typeof(void), typeof(Plasma.Applet), applet, typeof(QPointF), pos, typeof(bool), dontInit);
         }

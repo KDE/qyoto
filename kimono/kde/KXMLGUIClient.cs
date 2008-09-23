@@ -42,18 +42,6 @@ namespace Kimono {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected KXMLGUIClient(Type dummy) {}
-        [SmokeClass("KXMLGUIClient::StateChange")]
-        public class StateChange : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected StateChange(Type dummy) {}
-            public List<string> ActionsToEnable {
-                get { return (List<string>) interceptor.Invoke("actionsToEnable", "actionsToEnable()", typeof(List<string>)); }
-            }
-            public List<string> ActionsToDisable {
-                get { return (List<string>) interceptor.Invoke("actionsToDisable", "actionsToDisable()", typeof(List<string>)); }
-            }
-        }
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KXMLGUIClient), this);
         }

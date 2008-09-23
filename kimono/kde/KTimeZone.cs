@@ -45,39 +45,6 @@ namespace Kimono {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected KTimeZone(Type dummy) {}
-        [SmokeClass("KTimeZone::Transition")]
-        public class Transition : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Transition(Type dummy) {}
-            protected void CreateProxy() {
-                interceptor = new SmokeInvocation(typeof(Transition), this);
-            }
-            //  Transition(); >>>> NOT CONVERTED
-            //  Transition(,); >>>> NOT CONVERTED
-            //  Transition(); >>>> NOT CONVERTED
-            // Phase phase(); >>>> NOT CONVERTED
-            // bool operator<(); >>>> NOT CONVERTED
-            /// <remarks>
-            ///  Return the UTC time of the transition.
-            /// </remarks>        <return> UTC time
-            ///          </return>
-            ///         <short>    Return the UTC time of the transition.</short>
-            public QDateTime Time() {
-                return (QDateTime) interceptor.Invoke("time", "time() const", typeof(QDateTime));
-            }
-            /// <remarks>
-            ///  Return the time zone phase which takes effect after the transition.
-            /// </remarks>        <return> time zone phase
-            ///          </return>
-            ///         <short>    Return the time zone phase which takes effect after the transition.</short>
-            /// <remarks>
-            ///  Compare the date/time values of two transitions.
-            /// <param> name="rhs" other instance
-            /// </param></remarks>        <return> @c true if this Transition is earlier than <code>rhs</code>
-            ///          </return>
-            ///         <short>    Compare the date/time values of two transitions.</short>
-        }
         [SmokeClass("KTimeZone::Phase")]
         public class Phase : Object, IDisposable {
             protected SmokeInvocation interceptor = null;

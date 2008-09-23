@@ -100,8 +100,6 @@ namespace KIO {
         void SendAndKeepMetaData();
         bool WasKilled();
         void SetKillFlag();
-        void LookupHost(string host);
-        int WaitForHostInfo(QHostInfo info);
     }
     /// <remarks>
     ///  There are two classes that specifies the protocol between application (job)
@@ -963,16 +961,6 @@ namespace KIO {
         ///      </remarks>        <short>   Internally used.</short>
         public void SetKillFlag() {
             interceptor.Invoke("setKillFlag", "setKillFlag()", typeof(void));
-        }
-        /// <remarks> Internally used
-        ///     </remarks>        <short>   Internally used </short>
-        public void LookupHost(string host) {
-            interceptor.Invoke("lookupHost$", "lookupHost(const QString&)", typeof(void), typeof(string), host);
-        }
-        /// <remarks> Internally used
-        ///     </remarks>        <short>   Internally used </short>
-        public int WaitForHostInfo(QHostInfo info) {
-            return (int) interceptor.Invoke("waitForHostInfo#", "waitForHostInfo(QHostInfo&)", typeof(int), typeof(QHostInfo), info);
         }
     }
 }

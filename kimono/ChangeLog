@@ -1,7 +1,24 @@
-2008-07-07  Richard Dale  <richard.j.dale@gmail.com>
+2008-08-13  Arno Rehn  <arno@arnorehn.de>
 
-	* Use QByteArrays in the kimonpluginfactory, rather than QStrings to 
-	  simplify the code
+    * Make the KSharedPointer marshaller more generic and add one for
+      KSharedPtr<KMimeType>.
+    * Parse the main mono config after the domain was initialized. This
+      fixes some libs being not found (like libc).
+
+2008-08-05  Richard Dale  <richard.j.dale@gmail.com>
+
+	* Make KApplication and KUniqueApplication partial classes and add the
+	  code to set the 'qApp' global variable in *Extras.cs files instead of
+	  generating it in the source code generator as it's more easily
+	  maintained that way.
+
+2008-08-03  Arno Rehn  <arno@arnorehn.de>
+
+	* Implemented KUrl.List.
+
+2008-07-31  Arno Rehn  <arno@arnorehn.de>
+
+	* Assign a new KApplication instance to the qApp global variable.
 
 2008-07-07  Arno Rehn  <arno@arnorehn.de>
 

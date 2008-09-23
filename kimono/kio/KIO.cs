@@ -5,6 +5,28 @@ namespace KIO {
     using Qyoto;
     using System.Text;
     using System.Collections.Generic;
+    public enum RenameDialog_Mode {
+        M_OVERWRITE = 1,
+        M_OVERWRITE_ITSELF = 2,
+        M_SKIP = 4,
+        M_SINGLE = 8,
+        M_MULTI = 16,
+        M_RESUME = 32,
+        M_NORENAME = 64,
+    }
+    /// <remarks>
+    ///  The result of open_RenameDialog().
+    ///  </remarks>        <short>    The result of open_RenameDialog().</short>
+    public enum RenameDialog_Result {
+        R_RESUME = 6,
+        R_RESUME_ALL = 7,
+        R_OVERWRITE = 4,
+        R_OVERWRITE_ALL = 5,
+        R_SKIP = 2,
+        R_AUTO_SKIP = 3,
+        R_RENAME = 1,
+        R_CANCEL = 0,
+    }
     /// <remarks>
     ///  Identifiers for KIO informational messages.
     ///   </remarks>        <short>    Identifiers for KIO informational messages.</short>
@@ -47,7 +69,11 @@ namespace KIO {
         MSG_DEL_AUTH_KEY = 116,
         MSG_OPENED = 117,
         MSG_WRITTEN = 118,
-        MSG_HOST_INFO_REQ = 119,
+    }
+    public enum SkipDialog_Result {
+        S_SKIP = 1,
+        S_AUTO_SKIP = 2,
+        S_CANCEL = 0,
     }
     /// <remarks>
     ///  Commands that can be invoked by a job.
@@ -89,7 +115,6 @@ namespace KIO {
         CMD_WRITE = 91,
         CMD_SEEK = 92,
         CMD_CLOSE = 93,
-        CMD_HOST_INFO = 94,
     }
     /// <remarks>
     ///  Error codes that can be emitted by KIO.
@@ -174,10 +199,6 @@ namespace KIO {
         CC_Refresh = 3,
         CC_Reload = 4,
     }
-    public enum LoadType {
-        Reload = 0,
-        NoReload = 1,
-    }
     /// <remarks>
     ///  Flags for the job properties.
     ///  Not all flags are supported in all cases. Please see documentation of
@@ -188,33 +209,6 @@ namespace KIO {
         HideProgressInfo = 1,
         Resume = 2,
         Overwrite = 4,
-    }
-    public enum RenameDialog_Mode {
-        M_OVERWRITE = 1,
-        M_OVERWRITE_ITSELF = 2,
-        M_SKIP = 4,
-        M_SINGLE = 8,
-        M_MULTI = 16,
-        M_RESUME = 32,
-        M_NORENAME = 64,
-    }
-    /// <remarks>
-    ///  The result of open_RenameDialog().
-    ///  </remarks>        <short>    The result of open_RenameDialog().</short>
-    public enum RenameDialog_Result {
-        R_RESUME = 6,
-        R_RESUME_ALL = 7,
-        R_OVERWRITE = 4,
-        R_OVERWRITE_ALL = 5,
-        R_SKIP = 2,
-        R_AUTO_SKIP = 3,
-        R_RENAME = 1,
-        R_CANCEL = 0,
-    }
-    public enum SkipDialog_Result {
-        S_SKIP = 1,
-        S_AUTO_SKIP = 2,
-        S_CANCEL = 0,
     }
     /// <remarks> HTTP / DAV method *</remarks>        <short>   HTTP / DAV method  </short>
     public enum HTTP_METHOD {
@@ -238,6 +232,10 @@ namespace KIO {
         DAV_NOTIFY = 17,
         HTTP_UNKNOWN = -1,
     }
+    public enum LoadType {
+        Reload = 0,
+        NoReload = 1,
+    }
     /// <remarks>
     ///  </remarks>        <short> A namespace for KIO globals.</short>
     [SmokeClass("KIO")]
@@ -245,6 +243,238 @@ namespace KIO {
         private static SmokeInvocation staticInterceptor = null;
         static Global() {
             staticInterceptor = new SmokeInvocation(typeof(Global), null);
+        }
+        /// <remarks>
+        ///  Pastes the content of the clipboard to the given destination URL.
+        ///  URLs are treated separately (performing a file copy)
+        ///  from other data (which is saved into a file after asking the user
+        ///  to choose a filename and the preferred data format)
+        /// <param> name="destURL" the URL to receive the data
+        /// </param><param> name="widget" parent widget to use for dialogs
+        /// </param><param> name="move" true to move the data, false to copy
+        /// </param></remarks>        <return> the job that handles the operation
+        /// </return>
+        ///         <short>    Pastes the content of the clipboard to the given destination URL.</short>
+        ///         <see> pasteData</see>
+        public static KIO.Job PasteClipboard(KUrl destURL, QWidget widget, bool move) {
+            return (KIO.Job) staticInterceptor.Invoke("pasteClipboard##$", "pasteClipboard(const KUrl&, QWidget*, bool)", typeof(KIO.Job), typeof(KUrl), destURL, typeof(QWidget), widget, typeof(bool), move);
+        }
+        public static KIO.Job PasteClipboard(KUrl destURL, QWidget widget) {
+            return (KIO.Job) staticInterceptor.Invoke("pasteClipboard##", "pasteClipboard(const KUrl&, QWidget*)", typeof(KIO.Job), typeof(KUrl), destURL, typeof(QWidget), widget);
+        }
+        /// <remarks>
+        ///  Pastes the given <code>data</code> to the given destination URL.
+        ///  NOTE: This method is blocking (uses NetAccess for saving the data).
+        ///  Please consider using pasteDataAsync instead.
+        /// <param> name="destURL" the URL of the directory where the data will be pasted.
+        ///  The filename to use in that directory is prompted by this method.
+        /// </param><param> name="data" the data to copy
+        /// </param><param> name="widget" parent widget to use for dialogs
+        /// </param></remarks>        <short>    Pastes the given <code>data</code> to the given destination URL.</short>
+        ///         <see> pasteClipboard</see>
+        public static void PasteData(KUrl destURL, QByteArray data, QWidget widget) {
+            staticInterceptor.Invoke("pasteData###", "pasteData(const KUrl&, const QByteArray&, QWidget*)", typeof(void), typeof(KUrl), destURL, typeof(QByteArray), data, typeof(QWidget), widget);
+        }
+        /// <remarks>
+        ///  Pastes the given <code>data</code> to the given destination URL.
+        ///  Note that this method requires the caller to have chosen the QByteArray
+        ///  to paste before hand, unlike pasteClipboard and pasteMimeSource.
+        /// <param> name="destURL" the URL of the directory where the data will be pasted.
+        ///  The filename to use in that directory is prompted by this method.
+        /// </param><param> name="data" the data to copy
+        /// </param><param> name="dialogText" the text to show in the dialog
+        /// </param></remarks>        <short>    Pastes the given <code>data</code> to the given destination URL.</short>
+        ///         <see> pasteClipboard</see>
+        public static KIO.CopyJob PasteDataAsync(KUrl destURL, QByteArray data, QWidget widget, string dialogText) {
+            return (KIO.CopyJob) staticInterceptor.Invoke("pasteDataAsync###$", "pasteDataAsync(const KUrl&, const QByteArray&, QWidget*, const QString&)", typeof(KIO.CopyJob), typeof(KUrl), destURL, typeof(QByteArray), data, typeof(QWidget), widget, typeof(string), dialogText);
+        }
+        public static KIO.CopyJob PasteDataAsync(KUrl destURL, QByteArray data, QWidget widget) {
+            return (KIO.CopyJob) staticInterceptor.Invoke("pasteDataAsync###", "pasteDataAsync(const KUrl&, const QByteArray&, QWidget*)", typeof(KIO.CopyJob), typeof(KUrl), destURL, typeof(QByteArray), data, typeof(QWidget), widget);
+        }
+        /// <remarks>
+        ///  Save the given mimesource <code>data</code> to the given destination URL
+        ///  after offering the user to choose a data format.
+        ///  This is the method used when handling drops (of anything else than URLs)
+        ///  onto kdesktop and konqueror.
+        /// <param> name="data" the QMimeData (from a QDropEvent or from the clipboard when pasting)
+        /// </param><param> name="destURL" the URL of the directory where the data will be pasted.
+        ///  The filename to use in that directory is prompted by this method.
+        /// </param><param> name="dialogText" the text to show in the dialog
+        /// </param><param> name="widget" parent widget to use for dialogs
+        /// </param><param> name="clipboard" whether the QMimeSource comes from QClipboard. If you
+        ///  use pasteClipboard for that case, you never have to worry about this parameter.
+        /// </param></remarks>        <short>    Save the given mimesource <code>data</code> to the given destination URL  after offering the user to choose a data format.</short>
+        ///         <see> pasteClipboard</see>
+        public static KIO.CopyJob PasteMimeSource(QMimeData data, KUrl destURL, string dialogText, QWidget widget, bool clipboard) {
+            return (KIO.CopyJob) staticInterceptor.Invoke("pasteMimeSource##$#$", "pasteMimeSource(const QMimeData*, const KUrl&, const QString&, QWidget*, bool)", typeof(KIO.CopyJob), typeof(QMimeData), data, typeof(KUrl), destURL, typeof(string), dialogText, typeof(QWidget), widget, typeof(bool), clipboard);
+        }
+        public static KIO.CopyJob PasteMimeSource(QMimeData data, KUrl destURL, string dialogText, QWidget widget) {
+            return (KIO.CopyJob) staticInterceptor.Invoke("pasteMimeSource##$#", "pasteMimeSource(const QMimeData*, const KUrl&, const QString&, QWidget*)", typeof(KIO.CopyJob), typeof(QMimeData), data, typeof(KUrl), destURL, typeof(string), dialogText, typeof(QWidget), widget);
+        }
+        /// <remarks>
+        ///  Returns the text to use for the Paste action, when the application supports
+        ///  pasting files, urls, and clipboard data, using pasteClipboard().
+        /// </remarks>        <return> a string suitable for KAction.SetText, or an empty string if pasting
+        ///  isn't possible right now.
+        ///    </return>
+        ///         <short>    Returns the text to use for the Paste action, when the application supports  pasting files, urls, and clipboard data, using pasteClipboard().</short>
+        public static string PasteActionText() {
+            return (string) staticInterceptor.Invoke("pasteActionText", "pasteActionText()", typeof(string));
+        }
+        /// <remarks>
+        ///  Creates a new DavJob that issues a PROPFIND command. PROPFIND retrieves
+        ///  the properties of the resource identified by the given <code>url.</code>
+        /// <param> name="url" the URL of the resource
+        /// </param><param> name="properties" a propfind document that describes the properties that
+        ///         should be retrieved
+        /// </param><param> name="depth" the depth of the request. Can be "0", "1" or "infinity"
+        /// </param><param> name="flags" : We support HideProgressInfo here
+        /// </param></remarks>        <return> the new DavJob
+        ///     </return>
+        ///         <short>    Creates a new DavJob that issues a PROPFIND command.</short>
+        public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth, uint flags) {
+            return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$$", "davPropFind(const KUrl&, const QDomDocument&, const QString&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth, typeof(uint), flags);
+        }
+        public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth) {
+            return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$", "davPropFind(const KUrl&, const QDomDocument&, const QString&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth);
+        }
+        /// <remarks>
+        ///  Creates a new DavJob that issues a PROPPATCH command. PROPPATCH sets
+        ///  the properties of the resource identified by the given <code>url.</code>
+        /// <param> name="url" the URL of the resource
+        /// </param><param> name="properties" a PROPPACTCH document that describes the properties that
+        ///         should be modified and its new values
+        /// </param><param> name="flags" : We support HideProgressInfo here
+        /// </param></remarks>        <return> the new DavJob
+        ///     </return>
+        ///         <short>    Creates a new DavJob that issues a PROPPATCH command.</short>
+        public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties, uint flags) {
+            return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##$", "davPropPatch(const KUrl&, const QDomDocument&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(uint), flags);
+        }
+        public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties) {
+            return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##", "davPropPatch(const KUrl&, const QDomDocument&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties);
+        }
+        /// <remarks>
+        ///  Creates a new DavJob that issues a SEARCH command.
+        /// <param> name="url" the URL of the resource
+        /// </param><param> name="nsURI" the URI of the search method's qualified name
+        /// </param><param> name="qName" the local part of the search method's qualified name
+        /// </param><param> name="query" the search string
+        /// </param><param> name="flags" : We support HideProgressInfo here
+        /// </param></remarks>        <return> the new DavJob
+        ///     </return>
+        ///         <short>    Creates a new DavJob that issues a SEARCH command.</short>
+        public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query, uint flags) {
+            return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query, typeof(uint), flags);
+        }
+        public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query) {
+            return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query);
+        }
+        /// <remarks>
+        ///  Creates a PreviewJob to generate or retrieve a preview image
+        ///  for the given URL.
+        /// <param> name="items" files to get previews for
+        /// </param><param> name="width" the maximum width to use
+        /// </param><param> name="height" the maximum height to use, if this is 0, the same
+        ///  value as width is used.
+        /// </param><param> name="iconSize" the size of the mimetype icon to overlay over the
+        ///  preview or zero to not overlay an icon. This has no effect if the
+        ///  preview plugin that will be used doesn't use icon overlays.
+        /// </param><param> name="iconAlpha" transparency to use for the icon overlay
+        /// </param><param> name="scale" if the image is to be scaled to the requested size or
+        ///  returned in its original size
+        /// </param><param> name="save" if the image should be cached for later use
+        /// </param><param> name="enabledPlugins" if non-zero, this points to a list containing
+        ///  the names of the plugins that may be used.
+        /// </param></remarks>        <return> the new PreviewJob
+        /// </return>
+        ///         <short>    Creates a PreviewJob to generate or retrieve a preview image  for the given URL.</short>
+        ///         <see> PreviewJob.AvailablePlugins</see>
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save, List<string> enabledPlugins) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$$?", "filePreview(const KFileItemList&, int, int, int, int, bool, bool, const QStringList*)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
+        }
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$$", "filePreview(const KFileItemList&, int, int, int, int, bool, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save);
+        }
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$", "filePreview(const KFileItemList&, int, int, int, int, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale);
+        }
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$", "filePreview(const KFileItemList&, int, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha);
+        }
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$", "filePreview(const KFileItemList&, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize);
+        }
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$", "filePreview(const KFileItemList&, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height);
+        }
+        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$", "filePreview(const KFileItemList&, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width);
+        }
+        /// <remarks>
+        ///  Creates a PreviewJob to generate or retrieve a preview image
+        ///  for the given URL.
+        /// <param> name="items" files to get previews for
+        /// </param><param> name="width" the maximum width to use
+        /// </param><param> name="height" the maximum height to use, if this is 0, the same
+        ///  value as width is used.
+        /// </param><param> name="iconSize" the size of the mimetype icon to overlay over the
+        ///  preview or zero to not overlay an icon. This has no effect if the
+        ///  preview plugin that will be used doesn't use icon overlays.
+        /// </param><param> name="iconAlpha" transparency to use for the icon overlay
+        /// </param><param> name="scale" if the image is to be scaled to the requested size or
+        ///  returned in its original size
+        /// </param><param> name="save" if the image should be cached for later use
+        /// </param><param> name="enabledPlugins" if non-zero, this points to a list containing
+        ///  the names of the plugins that may be used.
+        /// </param></remarks>        <return> the new PreviewJob
+        /// </return>
+        ///         <short>    Creates a PreviewJob to generate or retrieve a preview image  for the given URL.</short>
+        ///         <see> PreviewJob.AvailablePlugins</see>
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save, List<string> enabledPlugins) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$$?", "filePreview(const KUrl::List&, int, int, int, int, bool, bool, const QStringList*)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
+        }
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$$", "filePreview(const KUrl::List&, int, int, int, int, bool, bool)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save);
+        }
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha, bool scale) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$", "filePreview(const KUrl::List&, int, int, int, int, bool)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale);
+        }
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$", "filePreview(const KUrl::List&, int, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha);
+        }
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$", "filePreview(const KUrl::List&, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize);
+        }
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$", "filePreview(const KUrl::List&, int, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height);
+        }
+        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width) {
+            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$", "filePreview(const KUrl::List&, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width);
+        }
+        /// <remarks>
+        ///  Retrieves meta information for the given items.
+        /// <param> name="items" files to get metainfo for
+        /// </param></remarks>        <return> the MetaInfoJob to retrieve the items
+        ///      </return>
+        ///         <short>    Retrieves meta information for the given items.</short>
+        public static KIO.MetaInfoJob FileMetaInfo(List<KFileItem> items) {
+            return (KIO.MetaInfoJob) staticInterceptor.Invoke("fileMetaInfo#", "fileMetaInfo(const KFileItemList&)", typeof(KIO.MetaInfoJob), typeof(List<KFileItem>), items);
+        }
+        /// <remarks>
+        ///  Retrieves meta information for the given items.
+        /// <param> name="items" files to get metainfo for
+        /// </param></remarks>        <return> the MetaInfoJob to retrieve the items
+        ///      </return>
+        ///         <short>    Retrieves meta information for the given items.</short>
+        public static KIO.MetaInfoJob FileMetaInfo(List<KUrl> items) {
+            return (KIO.MetaInfoJob) staticInterceptor.Invoke("fileMetaInfo?", "fileMetaInfo(const KUrl::List&)", typeof(KIO.MetaInfoJob), typeof(List<KUrl>), items);
+        }
+        public static QDataStream Write(QDataStream s, KIO.AuthInfo a) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KIO::AuthInfo&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.AuthInfo), a);
+        }
+        public static QDataStream Read(QDataStream s, KIO.AuthInfo a) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KIO::AuthInfo&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.AuthInfo), a);
         }
         /// <remarks>
         ///  Converts <code>size</code> from bytes to the string representation.
@@ -459,6 +689,51 @@ namespace KIO {
         }
         public static KJobTrackerInterface GetJobTracker() {
             return (KJobTrackerInterface) staticInterceptor.Invoke("getJobTracker", "getJobTracker()", typeof(KJobTrackerInterface));
+        }
+        /// <remarks>
+        ///  Computes a directory size (by doing a recursive listing).
+        ///  Connect to the result signal. Use NetAccess.SynchronousRun for a synchronous version.
+        ///  This one lists a single directory.
+        ///  </remarks>        <short>    Computes a directory size (by doing a recursive listing).</short>
+        public static KIO.DirectorySizeJob DirectorySize(KUrl directory) {
+            return (KIO.DirectorySizeJob) staticInterceptor.Invoke("directorySize#", "directorySize(const KUrl&)", typeof(KIO.DirectorySizeJob), typeof(KUrl), directory);
+        }
+        /// <remarks>
+        ///  Computes a directory size (by doing a recursive listing).
+        ///  Connect to the result signal. Use NetAccess.SynchronousRun for a synchronous version.
+        ///  This one lists the items from <code>lstItems.</code>
+        ///  The reason we asks for items instead of just urls, is so that
+        ///  we directly know if the item is a file or a directory,
+        ///  and in case of a file, we already have its size.
+        ///  </remarks>        <short>    Computes a directory size (by doing a recursive listing).</short>
+        public static KIO.DirectorySizeJob DirectorySize(List<KFileItem> lstItems) {
+            return (KIO.DirectorySizeJob) staticInterceptor.Invoke("directorySize#", "directorySize(const KFileItemList&)", typeof(KIO.DirectorySizeJob), typeof(List<KFileItem>), lstItems);
+        }
+        /// <remarks>
+        ///  Delete a file or directory.
+        /// <param> name="src" file to delete
+        /// </param><param> name="flags" : We support HideProgressInfo here
+        /// </param></remarks>        <return> the job handling the operation
+        ///      </return>
+        ///         <short>    Delete a file or directory.</short>
+        public static KIO.DeleteJob Del(KUrl src, uint flags) {
+            return (KIO.DeleteJob) staticInterceptor.Invoke("del#$", "del(const KUrl&, KIO::JobFlags)", typeof(KIO.DeleteJob), typeof(KUrl), src, typeof(uint), flags);
+        }
+        public static KIO.DeleteJob Del(KUrl src) {
+            return (KIO.DeleteJob) staticInterceptor.Invoke("del#", "del(const KUrl&)", typeof(KIO.DeleteJob), typeof(KUrl), src);
+        }
+        /// <remarks>
+        ///  Deletes a list of files or directories.
+        /// <param> name="src" the files to delete
+        /// </param><param> name="flags" : We support HideProgressInfo here
+        /// </param></remarks>        <return> the job handling the operation
+        ///      </return>
+        ///         <short>    Deletes a list of files or directories.</short>
+        public static KIO.DeleteJob Del(List<KUrl> src, uint flags) {
+            return (KIO.DeleteJob) staticInterceptor.Invoke("del?$", "del(const KUrl::List&, KIO::JobFlags)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src, typeof(uint), flags);
+        }
+        public static KIO.DeleteJob Del(List<KUrl> src) {
+            return (KIO.DeleteJob) staticInterceptor.Invoke("del?", "del(const KUrl::List&)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src);
         }
         /// <remarks>
         ///  Creates a single directory.
@@ -1108,283 +1383,6 @@ namespace KIO {
         }
         public static KIO.CopyJob Trash(List<KUrl> src) {
             return (KIO.CopyJob) staticInterceptor.Invoke("trash?", "trash(const KUrl::List&)", typeof(KIO.CopyJob), typeof(List<KUrl>), src);
-        }
-        /// <remarks>
-        ///  Delete a file or directory.
-        /// <param> name="src" file to delete
-        /// </param><param> name="flags" : We support HideProgressInfo here
-        /// </param></remarks>        <return> the job handling the operation
-        ///      </return>
-        ///         <short>    Delete a file or directory.</short>
-        public static KIO.DeleteJob Del(KUrl src, uint flags) {
-            return (KIO.DeleteJob) staticInterceptor.Invoke("del#$", "del(const KUrl&, KIO::JobFlags)", typeof(KIO.DeleteJob), typeof(KUrl), src, typeof(uint), flags);
-        }
-        public static KIO.DeleteJob Del(KUrl src) {
-            return (KIO.DeleteJob) staticInterceptor.Invoke("del#", "del(const KUrl&)", typeof(KIO.DeleteJob), typeof(KUrl), src);
-        }
-        /// <remarks>
-        ///  Deletes a list of files or directories.
-        /// <param> name="src" the files to delete
-        /// </param><param> name="flags" : We support HideProgressInfo here
-        /// </param></remarks>        <return> the job handling the operation
-        ///      </return>
-        ///         <short>    Deletes a list of files or directories.</short>
-        public static KIO.DeleteJob Del(List<KUrl> src, uint flags) {
-            return (KIO.DeleteJob) staticInterceptor.Invoke("del?$", "del(const KUrl::List&, KIO::JobFlags)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src, typeof(uint), flags);
-        }
-        public static KIO.DeleteJob Del(List<KUrl> src) {
-            return (KIO.DeleteJob) staticInterceptor.Invoke("del?", "del(const KUrl::List&)", typeof(KIO.DeleteJob), typeof(List<KUrl>), src);
-        }
-        /// <remarks>
-        ///  Pastes the content of the clipboard to the given destination URL.
-        ///  URLs are treated separately (performing a file copy)
-        ///  from other data (which is saved into a file after asking the user
-        ///  to choose a filename and the preferred data format)
-        /// <param> name="destURL" the URL to receive the data
-        /// </param><param> name="widget" parent widget to use for dialogs
-        /// </param><param> name="move" true to move the data, false to copy
-        /// </param></remarks>        <return> the job that handles the operation
-        /// </return>
-        ///         <short>    Pastes the content of the clipboard to the given destination URL.</short>
-        ///         <see> pasteData</see>
-        public static KIO.Job PasteClipboard(KUrl destURL, QWidget widget, bool move) {
-            return (KIO.Job) staticInterceptor.Invoke("pasteClipboard##$", "pasteClipboard(const KUrl&, QWidget*, bool)", typeof(KIO.Job), typeof(KUrl), destURL, typeof(QWidget), widget, typeof(bool), move);
-        }
-        public static KIO.Job PasteClipboard(KUrl destURL, QWidget widget) {
-            return (KIO.Job) staticInterceptor.Invoke("pasteClipboard##", "pasteClipboard(const KUrl&, QWidget*)", typeof(KIO.Job), typeof(KUrl), destURL, typeof(QWidget), widget);
-        }
-        /// <remarks>
-        ///  Pastes the given <code>data</code> to the given destination URL.
-        ///  NOTE: This method is blocking (uses NetAccess for saving the data).
-        ///  Please consider using pasteDataAsync instead.
-        /// <param> name="destURL" the URL of the directory where the data will be pasted.
-        ///  The filename to use in that directory is prompted by this method.
-        /// </param><param> name="data" the data to copy
-        /// </param><param> name="widget" parent widget to use for dialogs
-        /// </param></remarks>        <short>    Pastes the given <code>data</code> to the given destination URL.</short>
-        ///         <see> pasteClipboard</see>
-        public static void PasteData(KUrl destURL, QByteArray data, QWidget widget) {
-            staticInterceptor.Invoke("pasteData###", "pasteData(const KUrl&, const QByteArray&, QWidget*)", typeof(void), typeof(KUrl), destURL, typeof(QByteArray), data, typeof(QWidget), widget);
-        }
-        /// <remarks>
-        ///  Pastes the given <code>data</code> to the given destination URL.
-        ///  Note that this method requires the caller to have chosen the QByteArray
-        ///  to paste before hand, unlike pasteClipboard and pasteMimeSource.
-        /// <param> name="destURL" the URL of the directory where the data will be pasted.
-        ///  The filename to use in that directory is prompted by this method.
-        /// </param><param> name="data" the data to copy
-        /// </param><param> name="dialogText" the text to show in the dialog
-        /// </param></remarks>        <short>    Pastes the given <code>data</code> to the given destination URL.</short>
-        ///         <see> pasteClipboard</see>
-        public static KIO.CopyJob PasteDataAsync(KUrl destURL, QByteArray data, QWidget widget, string dialogText) {
-            return (KIO.CopyJob) staticInterceptor.Invoke("pasteDataAsync###$", "pasteDataAsync(const KUrl&, const QByteArray&, QWidget*, const QString&)", typeof(KIO.CopyJob), typeof(KUrl), destURL, typeof(QByteArray), data, typeof(QWidget), widget, typeof(string), dialogText);
-        }
-        public static KIO.CopyJob PasteDataAsync(KUrl destURL, QByteArray data, QWidget widget) {
-            return (KIO.CopyJob) staticInterceptor.Invoke("pasteDataAsync###", "pasteDataAsync(const KUrl&, const QByteArray&, QWidget*)", typeof(KIO.CopyJob), typeof(KUrl), destURL, typeof(QByteArray), data, typeof(QWidget), widget);
-        }
-        /// <remarks>
-        ///  Save the given mimesource <code>data</code> to the given destination URL
-        ///  after offering the user to choose a data format.
-        ///  This is the method used when handling drops (of anything else than URLs)
-        ///  onto kdesktop and konqueror.
-        /// <param> name="data" the QMimeData (from a QDropEvent or from the clipboard when pasting)
-        /// </param><param> name="destURL" the URL of the directory where the data will be pasted.
-        ///  The filename to use in that directory is prompted by this method.
-        /// </param><param> name="dialogText" the text to show in the dialog
-        /// </param><param> name="widget" parent widget to use for dialogs
-        /// </param><param> name="clipboard" whether the QMimeSource comes from QClipboard. If you
-        ///  use pasteClipboard for that case, you never have to worry about this parameter.
-        /// </param></remarks>        <short>    Save the given mimesource <code>data</code> to the given destination URL  after offering the user to choose a data format.</short>
-        ///         <see> pasteClipboard</see>
-        public static KIO.CopyJob PasteMimeSource(QMimeData data, KUrl destURL, string dialogText, QWidget widget, bool clipboard) {
-            return (KIO.CopyJob) staticInterceptor.Invoke("pasteMimeSource##$#$", "pasteMimeSource(const QMimeData*, const KUrl&, const QString&, QWidget*, bool)", typeof(KIO.CopyJob), typeof(QMimeData), data, typeof(KUrl), destURL, typeof(string), dialogText, typeof(QWidget), widget, typeof(bool), clipboard);
-        }
-        public static KIO.CopyJob PasteMimeSource(QMimeData data, KUrl destURL, string dialogText, QWidget widget) {
-            return (KIO.CopyJob) staticInterceptor.Invoke("pasteMimeSource##$#", "pasteMimeSource(const QMimeData*, const KUrl&, const QString&, QWidget*)", typeof(KIO.CopyJob), typeof(QMimeData), data, typeof(KUrl), destURL, typeof(string), dialogText, typeof(QWidget), widget);
-        }
-        /// <remarks>
-        ///  Returns the text to use for the Paste action, when the application supports
-        ///  pasting files, urls, and clipboard data, using pasteClipboard().
-        /// </remarks>        <return> a string suitable for KAction.SetText, or an empty string if pasting
-        ///  isn't possible right now.
-        ///    </return>
-        ///         <short>    Returns the text to use for the Paste action, when the application supports  pasting files, urls, and clipboard data, using pasteClipboard().</short>
-        public static string PasteActionText() {
-            return (string) staticInterceptor.Invoke("pasteActionText", "pasteActionText()", typeof(string));
-        }
-        public static QDataStream Write(QDataStream s, KIO.AuthInfo a) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const KIO::AuthInfo&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.AuthInfo), a);
-        }
-        public static QDataStream Read(QDataStream s, KIO.AuthInfo a) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, KIO::AuthInfo&)", typeof(QDataStream), typeof(QDataStream), s, typeof(KIO.AuthInfo), a);
-        }
-        /// <remarks>
-        ///  Creates a PreviewJob to generate or retrieve a preview image
-        ///  for the given URL.
-        /// <param> name="items" files to get previews for
-        /// </param><param> name="width" the maximum width to use
-        /// </param><param> name="height" the maximum height to use, if this is 0, the same
-        ///  value as width is used.
-        /// </param><param> name="iconSize" the size of the mimetype icon to overlay over the
-        ///  preview or zero to not overlay an icon. This has no effect if the
-        ///  preview plugin that will be used doesn't use icon overlays.
-        /// </param><param> name="iconAlpha" transparency to use for the icon overlay
-        /// </param><param> name="scale" if the image is to be scaled to the requested size or
-        ///  returned in its original size
-        /// </param><param> name="save" if the image should be cached for later use
-        /// </param><param> name="enabledPlugins" if non-zero, this points to a list containing
-        ///  the names of the plugins that may be used.
-        /// </param></remarks>        <return> the new PreviewJob
-        /// </return>
-        ///         <short>    Creates a PreviewJob to generate or retrieve a preview image  for the given URL.</short>
-        ///         <see> PreviewJob.AvailablePlugins</see>
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save, List<string> enabledPlugins) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$$?", "filePreview(const KFileItemList&, int, int, int, int, bool, bool, const QStringList*)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
-        }
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$$", "filePreview(const KFileItemList&, int, int, int, int, bool, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save);
-        }
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha, bool scale) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$$", "filePreview(const KFileItemList&, int, int, int, int, bool)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale);
-        }
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize, int iconAlpha) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$$", "filePreview(const KFileItemList&, int, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha);
-        }
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height, int iconSize) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$$", "filePreview(const KFileItemList&, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize);
-        }
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width, int height) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$$", "filePreview(const KFileItemList&, int, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width, typeof(int), height);
-        }
-        public static KIO.PreviewJob FilePreview(List<KFileItem> items, int width) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview#$", "filePreview(const KFileItemList&, int)", typeof(KIO.PreviewJob), typeof(List<KFileItem>), items, typeof(int), width);
-        }
-        /// <remarks>
-        ///  Creates a PreviewJob to generate or retrieve a preview image
-        ///  for the given URL.
-        /// <param> name="items" files to get previews for
-        /// </param><param> name="width" the maximum width to use
-        /// </param><param> name="height" the maximum height to use, if this is 0, the same
-        ///  value as width is used.
-        /// </param><param> name="iconSize" the size of the mimetype icon to overlay over the
-        ///  preview or zero to not overlay an icon. This has no effect if the
-        ///  preview plugin that will be used doesn't use icon overlays.
-        /// </param><param> name="iconAlpha" transparency to use for the icon overlay
-        /// </param><param> name="scale" if the image is to be scaled to the requested size or
-        ///  returned in its original size
-        /// </param><param> name="save" if the image should be cached for later use
-        /// </param><param> name="enabledPlugins" if non-zero, this points to a list containing
-        ///  the names of the plugins that may be used.
-        /// </param></remarks>        <return> the new PreviewJob
-        /// </return>
-        ///         <short>    Creates a PreviewJob to generate or retrieve a preview image  for the given URL.</short>
-        ///         <see> PreviewJob.AvailablePlugins</see>
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save, List<string> enabledPlugins) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$$?", "filePreview(const KUrl::List&, int, int, int, int, bool, bool, const QStringList*)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save, typeof(List<string>), enabledPlugins);
-        }
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha, bool scale, bool save) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$$", "filePreview(const KUrl::List&, int, int, int, int, bool, bool)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale, typeof(bool), save);
-        }
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha, bool scale) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$$", "filePreview(const KUrl::List&, int, int, int, int, bool)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha, typeof(bool), scale);
-        }
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize, int iconAlpha) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$$", "filePreview(const KUrl::List&, int, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize, typeof(int), iconAlpha);
-        }
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height, int iconSize) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$$", "filePreview(const KUrl::List&, int, int, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height, typeof(int), iconSize);
-        }
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width, int height) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$$", "filePreview(const KUrl::List&, int, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width, typeof(int), height);
-        }
-        public static KIO.PreviewJob FilePreview(List<KUrl> items, int width) {
-            return (KIO.PreviewJob) staticInterceptor.Invoke("filePreview?$", "filePreview(const KUrl::List&, int)", typeof(KIO.PreviewJob), typeof(List<KUrl>), items, typeof(int), width);
-        }
-        /// <remarks>
-        ///  Retrieves meta information for the given items.
-        /// <param> name="items" files to get metainfo for
-        /// </param></remarks>        <return> the MetaInfoJob to retrieve the items
-        ///      </return>
-        ///         <short>    Retrieves meta information for the given items.</short>
-        public static KIO.MetaInfoJob FileMetaInfo(List<KFileItem> items) {
-            return (KIO.MetaInfoJob) staticInterceptor.Invoke("fileMetaInfo#", "fileMetaInfo(const KFileItemList&)", typeof(KIO.MetaInfoJob), typeof(List<KFileItem>), items);
-        }
-        /// <remarks>
-        ///  Retrieves meta information for the given items.
-        /// <param> name="items" files to get metainfo for
-        /// </param></remarks>        <return> the MetaInfoJob to retrieve the items
-        ///      </return>
-        ///         <short>    Retrieves meta information for the given items.</short>
-        public static KIO.MetaInfoJob FileMetaInfo(List<KUrl> items) {
-            return (KIO.MetaInfoJob) staticInterceptor.Invoke("fileMetaInfo?", "fileMetaInfo(const KUrl::List&)", typeof(KIO.MetaInfoJob), typeof(List<KUrl>), items);
-        }
-        /// <remarks>
-        ///  Creates a new DavJob that issues a PROPFIND command. PROPFIND retrieves
-        ///  the properties of the resource identified by the given <code>url.</code>
-        /// <param> name="url" the URL of the resource
-        /// </param><param> name="properties" a propfind document that describes the properties that
-        ///         should be retrieved
-        /// </param><param> name="depth" the depth of the request. Can be "0", "1" or "infinity"
-        /// </param><param> name="flags" : We support HideProgressInfo here
-        /// </param></remarks>        <return> the new DavJob
-        ///     </return>
-        ///         <short>    Creates a new DavJob that issues a PROPFIND command.</short>
-        public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth, uint flags) {
-            return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$$", "davPropFind(const KUrl&, const QDomDocument&, const QString&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth, typeof(uint), flags);
-        }
-        public static KIO.DavJob DavPropFind(KUrl url, QDomDocument properties, string depth) {
-            return (KIO.DavJob) staticInterceptor.Invoke("davPropFind##$", "davPropFind(const KUrl&, const QDomDocument&, const QString&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(string), depth);
-        }
-        /// <remarks>
-        ///  Creates a new DavJob that issues a PROPPATCH command. PROPPATCH sets
-        ///  the properties of the resource identified by the given <code>url.</code>
-        /// <param> name="url" the URL of the resource
-        /// </param><param> name="properties" a PROPPACTCH document that describes the properties that
-        ///         should be modified and its new values
-        /// </param><param> name="flags" : We support HideProgressInfo here
-        /// </param></remarks>        <return> the new DavJob
-        ///     </return>
-        ///         <short>    Creates a new DavJob that issues a PROPPATCH command.</short>
-        public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties, uint flags) {
-            return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##$", "davPropPatch(const KUrl&, const QDomDocument&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties, typeof(uint), flags);
-        }
-        public static KIO.DavJob DavPropPatch(KUrl url, QDomDocument properties) {
-            return (KIO.DavJob) staticInterceptor.Invoke("davPropPatch##", "davPropPatch(const KUrl&, const QDomDocument&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(QDomDocument), properties);
-        }
-        /// <remarks>
-        ///  Creates a new DavJob that issues a SEARCH command.
-        /// <param> name="url" the URL of the resource
-        /// </param><param> name="nsURI" the URI of the search method's qualified name
-        /// </param><param> name="qName" the local part of the search method's qualified name
-        /// </param><param> name="query" the search string
-        /// </param><param> name="flags" : We support HideProgressInfo here
-        /// </param></remarks>        <return> the new DavJob
-        ///     </return>
-        ///         <short>    Creates a new DavJob that issues a SEARCH command.</short>
-        public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query, uint flags) {
-            return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&, KIO::JobFlags)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query, typeof(uint), flags);
-        }
-        public static KIO.DavJob DavSearch(KUrl url, string nsURI, string qName, string query) {
-            return (KIO.DavJob) staticInterceptor.Invoke("davSearch#$$$", "davSearch(const KUrl&, const QString&, const QString&, const QString&)", typeof(KIO.DavJob), typeof(KUrl), url, typeof(string), nsURI, typeof(string), qName, typeof(string), query);
-        }
-        /// <remarks>
-        ///  Computes a directory size (by doing a recursive listing).
-        ///  Connect to the result signal. Use NetAccess.SynchronousRun for a synchronous version.
-        ///  This one lists a single directory.
-        ///  </remarks>        <short>    Computes a directory size (by doing a recursive listing).</short>
-        public static KIO.DirectorySizeJob DirectorySize(KUrl directory) {
-            return (KIO.DirectorySizeJob) staticInterceptor.Invoke("directorySize#", "directorySize(const KUrl&)", typeof(KIO.DirectorySizeJob), typeof(KUrl), directory);
-        }
-        /// <remarks>
-        ///  Computes a directory size (by doing a recursive listing).
-        ///  Connect to the result signal. Use NetAccess.SynchronousRun for a synchronous version.
-        ///  This one lists the items from <code>lstItems.</code>
-        ///  The reason we asks for items instead of just urls, is so that
-        ///  we directly know if the item is a file or a directory,
-        ///  and in case of a file, we already have its size.
-        ///  </remarks>        <short>    Computes a directory size (by doing a recursive listing).</short>
-        public static KIO.DirectorySizeJob DirectorySize(List<KFileItem> lstItems) {
-            return (KIO.DirectorySizeJob) staticInterceptor.Invoke("directorySize#", "directorySize(const KFileItemList&)", typeof(KIO.DirectorySizeJob), typeof(List<KFileItem>), lstItems);
         }
     }
 }
