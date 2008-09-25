@@ -240,7 +240,7 @@ namespace Kimono {
         /// <remarks>
         ///  emitted when the dialog has been accepted
         /// <param> name="password" the entered password
-        /// </param><param> name="keep" true if the "remember password" checkbox was checked, false otherwhise.  false if ShowKeepPassword was not set in the constructor
+        /// </param><param> name="keep" true if the "remember password" checkbox was checked, false otherwise.  false if ShowKeepPassword was not set in the constructor
         ///      </param></remarks>        <short>    emitted when the dialog has been accepted </short>
         [Q_SIGNAL("void gotPassword(QString, bool)")]
         void GotPassword(string password, bool keep);
@@ -248,7 +248,7 @@ namespace Kimono {
         ///  emitted when the dialog has been accepted, and ShowUsernameLine was set on the constructor
         /// <param> name="username" the entered username
         /// </param><param> name="password" the entered password
-        /// </param><param> name="keep" true if the "remember password" checkbox was checked, false otherwhise.  false if ShowKeepPassword was not set in the constructor
+        /// </param><param> name="keep" true if the "remember password" checkbox was checked, false otherwise.  false if ShowKeepPassword was not set in the constructor
         ///      </param></remarks>        <short>    emitted when the dialog has been accepted, and ShowUsernameLine was set on the constructor </short>
         [Q_SIGNAL("void gotUsernameAndPassword(QString, QString, bool)")]
         void GotUsernameAndPassword(string username, string password, bool keep);

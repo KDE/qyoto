@@ -145,10 +145,10 @@ namespace Kimono {
         }
         /// <remarks>
         ///  Returns the position where the navigation view should be
-        ///  located according the page stack.
+        ///  located according to the page stack.
         ///  This method can be reimplemented for adapting custom
         ///  views.
-        ///      </remarks>        <short>    Returns the position where the navigation view should be  located according the page stack.</short>
+        ///      </remarks>        <short>    Returns the position where the navigation view should be  located according to the page stack.</short>
         [SmokeMethod("viewPosition() const")]
         protected virtual uint ViewPosition() {
             return (uint) interceptor.Invoke("viewPosition", "viewPosition() const", typeof(uint));
