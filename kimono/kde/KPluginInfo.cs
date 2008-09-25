@@ -130,7 +130,7 @@ namespace Kimono {
             return (bool) interceptor.Invoke("isPluginEnabledByDefault", "isPluginEnabledByDefault() const", typeof(bool));
         }
         /// <remarks>
-        /// </remarks>        <return> The value associated the the <code>key.</code> You can use it if you
+        /// </remarks>        <return> The value associated to the <code>key.</code> You can use it if you
         ///          want to read custom values. To do this you need to define
         ///          your own servicetype and add it to the ServiceTypes keys.
         ///          </return>

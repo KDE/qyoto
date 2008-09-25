@@ -88,7 +88,7 @@ namespace Plasma {
         ///  Adds a directory to the structure of the package. It is added as
         ///  a not-required element with no associated mimetypes.
         /// <param> name="key" used as an internal label for this directory
-        /// </param><param> name="path" the path within the the package for this directory
+        /// </param><param> name="path" the path within the package for this directory
         /// </param><param> name="name" the user visible (translated) name for the directory
         /// </param></remarks>        <short>    Adds a directory to the structure of the package.</short>
         public void AddDirectoryDefinition(string key, string path, string name) {
@@ -98,7 +98,7 @@ namespace Plasma {
         ///  Adds a file to the structure of the package. It is added as
         ///  a not-required element with no associated mimetypes.
         /// <param> name="key" used as an internal label for this file
-        /// </param><param> name="path" the path within the the package for this file
+        /// </param><param> name="path" the path within the package for this file
         /// </param><param> name="name" the user visible (translated) name for the file
         /// </param></remarks>        <short>    Adds a file to the structure of the package.</short>
         public void AddFileDefinition(string key, string path, string name) {

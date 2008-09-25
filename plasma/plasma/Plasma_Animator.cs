@@ -37,7 +37,7 @@ namespace Plasma {
         /// <remarks>
         ///  Starts a standard animation on a QGraphicsItem.
         ///  @arg item the item to animate in some fashion
-        ///  @arg anim the the type of animation to perform
+        ///  @arg anim the type of animation to perform
         /// </remarks>        <return> the id of the animation
         /// </return>
         ///         <short>    Starts a standard animation on a QGraphicsItem.</short>
@@ -56,7 +56,7 @@ namespace Plasma {
         /// <remarks>
         ///  Starts a standard animation on a QGraphicsItem.
         ///  @arg item the item to animate in some fashion
-        ///  @arg anim the the type of animation to perform
+        ///  @arg anim the type of animation to perform
         /// </remarks>        <return> the id of the animation
         /// </return>
         ///         <short>    Starts a standard animation on a QGraphicsItem.</short>

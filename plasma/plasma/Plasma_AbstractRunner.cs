@@ -179,8 +179,8 @@ namespace Plasma {
             return (KConfigGroup) interceptor.Invoke("config", "config() const", typeof(KConfigGroup));
         }
         /// <remarks>
-        ///  Sets whether or not the the runner has options for matches
-        ///          </remarks>        <short>    Sets whether or not the the runner has options for matches          </short>
+        ///  Sets whether or not the runner has options for matches
+        ///          </remarks>        <short>    Sets whether or not the runner has options for matches          </short>
         protected void SetHasRunOptions(bool hasRunOptions) {
             interceptor.Invoke("setHasRunOptions$", "setHasRunOptions(bool)", typeof(void), typeof(bool), hasRunOptions);
         }
@@ -205,7 +205,7 @@ namespace Plasma {
         ///  a measure of safety for runners running their own threads. This should
         ///  be used instead of calling KServiceTypeTrader.Query(..) directly.
         ///  @arg serviceType a service type like "Plasma/Applet" or "KFilePlugin"
-        ///  @arg constraint a constraint to limit the the choices returned.
+        ///  @arg constraint a constraint to limit the choices returned.
         /// </remarks>        <return> a list of services that satisfy the query.
         ///          </return>
         ///         <short>    A blocking method to do queries of installed Services which can provide  a measure of safety for runners running their own threads.</short>

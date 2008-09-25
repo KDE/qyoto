@@ -206,11 +206,11 @@ namespace Kimono {
             return (bool) staticInterceptor.Invoke("useProxy", "useProxy()", typeof(bool));
         }
         /// <remarks>
-        ///  Returns whether or not the the proxy server
+        ///  Returns whether or not the proxy server
         ///  lookup should be reversed or not.
         /// </remarks>        <return> true to use a reversed proxy
         ///    </return>
-        ///         <short>    Returns whether or not the the proxy server  lookup should be reversed or not.</short>
+        ///         <short>    Returns whether or not the proxy server  lookup should be reversed or not.</short>
         public static bool UseReverseProxy() {
             return (bool) staticInterceptor.Invoke("useReverseProxy", "useReverseProxy()", typeof(bool));
         }

@@ -108,7 +108,7 @@ namespace KTextEditor {
         ///  For every call of addView() will finally follow a call of
         ///  removeView(), i.e. the number of calls are identic.
         ///  <b>Note:<> As addView() is called for \e every view in which the plugin's
-        ///        GUI should be visible you must \e not add the the GUI by
+        ///        GUI should be visible you must \e not add the GUI by
         ///        iterating over all Document.Views() yourself neither use the
         ///        signal Document.ViewCreated().
         ///  \param view view to hang the gui in

@@ -45,7 +45,7 @@ namespace Kimono {
         }
         /// <remarks>
         ///  Return the full actionIds of all actions with global shortcuts for the main component
-        ///  specified by actionId. Only the the ComponentUnique part of actionId will be used;
+        ///  specified by actionId. Only the ComponentUnique part of actionId will be used;
         ///  the other members of the actionId List<string> will be ignored.
         ///      </remarks>        <short>    Return the full actionIds of all actions with global shortcuts for the main component  specified by actionId.</short>
         public List<List<string>> AllActionsForComponent(List<string> actionId) {

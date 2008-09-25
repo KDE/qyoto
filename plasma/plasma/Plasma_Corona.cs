@@ -50,8 +50,8 @@ namespace Plasma {
             interceptor.Invoke("clearContainments", "clearContainments()", typeof(void));
         }
         /// <remarks>
-        ///  Returns the the config file used to store the configuration for this Corona
-        ///      </remarks>        <short>    Returns the the config file used to store the configuration for this Corona      </short>
+        ///  Returns the config file used to store the configuration for this Corona
+        ///      </remarks>        <short>    Returns the config file used to store the configuration for this Corona      </short>
         public KSharedConfig Config() {
             return (KSharedConfig) interceptor.Invoke("config", "config() const", typeof(KSharedConfig));
         }

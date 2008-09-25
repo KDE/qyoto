@@ -4,7 +4,7 @@ namespace Kimono {
     using Qyoto;
     /// <remarks>
     ///   This class is an abstract base class which must be used to
-    ///   implement custom models for KPageView. Additional to the the standard
+    ///   implement custom models for KPageView. Additional to the standard
     ///   Qt.ItemDataRoles it provides the two roles
     /// 
     /// <li>

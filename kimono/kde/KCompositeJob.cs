@@ -29,7 +29,7 @@ namespace Kimono {
         /// <remarks>
         ///  Add a job that has to be finished before a result
         ///  is emitted. This has obviously to be called before
-        ///  the the result has been emitted by the job.
+        ///  the result has been emitted by the job.
         /// <param> name="job" the subjob to add
         /// </param></remarks>        <return> true if the job has been added correctly, false otherwise
         ///      </return>
