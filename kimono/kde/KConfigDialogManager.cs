@@ -121,7 +121,7 @@ namespace Kimono {
         /// <param> name="widget" - Parent of the children to look at.
         /// </param><param> name="trackChanges" - If true then tracks any changes to the children of
         ///  widget that are known.
-        /// </param></remarks>        <return> bool - If a widget was set to something other then its default.
+        /// </param></remarks>        <return> bool - If a widget was set to something other than its default.
         ///    </return>
         ///         <short>    Recursive function that finds all known children.</short>
         protected bool ParseChildren(QWidget widget, bool trackChanges) {
