@@ -35,7 +35,7 @@ if(ENABLE_QYOTO)
 
     # following does check for mono-cecil which may packaged into an own package
     # depending on your distributor. cecil is needed within CSharpMacros.cmake for
-    # the INSTALL_GAC macro. So, let's check here if cecil is available rather then
+    # the INSTALL_GAC macro. So, let's check here if cecil is available rather than
     # assuming it is and then break compile (happens e.g. on kubuntu 7.10).
     INCLUDE(FindPkgConfig)
     IF(NOT WIN32)

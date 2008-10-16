@@ -1572,7 +1572,7 @@ void WriteInitialization::initializeComboBox(DomWidget *w)
 
     m_refreshOut << m_option.indent << varName << ".Clear();\n";
 
-    // If possible use qcombobox's addItems() which is much faster then a bunch of addItem() calls
+    // If possible use qcombobox's addItems() which is much faster than a bunch of addItem() calls
     bool noIcons = true;
     QStringList list;
     for (int i=0; i<items.size(); ++i) {
