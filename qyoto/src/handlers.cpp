@@ -387,7 +387,10 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 	} else if (o->smoke->isDerivedFromByName(className, "QTextBlockUserData")) {
 		return true;
 	} else if (o->smoke->isDerivedFromByName(className, "QGraphicsItem")) {
-		return true;
+		QGraphicsItem * item = (QGraphicsItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsItem").index);
+		if (item->scene() != 0) {
+			return true;
+		}
 	}
 	
     return false;
