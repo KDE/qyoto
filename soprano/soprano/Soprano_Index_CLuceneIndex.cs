@@ -143,6 +143,14 @@ namespace Soprano.Index {
         public void Clear() {
             interceptor.Invoke("clear", "clear()", typeof(void));
         }
+        /// <remarks>
+        ///  Optimize the index for search. This makes sense after adding or
+        ///  removing a large number of statements.
+        ///  \since 2.2
+        ///              </remarks>        <short>    Optimize the index for search.</short>
+        public void Optimize() {
+            interceptor.Invoke("optimize", "optimize()", typeof(void));
+        }
         ~CLuceneIndex() {
             interceptor.Invoke("~CLuceneIndex", "~CLuceneIndex()", typeof(void));
         }

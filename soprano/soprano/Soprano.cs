@@ -6,6 +6,7 @@ namespace Soprano {
     using System.Collections.Generic;
     /// <remarks>
     ///  Different types of RDF serialization.
+    ///  \sa serializationMimeType, mimeTypeToSerialization
     ///      </remarks>        <short>    Different types of RDF serialization.</short>
     public enum RdfSerialization {
         SerializationUnknown = 0x0,
@@ -62,29 +63,6 @@ namespace Soprano {
         // const Soprano::Backend* usedBackend(); >>>> NOT CONVERTED
         // Soprano::Model* createModel(const QList<Soprano::BackendSetting>& arg1); >>>> NOT CONVERTED
         /// <remarks>
-        ///  Find a backend plugin by its name.
-        ///  \return the backend specified by \a name or null if could not
-        ///  be found.
-        ///      </remarks>        <short>    Find a backend plugin by its name.</short>
-        /// <remarks>
-        ///  Find a backend plugin by its features.
-        ///  \param features The features that are requested.
-        ///  \param userFeatures If features contain Soprano.BackendFeatureUser this paramter states the additionally requested user features.
-        ///  \return a backend that supports the features defined in \a features.
-        ///  \sa PluginManager.DiscoverBackendByFeatures()
-        ///      </remarks>        <short>    Find a backend plugin by its features.</short>
-        /// <remarks>
-        ///  By default and if available backend "redland" is used.
-        ///      </remarks>        <short>    By default and if available backend "redland" is used.</short>
-        /// <remarks>
-        ///  Creates a new RDF storage using the backend set via setUsedBackend.
-        ///  The caller takes ownership and has to care about deletion.
-        ///  \param settings The settings that should be used to create the Model. Backend implementations
-        ///   should never ignore settings but rather return 0 if an option is not supported. Backends can,
-        ///  however, define their own default settings.
-        ///  \sa Model, Backend.CreateModel
-        ///      </remarks>        <short>    Creates a new RDF storage using the backend set via setUsedBackend.</short>
-        /// <remarks>
         ///  @brief Returns the major number of Soprano's version, e.g.
         ///  1 for %Soprano 1.0.2.
         /// </remarks>        <return> the major version number at runtime.
@@ -121,6 +99,29 @@ namespace Soprano {
         public static string VersionString() {
             return (string) staticInterceptor.Invoke("versionString", "versionString()", typeof(string));
         }
+        /// <remarks>
+        ///  Find a backend plugin by its name.
+        ///  \return the backend specified by \a name or null if could not
+        ///  be found.
+        ///      </remarks>        <short>    Find a backend plugin by its name.</short>
+        /// <remarks>
+        ///  Find a backend plugin by its features.
+        ///  \param features The features that are requested.
+        ///  \param userFeatures If features contain Soprano.BackendFeatureUser this paramter states the additionally requested user features.
+        ///  \return a backend that supports the features defined in \a features.
+        ///  \sa PluginManager.DiscoverBackendByFeatures()
+        ///      </remarks>        <short>    Find a backend plugin by its features.</short>
+        /// <remarks>
+        ///  By default and if available backend "redland" is used.
+        ///      </remarks>        <short>    By default and if available backend "redland" is used.</short>
+        /// <remarks>
+        ///  Creates a new RDF storage using the backend set via setUsedBackend.
+        ///  The caller takes ownership and has to care about deletion.
+        ///  \param settings The settings that should be used to create the Model. Backend implementations
+        ///   should never ignore settings but rather return 0 if an option is not supported. Backends can,
+        ///  however, define their own default settings.
+        ///  \sa Model, Backend.CreateModel, BackendSetting
+        ///      </remarks>        <short>    Creates a new RDF storage using the backend set via setUsedBackend.</short>
         /// <remarks>
         ///  Get the mimetype string of a serialization.
         ///  \param serialization The serialization the mimetype is wanted for.

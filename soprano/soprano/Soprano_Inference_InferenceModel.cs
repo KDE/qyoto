@@ -78,13 +78,13 @@ namespace Soprano.Inference {
             interceptor.Invoke("setRules?", "setRules(const QList<Soprano::Inference::Rule>&)", typeof(void), typeof(List<Soprano.Inference.Rule>), rules);
         }
         /// <remarks>
-        ///  Normally inferencing is done one new statements are added to the model or
+        ///  Normally inferencing is done once new statements are added to the model or
         ///  statements are removed. This method performs inferencing on the whole model.
         ///  It is useful for initializing a model that already contains statements or
         ///  update the model if it has been modified bypassing this filter model.
         ///  Tha latter can easily be done by connecting the Model.StatementsAdded and 
         ///  Model.StatementsRemoved signals to this slot.
-        ///              </remarks>        <short>    Normally inferencing is done one new statements are added to the model or  statements are removed.</short>
+        ///              </remarks>        <short>    Normally inferencing is done once new statements are added to the model or  statements are removed.</short>
         [Q_SLOT("void performInference()")]
         public void PerformInference() {
             interceptor.Invoke("performInference", "performInference()", typeof(void));

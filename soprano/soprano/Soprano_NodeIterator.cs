@@ -21,8 +21,10 @@ namespace Soprano {
     ///  Iterators have to be closed.
     ///  This can either be achieved by deleting the iterator, finishing it (next() does return <pre>false</pre>),
     ///  or calling close(). Before that other operations on the Model may block.
-    ///  Iterators are not thread-safe. Two threads using the same iterator at the same time may result
-    ///  in undefined behaviour and even crashes.
+    ///  Iterators are not thread-safe. Two threads using the same iterator may result
+    ///  in undefined behaviour and even crashes. An iterator needs to be closed by the
+    ///  same thread that opened it (except if the iterator contains special code to handle such
+    ///  a situation.)
     ///  \warning Be aware that iterators in Soprano are shared objects which means
     ///  that copies of one iterator object work on the same data.
     ///  For further details on %Soprano iterators see Iterator.

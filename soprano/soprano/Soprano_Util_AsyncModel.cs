@@ -3,12 +3,16 @@ namespace Soprano.Util {
     using Soprano;
     using System;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  \class AsyncModel asyncmodel.h Soprano/Server/AsyncModel
     ///  \brief Filter model that allows to perform operations
     ///  asyncroneously.
-    ///  The main purpose is to protect a Model against deadlocks
-    ///  in a single threaded situation.
+    ///  AsyncModel has two modes: AsyncModel.SingleThreaded and AsyncModel.MultiThreaded.
+    ///  The main purpose of the AsyncModel.SingleThreaded mode is to protect a
+    ///  Model against deadlocks in a single threaded situation.
+    ///  AsyncModel.MultiThreaded mode provides real asyncroneous execution of
+    ///  Model commands.
     ///  Usage:
     ///  <pre>
     ///  AsyncResult result = model.ListStatementsAsync( s );
@@ -25,6 +29,14 @@ namespace Soprano.Util {
             interceptor = new SmokeInvocation(typeof(AsyncModel), this);
         }
         /// <remarks>
+        ///  The mode of the model, single vs. multi threaded execution.
+        ///  \since 2.2
+        ///              </remarks>        <short>    The mode of the model, single vs.</short>
+        public enum AsyncModelMode {
+            SingleThreaded = 0,
+            MultiThreaded = 1,
+        }
+        /// <remarks>
         ///  Create a new Model.
         ///  \param parent The parent model to forward the operations to.
         ///              </remarks>        <short>    Create a new Model.</short>
@@ -37,6 +49,23 @@ namespace Soprano.Util {
             interceptor.Invoke("AsyncModel", "AsyncModel()", typeof(void));
         }
         /// <remarks>
+        ///  Set the mode to be used. For historical reasons the default mode is
+        ///  SingleThreaded.
+        ///  \sa mode
+        ///  \since 2.2
+        ///              </remarks>        <short>    Set the mode to be used.</short>
+        public void SetMode(Soprano.Util.AsyncModel.AsyncModelMode mode) {
+            interceptor.Invoke("setMode$", "setMode(Soprano::Util::AsyncModel::AsyncModelMode)", typeof(void), typeof(Soprano.Util.AsyncModel.AsyncModelMode), mode);
+        }
+        /// <remarks>
+        ///  The mode used by this model.
+        ///  \sa setMode
+        ///  \since 2.2
+        ///              </remarks>        <short>    The mode used by this model.</short>
+        public Soprano.Util.AsyncModel.AsyncModelMode Mode() {
+            return (Soprano.Util.AsyncModel.AsyncModelMode) interceptor.Invoke("mode", "mode() const", typeof(Soprano.Util.AsyncModel.AsyncModelMode));
+        }
+        /// <remarks>
         ///  Asyncroneously add the Statement to the Model.
         ///  \param statement The Statement to add.
         ///  \sa addStatement
@@ -45,6 +74,23 @@ namespace Soprano.Util {
         ///              </remarks>        <short>    Asyncroneously add the Statement to the Model.</short>
         public Soprano.Util.AsyncResult AddStatementAsync(Soprano.Statement statement) {
             return (Soprano.Util.AsyncResult) interceptor.Invoke("addStatementAsync#", "addStatementAsync(const Soprano::Statement&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Statement), statement);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult AddStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3, Soprano.Node context) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("addStatementAsync####", "addStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&, const Soprano::Node&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3, typeof(Soprano.Node), context);
+        }
+        public Soprano.Util.AsyncResult AddStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("addStatementAsync###", "addStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult AddStatementsAsync(List<Soprano.Statement> statements) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("addStatementsAsync?", "addStatementsAsync(const QList<Soprano::Statement>&)", typeof(Soprano.Util.AsyncResult), typeof(List<Soprano.Statement>), statements);
         }
         /// <remarks>
         ///  Asyncroneously remove one statement. For removing statements
@@ -59,6 +105,23 @@ namespace Soprano.Util {
             return (Soprano.Util.AsyncResult) interceptor.Invoke("removeStatementAsync#", "removeStatementAsync(const Soprano::Statement&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Statement), statement);
         }
         /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult RemoveStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3, Soprano.Node context) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("removeStatementAsync####", "removeStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&, const Soprano::Node&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3, typeof(Soprano.Node), context);
+        }
+        public Soprano.Util.AsyncResult RemoveStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("removeStatementAsync###", "removeStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult RemoveStatementsAsync(List<Soprano.Statement> statements) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("removeStatementsAsync?", "removeStatementsAsync(const QList<Soprano::Statement>&)", typeof(Soprano.Util.AsyncResult), typeof(List<Soprano.Statement>), statements);
+        }
+        /// <remarks>
         ///  Asyncroneously remove all statements that match the partial statement.
         ///  For removing one specific statement see removeStatement().
         ///  \param statement A possible partially defined statement that serves as
@@ -69,6 +132,16 @@ namespace Soprano.Util {
         ///              </remarks>        <short>    Asyncroneously remove all statements that match the partial statement.</short>
         public Soprano.Util.AsyncResult RemoveAllStatementsAsync(Soprano.Statement statement) {
             return (Soprano.Util.AsyncResult) interceptor.Invoke("removeAllStatementsAsync#", "removeAllStatementsAsync(const Soprano::Statement&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Statement), statement);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult RemoveAllStatementsAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3, Soprano.Node context) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("removeAllStatementsAsync####", "removeAllStatementsAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&, const Soprano::Node&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3, typeof(Soprano.Node), context);
+        }
+        public Soprano.Util.AsyncResult RemoveAllStatementsAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("removeAllStatementsAsync###", "removeAllStatementsAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&)", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3);
         }
         /// <remarks>
         ///  Asyncroneously check if the Model does contain any Statement.
@@ -98,6 +171,24 @@ namespace Soprano.Util {
         ///              </remarks>        <short>    Asyncroneously return an iterator over Model Statements that "partial"  match the input Statement.</short>
         public Soprano.Util.AsyncResult ListStatementsAsync(Soprano.Statement statement) {
             return (Soprano.Util.AsyncResult) interceptor.Invoke("listStatementsAsync#", "listStatementsAsync(const Soprano::Statement&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Statement), statement);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult ListStatementsAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3, Soprano.Node context) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("listStatementsAsync####", "listStatementsAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&, const Soprano::Node&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3, typeof(Soprano.Node), context);
+        }
+        public Soprano.Util.AsyncResult ListStatementsAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("listStatementsAsync###", "listStatementsAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  Lists all statements in the Model asyncroneously.
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult ListStatementsAsync() {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("listStatementsAsync", "listStatementsAsync() const", typeof(Soprano.Util.AsyncResult));
         }
         /// <remarks>
         ///  Asyncroneously list all contexts in the model, i.e. all named graphs.
@@ -141,6 +232,16 @@ namespace Soprano.Util {
             return (Soprano.Util.AsyncResult) interceptor.Invoke("containsStatementAsync#", "containsStatementAsync(const Soprano::Statement&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Statement), statement);
         }
         /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult ContainsStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3, Soprano.Node context) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("containsStatementAsync####", "containsStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&, const Soprano::Node&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3, typeof(Soprano.Node), context);
+        }
+        public Soprano.Util.AsyncResult ContainsStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("containsStatementAsync###", "containsStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3);
+        }
+        /// <remarks>
         ///  Asyncroneously check if the model contains certain statements.
         ///  \param statement A partially defined statement that serves as
         ///  a pattern.
@@ -150,6 +251,16 @@ namespace Soprano.Util {
         ///              </remarks>        <short>    Asyncroneously check if the model contains certain statements.</short>
         public Soprano.Util.AsyncResult ContainsAnyStatementAsync(Soprano.Statement statement) {
             return (Soprano.Util.AsyncResult) interceptor.Invoke("containsAnyStatementAsync#", "containsAnyStatementAsync(const Soprano::Statement&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Statement), statement);
+        }
+        /// <remarks>
+        ///  \overload
+        ///  \since 2.2
+        ///              </remarks>        <short>    \overload </short>
+        public Soprano.Util.AsyncResult ContainsAnyStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3, Soprano.Node context) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("containsAnyStatementAsync####", "containsAnyStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&, const Soprano::Node&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3, typeof(Soprano.Node), context);
+        }
+        public Soprano.Util.AsyncResult ContainsAnyStatementAsync(Soprano.Node subject, Soprano.Node predicate, Soprano.Node arg3) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("containsAnyStatementAsync###", "containsAnyStatementAsync(const Soprano::Node&, const Soprano::Node&, const Soprano::Node&) const", typeof(Soprano.Util.AsyncResult), typeof(Soprano.Node), subject, typeof(Soprano.Node), predicate, typeof(Soprano.Node), arg3);
         }
         /// <remarks>
         ///  Asyncroneously create a new blank node with a unique identifier.

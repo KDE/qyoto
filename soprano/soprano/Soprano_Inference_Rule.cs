@@ -54,6 +54,9 @@ namespace Soprano.Inference {
         ///  Check if a statement matches any of the statement patterns
         ///  in this rule.
         ///  \return true if statement matches any of the patterns, false otherwise.
+        ///  Be aware that createSparqlQuery() might still return an empty string
+        ///  since it does perform some aditional optimization checks based on the
+        ///  bound statement.
         ///              </remarks>        <short>    Check if a statement matches any of the statement patterns  in this rule.</short>
         public bool Match(Soprano.Statement statement) {
             return (bool) interceptor.Invoke("match#", "match(const Soprano::Statement&) const", typeof(bool), typeof(Soprano.Statement), statement);
@@ -69,10 +72,19 @@ namespace Soprano.Inference {
             interceptor.Invoke("bindToStatement#", "bindToStatement(const Soprano::Statement&)", typeof(void), typeof(Soprano.Statement), statement);
         }
         /// <remarks>
+        ///  \return The statement set ia bindToStatement() or
+        ///  an invalid one if none was set.
+        ///              </remarks>        <short>    \return The statement set ia bindToStatement() or  an invalid one if none was set.</short>
+        public Soprano.Statement BoundToStatement() {
+            return (Soprano.Statement) interceptor.Invoke("boundToStatement", "boundToStatement() const", typeof(Soprano.Statement));
+        }
+        /// <remarks>
         ///  Create a SPARQL query that retrieves all resources matching this rule.
         ///  \param bindVariables If true and a valid binding statement is set the query
         ///  will be bound to this statement resulting in a UNION query of all possible
         ///  bindings.
+        ///  \return A full SPARQL query or an empty string if this rule does not apply
+        ///  to the statement set via bindToStatement.
         ///  \sa bindToStatement
         ///              </remarks>        <short>    Create a SPARQL query that retrieves all resources matching this rule.</short>
         public string CreateSparqlQuery(bool bindVariables) {

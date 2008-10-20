@@ -27,10 +27,60 @@ namespace Soprano.Util {
         ///  Use Error.ErrorCache.LastError() to check
         ///  for error details.
         ///  This value is not ready before resultReady()
-        ///  as been emitted.
+        ///  has been emitted. <b>Do only use this in a slot connected to
+        ///  resultReady.</b>
+        ///  \sa errorCode, statementIterator, nodeIterator, queryResultIterator, node
         ///              </remarks>        <short>    The result of the async operation.</short>
         public QVariant Value() {
             return (QVariant) interceptor.Invoke("value", "value() const", typeof(QVariant));
+        }
+        /// <remarks>
+        ///  Convinience method which converts value() into
+        ///  a Error.ErrorCode as returned for the following AsyncModel methods:
+        ///  <li>AsyncModel</li>.AddStatementAsync
+        ///  <li>AsyncModel</li>.RemoveStatementAsync
+        ///  <li>AsyncModel</li>.RemoveAllStatementsAsync
+        ///  \sa value()
+        ///  \since 2.2
+        ///              </remarks>        <short>    Convinience method which converts value() into  a Error.ErrorCode as returned for the following AsyncModel methods:  \li AsyncModel.AddStatementAsync  \li AsyncModel.RemoveStatementAsync  \li AsyncModel.RemoveAllStatementsAsync </short>
+        public Soprano.Error.ErrorCode ErrorCode() {
+            return (Soprano.Error.ErrorCode) interceptor.Invoke("errorCode", "errorCode() const", typeof(Soprano.Error.ErrorCode));
+        }
+        /// <remarks>
+        ///  Convinience method which converts value() into
+        ///  a StatementIterator as returned AsyncModel.ListStatementsAsync.
+        ///  \sa value()
+        ///  \since 2.2
+        ///              </remarks>        <short>    Convinience method which converts value() into  a StatementIterator as returned AsyncModel.ListStatementsAsync.</short>
+        public Soprano.StatementIterator StatementIterator() {
+            return (Soprano.StatementIterator) interceptor.Invoke("statementIterator", "statementIterator() const", typeof(Soprano.StatementIterator));
+        }
+        /// <remarks>
+        ///  Convinience method which converts value() into
+        ///  a StatementIterator as returned AsyncModel.ListContextsAsync.
+        ///  \sa value()
+        ///  \since 2.2
+        ///              </remarks>        <short>    Convinience method which converts value() into  a StatementIterator as returned AsyncModel.ListContextsAsync.</short>
+        public Soprano.NodeIterator NodeIterator() {
+            return (Soprano.NodeIterator) interceptor.Invoke("nodeIterator", "nodeIterator() const", typeof(Soprano.NodeIterator));
+        }
+        /// <remarks>
+        ///  Convinience method which converts value() into
+        ///  a StatementIterator as returned AsyncModel.ExecuteQueryAsync.
+        ///  \sa value()
+        ///  \since 2.2
+        ///              </remarks>        <short>    Convinience method which converts value() into  a StatementIterator as returned AsyncModel.ExecuteQueryAsync.</short>
+        public Soprano.QueryResultIterator QueryResultIterator() {
+            return (Soprano.QueryResultIterator) interceptor.Invoke("queryResultIterator", "queryResultIterator() const", typeof(Soprano.QueryResultIterator));
+        }
+        /// <remarks>
+        ///  Convinience method which converts value() into
+        ///  a StatementIterator as returned AsyncModel.CreateBlankNodeAsync.
+        ///  \sa value()
+        ///  \since 2.2
+        ///              </remarks>        <short>    Convinience method which converts value() into  a StatementIterator as returned AsyncModel.CreateBlankNodeAsync.</short>
+        public Soprano.Node Node() {
+            return (Soprano.Node) interceptor.Invoke("node", "node() const", typeof(Soprano.Node));
         }
         /// <remarks>
         ///  Internal method. Do not call.

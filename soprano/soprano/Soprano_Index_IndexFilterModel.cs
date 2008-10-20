@@ -135,6 +135,15 @@ namespace Soprano.Index {
             interceptor.Invoke("rebuildIndex", "rebuildIndex()", typeof(void));
         }
         /// <remarks>
+        ///  Optimize the index for search. This makes sense after adding or
+        ///  removing a large number of statements.
+        ///  \sa CLuceneIndex.Optimize
+        ///  \since 2.2
+        ///              </remarks>        <short>    Optimize the index for search.</short>
+        public void OptimizeIndex() {
+            interceptor.Invoke("optimizeIndex", "optimizeIndex()", typeof(void));
+        }
+        /// <remarks>
         ///  Add a predicate which should only be indexed. This might be useful
         ///  for very large literals whose value is of no interest but which
         ///  should be searchable.
