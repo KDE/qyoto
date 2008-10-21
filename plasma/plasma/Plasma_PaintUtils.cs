@@ -25,5 +25,11 @@ namespace Plasma.PaintUtils {
         public static QPainterPath RoundedRectangle(QRectF rect, double radius) {
             return (QPainterPath) staticInterceptor.Invoke("roundedRectangle#$", "roundedRectangle(const QRectF&, qreal)", typeof(QPainterPath), typeof(QRectF), rect, typeof(double), radius);
         }
+        /// <remarks>
+        ///  Blends a pixmap into another
+        ///  </remarks>        <short>    Blends a pixmap into another  </short>
+        public static QPixmap transition(QPixmap from, QPixmap to, double amount) {
+            return (QPixmap) staticInterceptor.Invoke("transition##$", "transition(const QPixmap&, const QPixmap&, qreal)", typeof(QPixmap), typeof(QPixmap), from, typeof(QPixmap), to, typeof(double), amount);
+        }
     }
 }

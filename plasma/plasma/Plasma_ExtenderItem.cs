@@ -16,6 +16,11 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(ExtenderItem), this);
         }
+        [Q_PROPERTY("QGraphicsItem*", "widget")]
+        public IQGraphicsItem Widget {
+            get { return (IQGraphicsItem) interceptor.Invoke("widget", "widget()", typeof(IQGraphicsItem)); }
+            set { interceptor.Invoke("setWidget#", "setWidget(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), value); }
+        }
         [Q_PROPERTY("QString", "title")]
         public string Title {
             get { return (string) interceptor.Invoke("title", "title()", typeof(string)); }
@@ -30,6 +35,11 @@ namespace Plasma {
         public QIcon icon {
             get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
             set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        [Q_PROPERTY("Plasma::Extender*", "extender")]
+        public Plasma.Extender Extender {
+            get { return (Plasma.Extender) interceptor.Invoke("extender", "extender()", typeof(Plasma.Extender)); }
+            set { interceptor.Invoke("setExtender#", "setExtender(Plasma::Extender*)", typeof(void), typeof(Plasma.Extender), value); }
         }
         [Q_PROPERTY("bool", "collapsed")]
         public bool Collapsed {
@@ -69,19 +79,6 @@ namespace Plasma {
             return (KConfigGroup) interceptor.Invoke("config", "config() const", typeof(KConfigGroup));
         }
         /// <remarks>
-        /// <param> name="widget" The widget that should be wrapped into the extender item.
-        ///          </param></remarks>        <short>   </short>
-        public void SetWidget(QGraphicsWidget widget) {
-            interceptor.Invoke("setWidget#", "setWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
-        }
-        /// <remarks>
-        /// </remarks>        <return> The widget that is wrapped into the extender item.
-        ///          </return>
-        ///         <short>   </short>
-        public QGraphicsWidget Widget() {
-            return (QGraphicsWidget) interceptor.Invoke("widget", "widget() const", typeof(QGraphicsWidget));
-        }
-        /// <remarks>
         /// <param> name="extender" the extender this item belongs to.
         /// </param><param> name="pos" the position in the extender this item should be added. Defaults to 'just
         ///  append'.
@@ -91,13 +88,6 @@ namespace Plasma {
         }
         public void SetExtender(Plasma.Extender extender) {
             interceptor.Invoke("setExtender#", "setExtender(Plasma::Extender*)", typeof(void), typeof(Plasma.Extender), extender);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the extender this items belongs to.
-        ///          </return>
-        ///         <short>   </short>
-        public Plasma.Extender Extender() {
-            return (Plasma.Extender) interceptor.Invoke("extender", "extender() const", typeof(Plasma.Extender));
         }
         /// <remarks>
         /// <param> name="name" the name to store the action under in our collection.

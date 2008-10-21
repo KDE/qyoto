@@ -37,6 +37,7 @@ namespace Plasma {
         }
         public enum FontRole {
             DefaultFont = 0,
+            DesktopFont = 1,
         }
         [Q_PROPERTY("QString", "themeName")]
         public string ThemeName {
@@ -147,6 +148,59 @@ namespace Plasma {
         ///         <short>   </short>
         public bool UseGlobalSettings() {
             return (bool) interceptor.Invoke("useGlobalSettings", "useGlobalSettings() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Tries to load pixmap with the specified key from cache.
+        /// </remarks>        <return> true when pixmap was found and loaded from cache, false otherwise
+        /// </return>
+        ///         <short>    Tries to load pixmap with the specified key from cache.</short>
+        public bool FindInCache(string key, QPixmap pix) {
+            return (bool) interceptor.Invoke("findInCache$#", "findInCache(const QString&, QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), pix);
+        }
+        /// <remarks>
+        ///  Insert specified pixmap into the cache.
+        ///  If the cache already contains pixmap with the specified key then it is
+        ///   overwritten.
+        /// </remarks>        <short>    Insert specified pixmap into the cache.</short>
+        public void InsertIntoCache(string key, QPixmap pix) {
+            interceptor.Invoke("insertIntoCache$#", "insertIntoCache(const QString&, const QPixmap&)", typeof(void), typeof(string), key, typeof(QPixmap), pix);
+        }
+        /// <remarks>
+        ///  Sets the maximum size of the cache (in kilobytes). If cache gets bigger
+        ///  the limit then some entries are removed
+        ///  Setting cache limit to 0 disables automatic cache size limiting.
+        ///  Note that the cleanup might not be done immediately, so the cache might
+        ///   temporarily (for a few seconds) grow bigger than the limit.
+        /// </remarks>        <short>    Sets the maximum size of the cache (in kilobytes).</short>
+        public void SetCacheLimit(int kbytes) {
+            interceptor.Invoke("setCacheLimit$", "setCacheLimit(int)", typeof(void), typeof(int), kbytes);
+        }
+        /// <remarks>
+        ///  Tries to load the rect of a sub element from a disk cache
+        ///  @arg image path of the image we want to check
+        ///  @arg element sub element we want to retrieve
+        ///  @arg rect output parameter of the element rect found in cache 
+        ///            if not found or if we are sure it doesn't exist it will be QRect()
+        /// </remarks>        <return> true if the element was found in cache or if we are sure the element doesn't exist
+        /// </return>
+        ///         <short>    Tries to load the rect of a sub element from a disk cache </short>
+        public bool FindInRectsCache(string image, string element, QRectF rect) {
+            return (bool) interceptor.Invoke("findInRectsCache$$#", "findInRectsCache(const QString&, const QString&, QRectF&) const", typeof(bool), typeof(string), image, typeof(string), element, typeof(QRectF), rect);
+        }
+        /// <remarks>
+        ///  Inserts a rectangle of a sub element of an image into a disk cache
+        ///  @arg image path of the image we want to insert informations
+        ///  @arg element sub element we want insert the rect
+        ///  @arg rect element rectangle
+        /// </remarks>        <short>    Inserts a rectangle of a sub element of an image into a disk cache </short>
+        public void InsertIntoRectsCache(string image, string element, QRectF rect) {
+            interceptor.Invoke("insertIntoRectsCache$$#", "insertIntoRectsCache(const QString&, const QString&, const QRectF&)", typeof(void), typeof(string), image, typeof(string), element, typeof(QRectF), rect);
+        }
+        /// <remarks>
+        ///  Discards all the informations about a given image from the rectangle disk cache
+        /// </remarks>        <short>    Discards all the informations about a given image from the rectangle disk cache </short>
+        public void InvalidateRectsCache(string image) {
+            interceptor.Invoke("invalidateRectsCache$", "invalidateRectsCache(const QString&)", typeof(void), typeof(string), image);
         }
         /// <remarks>
         ///  Notifies the Theme object that the theme settings have changed

@@ -170,8 +170,11 @@ namespace Plasma {
             return (Plasma.Package) interceptor.Invoke("package", "package() const", typeof(Plasma.Package));
         }
         /// <remarks>
-        ///  Returns the view this widget is visible on
-        ///          </remarks>        <short>    Returns the view this widget is visible on          </short>
+        ///  Returns the view this widget is visible on, or 0 if none can be found.
+        ///  @warning do NOT assume this will always return a view!
+        ///  a null view probably means that either plasma isn't finished loading, or your applet is
+        ///  on an activity that's not being shown anywhere.
+        ///          </remarks>        <short>    Returns the view this widget is visible on, or 0 if none can be found.</short>
         public QGraphicsView View() {
             return (QGraphicsView) interceptor.Invoke("view", "view() const", typeof(QGraphicsView));
         }
@@ -329,9 +332,14 @@ namespace Plasma {
             return (bool) interceptor.Invoke("isContainment", "isContainment() const", typeof(bool));
         }
         /// <remarks>
+        ///  This method returns screen coordinates for the widget; this method can be somewhat
+        ///  expensive and should ONLY be called when screen coordinates are required. For
+        ///  example when positioning top level widgets on top of the view to create the
+        ///  appearance of unit. This should NOT be used for popups (@see popupPosition) or
+        ///  for normal widget use (use Plasma. widgets or QGraphicsProxyWidget instead).
         /// </remarks>        <return> a rect of the applet in screen coordinates.
         ///          </return>
-        ///         <short>   </short>
+        ///         <short>    This method returns screen coordinates for the widget; this method can be somewhat  expensive and should ONLY be called when screen coordinates are required.</short>
         public QRect ScreenRect() {
             return (QRect) interceptor.Invoke("screenRect", "screenRect() const", typeof(QRect));
         }
@@ -403,9 +411,10 @@ namespace Plasma {
             interceptor.Invoke("Applet", "Applet()", typeof(void));
         }
         /// <remarks>
-        ///  Sets the immutability type for this applet (not immutable, user immutable or system immutable)
+        ///  Sets the immutability type for this applet (not immutable,
+        ///  user immutable or system immutable)
         ///  @arg immutable the new immutability type of this applet
-        ///          </remarks>        <short>    Sets the immutability type for this applet (not immutable, user immutable or system immutable)  @arg immutable the new immutability type of this applet          </short>
+        ///          </remarks>        <short>    Sets the immutability type for this applet (not immutable,  user immutable or system immutable)  @arg immutable the new immutability type of this applet          </short>
         [Q_SLOT("void setImmutability(ImmutabilityType)")]
         public void SetImmutability(Plasma.ImmutabilityType immutable) {
             interceptor.Invoke("setImmutability$", "setImmutability(const Plasma::ImmutabilityType)", typeof(void), typeof(Plasma.ImmutabilityType), immutable);
@@ -571,12 +580,6 @@ namespace Plasma {
             interceptor.Invoke("createConfigurationInterface#", "createConfigurationInterface(KConfigDialog*)", typeof(void), typeof(KConfigDialog), parent);
         }
         /// <remarks>
-        ///  Sets whether or not this Applet is acting as a Containment
-        ///          </remarks>        <short>    Sets whether or not this Applet is acting as a Containment          </short>
-        protected void SetIsContainment(bool isContainment) {
-            interceptor.Invoke("setIsContainment$", "setIsContainment(bool)", typeof(void), typeof(bool), isContainment);
-        }
-        /// <remarks>
         ///  Called when any of the geometry constraints have been updated.
         ///  This is always called prior to painting and should be used as an
         ///  opportunity to layout the widget, calculate sizings, etc.
@@ -678,8 +681,22 @@ namespace Plasma {
             return (QSizeF) interceptor.Invoke("sizeHint$", "sizeHint(Qt::SizeHint) const", typeof(QSizeF), typeof(Qt.SizeHint), which);
         }
         /// <remarks>
+        ///  Reimplemented from QGraphicsLayoutItem
+        ///          </remarks>        <short>    Reimplemented from QGraphicsLayoutItem          </short>
+        [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverEnterEvent#", "hoverEnterEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        /// <remarks>
+        ///  Reimplemented from QGraphicsLayoutItem
+        ///          </remarks>        <short>    Reimplemented from QGraphicsLayoutItem          </short>
+        [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        /// <remarks>
         ///  Reimplemented from QObject
-        ///           </remarks>        <short>    Reimplemented from QObject           </short>
+        ///          </remarks>        <short>    Reimplemented from QObject          </short>
         [SmokeMethod("timerEvent(QTimerEvent*)")]
         protected override void TimerEvent(QTimerEvent arg1) {
             interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), arg1);

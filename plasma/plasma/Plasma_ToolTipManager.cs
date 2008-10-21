@@ -162,6 +162,13 @@ namespace Plasma {
             interceptor.Invoke("setToolTipContent##", "setToolTipContent(QGraphicsWidget*, const Plasma::ToolTipManager::ToolTipContent&)", typeof(void), typeof(QGraphicsWidget), widget, typeof(Plasma.ToolTipManager.ToolTipContent), data);
         }
         /// <remarks>
+        ///  Clears the tooltip data associated with this widget, but keeps
+        ///  the widget registered.
+        ///      </remarks>        <short>    Clears the tooltip data associated with this widget, but keeps  the widget registered.</short>
+        public void ClearToolTipContent(QGraphicsWidget widget) {
+            interceptor.Invoke("clearToolTipContent#", "clearToolTipContent(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
+        }
+        /// <remarks>
         ///  Checks whether a widget has a tooltip associated with it.
         /// <param> name="widget" the widget to check for an associated tooltip
         /// </param></remarks>        <return> true if the widget has a tooltip associated,
@@ -172,11 +179,11 @@ namespace Plasma {
             return (bool) interceptor.Invoke("widgetHasToolTip#", "widgetHasToolTip(QGraphicsWidget*) const", typeof(bool), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///   Enable/or disable a Tooltip, this method is usefull is we want
+        ///   Enable/or disable a Tooltip, this method is useful is we want
         ///   to have a tooltip activated on demand.
         /// <param> name="widget" the widget to change tooltip behaviour
         /// </param><param> name="enable" if we need the tooltip or not
-        ///      </param></remarks>        <short>     Enable/or disable a Tooltip, this method is usefull is we want   to have a tooltip activated on demand.</short>
+        ///      </param></remarks>        <short>     Enable/or disable a Tooltip, this method is useful is we want   to have a tooltip activated on demand.</short>
         public void SetToolTipActivated(QGraphicsWidget widget, bool enable) {
             interceptor.Invoke("setToolTipActivated#$", "setToolTipActivated(QGraphicsWidget*, bool)", typeof(void), typeof(QGraphicsWidget), widget, typeof(bool), enable);
         }

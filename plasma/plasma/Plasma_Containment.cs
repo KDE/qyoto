@@ -196,14 +196,6 @@ namespace Plasma {
             return (int) interceptor.Invoke("screen", "screen() const", typeof(int));
         }
         /// <remarks>
-        /// </remarks>        <return> where top left corner of the containment maps to for the currently
-        ///          set screen. If no screen is associated, it will return QPoint()
-        ///          </return>
-        ///         <short>   </short>
-        public QPoint EffectiveScreenPos() {
-            return (QPoint) interceptor.Invoke("effectiveScreenPos", "effectiveScreenPos() const", typeof(QPoint));
-        }
-        /// <remarks>
         ///  convenience function - enables or disables an action by name
         /// <param> name="name" the name of the action in our collection
         /// </param><param> name="enable" true to enable, false to disable
@@ -408,14 +400,6 @@ namespace Plasma {
         protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
             interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
         }
-        [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
-        protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
-            interceptor.Invoke("hoverEnterEvent#", "hoverEnterEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
-        }
-        [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
-        protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
-            interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
-        }
         [SmokeMethod("keyPressEvent(QKeyEvent*)")]
         protected override void KeyPressEvent(QKeyEvent arg1) {
             interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
@@ -521,16 +505,10 @@ namespace Plasma {
         [Q_SIGNAL("void screenChanged(int, int, Plasma::Containment*)")]
         void ScreenChanged(int wasScreen, int isScreen, Plasma.Containment containment);
         /// <remarks>
-        ///  Emitted when the containment wants to become active.
-        ///  Usually only used for desktop containments.
-        ///          </remarks>        <short>    Emitted when the containment wants to become active.</short>
-        [Q_SIGNAL("void focusRequested(Plasma::Containment*)")]
-        void FocusRequested(Plasma.Containment containment);
-        /// <remarks>
         ///  Emitted when the user wants to configure/change containment.
         ///          </remarks>        <short>    Emitted when the user wants to configure/change containment.</short>
-        [Q_SIGNAL("void configureRequested()")]
-        void ConfigureRequested();
+        [Q_SIGNAL("void configureRequested(Plasma::Containment*)")]
+        void ConfigureRequested(Plasma.Containment containment);
         /// <remarks>
         ///  The activity associated to this containemnt has changed
         ///          </remarks>        <short>    The activity associated to this containemnt has changed          </short>

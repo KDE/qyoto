@@ -112,6 +112,18 @@ namespace Plasma {
             return (Plasma.Containment) interceptor.Invoke("containment", "containment() const", typeof(Plasma.Containment));
         }
         /// <remarks>
+        ///  Swaps one containment with another.
+        /// <param> name="existing" the existing containment to swap out
+        /// </param><param> name="name" the plugin name for the new containment.
+        /// </param><param> name="args" argument list to pass to the containment
+        ///      </param></remarks>        <short>    Swaps one containment with another.</short>
+        public Plasma.Containment SwapContainment(Plasma.Containment existing, string name, List<QVariant> args) {
+            return (Plasma.Containment) interceptor.Invoke("swapContainment#$?", "swapContainment(Plasma::Containment*, const QString&, const QList<QVariant>&)", typeof(Plasma.Containment), typeof(Plasma.Containment), existing, typeof(string), name, typeof(List<QVariant>), args);
+        }
+        public Plasma.Containment SwapContainment(Plasma.Containment existing, string name) {
+            return (Plasma.Containment) interceptor.Invoke("swapContainment#$", "swapContainment(Plasma::Containment*, const QString&)", typeof(Plasma.Containment), typeof(Plasma.Containment), existing, typeof(string), name);
+        }
+        /// <remarks>
         ///  Swap the containment for this view, which will also cause the view
         ///  to track the geometry of the containment.
         /// <param> name="name" the plugin name for the new containment.
@@ -126,7 +138,7 @@ namespace Plasma {
         /// <remarks>
         ///  Set whether or not the view should adjust its size when the associated
         ///  containment does.
-        ///  @arg trackChanges true to syncronize the view's size with the containment's
+        ///  @arg trackChanges true to synchronize the view's size with the containment's
         ///  (this is the default behaviour), false to ignore containment size changes
         ///      </remarks>        <short>    Set whether or not the view should adjust its size when the associated  containment does.</short>
         public void SetTrackContainmentChanges(bool trackChanges) {

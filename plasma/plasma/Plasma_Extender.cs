@@ -24,6 +24,14 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(Extender), this);
         }
+        /// <remarks>
+        ///  Description on how to render the extender's items.
+        ///          </remarks>        <short>    Description on how to render the extender's items.</short>
+        public enum Appearance {
+            NoBorders = 0,
+            BottomUpStacked = 1,
+            TopDownStacked = 2,
+        }
         [Q_PROPERTY("QString", "emptyExtenderMessage")]
         public string EmptyExtenderMessage {
             get { return (string) interceptor.Invoke("emptyExtenderMessage", "emptyExtenderMessage()", typeof(string)); }
@@ -62,19 +70,34 @@ namespace Plasma {
             return (List<Plasma.ExtenderItem>) interceptor.Invoke("detachedItems", "detachedItems() const", typeof(List<Plasma.ExtenderItem>));
         }
         /// <remarks>
-        ///  This function can be used for easily determining if a certain item is allready displayed
+        ///  This function can be used for easily determining if a certain item is already displayed
         ///  in a extender item somewhere, so your applet doesn't duplicate this item. Say the applet
         ///  displays 'jobs', from an engine which add's a source for every job. In sourceAdded you
         ///  could do something like:
-        ///  if (!extenderItem(source)) {
+        ///  if (!item(source)) {
         ///      //add an extender item monitoring this source.
         ///  }
-        ///          </remarks>        <short>    This function can be used for easily determining if a certain item is allready displayed  in a extender item somewhere, so your applet doesn't duplicate this item.</short>
+        ///          </remarks>        <short>    This function can be used for easily determining if a certain item is already displayed  in a extender item somewhere, so your applet doesn't duplicate this item.</short>
         public Plasma.ExtenderItem Item(string name) {
             return (Plasma.ExtenderItem) interceptor.Invoke("item$", "item(const QString&) const", typeof(Plasma.ExtenderItem), typeof(string), name);
         }
         /// <remarks>
-        ///  Get's called after an item has been added to this extender. The bookkeeping has allready
+        ///  Use this function to instruct the extender on how to render it's items. Usually you will
+        ///  want to call this function in your applet's constraintsEvent, allthough this is already
+        ///  done for you when using PopupApplet at base class for your applet. Defaults to NoBorders.
+        ///          </remarks>        <short>    Use this function to instruct the extender on how to render it's items.</short>
+        public void SetExtenderAppearance(Plasma.Extender.Appearance appearance) {
+            interceptor.Invoke("setExtenderAppearance$", "setExtenderAppearance(Plasma::Extender::Appearance)", typeof(void), typeof(Plasma.Extender.Appearance), appearance);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the current way of rendering extender items that is used.
+        ///          </return>
+        ///         <short>   </short>
+        public Plasma.Extender.Appearance ExtenderAppearance() {
+            return (Plasma.Extender.Appearance) interceptor.Invoke("extenderAppearance", "extenderAppearance() const", typeof(Plasma.Extender.Appearance));
+        }
+        /// <remarks>
+        ///  Get's called after an item has been added to this extender. The bookkeeping has already
         ///  been done when this function get's called. The only thing left to do is put it somewhere
         ///  appropriate. The default implementation adds the extenderItem to the appropriate place in
         ///  a QGraphicsLinearLayout.
@@ -87,7 +110,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Get's called after an item has been removed from this extender. All bookkeeping has
-        ///  allready been done when this function get's called.
+        ///  already been done when this function get's called.
         /// <param> name="item" The item that has just been removed.
         ///          </param></remarks>        <short>    Get's called after an item has been removed from this extender.</short>
         [SmokeMethod("itemRemovedEvent(Plasma::ExtenderItem*)")]
@@ -107,7 +130,7 @@ namespace Plasma {
         ///  to give some visual feedback about what will happen when the mouse button is released at
         ///  that position. The default implementation shows a spacer at the appropriate location in
         ///  the layout.
-        /// <param> name="item" The item that's hovering over this extender. Most usefull for obtaining the
+        /// <param> name="item" The item that's hovering over this extender. Most useful for obtaining the
         ///  size of the spacer.
         /// </param><param> name="pos" The location the item is hovering.
         ///          </param></remarks>        <short>    Gets called when an ExtenderItem is hovering over this extender.</short>
@@ -132,6 +155,17 @@ namespace Plasma {
         [SmokeMethod("saveState()")]
         protected virtual void SaveState() {
             interceptor.Invoke("saveState", "saveState()", typeof(void));
+        }
+        /// <remarks>
+        ///  This function get's called on every item to determine which background border's to
+        ///  render.
+        /// <param> name="item" the item for which it's position or extender has changed.
+        /// </param></remarks>        <return> the borders that have to be enabled on it's background.
+        ///          </return>
+        ///         <short>    This function get's called on every item to determine which background border's to  render.</short>
+        [SmokeMethod("enabledBordersForItem(Plasma::ExtenderItem*) const")]
+        protected virtual uint EnabledBordersForItem(Plasma.ExtenderItem item) {
+            return (uint) interceptor.Invoke("enabledBordersForItem#", "enabledBordersForItem(Plasma::ExtenderItem*) const", typeof(uint), typeof(Plasma.ExtenderItem), item);
         }
         ~Extender() {
             interceptor.Invoke("~Extender", "~Extender()", typeof(void));

@@ -102,7 +102,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Returns the OR'ed value of all the Information types (as defined in RunnerContext.Type)
-        ///  this runner is not interested in. 
+        ///  this runner is not interested in.
         /// </remarks>        <return> OR'ed value of black listed types
         ///          </return>
         ///         <short>    Returns the OR'ed value of all the Information types (as defined in RunnerContext.Type)  this runner is not interested in.</short>
@@ -110,9 +110,9 @@ namespace Plasma {
             return (uint) interceptor.Invoke("ignoredTypes", "ignoredTypes() const", typeof(uint));
         }
         /// <remarks>
-        ///  Sets the types this runner will ignore 
+        ///  Sets the types this runner will ignore
         /// <param> name="types" OR'ed listed of ignored types
-        ///          </param></remarks>        <short>    Sets the types this runner will ignore  </short>
+        ///          </param></remarks>        <short>    Sets the types this runner will ignore </short>
         public void SetIgnoredTypes(uint types) {
             interceptor.Invoke("setIgnoredTypes$", "setIgnoredTypes(Plasma::RunnerContext::Types)", typeof(void), typeof(uint), types);
         }

@@ -9,9 +9,11 @@ namespace Plasma {
     ///  Item delegate for rendering items in Plasma menus implemented with item views.
     ///  The delegate makes use of its own data roles that are:
     ///  SubTitleRole: the text of the subtitle
-    ///  SubTitleMandatoryRole: if the subtitle is to always be displayed (as default the subtitle is displayed only on mouse over)
+    ///  SubTitleMandatoryRole: if the subtitle is to always be displayed
+    ///    (as default the subtitle is displayed only on mouse over)
     ///  ColumnTypeRole: if the column is a main column (with title and subtitle)
-    ///  or a secondary action column (only a little icon that appears on mouse over is displayed)
+    ///  or a secondary action column (only a little icon that appears on mouse
+    ///  over is displayed)
     ///  </remarks>        <short>    @class Delegate plasma/delegate.</short>
     [SmokeClass("Plasma::Delegate")]
     public class Delegate : QAbstractItemDelegate, IDisposable {
@@ -55,7 +57,8 @@ namespace Plasma {
         /// <remarks>
         ///  Returns the empty area after the title.
         ///  The height is the height of the subtitle.
-        ///  It can be used by subclasses that wants to paint additional data after calling the paint function of the superclass.
+        ///  It can be used by subclasses that wants to paint additional data after
+        ///  calling the paint function of the superclass.
         /// <param> name="option" options for the title text
         /// </param><param> name="index" model index that we want to compute the free area
         ///      </param></remarks>        <short>    Returns the empty area after the title.</short>

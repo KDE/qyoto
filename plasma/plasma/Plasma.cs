@@ -117,8 +117,9 @@ namespace Plasma {
     }
     /// <remarks>
     ///  Defines the immutability of items like applets, corona and containments
-    ///  they can be free to modify, locked down by the user or locked down by the system (e.g. kiosk setups)
-    ///  </remarks>        <short>    Defines the immutability of items like applets, corona and containments  they can be free to modify, locked down by the user or locked down by the system (e.</short>
+    ///  they can be free to modify, locked down by the user or locked down by the
+    ///  system (e.g. kiosk setups).
+    ///  </remarks>        <short>    Defines the immutability of items like applets, corona and containments  they can be free to modify, locked down by the user or locked down by the  system (e.</short>
     public enum ImmutabilityType {
         Mutable = 1,
         UserImmutable = 2,

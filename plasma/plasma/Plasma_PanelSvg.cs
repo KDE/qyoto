@@ -165,14 +165,14 @@ namespace Plasma {
             return (bool) interceptor.Invoke("hasElementPrefix$", "hasElementPrefix(const QString&) const", typeof(bool), typeof(string), prefix);
         }
         /// <remarks>
-        ///  This is an overloaded method provided for convenience equivalent to 
+        ///  This is an overloaded method provided for convenience equivalent to
         ///  hasElementPrefix("north"), hasElementPrefix("south")
         ///  hasElementPrefix("west") and hasElementPrefix("east")
         /// </remarks>        <return> true if the svg has the necessary elements with the given prefix
         ///  to draw a panel.
         ///  @arg location the given prefix we want to check if drawable
         ///          </return>
-        ///         <short>    This is an overloaded method provided for convenience equivalent to   hasElementPrefix("north"), hasElementPrefix("south")  hasElementPrefix("west") and hasElementPrefix("east") </short>
+        ///         <short>    This is an overloaded method provided for convenience equivalent to  hasElementPrefix("north"), hasElementPrefix("south")  hasElementPrefix("west") and hasElementPrefix("east") </short>
         public bool HasElementPrefix(Plasma.Location location) {
             return (bool) interceptor.Invoke("hasElementPrefix$", "hasElementPrefix(Plasma::Location) const", typeof(bool), typeof(Plasma.Location), location);
         }
@@ -207,12 +207,22 @@ namespace Plasma {
             return (bool) interceptor.Invoke("cacheAllRenderedPanels", "cacheAllRenderedPanels() const", typeof(bool));
         }
         /// <remarks>
-        ///  Deletes the internal cache freeing memory: use this if you want to switch the rendered 
+        ///  Deletes the internal cache freeing memory: use this if you want to switch the rendered
         ///  element and you don't plan to switch back to the previous one for a long time and you
         ///  used setUseCache(true)
-        ///         </remarks>        <short>    Deletes the internal cache freeing memory: use this if you want to switch the rendered   element and you don't plan to switch back to the previous one for a long time and you  used setUseCache(true)         </short>
+        ///         </remarks>        <short>    Deletes the internal cache freeing memory: use this if you want to switch the rendered  element and you don't plan to switch back to the previous one for a long time and you  used setUseCache(true)         </short>
         public void ClearCache() {
             interceptor.Invoke("clearCache", "clearCache()", typeof(void));
+        }
+        /// <remarks>
+        ///  Returns a pixmap of the SVG represented by this object.
+        ///  @arg elelementId the ID string of the element to render, or an empty
+        ///                   string for the whole SVG (the default)
+        /// </remarks>        <return> a QPixmap of the rendered SVG
+        ///          </return>
+        ///         <short>    Returns a pixmap of the SVG represented by this object.</short>
+        public QPixmap PanelPixmap() {
+            return (QPixmap) interceptor.Invoke("panelPixmap", "panelPixmap()", typeof(QPixmap));
         }
         /// <remarks>
         ///  Paints the loaded SVG with the elements that represents the border
@@ -222,6 +232,9 @@ namespace Plasma {
         ///          </remarks>        <short>    Paints the loaded SVG with the elements that represents the border  @arg painter the QPainter to use  @arg target the target rectangle on the paint device  @arg source the portion rectangle of the source image          </short>
         public void PaintPanel(QPainter painter, QRectF target, QRectF source) {
             interceptor.Invoke("paintPanel###", "paintPanel(QPainter*, const QRectF&, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target, typeof(QRectF), source);
+        }
+        public void PaintPanel(QPainter painter, QRectF target) {
+            interceptor.Invoke("paintPanel##", "paintPanel(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), target);
         }
         /// <remarks>
         ///  Paints the loaded SVG with the elements that represents the border

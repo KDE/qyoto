@@ -102,6 +102,15 @@ namespace Plasma {
         protected override void MouseReleaseEvent(QMouseEvent arg1) {
             interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
         }
+        /// <remarks>
+        ///  Convenience method to know whether the point is in a control area (e.g. resize area)
+        ///  or not.
+        /// </remarks>        <return> true if the point is in the control area.
+        ///          </return>
+        ///         <short>    Convenience method to know whether the point is in a control area (e.</short>
+        protected bool InControlArea(QPoint point) {
+            return (bool) interceptor.Invoke("inControlArea#", "inControlArea(const QPoint&)", typeof(bool), typeof(QPoint), point);
+        }
         ~Dialog() {
             interceptor.Invoke("~Dialog", "~Dialog()", typeof(void));
         }

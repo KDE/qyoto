@@ -145,9 +145,10 @@ namespace Plasma {
             return (Plasma.ImmutabilityType) interceptor.Invoke("immutability", "immutability() const", typeof(Plasma.ImmutabilityType));
         }
         /// <remarks>
-        ///  Sets the immutability type for this Corona (not immutable, user immutable or system immutable)
+        ///  Sets the immutability type for this Corona (not immutable,
+        ///  user immutable or system immutable)
         ///  @arg immutable the new immutability type of this applet
-        ///      </remarks>        <short>    Sets the immutability type for this Corona (not immutable, user immutable or system immutable)  @arg immutable the new immutability type of this applet      </short>
+        ///      </remarks>        <short>    Sets the immutability type for this Corona (not immutable,  user immutable or system immutable)  @arg immutable the new immutability type of this applet      </short>
         [Q_SLOT("void setImmutability(ImmutabilityType)")]
         public void SetImmutability(Plasma.ImmutabilityType immutable) {
             interceptor.Invoke("setImmutability$", "setImmutability(const Plasma::ImmutabilityType)", typeof(void), typeof(Plasma.ImmutabilityType), immutable);

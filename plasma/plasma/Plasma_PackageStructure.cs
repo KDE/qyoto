@@ -27,6 +27,7 @@ namespace Plasma {
     ///  in the constructor.
     ///  Either way, PackageStructure creates a sort of "contract" between the packager and
     ///  the application which is also self-documenting.
+    ///  See <see cref="IPackageStructureSignals"></see> for signals emitted by PackageStructure
     /// </remarks>        <short> A description of the expected file structure of a given package type.</short>
     [SmokeClass("Plasma::PackageStructure")]
     public class PackageStructure : QObject, IDisposable {
@@ -212,11 +213,48 @@ namespace Plasma {
             return (bool) interceptor.Invoke("uninstallPackage$$", "uninstallPackage(const QString&, const QString&)", typeof(bool), typeof(string), packageName, typeof(string), packageRoot);
         }
         /// <remarks>
+        ///  When called, the package plugin should display a window to the user
+        ///  that they can use to browser, select and then install widgets supported by
+        ///  this package plugin with.
+        ///  The user interface may be an in-process dialog or an out-of-process application.
+        ///  When the process is complete, the newWidgetBrowserFinished() signal must be
+        ///  emitted.
+        ///  @args parent the parent widget to use for the widget
+        ///      </remarks>        <short>    When called, the package plugin should display a window to the user  that they can use to browser, select and then install widgets supported by  this package plugin with.</short>
+        [SmokeMethod("createNewWidgetBrowser(QWidget*)")]
+        public virtual void CreateNewWidgetBrowser(QWidget parent) {
+            interceptor.Invoke("createNewWidgetBrowser#", "createNewWidgetBrowser(QWidget*)", typeof(void), typeof(QWidget), parent);
+        }
+        [SmokeMethod("createNewWidgetBrowser()")]
+        public virtual void CreateNewWidgetBrowser() {
+            interceptor.Invoke("createNewWidgetBrowser", "createNewWidgetBrowser()", typeof(void));
+        }
+        /// <remarks>
         /// </remarks>        <return> the prefix inserted between the base path and content entries
         ///      </return>
         ///         <short>   </short>
         public string ContentsPrefix() {
             return (string) interceptor.Invoke("contentsPrefix", "contentsPrefix() const", typeof(string));
+        }
+        /// <remarks>
+        /// </remarks>        <return> preferred package root. This defaults to plasma/plasmoids/
+        ///      </return>
+        ///         <short>   </short>
+        public string DefaultPackageRoot() {
+            return (string) interceptor.Invoke("defaultPackageRoot", "defaultPackageRoot() const", typeof(string));
+        }
+        /// <remarks>
+        /// </remarks>        <return> service prefix used in desktop files. This defaults to plasma-applet-
+        ///      </return>
+        ///         <short>   </short>
+        public string ServicePrefix() {
+            return (string) interceptor.Invoke("servicePrefix", "servicePrefix() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Sets service prefix.
+        ///      </remarks>        <short>    Sets service prefix.</short>
+        public void SetServicePrefix(string servicePrefix) {
+            interceptor.Invoke("setServicePrefix$", "setServicePrefix(const QString&)", typeof(void), typeof(string), servicePrefix);
         }
         /// <remarks>
         ///  Sets the prefix that all the contents in this package should
@@ -227,6 +265,12 @@ namespace Plasma {
         ///      </remarks>        <short>    Sets the prefix that all the contents in this package should  appear under.</short>
         protected void SetContentsPrefix(string prefix) {
             interceptor.Invoke("setContentsPrefix$", "setContentsPrefix(const QString&)", typeof(void), typeof(string), prefix);
+        }
+        /// <remarks>
+        ///  Sets preferred package root.
+        ///      </remarks>        <short>    Sets preferred package root.</short>
+        protected void SetDefaultPackageRoot(string packageRoot) {
+            interceptor.Invoke("setDefaultPackageRoot$", "setDefaultPackageRoot(const QString&)", typeof(void), typeof(string), packageRoot);
         }
         /// <remarks>
         ///  Called whenever the path changes so that subclasses may take
@@ -259,5 +303,10 @@ namespace Plasma {
     }
 
     public interface IPackageStructureSignals : IQObjectSignals {
+        /// <remarks>
+        ///  Emitted when the new widget browser process completes.
+        ///      </remarks>        <short>    Emitted when the new widget browser process completes.</short>
+        [Q_SIGNAL("void newWidgetBrowserFinished()")]
+        void NewWidgetBrowserFinished();
     }
 }

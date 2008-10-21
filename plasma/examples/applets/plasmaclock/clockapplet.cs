@@ -84,7 +84,7 @@ public class ClockApplet : PlasmaScripting.Applet {
         calendar.MinimumSize = calendar.SizeHint();
         proxy = new QGraphicsProxyWidget(this);
         proxy.SetWidget(calendar);
-        item.SetWidget(proxy);
+        item.Widget = proxy;
         item.Title = KDE.Ki18n("Calendar").ToString();
     }
 

@@ -52,10 +52,25 @@ namespace Plasma {
             interceptor.Invoke("Svg", "Svg()", typeof(void));
         }
         /// <remarks>
+        ///  Returns a pixmap of the SVG represented by this object.
+        ///  @arg elelementId the ID string of the element to render, or an empty
+        ///                   string for the whole SVG (the default)
+        /// </remarks>        <return> a QPixmap of the rendered SVG
+        ///          </return>
+        ///         <short>    Returns a pixmap of the SVG represented by this object.</short>
+        public QPixmap Pixmap(string elementID) {
+            return (QPixmap) interceptor.Invoke("pixmap$", "pixmap(const QString&)", typeof(QPixmap), typeof(string), elementID);
+        }
+        public QPixmap Pixmap() {
+            return (QPixmap) interceptor.Invoke("pixmap", "pixmap()", typeof(QPixmap));
+        }
+        /// <remarks>
         ///  Paints the SVG represented by this object
         ///  @arg painter the QPainter to use
         ///  @arg point the position to start drawing; the entire svg will be
         ///       drawn starting at this point.
+        ///  @arg elelementId the ID string of the element to render, or an empty
+        ///                   string for the whole SVG (the default)
         ///          </remarks>        <short>    Paints the SVG represented by this object  @arg painter the QPainter to use  @arg point the position to start drawing; the entire svg will be       drawn starting at this point.</short>
         public void Paint(QPainter painter, QPointF point, string elementID) {
             interceptor.Invoke("paint##$", "paint(QPainter*, const QPointF&, const QString&)", typeof(void), typeof(QPainter), painter, typeof(QPointF), point, typeof(string), elementID);
@@ -68,7 +83,9 @@ namespace Plasma {
         ///  @arg painter the QPainter to use
         ///  @arg x the horizontal coordinate to start painting from
         ///  @arg y the vertical coordinate to start painting from
-        ///          </remarks>        <short>    Paints the SVG represented by this object  @arg painter the QPainter to use  @arg x the horizontal coordinate to start painting from  @arg y the vertical coordinate to start painting from          </short>
+        ///  @arg elelementId the ID string of the element to render, or an empty
+        ///                   string for the whole SVG (the default)
+        ///          </remarks>        <short>    Paints the SVG represented by this object  @arg painter the QPainter to use  @arg x the horizontal coordinate to start painting from  @arg y the vertical coordinate to start painting from  @arg elelementId the ID string of the element to render, or an empty                   string for the whole SVG (the default)          </short>
         public void Paint(QPainter painter, int x, int y, string elementID) {
             interceptor.Invoke("paint#$$$", "paint(QPainter*, int, int, const QString&)", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(string), elementID);
         }
@@ -78,15 +95,32 @@ namespace Plasma {
         /// <remarks>
         ///  Paints the SVG represented by this object
         ///  @arg painter the QPainter to use
-        ///  @arg rect the rect to draw into; if small than the current size
-        ///            of the 
-        ///       drawn starting at this point.
-        ///          </remarks>        <short>    Paints the SVG represented by this object  @arg painter the QPainter to use  @arg rect the rect to draw into; if small than the current size            of the        drawn starting at this point.</short>
+        ///  @arg rect the rect to draw into; if smaller than the current size
+        ///            the drawing is starting at this point.
+        ///  @arg elelementId the ID string of the element to render, or an empty
+        ///                   string for the whole SVG (the default)
+        ///          </remarks>        <short>    Paints the SVG represented by this object  @arg painter the QPainter to use  @arg rect the rect to draw into; if smaller than the current size            the drawing is starting at this point.</short>
         public void Paint(QPainter painter, QRectF rect, string elementID) {
             interceptor.Invoke("paint##$", "paint(QPainter*, const QRectF&, const QString&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect, typeof(string), elementID);
         }
         public void Paint(QPainter painter, QRectF rect) {
             interceptor.Invoke("paint##", "paint(QPainter*, const QRectF&)", typeof(void), typeof(QPainter), painter, typeof(QRectF), rect);
+        }
+        /// <remarks>
+        ///  Paints the SVG represented by this object
+        ///  @arg painter the QPainter to use
+        ///  @arg x the horizontal coordinate to start painting from
+        ///  @arg y the vertical coordinate to start painting from
+        ///  @arg width the width of the element to draw
+        ///  @arg height the height of the element do draw
+        ///  @arg elelementId the ID string of the element to render, or an empty
+        ///                   string for the whole SVG (the default)
+        ///          </remarks>        <short>    Paints the SVG represented by this object  @arg painter the QPainter to use  @arg x the horizontal coordinate to start painting from  @arg y the vertical coordinate to start painting from  @arg width the width of the element to draw  @arg height the height of the element do draw  @arg elelementId the ID string of the element to render, or an empty                   string for the whole SVG (the default)          </short>
+        public void Paint(QPainter painter, int x, int y, int width, int height, string elementID) {
+            interceptor.Invoke("paint#$$$$$", "paint(QPainter*, int, int, int, int, const QString&)", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), width, typeof(int), height, typeof(string), elementID);
+        }
+        public void Paint(QPainter painter, int x, int y, int width, int height) {
+            interceptor.Invoke("paint#$$$$", "paint(QPainter*, int, int, int, int)", typeof(void), typeof(QPainter), painter, typeof(int), x, typeof(int), y, typeof(int), width, typeof(int), height);
         }
         /// <remarks>
         ///  Resizes the rendered image. Rendering will actually take place on

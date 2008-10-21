@@ -49,10 +49,10 @@ namespace Plasma {
             return (Plasma.RunnerContext) interceptor.Invoke("searchContext", "searchContext() const", typeof(Plasma.RunnerContext));
         }
         /// <remarks>
-        ///  Retrieves all available matches found so far for the previously launched query 
+        ///  Retrieves all available matches found so far for the previously launched query
         /// </remarks>        <return> List of matches
         ///          </return>
-        ///         <short>    Retrieves all available matches found so far for the previously launched query  </short>
+        ///         <short>    Retrieves all available matches found so far for the previously launched query </short>
         public List<Plasma.QueryMatch> Matches() {
             return (List<Plasma.QueryMatch>) interceptor.Invoke("matches", "matches() const", typeof(List<Plasma.QueryMatch>));
         }

@@ -27,7 +27,7 @@ public class Clock : ClockApplet, IDisposable {
         SetAspectRatioMode(Plasma.AspectRatioMode.Square);
 
         m_theme = new Plasma.Svg(this);
-        m_theme.FilePath = "widgets/clock";
+        m_theme.ImagePath = "widgets/clock";
         m_theme.MultipleImages = false;
         m_theme.Resize(Size);
         reference = this;

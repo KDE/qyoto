@@ -7,6 +7,7 @@ namespace Plasma {
     using System.Collections.Generic;
     /// <remarks>
     ///  @class Label plasma/widgets/label.h <Plasma/Widgets/Label>
+    ///  See <see cref="ILabelSignals"></see> for signals emitted by Label
     /// </remarks>        <short> Provides a plasma-themed QLabel.  </short>
     [SmokeClass("Plasma::Label")]
     public class Label : QGraphicsProxyWidget, IDisposable {
@@ -65,5 +66,7 @@ namespace Plasma {
     }
 
     public interface ILabelSignals : IQGraphicsProxyWidgetSignals {
+        [Q_SIGNAL("void linkActivated(QString)")]
+        void LinkActivated(string link);
     }
 }

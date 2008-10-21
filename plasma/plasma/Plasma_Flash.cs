@@ -60,9 +60,6 @@ namespace Plasma {
         public void Kill() {
             interceptor.Invoke("kill", "kill()", typeof(void));
         }
-        protected QPixmap RenderPixmap() {
-            return (QPixmap) interceptor.Invoke("renderPixmap", "renderPixmap()", typeof(QPixmap));
-        }
         [Q_SLOT("void fadeIn()")]
         protected void FadeIn() {
             interceptor.Invoke("fadeIn", "fadeIn()", typeof(void));

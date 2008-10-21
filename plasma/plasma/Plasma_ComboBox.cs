@@ -54,6 +54,18 @@ namespace Plasma {
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+            interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
+        }
+        [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverEnterEvent#", "hoverEnterEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
         ~ComboBox() {
             interceptor.Invoke("~ComboBox", "~ComboBox()", typeof(void));
         }

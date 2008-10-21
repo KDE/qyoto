@@ -121,8 +121,8 @@ namespace Plasma {
         /// </param></remarks>        <return> true on successful installation, false otherwise
         /// </return>
         ///         <short>    Installs a package.</short>
-        public static bool InstallPackage(string package, string packageRoot) {
-            return (bool) staticInterceptor.Invoke("installPackage$$", "installPackage(const QString&, const QString&)", typeof(bool), typeof(string), package, typeof(string), packageRoot);
+        public static bool InstallPackage(string package, string packageRoot, string servicePrefix) {
+            return (bool) staticInterceptor.Invoke("installPackage$$$", "installPackage(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), package, typeof(string), packageRoot, typeof(string), servicePrefix);
         }
         /// <remarks>
         ///  Uninstalls a package.
@@ -132,8 +132,8 @@ namespace Plasma {
         /// </param></remarks>        <return> true on successful uninstallation, false otherwise
         /// </return>
         ///         <short>    Uninstalls a package.</short>
-        public static bool UninstallPackage(string package, string packageRoot) {
-            return (bool) staticInterceptor.Invoke("uninstallPackage$$", "uninstallPackage(const QString&, const QString&)", typeof(bool), typeof(string), package, typeof(string), packageRoot);
+        public static bool UninstallPackage(string package, string packageRoot, string servicePrefix) {
+            return (bool) staticInterceptor.Invoke("uninstallPackage$$$", "uninstallPackage(const QString&, const QString&, const QString&)", typeof(bool), typeof(string), package, typeof(string), packageRoot, typeof(string), servicePrefix);
         }
         /// <remarks>
         ///  Registers a package described by the given desktop file

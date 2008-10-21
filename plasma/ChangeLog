@@ -1,3 +1,7 @@
+2008-10-21  Richard Dale  <richard.j.dale@gmail.com>
+* Regenerate the C# sources and add the new SvgWidget class
+* Fix compile errors in the examples caused by the api changes
+
 2008-09-22  Richard Dale  <richard.j.dale@gmail.com>
 * Regenerate the C# sources from the current plasma headers, add ScrollBar 
   and TreeView widgets

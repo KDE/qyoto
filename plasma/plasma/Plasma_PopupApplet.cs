@@ -13,7 +13,7 @@ namespace Plasma {
     ///  factor. If the applet is put in a panel, an icon will be displayed instead, which shows the
     ///  widget in a popup when clicked.
     ///  If you use this class as a base class for your extender using applet, the extender will
-    ///  automaticaly be used for the popup; reimplementing graphicsWidget() is unecessary in this case.
+    ///  automatically be used for the popup; reimplementing graphicsWidget() is unnecessary in this case.
     ///  </remarks>        <short>    Allows applets to automatically 'collapse' into an icon when put in an panel, and is a convenient  base class for any applet that wishes to use extenders.</short>
     [SmokeClass("Plasma::PopupApplet")]
     public class PopupApplet : Plasma.Applet, IDisposable {
@@ -83,10 +83,12 @@ namespace Plasma {
             return (Plasma.PopupPlacement) interceptor.Invoke("popupPlacement", "popupPlacement() const", typeof(Plasma.PopupPlacement));
         }
         /// <remarks>
-        ///  This event handler can be reimplemented in a subclass to receive an event before the popup is shown or hidden.
-        ///  @arg show true if the popup is going to be shown, false if the popup is going to be hidden.
+        ///  This event handler can be reimplemented in a subclass to receive an
+        ///  event before the popup is shown or hidden.
+        ///  @arg show true if the popup is going to be shown, false if the popup
+        ///  is going to be hidden.
         ///  Note that showing and hiding the popup on click is already done in PopupApplet.
-        ///      </remarks>        <short>    This event handler can be reimplemented in a subclass to receive an event before the popup is shown or hidden.</short>
+        ///      </remarks>        <short>    This event handler can be reimplemented in a subclass to receive an  event before the popup is shown or hidden.</short>
         [SmokeMethod("popupEvent(bool)")]
         public virtual void PopupEvent(bool show) {
             interceptor.Invoke("popupEvent$", "popupEvent(bool)", typeof(void), typeof(bool), show);
@@ -109,10 +111,6 @@ namespace Plasma {
         [SmokeMethod("eventFilter(QObject*, QEvent*)")]
         protected override bool EventFilter(QObject watched, QEvent arg2) {
             return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
-        }
-        [SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
-        protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
-            return (QVariant) interceptor.Invoke("itemChange$#", "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)", typeof(QVariant), typeof(QGraphicsItem.GraphicsItemChange), change, typeof(QVariant), value);
         }
         ~PopupApplet() {
             interceptor.Invoke("~PopupApplet", "~PopupApplet()", typeof(void));
