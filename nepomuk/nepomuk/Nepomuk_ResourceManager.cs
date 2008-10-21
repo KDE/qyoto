@@ -88,6 +88,16 @@ namespace Nepomuk {
             return (string) interceptor.Invoke("generateUniqueUri", "generateUniqueUri()", typeof(string));
         }
         /// <remarks>
+        ///  Generates a unique URI that is not used in the store yet. This method ca be used to 
+        ///  generate URIs for types such as Tag.
+        ///  \param label A label that the algorithm should use to try to create a more readable URI.
+        ///  \return A new unique URI which can be used to define a new resource.
+        ///  \since 4.2
+        ///          </remarks>        <short>    Generates a unique URI that is not used in the store yet.</short>
+        public QUrl GenerateUniqueUri(string label) {
+            return (QUrl) interceptor.Invoke("generateUniqueUri$", "generateUniqueUri(const QString&)", typeof(QUrl), typeof(string), label);
+        }
+        /// <remarks>
         ///  \internal Non-public API. Used by Resource to signalize errors.
         ///          </remarks>        <short>    \internal Non-public API.</short>
         public void NotifyError(string uri, int errorCode) {

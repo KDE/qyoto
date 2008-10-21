@@ -138,6 +138,20 @@ namespace Nepomuk {
             return (List<QUrl>) interceptor.Invoke("types", "types() const", typeof(List<QUrl>));
         }
         /// <remarks>
+        ///  Set the types of the resource. Previous types will be overwritten.
+        ///  \since 4.2
+        ///          </remarks>        <short>    Set the types of the resource.</short>
+        public void SetTypes(List<QUrl> types) {
+            interceptor.Invoke("setTypes?", "setTypes(const QList<QUrl>&)", typeof(void), typeof(List<QUrl>), types);
+        }
+        /// <remarks>
+        ///  Add a type to the list of types.
+        ///  \since 4.2
+        ///          </remarks>        <short>    Add a type to the list of types.</short>
+        public void AddType(QUrl type) {
+            interceptor.Invoke("addType#", "addType(const QUrl&)", typeof(void), typeof(QUrl), type);
+        }
+        /// <remarks>
         ///  Check if the resource is of a certain type. The type hierarchy
         ///  is checked including subclass relations.
         ///          </remarks>        <short>    Check if the resource is of a certain type.</short>
@@ -227,7 +241,7 @@ namespace Nepomuk {
         }
         /// <remarks>
         ///  Tries very hard to find a suitable human-readable description of the resource.
-        ///  This description is supposed to be longer than text() and includes such properties
+        ///  This description is supposed to be longer than genericLabel() and includes such properties
         ///  as nao:description, xesam:comment, rdfs:comment
         ///  \return A human readable description of the resource or an empty string if none
         ///  could be found.
@@ -241,6 +255,16 @@ namespace Nepomuk {
         ///          </remarks>        <short>    Tries very hard to find an icon suitable for this resource.</short>
         public string GenericIcon() {
             return (string) interceptor.Invoke("genericIcon", "genericIcon() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Get or create the PIMO thing that relates to this resource. If this resource
+        ///  itself is a pimo:Thing, a reference to this is returned. If a pimo:Thing exists
+        ///  with has as occurence this resource, the thing is returned. Otherwise a new thing
+        ///  is created.
+        ///  \since 4.2
+        ///          </remarks>        <short>    Get or create the PIMO thing that relates to this resource.</short>
+        public Nepomuk.Thing PimoThing() {
+            return (Nepomuk.Thing) interceptor.Invoke("pimoThing", "pimoThing()", typeof(Nepomuk.Thing));
         }
         /// <remarks>
         ///  Operator to compare two Resource objects. Normally one does not need this. It is
@@ -418,8 +442,12 @@ namespace Nepomuk {
         /// <remarks>
         ///  Set property 'Rating'. 
         ///          </remarks>        <short>    Set property 'Rating'.</short>
-        public void SetRating(uint value) {
-            interceptor.Invoke("setRating$", "setRating(const unsigned int&)", typeof(void), typeof(uint), value);
+        public void SetRating(ref int value) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_int = value;
+            interceptor.Invoke("setRating$", "setRating(const unsigned int&)", stack);
+            value = stack[1].s_int;
+            return;
         }
         /// <remarks>
         ///  Get property 'Symbol'. Each resource can have a symbol assigned. 
