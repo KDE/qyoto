@@ -16,9 +16,6 @@
  ***************************************************************************/
 
 namespace Qyoto {
-
-	using Qyoto;
-	
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
