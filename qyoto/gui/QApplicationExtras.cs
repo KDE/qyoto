@@ -17,6 +17,7 @@ namespace Qyoto {
 			interceptor.Invoke(	"QApplication$?", 
 								"QApplication(int&, char**)", 
 								typeof(void), typeof(int), args.Length, typeof(string[]), args );
+			SetupEventReceiver();
 		}
 
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
@@ -30,6 +31,7 @@ namespace Qyoto {
 			interceptor.Invoke(	"QApplication$?", 
 								"QApplication(int&, char**)", 
 								typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(bool), GUIenabled );
+			SetupEventReceiver();
 		}
     
 		public QApplication(string[] argv, QApplication.TypeOf arg3) : this((Type) null) {
@@ -43,6 +45,7 @@ namespace Qyoto {
 			interceptor.Invoke(	"QApplication$?", 
 								"QApplication(int&, char**)", 
 								typeof(void), typeof(int), args.Length, typeof(string[]), args, typeof(QApplication.TypeOf), arg3 );
+			SetupEventReceiver();
 		}   
 	}
 }

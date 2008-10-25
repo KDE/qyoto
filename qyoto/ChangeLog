@@ -2,6 +2,8 @@
 
 	* Use List<IQGraphicsItem> instead of List<QGraphicsItem> and check for
 	  multiple inheritance in ConstructList(). Fixes bug reported by Eric Butler.
+	* Add QCoreApplication.Invoke() which executes a delegate in the same thread
+	  in which Q(Core)Application's main loop runs (usually the main thread).
 
 2008-08-29  Arno Rehn  <arno@arnorehn.de>
 
