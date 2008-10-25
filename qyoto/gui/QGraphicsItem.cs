@@ -11,8 +11,8 @@ namespace Qyoto {
         QGraphicsWidget TopLevelWidget();
         QGraphicsWidget Window();
         void SetParentItem(IQGraphicsItem parent);
-        List<QGraphicsItem> Children();
-        List<QGraphicsItem> ChildItems();
+        List<IQGraphicsItem> Children();
+        List<IQGraphicsItem> ChildItems();
         bool IsWidget();
         bool IsWindow();
         QGraphicsItemGroup Group();
@@ -98,8 +98,8 @@ namespace Qyoto {
         bool CollidesWithItem(IQGraphicsItem other);
         bool CollidesWithPath(QPainterPath path, Qt.ItemSelectionMode mode);
         bool CollidesWithPath(QPainterPath path);
-        List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode);
-        List<QGraphicsItem> CollidingItems();
+        List<IQGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode);
+        List<IQGraphicsItem> CollidingItems();
         bool IsObscured();
         bool IsObscured(QRectF rect);
         bool IsObscured(double x, double y, double w, double h);
@@ -246,11 +246,11 @@ namespace Qyoto {
         public void SetParentItem(IQGraphicsItem parent) {
             interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
         }
-        public List<QGraphicsItem> Children() {
-            return (List<QGraphicsItem>) interceptor.Invoke("children", "children() const", typeof(List<QGraphicsItem>));
+        public List<IQGraphicsItem> Children() {
+            return (List<IQGraphicsItem>) interceptor.Invoke("children", "children() const", typeof(List<IQGraphicsItem>));
         }
-        public List<QGraphicsItem> ChildItems() {
-            return (List<QGraphicsItem>) interceptor.Invoke("childItems", "childItems() const", typeof(List<QGraphicsItem>));
+        public List<IQGraphicsItem> ChildItems() {
+            return (List<IQGraphicsItem>) interceptor.Invoke("childItems", "childItems() const", typeof(List<IQGraphicsItem>));
         }
         public bool IsWidget() {
             return (bool) interceptor.Invoke("isWidget", "isWidget() const", typeof(bool));
@@ -513,11 +513,11 @@ namespace Qyoto {
         public virtual bool CollidesWithPath(QPainterPath path) {
             return (bool) interceptor.Invoke("collidesWithPath#", "collidesWithPath(const QPainterPath&) const", typeof(bool), typeof(QPainterPath), path);
         }
-        public List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
-            return (List<QGraphicsItem>) interceptor.Invoke("collidingItems$", "collidingItems(Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(Qt.ItemSelectionMode), mode);
+        public List<IQGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("collidingItems$", "collidingItems(Qt::ItemSelectionMode) const", typeof(List<IQGraphicsItem>), typeof(Qt.ItemSelectionMode), mode);
         }
-        public List<QGraphicsItem> CollidingItems() {
-            return (List<QGraphicsItem>) interceptor.Invoke("collidingItems", "collidingItems() const", typeof(List<QGraphicsItem>));
+        public List<IQGraphicsItem> CollidingItems() {
+            return (List<IQGraphicsItem>) interceptor.Invoke("collidingItems", "collidingItems() const", typeof(List<IQGraphicsItem>));
         }
         public bool IsObscured() {
             return (bool) interceptor.Invoke("isObscured", "isObscured() const", typeof(bool));

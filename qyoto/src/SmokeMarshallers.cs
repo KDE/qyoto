@@ -688,6 +688,15 @@ namespace Qyoto {
 				}
 			}
 
+			// check for multiple inheritance - use the interface if necessary
+			string ifacename = "I" + t.Name;
+			foreach(Type iface in t.GetInterfaces()) {
+				if (iface.Name == ifacename) {
+					t = iface;
+					break;
+				}
+			}
+
 			Type[] generic = { t };
 			Type merged = basetype.MakeGenericType(generic);
 			

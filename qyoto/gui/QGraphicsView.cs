@@ -253,38 +253,38 @@ namespace Qyoto {
         public new void Render(QPainter painter) {
             interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), painter);
         }
-        public List<QGraphicsItem> Items() {
-            return (List<QGraphicsItem>) interceptor.Invoke("items", "items() const", typeof(List<QGraphicsItem>));
+        public List<IQGraphicsItem> Items() {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items", "items() const", typeof(List<IQGraphicsItem>));
         }
-        public List<QGraphicsItem> Items(QPoint pos) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QPoint&) const", typeof(List<QGraphicsItem>), typeof(QPoint), pos);
+        public List<IQGraphicsItem> Items(QPoint pos) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#", "items(const QPoint&) const", typeof(List<IQGraphicsItem>), typeof(QPoint), pos);
         }
-        public List<QGraphicsItem> Items(int x, int y) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items$$", "items(int, int) const", typeof(List<QGraphicsItem>), typeof(int), x, typeof(int), y);
+        public List<IQGraphicsItem> Items(int x, int y) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items$$", "items(int, int) const", typeof(List<IQGraphicsItem>), typeof(int), x, typeof(int), y);
         }
-        public List<QGraphicsItem> Items(QRect rect, Qt.ItemSelectionMode mode) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QRect&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QRect), rect, typeof(Qt.ItemSelectionMode), mode);
+        public List<IQGraphicsItem> Items(QRect rect, Qt.ItemSelectionMode mode) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$", "items(const QRect&, Qt::ItemSelectionMode) const", typeof(List<IQGraphicsItem>), typeof(QRect), rect, typeof(Qt.ItemSelectionMode), mode);
         }
-        public List<QGraphicsItem> Items(QRect rect) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QRect&) const", typeof(List<QGraphicsItem>), typeof(QRect), rect);
+        public List<IQGraphicsItem> Items(QRect rect) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#", "items(const QRect&) const", typeof(List<IQGraphicsItem>), typeof(QRect), rect);
         }
-        public List<QGraphicsItem> Items(int x, int y, int w, int h, Qt.ItemSelectionMode mode) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items$$$$$", "items(int, int, int, int, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(Qt.ItemSelectionMode), mode);
+        public List<IQGraphicsItem> Items(int x, int y, int w, int h, Qt.ItemSelectionMode mode) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items$$$$$", "items(int, int, int, int, Qt::ItemSelectionMode) const", typeof(List<IQGraphicsItem>), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(Qt.ItemSelectionMode), mode);
         }
-        public List<QGraphicsItem> Items(int x, int y, int w, int h) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items$$$$", "items(int, int, int, int) const", typeof(List<QGraphicsItem>), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
+        public List<IQGraphicsItem> Items(int x, int y, int w, int h) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items$$$$", "items(int, int, int, int) const", typeof(List<IQGraphicsItem>), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
         }
-        public List<QGraphicsItem> Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QPolygon&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QPolygon), polygon, typeof(Qt.ItemSelectionMode), mode);
+        public List<IQGraphicsItem> Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$", "items(const QPolygon&, Qt::ItemSelectionMode) const", typeof(List<IQGraphicsItem>), typeof(QPolygon), polygon, typeof(Qt.ItemSelectionMode), mode);
         }
-        public List<QGraphicsItem> Items(QPolygon polygon) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QPolygon&) const", typeof(List<QGraphicsItem>), typeof(QPolygon), polygon);
+        public List<IQGraphicsItem> Items(QPolygon polygon) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#", "items(const QPolygon&) const", typeof(List<IQGraphicsItem>), typeof(QPolygon), polygon);
         }
-        public List<QGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#$", "items(const QPainterPath&, Qt::ItemSelectionMode) const", typeof(List<QGraphicsItem>), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode);
+        public List<IQGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$", "items(const QPainterPath&, Qt::ItemSelectionMode) const", typeof(List<IQGraphicsItem>), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode);
         }
-        public List<QGraphicsItem> Items(QPainterPath path) {
-            return (List<QGraphicsItem>) interceptor.Invoke("items#", "items(const QPainterPath&) const", typeof(List<QGraphicsItem>), typeof(QPainterPath), path);
+        public List<IQGraphicsItem> Items(QPainterPath path) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#", "items(const QPainterPath&) const", typeof(List<IQGraphicsItem>), typeof(QPainterPath), path);
         }
         public IQGraphicsItem ItemAt(QPoint pos) {
             return (IQGraphicsItem) interceptor.Invoke("itemAt#", "itemAt(const QPoint&) const", typeof(IQGraphicsItem), typeof(QPoint), pos);

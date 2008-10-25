@@ -1,3 +1,8 @@
+2008-10-25  Arno Rehn  <arno@arnorehn.de>
+
+	* Use List<IQGraphicsItem> instead of List<QGraphicsItem> and check for
+	  multiple inheritance in ConstructList(). Fixes bug reported by Eric Butler.
+
 2008-08-29  Arno Rehn  <arno@arnorehn.de>
 
 	* Support char as a method return type.
