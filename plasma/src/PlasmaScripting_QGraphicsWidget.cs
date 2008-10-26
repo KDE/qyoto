@@ -243,10 +243,10 @@ namespace PlasmaScripting {
         public void SetParentItem(IQGraphicsItem parent) {
             applet.SetParentItem(parent);
         }
-        public List<QGraphicsItem> Children() {
+        public List<IQGraphicsItem> Children() {
             return applet.Children();
         }
-        public List<QGraphicsItem> ChildItems() {
+        public List<IQGraphicsItem> ChildItems() {
             return applet.ChildItems();
         }
         public bool IsWidget() {
@@ -498,10 +498,10 @@ namespace PlasmaScripting {
         public virtual bool CollidesWithPath(QPainterPath path) {
             return applet.CollidesWithPath(path);
         }
-        public List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
+        public List<IQGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
             return applet.CollidingItems(mode);
         }
-        public List<QGraphicsItem> CollidingItems() {
+        public List<IQGraphicsItem> CollidingItems() {
             return applet.CollidingItems();
         }
         public bool IsObscured() {
