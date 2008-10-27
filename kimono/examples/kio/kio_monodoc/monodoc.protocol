@@ -1,0 +1,6 @@
+[Protocol]
+exec=kimonopluginfactory
+input=none
+output=filesystem
+protocol=monodoc
+reading=true

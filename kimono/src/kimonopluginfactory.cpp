@@ -25,6 +25,7 @@
 
 #include <KStandardDirs>
 #include <KPluginFactory>
+#include <KIO/SlaveBase>
 
 #include <kdebug.h>
 
@@ -48,6 +49,17 @@ class KimonoPluginFactory : public KPluginFactory
 public:
 	KimonoPluginFactory();
 	virtual ~KimonoPluginFactory();
+	
+	void initQyotoRuntime();
+	
+	MonoDomain* initJit(const QString& path);
+	MonoAssembly* getAssembly(const QString& path);
+	MonoImage* getImage(MonoAssembly* assembly);
+	MonoObject* createInstance(MonoClass* klass);
+	guint32 pinObject(MonoObject* obj);
+	
+	static QByteArray camelize(QByteArray name);
+	static QList<const char*> assemblyGetClasses(const char* path);
 
 protected:
 	virtual QObject* create(const char *iface, QWidget *parentWidget,
@@ -55,10 +67,6 @@ protected:
 	                        const QString &keyword);
 
 private:
-	void initQyotoRuntime();
-	QByteArray camelize(QByteArray name);
-	QList<const char*> assemblyGetClasses(const char* path);
-	
 	QHash<QString, MonoAssembly*> assemblies;
 	QHash<MonoAssembly*, MonoImage*> images;
 	
@@ -153,6 +161,67 @@ KimonoPluginFactory::initQyotoRuntime()
 	mono_runtime_invoke(initRuntimeMethod, NULL, NULL, NULL);
 }
 
+MonoDomain*
+KimonoPluginFactory::initJit(const QString& path)
+{
+	// initialize the JIT
+	if (!domain) {
+		domain = mono_jit_init((const char*) path.toLatin1());
+		mono_config_parse(NULL);
+// 		printf("(kimonopluginfactory.cpp:%d) new domain (ptr: %p)\n", __LINE__, domain);
+		atexit(atexitfn);
+	}
+	return domain;
+}
+
+MonoAssembly*
+KimonoPluginFactory::getAssembly(const QString& path)
+{
+	MonoAssembly* assembly;
+	if (assemblies.contains(path)) {
+		assembly = assemblies[path];
+	} else {
+		assembly = mono_domain_assembly_open(domain, (const char*) path.toLatin1());
+		if (!assembly) {
+			kWarning() << "Couldn't open assembly" << path;
+			return 0;
+		}
+		assemblies[path] = assembly;
+	}
+	return assembly;
+}
+
+MonoImage*
+KimonoPluginFactory::getImage(MonoAssembly* assembly)
+{
+	MonoImage* image;
+	if (images.contains(assembly)) {
+		image = images[assembly];
+	} else {
+		image = mono_assembly_get_image(assembly);
+		images[assembly] = image;
+	}
+	return image;
+}
+
+MonoObject*
+KimonoPluginFactory::createInstance(MonoClass* klass)
+{
+	// create an instance of the class
+	MonoObject* object = mono_object_new(domain, klass);
+	if (!object) return 0;
+	objects << object;
+	return object;
+}
+
+guint32
+KimonoPluginFactory::pinObject(MonoObject* obj)
+{
+	guint32 handle = mono_gchandle_new(obj, true);
+	handles << handle;
+	return handle;
+}
+
 QObject*
 KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	                       QObject *parent, const QVariantList &args,
@@ -169,33 +238,13 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 		return 0;
 	}
 
-	// initialize the JIT
-	if (!domain) {
-		domain = mono_jit_init((const char*) path.toLatin1());
-		mono_config_parse(NULL);
-// 		printf("(kimonopluginfactory.cpp:%d) new domain (ptr: %p)\n", __LINE__, domain);
-		atexit(atexitfn);
-	}
-	
-	MonoAssembly* assembly;
-	if (assemblies.contains(path)) {
-		assembly = assemblies[path];
-	} else {
-		assembly = mono_domain_assembly_open(domain, (const char*) path.toLatin1());
-		if (!assembly) {
-			kWarning() << "Couldn't open assembly" << path;
-			return 0;
-		}
-		assemblies[path] = assembly;
-	}
+	initJit(path);
 
-	MonoImage* image;
-	if (images.contains(assembly)) {
-		image = images[assembly];
-	} else {
-		image = mono_assembly_get_image(assembly);
-		images[assembly] = image;
-	}
+	MonoAssembly* assembly = getAssembly(path);
+	if (!assembly) return 0;
+	
+	MonoImage* image = getImage(assembly);
+	if (!image) return 0;
 
 	// a path in the form Foo/Bar.dll results in the class Bar in the namespace Foo
 	QFileInfo file(path);
@@ -234,15 +283,11 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 		return 0;
 	}
 	
-	// create an instance of the class
-	MonoObject* object = mono_object_new(domain, klass);
-	
-	if (!object) {
+	MonoObject* object = createInstance(klass);
+	if (!object) { 
 		kWarning() << "Failed to create instance of class" << nameSpace + "." + className;
 		return 0;
 	}
-	
-	objects << object;
 	
 	// initialize the Qyoto runtime
 	initQyotoRuntime();
@@ -270,8 +315,7 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	(*FreeGCHandle)(list);
 	
 	// get a handle to the object and pin it, so it won't be collected
-	guint32 handle = mono_gchandle_new(object, true);
-	handles << handle;
+	guint32 handle = pinObject(object);
 	
 	// return the newly created QObject
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)((void*) handle);
@@ -281,4 +325,103 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 		return qobject;
 	} else
 		return 0;
+}
+
+extern "C" { Q_DECL_EXPORT int kdemain(int argc, char** argv); }
+
+int kdemain(int argc, char** argv)
+{
+	if (argc != 4) {
+		printf("USAGE: kimonopluginfactory protocol pool_sock app_sock");
+		return -1;
+	}
+
+	KComponentData("kimonopluginfactory");
+
+	KimonoPluginFactory factory;
+
+	QByteArray protocol(argv[1]);
+	QByteArray pool_sock(argv[2]);
+	QByteArray app_sock(argv[3]);
+
+	// find the assembly
+	QString keyword("kio_");
+	keyword.append(protocol);
+	keyword.append("/main.dll");
+	QString path = KStandardDirs::locate("data", keyword);
+
+	if (path.isEmpty()) {
+		kWarning() << "Couldn't find" << keyword;
+		return -1;
+	}
+
+	factory.initJit(path);
+
+	MonoAssembly* assembly = factory.getAssembly(path);
+	if (!assembly) return -1;
+	
+	MonoImage* image = factory.getImage(assembly);
+	if (!image) return -1;
+
+	MonoMethod* ctor = 0;
+	MonoClass* klass = 0;
+	QByteArray iface("KIO.SlaveBase");
+	QByteArray nameSpace, className;
+	foreach(QByteArray name, factory.assemblyGetClasses((const char*) path.toLatin1())) {
+		nameSpace = name.left(name.lastIndexOf("."));
+		className = name.right(name.size() - name.lastIndexOf(".") - 1);
+		klass = mono_class_from_name(image, nameSpace, className);
+		MonoClass* p = klass;
+		do {
+			if (iface != mono_type_get_name(mono_class_get_type(p)))
+				continue;
+			QByteArray methodName = nameSpace + "." + className + ":.ctor(Qyoto.QByteArray,Qyoto.QByteArray,Qyoto.QByteArray)";
+			MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
+			ctor = mono_method_desc_search_in_class(desc, klass);
+			if (ctor) break;
+		} while ((p = mono_class_get_parent(p)));
+		if (ctor) break;
+	}
+
+	if (!ctor || !klass) {
+		kWarning() << "FATAL: Didn't find a class implementing KIO.SlaveBase or with a matching constructor.";
+		return -1;
+	}
+
+	MonoObject* object = factory.createInstance(klass);
+	if (!object) { 
+		kWarning() << "Failed to create instance of class" << nameSpace + "." + className;
+		return -1;
+	}
+
+	factory.initQyotoRuntime();
+
+	smokeqyoto_object* sqo_p = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QByteArray").index, &protocol);
+	void* p = (*CreateInstance)("Qyoto.QByteArray", sqo_p);
+	
+	smokeqyoto_object* sqo_ps = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QByteArray").index, &pool_sock);
+	void* ps = (*CreateInstance)("Qyoto.QByteArray", sqo_ps);
+	
+	smokeqyoto_object* sqo_as = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QByteArray").index, &app_sock);
+	void* as = (*CreateInstance)("Qyoto.QByteArray", sqo_as);
+	
+	void* a[3];
+	a[0] = mono_gchandle_get_target((guint32) (qint64) p);
+	a[1] = mono_gchandle_get_target((guint32) (qint64) ps);
+	a[2] = mono_gchandle_get_target((guint32) (qint64) as);
+	mono_runtime_invoke(ctor, object, a, NULL);
+	(*FreeGCHandle)(p);
+	(*FreeGCHandle)(ps);
+	(*FreeGCHandle)(as);
+	
+	guint32 handle = factory.pinObject(object);
+	
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)((void*) handle);
+	if (o) {
+		KIO::SlaveBase *slave = (KIO::SlaveBase*) o->ptr;
+		slave->dispatchLoop();
+		delete slave;
+		return 0;
+	} else
+		return -1;
 }

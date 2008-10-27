@@ -1,3 +1,14 @@
+2008-10-27  Arno Rehn  <arno@arnorehn.de>
+
+	* Add support for Mono based kio slaves by extending kimonopluginfactory.
+	* Add a kio_monodoc example kio slave. It needs monodoc installed and
+	  accessible through 'pkg-config --libs monodoc'.
+	  You can then access the mono documentation by typing e.g.
+	    monodoc:/T:System.Object
+	    monodoc:/N:System.Reflection
+	  in Konqueror's address bar or using kioclient from the command line.
+	  Simply monodoc:/ will bring you to monodoc:/N:System
+
 2008-08-13  Arno Rehn  <arno@arnorehn.de>
 
     * Make the KSharedPointer marshaller more generic and add one for
