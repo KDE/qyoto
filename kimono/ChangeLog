@@ -1,3 +1,8 @@
+2008-10-29  Arno Rehn  <arno@arnorehn.de>
+
+	* Don't let KIO::SlaveBase redirect SIGXCPU, since it's needed by
+	  Mono's Boehm GC.
+
 2008-10-27  Arno Rehn  <arno@arnorehn.de>
 
 	* Add support for Mono based kio slaves by extending kimonopluginfactory.

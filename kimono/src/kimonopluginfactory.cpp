@@ -27,6 +27,7 @@
 #include <KPluginFactory>
 #include <KIO/SlaveBase>
 
+#include <kde_file.h>
 #include <kdebug.h>
 
 #include <qyoto.h>
@@ -409,7 +410,14 @@ int kdemain(int argc, char** argv)
 	a[0] = mono_gchandle_get_target((guint32) (qint64) p);
 	a[1] = mono_gchandle_get_target((guint32) (qint64) ps);
 	a[2] = mono_gchandle_get_target((guint32) (qint64) as);
+#ifdef SIGXCPU
+	void(*before)(int) = KDE_signal(SIGXCPU, SIG_IGN);
+	KDE_signal(SIGXCPU, before);
+#endif
 	mono_runtime_invoke(ctor, object, a, NULL);
+#ifdef SIGXCPU
+	KDE_signal(SIGXCPU, before);
+#endif
 	(*FreeGCHandle)(p);
 	(*FreeGCHandle)(ps);
 	(*FreeGCHandle)(as);
