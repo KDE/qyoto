@@ -208,6 +208,12 @@ namespace Plasma {
             return (Plasma.Package) interceptor.Invoke("package", "package() const", typeof(Plasma.Package));
         }
         /// <remarks>
+        ///  Returns the plugin name for the applet
+        ///          </remarks>        <short>    Returns the plugin name for the applet          </short>
+        public string PluginName() {
+            return (string) interceptor.Invoke("pluginName", "pluginName() const", typeof(string));
+        }
+        /// <remarks>
         ///  When a source that does not currently exist is requested by the
         ///  consumer, this method is called to give the DataEngine the
         ///  opportunity to create one.

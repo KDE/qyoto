@@ -5,11 +5,11 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     using System.Collections.Generic;
-    [SmokeClass("Plasma::ConfigXml")]
-    public class ConfigXml : KConfigSkeleton, IDisposable {
-        protected ConfigXml(Type dummy) : base((Type) null) {}
+    [SmokeClass("Plasma::ConfigLoader")]
+    public class ConfigLoader : KConfigSkeleton, IDisposable {
+        protected ConfigLoader(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
-            interceptor = new SmokeInvocation(typeof(ConfigXml), this);
+            interceptor = new SmokeInvocation(typeof(ConfigLoader), this);
         }
         /// <remarks>
         ///  Creates a KConfigSkeleton populated using the definition found in
@@ -18,13 +18,13 @@ namespace Plasma {
         /// </param><param> name="xml" the xml data; must be valid KConfigXT data
         /// </param><param> name="parent" optional QObject parent
         /// </param></remarks>        <short>    Creates a KConfigSkeleton populated using the definition found in  the XML data passed in.</short>
-        public ConfigXml(string configFile, QIODevice xml, QObject parent) : this((Type) null) {
+        public ConfigLoader(string configFile, QIODevice xml, QObject parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ConfigXml$##", "ConfigXml(const QString&, QIODevice*, QObject*)", typeof(void), typeof(string), configFile, typeof(QIODevice), xml, typeof(QObject), parent);
+            interceptor.Invoke("ConfigLoader$##", "ConfigLoader(const QString&, QIODevice*, QObject*)", typeof(void), typeof(string), configFile, typeof(QIODevice), xml, typeof(QObject), parent);
         }
-        public ConfigXml(string configFile, QIODevice xml) : this((Type) null) {
+        public ConfigLoader(string configFile, QIODevice xml) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ConfigXml$#", "ConfigXml(const QString&, QIODevice*)", typeof(void), typeof(string), configFile, typeof(QIODevice), xml);
+            interceptor.Invoke("ConfigLoader$#", "ConfigLoader(const QString&, QIODevice*)", typeof(void), typeof(string), configFile, typeof(QIODevice), xml);
         }
         /// <remarks>
         ///  Creates a KConfigSkeleton populated using the definition found in
@@ -33,13 +33,13 @@ namespace Plasma {
         /// </param><param> name="xml" the xml data; must be valid KConfigXT data
         /// </param><param> name="parent" optional QObject parent
         /// </param></remarks>        <short>    Creates a KConfigSkeleton populated using the definition found in  the XML data passed in.</short>
-        public ConfigXml(KSharedConfig config, QIODevice xml, QObject parent) : this((Type) null) {
+        public ConfigLoader(KSharedConfig config, QIODevice xml, QObject parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ConfigXml?##", "ConfigXml(KSharedPtr<KSharedConfig>, QIODevice*, QObject*)", typeof(void), typeof(KSharedConfig), config, typeof(QIODevice), xml, typeof(QObject), parent);
+            interceptor.Invoke("ConfigLoader?##", "ConfigLoader(KSharedPtr<KSharedConfig>, QIODevice*, QObject*)", typeof(void), typeof(KSharedConfig), config, typeof(QIODevice), xml, typeof(QObject), parent);
         }
-        public ConfigXml(KSharedConfig config, QIODevice xml) : this((Type) null) {
+        public ConfigLoader(KSharedConfig config, QIODevice xml) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ConfigXml?#", "ConfigXml(KSharedPtr<KSharedConfig>, QIODevice*)", typeof(void), typeof(KSharedConfig), config, typeof(QIODevice), xml);
+            interceptor.Invoke("ConfigLoader?#", "ConfigLoader(KSharedPtr<KSharedConfig>, QIODevice*)", typeof(void), typeof(KSharedConfig), config, typeof(QIODevice), xml);
         }
         /// <remarks>
         ///  Creates a KConfigSkeleton populated using the definition found in
@@ -48,13 +48,13 @@ namespace Plasma {
         /// </param><param> name="xml" the xml data; must be valid KConfigXT data
         /// </param><param> name="parent" optional QObject parent
         /// </param></remarks>        <short>    Creates a KConfigSkeleton populated using the definition found in  the XML data passed in.</short>
-        public ConfigXml(KConfigGroup config, QIODevice xml, QObject parent) : this((Type) null) {
+        public ConfigLoader(KConfigGroup config, QIODevice xml, QObject parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ConfigXml###", "ConfigXml(const KConfigGroup*, QIODevice*, QObject*)", typeof(void), typeof(KConfigGroup), config, typeof(QIODevice), xml, typeof(QObject), parent);
+            interceptor.Invoke("ConfigLoader###", "ConfigLoader(const KConfigGroup*, QIODevice*, QObject*)", typeof(void), typeof(KConfigGroup), config, typeof(QIODevice), xml, typeof(QObject), parent);
         }
-        public ConfigXml(KConfigGroup config, QIODevice xml) : this((Type) null) {
+        public ConfigLoader(KConfigGroup config, QIODevice xml) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ConfigXml##", "ConfigXml(const KConfigGroup*, QIODevice*)", typeof(void), typeof(KConfigGroup), config, typeof(QIODevice), xml);
+            interceptor.Invoke("ConfigLoader##", "ConfigLoader(const KConfigGroup*, QIODevice*)", typeof(void), typeof(KConfigGroup), config, typeof(QIODevice), xml);
         }
         /// <remarks>
         ///  Finds the item for the given group and key.
@@ -82,17 +82,17 @@ namespace Plasma {
         public List<string> GroupList() {
             return (List<string>) interceptor.Invoke("groupList", "groupList() const", typeof(List<string>));
         }
-        ~ConfigXml() {
-            interceptor.Invoke("~ConfigXml", "~ConfigXml()", typeof(void));
+        ~ConfigLoader() {
+            interceptor.Invoke("~ConfigLoader", "~ConfigLoader()", typeof(void));
         }
         public new void Dispose() {
-            interceptor.Invoke("~ConfigXml", "~ConfigXml()", typeof(void));
+            interceptor.Invoke("~ConfigLoader", "~ConfigLoader()", typeof(void));
         }
-        protected new IConfigXmlSignals Emit {
-            get { return (IConfigXmlSignals) Q_EMIT; }
+        protected new IConfigLoaderSignals Emit {
+            get { return (IConfigLoaderSignals) Q_EMIT; }
         }
     }
 
-    public interface IConfigXmlSignals : IKConfigSkeletonSignals {
+    public interface IConfigLoaderSignals : IKConfigSkeletonSignals {
     }
 }

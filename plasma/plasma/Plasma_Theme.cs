@@ -189,7 +189,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Inserts a rectangle of a sub element of an image into a disk cache
-        ///  @arg image path of the image we want to insert informations
+        ///  @arg image path of the image we want to insert information
         ///  @arg element sub element we want insert the rect
         ///  @arg rect element rectangle
         /// </remarks>        <short>    Inserts a rectangle of a sub element of an image into a disk cache </short>
@@ -197,8 +197,8 @@ namespace Plasma {
             interceptor.Invoke("insertIntoRectsCache$$#", "insertIntoRectsCache(const QString&, const QString&, const QRectF&)", typeof(void), typeof(string), image, typeof(string), element, typeof(QRectF), rect);
         }
         /// <remarks>
-        ///  Discards all the informations about a given image from the rectangle disk cache
-        /// </remarks>        <short>    Discards all the informations about a given image from the rectangle disk cache </short>
+        ///  Discards all the information about a given image from the rectangle disk cache
+        /// </remarks>        <short>    Discards all the information about a given image from the rectangle disk cache </short>
         public void InvalidateRectsCache(string image) {
             interceptor.Invoke("invalidateRectsCache$", "invalidateRectsCache(const QString&)", typeof(void), typeof(string), image);
         }

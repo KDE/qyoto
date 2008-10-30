@@ -12,7 +12,7 @@ namespace Plasma {
     ///  optimizations to help lower the cost of painting SVGs, such as caching.
     ///  See <see cref="ISvgSignals"></see> for signals emitted by Svg
     /// </remarks>        <short> A theme aware image-centric SVG class.</short>
-    ///         <see> Plasma.PanelSvg</see>
+    ///         <see> Plasma.FrameSvg</see>
     [SmokeClass("Plasma::Svg")]
     public class Svg : QObject, IDisposable {
         protected Svg(Type dummy) : base((Type) null) {}

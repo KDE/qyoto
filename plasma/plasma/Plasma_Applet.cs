@@ -140,8 +140,8 @@ namespace Plasma {
         /// </remarks>        <return> config skeleton object, or 0 if none
         /// </return>
         ///         <short>    Returns the config skeleton object from this applet's package,  if any.</short>
-        public Plasma.ConfigXml ConfigScheme() {
-            return (Plasma.ConfigXml) interceptor.Invoke("configScheme", "configScheme() const", typeof(Plasma.ConfigXml));
+        public Plasma.ConfigLoader ConfigScheme() {
+            return (Plasma.ConfigLoader) interceptor.Invoke("configScheme", "configScheme() const", typeof(Plasma.ConfigLoader));
         }
         /// <remarks>
         ///  Loads the given DataEngine
@@ -388,6 +388,24 @@ namespace Plasma {
             interceptor.Invoke("removeAssociatedWidget#", "removeAssociatedWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
         }
         /// <remarks>
+        ///  Gets called when and extender item has to be initialized after a plasma restart. If you
+        ///  create ExtenderItems in your applet, you should implement this function to again create
+        ///  the widget that should be shown in this extender item. This function might look something
+        ///  like this:
+        ///  @code
+        ///  SuperCoolWidget widget = new SuperCoolWidget();
+        ///  dataEngine("engine").ConnectSource(item.Config("dataSourceName"), widget);
+        ///  item.SetWidget(widget);
+        ///  @endcode
+        ///  You can also add one or more custom qactions to this extender item in this function.
+        ///  Note that by default, not all ExtenderItems are persistent. Only items that are detached,
+        ///  will have their configuration stored when plasma exits.
+        ///          </remarks>        <short>    Gets called when and extender item has to be initialized after a plasma restart.</short>
+        [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]
+        public virtual void InitExtenderItem(Plasma.ExtenderItem item) {
+            interceptor.Invoke("initExtenderItem#", "initExtenderItem(Plasma::ExtenderItem*)", typeof(void), typeof(Plasma.ExtenderItem), item);
+        }
+        /// <remarks>
         /// <param> name="parent" the QGraphicsItem this applet is parented to
         /// </param><param> name="serviceId" the name of the .desktop file containing the
         ///       information about the widget
@@ -483,33 +501,6 @@ namespace Plasma {
         [SmokeMethod("configChanged()")]
         public virtual void ConfigChanged() {
             interceptor.Invoke("configChanged", "configChanged()", typeof(void));
-        }
-        /// <remarks>
-        ///  Get's called when and extender item has to be initialized after a plasma restart. If you
-        ///  create ExtenderItems in your applet, you should implement this function to again create
-        ///  the widget that should be shown in this extender item. This function might look something
-        ///  like this:
-        ///  @code
-        ///  SuperCoolWidget widget = new SuperCoolWidget();
-        ///  dataEngine("engine").ConnectSource(item.Config("dataSourceName"), widget);
-        ///  item.SetWidget(widget);
-        ///  @endcode
-        ///  You can also add one or more custom qactions to this extender item in this function.
-        ///  Note that by default, not all ExtenderItems are persistent. Only items that are detached,
-        ///  will have there configuration stored when plasma exists.
-        ///          </remarks>        <short>    Get's called when and extender item has to be initialized after a plasma restart.</short>
-        [Q_SLOT("void initExtenderItem(ExtenderItem*)")]
-        [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]
-        public virtual void InitExtenderItem(Plasma.ExtenderItem item) {
-            interceptor.Invoke("initExtenderItem#", "initExtenderItem(Plasma::ExtenderItem*)", typeof(void), typeof(Plasma.ExtenderItem), item);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the extender this applet has.
-        ///          </return>
-        ///         <short>   </short>
-        [Q_SLOT("Plasma::Extender* extender()")]
-        public Plasma.Extender Extender() {
-            return (Plasma.Extender) interceptor.Invoke("extender", "extender() const", typeof(Plasma.Extender));
         }
         /// <remarks>
         ///  This constructor is to be used with the plugin loading systems
@@ -616,6 +607,13 @@ namespace Plasma {
         ///         <short>   </short>
         protected bool IsRegisteredAsDragHandle(IQGraphicsItem item) {
             return (bool) interceptor.Invoke("isRegisteredAsDragHandle#", "isRegisteredAsDragHandle(QGraphicsItem*)", typeof(bool), typeof(IQGraphicsItem), item);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the extender of this applet.
+        ///          </return>
+        ///         <short>   </short>
+        protected Plasma.Extender Extender() {
+            return (Plasma.Extender) interceptor.Invoke("extender", "extender() const", typeof(Plasma.Extender));
         }
         /// <remarks>
         /// </remarks>        <short>   </short>

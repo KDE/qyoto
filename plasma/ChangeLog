@@ -1,3 +1,9 @@
+2008-10-30  Richard Dale  <richard.j.dale@gmail.com>
+* Regenerate the sources with the renamed classes ConfigLoader, FlashingLabel
+  IconWidget and WebView.
+* TODO: The Applet.Extender() method is now protected and the ScriptApplet
+  class needs to invoke it via reflection.
+
 2008-10-21  Richard Dale  <richard.j.dale@gmail.com>
 * Regenerate the C# sources and add the new SvgWidget class
 * Fix compile errors in the examples caused by the api changes

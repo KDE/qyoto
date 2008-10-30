@@ -4,13 +4,13 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
-    /// <remarks> See <see cref="IIconSignals"></see> for signals emitted by Icon
+    /// <remarks> See <see cref="IIconWidgetSignals"></see> for signals emitted by IconWidget
     /// </remarks>
-    [SmokeClass("Plasma::Icon")]
-    public class Icon : QGraphicsWidget, IDisposable {
-        protected Icon(Type dummy) : base((Type) null) {}
+    [SmokeClass("Plasma::IconWidget")]
+    public class IconWidget : QGraphicsWidget, IDisposable {
+        protected IconWidget(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
-            interceptor = new SmokeInvocation(typeof(Icon), this);
+            interceptor = new SmokeInvocation(typeof(IconWidget), this);
         }
         [Q_PROPERTY("QString", "text")]
         public string Text {
@@ -36,43 +36,43 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("setSvg", "setSvg()", typeof(string)); }
         }
         /// <remarks>
-        ///  Creates a new Plasma.Icon.
+        ///  Creates a new Plasma.IconWidget.
         /// <param> name="parent" the QGraphicsItem this icon is parented to.
-        ///     </param></remarks>        <short>    Creates a new Plasma.Icon.</short>
-        public Icon(IQGraphicsItem parent) : this((Type) null) {
+        ///     </param></remarks>        <short>    Creates a new Plasma.IconWidget.</short>
+        public IconWidget(IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Icon#", "Icon(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
+            interceptor.Invoke("IconWidget#", "IconWidget(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
         }
-        public Icon() : this((Type) null) {
+        public IconWidget() : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Icon", "Icon()", typeof(void));
+            interceptor.Invoke("IconWidget", "IconWidget()", typeof(void));
         }
         /// <remarks>
-        ///  Convenience constructor to create a Plasma.Icon with text.
+        ///  Convenience constructor to create a Plasma.IconWidget with text.
         /// <param> name="text" the text that will be displayed with this icon.
         /// </param><param> name="parent" the QGraphicsItem this icon is parented to.
-        ///     </param></remarks>        <short>    Convenience constructor to create a Plasma.Icon with text.</short>
-        public Icon(string text, IQGraphicsItem parent) : this((Type) null) {
+        ///     </param></remarks>        <short>    Convenience constructor to create a Plasma.IconWidget with text.</short>
+        public IconWidget(string text, IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Icon$#", "Icon(const QString&, QGraphicsItem*)", typeof(void), typeof(string), text, typeof(IQGraphicsItem), parent);
+            interceptor.Invoke("IconWidget$#", "IconWidget(const QString&, QGraphicsItem*)", typeof(void), typeof(string), text, typeof(IQGraphicsItem), parent);
         }
-        public Icon(string text) : this((Type) null) {
+        public IconWidget(string text) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Icon$", "Icon(const QString&)", typeof(void), typeof(string), text);
+            interceptor.Invoke("IconWidget$", "IconWidget(const QString&)", typeof(void), typeof(string), text);
         }
         /// <remarks>
-        ///  Creates a new Plasma.Icon with text and an icon.
+        ///  Creates a new Plasma.IconWidget with text and an icon.
         /// <param> name="icon" the icon that will be displayed with this icon.
         /// </param><param> name="text" the text that will be displayed with this icon.
         /// </param><param> name="parent" The QGraphicsItem this icon is parented to.
-        ///     </param></remarks>        <short>    Creates a new Plasma.Icon with text and an icon.</short>
-        public Icon(QIcon icon, string text, IQGraphicsItem parent) : this((Type) null) {
+        ///     </param></remarks>        <short>    Creates a new Plasma.IconWidget with text and an icon.</short>
+        public IconWidget(QIcon icon, string text, IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Icon#$#", "Icon(const QIcon&, const QString&, QGraphicsItem*)", typeof(void), typeof(QIcon), icon, typeof(string), text, typeof(IQGraphicsItem), parent);
+            interceptor.Invoke("IconWidget#$#", "IconWidget(const QIcon&, const QString&, QGraphicsItem*)", typeof(void), typeof(QIcon), icon, typeof(string), text, typeof(IQGraphicsItem), parent);
         }
-        public Icon(QIcon icon, string text) : this((Type) null) {
+        public IconWidget(QIcon icon, string text) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Icon#$", "Icon(const QIcon&, const QString&)", typeof(void), typeof(QIcon), icon, typeof(string), text);
+            interceptor.Invoke("IconWidget#$", "IconWidget(const QIcon&, const QString&)", typeof(void), typeof(QIcon), icon, typeof(string), text);
         }
         /// <remarks>
         ///  Convenience method to set the svg image to use when given the filepath and name of svg.
@@ -86,20 +86,20 @@ namespace Plasma {
             interceptor.Invoke("setSvg$", "setSvg(const QString&)", typeof(void), typeof(string), svgFilePath);
         }
         /// <remarks>
-        ///  Plasma.Icon allows the user to specify a number of actions
+        ///  Plasma.IconWidget allows the user to specify a number of actions
         ///  (currently four) to be displayed around the widget. This method
-        ///  allows for a created QAction to be added to the Plasma.Icon.
+        ///  allows for a created QAction to be added to the Plasma.IconWidget.
         /// <param> name="action" the QAction to associate with this icon.
-        ///     </param></remarks>        <short>    Plasma.Icon allows the user to specify a number of actions  (currently four) to be displayed around the widget.</short>
+        ///     </param></remarks>        <short>    Plasma.IconWidget allows the user to specify a number of actions  (currently four) to be displayed around the widget.</short>
         public void AddIconAction(QAction action) {
             interceptor.Invoke("addIconAction#", "addIconAction(QAction*)", typeof(void), typeof(QAction), action);
         }
         /// <remarks>
-        ///  Associate an action with this Icon
-        ///  this makes the Icon follow the state of the action, using its icon, text, etc.
-        ///  when the Icon is clicked, it will also trigger the action.
+        ///  Associate an action with this IconWidget
+        ///  this makes the IconWidget follow the state of the action, using its icon, text, etc.
+        ///  when the IconWidget is clicked, it will also trigger the action.
         ///  Unlike addIconAction, there can be only one associated action.
-        ///      </remarks>        <short>    Associate an action with this Icon  this makes the Icon follow the state of the action, using its icon, text, etc.</short>
+        ///      </remarks>        <short>    Associate an action with this IconWidget  this makes the IconWidget follow the state of the action, using its icon, text, etc.</short>
         public void SetAction(QAction action) {
             interceptor.Invoke("setAction#", "setAction(QAction*)", typeof(void), typeof(QAction), action);
         }
@@ -237,18 +237,18 @@ namespace Plasma {
         protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
             interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
         }
-        ~Icon() {
-            interceptor.Invoke("~Icon", "~Icon()", typeof(void));
+        ~IconWidget() {
+            interceptor.Invoke("~IconWidget", "~IconWidget()", typeof(void));
         }
         public new void Dispose() {
-            interceptor.Invoke("~Icon", "~Icon()", typeof(void));
+            interceptor.Invoke("~IconWidget", "~IconWidget()", typeof(void));
         }
-        protected new IIconSignals Emit {
-            get { return (IIconSignals) Q_EMIT; }
+        protected new IIconWidgetSignals Emit {
+            get { return (IIconWidgetSignals) Q_EMIT; }
         }
     }
 
-    public interface IIconSignals : IQGraphicsWidgetSignals {
+    public interface IIconWidgetSignals : IQGraphicsWidgetSignals {
         /// <remarks>
         ///  Indicates when the icon has been pressed.
         ///     </remarks>        <short>    Indicates when the icon has been pressed.</short>

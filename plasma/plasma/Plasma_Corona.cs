@@ -96,6 +96,47 @@ namespace Plasma {
             interceptor.Invoke("removeOffscreenWidget#", "removeOffscreenWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
+        ///  Returns the number of screens available to plasma.
+        ///  Subclasses should override this method as the default
+        ///  implementation returns a meaningless value.
+        ///      </remarks>        <short>    Returns the number of screens available to plasma.</short>
+        [SmokeMethod("numScreens() const")]
+        public virtual int NumScreens() {
+            return (int) interceptor.Invoke("numScreens", "numScreens() const", typeof(int));
+        }
+        /// <remarks>
+        ///  Returns the geometry of a given screen.
+        ///  Valid screen ids are 0 to numScreen()-1, or -1 for the full desktop geometry.
+        ///  Subclasses should override this method as the default
+        ///  implementation returns a meaningless value.
+        ///      </remarks>        <short>    Returns the geometry of a given screen.</short>
+        [SmokeMethod("screenGeometry(int) const")]
+        public virtual QRect ScreenGeometry(int id) {
+            return (QRect) interceptor.Invoke("screenGeometry$", "screenGeometry(int) const", typeof(QRect), typeof(int), id);
+        }
+        /// <remarks>
+        ///  Returns the available region for a given screen.
+        ///  The available region excludes panels and similar windows.
+        ///  Valid screen ids are 0 to numScreens()-1.
+        ///  By default this method returns a rectangular region
+        ///  equal to screenGeometry(id); subclasses that need another
+        ///  behavior should override this method.
+        ///      </remarks>        <short>    Returns the available region for a given screen.</short>
+        [SmokeMethod("availableScreenRegion(int) const")]
+        public virtual QRegion AvailableScreenRegion(int id) {
+            return (QRegion) interceptor.Invoke("availableScreenRegion$", "availableScreenRegion(int) const", typeof(QRegion), typeof(int), id);
+        }
+        /// <remarks>
+        ///  Reccomended position for a popup window like a menu or a tooltip
+        ///  given its size
+        /// <param> name="s" size of the popup
+        /// </param></remarks>        <return> reccomended position
+        ///     </return>
+        ///         <short>    Reccomended position for a popup window like a menu or a tooltip  given its size </short>
+        public QPoint PopupPosition(IQGraphicsItem item, QSize s) {
+            return (QPoint) interceptor.Invoke("popupPosition##", "popupPosition(const QGraphicsItem*, const QSize&)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), s);
+        }
+        /// <remarks>
         ///  Initializes the layout from a config file. This will first clear any existing
         ///  Containments, load a layout from the requested configuration file, request the
         ///  default layout if needed and update immutability.

@@ -137,7 +137,7 @@ namespace PlasmaScripting {
         /// </remarks>        <return> config skeleton object, or 0 if none
         /// </return>
         ///         <short>    Returns the config skeleton object from this applet's package,  if any.</short>
-        public Plasma.ConfigXml ConfigScheme() {
+        public Plasma.ConfigLoader ConfigScheme() {
             return applet.ConfigScheme();
         }
         /// <remarks>
@@ -446,8 +446,9 @@ namespace PlasmaScripting {
          ///          </return>
          ///         <short>   </short>
         [Q_SLOT("Plasma::Extender* extender()")]
-        public Plasma.Extender Extender() {
-            return applet.Extender();
+        protected Plasma.Extender Extender() {
+//            return applet.Extender();
+              return null;
         }
         public Applet(AppletScript parent) : base(parent) {
             Connect(applet, SIGNAL("releaseVisualFocus()"), this, SIGNAL("releaseVisualFocus()"));

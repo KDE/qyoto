@@ -5,22 +5,22 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  @class WebContent plasma/widgets/webcontent.h <Plasma/Widgets/WebContent>
-    ///  See <see cref="IWebContentSignals"></see> for signals emitted by WebContent
+    ///  @class WebView plasma/widgets/webcontent.h <Plasma/Widgets/WebView>
+    ///  See <see cref="IWebViewSignals"></see> for signals emitted by WebView
     /// </remarks>        <short> Provides a widget to display html content in Plasma.  </short>
-    [SmokeClass("Plasma::WebContent")]
-    public class WebContent : QGraphicsWidget, IDisposable {
-        protected WebContent(Type dummy) : base((Type) null) {}
+    [SmokeClass("Plasma::WebView")]
+    public class WebView : QGraphicsWidget, IDisposable {
+        protected WebView(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
-            interceptor = new SmokeInvocation(typeof(WebContent), this);
+            interceptor = new SmokeInvocation(typeof(WebView), this);
         }
-        public WebContent(IQGraphicsItem parent) : this((Type) null) {
+        public WebView(IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("WebContent#", "WebContent(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
+            interceptor.Invoke("WebView#", "WebView(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
         }
-        public WebContent() : this((Type) null) {
+        public WebView() : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("WebContent", "WebContent()", typeof(void));
+            interceptor.Invoke("WebView", "WebView()", typeof(void));
         }
         /// <remarks>
         ///  Sets the URL to display. Loading may happen asynchronously.
@@ -61,7 +61,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Sets the page to use in this item. The owner of the webpage remains,
-        ///  however if this WebContent object is the owner of the current page,
+        ///  however if this WebView object is the owner of the current page,
         ///  then the current page is deleted
         /// <param> name="page" the page to set in this view
         ///          </param></remarks>        <short>    Sets the page to use in this item.</short>
@@ -155,18 +155,18 @@ namespace Plasma {
         protected override void DropEvent(QGraphicsSceneDragDropEvent arg1) {
             interceptor.Invoke("dropEvent#", "dropEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
         }
-        ~WebContent() {
-            interceptor.Invoke("~WebContent", "~WebContent()", typeof(void));
+        ~WebView() {
+            interceptor.Invoke("~WebView", "~WebView()", typeof(void));
         }
         public new void Dispose() {
-            interceptor.Invoke("~WebContent", "~WebContent()", typeof(void));
+            interceptor.Invoke("~WebView", "~WebView()", typeof(void));
         }
-        protected new IWebContentSignals Emit {
-            get { return (IWebContentSignals) Q_EMIT; }
+        protected new IWebViewSignals Emit {
+            get { return (IWebViewSignals) Q_EMIT; }
         }
     }
 
-    public interface IWebContentSignals : IQGraphicsWidgetSignals {
+    public interface IWebViewSignals : IQGraphicsWidgetSignals {
         /// <remarks>
         ///  During loading progress, this signal is emitted. The values
         ///  are always between 0 and 100, inclusive.

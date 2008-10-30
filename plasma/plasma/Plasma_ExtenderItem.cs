@@ -9,6 +9,29 @@ namespace Plasma {
     ///  This class wraps around a QGraphicsWidget and provides drag&drop handling, a draghandle,
     ///  title and ability to display qactions as a row of icon, ability to expand, collapse, return
     ///  to source and tracks configuration associated with this item for you.
+    ///  Typical usage of ExtenderItems in your applet could look like this:
+    ///  @code
+    ///  ExtenderItem item = new ExtenderItem(extender());
+    ///  //name can be used to later access this item through extender().Item(name):
+    ///  item.SetName("networkmonitoreth0");
+    ///  item.Config().writeEntry("device", "eth0");
+    ///  initExtenderItem(item);
+    ///  @endcode
+    ///  You'll then need to implement the initExtenderItem function. Having this function in your applet
+    ///  makes sure that detached extender items get restored after plasma is restarted, just like applets
+    ///  are. That is also the reason that we write an entry in item.Config().
+    ///  In this function you should instantiate a QGraphicsWidget or QGraphicsItem and call the
+    ///  setWidget function on the ExtenderItem. This is the only correct way of adding actual content to
+    ///  a extenderItem. An example:
+    ///  @code
+    ///  void MyApplet.InitExtenderItem(Plasma.ExtenderItem item)
+    ///  {
+    ///      QGraphicsWidget myNetworkMonitorWidget = new NetworkMonitorWidget(item);
+    ///      dataEngine("networktraffic").ConnectSource(item.Config().readEntry("device", ""),
+    ///                                                  myNetworkMonitorWidget);
+    ///      item.SetWidget(myNetworkMonitorWidget);
+    ///  }
+    ///  @endcode
     ///  </remarks>        <short> Provides detachable items for an Extender.</short>
     [SmokeClass("Plasma::ExtenderItem")]
     public class ExtenderItem : QGraphicsWidget, IDisposable {
@@ -56,9 +79,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  The constructor takes care of adding this item to an extender.
-        /// <param> name="hostExtender" The extender where the extender item belongs to.
-        ///  TODO: extenderItemId might not be necesarry in the constructor if I rewrite some
-        ///  stuff.
+        /// <param> name="hostExtender" The extender the extender item belongs to.
         /// </param><param> name="extenderItemId" the id of the extender item. Use the default 0 to assign a new,
         ///  unique id to this extender item.
         ///          </param></remarks>        <short>    The constructor takes care of adding this item to an extender.</short>
@@ -107,13 +128,6 @@ namespace Plasma {
             return (QAction) interceptor.Invoke("action$", "action(const QString&) const", typeof(QAction), typeof(string), name);
         }
         /// <remarks>
-        /// </remarks>        <return> the id of the applet this item is created by.
-        ///          </return>
-        ///         <short>   </short>
-        public uint SourceAppletId() {
-            return (uint) interceptor.Invoke("sourceAppletId", "sourceAppletId() const", typeof(uint));
-        }
-        /// <remarks>
         ///  Destroys the extender item. As opposed to calling delete on this class, destroy also
         ///  removes the config group associated with this item.
         ///          </remarks>        <short>    Destroys the extender item.</short>
@@ -129,8 +143,8 @@ namespace Plasma {
             interceptor.Invoke("setCollapsed$", "setCollapsed(bool)", typeof(void), typeof(bool), collapsed);
         }
         /// <remarks>
-        ///  Returns the extender item to it's source applet.
-        ///          </remarks>        <short>    Returns the extender item to it's source applet.</short>
+        ///  Returns the extender item to its source applet.
+        ///          </remarks>        <short>    Returns the extender item to its source applet.</short>
         [Q_SLOT("void moveBackToSource()")]
         public void MoveBackToSource() {
             interceptor.Invoke("moveBackToSource", "moveBackToSource()", typeof(void));
@@ -146,6 +160,10 @@ namespace Plasma {
         [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
         protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
             interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
+        [SmokeMethod("mouseDoubleClickEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MouseDoubleClickEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mouseDoubleClickEvent#", "mouseDoubleClickEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
         }
         [SmokeMethod("mouseMoveEvent(QGraphicsSceneMouseEvent*)")]
         protected override void MouseMoveEvent(QGraphicsSceneMouseEvent arg1) {

@@ -85,7 +85,6 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Appends lists of matches to the list of matches.
-        ///  The RunnerContext takes over ownership of the matches on successful addition.
         ///  This method is thread safe and causes the matchesChanged() signal to be emitted.
         /// </remarks>        <return> true if matches were added, false if matches were e.g. outdated
         ///          </return>
@@ -95,9 +94,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Appends a match to the existing list of matches.
-        ///  The RunnerContext takes over ownership of the match on successful addition.
         ///  If you are going to be adding multiple matches, use addMatches instead.
-        ///  @arg term the search term that this match was generated for
+        ///  @arg term the search term that this match was generated for.
         ///  @arg match the match to add
         /// </remarks>        <return> true if the match was added, false otherwise.
         ///          </return>

@@ -4,11 +4,23 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    /// <remarks> See <see cref="ISvgWidgetSignals"></see> for signals emitted by SvgWidget
+    /// </remarks>
     [SmokeClass("Plasma::SvgWidget")]
     public class SvgWidget : QGraphicsWidget, IDisposable {
         protected SvgWidget(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(SvgWidget), this);
+        }
+        [Q_PROPERTY("Plasma::Svg*", "svg")]
+        public Plasma.Svg Svg {
+            get { return (Plasma.Svg) interceptor.Invoke("svg", "svg()", typeof(Plasma.Svg)); }
+            set { interceptor.Invoke("setSvg#", "setSvg(Plasma::Svg*)", typeof(void), typeof(Plasma.Svg), value); }
+        }
+        [Q_PROPERTY("QString", "elementID")]
+        public string ElementID {
+            get { return (string) interceptor.Invoke("elementID", "elementID()", typeof(string)); }
+            set { interceptor.Invoke("setElementID$", "setElementID(QString)", typeof(void), typeof(string), value); }
         }
         public SvgWidget(IQGraphicsItem parent, uint wFlags) : this((Type) null) {
             CreateProxy();
@@ -38,17 +50,9 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("SvgWidget#", "SvgWidget(Plasma::Svg*)", typeof(void), typeof(Plasma.Svg), svg);
         }
-        public void SetSvg(Plasma.Svg svg) {
-            interceptor.Invoke("setSvg#", "setSvg(Plasma::Svg*)", typeof(void), typeof(Plasma.Svg), svg);
-        }
-        public Plasma.Svg Svg() {
-            return (Plasma.Svg) interceptor.Invoke("svg", "svg() const", typeof(Plasma.Svg));
-        }
-        public void SetElementID(string elementID) {
-            interceptor.Invoke("setElementID$", "setElementID(const QString&)", typeof(void), typeof(string), elementID);
-        }
-        public string ElementID() {
-            return (string) interceptor.Invoke("elementID", "elementID() const", typeof(string));
+        [SmokeMethod("mouseReleaseEvent(QGraphicsSceneMouseEvent*)")]
+        public new virtual void MouseReleaseEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
         }
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
@@ -66,5 +70,7 @@ namespace Plasma {
     }
 
     public interface ISvgWidgetSignals : IQGraphicsWidgetSignals {
+        [Q_SIGNAL("void clicked(Qt::MouseButton)")]
+        void Clicked(Qt.MouseButton arg1);
     }
 }

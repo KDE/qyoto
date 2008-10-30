@@ -206,14 +206,14 @@ namespace Plasma {
         /// <remarks>
         ///  Add an action to the toolbox
         ///          </remarks>        <short>    Add an action to the toolbox          </short>
-        public void AddToolBoxTool(QAction action) {
-            interceptor.Invoke("addToolBoxTool#", "addToolBoxTool(QAction*)", typeof(void), typeof(QAction), action);
+        public void AddToolBoxAction(QAction action) {
+            interceptor.Invoke("addToolBoxAction#", "addToolBoxAction(QAction*)", typeof(void), typeof(QAction), action);
         }
         /// <remarks>
         ///  Remove an action from the toolbox
         ///          </remarks>        <short>    Remove an action from the toolbox          </short>
-        public void RemoveToolBoxTool(QAction action) {
-            interceptor.Invoke("removeToolBoxTool#", "removeToolBoxTool(QAction*)", typeof(void), typeof(QAction), action);
+        public void RemoveToolBoxAction(QAction action) {
+            interceptor.Invoke("removeToolBoxAction#", "removeToolBoxAction(QAction*)", typeof(void), typeof(QAction), action);
         }
         /// <remarks>
         ///  Sets the open or closed state of the Containment's toolbox
@@ -293,6 +293,15 @@ namespace Plasma {
         ///          </remarks>        <short>    Shows the context menu for the containment directly, bypassing Applets  altogether.</short>
         public void ShowContextMenu(QPointF containmentPos, QPoint screenPos) {
             interceptor.Invoke("showContextMenu##", "showContextMenu(const QPointF&, const QPoint&)", typeof(void), typeof(QPointF), containmentPos, typeof(QPoint), screenPos);
+        }
+        /// <remarks>
+        ///  Shows a visual clue for drag and drop
+        ///  This implementation does nothing, reimplement in containments that needs it
+        /// <param> name="pos" point where to show the drop target
+        ///          </param></remarks>        <short>    Shows a visual clue for drag and drop  This implementation does nothing, reimplement in containments that needs it </short>
+        [SmokeMethod("showDropZone(const QPoint)")]
+        public virtual void ShowDropZone(QPoint pos) {
+            interceptor.Invoke("showDropZone#", "showDropZone(const QPoint)", typeof(void), typeof(QPoint), pos);
         }
         /// <remarks>
         ///  Informs the Corona as to what position it is in. This is informational

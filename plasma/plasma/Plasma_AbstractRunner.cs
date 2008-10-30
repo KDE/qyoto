@@ -7,10 +7,9 @@ namespace Plasma {
     using System.Collections.Generic;
     /// <remarks>
     ///  @class AbstractRunner plasma/abstractrunner.h <Plasma/AbstractRunner>
-    ///  Be aware that runners have to be thread-safe. This is due to
-    ///  the fact that each runner is executed in its own thread for
-    ///  each new term. Thus, a runner may be executed more than once
-    ///  at the same time.
+    ///  Be aware that runners have to be thread-safe. This is due to the fact that
+    ///  each runner is executed in its own thread for each new term. Thus, a runner
+    ///  may be executed more than once at the same time. See match() for details.
     ///  </remarks>        <short> An abstract base class for Plasma Runner plugins. </short>
     [SmokeClass("Plasma::AbstractRunner")]
     public abstract class AbstractRunner : QObject {
@@ -34,28 +33,47 @@ namespace Plasma {
         // QMutex* bigLock(); >>>> NOT CONVERTED
         /// <remarks>
         ///  This is the main query method. It should trigger creation of
-        ///  QueryMatch instances through RunnerContext.AddInformationalMatch,
-        ///  RunnerContext.AddExactMatch, and RunnerContext.AddPossibleMatch.
+        ///  QueryMatch instances through RunnerContext.AddMatch and 
+        ///  RunnerContext.AddMatches. It is called internally by performMatch().
         ///  If the runner can run precisely the requested term (RunnerContext.Query()),
-        ///  it should create an exact match (RunnerContext.AddExactMatch).
+        ///  it should create an exact match by setting the type to RunnerContext.ExactMatch.
         ///  The first runner that creates a QueryMatch will be the
         ///  default runner. Other runner's matches will be suggested in the
-        ///  interface. Non-exact matches should be offered via RunnerContext.AddPossibleMatch.
-        ///  The match will be activated if the user selects it.
-        ///  If this runner's exact match is selected, it will be passed into
-        ///  the run method.
-        ///  Since each runner is executed in its own thread there is no need
-        ///  to return from this method right away, nor to create all matches
-        ///  here.
+        ///  interface. Non-exact matches should be offered via RunnerContext.PossibleMatch.
+        ///  The match will be activated via run() if the user selects it.
+        ///  Each runner is executed in its own thread. Whenever the user input changes this
+        ///  method is called again. Thus, it needs to be thread-safe. Also, all matches need
+        ///  to be reported once this method returns. Asyncroneous runners therefore need
+        ///  to make use of a local event loop to wait for all matches.
+        ///  It is recommended to use local status data in async runners. The simplest way is 
+        ///  to have a separate class doing all the work like so:
+        ///  <pre>
+        ///  void MyFancyAsyncRunner.Match( RunnerContext& context )
+        ///  {
+        ///      QEventLoop loop;
+        ///      MyAsyncWorker worker( context );
+        ///      connect( &worker, SIGNAL("finished()"),
+        ///               &loop, SLOT("quit()") );
+        ///      worker.work();
+        ///      loop.exec();
+        ///  }
+        ///  </pre>
+        ///  Here MyAsyncWorker creates all the matches and calls RunnerContext.AddMatch
+        ///  in some internal slot. It emits the finished() signal once done which will
+        ///  quit the loop and make the match() method return. The local status is kept
+        ///  entirely in MyAsyncWorker which makes match() trivially thread-safe.
+        ///  @caution This method needs to be thread-safe since KRunner will simply
+        ///  start a new thread for each new term.
+        ///  @caution Returning from this method means to end execution of the runner.
+        ///  @sa run(), RunnerContext.AddMatch, RunnerContext.AddMatches, QueryMatch
         ///          </remarks>        <short>    This is the main query method.</short>
-        ///         <see> run</see>
         [SmokeMethod("match(Plasma::RunnerContext&)")]
         public virtual void Match(Plasma.RunnerContext context) {
             interceptor.Invoke("match#", "match(Plasma::RunnerContext&)", typeof(void), typeof(Plasma.RunnerContext), context);
         }
         /// <remarks>
-        ///  Triggers a call to match.
-        ///  @arg globalContext the search context used in executing this match.
+        ///  Triggers a call to match. This will call match() internally.
+        ///  @arg context the search context used in executing this match.
         ///          </remarks>        <short>    Triggers a call to match.</short>
         public void PerformMatch(Plasma.RunnerContext context) {
             interceptor.Invoke("performMatch#", "performMatch(Plasma::RunnerContext&)", typeof(void), typeof(Plasma.RunnerContext), context);
@@ -81,10 +99,13 @@ namespace Plasma {
         /// <remarks>
         ///  Called whenever an exact or possible match associated with this
         ///  runner is triggered.
-        ///          </remarks>        <short>    Called whenever an exact or possible match associated with this  runner is triggered.</short>
+        /// <param> name="context" The context in which the match is triggered, i.e. for which
+        ///                 the match was created.
+        /// </param><param> name="match" The actual match to run/execute.
+        ///          </param></remarks>        <short>    Called whenever an exact or possible match associated with this  runner is triggered.</short>
         [SmokeMethod("run(const Plasma::RunnerContext&, const Plasma::QueryMatch&)")]
-        public virtual void Run(Plasma.RunnerContext context, Plasma.QueryMatch action) {
-            interceptor.Invoke("run##", "run(const Plasma::RunnerContext&, const Plasma::QueryMatch&)", typeof(void), typeof(Plasma.RunnerContext), context, typeof(Plasma.QueryMatch), action);
+        public virtual void Run(Plasma.RunnerContext context, Plasma.QueryMatch match) {
+            interceptor.Invoke("run##", "run(const Plasma::RunnerContext&, const Plasma::QueryMatch&)", typeof(void), typeof(Plasma.RunnerContext), context, typeof(Plasma.QueryMatch), match);
         }
         /// <remarks>
         ///  The nominal speed of the runner.

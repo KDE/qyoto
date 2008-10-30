@@ -111,7 +111,8 @@ namespace Plasma {
         /// <remarks>
         ///  Requests this match to activae using the given context
         /// <param> name="context" the context to use in conjunction with this run
-        ///          </param></remarks>        <short>    Requests this match to activae using the given context </short>
+        /// </param> @sa AbstractRunner.Run
+        ///          </remarks>        <short>    Requests this match to activae using the given context </short>
         public void Run(Plasma.RunnerContext context) {
             interceptor.Invoke("run#", "run(const Plasma::RunnerContext&) const", typeof(void), typeof(Plasma.RunnerContext), context);
         }

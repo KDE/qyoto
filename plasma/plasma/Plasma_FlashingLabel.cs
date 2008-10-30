@@ -5,21 +5,21 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  @class Flash plasma/widgets/flash.h <Plasma/Widgets/Flash>
+    ///  @class FlashingLabel plasma/widgets/flashinglabel.h <Plasma/Widgets/FlashingLabel>
     /// </remarks>        <short> Provides flashing text or icons inside Plasma.</short>
-    [SmokeClass("Plasma::Flash")]
-    public class Flash : QGraphicsWidget, IDisposable {
-        protected Flash(Type dummy) : base((Type) null) {}
+    [SmokeClass("Plasma::FlashingLabel")]
+    public class FlashingLabel : QGraphicsWidget, IDisposable {
+        protected FlashingLabel(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
-            interceptor = new SmokeInvocation(typeof(Flash), this);
+            interceptor = new SmokeInvocation(typeof(FlashingLabel), this);
         }
-        public Flash(IQGraphicsItem parent) : this((Type) null) {
+        public FlashingLabel(IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Flash#", "Flash(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
+            interceptor.Invoke("FlashingLabel#", "FlashingLabel(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
         }
-        public Flash() : this((Type) null) {
+        public FlashingLabel() : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("Flash", "Flash()", typeof(void));
+            interceptor.Invoke("FlashingLabel", "FlashingLabel()", typeof(void));
         }
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
         public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
@@ -38,23 +38,29 @@ namespace Plasma {
         public void SetDuration(int duration) {
             interceptor.Invoke("setDuration$", "setDuration(int)", typeof(void), typeof(int), duration);
         }
-        public void flash(string text, int duration, QTextOption option) {
+        public void Flash(string text, int duration, QTextOption option) {
             interceptor.Invoke("flash$$#", "flash(const QString&, int, const QTextOption&)", typeof(void), typeof(string), text, typeof(int), duration, typeof(QTextOption), option);
         }
-        public void flash(string text, int duration) {
+        public void Flash(string text, int duration) {
             interceptor.Invoke("flash$$", "flash(const QString&, int)", typeof(void), typeof(string), text, typeof(int), duration);
         }
-        public void flash(string text) {
+        public void Flash(string text) {
             interceptor.Invoke("flash$", "flash(const QString&)", typeof(void), typeof(string), text);
         }
-        public void flash(QPixmap pixmap, int duration, uint align) {
+        public void Flash(QPixmap pixmap, int duration, uint align) {
             interceptor.Invoke("flash#$$", "flash(const QPixmap&, int, Qt::Alignment)", typeof(void), typeof(QPixmap), pixmap, typeof(int), duration, typeof(uint), align);
         }
-        public void flash(QPixmap pixmap, int duration) {
+        public void Flash(QPixmap pixmap, int duration) {
             interceptor.Invoke("flash#$", "flash(const QPixmap&, int)", typeof(void), typeof(QPixmap), pixmap, typeof(int), duration);
         }
-        public void flash(QPixmap pixmap) {
+        public void Flash(QPixmap pixmap) {
             interceptor.Invoke("flash#", "flash(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
+        }
+        public void SetAutohide(bool autohide) {
+            interceptor.Invoke("setAutohide$", "setAutohide(bool)", typeof(void), typeof(bool), autohide);
+        }
+        public bool Autohide() {
+            return (bool) interceptor.Invoke("autohide", "autohide() const", typeof(bool));
         }
         [Q_SLOT("void kill()")]
         public void Kill() {
@@ -68,17 +74,17 @@ namespace Plasma {
         protected void FadeOut() {
             interceptor.Invoke("fadeOut", "fadeOut()", typeof(void));
         }
-        ~Flash() {
-            interceptor.Invoke("~Flash", "~Flash()", typeof(void));
+        ~FlashingLabel() {
+            interceptor.Invoke("~FlashingLabel", "~FlashingLabel()", typeof(void));
         }
         public new void Dispose() {
-            interceptor.Invoke("~Flash", "~Flash()", typeof(void));
+            interceptor.Invoke("~FlashingLabel", "~FlashingLabel()", typeof(void));
         }
-        protected new IFlashSignals Emit {
-            get { return (IFlashSignals) Q_EMIT; }
+        protected new IFlashingLabelSignals Emit {
+            get { return (IFlashingLabelSignals) Q_EMIT; }
         }
     }
 
-    public interface IFlashSignals : IQGraphicsWidgetSignals {
+    public interface IFlashingLabelSignals : IQGraphicsWidgetSignals {
     }
 }

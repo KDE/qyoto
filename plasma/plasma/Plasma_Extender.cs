@@ -16,6 +16,15 @@ namespace Plasma {
     ///  spacers that appear when dropping an ExtenderItem over it.
     ///  If you wish to have a different presentation of extender items, you can choose to subclass
     ///  Extender and reimplement the extenderItem events and, optionally, the saveState function.
+    ///  To use an Extender in you applet, you'll have to instantiate one. A call to extender() in your
+    ///  applet will create an extender on your applet if you haven't got one already. Every applet can
+    ///  contain only one extender. Think of it as a decorator that adds some functionality to applets
+    ///  that require it. Never instantiate an Extender before init() in your applet. This won't work
+    ///  correctly since a scene is required when an Extender is instantiated.
+    ///  As soon as an Extender is instantiated, ExtenderItems contained previously in this Extender are
+    ///  restored using the initExtenderItem function from the applet the items originally came from. For
+    ///  more information on how this works and how to use ExtenderItems in general, see the ExtenderItem
+    ///  API documentation.
     ///   See <see cref="IExtenderSignals"></see> for signals emitted by Extender
     /// </remarks>        <short> Extends applets to allow detachable parts.</short>
     [SmokeClass("Plasma::Extender")]
@@ -37,10 +46,13 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("emptyExtenderMessage", "emptyExtenderMessage()", typeof(string)); }
             set { interceptor.Invoke("setEmptyExtenderMessage$", "setEmptyExtenderMessage(QString)", typeof(void), typeof(string), value); }
         }
+        // Modes enabledBordersForItem(Plasma::ExtenderItem* arg1); >>>> NOT CONVERTED
         /// <remarks>
         ///  Creates an extender. Note that extender expects applet to have a config(), and needs a
         ///  scene because of that. So you should only instantiate an extender in init() or later, not
         ///  in an applet's constructor.
+        ///  The constructor also takes care of restoring ExtenderItems that were contained in this
+        ///  extender before, so ExtenderItems are persistent between sessions.
         /// <param> name="applet" The applet this extender is part of. Null is not allowed here.
         ///          </param></remarks>        <short>    Creates an extender.</short>
         public Extender(Plasma.Applet applet) : this((Type) null) {
@@ -163,9 +175,19 @@ namespace Plasma {
         /// </param></remarks>        <return> the borders that have to be enabled on it's background.
         ///          </return>
         ///         <short>    This function get's called on every item to determine which background border's to  render.</short>
-        [SmokeMethod("enabledBordersForItem(Plasma::ExtenderItem*) const")]
-        protected virtual uint EnabledBordersForItem(Plasma.ExtenderItem item) {
-            return (uint) interceptor.Invoke("enabledBordersForItem#", "enabledBordersForItem(Plasma::ExtenderItem*) const", typeof(uint), typeof(Plasma.ExtenderItem), item);
+        /// <remarks>
+        ///  Reimplemented from QGraphicsWidget
+        ///          </remarks>        <short>    Reimplemented from QGraphicsWidget          </short>
+        [SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
+        protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
+            return (QVariant) interceptor.Invoke("itemChange$#", "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)", typeof(QVariant), typeof(QGraphicsItem.GraphicsItemChange), change, typeof(QVariant), value);
+        }
+        /// <remarks>
+        ///  Reimplemented from QGraphicsWidget
+        ///          </remarks>        <short>    Reimplemented from QGraphicsWidget          </short>
+        [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
+        protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
+            interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
         ~Extender() {
             interceptor.Invoke("~Extender", "~Extender()", typeof(void));

@@ -154,9 +154,9 @@ namespace Plasma {
         RightMargin = 3,
     }
     /// <remarks>
-    ///  @class Icon plasma/widgets/icon.h <Plasma/Widgets/Icon>
+    ///  @class IconWidget plasma/widgets/iconwidget.h <Plasma/Widgets/IconWidget>
     ///  An icon, in this sense, is not restricted to just an image, but can also
-    ///  contain text. Currently, the Icon class is primarily used for desktop items,
+    ///  contain text. Currently, the IconWidget class is primarily used for desktop items,
     ///  but is designed to be used anywhere an icon is needed in an applet.
     /// </remarks>        <author> Matt Broadstone <mbroadst@gmail.com>
     ///  </author>
@@ -182,16 +182,6 @@ namespace Plasma {
         /// </param></remarks>        <short>    Converts a location to a direction.</short>
         public static Plasma.Direction LocationToDirection(Plasma.Location location) {
             return (Plasma.Direction) staticInterceptor.Invoke("locationToDirection$", "locationToDirection(Plasma::Location)", typeof(Plasma.Direction), typeof(Plasma.Location), location);
-        }
-        /// <remarks>
-        ///  Reccomended position for a popup window like a menu or a tooltip
-        ///  given its size
-        /// <param> name="s" size of the popup
-        /// </param></remarks>        <return> reccomended position
-        ///  </return>
-        ///         <short>    Reccomended position for a popup window like a menu or a tooltip  given its size </short>
-        public static QPoint PopupPosition(IQGraphicsItem item, QSize s) {
-            return (QPoint) staticInterceptor.Invoke("popupPosition##", "popupPosition(const QGraphicsItem*, const QSize&)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), s);
         }
         /// <remarks>
         ///  Returns the most appropriate QGraphicsView for the item.
