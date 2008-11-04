@@ -4,6 +4,7 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    using System.Text;
     using System.Collections.Generic;
     /// <remarks>
     ///  @class AbstractRunner plasma/abstractrunner.h <Plasma/AbstractRunner>
@@ -62,11 +63,16 @@ namespace Plasma {
         ///  in some internal slot. It emits the finished() signal once done which will
         ///  quit the loop and make the match() method return. The local status is kept
         ///  entirely in MyAsyncWorker which makes match() trivially thread-safe.
+        ///  If a particular match supports multiple actions, set up the corresponding
+        ///  actions in the actionsForMatch method. Do not call any of the action methods
+        ///  within this method!
+        ///  Execution of the correct action should be handled in the run method.
         ///  @caution This method needs to be thread-safe since KRunner will simply
         ///  start a new thread for each new term.
         ///  @caution Returning from this method means to end execution of the runner.
         ///  @sa run(), RunnerContext.AddMatch, RunnerContext.AddMatches, QueryMatch
         ///          </remarks>        <short>    This is the main query method.</short>
+        ///         <see> actionsForMatch</see>
         [SmokeMethod("match(Plasma::RunnerContext&)")]
         public virtual void Match(Plasma.RunnerContext context) {
             interceptor.Invoke("match#", "match(Plasma::RunnerContext&)", typeof(void), typeof(Plasma.RunnerContext), context);
@@ -237,6 +243,67 @@ namespace Plasma {
         }
         protected List<KService> ServiceQuery(string serviceType) {
             return (List<KService>) interceptor.Invoke("serviceQuery$", "serviceQuery(const QString&) const", typeof(List<KService>), typeof(string), serviceType);
+        }
+        /// <remarks>
+        ///  A given match can have more than action that can be performed on it.
+        ///  For example, a song match returned by a music player runner can be queued,
+        ///  added to the playlist, or played.
+        ///  Call this method to add actions that can be performed by the runner.
+        ///  Actions must first be added to the runner's action registry.
+        ///  Note: execution of correct action is left up to the runner.
+        ///          </remarks>        <short>    A given match can have more than action that can be performed on it.</short>
+        [SmokeMethod("actionsForMatch(const Plasma::QueryMatch&)")]
+        protected virtual List<QAction> ActionsForMatch(Plasma.QueryMatch match) {
+            return (List<QAction>) interceptor.Invoke("actionsForMatch#", "actionsForMatch(const Plasma::QueryMatch&)", typeof(List<QAction>), typeof(Plasma.QueryMatch), match);
+        }
+        /// <remarks>
+        ///  Creates and then adds an action to the action registry.
+        ///  AbstractRunner assumes ownership of the created action.
+        /// <param> name="id" A unique identifier string
+        /// </param><param> name="icon" The icon to display
+        /// </param><param> name="text" The text to display
+        /// </param></remarks>        <return> the created QAction
+        ///          </return>
+        ///         <short>    Creates and then adds an action to the action registry.</short>
+        protected QAction AddAction(string id, QIcon icon, string text) {
+            return (QAction) interceptor.Invoke("addAction$#$", "addAction(const QString&, const QIcon&, const QString&)", typeof(QAction), typeof(string), id, typeof(QIcon), icon, typeof(string), text);
+        }
+        /// <remarks>
+        ///  Adds an action to the runner's action registry.
+        ///  The QAction must be created within the GUI thread;
+        ///  do not create it within the match method of AbstractRunner.
+        /// <param> name="id" A unique identifier string
+        /// </param><param> name="action" The QAction to be stored
+        ///          </param></remarks>        <short>    Adds an action to the runner's action registry.</short>
+        protected void AddAction(string id, QAction action) {
+            interceptor.Invoke("addAction$#", "addAction(const QString&, QAction*)", typeof(void), typeof(string), id, typeof(QAction), action);
+        }
+        /// <remarks>
+        ///  Removes the action from the action registry.
+        ///  AbstractRunner deletes the action once removed.
+        /// <param> name="id" The id of the action to be removed
+        ///          </param></remarks>        <short>    Removes the action from the action registry.</short>
+        protected void RemoveAction(string id) {
+            interceptor.Invoke("removeAction$", "removeAction(const QString&)", typeof(void), typeof(string), id);
+        }
+        /// <remarks>
+        ///  Returns the action associated with the id
+        ///          </remarks>        <short>    Returns the action associated with the id          </short>
+        protected QAction Action(string id) {
+            return (QAction) interceptor.Invoke("action$", "action(const QString&) const", typeof(QAction), typeof(string), id);
+        }
+        /// <remarks>
+        ///  Returns all registered actions
+        ///          </remarks>        <short>    Returns all registered actions          </short>
+        protected string Actions() {
+            return (string) interceptor.Invoke("actions", "actions() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Clears the action registry.
+        ///  The action pool deletes the actions.
+        ///          </remarks>        <short>    Clears the action registry.</short>
+        protected void ClearActions() {
+            interceptor.Invoke("clearActions", "clearActions()", typeof(void));
         }
         [Q_SLOT("void init()")]
         protected void Init() {

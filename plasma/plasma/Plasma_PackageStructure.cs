@@ -257,6 +257,14 @@ namespace Plasma {
             interceptor.Invoke("setServicePrefix$", "setServicePrefix(const QString&)", typeof(void), typeof(string), servicePrefix);
         }
         /// <remarks>
+        /// </remarks>        <return> the package metadata object.
+        ///       </return>
+        ///         <short>   </short>
+        [SmokeMethod("metadata()")]
+        public virtual Plasma.PackageMetadata Metadata() {
+            return (Plasma.PackageMetadata) interceptor.Invoke("metadata", "metadata()", typeof(Plasma.PackageMetadata));
+        }
+        /// <remarks>
         ///  Sets the prefix that all the contents in this package should
         ///  appear under. This defaults to "contents/" and is added automatically
         ///  between the base path and the entries as defined by the package

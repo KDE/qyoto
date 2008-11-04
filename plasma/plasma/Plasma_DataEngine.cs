@@ -80,7 +80,7 @@ namespace Plasma {
             return (List<string>) interceptor.Invoke("sources", "sources() const", typeof(List<string>));
         }
         /// <remarks>
-        /// <param> name="source" the source to targe the Service at
+        /// <param> name="source" the source to target the Service at
         /// </param></remarks>        <return> a Service that has the source as a destination. The service
         ///          is parented to the DataEngine, but may be deleted by the
         ///          caller when finished with it

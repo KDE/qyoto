@@ -10,7 +10,7 @@ namespace Plasma {
     ///  it, you should do something like:
     ///  @code
     ///  // widget is a QGraphicsWidget
-    ///  Plasma.ToolTipManager.Content data;
+    ///  Plasma.ToolTipContent data;
     ///  data.mainText = i18n("My Title");
     ///  data.subText = i18n("This is a little tooltip");
     ///  data.image = KIcon("some-icon").pixmap(IconSize(KIconLoader.Desktop));
@@ -30,56 +30,6 @@ namespace Plasma {
     [SmokeClass("Plasma::ToolTipManager")]
     public class ToolTipManager : QObject {
         protected ToolTipManager(Type dummy) : base((Type) null) {}
-        /// <remarks>
-        ///  @struct Content plasma/tooltipmanager.h <Plasma/ToolTipManager>
-        ///  This provides the content for a tooltip.
-        ///  Normally you will want to set at least the <code>mainText</code> and
-        ///  <code>subText.</code>
-        ///      </remarks>        <short>    @struct Content plasma/tooltipmanager.</short>
-        [SmokeClass("Plasma::ToolTipManager::Content")]
-        public class Content : Object, IDisposable {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Content(Type dummy) {}
-            protected void CreateProxy() {
-                interceptor = new SmokeInvocation(typeof(Content), this);
-            }
-            public string MainText {
-                get { return (string) interceptor.Invoke("mainText", "mainText()", typeof(string)); }
-                set { interceptor.Invoke("setMainText$", "setMainText(QString)", typeof(void), typeof(string), value); }
-            }
-            public string SubText {
-                get { return (string) interceptor.Invoke("subText", "subText()", typeof(string)); }
-                set { interceptor.Invoke("setSubText$", "setSubText(QString)", typeof(void), typeof(string), value); }
-            }
-            public QPixmap Image {
-                get { return (QPixmap) interceptor.Invoke("image", "image()", typeof(QPixmap)); }
-                set { interceptor.Invoke("setImage#", "setImage(QPixmap)", typeof(void), typeof(QPixmap), value); }
-            }
-            public uint WindowToPreview {
-                get { return (uint) interceptor.Invoke("windowToPreview", "windowToPreview()", typeof(uint)); }
-                set { interceptor.Invoke("setWindowToPreview$", "setWindowToPreview(WId)", typeof(void), typeof(uint), value); }
-            }
-            public bool Autohide {
-                get { return (bool) interceptor.Invoke("autohide", "autohide()", typeof(bool)); }
-                set { interceptor.Invoke("setAutohide$", "setAutohide(bool)", typeof(void), typeof(bool), value); }
-            }
-            /// <remarks> Creates an empty Content </remarks>        <short>   Creates an empty Content </short>
-            public Content() : this((Type) null) {
-                CreateProxy();
-                interceptor.Invoke("Content", "Content()", typeof(void));
-            }
-            /// <remarks> @return true if all the fields are empty </remarks>        <short>   @return true if all the fields are empty </short>
-            public bool IsEmpty() {
-                return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
-            }
-            ~Content() {
-                interceptor.Invoke("~Content", "~Content()", typeof(void));
-            }
-            public void Dispose() {
-                interceptor.Invoke("~Content", "~Content()", typeof(void));
-            }
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(ToolTipManager), this);
         }
@@ -149,8 +99,8 @@ namespace Plasma {
         /// </param><param> name="data" the content of the tooltip. If an empty Content
         ///                is passed in, the tooltip content will be reset.
         ///      </param></remarks>        <short>    Sets the content for the tooltip associated with a widget.</short>
-        public void SetContent(QGraphicsWidget widget, Plasma.ToolTipManager.Content data) {
-            interceptor.Invoke("setContent##", "setContent(QGraphicsWidget*, const Plasma::ToolTipManager::Content&)", typeof(void), typeof(QGraphicsWidget), widget, typeof(Plasma.ToolTipManager.Content), data);
+        public void SetContent(QGraphicsWidget widget, Plasma.ToolTipContent data) {
+            interceptor.Invoke("setContent##", "setContent(QGraphicsWidget*, const Plasma::ToolTipContent&)", typeof(void), typeof(QGraphicsWidget), widget, typeof(Plasma.ToolTipContent), data);
         }
         /// <remarks>
         ///  Clears the tooltip data associated with this widget, but keeps

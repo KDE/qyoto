@@ -4,6 +4,7 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  @class DataEngineScript plasma/scripting/dataenginescript.h <Plasma/Scripting/DataEngineScript>
     /// </remarks>        <short> Provides a restricted interface for scripting a DataEngine.</short>
@@ -13,6 +14,7 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(DataEngineScript), this);
         }
+        // Plasma::Service* serviceForSource(const QString& arg1); >>>> NOT CONVERTED
         /// <remarks>
         ///  Default constructor for a DataEngineScript.
         ///  Subclasses should not attempt to access the Plasma.DataEngine
@@ -41,6 +43,17 @@ namespace Plasma {
             return (Plasma.DataEngine) interceptor.Invoke("dataEngine", "dataEngine() const", typeof(Plasma.DataEngine));
         }
         /// <remarks>
+        /// </remarks>        <return> a list of all the data sources available via this DataEngine
+        ///          Whether these sources are currently available (which is what
+        ///          the default implementation provides) or not is up to the
+        ///          DataEngine to decide. By default, this returns dataEngine().Sources()
+        ///      </return>
+        ///         <short>   </short>
+        [SmokeMethod("sources() const")]
+        public virtual List<string> Sources() {
+            return (List<string>) interceptor.Invoke("sources", "sources() const", typeof(List<string>));
+        }
+        /// <remarks>
         ///  Called when the script should create a source that does not currently
         ///  exist.
         /// <param> name="name" the name of the source that should be created
@@ -63,6 +76,13 @@ namespace Plasma {
         public virtual bool UpdateSourceEvent(string source) {
             return (bool) interceptor.Invoke("updateSourceEvent$", "updateSourceEvent(const QString&)", typeof(bool), typeof(string), source);
         }
+        /// <remarks>
+        /// <param> name="source" the source to targe the Service at
+        /// </param></remarks>        <return> a Service that has the source as a destination. The service
+        ///          is parented to the DataEngine, but may be deleted by the
+        ///          caller when finished with it
+        ///      </return>
+        ///         <short>   </short>
         public void SetData(string source, string key, QVariant value) {
             interceptor.Invoke("setData$$#", "setData(const QString&, const QString&, const QVariant&)", typeof(void), typeof(string), source, typeof(string), key, typeof(QVariant), value);
         }

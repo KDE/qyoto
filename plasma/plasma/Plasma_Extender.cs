@@ -46,7 +46,6 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("emptyExtenderMessage", "emptyExtenderMessage()", typeof(string)); }
             set { interceptor.Invoke("setEmptyExtenderMessage$", "setEmptyExtenderMessage(QString)", typeof(void), typeof(string), value); }
         }
-        // Modes enabledBordersForItem(Plasma::ExtenderItem* arg1); >>>> NOT CONVERTED
         /// <remarks>
         ///  Creates an extender. Note that extender expects applet to have a config(), and needs a
         ///  scene because of that. So you should only instantiate an extender in init() or later, not
@@ -98,15 +97,15 @@ namespace Plasma {
         ///  want to call this function in your applet's constraintsEvent, allthough this is already
         ///  done for you when using PopupApplet at base class for your applet. Defaults to NoBorders.
         ///          </remarks>        <short>    Use this function to instruct the extender on how to render it's items.</short>
-        public void SetExtenderAppearance(Plasma.Extender.Appearance appearance) {
-            interceptor.Invoke("setExtenderAppearance$", "setExtenderAppearance(Plasma::Extender::Appearance)", typeof(void), typeof(Plasma.Extender.Appearance), appearance);
+        public void SetAppearance(Plasma.Extender.Appearance appearance) {
+            interceptor.Invoke("setAppearance$", "setAppearance(Plasma::Extender::Appearance)", typeof(void), typeof(Plasma.Extender.Appearance), appearance);
         }
         /// <remarks>
         /// </remarks>        <return> the current way of rendering extender items that is used.
         ///          </return>
         ///         <short>   </short>
-        public Plasma.Extender.Appearance ExtenderAppearance() {
-            return (Plasma.Extender.Appearance) interceptor.Invoke("extenderAppearance", "extenderAppearance() const", typeof(Plasma.Extender.Appearance));
+        public Plasma.Extender.Appearance appearance() {
+            return (Plasma.Extender.Appearance) interceptor.Invoke("appearance", "appearance() const", typeof(Plasma.Extender.Appearance));
         }
         /// <remarks>
         ///  Get's called after an item has been added to this extender. The bookkeeping has already
@@ -175,6 +174,10 @@ namespace Plasma {
         /// </param></remarks>        <return> the borders that have to be enabled on it's background.
         ///          </return>
         ///         <short>    This function get's called on every item to determine which background border's to  render.</short>
+        [SmokeMethod("enabledBordersForItem(Plasma::ExtenderItem*) const")]
+        protected virtual uint EnabledBordersForItem(Plasma.ExtenderItem item) {
+            return (uint) interceptor.Invoke("enabledBordersForItem#", "enabledBordersForItem(Plasma::ExtenderItem*) const", typeof(uint), typeof(Plasma.ExtenderItem), item);
+        }
         /// <remarks>
         ///  Reimplemented from QGraphicsWidget
         ///          </remarks>        <short>    Reimplemented from QGraphicsWidget          </short>

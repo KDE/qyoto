@@ -150,6 +150,18 @@ namespace Plasma {
         public void SetEnabled(bool enable) {
             interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), enable);
         }
+        /// <remarks>
+        ///  The current action.
+        ///          </remarks>        <short>    The current action.</short>
+        public QAction SelectedAction() {
+            return (QAction) interceptor.Invoke("selectedAction", "selectedAction() const", typeof(QAction));
+        }
+        /// <remarks>
+        ///  Sets the selected action
+        ///         </remarks>        <short>    Sets the selected action         </short>
+        public void SetSelectedAction(QAction action) {
+            interceptor.Invoke("setSelectedAction#", "setSelectedAction(QAction*)", typeof(void), typeof(QAction), action);
+        }
         ~QueryMatch() {
             interceptor.Invoke("~QueryMatch", "~QueryMatch()", typeof(void));
         }

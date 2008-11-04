@@ -71,6 +71,12 @@ namespace Plasma {
             interceptor.Invoke("run$", "run(const QString&)", typeof(void), typeof(string), id);
         }
         /// <remarks>
+        ///  Retrieves the list of actions, if any, for a match
+        ///          </remarks>        <short>    Retrieves the list of actions, if any, for a match          </short>
+        public List<QAction> ActionsForMatch(Plasma.QueryMatch match) {
+            return (List<QAction>) interceptor.Invoke("actionsForMatch#", "actionsForMatch(const Plasma::QueryMatch&)", typeof(List<QAction>), typeof(Plasma.QueryMatch), match);
+        }
+        /// <remarks>
         /// </remarks>        <return> the current query term
         ///          </return>
         ///         <short>   </short>

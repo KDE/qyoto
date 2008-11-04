@@ -145,9 +145,24 @@ namespace Plasma {
         /// <remarks>
         ///  Returns the extender item to its source applet.
         ///          </remarks>        <short>    Returns the extender item to its source applet.</short>
-        [Q_SLOT("void moveBackToSource()")]
-        public void MoveBackToSource() {
-            interceptor.Invoke("moveBackToSource", "moveBackToSource()", typeof(void));
+        [Q_SLOT("void returnToSource()")]
+        public void ReturnToSource() {
+            interceptor.Invoke("returnToSource", "returnToSource()", typeof(void));
+        }
+        /// <remarks>
+        ///  Shows a close button in this item's drag handle. By default a close button will not be
+        ///  shown.
+        ///          </remarks>        <short>    Shows a close button in this item's drag handle.</short>
+        [Q_SLOT("void showCloseButton()")]
+        public void ShowCloseButton() {
+            interceptor.Invoke("showCloseButton", "showCloseButton()", typeof(void));
+        }
+        /// <remarks>
+        ///  Hides the close button in this item's drag handle.
+        ///          </remarks>        <short>    Hides the close button in this item's drag handle.</short>
+        [Q_SLOT("void hideCloseButton()")]
+        public void HideCloseButton() {
+            interceptor.Invoke("hideCloseButton", "hideCloseButton()", typeof(void));
         }
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {

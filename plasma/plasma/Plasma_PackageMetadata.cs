@@ -16,19 +16,23 @@ namespace Plasma {
             interceptor = new SmokeInvocation(typeof(PackageMetadata), this);
         }
         /// <remarks>
-        ///  Default constructor
-        /// </remarks>        <short>    Default constructor </short>
-        public PackageMetadata() : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("PackageMetadata", "PackageMetadata()", typeof(void));
-        }
-        /// <remarks>
         ///  Constructs a metadata object using the values in the file at path
         /// <param> name="path" path to a metadata.desktop file
         /// </param></remarks>        <short>    Constructs a metadata object using the values in the file at path </short>
         public PackageMetadata(string path) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("PackageMetadata$", "PackageMetadata(const QString&)", typeof(void), typeof(string), path);
+        }
+        public PackageMetadata() : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("PackageMetadata", "PackageMetadata()", typeof(void));
+        }
+        /// <remarks>
+        ///  Copy constructor
+        /// </remarks>        <short>    Copy constructor </short>
+        public PackageMetadata(Plasma.PackageMetadata other) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("PackageMetadata#", "PackageMetadata(const Plasma::PackageMetadata&)", typeof(void), typeof(Plasma.PackageMetadata), other);
         }
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));

@@ -89,7 +89,7 @@ namespace Plasma {
             return (string) interceptor.Invoke("styleSheet", "styleSheet() const", typeof(string));
         }
         /// <remarks>
-        /// </remarks>        <return> the native widget wrapped by this Label
+        /// </remarks>        <return> the native widget wrapped by this Frame
         ///      </return>
         ///         <short>   </short>
         public QWidget NativeWidget() {

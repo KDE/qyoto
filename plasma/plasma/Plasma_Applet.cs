@@ -36,8 +36,7 @@ namespace Plasma {
             NoBackground = 0,
             StandardBackground = 1,
             TranslucentBackground = 2,
-            ShadowedBackground = 4,
-            DefaultBackground = StandardBackground|ShadowedBackground,
+            DefaultBackground = StandardBackground,
         }
         public const int Type = (int) Plasma.ItemTypes.AppletType;
         [Q_PROPERTY("bool", "hasConfigurationInterface")]
