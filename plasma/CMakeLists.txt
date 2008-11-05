@@ -1,9 +1,5 @@
 PROJECT(plasma-sharp)
 
-IF (NOT PLASMA_FOUND)
-	FIND_PACKAGE(Plasma REQUIRED)
-ENDIF (NOT PLASMA_FOUND)
-
 IF (NOT QT4_FOUND)
 	FIND_PACKAGE(Qt4 REQUIRED)
 ENDIF (NOT QT4_FOUND)
@@ -30,7 +26,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(plasma-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(plasma-sharp smokeplasma kde-dotnet)
-TARGET_LINK_LIBRARIES(plasma-sharp smokeqt smokekde smokeplasma qyotoshared ${PLASMA_LIBS})
+TARGET_LINK_LIBRARIES(plasma-sharp smokeqt smokekde smokeplasma qyotoshared ${KDE4_PLASMA_LIBS})
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/qtwebkit.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(plasma "${SRC_CS}" ALL)
