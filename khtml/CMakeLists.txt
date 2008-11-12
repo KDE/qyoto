@@ -22,8 +22,8 @@ ADD_DEPENDENCIES(khtml-sharp smokekhtml)
 TARGET_LINK_LIBRARIES(khtml-sharp smokeqt smokekde smokekhtml qyotoshared ${KHTML_LIBS})
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(khtml "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(khtml khtml-sharp kde-dotnet)
+ADD_CS_LIBRARY(khtml-dll "${SRC_CS}" ALL)
+ADD_DEPENDENCIES(khtml-dll khtml-sharp kde-dotnet)
 
 INSTALL(TARGETS khtml-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(khtml)
+INSTALL_GAC(khtml-dll)

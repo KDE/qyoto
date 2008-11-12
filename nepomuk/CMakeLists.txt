@@ -21,8 +21,8 @@ ADD_LIBRARY(nepomuk-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(nepomuk-sharp smokeqt smokenepomuk qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/soprano.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(nepomuk "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(nepomuk qt-dotnet nepomuk-sharp smokenepomuk)
+ADD_CS_LIBRARY(nepomuk-dll "${SRC_CS}" ALL)
+ADD_DEPENDENCIES(nepomuk-dll qt-dotnet nepomuk-sharp smokenepomuk)
 
 INSTALL(TARGETS nepomuk-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(nepomuk)
+INSTALL_GAC(nepomuk-dll)
