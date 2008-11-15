@@ -32,9 +32,9 @@ SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/q
 ADD_CS_LIBRARY(plasma-dll "${SRC_CS}" ALL)
 ADD_DEPENDENCIES(plasma-dll qtwebkit kde-dotnet)
 
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma.dll -warn:0 -keyfile:${KEYFILE})
+SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/plasma-dll.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(PlasmaScriptengineKimono "${SRC_PLASMASCRIPTENGINEKIMONO}" ALL)
-ADD_DEPENDENCIES(PlasmaScriptengineKimono kde-dotnet plasma)
+ADD_DEPENDENCIES(PlasmaScriptengineKimono kde-dotnet plasma-dll)
 
 INSTALL(TARGETS plasma-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(plasma-dll)
