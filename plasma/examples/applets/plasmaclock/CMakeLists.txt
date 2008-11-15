@@ -8,5 +8,5 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/calendar.cs COMMAND ${UICS
 
 set(SRC_PLASMACLOCK clockapplet.cs ${CMAKE_CURRENT_BINARY_DIR}/ui_timezonesconfig.cs ${CMAKE_CURRENT_BINARY_DIR}/calendar.cs)
 
-set(CS_FLAGS -warn:0 "-r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll,${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll,${LIBRARY_OUTPUT_PATH}/plasma.dll")
+set(CS_FLAGS -warn:0 "-r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll,${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll,${LIBRARY_OUTPUT_PATH}/plasma-dll.dll")
 add_cs_library(plasmaclock "${SRC_PLASMACLOCK}" ALL)

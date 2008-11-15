@@ -1,3 +1,3 @@
 SET(SRC_P6 ${CMAKE_CURRENT_SOURCE_DIR}/p6.cs)
-SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/khtml.dll)
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/khtml-dll.dll)
 ADD_CS_EXECUTABLE(p6 ${SRC_P6} ALL)

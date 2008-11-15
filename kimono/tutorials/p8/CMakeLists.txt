@@ -1,3 +1,3 @@
 SET(SRC_P8 ${CMAKE_CURRENT_SOURCE_DIR}/p8.cs)
-SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/khtml.dll)
+SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/khtml-dll.dll)
 ADD_CS_EXECUTABLE(p8 ${SRC_P8} ALL)
