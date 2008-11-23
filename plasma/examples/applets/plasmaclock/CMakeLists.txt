@@ -10,3 +10,4 @@ set(SRC_PLASMACLOCK clockapplet.cs ${CMAKE_CURRENT_BINARY_DIR}/ui_timezonesconfi
 
 set(CS_FLAGS -warn:0 "-r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll,${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll,${LIBRARY_OUTPUT_PATH}/plasma-dll.dll")
 add_cs_library(plasmaclock "${SRC_PLASMACLOCK}" ALL)
+ADD_DEPENDENCIES(plasmaclock kde-dotnet plasma-dll)

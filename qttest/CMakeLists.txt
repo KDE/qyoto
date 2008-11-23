@@ -18,7 +18,7 @@ TARGET_LINK_LIBRARIES(qttest-sharp smokeqt smokeqttest qyotoshared ${QT_QTCORE_L
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(qttest "${SRC_CS}" ALL)
-ADD_DEPENDENCIES(qttest-sharp smokeqttest)
+ADD_DEPENDENCIES(qttest qt-dotnet)
 
 INSTALL(TARGETS qttest-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qttest)
