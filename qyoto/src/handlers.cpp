@@ -1092,6 +1092,31 @@ static void marshall_charP(Marshall *m) {
 	}
 }
 
+static void marshall_ucharP(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		m->item().s_voidp = (*GenericPointerGetIntPtr)(m->var().s_class);
+		(*FreeGCHandle)(m->var().s_voidp);
+	}
+	break;
+
+	case Marshall::ToObject:
+	{
+		uchar *p = (uchar*) m->item().s_voidp;
+		m->var().s_class = (*CreateGenericPointer)("System.Byte", p);
+	    if (m->cleanup()) {
+			delete[] p;
+		}
+	}
+	break;
+
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
 static void marshall_QString(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
@@ -1923,8 +1948,10 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "sigend int&", marshall_intR },
     { "signed long*", marshall_longR },
     { "signed long&", marshall_longR },
+    { "uchar*", marshall_ucharP},
     { "uint*", marshall_uintR },
     { "uint&", marshall_uintR },
+    { "unsigned char*", marshall_ucharP},
     { "unsigned int*", marshall_uintR },
     { "unsigned int&", marshall_uintR },
     { "unsigned long*", marshall_ulongR },

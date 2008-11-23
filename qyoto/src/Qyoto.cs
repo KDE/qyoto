@@ -87,11 +87,31 @@ namespace Qyoto
 
 #endif
 
-	public unsafe class Pointer<T> where T : struct {
+	public unsafe class Pointer<T> : IDisposable
+		where T : struct
+	{
 		private IntPtr m_ptr;
+		private bool alloced = false;
 		
 		public Pointer(IntPtr ptr) {
 			m_ptr = ptr;
+		}
+		
+		public Pointer(int length) {
+			m_ptr = Marshal.AllocHGlobal(GetPrimitiveSize() * length);
+			alloced = true;
+		}
+		
+		public void Dispose() {
+			if (alloced) Marshal.FreeHGlobal(m_ptr);
+		}
+		
+		public Pointer(T[] array) {
+			m_ptr = Marshal.AllocHGlobal(GetPrimitiveSize() * array.Length);
+			alloced = true;
+			for(int i = 0; i < array.Length; i++) {
+				this[i] = array[i];
+			}
 		}
 		
 		public T this[int index] {
@@ -110,6 +130,33 @@ namespace Qyoto
 		
 		public IntPtr ToIntPtr() {
 			return m_ptr;
+		}
+		
+		private int GetPrimitiveSize() {
+			if (typeof(T) == typeof(bool)) {
+				return sizeof(bool);
+			} else if (typeof(T) == typeof(sbyte)) {
+				return sizeof(sbyte);
+			} else if (typeof(T) == typeof(byte)) {
+				return sizeof(byte);
+			} else if (typeof(T) == typeof(short)) {
+				return sizeof(short);
+			} else if (typeof(T) == typeof(ushort)) {
+				return sizeof(ushort);
+			} else if (typeof(T) == typeof(int)) {
+				return sizeof(int);
+			} else if (typeof(T) == typeof(uint)) {
+				return sizeof(uint);
+			} else if (typeof(T) == typeof(long)) {
+				return sizeof(long);
+			} else if (typeof(T) == typeof(ulong)) {
+				return sizeof(ulong);
+			} else if (typeof(T) == typeof(float)) {
+				return sizeof(float);
+			} else if (typeof(T) == typeof(double)) {
+				return sizeof(double);
+			}
+			return 0;
 		}
 		
 		private object GetPointerValue(IntPtr ptr, Type t, int i) {
@@ -170,6 +217,10 @@ namespace Qyoto
 		}
 		
 		public static implicit operator Pointer<T>(IntPtr rhs) {
+			return new Pointer<T>(rhs);
+		}
+		
+		public static implicit operator Pointer<T>(T[] rhs) {
 			return new Pointer<T>(rhs);
 		}
 	}

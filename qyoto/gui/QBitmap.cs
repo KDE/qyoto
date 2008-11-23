@@ -57,11 +57,11 @@ namespace Qyoto {
         public static new QBitmap FromImage(QImage image) {
             return (QBitmap) staticInterceptor.Invoke("fromImage#", "fromImage(const QImage&)", typeof(QBitmap), typeof(QImage), image);
         }
-        public static QBitmap FromData(QSize size, char[] bits, QImage.Format monoFormat) {
-            return (QBitmap) staticInterceptor.Invoke("fromData#$$", "fromData(const QSize&, const uchar*, QImage::Format)", typeof(QBitmap), typeof(QSize), size, typeof(char[]), bits, typeof(QImage.Format), monoFormat);
+        public static QBitmap FromData(QSize size, Pointer<byte> bits, QImage.Format monoFormat) {
+            return (QBitmap) staticInterceptor.Invoke("fromData#$$", "fromData(const QSize&, const uchar*, QImage::Format)", typeof(QBitmap), typeof(QSize), size, typeof(Pointer<byte>), bits, typeof(QImage.Format), monoFormat);
         }
-        public static QBitmap FromData(QSize size, char[] bits) {
-            return (QBitmap) staticInterceptor.Invoke("fromData#$", "fromData(const QSize&, const uchar*)", typeof(QBitmap), typeof(QSize), size, typeof(char[]), bits);
+        public static QBitmap FromData(QSize size, Pointer<byte> bits) {
+            return (QBitmap) staticInterceptor.Invoke("fromData#$", "fromData(const QSize&, const uchar*)", typeof(QBitmap), typeof(QSize), size, typeof(Pointer<byte>), bits);
         }
     }
 }

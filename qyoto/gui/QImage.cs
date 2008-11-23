@@ -52,13 +52,13 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QImage$$$", "QImage(int, int, QImage::Format)", typeof(void), typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
         }
-        public QImage(char[] data, int width, int height, QImage.Format format) : this((Type) null) {
+        public QImage(Pointer<byte> data, int width, int height, QImage.Format format) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QImage$$$$", "QImage(uchar*, int, int, QImage::Format)", typeof(void), typeof(char[]), data, typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
+            interceptor.Invoke("QImage$$$$", "QImage(uchar*, int, int, QImage::Format)", typeof(void), typeof(Pointer<byte>), data, typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
         }
-        public QImage(char[] data, int width, int height, int bytesPerLine, QImage.Format format) : this((Type) null) {
+        public QImage(Pointer<byte> data, int width, int height, int bytesPerLine, QImage.Format format) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QImage$$$$$", "QImage(uchar*, int, int, int, QImage::Format)", typeof(void), typeof(char[]), data, typeof(int), width, typeof(int), height, typeof(int), bytesPerLine, typeof(QImage.Format), format);
+            interceptor.Invoke("QImage$$$$$", "QImage(uchar*, int, int, int, QImage::Format)", typeof(void), typeof(Pointer<byte>), data, typeof(int), width, typeof(int), height, typeof(int), bytesPerLine, typeof(QImage.Format), format);
         }
         public QImage(string fileName, string format) : this((Type) null) {
             CreateProxy();
@@ -149,14 +149,14 @@ namespace Qyoto {
         public bool IsGrayscale() {
             return (bool) interceptor.Invoke("isGrayscale", "isGrayscale() const", typeof(bool));
         }
-        public char[] Bits() {
-            return (char[]) interceptor.Invoke("bits", "bits()", typeof(char[]));
+        public Pointer<byte> Bits() {
+            return (Pointer<byte>) interceptor.Invoke("bits", "bits()", typeof(Pointer<byte>));
         }
         public int NumBytes() {
             return (int) interceptor.Invoke("numBytes", "numBytes() const", typeof(int));
         }
-        public char[] ScanLine(int arg1) {
-            return (char[]) interceptor.Invoke("scanLine$", "scanLine(int)", typeof(char[]), typeof(int), arg1);
+        public Pointer<byte> ScanLine(int arg1) {
+            return (Pointer<byte>) interceptor.Invoke("scanLine$", "scanLine(int)", typeof(Pointer<byte>), typeof(int), arg1);
         }
         public int BytesPerLine() {
             return (int) interceptor.Invoke("bytesPerLine", "bytesPerLine() const", typeof(int));
@@ -290,11 +290,11 @@ namespace Qyoto {
         public bool Load(string fileName) {
             return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), fileName);
         }
-        public bool LoadFromData(char[] buf, int len, string format) {
-            return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, int, const char*)", typeof(bool), typeof(char[]), buf, typeof(int), len, typeof(string), format);
+        public bool LoadFromData(Pointer<byte> buf, int len, string format) {
+            return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, int, const char*)", typeof(bool), typeof(Pointer<byte>), buf, typeof(int), len, typeof(string), format);
         }
-        public bool LoadFromData(char[] buf, int len) {
-            return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, int)", typeof(bool), typeof(char[]), buf, typeof(int), len);
+        public bool LoadFromData(Pointer<byte> buf, int len) {
+            return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, int)", typeof(bool), typeof(Pointer<byte>), buf, typeof(int), len);
         }
         public bool LoadFromData(QByteArray data, string aformat) {
             return (bool) interceptor.Invoke("loadFromData#$", "loadFromData(const QByteArray&, const char*)", typeof(bool), typeof(QByteArray), data, typeof(string), aformat);
@@ -391,11 +391,11 @@ namespace Qyoto {
         public static QTransform TrueMatrix(QTransform arg1, int w, int h) {
             return (QTransform) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QTransform&, int, int)", typeof(QTransform), typeof(QTransform), arg1, typeof(int), w, typeof(int), h);
         }
-        public static QImage FromData(char[] data, int size, string format) {
-            return (QImage) staticInterceptor.Invoke("fromData$$$", "fromData(const uchar*, int, const char*)", typeof(QImage), typeof(char[]), data, typeof(int), size, typeof(string), format);
+        public static QImage FromData(Pointer<byte> data, int size, string format) {
+            return (QImage) staticInterceptor.Invoke("fromData$$$", "fromData(const uchar*, int, const char*)", typeof(QImage), typeof(Pointer<byte>), data, typeof(int), size, typeof(string), format);
         }
-        public static QImage FromData(char[] data, int size) {
-            return (QImage) staticInterceptor.Invoke("fromData$$", "fromData(const uchar*, int)", typeof(QImage), typeof(char[]), data, typeof(int), size);
+        public static QImage FromData(Pointer<byte> data, int size) {
+            return (QImage) staticInterceptor.Invoke("fromData$$", "fromData(const uchar*, int)", typeof(QImage), typeof(Pointer<byte>), data, typeof(int), size);
         }
         public static QImage FromData(QByteArray data, string format) {
             return (QImage) staticInterceptor.Invoke("fromData#$", "fromData(const QByteArray&, const char*)", typeof(QImage), typeof(QByteArray), data, typeof(string), format);
