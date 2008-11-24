@@ -18,6 +18,7 @@
 #include <qyoto.h>
 #include <smokeqyoto.h>
 #include <marshall_macros.h>
+#include <marshall_macros_kde.h>
 
 #include <plasma/packagestructure.h>
 #include <plasma/containment.h>
@@ -115,12 +116,15 @@ void marshall_QHashQStringQVariant(Marshall *m) {
 DEF_LIST_MARSHALLER( PlasmaContainmentList, QList<Plasma::Containment*>, Plasma::Containment )
 DEF_LIST_MARSHALLER( PlasmaAppletList, QList<Plasma::Applet*>, Plasma::Applet )
 
+DEF_KSHAREDPTR_MARSHALLER(Plasma::PackageStructure, Plasma__PackageStructure)
+
 // DEF_HASH_MARSHALLER( QHashQStringApplet, Plasma::Applet )
 // DEF_HASH_MARSHALLER( QHashQStringDataContainer, Plasma::DataContainer )
 //DEF_HASH_MARSHALLER( QHashQStringDataEngine, Plasma::DataEngine )
 
 TypeHandler Plasma_handlers[] = {
-//    { "Plasma::PackageStructure::Ptr", marshall_PackageStructurePtr },
+    { "Plasma::PackageStructure::Ptr", marshall_KSharedPtr_Plasma__PackageStructure },
+    { "KSharedPtr<Plasma::PackageStructure>", marshall_KSharedPtr_Plasma__PackageStructure },
     { "QHash<QString,QVariant>", marshall_QHashQStringQVariant },
     { "QHash<QString,QVariant>&", marshall_QHashQStringQVariant },
     { "Plasma::DataEngine::Data", marshall_QHashQStringQVariant },

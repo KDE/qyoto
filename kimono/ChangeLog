@@ -1,3 +1,7 @@
+2008-11-24  Arno Rehn  <arno@arnorehn.de>
+
+	* Put the KSharedPtr marshaller in marshall_macros_kde.h
+
 2008-10-29  Arno Rehn  <arno@arnorehn.de>
 
 	* Don't let KIO::SlaveBase redirect SIGXCPU, since it's needed by

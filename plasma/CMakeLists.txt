@@ -22,7 +22,7 @@ SET(SRC_PLASMASCRIPTENGINEKIMONO
     src/PlasmaScriptengineKimono_DataEngine.cs)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
-	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
+	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${CMAKE_CURRENT_SOURCE_DIR}/../kimono/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(plasma-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(plasma-sharp smokeplasma kde-dotnet)
