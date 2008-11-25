@@ -422,14 +422,16 @@ namespace Qyoto {
 				return;
 			Qyoto.Init_qyoto();
 			SmokeMarshallers.SetUp();
-			
-			// initialize other referenced smoke bindings
-			foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
-				AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
-				if (attr != null) attr.CallInitSmoke();
-				InitializedAssemblies.Add(a);
-			}
 			runtimeInitialized = true;
+		}
+
+		public static void TryInitialize(Assembly assembly) {
+			if (InitializedAssemblies.Contains(assembly))
+				return;
+			AssemblySmokeInitializer attr = 
+				(AssemblySmokeInitializer) Attribute.GetCustomAttribute(assembly, typeof(AssemblySmokeInitializer));
+			if (attr != null) attr.CallInitSmoke();
+			InitializedAssemblies.Add(assembly);
 		}
 
 		static SmokeInvocation() {
@@ -448,6 +450,8 @@ namespace Qyoto {
 			classToProxy = klass;
 			instance = obj;
 			className = SmokeMarshallers.SmokeClassName(klass);
+
+			TryInitialize(klass.Assembly);
 
 			if (!globalMethodIdCache.TryGetValue(classToProxy, out methodIdCache)) {
 				methodIdCache = new Dictionary<string, ModuleIndex>();
