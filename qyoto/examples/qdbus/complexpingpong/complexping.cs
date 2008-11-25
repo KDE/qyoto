@@ -71,7 +71,7 @@ class Ping : QObject
     }
 
     public static int Main(string[] args) {
-        new QCoreApplication(args);
+        QCoreApplication app = new QCoreApplication(args);
 
         if (!QDBusConnection.SessionBus().IsConnected()) {
             Console.Error.WriteLine("Cannot connect to the D-BUS session bus.\n" +
