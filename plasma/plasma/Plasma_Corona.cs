@@ -75,7 +75,12 @@ namespace Plasma {
         /// <remarks>
         ///  Returns the Containment, if any, for a given physical screen
         /// <param> name="screen" number of the physical screen to locate
+        /// </param><param> name="desktop" the dekstop) to locate; if < 0 then it will
+        ///         simply return the first Containment associated with screen
         ///      </param></remarks>        <short>    Returns the Containment, if any, for a given physical screen </short>
+        public Plasma.Containment ContainmentForScreen(int screen, int desktop) {
+            return (Plasma.Containment) interceptor.Invoke("containmentForScreen$$", "containmentForScreen(int, int) const", typeof(Plasma.Containment), typeof(int), screen, typeof(int), desktop);
+        }
         public Plasma.Containment ContainmentForScreen(int screen) {
             return (Plasma.Containment) interceptor.Invoke("containmentForScreen$", "containmentForScreen(int) const", typeof(Plasma.Containment), typeof(int), screen);
         }
@@ -280,5 +285,10 @@ namespace Plasma {
         ///      </remarks>        <short>    This signal indicates that the configuration file was flushed to disc.</short>
         [Q_SIGNAL("void configSynced()")]
         void ConfigSynced();
+        /// <remarks>
+        ///  This signal inicates that a change in available screen goemetry occured.
+        ///      </remarks>        <short>    This signal inicates that a change in available screen goemetry occured.</short>
+        [Q_SIGNAL("void availableScreenRegionChanged()")]
+        void AvailableScreenRegionChanged();
     }
 }

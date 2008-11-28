@@ -382,6 +382,13 @@ namespace Plasma {
         protected void RemoveSource(string source) {
             interceptor.Invoke("removeSource$", "removeSource(const QString&)", typeof(void), typeof(string), source);
         }
+        /// <remarks>
+        ///  Immediately updates all existing sources when called
+        ///          </remarks>        <short>    Immediately updates all existing sources when called          </short>
+        [Q_SLOT("void updateAllSources()")]
+        protected void UpdateAllSources() {
+            interceptor.Invoke("updateAllSources", "updateAllSources()", typeof(void));
+        }
         ~DataEngine() {
             interceptor.Invoke("~DataEngine", "~DataEngine()", typeof(void));
         }

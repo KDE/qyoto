@@ -82,6 +82,13 @@ namespace Plasma {
         public List<string> GroupList() {
             return (List<string>) interceptor.Invoke("groupList", "groupList() const", typeof(List<string>));
         }
+        /// <remarks>
+        ///  Hack used to force writing when no default exists in config file.
+        ///      </remarks>        <short>    Hack used to force writing when no default exists in config file.</short>
+        [SmokeMethod("usrWriteConfig()")]
+        protected override void UsrWriteConfig() {
+            interceptor.Invoke("usrWriteConfig", "usrWriteConfig()", typeof(void));
+        }
         ~ConfigLoader() {
             interceptor.Invoke("~ConfigLoader", "~ConfigLoader()", typeof(void));
         }

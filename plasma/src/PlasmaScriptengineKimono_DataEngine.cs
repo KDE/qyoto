@@ -21,6 +21,7 @@
 namespace PlasmaScriptengineKimono {
 
     using System;
+    using System.IO;
     using System.Text;
     using System.Reflection;
     using System.Collections.Generic;
@@ -36,18 +37,48 @@ namespace PlasmaScriptengineKimono {
 
         public DataEngine(QObject parent, List<QVariant> args) : base(parent) {}
 
-        public virtual bool Init() {
+        public override bool Init() {
             QFileInfo program = new QFileInfo(MainScript());
 
             dataEngineAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
-
+            
+            // the newly loaded assembly might contain reference other bindings that need to be initialized
+            foreach (AssemblyName an in dataEngineAssembly.GetReferencedAssemblies()) {
+                // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
+                Assembly a = null;
+                try {
+                    a = Assembly.Load(an);
+                } catch (FileNotFoundException e) {
+                    a = Assembly.LoadFile(Path.Combine(Path.GetDirectoryName(dataEngineAssembly.Location), an.Name + ".dll"));
+                }
+                if (SmokeInvocation.InitializedAssemblies.Contains(a)) continue;
+                AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
+                if (attr != null) attr.CallInitSmoke();
+                SmokeInvocation.InitializedAssemblies.Add(a);
+            }
+            
             string typeName = Camelize(Package().Metadata().PluginName()) + ".";  // namespace
             typeName += Camelize(program.CompleteBaseName());
             dataEngineType = dataEngineAssembly.GetType(typeName);
+            if (dataEngineType == null) {
+                foreach (Type t in dataEngineAssembly.GetTypes()) {
+                    for (Type tmp = t.BaseType; tmp != null; tmp = tmp.BaseType) {
+                        if (tmp == typeof(PlasmaScripting.DataEngine)) {
+                            dataEngineType = t;
+                            break;
+                        }
+                    }
+                    if (dataEngineType != null) break;
+                }
+            }
 
             dataEngine = (PlasmaScripting.DataEngine) Activator.CreateInstance(dataEngineType, new object[] { this });
             dataEngine.Init();
             return true;
+        }
+
+        public virtual List<string> Sources() {
+            return dataEngine.Sources();
         }
 
         public virtual bool SourceRequestEvent(string name) {

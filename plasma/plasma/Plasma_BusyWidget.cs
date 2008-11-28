@@ -42,6 +42,10 @@ namespace Plasma {
         protected override void HideEvent(QHideEvent arg1) {
             interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), arg1);
         }
+        [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
+        protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
+            interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
         [Q_SLOT("void timerEvent(QTimerEvent*)")]
         [SmokeMethod("timerEvent(QTimerEvent*)")]
         protected override void TimerEvent(QTimerEvent arg1) {

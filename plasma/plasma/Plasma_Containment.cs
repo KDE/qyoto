@@ -183,7 +183,11 @@ namespace Plasma {
         ///  Sets the physical screen this Containment is associated with.
         /// <param> name="screen" the screen number this containment is the desktop for, or -1
         ///                if it is not serving as the desktop for any screen
+        /// </param><param> name="desktop" the desktop to also associate this this screen with
         ///          </param></remarks>        <short>    Sets the physical screen this Containment is associated with.</short>
+        public void SetScreen(int screen, int desktop) {
+            interceptor.Invoke("setScreen$$", "setScreen(int, int)", typeof(void), typeof(int), screen, typeof(int), desktop);
+        }
         public void SetScreen(int screen) {
             interceptor.Invoke("setScreen$", "setScreen(int)", typeof(void), typeof(int), screen);
         }
@@ -194,6 +198,13 @@ namespace Plasma {
         ///         <short>   </short>
         public int Screen() {
             return (int) interceptor.Invoke("screen", "screen() const", typeof(int));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the viewport (e.g. virtual desktop) this Containment is associated with.
+        ///          </return>
+        ///         <short>   </short>
+        public int Desktop() {
+            return (int) interceptor.Invoke("desktop", "desktop() const", typeof(int));
         }
         /// <remarks>
         ///  convenience function - enables or disables an action by name
@@ -296,9 +307,11 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Shows a visual clue for drag and drop
-        ///  This implementation does nothing, reimplement in containments that needs it
-        /// <param> name="pos" point where to show the drop target
-        ///          </param></remarks>        <short>    Shows a visual clue for drag and drop  This implementation does nothing, reimplement in containments that needs it </short>
+        ///  The default implementation does nothing,
+        ///  reimplement in containments that need it
+        /// <param> name="pos" point where to show the drop target; if an invalid point is passed in
+        ///         the drop zone should not be shown
+        ///          </param></remarks>        <short>    Shows a visual clue for drag and drop  The default implementation does nothing,  reimplement in containments that need it </short>
         [SmokeMethod("showDropZone(const QPoint)")]
         public virtual void ShowDropZone(QPoint pos) {
             interceptor.Invoke("showDropZone#", "showDropZone(const QPoint)", typeof(void), typeof(QPoint), pos);
@@ -424,6 +437,13 @@ namespace Plasma {
         [SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
         protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
             return (QVariant) interceptor.Invoke("itemChange$#", "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)", typeof(QVariant), typeof(QGraphicsItem.GraphicsItemChange), change, typeof(QVariant), value);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the toolbox associated with this containment, or a null pointer if none
+        ///          </return>
+        ///         <short>   </short>
+        protected IQGraphicsItem ToolBoxItem() {
+            return (IQGraphicsItem) interceptor.Invoke("toolBoxItem", "toolBoxItem() const", typeof(IQGraphicsItem));
         }
         ~Containment() {
             interceptor.Invoke("~Containment", "~Containment()", typeof(void));

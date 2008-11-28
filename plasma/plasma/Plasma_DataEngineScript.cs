@@ -83,6 +83,24 @@ namespace Plasma {
         ///          caller when finished with it
         ///      </return>
         ///         <short>   </short>
+        /// <remarks>
+        /// </remarks>        <return> absolute path to the main script file for this plasmoid
+        ///      </return>
+        ///         <short>   </short>
+        [SmokeMethod("mainScript() const")]
+        public new virtual string MainScript() {
+            return (string) interceptor.Invoke("mainScript", "mainScript() const", typeof(string));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the Package associated with this plasmoid which can
+        ///          be used to request resources, such as images and
+        ///          interface files.
+        ///      </return>
+        ///         <short>   </short>
+        [SmokeMethod("package() const")]
+        public new virtual Plasma.Package Package() {
+            return (Plasma.Package) interceptor.Invoke("package", "package() const", typeof(Plasma.Package));
+        }
         public void SetData(string source, string key, QVariant value) {
             interceptor.Invoke("setData$$#", "setData(const QString&, const QString&, const QVariant&)", typeof(void), typeof(string), source, typeof(string), key, typeof(QVariant), value);
         }

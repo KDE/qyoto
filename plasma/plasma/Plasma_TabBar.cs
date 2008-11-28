@@ -17,9 +17,9 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(TabBar), this);
         }
-        [Q_PROPERTY("QTabBar*", "nativeWidget")]
-        public QTabBar NativeWidget {
-            get { return (QTabBar) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QTabBar)); }
+        [Q_PROPERTY("KTabBar*", "nativeWidget")]
+        public KTabBar NativeWidget {
+            get { return (KTabBar) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KTabBar)); }
         }
         [Q_PROPERTY("int", "currentIndex")]
         public int CurrentIndex {
@@ -161,6 +161,10 @@ namespace Plasma {
         [SmokeMethod("wheelEvent(QGraphicsSceneWheelEvent*)")]
         protected override void WheelEvent(QGraphicsSceneWheelEvent arg1) {
             interceptor.Invoke("wheelEvent#", "wheelEvent(QGraphicsSceneWheelEvent*)", typeof(void), typeof(QGraphicsSceneWheelEvent), arg1);
+        }
+        [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
+        protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
+            interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
         ~TabBar() {
             interceptor.Invoke("~TabBar", "~TabBar()", typeof(void));

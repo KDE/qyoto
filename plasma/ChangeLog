@@ -1,3 +1,9 @@
+2008-11-28  Richard Dale  <richard.j.dale@gmail.com>
+* Added a time data engine example
+* Brought the Scripting Data Engine Init() method in line with the Applet code
+* Added a Sources() method for the DataEngine to report a list of its sources
+* Regenerated the Plasma classes from the current headers
+
 2008-10-30  Richard Dale  <richard.j.dale@gmail.com>
 * Regenerate the sources with the renamed classes ConfigLoader, FlashingLabel
   IconWidget and WebView.

@@ -139,6 +139,14 @@ namespace Plasma {
             return (uint) interceptor.Invoke("labelAlignment$", "labelAlignment(int) const", typeof(uint), typeof(int), index);
         }
         /// <remarks>
+        /// <param> name="index" label index
+        /// </param></remarks>        <return> the size of this label.
+        ///      </return>
+        ///         <short>   </short>
+        public QRectF LabelRect(int index) {
+            return (QRectF) interceptor.Invoke("labelRect$", "labelRect(int) const", typeof(QRectF), typeof(int), index);
+        }
+        /// <remarks>
         ///  Used when connecting to a DataEngine
         ///      </remarks>        <short>    Used when connecting to a DataEngine      </short>
         [Q_SLOT("void dataUpdated(QString, Plasma::DataEngine::Data)")]

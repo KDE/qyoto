@@ -68,8 +68,12 @@ namespace Plasma {
         /// <remarks>
         ///  Sets which screen this view is associated with, if any.
         ///  This will also set the containment if a valid screen is specified
-        ///  @arg screen the xinerama screen number; -1 for no screen
+        ///  @arg screen the physical screen number; -1 for no screen
+        ///  @arg desktop the desktop number, or -1 for all desktops
         ///      </remarks>        <short>    Sets which screen this view is associated with, if any.</short>
+        public void SetScreen(int screen, int desktop) {
+            interceptor.Invoke("setScreen$$", "setScreen(int, int)", typeof(void), typeof(int), screen, typeof(int), desktop);
+        }
         public void SetScreen(int screen) {
             interceptor.Invoke("setScreen$", "setScreen(int)", typeof(void), typeof(int), screen);
         }
@@ -80,13 +84,6 @@ namespace Plasma {
         ///         <short>    Returns the screen this view is associated with </short>
         public int Screen() {
             return (int) interceptor.Invoke("screen", "screen() const", typeof(int));
-        }
-        /// <remarks>
-        ///  Sets which desktop this view is asociated with, if any.
-        ///  @arg desktop a valid desktop number, -1 for all desktops, less than -1 for none
-        ///      </remarks>        <short>    Sets which virtual desktop this view is asociated with, if any.</short>
-        public void SetDesktop(int desktop) {
-            interceptor.Invoke("setDesktop$", "setDesktop(int)", typeof(void), typeof(int), desktop);
         }
         /// <remarks>
         ///  The desktop this view is associated with

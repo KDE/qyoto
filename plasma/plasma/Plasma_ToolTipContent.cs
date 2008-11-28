@@ -12,6 +12,11 @@ namespace Plasma {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(ToolTipContent), this);
         }
+        public enum ResourceType {
+            ImageResource = 0,
+            HtmlResource = 1,
+            CssResource = 2,
+        }
         /// <remarks> Creates an empty Content </remarks>        <short>   Creates an empty Content </short>
         public ToolTipContent() : this((Type) null) {
             CreateProxy();
@@ -83,6 +88,15 @@ namespace Plasma {
         /// <remarks> Whether or not to autohide the tooltip, defaults to true </remarks>        <short>   Whether or not to autohide the tooltip, defaults to true </short>
         public bool Autohide() {
             return (bool) interceptor.Invoke("autohide", "autohide() const", typeof(bool));
+        }
+        /// <remarks> Adds a resource that can then be referenced from the text elements
+        ///         using rich text *</remarks>        <short>   Adds a resource that can then be referenced from the text elements         using rich text  </short>
+        public void AddResource(Plasma.ToolTipContent.ResourceType type, QUrl path, QVariant resource) {
+            interceptor.Invoke("addResource$##", "addResource(Plasma::ToolTipContent::ResourceType, const QUrl&, const QVariant&)", typeof(void), typeof(Plasma.ToolTipContent.ResourceType), type, typeof(QUrl), path, typeof(QVariant), resource);
+        }
+        /// <remarks> Registers all resources with a given document </remarks>        <short>   Registers all resources with a given document </short>
+        public void RegisterResources(QTextDocument document) {
+            interceptor.Invoke("registerResources#", "registerResources(QTextDocument*) const", typeof(void), typeof(QTextDocument), document);
         }
         ~ToolTipContent() {
             interceptor.Invoke("~ToolTipContent", "~ToolTipContent()", typeof(void));

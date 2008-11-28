@@ -65,22 +65,53 @@ namespace Plasma {
             return (QGraphicsWidget) interceptor.Invoke("graphicsWidget", "graphicsWidget()", typeof(QGraphicsWidget));
         }
         /// <remarks>
-        ///  Shows the dialog showing the widget if the applet is in a panel.
-        ///  @arg displayTime the time in ms that the popup should be displayed, defaults to 0 which means
-        ///  always (until the user closes it again, that is).
-        ///      </remarks>        <short>    Shows the dialog showing the widget if the applet is in a panel.</short>
-        public void ShowPopup(uint displayTime) {
-            interceptor.Invoke("showPopup$", "showPopup(uint)", typeof(void), typeof(uint), displayTime);
-        }
-        public void ShowPopup() {
-            interceptor.Invoke("showPopup", "showPopup()", typeof(void));
-        }
-        /// <remarks>
         /// </remarks>        <return> the placement of the popup relating to the icon
         ///      </return>
         ///         <short>   </short>
         public Plasma.PopupPlacement popupPlacement() {
             return (Plasma.PopupPlacement) interceptor.Invoke("popupPlacement", "popupPlacement() const", typeof(Plasma.PopupPlacement));
+        }
+        /// <remarks>
+        ///  Sets whether or not the dialog popup that gets created should be a "passive" popup
+        ///  that does not steal focus from other windows or not.
+        ///  @arg passive true if the dialog should be treated as a passive popup
+        ///      </remarks>        <short>    Sets whether or not the dialog popup that gets created should be a "passive" popup  that does not steal focus from other windows or not.</short>
+        public void SetPassivePopup(bool passive) {
+            interceptor.Invoke("setPassivePopup$", "setPassivePopup(bool)", typeof(void), typeof(bool), passive);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the dialog will be treated as a passive poup
+        ///      </return>
+        ///         <short>   </short>
+        public bool IsPassivePopup() {
+            return (bool) interceptor.Invoke("isPassivePopup", "isPassivePopup() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Hides the popup.
+        ///      </remarks>        <short>    Hides the popup.</short>
+        [Q_SLOT("void hidePopup()")]
+        public void HidePopup() {
+            interceptor.Invoke("hidePopup", "hidePopup()", typeof(void));
+        }
+        /// <remarks>
+        ///  Shows the dialog showing the widget if the applet is in a panel.
+        ///  @arg displayTime the time in ms that the popup should be displayed, defaults to 0 which means
+        ///  always (until the user closes it again, that is).
+        ///      </remarks>        <short>    Shows the dialog showing the widget if the applet is in a panel.</short>
+        [Q_SLOT("void showPopup(uint)")]
+        public void ShowPopup(uint displayTime) {
+            interceptor.Invoke("showPopup$", "showPopup(uint)", typeof(void), typeof(uint), displayTime);
+        }
+        [Q_SLOT("void showPopup()")]
+        public void ShowPopup() {
+            interceptor.Invoke("showPopup", "showPopup()", typeof(void));
+        }
+        /// <remarks>
+        ///  Toggles the popup.
+        ///      </remarks>        <short>    Toggles the popup.</short>
+        [Q_SLOT("void togglePopup()")]
+        public void TogglePopup() {
+            interceptor.Invoke("togglePopup", "togglePopup()", typeof(void));
         }
         /// <remarks>
         ///  This event handler can be reimplemented in a subclass to receive an
@@ -90,15 +121,8 @@ namespace Plasma {
         ///  Note that showing and hiding the popup on click is already done in PopupApplet.
         ///      </remarks>        <short>    This event handler can be reimplemented in a subclass to receive an  event before the popup is shown or hidden.</short>
         [SmokeMethod("popupEvent(bool)")]
-        public virtual void PopupEvent(bool show) {
+        protected virtual void PopupEvent(bool show) {
             interceptor.Invoke("popupEvent$", "popupEvent(bool)", typeof(void), typeof(bool), show);
-        }
-        /// <remarks>
-        ///  Hides the popup.
-        ///      </remarks>        <short>    Hides the popup.</short>
-        [Q_SLOT("void hidePopup()")]
-        public void HidePopup() {
-            interceptor.Invoke("hidePopup", "hidePopup()", typeof(void));
         }
         [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
         protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {

@@ -26,8 +26,8 @@ namespace Plasma {
         ///  Sets the URL to display. Loading may happen asynchronously.
         /// <param> name="url" the location of the content to load.
         ///          </param></remarks>        <short>    Sets the URL to display.</short>
-        public void SetUrl(QUrl url) {
-            interceptor.Invoke("setUrl#", "setUrl(const QUrl&)", typeof(void), typeof(QUrl), url);
+        public void SetUrl(KUrl url) {
+            interceptor.Invoke("setUrl#", "setUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
         }
         /// <remarks>
         ///  Sets the html to be shown along with a base URL to be used
@@ -35,8 +35,8 @@ namespace Plasma {
         /// <param> name="html" the html (in utf8) to display in the content area
         /// </param><param> name="baseUrl" the base url for relative references
         ///          </param></remarks>        <short>    Sets the html to be shown along with a base URL to be used  to resolve relative references.</short>
-        public void SetHtml(QByteArray html, QUrl baseUrl) {
-            interceptor.Invoke("setHtml##", "setHtml(const QByteArray&, const QUrl&)", typeof(void), typeof(QByteArray), html, typeof(QUrl), baseUrl);
+        public void SetHtml(QByteArray html, KUrl baseUrl) {
+            interceptor.Invoke("setHtml##", "setHtml(const QByteArray&, const KUrl&)", typeof(void), typeof(QByteArray), html, typeof(KUrl), baseUrl);
         }
         public void SetHtml(QByteArray html) {
             interceptor.Invoke("setHtml#", "setHtml(const QByteArray&)", typeof(void), typeof(QByteArray), html);
@@ -47,8 +47,8 @@ namespace Plasma {
         /// <param> name="html" the html (in utf8) to display in the content area
         /// </param><param> name="baseUrl" the base url for relative references
         ///          </param></remarks>        <short>    Sets the html to be shown along with a base URL to be used  to resolve relative references.</short>
-        public void SetHtml(string html, QUrl baseUrl) {
-            interceptor.Invoke("setHtml$#", "setHtml(const QString&, const QUrl&)", typeof(void), typeof(string), html, typeof(QUrl), baseUrl);
+        public void SetHtml(string html, KUrl baseUrl) {
+            interceptor.Invoke("setHtml$#", "setHtml(const QString&, const KUrl&)", typeof(void), typeof(string), html, typeof(KUrl), baseUrl);
         }
         public void SetHtml(string html) {
             interceptor.Invoke("setHtml$", "setHtml(const QString&)", typeof(void), typeof(string), html);
@@ -102,6 +102,10 @@ namespace Plasma {
         [SmokeMethod("mouseMoveEvent(QGraphicsSceneMouseEvent*)")]
         protected override void MouseMoveEvent(QGraphicsSceneMouseEvent arg1) {
             interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
+        [SmokeMethod("hoverMoveEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverMoveEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverMoveEvent#", "hoverMoveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
         }
         [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
         protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {

@@ -44,10 +44,6 @@ namespace PlasmaScripting {
         public Plasma.DataEngine PlasmaDataEngine {
             get { return dataEngine; }
         }
-        [Q_PROPERTY("QStringList", "sources")]
-        public List<string> Sources {
-            get { return dataEngine.Sources; }
-        }
         [Q_PROPERTY("bool", "valid")]
         public bool Valid {
             get { return dataEngine.Valid; }
@@ -82,8 +78,8 @@ namespace PlasmaScripting {
         ///          DataEngine to decide.
         /// </return>
         ///         <short>   </short>
-        public virtual List<string> sources() {
-            return dataEngine.sources();
+        public virtual List<string> Sources() {
+            return new List<string>();
         }
         /// <remarks>
         /// <param> name="source" the source to targe the Service at

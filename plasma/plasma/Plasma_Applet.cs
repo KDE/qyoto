@@ -62,6 +62,11 @@ namespace Plasma {
             get { return (bool) interceptor.Invoke("hasFailedToLaunch", "hasFailedToLaunch()", typeof(bool)); }
             set { interceptor.Invoke("setFailedToLaunch$", "setFailedToLaunch(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("bool", "isBusy")]
+        public bool IsBusy {
+            get { return (bool) interceptor.Invoke("isBusy", "isBusy()", typeof(bool)); }
+            set { interceptor.Invoke("setBusy$", "setBusy(bool)", typeof(void), typeof(bool), value); }
+        }
         [Q_PROPERTY("bool", "configurationRequired")]
         public bool ConfigurationRequired {
             get { return (bool) interceptor.Invoke("configurationRequired", "configurationRequired()", typeof(bool)); }
@@ -502,6 +507,14 @@ namespace Plasma {
             interceptor.Invoke("configChanged", "configChanged()", typeof(void));
         }
         /// <remarks>
+        ///  Shows a busy indicator that overlays the applet
+        /// <param> name="busy" show or hide the busy indicator
+        ///          </param></remarks>        <short>    Shows a busy indicator that overlays the applet </short>
+        [Q_SLOT("void setBusy(bool)")]
+        public void SetBusy(bool busy) {
+            interceptor.Invoke("setBusy$", "setBusy(bool)", typeof(void), typeof(bool), busy);
+        }
+        /// <remarks>
         ///  This constructor is to be used with the plugin loading systems
         ///  found in KPluginInfo and KService. The argument list is expected
         ///  to have two elements: the KService service ID for the desktop entry
@@ -631,12 +644,6 @@ namespace Plasma {
         [SmokeMethod("mouseMoveEvent(QGraphicsSceneMouseEvent*)")]
         protected override void MouseMoveEvent(QGraphicsSceneMouseEvent arg1) {
             interceptor.Invoke("mouseMoveEvent#", "mouseMoveEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
-        }
-        /// <remarks>
-        ///          </remarks>        <short>   </short>
-        [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
-        protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
-            interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
         }
         /// <remarks>
         ///  Reimplemented from QGraphicsItem
