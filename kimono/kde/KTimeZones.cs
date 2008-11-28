@@ -2,6 +2,7 @@
 namespace Kimono {
     using System;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  The KTimeZones class represents a time zone database which consists of a
     ///  collection of individual time zone definitions.
@@ -26,7 +27,6 @@ namespace Kimono {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KTimeZones), this);
         }
-        // const QMap<QString, KTimeZone> zones(); >>>> NOT CONVERTED
         public KTimeZones() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("KTimeZones", "KTimeZones()", typeof(void));
@@ -45,6 +45,9 @@ namespace Kimono {
         /// </remarks>        <return> time zone collection
         ///      </return>
         ///         <short>    Returns all the time zones defined in this collection.</short>
+        public Dictionary<string, KTimeZone> Zones() {
+            return (Dictionary<string, KTimeZone>) interceptor.Invoke("zones", "zones() const", typeof(Dictionary<string, KTimeZone>));
+        }
         /// <remarks>
         ///  Adds a time zone to the collection.
         ///  The time zone's name must be unique within the collection.

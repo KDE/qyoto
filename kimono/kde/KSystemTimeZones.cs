@@ -2,6 +2,7 @@
 namespace Kimono {
     using System;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  The KSystemTimeZones class represents the system time zone database, consisting
     ///  of a collection of individual system time zone definitions, indexed by name.
@@ -44,7 +45,6 @@ namespace Kimono {
         static KSystemTimeZones() {
             staticInterceptor = new SmokeInvocation(typeof(KSystemTimeZones), null);
         }
-        // const QMap<QString, KTimeZone> zones(); >>>> NOT CONVERTED
         /// <remarks>
         ///  Returns the unique KTimeZones instance containing the system time zones
         ///  collection. It is first created if it does not already exist.
@@ -59,6 +59,9 @@ namespace Kimono {
         /// </remarks>        <return> time zone collection
         ///      </return>
         ///         <short>    Returns all the time zones defined in this collection.</short>
+        public static Dictionary<string, KTimeZone> Zones() {
+            return (Dictionary<string, KTimeZone>) staticInterceptor.Invoke("zones", "zones()", typeof(Dictionary<string, KTimeZone>));
+        }
         /// <remarks>
         ///  Returns the time zone with the given name.
         ///  The time zone definition is obtained using system library calls, and may
