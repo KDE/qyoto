@@ -207,7 +207,7 @@ namespace Qyoto {
             ItemCoordinateCache = 1,
             DeviceCoordinateCache = 2,
         }
-        public enum Extension : long {
+        public enum Extension : uint {
             UserExtension = 0x80000000,
         }
         public const int Type = 1;

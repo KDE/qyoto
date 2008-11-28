@@ -1,3 +1,6 @@
+2008-11-28  Richard Dale  <richard.j.dale@gmail.com>
+	* Add missing implicit QVariant constructors for QDate and QTime
+
 2008-11-25  Arno Rehn  <arno@arnorehn.de>
 
 	* Try initializing the smoke modules when creating a SmokeInvocation instance.

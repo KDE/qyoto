@@ -144,7 +144,7 @@ public class Mouse : QGraphicsItem {
         list.Add(MapToScene(0, 0));
         list.Add(MapToScene(-30, -50));
         list.Add(MapToScene(30, -50));
-        List<QGraphicsItem> dangerMice = Scene().Items(new QPolygonF(list));
+        List<IQGraphicsItem> dangerMice = Scene().Items(new QPolygonF(list));
         foreach (QGraphicsItem item in dangerMice) {
             if (item == this)
                 continue;

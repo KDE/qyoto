@@ -177,6 +177,9 @@ namespace Qyoto {
         public static implicit operator QVariant(QCursor arg) {
             return QVariant.FromValue<QCursor>(arg);
         }
+        public static implicit operator QVariant(QDate arg) {
+            return new QVariant(arg);
+        }
         public static implicit operator QVariant(QFont arg) {
             return QVariant.FromValue<QFont>(arg);
         }
@@ -215,6 +218,9 @@ namespace Qyoto {
         }
         public static implicit operator QVariant(QTextLength arg) {
             return QVariant.FromValue<QTextLength>(arg);
+        }
+        public static implicit operator QVariant(QTime arg) {
+            return new QVariant(arg);
         }
         public static implicit operator QVariant(QTransform arg) {
             return QVariant.FromValue<QTransform>(arg);
