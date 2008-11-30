@@ -9,7 +9,7 @@ set(SRC_ANALOGCLOCK clock.cs ${CMAKE_CURRENT_BINARY_DIR}/ui_clockconfig.cs)
 set(CS_FLAGS -warn:0 "-r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll,${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll,${LIBRARY_OUTPUT_PATH}/plasma-dll.dll,${LIBRARY_OUTPUT_PATH}/plasmaclock.dll")
 add_cs_library(analog-clock "${SRC_ANALOGCLOCK}" ALL)
 
-add_dependencies(analog-clock plasma plasmaclock)
+add_dependencies(analog-clock plasma-dll plasmaclock)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/csharp-analog-clock/contents/code)
 install(FILES ${LIBRARY_OUTPUT_PATH}/plasmaclock.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/csharp-analog-clock/contents/code)
