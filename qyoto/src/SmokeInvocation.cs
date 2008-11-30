@@ -246,6 +246,8 @@ namespace Qyoto {
 #else
 					stackPtr[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
 #endif
+				} else if (returnValue == null) {
+					stackPtr[0].s_class = IntPtr.Zero;
 				} else {
 #if DEBUG
 					stackPtr[0].s_class = (IntPtr) DebugGCHandle.Alloc(returnValue);
@@ -356,6 +358,8 @@ namespace Qyoto {
 #else
 					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
 #endif
+				} else if (returnValue == null) {
+					retval[0].s_class = IntPtr.Zero;
 				} else {
 #if DEBUG	
 					retval[0].s_class = (IntPtr) DebugGCHandle.Alloc(returnValue);
@@ -546,7 +550,7 @@ namespace Qyoto {
 			for (int i = 0, k = 1; i < args.Length; i += 2, k++) {
 				if (args[i+1] == null) {
 					unsafe {
-						stack[k].s_class = (IntPtr) 0;
+						stack[k].s_class = IntPtr.Zero;
 					}
 				} else if (args[i] == typeof(int) || ((Type) args[i]).IsEnum) {
 					stack[k].s_int = (int) args[i+1];
@@ -628,7 +632,7 @@ namespace Qyoto {
 					} else if (returnType == typeof(char)) {
 						returnValue = (char) stack[0].s_char;
 					} else {
-						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
+						if (((IntPtr) stack[0].s_class) == IntPtr.Zero) {
 							returnValue = null;
 						} else {
 							returnValue = ((GCHandle) stack[0].s_class).Target;

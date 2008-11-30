@@ -252,8 +252,8 @@ namespace Qyoto {
 		}
 		
 		public static IntPtr GetSmokeObject(IntPtr instancePtr) {
-			if (((int) instancePtr) == 0) {
-				return (IntPtr) 0;
+			if (instancePtr == IntPtr.Zero) {
+				return IntPtr.Zero;
 			}
 
 			Object instance = ((GCHandle) instancePtr).Target;

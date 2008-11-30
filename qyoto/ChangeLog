@@ -1,3 +1,9 @@
+2008-11-30  Arno Rehn  <arno@arnorehn.de>
+
+	* Check for return values being null and if so, don't alloc a GCHandle to it.
+	  Fixes crashes when a virtual method returned null. Thanks to Eric Butler for
+	  reporting the bug.
+
 2008-11-28  Richard Dale  <richard.j.dale@gmail.com>
 	* Add missing implicit QVariant constructors for QDate and QTime
 
