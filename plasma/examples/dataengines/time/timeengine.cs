@@ -49,7 +49,7 @@ public class TimeEngine : PlasmaScripting.DataEngine, IDisposable {
         base.Init();
         //QDBusInterface *ktimezoned = new QDBusInterface("org.kde.kded", "/modules/ktimezoned", "org.kde.KTimeZoned");
         QDBusConnection dbus = QDBusConnection.SessionBus();
-        dbus.Connect("", "", "org.kde.KTimeZoned", "configChanged", this, SLOT("UpdateAllSources()"));
+        dbus.Connect("", "", "org.kde.KTimeZoned", "configChanged", this, SLOT("updateAllSources()"));
     }
 
     public override List<string> Sources() {

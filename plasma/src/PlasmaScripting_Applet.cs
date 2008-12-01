@@ -25,6 +25,7 @@ namespace PlasmaScripting {
     using QyotoQGraphicsWidget = Qyoto.QGraphicsWidget;
     using Qyoto;
     using System.Collections.Generic;
+    using System.Reflection;
     /// <remarks>
     ///  Applet provides several important roles for add-ons widgets in Plasma.
     ///  First, it is the base class for the plugin system and therefore is the
@@ -447,8 +448,7 @@ namespace PlasmaScripting {
          ///         <short>   </short>
         [Q_SLOT("Plasma::Extender* extender()")]
         protected Plasma.Extender Extender() {
-//            return applet.Extender();
-              return null;
+            return (Plasma.Extender) appletType.GetMethod("Extender").Invoke(applet, null);
         }
         public Applet(AppletScript parent) : base(parent) {
             Connect(applet, SIGNAL("releaseVisualFocus()"), this, SIGNAL("releaseVisualFocus()"));
@@ -467,8 +467,20 @@ namespace PlasmaScripting {
         ///                failed to launch
         /// </param></remarks>        <short>    Call this method when the applet fails to launch properly.</short>
         protected void SetFailedToLaunch(bool failed, string reason) {
+            Object[] parameters = new Object[2];
+            parameters[0] = failed;
+            parameters[1] = reason;
+            MethodInfo method = appletType.GetMethod(  "SetFailedToLaunch", 
+                                                        new Type[] {    typeof(System.Boolean), 
+                                                                        typeof(System.String) } );
+            method.Invoke(applet, parameters);
         }
         protected void SetFailedToLaunch(bool failed) {
+            Object[] parameters = new Object[1];
+            parameters[0] = failed;
+            MethodInfo method = appletType.GetMethod(  "SetFailedToLaunch", 
+                                                        new Type[] {typeof(System.Boolean)} );
+            method.Invoke(applet, parameters);
         }
         /// <remarks>
         ///  When called, the Applet should write any information needed as part
@@ -491,8 +503,20 @@ namespace PlasmaScripting {
         ///                          or false if it doesn't
         ///          </param></remarks>        <short>    When the applet needs to be configured before being usable, this  method can be called to show a standard interface prompting the user  to configure the applet </short>
         protected void SetConfigurationRequired(bool needsConfiguring, string reason) {
+            Object[] parameters = new Object[2];
+            parameters[0] = needsConfiguring;
+            parameters[1] = reason;
+            MethodInfo method = appletType.GetMethod(  "SetConfigurationRequired", 
+                                                        new Type[] {    typeof(System.Boolean), 
+                                                                        typeof(System.String) } );
+            method.Invoke(applet, parameters);
         }
         protected void SetConfigurationRequired(bool needsConfiguring) {
+            Object[] parameters = new Object[1];
+            parameters[0] = needsConfiguring;
+            MethodInfo method = appletType.GetMethod(  "SetConfigurationRequired", 
+                                                        new Type[] {typeof(System.Boolean)} );
+            method.Invoke(applet, parameters);
         }
         /// <remarks>
         ///  Reimplement this method so provide a configuration interface,
@@ -507,6 +531,9 @@ namespace PlasmaScripting {
         ///  Sets whether or not this Applet is acting as a Containment
         ///          </remarks>        <short>    Sets whether or not this Applet is acting as a Containment          </short>
         protected void SetIsContainment(bool isContainment) {
+            Object[] parameters = new Object[1];
+            parameters[0] = isContainment;
+            appletType.GetMethod("SetIsContainment").Invoke(applet, parameters);
         }
         /// <remarks>
         ///  Called when any of the geometry constraints have been updated.
@@ -527,12 +554,18 @@ namespace PlasmaScripting {
         /// <param> name="item" the item to watch for mouse move
         ///          </param></remarks>        <short>    Register the widgets that manage mouse clicks but you still want  to be able to drag the applet around when holding the mouse pointer  on that widget.</short>
         protected void RegisterAsDragHandle(QGraphicsItem item) {
+            Object[] parameters = new Object[1];
+            parameters[0] = item;
+            appletType.GetMethod("RegisterAsDragHandle").Invoke(applet, parameters);
         }
         /// <remarks>
         ///  Unregister a widget registered with registerAsDragHandle.
         /// <param> name="item" the item to unregister
         ///          </param></remarks>        <short>    Unregister a widget registered with registerAsDragHandle.</short>
         protected void UnregisterAsDragHandle(QGraphicsItem item) {
+            Object[] parameters = new Object[1];
+            parameters[0] = item;
+            appletType.GetMethod("UnregisterAsDragHandle").Invoke(applet, parameters);
         }
         /// <remarks>
         /// <param> name="item" the item to look for if it is registered or not
@@ -540,7 +573,9 @@ namespace PlasmaScripting {
         ///          </return>
         ///         <short>   </short>
         protected bool IsRegisteredAsDragHandle(QGraphicsItem item) {
-            return false;
+            Object[] parameters = new Object[1];
+            parameters[0] = item;
+            return (bool) appletType.GetMethod("IsRegisteredAsDragHandle").Invoke(applet, parameters);
         }
         /// <remarks>
         /// </remarks>        <short>   </short>
@@ -574,13 +609,19 @@ namespace PlasmaScripting {
         ///  Reimplemented from QGraphicsItem
         ///          </remarks>        <short>    Reimplemented from QGraphicsItem          </short>
         protected virtual QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
-            return new QVariant();
+            Object[] parameters = new Object[2];
+            parameters[0] = change;
+            parameters[1] = value;
+            return (QVariant) appletType.GetMethod("ItemChange").Invoke(applet, parameters);
         }
         /// <remarks>
         ///  Reimplemented from QGraphicsItem
         ///          </remarks>        <short>    Reimplemented from QGraphicsItem          </short>
         protected new virtual QPainterPath Shape() {
-            return new QPainterPath();
+            return appletScript.Shape();
+        }
+        protected QSizeF Size() {
+            return appletScript.Size();
         }
         /// <remarks>
         ///  Reimplemented from QGraphicsLayoutItem
@@ -643,3 +684,5 @@ namespace PlasmaScripting {
         void Activate();
     }
 }
+
+// kate: space-indent on; indent-width 4; replace-tabs on; mixed-indent off;

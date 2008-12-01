@@ -104,3 +104,5 @@ namespace PlasmaScriptengineKimono {
         }
     }
 }
+
+// kate: space-indent on; indent-width 4; replace-tabs on; mixed-indent off;

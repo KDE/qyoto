@@ -8,6 +8,7 @@ namespace PlasmaScripting {
     public class QGraphicsWidget : QObject {
         protected AppletScript appletScript;
         protected Plasma.Applet applet;
+        protected Type appletType;
 
         public new const int Type = 11;
 
@@ -62,6 +63,7 @@ namespace PlasmaScripting {
         public QGraphicsWidget(AppletScript parent) : base(parent) {
             appletScript = parent;
             applet = parent.Applet();
+            appletType = applet.GetType();
         }
         public QGraphicsLayout Layout() {
             return applet.Layout();
@@ -827,3 +829,5 @@ namespace PlasmaScripting {
     public interface IQGraphicsWidgetSignals : IQObjectSignals {
     }
 }
+
+// kate: space-indent on; indent-width 4; replace-tabs on; mixed-indent off;

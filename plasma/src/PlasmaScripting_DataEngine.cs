@@ -40,6 +40,7 @@ namespace PlasmaScripting {
     public class DataEngine : QObject, IDisposable {
         private DataEngineScript dataEngineScript;
         private Plasma.DataEngine dataEngine;
+        private Type dataEngineType;
 
         public Plasma.DataEngine PlasmaDataEngine {
             get { return dataEngine; }
@@ -60,6 +61,7 @@ namespace PlasmaScripting {
         public DataEngine(DataEngineScript parent) : base(parent) {
             dataEngineScript = parent;
             dataEngine = parent.DataEngine();
+            dataEngineType = dataEngine.GetType();
             Connect(dataEngine, SIGNAL("sourceAdded(QString)"), this, SIGNAL("sourceAdded(QString)"));
             Connect(dataEngine, SIGNAL("sourceRemoved(QString)"), this, SIGNAL("sourceRemoved(QString)"));
         }
@@ -82,7 +84,7 @@ namespace PlasmaScripting {
             return new List<string>();
         }
         /// <remarks>
-        /// <param> name="source" the source to targe the Service at
+        /// <param> name="source" the source to target the Service at
         /// </param></remarks>        <return> a Service that has the source as a destination. The service
         ///          is parented to the DataEngine, but may be deleted by the
         ///          caller when finished with it
@@ -291,6 +293,9 @@ namespace PlasmaScripting {
         /// <param> name="source" the DataContainer to add to the DataEngine
         /// </param></remarks>        <short>    Adds an already constructed data source.</short>
         protected void AddSource(Plasma.DataContainer source) {
+            Object[] parameters = new Object[1];
+            parameters[0] = source;
+            dataEngineType.GetMethod("AddSource").Invoke(dataEngine, parameters);
         }
         /// <remarks>
         ///  Sets an upper limit on the number of data sources to keep in this engine.
@@ -353,6 +358,9 @@ namespace PlasmaScripting {
         ///  Sets the engine name for the DataEngine
         ///          </remarks>        <short>    Sets the engine name for the DataEngine          </short>
         protected void SetName(string name) {
+            Object[] parameters = new Object[1];
+            parameters[0] = name;
+            dataEngineType.GetMethod("SetName").Invoke(dataEngine, parameters);
         }
         /// <remarks>
         ///  Call this method when you call setData directly on a DataContainer instead
@@ -361,6 +369,7 @@ namespace PlasmaScripting {
         ///          </remarks>        <short>    Call this method when you call setData directly on a DataContainer instead  of using the DataEngine.SetData methods.</short>
         [Q_SLOT("void scheduleSourcesUpdated()")]
         protected void ScheduleSourcesUpdated() {
+            dataEngineType.GetMethod("ScheduleSourcesUpdated").Invoke(dataEngine, null);
         }
         /// <remarks>
         ///  Removes a data source.
@@ -368,12 +377,20 @@ namespace PlasmaScripting {
         /// </param></remarks>        <short>    Removes a data source.</short>
         [Q_SLOT("void removeSource(const QString&)")]
         protected void RemoveSource(string source) {
+            Object[] parameters = new Object[1];
+            parameters[0] = source;
+            dataEngineType.GetMethod("RemoveSource").Invoke(dataEngine, parameters);
+        }
+        /// <remarks>
+        ///  Immediately updates all existing sources when called
+        ///          </remarks>        <short>    Immediately updates all existing sources when called          </short>
+        [Q_SLOT("void updateAllSources()")]
+        protected void UpdateAllSources() {
+            dataEngineType.GetMethod("UpdateAllSources").Invoke(dataEngine, null);
         }
         ~DataEngine() {
-            interceptor.Invoke("~DataEngine", "~DataEngine()", typeof(void));
         }
         public new void Dispose() {
-            interceptor.Invoke("~DataEngine", "~DataEngine()", typeof(void));
         }
         protected new IDataEngineSignals Emit {
             get { return (IDataEngineSignals) Q_EMIT; }
@@ -395,3 +412,6 @@ namespace PlasmaScripting {
         void SourceRemoved(string source);
     }
 }
+
+// kate: space-indent on; indent-width 4; replace-tabs on; mixed-indent off;
+
