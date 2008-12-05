@@ -1,6 +1,6 @@
 /*
  *   Copyright 2008 by Richard Dale <richard.j.dale@gmail.com>
- *   Copyright 2008, Arno Rehn <arno@arnorehn.de>
+ *   Copyright 2008 by Arno Rehn <arno@arnorehn.de>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library General Public License as
@@ -42,17 +42,34 @@ namespace PlasmaScriptengineKimono {
             QSizeF oldSize = Applet().Size;
             QFileInfo program = new QFileInfo(MainScript());
 
-            appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
+            KMimeType mime = KMimeType.FindByFileContent(program.AbsoluteFilePath());
+            try {
+                if (mime.Name().StartsWith("text/")) {
+                    Compiler c = new Compiler(program);
+                    appletAssembly = c.GetAssembly();
+                } else {
+                    appletAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
+                }
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                Object[] parameters = new Object[2];
+                parameters[0] = true;
+                parameters[1] = e.ToString();
+                MethodInfo method = Applet().GetType().GetMethod("SetFailedToLaunch",
+                    BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[] { typeof(System.Boolean),  typeof(System.String) }, null);
+                method.Invoke(Applet(), parameters);
+                return false;
+            }
             
-            // the newly loaded assembly might contain reference other bindings that need to be initialized
+            // the newly loaded assembly might reference other bindings that need to be initialized
             foreach (AssemblyName an in appletAssembly.GetReferencedAssemblies()) {
-                // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
                 Assembly a = null;
                 try {
                     a = Assembly.Load(an);
                 } catch (FileNotFoundException e) {
                     a = Assembly.LoadFile(Path.Combine(Path.GetDirectoryName(appletAssembly.Location), an.Name + ".dll"));
                 }
+                // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
                 if (SmokeInvocation.InitializedAssemblies.Contains(a)) continue;
                 AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
                 if (attr != null) attr.CallInitSmoke();
@@ -83,21 +100,24 @@ namespace PlasmaScriptengineKimono {
         }
 
         public override void PaintInterface(QPainter painter, QStyleOptionGraphicsItem option, QRect contentsRect) {
-            applet.PaintInterface(painter, option, contentsRect);
+            if (applet != null) applet.PaintInterface(painter, option, contentsRect);
             return;
         }
 
         public override void ConstraintsEvent(uint constraints) {
-            applet.ConstraintsEvent(constraints);
+            if (applet != null) applet.ConstraintsEvent(constraints);
             return;
         }
 
         public override List<QAction> ContextualActions() {
-            return applet.ContextualActions();
+            if (applet != null)
+                return applet.ContextualActions();
+            else
+                return new List<QAction>();
         }
 
         public override void ShowConfigurationInterface() {
-            applet.ShowConfigurationInterface();
+            if (applet != null) applet.ShowConfigurationInterface();
         }
 
         protected new virtual bool EventFilter(QObject o, QEvent e) {
@@ -272,3 +292,5 @@ namespace PlasmaScriptengineKimono {
         }
     }
 }
+
+// kate: space-indent on; indent-width 4; replace-tabs on; mixed-indent off;

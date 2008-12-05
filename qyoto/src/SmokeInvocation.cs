@@ -426,6 +426,12 @@ namespace Qyoto {
 				return;
 			Qyoto.Init_qyoto();
 			SmokeMarshallers.SetUp();
+			// not set when mono is embedded
+			if (AppDomain.CurrentDomain.SetupInformation.ConfigurationFile == null) {
+				PropertyInfo pi = typeof(AppDomain).GetProperty("SetupInformationNoCopy", BindingFlags.NonPublic | BindingFlags.Instance);
+				AppDomainSetup setup = (AppDomainSetup) pi.GetValue(AppDomain.CurrentDomain, null);
+				setup.ConfigurationFile = Assembly.GetExecutingAssembly().Location + ".config";
+			}
 			runtimeInitialized = true;
 		}
 

@@ -1,3 +1,17 @@
+2008-12-05  Arno Rehn  <arno@arnorehn.de>
+* Add support for compiling sources at runtime. Supported languages for now:
+  C#, Boo, Nemerle, VB.NET (this one doesn't quite work yet - the compiler seems
+  to be buggy).
+  The first non-blank line in the mainscript file needs to be a comment in the form
+  // language:csharp references:System.Xml sources:otherfile.cs
+  'meta-comments' for different languages look equivalent. By default references for
+  qt-dotnet, kde-dotnet and plasma-dll are added. The default language is C#, the
+  default source file is only 'main'. So if a script is written in C#, only needs
+  qt, kde and plasma bindings and all the code is contained in 'main', this comment
+  can be omitted.
+  For each source file a md5 hash is created so it's only recompiled if the source
+  was modified.
+
 2008-12-01  Richard Dale  <richard.j.dale@gmail.com>
 * Added UpdateAllSources() and RemoveSource() slots to the 
   PlasmScripting.DataEngine

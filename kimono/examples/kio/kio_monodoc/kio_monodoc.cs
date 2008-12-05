@@ -11,9 +11,6 @@ public class MySlave : KIO.SlaveBase {
 	public MySlave(QByteArray protocol, QByteArray pool_sock, QByteArray app_sock)
 		: base(protocol, pool_sock, app_sock)
 	{
-		PropertyInfo pi = typeof(AppDomain).GetProperty("SetupInformationNoCopy", BindingFlags.NonPublic | BindingFlags.Instance);
-		AppDomainSetup setup = (AppDomainSetup) pi.GetValue(AppDomain.CurrentDomain, null);
-		setup.ConfigurationFile = Assembly.GetExecutingAssembly().Location + ".config";
 	}
 
 	public static RootTree HelpTree = RootTree.LoadTree();

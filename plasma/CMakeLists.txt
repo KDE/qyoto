@@ -19,7 +19,8 @@ SET(SRC_PLASMASCRIPTING src/PlasmaScripting_Applet.cs)
 
 SET(SRC_PLASMASCRIPTENGINEKIMONO
     src/PlasmaScriptengineKimono_Applet.cs
-    src/PlasmaScriptengineKimono_DataEngine.cs)
+    src/PlasmaScriptengineKimono_DataEngine.cs
+    src/PlasmaScriptengineKimono_Compiler.cs)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${CMAKE_CURRENT_SOURCE_DIR}/../kimono/src ${QT_INCLUDES})
