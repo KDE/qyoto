@@ -182,15 +182,19 @@ namespace PlasmaScriptengineKimono {
             param.GenerateInMemory = false;
             param.OutputAssembly = mainscript + ".dll";
             param.ReferencedAssemblies.AddRange(refs.ToArray());
+            param.CompilerOptions = String.Empty;
             CompilerResults result = provider.CompileAssemblyFromFile(param, sources.ToArray());
-            if (result.Errors.Count != 0) {
-                foreach (CompilerError error in result.Errors)
-                    Console.WriteLine(error);
-                throw new Exception("An error occurred during compilation");
-                return null;
-            } else {
+            bool error = false;
+            foreach (CompilerError err in result.Errors) {
+                if (err.IsWarning == false) error = true;
+                Console.WriteLine(err);
+            } 
+            if (!error) {
                 Console.WriteLine("Compilation successful!");
                 WriteHash();
+            } else {
+                throw new Exception("An error occurred during compilation");
+                return null;
             }
             return Assembly.LoadFile(mainscript + ".dll");
         }

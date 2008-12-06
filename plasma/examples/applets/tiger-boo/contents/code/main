@@ -1,0 +1,38 @@
+# language:boo
+
+# boo is cool, instead of referencing assemblies in the meta
+# comment above with references:MyFancyAssembly we can do
+#
+# import MyFancyNamespace from "MyFancyAssembly"
+
+import System
+import Qyoto
+import Kimono
+
+public class Main(PlasmaScripting.Applet):
+	m_svg as Plasma.Svg
+	m_icon as KIcon
+
+	def constructor(script as Plasma.AppletScript):
+		super(script)
+		m_svg = Plasma.Svg(self)
+		m_icon = KIcon("plasma")
+		
+		SetBackgroundHints(cast(uint, Plasma.Applet.BackgroundHint.DefaultBackground))
+		m_svg.ImagePath = "widget/background"
+		PlasmaApplet.Resize(200, 200)
+	
+	override def PaintInterface(p as QPainter, option as QStyleOptionGraphicsItem, contentsRect as QRect):
+		p.SetRenderHint(QPainter.RenderHint.SmoothPixmapTransform)
+		p.SetRenderHint(QPainter.RenderHint.Antialiasing)
+		
+		# Now we draw the applet, starting with our svg
+		m_svg.Resize(contentsRect.Width(), contentsRect.Height())
+		m_svg.Paint(p, contentsRect.Left(), contentsRect.Top())
+		
+		# We place the icon and text
+		p.DrawPixmap(7, 0, m_icon.Pixmap(contentsRect.Width(), contentsRect.Width() - 14))
+		p.Save()
+		p.SetPen(Qt.GlobalColor.white)
+		p.DrawText(contentsRect, cast(int, (Qt.AlignmentFlag.AlignBottom or Qt.AlignmentFlag.AlignHCenter)), "Hello ScriptEngine from Boo!")
+		p.Restore()

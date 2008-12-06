@@ -1,3 +1,8 @@
+2008-12-06  Arno Rehn  <arno@arnorehn.de>
+* Don't throw an Exception on compiler warnings
+* Set CompilerOptions to an empty string so the nemerle compiler won't crash
+* Add tiger-boo and tiger-nemerle examples that are compiled at runtime
+
 2008-12-05  Arno Rehn  <arno@arnorehn.de>
 * Add support for compiling sources at runtime. Supported languages for now:
   C#, Boo, Nemerle, VB.NET (this one doesn't quite work yet - the compiler seems
