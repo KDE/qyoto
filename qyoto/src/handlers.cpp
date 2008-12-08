@@ -1874,6 +1874,8 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "QList<QModelIndex>&", marshall_QModelIndexList },
     { "QList<QNetworkAddressEntry>", marshall_QNetworkAddressEntryList },
     { "QList<QNetworkInterface>", marshall_QNetworkInterfaceList },
+    { "QList<QObject*>", marshall_QObjectList },
+    { "QList<QObject*>&", marshall_QObjectList },
     { "QList<QPixmap>", marshall_QPixmapList },
     { "QList<QPolygonF>", marshall_QPolygonFList },
     { "QList<QRectF>", marshall_QRectFList },
