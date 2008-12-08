@@ -57,8 +57,12 @@ public class MySlave : KIO.SlaveBase {
 		Node n;
 		try {
 			string data = GetHtml(docurl, null, out n);
-			data = data.Replace("href=\"", "href=\"monodoc:/");
-			Data(data);
+			if (data != null) {
+				data = data.Replace("href=\"", "href=\"monodoc:/");
+				Data(data);
+			} else {
+				Data("The requested url is not availible");
+			}
 		} catch {
 			Data("The requested url is not availible");
 		}
