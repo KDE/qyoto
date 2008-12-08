@@ -534,7 +534,13 @@ namespace Qyoto {
 									args.Length / 2 );
 			}
 #endif
-			
+
+			if (signature.StartsWith("operator==")) {
+				if (args[0] == null && args[1] == null)
+					return true;
+				else if (args[0] == null || args[1] == null)
+					return false;
+			}
 			ModuleIndex methodId;
 			methodId.smoke = IntPtr.Zero;
 			methodId.index = -1;
