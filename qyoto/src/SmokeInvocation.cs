@@ -536,9 +536,9 @@ namespace Qyoto {
 #endif
 
 			if (signature.StartsWith("operator==")) {
-				if (args[0] == null && args[2] == null)
+				if (args[1] == null && args[3] == null)
 					return true;
-				else if (args[0] == null || args[2] == null)
+				else if (args[1] == null || args[3] == null)
 					return false;
 			}
 			ModuleIndex methodId;
