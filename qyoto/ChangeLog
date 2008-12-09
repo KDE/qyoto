@@ -1,3 +1,8 @@
+2008-12-09  Arno Rehn  <arno@arnorehn.de>
+
+	* Watch out for itemChange() calls and if necessary, add or remove global refs
+	  to QGraphicsItems and subclasses. Thanks to Eric Butler for reporting the bug.
+
 2008-11-30  Arno Rehn  <arno@arnorehn.de>
 
 	* Check for return values being null and if so, don't alloc a GCHandle to it.

@@ -20,6 +20,14 @@
 
 #include <cstdlib>
 
+#include <qt_smoke.h>
+
+#if QT_VERSION >= 0x40200
+	#include <QVariant>
+	#include <QGraphicsScene>
+	#include <QGraphicsItem>
+#endif
+
 namespace Qyoto {
 
 Binding::Binding() : SmokeBinding(0) {}
@@ -92,6 +100,11 @@ Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAb
 		fflush(stdout);
 	}
 
+#if QT_VERSION >= 0x40200
+	static Smoke::Index qgraphicsitem_class = qt_Smoke->idClass("QGraphicsItem").index;
+#endif
+
+	smokeqyoto_object *sqo = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	if (strcmp(signature, "qt_metacall(QMetaObject::Call, int, void**)") == 0) {
 		QMetaObject::Call _c = (QMetaObject::Call)args[1].s_int;
 		int _id = args[2].s_int;
@@ -101,6 +114,19 @@ Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAb
 
 		(*FreeGCHandle)(obj);
 		return true;
+#if QT_VERSION >= 0x40200
+	} else if (strcmp(signature, "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)") == 0
+	           && smoke->isDerivedFrom(smoke, sqo->classId, qt_Smoke, qgraphicsitem_class)) {
+		int change = args[1].s_int;
+		if (change == QGraphicsItem::ItemSceneChange) {
+			QGraphicsScene *scene = ((QVariant*) args[2].s_voidp)->value<QGraphicsScene*>();
+			if (scene) {
+				(*AddGlobalRef)(obj, ptr);
+			} else {
+				(*RemoveGlobalRef)(obj, ptr);
+			}
+		}
+#endif
 	}
 	void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
 	if (overridenMethod == 0) {
