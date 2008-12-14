@@ -185,9 +185,11 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(uint)) {
 						args[i] = stackPtr[i+1].s_uint;
 					} else if (parameters[i].ParameterType == typeof(long)) {
-						args[i] = stackPtr[i+1].s_long;
+						// s_long will contain the wrong value on 32 bit platforms
+						// (i.e. where a native C++ 'long' isn't at least 64 bit)
+						args[i] = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stackPtr[i+1].s_int : stackPtr[i+1].s_long;
 					} else if (parameters[i].ParameterType == typeof(ulong)) {
-						args[i] = stackPtr[i+1].s_ulong;
+						args[i] = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stackPtr[i+1].s_uint : stackPtr[i+1].s_ulong;
 					} else if (parameters[i].ParameterType == typeof(float)) {
 						args[i] = stackPtr[i+1].s_float;
 					} else if (parameters[i].ParameterType == typeof(double)) {
@@ -294,9 +296,11 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(uint)) {
 						args[i] = stackPtr[i].s_uint;
 					} else if (parameters[i].ParameterType == typeof(long)) {
-						args[i] = stackPtr[i].s_long;
+						// s_long will contain the wrong value on 32 bit platforms
+						// (i.e. where a native C++ 'long' isn't at least 64 bit)
+						args[i] = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stackPtr[i+1].s_int : stackPtr[i+1].s_long;
 					} else if (parameters[i].ParameterType == typeof(ulong)) {
-						args[i] = stackPtr[i].s_ulong;
+						args[i] = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stackPtr[i+1].s_uint : stackPtr[i+1].s_ulong;
 					} else if (parameters[i].ParameterType == typeof(float)) {
 						args[i] = stackPtr[i].s_float;
 					} else if (parameters[i].ParameterType == typeof(double)) {
@@ -394,9 +398,11 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(uint)) {
 						args[i] = stackPtr[i].s_uint;
 					} else if (parameters[i].ParameterType == typeof(long)) {
-						args[i] = stackPtr[i].s_long;
+						// s_long will contain the wrong value on 32 bit platforms
+						// (i.e. where a native C++ 'long' isn't at least 64 bit)
+						args[i] = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stackPtr[i+1].s_int : stackPtr[i+1].s_long;
 					} else if (parameters[i].ParameterType == typeof(ulong)) {
-						args[i] = stackPtr[i].s_ulong;
+						args[i] = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stackPtr[i+1].s_uint : stackPtr[i+1].s_ulong;
 					} else if (parameters[i].ParameterType == typeof(float)) {
 						args[i] = stackPtr[i].s_float;
 					} else if (parameters[i].ParameterType == typeof(double)) {
@@ -628,7 +634,9 @@ namespace Qyoto {
 					} else if (returnType == typeof(double)) {
 						returnValue = stack[0].s_double;
 					} else if (returnType == typeof(long)) {
-						returnValue = stack[0].s_long;
+						// s_long will contain the wrong value on 32 bit platforms
+						// (i.e. where a native C++ 'long' isn't at least 64 bit)
+						returnValue = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stack[0].s_int : stack[0].s_long;
 					} else if (returnType == typeof(ushort)) {
 						returnValue = stack[0].s_ushort;
 					} else if (returnType == typeof(uint)) {
@@ -636,7 +644,7 @@ namespace Qyoto {
 					} else if (returnType.IsEnum) {
 						returnValue = Enum.ToObject(returnType, stack[0].s_int);
 					} else if (returnType == typeof(ulong)) {
-						returnValue = stack[0].s_ulong;
+						returnValue = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stack[0].s_uint : stack[0].s_ulong;
 					} else if (returnType == typeof(sbyte)) {
 						returnValue = stack[0].s_char;
 					} else if (returnType == typeof(byte)) {
@@ -778,9 +786,11 @@ namespace Qyoto {
 					} else if (returnType == typeof(uint)) {
 						returnValue.ReturnValue = stack[0].s_uint;
 					} else if (returnType == typeof(long)) {
-						returnValue.ReturnValue = stack[0].s_long;
+						// s_long will contain the wrong value on 32 bit platforms
+						// (i.e. where a native C++ 'long' isn't at least 64 bit)
+						returnValue.ReturnValue = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stack[0].s_int : stack[0].s_long;
 					} else if (returnType == typeof(ulong)) {
-						returnValue.ReturnValue = stack[0].s_ulong;
+						returnValue.ReturnValue = (SmokeMarshallers.SizeOfNativeLong < sizeof(long))? stack[0].s_uint : stack[0].s_ulong;
 					} else if (returnType == typeof(float)) {
 						returnValue.ReturnValue = stack[0].s_float;
 					} else if (returnType == typeof(double)) {

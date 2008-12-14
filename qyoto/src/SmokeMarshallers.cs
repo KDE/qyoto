@@ -44,6 +44,9 @@ namespace Qyoto {
 		
 		/** Other functions **/
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern int SizeOfLong();
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr ConstructPointerList();
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -238,6 +241,8 @@ namespace Qyoto {
 #endregion
 		
 #region marshalling functions
+
+		public static int SizeOfNativeLong = SizeOfLong();
 
 		public static void FreeGCHandle(IntPtr handle) {
 			if (handle == IntPtr.Zero) {

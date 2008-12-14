@@ -1,3 +1,10 @@
+2008-12-14  Arno Rehn  <arno@arnorehn.de>
+
+	* Don't use StackItem.s_long if we are on a 32 bit platform (i.e. a long isn't
+	  64 bits). Use s_int instead if that's the case, otherwise the value would be
+	  wrong. Is there a better solution than the one I implemented here?
+	  Thanks to Eric Butler for reporting the bug!
+
 2008-12-09  Arno Rehn  <arno@arnorehn.de>
 
 	* Watch out for itemChange() calls and if necessary, add or remove global refs

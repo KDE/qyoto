@@ -691,6 +691,12 @@ SetApplicationTerminated()
 	application_terminated = true;
 }
 
+Q_DECL_EXPORT int
+SizeOfLong()
+{
+	return sizeof(long);
+}
+
 /* 
 	Based on this function from QtCore/qhash.h:
 
