@@ -29,7 +29,7 @@ public class Clock : ClockApplet, IDisposable {
         m_theme = new Plasma.Svg(this);
         m_theme.ImagePath = "widgets/clock";
         m_theme.MultipleImages = false;
-        m_theme.Resize(Size);
+        m_theme.Resize(Size());
         reference = this;
     }
 
@@ -167,7 +167,7 @@ public class Clock : ClockApplet, IDisposable {
         }
 
         if ((constraints & (uint) Plasma.Constraint.SizeConstraint) > 0) {
-            m_theme.Resize(Size);
+            m_theme.Resize(Size());
         }
     }
     

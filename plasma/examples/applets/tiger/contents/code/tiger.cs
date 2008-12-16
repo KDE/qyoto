@@ -16,7 +16,7 @@ namespace Tiger {
                                                 QStyleOptionGraphicsItem option,
                                                 QRect contentsRect )
         {
-            svg.Resize(Size);
+            svg.Resize(Size());
             svg.Paint(painter, 0, 0);
         }
     }
