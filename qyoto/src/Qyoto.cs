@@ -212,6 +212,12 @@ namespace Qyoto
 			}
 		}
 		
+		public void FromArray(T[] array) {
+			for (int i = 0; i < array.Length; i++) {
+				this[i] = array[i];
+			}
+		}
+		
 		public static implicit operator IntPtr (Pointer<T> rhs) {
 			return rhs.ToIntPtr();
 		}

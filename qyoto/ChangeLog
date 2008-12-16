@@ -1,3 +1,9 @@
+2008-12-16  Arno Rehn  <arno@arnorehn.de>
+
+	* Make the pointerMap a Hashtable instead of a Dictionary - its implementation
+	  in Mono seems buggy. This should fix a crash reported by Eric Butler.
+	* Add FromArray() convenience method to Pointer<T>.
+
 2008-12-14  Arno Rehn  <arno@arnorehn.de>
 
 	* Don't use StackItem.s_long if we are on a 32 bit platform (i.e. a long isn't

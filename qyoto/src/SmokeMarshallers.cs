@@ -329,7 +329,11 @@ namespace Qyoto {
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
 		// and the value is a WeakReference to the C# instance.
-		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>(2179);
+		
+		// temporarily use a hashtable since Mono's Dictionary implementation seems buggy. And why do we fix the
+		// capacity to 2179?
+// 		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>(2179);
+		static private Hashtable pointerMap = new Hashtable();
 
 		public static void AddGlobalRef(IntPtr instancePtr, IntPtr ptr) {
 			Object instance = ((GCHandle) instancePtr).Target;
@@ -399,7 +403,7 @@ namespace Qyoto {
 		// of a Qyoto class and therefore could have custom slots or overriden methods
 		public static IntPtr GetInstance(IntPtr ptr, bool allInstances) {
 			WeakReference weakRef;
-			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
+			if (!pointerMap.ContainsKey(ptr)) {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
@@ -407,8 +411,10 @@ namespace Qyoto {
 					Console.WriteLine("GetInstance() pointerMap[0x{0:x8}] == null", (int) ptr);
 				}
 #endif
-				return (IntPtr) 0;
+				return IntPtr.Zero;
 			}
+
+			weakRef = (WeakReference) pointerMap[ptr];
 
 			if (weakRef.IsAlive) {
 #if DEBUG
@@ -419,7 +425,7 @@ namespace Qyoto {
 				}
 #endif
 				if (!allInstances && IsSmokeClass(weakRef.Target.GetType())) {
-					return (IntPtr) 0;
+					return IntPtr.Zero;
 				} 
 
 #if DEBUG
@@ -437,7 +443,7 @@ namespace Qyoto {
 				}
 #endif
 				pointerMap.Remove(ptr);
-				return (IntPtr) 0;
+				return IntPtr.Zero;
 			}
 		}
 
