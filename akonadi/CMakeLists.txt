@@ -23,8 +23,8 @@ TARGET_LINK_LIBRARIES(akonadi-sharp
     smokekde 
     smokeakonadi 
     qyotoshared 
-    akonadi-kde
-    akonadi-kmime
+    ${KDEPIMLIBS_AKONADI_LIBS} 
+    ${KDEPIMLIBS_AKONADI_KMIME_LIBS}
     ${QT_QTCORE_LIBRARY} 
     ${QT_QTGUI_LIBRARY})
 
