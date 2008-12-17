@@ -16,6 +16,8 @@ SET(SRC_CS src/Akonadi.cs
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
+include_directories( ${AKONADI_INCLUDE_DIR}/akonadi )
+
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(akonadi-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(akonadi-sharp 
