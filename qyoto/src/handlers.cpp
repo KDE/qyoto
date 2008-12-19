@@ -753,6 +753,12 @@ construct_copy(smokeqyoto_object *o)
     args[1].s_voidp = o->ptr;
     Smoke::ClassFn fn = o->smoke->classes[o->classId].classFn;
     (*fn)(o->smoke->methods[ccMeth.index].method, 0, args);
+
+    // Initialize the binding for the new instance
+    Smoke::StackItem s[2];
+    s[1].s_voidp = qyoto_modules[o->smoke].binding;
+    (*fn)(0, args[0].s_voidp, s);
+
     return args[0].s_voidp;
 }
 
