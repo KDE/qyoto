@@ -1,3 +1,10 @@
+2008-12-20  Arno Rehn  <arno@arnorehn.de>
+
+	* Revert pointerMap to a Dictionary. The crash that was reported by Eric
+	  occured because Dictionary isn't thread-safe. Enclose the operations on
+	  pointerMap in a lock (pointerMap) { ... } to synchronise the threads and
+	  prevent the crash.
+
 2008-12-19  Richard Dale  <richard.j.dale@gmail.com>
 	* When the construct_copy() function was used to copy and instance, it
 	  wasn't initializing the binding for the new instance. This caused a

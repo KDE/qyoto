@@ -329,15 +329,13 @@ namespace Qyoto {
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
 		// and the value is a WeakReference to the C# instance.
-		
-		// temporarily use a hashtable since Mono's Dictionary implementation seems buggy. And why do we fix the
-		// capacity to 2179?
-// 		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>(2179);
-		static private Hashtable pointerMap = new Hashtable();
+		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>();
 
 		public static void AddGlobalRef(IntPtr instancePtr, IntPtr ptr) {
 			Object instance = ((GCHandle) instancePtr).Target;
-			globalReferenceMap[ptr] = instance;
+			lock (globalReferenceMap) {
+				globalReferenceMap[ptr] = instance;
+			}
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 				Console.WriteLine("AddGlobalRef() Creating global reference 0x{0:x8} -> {1}", (int) ptr, instance);
@@ -347,55 +345,65 @@ namespace Qyoto {
 
 		public static void RemoveGlobalRef(IntPtr instancePtr, IntPtr ptr) {
 			Object instance = ((GCHandle) instancePtr).Target;
-			if (globalReferenceMap.ContainsKey(ptr)) {
+			lock (globalReferenceMap) {
+				if (globalReferenceMap.ContainsKey(ptr)) {
 #if DEBUG
-				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					object reference;
-					if (globalReferenceMap.TryGetValue(ptr, out reference)) {
-						Console.WriteLine("RemoveGlobalRef() Removing global reference 0x{0:x8} -> {1}", (int) ptr, reference);
+					if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+						object reference;
+						if (globalReferenceMap.TryGetValue(ptr, out reference)) {
+							Console.WriteLine("RemoveGlobalRef() Removing global reference 0x{0:x8} -> {1}", (int) ptr, reference);
+						}
 					}
-				}
 #endif
-				globalReferenceMap.Remove(ptr);
+					globalReferenceMap.Remove(ptr);
+				}
 			}
 		}
 
 		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createGlobalReference) {
-			Object instance = ((GCHandle) instancePtr).Target;
-			WeakReference weakRef = new WeakReference(instance);
-			pointerMap[ptr] = weakRef;
-#if DEBUG
-			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-				Console.WriteLine("MapPointer() Creating weak reference 0x{0:x8} -> {1}", (int) ptr, instance);
-			}
-#endif
-			if (createGlobalReference) {
-				globalReferenceMap[ptr] = instance;
+			lock (pointerMap) {
+				Object instance = ((GCHandle) instancePtr).Target;
+				WeakReference weakRef = new WeakReference(instance);
+				pointerMap[ptr] = weakRef;
 #if DEBUG
 				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("MapPointer() Creating global reference 0x{0:x8} -> {1}", (int) ptr, instance);
+					Console.WriteLine("MapPointer() Creating weak reference 0x{0:x8} -> {1}", (int) ptr, instance);
 				}
 #endif
+				if (createGlobalReference) {
+					lock (globalReferenceMap) {
+						globalReferenceMap[ptr] = instance;
+#if DEBUG
+						if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+							Console.WriteLine("MapPointer() Creating global reference 0x{0:x8} -> {1}", (int) ptr, instance);
+						}
+#endif
+					}
+				}
 			}
 		}
 		
 		public static void UnmapPointer(IntPtr ptr) {
-#if DEBUG
-			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-				Console.WriteLine("UnmapPointer() Removing weak reference 0x{0:x8}", (int) ptr);
-			}
-#endif
-			pointerMap.Remove(ptr);
-			if (globalReferenceMap.ContainsKey(ptr)) {
+			lock (pointerMap) {
 #if DEBUG
 				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					object reference;
-					if (globalReferenceMap.TryGetValue(ptr, out reference)) {
-						Console.WriteLine("UnmapPointer() Removing global reference 0x{0:x8} -> {1}", (int) ptr, reference);
-					}
+					Console.WriteLine("UnmapPointer() Removing weak reference 0x{0:x8}", (int) ptr);
 				}
 #endif
-				globalReferenceMap.Remove(ptr);
+				pointerMap.Remove(ptr);
+				lock (globalReferenceMap) {
+					if (globalReferenceMap.ContainsKey(ptr)) {
+#if DEBUG
+						if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+							object reference;
+							if (globalReferenceMap.TryGetValue(ptr, out reference)) {
+								Console.WriteLine("UnmapPointer() Removing global reference 0x{0:x8} -> {1}", (int) ptr, reference);
+							}
+						}
+#endif
+						globalReferenceMap.Remove(ptr);
+					}
+				}
 			}
 		}
 		
@@ -403,7 +411,7 @@ namespace Qyoto {
 		// of a Qyoto class and therefore could have custom slots or overriden methods
 		public static IntPtr GetInstance(IntPtr ptr, bool allInstances) {
 			WeakReference weakRef;
-			if (!pointerMap.ContainsKey(ptr)) {
+			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
@@ -413,8 +421,6 @@ namespace Qyoto {
 #endif
 				return IntPtr.Zero;
 			}
-
-			weakRef = (WeakReference) pointerMap[ptr];
 
 			if (weakRef.IsAlive) {
 #if DEBUG
