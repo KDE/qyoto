@@ -10,10 +10,12 @@ namespace Qyoto {
 		
 		public override bool Event(QEvent e) {
 			if (e.type() == QEvent.TypeOf.User) {
-				ThreadEvent my = (ThreadEvent) e;
-				my.dele();
-				my.handle.Free();  // free the handle so the event can be collected
-				return true;
+				ThreadEvent my = e as ThreadEvent;
+				if (e != null) {
+					my.dele();
+					my.handle.Free();  // free the handle so the event can be collected
+					return true;
+				}
 			}
 			return false;
 		}
