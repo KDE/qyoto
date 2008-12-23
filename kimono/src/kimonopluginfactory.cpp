@@ -165,8 +165,12 @@ KimonoPluginFactory::initQyotoRuntime()
 MonoDomain*
 KimonoPluginFactory::initJit(const QString& path)
 {
-	// initialize the JIT
 	if (!domain) {
+		if ((domain = mono_get_root_domain())) {
+			kWarning() << "reusing existing MonoDomain" << domain;
+			return domain;
+		}
+		// initialize the JIT
 		domain = mono_jit_init((const char*) path.toLatin1());
 		mono_config_parse(NULL);
 // 		printf("(kimonopluginfactory.cpp:%d) new domain (ptr: %p)\n", __LINE__, domain);

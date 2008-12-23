@@ -1,3 +1,8 @@
+2008-12-23  Arno Rehn  <arno@arnorehn.de>
+
+	* kimonopluginfactory.cpp: check for an existing root domain and reuse it.
+	  Makes it possible to use Mono Plugins from within KDE-Mono applications.
+
 2008-11-28  Richard Dale  <richard.j.dale@gmail.com>
 	* Regenerate the KDateTime, KTimeZones and KSystemTimeZones classes so
 	  the Spec subclasses are more complete and Dictionary<string, KTimeZone>
