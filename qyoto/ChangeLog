@@ -2,6 +2,7 @@
 
 	* Add a QList<const char*> marshaller. For the moment it only works in the
 	  'ToObject' direction.
+	* Add support for on-the-fly compilation of dataengines.
 
 2008-12-20  Arno Rehn  <arno@arnorehn.de>
 

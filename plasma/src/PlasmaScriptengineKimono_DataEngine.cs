@@ -40,17 +40,30 @@ namespace PlasmaScriptengineKimono {
         public override bool Init() {
             QFileInfo program = new QFileInfo(MainScript());
 
-            dataEngineAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
+            Console.WriteLine(MainScript());
+
+            KMimeType mime = KMimeType.FindByFileContent(program.AbsoluteFilePath());
+            try {
+                if (mime.Name().StartsWith("text/")) {
+                    Compiler c = new Compiler(program);
+                    dataEngineAssembly = c.GetAssembly();
+                } else {
+                    dataEngineAssembly = Assembly.LoadFile(program.AbsoluteFilePath());
+                }
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                return false;
+            }
             
-            // the newly loaded assembly might contain reference other bindings that need to be initialized
+            // the newly loaded assembly might reference other bindings that need to be initialized
             foreach (AssemblyName an in dataEngineAssembly.GetReferencedAssemblies()) {
-                // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
                 Assembly a = null;
                 try {
                     a = Assembly.Load(an);
                 } catch (FileNotFoundException e) {
                     a = Assembly.LoadFile(Path.Combine(Path.GetDirectoryName(dataEngineAssembly.Location), an.Name + ".dll"));
                 }
+                // if the binding has already been initialized (e.g. in SmokeInvocation.InitRuntime()), continue.
                 if (SmokeInvocation.InitializedAssemblies.Contains(a)) continue;
                 AssemblySmokeInitializer attr = (AssemblySmokeInitializer) Attribute.GetCustomAttribute(a, typeof(AssemblySmokeInitializer));
                 if (attr != null) attr.CallInitSmoke();
