@@ -14,5 +14,5 @@ install(FILES ${LIBRARY_OUTPUT_PATH}/csharp-tiger.dll DESTINATION ${CMAKE_CURREN
 install(FILES metadata.desktop DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/csharp-tiger)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/csharp-tiger/contents/images)
-install(FILES tiger.svg DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/csharp-tiger/images)
+install(FILES tiger.svg DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/csharp-tiger/contents/images)
 
