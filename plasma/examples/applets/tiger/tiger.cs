@@ -9,7 +9,7 @@ namespace Tiger {
 
         public override void Init() {
             svg = new Plasma.Svg(this);
-            svg.ImagePath = "widgets/tiger";
+            svg.ImagePath = Package().FilePath("images", "tiger.svg");
         }
 
         public override void PaintInterface(    QPainter painter,

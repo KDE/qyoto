@@ -1,3 +1,7 @@
+2008-12-01  Richard Dale  <richard.j.dale@gmail.com>
+* Changed the tiger applet example to find its tiger.svg resource from within
+  the plasmoid package.
+
 2008-12-06  Arno Rehn  <arno@arnorehn.de>
 * Don't throw an Exception on compiler warnings
 * Set CompilerOptions to an empty string so the nemerle compiler won't crash
