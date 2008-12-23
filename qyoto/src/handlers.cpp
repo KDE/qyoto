@@ -1728,6 +1728,32 @@ void marshall_QListInt(Marshall *m) {
     }
 }
 
+void marshall_QListConstCharP(Marshall *m) {
+	switch (m->action()) {
+    case Marshall::FromObject:
+	{
+		m->unsupported();
+	}
+	break;
+	case Marshall::ToObject:
+	{
+		QList<const char*> *list = static_cast<QList<const char*>*>(m->item().s_voidp);
+		void* al = (*ConstructList)("System.String");
+		for (int i = 0; i < list->size(); i++) {
+			(*AddIntPtrToList)(al, (*IntPtrFromCharStar)(const_cast<char*>(list->at(i))));
+		}
+		m->var().s_voidp = al;
+		m->next();
+		if (m->cleanup())
+			delete list;
+	}
+	break;
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
 DEF_LIST_MARSHALLER( QAbstractButtonList, QList<QAbstractButton*>, QAbstractButton )
 DEF_LIST_MARSHALLER( QActionGroupList, QList<QActionGroup*>, QActionGroup )
 DEF_LIST_MARSHALLER( QActionList, QList<QAction*>, QAction )
@@ -1860,6 +1886,8 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "QDBusVariant", marshall_QDBusVariant },
     { "QDBusVariant&", marshall_QDBusVariant },
     { "QFileInfoList", marshall_QFileInfoList },
+    { "QList<const char*>", marshall_QListConstCharP },
+    { "QList<const char*>&", marshall_QListConstCharP },
     { "QList<int>", marshall_QListInt },
     { "QList<int>&", marshall_QListInt },
     { "QList<QAbstractButton*>", marshall_QAbstractButtonList },

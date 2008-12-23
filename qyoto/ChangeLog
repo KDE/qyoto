@@ -1,3 +1,8 @@
+2008-12-23  Arno Rehn  <arno@arnorehn.de>
+
+	* Add a QList<const char*> marshaller. For the moment it only works in the
+	  'ToObject' direction.
+
 2008-12-20  Arno Rehn  <arno@arnorehn.de>
 
 	* Revert pointerMap to a Dictionary. The crash that was reported by Eric
