@@ -40,8 +40,6 @@ namespace PlasmaScriptengineKimono {
         public override bool Init() {
             QFileInfo program = new QFileInfo(MainScript());
 
-            Console.WriteLine(MainScript());
-
             KMimeType mime = KMimeType.FindByFileContent(program.AbsoluteFilePath());
             try {
                 if (mime.Name().StartsWith("text/")) {
