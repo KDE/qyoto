@@ -4,7 +4,7 @@ namespace KParts {
     using System;
     using Qyoto;
 
-    public interface IPartBase {
+    public interface IPartBase : IKXMLGUIClient {
         void SetPartObject(QObject arg1);
         QObject PartObject();
     }
