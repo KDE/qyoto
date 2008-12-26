@@ -1,3 +1,11 @@
+2008-12-26  Arno Rehn  <arno@arnorehn.de>
+
+	* kimonopluginfactory.cpp: If the interface string doesn't appear to contain
+	  a namespace, prepend 'Qyoto' or 'Kimono' depending on the letter the string
+	  is starting with.
+	* kdehandlers.cpp: Add a marshaller for KService::List (which is a
+	  QList<KSharedPtr<KService> >)
+
 2008-12-23  Arno Rehn  <arno@arnorehn.de>
 
 	* kimonopluginfactory.cpp: check for an existing root domain and reuse it.

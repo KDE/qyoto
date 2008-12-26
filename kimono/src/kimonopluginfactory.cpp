@@ -232,8 +232,9 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	                       QObject *parent, const QVariantList &args,
 	                       const QString &keyword)
 {
-	Q_UNUSED(iface);
 	Q_UNUSED(parentWidget);
+
+	kWarning() << "KimonoPluginFactory::create() iface:" << iface << "keyword:" << keyword;
 
 	// find the assembly
 	QString path = KStandardDirs::locate("data", keyword);
@@ -257,6 +258,8 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	QByteArray className = KimonoPluginFactory::camelize(file.baseName().toLatin1());
 	MonoClass* klass = mono_class_from_name(image, nameSpace, className);
 
+	if (klass) kWarning() << "Found class" << nameSpace + "." + className;
+
 	MonoMethod* ctor = 0;
 	if (klass) {
 		// we want the Foo.Bar:.ctor(QObject, List<QVariant>)
@@ -265,7 +268,15 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 		ctor = mono_method_desc_search_in_class(desc, klass);
 	} else {
 		QString ifacestr(iface);
-		ifacestr.replace("::", ".");
+		if (!ifacestr.contains("::")) {
+			if (ifacestr.startsWith('Q'))
+				ifacestr.prepend("Qyoto.");
+			else if (ifacestr.startsWith('K'))
+				ifacestr.prepend("Kimono.");
+		} else {
+			ifacestr.replace("::", ".");
+		}
+		kWarning() << "searching for iface" << ifacestr;
 		foreach(QByteArray name, assemblyGetClasses((const char*) path.toLatin1())) {
 			nameSpace = name.left(name.lastIndexOf("."));
 			className = name.right(name.size() - name.lastIndexOf(".") - 1);

@@ -51,6 +51,49 @@
 
 #include "marshall_macros_kde.h"
 
+void marshall_KServiceList(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+	}
+	break;
+	case Marshall::ToObject:
+	{
+		KService::List *offerList = (KService::List*)m->item().s_voidp;
+		if (!offerList) {
+			m->var().s_voidp = 0;
+			break;
+		}
+
+		void *av = (*ConstructList)("Kimono.KService");
+
+		for (	KService::List::Iterator it = offerList->begin();
+				it != offerList->end();
+				++it ) 
+		{
+			KSharedPtr<KService> *ptr = new KSharedPtr<KService>(*it);
+			KService * currentOffer = ptr->data();
+
+			void *obj = (*GetInstance)(currentOffer, true);
+			if (obj == 0) {
+				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), m->smoke()->idClass("KService").index, currentOffer);
+				obj = (*CreateInstance)("Kimono.KService", o);
+			}
+			(*AddIntPtrToList)(av, obj);
+		}
+
+		m->var().s_voidp = av;
+	    
+		if (m->cleanup())
+			delete offerList;
+	}
+	break;
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
 DEF_KSHAREDPTR_MARSHALLER(KSharedConfig, KSharedConfig)
 DEF_KSHAREDPTR_MARSHALLER(KMimeType, KMimeType)
 
@@ -83,7 +126,6 @@ DEF_VALUELIST_MARSHALLER( KPartsPluginPluginInfoList, QList<KParts::Plugin::Plug
 DEF_VALUELIST_MARSHALLER( KPluginInfoList, QList<KPluginInfo>, KPluginInfo )
 DEF_VALUELIST_MARSHALLER( KServiceActionList, QList<KServiceAction>, KServiceAction )
 DEF_VALUELIST_MARSHALLER( KServiceGroupPtrList, QList<KServiceGroup::Ptr>, KServiceGroup::Ptr )
-DEF_VALUELIST_MARSHALLER( KServicePtrList, QList<KService::Ptr>, KService::Ptr )
 DEF_VALUELIST_MARSHALLER( KTimeZoneLeapSecondsList, QList<KTimeZone::LeapSeconds>, KTimeZone::LeapSeconds )
 DEF_VALUELIST_MARSHALLER( KTimeZonePhaseList, QList<KTimeZone::Phase>, KTimeZone::Phase )
 DEF_VALUELIST_MARSHALLER( KTimeZoneTransitionList, QList<KTimeZone::Transition>, KTimeZone::Transition )
@@ -143,7 +185,8 @@ TypeHandler KDE_handlers[] = {
     { "QList<KPluginInfo>&", marshall_KPluginInfoList },
     { "QList<KServiceAction>", marshall_KServiceActionList },
     { "QList<KServiceGroup::Ptr>", marshall_KServiceGroupPtrList },
-    { "QList<KService::Ptr>", marshall_KServicePtrList },
+    { "QList<KService::Ptr>", marshall_KServiceList },
+    { "QList<KSharedPtr<KService> >", marshall_KServiceList },
     { "QList<KTimeZone::LeapSeconds>", marshall_KTimeZoneLeapSecondsList },
     { "QList<KTimeZone::LeapSeconds>&", marshall_KTimeZoneLeapSecondsList },
     { "QList<KTimeZone::Phase>", marshall_KTimeZonePhaseList },
