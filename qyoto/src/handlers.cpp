@@ -640,12 +640,17 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractTextDocumentLayout") == 0)
 			return "Qyoto.QAbstractTextDocumentLayoutInternal";
 
+		const char * oldClassName = o->smoke->classes[o->classId].className;
 		while (meta != 0) {
 			o->smoke = Smoke::classMap[meta->className()];
 			if (o->smoke != 0) {
 				o->classId = o->smoke->idClass(meta->className()).index;
 				if (o->classId != 0) {
-					return qyoto_resolve_classname(o);
+					// if the classname is different, resolve the new name again - otherwise just 'C#-ify' it.
+					if (strcmp(oldClassName, o->smoke->className(o->classId)) == 0)
+						return qyoto_modules[o->smoke].binding->className(o->classId);
+					else
+						return qyoto_resolve_classname(o);
 				}
 			}
 
