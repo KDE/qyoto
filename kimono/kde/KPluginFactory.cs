@@ -64,30 +64,11 @@ namespace Kimono {
     ///   See <see cref="IKPluginFactorySignals"></see> for signals emitted by KPluginFactory
     /// </remarks>        <short>    \class KPluginFactory kpluginfactory.</short>
     [SmokeClass("KPluginFactory")]
-    public class KPluginFactory : QObject, IDisposable {
+    public partial class KPluginFactory : QObject, IDisposable {
         protected KPluginFactory(Type dummy) : base((Type) null) {}
-        /// <remarks>
-        ///  This is used to detect the arguments need for the constructor of plugin classes.
-        ///  You can inherit it, if you want to add new classes and still keep support for the old ones.
-        ///      </remarks>        <short>    This is used to detect the arguments need for the constructor of plugin classes.</short>
-        [SmokeClass("KPluginFactory::InheritanceChecker")]
-        public class InheritanceChecker : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected InheritanceChecker(Type dummy) {}
-            // CreateInstanceFunction createInstanceFunction(KParts::Part* arg1); >>>> NOT CONVERTED
-            // CreateInstanceFunction createInstanceFunction(QWidget* arg1); >>>> NOT CONVERTED
-            // CreateInstanceFunction createInstanceFunction(); >>>> NOT CONVERTED
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KPluginFactory), this);
         }
-        // KPluginFactory* KPluginFactory(const char* arg1,const char* arg2,QObject* arg3); >>>> NOT CONVERTED
-        // KPluginFactory* KPluginFactory(const char* arg1,const char* arg2); >>>> NOT CONVERTED
-        // KPluginFactory* KPluginFactory(const char* arg1); >>>> NOT CONVERTED
-        // KPluginFactory* KPluginFactory(); >>>> NOT CONVERTED
-        // KPluginFactory* KPluginFactory(const KAboutData& arg1,QObject* arg2); >>>> NOT CONVERTED
-        // KPluginFactory* KPluginFactory(const KAboutData& arg1); >>>> NOT CONVERTED
         // KPluginFactory* KPluginFactory(KPluginFactoryPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
         // KPluginFactory* KPluginFactory(KPluginFactoryPrivate& arg1); >>>> NOT CONVERTED
         /// <remarks>
@@ -99,6 +80,22 @@ namespace Kimono {
         ///  \param catalogName the translation catalog to use
         ///  \param parent a parent object
         ///      </remarks>        <short>    This constructor creates a factory for a plugin with the given \p componentName and  \p catalogName.</short>
+        public KPluginFactory(string componentName, string catalogName, QObject parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("KPluginFactory$$#", "KPluginFactory(const char*, const char*, QObject*)", typeof(void), typeof(string), componentName, typeof(string), catalogName, typeof(QObject), parent);
+        }
+        public KPluginFactory(string componentName, string catalogName) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("KPluginFactory$$", "KPluginFactory(const char*, const char*)", typeof(void), typeof(string), componentName, typeof(string), catalogName);
+        }
+        public KPluginFactory(string componentName) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("KPluginFactory$", "KPluginFactory(const char*)", typeof(void), typeof(string), componentName);
+        }
+        public KPluginFactory() : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("KPluginFactory", "KPluginFactory()", typeof(void));
+        }
         /// <remarks>
         ///  This constructor creates a factory for a plugin with the given KAboutData object. This object is
         ///  used to initialize a KComponentData object for the plugin. You can later access it with
@@ -107,6 +104,14 @@ namespace Kimono {
         ///  \param aboutData the KAboutData for the plugin
         ///  \param parent a parent object
         ///      </remarks>        <short>    This constructor creates a factory for a plugin with the given KAboutData object.</short>
+        public KPluginFactory(KAboutData aboutData, QObject parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("KPluginFactory##", "KPluginFactory(const KAboutData&, QObject*)", typeof(void), typeof(KAboutData), aboutData, typeof(QObject), parent);
+        }
+        public KPluginFactory(KAboutData aboutData) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("KPluginFactory#", "KPluginFactory(const KAboutData&)", typeof(void), typeof(KAboutData), aboutData);
+        }
         /// <remarks>
         ///  You can use this method to get the component data of the plugin. It is filled with the
         ///  information given to the constructor of KPluginFactory.

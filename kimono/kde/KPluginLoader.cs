@@ -52,7 +52,6 @@ namespace Kimono {
         public string PluginName {
             get { return (string) interceptor.Invoke("fileName", "fileName()", typeof(string)); }
         }
-        // KPluginFactory* factory(); >>>> NOT CONVERTED
         /// <remarks>
         ///  Used this constructor to load a plugin with a given library name. Plugin libraries shouldn't have a 'lib' prefix.
         ///  \param plugin The name of the plugin library.
@@ -94,6 +93,9 @@ namespace Kimono {
         ///  to K_EXPORT_PLUGIN to use this method.
         ///  \returns The factory of the plugin or 0 on error.
         ///      </remarks>        <short>    Used to obtain the factory object of the plugin.</short>
+        public KPluginFactory Factory() {
+            return (KPluginFactory) interceptor.Invoke("factory", "factory()", typeof(KPluginFactory));
+        }
         /// <remarks>
         ///  Queries the plugin version.
         ///  \returns The version given to K_EXPORT_PLUGIN_VERSION or (quint32) -1 if not set.

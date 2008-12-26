@@ -38,6 +38,12 @@ QHash<int, char*> classNames;
 const char *
 resolve_classname_KDE(smokeqyoto_object * o)
 {
+	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QObject")) {
+		if (strcmp(o->smoke->classes[o->classId].className, "KParts::ReadOnlyPart") == 0)
+			return "KParts.ReadOnlyPartInternal";
+		if (strcmp(o->smoke->classes[o->classId].className, "KParts::ReadWritePart") == 0)
+			return "KParts.ReadWritePartInternal";
+	}
 	return qyoto_modules[o->smoke].binding->className(o->classId);
 }
 

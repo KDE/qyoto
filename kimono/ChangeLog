@@ -5,6 +5,11 @@
 	  is starting with.
 	* kdehandlers.cpp: Add a marshaller for KService::List (which is a
 	  QList<KSharedPtr<KService> >)
+	* Add KParts::Read(Write|Only)PartInternal classes so they can be used as return
+	  types.
+	* Make the KPluginFactory and KService classes partial.
+	* Add KPluginFactory.Create<T> methods.
+	* KPart integration should work now in C# as well.
 
 2008-12-23  Arno Rehn  <arno@arnorehn.de>
 

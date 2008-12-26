@@ -20,24 +20,8 @@ namespace Kimono {
     ///         <see> KServiceType</see>
     ///         <see> KServiceGroup</see>
     [SmokeClass("KService")]
-    public class KService : KSycocaEntry, IDisposable {
+    public partial class KService : KSycocaEntry, IDisposable {
         protected KService(Type dummy) : base((Type) null) {}
-        [SmokeClass("KService::ServiceTypeAndPreference")]
-        public class ServiceTypeAndPreference : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected ServiceTypeAndPreference(Type dummy) {}
-            public int Preference {
-                get { return (int) interceptor.Invoke("preference", "preference()", typeof(int)); }
-                set { interceptor.Invoke("setPreference$", "setPreference(int)", typeof(void), typeof(int), value); }
-            }
-            public string ServiceType {
-                get { return (string) interceptor.Invoke("serviceType", "serviceType()", typeof(string)); }
-                set { interceptor.Invoke("setServiceType$", "setServiceType(QString)", typeof(void), typeof(string), value); }
-            }
-            //  ServiceTypeAndPreference(); >>>> NOT CONVERTED
-            //  ServiceTypeAndPreference(int arg1,const QString& arg2); >>>> NOT CONVERTED
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(KService), this);
         }
@@ -377,6 +361,14 @@ namespace Kimono {
         ///      </remarks>        <short>    The keyword to be used when constructing the plugin using KPluginFactory.</short>
         public string PluginKeyword() {
             return (string) interceptor.Invoke("pluginKeyword", "pluginKeyword() const", typeof(string));
+        }
+        /// <remarks>
+        ///  The path to the documentation for this service.
+        /// </remarks>        <return> the documentation path, or string() if not set
+        ///      </return>
+        ///         <short>    The path to the documentation for this service.</short>
+        public string DocPath() {
+            return (string) interceptor.Invoke("docPath", "docPath() const", typeof(string));
         }
         /// <remarks>
         ///  Returns the requested property.
