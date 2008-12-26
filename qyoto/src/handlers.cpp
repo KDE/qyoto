@@ -645,7 +645,7 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 			if (o->smoke != 0) {
 				o->classId = o->smoke->idClass(meta->className()).index;
 				if (o->classId != 0) {
-					return qyoto_modules[o->smoke].binding->className(o->classId);
+					return qyoto_resolve_classname(o);
 				}
 			}
 
