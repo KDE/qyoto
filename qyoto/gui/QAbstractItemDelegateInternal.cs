@@ -3,6 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
+	[SmokeClass("QAbstractItemDelegate")]
 	internal class QAbstractItemDelegateInternal : QAbstractItemDelegate {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void QAbstractItemDelegatePaint(IntPtr obj, IntPtr painter, IntPtr option, IntPtr index);

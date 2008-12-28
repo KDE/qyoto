@@ -3,6 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
+	[SmokeClass("QAbstractTextDocumentLayout")]
 	internal class QAbstractTextDocumentLayoutInternal : QAbstractTextDocumentLayout {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractTextDocumentLayoutBlockBoundingRect(IntPtr obj, IntPtr block);

@@ -2,6 +2,7 @@ namespace Qyoto{
 
 	using System;
 
+	[SmokeClass("QAbstractButton")]
 	internal class QAbstractButtonInternal : QAbstractButton {
 		protected QAbstractButtonInternal(Type dummy) : base((Type) null) {}
 		

@@ -3,6 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
+	[SmokeClass("QAbstractItemView")]
 	internal class QAbstractItemViewInternal : QAbstractItemView {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemViewIndexAt(IntPtr obj, IntPtr point);

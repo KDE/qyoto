@@ -1,6 +1,7 @@
 namespace Qyoto {
 	using System;
 	
+	[SmokeClass("QLayout")]
 	internal class QLayoutInternal : QLayout {
 		protected QLayoutInternal(Type dummy) : base((Type) null) {}
 		
