@@ -6,6 +6,10 @@ namespace Kimono {
 	using Qyoto;
 	
 	public partial class KUrl : QUrl, IDisposable {
+		public static implicit operator KUrl(string other) {
+			return new KUrl(other);
+		}
+		
 		public class List : List<KUrl> {
 			delegate bool GetNextDictionaryEntryFn(ref IntPtr key, ref IntPtr value);
 			
