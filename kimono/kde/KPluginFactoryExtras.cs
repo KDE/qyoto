@@ -13,7 +13,10 @@ namespace Kimono {
 		}
 
 		public T Create<T>(QObject parent, List<QVariant> args) where T: class {
-			return Create<T>(parent.IsWidgetType()? (QWidget) parent : null, parent, string.Empty, args);
+			if (parent == null)
+				return Create<T>(null, parent, string.Empty, args);
+			else
+				return Create<T>(parent.IsWidgetType()? (QWidget) parent : null, parent, string.Empty, args);
 		}
 
 		public T Create<T>(string keyword) where T: class {
@@ -25,7 +28,10 @@ namespace Kimono {
 		}
 
 		public T Create<T>(string keyword, QObject parent, List<QVariant> args) where T: class {
-			return Create<T>(parent.IsWidgetType()? (QWidget) parent : null, parent, keyword, args);
+			if (parent == null)
+				return Create<T>(null, parent, keyword, args);
+			else
+				return Create<T>(parent.IsWidgetType()? (QWidget) parent : null, parent, keyword, args);
 		}
 
 		public T Create<T>(QWidget parentWidget, QObject parent) where T: class{
@@ -44,7 +50,8 @@ namespace Kimono {
 			
 			QObject o = Create(SmokeMarshallers.SmokeClassName(type), parentWidget, parent, args, keyword);
 			T t = qobject_cast<T>(o);
-			if (t == null) o.Dispose();
+			if (t == null && o != null)
+				o.Dispose();
 			return t;
 		}
 	}
