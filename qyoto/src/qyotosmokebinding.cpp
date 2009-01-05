@@ -123,7 +123,10 @@ Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAb
 			if (scene) {
 				(*AddGlobalRef)(obj, ptr);
 			} else {
-				(*RemoveGlobalRef)(obj, ptr);
+				QGraphicsItem *item = (QGraphicsItem*) sqo->smoke->cast(ptr, sqo->classId, qgraphicsitem_class);
+				if (!item->group()) {  // only remove the global ref if the item doesn't belong to a group
+					(*RemoveGlobalRef)(obj, ptr);
+				}
 			}
 		}
 #endif
