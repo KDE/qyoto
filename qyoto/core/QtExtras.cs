@@ -84,6 +84,14 @@ namespace Qyoto {
 			}
 		}
 
+		public override bool Equals(object o) {
+			return (o.GetHashCode() == GetHashCode());
+		}
+
+		public override int GetHashCode() {
+			return interceptor.GetHashCode();
+		}
+
 		// These should really use generic types like the C++ originals, but
 		// it doesn't seem to work with C#
 		public static int QMin(int a, int b) { if (a < b) return a; return b; }
