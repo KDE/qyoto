@@ -267,15 +267,8 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 		MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
 		ctor = mono_method_desc_search_in_class(desc, klass);
 	} else {
-		QString ifacestr(iface);
-		if (!ifacestr.contains("::")) {
-			if (ifacestr.startsWith('Q'))
-				ifacestr.prepend("Qyoto.");
-			else if (ifacestr.startsWith('K'))
-				ifacestr.prepend("Kimono.");
-		} else {
-			ifacestr.replace("::", ".");
-		}
+		Smoke::ModuleIndex id = Smoke::classMap[iface]->idClass(iface);
+		QString ifacestr = qyoto_modules[id.smoke].binding->className(id.index);
 		kWarning() << "searching for iface" << ifacestr;
 		foreach(QByteArray name, assemblyGetClasses((const char*) path.toLatin1())) {
 			nameSpace = name.left(name.lastIndexOf("."));
