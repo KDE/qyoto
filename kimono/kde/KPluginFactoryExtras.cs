@@ -1,9 +1,13 @@
 namespace Kimono {
 	using System;
 	using System.Collections.Generic;
+	using System.Runtime.InteropServices;
 	using Qyoto;
 
 	public partial class KPluginFactory : QObject, IDisposable {
+		[DllImport("kimono", CharSet=CharSet.Ansi)]
+		static extern IntPtr KPluginFactory_Create(IntPtr self, string classname, IntPtr parentWidget, IntPtr parent, IntPtr[] args, int numArgs, string keyword);
+
 		public T Create<T>() where T: class {
 			return Create<T>((QObject) null);
 		}
@@ -48,7 +52,22 @@ namespace Kimono {
 			if (!SmokeMarshallers.IsSmokeClass(type))
 				throw new Exception("The generic type must be included in the bindings");
 			
-			QObject o = Create(SmokeMarshallers.SmokeClassName(type), parentWidget, parent, args, keyword);
+			IntPtr[] array = new IntPtr[args.Count];
+			for (int i = 0; i < args.Count; i++) {
+				array[i] = (IntPtr) GCHandle.Alloc(args[i]);
+			}
+			
+			IntPtr pw = IntPtr.Zero;
+			if (parentWidget != null)
+				pw = (IntPtr) GCHandle.Alloc(parentWidget);
+
+			IntPtr p = IntPtr.Zero;
+			if (parent != null)
+				p = (IntPtr) GCHandle.Alloc(parent);
+
+			IntPtr ret = KPluginFactory_Create((IntPtr) GCHandle.Alloc(this), SmokeMarshallers.SmokeClassName(type), pw, p,
+			                                   array, array.Length, keyword);
+			QObject o = (ret != IntPtr.Zero) ? (QObject) ((GCHandle) ret).Target : null;
 			T t = qobject_cast<T>(o);
 			if (t == null && o != null)
 				o.Dispose();
