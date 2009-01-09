@@ -232,8 +232,6 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	                       QObject *parent, const QVariantList &args,
 	                       const QString &keyword)
 {
-	Q_UNUSED(parentWidget);
-
 	kWarning() << "KimonoPluginFactory::create() iface:" << iface << "keyword:" << keyword;
 
 	// find the assembly
@@ -261,11 +259,18 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	if (klass) kWarning() << "Found class" << nameSpace + "." + className;
 
 	MonoMethod* ctor = 0;
+	bool withParentWidget = false;
 	if (klass) {
 		// we want the Foo.Bar:.ctor(QObject, List<QVariant>)
 		QByteArray methodName = nameSpace + "." + className + ":.ctor(Qyoto.QObject,System.Collections.Generic.List`1)";
 		MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
 		ctor = mono_method_desc_search_in_class(desc, klass);
+		if (!ctor) {
+			methodName = nameSpace + "." + className + ":.ctor(Qyoto.QWidget,Qyoto.QObject,System.Collections.Generic.List`1)";
+			desc = mono_method_desc_new(methodName, true);
+			ctor = mono_method_desc_search_in_class(desc, klass);
+			withParentWidget = true;
+		}
 	} else {
 		Smoke* s = Smoke::classMap[iface];
 		QString ifacestr;
@@ -295,6 +300,11 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 				MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
 				ctor = mono_method_desc_search_in_class(desc, klass);
 				if (ctor) break;
+				methodName = nameSpace + "." + className +
+					":.ctor(Qyoto.QWidget,Qyoto.QObject,System.Collections.Generic.List`1)";
+				desc = mono_method_desc_new(methodName, true);
+				ctor = mono_method_desc_search_in_class(desc, klass);
+				if (ctor) { withParentWidget = true; break; }
 			} while ((p = mono_class_get_parent(p)));
 			if (ctor) break;
 		}
@@ -314,6 +324,13 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	// initialize the Qyoto runtime
 	initQyotoRuntime();
 	
+	void* pwobj = 0;
+	if (parentWidget && withParentWidget) {
+		// wrap the parent widget
+		smokeqyoto_object* pwo = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QWidget").index, parentWidget);
+		pwobj = (*CreateInstance)("Qyoto.QWidget", pwo);
+	}
+	
 	// wrap the parent QObject
 	smokeqyoto_object* po = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QObject").index, parent);
 	void* pobj = (*CreateInstance)("Qyoto.QObject", po);
@@ -329,10 +346,17 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	}
 	
 	// set up the parameters and call the constructor
-	void* a[2];
-	a[0] = mono_gchandle_get_target((guint32) (qint64) pobj);
-	a[1] = mono_gchandle_get_target((guint32) (qint64) list);
+	void* a[ withParentWidget? 3 : 2 ];
+	int id = 0;
+	if (withParentWidget) {
+		a[id] = mono_gchandle_get_target((guint32) (qint64) pwobj);
+		id++;
+	}
+	a[id] = mono_gchandle_get_target((guint32) (qint64) pobj);
+	id++;
+	a[id] = mono_gchandle_get_target((guint32) (qint64) list);
 	mono_runtime_invoke(ctor, object, a, NULL);
+	if (pwobj) (*FreeGCHandle)(pwobj);
 	(*FreeGCHandle)(pobj);
 	(*FreeGCHandle)(list);
 	
