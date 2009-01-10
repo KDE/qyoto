@@ -1,3 +1,8 @@
+2009-01-10  Arno Rehn  <arno@arnorehn.de>
+
+	* Add QGraphicsItemInternal that implements QGraphicsItem's abstract methods.
+	  This should fix a bug reported by Eric Butler.
+
 2008-12-23  Arno Rehn  <arno@arnorehn.de>
 
 	* Add a QList<const char*> marshaller. For the moment it only works in the
