@@ -626,22 +626,6 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 	} else if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QObject")) {
 		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
 		const QMetaObject * meta = qobject->metaObject();
-
-		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemModel") == 0)
-			return "Qyoto.QItemModel";
-		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractButton") == 0)
-			return "Qyoto.QAbstractButtonInternal";
-		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractProxyModel") == 0)
-			return "Qyoto.QAbstractProxyModelInternal";
-		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemDelegate") == 0)
-			return "Qyoto.QAbstractItemDelegateInternal";
-		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemView") == 0)
-			return "Qyoto.QAbstractItemViewInternal";
-		if (strcmp(o->smoke->classes[o->classId].className, "QAbstractTextDocumentLayout") == 0)
-			return "Qyoto.QAbstractTextDocumentLayoutInternal";
-		if (strcmp(o->smoke->classes[o->classId].className, "QLayout") == 0)
-			return "Qyoto.QLayoutInternal";
-
 		const char * oldClassName = o->smoke->classes[o->classId].className;
 		while (meta != 0) {
 			o->smoke = Smoke::classMap[meta->className()];
@@ -649,10 +633,25 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 				o->classId = o->smoke->idClass(meta->className()).index;
 				if (o->classId != 0) {
 					// if the classname is different, resolve the new name again - otherwise just 'C#-ify' it.
-					if (strcmp(oldClassName, o->smoke->className(o->classId)) == 0)
+					if (strcmp(oldClassName, o->smoke->className(o->classId)) == 0) {
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemModel") == 0)
+							return "Qyoto.QItemModel";
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractButton") == 0)
+							return "Qyoto.QAbstractButtonInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractProxyModel") == 0)
+							return "Qyoto.QAbstractProxyModelInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemDelegate") == 0)
+							return "Qyoto.QAbstractItemDelegateInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemView") == 0)
+							return "Qyoto.QAbstractItemViewInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractTextDocumentLayout") == 0)
+							return "Qyoto.QAbstractTextDocumentLayoutInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QLayout") == 0)
+							return "Qyoto.QLayoutInternal";
 						return qyoto_modules[o->smoke].binding->className(o->classId);
-					else
+					} else {
 						return qyoto_resolve_classname(o);
+					}
 				}
 			}
 
