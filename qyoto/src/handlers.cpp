@@ -663,7 +663,7 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 		switch (item->type()) {
 		case 1:
 			o->classId = o->smoke->idClass("QGraphicsItem").index;
-			break;
+			return "Qyoto.QGraphicsItemInternal";
 		case 2:
 			o->classId = o->smoke->idClass("QGraphicsPathItem").index;
 			break;
@@ -680,7 +680,7 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 			break;
 		case 7:
 			o->classId = o->smoke->idClass("QGraphicsItem").index;
-			break;
+			return "Qyoto.QGraphicsItemInternal";
 		case 8:
 			o->classId = o->smoke->idClass("QGraphicsTextItem").index;
 			break;
