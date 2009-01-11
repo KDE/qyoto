@@ -1,3 +1,6 @@
+2009-01-11  Arno Rehn  <arno@arnorehn.de>
+	* Implement disconnecting delegates from a signal.
+
 2009-01-10  Arno Rehn  <arno@arnorehn.de>
 
 	* Add QGraphicsItemInternal that implements QGraphicsItem's abstract methods.

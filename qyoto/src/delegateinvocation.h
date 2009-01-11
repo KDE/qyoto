@@ -14,8 +14,8 @@
 class DelegateInvocation : public QObject, public Marshall
 {
 public:
-    DelegateInvocation(QObject *obj, const char *aSignal, void *delegate, smokeqyoto_object * o)
-        : QObject(obj), _delegate(delegate), _cur(-1), _o(o)
+    DelegateInvocation(QObject *obj, const char *aSignal, void *delegate, void *handle, smokeqyoto_object * o)
+        : QObject(obj), _delegate(delegate), _handle(handle), _cur(-1), _o(o)
     {
 #ifdef Q_CC_BOR
         const int memberOffset = QObject::staticMetaObject.methodCount();
@@ -52,6 +52,7 @@ public:
     }
 
     ~DelegateInvocation() {
+        (*FreeGCHandle)(_handle);
         delete[] _stack;
         delete[] _sp;
         foreach (MocArgument * arg, _mocargs) {
@@ -109,6 +110,7 @@ private:
 
     QList<MocArgument*> _mocargs;
     void *_delegate;
+    void *_handle;
     int _cur;
     int _items;
     Smoke::Stack _sp;
