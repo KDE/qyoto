@@ -1,3 +1,7 @@
+2009-01-12  Richard Dale  <richard.j.dale@gmail.com>
+* Add the Plasma.Service and Plasma.ServiceJob classes and regenerated the 
+  sources from the current headers
+
 2008-12-01  Richard Dale  <richard.j.dale@gmail.com>
 * Changed the tiger applet example to find its tiger.svg resource from within
   the plasmoid package.

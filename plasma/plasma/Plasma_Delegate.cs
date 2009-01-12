@@ -55,6 +55,13 @@ namespace Plasma {
             interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
         }
         /// <remarks>
+        /// </remarks>        <return> true if a tooltip should be shown
+        ///      </return>
+        ///         <short>   </short>
+        public bool ShowToolTip() {
+            return (bool) interceptor.Invoke("showToolTip", "showToolTip() const", typeof(bool));
+        }
+        /// <remarks>
         ///  Returns the empty area after the title.
         ///  The height is the height of the subtitle.
         ///  It can be used by subclasses that wants to paint additional data after

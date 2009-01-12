@@ -96,6 +96,10 @@ namespace Plasma {
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
             interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
         }
+        [SmokeMethod("wheelEvent(QGraphicsSceneWheelEvent*)")]
+        protected override void WheelEvent(QGraphicsSceneWheelEvent arg1) {
+            interceptor.Invoke("wheelEvent#", "wheelEvent(QGraphicsSceneWheelEvent*)", typeof(void), typeof(QGraphicsSceneWheelEvent), arg1);
+        }
         ~Slider() {
             interceptor.Invoke("~Slider", "~Slider()", typeof(void));
         }

@@ -69,10 +69,9 @@ namespace Plasma {
         ///  Execution of the correct action should be handled in the run method.
         ///  @caution This method needs to be thread-safe since KRunner will simply
         ///  start a new thread for each new term.
-        ///  @caution Returning from this method means to end execution of the runner.
+        ///  @warning Returning from this method means to end execution of the runner.
         ///  @sa run(), RunnerContext.AddMatch, RunnerContext.AddMatches, QueryMatch
         ///          </remarks>        <short>    This is the main query method.</short>
-        ///         <see> actionsForMatch</see>
         [SmokeMethod("match(Plasma::RunnerContext&)")]
         public virtual void Match(Plasma.RunnerContext context) {
             interceptor.Invoke("match#", "match(Plasma::RunnerContext&)", typeof(void), typeof(Plasma.RunnerContext), context);
@@ -309,6 +308,16 @@ namespace Plasma {
         protected void Init() {
             interceptor.Invoke("init", "init()", typeof(void));
         }
+        /// <remarks>
+        ///  Access to a shared lock that all runners (and code that manages/interacts with them)
+        ///  can share to protect access to non-thread-safe shared code or data.
+        ///  Access of KSycoca records, for instance, is one place this lock should be used.
+        ///  Common usage:
+        ///  {
+        ///      QMutexLocker lock(bigLock());
+        ///      .. do something that isn't thread safe ..
+        ///  }
+        ///          </remarks>        <short>    Access to a shared lock that all runners (and code that manages/interacts with them)  can share to protect access to non-thread-safe shared code or data.</short>
         protected new IAbstractRunnerSignals Emit {
             get { return (IAbstractRunnerSignals) Q_EMIT; }
         }

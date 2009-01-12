@@ -29,6 +29,16 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("image", "image()", typeof(string)); }
             set { interceptor.Invoke("setImage$", "setImage(QString)", typeof(void), typeof(string), value); }
         }
+        [Q_PROPERTY("Qt::Alignment", "alignment")]
+        public uint Alignment {
+            get { return (uint) interceptor.Invoke("alignment", "alignment()", typeof(uint)); }
+            set { interceptor.Invoke("setAlignment$", "setAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
+        }
+        [Q_PROPERTY("bool", "hasScaledContents")]
+        public bool HasScaledContents {
+            get { return (bool) interceptor.Invoke("hasScaledContents", "hasScaledContents()", typeof(bool)); }
+            set { interceptor.Invoke("setScaledContents$", "setScaledContents(bool)", typeof(void), typeof(bool), value); }
+        }
         [Q_PROPERTY("QString", "styleSheet")]
         public string StyleSheet {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }

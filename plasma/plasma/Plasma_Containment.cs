@@ -207,6 +207,22 @@ namespace Plasma {
             return (int) interceptor.Invoke("desktop", "desktop() const", typeof(int));
         }
         /// <remarks>
+        ///  @reimp
+        ///  @sa Applet.Save(KConfigGroup &)
+        ///          </remarks>        <short>    @reimp  @sa Applet.Save(KConfigGroup &)          </short>
+        [SmokeMethod("save(KConfigGroup&) const")]
+        public override void Save(KConfigGroup group) {
+            interceptor.Invoke("save#", "save(KConfigGroup&) const", typeof(void), typeof(KConfigGroup), group);
+        }
+        /// <remarks>
+        ///  @reimp
+        ///  @sa Applet.Restore(KConfigGroup &)
+        ///          </remarks>        <short>    @reimp  @sa Applet.Restore(KConfigGroup &)          </short>
+        [SmokeMethod("restore(KConfigGroup&)")]
+        public override void Restore(KConfigGroup group) {
+            interceptor.Invoke("restore#", "restore(KConfigGroup&)", typeof(void), typeof(KConfigGroup), group);
+        }
+        /// <remarks>
         ///  convenience function - enables or disables an action by name
         /// <param> name="name" the name of the action in our collection
         /// </param><param> name="enable" true to enable, false to disable
@@ -377,6 +393,15 @@ namespace Plasma {
             interceptor.Invoke("destroy$", "destroy(bool)", typeof(void), typeof(bool), confirm);
         }
         /// <remarks>
+        ///  @reimp
+        ///  @sa Applet.ShowConfigurationInterface()
+        ///          </remarks>        <short>    @reimp  @sa Applet.ShowConfigurationInterface()          </short>
+        [Q_SLOT("void showConfigurationInterface()")]
+        [SmokeMethod("showConfigurationInterface()")]
+        public override void ShowConfigurationInterface() {
+            interceptor.Invoke("showConfigurationInterface", "showConfigurationInterface()", typeof(void));
+        }
+        /// <remarks>
         ///  Sets the type of this containment.
         ///          </remarks>        <short>    Sets the type of this containment.</short>
         protected void SetContainmentType(Plasma.Containment.TypeOf type) {
@@ -437,6 +462,38 @@ namespace Plasma {
         [SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
         protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
             return (QVariant) interceptor.Invoke("itemChange$#", "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)", typeof(QVariant), typeof(QGraphicsItem.GraphicsItemChange), change, typeof(QVariant), value);
+        }
+        /// <remarks>
+        ///  @reimp
+        ///  @sa QGraphicsItem.DragEnterEvent()
+        ///          </remarks>        <short>    @reimp  @sa QGraphicsItem.DragEnterEvent()          </short>
+        [SmokeMethod("dragEnterEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragEnterEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragEnterEvent#", "dragEnterEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        /// <remarks>
+        ///  @reimp
+        ///  @sa QGraphicsItem.DragMoveEvent()
+        ///          </remarks>        <short>    @reimp  @sa QGraphicsItem.DragMoveEvent()          </short>
+        [SmokeMethod("dragMoveEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragMoveEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragMoveEvent#", "dragMoveEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        /// <remarks>
+        ///  @reimp
+        ///  @sa QGraphicsItem.DropEvent()
+        ///          </remarks>        <short>    @reimp  @sa QGraphicsItem.DropEvent()          </short>
+        [SmokeMethod("dropEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DropEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dropEvent#", "dropEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        /// <remarks>
+        ///  @reimp
+        ///  @sa QGraphicsItem.ResizeEvent()
+        ///          </remarks>        <short>    @reimp  @sa QGraphicsItem.ResizeEvent()          </short>
+        [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
+        protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
+            interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
         /// <remarks>
         /// </remarks>        <return> the toolbox associated with this containment, or a null pointer if none

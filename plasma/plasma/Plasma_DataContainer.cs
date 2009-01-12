@@ -89,6 +89,7 @@ namespace Plasma {
         ///  side effects
         /// <param> name="visualization" the object to connect to this DataContainer
         /// </param><param> name="pollingInterval" the time in milliseconds between updates
+        /// </param><param> name="alignment" the clock position to align updates to
         /// </param></remarks>        <short>    Connects an object to this DataContainer.</short>
         public void ConnectVisualization(QObject visualization, uint pollingInterval, Plasma.IntervalAlignment alignment) {
             interceptor.Invoke("connectVisualization#$$", "connectVisualization(QObject*, uint, Plasma::IntervalAlignment)", typeof(void), typeof(QObject), visualization, typeof(uint), pollingInterval, typeof(Plasma.IntervalAlignment), alignment);

@@ -104,20 +104,32 @@ namespace Plasma {
             interceptor.Invoke("~Package", "~Package()", typeof(void));
         }
         /// <remarks>
-        ///  Returns a list of all installed packages
+        ///  Returns a list of all installed packages by name
         /// <param> name="packageRoot" path to the directory where Plasmagik packages
         ///                     have been installed to
         /// </param></remarks>        <return> a list of installed Plasmagik packages
         /// </return>
-        ///         <short>    Returns a list of all installed packages </short>
+        ///         <short>    Returns a list of all installed packages by name </short>
         public static List<string> ListInstalled(string packageRoot) {
             return (List<string>) staticInterceptor.Invoke("listInstalled$", "listInstalled(const QString&)", typeof(List<string>), typeof(string), packageRoot);
+        }
+        /// <remarks>
+        ///  Returns a list of all paths of installed packages in the given root
+        /// <param> name="packageRoot" path to the directory where Plasmagik packages
+        ///                     have been installed to
+        /// </param></remarks>        <return> a list of installed Plasmagik packages by path
+        /// </return>
+        ///         <short>    Returns a list of all paths of installed packages in the given root </short>
+        public static List<string> ListInstalledPaths(string packageRoot) {
+            return (List<string>) staticInterceptor.Invoke("listInstalledPaths$", "listInstalledPaths(const QString&)", typeof(List<string>), typeof(string), packageRoot);
         }
         /// <remarks>
         ///  Installs a package.
         /// <param> name="package" path to the Plasmagik package
         /// </param><param> name="packageRoot" path to the directory where the package should be
         ///                     installed to
+        /// </param><param> name="servicePrefix" the prefix for the desktop file, so as not to interfere
+        ///                       with unrelated services (eg: "plasma-applet-")
         /// </param></remarks>        <return> true on successful installation, false otherwise
         /// </return>
         ///         <short>    Installs a package.</short>
@@ -129,6 +141,8 @@ namespace Plasma {
         /// <param> name="package" path to the Plasmagik package
         /// </param><param> name="packageRoot" path to the directory where the package should be
         ///                     installed to
+        /// </param><param> name="servicePrefix" the prefix for the desktop file, so as not to interfere
+        ///                       with unrelated services (eg: "plasma-applet-")
         /// </param></remarks>        <return> true on successful uninstallation, false otherwise
         /// </return>
         ///         <short>    Uninstalls a package.</short>
