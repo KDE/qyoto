@@ -6,6 +6,7 @@ namespace Plasma {
     using Qyoto;
     /// <remarks>
     ///  @class ScrollBar plasma/widgets/scrollbar.h <Plasma/Widgets/ScrollBar>
+    ///  See <see cref="IScrollBarSignals"></see> for signals emitted by ScrollBar
     /// </remarks>        <short> Provides a plasma-themed QScrollBar.  </short>
     [SmokeClass("Plasma::ScrollBar")]
     public class ScrollBar : QGraphicsProxyWidget, IDisposable {
@@ -45,9 +46,12 @@ namespace Plasma {
         public QScrollBar NativeWidget {
             get { return (QScrollBar) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QScrollBar)); }
         }
-        public ScrollBar(Qt.Orientation orientation, QGraphicsWidget parent) : this((Type) null) {
+        /// <remarks>
+        ///  Creates a scrollbar; the default orientation is vertical
+        ///      </remarks>        <short>    Creates a scrollbar; the default orientation is vertical      </short>
+        public ScrollBar(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("ScrollBar$#", "ScrollBar(Qt::Orientation, QGraphicsWidget*)", typeof(void), typeof(Qt.Orientation), orientation, typeof(QGraphicsWidget), parent);
+            interceptor.Invoke("ScrollBar#", "ScrollBar(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), parent);
         }
         /// <remarks>
         ///  Sets the scrollbar minimum and maximum values
@@ -56,6 +60,21 @@ namespace Plasma {
         ///      </remarks>        <short>    Sets the scrollbar minimum and maximum values  @arg min minimum value  @arg max maximum value      </short>
         public void SetRange(int min, int max) {
             interceptor.Invoke("setRange$$", "setRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
+        }
+        /// <remarks>
+        ///  Sets the current value for the ScrollBar
+        ///  @arg value must be minimum() <= value <= maximum()
+        ///      </remarks>        <short>    Sets the current value for the ScrollBar  @arg value must be minimum() <= value <= maximum()      </short>
+        [Q_SLOT("void setValue(int)")]
+        public void SetValue(int val) {
+            interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), val);
+        }
+        /// <remarks>
+        ///  Sets the orientation of the ScrollBar.
+        ///      </remarks>        <short>    Sets the orientation of the ScrollBar.</short>
+        [Q_SLOT("void setOrientation(Qt::Orientation)")]
+        public void SetOrientation(Qt.Orientation orientation) {
+            interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
         }
         ~ScrollBar() {
             interceptor.Invoke("~ScrollBar", "~ScrollBar()", typeof(void));
@@ -69,5 +88,10 @@ namespace Plasma {
     }
 
     public interface IScrollBarSignals : IQGraphicsProxyWidgetSignals {
+        /// <remarks>
+        ///  Emitted when the value of the slider changes
+        ///      </remarks>        <short>    Emitted when the value of the slider changes      </short>
+        [Q_SIGNAL("void valueChanged(int)")]
+        void ValueChanged(int value);
     }
 }

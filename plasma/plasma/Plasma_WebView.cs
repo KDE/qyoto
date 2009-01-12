@@ -5,7 +5,7 @@ namespace Plasma {
     using Kimono;
     using Qyoto;
     /// <remarks>
-    ///  @class WebView plasma/widgets/webcontent.h <Plasma/Widgets/WebView>
+    ///  @class WebView plasma/widgets/webview.h <Plasma/Widgets/WebView>
     ///  See <see cref="IWebViewSignals"></see> for signals emitted by WebView
     /// </remarks>        <short> Provides a widget to display html content in Plasma.  </short>
     [SmokeClass("Plasma::WebView")]

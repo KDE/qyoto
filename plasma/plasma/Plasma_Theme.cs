@@ -198,9 +198,19 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Discards all the information about a given image from the rectangle disk cache
+        ///  @arg image the path to the image the cache is assoiated with
         /// </remarks>        <short>    Discards all the information about a given image from the rectangle disk cache </short>
         public void InvalidateRectsCache(string image) {
             interceptor.Invoke("invalidateRectsCache$", "invalidateRectsCache(const QString&)", typeof(void), typeof(string), image);
+        }
+        /// <remarks>
+        ///  Frees up memory used by cached information for a given image without removing
+        ///  the permenant record of it on disk.
+        ///  @arg image the path to the image the cache is assoiated with
+        ///          </remarks>        <short>    Frees up memory used by cached information for a given image without removing  the permenant record of it on disk.</short>
+        ///         <see> invalidateRectsCache</see>
+        public void ReleaseRectsCache(string image) {
+            interceptor.Invoke("releaseRectsCache$", "releaseRectsCache(const QString&)", typeof(void), typeof(string), image);
         }
         /// <remarks>
         ///  Notifies the Theme object that the theme settings have changed

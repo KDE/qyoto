@@ -92,8 +92,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Set text label color for the meter
-        /// <param> name="index" label index.
-        /// </param><param> name="text" color for the label.
+        /// <param> name="index" label index
+        /// </param><param> name="color" the color to apply to the label
         ///      </param></remarks>        <short>    Set text label color for the meter </short>
         public void SetLabelColor(int index, QColor color) {
             interceptor.Invoke("setLabelColor$#", "setLabelColor(int, const QColor&)", typeof(void), typeof(int), index, typeof(QColor), color);
@@ -108,8 +108,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Set text label font for the meter
-        /// <param> name="index" label index.
-        /// </param><param> name="text" font for the label.
+        /// <param> name="index" label index
+        /// </param><param> name="font" the font to apply to the label
         ///      </param></remarks>        <short>    Set text label font for the meter </short>
         public void SetLabelFont(int index, QFont font) {
             interceptor.Invoke("setLabelFont$#", "setLabelFont(int, const QFont&)", typeof(void), typeof(int), index, typeof(QFont), font);
@@ -124,8 +124,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Set text label alignment for the meter
-        /// <param> name="index" label index.
-        /// </param><param> name="text" alignment for the label.
+        /// <param> name="index" label index
+        /// </param><param> name="alignment" the text alignment to apply to the label
         ///      </param></remarks>        <short>    Set text label alignment for the meter </short>
         public void SetLabelAlignment(int index, uint alignment) {
             interceptor.Invoke("setLabelAlignment$$", "setLabelAlignment(int, const Qt::Alignment)", typeof(void), typeof(int), index, typeof(uint), alignment);

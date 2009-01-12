@@ -376,6 +376,16 @@ namespace Plasma {
             return (KShortcut) interceptor.Invoke("globalShortcut", "globalShortcut() const", typeof(KShortcut));
         }
         /// <remarks>
+        /// </remarks>        <return> true is there is a popup assoiated with this Applet
+        ///  showing, such as the dialog of a PopupApplet. May be reimplemented
+        ///  for custom popup implementations.
+        ///          </return>
+        ///         <short>   </short>
+        [SmokeMethod("isPopupShowing() const")]
+        public virtual bool IsPopupShowing() {
+            return (bool) interceptor.Invoke("isPopupShowing", "isPopupShowing() const", typeof(bool));
+        }
+        /// <remarks>
         ///  associate actions with this widget, including ones added after this call.
         ///  needed to make keyboard shortcuts work.
         ///          </remarks>        <short>    associate actions with this widget, including ones added after this call.</short>
@@ -431,6 +441,14 @@ namespace Plasma {
         public Applet() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("Applet", "Applet()", typeof(void));
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if destroy() was called; useful for Applets which should avoid
+        ///  certain tasks if they are about to be deleted permanently
+        ///          </return>
+        ///         <short>   </short>
+        public bool Destroyed() {
+            return (bool) interceptor.Invoke("destroyed", "destroyed() const", typeof(bool));
         }
         /// <remarks>
         ///  Sets the immutability type for this applet (not immutable,
@@ -492,6 +510,9 @@ namespace Plasma {
         ///  If the applet requires a QGraphicsScene or has an particularly intensive
         ///  set of initialization routines to go through, consider implementing it
         ///  in this method instead of the constructor.
+        ///  Note: paintInterface may get called before init() depending on initialization
+        ///  order. Painting is managed by the canvas (QGraphisScene), and may schedule a
+        ///  paint event prior to init() being called.
         /// </remarks>        <short>    This method is called once the applet is loaded and added to a Corona.</short>
         [Q_SLOT("void init()")]
         [SmokeMethod("init()")]
@@ -559,11 +580,11 @@ namespace Plasma {
         ///  When the applet needs to be configured before being usable, this
         ///  method can be called to show a standard interface prompting the user
         ///  to configure the applet
-        ///  Not that all children items will be deleted when this method is
-        ///  called. If you have pointers to these items, you will need to
-        ///  reset them after calling this method.
         /// <param> name="needsConfiguring" true if the applet needs to be configured,
         ///                          or false if it doesn't
+        /// </param><param> name="reason" a translated message for the user explaining that the
+        ///                applet needs configuring; this should note what needs
+        ///                to be configured
         ///          </param></remarks>        <short>    When the applet needs to be configured before being usable, this  method can be called to show a standard interface prompting the user  to configure the applet </short>
         protected void SetConfigurationRequired(bool needsConfiguring, string reason) {
             interceptor.Invoke("setConfigurationRequired$$", "setConfigurationRequired(bool, const QString&)", typeof(void), typeof(bool), needsConfiguring, typeof(string), reason);

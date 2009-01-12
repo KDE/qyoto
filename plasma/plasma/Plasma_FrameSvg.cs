@@ -185,12 +185,12 @@ namespace Plasma {
             return (string) interceptor.Invoke("prefix", "prefix()", typeof(string));
         }
         /// <remarks>
-        ///  Returns a monochrome mask that tightly contains the fully opaque areas of the svg
-        /// </remarks>        <return> a monochrome bitmap of opaque areas
+        ///  Returns a mask that tightly contains the fully opaque areas of the svg
+        /// </remarks>        <return> a region of opaque areas
         ///          </return>
-        ///         <short>    Returns a monochrome mask that tightly contains the fully opaque areas of the svg </short>
-        public QBitmap Mask() {
-            return (QBitmap) interceptor.Invoke("mask", "mask() const", typeof(QBitmap));
+        ///         <short>    Returns a mask that tightly contains the fully opaque areas of the svg </short>
+        public QRegion Mask() {
+            return (QRegion) interceptor.Invoke("mask", "mask() const", typeof(QRegion));
         }
         /// <remarks>
         ///  Sets whether saving all the rendered prefixes in a cache or not

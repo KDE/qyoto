@@ -45,6 +45,8 @@ namespace Plasma {
         ///  Called when the script should paint the applet
         /// <param> name="painter" the QPainter to use
         /// </param><param> name="option" the style option containing such flags as selection, level of detail, etc
+        /// </param><param> name="contentsRect" the rect to paint within; automatically adjusted for
+        ///                      the background, if any
         ///      </param></remarks>        <short>    Called when the script should paint the applet </short>
         [SmokeMethod("paintInterface(QPainter*, const QStyleOptionGraphicsItem*, const QRect&)")]
         public virtual void PaintInterface(QPainter painter, QStyleOptionGraphicsItem option, QRect contentsRect) {
@@ -91,6 +93,30 @@ namespace Plasma {
         ///      </remarks>        <short>    Sets whether or not this script has a configuration interface or not </short>
         public void SetHasConfigurationInterface(bool hasInterface) {
             interceptor.Invoke("setHasConfigurationInterface$", "setHasConfigurationInterface(bool)", typeof(void), typeof(bool), hasInterface);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        public void SetConfigurationRequired(bool req, string reason) {
+            interceptor.Invoke("setConfigurationRequired$$", "setConfigurationRequired(bool, const QString&)", typeof(void), typeof(bool), req, typeof(string), reason);
+        }
+        public void SetConfigurationRequired(bool req) {
+            interceptor.Invoke("setConfigurationRequired$", "setConfigurationRequired(bool)", typeof(void), typeof(bool), req);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        public void SetFailedToLaunch(bool failed, string reason) {
+            interceptor.Invoke("setFailedToLaunch$$", "setFailedToLaunch(bool, const QString&)", typeof(void), typeof(bool), failed, typeof(string), reason);
+        }
+        public void SetFailedToLaunch(bool failed) {
+            interceptor.Invoke("setFailedToLaunch$", "setFailedToLaunch(bool)", typeof(void), typeof(bool), failed);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        public void ConfigNeedsSaving() {
+            interceptor.Invoke("configNeedsSaving", "configNeedsSaving() const", typeof(void));
         }
         /// <remarks>
         ///  Show a configuration dialog.

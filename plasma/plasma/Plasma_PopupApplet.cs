@@ -87,6 +87,14 @@ namespace Plasma {
             return (bool) interceptor.Invoke("isPassivePopup", "isPassivePopup() const", typeof(bool));
         }
         /// <remarks>
+        /// </remarks>        <return> true if the applet is popped up
+        ///      </return>
+        ///         <short>   </short>
+        [SmokeMethod("isPopupShowing() const")]
+        public override bool IsPopupShowing() {
+            return (bool) interceptor.Invoke("isPopupShowing", "isPopupShowing() const", typeof(bool));
+        }
+        /// <remarks>
         ///  Hides the popup.
         ///      </remarks>        <short>    Hides the popup.</short>
         [Q_SLOT("void hidePopup()")]

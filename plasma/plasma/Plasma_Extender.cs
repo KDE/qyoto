@@ -192,6 +192,13 @@ namespace Plasma {
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
+        /// <remarks>
+        ///  Reimplemented from QGraphicsWidget
+        ///          </remarks>        <short>    Reimplemented from QGraphicsWidget          </short>
+        [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
         ~Extender() {
             interceptor.Invoke("~Extender", "~Extender()", typeof(void));
         }

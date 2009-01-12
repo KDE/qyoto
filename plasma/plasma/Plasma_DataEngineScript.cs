@@ -14,7 +14,6 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(DataEngineScript), this);
         }
-        // Plasma::Service* serviceForSource(const QString& arg1); >>>> NOT CONVERTED
         /// <remarks>
         ///  Default constructor for a DataEngineScript.
         ///  Subclasses should not attempt to access the Plasma.DataEngine
@@ -83,6 +82,10 @@ namespace Plasma {
         ///          caller when finished with it
         ///      </return>
         ///         <short>   </short>
+        [SmokeMethod("serviceForSource(const QString&)")]
+        public virtual Plasma.Service ServiceForSource(string source) {
+            return (Plasma.Service) interceptor.Invoke("serviceForSource$", "serviceForSource(const QString&)", typeof(Plasma.Service), typeof(string), source);
+        }
         /// <remarks>
         /// </remarks>        <return> absolute path to the main script file for this plasmoid
         ///      </return>

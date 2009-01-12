@@ -123,7 +123,7 @@ namespace Plasma {
         ///  Sets whether or not a given part of the structure is required or not.
         ///  The path must already have been added using addDirectoryDefinition
         ///  or addFileDefinition.
-        /// <param> name="path" the path of the entry within the package
+        /// <param> name="key" the entry within the package
         /// </param><param> name="required" true if this entry is required, false if not
         ///      </param></remarks>        <short>    Sets whether or not a given part of the structure is required or not.</short>
         public void SetRequired(string key, bool required) {
@@ -149,7 +149,7 @@ namespace Plasma {
         ///  Define mimetypes for a given part of the structure
         ///  The path must already have been added using addDirectoryDefinition
         ///  or addFileDefinition.
-        /// <param> name="path" the path of the entry within the package
+        /// <param> name="key" the entry within the package
         /// </param><param> name="mimetypes" a list of mimetypes
         /// </param></remarks>        <short>    Define mimetypes for a given part of the structure  The path must already have been added using addDirectoryDefinition  or addFileDefinition.</short>
         public void SetMimetypes(string key, List<string> mimetypes) {
@@ -219,8 +219,8 @@ namespace Plasma {
         ///  The user interface may be an in-process dialog or an out-of-process application.
         ///  When the process is complete, the newWidgetBrowserFinished() signal must be
         ///  emitted.
-        ///  @args parent the parent widget to use for the widget
-        ///      </remarks>        <short>    When called, the package plugin should display a window to the user  that they can use to browser, select and then install widgets supported by  this package plugin with.</short>
+        /// <param> name="parent" the parent widget to use for the widget
+        ///      </param></remarks>        <short>    When called, the package plugin should display a window to the user  that they can use to browser, select and then install widgets supported by  this package plugin with.</short>
         [SmokeMethod("createNewWidgetBrowser(QWidget*)")]
         public virtual void CreateNewWidgetBrowser(QWidget parent) {
             interceptor.Invoke("createNewWidgetBrowser#", "createNewWidgetBrowser(QWidget*)", typeof(void), typeof(QWidget), parent);

@@ -178,8 +178,9 @@ namespace Plasma {
         ///  Converts a location to a direction. Handy for figuring out which way to send a popup based on
         ///  location or to point arrows and other directional items.
         /// <param> name="location" the location of the container the element will appear in
-        ///  @reutrn the visual direction of the element should be oriented in
-        /// </param></remarks>        <short>    Converts a location to a direction.</short>
+        /// </param></remarks>        <return> the visual direction of the element should be oriented in
+        /// </return>
+        ///         <short>    Converts a location to a direction.</short>
         public static Plasma.Direction LocationToDirection(Plasma.Location location) {
             return (Plasma.Direction) staticInterceptor.Invoke("locationToDirection$", "locationToDirection(Plasma::Location)", typeof(Plasma.Direction), typeof(Plasma.Location), location);
         }
@@ -236,7 +237,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Loads an appropriate PackageStructure for the given language and type
-        /// <param> name="langauge" the language to load the PackageStructure for
+        /// <param> name="language" the language to load the PackageStructure for
         /// </param><param> name="type" the component type
         /// </param></remarks>        <return> a guarded PackageStructure pointer
         ///  </return>

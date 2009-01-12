@@ -36,7 +36,6 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("icon", "icon()", typeof(string)); }
             set { interceptor.Invoke("setIcon$", "setIcon(QString)", typeof(void), typeof(string), value); }
         }
-        // Plasma::Service* serviceForSource(const QString& arg1); >>>> NOT CONVERTED
         /// <remarks>
         ///  Constructor.
         /// <param> name="parent" The parent object.
@@ -86,6 +85,10 @@ namespace Plasma {
         ///          caller when finished with it
         ///          </return>
         ///         <short>   </short>
+        [SmokeMethod("serviceForSource(const QString&)")]
+        public virtual Plasma.Service ServiceForSource(string source) {
+            return (Plasma.Service) interceptor.Invoke("serviceForSource$", "serviceForSource(const QString&)", typeof(Plasma.Service), typeof(string), source);
+        }
         /// <remarks>
         ///  Returns the engine name for the DataEngine
         ///          </remarks>        <short>    Returns the engine name for the DataEngine          </short>

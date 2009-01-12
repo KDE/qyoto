@@ -67,6 +67,18 @@ namespace Plasma {
             return (KConfigSkeletonItem) interceptor.Invoke("findItem$$", "findItem(const QString&, const QString&)", typeof(KConfigSkeletonItem), typeof(string), group, typeof(string), key);
         }
         /// <remarks>
+        ///  Finds an item by its name
+        ///      </remarks>        <short>    Finds an item by its name      </short>
+        public KConfigSkeletonItem FindItemByName(string name) {
+            return (KConfigSkeletonItem) interceptor.Invoke("findItemByName$", "findItemByName(const QString&)", typeof(KConfigSkeletonItem), typeof(string), name);
+        }
+        /// <remarks>
+        ///  Returns the property (variantized value) of the named item
+        ///      </remarks>        <short>    Returns the property (variantized value) of the named item      </short>
+        public QVariant Property(string name) {
+            return (QVariant) interceptor.Invoke("property$", "property(const QString&)", typeof(QVariant), typeof(string), name);
+        }
+        /// <remarks>
         ///  Check to see if a group exists
         /// <param> name="group" the name of the group to check for
         /// </param></remarks>        <return> true if the group exists, or false if it does not

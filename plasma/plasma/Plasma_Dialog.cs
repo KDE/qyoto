@@ -74,6 +74,10 @@ namespace Plasma {
         protected override void PaintEvent(QPaintEvent e) {
             interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), e);
         }
+        [SmokeMethod("event(QEvent*)")]
+        protected override bool Event(QEvent arg1) {
+            return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+        }
         [SmokeMethod("resizeEvent(QResizeEvent*)")]
         protected override void ResizeEvent(QResizeEvent e) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), e);
@@ -101,6 +105,10 @@ namespace Plasma {
         [SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
         protected override void MouseReleaseEvent(QMouseEvent arg1) {
             interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+        }
+        [SmokeMethod("keyPressEvent(QKeyEvent*)")]
+        protected override void KeyPressEvent(QKeyEvent arg1) {
+            interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
         }
         /// <remarks>
         ///  Convenience method to know whether the point is in a control area (e.g. resize area)

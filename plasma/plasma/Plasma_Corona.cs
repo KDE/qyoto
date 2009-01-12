@@ -75,7 +75,7 @@ namespace Plasma {
         /// <remarks>
         ///  Returns the Containment, if any, for a given physical screen
         /// <param> name="screen" number of the physical screen to locate
-        /// </param><param> name="desktop" the dekstop) to locate; if < 0 then it will
+        /// </param><param> name="desktop" the desktop) to locate; if < 0 then it will
         ///         simply return the first Containment associated with screen
         ///      </param></remarks>        <short>    Returns the Containment, if any, for a given physical screen </short>
         public Plasma.Containment ContainmentForScreen(int screen, int desktop) {
@@ -132,14 +132,25 @@ namespace Plasma {
             return (QRegion) interceptor.Invoke("availableScreenRegion$", "availableScreenRegion(int) const", typeof(QRegion), typeof(int), id);
         }
         /// <remarks>
-        ///  Reccomended position for a popup window like a menu or a tooltip
+        ///  Recommended position for a popup window like a menu or a tooltip
         ///  given its size
-        /// <param> name="s" size of the popup
+        /// <param> name="item" the item that the popup should appear adjacent to (an applet, say)
+        /// </param><param> name="size" size of the popup
         /// </param></remarks>        <return> reccomended position
         ///     </return>
-        ///         <short>    Reccomended position for a popup window like a menu or a tooltip  given its size </short>
-        public QPoint PopupPosition(IQGraphicsItem item, QSize s) {
-            return (QPoint) interceptor.Invoke("popupPosition##", "popupPosition(const QGraphicsItem*, const QSize&)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), s);
+        ///         <short>    Recommended position for a popup window like a menu or a tooltip  given its size </short>
+        public QPoint PopupPosition(IQGraphicsItem item, QSize size) {
+            return (QPoint) interceptor.Invoke("popupPosition##", "popupPosition(const QGraphicsItem*, const QSize&)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), size);
+        }
+        /// <remarks>
+        ///  This method is useful in order to retrieve the list of available
+        ///  screen edges for panel type containments.
+        /// <param> name="screen" the id of the screen to look for free edges.
+        /// </param></remarks>        <return> a list of free edges not filled with panel type containments.
+        ///      </return>
+        ///         <short>    This method is useful in order to retrieve the list of available  screen edges for panel type containments.</short>
+        public List<Plasma.Location> FreeEdges(int screen) {
+            return (List<Plasma.Location>) interceptor.Invoke("freeEdges$", "freeEdges(int) const", typeof(List<Plasma.Location>), typeof(int), screen);
         }
         /// <remarks>
         ///  Initializes the layout from a config file. This will first clear any existing
@@ -206,6 +217,17 @@ namespace Plasma {
         [Q_SLOT("void requestConfigSync()")]
         public void RequestConfigSync() {
             interceptor.Invoke("requestConfigSync", "requestConfigSync()", typeof(void));
+        }
+        /// <remarks>
+        ///  Schedules a time sensitive flush-to-disk synchronization of the
+        ///  configuration state. Since this method does not provide any sort of
+        ///  event compression, it should only be used when an immediate disk
+        ///  sync is absolutely required. Otherwise, use @see requestConfigSync()
+        ///  which does do event compression.
+        ///      </remarks>        <short>    Schedules a time sensitive flush-to-disk synchronization of the  configuration state.</short>
+        [Q_SLOT("void requireConfigSync()")]
+        public void RequireConfigSync() {
+            interceptor.Invoke("requireConfigSync", "requireConfigSync()", typeof(void));
         }
         /// <remarks>
         ///  Loads the default (system wide) layout for this user
@@ -286,8 +308,8 @@ namespace Plasma {
         [Q_SIGNAL("void configSynced()")]
         void ConfigSynced();
         /// <remarks>
-        ///  This signal inicates that a change in available screen goemetry occured.
-        ///      </remarks>        <short>    This signal inicates that a change in available screen goemetry occured.</short>
+        ///  This signal inicates that a change in available screen goemetry occurred.
+        ///      </remarks>        <short>    This signal inicates that a change in available screen goemetry occurred.</short>
         [Q_SIGNAL("void availableScreenRegionChanged()")]
         void AvailableScreenRegionChanged();
     }
