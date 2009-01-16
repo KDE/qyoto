@@ -18,7 +18,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(nepomuk-sharp MODULE ${SRC_CPP})
-TARGET_LINK_LIBRARIES(nepomuk-sharp nepomuk nepomukqueryclient smokeqt smokenepomuk qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+TARGET_LINK_LIBRARIES(nepomuk-sharp ${NEPOMUK_LIBRARIES} nepomukqueryclient smokeqt smokenepomuk qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/soprano.dll -warn:0 -keyfile:${KEYFILE})
 ADD_CS_LIBRARY(nepomuk-dll "${SRC_CS}" ALL)
