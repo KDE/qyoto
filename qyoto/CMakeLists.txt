@@ -50,6 +50,9 @@ ADD_CS_LIBRARY(qt-dotnet "${SRC_CS_QYOTO}" ALL)
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
 
+GET_CS_LIBRARY_TARGET_DIR()
+FILE(WRITE ${CS_LIBRARY_TARGET_DIR}/qt-dotnet.dll.config "<configuration><dllmap dll=\"libqyotoshared\" target=\"libqyotoshared.so.1\"/></configuration>")
+
 INSTALL(TARGETS qyoto LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(TARGETS qyotoshared LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES src/emitsignal.h src/invokeslot.h src/marshall.h src/methodcall.h src/methodreturnvalue.h
