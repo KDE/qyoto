@@ -644,6 +644,8 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 							return "Qyoto.QAbstractItemDelegateInternal";
 						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemView") == 0)
 							return "Qyoto.QAbstractItemViewInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractListModel") == 0)
+							return "Qyoto.QAbstractListModelInternal";
 						if (strcmp(o->smoke->classes[o->classId].className, "QAbstractTextDocumentLayout") == 0)
 							return "Qyoto.QAbstractTextDocumentLayoutInternal";
 						if (strcmp(o->smoke->classes[o->classId].className, "QLayout") == 0)

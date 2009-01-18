@@ -3,6 +3,7 @@ namespace Qyoto {
 	using System;
 	using System.Runtime.InteropServices;
 
+	[SmokeClass("QAbstractItemModel")]
 	internal class QItemModel : QAbstractItemModel {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractItemModelColumnCount(IntPtr obj, IntPtr modelIndex);
