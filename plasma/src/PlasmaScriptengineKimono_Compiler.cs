@@ -114,7 +114,7 @@ namespace PlasmaScriptengineKimono {
                         sources.AddRange(match.Groups[++i].ToString().Split(','));
                 }
             }
-            if (!sources.Contains("main")) sources.Add("main");
+            if (!sources.Contains(program.FileName())) sources.Add(program.FileName());
             return sources;
         }
 
@@ -164,7 +164,7 @@ namespace PlasmaScriptengineKimono {
             string lang = GetLanguage(match);
             
             // add commonly used references
-            if (!sources.Contains("main")) sources.Add("main");
+            if (!sources.Contains(program.FileName())) sources.Add(program.FileName());
             if (!refs.Contains("qt-dotnet")) refs.Add("qt-dotnet");
             if (!refs.Contains("kde-dotnet")) refs.Add("kde-dotnet");
             if (!refs.Contains("plasma-dll")) refs.Add("plasma-dll");
