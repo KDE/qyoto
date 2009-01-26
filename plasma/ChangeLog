@@ -1,3 +1,6 @@
+2009-01-26  Arno Rehn  <arno@arnorehn.de>
+* Make PlasmaScripting.QGraphicsWidget inherit from IQGraphicsItem.
+
 2009-01-12  Richard Dale  <richard.j.dale@gmail.com>
 * Add the Plasma.Service and Plasma.ServiceJob classes and regenerated the 
   sources from the current headers

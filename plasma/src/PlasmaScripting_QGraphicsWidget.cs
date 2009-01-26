@@ -5,7 +5,7 @@ namespace PlasmaScripting {
     using Qyoto;
     using Plasma;
 
-    public class QGraphicsWidget : QObject {
+    public class QGraphicsWidget : QObject, IQGraphicsItem {
         protected AppletScript appletScript;
         protected Plasma.Applet applet;
         protected Type appletType;
