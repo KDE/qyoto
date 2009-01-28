@@ -9,7 +9,7 @@ namespace Qyoto {
 		public EventReceiver(QObject parent) : base(parent) {}
 		
 		public override bool Event(QEvent e) {
-			if (e.type() == QEvent.TypeOf.User) {
+			if (e != null && e.type() == QEvent.TypeOf.User) {
 				ThreadEvent my = e as ThreadEvent;
 				if (e != null) {
 					my.dele();
