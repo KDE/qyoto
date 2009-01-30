@@ -56,6 +56,7 @@ public:
 	MonoDomain* initJit(const QString& path);
 	MonoAssembly* getAssembly(const QString& path);
 	MonoImage* getImage(MonoAssembly* assembly);
+	MonoMethod* findMethod(MonoClass* klass, const QString& name);
 	MonoObject* createInstance(MonoClass* klass);
 	guint32 pinObject(MonoObject* obj);
 	
@@ -209,6 +210,28 @@ KimonoPluginFactory::getImage(MonoAssembly* assembly)
 	return image;
 }
 
+MonoMethod*
+KimonoPluginFactory::findMethod(MonoClass* klass, const QString& name)
+{
+	MonoMethod *m = 0; gpointer iter = 0;
+	static QByteArray ba;
+	while ((m = mono_class_get_methods(klass, &iter))) {
+		ba.clear();
+		ba += mono_method_get_name(m) + QByteArray("(");
+		MonoMethodSignature *sig = mono_method_signature(m);
+		MonoType *t = 0; gpointer iter2 = 0;
+		bool first = true;
+		while ((t = mono_signature_get_params(sig, &iter2))) {
+			if (!first) ba += ",";
+			ba += mono_type_get_name(t);
+			first = false;
+		}
+		ba += ")";
+		if (ba == name) return m;
+	}
+	return 0;
+}
+
 MonoObject*
 KimonoPluginFactory::createInstance(MonoClass* klass)
 {
@@ -293,17 +316,13 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 			className = name.right(name.size() - name.lastIndexOf(".") - 1);
 			klass = mono_class_from_name(image, nameSpace, className);
 			MonoClass* p = klass;
+			kWarning() << "classname" << name << "p:" << p;
 			do {
 				if (ifacestr != mono_type_get_name(mono_class_get_type(p)))
 					continue;
-				QByteArray methodName = nameSpace + "." + className + ":.ctor(Qyoto.QObject,System.Collections.Generic.List`1)";
-				MonoMethodDesc* desc = mono_method_desc_new(methodName, true);
-				ctor = mono_method_desc_search_in_class(desc, klass);
+				ctor = findMethod(klass, ".ctor(Qyoto.QObject,System.Collections.Generic.List<Qyoto.QVariant>)");
 				if (ctor) break;
-				methodName = nameSpace + "." + className +
-					":.ctor(Qyoto.QWidget,Qyoto.QObject,System.Collections.Generic.List`1)";
-				desc = mono_method_desc_new(methodName, true);
-				ctor = mono_method_desc_search_in_class(desc, klass);
+				ctor = findMethod(klass, ".ctor(Qyoto.QWidget,Qyoto.QObject,System.Collections.Generic.List<Qyoto.QVariant>)");
 				if (ctor) { withParentWidget = true; break; }
 			} while ((p = mono_class_get_parent(p)));
 			if (ctor) break;
