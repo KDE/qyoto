@@ -1,3 +1,8 @@
+2009-01-30  Arno Rehn  <arno@arnorehn.de>
+	* Mono 2.2 seems to have problems with generic parameters in method descriptions.
+	  Work around that by performing the method search ourselves. As a nice side-effect
+	  this adds type checking for generic parameters.
+
 2008-12-26  Arno Rehn  <arno@arnorehn.de>
 
 	* kimonopluginfactory.cpp: If the interface string doesn't appear to contain
