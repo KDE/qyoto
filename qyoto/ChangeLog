@@ -1,3 +1,9 @@
+2009-02-01  Richard Dale  <richard.j.dale@gmail.com>
+	* The construct_copy() function was using the full classname of the class
+	  to construct which meant that it didn't work with classnames containing
+	  '::' scope operators. So strip out the scope part of the classname to
+	  create the consructor name.
+
 2009-01-11  Arno Rehn  <arno@arnorehn.de>
 	* Implement disconnecting delegates from a signal.
 
