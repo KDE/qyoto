@@ -97,14 +97,6 @@ namespace Phonon {
         public new void Dispose() {
             interceptor.Invoke("~AudioOutput", "~AudioOutput()", typeof(void));
         }
-        public event OneArgDelegate<double> VolumeChanged {
-            add { QObject.Connect(this, SIGNAL("volumeChanged(qreal)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("volumeChanged(qreal)"), value); }
-        }
-        public event OneArgDelegate<bool> MutedChanged {
-            add { QObject.Connect(this, SIGNAL("mutedChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("mutedChanged(bool)"), value); }
-        }
         protected new IAudioOutputSignals Emit {
             get { return (IAudioOutputSignals) Q_EMIT; }
         }

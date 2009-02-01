@@ -137,38 +137,6 @@ namespace Phonon {
         public new void Dispose() {
             interceptor.Invoke("~MediaController", "~MediaController()", typeof(void));
         }
-        public event NoArgDelegate AvailableSubtitlesChanged {
-            add { QObject.Connect(this, SIGNAL("availableSubtitlesChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("availableSubtitlesChanged()"), value); }
-        }
-        public event NoArgDelegate AvailableAudioChannelsChanged {
-            add { QObject.Connect(this, SIGNAL("availableAudioChannelsChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("availableAudioChannelsChanged()"), value); }
-        }
-        public event OneArgDelegate<int> AvailableAnglesChanged {
-            add { QObject.Connect(this, SIGNAL("availableAnglesChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("availableAnglesChanged(int)"), value); }
-        }
-        public event OneArgDelegate<int> AngleChanged {
-            add { QObject.Connect(this, SIGNAL("angleChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("angleChanged(int)"), value); }
-        }
-        public event OneArgDelegate<int> AvailableChaptersChanged {
-            add { QObject.Connect(this, SIGNAL("availableChaptersChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("availableChaptersChanged(int)"), value); }
-        }
-        public event OneArgDelegate<int> ChapterChanged {
-            add { QObject.Connect(this, SIGNAL("chapterChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("chapterChanged(int)"), value); }
-        }
-        public event OneArgDelegate<int> AvailableTitlesChanged {
-            add { QObject.Connect(this, SIGNAL("availableTitlesChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("availableTitlesChanged(int)"), value); }
-        }
-        public event OneArgDelegate<int> TitleChanged {
-            add { QObject.Connect(this, SIGNAL("titleChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("titleChanged(int)"), value); }
-        }
         protected new IMediaControllerSignals Emit {
             get { return (IMediaControllerSignals) Q_EMIT; }
         }

@@ -350,50 +350,6 @@ namespace Phonon {
         public new void Dispose() {
             interceptor.Invoke("~MediaObject", "~MediaObject()", typeof(void));
         }
-        public event TwoArgDelegate<Phonon.State,Phonon.State> StateChanged {
-            add { QObject.Connect(this, SIGNAL("stateChanged(Phonon::State, Phonon::State)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("stateChanged(Phonon::State, Phonon::State)"), value); }
-        }
-        public event OneArgDelegate<long> Tick {
-            add { QObject.Connect(this, SIGNAL("tick(qint64)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("tick(qint64)"), value); }
-        }
-        public event NoArgDelegate MetaDataChanged {
-            add { QObject.Connect(this, SIGNAL("metaDataChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("metaDataChanged()"), value); }
-        }
-        public event OneArgDelegate<bool> SeekableChanged {
-            add { QObject.Connect(this, SIGNAL("seekableChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("seekableChanged(bool)"), value); }
-        }
-        public event OneArgDelegate<bool> HasVideoChanged {
-            add { QObject.Connect(this, SIGNAL("hasVideoChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("hasVideoChanged(bool)"), value); }
-        }
-        public event OneArgDelegate<int> BufferStatus {
-            add { QObject.Connect(this, SIGNAL("bufferStatus(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("bufferStatus(int)"), value); }
-        }
-        public event NoArgDelegate Finished {
-            add { QObject.Connect(this, SIGNAL("finished()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("finished()"), value); }
-        }
-        public event OneArgDelegate<Phonon.MediaSource> CurrentSourceChanged {
-            add { QObject.Connect(this, SIGNAL("currentSourceChanged(Phonon::MediaSource)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentSourceChanged(Phonon::MediaSource)"), value); }
-        }
-        public event NoArgDelegate AboutToFinish {
-            add { QObject.Connect(this, SIGNAL("aboutToFinish()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("aboutToFinish()"), value); }
-        }
-        public event OneArgDelegate<int> PrefinishMarkReached {
-            add { QObject.Connect(this, SIGNAL("prefinishMarkReached(qint32)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("prefinishMarkReached(qint32)"), value); }
-        }
-        public event OneArgDelegate<long> TotalTimeChanged {
-            add { QObject.Connect(this, SIGNAL("totalTimeChanged(qint64)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("totalTimeChanged(qint64)"), value); }
-        }
         /// <remarks>
         ///  Tells whether the backend provides an implementation of this
         ///  class.

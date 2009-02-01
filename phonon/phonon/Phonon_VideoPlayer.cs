@@ -178,10 +178,6 @@ namespace Phonon {
         public new void Dispose() {
             interceptor.Invoke("~VideoPlayer", "~VideoPlayer()", typeof(void));
         }
-        public event NoArgDelegate Finished {
-            add { QObject.Connect(this, SIGNAL("finished()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("finished()"), value); }
-        }
         protected new IVideoPlayerSignals Emit {
             get { return (IVideoPlayerSignals) Q_EMIT; }
         }
