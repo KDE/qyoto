@@ -2,6 +2,10 @@
 	* Add QTextBlock and QTextFrame iterators. operator++ and operator-- are
 	  instance members in C++, but map onto static members in C#. Take care of
 	  that in CallSmokeMethod().
+	* If there's an AssemblyTitleAttribute present, the fake argv[0] argument for
+	  Q(Core)Application will now have its 'Title' value. If not, argv[0] is the
+	  basename of the entry assembly. This is based on a suggestion by Eric Butler,
+	  thanks!
 
 2009-02-01  Richard Dale  <richard.j.dale@gmail.com>
 	* The construct_copy() function was using the full classname of the class

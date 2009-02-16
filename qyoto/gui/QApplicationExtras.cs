@@ -1,6 +1,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Reflection;
 	using System.Collections;
 	using System.Text;
 
@@ -11,7 +12,14 @@ namespace Qyoto {
 			Qt.qApp = this;
       
 			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			Assembly a = System.Reflection.Assembly.GetEntryAssembly();
+			object[] attrs = a.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+			if (attrs.Length > 0) {
+				args[0] = ((AssemblyTitleAttribute) attrs[0]).Title;
+			} else { 
+				QFileInfo info = new QFileInfo(a.Location);
+				args[0] = info.BaseName();
+			}
 			argv.CopyTo(args, 1);
 
 			interceptor.Invoke(	"QApplication$?", 
@@ -25,7 +33,14 @@ namespace Qyoto {
 			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			Assembly a = System.Reflection.Assembly.GetEntryAssembly();
+			object[] attrs = a.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+			if (attrs.Length > 0) {
+				args[0] = ((AssemblyTitleAttribute) attrs[0]).Title;
+			} else { 
+				QFileInfo info = new QFileInfo(a.Location);
+				args[0] = info.BaseName();
+			}
 			argv.CopyTo(args, 1);
 
 			interceptor.Invoke(	"QApplication$?", 
@@ -39,7 +54,14 @@ namespace Qyoto {
 			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			Assembly a = System.Reflection.Assembly.GetEntryAssembly();
+			object[] attrs = a.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+			if (attrs.Length > 0) {
+				args[0] = ((AssemblyTitleAttribute) attrs[0]).Title;
+			} else { 
+				QFileInfo info = new QFileInfo(a.Location);
+				args[0] = info.BaseName();
+			}
 			argv.CopyTo(args, 1);
 
 			interceptor.Invoke(	"QApplication$?", 
