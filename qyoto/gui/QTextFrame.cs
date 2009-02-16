@@ -17,6 +17,14 @@ namespace Qyoto {
             static iterator() {
                 staticInterceptor = new SmokeInvocation(typeof(iterator), null);
             }
+            public iterator() : this((Type) null) {
+                CreateProxy();
+                interceptor.Invoke("iterator", "iterator()", typeof(void));
+            }
+            public iterator(QTextFrame.iterator o) : this((Type) null) {
+                CreateProxy();
+                interceptor.Invoke("iterator#", "iterator(const QTextFrame::iterator&)", typeof(void), typeof(QTextFrame.iterator), o);
+            }
             public QTextFrame ParentFrame() {
                 return (QTextFrame) interceptor.Invoke("parentFrame", "parentFrame() const", typeof(QTextFrame));
             }
@@ -47,6 +55,12 @@ namespace Qyoto {
             }
             public static bool operator!=(iterator lhs, QTextFrame.iterator o) {
                 return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFrame::iterator&) const", typeof(bool), typeof(iterator), lhs, typeof(QTextFrame.iterator), o);
+            }
+            public static QTextFrame.iterator operator++(iterator lhs) {
+                return (QTextFrame.iterator) staticInterceptor.Invoke("operator++", "operator++()", typeof(QTextFrame.iterator), typeof(iterator), lhs);
+            }
+            public static QTextFrame.iterator operator--(iterator lhs) {
+                return (QTextFrame.iterator) staticInterceptor.Invoke("operator--", "operator--()", typeof(QTextFrame.iterator), typeof(iterator), lhs);
             }
         }
         protected new void CreateProxy() {
@@ -90,6 +104,12 @@ namespace Qyoto {
         }
         public QTextFrame ParentFrame() {
             return (QTextFrame) interceptor.Invoke("parentFrame", "parentFrame() const", typeof(QTextFrame));
+        }
+        public QTextFrame.iterator Begin() {
+            return (QTextFrame.iterator) interceptor.Invoke("begin", "begin() const", typeof(QTextFrame.iterator));
+        }
+        public QTextFrame.iterator End() {
+            return (QTextFrame.iterator) interceptor.Invoke("end", "end() const", typeof(QTextFrame.iterator));
         }
         ~QTextFrame() {
             interceptor.Invoke("~QTextFrame", "~QTextFrame()", typeof(void));

@@ -1,3 +1,8 @@
+2009-02-16  Arno Rehn  <arno@arnorehn.de>
+	* Add QTextBlock and QTextFrame iterators. operator++ and operator-- are
+	  instance members in C++, but map onto static members in C#. Take care of
+	  that in CallSmokeMethod().
+
 2009-02-01  Richard Dale  <richard.j.dale@gmail.com>
 	* The construct_copy() function was using the full classname of the class
 	  to construct which meant that it didn't work with classnames containing

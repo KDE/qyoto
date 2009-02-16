@@ -18,6 +18,14 @@ namespace Qyoto {
             static iterator() {
                 staticInterceptor = new SmokeInvocation(typeof(iterator), null);
             }
+            public iterator() : this((Type) null) {
+                CreateProxy();
+                interceptor.Invoke("iterator", "iterator()", typeof(void));
+            }
+            public iterator(QTextBlock.iterator o) : this((Type) null) {
+                CreateProxy();
+                interceptor.Invoke("iterator#", "iterator(const QTextBlock::iterator&)", typeof(void), typeof(QTextBlock.iterator), o);
+            }
             public QTextFragment Fragment() {
                 return (QTextFragment) interceptor.Invoke("fragment", "fragment() const", typeof(QTextFragment));
             }
@@ -42,6 +50,12 @@ namespace Qyoto {
             }
             public static bool operator!=(iterator lhs, QTextBlock.iterator o) {
                 return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextBlock::iterator&) const", typeof(bool), typeof(iterator), lhs, typeof(QTextBlock.iterator), o);
+            }
+            public static QTextBlock.iterator operator++(iterator lhs) {
+                return (QTextBlock.iterator) staticInterceptor.Invoke("operator++", "operator++()", typeof(QTextBlock.iterator), typeof(iterator), lhs);
+            }
+            public static QTextBlock.iterator operator--(iterator lhs) {
+                return (QTextBlock.iterator) staticInterceptor.Invoke("operator--", "operator--()", typeof(QTextBlock.iterator), typeof(iterator), lhs);
             }
         }
         protected void CreateProxy() {
@@ -134,11 +148,29 @@ namespace Qyoto {
         public int BlockNumber() {
             return (int) interceptor.Invoke("blockNumber", "blockNumber() const", typeof(int));
         }
+        public int FirstLineNumber() {
+            return (int) interceptor.Invoke("firstLineNumber", "firstLineNumber() const", typeof(int));
+        }
+        public void SetLineCount(int count) {
+            interceptor.Invoke("setLineCount$", "setLineCount(int)", typeof(void), typeof(int), count);
+        }
+        public int LineCount() {
+            return (int) interceptor.Invoke("lineCount", "lineCount() const", typeof(int));
+        }
+        public QTextBlock.iterator Begin() {
+            return (QTextBlock.iterator) interceptor.Invoke("begin", "begin() const", typeof(QTextBlock.iterator));
+        }
+        public QTextBlock.iterator End() {
+            return (QTextBlock.iterator) interceptor.Invoke("end", "end() const", typeof(QTextBlock.iterator));
+        }
         public QTextBlock Next() {
             return (QTextBlock) interceptor.Invoke("next", "next() const", typeof(QTextBlock));
         }
         public QTextBlock Previous() {
             return (QTextBlock) interceptor.Invoke("previous", "previous() const", typeof(QTextBlock));
+        }
+        public int FragmentIndex() {
+            return (int) interceptor.Invoke("fragmentIndex", "fragmentIndex() const", typeof(int));
         }
         ~QTextBlock() {
             interceptor.Invoke("~QTextBlock", "~QTextBlock()", typeof(void));
