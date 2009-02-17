@@ -130,6 +130,34 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTextBrowser", "~QTextBrowser()", typeof(void));
         }
+        public event SlotFunc<bool> SignalBackwardAvailable {
+            add { QObject.Connect(this, SIGNAL("backwardAvailable(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("backwardAvailable(bool)"), value); }
+        }
+        public event SlotFunc<bool> SignalForwardAvailable {
+            add { QObject.Connect(this, SIGNAL("forwardAvailable(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("forwardAvailable(bool)"), value); }
+        }
+        public event SlotFunc SignalHistoryChanged {
+            add { QObject.Connect(this, SIGNAL("historyChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("historyChanged()"), value); }
+        }
+        public event SlotFunc<QUrl> SignalSourceChanged {
+            add { QObject.Connect(this, SIGNAL("sourceChanged(QUrl)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("sourceChanged(QUrl)"), value); }
+        }
+        public event SlotFunc<QUrl> SignalHighlighted_QUrl {
+            add { QObject.Connect(this, SIGNAL("highlighted(QUrl)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("highlighted(QUrl)"), value); }
+        }
+        public event SlotFunc<string> SignalHighlighted_string {
+            add { QObject.Connect(this, SIGNAL("highlighted(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("highlighted(QString)"), value); }
+        }
+        public event SlotFunc<QUrl> SignalAnchorClicked {
+            add { QObject.Connect(this, SIGNAL("anchorClicked(QUrl)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("anchorClicked(QUrl)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

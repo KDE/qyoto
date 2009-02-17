@@ -172,6 +172,10 @@ namespace Qyoto {
         public void Dispose() {
             interceptor.Invoke("~QObject", "~QObject()", typeof(void));
         }
+        public event SlotFunc<QObject> SignalDestroyed {
+            add { QObject.Connect(this, SIGNAL("destroyed(QObject*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("destroyed(QObject*)"), value); }
+        }
         public static string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

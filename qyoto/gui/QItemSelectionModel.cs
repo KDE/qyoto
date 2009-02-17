@@ -115,6 +115,22 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QItemSelectionModel", "~QItemSelectionModel()", typeof(void));
         }
+        public event SlotFunc<QItemSelection,QItemSelection> SignalSelectionChanged {
+            add { QObject.Connect(this, SIGNAL("selectionChanged(QItemSelection, QItemSelection)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("selectionChanged(QItemSelection, QItemSelection)"), value); }
+        }
+        public event SlotFunc<QModelIndex,QModelIndex> SignalCurrentChanged {
+            add { QObject.Connect(this, SIGNAL("currentChanged(QModelIndex, QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentChanged(QModelIndex, QModelIndex)"), value); }
+        }
+        public event SlotFunc<QModelIndex,QModelIndex> SignalCurrentRowChanged {
+            add { QObject.Connect(this, SIGNAL("currentRowChanged(QModelIndex, QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentRowChanged(QModelIndex, QModelIndex)"), value); }
+        }
+        public event SlotFunc<QModelIndex,QModelIndex> SignalCurrentColumnChanged {
+            add { QObject.Connect(this, SIGNAL("currentColumnChanged(QModelIndex, QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentColumnChanged(QModelIndex, QModelIndex)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

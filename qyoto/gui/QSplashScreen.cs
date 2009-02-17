@@ -83,6 +83,10 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QSplashScreen", "~QSplashScreen()", typeof(void));
         }
+        public event SlotFunc<string> SignalMessageChanged {
+            add { QObject.Connect(this, SIGNAL("messageChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("messageChanged(QString)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

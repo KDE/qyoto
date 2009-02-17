@@ -333,6 +333,34 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QComboBox", "~QComboBox()", typeof(void));
         }
+        public event SlotFunc<string> SignalEditTextChanged {
+            add { QObject.Connect(this, SIGNAL("editTextChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("editTextChanged(QString)"), value); }
+        }
+        public event SlotFunc<int> SignalActivated_int {
+            add { QObject.Connect(this, SIGNAL("activated(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("activated(int)"), value); }
+        }
+        public event SlotFunc<string> SignalActivated_string {
+            add { QObject.Connect(this, SIGNAL("activated(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("activated(QString)"), value); }
+        }
+        public event SlotFunc<int> SignalHighlighted_int {
+            add { QObject.Connect(this, SIGNAL("highlighted(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("highlighted(int)"), value); }
+        }
+        public event SlotFunc<string> SignalHighlighted_string {
+            add { QObject.Connect(this, SIGNAL("highlighted(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("highlighted(QString)"), value); }
+        }
+        public event SlotFunc<int> SignalCurrentIndexChanged_int {
+            add { QObject.Connect(this, SIGNAL("currentIndexChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentIndexChanged(int)"), value); }
+        }
+        public event SlotFunc<string> SignalCurrentIndexChanged_string {
+            add { QObject.Connect(this, SIGNAL("currentIndexChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentIndexChanged(QString)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

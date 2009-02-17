@@ -52,9 +52,9 @@ namespace Qyoto {
             get { return (string) interceptor.Invoke("labelText", "labelText()", typeof(string)); }
             set { interceptor.Invoke("setLabelText$", "setLabelText(QString)", typeof(void), typeof(string), value); }
         }
-        public QProgressDialog(QWidget parent, uint f) : this((Type) null) {
+        public QProgressDialog(QWidget parent, uint flags) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QProgressDialog#$", "QProgressDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), f);
+            interceptor.Invoke("QProgressDialog#$", "QProgressDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
         }
         public QProgressDialog(QWidget parent) : this((Type) null) {
             CreateProxy();
@@ -64,9 +64,9 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QProgressDialog", "QProgressDialog()", typeof(void));
         }
-        public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, uint f) : this((Type) null) {
+        public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, uint flags) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QProgressDialog$$$$#$", "QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum, typeof(QWidget), parent, typeof(uint), f);
+            interceptor.Invoke("QProgressDialog$$$$#$", "QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)", typeof(void), typeof(string), labelText, typeof(string), cancelButtonText, typeof(int), minimum, typeof(int), maximum, typeof(QWidget), parent, typeof(uint), flags);
         }
         public QProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent) : this((Type) null) {
             CreateProxy();
@@ -88,6 +88,12 @@ namespace Qyoto {
         [SmokeMethod("sizeHint() const")]
         public override QSize SizeHint() {
             return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
+        }
+        public new void Open() {
+            interceptor.Invoke("open", "open()", typeof(void));
+        }
+        public void Open(QObject receiver, string member) {
+            interceptor.Invoke("open#$", "open(QObject*, const char*)", typeof(void), typeof(QObject), receiver, typeof(string), member);
         }
         [Q_SLOT("void cancel()")]
         public void Cancel() {
@@ -114,12 +120,12 @@ namespace Qyoto {
             interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), progress);
         }
         [Q_SLOT("void setLabelText(QString)")]
-        public void SetLabelText(string arg1) {
-            interceptor.Invoke("setLabelText$", "setLabelText(const QString&)", typeof(void), typeof(string), arg1);
+        public void SetLabelText(string text) {
+            interceptor.Invoke("setLabelText$", "setLabelText(const QString&)", typeof(void), typeof(string), text);
         }
         [Q_SLOT("void setCancelButtonText(QString)")]
-        public void SetCancelButtonText(string arg1) {
-            interceptor.Invoke("setCancelButtonText$", "setCancelButtonText(const QString&)", typeof(void), typeof(string), arg1);
+        public void SetCancelButtonText(string text) {
+            interceptor.Invoke("setCancelButtonText$", "setCancelButtonText(const QString&)", typeof(void), typeof(string), text);
         }
         [Q_SLOT("void setMinimumDuration(int)")]
         public void SetMinimumDuration(int ms) {
@@ -138,8 +144,8 @@ namespace Qyoto {
             interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
         }
         [SmokeMethod("showEvent(QShowEvent*)")]
-        protected override void ShowEvent(QShowEvent e) {
-            interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), e);
+        protected override void ShowEvent(QShowEvent arg1) {
+            interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
         }
         [Q_SLOT("void forceShow()")]
         protected void ForceShow() {
@@ -150,6 +156,10 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QProgressDialog", "~QProgressDialog()", typeof(void));
+        }
+        public event SlotFunc SignalCanceled {
+            add { QObject.Connect(this, SIGNAL("canceled()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("canceled()"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

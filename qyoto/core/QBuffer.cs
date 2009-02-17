@@ -70,6 +70,14 @@ namespace Qyoto {
         public override bool CanReadLine() {
             return (bool) interceptor.Invoke("canReadLine", "canReadLine() const", typeof(bool));
         }
+        [SmokeMethod("connectNotify(const char*)")]
+        protected override void ConnectNotify(string arg1) {
+            interceptor.Invoke("connectNotify$", "connectNotify(const char*)", typeof(void), typeof(string), arg1);
+        }
+        [SmokeMethod("disconnectNotify(const char*)")]
+        protected override void DisconnectNotify(string arg1) {
+            interceptor.Invoke("disconnectNotify$", "disconnectNotify(const char*)", typeof(void), typeof(string), arg1);
+        }
         [SmokeMethod("readData(char*, qint64)")]
         protected override long ReadData(Pointer<sbyte> data, long maxlen) {
             return (long) interceptor.Invoke("readData$$", "readData(char*, qint64)", typeof(long), typeof(Pointer<sbyte>), data, typeof(long), maxlen);

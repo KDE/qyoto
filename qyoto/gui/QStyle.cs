@@ -96,6 +96,8 @@ namespace Qyoto {
             PE_PanelItemViewItem = 49,
             PE_PanelItemViewRow = 50,
             PE_PanelStatusBar = 51,
+            PE_IndicatorTabClose = 52,
+            PE_PanelMenu = 53,
             PE_CustomBase = 0xf000000,
         }
         public enum ControlElement : uint {
@@ -146,6 +148,7 @@ namespace Qyoto {
             CE_HeaderEmptyArea = 44,
             CE_ColumnViewGrip = 45,
             CE_ItemViewItem = 46,
+            CE_ShapedFrame = 47,
             CE_CustomBase = 0xf0000000,
         }
         public enum SubElement : uint {
@@ -209,6 +212,10 @@ namespace Qyoto {
             SE_ItemViewItemDecoration = 56,
             SE_ItemViewItemText = 57,
             SE_ItemViewItemFocusRect = 58,
+            SE_TabBarTabLeftButton = 59,
+            SE_TabBarTabRightButton = 60,
+            SE_TabBarTabText = 61,
+            SE_ShapedFrameContents = 62,
             SE_CustomBase = 0xf0000000,
         }
         public enum ComplexControl : uint {
@@ -362,6 +369,10 @@ namespace Qyoto {
             PM_LayoutVerticalSpacing = 85,
             PM_TabBar_ScrollButtonOverlap = 86,
             PM_TextCursorWidth = 87,
+            PM_TabCloseIndicatorWidth = 88,
+            PM_TabCloseIndicatorHeight = 89,
+            PM_ScrollView_ScrollBarSpacing = 90,
+            PM_SubMenuOverlap = 91,
             PM_CustomBase = 0xf0000000,
         }
         public enum ContentsType : uint {
@@ -487,6 +498,9 @@ namespace Qyoto {
             SH_FormLayoutFieldGrowthPolicy = 90,
             SH_FormLayoutFormAlignment = 91,
             SH_FormLayoutLabelAlignment = 92,
+            SH_ItemView_DrawDelegateFrame = 93,
+            SH_TabBar_CloseButtonPosition = 94,
+            SH_DockWidget_ButtonsHaveFrame = 95,
             SH_CustomBase = 0xf0000000,
         }
         public enum StandardPixmap : uint {

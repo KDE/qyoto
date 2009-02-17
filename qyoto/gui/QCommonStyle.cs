@@ -116,6 +116,26 @@ namespace Qyoto {
         public override QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, QStyleOption opt) {
             return (QPixmap) interceptor.Invoke("generatedIconPixmap$##", "generatedIconPixmap(QIcon::Mode, const QPixmap&, const QStyleOption*) const", typeof(QPixmap), typeof(QIcon.Mode), iconMode, typeof(QPixmap), pixmap, typeof(QStyleOption), opt);
         }
+        [SmokeMethod("polish(QPalette&)")]
+        public override void Polish(QPalette arg1) {
+            interceptor.Invoke("polish#", "polish(QPalette&)", typeof(void), typeof(QPalette), arg1);
+        }
+        [SmokeMethod("polish(QApplication*)")]
+        public override void Polish(QApplication app) {
+            interceptor.Invoke("polish#", "polish(QApplication*)", typeof(void), typeof(QApplication), app);
+        }
+        [SmokeMethod("polish(QWidget*)")]
+        public override void Polish(QWidget widget) {
+            interceptor.Invoke("polish#", "polish(QWidget*)", typeof(void), typeof(QWidget), widget);
+        }
+        [SmokeMethod("unpolish(QWidget*)")]
+        public override void Unpolish(QWidget widget) {
+            interceptor.Invoke("unpolish#", "unpolish(QWidget*)", typeof(void), typeof(QWidget), widget);
+        }
+        [SmokeMethod("unpolish(QApplication*)")]
+        public override void Unpolish(QApplication application) {
+            interceptor.Invoke("unpolish#", "unpolish(QApplication*)", typeof(void), typeof(QApplication), application);
+        }
         [Q_SLOT("QIcon standardIconImplementation(StandardPixmap, QStyleOption*, QWidget*)")]
         protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, QStyleOption opt, QWidget widget) {
             return (QIcon) interceptor.Invoke("standardIconImplementation$##", "standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", typeof(QIcon), typeof(QStyle.StandardPixmap), standardIcon, typeof(QStyleOption), opt, typeof(QWidget), widget);

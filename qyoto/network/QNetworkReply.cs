@@ -130,6 +130,30 @@ namespace Qyoto {
         protected void SetAttribute(QNetworkRequest.Attribute code, QVariant value) {
             interceptor.Invoke("setAttribute$#", "setAttribute(QNetworkRequest::Attribute, const QVariant&)", typeof(void), typeof(QNetworkRequest.Attribute), code, typeof(QVariant), value);
         }
+        public event SlotFunc SignalMetaDataChanged {
+            add { QObject.Connect(this, SIGNAL("metaDataChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("metaDataChanged()"), value); }
+        }
+        public event SlotFunc SignalFinished {
+            add { QObject.Connect(this, SIGNAL("finished()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("finished()"), value); }
+        }
+        public event SlotFunc<QNetworkReply.NetworkError> SignalError {
+            add { QObject.Connect(this, SIGNAL("error(QNetworkReply::NetworkError)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("error(QNetworkReply::NetworkError)"), value); }
+        }
+        public event SlotFunc<List<QSslError>> SignalSslErrors {
+            add { QObject.Connect(this, SIGNAL("sslErrors(QList<QSslError>)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("sslErrors(QList<QSslError>)"), value); }
+        }
+        public event SlotFunc<long,long> SignalUploadProgress {
+            add { QObject.Connect(this, SIGNAL("uploadProgress(qint64, qint64)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("uploadProgress(qint64, qint64)"), value); }
+        }
+        public event SlotFunc<long,long> SignalDownloadProgress {
+            add { QObject.Connect(this, SIGNAL("downloadProgress(qint64, qint64)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("downloadProgress(qint64, qint64)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

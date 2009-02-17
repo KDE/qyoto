@@ -105,6 +105,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QDoubleSpinBox", "~QDoubleSpinBox()", typeof(void));
         }
+        public event SlotFunc<double> SignalValueChanged_double {
+            add { QObject.Connect(this, SIGNAL("valueChanged(double)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("valueChanged(double)"), value); }
+        }
+        public event SlotFunc<string> SignalValueChanged_string {
+            add { QObject.Connect(this, SIGNAL("valueChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("valueChanged(QString)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

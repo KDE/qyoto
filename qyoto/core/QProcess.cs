@@ -215,6 +215,34 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QProcess", "~QProcess()", typeof(void));
         }
+        public event SlotFunc SignalStarted {
+            add { QObject.Connect(this, SIGNAL("started()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("started()"), value); }
+        }
+        public event SlotFunc<int> SignalFinished_int {
+            add { QObject.Connect(this, SIGNAL("finished(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("finished(int)"), value); }
+        }
+        public event SlotFunc<int,QProcess.ExitStatus> SignalFinished_intQProcess_ExitStatus {
+            add { QObject.Connect(this, SIGNAL("finished(int, QProcess::ExitStatus)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("finished(int, QProcess::ExitStatus)"), value); }
+        }
+        public event SlotFunc<QProcess.ProcessError> SignalError {
+            add { QObject.Connect(this, SIGNAL("error(QProcess::ProcessError)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("error(QProcess::ProcessError)"), value); }
+        }
+        public event SlotFunc<QProcess.ProcessState> SignalStateChanged {
+            add { QObject.Connect(this, SIGNAL("stateChanged(QProcess::ProcessState)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("stateChanged(QProcess::ProcessState)"), value); }
+        }
+        public event SlotFunc SignalReadyReadStandardOutput {
+            add { QObject.Connect(this, SIGNAL("readyReadStandardOutput()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("readyReadStandardOutput()"), value); }
+        }
+        public event SlotFunc SignalReadyReadStandardError {
+            add { QObject.Connect(this, SIGNAL("readyReadStandardError()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("readyReadStandardError()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

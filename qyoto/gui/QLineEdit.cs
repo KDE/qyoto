@@ -168,6 +168,22 @@ namespace Qyoto {
         public int SelectionStart() {
             return (int) interceptor.Invoke("selectionStart", "selectionStart() const", typeof(int));
         }
+        public void SetTextMargins(int left, int top, int right, int bottom) {
+            interceptor.Invoke("setTextMargins$$$$", "setTextMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
+        }
+        public void GetTextMargins(ref int left, ref int top, ref int right, ref int bottom) {
+            StackItem[] stack = new StackItem[5];
+            stack[1].s_int = left;
+            stack[2].s_int = top;
+            stack[3].s_int = right;
+            stack[4].s_int = bottom;
+            interceptor.Invoke("getTextMargins$$$$", "getTextMargins(int*, int*, int*, int*) const", stack);
+            left = stack[1].s_int;
+            top = stack[2].s_int;
+            right = stack[3].s_int;
+            bottom = stack[4].s_int;
+            return;
+        }
         public void Deselect() {
             interceptor.Invoke("deselect", "deselect()", typeof(void));
         }
@@ -288,6 +304,30 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QLineEdit", "~QLineEdit()", typeof(void));
+        }
+        public event SlotFunc<string> SignalTextChanged {
+            add { QObject.Connect(this, SIGNAL("textChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("textChanged(QString)"), value); }
+        }
+        public event SlotFunc<string> SignalTextEdited {
+            add { QObject.Connect(this, SIGNAL("textEdited(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("textEdited(QString)"), value); }
+        }
+        public event SlotFunc<int,int> SignalCursorPositionChanged {
+            add { QObject.Connect(this, SIGNAL("cursorPositionChanged(int, int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("cursorPositionChanged(int, int)"), value); }
+        }
+        public event SlotFunc SignalReturnPressed {
+            add { QObject.Connect(this, SIGNAL("returnPressed()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("returnPressed()"), value); }
+        }
+        public event SlotFunc SignalEditingFinished {
+            add { QObject.Connect(this, SIGNAL("editingFinished()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("editingFinished()"), value); }
+        }
+        public event SlotFunc SignalSelectionChanged {
+            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

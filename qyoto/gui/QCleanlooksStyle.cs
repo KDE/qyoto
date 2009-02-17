@@ -11,6 +11,7 @@ namespace Qyoto {
         static QCleanlooksStyle() {
             staticInterceptor = new SmokeInvocation(typeof(QCleanlooksStyle), null);
         }
+        // QCleanlooksStyle* QCleanlooksStyle(QCleanlooksStylePrivate& arg1); >>>> NOT CONVERTED
         public QCleanlooksStyle() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QCleanlooksStyle", "QCleanlooksStyle()", typeof(void));

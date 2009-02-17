@@ -140,6 +140,22 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QDialogButtonBox", "~QDialogButtonBox()", typeof(void));
         }
+        public event SlotFunc<QAbstractButton> SignalClicked {
+            add { QObject.Connect(this, SIGNAL("clicked(QAbstractButton*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("clicked(QAbstractButton*)"), value); }
+        }
+        public event SlotFunc SignalAccepted {
+            add { QObject.Connect(this, SIGNAL("accepted()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("accepted()"), value); }
+        }
+        public event SlotFunc SignalHelpRequested {
+            add { QObject.Connect(this, SIGNAL("helpRequested()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("helpRequested()"), value); }
+        }
+        public event SlotFunc SignalRejected {
+            add { QObject.Connect(this, SIGNAL("rejected()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("rejected()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

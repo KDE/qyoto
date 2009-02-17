@@ -497,6 +497,9 @@ namespace Qyoto {
         public void SetShortcutAutoRepeat(int id) {
             interceptor.Invoke("setShortcutAutoRepeat$", "setShortcutAutoRepeat(int)", typeof(void), typeof(int), id);
         }
+        public QGraphicsProxyWidget GraphicsProxyWidget() {
+            return (QGraphicsProxyWidget) interceptor.Invoke("graphicsProxyWidget", "graphicsProxyWidget() const", typeof(QGraphicsProxyWidget));
+        }
         public void Update(int x, int y, int w, int h) {
             interceptor.Invoke("update$$$$", "update(int, int, int, int)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
         }
@@ -829,10 +832,6 @@ namespace Qyoto {
         protected virtual void ContextMenuEvent(QContextMenuEvent arg1) {
             interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QContextMenuEvent*)", typeof(void), typeof(QContextMenuEvent), arg1);
         }
-        [SmokeMethod("tabletEvent(QTabletEvent*)")]
-        protected virtual void TabletEvent(QTabletEvent arg1) {
-            interceptor.Invoke("tabletEvent#", "tabletEvent(QTabletEvent*)", typeof(void), typeof(QTabletEvent), arg1);
-        }
         [SmokeMethod("actionEvent(QActionEvent*)")]
         protected virtual void ActionEvent(QActionEvent arg1) {
             interceptor.Invoke("actionEvent#", "actionEvent(QActionEvent*)", typeof(void), typeof(QActionEvent), arg1);
@@ -940,6 +939,10 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QWidget", "~QWidget()", typeof(void));
+        }
+        public event SlotFunc<QPoint> SignalCustomContextMenuRequested {
+            add { QObject.Connect(this, SIGNAL("customContextMenuRequested(QPoint)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("customContextMenuRequested(QPoint)"), value); }
         }
         public bool PaintingActive() {
             return (bool) interceptor.Invoke("paintingActive", "paintingActive() const", typeof(bool));

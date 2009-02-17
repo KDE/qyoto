@@ -137,6 +137,22 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTimeLine", "~QTimeLine()", typeof(void));
         }
+        public event SlotFunc<double> SignalValueChanged {
+            add { QObject.Connect(this, SIGNAL("valueChanged(qreal)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("valueChanged(qreal)"), value); }
+        }
+        public event SlotFunc<int> SignalFrameChanged {
+            add { QObject.Connect(this, SIGNAL("frameChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("frameChanged(int)"), value); }
+        }
+        public event SlotFunc<QTimeLine.State> SignalStateChanged {
+            add { QObject.Connect(this, SIGNAL("stateChanged(QTimeLine::State)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("stateChanged(QTimeLine::State)"), value); }
+        }
+        public event SlotFunc SignalFinished {
+            add { QObject.Connect(this, SIGNAL("finished()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("finished()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

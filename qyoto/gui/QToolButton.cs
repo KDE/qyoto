@@ -129,6 +129,10 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QToolButton", "~QToolButton()", typeof(void));
         }
+        public event SlotFunc<QAction> SignalTriggered {
+            add { QObject.Connect(this, SIGNAL("triggered(QAction*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("triggered(QAction*)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

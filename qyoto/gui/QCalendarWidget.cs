@@ -128,8 +128,8 @@ namespace Qyoto {
         public QTextCharFormat DateTextFormat(QDate date) {
             return (QTextCharFormat) interceptor.Invoke("dateTextFormat#", "dateTextFormat(const QDate&) const", typeof(QTextCharFormat), typeof(QDate), date);
         }
-        public void SetDateTextFormat(QDate date, QTextCharFormat color) {
-            interceptor.Invoke("setDateTextFormat##", "setDateTextFormat(const QDate&, const QTextCharFormat&)", typeof(void), typeof(QDate), date, typeof(QTextCharFormat), color);
+        public void SetDateTextFormat(QDate date, QTextCharFormat format) {
+            interceptor.Invoke("setDateTextFormat##", "setDateTextFormat(const QDate&, const QTextCharFormat&)", typeof(void), typeof(QDate), date, typeof(QTextCharFormat), format);
         }
         [Q_SLOT("void setSelectedDate(QDate)")]
         public void SetSelectedDate(QDate date) {
@@ -179,6 +179,10 @@ namespace Qyoto {
         protected override bool Event(QEvent arg1) {
             return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
         }
+        [SmokeMethod("eventFilter(QObject*, QEvent*)")]
+        protected new virtual bool EventFilter(QObject watched, QEvent arg2) {
+            return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
+        }
         [SmokeMethod("mousePressEvent(QMouseEvent*)")]
         protected override void MousePressEvent(QMouseEvent arg1) {
             interceptor.Invoke("mousePressEvent#", "mousePressEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
@@ -206,6 +210,22 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QCalendarWidget", "~QCalendarWidget()", typeof(void));
+        }
+        public event SlotFunc SignalSelectionChanged {
+            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
+        }
+        public event SlotFunc<QDate> SignalClicked {
+            add { QObject.Connect(this, SIGNAL("clicked(QDate)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("clicked(QDate)"), value); }
+        }
+        public event SlotFunc<QDate> SignalActivated {
+            add { QObject.Connect(this, SIGNAL("activated(QDate)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("activated(QDate)"), value); }
+        }
+        public event SlotFunc<int,int> SignalCurrentPageChanged {
+            add { QObject.Connect(this, SIGNAL("currentPageChanged(int, int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentPageChanged(int, int)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

@@ -80,6 +80,12 @@ namespace Qyoto {
         public override QItemSelection MapSelectionFromSource(QItemSelection sourceSelection) {
             return (QItemSelection) interceptor.Invoke("mapSelectionFromSource#", "mapSelectionFromSource(const QItemSelection&) const", typeof(QItemSelection), typeof(QItemSelection), sourceSelection);
         }
+        public int SortColumn() {
+            return (int) interceptor.Invoke("sortColumn", "sortColumn() const", typeof(int));
+        }
+        public new Qt.SortOrder SortOrder() {
+            return (Qt.SortOrder) interceptor.Invoke("sortOrder", "sortOrder() const", typeof(Qt.SortOrder));
+        }
         public new QObject Parent() {
             return (QObject) interceptor.Invoke("parent", "parent() const", typeof(QObject));
         }

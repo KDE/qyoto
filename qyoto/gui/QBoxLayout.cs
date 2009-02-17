@@ -100,6 +100,12 @@ namespace Qyoto {
         public bool SetStretchFactor(QLayout l, int stretch) {
             return (bool) interceptor.Invoke("setStretchFactor#$", "setStretchFactor(QLayout*, int)", typeof(bool), typeof(QLayout), l, typeof(int), stretch);
         }
+        public void SetStretch(int index, int stretch) {
+            interceptor.Invoke("setStretch$$", "setStretch(int, int)", typeof(void), typeof(int), index, typeof(int), stretch);
+        }
+        public int Stretch(int index) {
+            return (int) interceptor.Invoke("stretch$", "stretch(int) const", typeof(int), typeof(int), index);
+        }
         [SmokeMethod("sizeHint() const")]
         public override QSize SizeHint() {
             return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));

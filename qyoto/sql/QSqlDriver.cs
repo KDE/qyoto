@@ -140,6 +140,10 @@ namespace Qyoto {
         protected List<string> SubscribedToNotificationsImplementation() {
             return (List<string>) interceptor.Invoke("subscribedToNotificationsImplementation", "subscribedToNotificationsImplementation() const", typeof(List<string>));
         }
+        public event SlotFunc<string> SignalNotification {
+            add { QObject.Connect(this, SIGNAL("notification(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("notification(QString)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -7,37 +7,6 @@ namespace Qyoto {
     [SmokeClass("QAbstractTextDocumentLayout")]
     public abstract class QAbstractTextDocumentLayout : QObject {
         protected QAbstractTextDocumentLayout(Type dummy) : base((Type) null) {}
-        [SmokeClass("QAbstractTextDocumentLayout::Selection")]
-        public class Selection : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Selection(Type dummy) {}
-            public QTextCursor Cursor {
-                get { return (QTextCursor) interceptor.Invoke("cursor", "cursor()", typeof(QTextCursor)); }
-            }
-            public QTextCharFormat Format {
-                get { return (QTextCharFormat) interceptor.Invoke("format", "format()", typeof(QTextCharFormat)); }
-            }
-        }
-        [SmokeClass("QAbstractTextDocumentLayout::PaintContext")]
-        public class PaintContext : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected PaintContext(Type dummy) {}
-            public int CursorPosition {
-                get { return (int) interceptor.Invoke("cursorPosition", "cursorPosition()", typeof(int)); }
-            }
-            public QPalette Palette {
-                get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
-            }
-            public QRectF Clip {
-                get { return (QRectF) interceptor.Invoke("clip", "clip()", typeof(QRectF)); }
-            }
-            public List<QAbstractTextDocumentLayout.Selection> Selections {
-                get { return (List<QAbstractTextDocumentLayout.Selection>) interceptor.Invoke("selections", "selections()", typeof(List<QAbstractTextDocumentLayout.Selection>)); }
-            }
-            //  PaintContext(); >>>> NOT CONVERTED
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), this);
         }
@@ -98,6 +67,22 @@ namespace Qyoto {
         }
         protected QTextCharFormat Format(int pos) {
             return (QTextCharFormat) interceptor.Invoke("format$", "format(int)", typeof(QTextCharFormat), typeof(int), pos);
+        }
+        public event SlotFunc<QRectF> SignalUpdate {
+            add { QObject.Connect(this, SIGNAL("update(QRectF)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("update(QRectF)"), value); }
+        }
+        public event SlotFunc<QTextBlock> SignalUpdateBlock {
+            add { QObject.Connect(this, SIGNAL("updateBlock(QTextBlock)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("updateBlock(QTextBlock)"), value); }
+        }
+        public event SlotFunc<QSizeF> SignalDocumentSizeChanged {
+            add { QObject.Connect(this, SIGNAL("documentSizeChanged(QSizeF)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("documentSizeChanged(QSizeF)"), value); }
+        }
+        public event SlotFunc<int> SignalPageCountChanged {
+            add { QObject.Connect(this, SIGNAL("pageCountChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("pageCountChanged(int)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

@@ -41,6 +41,11 @@ namespace Qyoto {
             get { return (QMdiArea.ViewMode) interceptor.Invoke("viewMode", "viewMode()", typeof(QMdiArea.ViewMode)); }
             set { interceptor.Invoke("setViewMode$", "setViewMode(QMdiArea::ViewMode)", typeof(void), typeof(QMdiArea.ViewMode), value); }
         }
+        [Q_PROPERTY("bool", "documentMode")]
+        public bool DocumentMode {
+            get { return (bool) interceptor.Invoke("documentMode", "documentMode()", typeof(bool)); }
+            set { interceptor.Invoke("setDocumentMode$", "setDocumentMode(bool)", typeof(void), typeof(bool), value); }
+        }
         [Q_PROPERTY("QTabWidget::TabShape", "tabShape")]
         public QTabWidget.TabShape TabShape {
             get { return (QTabWidget.TabShape) interceptor.Invoke("tabShape", "tabShape()", typeof(QTabWidget.TabShape)); }
@@ -170,6 +175,10 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QMdiArea", "~QMdiArea()", typeof(void));
+        }
+        public event SlotFunc<QMdiSubWindow> SignalSubWindowActivated {
+            add { QObject.Connect(this, SIGNAL("subWindowActivated(QMdiSubWindow*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("subWindowActivated(QMdiSubWindow*)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

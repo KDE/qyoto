@@ -20,15 +20,15 @@ namespace Qyoto {
             interceptor.Invoke("QTranslator", "QTranslator()", typeof(void));
         }
         [SmokeMethod("translate(const char*, const char*, const char*) const")]
-        public virtual string Translate(string context, string sourceText, string comment) {
-            return (string) interceptor.Invoke("translate$$$", "translate(const char*, const char*, const char*) const", typeof(string), typeof(string), context, typeof(string), sourceText, typeof(string), comment);
+        public virtual string Translate(string context, string sourceText, string disambiguation) {
+            return (string) interceptor.Invoke("translate$$$", "translate(const char*, const char*, const char*) const", typeof(string), typeof(string), context, typeof(string), sourceText, typeof(string), disambiguation);
         }
         [SmokeMethod("translate(const char*, const char*) const")]
         public virtual string Translate(string context, string sourceText) {
             return (string) interceptor.Invoke("translate$$", "translate(const char*, const char*) const", typeof(string), typeof(string), context, typeof(string), sourceText);
         }
-        public string Translate(string context, string sourceText, string comment, int n) {
-            return (string) interceptor.Invoke("translate$$$$", "translate(const char*, const char*, const char*, int) const", typeof(string), typeof(string), context, typeof(string), sourceText, typeof(string), comment, typeof(int), n);
+        public string Translate(string context, string sourceText, string disambiguation, int n) {
+            return (string) interceptor.Invoke("translate$$$$", "translate(const char*, const char*, const char*, int) const", typeof(string), typeof(string), context, typeof(string), sourceText, typeof(string), disambiguation, typeof(int), n);
         }
         [SmokeMethod("isEmpty() const")]
         public virtual bool IsEmpty() {

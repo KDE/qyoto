@@ -227,6 +227,10 @@ namespace Qyoto {
         protected virtual uint StepEnabled() {
             return (uint) interceptor.Invoke("stepEnabled", "stepEnabled() const", typeof(uint));
         }
+        public event SlotFunc SignalEditingFinished {
+            add { QObject.Connect(this, SIGNAL("editingFinished()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("editingFinished()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -129,6 +129,10 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QWorkspace", "~QWorkspace()", typeof(void));
         }
+        public event SlotFunc<QWidget> SignalWindowActivated {
+            add { QObject.Connect(this, SIGNAL("windowActivated(QWidget*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("windowActivated(QWidget*)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -109,6 +109,9 @@ namespace Qyoto {
         public void SetPage(int id, QWizardPage page) {
             interceptor.Invoke("setPage$#", "setPage(int, QWizardPage*)", typeof(void), typeof(int), id, typeof(QWizardPage), page);
         }
+        public void RemovePage(int id) {
+            interceptor.Invoke("removePage$", "removePage(int)", typeof(void), typeof(int), id);
+        }
         public QWizardPage Page(int id) {
             return (QWizardPage) interceptor.Invoke("page$", "page(int) const", typeof(QWizardPage), typeof(int), id);
         }
@@ -117,6 +120,9 @@ namespace Qyoto {
         }
         public List<int> VisitedPages() {
             return (List<int>) interceptor.Invoke("visitedPages", "visitedPages() const", typeof(List<int>));
+        }
+        public List<int> PageIds() {
+            return (List<int>) interceptor.Invoke("pageIds", "pageIds() const", typeof(List<int>));
         }
         public QWizardPage CurrentPage() {
             return (QWizardPage) interceptor.Invoke("currentPage", "currentPage() const", typeof(QWizardPage));
@@ -217,6 +223,18 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QWizard", "~QWizard()", typeof(void));
+        }
+        public event SlotFunc<int> SignalCurrentIdChanged {
+            add { QObject.Connect(this, SIGNAL("currentIdChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentIdChanged(int)"), value); }
+        }
+        public event SlotFunc SignalHelpRequested {
+            add { QObject.Connect(this, SIGNAL("helpRequested()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("helpRequested()"), value); }
+        }
+        public event SlotFunc<int> SignalCustomButtonClicked {
+            add { QObject.Connect(this, SIGNAL("customButtonClicked(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("customButtonClicked(int)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

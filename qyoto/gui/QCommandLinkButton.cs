@@ -18,7 +18,8 @@ namespace Qyoto {
         }
         [Q_PROPERTY("bool", "flat")]
         public new bool Flat {
-            get { return (bool) interceptor.Invoke("false", "false()", typeof(bool)); }
+            get { return (bool) interceptor.Invoke("isFlat", "isFlat()", typeof(bool)); }
+            set { interceptor.Invoke("setFlat$", "setFlat(bool)", typeof(void), typeof(bool), value); }
         }
         public QCommandLinkButton(QWidget parent) : this((Type) null) {
             CreateProxy();

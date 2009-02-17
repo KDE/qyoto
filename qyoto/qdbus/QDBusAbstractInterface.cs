@@ -12,6 +12,16 @@ namespace Qyoto {
         static QDBusAbstractInterface() {
             staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), null);
         }
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6,const QVariant& arg7,const QVariant& arg8,const QVariant& arg9); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6,const QVariant& arg7,const QVariant& arg8); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6,const QVariant& arg7); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCall(const QString& arg1); >>>> NOT CONVERTED
+        // QDBusPendingCall asyncCallWithArgumentList(const QString& arg1,const QList<QVariant>& arg2); >>>> NOT CONVERTED
         // QDBusAbstractInterface* QDBusAbstractInterface(QDBusAbstractInterfacePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));

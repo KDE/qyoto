@@ -189,6 +189,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QLabel", "~QLabel()", typeof(void));
         }
+        public event SlotFunc<string> SignalLinkActivated {
+            add { QObject.Connect(this, SIGNAL("linkActivated(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("linkActivated(QString)"), value); }
+        }
+        public event SlotFunc<string> SignalLinkHovered {
+            add { QObject.Connect(this, SIGNAL("linkHovered(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("linkHovered(QString)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

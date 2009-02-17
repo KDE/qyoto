@@ -97,6 +97,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QSystemTrayIcon", "~QSystemTrayIcon()", typeof(void));
         }
+        public event SlotFunc<QSystemTrayIcon.ActivationReason> SignalActivated {
+            add { QObject.Connect(this, SIGNAL("activated(QSystemTrayIcon::ActivationReason)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("activated(QSystemTrayIcon::ActivationReason)"), value); }
+        }
+        public event SlotFunc SignalMessageClicked {
+            add { QObject.Connect(this, SIGNAL("messageClicked()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("messageClicked()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

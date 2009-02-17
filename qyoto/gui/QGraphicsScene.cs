@@ -59,6 +59,11 @@ namespace Qyoto {
             get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
             set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
         }
+        [Q_PROPERTY("bool", "sortCacheEnabled")]
+        public bool SortCacheEnabled {
+            get { return (bool) interceptor.Invoke("isSortCacheEnabled", "isSortCacheEnabled()", typeof(bool)); }
+            set { interceptor.Invoke("setSortCacheEnabled$", "setSortCacheEnabled(bool)", typeof(void), typeof(bool), value); }
+        }
         // void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
         // void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
         public QGraphicsScene(QObject parent) : this((Type) null) {
@@ -435,6 +440,18 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QGraphicsScene", "~QGraphicsScene()", typeof(void));
+        }
+        public event SlotFunc<List<QRectF>> SignalChanged {
+            add { QObject.Connect(this, SIGNAL("changed(QList<QRectF>)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("changed(QList<QRectF>)"), value); }
+        }
+        public event SlotFunc<QRectF> SignalSceneRectChanged {
+            add { QObject.Connect(this, SIGNAL("sceneRectChanged(QRectF)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("sceneRectChanged(QRectF)"), value); }
+        }
+        public event SlotFunc SignalSelectionChanged {
+            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

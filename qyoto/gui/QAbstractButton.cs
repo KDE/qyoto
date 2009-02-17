@@ -159,6 +159,22 @@ namespace Qyoto {
         protected override void TimerEvent(QTimerEvent e) {
             interceptor.Invoke("timerEvent#", "timerEvent(QTimerEvent*)", typeof(void), typeof(QTimerEvent), e);
         }
+        public event SlotFunc SignalPressed {
+            add { QObject.Connect(this, SIGNAL("pressed()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("pressed()"), value); }
+        }
+        public event SlotFunc SignalReleased {
+            add { QObject.Connect(this, SIGNAL("released()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("released()"), value); }
+        }
+        public event SlotFunc<bool> SignalClicked {
+            add { QObject.Connect(this, SIGNAL("clicked(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("clicked(bool)"), value); }
+        }
+        public event SlotFunc<bool> SignalToggled {
+            add { QObject.Connect(this, SIGNAL("toggled(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("toggled(bool)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

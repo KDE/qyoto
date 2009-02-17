@@ -176,6 +176,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QMdiSubWindow", "~QMdiSubWindow()", typeof(void));
         }
+        public event SlotFunc<uint,uint> SignalWindowStateChanged {
+            add { QObject.Connect(this, SIGNAL("windowStateChanged(Qt::WindowStates, Qt::WindowStates)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("windowStateChanged(Qt::WindowStates, Qt::WindowStates)"), value); }
+        }
+        public event SlotFunc SignalAboutToActivate {
+            add { QObject.Connect(this, SIGNAL("aboutToActivate()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("aboutToActivate()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

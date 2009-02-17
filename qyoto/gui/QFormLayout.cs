@@ -25,6 +25,7 @@ namespace Qyoto {
         public enum ItemRole {
             LabelRole = 0,
             FieldRole = 1,
+            SpanningRole = 2,
         }
         [Q_PROPERTY("QFormLayout::FieldGrowthPolicy", "fieldGrowthPolicy")]
         public QFormLayout.FieldGrowthPolicy fieldGrowthPolicy {

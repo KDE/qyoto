@@ -103,6 +103,8 @@ namespace Qyoto {
             get { return (uint) interceptor.Invoke("optimizationFlags", "optimizationFlags()", typeof(uint)); }
             set { interceptor.Invoke("setOptimizationFlags$", "setOptimizationFlags(QGraphicsView::OptimizationFlags)", typeof(void), typeof(uint), value); }
         }
+        // QGraphicsView* QGraphicsView(QGraphicsViewPrivate& arg1,QWidget* arg2); >>>> NOT CONVERTED
+        // QGraphicsView* QGraphicsView(QGraphicsViewPrivate& arg1); >>>> NOT CONVERTED
         // void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
         public QGraphicsView(QWidget parent) : this((Type) null) {
             CreateProxy();

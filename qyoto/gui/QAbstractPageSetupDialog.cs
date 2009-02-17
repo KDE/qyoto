@@ -23,6 +23,10 @@ namespace Qyoto {
         }
         [SmokeMethod("exec()")]
         public new abstract int Exec();
+        [SmokeMethod("done(int)")]
+        public override void Done(int result) {
+            interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), result);
+        }
         public QPrinter Printer() {
             return (QPrinter) interceptor.Invoke("printer", "printer()", typeof(QPrinter));
         }

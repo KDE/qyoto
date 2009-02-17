@@ -57,6 +57,21 @@ namespace Qyoto {
             get { return (bool) interceptor.Invoke("usesScrollButtons", "usesScrollButtons()", typeof(bool)); }
             set { interceptor.Invoke("setUsesScrollButtons$", "setUsesScrollButtons(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("bool", "documentMode")]
+        public bool DocumentMode {
+            get { return (bool) interceptor.Invoke("documentMode", "documentMode()", typeof(bool)); }
+            set { interceptor.Invoke("setDocumentMode$", "setDocumentMode(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "tabsClosable")]
+        public bool TabsClosable {
+            get { return (bool) interceptor.Invoke("tabsClosable", "tabsClosable()", typeof(bool)); }
+            set { interceptor.Invoke("setTabsClosable$", "setTabsClosable(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "movable")]
+        public bool Movable {
+            get { return (bool) interceptor.Invoke("isMovable", "isMovable()", typeof(bool)); }
+            set { interceptor.Invoke("setMovable$", "setMovable(bool)", typeof(void), typeof(bool), value); }
+        }
         public QTabWidget(QWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QTabWidget#", "QTabWidget(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -197,6 +212,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTabWidget", "~QTabWidget()", typeof(void));
         }
+        public event SlotFunc<int> SignalCurrentChanged {
+            add { QObject.Connect(this, SIGNAL("currentChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentChanged(int)"), value); }
+        }
+        public event SlotFunc<int> SignalTabCloseRequested {
+            add { QObject.Connect(this, SIGNAL("tabCloseRequested(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("tabCloseRequested(int)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
@@ -211,5 +234,7 @@ namespace Qyoto {
     public interface IQTabWidgetSignals : IQWidgetSignals {
         [Q_SIGNAL("void currentChanged(int)")]
         void CurrentChanged(int index);
+        [Q_SIGNAL("void tabCloseRequested(int)")]
+        void TabCloseRequested(int index);
     }
 }

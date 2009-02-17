@@ -45,6 +45,9 @@ namespace Qyoto {
         public override int type() {
             return (int) interceptor.Invoke("type", "type() const", typeof(int));
         }
+        public QGraphicsProxyWidget CreateProxyForChildWidget(QWidget child) {
+            return (QGraphicsProxyWidget) interceptor.Invoke("createProxyForChildWidget#", "createProxyForChildWidget(QWidget*)", typeof(QGraphicsProxyWidget), typeof(QWidget), child);
+        }
         [SmokeMethod("itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
         protected override QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
             return (QVariant) interceptor.Invoke("itemChange$#", "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)", typeof(QVariant), typeof(QGraphicsItem.GraphicsItemChange), change, typeof(QVariant), value);
@@ -68,6 +71,22 @@ namespace Qyoto {
         [SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
         protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
             interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
+        }
+        [SmokeMethod("dragEnterEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragEnterEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragEnterEvent#", "dragEnterEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        [SmokeMethod("dragLeaveEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragLeaveEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragLeaveEvent#", "dragLeaveEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        [SmokeMethod("dragMoveEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragMoveEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragMoveEvent#", "dragMoveEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        [SmokeMethod("dropEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DropEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dropEvent#", "dropEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
         }
         [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
         protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
@@ -140,6 +159,10 @@ namespace Qyoto {
         [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [Q_SLOT("QGraphicsProxyWidget* newProxyWidget(QWidget*)")]
+        protected QGraphicsProxyWidget NewProxyWidget(QWidget arg1) {
+            return (QGraphicsProxyWidget) interceptor.Invoke("newProxyWidget#", "newProxyWidget(const QWidget*)", typeof(QGraphicsProxyWidget), typeof(QWidget), arg1);
         }
         ~QGraphicsProxyWidget() {
             interceptor.Invoke("~QGraphicsProxyWidget", "~QGraphicsProxyWidget()", typeof(void));

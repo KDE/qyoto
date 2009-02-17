@@ -115,6 +115,30 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QUndoStack", "~QUndoStack()", typeof(void));
         }
+        public event SlotFunc<int> SignalIndexChanged {
+            add { QObject.Connect(this, SIGNAL("indexChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("indexChanged(int)"), value); }
+        }
+        public event SlotFunc<bool> SignalCleanChanged {
+            add { QObject.Connect(this, SIGNAL("cleanChanged(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("cleanChanged(bool)"), value); }
+        }
+        public event SlotFunc<bool> SignalCanUndoChanged {
+            add { QObject.Connect(this, SIGNAL("canUndoChanged(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("canUndoChanged(bool)"), value); }
+        }
+        public event SlotFunc<bool> SignalCanRedoChanged {
+            add { QObject.Connect(this, SIGNAL("canRedoChanged(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("canRedoChanged(bool)"), value); }
+        }
+        public event SlotFunc<string> SignalUndoTextChanged {
+            add { QObject.Connect(this, SIGNAL("undoTextChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("undoTextChanged(QString)"), value); }
+        }
+        public event SlotFunc<string> SignalRedoTextChanged {
+            add { QObject.Connect(this, SIGNAL("redoTextChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("redoTextChanged(QString)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

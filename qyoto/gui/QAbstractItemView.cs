@@ -513,6 +513,30 @@ namespace Qyoto {
         protected virtual void EditorDestroyed(QObject editor) {
             interceptor.Invoke("editorDestroyed#", "editorDestroyed(QObject*)", typeof(void), typeof(QObject), editor);
         }
+        public event SlotFunc<QModelIndex> SignalPressed {
+            add { QObject.Connect(this, SIGNAL("pressed(QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("pressed(QModelIndex)"), value); }
+        }
+        public event SlotFunc<QModelIndex> SignalClicked {
+            add { QObject.Connect(this, SIGNAL("clicked(QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("clicked(QModelIndex)"), value); }
+        }
+        public event SlotFunc<QModelIndex> SignalDoubleClicked {
+            add { QObject.Connect(this, SIGNAL("doubleClicked(QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("doubleClicked(QModelIndex)"), value); }
+        }
+        public event SlotFunc<QModelIndex> SignalActivated {
+            add { QObject.Connect(this, SIGNAL("activated(QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("activated(QModelIndex)"), value); }
+        }
+        public event SlotFunc<QModelIndex> SignalEntered {
+            add { QObject.Connect(this, SIGNAL("entered(QModelIndex)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("entered(QModelIndex)"), value); }
+        }
+        public event SlotFunc SignalViewportEntered {
+            add { QObject.Connect(this, SIGNAL("viewportEntered()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("viewportEntered()"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

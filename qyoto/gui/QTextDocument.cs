@@ -82,6 +82,11 @@ namespace Qyoto {
             get { return (int) interceptor.Invoke("maximumBlockCount", "maximumBlockCount()", typeof(int)); }
             set { interceptor.Invoke("setMaximumBlockCount$", "setMaximumBlockCount(int)", typeof(void), typeof(int), value); }
         }
+        [Q_PROPERTY("qreal", "documentMargin")]
+        public double DocumentMargin {
+            get { return (double) interceptor.Invoke("documentMargin", "documentMargin()", typeof(double)); }
+            set { interceptor.Invoke("setDocumentMargin$", "setDocumentMargin(qreal)", typeof(void), typeof(double), value); }
+        }
         [Q_PROPERTY("QTextOption", "defaultTextOption")]
         public QTextOption DefaultTextOption {
             get { return (QTextOption) interceptor.Invoke("defaultTextOption", "defaultTextOption()", typeof(QTextOption)); }
@@ -155,6 +160,9 @@ namespace Qyoto {
         public void SetPlainText(string text) {
             interceptor.Invoke("setPlainText$", "setPlainText(const QString&)", typeof(void), typeof(string), text);
         }
+        public QChar CharacterAt(int pos) {
+            return (QChar) interceptor.Invoke("characterAt$", "characterAt(int) const", typeof(QChar), typeof(int), pos);
+        }
         public QTextCursor Find(string subString, int from, uint options) {
             return (QTextCursor) interceptor.Invoke("find$$$", "find(const QString&, int, QTextDocument::FindFlags) const", typeof(QTextCursor), typeof(string), subString, typeof(int), from, typeof(uint), options);
         }
@@ -203,6 +211,9 @@ namespace Qyoto {
         public QTextBlock FindBlockByNumber(int blockNumber) {
             return (QTextBlock) interceptor.Invoke("findBlockByNumber$", "findBlockByNumber(int) const", typeof(QTextBlock), typeof(int), blockNumber);
         }
+        public QTextBlock FindBlockByLineNumber(int blockNumber) {
+            return (QTextBlock) interceptor.Invoke("findBlockByLineNumber$", "findBlockByLineNumber(int) const", typeof(QTextBlock), typeof(int), blockNumber);
+        }
         public QTextBlock Begin() {
             return (QTextBlock) interceptor.Invoke("begin", "begin() const", typeof(QTextBlock));
         }
@@ -245,6 +256,12 @@ namespace Qyoto {
         public void AdjustSize() {
             interceptor.Invoke("adjustSize", "adjustSize()", typeof(void));
         }
+        public int LineCount() {
+            return (int) interceptor.Invoke("lineCount", "lineCount() const", typeof(int));
+        }
+        public int CharacterCount() {
+            return (int) interceptor.Invoke("characterCount", "characterCount() const", typeof(int));
+        }
         public void Undo(QTextCursor cursor) {
             interceptor.Invoke("undo#", "undo(QTextCursor*)", typeof(void), typeof(QTextCursor), cursor);
         }
@@ -280,6 +297,42 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QTextDocument", "~QTextDocument()", typeof(void));
+        }
+        public event SlotFunc<int,int,int> SignalContentsChange {
+            add { QObject.Connect(this, SIGNAL("contentsChange(int, int, int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("contentsChange(int, int, int)"), value); }
+        }
+        public event SlotFunc SignalContentsChanged {
+            add { QObject.Connect(this, SIGNAL("contentsChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("contentsChanged()"), value); }
+        }
+        public event SlotFunc<bool> SignalUndoAvailable {
+            add { QObject.Connect(this, SIGNAL("undoAvailable(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("undoAvailable(bool)"), value); }
+        }
+        public event SlotFunc<bool> SignalRedoAvailable {
+            add { QObject.Connect(this, SIGNAL("redoAvailable(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("redoAvailable(bool)"), value); }
+        }
+        public event SlotFunc SignalUndoCommandAdded {
+            add { QObject.Connect(this, SIGNAL("undoCommandAdded()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("undoCommandAdded()"), value); }
+        }
+        public event SlotFunc<bool> SignalModificationChanged {
+            add { QObject.Connect(this, SIGNAL("modificationChanged(bool)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("modificationChanged(bool)"), value); }
+        }
+        public event SlotFunc<QTextCursor> SignalCursorPositionChanged {
+            add { QObject.Connect(this, SIGNAL("cursorPositionChanged(QTextCursor)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("cursorPositionChanged(QTextCursor)"), value); }
+        }
+        public event SlotFunc<int> SignalBlockCountChanged {
+            add { QObject.Connect(this, SIGNAL("blockCountChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("blockCountChanged(int)"), value); }
+        }
+        public event SlotFunc SignalDocumentLayoutChanged {
+            add { QObject.Connect(this, SIGNAL("documentLayoutChanged()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("documentLayoutChanged()"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

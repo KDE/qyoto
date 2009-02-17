@@ -214,6 +214,22 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QMenu", "~QMenu()", typeof(void));
         }
+        public event SlotFunc SignalAboutToShow {
+            add { QObject.Connect(this, SIGNAL("aboutToShow()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("aboutToShow()"), value); }
+        }
+        public event SlotFunc SignalAboutToHide {
+            add { QObject.Connect(this, SIGNAL("aboutToHide()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("aboutToHide()"), value); }
+        }
+        public event SlotFunc<QAction> SignalTriggered {
+            add { QObject.Connect(this, SIGNAL("triggered(QAction*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("triggered(QAction*)"), value); }
+        }
+        public event SlotFunc<QAction> SignalHovered {
+            add { QObject.Connect(this, SIGNAL("hovered(QAction*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("hovered(QAction*)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
@@ -225,6 +241,9 @@ namespace Qyoto {
         }
         public static QAction Exec(List<QAction> actions, QPoint pos) {
             return (QAction) staticInterceptor.Invoke("exec?#", "exec(QList<QAction*>, const QPoint&)", typeof(QAction), typeof(List<QAction>), actions, typeof(QPoint), pos);
+        }
+        public static QAction Exec(List<QAction> actions, QPoint pos, QAction at, QWidget parent) {
+            return (QAction) staticInterceptor.Invoke("exec?###", "exec(QList<QAction*>, const QPoint&, QAction*, QWidget*)", typeof(QAction), typeof(List<QAction>), actions, typeof(QPoint), pos, typeof(QAction), at, typeof(QWidget), parent);
         }
         protected new IQMenuSignals Emit {
             get { return (IQMenuSignals) Q_EMIT; }

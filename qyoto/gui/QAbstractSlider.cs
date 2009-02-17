@@ -144,6 +144,30 @@ namespace Qyoto {
         protected override void ChangeEvent(QEvent e) {
             interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), e);
         }
+        public event SlotFunc<int> SignalValueChanged {
+            add { QObject.Connect(this, SIGNAL("valueChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("valueChanged(int)"), value); }
+        }
+        public event SlotFunc SignalSliderPressed {
+            add { QObject.Connect(this, SIGNAL("sliderPressed()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("sliderPressed()"), value); }
+        }
+        public event SlotFunc<int> SignalSliderMoved {
+            add { QObject.Connect(this, SIGNAL("sliderMoved(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("sliderMoved(int)"), value); }
+        }
+        public event SlotFunc SignalSliderReleased {
+            add { QObject.Connect(this, SIGNAL("sliderReleased()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("sliderReleased()"), value); }
+        }
+        public event SlotFunc<int,int> SignalRangeChanged {
+            add { QObject.Connect(this, SIGNAL("rangeChanged(int, int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("rangeChanged(int, int)"), value); }
+        }
+        public event SlotFunc<int> SignalActionTriggered {
+            add { QObject.Connect(this, SIGNAL("actionTriggered(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("actionTriggered(int)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

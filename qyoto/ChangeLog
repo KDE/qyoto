@@ -1,3 +1,9 @@
+2009-02-17  Arno Rehn  <arno@arnorehn.de>
+	* Give some delegates more sophisticated names.
+	* Add support for C# events. They're called Signal<signalName> and if they're
+	  overloaded, additionally have their arguments attached to their name.
+	  This should be considered highly experimental and can change at any time.
+
 2009-02-16  Arno Rehn  <arno@arnorehn.de>
 	* Add QTextBlock and QTextFrame iterators. operator++ and operator-- are
 	  instance members in C++, but map onto static members in C#. Take care of

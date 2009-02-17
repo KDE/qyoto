@@ -149,7 +149,7 @@ namespace Qyoto {
         public override Dictionary<int, QVariant> ItemData(QModelIndex index) {
             return (Dictionary<int, QVariant>) interceptor.Invoke("itemData#", "itemData(const QModelIndex&) const", typeof(Dictionary<int, QVariant>), typeof(QModelIndex), index);
         }
-        [SmokeMethod("setItemData(const QModelIndex&, const QMap<int, QVariant>&)")]
+        [SmokeMethod("setItemData(const QModelIndex&, const QMap<int,QVariant>&)")]
         public override bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
             return (bool) interceptor.Invoke("setItemData#?", "setItemData(const QModelIndex&, const QMap<int,QVariant>&)", typeof(bool), typeof(QModelIndex), index, typeof(Dictionary<int, QVariant>), roles);
         }
@@ -275,11 +275,27 @@ namespace Qyoto {
         public List<QStandardItem> FindItems(string text) {
             return (List<QStandardItem>) interceptor.Invoke("findItems$", "findItems(const QString&) const", typeof(List<QStandardItem>), typeof(string), text);
         }
+        [SmokeMethod("mimeTypes() const")]
+        public override List<string> MimeTypes() {
+            return (List<string>) interceptor.Invoke("mimeTypes", "mimeTypes() const", typeof(List<string>));
+        }
+        [SmokeMethod("mimeData(const QList<QModelIndex>&) const")]
+        public override QMimeData MimeData(List<QModelIndex> indexes) {
+            return (QMimeData) interceptor.Invoke("mimeData?", "mimeData(const QList<QModelIndex>&) const", typeof(QMimeData), typeof(List<QModelIndex>), indexes);
+        }
+        [SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
+        public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
+            return (bool) interceptor.Invoke("dropMimeData#$$$#", "dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", typeof(bool), typeof(QMimeData), data, typeof(Qt.DropAction), action, typeof(int), row, typeof(int), column, typeof(QModelIndex), parent);
+        }
         ~QStandardItemModel() {
             interceptor.Invoke("~QStandardItemModel", "~QStandardItemModel()", typeof(void));
         }
         public new void Dispose() {
             interceptor.Invoke("~QStandardItemModel", "~QStandardItemModel()", typeof(void));
+        }
+        public event SlotFunc<QStandardItem> SignalItemChanged {
+            add { QObject.Connect(this, SIGNAL("itemChanged(QStandardItem*)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("itemChanged(QStandardItem*)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

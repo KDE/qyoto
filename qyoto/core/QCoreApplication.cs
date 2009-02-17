@@ -56,6 +56,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QCoreApplication", "~QCoreApplication()", typeof(void));
         }
+        public event SlotFunc SignalAboutToQuit {
+            add { QObject.Connect(this, SIGNAL("aboutToQuit()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("aboutToQuit()"), value); }
+        }
+        public event SlotFunc<int> SignalUnixSignal {
+            add { QObject.Connect(this, SIGNAL("unixSignal(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("unixSignal(int)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
@@ -154,17 +162,17 @@ namespace Qyoto {
         public static void RemoveTranslator(QTranslator messageFile) {
             staticInterceptor.Invoke("removeTranslator#", "removeTranslator(QTranslator*)", typeof(void), typeof(QTranslator), messageFile);
         }
-        public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding) {
-            return (string) staticInterceptor.Invoke("translate$$$$", "translate(const char*, const char*, const char*, QCoreApplication::Encoding)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), comment, typeof(QCoreApplication.Encoding), encoding);
+        public static string Translate(string context, string key, string disambiguation, QCoreApplication.Encoding encoding) {
+            return (string) staticInterceptor.Invoke("translate$$$$", "translate(const char*, const char*, const char*, QCoreApplication::Encoding)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), disambiguation, typeof(QCoreApplication.Encoding), encoding);
         }
-        public static string Translate(string context, string key, string comment) {
-            return (string) staticInterceptor.Invoke("translate$$$", "translate(const char*, const char*, const char*)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), comment);
+        public static string Translate(string context, string key, string disambiguation) {
+            return (string) staticInterceptor.Invoke("translate$$$", "translate(const char*, const char*, const char*)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), disambiguation);
         }
         public static string Translate(string context, string key) {
             return (string) staticInterceptor.Invoke("translate$$", "translate(const char*, const char*)", typeof(string), typeof(string), context, typeof(string), key);
         }
-        public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding, int n) {
-            return (string) staticInterceptor.Invoke("translate$$$$$", "translate(const char*, const char*, const char*, QCoreApplication::Encoding, int)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), comment, typeof(QCoreApplication.Encoding), encoding, typeof(int), n);
+        public static string Translate(string context, string key, string disambiguation, QCoreApplication.Encoding encoding, int n) {
+            return (string) staticInterceptor.Invoke("translate$$$$$", "translate(const char*, const char*, const char*, QCoreApplication::Encoding, int)", typeof(string), typeof(string), context, typeof(string), key, typeof(string), disambiguation, typeof(QCoreApplication.Encoding), encoding, typeof(int), n);
         }
         public static void Flush() {
             staticInterceptor.Invoke("flush", "flush()", typeof(void));

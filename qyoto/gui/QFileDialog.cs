@@ -38,11 +38,13 @@ namespace Qyoto {
             Reject = 4,
         }
         public enum Option {
-            ShowDirsOnly = 0x01,
-            DontResolveSymlinks = 0x02,
-            DontConfirmOverwrite = 0x04,
-            DontUseSheet = 0x08,
-            DontUseNativeDialog = 0x10,
+            ShowDirsOnly = 0x00000001,
+            DontResolveSymlinks = 0x00000002,
+            DontConfirmOverwrite = 0x00000004,
+            DontUseSheet = 0x00000008,
+            DontUseNativeDialog = 0x00000010,
+            ReadOnly = 0x00000020,
+            HideNameFilterDetails = 0x00000040,
         }
         [Q_PROPERTY("QFileDialog::ViewMode", "viewMode")]
         public QFileDialog.ViewMode viewMode {
@@ -83,6 +85,11 @@ namespace Qyoto {
         public bool NameFilterDetailsVisible {
             get { return (bool) interceptor.Invoke("isNameFilterDetailsVisible", "isNameFilterDetailsVisible()", typeof(bool)); }
             set { interceptor.Invoke("setNameFilterDetailsVisible$", "setNameFilterDetailsVisible(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("QFileDialog::Options", "options")]
+        public uint Options {
+            get { return (uint) interceptor.Invoke("options", "options()", typeof(uint)); }
+            set { interceptor.Invoke("setOptions$", "setOptions(QFileDialog::Options)", typeof(void), typeof(uint), value); }
         }
         // QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
         public QFileDialog(QWidget parent, uint f) : this((Type) null) {
@@ -187,6 +194,25 @@ namespace Qyoto {
         public QAbstractProxyModel ProxyModel() {
             return (QAbstractProxyModel) interceptor.Invoke("proxyModel", "proxyModel() const", typeof(QAbstractProxyModel));
         }
+        public void SetOption(QFileDialog.Option option, bool on) {
+            interceptor.Invoke("setOption$$", "setOption(QFileDialog::Option, bool)", typeof(void), typeof(QFileDialog.Option), option, typeof(bool), on);
+        }
+        public void SetOption(QFileDialog.Option option) {
+            interceptor.Invoke("setOption$", "setOption(QFileDialog::Option)", typeof(void), typeof(QFileDialog.Option), option);
+        }
+        public bool TestOption(QFileDialog.Option option) {
+            return (bool) interceptor.Invoke("testOption$", "testOption(QFileDialog::Option) const", typeof(bool), typeof(QFileDialog.Option), option);
+        }
+        public new void Open() {
+            interceptor.Invoke("open", "open()", typeof(void));
+        }
+        public void Open(QObject receiver, string member) {
+            interceptor.Invoke("open#$", "open(QObject*, const char*)", typeof(void), typeof(QObject), receiver, typeof(string), member);
+        }
+        [SmokeMethod("setVisible(bool)")]
+        public override void SetVisible(bool visible) {
+            interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
+        }
         [SmokeMethod("done(int)")]
         protected new virtual void Done(int result) {
             interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), result);
@@ -204,6 +230,26 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QFileDialog", "~QFileDialog()", typeof(void));
+        }
+        public event SlotFunc<string> SignalFileSelected {
+            add { QObject.Connect(this, SIGNAL("fileSelected(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("fileSelected(QString)"), value); }
+        }
+        public event SlotFunc<List<string>> SignalFilesSelected {
+            add { QObject.Connect(this, SIGNAL("filesSelected(QStringList)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("filesSelected(QStringList)"), value); }
+        }
+        public event SlotFunc<string> SignalCurrentChanged {
+            add { QObject.Connect(this, SIGNAL("currentChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentChanged(QString)"), value); }
+        }
+        public event SlotFunc<string> SignalDirectoryEntered {
+            add { QObject.Connect(this, SIGNAL("directoryEntered(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("directoryEntered(QString)"), value); }
+        }
+        public event SlotFunc<string> SignalFilterSelected {
+            add { QObject.Connect(this, SIGNAL("filterSelected(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("filterSelected(QString)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -295,6 +341,8 @@ namespace Qyoto {
     }
 
     public interface IQFileDialogSignals : IQDialogSignals {
+        [Q_SIGNAL("void fileSelected(QString)")]
+        void FileSelected(string file);
         [Q_SIGNAL("void filesSelected(QStringList)")]
         void FilesSelected(List<string> files);
         [Q_SIGNAL("void currentChanged(QString)")]

@@ -3,12 +3,190 @@ namespace Qyoto {
     using System;
     using System.Runtime.InteropServices;
     using System.Collections.Generic;
+    /// <remarks> See <see cref="IQInputDialogSignals"></see> for signals emitted by QInputDialog
+    /// </remarks>
     [SmokeClass("QInputDialog")]
-    public class QInputDialog : QDialog {
+    public class QInputDialog : QDialog, IDisposable {
         protected QInputDialog(Type dummy) : base((Type) null) {}
+        protected new void CreateProxy() {
+            interceptor = new SmokeInvocation(typeof(QInputDialog), this);
+        }
         private static SmokeInvocation staticInterceptor = null;
         static QInputDialog() {
             staticInterceptor = new SmokeInvocation(typeof(QInputDialog), null);
+        }
+        public enum InputDialogOption {
+            NoButtons = 0x00000001,
+            UseListViewForComboBoxItems = 0x00000002,
+        }
+        public enum InputMode {
+            TextInput = 0,
+            IntInput = 1,
+            DoubleInput = 2,
+        }
+        [Q_PROPERTY("QInputDialog::InputMode", "inputMode")]
+        public QInputDialog.InputMode inputMode {
+            get { return (QInputDialog.InputMode) interceptor.Invoke("inputMode", "inputMode()", typeof(QInputDialog.InputMode)); }
+            set { interceptor.Invoke("setInputMode$", "setInputMode(QInputDialog::InputMode)", typeof(void), typeof(QInputDialog.InputMode), value); }
+        }
+        [Q_PROPERTY("QString", "labelText")]
+        public string LabelText {
+            get { return (string) interceptor.Invoke("labelText", "labelText()", typeof(string)); }
+            set { interceptor.Invoke("setLabelText$", "setLabelText(QString)", typeof(void), typeof(string), value); }
+        }
+        [Q_PROPERTY("QInputDialog::InputDialogOptions", "options")]
+        public uint Options {
+            get { return (uint) interceptor.Invoke("options", "options()", typeof(uint)); }
+            set { interceptor.Invoke("setOptions$", "setOptions(QInputDialog::InputDialogOptions)", typeof(void), typeof(uint), value); }
+        }
+        [Q_PROPERTY("QString", "textValue")]
+        public string TextValue {
+            get { return (string) interceptor.Invoke("textValue", "textValue()", typeof(string)); }
+            set { interceptor.Invoke("setTextValue$", "setTextValue(QString)", typeof(void), typeof(string), value); }
+        }
+        [Q_PROPERTY("int", "intValue")]
+        public int IntValue {
+            get { return (int) interceptor.Invoke("intValue", "intValue()", typeof(int)); }
+            set { interceptor.Invoke("setIntValue$", "setIntValue(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("int", "doubleValue")]
+        public int DoubleValue {
+            get { return (int) interceptor.Invoke("doubleValue", "doubleValue()", typeof(int)); }
+            set { interceptor.Invoke("setDoubleValue$", "setDoubleValue(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("QLineEdit::EchoMode", "textEchoMode")]
+        public QLineEdit.EchoMode TextEchoMode {
+            get { return (QLineEdit.EchoMode) interceptor.Invoke("textEchoMode", "textEchoMode()", typeof(QLineEdit.EchoMode)); }
+            set { interceptor.Invoke("setTextEchoMode$", "setTextEchoMode(QLineEdit::EchoMode)", typeof(void), typeof(QLineEdit.EchoMode), value); }
+        }
+        [Q_PROPERTY("bool", "comboBoxEditable")]
+        public bool ComboBoxEditable {
+            get { return (bool) interceptor.Invoke("isComboBoxEditable", "isComboBoxEditable()", typeof(bool)); }
+            set { interceptor.Invoke("setComboBoxEditable$", "setComboBoxEditable(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("QStringList", "comboBoxItems")]
+        public List<string> ComboBoxItems {
+            get { return (List<string>) interceptor.Invoke("comboBoxItems", "comboBoxItems()", typeof(List<string>)); }
+            set { interceptor.Invoke("setComboBoxItems?", "setComboBoxItems(QStringList)", typeof(void), typeof(List<string>), value); }
+        }
+        [Q_PROPERTY("int", "intMinimum")]
+        public int IntMinimum {
+            get { return (int) interceptor.Invoke("intMinimum", "intMinimum()", typeof(int)); }
+            set { interceptor.Invoke("setIntMinimum$", "setIntMinimum(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("int", "intMaximum")]
+        public int IntMaximum {
+            get { return (int) interceptor.Invoke("intMaximum", "intMaximum()", typeof(int)); }
+            set { interceptor.Invoke("setIntMaximum$", "setIntMaximum(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("int", "intStep")]
+        public int IntStep {
+            get { return (int) interceptor.Invoke("intStep", "intStep()", typeof(int)); }
+            set { interceptor.Invoke("setIntStep$", "setIntStep(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("double", "doubleMinimum")]
+        public double DoubleMinimum {
+            get { return (double) interceptor.Invoke("doubleMinimum", "doubleMinimum()", typeof(double)); }
+            set { interceptor.Invoke("setDoubleMinimum$", "setDoubleMinimum(double)", typeof(void), typeof(double), value); }
+        }
+        [Q_PROPERTY("double", "doubleMaximum")]
+        public double DoubleMaximum {
+            get { return (double) interceptor.Invoke("doubleMaximum", "doubleMaximum()", typeof(double)); }
+            set { interceptor.Invoke("setDoubleMaximum$", "setDoubleMaximum(double)", typeof(void), typeof(double), value); }
+        }
+        [Q_PROPERTY("int", "doubleDecimals")]
+        public int DoubleDecimals {
+            get { return (int) interceptor.Invoke("doubleDecimals", "doubleDecimals()", typeof(int)); }
+            set { interceptor.Invoke("setDoubleDecimals$", "setDoubleDecimals(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("QString", "okButtonText")]
+        public string OkButtonText {
+            get { return (string) interceptor.Invoke("okButtonText", "okButtonText()", typeof(string)); }
+            set { interceptor.Invoke("setOkButtonText$", "setOkButtonText(QString)", typeof(void), typeof(string), value); }
+        }
+        [Q_PROPERTY("QString", "cancelButtonText")]
+        public string CancelButtonText {
+            get { return (string) interceptor.Invoke("cancelButtonText", "cancelButtonText()", typeof(string)); }
+            set { interceptor.Invoke("setCancelButtonText$", "setCancelButtonText(QString)", typeof(void), typeof(string), value); }
+        }
+        public QInputDialog(QWidget parent, uint flags) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QInputDialog#$", "QInputDialog(QWidget*, Qt::WindowFlags)", typeof(void), typeof(QWidget), parent, typeof(uint), flags);
+        }
+        public QInputDialog(QWidget parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QInputDialog#", "QInputDialog(QWidget*)", typeof(void), typeof(QWidget), parent);
+        }
+        public QInputDialog() : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QInputDialog", "QInputDialog()", typeof(void));
+        }
+        public void SetOption(QInputDialog.InputDialogOption option, bool on) {
+            interceptor.Invoke("setOption$$", "setOption(QInputDialog::InputDialogOption, bool)", typeof(void), typeof(QInputDialog.InputDialogOption), option, typeof(bool), on);
+        }
+        public void SetOption(QInputDialog.InputDialogOption option) {
+            interceptor.Invoke("setOption$", "setOption(QInputDialog::InputDialogOption)", typeof(void), typeof(QInputDialog.InputDialogOption), option);
+        }
+        public bool TestOption(QInputDialog.InputDialogOption option) {
+            return (bool) interceptor.Invoke("testOption$", "testOption(QInputDialog::InputDialogOption) const", typeof(bool), typeof(QInputDialog.InputDialogOption), option);
+        }
+        public void SetIntRange(int min, int max) {
+            interceptor.Invoke("setIntRange$$", "setIntRange(int, int)", typeof(void), typeof(int), min, typeof(int), max);
+        }
+        public void SetDoubleRange(double min, double max) {
+            interceptor.Invoke("setDoubleRange$$", "setDoubleRange(double, double)", typeof(void), typeof(double), min, typeof(double), max);
+        }
+        public new void Open() {
+            interceptor.Invoke("open", "open()", typeof(void));
+        }
+        public void Open(QObject receiver, string member) {
+            interceptor.Invoke("open#$", "open(QObject*, const char*)", typeof(void), typeof(QObject), receiver, typeof(string), member);
+        }
+        [SmokeMethod("minimumSizeHint() const")]
+        public override QSize MinimumSizeHint() {
+            return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
+        }
+        [SmokeMethod("sizeHint() const")]
+        public override QSize SizeHint() {
+            return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
+        }
+        [SmokeMethod("setVisible(bool)")]
+        public override void SetVisible(bool visible) {
+            interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
+        }
+        [SmokeMethod("done(int)")]
+        public override void Done(int result) {
+            interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), result);
+        }
+        ~QInputDialog() {
+            interceptor.Invoke("~QInputDialog", "~QInputDialog()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~QInputDialog", "~QInputDialog()", typeof(void));
+        }
+        public event SlotFunc<string> SignalTextValueChanged {
+            add { QObject.Connect(this, SIGNAL("textValueChanged(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("textValueChanged(QString)"), value); }
+        }
+        public event SlotFunc<string> SignalTextValueSelected {
+            add { QObject.Connect(this, SIGNAL("textValueSelected(QString)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("textValueSelected(QString)"), value); }
+        }
+        public event SlotFunc<int> SignalIntValueChanged {
+            add { QObject.Connect(this, SIGNAL("intValueChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("intValueChanged(int)"), value); }
+        }
+        public event SlotFunc<int> SignalIntValueSelected {
+            add { QObject.Connect(this, SIGNAL("intValueSelected(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("intValueSelected(int)"), value); }
+        }
+        public event SlotFunc<double> SignalDoubleValueChanged {
+            add { QObject.Connect(this, SIGNAL("doubleValueChanged(double)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("doubleValueChanged(double)"), value); }
+        }
+        public event SlotFunc<double> SignalDoubleValueSelected {
+            add { QObject.Connect(this, SIGNAL("doubleValueSelected(double)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("doubleValueSelected(double)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -16,7 +194,7 @@ namespace Qyoto {
         public static new string Tr(string s) {
             return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
         }
-        public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, ref bool ok, uint f) {
+        public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, ref bool ok, uint flags) {
             StackItem[] stack = new StackItem[8];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -40,7 +218,7 @@ namespace Qyoto {
             stack[5].s_class = (IntPtr) GCHandle.Alloc(text);
 #endif
             stack[6].s_bool = ok;
-            stack[7].s_uint = f;
+            stack[7].s_uint = flags;
             staticInterceptor.Invoke("getText#$$$$$$", "getText(QWidget*, const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
@@ -134,7 +312,7 @@ namespace Qyoto {
         public static string GetText(QWidget parent, string title, string label) {
             return (string) staticInterceptor.Invoke("getText#$$", "getText(QWidget*, const QString&, const QString&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
         }
-        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok, uint f) {
+        public static int GetInt(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok, uint flags) {
             StackItem[] stack = new StackItem[10];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -156,8 +334,8 @@ namespace Qyoto {
             stack[6].s_int = maxValue;
             stack[7].s_int = step;
             stack[8].s_bool = ok;
-            stack[9].s_uint = f;
-            staticInterceptor.Invoke("getInteger#$$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*, Qt::WindowFlags)", stack);
+            stack[9].s_uint = flags;
+            staticInterceptor.Invoke("getInt#$$$$$$$$", "getInt(QWidget*, const QString&, const QString&, int, int, int, int, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
@@ -176,7 +354,7 @@ namespace Qyoto {
             ok = stack[8].s_bool;
             return stack[0].s_int;
         }
-        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok) {
+        public static int GetInt(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok) {
             StackItem[] stack = new StackItem[9];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -198,7 +376,7 @@ namespace Qyoto {
             stack[6].s_int = maxValue;
             stack[7].s_int = step;
             stack[8].s_bool = ok;
-            staticInterceptor.Invoke("getInteger#$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*)", stack);
+            staticInterceptor.Invoke("getInt#$$$$$$$", "getInt(QWidget*, const QString&, const QString&, int, int, int, int, bool*)", stack);
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
@@ -217,22 +395,22 @@ namespace Qyoto {
             ok = stack[8].s_bool;
             return stack[0].s_int;
         }
-        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step) {
-            return (int) staticInterceptor.Invoke("getInteger#$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue, typeof(int), step);
+        public static int GetInt(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step) {
+            return (int) staticInterceptor.Invoke("getInt#$$$$$$", "getInt(QWidget*, const QString&, const QString&, int, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue, typeof(int), step);
         }
-        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue) {
-            return (int) staticInterceptor.Invoke("getInteger#$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue);
+        public static int GetInt(QWidget parent, string title, string label, int value, int minValue, int maxValue) {
+            return (int) staticInterceptor.Invoke("getInt#$$$$$", "getInt(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue);
         }
-        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue) {
-            return (int) staticInterceptor.Invoke("getInteger#$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue);
+        public static int GetInt(QWidget parent, string title, string label, int value, int minValue) {
+            return (int) staticInterceptor.Invoke("getInt#$$$$", "getInt(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue);
         }
-        public static int GetInteger(QWidget parent, string title, string label, int value) {
-            return (int) staticInterceptor.Invoke("getInteger#$$$", "getInteger(QWidget*, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value);
+        public static int GetInt(QWidget parent, string title, string label, int value) {
+            return (int) staticInterceptor.Invoke("getInt#$$$", "getInt(QWidget*, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value);
         }
-        public static int GetInteger(QWidget parent, string title, string label) {
-            return (int) staticInterceptor.Invoke("getInteger#$$", "getInteger(QWidget*, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
+        public static int GetInt(QWidget parent, string title, string label) {
+            return (int) staticInterceptor.Invoke("getInt#$$", "getInt(QWidget*, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
         }
-        public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, ref bool ok, uint f) {
+        public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, ref bool ok, uint flags) {
             StackItem[] stack = new StackItem[10];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -254,7 +432,7 @@ namespace Qyoto {
             stack[6].s_double = maxValue;
             stack[7].s_int = decimals;
             stack[8].s_bool = ok;
-            stack[9].s_uint = f;
+            stack[9].s_uint = flags;
             staticInterceptor.Invoke("getDouble#$$$$$$$$", "getDouble(QWidget*, const QString&, const QString&, double, double, double, int, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
@@ -330,7 +508,7 @@ namespace Qyoto {
         public static double GetDouble(QWidget parent, string title, string label) {
             return (double) staticInterceptor.Invoke("getDouble#$$", "getDouble(QWidget*, const QString&, const QString&)", typeof(double), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
         }
-        public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, ref bool ok, uint f) {
+        public static string GetItem(QWidget parent, string title, string label, List<string> items, int current, bool editable, ref bool ok, uint flags) {
             StackItem[] stack = new StackItem[9];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -348,14 +526,14 @@ namespace Qyoto {
             stack[3].s_class = (IntPtr) GCHandle.Alloc(label);
 #endif
 #if DEBUG
-            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(list);
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(items);
 #else
-            stack[4].s_class = (IntPtr) GCHandle.Alloc(list);
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(items);
 #endif
             stack[5].s_int = current;
             stack[6].s_bool = editable;
             stack[7].s_bool = ok;
-            stack[8].s_uint = f;
+            stack[8].s_uint = flags;
             staticInterceptor.Invoke("getItem#$$?$$$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*, Qt::WindowFlags)", stack);
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
@@ -386,7 +564,7 @@ namespace Qyoto {
 #endif
             return (string) returnValue;
         }
-        public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, ref bool ok) {
+        public static string GetItem(QWidget parent, string title, string label, List<string> items, int current, bool editable, ref bool ok) {
             StackItem[] stack = new StackItem[8];
 #if DEBUG
             stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -404,9 +582,9 @@ namespace Qyoto {
             stack[3].s_class = (IntPtr) GCHandle.Alloc(label);
 #endif
 #if DEBUG
-            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(list);
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(items);
 #else
-            stack[4].s_class = (IntPtr) GCHandle.Alloc(list);
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(items);
 #endif
             stack[5].s_int = current;
             stack[6].s_bool = editable;
@@ -441,14 +619,112 @@ namespace Qyoto {
 #endif
             return (string) returnValue;
         }
-        public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable) {
-            return (string) staticInterceptor.Invoke("getItem#$$?$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list, typeof(int), current, typeof(bool), editable);
+        public static string GetItem(QWidget parent, string title, string label, List<string> items, int current, bool editable) {
+            return (string) staticInterceptor.Invoke("getItem#$$?$$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), items, typeof(int), current, typeof(bool), editable);
         }
-        public static string GetItem(QWidget parent, string title, string label, List<string> list, int current) {
-            return (string) staticInterceptor.Invoke("getItem#$$?$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list, typeof(int), current);
+        public static string GetItem(QWidget parent, string title, string label, List<string> items, int current) {
+            return (string) staticInterceptor.Invoke("getItem#$$?$", "getItem(QWidget*, const QString&, const QString&, const QStringList&, int)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), items, typeof(int), current);
         }
-        public static string GetItem(QWidget parent, string title, string label, List<string> list) {
-            return (string) staticInterceptor.Invoke("getItem#$$?", "getItem(QWidget*, const QString&, const QString&, const QStringList&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), list);
+        public static string GetItem(QWidget parent, string title, string label, List<string> items) {
+            return (string) staticInterceptor.Invoke("getItem#$$?", "getItem(QWidget*, const QString&, const QString&, const QStringList&)", typeof(string), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(List<string>), items);
+        }
+        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok, uint flags) {
+            StackItem[] stack = new StackItem[10];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+#if DEBUG
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(title);
+#else
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(title);
+#endif
+#if DEBUG
+            stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(label);
+#else
+            stack[3].s_class = (IntPtr) GCHandle.Alloc(label);
+#endif
+            stack[4].s_int = value;
+            stack[5].s_int = minValue;
+            stack[6].s_int = maxValue;
+            stack[7].s_int = step;
+            stack[8].s_bool = ok;
+            stack[9].s_uint = flags;
+            staticInterceptor.Invoke("getInteger#$$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*, Qt::WindowFlags)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+            ((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+            ((GCHandle) stack[3].s_class).Free();
+#endif
+            ok = stack[8].s_bool;
+            return stack[0].s_int;
+        }
+        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, ref bool ok) {
+            StackItem[] stack = new StackItem[9];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+#if DEBUG
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(title);
+#else
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(title);
+#endif
+#if DEBUG
+            stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(label);
+#else
+            stack[3].s_class = (IntPtr) GCHandle.Alloc(label);
+#endif
+            stack[4].s_int = value;
+            stack[5].s_int = minValue;
+            stack[6].s_int = maxValue;
+            stack[7].s_int = step;
+            stack[8].s_bool = ok;
+            staticInterceptor.Invoke("getInteger#$$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int, bool*)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+            ((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+            ((GCHandle) stack[3].s_class).Free();
+#endif
+            ok = stack[8].s_bool;
+            return stack[0].s_int;
+        }
+        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step) {
+            return (int) staticInterceptor.Invoke("getInteger#$$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue, typeof(int), step);
+        }
+        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue) {
+            return (int) staticInterceptor.Invoke("getInteger#$$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue, typeof(int), maxValue);
+        }
+        public static int GetInteger(QWidget parent, string title, string label, int value, int minValue) {
+            return (int) staticInterceptor.Invoke("getInteger#$$$$", "getInteger(QWidget*, const QString&, const QString&, int, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value, typeof(int), minValue);
+        }
+        public static int GetInteger(QWidget parent, string title, string label, int value) {
+            return (int) staticInterceptor.Invoke("getInteger#$$$", "getInteger(QWidget*, const QString&, const QString&, int)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label, typeof(int), value);
+        }
+        public static int GetInteger(QWidget parent, string title, string label) {
+            return (int) staticInterceptor.Invoke("getInteger#$$", "getInteger(QWidget*, const QString&, const QString&)", typeof(int), typeof(QWidget), parent, typeof(string), title, typeof(string), label);
         }
         protected new IQInputDialogSignals Emit {
             get { return (IQInputDialogSignals) Q_EMIT; }
@@ -456,5 +732,17 @@ namespace Qyoto {
     }
 
     public interface IQInputDialogSignals : IQDialogSignals {
+        [Q_SIGNAL("void textValueChanged(QString)")]
+        void TextValueChanged(string text);
+        [Q_SIGNAL("void textValueSelected(QString)")]
+        void TextValueSelected(string text);
+        [Q_SIGNAL("void intValueChanged(int)")]
+        void IntValueChanged(int value);
+        [Q_SIGNAL("void intValueSelected(int)")]
+        void IntValueSelected(int value);
+        [Q_SIGNAL("void doubleValueChanged(double)")]
+        void DoubleValueChanged(double value);
+        [Q_SIGNAL("void doubleValueSelected(double)")]
+        void DoubleValueSelected(double value);
     }
 }

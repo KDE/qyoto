@@ -23,6 +23,15 @@ namespace Qyoto {
             TriangularWest = 6,
             TriangularEast = 7,
         }
+        public enum ButtonPosition {
+            LeftSide = 0,
+            RightSide = 1,
+        }
+        public enum SelectionBehavior {
+            SelectLeftTab = 0,
+            SelectRightTab = 1,
+            SelectPreviousTab = 2,
+        }
         [Q_PROPERTY("QTabBar::Shape", "shape")]
         public QTabBar.Shape shape {
             get { return (QTabBar.Shape) interceptor.Invoke("shape", "shape()", typeof(QTabBar.Shape)); }
@@ -57,6 +66,31 @@ namespace Qyoto {
             get { return (bool) interceptor.Invoke("usesScrollButtons", "usesScrollButtons()", typeof(bool)); }
             set { interceptor.Invoke("setUsesScrollButtons$", "setUsesScrollButtons(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("bool", "tabsClosable")]
+        public bool TabsClosable {
+            get { return (bool) interceptor.Invoke("tabsClosable", "tabsClosable()", typeof(bool)); }
+            set { interceptor.Invoke("setTabsClosable$", "setTabsClosable(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("QTabBar::SelectionBehavior", "selectionBehaviorOnRemove")]
+        public QTabBar.SelectionBehavior SelectionBehaviorOnRemove {
+            get { return (QTabBar.SelectionBehavior) interceptor.Invoke("selectionBehaviorOnRemove", "selectionBehaviorOnRemove()", typeof(QTabBar.SelectionBehavior)); }
+            set { interceptor.Invoke("setSelectionBehaviorOnRemove$", "setSelectionBehaviorOnRemove(QTabBar::SelectionBehavior)", typeof(void), typeof(QTabBar.SelectionBehavior), value); }
+        }
+        [Q_PROPERTY("bool", "expanding")]
+        public bool Expanding {
+            get { return (bool) interceptor.Invoke("expanding", "expanding()", typeof(bool)); }
+            set { interceptor.Invoke("setExpanding$", "setExpanding(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "movable")]
+        public bool Movable {
+            get { return (bool) interceptor.Invoke("isMovable", "isMovable()", typeof(bool)); }
+            set { interceptor.Invoke("setMovable$", "setMovable(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "documentMode")]
+        public bool DocumentMode {
+            get { return (bool) interceptor.Invoke("documentMode", "documentMode()", typeof(bool)); }
+            set { interceptor.Invoke("setDocumentMode$", "setDocumentMode(bool)", typeof(void), typeof(bool), value); }
+        }
         public QTabBar(QWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QTabBar#", "QTabBar(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -79,6 +113,9 @@ namespace Qyoto {
         }
         public void RemoveTab(int index) {
             interceptor.Invoke("removeTab$", "removeTab(int)", typeof(void), typeof(int), index);
+        }
+        public void MoveTab(int from, int to) {
+            interceptor.Invoke("moveTab$$", "moveTab(int, int)", typeof(void), typeof(int), from, typeof(int), to);
         }
         public bool IsTabEnabled(int index) {
             return (bool) interceptor.Invoke("isTabEnabled$", "isTabEnabled(int) const", typeof(bool), typeof(int), index);
@@ -136,6 +173,12 @@ namespace Qyoto {
         public override QSize MinimumSizeHint() {
             return (QSize) interceptor.Invoke("minimumSizeHint", "minimumSizeHint() const", typeof(QSize));
         }
+        public void SetTabButton(int index, QTabBar.ButtonPosition position, QWidget widget) {
+            interceptor.Invoke("setTabButton$$#", "setTabButton(int, QTabBar::ButtonPosition, QWidget*)", typeof(void), typeof(int), index, typeof(QTabBar.ButtonPosition), position, typeof(QWidget), widget);
+        }
+        public QWidget TabButton(int index, QTabBar.ButtonPosition position) {
+            return (QWidget) interceptor.Invoke("tabButton$$", "tabButton(int, QTabBar::ButtonPosition) const", typeof(QWidget), typeof(int), index, typeof(QTabBar.ButtonPosition), position);
+        }
         [Q_SLOT("void setCurrentIndex(int)")]
         public void SetCurrentIndex(int index) {
             interceptor.Invoke("setCurrentIndex$", "setCurrentIndex(int)", typeof(void), typeof(int), index);
@@ -168,6 +211,10 @@ namespace Qyoto {
         protected override void ShowEvent(QShowEvent arg1) {
             interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
         }
+        [SmokeMethod("hideEvent(QHideEvent*)")]
+        protected override void HideEvent(QHideEvent arg1) {
+            interceptor.Invoke("hideEvent#", "hideEvent(QHideEvent*)", typeof(void), typeof(QHideEvent), arg1);
+        }
         [SmokeMethod("paintEvent(QPaintEvent*)")]
         protected override void PaintEvent(QPaintEvent arg1) {
             interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
@@ -183,6 +230,10 @@ namespace Qyoto {
         [SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
         protected override void MouseReleaseEvent(QMouseEvent arg1) {
             interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QMouseEvent*)", typeof(void), typeof(QMouseEvent), arg1);
+        }
+        [SmokeMethod("wheelEvent(QWheelEvent*)")]
+        protected override void WheelEvent(QWheelEvent arg1) {
+            interceptor.Invoke("wheelEvent#", "wheelEvent(QWheelEvent*)", typeof(void), typeof(QWheelEvent), arg1);
         }
         [SmokeMethod("keyPressEvent(QKeyEvent*)")]
         protected override void KeyPressEvent(QKeyEvent arg1) {
@@ -201,6 +252,18 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTabBar", "~QTabBar()", typeof(void));
         }
+        public event SlotFunc<int> SignalCurrentChanged {
+            add { QObject.Connect(this, SIGNAL("currentChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentChanged(int)"), value); }
+        }
+        public event SlotFunc<int> SignalTabCloseRequested {
+            add { QObject.Connect(this, SIGNAL("tabCloseRequested(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("tabCloseRequested(int)"), value); }
+        }
+        public event SlotFunc<int,int> SignalTabMoved {
+            add { QObject.Connect(this, SIGNAL("tabMoved(int, int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("tabMoved(int, int)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
@@ -215,5 +278,9 @@ namespace Qyoto {
     public interface IQTabBarSignals : IQWidgetSignals {
         [Q_SIGNAL("void currentChanged(int)")]
         void CurrentChanged(int index);
+        [Q_SIGNAL("void tabCloseRequested(int)")]
+        void TabCloseRequested(int index);
+        [Q_SIGNAL("void tabMoved(int, int)")]
+        void TabMoved(int from, int to);
     }
 }

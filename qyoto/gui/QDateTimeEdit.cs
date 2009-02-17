@@ -283,6 +283,18 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QDateTimeEdit", "~QDateTimeEdit()", typeof(void));
         }
+        public event SlotFunc<QDateTime> SignalDateTimeChanged {
+            add { QObject.Connect(this, SIGNAL("dateTimeChanged(QDateTime)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("dateTimeChanged(QDateTime)"), value); }
+        }
+        public event SlotFunc<QTime> SignalTimeChanged {
+            add { QObject.Connect(this, SIGNAL("timeChanged(QTime)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("timeChanged(QTime)"), value); }
+        }
+        public event SlotFunc<QDate> SignalDateChanged {
+            add { QObject.Connect(this, SIGNAL("dateChanged(QDate)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("dateChanged(QDate)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -177,6 +177,15 @@ namespace Qyoto {
         public string ApplicationName() {
             return (string) interceptor.Invoke("applicationName", "applicationName() const", typeof(string));
         }
+        public void SetIniCodec(QTextCodec codec) {
+            interceptor.Invoke("setIniCodec#", "setIniCodec(QTextCodec*)", typeof(void), typeof(QTextCodec), codec);
+        }
+        public void SetIniCodec(string codecName) {
+            interceptor.Invoke("setIniCodec$", "setIniCodec(const char*)", typeof(void), typeof(string), codecName);
+        }
+        public QTextCodec IniCodec() {
+            return (QTextCodec) interceptor.Invoke("iniCodec", "iniCodec() const", typeof(QTextCodec));
+        }
         [SmokeMethod("event(QEvent*)")]
         protected new virtual bool Event(QEvent arg1) {
             return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);

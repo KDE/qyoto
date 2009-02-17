@@ -151,6 +151,34 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QMovie", "~QMovie()", typeof(void));
         }
+        public event SlotFunc SignalStarted {
+            add { QObject.Connect(this, SIGNAL("started()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("started()"), value); }
+        }
+        public event SlotFunc<QSize> SignalResized {
+            add { QObject.Connect(this, SIGNAL("resized(QSize)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("resized(QSize)"), value); }
+        }
+        public event SlotFunc<QRect> SignalUpdated {
+            add { QObject.Connect(this, SIGNAL("updated(QRect)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("updated(QRect)"), value); }
+        }
+        public event SlotFunc<QMovie.MovieState> SignalStateChanged {
+            add { QObject.Connect(this, SIGNAL("stateChanged(QMovie::MovieState)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("stateChanged(QMovie::MovieState)"), value); }
+        }
+        public event SlotFunc<int> SignalError {
+            add { QObject.Connect(this, SIGNAL("error(QImageReader::ImageReaderError)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("error(QImageReader::ImageReaderError)"), value); }
+        }
+        public event SlotFunc SignalFinished {
+            add { QObject.Connect(this, SIGNAL("finished()"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("finished()"), value); }
+        }
+        public event SlotFunc<int> SignalFrameChanged {
+            add { QObject.Connect(this, SIGNAL("frameChanged(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("frameChanged(int)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -75,6 +75,14 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QDesktopWidget", "~QDesktopWidget()", typeof(void));
         }
+        public event SlotFunc<int> SignalResized {
+            add { QObject.Connect(this, SIGNAL("resized(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("resized(int)"), value); }
+        }
+        public event SlotFunc<int> SignalWorkAreaResized {
+            add { QObject.Connect(this, SIGNAL("workAreaResized(int)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("workAreaResized(int)"), value); }
+        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -18,6 +18,8 @@ namespace Qyoto {
             WaitForMoreEvents = 0x04,
             X11ExcludeTimers = 0x08,
             DeferredDeletion = 0x10,
+            EventLoopExec = 0x20,
+            DialogExec = 0x40,
         }
         public QEventLoop(QObject parent) : this((Type) null) {
             CreateProxy();

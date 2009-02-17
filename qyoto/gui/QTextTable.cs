@@ -24,6 +24,12 @@ namespace Qyoto {
         public void InsertColumns(int pos, int num) {
             interceptor.Invoke("insertColumns$$", "insertColumns(int, int)", typeof(void), typeof(int), pos, typeof(int), num);
         }
+        public void AppendRows(int count) {
+            interceptor.Invoke("appendRows$", "appendRows(int)", typeof(void), typeof(int), count);
+        }
+        public void AppendColumns(int count) {
+            interceptor.Invoke("appendColumns$", "appendColumns(int)", typeof(void), typeof(int), count);
+        }
         public void RemoveRows(int pos, int num) {
             interceptor.Invoke("removeRows$$", "removeRows(int, int)", typeof(void), typeof(int), pos, typeof(int), num);
         }

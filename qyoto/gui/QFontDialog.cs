@@ -2,12 +2,91 @@
 namespace Qyoto {
     using System;
     using System.Runtime.InteropServices;
+    /// <remarks> See <see cref="IQFontDialogSignals"></see> for signals emitted by QFontDialog
+    /// </remarks>
     [SmokeClass("QFontDialog")]
-    public class QFontDialog : QDialog {
+    public class QFontDialog : QDialog, IDisposable {
         protected QFontDialog(Type dummy) : base((Type) null) {}
+        protected new void CreateProxy() {
+            interceptor = new SmokeInvocation(typeof(QFontDialog), this);
+        }
         private static SmokeInvocation staticInterceptor = null;
         static QFontDialog() {
             staticInterceptor = new SmokeInvocation(typeof(QFontDialog), null);
+        }
+        public enum FontDialogOption {
+            NoButtons = 0x00000001,
+            DontUseNativeDialog = 0x00000002,
+        }
+        [Q_PROPERTY("QFont", "currentFont")]
+        public QFont CurrentFont {
+            get { return (QFont) interceptor.Invoke("currentFont", "currentFont()", typeof(QFont)); }
+            set { interceptor.Invoke("setCurrentFont#", "setCurrentFont(QFont)", typeof(void), typeof(QFont), value); }
+        }
+        [Q_PROPERTY("QFontDialog::FontDialogOptions", "options")]
+        public uint Options {
+            get { return (uint) interceptor.Invoke("options", "options()", typeof(uint)); }
+            set { interceptor.Invoke("setOptions$", "setOptions(QFontDialog::FontDialogOptions)", typeof(void), typeof(uint), value); }
+        }
+        public QFontDialog(QWidget parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QFontDialog#", "QFontDialog(QWidget*)", typeof(void), typeof(QWidget), parent);
+        }
+        public QFontDialog() : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QFontDialog", "QFontDialog()", typeof(void));
+        }
+        public QFontDialog(QFont initial, QWidget parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QFontDialog##", "QFontDialog(const QFont&, QWidget*)", typeof(void), typeof(QFont), initial, typeof(QWidget), parent);
+        }
+        public QFontDialog(QFont initial) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QFontDialog#", "QFontDialog(const QFont&)", typeof(void), typeof(QFont), initial);
+        }
+        public QFont SelectedFont() {
+            return (QFont) interceptor.Invoke("selectedFont", "selectedFont() const", typeof(QFont));
+        }
+        public void SetOption(QFontDialog.FontDialogOption option, bool on) {
+            interceptor.Invoke("setOption$$", "setOption(QFontDialog::FontDialogOption, bool)", typeof(void), typeof(QFontDialog.FontDialogOption), option, typeof(bool), on);
+        }
+        public void SetOption(QFontDialog.FontDialogOption option) {
+            interceptor.Invoke("setOption$", "setOption(QFontDialog::FontDialogOption)", typeof(void), typeof(QFontDialog.FontDialogOption), option);
+        }
+        public bool TestOption(QFontDialog.FontDialogOption option) {
+            return (bool) interceptor.Invoke("testOption$", "testOption(QFontDialog::FontDialogOption) const", typeof(bool), typeof(QFontDialog.FontDialogOption), option);
+        }
+        public new void Open() {
+            interceptor.Invoke("open", "open()", typeof(void));
+        }
+        public void Open(QObject receiver, string member) {
+            interceptor.Invoke("open#$", "open(QObject*, const char*)", typeof(void), typeof(QObject), receiver, typeof(string), member);
+        }
+        [SmokeMethod("setVisible(bool)")]
+        public override void SetVisible(bool visible) {
+            interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), visible);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("done(int)")]
+        protected new virtual void Done(int result) {
+            interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), result);
+        }
+        ~QFontDialog() {
+            interceptor.Invoke("~QFontDialog", "~QFontDialog()", typeof(void));
+        }
+        public new void Dispose() {
+            interceptor.Invoke("~QFontDialog", "~QFontDialog()", typeof(void));
+        }
+        public event SlotFunc<QFont> SignalCurrentFontChanged {
+            add { QObject.Connect(this, SIGNAL("currentFontChanged(QFont)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("currentFontChanged(QFont)"), value); }
+        }
+        public event SlotFunc<QFont> SignalFontSelected {
+            add { QObject.Connect(this, SIGNAL("fontSelected(QFont)"), value); }
+            remove { QObject.Disconnect(this, SIGNAL("fontSelected(QFont)"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
@@ -15,13 +94,13 @@ namespace Qyoto {
         public static new string Tr(string s) {
             return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
         }
-        public static QFont GetFont(ref bool ok, QFont def, QWidget parent, string caption) {
-            StackItem[] stack = new StackItem[5];
+        public static QFont GetFont(ref bool ok, QFont initial, QWidget parent, string title, uint options) {
+            StackItem[] stack = new StackItem[6];
             stack[1].s_bool = ok;
 #if DEBUG
-            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(def);
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(initial);
 #else
-            stack[2].s_class = (IntPtr) GCHandle.Alloc(def);
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(initial);
 #endif
 #if DEBUG
             stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -29,9 +108,53 @@ namespace Qyoto {
             stack[3].s_class = (IntPtr) GCHandle.Alloc(parent);
 #endif
 #if DEBUG
-            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(caption);
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(title);
 #else
-            stack[4].s_class = (IntPtr) GCHandle.Alloc(caption);
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(title);
+#endif
+            stack[5].s_uint = options;
+            staticInterceptor.Invoke("getFont$##$$", "getFont(bool*, const QFont&, QWidget*, const QString&, QFontDialog::FontDialogOptions)", stack);
+            ok = stack[1].s_bool;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[2].s_class);
+#else
+            ((GCHandle) stack[2].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+            ((GCHandle) stack[3].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[4].s_class);
+#else
+            ((GCHandle) stack[4].s_class).Free();
+#endif
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QFont) returnValue;
+        }
+        public static QFont GetFont(ref bool ok, QFont initial, QWidget parent, string title) {
+            StackItem[] stack = new StackItem[5];
+            stack[1].s_bool = ok;
+#if DEBUG
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(initial);
+#else
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(initial);
+#endif
+#if DEBUG
+            stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
+#else
+            stack[3].s_class = (IntPtr) GCHandle.Alloc(parent);
+#endif
+#if DEBUG
+            stack[4].s_class = (IntPtr) DebugGCHandle.Alloc(title);
+#else
+            stack[4].s_class = (IntPtr) GCHandle.Alloc(title);
 #endif
             staticInterceptor.Invoke("getFont$##$", "getFont(bool*, const QFont&, QWidget*, const QString&)", stack);
             ok = stack[1].s_bool;
@@ -58,13 +181,13 @@ namespace Qyoto {
 #endif
             return (QFont) returnValue;
         }
-        public static QFont GetFont(ref bool ok, QFont def, QWidget parent) {
+        public static QFont GetFont(ref bool ok, QFont initial, QWidget parent) {
             StackItem[] stack = new StackItem[4];
             stack[1].s_bool = ok;
 #if DEBUG
-            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(def);
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(initial);
 #else
-            stack[2].s_class = (IntPtr) GCHandle.Alloc(def);
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(initial);
 #endif
 #if DEBUG
             stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(parent);
@@ -91,13 +214,13 @@ namespace Qyoto {
 #endif
             return (QFont) returnValue;
         }
-        public static QFont GetFont(ref bool ok, QFont def) {
+        public static QFont GetFont(ref bool ok, QFont initial) {
             StackItem[] stack = new StackItem[3];
             stack[1].s_bool = ok;
 #if DEBUG
-            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(def);
+            stack[2].s_class = (IntPtr) DebugGCHandle.Alloc(initial);
 #else
-            stack[2].s_class = (IntPtr) GCHandle.Alloc(def);
+            stack[2].s_class = (IntPtr) GCHandle.Alloc(initial);
 #endif
             staticInterceptor.Invoke("getFont$#", "getFont(bool*, const QFont&)", stack);
             ok = stack[1].s_bool;
@@ -156,5 +279,9 @@ namespace Qyoto {
     }
 
     public interface IQFontDialogSignals : IQDialogSignals {
+        [Q_SIGNAL("void currentFontChanged(QFont)")]
+        void CurrentFontChanged(QFont font);
+        [Q_SIGNAL("void fontSelected(QFont)")]
+        void FontSelected(QFont font);
     }
 }

@@ -23,6 +23,10 @@ namespace Qyoto {
         public void ShowMessage(string message) {
             interceptor.Invoke("showMessage$", "showMessage(const QString&)", typeof(void), typeof(string), message);
         }
+        [Q_SLOT("void showMessage(QString, QString)")]
+        public void ShowMessage(string message, string type) {
+            interceptor.Invoke("showMessage$$", "showMessage(const QString&, const QString&)", typeof(void), typeof(string), message, typeof(string), type);
+        }
         [SmokeMethod("done(int)")]
         protected new virtual void Done(int arg1) {
             interceptor.Invoke("done$", "done(int)", typeof(void), typeof(int), arg1);
