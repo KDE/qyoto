@@ -6,6 +6,8 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 	using System.Text;
 
+	public delegate void EventFunc();
+
 	class EventReceiver : QObject {
 		public EventReceiver(QObject parent) : base(parent) {}
 		
@@ -23,10 +25,10 @@ namespace Qyoto {
 	}
 
 	class ThreadEvent : QEvent {
-		public NoArgDelegate dele;
+		public EventFunc dele;
 		public GCHandle handle;
 		
-		public ThreadEvent(NoArgDelegate d) : base(QEvent.TypeOf.User) {
+		public ThreadEvent(EventFunc d) : base(QEvent.TypeOf.User) {
 			dele = d;
 		}
 	}
@@ -35,7 +37,7 @@ namespace Qyoto {
 		private EventReceiver receiver;
 		protected void SetupEventReceiver() { receiver = new EventReceiver(this); }
 
-		public static void Invoke(NoArgDelegate dele) {
+		public static void Invoke(EventFunc dele) {
 			ThreadEvent e = new ThreadEvent(dele);
 			e.handle = GCHandle.Alloc(e);  // we don't want the GC to collect the event too early
 			PostEvent(qApp.receiver, e);

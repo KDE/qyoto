@@ -348,42 +348,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QPlainTextEdit", "~QPlainTextEdit()", typeof(void));
         }
-        public event NoArgDelegate TextChanged {
-            add { QObject.Connect(this, SIGNAL("textChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("textChanged()"), value); }
-        }
-        public event OneArgDelegate<bool> UndoAvailable {
-            add { QObject.Connect(this, SIGNAL("undoAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("undoAvailable(bool)"), value); }
-        }
-        public event OneArgDelegate<bool> RedoAvailable {
-            add { QObject.Connect(this, SIGNAL("redoAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("redoAvailable(bool)"), value); }
-        }
-        public event OneArgDelegate<bool> CopyAvailable {
-            add { QObject.Connect(this, SIGNAL("copyAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("copyAvailable(bool)"), value); }
-        }
-        public event NoArgDelegate SelectionChanged {
-            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
-        }
-        public event NoArgDelegate CursorPositionChanged {
-            add { QObject.Connect(this, SIGNAL("cursorPositionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("cursorPositionChanged()"), value); }
-        }
-        public event TwoArgDelegate<QRect,int> UpdateRequest {
-            add { QObject.Connect(this, SIGNAL("updateRequest(QRect, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("updateRequest(QRect, int)"), value); }
-        }
-        public event OneArgDelegate<int> BlockCountChanged {
-            add { QObject.Connect(this, SIGNAL("blockCountChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("blockCountChanged(int)"), value); }
-        }
-        public event OneArgDelegate<bool> ModificationChanged {
-            add { QObject.Connect(this, SIGNAL("modificationChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("modificationChanged(bool)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
