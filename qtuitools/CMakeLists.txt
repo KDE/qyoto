@@ -22,3 +22,4 @@ ADD_DEPENDENCIES(qtuitools qt-dotnet qtuitools-sharp smokeqtuitools)
 
 INSTALL(TARGETS qtuitools-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qtuitools)
+INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )

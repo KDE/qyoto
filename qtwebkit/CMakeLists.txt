@@ -22,3 +22,4 @@ ADD_DEPENDENCIES(qtwebkit qt-dotnet qtwebkit-sharp smokeqtwebkit)
 
 INSTALL(TARGETS qtwebkit-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qtwebkit)
+INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )

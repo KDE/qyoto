@@ -23,3 +23,4 @@ ADD_DEPENDENCIES(qtscript qt-dotnet qtscript-sharp smokeqtscript)
 
 INSTALL(TARGETS qtscript-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL_GAC(qtscript)
+INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )

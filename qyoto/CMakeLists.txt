@@ -59,6 +59,8 @@ INSTALL(FILES src/emitsignal.h src/invokeslot.h src/marshall.h src/methodcall.h 
 src/qyoto.h src/qyotosmokebinding.h src/signalreturnvalue.h src/slotreturnvalue.h
 src/smokeqyoto.h src/virtualmethodcall.h src/virtualmethodreturnvalue.h DESTINATION include/qyoto)
 INSTALL_GAC(qt-dotnet)
+INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )
+
 
 ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(examples EXCLUDE_FROM_ALL)
