@@ -231,26 +231,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QFileDialog", "~QFileDialog()", typeof(void));
         }
-        public event SlotFunc<string> SignalFileSelected {
-            add { QObject.Connect(this, SIGNAL("fileSelected(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("fileSelected(QString)"), value); }
-        }
-        public event SlotFunc<List<string>> SignalFilesSelected {
-            add { QObject.Connect(this, SIGNAL("filesSelected(QStringList)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("filesSelected(QStringList)"), value); }
-        }
-        public event SlotFunc<string> SignalCurrentChanged {
-            add { QObject.Connect(this, SIGNAL("currentChanged(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentChanged(QString)"), value); }
-        }
-        public event SlotFunc<string> SignalDirectoryEntered {
-            add { QObject.Connect(this, SIGNAL("directoryEntered(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("directoryEntered(QString)"), value); }
-        }
-        public event SlotFunc<string> SignalFilterSelected {
-            add { QObject.Connect(this, SIGNAL("filterSelected(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("filterSelected(QString)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

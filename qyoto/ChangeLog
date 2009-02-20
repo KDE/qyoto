@@ -1,3 +1,6 @@
+2009-02-20  Richard Dale  <richard.j.dale@gmail.com>
+	* Regenerate the Qyoto sources from the Qt 4.5 headers
+
 2009-02-17  Arno Rehn  <arno@arnorehn.de>
 	* Give some delegates more sophisticated names.
 	* Add support for C# events. They're called Signal<signalName> and if they're

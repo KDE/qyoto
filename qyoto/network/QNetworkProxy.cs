@@ -21,6 +21,13 @@ namespace Qyoto {
             HttpCachingProxy = 4,
             FtpCachingProxy = 5,
         }
+        public enum Capability {
+            TunnelingCapability = 0x0001,
+            ListeningCapability = 0x0002,
+            UdpTunnelingCapability = 0x0004,
+            CachingCapability = 0x0008,
+            HostNameLookupCapability = 0x0010,
+        }
         public QNetworkProxy() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QNetworkProxy", "QNetworkProxy()", typeof(void));
@@ -61,6 +68,12 @@ namespace Qyoto {
         }
         public QNetworkProxy.ProxyType type() {
             return (QNetworkProxy.ProxyType) interceptor.Invoke("type", "type() const", typeof(QNetworkProxy.ProxyType));
+        }
+        public void SetCapabilities(uint capab) {
+            interceptor.Invoke("setCapabilities$", "setCapabilities(QNetworkProxy::Capabilities)", typeof(void), typeof(uint), capab);
+        }
+        public uint Capabilities() {
+            return (uint) interceptor.Invoke("capabilities", "capabilities() const", typeof(uint));
         }
         public bool IsCachingProxy() {
             return (bool) interceptor.Invoke("isCachingProxy", "isCachingProxy() const", typeof(bool));

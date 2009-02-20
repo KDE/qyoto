@@ -88,6 +88,12 @@ namespace Qyoto {
         public bool GenerateByteOrderMark() {
             return (bool) interceptor.Invoke("generateByteOrderMark", "generateByteOrderMark() const", typeof(bool));
         }
+        public void SetLocale(QLocale locale) {
+            interceptor.Invoke("setLocale#", "setLocale(const QLocale&)", typeof(void), typeof(QLocale), locale);
+        }
+        public QLocale Locale() {
+            return (QLocale) interceptor.Invoke("locale", "locale() const", typeof(QLocale));
+        }
         public void SetDevice(QIODevice device) {
             interceptor.Invoke("setDevice#", "setDevice(QIODevice*)", typeof(void), typeof(QIODevice), device);
         }

@@ -12,16 +12,6 @@ namespace Qyoto {
         static QDBusAbstractInterface() {
             staticInterceptor = new SmokeInvocation(typeof(QDBusAbstractInterface), null);
         }
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6,const QVariant& arg7,const QVariant& arg8,const QVariant& arg9); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6,const QVariant& arg7,const QVariant& arg8); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6,const QVariant& arg7); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5,const QVariant& arg6); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4,const QVariant& arg5); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3,const QVariant& arg4); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2,const QVariant& arg3); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1,const QVariant& arg2); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCall(const QString& arg1); >>>> NOT CONVERTED
-        // QDBusPendingCall asyncCallWithArgumentList(const QString& arg1,const QList<QVariant>& arg2); >>>> NOT CONVERTED
         // QDBusAbstractInterface* QDBusAbstractInterface(QDBusAbstractInterfacePrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
@@ -103,6 +93,36 @@ namespace Qyoto {
         }
         public bool CallWithCallback(string method, List<QVariant> args, QObject receiver, string member) {
             return (bool) interceptor.Invoke("callWithCallback$?#$", "callWithCallback(const QString&, const QList<QVariant>&, QObject*, const char*)", typeof(bool), typeof(string), method, typeof(List<QVariant>), args, typeof(QObject), receiver, typeof(string), member);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7, QVariant arg8) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$########", "asyncCall(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6, typeof(QVariant), arg7, typeof(QVariant), arg8);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$#######", "asyncCall(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6, typeof(QVariant), arg7);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$######", "asyncCall(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5, typeof(QVariant), arg6);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$#####", "asyncCall(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4, typeof(QVariant), arg5);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$####", "asyncCall(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3, typeof(QVariant), arg4);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2, QVariant arg3) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$###", "asyncCall(const QString&, const QVariant&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2, typeof(QVariant), arg3);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1, QVariant arg2) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$##", "asyncCall(const QString&, const QVariant&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1, typeof(QVariant), arg2);
+        }
+        public IQDBusPendingCall AsyncCall(string method, QVariant arg1) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$#", "asyncCall(const QString&, const QVariant&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(QVariant), arg1);
+        }
+        public IQDBusPendingCall AsyncCall(string method) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall$", "asyncCall(const QString&)", typeof(IQDBusPendingCall), typeof(string), method);
+        }
+        public IQDBusPendingCall AsyncCallWithArgumentList(string method, List<QVariant> args) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCallWithArgumentList$?", "asyncCallWithArgumentList(const QString&, const QList<QVariant>&)", typeof(IQDBusPendingCall), typeof(string), method, typeof(List<QVariant>), args);
         }
         public QDBusAbstractInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
             CreateProxy();

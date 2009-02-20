@@ -33,8 +33,14 @@ namespace Qyoto {
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
         }
+        public int Index() {
+            return (int) interceptor.Invoke("index", "index() const", typeof(int));
+        }
         public string Name() {
             return (string) interceptor.Invoke("name", "name() const", typeof(string));
+        }
+        public string HumanReadableName() {
+            return (string) interceptor.Invoke("humanReadableName", "humanReadableName() const", typeof(string));
         }
         public uint Flags() {
             return (uint) interceptor.Invoke("flags", "flags() const", typeof(uint));

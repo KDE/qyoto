@@ -111,6 +111,27 @@ namespace Qyoto {
         public bool FontFixedPitch() {
             return (bool) interceptor.Invoke("fontFixedPitch", "fontFixedPitch() const", typeof(bool));
         }
+        public void SetFontStyleHint(QFont.StyleHint hint, QFont.StyleStrategy strategy) {
+            interceptor.Invoke("setFontStyleHint$$", "setFontStyleHint(QFont::StyleHint, QFont::StyleStrategy)", typeof(void), typeof(QFont.StyleHint), hint, typeof(QFont.StyleStrategy), strategy);
+        }
+        public void SetFontStyleHint(QFont.StyleHint hint) {
+            interceptor.Invoke("setFontStyleHint$", "setFontStyleHint(QFont::StyleHint)", typeof(void), typeof(QFont.StyleHint), hint);
+        }
+        public void SetFontStyleStrategy(QFont.StyleStrategy strategy) {
+            interceptor.Invoke("setFontStyleStrategy$", "setFontStyleStrategy(QFont::StyleStrategy)", typeof(void), typeof(QFont.StyleStrategy), strategy);
+        }
+        public QFont.StyleHint FontStyleHint() {
+            return (QFont.StyleHint) interceptor.Invoke("fontStyleHint", "fontStyleHint() const", typeof(QFont.StyleHint));
+        }
+        public QFont.StyleStrategy FontStyleStrategy() {
+            return (QFont.StyleStrategy) interceptor.Invoke("fontStyleStrategy", "fontStyleStrategy() const", typeof(QFont.StyleStrategy));
+        }
+        public void SetFontKerning(bool enable) {
+            interceptor.Invoke("setFontKerning$", "setFontKerning(bool)", typeof(void), typeof(bool), enable);
+        }
+        public bool FontKerning() {
+            return (bool) interceptor.Invoke("fontKerning", "fontKerning() const", typeof(bool));
+        }
         public void SetUnderlineStyle(QTextCharFormat.UnderlineStyle style) {
             interceptor.Invoke("setUnderlineStyle$", "setUnderlineStyle(QTextCharFormat::UnderlineStyle)", typeof(void), typeof(QTextCharFormat.UnderlineStyle), style);
         }

@@ -38,6 +38,8 @@ namespace Qyoto {
         IQGraphicsLayoutItem ParentLayoutItem();
         void SetParentLayoutItem(IQGraphicsLayoutItem parent);
         bool IsLayout();
+        IQGraphicsItem GraphicsItem();
+        bool OwnedByLayout();
         QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint);
     }
     [SmokeClass("QGraphicsLayoutItem")]
@@ -178,6 +180,18 @@ namespace Qyoto {
         }
         public bool IsLayout() {
             return (bool) interceptor.Invoke("isLayout", "isLayout() const", typeof(bool));
+        }
+        public IQGraphicsItem GraphicsItem() {
+            return (IQGraphicsItem) interceptor.Invoke("graphicsItem", "graphicsItem() const", typeof(IQGraphicsItem));
+        }
+        public bool OwnedByLayout() {
+            return (bool) interceptor.Invoke("ownedByLayout", "ownedByLayout() const", typeof(bool));
+        }
+        protected void SetGraphicsItem(IQGraphicsItem item) {
+            interceptor.Invoke("setGraphicsItem#", "setGraphicsItem(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        protected void SetOwnedByLayout(bool ownedByLayout) {
+            interceptor.Invoke("setOwnedByLayout$", "setOwnedByLayout(bool)", typeof(void), typeof(bool), ownedByLayout);
         }
         [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
         public abstract QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint);

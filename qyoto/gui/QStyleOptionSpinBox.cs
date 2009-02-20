@@ -13,6 +13,18 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public QAbstractSpinBox.ButtonSymbols ButtonSymbols {
+            get { return (QAbstractSpinBox.ButtonSymbols) interceptor.Invoke("buttonSymbols", "buttonSymbols()", typeof(QAbstractSpinBox.ButtonSymbols)); }
+            set { interceptor.Invoke("setButtonSymbols$", "setButtonSymbols(QAbstractSpinBox::ButtonSymbols)", typeof(void), typeof(QAbstractSpinBox.ButtonSymbols), value); }
+        }
+        public uint StepEnabled {
+            get { return (uint) interceptor.Invoke("stepEnabled", "stepEnabled()", typeof(uint)); }
+            set { interceptor.Invoke("setStepEnabled$", "setStepEnabled(QAbstractSpinBox::StepEnabled)", typeof(void), typeof(uint), value); }
+        }
+        public bool Frame {
+            get { return (bool) interceptor.Invoke("frame", "frame()", typeof(bool)); }
+            set { interceptor.Invoke("setFrame$", "setFrame(bool)", typeof(void), typeof(bool), value); }
+        }
         public QStyleOptionSpinBox() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionSpinBox", "QStyleOptionSpinBox()", typeof(void));

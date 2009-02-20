@@ -24,6 +24,7 @@ namespace Qyoto {
             TempLocation = 7,
             HomeLocation = 8,
             DataLocation = 9,
+            CacheLocation = 10,
         }
         public QDesktopServices() : this((Type) null) {
             CreateProxy();

@@ -13,7 +13,7 @@ namespace Qyoto {
         static QBitArray() {
             staticInterceptor = new SmokeInvocation(typeof(QBitArray), null);
         }
-        // QByteArray::DataPtr& data_ptr(); >>>> NOT CONVERTED
+        // QByteArray::DataPtr*& data_ptr(); >>>> NOT CONVERTED
         public QBitArray() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QBitArray", "QBitArray()", typeof(void));

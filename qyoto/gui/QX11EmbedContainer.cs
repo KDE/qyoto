@@ -73,18 +73,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QX11EmbedContainer", "~QX11EmbedContainer()", typeof(void));
         }
-        public event SlotFunc SignalClientIsEmbedded {
-            add { QObject.Connect(this, SIGNAL("clientIsEmbedded()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("clientIsEmbedded()"), value); }
-        }
-        public event SlotFunc SignalClientClosed {
-            add { QObject.Connect(this, SIGNAL("clientClosed()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("clientClosed()"), value); }
-        }
-        public event SlotFunc<QX11EmbedContainer.Error> SignalError {
-            add { QObject.Connect(this, SIGNAL("error(QX11EmbedContainer::Error)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("error(QX11EmbedContainer::Error)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

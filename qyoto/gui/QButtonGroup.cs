@@ -60,30 +60,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QButtonGroup", "~QButtonGroup()", typeof(void));
         }
-        public event SlotFunc<QAbstractButton> SignalButtonClicked_QAbstractButton {
-            add { QObject.Connect(this, SIGNAL("buttonClicked(QAbstractButton*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonClicked(QAbstractButton*)"), value); }
-        }
-        public event SlotFunc<int> SignalButtonClicked_int {
-            add { QObject.Connect(this, SIGNAL("buttonClicked(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonClicked(int)"), value); }
-        }
-        public event SlotFunc<QAbstractButton> SignalButtonPressed_QAbstractButton {
-            add { QObject.Connect(this, SIGNAL("buttonPressed(QAbstractButton*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonPressed(QAbstractButton*)"), value); }
-        }
-        public event SlotFunc<int> SignalButtonPressed_int {
-            add { QObject.Connect(this, SIGNAL("buttonPressed(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonPressed(int)"), value); }
-        }
-        public event SlotFunc<QAbstractButton> SignalButtonReleased_QAbstractButton {
-            add { QObject.Connect(this, SIGNAL("buttonReleased(QAbstractButton*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonReleased(QAbstractButton*)"), value); }
-        }
-        public event SlotFunc<int> SignalButtonReleased_int {
-            add { QObject.Connect(this, SIGNAL("buttonReleased(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonReleased(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

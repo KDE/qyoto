@@ -463,34 +463,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTextEdit", "~QTextEdit()", typeof(void));
         }
-        public event SlotFunc SignalTextChanged {
-            add { QObject.Connect(this, SIGNAL("textChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("textChanged()"), value); }
-        }
-        public event SlotFunc<bool> SignalUndoAvailable {
-            add { QObject.Connect(this, SIGNAL("undoAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("undoAvailable(bool)"), value); }
-        }
-        public event SlotFunc<bool> SignalRedoAvailable {
-            add { QObject.Connect(this, SIGNAL("redoAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("redoAvailable(bool)"), value); }
-        }
-        public event SlotFunc<QTextCharFormat> SignalCurrentCharFormatChanged {
-            add { QObject.Connect(this, SIGNAL("currentCharFormatChanged(QTextCharFormat)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentCharFormatChanged(QTextCharFormat)"), value); }
-        }
-        public event SlotFunc<bool> SignalCopyAvailable {
-            add { QObject.Connect(this, SIGNAL("copyAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("copyAvailable(bool)"), value); }
-        }
-        public event SlotFunc SignalSelectionChanged {
-            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
-        }
-        public event SlotFunc SignalCursorPositionChanged {
-            add { QObject.Connect(this, SIGNAL("cursorPositionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("cursorPositionChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

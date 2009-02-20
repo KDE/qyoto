@@ -17,6 +17,10 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QByteArrayMatcher#", "QByteArrayMatcher(const QByteArray&)", typeof(void), typeof(QByteArray), pattern);
         }
+        public QByteArrayMatcher(string pattern, int length) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QByteArrayMatcher$$", "QByteArrayMatcher(const char*, int)", typeof(void), typeof(string), pattern, typeof(int), length);
+        }
         public QByteArrayMatcher(QByteArrayMatcher other) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QByteArrayMatcher#", "QByteArrayMatcher(const QByteArrayMatcher&)", typeof(void), typeof(QByteArrayMatcher), other);
@@ -29,6 +33,12 @@ namespace Qyoto {
         }
         public int IndexIn(QByteArray ba) {
             return (int) interceptor.Invoke("indexIn#", "indexIn(const QByteArray&) const", typeof(int), typeof(QByteArray), ba);
+        }
+        public int IndexIn(string str, int len, int from) {
+            return (int) interceptor.Invoke("indexIn$$$", "indexIn(const char*, int, int) const", typeof(int), typeof(string), str, typeof(int), len, typeof(int), from);
+        }
+        public int IndexIn(string str, int len) {
+            return (int) interceptor.Invoke("indexIn$$", "indexIn(const char*, int) const", typeof(int), typeof(string), str, typeof(int), len);
         }
         public QByteArray Pattern() {
             return (QByteArray) interceptor.Invoke("pattern", "pattern() const", typeof(QByteArray));

@@ -24,6 +24,7 @@ namespace Qyoto {
             Endianness = 11,
             Animation = 12,
             BackgroundColor = 13,
+            ImageFormat = 14,
         }
         // QImageIOHandler* QImageIOHandler(QImageIOHandlerPrivate& arg1); >>>> NOT CONVERTED
         public QImageIOHandler() : this((Type) null) {

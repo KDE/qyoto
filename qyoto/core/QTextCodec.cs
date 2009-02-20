@@ -7,19 +7,6 @@ namespace Qyoto {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QTextCodec(Type dummy) {}
-        [SmokeClass("QTextCodec::ConverterState")]
-        public class ConverterState : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected ConverterState(Type dummy) {}
-            public int RemainingChars {
-                get { return (int) interceptor.Invoke("remainingChars", "remainingChars()", typeof(int)); }
-            }
-            public int InvalidChars {
-                get { return (int) interceptor.Invoke("invalidChars", "invalidChars()", typeof(int)); }
-            }
-            //  ConverterState(); >>>> NOT CONVERTED
-        }
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QTextCodec), this);
         }
@@ -27,10 +14,11 @@ namespace Qyoto {
         static QTextCodec() {
             staticInterceptor = new SmokeInvocation(typeof(QTextCodec), null);
         }
-        public enum ConversionFlag : long {
+        public enum ConversionFlag : uint {
             DefaultConversion = 0,
             ConvertInvalidToNull = 0x80000000,
             IgnoreHeader = 0x1,
+            FreeFunction = 0x2,
         }
         // QString toUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
         // QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED

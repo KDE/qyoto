@@ -235,46 +235,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTreeWidget", "~QTreeWidget()", typeof(void));
         }
-        public event SlotFunc<QTreeWidgetItem,int> SignalItemPressed {
-            add { QObject.Connect(this, SIGNAL("itemPressed(QTreeWidgetItem*, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemPressed(QTreeWidgetItem*, int)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem,int> SignalItemClicked {
-            add { QObject.Connect(this, SIGNAL("itemClicked(QTreeWidgetItem*, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemClicked(QTreeWidgetItem*, int)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem,int> SignalItemDoubleClicked {
-            add { QObject.Connect(this, SIGNAL("itemDoubleClicked(QTreeWidgetItem*, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemDoubleClicked(QTreeWidgetItem*, int)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem,int> SignalItemActivated {
-            add { QObject.Connect(this, SIGNAL("itemActivated(QTreeWidgetItem*, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemActivated(QTreeWidgetItem*, int)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem,int> SignalItemEntered {
-            add { QObject.Connect(this, SIGNAL("itemEntered(QTreeWidgetItem*, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemEntered(QTreeWidgetItem*, int)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem,int> SignalItemChanged {
-            add { QObject.Connect(this, SIGNAL("itemChanged(QTreeWidgetItem*, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemChanged(QTreeWidgetItem*, int)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem> SignalItemExpanded {
-            add { QObject.Connect(this, SIGNAL("itemExpanded(QTreeWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemExpanded(QTreeWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem> SignalItemCollapsed {
-            add { QObject.Connect(this, SIGNAL("itemCollapsed(QTreeWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemCollapsed(QTreeWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QTreeWidgetItem,QTreeWidgetItem> SignalCurrentItemChanged {
-            add { QObject.Connect(this, SIGNAL("currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*)"), value); }
-        }
-        public event SlotFunc SignalItemSelectionChanged {
-            add { QObject.Connect(this, SIGNAL("itemSelectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemSelectionChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

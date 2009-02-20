@@ -13,6 +13,10 @@ namespace Qyoto {
         static QDate() {
             staticInterceptor = new SmokeInvocation(typeof(QDate), null);
         }
+        public enum MonthNameType {
+            DateFormat = 0,
+            StandaloneFormat = 1,
+        }
         public QDate() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QDate", "QDate()", typeof(void));
@@ -70,8 +74,19 @@ namespace Qyoto {
         public bool SetYMD(int y, int m, int d) {
             return (bool) interceptor.Invoke("setYMD$$$", "setYMD(int, int, int)", typeof(bool), typeof(int), y, typeof(int), m, typeof(int), d);
         }
-        public bool SetDate(int year, int month, int date) {
-            return (bool) interceptor.Invoke("setDate$$$", "setDate(int, int, int)", typeof(bool), typeof(int), year, typeof(int), month, typeof(int), date);
+        public bool SetDate(int year, int month, int day) {
+            return (bool) interceptor.Invoke("setDate$$$", "setDate(int, int, int)", typeof(bool), typeof(int), year, typeof(int), month, typeof(int), day);
+        }
+        public void GetDate(ref int year, ref int month, ref int day) {
+            StackItem[] stack = new StackItem[4];
+            stack[1].s_int = year;
+            stack[2].s_int = month;
+            stack[3].s_int = day;
+            interceptor.Invoke("getDate$$$", "getDate(int*, int*, int*)", stack);
+            year = stack[1].s_int;
+            month = stack[2].s_int;
+            day = stack[3].s_int;
+            return;
         }
         public QDate AddDays(int days) {
             return (QDate) interceptor.Invoke("addDays$", "addDays(int) const", typeof(QDate), typeof(int), days);
@@ -122,14 +137,26 @@ namespace Qyoto {
         public static string ShortMonthName(int month) {
             return (string) staticInterceptor.Invoke("shortMonthName$", "shortMonthName(int)", typeof(string), typeof(int), month);
         }
+        public static string ShortMonthName(int month, QDate.MonthNameType type) {
+            return (string) staticInterceptor.Invoke("shortMonthName$$", "shortMonthName(int, QDate::MonthNameType)", typeof(string), typeof(int), month, typeof(QDate.MonthNameType), type);
+        }
         public static string ShortDayName(int weekday) {
             return (string) staticInterceptor.Invoke("shortDayName$", "shortDayName(int)", typeof(string), typeof(int), weekday);
+        }
+        public static string ShortDayName(int weekday, QDate.MonthNameType type) {
+            return (string) staticInterceptor.Invoke("shortDayName$$", "shortDayName(int, QDate::MonthNameType)", typeof(string), typeof(int), weekday, typeof(QDate.MonthNameType), type);
         }
         public static string LongMonthName(int month) {
             return (string) staticInterceptor.Invoke("longMonthName$", "longMonthName(int)", typeof(string), typeof(int), month);
         }
+        public static string LongMonthName(int month, QDate.MonthNameType type) {
+            return (string) staticInterceptor.Invoke("longMonthName$$", "longMonthName(int, QDate::MonthNameType)", typeof(string), typeof(int), month, typeof(QDate.MonthNameType), type);
+        }
         public static string LongDayName(int weekday) {
             return (string) staticInterceptor.Invoke("longDayName$", "longDayName(int)", typeof(string), typeof(int), weekday);
+        }
+        public static string LongDayName(int weekday, QDate.MonthNameType type) {
+            return (string) staticInterceptor.Invoke("longDayName$$", "longDayName(int, QDate::MonthNameType)", typeof(string), typeof(int), weekday, typeof(QDate.MonthNameType), type);
         }
         public static QDate CurrentDate() {
             return (QDate) staticInterceptor.Invoke("currentDate", "currentDate()", typeof(QDate));

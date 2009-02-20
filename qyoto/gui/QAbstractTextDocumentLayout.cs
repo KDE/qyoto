@@ -68,22 +68,6 @@ namespace Qyoto {
         protected QTextCharFormat Format(int pos) {
             return (QTextCharFormat) interceptor.Invoke("format$", "format(int)", typeof(QTextCharFormat), typeof(int), pos);
         }
-        public event SlotFunc<QRectF> SignalUpdate {
-            add { QObject.Connect(this, SIGNAL("update(QRectF)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("update(QRectF)"), value); }
-        }
-        public event SlotFunc<QTextBlock> SignalUpdateBlock {
-            add { QObject.Connect(this, SIGNAL("updateBlock(QTextBlock)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("updateBlock(QTextBlock)"), value); }
-        }
-        public event SlotFunc<QSizeF> SignalDocumentSizeChanged {
-            add { QObject.Connect(this, SIGNAL("documentSizeChanged(QSizeF)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("documentSizeChanged(QSizeF)"), value); }
-        }
-        public event SlotFunc<int> SignalPageCountChanged {
-            add { QObject.Connect(this, SIGNAL("pageCountChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("pageCountChanged(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

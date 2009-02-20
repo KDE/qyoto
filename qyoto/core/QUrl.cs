@@ -162,7 +162,7 @@ namespace Qyoto {
             return (char) interceptor.Invoke("queryPairDelimiter", "queryPairDelimiter() const", typeof(char));
         }
         public void SetQueryItems(List<QPair<string, string>> query) {
-            interceptor.Invoke("setQueryItems?", "setQueryItems(const QList<QPair<QString, QString> >&)", typeof(void), typeof(List<QPair<string, string>>), query);
+            interceptor.Invoke("setQueryItems?", "setQueryItems(const QList<QPair<QString,QString> >&)", typeof(void), typeof(List<QPair<string, string>>), query);
         }
         public void AddQueryItem(string key, string value) {
             interceptor.Invoke("addQueryItem$$", "addQueryItem(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);
@@ -186,7 +186,7 @@ namespace Qyoto {
             interceptor.Invoke("removeAllQueryItems$", "removeAllQueryItems(const QString&)", typeof(void), typeof(string), key);
         }
         public void SetEncodedQueryItems(List<QPair<QByteArray, QByteArray>> query) {
-            interceptor.Invoke("setEncodedQueryItems?", "setEncodedQueryItems(const QList<QPair<QByteArray, QByteArray> >&)", typeof(void), typeof(List<QPair<QByteArray, QByteArray>>), query);
+            interceptor.Invoke("setEncodedQueryItems?", "setEncodedQueryItems(const QList<QPair<QByteArray,QByteArray> >&)", typeof(void), typeof(List<QPair<QByteArray, QByteArray>>), query);
         }
         public void AddEncodedQueryItem(QByteArray key, QByteArray value) {
             interceptor.Invoke("addEncodedQueryItem##", "addEncodedQueryItem(const QByteArray&, const QByteArray&)", typeof(void), typeof(QByteArray), key, typeof(QByteArray), value);

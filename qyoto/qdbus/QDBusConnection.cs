@@ -57,6 +57,9 @@ namespace Qyoto {
         public QDBusError LastError() {
             return (QDBusError) interceptor.Invoke("lastError", "lastError() const", typeof(QDBusError));
         }
+        public string Name() {
+            return (string) interceptor.Invoke("name", "name() const", typeof(string));
+        }
         public bool Send(QDBusMessage message) {
             return (bool) interceptor.Invoke("send#", "send(const QDBusMessage&) const", typeof(bool), typeof(QDBusMessage), message);
         }
@@ -80,6 +83,12 @@ namespace Qyoto {
         }
         public QDBusMessage Call(QDBusMessage message) {
             return (QDBusMessage) interceptor.Invoke("call#", "call(const QDBusMessage&) const", typeof(QDBusMessage), typeof(QDBusMessage), message);
+        }
+        public IQDBusPendingCall AsyncCall(QDBusMessage message, int timeout) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall#$", "asyncCall(const QDBusMessage&, int) const", typeof(IQDBusPendingCall), typeof(QDBusMessage), message, typeof(int), timeout);
+        }
+        public IQDBusPendingCall AsyncCall(QDBusMessage message) {
+            return (IQDBusPendingCall) interceptor.Invoke("asyncCall#", "asyncCall(const QDBusMessage&) const", typeof(IQDBusPendingCall), typeof(QDBusMessage), message);
         }
         public bool Connect(string service, string path, string arg3, string name, QObject receiver, string slot) {
             return (bool) interceptor.Invoke("connect$$$$#$", "connect(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)", typeof(bool), typeof(string), service, typeof(string), path, typeof(string), arg3, typeof(string), name, typeof(QObject), receiver, typeof(string), slot);

@@ -121,26 +121,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QApplication", "~QApplication()", typeof(void));
         }
-        public event SlotFunc SignalLastWindowClosed {
-            add { QObject.Connect(this, SIGNAL("lastWindowClosed()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("lastWindowClosed()"), value); }
-        }
-        public event SlotFunc<QWidget,QWidget> SignalFocusChanged {
-            add { QObject.Connect(this, SIGNAL("focusChanged(QWidget*, QWidget*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("focusChanged(QWidget*, QWidget*)"), value); }
-        }
-        public event SlotFunc SignalFontDatabaseChanged {
-            add { QObject.Connect(this, SIGNAL("fontDatabaseChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("fontDatabaseChanged()"), value); }
-        }
-        public event SlotFunc<QSessionManager> SignalCommitDataRequest {
-            add { QObject.Connect(this, SIGNAL("commitDataRequest(QSessionManager)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("commitDataRequest(QSessionManager)"), value); }
-        }
-        public event SlotFunc<QSessionManager> SignalSaveStateRequest {
-            add { QObject.Connect(this, SIGNAL("saveStateRequest(QSessionManager)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("saveStateRequest(QSessionManager)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

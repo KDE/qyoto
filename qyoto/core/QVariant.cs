@@ -7,28 +7,6 @@ namespace Qyoto {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QVariant(Type dummy) {}
-        [SmokeClass("QVariant::PrivateShared")]
-        public class PrivateShared : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected PrivateShared(Type dummy) {}
-            //  PrivateShared(); >>>> NOT CONVERTED
-            //  PrivateShared(void* arg1); >>>> NOT CONVERTED
-        }
-        [SmokeClass("QVariant::Private")]
-        public class Private : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Private(Type dummy) {}
-            //  Private(); >>>> NOT CONVERTED
-            //  Private(); >>>> NOT CONVERTED
-        }
-        [SmokeClass("QVariant::Handler")]
-        public class Handler : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Handler(Type dummy) {}
-        }
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QVariant), this);
         }
@@ -65,7 +43,8 @@ namespace Qyoto {
             Point = 25,
             PointF = 26,
             RegExp = 27,
-            LastCoreType = RegExp,
+            Hash = 28,
+            LastCoreType = Hash,
             Font = 64,
             Pixmap = 65,
             Brush = 66,
@@ -335,6 +314,9 @@ namespace Qyoto {
         }
         public Dictionary<string, QVariant> ToMap() {
             return (Dictionary<string, QVariant>) interceptor.Invoke("toMap", "toMap() const", typeof(Dictionary<string, QVariant>));
+        }
+        public Dictionary<string, QVariant> ToHash() {
+            return (Dictionary<string, QVariant>) interceptor.Invoke("toHash", "toHash() const", typeof(Dictionary<string, QVariant>));
         }
         public QPoint ToPoint() {
             return (QPoint) interceptor.Invoke("toPoint", "toPoint() const", typeof(QPoint));

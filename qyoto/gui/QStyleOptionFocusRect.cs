@@ -13,6 +13,10 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public QColor BackgroundColor {
+            get { return (QColor) interceptor.Invoke("backgroundColor", "backgroundColor()", typeof(QColor)); }
+            set { interceptor.Invoke("setBackgroundColor#", "setBackgroundColor(QColor)", typeof(void), typeof(QColor), value); }
+        }
         public QStyleOptionFocusRect() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionFocusRect", "QStyleOptionFocusRect()", typeof(void));

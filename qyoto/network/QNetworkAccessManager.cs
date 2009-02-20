@@ -81,22 +81,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QNetworkAccessManager", "~QNetworkAccessManager()", typeof(void));
         }
-        public event SlotFunc<QNetworkProxy,QAuthenticator> SignalProxyAuthenticationRequired {
-            add { QObject.Connect(this, SIGNAL("proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)"), value); }
-        }
-        public event SlotFunc<QNetworkReply,QAuthenticator> SignalAuthenticationRequired {
-            add { QObject.Connect(this, SIGNAL("authenticationRequired(QNetworkReply*, QAuthenticator*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("authenticationRequired(QNetworkReply*, QAuthenticator*)"), value); }
-        }
-        public event SlotFunc<QNetworkReply> SignalFinished {
-            add { QObject.Connect(this, SIGNAL("finished(QNetworkReply*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("finished(QNetworkReply*)"), value); }
-        }
-        public event SlotFunc<QNetworkReply,List<QSslError>> SignalSslErrors {
-            add { QObject.Connect(this, SIGNAL("sslErrors(QNetworkReply*, QList<QSslError>)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sslErrors(QNetworkReply*, QList<QSslError>)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

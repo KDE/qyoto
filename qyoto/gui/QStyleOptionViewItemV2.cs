@@ -18,6 +18,10 @@ namespace Qyoto {
             HasDisplay = 0x08,
             HasDecoration = 0x10,
         }
+        public uint Features {
+            get { return (uint) interceptor.Invoke("features", "features()", typeof(uint)); }
+            set { interceptor.Invoke("setFeatures$", "setFeatures(QStyleOptionViewItemV2::ViewItemFeatures)", typeof(void), typeof(uint), value); }
+        }
         public QStyleOptionViewItemV2() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionViewItemV2", "QStyleOptionViewItemV2()", typeof(void));

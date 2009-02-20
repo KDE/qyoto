@@ -177,46 +177,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QListWidget", "~QListWidget()", typeof(void));
         }
-        public event SlotFunc<QListWidgetItem> SignalItemPressed {
-            add { QObject.Connect(this, SIGNAL("itemPressed(QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemPressed(QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QListWidgetItem> SignalItemClicked {
-            add { QObject.Connect(this, SIGNAL("itemClicked(QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemClicked(QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QListWidgetItem> SignalItemDoubleClicked {
-            add { QObject.Connect(this, SIGNAL("itemDoubleClicked(QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemDoubleClicked(QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QListWidgetItem> SignalItemActivated {
-            add { QObject.Connect(this, SIGNAL("itemActivated(QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemActivated(QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QListWidgetItem> SignalItemEntered {
-            add { QObject.Connect(this, SIGNAL("itemEntered(QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemEntered(QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QListWidgetItem> SignalItemChanged {
-            add { QObject.Connect(this, SIGNAL("itemChanged(QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemChanged(QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<QListWidgetItem,QListWidgetItem> SignalCurrentItemChanged {
-            add { QObject.Connect(this, SIGNAL("currentItemChanged(QListWidgetItem*, QListWidgetItem*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentItemChanged(QListWidgetItem*, QListWidgetItem*)"), value); }
-        }
-        public event SlotFunc<string> SignalCurrentTextChanged {
-            add { QObject.Connect(this, SIGNAL("currentTextChanged(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentTextChanged(QString)"), value); }
-        }
-        public event SlotFunc<int> SignalCurrentRowChanged {
-            add { QObject.Connect(this, SIGNAL("currentRowChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentRowChanged(int)"), value); }
-        }
-        public event SlotFunc SignalItemSelectionChanged {
-            add { QObject.Connect(this, SIGNAL("itemSelectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("itemSelectionChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

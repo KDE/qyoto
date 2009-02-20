@@ -173,38 +173,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QFtp", "~QFtp()", typeof(void));
         }
-        public event SlotFunc<int> SignalStateChanged {
-            add { QObject.Connect(this, SIGNAL("stateChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("stateChanged(int)"), value); }
-        }
-        public event SlotFunc<QUrlInfo> SignalListInfo {
-            add { QObject.Connect(this, SIGNAL("listInfo(QUrlInfo)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("listInfo(QUrlInfo)"), value); }
-        }
-        public event SlotFunc SignalReadyRead {
-            add { QObject.Connect(this, SIGNAL("readyRead()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("readyRead()"), value); }
-        }
-        public event SlotFunc<long,long> SignalDataTransferProgress {
-            add { QObject.Connect(this, SIGNAL("dataTransferProgress(qint64, qint64)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("dataTransferProgress(qint64, qint64)"), value); }
-        }
-        public event SlotFunc<int,string> SignalRawCommandReply {
-            add { QObject.Connect(this, SIGNAL("rawCommandReply(int, QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("rawCommandReply(int, QString)"), value); }
-        }
-        public event SlotFunc<int> SignalCommandStarted {
-            add { QObject.Connect(this, SIGNAL("commandStarted(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("commandStarted(int)"), value); }
-        }
-        public event SlotFunc<int,bool> SignalCommandFinished {
-            add { QObject.Connect(this, SIGNAL("commandFinished(int, bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("commandFinished(int, bool)"), value); }
-        }
-        public event SlotFunc<bool> SignalDone {
-            add { QObject.Connect(this, SIGNAL("done(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("done(bool)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

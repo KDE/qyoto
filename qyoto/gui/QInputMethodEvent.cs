@@ -4,22 +4,6 @@ namespace Qyoto {
     [SmokeClass("QInputMethodEvent")]
     public class QInputMethodEvent : QEvent, IDisposable {
         protected QInputMethodEvent(Type dummy) : base((Type) null) {}
-        [SmokeClass("QInputMethodEvent::Attribute")]
-        public class Attribute : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Attribute(Type dummy) {}
-            public int Start {
-                get { return (int) interceptor.Invoke("start", "start()", typeof(int)); }
-            }
-            public int Length {
-                get { return (int) interceptor.Invoke("length", "length()", typeof(int)); }
-            }
-            public QVariant Value {
-                get { return (QVariant) interceptor.Invoke("value", "value()", typeof(QVariant)); }
-            }
-            //  Attribute(,,,); >>>> NOT CONVERTED
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QInputMethodEvent), this);
         }

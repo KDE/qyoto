@@ -31,7 +31,7 @@ namespace Qyoto {
             darkYellow = 18,
             transparent = 19,
         }
-        public enum KeyboardModifier : long {
+        public enum KeyboardModifier : uint {
             NoModifier = 0x00000000,
             ShiftModifier = 0x02000000,
             ControlModifier = 0x04000000,
@@ -41,7 +41,7 @@ namespace Qyoto {
             GroupSwitchModifier = 0x40000000,
             KeyboardModifierMask = 0xfe000000,
         }
-        public enum Modifier : long {
+        public enum Modifier : uint {
             META = Qt.KeyboardModifier.MetaModifier,
             SHIFT = Qt.KeyboardModifier.ShiftModifier,
             CTRL = Qt.KeyboardModifier.ControlModifier,
@@ -134,8 +134,12 @@ namespace Qyoto {
             WindowShadeButtonHint = 0x00020000,
             WindowStaysOnTopHint = 0x00040000,
             WindowOkButtonHint = 0x00080000,
-            WindowCancelButtonHint = 0x000100000,
+            WindowCancelButtonHint = 0x00100000,
             CustomizeWindowHint = 0x02000000,
+            WindowStaysOnBottomHint = 0x04000000,
+            WindowCloseButtonHint = 0x08000000,
+            MacWindowToolBarButtonHint = 0x10000000,
+            BypassGraphicsProxyWidget = 0x20000000,
         }
         public enum WindowState {
             WindowNoState = 0x00000000,
@@ -247,14 +251,20 @@ namespace Qyoto {
             WA_X11NetWmWindowTypeNotification = 114,
             WA_X11NetWmWindowTypeCombo = 115,
             WA_X11NetWmWindowTypeDND = 116,
-            WA_AttributeCount = 117,
+            WA_MacFrameworkScaled = 117,
+            WA_SetWindowModality = 118,
+            WA_WState_WindowOpacitySet = 119,
+            WA_TranslucentBackground = 120,
+            WA_AttributeCount = 121,
         }
         public enum ApplicationAttribute {
             AA_ImmediateWidgetCreation = 0,
             AA_MSWindowsUseDirect3DByDefault = 1,
             AA_DontShowIconsInMenus = 2,
             AA_NativeWindows = 3,
-            AA_AttributeCount = 4,
+            AA_DontCreateNativeWidgetSiblings = 4,
+            AA_MacPluginApplication = 5,
+            AA_AttributeCount = 6,
         }
         public enum ImageConversionFlag {
             ColorMode_Mask = 0x00000003,
@@ -274,6 +284,7 @@ namespace Qyoto {
             AutoDither = 0x00000000,
             PreferDither = 0x00000040,
             AvoidDither = 0x00000080,
+            NoOpaqueDetection = 0x00000100,
         }
         public enum BGMode {
             TransparentMode = 0,
@@ -872,6 +883,11 @@ namespace Qyoto {
             AccessibleTextRole = 11,
             AccessibleDescriptionRole = 12,
             SizeHintRole = 13,
+            DisplayPropertyRole = 27,
+            DecorationPropertyRole = 28,
+            ToolTipPropertyRole = 29,
+            StatusTipPropertyRole = 30,
+            WhatsThisPropertyRole = 31,
             UserRole = 32,
         }
         public enum ItemFlag {
@@ -951,10 +967,7 @@ namespace Qyoto {
         // void* qRealloc(void* arg1,size_t arg2); >>>> NOT CONVERTED
         // void* qMemCopy(void* arg1,const void* arg2,size_t arg3); >>>> NOT CONVERTED
         // void* qMemSet(void* arg1,int arg2,size_t arg3); >>>> NOT CONVERTED
-        // bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
-        // bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
-        // void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
-        // void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+        // void qRegisterStaticPluginInstanceFunction(QtPluginInstanceFunction arg1); >>>> NOT CONVERTED
         // int qvsnprintf(char* arg1,size_t arg2,const char* arg3,va_list arg4); >>>> NOT CONVERTED
         // QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
         // QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
@@ -962,7 +975,10 @@ namespace Qyoto {
         // QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
         // QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
         // QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
-        // void qRegisterStaticPluginInstanceFunction(QtPluginInstanceFunction arg1); >>>> NOT CONVERTED
+        // void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+        // void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+        // bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
+        // bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
         public static bool MightBeRichText(string arg1) {
             return (bool) staticInterceptor.Invoke("mightBeRichText$", "mightBeRichText(const QString&)", typeof(bool), typeof(string), arg1);
         }
@@ -977,6 +993,327 @@ namespace Qyoto {
         }
         public static QTextCodec CodecForHtml(QByteArray ba) {
             return (QTextCodec) staticInterceptor.Invoke("codecForHtml#", "codecForHtml(const QByteArray&)", typeof(QTextCodec), typeof(QByteArray), ba);
+        }
+        public static uint QHash(QHostAddress key) {
+            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QHostAddress&)", typeof(uint), typeof(QHostAddress), key);
+        }
+        public static QDataStream Write(QDataStream arg1, QHostAddress arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QHostAddress&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QHostAddress), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QHostAddress arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QHostAddress&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QHostAddress), arg2);
+        }
+        public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
+            return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QDomNode&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QDomNode), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QRect arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRect&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRect), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QRect arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRect&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRect), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QRectF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRectF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRectF), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QRectF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRectF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRectF), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QUuid arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUuid&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUuid), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QUuid arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QUuid&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUuid), arg2);
+        }
+        public static string QFlagLocation(string method) {
+            return (string) staticInterceptor.Invoke("qFlagLocation$", "qFlagLocation(const char*)", typeof(string), typeof(string), method);
+        }
+        public static int QRound(double d) {
+            return (int) staticInterceptor.Invoke("qRound$", "qRound(qreal)", typeof(int), typeof(double), d);
+        }
+        public static long QRound64(double d) {
+            return (long) staticInterceptor.Invoke("qRound64$", "qRound64(qreal)", typeof(long), typeof(double), d);
+        }
+        public static string QVersion() {
+            return (string) staticInterceptor.Invoke("qVersion", "qVersion()", typeof(string));
+        }
+        public static bool QSharedBuild() {
+            return (bool) staticInterceptor.Invoke("qSharedBuild", "qSharedBuild()", typeof(bool));
+        }
+        public static bool QFuzzyCompare(double p1, double p2) {
+            return (bool) staticInterceptor.Invoke("qFuzzyCompare$$", "qFuzzyCompare(double, double)", typeof(bool), typeof(double), p1, typeof(double), p2);
+        }
+        public static bool QFuzzyCompare(float p1, float p2) {
+            return (bool) staticInterceptor.Invoke("qFuzzyCompare$$", "qFuzzyCompare(float, float)", typeof(bool), typeof(float), p1, typeof(float), p2);
+        }
+        public static bool QIsNull(double d) {
+            return (bool) staticInterceptor.Invoke("qIsNull$", "qIsNull(double)", typeof(bool), typeof(double), d);
+        }
+        public static bool QIsNull(float f) {
+            return (bool) staticInterceptor.Invoke("qIsNull$", "qIsNull(float)", typeof(bool), typeof(float), f);
+        }
+        public static QByteArray Qgetenv(string varName) {
+            return (QByteArray) staticInterceptor.Invoke("qgetenv$", "qgetenv(const char*)", typeof(QByteArray), typeof(string), varName);
+        }
+        public static bool Qputenv(string varName, QByteArray value) {
+            return (bool) staticInterceptor.Invoke("qputenv$#", "qputenv(const char*, const QByteArray&)", typeof(bool), typeof(string), varName, typeof(QByteArray), value);
+        }
+        public static int QIntCast(double f) {
+            return (int) staticInterceptor.Invoke("qIntCast$", "qIntCast(double)", typeof(int), typeof(double), f);
+        }
+        public static int QIntCast(float f) {
+            return (int) staticInterceptor.Invoke("qIntCast$", "qIntCast(float)", typeof(int), typeof(float), f);
+        }
+        public static void Qsrand(uint seed) {
+            staticInterceptor.Invoke("qsrand$", "qsrand(uint)", typeof(void), typeof(uint), seed);
+        }
+        public static int Qrand() {
+            return (int) staticInterceptor.Invoke("qrand", "qrand()", typeof(int));
+        }
+        public static QDataStream Write(QDataStream arg1, QRegExp regExp) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRegExp&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegExp), regExp);
+        }
+        public static QDataStream Read(QDataStream arg1, QRegExp regExp) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRegExp&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegExp), regExp);
+        }
+        public static QDataStream Write(QDataStream arg1, QLocale arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QLocale&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLocale), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QLocale arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QLocale&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLocale), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QSize arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QSize&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSize), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QSize arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QSize&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSize), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QSizeF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QSizeF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizeF), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QSizeF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QSizeF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizeF), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, List<string> list) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>#?", "operator>>(QDataStream&, QStringList&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(List<string>), list);
+        }
+        public static QDataStream Write(QDataStream arg1, List<string> list) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<#?", "operator<<(QDataStream&, const QStringList&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(List<string>), list);
+        }
+        public static QDataStream Write(QDataStream arg1, QLine arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QLine&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLine), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QLine arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QLine&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLine), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QLineF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QLineF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLineF), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QLineF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QLineF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLineF), arg2);
+        }
+        public static uint QHash(QPersistentModelIndex index) {
+            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QPersistentModelIndex&)", typeof(uint), typeof(QPersistentModelIndex), index);
+        }
+        public static uint QHash(QModelIndex index) {
+            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QModelIndex&)", typeof(uint), typeof(QModelIndex), index);
+        }
+        public static Pointer<sbyte> Qstrdup(string arg1) {
+            return (Pointer<sbyte>) staticInterceptor.Invoke("qstrdup$", "qstrdup(const char*)", typeof(Pointer<sbyte>), typeof(string), arg1);
+        }
+        public static uint Qstrlen(string str) {
+            return (uint) staticInterceptor.Invoke("qstrlen$", "qstrlen(const char*)", typeof(uint), typeof(string), str);
+        }
+        public static uint Qstrnlen(string str, uint maxlen) {
+            return (uint) staticInterceptor.Invoke("qstrnlen$$", "qstrnlen(const char*, uint)", typeof(uint), typeof(string), str, typeof(uint), maxlen);
+        }
+        public static Pointer<sbyte> Qstrcpy(Pointer<sbyte> dst, string src) {
+            return (Pointer<sbyte>) staticInterceptor.Invoke("qstrcpy$$", "qstrcpy(char*, const char*)", typeof(Pointer<sbyte>), typeof(Pointer<sbyte>), dst, typeof(string), src);
+        }
+        public static Pointer<sbyte> Qstrncpy(Pointer<sbyte> dst, string src, uint len) {
+            return (Pointer<sbyte>) staticInterceptor.Invoke("qstrncpy$$$", "qstrncpy(char*, const char*, uint)", typeof(Pointer<sbyte>), typeof(Pointer<sbyte>), dst, typeof(string), src, typeof(uint), len);
+        }
+        public static int Qstrcmp(string str1, string str2) {
+            return (int) staticInterceptor.Invoke("qstrcmp$$", "qstrcmp(const char*, const char*)", typeof(int), typeof(string), str1, typeof(string), str2);
+        }
+        public static int Qstrcmp(QByteArray str1, QByteArray str2) {
+            return (int) staticInterceptor.Invoke("qstrcmp##", "qstrcmp(const QByteArray&, const QByteArray&)", typeof(int), typeof(QByteArray), str1, typeof(QByteArray), str2);
+        }
+        public static int Qstrcmp(QByteArray str1, string str2) {
+            return (int) staticInterceptor.Invoke("qstrcmp#$", "qstrcmp(const QByteArray&, const char*)", typeof(int), typeof(QByteArray), str1, typeof(string), str2);
+        }
+        public static int Qstrcmp(string str1, QByteArray str2) {
+            return (int) staticInterceptor.Invoke("qstrcmp$#", "qstrcmp(const char*, const QByteArray&)", typeof(int), typeof(string), str1, typeof(QByteArray), str2);
+        }
+        public static int Qstrncmp(string str1, string str2, uint len) {
+            return (int) staticInterceptor.Invoke("qstrncmp$$$", "qstrncmp(const char*, const char*, uint)", typeof(int), typeof(string), str1, typeof(string), str2, typeof(uint), len);
+        }
+        public static int Qstricmp(string arg1, string arg2) {
+            return (int) staticInterceptor.Invoke("qstricmp$$", "qstricmp(const char*, const char*)", typeof(int), typeof(string), arg1, typeof(string), arg2);
+        }
+        public static int Qstrnicmp(string arg1, string arg2, uint len) {
+            return (int) staticInterceptor.Invoke("qstrnicmp$$$", "qstrnicmp(const char*, const char*, uint)", typeof(int), typeof(string), arg1, typeof(string), arg2, typeof(uint), len);
+        }
+        public static ushort QChecksum(string s, uint len) {
+            return (ushort) staticInterceptor.Invoke("qChecksum$$", "qChecksum(const char*, uint)", typeof(ushort), typeof(string), s, typeof(uint), len);
+        }
+        public static QDataStream Write(QDataStream arg1, QByteArray arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QByteArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QByteArray), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QByteArray arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QByteArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QByteArray), arg2);
+        }
+        public static QByteArray QCompress(Pointer<byte> data, int nbytes, int compressionLevel) {
+            return (QByteArray) staticInterceptor.Invoke("qCompress$$$", "qCompress(const uchar*, int, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes, typeof(int), compressionLevel);
+        }
+        public static QByteArray QCompress(Pointer<byte> data, int nbytes) {
+            return (QByteArray) staticInterceptor.Invoke("qCompress$$", "qCompress(const uchar*, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes);
+        }
+        public static QByteArray QUncompress(Pointer<byte> data, int nbytes) {
+            return (QByteArray) staticInterceptor.Invoke("qUncompress$$", "qUncompress(const uchar*, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes);
+        }
+        public static QByteArray QCompress(QByteArray data, int compressionLevel) {
+            return (QByteArray) staticInterceptor.Invoke("qCompress#$", "qCompress(const QByteArray&, int)", typeof(QByteArray), typeof(QByteArray), data, typeof(int), compressionLevel);
+        }
+        public static QByteArray QCompress(QByteArray data) {
+            return (QByteArray) staticInterceptor.Invoke("qCompress#", "qCompress(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), data);
+        }
+        public static QByteArray QUncompress(QByteArray data) {
+            return (QByteArray) staticInterceptor.Invoke("qUncompress#", "qUncompress(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), data);
+        }
+        public static QTextStream Bin(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("bin#", "bin(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Oct(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("oct#", "oct(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Dec(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("dec#", "dec(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Hex(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("hex#", "hex(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Showbase(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("showbase#", "showbase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Forcesign(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("forcesign#", "forcesign(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Forcepoint(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("forcepoint#", "forcepoint(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Noshowbase(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("noshowbase#", "noshowbase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Noforcesign(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("noforcesign#", "noforcesign(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Noforcepoint(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("noforcepoint#", "noforcepoint(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Uppercasebase(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("uppercasebase#", "uppercasebase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Uppercasedigits(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("uppercasedigits#", "uppercasedigits(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Lowercasebase(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("lowercasebase#", "lowercasebase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Lowercasedigits(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("lowercasedigits#", "lowercasedigits(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Fixed(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("fixed#", "fixed(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Scientific(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("scientific#", "scientific(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Left(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("left#", "left(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Right(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("right#", "right(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Center(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("center#", "center(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Endl(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("endl#", "endl(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Flush(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("flush#", "flush(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Reset(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("reset#", "reset(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Bom(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("bom#", "bom(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QTextStream Ws(QTextStream s) {
+            return (QTextStream) staticInterceptor.Invoke("ws#", "ws(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
+        }
+        public static QDataStream Write(QDataStream arg1, QBitArray arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QBitArray arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QDate arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QDate&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDate), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QDate arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QDate&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDate), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QTime arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTime), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QTime arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTime), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QDateTime arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDateTime), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QDateTime arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDateTime), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QPoint arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPoint&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPoint), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QPoint arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPoint&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPoint), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QPointF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPointF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPointF), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QPointF arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPointF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPointF), arg2);
+        }
+        public static string QAppName() {
+            return (string) staticInterceptor.Invoke("qAppName", "qAppName()", typeof(string));
+        }
+        public static QDataStream Read(QDataStream s, QVariant p) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QVariant&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant), p);
+        }
+        public static QDataStream Write(QDataStream s, QVariant p) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QVariant&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant), p);
+        }
+        public static QDataStream Read(QDataStream s, QVariant.TypeOf p) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>#$", "operator>>(QDataStream&, QVariant::Type&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant.TypeOf), p);
+        }
+        public static QDataStream Write(QDataStream s, QVariant.TypeOf p) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<#$", "operator<<(QDataStream&, const QVariant::Type)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant.TypeOf), p);
+        }
+        public static QDataStream Write(QDataStream arg1, QUrl arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUrl), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QUrl arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUrl), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QChar arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QChar), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QChar arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QChar), arg2);
         }
         public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
             staticInterceptor.Invoke("qDBusReplyFill###", "qDBusReplyFill(const QDBusMessage&, QDBusError&, QVariant&)", typeof(void), typeof(QDBusMessage), reply, typeof(QDBusError), error, typeof(QVariant), data);
@@ -1056,317 +1393,20 @@ namespace Qyoto {
         public static QDBusArgument Write(QDBusArgument arg, Dictionary<string, QVariant> map) {
             return (QDBusArgument) staticInterceptor.Invoke("operator<<#?", "operator<<(QDBusArgument&, const QMap<QString,QVariant>&)", typeof(QDBusArgument), typeof(QDBusArgument), arg, typeof(Dictionary<string, QVariant>), map);
         }
-        public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
-            return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QDomNode&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QDomNode), arg2);
+        public static uint QHash(string key) {
+            return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QString&)", typeof(uint), typeof(string), key);
         }
-        public static int QRound(double d) {
-            return (int) staticInterceptor.Invoke("qRound$", "qRound(qreal)", typeof(int), typeof(double), d);
+        public static uint QHash(QDBusObjectPath objectPath) {
+            return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QDBusObjectPath&)", typeof(uint), typeof(QDBusObjectPath), objectPath);
         }
-        public static long QRound64(double d) {
-            return (long) staticInterceptor.Invoke("qRound64$", "qRound64(qreal)", typeof(long), typeof(double), d);
+        public static uint QHash(QDBusSignature signature) {
+            return (uint) staticInterceptor.Invoke("qHash$", "qHash(const QDBusSignature&)", typeof(uint), typeof(QDBusSignature), signature);
         }
-        public static string QVersion() {
-            return (string) staticInterceptor.Invoke("qVersion", "qVersion()", typeof(string));
+        public static QDataStream Write(QDataStream arg1, QBrush arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QBrush&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBrush), arg2);
         }
-        public static bool QSharedBuild() {
-            return (bool) staticInterceptor.Invoke("qSharedBuild", "qSharedBuild()", typeof(bool));
-        }
-        public static bool QFuzzyCompare(double p1, double p2) {
-            return (bool) staticInterceptor.Invoke("qFuzzyCompare$$", "qFuzzyCompare(double, double)", typeof(bool), typeof(double), p1, typeof(double), p2);
-        }
-        public static bool QFuzzyCompare(float p1, float p2) {
-            return (bool) staticInterceptor.Invoke("qFuzzyCompare$$", "qFuzzyCompare(float, float)", typeof(bool), typeof(float), p1, typeof(float), p2);
-        }
-        public static bool QIsNull(double d) {
-            return (bool) staticInterceptor.Invoke("qIsNull$", "qIsNull(double)", typeof(bool), typeof(double), d);
-        }
-        public static bool QIsNull(float f) {
-            return (bool) staticInterceptor.Invoke("qIsNull$", "qIsNull(float)", typeof(bool), typeof(float), f);
-        }
-        public static QByteArray Qgetenv(string varName) {
-            return (QByteArray) staticInterceptor.Invoke("qgetenv$", "qgetenv(const char*)", typeof(QByteArray), typeof(string), varName);
-        }
-        public static bool Qputenv(string varName, QByteArray value) {
-            return (bool) staticInterceptor.Invoke("qputenv$#", "qputenv(const char*, const QByteArray&)", typeof(bool), typeof(string), varName, typeof(QByteArray), value);
-        }
-        public static int QIntCast(double f) {
-            return (int) staticInterceptor.Invoke("qIntCast$", "qIntCast(double)", typeof(int), typeof(double), f);
-        }
-        public static int QIntCast(float f) {
-            return (int) staticInterceptor.Invoke("qIntCast$", "qIntCast(float)", typeof(int), typeof(float), f);
-        }
-        public static void Qsrand(uint seed) {
-            staticInterceptor.Invoke("qsrand$", "qsrand(uint)", typeof(void), typeof(uint), seed);
-        }
-        public static int Qrand() {
-            return (int) staticInterceptor.Invoke("qrand", "qrand()", typeof(int));
-        }
-        public static QDataStream Read(QDataStream s, QVariant p) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QVariant&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant), p);
-        }
-        public static QDataStream Write(QDataStream s, QVariant p) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QVariant&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant), p);
-        }
-        public static QDataStream Read(QDataStream s, QVariant.TypeOf p) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>#$", "operator>>(QDataStream&, QVariant::Type&)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant.TypeOf), p);
-        }
-        public static QDataStream Write(QDataStream s, QVariant.TypeOf p) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<#$", "operator<<(QDataStream&, const QVariant::Type)", typeof(QDataStream), typeof(QDataStream), s, typeof(QVariant.TypeOf), p);
-        }
-        public static string QAppName() {
-            return (string) staticInterceptor.Invoke("qAppName", "qAppName()", typeof(string));
-        }
-        public static uint QHash(QModelIndex index) {
-            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QModelIndex&)", typeof(uint), typeof(QModelIndex), index);
-        }
-        public static QDataStream Write(QDataStream arg1, QRect arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRect&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRect), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QRect arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRect&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRect), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QRectF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRectF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRectF), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QRectF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRectF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRectF), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QLocale arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QLocale&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLocale), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QLocale arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QLocale&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLocale), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, List<string> list) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>#?", "operator>>(QDataStream&, QStringList&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(List<string>), list);
-        }
-        public static QDataStream Write(QDataStream arg1, List<string> list) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<#?", "operator<<(QDataStream&, const QStringList&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(List<string>), list);
-        }
-        public static string Qstrdup(string arg1) {
-            return (string) staticInterceptor.Invoke("qstrdup$", "qstrdup(const char*)", typeof(string), typeof(string), arg1);
-        }
-        public static uint Qstrlen(string str) {
-            return (uint) staticInterceptor.Invoke("qstrlen$", "qstrlen(const char*)", typeof(uint), typeof(string), str);
-        }
-        public static uint Qstrnlen(string str, uint maxlen) {
-            return (uint) staticInterceptor.Invoke("qstrnlen$$", "qstrnlen(const char*, uint)", typeof(uint), typeof(string), str, typeof(uint), maxlen);
-        }
-        public static string Qstrcpy(string dst, string src) {
-            return (string) staticInterceptor.Invoke("qstrcpy$$", "qstrcpy(char*, const char*)", typeof(string), typeof(string), dst, typeof(string), src);
-        }
-        public static string Qstrncpy(string dst, string src, uint len) {
-            return (string) staticInterceptor.Invoke("qstrncpy$$$", "qstrncpy(char*, const char*, uint)", typeof(string), typeof(string), dst, typeof(string), src, typeof(uint), len);
-        }
-        public static int Qstrcmp(string str1, string str2) {
-            return (int) staticInterceptor.Invoke("qstrcmp$$", "qstrcmp(const char*, const char*)", typeof(int), typeof(string), str1, typeof(string), str2);
-        }
-        public static int Qstrcmp(QByteArray str1, QByteArray str2) {
-            return (int) staticInterceptor.Invoke("qstrcmp##", "qstrcmp(const QByteArray&, const QByteArray&)", typeof(int), typeof(QByteArray), str1, typeof(QByteArray), str2);
-        }
-        public static int Qstrcmp(QByteArray str1, string str2) {
-            return (int) staticInterceptor.Invoke("qstrcmp#$", "qstrcmp(const QByteArray&, const char*)", typeof(int), typeof(QByteArray), str1, typeof(string), str2);
-        }
-        public static int Qstrcmp(string str1, QByteArray str2) {
-            return (int) staticInterceptor.Invoke("qstrcmp$#", "qstrcmp(const char*, const QByteArray&)", typeof(int), typeof(string), str1, typeof(QByteArray), str2);
-        }
-        public static int Qstrncmp(string str1, string str2, uint len) {
-            return (int) staticInterceptor.Invoke("qstrncmp$$$", "qstrncmp(const char*, const char*, uint)", typeof(int), typeof(string), str1, typeof(string), str2, typeof(uint), len);
-        }
-        public static int Qstricmp(string arg1, string arg2) {
-            return (int) staticInterceptor.Invoke("qstricmp$$", "qstricmp(const char*, const char*)", typeof(int), typeof(string), arg1, typeof(string), arg2);
-        }
-        public static int Qstrnicmp(string arg1, string arg2, uint len) {
-            return (int) staticInterceptor.Invoke("qstrnicmp$$$", "qstrnicmp(const char*, const char*, uint)", typeof(int), typeof(string), arg1, typeof(string), arg2, typeof(uint), len);
-        }
-        public static ushort QChecksum(string s, uint len) {
-            return (ushort) staticInterceptor.Invoke("qChecksum$$", "qChecksum(const char*, uint)", typeof(ushort), typeof(string), s, typeof(uint), len);
-        }
-        public static QDataStream Write(QDataStream arg1, QByteArray arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QByteArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QByteArray), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QByteArray arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QByteArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QByteArray), arg2);
-        }
-        public static QByteArray QCompress(char[] data, int nbytes, int compressionLevel) {
-            return (QByteArray) staticInterceptor.Invoke("qCompress$$$", "qCompress(const uchar*, int, int)", typeof(QByteArray), typeof(char[]), data, typeof(int), nbytes, typeof(int), compressionLevel);
-        }
-        public static QByteArray QCompress(char[] data, int nbytes) {
-            return (QByteArray) staticInterceptor.Invoke("qCompress$$", "qCompress(const uchar*, int)", typeof(QByteArray), typeof(char[]), data, typeof(int), nbytes);
-        }
-        public static QByteArray QUncompress(char[] data, int nbytes) {
-            return (QByteArray) staticInterceptor.Invoke("qUncompress$$", "qUncompress(const uchar*, int)", typeof(QByteArray), typeof(char[]), data, typeof(int), nbytes);
-        }
-        public static QByteArray QCompress(QByteArray data, int compressionLevel) {
-            return (QByteArray) staticInterceptor.Invoke("qCompress#$", "qCompress(const QByteArray&, int)", typeof(QByteArray), typeof(QByteArray), data, typeof(int), compressionLevel);
-        }
-        public static QByteArray QCompress(QByteArray data) {
-            return (QByteArray) staticInterceptor.Invoke("qCompress#", "qCompress(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), data);
-        }
-        public static QByteArray QUncompress(QByteArray data) {
-            return (QByteArray) staticInterceptor.Invoke("qUncompress#", "qUncompress(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), data);
-        }
-        public static QDataStream Write(QDataStream arg1, QSize arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QSize&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSize), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QSize arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QSize&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSize), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QSizeF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QSizeF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizeF), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QSizeF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QSizeF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizeF), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QLine arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QLine&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLine), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QLine arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QLine&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLine), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QLineF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QLineF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLineF), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QLineF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QLineF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QLineF), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QRegExp regExp) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRegExp&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegExp), regExp);
-        }
-        public static QDataStream Read(QDataStream arg1, QRegExp regExp) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRegExp&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegExp), regExp);
-        }
-        public static QDataStream Write(QDataStream arg1, QDate arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QDate&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDate), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QDate arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QDate&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDate), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QTime arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTime), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QTime arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTime), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QDateTime arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDateTime), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QDateTime arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QDateTime&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QDateTime), arg2);
-        }
-        public static int QFindString(QChar haystack, int haystackLen, int from, QChar needle, int needleLen, Qt.CaseSensitivity cs) {
-            return (int) staticInterceptor.Invoke("qFindString#$$#$$", "qFindString(const QChar*, int, int, const QChar*, int, Qt::CaseSensitivity)", typeof(int), typeof(QChar), haystack, typeof(int), haystackLen, typeof(int), from, typeof(QChar), needle, typeof(int), needleLen, typeof(Qt.CaseSensitivity), cs);
-        }
-        public static int QFindStringBoyerMoore(QChar haystack, int haystackLen, int from, QChar needle, int needleLen, Qt.CaseSensitivity cs) {
-            return (int) staticInterceptor.Invoke("qFindStringBoyerMoore#$$#$$", "qFindStringBoyerMoore(const QChar*, int, int, const QChar*, int, Qt::CaseSensitivity)", typeof(int), typeof(QChar), haystack, typeof(int), haystackLen, typeof(int), from, typeof(QChar), needle, typeof(int), needleLen, typeof(Qt.CaseSensitivity), cs);
-        }
-        public static QDataStream Write(QDataStream arg1, QBitArray arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QBitArray arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBitArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBitArray), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QChar arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QChar), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QChar arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QChar&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QChar), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QPoint arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPoint&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPoint), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QPoint arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPoint&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPoint), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QPointF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPointF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPointF), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QPointF arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPointF&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPointF), arg2);
-        }
-        public static QTextStream Bin(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("bin#", "bin(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Oct(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("oct#", "oct(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Dec(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("dec#", "dec(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Hex(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("hex#", "hex(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Showbase(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("showbase#", "showbase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Forcesign(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("forcesign#", "forcesign(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Forcepoint(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("forcepoint#", "forcepoint(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Noshowbase(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("noshowbase#", "noshowbase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Noforcesign(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("noforcesign#", "noforcesign(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Noforcepoint(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("noforcepoint#", "noforcepoint(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Uppercasebase(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("uppercasebase#", "uppercasebase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Uppercasedigits(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("uppercasedigits#", "uppercasedigits(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Lowercasebase(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("lowercasebase#", "lowercasebase(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Lowercasedigits(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("lowercasedigits#", "lowercasedigits(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Fixed(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("fixed#", "fixed(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Scientific(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("scientific#", "scientific(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Left(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("left#", "left(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Right(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("right#", "right(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Center(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("center#", "center(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Endl(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("endl#", "endl(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Flush(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("flush#", "flush(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Reset(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("reset#", "reset(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Bom(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("bom#", "bom(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QTextStream Ws(QTextStream s) {
-            return (QTextStream) staticInterceptor.Invoke("ws#", "ws(QTextStream&)", typeof(QTextStream), typeof(QTextStream), s);
-        }
-        public static QDataStream Write(QDataStream arg1, QUrl arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUrl), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QUrl arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QUrl&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUrl), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QUuid arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QUuid&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUuid), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QUuid arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QUuid&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QUuid), arg2);
+        public static QDataStream Read(QDataStream arg1, QBrush arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBrush&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBrush), arg2);
         }
         public static QDataStream Write(QDataStream ds, QPalette p) {
             return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPalette&)", typeof(QDataStream), typeof(QDataStream), ds, typeof(QPalette), p);
@@ -1374,29 +1414,11 @@ namespace Qyoto {
         public static QDataStream Read(QDataStream ds, QPalette p) {
             return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPalette&)", typeof(QDataStream), typeof(QDataStream), ds, typeof(QPalette), p);
         }
-        public static QDataStream Write(QDataStream outS, QCursor cursor) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QCursor&)", typeof(QDataStream), typeof(QDataStream), outS, typeof(QCursor), cursor);
+        public static QTextStream Write(QTextStream arg1, QSplitter arg2) {
+            return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QSplitter&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QSplitter), arg2);
         }
-        public static QDataStream Read(QDataStream inS, QCursor cursor) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QCursor&)", typeof(QDataStream), typeof(QDataStream), inS, typeof(QCursor), cursor);
-        }
-        public static QDataStream Write(QDataStream arg1, QKeySequence ks) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QKeySequence&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QKeySequence), ks);
-        }
-        public static QDataStream Read(QDataStream arg1, QKeySequence ks) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QKeySequence&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QKeySequence), ks);
-        }
-        public static QDataStream Write(QDataStream arg1, QSizePolicy arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QSizePolicy&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizePolicy), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QSizePolicy arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QSizePolicy&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizePolicy), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QPicture arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPicture&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPicture), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QPicture arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPicture&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPicture), arg2);
+        public static QTextStream Read(QTextStream arg1, QSplitter arg2) {
+            return (QTextStream) staticInterceptor.Invoke("operator>>##", "operator>>(QTextStream&, QSplitter&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QSplitter), arg2);
         }
         public static QDataStream Write(QDataStream arg1, QImage arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QImage&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QImage), arg2);
@@ -1404,23 +1426,38 @@ namespace Qyoto {
         public static QDataStream Read(QDataStream arg1, QImage arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QImage&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QImage), arg2);
         }
-        public static QDataStream Write(QDataStream arg1, QIcon arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QIcon&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QIcon), arg2);
+        public static int QRed(uint rgb) {
+            return (int) staticInterceptor.Invoke("qRed$", "qRed(unsigned int)", typeof(int), typeof(uint), rgb);
         }
-        public static QDataStream Read(QDataStream arg1, QIcon arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QIcon&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QIcon), arg2);
+        public static int QGreen(uint rgb) {
+            return (int) staticInterceptor.Invoke("qGreen$", "qGreen(unsigned int)", typeof(int), typeof(uint), rgb);
         }
-        public static QDataStream Write(QDataStream arg1, QPixmap arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPixmap&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPixmap), arg2);
+        public static int QBlue(uint rgb) {
+            return (int) staticInterceptor.Invoke("qBlue$", "qBlue(unsigned int)", typeof(int), typeof(uint), rgb);
         }
-        public static QDataStream Read(QDataStream arg1, QPixmap arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPixmap&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPixmap), arg2);
+        public static int QAlpha(uint rgb) {
+            return (int) staticInterceptor.Invoke("qAlpha$", "qAlpha(unsigned int)", typeof(int), typeof(uint), rgb);
         }
-        public static QDataStream Write(QDataStream arg1, QFont arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QFont&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QFont), arg2);
+        public static uint QRgb(int r, int g, int b) {
+            return (uint) staticInterceptor.Invoke("qRgb$$$", "qRgb(int, int, int)", typeof(uint), typeof(int), r, typeof(int), g, typeof(int), b);
         }
-        public static QDataStream Read(QDataStream arg1, QFont arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QFont&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QFont), arg2);
+        public static uint QRgba(int r, int g, int b, int a) {
+            return (uint) staticInterceptor.Invoke("qRgba$$$$", "qRgba(int, int, int, int)", typeof(uint), typeof(int), r, typeof(int), g, typeof(int), b, typeof(int), a);
+        }
+        public static int QGray(int r, int g, int b) {
+            return (int) staticInterceptor.Invoke("qGray$$$", "qGray(int, int, int)", typeof(int), typeof(int), r, typeof(int), g, typeof(int), b);
+        }
+        public static int QGray(uint rgb) {
+            return (int) staticInterceptor.Invoke("qGray$", "qGray(unsigned int)", typeof(int), typeof(uint), rgb);
+        }
+        public static bool QIsGray(uint rgb) {
+            return (bool) staticInterceptor.Invoke("qIsGray$", "qIsGray(unsigned int)", typeof(bool), typeof(uint), rgb);
+        }
+        public static QDataStream Write(QDataStream arg1, QMatrix arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QMatrix&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QMatrix), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QMatrix arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QMatrix&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QMatrix), arg2);
         }
         public static QDataStream Write(QDataStream arg1, QTextLength arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTextLength&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTextLength), arg2);
@@ -1434,11 +1471,17 @@ namespace Qyoto {
         public static QDataStream Read(QDataStream arg1, QTextFormat arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTextFormat&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTextFormat), arg2);
         }
-        public static QTextStream Write(QTextStream arg1, QSplitter arg2) {
-            return (QTextStream) staticInterceptor.Invoke("operator<<##", "operator<<(QTextStream&, const QSplitter&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QSplitter), arg2);
+        public static QDataStream Write(QDataStream arg1, QSizePolicy arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QSizePolicy&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizePolicy), arg2);
         }
-        public static QTextStream Read(QTextStream arg1, QSplitter arg2) {
-            return (QTextStream) staticInterceptor.Invoke("operator>>##", "operator>>(QTextStream&, QSplitter&)", typeof(QTextStream), typeof(QTextStream), arg1, typeof(QSplitter), arg2);
+        public static QDataStream Read(QDataStream arg1, QSizePolicy arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QSizePolicy&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QSizePolicy), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QPainterPath arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPainterPath&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPainterPath), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QPainterPath arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPainterPath&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPainterPath), arg2);
         }
         public static QDataStream Write(QDataStream arg1, QColor arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QColor&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QColor), arg2);
@@ -1446,11 +1489,11 @@ namespace Qyoto {
         public static QDataStream Read(QDataStream arg1, QColor arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QColor&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QColor), arg2);
         }
-        public static QDataStream Write(QDataStream arg1, QPen arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPen&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPen), arg2);
+        public static QDataStream Read(QDataStream arg1, QTableWidgetItem item) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTableWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTableWidgetItem), item);
         }
-        public static QDataStream Read(QDataStream arg1, QPen arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPen&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPen), arg2);
+        public static QDataStream Write(QDataStream arg1, QTableWidgetItem item) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTableWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTableWidgetItem), item);
         }
         public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth, int midLineWidth) {
             staticInterceptor.Invoke("qDrawShadeLine#$$$$#$$$", "qDrawShadeLine(QPainter*, int, int, int, int, const QPalette&, bool, int, int)", typeof(void), typeof(QPainter), p, typeof(int), x1, typeof(int), y1, typeof(int), x2, typeof(int), y2, typeof(QPalette), pal, typeof(bool), sunken, typeof(int), lineWidth, typeof(int), midLineWidth);
@@ -1584,95 +1627,11 @@ namespace Qyoto {
         public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3) {
             staticInterceptor.Invoke("qDrawPlainRect###", "qDrawPlainRect(QPainter*, const QRect&, const QColor&)", typeof(void), typeof(QPainter), p, typeof(QRect), r, typeof(QColor), arg3);
         }
-        public static QDataStream Write(QDataStream arg1, QBrush arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QBrush&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBrush), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QBrush arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QBrush&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QBrush), arg2);
-        }
-        public static int QRed(uint rgb) {
-            return (int) staticInterceptor.Invoke("qRed$", "qRed(unsigned int)", typeof(int), typeof(uint), rgb);
-        }
-        public static int QGreen(uint rgb) {
-            return (int) staticInterceptor.Invoke("qGreen$", "qGreen(unsigned int)", typeof(int), typeof(uint), rgb);
-        }
-        public static int QBlue(uint rgb) {
-            return (int) staticInterceptor.Invoke("qBlue$", "qBlue(unsigned int)", typeof(int), typeof(uint), rgb);
-        }
-        public static int QAlpha(uint rgb) {
-            return (int) staticInterceptor.Invoke("qAlpha$", "qAlpha(unsigned int)", typeof(int), typeof(uint), rgb);
-        }
-        public static uint QRgb(int r, int g, int b) {
-            return (uint) staticInterceptor.Invoke("qRgb$$$", "qRgb(int, int, int)", typeof(uint), typeof(int), r, typeof(int), g, typeof(int), b);
-        }
-        public static uint QRgba(int r, int g, int b, int a) {
-            return (uint) staticInterceptor.Invoke("qRgba$$$$", "qRgba(int, int, int, int)", typeof(uint), typeof(int), r, typeof(int), g, typeof(int), b, typeof(int), a);
-        }
-        public static int QGray(int r, int g, int b) {
-            return (int) staticInterceptor.Invoke("qGray$$$", "qGray(int, int, int)", typeof(int), typeof(int), r, typeof(int), g, typeof(int), b);
-        }
-        public static int QGray(uint rgb) {
-            return (int) staticInterceptor.Invoke("qGray$", "qGray(unsigned int)", typeof(int), typeof(uint), rgb);
-        }
-        public static bool QIsGray(uint rgb) {
-            return (bool) staticInterceptor.Invoke("qIsGray$", "qIsGray(unsigned int)", typeof(bool), typeof(uint), rgb);
-        }
-        public static QDataStream Write(QDataStream arg1, QPainterPath arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPainterPath&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPainterPath), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QPainterPath arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPainterPath&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPainterPath), arg2);
-        }
-        public static QDataStream Write(QDataStream arg1, QRegion arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRegion&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegion), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QRegion arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRegion&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegion), arg2);
-        }
-        public static QDataStream Write(QDataStream stream, QPolygon polygon) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPolygon&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygon), polygon);
-        }
-        public static QDataStream Read(QDataStream stream, QPolygon polygon) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPolygon&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygon), polygon);
-        }
-        public static QDataStream Write(QDataStream stream, QPolygonF array) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPolygonF&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygonF), array);
-        }
-        public static QDataStream Read(QDataStream stream, QPolygonF array) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPolygonF&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygonF), array);
-        }
-        public static QDataStream Write(QDataStream arg1, QMatrix arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QMatrix&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QMatrix), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QMatrix arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QMatrix&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QMatrix), arg2);
-        }
         public static QDataStream Write(QDataStream arg1, QTransform arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTransform&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTransform), arg2);
         }
         public static QDataStream Read(QDataStream arg1, QTransform arg2) {
             return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTransform&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTransform), arg2);
-        }
-        public static QDataStream Read(QDataStream arg1, QTableWidgetItem item) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTableWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTableWidgetItem), item);
-        }
-        public static QDataStream Write(QDataStream arg1, QTableWidgetItem item) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTableWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTableWidgetItem), item);
-        }
-        public static QDataStream Write(QDataStream arg1, QTreeWidgetItem item) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTreeWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTreeWidgetItem), item);
-        }
-        public static QDataStream Read(QDataStream arg1, QTreeWidgetItem item) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTreeWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTreeWidgetItem), item);
-        }
-        public static QDataStream Write(QDataStream arg1, QListWidgetItem item) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QListWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QListWidgetItem), item);
-        }
-        public static QDataStream Read(QDataStream arg1, QListWidgetItem item) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QListWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QListWidgetItem), item);
-        }
-        public static uint QHash(QItemSelectionRange arg1) {
-            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QItemSelectionRange&)", typeof(uint), typeof(QItemSelectionRange), arg1);
         }
         public static QAccessible2Interface QAccessibleValueCastHelper() {
             return (QAccessible2Interface) staticInterceptor.Invoke("qAccessibleValueCastHelper", "qAccessibleValueCastHelper()", typeof(QAccessible2Interface));
@@ -1686,14 +1645,80 @@ namespace Qyoto {
         public static QAccessible2Interface QAccessibleTableCastHelper() {
             return (QAccessible2Interface) staticInterceptor.Invoke("qAccessibleTableCastHelper", "qAccessibleTableCastHelper()", typeof(QAccessible2Interface));
         }
-        public static uint QHash(QHostAddress key) {
-            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QHostAddress&)", typeof(uint), typeof(QHostAddress), key);
+        public static QDataStream Write(QDataStream outS, QCursor cursor) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QCursor&)", typeof(QDataStream), typeof(QDataStream), outS, typeof(QCursor), cursor);
         }
-        public static QDataStream Write(QDataStream arg1, QHostAddress arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QHostAddress&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QHostAddress), arg2);
+        public static QDataStream Read(QDataStream inS, QCursor cursor) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QCursor&)", typeof(QDataStream), typeof(QDataStream), inS, typeof(QCursor), cursor);
         }
-        public static QDataStream Read(QDataStream arg1, QHostAddress arg2) {
-            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QHostAddress&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QHostAddress), arg2);
+        public static QDataStream Write(QDataStream arg1, QPen arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPen&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPen), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QPen arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPen&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPen), arg2);
+        }
+        public static QDataStream Write(QDataStream stream, QPolygon polygon) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPolygon&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygon), polygon);
+        }
+        public static QDataStream Read(QDataStream stream, QPolygon polygon) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPolygon&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygon), polygon);
+        }
+        public static QDataStream Write(QDataStream stream, QPolygonF array) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPolygonF&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygonF), array);
+        }
+        public static QDataStream Read(QDataStream stream, QPolygonF array) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPolygonF&)", typeof(QDataStream), typeof(QDataStream), stream, typeof(QPolygonF), array);
+        }
+        public static QDataStream Write(QDataStream arg1, QListWidgetItem item) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QListWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QListWidgetItem), item);
+        }
+        public static QDataStream Read(QDataStream arg1, QListWidgetItem item) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QListWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QListWidgetItem), item);
+        }
+        public static QDataStream Write(QDataStream arg1, QKeySequence ks) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QKeySequence&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QKeySequence), ks);
+        }
+        public static QDataStream Read(QDataStream arg1, QKeySequence ks) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QKeySequence&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QKeySequence), ks);
+        }
+        public static QDataStream Write(QDataStream arg1, QPixmap arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPixmap&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPixmap), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QPixmap arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPixmap&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPixmap), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QIcon arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QIcon&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QIcon), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QIcon arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QIcon&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QIcon), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QRegion arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QRegion&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegion), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QRegion arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QRegion&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QRegion), arg2);
+        }
+        public static QDataStream Write(QDataStream arg1, QPicture arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QPicture&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPicture), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QPicture arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QPicture&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QPicture), arg2);
+        }
+        public static uint QHash(QItemSelectionRange arg1) {
+            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const QItemSelectionRange&)", typeof(uint), typeof(QItemSelectionRange), arg1);
+        }
+        public static QDataStream Write(QDataStream arg1, QTreeWidgetItem item) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QTreeWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTreeWidgetItem), item);
+        }
+        public static QDataStream Read(QDataStream arg1, QTreeWidgetItem item) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QTreeWidgetItem&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QTreeWidgetItem), item);
+        }
+        public static QDataStream Write(QDataStream arg1, QFont arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const QFont&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QFont), arg2);
+        }
+        public static QDataStream Read(QDataStream arg1, QFont arg2) {
+            return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QFont&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QFont), arg2);
         }
     }
 }

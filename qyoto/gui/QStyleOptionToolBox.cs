@@ -13,6 +13,14 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public QIcon Icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
         public QStyleOptionToolBox() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionToolBox", "QStyleOptionToolBox()", typeof(void));

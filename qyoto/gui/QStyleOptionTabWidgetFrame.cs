@@ -13,6 +13,30 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public int LineWidth {
+            get { return (int) interceptor.Invoke("lineWidth", "lineWidth()", typeof(int)); }
+            set { interceptor.Invoke("setLineWidth$", "setLineWidth(int)", typeof(void), typeof(int), value); }
+        }
+        public int MidLineWidth {
+            get { return (int) interceptor.Invoke("midLineWidth", "midLineWidth()", typeof(int)); }
+            set { interceptor.Invoke("setMidLineWidth$", "setMidLineWidth(int)", typeof(void), typeof(int), value); }
+        }
+        public QTabBar.Shape Shape {
+            get { return (QTabBar.Shape) interceptor.Invoke("shape", "shape()", typeof(QTabBar.Shape)); }
+            set { interceptor.Invoke("setShape$", "setShape(QTabBar::Shape)", typeof(void), typeof(QTabBar.Shape), value); }
+        }
+        public QSize TabBarSize {
+            get { return (QSize) interceptor.Invoke("tabBarSize", "tabBarSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setTabBarSize#", "setTabBarSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
+        public QSize RightCornerWidgetSize {
+            get { return (QSize) interceptor.Invoke("rightCornerWidgetSize", "rightCornerWidgetSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setRightCornerWidgetSize#", "setRightCornerWidgetSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
+        public QSize LeftCornerWidgetSize {
+            get { return (QSize) interceptor.Invoke("leftCornerWidgetSize", "leftCornerWidgetSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setLeftCornerWidgetSize#", "setLeftCornerWidgetSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
         public QStyleOptionTabWidgetFrame() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionTabWidgetFrame", "QStyleOptionTabWidgetFrame()", typeof(void));

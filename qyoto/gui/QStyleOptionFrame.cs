@@ -13,6 +13,14 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public int LineWidth {
+            get { return (int) interceptor.Invoke("lineWidth", "lineWidth()", typeof(int)); }
+            set { interceptor.Invoke("setLineWidth$", "setLineWidth(int)", typeof(void), typeof(int), value); }
+        }
+        public int MidLineWidth {
+            get { return (int) interceptor.Invoke("midLineWidth", "midLineWidth()", typeof(int)); }
+            set { interceptor.Invoke("setMidLineWidth$", "setMidLineWidth(int)", typeof(void), typeof(int), value); }
+        }
         public QStyleOptionFrame() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionFrame", "QStyleOptionFrame()", typeof(void));

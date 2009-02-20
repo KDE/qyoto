@@ -83,10 +83,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QSocketNotifier", "~QSocketNotifier()", typeof(void));
         }
-        public event SlotFunc<int> SignalActivated {
-            add { QObject.Connect(this, SIGNAL("activated(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("activated(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

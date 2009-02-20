@@ -158,6 +158,7 @@ namespace Qyoto {
             UngrabMouse = 187,
             GrabKeyboard = 188,
             UngrabKeyboard = 189,
+            CocoaRequestModal = 190,
             User = 1000,
             MaxUser = 65535,
         }

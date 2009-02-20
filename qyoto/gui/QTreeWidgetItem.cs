@@ -272,6 +272,9 @@ namespace Qyoto {
         public void SortChildren(int column, Qt.SortOrder order) {
             interceptor.Invoke("sortChildren$$", "sortChildren(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
         }
+        protected void EmitDataChanged() {
+            interceptor.Invoke("emitDataChanged", "emitDataChanged()", typeof(void));
+        }
         ~QTreeWidgetItem() {
             interceptor.Invoke("~QTreeWidgetItem", "~QTreeWidgetItem()", typeof(void));
         }

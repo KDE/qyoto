@@ -13,6 +13,14 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public uint SubControls {
+            get { return (uint) interceptor.Invoke("subControls", "subControls()", typeof(uint)); }
+            set { interceptor.Invoke("setSubControls$", "setSubControls(QStyle::SubControls)", typeof(void), typeof(uint), value); }
+        }
+        public uint ActiveSubControls {
+            get { return (uint) interceptor.Invoke("activeSubControls", "activeSubControls()", typeof(uint)); }
+            set { interceptor.Invoke("setActiveSubControls$", "setActiveSubControls(QStyle::SubControls)", typeof(void), typeof(uint), value); }
+        }
         public QStyleOptionComplex(int version, int type) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionComplex$$", "QStyleOptionComplex(int, int)", typeof(void), typeof(int), version, typeof(int), type);

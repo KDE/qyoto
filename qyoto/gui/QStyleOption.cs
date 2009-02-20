@@ -46,6 +46,34 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public int Version {
+            get { return (int) interceptor.Invoke("version", "version()", typeof(int)); }
+            set { interceptor.Invoke("setVersion$", "setVersion(int)", typeof(void), typeof(int), value); }
+        }
+        public int Type {
+            get { return (int) interceptor.Invoke("type", "type()", typeof(int)); }
+            set { interceptor.Invoke("setType$", "setType(int)", typeof(void), typeof(int), value); }
+        }
+        public uint State {
+            get { return (uint) interceptor.Invoke("state", "state()", typeof(uint)); }
+            set { interceptor.Invoke("setState$", "setState(QStyle::State)", typeof(void), typeof(uint), value); }
+        }
+        public Qt.LayoutDirection Direction {
+            get { return (Qt.LayoutDirection) interceptor.Invoke("direction", "direction()", typeof(Qt.LayoutDirection)); }
+            set { interceptor.Invoke("setDirection$", "setDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), value); }
+        }
+        public QRect Rect {
+            get { return (QRect) interceptor.Invoke("rect", "rect()", typeof(QRect)); }
+            set { interceptor.Invoke("setRect#", "setRect(QRect)", typeof(void), typeof(QRect), value); }
+        }
+        public QFontMetrics FontMetrics {
+            get { return (QFontMetrics) interceptor.Invoke("fontMetrics", "fontMetrics()", typeof(QFontMetrics)); }
+            set { interceptor.Invoke("setFontMetrics#", "setFontMetrics(QFontMetrics)", typeof(void), typeof(QFontMetrics), value); }
+        }
+        public QPalette Palette {
+            get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
+            set { interceptor.Invoke("setPalette#", "setPalette(QPalette)", typeof(void), typeof(QPalette), value); }
+        }
         public QStyleOption(int version, int type) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOption$$", "QStyleOption(int, int)", typeof(void), typeof(int), version, typeof(int), type);

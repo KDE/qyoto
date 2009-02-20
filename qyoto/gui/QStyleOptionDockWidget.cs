@@ -13,6 +13,22 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public string Title {
+            get { return (string) interceptor.Invoke("title", "title()", typeof(string)); }
+            set { interceptor.Invoke("setTitle$", "setTitle(QString)", typeof(void), typeof(string), value); }
+        }
+        public bool Closable {
+            get { return (bool) interceptor.Invoke("closable", "closable()", typeof(bool)); }
+            set { interceptor.Invoke("setClosable$", "setClosable(bool)", typeof(void), typeof(bool), value); }
+        }
+        public bool Movable {
+            get { return (bool) interceptor.Invoke("movable", "movable()", typeof(bool)); }
+            set { interceptor.Invoke("setMovable$", "setMovable(bool)", typeof(void), typeof(bool), value); }
+        }
+        public bool Floatable {
+            get { return (bool) interceptor.Invoke("floatable", "floatable()", typeof(bool)); }
+            set { interceptor.Invoke("setFloatable$", "setFloatable(bool)", typeof(void), typeof(bool), value); }
+        }
         public QStyleOptionDockWidget() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionDockWidget", "QStyleOptionDockWidget()", typeof(void));

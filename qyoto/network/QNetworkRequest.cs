@@ -29,6 +29,7 @@ namespace Qyoto {
             ConnectionEncryptedAttribute = 3,
             CacheLoadControlAttribute = 4,
             CacheSaveControlAttribute = 5,
+            SourceIsFromCacheAttribute = 6,
             User = 1000,
             UserMax = 32767,
         }

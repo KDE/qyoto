@@ -211,22 +211,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QCalendarWidget", "~QCalendarWidget()", typeof(void));
         }
-        public event SlotFunc SignalSelectionChanged {
-            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
-        }
-        public event SlotFunc<QDate> SignalClicked {
-            add { QObject.Connect(this, SIGNAL("clicked(QDate)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("clicked(QDate)"), value); }
-        }
-        public event SlotFunc<QDate> SignalActivated {
-            add { QObject.Connect(this, SIGNAL("activated(QDate)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("activated(QDate)"), value); }
-        }
-        public event SlotFunc<int,int> SignalCurrentPageChanged {
-            add { QObject.Connect(this, SIGNAL("currentPageChanged(int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentPageChanged(int, int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

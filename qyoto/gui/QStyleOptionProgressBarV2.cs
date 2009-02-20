@@ -13,6 +13,18 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 2,
         }
+        public Qt.Orientation Orientation {
+            get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+            set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
+        }
+        public bool InvertedAppearance {
+            get { return (bool) interceptor.Invoke("invertedAppearance", "invertedAppearance()", typeof(bool)); }
+            set { interceptor.Invoke("setInvertedAppearance$", "setInvertedAppearance(bool)", typeof(void), typeof(bool), value); }
+        }
+        public bool BottomToTop {
+            get { return (bool) interceptor.Invoke("bottomToTop", "bottomToTop()", typeof(bool)); }
+            set { interceptor.Invoke("setBottomToTop$", "setBottomToTop(bool)", typeof(void), typeof(bool), value); }
+        }
         public QStyleOptionProgressBarV2() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionProgressBarV2", "QStyleOptionProgressBarV2()", typeof(void));

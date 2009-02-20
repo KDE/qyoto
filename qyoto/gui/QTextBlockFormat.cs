@@ -45,8 +45,8 @@ namespace Qyoto {
         public double RightMargin() {
             return (double) interceptor.Invoke("rightMargin", "rightMargin() const", typeof(double));
         }
-        public void SetTextIndent(double margin) {
-            interceptor.Invoke("setTextIndent$", "setTextIndent(qreal)", typeof(void), typeof(double), margin);
+        public void SetTextIndent(double aindent) {
+            interceptor.Invoke("setTextIndent$", "setTextIndent(qreal)", typeof(void), typeof(double), aindent);
         }
         public double TextIndent() {
             return (double) interceptor.Invoke("textIndent", "textIndent() const", typeof(double));

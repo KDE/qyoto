@@ -19,6 +19,9 @@ namespace Qyoto {
         public QByteArray FromUnicode(QChar uc, int len) {
             return (QByteArray) interceptor.Invoke("fromUnicode#$", "fromUnicode(const QChar*, int)", typeof(QByteArray), typeof(QChar), uc, typeof(int), len);
         }
+        public bool HasFailure() {
+            return (bool) interceptor.Invoke("hasFailure", "hasFailure() const", typeof(bool));
+        }
         ~QTextEncoder() {
             interceptor.Invoke("~QTextEncoder", "~QTextEncoder()", typeof(void));
         }

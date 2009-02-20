@@ -28,6 +28,9 @@ namespace Qyoto {
             get { return (int) interceptor.Invoke("currentFrame", "currentFrame()", typeof(int)); }
             set { interceptor.Invoke("setCurrentFrame$", "setCurrentFrame(int)", typeof(void), typeof(int), value); }
         }
+        // QSvgRenderer* QSvgRenderer(QXmlStreamReader* arg1,QObject* arg2); >>>> NOT CONVERTED
+        // QSvgRenderer* QSvgRenderer(QXmlStreamReader* arg1); >>>> NOT CONVERTED
+        // bool load(QXmlStreamReader* arg1); >>>> NOT CONVERTED
         public QSvgRenderer(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QSvgRenderer#", "QSvgRenderer(QObject*)", typeof(void), typeof(QObject), parent);
@@ -51,14 +54,6 @@ namespace Qyoto {
         public QSvgRenderer(QByteArray contents) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QSvgRenderer#", "QSvgRenderer(const QByteArray&)", typeof(void), typeof(QByteArray), contents);
-        }
-        public QSvgRenderer(QXmlStreamReader contents, QObject parent) : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("QSvgRenderer##", "QSvgRenderer(QXmlStreamReader*, QObject*)", typeof(void), typeof(QXmlStreamReader), contents, typeof(QObject), parent);
-        }
-        public QSvgRenderer(QXmlStreamReader contents) : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("QSvgRenderer#", "QSvgRenderer(QXmlStreamReader*)", typeof(void), typeof(QXmlStreamReader), contents);
         }
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
@@ -89,10 +84,6 @@ namespace Qyoto {
         public bool Load(QByteArray contents) {
             return (bool) interceptor.Invoke("load#", "load(const QByteArray&)", typeof(bool), typeof(QByteArray), contents);
         }
-        [Q_SLOT("bool load(QXmlStreamReader*)")]
-        public bool Load(QXmlStreamReader contents) {
-            return (bool) interceptor.Invoke("load#", "load(QXmlStreamReader*)", typeof(bool), typeof(QXmlStreamReader), contents);
-        }
         [Q_SLOT("void render(QPainter*)")]
         public void Render(QPainter p) {
             interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), p);
@@ -114,10 +105,6 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QSvgRenderer", "~QSvgRenderer()", typeof(void));
-        }
-        public event SlotFunc SignalRepaintNeeded {
-            add { QObject.Connect(this, SIGNAL("repaintNeeded()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("repaintNeeded()"), value); }
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

@@ -227,30 +227,6 @@ namespace Qyoto {
         protected void DisconnectFromHostImplementation() {
             interceptor.Invoke("disconnectFromHostImplementation", "disconnectFromHostImplementation()", typeof(void));
         }
-        public event SlotFunc SignalHostFound {
-            add { QObject.Connect(this, SIGNAL("hostFound()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("hostFound()"), value); }
-        }
-        public event SlotFunc SignalConnected {
-            add { QObject.Connect(this, SIGNAL("connected()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("connected()"), value); }
-        }
-        public event SlotFunc SignalDisconnected {
-            add { QObject.Connect(this, SIGNAL("disconnected()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("disconnected()"), value); }
-        }
-        public event SlotFunc<QAbstractSocket.SocketState> SignalStateChanged {
-            add { QObject.Connect(this, SIGNAL("stateChanged(QAbstractSocket::SocketState)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("stateChanged(QAbstractSocket::SocketState)"), value); }
-        }
-        public event SlotFunc<QAbstractSocket.SocketError> SignalError {
-            add { QObject.Connect(this, SIGNAL("error(QAbstractSocket::SocketError)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("error(QAbstractSocket::SocketError)"), value); }
-        }
-        public event SlotFunc<QNetworkProxy,QAuthenticator> SignalProxyAuthenticationRequired {
-            add { QObject.Connect(this, SIGNAL("proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

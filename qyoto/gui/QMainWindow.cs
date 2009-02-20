@@ -207,14 +207,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QMainWindow", "~QMainWindow()", typeof(void));
         }
-        public event SlotFunc<QSize> SignalIconSizeChanged {
-            add { QObject.Connect(this, SIGNAL("iconSizeChanged(QSize)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("iconSizeChanged(QSize)"), value); }
-        }
-        public event SlotFunc<Qt.ToolButtonStyle> SignalToolButtonStyleChanged {
-            add { QObject.Connect(this, SIGNAL("toolButtonStyleChanged(Qt::ToolButtonStyle)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("toolButtonStyleChanged(Qt::ToolButtonStyle)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

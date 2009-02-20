@@ -13,6 +13,30 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public bool Editable {
+            get { return (bool) interceptor.Invoke("editable", "editable()", typeof(bool)); }
+            set { interceptor.Invoke("setEditable$", "setEditable(bool)", typeof(void), typeof(bool), value); }
+        }
+        public QRect PopupRect {
+            get { return (QRect) interceptor.Invoke("popupRect", "popupRect()", typeof(QRect)); }
+            set { interceptor.Invoke("setPopupRect#", "setPopupRect(QRect)", typeof(void), typeof(QRect), value); }
+        }
+        public bool Frame {
+            get { return (bool) interceptor.Invoke("frame", "frame()", typeof(bool)); }
+            set { interceptor.Invoke("setFrame$", "setFrame(bool)", typeof(void), typeof(bool), value); }
+        }
+        public string CurrentText {
+            get { return (string) interceptor.Invoke("currentText", "currentText()", typeof(string)); }
+            set { interceptor.Invoke("setCurrentText$", "setCurrentText(QString)", typeof(void), typeof(string), value); }
+        }
+        public QIcon CurrentIcon {
+            get { return (QIcon) interceptor.Invoke("currentIcon", "currentIcon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setCurrentIcon#", "setCurrentIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        public QSize IconSize {
+            get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
         public QStyleOptionComboBox() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionComboBox", "QStyleOptionComboBox()", typeof(void));

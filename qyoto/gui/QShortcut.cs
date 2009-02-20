@@ -74,14 +74,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QShortcut", "~QShortcut()", typeof(void));
         }
-        public event SlotFunc SignalActivated {
-            add { QObject.Connect(this, SIGNAL("activated()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("activated()"), value); }
-        }
-        public event SlotFunc SignalActivatedAmbiguously {
-            add { QObject.Connect(this, SIGNAL("activatedAmbiguously()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("activatedAmbiguously()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

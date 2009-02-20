@@ -16,7 +16,7 @@ namespace Qyoto {
         }
         //  operator const char *(); >>>> NOT CONVERTED
         //  operator const void *(); >>>> NOT CONVERTED
-        // QByteArray::DataPtr& data_ptr(); >>>> NOT CONVERTED
+        // QByteArray::DataPtr*& data_ptr(); >>>> NOT CONVERTED
         public QByteArray() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QByteArray", "QByteArray()", typeof(void));
@@ -214,6 +214,9 @@ namespace Qyoto {
         public QByteArray Append(string s) {
             return (QByteArray) interceptor.Invoke("append$", "append(const char*)", typeof(QByteArray), typeof(string), s);
         }
+        public QByteArray Append(string s, int len) {
+            return (QByteArray) interceptor.Invoke("append$$", "append(const char*, int)", typeof(QByteArray), typeof(string), s, typeof(int), len);
+        }
         public QByteArray Append(QByteArray a) {
             return (QByteArray) interceptor.Invoke("append#", "append(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), a);
         }
@@ -244,6 +247,9 @@ namespace Qyoto {
         public QByteArray Replace(string before, string after) {
             return (QByteArray) interceptor.Invoke("replace$$", "replace(const char*, const char*)", typeof(QByteArray), typeof(string), before, typeof(string), after);
         }
+        public QByteArray Replace(string before, int bsize, string after, int asize) {
+            return (QByteArray) interceptor.Invoke("replace$$$$", "replace(const char*, int, const char*, int)", typeof(QByteArray), typeof(string), before, typeof(int), bsize, typeof(string), after, typeof(int), asize);
+        }
         public QByteArray Replace(QByteArray before, QByteArray after) {
             return (QByteArray) interceptor.Invoke("replace##", "replace(const QByteArray&, const QByteArray&)", typeof(QByteArray), typeof(QByteArray), before, typeof(QByteArray), after);
         }
@@ -258,6 +264,9 @@ namespace Qyoto {
         }
         public List<QByteArray> Split(char sep) {
             return (List<QByteArray>) interceptor.Invoke("split$", "split(char) const", typeof(List<QByteArray>), typeof(char), sep);
+        }
+        public QByteArray Repeated(int times) {
+            return (QByteArray) interceptor.Invoke("repeated$", "repeated(int) const", typeof(QByteArray), typeof(int), times);
         }
         public override bool Equals(object o) {
             if (!(o is QByteArray)) { return false; }
@@ -502,6 +511,18 @@ namespace Qyoto {
         public QByteArray SetNum(double arg1) {
             return (QByteArray) interceptor.Invoke("setNum$", "setNum(double)", typeof(QByteArray), typeof(double), arg1);
         }
+        public Pointer<sbyte> Begin() {
+            return (Pointer<sbyte>) interceptor.Invoke("begin", "begin()", typeof(Pointer<sbyte>));
+        }
+        public string ConstBegin() {
+            return (string) interceptor.Invoke("constBegin", "constBegin() const", typeof(string));
+        }
+        public Pointer<sbyte> End() {
+            return (Pointer<sbyte>) interceptor.Invoke("end", "end()", typeof(Pointer<sbyte>));
+        }
+        public string ConstEnd() {
+            return (string) interceptor.Invoke("constEnd", "constEnd() const", typeof(string));
+        }
         public void Push_back(char c) {
             interceptor.Invoke("push_back$", "push_back(char)", typeof(void), typeof(char), c);
         }
@@ -601,6 +622,12 @@ namespace Qyoto {
         public static QByteArray FromPercentEncoding(QByteArray pctEncoded) {
             return (QByteArray) staticInterceptor.Invoke("fromPercentEncoding#", "fromPercentEncoding(const QByteArray&)", typeof(QByteArray), typeof(QByteArray), pctEncoded);
         }
+        public static string operator+(QByteArray ba, string s) {
+            return (string) staticInterceptor.Invoke("operator+#$", "operator+(const QByteArray&, const QString&)", typeof(string), typeof(QByteArray), ba, typeof(string), s);
+        }
+        public static string operator+(string s, QByteArray ba) {
+            return (string) staticInterceptor.Invoke("operator+$#", "operator+(const QString&, const QByteArray&)", typeof(string), typeof(string), s, typeof(QByteArray), ba);
+        }
         public static bool operator==(QByteArray a1, QByteArray a2) {
             return (bool) staticInterceptor.Invoke("operator==##", "operator==(const QByteArray&, const QByteArray&)", typeof(bool), typeof(QByteArray), a1, typeof(QByteArray), a2);
         }
@@ -640,14 +667,8 @@ namespace Qyoto {
         public static QByteArray operator+(QByteArray a1, QByteArray a2) {
             return (QByteArray) staticInterceptor.Invoke("operator+##", "operator+(const QByteArray&, const QByteArray&)", typeof(QByteArray), typeof(QByteArray), a1, typeof(QByteArray), a2);
         }
-        public static QByteArray operator+(QByteArray a1, string a2) {
-            return (QByteArray) staticInterceptor.Invoke("operator+#$", "operator+(const QByteArray&, const char*)", typeof(QByteArray), typeof(QByteArray), a1, typeof(string), a2);
-        }
         public static QByteArray operator+(QByteArray a1, char a2) {
             return (QByteArray) staticInterceptor.Invoke("operator+#$", "operator+(const QByteArray&, char)", typeof(QByteArray), typeof(QByteArray), a1, typeof(char), a2);
-        }
-        public static QByteArray operator+(string a1, QByteArray a2) {
-            return (QByteArray) staticInterceptor.Invoke("operator+$#", "operator+(const char*, const QByteArray&)", typeof(QByteArray), typeof(string), a1, typeof(QByteArray), a2);
         }
         public static QByteArray operator+(char a1, QByteArray a2) {
             return (QByteArray) staticInterceptor.Invoke("operator+$#", "operator+(char, const QByteArray&)", typeof(QByteArray), typeof(char), a1, typeof(QByteArray), a2);

@@ -337,50 +337,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QHeaderView", "~QHeaderView()", typeof(void));
         }
-        public event SlotFunc<int,int,int> SignalSectionMoved {
-            add { QObject.Connect(this, SIGNAL("sectionMoved(int, int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionMoved(int, int, int)"), value); }
-        }
-        public event SlotFunc<int,int,int> SignalSectionResized {
-            add { QObject.Connect(this, SIGNAL("sectionResized(int, int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionResized(int, int, int)"), value); }
-        }
-        public event SlotFunc<int> SignalSectionPressed {
-            add { QObject.Connect(this, SIGNAL("sectionPressed(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionPressed(int)"), value); }
-        }
-        public event SlotFunc<int> SignalSectionClicked {
-            add { QObject.Connect(this, SIGNAL("sectionClicked(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionClicked(int)"), value); }
-        }
-        public event SlotFunc<int> SignalSectionEntered {
-            add { QObject.Connect(this, SIGNAL("sectionEntered(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionEntered(int)"), value); }
-        }
-        public event SlotFunc<int> SignalSectionDoubleClicked {
-            add { QObject.Connect(this, SIGNAL("sectionDoubleClicked(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionDoubleClicked(int)"), value); }
-        }
-        public event SlotFunc<int,int> SignalSectionCountChanged {
-            add { QObject.Connect(this, SIGNAL("sectionCountChanged(int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionCountChanged(int, int)"), value); }
-        }
-        public event SlotFunc<int> SignalSectionHandleDoubleClicked {
-            add { QObject.Connect(this, SIGNAL("sectionHandleDoubleClicked(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionHandleDoubleClicked(int)"), value); }
-        }
-        public event SlotFunc<int,QHeaderView.ResizeMode> SignalSectionAutoResize {
-            add { QObject.Connect(this, SIGNAL("sectionAutoResize(int, QHeaderView::ResizeMode)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sectionAutoResize(int, QHeaderView::ResizeMode)"), value); }
-        }
-        public event SlotFunc SignalGeometriesChanged {
-            add { QObject.Connect(this, SIGNAL("geometriesChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("geometriesChanged()"), value); }
-        }
-        public event SlotFunc<int,Qt.SortOrder> SignalSortIndicatorChanged {
-            add { QObject.Connect(this, SIGNAL("sortIndicatorChanged(int, Qt::SortOrder)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sortIndicatorChanged(int, Qt::SortOrder)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

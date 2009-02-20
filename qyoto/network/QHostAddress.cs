@@ -34,9 +34,9 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QHostAddress$", "QHostAddress(unsigned int)", typeof(void), typeof(uint), ip4Addr);
         }
-        public QHostAddress(ushort ip6Addr) : this((Type) null) {
+        public QHostAddress(Pointer<byte> ip6Addr) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QHostAddress$", "QHostAddress(unsigned char*)", typeof(void), typeof(ushort), ip6Addr);
+            interceptor.Invoke("QHostAddress$", "QHostAddress(unsigned char*)", typeof(void), typeof(Pointer<byte>), ip6Addr);
         }
         public QHostAddress(string address) : this((Type) null) {
             CreateProxy();
@@ -53,8 +53,8 @@ namespace Qyoto {
         public void SetAddress(uint ip4Addr) {
             interceptor.Invoke("setAddress$", "setAddress(unsigned int)", typeof(void), typeof(uint), ip4Addr);
         }
-        public void SetAddress(ushort ip6Addr) {
-            interceptor.Invoke("setAddress$", "setAddress(unsigned char*)", typeof(void), typeof(ushort), ip6Addr);
+        public void SetAddress(Pointer<byte> ip6Addr) {
+            interceptor.Invoke("setAddress$", "setAddress(unsigned char*)", typeof(void), typeof(Pointer<byte>), ip6Addr);
         }
         public bool SetAddress(string address) {
             return (bool) interceptor.Invoke("setAddress$", "setAddress(const QString&)", typeof(bool), typeof(string), address);
@@ -87,6 +87,12 @@ namespace Qyoto {
         public void Clear() {
             interceptor.Invoke("clear", "clear()", typeof(void));
         }
+        public bool IsInSubnet(QHostAddress subnet, int netmask) {
+            return (bool) interceptor.Invoke("isInSubnet#$", "isInSubnet(const QHostAddress&, int) const", typeof(bool), typeof(QHostAddress), subnet, typeof(int), netmask);
+        }
+        public bool IsInSubnet(QPair<int, QHostAddress> subnet) {
+            return (bool) interceptor.Invoke("isInSubnet?", "isInSubnet(const QPair<QHostAddress,int>&) const", typeof(bool), typeof(QPair<int, QHostAddress>), subnet);
+        }
         ~QHostAddress() {
             interceptor.Invoke("~QHostAddress", "~QHostAddress()", typeof(void));
         }
@@ -104,6 +110,9 @@ namespace Qyoto {
         }
         public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
             return !(bool) staticInterceptor.Invoke("operator==$", "operator==(QHostAddress::SpecialAddress) const", typeof(bool), typeof(QHostAddress), lhs, typeof(QHostAddress.SpecialAddress), address);
+        }
+        public static QPair<int, QHostAddress> ParseSubnet(string subnet) {
+            return (QPair<int, QHostAddress>) staticInterceptor.Invoke("parseSubnet$", "parseSubnet(const QString&)", typeof(QPair<int, QHostAddress>), typeof(string), subnet);
         }
         public static bool operator==(QHostAddress.SpecialAddress address1, QHostAddress address2) {
             return (bool) staticInterceptor.Invoke("operator==$#", "operator==(QHostAddress::SpecialAddress, const QHostAddress&)", typeof(bool), typeof(QHostAddress.SpecialAddress), address1, typeof(QHostAddress), address2);

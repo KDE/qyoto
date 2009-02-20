@@ -19,6 +19,7 @@ namespace Qyoto {
             Method = 0,
             Signal = 1,
             Slot = 2,
+            Constructor = 3,
         }
         public enum Attributes {
             Compatibility = 0x1,
@@ -55,6 +56,138 @@ namespace Qyoto {
         }
         public QMetaObject EnclosingMetaObject() {
             return (QMetaObject) interceptor.Invoke("enclosingMetaObject", "enclosingMetaObject() const", typeof(QMetaObject));
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
+            return (bool) interceptor.Invoke("invoke#$###########", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8, typeof(QGenericArgument), val9);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
+            return (bool) interceptor.Invoke("invoke#$##########", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
+            return (bool) interceptor.Invoke("invoke#$#########", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
+            return (bool) interceptor.Invoke("invoke#$########", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
+            return (bool) interceptor.Invoke("invoke#$#######", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
+            return (bool) interceptor.Invoke("invoke#$######", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
+            return (bool) interceptor.Invoke("invoke#$#####", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
+            return (bool) interceptor.Invoke("invoke#$####", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1) {
+            return (bool) interceptor.Invoke("invoke#$###", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue, QGenericArgument val0) {
+            return (bool) interceptor.Invoke("invoke#$##", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericReturnArgument returnValue) {
+            return (bool) interceptor.Invoke("invoke#$#", "invoke(QObject*, Qt::ConnectionType, QGenericReturnArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericReturnArgument), returnValue);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
+            return (bool) interceptor.Invoke("invoke############", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8, typeof(QGenericArgument), val9);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
+            return (bool) interceptor.Invoke("invoke###########", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
+            return (bool) interceptor.Invoke("invoke##########", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
+            return (bool) interceptor.Invoke("invoke#########", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
+            return (bool) interceptor.Invoke("invoke########", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
+            return (bool) interceptor.Invoke("invoke#######", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
+            return (bool) interceptor.Invoke("invoke######", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
+            return (bool) interceptor.Invoke("invoke#####", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0, QGenericArgument val1) {
+            return (bool) interceptor.Invoke("invoke####", "invoke(QObject*, QGenericReturnArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue, QGenericArgument val0) {
+            return (bool) interceptor.Invoke("invoke###", "invoke(QObject*, QGenericReturnArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue, typeof(QGenericArgument), val0);
+        }
+        public bool Invoke(QObject arg1, QGenericReturnArgument returnValue) {
+            return (bool) interceptor.Invoke("invoke##", "invoke(QObject*, QGenericReturnArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericReturnArgument), returnValue);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
+            return (bool) interceptor.Invoke("invoke#$##########", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8, typeof(QGenericArgument), val9);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
+            return (bool) interceptor.Invoke("invoke#$#########", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
+            return (bool) interceptor.Invoke("invoke#$########", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
+            return (bool) interceptor.Invoke("invoke#$#######", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
+            return (bool) interceptor.Invoke("invoke#$######", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
+            return (bool) interceptor.Invoke("invoke#$#####", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
+            return (bool) interceptor.Invoke("invoke#$####", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
+            return (bool) interceptor.Invoke("invoke#$###", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0, QGenericArgument val1) {
+            return (bool) interceptor.Invoke("invoke#$##", "invoke(QObject*, Qt::ConnectionType, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType, QGenericArgument val0) {
+            return (bool) interceptor.Invoke("invoke#$#", "invoke(QObject*, Qt::ConnectionType, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType, typeof(QGenericArgument), val0);
+        }
+        public bool Invoke(QObject arg1, Qt.ConnectionType connectionType) {
+            return (bool) interceptor.Invoke("invoke#$", "invoke(QObject*, Qt::ConnectionType) const", typeof(bool), typeof(QObject), arg1, typeof(Qt.ConnectionType), connectionType);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
+            return (bool) interceptor.Invoke("invoke###########", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8, typeof(QGenericArgument), val9);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
+            return (bool) interceptor.Invoke("invoke##########", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
+            return (bool) interceptor.Invoke("invoke#########", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
+            return (bool) interceptor.Invoke("invoke########", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
+            return (bool) interceptor.Invoke("invoke#######", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
+            return (bool) interceptor.Invoke("invoke######", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
+            return (bool) interceptor.Invoke("invoke#####", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
+            return (bool) interceptor.Invoke("invoke####", "invoke(QObject*, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0, QGenericArgument val1) {
+            return (bool) interceptor.Invoke("invoke###", "invoke(QObject*, QGenericArgument, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0, typeof(QGenericArgument), val1);
+        }
+        public bool Invoke(QObject arg1, QGenericArgument val0) {
+            return (bool) interceptor.Invoke("invoke##", "invoke(QObject*, QGenericArgument) const", typeof(bool), typeof(QObject), arg1, typeof(QGenericArgument), val0);
+        }
+        public bool Invoke(QObject arg1) {
+            return (bool) interceptor.Invoke("invoke#", "invoke(QObject*) const", typeof(bool), typeof(QObject), arg1);
         }
         ~QMetaMethod() {
             interceptor.Invoke("~QMetaMethod", "~QMetaMethod()", typeof(void));

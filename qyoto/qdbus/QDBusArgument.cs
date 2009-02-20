@@ -12,7 +12,15 @@ namespace Qyoto {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QDBusArgument), this);
         }
-        // const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
+        public enum ElementType {
+            BasicType = 0,
+            VariantType = 1,
+            ArrayType = 2,
+            StructureType = 3,
+            MapType = 4,
+            MapEntryType = 5,
+            UnknownType = -1,
+        }
         // const QDBusArgument& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
         // const QDBusArgument& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
         // QDBusArgument* QDBusArgument(QDBusArgumentPrivate* arg1); >>>> NOT CONVERTED
@@ -90,14 +98,33 @@ namespace Qyoto {
         public void EndMapEntry() {
             interceptor.Invoke("endMapEntry", "endMapEntry()", typeof(void));
         }
+        public void AppendVariant(QVariant v) {
+            interceptor.Invoke("appendVariant#", "appendVariant(const QVariant&)", typeof(void), typeof(QVariant), v);
+        }
         public string CurrentSignature() {
             return (string) interceptor.Invoke("currentSignature", "currentSignature() const", typeof(string));
         }
-        public QDBusArgument Read(ushort arg) {
-            return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(uchar&) const", typeof(QDBusArgument), typeof(ushort), arg);
+        public QDBusArgument.ElementType CurrentType() {
+            return (QDBusArgument.ElementType) interceptor.Invoke("currentType", "currentType() const", typeof(QDBusArgument.ElementType));
+        }
+        public QDBusArgument Read(Pointer<byte> arg) {
+            return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(uchar&) const", typeof(QDBusArgument), typeof(Pointer<byte>), arg);
         }
         public QDBusArgument Read(bool arg) {
             return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(bool&) const", typeof(QDBusArgument), typeof(bool), arg);
+        }
+        public QDBusArgument Read(ref short arg) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_short = arg;
+            interceptor.Invoke("operator>>$", "operator>>(short&) const", stack);
+            arg = stack[1].s_short;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDBusArgument) returnValue;
         }
         public QDBusArgument Read(ref int arg) {
             StackItem[] stack = new StackItem[2];
@@ -115,8 +142,18 @@ namespace Qyoto {
         public QDBusArgument Read(uint arg) {
             return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(uint&) const", typeof(QDBusArgument), typeof(uint), arg);
         }
-        public QDBusArgument Read(double arg) {
-            return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(double&) const", typeof(QDBusArgument), typeof(double), arg);
+        public QDBusArgument Read(ref double arg) {
+            StackItem[] stack = new StackItem[2];
+            stack[1].s_double = arg;
+            interceptor.Invoke("operator>>$", "operator>>(double&) const", stack);
+            arg = stack[1].s_double;
+            object returnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+            ((GCHandle) stack[0].s_class).Free();
+#endif
+            return (QDBusArgument) returnValue;
         }
         public QDBusArgument Read(StringBuilder arg) {
             return (QDBusArgument) interceptor.Invoke("operator>>$", "operator>>(QString&) const", typeof(QDBusArgument), typeof(StringBuilder), arg);
@@ -144,6 +181,9 @@ namespace Qyoto {
         }
         public bool AtEnd() {
             return (bool) interceptor.Invoke("atEnd", "atEnd() const", typeof(bool));
+        }
+        public QVariant AsVariant() {
+            return (QVariant) interceptor.Invoke("asVariant", "asVariant() const", typeof(QVariant));
         }
         ~QDBusArgument() {
             interceptor.Invoke("~QDBusArgument", "~QDBusArgument()", typeof(void));

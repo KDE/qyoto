@@ -50,7 +50,7 @@ namespace Qyoto {
             DefaultActionChanged = 0x80B0,
             AcceleratorChanged = 0x80C0,
         }
-        public enum StateFlag : long {
+        public enum StateFlag : uint {
             Normal = 0x00000000,
             Unavailable = 0x00000001,
             Selected = 0x00000002,

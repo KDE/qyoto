@@ -15,7 +15,7 @@ namespace Qyoto {
             staticInterceptor = new SmokeInvocation(typeof(QPen), null);
         }
         //  operator QVariant(); >>>> NOT CONVERTED
-        // QPen::DataPtr& data_ptr(); >>>> NOT CONVERTED
+        // QPen::DataPtr*& data_ptr(); >>>> NOT CONVERTED
         public QPen() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QPen", "QPen()", typeof(void));

@@ -27,6 +27,7 @@ namespace Qyoto {
             PerspectiveTransform = 0x00004000,
             BlendModes = 0x00008000,
             ObjectBoundingModeGradients = 0x00010000,
+            RasterOpModes = 0x00020000,
             PaintOutsidePaintEvent = 0x20000000,
             AllFeatures = 0xffffffff,
         }
@@ -66,6 +67,7 @@ namespace Qyoto {
             Raster = 10,
             Direct3D = 11,
             Pdf = 12,
+            OpenVG = 13,
             User = 50,
             MaxUser = 100,
         }
@@ -203,6 +205,9 @@ namespace Qyoto {
         }
         public void SyncState() {
             interceptor.Invoke("syncState", "syncState()", typeof(void));
+        }
+        public bool IsExtended() {
+            return (bool) interceptor.Invoke("isExtended", "isExtended() const", typeof(bool));
         }
     }
 }

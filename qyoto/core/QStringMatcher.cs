@@ -22,6 +22,14 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QStringMatcher$", "QStringMatcher(const QString&)", typeof(void), typeof(string), pattern);
         }
+        public QStringMatcher(QChar uc, int len, Qt.CaseSensitivity cs) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QStringMatcher#$$", "QStringMatcher(const QChar*, int, Qt::CaseSensitivity)", typeof(void), typeof(QChar), uc, typeof(int), len, typeof(Qt.CaseSensitivity), cs);
+        }
+        public QStringMatcher(QChar uc, int len) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QStringMatcher#$", "QStringMatcher(const QChar*, int)", typeof(void), typeof(QChar), uc, typeof(int), len);
+        }
         public void SetPattern(string pattern) {
             interceptor.Invoke("setPattern$", "setPattern(const QString&)", typeof(void), typeof(string), pattern);
         }
@@ -33,6 +41,12 @@ namespace Qyoto {
         }
         public int IndexIn(string str) {
             return (int) interceptor.Invoke("indexIn$", "indexIn(const QString&) const", typeof(int), typeof(string), str);
+        }
+        public int IndexIn(QChar str, int length, int from) {
+            return (int) interceptor.Invoke("indexIn#$$", "indexIn(const QChar*, int, int) const", typeof(int), typeof(QChar), str, typeof(int), length, typeof(int), from);
+        }
+        public int IndexIn(QChar str, int length) {
+            return (int) interceptor.Invoke("indexIn#$", "indexIn(const QChar*, int) const", typeof(int), typeof(QChar), str, typeof(int), length);
         }
         public string Pattern() {
             return (string) interceptor.Invoke("pattern", "pattern() const", typeof(string));

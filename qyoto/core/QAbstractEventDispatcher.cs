@@ -59,14 +59,6 @@ namespace Qyoto {
         public virtual void ClosingDown() {
             interceptor.Invoke("closingDown", "closingDown()", typeof(void));
         }
-        public event SlotFunc SignalAboutToBlock {
-            add { QObject.Connect(this, SIGNAL("aboutToBlock()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("aboutToBlock()"), value); }
-        }
-        public event SlotFunc SignalAwake {
-            add { QObject.Connect(this, SIGNAL("awake()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("awake()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

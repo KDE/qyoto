@@ -221,8 +221,8 @@ namespace Qyoto {
         public char ToLatin1() {
             return (char) interceptor.Invoke("toLatin1", "toLatin1() const", typeof(char));
         }
-        public ushort Unicode() {
-            return (ushort) interceptor.Invoke("unicode", "unicode()", typeof(ushort));
+        public short Unicode() {
+            return (short) interceptor.Invoke("unicode", "unicode()", typeof(short));
         }
         public bool IsNull() {
             return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));

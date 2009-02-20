@@ -199,50 +199,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QHttp", "~QHttp()", typeof(void));
         }
-        public event SlotFunc<int> SignalStateChanged {
-            add { QObject.Connect(this, SIGNAL("stateChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("stateChanged(int)"), value); }
-        }
-        public event SlotFunc<QHttpResponseHeader> SignalResponseHeaderReceived {
-            add { QObject.Connect(this, SIGNAL("responseHeaderReceived(QHttpResponseHeader)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("responseHeaderReceived(QHttpResponseHeader)"), value); }
-        }
-        public event SlotFunc<QHttpResponseHeader> SignalReadyRead {
-            add { QObject.Connect(this, SIGNAL("readyRead(QHttpResponseHeader)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("readyRead(QHttpResponseHeader)"), value); }
-        }
-        public event SlotFunc<int,int> SignalDataSendProgress {
-            add { QObject.Connect(this, SIGNAL("dataSendProgress(int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("dataSendProgress(int, int)"), value); }
-        }
-        public event SlotFunc<int,int> SignalDataReadProgress {
-            add { QObject.Connect(this, SIGNAL("dataReadProgress(int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("dataReadProgress(int, int)"), value); }
-        }
-        public event SlotFunc<int> SignalRequestStarted {
-            add { QObject.Connect(this, SIGNAL("requestStarted(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("requestStarted(int)"), value); }
-        }
-        public event SlotFunc<int,bool> SignalRequestFinished {
-            add { QObject.Connect(this, SIGNAL("requestFinished(int, bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("requestFinished(int, bool)"), value); }
-        }
-        public event SlotFunc<bool> SignalDone {
-            add { QObject.Connect(this, SIGNAL("done(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("done(bool)"), value); }
-        }
-        public event SlotFunc<QNetworkProxy,QAuthenticator> SignalProxyAuthenticationRequired {
-            add { QObject.Connect(this, SIGNAL("proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("proxyAuthenticationRequired(QNetworkProxy, QAuthenticator*)"), value); }
-        }
-        public event SlotFunc<string,ushort,QAuthenticator> SignalAuthenticationRequired {
-            add { QObject.Connect(this, SIGNAL("authenticationRequired(QString, quint16, QAuthenticator*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("authenticationRequired(QString, quint16, QAuthenticator*)"), value); }
-        }
-        public event SlotFunc<List<QSslError>> SignalSslErrors {
-            add { QObject.Connect(this, SIGNAL("sslErrors(QList<QSslError>)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sslErrors(QList<QSslError>)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

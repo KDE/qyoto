@@ -39,6 +39,10 @@ namespace Qyoto {
             NextWord = 18,
             Right = 19,
             WordRight = 20,
+            NextCell = 21,
+            PreviousCell = 22,
+            NextRow = 23,
+            PreviousRow = 24,
         }
         public enum SelectionType {
             WordUnderCursor = 0,
@@ -246,6 +250,12 @@ namespace Qyoto {
         public void InsertImage(string name) {
             interceptor.Invoke("insertImage$", "insertImage(const QString&)", typeof(void), typeof(string), name);
         }
+        public void InsertImage(QImage image, string name) {
+            interceptor.Invoke("insertImage#$", "insertImage(const QImage&, const QString&)", typeof(void), typeof(QImage), image, typeof(string), name);
+        }
+        public void InsertImage(QImage image) {
+            interceptor.Invoke("insertImage#", "insertImage(const QImage&)", typeof(void), typeof(QImage), image);
+        }
         public void BeginEditBlock() {
             interceptor.Invoke("beginEditBlock", "beginEditBlock()", typeof(void));
         }
@@ -270,6 +280,9 @@ namespace Qyoto {
         }
         public int ColumnNumber() {
             return (int) interceptor.Invoke("columnNumber", "columnNumber() const", typeof(int));
+        }
+        public QTextDocument Document() {
+            return (QTextDocument) interceptor.Invoke("document", "document() const", typeof(QTextDocument));
         }
         ~QTextCursor() {
             interceptor.Invoke("~QTextCursor", "~QTextCursor()", typeof(void));

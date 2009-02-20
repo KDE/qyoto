@@ -23,6 +23,30 @@ namespace Qyoto {
             None = 0x0,
             Movable = 0x1,
         }
+        public QStyleOptionToolBar.ToolBarPosition PositionOfLine {
+            get { return (QStyleOptionToolBar.ToolBarPosition) interceptor.Invoke("positionOfLine", "positionOfLine()", typeof(QStyleOptionToolBar.ToolBarPosition)); }
+            set { interceptor.Invoke("setPositionOfLine$", "setPositionOfLine(QStyleOptionToolBar::ToolBarPosition)", typeof(void), typeof(QStyleOptionToolBar.ToolBarPosition), value); }
+        }
+        public QStyleOptionToolBar.ToolBarPosition PositionWithinLine {
+            get { return (QStyleOptionToolBar.ToolBarPosition) interceptor.Invoke("positionWithinLine", "positionWithinLine()", typeof(QStyleOptionToolBar.ToolBarPosition)); }
+            set { interceptor.Invoke("setPositionWithinLine$", "setPositionWithinLine(QStyleOptionToolBar::ToolBarPosition)", typeof(void), typeof(QStyleOptionToolBar.ToolBarPosition), value); }
+        }
+        public Qt.ToolBarArea ToolBarArea {
+            get { return (Qt.ToolBarArea) interceptor.Invoke("toolBarArea", "toolBarArea()", typeof(Qt.ToolBarArea)); }
+            set { interceptor.Invoke("setToolBarArea$", "setToolBarArea(Qt::ToolBarArea)", typeof(void), typeof(Qt.ToolBarArea), value); }
+        }
+        public uint Features {
+            get { return (uint) interceptor.Invoke("features", "features()", typeof(uint)); }
+            set { interceptor.Invoke("setFeatures$", "setFeatures(QStyleOptionToolBar::ToolBarFeatures)", typeof(void), typeof(uint), value); }
+        }
+        public int LineWidth {
+            get { return (int) interceptor.Invoke("lineWidth", "lineWidth()", typeof(int)); }
+            set { interceptor.Invoke("setLineWidth$", "setLineWidth(int)", typeof(void), typeof(int), value); }
+        }
+        public int MidLineWidth {
+            get { return (int) interceptor.Invoke("midLineWidth", "midLineWidth()", typeof(int)); }
+            set { interceptor.Invoke("setMidLineWidth$", "setMidLineWidth(int)", typeof(void), typeof(int), value); }
+        }
         public QStyleOptionToolBar() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionToolBar", "QStyleOptionToolBar()", typeof(void));

@@ -77,10 +77,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QCheckBox", "~QCheckBox()", typeof(void));
         }
-        public event SlotFunc<int> SignalStateChanged {
-            add { QObject.Connect(this, SIGNAL("stateChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("stateChanged(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

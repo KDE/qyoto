@@ -21,6 +21,22 @@ namespace Qyoto {
             AutoDefaultButton = 0x08,
             CommandLinkButton = 0x10,
         }
+        public uint Features {
+            get { return (uint) interceptor.Invoke("features", "features()", typeof(uint)); }
+            set { interceptor.Invoke("setFeatures$", "setFeatures(QStyleOptionButton::ButtonFeatures)", typeof(void), typeof(uint), value); }
+        }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public QIcon Icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        public QSize IconSize {
+            get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
         public QStyleOptionButton() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionButton", "QStyleOptionButton()", typeof(void));

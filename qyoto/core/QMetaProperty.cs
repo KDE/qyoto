@@ -73,6 +73,15 @@ namespace Qyoto {
         public QMetaEnum Enumerator() {
             return (QMetaEnum) interceptor.Invoke("enumerator", "enumerator() const", typeof(QMetaEnum));
         }
+        public bool HasNotifySignal() {
+            return (bool) interceptor.Invoke("hasNotifySignal", "hasNotifySignal() const", typeof(bool));
+        }
+        public QMetaMethod NotifySignal() {
+            return (QMetaMethod) interceptor.Invoke("notifySignal", "notifySignal() const", typeof(QMetaMethod));
+        }
+        public int NotifySignalIndex() {
+            return (int) interceptor.Invoke("notifySignalIndex", "notifySignalIndex() const", typeof(int));
+        }
         public QVariant Read(QObject arg1) {
             return (QVariant) interceptor.Invoke("read#", "read(const QObject*) const", typeof(QVariant), typeof(QObject), arg1);
         }

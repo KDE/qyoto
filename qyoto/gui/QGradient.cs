@@ -30,6 +30,10 @@ namespace Qyoto {
             StretchToDeviceMode = 1,
             ObjectBoundingMode = 2,
         }
+        public enum InterpolationMode {
+            ColorInterpolation = 0,
+            ComponentInterpolation = 1,
+        }
         public QGradient() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QGradient", "QGradient()", typeof(void));
@@ -47,7 +51,7 @@ namespace Qyoto {
             interceptor.Invoke("setColorAt$#", "setColorAt(qreal, const QColor&)", typeof(void), typeof(double), pos, typeof(QColor), color);
         }
         public void SetStops(List<QPair<QColor, double>> stops) {
-            interceptor.Invoke("setStops?", "setStops(const QVector<QPair<qreal, QColor> >&)", typeof(void), typeof(List<QPair<QColor, double>>), stops);
+            interceptor.Invoke("setStops?", "setStops(const QVector<QPair<qreal,QColor> >&)", typeof(void), typeof(List<QPair<QColor, double>>), stops);
         }
         public List<QPair<QColor, double>> Stops() {
             return (List<QPair<QColor, double>>) interceptor.Invoke("stops", "stops() const", typeof(List<QPair<QColor, double>>));
@@ -57,6 +61,12 @@ namespace Qyoto {
         }
         public void SetCoordinateMode(QGradient.CoordinateMode mode) {
             interceptor.Invoke("setCoordinateMode$", "setCoordinateMode(QGradient::CoordinateMode)", typeof(void), typeof(QGradient.CoordinateMode), mode);
+        }
+        public QGradient.InterpolationMode interpolationMode() {
+            return (QGradient.InterpolationMode) interceptor.Invoke("interpolationMode", "interpolationMode() const", typeof(QGradient.InterpolationMode));
+        }
+        public void SetInterpolationMode(QGradient.InterpolationMode mode) {
+            interceptor.Invoke("setInterpolationMode$", "setInterpolationMode(QGradient::InterpolationMode)", typeof(void), typeof(QGradient.InterpolationMode), mode);
         }
         public override bool Equals(object o) {
             if (!(o is QGradient)) { return false; }

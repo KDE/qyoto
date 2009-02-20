@@ -205,22 +205,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QSqlTableModel", "~QSqlTableModel()", typeof(void));
         }
-        public event SlotFunc<int,QSqlRecord> SignalPrimeInsert {
-            add { QObject.Connect(this, SIGNAL("primeInsert(int, QSqlRecord)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("primeInsert(int, QSqlRecord)"), value); }
-        }
-        public event SlotFunc<QSqlRecord> SignalBeforeInsert {
-            add { QObject.Connect(this, SIGNAL("beforeInsert(QSqlRecord)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("beforeInsert(QSqlRecord)"), value); }
-        }
-        public event SlotFunc<int,QSqlRecord> SignalBeforeUpdate {
-            add { QObject.Connect(this, SIGNAL("beforeUpdate(int, QSqlRecord)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("beforeUpdate(int, QSqlRecord)"), value); }
-        }
-        public event SlotFunc<int> SignalBeforeDelete {
-            add { QObject.Connect(this, SIGNAL("beforeDelete(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("beforeDelete(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

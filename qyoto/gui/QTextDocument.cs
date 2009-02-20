@@ -298,42 +298,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTextDocument", "~QTextDocument()", typeof(void));
         }
-        public event SlotFunc<int,int,int> SignalContentsChange {
-            add { QObject.Connect(this, SIGNAL("contentsChange(int, int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("contentsChange(int, int, int)"), value); }
-        }
-        public event SlotFunc SignalContentsChanged {
-            add { QObject.Connect(this, SIGNAL("contentsChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("contentsChanged()"), value); }
-        }
-        public event SlotFunc<bool> SignalUndoAvailable {
-            add { QObject.Connect(this, SIGNAL("undoAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("undoAvailable(bool)"), value); }
-        }
-        public event SlotFunc<bool> SignalRedoAvailable {
-            add { QObject.Connect(this, SIGNAL("redoAvailable(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("redoAvailable(bool)"), value); }
-        }
-        public event SlotFunc SignalUndoCommandAdded {
-            add { QObject.Connect(this, SIGNAL("undoCommandAdded()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("undoCommandAdded()"), value); }
-        }
-        public event SlotFunc<bool> SignalModificationChanged {
-            add { QObject.Connect(this, SIGNAL("modificationChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("modificationChanged(bool)"), value); }
-        }
-        public event SlotFunc<QTextCursor> SignalCursorPositionChanged {
-            add { QObject.Connect(this, SIGNAL("cursorPositionChanged(QTextCursor)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("cursorPositionChanged(QTextCursor)"), value); }
-        }
-        public event SlotFunc<int> SignalBlockCountChanged {
-            add { QObject.Connect(this, SIGNAL("blockCountChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("blockCountChanged(int)"), value); }
-        }
-        public event SlotFunc SignalDocumentLayoutChanged {
-            add { QObject.Connect(this, SIGNAL("documentLayoutChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("documentLayoutChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

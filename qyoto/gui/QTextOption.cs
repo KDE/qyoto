@@ -19,6 +19,14 @@ namespace Qyoto {
             static Tab() {
                 staticInterceptor = new SmokeInvocation(typeof(Tab), null);
             }
+            public double Position {
+                get { return (double) interceptor.Invoke("position", "position()", typeof(double)); }
+                set { interceptor.Invoke("setPosition$", "setPosition(qreal)", typeof(void), typeof(double), value); }
+            }
+            public QChar Delimiter {
+                get { return (QChar) interceptor.Invoke("delimiter", "delimiter()", typeof(QChar)); }
+                set { interceptor.Invoke("setDelimiter#", "setDelimiter(QChar)", typeof(void), typeof(QChar), value); }
+            }
             public Tab() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("Tab", "Tab()", typeof(void));
@@ -59,7 +67,11 @@ namespace Qyoto {
             WrapAnywhere = 3,
             WrapAtWordBoundaryOrAnywhere = 4,
         }
-        public enum Flag : long {
+        public enum Flag : uint {
+            ShowTabsAndSpaces = 0x1,
+            ShowLineAndParagraphSeparators = 0x2,
+            AddSpaceForLineAndParagraphSeparators = 0x4,
+            SuppressColors = 0x8,
             IncludeTrailingSpaces = 0x80000000,
         }
         public QTextOption() : this((Type) null) {

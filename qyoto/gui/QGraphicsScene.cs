@@ -441,18 +441,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QGraphicsScene", "~QGraphicsScene()", typeof(void));
         }
-        public event SlotFunc<List<QRectF>> SignalChanged {
-            add { QObject.Connect(this, SIGNAL("changed(QList<QRectF>)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("changed(QList<QRectF>)"), value); }
-        }
-        public event SlotFunc<QRectF> SignalSceneRectChanged {
-            add { QObject.Connect(this, SIGNAL("sceneRectChanged(QRectF)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sceneRectChanged(QRectF)"), value); }
-        }
-        public event SlotFunc SignalSelectionChanged {
-            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

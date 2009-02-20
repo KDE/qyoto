@@ -27,6 +27,18 @@ namespace Qyoto {
             Name = 3,
             Random = 4,
         }
+        public uint Data1 {
+            get { return (uint) interceptor.Invoke("data1", "data1()", typeof(uint)); }
+            set { interceptor.Invoke("setData1$", "setData1(uint)", typeof(void), typeof(uint), value); }
+        }
+        public ushort Data2 {
+            get { return (ushort) interceptor.Invoke("data2", "data2()", typeof(ushort)); }
+            set { interceptor.Invoke("setData2$", "setData2(unsigned short)", typeof(void), typeof(ushort), value); }
+        }
+        public ushort Data3 {
+            get { return (ushort) interceptor.Invoke("data3", "data3()", typeof(ushort)); }
+            set { interceptor.Invoke("setData3$", "setData3(unsigned short)", typeof(void), typeof(ushort), value); }
+        }
         //  operator QString(); >>>> NOT CONVERTED
         public QUuid() : this((Type) null) {
             CreateProxy();

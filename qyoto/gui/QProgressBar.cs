@@ -127,10 +127,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QProgressBar", "~QProgressBar()", typeof(void));
         }
-        public event SlotFunc<int> SignalValueChanged {
-            add { QObject.Connect(this, SIGNAL("valueChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("valueChanged(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -47,6 +47,12 @@ namespace Qyoto {
         public void SetSecure(bool enable) {
             interceptor.Invoke("setSecure$", "setSecure(bool)", typeof(void), typeof(bool), enable);
         }
+        public bool IsHttpOnly() {
+            return (bool) interceptor.Invoke("isHttpOnly", "isHttpOnly() const", typeof(bool));
+        }
+        public void SetHttpOnly(bool enable) {
+            interceptor.Invoke("setHttpOnly$", "setHttpOnly(bool)", typeof(void), typeof(bool), enable);
+        }
         public bool IsSessionCookie() {
             return (bool) interceptor.Invoke("isSessionCookie", "isSessionCookie() const", typeof(bool));
         }

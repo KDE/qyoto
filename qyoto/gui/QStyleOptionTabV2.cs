@@ -10,6 +10,10 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 2,
         }
+        public QSize IconSize {
+            get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
         public QStyleOptionTabV2() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionTabV2", "QStyleOptionTabV2()", typeof(void));

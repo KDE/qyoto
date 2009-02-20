@@ -33,6 +33,9 @@ namespace Qyoto {
             DateTimeToStringLong = 20,
             DateTimeToStringShort = 21,
             MeasurementSystem = 22,
+            PositiveSign = 23,
+            AMText = 24,
+            PMText = 25,
         }
         public QSystemLocale() : this((Type) null) {
             CreateProxy();

@@ -152,30 +152,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QToolBar", "~QToolBar()", typeof(void));
         }
-        public event SlotFunc<QAction> SignalActionTriggered {
-            add { QObject.Connect(this, SIGNAL("actionTriggered(QAction*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("actionTriggered(QAction*)"), value); }
-        }
-        public event SlotFunc<bool> SignalMovableChanged {
-            add { QObject.Connect(this, SIGNAL("movableChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("movableChanged(bool)"), value); }
-        }
-        public event SlotFunc<uint> SignalAllowedAreasChanged {
-            add { QObject.Connect(this, SIGNAL("allowedAreasChanged(Qt::ToolBarAreas)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("allowedAreasChanged(Qt::ToolBarAreas)"), value); }
-        }
-        public event SlotFunc<Qt.Orientation> SignalOrientationChanged {
-            add { QObject.Connect(this, SIGNAL("orientationChanged(Qt::Orientation)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("orientationChanged(Qt::Orientation)"), value); }
-        }
-        public event SlotFunc<QSize> SignalIconSizeChanged {
-            add { QObject.Connect(this, SIGNAL("iconSizeChanged(QSize)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("iconSizeChanged(QSize)"), value); }
-        }
-        public event SlotFunc<Qt.ToolButtonStyle> SignalToolButtonStyleChanged {
-            add { QObject.Connect(this, SIGNAL("toolButtonStyleChanged(Qt::ToolButtonStyle)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("toolButtonStyleChanged(Qt::ToolButtonStyle)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

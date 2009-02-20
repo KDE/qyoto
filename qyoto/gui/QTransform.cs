@@ -35,9 +35,9 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QTransform$$$$$$$$", "QTransform(qreal, qreal, qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), h11, typeof(double), h12, typeof(double), h13, typeof(double), h21, typeof(double), h22, typeof(double), h23, typeof(double), h31, typeof(double), h32);
         }
-        public QTransform(double h11, double h12, double h13, double h21, double h22, double h23) : this((Type) null) {
+        public QTransform(double h11, double h12, double h21, double h22, double dx, double dy) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QTransform$$$$$$", "QTransform(qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), h11, typeof(double), h12, typeof(double), h13, typeof(double), h21, typeof(double), h22, typeof(double), h23);
+            interceptor.Invoke("QTransform$$$$$$", "QTransform(qreal, qreal, qreal, qreal, qreal, qreal)", typeof(void), typeof(double), h11, typeof(double), h12, typeof(double), h21, typeof(double), h22, typeof(double), dx, typeof(double), dy);
         }
         public QTransform(QMatrix mtx) : this((Type) null) {
             CreateProxy();
@@ -246,6 +246,12 @@ namespace Qyoto {
         }
         public static bool QuadToQuad(QPolygonF one, QPolygonF two, QTransform result) {
             return (bool) staticInterceptor.Invoke("quadToQuad###", "quadToQuad(const QPolygonF&, const QPolygonF&, QTransform&)", typeof(bool), typeof(QPolygonF), one, typeof(QPolygonF), two, typeof(QTransform), result);
+        }
+        public static QTransform FromTranslate(double dx, double dy) {
+            return (QTransform) staticInterceptor.Invoke("fromTranslate$$", "fromTranslate(qreal, qreal)", typeof(QTransform), typeof(double), dx, typeof(double), dy);
+        }
+        public static QTransform FromScale(double dx, double dy) {
+            return (QTransform) staticInterceptor.Invoke("fromScale$$", "fromScale(qreal, qreal)", typeof(QTransform), typeof(double), dx, typeof(double), dy);
         }
         public static QPoint operator*(QPoint p, QTransform m) {
             return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QTransform&)", typeof(QPoint), typeof(QPoint), p, typeof(QTransform), m);

@@ -76,6 +76,9 @@ namespace Qyoto {
             DeleteStartOfWord = 58,
             DeleteEndOfWord = 59,
             DeleteEndOfLine = 60,
+            InsertParagraphSeparator = 61,
+            InsertLineSeparator = 62,
+            SaveAs = 63,
         }
         public enum SequenceMatch {
             NoMatch = 0,

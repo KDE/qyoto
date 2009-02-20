@@ -209,22 +209,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QAction", "~QAction()", typeof(void));
         }
-        public event SlotFunc SignalChanged {
-            add { QObject.Connect(this, SIGNAL("changed()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("changed()"), value); }
-        }
-        public event SlotFunc<bool> SignalTriggered {
-            add { QObject.Connect(this, SIGNAL("triggered(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("triggered(bool)"), value); }
-        }
-        public event SlotFunc SignalHovered {
-            add { QObject.Connect(this, SIGNAL("hovered()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("hovered()"), value); }
-        }
-        public event SlotFunc<bool> SignalToggled {
-            add { QObject.Connect(this, SIGNAL("toggled(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("toggled(bool)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

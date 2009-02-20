@@ -305,30 +305,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QLineEdit", "~QLineEdit()", typeof(void));
         }
-        public event SlotFunc<string> SignalTextChanged {
-            add { QObject.Connect(this, SIGNAL("textChanged(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("textChanged(QString)"), value); }
-        }
-        public event SlotFunc<string> SignalTextEdited {
-            add { QObject.Connect(this, SIGNAL("textEdited(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("textEdited(QString)"), value); }
-        }
-        public event SlotFunc<int,int> SignalCursorPositionChanged {
-            add { QObject.Connect(this, SIGNAL("cursorPositionChanged(int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("cursorPositionChanged(int, int)"), value); }
-        }
-        public event SlotFunc SignalReturnPressed {
-            add { QObject.Connect(this, SIGNAL("returnPressed()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("returnPressed()"), value); }
-        }
-        public event SlotFunc SignalEditingFinished {
-            add { QObject.Connect(this, SIGNAL("editingFinished()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("editingFinished()"), value); }
-        }
-        public event SlotFunc SignalSelectionChanged {
-            add { QObject.Connect(this, SIGNAL("selectionChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("selectionChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

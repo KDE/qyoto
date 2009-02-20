@@ -224,14 +224,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QGraphicsTextItem", "~QGraphicsTextItem()", typeof(void));
         }
-        public event SlotFunc<string> SignalLinkActivated {
-            add { QObject.Connect(this, SIGNAL("linkActivated(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("linkActivated(QString)"), value); }
-        }
-        public event SlotFunc<string> SignalLinkHovered {
-            add { QObject.Connect(this, SIGNAL("linkHovered(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("linkHovered(QString)"), value); }
-        }
         public QGraphicsScene Scene() {
             return (QGraphicsScene) interceptor.Invoke("scene", "scene() const", typeof(QGraphicsScene));
         }

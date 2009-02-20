@@ -43,6 +43,10 @@ namespace Qyoto {
         public virtual void Invalidate() {
             interceptor.Invoke("invalidate", "invalidate()", typeof(void));
         }
+        [SmokeMethod("updateGeometry()")]
+        public override void UpdateGeometry() {
+            interceptor.Invoke("updateGeometry", "updateGeometry()", typeof(void));
+        }
         [SmokeMethod("widgetEvent(QEvent*)")]
         public virtual void WidgetEvent(QEvent e) {
             interceptor.Invoke("widgetEvent#", "widgetEvent(QEvent*)", typeof(void), typeof(QEvent), e);

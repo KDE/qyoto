@@ -13,6 +13,30 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public int Minimum {
+            get { return (int) interceptor.Invoke("minimum", "minimum()", typeof(int)); }
+            set { interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), value); }
+        }
+        public int Maximum {
+            get { return (int) interceptor.Invoke("maximum", "maximum()", typeof(int)); }
+            set { interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), value); }
+        }
+        public int Progress {
+            get { return (int) interceptor.Invoke("progress", "progress()", typeof(int)); }
+            set { interceptor.Invoke("setProgress$", "setProgress(int)", typeof(void), typeof(int), value); }
+        }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public uint TextAlignment {
+            get { return (uint) interceptor.Invoke("textAlignment", "textAlignment()", typeof(uint)); }
+            set { interceptor.Invoke("setTextAlignment$", "setTextAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
+        }
+        public bool TextVisible {
+            get { return (bool) interceptor.Invoke("textVisible", "textVisible()", typeof(bool)); }
+            set { interceptor.Invoke("setTextVisible$", "setTextVisible(bool)", typeof(void), typeof(bool), value); }
+        }
         public QStyleOptionProgressBar() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionProgressBar", "QStyleOptionProgressBar()", typeof(void));

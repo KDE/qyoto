@@ -24,7 +24,9 @@ namespace Qyoto {
             QueryPropertyStored = 6,
             QueryPropertyEditable = 7,
             QueryPropertyUser = 8,
+            CreateInstance = 9,
         }
+        // int static_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
         // void activate(QObject* arg1,int arg2,void** arg3); >>>> NOT CONVERTED
         // void activate(QObject* arg1,int arg2,int arg3,void** arg4); >>>> NOT CONVERTED
         // void activate(QObject* arg1,const QMetaObject* arg2,int arg3,void** arg4); >>>> NOT CONVERTED
@@ -65,6 +67,9 @@ namespace Qyoto {
         public int ClassInfoOffset() {
             return (int) interceptor.Invoke("classInfoOffset", "classInfoOffset() const", typeof(int));
         }
+        public int ConstructorCount() {
+            return (int) interceptor.Invoke("constructorCount", "constructorCount() const", typeof(int));
+        }
         public int MethodCount() {
             return (int) interceptor.Invoke("methodCount", "methodCount() const", typeof(int));
         }
@@ -76,6 +81,9 @@ namespace Qyoto {
         }
         public int ClassInfoCount() {
             return (int) interceptor.Invoke("classInfoCount", "classInfoCount() const", typeof(int));
+        }
+        public int IndexOfConstructor(string constructor) {
+            return (int) interceptor.Invoke("indexOfConstructor$", "indexOfConstructor(const char*) const", typeof(int), typeof(string), constructor);
         }
         public int IndexOfMethod(string method) {
             return (int) interceptor.Invoke("indexOfMethod$", "indexOfMethod(const char*) const", typeof(int), typeof(string), method);
@@ -95,6 +103,9 @@ namespace Qyoto {
         public int IndexOfClassInfo(string name) {
             return (int) interceptor.Invoke("indexOfClassInfo$", "indexOfClassInfo(const char*) const", typeof(int), typeof(string), name);
         }
+        public QMetaMethod Constructor(int index) {
+            return (QMetaMethod) interceptor.Invoke("constructor$", "constructor(int) const", typeof(QMetaMethod), typeof(int), index);
+        }
         public QMetaMethod Method(int index) {
             return (QMetaMethod) interceptor.Invoke("method$", "method(int) const", typeof(QMetaMethod), typeof(int), index);
         }
@@ -109,6 +120,39 @@ namespace Qyoto {
         }
         public QMetaProperty UserProperty() {
             return (QMetaProperty) interceptor.Invoke("userProperty", "userProperty() const", typeof(QMetaProperty));
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
+            return (QObject) interceptor.Invoke("newInstance##########", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8, typeof(QGenericArgument), val9);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
+            return (QObject) interceptor.Invoke("newInstance#########", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7, typeof(QGenericArgument), val8);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
+            return (QObject) interceptor.Invoke("newInstance########", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6, typeof(QGenericArgument), val7);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
+            return (QObject) interceptor.Invoke("newInstance#######", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5, typeof(QGenericArgument), val6);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
+            return (QObject) interceptor.Invoke("newInstance######", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4, typeof(QGenericArgument), val5);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
+            return (QObject) interceptor.Invoke("newInstance#####", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3, typeof(QGenericArgument), val4);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
+            return (QObject) interceptor.Invoke("newInstance####", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2, typeof(QGenericArgument), val3);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
+            return (QObject) interceptor.Invoke("newInstance###", "newInstance(QGenericArgument, QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1, typeof(QGenericArgument), val2);
+        }
+        public QObject NewInstance(QGenericArgument val0, QGenericArgument val1) {
+            return (QObject) interceptor.Invoke("newInstance##", "newInstance(QGenericArgument, QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0, typeof(QGenericArgument), val1);
+        }
+        public QObject NewInstance(QGenericArgument val0) {
+            return (QObject) interceptor.Invoke("newInstance#", "newInstance(QGenericArgument) const", typeof(QObject), typeof(QGenericArgument), val0);
+        }
+        public QObject NewInstance() {
+            return (QObject) interceptor.Invoke("newInstance", "newInstance() const", typeof(QObject));
         }
         public QMetaObject() : this((Type) null) {
             CreateProxy();

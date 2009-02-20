@@ -16,6 +16,14 @@ namespace Qyoto {
             protected void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(Data), this);
             }
+            public ushort Index {
+                get { return (ushort) interceptor.Invoke("index", "index()", typeof(ushort)); }
+                set { interceptor.Invoke("setIndex$", "setIndex(unsigned short)", typeof(void), typeof(ushort), value); }
+            }
+            public ushort NumberOptions {
+                get { return (ushort) interceptor.Invoke("numberOptions", "numberOptions()", typeof(ushort)); }
+                set { interceptor.Invoke("setNumberOptions$", "setNumberOptions(unsigned short)", typeof(void), typeof(ushort), value); }
+            }
             public Data() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("Data", "Data()", typeof(void));
@@ -456,6 +464,7 @@ namespace Qyoto {
         public enum FormatType {
             LongFormat = 0,
             ShortFormat = 1,
+            NarrowFormat = 2,
         }
         public enum NumberOption {
             OmitGroupSeparator = 0x01,
@@ -881,6 +890,9 @@ namespace Qyoto {
         public QChar NegativeSign() {
             return (QChar) interceptor.Invoke("negativeSign", "negativeSign() const", typeof(QChar));
         }
+        public QChar PositiveSign() {
+            return (QChar) interceptor.Invoke("positiveSign", "positiveSign() const", typeof(QChar));
+        }
         public QChar Exponential() {
             return (QChar) interceptor.Invoke("exponential", "exponential() const", typeof(QChar));
         }
@@ -890,11 +902,29 @@ namespace Qyoto {
         public string MonthName(int arg1) {
             return (string) interceptor.Invoke("monthName$", "monthName(int) const", typeof(string), typeof(int), arg1);
         }
+        public string StandaloneMonthName(int arg1, QLocale.FormatType format) {
+            return (string) interceptor.Invoke("standaloneMonthName$$", "standaloneMonthName(int, QLocale::FormatType) const", typeof(string), typeof(int), arg1, typeof(QLocale.FormatType), format);
+        }
+        public string StandaloneMonthName(int arg1) {
+            return (string) interceptor.Invoke("standaloneMonthName$", "standaloneMonthName(int) const", typeof(string), typeof(int), arg1);
+        }
         public string DayName(int arg1, QLocale.FormatType format) {
             return (string) interceptor.Invoke("dayName$$", "dayName(int, QLocale::FormatType) const", typeof(string), typeof(int), arg1, typeof(QLocale.FormatType), format);
         }
         public string DayName(int arg1) {
             return (string) interceptor.Invoke("dayName$", "dayName(int) const", typeof(string), typeof(int), arg1);
+        }
+        public string StandaloneDayName(int arg1, QLocale.FormatType format) {
+            return (string) interceptor.Invoke("standaloneDayName$$", "standaloneDayName(int, QLocale::FormatType) const", typeof(string), typeof(int), arg1, typeof(QLocale.FormatType), format);
+        }
+        public string StandaloneDayName(int arg1) {
+            return (string) interceptor.Invoke("standaloneDayName$", "standaloneDayName(int) const", typeof(string), typeof(int), arg1);
+        }
+        public string AmText() {
+            return (string) interceptor.Invoke("amText", "amText() const", typeof(string));
+        }
+        public string PmText() {
+            return (string) interceptor.Invoke("pmText", "pmText() const", typeof(string));
         }
         public QLocale.MeasurementSystem measurementSystem() {
             return (QLocale.MeasurementSystem) interceptor.Invoke("measurementSystem", "measurementSystem() const", typeof(QLocale.MeasurementSystem));

@@ -13,6 +13,18 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public QTabBar.Shape Shape {
+            get { return (QTabBar.Shape) interceptor.Invoke("shape", "shape()", typeof(QTabBar.Shape)); }
+            set { interceptor.Invoke("setShape$", "setShape(QTabBar::Shape)", typeof(void), typeof(QTabBar.Shape), value); }
+        }
+        public QRect TabBarRect {
+            get { return (QRect) interceptor.Invoke("tabBarRect", "tabBarRect()", typeof(QRect)); }
+            set { interceptor.Invoke("setTabBarRect#", "setTabBarRect(QRect)", typeof(void), typeof(QRect), value); }
+        }
+        public QRect SelectedTabRect {
+            get { return (QRect) interceptor.Invoke("selectedTabRect", "selectedTabRect()", typeof(QRect)); }
+            set { interceptor.Invoke("setSelectedTabRect#", "setSelectedTabRect(QRect)", typeof(void), typeof(QRect), value); }
+        }
         public QStyleOptionTabBarBase() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionTabBarBase", "QStyleOptionTabBarBase()", typeof(void));

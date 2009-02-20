@@ -58,18 +58,6 @@ namespace Qyoto {
         public bool HelpEvent(QHelpEvent arg1, QAbstractItemView view, QStyleOptionViewItem option, QModelIndex index) {
             return (bool) interceptor.Invoke("helpEvent####", "helpEvent(QHelpEvent*, QAbstractItemView*, const QStyleOptionViewItem&, const QModelIndex&)", typeof(bool), typeof(QHelpEvent), arg1, typeof(QAbstractItemView), view, typeof(QStyleOptionViewItem), option, typeof(QModelIndex), index);
         }
-        public event SlotFunc<QWidget> SignalCommitData {
-            add { QObject.Connect(this, SIGNAL("commitData(QWidget*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("commitData(QWidget*)"), value); }
-        }
-        public event SlotFunc<QWidget,QAbstractItemDelegate.EndEditHint> SignalCloseEditor {
-            add { QObject.Connect(this, SIGNAL("closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)"), value); }
-        }
-        public event SlotFunc<QModelIndex> SignalSizeHintChanged {
-            add { QObject.Connect(this, SIGNAL("sizeHintChanged(QModelIndex)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sizeHintChanged(QModelIndex)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

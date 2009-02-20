@@ -59,6 +59,9 @@ namespace Qyoto {
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
         }
+        public bool IsBound() {
+            return (bool) interceptor.Invoke("isBound", "isBound() const", typeof(bool));
+        }
         public bool Bind() {
             return (bool) interceptor.Invoke("bind", "bind()", typeof(bool));
         }

@@ -13,6 +13,10 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public Qt.Corner Corner {
+            get { return (Qt.Corner) interceptor.Invoke("corner", "corner()", typeof(Qt.Corner)); }
+            set { interceptor.Invoke("setCorner$", "setCorner(Qt::Corner)", typeof(void), typeof(Qt.Corner), value); }
+        }
         public QStyleOptionSizeGrip() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionSizeGrip", "QStyleOptionSizeGrip()", typeof(void));

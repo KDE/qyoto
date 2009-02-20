@@ -110,26 +110,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QDockWidget", "~QDockWidget()", typeof(void));
         }
-        public event SlotFunc<uint> SignalFeaturesChanged {
-            add { QObject.Connect(this, SIGNAL("featuresChanged(QDockWidget::DockWidgetFeatures)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("featuresChanged(QDockWidget::DockWidgetFeatures)"), value); }
-        }
-        public event SlotFunc<bool> SignalTopLevelChanged {
-            add { QObject.Connect(this, SIGNAL("topLevelChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("topLevelChanged(bool)"), value); }
-        }
-        public event SlotFunc<uint> SignalAllowedAreasChanged {
-            add { QObject.Connect(this, SIGNAL("allowedAreasChanged(Qt::DockWidgetAreas)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("allowedAreasChanged(Qt::DockWidgetAreas)"), value); }
-        }
-        public event SlotFunc<bool> SignalVisibilityChanged {
-            add { QObject.Connect(this, SIGNAL("visibilityChanged(bool)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("visibilityChanged(bool)"), value); }
-        }
-        public event SlotFunc<Qt.DockWidgetArea> SignalDockLocationChanged {
-            add { QObject.Connect(this, SIGNAL("dockLocationChanged(Qt::DockWidgetArea)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("dockLocationChanged(Qt::DockWidgetArea)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

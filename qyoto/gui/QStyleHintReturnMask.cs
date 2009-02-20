@@ -13,6 +13,10 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public QRegion Region {
+            get { return (QRegion) interceptor.Invoke("region", "region()", typeof(QRegion)); }
+            set { interceptor.Invoke("setRegion#", "setRegion(QRegion)", typeof(void), typeof(QRegion), value); }
+        }
         public QStyleHintReturnMask() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleHintReturnMask", "QStyleHintReturnMask()", typeof(void));

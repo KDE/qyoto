@@ -77,10 +77,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QLocalServer", "~QLocalServer()", typeof(void));
         }
-        public event SlotFunc SignalNewConnection {
-            add { QObject.Connect(this, SIGNAL("newConnection()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("newConnection()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

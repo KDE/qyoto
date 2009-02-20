@@ -62,22 +62,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QSignalMapper", "~QSignalMapper()", typeof(void));
         }
-        public event SlotFunc<int> SignalMapped_int {
-            add { QObject.Connect(this, SIGNAL("mapped(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("mapped(int)"), value); }
-        }
-        public event SlotFunc<string> SignalMapped_string {
-            add { QObject.Connect(this, SIGNAL("mapped(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("mapped(QString)"), value); }
-        }
-        public event SlotFunc<QWidget> SignalMapped_QWidget {
-            add { QObject.Connect(this, SIGNAL("mapped(QWidget*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("mapped(QWidget*)"), value); }
-        }
-        public event SlotFunc<QObject> SignalMapped_QObject {
-            add { QObject.Connect(this, SIGNAL("mapped(QObject*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("mapped(QObject*)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

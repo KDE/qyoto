@@ -94,10 +94,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTimer", "~QTimer()", typeof(void));
         }
-        public event SlotFunc SignalTimeout {
-            add { QObject.Connect(this, SIGNAL("timeout()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("timeout()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

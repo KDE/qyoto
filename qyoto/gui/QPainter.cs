@@ -46,6 +46,15 @@ namespace Qyoto {
             CompositionMode_SoftLight = 21,
             CompositionMode_Difference = 22,
             CompositionMode_Exclusion = 23,
+            RasterOp_SourceOrDestination = 24,
+            RasterOp_SourceAndDestination = 25,
+            RasterOp_SourceXorDestination = 26,
+            RasterOp_NotSourceAndNotDestination = 27,
+            RasterOp_NotSourceOrNotDestination = 28,
+            RasterOp_NotSourceXorDestination = 29,
+            RasterOp_NotSource = 30,
+            RasterOp_NotSourceAndDestination = 31,
+            RasterOp_SourceAndNotDestination = 32,
         }
         public QPainter() : this((Type) null) {
             CreateProxy();
@@ -702,6 +711,33 @@ namespace Qyoto {
         }
         public void FillRect(QRect arg1, QBrush arg2) {
             interceptor.Invoke("fillRect##", "fillRect(const QRect&, const QBrush&)", typeof(void), typeof(QRect), arg1, typeof(QBrush), arg2);
+        }
+        public void FillRect(QRectF arg1, QColor color) {
+            interceptor.Invoke("fillRect##", "fillRect(const QRectF&, const QColor&)", typeof(void), typeof(QRectF), arg1, typeof(QColor), color);
+        }
+        public void FillRect(int x, int y, int w, int h, QColor color) {
+            interceptor.Invoke("fillRect$$$$#", "fillRect(int, int, int, int, const QColor&)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(QColor), color);
+        }
+        public void FillRect(QRect arg1, QColor color) {
+            interceptor.Invoke("fillRect##", "fillRect(const QRect&, const QColor&)", typeof(void), typeof(QRect), arg1, typeof(QColor), color);
+        }
+        public void FillRect(int x, int y, int w, int h, Qt.GlobalColor c) {
+            interceptor.Invoke("fillRect$$$$$", "fillRect(int, int, int, int, Qt::GlobalColor)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(Qt.GlobalColor), c);
+        }
+        public void FillRect(QRect r, Qt.GlobalColor c) {
+            interceptor.Invoke("fillRect#$", "fillRect(const QRect&, Qt::GlobalColor)", typeof(void), typeof(QRect), r, typeof(Qt.GlobalColor), c);
+        }
+        public void FillRect(QRectF r, Qt.GlobalColor c) {
+            interceptor.Invoke("fillRect#$", "fillRect(const QRectF&, Qt::GlobalColor)", typeof(void), typeof(QRectF), r, typeof(Qt.GlobalColor), c);
+        }
+        public void FillRect(int x, int y, int w, int h, Qt.BrushStyle style) {
+            interceptor.Invoke("fillRect$$$$$", "fillRect(int, int, int, int, Qt::BrushStyle)", typeof(void), typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h, typeof(Qt.BrushStyle), style);
+        }
+        public void FillRect(QRect r, Qt.BrushStyle style) {
+            interceptor.Invoke("fillRect#$", "fillRect(const QRect&, Qt::BrushStyle)", typeof(void), typeof(QRect), r, typeof(Qt.BrushStyle), style);
+        }
+        public void FillRect(QRectF r, Qt.BrushStyle style) {
+            interceptor.Invoke("fillRect#$", "fillRect(const QRectF&, Qt::BrushStyle)", typeof(void), typeof(QRectF), r, typeof(Qt.BrushStyle), style);
         }
         public void EraseRect(QRectF arg1) {
             interceptor.Invoke("eraseRect#", "eraseRect(const QRectF&)", typeof(void), typeof(QRectF), arg1);

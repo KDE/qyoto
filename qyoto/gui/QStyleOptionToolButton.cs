@@ -21,6 +21,38 @@ namespace Qyoto {
             PopupDelay = 0x08,
             HasMenu = 0x10,
         }
+        public uint Features {
+            get { return (uint) interceptor.Invoke("features", "features()", typeof(uint)); }
+            set { interceptor.Invoke("setFeatures$", "setFeatures(QStyleOptionToolButton::ToolButtonFeatures)", typeof(void), typeof(uint), value); }
+        }
+        public QIcon Icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        public QSize IconSize {
+            get { return (QSize) interceptor.Invoke("iconSize", "iconSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setIconSize#", "setIconSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public Qt.ArrowType ArrowType {
+            get { return (Qt.ArrowType) interceptor.Invoke("arrowType", "arrowType()", typeof(Qt.ArrowType)); }
+            set { interceptor.Invoke("setArrowType$", "setArrowType(Qt::ArrowType)", typeof(void), typeof(Qt.ArrowType), value); }
+        }
+        public Qt.ToolButtonStyle ToolButtonStyle {
+            get { return (Qt.ToolButtonStyle) interceptor.Invoke("toolButtonStyle", "toolButtonStyle()", typeof(Qt.ToolButtonStyle)); }
+            set { interceptor.Invoke("setToolButtonStyle$", "setToolButtonStyle(Qt::ToolButtonStyle)", typeof(void), typeof(Qt.ToolButtonStyle), value); }
+        }
+        public QPoint Pos {
+            get { return (QPoint) interceptor.Invoke("pos", "pos()", typeof(QPoint)); }
+            set { interceptor.Invoke("setPos#", "setPos(QPoint)", typeof(void), typeof(QPoint), value); }
+        }
+        public QFont Font {
+            get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
+            set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
+        }
         public QStyleOptionToolButton() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionToolButton", "QStyleOptionToolButton()", typeof(void));

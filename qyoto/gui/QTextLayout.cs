@@ -6,21 +6,6 @@ namespace Qyoto {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QTextLayout(Type dummy) {}
-        [SmokeClass("QTextLayout::FormatRange")]
-        public class FormatRange : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected FormatRange(Type dummy) {}
-            public int Start {
-                get { return (int) interceptor.Invoke("start", "start()", typeof(int)); }
-            }
-            public int Length {
-                get { return (int) interceptor.Invoke("length", "length()", typeof(int)); }
-            }
-            public QTextCharFormat Format {
-                get { return (QTextCharFormat) interceptor.Invoke("format", "format()", typeof(QTextCharFormat)); }
-            }
-        }
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QTextLayout), this);
         }

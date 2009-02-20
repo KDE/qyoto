@@ -266,22 +266,6 @@ namespace Qyoto {
         protected List<QModelIndex> PersistentIndexList() {
             return (List<QModelIndex>) interceptor.Invoke("persistentIndexList", "persistentIndexList() const", typeof(List<QModelIndex>));
         }
-        public event SlotFunc<QModelIndex,QModelIndex> SignalDataChanged {
-            add { QObject.Connect(this, SIGNAL("dataChanged(QModelIndex, QModelIndex)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("dataChanged(QModelIndex, QModelIndex)"), value); }
-        }
-        public event SlotFunc<Qt.Orientation,int,int> SignalHeaderDataChanged {
-            add { QObject.Connect(this, SIGNAL("headerDataChanged(Qt::Orientation, int, int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("headerDataChanged(Qt::Orientation, int, int)"), value); }
-        }
-        public event SlotFunc SignalLayoutChanged {
-            add { QObject.Connect(this, SIGNAL("layoutChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("layoutChanged()"), value); }
-        }
-        public event SlotFunc SignalLayoutAboutToBeChanged {
-            add { QObject.Connect(this, SIGNAL("layoutAboutToBeChanged()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("layoutAboutToBeChanged()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

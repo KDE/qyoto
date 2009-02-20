@@ -355,14 +355,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QTreeView", "~QTreeView()", typeof(void));
         }
-        public event SlotFunc<QModelIndex> SignalExpanded {
-            add { QObject.Connect(this, SIGNAL("expanded(QModelIndex)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("expanded(QModelIndex)"), value); }
-        }
-        public event SlotFunc<QModelIndex> SignalCollapsed {
-            add { QObject.Connect(this, SIGNAL("collapsed(QModelIndex)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("collapsed(QModelIndex)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

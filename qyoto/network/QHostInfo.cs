@@ -79,5 +79,8 @@ namespace Qyoto {
         public static string LocalHostName() {
             return (string) staticInterceptor.Invoke("localHostName", "localHostName()", typeof(string));
         }
+        public static string LocalDomainName() {
+            return (string) staticInterceptor.Invoke("localDomainName", "localDomainName()", typeof(string));
+        }
     }
 }

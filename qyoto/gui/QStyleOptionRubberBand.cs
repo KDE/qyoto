@@ -13,6 +13,14 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public QRubberBand.Shape Shape {
+            get { return (QRubberBand.Shape) interceptor.Invoke("shape", "shape()", typeof(QRubberBand.Shape)); }
+            set { interceptor.Invoke("setShape$", "setShape(QRubberBand::Shape)", typeof(void), typeof(QRubberBand.Shape), value); }
+        }
+        public bool Opaque {
+            get { return (bool) interceptor.Invoke("opaque", "opaque()", typeof(bool)); }
+            set { interceptor.Invoke("setOpaque$", "setOpaque(bool)", typeof(void), typeof(bool), value); }
+        }
         public QStyleOptionRubberBand() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionRubberBand", "QStyleOptionRubberBand()", typeof(void));

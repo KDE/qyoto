@@ -164,30 +164,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QInputDialog", "~QInputDialog()", typeof(void));
         }
-        public event SlotFunc<string> SignalTextValueChanged {
-            add { QObject.Connect(this, SIGNAL("textValueChanged(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("textValueChanged(QString)"), value); }
-        }
-        public event SlotFunc<string> SignalTextValueSelected {
-            add { QObject.Connect(this, SIGNAL("textValueSelected(QString)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("textValueSelected(QString)"), value); }
-        }
-        public event SlotFunc<int> SignalIntValueChanged {
-            add { QObject.Connect(this, SIGNAL("intValueChanged(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("intValueChanged(int)"), value); }
-        }
-        public event SlotFunc<int> SignalIntValueSelected {
-            add { QObject.Connect(this, SIGNAL("intValueSelected(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("intValueSelected(int)"), value); }
-        }
-        public event SlotFunc<double> SignalDoubleValueChanged {
-            add { QObject.Connect(this, SIGNAL("doubleValueChanged(double)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("doubleValueChanged(double)"), value); }
-        }
-        public event SlotFunc<double> SignalDoubleValueSelected {
-            add { QObject.Connect(this, SIGNAL("doubleValueSelected(double)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("doubleValueSelected(double)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

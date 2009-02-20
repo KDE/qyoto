@@ -251,26 +251,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QSslSocket", "~QSslSocket()", typeof(void));
         }
-        public event SlotFunc SignalEncrypted {
-            add { QObject.Connect(this, SIGNAL("encrypted()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("encrypted()"), value); }
-        }
-        public event SlotFunc<QSslError> SignalPeerVerifyError {
-            add { QObject.Connect(this, SIGNAL("peerVerifyError(QSslError)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("peerVerifyError(QSslError)"), value); }
-        }
-        public event SlotFunc<List<QSslError>> SignalSslErrors {
-            add { QObject.Connect(this, SIGNAL("sslErrors(QList<QSslError>)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("sslErrors(QList<QSslError>)"), value); }
-        }
-        public event SlotFunc<QSslSocket.SslMode> SignalModeChanged {
-            add { QObject.Connect(this, SIGNAL("modeChanged(QSslSocket::SslMode)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("modeChanged(QSslSocket::SslMode)"), value); }
-        }
-        public event SlotFunc<long> SignalEncryptedBytesWritten {
-            add { QObject.Connect(this, SIGNAL("encryptedBytesWritten(qint64)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("encryptedBytesWritten(qint64)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

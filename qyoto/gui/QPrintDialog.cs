@@ -70,10 +70,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QPrintDialog", "~QPrintDialog()", typeof(void));
         }
-        public event SlotFunc<QPrinter> SignalAccepted {
-            add { QObject.Connect(this, SIGNAL("accepted(QPrinter*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("accepted(QPrinter*)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

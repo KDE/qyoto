@@ -228,10 +228,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QMessageBox", "~QMessageBox()", typeof(void));
         }
-        public event SlotFunc<QAbstractButton> SignalButtonClicked {
-            add { QObject.Connect(this, SIGNAL("buttonClicked(QAbstractButton*)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("buttonClicked(QAbstractButton*)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

@@ -29,7 +29,7 @@ namespace Qyoto {
             interceptor.Invoke("setValue$$", "setValue(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);
         }
         public void SetValues(List<QPair<string, string>> values) {
-            interceptor.Invoke("setValues?", "setValues(const QList<QPair<QString, QString> >&)", typeof(void), typeof(List<QPair<string, string>>), values);
+            interceptor.Invoke("setValues?", "setValues(const QList<QPair<QString,QString> >&)", typeof(void), typeof(List<QPair<string, string>>), values);
         }
         public void AddValue(string key, string value) {
             interceptor.Invoke("addValue$$", "addValue(const QString&, const QString&)", typeof(void), typeof(string), key, typeof(string), value);

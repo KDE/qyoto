@@ -9,6 +9,10 @@ namespace Qyoto {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QNetworkAddressEntry), this);
         }
+        private static SmokeInvocation staticInterceptor = null;
+        static QNetworkAddressEntry() {
+            staticInterceptor = new SmokeInvocation(typeof(QNetworkAddressEntry), null);
+        }
         public QNetworkAddressEntry() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QNetworkAddressEntry", "QNetworkAddressEntry()", typeof(void));
@@ -16,6 +20,13 @@ namespace Qyoto {
         public QNetworkAddressEntry(QNetworkAddressEntry other) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QNetworkAddressEntry#", "QNetworkAddressEntry(const QNetworkAddressEntry&)", typeof(void), typeof(QNetworkAddressEntry), other);
+        }
+        public override bool Equals(object o) {
+            if (!(o is QNetworkAddressEntry)) { return false; }
+            return this == (QNetworkAddressEntry) o;
+        }
+        public override int GetHashCode() {
+            return interceptor.GetHashCode();
         }
         public QHostAddress Ip() {
             return (QHostAddress) interceptor.Invoke("ip", "ip() const", typeof(QHostAddress));
@@ -29,6 +40,12 @@ namespace Qyoto {
         public void SetNetmask(QHostAddress newNetmask) {
             interceptor.Invoke("setNetmask#", "setNetmask(const QHostAddress&)", typeof(void), typeof(QHostAddress), newNetmask);
         }
+        public int PrefixLength() {
+            return (int) interceptor.Invoke("prefixLength", "prefixLength() const", typeof(int));
+        }
+        public void SetPrefixLength(int length) {
+            interceptor.Invoke("setPrefixLength$", "setPrefixLength(int)", typeof(void), typeof(int), length);
+        }
         public QHostAddress Broadcast() {
             return (QHostAddress) interceptor.Invoke("broadcast", "broadcast() const", typeof(QHostAddress));
         }
@@ -40,6 +57,12 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QNetworkAddressEntry", "~QNetworkAddressEntry()", typeof(void));
+        }
+        public static bool operator==(QNetworkAddressEntry lhs, QNetworkAddressEntry other) {
+            return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QNetworkAddressEntry&) const", typeof(bool), typeof(QNetworkAddressEntry), lhs, typeof(QNetworkAddressEntry), other);
+        }
+        public static bool operator!=(QNetworkAddressEntry lhs, QNetworkAddressEntry other) {
+            return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QNetworkAddressEntry&) const", typeof(bool), typeof(QNetworkAddressEntry), lhs, typeof(QNetworkAddressEntry), other);
         }
     }
 }

@@ -20,6 +20,14 @@ namespace Qyoto {
         public enum StyleOptionVersion {
             Version = 1,
         }
+        public int Version {
+            get { return (int) interceptor.Invoke("version", "version()", typeof(int)); }
+            set { interceptor.Invoke("setVersion$", "setVersion(int)", typeof(void), typeof(int), value); }
+        }
+        public int Type {
+            get { return (int) interceptor.Invoke("type", "type()", typeof(int)); }
+            set { interceptor.Invoke("setType$", "setType(int)", typeof(void), typeof(int), value); }
+        }
         public QStyleHintReturn(int version, int type) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleHintReturn$$", "QStyleHintReturn(int, int)", typeof(void), typeof(int), version, typeof(int), type);

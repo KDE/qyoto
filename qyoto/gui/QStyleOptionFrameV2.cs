@@ -14,6 +14,10 @@ namespace Qyoto {
             None = 0x00,
             Flat = 0x01,
         }
+        public uint Features {
+            get { return (uint) interceptor.Invoke("features", "features()", typeof(uint)); }
+            set { interceptor.Invoke("setFeatures$", "setFeatures(QStyleOptionFrameV2::FrameFeatures)", typeof(void), typeof(uint), value); }
+        }
         public QStyleOptionFrameV2() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionFrameV2", "QStyleOptionFrameV2()", typeof(void));

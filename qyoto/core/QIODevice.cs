@@ -162,22 +162,6 @@ namespace Qyoto {
         protected void SetErrorString(string errorString) {
             interceptor.Invoke("setErrorString$", "setErrorString(const QString&)", typeof(void), typeof(string), errorString);
         }
-        public event SlotFunc SignalReadyRead {
-            add { QObject.Connect(this, SIGNAL("readyRead()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("readyRead()"), value); }
-        }
-        public event SlotFunc<long> SignalBytesWritten {
-            add { QObject.Connect(this, SIGNAL("bytesWritten(qint64)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("bytesWritten(qint64)"), value); }
-        }
-        public event SlotFunc SignalAboutToClose {
-            add { QObject.Connect(this, SIGNAL("aboutToClose()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("aboutToClose()"), value); }
-        }
-        public event SlotFunc SignalReadChannelFinished {
-            add { QObject.Connect(this, SIGNAL("readChannelFinished()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("readChannelFinished()"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

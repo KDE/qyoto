@@ -80,14 +80,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QFontDialog", "~QFontDialog()", typeof(void));
         }
-        public event SlotFunc<QFont> SignalCurrentFontChanged {
-            add { QObject.Connect(this, SIGNAL("currentFontChanged(QFont)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("currentFontChanged(QFont)"), value); }
-        }
-        public event SlotFunc<QFont> SignalFontSelected {
-            add { QObject.Connect(this, SIGNAL("fontSelected(QFont)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("fontSelected(QFont)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

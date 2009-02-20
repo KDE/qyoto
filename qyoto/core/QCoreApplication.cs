@@ -56,14 +56,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QCoreApplication", "~QCoreApplication()", typeof(void));
         }
-        public event SlotFunc SignalAboutToQuit {
-            add { QObject.Connect(this, SIGNAL("aboutToQuit()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("aboutToQuit()"), value); }
-        }
-        public event SlotFunc<int> SignalUnixSignal {
-            add { QObject.Connect(this, SIGNAL("unixSignal(int)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("unixSignal(int)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }

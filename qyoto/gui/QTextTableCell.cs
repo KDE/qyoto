@@ -61,6 +61,15 @@ namespace Qyoto {
         public override int GetHashCode() {
             return interceptor.GetHashCode();
         }
+        public QTextFrame.iterator Begin() {
+            return (QTextFrame.iterator) interceptor.Invoke("begin", "begin() const", typeof(QTextFrame.iterator));
+        }
+        public QTextFrame.iterator End() {
+            return (QTextFrame.iterator) interceptor.Invoke("end", "end() const", typeof(QTextFrame.iterator));
+        }
+        public int TableCellFormatIndex() {
+            return (int) interceptor.Invoke("tableCellFormatIndex", "tableCellFormatIndex() const", typeof(int));
+        }
         ~QTextTableCell() {
             interceptor.Invoke("~QTextTableCell", "~QTextTableCell()", typeof(void));
         }

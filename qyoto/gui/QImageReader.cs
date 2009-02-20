@@ -47,6 +47,12 @@ namespace Qyoto {
         public QByteArray Format() {
             return (QByteArray) interceptor.Invoke("format", "format() const", typeof(QByteArray));
         }
+        public void SetAutoDetectImageFormat(bool enabled) {
+            interceptor.Invoke("setAutoDetectImageFormat$", "setAutoDetectImageFormat(bool)", typeof(void), typeof(bool), enabled);
+        }
+        public bool AutoDetectImageFormat() {
+            return (bool) interceptor.Invoke("autoDetectImageFormat", "autoDetectImageFormat() const", typeof(bool));
+        }
         public void SetDevice(QIODevice device) {
             interceptor.Invoke("setDevice#", "setDevice(QIODevice*)", typeof(void), typeof(QIODevice), device);
         }
@@ -61,6 +67,9 @@ namespace Qyoto {
         }
         public QSize Size() {
             return (QSize) interceptor.Invoke("size", "size() const", typeof(QSize));
+        }
+        public QImage.Format ImageFormat() {
+            return (QImage.Format) interceptor.Invoke("imageFormat", "imageFormat() const", typeof(QImage.Format));
         }
         public List<string> TextKeys() {
             return (List<string>) interceptor.Invoke("textKeys", "textKeys() const", typeof(List<string>));

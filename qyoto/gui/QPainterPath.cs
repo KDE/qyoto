@@ -7,32 +7,6 @@ namespace Qyoto {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QPainterPath(Type dummy) {}
-        [SmokeClass("QPainterPath::Element")]
-        public class Element : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected Element(Type dummy) {}
-            protected void CreateProxy() {
-                interceptor = new SmokeInvocation(typeof(Element), this);
-            }
-            public double X {
-                get { return (double) interceptor.Invoke("x", "x()", typeof(double)); }
-            }
-            public double Y {
-                get { return (double) interceptor.Invoke("y", "y()", typeof(double)); }
-            }
-            //  operator QPointF(); >>>> NOT CONVERTED
-            // bool operator==(); >>>> NOT CONVERTED
-            public bool IsMoveTo() {
-                return (bool) interceptor.Invoke("isMoveTo", "isMoveTo() const", typeof(bool));
-            }
-            public bool IsLineTo() {
-                return (bool) interceptor.Invoke("isLineTo", "isLineTo() const", typeof(bool));
-            }
-            public bool IsCurveTo() {
-                return (bool) interceptor.Invoke("isCurveTo", "isCurveTo() const", typeof(bool));
-            }
-        }
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QPainterPath), this);
         }
@@ -272,6 +246,18 @@ namespace Qyoto {
         }
         public static bool operator!=(QPainterPath lhs, QPainterPath other) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QPainterPath&) const", typeof(bool), typeof(QPainterPath), lhs, typeof(QPainterPath), other);
+        }
+        public static QPainterPath operator&(QPainterPath lhs, QPainterPath other) {
+            return (QPainterPath) staticInterceptor.Invoke("operator&#", "operator&(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), lhs, typeof(QPainterPath), other);
+        }
+        public static QPainterPath operator|(QPainterPath lhs, QPainterPath other) {
+            return (QPainterPath) staticInterceptor.Invoke("operator|#", "operator|(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), lhs, typeof(QPainterPath), other);
+        }
+        public static QPainterPath operator+(QPainterPath lhs, QPainterPath other) {
+            return (QPainterPath) staticInterceptor.Invoke("operator+#", "operator+(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), lhs, typeof(QPainterPath), other);
+        }
+        public static QPainterPath operator-(QPainterPath lhs, QPainterPath other) {
+            return (QPainterPath) staticInterceptor.Invoke("operator-#", "operator-(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), lhs, typeof(QPainterPath), other);
         }
         public static QPainterPath operator*(QPainterPath p, QMatrix m) {
             return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QMatrix&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QMatrix), m);

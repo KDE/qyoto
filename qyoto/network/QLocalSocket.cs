@@ -139,22 +139,6 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QLocalSocket", "~QLocalSocket()", typeof(void));
         }
-        public event SlotFunc SignalConnected {
-            add { QObject.Connect(this, SIGNAL("connected()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("connected()"), value); }
-        }
-        public event SlotFunc SignalDisconnected {
-            add { QObject.Connect(this, SIGNAL("disconnected()"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("disconnected()"), value); }
-        }
-        public event SlotFunc<QLocalSocket.LocalSocketError> SignalError {
-            add { QObject.Connect(this, SIGNAL("error(QLocalSocket::LocalSocketError)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("error(QLocalSocket::LocalSocketError)"), value); }
-        }
-        public event SlotFunc<QLocalSocket.LocalSocketState> SignalStateChanged {
-            add { QObject.Connect(this, SIGNAL("stateChanged(QLocalSocket::LocalSocketState)"), value); }
-            remove { QObject.Disconnect(this, SIGNAL("stateChanged(QLocalSocket::LocalSocketState)"), value); }
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
