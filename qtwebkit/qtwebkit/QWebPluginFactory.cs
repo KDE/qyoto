@@ -5,18 +5,6 @@ namespace Qyoto {
     [SmokeClass("QWebPluginFactory")]
     public abstract class QWebPluginFactory : QObject {
         protected QWebPluginFactory(Type dummy) : base((Type) null) {}
-        [SmokeClass("QWebPluginFactory::ExtensionOption")]
-        public class ExtensionOption : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected ExtensionOption(Type dummy) {}
-        }
-        [SmokeClass("QWebPluginFactory::ExtensionReturn")]
-        public class ExtensionReturn : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected ExtensionReturn(Type dummy) {}
-        }
         [SmokeClass("QWebPluginFactory::MimeType")]
         public class MimeType : Object, IDisposable {
             protected SmokeInvocation interceptor = null;
@@ -24,6 +12,18 @@ namespace Qyoto {
             protected MimeType(Type dummy) {}
             protected void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(MimeType), this);
+            }
+            public string Name {
+                get { return (string) interceptor.Invoke("name", "name()", typeof(string)); }
+                set { interceptor.Invoke("setName$", "setName(QString)", typeof(void), typeof(string), value); }
+            }
+            public string Description {
+                get { return (string) interceptor.Invoke("description", "description()", typeof(string)); }
+                set { interceptor.Invoke("setDescription$", "setDescription(QString)", typeof(void), typeof(string), value); }
+            }
+            public List<string> FileExtensions {
+                get { return (List<string>) interceptor.Invoke("fileExtensions", "fileExtensions()", typeof(List<string>)); }
+                set { interceptor.Invoke("setFileExtensions?", "setFileExtensions(QStringList)", typeof(void), typeof(List<string>), value); }
             }
             public MimeType() : this((Type) null) {
                 CreateProxy();
@@ -43,6 +43,18 @@ namespace Qyoto {
             protected Plugin(Type dummy) {}
             protected void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(Plugin), this);
+            }
+            public string Name {
+                get { return (string) interceptor.Invoke("name", "name()", typeof(string)); }
+                set { interceptor.Invoke("setName$", "setName(QString)", typeof(void), typeof(string), value); }
+            }
+            public string Description {
+                get { return (string) interceptor.Invoke("description", "description()", typeof(string)); }
+                set { interceptor.Invoke("setDescription$", "setDescription(QString)", typeof(void), typeof(string), value); }
+            }
+            public List<QWebPluginFactory.MimeType> MimeTypes {
+                get { return (List<QWebPluginFactory.MimeType>) interceptor.Invoke("mimeTypes", "mimeTypes()", typeof(List<QWebPluginFactory.MimeType>)); }
+                set { interceptor.Invoke("setMimeTypes?", "setMimeTypes(QList<QWebPluginFactory::MimeType>)", typeof(void), typeof(List<QWebPluginFactory.MimeType>), value); }
             }
             public Plugin() : this((Type) null) {
                 CreateProxy();

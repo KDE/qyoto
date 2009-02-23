@@ -31,6 +31,11 @@ namespace Qyoto {
             JavascriptCanAccessClipboard = 6,
             DeveloperExtrasEnabled = 7,
             LinksIncludedInFocusChain = 8,
+            ZoomTextOnly = 9,
+            PrintElementBackgrounds = 10,
+            OfflineStorageDatabaseEnabled = 11,
+            OfflineWebApplicationCacheEnabled = 12,
+            LocalStorageDatabaseEnabled = 13,
         }
         public enum WebGraphic {
             MissingImageGraphic = 0,
@@ -106,6 +111,18 @@ namespace Qyoto {
         }
         public static void SetObjectCacheCapacities(int cacheMinDeadCapacity, int cacheMaxDead, int totalCapacity) {
             staticInterceptor.Invoke("setObjectCacheCapacities$$$", "setObjectCacheCapacities(int, int, int)", typeof(void), typeof(int), cacheMinDeadCapacity, typeof(int), cacheMaxDead, typeof(int), totalCapacity);
+        }
+        public static void SetOfflineStoragePath(string path) {
+            staticInterceptor.Invoke("setOfflineStoragePath$", "setOfflineStoragePath(const QString&)", typeof(void), typeof(string), path);
+        }
+        public static string OfflineStoragePath() {
+            return (string) staticInterceptor.Invoke("offlineStoragePath", "offlineStoragePath()", typeof(string));
+        }
+        public static void SetOfflineStorageDefaultQuota(long maximumSize) {
+            staticInterceptor.Invoke("setOfflineStorageDefaultQuota$", "setOfflineStorageDefaultQuota(qint64)", typeof(void), typeof(long), maximumSize);
+        }
+        public static long OfflineStorageDefaultQuota() {
+            return (long) staticInterceptor.Invoke("offlineStorageDefaultQuota", "offlineStorageDefaultQuota()", typeof(long));
         }
     }
 }

@@ -28,6 +28,15 @@ namespace Qyoto {
         public QIcon Icon() {
             return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
         }
+        public QVariant UserData() {
+            return (QVariant) interceptor.Invoke("userData", "userData() const", typeof(QVariant));
+        }
+        public void SetUserData(QVariant userData) {
+            interceptor.Invoke("setUserData#", "setUserData(const QVariant&)", typeof(void), typeof(QVariant), userData);
+        }
+        public bool IsValid() {
+            return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
+        }
         ~QWebHistoryItem() {
             interceptor.Invoke("~QWebHistoryItem", "~QWebHistoryItem()", typeof(void));
         }

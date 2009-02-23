@@ -8,18 +8,6 @@ namespace Qyoto {
     [SmokeClass("QWebPage")]
     public class QWebPage : QObject, IDisposable {
         protected QWebPage(Type dummy) : base((Type) null) {}
-        [SmokeClass("QWebPage::ExtensionOption")]
-        public class ExtensionOption : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected ExtensionOption(Type dummy) {}
-        }
-        [SmokeClass("QWebPage::ExtensionReturn")]
-        public class ExtensionReturn : Object {
-            protected SmokeInvocation interceptor = null;
-            private IntPtr smokeObject;
-            protected ExtensionReturn(Type dummy) {}
-        }
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QWebPage), this);
         }
@@ -87,7 +75,10 @@ namespace Qyoto {
             ToggleItalic = 47,
             ToggleUnderline = 48,
             InspectElement = 49,
-            WebActionCount = 50,
+            InsertParagraphSeparator = 50,
+            InsertLineSeparator = 51,
+            SelectAll = 52,
+            WebActionCount = 53,
         }
         public enum FindFlag {
             FindBackward = 1,
@@ -104,6 +95,7 @@ namespace Qyoto {
             WebModalDialog = 1,
         }
         public enum Extension {
+            ChooseMultipleFilesExtension = 0,
         }
         [Q_PROPERTY("bool", "modified")]
         public bool Modified {
@@ -132,6 +124,11 @@ namespace Qyoto {
         public QPalette Palette {
             get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
             set { interceptor.Invoke("setPalette#", "setPalette(QPalette)", typeof(void), typeof(QPalette), value); }
+        }
+        [Q_PROPERTY("bool", "contentEditable")]
+        public bool ContentEditable {
+            get { return (bool) interceptor.Invoke("isContentEditable", "isContentEditable()", typeof(bool)); }
+            set { interceptor.Invoke("setContentEditable$", "setContentEditable(bool)", typeof(void), typeof(bool), value); }
         }
         // bool extension(QWebPage::Extension arg1,const QWebPage::ExtensionOption* arg2,QWebPage::ExtensionReturn* arg3); >>>> NOT CONVERTED
         // bool extension(QWebPage::Extension arg1,const QWebPage::ExtensionOption* arg2); >>>> NOT CONVERTED
@@ -214,6 +211,9 @@ namespace Qyoto {
         }
         public void UpdatePositionDependentActions(QPoint pos) {
             interceptor.Invoke("updatePositionDependentActions#", "updatePositionDependentActions(const QPoint&)", typeof(void), typeof(QPoint), pos);
+        }
+        public QMenu CreateStandardContextMenu() {
+            return (QMenu) interceptor.Invoke("createStandardContextMenu", "createStandardContextMenu()", typeof(QMenu));
         }
         [SmokeMethod("extension(QWebPage::Extension)")]
         public virtual bool extension(QWebPage.Extension extension) {
@@ -315,5 +315,13 @@ namespace Qyoto {
         void DownloadRequested(QNetworkRequest request);
         [Q_SIGNAL("void microFocusChanged()")]
         void MicroFocusChanged();
+        [Q_SIGNAL("void contentsChanged()")]
+        void ContentsChanged();
+        [Q_SIGNAL("void databaseQuotaExceeded(QWebFrame*, QString)")]
+        void DatabaseQuotaExceeded(QWebFrame frame, string databaseName);
+        [Q_SIGNAL("void saveFrameStateRequested(QWebFrame*, QWebHistoryItem*)")]
+        void SaveFrameStateRequested(QWebFrame frame, QWebHistoryItem item);
+        [Q_SIGNAL("void restoreFrameStateRequested(QWebFrame*)")]
+        void RestoreFrameStateRequested(QWebFrame frame);
     }
 }

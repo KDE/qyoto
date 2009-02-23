@@ -39,6 +39,11 @@ namespace Qyoto {
             get { return (double) interceptor.Invoke("textSizeMultiplier", "textSizeMultiplier()", typeof(double)); }
             set { interceptor.Invoke("setTextSizeMultiplier$", "setTextSizeMultiplier(qreal)", typeof(void), typeof(double), value); }
         }
+        [Q_PROPERTY("qreal", "zoomFactor")]
+        public double ZoomFactor {
+            get { return (double) interceptor.Invoke("zoomFactor", "zoomFactor()", typeof(double)); }
+            set { interceptor.Invoke("setZoomFactor$", "setZoomFactor(qreal)", typeof(void), typeof(double), value); }
+        }
         public QWebView(QWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QWebView#", "QWebView(QWidget*)", typeof(void), typeof(QWidget), parent);

@@ -17,6 +17,11 @@ namespace Qyoto {
             get { return (double) interceptor.Invoke("textSizeMultiplier", "textSizeMultiplier()", typeof(double)); }
             set { interceptor.Invoke("setTextSizeMultiplier$", "setTextSizeMultiplier(qreal)", typeof(void), typeof(double), value); }
         }
+        [Q_PROPERTY("qreal", "zoomFactor")]
+        public double ZoomFactor {
+            get { return (double) interceptor.Invoke("zoomFactor", "zoomFactor()", typeof(double)); }
+            set { interceptor.Invoke("setZoomFactor$", "setZoomFactor(qreal)", typeof(void), typeof(double), value); }
+        }
         [Q_PROPERTY("QString", "title")]
         public string Title {
             get { return (string) interceptor.Invoke("title", "title()", typeof(string)); }
@@ -34,6 +39,12 @@ namespace Qyoto {
         public QSize ContentsSize {
             get { return (QSize) interceptor.Invoke("contentsSize", "contentsSize()", typeof(QSize)); }
         }
+        [Q_PROPERTY("QPoint", "scrollPosition")]
+        public QPoint ScrollPosition {
+            get { return (QPoint) interceptor.Invoke("scrollPosition", "scrollPosition()", typeof(QPoint)); }
+            set { interceptor.Invoke("setScrollPosition#", "setScrollPosition(QPoint)", typeof(void), typeof(QPoint), value); }
+        }
+        // QMultiMap<QString, QString> metaData(); >>>> NOT CONVERTED
         public QWebPage Page() {
             return (QWebPage) interceptor.Invoke("page", "page() const", typeof(QWebPage));
         }
@@ -103,6 +114,9 @@ namespace Qyoto {
         public int ScrollBarMaximum(Qt.Orientation orientation) {
             return (int) interceptor.Invoke("scrollBarMaximum$", "scrollBarMaximum(Qt::Orientation) const", typeof(int), typeof(Qt.Orientation), orientation);
         }
+        public void Scroll(int arg1, int arg2) {
+            interceptor.Invoke("scroll$$", "scroll(int, int)", typeof(void), typeof(int), arg1, typeof(int), arg2);
+        }
         public void Render(QPainter painter, QRegion clip) {
             interceptor.Invoke("render##", "render(QPainter*, const QRegion&)", typeof(void), typeof(QPainter), painter, typeof(QRegion), clip);
         }
@@ -121,6 +135,9 @@ namespace Qyoto {
         [SmokeMethod("event(QEvent*)")]
         public override bool Event(QEvent arg1) {
             return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+        }
+        public QWebSecurityOrigin SecurityOrigin() {
+            return (QWebSecurityOrigin) interceptor.Invoke("securityOrigin", "securityOrigin() const", typeof(QWebSecurityOrigin));
         }
         [Q_SLOT("QVariant evaluateJavaScript(QString)")]
         public QVariant EvaluateJavaScript(string scriptSource) {

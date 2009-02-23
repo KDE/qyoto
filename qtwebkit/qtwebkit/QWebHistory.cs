@@ -49,8 +49,17 @@ namespace Qyoto {
         public QWebHistoryItem ItemAt(int i) {
             return (QWebHistoryItem) interceptor.Invoke("itemAt$", "itemAt(int) const", typeof(QWebHistoryItem), typeof(int), i);
         }
+        public int CurrentItemIndex() {
+            return (int) interceptor.Invoke("currentItemIndex", "currentItemIndex() const", typeof(int));
+        }
         public int Count() {
             return (int) interceptor.Invoke("count", "count() const", typeof(int));
+        }
+        public int MaximumItemCount() {
+            return (int) interceptor.Invoke("maximumItemCount", "maximumItemCount() const", typeof(int));
+        }
+        public void SetMaximumItemCount(int count) {
+            interceptor.Invoke("setMaximumItemCount$", "setMaximumItemCount(int)", typeof(void), typeof(int), count);
         }
     }
 }

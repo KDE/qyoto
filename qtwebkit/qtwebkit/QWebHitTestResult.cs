@@ -23,6 +23,9 @@ namespace Qyoto {
         public QPoint Pos() {
             return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
         }
+        public QRect BoundingRect() {
+            return (QRect) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRect));
+        }
         public string Title() {
             return (string) interceptor.Invoke("title", "title() const", typeof(string));
         }
