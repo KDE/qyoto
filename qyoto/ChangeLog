@@ -1,3 +1,7 @@
+2009-02-23  Arno Rehn  <arno@arnorehn.de>
+	* Apply a patch from Eric Butler: Fix Qyoto.GetCPPEnumValue() to return the
+	  correct value.
+
 2009-02-20  Richard Dale  <richard.j.dale@gmail.com>
 	* Regenerate the Qyoto sources from the Qt 4.5 headers
 

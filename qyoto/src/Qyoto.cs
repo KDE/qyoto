@@ -292,17 +292,9 @@ namespace Qyoto
 			}
 			foreach (Type nt in t.GetNestedTypes()) {
 				if (nt.IsEnum) {
-					if (Enum.GetUnderlyingType(nt) == typeof(uint)) {
-						foreach (uint i in Enum.GetValues(nt)) {
-							if (Enum.Format(nt, i, "f") == value) {
-								return i;
-							}
-						}
-					} else if (Enum.GetUnderlyingType(nt) == typeof(int)) {
-						foreach (int i in Enum.GetValues(nt)) {
-							if (Enum.Format(nt, i, "f") == value) {
-								return (uint) i;
-							}
+					foreach (string name in Enum.GetNames((nt))) {
+						if (name == value) {
+							return Convert.ToUInt32(Enum.Parse(nt, name));
 						}
 					}
 				}
