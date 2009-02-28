@@ -809,7 +809,7 @@ StringArrayToQStringList(int length, char ** strArray)
 	char ** ca = (char**) StringArrayToCharStarStar(length, strArray);
 	
 	for (int i = 0; i < length; i++) {
-		(*result) << QString(ca[i]);
+		(*result) << QString::fromUtf8(ca[i]);
 	}
 	return (void*) result;
 }
