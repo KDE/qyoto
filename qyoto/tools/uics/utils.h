@@ -37,15 +37,13 @@ inline QString fixString(const QString &str, const QString &indent)
 {
     QString cursegment;
     QStringList result;
-    uchar cbyte;
-    QByteArray utf8 = str.toUtf8();
+    const QChar *utf16 = str.unicode();
 
-    for (int i = 0; i < utf8.length(); ++i) {
-        cbyte = utf8.at(i);
-        if (cbyte >= 0x80) {
-            cursegment += QLatin1String("\\") + QString::number(cbyte, 8);
+    for (int i = 0; !utf16[i].isNull(); ++i) {
+        if (utf16[i] >= 0x80) {
+            cursegment += QLatin1String("\\u") + QString().sprintf("%04hx", utf16[i].unicode());
         } else {
-            switch(cbyte) {
+            switch(utf16[i].toLatin1()) {
             case '\\':
                 cursegment += QLatin1String("\\\\"); break;
             case '\"':
@@ -55,7 +53,7 @@ inline QString fixString(const QString &str, const QString &indent)
             case '\n':
                 cursegment += QLatin1String("\\n\" +\n\""); break;
             default:
-                cursegment += QChar(cbyte);
+                cursegment += utf16[i];
             }
         }
         
