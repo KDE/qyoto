@@ -28,6 +28,10 @@ namespace Soprano {
         BackendOptionStorageMemory = 0x1,
         BackendOptionEnableInference = 0x2,
         BackendOptionStorageDir = 0x4,
+        BackendOptionHost = 0x8,
+        BackendOptionPort = 0x10,
+        BackendOptionUsername = 0x20,
+        BackendOptionPassword = 0x40,
         BackendOptionUser = 0x1000,
     }
     /// <remarks>
@@ -56,12 +60,76 @@ namespace Soprano {
         static Global() {
             staticInterceptor = new SmokeInvocation(typeof(Global), null);
         }
-        // const Soprano::Backend* discoverBackendByName(const QString& arg1); >>>> NOT CONVERTED
-        // const Soprano::Backend* discoverBackendByFeatures(Soprano::BackendFeatures arg1,const QStringList& arg2); >>>> NOT CONVERTED
-        // const Soprano::Backend* discoverBackendByFeatures(Soprano::BackendFeatures arg1); >>>> NOT CONVERTED
-        // void setUsedBackend(const Soprano::Backend* arg1); >>>> NOT CONVERTED
-        // const Soprano::Backend* usedBackend(); >>>> NOT CONVERTED
-        // Soprano::Model* createModel(const QList<Soprano::BackendSetting>& arg1); >>>> NOT CONVERTED
+        /// <remarks>
+        ///  Find a backend plugin by its name.
+        ///  \return the backend specified by \a name or null if could not
+        ///  be found.
+        ///      </remarks>        <short>    Find a backend plugin by its name.</short>
+        public static Soprano.Backend DiscoverBackendByName(string name) {
+            return (Soprano.Backend) staticInterceptor.Invoke("discoverBackendByName$", "discoverBackendByName(const QString&)", typeof(Soprano.Backend), typeof(string), name);
+        }
+        /// <remarks>
+        ///  Find a backend plugin by its features.
+        ///  \param features The features that are requested.
+        ///  \param userFeatures If features contain Soprano.BackendFeatureUser this paramter states the additionally requested user features.
+        ///  \return a backend that supports the features defined in \a features.
+        ///  \sa PluginManager.DiscoverBackendByFeatures()
+        ///      </remarks>        <short>    Find a backend plugin by its features.</short>
+        public static Soprano.Backend DiscoverBackendByFeatures(uint features, List<string> userFeatures) {
+            return (Soprano.Backend) staticInterceptor.Invoke("discoverBackendByFeatures$?", "discoverBackendByFeatures(Soprano::BackendFeatures, const QStringList&)", typeof(Soprano.Backend), typeof(uint), features, typeof(List<string>), userFeatures);
+        }
+        public static Soprano.Backend DiscoverBackendByFeatures(uint features) {
+            return (Soprano.Backend) staticInterceptor.Invoke("discoverBackendByFeatures$", "discoverBackendByFeatures(Soprano::BackendFeatures)", typeof(Soprano.Backend), typeof(uint), features);
+        }
+        /// <remarks>
+        ///  By default and if available backend "redland" is used.
+        ///      </remarks>        <short>    By default and if available backend "redland" is used.</short>
+        public static void SetUsedBackend(Soprano.Backend arg1) {
+            staticInterceptor.Invoke("setUsedBackend#", "setUsedBackend(const Soprano::Backend*)", typeof(void), typeof(Soprano.Backend), arg1);
+        }
+        public static Soprano.Backend UsedBackend() {
+            return (Soprano.Backend) staticInterceptor.Invoke("usedBackend", "usedBackend()", typeof(Soprano.Backend));
+        }
+        /// <remarks>
+        ///  Creates a new RDF storage using the backend set via setUsedBackend.
+        ///  The caller takes ownership and has to care about deletion.
+        ///  \param settings The settings that should be used to create the Model. Backend implementations
+        ///   should never ignore settings but rather return 0 if an option is not supported. Backends can,
+        ///  however, define their own default settings.
+        ///  \sa Model, Backend.CreateModel, BackendSetting
+        ///      </remarks>        <short>    Creates a new RDF storage using the backend set via setUsedBackend.</short>
+        public static Soprano.Model CreateModel(List<Soprano.BackendSetting> settings) {
+            return (Soprano.Model) staticInterceptor.Invoke("createModel?", "createModel(const QList<Soprano::BackendSetting>&)", typeof(Soprano.Model), typeof(List<Soprano.BackendSetting>), settings);
+        }
+        public static Soprano.Model CreateModel() {
+            return (Soprano.Model) staticInterceptor.Invoke("createModel", "createModel()", typeof(Soprano.Model));
+        }
+        public static uint QHash(Soprano.Node node) {
+            return (uint) staticInterceptor.Invoke("qHash#", "qHash(const Soprano::Node&)", typeof(uint), typeof(Soprano.Node), node);
+        }
+        /// <remarks>
+        ///  Get the mimetype string of a serialization.
+        ///  \param serialization The serialization the mimetype is wanted for.
+        ///  \param userSerialization If <pre>serialization</pre> is SerializationUser then this is the user defined serialization.
+        ///         (this parameter is added for convinience to avoid having an additional check before using this method.)
+        ///  \return The mimetype of serialization, an empty string is serialization is SerializationUnknown, or 
+        ///  <pre>userSerialization</pre> if <pre>serialization</pre> is SerializationUser.
+        ///      </remarks>        <short>    Get the mimetype string of a serialization.</short>
+        public static string SerializationMimeType(Soprano.RdfSerialization serialization, string userSerialization) {
+            return (string) staticInterceptor.Invoke("serializationMimeType$$", "serializationMimeType(Soprano::RdfSerialization, const QString&)", typeof(string), typeof(Soprano.RdfSerialization), serialization, typeof(string), userSerialization);
+        }
+        public static string SerializationMimeType(Soprano.RdfSerialization serialization) {
+            return (string) staticInterceptor.Invoke("serializationMimeType$", "serializationMimeType(Soprano::RdfSerialization)", typeof(string), typeof(Soprano.RdfSerialization), serialization);
+        }
+        /// <remarks>
+        ///  Parse a mimetype and match it to the Soprano.RdfSerialization enum.
+        ///  \return the Soprano.RdfSerialization type that matches mimetype or SerializationUnknown if the mimetype 
+        ///  could not be parsed. Be aware that Soprano is very lax in parsing the mimetype, i.e. you can use simple
+        ///  strings like 'trig' or 'n-quads' instead of the proper mimetype for convenience.
+        ///      </remarks>        <short>    Parse a mimetype and match it to the Soprano.RdfSerialization enum.</short>
+        public static Soprano.RdfSerialization MimeTypeToSerialization(string mimetype) {
+            return (Soprano.RdfSerialization) staticInterceptor.Invoke("mimeTypeToSerialization$", "mimeTypeToSerialization(const QString&)", typeof(Soprano.RdfSerialization), typeof(string), mimetype);
+        }
         /// <remarks>
         ///  @brief Returns the major number of Soprano's version, e.g.
         ///  1 for %Soprano 1.0.2.
@@ -100,50 +168,50 @@ namespace Soprano {
             return (string) staticInterceptor.Invoke("versionString", "versionString()", typeof(string));
         }
         /// <remarks>
-        ///  Find a backend plugin by its name.
-        ///  \return the backend specified by \a name or null if could not
-        ///  be found.
-        ///      </remarks>        <short>    Find a backend plugin by its name.</short>
-        /// <remarks>
-        ///  Find a backend plugin by its features.
-        ///  \param features The features that are requested.
-        ///  \param userFeatures If features contain Soprano.BackendFeatureUser this paramter states the additionally requested user features.
-        ///  \return a backend that supports the features defined in \a features.
-        ///  \sa PluginManager.DiscoverBackendByFeatures()
-        ///      </remarks>        <short>    Find a backend plugin by its features.</short>
-        /// <remarks>
-        ///  By default and if available backend "redland" is used.
-        ///      </remarks>        <short>    By default and if available backend "redland" is used.</short>
-        /// <remarks>
-        ///  Creates a new RDF storage using the backend set via setUsedBackend.
-        ///  The caller takes ownership and has to care about deletion.
-        ///  \param settings The settings that should be used to create the Model. Backend implementations
-        ///   should never ignore settings but rather return 0 if an option is not supported. Backends can,
-        ///  however, define their own default settings.
-        ///  \sa Model, Backend.CreateModel, BackendSetting
-        ///      </remarks>        <short>    Creates a new RDF storage using the backend set via setUsedBackend.</short>
-        /// <remarks>
-        ///  Get the mimetype string of a serialization.
-        ///  \param serialization The serialization the mimetype is wanted for.
-        ///  \param userSerialization If <pre>serialization</pre> is SerializationUser then this is the user defined serialization.
-        ///         (this parameter is added for convinience to avoid having an additional check before using this method.)
-        ///  \return The mimetype of serialization, an empty string is serialization is SerializationUnknown, or 
-        ///  <pre>userSerialization</pre> if <pre>serialization</pre> is SerializationUser.
-        ///      </remarks>        <short>    Get the mimetype string of a serialization.</short>
-        public static string SerializationMimeType(Soprano.RdfSerialization serialization, string userSerialization) {
-            return (string) staticInterceptor.Invoke("serializationMimeType$$", "serializationMimeType(Soprano::RdfSerialization, const QString&)", typeof(string), typeof(Soprano.RdfSerialization), serialization, typeof(string), userSerialization);
+        ///  Check if a certain option is defined in a list of BackendSettings.
+        ///  \param settings The list to check.
+        ///  \param option The option to check.
+        ///  \param userOptionName If <pre>option</pre> is Soprano.BackendOptionUser, this
+        ///  defines the user option to be checked.
+        ///  \return <pre>true</pre> if the option is defined.
+        ///  \since 2.2
+        ///      </remarks>        <short>    Check if a certain option is defined in a list of BackendSettings.</short>
+        public static bool IsOptionInSettings(List<Soprano.BackendSetting> settings, Soprano.BackendOption option, string userOptionName) {
+            return (bool) staticInterceptor.Invoke("isOptionInSettings?$$", "isOptionInSettings(const QList<Soprano::BackendSetting>&, Soprano::BackendOption, const QString&)", typeof(bool), typeof(List<Soprano.BackendSetting>), settings, typeof(Soprano.BackendOption), option, typeof(string), userOptionName);
         }
-        public static string SerializationMimeType(Soprano.RdfSerialization serialization) {
-            return (string) staticInterceptor.Invoke("serializationMimeType$", "serializationMimeType(Soprano::RdfSerialization)", typeof(string), typeof(Soprano.RdfSerialization), serialization);
+        public static bool IsOptionInSettings(List<Soprano.BackendSetting> settings, Soprano.BackendOption option) {
+            return (bool) staticInterceptor.Invoke("isOptionInSettings?$", "isOptionInSettings(const QList<Soprano::BackendSetting>&, Soprano::BackendOption)", typeof(bool), typeof(List<Soprano.BackendSetting>), settings, typeof(Soprano.BackendOption), option);
         }
         /// <remarks>
-        ///  Parse a mimetype and match it to the Soprano.RdfSerialization enum.
-        ///  \return the Soprano.RdfSerialization type that matches mimetype or SerializationUnknown if the mimetype 
-        ///  could not be parsed. Be aware that Soprano is very lax in parsing the mimetype, i.e. you can use simple
-        ///  strings like 'trig' or 'n-quads' instead of the proper mimetype for convenience.
-        ///      </remarks>        <short>    Parse a mimetype and match it to the Soprano.RdfSerialization enum.</short>
-        public static Soprano.RdfSerialization MimeTypeToSerialization(string mimetype) {
-            return (Soprano.RdfSerialization) staticInterceptor.Invoke("mimeTypeToSerialization$", "mimeTypeToSerialization(const QString&)", typeof(Soprano.RdfSerialization), typeof(string), mimetype);
+        ///  Get a setting from the set, allowing to modify it.
+        ///  \param settings The list to check.
+        ///  \param option The option to extract.
+        ///  \param userOptionName If <pre>option</pre> is Soprano.BackendOptionUser, this
+        ///  defines the user option to be extracted.
+        ///  \return The extracted setting.
+        ///  \since 2.2
+        ///      </remarks>        <short>    Get a setting from the set, allowing to modify it.</short>
+        public static Soprano.BackendSetting SettingInSettings(List<Soprano.BackendSetting> settings, Soprano.BackendOption option, string userOptionName) {
+            return (Soprano.BackendSetting) staticInterceptor.Invoke("settingInSettings?$$", "settingInSettings(QList<Soprano::BackendSetting>&, Soprano::BackendOption, const QString&)", typeof(Soprano.BackendSetting), typeof(List<Soprano.BackendSetting>), settings, typeof(Soprano.BackendOption), option, typeof(string), userOptionName);
+        }
+        public static Soprano.BackendSetting SettingInSettings(List<Soprano.BackendSetting> settings, Soprano.BackendOption option) {
+            return (Soprano.BackendSetting) staticInterceptor.Invoke("settingInSettings?$", "settingInSettings(QList<Soprano::BackendSetting>&, Soprano::BackendOption)", typeof(Soprano.BackendSetting), typeof(List<Soprano.BackendSetting>), settings, typeof(Soprano.BackendOption), option);
+        }
+        /// <remarks>
+        ///  Retrieve the value of an option.
+        ///  \param settings The list to check.
+        ///  \param option The option to retrieve.
+        ///  \param userOptionName If <pre>option</pre> is Soprano.BackendOptionUser, this
+        ///  defines the user option to be retrieved.
+        ///  \return The value of the specified option or an invalid variant if the set
+        ///  does not contain the option.
+        ///  \since 2.2
+        ///      </remarks>        <short>    Retrieve the value of an option.</short>
+        public static QVariant ValueInSettings(List<Soprano.BackendSetting> settings, Soprano.BackendOption option, string userOptionName) {
+            return (QVariant) staticInterceptor.Invoke("valueInSettings?$$", "valueInSettings(const QList<Soprano::BackendSetting>&, Soprano::BackendOption, const QString&)", typeof(QVariant), typeof(List<Soprano.BackendSetting>), settings, typeof(Soprano.BackendOption), option, typeof(string), userOptionName);
+        }
+        public static QVariant ValueInSettings(List<Soprano.BackendSetting> settings, Soprano.BackendOption option) {
+            return (QVariant) staticInterceptor.Invoke("valueInSettings?$", "valueInSettings(const QList<Soprano::BackendSetting>&, Soprano::BackendOption)", typeof(QVariant), typeof(List<Soprano.BackendSetting>), settings, typeof(Soprano.BackendOption), option);
         }
     }
 }

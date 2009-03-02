@@ -18,6 +18,10 @@ namespace Soprano.Index {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(IndexFilterModel), this);
         }
+        private static SmokeInvocation staticInterceptor = null;
+        static IndexFilterModel() {
+            staticInterceptor = new SmokeInvocation(typeof(IndexFilterModel), null);
+        }
         /// <remarks>
         ///  Create a new index model.
         ///  \param indexDir The directory where the index should be stored. If the
@@ -58,6 +62,8 @@ namespace Soprano.Index {
         /// <remarks>
         ///  Adds a new statement.
         ///  This will index the statement and then forward the call to the parent model.
+        ///  Normally only statements with literal objects are indexed. An exception
+        ///  are those statements with predicates that are set via setForceIndexPredicates.
         ///              </remarks>        <short>    Adds a new statement.</short>
         [SmokeMethod("addStatement(const Soprano::Statement&)")]
         public override Soprano.Error.ErrorCode AddStatement(Soprano.Statement statement) {
@@ -180,11 +186,88 @@ namespace Soprano.Index {
         public List<QUrl> IndexOnlyPredicates() {
             return (List<QUrl>) interceptor.Invoke("indexOnlyPredicates", "indexOnlyPredicates() const", typeof(List<QUrl>));
         }
+        /// <remarks>
+        ///  Add a predicate which should be indexed even if the object is a resource.
+        ///  See setForceIndexPredicates for a detailed explanation.
+        ///  \param predicate The predicate that should be indexed
+        ///  in any case.
+        ///  \sa forceIndexPredicates, setForceIndexPredicates
+        ///  \since 2.2
+        ///              </remarks>        <short>    Add a predicate which should be indexed even if the object is a resource.</short>
+        public void AddForceIndexPredicate(QUrl predicate) {
+            interceptor.Invoke("addForceIndexPredicate#", "addForceIndexPredicate(const QUrl&)", typeof(void), typeof(QUrl), predicate);
+        }
+        /// <remarks>
+        ///  Normally only statements with a literal object are indexed when added
+        ///  thorugh addStatement. In some cases however, it is useful to also index 
+        ///  resource objects.
+        ///  Statement with a resource object (a URI) and a predicate that matches
+        ///  one of the force index predicates, are converted to strings using
+        ///  QUrl.ToEncoded and added to the index non-tokenized. Thus, the resources
+        ///  will be searchable directly via a 'field:uri' query but not via the
+        ///  default search  field.
+        ///  A typical and very useful predicate is Vocabulary.RDF.Type(). 
+        ///  This allows to restrict the type of resources in lucene queries:
+        ///  <pre>
+        ///  model.ExecuteQuery( string( "foobar AND %1:%2" )
+        ///                       .arg( encodeUriForLuceneQuery( RDF.Type() ) )
+        ///                       .arg( encodeUriForLuceneQuery( myType ) ),
+        ///                       Query.QueryLanguageUser,
+        ///                       "lucene" );
+        ///  </pre>
+        ///  \param predicates The predicates that should be indexed
+        ///  in any case.
+        ///  \sa forceIndexPredicates, addForceIndexPredicate
+        ///  \since 2.2
+        ///              </remarks>        <short>    Normally only statements with a literal object are indexed when added  thorugh addStatement.</short>
+        public void SetForceIndexPredicates(List<QUrl> predicates) {
+            interceptor.Invoke("setForceIndexPredicates?", "setForceIndexPredicates(const QList<QUrl>&)", typeof(void), typeof(List<QUrl>), predicates);
+        }
+        /// <remarks>
+        ///  See setForceIndexPredicates for a detailed explanation.
+        ///  \return A list of predicates that will be indexed even if the object
+        ///  is not a literal.
+        ///  \sa addForceIndexPredicate, setForceIndexPredicates
+        ///  \since 2.2
+        ///              </remarks>        <short>    See setForceIndexPredicates for a detailed explanation.</short>
+        public List<QUrl> ForceIndexPredicates() {
+            return (List<QUrl>) interceptor.Invoke("forceIndexPredicates", "forceIndexPredicates() const", typeof(List<QUrl>));
+        }
         ~IndexFilterModel() {
             interceptor.Invoke("~IndexFilterModel", "~IndexFilterModel()", typeof(void));
         }
         public new void Dispose() {
             interceptor.Invoke("~IndexFilterModel", "~IndexFilterModel()", typeof(void));
+        }
+        /// <remarks>
+        ///  Encodes a string to be used in a lucene query. String values
+        ///  may contain characters that are reserved in lucene queries.
+        ///  These are property escaped by this method.
+        ///  This method converts an arbitrary string into a string that can be used
+        ///  in a lucene query.
+        ///  \param value The string to be encoded.
+        ///  \return An encoded and escaped string representation of the 
+        ///  provided string.
+        ///  \sa encodeUriForLuceneQuery
+        ///  \since 2.2
+        ///              </remarks>        <short>    Encodes a string to be used in a lucene query.</short>
+        public static string EncodeStringForLuceneQuery(string value) {
+            return (string) staticInterceptor.Invoke("encodeStringForLuceneQuery$", "encodeStringForLuceneQuery(const QString&)", typeof(string), typeof(string), value);
+        }
+        /// <remarks>
+        ///  Encodes a URI to be used in a lucene query. URIs often contain
+        ///  characters that are reserved in lucene queries and, thus, need
+        ///  to be escaped. In addition, the URIs are encoded by the index
+        ///  model for storage in clucene.
+        ///  This method converts a URI into a string that can be used
+        ///  in a lucene query.
+        ///  \param uri The URI to be encoded.
+        ///  \return An encoded and escaped string representation of the URI.
+        ///  \sa encodeStringForLuceneQuery
+        ///  \since 2.2
+        ///              </remarks>        <short>    Encodes a URI to be used in a lucene query.</short>
+        public static string EncodeUriForLuceneQuery(QUrl uri) {
+            return (string) staticInterceptor.Invoke("encodeUriForLuceneQuery#", "encodeUriForLuceneQuery(const QUrl&)", typeof(string), typeof(QUrl), uri);
         }
         protected new IIndexFilterModelSignals Emit {
             get { return (IIndexFilterModelSignals) Q_EMIT; }

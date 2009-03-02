@@ -3,6 +3,7 @@ namespace Soprano.Client {
     using Soprano;
     using System;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  \class LocalSocketClient localsocketclient.h Soprano/Client/LocalSocketClient
     ///  \brief Creates a connection to the %Soprano server through a local socket interface.
@@ -21,7 +22,6 @@ namespace Soprano.Client {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(LocalSocketClient), this);
         }
-        // Soprano::Model* createModel(const QString& arg1,const QList<Soprano::BackendSetting>& arg2); >>>> NOT CONVERTED
         // Error lastError(); >>>> NOT CONVERTED
         // void setError(const Error& arg1); >>>> NOT CONVERTED
         /// <remarks>
@@ -54,6 +54,9 @@ namespace Soprano.Client {
         ///  \return A new Model instance wrapping the requested server
         ///  model or 0 on error (check lastError() for details.)
         ///              </remarks>        <short>    Creates a new Model instance that wraps a server model.</short>
+        public Soprano.Model CreateModel(string name, List<Soprano.BackendSetting> settings) {
+            return (Soprano.Model) interceptor.Invoke("createModel$?", "createModel(const QString&, const QList<Soprano::BackendSetting>&)", typeof(Soprano.Model), typeof(string), name, typeof(List<Soprano.BackendSetting>), settings);
+        }
         public Soprano.Model CreateModel(string name) {
             return (Soprano.Model) interceptor.Invoke("createModel$", "createModel(const QString&)", typeof(Soprano.Model), typeof(string), name);
         }

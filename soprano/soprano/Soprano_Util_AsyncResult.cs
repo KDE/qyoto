@@ -15,6 +15,10 @@ namespace Soprano.Util {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(AsyncResult), this);
         }
+        private static SmokeInvocation staticInterceptor = null;
+        static AsyncResult() {
+            staticInterceptor = new SmokeInvocation(typeof(AsyncResult), null);
+        }
         // void setResult(const QVariant& arg1,const Soprano::Error::Error& arg2); >>>> NOT CONVERTED
         // Error lastError(); >>>> NOT CONVERTED
         // void setError(const Error& arg1); >>>> NOT CONVERTED
@@ -83,8 +87,9 @@ namespace Soprano.Util {
             return (Soprano.Node) interceptor.Invoke("node", "node() const", typeof(Soprano.Node));
         }
         /// <remarks>
-        ///  Internal method. Do not call.
-        ///              </remarks>        <short>    Internal method.</short>
+        ///  Sets the final result and emits the resultReady signal. This method
+        ///  should never be called by clients.
+        ///              </remarks>        <short>    Sets the final result and emits the resultReady signal.</short>
         /// <remarks>
         ///  Get the last error that occured in the current thread.
         ///              </remarks>        <short>    Get the last error that occured in the current thread.</short>
@@ -108,6 +113,13 @@ namespace Soprano.Util {
         }
         protected void SetError(string errorMessage) {
             interceptor.Invoke("setError$", "setError(const QString&) const", typeof(void), typeof(string), errorMessage);
+        }
+        /// <remarks>
+        ///  Constructor method to ensure binary compatibility.
+        ///  \since 2.2
+        ///              </remarks>        <short>    Constructor method to ensure binary compatibility.</short>
+        public static Soprano.Util.AsyncResult CreateResult() {
+            return (Soprano.Util.AsyncResult) staticInterceptor.Invoke("createResult", "createResult()", typeof(Soprano.Util.AsyncResult));
         }
         protected new IAsyncResultSignals Emit {
             get { return (IAsyncResultSignals) Q_EMIT; }

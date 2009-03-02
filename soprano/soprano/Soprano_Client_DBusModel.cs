@@ -27,13 +27,16 @@ namespace Soprano.Client {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(DBusModel), this);
         }
-        // Soprano::Client::DBusModel* DBusModel(const QString& arg1,const QString& arg2,const Soprano::Backend* arg3); >>>> NOT CONVERTED
         /// <remarks>
         ///  Create a new DBus Model interface.
         ///  \param serviceName The name of the DBus service that provides the Model.
         ///  \param dbusObject The path to the Model object in the DBus service.
         ///  \param backend The backend that created this model. Should always be set to 0.
         ///              </remarks>        <short>    Create a new DBus Model interface.</short>
+        public DBusModel(string serviceName, string dbusObject, Soprano.Backend backend) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("DBusModel$$#", "DBusModel(const QString&, const QString&, const Soprano::Backend*)", typeof(void), typeof(string), serviceName, typeof(string), dbusObject, typeof(Soprano.Backend), backend);
+        }
         public DBusModel(string serviceName, string dbusObject) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("DBusModel$$", "DBusModel(const QString&, const QString&)", typeof(void), typeof(string), serviceName, typeof(string), dbusObject);

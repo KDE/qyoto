@@ -20,7 +20,6 @@ namespace Soprano.Client {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(DBusClient), this);
         }
-        // Soprano::Client::DBusModel* createModel(const QString& arg1,const QList<Soprano::BackendSetting>& arg2); >>>> NOT CONVERTED
         // Error lastError(); >>>> NOT CONVERTED
         // void setError(const Error& arg1); >>>> NOT CONVERTED
         /// <remarks>
@@ -63,6 +62,9 @@ namespace Soprano.Client {
         ///  \return A new Model instance wrapping the requested server
         ///  model or 0 on error (check lastError() for details.)
         ///              </remarks>        <short>    Creates a new Model instance that wraps a dbus server model.</short>
+        public Soprano.Client.DBusModel CreateModel(string name, List<Soprano.BackendSetting> settings) {
+            return (Soprano.Client.DBusModel) interceptor.Invoke("createModel$?", "createModel(const QString&, const QList<Soprano::BackendSetting>&)", typeof(Soprano.Client.DBusModel), typeof(string), name, typeof(List<Soprano.BackendSetting>), settings);
+        }
         public Soprano.Client.DBusModel CreateModel(string name) {
             return (Soprano.Client.DBusModel) interceptor.Invoke("createModel$", "createModel(const QString&)", typeof(Soprano.Client.DBusModel), typeof(string), name);
         }

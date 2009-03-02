@@ -149,6 +149,39 @@ namespace Soprano {
         public Soprano.NodeIterator IterateBindings(int offset) {
             return (Soprano.NodeIterator) interceptor.Invoke("iterateBindings$", "iterateBindings(int) const", typeof(Soprano.NodeIterator), typeof(int), offset);
         }
+        /// <remarks>
+        ///  Convenience method that creates an iterator over statements constructed from the values of the 
+        ///  provided bindings.
+        ///  The typical usage would be with a query as follows:
+        ///  <pre>
+        ///  Soprano.StatementIterator it =
+        ///      model.ExecuteQuery( "select  where { graph ?c { ?s ?p ?o . } }" )
+        ///      .iterateStatementsFromBindings( "s", "p", "o", "c" );
+        ///  </pre>
+        ///  \param subjectBindingName The name of the binding that will be used to set the subject of the 
+        ///  constructed statements.
+        ///  \param predicateBindingName The name of the binding that will be used to set the predicate of the 
+        ///  constructed statements.
+        ///  \param objectBindingName The name of the binding that will be used to set the object of the 
+        ///  constructed statements.
+        ///  \param contextBindingName The name of the binding that will be used to set the context of the 
+        ///  constructed statements.
+        ///  \param templateStatement If any of the provided binding names is empty the corresponding nodes
+        ///  in the resulting statements will be filled by templateStatement.
+        ///  \warning The new iterator is just a wrapper around this one. Thus, changing it will also
+        ///  change this one.
+        ///  \return A wrapper iterator over statements constructed from the specified bindings.
+        ///  \since 2.2
+        ///          </remarks>        <short>    Convenience method that creates an iterator over statements constructed from the values of the   provided bindings.</short>
+        public Soprano.StatementIterator IterateStatementsFromBindings(string subjectBindingName, string predicateBindingName, string objectBindingName, string contextBindingName, Soprano.Statement templateStatement) {
+            return (Soprano.StatementIterator) interceptor.Invoke("iterateStatementsFromBindings$$$$#", "iterateStatementsFromBindings(const QString&, const QString&, const QString&, const QString&, const Soprano::Statement&) const", typeof(Soprano.StatementIterator), typeof(string), subjectBindingName, typeof(string), predicateBindingName, typeof(string), objectBindingName, typeof(string), contextBindingName, typeof(Soprano.Statement), templateStatement);
+        }
+        public Soprano.StatementIterator IterateStatementsFromBindings(string subjectBindingName, string predicateBindingName, string objectBindingName, string contextBindingName) {
+            return (Soprano.StatementIterator) interceptor.Invoke("iterateStatementsFromBindings$$$$", "iterateStatementsFromBindings(const QString&, const QString&, const QString&, const QString&) const", typeof(Soprano.StatementIterator), typeof(string), subjectBindingName, typeof(string), predicateBindingName, typeof(string), objectBindingName, typeof(string), contextBindingName);
+        }
+        public Soprano.StatementIterator IterateStatementsFromBindings(string subjectBindingName, string predicateBindingName, string objectBindingName) {
+            return (Soprano.StatementIterator) interceptor.Invoke("iterateStatementsFromBindings$$$", "iterateStatementsFromBindings(const QString&, const QString&, const QString&) const", typeof(Soprano.StatementIterator), typeof(string), subjectBindingName, typeof(string), predicateBindingName, typeof(string), objectBindingName);
+        }
         ~QueryResultIterator() {
             interceptor.Invoke("~QueryResultIterator", "~QueryResultIterator()", typeof(void));
         }

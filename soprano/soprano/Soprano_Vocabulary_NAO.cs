@@ -16,6 +16,14 @@ namespace Soprano.Vocabulary.NAO {
             return (QUrl) staticInterceptor.Invoke("naoNamespace", "naoNamespace()", typeof(QUrl));
         }
         /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#FreeDesktopIcon 
+        ///  Represents a desktop icon as defined in the FreeDesktop Icon 
+        ///  Naming Standard 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl FreeDesktopIcon() {
+            return (QUrl) staticInterceptor.Invoke("FreeDesktopIcon", "FreeDesktopIcon()", typeof(QUrl));
+        }
+        /// <remarks>
         ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#Party 
         ///  Represents a single or a group of individuals 
         ///              </remarks>        <short>    http://www.</short>
@@ -109,6 +117,22 @@ namespace Soprano.Vocabulary.NAO {
             return (QUrl) staticInterceptor.Invoke("hasDefaultNamespaceAbbreviation", "hasDefaultNamespaceAbbreviation()", typeof(QUrl));
         }
         /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasSubResource 
+        ///  Defines a relationship between a resource and one or more sub 
+        ///  resources 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl HasSubResource() {
+            return (QUrl) staticInterceptor.Invoke("hasSubResource", "hasSubResource()", typeof(QUrl));
+        }
+        /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasSuperResource 
+        ///  Defines a relationship between a resource and one or more super 
+        ///  resources 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl HasSuperResource() {
+            return (QUrl) staticInterceptor.Invoke("hasSuperResource", "hasSuperResource()", typeof(QUrl));
+        }
+        /// <remarks>
         ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasSymbol 
         ///  Annotation for a resource in the form of a symbol representation 
         ///              </remarks>        <short>    http://www.</short>
@@ -129,6 +153,14 @@ namespace Soprano.Vocabulary.NAO {
         ///              </remarks>        <short>    http://www.</short>
         public static QUrl HasTopic() {
             return (QUrl) staticInterceptor.Invoke("hasTopic", "hasTopic()", typeof(QUrl));
+        }
+        /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#iconName 
+        ///  Defines a name for a FreeDesktop Icon as defined in the FreeDesktop 
+        ///  Icon Naming Standard 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl IconName() {
+            return (QUrl) staticInterceptor.Invoke("iconName", "iconName()", typeof(QUrl));
         }
         /// <remarks>
         ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#identifier 
@@ -176,7 +208,9 @@ namespace Soprano.Vocabulary.NAO {
         }
         /// <remarks>
         ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#numericRating 
-        ///  Annotation for a resource in the form of a numeric decimal rating 
+        ///  Annotation for a resource in the form of a numeric rating (float 
+        ///  value), allowed values are between 1 and 10 whereas 0 is interpreted 
+        ///  as not set 
         ///              </remarks>        <short>    http://www.</short>
         public static QUrl NumericRating() {
             return (QUrl) staticInterceptor.Invoke("numericRating", "numericRating()", typeof(QUrl));
@@ -187,6 +221,13 @@ namespace Soprano.Vocabulary.NAO {
         ///              </remarks>        <short>    http://www.</short>
         public static QUrl PersonalIdentifier() {
             return (QUrl) staticInterceptor.Invoke("personalIdentifier", "personalIdentifier()", typeof(QUrl));
+        }
+        /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#pluralPrefLabel 
+        ///  The plural form of the preferred label for a resource 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl PluralPrefLabel() {
+            return (QUrl) staticInterceptor.Invoke("pluralPrefLabel", "pluralPrefLabel()", typeof(QUrl));
         }
         /// <remarks>
         ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#prefLabel 
@@ -208,6 +249,23 @@ namespace Soprano.Vocabulary.NAO {
         ///              </remarks>        <short>    http://www.</short>
         public static QUrl Rating() {
             return (QUrl) staticInterceptor.Invoke("rating", "rating()", typeof(QUrl));
+        }
+        /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#score 
+        ///  An authorative score for an item valued between 0 and 1 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl Score() {
+            return (QUrl) staticInterceptor.Invoke("score", "score()", typeof(QUrl));
+        }
+        /// <remarks>
+        ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#scoreParameter 
+        ///  A marker property to mark selected properties which are input 
+        ///  to a mathematical algorithm to generate scores for resources. 
+        ///  Properties are marked by being defined as subproperties of 
+        ///  this property 
+        ///              </remarks>        <short>    http://www.</short>
+        public static QUrl ScoreParameter() {
+            return (QUrl) staticInterceptor.Invoke("scoreParameter", "scoreParameter()", typeof(QUrl));
         }
         /// <remarks>
         ///  http://www.semanticdesktop.org/ontologies/2007/08/15/nao#serializationLanguage 

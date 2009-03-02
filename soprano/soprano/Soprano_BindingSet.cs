@@ -82,6 +82,20 @@ namespace Soprano {
         public void Insert(string name, Soprano.Node value) {
             interceptor.Invoke("insert$#", "insert(const QString&, const Soprano::Node&)", typeof(void), typeof(string), name, typeof(Soprano.Node), value);
         }
+        /// <remarks>
+        ///  Replaces a value in the binding set.
+        ///  \since 2.3
+        ///          </remarks>        <short>    Replaces a value in the binding set.</short>
+        public void Replace(int offset, Soprano.Node value) {
+            interceptor.Invoke("replace$#", "replace(int, const Soprano::Node&)", typeof(void), typeof(int), offset, typeof(Soprano.Node), value);
+        }
+        /// <remarks>
+        ///  Replaces a value in the binding set.
+        ///  \since 2.3
+        ///          </remarks>        <short>    Replaces a value in the binding set.</short>
+        public void Replace(string name, Soprano.Node value) {
+            interceptor.Invoke("replace$#", "replace(const QString&, const Soprano::Node&)", typeof(void), typeof(string), name, typeof(Soprano.Node), value);
+        }
         ~BindingSet() {
             interceptor.Invoke("~BindingSet", "~BindingSet()", typeof(void));
         }

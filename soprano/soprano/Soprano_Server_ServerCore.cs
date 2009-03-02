@@ -41,11 +41,6 @@ namespace Soprano.Server {
         public static ushort DEFAULT_PORT() {
             return (ushort) staticInterceptor.Invoke("DEFAULT_PORT", "DEFAULT_PORT()", typeof(ushort));
         }
-        // void setBackend(const Soprano::Backend* arg1); >>>> NOT CONVERTED
-        // const Soprano::Backend* backend(); >>>> NOT CONVERTED
-        // void setBackendSettings(const QList<Soprano::BackendSetting>& arg1); >>>> NOT CONVERTED
-        // QList<Soprano::BackendSetting> backendSettings(); >>>> NOT CONVERTED
-        // Soprano::Model* createModel(const QList<Soprano::BackendSetting>& arg1); >>>> NOT CONVERTED
         // Error lastError(); >>>> NOT CONVERTED
         // void setError(const Error& arg1); >>>> NOT CONVERTED
         public ServerCore(QObject parent) : this((Type) null) {
@@ -59,19 +54,31 @@ namespace Soprano.Server {
         /// <remarks>
         ///  Set the Backend used in the Server to create Models.
         ///              </remarks>        <short>    Set the Backend used in the Server to create Models.</short>
+        public void SetBackend(Soprano.Backend backend) {
+            interceptor.Invoke("setBackend#", "setBackend(const Soprano::Backend*)", typeof(void), typeof(Soprano.Backend), backend);
+        }
         /// <remarks>
         ///  The Backend used by the Server to create Model instances.
         ///              </remarks>        <short>    The Backend used by the Server to create Model instances.</short>
+        public Soprano.Backend Backend() {
+            return (Soprano.Backend) interceptor.Invoke("backend", "backend() const", typeof(Soprano.Backend));
+        }
         /// <remarks>
         ///  Set the settings that are to be used by createModel() to create new Model
         ///  instances. Be aware that Soprano.BackendOptionStorageDir will be changed
         ///  to include a subdir which is the Model's name.
         ///  \param settings The settings to use for new Models.
         ///              </remarks>        <short>    Set the settings that are to be used by createModel() to create new Model  instances.</short>
+        public void SetBackendSettings(List<Soprano.BackendSetting> settings) {
+            interceptor.Invoke("setBackendSettings?", "setBackendSettings(const QList<Soprano::BackendSetting>&)", typeof(void), typeof(List<Soprano.BackendSetting>), settings);
+        }
         /// <remarks>
         ///  Retrieve the backend settings configured via setBackendSettings().
         ///  \return A list of BackendSetting objects.
         ///              </remarks>        <short>    Retrieve the backend settings configured via setBackendSettings().</short>
+        public List<Soprano.BackendSetting> BackendSettings() {
+            return (List<Soprano.BackendSetting>) interceptor.Invoke("backendSettings", "backendSettings() const", typeof(List<Soprano.BackendSetting>));
+        }
         /// <remarks>
         ///  Get or create Model with the specific name.
         ///  The default implementation will use createModel() to create a new Model
@@ -150,6 +157,7 @@ namespace Soprano.Server {
         ///  \param objectPath The DBus object path to register the server as. If empty
         ///  the default path will be used (/org/soprano/Server).
         ///  Use Client.DBusClient to connect.
+        ///  In case Soprano is compiled without D-Bus support this method does nothing.
         ///              </remarks>        <short>    Register the ServerCore as a DBus object.</short>
         public void RegisterAsDBusObject(string objectPath) {
             interceptor.Invoke("registerAsDBusObject$", "registerAsDBusObject(const QString&)", typeof(void), typeof(string), objectPath);
@@ -166,6 +174,10 @@ namespace Soprano.Server {
         ///  settings.)
         ///  \return A newly create Model.
         ///              </remarks>        <short>    Create a new Model.</short>
+        [SmokeMethod("createModel(const QList<Soprano::BackendSetting>&)")]
+        protected virtual Soprano.Model CreateModel(List<Soprano.BackendSetting> settings) {
+            return (Soprano.Model) interceptor.Invoke("createModel?", "createModel(const QList<Soprano::BackendSetting>&)", typeof(Soprano.Model), typeof(List<Soprano.BackendSetting>), settings);
+        }
         ~ServerCore() {
             interceptor.Invoke("~ServerCore", "~ServerCore()", typeof(void));
         }

@@ -12,7 +12,7 @@ namespace Soprano.Client {
     ///  Its usage is simple: set hostname and optionally user credentials, then
     ///  call the well known Model methods like Model.ExecuteQuery to work with the remote
     ///  repository.
-    ///  \author Rajeev J Sebastian <rajeev.sebastian@gmail.com>, Sebastian Trueg <trueg@kde.org>
+    ///  \author Rajeev J Sebastian <rajeev.sebastian@gmail.com><br>Sebastian Trueg <trueg@kde.org>
     ///  \since 2.2
     ///          </remarks>        <short>    \class SparqlModel sparqlmodel.</short>
     [SmokeClass("Soprano::Client::SparqlModel")]
@@ -76,6 +76,14 @@ namespace Soprano.Client {
             interceptor.Invoke("setUser$", "setUser(const QString&)", typeof(void), typeof(string), user);
         }
         /// <remarks>
+        ///  Set the path to where the SPARQL endpoint is exposed on the server.
+        ///  For historical reasons the default path is set to "/sparql".
+        ///  \since 2.2.1
+        ///              </remarks>        <short>    Set the path to where the SPARQL endpoint is exposed on the server.</short>
+        public void SetPath(string path) {
+            interceptor.Invoke("setPath$", "setPath(const QString&)", typeof(void), typeof(string), path);
+        }
+        /// <remarks>
         ///  Add a statement to the remote model.
         ///  This method is realized using the <a href="http://jena.hpl.hp.com/~afs/SPARQL-Update.html">SPARQL/Update</a>
         ///  language extension. Thus, it will only work on services supporting this extension.
@@ -113,17 +121,9 @@ namespace Soprano.Client {
         public override Soprano.Error.ErrorCode RemoveAllStatements(Soprano.Statement statement) {
             return (Soprano.Error.ErrorCode) interceptor.Invoke("removeAllStatements#", "removeAllStatements(const Soprano::Statement&)", typeof(Soprano.Error.ErrorCode), typeof(Soprano.Statement), statement);
         }
-        [SmokeMethod("listContexts() const")]
-        public override Soprano.NodeIterator ListContexts() {
-            return (Soprano.NodeIterator) interceptor.Invoke("listContexts", "listContexts() const", typeof(Soprano.NodeIterator));
-        }
-        [SmokeMethod("containsStatement(const Soprano::Statement&) const")]
-        public override bool ContainsStatement(Soprano.Statement statement) {
-            return (bool) interceptor.Invoke("containsStatement#", "containsStatement(const Soprano::Statement&) const", typeof(bool), typeof(Soprano.Statement), statement);
-        }
-        [SmokeMethod("containsAnyStatement(const Soprano::Statement&) const")]
-        public override bool ContainsAnyStatement(Soprano.Statement statement) {
-            return (bool) interceptor.Invoke("containsAnyStatement#", "containsAnyStatement(const Soprano::Statement&) const", typeof(bool), typeof(Soprano.Statement), statement);
+        [SmokeMethod("listStatements(const Soprano::Statement&) const")]
+        public override Soprano.StatementIterator ListStatements(Soprano.Statement partial) {
+            return (Soprano.StatementIterator) interceptor.Invoke("listStatements#", "listStatements(const Soprano::Statement&) const", typeof(Soprano.StatementIterator), typeof(Soprano.Statement), partial);
         }
         /// <remarks>
         ///  Execute a query on the SPARQL endpoint.
@@ -145,9 +145,36 @@ namespace Soprano.Client {
         public Soprano.QueryResultIterator ExecuteQuery(string query) {
             return (Soprano.QueryResultIterator) interceptor.Invoke("executeQuery$", "executeQuery(const QString&) const", typeof(Soprano.QueryResultIterator), typeof(string), query);
         }
-        [SmokeMethod("listStatements(const Soprano::Statement&) const")]
-        public override Soprano.StatementIterator ListStatements(Soprano.Statement partial) {
-            return (Soprano.StatementIterator) interceptor.Invoke("listStatements#", "listStatements(const Soprano::Statement&) const", typeof(Soprano.StatementIterator), typeof(Soprano.Statement), partial);
+        /// <remarks>
+        ///  Asyncroneously execute the given query over the Model.
+        ///  \param query The query to evaluate.
+        ///  \param language The %query language used to encode <pre>query</pre>.
+        ///  \param userQueryLanguage If <pre>language</pre> equals Query.QueryLanguageUser
+        ///  userQueryLanguage defines the language to use.
+        ///  \sa executeQuery
+        ///  \return an AsyncResult with result type QueryResultIterator
+        ///  object which will signal when the result is ready.
+        ///              </remarks>        <short>    Asyncroneously execute the given query over the Model.</short>
+        public Soprano.Util.AsyncResult ExecuteQueryAsync(string query, Soprano.Query.QueryLanguage language, string userQueryLanguage) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("executeQueryAsync$$$", "executeQueryAsync(const QString&, Soprano::Query::QueryLanguage, const QString&) const", typeof(Soprano.Util.AsyncResult), typeof(string), query, typeof(Soprano.Query.QueryLanguage), language, typeof(string), userQueryLanguage);
+        }
+        public Soprano.Util.AsyncResult ExecuteQueryAsync(string query, Soprano.Query.QueryLanguage language) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("executeQueryAsync$$", "executeQueryAsync(const QString&, Soprano::Query::QueryLanguage) const", typeof(Soprano.Util.AsyncResult), typeof(string), query, typeof(Soprano.Query.QueryLanguage), language);
+        }
+        public Soprano.Util.AsyncResult ExecuteQueryAsync(string query) {
+            return (Soprano.Util.AsyncResult) interceptor.Invoke("executeQueryAsync$", "executeQueryAsync(const QString&) const", typeof(Soprano.Util.AsyncResult), typeof(string), query);
+        }
+        [SmokeMethod("listContexts() const")]
+        public override Soprano.NodeIterator ListContexts() {
+            return (Soprano.NodeIterator) interceptor.Invoke("listContexts", "listContexts() const", typeof(Soprano.NodeIterator));
+        }
+        [SmokeMethod("containsStatement(const Soprano::Statement&) const")]
+        public override bool ContainsStatement(Soprano.Statement statement) {
+            return (bool) interceptor.Invoke("containsStatement#", "containsStatement(const Soprano::Statement&) const", typeof(bool), typeof(Soprano.Statement), statement);
+        }
+        [SmokeMethod("containsAnyStatement(const Soprano::Statement&) const")]
+        public override bool ContainsAnyStatement(Soprano.Statement statement) {
+            return (bool) interceptor.Invoke("containsAnyStatement#", "containsAnyStatement(const Soprano::Statement&) const", typeof(bool), typeof(Soprano.Statement), statement);
         }
         /// <remarks>
         ///  Retrieving the number of statements is not supported by the SparqlModel.

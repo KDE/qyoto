@@ -17,8 +17,6 @@ namespace Soprano {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(StorageModel), this);
         }
-        // const Soprano::Backend* backend(); >>>> NOT CONVERTED
-        // Soprano::StorageModel* StorageModel(const Soprano::Backend* arg1); >>>> NOT CONVERTED
         /// <remarks>
         ///  Default implementation is based on Model.StatementCount
         ///          </remarks>        <short>    Default implementation is based on Model.StatementCount          </short>
@@ -50,9 +48,16 @@ namespace Soprano {
         /// <remarks>
         ///  \return The backend that was used to create this model.
         ///          </remarks>        <short>    \return The backend that was used to create this model.</short>
+        public Soprano.Backend Backend() {
+            return (Soprano.Backend) interceptor.Invoke("backend", "backend() const", typeof(Soprano.Backend));
+        }
         /// <remarks>
         ///  \param backend The Backend that created this model.
         ///          </remarks>        <short>    \param backend The Backend that created this model.</short>
+        public StorageModel(Soprano.Backend backend) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("StorageModel#", "StorageModel(const Soprano::Backend*)", typeof(void), typeof(Soprano.Backend), backend);
+        }
         // WARNING: Unimplemented C++ pure virtual - DO NOT CALL
         [SmokeMethod("addStatement(const Soprano::Statement&)")]
         public override Soprano.Error.ErrorCode AddStatement(Soprano.Statement statement) {

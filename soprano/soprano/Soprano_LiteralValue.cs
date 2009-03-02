@@ -229,6 +229,8 @@ namespace Soprano {
         ///  information necessary to store this literal as RDF.
         ///  The string value is cached so calling it multiple times in 
         ///  a row is fast.
+        ///  \warning For historical reasons this is not a user-readable representation.
+        ///  \sa Node.ToString
         ///          </remarks>        <short>    Each type can be converted to a string which means that  toString in combination with dataTypeUrl provides all the  information necessary to store this literal as RDF.</short>
         public new string ToString() {
             return (string) interceptor.Invoke("toString", "toString() const", typeof(string));

@@ -176,11 +176,22 @@ namespace Soprano {
         }
         /// <remarks>
         ///  Converts the Node to a string.
-        /// \return A String representation of the Node.
-        ///  \sa LiteralValue.ToString(), QUrl.ToString()
+        ///  \return A String representation of the Node, suitable for storage,
+        ///  not really suitable for user readable strings.
+        ///  \sa LiteralValue.ToString(), QUrl.ToString(), toN3()
         ///          </remarks>        <short>    Converts the Node to a string.</short>
         public new string ToString() {
             return (string) interceptor.Invoke("toString", "toString() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Convert a Node into N3 notation to be used in SPARQL graph patterns.
+        ///  \return A string representing the node in N3 encoding or an empty
+        ///  string for invalid nodes.
+        ///  \sa toString()
+        ///  \since 2.2
+        ///          </remarks>        <short>    Convert a Node into N3 notation to be used in SPARQL graph patterns.</short>
+        public string ToN3() {
+            return (string) interceptor.Invoke("toN3", "toN3() const", typeof(string));
         }
         ~Node() {
             interceptor.Invoke("~Node", "~Node()", typeof(void));

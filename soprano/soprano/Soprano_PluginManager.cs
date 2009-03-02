@@ -22,21 +22,29 @@ namespace Soprano {
         static PluginManager() {
             staticInterceptor = new SmokeInvocation(typeof(PluginManager), null);
         }
-        // const Soprano::Backend* discoverBackendByName(const QString& arg1); >>>> NOT CONVERTED
-        // const Soprano::Backend* discoverBackendByFeatures(Soprano::BackendFeatures arg1,const QStringList& arg2); >>>> NOT CONVERTED
-        // const Soprano::Backend* discoverBackendByFeatures(Soprano::BackendFeatures arg1); >>>> NOT CONVERTED
-        // QList<const Soprano::Backend*> allBackends(); >>>> NOT CONVERTED
         /// <remarks>
         ///  Find a backend plugin by its name.
         ///  \return the backend specified by \a name or null if could not
         ///  be found.
         ///          </remarks>        <short>    Find a backend plugin by its name.</short>
+        public Soprano.Backend DiscoverBackendByName(string name) {
+            return (Soprano.Backend) interceptor.Invoke("discoverBackendByName$", "discoverBackendByName(const QString&)", typeof(Soprano.Backend), typeof(string), name);
+        }
         /// <remarks>
         ///  Find a backend plugin by its features.
         ///  \param features The features that are requested, a combination of Soprano.BackendFeature flags.
         ///  \param userFeatures If features contain Backend.BackendFeatureUser this paramter states the additionally requested user features.
         ///  \return a Backend that supports the features defined in \a features.
         ///          </remarks>        <short>    Find a backend plugin by its features.</short>
+        public Soprano.Backend DiscoverBackendByFeatures(uint features, List<string> userFeatures) {
+            return (Soprano.Backend) interceptor.Invoke("discoverBackendByFeatures$?", "discoverBackendByFeatures(Soprano::BackendFeatures, const QStringList&)", typeof(Soprano.Backend), typeof(uint), features, typeof(List<string>), userFeatures);
+        }
+        public Soprano.Backend DiscoverBackendByFeatures(uint features) {
+            return (Soprano.Backend) interceptor.Invoke("discoverBackendByFeatures$", "discoverBackendByFeatures(Soprano::BackendFeatures)", typeof(Soprano.Backend), typeof(uint), features);
+        }
+        public List<Soprano.Backend> AllBackends() {
+            return (List<Soprano.Backend>) interceptor.Invoke("allBackends", "allBackends()", typeof(List<Soprano.Backend>));
+        }
         /// <remarks>
         ///  Find a parser plugin by its name.
         ///  \return the parser specified by \a name or null if could not
