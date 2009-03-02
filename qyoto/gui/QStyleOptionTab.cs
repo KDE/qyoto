@@ -29,6 +29,34 @@ namespace Qyoto {
             LeftCornerWidget = 0x01,
             RightCornerWidget = 0x02,
         }
+        public QTabBar.Shape Shape {
+            get { return (QTabBar.Shape) interceptor.Invoke("shape", "shape()", typeof(QTabBar.Shape)); }
+            set { interceptor.Invoke("setShape$", "setShape(QTabBar::Shape)", typeof(void), typeof(QTabBar.Shape), value); }
+        }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public QIcon Icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        public int Row {
+            get { return (int) interceptor.Invoke("row", "row()", typeof(int)); }
+            set { interceptor.Invoke("setRow$", "setRow(int)", typeof(void), typeof(int), value); }
+        }
+        public QStyleOptionTab.TabPosition Position {
+            get { return (QStyleOptionTab.TabPosition) interceptor.Invoke("position", "position()", typeof(QStyleOptionTab.TabPosition)); }
+            set { interceptor.Invoke("setPosition$", "setPosition(QStyleOptionTab::TabPosition)", typeof(void), typeof(QStyleOptionTab.TabPosition), value); }
+        }
+        public QStyleOptionTab.SelectedPosition selectedPosition {
+            get { return (QStyleOptionTab.SelectedPosition) interceptor.Invoke("selectedPosition", "selectedPosition()", typeof(QStyleOptionTab.SelectedPosition)); }
+            set { interceptor.Invoke("setSelectedPosition$", "setSelectedPosition(QStyleOptionTab::SelectedPosition)", typeof(void), typeof(QStyleOptionTab.SelectedPosition), value); }
+        }
+        public uint CornerWidgets {
+            get { return (uint) interceptor.Invoke("cornerWidgets", "cornerWidgets()", typeof(uint)); }
+            set { interceptor.Invoke("setCornerWidgets$", "setCornerWidgets(QStyleOptionTab::CornerWidgets)", typeof(void), typeof(uint), value); }
+        }
         public QStyleOptionTab() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionTab", "QStyleOptionTab()", typeof(void));
