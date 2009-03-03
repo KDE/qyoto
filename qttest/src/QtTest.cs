@@ -7,10 +7,10 @@ namespace QtTest {
 
 	public class InitQtTest {
 		[DllImport("libqttest-sharp", CharSet=CharSet.Ansi)]
-		static extern void Init_QtTest();
+		static extern void Init_qttest();
 		
 		public static void InitSmoke() {
-			Init_QtTest();
+			Init_qttest();
 		}
 	}
 }
