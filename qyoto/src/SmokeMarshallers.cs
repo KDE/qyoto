@@ -363,7 +363,7 @@ namespace Qyoto {
 		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createGlobalReference) {
 			lock (pointerMap) {
 				Object instance = ((GCHandle) instancePtr).Target;
-				WeakReference weakRef = new WeakReference(instance);
+				WeakReference weakRef = new WeakReference(instance, true);
 				pointerMap[ptr] = weakRef;
 #if DEBUG
 				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
@@ -411,6 +411,7 @@ namespace Qyoto {
 		// of a Qyoto class and therefore could have custom slots or overriden methods
 		public static IntPtr GetInstance(IntPtr ptr, bool allInstances) {
 			WeakReference weakRef;
+			object strongRef;
 			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
@@ -440,6 +441,24 @@ namespace Qyoto {
 				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
 #endif
 				return (IntPtr) instanceHandle;
+			} else if (Environment.HasShutdownStarted && globalReferenceMap.TryGetValue(ptr, out strongRef)) {
+#if DEBUG
+				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
+				{
+					Console.WriteLine("GetInstance() strongRef 0x{0:x8} -> {1}", (int) ptr, strongRef);
+				}
+#endif
+				if (!allInstances && IsSmokeClass(strongRef.GetType())) {
+					return IntPtr.Zero;
+				} 
+
+#if DEBUG
+				GCHandle instanceHandle = DebugGCHandle.Alloc(strongRef);
+#else
+				GCHandle instanceHandle = GCHandle.Alloc(strongRef);
+#endif
+				return (IntPtr) instanceHandle;
 			} else {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
@@ -450,6 +469,16 @@ namespace Qyoto {
 #endif
 				pointerMap.Remove(ptr);
 				return IntPtr.Zero;
+			}
+		}
+
+		// converts weak references to strong references so they are still available
+		// when the application is shutting down.
+		public static void ConvertRefs() {
+			foreach (KeyValuePair<IntPtr, WeakReference> pair in pointerMap) {
+				if (!pair.Value.IsAlive)
+					continue;
+				globalReferenceMap[pair.Key] = pair.Value.Target;
 			}
 		}
 

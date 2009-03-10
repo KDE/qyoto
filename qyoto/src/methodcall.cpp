@@ -26,10 +26,10 @@ MethodCall::MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::
 		_o = (smokeqyoto_object*) (*GetSmokeObject)(_target);
 		if (_o != 0 && _o->ptr != 0) {
 			if (	isDestructor() 
-					&& (!_o->allocated || IsContainedInstance(_o) || application_terminated) ) 
+					&& (!_o->allocated || IsContainedInstance(_o)
+					    || smoke->isDerivedFromByName(smoke->className(_o->classId), "QCoreApplication")) )
 			{
 				_called = true;
-// 				_o->allocated = false;
 			}
 		} else {
 			// not a constructor, not static, pointer invalid -> object already destroyed
@@ -96,9 +96,12 @@ void MethodCall::callMethod()
 		(*SetSmokeObject)(_target, _o);
 		mapPointer(_target, _o, _o->classId, 0);
 	} else if (isDestructor()) {
-		unmapPointer(_o, _o->classId, 0);
-		(*SetSmokeObject)(_target, 0);
-		free_smokeqyoto_object(_o);
+		void *check = (*GetSmokeObject)(_target);
+		if (check) {
+			unmapPointer(_o, _o->classId, 0);
+			(*SetSmokeObject)(_target, 0);
+			free_smokeqyoto_object(_o);
+		}
 	} else {
 		Qyoto::MethodReturnValue r(_smoke, _method, _stack, _retval);
 	}

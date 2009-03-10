@@ -93,11 +93,14 @@ qyoto_event_notify(void **data)
 		QChildEvent *e = static_cast<QChildEvent *>(event);
 		void * childObj = (*GetInstance)(e->child(), true);
 		if (childObj != 0) {
+			smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(childObj);
 			// Maybe add a check whether the childObj is still a QObject here
 			if (e->added()) {
 				(*AddGlobalRef)(childObj, e->child());
+				o->allocated = false;  // we don't need to care about deleting stuff anymore
 			} else {
 				(*RemoveGlobalRef)(childObj, e->child());
+				o->allocated = true;  // now we need to care about deletion again
 			}
 
 			(*FreeGCHandle)(childObj);

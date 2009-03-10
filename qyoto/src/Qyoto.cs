@@ -285,6 +285,11 @@ namespace Qyoto
 		/// This hashtable has the class types as keys, and QMetaObjects as values
 		static Dictionary<Type, QMetaObject> metaObjects = new Dictionary<Type, QMetaObject> ();
 		
+		public static void Cleanup() {
+			SmokeMarshallers.ConvertRefs();
+			SetApplicationTerminated();
+		}
+		
 		public static uint GetCPPEnumValue(string c, string value) {
 			Type t = Type.GetType("Qyoto." + c, false);
 			if (t == null) {

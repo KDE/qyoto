@@ -1043,10 +1043,10 @@ marshall_basetype(Marshall *m)
 		}
 
 		if(m->type().isStack()) {
-// 		    o->allocated = true;
-			// Keep a mapping of the pointer so that it is only wrapped once
-		    mapPointer(obj, o, o->classId, 0);
+		    o->allocated = true;
 		}
+		// Keep a mapping of the pointer so that it is only wrapped once
+		mapPointer(obj, o, o->classId, 0);
 		
 		m->var().s_class = obj;
 	}
@@ -1455,9 +1455,9 @@ void marshall_QDBusVariant(Marshall *m) {
 
 		if (m->type().isStack()) {
 		    o->allocated = true;
-			// Keep a mapping of the pointer so that it is only wrapped once
-		    mapPointer(obj, o, o->classId, 0);
 		}
+		// Keep a mapping of the pointer so that it is only wrapped once
+		mapPointer(obj, o, o->classId, 0);
 		
 		m->var().s_class = obj;
 	}

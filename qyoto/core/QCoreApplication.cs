@@ -79,7 +79,7 @@ namespace Qyoto {
         }
         public static int Exec() {
             int result = (int) staticInterceptor.Invoke("exec", "exec()", typeof(int));
-            Qyoto.SetApplicationTerminated();
+            Qyoto.Cleanup();
             return result;
         }
         public static void ProcessEvents(uint flags) {

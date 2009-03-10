@@ -145,6 +145,9 @@ namespace Qyoto {
         public static void SetColorSpec(int arg1) {
             staticInterceptor.Invoke("setColorSpec$", "setColorSpec(int)", typeof(void), typeof(int), arg1);
         }
+        public static void SetGraphicsSystem(string arg1) {
+            staticInterceptor.Invoke("setGraphicsSystem$", "setGraphicsSystem(const QString&)", typeof(void), typeof(string), arg1);
+        }
         public static QCursor OverrideCursor() {
             return (QCursor) staticInterceptor.Invoke("overrideCursor", "overrideCursor()", typeof(QCursor));
         }
@@ -276,7 +279,7 @@ namespace Qyoto {
         }
         public static new int Exec() {
             int result = (int) staticInterceptor.Invoke("exec", "exec()", typeof(int));
-            Qyoto.SetApplicationTerminated();
+            Qyoto.Cleanup();
             return result;
         }
         public static void CloseAllWindows() {

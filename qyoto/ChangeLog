@@ -1,3 +1,14 @@
+2009-02-10  Arno Rehn  <arno@arnorehn.de>
+	* Get rid of application_terminated checks in methodcall.cpp and make the
+	  application cleanup properly. The problem was WeakReference.IsValid being
+	  false when the application was in the process of shutting down, even though
+	  the target object was still there. When shutting down, convert weak refs to
+	  strong refs and check for objects in the global reference map.
+	  Only thing that doesn't work correctly is QCoreApplication and subclasses.
+	  It's expected to be deleted as the last Qt object and a bug in QApplication
+	  is preventing its deletion in an atexit() function. Work around that by not
+	  calling it's destructor for now.
+
 2009-02-23  Arno Rehn  <arno@arnorehn.de>
 	* Apply a patch from Eric Butler: Fix Qyoto.GetCPPEnumValue() to return the
 	  correct value.
