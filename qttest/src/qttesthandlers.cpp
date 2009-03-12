@@ -21,9 +21,13 @@
 
 #include <QtTest/qtestaccessible.h>
 
+#ifndef QT_NO_ACCESSIBILITY
 DEF_VALUELIST_MARSHALLER( QTestAccessibilityEventList, QList<QTestAccessibilityEvent>, QTestAccessibilityEvent )
+#endif
 
 TypeHandler QtTest_handlers[] = {
+#ifndef QT_NO_ACCESSIBILITY
     { "QList<QTestAccessibilityEvent>", marshall_QTestAccessibilityEventList },
+#endif
     { 0, 0 }
 };
