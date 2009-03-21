@@ -341,11 +341,16 @@ namespace Qyoto
 			}
 
 			if (type.IsGenericType) {
-				return "FIXME: <generic type here>";
+				Type[] args = type.GetGenericArguments();
+				if (type.FullName.StartsWith("System.Collections.Generic.List`1")) {
+					return "QList<" + GetPrimitiveString(args[0]) + ">";
+				} else if (type.FullName.StartsWith("System.Collections.Generic.Dictionary`2")) {
+					return "QMap<" + GetPrimitiveString(args[0]) + ", " + GetPrimitiveString(args[1]) + ">";
+				}
 			}
 
-			if (typeString.StartsWith("Qyoto.")) {
-				typeString = typeString.Replace("Qyoto.", "");
+			if (SmokeMarshallers.IsSmokeClass(type)) {
+				typeString = SmokeMarshallers.SmokeClassName(type);
 			}
 			
 			// pointer types
