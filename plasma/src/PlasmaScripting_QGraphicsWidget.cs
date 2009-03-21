@@ -257,6 +257,12 @@ namespace PlasmaScripting {
         public bool IsWindow() {
             return applet.IsWindow();
         }
+        public QTransform ItemTransform (IQGraphicsItem other) {
+            return applet.ItemTransform(other);
+        }
+        public QTransform ItemTransform (IQGraphicsItem other, ref bool ok) {
+            return applet.ItemTransform(other, ref ok);
+        }
         public QGraphicsItemGroup Group() {
             return applet.Group();
         }
@@ -404,6 +410,9 @@ namespace PlasmaScripting {
         public void MoveBy(double dx, double dy) {
             applet.MoveBy(dx, dy);
         }
+        public double EffectiveOpacity() {
+            return applet.EffectiveOpacity();
+        }
         public void EnsureVisible(QRectF rect, int xmargin, int ymargin) {
             applet.EnsureVisible(rect, xmargin, ymargin);
         }
@@ -485,6 +494,9 @@ namespace PlasmaScripting {
         public QRectF SceneBoundingRect() {
             return applet.SceneBoundingRect();
         }
+        public QPainterPath ClipPath() {
+            return applet.ClipPath();
+        }
         public virtual bool Contains(QPointF point) {
             return applet.Contains(point);
         }
@@ -505,6 +517,9 @@ namespace PlasmaScripting {
         }
         public List<IQGraphicsItem> CollidingItems() {
             return applet.CollidingItems();
+        }
+        public bool IsClipped() {
+            return applet.IsClipped();
         }
         public bool IsObscured() {
             return applet.IsObscured();
@@ -544,6 +559,42 @@ namespace PlasmaScripting {
         }
         public void Scroll(double dx, double dy) {
             applet.Scroll(dx, dy);
+        }
+        public QRectF MapRectFromItem (IQGraphicsItem item, double x, double y, double w, double h) {
+            return applet.MapRectFromItem(item, x, y, w, h);
+        }
+        public QRectF MapRectFromItem (IQGraphicsItem item, QRectF rect) {
+            return applet.MapRectFromItem(item, rect);
+        }
+        public QRectF MapRectFromParent (double x, double y, double w, double h) {
+            return applet.MapRectFromParent(x, y, w, h);
+        }
+        public QRectF MapRectFromParent (QRectF rect) {
+            return applet.MapRectFromParent(rect);
+        }
+        public QRectF MapRectFromScene (double x, double y, double w, double h) {
+            return applet.MapRectFromScene(x, y, w, h);
+        }
+        public QRectF MapRectFromScene (QRectF rect) {
+            return applet.MapRectFromScene(rect);
+        }
+        public QRectF MapRectToItem (IQGraphicsItem item, double x, double y, double w, double h) {
+            return applet.MapRectToItem(item, x, y, w, h);
+        }
+        public QRectF MapRectToItem (IQGraphicsItem item, QRectF rect) {
+            return applet.MapRectToItem(item, rect);
+        }
+        public QRectF MapRectToParent (double x, double y, double w, double h) {
+            return applet.MapRectToParent(x, y, w, h);
+        }
+        public QRectF MapRectToParent (QRectF rect) {
+            return applet.MapRectToParent(rect);
+        }
+        public QRectF MapRectToScene (double x, double y, double w, double h) {
+            return applet.MapRectToScene(x, y, w, h);
+        }
+        public QRectF MapRectToScene (QRectF rect) {
+            return applet.MapRectToScene(rect);
         }
         public QPointF MapToItem(IQGraphicsItem item, QPointF point) {
             return applet.MapToItem(item, point);
@@ -817,6 +868,12 @@ namespace PlasmaScripting {
         }
         public bool IsLayout() {
             return applet.IsLayout();
+        }
+        public double Opacity() {
+            return applet.Opacity();
+        }
+        public void SetOpacity (double opacity) {
+            applet.SetOpacity(opacity);
         }
         protected new IQGraphicsWidgetSignals Emit {
             get { return (IQGraphicsWidgetSignals) Q_EMIT; }
