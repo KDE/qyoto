@@ -55,6 +55,13 @@ namespace Qyoto {
                 return (T) (object) ToString();
             } else if (typeof(T) == typeof(List<string>)) {
                 return (T) (object) ToStringList();
+            } else if (typeof(T) == typeof(List<QVariant>)) {
+                return (T) (object) ToList();
+            } else if (typeof(T) == typeof(Dictionary<string, QVariant>)) {
+                object o = ToMap();
+                if (o == null)
+                    o = ToHash();
+                return (T) o;
             } else if (typeof(T) == typeof(QTime)) {
                 return (T) (object) ToTime();
             } else if (typeof(T) == typeof(uint)) {
@@ -117,6 +124,10 @@ namespace Qyoto {
                 return new QVariant((string) value);
             } else if (typeof(T) == typeof(List<string>)) {
                 return new QVariant((List<string>) value);
+            } else if (typeof(T) == typeof(List<QVariant>)) {
+                return new QVariant((List<QVariant>) value);
+            } else if (typeof(T) == typeof(Dictionary<string, QVariant>)) {
+                return new QVariant((Dictionary<string, QVariant>) value);
             } else if (typeof(T) == typeof(QTime)) {
                 return new QVariant((QTime) value);
             } else if (typeof(T) == typeof(uint)) {
