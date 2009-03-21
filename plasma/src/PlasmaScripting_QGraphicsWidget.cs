@@ -20,11 +20,11 @@ namespace PlasmaScripting {
             get { return applet.Palette; }
             set { applet.Palette = value; }
         }
-//        [Q_PROPERTY("QFont", "font")]
-//        public QFont Font {
-//            get { return applet.Font; }
-//            set { applet.Font = value; }
-//        }
+        [Q_PROPERTY("QFont", "font")]
+        public QFont Font {
+            get { return ((QyotoQGraphicsWidget) applet).Font; }
+            set { ((QyotoQGraphicsWidget) applet).Font = value; }
+        }
         [Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
         public new Qt.LayoutDirection LayoutDirection {
             get { return applet.LayoutDirection; }
