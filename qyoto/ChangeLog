@@ -1,3 +1,7 @@
+2009-03-21  Arno Rehn  <arno@arnorehn.de>
+	* Use qDBusReplyFill to get the data from a dbus call into a QDBusReply.
+	  This adds support for non-primitive types such as QVariantMap.
+
 2009-02-10  Arno Rehn  <arno@arnorehn.de>
 	* Get rid of application_terminated checks in methodcall.cpp and make the
 	  application cleanup properly. The problem was WeakReference.IsValid being
