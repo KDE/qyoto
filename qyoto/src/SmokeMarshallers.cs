@@ -475,10 +475,13 @@ namespace Qyoto {
 		// converts weak references to strong references so they are still available
 		// when the application is shutting down.
 		public static void ConvertRefs() {
-			foreach (KeyValuePair<IntPtr, WeakReference> pair in pointerMap) {
-				if (!pair.Value.IsAlive)
-					continue;
-				globalReferenceMap[pair.Key] = pair.Value.Target;
+			lock (pointerMap) {
+				foreach (KeyValuePair<IntPtr, WeakReference> pair in pointerMap) {
+					if (!pair.Value.IsAlive)
+						continue;
+					lock (globalReferenceMap)
+						globalReferenceMap[pair.Key] = pair.Value.Target;
+				}
 			}
 		}
 
