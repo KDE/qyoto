@@ -33,6 +33,7 @@
 #include <QtCore/qregexp.h>
 #include <QtCore/qstring.h>
 #include <QtCore/qstringlist.h>
+#include <QtDBus/QDBusReply>
 #include <QtGui/qapplication.h>
 
 #undef DEBUG
@@ -314,6 +315,24 @@ qyoto_qt_metacast(void* obj, char* target)
 	printf("qyoto_qt_metacast: created new instance of type %s (%p)\n", target, to->ptr);
 #endif
 	return instance;
+}
+
+Q_DECL_EXPORT void
+qyoto_qdbus_reply_fill(void *msg, void *error, void *variant)
+{
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(msg);
+	QDBusMessage *dbusmsg = (QDBusMessage*) o->ptr;
+	(*FreeGCHandle)(msg);
+	
+	o = (smokeqyoto_object*) (*GetSmokeObject)(error);
+	QDBusError *dbuserror = (QDBusError*) o->ptr;
+	(*FreeGCHandle)(error);
+	
+	o = (smokeqyoto_object*) (*GetSmokeObject)(variant);
+	QVariant *v = (QVariant*) o->ptr;
+	(*FreeGCHandle)(variant);
+	
+	qDBusReplyFill(*dbusmsg, *dbuserror, *v);
 }
 
 Q_DECL_EXPORT void *

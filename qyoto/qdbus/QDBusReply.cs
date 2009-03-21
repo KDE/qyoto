@@ -1,22 +1,20 @@
 namespace Qyoto {
 
 	using System;
+	using System.Runtime.InteropServices;
 	using System.Collections.Generic; 
 
 	public class QDBusReply<T> {
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		private static extern void qyoto_qdbus_reply_fill(IntPtr msg, IntPtr error, IntPtr variant);
+		
 		public QDBusReply(QDBusMessage reply) {
 			m_error = new QDBusError(reply);
-			if (m_error.IsValid()) {
-				return;
-			}
-
-			if (reply.Arguments().Count >= 1) {
-				m_data = (reply.Arguments()[0]).Value<QDBusVariant>().Value<T>();
-				return;
-			}
-
-			m_error = new QDBusError(	QDBusError.ErrorType.InvalidSignature, 
-										"Unexpected reply signature" );
+			QVariant variant = QVariant.FromValue<T>(default(T));
+			qyoto_qdbus_reply_fill((IntPtr) GCHandle.Alloc(reply), (IntPtr) GCHandle.Alloc(m_error),
+				(IntPtr) GCHandle.Alloc(variant));
+			if (!m_error.IsValid())
+				m_data = variant.Value<T>();
 		}
 	
 		public QDBusReply(QDBusError dbusError) {
