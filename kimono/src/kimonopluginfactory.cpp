@@ -17,6 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
  ***************************************************************************/
 
+#include <QCoreApplication>
 #include <QObject>
 #include <QString>
 #include <QFileInfo>
@@ -47,6 +48,7 @@ class QWidget;
 
 class KimonoPluginFactory : public KPluginFactory
 {
+	Q_OBJECT
 public:
 	KimonoPluginFactory();
 	virtual ~KimonoPluginFactory();
@@ -68,6 +70,12 @@ protected:
 	                        QObject *parent, const QVariantList &args,
 	                        const QString &keyword);
 
+private slots:
+	void cleanup();
+
+public:
+	static MonoDomain* domain;
+
 private:
 	QHash<QString, MonoAssembly*> assemblies;
 	QHash<MonoAssembly*, MonoImage*> images;
@@ -81,24 +89,23 @@ private:
 };
 K_EXPORT_PLUGIN(KimonoPluginFactory)
 
-// Make this one global to be accessible from atexitfn().
-MonoDomain* domain = 0;
-
-// This seems to be the only way, since calling mono_jit_cleanup()
-// from the destructor of KimonoPluginFactory makes mono crash.
-void atexitfn()
-{
-// 	printf("(kimonopluginfactory.cpp:%d) calling mono_jit_cleanup(%p)\n", __LINE__, domain);
-	mono_jit_cleanup(domain);
-}
+MonoDomain* KimonoPluginFactory::domain;
 
 KimonoPluginFactory::KimonoPluginFactory()
 	: qyotoAssembly(0), qyotoImage(0), initRuntimeMethod(0)
 {
+	connect(QCoreApplication::instance(), SIGNAL(destroyed()), this, SLOT(cleanup()));
 }
 
 KimonoPluginFactory::~KimonoPluginFactory()
 {
+}
+
+void
+KimonoPluginFactory::cleanup()
+{
+// 	printf("(kimonopluginfactory.cpp:%d) calling mono_jit_cleanup(%p)\n", __LINE__, domain);
+	mono_jit_cleanup(domain);
 }
 
 QByteArray
@@ -175,7 +182,6 @@ KimonoPluginFactory::initJit(const QString& path)
 		domain = mono_jit_init((const char*) path.toLatin1());
 		mono_config_parse(NULL);
 // 		printf("(kimonopluginfactory.cpp:%d) new domain (ptr: %p)\n", __LINE__, domain);
-		atexit(atexitfn);
 	}
 	return domain;
 }
@@ -497,3 +503,5 @@ int kdemain(int argc, char** argv)
 	} else
 		return -1;
 }
+
+#include <kimonopluginfactory.moc>
