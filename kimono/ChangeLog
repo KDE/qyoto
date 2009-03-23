@@ -1,3 +1,9 @@
+2009-03-23  Arno Rehn  <arno@arnorehn.de>
+	* Don't call mono_jit_cleanup from atexit() because then static and global variables
+	  could already be destroyed. this can lead to crashes in smoke when calling back
+	  into the binding. Calling it from the factory's dtor makes mono crash, so watch
+	  out for qcoreapps's destroyed() signal to call it then.
+
 2009-01-30  Arno Rehn  <arno@arnorehn.de>
 	* Mono 2.2 seems to have problems with generic parameters in method descriptions.
 	  Work around that by performing the method search ourselves. As a nice side-effect
