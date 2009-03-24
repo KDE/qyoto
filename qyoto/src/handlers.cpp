@@ -1582,7 +1582,7 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 			Smoke::ModuleIndex id = m->smoke()->findClass("QVariant");
 			
 			for (QMap<QString, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
-				void* v = (void*) &(i.value());
+				void* v = new QVariant(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, id.smoke, id.index, v);
 				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
 				void* string = (void*) (*IntPtrFromQString)((void*) &(i.key()));
