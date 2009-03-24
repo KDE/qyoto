@@ -1,3 +1,6 @@
+2009-03-24  Arno Rehn  <arno@arnorehn.de>
+	* Change Qyoto's license to LGPL2.
+
 2009-03-21  Arno Rehn  <arno@arnorehn.de>
 	* Use qDBusReplyFill to get the data from a dbus call into a QDBusReply.
 	  This adds support for non-primitive types such as QVariantMap.
