@@ -53,7 +53,7 @@ public class MySlave : KIO.SlaveBase {
 			Finished();
 			return;
 		}
-		MimeType("application/xhtml+xml");
+		MimeType("text/html");
 		Node n;
 		try {
 			string data = GetHtml(docurl, null, out n);
