@@ -650,6 +650,8 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 							return "Qyoto.QAbstractTextDocumentLayoutInternal";
 						if (strcmp(o->smoke->classes[o->classId].className, "QLayout") == 0)
 							return "Qyoto.QLayoutInternal";
+						if (strcmp(o->smoke->classes[o->classId].className, "QNetworkReply") == 0)
+							return "Qyoto.QNetworkReplyInternal";
 						return qyoto_modules[o->smoke].binding->className(o->classId);
 					} else {
 						return qyoto_resolve_classname(o);
@@ -2063,3 +2065,5 @@ Marshall::HandlerFn getMarshallFn(const SmokeType &type) {
 
 	return marshall_unknown;
 }
+
+// kate: space-indent off; mixed-indent off;
