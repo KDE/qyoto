@@ -13,12 +13,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <stdlib.h>
 #include "qyotosmokebinding.h"
 #include "qyoto.h"
 #include "virtualmethodcall.h"
 
 #include <cstdlib>
+#include <cstdio>
 
 #include <qt_smoke.h>
 
