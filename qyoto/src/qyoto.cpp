@@ -345,18 +345,26 @@ QVariantValue(char * typeName, void * variant)
 	printf("ENTER QVariantValue(typeName: %s variant: 0x%8.8x)\n", typeName, variant);
 #endif
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(variant);
-	void * value = QMetaType::construct(	QMetaType::type(typeName), 
-											(void *) ((QVariant *)o->ptr)->constData() );
+	(*FreeGCHandle)(variant);
+	QVariant *v = (QVariant*) o->ptr;
+	int type = QMetaType::type(typeName);
+	void *value = 0;
+	if (v->canConvert((QVariant::Type) type)) {
+		v->convert((QVariant::Type) type);
+		value = QMetaType::construct(type, v->constData());
+	} else {
+		value = QMetaType::construct(type, 0);
+	}
+	
 	if (qstrcmp(typeName, "QDBusVariant") == 0) {
 		Smoke::ModuleIndex id = o->smoke->findClass("QVariant");
 		smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, value);
-		(*FreeGCHandle)(variant);
 		return (*CreateInstance)("Qyoto.QDBusVariant", vo);
 	}
+	
 	Smoke::ModuleIndex id = o->smoke->findClass(typeName);
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, value);
-	(*FreeGCHandle)(variant);
-	return (*CreateInstance)((QString("Qyoto.") + typeName).toLatin1(), vo);
+	return (*CreateInstance)(qyoto_resolve_classname(vo), vo);
 }
 
 Q_DECL_EXPORT void *
@@ -371,6 +379,63 @@ QVariantFromValue(int type, void * value)
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, (void *) v);
 	(*FreeGCHandle)(value);
 	return (*CreateInstance)("Qyoto.QVariant", vo);
+}
+
+Q_DECL_EXPORT void
+DestroyObject(const char *className, void *ptr)
+{
+	if (!ptr) return;
+	QByteArray klassName(className);
+	QByteArray dtor = "~" + klassName;
+	QByteArray sig = dtor + "()";
+	Smoke::ModuleIndex mi = FindMethodId(klassName.data(), dtor.data(), sig.data());
+	if (!mi.smoke) {
+		printf("can't destroy %p, missing method: %s\n", ptr, sig.constData());
+		return;
+	}
+	const Smoke::Method &method = mi.smoke->methods[mi.index];
+	const Smoke::Class &klass = mi.smoke->classes[method.classId];
+	(*klass.classFn)(method.method, ptr, 0);
+}
+
+Q_DECL_EXPORT void*
+CreateObject(char *className, void *other)
+{
+	QByteArray klassName(className);
+	Smoke::ModuleIndex mi;
+	Smoke::StackItem stack[2];
+	
+	if (other) {
+		QByteArray ctor = klassName + "#";
+		QByteArray signature = klassName + "(const " + klassName + "&)";
+		mi = FindMethodId(className, ctor.data(), signature.data());
+		if (!mi.smoke) {
+			printf("can't create copy of %p, missing method: %s\n", other, signature.data());
+			return 0;
+		}
+		stack[1].s_voidp = other;
+	} else {
+		QByteArray signature = klassName + "()";
+		mi = FindMethodId(className, klassName.data(), signature.data());
+		if (!mi.smoke) {
+			printf("can't create object, missing method: %s\n", signature.data());
+			return 0;
+		}
+	}
+	
+	const Smoke::Method &method = mi.smoke->methods[mi.index];
+	const Smoke::Class &klass = mi.smoke->classes[method.classId];
+	(*klass.classFn)(method.method, 0, stack);
+	// set the binding
+	stack[1].s_voidp = qyoto_modules[mi.smoke].binding;
+	(*klass.classFn)(0, stack[0].s_voidp, stack);
+	return stack[0].s_voidp;
+}
+
+Q_DECL_EXPORT int
+QMetaTypeRegisterType(const char *name, QMetaType::Destructor destructor, QMetaType::Constructor constructor)
+{
+	return QMetaType::registerType(name, destructor, constructor);
 }
 
 Q_DECL_EXPORT void *

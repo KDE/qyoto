@@ -1,3 +1,7 @@
+2009-04-12  Arno Rhen  <arno@arnorehn.de>
+	* Make it possible to register new metatypes. For the moment this works only
+	  with classes wrapped by SMOKE.
+
 2009-03-24  Arno Rehn  <arno@arnorehn.de>
 	* Change Qyoto's license to LGPL2.
 

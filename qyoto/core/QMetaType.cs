@@ -2,7 +2,7 @@
 namespace Qyoto {
     using System;
     [SmokeClass("QMetaType")]
-    public class QMetaType : Object, IDisposable {
+    public partial class QMetaType : Object, IDisposable {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QMetaType(Type dummy) {}

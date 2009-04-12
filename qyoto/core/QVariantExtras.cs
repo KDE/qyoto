@@ -73,7 +73,11 @@ namespace Qyoto {
             } else if (typeof(T).IsEnum) {
                 return (T) (object) ToInt();
             } else {
-                string typeName = typeof(T).ToString().Replace("Qyoto.", "");
+                string typeName;
+                if (SmokeMarshallers.IsSmokeClass(typeof(T)))
+                    typeName = SmokeMarshallers.SmokeClassName(typeof(T));
+                else
+                    typeName = typeof(T).ToString();
                 if (NameToType(typeName) > TypeOf.LastCoreType) {
                     IntPtr instancePtr = QVariantValue(typeName, (IntPtr) GCHandle.Alloc(this));
                     return (T) ((GCHandle) instancePtr).Target;
@@ -139,10 +143,16 @@ namespace Qyoto {
             } else if (typeof(T).IsEnum) {
                 return new QVariant((int) value);
             } else {
-                string typeName = typeof(T).ToString().Replace("Qyoto.", "");
+                string typeName;
+                if (SmokeMarshallers.IsSmokeClass(typeof(T)))
+                    typeName = SmokeMarshallers.SmokeClassName(typeof(T));
+                else
+                    typeName = typeof(T).ToString();
                 if (NameToType(typeName) > TypeOf.LastCoreType) {
-                    IntPtr instancePtr =  QVariantFromValue((int) NameToType(typeName), (IntPtr) GCHandle.Alloc(value));
-                    return (QVariant) ((GCHandle) instancePtr).Target;
+                    GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), (IntPtr) GCHandle.Alloc(value));
+                    QVariant v = (QVariant) handle.Target;
+                    handle.Free();
+                    return v;
                 }
 
                 return new QVariant();
@@ -316,3 +326,5 @@ namespace Qyoto {
         }
     }
 }
+
+// kate: space-indent on; indent-width 4; replace-tabs on; mixed-indent off;
