@@ -37,14 +37,28 @@ namespace Qyoto {
         static extern int QMetaTypeRegisterType(string name, Destructor dtor, Constructor ctor);
 
         public static int RegisterType<T>() {
+            string className;
+            Destructor dtorHandler;
+            Constructor ctorHandler;
             if (SmokeMarshallers.IsSmokeClass(typeof(T))) {
-                string className = SmokeMarshallers.SmokeClassName(typeof(T));
-                GCHandle.Alloc(className); // prevent collection
-                Destructor dtorHandler = delegate(IntPtr obj) { DestroyObject(className, obj); };
-                Constructor ctorHandler = delegate(IntPtr copy) { return CreateObject(className, copy); };
-                return QMetaTypeRegisterType(className, dtorHandler, ctorHandler);
+                className = SmokeMarshallers.SmokeClassName(typeof(T));
+                dtorHandler = delegate(IntPtr obj) { DestroyObject(className, obj); };
+                ctorHandler = delegate(IntPtr copy) { return CreateObject(className, copy); };
+            } else {
+                className = typeof(T).ToString();
+                dtorHandler = delegate(IntPtr obj) { ((GCHandle) obj).Free(); };
+                ctorHandler = delegate(IntPtr copy) {
+                    if (copy != IntPtr.Zero) {
+                        T o = (T) ((GCHandle) copy).Target;  // create a copy
+                        return (IntPtr) GCHandle.Alloc(o);
+                    }
+                    return (IntPtr) GCHandle.Alloc(default(T));
+                };
             }
-            return 0;
+            GCHandle.Alloc(className); // prevent collection
+            GCHandle.Alloc(dtorHandler);
+            GCHandle.Alloc(ctorHandler);
+            return QMetaTypeRegisterType(className, dtorHandler, ctorHandler);
         }
     }
 }

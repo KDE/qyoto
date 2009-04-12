@@ -264,8 +264,12 @@ namespace Qyoto {
 			Object instance = ((GCHandle) instancePtr).Target;
 //			Debug.Assert(instance != null);
 
-			SmokeClassData data = GetSmokeClassData(instance.GetType());
-			return (IntPtr) data.smokeObjectField.GetValue(instance);
+			try {
+				SmokeClassData data = GetSmokeClassData(instance.GetType());
+				return (IntPtr) data.smokeObjectField.GetValue(instance);
+			} catch {
+				return IntPtr.Zero;
+			}
 		}
 		
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
@@ -557,8 +561,12 @@ namespace Qyoto {
 		// The class is not a custom subclass of a Qyoto class, and also is not
 		// a superclass of a Qyoto class, such as a MarshalByRefObject.
 		public static bool IsSmokeClass(Type klass) {
-			SmokeClassData data = GetSmokeClassData(klass);
-			return data != null && data.className != null;
+			try {
+				SmokeClassData data = GetSmokeClassData(klass);
+				return data != null && data.className != null;
+			} catch {
+				return false;
+			}
 		}
 
 		// The C++ class name signature of a Smoke class or interface

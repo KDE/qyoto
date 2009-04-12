@@ -363,6 +363,7 @@ QVariantValue(char * typeName, void * variant)
 	}
 	
 	Smoke::ModuleIndex id = o->smoke->findClass(typeName);
+	if (!id.smoke) return value;  // class not found in smoke, so it's probably just a GCHandle
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, value);
 	return (*CreateInstance)(qyoto_resolve_classname(vo), vo);
 }
@@ -374,10 +375,10 @@ QVariantFromValue(int type, void * value)
 	printf("ENTER QVariantFromValue(type: %d value: 0x%8.8x)\n", type, value);
 #endif
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(value);
-	QVariant * v = new QVariant(type, o->ptr);
-	Smoke::ModuleIndex id = o->smoke->findClass("QVariant");
+	if (o) (*FreeGCHandle)(value);
+	QVariant * v = new QVariant(type, o? o->ptr : value);
+	Smoke::ModuleIndex id = qt_Smoke->findClass("QVariant");
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, (void *) v);
-	(*FreeGCHandle)(value);
 	return (*CreateInstance)("Qyoto.QVariant", vo);
 }
 
