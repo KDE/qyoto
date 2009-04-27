@@ -35,6 +35,11 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
             set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
         }
+        [Q_PROPERTY("bool", "tabBarShown")]
+        public bool TabBarShown {
+            get { return (bool) interceptor.Invoke("isTabBarShown", "isTabBarShown()", typeof(bool)); }
+            set { interceptor.Invoke("setTabBarShown$", "setTabBarShown(bool)", typeof(void), typeof(bool), value); }
+        }
         /// <remarks>
         ///  Constructs a new TabBar
         ///  @arg parent the parent of this widget

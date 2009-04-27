@@ -1,3 +1,7 @@
+2009-01-12  Richard Dale  <richard.j.dale@gmail.com>
+* Regenerate the Plasma C# sources from the current headers, and add the new
+KDE 4.3 widgets.
+
 2009-01-26  Arno Rehn  <arno@arnorehn.de>
 * Make PlasmaScripting.QGraphicsWidget inherit from IQGraphicsItem.
 

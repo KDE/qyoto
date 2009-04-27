@@ -144,6 +144,18 @@ namespace Plasma {
         protected override bool EventFilter(QObject watched, QEvent arg2) {
             return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
         }
+        [SmokeMethod("dragEnterEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragEnterEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragEnterEvent#", "dragEnterEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        [SmokeMethod("dragLeaveEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragLeaveEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragLeaveEvent#", "dragLeaveEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        [SmokeMethod("dropEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DropEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dropEvent#", "dropEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
         ~PopupApplet() {
             interceptor.Invoke("~PopupApplet", "~PopupApplet()", typeof(void));
         }

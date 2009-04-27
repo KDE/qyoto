@@ -172,6 +172,12 @@ namespace Plasma {
         protected KConfigGroup Config() {
             return (KConfigGroup) interceptor.Invoke("config", "config() const", typeof(KConfigGroup));
         }
+        /// <remarks>
+        ///  Requests that the config be synchronized to disk
+        ///      </remarks>        <short>    Requests that the config be synchronized to disk      </short>
+        protected void ConfigNeedsSaving() {
+            interceptor.Invoke("configNeedsSaving", "configNeedsSaving() const", typeof(void));
+        }
         ~View() {
             interceptor.Invoke("~View", "~View()", typeof(void));
         }

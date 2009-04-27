@@ -101,6 +101,13 @@ namespace Plasma {
             interceptor.Invoke("removeOffscreenWidget#", "removeOffscreenWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
+        /// </remarks>        <return> the list of all offscreen widgets
+        /// </return>
+        ///         <short>   </short>
+        public List<QGraphicsWidget> OffscreenWidgets() {
+            return (List<QGraphicsWidget>) interceptor.Invoke("offscreenWidgets", "offscreenWidgets() const", typeof(List<QGraphicsWidget>));
+        }
+        /// <remarks>
         ///  Returns the number of screens available to plasma.
         ///  Subclasses should override this method as the default
         ///  implementation returns a meaningless value.
@@ -151,6 +158,32 @@ namespace Plasma {
         ///         <short>    This method is useful in order to retrieve the list of available  screen edges for panel type containments.</short>
         public List<Plasma.Location> FreeEdges(int screen) {
             return (List<Plasma.Location>) interceptor.Invoke("freeEdges$", "freeEdges(int) const", typeof(List<Plasma.Location>), typeof(int), screen);
+        }
+        /// <remarks>
+        ///  Returns the QAction with the given name from our collection
+        ///      </remarks>        <short>    Returns the QAction with the given name from our collection      </short>
+        public QAction Action(string name) {
+            return (QAction) interceptor.Invoke("action$", "action(QString) const", typeof(QAction), typeof(string), name);
+        }
+        /// <remarks>
+        ///  Adds the action to our collection under the given name
+        ///      </remarks>        <short>    Adds the action to our collection under the given name      </short>
+        public void AddAction(string name, QAction action) {
+            interceptor.Invoke("addAction$#", "addAction(QString, QAction*)", typeof(void), typeof(string), name, typeof(QAction), action);
+        }
+        /// <remarks>
+        ///  Returns all the actions in our collection
+        ///      </remarks>        <short>    Returns all the actions in our collection      </short>
+        public List<QAction> Actions() {
+            return (List<QAction>) interceptor.Invoke("actions", "actions() const", typeof(List<QAction>));
+        }
+        /// <remarks>
+        ///  convenience function - enables or disables an action by name
+        /// <param> name="name" the name of the action in our collection
+        /// </param><param> name="enable" true to enable, false to disable
+        ///      </param></remarks>        <short>    convenience function - enables or disables an action by name </short>
+        public void EnableAction(string name, bool enable) {
+            interceptor.Invoke("enableAction$$", "enableAction(const QString&, bool)", typeof(void), typeof(string), name, typeof(bool), enable);
         }
         /// <remarks>
         ///  Initializes the layout from a config file. This will first clear any existing
@@ -312,5 +345,13 @@ namespace Plasma {
         ///      </remarks>        <short>    This signal inicates that a change in available screen goemetry occurred.</short>
         [Q_SIGNAL("void availableScreenRegionChanged()")]
         void AvailableScreenRegionChanged();
+        /// <remarks>
+        ///  emitted when immutability changes.
+        ///  this is for use by things that don't get contraints events, like plasmaapp.
+        ///  it's NOT for containments or applets or any of the other stuff on the scene.
+        ///  if your code's not in shells/ it probably shouldn't be using it.
+        ///      </remarks>        <short>    emitted when immutability changes.</short>
+        [Q_SIGNAL("void immutabilityChanged(Plasma::ImmutabilityType)")]
+        void ImmutabilityChanged(Plasma.ImmutabilityType immutability);
     }
 }

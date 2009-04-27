@@ -153,6 +153,13 @@ namespace Plasma {
         LeftMargin = 2,
         RightMargin = 3,
     }
+    public enum MessageButton {
+        ButtonNone = 0,
+        ButtonOk = 1,
+        ButtonYes = 2,
+        ButtonNo = 4,
+        ButtonCancel = 8,
+    }
     /// <remarks>
     ///  @class IconWidget plasma/widgets/iconwidget.h <Plasma/Widgets/IconWidget>
     ///  An icon, in this sense, is not restricted to just an image, but can also
@@ -178,11 +185,21 @@ namespace Plasma {
         ///  Converts a location to a direction. Handy for figuring out which way to send a popup based on
         ///  location or to point arrows and other directional items.
         /// <param> name="location" the location of the container the element will appear in
-        /// </param></remarks>        <return> the visual direction of the element should be oriented in
+        /// </param></remarks>        <return> the visual direction the element should be oriented in
         /// </return>
         ///         <short>    Converts a location to a direction.</short>
         public static Plasma.Direction LocationToDirection(Plasma.Location location) {
             return (Plasma.Direction) staticInterceptor.Invoke("locationToDirection$", "locationToDirection(Plasma::Location)", typeof(Plasma.Direction), typeof(Plasma.Location), location);
+        }
+        /// <remarks>
+        ///  Converts a location to the direction facing it. Handy for figuring out which way to collapse
+        ///  a popup or to point arrows at the item itself.
+        /// <param> name="location" the location of the container the element will appear in
+        /// </param></remarks>        <return> the visual direction the element should be oriented in
+        /// </return>
+        ///         <short>    Converts a location to the direction facing it.</short>
+        public static Plasma.Direction LocationToInverseDirection(Plasma.Location location) {
+            return (Plasma.Direction) staticInterceptor.Invoke("locationToInverseDirection$", "locationToInverseDirection(Plasma::Location)", typeof(Plasma.Direction), typeof(Plasma.Location), location);
         }
         /// <remarks>
         ///  Returns the most appropriate QGraphicsView for the item.

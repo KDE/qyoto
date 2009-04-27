@@ -55,10 +55,35 @@ namespace Plasma {
             return (Plasma.DataEngineManager) staticInterceptor.Invoke("self", "self()", typeof(Plasma.DataEngineManager));
         }
         /// <remarks>
-        ///  Returns a listing of all known engines by name
-        ///          </remarks>        <short>    Returns a listing of all known engines by name          </short>
+        /// <param> name="parentApp" the application to filter applets on. Uses the
+        ///                   X-KDE-ParentApp entry (if any) in the plugin info.
+        ///                   The default value of string() will result in a
+        ///                   list containing only applets not specifically
+        ///                   registered to an application.
+        ///          </param></remarks>        <return> a listing of all known DataEngines by name
+        /// </return>
+        ///         <short>   </short>
+        public static List<string> ListAllEngines(string parentApp) {
+            return (List<string>) staticInterceptor.Invoke("listAllEngines$", "listAllEngines(const QString&)", typeof(List<string>), typeof(string), parentApp);
+        }
         public static List<string> ListAllEngines() {
             return (List<string>) staticInterceptor.Invoke("listAllEngines", "listAllEngines()", typeof(List<string>));
+        }
+        /// <remarks>
+        ///  Returns a list of all known DataEngines.
+        /// <param> name="parentApp" the application to filter applets on. Uses the
+        ///                   X-KDE-ParentApp entry (if any) in the plugin info.
+        ///                   The default value of string() will result in a
+        ///                   list containing only applets not specifically
+        ///                   registered to an application.
+        /// </param></remarks>        <return> list of DataEngines
+        /// </return>
+        ///         <short>    Returns a list of all known DataEngines.</short>
+        public static List<KPluginInfo> ListEngineInfo(string parentApp) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listEngineInfo$", "listEngineInfo(const QString&)", typeof(List<KPluginInfo>), typeof(string), parentApp);
+        }
+        public static List<KPluginInfo> ListEngineInfo() {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listEngineInfo", "listEngineInfo()", typeof(List<KPluginInfo>));
         }
         protected new IDataEngineManagerSignals Emit {
             get { return (IDataEngineManagerSignals) Q_EMIT; }

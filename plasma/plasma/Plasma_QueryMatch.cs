@@ -30,9 +30,9 @@ namespace Plasma {
         /// <remarks>
         ///  Constructs a PossibleMatch associated with a given RunnerContext
         ///  and runner.
-        ///  @arg search the RunnerContext this match belongs to
-        ///  @arg runner the runner this match belongs to
-        ///          </remarks>        <short>    Constructs a PossibleMatch associated with a given RunnerContext  and runner.</short>
+        /// <param> name="search" the RunnerContext this match belongs to
+        /// </param><param> name="runner" the runner this match belongs to
+        ///          </param></remarks>        <short>    Constructs a PossibleMatch associated with a given RunnerContext  and runner.</short>
         public QueryMatch(Plasma.AbstractRunner runner) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QueryMatch#", "QueryMatch(Plasma::AbstractRunner*)", typeof(void), typeof(Plasma.AbstractRunner), runner);
@@ -44,6 +44,18 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("QueryMatch#", "QueryMatch(const Plasma::QueryMatch&)", typeof(void), typeof(Plasma.QueryMatch), other);
         }
+        /// <remarks>
+        /// </remarks>        <return> the runner associated with this action
+        ///          </return>
+        ///         <short>   </short>
+        public Plasma.AbstractRunner Runner() {
+            return (Plasma.AbstractRunner) interceptor.Invoke("runner", "runner() const", typeof(Plasma.AbstractRunner));
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the match is valid and can therefore be run,
+        ///          an invalid match does not have an associated AbstractRunner
+        ///          </return>
+        ///         <short>   </short>
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
         }
@@ -77,38 +89,6 @@ namespace Plasma {
             return (double) interceptor.Invoke("relevance", "relevance() const", typeof(double));
         }
         /// <remarks>
-        ///  The runner associated with this action
-        ///          </remarks>        <short>    The runner associated with this action          </short>
-        public Plasma.AbstractRunner Runner() {
-            return (Plasma.AbstractRunner) interceptor.Invoke("runner", "runner() const", typeof(Plasma.AbstractRunner));
-        }
-        /// <remarks>
-        ///  A string that can be used as an ID for this match,
-        ///  even between different queries. It is based in part
-        ///  on the source of the match (the AbstractRunner) and
-        ///  distinguishing information provided by the runner,
-        ///  ensuring global uniqueness as well as consistency
-        ///  between query matches.
-        ///          </remarks>        <short>    A string that can be used as an ID for this match,  even between different queries.</short>
-        public string Id() {
-            return (string) interceptor.Invoke("id", "id() const", typeof(string));
-        }
-        public string Text() {
-            return (string) interceptor.Invoke("text", "text() const", typeof(string));
-        }
-        public string Subtext() {
-            return (string) interceptor.Invoke("subtext", "subtext() const", typeof(string));
-        }
-        public QVariant Data() {
-            return (QVariant) interceptor.Invoke("data", "data() const", typeof(QVariant));
-        }
-        public QIcon Icon() {
-            return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
-        }
-        public bool IsEnabled() {
-            return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
-        }
-        /// <remarks>
         ///  Requests this match to activae using the given context
         /// <param> name="context" the context to use in conjunction with this run
         /// </param> @sa AbstractRunner.Run
@@ -128,6 +108,13 @@ namespace Plasma {
             interceptor.Invoke("setData#", "setData(const QVariant&)", typeof(void), typeof(QVariant), data);
         }
         /// <remarks>
+        /// </remarks>        <return> the data associated with this match; usually runner-specific
+        ///          </return>
+        ///         <short>   </short>
+        public QVariant Data() {
+            return (QVariant) interceptor.Invoke("data", "data() const", typeof(QVariant));
+        }
+        /// <remarks>
         ///  Sets the id for this match; useful if the id does not
         ///  match data().toString(). The id must be unique to all
         ///  matches from this runner, and should remain constant
@@ -138,17 +125,74 @@ namespace Plasma {
         public void SetId(string id) {
             interceptor.Invoke("setId$", "setId(const QString&)", typeof(void), typeof(string), id);
         }
+        /// <remarks>
+        ///  @ruetnr a string that can be used as an ID for this match,
+        ///  even between different queries. It is based in part
+        ///  on the source of the match (the AbstractRunner) and
+        ///  distinguishing information provided by the runner,
+        ///  ensuring global uniqueness as well as consistency
+        ///  between query matches.
+        ///          </remarks>        <short>    @ruetnr a string that can be used as an ID for this match,  even between different queries.</short>
+        public string Id() {
+            return (string) interceptor.Invoke("id", "id() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Sets the main title text for this match; should be short
+        ///  enough to fit nicely on one line in a user interface
+        /// <param> name="text" the text to use as the title
+        ///          </param></remarks>        <short>    Sets the main title text for this match; should be short  enough to fit nicely on one line in a user interface </short>
         public void SetText(string text) {
             interceptor.Invoke("setText$", "setText(const QString&)", typeof(void), typeof(string), text);
         }
+        /// <remarks>
+        /// </remarks>        <return> the title text for this match
+        ///          </return>
+        ///         <short>   </short>
+        public string Text() {
+            return (string) interceptor.Invoke("text", "text() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Sets the descriptive text for this match; can be longer
+        ///  than the main title text
+        /// <param> name="text" the text to use as the description
+        ///          </param></remarks>        <short>    Sets the descriptive text for this match; can be longer  than the main title text </short>
         public void SetSubtext(string text) {
             interceptor.Invoke("setSubtext$", "setSubtext(const QString&)", typeof(void), typeof(string), text);
         }
+        /// <remarks>
+        /// </remarks>        <return> the descriptive text for this match
+        ///          </return>
+        ///         <short>   </short>
+        public string Subtext() {
+            return (string) interceptor.Invoke("subtext", "subtext() const", typeof(string));
+        }
+        /// <remarks>
+        ///  Sets the icon associated with this match
+        /// <param> name="icon" the icon to show along with the match
+        ///          </param></remarks>        <short>    Sets the icon associated with this match </short>
         public void SetIcon(QIcon icon) {
             interceptor.Invoke("setIcon#", "setIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
         }
+        /// <remarks>
+        /// </remarks>        <return> the icon for this match
+        ///          </return>
+        ///         <short>   </short>
+        public QIcon Icon() {
+            return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
+        }
+        /// <remarks>
+        ///  Sets whether or not this match can be activited
+        /// <param> name="enable" true if the match is enabled and therefore runnable
+        ///          </param></remarks>        <short>    Sets whether or not this match can be activited </short>
         public void SetEnabled(bool enable) {
             interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), enable);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the match is enabled and therefore runnable, otherwise false
+        ///          </return>
+        ///         <short>   </short>
+        public bool IsEnabled() {
+            return (bool) interceptor.Invoke("isEnabled", "isEnabled() const", typeof(bool));
         }
         /// <remarks>
         ///  The current action.
@@ -158,9 +202,25 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Sets the selected action
-        ///         </remarks>        <short>    Sets the selected action         </short>
+        ///          </remarks>        <short>    Sets the selected action          </short>
         public void SetSelectedAction(QAction action) {
             interceptor.Invoke("setSelectedAction#", "setSelectedAction(QAction*)", typeof(void), typeof(QAction), action);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if this match can be configured before being run
+        /// </return>
+        ///         <short>   </short>
+        public bool HasConfigurationInterface() {
+            return (bool) interceptor.Invoke("hasConfigurationInterface", "hasConfigurationInterface() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  If hasConfigurationInterface() returns true, this method may be called to get
+        ///  a widget displaying the options the user can interact with to modify
+        ///  the behaviour of what happens when the match is run.
+        /// <param> name="widget" the parent of the options widgets.
+        /// </param></remarks>        <short>    If hasConfigurationInterface() returns true, this method may be called to get  a widget displaying the options the user can interact with to modify  the behaviour of what happens when the match is run.</short>
+        public void CreateConfigurationInterface(QWidget parent) {
+            interceptor.Invoke("createConfigurationInterface#", "createConfigurationInterface(QWidget*)", typeof(void), typeof(QWidget), parent);
         }
         ~QueryMatch() {
             interceptor.Invoke("~QueryMatch", "~QueryMatch()", typeof(void));

@@ -73,7 +73,7 @@ namespace Plasma {
             set { interceptor.Invoke("setConfigurationRequired$", "setConfigurationRequired(bool)", typeof(void), typeof(bool), value); }
         }
         [Q_PROPERTY("QRectF", "geometry")]
-        public QRectF Geometry {
+        public new QRectF Geometry {
             get { return (QRectF) interceptor.Invoke("geometry", "geometry()", typeof(QRectF)); }
             set { interceptor.Invoke("setGeometry#", "setGeometry(QRectF)", typeof(void), typeof(QRectF), value); }
         }
@@ -443,12 +443,43 @@ namespace Plasma {
             interceptor.Invoke("Applet", "Applet()", typeof(void));
         }
         /// <remarks>
+        /// <param> name="parent" the QGraphicsItem this applet is parented to
+        /// </param><param> name="serviceId" the name of the .desktop file containing the
+        ///       information about the widget
+        /// </param><param> name="appletId" a unique id used to differentiate between multiple
+        ///       instances of the same Applet type
+        /// </param><param> name="args" a list of strings containing two entries: the service id
+        ///       and the applet id
+        /// </param></remarks>        <short>   </short>
+        public Applet(IQGraphicsItem parent, string serviceId, uint appletId, List<QVariant> args) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("Applet#$$?", "Applet(QGraphicsItem*, const QString&, uint, const QList<QVariant>&)", typeof(void), typeof(IQGraphicsItem), parent, typeof(string), serviceId, typeof(uint), appletId, typeof(List<QVariant>), args);
+        }
+        /// <remarks>
         /// </remarks>        <return> true if destroy() was called; useful for Applets which should avoid
         ///  certain tasks if they are about to be deleted permanently
         ///          </return>
         ///         <short>   </short>
         public bool Destroyed() {
             return (bool) interceptor.Invoke("destroyed", "destroyed() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Reimplement this method so provide a configuration interface,
+        ///  parented to the supplied widget. Ownership of the widgets is passed
+        ///  to the parent widget.
+        /// <param> name="parent" the dialog which is the parent of the configuration
+        ///                widgets
+        ///          </param></remarks>        <short>    Reimplement this method so provide a configuration interface,  parented to the supplied widget.</short>
+        [SmokeMethod("createConfigurationInterface(KConfigDialog*)")]
+        public virtual void CreateConfigurationInterface(KConfigDialog parent) {
+            interceptor.Invoke("createConfigurationInterface#", "createConfigurationInterface(KConfigDialog*)", typeof(void), typeof(KConfigDialog), parent);
+        }
+        /// <remarks>
+        ///  returns true if the applet is allowed to perform functions covered by the given constraint
+        ///  eg. isAllowed("FileDialog") returns true iff applets are allowed to show filedialogs.
+        ///          </remarks>        <short>    returns true if the applet is allowed to perform functions covered by the given constraint  eg.</short>
+        public bool IsAllowed(string constraint) {
+            return (bool) interceptor.Invoke("isAllowed$", "isAllowed(const QString&)", typeof(bool), typeof(string), constraint);
         }
         /// <remarks>
         ///  Sets the immutability type for this applet (not immutable,
@@ -536,6 +567,14 @@ namespace Plasma {
             interceptor.Invoke("setBusy$", "setBusy(bool)", typeof(void), typeof(bool), busy);
         }
         /// <remarks>
+        /// </remarks>        <return> the list of arguments which the applet was called
+        /// </return>
+        ///         <short>   </short>
+        [Q_SLOT("QList<QVariant> startupArguments()")]
+        public List<QVariant> StartupArguments() {
+            return (List<QVariant>) interceptor.Invoke("startupArguments", "startupArguments() const", typeof(List<QVariant>));
+        }
+        /// <remarks>
         ///  This constructor is to be used with the plugin loading systems
         ///  found in KPluginInfo and KService. The argument list is expected
         ///  to have two elements: the KService service ID for the desktop entry
@@ -593,15 +632,18 @@ namespace Plasma {
             interceptor.Invoke("setConfigurationRequired$", "setConfigurationRequired(bool)", typeof(void), typeof(bool), needsConfiguring);
         }
         /// <remarks>
-        ///  Reimplement this method so provide a configuration interface,
-        ///  parented to the supplied widget. Ownership of the widgets is passed
-        ///  to the parent widget.
-        /// <param> name="parent" the dialog which is the parent of the configuration
-        ///                widgets
-        ///          </param></remarks>        <short>    Reimplement this method so provide a configuration interface,  parented to the supplied widget.</short>
-        [SmokeMethod("createConfigurationInterface(KConfigDialog*)")]
-        protected virtual void CreateConfigurationInterface(KConfigDialog parent) {
-            interceptor.Invoke("createConfigurationInterface#", "createConfigurationInterface(KConfigDialog*)", typeof(void), typeof(KConfigDialog), parent);
+        ///  Shows a message as an overlay of the applet: the message has an
+        ///  icon, text and (optional) buttons
+        /// <param> name="icon" the icon that will be shown
+        /// </param><param> name="message" the message string that will be shown.
+        ///                 If the message is empty nothng will be shown
+        ///                 and if there was a message already it will be hidden
+        /// </param><param> name="buttons" an OR combination of all the buttons needed
+        /// </param></remarks>        <short>    Shows a message as an overlay of the applet: the message has an  icon, text and (optional) buttons </short>
+        ///         <see> Plasma.MessageButtons</see>
+        ///         <see> messageButtonPressed</see>
+        protected void ShowMessage(QIcon icon, string message, uint buttons) {
+            interceptor.Invoke("showMessage#$$", "showMessage(const QIcon&, const QString&, const Plasma::MessageButtons)", typeof(void), typeof(QIcon), icon, typeof(string), message, typeof(uint), buttons);
         }
         /// <remarks>
         ///  Called when any of the geometry constraints have been updated.
@@ -870,6 +912,16 @@ namespace Plasma {
         [Q_SIGNAL("void geometryChanged()")]
         void GeometryChanged();
         /// <remarks>
+        ///  Emitted when the user completes a transformation of the applet.
+        ///          </remarks>        <short>    Emitted when the user completes a transformation of the applet.</short>
+        [Q_SIGNAL("void appletTransformedByUser()")]
+        void AppletTransformedByUser();
+        /// <remarks>
+        ///  Emitted when the applet changes its own geometry or transform.
+        ///          </remarks>        <short>    Emitted when the applet changes its own geometry or transform.</short>
+        [Q_SIGNAL("void appletTransformedItself()")]
+        void AppletTransformedItself();
+        /// <remarks>
         ///  Emitted by Applet subclasses when they change a sizeHint and wants to announce the change
         ///          </remarks>        <short>    Emitted by Applet subclasses when they change a sizeHint and wants to announce the change          </short>
         [Q_SIGNAL("void sizeHintChanged(Qt::SizeHint)")]
@@ -889,5 +941,17 @@ namespace Plasma {
         ///          </remarks>        <short>    Emitted when activation is requested due to, for example, a global  keyboard shortcut.</short>
         [Q_SIGNAL("void activate()")]
         void Activate();
+        /// <remarks>
+        ///  Emitted when the user clicked on a button of the message overlay
+        /// </remarks>        <short>    Emitted when the user clicked on a button of the message overlay </short>
+        ///         <see> showMessage</see>
+        ///         <see> Plasma.MessageButton</see>
+        [Q_SIGNAL("void messageButtonPressed(MessageButton)")]
+        void MessageButtonPressed(Plasma.MessageButton button);
+        /// <remarks>
+        ///  Emitted when the applet is deleted
+        ///          </remarks>        <short>    Emitted when the applet is deleted          </short>
+        [Q_SIGNAL("void appletDestroyed(Plasma::Applet*)")]
+        void AppletDestroyed(Plasma.Applet applet);
     }
 }

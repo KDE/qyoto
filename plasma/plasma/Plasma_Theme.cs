@@ -150,18 +150,43 @@ namespace Plasma {
             return (bool) interceptor.Invoke("useGlobalSettings", "useGlobalSettings() const", typeof(bool));
         }
         /// <remarks>
+        /// </remarks>        <return> true if the native widget styles should be used instead of themed
+        ///  widgets. Defaults is false.
+        ///          </return>
+        ///         <short>   </short>
+        public bool UseNativeWidgetStyle() {
+            return (bool) interceptor.Invoke("useNativeWidgetStyle", "useNativeWidgetStyle() const", typeof(bool));
+        }
+        /// <remarks>
         ///  Tries to load pixmap with the specified key from cache.
-        /// </remarks>        <return> true when pixmap was found and loaded from cache, false otherwise
+        /// <param> name="key" the name to use in the cache for this image
+        /// </param><param> name="pix" the pixmap object to populate with the resulting data if found
+        /// </param></remarks>        <return> true when pixmap was found and loaded from cache, false otherwise
         /// </return>
         ///         <short>    Tries to load pixmap with the specified key from cache.</short>
         public bool FindInCache(string key, QPixmap pix) {
             return (bool) interceptor.Invoke("findInCache$#", "findInCache(const QString&, QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), pix);
         }
         /// <remarks>
+        ///  This is an overloaded member provided to check with file timestamp
+        ///  where cache is still valid.
+        /// <param> name="key" the name to use in the cache for this image
+        /// </param><param> name="pix" the pixmap object to populate with the resulting data if found
+        /// </param><param> name="lastModified" if non-zero, the time stamp is also checked on the file,
+        ///                      and must be newer than the timestamp to be loaded
+        /// </param></remarks>        <return> true when pixmap was found and loaded from cache, false otherwise
+        /// </return>
+        ///         <short>    This is an overloaded member provided to check with file timestamp  where cache is still valid.</short>
+        public bool FindInCache(string key, QPixmap pix, uint lastModified) {
+            return (bool) interceptor.Invoke("findInCache$#$", "findInCache(const QString&, QPixmap&, unsigned int)", typeof(bool), typeof(string), key, typeof(QPixmap), pix, typeof(uint), lastModified);
+        }
+        /// <remarks>
         ///  Insert specified pixmap into the cache.
         ///  If the cache already contains pixmap with the specified key then it is
-        ///   overwritten.
-        /// </remarks>        <short>    Insert specified pixmap into the cache.</short>
+        ///  overwritten.
+        /// <param> name="key" the name to use in the cache for this pixmap
+        /// </param><param> name="pix" the pixmap data to store in the cache
+        /// </param></remarks>        <short>    Insert specified pixmap into the cache.</short>
         public void InsertIntoCache(string key, QPixmap pix) {
             interceptor.Invoke("insertIntoCache$#", "insertIntoCache(const QString&, const QPixmap&)", typeof(void), typeof(string), key, typeof(QPixmap), pix);
         }

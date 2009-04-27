@@ -143,22 +143,32 @@ namespace Plasma {
             interceptor.Invoke("setIgnoredTypes$", "setIgnoredTypes(Plasma::RunnerContext::Types)", typeof(void), typeof(uint), types);
         }
         /// <remarks>
-        ///  Returns the user visible engine name for the Runner
-        ///           </remarks>        <short>    Returns the user visible engine name for the Runner           </short>
+        /// </remarks>        <return> the user visible engine name for the Runner
+        ///           </return>
+        ///         <short>   </short>
         public string Name() {
             return (string) interceptor.Invoke("name", "name() const", typeof(string));
         }
         /// <remarks>
-        ///  Returns an id string for the Runner
-        ///           </remarks>        <short>    Returns an id string for the Runner           </short>
+        /// </remarks>        <return> an id string for the Runner
+        ///           </return>
+        ///         <short>   </short>
         public string Id() {
             return (string) interceptor.Invoke("id", "id() const", typeof(string));
         }
         /// <remarks>
-        ///  Returns the description of this Runner
-        ///           </remarks>        <short>    Returns the description of this Runner           </short>
+        /// </remarks>        <return> the description of this Runner
+        ///           </return>
+        ///         <short>   </short>
         public string Description() {
             return (string) interceptor.Invoke("description", "description() const", typeof(string));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the icon for this Runner
+        ///          </return>
+        ///         <short>   </short>
+        public QIcon Icon() {
+            return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
         }
         /// <remarks>
         ///  Accessor for the associated Package object if any.
@@ -176,6 +186,13 @@ namespace Plasma {
         [SmokeMethod("reloadConfiguration()")]
         public virtual void ReloadConfiguration() {
             interceptor.Invoke("reloadConfiguration", "reloadConfiguration()", typeof(void));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the syntaxes the runner has registered that it accepts and understands
+        /// </return>
+        ///         <short>   </short>
+        public List<Plasma.RunnerSyntax> Syntaxes() {
+            return (List<Plasma.RunnerSyntax>) interceptor.Invoke("syntaxes", "syntaxes() const", typeof(List<Plasma.RunnerSyntax>));
         }
         /// <remarks>
         ///  Constructs a Runner object. Since AbstractRunner has pure virtuals,
@@ -225,23 +242,6 @@ namespace Plasma {
         ///          </remarks>        <short>    Sets the priority of the runner.</short>
         protected void SetPriority(Plasma.AbstractRunner.Priority newPriority) {
             interceptor.Invoke("setPriority$", "setPriority(Plasma::AbstractRunner::Priority)", typeof(void), typeof(Plasma.AbstractRunner.Priority), newPriority);
-        }
-        /// <remarks>
-        ///  A blocking method to do queries of installed Services which can provide
-        ///  a measure of safety for runners running their own threads. This should
-        ///  be used instead of calling KServiceTypeTrader.Query(..) directly.
-        ///  @arg serviceType a service type like "Plasma/Applet" or "KFilePlugin"
-        ///  @arg constraint a constraint to limit the choices returned.
-        /// </remarks>        <return> a list of services that satisfy the query.
-        ///          </return>
-        ///         <short>    A blocking method to do queries of installed Services which can provide  a measure of safety for runners running their own threads.</short>
-        ///         <see> KServiceTypeTrader.Query(const</see>
-        ///         <see> const</see>
-        protected List<KService> ServiceQuery(string serviceType, string constraint) {
-            return (List<KService>) interceptor.Invoke("serviceQuery$$", "serviceQuery(const QString&, const QString&) const", typeof(List<KService>), typeof(string), serviceType, typeof(string), constraint);
-        }
-        protected List<KService> ServiceQuery(string serviceType) {
-            return (List<KService>) interceptor.Invoke("serviceQuery$", "serviceQuery(const QString&) const", typeof(List<KService>), typeof(string), serviceType);
         }
         /// <remarks>
         ///  A given match can have more than action that can be performed on it.
@@ -303,6 +303,23 @@ namespace Plasma {
         ///          </remarks>        <short>    Clears the action registry.</short>
         protected void ClearActions() {
             interceptor.Invoke("clearActions", "clearActions()", typeof(void));
+        }
+        /// <remarks>
+        ///  Adds a registed syntax that this runner understands. This is used to
+        ///  display to the user what this runner can understand and how it can be
+        ///  used.
+        /// <param> name="syntax" the syntax to register
+        /// </param></remarks>        <short>    Adds a registed syntax that this runner understands.</short>
+        protected void AddSyntax(Plasma.RunnerSyntax syntax) {
+            interceptor.Invoke("addSyntax#", "addSyntax(const Plasma::RunnerSyntax&)", typeof(void), typeof(Plasma.RunnerSyntax), syntax);
+        }
+        /// <remarks>
+        ///  Sets the list of syntaxes; passing in an empty list effectively clears
+        ///  the syntaxes.
+        /// <param> name="the" syntaxes to register for this runner
+        /// </param></remarks>        <short>    Sets the list of syntaxes; passing in an empty list effectively clears  the syntaxes.</short>
+        protected void SetSyntaxes(List<Plasma.RunnerSyntax> syns) {
+            interceptor.Invoke("setSyntaxes?", "setSyntaxes(const QList<Plasma::RunnerSyntax>&)", typeof(void), typeof(List<Plasma.RunnerSyntax>), syns);
         }
         [Q_SLOT("void init()")]
         protected void Init() {

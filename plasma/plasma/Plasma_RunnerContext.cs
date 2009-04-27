@@ -84,6 +84,24 @@ namespace Plasma {
             return (string) interceptor.Invoke("mimeType", "mimeType() const", typeof(string));
         }
         /// <remarks>
+        ///  while (.. a possibly large iteration) {
+        ///      if (!context.isValid()) {
+        ///          return;
+        ///      }
+        ///      ... some processing ...
+        ///  }
+        ///  While not required to be used within runners, it provies a nice way
+        ///  to avoid unecessary processing in runners that may run for an extended
+        ///  period (as measured in 10s of ms) and therefore improve the user experience.
+        ///          </remarks>        <return> true if this context is no longer valid and therefore
+        ///  matching using it should abort. Most useful as an optimization technique
+        ///  inside of AbstractRunner subclasses in the match method, e.g.:
+        /// </return>
+        ///         <short>   </short>
+        public bool IsValid() {
+            return (bool) interceptor.Invoke("isValid", "isValid()", typeof(bool));
+        }
+        /// <remarks>
         ///  Appends lists of matches to the list of matches.
         ///  This method is thread safe and causes the matchesChanged() signal to be emitted.
         /// </remarks>        <return> true if matches were added, false if matches were e.g. outdated

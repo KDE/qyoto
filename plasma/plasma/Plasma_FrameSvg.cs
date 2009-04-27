@@ -193,6 +193,13 @@ namespace Plasma {
             return (QRegion) interceptor.Invoke("mask", "mask() const", typeof(QRegion));
         }
         /// <remarks>
+        /// </remarks>        <return> a pixmap whose alpha channel is the opacity of the frame. It may be the frame itself or a special frame with the mask- prefix
+        ///          </return>
+        ///         <short>   </short>
+        public QPixmap AlphaMask() {
+            return (QPixmap) interceptor.Invoke("alphaMask", "alphaMask() const", typeof(QPixmap));
+        }
+        /// <remarks>
         ///  Sets whether saving all the rendered prefixes in a cache or not
         ///  @arg cache if use the cache or not
         ///         </remarks>        <short>    Sets whether saving all the rendered prefixes in a cache or not  @arg cache if use the cache or not         </short>

@@ -160,6 +160,15 @@ namespace Plasma {
         protected override Plasma.Package Package() {
             return (Plasma.Package) interceptor.Invoke("package", "package() const", typeof(Plasma.Package));
         }
+        /// <remarks>
+        ///  Note that the dialog returned is set to delete on close.
+        ///      </remarks>        <return> a standard Plasma applet configuration dialog, ready
+        ///  to have pages added to it.
+        /// </return>
+        ///         <short>   </short>
+        protected KConfigDialog StandardConfigurationDialog() {
+            return (KConfigDialog) interceptor.Invoke("standardConfigurationDialog", "standardConfigurationDialog()", typeof(KConfigDialog));
+        }
         ~AppletScript() {
             interceptor.Invoke("~AppletScript", "~AppletScript()", typeof(void));
         }

@@ -48,6 +48,10 @@ namespace Plasma {
         public QLabel NativeWidget {
             get { return (QLabel) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QLabel)); }
         }
+        /// <remarks>
+        ///  Constructs a label with word wrap on by default
+        ///  @arg parent the parent of this widget
+        ///      </remarks>        <short>    Constructs a label with word wrap on by default </short>
         public Label(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("Label#", "Label(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), parent);
@@ -78,5 +82,7 @@ namespace Plasma {
     public interface ILabelSignals : IQGraphicsProxyWidgetSignals {
         [Q_SIGNAL("void linkActivated(QString)")]
         void LinkActivated(string link);
+        [Q_SIGNAL("void linkHovered(QString)")]
+        void LinkHovered(string link);
     }
 }

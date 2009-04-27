@@ -20,6 +20,26 @@ namespace Plasma {
             Raised = 2,
             Sunken = 3,
         }
+        [Q_PROPERTY("Plasma::Frame::Shadow", "frameShadow")]
+        public Plasma.Frame.Shadow FrameShadow {
+            get { return (Plasma.Frame.Shadow) interceptor.Invoke("frameShadow", "frameShadow()", typeof(Plasma.Frame.Shadow)); }
+            set { interceptor.Invoke("setFrameShadow$", "setFrameShadow(Plasma::Frame::Shadow)", typeof(void), typeof(Plasma.Frame.Shadow), value); }
+        }
+        [Q_PROPERTY("QString", "text")]
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        [Q_PROPERTY("QString", "image")]
+        public string Image {
+            get { return (string) interceptor.Invoke("image", "image()", typeof(string)); }
+            set { interceptor.Invoke("setImage$", "setImage(QString)", typeof(void), typeof(string), value); }
+        }
+        [Q_PROPERTY("QString", "styleSheet")]
+        public string StyleSheet {
+            get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
+            set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
+        }
         /// <remarks>
         ///  Constructs a new Frame
         ///  @arg parent the parent of this widget
@@ -31,62 +51,6 @@ namespace Plasma {
         public Frame() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("Frame", "Frame()", typeof(void));
-        }
-        /// <remarks>
-        ///  Sets the Frame's shadow style
-        ///  @arg shadow plain, raised or sunken
-        ///     </remarks>        <short>    Sets the Frame's shadow style </short>
-        public void SetFrameShadow(Plasma.Frame.Shadow shadow) {
-            interceptor.Invoke("setFrameShadow$", "setFrameShadow(Plasma::Frame::Shadow)", typeof(void), typeof(Plasma.Frame.Shadow), shadow);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the Frame's shadow style
-        ///     </return>
-        ///         <short>   </short>
-        public Plasma.Frame.Shadow FrameShadow() {
-            return (Plasma.Frame.Shadow) interceptor.Invoke("frameShadow", "frameShadow() const", typeof(Plasma.Frame.Shadow));
-        }
-        /// <remarks>
-        ///  Set the text to display by this Frame
-        ///  @arg text the text
-        ///     </remarks>        <short>    Set the text to display by this Frame </short>
-        public void SetText(string text) {
-            interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), text);
-        }
-        /// <remarks>
-        /// </remarks>        <return> text displayed from this Frame
-        ///     </return>
-        ///         <short>   </short>
-        public string Text() {
-            return (string) interceptor.Invoke("text", "text() const", typeof(string));
-        }
-        /// <remarks>
-        ///  Sets the path to an image to display.
-        ///  @arg path the path to the image; if a relative path, then a themed image will be loaded.
-        ///      </remarks>        <short>    Sets the path to an image to display.</short>
-        public void SetImage(string path) {
-            interceptor.Invoke("setImage$", "setImage(const QString&)", typeof(void), typeof(string), path);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the image path being displayed currently, or an empty string if none.
-        ///      </return>
-        ///         <short>   </short>
-        public string Image() {
-            return (string) interceptor.Invoke("image", "image() const", typeof(string));
-        }
-        /// <remarks>
-        ///  Sets the stylesheet used to control the visual display of this Frame
-        ///  @arg stylesheet a CSS string
-        ///      </remarks>        <short>    Sets the stylesheet used to control the visual display of this Frame </short>
-        public void SetStyleSheet(string stylesheet) {
-            interceptor.Invoke("setStyleSheet$", "setStyleSheet(const QString&)", typeof(void), typeof(string), stylesheet);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the stylesheet currently used with this widget
-        ///      </return>
-        ///         <short>   </short>
-        public string StyleSheet() {
-            return (string) interceptor.Invoke("styleSheet", "styleSheet() const", typeof(string));
         }
         /// <remarks>
         /// </remarks>        <return> the native widget wrapped by this Frame

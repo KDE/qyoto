@@ -14,6 +14,21 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(WebView), this);
         }
+        [Q_PROPERTY("KUrl", "url")]
+        public KUrl Url {
+            get { return (KUrl) interceptor.Invoke("url", "url()", typeof(KUrl)); }
+            set { interceptor.Invoke("setUrl#", "setUrl(KUrl)", typeof(void), typeof(KUrl), value); }
+        }
+        [Q_PROPERTY("QString", "html")]
+        public string Html {
+            get { return (string) interceptor.Invoke("html", "html()", typeof(string)); }
+            set { interceptor.Invoke("setHtml$", "setHtml(QString)", typeof(void), typeof(string), value); }
+        }
+        [Q_PROPERTY("bool", "dragToScroll")]
+        public bool DragToScroll {
+            get { return (bool) interceptor.Invoke("dragToScroll", "dragToScroll()", typeof(bool)); }
+            set { interceptor.Invoke("setDragToScroll$", "setDragToScroll(bool)", typeof(void), typeof(bool), value); }
+        }
         public WebView(IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("WebView#", "WebView(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
@@ -21,13 +36,6 @@ namespace Plasma {
         public WebView() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("WebView", "WebView()", typeof(void));
-        }
-        /// <remarks>
-        ///  Sets the URL to display. Loading may happen asynchronously.
-        /// <param> name="url" the location of the content to load.
-        ///          </param></remarks>        <short>    Sets the URL to display.</short>
-        public void SetUrl(KUrl url) {
-            interceptor.Invoke("setUrl#", "setUrl(const KUrl&)", typeof(void), typeof(KUrl), url);
         }
         /// <remarks>
         ///  Sets the html to be shown along with a base URL to be used

@@ -510,9 +510,9 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Returns a list of all known containments.
-        /// <param> name="category" Only applets matchin this category will be returned.
+        /// <param> name="category" Only containments matching this category will be returned.
         ///                  Useful in conjunction with knownCategories.
-        ///                  If "Misc" is passed in, then applets without a
+        ///                  If "Miscelaneous" is passed in, then applets without a
         ///                  Categories= entry are also returned.
         ///                  If an empty string is passed in, all applets are
         ///                  returned.
@@ -532,6 +532,41 @@ namespace Plasma {
         }
         public static List<KPluginInfo> ListContainments() {
             return (List<KPluginInfo>) staticInterceptor.Invoke("listContainments", "listContainments()", typeof(List<KPluginInfo>));
+        }
+        /// <remarks>
+        ///  Returns a list of all known Containments that match the parameters.
+        /// <param> name="type" Only Containments with this string in X-Plasma-ContainmentCategories
+        ///              in their .desktop files will be returned. Common values are panel and
+        ///              desktop
+        /// </param><param> name="category" Only applets matchin this category will be returned.
+        ///                  Useful in conjunction with knownCategories.
+        ///                  If "Miscelaneous" is passed in, then applets without a
+        ///                  Categories= entry are also returned.
+        ///                  If an empty string is passed in, all applets are
+        ///                  returned.
+        /// </param><param> name="parentApp" the application to filter applets on. Uses the
+        ///                   X-KDE-ParentApp entry (if any) in the plugin info.
+        ///                   The default value of string() will result in a
+        ///                   list containing only applets not specifically
+        ///                   registered to an application.
+        /// </param></remarks>        <return> list of applets
+        /// </return>
+        ///         <short>    Returns a list of all known Containments that match the parameters.</short>
+        public static List<KPluginInfo> ListContainmentsOfType(string type, string category, string parentApp) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listContainmentsOfType$$$", "listContainmentsOfType(const QString&, const QString&, const QString&)", typeof(List<KPluginInfo>), typeof(string), type, typeof(string), category, typeof(string), parentApp);
+        }
+        public static List<KPluginInfo> ListContainmentsOfType(string type, string category) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listContainmentsOfType$$", "listContainmentsOfType(const QString&, const QString&)", typeof(List<KPluginInfo>), typeof(string), type, typeof(string), category);
+        }
+        public static List<KPluginInfo> ListContainmentsOfType(string type) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listContainmentsOfType$", "listContainmentsOfType(const QString&)", typeof(List<KPluginInfo>), typeof(string), type);
+        }
+        /// <remarks>
+        /// </remarks>        <return> a list of all known types of Containments on this system
+        ///          </return>
+        ///         <short>   </short>
+        public static List<string> ListContainmentTypes() {
+            return (List<string>) staticInterceptor.Invoke("listContainmentTypes", "listContainmentTypes()", typeof(List<string>));
         }
         /// <remarks>
         ///  Returns a list of all known applets associated with a certain mimetype
@@ -567,6 +602,11 @@ namespace Plasma {
         ///          </remarks>        <short>    Emitted when the user clicks on the toolbox          </short>
         [Q_SIGNAL("void toolBoxToggled()")]
         void ToolBoxToggled();
+        /// <remarks>
+        ///  Emitted when the toolbox is hidden or shown
+        /// </remarks>        <short>    Emitted when the toolbox is hidden or shown </short>
+        [Q_SIGNAL("void toolBoxVisibilityChanged(bool)")]
+        void ToolBoxVisibilityChanged(bool arg1);
         /// <remarks>
         ///  Emitted when the containment wants a new containment to be created.
         ///  Usually only used for desktop containments.

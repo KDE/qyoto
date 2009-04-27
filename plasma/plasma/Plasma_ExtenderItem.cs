@@ -11,12 +11,16 @@ namespace Plasma {
     ///  to source and tracks configuration associated with this item for you.
     ///  Typical usage of ExtenderItems in your applet could look like this:
     ///  @code
-    ///  ExtenderItem item = new ExtenderItem(extender());
-    ///  //name can be used to later access this item through extender().Item(name):
-    ///  item.SetName("networkmonitoreth0");
-    ///  item.Config().writeEntry("device", "eth0");
-    ///  initExtenderItem(item);
+    ///  if (!extender().HasItem("networkmonitoreth0")) {
+    ///      ExtenderItem item = new ExtenderItem(extender());
+    ///      //name can be used to later access this item through extender().Item(name):
+    ///      item.SetName("networkmonitoreth0");
+    ///      item.Config().writeEntry("device", "eth0");
+    ///      initExtenderItem(item);
+    ///  }
     ///  @endcode
+    ///  Note that we first check if the item already exists: ExtenderItems are persistent
+    ///  between sessions so we can't blindly add items since they might already exist.
     ///  You'll then need to implement the initExtenderItem function. Having this function in your applet
     ///  makes sure that detached extender items get restored after plasma is restarted, just like applets
     ///  are. That is also the reason that we write an entry in item.Config().
@@ -75,7 +79,8 @@ namespace Plasma {
         }
         [Q_PROPERTY("uint", "autoExpireDelay")]
         public uint AutoExpireDelay {
-            get { return (uint) interceptor.Invoke("setAutoExpireDelay", "setAutoExpireDelay()", typeof(uint)); }
+            get { return (uint) interceptor.Invoke("autoExpireDelay", "autoExpireDelay()", typeof(uint)); }
+            set { interceptor.Invoke("setAutoExpireDelay$", "setAutoExpireDelay(uint)", typeof(void), typeof(uint), value); }
         }
         /// <remarks>
         ///  The constructor takes care of adding this item to an extender.
@@ -109,6 +114,26 @@ namespace Plasma {
         }
         public void SetExtender(Plasma.Extender extender) {
             interceptor.Invoke("setExtender#", "setExtender(Plasma::Extender*)", typeof(void), typeof(Plasma.Extender), extender);
+        }
+        /// <remarks>
+        /// <param> name="group" the group you want this item to belong to.
+        /// </param></remarks>        <short>   </short>
+        public void SetGroup(Plasma.ExtenderGroup group) {
+            interceptor.Invoke("setGroup#", "setGroup(Plasma::ExtenderGroup*)", typeof(void), typeof(Plasma.ExtenderGroup), group);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the group this item belongs to.
+        /// </return>
+        ///         <short>   </short>
+        public new Plasma.ExtenderGroup Group() {
+            return (Plasma.ExtenderGroup) interceptor.Invoke("group", "group() const", typeof(Plasma.ExtenderGroup));
+        }
+        /// <remarks>
+        /// </remarks>        <return> whether or not this is an ExtenderGroup.
+        /// </return>
+        ///         <short>   </short>
+        public bool IsGroup() {
+            return (bool) interceptor.Invoke("isGroup", "isGroup() const", typeof(bool));
         }
         /// <remarks>
         /// <param> name="name" the name to store the action under in our collection.
@@ -199,6 +224,10 @@ namespace Plasma {
         [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
         protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
             interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("sceneEventFilter(QGraphicsItem*, QEvent*)")]
+        protected override bool SceneEventFilter(IQGraphicsItem watched, QEvent arg2) {
+            return (bool) interceptor.Invoke("sceneEventFilter##", "sceneEventFilter(QGraphicsItem*, QEvent*)", typeof(bool), typeof(IQGraphicsItem), watched, typeof(QEvent), arg2);
         }
         ~ExtenderItem() {
             interceptor.Invoke("~ExtenderItem", "~ExtenderItem()", typeof(void));

@@ -81,7 +81,9 @@ namespace Plasma {
         public uint WindowToPreview() {
             return (uint) interceptor.Invoke("windowToPreview", "windowToPreview() const", typeof(uint));
         }
-        /// <remarks> Sets whether or not to autohide the tooltip, defaults to true </remarks>        <short>   Sets whether or not to autohide the tooltip, defaults to true </short>
+        /// <remarks> Sets the IDS of the windows to show a preview for
+        ///     /* Ids of a windows if you want to show a preview
+        ///     /* Sets whether or not to autohide the tooltip, defaults to true </remarks>        <short>   Sets the IDS of the windows to show a preview for </short>
         public void SetAutohide(bool autohide) {
             interceptor.Invoke("setAutohide$", "setAutohide(bool)", typeof(void), typeof(bool), autohide);
         }

@@ -41,6 +41,13 @@ namespace Plasma {
             return (Plasma.AbstractRunner) interceptor.Invoke("runner$", "runner(const QString&) const", typeof(Plasma.AbstractRunner), typeof(string), name);
         }
         /// <remarks>
+        /// </remarks>        <return> the list of all currently loaded runners
+        ///          </return>
+        ///         <short>   </short>
+        public List<Plasma.AbstractRunner> Runners() {
+            return (List<Plasma.AbstractRunner>) interceptor.Invoke("runners", "runners() const", typeof(List<Plasma.AbstractRunner>));
+        }
+        /// <remarks>
         ///  Retrieves the current context
         /// </remarks>        <return> pointer to the current context
         ///          </return>

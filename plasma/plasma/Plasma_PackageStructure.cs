@@ -113,6 +113,15 @@ namespace Plasma {
             return (string) interceptor.Invoke("path$", "path(const char*) const", typeof(string), typeof(string), key);
         }
         /// <remarks>
+        ///  Get the list of files of a given type.
+        ///  @arg key the type of file to look for
+        /// </remarks>        <return> list of files by name
+        /// </return>
+        ///         <short>    Get the list of files of a given type.</short>
+        public List<string> EntryList(string key) {
+            return (List<string>) interceptor.Invoke("entryList$", "entryList(const char*)", typeof(List<string>), typeof(string), key);
+        }
+        /// <remarks>
         /// </remarks>        <return> user visible name for the given entry
         /// </return>
         ///         <short>   </short>
@@ -263,6 +272,22 @@ namespace Plasma {
         [SmokeMethod("metadata()")]
         public virtual Plasma.PackageMetadata Metadata() {
             return (Plasma.PackageMetadata) interceptor.Invoke("metadata", "metadata()", typeof(Plasma.PackageMetadata));
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if paths/symlinks outside the package itself should be followed.
+        ///  By default this is set to false for security reasons.
+        ///      </return>
+        ///         <short>   </short>
+        public bool AllowExternalPaths() {
+            return (bool) interceptor.Invoke("allowExternalPaths", "allowExternalPaths() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Sets whether or not external paths/symlinks can be followed by a package
+        ///  @arg allow true if paths/symlinks outside of the package should be followed,
+        ///              false if they should be rejected.
+        ///      </remarks>        <short>    Sets whether or not external paths/symlinks can be followed by a package  @arg allow true if paths/symlinks outside of the package should be followed,              false if they should be rejected.</short>
+        protected void SetAllowExternalPaths(bool allow) {
+            interceptor.Invoke("setAllowExternalPaths$", "setAllowExternalPaths(bool)", typeof(void), typeof(bool), allow);
         }
         /// <remarks>
         ///  Sets the prefix that all the contents in this package should

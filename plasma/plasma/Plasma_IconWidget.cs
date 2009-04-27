@@ -27,6 +27,11 @@ namespace Plasma {
             get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
             set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
         }
+        [Q_PROPERTY("QColor", "textBackgroundColor")]
+        public QColor TextBackgroundColor {
+            get { return (QColor) interceptor.Invoke("textBackgroundColor", "textBackgroundColor()", typeof(QColor)); }
+            set { interceptor.Invoke("setTextBackgroundColor#", "setTextBackgroundColor(QColor)", typeof(void), typeof(QColor), value); }
+        }
         [Q_PROPERTY("QSizeF", "iconSize")]
         public QSizeF IconSize {
             get { return (QSizeF) interceptor.Invoke("iconSize", "iconSize()", typeof(QSizeF)); }
@@ -34,6 +39,21 @@ namespace Plasma {
         [Q_PROPERTY("QString", "svg")]
         public string Svg {
             get { return (string) interceptor.Invoke("setSvg", "setSvg()", typeof(string)); }
+        }
+        [Q_PROPERTY("QAction*", "action")]
+        public QAction Action {
+            get { return (QAction) interceptor.Invoke("action", "action()", typeof(QAction)); }
+            set { interceptor.Invoke("setAction#", "setAction(QAction*)", typeof(void), typeof(QAction), value); }
+        }
+        [Q_PROPERTY("Qt::Orientation", "orientation")]
+        public new Qt.Orientation Orientation {
+            get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+            set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
+        }
+        [Q_PROPERTY("int", "numDisplayLines")]
+        public int NumDisplayLines {
+            get { return (int) interceptor.Invoke("numDisplayLines", "numDisplayLines()", typeof(int)); }
+            set { interceptor.Invoke("setNumDisplayLines$", "setNumDisplayLines(int)", typeof(void), typeof(int), value); }
         }
         /// <remarks>
         ///  Creates a new Plasma.IconWidget.
@@ -95,30 +115,11 @@ namespace Plasma {
             interceptor.Invoke("addIconAction#", "addIconAction(QAction*)", typeof(void), typeof(QAction), action);
         }
         /// <remarks>
-        ///  Associate an action with this IconWidget
-        ///  this makes the IconWidget follow the state of the action, using its icon, text, etc.
-        ///  when the IconWidget is clicked, it will also trigger the action.
-        ///  Unlike addIconAction, there can be only one associated action.
-        ///      </remarks>        <short>    Associate an action with this IconWidget  this makes the IconWidget follow the state of the action, using its icon, text, etc.</short>
-        public void SetAction(QAction action) {
-            interceptor.Invoke("setAction#", "setAction(QAction*)", typeof(void), typeof(QAction), action);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the currently associated action, if any.
-        ///      </return>
-        ///         <short>   </short>
-        public QAction Action() {
-            return (QAction) interceptor.Invoke("action", "action() const", typeof(QAction));
-        }
-        /// <remarks>
-        ///  let set the orientation of the icon
-        ///  Qt.Vertical: text under the icon
-        ///  Qt.Horizontal text at a side of the icon depending
-        ///  by the direction of the language
-        /// <param> name="orientation" the orientation we want
-        ///     </param></remarks>        <short>    let set the orientation of the icon  Qt.Vertical: text under the icon  Qt.Horizontal text at a side of the icon depending  by the direction of the language </short>
-        public void SetOrientation(Qt.Orientation orientation) {
-            interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
+        ///  Removes a previously set iconAction. The action will be removed from the widget
+        ///  but will not be deleted.
+        ///      </remarks>        <short>    Removes a previously set iconAction.</short>
+        public void RemoveIconAction(QAction action) {
+            interceptor.Invoke("removeIconAction#", "removeIconAction(QAction*)", typeof(void), typeof(QAction), action);
         }
         /// <remarks>
         ///  inverts the layout of the icons if the orientation is horizontal,
@@ -142,19 +143,6 @@ namespace Plasma {
         ///         <short>   </short>
         public QSizeF SizeFromIconSize(double iconWidth) {
             return (QSizeF) interceptor.Invoke("sizeFromIconSize$", "sizeFromIconSize(const qreal) const", typeof(QSizeF), typeof(double), iconWidth);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the number of lines allowed to display
-        ///     </return>
-        ///         <short>   </short>
-        public int NumDisplayLines() {
-            return (int) interceptor.Invoke("numDisplayLines", "numDisplayLines()", typeof(int));
-        }
-        /// <remarks>
-        /// <param> name="numLines" the number of lines to show in the display.
-        ///     </param></remarks>        <short>   </short>
-        public void SetNumDisplayLines(int numLines) {
-            interceptor.Invoke("setNumDisplayLines$", "setNumDisplayLines(int)", typeof(void), typeof(int), numLines);
         }
         /// <remarks>
         ///  Sets whether or not to draw a background area for the icon
@@ -236,6 +224,10 @@ namespace Plasma {
         [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
         protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
             interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("sceneEventFilter(QGraphicsItem*, QEvent*)")]
+        protected override bool SceneEventFilter(IQGraphicsItem watched, QEvent arg2) {
+            return (bool) interceptor.Invoke("sceneEventFilter##", "sceneEventFilter(QGraphicsItem*, QEvent*)", typeof(bool), typeof(IQGraphicsItem), watched, typeof(QEvent), arg2);
         }
         ~IconWidget() {
             interceptor.Invoke("~IconWidget", "~IconWidget()", typeof(void));

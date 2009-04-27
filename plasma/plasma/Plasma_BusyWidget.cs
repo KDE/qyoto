@@ -7,12 +7,23 @@ namespace Plasma {
     /// <remarks>
     ///  @class BusyWidget plasma/widgets/spinner.h <Plasma/Widgets/BusyWidget>
     ///  A simple spinner widget that can be used to represent a wait of unknown length
-    ///  </remarks>        <short> A widget that provides a waiting spinner.</short>
+    ///   See <see cref="IBusyWidgetSignals"></see> for signals emitted by BusyWidget
+    /// </remarks>        <short> A widget that provides a waiting spinner.</short>
     [SmokeClass("Plasma::BusyWidget")]
     public class BusyWidget : QGraphicsWidget, IDisposable {
         protected BusyWidget(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(BusyWidget), this);
+        }
+        [Q_PROPERTY("bool", "running")]
+        public bool Running {
+            get { return (bool) interceptor.Invoke("isRunning", "isRunning()", typeof(bool)); }
+            set { interceptor.Invoke("setRunning$", "setRunning(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("QString", "label")]
+        public string Label {
+            get { return (string) interceptor.Invoke("label", "label()", typeof(string)); }
+            set { interceptor.Invoke("setLabel$", "setLabel(QString)", typeof(void), typeof(string), value); }
         }
         /// <remarks>
         ///  Constructs a new BusyWidget
@@ -46,6 +57,10 @@ namespace Plasma {
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
+        [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
         [Q_SLOT("void timerEvent(QTimerEvent*)")]
         [SmokeMethod("timerEvent(QTimerEvent*)")]
         protected override void TimerEvent(QTimerEvent arg1) {
@@ -63,5 +78,7 @@ namespace Plasma {
     }
 
     public interface IBusyWidgetSignals : IQGraphicsWidgetSignals {
+        [Q_SIGNAL("void clicked()")]
+        void Clicked();
     }
 }

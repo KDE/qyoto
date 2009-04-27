@@ -68,6 +68,20 @@ namespace Plasma {
             return (uint) interceptor.Invoke("resizeCorners", "resizeCorners() const", typeof(uint));
         }
         /// <remarks>
+        ///  Causes an animated hide; requires compositing to work, otherwise
+        ///  the dialog will simply hide.
+        ///          </remarks>        <short>    Causes an animated hide; requires compositing to work, otherwise  the dialog will simply hide.</short>
+        public void AnimatedHide(Plasma.Direction direction) {
+            interceptor.Invoke("animatedHide$", "animatedHide(Plasma::Direction)", typeof(void), typeof(Plasma.Direction), direction);
+        }
+        /// <remarks>
+        ///  Causes an animated hide; requires compositing to work, otherwise
+        ///  the dialog will simply hide.
+        ///          </remarks>        <short>    Causes an animated hide; requires compositing to work, otherwise  the dialog will simply hide.</short>
+        public void AnimatedShow(Plasma.Direction direction) {
+            interceptor.Invoke("animatedShow$", "animatedShow(Plasma::Direction)", typeof(void), typeof(Plasma.Direction), direction);
+        }
+        /// <remarks>
         ///  Reimplemented from QWidget
         ///          </remarks>        <short>    Reimplemented from QWidget          </short>
         [SmokeMethod("paintEvent(QPaintEvent*)")]
@@ -109,6 +123,10 @@ namespace Plasma {
         [SmokeMethod("keyPressEvent(QKeyEvent*)")]
         protected override void KeyPressEvent(QKeyEvent arg1) {
             interceptor.Invoke("keyPressEvent#", "keyPressEvent(QKeyEvent*)", typeof(void), typeof(QKeyEvent), arg1);
+        }
+        [SmokeMethod("moveEvent(QMoveEvent*)")]
+        protected override void MoveEvent(QMoveEvent arg1) {
+            interceptor.Invoke("moveEvent#", "moveEvent(QMoveEvent*)", typeof(void), typeof(QMoveEvent), arg1);
         }
         /// <remarks>
         ///  Convenience method to know whether the point is in a control area (e.g. resize area)
