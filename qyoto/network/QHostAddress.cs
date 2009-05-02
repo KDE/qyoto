@@ -90,8 +90,8 @@ namespace Qyoto {
         public bool IsInSubnet(QHostAddress subnet, int netmask) {
             return (bool) interceptor.Invoke("isInSubnet#$", "isInSubnet(const QHostAddress&, int) const", typeof(bool), typeof(QHostAddress), subnet, typeof(int), netmask);
         }
-        public bool IsInSubnet(QPair<int, QHostAddress> subnet) {
-            return (bool) interceptor.Invoke("isInSubnet?", "isInSubnet(const QPair<QHostAddress,int>&) const", typeof(bool), typeof(QPair<int, QHostAddress>), subnet);
+        public bool IsInSubnet(QPair<QHostAddress, int> subnet) {
+            return (bool) interceptor.Invoke("isInSubnet?", "isInSubnet(const QPair<QHostAddress,int>&) const", typeof(bool), typeof(QPair<QHostAddress, int>), subnet);
         }
         ~QHostAddress() {
             interceptor.Invoke("~QHostAddress", "~QHostAddress()", typeof(void));
@@ -111,8 +111,8 @@ namespace Qyoto {
         public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
             return !(bool) staticInterceptor.Invoke("operator==$", "operator==(QHostAddress::SpecialAddress) const", typeof(bool), typeof(QHostAddress), lhs, typeof(QHostAddress.SpecialAddress), address);
         }
-        public static QPair<int, QHostAddress> ParseSubnet(string subnet) {
-            return (QPair<int, QHostAddress>) staticInterceptor.Invoke("parseSubnet$", "parseSubnet(const QString&)", typeof(QPair<int, QHostAddress>), typeof(string), subnet);
+        public static QPair<QHostAddress, int> ParseSubnet(string subnet) {
+            return (QPair<QHostAddress, int>) staticInterceptor.Invoke("parseSubnet$", "parseSubnet(const QString&)", typeof(QPair<QHostAddress, int>), typeof(string), subnet);
         }
         public static bool operator==(QHostAddress.SpecialAddress address1, QHostAddress address2) {
             return (bool) staticInterceptor.Invoke("operator==$#", "operator==(QHostAddress::SpecialAddress, const QHostAddress&)", typeof(bool), typeof(QHostAddress.SpecialAddress), address1, typeof(QHostAddress), address2);

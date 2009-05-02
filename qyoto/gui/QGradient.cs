@@ -50,11 +50,11 @@ namespace Qyoto {
         public void SetColorAt(double pos, QColor color) {
             interceptor.Invoke("setColorAt$#", "setColorAt(qreal, const QColor&)", typeof(void), typeof(double), pos, typeof(QColor), color);
         }
-        public void SetStops(List<QPair<QColor, double>> stops) {
-            interceptor.Invoke("setStops?", "setStops(const QVector<QPair<qreal,QColor> >&)", typeof(void), typeof(List<QPair<QColor, double>>), stops);
+        public void SetStops(List<QPair<double, QColor>> stops) {
+            interceptor.Invoke("setStops?", "setStops(const QVector<QPair<qreal,QColor> >&)", typeof(void), typeof(List<QPair<double, QColor>>), stops);
         }
-        public List<QPair<QColor, double>> Stops() {
-            return (List<QPair<QColor, double>>) interceptor.Invoke("stops", "stops() const", typeof(List<QPair<QColor, double>>));
+        public List<QPair<double, QColor>> Stops() {
+            return (List<QPair<double, QColor>>) interceptor.Invoke("stops", "stops() const", typeof(List<QPair<double, QColor>>));
         }
         public QGradient.CoordinateMode coordinateMode() {
             return (QGradient.CoordinateMode) interceptor.Invoke("coordinateMode", "coordinateMode() const", typeof(QGradient.CoordinateMode));
