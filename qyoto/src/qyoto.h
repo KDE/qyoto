@@ -84,6 +84,7 @@ typedef void * (*DictToMap)(void *, int);
 typedef void * (*DictToHash)(void *, int);
 typedef void * (*ConstructDict)(const char*, const char*);
 typedef void (*SetPropertyFn)(void *, const char*, void *);
+typedef void * (*CreateQPairFn)(void*, void*);
 
 extern Q_DECL_EXPORT QHash<Smoke*, QyotoModule> qyoto_modules;
 
@@ -164,6 +165,13 @@ extern Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
 extern Q_DECL_EXPORT AddInt AddIntToListInt;
 extern Q_DECL_EXPORT AddUInt AddUIntToListUInt;
 extern Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
+
+extern Q_DECL_EXPORT GetIntPtr QPairGetFirst;
+extern Q_DECL_EXPORT GetIntPtr QPairGetSecond;
+extern Q_DECL_EXPORT CreateQPairFn CreateQPair;
+
+extern Q_DECL_EXPORT SetIntPtr UnboxToStackItem;
+extern Q_DECL_EXPORT CreateInstanceFn BoxFromStackItem;
 
 extern Q_DECL_EXPORT GetIntPtr GenericPointerGetIntPtr;
 extern Q_DECL_EXPORT CreateInstanceFn CreateGenericPointer;

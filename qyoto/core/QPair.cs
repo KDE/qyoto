@@ -7,5 +7,9 @@ namespace Qyoto {
 
 		public T1 first;
 		public T2 second;
+		
+		public override string ToString() {
+			return "QPair[" + first.ToString() + ", " + second.ToString() + "]";
+		}
 	}
 }

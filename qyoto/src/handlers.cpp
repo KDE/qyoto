@@ -105,6 +105,13 @@ Q_DECL_EXPORT AddInt AddIntToListInt;
 Q_DECL_EXPORT AddUInt AddUIntToListUInt;
 Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
 
+Q_DECL_EXPORT GetIntPtr QPairGetFirst;
+Q_DECL_EXPORT GetIntPtr QPairGetSecond;
+Q_DECL_EXPORT CreateQPairFn CreateQPair;
+
+Q_DECL_EXPORT SetIntPtr UnboxToStackItem;
+Q_DECL_EXPORT CreateInstanceFn BoxFromStackItem;
+
 Q_DECL_EXPORT GetIntPtr GenericPointerGetIntPtr;
 Q_DECL_EXPORT CreateInstanceFn CreateGenericPointer;
 
@@ -221,6 +228,31 @@ Q_DECL_EXPORT void InstallGenericPointerGetIntPtr(GetIntPtr callback)
 Q_DECL_EXPORT void InstallCreateGenericPointer(CreateInstanceFn callback)
 {
 	CreateGenericPointer = callback;
+}
+
+Q_DECL_EXPORT void InstallQPairGetFirst(GetIntPtr callback)
+{
+	QPairGetFirst = callback;
+}
+
+Q_DECL_EXPORT void InstallQPairGetSecond(GetIntPtr callback)
+{
+	QPairGetSecond = callback;
+}
+
+Q_DECL_EXPORT void InstallCreateQPair(CreateQPairFn callback)
+{
+	CreateQPair = callback;
+}
+
+Q_DECL_EXPORT void InstallUnboxToStackItem(SetIntPtr callback)
+{
+	UnboxToStackItem = callback;
+}
+
+Q_DECL_EXPORT void InstallBoxFromStackItem (CreateInstanceFn callback)
+{
+	BoxFromStackItem = callback;
 }
 
 Q_DECL_EXPORT void* ConstructPointerList()
@@ -808,10 +840,9 @@ Q_DECL_EXPORT void *
 StringArrayToQStringList(int length, char ** strArray)
 {
 	QStringList * result = new QStringList();
-	char ** ca = (char**) StringArrayToCharStarStar(length, strArray);
 	
 	for (int i = 0; i < length; i++) {
-		(*result) << QString::fromUtf8(ca[i]);
+		(*result) << QString::fromUtf8(strArray[i]);
 	}
 	return (void*) result;
 }
@@ -1096,7 +1127,7 @@ static void marshall_charP(Marshall *m) {
 			return;
 		}
 	    if (p != 0) {
-			m->var().s_class = (*IntPtrFromCharStar)(strdup(p));
+			m->var().s_class = (*IntPtrFromCharStar)(p);
 	    } else {
 			m->var().s_class = 0;
 		}
@@ -1177,7 +1208,7 @@ static void marshall_QString(Marshall *m) {
 				m->var().s_class = (*IntPtrFromQString)(s);
 			}
 
-			if (m->cleanup())
+			if (m->cleanup() || m->type().isStack())
 				delete s;
 			} else {
 				m->var().s_voidp = 0;
@@ -1885,6 +1916,8 @@ DEF_VALUELIST_MARSHALLER( QNetworkCookieList, QList<QNetworkCookie>, QNetworkCoo
 DEF_VALUELIST_MARSHALLER( QPrinterInfoList, QList<QPrinterInfo>, QPrinterInfo )
 #endif
 
+DEF_QPAIR_MARSHALLER( QPair_QHostAddress_int, QHostAddress, int, "Qyoto.QHostAddress", "System.Int32" )
+
 Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "bool*", marshall_boolR },
     { "bool&", marshall_boolR },
@@ -1960,6 +1993,8 @@ Q_DECL_EXPORT TypeHandler Qyoto_handlers[] = {
     { "QModelIndexList&", marshall_QModelIndexList },
     { "QObjectList", marshall_QObjectList },
     { "QObjectList&", marshall_QObjectList },
+    { "QPair<QHostAddress,int>", marshall_QPair_QHostAddress_int },
+    { "QPair<QHostAddress,int>&", marshall_QPair_QHostAddress_int },
     { "qreal*", marshall_doubleR },
     { "qreal&", marshall_doubleR },
     { "QStringList", marshall_QStringList },

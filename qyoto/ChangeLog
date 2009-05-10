@@ -1,3 +1,7 @@
+2009-05-10  Arno Rehn  <arno@arnorehn.de>
+	* Add a QPair marshaller. We still need a List<QPair<...>> one.
+	* Fix some memory leaks.
+
 2009-04-12  Arno Rhen  <arno@arnorehn.de>
 	* Make it possible to register new metatypes. Works also with non-smoke
 	  types, i.e. all .NET types.

@@ -206,6 +206,21 @@ namespace Qyoto {
 		public static extern void InstallAddUIntToListUInt(AddUInt callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallQPairGetFirst(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallQPairGetSecond(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallCreateQPair(CreateQPairFn callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallUnboxToStackItem(SetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallBoxFromStackItem(CreateInstanceFn callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallGenericPointerGetIntPtr(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -238,6 +253,7 @@ namespace Qyoto {
 		public delegate IntPtr ConstructDict(string type1, string type2);
 		public delegate void SetPropertyFn(IntPtr obj, string name, IntPtr variant);
 		public delegate void InvokeDelegateFn(Delegate d, IntPtr stack);
+		public delegate IntPtr CreateQPairFn(IntPtr first, IntPtr second);
 #endregion
 		
 #region marshalling functions
@@ -634,9 +650,9 @@ namespace Qyoto {
 
 		public static IntPtr IntPtrFromString(string str) {
 #if DEBUG
-			return (IntPtr) DebugGCHandle.Alloc(str);
+			return (IntPtr) DebugGCHandle.Alloc(string.Copy(str));
 #else
-			return (IntPtr) GCHandle.Alloc(str);
+			return (IntPtr) GCHandle.Alloc(string.Copy(str));
 #endif
 		}
 
@@ -868,6 +884,98 @@ namespace Qyoto {
 			return map;
 		}
 		
+		public static IntPtr QPairGetFirst(IntPtr pair) {
+			object o = ((GCHandle) pair).Target;
+			object field = o.GetType().GetField("first").GetValue(o);
+			if (field == null) return IntPtr.Zero;
+			return (IntPtr) GCHandle.Alloc(field);
+		}
+		
+		public static IntPtr QPairGetSecond(IntPtr pair) {
+			object o = ((GCHandle) pair).Target;
+			object field = o.GetType().GetField("second").GetValue(o);
+			if (field == null) return IntPtr.Zero;
+			return (IntPtr) GCHandle.Alloc(field);
+		}
+		
+		public static IntPtr CreateQPair(IntPtr first, IntPtr second) {
+			Type t = typeof(QPair<,>);
+			object firstObject = ((GCHandle) first).Target;
+			object secondObject = ((GCHandle) second).Target;
+			t = t.MakeGenericType(new Type[] { firstObject.GetType(), secondObject.GetType() });
+			object pair = Activator.CreateInstance(t, new object[] { firstObject, secondObject });
+			return (IntPtr) GCHandle.Alloc(pair);
+		}
+		
+		public static unsafe void UnboxToStackItem(IntPtr obj, IntPtr st) {
+			StackItem *item = (StackItem*) st;
+			object o = ((GCHandle) obj).Target;
+			Type t = o.GetType();
+			if (t == typeof(int) || t.IsEnum) {
+				item->s_int = (int) o;
+			} else if (t == typeof(bool)) {
+				item->s_bool = (bool) o;
+			} else if (t == typeof(short)) {
+				item->s_short = (short) o;
+			} else if (t == typeof(float)) {
+				item->s_float = (float) o;
+			} else if (t == typeof(double)) {
+				item->s_double = (double) o;
+			} else if (t == typeof(long)) {
+				item->s_long = (long) o;
+			} else if (t == typeof(ushort)) {
+				item->s_ushort = (ushort) o;
+			} else if (t == typeof(uint)) {
+				item->s_uint = (uint) o;
+			} else if (t == typeof(ulong)) {
+				item->s_ulong = (ulong) o;
+			} else if (t == typeof(sbyte)) {
+				item->s_char = (sbyte) o;
+			} else if (t == typeof(byte)) {
+				item->s_uchar = (byte) o;
+			} else if (t == typeof(char)) {
+				item->s_char = (sbyte) (char) o;
+			} else {
+				item->s_class = IntPtr.Zero;
+			}
+		}
+		
+		public static unsafe IntPtr BoxFromStackItem(string type, IntPtr st) {
+			Type t = Type.GetType(type);
+			if (t == null) return IntPtr.Zero;
+			StackItem *item = (StackItem*) st;
+			object box = null;
+			
+			if (t == typeof(int)) {
+				box = item->s_int;
+			} else if (t == typeof(bool)) {
+				box = item->s_bool;
+			} else if (t == typeof(short)) {
+				box = item->s_short;
+			} else if (t == typeof(float)) {
+				box = item->s_float;
+			} else if (t == typeof(double)) {
+				box = item->s_double;
+			} else if (t == typeof(long)) {
+				box = (SizeOfNativeLong < sizeof(long))? item->s_int : item->s_long;
+			} else if (t == typeof(ushort)) {
+				box = item->s_ushort;
+			} else if (t == typeof(uint)) {
+				box = item->s_uint;
+			} else if (t == typeof(ulong)) {
+				box = (SizeOfNativeLong < sizeof(long))? item->s_uint : item->s_ulong;
+			} else if (t == typeof(sbyte)) {
+				box = item->s_char;
+			} else if (t == typeof(byte)) {
+				box = item->s_uchar;
+			} else if (t == typeof(char)) {
+				box = (char) item->s_char;
+			}
+			
+			if (box == null) return IntPtr.Zero;
+			return (IntPtr) GCHandle.Alloc(box);
+		}
+		
 		public static IntPtr GenericPointerGetIntPtr(IntPtr obj) {
 			object o = ((GCHandle) obj).Target;
 			return (IntPtr) o.GetType().GetMethod("ToIntPtr").Invoke(o, null);
@@ -936,6 +1044,13 @@ namespace Qyoto {
 			
 			InstallGetProperty(GetProperty);
 			InstallSetProperty(SetProperty);
+			
+			InstallQPairGetFirst(QPairGetFirst);
+			InstallQPairGetSecond(QPairGetSecond);
+			InstallCreateQPair(CreateQPair);
+			
+			InstallUnboxToStackItem(UnboxToStackItem);
+			InstallBoxFromStackItem(BoxFromStackItem);
 			
 			InstallGenericPointerGetIntPtr(GenericPointerGetIntPtr);
 			InstallCreateGenericPointer(CreateGenericPointer);
