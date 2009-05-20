@@ -1,4 +1,5 @@
 #include <ksharedptr.h>
+#include <cstdio>
 
 template<class Item, const char *ItemSTR>
 void marshall_KSharedPtr(Marshall *m) {
