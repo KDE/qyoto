@@ -16,7 +16,7 @@ namespace Plasma {
     ///  look and feel in just one line of code for applets), loading and starting
     ///  of scripting support for each applet, providing access to the associated
     ///  plasmoid package (if any) and access to configuration data.
-    ///  See techbase.kde.org for tutorial on writing Applets using this class.
+    ///  See techbase.kde.org for tutorials on writing Applets using this class.
     ///   See <see cref="IAppletSignals"></see> for signals emitted by Applet
     /// </remarks>        <short> The base Applet class.</short>
     [SmokeClass("Plasma::Applet")]
@@ -256,6 +256,21 @@ namespace Plasma {
             interceptor.Invoke("setAspectRatioMode$", "setAspectRatioMode(Plasma::AspectRatioMode)", typeof(void), typeof(Plasma.AspectRatioMode), arg1);
         }
         /// <remarks>
+        ///  Sets the list of custom categories that are used in addition to the default
+        ///  set of categories known to libplasma for Applets.
+        ///  @arg categories a list of categories
+        /// </remarks>        <short>    Sets the list of custom categories that are used in addition to the default  set of categories known to libplasma for Applets.</short>
+        public void SetCustomCategories(List<string> categories) {
+            interceptor.Invoke("setCustomCategories?", "setCustomCategories(const QStringList&)", typeof(void), typeof(List<string>), categories);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the list of custom categories known to libplasma
+        /// </return>
+        ///         <short>   </short>
+        public List<string> CustomCategories() {
+            return (List<string>) interceptor.Invoke("customCategories", "customCategories()", typeof(List<string>));
+        }
+        /// <remarks>
         ///  This method is called when the interface should be painted.
         /// <param> name="painter" the QPainter to use to do the paintiner
         /// </param><param> name="option" the style options object
@@ -475,11 +490,11 @@ namespace Plasma {
             interceptor.Invoke("createConfigurationInterface#", "createConfigurationInterface(KConfigDialog*)", typeof(void), typeof(KConfigDialog), parent);
         }
         /// <remarks>
-        ///  returns true if the applet is allowed to perform functions covered by the given constraint
-        ///  eg. isAllowed("FileDialog") returns true iff applets are allowed to show filedialogs.
-        ///          </remarks>        <short>    returns true if the applet is allowed to perform functions covered by the given constraint  eg.</short>
-        public bool IsAllowed(string constraint) {
-            return (bool) interceptor.Invoke("isAllowed$", "isAllowed(const QString&)", typeof(bool), typeof(string), constraint);
+        ///  Returns true if the applet is allowed to perform functions covered by the given constraint
+        ///  eg. hasAuthorization("FileDialog") returns true if applets are allowed to show filedialogs.
+        /// </remarks>        <short>    Returns true if the applet is allowed to perform functions covered by the given constraint  eg.</short>
+        public bool HasAuthorization(string constraint) {
+            return (bool) interceptor.Invoke("hasAuthorization$", "hasAuthorization(const QString&) const", typeof(bool), typeof(string), constraint);
         }
         /// <remarks>
         ///  Sets the immutability type for this applet (not immutable,
@@ -551,8 +566,8 @@ namespace Plasma {
             interceptor.Invoke("init", "init()", typeof(void));
         }
         /// <remarks>
-        ///  Called when applet configuration values has changed.
-        ///          </remarks>        <short>    Called when applet configuration values has changed.</short>
+        ///  Called when applet configuration values have changed.
+        ///          </remarks>        <short>    Called when applet configuration values have changed.</short>
         [Q_SLOT("void configChanged()")]
         [SmokeMethod("configChanged()")]
         public virtual void ConfigChanged() {
@@ -567,7 +582,7 @@ namespace Plasma {
             interceptor.Invoke("setBusy$", "setBusy(bool)", typeof(void), typeof(bool), busy);
         }
         /// <remarks>
-        /// </remarks>        <return> the list of arguments which the applet was called
+        /// </remarks>        <return> the list of arguments which the applet was called with
         /// </return>
         ///         <short>   </short>
         [Q_SLOT("QList<QVariant> startupArguments()")]
@@ -815,8 +830,7 @@ namespace Plasma {
             return (List<KPluginInfo>) staticInterceptor.Invoke("listAppletInfoForMimetype$", "listAppletInfoForMimetype(const QString&)", typeof(List<KPluginInfo>), typeof(string), mimetype);
         }
         /// <remarks>
-        ///  Returns a list of all the categories used by
-        ///  installed applets.
+        ///  Returns a list of all the categories used by installed applets.
         /// <param> name="parentApp" the application to filter applets on. Uses the
         ///                   X-KDE-ParentApp entry (if any) in the plugin info.
         ///                   The default value of string() will result in a
@@ -825,7 +839,7 @@ namespace Plasma {
         /// </param><param> name="visibleOnly" true if it should only return applets that are marked as visible
         ///          </param></remarks>        <return> list of categories
         /// </return>
-        ///         <short>    Returns a list of all the categories used by  installed applets.</short>
+        ///         <short>    Returns a list of all the categories used by installed applets.</short>
         public static List<string> ListCategories(string parentApp, bool visibleOnly) {
             return (List<string>) staticInterceptor.Invoke("listCategories$$", "listCategories(const QString&, bool)", typeof(List<string>), typeof(string), parentApp, typeof(bool), visibleOnly);
         }
@@ -834,6 +848,27 @@ namespace Plasma {
         }
         public static List<string> ListCategories() {
             return (List<string>) staticInterceptor.Invoke("listCategories", "listCategories()", typeof(List<string>));
+        }
+        /// <remarks>
+        ///  Attempts to load an apppet from a package
+        ///  Returns a pointer to the applet if successful.
+        ///  The caller takes responsibility for the applet, including
+        ///  deleting it when no longer needed.
+        /// <param> name="path" the path to the package
+        /// </param><param> name="appletId" unique ID to assign the applet, or zero to have one
+        ///         assigned automatically.
+        /// </param><param> name="args" to send the applet extra arguments
+        /// </param></remarks>        <return> a pointer to the loaded applet, or 0 on load failure
+        /// </return>
+        ///         <short>    Attempts to load an apppet from a package </short>
+        public static Plasma.Applet LoadPlasmoid(string path, uint appletId, List<QVariant> args) {
+            return (Plasma.Applet) staticInterceptor.Invoke("loadPlasmoid$$?", "loadPlasmoid(const QString&, uint, const QList<QVariant>&)", typeof(Plasma.Applet), typeof(string), path, typeof(uint), appletId, typeof(List<QVariant>), args);
+        }
+        public static Plasma.Applet LoadPlasmoid(string path, uint appletId) {
+            return (Plasma.Applet) staticInterceptor.Invoke("loadPlasmoid$$", "loadPlasmoid(const QString&, uint)", typeof(Plasma.Applet), typeof(string), path, typeof(uint), appletId);
+        }
+        public static Plasma.Applet LoadPlasmoid(string path) {
+            return (Plasma.Applet) staticInterceptor.Invoke("loadPlasmoid$", "loadPlasmoid(const QString&)", typeof(Plasma.Applet), typeof(string), path);
         }
         /// <remarks>
         ///  Attempts to load an applet
@@ -953,5 +988,10 @@ namespace Plasma {
         ///          </remarks>        <short>    Emitted when the applet is deleted          </short>
         [Q_SIGNAL("void appletDestroyed(Plasma::Applet*)")]
         void AppletDestroyed(Plasma.Applet applet);
+        /// <remarks>
+        ///  Emitted when an ExtenderItem in a scripting applet needs to be initialized
+        ///          </remarks>        <short>    Emitted when an ExtenderItem in a scripting applet needs to be initialized          </short>
+        [Q_SIGNAL("void initScriptExtenderItem(Plasma::ExtenderItem*)")]
+        void InitScriptExtenderItem(Plasma.ExtenderItem item);
     }
 }

@@ -78,10 +78,17 @@ namespace Plasma {
         }
         /// <remarks>
         /// </remarks>        <return> the package metadata object.
-        ///           </return>
+        ///          </return>
         ///         <short>   </short>
         public Plasma.PackageMetadata Metadata() {
             return (Plasma.PackageMetadata) interceptor.Invoke("metadata", "metadata() const", typeof(Plasma.PackageMetadata));
+        }
+        /// <remarks>
+        ///  Sets the path to the root of this package
+        ///  @arg path and absolute path
+        /// </remarks>        <short>    Sets the path to the root of this package  @arg path and absolute path </short>
+        public void SetPath(string path) {
+            interceptor.Invoke("setPath$", "setPath(const QString&)", typeof(void), typeof(string), path);
         }
         /// <remarks>
         /// </remarks>        <return> the path to the root of this particular package

@@ -4,6 +4,7 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  @class PackageMetadata plasma/packagemetadata.h <Plasma/PackageMetadata>
     /// </remarks>        <short> Provides metadata for a Package. </short>
@@ -63,6 +64,9 @@ namespace Plasma {
         public string Description() {
             return (string) interceptor.Invoke("description", "description() const", typeof(string));
         }
+        public List<string> Keywords() {
+            return (List<string>) interceptor.Invoke("keywords", "keywords() const", typeof(List<string>));
+        }
         public string ServiceType() {
             return (string) interceptor.Invoke("serviceType", "serviceType() const", typeof(string));
         }
@@ -112,6 +116,13 @@ namespace Plasma {
         ///      </remarks>        <short>    Set the description used to provide some general  information what the package is about.</short>
         public void SetDescription(string arg1) {
             interceptor.Invoke("setDescription$", "setDescription(const QString&)", typeof(void), typeof(string), arg1);
+        }
+        /// <remarks>
+        ///  Set the keywords used to provide search and categorizations
+        /// <param> name="keywords" the keywords to associate with this package
+        ///      </param></remarks>        <short>    Set the keywords used to provide search and categorizations </short>
+        public void SetKeywords(List<string> keywords) {
+            interceptor.Invoke("setKeywords?", "setKeywords(const QStringList&)", typeof(void), typeof(List<string>), keywords);
         }
         /// <remarks>
         ///  Set the service-type which defines the X-KDE-ServiceTypes

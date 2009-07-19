@@ -14,6 +14,8 @@ namespace Plasma {
     ///  widget in a popup when clicked.
     ///  If you use this class as a base class for your extender using applet, the extender will
     ///  automatically be used for the popup; reimplementing graphicsWidget() is unnecessary in this case.
+    ///  If you need a popup that does not steal window focus when openend or used, set window flag 
+    ///  Qt.X11BypassWindowManagerHint the widget returned by widget() or graphicsWidget().
     ///  </remarks>        <short>    Allows applets to automatically 'collapse' into an icon when put in an panel, and is a convenient  base class for any applet that wishes to use extenders.</short>
     [SmokeClass("Plasma::PopupApplet")]
     public class PopupApplet : Plasma.Applet, IDisposable {
@@ -54,6 +56,9 @@ namespace Plasma {
         public virtual QWidget Widget() {
             return (QWidget) interceptor.Invoke("widget", "widget()", typeof(QWidget));
         }
+        public void SetWidget(QWidget widget) {
+            interceptor.Invoke("setWidget#", "setWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
+        }
         /// <remarks>
         ///  Implement either this function or widget().
         /// </remarks>        <return> the widget that will get shown in either a layout, in the applet or in a Dialog,
@@ -64,6 +69,9 @@ namespace Plasma {
         public virtual QGraphicsWidget GraphicsWidget() {
             return (QGraphicsWidget) interceptor.Invoke("graphicsWidget", "graphicsWidget()", typeof(QGraphicsWidget));
         }
+        public void SetGraphicsWidget(QGraphicsWidget widget) {
+            interceptor.Invoke("setGraphicsWidget#", "setGraphicsWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
+        }
         /// <remarks>
         /// </remarks>        <return> the placement of the popup relating to the icon
         ///      </return>
@@ -73,7 +81,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Sets whether or not the dialog popup that gets created should be a "passive" popup
-        ///  that does not steal focus from other windows or not.
+        ///  that does not steal focus from other windows or not. 
         ///  @arg passive true if the dialog should be treated as a passive popup
         ///      </remarks>        <short>    Sets whether or not the dialog popup that gets created should be a "passive" popup  that does not steal focus from other windows or not.</short>
         public void SetPassivePopup(bool passive) {

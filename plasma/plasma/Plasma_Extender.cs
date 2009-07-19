@@ -94,6 +94,15 @@ namespace Plasma {
             return (Plasma.ExtenderItem) interceptor.Invoke("item$", "item(const QString&) const", typeof(Plasma.ExtenderItem), typeof(string), name);
         }
         /// <remarks>
+        ///  Extra convenience function for obtaining groups specified by name. This will avoid needed
+        ///  to call item and casting to ExtenderGroup, which is otherwise quite common.
+        /// </remarks>        <return> the requested group
+        /// </return>
+        ///         <short>    Extra convenience function for obtaining groups specified by name.</short>
+        public Plasma.ExtenderGroup Group(string name) {
+            return (Plasma.ExtenderGroup) interceptor.Invoke("group$", "group(const QString&) const", typeof(Plasma.ExtenderGroup), typeof(string), name);
+        }
+        /// <remarks>
         ///  This function can be used for easily determining if a certain item is already displayed
         ///  in an extender item somewhere, so your applet doesn't duplicate this item. This is needed
         ///  because ExtenderItems are persistent, so you can't blindly add new extender items in all
@@ -103,6 +112,14 @@ namespace Plasma {
         ///         <short>    This function can be used for easily determining if a certain item is already displayed  in an extender item somewhere, so your applet doesn't duplicate this item.</short>
         public bool HasItem(string name) {
             return (bool) interceptor.Invoke("hasItem$", "hasItem(const QString&) const", typeof(bool), typeof(string), name);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the Extender is visually empty (though it may have items such as
+        ///  empty groups or detached items associatd with it)
+        ///          </return>
+        ///         <short>   </short>
+        public bool IsEmpty() {
+            return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
         }
         /// <remarks>
         ///  Use this function to instruct the extender on how to render it's items. Usually you will

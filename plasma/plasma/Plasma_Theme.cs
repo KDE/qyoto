@@ -4,6 +4,7 @@ namespace Plasma {
     using System;
     using Kimono;
     using Qyoto;
+    using System.Collections.Generic;
     /// <remarks>
     ///  @class Theme plasma/theme.h <Plasma/Theme>
     ///  Accessed via Plasma.Theme.DefaultTheme() e.g:
@@ -45,7 +46,13 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Default constructor. Usually you want to use the singleton instead.
-        ///          </remarks>        <short>    Default constructor.</short>
+        /// </remarks>        <short>    Default constructor.</short>
+        ///         <see> defaultTheme</see>
+        ///         <see> @arg</see>
+        ///         <see> parent</see>
+        ///         <see> the</see>
+        ///         <see> parent</see>
+        ///         <see> object</see>
         public Theme(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("Theme#", "Theme(QObject*)", typeof(void), typeof(QObject), parent);
@@ -53,6 +60,32 @@ namespace Plasma {
         public Theme() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("Theme", "Theme()", typeof(void));
+        }
+        /// <remarks>
+        ///  Construct a theme. Usually you want to use the singleton instead.
+        /// </remarks>        <short>    Construct a theme.</short>
+        ///         <see> defaultTheme</see>
+        ///         <see> @arg</see>
+        ///         <see> themeName</see>
+        ///         <see> the</see>
+        ///         <see> name</see>
+        ///         <see> of</see>
+        ///         <see> the</see>
+        ///         <see> theme</see>
+        ///         <see> to</see>
+        ///         <see> create</see>
+        ///         <see> @arg</see>
+        ///         <see> parent</see>
+        ///         <see> the</see>
+        ///         <see> parent</see>
+        ///         <see> object</see>
+        public Theme(string themeName, QObject parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("Theme$#", "Theme(const QString&, QObject*)", typeof(void), typeof(string), themeName, typeof(QObject), parent);
+        }
+        public Theme(string themeName) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("Theme$", "Theme(const QString&)", typeof(void), typeof(string), themeName);
         }
         /// <remarks>
         ///  Retrieve the path for an SVG image in the current theme.
@@ -263,6 +296,13 @@ namespace Plasma {
         ///         <short>   </short>
         public static Plasma.PackageStructure PackageStructure() {
             return (Plasma.PackageStructure) staticInterceptor.Invoke("packageStructure", "packageStructure()", typeof(Plasma.PackageStructure));
+        }
+        /// <remarks>
+        /// </remarks>        <return> a list of all known themes
+        /// </return>
+        ///         <short>   </short>
+        public static List<KPluginInfo> ListThemeInfo() {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listThemeInfo", "listThemeInfo()", typeof(List<KPluginInfo>));
         }
         protected new IThemeSignals Emit {
             get { return (IThemeSignals) Q_EMIT; }

@@ -437,10 +437,11 @@ namespace PlasmaScripting {
         [Q_SLOT("void init()")]
         public virtual void Init() {
         }
-        [Q_SLOT("void initExtenderItem(ExtenderItem*)")]
-        [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]
+        [Q_SLOT("void initExtenderItem(Plasma::ExtenderItem*)")]
         public virtual void InitExtenderItem(Plasma.ExtenderItem item) {
-            applet.InitExtenderItem(item);
+            Console.WriteLine("Missing implementation of initExtenderItem in the applet {0}!",
+                              item.Config().ReadEntry("SourceAppletPluginName", ""));
+            Console.WriteLine("Any applet that uses extenders should implement initExtenderItem to instantiate a widget.");
         }
          /// <remarks>
          /// </remarks>        <return> the extender this applet has.
@@ -455,6 +456,8 @@ namespace PlasmaScripting {
             Connect(applet, SIGNAL("geometryChanged()"), this, SIGNAL("geometryChanged()"));
             Connect(applet, SIGNAL("configNeedsSaving()"), this, SIGNAL("configNeedsSaving()"));
             Connect(applet, SIGNAL("activate()"), this, SIGNAL("activate()"));
+            Connect(applet, SIGNAL("extenderItemRestored(Plasma::ExtenderItem*)"), 
+                    this, SLOT("initExtenderItem(Plasma::ExtenderItem*)"));
         }
         /// <remarks>
         ///  Call this method when the applet fails to launch properly. An

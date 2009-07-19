@@ -186,6 +186,25 @@ namespace Plasma {
             interceptor.Invoke("enableAction$$", "enableAction(const QString&, bool)", typeof(void), typeof(string), name, typeof(bool), enable);
         }
         /// <remarks>
+        /// </remarks>        <short>   </short>
+        public void UpdateShortcuts() {
+            interceptor.Invoke("updateShortcuts", "updateShortcuts()", typeof(void));
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        public void AddShortcuts(KActionCollection newShortcuts) {
+            interceptor.Invoke("addShortcuts#", "addShortcuts(KActionCollection*)", typeof(void), typeof(KActionCollection), newShortcuts);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the new action
+        ///  FIXME I'm wrapping so much of kactioncollection API now, maybe I should just expose the
+        ///  collection itself :P
+        ///      </return>
+        ///         <short>   </short>
+        public KAction AddAction(string name) {
+            return (KAction) interceptor.Invoke("addAction$", "addAction(QString)", typeof(KAction), typeof(string), name);
+        }
+        /// <remarks>
         ///  Initializes the layout from a config file. This will first clear any existing
         ///  Containments, load a layout from the requested configuration file, request the
         ///  default layout if needed and update immutability.
@@ -353,5 +372,10 @@ namespace Plasma {
         ///      </remarks>        <short>    emitted when immutability changes.</short>
         [Q_SIGNAL("void immutabilityChanged(Plasma::ImmutabilityType)")]
         void ImmutabilityChanged(Plasma.ImmutabilityType immutability);
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> addShortcuts</see>
+        [Q_SIGNAL("void shortcutsChanged()")]
+        void ShortcutsChanged();
     }
 }

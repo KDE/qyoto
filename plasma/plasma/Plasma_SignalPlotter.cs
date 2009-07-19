@@ -106,7 +106,8 @@ namespace Plasma {
         }
         [Q_PROPERTY("bool", "thinFrame")]
         public bool ThinFrame {
-            get { return (bool) interceptor.Invoke("setThinFrame", "setThinFrame()", typeof(bool)); }
+            get { return (bool) interceptor.Invoke("thinFrame", "thinFrame()", typeof(bool)); }
+            set { interceptor.Invoke("setThinFrame$", "setThinFrame(bool)", typeof(void), typeof(bool), value); }
         }
         [Q_PROPERTY("bool", "stackPlots")]
         public bool StackPlots {

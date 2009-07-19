@@ -41,6 +41,18 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("TextBrowser", "TextBrowser()", typeof(void));
         }
+        /// <remarks>
+        ///  Sets the policy used to show/hide the horizontal scrollbar
+        ///      </remarks>        <short>    Sets the policy used to show/hide the horizontal scrollbar      </short>
+        public void SetHorizontalScrollBarPolicy(Qt.ScrollBarPolicy policy) {
+            interceptor.Invoke("setHorizontalScrollBarPolicy$", "setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), policy);
+        }
+        /// <remarks>
+        ///  Sets the policy used to show/hide the vertical scrollbar
+        ///      </remarks>        <short>    Sets the policy used to show/hide the vertical scrollbar      </short>
+        public void SetVerticalScrollBarPolicy(Qt.ScrollBarPolicy policy) {
+            interceptor.Invoke("setVerticalScrollBarPolicy$", "setVerticalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), policy);
+        }
         [Q_SLOT("void dataUpdated(QString, Plasma::DataEngine::Data)")]
         public void DataUpdated(string sourceName, Dictionary<string, QVariant> data) {
             interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);

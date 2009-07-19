@@ -23,6 +23,11 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
             set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
         }
+        [Q_PROPERTY("bool", "isClearButtonShown")]
+        public bool IsClearButtonShown {
+            get { return (bool) interceptor.Invoke("isClearButtonShown", "isClearButtonShown()", typeof(bool)); }
+            set { interceptor.Invoke("setClearButtonShown$", "setClearButtonShown(bool)", typeof(void), typeof(bool), value); }
+        }
         [Q_PROPERTY("QString", "styleSheet")]
         public string StyleSheet {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }

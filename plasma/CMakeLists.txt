@@ -11,6 +11,7 @@ SET(SRC_CPP src/plasma.cpp src/plasmahandlers.cpp)
 SET(SRC_CS src/AssemblyInfo.cs 
  src/PlasmaScripting_DataEngine.cs
  src/PlasmaScripting_Applet.cs
+ src/PlasmaScripting_PopupApplet.cs
  src/PlasmaScripting_QGraphicsWidget.cs
  src/Plasma.cs 
 plasma/*.cs)
