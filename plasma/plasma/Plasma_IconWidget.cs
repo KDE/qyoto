@@ -38,7 +38,8 @@ namespace Plasma {
         }
         [Q_PROPERTY("QString", "svg")]
         public string Svg {
-            get { return (string) interceptor.Invoke("setSvg", "setSvg()", typeof(string)); }
+            get { return (string) interceptor.Invoke("svg", "svg()", typeof(string)); }
+            set { interceptor.Invoke("setSvg$", "setSvg(QString)", typeof(void), typeof(string), value); }
         }
         [Q_PROPERTY("QAction*", "action")]
         public QAction Action {

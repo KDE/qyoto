@@ -34,17 +34,17 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("url", "url()", typeof(string)); }
             set { interceptor.Invoke("setUrl$", "setUrl(QString)", typeof(void), typeof(string), value); }
         }
-        [Q_PROPERTY("QString", "currentTime")]
-        public string CurrentTime {
-            get { return (string) interceptor.Invoke("currentTime", "currentTime()", typeof(string)); }
+        [Q_PROPERTY("qint64", "currentTime")]
+        public long CurrentTime {
+            get { return (long) interceptor.Invoke("currentTime", "currentTime()", typeof(long)); }
         }
-        [Q_PROPERTY("QString", "totalTime")]
-        public string TotalTime {
-            get { return (string) interceptor.Invoke("totalTime", "totalTime()", typeof(string)); }
+        [Q_PROPERTY("qint64", "totalTime")]
+        public long TotalTime {
+            get { return (long) interceptor.Invoke("totalTime", "totalTime()", typeof(long)); }
         }
-        [Q_PROPERTY("QString", "remainingTime")]
-        public string RemainingTime {
-            get { return (string) interceptor.Invoke("remainingTime", "remainingTime()", typeof(string)); }
+        [Q_PROPERTY("qint64", "remainingTime")]
+        public long RemainingTime {
+            get { return (long) interceptor.Invoke("remainingTime", "remainingTime()", typeof(long)); }
         }
         [Q_PROPERTY("Plasma::VideoWidget::Controls", "usedControls")]
         public uint UsedControls {

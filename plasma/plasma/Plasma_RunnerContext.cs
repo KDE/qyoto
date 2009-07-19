@@ -92,14 +92,14 @@ namespace Plasma {
         ///  }
         ///  While not required to be used within runners, it provies a nice way
         ///  to avoid unecessary processing in runners that may run for an extended
-        ///  period (as measured in 10s of ms) and therefore improve the user experience.
-        ///          </remarks>        <return> true if this context is no longer valid and therefore
+        ///  period (as measured in 10s of ms) and therefore improve the user experience. 
+        /// </remarks>        <return> true if this context is no longer valid and therefore
         ///  matching using it should abort. Most useful as an optimization technique
         ///  inside of AbstractRunner subclasses in the match method, e.g.:
         /// </return>
         ///         <short>   </short>
         public bool IsValid() {
-            return (bool) interceptor.Invoke("isValid", "isValid()", typeof(bool));
+            return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
         }
         /// <remarks>
         ///  Appends lists of matches to the list of matches.
@@ -138,6 +138,32 @@ namespace Plasma {
         ///         <short>    Retrieves a match by id.</short>
         public Plasma.QueryMatch Match(string id) {
             return (Plasma.QueryMatch) interceptor.Invoke("match$", "match(const QString&) const", typeof(Plasma.QueryMatch), typeof(string), id);
+        }
+        /// <remarks>
+        ///  Sets the launch counts for the associated match ids
+        ///  If a runner adds a match to this context, the context will check if the
+        ///  match id has been launched before and increase the matches relevance
+        ///  correspondingly. In this manner, any front end can implement adaptive search
+        ///  by sorting items according to relevance.
+        /// <param> name="config" the config group where launch data was stored
+        ///          </param></remarks>        <short>    Sets the launch counts for the associated match ids </short>
+        public void Restore(KConfigGroup config) {
+            interceptor.Invoke("restore#", "restore(const KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
+        }
+        /// <remarks>
+        /// <param> name="config" the config group where launch data should be stored
+        ///          </param></remarks>        <short>   </short>
+        public void Save(KConfigGroup config) {
+            interceptor.Invoke("save#", "save(KConfigGroup&)", typeof(void), typeof(KConfigGroup), config);
+        }
+        /// <remarks>
+        ///  Run a match using the information from this context
+        ///  The context will also keep track of the number of times the match was
+        ///  launched to sort future matches according to user habits
+        /// <param> name="match" the match to run
+        ///          </param></remarks>        <short>    Run a match using the information from this context </short>
+        public void Run(Plasma.QueryMatch match) {
+            interceptor.Invoke("run#", "run(const Plasma::QueryMatch&)", typeof(void), typeof(Plasma.QueryMatch), match);
         }
         ~RunnerContext() {
             interceptor.Invoke("~RunnerContext", "~RunnerContext()", typeof(void));

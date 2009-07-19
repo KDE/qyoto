@@ -119,6 +119,12 @@ namespace Plasma {
             interceptor.Invoke("configNeedsSaving", "configNeedsSaving() const", typeof(void));
         }
         /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        public Plasma.Extender Extender() {
+            return (Plasma.Extender) interceptor.Invoke("extender", "extender() const", typeof(Plasma.Extender));
+        }
+        /// <remarks>
         ///  Show a configuration dialog.
         ///      </remarks>        <short>    Show a configuration dialog.</short>
         [Q_SLOT("void showConfigurationInterface()")]

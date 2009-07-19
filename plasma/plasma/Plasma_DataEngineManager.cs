@@ -85,6 +85,26 @@ namespace Plasma {
         public static List<KPluginInfo> ListEngineInfo() {
             return (List<KPluginInfo>) staticInterceptor.Invoke("listEngineInfo", "listEngineInfo()", typeof(List<KPluginInfo>));
         }
+        /// <remarks>
+        ///  Returns a list of all known DataEngines filtering by category.
+        /// <param> name="category" the category to filter applets on. Uses the
+        ///                   X-KDE-PluginInfo-Category entry (if any) in the
+        ///                   plugin info. The value of string() will
+        ///                   result in a list of engines with an empty category.
+        /// </param><param> name="parentApp" the application to filter applets on. Uses the
+        ///                   X-KDE-ParentApp entry (if any) in the plugin info.
+        ///                   The default value of string() will result in a
+        ///                   list containing only applets not specifically
+        ///                   registered to an application.
+        /// </param></remarks>        <return> list of DataEngines
+        /// </return>
+        ///         <short>    Returns a list of all known DataEngines filtering by category.</short>
+        public static List<KPluginInfo> ListEngineInfoByCategory(string category, string parentApp) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listEngineInfoByCategory$$", "listEngineInfoByCategory(const QString&, const QString&)", typeof(List<KPluginInfo>), typeof(string), category, typeof(string), parentApp);
+        }
+        public static List<KPluginInfo> ListEngineInfoByCategory(string category) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listEngineInfoByCategory$", "listEngineInfoByCategory(const QString&)", typeof(List<KPluginInfo>), typeof(string), category);
+        }
         protected new IDataEngineManagerSignals Emit {
             get { return (IDataEngineManagerSignals) Q_EMIT; }
         }

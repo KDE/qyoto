@@ -21,6 +21,7 @@ namespace Plasma {
         [Q_PROPERTY("QString", "text")]
         public string Text {
             get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("textChanged$", "textChanged(QString)", typeof(void), typeof(string), value); }
         }
         [Q_PROPERTY("QString", "styleSheet")]
         public string StyleSheet {
@@ -80,5 +81,7 @@ namespace Plasma {
     public interface IComboBoxSignals : IQGraphicsProxyWidgetSignals {
         [Q_SIGNAL("void activated(QString)")]
         void Activated(string text);
+        [Q_SIGNAL("void textChanged(QString)")]
+        void TextChanged(string text);
     }
 }

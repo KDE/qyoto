@@ -33,6 +33,11 @@ namespace Plasma {
             get { return (string) interceptor.Invoke("imagePath", "imagePath()", typeof(string)); }
             set { interceptor.Invoke("setImagePath$", "setImagePath(QString)", typeof(void), typeof(string), value); }
         }
+        [Q_PROPERTY("bool", "usingRenderingCache")]
+        public bool UsingRenderingCache {
+            get { return (bool) interceptor.Invoke("isUsingRenderingCache", "isUsingRenderingCache()", typeof(bool)); }
+            set { interceptor.Invoke("setUsingRenderingCache$", "setUsingRenderingCache(bool)", typeof(void), typeof(bool), value); }
+        }
         /// <remarks>
         ///  Constructs an SVG object that implicitly shares and caches rendering
         ///  As opposed to QSvgRenderer, which this class uses internally,
@@ -188,6 +193,21 @@ namespace Plasma {
         ///         <short>   </short>
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Sets the Plasma.Theme to use with this Svg object. By default, Svg
+        ///  objects use Plasma.Theme.Default()
+        ///  @arg theme the theme object to use
+        /// </remarks>        <short>    Sets the Plasma.Theme to use with this Svg object.</short>
+        public void SetTheme(Plasma.Theme theme) {
+            interceptor.Invoke("setTheme#", "setTheme(Plasma::Theme*)", typeof(void), typeof(Plasma.Theme), theme);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the theme used by this Svg
+        ///          </return>
+        ///         <short>   </short>
+        public Plasma.Theme Theme() {
+            return (Plasma.Theme) interceptor.Invoke("theme", "theme() const", typeof(Plasma.Theme));
         }
         ~Svg() {
             interceptor.Invoke("~Svg", "~Svg()", typeof(void));

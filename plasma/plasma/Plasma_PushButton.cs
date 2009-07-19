@@ -37,6 +37,11 @@ namespace Plasma {
         public KPushButton NativeWidget {
             get { return (KPushButton) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KPushButton)); }
         }
+        [Q_PROPERTY("QAction*", "action")]
+        public QAction Action {
+            get { return (QAction) interceptor.Invoke("action", "action()", typeof(QAction)); }
+            set { interceptor.Invoke("setAction#", "setAction(QAction*)", typeof(void), typeof(QAction), value); }
+        }
         public PushButton(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("PushButton#", "PushButton(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), parent);
@@ -44,6 +49,40 @@ namespace Plasma {
         public PushButton() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("PushButton", "PushButton()", typeof(void));
+        }
+        /// <remarks>
+        ///  sets the icon for this toolbutton
+        ///  @arg icon the icon we want to use
+        /// </remarks>        <short>    sets the icon for this toolbutton </short>
+        public void SetIcon(QIcon icon) {
+            interceptor.Invoke("setIcon#", "setIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the icon of this button
+        /// </return>
+        ///         <short>   </short>
+        public QIcon Icon() {
+            return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
+        }
+        /// <remarks>
+        ///  Sets whether or not this button can be toggled on/off
+        /// </remarks>        <short>    Sets whether or not this button can be toggled on/off </short>
+        public void SetCheckable(bool checkable) {
+            interceptor.Invoke("setCheckable$", "setCheckable(bool)", typeof(void), typeof(bool), checkable);
+        }
+        /// <remarks>
+        ///  Sets whether or not this button is checked. Implies setIsCheckable(true).
+        /// </remarks>        <short>    Sets whether or not this button is checked.</short>
+        public void SetChecked(bool arg1) {
+            interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), arg1);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the button is checked; requires setIsCheckable(true) to
+        ///  be called
+        /// </return>
+        ///         <short>   </short>
+        public bool IsChecked() {
+            return (bool) interceptor.Invoke("isChecked", "isChecked() const", typeof(bool));
         }
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
@@ -79,5 +118,7 @@ namespace Plasma {
     public interface IPushButtonSignals : IQGraphicsProxyWidgetSignals {
         [Q_SIGNAL("void clicked()")]
         void Clicked();
+        [Q_SIGNAL("void toggled(bool)")]
+        void Toggled(bool arg1);
     }
 }

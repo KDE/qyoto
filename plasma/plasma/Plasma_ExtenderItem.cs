@@ -116,7 +116,8 @@ namespace Plasma {
             interceptor.Invoke("setExtender#", "setExtender(Plasma::Extender*)", typeof(void), typeof(Plasma.Extender), extender);
         }
         /// <remarks>
-        /// <param> name="group" the group you want this item to belong to.
+        /// <param> name="group" the group you want this item to belong to. Note that you can't nest
+        ///  ExtenderGroups.
         /// </param></remarks>        <short>   </short>
         public void SetGroup(Plasma.ExtenderGroup group) {
             interceptor.Invoke("setGroup#", "setGroup(Plasma::ExtenderGroup*)", typeof(void), typeof(Plasma.ExtenderGroup), group);

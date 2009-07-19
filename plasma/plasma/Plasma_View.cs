@@ -113,7 +113,9 @@ namespace Plasma {
         /// <param> name="existing" the existing containment to swap out
         /// </param><param> name="name" the plugin name for the new containment.
         /// </param><param> name="args" argument list to pass to the containment
-        ///      </param></remarks>        <short>    Swaps one containment with another.</short>
+        /// </param></remarks>        <return> the new containment
+        ///      </return>
+        ///         <short>    Swaps one containment with another.</short>
         public Plasma.Containment SwapContainment(Plasma.Containment existing, string name, List<QVariant> args) {
             return (Plasma.Containment) interceptor.Invoke("swapContainment#$?", "swapContainment(Plasma::Containment*, const QString&, const QList<QVariant>&)", typeof(Plasma.Containment), typeof(Plasma.Containment), existing, typeof(string), name, typeof(List<QVariant>), args);
         }

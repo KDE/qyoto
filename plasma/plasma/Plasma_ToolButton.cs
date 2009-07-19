@@ -42,6 +42,11 @@ namespace Plasma {
         public QToolButton NativeWidget {
             get { return (QToolButton) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(QToolButton)); }
         }
+        [Q_PROPERTY("QAction*", "action")]
+        public QAction Action {
+            get { return (QAction) interceptor.Invoke("action", "action()", typeof(QAction)); }
+            set { interceptor.Invoke("setAction#", "setAction(QAction*)", typeof(void), typeof(QAction), value); }
+        }
         public ToolButton(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("ToolButton#", "ToolButton(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), parent);
@@ -53,13 +58,13 @@ namespace Plasma {
         /// <remarks>
         ///  sets the icon for this toolbutton
         ///  @arg icon the icon we want to use
-        ///      </remarks>        <short>    sets the icon for this toolbutton </short>
+        /// </remarks>        <short>    sets the icon for this toolbutton </short>
         public void SetIcon(QIcon icon) {
             interceptor.Invoke("setIcon#", "setIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
         }
         /// <remarks>
         /// </remarks>        <return> the icon of this button
-        ///      </return>
+        /// </return>
         ///         <short>   </short>
         public QIcon Icon() {
             return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
