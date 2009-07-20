@@ -432,63 +432,65 @@ namespace Qyoto {
 		public static IntPtr GetInstance(IntPtr ptr, bool allInstances) {
 			WeakReference weakRef;
 			object strongRef;
-			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
+			lock (pointerMap) {
+				if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
-				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
-				{
-					Console.WriteLine("GetInstance() pointerMap[0x{0:x8}] == null", (int) ptr);
-				}
+					if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+							&& QDebug.debugLevel >= DebugLevel.Extensive ) 
+					{
+						Console.WriteLine("GetInstance() pointerMap[0x{0:x8}] == null", (int) ptr);
+					}
 #endif
-				return IntPtr.Zero;
-			}
-
-			if (weakRef.IsAlive) {
-#if DEBUG
-				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
-				{
-					Console.WriteLine("GetInstance() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
-				}
-#endif
-				if (!allInstances && IsSmokeClass(weakRef.Target.GetType())) {
 					return IntPtr.Zero;
-				} 
+				}
+
+				if (weakRef != null && weakRef.IsAlive) {
+#if DEBUG
+					if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+							&& QDebug.debugLevel >= DebugLevel.Extensive ) 
+					{
+						Console.WriteLine("GetInstance() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
+					}
+#endif
+					if (!allInstances && IsSmokeClass(weakRef.Target.GetType())) {
+						return IntPtr.Zero;
+					} 
 
 #if DEBUG
-				GCHandle instanceHandle = DebugGCHandle.Alloc(weakRef.Target);
+					GCHandle instanceHandle = DebugGCHandle.Alloc(weakRef.Target);
 #else
-				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
+					GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
 #endif
-				return (IntPtr) instanceHandle;
-			} else if (Environment.HasShutdownStarted && globalReferenceMap.TryGetValue(ptr, out strongRef)) {
+					return (IntPtr) instanceHandle;
+				} else if (Environment.HasShutdownStarted && globalReferenceMap.TryGetValue(ptr, out strongRef)) {
 #if DEBUG
-				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
-				{
-					Console.WriteLine("GetInstance() strongRef 0x{0:x8} -> {1}", (int) ptr, strongRef);
-				}
+					if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+							&& QDebug.debugLevel >= DebugLevel.Extensive ) 
+					{
+						Console.WriteLine("GetInstance() strongRef 0x{0:x8} -> {1}", (int) ptr, strongRef);
+					}
 #endif
-				if (!allInstances && IsSmokeClass(strongRef.GetType())) {
+					if (!allInstances && IsSmokeClass(strongRef.GetType())) {
+						return IntPtr.Zero;
+					} 
+
+#if DEBUG
+					GCHandle instanceHandle = DebugGCHandle.Alloc(strongRef);
+#else
+					GCHandle instanceHandle = GCHandle.Alloc(strongRef);
+#endif
+					return (IntPtr) instanceHandle;
+				} else {
+#if DEBUG
+					if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+							&& QDebug.debugLevel >= DebugLevel.Extensive ) 
+					{
+						Console.WriteLine("GetInstance() weakRef dead ptr: 0x{0:x8}", (int) ptr);
+					}
+#endif
+					pointerMap.Remove(ptr);
 					return IntPtr.Zero;
-				} 
-
-#if DEBUG
-				GCHandle instanceHandle = DebugGCHandle.Alloc(strongRef);
-#else
-				GCHandle instanceHandle = GCHandle.Alloc(strongRef);
-#endif
-				return (IntPtr) instanceHandle;
-			} else {
-#if DEBUG
-				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
-				{
-					Console.WriteLine("GetInstance() weakRef dead ptr: 0x{0:x8}", (int) ptr);
 				}
-#endif
-				pointerMap.Remove(ptr);
-				return IntPtr.Zero;
 			}
 		}
 
