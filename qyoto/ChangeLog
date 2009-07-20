@@ -3,6 +3,9 @@
 	  caused by trying to access 'IsAlive' on a null weakRef. This caused the 
 	  colliding mice example to crash on startup. Thanks to meebey from Debian
 	  for the fixes, and to pusling for telling me about them.
+	* Resolve the classname of QObject instances in qyoto_resolve_classname()
+	  rather than qt_resolve_classname() as they can be found in any smoke 
+	  module, not just the base qt one.
 
 2009-05-10  Arno Rehn  <arno@arnorehn.de>
 	* Add a QPair marshaller. We still need a List<QPair<...>> one.

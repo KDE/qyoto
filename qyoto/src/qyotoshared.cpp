@@ -304,6 +304,41 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 const char *
 qyoto_resolve_classname(smokeqyoto_object * o)
 {
+	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QObject")) {
+		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
+		const QMetaObject * meta = qobject->metaObject();
+
+		while (meta != 0) {
+			o->smoke = Smoke::classMap[meta->className()];
+			if (o->smoke != 0) {
+				o->classId = o->smoke->idClass(meta->className()).index;
+				if (o->classId != 0) {
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemModel") == 0)
+						return "Qyoto.QItemModel";
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractButton") == 0)
+						return "Qyoto.QAbstractButtonInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractProxyModel") == 0)
+						return "Qyoto.QAbstractProxyModelInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemDelegate") == 0)
+						return "Qyoto.QAbstractItemDelegateInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemView") == 0)
+						return "Qyoto.QAbstractItemViewInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractListModel") == 0)
+						return "Qyoto.QAbstractListModelInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractTextDocumentLayout") == 0)
+						return "Qyoto.QAbstractTextDocumentLayoutInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QLayout") == 0)
+						return "Qyoto.QLayoutInternal";
+					if (strcmp(o->smoke->classes[o->classId].className, "QNetworkReply") == 0)
+						return "Qyoto.QNetworkReplyInternal";
+					return qyoto_modules[o->smoke].binding->className(o->classId);
+				}
+			}
+
+			meta = meta->superClass();
+		}
+	}
+
 	if (o->smoke->classes[o->classId].external) {
 		Smoke::ModuleIndex mi = o->smoke->findClass(o->smoke->className(o->classId));
         o->smoke = mi.smoke;
