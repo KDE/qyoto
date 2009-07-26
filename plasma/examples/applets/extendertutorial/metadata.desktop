@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Extender Tutorial
+Comment=An example of a Plasma PopupApplet Extender
+Type=Service
+ServiceTypes=Plasma/PopupApplet
+
+X-KDE-PluginInfo-Author=Richard Dale
+X-KDE-PluginInfo-Email=panel-devel@kde.org
+X-KDE-PluginInfo-Name=csharp-extender-tutorial
+X-KDE-PluginInfo-Version=pre0.1
+X-KDE-PluginInfo-Website=http://plasma.kde.org/
+X-KDE-PluginInfo-Category=Examples
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+X-Plasma-API=mono-script
