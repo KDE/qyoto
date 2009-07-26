@@ -1,3 +1,7 @@
+2009-07-26  Richard Dale  <richard.j.dale@gmail.com>
+* Add a C# version of the Extender Plugin Applet tutorial on Techbase
+* Fix the PlasmaScripting.Applet.Extender() method
+
 2009-07-19  Richard Dale  <richard.j.dale@gmail.com>
 * Regenerate the C# sources for the KDE 4.3 release
 * Add a PlasmaScripting.PopupApplet for writing PopupApplets in C#

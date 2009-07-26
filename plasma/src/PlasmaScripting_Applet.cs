@@ -449,7 +449,7 @@ namespace PlasmaScripting {
          ///         <short>   </short>
         [Q_SLOT("Plasma::Extender* extender()")]
         protected Plasma.Extender Extender() {
-            return (Plasma.Extender) appletType.GetMethod("Extender").Invoke(applet, null);
+            return (Plasma.Extender) appletType.GetMethod("Extender", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(applet, null);
         }
         public Applet(AppletScript parent) : base(parent) {
             Connect(applet, SIGNAL("releaseVisualFocus()"), this, SIGNAL("releaseVisualFocus()"));
