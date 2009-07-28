@@ -36,9 +36,9 @@ namespace Tutorials {
             //Create a Meter widget and wrap it in the ExtenderItem
             Plasma.Meter meter = new Plasma.Meter(item) {
                 meterType = Plasma.Meter.MeterType.BarMeterHorizontal,
-                meter.Svg = "widgets/bar_meter_horizontal",
-                meter.Maximum = 100,
-                meter.Value = 0
+                Svg = "widgets/bar_meter_horizontal",
+                Maximum = 100,
+                Value = 0
             };
         
             meter.SetMinimumSize(new QSizeF(250, 45));
@@ -91,20 +91,3 @@ namespace Tutorials {
         }
     }
 }
-/*
-[Desktop Entry]
-Name=Extender Tutorial
-Type=Service
-X-KDE-ServiceTypes=Plasma/Applet
- 
-X-KDE-Library=plasma_applet_extendertutorial
-X-KDE-PluginInfo-Author=The Plasma Team
-X-KDE-PluginInfo-Email=plasma-devel@kde.org
-X-KDE-PluginInfo-Name=extendertutorial
-X-KDE-PluginInfo-Version=pre0.1
-X-KDE-PluginInfo-Website=http://plasma.kde.org/
-X-KDE-PluginInfo-Category=
-X-KDE-PluginInfo-Depends=
-X-KDE-PluginInfo-License=GPL
-X-KDE-PluginInfo-EnabledByDefault=true
-*/
