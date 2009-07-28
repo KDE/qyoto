@@ -34,12 +34,12 @@ namespace Tutorials {
         //ExtenderItem here.
         public override void InitExtenderItem(Plasma.ExtenderItem item) {
             //Create a Meter widget and wrap it in the ExtenderItem
-            Plasma.Meter meter = new Plasma.Meter(item);
-        
-            meter.meterType = Plasma.Meter.MeterType.BarMeterHorizontal;
-            meter.Svg = "widgets/bar_meter_horizontal";
-            meter.Maximum = 100;
-            meter.Value = 0;
+            Plasma.Meter meter = new Plasma.Meter(item) {
+                meterType = Plasma.Meter.MeterType.BarMeterHorizontal,
+                meter.Svg = "widgets/bar_meter_horizontal",
+                meter.Maximum = 100,
+                meter.Value = 0
+            };
         
             meter.SetMinimumSize(new QSizeF(250, 45));
             meter.SetPreferredSize(new QSizeF(250, 45));
