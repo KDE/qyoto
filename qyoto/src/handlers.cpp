@@ -420,7 +420,7 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 		return true;
 	} else if (o->smoke->isDerivedFromByName(className, "QGraphicsItem")) {
 		QGraphicsItem * item = (QGraphicsItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsItem").index);
-		if (item->scene() != 0) {
+		if (item->scene() != 0 || item->parentItem() != 0) {
 			return true;
 		}
 	}
