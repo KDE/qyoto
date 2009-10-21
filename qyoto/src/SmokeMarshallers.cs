@@ -383,7 +383,7 @@ namespace Qyoto {
 		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createGlobalReference) {
 			lock (pointerMap) {
 				Object instance = ((GCHandle) instancePtr).Target;
-				WeakReference weakRef = new WeakReference(instance, true);
+				WeakReference weakRef = new WeakReference(instance);
 				pointerMap[ptr] = weakRef;
 #if DEBUG
 				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
