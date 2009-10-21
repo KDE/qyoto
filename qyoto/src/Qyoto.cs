@@ -522,7 +522,14 @@ namespace Qyoto
 				return iface;
 			}
 
-			PropertyInfo pi = klass.GetProperty("Emit", BindingFlags.Instance | BindingFlags.NonPublic);
+			PropertyInfo[] pis = klass.GetProperties(BindingFlags.Instance | BindingFlags.NonPublic);
+			PropertyInfo pi = null;
+			foreach (PropertyInfo _pi in pis) {
+				if (_pi.Name == "Emit") {
+					pi = _pi;
+					break;
+				}
+			}
 			emitInterfaceCache[klass] = pi.PropertyType;
 			return pi.PropertyType;
 		}
