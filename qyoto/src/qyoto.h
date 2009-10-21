@@ -148,7 +148,7 @@ extern SetIntPtr AddIntPtrToList;
 extern ConstructDict ConstructDictionary;
 extern DictToHash DictionaryToQHash;
 extern DictToMap DictionaryToQMap;
-extern char *StringFromQString(void *ptr);
+extern const ushort *StringFromQString(void *ptr);
 extern InvokeMethodFn AddObjectObjectToDictionary;
 
 extern Q_DECL_EXPORT GetIntPtr IntPtrToCharStarStar;

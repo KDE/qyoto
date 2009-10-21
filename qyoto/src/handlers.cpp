@@ -785,17 +785,21 @@ StringArrayToCharStarStar(int length, char ** strArray)
 }
 
 Q_DECL_EXPORT void *
-StringToQString(char *str)
+StringToQString(const ushort *str)
 {
-	QString * result = new QString(QString::fromUtf8(str));
+	QString * result = new QString(QString::fromUtf16(str));
 	return (void *) result;
 }
 
-Q_DECL_EXPORT char *
+Q_DECL_EXPORT const ushort *
 StringFromQString(void *ptr)
 {
-    QByteArray ba = ((QString *) ptr)->toUtf8();
-    return strdup(ba.constData());
+	QString* str = (QString*) ptr;
+	int len = str->length() + 1; // include the terminating \0
+	ushort *copy = new ushort[len];
+	memcpy(copy, str->utf16(), sizeof(ushort) * len);
+	// return a copy of the string - the runtime will take ownership of it and care about deletion
+	return copy;
 }
 
 Q_DECL_EXPORT void *

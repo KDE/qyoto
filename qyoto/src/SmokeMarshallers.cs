@@ -32,10 +32,10 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("libqyoto", CharSet=CharSet.Unicode)]
 		public static extern IntPtr StringToQString(string str);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("libqyoto", CharSet=CharSet.Unicode)]
 		public static extern string StringFromQString(IntPtr ptr);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
