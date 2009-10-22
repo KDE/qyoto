@@ -72,7 +72,7 @@ QHash<int,char *> classname;
 extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 
-extern TypeHandler Qyoto_handlers[];
+extern Q_DECL_IMPORT TypeHandler Qyoto_handlers[];
 extern void install_handlers(TypeHandler *);
 
 extern bool IsContainedInstanceQt(smokeqyoto_object *o);
