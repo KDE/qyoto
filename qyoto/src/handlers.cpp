@@ -81,6 +81,10 @@
 #include "smokeqyoto.h"
 #include "marshall_macros.h"
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
+
 extern "C" {
 Q_DECL_EXPORT GetIntPtr ListToPointerList;
 Q_DECL_EXPORT CreateListFn ConstructList;
@@ -796,7 +800,11 @@ StringFromQString(void *ptr)
 {
 	QString* str = (QString*) ptr;
 	int len = str->length() + 1; // include the terminating \0
-	ushort *copy = new ushort[len];
+#ifdef Q_OS_WIN
+	ushort *copy = (ushort*) GlobalAlloc(GMEM_FIXED, sizeof(ushort) * len);
+#else
+	ushort *copy = (ushort*) malloc(sizeof(ushort) * len);
+#endif
 	memcpy(copy, str->utf16(), sizeof(ushort) * len);
 	// return a copy of the string - the runtime will take ownership of it and care about deletion
 	return copy;
