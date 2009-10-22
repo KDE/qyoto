@@ -97,7 +97,7 @@ namespace Qyoto {
             } else if (typeof(T) == typeof(QByteArray)) {
                 return new QVariant((QByteArray) value);
             } else if (typeof(T) == typeof(char)) {
-                return new QVariant((char) value);
+                return new QVariant(new QChar((char) value));
             } else if (typeof(T) == typeof(QDate)) {
                 return new QVariant((QDate) value);
             } else if (typeof(T) == typeof(QDateTime)) {
