@@ -406,15 +406,18 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 		if (item->treeWidget() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QWidget")) {
-		QWidget * qwidget = (QWidget *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QWidget").index);
-		if (qwidget->parentWidget() != 0) {
+	} else if (o->smoke->isDerivedFromByName(className, "QGraphicsScene")) {
+		QGraphicsScene * scene = (QGraphicsScene *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsScene").index);
+		if (scene->views().count() > 0 || scene->parent() != 0) {
 			return true;
 		}
-		// Don't garbage collect custom subclasses of QWidget classes for now
-		const QMetaObject * meta = qwidget->metaObject();
-		Smoke::ModuleIndex classId = o->smoke->idClass(meta->className());
-		return (classId.index == 0);
+	} else if (o->smoke->isDerivedFromByName(className, "QWidget")) {
+		// Only garbage collect the widget if it's hidden, doesn't have any parents and if there are no more 
+		// references to it in the code. This should produce a more 'natural' behaviour for top-level widgets.
+		QWidget * qwidget = (QWidget *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QWidget").index);
+		if (qwidget->isVisible() || qwidget->parent() != 0) {
+			return true;
+		}
 	} else if (o->smoke->isDerivedFromByName(className, "QObject")) {
 		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
 		if (qobject->parent() != 0) {
