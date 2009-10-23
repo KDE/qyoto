@@ -421,6 +421,8 @@ Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj) {
 	return (QMetaObject*) i[0].s_voidp;
 }
 
+}
+
 QList<MocArgument*>
 GetMocArguments(Smoke* smoke, const char * typeName, QList<QByteArray> methodTypes)
 {
@@ -592,6 +594,4 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 		(*SetProperty)(obj, property.name(), variant);
 	}
 	return _id - count;
-}
-
 }

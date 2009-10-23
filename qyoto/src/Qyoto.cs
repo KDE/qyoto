@@ -45,10 +45,10 @@ namespace Qyoto
 	}
 
 	public class QDebug {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void SetDebug(QtDebugChannel debugChannel);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern QtDebugChannel DebugChannel();
 
 		public static DebugLevel debugLevel = DebugLevel.Off;
@@ -250,13 +250,13 @@ namespace Qyoto
 
 	public class Qyoto : System.Object
 	{
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void Init_qyoto();
     
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void SetApplicationTerminated();
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr qyoto_make_metaObject(	IntPtr obj, IntPtr parentMeta,
 												IntPtr stringdata, int stringdataCount, 
 											 	IntPtr data, int dataCount );

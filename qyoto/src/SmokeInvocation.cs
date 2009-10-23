@@ -51,13 +51,13 @@ namespace Qyoto {
 	}
 	
 	public class SmokeInvocation {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		static extern ModuleIndex FindMethodId(string className, string mungedName, string signature);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi, EntryPoint="CallSmokeMethod")]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, EntryPoint="CallSmokeMethod", CallingConvention=CallingConvention.Cdecl)]
 		static extern void CallSmokeMethod(IntPtr smoke, int methodId, IntPtr target, IntPtr sp, int items);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		static extern int QyotoHash(IntPtr obj);
 
 		// The key is a type name of a class which has overriden one or more
@@ -679,7 +679,7 @@ namespace Qyoto {
 	}
 
 	public class SignalInvocation : RealProxy {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		static extern bool SignalEmit(string signature, string type, IntPtr target, IntPtr sp, int items);
 
 		private Type	signalsInterface;
@@ -751,7 +751,7 @@ namespace Qyoto {
 				}
 			}
 
-			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
+			IMethodReturnMessage returnMessage = new ReturnMessage(null, callMessage); /*(IMethodReturnMessage) message;*/
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage);
 
 #if DEBUG

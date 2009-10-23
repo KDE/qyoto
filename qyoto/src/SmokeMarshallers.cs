@@ -29,233 +29,303 @@ namespace Qyoto {
 		
 #region C++ functions
 		/** Marshalling functions begin **/
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Unicode)]
+		[DllImport("qyotoshared", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr StringToQString(string str);
 
-		[DllImport("libqyoto", CharSet=CharSet.Unicode)]
+		[DllImport("qyotoshared", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.Cdecl)]
 		public static extern string StringFromQString(IntPtr ptr);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr StringArrayToQStringList(int length, string[] strArray);
 		/** Marshalling functions end **/
 		
 		/** Other functions **/
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern int SizeOfLong();
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructPointerList();
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void AddObjectToPointerList(IntPtr ptr, IntPtr obj);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQListInt();
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void AddIntToQList(IntPtr ptr, int i);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQListQRgb();
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void AddUIntToQListQRgb(IntPtr ptr, uint i);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQListWizardButton();
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddWizardButtonToQList(IntPtr ptr, int i);
-		
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQHash(int type);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddIntQVariantToQHash(IntPtr ptr, int i, IntPtr qv);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQStringToQHash(IntPtr ptr, string str1, string str2);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQVariantToQHash(IntPtr ptr, string str, IntPtr qv);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQMap(int type);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddIntQVariantToQMap(IntPtr ptr, int i, IntPtr qv);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQStringToQMap(IntPtr ptr, string str1, string str2);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQVariantToQMap(IntPtr ptr, string str, IntPtr qv);
 		/** Other functions end **/
 		
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallFreeGCHandle(FromIntPtr callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallGetSmokeObject(GetIntPtr callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallSetSmokeObject(SetIntPtr callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallAddGlobalRef(SetIntPtr callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallRemoveGlobalRef(SetIntPtr callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallMapPointer(MapPointerFn callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallUnmapPointer(FromIntPtr callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallGetInstance(GetInstanceFn callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallCreateInstance(CreateInstanceFn callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallInvokeCustomSlot(InvokeCustomSlotFn callback);
 		
-		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallInvokeDelegate(InvokeDelegateFn callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern bool InstallGetProperty(OverridenMethodFn callback);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern bool InstallSetProperty(SetPropertyFn callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrToCharStarStar(GetIntPtr callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrToCharStar(GetStringFromIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrFromCharStar(GetIntPtrFromString callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrToQString(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrFromQString(GetIntPtr callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallStringBuilderToQString(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallOverridenMethod(OverridenMethodFn callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallInvokeMethod(InvokeMethodFn callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallConstructList(CreateListFn callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallStringListToQStringList(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallListToPointerList(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallListIntToQListInt(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallListUIntToQListQRgb(GetIntPtr callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallListWizardButtonToQListWizardButton(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddIntPtrToList(SetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddIntToListInt(AddInt callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallConstructDictionary(ConstructDict callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddObjectObjectToDictionary(InvokeMethodFn callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddIntObjectToDictionary(AddIntObject callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallDictionaryToQHash(DictToHash callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallDictionaryToQMap(DictToMap callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddUIntToListUInt(AddUInt callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallQPairGetFirst(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallQPairGetSecond(GetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallCreateQPair(CreateQPairFn callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallUnboxToStackItem(SetIntPtr callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallBoxFromStackItem(CreateInstanceFn callback);
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallGenericPointerGetIntPtr(GetIntPtr callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+
+        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallCreateGenericPointer(CreateInstanceFn callback);
 
-		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallTryDispose(FromIntPtr callback);
 #endregion
 		
 #region delegates
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr NoArgs();
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr GetIntPtr(IntPtr instance);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void FromIntPtr(IntPtr ptr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void MapPointerFn(IntPtr instance, IntPtr ptr, bool createGlobalReference);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr CreateListFn(string className);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr CreateInstanceFn(string className, IntPtr smokeObjectPtr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr GetInstanceFn(IntPtr ptr, bool allInstances);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack, IntPtr ret);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr GetIntPtrFromString(string str);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate string GetStringFromIntPtr(IntPtr ptr);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void SetIntPtrFromCharStar(IntPtr ptr, string str);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void AddInt(IntPtr obj, int i);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void AddUInt(IntPtr obj, uint i);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void AddIntObject(IntPtr hash, int key, IntPtr val);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr DictToHash(IntPtr ptr, int type);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr DictToMap(IntPtr ptr, int type);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr ConstructDict(string type1, string type2);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void SetPropertyFn(IntPtr obj, string name, IntPtr variant);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate void InvokeDelegateFn(Delegate d, IntPtr stack);
+		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 		public delegate IntPtr CreateQPairFn(IntPtr first, IntPtr second);
 #endregion
 		
+#region delegate fields
+        private static FromIntPtr dFreeGCHandle = FreeGCHandle;
+        private static GetIntPtr dGetSmokeObject = GetSmokeObject;
+        private static SetIntPtr dSetSmokeObject = SetSmokeObject;
+        private static SetIntPtr dAddGlobalRef = AddGlobalRef;
+        private static SetIntPtr dRemoveGlobalRef = RemoveGlobalRef;
+        private static MapPointerFn dMapPointer = MapPointer;
+        private static FromIntPtr dUnmapPointer = UnmapPointer;
+        private static GetInstanceFn dGetInstance = GetInstance;
+        private static GetIntPtr dIntPtrToCharStarStar = IntPtrToCharStarStar;
+        private static GetStringFromIntPtr dIntPtrToString = IntPtrToString;
+        private static GetIntPtrFromString dIntPtrFromString = IntPtrFromString;
+        private static GetIntPtr dIntPtrToQString = IntPtrToQString;
+        private static GetIntPtr dIntPtrFromQString = IntPtrFromQString;
+        private static GetIntPtr dStringBuilderToQString = StringBuilderToQString;
+        private static SetIntPtrFromCharStar dStringBuilderFromQString = StringBuilderFromQString;
+        private static CreateListFn dConstructList = ConstructList;
+        private static GetIntPtr dStringListToQStringList = StringListToQStringList;
+        private static GetIntPtr dListToPointerList = ListToPointerList;
+        private static GetIntPtr dListIntToQListInt = ListIntToQListInt;
+        private static GetIntPtr dListUIntToQListQRgb = ListUIntToQListQRgb;
+        private static GetIntPtr dListWizardButtonToQListWizardButton = ListWizardButtonToQListWizardButton;
+        private static SetIntPtr dAddIntPtrToList = AddIntPtrToList;
+        private static AddInt dAddIntToListInt = AddIntToListInt;
+        private static AddUInt dAddUIntToListUInt = AddUIntToListUInt;
+        private static ConstructDict dConstructDictionary = ConstructDictionary;
+        private static InvokeMethodFn dAddObjectObjectToDictionary = AddObjectObjectToDictionary;
+        private static AddIntObject dAddIntObjectToDictionary = AddIntObjectToDictionary;
+        private static DictToHash dDictionaryToQHash = DictionaryToQHash;
+        private static DictToMap dDictionaryToQMap = DictionaryToQMap;
+        private static OverridenMethodFn dOverridenMethod = SmokeInvocation.OverridenMethod;
+        private static InvokeMethodFn dInvokeMethod = SmokeInvocation.InvokeMethod;
+        private static CreateInstanceFn dCreateInstance = CreateInstance;
+        private static InvokeCustomSlotFn dInvokeCustomSlot = SmokeInvocation.InvokeCustomSlot;
+        private static InvokeDelegateFn dInvokeDelegate = SmokeInvocation.InvokeDelegate;
+        private static OverridenMethodFn dGetProperty = GetProperty;
+        private static SetPropertyFn dSetProperty = SetProperty;
+        private static GetIntPtr dQPairGetFirst = QPairGetFirst;
+        private static GetIntPtr dQPairGetSecond = QPairGetSecond;
+        private static CreateQPairFn dCreateQPair = CreateQPair;
+        private static SetIntPtr dUnboxToStackItem = UnboxToStackItem;
+        private static CreateInstanceFn dBoxFromStackItem = BoxFromStackItem;
+        private static GetIntPtr dGenericPointerGetIntPtr = GenericPointerGetIntPtr;
+        private static CreateInstanceFn dCreateGenericPointer = CreateGenericPointer;
+        private static FromIntPtr dTryDispose = TryDispose;
+#endregion
+
 #region marshalling functions
 
 		public static int SizeOfNativeLong = SizeOfLong();
@@ -1002,62 +1072,63 @@ namespace Qyoto {
 		
 #region Setup
 		public static void SetUp() {
-			InstallFreeGCHandle(FreeGCHandle);
+            
+			InstallFreeGCHandle(dFreeGCHandle);
 
-			InstallGetSmokeObject(GetSmokeObject);
-			InstallSetSmokeObject(SetSmokeObject);
+			InstallGetSmokeObject(dGetSmokeObject);
+			InstallSetSmokeObject(dSetSmokeObject);
 			
-			InstallAddGlobalRef(AddGlobalRef);
-			InstallRemoveGlobalRef(RemoveGlobalRef);
-			InstallMapPointer(MapPointer);
-			InstallUnmapPointer(UnmapPointer);
-			InstallGetInstance(GetInstance);
+			InstallAddGlobalRef(dAddGlobalRef);
+			InstallRemoveGlobalRef(dRemoveGlobalRef);
+			InstallMapPointer(dMapPointer);
+			InstallUnmapPointer(dUnmapPointer);
+			InstallGetInstance(dGetInstance);
 
-			InstallIntPtrToCharStarStar(IntPtrToCharStarStar);
-			InstallIntPtrToCharStar(IntPtrToString);
-			InstallIntPtrFromCharStar(IntPtrFromString);
-			InstallIntPtrToQString(IntPtrToQString);
-			InstallIntPtrFromQString(IntPtrFromQString);
-			InstallStringBuilderToQString(StringBuilderToQString);
-			InstallStringBuilderFromQString(StringBuilderFromQString);
-			InstallConstructList(ConstructList);
-			InstallStringListToQStringList(StringListToQStringList);
-			InstallListToPointerList(ListToPointerList);
-			InstallListIntToQListInt(ListIntToQListInt);
-			InstallListUIntToQListQRgb(ListUIntToQListQRgb);
-			InstallListWizardButtonToQListWizardButton(ListWizardButtonToQListWizardButton);
-			InstallAddIntPtrToList(AddIntPtrToList);
-			InstallAddIntToListInt(AddIntToListInt);
-			InstallAddUIntToListUInt(AddUIntToListUInt);
+			InstallIntPtrToCharStarStar(dIntPtrToCharStarStar);
+			InstallIntPtrToCharStar(dIntPtrToString);
+			InstallIntPtrFromCharStar(dIntPtrFromString);
+			InstallIntPtrToQString(dIntPtrToQString);
+			InstallIntPtrFromQString(dIntPtrFromQString);
+			InstallStringBuilderToQString(dStringBuilderToQString);
+			InstallStringBuilderFromQString(dStringBuilderFromQString);
+			InstallConstructList(dConstructList);
+			InstallStringListToQStringList(dStringListToQStringList);
+			InstallListToPointerList(dListToPointerList);
+			InstallListIntToQListInt(dListIntToQListInt);
+			InstallListUIntToQListQRgb(dListUIntToQListQRgb);
+			InstallListWizardButtonToQListWizardButton(dListWizardButtonToQListWizardButton);
+			InstallAddIntPtrToList(dAddIntPtrToList);
+			InstallAddIntToListInt(dAddIntToListInt);
+			InstallAddUIntToListUInt(dAddUIntToListUInt);
 
-			InstallConstructDictionary(ConstructDictionary);
-			InstallAddObjectObjectToDictionary(AddObjectObjectToDictionary);
-			InstallAddIntObjectToDictionary(AddIntObjectToDictionary);
+			InstallConstructDictionary(dConstructDictionary);
+			InstallAddObjectObjectToDictionary(dAddObjectObjectToDictionary);
+			InstallAddIntObjectToDictionary(dAddIntObjectToDictionary);
 			
-			InstallDictionaryToQHash(DictionaryToQHash);
-			InstallDictionaryToQMap(DictionaryToQMap);
+			InstallDictionaryToQHash(dDictionaryToQHash);
+			InstallDictionaryToQMap(dDictionaryToQMap);
 
-			InstallOverridenMethod(SmokeInvocation.OverridenMethod);
-			InstallInvokeMethod(SmokeInvocation.InvokeMethod);
+			InstallOverridenMethod(dOverridenMethod);
+			InstallInvokeMethod(dInvokeMethod);
 
-			InstallCreateInstance(CreateInstance);
-			InstallInvokeCustomSlot(SmokeInvocation.InvokeCustomSlot);
-			InstallInvokeDelegate(SmokeInvocation.InvokeDelegate);
+			InstallCreateInstance(dCreateInstance);
+			InstallInvokeCustomSlot(dInvokeCustomSlot);
+			InstallInvokeDelegate(dInvokeDelegate);
 			
-			InstallGetProperty(GetProperty);
-			InstallSetProperty(SetProperty);
+			InstallGetProperty(dGetProperty);
+			InstallSetProperty(dSetProperty);
 			
-			InstallQPairGetFirst(QPairGetFirst);
-			InstallQPairGetSecond(QPairGetSecond);
-			InstallCreateQPair(CreateQPair);
+			InstallQPairGetFirst(dQPairGetFirst);
+			InstallQPairGetSecond(dQPairGetSecond);
+			InstallCreateQPair(dCreateQPair);
 			
-			InstallUnboxToStackItem(UnboxToStackItem);
-			InstallBoxFromStackItem(BoxFromStackItem);
+			InstallUnboxToStackItem(dUnboxToStackItem);
+			InstallBoxFromStackItem(dBoxFromStackItem);
 			
-			InstallGenericPointerGetIntPtr(GenericPointerGetIntPtr);
-			InstallCreateGenericPointer(CreateGenericPointer);
+			InstallGenericPointerGetIntPtr(dGenericPointerGetIntPtr);
+			InstallCreateGenericPointer(dCreateGenericPointer);
 			
-			InstallTryDispose(TryDispose);
+			InstallTryDispose(dTryDispose);
 		}
 #endregion
 
