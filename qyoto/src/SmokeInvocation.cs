@@ -174,6 +174,8 @@ namespace Qyoto {
 						args[i] = stackPtr[i+1].s_char;
 					} else if (parameters[i].ParameterType == typeof(byte)) {
 						args[i] = stackPtr[i+1].s_uchar;
+					} else if (parameters[i].ParameterType == typeof(char)) {
+						args[i] = (char) stackPtr[i+1].s_uchar;
 					} else if (parameters[i].ParameterType == typeof(short)) {
 						args[i] = stackPtr[i+1].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
@@ -226,6 +228,8 @@ namespace Qyoto {
 					stackPtr[0].s_char = (sbyte) returnValue;
 				} else if (returnType == typeof(byte)) {
 					stackPtr[0].s_uchar = (byte) returnValue;
+				} else if (returnType == typeof(char)) {
+					stackPtr[0].s_uchar = (byte) (char) returnValue;
 				} else if (returnType == typeof(short)) {
 					stackPtr[0].s_short = (short) returnValue;
 				} else if (returnType == typeof(ushort)) {
@@ -285,6 +289,8 @@ namespace Qyoto {
 						args[i] = stackPtr[i].s_char;
 					} else if (parameters[i].ParameterType == typeof(byte)) {
 						args[i] = stackPtr[i].s_uchar;
+					} else if (parameters[i].ParameterType == typeof(char)) {
+						args[i] = (char) stackPtr[i].s_uchar;
 					} else if (parameters[i].ParameterType == typeof(short)) {
 						args[i] = stackPtr[i].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
@@ -387,6 +393,8 @@ namespace Qyoto {
 						args[i] = stackPtr[i].s_char;
 					} else if (parameters[i].ParameterType == typeof(byte)) {
 						args[i] = stackPtr[i].s_uchar;
+					} else if (parameters[i].ParameterType == typeof(char)) {
+						args[i] = (char) stackPtr[i].s_uchar;
 					} else if (parameters[i].ParameterType == typeof(short)) {
 						args[i] = stackPtr[i].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
@@ -592,6 +600,8 @@ namespace Qyoto {
 					stack[k].s_char = (sbyte) args[i+1];
 				} else if (args[i] == typeof(byte)) {
 					stack[k].s_uchar = (byte) args[i+1];
+				} else if (args[i] == typeof(char)) {
+					stack[k].s_uchar = (byte) (char) args[i+1];
 				} else {
 #if DEBUG
 					stack[k].s_class = (IntPtr) DebugGCHandle.Alloc(args[i+1]);
@@ -719,6 +729,8 @@ namespace Qyoto {
 						stack[i + 1].s_char = (sbyte) callMessage.Args[i];
 					} else if (types[i] == typeof(byte)) {
 						stack[i + 1].s_uchar = (byte) callMessage.Args[i];
+					} else if (types[i] == typeof(char)) {
+						stack[i + 1].s_uchar = (byte) (char) callMessage.Args[i];
 					} else if (types[i] == typeof(short)) {
 						stack[i + 1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
@@ -775,6 +787,8 @@ namespace Qyoto {
 						returnValue.ReturnValue = stack[0].s_char;
 					} else if (returnType == typeof(byte)) {
 						returnValue.ReturnValue = stack[0].s_uchar;
+					} else if (returnType == typeof(char)) {
+						returnValue.ReturnValue = (char) stack[0].s_uchar;
 					} else if (returnType == typeof(short)) {
 						returnValue.ReturnValue = stack[0].s_short;
 					} else if (returnType == typeof(ushort)) {
