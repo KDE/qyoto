@@ -6,7 +6,7 @@ namespace QtWebKit {
 	using System.Runtime.InteropServices;
 
 	public class InitQtWebKit {
-		[DllImport("libqtwebkit-sharp", CharSet=CharSet.Ansi)]
+		[DllImport("qtwebkit-sharp", CharSet=CharSet.Ansi)]
 		static extern void Init_qtwebkit();
 		
 		public static void InitSmoke() {
