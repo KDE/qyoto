@@ -4,3 +4,4 @@ ADD_CUSTOM_COMMAND (OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/qrc_simpletreemodel.cs CO
 SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/main.cs ${CMAKE_CURRENT_SOURCE_DIR}/treemodel.cs ${CMAKE_CURRENT_SOURCE_DIR}/treeitem.cs ${CMAKE_CURRENT_BINARY_DIR}/qrc_simpletreemodel.cs)
 SET(CS_FLAGS -unsafe -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
 ADD_CS_EXECUTABLE (simpletreemodel "${SRC_CS}" ALL)
+ADD_DEPENDENCIES(simpletreemodel qt-dotnet)

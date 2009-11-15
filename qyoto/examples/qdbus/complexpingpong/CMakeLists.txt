@@ -1,7 +1,9 @@
 SET(SRC_CS_PING ${CMAKE_CURRENT_SOURCE_DIR}/complexping.cs)
 SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
 ADD_CS_EXECUTABLE(complexping "${SRC_CS_PING}" ALL)
+ADD_DEPENDENCIES(complexping qt-dotnet)
 
 SET(SRC_CS_PONG ${CMAKE_CURRENT_SOURCE_DIR}/complexpong.cs)
 SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll)
 ADD_CS_EXECUTABLE(complexpong "${SRC_CS_PONG}" ALL)
+ADD_DEPENDENCIES(complexpong qt-dotnet)
