@@ -43,20 +43,31 @@ namespace Qyoto {
 			PostEvent(qApp.receiver, e);
 		}
 
-		public QCoreApplication(string[] argv) : this((Type) null) {
-			CreateProxy();
-			
+		string[] GenerateArgs(string[] argv)
+		{
 			string[] args = new string[argv.Length + 1];
 			Assembly a = System.Reflection.Assembly.GetEntryAssembly();
+
+			if(a == null)
+				a = System.Reflection.Assembly.GetExecutingAssembly();
+
 			object[] attrs = a.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
 			if (attrs.Length > 0) {
 				args[0] = ((AssemblyTitleAttribute) attrs[0]).Title;
-			} else { 
+			} else {
 				QFileInfo info = new QFileInfo(a.Location);
 				args[0] = info.BaseName();
 			}
 			argv.CopyTo(args, 1);
 
+			return args;
+		}
+
+		public QCoreApplication(string[] argv) : this((Type) null) {
+			CreateProxy();
+			
+			string[] args = GenerateArgs(argv);
+			
 			interceptor.Invoke(	"QCoreApplication$?", 
 								"QCoreApplication(int&, char**)", 
 								typeof(void), typeof(int), args.Length, typeof(string[]), args );
