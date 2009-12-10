@@ -5,19 +5,19 @@ namespace Qyoto {
 
 	[SmokeClass("QAbstractItemModel")]
 	internal class QItemModel : QAbstractItemModel {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractItemModelColumnCount(IntPtr obj, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractItemModelRowCount(IntPtr obj, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemModelParent(IntPtr obj, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemModelData(IntPtr obj, IntPtr modelIndex, int role);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemModelIndex(IntPtr obj, int row, int column, IntPtr modelIndex);
 		
 		protected QItemModel(Type dummy) : base((Type) null) {}

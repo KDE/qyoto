@@ -5,19 +5,19 @@ namespace Qyoto {
 
 	[SmokeClass("QAbstractTextDocumentLayout")]
 	internal class QAbstractTextDocumentLayoutInternal : QAbstractTextDocumentLayout {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractTextDocumentLayoutBlockBoundingRect(IntPtr obj, IntPtr block);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractTextDocumentLayoutDocumentSize(IntPtr obj);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractTextDocumentLayoutFrameBoundingRect(IntPtr obj, IntPtr frame);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractTextDocumentLayoutHitTest(IntPtr obj, IntPtr point, int accuracy);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractTextDocumentLayoutPageCount(IntPtr obj);
 		
 		protected QAbstractTextDocumentLayoutInternal(Type dummy) : base((Type) null) {}

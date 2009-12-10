@@ -5,13 +5,13 @@ namespace Qyoto {
 
 	[SmokeClass("QAbstractItemView")]
 	internal class QAbstractItemViewInternal : QAbstractItemView {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemViewIndexAt(IntPtr obj, IntPtr point);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern void QAbstractItemViewScrollTo(IntPtr obj, IntPtr index, int hint);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemViewVisualRect(IntPtr obj, IntPtr index);
 		
 		public QAbstractItemViewInternal(Type dummy) : base((Type) dummy) {}

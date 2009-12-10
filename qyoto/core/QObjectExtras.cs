@@ -14,17 +14,17 @@ namespace Qyoto {
 	public partial class QObject : Qt, IDisposable {
 		private delegate void AddToListFn(IntPtr obj);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		private static extern IntPtr FindQObjectChild(IntPtr parent, string childName);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		private static extern void FindQObjectChildren(IntPtr parent, IntPtr regexp,
 									string childName, AddToListFn addFn);
 		
-		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi)]
 		private static extern bool ConnectDelegate(IntPtr obj, string signal, Delegate d, IntPtr handle);
 		
-		[DllImport("libqyotoshared", CharSet=CharSet.Ansi)]
+		[DllImport("qyotoshared", CharSet=CharSet.Ansi)]
 		private static extern bool DisconnectDelegate(IntPtr obj, string signal, Delegate d);
 		
 		public static bool Connect(QObject obj, string signal, SlotFunc d) {

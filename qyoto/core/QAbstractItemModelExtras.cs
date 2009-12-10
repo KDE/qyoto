@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 
 	public abstract partial class QAbstractItemModel : QObject {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr AbstractItemModelCreateIndex(IntPtr obj, int row, int column, IntPtr ptr);
 		
 		private struct HandleRef {
@@ -38,6 +38,8 @@ namespace Qyoto {
 		
 		static public void DerefIndexHandle(object o) {
 			HandleRef reference;
+			if( o == null)
+				return;
 			if (handleMap.TryGetValue(o, out reference)) {
 				reference.refCount -= 1;
 

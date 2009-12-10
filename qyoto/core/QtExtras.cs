@@ -7,7 +7,7 @@ namespace Qyoto {
 	using System.Reflection;
 
 	public partial class Qt : Object {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		private static extern IntPtr qyoto_qt_metacast(IntPtr obj, string target);
 
 		public static QApplication qApp = null;

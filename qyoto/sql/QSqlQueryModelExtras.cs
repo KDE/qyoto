@@ -5,7 +5,7 @@ namespace Qyoto {
 
 	public partial class QSqlQueryModel : QAbstractTableModel, IDisposable {
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr QAbstractItemModelParent(IntPtr obj, IntPtr ix);
 
 		public override QModelIndex Parent(QModelIndex index) {

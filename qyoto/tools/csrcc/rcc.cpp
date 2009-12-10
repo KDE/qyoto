@@ -475,9 +475,9 @@ RCCResourceLibrary::writeHeader(FILE *out)
         }
 
         fprintf(out, "public class QInitResources%s__dest_class__ {\n\n", initName.toLatin1().constData());
-        fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
+        fprintf(out, "[DllImport(\"qyoto\", CharSet=CharSet.Ansi)]\n");
         fprintf(out, "public static unsafe extern void QyotoRegisterResourceData(int flag, byte * resource_struct, byte * resource_name, byte * resource_data);\n\n");
-        fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
+        fprintf(out, "[DllImport(\"qyoto\", CharSet=CharSet.Ansi)]\n");
         fprintf(out, "public static unsafe extern void QyotoUnregisterResourceData(int flag, byte * resource_struct, byte * resource_name, byte * resource_data);\n\n");
     } else if(mFormat == Binary) {
         fprintf(out,"qres");

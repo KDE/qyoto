@@ -5,10 +5,10 @@ namespace Qyoto {
 
 	[SmokeClass("QAbstractItemDelegate")]
 	internal class QAbstractItemDelegateInternal : QAbstractItemDelegate {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern void QAbstractItemDelegatePaint(IntPtr obj, IntPtr painter, IntPtr option, IntPtr index);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemDelegateSizeHint(IntPtr obj, IntPtr option, IntPtr index);
 		
 		protected QAbstractItemDelegateInternal(Type dummy) : base((Type) null) {}

@@ -5,7 +5,7 @@ namespace Qyoto {
 
 	public partial class QStringListModel : QAbstractListModel, IDisposable {
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr QAbstractItemModelParent(IntPtr obj, IntPtr ix);
 
 		public override QModelIndex Parent(QModelIndex index) {
@@ -15,7 +15,7 @@ namespace Qyoto {
 			return result;
 		}
 
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		public static extern int QAbstractItemModelColumnCount(IntPtr obj, IntPtr ix);
 
 		public override int ColumnCount(QModelIndex index) {

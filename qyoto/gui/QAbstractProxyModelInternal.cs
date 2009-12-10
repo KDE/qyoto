@@ -5,22 +5,22 @@ namespace Qyoto {
 
 	[SmokeClass("QAbstractProxyModel")]
 	internal class QAbstractProxyModelInternal : QAbstractProxyModel {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractItemModelColumnCount(IntPtr obj, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern int QAbstractItemModelRowCount(IntPtr obj, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemModelParent(IntPtr obj, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractItemModelIndex(IntPtr obj, int row, int column, IntPtr modelIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractProxyModelMapToSource(IntPtr obj, IntPtr proxyIndex);
 		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr QAbstractProxyModelMapFromSource(IntPtr obj, IntPtr sourceIndex);
 		
 		protected QAbstractProxyModelInternal(Type dummy) : base((Type) null) {}

@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic; 
 
 	public class QDBusReply<T> {
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		private static extern void qyoto_qdbus_reply_fill(IntPtr msg, IntPtr error, IntPtr variant);
 		
 		public QDBusReply(QDBusMessage reply) {

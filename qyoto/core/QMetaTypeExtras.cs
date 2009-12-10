@@ -27,13 +27,13 @@ namespace Qyoto {
         public delegate void Destructor(IntPtr obj);
         public delegate IntPtr Constructor(IntPtr copy);
 
-        [DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyoto", CharSet=CharSet.Ansi)]
         static extern void DestroyObject(string name, IntPtr ptr);
 
-        [DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyoto", CharSet=CharSet.Ansi)]
         static extern IntPtr CreateObject(string name, IntPtr other);
 
-        [DllImport("libqyoto", CharSet=CharSet.Ansi)]
+        [DllImport("qyoto", CharSet=CharSet.Ansi)]
         static extern int QMetaTypeRegisterType(string name, Destructor dtor, Constructor ctor);
 
         public static int RegisterType<T>() {
