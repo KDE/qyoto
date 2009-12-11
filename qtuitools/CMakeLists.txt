@@ -16,10 +16,9 @@ LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qtuitools-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(qtuitools-sharp smokeqt smokeqtuitools qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(qtuitools "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(qtuitools "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
+SET_PROPERTY(TARGET qtuitools PROPERTY pkg-config_template_basename ${PROJECT_NAME})
 ADD_DEPENDENCIES(qtuitools qt-dotnet qtuitools-sharp smokeqtuitools)
 
 INSTALL(TARGETS qtuitools-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(qtuitools)
-INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )
+INSTALL_ASSEMBLY(qtuitools DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

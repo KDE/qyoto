@@ -31,8 +31,8 @@ TARGET_LINK_LIBRARIES(akonadi-sharp
     ${QT_QTGUI_LIBRARY})
 
 SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(akonadi "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(akonadi "${SRC_CS}" REFERENCES qt-dotnet kde-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(akonadi kde-dotnet akonadi-sharp smokeakonadi)
 
 INSTALL(TARGETS akonadi-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(akonadi)
+INSTALL_ASSEMBLY(akonadi DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

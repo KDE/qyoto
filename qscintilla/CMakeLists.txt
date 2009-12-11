@@ -20,9 +20,8 @@ LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qscintilla-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(qscintilla-sharp smokeqt smokeqsci qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(qscintilla "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(qscintilla "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(qscintilla qt-dotnet qscintilla-sharp smokeqsci)
 
 INSTALL(TARGETS qscintilla-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(qscintilla)
+INSTALL_ASSEMBLY(qscintilla DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

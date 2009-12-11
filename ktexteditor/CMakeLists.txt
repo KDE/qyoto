@@ -21,13 +21,12 @@ ADD_LIBRARY(ktexteditor-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(ktexteditor-sharp smokektexteditor)
 TARGET_LINK_LIBRARIES(ktexteditor-sharp ${QT_QTCORE_LIBRARY} smokeqt smokekde smokektexteditor qyotoshared)
 
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -warn:0 -keyfile:${KEYFILE})
 # cmake doesn't like the assembly to be called 'ktexteditor', but why?
-ADD_CS_LIBRARY(ktexteditor-dotnet "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(ktexteditor-dotnet "${SRC_CS}" REFERENCES qt-dotnet kde-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(ktexteditor-dotnet kde-dotnet)
 ADD_DEPENDENCIES(ktexteditor-sharp smokektexteditor qyotoshared)
 
 INSTALL(TARGETS ktexteditor-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(ktexteditor-dotnet)
+INSTALL_ASSEMBLY(ktexteditor-dotnet DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)
 
 add_subdirectory(examples EXCLUDE_FROM_ALL)

@@ -16,10 +16,9 @@ LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qtwebkit-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(qtwebkit-sharp smokeqt smokeqtwebkit qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-SET(CS_FLAGS -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(qtwebkit "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(qtwebkit "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
+SET_PROPERTY(TARGET qtwebkit PROPERTY pkg-config_template_basename ${PROJECT_NAME})
 ADD_DEPENDENCIES(qtwebkit qt-dotnet qtwebkit-sharp smokeqtwebkit)
 
 INSTALL(TARGETS qtwebkit-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(qtwebkit)
-INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )
+INSTALL_ASSEMBLY(qtwebkit DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

@@ -4,7 +4,6 @@ PROJECT (qyoto)
 IF (NOT QT4_FOUND)
     FIND_PACKAGE (Qt4 REQUIRED)
 ENDIF (NOT QT4_FOUND)
-INCLUDE (CSharpMacros)
 
 # source files
 SET(SRC_QYOTO_SHARED src/emitsignal.cpp
@@ -45,21 +44,20 @@ set_target_properties(qyotoshared PROPERTIES VERSION 1.0.0 SOVERSION 1 COMPILE_D
 ADD_LIBRARY (qyoto MODULE ${SRC_QYOTO})
 TARGET_LINK_LIBRARIES (qyoto qyotoshared smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-SET(CS_FLAGS -debug -define:DEBUG -unsafe -warn:0 -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(qt-dotnet "${SRC_CS_QYOTO}" ALL)
+CSHARP_ADD_LIBRARY(qt-dotnet ${SRC_CS_QYOTO} COMPILE_FLAGS /warn:0 "/keyfile:${KEYFILE}" UNSAFE)
+SET_PROPERTY(TARGET qt-dotnet PROPERTY pkg-config_template_basename "qyoto")
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
 
-GET_CS_LIBRARY_TARGET_DIR()
-FILE(WRITE ${CS_LIBRARY_TARGET_DIR}/qt-dotnet.dll.config "<configuration><dllmap dll=\"libqyotoshared\" target=\"libqyotoshared.so.1\"/></configuration>")
+GET_LIBRARY_OUTPUT_DIR(library_target_dir)
+FILE(WRITE ${library_target_dir}/qt-dotnet.dll.config "<configuration><dllmap dll=\"libqyotoshared\" target=\"libqyotoshared.so.1\"/></configuration>")
 
+install_assembly(qt-dotnet DESTINATION lib PACKAGE qyoto)
 INSTALL(TARGETS qyoto LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(TARGETS qyotoshared LIBRARY DESTINATION ${LIB_INSTALL_DIR})
 INSTALL(FILES src/emitsignal.h src/invokeslot.h src/marshall.h src/methodcall.h src/methodreturnvalue.h
 src/qyoto.h src/qyotosmokebinding.h src/signalreturnvalue.h src/slotreturnvalue.h
 src/smokeqyoto.h src/virtualmethodcall.h src/virtualmethodreturnvalue.h DESTINATION include/qyoto)
-INSTALL_GAC(qt-dotnet)
-INSTALL(FILES ${PROJECT_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )
 
 
 ADD_SUBDIRECTORY(tools)

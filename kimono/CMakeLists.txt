@@ -39,12 +39,11 @@ ELSE (MONO_INCLUDES)
     MESSAGE(STATUS "Mono includes not found. kimonopluginfactory will not be compiled.")
 ENDIF (MONO_INCLUDES)
 
-SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -keyfile:${KEYFILE})
-ADD_CS_LIBRARY(kde-dotnet "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(kde-dotnet "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES (kde-dotnet qt-dotnet kimono)
 
 INSTALL(TARGETS kimono LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(kde-dotnet)
+INSTALL_ASSEMBLY(kde-dotnet DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)
 
 add_subdirectory(tutorials EXCLUDE_FROM_ALL)
 add_subdirectory(examples EXCLUDE_FROM_ALL)

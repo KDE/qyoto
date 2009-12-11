@@ -1,4 +1,3 @@
 SET(SRC_P5 ${CMAKE_CURRENT_SOURCE_DIR}/p5.cs)
-SET(CS_FLAGS -warn:0 -r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/kde-dotnet.dll -r:${LIBRARY_OUTPUT_PATH}/khtml-dll.dll)
-ADD_CS_EXECUTABLE(p5 ${SRC_P5} ALL)
+CSHARP_ADD_EXECUTABLE(p5 ${SRC_P5} REFERENCES qt-dotnet kde-dotnet khtml-dll)
 ADD_DEPENDENCIES(p5 khtml-dll)

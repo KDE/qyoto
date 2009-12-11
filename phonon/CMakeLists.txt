@@ -20,9 +20,8 @@ LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(phonon-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(phonon-sharp smokeqt smokephonon qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBS})
 
-SET(CS_FLAGS /r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll /warn:0 /keyfile:${KEYFILE})
-ADD_CS_LIBRARY(phonon "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(phonon "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(phonon qt-dotnet phonon-sharp smokephonon)
 
 INSTALL(TARGETS phonon-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(phonon)
+INSTALL_ASSEMBLY(phonon DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

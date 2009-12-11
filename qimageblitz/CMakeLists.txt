@@ -21,9 +21,8 @@ ADD_LIBRARY(qimageblitz-sharp MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES(qimageblitz-sharp smokeqt smokeqimageblitz qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY}
     ${QIMAGEBLITZ_LIBRARIES})
 
-SET(CS_FLAGS /r:${LIBRARY_OUTPUT_PATH}/qt-dotnet.dll /warn:0 /keyfile:${KEYFILE})
-ADD_CS_LIBRARY(qimageblitz "${SRC_CS}" ALL)
+CSHARP_ADD_LIBRARY(qimageblitz "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(qimageblitz qt-dotnet qimageblitz-sharp smokeqimageblitz)
 
 INSTALL(TARGETS qimageblitz-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
-INSTALL_GAC(qimageblitz)
+INSTALL_ASSEMBLY(qimageblitz DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)
