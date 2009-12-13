@@ -734,7 +734,7 @@ construct_copy(smokeqyoto_object *o)
     char *ccArg = new char[classNameLen + 8];
     sprintf(ccArg, "const %s&", className);
 
-    Smoke::ModuleIndex classId = { o->smoke, o->classId };
+    Smoke::ModuleIndex classId(o->smoke, o->classId);
     Smoke::ModuleIndex ccMeth = o->smoke->findMethod(classId, ccId);
 
     if(!ccMeth.index) {

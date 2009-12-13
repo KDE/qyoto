@@ -126,7 +126,7 @@ DebugChannel()
 Q_DECL_EXPORT Smoke::ModuleIndex 
 FindMethodId(char * classname, char * mungedname, char * signature) 
 {
-	Smoke::ModuleIndex negativeIndex = { 0, -1 };
+	static Smoke::ModuleIndex negativeIndex(0, -1);
 #ifdef DEBUG
 	printf("FindMethodId(classname: %s mungedname: %s signature: %s)\n", classname, mungedname, signature);
 	fflush(stdout);
@@ -153,7 +153,7 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 		} else if (i > 0) {	// single match
 	    	Smoke::Method &methodRef = meth.smoke->methods[i];
 			if ((methodRef.flags & Smoke::mf_internal) == 0) {
-				Smoke::ModuleIndex ret = { meth.smoke, i };
+				Smoke::ModuleIndex ret(meth.smoke, i);
 				return ret;
 			}
 		} else {		// multiple match
@@ -189,7 +189,7 @@ static QByteArray * currentSignature = 0;
 #endif
 		
 					if (*currentSignature == signature) {
-						Smoke::ModuleIndex ret = { meth.smoke,  meth.smoke->ambiguousMethodList[ambiguousId] };
+						Smoke::ModuleIndex ret(meth.smoke,  meth.smoke->ambiguousMethodList[ambiguousId]);
 						return ret;
 					}
 				}
@@ -310,8 +310,8 @@ qyoto_qt_metacast(void* obj, char* target)
 #endif
 		return instance;
 	}
-	Smoke* s = Smoke::classMap[target];
-	smokeqyoto_object* to = alloc_smokeqyoto_object(false, s, s->idClass(target).index, ret);
+	Smoke::ModuleIndex mi = Smoke::classMap[target];
+	smokeqyoto_object* to = alloc_smokeqyoto_object(false, mi.smoke, mi.index, ret);
 	instance = (*CreateInstance)(qyoto_resolve_classname(to), to);
 	mapPointer(instance, to, to->classId, 0);
 #ifdef DEBUG

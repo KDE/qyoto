@@ -309,9 +309,10 @@ qyoto_resolve_classname(smokeqyoto_object * o)
 		const QMetaObject * meta = qobject->metaObject();
 
 		while (meta != 0) {
-			o->smoke = Smoke::classMap[meta->className()];
+			Smoke::ModuleIndex mi = Smoke::classMap[meta->className()];
+			o->smoke = mi.smoke;
+			o->classId = mi.index;
 			if (o->smoke != 0) {
-				o->classId = o->smoke->idClass(meta->className()).index;
 				if (o->classId != 0) {
 					if (strcmp(o->smoke->classes[o->classId].className, "QAbstractItemModel") == 0)
 						return "Qyoto.QItemModel";
@@ -408,7 +409,7 @@ DisconnectDelegate(void* obj, const char* signal, void* delegate)
 Q_DECL_EXPORT QMetaObject* parent_meta_object(void* obj) {
 	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	Smoke::ModuleIndex nameId = o->smoke->findMethodName(o->smoke->className(o->classId), "metaObject");
-	Smoke::ModuleIndex classId = { o->smoke, o->classId };
+	Smoke::ModuleIndex classId(o->smoke, o->classId);
 	Smoke::ModuleIndex meth = o->smoke->findMethod(classId, nameId);
 	if (meth.index <= 0) {
 		// Should never happen..
@@ -532,7 +533,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	
 	Smoke::ModuleIndex nameId = o->smoke->findMethodName(o->smoke->className(o->classId), "qt_metacall$$?");
-	Smoke::ModuleIndex classId = { o->smoke, o->classId };
+	Smoke::ModuleIndex classId(o->smoke, o->classId);
 	Smoke::ModuleIndex meth = nameId.smoke->findMethod(classId, nameId);
 	if(meth.index > 0) {
 		Smoke::Method &m = meth.smoke->methods[meth.smoke->methodMaps[meth.index].method];

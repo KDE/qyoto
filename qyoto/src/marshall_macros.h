@@ -196,7 +196,7 @@ void marshall_QPair(Marshall *m) {
 			QPair<Item1, Item2> *pair = new QPair<Item1, Item2>();
 			
 			void *first = (*QPairGetFirst)(m->var().s_class);
-			if (Smoke::classMap[Item1STR]) {
+			if (Smoke::classMap[Item1STR].smoke) {
 				smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(first);
 				if (o) pair->first = *(Item1*) o->ptr;
 			} else {
@@ -209,7 +209,7 @@ void marshall_QPair(Marshall *m) {
 			(*FreeGCHandle)(first);
 			
 			void *second = (*QPairGetSecond)(m->var().s_class);
-			if (Smoke::classMap[Item2STR]) {
+			if (Smoke::classMap[Item2STR].smoke) {
 				smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(second);
 				if (o) pair->second = *(Item2*) o->ptr;
 			} else {
@@ -239,7 +239,7 @@ void marshall_QPair(Marshall *m) {
 			}
 
 			void *first, *second;
-			if (Smoke::classMap[Item1STR]) {
+			if (Smoke::classMap[Item1STR].smoke) {
 				Smoke::ModuleIndex mi = m->smoke()->findClass(Item1STR);
 				Item1 *copy = new Item1(qpair->first);
 				smokeqyoto_object *o = alloc_smokeqyoto_object(true, mi.smoke, mi.index, copy);
@@ -250,7 +250,7 @@ void marshall_QPair(Marshall *m) {
 				first = (*BoxFromStackItem)(Item1CliSTR, &item);
 			}
 			
-			if (Smoke::classMap[Item2STR]) {
+			if (Smoke::classMap[Item2STR].smoke) {
 				Smoke::ModuleIndex mi = m->smoke()->findClass(Item2STR);
 				Item2 *copy = new Item2(qpair->second);
 				smokeqyoto_object *o = alloc_smokeqyoto_object(true, mi.smoke, mi.index, copy);

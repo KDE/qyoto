@@ -301,11 +301,10 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 			withParentWidget = true;
 		}
 	} else {
-		Smoke* s = Smoke::classMap[iface];
+		Smoke::ModuleIndex mi = Smoke::classMap[iface];
 		QString ifacestr;
-		if (s) {
-			Smoke::ModuleIndex id = s->idClass(iface);
-			ifacestr = qyoto_modules[id.smoke].binding->className(id.index);
+		if (mi.smoke) {
+			ifacestr = qyoto_modules[mi.smoke].binding->className(mi.index);
 		} else {
 			ifacestr = iface;
 			if (ifacestr.contains("::")) {
