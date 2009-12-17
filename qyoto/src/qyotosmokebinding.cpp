@@ -20,7 +20,7 @@
 #include <cstdlib>
 #include <cstdio>
 
-#include <qt_smoke.h>
+#include <qtgui_smoke.h>
 
 #if QT_VERSION >= 0x40200
 	#include <QVariant>
@@ -101,7 +101,7 @@ Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAb
 	}
 
 #if QT_VERSION >= 0x40200
-	static Smoke::Index qgraphicsitem_class = qt_Smoke->idClass("QGraphicsItem").index;
+	static Smoke::Index qgraphicsitem_class = Smoke::classMap["QGraphicsItem"].index;
 #endif
 
 	smokeqyoto_object *sqo = (smokeqyoto_object*) (*GetSmokeObject)(obj);
@@ -116,7 +116,7 @@ Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAb
 		return true;
 #if QT_VERSION >= 0x40200
 	} else if (strcmp(signature, "itemChange(QGraphicsItem::GraphicsItemChange, const QVariant&)") == 0
-	           && smoke->isDerivedFrom(smoke, sqo->classId, qt_Smoke, qgraphicsitem_class)) {
+	           && smoke->isDerivedFrom(smoke, sqo->classId, qtgui_Smoke, qgraphicsitem_class)) {
 		int change = args[1].s_int;
 		if (change == QGraphicsItem::ItemSceneChange) {
 			QGraphicsScene *scene = ((QVariant*) args[2].s_voidp)->value<QGraphicsScene*>();

@@ -2,7 +2,7 @@
 #include <QtGui>
 
 #include <smoke/smoke.h>
-#include <smoke/qt_smoke.h>
+#include <smoke/qtcore_smoke.h>
 
 #include "smokeqyoto.h"
 #include "qyoto.h"
@@ -483,36 +483,36 @@ static QRegExp * rx = 0;
 				}
 			} else if (staticType == "bool") {
 				arg->argType = xmoc_bool;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "int") {
 				arg->argType = xmoc_int;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "uint") {
 				arg->argType = xmoc_uint;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "long") {
 				arg->argType = xmoc_long;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "ulong") {
 				arg->argType = xmoc_ulong;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "double") {
 				arg->argType = xmoc_double;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "char*") {
 				arg->argType = xmoc_charstar;
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			} else if (staticType == "QString") {
 				arg->argType = xmoc_QString;
 				name += "*";
-				smoke = qt_Smoke;
+				smoke = qtcore_Smoke;
 				typeId = smoke->idType(name.constData());
 			}
 
@@ -588,8 +588,8 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 		((void**)_o)[0] = sqo->ptr;
 	} else if (_c == QMetaObject::WriteProperty) {
 		QMetaProperty property = metaobject->property(_id);
-		smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qt_Smoke,
-		                                                 qt_Smoke->idClass("QVariant").index,
+		smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qtcore_Smoke,
+		                                                 qtcore_Smoke->idClass("QVariant").index,
 		                                                 ((void**)_o)[0]);
 		void* variant = (*CreateInstance)("Qyoto.QVariant", sqo);
 		(*SetProperty)(obj, property.name(), variant);

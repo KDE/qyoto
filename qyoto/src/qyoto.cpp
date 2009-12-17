@@ -64,10 +64,14 @@
 #define QYOTO_VERSION "0.0.1"
 // #define DEBUG
 
-#include <qt_smoke.h>
-
-// Maps from a classname in the form Qt::Widget to an int id
-QHash<int,char *> classname;
+#include <qtcore_smoke.h>
+#include <qtgui_smoke.h>
+#include <qtxml_smoke.h>
+#include <qtsql_smoke.h>
+#include <qtopengl_smoke.h>
+#include <qtnetwork_smoke.h>
+#include <qtsvg_smoke.h>
+#include <qtdbus_smoke.h>
 
 extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
@@ -132,12 +136,12 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 	fflush(stdout);
 #endif
 
-	Smoke::ModuleIndex meth = qt_Smoke->findMethod(classname, mungedname);
+	Smoke::ModuleIndex meth = qtcore_Smoke->findMethod(classname, mungedname);
 #ifdef DEBUG
 	if (do_debug & qtdb_calls) printf("DAMNIT on %s::%s => %d\n", classname, mungedname, meth.index);
 #endif
 	if (meth.index == 0) {
-    	meth = qt_Smoke->findMethod("QGlobalSpace", mungedname);
+    	meth = qtcore_Smoke->findMethod("QGlobalSpace", mungedname);
 #ifdef DEBUG
 		if (do_debug & qtdb_calls) printf("DAMNIT on QGlobalSpace::%s => %d\n", mungedname, meth.index);
 #endif
@@ -377,7 +381,7 @@ QVariantFromValue(int type, void * value)
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(value);
 	if (o) (*FreeGCHandle)(value);
 	QVariant * v = new QVariant(type, o? o->ptr : value);
-	Smoke::ModuleIndex id = qt_Smoke->findClass("QVariant");
+	Smoke::ModuleIndex id = qtcore_Smoke->findClass("QVariant");
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, id.smoke, id.index, (void *) v);
 	return (*CreateInstance)("Qyoto.QVariant", vo);
 }
@@ -996,36 +1000,52 @@ qyoto_make_metaObject(void* obj, void* parentMeta, const char* stringdata, int s
 	
 	// create smoke object
 	smokeqyoto_object  * m = alloc_smokeqyoto_object(	true, 
-														qt_Smoke, 
-														qt_Smoke->idClass("QMetaObject").index, 
+														qtcore_Smoke,
+														qtcore_Smoke->idClass("QMetaObject").index,
 														meta );
 	
 	// create wrapper C# instance
 	return (*CreateInstance)("Qyoto.QMetaObject", m);
 }
 
-static Qyoto::Binding binding;
+#define INIT_BINDING(module) \
+    static QHash<int,char *> module##_classname; \
+    for (int i = 1; i <= module##_Smoke->numClasses; i++) { \
+        QByteArray name(module##_Smoke->classes[i].className); \
+        name.replace("::", "."); \
+        if (name != "QAccessible2" && name != "QDBus" && name != "QGL" && name != "QSql" && name != "QSsl") { \
+            name = prefix + name; \
+        } \
+        module##_classname.insert(i, strdup(name.constData())); \
+    } \
+    static Qyoto::Binding module##_binding = Qyoto::Binding(module##_Smoke, &module##_classname); \
+    QyotoModule module = { "Qyoto_" #module, qyoto_resolve_classname_qt, IsContainedInstanceQt, &module##_binding }; \
+    qyoto_modules[module##_Smoke] = module;
+
 
 Q_DECL_EXPORT void
 Init_qyoto()
 {
-    init_qt_Smoke();
+    init_qtcore_Smoke();
+    init_qtgui_Smoke();
+    init_qtxml_Smoke();
+    init_qtsql_Smoke();
+    init_qtopengl_Smoke();
+    init_qtnetwork_Smoke();
+    init_qtsvg_Smoke();
+    init_qtdbus_Smoke();
+
     qyoto_install_handlers(Qyoto_handlers);
     QByteArray prefix("Qyoto.");
 
-    for (int i = 1; i <= qt_Smoke->numClasses; i++) {
-		QByteArray name(qt_Smoke->classes[i].className);
-		name.replace("::", ".");
-		if (name != "QAccessible2" && name != "QDBus" && name != "QGL" && name != "QSql" && name != "QSsl") {
-			name = prefix + name;
-		}
-
-		classname.insert(i, strdup(name.constData()));
-    }
-
-    binding = Qyoto::Binding(qt_Smoke, &classname);
-	QyotoModule module = { "Qyoto", qyoto_resolve_classname_qt, IsContainedInstanceQt, &binding };
-    qyoto_modules[qt_Smoke] = module;
+    INIT_BINDING(qtcore)
+    INIT_BINDING(qtgui)
+    INIT_BINDING(qtxml)
+    INIT_BINDING(qtsql)
+    INIT_BINDING(qtopengl)
+    INIT_BINDING(qtnetwork)
+    INIT_BINDING(qtsvg)
+    INIT_BINDING(qtdbus)
 
 #if QT_VERSION >= 0x40300
     QInternal::registerCallback(QInternal::EventNotifyCallback, qyoto_event_notify);
