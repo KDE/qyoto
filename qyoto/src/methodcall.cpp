@@ -27,7 +27,7 @@ MethodCall::MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::
 		if (_o != 0 && _o->ptr != 0) {
 			if (	isDestructor() 
 					&& (!_o->allocated || IsContainedInstance(_o)
-					    || smoke->isDerivedFromByName(smoke->className(_o->classId), "QCoreApplication")) )
+					    || _o->smoke->isDerivedFromByName(_o->smoke->className(_o->classId), "QCoreApplication")) )
 			{
 				_called = true;
 			}
