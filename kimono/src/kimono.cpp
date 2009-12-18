@@ -26,15 +26,20 @@
 
 #include <smoke.h>
 #include <smoke/qtcore_smoke.h>
-#include <smoke/kde_smoke.h>
+#include <smoke/kdecore_smoke.h>
+#include <smoke/kdeui_smoke.h>
+#include <smoke/kparts_smoke.h>
+#include <smoke/kio_smoke.h>
+#include <smoke/knewstuff2_smoke.h>
+#include <smoke/knewstuff3_smoke.h>
+#include <smoke/kfile_smoke.h>
+#include <smoke/kutils_smoke.h>
 
 #include <QMimeData>
 #include <QStringList>
 
 #include <KPluginFactory>
 #include <KUrl>
-
-QHash<int, char*> classNames;
 
 const char *
 resolve_classname_KDE(smokeqyoto_object * o)
@@ -111,9 +116,9 @@ KUrlListFromMimeData(FromIntPtr addfn, void* mimeData, GetNextDictionaryEntryFn 
 		(*FreeGCHandle)(key);
 		(*FreeGCHandle)(value);
 	}
-	Smoke::Index id = kde_Smoke->idClass("KUrl").index;
+	Smoke::Index id = kdecore_Smoke->idClass("KUrl").index;
 	foreach(KUrl url, KUrl::List::fromMimeData(md, (map.size() > 0)? &map : 0)) {
-		smokeqyoto_object *o = alloc_smokeqyoto_object(true, kde_Smoke, id, new KUrl(url));
+		smokeqyoto_object *o = alloc_smokeqyoto_object(true, kdecore_Smoke, id, new KUrl(url));
 		(*addfn)((*CreateInstance)("Kimono.KUrl", o));
 	}
 }
@@ -163,34 +168,47 @@ KPluginFactory_Create(void *self, const char *classname, void *parentWidget, voi
 	return (*CreateInstance)(name, obj);
 }
 
-extern Q_DECL_EXPORT void Init_kimono();
+#define INIT_BINDING(module) \
+    static QHash<int,char *> module##_classname; \
+    for (int i = 1; i <= module##_Smoke->numClasses; i++) { \
+        QByteArray name(module##_Smoke->classes[i].className); \
+        name.replace("::", "."); \
+        if (    !name.startsWith("KParts") \
+                && !name.startsWith("Sonnet") \
+                && !name.startsWith("KIO") \
+                && !name.startsWith("KWallet") \
+                && !name.startsWith("KNS") ) \
+        { \
+            name = prefix + name; \
+        } \
+        module##_classname.insert(i, strdup(name.constData())); \
+    } \
+    static Qyoto::Binding module##_binding = Qyoto::Binding(module##_Smoke, &module##_classname); \
+    QyotoModule module = { "Kimono_" #module, resolve_classname_KDE, IsContainedInstanceKDE, &module##_binding }; \
+    qyoto_modules[module##_Smoke] = module;
 
-static Qyoto::Binding binding;
-
-void
+Q_DECL_EXPORT void
 Init_kimono()
 {
-	init_kde_Smoke();
+	init_kdecore_Smoke();
+	init_kdeui_Smoke();
+	init_kparts_Smoke();
+	init_kio_Smoke();
+	init_knewstuff2_Smoke();
+	init_knewstuff3_Smoke();
+	init_kfile_Smoke();
+	init_kutils_Smoke();
+	
 	QByteArray prefix("Kimono.");
 	
-	for (int i = 1; i <= kde_Smoke->numClasses; i++) {
-		QByteArray name(kde_Smoke->classes[i].className);
-		name.replace("::", ".");
-		if (	!name.startsWith("KParts") 
-				&& !name.startsWith("Sonnet")
-				&& !name.startsWith("KIO")
-				&& !name.startsWith("KWallet")
-				&& !name.startsWith("KNS") ) 
-		{
-			name = prefix + name;
-		}
-
-		classNames.insert(i, strdup(name.constData()));
-	}
-	
-	binding = Qyoto::Binding(kde_Smoke, &classNames);
-	QyotoModule module = { "Kimono", resolve_classname_KDE, IsContainedInstanceKDE, &binding };
-	qyoto_modules[kde_Smoke] = module;
+    INIT_BINDING(kdecore)
+    INIT_BINDING(kdeui)
+    INIT_BINDING(kparts)
+    INIT_BINDING(kio)
+    INIT_BINDING(knewstuff2)
+    INIT_BINDING(knewstuff3)
+    INIT_BINDING(kfile)
+    INIT_BINDING(kutils)
 
     qyoto_install_handlers(KDE_handlers);
 }
