@@ -18,7 +18,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES} ${PHONON_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(phonon-sharp MODULE ${SRC_CPP})
-TARGET_LINK_LIBRARIES(phonon-sharp smokeqt smokephonon qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBS})
+TARGET_LINK_LIBRARIES(phonon-sharp smokephonon qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBS})
 
 CSHARP_ADD_LIBRARY(phonon "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(phonon qt-dotnet phonon-sharp smokephonon)

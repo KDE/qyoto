@@ -14,7 +14,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qtuitools-sharp MODULE ${SRC_CPP})
-TARGET_LINK_LIBRARIES(qtuitools-sharp smokeqt smokeqtuitools qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+TARGET_LINK_LIBRARIES(qtuitools-sharp smokeqtuitools qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 CSHARP_ADD_LIBRARY(qtuitools "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 SET_PROPERTY(TARGET qtuitools PROPERTY pkg-config_template_basename ${PROJECT_NAME})

@@ -25,7 +25,6 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/qt_smoke.h>
 #include <smoke/plasma_smoke.h>
 
 static QHash<int, char*> plasmaClassNames;

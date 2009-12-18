@@ -25,7 +25,7 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/qt_smoke.h>
+#include <smoke/qtcore_smoke.h>
 #include <smoke/kde_smoke.h>
 
 #include <QMimeData>
@@ -158,7 +158,7 @@ KPluginFactory_Create(void *self, const char *classname, void *parentWidget, voi
 	}
 	
 	QObject *ret = factory->call_create(classname, pw, p, list, keyword);
-	smokeqyoto_object *obj = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QObject").index, ret);
+	smokeqyoto_object *obj = alloc_smokeqyoto_object(false, qtcore_Smoke, qtcore_Smoke->idClass("QObject").index, ret);
 	const char *name = qyoto_resolve_classname(obj);
 	return (*CreateInstance)(name, obj);
 }

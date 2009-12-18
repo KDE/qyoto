@@ -34,7 +34,8 @@
 #include <qyoto.h>
 
 #include <smoke.h>
-#include <smoke/qt_smoke.h>
+#include <smoke/qtcore_smoke.h>
+#include <smoke/qtgui_smoke.h>
 
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
@@ -351,19 +352,19 @@ KimonoPluginFactory::create(const char *iface, QWidget *parentWidget,
 	void* pwobj = 0;
 	if (parentWidget && withParentWidget) {
 		// wrap the parent widget
-		smokeqyoto_object* pwo = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QWidget").index, parentWidget);
+		smokeqyoto_object* pwo = alloc_smokeqyoto_object(false, qtgui_Smoke, qtgui_Smoke->idClass("QWidget").index, parentWidget);
 		pwobj = (*CreateInstance)("Qyoto.QWidget", pwo);
 	}
 	
 	// wrap the parent QObject
-	smokeqyoto_object* po = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QObject").index, parent);
+	smokeqyoto_object* po = alloc_smokeqyoto_object(false, qtcore_Smoke, qtcore_Smoke->idClass("QObject").index, parent);
 	void* pobj = (*CreateInstance)("Qyoto.QObject", po);
 	
 	// wrap the args in a List<QVariant> 
 	void* list = (*ConstructList)("Qyoto.QVariant");
 	foreach(QVariant v, args) {
-		smokeqyoto_object* vo = alloc_smokeqyoto_object(true, qt_Smoke,
-			qt_Smoke->idClass("QVariant").index, new QVariant(v));
+		smokeqyoto_object* vo = alloc_smokeqyoto_object(true, qtcore_Smoke,
+			qtcore_Smoke->idClass("QVariant").index, new QVariant(v));
 		void* vobj = (*CreateInstance)("Qyoto.QVariant", vo);
 		(*AddIntPtrToList)(list, vobj);
 		(*FreeGCHandle)(vobj);
@@ -466,13 +467,13 @@ int kdemain(int argc, char** argv)
 
 	factory.initQyotoRuntime();
 
-	smokeqyoto_object* sqo_p = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QByteArray").index, &protocol);
+	smokeqyoto_object* sqo_p = alloc_smokeqyoto_object(false, qtcore_Smoke, qtcore_Smoke->idClass("QByteArray").index, &protocol);
 	void* p = (*CreateInstance)("Qyoto.QByteArray", sqo_p);
 	
-	smokeqyoto_object* sqo_ps = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QByteArray").index, &pool_sock);
+	smokeqyoto_object* sqo_ps = alloc_smokeqyoto_object(false, qtcore_Smoke, qtcore_Smoke->idClass("QByteArray").index, &pool_sock);
 	void* ps = (*CreateInstance)("Qyoto.QByteArray", sqo_ps);
 	
-	smokeqyoto_object* sqo_as = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QByteArray").index, &app_sock);
+	smokeqyoto_object* sqo_as = alloc_smokeqyoto_object(false, qtcore_Smoke, qtcore_Smoke->idClass("QByteArray").index, &app_sock);
 	void* as = (*CreateInstance)("Qyoto.QByteArray", sqo_as);
 	
 	void* a[3];

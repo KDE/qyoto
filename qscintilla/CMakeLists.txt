@@ -18,7 +18,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qscintilla-sharp MODULE ${SRC_CPP})
-TARGET_LINK_LIBRARIES(qscintilla-sharp smokeqt smokeqsci qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+TARGET_LINK_LIBRARIES(qscintilla-sharp smokeqsci qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 CSHARP_ADD_LIBRARY(qscintilla "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(qscintilla qt-dotnet qscintilla-sharp smokeqsci)

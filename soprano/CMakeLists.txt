@@ -21,7 +21,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(soprano-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(soprano-sharp smokesoprano)
-TARGET_LINK_LIBRARIES(soprano-sharp smokeqt smokesoprano qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+TARGET_LINK_LIBRARIES(soprano-sharp smokesoprano qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 CSHARP_ADD_LIBRARY(soprano "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(soprano qt-dotnet soprano-sharp)

@@ -19,7 +19,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(ktexteditor-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(ktexteditor-sharp smokektexteditor)
-TARGET_LINK_LIBRARIES(ktexteditor-sharp ${QT_QTCORE_LIBRARY} smokeqt smokekde smokektexteditor qyotoshared)
+TARGET_LINK_LIBRARIES(ktexteditor-sharp ${QT_QTCORE_LIBRARY} smokektexteditor qyotoshared)
 
 # cmake doesn't like the assembly to be called 'ktexteditor', but why?
 CSHARP_ADD_LIBRARY(ktexteditor-dotnet "${SRC_CS}" REFERENCES qt-dotnet kde-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})

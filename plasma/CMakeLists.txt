@@ -24,7 +24,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(plasma-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(plasma-sharp smokeplasma kde-dotnet)
-TARGET_LINK_LIBRARIES(plasma-sharp smokeqt smokekde smokeplasma qyotoshared ${KDE4_PLASMA_LIBS})
+TARGET_LINK_LIBRARIES(plasma-sharp smokeplasma qyotoshared ${KDE4_PLASMA_LIBS})
 
 CSHARP_ADD_LIBRARY(plasma-dll "${SRC_CS}" REFERENCES qt-dotnet kde-dotnet qtwebkit COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(plasma-dll qtwebkit kde-dotnet)

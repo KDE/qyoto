@@ -19,7 +19,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(khtml-sharp MODULE ${SRC_CPP})
 ADD_DEPENDENCIES(khtml-sharp smokekhtml)
-TARGET_LINK_LIBRARIES(khtml-sharp smokeqt smokekde smokekhtml qyotoshared ${KHTML_LIBS})
+TARGET_LINK_LIBRARIES(khtml-sharp smokekhtml qyotoshared ${KHTML_LIBS})
 
 CSHARP_ADD_LIBRARY(khtml-dll ${SRC_CS} REFERENCES qt-dotnet kde-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(khtml-dll khtml-sharp kde-dotnet)

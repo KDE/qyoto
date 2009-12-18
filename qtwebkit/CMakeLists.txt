@@ -14,7 +14,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qtwebkit-sharp MODULE ${SRC_CPP})
-TARGET_LINK_LIBRARIES(qtwebkit-sharp smokeqt smokeqtwebkit qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+TARGET_LINK_LIBRARIES(qtwebkit-sharp smokeqtwebkit qyotoshared ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 CSHARP_ADD_LIBRARY(qtwebkit "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 SET_PROPERTY(TARGET qtwebkit PROPERTY pkg-config_template_basename ${PROJECT_NAME})

@@ -21,7 +21,6 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/qt_smoke.h>
 #include <smoke/akonadi_smoke.h>
 
 QHash<int, char*> classNames;
