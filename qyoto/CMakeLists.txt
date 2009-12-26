@@ -39,13 +39,13 @@ LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 
 ADD_LIBRARY (qyotoshared SHARED ${SRC_QYOTO_SHARED})
 TARGET_LINK_LIBRARIES (qyotoshared smokeqtcore smokeqtgui smokeqtxml smokeqtopengl smokeqtsql smokeqtnetwork smokeqtnetwork smokeqtdbus smokeqtsvg
-                       ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY})
+                       ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTDBUS_LIBRARY})
 set_target_properties(qyotoshared PROPERTIES VERSION 1.0.0 SOVERSION 1 COMPILE_DEFINITIONS QYOTOSHARED_BUILDING)
 
 ADD_LIBRARY (qyoto MODULE ${SRC_QYOTO})
 TARGET_LINK_LIBRARIES (qyoto qyotoshared
                        smokeqtcore smokeqtgui smokeqtxml smokeqtopengl smokeqtsql smokeqtnetwork smokeqtnetwork smokeqtdbus smokeqtsvg
-                       ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY})
+                       ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTDBUS_LIBRARY})
 
 CSHARP_ADD_LIBRARY(qt-dotnet ${SRC_CS_QYOTO} COMPILE_FLAGS /warn:0 "/keyfile:${KEYFILE}" UNSAFE)
 SET_PROPERTY(TARGET qt-dotnet PROPERTY pkg-config_template_basename "qyoto")
