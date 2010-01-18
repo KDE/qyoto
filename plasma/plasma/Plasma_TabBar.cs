@@ -117,11 +117,25 @@ namespace Plasma {
             return (int) interceptor.Invoke("addTab$", "addTab(const QString&)", typeof(int), typeof(string), label);
         }
         /// <remarks>
-        ///  Removes a tab
+        ///  Removes a tab, contents are deleted
         ///  @arg index the index of the tab to remove
-        ///      </remarks>        <short>    Removes a tab </short>
+        ///      </remarks>        <short>    Removes a tab, contents are deleted </short>
         public void RemoveTab(int index) {
             interceptor.Invoke("removeTab$", "removeTab(int)", typeof(void), typeof(int), index);
+        }
+        /// <remarks>
+        ///  Removes a tab, the page is reparented to 0 and is returned
+        ///  @arg index the index of the tab to remove
+        /// </remarks>        <short>    Removes a tab, the page is reparented to 0 and is returned </short>
+        public IQGraphicsLayoutItem TakeTab(int index) {
+            return (IQGraphicsLayoutItem) interceptor.Invoke("takeTab$", "takeTab(int)", typeof(IQGraphicsLayoutItem), typeof(int), index);
+        }
+        /// <remarks>
+        ///  Returns the contents of a page
+        ///  @arg index the index of the tab to retrieve
+        /// </remarks>        <short>    Returns the contents of a page </short>
+        public IQGraphicsLayoutItem TabAt(int index) {
+            return (IQGraphicsLayoutItem) interceptor.Invoke("tabAt$", "tabAt(int)", typeof(IQGraphicsLayoutItem), typeof(int), index);
         }
         /// <remarks>
         ///  Sets the text label of the given tab
@@ -170,6 +184,10 @@ namespace Plasma {
         [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
         }
         ~TabBar() {
             interceptor.Invoke("~TabBar", "~TabBar()", typeof(void));

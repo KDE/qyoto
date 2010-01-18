@@ -18,7 +18,8 @@ namespace Plasma {
         ImmutableConstraint = 16,
         StartupCompletedConstraint = 32,
         ContextConstraint = 64,
-        AllConstraints = FormFactorConstraint|LocationConstraint|ScreenConstraint|SizeConstraint|ImmutableConstraint|ContextConstraint,
+        PopupConstraint = 128,
+        AllConstraints = FormFactorConstraint|LocationConstraint|ScreenConstraint|SizeConstraint|ImmutableConstraint|ContextConstraint|PopupConstraint,
     }
     /// <remarks>
     ///  The FormFactor enumeration describes how a Plasma.Applet should arrange
@@ -146,6 +147,7 @@ namespace Plasma {
         RunnerComponent = 4,
         AnimatorComponent = 8,
         ContainmentComponent = 16,
+        WallpaperComponent = 32,
     }
     public enum MarginEdge {
         TopMargin = 0,
@@ -161,19 +163,81 @@ namespace Plasma {
         ButtonCancel = 8,
     }
     /// <remarks>
-    ///  @class IconWidget plasma/widgets/iconwidget.h <Plasma/Widgets/IconWidget>
-    ///  An icon, in this sense, is not restricted to just an image, but can also
-    ///  contain text. Currently, the IconWidget class is primarily used for desktop items,
-    ///  but is designed to be used anywhere an icon is needed in an applet.
-    /// </remarks>        <author> Matt Broadstone <mbroadst@gmail.com>
-    ///  </author>
-    ///         <short> Provides a generic icon. </short>
+    ///  Status of an applet
+    /// </remarks>        <short>    Status of an applet </short>
+    public enum ItemStatus {
+        UnknownStatus = 0,
+        PassiveStatus = 1,
+        ActiveStatus = 2,
+        NeedsAttentionStatus = 3,
+        AcceptingInputStatus = 4,
+    }
+    public enum AnnouncementMethod {
+        NoAnnouncement = 0,
+        ZeroconfAnnouncement = 1,
+    }
+    public enum TrustLevel {
+        InvalidCredentials = 0,
+        UnknownCredentials = 1,
+        ValidCredentials = 2,
+        TrustedCredentials = 3,
+        UltimateCredentials = 4,
+    }
+    /// <remarks>
+    ///  @file This file contains the abstract base class for all singular
+    ///  animations.
+    ///  </remarks>        <short>    @file This file contains the abstract base class for all singular  animations.</short>
     [SmokeClass("Plasma")]
     public class Global {
         private static SmokeInvocation staticInterceptor = null;
         static Global() {
             staticInterceptor = new SmokeInvocation(typeof(Global), null);
         }
+        /// <remarks>
+        ///  The runtime version of libplasma
+        ///  </remarks>        <short>    The runtime version of libplasma  </short>
+        public static uint Version() {
+            return (uint) staticInterceptor.Invoke("version", "version()", typeof(uint));
+        }
+        /// <remarks>
+        ///  The runtime major version of libplasma
+        ///  </remarks>        <short>    The runtime major version of libplasma  </short>
+        public static uint VersionMajor() {
+            return (uint) staticInterceptor.Invoke("versionMajor", "versionMajor()", typeof(uint));
+        }
+        /// <remarks>
+        ///  The runtime major version of libplasma
+        ///  </remarks>        <short>    The runtime major version of libplasma  </short>
+        public static uint VersionMinor() {
+            return (uint) staticInterceptor.Invoke("versionMinor", "versionMinor()", typeof(uint));
+        }
+        /// <remarks>
+        ///  The runtime major version of libplasma
+        ///  </remarks>        <short>    The runtime major version of libplasma  </short>
+        public static uint VersionRelease() {
+            return (uint) staticInterceptor.Invoke("versionRelease", "versionRelease()", typeof(uint));
+        }
+        /// <remarks>
+        ///  The runtime version string of libplasma
+        ///  </remarks>        <short>    The runtime version string of libplasma  </short>
+        public static string VersionString() {
+            return (string) staticInterceptor.Invoke("versionString", "versionString()", typeof(string));
+        }
+        /// <remarks>
+        ///  Verifies that a plugin is compatible with plasma
+        ///  </remarks>        <short>    Verifies that a plugin is compatible with plasma  </short>
+        public static bool IsPluginVersionCompatible(uint version) {
+            return (bool) staticInterceptor.Invoke("isPluginVersionCompatible$", "isPluginVersionCompatible(unsigned int)", typeof(bool), typeof(uint), version);
+        }
+        /// <remarks>
+        ///  Streaming operators for sending/storing identities.
+        ///  </remarks>        <short>    Streaming operators for sending/storing identities.</short>
+        // public static QDataStream Write(QDataStream arg1, Plasma.Credentials arg2) {
+        //     return (QDataStream) staticInterceptor.Invoke("operator<<##", "operator<<(QDataStream&, const Plasma::Credentials&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(Plasma.Credentials), arg2);
+        // }
+        // public static QDataStream Read(QDataStream arg1, Plasma.Credentials arg2) {
+        //    return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, Plasma::Credentials&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(Plasma.Credentials), arg2);
+        // }
         /// <remarks>
         /// </remarks>        <return> the scaling factor (0..1) for a ZoomLevel
         /// </return>
@@ -209,6 +273,23 @@ namespace Plasma {
         ///         <short>    Returns the most appropriate QGraphicsView for the item.</short>
         public static QGraphicsView ViewFor(IQGraphicsItem item) {
             return (QGraphicsView) staticInterceptor.Invoke("viewFor#", "viewFor(const QGraphicsItem*)", typeof(QGraphicsView), typeof(IQGraphicsItem), item);
+        }
+        /// <remarks>
+        ///  Returns a list of all actions in the given QMenu
+        ///  This method flattens the hierarchy of the menu by prefixing the
+        ///  text of all actions in a submenu with the submenu title.
+        /// <param> name="menu" the QMenu storing the actions
+        /// </param><param> name="prefix" text to display before the text of all actions in the menu
+        /// </param><param> name="parent" QObject to be passed as parent of all the actions in the list
+        /// </param></remarks>        <short>    Returns a list of all actions in the given QMenu  This method flattens the hierarchy of the menu by prefixing the  text of all actions in a submenu with the submenu title.</short>
+        public static List<QAction> ActionsFromMenu(QMenu menu, string prefix, QObject parent) {
+            return (List<QAction>) staticInterceptor.Invoke("actionsFromMenu#$#", "actionsFromMenu(QMenu*, const QString&, QObject*)", typeof(List<QAction>), typeof(QMenu), menu, typeof(string), prefix, typeof(QObject), parent);
+        }
+        public static List<QAction> ActionsFromMenu(QMenu menu, string prefix) {
+            return (List<QAction>) staticInterceptor.Invoke("actionsFromMenu#$", "actionsFromMenu(QMenu*, const QString&)", typeof(List<QAction>), typeof(QMenu), menu, typeof(string), prefix);
+        }
+        public static List<QAction> ActionsFromMenu(QMenu menu) {
+            return (List<QAction>) staticInterceptor.Invoke("actionsFromMenu#", "actionsFromMenu(QMenu*)", typeof(List<QAction>), typeof(QMenu), menu);
         }
         /// <remarks>
         ///  @arg types a set of ComponentTypes flags for which to look up the
@@ -251,6 +332,17 @@ namespace Plasma {
         ///         <short>    Loads an Applet script engine for the given language.</short>
         public static Plasma.RunnerScript LoadScriptEngine(string language, Plasma.AbstractRunner runner) {
             return (Plasma.RunnerScript) staticInterceptor.Invoke("loadScriptEngine$#", "loadScriptEngine(const QString&, Plasma::AbstractRunner*)", typeof(Plasma.RunnerScript), typeof(string), language, typeof(Plasma.AbstractRunner), runner);
+        }
+        /// <remarks>
+        ///  Loads an Wallpaper script engine for the given language.
+        /// <param> name="language" the language to load for
+        /// </param><param> name="runner" the Plasma.Wallpaper for this script
+        /// </param></remarks>        <return> pointer to the RunnerScript or 0 on failure; the caller is responsible
+        ///          for the return object which will be parented to the Wallpaper
+        /// </return>
+        ///         <short>    Loads an Wallpaper script engine for the given language.</short>
+        public static Plasma.WallpaperScript LoadScriptEngine(string language, Plasma.Wallpaper wallpaper) {
+            return (Plasma.WallpaperScript) staticInterceptor.Invoke("loadScriptEngine$#", "loadScriptEngine(const QString&, Plasma::Wallpaper*)", typeof(Plasma.WallpaperScript), typeof(string), language, typeof(Plasma.Wallpaper), wallpaper);
         }
         /// <remarks>
         ///  Loads an appropriate PackageStructure for the given language and type

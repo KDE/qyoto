@@ -91,6 +91,29 @@ namespace Plasma {
             interceptor.Invoke("setPath$", "setPath(const QString&)", typeof(void), typeof(string), path);
         }
         /// <remarks>
+        ///  Publish this package on the network.
+        /// <param> name="methods" the ways to announce this package on the network.
+        ///          </param></remarks>        <short>    Publish this package on the network.</short>
+        public void Publish(uint methods, string name) {
+            interceptor.Invoke("publish$$", "publish(Plasma::AnnouncementMethods, const QString&)", typeof(void), typeof(uint), methods, typeof(string), name);
+        }
+        /// <remarks>
+        ///  Remove this package from the network.
+        ///          </remarks>        <short>    Remove this package from the network.</short>
+        public void Unpublish(string name) {
+            interceptor.Invoke("unpublish$", "unpublish(const QString&)", typeof(void), typeof(string), name);
+        }
+        public void Unpublish() {
+            interceptor.Invoke("unpublish", "unpublish()", typeof(void));
+        }
+        /// <remarks>
+        /// </remarks>        <return> whether or not this service is currently published on the network.
+        ///          </return>
+        ///         <short>   </short>
+        public bool IsPublished() {
+            return (bool) interceptor.Invoke("isPublished", "isPublished() const", typeof(bool));
+        }
+        /// <remarks>
         /// </remarks>        <return> the path to the root of this particular package
         ///          </return>
         ///         <short>   </short>
@@ -103,6 +126,13 @@ namespace Plasma {
         ///         <short>   </short>
         public Plasma.PackageStructure Structure() {
             return (Plasma.PackageStructure) interceptor.Invoke("structure", "structure() const", typeof(Plasma.PackageStructure));
+        }
+        /// <remarks>
+        /// </remarks>        <return> a SHA1 hash digest of the contents of the package in hexadecimal form
+        /// </return>
+        ///         <short>   </short>
+        public string ContentsHash() {
+            return (string) interceptor.Invoke("contentsHash", "contentsHash() const", typeof(string));
         }
         ~Package() {
             interceptor.Invoke("~Package", "~Package()", typeof(void));
@@ -136,7 +166,9 @@ namespace Plasma {
         /// </param><param> name="packageRoot" path to the directory where the package should be
         ///                     installed to
         /// </param><param> name="servicePrefix" the prefix for the desktop file, so as not to interfere
-        ///                       with unrelated services (eg: "plasma-applet-")
+        ///                       with unrelated services (eg: "plasma-applet-"). If no prefix
+        ///                       is set (e.g. a string() is passed in), then the package will NOT
+        ///                       be registered as a service
         /// </param></remarks>        <return> true on successful installation, false otherwise
         /// </return>
         ///         <short>    Installs a package.</short>

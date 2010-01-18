@@ -44,6 +44,13 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("QueryMatch#", "QueryMatch(const Plasma::QueryMatch&)", typeof(void), typeof(Plasma.QueryMatch), other);
         }
+        public override bool Equals(object o) {
+            if (!(o is QueryMatch)) { return false; }
+            return this == (QueryMatch) o;
+        }
+        public override int GetHashCode() {
+            return interceptor.GetHashCode();
+        }
         /// <remarks>
         /// </remarks>        <return> the runner associated with this action
         ///          </return>
@@ -227,6 +234,12 @@ namespace Plasma {
         }
         public void Dispose() {
             interceptor.Invoke("~QueryMatch", "~QueryMatch()", typeof(void));
+        }
+        public static bool operator==(QueryMatch lhs, Plasma.QueryMatch other) {
+            return (bool) staticInterceptor.Invoke("operator==#", "operator==(const Plasma::QueryMatch&) const", typeof(bool), typeof(QueryMatch), lhs, typeof(Plasma.QueryMatch), other);
+        }
+        public static bool operator!=(QueryMatch lhs, Plasma.QueryMatch other) {
+            return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const Plasma::QueryMatch&) const", typeof(bool), typeof(QueryMatch), lhs, typeof(Plasma.QueryMatch), other);
         }
         public static bool operator<(QueryMatch lhs, Plasma.QueryMatch other) {
             return (bool) staticInterceptor.Invoke("operator<#", "operator<(const Plasma::QueryMatch&) const", typeof(bool), typeof(QueryMatch), lhs, typeof(Plasma.QueryMatch), other);

@@ -56,6 +56,21 @@ namespace Plasma {
             interceptor.Invoke("ToolButton", "ToolButton()", typeof(void));
         }
         /// <remarks>
+        ///  Sets the path to an svg image to display and the id of the used svg element, if necessary.
+        ///  @arg path the path to the image; if a relative path, then a themed image will be loaded.
+        ///  @arg elementid the id of a svg element.
+        /// </remarks>        <short>    Sets the path to an svg image to display and the id of the used svg element, if necessary.</short>
+        public void SetImage(string path, string elementid) {
+            interceptor.Invoke("setImage$$", "setImage(const QString&, const QString&)", typeof(void), typeof(string), path, typeof(string), elementid);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the button is pressed down
+        /// </return>
+        ///         <short>   </short>
+        public bool IsDown() {
+            return (bool) interceptor.Invoke("isDown", "isDown() const", typeof(bool));
+        }
+        /// <remarks>
         ///  sets the icon for this toolbutton
         ///  @arg icon the icon we want to use
         /// </remarks>        <short>    sets the icon for this toolbutton </short>
@@ -89,6 +104,14 @@ namespace Plasma {
         protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
             interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
         }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
         ~ToolButton() {
             interceptor.Invoke("~ToolButton", "~ToolButton()", typeof(void));
         }
@@ -103,5 +126,13 @@ namespace Plasma {
     public interface IToolButtonSignals : IQGraphicsProxyWidgetSignals {
         [Q_SIGNAL("void clicked()")]
         void Clicked();
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        [Q_SIGNAL("void pressed()")]
+        void Pressed();
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        [Q_SIGNAL("void released()")]
+        void Released();
     }
 }

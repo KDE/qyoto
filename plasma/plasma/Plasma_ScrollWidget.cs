@@ -7,6 +7,7 @@ namespace Plasma {
     /// <remarks>
     ///  @class ScrollWidget plasma/widgets/ScrollWidget.h <Plasma/Widgets/ScrollWidget>
     ///  A container of widgets that can have horizontal and vertical scrollbars if the content is bigger than the widget itself
+    ///  See <see cref="IScrollWidgetSignals"></see> for signals emitted by ScrollWidget
     /// </remarks>        <short> A container of widgets that can have scrollbars.</short>
     [SmokeClass("Plasma::ScrollWidget")]
     public class ScrollWidget : QGraphicsWidget, IDisposable {
@@ -29,6 +30,19 @@ namespace Plasma {
             get { return (Qt.ScrollBarPolicy) interceptor.Invoke("verticalScrollBarPolicy", "verticalScrollBarPolicy()", typeof(Qt.ScrollBarPolicy)); }
             set { interceptor.Invoke("setVerticalScrollBarPolicy$", "setVerticalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), value); }
         }
+        [Q_PROPERTY("QPointF", "scrollPosition")]
+        public QPointF ScrollPosition {
+            get { return (QPointF) interceptor.Invoke("scrollPosition", "scrollPosition()", typeof(QPointF)); }
+            set { interceptor.Invoke("setScrollPosition#", "setScrollPosition(QPointF)", typeof(void), typeof(QPointF), value); }
+        }
+        [Q_PROPERTY("QSizeF", "contentsSize")]
+        public QSizeF ContentsSize {
+            get { return (QSizeF) interceptor.Invoke("contentsSize", "contentsSize()", typeof(QSizeF)); }
+        }
+        [Q_PROPERTY("QRectF", "viewportGeometry")]
+        public QRectF ViewportGeometry {
+            get { return (QRectF) interceptor.Invoke("viewportGeometry", "viewportGeometry()", typeof(QRectF)); }
+        }
         [Q_PROPERTY("QString", "styleSheet")]
         public string StyleSheet {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
@@ -45,6 +59,42 @@ namespace Plasma {
         public ScrollWidget() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("ScrollWidget", "ScrollWidget()", typeof(void));
+        }
+        public ScrollWidget(IQGraphicsItem parent) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("ScrollWidget#", "ScrollWidget(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
+        }
+        /// <remarks>
+        ///  Scroll the view until the given rectangle is visible
+        /// <param> name="rect" rect we want visible, in coordinates mapped to the inner widget
+        /// </param></remarks>        <short>    Scroll the view until the given rectangle is visible </short>
+        public void EnsureRectVisible(QRectF rect) {
+            interceptor.Invoke("ensureRectVisible#", "ensureRectVisible(const QRectF&)", typeof(void), typeof(QRectF), rect);
+        }
+        /// <remarks>
+        ///  Scroll the view until the given item is visible
+        /// <param> name="item" item we want visible
+        /// </param></remarks>        <short>    Scroll the view until the given item is visible </short>
+        public void EnsureItemVisible(IQGraphicsItem item) {
+            interceptor.Invoke("ensureItemVisible#", "ensureItemVisible(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        /// <remarks>
+        ///  Register an item as a drag handle, it means mouse events will pass trough it
+        ///  and will be possible to drag the view by dragging the item itself.
+        ///  The item will still receive mouse clicks if the mouse didn't move
+        ///  between press and release.
+        /// <param> name="item" the drag handle item. widget() must be an ancestor if it in
+        ///              the parent hierarchy. if item doesn't accept mose press events
+        ///              it's not necessary to call this function.
+        /// </param></remarks>        <short>    Register an item as a drag handle, it means mouse events will pass trough it  and will be possible to drag the view by dragging the item itself.</short>
+        public void RegisterAsDragHandle(QGraphicsWidget item) {
+            interceptor.Invoke("registerAsDragHandle#", "registerAsDragHandle(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), item);
+        }
+        /// <remarks>
+        ///  Unregister the given item as drag handle (if it was registered)
+        /// </remarks>        <short>    Unregister the given item as drag handle (if it was registered) </short>
+        public void UnregisterAsDragHandle(QGraphicsWidget item) {
+            interceptor.Invoke("unregisterAsDragHandle#", "unregisterAsDragHandle(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), item);
         }
         /// <remarks>
         /// </remarks>        <return> the native widget wrapped by this ScrollWidget
@@ -65,6 +115,10 @@ namespace Plasma {
         protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
             interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
         }
+        [SmokeMethod("mouseReleaseEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MouseReleaseEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mouseReleaseEvent#", "mouseReleaseEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
         [SmokeMethod("wheelEvent(QGraphicsSceneWheelEvent*)")]
         protected override void WheelEvent(QGraphicsSceneWheelEvent arg1) {
             interceptor.Invoke("wheelEvent#", "wheelEvent(QGraphicsSceneWheelEvent*)", typeof(void), typeof(QGraphicsSceneWheelEvent), arg1);
@@ -72,6 +126,14 @@ namespace Plasma {
         [SmokeMethod("eventFilter(QObject*, QEvent*)")]
         protected new virtual bool EventFilter(QObject watched, QEvent arg2) {
             return (bool) interceptor.Invoke("eventFilter##", "eventFilter(QObject*, QEvent*)", typeof(bool), typeof(QObject), watched, typeof(QEvent), arg2);
+        }
+        [SmokeMethod("focusInEvent(QFocusEvent*)")]
+        protected override void FocusInEvent(QFocusEvent arg1) {
+            interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
+        }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
         }
         ~ScrollWidget() {
             interceptor.Invoke("~ScrollWidget", "~ScrollWidget()", typeof(void));
@@ -85,5 +147,7 @@ namespace Plasma {
     }
 
     public interface IScrollWidgetSignals : IQGraphicsWidgetSignals {
+        [Q_SIGNAL("void scrollStateChanged(QAbstractAnimation::State, QAbstractAnimation::State)")]
+        void ScrollStateChanged(QAbstractAnimation.State newState, QAbstractAnimation.State oldState);
     }
 }

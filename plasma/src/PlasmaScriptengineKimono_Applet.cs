@@ -39,7 +39,7 @@ namespace PlasmaScriptengineKimono {
         public Applet(QObject parent, List<QVariant> args) : base(parent) {}
 
         public override bool Init() {
-            QSizeF oldSize = Applet().Size;
+//            QSizeF oldSize = Applet().Size;
             QFileInfo program = new QFileInfo(MainScript());
 
             KMimeType mime = KMimeType.FindByFileContent(program.AbsoluteFilePath());
@@ -93,8 +93,8 @@ namespace PlasmaScriptengineKimono {
 
             applet = (PlasmaScripting.Applet) Activator.CreateInstance(appletType, new object[] { this });
             applet.Init();
-            if (oldSize.Width() > 10 && oldSize.Height() > 10)
-                Applet().Size = oldSize;
+//            if (oldSize.Width() > 10 && oldSize.Height() > 10)
+//                Applet().Size = oldSize;
             SetUpEventHandlers();
             return true;
         }

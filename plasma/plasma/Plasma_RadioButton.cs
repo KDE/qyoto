@@ -54,6 +54,10 @@ namespace Plasma {
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
         ~RadioButton() {
             interceptor.Invoke("~RadioButton", "~RadioButton()", typeof(void));
         }

@@ -76,6 +76,10 @@ namespace Plasma {
         public void SetOrientation(Qt.Orientation orientation) {
             interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
         }
+        [SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
+        protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
+            interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
+        }
         ~ScrollBar() {
             interceptor.Invoke("~ScrollBar", "~ScrollBar()", typeof(void));
         }

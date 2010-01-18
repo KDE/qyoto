@@ -47,7 +47,8 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Resets the search term for this object.
-        ///  This removes all current matches in the process.
+        ///  This removes all current matches in the process and
+        ///  turns off single runner query mode.
         ///          </remarks>        <short>    Resets the search term for this object.</short>
         public void Reset() {
             interceptor.Invoke("reset", "reset()", typeof(void));
@@ -91,7 +92,7 @@ namespace Plasma {
         ///      ... some processing ...
         ///  }
         ///  While not required to be used within runners, it provies a nice way
-        ///  to avoid unecessary processing in runners that may run for an extended
+        ///  to avoid unnecessary processing in runners that may run for an extended
         ///  period (as measured in 10s of ms) and therefore improve the user experience. 
         /// </remarks>        <return> true if this context is no longer valid and therefore
         ///  matching using it should abort. Most useful as an optimization technique
@@ -122,6 +123,26 @@ namespace Plasma {
             return (bool) interceptor.Invoke("addMatch$#", "addMatch(const QString&, const Plasma::QueryMatch&)", typeof(bool), typeof(string), term, typeof(Plasma.QueryMatch), match);
         }
         /// <remarks>
+        ///  Removes a match from the existing list of matches.
+        ///  If you are going to be removing multiple matches, use removeMatches instead.
+        ///  @arg matchId the id of match to remove
+        /// </remarks>        <return> true if the match was removed, false otherwise.
+        /// </return>
+        ///         <short>    Removes a match from the existing list of matches.</short>
+        public bool RemoveMatch(string matchId) {
+            return (bool) interceptor.Invoke("removeMatch$", "removeMatch(const QString)", typeof(bool), typeof(string), matchId);
+        }
+        /// <remarks>
+        ///  Removes lists of matches from the existing list of matches.
+        ///  This method is thread safe and causes the matchesChanged() signal to be emitted.
+        ///  @arg matchIdList the list of matches id to remove
+        /// </remarks>        <return> true if at least one match was removed, false otherwise.
+        /// </return>
+        ///         <short>    Removes lists of matches from the existing list of matches.</short>
+        public bool RemoveMatches(List<string> matchIdList) {
+            return (bool) interceptor.Invoke("removeMatches?", "removeMatches(const QStringList)", typeof(bool), typeof(List<string>), matchIdList);
+        }
+        /// <remarks>
         ///  Retrieves all available matches for the current search term.
         /// </remarks>        <return> a list of matches
         ///          </return>
@@ -138,6 +159,21 @@ namespace Plasma {
         ///         <short>    Retrieves a match by id.</short>
         public Plasma.QueryMatch Match(string id) {
             return (Plasma.QueryMatch) interceptor.Invoke("match$", "match(const QString&) const", typeof(Plasma.QueryMatch), typeof(string), id);
+        }
+        /// <remarks>
+        ///  Sets single runner query mode. Note that a call to reset() will
+        ///  turn off single runner query mode.
+        /// </remarks>        <short>    Sets single runner query mode.</short>
+        ///         <see> reset</see>
+        public void SetSingleRunnerQueryMode(bool enabled) {
+            interceptor.Invoke("setSingleRunnerQueryMode$", "setSingleRunnerQueryMode(bool)", typeof(void), typeof(bool), enabled);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the current query is a single runner query
+        /// </return>
+        ///         <short>   </short>
+        public bool SingleRunnerQueryMode() {
+            return (bool) interceptor.Invoke("singleRunnerQueryMode", "singleRunnerQueryMode() const", typeof(bool));
         }
         /// <remarks>
         ///  Sets the launch counts for the associated match ids

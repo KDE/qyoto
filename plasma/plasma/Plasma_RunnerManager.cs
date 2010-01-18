@@ -41,11 +41,63 @@ namespace Plasma {
             return (Plasma.AbstractRunner) interceptor.Invoke("runner$", "runner(const QString&) const", typeof(Plasma.AbstractRunner), typeof(string), name);
         }
         /// <remarks>
+        /// </remarks>        <return> the currently active "single mode" runner, or null if none
+        /// </return>
+        ///         <short>   </short>
+        public Plasma.AbstractRunner SingleModeRunner() {
+            return (Plasma.AbstractRunner) interceptor.Invoke("singleModeRunner", "singleModeRunner() const", typeof(Plasma.AbstractRunner));
+        }
+        /// <remarks>
+        ///  Puts the manager into "single runner" mode using the given
+        ///  runner; if the runner does not exist or can not be loaded then
+        ///  the single runner mode will not be started and singleModeRunner()
+        ///  will return NULL
+        ///  @arg id the id of the runner to use
+        /// </remarks>        <short>    Puts the manager into "single runner" mode using the given  runner; if the runner does not exist or can not be loaded then  the single runner mode will not be started and singleModeRunner()  will return NULL  @arg id the id of the runner to use </short>
+        public void SetSingleModeRunnerId(string id) {
+            interceptor.Invoke("setSingleModeRunnerId$", "setSingleModeRunnerId(const QString&)", typeof(void), typeof(string), id);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the id of the runner to use in single mode
+        /// </return>
+        ///         <short>   </short>
+        public string SingleModeRunnerId() {
+            return (string) interceptor.Invoke("singleModeRunnerId", "singleModeRunnerId() const", typeof(string));
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the manager is set to run in single runner mode
+        /// </return>
+        ///         <short>   </short>
+        public bool SingleMode() {
+            return (bool) interceptor.Invoke("singleMode", "singleMode() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Sets whether or not the manager is in single mode.
+        ///  @arg singleMode true if the manager should be in single mode, false otherwise
+        /// </remarks>        <short>    Sets whether or not the manager is in single mode.</short>
+        public void SetSingleMode(bool singleMode) {
+            interceptor.Invoke("setSingleMode$", "setSingleMode(bool)", typeof(void), typeof(bool), singleMode);
+        }
+        /// <remarks>
+        ///  Returns the translated name of a runner
+        ///  @arg id the id of the runner
+        /// </remarks>        <short>    Returns the translated name of a runner  @arg id the id of the runner </short>
+        public string RunnerName(string id) {
+            return (string) interceptor.Invoke("runnerName$", "runnerName(const QString&) const", typeof(string), typeof(string), id);
+        }
+        /// <remarks>
         /// </remarks>        <return> the list of all currently loaded runners
         ///          </return>
         ///         <short>   </short>
         public List<Plasma.AbstractRunner> Runners() {
             return (List<Plasma.AbstractRunner>) interceptor.Invoke("runners", "runners() const", typeof(List<Plasma.AbstractRunner>));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the names of all runners that advertise single query mode
+        /// </return>
+        ///         <short>   </short>
+        public List<string> SingleModeAdvertisedRunnerIds() {
+            return (List<string>) interceptor.Invoke("singleModeAdvertisedRunnerIds", "singleModeAdvertisedRunnerIds() const", typeof(List<string>));
         }
         /// <remarks>
         ///  Retrieves the current context
@@ -97,15 +149,49 @@ namespace Plasma {
             interceptor.Invoke("reloadConfiguration", "reloadConfiguration()", typeof(void));
         }
         /// <remarks>
+        ///  Sets a whitelist for the plugins that can be loaded
+        ///  @arg plugins the plugin names of allowed runners
+        /// </remarks>        <short>    Sets a whitelist for the plugins that can be loaded </short>
+        public void SetAllowedRunners(List<string> runners) {
+            interceptor.Invoke("setAllowedRunners?", "setAllowedRunners(const QStringList&)", typeof(void), typeof(List<string>), runners);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the list of allowed plugins
+        /// </return>
+        ///         <short>   </short>
+        public List<string> AllowedRunners() {
+            return (List<string>) interceptor.Invoke("allowedRunners", "allowedRunners() const", typeof(List<string>));
+        }
+        /// <remarks>
+        ///  Call this method when the runners should be prepared for a query session.
+        ///  Call matchSessionComplete when the query session is finished for the time
+        ///  being.
+        /// </remarks>        <short>    Call this method when the runners should be prepared for a query session.</short>
+        ///         <see> matchSessionComplete</see>
+        [Q_SLOT("void setupMatchSession()")]
+        public void SetupMatchSession() {
+            interceptor.Invoke("setupMatchSession", "setupMatchSession()", typeof(void));
+        }
+        /// <remarks>
+        ///  Call this method when the query session is finished for the time
+        ///  being.
+        /// </remarks>        <short>    Call this method when the query session is finished for the time  being.</short>
+        ///         <see> prepareForMatchSession</see>
+        [Q_SLOT("void matchSessionComplete()")]
+        public void MatchSessionComplete() {
+            interceptor.Invoke("matchSessionComplete", "matchSessionComplete()", typeof(void));
+        }
+        /// <remarks>
         ///  Launch a query, this will create threads and return inmediately.
         ///  When the information will be available can be known using the
         ///  matchesChanged signal.
         ///  @arg term the term we want to find matches for
-        ///  @arg runner optional, if only one specific runner is to be used
+        ///  @arg runnerId optional, if only one specific runner is to be used;
+        ///                providing an id will put the manager into single runner mode
         ///          </remarks>        <short>    Launch a query, this will create threads and return inmediately.</short>
         [Q_SLOT("void launchQuery(QString, QString)")]
-        public void LaunchQuery(string term, string runnerName) {
-            interceptor.Invoke("launchQuery$$", "launchQuery(const QString&, const QString&)", typeof(void), typeof(string), term, typeof(string), runnerName);
+        public void LaunchQuery(string term, string runnerId) {
+            interceptor.Invoke("launchQuery$$", "launchQuery(const QString&, const QString&)", typeof(void), typeof(string), term, typeof(string), runnerId);
         }
         /// <remarks>
         ///  Convenience version of above

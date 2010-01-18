@@ -80,6 +80,26 @@ namespace Plasma {
         public void SetValue(int value) {
             interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value);
         }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverEnterEvent#", "hoverEnterEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
+        protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
+            interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+            interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
+        }
         ~SpinBox() {
             interceptor.Invoke("~SpinBox", "~SpinBox()", typeof(void));
         }

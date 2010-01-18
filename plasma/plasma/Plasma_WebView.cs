@@ -29,6 +29,24 @@ namespace Plasma {
             get { return (bool) interceptor.Invoke("dragToScroll", "dragToScroll()", typeof(bool)); }
             set { interceptor.Invoke("setDragToScroll$", "setDragToScroll(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("QPointF", "scrollPosition")]
+        public QPointF ScrollPosition {
+            get { return (QPointF) interceptor.Invoke("scrollPosition", "scrollPosition()", typeof(QPointF)); }
+            set { interceptor.Invoke("setScrollPosition#", "setScrollPosition(QPointF)", typeof(void), typeof(QPointF), value); }
+        }
+        [Q_PROPERTY("QSizeF", "contentsSize")]
+        public QSizeF ContentsSize {
+            get { return (QSizeF) interceptor.Invoke("contentsSize", "contentsSize()", typeof(QSizeF)); }
+        }
+        [Q_PROPERTY("QRectF", "viewportGeometry")]
+        public QRectF ViewportGeometry {
+            get { return (QRectF) interceptor.Invoke("viewportGeometry", "viewportGeometry()", typeof(QRectF)); }
+        }
+        [Q_PROPERTY("qreal", "zoomFactor")]
+        public double ZoomFactor {
+            get { return (double) interceptor.Invoke("zoomFactor", "zoomFactor()", typeof(double)); }
+            set { interceptor.Invoke("setZoomFactor$", "setZoomFactor(qreal)", typeof(void), typeof(double), value); }
+        }
         public WebView(IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("WebView#", "WebView(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
@@ -166,6 +184,10 @@ namespace Plasma {
         [SmokeMethod("dropEvent(QGraphicsSceneDragDropEvent*)")]
         protected override void DropEvent(QGraphicsSceneDragDropEvent arg1) {
             interceptor.Invoke("dropEvent#", "dropEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
         }
         ~WebView() {
             interceptor.Invoke("~WebView", "~WebView()", typeof(void));

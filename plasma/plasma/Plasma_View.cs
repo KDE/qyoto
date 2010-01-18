@@ -216,5 +216,11 @@ namespace Plasma {
         ///      </remarks>        <short>    This signal is emitted whenever the containment being viewed has  changed its geometry, and after the View has shifted the viewd scene rect  to the new geometry.</short>
         [Q_SIGNAL("void sceneRectChanged()")]
         void SceneRectChanged();
+        /// <remarks>
+        ///  This is emitted after the containment is destroyed, for views that need to do something about
+        ///  it (like find a new one).
+        ///      </remarks>        <short>    This is emitted after the containment is destroyed, for views that need to do something about  it (like find a new one).</short>
+        [Q_SIGNAL("void lostContainment()")]
+        void LostContainment();
     }
 }

@@ -104,6 +104,13 @@ namespace Plasma {
             interceptor.Invoke("disconnectVisualization#", "disconnectVisualization(QObject*)", typeof(void), typeof(QObject), visualization);
         }
         /// <remarks>
+        ///  Forces immediate update signals to all visualizations
+        /// </remarks>        <short>    Forces immediate update signals to all visualizations </short>
+        [Q_SLOT("void forceImmediateUpdate()")]
+        public void ForceImmediateUpdate() {
+            interceptor.Invoke("forceImmediateUpdate", "forceImmediateUpdate()", typeof(void));
+        }
+        /// <remarks>
         ///  Checks whether any data has changed and, if so, emits dataUpdated().
         /// </remarks>        <short>    Checks whether any data has changed and, if so, emits dataUpdated().</short>
         protected void CheckForUpdate() {
@@ -157,7 +164,7 @@ namespace Plasma {
         ///  Emitted when the data has been updated, allowing visualizations to
         ///  reflect the new data.
         ///  Note that you should not normally emit this directly.  Instead, use
-        ///  checkForUpdates() or the DataEngine.ScheduleSourcesUpdated() slot.
+        ///  checkForUpdate() or the DataEngine.ScheduleSourcesUpdated() slot.
         /// <param> name="source" the objectName() of the DataContainer (and hence the name
         ///                of the source) that updated its data
         /// </param><param> name="data" the updated data

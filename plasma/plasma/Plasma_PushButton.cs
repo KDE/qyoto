@@ -42,6 +42,25 @@ namespace Plasma {
             get { return (QAction) interceptor.Invoke("action", "action()", typeof(QAction)); }
             set { interceptor.Invoke("setAction#", "setAction(QAction*)", typeof(void), typeof(QAction), value); }
         }
+        [Q_PROPERTY("QIcon", "icon")]
+        public QIcon icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        [Q_PROPERTY("bool", "checkable")]
+        public bool Checkable {
+            get { return (bool) interceptor.Invoke("isCheckable", "isCheckable()", typeof(bool)); }
+            set { interceptor.Invoke("setCheckable$", "setCheckable(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "checked")]
+        public bool Checked {
+            get { return (bool) interceptor.Invoke("isChecked", "isChecked()", typeof(bool)); }
+            set { interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "down")]
+        public bool Down {
+            get { return (bool) interceptor.Invoke("isDown", "isDown()", typeof(bool)); }
+        }
         public PushButton(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("PushButton#", "PushButton(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), parent);
@@ -51,38 +70,12 @@ namespace Plasma {
             interceptor.Invoke("PushButton", "PushButton()", typeof(void));
         }
         /// <remarks>
-        ///  sets the icon for this toolbutton
-        ///  @arg icon the icon we want to use
-        /// </remarks>        <short>    sets the icon for this toolbutton </short>
-        public void SetIcon(QIcon icon) {
-            interceptor.Invoke("setIcon#", "setIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
-        }
-        /// <remarks>
-        /// </remarks>        <return> the icon of this button
-        /// </return>
-        ///         <short>   </short>
-        public QIcon Icon() {
-            return (QIcon) interceptor.Invoke("icon", "icon() const", typeof(QIcon));
-        }
-        /// <remarks>
-        ///  Sets whether or not this button can be toggled on/off
-        /// </remarks>        <short>    Sets whether or not this button can be toggled on/off </short>
-        public void SetCheckable(bool checkable) {
-            interceptor.Invoke("setCheckable$", "setCheckable(bool)", typeof(void), typeof(bool), checkable);
-        }
-        /// <remarks>
-        ///  Sets whether or not this button is checked. Implies setIsCheckable(true).
-        /// </remarks>        <short>    Sets whether or not this button is checked.</short>
-        public void SetChecked(bool arg1) {
-            interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), arg1);
-        }
-        /// <remarks>
-        /// </remarks>        <return> true if the button is checked; requires setIsCheckable(true) to
-        ///  be called
-        /// </return>
-        ///         <short>   </short>
-        public bool IsChecked() {
-            return (bool) interceptor.Invoke("isChecked", "isChecked() const", typeof(bool));
+        ///  Sets the path to an svg image to display and the id of the used svg element, if necessary.
+        ///  @arg path the path to the image; if a relative path, then a themed image will be loaded.
+        ///  @arg elementid the id of a svg element.
+        /// </remarks>        <short>    Sets the path to an svg image to display and the id of the used svg element, if necessary.</short>
+        public void SetImage(string path, string elementid) {
+            interceptor.Invoke("setImage$$", "setImage(const QString&, const QString&)", typeof(void), typeof(string), path, typeof(string), elementid);
         }
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
@@ -104,6 +97,14 @@ namespace Plasma {
         protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
             interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
         }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
         ~PushButton() {
             interceptor.Invoke("~PushButton", "~PushButton()", typeof(void));
         }
@@ -116,8 +117,26 @@ namespace Plasma {
     }
 
     public interface IPushButtonSignals : IQGraphicsProxyWidgetSignals {
+        /// <remarks>
+        ///  Emitted when the button is pressed down; usually the clicked() signal
+        ///  will suffice, however.
+        /// </remarks>        <short>    Emitted when the button is pressed down; usually the clicked() signal  will suffice, however.</short>
+        [Q_SIGNAL("void pressed()")]
+        void Pressed();
+        /// <remarks>
+        ///  Emitted when the button is released; usually the clicked() signal
+        ///  will suffice, however.
+        /// </remarks>        <short>    Emitted when the button is released; usually the clicked() signal  will suffice, however.</short>
+        [Q_SIGNAL("void released()")]
+        void Released();
+        /// <remarks>
+        ///  Emitted when the button is pressed then released, completing a click
+        ///      </remarks>        <short>    Emitted when the button is pressed then released, completing a click      </short>
         [Q_SIGNAL("void clicked()")]
         void Clicked();
+        /// <remarks>
+        ///  Emitted when the button changes state from up to down
+        ///      </remarks>        <short>    Emitted when the button changes state from up to down      </short>
         [Q_SIGNAL("void toggled(bool)")]
         void Toggled(bool arg1);
     }

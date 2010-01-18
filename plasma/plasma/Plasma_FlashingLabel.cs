@@ -13,6 +13,26 @@ namespace Plasma {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(FlashingLabel), this);
         }
+        [Q_PROPERTY("bool", "autohide")]
+        public bool Autohide {
+            get { return (bool) interceptor.Invoke("autohide", "autohide()", typeof(bool)); }
+            set { interceptor.Invoke("setAutohide$", "setAutohide(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("QFont", "font")]
+        public QFont Font {
+            get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
+            set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
+        }
+        [Q_PROPERTY("QColor", "color")]
+        public QColor Color {
+            get { return (QColor) interceptor.Invoke("color", "color()", typeof(QColor)); }
+            set { interceptor.Invoke("setColor#", "setColor(QColor)", typeof(void), typeof(QColor), value); }
+        }
+        [Q_PROPERTY("int", "duration")]
+        public int Duration {
+            get { return (int) interceptor.Invoke("duration", "duration()", typeof(int)); }
+            set { interceptor.Invoke("setDuration$", "setDuration(int)", typeof(void), typeof(int), value); }
+        }
         public FlashingLabel(IQGraphicsItem parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("FlashingLabel#", "FlashingLabel(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
@@ -28,15 +48,6 @@ namespace Plasma {
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*)")]
         public override void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
             interceptor.Invoke("paint##", "paint(QPainter*, const QStyleOptionGraphicsItem*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option);
-        }
-        public void SetFont(QFont arg1) {
-            interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), arg1);
-        }
-        public void SetColor(QColor arg1) {
-            interceptor.Invoke("setColor#", "setColor(const QColor&)", typeof(void), typeof(QColor), arg1);
-        }
-        public void SetDuration(int duration) {
-            interceptor.Invoke("setDuration$", "setDuration(int)", typeof(void), typeof(int), duration);
         }
         public void Flash(string text, int duration, QTextOption option) {
             interceptor.Invoke("flash$$#", "flash(const QString&, int, const QTextOption&)", typeof(void), typeof(string), text, typeof(int), duration, typeof(QTextOption), option);
@@ -56,15 +67,13 @@ namespace Plasma {
         public void Flash(QPixmap pixmap) {
             interceptor.Invoke("flash#", "flash(const QPixmap&)", typeof(void), typeof(QPixmap), pixmap);
         }
-        public void SetAutohide(bool autohide) {
-            interceptor.Invoke("setAutohide$", "setAutohide(bool)", typeof(void), typeof(bool), autohide);
-        }
-        public bool Autohide() {
-            return (bool) interceptor.Invoke("autohide", "autohide() const", typeof(bool));
-        }
         [Q_SLOT("void kill()")]
         public void Kill() {
             interceptor.Invoke("kill", "kill()", typeof(void));
+        }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
         }
         [Q_SLOT("void fadeIn()")]
         protected void FadeIn() {

@@ -5,7 +5,8 @@ namespace PlasmaScripting {
     using Qyoto;
     using Plasma;
 
-    public class QGraphicsWidget : QObject, IQGraphicsItem {
+    public class QGraphicsWidget : QObject{
+//    public class QGraphicsWidget : QObject, IQGraphicsItem {
         protected AppletScript appletScript;
         protected Plasma.Applet applet;
         protected Type appletType;
@@ -15,31 +16,31 @@ namespace PlasmaScripting {
         public Plasma.Applet PlasmaApplet {
             get { return applet; }
         }
-        [Q_PROPERTY("QPalette", "palette")]
-        public QPalette Palette {
-            get { return applet.Palette; }
-            set { applet.Palette = value; }
-        }
-        [Q_PROPERTY("QFont", "font")]
-        public QFont Font {
-            get { return ((QyotoQGraphicsWidget) applet).Font; }
-            set { ((QyotoQGraphicsWidget) applet).Font = value; }
-        }
-        [Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
-        public new Qt.LayoutDirection LayoutDirection {
-            get { return applet.LayoutDirection; }
-            set { applet.LayoutDirection = value; }
-        }
-        [Q_PROPERTY("QSizeF", "size")]
-        public QSizeF Size {
-            get { return applet.Size; }
-            set { applet.Size = value; }
-        }
-        [Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
-        public new Qt.FocusPolicy FocusPolicy {
-            get { return applet.FocusPolicy; }
-            set { applet.FocusPolicy = value; }
-        }
+//        [Q_PROPERTY("QPalette", "palette")]
+//        public QPalette Palette {
+//            get { return applet.Palette; }
+//            set { applet.Palette = value; }
+//        }
+//        [Q_PROPERTY("QFont", "font")]
+//        public QFont Font {
+//            get { return ((QyotoQGraphicsWidget) applet).Font; }
+//            set { ((QyotoQGraphicsWidget) applet).Font = value; }
+//        }
+//        [Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
+//        public new Qt.LayoutDirection LayoutDirection {
+//            get { return applet.LayoutDirection; }
+//            set { applet.LayoutDirection = value; }
+//        }
+//        [Q_PROPERTY("QSizeF", "size")]
+//        public QSizeF Size {
+//            get { return applet.Size; }
+//            set { applet.Size = value; }
+//        }
+//        [Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
+//        public new Qt.FocusPolicy FocusPolicy {
+//            get { return applet.FocusPolicy; }
+//            set { applet.FocusPolicy = value; }
+//        }
         [Q_PROPERTY("bool", "enabled")]
         public bool Enabled {
             get { return applet.Enabled; }
@@ -50,16 +51,16 @@ namespace PlasmaScripting {
             get { return applet.Visible; }
             set { applet.Visible = value; }
         }
-        [Q_PROPERTY("Qt::WindowFlags", "windowFlags")]
-        public uint WindowFlags {
-            get { return applet.WindowFlags; }
-            set { applet.WindowFlags = value; }
-        }
-        [Q_PROPERTY("QString", "windowTitle")]
-        public string WindowTitle {
-            get { return applet.WindowTitle; }
-            set { applet.WindowTitle = value; }
-        }
+//        [Q_PROPERTY("Qt::WindowFlags", "windowFlags")]
+//        public uint WindowFlags {
+//            get { return applet.WindowFlags; }
+//            set { applet.WindowFlags = value; }
+//        }
+//        [Q_PROPERTY("QString", "windowTitle")]
+//        public string WindowTitle {
+//            get { return applet.WindowTitle; }
+//            set { applet.WindowTitle = value; }
+//        }
         public QGraphicsWidget(AppletScript parent) : base(parent) {
             appletScript = parent;
             applet = parent.Applet();

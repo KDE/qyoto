@@ -7,6 +7,7 @@ namespace Plasma {
     using System.Collections.Generic;
     /// <remarks>
     ///  @class AppletScript plasma/scripting/appletscript.h <Plasma/Scripting/AppletScript>
+    ///  See <see cref="IAppletScriptSignals"></see> for signals emitted by AppletScript
     /// </remarks>        <short> Provides a restricted interface for scripted applets.  </short>
     [SmokeClass("Plasma::AppletScript")]
     public class AppletScript : Plasma.ScriptEngine, IDisposable {
@@ -167,6 +168,13 @@ namespace Plasma {
             return (Plasma.Package) interceptor.Invoke("package", "package() const", typeof(Plasma.Package));
         }
         /// <remarks>
+        /// </remarks>        <return> the KPluginInfo associated with this plasmoid
+        ///      </return>
+        ///         <short>   </short>
+        protected KPluginInfo Description() {
+            return (KPluginInfo) interceptor.Invoke("description", "description() const", typeof(KPluginInfo));
+        }
+        /// <remarks>
         ///  Note that the dialog returned is set to delete on close.
         ///      </remarks>        <return> a standard Plasma applet configuration dialog, ready
         ///  to have pages added to it.
@@ -174,6 +182,37 @@ namespace Plasma {
         ///         <short>   </short>
         protected KConfigDialog StandardConfigurationDialog() {
             return (KConfigDialog) interceptor.Invoke("standardConfigurationDialog", "standardConfigurationDialog()", typeof(KConfigDialog));
+        }
+        /// <remarks>
+        ///  This method should be called after a scripting applet has added
+        ///  its own pages to a configuration dialog
+        /// </remarks>        <short>    This method should be called after a scripting applet has added  its own pages to a configuration dialog </short>
+        protected void AddStandardConfigurationPages(KConfigDialog dialog) {
+            interceptor.Invoke("addStandardConfigurationPages#", "addStandardConfigurationPages(KConfigDialog*)", typeof(void), typeof(KConfigDialog), dialog);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        protected void ShowMessage(QIcon icon, string message, uint buttons) {
+            interceptor.Invoke("showMessage#$$", "showMessage(const QIcon&, const QString&, const Plasma::MessageButtons)", typeof(void), typeof(QIcon), icon, typeof(string), message, typeof(uint), buttons);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        protected void RegisterAsDragHandle(IQGraphicsItem item) {
+            interceptor.Invoke("registerAsDragHandle#", "registerAsDragHandle(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        protected void UnregisterAsDragHandle(IQGraphicsItem item) {
+            interceptor.Invoke("unregisterAsDragHandle#", "unregisterAsDragHandle(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        protected bool IsRegisteredAsDragHandle(IQGraphicsItem item) {
+            return (bool) interceptor.Invoke("isRegisteredAsDragHandle#", "isRegisteredAsDragHandle(QGraphicsItem*)", typeof(bool), typeof(IQGraphicsItem), item);
         }
         ~AppletScript() {
             interceptor.Invoke("~AppletScript", "~AppletScript()", typeof(void));
@@ -187,5 +226,10 @@ namespace Plasma {
     }
 
     public interface IAppletScriptSignals : Plasma.IScriptEngineSignals {
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        ///         <see> Applet</see>
+        [Q_SIGNAL("void saveState(KConfigGroup)")]
+        void SaveState(KConfigGroup group);
     }
 }

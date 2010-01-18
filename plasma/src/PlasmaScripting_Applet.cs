@@ -81,9 +81,9 @@ namespace PlasmaScripting {
         /// </remarks>        <return> the id of this applet
         ///          </return>
         ///         <short>   </short>
-        public uint Id() {
-            return applet.Id();
-        }
+//        public uint Id() {
+//            return applet.Id();
+//        }
         /// <remarks>
         ///  Returns the KConfigGroup to access the applets configuration.
         ///  This config object will write to an instance
@@ -392,7 +392,8 @@ namespace PlasmaScripting {
         ///          </remarks>        <short>    Lets the user interact with the plasmoid options.</short>
         [Q_SLOT("void showConfigurationInterface()")]
         public virtual void ShowConfigurationInterface() {
-            string dialogId = applet.Id() + "settings" + applet.Name;
+            string dialogId = "settings" + applet.Name;
+//            string dialogId = applet.Id() + "settings" + applet.Name;
             string windowTitle = KDE.I18nc("@title:window", applet.Name + " Settings");
             nullManager = new KConfigSkeleton();
             dialog = new KConfigDialog(null, dialogId, nullManager);

@@ -73,7 +73,6 @@ namespace Plasma {
             CustomContainment = 127,
             CustomPanelContainment = 128,
         }
-        // Plasma::Wallpaper* wallpaper(); >>>> NOT CONVERTED
         /// <remarks>
         /// <param> name="parent" the QGraphicsItem this applet is parented to
         /// </param><param> name="serviceId" the name of the .desktop file containing the
@@ -299,6 +298,9 @@ namespace Plasma {
         /// <remarks>
         ///  Return wallpaper plugin.
         ///          </remarks>        <short>    Return wallpaper plugin.</short>
+        public Plasma.Wallpaper Wallpaper() {
+            return (Plasma.Wallpaper) interceptor.Invoke("wallpaper", "wallpaper() const", typeof(Plasma.Wallpaper));
+        }
         /// <remarks>
         ///  Sets the current activity by name
         /// <param> name="activity" the name of the activity; if it doesn't exist in the
@@ -333,8 +335,30 @@ namespace Plasma {
             interceptor.Invoke("showDropZone#", "showDropZone(const QPoint)", typeof(void), typeof(QPoint), pos);
         }
         /// <remarks>
+        ///  Sets a containmentactions plugin.
+        /// <param> name="trigger" the mouse button (and optional modifier) to associate the plugin with
+        /// </param><param> name="pluginName" the name of the plugin to attempt to load. blank = set no plugin.
+        /// </param></remarks>        <short>    Sets a containmentactions plugin.</short>
+        public void SetContainmentActions(string trigger, string pluginName) {
+            interceptor.Invoke("setContainmentActions$$", "setContainmentActions(const QString&, const QString&)", typeof(void), typeof(string), trigger, typeof(string), pluginName);
+        }
+        /// <remarks>
+        /// </remarks>        <return> a list of all triggers that have a containmentactions plugin associated
+        /// </return>
+        ///         <short>   </short>
+        public List<string> ContainmentActionsTriggers() {
+            return (List<string>) interceptor.Invoke("containmentActionsTriggers", "containmentActionsTriggers()", typeof(List<string>));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the plugin name for the given trigger
+        /// </return>
+        ///         <short>   </short>
+        public string ContainmentActions(string trigger) {
+            return (string) interceptor.Invoke("containmentActions$", "containmentActions(const QString&)", typeof(string), typeof(string), trigger);
+        }
+        /// <remarks>
         ///  Informs the Corona as to what position it is in. This is informational
-        ///  only, as the Corona doesn't change it's actual location. This is,
+        ///  only, as the Corona doesn't change its actual location. This is,
         ///  however, passed on to Applets that may be managed by this Corona.
         /// <param> name="location" the new location of this Corona
         ///          </param></remarks>        <short>    Informs the Corona as to what position it is in.</short>
@@ -473,6 +497,14 @@ namespace Plasma {
         }
         /// <remarks>
         ///  @reimp
+        ///  @sa QGraphicsItem.DragLeaveEvent()
+        ///          </remarks>        <short>    @reimp  @sa QGraphicsItem.DragLeaveEvent()          </short>
+        [SmokeMethod("dragLeaveEvent(QGraphicsSceneDragDropEvent*)")]
+        protected override void DragLeaveEvent(QGraphicsSceneDragDropEvent arg1) {
+            interceptor.Invoke("dragLeaveEvent#", "dragLeaveEvent(QGraphicsSceneDragDropEvent*)", typeof(void), typeof(QGraphicsSceneDragDropEvent), arg1);
+        }
+        /// <remarks>
+        ///  @reimp
         ///  @sa QGraphicsItem.DragMoveEvent()
         ///          </remarks>        <short>    @reimp  @sa QGraphicsItem.DragMoveEvent()          </short>
         [SmokeMethod("dragMoveEvent(QGraphicsSceneDragDropEvent*)")]
@@ -496,11 +528,20 @@ namespace Plasma {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
         }
         /// <remarks>
-        /// </remarks>        <return> the toolbox associated with this containment, or a null pointer if none
-        ///          </return>
+        ///  Sets a custom ToolBox
+        ///  if there was an old one it will be deleted
+        ///  and the new one won't have any actions in it
+        /// <param> name="item" the new toolbox item
+        /// </param></remarks>        <short>    Sets a custom ToolBox  if there was an old one it will be deleted  and the new one won't have any actions in it </short>
+        protected void SetToolBox(Plasma.AbstractToolBox toolBox) {
+            interceptor.Invoke("setToolBox#", "setToolBox(Plasma::AbstractToolBox*)", typeof(void), typeof(Plasma.AbstractToolBox), toolBox);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the ToolBox
+        /// </return>
         ///         <short>   </short>
-        protected IQGraphicsItem ToolBoxItem() {
-            return (IQGraphicsItem) interceptor.Invoke("toolBoxItem", "toolBoxItem() const", typeof(IQGraphicsItem));
+        protected Plasma.AbstractToolBox ToolBox() {
+            return (Plasma.AbstractToolBox) interceptor.Invoke("toolBox", "toolBox() const", typeof(Plasma.AbstractToolBox));
         }
         ~Containment() {
             interceptor.Invoke("~Containment", "~Containment()", typeof(void));
@@ -512,7 +553,7 @@ namespace Plasma {
         ///  Returns a list of all known containments.
         /// <param> name="category" Only containments matching this category will be returned.
         ///                  Useful in conjunction with knownCategories.
-        ///                  If "Miscelaneous" is passed in, then applets without a
+        ///                  If "Miscellaneous" is passed in, then applets without a
         ///                  Categories= entry are also returned.
         ///                  If an empty string is passed in, all applets are
         ///                  returned.
@@ -540,7 +581,7 @@ namespace Plasma {
         ///              desktop
         /// </param><param> name="category" Only applets matchin this category will be returned.
         ///                  Useful in conjunction with knownCategories.
-        ///                  If "Miscelaneous" is passed in, then applets without a
+        ///                  If "Miscellaneous" is passed in, then applets without a
         ///                  Categories= entry are also returned.
         ///                  If an empty string is passed in, all applets are
         ///                  returned.

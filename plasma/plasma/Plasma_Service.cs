@@ -142,6 +142,14 @@ namespace Plasma {
             interceptor.Invoke("disassociateWidget#", "disassociateWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
+        /// </remarks>        <return> a parameter map for the given description
+        ///  @arg description the configuration values to turn into the parameter map
+        /// </return>
+        ///         <short>   </short>
+        public Dictionary<string, QVariant> ParametersFromDescription(KConfigGroup description) {
+            return (Dictionary<string, QVariant>) interceptor.Invoke("parametersFromDescription#", "parametersFromDescription(const KConfigGroup&)", typeof(Dictionary<string, QVariant>), typeof(KConfigGroup), description);
+        }
+        /// <remarks>
         ///  Default constructor
         ///  @arg parent the parent object for this service
         ///      </remarks>        <short>    Default constructor </short>
@@ -214,6 +222,16 @@ namespace Plasma {
         public static Plasma.Service Load(string name) {
             return (Plasma.Service) staticInterceptor.Invoke("load$", "load(const QString&)", typeof(Plasma.Service), typeof(string), name);
         }
+        /// <remarks>
+        ///  Used to access a service from an url. Always check for the signal serviceReady() that fires
+        ///  when this service is actually ready for use.
+        ///      </remarks>        <short>    Used to access a service from an url.</short>
+        public static Plasma.Service Access(KUrl url, QObject parent) {
+            return (Plasma.Service) staticInterceptor.Invoke("access##", "access(const KUrl&, QObject*)", typeof(Plasma.Service), typeof(KUrl), url, typeof(QObject), parent);
+        }
+        public static Plasma.Service Access(KUrl url) {
+            return (Plasma.Service) staticInterceptor.Invoke("access#", "access(const KUrl&)", typeof(Plasma.Service), typeof(KUrl), url);
+        }
         protected new IServiceSignals Emit {
             get { return (IServiceSignals) Q_EMIT; }
         }
@@ -232,5 +250,10 @@ namespace Plasma {
         ///      </remarks>        <short>    Emitted when the Service's operations change.</short>
         [Q_SIGNAL("void operationsChanged()")]
         void OperationsChanged();
+        /// <remarks>
+        ///  Emitted when this service is ready for use
+        ///      </remarks>        <short>    Emitted when this service is ready for use      </short>
+        [Q_SIGNAL("void serviceReady(Plasma::Service*)")]
+        void ServiceReady(Plasma.Service service);
     }
 }

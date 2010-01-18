@@ -104,6 +104,13 @@ namespace Plasma {
         public new virtual Plasma.Package Package() {
             return (Plasma.Package) interceptor.Invoke("package", "package() const", typeof(Plasma.Package));
         }
+        /// <remarks>
+        /// </remarks>        <return> the KPluginInfo associated with this plasmoid
+        ///      </return>
+        ///         <short>   </short>
+        public KPluginInfo Description() {
+            return (KPluginInfo) interceptor.Invoke("description", "description() const", typeof(KPluginInfo));
+        }
         public void SetData(string source, string key, QVariant value) {
             interceptor.Invoke("setData$$#", "setData(const QString&, const QString&, const QVariant&)", typeof(void), typeof(string), source, typeof(string), key, typeof(QVariant), value);
         }
@@ -130,6 +137,30 @@ namespace Plasma {
         }
         public void RemoveAllSources() {
             interceptor.Invoke("removeAllSources", "removeAllSources()", typeof(void));
+        }
+        public void AddSource(Plasma.DataContainer source) {
+            interceptor.Invoke("addSource#", "addSource(Plasma::DataContainer*)", typeof(void), typeof(Plasma.DataContainer), source);
+        }
+        public Dictionary<string, Plasma.DataContainer> ContainerDict() {
+            return (Dictionary<string, Plasma.DataContainer>) interceptor.Invoke("containerDict", "containerDict() const", typeof(Dictionary<string, Plasma.DataContainer>));
+        }
+        public void SetName(string name) {
+            interceptor.Invoke("setName$", "setName(const QString&)", typeof(void), typeof(string), name);
+        }
+        public void SetIcon(string icon) {
+            interceptor.Invoke("setIcon$", "setIcon(const QString&)", typeof(void), typeof(string), icon);
+        }
+        public void ScheduleSourcesUpdated() {
+            interceptor.Invoke("scheduleSourcesUpdated", "scheduleSourcesUpdated()", typeof(void));
+        }
+        public void RemoveSource(string source) {
+            interceptor.Invoke("removeSource$", "removeSource(const QString&)", typeof(void), typeof(string), source);
+        }
+        public void UpdateAllSources() {
+            interceptor.Invoke("updateAllSources", "updateAllSources()", typeof(void));
+        }
+        public void ForceImmediateUpdateOfAllVisualizations() {
+            interceptor.Invoke("forceImmediateUpdateOfAllVisualizations", "forceImmediateUpdateOfAllVisualizations()", typeof(void));
         }
         ~DataEngineScript() {
             interceptor.Invoke("~DataEngineScript", "~DataEngineScript()", typeof(void));

@@ -21,6 +21,14 @@ namespace Plasma {
             AppearAnimation = 0,
             DisappearAnimation = 1,
             ActivateAnimation = 2,
+            FadeAnimation = 3,
+            GrowAnimation = 4,
+            PulseAnimation = 5,
+            RotationAnimation = 6,
+            RotationStackedAnimation = 7,
+            SlideAnimation = 8,
+            GeometryAnimation = 9,
+            ZoomAnimation = 10,
         }
         public enum CurveShape {
             EaseInCurve = 0,
@@ -35,97 +43,31 @@ namespace Plasma {
             FastSlideOutMovement = 3,
         }
         /// <remarks>
-        ///  Starts a standard animation on a QGraphicsItem.
-        ///  @arg item the item to animate in some fashion
-        ///  @arg anim the type of animation to perform
-        /// </remarks>        <return> the id of the animation
-        /// </return>
-        ///         <short>    Starts a standard animation on a QGraphicsItem.</short>
-        public int AnimateItem(IQGraphicsItem item, Plasma.Animator.Animation anim) {
-            return (int) interceptor.Invoke("animateItem#$", "animateItem(QGraphicsItem*, Plasma::Animator::Animation)", typeof(int), typeof(IQGraphicsItem), item, typeof(Plasma.Animator.Animation), anim);
+        ///  Register a widget as a scrolling widget.
+        ///  The widget will get animate scrolling with mouse dragging and mouse wheel.
+        ///  It must provide
+        ///  scrollValue, viewportGeometry and pageSize properties
+        /// <param> name="widget" the widget that offers a scrolling behaviour
+        /// </param></remarks>        <short>    Register a widget as a scrolling widget.</short>
+        public void RegisterScrollingManager(QGraphicsWidget widget) {
+            interceptor.Invoke("registerScrollingManager#", "registerScrollingManager(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Stops an item animation before the animation is complete.
-        ///  Note that it is not necessary to call
-        ///  this on normal completion of the animation.
-        ///  @arg id the id of the animation as returned by animateItem
-        ///      </remarks>        <short>    Stops an item animation before the animation is complete.</short>
-        public void StopItemAnimation(int id) {
-            interceptor.Invoke("stopItemAnimation$", "stopItemAnimation(int)", typeof(void), typeof(int), id);
+        ///  unregister the scrolling manager of a certain widget
+        /// <param> name="widget" the widget we don't want no longer animated
+        /// </param></remarks>        <short>    unregister the scrolling manager of a certain widget </short>
+        public void UnregisterScrollingManager(QGraphicsWidget widget) {
+            interceptor.Invoke("unregisterScrollingManager#", "unregisterScrollingManager(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
         /// <remarks>
-        ///  Starts a standard animation on a QGraphicsItem.
-        ///  @arg item the item to animate in some fashion
-        ///  @arg anim the type of animation to perform
-        /// </remarks>        <return> the id of the animation
-        /// </return>
-        ///         <short>    Starts a standard animation on a QGraphicsItem.</short>
-        public int MoveItem(IQGraphicsItem item, Plasma.Animator.Movement movement, QPoint destination) {
-            return (int) interceptor.Invoke("moveItem#$#", "moveItem(QGraphicsItem*, Plasma::Animator::Movement, const QPoint&)", typeof(int), typeof(IQGraphicsItem), item, typeof(Plasma.Animator.Movement), movement, typeof(QPoint), destination);
+        ///  Factory to build new animation objects. To control their behavior,
+        ///  check \ref AbstractAnimation properties.
+        /// </remarks>        <short>    Factory to build new animation objects.</short>
+        public static Plasma.Animation Create(Plasma.Animator.Animation type, QObject parent) {
+            return (Plasma.Animation) staticInterceptor.Invoke("create$#", "create(Plasma::Animator::Animation, QObject*)", typeof(Plasma.Animation), typeof(Plasma.Animator.Animation), type, typeof(QObject), parent);
         }
-        /// <remarks>
-        ///  Stops an item movement before the animation is complete.
-        ///  Note that it is not necessary to call
-        ///  this on normal completion of the animation.
-        ///  @arg id the id of the animation as returned by moveItem
-        ///      </remarks>        <short>    Stops an item movement before the animation is complete.</short>
-        public void StopItemMovement(int id) {
-            interceptor.Invoke("stopItemMovement$", "stopItemMovement(int)", typeof(void), typeof(int), id);
-        }
-        /// <remarks>
-        ///  Starts a custom animation, preventing the need to create a timeline
-        ///  with its own timer tick.
-        ///  @arg frames the number of frames this animation should persist for
-        ///  @arg duration the length, in milliseconds, the animation will take
-        ///  @arg curve the curve applied to the frame rate
-        ///  @arg receive the object that will handle the actual animation
-        ///  @arg method the method name of slot to be invoked on each update.
-        ///              It must take a qreal. So if the slot is animate(qreal),
-        ///              pass in "animate" as the method parameter.
-        ///              It has an optional integer paramenter that takes an
-        ///              integer that reapresents the animation id, useful if
-        ///              you want to manage multiple animations with a sigle slot
-        /// </remarks>        <return> an id that can be used to identify this animation.
-        ///      </return>
-        ///         <short>    Starts a custom animation, preventing the need to create a timeline  with its own timer tick.</short>
-        public int CustomAnimation(int frames, int duration, Plasma.Animator.CurveShape curve, QObject receiver, string method) {
-            return (int) interceptor.Invoke("customAnimation$$$#$", "customAnimation(int, int, Plasma::Animator::CurveShape, QObject*, const char*)", typeof(int), typeof(int), frames, typeof(int), duration, typeof(Plasma.Animator.CurveShape), curve, typeof(QObject), receiver, typeof(string), method);
-        }
-        /// <remarks>
-        ///  Stops a custom animation. Note that it is not necessary to call
-        ///  this on object destruction, as custom animations associated with
-        ///  a given QObject are cleaned up automatically on QObject destruction.
-        ///  @arg id the id of the animation as returned by customAnimation
-        ///      </remarks>        <short>    Stops a custom animation.</short>
-        public void StopCustomAnimation(int id) {
-            interceptor.Invoke("stopCustomAnimation$", "stopCustomAnimation(int)", typeof(void), typeof(int), id);
-        }
-        public int AnimateElement(IQGraphicsItem arg1, Plasma.Animator.Animation arg2) {
-            return (int) interceptor.Invoke("animateElement#$", "animateElement(QGraphicsItem*, Plasma::Animator::Animation)", typeof(int), typeof(IQGraphicsItem), arg1, typeof(Plasma.Animator.Animation), arg2);
-        }
-        public void StopElementAnimation(int id) {
-            interceptor.Invoke("stopElementAnimation$", "stopElementAnimation(int)", typeof(void), typeof(int), id);
-        }
-        public void SetInitialPixmap(int id, QPixmap pixmap) {
-            interceptor.Invoke("setInitialPixmap$#", "setInitialPixmap(int, const QPixmap&)", typeof(void), typeof(int), id, typeof(QPixmap), pixmap);
-        }
-        public QPixmap CurrentPixmap(int id) {
-            return (QPixmap) interceptor.Invoke("currentPixmap$", "currentPixmap(int)", typeof(QPixmap), typeof(int), id);
-        }
-        /// <remarks>
-        ///  Can be used to query if there are other animations happening. This way
-        ///  heavy operations can be delayed until all animations are finished.
-        /// </remarks>        <return> true if there are animations going on.
-        /// </return>
-        ///         <short>    Can be used to query if there are other animations happening.</short>
-        public bool IsAnimating() {
-            return (bool) interceptor.Invoke("isAnimating", "isAnimating() const", typeof(bool));
-        }
-        /// <remarks>
-        ///  Singleton accessor
-        /// </remarks>        <short>    Singleton accessor </short>
-        public static Plasma.Animator Self() {
-            return (Plasma.Animator) staticInterceptor.Invoke("self", "self()", typeof(Plasma.Animator));
+        public static Plasma.Animation Create(Plasma.Animator.Animation type) {
+            return (Plasma.Animation) staticInterceptor.Invoke("create$", "create(Plasma::Animator::Animation)", typeof(Plasma.Animation), typeof(Plasma.Animator.Animation), type);
         }
         protected new IAnimatorSignals Emit {
             get { return (IAnimatorSignals) Q_EMIT; }

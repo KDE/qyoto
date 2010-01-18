@@ -230,6 +230,10 @@ namespace Plasma {
         protected override bool SceneEventFilter(IQGraphicsItem watched, QEvent arg2) {
             return (bool) interceptor.Invoke("sceneEventFilter##", "sceneEventFilter(QGraphicsItem*, QEvent*)", typeof(bool), typeof(IQGraphicsItem), watched, typeof(QEvent), arg2);
         }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
         ~ExtenderItem() {
             interceptor.Invoke("~ExtenderItem", "~ExtenderItem()", typeof(void));
         }

@@ -44,6 +44,11 @@ namespace Plasma {
             RightBorder = 8,
             AllBorders = TopBorder|BottomBorder|LeftBorder|RightBorder,
         }
+        [Q_PROPERTY("Plasma::FrameSvg::EnabledBorders", "enabledBorders")]
+        public uint EnabledBorders {
+            get { return (uint) interceptor.Invoke("enabledBorders", "enabledBorders()", typeof(uint)); }
+            set { interceptor.Invoke("setEnabledBorders$", "setEnabledBorders(Plasma::FrameSvg::EnabledBorders)", typeof(void), typeof(uint), value); }
+        }
         /// <remarks>
         ///  Constructs a new FrameSvg that paints the proper named subelements
         ///  as borders. It may also be used as a regular Plasma.Svg object
@@ -65,21 +70,6 @@ namespace Plasma {
         ///          </remarks>        <short>    Loads a new Svg  @arg imagePath the new file          </short>
         public void SetImagePath(string path) {
             interceptor.Invoke("setImagePath$", "setImagePath(const QString&)", typeof(void), typeof(string), path);
-        }
-        /// <remarks>
-        ///  Sets what borders should be painted
-        ///  @arg flags borders we want to paint
-        ///          </remarks>        <short>    Sets what borders should be painted  @arg flags borders we want to paint          </short>
-        public void SetEnabledBorders(uint borders) {
-            interceptor.Invoke("setEnabledBorders$", "setEnabledBorders(const Plasma::FrameSvg::EnabledBorders)", typeof(void), typeof(uint), borders);
-        }
-        /// <remarks>
-        ///  Convenience method to get the enabled borders
-        /// </remarks>        <return> what borders are painted
-        ///          </return>
-        ///         <short>    Convenience method to get the enabled borders </short>
-        public uint EnabledBorders() {
-            return (uint) interceptor.Invoke("enabledBorders", "enabledBorders() const", typeof(uint));
         }
         /// <remarks>
         ///  Resize the frame maintaining the same border size

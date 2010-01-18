@@ -35,6 +35,8 @@ namespace Plasma {
             BackgroundColor = 2,
             ButtonTextColor = 4,
             ButtonBackgroundColor = 8,
+            LinkColor = 16,
+            VisitedLinkColor = 32,
         }
         public enum FontRole {
             DefaultFont = 0,
@@ -98,12 +100,12 @@ namespace Plasma {
             return (string) interceptor.Invoke("imagePath$", "imagePath(const QString&) const", typeof(string), typeof(string), name);
         }
         /// <remarks>
-        ///  Retreives the default wallpaper associated with this theme.
+        ///  Retrieves the default wallpaper associated with this theme.
         ///  @arg size the target height and width of the wallpaper; if an invalid size
         ///            is passed in, then a default size will be provided instead.
         /// </remarks>        <return> the full path to the wallpaper image
         ///          </return>
-        ///         <short>    Retreives the default wallpaper associated with this theme.</short>
+        ///         <short>    Retrieves the default wallpaper associated with this theme.</short>
         public string WallpaperPath(QSize size) {
             return (string) interceptor.Invoke("wallpaperPath#", "wallpaperPath(const QSize&) const", typeof(string), typeof(QSize), size);
         }
@@ -222,6 +224,22 @@ namespace Plasma {
         /// </param></remarks>        <short>    Insert specified pixmap into the cache.</short>
         public void InsertIntoCache(string key, QPixmap pix) {
             interceptor.Invoke("insertIntoCache$#", "insertIntoCache(const QString&, const QPixmap&)", typeof(void), typeof(string), key, typeof(QPixmap), pix);
+        }
+        /// <remarks>
+        ///  Insert specified pixmap into the cache.
+        ///  If the cache already contains pixmap with the specified key then it is
+        ///  overwritten.
+        ///  The actual insert is delayed for optimization reasons and the id
+        ///  parameter is used to discard repeated inserts in the delay time, useful
+        ///  when for instance the graphics to inser comes from a quickly resizing
+        ///  object: the frames between the start and destination sizes aren't
+        ///  useful in the cache and just cause overhead.
+        /// <param> name="key" the name to use in the cache for this pixmap
+        /// </param><param> name="pix" the pixmap data to store in the cache
+        /// </param><param> name="id" a name that identifies the caller class of this function in an unique fashion
+        /// </param></remarks>        <short>    Insert specified pixmap into the cache.</short>
+        public void InsertIntoCache(string key, QPixmap pix, string id) {
+            interceptor.Invoke("insertIntoCache$#$", "insertIntoCache(const QString&, const QPixmap&, const QString&)", typeof(void), typeof(string), key, typeof(QPixmap), pix, typeof(string), id);
         }
         /// <remarks>
         ///  Sets the maximum size of the cache (in kilobytes). If cache gets bigger

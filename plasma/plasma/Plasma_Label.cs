@@ -60,6 +60,20 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("Label", "Label()", typeof(void));
         }
+        /// <remarks>
+        ///  Set if the text on the label can be selected with the mouse
+        ///  @arg enable true if we want to manage text selection with the mouse
+        /// </remarks>        <short>    Set if the text on the label can be selected with the mouse </short>
+        public void SetTextSelectable(bool enable) {
+            interceptor.Invoke("setTextSelectable$", "setTextSelectable(bool)", typeof(void), typeof(bool), enable);
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the text is selectable with the mouse
+        /// </return>
+        ///         <short>   </short>
+        public bool TextSelectable() {
+            return (bool) interceptor.Invoke("textSelectable", "textSelectable() const", typeof(bool));
+        }
         [Q_SLOT("void dataUpdated(QString, Plasma::DataEngine::Data)")]
         public void DataUpdated(string sourceName, Dictionary<string, QVariant> data) {
             interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);
@@ -67,6 +81,26 @@ namespace Plasma {
         [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [SmokeMethod("mousePressEvent(QGraphicsSceneMouseEvent*)")]
+        protected override void MousePressEvent(QGraphicsSceneMouseEvent arg1) {
+            interceptor.Invoke("mousePressEvent#", "mousePressEvent(QGraphicsSceneMouseEvent*)", typeof(void), typeof(QGraphicsSceneMouseEvent), arg1);
+        }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+            interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("event(QEvent*)")]
+        protected override bool Event(QEvent arg1) {
+            return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
+        protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
+            interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
         }
         ~Label() {
             interceptor.Invoke("~Label", "~Label()", typeof(void));

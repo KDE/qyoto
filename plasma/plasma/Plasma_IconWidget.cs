@@ -118,7 +118,8 @@ namespace Plasma {
         /// <remarks>
         ///  Removes a previously set iconAction. The action will be removed from the widget
         ///  but will not be deleted.
-        ///      </remarks>        <short>    Removes a previously set iconAction.</short>
+        /// <param> name="the" QAction to be removed, if 0 all actions will be removed
+        ///      </param></remarks>        <short>    Removes a previously set iconAction.</short>
         public void RemoveIconAction(QAction action) {
             interceptor.Invoke("removeIconAction#", "removeIconAction(QAction*)", typeof(void), typeof(QAction), action);
         }
@@ -199,6 +200,14 @@ namespace Plasma {
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
             interceptor.Invoke("paint##", "paint(QPainter*, const QStyleOptionGraphicsItem*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option);
         }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
+        [SmokeMethod("sizeHint(Qt::SizeHint) const")]
+        protected override QSizeF SizeHint(Qt.SizeHint which) {
+            return (QSizeF) interceptor.Invoke("sizeHint$", "sizeHint(Qt::SizeHint) const", typeof(QSizeF), typeof(Qt.SizeHint), which);
+        }
         protected bool IsDown() {
             return (bool) interceptor.Invoke("isDown", "isDown()", typeof(bool));
         }
@@ -229,6 +238,10 @@ namespace Plasma {
         [SmokeMethod("sceneEventFilter(QGraphicsItem*, QEvent*)")]
         protected override bool SceneEventFilter(IQGraphicsItem watched, QEvent arg2) {
             return (bool) interceptor.Invoke("sceneEventFilter##", "sceneEventFilter(QGraphicsItem*, QEvent*)", typeof(bool), typeof(IQGraphicsItem), watched, typeof(QEvent), arg2);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
         }
         ~IconWidget() {
             interceptor.Invoke("~IconWidget", "~IconWidget()", typeof(void));

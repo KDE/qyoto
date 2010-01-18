@@ -11,7 +11,11 @@ namespace Plasma {
     ///  Be aware that runners have to be thread-safe. This is due to the fact that
     ///  each runner is executed in its own thread for each new term. Thus, a runner
     ///  may be executed more than once at the same time. See match() for details.
-    ///  </remarks>        <short> An abstract base class for Plasma Runner plugins. </short>
+    ///  To let krunner expose a global shortcut for the single runner query mode, the runner
+    ///  must set the "X-Plasma-AdvertiseSingleRunnerMode" key to true in the .desktop file 
+    ///  and set a default syntax. See setDefaultSyntax() for details.
+    ///   See <see cref="IAbstractRunnerSignals"></see> for signals emitted by AbstractRunner
+    /// </remarks>        <short> An abstract base class for Plasma Runner plugins. </short>
     [SmokeClass("Plasma::AbstractRunner")]
     public abstract class AbstractRunner : QObject {
         protected AbstractRunner(Type dummy) : base((Type) null) {}
@@ -34,7 +38,7 @@ namespace Plasma {
         // QMutex* bigLock(); >>>> NOT CONVERTED
         /// <remarks>
         ///  This is the main query method. It should trigger creation of
-        ///  QueryMatch instances through RunnerContext.AddMatch and 
+        ///  QueryMatch instances through RunnerContext.AddMatch and
         ///  RunnerContext.AddMatches. It is called internally by performMatch().
         ///  If the runner can run precisely the requested term (RunnerContext.Query()),
         ///  it should create an exact match by setting the type to RunnerContext.ExactMatch.
@@ -46,7 +50,7 @@ namespace Plasma {
         ///  method is called again. Thus, it needs to be thread-safe. Also, all matches need
         ///  to be reported once this method returns. Asyncroneous runners therefore need
         ///  to make use of a local event loop to wait for all matches.
-        ///  It is recommended to use local status data in async runners. The simplest way is 
+        ///  It is recommended to use local status data in async runners. The simplest way is
         ///  to have a separate class doing all the work like so:
         ///  <pre>
         ///  void MyFancyAsyncRunner.Match( RunnerContext& context )
@@ -85,9 +89,9 @@ namespace Plasma {
         }
         /// <remarks>
         ///  If the runner has options that the user can interact with to modify
-        ///  what happens when run or one of the actions created in fillMatches
+        ///  what happens when run or one of the actions created in match
         ///  is called, the runner should return true
-        ///          </remarks>        <short>    If the runner has options that the user can interact with to modify  what happens when run or one of the actions created in fillMatches  is called, the runner should return true          </short>
+        ///          </remarks>        <short>    If the runner has options that the user can interact with to modify  what happens when run or one of the actions created in match  is called, the runner should return true          </short>
         public bool HasRunOptions() {
             return (bool) interceptor.Invoke("hasRunOptions", "hasRunOptions()", typeof(bool));
         }
@@ -193,6 +197,13 @@ namespace Plasma {
         ///         <short>   </short>
         public List<Plasma.RunnerSyntax> Syntaxes() {
             return (List<Plasma.RunnerSyntax>) interceptor.Invoke("syntaxes", "syntaxes() const", typeof(List<Plasma.RunnerSyntax>));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the default syntax for the runner or 0 if no default syntax has been defined
+        /// </return>
+        ///         <short>   </short>
+        public Plasma.RunnerSyntax DefaultSyntax() {
+            return (Plasma.RunnerSyntax) interceptor.Invoke("defaultSyntax", "defaultSyntax() const", typeof(Plasma.RunnerSyntax));
         }
         /// <remarks>
         ///  Constructs a Runner object. Since AbstractRunner has pure virtuals,
@@ -305,13 +316,28 @@ namespace Plasma {
             interceptor.Invoke("clearActions", "clearActions()", typeof(void));
         }
         /// <remarks>
-        ///  Adds a registed syntax that this runner understands. This is used to
+        ///  Adds a registered syntax that this runner understands. This is used to
         ///  display to the user what this runner can understand and how it can be
         ///  used.
         /// <param> name="syntax" the syntax to register
-        /// </param></remarks>        <short>    Adds a registed syntax that this runner understands.</short>
+        /// </param></remarks>        <short>    Adds a registered syntax that this runner understands.</short>
         protected void AddSyntax(Plasma.RunnerSyntax syntax) {
             interceptor.Invoke("addSyntax#", "addSyntax(const Plasma::RunnerSyntax&)", typeof(void), typeof(Plasma.RunnerSyntax), syntax);
+        }
+        /// <remarks>
+        ///  Set <code>syntax</code> as the default syntax for the runner; the default syntax will be
+        ///  substituted to the empty query in single runner mode. This is also used to
+        ///  display to the user what this runner can understand and how it can be
+        ///  used.
+        ///  The default syntax is automatically added to the list of registered syntaxes, there
+        ///  is no need to add it using addSyntax.
+        ///  Note that there can be only one default syntax; if called more than once, the last 
+        ///  call will determine the default syntax.
+        ///  A default syntax (even trivial) is required to advertise single runner mode
+        /// <param> name="syntax" the syntax to register and to set as default
+        /// </param></remarks>        <short>    Set <code>syntax</code> as the default syntax for the runner; the default syntax will be  substituted to the empty query in single runner mode.</short>
+        protected void SetDefaultSyntax(Plasma.RunnerSyntax syntax) {
+            interceptor.Invoke("setDefaultSyntax#", "setDefaultSyntax(const Plasma::RunnerSyntax&)", typeof(void), typeof(Plasma.RunnerSyntax), syntax);
         }
         /// <remarks>
         ///  Sets the list of syntaxes; passing in an empty list effectively clears
@@ -320,6 +346,23 @@ namespace Plasma {
         /// </param></remarks>        <short>    Sets the list of syntaxes; passing in an empty list effectively clears  the syntaxes.</short>
         protected void SetSyntaxes(List<Plasma.RunnerSyntax> syns) {
             interceptor.Invoke("setSyntaxes?", "setSyntaxes(const QList<Plasma::RunnerSyntax>&)", typeof(void), typeof(List<Plasma.RunnerSyntax>), syns);
+        }
+        /// <remarks>
+        ///  Loads the given DataEngine
+        ///  Tries to load the data engine given by <code>name.</code>  Each engine is
+        ///  only loaded once, and that instance is re-used on all subsequent
+        ///  requests.
+        ///  If the data engine was not found, an invalid data engine is returned
+        ///  (see DataEngine.IsValid()).
+        ///  Note that you should <em>not</em> delete the returned engine.
+        /// <param> name="name" Name of the data engine to load
+        /// </param></remarks>        <return> pointer to the data engine if it was loaded,
+        ///          or an invalid data engine if the requested engine
+        ///          could not be loaded
+        /// </return>
+        ///         <short>    Loads the given DataEngine </short>
+        protected Plasma.DataEngine DataEngine(string name) {
+            return (Plasma.DataEngine) interceptor.Invoke("dataEngine$", "dataEngine(const QString&) const", typeof(Plasma.DataEngine), typeof(string), name);
         }
         [Q_SLOT("void init()")]
         protected void Init() {
@@ -341,5 +384,22 @@ namespace Plasma {
     }
 
     public interface IAbstractRunnerSignals : IQObjectSignals {
+        /// <remarks>
+        ///  This signal is emitted when matching is about to commence, giving runners
+        ///  an opportunity to prepare themselves, e.g. loading data sets or preparing
+        ///  IPC or network connections. This method should be fast so as not to cause
+        ///  slow downs. Things that take longer or which should be loaded once and
+        ///  remain extant for the lifespan of the AbstractRunner should be done in init().
+        /// </remarks>        <short>    This signal is emitted when matching is about to commence, giving runners  an opportunity to prepare themselves, e.</short>
+        ///         <see> init</see>
+        [Q_SIGNAL("void prepare()")]
+        void Prepare();
+        /// <remarks>
+        ///  This signal is emitted when a session of matches is complete, giving runners
+        ///  the opportunity to tear down anything set up as a result of the prepare()
+        ///  method.
+        /// </remarks>        <short>    This signal is emitted when a session of matches is complete, giving runners  the opportunity to tear down anything set up as a result of the prepare()  method.</short>
+        [Q_SIGNAL("void teardown()")]
+        void Teardown();
     }
 }

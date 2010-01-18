@@ -53,6 +53,13 @@ namespace Plasma {
         public void SetVerticalScrollBarPolicy(Qt.ScrollBarPolicy policy) {
             interceptor.Invoke("setVerticalScrollBarPolicy$", "setVerticalScrollBarPolicy(Qt::ScrollBarPolicy)", typeof(void), typeof(Qt.ScrollBarPolicy), policy);
         }
+        /// <remarks>
+        ///  Allows appending text to the text browser
+        /// </remarks>        <short>    Allows appending text to the text browser </short>
+        [Q_SLOT("void append(QString)")]
+        public void Append(string text) {
+            interceptor.Invoke("append$", "append(const QString&)", typeof(void), typeof(string), text);
+        }
         [Q_SLOT("void dataUpdated(QString, Plasma::DataEngine::Data)")]
         public void DataUpdated(string sourceName, Dictionary<string, QVariant> data) {
             interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);
@@ -60,6 +67,18 @@ namespace Plasma {
         [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [SmokeMethod("wheelEvent(QGraphicsSceneWheelEvent*)")]
+        protected override void WheelEvent(QGraphicsSceneWheelEvent arg1) {
+            interceptor.Invoke("wheelEvent#", "wheelEvent(QGraphicsSceneWheelEvent*)", typeof(void), typeof(QGraphicsSceneWheelEvent), arg1);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
+        protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
+            interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
         }
         ~TextBrowser() {
             interceptor.Invoke("~TextBrowser", "~TextBrowser()", typeof(void));

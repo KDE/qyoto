@@ -100,6 +100,9 @@ namespace Plasma {
         public string ImplementationApi() {
             return (string) interceptor.Invoke("implementationApi", "implementationApi() const", typeof(string));
         }
+        public KUrl RemoteLocation() {
+            return (KUrl) interceptor.Invoke("remoteLocation", "remoteLocation() const", typeof(KUrl));
+        }
         public string type() {
             return (string) interceptor.Invoke("type", "type() const", typeof(string));
         }
@@ -185,6 +188,12 @@ namespace Plasma {
         ///      </remarks>        <short>    Set the required version.</short>
         public void SetRequiredVersion(string arg1) {
             interceptor.Invoke("setRequiredVersion$", "setRequiredVersion(const QString&)", typeof(void), typeof(string), arg1);
+        }
+        /// <remarks>
+        ///  Set the url where this package is hosted.
+        ///      </remarks>        <short>    Set the url where this package is hosted.</short>
+        public void SetRemoteLocation(KUrl arg1) {
+            interceptor.Invoke("setRemoteLocation#", "setRemoteLocation(const KUrl&)", typeof(void), typeof(KUrl), arg1);
         }
         /// <remarks>
         ///  Set the type of the package. If not defined this

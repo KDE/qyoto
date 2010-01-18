@@ -1,3 +1,7 @@
+2010-01-18  Richard Dale  <richard.j.dale@gmail.com>
+* Regenerate the Plasma .cs sources from the KDE 4.4 headers
+* Get the code to build, although it needs more work
+
 2009-07-26  Richard Dale  <richard.j.dale@gmail.com>
 * Add a C# version of the Extender Plugin Applet tutorial on Techbase
 * Fix the PlasmaScripting.Applet.Extender() method

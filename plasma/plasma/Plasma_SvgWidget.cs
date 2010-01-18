@@ -58,6 +58,10 @@ namespace Plasma {
         protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
             interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
         }
+        [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
+        public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
         ~SvgWidget() {
             interceptor.Invoke("~SvgWidget", "~SvgWidget()", typeof(void));
         }

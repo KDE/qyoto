@@ -61,6 +61,13 @@ namespace Plasma {
             return (Dictionary<string, QVariant>) interceptor.Invoke("parameters", "parameters() const", typeof(Dictionary<string, QVariant>));
         }
         /// <remarks>
+        /// </remarks>        <return> the identity of the caller of this operation
+        ///      </return>
+        ///         <short>   </short>
+        // public Plasma.Credentials Identity() {
+        //     return (Plasma.Credentials) interceptor.Invoke("identity", "identity() const", typeof(Plasma.Credentials));
+        // }
+        /// <remarks>
         ///  Returns the result of the operation
         ///  The result will be invalid if the job has not completed yet, or
         ///  if the job does not have a meaningful result.

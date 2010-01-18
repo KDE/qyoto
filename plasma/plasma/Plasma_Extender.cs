@@ -122,11 +122,11 @@ namespace Plasma {
             return (bool) interceptor.Invoke("isEmpty", "isEmpty() const", typeof(bool));
         }
         /// <remarks>
-        ///  Use this function to instruct the extender on how to render it's items. Usually you will
+        ///  Use this function to instruct the extender on how to render its items. Usually you will
         ///  want to call this function in your applet's constraintsEvent, allthough this is already
         ///  done for you when using PopupApplet as base class for your applet. Defaults to NoBorders.
         /// <param> name="appearance" the way this extender should look.
-        ///          </param></remarks>        <short>    Use this function to instruct the extender on how to render it's items.</short>
+        ///          </param></remarks>        <short>    Use this function to instruct the extender on how to render its items.</short>
         public void SetAppearance(Plasma.Extender.Appearance appearance) {
             interceptor.Invoke("setAppearance$", "setAppearance(Plasma::Extender::Appearance)", typeof(void), typeof(Plasma.Extender.Appearance), appearance);
         }
@@ -143,6 +143,13 @@ namespace Plasma {
         ///         <short>   </short>
         public List<Plasma.ExtenderGroup> Groups() {
             return (List<Plasma.ExtenderGroup>) interceptor.Invoke("groups", "groups() const", typeof(List<Plasma.ExtenderGroup>));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the Applet this Extender is associated with
+        /// </return>
+        ///         <short>   </short>
+        public Plasma.Applet Applet() {
+            return (Plasma.Applet) interceptor.Invoke("applet", "applet() const", typeof(Plasma.Applet));
         }
         /// <remarks>
         ///  Get's called after an item has been added to this extender. The bookkeeping has already
@@ -211,8 +218,8 @@ namespace Plasma {
         /// <remarks>
         ///  This function get's called on every item to determine which background border's to
         ///  render.
-        /// <param> name="item" the item for which it's position or extender has changed.
-        /// </param></remarks>        <return> the borders that have to be enabled on it's background.
+        /// <param> name="item" the item for which its position or extender has changed.
+        /// </param></remarks>        <return> the borders that have to be enabled on its background.
         ///          </return>
         ///         <short>    This function get's called on every item to determine which background border's to  render.</short>
         [SmokeMethod("enabledBordersForItem(Plasma::ExtenderItem*) const")]

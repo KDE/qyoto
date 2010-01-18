@@ -36,6 +36,7 @@ namespace Plasma {
         [Q_PROPERTY("KLineEdit*", "nativeWidget")]
         public KLineEdit NativeWidget {
             get { return (KLineEdit) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KLineEdit)); }
+            set { interceptor.Invoke("setNativeWidget#", "setNativeWidget(KLineEdit*)", typeof(void), typeof(KLineEdit), value); }
         }
         public LineEdit(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
@@ -44,6 +45,22 @@ namespace Plasma {
         public LineEdit() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("LineEdit", "LineEdit()", typeof(void));
+        }
+        [SmokeMethod("hoverEnterEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverEnterEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverEnterEvent#", "hoverEnterEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("hoverLeaveEvent(QGraphicsSceneHoverEvent*)")]
+        protected override void HoverLeaveEvent(QGraphicsSceneHoverEvent arg1) {
+            interceptor.Invoke("hoverLeaveEvent#", "hoverLeaveEvent(QGraphicsSceneHoverEvent*)", typeof(void), typeof(QGraphicsSceneHoverEvent), arg1);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+        protected new virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
+            interceptor.Invoke("paint###", "paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", typeof(void), typeof(QPainter), painter, typeof(QStyleOptionGraphicsItem), option, typeof(QWidget), widget);
         }
         ~LineEdit() {
             interceptor.Invoke("~LineEdit", "~LineEdit()", typeof(void));
@@ -63,5 +80,10 @@ namespace Plasma {
         void ReturnPressed();
         [Q_SIGNAL("void textEdited(QString)")]
         void TextEdited(string text);
+        /// <remarks>
+        ///  Emitted when the text changes
+        /// </remarks>        <short>    Emitted when the text changes </short>
+        [Q_SIGNAL("void textChanged(QString)")]
+        void TextChanged(string text);
     }
 }

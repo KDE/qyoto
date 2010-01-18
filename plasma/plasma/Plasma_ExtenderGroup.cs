@@ -24,6 +24,16 @@ namespace Plasma {
             get { return (bool) interceptor.Invoke("autoHide", "autoHide()", typeof(bool)); }
             set { interceptor.Invoke("setAutoHide$", "setAutoHide(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("bool", "groupCollapsed")]
+        public bool GroupCollapsed {
+            get { return (bool) interceptor.Invoke("isGroupCollapsed", "isGroupCollapsed()", typeof(bool)); }
+            set { interceptor.Invoke("setGroupCollapsed$", "setGroupCollapsed(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("bool", "autoCollapse")]
+        public bool AutoCollapse {
+            get { return (bool) interceptor.Invoke("isAutoCollapse", "isAutoCollapse()", typeof(bool)); }
+            set { interceptor.Invoke("setAutoCollapse$", "setAutoCollapse(bool)", typeof(void), typeof(bool), value); }
+        }
         /// <remarks>
         ///  Creates a group.
         /// <param> name="applet" The applet this group is part of. Null is not allowed here.
@@ -42,6 +52,13 @@ namespace Plasma {
         ///         <short>   </short>
         public List<Plasma.ExtenderItem> Items() {
             return (List<Plasma.ExtenderItem>) interceptor.Invoke("items", "items() const", typeof(List<Plasma.ExtenderItem>));
+        }
+        /// <remarks>
+        ///  expands or collapses this group
+        /// </remarks>        <short>    expands or collapses this group </short>
+        [Q_SLOT("void setGroupCollapsed(bool)")]
+        public void SetGroupCollapsed(bool collapsed) {
+            interceptor.Invoke("setGroupCollapsed$", "setGroupCollapsed(bool)", typeof(void), typeof(bool), collapsed);
         }
         /// <remarks>
         ///  Expands this group to show all ExtenderItems that are contained in this group.

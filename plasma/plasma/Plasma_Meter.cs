@@ -154,6 +154,27 @@ namespace Plasma {
             interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);
         }
         /// <remarks>
+        ///  Set maximum value for the meter
+        ///      </remarks>        <short>    Set maximum value for the meter      </short>
+        [Q_SLOT("void setMaximum(int)")]
+        public void SetMaximum(int maximum) {
+            interceptor.Invoke("setMaximum$", "setMaximum(int)", typeof(void), typeof(int), maximum);
+        }
+        /// <remarks>
+        ///  Set minimum value for the meter
+        ///      </remarks>        <short>    Set minimum value for the meter      </short>
+        [Q_SLOT("void setMinimum(int)")]
+        public void SetMinimum(int minimum) {
+            interceptor.Invoke("setMinimum$", "setMinimum(int)", typeof(void), typeof(int), minimum);
+        }
+        /// <remarks>
+        ///  Set value for the meter
+        ///      </remarks>        <short>    Set value for the meter      </short>
+        [Q_SLOT("void setValue(int)")]
+        public void SetValue(int value) {
+            interceptor.Invoke("setValue$", "setValue(int)", typeof(void), typeof(int), value);
+        }
+        /// <remarks>
         ///  Reimplemented from Plasma.Widget
         ///      </remarks>        <short>    Reimplemented from Plasma.Widget      </short>
         [SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]

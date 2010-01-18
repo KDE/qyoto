@@ -25,7 +25,7 @@ namespace Plasma {
             set { interceptor.Invoke("setUnit$", "setUnit(QString)", typeof(void), typeof(string), value); }
         }
         [Q_PROPERTY("qreal", "scale")]
-        public double Scale {
+        public new double Scale {
             get { return (double) interceptor.Invoke("scaledBy", "scaledBy()", typeof(double)); }
             set { interceptor.Invoke("scale$", "scale(qreal)", typeof(void), typeof(double), value); }
         }
@@ -75,7 +75,7 @@ namespace Plasma {
             set { interceptor.Invoke("setFontColor#", "setFontColor(QColor)", typeof(void), typeof(QColor), value); }
         }
         [Q_PROPERTY("QFont", "font")]
-        public new QFont Font {
+        public QFont Font {
             get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
             set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
         }

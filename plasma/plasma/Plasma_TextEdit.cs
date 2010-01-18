@@ -32,6 +32,12 @@ namespace Plasma {
         [Q_PROPERTY("KTextEdit*", "nativeWidget")]
         public KTextEdit NativeWidget {
             get { return (KTextEdit) interceptor.Invoke("nativeWidget", "nativeWidget()", typeof(KTextEdit)); }
+            set { interceptor.Invoke("setNativeWidget#", "setNativeWidget(KTextEdit*)", typeof(void), typeof(KTextEdit), value); }
+        }
+        [Q_PROPERTY("bool", "readOnly")]
+        public bool ReadOnly {
+            get { return (bool) interceptor.Invoke("isReadOnly", "isReadOnly()", typeof(bool)); }
+            set { interceptor.Invoke("setReadOnly$", "setReadOnly(bool)", typeof(void), typeof(bool), value); }
         }
         public TextEdit(QGraphicsWidget parent) : this((Type) null) {
             CreateProxy();
@@ -41,6 +47,13 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("TextEdit", "TextEdit()", typeof(void));
         }
+        /// <remarks>
+        ///  Allows appending text to the text browser
+        /// </remarks>        <short>    Allows appending text to the text browser </short>
+        [Q_SLOT("void append(QString)")]
+        public void Append(string text) {
+            interceptor.Invoke("append$", "append(const QString&)", typeof(void), typeof(string), text);
+        }
         [Q_SLOT("void dataUpdated(QString, Plasma::DataEngine::Data)")]
         public void DataUpdated(string sourceName, Dictionary<string, QVariant> data) {
             interceptor.Invoke("dataUpdated$?", "dataUpdated(const QString&, const QHash<QString,QVariant>&)", typeof(void), typeof(string), sourceName, typeof(Dictionary<string, QVariant>), data);
@@ -48,6 +61,14 @@ namespace Plasma {
         [SmokeMethod("resizeEvent(QGraphicsSceneResizeEvent*)")]
         protected override void ResizeEvent(QGraphicsSceneResizeEvent arg1) {
             interceptor.Invoke("resizeEvent#", "resizeEvent(QGraphicsSceneResizeEvent*)", typeof(void), typeof(QGraphicsSceneResizeEvent), arg1);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
+        }
+        [SmokeMethod("contextMenuEvent(QGraphicsSceneContextMenuEvent*)")]
+        protected override void ContextMenuEvent(QGraphicsSceneContextMenuEvent arg1) {
+            interceptor.Invoke("contextMenuEvent#", "contextMenuEvent(QGraphicsSceneContextMenuEvent*)", typeof(void), typeof(QGraphicsSceneContextMenuEvent), arg1);
         }
         ~TextEdit() {
             interceptor.Invoke("~TextEdit", "~TextEdit()", typeof(void));

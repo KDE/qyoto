@@ -73,7 +73,7 @@ namespace Plasma {
             set { interceptor.Invoke("setConfigurationRequired$", "setConfigurationRequired(bool)", typeof(void), typeof(bool), value); }
         }
         [Q_PROPERTY("QRectF", "geometry")]
-        public new QRectF Geometry {
+        public QRectF Geometry {
             get { return (QRectF) interceptor.Invoke("geometry", "geometry()", typeof(QRectF)); }
             set { interceptor.Invoke("setGeometry#", "setGeometry(QRectF)", typeof(void), typeof(QRectF), value); }
         }
@@ -81,12 +81,9 @@ namespace Plasma {
         public bool ShouldConserveResources {
             get { return (bool) interceptor.Invoke("shouldConserveResources", "shouldConserveResources()", typeof(bool)); }
         }
-        /// <remarks>
-        /// </remarks>        <return> the id of this applet
-        ///          </return>
-        ///         <short>   </short>
-        public uint Id() {
-            return (uint) interceptor.Invoke("id", "id() const", typeof(uint));
+        [Q_PROPERTY("uint", "id")]
+        public new uint Id {
+            get { return (uint) interceptor.Invoke("id", "id()", typeof(uint)); }
         }
         /// <remarks>
         ///  Returns the KConfigGroup to access the applets configuration.
@@ -207,6 +204,15 @@ namespace Plasma {
         ///         <short>    Reccomended position for a popup window like a menu or a tooltip  given its size </short>
         public QPoint PopupPosition(QSize s) {
             return (QPoint) interceptor.Invoke("popupPosition#", "popupPosition(const QSize&) const", typeof(QPoint), typeof(QSize), s);
+        }
+        /// <remarks>
+        /// <param> name="s" size of the popup
+        /// </param><param> name="alignment" alignment of the popup, valid flags are Qt.AlignLeft, Qt.AlignRight and Qt.AlignCenter
+        /// </param></remarks>        <return> reccomended position
+        ///          </return>
+        ///         <short>   </short>
+        public QPoint PopupPosition(QSize s, Qt.AlignmentFlag alignment) {
+            return (QPoint) interceptor.Invoke("popupPosition#$", "popupPosition(const QSize&, Qt::AlignmentFlag) const", typeof(QPoint), typeof(QSize), s, typeof(Qt.AlignmentFlag), alignment);
         }
         /// <remarks>
         ///  Called when any of the geometry constraints have been updated.
@@ -417,7 +423,7 @@ namespace Plasma {
             interceptor.Invoke("removeAssociatedWidget#", "removeAssociatedWidget(QWidget*)", typeof(void), typeof(QWidget), widget);
         }
         /// <remarks>
-        ///  Gets called when and extender item has to be initialized after a plasma restart. If you
+        ///  Gets called when an extender item has to be initialized after a plasma restart. If you
         ///  create ExtenderItems in your applet, you should implement this function to again create
         ///  the widget that should be shown in this extender item. This function might look something
         ///  like this:
@@ -429,7 +435,7 @@ namespace Plasma {
         ///  You can also add one or more custom qactions to this extender item in this function.
         ///  Note that by default, not all ExtenderItems are persistent. Only items that are detached,
         ///  will have their configuration stored when plasma exits.
-        ///          </remarks>        <short>    Gets called when and extender item has to be initialized after a plasma restart.</short>
+        ///          </remarks>        <short>    Gets called when an extender item has to be initialized after a plasma restart.</short>
         [SmokeMethod("initExtenderItem(Plasma::ExtenderItem*)")]
         public virtual void InitExtenderItem(Plasma.ExtenderItem item) {
             interceptor.Invoke("initExtenderItem#", "initExtenderItem(Plasma::ExtenderItem*)", typeof(void), typeof(Plasma.ExtenderItem), item);
@@ -495,6 +501,47 @@ namespace Plasma {
         /// </remarks>        <short>    Returns true if the applet is allowed to perform functions covered by the given constraint  eg.</short>
         public bool HasAuthorization(string constraint) {
             return (bool) interceptor.Invoke("hasAuthorization$", "hasAuthorization(const QString&) const", typeof(bool), typeof(string), constraint);
+        }
+        /// <remarks>
+        ///  Sets an application associated to this applet, that will be
+        ///  regarded as a full view of what is represented in the applet
+        /// <param> name="string" the name of the application. it can be
+        ///       <li>a</li> name understood by KService.ServiceByDesktopName
+        ///         (e.g. "konqueror")
+        ///       <li>a</li> command in $PATH
+        ///       <li>or</li> an absolute path to an executable
+        /// </param></remarks>        <short>    Sets an application associated to this applet, that will be  regarded as a full view of what is represented in the applet </short>
+        public void SetAssociatedApplication(string arg1) {
+            interceptor.Invoke("setAssociatedApplication$", "setAssociatedApplication(const QString&)", typeof(void), typeof(string), arg1);
+        }
+        /// <remarks>
+        ///  Sets a list of urls associated to this application,
+        ///  they will be used as parameters for the associated application
+        /// <param> name="urls"          </param></remarks>        <short>    Sets a list of urls associated to this application,  they will be used as parameters for the associated application </short>
+        ///         <see> setAssociatedApplication</see>
+        public void SetAssociatedApplicationUrls(List<KUrl> urls) {
+            interceptor.Invoke("setAssociatedApplicationUrls?", "setAssociatedApplicationUrls(const KUrl::List&)", typeof(void), typeof(List<KUrl>), urls);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the application associated to this applet
+        /// </return>
+        ///         <short>   </short>
+        public string AssociatedApplication() {
+            return (string) interceptor.Invoke("associatedApplication", "associatedApplication() const", typeof(string));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the urls associated to this applet
+        /// </return>
+        ///         <short>   </short>
+        public List<KUrl> AssociatedApplicationUrls() {
+            return (List<KUrl>) interceptor.Invoke("associatedApplicationUrls", "associatedApplicationUrls() const", typeof(List<KUrl>));
+        }
+        /// <remarks>
+        /// </remarks>        <return> true if the applet has a valid associated application or urls
+        /// </return>
+        ///         <short>   </short>
+        public bool HasValidAssociatedApplication() {
+            return (bool) interceptor.Invoke("hasValidAssociatedApplication", "hasValidAssociatedApplication() const", typeof(bool));
         }
         /// <remarks>
         ///  Sets the immutability type for this applet (not immutable,
@@ -588,6 +635,50 @@ namespace Plasma {
         [Q_SLOT("QList<QVariant> startupArguments()")]
         public List<QVariant> StartupArguments() {
             return (List<QVariant>) interceptor.Invoke("startupArguments", "startupArguments() const", typeof(List<QVariant>));
+        }
+        /// <remarks>
+        /// </remarks>        <return> the status of the applet
+        /// </return>
+        ///         <short>   </short>
+        [Q_SLOT("Plasma::ItemStatus status()")]
+        public Plasma.ItemStatus Status() {
+            return (Plasma.ItemStatus) interceptor.Invoke("status", "status() const", typeof(Plasma.ItemStatus));
+        }
+        /// <remarks>
+        ///  sets the status for this applet
+        /// </remarks>        <short>    sets the status for this applet </short>
+        [Q_SLOT("void setStatus(ItemStatus)")]
+        public void SetStatus(Plasma.ItemStatus stat) {
+            interceptor.Invoke("setStatus$", "setStatus(const Plasma::ItemStatus)", typeof(void), typeof(Plasma.ItemStatus), stat);
+        }
+        /// <remarks>
+        ///  Publishes and optionally announces this applet on the network for remote access.
+        /// <param> name="methods" the methods to use for announcing this applet.
+        /// </param><param> name="resourceName" the name under which this applet will be published (has to be unique
+        ///  for each machine)
+        ///          </param></remarks>        <short>    Publishes and optionally announces this applet on the network for remote access.</short>
+        [Q_SLOT("void publish(Plasma::AnnouncementMethods, QString)")]
+        public void Publish(uint methods, string resourceName) {
+            interceptor.Invoke("publish$$", "publish(Plasma::AnnouncementMethods, const QString&)", typeof(void), typeof(uint), methods, typeof(string), resourceName);
+        }
+        [Q_SLOT("void unpublish()")]
+        public void Unpublish() {
+            interceptor.Invoke("unpublish", "unpublish()", typeof(void));
+        }
+        [Q_SLOT("bool isPublished()")]
+        public bool IsPublished() {
+            return (bool) interceptor.Invoke("isPublished", "isPublished() const", typeof(bool));
+        }
+        /// <remarks>
+        ///  Open the application associated to this applet, if it's not set
+        ///  but some urls are, open those urls with the proper application
+        ///  for their mimetype
+        /// </remarks>        <short>    Open the application associated to this applet, if it's not set  but some urls are, open those urls with the proper application  for their mimetype </short>
+        ///         <see> setAssociatedApplication</see>
+        ///         <see> setAssociatedApplicationUrls</see>
+        [Q_SLOT("void runAssociatedApplication()")]
+        public void RunAssociatedApplication() {
+            interceptor.Invoke("runAssociatedApplication", "runAssociatedApplication()", typeof(void));
         }
         /// <remarks>
         ///  This constructor is to be used with the plugin loading systems
@@ -830,6 +921,14 @@ namespace Plasma {
             return (List<KPluginInfo>) staticInterceptor.Invoke("listAppletInfoForMimetype$", "listAppletInfoForMimetype(const QString&)", typeof(List<KPluginInfo>), typeof(string), mimetype);
         }
         /// <remarks>
+        ///  Returns a list of all known applets associated with a certain URL.
+        /// </remarks>        <return> list of applets
+        /// </return>
+        ///         <short>    Returns a list of all known applets associated with a certain URL.</short>
+        public static List<KPluginInfo> ListAppletInfoForUrl(QUrl url) {
+            return (List<KPluginInfo>) staticInterceptor.Invoke("listAppletInfoForUrl#", "listAppletInfoForUrl(const QUrl&)", typeof(List<KPluginInfo>), typeof(QUrl), url);
+        }
+        /// <remarks>
         ///  Returns a list of all the categories used by installed applets.
         /// <param> name="parentApp" the application to filter applets on. Uses the
         ///                   X-KDE-ParentApp entry (if any) in the plugin info.
@@ -850,7 +949,7 @@ namespace Plasma {
             return (List<string>) staticInterceptor.Invoke("listCategories", "listCategories()", typeof(List<string>));
         }
         /// <remarks>
-        ///  Attempts to load an apppet from a package
+        ///  Attempts to load an applet from a package
         ///  Returns a pointer to the applet if successful.
         ///  The caller takes responsibility for the applet, including
         ///  deleting it when no longer needed.
@@ -860,7 +959,7 @@ namespace Plasma {
         /// </param><param> name="args" to send the applet extra arguments
         /// </param></remarks>        <return> a pointer to the loaded applet, or 0 on load failure
         /// </return>
-        ///         <short>    Attempts to load an apppet from a package </short>
+        ///         <short>    Attempts to load an applet from a package </short>
         public static Plasma.Applet LoadPlasmoid(string path, uint appletId, List<QVariant> args) {
             return (Plasma.Applet) staticInterceptor.Invoke("loadPlasmoid$$?", "loadPlasmoid(const QString&, uint, const QList<QVariant>&)", typeof(Plasma.Applet), typeof(string), path, typeof(uint), appletId, typeof(List<QVariant>), args);
         }
@@ -978,6 +1077,11 @@ namespace Plasma {
         void Activate();
         /// <remarks>
         ///  Emitted when the user clicked on a button of the message overlay
+        ///  Since the signal passes the type MessageButton without specifying
+        ///  the Plasma namespace and since automoc is pedantic if you want to
+        ///  use this signal outside the Plasma namespace you have to declare
+        ///  "typedef Plasma.MessageButton MessageButton" and use the typedef
+        ///  in your slot and in the connect.
         /// </remarks>        <short>    Emitted when the user clicked on a button of the message overlay </short>
         ///         <see> showMessage</see>
         ///         <see> Plasma.MessageButton</see>
@@ -989,9 +1093,19 @@ namespace Plasma {
         [Q_SIGNAL("void appletDestroyed(Plasma::Applet*)")]
         void AppletDestroyed(Plasma.Applet applet);
         /// <remarks>
+        ///  Emitted when the applet status changes
+        /// </remarks>        <short>    Emitted when the applet status changes </short>
+        [Q_SIGNAL("void newStatus(Plasma::ItemStatus)")]
+        void NewStatus(Plasma.ItemStatus status);
+        /// <remarks>
         ///  Emitted when an ExtenderItem in a scripting applet needs to be initialized
         ///          </remarks>        <short>    Emitted when an ExtenderItem in a scripting applet needs to be initialized          </short>
-        [Q_SIGNAL("void initScriptExtenderItem(Plasma::ExtenderItem*)")]
-        void InitScriptExtenderItem(Plasma.ExtenderItem item);
+        [Q_SIGNAL("void extenderItemRestored(Plasma::ExtenderItem*)")]
+        void ExtenderItemRestored(Plasma.ExtenderItem item);
+        /// <remarks>
+        ///  Emitted when the immutability changes
+        /// </remarks>        <short>    Emitted when the immutability changes </short>
+        [Q_SIGNAL("void immutabilityChanged(Plasma::ImmutabilityType)")]
+        void ImmutabilityChanged(Plasma.ImmutabilityType immutable);
     }
 }

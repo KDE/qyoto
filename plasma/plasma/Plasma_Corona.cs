@@ -150,6 +150,16 @@ namespace Plasma {
             return (QPoint) interceptor.Invoke("popupPosition##", "popupPosition(const QGraphicsItem*, const QSize&)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), size);
         }
         /// <remarks>
+        /// <param> name="item" the item that the popup should appear adjacent to (an applet, say)
+        /// </param><param> name="size" size of the popup
+        /// </param><param> name="alignment" alignment of the popup, valid flags are Qt.AlignLeft, Qt.AlignRight and Qt.AlignCenter
+        /// </param></remarks>        <return> reccomended position
+        ///     </return>
+        ///         <short>   </short>
+        public QPoint PopupPosition(IQGraphicsItem item, QSize size, Qt.AlignmentFlag alignment) {
+            return (QPoint) interceptor.Invoke("popupPosition##$", "popupPosition(const QGraphicsItem*, const QSize&, Qt::AlignmentFlag)", typeof(QPoint), typeof(IQGraphicsItem), item, typeof(QSize), size, typeof(Qt.AlignmentFlag), alignment);
+        }
+        /// <remarks>
         ///  This method is useful in order to retrieve the list of available
         ///  screen edges for panel type containments.
         /// <param> name="screen" the id of the screen to look for free edges.
@@ -203,6 +213,16 @@ namespace Plasma {
         ///         <short>   </short>
         public KAction AddAction(string name) {
             return (KAction) interceptor.Invoke("addAction$", "addAction(QString)", typeof(KAction), typeof(string), name);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        public void SetContainmentActionsDefaults(Plasma.Containment.TypeOf containmentType, Plasma.ContainmentActionsPluginsConfig config) {
+            interceptor.Invoke("setContainmentActionsDefaults$#", "setContainmentActionsDefaults(Plasma::Containment::Type, const Plasma::ContainmentActionsPluginsConfig&)", typeof(void), typeof(Plasma.Containment.TypeOf), containmentType, typeof(Plasma.ContainmentActionsPluginsConfig), config);
+        }
+        /// <remarks>
+        /// </remarks>        <short>   </short>
+        public Plasma.ContainmentActionsPluginsConfig ContainmentActionsDefaults(Plasma.Containment.TypeOf containmentType) {
+            return (Plasma.ContainmentActionsPluginsConfig) interceptor.Invoke("containmentActionsDefaults$", "containmentActionsDefaults(Plasma::Containment::Type)", typeof(Plasma.ContainmentActionsPluginsConfig), typeof(Plasma.Containment.TypeOf), containmentType);
         }
         /// <remarks>
         ///  Initializes the layout from a config file. This will first clear any existing

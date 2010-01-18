@@ -392,6 +392,18 @@ namespace Plasma {
         protected void UpdateAllSources() {
             interceptor.Invoke("updateAllSources", "updateAllSources()", typeof(void));
         }
+        /// <remarks>
+        ///  Forces an immediate update to all connected sources, even those with
+        ///  timeouts that haven't yet expired. This should _only_ be used when
+        ///  there was no data available, e.g. due to network non-availability,
+        ///  and then it becomes available. Normal changes in data values due to
+        ///  calls to updateSource or in the natural progression of the monitored
+        ///  object (e.g. CPU heat) should not result in a call to this method!
+        /// </remarks>        <short>    Forces an immediate update to all connected sources, even those with  timeouts that haven't yet expired.</short>
+        [Q_SLOT("void forceImmediateUpdateOfAllVisualizations()")]
+        protected void ForceImmediateUpdateOfAllVisualizations() {
+            interceptor.Invoke("forceImmediateUpdateOfAllVisualizations", "forceImmediateUpdateOfAllVisualizations()", typeof(void));
+        }
         ~DataEngine() {
             interceptor.Invoke("~DataEngine", "~DataEngine()", typeof(void));
         }

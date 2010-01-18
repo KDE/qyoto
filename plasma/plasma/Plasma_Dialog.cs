@@ -47,9 +47,19 @@ namespace Plasma {
             CreateProxy();
             interceptor.Invoke("Dialog", "Dialog()", typeof(void));
         }
+        /// <remarks>
+        ///  Sets a QGraphicsWidget to be shown as the content in this dialog.
+        ///  The dialog will then set up a QGraphicsView and coordinate geometry with
+        ///  the widget automatically.
+        ///  @arg widget the QGraphicsWidget to display in this dialog
+        ///          </remarks>        <short>    Sets a QGraphicsWidget to be shown as the content in this dialog.</short>
         public void SetGraphicsWidget(QGraphicsWidget widget) {
             interceptor.Invoke("setGraphicsWidget#", "setGraphicsWidget(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
         }
+        /// <remarks>
+        /// </remarks>        <return> the graphics widget shown in this dialog
+        ///          </return>
+        ///         <short>   </short>
         public QGraphicsWidget GraphicsWidget() {
             return (QGraphicsWidget) interceptor.Invoke("graphicsWidget", "graphicsWidget()", typeof(QGraphicsWidget));
         }
@@ -70,16 +80,29 @@ namespace Plasma {
         /// <remarks>
         ///  Causes an animated hide; requires compositing to work, otherwise
         ///  the dialog will simply hide.
-        ///          </remarks>        <short>    Causes an animated hide; requires compositing to work, otherwise  the dialog will simply hide.</short>
+        /// </remarks>        <short>    Causes an animated hide; requires compositing to work, otherwise  the dialog will simply hide.</short>
         public void AnimatedHide(Plasma.Direction direction) {
             interceptor.Invoke("animatedHide$", "animatedHide(Plasma::Direction)", typeof(void), typeof(Plasma.Direction), direction);
         }
         /// <remarks>
-        ///  Causes an animated hide; requires compositing to work, otherwise
-        ///  the dialog will simply hide.
-        ///          </remarks>        <short>    Causes an animated hide; requires compositing to work, otherwise  the dialog will simply hide.</short>
+        ///  Causes an animated show; requires compositing to work, otherwise
+        ///  the dialog will simply show.
+        /// </remarks>        <short>    Causes an animated show; requires compositing to work, otherwise  the dialog will simply show.</short>
         public void AnimatedShow(Plasma.Direction direction) {
             interceptor.Invoke("animatedShow$", "animatedShow(Plasma::Direction)", typeof(void), typeof(Plasma.Direction), direction);
+        }
+        /// <remarks>
+        /// </remarks>        <return> the preferred aspect ratio mode for placement and resizing
+        /// </return>
+        ///         <short>   </short>
+        public Plasma.AspectRatioMode aspectRatioMode() {
+            return (Plasma.AspectRatioMode) interceptor.Invoke("aspectRatioMode", "aspectRatioMode() const", typeof(Plasma.AspectRatioMode));
+        }
+        /// <remarks>
+        ///  Sets the preferred aspect ratio mode for placement and resizing
+        /// </remarks>        <short>    Sets the preferred aspect ratio mode for placement and resizing </short>
+        public void SetAspectRatioMode(Plasma.AspectRatioMode mode) {
+            interceptor.Invoke("setAspectRatioMode$", "setAspectRatioMode(Plasma::AspectRatioMode)", typeof(void), typeof(Plasma.AspectRatioMode), mode);
         }
         /// <remarks>
         ///  Reimplemented from QWidget
@@ -107,6 +130,10 @@ namespace Plasma {
         [SmokeMethod("showEvent(QShowEvent*)")]
         protected override void ShowEvent(QShowEvent arg1) {
             interceptor.Invoke("showEvent#", "showEvent(QShowEvent*)", typeof(void), typeof(QShowEvent), arg1);
+        }
+        [SmokeMethod("focusInEvent(QFocusEvent*)")]
+        protected override void FocusInEvent(QFocusEvent arg1) {
+            interceptor.Invoke("focusInEvent#", "focusInEvent(QFocusEvent*)", typeof(void), typeof(QFocusEvent), arg1);
         }
         [SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
         protected override void MouseMoveEvent(QMouseEvent arg1) {

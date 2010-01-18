@@ -14,7 +14,7 @@ namespace Plasma {
     ///  widget in a popup when clicked.
     ///  If you use this class as a base class for your extender using applet, the extender will
     ///  automatically be used for the popup; reimplementing graphicsWidget() is unnecessary in this case.
-    ///  If you need a popup that does not steal window focus when openend or used, set window flag 
+    ///  If you need a popup that does not steal window focus when openend or used, set window flag
     ///  Qt.X11BypassWindowManagerHint the widget returned by widget() or graphicsWidget().
     ///  </remarks>        <short>    Allows applets to automatically 'collapse' into an icon when put in an panel, and is a convenient  base class for any applet that wishes to use extenders.</short>
     [SmokeClass("Plasma::PopupApplet")]
@@ -29,12 +29,18 @@ namespace Plasma {
         }
         /// <remarks>
         ///  @arg icon the icon that has to be displayed when the applet is in a panel.
+        ///            Passing in a null icon means that the popup applet itself
+        ///            will provide an interface for when the PopupApplet is not showing
+        ///            the widget() or graphicsWidget() directly.
         ///      </remarks>        <short>    @arg icon the icon that has to be displayed when the applet is in a panel.</short>
         public void SetPopupIcon(QIcon icon) {
             interceptor.Invoke("setPopupIcon#", "setPopupIcon(const QIcon&)", typeof(void), typeof(QIcon), icon);
         }
         /// <remarks>
         ///  @arg icon the icon that has to be displayed when the applet is in a panel.
+        ///            Passing in an empty string() means that the popup applet itself
+        ///            will provide an interface for when the PopupApplet is not showing
+        ///            the widget() or graphicsWidget() directly.
         ///      </remarks>        <short>    @arg icon the icon that has to be displayed when the applet is in a panel.</short>
         public void SetPopupIcon(string iconName) {
             interceptor.Invoke("setPopupIcon$", "setPopupIcon(const QString&)", typeof(void), typeof(string), iconName);
@@ -81,7 +87,7 @@ namespace Plasma {
         }
         /// <remarks>
         ///  Sets whether or not the dialog popup that gets created should be a "passive" popup
-        ///  that does not steal focus from other windows or not. 
+        ///  that does not steal focus from other windows or not.
         ///  @arg passive true if the dialog should be treated as a passive popup
         ///      </remarks>        <short>    Sets whether or not the dialog popup that gets created should be a "passive" popup  that does not steal focus from other windows or not.</short>
         public void SetPassivePopup(bool passive) {

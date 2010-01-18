@@ -53,6 +53,21 @@ namespace Plasma {
             interceptor.Invoke("Frame", "Frame()", typeof(void));
         }
         /// <remarks>
+        ///  Sets what borders should be painted
+        ///  @arg flags borders we want to paint
+        ///      </remarks>        <short>    Sets what borders should be painted  @arg flags borders we want to paint      </short>
+        public void SetEnabledBorders(uint borders) {
+            interceptor.Invoke("setEnabledBorders$", "setEnabledBorders(const Plasma::FrameSvg::EnabledBorders)", typeof(void), typeof(uint), borders);
+        }
+        /// <remarks>
+        ///  Convenience method to get the enabled borders
+        /// </remarks>        <return> what borders are painted
+        /// </return>
+        ///         <short>    Convenience method to get the enabled borders </short>
+        public uint EnabledBorders() {
+            return (uint) interceptor.Invoke("enabledBorders", "enabledBorders() const", typeof(uint));
+        }
+        /// <remarks>
         /// </remarks>        <return> the native widget wrapped by this Frame
         ///      </return>
         ///         <short>   </short>
@@ -74,6 +89,10 @@ namespace Plasma {
         [SmokeMethod("sizeHint(Qt::SizeHint, const QSizeF&) const")]
         public override QSizeF SizeHint(Qt.SizeHint which, QSizeF constraint) {
             return (QSizeF) interceptor.Invoke("sizeHint$#", "sizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
+        [SmokeMethod("changeEvent(QEvent*)")]
+        protected override void ChangeEvent(QEvent arg1) {
+            interceptor.Invoke("changeEvent#", "changeEvent(QEvent*)", typeof(void), typeof(QEvent), arg1);
         }
         ~Frame() {
             interceptor.Invoke("~Frame", "~Frame()", typeof(void));
