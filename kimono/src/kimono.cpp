@@ -44,7 +44,7 @@
 const char *
 resolve_classname_KDE(smokeqyoto_object * o)
 {
-	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QObject")) {
+	if (o->smoke->isDerivedFrom(o->smoke->classes[o->classId].className, "QObject")) {
 		if (strcmp(o->smoke->classes[o->classId].className, "KParts::ReadOnlyPart") == 0)
 			return "KParts.ReadOnlyPartInternal";
 		if (strcmp(o->smoke->classes[o->classId].className, "KParts::ReadWritePart") == 0)
