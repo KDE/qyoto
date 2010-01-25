@@ -372,7 +372,7 @@ Q_DECL_EXPORT void AddWizardButtonToQList(void* ptr, int i)
 
 }
 
-// extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
+// extern bool isDerivedFrom(Smoke *smoke, const char *className, const char *baseClassName);
 extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
 Q_DECL_EXPORT bool
@@ -386,7 +386,7 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 			|| qstrcmp(className, "QModelIndex") == 0 )
 	{
 		return true;
-	} else if (o->smoke->isDerivedFromByName(className, "QLayoutItem")) {
+	} else if (o->smoke->isDerivedFrom(className, "QLayoutItem")) {
 		QLayoutItem * item = (QLayoutItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QLayoutItem").index);
 		if (item->layout() != 0 || item->widget() != 0 || item->spacerItem() != 0) {
 			return true;
@@ -396,36 +396,36 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 		if (item->listWidget() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QTableWidgetItem")) {
+	} else if (o->smoke->isDerivedFrom(className, "QTableWidgetItem")) {
 		QTableWidgetItem * item = (QTableWidgetItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QTableWidgetItem").index);
 		if (item->tableWidget() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QTreeWidgetItem")) {
+	} else if (o->smoke->isDerivedFrom(className, "QTreeWidgetItem")) {
 		QTreeWidgetItem * item = (QTreeWidgetItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QTreeWidgetItem").index);
 		if (item->treeWidget() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QGraphicsScene")) {
+	} else if (o->smoke->isDerivedFrom(className, "QGraphicsScene")) {
 		QGraphicsScene * scene = (QGraphicsScene *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsScene").index);
 		if (scene->views().count() > 0 || scene->parent() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QWidget")) {
+	} else if (o->smoke->isDerivedFrom(className, "QWidget")) {
 		// Only garbage collect the widget if it's hidden, doesn't have any parents and if there are no more 
 		// references to it in the code. This should produce a more 'natural' behaviour for top-level widgets.
 		QWidget * qwidget = (QWidget *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QWidget").index);
 		if (qwidget->isVisible() || qwidget->parent() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QObject")) {
+	} else if (o->smoke->isDerivedFrom(className, "QObject")) {
 		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
 		if (qobject->parent() != 0) {
 			return true;
 		}
-	} else if (o->smoke->isDerivedFromByName(className, "QTextBlockUserData")) {
+	} else if (o->smoke->isDerivedFrom(className, "QTextBlockUserData")) {
 		return true;
-	} else if (o->smoke->isDerivedFromByName(className, "QGraphicsItem")) {
+	} else if (o->smoke->isDerivedFrom(className, "QGraphicsItem")) {
 		QGraphicsItem * item = (QGraphicsItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsItem").index);
 		if (item->scene() != 0 || item->parentItem() != 0) {
 			return true;
@@ -442,7 +442,7 @@ IsContainedInstanceQt(smokeqyoto_object *o)
 Q_DECL_EXPORT const char *
 qyoto_resolve_classname_qt(smokeqyoto_object * o)
 {
-	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QEvent")) {
+	if (o->smoke->isDerivedFrom(o->smoke->classes[o->classId].className, "QEvent")) {
 		QEvent * qevent = (QEvent *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QEvent").index);
 		switch (qevent->type()) {
 		case QEvent::Timer:
@@ -662,7 +662,7 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 		default:
 			break;
 		}
-	} else if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QGraphicsItem")) {
+	} else if (o->smoke->isDerivedFrom(o->smoke->classes[o->classId].className, "QGraphicsItem")) {
 		QGraphicsItem * item = (QGraphicsItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QGraphicsItem").index);
 		switch (item->type()) {
 		case 1:
@@ -695,7 +695,7 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 			o->classId = o->smoke->idClass("QGraphicsItemGroup").index;
 			break;
 		}
-	} else if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QLayoutItem")) {
+	} else if (o->smoke->isDerivedFrom(o->smoke->classes[o->classId].className, "QLayoutItem")) {
 		QLayoutItem * item = (QLayoutItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QLayoutItem").index);
 		if (item->widget() != 0) {
 			o->classId = o->smoke->idClass("QWidgetItem").index;

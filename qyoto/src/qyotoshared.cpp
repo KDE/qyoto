@@ -304,7 +304,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 const char *
 qyoto_resolve_classname(smokeqyoto_object * o)
 {
-	if (o->smoke->isDerivedFromByName(o->smoke->classes[o->classId].className, "QObject")) {
+	if (o->smoke->isDerivedFrom(o->smoke->classes[o->classId].className, "QObject")) {
 		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject").index);
 		const QMetaObject * meta = qobject->metaObject();
 
