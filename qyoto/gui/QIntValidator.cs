@@ -27,6 +27,10 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QIntValidator#", "QIntValidator(QObject*)", typeof(void), typeof(QObject), parent);
         }
+        public QIntValidator() : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QIntValidator", "QIntValidator()", typeof(void));
+        }
         public QIntValidator(int bottom, int top, QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QIntValidator$$#", "QIntValidator(int, int, QObject*)", typeof(void), typeof(int), bottom, typeof(int), top, typeof(QObject), parent);

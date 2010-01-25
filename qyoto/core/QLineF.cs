@@ -140,11 +140,11 @@ namespace Qyoto {
         public static QLineF FromPolar(double length, double angle) {
             return (QLineF) staticInterceptor.Invoke("fromPolar$$", "fromPolar(qreal, qreal)", typeof(QLineF), typeof(double), length, typeof(double), angle);
         }
-        public static QLineF operator*(QLineF l, QMatrix m) {
-            return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QMatrix&)", typeof(QLineF), typeof(QLineF), l, typeof(QMatrix), m);
-        }
         public static QLineF operator*(QLineF l, QTransform m) {
             return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QTransform&)", typeof(QLineF), typeof(QLineF), l, typeof(QTransform), m);
+        }
+        public static QLineF operator*(QLineF l, QMatrix m) {
+            return (QLineF) staticInterceptor.Invoke("operator*##", "operator*(const QLineF&, const QMatrix&)", typeof(QLineF), typeof(QLineF), l, typeof(QMatrix), m);
         }
     }
 }

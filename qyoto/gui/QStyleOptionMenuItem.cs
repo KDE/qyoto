@@ -28,6 +28,46 @@ namespace Qyoto {
             Exclusive = 1,
             NonExclusive = 2,
         }
+        public QStyleOptionMenuItem.MenuItemType menuItemType {
+            get { return (QStyleOptionMenuItem.MenuItemType) interceptor.Invoke("menuItemType", "menuItemType()", typeof(QStyleOptionMenuItem.MenuItemType)); }
+            set { interceptor.Invoke("setMenuItemType$", "setMenuItemType(QStyleOptionMenuItem::MenuItemType)", typeof(void), typeof(QStyleOptionMenuItem.MenuItemType), value); }
+        }
+        public QStyleOptionMenuItem.CheckType checkType {
+            get { return (QStyleOptionMenuItem.CheckType) interceptor.Invoke("checkType", "checkType()", typeof(QStyleOptionMenuItem.CheckType)); }
+            set { interceptor.Invoke("setCheckType$", "setCheckType(QStyleOptionMenuItem::CheckType)", typeof(void), typeof(QStyleOptionMenuItem.CheckType), value); }
+        }
+        public bool Checked {
+            get { return (bool) interceptor.Invoke("checked", "checked()", typeof(bool)); }
+            set { interceptor.Invoke("setChecked$", "setChecked(bool)", typeof(void), typeof(bool), value); }
+        }
+        public bool MenuHasCheckableItems {
+            get { return (bool) interceptor.Invoke("menuHasCheckableItems", "menuHasCheckableItems()", typeof(bool)); }
+            set { interceptor.Invoke("setMenuHasCheckableItems$", "setMenuHasCheckableItems(bool)", typeof(void), typeof(bool), value); }
+        }
+        public QRect MenuRect {
+            get { return (QRect) interceptor.Invoke("menuRect", "menuRect()", typeof(QRect)); }
+            set { interceptor.Invoke("setMenuRect#", "setMenuRect(QRect)", typeof(void), typeof(QRect), value); }
+        }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public QIcon Icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        public int MaxIconWidth {
+            get { return (int) interceptor.Invoke("maxIconWidth", "maxIconWidth()", typeof(int)); }
+            set { interceptor.Invoke("setMaxIconWidth$", "setMaxIconWidth(int)", typeof(void), typeof(int), value); }
+        }
+        public int TabWidth {
+            get { return (int) interceptor.Invoke("tabWidth", "tabWidth()", typeof(int)); }
+            set { interceptor.Invoke("setTabWidth$", "setTabWidth(int)", typeof(void), typeof(int), value); }
+        }
+        public QFont Font {
+            get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
+            set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
+        }
         public QStyleOptionMenuItem() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionMenuItem", "QStyleOptionMenuItem()", typeof(void));

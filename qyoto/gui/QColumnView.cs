@@ -105,6 +105,14 @@ namespace Qyoto {
         protected override int VerticalOffset() {
             return (int) interceptor.Invoke("verticalOffset", "verticalOffset() const", typeof(int));
         }
+        [SmokeMethod("rowsInserted(const QModelIndex&, int, int)")]
+        protected override void RowsInserted(QModelIndex parent, int start, int end) {
+            interceptor.Invoke("rowsInserted#$$", "rowsInserted(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), start, typeof(int), end);
+        }
+        [SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
+        protected override void CurrentChanged(QModelIndex current, QModelIndex previous) {
+            interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), previous);
+        }
         [SmokeMethod("scrollContentsBy(int, int)")]
         protected override void ScrollContentsBy(int dx, int dy) {
             interceptor.Invoke("scrollContentsBy$$", "scrollContentsBy(int, int)", typeof(void), typeof(int), dx, typeof(int), dy);
@@ -115,11 +123,6 @@ namespace Qyoto {
         }
         protected void InitializeColumn(QAbstractItemView column) {
             interceptor.Invoke("initializeColumn#", "initializeColumn(QAbstractItemView*) const", typeof(void), typeof(QAbstractItemView), column);
-        }
-        [Q_SLOT("void currentChanged(QModelIndex, QModelIndex)")]
-        [SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
-        protected override void CurrentChanged(QModelIndex current, QModelIndex previous) {
-            interceptor.Invoke("currentChanged##", "currentChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), current, typeof(QModelIndex), previous);
         }
         ~QColumnView() {
             interceptor.Invoke("~QColumnView", "~QColumnView()", typeof(void));

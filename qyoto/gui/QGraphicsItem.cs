@@ -8,14 +8,18 @@ namespace Qyoto {
         QGraphicsScene Scene();
         IQGraphicsItem ParentItem();
         IQGraphicsItem TopLevelItem();
+        QGraphicsObject ParentObject();
         QGraphicsWidget ParentWidget();
         QGraphicsWidget TopLevelWidget();
         QGraphicsWidget Window();
+        IQGraphicsItem Panel();
         void SetParentItem(IQGraphicsItem parent);
-        List<IQGraphicsItem> Children();
+        // List<IQGraphicsItem> Children();
         List<IQGraphicsItem> ChildItems();
         bool IsWidget();
         bool IsWindow();
+        bool IsPanel();
+        QGraphicsObject ToGraphicsObject();
         QGraphicsItemGroup Group();
         void SetGroup(QGraphicsItemGroup group);
         uint Flags();
@@ -25,6 +29,8 @@ namespace Qyoto {
         QGraphicsItem.CacheMode cacheMode();
         void SetCacheMode(QGraphicsItem.CacheMode mode, QSize cacheSize);
         void SetCacheMode(QGraphicsItem.CacheMode mode);
+        QGraphicsItem.PanelModality panelModality();
+        void SetPanelModality(QGraphicsItem.PanelModality panelModality);
         string ToolTip();
         void SetToolTip(string toolTip);
         QCursor Cursor();
@@ -45,25 +51,39 @@ namespace Qyoto {
         double Opacity();
         double EffectiveOpacity();
         void SetOpacity(double opacity);
+        QGraphicsEffect GraphicsEffect();
+        void SetGraphicsEffect(QGraphicsEffect effect);
         uint AcceptedMouseButtons();
         void SetAcceptedMouseButtons(uint buttons);
         bool AcceptsHoverEvents();
         void SetAcceptsHoverEvents(bool enabled);
         bool AcceptHoverEvents();
         void SetAcceptHoverEvents(bool enabled);
+        bool AcceptTouchEvents();
+        void SetAcceptTouchEvents(bool enabled);
+        bool FiltersChildEvents();
+        void SetFiltersChildEvents(bool enabled);
         bool HandlesChildEvents();
         void SetHandlesChildEvents(bool enabled);
+        bool IsActive();
+        void SetActive(bool active);
         bool HasFocus();
         void SetFocus(Qt.FocusReason focusReason);
         void SetFocus();
         void ClearFocus();
+        IQGraphicsItem FocusProxy();
+        void SetFocusProxy(IQGraphicsItem item);
+        IQGraphicsItem FocusItem();
+        IQGraphicsItem FocusScopeItem();
         void GrabMouse();
         void UngrabMouse();
         void GrabKeyboard();
         void UngrabKeyboard();
         QPointF Pos();
         double X();
+        void SetX(double x);
         double Y();
+        void SetY(double y);
         QPointF ScenePos();
         void SetPos(QPointF pos);
         void SetPos(double x, double y);
@@ -92,10 +112,20 @@ namespace Qyoto {
         void Scale(double sx, double sy);
         void Shear(double sh, double sv);
         void Translate(double dx, double dy);
+        void SetRotation(double angle);
+        double Rotation();
+        void SetScale(double scale);
+        double Scale();
+        List<QGraphicsTransform> Transformations();
+        void SetTransformations(List<QGraphicsTransform> transformations);
+        QPointF TransformOriginPoint();
+        void SetTransformOriginPoint(QPointF origin);
+        void SetTransformOriginPoint(double ax, double ay);
         void Advance(int phase);
         double ZValue();
         void SetZValue(double z);
-        QRectF BoundingRect();
+        void StackBefore(IQGraphicsItem sibling);
+        // QRectF BoundingRect();
         QRectF ChildrenBoundingRect();
         QRectF SceneBoundingRect();
         QPainterPath Shape();
@@ -116,7 +146,7 @@ namespace Qyoto {
         QRegion BoundingRegion(QTransform itemToDeviceTransform);
         double BoundingRegionGranularity();
         void SetBoundingRegionGranularity(double granularity);
-        void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget);
+        // void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget);
         void Update(QRectF rect);
         void Update();
         void Update(double x, double y, double width, double height);
@@ -175,6 +205,8 @@ namespace Qyoto {
         bool IsUnderMouse();
         QVariant Data(int key);
         void SetData(int key, QVariant value);
+        uint InputMethodHints();
+        void SetInputMethodHints(uint hints);
         int type();
         void InstallSceneEventFilter(IQGraphicsItem filterItem);
         void RemoveSceneEventFilter(IQGraphicsItem filterItem);
@@ -197,6 +229,14 @@ namespace Qyoto {
             ItemIgnoresParentOpacity = 0x40,
             ItemDoesntPropagateOpacityToChildren = 0x80,
             ItemStacksBehindParent = 0x100,
+            ItemUsesExtendedStyleOption = 0x200,
+            ItemHasNoContents = 0x400,
+            ItemSendsGeometryChanges = 0x800,
+            ItemAcceptsInputMethod = 0x1000,
+            ItemNegativeZStacksBehindParent = 0x2000,
+            ItemIsPanel = 0x4000,
+            ItemIsFocusScope = 0x8000,
+            ItemSendsScenePositionChanges = 0x10000,
         }
         public enum GraphicsItemChange {
             ItemPositionChange = 0,
@@ -226,17 +266,24 @@ namespace Qyoto {
             ItemZValueHasChanged = 24,
             ItemOpacityChange = 25,
             ItemOpacityHasChanged = 26,
+            ItemScenePositionHasChanged = 27,
         }
         public enum CacheMode {
             NoCache = 0,
             ItemCoordinateCache = 1,
             DeviceCoordinateCache = 2,
         }
+        public enum PanelModality {
+            NonModal = 0,
+            PanelModal = 1,
+            SceneModal = 2,
+        }
         public enum Extension : uint {
             UserExtension = 0x80000000,
         }
         public const int Type = 1;
         public const int UserType = 65536;
+        // bool isBlockedByModalPanel(QGraphicsItem** arg1); >>>> NOT CONVERTED
         // QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
         public QGraphicsItem(IQGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
             CreateProxy();
@@ -259,6 +306,9 @@ namespace Qyoto {
         public IQGraphicsItem TopLevelItem() {
             return (IQGraphicsItem) interceptor.Invoke("topLevelItem", "topLevelItem() const", typeof(IQGraphicsItem));
         }
+        public QGraphicsObject ParentObject() {
+            return (QGraphicsObject) interceptor.Invoke("parentObject", "parentObject() const", typeof(QGraphicsObject));
+        }
         public QGraphicsWidget ParentWidget() {
             return (QGraphicsWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QGraphicsWidget));
         }
@@ -267,6 +317,9 @@ namespace Qyoto {
         }
         public QGraphicsWidget Window() {
             return (QGraphicsWidget) interceptor.Invoke("window", "window() const", typeof(QGraphicsWidget));
+        }
+        public IQGraphicsItem Panel() {
+            return (IQGraphicsItem) interceptor.Invoke("panel", "panel() const", typeof(IQGraphicsItem));
         }
         public void SetParentItem(IQGraphicsItem parent) {
             interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
@@ -282,6 +335,12 @@ namespace Qyoto {
         }
         public bool IsWindow() {
             return (bool) interceptor.Invoke("isWindow", "isWindow() const", typeof(bool));
+        }
+        public bool IsPanel() {
+            return (bool) interceptor.Invoke("isPanel", "isPanel() const", typeof(bool));
+        }
+        public QGraphicsObject ToGraphicsObject() {
+            return (QGraphicsObject) interceptor.Invoke("toGraphicsObject", "toGraphicsObject()", typeof(QGraphicsObject));
         }
         public QGraphicsItemGroup Group() {
             return (QGraphicsItemGroup) interceptor.Invoke("group", "group() const", typeof(QGraphicsItemGroup));
@@ -309,6 +368,12 @@ namespace Qyoto {
         }
         public void SetCacheMode(QGraphicsItem.CacheMode mode) {
             interceptor.Invoke("setCacheMode$", "setCacheMode(QGraphicsItem::CacheMode)", typeof(void), typeof(QGraphicsItem.CacheMode), mode);
+        }
+        public QGraphicsItem.PanelModality panelModality() {
+            return (QGraphicsItem.PanelModality) interceptor.Invoke("panelModality", "panelModality() const", typeof(QGraphicsItem.PanelModality));
+        }
+        public void SetPanelModality(QGraphicsItem.PanelModality panelModality) {
+            interceptor.Invoke("setPanelModality$", "setPanelModality(QGraphicsItem::PanelModality)", typeof(void), typeof(QGraphicsItem.PanelModality), panelModality);
         }
         public string ToolTip() {
             return (string) interceptor.Invoke("toolTip", "toolTip() const", typeof(string));
@@ -370,6 +435,12 @@ namespace Qyoto {
         public void SetOpacity(double opacity) {
             interceptor.Invoke("setOpacity$", "setOpacity(qreal)", typeof(void), typeof(double), opacity);
         }
+        public QGraphicsEffect GraphicsEffect() {
+            return (QGraphicsEffect) interceptor.Invoke("graphicsEffect", "graphicsEffect() const", typeof(QGraphicsEffect));
+        }
+        public void SetGraphicsEffect(QGraphicsEffect effect) {
+            interceptor.Invoke("setGraphicsEffect#", "setGraphicsEffect(QGraphicsEffect*)", typeof(void), typeof(QGraphicsEffect), effect);
+        }
         public uint AcceptedMouseButtons() {
             return (uint) interceptor.Invoke("acceptedMouseButtons", "acceptedMouseButtons() const", typeof(uint));
         }
@@ -388,11 +459,29 @@ namespace Qyoto {
         public void SetAcceptHoverEvents(bool enabled) {
             interceptor.Invoke("setAcceptHoverEvents$", "setAcceptHoverEvents(bool)", typeof(void), typeof(bool), enabled);
         }
+        public bool AcceptTouchEvents() {
+            return (bool) interceptor.Invoke("acceptTouchEvents", "acceptTouchEvents() const", typeof(bool));
+        }
+        public void SetAcceptTouchEvents(bool enabled) {
+            interceptor.Invoke("setAcceptTouchEvents$", "setAcceptTouchEvents(bool)", typeof(void), typeof(bool), enabled);
+        }
+        public bool FiltersChildEvents() {
+            return (bool) interceptor.Invoke("filtersChildEvents", "filtersChildEvents() const", typeof(bool));
+        }
+        public void SetFiltersChildEvents(bool enabled) {
+            interceptor.Invoke("setFiltersChildEvents$", "setFiltersChildEvents(bool)", typeof(void), typeof(bool), enabled);
+        }
         public bool HandlesChildEvents() {
             return (bool) interceptor.Invoke("handlesChildEvents", "handlesChildEvents() const", typeof(bool));
         }
         public void SetHandlesChildEvents(bool enabled) {
             interceptor.Invoke("setHandlesChildEvents$", "setHandlesChildEvents(bool)", typeof(void), typeof(bool), enabled);
+        }
+        public bool IsActive() {
+            return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
+        }
+        public void SetActive(bool active) {
+            interceptor.Invoke("setActive$", "setActive(bool)", typeof(void), typeof(bool), active);
         }
         public bool HasFocus() {
             return (bool) interceptor.Invoke("hasFocus", "hasFocus() const", typeof(bool));
@@ -405,6 +494,18 @@ namespace Qyoto {
         }
         public void ClearFocus() {
             interceptor.Invoke("clearFocus", "clearFocus()", typeof(void));
+        }
+        public IQGraphicsItem FocusProxy() {
+            return (IQGraphicsItem) interceptor.Invoke("focusProxy", "focusProxy() const", typeof(IQGraphicsItem));
+        }
+        public void SetFocusProxy(IQGraphicsItem item) {
+            interceptor.Invoke("setFocusProxy#", "setFocusProxy(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        public IQGraphicsItem FocusItem() {
+            return (IQGraphicsItem) interceptor.Invoke("focusItem", "focusItem() const", typeof(IQGraphicsItem));
+        }
+        public IQGraphicsItem FocusScopeItem() {
+            return (IQGraphicsItem) interceptor.Invoke("focusScopeItem", "focusScopeItem() const", typeof(IQGraphicsItem));
         }
         public void GrabMouse() {
             interceptor.Invoke("grabMouse", "grabMouse()", typeof(void));
@@ -424,8 +525,14 @@ namespace Qyoto {
         public double X() {
             return (double) interceptor.Invoke("x", "x() const", typeof(double));
         }
+        public void SetX(double x) {
+            interceptor.Invoke("setX$", "setX(qreal)", typeof(void), typeof(double), x);
+        }
         public double Y() {
             return (double) interceptor.Invoke("y", "y() const", typeof(double));
+        }
+        public void SetY(double y) {
+            interceptor.Invoke("setY$", "setY(qreal)", typeof(void), typeof(double), y);
         }
         public QPointF ScenePos() {
             return (QPointF) interceptor.Invoke("scenePos", "scenePos() const", typeof(QPointF));
@@ -531,6 +638,33 @@ namespace Qyoto {
         public void Translate(double dx, double dy) {
             interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
         }
+        public void SetRotation(double angle) {
+            interceptor.Invoke("setRotation$", "setRotation(qreal)", typeof(void), typeof(double), angle);
+        }
+        public double Rotation() {
+            return (double) interceptor.Invoke("rotation", "rotation() const", typeof(double));
+        }
+        public void SetScale(double scale) {
+            interceptor.Invoke("setScale$", "setScale(qreal)", typeof(void), typeof(double), scale);
+        }
+        public double Scale() {
+            return (double) interceptor.Invoke("scale", "scale() const", typeof(double));
+        }
+        public List<QGraphicsTransform> Transformations() {
+            return (List<QGraphicsTransform>) interceptor.Invoke("transformations", "transformations() const", typeof(List<QGraphicsTransform>));
+        }
+        public void SetTransformations(List<QGraphicsTransform> transformations) {
+            interceptor.Invoke("setTransformations?", "setTransformations(const QList<QGraphicsTransform*>&)", typeof(void), typeof(List<QGraphicsTransform>), transformations);
+        }
+        public QPointF TransformOriginPoint() {
+            return (QPointF) interceptor.Invoke("transformOriginPoint", "transformOriginPoint() const", typeof(QPointF));
+        }
+        public void SetTransformOriginPoint(QPointF origin) {
+            interceptor.Invoke("setTransformOriginPoint#", "setTransformOriginPoint(const QPointF&)", typeof(void), typeof(QPointF), origin);
+        }
+        public void SetTransformOriginPoint(double ax, double ay) {
+            interceptor.Invoke("setTransformOriginPoint$$", "setTransformOriginPoint(qreal, qreal)", typeof(void), typeof(double), ax, typeof(double), ay);
+        }
         [SmokeMethod("advance(int)")]
         public virtual void Advance(int phase) {
             interceptor.Invoke("advance$", "advance(int)", typeof(void), typeof(int), phase);
@@ -540,6 +674,9 @@ namespace Qyoto {
         }
         public void SetZValue(double z) {
             interceptor.Invoke("setZValue$", "setZValue(qreal)", typeof(void), typeof(double), z);
+        }
+        public void StackBefore(IQGraphicsItem sibling) {
+            interceptor.Invoke("stackBefore#", "stackBefore(const QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), sibling);
         }
         [SmokeMethod("boundingRect() const")]
         public abstract QRectF BoundingRect();
@@ -786,6 +923,12 @@ namespace Qyoto {
         }
         public void SetData(int key, QVariant value) {
             interceptor.Invoke("setData$#", "setData(int, const QVariant&)", typeof(void), typeof(int), key, typeof(QVariant), value);
+        }
+        public uint InputMethodHints() {
+            return (uint) interceptor.Invoke("inputMethodHints", "inputMethodHints() const", typeof(uint));
+        }
+        public void SetInputMethodHints(uint hints) {
+            interceptor.Invoke("setInputMethodHints$", "setInputMethodHints(Qt::InputMethodHints)", typeof(void), typeof(uint), hints);
         }
         [SmokeMethod("type() const")]
         public virtual int type() {

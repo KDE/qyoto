@@ -769,6 +769,12 @@ namespace Qyoto {
         public QPaintEngine PaintEngine() {
             return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
         }
+        public void BeginNativePainting() {
+            interceptor.Invoke("beginNativePainting", "beginNativePainting()", typeof(void));
+        }
+        public void EndNativePainting() {
+            interceptor.Invoke("endNativePainting", "endNativePainting()", typeof(void));
+        }
         ~QPainter() {
             interceptor.Invoke("~QPainter", "~QPainter()", typeof(void));
         }

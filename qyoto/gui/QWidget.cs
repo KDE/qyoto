@@ -265,8 +265,20 @@ namespace Qyoto {
             get { return (string) interceptor.Invoke("windowFilePath", "windowFilePath()", typeof(string)); }
             set { interceptor.Invoke("setWindowFilePath$", "setWindowFilePath(QString)", typeof(void), typeof(string), value); }
         }
+        [Q_PROPERTY("Qt::InputMethodHints", "inputMethodHints")]
+        public uint InputMethodHints {
+            get { return (uint) interceptor.Invoke("inputMethodHints", "inputMethodHints()", typeof(uint)); }
+            set { interceptor.Invoke("setInputMethodHints$", "setInputMethodHints(Qt::InputMethodHints)", typeof(void), typeof(uint), value); }
+        }
+        // HWND winId(); >>>> NOT CONVERTED
+        // HWND internalWinId(); >>>> NOT CONVERTED
+        // HWND effectiveWinId(); >>>> NOT CONVERTED
         // void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
         // QWindowSurface* windowSurface(); >>>> NOT CONVERTED
+        // QWidget* find(HWND arg1); >>>> NOT CONVERTED
+        // void create(HWND arg1,bool arg2,bool arg3); >>>> NOT CONVERTED
+        // void create(HWND arg1,bool arg2); >>>> NOT CONVERTED
+        // void create(HWND arg1); >>>> NOT CONVERTED
         // QWidget* QWidget(QWidgetPrivate& arg1,QWidget* arg2,Qt::WindowFlags arg3); >>>> NOT CONVERTED
         public QWidget(QWidget parent, uint f) : this((Type) null) {
             CreateProxy();
@@ -284,17 +296,8 @@ namespace Qyoto {
         public virtual int DevType() {
             return (int) interceptor.Invoke("devType", "devType() const", typeof(int));
         }
-        public uint WinId() {
-            return (uint) interceptor.Invoke("winId", "winId() const", typeof(uint));
-        }
         public void CreateWinId() {
             interceptor.Invoke("createWinId", "createWinId()", typeof(void));
-        }
-        public uint InternalWinId() {
-            return (uint) interceptor.Invoke("internalWinId", "internalWinId() const", typeof(uint));
-        }
-        public uint EffectiveWinId() {
-            return (uint) interceptor.Invoke("effectiveWinId", "effectiveWinId() const", typeof(uint));
         }
         public QStyle Style() {
             return (QStyle) interceptor.Invoke("style", "style() const", typeof(QStyle));
@@ -430,6 +433,21 @@ namespace Qyoto {
         }
         public void Render(QPainter painter) {
             interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), painter);
+        }
+        public QGraphicsEffect GraphicsEffect() {
+            return (QGraphicsEffect) interceptor.Invoke("graphicsEffect", "graphicsEffect() const", typeof(QGraphicsEffect));
+        }
+        public void SetGraphicsEffect(QGraphicsEffect effect) {
+            interceptor.Invoke("setGraphicsEffect#", "setGraphicsEffect(QGraphicsEffect*)", typeof(void), typeof(QGraphicsEffect), effect);
+        }
+        public void GrabGesture(Qt.GestureType type, uint flags) {
+            interceptor.Invoke("grabGesture$$", "grabGesture(Qt::GestureType, Qt::GestureFlags)", typeof(void), typeof(Qt.GestureType), type, typeof(uint), flags);
+        }
+        public void GrabGesture(Qt.GestureType type) {
+            interceptor.Invoke("grabGesture$", "grabGesture(Qt::GestureType)", typeof(void), typeof(Qt.GestureType), type);
+        }
+        public void UngrabGesture(Qt.GestureType type) {
+            interceptor.Invoke("ungrabGesture$", "ungrabGesture(Qt::GestureType)", typeof(void), typeof(Qt.GestureType), type);
         }
         public void SetWindowRole(string arg1) {
             interceptor.Invoke("setWindowRole$", "setWindowRole(const QString&)", typeof(void), typeof(string), arg1);
@@ -578,6 +596,9 @@ namespace Qyoto {
         public void SetContentsMargins(int left, int top, int right, int bottom) {
             interceptor.Invoke("setContentsMargins$$$$", "setContentsMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
         }
+        public void SetContentsMargins(QMargins margins) {
+            interceptor.Invoke("setContentsMargins#", "setContentsMargins(const QMargins&)", typeof(void), typeof(QMargins), margins);
+        }
         public void GetContentsMargins(ref int left, ref int top, ref int right, ref int bottom) {
             StackItem[] stack = new StackItem[5];
             stack[1].s_int = left;
@@ -590,6 +611,9 @@ namespace Qyoto {
             right = stack[3].s_int;
             bottom = stack[4].s_int;
             return;
+        }
+        public QMargins ContentsMargins() {
+            return (QMargins) interceptor.Invoke("contentsMargins", "contentsMargins() const", typeof(QMargins));
         }
         public QRect ContentsRect() {
             return (QRect) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRect));
@@ -620,6 +644,9 @@ namespace Qyoto {
         }
         public QWidget NextInFocusChain() {
             return (QWidget) interceptor.Invoke("nextInFocusChain", "nextInFocusChain() const", typeof(QWidget));
+        }
+        public QWidget PreviousInFocusChain() {
+            return (QWidget) interceptor.Invoke("previousInFocusChain", "previousInFocusChain() const", typeof(QWidget));
         }
         public void AddAction(QAction action) {
             interceptor.Invoke("addAction#", "addAction(QAction*)", typeof(void), typeof(QAction), action);
@@ -879,18 +906,6 @@ namespace Qyoto {
         protected void ResetInputContext() {
             interceptor.Invoke("resetInputContext", "resetInputContext()", typeof(void));
         }
-        protected void Create(uint arg1, bool initializeWindow, bool destroyOldWindow) {
-            interceptor.Invoke("create$$$", "create(WId, bool, bool)", typeof(void), typeof(uint), arg1, typeof(bool), initializeWindow, typeof(bool), destroyOldWindow);
-        }
-        protected void Create(uint arg1, bool initializeWindow) {
-            interceptor.Invoke("create$$", "create(WId, bool)", typeof(void), typeof(uint), arg1, typeof(bool), initializeWindow);
-        }
-        protected void Create(uint arg1) {
-            interceptor.Invoke("create$", "create(WId)", typeof(void), typeof(uint), arg1);
-        }
-        protected void Create() {
-            interceptor.Invoke("create", "create()", typeof(void));
-        }
         protected void Destroy(bool destroyWindow, bool destroySubWindows) {
             interceptor.Invoke("destroy$$", "destroy(bool, bool)", typeof(void), typeof(bool), destroyWindow, typeof(bool), destroySubWindows);
         }
@@ -965,8 +980,8 @@ namespace Qyoto {
         public int PhysicalDpiY() {
             return (int) interceptor.Invoke("physicalDpiY", "physicalDpiY() const", typeof(int));
         }
-        public int NumColors() {
-            return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
+        public int ColorCount() {
+            return (int) interceptor.Invoke("colorCount", "colorCount() const", typeof(int));
         }
         public int Depth() {
             return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
@@ -985,9 +1000,6 @@ namespace Qyoto {
         }
         public static QWidget KeyboardGrabber() {
             return (QWidget) staticInterceptor.Invoke("keyboardGrabber", "keyboardGrabber()", typeof(QWidget));
-        }
-        public static QWidget Find(uint arg1) {
-            return (QWidget) staticInterceptor.Invoke("find$", "find(WId)", typeof(QWidget), typeof(uint), arg1);
         }
         protected new IQWidgetSignals Emit {
             get { return (IQWidgetSignals) Q_EMIT; }

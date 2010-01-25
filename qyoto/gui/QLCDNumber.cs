@@ -34,6 +34,11 @@ namespace Qyoto {
             get { return (int) interceptor.Invoke("numDigits", "numDigits()", typeof(int)); }
             set { interceptor.Invoke("setNumDigits$", "setNumDigits(int)", typeof(void), typeof(int), value); }
         }
+        [Q_PROPERTY("int", "digitCount")]
+        public int DigitCount {
+            get { return (int) interceptor.Invoke("digitCount", "digitCount()", typeof(int)); }
+            set { interceptor.Invoke("setDigitCount$", "setDigitCount(int)", typeof(void), typeof(int), value); }
+        }
         [Q_PROPERTY("QLCDNumber::Mode", "mode")]
         public QLCDNumber.Mode mode {
             get { return (QLCDNumber.Mode) interceptor.Invoke("mode", "mode()", typeof(QLCDNumber.Mode)); }

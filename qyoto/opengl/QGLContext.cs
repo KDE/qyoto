@@ -13,6 +13,17 @@ namespace Qyoto {
         static QGLContext() {
             staticInterceptor = new SmokeInvocation(typeof(QGLContext), null);
         }
+        public enum BindOption {
+            NoBindOption = 0x0000,
+            InvertedYBindOption = 0x0001,
+            MipmapBindOption = 0x0002,
+            PremultipliedAlphaBindOption = 0x0004,
+            LinearFilteringBindOption = 0x0008,
+            MemoryManagedBindOption = 0x0010,
+            CanFlipNativePixmapBindOption = 0x0020,
+            DefaultBindOption = LinearFilteringBindOption|InvertedYBindOption|MipmapBindOption,
+            InternalBindOption = MemoryManagedBindOption|PremultipliedAlphaBindOption,
+        }
         public static QGLContext CurrentCtx() {
             return (QGLContext) staticInterceptor.Invoke("currentCtx", "currentCtx()", typeof(QGLContext));
         }
@@ -62,6 +73,12 @@ namespace Qyoto {
         [SmokeMethod("swapBuffers() const")]
         public virtual void SwapBuffers() {
             interceptor.Invoke("swapBuffers", "swapBuffers() const", typeof(void));
+        }
+        public uint BindTexture(QImage image, int target, int format, uint options) {
+            return (uint) interceptor.Invoke("bindTexture#$$$", "bindTexture(const QImage&, GLenum, GLint, QGLContext::BindOptions)", typeof(uint), typeof(QImage), image, typeof(int), target, typeof(int), format, typeof(uint), options);
+        }
+        public uint BindTexture(QPixmap pixmap, int target, int format, uint options) {
+            return (uint) interceptor.Invoke("bindTexture#$$$", "bindTexture(const QPixmap&, GLenum, GLint, QGLContext::BindOptions)", typeof(uint), typeof(QPixmap), pixmap, typeof(int), target, typeof(int), format, typeof(uint), options);
         }
         public uint BindTexture(QImage image, int target, int format) {
             return (uint) interceptor.Invoke("bindTexture#$$", "bindTexture(const QImage&, GLenum, GLint)", typeof(uint), typeof(QImage), image, typeof(int), target, typeof(int), format);
@@ -145,6 +162,9 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QGLContext", "~QGLContext()", typeof(void));
+        }
+        public static bool AreSharing(QGLContext context1, QGLContext context2) {
+            return (bool) staticInterceptor.Invoke("areSharing##", "areSharing(const QGLContext*, const QGLContext*)", typeof(bool), typeof(QGLContext), context1, typeof(QGLContext), context2);
         }
         public static void SetTextureCacheLimit(int size) {
             staticInterceptor.Invoke("setTextureCacheLimit$", "setTextureCacheLimit(int)", typeof(void), typeof(int), size);

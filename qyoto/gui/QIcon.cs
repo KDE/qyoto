@@ -10,6 +10,10 @@ namespace Qyoto {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QIcon), this);
         }
+        private static SmokeInvocation staticInterceptor = null;
+        static QIcon() {
+            staticInterceptor = new SmokeInvocation(typeof(QIcon), null);
+        }
         public enum Mode {
             Normal = 0,
             Disabled = 1,
@@ -20,7 +24,6 @@ namespace Qyoto {
             On = 0,
             Off = 1,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         // QIconPrivate*& data_ptr(); >>>> NOT CONVERTED
         public QIcon() : this((Type) null) {
             CreateProxy();
@@ -156,6 +159,30 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QIcon", "~QIcon()", typeof(void));
+        }
+        public static QVariant operatorQVariant(QIcon lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QIcon), lhs);
+        }
+        public static QIcon FromTheme(string name, QIcon fallback) {
+            return (QIcon) staticInterceptor.Invoke("fromTheme$#", "fromTheme(const QString&, const QIcon&)", typeof(QIcon), typeof(string), name, typeof(QIcon), fallback);
+        }
+        public static QIcon FromTheme(string name) {
+            return (QIcon) staticInterceptor.Invoke("fromTheme$", "fromTheme(const QString&)", typeof(QIcon), typeof(string), name);
+        }
+        public static bool HasThemeIcon(string name) {
+            return (bool) staticInterceptor.Invoke("hasThemeIcon$", "hasThemeIcon(const QString&)", typeof(bool), typeof(string), name);
+        }
+        public static List<string> ThemeSearchPaths() {
+            return (List<string>) staticInterceptor.Invoke("themeSearchPaths", "themeSearchPaths()", typeof(List<string>));
+        }
+        public static void SetThemeSearchPaths(List<string> searchpath) {
+            staticInterceptor.Invoke("setThemeSearchPaths?", "setThemeSearchPaths(const QStringList&)", typeof(void), typeof(List<string>), searchpath);
+        }
+        public static string ThemeName() {
+            return (string) staticInterceptor.Invoke("themeName", "themeName()", typeof(string));
+        }
+        public static void SetThemeName(string path) {
+            staticInterceptor.Invoke("setThemeName$", "setThemeName(const QString&)", typeof(void), typeof(string), path);
         }
     }
 }

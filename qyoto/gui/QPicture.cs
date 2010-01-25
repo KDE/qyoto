@@ -12,7 +12,7 @@ namespace Qyoto {
         static QPicture() {
             staticInterceptor = new SmokeInvocation(typeof(QPicture), null);
         }
-        // QPicturePrivate*& data_ptr(); >>>> NOT CONVERTED
+        // QExplicitlySharedDataPointer<QPicturePrivate>& data_ptr(); >>>> NOT CONVERTED
         // QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED
         public QPicture(int formatVersion) : this((Type) null) {
             CreateProxy();

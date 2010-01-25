@@ -26,5 +26,12 @@ namespace QGL {
     }
     [SmokeClass("QGL")]
     public class Global {
+        private static SmokeInvocation staticInterceptor = null;
+        static Global() {
+            staticInterceptor = new SmokeInvocation(typeof(Global), null);
+        }
+        public static void SetPreferredPaintEngine(QPaintEngine.TypeOf engineType) {
+            staticInterceptor.Invoke("setPreferredPaintEngine$", "setPreferredPaintEngine(QPaintEngine::Type)", typeof(void), typeof(QPaintEngine.TypeOf), engineType);
+        }
     }
 }

@@ -40,17 +40,17 @@ namespace Qyoto {
             NoSslSupport = 23,
             UnspecifiedError = -1,
         }
-        public QSslError(QSslError.SslError error, QSslCertificate certificate) : this((Type) null) {
+        public QSslError() : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QSslError$#", "QSslError(QSslError::SslError, const QSslCertificate&)", typeof(void), typeof(QSslError.SslError), error, typeof(QSslCertificate), certificate);
+            interceptor.Invoke("QSslError", "QSslError()", typeof(void));
         }
         public QSslError(QSslError.SslError error) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QSslError$", "QSslError(QSslError::SslError)", typeof(void), typeof(QSslError.SslError), error);
         }
-        public QSslError() : this((Type) null) {
+        public QSslError(QSslError.SslError error, QSslCertificate certificate) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QSslError", "QSslError()", typeof(void));
+            interceptor.Invoke("QSslError$#", "QSslError(QSslError::SslError, const QSslCertificate&)", typeof(void), typeof(QSslError.SslError), error, typeof(QSslCertificate), certificate);
         }
         public QSslError(QSslError other) : this((Type) null) {
             CreateProxy();

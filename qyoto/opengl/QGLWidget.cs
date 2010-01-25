@@ -156,6 +156,12 @@ namespace Qyoto {
         public override QPaintEngine PaintEngine() {
             return (QPaintEngine) interceptor.Invoke("paintEngine", "paintEngine() const", typeof(QPaintEngine));
         }
+        public uint BindTexture(QImage image, int target, int format, uint options) {
+            return (uint) interceptor.Invoke("bindTexture#$$$", "bindTexture(const QImage&, GLenum, GLint, QGLContext::BindOptions)", typeof(uint), typeof(QImage), image, typeof(int), target, typeof(int), format, typeof(uint), options);
+        }
+        public uint BindTexture(QPixmap pixmap, int target, int format, uint options) {
+            return (uint) interceptor.Invoke("bindTexture#$$$", "bindTexture(const QPixmap&, GLenum, GLint, QGLContext::BindOptions)", typeof(uint), typeof(QPixmap), pixmap, typeof(int), target, typeof(int), format, typeof(uint), options);
+        }
         public uint BindTexture(QImage image, int target, int format) {
             return (uint) interceptor.Invoke("bindTexture#$$", "bindTexture(const QImage&, GLenum, GLint)", typeof(uint), typeof(QImage), image, typeof(int), target, typeof(int), format);
         }

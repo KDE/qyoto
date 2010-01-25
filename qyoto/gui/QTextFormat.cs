@@ -112,7 +112,6 @@ namespace Qyoto {
             PageBreak_AlwaysBefore = 0x001,
             PageBreak_AlwaysAfter = 0x010,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QTextFormat() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QTextFormat", "QTextFormat()", typeof(void));
@@ -278,6 +277,9 @@ namespace Qyoto {
         }
         public static bool operator!=(QTextFormat lhs, QTextFormat rhs) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextFormat&) const", typeof(bool), typeof(QTextFormat), lhs, typeof(QTextFormat), rhs);
+        }
+        public static QVariant operatorQVariant(QTextFormat lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QTextFormat), lhs);
         }
     }
 }

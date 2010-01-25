@@ -36,7 +36,6 @@ namespace Qyoto {
             NImageFormats = 16,
         }
         // QImage* QImage(const char** arg1); >>>> NOT CONVERTED
-        //  operator QVariant(); >>>> NOT CONVERTED
         // QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
         // QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
         // QImageData*& data_ptr(); >>>> NOT CONVERTED
@@ -131,8 +130,8 @@ namespace Qyoto {
         public new int Depth() {
             return (int) interceptor.Invoke("depth", "depth() const", typeof(int));
         }
-        public new int NumColors() {
-            return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
+        public new int ColorCount() {
+            return (int) interceptor.Invoke("colorCount", "colorCount() const", typeof(int));
         }
         public uint Color(int i) {
             return (uint) interceptor.Invoke("color$", "color(int) const", typeof(uint), typeof(int), i);
@@ -140,8 +139,8 @@ namespace Qyoto {
         public void SetColor(int i, uint c) {
             interceptor.Invoke("setColor$$", "setColor(int, unsigned int)", typeof(void), typeof(int), i, typeof(uint), c);
         }
-        public void SetNumColors(int arg1) {
-            interceptor.Invoke("setNumColors$", "setNumColors(int)", typeof(void), typeof(int), arg1);
+        public void SetColorCount(int arg1) {
+            interceptor.Invoke("setColorCount$", "setColorCount(int)", typeof(void), typeof(int), arg1);
         }
         public bool AllGray() {
             return (bool) interceptor.Invoke("allGray", "allGray() const", typeof(bool));
@@ -152,8 +151,8 @@ namespace Qyoto {
         public Pointer<byte> Bits() {
             return (Pointer<byte>) interceptor.Invoke("bits", "bits()", typeof(Pointer<byte>));
         }
-        public int NumBytes() {
-            return (int) interceptor.Invoke("numBytes", "numBytes() const", typeof(int));
+        public int ByteCount() {
+            return (int) interceptor.Invoke("byteCount", "byteCount() const", typeof(int));
         }
         public Pointer<byte> ScanLine(int arg1) {
             return (Pointer<byte>) interceptor.Invoke("scanLine$", "scanLine(int)", typeof(Pointer<byte>), typeof(int), arg1);
@@ -384,6 +383,9 @@ namespace Qyoto {
         }
         public static bool operator!=(QImage lhs, QImage arg1) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QImage&) const", typeof(bool), typeof(QImage), lhs, typeof(QImage), arg1);
+        }
+        public static QVariant operatorQVariant(QImage lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QImage), lhs);
         }
         public static QMatrix TrueMatrix(QMatrix arg1, int w, int h) {
             return (QMatrix) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QMatrix&, int, int)", typeof(QMatrix), typeof(QMatrix), arg1, typeof(int), w, typeof(int), h);

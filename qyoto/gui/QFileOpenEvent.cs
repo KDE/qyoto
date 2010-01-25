@@ -11,8 +11,15 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QFileOpenEvent$", "QFileOpenEvent(const QString&)", typeof(void), typeof(string), file);
         }
+        public QFileOpenEvent(QUrl url) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QFileOpenEvent#", "QFileOpenEvent(const QUrl&)", typeof(void), typeof(QUrl), url);
+        }
         public string File() {
             return (string) interceptor.Invoke("file", "file() const", typeof(string));
+        }
+        public QUrl Url() {
+            return (QUrl) interceptor.Invoke("url", "url() const", typeof(QUrl));
         }
         ~QFileOpenEvent() {
             interceptor.Invoke("~QFileOpenEvent", "~QFileOpenEvent()", typeof(void));

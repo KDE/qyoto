@@ -16,6 +16,8 @@ namespace Qyoto {
             CombinedDepthStencil = 1,
             Depth = 2,
         }
+        // void blitFramebuffer(QGLFramebufferObject* arg1,const QRect& arg2,QGLFramebufferObject* arg3,const QRect& arg4,GLbitfield arg5,GLenum arg6); >>>> NOT CONVERTED
+        // void blitFramebuffer(QGLFramebufferObject* arg1,const QRect& arg2,QGLFramebufferObject* arg3,const QRect& arg4,GLbitfield arg5); >>>> NOT CONVERTED
         public QGLFramebufferObject(QSize size, int target) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QGLFramebufferObject#$", "QGLFramebufferObject(const QSize&, GLenum)", typeof(void), typeof(QSize), size, typeof(int), target);
@@ -55,6 +57,17 @@ namespace Qyoto {
         public QGLFramebufferObject(int width, int height, QGLFramebufferObject.Attachment attachment) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QGLFramebufferObject$$$", "QGLFramebufferObject(int, int, QGLFramebufferObject::Attachment)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObject.Attachment), attachment);
+        }
+        public QGLFramebufferObject(QSize size, QGLFramebufferObjectFormat format) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QGLFramebufferObject##", "QGLFramebufferObject(const QSize&, const QGLFramebufferObjectFormat&)", typeof(void), typeof(QSize), size, typeof(QGLFramebufferObjectFormat), format);
+        }
+        public QGLFramebufferObject(int width, int height, QGLFramebufferObjectFormat format) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QGLFramebufferObject$$#", "QGLFramebufferObject(int, int, const QGLFramebufferObjectFormat&)", typeof(void), typeof(int), width, typeof(int), height, typeof(QGLFramebufferObjectFormat), format);
+        }
+        public QGLFramebufferObjectFormat Format() {
+            return (QGLFramebufferObjectFormat) interceptor.Invoke("format", "format() const", typeof(QGLFramebufferObjectFormat));
         }
         public bool IsValid() {
             return (bool) interceptor.Invoke("isValid", "isValid() const", typeof(bool));
@@ -112,6 +125,12 @@ namespace Qyoto {
         }
         public static bool HasOpenGLFramebufferObjects() {
             return (bool) staticInterceptor.Invoke("hasOpenGLFramebufferObjects", "hasOpenGLFramebufferObjects()", typeof(bool));
+        }
+        public static bool HasOpenGLFramebufferBlit() {
+            return (bool) staticInterceptor.Invoke("hasOpenGLFramebufferBlit", "hasOpenGLFramebufferBlit()", typeof(bool));
+        }
+        public static void BlitFramebuffer(QGLFramebufferObject target, QRect targetRect, QGLFramebufferObject source, QRect sourceRect) {
+            staticInterceptor.Invoke("blitFramebuffer####", "blitFramebuffer(QGLFramebufferObject*, const QRect&, QGLFramebufferObject*, const QRect&)", typeof(void), typeof(QGLFramebufferObject), target, typeof(QRect), targetRect, typeof(QGLFramebufferObject), source, typeof(QRect), sourceRect);
         }
     }
 }

@@ -13,13 +13,15 @@ namespace Qyoto {
         static QByteRef() {
             staticInterceptor = new SmokeInvocation(typeof(QByteRef), null);
         }
-        //  operator char(); >>>> NOT CONVERTED
         public override bool Equals(object o) {
             if (!(o is QByteRef)) { return false; }
             return this == (QByteRef) o;
         }
         public override int GetHashCode() {
             return interceptor.GetHashCode();
+        }
+        public static char operatorchar(QByteRef lhs) {
+            return (char) staticInterceptor.Invoke("operator char", "operator char() const", typeof(char), typeof(QByteRef), lhs);
         }
         public static bool operator==(QByteRef lhs, char c) {
             return (bool) staticInterceptor.Invoke("operator==$", "operator==(char) const", typeof(bool), typeof(QByteRef), lhs, typeof(char), c);

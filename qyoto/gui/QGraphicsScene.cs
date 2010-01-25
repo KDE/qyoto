@@ -64,6 +64,11 @@ namespace Qyoto {
             get { return (bool) interceptor.Invoke("isSortCacheEnabled", "isSortCacheEnabled()", typeof(bool)); }
             set { interceptor.Invoke("setSortCacheEnabled$", "setSortCacheEnabled(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("bool", "stickyFocus")]
+        public bool StickyFocus {
+            get { return (bool) interceptor.Invoke("stickyFocus", "stickyFocus()", typeof(bool)); }
+            set { interceptor.Invoke("setStickyFocus$", "setStickyFocus(bool)", typeof(void), typeof(bool), value); }
+        }
         // void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
         // void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
         public QGraphicsScene(QObject parent) : this((Type) null) {
@@ -117,6 +122,33 @@ namespace Qyoto {
         public List<IQGraphicsItem> Items() {
             return (List<IQGraphicsItem>) interceptor.Invoke("items", "items() const", typeof(List<IQGraphicsItem>));
         }
+        public List<IQGraphicsItem> Items(Qt.SortOrder order) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items$", "items(Qt::SortOrder) const", typeof(List<IQGraphicsItem>), typeof(Qt.SortOrder), order);
+        }
+        public List<IQGraphicsItem> Items(QPointF pos, Qt.ItemSelectionMode mode, Qt.SortOrder order, QTransform deviceTransform) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$#", "items(const QPointF&, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform&) const", typeof(List<IQGraphicsItem>), typeof(QPointF), pos, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order, typeof(QTransform), deviceTransform);
+        }
+        public List<IQGraphicsItem> Items(QPointF pos, Qt.ItemSelectionMode mode, Qt.SortOrder order) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$", "items(const QPointF&, Qt::ItemSelectionMode, Qt::SortOrder) const", typeof(List<IQGraphicsItem>), typeof(QPointF), pos, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order);
+        }
+        public List<IQGraphicsItem> Items(QRectF rect, Qt.ItemSelectionMode mode, Qt.SortOrder order, QTransform deviceTransform) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$#", "items(const QRectF&, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform&) const", typeof(List<IQGraphicsItem>), typeof(QRectF), rect, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order, typeof(QTransform), deviceTransform);
+        }
+        public List<IQGraphicsItem> Items(QRectF rect, Qt.ItemSelectionMode mode, Qt.SortOrder order) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$", "items(const QRectF&, Qt::ItemSelectionMode, Qt::SortOrder) const", typeof(List<IQGraphicsItem>), typeof(QRectF), rect, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order);
+        }
+        public List<IQGraphicsItem> Items(QPolygonF polygon, Qt.ItemSelectionMode mode, Qt.SortOrder order, QTransform deviceTransform) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$#", "items(const QPolygonF&, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform&) const", typeof(List<IQGraphicsItem>), typeof(QPolygonF), polygon, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order, typeof(QTransform), deviceTransform);
+        }
+        public List<IQGraphicsItem> Items(QPolygonF polygon, Qt.ItemSelectionMode mode, Qt.SortOrder order) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$", "items(const QPolygonF&, Qt::ItemSelectionMode, Qt::SortOrder) const", typeof(List<IQGraphicsItem>), typeof(QPolygonF), polygon, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order);
+        }
+        public List<IQGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode, Qt.SortOrder order, QTransform deviceTransform) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$#", "items(const QPainterPath&, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform&) const", typeof(List<IQGraphicsItem>), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order, typeof(QTransform), deviceTransform);
+        }
+        public List<IQGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode, Qt.SortOrder order) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items#$$", "items(const QPainterPath&, Qt::ItemSelectionMode, Qt::SortOrder) const", typeof(List<IQGraphicsItem>), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order);
+        }
         public List<IQGraphicsItem> Items(QPointF pos) {
             return (List<IQGraphicsItem>) interceptor.Invoke("items#", "items(const QPointF&) const", typeof(List<IQGraphicsItem>), typeof(QPointF), pos);
         }
@@ -147,14 +179,26 @@ namespace Qyoto {
         public IQGraphicsItem ItemAt(QPointF pos) {
             return (IQGraphicsItem) interceptor.Invoke("itemAt#", "itemAt(const QPointF&) const", typeof(IQGraphicsItem), typeof(QPointF), pos);
         }
+        public IQGraphicsItem ItemAt(QPointF pos, QTransform deviceTransform) {
+            return (IQGraphicsItem) interceptor.Invoke("itemAt##", "itemAt(const QPointF&, const QTransform&) const", typeof(IQGraphicsItem), typeof(QPointF), pos, typeof(QTransform), deviceTransform);
+        }
         public List<IQGraphicsItem> Items(double x, double y, double w, double h, Qt.ItemSelectionMode mode) {
             return (List<IQGraphicsItem>) interceptor.Invoke("items$$$$$", "items(qreal, qreal, qreal, qreal, Qt::ItemSelectionMode) const", typeof(List<IQGraphicsItem>), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(Qt.ItemSelectionMode), mode);
         }
         public List<IQGraphicsItem> Items(double x, double y, double w, double h) {
             return (List<IQGraphicsItem>) interceptor.Invoke("items$$$$", "items(qreal, qreal, qreal, qreal) const", typeof(List<IQGraphicsItem>), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h);
         }
+        public List<IQGraphicsItem> Items(double x, double y, double w, double h, Qt.ItemSelectionMode mode, Qt.SortOrder order, QTransform deviceTransform) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items$$$$$$#", "items(qreal, qreal, qreal, qreal, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform&) const", typeof(List<IQGraphicsItem>), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order, typeof(QTransform), deviceTransform);
+        }
+        public List<IQGraphicsItem> Items(double x, double y, double w, double h, Qt.ItemSelectionMode mode, Qt.SortOrder order) {
+            return (List<IQGraphicsItem>) interceptor.Invoke("items$$$$$$", "items(qreal, qreal, qreal, qreal, Qt::ItemSelectionMode, Qt::SortOrder) const", typeof(List<IQGraphicsItem>), typeof(double), x, typeof(double), y, typeof(double), w, typeof(double), h, typeof(Qt.ItemSelectionMode), mode, typeof(Qt.SortOrder), order);
+        }
         public IQGraphicsItem ItemAt(double x, double y) {
             return (IQGraphicsItem) interceptor.Invoke("itemAt$$", "itemAt(qreal, qreal) const", typeof(IQGraphicsItem), typeof(double), x, typeof(double), y);
+        }
+        public IQGraphicsItem ItemAt(double x, double y, QTransform deviceTransform) {
+            return (IQGraphicsItem) interceptor.Invoke("itemAt$$#", "itemAt(qreal, qreal, const QTransform&) const", typeof(IQGraphicsItem), typeof(double), x, typeof(double), y, typeof(QTransform), deviceTransform);
         }
         public List<IQGraphicsItem> SelectedItems() {
             return (List<IQGraphicsItem>) interceptor.Invoke("selectedItems", "selectedItems() const", typeof(List<IQGraphicsItem>));
@@ -165,8 +209,14 @@ namespace Qyoto {
         public void SetSelectionArea(QPainterPath path) {
             interceptor.Invoke("setSelectionArea#", "setSelectionArea(const QPainterPath&)", typeof(void), typeof(QPainterPath), path);
         }
-        public void SetSelectionArea(QPainterPath path, Qt.ItemSelectionMode arg2) {
-            interceptor.Invoke("setSelectionArea#$", "setSelectionArea(const QPainterPath&, Qt::ItemSelectionMode)", typeof(void), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), arg2);
+        public void SetSelectionArea(QPainterPath path, QTransform deviceTransform) {
+            interceptor.Invoke("setSelectionArea##", "setSelectionArea(const QPainterPath&, const QTransform&)", typeof(void), typeof(QPainterPath), path, typeof(QTransform), deviceTransform);
+        }
+        public void SetSelectionArea(QPainterPath path, Qt.ItemSelectionMode mode) {
+            interceptor.Invoke("setSelectionArea#$", "setSelectionArea(const QPainterPath&, Qt::ItemSelectionMode)", typeof(void), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode);
+        }
+        public void SetSelectionArea(QPainterPath path, Qt.ItemSelectionMode mode, QTransform deviceTransform) {
+            interceptor.Invoke("setSelectionArea#$#", "setSelectionArea(const QPainterPath&, Qt::ItemSelectionMode, const QTransform&)", typeof(void), typeof(QPainterPath), path, typeof(Qt.ItemSelectionMode), mode, typeof(QTransform), deviceTransform);
         }
         public QGraphicsItemGroup CreateItemGroup(List<IQGraphicsItem> items) {
             return (QGraphicsItemGroup) interceptor.Invoke("createItemGroup?", "createItemGroup(const QList<QGraphicsItem*>&)", typeof(QGraphicsItemGroup), typeof(List<IQGraphicsItem>), items);
@@ -313,11 +363,23 @@ namespace Qyoto {
         public void SetStyle(QStyle style) {
             interceptor.Invoke("setStyle#", "setStyle(QStyle*)", typeof(void), typeof(QStyle), style);
         }
+        public bool IsActive() {
+            return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
+        }
+        public IQGraphicsItem ActivePanel() {
+            return (IQGraphicsItem) interceptor.Invoke("activePanel", "activePanel() const", typeof(IQGraphicsItem));
+        }
+        public void SetActivePanel(IQGraphicsItem item) {
+            interceptor.Invoke("setActivePanel#", "setActivePanel(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
         public QGraphicsWidget ActiveWindow() {
             return (QGraphicsWidget) interceptor.Invoke("activeWindow", "activeWindow() const", typeof(QGraphicsWidget));
         }
         public void SetActiveWindow(QGraphicsWidget widget) {
             interceptor.Invoke("setActiveWindow#", "setActiveWindow(QGraphicsWidget*)", typeof(void), typeof(QGraphicsWidget), widget);
+        }
+        public bool SendEvent(IQGraphicsItem item, QEvent arg2) {
+            return (bool) interceptor.Invoke("sendEvent##", "sendEvent(QGraphicsItem*, QEvent*)", typeof(bool), typeof(IQGraphicsItem), item, typeof(QEvent), arg2);
         }
         [Q_SLOT("void update(QRectF)")]
         public void Update(QRectF rect) {

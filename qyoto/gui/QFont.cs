@@ -91,7 +91,6 @@ namespace Qyoto {
             WordSpacingResolved = 0x4000,
             AllPropertiesResolved = 0x7fff,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QFont() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QFont", "QFont()", typeof(void));
@@ -310,6 +309,9 @@ namespace Qyoto {
         public static bool operator>(QFont lhs, QFont arg1) {
             return !(bool) staticInterceptor.Invoke("operator<#", "operator<(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1)
                         && !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QFont&) const", typeof(bool), typeof(QFont), lhs, typeof(QFont), arg1);
+        }
+        public static QVariant operatorQVariant(QFont lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QFont), lhs);
         }
         public static string Substitute(string arg1) {
             return (string) staticInterceptor.Invoke("substitute$", "substitute(const QString&)", typeof(string), typeof(string), arg1);

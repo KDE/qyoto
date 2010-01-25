@@ -7,16 +7,6 @@ namespace Qyoto {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QGraphicsLinearLayout), this);
         }
-        [Q_PROPERTY("Qt::Orientation", "orientation")]
-        public Qt.Orientation Orientation {
-            get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
-            set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
-        }
-        [Q_PROPERTY("qreal", "spacing")]
-        public double Spacing {
-            get { return (double) interceptor.Invoke("spacing", "spacing()", typeof(double)); }
-            set { interceptor.Invoke("setSpacing$", "setSpacing(qreal)", typeof(void), typeof(double), value); }
-        }
         public QGraphicsLinearLayout(IQGraphicsLayoutItem parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QGraphicsLinearLayout#", "QGraphicsLinearLayout(QGraphicsLayoutItem*)", typeof(void), typeof(IQGraphicsLayoutItem), parent);
@@ -32,6 +22,12 @@ namespace Qyoto {
         public QGraphicsLinearLayout(Qt.Orientation orientation) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QGraphicsLinearLayout$", "QGraphicsLinearLayout(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
+        }
+        public void SetOrientation(Qt.Orientation orientation) {
+            interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), orientation);
+        }
+        public Qt.Orientation Orientation() {
+            return (Qt.Orientation) interceptor.Invoke("orientation", "orientation() const", typeof(Qt.Orientation));
         }
         public void AddItem(IQGraphicsLayoutItem item) {
             interceptor.Invoke("addItem#", "addItem(QGraphicsLayoutItem*)", typeof(void), typeof(IQGraphicsLayoutItem), item);
@@ -57,6 +53,12 @@ namespace Qyoto {
         [SmokeMethod("removeAt(int)")]
         public override void RemoveAt(int index) {
             interceptor.Invoke("removeAt$", "removeAt(int)", typeof(void), typeof(int), index);
+        }
+        public void SetSpacing(double spacing) {
+            interceptor.Invoke("setSpacing$", "setSpacing(qreal)", typeof(void), typeof(double), spacing);
+        }
+        public double Spacing() {
+            return (double) interceptor.Invoke("spacing", "spacing() const", typeof(double));
         }
         public void SetItemSpacing(int index, double spacing) {
             interceptor.Invoke("setItemSpacing$$", "setItemSpacing(int, qreal)", typeof(void), typeof(int), index, typeof(double), spacing);

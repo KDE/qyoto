@@ -115,6 +115,12 @@ namespace Qyoto {
         public List<string> Environment() {
             return (List<string>) interceptor.Invoke("environment", "environment() const", typeof(List<string>));
         }
+        public void SetProcessEnvironment(QProcessEnvironment environment) {
+            interceptor.Invoke("setProcessEnvironment#", "setProcessEnvironment(const QProcessEnvironment&)", typeof(void), typeof(QProcessEnvironment), environment);
+        }
+        public QProcessEnvironment ProcessEnvironment() {
+            return (QProcessEnvironment) interceptor.Invoke("processEnvironment", "processEnvironment() const", typeof(QProcessEnvironment));
+        }
         public QProcess.ProcessError Error() {
             return (QProcess.ProcessError) interceptor.Invoke("error", "error() const", typeof(QProcess.ProcessError));
         }

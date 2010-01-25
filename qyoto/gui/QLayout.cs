@@ -46,6 +46,9 @@ namespace Qyoto {
         public void SetContentsMargins(int left, int top, int right, int bottom) {
             interceptor.Invoke("setContentsMargins$$$$", "setContentsMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
         }
+        public void SetContentsMargins(QMargins margins) {
+            interceptor.Invoke("setContentsMargins#", "setContentsMargins(const QMargins&)", typeof(void), typeof(QMargins), margins);
+        }
         public void GetContentsMargins(ref int left, ref int top, ref int right, ref int bottom) {
             StackItem[] stack = new StackItem[5];
             stack[1].s_int = left;
@@ -58,6 +61,9 @@ namespace Qyoto {
             right = stack[3].s_int;
             bottom = stack[4].s_int;
             return;
+        }
+        public QMargins ContentsMargins() {
+            return (QMargins) interceptor.Invoke("contentsMargins", "contentsMargins() const", typeof(QMargins));
         }
         public QRect ContentsRect() {
             return (QRect) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRect));

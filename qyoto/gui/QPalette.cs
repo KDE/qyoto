@@ -47,7 +47,6 @@ namespace Qyoto {
             Foreground = WindowText,
             Background = Window,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QPalette() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QPalette", "QPalette()", typeof(void));
@@ -208,6 +207,9 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QPalette", "~QPalette()", typeof(void));
+        }
+        public static QVariant operatorQVariant(QPalette lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QPalette), lhs);
         }
         public static bool operator==(QPalette lhs, QPalette p) {
             return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QPalette&) const", typeof(bool), typeof(QPalette), lhs, typeof(QPalette), p);

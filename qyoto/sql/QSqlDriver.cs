@@ -116,6 +116,18 @@ namespace Qyoto {
         public List<string> SubscribedToNotifications() {
             return (List<string>) interceptor.Invoke("subscribedToNotifications", "subscribedToNotifications() const", typeof(List<string>));
         }
+        public bool IsIdentifierEscaped(string identifier, QSqlDriver.IdentifierType type) {
+            return (bool) interceptor.Invoke("isIdentifierEscaped$$", "isIdentifierEscaped(const QString&, QSqlDriver::IdentifierType) const", typeof(bool), typeof(string), identifier, typeof(QSqlDriver.IdentifierType), type);
+        }
+        public string StripDelimiters(string identifier, QSqlDriver.IdentifierType type) {
+            return (string) interceptor.Invoke("stripDelimiters$$", "stripDelimiters(const QString&, QSqlDriver::IdentifierType) const", typeof(string), typeof(string), identifier, typeof(QSqlDriver.IdentifierType), type);
+        }
+        public void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy precisionPolicy) {
+            interceptor.Invoke("setNumericalPrecisionPolicy$", "setNumericalPrecisionPolicy(QSql::NumericalPrecisionPolicy)", typeof(void), typeof(QSql.NumericalPrecisionPolicy), precisionPolicy);
+        }
+        public QSql.NumericalPrecisionPolicy NumericalPrecisionPolicy() {
+            return (QSql.NumericalPrecisionPolicy) interceptor.Invoke("numericalPrecisionPolicy", "numericalPrecisionPolicy() const", typeof(QSql.NumericalPrecisionPolicy));
+        }
         [SmokeMethod("setOpen(bool)")]
         protected virtual void SetOpen(bool o) {
             interceptor.Invoke("setOpen$", "setOpen(bool)", typeof(void), typeof(bool), o);
@@ -139,6 +151,14 @@ namespace Qyoto {
         [Q_SLOT("QStringList subscribedToNotificationsImplementation()")]
         protected List<string> SubscribedToNotificationsImplementation() {
             return (List<string>) interceptor.Invoke("subscribedToNotificationsImplementation", "subscribedToNotificationsImplementation() const", typeof(List<string>));
+        }
+        [Q_SLOT("bool isIdentifierEscapedImplementation(QString, IdentifierType)")]
+        protected bool IsIdentifierEscapedImplementation(string identifier, QSqlDriver.IdentifierType type) {
+            return (bool) interceptor.Invoke("isIdentifierEscapedImplementation$$", "isIdentifierEscapedImplementation(const QString&, QSqlDriver::IdentifierType) const", typeof(bool), typeof(string), identifier, typeof(QSqlDriver.IdentifierType), type);
+        }
+        [Q_SLOT("QString stripDelimitersImplementation(QString, IdentifierType)")]
+        protected string StripDelimitersImplementation(string identifier, QSqlDriver.IdentifierType type) {
+            return (string) interceptor.Invoke("stripDelimitersImplementation$$", "stripDelimitersImplementation(const QString&, QSqlDriver::IdentifierType) const", typeof(string), typeof(string), identifier, typeof(QSqlDriver.IdentifierType), type);
         }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);

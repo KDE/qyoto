@@ -30,6 +30,42 @@ namespace Qyoto {
             SortUp = 1,
             SortDown = 2,
         }
+        public int Section {
+            get { return (int) interceptor.Invoke("section", "section()", typeof(int)); }
+            set { interceptor.Invoke("setSection$", "setSection(int)", typeof(void), typeof(int), value); }
+        }
+        public string Text {
+            get { return (string) interceptor.Invoke("text", "text()", typeof(string)); }
+            set { interceptor.Invoke("setText$", "setText(QString)", typeof(void), typeof(string), value); }
+        }
+        public uint TextAlignment {
+            get { return (uint) interceptor.Invoke("textAlignment", "textAlignment()", typeof(uint)); }
+            set { interceptor.Invoke("setTextAlignment$", "setTextAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
+        }
+        public QIcon Icon {
+            get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
+            set { interceptor.Invoke("setIcon#", "setIcon(QIcon)", typeof(void), typeof(QIcon), value); }
+        }
+        public uint IconAlignment {
+            get { return (uint) interceptor.Invoke("iconAlignment", "iconAlignment()", typeof(uint)); }
+            set { interceptor.Invoke("setIconAlignment$", "setIconAlignment(Qt::Alignment)", typeof(void), typeof(uint), value); }
+        }
+        public QStyleOptionHeader.SectionPosition Position {
+            get { return (QStyleOptionHeader.SectionPosition) interceptor.Invoke("position", "position()", typeof(QStyleOptionHeader.SectionPosition)); }
+            set { interceptor.Invoke("setPosition$", "setPosition(QStyleOptionHeader::SectionPosition)", typeof(void), typeof(QStyleOptionHeader.SectionPosition), value); }
+        }
+        public QStyleOptionHeader.SelectedPosition selectedPosition {
+            get { return (QStyleOptionHeader.SelectedPosition) interceptor.Invoke("selectedPosition", "selectedPosition()", typeof(QStyleOptionHeader.SelectedPosition)); }
+            set { interceptor.Invoke("setSelectedPosition$", "setSelectedPosition(QStyleOptionHeader::SelectedPosition)", typeof(void), typeof(QStyleOptionHeader.SelectedPosition), value); }
+        }
+        public QStyleOptionHeader.SortIndicator sortIndicator {
+            get { return (QStyleOptionHeader.SortIndicator) interceptor.Invoke("sortIndicator", "sortIndicator()", typeof(QStyleOptionHeader.SortIndicator)); }
+            set { interceptor.Invoke("setSortIndicator$", "setSortIndicator(QStyleOptionHeader::SortIndicator)", typeof(void), typeof(QStyleOptionHeader.SortIndicator), value); }
+        }
+        public Qt.Orientation Orientation {
+            get { return (Qt.Orientation) interceptor.Invoke("orientation", "orientation()", typeof(Qt.Orientation)); }
+            set { interceptor.Invoke("setOrientation$", "setOrientation(Qt::Orientation)", typeof(void), typeof(Qt.Orientation), value); }
+        }
         public QStyleOptionHeader() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QStyleOptionHeader", "QStyleOptionHeader()", typeof(void));

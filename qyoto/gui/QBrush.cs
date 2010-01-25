@@ -13,8 +13,7 @@ namespace Qyoto {
         static QBrush() {
             staticInterceptor = new SmokeInvocation(typeof(QBrush), null);
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
-        // QBrushData*& data_ptr(); >>>> NOT CONVERTED
+        // QScopedPointer<QBrushData,QBrushDataPointerDeleter>& data_ptr(); >>>> NOT CONVERTED
         public QBrush() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QBrush", "QBrush()", typeof(void));
@@ -123,6 +122,9 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QBrush", "~QBrush()", typeof(void));
+        }
+        public static QVariant operatorQVariant(QBrush lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QBrush), lhs);
         }
         public static bool operator==(QBrush lhs, QBrush b) {
             return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QBrush&) const", typeof(bool), typeof(QBrush), lhs, typeof(QBrush), b);

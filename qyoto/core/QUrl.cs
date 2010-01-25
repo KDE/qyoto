@@ -283,6 +283,9 @@ namespace Qyoto {
         public static bool operator!=(QUrl lhs, QUrl url) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QUrl&) const", typeof(bool), typeof(QUrl), lhs, typeof(QUrl), url);
         }
+        public static string operatorQString(QUrl lhs) {
+            return (string) staticInterceptor.Invoke("operator QString", "operator QString() const", typeof(string), typeof(QUrl), lhs);
+        }
         public static QUrl FromLocalFile(string localfile) {
             return (QUrl) staticInterceptor.Invoke("fromLocalFile$", "fromLocalFile(const QString&)", typeof(QUrl), typeof(string), localfile);
         }
@@ -291,6 +294,9 @@ namespace Qyoto {
         }
         public static QUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode) {
             return (QUrl) staticInterceptor.Invoke("fromEncoded#$", "fromEncoded(const QByteArray&, QUrl::ParsingMode)", typeof(QUrl), typeof(QByteArray), url, typeof(QUrl.ParsingMode), mode);
+        }
+        public static QUrl FromUserInput(string userInput) {
+            return (QUrl) staticInterceptor.Invoke("fromUserInput$", "fromUserInput(const QString&)", typeof(QUrl), typeof(string), userInput);
         }
         public static string FromPercentEncoding(QByteArray arg1) {
             return (string) staticInterceptor.Invoke("fromPercentEncoding#", "fromPercentEncoding(const QByteArray&)", typeof(string), typeof(QByteArray), arg1);

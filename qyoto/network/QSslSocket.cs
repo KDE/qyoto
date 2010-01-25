@@ -39,6 +39,12 @@ namespace Qyoto {
         public void ConnectToHostEncrypted(string hostName, ushort port) {
             interceptor.Invoke("connectToHostEncrypted$$", "connectToHostEncrypted(const QString&, unsigned short)", typeof(void), typeof(string), hostName, typeof(ushort), port);
         }
+        public void ConnectToHostEncrypted(string hostName, ushort port, string sslPeerName, uint mode) {
+            interceptor.Invoke("connectToHostEncrypted$$$$", "connectToHostEncrypted(const QString&, unsigned short, const QString&, QIODevice::OpenMode)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(string), sslPeerName, typeof(uint), mode);
+        }
+        public void ConnectToHostEncrypted(string hostName, ushort port, string sslPeerName) {
+            interceptor.Invoke("connectToHostEncrypted$$$", "connectToHostEncrypted(const QString&, unsigned short, const QString&)", typeof(void), typeof(string), hostName, typeof(ushort), port, typeof(string), sslPeerName);
+        }
         public new bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, uint openMode) {
             return (bool) interceptor.Invoke("setSocketDescriptor$$$", "setSocketDescriptor(int, QAbstractSocket::SocketState, QIODevice::OpenMode)", typeof(bool), typeof(int), socketDescriptor, typeof(QAbstractSocket.SocketState), state, typeof(uint), openMode);
         }
@@ -47,6 +53,12 @@ namespace Qyoto {
         }
         public new bool SetSocketDescriptor(int socketDescriptor) {
             return (bool) interceptor.Invoke("setSocketDescriptor$", "setSocketDescriptor(int)", typeof(bool), typeof(int), socketDescriptor);
+        }
+        public new void SetSocketOption(QAbstractSocket.SocketOption option, QVariant value) {
+            interceptor.Invoke("setSocketOption$#", "setSocketOption(QAbstractSocket::SocketOption, const QVariant&)", typeof(void), typeof(QAbstractSocket.SocketOption), option, typeof(QVariant), value);
+        }
+        public new QVariant SocketOption(QAbstractSocket.SocketOption option) {
+            return (QVariant) interceptor.Invoke("socketOption$", "socketOption(QAbstractSocket::SocketOption)", typeof(QVariant), typeof(QAbstractSocket.SocketOption), option);
         }
         public QSslSocket.SslMode Mode() {
             return (QSslSocket.SslMode) interceptor.Invoke("mode", "mode() const", typeof(QSslSocket.SslMode));
@@ -216,6 +228,9 @@ namespace Qyoto {
         }
         public List<QSslError> SslErrors() {
             return (List<QSslError>) interceptor.Invoke("sslErrors", "sslErrors() const", typeof(List<QSslError>));
+        }
+        public void IgnoreSslErrors(List<QSslError> errors) {
+            interceptor.Invoke("ignoreSslErrors?", "ignoreSslErrors(const QList<QSslError>&)", typeof(void), typeof(List<QSslError>), errors);
         }
         [Q_SLOT("void startClientEncryption()")]
         public void StartClientEncryption() {

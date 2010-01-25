@@ -95,11 +95,11 @@ namespace Qyoto {
         public static bool operator!=(QLine lhs, QLine d) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QLine&) const", typeof(bool), typeof(QLine), lhs, typeof(QLine), d);
         }
-        public static QLine operator*(QLine l, QMatrix m) {
-            return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QMatrix&)", typeof(QLine), typeof(QLine), l, typeof(QMatrix), m);
-        }
         public static QLine operator*(QLine l, QTransform m) {
             return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QTransform&)", typeof(QLine), typeof(QLine), l, typeof(QTransform), m);
+        }
+        public static QLine operator*(QLine l, QMatrix m) {
+            return (QLine) staticInterceptor.Invoke("operator*##", "operator*(const QLine&, const QMatrix&)", typeof(QLine), typeof(QLine), l, typeof(QMatrix), m);
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Qyoto {
             Internal = 1,
             InvalidWindowID = 2,
         }
+        // void embedClient(HWND arg1); >>>> NOT CONVERTED
+        // HWND clientWinId(); >>>> NOT CONVERTED
         // bool x11Event(XEvent* arg1); >>>> NOT CONVERTED
         public QX11EmbedContainer(QWidget parent) : this((Type) null) {
             CreateProxy();
@@ -27,14 +29,8 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QX11EmbedContainer", "QX11EmbedContainer()", typeof(void));
         }
-        public void EmbedClient(uint id) {
-            interceptor.Invoke("embedClient$", "embedClient(WId)", typeof(void), typeof(uint), id);
-        }
         public void DiscardClient() {
             interceptor.Invoke("discardClient", "discardClient()", typeof(void));
-        }
-        public uint ClientWinId() {
-            return (uint) interceptor.Invoke("clientWinId", "clientWinId() const", typeof(uint));
         }
         [SmokeMethod("minimumSizeHint() const")]
         public override QSize MinimumSizeHint() {

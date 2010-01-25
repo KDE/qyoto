@@ -68,6 +68,8 @@ namespace Qyoto {
             Direct3D = 11,
             Pdf = 12,
             OpenVG = 13,
+            OpenGL2 = 14,
+            PaintBuffer = 15,
             User = 50,
             MaxUser = 100,
         }

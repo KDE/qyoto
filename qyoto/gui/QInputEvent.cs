@@ -18,6 +18,9 @@ namespace Qyoto {
         public uint Modifiers() {
             return (uint) interceptor.Invoke("modifiers", "modifiers() const", typeof(uint));
         }
+        public void SetModifiers(uint amodifiers) {
+            interceptor.Invoke("setModifiers$", "setModifiers(Qt::KeyboardModifiers)", typeof(void), typeof(uint), amodifiers);
+        }
         ~QInputEvent() {
             interceptor.Invoke("~QInputEvent", "~QInputEvent()", typeof(void));
         }

@@ -119,6 +119,11 @@ namespace Qyoto {
             get { return (QAbstractItemView.DragDropMode) interceptor.Invoke("dragDropMode", "dragDropMode()", typeof(QAbstractItemView.DragDropMode)); }
             set { interceptor.Invoke("setDragDropMode$", "setDragDropMode(QAbstractItemView::DragDropMode)", typeof(void), typeof(QAbstractItemView.DragDropMode), value); }
         }
+        [Q_PROPERTY("Qt::DropAction", "defaultDropAction")]
+        public Qt.DropAction DefaultDropAction {
+            get { return (Qt.DropAction) interceptor.Invoke("defaultDropAction", "defaultDropAction()", typeof(Qt.DropAction)); }
+            set { interceptor.Invoke("setDefaultDropAction$", "setDefaultDropAction(Qt::DropAction)", typeof(void), typeof(Qt.DropAction), value); }
+        }
         [Q_PROPERTY("bool", "alternatingRowColors")]
         public bool AlternatingRowColors {
             get { return (bool) interceptor.Invoke("alternatingRowColors", "alternatingRowColors()", typeof(bool)); }

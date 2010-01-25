@@ -119,6 +119,12 @@ namespace Qyoto {
         public string ConnectionName() {
             return (string) interceptor.Invoke("connectionName", "connectionName() const", typeof(string));
         }
+        public void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy precisionPolicy) {
+            interceptor.Invoke("setNumericalPrecisionPolicy$", "setNumericalPrecisionPolicy(QSql::NumericalPrecisionPolicy)", typeof(void), typeof(QSql.NumericalPrecisionPolicy), precisionPolicy);
+        }
+        public QSql.NumericalPrecisionPolicy NumericalPrecisionPolicy() {
+            return (QSql.NumericalPrecisionPolicy) interceptor.Invoke("numericalPrecisionPolicy", "numericalPrecisionPolicy() const", typeof(QSql.NumericalPrecisionPolicy));
+        }
         public QSqlDriver Driver() {
             return (QSqlDriver) interceptor.Invoke("driver", "driver() const", typeof(QSqlDriver));
         }

@@ -15,8 +15,8 @@ namespace Qyoto {
                 SignalInvocation realProxy = new SignalInvocation(proxyInterface, this);
                 Q_EMIT = realProxy.GetTransparentProxy();
             }
-            catch (Exception e) {
-                Console.WriteLine("Could not retrieve signal interface: {0}", e);
+            catch {
+                Console.WriteLine("Could not retrieve signal interface");
             }
         }
         [SmokeMethod("metaObject()")]

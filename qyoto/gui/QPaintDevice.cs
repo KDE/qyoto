@@ -14,7 +14,7 @@ namespace Qyoto {
         int LogicalDpiY();
         int PhysicalDpiX();
         int PhysicalDpiY();
-        int NumColors();
+        int ColorCount();
         int Depth();
     }
     [SmokeClass("QPaintDevice")]
@@ -70,8 +70,8 @@ namespace Qyoto {
         public int PhysicalDpiY() {
             return (int) interceptor.Invoke("physicalDpiY", "physicalDpiY() const", typeof(int));
         }
-        public int NumColors() {
-            return (int) interceptor.Invoke("numColors", "numColors() const", typeof(int));
+        public int ColorCount() {
+            return (int) interceptor.Invoke("colorCount", "colorCount() const", typeof(int));
         }
         public int Depth() {
             return (int) interceptor.Invoke("depth", "depth() const", typeof(int));

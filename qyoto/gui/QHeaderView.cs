@@ -305,8 +305,8 @@ namespace Qyoto {
             return (QModelIndex) interceptor.Invoke("moveCursor$$", "moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", typeof(QModelIndex), typeof(QAbstractItemView.CursorAction), arg1, typeof(uint), arg2);
         }
         [SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
-        protected override void SetSelection(QRect arg1, uint arg2) {
-            interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), arg1, typeof(uint), arg2);
+        protected override void SetSelection(QRect rect, uint flags) {
+            interceptor.Invoke("setSelection#$", "setSelection(const QRect&, QItemSelectionModel::SelectionFlags)", typeof(void), typeof(QRect), rect, typeof(uint), flags);
         }
         [SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
         protected override QRegion VisualRegionForSelection(QItemSelection selection) {

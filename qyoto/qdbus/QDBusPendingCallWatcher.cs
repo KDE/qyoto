@@ -52,6 +52,12 @@ namespace Qyoto {
         public static new string Tr(string s) {
             return (string) staticInterceptor.Invoke("tr$", "tr(const char*)", typeof(string), typeof(string), s);
         }
+        public static IQDBusPendingCall FromError(QDBusError error) {
+            return (IQDBusPendingCall) staticInterceptor.Invoke("fromError#", "fromError(const QDBusError&)", typeof(IQDBusPendingCall), typeof(QDBusError), error);
+        }
+        public static IQDBusPendingCall FromCompletedCall(QDBusMessage message) {
+            return (IQDBusPendingCall) staticInterceptor.Invoke("fromCompletedCall#", "fromCompletedCall(const QDBusMessage&)", typeof(IQDBusPendingCall), typeof(QDBusMessage), message);
+        }
         protected new IQDBusPendingCallWatcherSignals Emit {
             get { return (IQDBusPendingCallWatcherSignals) Q_EMIT; }
         }

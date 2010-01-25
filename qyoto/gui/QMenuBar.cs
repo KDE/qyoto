@@ -18,6 +18,11 @@ namespace Qyoto {
             get { return (bool) interceptor.Invoke("isDefaultUp", "isDefaultUp()", typeof(bool)); }
             set { interceptor.Invoke("setDefaultUp$", "setDefaultUp(bool)", typeof(void), typeof(bool), value); }
         }
+        [Q_PROPERTY("bool", "nativeMenuBar")]
+        public bool NativeMenuBar {
+            get { return (bool) interceptor.Invoke("isNativeMenuBar", "isNativeMenuBar()", typeof(bool)); }
+            set { interceptor.Invoke("setNativeMenuBar$", "setNativeMenuBar(bool)", typeof(void), typeof(bool), value); }
+        }
         public QMenuBar(QWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QMenuBar#", "QMenuBar(QWidget*)", typeof(void), typeof(QWidget), parent);

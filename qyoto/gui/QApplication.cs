@@ -79,6 +79,11 @@ namespace Qyoto {
             get { return (string) interceptor.Invoke("styleSheet", "styleSheet()", typeof(string)); }
             set { interceptor.Invoke("setStyleSheet$", "setStyleSheet(QString)", typeof(void), typeof(string), value); }
         }
+        [Q_PROPERTY("bool", "autoSipEnabled")]
+        public bool AutoSipEnabled {
+            get { return (bool) interceptor.Invoke("autoSipEnabled", "autoSipEnabled()", typeof(bool)); }
+            set { interceptor.Invoke("setAutoSipEnabled$", "setAutoSipEnabled(bool)", typeof(void), typeof(bool), value); }
+        }
         // bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
         public bool IsSessionRestored() {
             return (bool) interceptor.Invoke("isSessionRestored", "isSessionRestored() const", typeof(bool));
@@ -110,6 +115,14 @@ namespace Qyoto {
         [Q_SLOT("void setStyleSheet(QString)")]
         public void SetStyleSheet(string sheet) {
             interceptor.Invoke("setStyleSheet$", "setStyleSheet(const QString&)", typeof(void), typeof(string), sheet);
+        }
+        [Q_SLOT("void setAutoSipEnabled(bool)")]
+        public void SetAutoSipEnabled(bool enabled) {
+            interceptor.Invoke("setAutoSipEnabled$", "setAutoSipEnabled(const bool)", typeof(void), typeof(bool), enabled);
+        }
+        [Q_SLOT("bool autoSipEnabled()")]
+        public bool autoSipEnabled() {
+            return (bool) interceptor.Invoke("autoSipEnabled", "autoSipEnabled() const", typeof(bool));
         }
         [SmokeMethod("event(QEvent*)")]
         protected override bool Event(QEvent arg1) {

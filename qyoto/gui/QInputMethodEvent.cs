@@ -12,6 +12,7 @@ namespace Qyoto {
             Cursor = 1,
             Language = 2,
             Ruby = 3,
+            Selection = 4,
         }
         // QInputMethodEvent* QInputMethodEvent(const QString& arg1,const QList<QInputMethodEvent::Attribute>& arg2); >>>> NOT CONVERTED
         // const QList<QInputMethodEvent::Attribute>& attributes(); >>>> NOT CONVERTED

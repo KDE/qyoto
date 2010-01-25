@@ -25,6 +25,9 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QPointF$$", "QPointF(qreal, qreal)", typeof(void), typeof(double), xpos, typeof(double), ypos);
         }
+        public double ManhattanLength() {
+            return (double) interceptor.Invoke("manhattanLength", "manhattanLength() const", typeof(double));
+        }
         public bool IsNull() {
             return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
         }
@@ -86,11 +89,17 @@ namespace Qyoto {
         public static QPointF operator-(QPointF p) {
             return (QPointF) staticInterceptor.Invoke("operator-#", "operator-(const QPointF&)", typeof(QPointF), typeof(QPointF), p);
         }
-        public static QPointF operator*(QPointF p, QMatrix m) {
-            return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QMatrix&)", typeof(QPointF), typeof(QPointF), p, typeof(QMatrix), m);
-        }
         public static QPointF operator*(QPointF p, QTransform m) {
             return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QTransform&)", typeof(QPointF), typeof(QPointF), p, typeof(QTransform), m);
+        }
+        public static QPointF operator*(QPointF point, QMatrix4x4 matrix) {
+            return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QMatrix4x4&)", typeof(QPointF), typeof(QPointF), point, typeof(QMatrix4x4), matrix);
+        }
+        public static QPointF operator*(QMatrix4x4 matrix, QPointF point) {
+            return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QMatrix4x4&, const QPointF&)", typeof(QPointF), typeof(QMatrix4x4), matrix, typeof(QPointF), point);
+        }
+        public static QPointF operator*(QPointF p, QMatrix m) {
+            return (QPointF) staticInterceptor.Invoke("operator*##", "operator*(const QPointF&, const QMatrix&)", typeof(QPointF), typeof(QPointF), p, typeof(QMatrix), m);
         }
     }
 }

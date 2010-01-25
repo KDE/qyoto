@@ -22,7 +22,7 @@ namespace Qyoto {
             CountryName = 4,
             StateOrProvinceName = 5,
         }
-        // QMultiMap<QSsl::AlternateNameEntryType, QString> alternateSubjectNames(); >>>> NOT CONVERTED
+        // QMultiMap<QSsl::AlternateNameEntryType,QString> alternateSubjectNames(); >>>> NOT CONVERTED
         public QSslCertificate(QIODevice device, QSsl.EncodingFormat format) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QSslCertificate#$", "QSslCertificate(QIODevice*, QSsl::EncodingFormat)", typeof(void), typeof(QIODevice), device, typeof(QSsl.EncodingFormat), format);

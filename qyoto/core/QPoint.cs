@@ -82,11 +82,17 @@ namespace Qyoto {
         public static QPoint operator-(QPoint p) {
             return (QPoint) staticInterceptor.Invoke("operator-#", "operator-(const QPoint&)", typeof(QPoint), typeof(QPoint), p);
         }
-        public static QPoint operator*(QPoint p, QMatrix m) {
-            return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
-        }
         public static QPoint operator*(QPoint p, QTransform m) {
             return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QTransform&)", typeof(QPoint), typeof(QPoint), p, typeof(QTransform), m);
+        }
+        public static QPoint operator*(QPoint point, QMatrix4x4 matrix) {
+            return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix4x4&)", typeof(QPoint), typeof(QPoint), point, typeof(QMatrix4x4), matrix);
+        }
+        public static QPoint operator*(QMatrix4x4 matrix, QPoint point) {
+            return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QMatrix4x4&, const QPoint&)", typeof(QPoint), typeof(QMatrix4x4), matrix, typeof(QPoint), point);
+        }
+        public static QPoint operator*(QPoint p, QMatrix m) {
+            return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);
         }
     }
 }

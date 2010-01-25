@@ -9,7 +9,10 @@ namespace Qyoto {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QFlag), this);
         }
-        //  operator int(); >>>> NOT CONVERTED
+        private static SmokeInvocation staticInterceptor = null;
+        static QFlag() {
+            staticInterceptor = new SmokeInvocation(typeof(QFlag), null);
+        }
         public QFlag(int i) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QFlag$", "QFlag(int)", typeof(void), typeof(int), i);
@@ -19,6 +22,9 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QFlag", "~QFlag()", typeof(void));
+        }
+        public static int operatorint(QFlag lhs) {
+            return (int) staticInterceptor.Invoke("operator int", "operator int() const", typeof(int), typeof(QFlag), lhs);
         }
     }
 }

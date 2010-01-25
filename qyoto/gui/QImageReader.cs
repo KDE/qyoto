@@ -53,6 +53,12 @@ namespace Qyoto {
         public bool AutoDetectImageFormat() {
             return (bool) interceptor.Invoke("autoDetectImageFormat", "autoDetectImageFormat() const", typeof(bool));
         }
+        public void SetDecideFormatFromContent(bool ignored) {
+            interceptor.Invoke("setDecideFormatFromContent$", "setDecideFormatFromContent(bool)", typeof(void), typeof(bool), ignored);
+        }
+        public bool DecideFormatFromContent() {
+            return (bool) interceptor.Invoke("decideFormatFromContent", "decideFormatFromContent() const", typeof(bool));
+        }
         public void SetDevice(QIODevice device) {
             interceptor.Invoke("setDevice#", "setDevice(QIODevice*)", typeof(void), typeof(QIODevice), device);
         }

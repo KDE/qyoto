@@ -49,6 +49,11 @@ namespace Qyoto {
             get { return (int) interceptor.Invoke("completionRole", "completionRole()", typeof(int)); }
             set { interceptor.Invoke("setCompletionRole$", "setCompletionRole(int)", typeof(void), typeof(int), value); }
         }
+        [Q_PROPERTY("int", "maxVisibleItems")]
+        public int MaxVisibleItems {
+            get { return (int) interceptor.Invoke("maxVisibleItems", "maxVisibleItems()", typeof(int)); }
+            set { interceptor.Invoke("setMaxVisibleItems$", "setMaxVisibleItems(int)", typeof(void), typeof(int), value); }
+        }
         [Q_PROPERTY("Qt::CaseSensitivity", "caseSensitivity")]
         public new Qt.CaseSensitivity CaseSensitivity {
             get { return (Qt.CaseSensitivity) interceptor.Invoke("caseSensitivity", "caseSensitivity()", typeof(Qt.CaseSensitivity)); }

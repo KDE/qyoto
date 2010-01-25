@@ -49,7 +49,8 @@ namespace Qyoto {
             Other = Symbol,
             Ogham = 31,
             Runic = 32,
-            WritingSystemsCount = 33,
+            Nko = 33,
+            WritingSystemsCount = 34,
         }
         public QFontDatabase() : this((Type) null) {
             CreateProxy();

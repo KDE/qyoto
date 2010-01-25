@@ -13,7 +13,6 @@ namespace Qyoto {
         static QCursor() {
             staticInterceptor = new SmokeInvocation(typeof(QCursor), null);
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QCursor() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QCursor", "QCursor()", typeof(void));
@@ -73,6 +72,9 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QCursor", "~QCursor()", typeof(void));
+        }
+        public static QVariant operatorQVariant(QCursor lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QCursor), lhs);
         }
         public static QPoint Pos() {
             return (QPoint) staticInterceptor.Invoke("pos", "pos()", typeof(QPoint));

@@ -18,7 +18,6 @@ namespace Qyoto {
             Rectangle = 0,
             Ellipse = 1,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QRegion() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QRegion", "QRegion()", typeof(void));
@@ -127,8 +126,8 @@ namespace Qyoto {
         public void SetRects(QRect rect, int num) {
             interceptor.Invoke("setRects#$", "setRects(const QRect*, int)", typeof(void), typeof(QRect), rect, typeof(int), num);
         }
-        public int NumRects() {
-            return (int) interceptor.Invoke("numRects", "numRects() const", typeof(int));
+        public int RectCount() {
+            return (int) interceptor.Invoke("rectCount", "rectCount() const", typeof(int));
         }
         public override bool Equals(object o) {
             if (!(o is QRegion)) { return false; }
@@ -170,11 +169,14 @@ namespace Qyoto {
         public static bool operator!=(QRegion lhs, QRegion r) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QRegion&) const", typeof(bool), typeof(QRegion), lhs, typeof(QRegion), r);
         }
-        public static QRegion operator*(QRegion r, QMatrix m) {
-            return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QMatrix&)", typeof(QRegion), typeof(QRegion), r, typeof(QMatrix), m);
+        public static QVariant operatorQVariant(QRegion lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QRegion), lhs);
         }
         public static QRegion operator*(QRegion r, QTransform m) {
             return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QTransform&)", typeof(QRegion), typeof(QRegion), r, typeof(QTransform), m);
+        }
+        public static QRegion operator*(QRegion r, QMatrix m) {
+            return (QRegion) staticInterceptor.Invoke("operator*##", "operator*(const QRegion&, const QMatrix&)", typeof(QRegion), typeof(QRegion), r, typeof(QMatrix), m);
         }
     }
 }

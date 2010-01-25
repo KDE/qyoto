@@ -44,6 +44,12 @@ namespace Qyoto {
         public void Translate(QPointF offset) {
             interceptor.Invoke("translate#", "translate(const QPointF&)", typeof(void), typeof(QPointF), offset);
         }
+        public QPolygonF Translated(double dx, double dy) {
+            return (QPolygonF) interceptor.Invoke("translated$$", "translated(qreal, qreal) const", typeof(QPolygonF), typeof(double), dx, typeof(double), dy);
+        }
+        public QPolygonF Translated(QPointF offset) {
+            return (QPolygonF) interceptor.Invoke("translated#", "translated(const QPointF&) const", typeof(QPolygonF), typeof(QPointF), offset);
+        }
         public QPolygon ToPolygon() {
             return (QPolygon) interceptor.Invoke("toPolygon", "toPolygon() const", typeof(QPolygon));
         }
@@ -71,11 +77,11 @@ namespace Qyoto {
         public void Dispose() {
             interceptor.Invoke("~QPolygonF", "~QPolygonF()", typeof(void));
         }
-        public static QPolygonF operator*(QPolygonF a, QMatrix m) {
-            return (QPolygonF) staticInterceptor.Invoke("operator*##", "operator*(const QPolygonF&, const QMatrix&)", typeof(QPolygonF), typeof(QPolygonF), a, typeof(QMatrix), m);
-        }
         public static QPolygonF operator*(QPolygonF a, QTransform m) {
             return (QPolygonF) staticInterceptor.Invoke("operator*##", "operator*(const QPolygonF&, const QTransform&)", typeof(QPolygonF), typeof(QPolygonF), a, typeof(QTransform), m);
+        }
+        public static QPolygonF operator*(QPolygonF a, QMatrix m) {
+            return (QPolygonF) staticInterceptor.Invoke("operator*##", "operator*(const QPolygonF&, const QMatrix&)", typeof(QPolygonF), typeof(QPolygonF), a, typeof(QMatrix), m);
         }
     }
 }

@@ -10,7 +10,9 @@ namespace Qyoto {
         static QBitRef() {
             staticInterceptor = new SmokeInvocation(typeof(QBitRef), null);
         }
-        //  operator bool(); >>>> NOT CONVERTED
+        public static bool operatorbool(QBitRef lhs) {
+            return (bool) staticInterceptor.Invoke("operator bool", "operator bool() const", typeof(bool), typeof(QBitRef), lhs);
+        }
         public static bool operator!(QBitRef lhs) {
             return (bool) staticInterceptor.Invoke("operator!", "operator!() const", typeof(bool), typeof(QBitRef), lhs);
         }

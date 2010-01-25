@@ -19,6 +19,8 @@ namespace Qyoto {
             Wildcard = 1,
             FixedString = 2,
             RegExp2 = 3,
+            WildcardUnix = 4,
+            W3CXmlSchema11 = 5,
         }
         public enum CaretMode {
             CaretAtZero = 0,
@@ -106,8 +108,8 @@ namespace Qyoto {
         public int MatchedLength() {
             return (int) interceptor.Invoke("matchedLength", "matchedLength() const", typeof(int));
         }
-        public int NumCaptures() {
-            return (int) interceptor.Invoke("numCaptures", "numCaptures() const", typeof(int));
+        public int CaptureCount() {
+            return (int) interceptor.Invoke("captureCount", "captureCount() const", typeof(int));
         }
         public List<string> CapturedTexts() {
             return (List<string>) interceptor.Invoke("capturedTexts", "capturedTexts()", typeof(List<string>));

@@ -23,6 +23,17 @@ namespace Qyoto {
             PreferencesRole = 5,
             QuitRole = 6,
         }
+        public enum SoftKeyRole {
+            NoSoftKey = 0,
+            PositiveSoftKey = 1,
+            NegativeSoftKey = 2,
+            SelectSoftKey = 3,
+        }
+        public enum Priority {
+            LowPriority = 0,
+            NormalPriority = 128,
+            HighPriority = 256,
+        }
         public enum ActionEvent {
             Trigger = 0,
             Hover = 1,
@@ -102,10 +113,20 @@ namespace Qyoto {
             get { return (QAction.MenuRole) interceptor.Invoke("menuRole", "menuRole()", typeof(QAction.MenuRole)); }
             set { interceptor.Invoke("setMenuRole$", "setMenuRole(QAction::MenuRole)", typeof(void), typeof(QAction.MenuRole), value); }
         }
+        [Q_PROPERTY("QAction::SoftKeyRole", "softKeyRole")]
+        public QAction.SoftKeyRole softKeyRole {
+            get { return (QAction.SoftKeyRole) interceptor.Invoke("softKeyRole", "softKeyRole()", typeof(QAction.SoftKeyRole)); }
+            set { interceptor.Invoke("setSoftKeyRole$", "setSoftKeyRole(QAction::SoftKeyRole)", typeof(void), typeof(QAction.SoftKeyRole), value); }
+        }
         [Q_PROPERTY("bool", "iconVisibleInMenu")]
         public bool IconVisibleInMenu {
             get { return (bool) interceptor.Invoke("isIconVisibleInMenu", "isIconVisibleInMenu()", typeof(bool)); }
             set { interceptor.Invoke("setIconVisibleInMenu$", "setIconVisibleInMenu(bool)", typeof(void), typeof(bool), value); }
+        }
+        [Q_PROPERTY("QAction::Priority", "priority")]
+        public QAction.Priority priority {
+            get { return (QAction.Priority) interceptor.Invoke("priority", "priority()", typeof(QAction.Priority)); }
+            set { interceptor.Invoke("setPriority$", "setPriority(QAction::Priority)", typeof(void), typeof(QAction.Priority), value); }
         }
         // QAction* QAction(QActionPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
         public QAction(QObject parent) : this((Type) null) {

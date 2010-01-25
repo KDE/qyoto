@@ -14,7 +14,6 @@ namespace Qyoto {
         static QPolygon() {
             staticInterceptor = new SmokeInvocation(typeof(QPolygon), null);
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QPolygon() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QPolygon", "QPolygon()", typeof(void));
@@ -53,6 +52,12 @@ namespace Qyoto {
         }
         public void Translate(QPoint offset) {
             interceptor.Invoke("translate#", "translate(const QPoint&)", typeof(void), typeof(QPoint), offset);
+        }
+        public QPolygon Translated(int dx, int dy) {
+            return (QPolygon) interceptor.Invoke("translated$$", "translated(int, int) const", typeof(QPolygon), typeof(int), dx, typeof(int), dy);
+        }
+        public QPolygon Translated(QPoint offset) {
+            return (QPolygon) interceptor.Invoke("translated#", "translated(const QPoint&) const", typeof(QPolygon), typeof(QPoint), offset);
         }
         public QRect BoundingRect() {
             return (QRect) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRect));
@@ -117,11 +122,14 @@ namespace Qyoto {
         public void Dispose() {
             interceptor.Invoke("~QPolygon", "~QPolygon()", typeof(void));
         }
-        public static QPolygon operator*(QPolygon a, QMatrix m) {
-            return (QPolygon) staticInterceptor.Invoke("operator*##", "operator*(const QPolygon&, const QMatrix&)", typeof(QPolygon), typeof(QPolygon), a, typeof(QMatrix), m);
+        public static QVariant operatorQVariant(QPolygon lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QPolygon), lhs);
         }
         public static QPolygon operator*(QPolygon a, QTransform m) {
             return (QPolygon) staticInterceptor.Invoke("operator*##", "operator*(const QPolygon&, const QTransform&)", typeof(QPolygon), typeof(QPolygon), a, typeof(QTransform), m);
+        }
+        public static QPolygon operator*(QPolygon a, QMatrix m) {
+            return (QPolygon) staticInterceptor.Invoke("operator*##", "operator*(const QPolygon&, const QMatrix&)", typeof(QPolygon), typeof(QPolygon), a, typeof(QMatrix), m);
         }
     }
 }

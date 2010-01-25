@@ -13,7 +13,7 @@ namespace Qyoto {
         static QLocalServer() {
             staticInterceptor = new SmokeInvocation(typeof(QLocalServer), null);
         }
-        // void incomingConnection(QUintForType<void*>::Type arg1); >>>> NOT CONVERTED
+        // void incomingConnection(QIntegerForSizeof<void*>::Unsigned arg1); >>>> NOT CONVERTED
         public QLocalServer(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QLocalServer#", "QLocalServer(QObject*)", typeof(void), typeof(QObject), parent);

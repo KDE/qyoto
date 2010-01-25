@@ -14,6 +14,8 @@ namespace Qyoto {
             ListDecimal = -4,
             ListLowerAlpha = -5,
             ListUpperAlpha = -6,
+            ListLowerRoman = -7,
+            ListUpperRoman = -8,
             ListStyleUndefined = 0,
         }
         public QTextListFormat() : this((Type) null) {

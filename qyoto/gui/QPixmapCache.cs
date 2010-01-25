@@ -6,6 +6,46 @@ namespace Qyoto {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QPixmapCache(Type dummy) {}
+        [SmokeClass("QPixmapCache::Key")]
+        public class Key : Object, IDisposable {
+            protected SmokeInvocation interceptor = null;
+            private IntPtr smokeObject;
+            protected Key(Type dummy) {}
+            protected void CreateProxy() {
+                interceptor = new SmokeInvocation(typeof(Key), this);
+            }
+            private static SmokeInvocation staticInterceptor = null;
+            static Key() {
+                staticInterceptor = new SmokeInvocation(typeof(Key), null);
+            }
+            public Key() : this((Type) null) {
+                CreateProxy();
+                interceptor.Invoke("Key", "Key()", typeof(void));
+            }
+            public Key(QPixmapCache.Key other) : this((Type) null) {
+                CreateProxy();
+                interceptor.Invoke("Key#", "Key(const QPixmapCache::Key&)", typeof(void), typeof(QPixmapCache.Key), other);
+            }
+            public override bool Equals(object o) {
+                if (!(o is Key)) { return false; }
+                return this == (Key) o;
+            }
+            public override int GetHashCode() {
+                return interceptor.GetHashCode();
+            }
+            ~Key() {
+                interceptor.Invoke("~Key", "~Key()", typeof(void));
+            }
+            public void Dispose() {
+                interceptor.Invoke("~Key", "~Key()", typeof(void));
+            }
+            public static bool operator==(Key lhs, QPixmapCache.Key key) {
+                return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QPixmapCache::Key&) const", typeof(bool), typeof(Key), lhs, typeof(QPixmapCache.Key), key);
+            }
+            public static bool operator!=(Key lhs, QPixmapCache.Key key) {
+                return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QPixmapCache::Key&) const", typeof(bool), typeof(Key), lhs, typeof(QPixmapCache.Key), key);
+            }
+        }
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QPixmapCache), this);
         }
@@ -32,14 +72,26 @@ namespace Qyoto {
         public static QPixmap Find(string key) {
             return (QPixmap) staticInterceptor.Invoke("find$", "find(const QString&)", typeof(QPixmap), typeof(string), key);
         }
-        public static bool Find(string key, QPixmap arg2) {
-            return (bool) staticInterceptor.Invoke("find$#", "find(const QString&, QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), arg2);
+        public static bool Find(string key, QPixmap pixmap) {
+            return (bool) staticInterceptor.Invoke("find$#", "find(const QString&, QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), pixmap);
         }
-        public static bool Insert(string key, QPixmap arg2) {
-            return (bool) staticInterceptor.Invoke("insert$#", "insert(const QString&, const QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), arg2);
+        public static bool Find(QPixmapCache.Key key, QPixmap pixmap) {
+            return (bool) staticInterceptor.Invoke("find##", "find(const QPixmapCache::Key&, QPixmap*)", typeof(bool), typeof(QPixmapCache.Key), key, typeof(QPixmap), pixmap);
+        }
+        public static bool Insert(string key, QPixmap pixmap) {
+            return (bool) staticInterceptor.Invoke("insert$#", "insert(const QString&, const QPixmap&)", typeof(bool), typeof(string), key, typeof(QPixmap), pixmap);
+        }
+        public static QPixmapCache.Key Insert(QPixmap pixmap) {
+            return (QPixmapCache.Key) staticInterceptor.Invoke("insert#", "insert(const QPixmap&)", typeof(QPixmapCache.Key), typeof(QPixmap), pixmap);
+        }
+        public static bool Replace(QPixmapCache.Key key, QPixmap pixmap) {
+            return (bool) staticInterceptor.Invoke("replace##", "replace(const QPixmapCache::Key&, const QPixmap&)", typeof(bool), typeof(QPixmapCache.Key), key, typeof(QPixmap), pixmap);
         }
         public static void Remove(string key) {
             staticInterceptor.Invoke("remove$", "remove(const QString&)", typeof(void), typeof(string), key);
+        }
+        public static void Remove(QPixmapCache.Key key) {
+            staticInterceptor.Invoke("remove#", "remove(const QPixmapCache::Key&)", typeof(void), typeof(QPixmapCache.Key), key);
         }
         public static void Clear() {
             staticInterceptor.Invoke("clear", "clear()", typeof(void));

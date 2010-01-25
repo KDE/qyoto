@@ -60,6 +60,11 @@ namespace Qyoto {
             get { return (QTimeLine.CurveShape) interceptor.Invoke("curveShape", "curveShape()", typeof(QTimeLine.CurveShape)); }
             set { interceptor.Invoke("setCurveShape$", "setCurveShape(QTimeLine::CurveShape)", typeof(void), typeof(QTimeLine.CurveShape), value); }
         }
+        [Q_PROPERTY("QEasingCurve", "easingCurve")]
+        public QEasingCurve EasingCurve {
+            get { return (QEasingCurve) interceptor.Invoke("easingCurve", "easingCurve()", typeof(QEasingCurve)); }
+            set { interceptor.Invoke("setEasingCurve#", "setEasingCurve(QEasingCurve)", typeof(void), typeof(QEasingCurve), value); }
+        }
         public QTimeLine(int duration, QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QTimeLine$#", "QTimeLine(int, QObject*)", typeof(void), typeof(int), duration, typeof(QObject), parent);

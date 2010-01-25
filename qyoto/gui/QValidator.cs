@@ -23,6 +23,10 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QValidator#", "QValidator(QObject*)", typeof(void), typeof(QObject), parent);
         }
+        public QValidator() : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QValidator", "QValidator()", typeof(void));
+        }
         public void SetLocale(QLocale locale) {
             interceptor.Invoke("setLocale#", "setLocale(const QLocale&)", typeof(void), typeof(QLocale), locale);
         }

@@ -37,6 +37,7 @@ namespace Qyoto {
             DontClipPainter = 0x1,
             DontSavePainterState = 0x2,
             DontAdjustForAntialiasing = 0x4,
+            IndirectPainting = 0x8,
         }
         [Q_PROPERTY("QBrush", "backgroundBrush")]
         public QBrush BackgroundBrush {
@@ -167,6 +168,9 @@ namespace Qyoto {
         }
         public QTransform ViewportTransform() {
             return (QTransform) interceptor.Invoke("viewportTransform", "viewportTransform() const", typeof(QTransform));
+        }
+        public bool IsTransformed() {
+            return (bool) interceptor.Invoke("isTransformed", "isTransformed() const", typeof(bool));
         }
         public void SetTransform(QTransform matrix, bool combine) {
             interceptor.Invoke("setTransform#$", "setTransform(const QTransform&, bool)", typeof(void), typeof(QTransform), matrix, typeof(bool), combine);

@@ -18,6 +18,10 @@ namespace Qyoto {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QDBusPendingCall), this);
         }
+        private static SmokeInvocation staticInterceptor = null;
+        static QDBusPendingCall() {
+            staticInterceptor = new SmokeInvocation(typeof(QDBusPendingCall), null);
+        }
         // QDBusPendingCall* QDBusPendingCall(QDBusPendingCallPrivate* arg1); >>>> NOT CONVERTED
         public QDBusPendingCall(IQDBusPendingCall other) : this((Type) null) {
             CreateProxy();
@@ -46,6 +50,12 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QDBusPendingCall", "~QDBusPendingCall()", typeof(void));
+        }
+        public static IQDBusPendingCall FromError(QDBusError error) {
+            return (IQDBusPendingCall) staticInterceptor.Invoke("fromError#", "fromError(const QDBusError&)", typeof(IQDBusPendingCall), typeof(QDBusError), error);
+        }
+        public static IQDBusPendingCall FromCompletedCall(QDBusMessage message) {
+            return (IQDBusPendingCall) staticInterceptor.Invoke("fromCompletedCall#", "fromCompletedCall(const QDBusMessage&)", typeof(IQDBusPendingCall), typeof(QDBusMessage), message);
         }
     }
 }

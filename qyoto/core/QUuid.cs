@@ -39,7 +39,6 @@ namespace Qyoto {
             get { return (ushort) interceptor.Invoke("data3", "data3()", typeof(ushort)); }
             set { interceptor.Invoke("setData3$", "setData3(unsigned short)", typeof(void), typeof(ushort), value); }
         }
-        //  operator QString(); >>>> NOT CONVERTED
         public QUuid() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QUuid", "QUuid()", typeof(void));
@@ -76,6 +75,9 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QUuid", "~QUuid()", typeof(void));
+        }
+        public static string operatorQString(QUuid lhs) {
+            return (string) staticInterceptor.Invoke("operator QString", "operator QString() const", typeof(string), typeof(QUuid), lhs);
         }
         public static bool operator==(QUuid lhs, QUuid orig) {
             return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QUuid&) const", typeof(bool), typeof(QUuid), lhs, typeof(QUuid), orig);

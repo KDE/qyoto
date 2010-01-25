@@ -20,6 +20,9 @@ namespace Qyoto {
         }
         [SmokeMethod("queryProxy(const QNetworkProxyQuery&)")]
         public abstract List<QNetworkProxy> QueryProxy(QNetworkProxyQuery query);
+        public static void SetUseSystemConfiguration(bool enable) {
+            staticInterceptor.Invoke("setUseSystemConfiguration$", "setUseSystemConfiguration(bool)", typeof(void), typeof(bool), enable);
+        }
         public static void SetApplicationProxyFactory(QNetworkProxyFactory factory) {
             staticInterceptor.Invoke("setApplicationProxyFactory#", "setApplicationProxyFactory(QNetworkProxyFactory*)", typeof(void), typeof(QNetworkProxyFactory), factory);
         }

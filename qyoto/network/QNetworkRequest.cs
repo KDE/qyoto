@@ -30,6 +30,9 @@ namespace Qyoto {
             CacheLoadControlAttribute = 4,
             CacheSaveControlAttribute = 5,
             SourceIsFromCacheAttribute = 6,
+            DoNotBufferUploadDataAttribute = 7,
+            HttpPipeliningAllowedAttribute = 8,
+            HttpPipeliningWasUsedAttribute = 9,
             User = 1000,
             UserMax = 32767,
         }
@@ -96,6 +99,12 @@ namespace Qyoto {
         }
         public void SetSslConfiguration(QSslConfiguration configuration) {
             interceptor.Invoke("setSslConfiguration#", "setSslConfiguration(const QSslConfiguration&)", typeof(void), typeof(QSslConfiguration), configuration);
+        }
+        public void SetOriginatingObject(QObject arg1) {
+            interceptor.Invoke("setOriginatingObject#", "setOriginatingObject(QObject*)", typeof(void), typeof(QObject), arg1);
+        }
+        public QObject OriginatingObject() {
+            return (QObject) interceptor.Invoke("originatingObject", "originatingObject() const", typeof(QObject));
         }
         ~QNetworkRequest() {
             interceptor.Invoke("~QNetworkRequest", "~QNetworkRequest()", typeof(void));

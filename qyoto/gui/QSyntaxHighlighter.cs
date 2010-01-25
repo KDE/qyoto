@@ -33,6 +33,10 @@ namespace Qyoto {
         public void Rehighlight() {
             interceptor.Invoke("rehighlight", "rehighlight()", typeof(void));
         }
+        [Q_SLOT("void rehighlightBlock(QTextBlock)")]
+        public void RehighlightBlock(QTextBlock block) {
+            interceptor.Invoke("rehighlightBlock#", "rehighlightBlock(const QTextBlock&)", typeof(void), typeof(QTextBlock), block);
+        }
         [SmokeMethod("highlightBlock(const QString&)")]
         protected abstract void HighlightBlock(string text);
         protected void SetFormat(int start, int count, QTextCharFormat format) {

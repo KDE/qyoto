@@ -33,6 +33,7 @@ namespace Qyoto {
             ContentOperationNotPermittedError = 202,
             ContentNotFoundError = 203,
             AuthenticationRequiredError = 204,
+            ContentReSendError = 205,
             UnknownContentError = 299,
             ProtocolUnknownError = 301,
             ProtocolInvalidOperationError = 302,
@@ -68,6 +69,12 @@ namespace Qyoto {
         public QNetworkReply.NetworkError Error() {
             return (QNetworkReply.NetworkError) interceptor.Invoke("error", "error() const", typeof(QNetworkReply.NetworkError));
         }
+        public bool IsFinished() {
+            return (bool) interceptor.Invoke("isFinished", "isFinished() const", typeof(bool));
+        }
+        public bool IsRunning() {
+            return (bool) interceptor.Invoke("isRunning", "isRunning() const", typeof(bool));
+        }
         public QUrl Url() {
             return (QUrl) interceptor.Invoke("url", "url() const", typeof(QUrl));
         }
@@ -91,6 +98,9 @@ namespace Qyoto {
         }
         public void SetSslConfiguration(QSslConfiguration configuration) {
             interceptor.Invoke("setSslConfiguration#", "setSslConfiguration(const QSslConfiguration&)", typeof(void), typeof(QSslConfiguration), configuration);
+        }
+        public void IgnoreSslErrors(List<QSslError> errors) {
+            interceptor.Invoke("ignoreSslErrors?", "ignoreSslErrors(const QList<QSslError>&)", typeof(void), typeof(List<QSslError>), errors);
         }
         [Q_SLOT("void ignoreSslErrors()")]
         [SmokeMethod("ignoreSslErrors()")]

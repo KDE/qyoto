@@ -79,6 +79,8 @@ namespace Qyoto {
             InsertParagraphSeparator = 61,
             InsertLineSeparator = 62,
             SaveAs = 63,
+            Preferences = 64,
+            Quit = 65,
         }
         public enum SequenceMatch {
             NoMatch = 0,
@@ -89,9 +91,6 @@ namespace Qyoto {
             NativeText = 0,
             PortableText = 1,
         }
-        //  operator QString(); >>>> NOT CONVERTED
-        //  operator QVariant(); >>>> NOT CONVERTED
-        //  operator int(); >>>> NOT CONVERTED
         // QKeySequencePrivate*& data_ptr(); >>>> NOT CONVERTED
         public QKeySequence() : this((Type) null) {
             CreateProxy();
@@ -155,6 +154,15 @@ namespace Qyoto {
         }
         public void Dispose() {
             interceptor.Invoke("~QKeySequence", "~QKeySequence()", typeof(void));
+        }
+        public static string operatorQString(QKeySequence lhs) {
+            return (string) staticInterceptor.Invoke("operator QString", "operator QString() const", typeof(string), typeof(QKeySequence), lhs);
+        }
+        public static QVariant operatorQVariant(QKeySequence lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QKeySequence), lhs);
+        }
+        public static int operatorint(QKeySequence lhs) {
+            return (int) staticInterceptor.Invoke("operator int", "operator int() const", typeof(int), typeof(QKeySequence), lhs);
         }
         public static bool operator==(QKeySequence lhs, QKeySequence other) {
             return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QKeySequence&) const", typeof(bool), typeof(QKeySequence), lhs, typeof(QKeySequence), other);

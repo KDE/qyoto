@@ -13,9 +13,13 @@ namespace Qyoto {
         }
         // QPixmap* QPixmap(QPixmapData* arg1); >>>> NOT CONVERTED
         // QPixmap* QPixmap(const char** arg1); >>>> NOT CONVERTED
-        //  operator QVariant(); >>>> NOT CONVERTED
         // QPixmapData* pixmapData(); >>>> NOT CONVERTED
-        // QPixmapData*& data_ptr(); >>>> NOT CONVERTED
+        // QExplicitlySharedDataPointer<QPixmapData>& data_ptr(); >>>> NOT CONVERTED
+        // QPixmap grabWindow(HWND arg1,int arg2,int arg3,int arg4,int arg5); >>>> NOT CONVERTED
+        // QPixmap grabWindow(HWND arg1,int arg2,int arg3,int arg4); >>>> NOT CONVERTED
+        // QPixmap grabWindow(HWND arg1,int arg2,int arg3); >>>> NOT CONVERTED
+        // QPixmap grabWindow(HWND arg1,int arg2); >>>> NOT CONVERTED
+        // QPixmap grabWindow(HWND arg1); >>>> NOT CONVERTED
         public QPixmap() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QPixmap", "QPixmap()", typeof(void));
@@ -207,6 +211,18 @@ namespace Qyoto {
         public QPixmap Copy() {
             return (QPixmap) interceptor.Invoke("copy", "copy() const", typeof(QPixmap));
         }
+        public void Scroll(int dx, int dy, int x, int y, int width, int height, QRegion exposed) {
+            interceptor.Invoke("scroll$$$$$$#", "scroll(int, int, int, int, int, int, QRegion*)", typeof(void), typeof(int), dx, typeof(int), dy, typeof(int), x, typeof(int), y, typeof(int), width, typeof(int), height, typeof(QRegion), exposed);
+        }
+        public void Scroll(int dx, int dy, int x, int y, int width, int height) {
+            interceptor.Invoke("scroll$$$$$$", "scroll(int, int, int, int, int, int)", typeof(void), typeof(int), dx, typeof(int), dy, typeof(int), x, typeof(int), y, typeof(int), width, typeof(int), height);
+        }
+        public void Scroll(int dx, int dy, QRect rect, QRegion exposed) {
+            interceptor.Invoke("scroll$$##", "scroll(int, int, const QRect&, QRegion*)", typeof(void), typeof(int), dx, typeof(int), dy, typeof(QRect), rect, typeof(QRegion), exposed);
+        }
+        public void Scroll(int dx, int dy, QRect rect) {
+            interceptor.Invoke("scroll$$#", "scroll(int, int, const QRect&)", typeof(void), typeof(int), dx, typeof(int), dy, typeof(QRect), rect);
+        }
         public int SerialNumber() {
             return (int) interceptor.Invoke("serialNumber", "serialNumber() const", typeof(int));
         }
@@ -236,26 +252,14 @@ namespace Qyoto {
         public void Dispose() {
             interceptor.Invoke("~QPixmap", "~QPixmap()", typeof(void));
         }
+        public static QVariant operatorQVariant(QPixmap lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QPixmap), lhs);
+        }
         public static bool operator!(QPixmap lhs) {
             return (bool) staticInterceptor.Invoke("operator!", "operator!() const", typeof(bool), typeof(QPixmap), lhs);
         }
         public static int DefaultDepth() {
             return (int) staticInterceptor.Invoke("defaultDepth", "defaultDepth()", typeof(int));
-        }
-        public static QPixmap GrabWindow(uint arg1, int x, int y, int w, int h) {
-            return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$$", "grabWindow(WId, int, int, int, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x, typeof(int), y, typeof(int), w, typeof(int), h);
-        }
-        public static QPixmap GrabWindow(uint arg1, int x, int y, int w) {
-            return (QPixmap) staticInterceptor.Invoke("grabWindow$$$$", "grabWindow(WId, int, int, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x, typeof(int), y, typeof(int), w);
-        }
-        public static QPixmap GrabWindow(uint arg1, int x, int y) {
-            return (QPixmap) staticInterceptor.Invoke("grabWindow$$$", "grabWindow(WId, int, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x, typeof(int), y);
-        }
-        public static QPixmap GrabWindow(uint arg1, int x) {
-            return (QPixmap) staticInterceptor.Invoke("grabWindow$$", "grabWindow(WId, int)", typeof(QPixmap), typeof(uint), arg1, typeof(int), x);
-        }
-        public static QPixmap GrabWindow(uint arg1) {
-            return (QPixmap) staticInterceptor.Invoke("grabWindow$", "grabWindow(WId)", typeof(QPixmap), typeof(uint), arg1);
         }
         public static QPixmap GrabWidget(QWidget widget, QRect rect) {
             return (QPixmap) staticInterceptor.Invoke("grabWidget##", "grabWidget(QWidget*, const QRect&)", typeof(QPixmap), typeof(QWidget), widget, typeof(QRect), rect);

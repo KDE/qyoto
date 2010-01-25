@@ -176,5 +176,7 @@ namespace Qyoto {
         void IconSizeChanged(QSize iconSize);
         [Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
         void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);
+        [Q_SIGNAL("void topLevelChanged(bool)")]
+        void TopLevelChanged(bool topLevel);
     }
 }

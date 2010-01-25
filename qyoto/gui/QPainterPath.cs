@@ -141,6 +141,18 @@ namespace Qyoto {
         public bool Intersects(QRectF rect) {
             return (bool) interceptor.Invoke("intersects#", "intersects(const QRectF&) const", typeof(bool), typeof(QRectF), rect);
         }
+        public void Translate(double dx, double dy) {
+            interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
+        }
+        public void Translate(QPointF offset) {
+            interceptor.Invoke("translate#", "translate(const QPointF&)", typeof(void), typeof(QPointF), offset);
+        }
+        public QPainterPath Translated(double dx, double dy) {
+            return (QPainterPath) interceptor.Invoke("translated$$", "translated(qreal, qreal) const", typeof(QPainterPath), typeof(double), dx, typeof(double), dy);
+        }
+        public QPainterPath Translated(QPointF offset) {
+            return (QPainterPath) interceptor.Invoke("translated#", "translated(const QPointF&) const", typeof(QPainterPath), typeof(QPointF), offset);
+        }
         public QRectF BoundingRect() {
             return (QRectF) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRectF));
         }
@@ -259,11 +271,11 @@ namespace Qyoto {
         public static QPainterPath operator-(QPainterPath lhs, QPainterPath other) {
             return (QPainterPath) staticInterceptor.Invoke("operator-#", "operator-(const QPainterPath&) const", typeof(QPainterPath), typeof(QPainterPath), lhs, typeof(QPainterPath), other);
         }
-        public static QPainterPath operator*(QPainterPath p, QMatrix m) {
-            return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QMatrix&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QMatrix), m);
-        }
         public static QPainterPath operator*(QPainterPath p, QTransform m) {
             return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QTransform&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QTransform), m);
+        }
+        public static QPainterPath operator*(QPainterPath p, QMatrix m) {
+            return (QPainterPath) staticInterceptor.Invoke("operator*##", "operator*(const QPainterPath&, const QMatrix&)", typeof(QPainterPath), typeof(QPainterPath), p, typeof(QMatrix), m);
         }
     }
 }

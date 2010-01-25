@@ -22,7 +22,10 @@ namespace Qyoto {
             TxShear = 0x08,
             TxProject = 0x10,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
+        public QTransform(Qt.Initialization arg1) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QTransform$", "QTransform(Qt::Initialization)", typeof(void), typeof(Qt.Initialization), arg1);
+        }
         public QTransform() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QTransform", "QTransform()", typeof(void));
@@ -231,6 +234,9 @@ namespace Qyoto {
         }
         public static QTransform operator*(QTransform lhs, QTransform arg1) {
             return (QTransform) staticInterceptor.Invoke("operator*=#", "operator*=(const QTransform&)", typeof(QTransform), typeof(QTransform), lhs, typeof(QTransform), arg1);
+        }
+        public static QVariant operatorQVariant(QTransform lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QTransform), lhs);
         }
         public static QTransform operator*(QTransform lhs, double div) {
             return (QTransform) staticInterceptor.Invoke("operator*=$", "operator*=(qreal)", typeof(QTransform), typeof(QTransform), lhs, typeof(double), div);

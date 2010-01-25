@@ -172,6 +172,9 @@ namespace Qyoto {
         protected void SetNumericalPrecisionPolicy(QSql.NumericalPrecisionPolicy policy) {
             interceptor.Invoke("setNumericalPrecisionPolicy$", "setNumericalPrecisionPolicy(QSql::NumericalPrecisionPolicy)", typeof(void), typeof(QSql.NumericalPrecisionPolicy), policy);
         }
+        protected QSql.NumericalPrecisionPolicy NumericalPrecisionPolicy() {
+            return (QSql.NumericalPrecisionPolicy) interceptor.Invoke("numericalPrecisionPolicy", "numericalPrecisionPolicy() const", typeof(QSql.NumericalPrecisionPolicy));
+        }
         protected bool NextResult() {
             return (bool) interceptor.Invoke("nextResult", "nextResult()", typeof(bool));
         }

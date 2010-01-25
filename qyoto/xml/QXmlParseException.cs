@@ -33,6 +33,10 @@ namespace Qyoto {
             CreateProxy();
             interceptor.Invoke("QXmlParseException", "QXmlParseException()", typeof(void));
         }
+        public QXmlParseException(QXmlParseException other) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QXmlParseException#", "QXmlParseException(const QXmlParseException&)", typeof(void), typeof(QXmlParseException), other);
+        }
         public int ColumnNumber() {
             return (int) interceptor.Invoke("columnNumber", "columnNumber() const", typeof(int));
         }

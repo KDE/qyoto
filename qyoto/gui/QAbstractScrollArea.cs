@@ -76,6 +76,9 @@ namespace Qyoto {
         protected void SetViewportMargins(int left, int top, int right, int bottom) {
             interceptor.Invoke("setViewportMargins$$$$", "setViewportMargins(int, int, int, int)", typeof(void), typeof(int), left, typeof(int), top, typeof(int), right, typeof(int), bottom);
         }
+        protected void SetViewportMargins(QMargins margins) {
+            interceptor.Invoke("setViewportMargins#", "setViewportMargins(const QMargins&)", typeof(void), typeof(QMargins), margins);
+        }
         [SmokeMethod("event(QEvent*)")]
         protected override bool Event(QEvent arg1) {
             return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);

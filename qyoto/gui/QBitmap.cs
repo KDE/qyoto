@@ -11,7 +11,6 @@ namespace Qyoto {
         static QBitmap() {
             staticInterceptor = new SmokeInvocation(typeof(QBitmap), null);
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QBitmap() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QBitmap", "QBitmap()", typeof(void));
@@ -50,6 +49,9 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QBitmap", "~QBitmap()", typeof(void));
+        }
+        public static QVariant operatorQVariant(QBitmap lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QBitmap), lhs);
         }
         public static new QBitmap FromImage(QImage image, uint flags) {
             return (QBitmap) staticInterceptor.Invoke("fromImage#$", "fromImage(const QImage&, Qt::ImageConversionFlags)", typeof(QBitmap), typeof(QImage), image, typeof(uint), flags);

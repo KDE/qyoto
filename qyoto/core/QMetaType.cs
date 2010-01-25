@@ -63,7 +63,12 @@ namespace Qyoto {
             QTextFormat = 79,
             QMatrix = 80,
             QTransform = 81,
-            LastGuiType = 81,
+            QMatrix4x4 = 82,
+            QVector2D = 83,
+            QVector3D = 84,
+            QVector4D = 85,
+            QQuaternion = 86,
+            LastGuiType = 86,
             FirstCoreExtType = 128,
             VoidStar = 128,
             Long = 129,
@@ -76,6 +81,7 @@ namespace Qyoto {
             QObjectStar = 136,
             QWidgetStar = 137,
             LastCoreExtType = 137,
+            QReal = Double,
             User = 256,
         }
         // void registerStreamOperators(const char* arg1,SaveOperator arg2,LoadOperator arg3); >>>> NOT CONVERTED

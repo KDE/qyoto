@@ -7,6 +7,10 @@ namespace Qyoto {
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), this);
         }
+        private static SmokeInvocation staticInterceptor = null;
+        static QStyleOptionGraphicsItem() {
+            staticInterceptor = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), null);
+        }
         public enum StyleOptionType {
             Type = QStyleOption.OptionType.SO_GraphicsItem,
         }
@@ -42,6 +46,9 @@ namespace Qyoto {
         }
         public new void Dispose() {
             interceptor.Invoke("~QStyleOptionGraphicsItem", "~QStyleOptionGraphicsItem()", typeof(void));
+        }
+        public static double LevelOfDetailFromTransform(QTransform worldTransform) {
+            return (double) staticInterceptor.Invoke("levelOfDetailFromTransform#", "levelOfDetailFromTransform(const QTransform&)", typeof(double), typeof(QTransform), worldTransform);
         }
     }
 }

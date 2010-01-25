@@ -57,5 +57,8 @@ namespace Qyoto {
         public abstract IQGraphicsLayoutItem ItemAt(int i);
         [SmokeMethod("removeAt(int)")]
         public abstract void RemoveAt(int index);
+        protected void AddChildLayoutItem(IQGraphicsLayoutItem layoutItem) {
+            interceptor.Invoke("addChildLayoutItem#", "addChildLayoutItem(QGraphicsLayoutItem*)", typeof(void), typeof(IQGraphicsLayoutItem), layoutItem);
+        }
     }
 }

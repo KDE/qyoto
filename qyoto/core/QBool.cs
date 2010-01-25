@@ -13,7 +13,7 @@ namespace Qyoto {
         static QBool() {
             staticInterceptor = new SmokeInvocation(typeof(QBool), null);
         }
-        //  operator const void *(); >>>> NOT CONVERTED
+        // const void* operator const void *(); >>>> NOT CONVERTED
         public QBool(bool B) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QBool$", "QBool(bool)", typeof(void), typeof(bool), B);

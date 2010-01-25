@@ -384,12 +384,6 @@ namespace Qyoto {
         public static string decomposition(uint ucs4) {
             return (string) staticInterceptor.Invoke("decomposition$", "decomposition(uint)", typeof(string), typeof(uint), ucs4);
         }
-        public static string operator+(string s1, QChar s2) {
-            return (string) staticInterceptor.Invoke("operator+$#", "operator+(const QString&, QChar)", typeof(string), typeof(string), s1, typeof(QChar), s2);
-        }
-        public static string operator+(QChar s1, string s2) {
-            return (string) staticInterceptor.Invoke("operator+#$", "operator+(QChar, const QString&)", typeof(string), typeof(QChar), s1, typeof(string), s2);
-        }
         public static bool operator==(QChar c1, QChar c2) {
             return (bool) staticInterceptor.Invoke("operator==##", "operator==(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
         }
@@ -407,6 +401,12 @@ namespace Qyoto {
         }
         public static bool operator>(QChar c1, QChar c2) {
             return (bool) staticInterceptor.Invoke("operator>##", "operator>(QChar, QChar)", typeof(bool), typeof(QChar), c1, typeof(QChar), c2);
+        }
+        public static string operator+(string s1, QChar s2) {
+            return (string) staticInterceptor.Invoke("operator+$#", "operator+(const QString&, QChar)", typeof(string), typeof(string), s1, typeof(QChar), s2);
+        }
+        public static string operator+(QChar s1, string s2) {
+            return (string) staticInterceptor.Invoke("operator+#$", "operator+(QChar, const QString&)", typeof(string), typeof(QChar), s1, typeof(string), s2);
         }
     }
 }

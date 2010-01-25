@@ -170,10 +170,13 @@ namespace Qyoto {
         public void SortByColumn(int column, Qt.SortOrder order) {
             interceptor.Invoke("sortByColumn$$", "sortByColumn(int, Qt::SortOrder)", typeof(void), typeof(int), column, typeof(Qt.SortOrder), order);
         }
-        [Q_SLOT("void dataChanged(QModelIndex, QModelIndex)")]
         [SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
         public new virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
             interceptor.Invoke("dataChanged##", "dataChanged(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), topLeft, typeof(QModelIndex), bottomRight);
+        }
+        [SmokeMethod("selectAll()")]
+        public override void SelectAll() {
+            interceptor.Invoke("selectAll", "selectAll()", typeof(void));
         }
         [Q_SLOT("void hideColumn(int)")]
         public void HideColumn(int column) {
@@ -198,11 +201,6 @@ namespace Qyoto {
         [Q_SLOT("void sortByColumn(int)")]
         public void SortByColumn(int column) {
             interceptor.Invoke("sortByColumn$", "sortByColumn(int)", typeof(void), typeof(int), column);
-        }
-        [Q_SLOT("void selectAll()")]
-        [SmokeMethod("selectAll()")]
-        public override void SelectAll() {
-            interceptor.Invoke("selectAll", "selectAll()", typeof(void));
         }
         [Q_SLOT("void expandAll()")]
         public void ExpandAll() {

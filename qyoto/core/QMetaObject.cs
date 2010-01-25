@@ -34,6 +34,7 @@ namespace Qyoto {
         // void addGuard(QObject** arg1); >>>> NOT CONVERTED
         // void removeGuard(QObject** arg1); >>>> NOT CONVERTED
         // void changeGuard(QObject** arg1,QObject* arg2); >>>> NOT CONVERTED
+        // int metacall(QObject* arg1,QMetaObject::Call arg2,int arg3,void** arg4); >>>> NOT CONVERTED
         public string ClassName() {
             return (string) interceptor.Invoke("className", "className() const", typeof(string));
         }

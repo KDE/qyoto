@@ -15,7 +15,10 @@ namespace Qyoto {
             staticInterceptor = new SmokeInvocation(typeof(QMatrix), null);
         }
         // QMatrix& operator*=(const QMatrix& arg1); >>>> NOT CONVERTED
-        //  operator QVariant(); >>>> NOT CONVERTED
+        public QMatrix(Qt.Initialization arg1) : this((Type) null) {
+            CreateProxy();
+            interceptor.Invoke("QMatrix$", "QMatrix(Qt::Initialization)", typeof(void), typeof(Qt.Initialization), arg1);
+        }
         public QMatrix() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QMatrix", "QMatrix()", typeof(void));
@@ -125,8 +128,8 @@ namespace Qyoto {
         public bool IsInvertible() {
             return (bool) interceptor.Invoke("isInvertible", "isInvertible() const", typeof(bool));
         }
-        public double Det() {
-            return (double) interceptor.Invoke("det", "det() const", typeof(double));
+        public double Determinant() {
+            return (double) interceptor.Invoke("determinant", "determinant() const", typeof(double));
         }
         public QMatrix Inverted(ref bool invertible) {
             StackItem[] stack = new StackItem[2];
@@ -165,6 +168,9 @@ namespace Qyoto {
         }
         public static QMatrix operator*(QMatrix lhs, QMatrix o) {
             return (QMatrix) staticInterceptor.Invoke("operator*#", "operator*(const QMatrix&) const", typeof(QMatrix), typeof(QMatrix), lhs, typeof(QMatrix), o);
+        }
+        public static QVariant operatorQVariant(QMatrix lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QMatrix), lhs);
         }
         public static QPoint operator*(QPoint p, QMatrix m) {
             return (QPoint) staticInterceptor.Invoke("operator*##", "operator*(const QPoint&, const QMatrix&)", typeof(QPoint), typeof(QPoint), p, typeof(QMatrix), m);

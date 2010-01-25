@@ -19,8 +19,8 @@ namespace Qyoto {
             Rgb = 1,
             Hsv = 2,
             Cmyk = 3,
+            Hsl = 4,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QColor() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QColor", "QColor()", typeof(void));
@@ -191,6 +191,12 @@ namespace Qyoto {
         public int Saturation() {
             return (int) interceptor.Invoke("saturation", "saturation() const", typeof(int));
         }
+        public int HsvHue() {
+            return (int) interceptor.Invoke("hsvHue", "hsvHue() const", typeof(int));
+        }
+        public int HsvSaturation() {
+            return (int) interceptor.Invoke("hsvSaturation", "hsvSaturation() const", typeof(int));
+        }
         public int Value() {
             return (int) interceptor.Invoke("value", "value() const", typeof(int));
         }
@@ -199,6 +205,12 @@ namespace Qyoto {
         }
         public double SaturationF() {
             return (double) interceptor.Invoke("saturationF", "saturationF() const", typeof(double));
+        }
+        public double HsvHueF() {
+            return (double) interceptor.Invoke("hsvHueF", "hsvHueF() const", typeof(double));
+        }
+        public double HsvSaturationF() {
+            return (double) interceptor.Invoke("hsvSaturationF", "hsvSaturationF() const", typeof(double));
         }
         public double ValueF() {
             return (double) interceptor.Invoke("valueF", "valueF() const", typeof(double));
@@ -355,6 +367,84 @@ namespace Qyoto {
         public void SetCmykF(double c, double m, double y, double k) {
             interceptor.Invoke("setCmykF$$$$", "setCmykF(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), c, typeof(double), m, typeof(double), y, typeof(double), k);
         }
+        public int HslHue() {
+            return (int) interceptor.Invoke("hslHue", "hslHue() const", typeof(int));
+        }
+        public int HslSaturation() {
+            return (int) interceptor.Invoke("hslSaturation", "hslSaturation() const", typeof(int));
+        }
+        public int Lightness() {
+            return (int) interceptor.Invoke("lightness", "lightness() const", typeof(int));
+        }
+        public double HslHueF() {
+            return (double) interceptor.Invoke("hslHueF", "hslHueF() const", typeof(double));
+        }
+        public double HslSaturationF() {
+            return (double) interceptor.Invoke("hslSaturationF", "hslSaturationF() const", typeof(double));
+        }
+        public double LightnessF() {
+            return (double) interceptor.Invoke("lightnessF", "lightnessF() const", typeof(double));
+        }
+        public void GetHsl(ref int h, ref int s, ref int l, ref int a) {
+            StackItem[] stack = new StackItem[5];
+            stack[1].s_int = h;
+            stack[2].s_int = s;
+            stack[3].s_int = l;
+            stack[4].s_int = a;
+            interceptor.Invoke("getHsl$$$$", "getHsl(int*, int*, int*, int*) const", stack);
+            h = stack[1].s_int;
+            s = stack[2].s_int;
+            l = stack[3].s_int;
+            a = stack[4].s_int;
+            return;
+        }
+        public void GetHsl(ref int h, ref int s, ref int l) {
+            StackItem[] stack = new StackItem[4];
+            stack[1].s_int = h;
+            stack[2].s_int = s;
+            stack[3].s_int = l;
+            interceptor.Invoke("getHsl$$$", "getHsl(int*, int*, int*) const", stack);
+            h = stack[1].s_int;
+            s = stack[2].s_int;
+            l = stack[3].s_int;
+            return;
+        }
+        public void SetHsl(int h, int s, int l, int a) {
+            interceptor.Invoke("setHsl$$$$", "setHsl(int, int, int, int)", typeof(void), typeof(int), h, typeof(int), s, typeof(int), l, typeof(int), a);
+        }
+        public void SetHsl(int h, int s, int l) {
+            interceptor.Invoke("setHsl$$$", "setHsl(int, int, int)", typeof(void), typeof(int), h, typeof(int), s, typeof(int), l);
+        }
+        public void GetHslF(ref double h, ref double s, ref double l, ref double a) {
+            StackItem[] stack = new StackItem[5];
+            stack[1].s_double = h;
+            stack[2].s_double = s;
+            stack[3].s_double = l;
+            stack[4].s_double = a;
+            interceptor.Invoke("getHslF$$$$", "getHslF(qreal*, qreal*, qreal*, qreal*) const", stack);
+            h = stack[1].s_double;
+            s = stack[2].s_double;
+            l = stack[3].s_double;
+            a = stack[4].s_double;
+            return;
+        }
+        public void GetHslF(ref double h, ref double s, ref double l) {
+            StackItem[] stack = new StackItem[4];
+            stack[1].s_double = h;
+            stack[2].s_double = s;
+            stack[3].s_double = l;
+            interceptor.Invoke("getHslF$$$", "getHslF(qreal*, qreal*, qreal*) const", stack);
+            h = stack[1].s_double;
+            s = stack[2].s_double;
+            l = stack[3].s_double;
+            return;
+        }
+        public void SetHslF(double h, double s, double l, double a) {
+            interceptor.Invoke("setHslF$$$$", "setHslF(qreal, qreal, qreal, qreal)", typeof(void), typeof(double), h, typeof(double), s, typeof(double), l, typeof(double), a);
+        }
+        public void SetHslF(double h, double s, double l) {
+            interceptor.Invoke("setHslF$$$", "setHslF(qreal, qreal, qreal)", typeof(void), typeof(double), h, typeof(double), s, typeof(double), l);
+        }
         public QColor ToRgb() {
             return (QColor) interceptor.Invoke("toRgb", "toRgb() const", typeof(QColor));
         }
@@ -363,6 +453,9 @@ namespace Qyoto {
         }
         public QColor ToCmyk() {
             return (QColor) interceptor.Invoke("toCmyk", "toCmyk() const", typeof(QColor));
+        }
+        public QColor ToHsl() {
+            return (QColor) interceptor.Invoke("toHsl", "toHsl() const", typeof(QColor));
         }
         public QColor ConvertTo(QColor.Spec colorSpec) {
             return (QColor) interceptor.Invoke("convertTo$", "convertTo(QColor::Spec) const", typeof(QColor), typeof(QColor.Spec), colorSpec);
@@ -410,6 +503,9 @@ namespace Qyoto {
         public static bool operator!=(QColor lhs, QColor c) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QColor&) const", typeof(bool), typeof(QColor), lhs, typeof(QColor), c);
         }
+        public static QVariant operatorQVariant(QColor lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QColor), lhs);
+        }
         public static List<string> ColorNames() {
             return (List<string>) staticInterceptor.Invoke("colorNames", "colorNames()", typeof(List<string>));
         }
@@ -454,6 +550,18 @@ namespace Qyoto {
         }
         public static QColor FromCmykF(double c, double m, double y, double k) {
             return (QColor) staticInterceptor.Invoke("fromCmykF$$$$", "fromCmykF(qreal, qreal, qreal, qreal)", typeof(QColor), typeof(double), c, typeof(double), m, typeof(double), y, typeof(double), k);
+        }
+        public static QColor FromHsl(int h, int s, int l, int a) {
+            return (QColor) staticInterceptor.Invoke("fromHsl$$$$", "fromHsl(int, int, int, int)", typeof(QColor), typeof(int), h, typeof(int), s, typeof(int), l, typeof(int), a);
+        }
+        public static QColor FromHsl(int h, int s, int l) {
+            return (QColor) staticInterceptor.Invoke("fromHsl$$$", "fromHsl(int, int, int)", typeof(QColor), typeof(int), h, typeof(int), s, typeof(int), l);
+        }
+        public static QColor FromHslF(double h, double s, double l, double a) {
+            return (QColor) staticInterceptor.Invoke("fromHslF$$$$", "fromHslF(qreal, qreal, qreal, qreal)", typeof(QColor), typeof(double), h, typeof(double), s, typeof(double), l, typeof(double), a);
+        }
+        public static QColor FromHslF(double h, double s, double l) {
+            return (QColor) staticInterceptor.Invoke("fromHslF$$$", "fromHslF(qreal, qreal, qreal)", typeof(QColor), typeof(double), h, typeof(double), s, typeof(double), l);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Qyoto {
     using System.Runtime.InteropServices;
     using System.Collections.Generic;
     [SmokeClass("QGraphicsWidget")]
-    public class QGraphicsWidget : QObject, IQGraphicsItem, IQGraphicsLayoutItem, IDisposable {
+    public class QGraphicsWidget : QGraphicsObject, IQGraphicsLayoutItem, IDisposable {
         protected QGraphicsWidget(Type dummy) : base((Type) null) {}
         protected new void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QGraphicsWidget), this);
@@ -14,67 +14,11 @@ namespace Qyoto {
             staticInterceptor = new SmokeInvocation(typeof(QGraphicsWidget), null);
         }
         public new const int Type = 11;
-        [Q_PROPERTY("QPalette", "palette")]
-        public QPalette Palette {
-            get { return (QPalette) interceptor.Invoke("palette", "palette()", typeof(QPalette)); }
-            set { interceptor.Invoke("setPalette#", "setPalette(QPalette)", typeof(void), typeof(QPalette), value); }
-        }
-        [Q_PROPERTY("QFont", "font")]
-        public QFont Font {
-            get { return (QFont) interceptor.Invoke("font", "font()", typeof(QFont)); }
-            set { interceptor.Invoke("setFont#", "setFont(QFont)", typeof(void), typeof(QFont), value); }
-        }
-        [Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
-        public new Qt.LayoutDirection LayoutDirection {
-            get { return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection()", typeof(Qt.LayoutDirection)); }
-            set { interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), value); }
-        }
-        [Q_PROPERTY("QSizeF", "size")]
-        public QSizeF Size {
-            get { return (QSizeF) interceptor.Invoke("size", "size()", typeof(QSizeF)); }
-            set { interceptor.Invoke("resize#", "resize(QSizeF)", typeof(void), typeof(QSizeF), value); }
-        }
-        [Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
-        public new Qt.FocusPolicy FocusPolicy {
-            get { return (Qt.FocusPolicy) interceptor.Invoke("focusPolicy", "focusPolicy()", typeof(Qt.FocusPolicy)); }
-            set { interceptor.Invoke("setFocusPolicy$", "setFocusPolicy(Qt::FocusPolicy)", typeof(void), typeof(Qt.FocusPolicy), value); }
-        }
-        [Q_PROPERTY("bool", "enabled")]
-        public bool Enabled {
-            get { return (bool) interceptor.Invoke("isEnabled", "isEnabled()", typeof(bool)); }
-            set { interceptor.Invoke("setEnabled$", "setEnabled(bool)", typeof(void), typeof(bool), value); }
-        }
-        [Q_PROPERTY("bool", "visible")]
-        public bool Visible {
-            get { return (bool) interceptor.Invoke("isVisible", "isVisible()", typeof(bool)); }
-            set { interceptor.Invoke("setVisible$", "setVisible(bool)", typeof(void), typeof(bool), value); }
-        }
-        [Q_PROPERTY("Qt::WindowFlags", "windowFlags")]
-        public uint WindowFlags {
-            get { return (uint) interceptor.Invoke("windowFlags", "windowFlags()", typeof(uint)); }
-            set { interceptor.Invoke("setWindowFlags$", "setWindowFlags(Qt::WindowFlags)", typeof(void), typeof(uint), value); }
-        }
-        [Q_PROPERTY("QString", "windowTitle")]
-        public string WindowTitle {
-            get { return (string) interceptor.Invoke("windowTitle", "windowTitle()", typeof(string)); }
-            set { interceptor.Invoke("setWindowTitle$", "setWindowTitle(QString)", typeof(void), typeof(string), value); }
-        }
         // QGraphicsWidget* QGraphicsWidget(QGraphicsWidgetPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3,Qt::WindowFlags arg4); >>>> NOT CONVERTED
         // QGraphicsWidget* QGraphicsWidget(QGraphicsWidgetPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
-        // QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
         // QGraphicsLayoutItem* QGraphicsLayoutItem(QGraphicsLayoutItemPrivate& arg1); >>>> NOT CONVERTED
-        public QGraphicsWidget(IQGraphicsItem parent, uint wFlags) : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("QGraphicsWidget#$", "QGraphicsWidget(QGraphicsItem*, Qt::WindowFlags)", typeof(void), typeof(IQGraphicsItem), parent, typeof(uint), wFlags);
-        }
-        public QGraphicsWidget(IQGraphicsItem parent) : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("QGraphicsWidget#", "QGraphicsWidget(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
-        }
-        public QGraphicsWidget() : this((Type) null) {
-            CreateProxy();
-            interceptor.Invoke("QGraphicsWidget", "QGraphicsWidget()", typeof(void));
-        }
+        // bool isBlockedByModalPanel(QGraphicsItem** arg1); >>>> NOT CONVERTED
+        // QGraphicsItem* QGraphicsItem(QGraphicsItemPrivate& arg1,QGraphicsItem* arg2,QGraphicsScene* arg3); >>>> NOT CONVERTED
         public QGraphicsLayout Layout() {
             return (QGraphicsLayout) interceptor.Invoke("layout", "layout() const", typeof(QGraphicsLayout));
         }
@@ -83,6 +27,12 @@ namespace Qyoto {
         }
         public void AdjustSize() {
             interceptor.Invoke("adjustSize", "adjustSize()", typeof(void));
+        }
+        public new Qt.LayoutDirection LayoutDirection() {
+            return (Qt.LayoutDirection) interceptor.Invoke("layoutDirection", "layoutDirection() const", typeof(Qt.LayoutDirection));
+        }
+        public void SetLayoutDirection(Qt.LayoutDirection direction) {
+            interceptor.Invoke("setLayoutDirection$", "setLayoutDirection(Qt::LayoutDirection)", typeof(void), typeof(Qt.LayoutDirection), direction);
         }
         public void UnsetLayoutDirection() {
             interceptor.Invoke("unsetLayoutDirection", "unsetLayoutDirection()", typeof(void));
@@ -93,11 +43,23 @@ namespace Qyoto {
         public void SetStyle(QStyle style) {
             interceptor.Invoke("setStyle#", "setStyle(QStyle*)", typeof(void), typeof(QStyle), style);
         }
+        public QFont Font() {
+            return (QFont) interceptor.Invoke("font", "font() const", typeof(QFont));
+        }
+        public void SetFont(QFont font) {
+            interceptor.Invoke("setFont#", "setFont(const QFont&)", typeof(void), typeof(QFont), font);
+        }
+        public void SetPalette(QPalette palette) {
+            interceptor.Invoke("setPalette#", "setPalette(const QPalette&)", typeof(void), typeof(QPalette), palette);
+        }
         public void Resize(QSizeF size) {
             interceptor.Invoke("resize#", "resize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
         }
         public void Resize(double w, double h) {
             interceptor.Invoke("resize$$", "resize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
+        }
+        public QSizeF Size() {
+            return (QSizeF) interceptor.Invoke("size", "size() const", typeof(QSizeF));
         }
         [SmokeMethod("setGeometry(const QRectF&)")]
         public virtual void SetGeometry(QRectF rect) {
@@ -151,11 +113,29 @@ namespace Qyoto {
         public QRectF WindowFrameRect() {
             return (QRectF) interceptor.Invoke("windowFrameRect", "windowFrameRect() const", typeof(QRectF));
         }
+        public uint WindowFlags() {
+            return (uint) interceptor.Invoke("windowFlags", "windowFlags() const", typeof(uint));
+        }
         public new Qt.WindowType WindowType() {
             return (Qt.WindowType) interceptor.Invoke("windowType", "windowType() const", typeof(Qt.WindowType));
         }
+        public void SetWindowFlags(uint wFlags) {
+            interceptor.Invoke("setWindowFlags$", "setWindowFlags(Qt::WindowFlags)", typeof(void), typeof(uint), wFlags);
+        }
         public bool IsActiveWindow() {
             return (bool) interceptor.Invoke("isActiveWindow", "isActiveWindow() const", typeof(bool));
+        }
+        public void SetWindowTitle(string title) {
+            interceptor.Invoke("setWindowTitle$", "setWindowTitle(const QString&)", typeof(void), typeof(string), title);
+        }
+        public string WindowTitle() {
+            return (string) interceptor.Invoke("windowTitle", "windowTitle() const", typeof(string));
+        }
+        public new Qt.FocusPolicy FocusPolicy() {
+            return (Qt.FocusPolicy) interceptor.Invoke("focusPolicy", "focusPolicy() const", typeof(Qt.FocusPolicy));
+        }
+        public void SetFocusPolicy(Qt.FocusPolicy policy) {
+            interceptor.Invoke("setFocusPolicy$", "setFocusPolicy(Qt::FocusPolicy)", typeof(void), typeof(Qt.FocusPolicy), policy);
         }
         public QGraphicsWidget FocusWidget() {
             return (QGraphicsWidget) interceptor.Invoke("focusWidget", "focusWidget() const", typeof(QGraphicsWidget));
@@ -350,6 +330,114 @@ namespace Qyoto {
         public new void Dispose() {
             interceptor.Invoke("~QGraphicsWidget", "~QGraphicsWidget()", typeof(void));
         }
+        public void SetSizePolicy(QSizePolicy policy) {
+            interceptor.Invoke("setSizePolicy#", "setSizePolicy(const QSizePolicy&)", typeof(void), typeof(QSizePolicy), policy);
+        }
+        public void SetSizePolicy(QSizePolicy.Policy hPolicy, QSizePolicy.Policy vPolicy, QSizePolicy.ControlType controlType) {
+            interceptor.Invoke("setSizePolicy$$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy, QSizePolicy::ControlType)", typeof(void), typeof(QSizePolicy.Policy), hPolicy, typeof(QSizePolicy.Policy), vPolicy, typeof(QSizePolicy.ControlType), controlType);
+        }
+        public void SetSizePolicy(QSizePolicy.Policy hPolicy, QSizePolicy.Policy vPolicy) {
+            interceptor.Invoke("setSizePolicy$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), hPolicy, typeof(QSizePolicy.Policy), vPolicy);
+        }
+        public QSizePolicy SizePolicy() {
+            return (QSizePolicy) interceptor.Invoke("sizePolicy", "sizePolicy() const", typeof(QSizePolicy));
+        }
+        public void SetMinimumSize(QSizeF size) {
+            interceptor.Invoke("setMinimumSize#", "setMinimumSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
+        }
+        public void SetMinimumSize(double w, double h) {
+            interceptor.Invoke("setMinimumSize$$", "setMinimumSize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
+        }
+        public QSizeF MinimumSize() {
+            return (QSizeF) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSizeF));
+        }
+        public void SetMinimumWidth(double width) {
+            interceptor.Invoke("setMinimumWidth$", "setMinimumWidth(qreal)", typeof(void), typeof(double), width);
+        }
+        public double MinimumWidth() {
+            return (double) interceptor.Invoke("minimumWidth", "minimumWidth() const", typeof(double));
+        }
+        public void SetMinimumHeight(double height) {
+            interceptor.Invoke("setMinimumHeight$", "setMinimumHeight(qreal)", typeof(void), typeof(double), height);
+        }
+        public double MinimumHeight() {
+            return (double) interceptor.Invoke("minimumHeight", "minimumHeight() const", typeof(double));
+        }
+        public void SetPreferredSize(QSizeF size) {
+            interceptor.Invoke("setPreferredSize#", "setPreferredSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
+        }
+        public void SetPreferredSize(double w, double h) {
+            interceptor.Invoke("setPreferredSize$$", "setPreferredSize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
+        }
+        public QSizeF PreferredSize() {
+            return (QSizeF) interceptor.Invoke("preferredSize", "preferredSize() const", typeof(QSizeF));
+        }
+        public void SetPreferredWidth(double width) {
+            interceptor.Invoke("setPreferredWidth$", "setPreferredWidth(qreal)", typeof(void), typeof(double), width);
+        }
+        public double PreferredWidth() {
+            return (double) interceptor.Invoke("preferredWidth", "preferredWidth() const", typeof(double));
+        }
+        public void SetPreferredHeight(double height) {
+            interceptor.Invoke("setPreferredHeight$", "setPreferredHeight(qreal)", typeof(void), typeof(double), height);
+        }
+        public double PreferredHeight() {
+            return (double) interceptor.Invoke("preferredHeight", "preferredHeight() const", typeof(double));
+        }
+        public void SetMaximumSize(QSizeF size) {
+            interceptor.Invoke("setMaximumSize#", "setMaximumSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
+        }
+        public void SetMaximumSize(double w, double h) {
+            interceptor.Invoke("setMaximumSize$$", "setMaximumSize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
+        }
+        public QSizeF MaximumSize() {
+            return (QSizeF) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSizeF));
+        }
+        public void SetMaximumWidth(double width) {
+            interceptor.Invoke("setMaximumWidth$", "setMaximumWidth(qreal)", typeof(void), typeof(double), width);
+        }
+        public double MaximumWidth() {
+            return (double) interceptor.Invoke("maximumWidth", "maximumWidth() const", typeof(double));
+        }
+        public void SetMaximumHeight(double height) {
+            interceptor.Invoke("setMaximumHeight$", "setMaximumHeight(qreal)", typeof(void), typeof(double), height);
+        }
+        public double MaximumHeight() {
+            return (double) interceptor.Invoke("maximumHeight", "maximumHeight() const", typeof(double));
+        }
+        public QRectF Geometry() {
+            return (QRectF) interceptor.Invoke("geometry", "geometry() const", typeof(QRectF));
+        }
+        public QRectF ContentsRect() {
+            return (QRectF) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRectF));
+        }
+        public QSizeF EffectiveSizeHint(Qt.SizeHint which, QSizeF constraint) {
+            return (QSizeF) interceptor.Invoke("effectiveSizeHint$#", "effectiveSizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
+        }
+        public QSizeF EffectiveSizeHint(Qt.SizeHint which) {
+            return (QSizeF) interceptor.Invoke("effectiveSizeHint$", "effectiveSizeHint(Qt::SizeHint) const", typeof(QSizeF), typeof(Qt.SizeHint), which);
+        }
+        public IQGraphicsLayoutItem ParentLayoutItem() {
+            return (IQGraphicsLayoutItem) interceptor.Invoke("parentLayoutItem", "parentLayoutItem() const", typeof(IQGraphicsLayoutItem));
+        }
+        public void SetParentLayoutItem(IQGraphicsLayoutItem parent) {
+            interceptor.Invoke("setParentLayoutItem#", "setParentLayoutItem(QGraphicsLayoutItem*)", typeof(void), typeof(IQGraphicsLayoutItem), parent);
+        }
+        public bool IsLayout() {
+            return (bool) interceptor.Invoke("isLayout", "isLayout() const", typeof(bool));
+        }
+        public IQGraphicsItem GraphicsItem() {
+            return (IQGraphicsItem) interceptor.Invoke("graphicsItem", "graphicsItem() const", typeof(IQGraphicsItem));
+        }
+        public bool OwnedByLayout() {
+            return (bool) interceptor.Invoke("ownedByLayout", "ownedByLayout() const", typeof(bool));
+        }
+        protected void SetGraphicsItem(IQGraphicsItem item) {
+            interceptor.Invoke("setGraphicsItem#", "setGraphicsItem(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        protected void SetOwnedByLayout(bool ownedByLayout) {
+            interceptor.Invoke("setOwnedByLayout$", "setOwnedByLayout(bool)", typeof(void), typeof(bool), ownedByLayout);
+        }
         public QGraphicsScene Scene() {
             return (QGraphicsScene) interceptor.Invoke("scene", "scene() const", typeof(QGraphicsScene));
         }
@@ -359,6 +447,9 @@ namespace Qyoto {
         public IQGraphicsItem TopLevelItem() {
             return (IQGraphicsItem) interceptor.Invoke("topLevelItem", "topLevelItem() const", typeof(IQGraphicsItem));
         }
+        public QGraphicsObject ParentObject() {
+            return (QGraphicsObject) interceptor.Invoke("parentObject", "parentObject() const", typeof(QGraphicsObject));
+        }
         public QGraphicsWidget ParentWidget() {
             return (QGraphicsWidget) interceptor.Invoke("parentWidget", "parentWidget() const", typeof(QGraphicsWidget));
         }
@@ -367,6 +458,9 @@ namespace Qyoto {
         }
         public QGraphicsWidget Window() {
             return (QGraphicsWidget) interceptor.Invoke("window", "window() const", typeof(QGraphicsWidget));
+        }
+        public IQGraphicsItem Panel() {
+            return (IQGraphicsItem) interceptor.Invoke("panel", "panel() const", typeof(IQGraphicsItem));
         }
         public void SetParentItem(IQGraphicsItem parent) {
             interceptor.Invoke("setParentItem#", "setParentItem(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), parent);
@@ -382,6 +476,12 @@ namespace Qyoto {
         }
         public bool IsWindow() {
             return (bool) interceptor.Invoke("isWindow", "isWindow() const", typeof(bool));
+        }
+        public bool IsPanel() {
+            return (bool) interceptor.Invoke("isPanel", "isPanel() const", typeof(bool));
+        }
+        public QGraphicsObject ToGraphicsObject() {
+            return (QGraphicsObject) interceptor.Invoke("toGraphicsObject", "toGraphicsObject()", typeof(QGraphicsObject));
         }
         public QGraphicsItemGroup Group() {
             return (QGraphicsItemGroup) interceptor.Invoke("group", "group() const", typeof(QGraphicsItemGroup));
@@ -409,6 +509,12 @@ namespace Qyoto {
         }
         public void SetCacheMode(QGraphicsItem.CacheMode mode) {
             interceptor.Invoke("setCacheMode$", "setCacheMode(QGraphicsItem::CacheMode)", typeof(void), typeof(QGraphicsItem.CacheMode), mode);
+        }
+        public QGraphicsItem.PanelModality panelModality() {
+            return (QGraphicsItem.PanelModality) interceptor.Invoke("panelModality", "panelModality() const", typeof(QGraphicsItem.PanelModality));
+        }
+        public void SetPanelModality(QGraphicsItem.PanelModality panelModality) {
+            interceptor.Invoke("setPanelModality$", "setPanelModality(QGraphicsItem::PanelModality)", typeof(void), typeof(QGraphicsItem.PanelModality), panelModality);
         }
         public string ToolTip() {
             return (string) interceptor.Invoke("toolTip", "toolTip() const", typeof(string));
@@ -470,6 +576,12 @@ namespace Qyoto {
         public void SetOpacity(double opacity) {
             interceptor.Invoke("setOpacity$", "setOpacity(qreal)", typeof(void), typeof(double), opacity);
         }
+        public QGraphicsEffect GraphicsEffect() {
+            return (QGraphicsEffect) interceptor.Invoke("graphicsEffect", "graphicsEffect() const", typeof(QGraphicsEffect));
+        }
+        public void SetGraphicsEffect(QGraphicsEffect effect) {
+            interceptor.Invoke("setGraphicsEffect#", "setGraphicsEffect(QGraphicsEffect*)", typeof(void), typeof(QGraphicsEffect), effect);
+        }
         public uint AcceptedMouseButtons() {
             return (uint) interceptor.Invoke("acceptedMouseButtons", "acceptedMouseButtons() const", typeof(uint));
         }
@@ -488,11 +600,29 @@ namespace Qyoto {
         public void SetAcceptHoverEvents(bool enabled) {
             interceptor.Invoke("setAcceptHoverEvents$", "setAcceptHoverEvents(bool)", typeof(void), typeof(bool), enabled);
         }
+        public bool AcceptTouchEvents() {
+            return (bool) interceptor.Invoke("acceptTouchEvents", "acceptTouchEvents() const", typeof(bool));
+        }
+        public void SetAcceptTouchEvents(bool enabled) {
+            interceptor.Invoke("setAcceptTouchEvents$", "setAcceptTouchEvents(bool)", typeof(void), typeof(bool), enabled);
+        }
+        public bool FiltersChildEvents() {
+            return (bool) interceptor.Invoke("filtersChildEvents", "filtersChildEvents() const", typeof(bool));
+        }
+        public void SetFiltersChildEvents(bool enabled) {
+            interceptor.Invoke("setFiltersChildEvents$", "setFiltersChildEvents(bool)", typeof(void), typeof(bool), enabled);
+        }
         public bool HandlesChildEvents() {
             return (bool) interceptor.Invoke("handlesChildEvents", "handlesChildEvents() const", typeof(bool));
         }
         public void SetHandlesChildEvents(bool enabled) {
             interceptor.Invoke("setHandlesChildEvents$", "setHandlesChildEvents(bool)", typeof(void), typeof(bool), enabled);
+        }
+        public bool IsActive() {
+            return (bool) interceptor.Invoke("isActive", "isActive() const", typeof(bool));
+        }
+        public void SetActive(bool active) {
+            interceptor.Invoke("setActive$", "setActive(bool)", typeof(void), typeof(bool), active);
         }
         public bool HasFocus() {
             return (bool) interceptor.Invoke("hasFocus", "hasFocus() const", typeof(bool));
@@ -505,6 +635,18 @@ namespace Qyoto {
         }
         public void ClearFocus() {
             interceptor.Invoke("clearFocus", "clearFocus()", typeof(void));
+        }
+        public IQGraphicsItem FocusProxy() {
+            return (IQGraphicsItem) interceptor.Invoke("focusProxy", "focusProxy() const", typeof(IQGraphicsItem));
+        }
+        public void SetFocusProxy(IQGraphicsItem item) {
+            interceptor.Invoke("setFocusProxy#", "setFocusProxy(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
+        }
+        public IQGraphicsItem FocusItem() {
+            return (IQGraphicsItem) interceptor.Invoke("focusItem", "focusItem() const", typeof(IQGraphicsItem));
+        }
+        public IQGraphicsItem FocusScopeItem() {
+            return (IQGraphicsItem) interceptor.Invoke("focusScopeItem", "focusScopeItem() const", typeof(IQGraphicsItem));
         }
         public void GrabMouse() {
             interceptor.Invoke("grabMouse", "grabMouse()", typeof(void));
@@ -524,8 +666,14 @@ namespace Qyoto {
         public double X() {
             return (double) interceptor.Invoke("x", "x() const", typeof(double));
         }
+        public void SetX(double x) {
+            interceptor.Invoke("setX$", "setX(qreal)", typeof(void), typeof(double), x);
+        }
         public double Y() {
             return (double) interceptor.Invoke("y", "y() const", typeof(double));
+        }
+        public void SetY(double y) {
+            interceptor.Invoke("setY$", "setY(qreal)", typeof(void), typeof(double), y);
         }
         public QPointF ScenePos() {
             return (QPointF) interceptor.Invoke("scenePos", "scenePos() const", typeof(QPointF));
@@ -631,6 +779,33 @@ namespace Qyoto {
         public void Translate(double dx, double dy) {
             interceptor.Invoke("translate$$", "translate(qreal, qreal)", typeof(void), typeof(double), dx, typeof(double), dy);
         }
+        public void SetRotation(double angle) {
+            interceptor.Invoke("setRotation$", "setRotation(qreal)", typeof(void), typeof(double), angle);
+        }
+        public double Rotation() {
+            return (double) interceptor.Invoke("rotation", "rotation() const", typeof(double));
+        }
+        public void SetScale(double scale) {
+            interceptor.Invoke("setScale$", "setScale(qreal)", typeof(void), typeof(double), scale);
+        }
+        public double Scale() {
+            return (double) interceptor.Invoke("scale", "scale() const", typeof(double));
+        }
+        public List<QGraphicsTransform> Transformations() {
+            return (List<QGraphicsTransform>) interceptor.Invoke("transformations", "transformations() const", typeof(List<QGraphicsTransform>));
+        }
+        public void SetTransformations(List<QGraphicsTransform> transformations) {
+            interceptor.Invoke("setTransformations?", "setTransformations(const QList<QGraphicsTransform*>&)", typeof(void), typeof(List<QGraphicsTransform>), transformations);
+        }
+        public QPointF TransformOriginPoint() {
+            return (QPointF) interceptor.Invoke("transformOriginPoint", "transformOriginPoint() const", typeof(QPointF));
+        }
+        public void SetTransformOriginPoint(QPointF origin) {
+            interceptor.Invoke("setTransformOriginPoint#", "setTransformOriginPoint(const QPointF&)", typeof(void), typeof(QPointF), origin);
+        }
+        public void SetTransformOriginPoint(double ax, double ay) {
+            interceptor.Invoke("setTransformOriginPoint$$", "setTransformOriginPoint(qreal, qreal)", typeof(void), typeof(double), ax, typeof(double), ay);
+        }
         [SmokeMethod("advance(int)")]
         public virtual void Advance(int phase) {
             interceptor.Invoke("advance$", "advance(int)", typeof(void), typeof(int), phase);
@@ -640,6 +815,9 @@ namespace Qyoto {
         }
         public void SetZValue(double z) {
             interceptor.Invoke("setZValue$", "setZValue(qreal)", typeof(void), typeof(double), z);
+        }
+        public void StackBefore(IQGraphicsItem sibling) {
+            interceptor.Invoke("stackBefore#", "stackBefore(const QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), sibling);
         }
         public QRectF ChildrenBoundingRect() {
             return (QRectF) interceptor.Invoke("childrenBoundingRect", "childrenBoundingRect() const", typeof(QRectF));
@@ -879,6 +1057,12 @@ namespace Qyoto {
         public void SetData(int key, QVariant value) {
             interceptor.Invoke("setData$#", "setData(int, const QVariant&)", typeof(void), typeof(int), key, typeof(QVariant), value);
         }
+        public uint InputMethodHints() {
+            return (uint) interceptor.Invoke("inputMethodHints", "inputMethodHints() const", typeof(uint));
+        }
+        public void SetInputMethodHints(uint hints) {
+            interceptor.Invoke("setInputMethodHints$", "setInputMethodHints(Qt::InputMethodHints)", typeof(void), typeof(uint), hints);
+        }
         public void InstallSceneEventFilter(IQGraphicsItem filterItem) {
             interceptor.Invoke("installSceneEventFilter#", "installSceneEventFilter(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), filterItem);
         }
@@ -970,114 +1154,6 @@ namespace Qyoto {
         protected void PrepareGeometryChange() {
             interceptor.Invoke("prepareGeometryChange", "prepareGeometryChange()", typeof(void));
         }
-        public void SetSizePolicy(QSizePolicy policy) {
-            interceptor.Invoke("setSizePolicy#", "setSizePolicy(const QSizePolicy&)", typeof(void), typeof(QSizePolicy), policy);
-        }
-        public void SetSizePolicy(QSizePolicy.Policy hPolicy, QSizePolicy.Policy vPolicy, QSizePolicy.ControlType controlType) {
-            interceptor.Invoke("setSizePolicy$$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy, QSizePolicy::ControlType)", typeof(void), typeof(QSizePolicy.Policy), hPolicy, typeof(QSizePolicy.Policy), vPolicy, typeof(QSizePolicy.ControlType), controlType);
-        }
-        public void SetSizePolicy(QSizePolicy.Policy hPolicy, QSizePolicy.Policy vPolicy) {
-            interceptor.Invoke("setSizePolicy$$", "setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)", typeof(void), typeof(QSizePolicy.Policy), hPolicy, typeof(QSizePolicy.Policy), vPolicy);
-        }
-        public QSizePolicy SizePolicy() {
-            return (QSizePolicy) interceptor.Invoke("sizePolicy", "sizePolicy() const", typeof(QSizePolicy));
-        }
-        public void SetMinimumSize(QSizeF size) {
-            interceptor.Invoke("setMinimumSize#", "setMinimumSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
-        }
-        public void SetMinimumSize(double w, double h) {
-            interceptor.Invoke("setMinimumSize$$", "setMinimumSize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
-        }
-        public QSizeF MinimumSize() {
-            return (QSizeF) interceptor.Invoke("minimumSize", "minimumSize() const", typeof(QSizeF));
-        }
-        public void SetMinimumWidth(double width) {
-            interceptor.Invoke("setMinimumWidth$", "setMinimumWidth(qreal)", typeof(void), typeof(double), width);
-        }
-        public double MinimumWidth() {
-            return (double) interceptor.Invoke("minimumWidth", "minimumWidth() const", typeof(double));
-        }
-        public void SetMinimumHeight(double height) {
-            interceptor.Invoke("setMinimumHeight$", "setMinimumHeight(qreal)", typeof(void), typeof(double), height);
-        }
-        public double MinimumHeight() {
-            return (double) interceptor.Invoke("minimumHeight", "minimumHeight() const", typeof(double));
-        }
-        public void SetPreferredSize(QSizeF size) {
-            interceptor.Invoke("setPreferredSize#", "setPreferredSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
-        }
-        public void SetPreferredSize(double w, double h) {
-            interceptor.Invoke("setPreferredSize$$", "setPreferredSize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
-        }
-        public QSizeF PreferredSize() {
-            return (QSizeF) interceptor.Invoke("preferredSize", "preferredSize() const", typeof(QSizeF));
-        }
-        public void SetPreferredWidth(double width) {
-            interceptor.Invoke("setPreferredWidth$", "setPreferredWidth(qreal)", typeof(void), typeof(double), width);
-        }
-        public double PreferredWidth() {
-            return (double) interceptor.Invoke("preferredWidth", "preferredWidth() const", typeof(double));
-        }
-        public void SetPreferredHeight(double height) {
-            interceptor.Invoke("setPreferredHeight$", "setPreferredHeight(qreal)", typeof(void), typeof(double), height);
-        }
-        public double PreferredHeight() {
-            return (double) interceptor.Invoke("preferredHeight", "preferredHeight() const", typeof(double));
-        }
-        public void SetMaximumSize(QSizeF size) {
-            interceptor.Invoke("setMaximumSize#", "setMaximumSize(const QSizeF&)", typeof(void), typeof(QSizeF), size);
-        }
-        public void SetMaximumSize(double w, double h) {
-            interceptor.Invoke("setMaximumSize$$", "setMaximumSize(qreal, qreal)", typeof(void), typeof(double), w, typeof(double), h);
-        }
-        public QSizeF MaximumSize() {
-            return (QSizeF) interceptor.Invoke("maximumSize", "maximumSize() const", typeof(QSizeF));
-        }
-        public void SetMaximumWidth(double width) {
-            interceptor.Invoke("setMaximumWidth$", "setMaximumWidth(qreal)", typeof(void), typeof(double), width);
-        }
-        public double MaximumWidth() {
-            return (double) interceptor.Invoke("maximumWidth", "maximumWidth() const", typeof(double));
-        }
-        public void SetMaximumHeight(double height) {
-            interceptor.Invoke("setMaximumHeight$", "setMaximumHeight(qreal)", typeof(void), typeof(double), height);
-        }
-        public double MaximumHeight() {
-            return (double) interceptor.Invoke("maximumHeight", "maximumHeight() const", typeof(double));
-        }
-        public QRectF Geometry() {
-            return (QRectF) interceptor.Invoke("geometry", "geometry() const", typeof(QRectF));
-        }
-        public QRectF ContentsRect() {
-            return (QRectF) interceptor.Invoke("contentsRect", "contentsRect() const", typeof(QRectF));
-        }
-        public QSizeF EffectiveSizeHint(Qt.SizeHint which, QSizeF constraint) {
-            return (QSizeF) interceptor.Invoke("effectiveSizeHint$#", "effectiveSizeHint(Qt::SizeHint, const QSizeF&) const", typeof(QSizeF), typeof(Qt.SizeHint), which, typeof(QSizeF), constraint);
-        }
-        public QSizeF EffectiveSizeHint(Qt.SizeHint which) {
-            return (QSizeF) interceptor.Invoke("effectiveSizeHint$", "effectiveSizeHint(Qt::SizeHint) const", typeof(QSizeF), typeof(Qt.SizeHint), which);
-        }
-        public IQGraphicsLayoutItem ParentLayoutItem() {
-            return (IQGraphicsLayoutItem) interceptor.Invoke("parentLayoutItem", "parentLayoutItem() const", typeof(IQGraphicsLayoutItem));
-        }
-        public void SetParentLayoutItem(IQGraphicsLayoutItem parent) {
-            interceptor.Invoke("setParentLayoutItem#", "setParentLayoutItem(QGraphicsLayoutItem*)", typeof(void), typeof(IQGraphicsLayoutItem), parent);
-        }
-        public bool IsLayout() {
-            return (bool) interceptor.Invoke("isLayout", "isLayout() const", typeof(bool));
-        }
-        public IQGraphicsItem GraphicsItem() {
-            return (IQGraphicsItem) interceptor.Invoke("graphicsItem", "graphicsItem() const", typeof(IQGraphicsItem));
-        }
-        public bool OwnedByLayout() {
-            return (bool) interceptor.Invoke("ownedByLayout", "ownedByLayout() const", typeof(bool));
-        }
-        protected void SetGraphicsItem(IQGraphicsItem item) {
-            interceptor.Invoke("setGraphicsItem#", "setGraphicsItem(QGraphicsItem*)", typeof(void), typeof(IQGraphicsItem), item);
-        }
-        protected void SetOwnedByLayout(bool ownedByLayout) {
-            interceptor.Invoke("setOwnedByLayout$", "setOwnedByLayout(bool)", typeof(void), typeof(bool), ownedByLayout);
-        }
         public static new string Tr(string s, string c) {
             return (string) staticInterceptor.Invoke("tr$$", "tr(const char*, const char*)", typeof(string), typeof(string), s, typeof(string), c);
         }
@@ -1092,6 +1168,6 @@ namespace Qyoto {
         }
     }
 
-    public interface IQGraphicsWidgetSignals : IQObjectSignals {
+    public interface IQGraphicsWidgetSignals : IQGraphicsObjectSignals {
     }
 }

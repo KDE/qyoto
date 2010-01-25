@@ -45,7 +45,6 @@ namespace Qyoto {
             TabWidget = 0x00002000,
             ToolButton = 0x00004000,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QSizePolicy() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QSizePolicy", "QSizePolicy()", typeof(void));
@@ -118,6 +117,9 @@ namespace Qyoto {
         }
         public static bool operator!=(QSizePolicy lhs, QSizePolicy s) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QSizePolicy&) const", typeof(bool), typeof(QSizePolicy), lhs, typeof(QSizePolicy), s);
+        }
+        public static QVariant operatorQVariant(QSizePolicy lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QSizePolicy), lhs);
         }
     }
 }

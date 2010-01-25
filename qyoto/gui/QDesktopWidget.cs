@@ -13,18 +13,25 @@ namespace Qyoto {
         static QDesktopWidget() {
             staticInterceptor = new SmokeInvocation(typeof(QDesktopWidget), null);
         }
+        [Q_PROPERTY("bool", "virtualDesktop")]
+        public bool VirtualDesktop {
+            get { return (bool) interceptor.Invoke("isVirtualDesktop", "isVirtualDesktop()", typeof(bool)); }
+        }
+        [Q_PROPERTY("int", "screenCount")]
+        public int ScreenCount {
+            get { return (int) interceptor.Invoke("screenCount", "screenCount()", typeof(int)); }
+            set { interceptor.Invoke("screenCountChanged$", "screenCountChanged(int)", typeof(void), typeof(int), value); }
+        }
+        [Q_PROPERTY("int", "primaryScreen")]
+        public int PrimaryScreen {
+            get { return (int) interceptor.Invoke("primaryScreen", "primaryScreen()", typeof(int)); }
+        }
         public QDesktopWidget() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QDesktopWidget", "QDesktopWidget()", typeof(void));
         }
-        public bool IsVirtualDesktop() {
-            return (bool) interceptor.Invoke("isVirtualDesktop", "isVirtualDesktop() const", typeof(bool));
-        }
         public int NumScreens() {
             return (int) interceptor.Invoke("numScreens", "numScreens() const", typeof(int));
-        }
-        public int PrimaryScreen() {
-            return (int) interceptor.Invoke("primaryScreen", "primaryScreen() const", typeof(int));
         }
         public int ScreenNumber(QWidget widget) {
             return (int) interceptor.Invoke("screenNumber#", "screenNumber(const QWidget*) const", typeof(int), typeof(QWidget), widget);
@@ -91,5 +98,7 @@ namespace Qyoto {
         void Resized(int arg1);
         [Q_SIGNAL("void workAreaResized(int)")]
         void WorkAreaResized(int arg1);
+        [Q_SIGNAL("void screenCountChanged(int)")]
+        void ScreenCountChanged(int arg1);
     }
 }

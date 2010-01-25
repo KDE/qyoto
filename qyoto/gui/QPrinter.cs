@@ -226,6 +226,9 @@ namespace Qyoto {
         public int NumCopies() {
             return (int) interceptor.Invoke("numCopies", "numCopies() const", typeof(int));
         }
+        public int ActualNumCopies() {
+            return (int) interceptor.Invoke("actualNumCopies", "actualNumCopies() const", typeof(int));
+        }
         public void SetPaperSource(QPrinter.PaperSource arg1) {
             interceptor.Invoke("setPaperSource$", "setPaperSource(QPrinter::PaperSource)", typeof(void), typeof(QPrinter.PaperSource), arg1);
         }

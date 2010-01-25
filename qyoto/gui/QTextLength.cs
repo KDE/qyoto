@@ -18,7 +18,6 @@ namespace Qyoto {
             FixedLength = 1,
             PercentageLength = 2,
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         public QTextLength() : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QTextLength", "QTextLength()", typeof(void));
@@ -54,6 +53,9 @@ namespace Qyoto {
         }
         public static bool operator!=(QTextLength lhs, QTextLength other) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QTextLength&) const", typeof(bool), typeof(QTextLength), lhs, typeof(QTextLength), other);
+        }
+        public static QVariant operatorQVariant(QTextLength lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QTextLength), lhs);
         }
     }
 }

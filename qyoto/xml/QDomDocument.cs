@@ -271,6 +271,70 @@ namespace Qyoto {
         public bool SetContent(QIODevice dev, bool namespaceProcessing) {
             return (bool) interceptor.Invoke("setContent#$", "setContent(QIODevice*, bool)", typeof(bool), typeof(QIODevice), dev, typeof(bool), namespaceProcessing);
         }
+        public bool SetContent(QXmlInputSource source, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
+            StackItem[] stack = new StackItem[6];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(source);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(source);
+#endif
+            stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+            stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+            stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+            stack[4].s_int = errorLine;
+            stack[5].s_int = errorColumn;
+            interceptor.Invoke("setContent#$$$$", "setContent(QXmlInputSource*, bool, QString*, int*, int*)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+            ((GCHandle) stack[3].s_class).Free();
+#endif
+            errorLine = stack[4].s_int;
+            errorColumn = stack[5].s_int;
+            return stack[0].s_bool;
+        }
+        public bool SetContent(QXmlInputSource source, bool namespaceProcessing, StringBuilder errorMsg, ref int errorLine) {
+            StackItem[] stack = new StackItem[5];
+#if DEBUG
+            stack[1].s_class = (IntPtr) DebugGCHandle.Alloc(source);
+#else
+            stack[1].s_class = (IntPtr) GCHandle.Alloc(source);
+#endif
+            stack[2].s_bool = namespaceProcessing;
+#if DEBUG
+            stack[3].s_class = (IntPtr) DebugGCHandle.Alloc(errorMsg);
+#else
+            stack[3].s_class = (IntPtr) GCHandle.Alloc(errorMsg);
+#endif
+            stack[4].s_int = errorLine;
+            interceptor.Invoke("setContent#$$$", "setContent(QXmlInputSource*, bool, QString*, int*)", stack);
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[1].s_class);
+#else
+            ((GCHandle) stack[1].s_class).Free();
+#endif
+#if DEBUG
+            DebugGCHandle.Free((GCHandle) stack[3].s_class);
+#else
+            ((GCHandle) stack[3].s_class).Free();
+#endif
+            errorLine = stack[4].s_int;
+            return stack[0].s_bool;
+        }
+        public bool SetContent(QXmlInputSource source, bool namespaceProcessing, StringBuilder errorMsg) {
+            return (bool) interceptor.Invoke("setContent#$$", "setContent(QXmlInputSource*, bool, QString*)", typeof(bool), typeof(QXmlInputSource), source, typeof(bool), namespaceProcessing, typeof(StringBuilder), errorMsg);
+        }
+        public bool SetContent(QXmlInputSource source, bool namespaceProcessing) {
+            return (bool) interceptor.Invoke("setContent#$", "setContent(QXmlInputSource*, bool)", typeof(bool), typeof(QXmlInputSource), source, typeof(bool), namespaceProcessing);
+        }
         public bool SetContent(QByteArray text, StringBuilder errorMsg, ref int errorLine, ref int errorColumn) {
             StackItem[] stack = new StackItem[5];
 #if DEBUG

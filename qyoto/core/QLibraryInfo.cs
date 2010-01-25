@@ -32,6 +32,9 @@ namespace Qyoto {
         public static string BuildKey() {
             return (string) staticInterceptor.Invoke("buildKey", "buildKey()", typeof(string));
         }
+        public static QDate BuildDate() {
+            return (QDate) staticInterceptor.Invoke("buildDate", "buildDate()", typeof(QDate));
+        }
         public static string Location(QLibraryInfo.LibraryLocation arg1) {
             return (string) staticInterceptor.Invoke("location$", "location(QLibraryInfo::LibraryLocation)", typeof(string), typeof(QLibraryInfo.LibraryLocation), arg1);
         }

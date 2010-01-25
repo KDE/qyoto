@@ -14,7 +14,6 @@ namespace Qyoto {
         static QPen() {
             staticInterceptor = new SmokeInvocation(typeof(QPen), null);
         }
-        //  operator QVariant(); >>>> NOT CONVERTED
         // QPen::DataPtr*& data_ptr(); >>>> NOT CONVERTED
         public QPen() : this((Type) null) {
             CreateProxy();
@@ -138,6 +137,9 @@ namespace Qyoto {
         }
         public static bool operator!=(QPen lhs, QPen p) {
             return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QPen&) const", typeof(bool), typeof(QPen), lhs, typeof(QPen), p);
+        }
+        public static QVariant operatorQVariant(QPen lhs) {
+            return (QVariant) staticInterceptor.Invoke("operator QVariant", "operator QVariant() const", typeof(QVariant), typeof(QPen), lhs);
         }
     }
 }

@@ -102,5 +102,11 @@ namespace Qyoto {
         public static QTextCodec CodecForHtml(QByteArray ba, QTextCodec defaultCodec) {
             return (QTextCodec) staticInterceptor.Invoke("codecForHtml##", "codecForHtml(const QByteArray&, QTextCodec*)", typeof(QTextCodec), typeof(QByteArray), ba, typeof(QTextCodec), defaultCodec);
         }
+        public static QTextCodec CodecForUtfText(QByteArray ba) {
+            return (QTextCodec) staticInterceptor.Invoke("codecForUtfText#", "codecForUtfText(const QByteArray&)", typeof(QTextCodec), typeof(QByteArray), ba);
+        }
+        public static QTextCodec CodecForUtfText(QByteArray ba, QTextCodec defaultCodec) {
+            return (QTextCodec) staticInterceptor.Invoke("codecForUtfText##", "codecForUtfText(const QByteArray&, QTextCodec*)", typeof(QTextCodec), typeof(QByteArray), ba, typeof(QTextCodec), defaultCodec);
+        }
     }
 }

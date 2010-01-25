@@ -46,6 +46,15 @@ namespace Qyoto {
         public double Height() {
             return (double) interceptor.Invoke("height", "height() const", typeof(double));
         }
+        public double Leading() {
+            return (double) interceptor.Invoke("leading", "leading() const", typeof(double));
+        }
+        public void SetLeadingIncluded(bool included) {
+            interceptor.Invoke("setLeadingIncluded$", "setLeadingIncluded(bool)", typeof(void), typeof(bool), included);
+        }
+        public bool LeadingIncluded() {
+            return (bool) interceptor.Invoke("leadingIncluded", "leadingIncluded() const", typeof(bool));
+        }
         public double NaturalTextWidth() {
             return (double) interceptor.Invoke("naturalTextWidth", "naturalTextWidth() const", typeof(double));
         }

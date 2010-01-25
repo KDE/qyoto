@@ -130,6 +130,12 @@ namespace Qyoto {
         public bool IsRedoAvailable() {
             return (bool) interceptor.Invoke("isRedoAvailable", "isRedoAvailable() const", typeof(bool));
         }
+        public int AvailableUndoSteps() {
+            return (int) interceptor.Invoke("availableUndoSteps", "availableUndoSteps() const", typeof(int));
+        }
+        public int AvailableRedoSteps() {
+            return (int) interceptor.Invoke("availableRedoSteps", "availableRedoSteps() const", typeof(int));
+        }
         public int Revision() {
             return (int) interceptor.Invoke("revision", "revision() const", typeof(int));
         }

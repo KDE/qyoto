@@ -107,6 +107,10 @@ namespace Qyoto {
         public new virtual bool Event(QEvent arg1) {
             return (bool) interceptor.Invoke("event#", "event(QEvent*)", typeof(bool), typeof(QEvent), arg1);
         }
+        [SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
+        public override QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
+            return (QVariant) interceptor.Invoke("inputMethodQuery$", "inputMethodQuery(Qt::InputMethodQuery) const", typeof(QVariant), typeof(Qt.InputMethodQuery), arg1);
+        }
         [SmokeMethod("validate(QString&, int&) const")]
         public virtual QValidator.State Validate(StringBuilder input, ref int pos) {
             StackItem[] stack = new StackItem[3];

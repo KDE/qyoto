@@ -54,6 +54,10 @@ namespace Qyoto {
             ListeningState = 5,
             ClosingState = 6,
         }
+        public enum SocketOption {
+            LowDelayOption = 0,
+            KeepAliveOption = 1,
+        }
         // QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2,QObject* arg3); >>>> NOT CONVERTED
         // QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2); >>>> NOT CONVERTED
         public QAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) : this((Type) null) {
@@ -125,6 +129,12 @@ namespace Qyoto {
         }
         public bool SetSocketDescriptor(int socketDescriptor) {
             return (bool) interceptor.Invoke("setSocketDescriptor$", "setSocketDescriptor(int)", typeof(bool), typeof(int), socketDescriptor);
+        }
+        public void SetSocketOption(QAbstractSocket.SocketOption option, QVariant value) {
+            interceptor.Invoke("setSocketOption$#", "setSocketOption(QAbstractSocket::SocketOption, const QVariant&)", typeof(void), typeof(QAbstractSocket.SocketOption), option, typeof(QVariant), value);
+        }
+        public QVariant socketOption(QAbstractSocket.SocketOption option) {
+            return (QVariant) interceptor.Invoke("socketOption$", "socketOption(QAbstractSocket::SocketOption)", typeof(QVariant), typeof(QAbstractSocket.SocketOption), option);
         }
         public QAbstractSocket.SocketType socketType() {
             return (QAbstractSocket.SocketType) interceptor.Invoke("socketType", "socketType() const", typeof(QAbstractSocket.SocketType));

@@ -9,7 +9,10 @@ namespace Qyoto {
         protected void CreateProxy() {
             interceptor = new SmokeInvocation(typeof(QCharRef), this);
         }
-        //  operator QChar(); >>>> NOT CONVERTED
+        private static SmokeInvocation staticInterceptor = null;
+        static QCharRef() {
+            staticInterceptor = new SmokeInvocation(typeof(QCharRef), null);
+        }
         public bool IsNull() {
             return (bool) interceptor.Invoke("isNull", "isNull() const", typeof(bool));
         }
@@ -105,6 +108,9 @@ namespace Qyoto {
         }
         public short Unicode() {
             return (short) interceptor.Invoke("unicode", "unicode()", typeof(short));
+        }
+        public static QChar operatorQChar(QCharRef lhs) {
+            return (QChar) staticInterceptor.Invoke("operator QChar", "operator QChar() const", typeof(QChar), typeof(QCharRef), lhs);
         }
     }
 }

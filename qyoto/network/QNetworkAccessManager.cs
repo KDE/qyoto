@@ -19,10 +19,9 @@ namespace Qyoto {
             GetOperation = 2,
             PutOperation = 3,
             PostOperation = 4,
+            DeleteOperation = 5,
             UnknownOperation = 0,
         }
-        // QAbstractNetworkCache* cache(); >>>> NOT CONVERTED
-        // void setCache(QAbstractNetworkCache* arg1); >>>> NOT CONVERTED
         public QNetworkAccessManager(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QNetworkAccessManager#", "QNetworkAccessManager(QObject*)", typeof(void), typeof(QObject), parent);
@@ -42,6 +41,12 @@ namespace Qyoto {
         }
         public void SetProxyFactory(QNetworkProxyFactory factory) {
             interceptor.Invoke("setProxyFactory#", "setProxyFactory(QNetworkProxyFactory*)", typeof(void), typeof(QNetworkProxyFactory), factory);
+        }
+        public QAbstractNetworkCache Cache() {
+            return (QAbstractNetworkCache) interceptor.Invoke("cache", "cache() const", typeof(QAbstractNetworkCache));
+        }
+        public void SetCache(QAbstractNetworkCache cache) {
+            interceptor.Invoke("setCache#", "setCache(QAbstractNetworkCache*)", typeof(void), typeof(QAbstractNetworkCache), cache);
         }
         public QNetworkCookieJar CookieJar() {
             return (QNetworkCookieJar) interceptor.Invoke("cookieJar", "cookieJar() const", typeof(QNetworkCookieJar));
@@ -66,6 +71,9 @@ namespace Qyoto {
         }
         public QNetworkReply Put(QNetworkRequest request, QByteArray data) {
             return (QNetworkReply) interceptor.Invoke("put##", "put(const QNetworkRequest&, const QByteArray&)", typeof(QNetworkReply), typeof(QNetworkRequest), request, typeof(QByteArray), data);
+        }
+        public QNetworkReply DeleteResource(QNetworkRequest request) {
+            return (QNetworkReply) interceptor.Invoke("deleteResource#", "deleteResource(const QNetworkRequest&)", typeof(QNetworkReply), typeof(QNetworkRequest), request);
         }
         [SmokeMethod("createRequest(QNetworkAccessManager::Operation, const QNetworkRequest&, QIODevice*)")]
         protected virtual QNetworkReply CreateRequest(QNetworkAccessManager.Operation op, QNetworkRequest request, QIODevice outgoingData) {

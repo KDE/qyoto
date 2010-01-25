@@ -36,7 +36,11 @@ namespace Qyoto {
             UnknownInterface = 19,
             InternalError = 20,
             UnknownObject = 21,
-            LastErrorType = UnknownObject,
+            InvalidService = 22,
+            InvalidObjectPath = 23,
+            InvalidInterface = 24,
+            InvalidMember = 25,
+            LastErrorType = InvalidMember,
         }
         // QDBusError* QDBusError(const DBusError* arg1); >>>> NOT CONVERTED
         public QDBusError(QDBusMessage msg) : this((Type) null) {

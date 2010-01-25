@@ -54,6 +54,9 @@ namespace Qyoto {
         public int attributes() {
             return (int) interceptor.Invoke("attributes", "attributes() const", typeof(int));
         }
+        public int MethodIndex() {
+            return (int) interceptor.Invoke("methodIndex", "methodIndex() const", typeof(int));
+        }
         public QMetaObject EnclosingMetaObject() {
             return (QMetaObject) interceptor.Invoke("enclosingMetaObject", "enclosingMetaObject() const", typeof(QMetaObject));
         }

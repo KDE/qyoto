@@ -14,9 +14,11 @@ namespace Qyoto {
         static QAbstractItemModel() {
             staticInterceptor = new SmokeInvocation(typeof(QAbstractItemModel), null);
         }
+        // const QHash<int,QByteArray>& roleNames(); >>>> NOT CONVERTED
         // QAbstractItemModel* QAbstractItemModel(QAbstractItemModelPrivate& arg1,QObject* arg2); >>>> NOT CONVERTED
         // QAbstractItemModel* QAbstractItemModel(QAbstractItemModelPrivate& arg1); >>>> NOT CONVERTED
         // QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
+        // void setRoleNames(const QHash<int,QByteArray>& arg1); >>>> NOT CONVERTED
         public QAbstractItemModel(QObject parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QAbstractItemModel#", "QAbstractItemModel(QObject*)", typeof(void), typeof(QObject), parent);
@@ -242,6 +244,12 @@ namespace Qyoto {
         protected void EndRemoveRows() {
             interceptor.Invoke("endRemoveRows", "endRemoveRows()", typeof(void));
         }
+        protected bool BeginMoveRows(QModelIndex sourceParent, int sourceFirst, int sourceLast, QModelIndex destinationParent, int destinationRow) {
+            return (bool) interceptor.Invoke("beginMoveRows#$$#$", "beginMoveRows(const QModelIndex&, int, int, const QModelIndex&, int)", typeof(bool), typeof(QModelIndex), sourceParent, typeof(int), sourceFirst, typeof(int), sourceLast, typeof(QModelIndex), destinationParent, typeof(int), destinationRow);
+        }
+        protected void EndMoveRows() {
+            interceptor.Invoke("endMoveRows", "endMoveRows()", typeof(void));
+        }
         protected void BeginInsertColumns(QModelIndex parent, int first, int last) {
             interceptor.Invoke("beginInsertColumns#$$", "beginInsertColumns(const QModelIndex&, int, int)", typeof(void), typeof(QModelIndex), parent, typeof(int), first, typeof(int), last);
         }
@@ -254,8 +262,20 @@ namespace Qyoto {
         protected void EndRemoveColumns() {
             interceptor.Invoke("endRemoveColumns", "endRemoveColumns()", typeof(void));
         }
+        protected bool BeginMoveColumns(QModelIndex sourceParent, int sourceFirst, int sourceLast, QModelIndex destinationParent, int destinationColumn) {
+            return (bool) interceptor.Invoke("beginMoveColumns#$$#$", "beginMoveColumns(const QModelIndex&, int, int, const QModelIndex&, int)", typeof(bool), typeof(QModelIndex), sourceParent, typeof(int), sourceFirst, typeof(int), sourceLast, typeof(QModelIndex), destinationParent, typeof(int), destinationColumn);
+        }
+        protected void EndMoveColumns() {
+            interceptor.Invoke("endMoveColumns", "endMoveColumns()", typeof(void));
+        }
         protected void Reset() {
             interceptor.Invoke("reset", "reset()", typeof(void));
+        }
+        protected void BeginResetModel() {
+            interceptor.Invoke("beginResetModel", "beginResetModel()", typeof(void));
+        }
+        protected void EndResetModel() {
+            interceptor.Invoke("endResetModel", "endResetModel()", typeof(void));
         }
         protected void ChangePersistentIndex(QModelIndex from, QModelIndex to) {
             interceptor.Invoke("changePersistentIndex##", "changePersistentIndex(const QModelIndex&, const QModelIndex&)", typeof(void), typeof(QModelIndex), from, typeof(QModelIndex), to);

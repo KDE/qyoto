@@ -25,6 +25,9 @@ namespace Qyoto {
         public int UserType() {
             return (int) interceptor.Invoke("userType", "userType() const", typeof(int));
         }
+        public int PropertyIndex() {
+            return (int) interceptor.Invoke("propertyIndex", "propertyIndex() const", typeof(int));
+        }
         public bool IsReadable() {
             return (bool) interceptor.Invoke("isReadable", "isReadable() const", typeof(bool));
         }
@@ -63,6 +66,12 @@ namespace Qyoto {
         }
         public bool IsUser() {
             return (bool) interceptor.Invoke("isUser", "isUser() const", typeof(bool));
+        }
+        public bool IsConstant() {
+            return (bool) interceptor.Invoke("isConstant", "isConstant() const", typeof(bool));
+        }
+        public bool IsFinal() {
+            return (bool) interceptor.Invoke("isFinal", "isFinal() const", typeof(bool));
         }
         public bool IsFlagType() {
             return (bool) interceptor.Invoke("isFlagType", "isFlagType() const", typeof(bool));
