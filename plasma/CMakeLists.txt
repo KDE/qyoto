@@ -41,4 +41,4 @@ install(FILES ${LIBRARY_OUTPUT_PATH}/PlasmaScriptengineKimono.dll DESTINATION ${
 install(FILES plasma-scriptengine-kimono-applet.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 install(FILES plasma-scriptengine-kimono-dataengine.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
-add_subdirectory( examples )
+add_subdirectory( examples EXCLUDE_FROM_ALL )
