@@ -26,6 +26,9 @@ namespace Qyoto {
         public QRect BoundingRect() {
             return (QRect) interceptor.Invoke("boundingRect", "boundingRect() const", typeof(QRect));
         }
+        public QWebElement EnclosingBlockElement() {
+            return (QWebElement) interceptor.Invoke("enclosingBlockElement", "enclosingBlockElement() const", typeof(QWebElement));
+        }
         public string Title() {
             return (string) interceptor.Invoke("title", "title() const", typeof(string));
         }
@@ -41,6 +44,9 @@ namespace Qyoto {
         public QWebFrame LinkTargetFrame() {
             return (QWebFrame) interceptor.Invoke("linkTargetFrame", "linkTargetFrame() const", typeof(QWebFrame));
         }
+        public QWebElement LinkElement() {
+            return (QWebElement) interceptor.Invoke("linkElement", "linkElement() const", typeof(QWebElement));
+        }
         public string AlternateText() {
             return (string) interceptor.Invoke("alternateText", "alternateText() const", typeof(string));
         }
@@ -55,6 +61,9 @@ namespace Qyoto {
         }
         public bool IsContentSelected() {
             return (bool) interceptor.Invoke("isContentSelected", "isContentSelected() const", typeof(bool));
+        }
+        public QWebElement Element() {
+            return (QWebElement) interceptor.Invoke("element", "element() const", typeof(QWebElement));
         }
         public QWebFrame Frame() {
             return (QWebFrame) interceptor.Invoke("frame", "frame() const", typeof(QWebFrame));

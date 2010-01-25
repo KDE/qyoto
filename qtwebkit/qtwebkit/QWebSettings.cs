@@ -35,7 +35,10 @@ namespace Qyoto {
             PrintElementBackgrounds = 10,
             OfflineStorageDatabaseEnabled = 11,
             OfflineWebApplicationCacheEnabled = 12,
-            LocalStorageDatabaseEnabled = 13,
+            LocalStorageEnabled = 13,
+            LocalStorageDatabaseEnabled = LocalStorageEnabled,
+            LocalContentCanAccessRemoteUrls = 14,
+            DnsPrefetchEnabled = 15,
         }
         public enum WebGraphic {
             MissingImageGraphic = 0,
@@ -82,6 +85,18 @@ namespace Qyoto {
         public QUrl UserStyleSheetUrl() {
             return (QUrl) interceptor.Invoke("userStyleSheetUrl", "userStyleSheetUrl() const", typeof(QUrl));
         }
+        public void SetDefaultTextEncoding(string encoding) {
+            interceptor.Invoke("setDefaultTextEncoding$", "setDefaultTextEncoding(const QString&)", typeof(void), typeof(string), encoding);
+        }
+        public string DefaultTextEncoding() {
+            return (string) interceptor.Invoke("defaultTextEncoding", "defaultTextEncoding() const", typeof(string));
+        }
+        public void SetLocalStoragePath(string path) {
+            interceptor.Invoke("setLocalStoragePath$", "setLocalStoragePath(const QString&)", typeof(void), typeof(string), path);
+        }
+        public string LocalStoragePath() {
+            return (string) interceptor.Invoke("localStoragePath", "localStoragePath() const", typeof(string));
+        }
         public static QWebSettings GlobalSettings() {
             return (QWebSettings) staticInterceptor.Invoke("globalSettings", "globalSettings()", typeof(QWebSettings));
         }
@@ -123,6 +138,27 @@ namespace Qyoto {
         }
         public static long OfflineStorageDefaultQuota() {
             return (long) staticInterceptor.Invoke("offlineStorageDefaultQuota", "offlineStorageDefaultQuota()", typeof(long));
+        }
+        public static void SetOfflineWebApplicationCachePath(string path) {
+            staticInterceptor.Invoke("setOfflineWebApplicationCachePath$", "setOfflineWebApplicationCachePath(const QString&)", typeof(void), typeof(string), path);
+        }
+        public static string OfflineWebApplicationCachePath() {
+            return (string) staticInterceptor.Invoke("offlineWebApplicationCachePath", "offlineWebApplicationCachePath()", typeof(string));
+        }
+        public static void SetOfflineWebApplicationCacheQuota(long maximumSize) {
+            staticInterceptor.Invoke("setOfflineWebApplicationCacheQuota$", "setOfflineWebApplicationCacheQuota(qint64)", typeof(void), typeof(long), maximumSize);
+        }
+        public static long OfflineWebApplicationCacheQuota() {
+            return (long) staticInterceptor.Invoke("offlineWebApplicationCacheQuota", "offlineWebApplicationCacheQuota()", typeof(long));
+        }
+        public static void ClearMemoryCaches() {
+            staticInterceptor.Invoke("clearMemoryCaches", "clearMemoryCaches()", typeof(void));
+        }
+        public static void EnablePersistentStorage(string path) {
+            staticInterceptor.Invoke("enablePersistentStorage$", "enablePersistentStorage(const QString&)", typeof(void), typeof(string), path);
+        }
+        public static void EnablePersistentStorage() {
+            staticInterceptor.Invoke("enablePersistentStorage", "enablePersistentStorage()", typeof(void));
         }
     }
 }

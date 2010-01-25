@@ -13,6 +13,10 @@ namespace Qyoto {
             protected void CreateProxy() {
                 interceptor = new SmokeInvocation(typeof(MimeType), this);
             }
+            private static SmokeInvocation staticInterceptor = null;
+            static MimeType() {
+                staticInterceptor = new SmokeInvocation(typeof(MimeType), null);
+            }
             public string Name {
                 get { return (string) interceptor.Invoke("name", "name()", typeof(string)); }
                 set { interceptor.Invoke("setName$", "setName(QString)", typeof(void), typeof(string), value); }
@@ -25,6 +29,13 @@ namespace Qyoto {
                 get { return (List<string>) interceptor.Invoke("fileExtensions", "fileExtensions()", typeof(List<string>)); }
                 set { interceptor.Invoke("setFileExtensions?", "setFileExtensions(QStringList)", typeof(void), typeof(List<string>), value); }
             }
+            public override bool Equals(object o) {
+                if (!(o is MimeType)) { return false; }
+                return this == (MimeType) o;
+            }
+            public override int GetHashCode() {
+                return interceptor.GetHashCode();
+            }
             public MimeType() : this((Type) null) {
                 CreateProxy();
                 interceptor.Invoke("MimeType", "MimeType()", typeof(void));
@@ -34,6 +45,12 @@ namespace Qyoto {
             }
             public void Dispose() {
                 interceptor.Invoke("~MimeType", "~MimeType()", typeof(void));
+            }
+            public static bool operator==(MimeType lhs, QWebPluginFactory.MimeType other) {
+                return (bool) staticInterceptor.Invoke("operator==#", "operator==(const QWebPluginFactory::MimeType&) const", typeof(bool), typeof(MimeType), lhs, typeof(QWebPluginFactory.MimeType), other);
+            }
+            public static bool operator!=(MimeType lhs, QWebPluginFactory.MimeType other) {
+                return !(bool) staticInterceptor.Invoke("operator==#", "operator==(const QWebPluginFactory::MimeType&) const", typeof(bool), typeof(MimeType), lhs, typeof(QWebPluginFactory.MimeType), other);
             }
         }
         [SmokeClass("QWebPluginFactory::Plugin")]
@@ -93,7 +110,7 @@ namespace Qyoto {
             interceptor.Invoke("refreshPlugins", "refreshPlugins()", typeof(void));
         }
         [SmokeMethod("create(const QString&, const QUrl&, const QStringList&, const QStringList&) const")]
-        public abstract QObject Create(string mimeType, QUrl url, List<string> argumentNames, List<string> argumentValues);
+        public abstract QObject Create(string mimeType, QUrl arg2, List<string> argumentNames, List<string> argumentValues);
         [SmokeMethod("extension(QWebPluginFactory::Extension)")]
         public virtual bool extension(QWebPluginFactory.Extension extension) {
             return (bool) interceptor.Invoke("extension$", "extension(QWebPluginFactory::Extension)", typeof(bool), typeof(QWebPluginFactory.Extension), extension);

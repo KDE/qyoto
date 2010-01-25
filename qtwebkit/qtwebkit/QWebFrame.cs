@@ -12,6 +12,12 @@ namespace Qyoto {
         static QWebFrame() {
             staticInterceptor = new SmokeInvocation(typeof(QWebFrame), null);
         }
+        public enum RenderLayer {
+            ContentsLayer = 0x10,
+            ScrollBarLayer = 0x20,
+            PanIconLayer = 0x40,
+            AllLayers = 0xff,
+        }
         [Q_PROPERTY("qreal", "textSizeMultiplier")]
         public double TextSizeMultiplier {
             get { return (double) interceptor.Invoke("textSizeMultiplier", "textSizeMultiplier()", typeof(double)); }
@@ -31,6 +37,14 @@ namespace Qyoto {
             get { return (QUrl) interceptor.Invoke("url", "url()", typeof(QUrl)); }
             set { interceptor.Invoke("setUrl#", "setUrl(QUrl)", typeof(void), typeof(QUrl), value); }
         }
+        [Q_PROPERTY("QUrl", "requestedUrl")]
+        public QUrl RequestedUrl {
+            get { return (QUrl) interceptor.Invoke("requestedUrl", "requestedUrl()", typeof(QUrl)); }
+        }
+        [Q_PROPERTY("QUrl", "baseUrl")]
+        public QUrl BaseUrl {
+            get { return (QUrl) interceptor.Invoke("baseUrl", "baseUrl()", typeof(QUrl)); }
+        }
         [Q_PROPERTY("QIcon", "icon")]
         public QIcon icon {
             get { return (QIcon) interceptor.Invoke("icon", "icon()", typeof(QIcon)); }
@@ -44,7 +58,12 @@ namespace Qyoto {
             get { return (QPoint) interceptor.Invoke("scrollPosition", "scrollPosition()", typeof(QPoint)); }
             set { interceptor.Invoke("setScrollPosition#", "setScrollPosition(QPoint)", typeof(void), typeof(QPoint), value); }
         }
-        // QMultiMap<QString, QString> metaData(); >>>> NOT CONVERTED
+        [Q_PROPERTY("bool", "focus")]
+        public bool Focus {
+            get { return (bool) interceptor.Invoke("hasFocus", "hasFocus()", typeof(bool)); }
+        }
+        // void addToJavaScriptWindowObject(const QString& arg1,QObject* arg2,QScriptEngine::ValueOwnership arg3); >>>> NOT CONVERTED
+        // QMultiMap<QString,QString> metaData(); >>>> NOT CONVERTED
         public QWebPage Page() {
             return (QWebPage) interceptor.Invoke("page", "page() const", typeof(QWebPage));
         }
@@ -114,20 +133,41 @@ namespace Qyoto {
         public int ScrollBarMaximum(Qt.Orientation orientation) {
             return (int) interceptor.Invoke("scrollBarMaximum$", "scrollBarMaximum(Qt::Orientation) const", typeof(int), typeof(Qt.Orientation), orientation);
         }
+        public QRect ScrollBarGeometry(Qt.Orientation orientation) {
+            return (QRect) interceptor.Invoke("scrollBarGeometry$", "scrollBarGeometry(Qt::Orientation) const", typeof(QRect), typeof(Qt.Orientation), orientation);
+        }
         public void Scroll(int arg1, int arg2) {
             interceptor.Invoke("scroll$$", "scroll(int, int)", typeof(void), typeof(int), arg1, typeof(int), arg2);
         }
-        public void Render(QPainter painter, QRegion clip) {
-            interceptor.Invoke("render##", "render(QPainter*, const QRegion&)", typeof(void), typeof(QPainter), painter, typeof(QRegion), clip);
+        public void Render(QPainter arg1) {
+            interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), arg1);
         }
-        public void Render(QPainter painter) {
-            interceptor.Invoke("render#", "render(QPainter*)", typeof(void), typeof(QPainter), painter);
+        public void Render(QPainter arg1, QRegion clip) {
+            interceptor.Invoke("render##", "render(QPainter*, const QRegion&)", typeof(void), typeof(QPainter), arg1, typeof(QRegion), clip);
+        }
+        public void Render(QPainter arg1, QWebFrame.RenderLayer layer, QRegion clip) {
+            interceptor.Invoke("render#$#", "render(QPainter*, QWebFrame::RenderLayer, const QRegion&)", typeof(void), typeof(QPainter), arg1, typeof(QWebFrame.RenderLayer), layer, typeof(QRegion), clip);
+        }
+        public void Render(QPainter arg1, QWebFrame.RenderLayer layer) {
+            interceptor.Invoke("render#$", "render(QPainter*, QWebFrame::RenderLayer)", typeof(void), typeof(QPainter), arg1, typeof(QWebFrame.RenderLayer), layer);
+        }
+        public void SetFocus() {
+            interceptor.Invoke("setFocus", "setFocus()", typeof(void));
         }
         public QPoint Pos() {
             return (QPoint) interceptor.Invoke("pos", "pos() const", typeof(QPoint));
         }
         public QRect Geometry() {
             return (QRect) interceptor.Invoke("geometry", "geometry() const", typeof(QRect));
+        }
+        public QWebElement DocumentElement() {
+            return (QWebElement) interceptor.Invoke("documentElement", "documentElement() const", typeof(QWebElement));
+        }
+        public QWebElementCollection FindAllElements(string selectorQuery) {
+            return (QWebElementCollection) interceptor.Invoke("findAllElements$", "findAllElements(const QString&) const", typeof(QWebElementCollection), typeof(string), selectorQuery);
+        }
+        public QWebElement FindFirstElement(string selectorQuery) {
+            return (QWebElement) interceptor.Invoke("findFirstElement$", "findFirstElement(const QString&) const", typeof(QWebElement), typeof(string), selectorQuery);
         }
         public QWebHitTestResult HitTestContent(QPoint pos) {
             return (QWebHitTestResult) interceptor.Invoke("hitTestContent#", "hitTestContent(const QPoint&) const", typeof(QWebHitTestResult), typeof(QPoint), pos);

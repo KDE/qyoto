@@ -44,6 +44,11 @@ namespace Qyoto {
             get { return (double) interceptor.Invoke("zoomFactor", "zoomFactor()", typeof(double)); }
             set { interceptor.Invoke("setZoomFactor$", "setZoomFactor(qreal)", typeof(void), typeof(double), value); }
         }
+        [Q_PROPERTY("QPainter::RenderHints", "renderHints")]
+        public uint RenderHints {
+            get { return (uint) interceptor.Invoke("renderHints", "renderHints()", typeof(uint)); }
+            set { interceptor.Invoke("setRenderHints$", "setRenderHints(QPainter::RenderHints)", typeof(void), typeof(uint), value); }
+        }
         public QWebView(QWidget parent) : this((Type) null) {
             CreateProxy();
             interceptor.Invoke("QWebView#", "QWebView(QWidget*)", typeof(void), typeof(QWidget), parent);
@@ -108,6 +113,12 @@ namespace Qyoto {
         public override QSize SizeHint() {
             return (QSize) interceptor.Invoke("sizeHint", "sizeHint() const", typeof(QSize));
         }
+        public void SetRenderHint(QPainter.RenderHint hint, bool enabled) {
+            interceptor.Invoke("setRenderHint$$", "setRenderHint(QPainter::RenderHint, bool)", typeof(void), typeof(QPainter.RenderHint), hint, typeof(bool), enabled);
+        }
+        public void SetRenderHint(QPainter.RenderHint hint) {
+            interceptor.Invoke("setRenderHint$", "setRenderHint(QPainter::RenderHint)", typeof(void), typeof(QPainter.RenderHint), hint);
+        }
         public bool FindText(string subString, uint options) {
             return (bool) interceptor.Invoke("findText$$", "findText(const QString&, QWebPage::FindFlags)", typeof(bool), typeof(string), subString, typeof(uint), options);
         }
@@ -135,16 +146,16 @@ namespace Qyoto {
             interceptor.Invoke("reload", "reload()", typeof(void));
         }
         [Q_SLOT("void print(QPrinter*)")]
-        public void Print(QPrinter printer) {
-            interceptor.Invoke("print#", "print(QPrinter*) const", typeof(void), typeof(QPrinter), printer);
+        public void Print(QPrinter arg1) {
+            interceptor.Invoke("print#", "print(QPrinter*) const", typeof(void), typeof(QPrinter), arg1);
         }
         [SmokeMethod("resizeEvent(QResizeEvent*)")]
-        protected override void ResizeEvent(QResizeEvent e) {
-            interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), e);
+        protected override void ResizeEvent(QResizeEvent arg1) {
+            interceptor.Invoke("resizeEvent#", "resizeEvent(QResizeEvent*)", typeof(void), typeof(QResizeEvent), arg1);
         }
         [SmokeMethod("paintEvent(QPaintEvent*)")]
-        protected override void PaintEvent(QPaintEvent ev) {
-            interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), ev);
+        protected override void PaintEvent(QPaintEvent arg1) {
+            interceptor.Invoke("paintEvent#", "paintEvent(QPaintEvent*)", typeof(void), typeof(QPaintEvent), arg1);
         }
         [SmokeMethod("createWindow(QWebPage::WebWindowType)")]
         protected virtual QWebView CreateWindow(QWebPage.WebWindowType type) {
@@ -247,12 +258,12 @@ namespace Qyoto {
         [Q_SIGNAL("void statusBarMessage(QString)")]
         void StatusBarMessage(string text);
         [Q_SIGNAL("void linkClicked(QUrl)")]
-        void LinkClicked(QUrl url);
+        void LinkClicked(QUrl arg1);
         [Q_SIGNAL("void selectionChanged()")]
         void SelectionChanged();
         [Q_SIGNAL("void iconChanged()")]
         void IconChanged();
         [Q_SIGNAL("void urlChanged(QUrl)")]
-        void UrlChanged(QUrl url);
+        void UrlChanged(QUrl arg1);
     }
 }

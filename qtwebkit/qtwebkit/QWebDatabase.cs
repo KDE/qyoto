@@ -41,8 +41,11 @@ namespace Qyoto {
         public void Dispose() {
             interceptor.Invoke("~QWebDatabase", "~QWebDatabase()", typeof(void));
         }
-        public static void RemoveDatabase(QWebDatabase db) {
-            staticInterceptor.Invoke("removeDatabase#", "removeDatabase(const QWebDatabase&)", typeof(void), typeof(QWebDatabase), db);
+        public static void RemoveDatabase(QWebDatabase arg1) {
+            staticInterceptor.Invoke("removeDatabase#", "removeDatabase(const QWebDatabase&)", typeof(void), typeof(QWebDatabase), arg1);
+        }
+        public static void RemoveAllDatabases() {
+            staticInterceptor.Invoke("removeAllDatabases", "removeAllDatabases()", typeof(void));
         }
     }
 }

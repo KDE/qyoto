@@ -48,5 +48,14 @@ namespace Qyoto {
         public static List<QWebSecurityOrigin> AllOrigins() {
             return (List<QWebSecurityOrigin>) staticInterceptor.Invoke("allOrigins", "allOrigins()", typeof(List<QWebSecurityOrigin>));
         }
+        public static void AddLocalScheme(string scheme) {
+            staticInterceptor.Invoke("addLocalScheme$", "addLocalScheme(const QString&)", typeof(void), typeof(string), scheme);
+        }
+        public static void RemoveLocalScheme(string scheme) {
+            staticInterceptor.Invoke("removeLocalScheme$", "removeLocalScheme(const QString&)", typeof(void), typeof(string), scheme);
+        }
+        public static List<string> LocalSchemes() {
+            return (List<string>) staticInterceptor.Invoke("localSchemes", "localSchemes()", typeof(List<string>));
+        }
     }
 }

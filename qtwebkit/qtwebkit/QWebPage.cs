@@ -78,12 +78,27 @@ namespace Qyoto {
             InsertParagraphSeparator = 50,
             InsertLineSeparator = 51,
             SelectAll = 52,
-            WebActionCount = 53,
+            ReloadAndBypassCache = 53,
+            PasteAndMatchStyle = 54,
+            RemoveFormat = 55,
+            ToggleStrikethrough = 56,
+            ToggleSubscript = 57,
+            ToggleSuperscript = 58,
+            InsertUnorderedList = 59,
+            InsertOrderedList = 60,
+            Indent = 61,
+            Outdent = 62,
+            AlignCenter = 63,
+            AlignJustified = 64,
+            AlignLeft = 65,
+            AlignRight = 66,
+            WebActionCount = 67,
         }
         public enum FindFlag {
             FindBackward = 1,
             FindCaseSensitively = 2,
             FindWrapsAroundDocument = 4,
+            HighlightAllOccurrences = 8,
         }
         public enum LinkDelegationPolicy {
             DontDelegateLinks = 0,
@@ -96,6 +111,12 @@ namespace Qyoto {
         }
         public enum Extension {
             ChooseMultipleFilesExtension = 0,
+            ErrorPageExtension = 1,
+        }
+        public enum ErrorDomain {
+            QtNetwork = 0,
+            Http = 1,
+            WebKit = 2,
         }
         [Q_PROPERTY("bool", "modified")]
         public bool Modified {
@@ -109,6 +130,11 @@ namespace Qyoto {
         public QSize ViewportSize {
             get { return (QSize) interceptor.Invoke("viewportSize", "viewportSize()", typeof(QSize)); }
             set { interceptor.Invoke("setViewportSize#", "setViewportSize(QSize)", typeof(void), typeof(QSize), value); }
+        }
+        [Q_PROPERTY("QSize", "preferredContentsSize")]
+        public QSize PreferredContentsSize {
+            get { return (QSize) interceptor.Invoke("preferredContentsSize", "preferredContentsSize()", typeof(QSize)); }
+            set { interceptor.Invoke("setPreferredContentsSize#", "setPreferredContentsSize(QSize)", typeof(void), typeof(QSize), value); }
         }
         [Q_PROPERTY("bool", "forwardUnsupportedContent")]
         public bool ForwardUnsupportedContent {
@@ -145,6 +171,9 @@ namespace Qyoto {
         }
         public QWebFrame CurrentFrame() {
             return (QWebFrame) interceptor.Invoke("currentFrame", "currentFrame() const", typeof(QWebFrame));
+        }
+        public QWebFrame FrameAt(QPoint pos) {
+            return (QWebFrame) interceptor.Invoke("frameAt#", "frameAt(const QPoint&) const", typeof(QWebFrame), typeof(QPoint), pos);
         }
         public QWebHistory History() {
             return (QWebHistory) interceptor.Invoke("history", "history() const", typeof(QWebHistory));
@@ -222,6 +251,10 @@ namespace Qyoto {
         [SmokeMethod("supportsExtension(QWebPage::Extension) const")]
         public virtual bool SupportsExtension(QWebPage.Extension extension) {
             return (bool) interceptor.Invoke("supportsExtension$", "supportsExtension(QWebPage::Extension) const", typeof(bool), typeof(QWebPage.Extension), extension);
+        }
+        [Q_SLOT("bool shouldInterruptJavaScript()")]
+        public bool ShouldInterruptJavaScript() {
+            return (bool) interceptor.Invoke("shouldInterruptJavaScript", "shouldInterruptJavaScript()", typeof(bool));
         }
         [SmokeMethod("createWindow(QWebPage::WebWindowType)")]
         protected virtual QWebPage CreateWindow(QWebPage.WebWindowType type) {
