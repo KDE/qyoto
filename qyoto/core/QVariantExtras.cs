@@ -228,6 +228,9 @@ namespace Qyoto {
         public static implicit operator QVariant(QPolygon arg) {
             return QVariant.FromValue<QPolygon>(arg);
         }
+        public static implicit operator QVariant(QRect arg) {
+            return QVariant.FromValue<QRect>(arg);
+        }
         public static implicit operator QVariant(QRegion arg) {
             return QVariant.FromValue<QRegion>(arg);
         }
@@ -308,6 +311,9 @@ namespace Qyoto {
         }
         public static implicit operator QPolygon(QVariant arg) {
             return arg.Value<QPolygon>();
+        }
+        public static implicit operator QRect(QVariant arg) {
+            return arg.Value<QRect>();
         }
         public static implicit operator QRegion(QVariant arg) {
             return arg.Value<QRegion>();
