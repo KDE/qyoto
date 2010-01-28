@@ -25,8 +25,16 @@
 DEF_LIST_MARSHALLER( QWebFrameList, QList<QWebFrame*>, QWebFrame )
 DEF_VALUELIST_MARSHALLER( QWebHistoryItemList, QList<QWebHistoryItem>, QWebHistoryItem )
 
+#if QT_VERSION >= 0x40600
+#include <QtWebKit/qwebelement.h>
+DEF_VALUELIST_MARSHALLER( QWebElementList, QList<QWebElement>, QWebElement )
+#endif
+
 TypeHandler QtWebKit_handlers[] = {
     { "QList<QWebFrame*>", marshall_QWebFrameList },
     { "QList<QWebHistoryItem>", marshall_QWebHistoryItemList },
+#if QT_VERSION >= 0x40600
+    { "QList<QWebElement>", marshall_QWebElementList },
+#endif
     { 0, 0 }
 };

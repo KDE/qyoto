@@ -3,7 +3,7 @@ namespace Qyoto {
     using System;
     using System.Collections.Generic;
     [SmokeClass("QWebElementCollection")]
-    public class QWebElementCollection : Object, IDisposable {
+    public partial class QWebElementCollection : Object, IDisposable, IEnumerable<QWebElement> {
         protected SmokeInvocation interceptor = null;
         private IntPtr smokeObject;
         protected QWebElementCollection(Type dummy) {}
