@@ -47,7 +47,7 @@ TARGET_LINK_LIBRARIES (qyoto qyotoshared
                        smokeqtcore smokeqtgui smokeqtxml smokeqtopengl smokeqtsql smokeqtnetwork smokeqtnetwork smokeqtdbus smokeqtsvg
                        ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTDBUS_LIBRARY})
 
-CSHARP_ADD_LIBRARY(qt-dotnet ${SRC_CS_QYOTO} COMPILE_FLAGS /warn:0 "/keyfile:${KEYFILE}" UNSAFE)
+CSHARP_ADD_LIBRARY(qt-dotnet ${SRC_CS_QYOTO} COMPILE_FLAGS /warn:0 "/keyfile:${KEYFILE}" UNSAFE COMPILE_DEFINITIONS DEBUG)
 SET_PROPERTY(TARGET qt-dotnet PROPERTY pkg-config_template_basename "qyoto")
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
