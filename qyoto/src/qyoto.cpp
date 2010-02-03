@@ -141,7 +141,11 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 	if (do_debug & qtdb_calls) printf("DAMNIT on %s::%s => %d\n", classname, mungedname, meth.index);
 #endif
 	if (meth.index == 0) {
-    	meth = qtcore_Smoke->findMethod("QGlobalSpace", mungedname);
+		foreach (Smoke *smoke, qyoto_modules.keys()) {
+			meth = smoke->findMethod("QGlobalSpace", mungedname);
+			if (meth.index)
+				break;
+		}
 #ifdef DEBUG
 		if (do_debug & qtdb_calls) printf("DAMNIT on QGlobalSpace::%s => %d\n", mungedname, meth.index);
 #endif
