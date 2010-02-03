@@ -15,10 +15,10 @@ namespace Qyoto {
 		private delegate void AddToListFn(IntPtr obj);
 		
 		[DllImport("qyoto", CharSet=CharSet.Ansi)]
-		private static extern IntPtr FindQObjectChild(IntPtr parent, string childName);
+		private static extern IntPtr FindQObjectChild(IntPtr parent, string childTypeName, IntPtr childMetaObject, string childName);
 		
 		[DllImport("qyoto", CharSet=CharSet.Ansi)]
-		private static extern void FindQObjectChildren(IntPtr parent, IntPtr regexp,
+		private static extern void FindQObjectChildren(IntPtr parent, string childTypeName, IntPtr childMetaObject, IntPtr regexp,
 									string childName, AddToListFn addFn);
 		
 		[DllImport("qyotoshared", CharSet=CharSet.Ansi)]
@@ -83,7 +83,15 @@ namespace Qyoto {
 		}
 
 		public T FindChild<T>(string name) {
-			IntPtr child = FindQObjectChild((IntPtr) GCHandle.Alloc(this), name);
+			string childClassName = null;
+			IntPtr metaObject = IntPtr.Zero;
+			if (SmokeMarshallers.IsSmokeClass(typeof(T))) {
+				childClassName = SmokeMarshallers.SmokeClassName(typeof(T));
+			} else {
+				metaObject = (IntPtr) GCHandle.Alloc(Qyoto.GetMetaObject(typeof(T)));
+			}
+
+			IntPtr child = FindQObjectChild((IntPtr) GCHandle.Alloc(this), childClassName, metaObject, name);
 			if (child != IntPtr.Zero) {
 				try {
 					return (T) ((GCHandle) child).Target;
@@ -97,7 +105,7 @@ namespace Qyoto {
 		}
 
 		public T FindChild<T>() {
-			return FindChild<T>("");
+			return FindChild<T>(string.Empty);
 		}
 
 		public List<T> FindChildren<T>(string name) {
@@ -106,12 +114,20 @@ namespace Qyoto {
 				T o = (T) ((System.Runtime.InteropServices.GCHandle) obj).Target;
 				list.Add(o);
 			};
-			FindQObjectChildren((IntPtr) GCHandle.Alloc(this), IntPtr.Zero, name, addFn);
+
+			string childClassName = null;
+			IntPtr metaObject = IntPtr.Zero;
+			if (SmokeMarshallers.IsSmokeClass(typeof(T))) {
+				childClassName = SmokeMarshallers.SmokeClassName(typeof(T));
+			} else {
+				metaObject = (IntPtr) GCHandle.Alloc(Qyoto.GetMetaObject(typeof(T)));
+			}
+			FindQObjectChildren((IntPtr) GCHandle.Alloc(this), childClassName, metaObject, IntPtr.Zero, name, addFn);
 			return list;
 		}
 
 		public List<T> FindChildren<T>() {
-			return FindChildren<T>("");
+			return FindChildren<T>(string.Empty);
 		}
 
 		public List<T> FindChildren<T>(QRegExp regExp) {
@@ -120,7 +136,15 @@ namespace Qyoto {
 				T o = (T) ((System.Runtime.InteropServices.GCHandle) obj).Target;
 				list.Add(o);
 			};
-			FindQObjectChildren((IntPtr) GCHandle.Alloc(this), (IntPtr) GCHandle.Alloc(regExp), "", addFn);
+
+			string childClassName = null;
+			IntPtr metaObject = IntPtr.Zero;
+			if (SmokeMarshallers.IsSmokeClass(typeof(T))) {
+				childClassName = SmokeMarshallers.SmokeClassName(typeof(T));
+			} else {
+				metaObject = (IntPtr) GCHandle.Alloc(Qyoto.GetMetaObject(typeof(T)));
+			}
+			FindQObjectChildren((IntPtr) GCHandle.Alloc(this), childClassName, metaObject, (IntPtr) GCHandle.Alloc(regExp), string.Empty, addFn);
 			return list;
 		}
 	}

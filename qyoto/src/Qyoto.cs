@@ -257,7 +257,7 @@ namespace Qyoto
 		public static extern void SetApplicationTerminated();
 
 		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
-		static extern IntPtr qyoto_make_metaObject(	IntPtr obj, IntPtr parentMeta,
+		static extern IntPtr qyoto_make_metaObject(	string parentClassName, IntPtr parentMeta,
 												IntPtr stringdata, int stringdataCount, 
 											 	IntPtr data, int dataCount );
 		
@@ -569,15 +569,18 @@ namespace Qyoto
 			return props;
 		}
 		
-		public static QMetaObject MakeMetaObject(Type t, QObject o) {
+		public static QMetaObject MakeMetaObject(Type t) {
 			if (t == null) return null;
 
 			QMetaObject parentMeta = null;
+			string parentClassName = null;
 			if (	!SmokeMarshallers.IsSmokeClass(t.BaseType)
 					&& !metaObjects.TryGetValue(t.BaseType, out parentMeta) ) 
 			{
 				// create QMetaObject
-				parentMeta = MakeMetaObject(t.BaseType, o);
+				parentMeta = MakeMetaObject(t.BaseType);
+			} else {
+				parentClassName = SmokeMarshallers.SmokeClassName(t.BaseType);
 			}
 			
 			ICollection<CPPMethod> slots;
@@ -598,11 +601,7 @@ namespace Qyoto
 
 			ICollection<CPPProperty> properties = GetProperties(t).Values;			
 			QyotoMetaData metaData = new QyotoMetaData(t.Name, signals, slots, GetClassInfos(t), properties);
-#if DEBUG
-			GCHandle objHandle = DebugGCHandle.Alloc(o);
-#else
-			GCHandle objHandle = GCHandle.Alloc(o);
-#endif
+
 			IntPtr metaObject;
 			IntPtr parentMetaPtr = (IntPtr) 0;
 			
@@ -616,7 +615,7 @@ namespace Qyoto
 						parentMetaPtr = (IntPtr) GCHandle.Alloc(parentMeta);
 #endif
 					}
-					metaObject = qyoto_make_metaObject(	(IntPtr)objHandle, 
+					metaObject = qyoto_make_metaObject(	parentClassName,
 													parentMetaPtr,
 												 	(IntPtr)stringdata, metaData.StringData.Length,
 												 	(IntPtr)data, metaData.Data.Length );
@@ -633,17 +632,19 @@ namespace Qyoto
 			return res;
 		}
 		
-		public static QMetaObject GetMetaObject(QObject o) {
-			Type t = o.GetType();
-			
+		public static QMetaObject GetMetaObject(Type t) {
 			QMetaObject res;
 			if (!metaObjects.TryGetValue(t, out res)) {
 				// create QMetaObject
-				res = MakeMetaObject(t, o);
+				res = MakeMetaObject(t);
 			}
 
 			return res;
-		}	
+		}
+
+		public static QMetaObject GetMetaObject(QObject o) {
+			return GetMetaObject(o.GetType());
+		}
 	}
 	
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]

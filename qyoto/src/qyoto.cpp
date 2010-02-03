@@ -209,6 +209,21 @@ static QByteArray * currentSignature = 0;
 	return negativeIndex;
 }
 
+static QMetaObject* get_meta_object(const char* classname) {
+    Smoke::ModuleIndex classId = Smoke::findClass(classname);
+    Smoke::ModuleIndex nameId = classId.smoke->idMethodName("staticMetaObject");
+    Smoke::ModuleIndex meth = classId.smoke->findMethod(classId, nameId);
+    if (meth.index <= 0) {
+        // Should never happen..
+    }
+
+    Smoke::Method &methodId = meth.smoke->methods[meth.smoke->methodMaps[meth.index].method];
+    Smoke::ClassFn fn = meth.smoke->classes[methodId.classId].classFn;
+    Smoke::StackItem i[1];
+    (*fn)(methodId.method, 0, i);
+    return (QMetaObject*) i[0].s_voidp;
+}
+
 /* Adapted from the internal function qt_qFindChildren() in qobject.cpp */
 Q_DECL_EXPORT void
 cs_qFindChildren_helper(const QObject *parent, const QString &name, const QRegExp *re,
@@ -231,7 +246,7 @@ cs_qFindChildren_helper(const QObject *parent, const QString &name, const QRegEx
 					list->append((*GetInstance)(obj, true));
 			}
 		}
-		qt_qFindChildren_helper(obj, name, re, mo, list);
+		cs_qFindChildren_helper(obj, name, re, mo, list);
 	}
 }
 
@@ -239,18 +254,26 @@ cs_qFindChildren_helper(const QObject *parent, const QString &name, const QRegEx
      obj.findChildren(Qt::Widget, "Optional Widget Name")
 */
 Q_DECL_EXPORT void
-FindQObjectChildren(void* parent, void* regexp, char* childName, FromIntPtr addFn)
+FindQObjectChildren(void* parent, const char *childClassName, void* childMetaObject, void* regexp, char* childName, FromIntPtr addFn)
 {
-	QMetaObject *mo = parent_meta_object(parent);
-	
 	smokeqyoto_object *o;
 	o = (smokeqyoto_object*) (*GetSmokeObject)(parent);
 	QObject* p = (QObject*) o->ptr;
-	
+
+	QMetaObject *mo = 0;
+	if (childMetaObject != 0) {
+		o = (smokeqyoto_object*) (*GetSmokeObject)(childMetaObject);
+		mo = (QMetaObject*) o->ptr;
+		(*FreeGCHandle)(childMetaObject);
+	} else {
+		mo = get_meta_object(childClassName);
+	}
+
 	QRegExp* re = 0;
 	if (regexp) {
 		o = (smokeqyoto_object*) (*GetSmokeObject)(regexp);
 		re = (QRegExp*) o->ptr;
+		(*FreeGCHandle)(regexp);
 	}
 	
 	QList<void*> *list = new QList<void*>();
@@ -265,15 +288,9 @@ FindQObjectChildren(void* parent, void* regexp, char* childName, FromIntPtr addF
 
 /* Adapted from the internal function qt_qFindChild() in qobject.cpp */
 Q_DECL_EXPORT void *
-cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
+cs_qFindChild_helper(QObject* parent, const QString &name, const QMetaObject &mo)
 {
-	if (!parent)
-		return 0;
-		
-	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(parent);
-	QObject* p = (QObject*) o->ptr;
-	
-	const QObjectList &children = p->children();
+	const QObjectList &children = parent->children();
 	QObject* obj;
 	void* monoObject;
 	
@@ -286,7 +303,7 @@ cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
 		}
 	}
 	for (i = 0; i < children.size(); ++i) {
-		monoObject = qt_qFindChild_helper(children.at(i), name, mo);
+		monoObject = cs_qFindChild_helper(children.at(i), name, mo);
 		if (monoObject)
 			return monoObject;
 	}
@@ -294,13 +311,22 @@ cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
 }
 
 Q_DECL_EXPORT void *
-FindQObjectChild(void* parent, char * childName)
+FindQObjectChild(void* parent, const char* childClassName, void* childMetaObject, char * childName)
 {
-	QString name = QString::fromUtf8(childName);
-	
-	QMetaObject * mo = parent_meta_object(parent);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(parent);
+	QObject *p = (QObject*) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject", true).index);
 	(*FreeGCHandle)(parent);
-	return cs_qFindChildHelper(parent, name, *mo);
+
+	QMetaObject *mo = 0;
+	if (childMetaObject != 0) {
+		o = (smokeqyoto_object*) (*GetSmokeObject)(childMetaObject);
+		mo = (QMetaObject*) o->ptr;
+		(*FreeGCHandle)(childMetaObject);
+	} else {
+		mo = get_meta_object(childClassName);
+	}
+
+	return cs_qFindChild_helper(p, childName, *mo);
 }
 
 Q_DECL_EXPORT void*
@@ -892,7 +918,7 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 }
 
 Q_DECL_EXPORT void*
-qyoto_make_metaObject(void* obj, void* parentMeta, const char* stringdata, int stringdata_count,
+qyoto_make_metaObject(const char* parentClassName, void* parentMeta, const char* stringdata, int stringdata_count,
                 const uint* data, int data_count)
 {
 	QMetaObject* parent = 0;
@@ -900,7 +926,7 @@ qyoto_make_metaObject(void* obj, void* parentMeta, const char* stringdata, int s
 	if (parentMeta == 0) {
 		// The parent class is a Smoke class, so call metaObject() on the
 		// instance to get it via a smoke library call
-		parent = parent_meta_object(obj);
+		parent = get_meta_object(parentClassName);
 	} else {
 		// The parent class is a custom C# class whose metaObject
 		// was constructed at runtime
@@ -908,8 +934,6 @@ qyoto_make_metaObject(void* obj, void* parentMeta, const char* stringdata, int s
 		parent = (QMetaObject *) o->ptr;
 		(*FreeGCHandle)(parentMeta);
 	}
-
-	(*FreeGCHandle)(obj);
 
 	char* my_stringdata = new char[stringdata_count];
 	memcpy(my_stringdata, stringdata, stringdata_count * sizeof(char));
