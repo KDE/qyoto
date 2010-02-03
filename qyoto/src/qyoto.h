@@ -140,7 +140,6 @@ extern QYOTO_EXPORT QList<MocArgument*> GetMocArguments(Smoke* smoke, const char
 extern QYOTO_EXPORT int qt_metacall(void* obj, int _c, int _id, void* _o);
 
 extern "C" {
-extern QYOTO_EXPORT QMetaObject* parent_meta_object(void* obj);
 extern QYOTO_EXPORT bool application_terminated;
 
 extern Q_DECL_EXPORT void SetDebug(int channel);
