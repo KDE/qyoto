@@ -78,13 +78,20 @@ namespace Qyoto {
                     typeName = SmokeMarshallers.SmokeClassName(typeof(T));
                 else
                     typeName = typeof(T).ToString();
-                if (NameToType(typeName) > TypeOf.LastCoreType) {
+                TypeOf type = NameToType(typeName);
+                if (type > TypeOf.LastCoreType) {
                     IntPtr instancePtr = QVariantValue(typeName, (IntPtr) GCHandle.Alloc(this));
                     return (T) ((GCHandle) instancePtr).Target;
+                } else if (type == TypeOf.Invalid) {
+                    Console.WriteLine("QVariant.Value<{0}>(): invalid type", typeof(T));
                 }
 
                 return (T) (object) default(T);
             }
+        }
+
+        static public QVariant FromValue<T>(T value) {
+            return FromValue<T>((object) value);
         }
 
         static public QVariant FromValue<T>(object value) {
@@ -148,11 +155,19 @@ namespace Qyoto {
                     typeName = SmokeMarshallers.SmokeClassName(typeof(T));
                 else
                     typeName = typeof(T).ToString();
-                if (NameToType(typeName) > TypeOf.LastCoreType) {
+                TypeOf type = NameToType(typeName);
+                if (type == TypeOf.Invalid) {
+                    // user type, not yet registered
+                    QMetaType.RegisterType<T>();
+                    type = NameToType(typeName);
+                }
+                if (type > TypeOf.LastCoreType) {
                     GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), (IntPtr) GCHandle.Alloc(value));
                     QVariant v = (QVariant) handle.Target;
                     handle.Free();
                     return v;
+                } else if (type == TypeOf.Invalid) {
+                    throw new Exception("Failed to register type " + typeof(T).ToString());
                 }
 
                 return new QVariant();
