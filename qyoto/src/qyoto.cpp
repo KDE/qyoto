@@ -89,7 +89,8 @@ qyoto_event_notify(void **data)
 {
 	// don't do anything if the application has already terminated
 	if (application_terminated) return false;
-    QEvent *event = (QEvent *) data[1];
+	QObject *receiver = reinterpret_cast<QObject*>(data[0]);
+	QEvent *event = reinterpret_cast<QEvent*>(data[1]);
 
 	// If a child has been given a parent then make a global ref to it, to prevent
 	// garbage collection. If a parent has been removed, then remove to global ref
@@ -110,6 +111,21 @@ qyoto_event_notify(void **data)
 
 			(*FreeGCHandle)(childObj);
 		}
+	} else if (event->type() == QEvent::Show || event->type() == QEvent::Hide) {
+		if (!receiver->isWidgetType() || receiver->parent() != 0)
+			return false;
+
+		void *obj = (*GetInstance)(receiver, true);
+		if (!obj)
+			return false;
+
+		if (event->type() == QEvent::Show) {
+			(*AddGlobalRef)(obj, receiver);    // Keep top-level widgets alive as long as they're visible.
+		} else {
+			(*RemoveGlobalRef)(obj, receiver);    // Make them eligible for collection as soon as they're hidden (and if there are no more references to them, obviously).
+		}
+
+		(*FreeGCHandle)(obj);
 	}
 
 	return false;
