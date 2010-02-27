@@ -22,23 +22,25 @@ TARGET_LINK_LIBRARIES(kimono qyotoshared
                       ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS})
 
 # write FindPackage modules for these
-pkg_search_module(MONO mono)
+pkg_search_module(LIBMONO mono)
 pkg_search_module(GLIB2 glib-2.0)
+
+macro_log_feature(LIBMONO_FOUND "libmono" "Mono library" "http://www.mono-project.com" FALSE "" "Required to compile kimonopluginfactory")
 
 # if libmono-dev is not installed, then MONO_INCLUDES is not defined and compiling
 # the kimonopluginfactory would fail. So, just disable kimonopluginfactory if the
 # MONO_INCLUDES is empty and provide some feedback to the user about it.
-IF (MONO_FOUND)
+IF (LIBMONO_FOUND)
     SET(SRC_FACTORY src/kimonopluginfactory.cpp)
-    LINK_DIRECTORIES(${MONO_LIBRARY_DIRS} ${GLIB2_LIBRARY_DIRS})
-    INCLUDE_DIRECTORIES(${MONO_INCLUDE_DIRS} ${GLIB2_INCLUDE_DIRS})
+    LINK_DIRECTORIES(${LIBMONO_LIBRARY_DIRS} ${GLIB2_LIBRARY_DIRS})
+    INCLUDE_DIRECTORIES(${LIBMONO_INCLUDE_DIRS} ${GLIB2_INCLUDE_DIRS})
     ADD_DEFINITIONS(${GLIB2_CFLAGS} ${MONO_CFLAGS})
     KDE4_ADD_PLUGIN(kimonopluginfactory ${SRC_FACTORY})
-    TARGET_LINK_LIBRARIES(kimonopluginfactory ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS} qyotoshared smokeqtcore smokeqtgui ${MONO_LIBRARIES})
+    TARGET_LINK_LIBRARIES(kimonopluginfactory ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS} qyotoshared smokeqtcore smokeqtgui ${LIBMONO_LIBRARIES})
     INSTALL(TARGETS kimonopluginfactory DESTINATION ${PLUGIN_INSTALL_DIR})
-ELSE (MONO_FOUND)
+ELSE (LIBMONO_FOUND)
     MESSAGE(STATUS "Mono not found. kimonopluginfactory will not be compiled.")
-ENDIF (MONO_FOUND)
+ENDIF (LIBMONO_FOUND)
 
 CSHARP_ADD_LIBRARY(kde-dotnet "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES (kde-dotnet qt-dotnet kimono)
