@@ -144,7 +144,7 @@ DebugChannel()
 }
 
 Q_DECL_EXPORT Smoke::ModuleIndex 
-FindMethodId(char * classname, char * mungedname, char * signature) 
+FindMethodId(const char * classname, const char * mungedname, const char * signature) 
 {
 	static Smoke::ModuleIndex negativeIndex(0, -1);
 #ifdef DEBUG
@@ -847,10 +847,41 @@ SizeOfLong()
 		}
 	}
 */
+
+Q_DECL_EXPORT void
+CallSmokeMethod(Smoke * smoke, int methodId, void * obj, Smoke::StackItem * sp, int items);
+
+typedef QHash<Smoke::ModuleIndex, Smoke::ModuleIndex> qHashCacheType;
+Q_GLOBAL_STATIC(qHashCacheType, qHashFunctionCache);
+
+static uint qHash(const Smoke::ModuleIndex& mi)
+{
+	return qHash(mi.smoke) ^ qHash(mi.index);
+}
+
 Q_DECL_EXPORT int 
 QyotoHash(void * obj)
 {
 	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	Smoke::ModuleIndex klassModuleIndex = Smoke::ModuleIndex(o->smoke, o->classId);
+
+	Smoke::ModuleIndex hashIndex = qHashFunctionCache()->value(klassModuleIndex, Smoke::ModuleIndex(0, -1));
+
+	if (hashIndex.index == -1) {
+		const char *className = o->smoke->className(o->classId);
+		QByteArray signature("qHash(const ");
+		signature.append(className).append("&)");
+		hashIndex = FindMethodId("QGlobalSpace", "qHash#", signature.constData());
+		qHashFunctionCache()->insert(klassModuleIndex, hashIndex);
+	}
+
+	if (hashIndex.smoke) {
+		Smoke::StackItem stack[2];
+		stack[1].s_class = obj;
+		CallSmokeMethod(hashIndex.smoke, hashIndex.index, 0, stack, 2);
+		return (int) stack[0].s_uint;
+	}
+
 	(*FreeGCHandle)(obj);
 
 	if (sizeof(void*) > sizeof(int)) {
