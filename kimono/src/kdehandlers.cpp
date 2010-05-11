@@ -84,7 +84,7 @@ void marshall_KServiceList(Marshall *m) {
 
 		m->var().s_voidp = av;
 	    
-		if (m->cleanup())
+		if (m->type().isStack())
 			delete offerList;
 	}
 	break;

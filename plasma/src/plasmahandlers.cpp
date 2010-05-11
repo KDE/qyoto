@@ -103,7 +103,11 @@ void marshall_QHashQStringQVariant(Marshall *m) {
 			
 			m->var().s_voidp = dict;
 			m->next();
-			
+
+			if (m->type().isStack()) {
+				delete map;
+			}
+
 			break;
 		}
 	

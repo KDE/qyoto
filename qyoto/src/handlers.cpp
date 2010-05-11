@@ -1051,7 +1051,7 @@ marshall_basetype(Marshall *m)
 		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->type().classId(), p);
 		const char * classname = qyoto_resolve_classname(o);
 
-		if(m->type().isConst() && m->type().isRef()) {
+		if((m->type().isConst() && m->type().isRef()) || (m->type().isStack() && m->cleanup())) {
 			p = construct_copy( o );
 			if (p != 0) {
 				o->ptr = p;
@@ -1120,10 +1120,6 @@ static void marshall_charP(Marshall *m) {
 	    } else {
 			m->var().s_class = 0;
 		}
-
-	    if (m->cleanup()) {
-			delete[] p;
-		}
 	}
 	break;
 
@@ -1146,9 +1142,6 @@ static void marshall_ucharP(Marshall *m) {
 	{
 		uchar *p = (uchar*) m->item().s_voidp;
 		m->var().s_class = (*CreateGenericPointer)("System.Byte", p);
-	    if (m->cleanup()) {
-			delete[] p;
-		}
 	}
 	break;
 
@@ -1197,7 +1190,7 @@ static void marshall_QString(Marshall *m) {
 				m->var().s_class = (*IntPtrFromQString)(s);
 			}
 
-			if (m->cleanup() || m->type().isStack())
+			if (m->type().isStack())
 				delete s;
 			} else {
 				m->var().s_voidp = 0;
@@ -1469,6 +1462,15 @@ void marshall_QDBusVariant(Marshall *m) {
 		
 		Smoke::ModuleIndex id = m->smoke()->findClass("QVariant");
 		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, id.smoke, id.index, p);
+
+		if((m->type().isConst() && m->type().isRef()) || (m->type().isStack() && m->cleanup())) {
+			p = construct_copy( o );
+			if (p != 0) {
+				o->ptr = p;
+				o->allocated = true;
+		    }
+		}
+
 		
 		obj = (*CreateInstance)("Qyoto.QDBusVariant", o);
 		if (do_debug & qtdb_calls) {
@@ -1526,6 +1528,10 @@ void marshall_QMapintQVariant(Marshall *m) {
 			
 			m->var().s_voidp = dict;
 			m->next();
+
+			if (m->type().isStack()) {
+				delete map;
+			}
 			
 			break;
 		}
@@ -1572,6 +1578,11 @@ void marshall_QMapQStringQString(Marshall *m) {
 			
 			m->var().s_voidp = dict;
 			m->next();
+
+			if (m->type().isStack()) {
+				delete map;
+			}
+
 			
 			break;
 		}
@@ -1622,6 +1633,11 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 			
 			m->var().s_voidp = dict;
 			m->next();
+
+			if (m->type().isStack()) {
+				delete map;
+			}
+
 			
 			break;
 		}
@@ -1668,7 +1684,7 @@ void marshall_QStringList(Marshall *m) {
 		m->var().s_voidp = al;
 		m->next();
 
-		if (m->cleanup()) {
+		if (m->type().isStack()) {
 			delete stringlist;
 		}
 
@@ -1752,7 +1768,7 @@ void marshall_QListInt(Marshall *m) {
 	    m->var().s_voidp = av;
 		m->next();
 
-		if (m->cleanup()) {
+		if (m->type().isStack()) {
 			delete valuelist;
 		}
 	}
@@ -1779,8 +1795,9 @@ void marshall_QListConstCharP(Marshall *m) {
 		}
 		m->var().s_voidp = al;
 		m->next();
-		if (m->cleanup())
+		if (m->type().isStack()) {
 			delete list;
+		}
 	}
 	break;
 	default:
@@ -1849,7 +1866,7 @@ void marshall_QRgbVector(Marshall *m)
 			m->var().s_voidp = al;
 			m->next();
 
-			if (m->cleanup()) {
+			if (m->type().isStack()) {
 				delete valuelist;
 			}
 			
