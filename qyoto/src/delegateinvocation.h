@@ -88,7 +88,7 @@ public:
 	inline Smoke::StackItem &var() { return _sp[_cur]; }
 	inline Smoke *smoke() { return type().smoke(); }
 
-	inline bool cleanup() { return false; }
+	inline bool cleanup() { return true; }
 	inline void unsupported() { qFatal("Cannot handle '%s' as slot argument\n", type().name()); }
 
 	void next() {

@@ -44,7 +44,7 @@ public:
 	inline Smoke::StackItem &var() { return _sp[_cur + 1]; }
 	inline const Smoke::Method &method() { return _smoke->methods[_method]; }
 	inline Smoke *smoke() { return _smoke; }
-	inline bool cleanup() { return false; }   // is this right?
+	inline bool cleanup() { return true; }
 
 	void unsupported();
 	void callMethod();

@@ -81,7 +81,7 @@ void marshall_ItemList(Marshall *m) {
 			m->var().s_voidp = al;
 			m->next();
 
-			if (m->cleanup()) {
+			if (m->type().isStack()) {
 				delete list;
 			}
 			
@@ -166,7 +166,7 @@ void marshall_ValueListItem(Marshall *m) {
 			m->var().s_voidp = al;
 			m->next();
 
-			if (m->cleanup()) {
+			if (m->type().isStack()) {
 				delete valuelist;
 			}
 			
@@ -268,7 +268,7 @@ void marshall_QPair(Marshall *m) {
 			m->var().s_voidp = pair;
 			m->next();
 
-			if (m->cleanup() || m->type().isStack()) {
+			if (m->type().isStack()) {
 				delete qpair;
 			}
 		}

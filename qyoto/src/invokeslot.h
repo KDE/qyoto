@@ -45,7 +45,7 @@ public:
 	inline Smoke::StackItem &var() { return _sp[_cur]; }
 	inline Smoke *smoke() { return type().smoke(); }
 
-	inline bool cleanup() { return false; }
+	inline bool cleanup() { return true; }
 	void unsupported();
 	void copyArguments();
 	void invokeSlot();
