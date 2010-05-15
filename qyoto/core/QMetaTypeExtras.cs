@@ -49,7 +49,12 @@ namespace Qyoto {
                 dtorHandler = delegate(IntPtr obj) { ((GCHandle) obj).Free(); };
                 ctorHandler = delegate(IntPtr copy) {
                     if (copy != IntPtr.Zero) {
-                        T o = (T) ((GCHandle) copy).Target;  // create a copy
+                        object o = (T) ((GCHandle) copy).Target;  // create a copy if this is a valuetype
+
+                        ICloneable cloneable = o as ICloneable;
+                        if (cloneable != null) {
+                            o = cloneable.Clone();
+                        }
                         return (IntPtr) GCHandle.Alloc(o);
                     }
                     return (IntPtr) GCHandle.Alloc(default(T));

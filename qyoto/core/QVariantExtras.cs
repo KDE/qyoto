@@ -15,159 +15,162 @@ namespace Qyoto {
         static extern IntPtr QVariantFromValue(int type, IntPtr value);
 
         public T Value<T>() {
-            if (typeof(T) == typeof(bool)) {
-                return (T) (object) ToBool();
-            } else if (typeof(T) == typeof(double)) {
-                return (T) (object) ToDouble();
-            } else if (typeof(T) == typeof(QBitArray)) {
-                return (T) (object) ToBitArray();
-            } else if (typeof(T) == typeof(QByteArray)) {
-                return (T) (object) ToByteArray();
-            } else if (typeof(T) == typeof(char)) {
-                return (T) (object) ToChar();
-            } else if (typeof(T) == typeof(QDate)) {
-                return (T) (object) ToDate();
-            } else if (typeof(T) == typeof(QDateTime)) {
-                return (T) (object) ToDateTime();
-            } else if (typeof(T) == typeof(int)) {
-                return (T) (object) ToInt();
-            } else if (typeof(T) == typeof(QLine)) {
-                return (T) (object) ToLine();
-            } else if (typeof(T) == typeof(QLineF)) {
-                return (T) (object) ToLineF();
-            } else if (typeof(T) == typeof(QLocale)) {
-                return (T) (object) ToLocale();
-            } else if (typeof(T) == typeof(QPoint)) {
-                return (T) (object) ToPoint();
-            } else if (typeof(T) == typeof(QPointF)) {
-                return (T) (object) ToPointF();
-            } else if (typeof(T) == typeof(QRect)) {
-                return (T) (object) ToRect();
-            } else if (typeof(T) == typeof(QRectF)) {
-                return (T) (object) ToRectF();
-            } else if (typeof(T) == typeof(QRegExp)) {
-                return (T) (object) ToRegExp();
-            } else if (typeof(T) == typeof(QSize)) {
-                return (T) (object) ToSize();
-            } else if (typeof(T) == typeof(QSizeF)) {
-                return (T) (object) ToSizeF();
-            } else if (typeof(T) == typeof(string)) {
-                return (T) (object) ToString();
-            } else if (typeof(T) == typeof(List<string>)) {
-                return (T) (object) ToStringList();
-            } else if (typeof(T) == typeof(List<QVariant>)) {
-                return (T) (object) ToList();
-            } else if (typeof(T) == typeof(Dictionary<string, QVariant>)) {
+            object value = Value(typeof(T));
+            if (value == null) {
+                return default(T);
+            }
+            return (T) value;
+        }
+
+        public object Value(Type valueType) {
+            if (valueType == typeof(bool)) {
+                return ToBool();
+            } else if (valueType == typeof(double)) {
+                return ToDouble();
+            } else if (valueType == typeof(QBitArray)) {
+                return ToBitArray();
+            } else if (valueType == typeof(QByteArray)) {
+                return ToByteArray();
+            } else if (valueType == typeof(char)) {
+                return ToChar();
+            } else if (valueType == typeof(QDate)) {
+                return ToDate();
+            } else if (valueType == typeof(QDateTime)) {
+                return ToDateTime();
+            } else if (valueType == typeof(int)) {
+                return ToInt();
+            } else if (valueType == typeof(QLine)) {
+                return ToLine();
+            } else if (valueType == typeof(QLineF)) {
+                return ToLineF();
+            } else if (valueType == typeof(QLocale)) {
+                return ToLocale();
+            } else if (valueType == typeof(QPoint)) {
+                return ToPoint();
+            } else if (valueType == typeof(QPointF)) {
+                return ToPointF();
+            } else if (valueType == typeof(QRect)) {
+                return ToRect();
+            } else if (valueType == typeof(QRectF)) {
+                return ToRectF();
+            } else if (valueType == typeof(QRegExp)) {
+                return ToRegExp();
+            } else if (valueType == typeof(QSize)) {
+                return ToSize();
+            } else if (valueType == typeof(QSizeF)) {
+                return ToSizeF();
+            } else if (valueType == typeof(string)) {
+                return ToString();
+            } else if (valueType == typeof(List<string>)) {
+                return ToStringList();
+            } else if (valueType == typeof(List<QVariant>)) {
+                return ToList();
+            } else if (valueType == typeof(Dictionary<string, QVariant>)) {
                 object o = ToMap();
                 if (o == null)
                     o = ToHash();
-                return (T) o;
-            } else if (typeof(T) == typeof(QTime)) {
-                return (T) (object) ToTime();
-            } else if (typeof(T) == typeof(uint)) {
-                return (T) (object) ToUInt();
-            } else if (typeof(T) == typeof(QUrl)) {
-                return (T) (object) ToUrl();
-            } else if (typeof(T) == typeof(QVariant)) {
-                return (T) (object) this;
-            } else if (typeof(T).IsEnum) {
-                return (T) (object) ToInt();
+                return o;
+            } else if (valueType == typeof(QTime)) {
+                return ToTime();
+            } else if (valueType == typeof(uint)) {
+                return ToUInt();
+            } else if (valueType == typeof(QUrl)) {
+                return ToUrl();
+            } else if (valueType == typeof(QVariant)) {
+                return this;
+            } else if (valueType.IsEnum) {
+                return ToInt();
             } else {
                 string typeName;
-                if (SmokeMarshallers.IsSmokeClass(typeof(T)))
-                    typeName = SmokeMarshallers.SmokeClassName(typeof(T));
+                if (SmokeMarshallers.IsSmokeClass(valueType))
+                    typeName = SmokeMarshallers.SmokeClassName(valueType);
                 else
-                    typeName = typeof(T).ToString();
+                    typeName = valueType.ToString();
                 TypeOf type = NameToType(typeName);
                 if (type > TypeOf.LastCoreType) {
                     IntPtr instancePtr = QVariantValue(typeName, (IntPtr) GCHandle.Alloc(this));
-                    return (T) ((GCHandle) instancePtr).Target;
+                    return ((GCHandle) instancePtr).Target;
                 } else if (type == TypeOf.Invalid) {
-                    Console.WriteLine("QVariant.Value<{0}>(): invalid type", typeof(T));
+                    Console.WriteLine("QVariant.Value(): invalid type", valueType);
                 }
 
-                return (T) (object) default(T);
+                return null;
             }
         }
 
         static public QVariant FromValue<T>(T value) {
-            return FromValue<T>((object) value);
+            return FromValue(value, typeof(T));
         }
 
-        static public QVariant FromValue<T>(object value) {
-            if (typeof(T) == typeof(bool)) {
+        static public QVariant FromValue(object value, Type valueType) {
+            if (valueType == typeof(bool)) {
                 return new QVariant((bool) value);
-            } else if (typeof(T) == typeof(double)) {
+            } else if (valueType == typeof(double)) {
                 return new QVariant((double) value);
-            } else if (typeof(T) == typeof(QBitArray)) {
+            } else if (valueType == typeof(QBitArray)) {
                 return new QVariant((QBitArray) value);
-            } else if (typeof(T) == typeof(QByteArray)) {
+            } else if (valueType == typeof(QByteArray)) {
                 return new QVariant((QByteArray) value);
-            } else if (typeof(T) == typeof(char)) {
+            } else if (valueType == typeof(char)) {
                 return new QVariant(new QChar((char) value));
-            } else if (typeof(T) == typeof(QDate)) {
+            } else if (valueType == typeof(QDate)) {
                 return new QVariant((QDate) value);
-            } else if (typeof(T) == typeof(QDateTime)) {
+            } else if (valueType == typeof(QDateTime)) {
                 return new QVariant((QDateTime) value);
-            } else if (typeof(T) == typeof(int)) {
+            } else if (valueType == typeof(int)) {
                 return new QVariant((int) value);
-            } else if (typeof(T) == typeof(QLine)) {
+            } else if (valueType == typeof(QLine)) {
                 return new QVariant((QLine) value);
-            } else if (typeof(T) == typeof(QLineF)) {
+            } else if (valueType == typeof(QLineF)) {
                 return new QVariant((QLineF) value);
-            } else if (typeof(T) == typeof(QLocale)) {
+            } else if (valueType == typeof(QLocale)) {
                 return new QVariant((QLocale) value);
-            } else if (typeof(T) == typeof(QPoint)) {
+            } else if (valueType == typeof(QPoint)) {
                 return new QVariant((QPoint) value);
-            } else if (typeof(T) == typeof(QPointF)) {
+            } else if (valueType == typeof(QPointF)) {
                 return new QVariant((QPointF) value);
-            } else if (typeof(T) == typeof(QRect)) {
+            } else if (valueType == typeof(QRect)) {
                 return new QVariant((QRect) value);
-            } else if (typeof(T) == typeof(QRectF)) {
+            } else if (valueType == typeof(QRectF)) {
                 return new QVariant((QRectF) value);
-            } else if (typeof(T) == typeof(QRegExp)) {
+            } else if (valueType == typeof(QRegExp)) {
                 return new QVariant((QRegExp) value);
-            } else if (typeof(T) == typeof(QSize)) {
+            } else if (valueType == typeof(QSize)) {
                 return new QVariant((QSize) value);
-            } else if (typeof(T) == typeof(QSizeF)) {
+            } else if (valueType == typeof(QSizeF)) {
                 return new QVariant((QSizeF) value);
-            } else if (typeof(T) == typeof(string)) {
+            } else if (valueType == typeof(string)) {
                 return new QVariant((string) value);
-            } else if (typeof(T) == typeof(List<string>)) {
+            } else if (valueType == typeof(List<string>)) {
                 return new QVariant((List<string>) value);
-            } else if (typeof(T) == typeof(List<QVariant>)) {
+            } else if (valueType == typeof(List<QVariant>)) {
                 return new QVariant((List<QVariant>) value);
-            } else if (typeof(T) == typeof(Dictionary<string, QVariant>)) {
+            } else if (valueType == typeof(Dictionary<string, QVariant>)) {
                 return new QVariant((Dictionary<string, QVariant>) value);
-            } else if (typeof(T) == typeof(QTime)) {
+            } else if (valueType == typeof(QTime)) {
                 return new QVariant((QTime) value);
-            } else if (typeof(T) == typeof(uint)) {
+            } else if (valueType == typeof(uint)) {
                 return new QVariant((uint) value);
-            } else if (typeof(T) == typeof(QUrl)) {
+            } else if (valueType == typeof(QUrl)) {
                 return new QVariant((QUrl) value);
-            } else if (typeof(T) == typeof(QVariant)) {
+            } else if (valueType == typeof(QVariant)) {
                 return new QVariant((QVariant) value);
-            } else if (typeof(T).IsEnum) {
+            } else if (valueType.IsEnum) {
                 return new QVariant((int) value);
             } else {
                 string typeName;
-                if (SmokeMarshallers.IsSmokeClass(typeof(T)))
-                    typeName = SmokeMarshallers.SmokeClassName(typeof(T));
+                if (SmokeMarshallers.IsSmokeClass(valueType))
+                    typeName = SmokeMarshallers.SmokeClassName(valueType);
                 else
-                    typeName = typeof(T).ToString();
+                    typeName = valueType.ToString();
                 TypeOf type = NameToType(typeName);
                 if (type == TypeOf.Invalid) {
-                    // user type, not yet registered
-                    QMetaType.RegisterType<T>();
-                    type = NameToType(typeName);
-                }
-                if (type > TypeOf.LastCoreType) {
+                    throw new Exception(string.Format("Type {0} not registered!", valueType.ToString()));
+                } else if (type > TypeOf.LastCoreType) {
                     GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), (IntPtr) GCHandle.Alloc(value));
                     QVariant v = (QVariant) handle.Target;
                     handle.Free();
                     return v;
-                } else if (type == TypeOf.Invalid) {
-                    throw new Exception("Failed to register type " + typeof(T).ToString());
                 }
 
                 return new QVariant();

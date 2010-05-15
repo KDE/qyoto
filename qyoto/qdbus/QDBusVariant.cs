@@ -7,7 +7,7 @@ namespace Qyoto {
 		public QDBusVariant() : base() { }
 		public QDBusVariant(QVariant variant) : base(variant) { }
 
-		static public new QDBusVariant FromValue<T>(object value) {
+		static public new QDBusVariant FromValue<T>(T value) {
 			return new QDBusVariant(QVariant.FromValue<T>(value));
 		}
 
