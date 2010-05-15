@@ -22,9 +22,9 @@ SET(SRC_PLASMASCRIPTENGINEKIMONO
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${CMAKE_CURRENT_SOURCE_DIR}/../kimono/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
-ADD_LIBRARY(plasma-sharp MODULE ${SRC_CPP})
+ADD_LIBRARY(plasma-sharp SHARED ${SRC_CPP})
 ADD_DEPENDENCIES(plasma-sharp smokeplasma kde-dotnet)
-TARGET_LINK_LIBRARIES(plasma-sharp smokeplasma qyotoshared ${KDE4_PLASMA_LIBS})
+TARGET_LINK_LIBRARIES(plasma-sharp smokeplasma qyoto ${KDE4_PLASMA_LIBS})
 
 CSHARP_ADD_LIBRARY(plasma-dll "${SRC_CS}" REFERENCES qt-dotnet kde-dotnet qtwebkit COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(plasma-dll qtwebkit kde-dotnet)

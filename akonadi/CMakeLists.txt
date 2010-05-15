@@ -19,10 +19,10 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 include_directories( ${KDE4_INCLUDE_DIR}/akonadi )
 
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
-ADD_LIBRARY(akonadi-sharp MODULE ${SRC_CPP})
+ADD_LIBRARY(akonadi-sharp SHARED ${SRC_CPP})
 TARGET_LINK_LIBRARIES(akonadi-sharp 
     smokeakonadi
-    qyotoshared 
+    qyoto 
     ${KDEPIMLIBS_AKONADI_LIBS} 
     ${KDEPIMLIBS_AKONADI_KMIME_LIBS}
     ${QT_QTCORE_LIBRARY} 

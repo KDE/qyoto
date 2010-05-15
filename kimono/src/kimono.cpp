@@ -22,6 +22,7 @@
 #include <stdio.h>
 
 #include <qyoto.h>
+#include <callbacks.h>
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>

@@ -16,6 +16,7 @@
 #include "invokeslot.h"
 
 #include "qyoto.h"
+#include "callbacks.h"
 #include "slotreturnvalue.h"
 
 namespace Qyoto {

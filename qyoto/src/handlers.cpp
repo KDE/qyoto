@@ -78,6 +78,8 @@
 
 #include "marshall.h"
 #include "qyoto.h"
+#include "qyoto_p.h"
+#include "callbacks.h"
 #include "smokeqyoto.h"
 #include "marshall_macros.h"
 
@@ -86,178 +88,6 @@
 #endif
 
 extern "C" {
-Q_DECL_EXPORT GetIntPtr ListToPointerList;
-Q_DECL_EXPORT CreateListFn ConstructList;
-Q_DECL_EXPORT SetIntPtr AddIntPtrToList;
-Q_DECL_EXPORT ConstructDict ConstructDictionary;
-Q_DECL_EXPORT DictToMap DictionaryToQMap;
-Q_DECL_EXPORT DictToHash DictionaryToQHash;
-Q_DECL_EXPORT InvokeMethodFn AddObjectObjectToDictionary;
-
-Q_DECL_EXPORT GetIntPtr IntPtrToCharStarStar;
-Q_DECL_EXPORT GetCharStarFromIntPtr IntPtrToCharStar;
-Q_DECL_EXPORT GetIntPtrFromCharStar IntPtrFromCharStar;
-Q_DECL_EXPORT GetIntPtr IntPtrToQString;
-Q_DECL_EXPORT GetIntPtr IntPtrFromQString;
-Q_DECL_EXPORT GetIntPtr StringBuilderToQString;
-Q_DECL_EXPORT SetIntPtrFromCharStar StringBuilderFromQString;
-Q_DECL_EXPORT GetIntPtr StringListToQStringList;
-Q_DECL_EXPORT GetIntPtr ListIntToQListInt;
-Q_DECL_EXPORT GetIntPtr ListUIntToQListQRgb;
-Q_DECL_EXPORT GetIntPtr ListWizardButtonToQListWizardButton;
-Q_DECL_EXPORT AddInt AddIntToListInt;
-Q_DECL_EXPORT AddUInt AddUIntToListUInt;
-Q_DECL_EXPORT AddIntObject AddIntObjectToDictionary;
-
-Q_DECL_EXPORT GetIntPtr QPairGetFirst;
-Q_DECL_EXPORT GetIntPtr QPairGetSecond;
-Q_DECL_EXPORT CreateQPairFn CreateQPair;
-
-Q_DECL_EXPORT SetIntPtr UnboxToStackItem;
-Q_DECL_EXPORT CreateInstanceFn BoxFromStackItem;
-
-Q_DECL_EXPORT GetIntPtr GenericPointerGetIntPtr;
-Q_DECL_EXPORT CreateInstanceFn CreateGenericPointer;
-
-Q_DECL_EXPORT void InstallIntPtrToCharStarStar(GetIntPtr callback)
-{
-	IntPtrToCharStarStar = callback;
-}
-
-Q_DECL_EXPORT void InstallIntPtrToCharStar(GetCharStarFromIntPtr callback)
-{
-	IntPtrToCharStar = callback;
-}
-
-Q_DECL_EXPORT void InstallIntPtrFromCharStar(GetIntPtrFromCharStar callback)
-{
-	IntPtrFromCharStar = callback;
-}
-
-Q_DECL_EXPORT void InstallIntPtrToQString(GetIntPtr callback)
-{
-	IntPtrToQString = callback;
-}
-
-Q_DECL_EXPORT void InstallIntPtrFromQString(GetIntPtr callback)
-{
-	IntPtrFromQString = callback;
-}
-
-Q_DECL_EXPORT void InstallStringBuilderToQString(GetIntPtr callback)
-{
-	StringBuilderToQString = callback;
-}
-
-Q_DECL_EXPORT void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback)
-{
-	StringBuilderFromQString = callback;
-}
-
-Q_DECL_EXPORT void InstallStringListToQStringList(GetIntPtr callback)
-{
-	StringListToQStringList = callback;
-}
-
-Q_DECL_EXPORT void InstallListToPointerList(GetIntPtr callback)
-{
-	ListToPointerList = callback;
-}
-
-Q_DECL_EXPORT void InstallListIntToQListInt(GetIntPtr callback)
-{
-	ListIntToQListInt = callback;
-}
-
-Q_DECL_EXPORT void InstallConstructList(CreateListFn callback)
-{
-	ConstructList = callback;
-}
-
-Q_DECL_EXPORT void InstallAddIntPtrToList(SetIntPtr callback)
-{
-	AddIntPtrToList = callback;
-}
-
-Q_DECL_EXPORT void InstallAddIntToListInt(AddInt callback)
-{
-	AddIntToListInt = callback;
-}
-
-Q_DECL_EXPORT void InstallConstructDictionary(ConstructDict callback)
-{
-	ConstructDictionary = callback;
-}
-
-Q_DECL_EXPORT void InstallAddObjectObjectToDictionary(InvokeMethodFn callback)
-{
-	AddObjectObjectToDictionary = callback;
-}
-
-Q_DECL_EXPORT void InstallAddIntObjectToDictionary(AddIntObject callback)
-{
-	AddIntObjectToDictionary = callback;
-}
-
-Q_DECL_EXPORT void InstallDictionaryToQHash(DictToHash callback)
-{
-	DictionaryToQHash = callback;
-}
-
-Q_DECL_EXPORT void InstallDictionaryToQMap(DictToMap callback)
-{
-	DictionaryToQMap = callback;
-}
-
-Q_DECL_EXPORT void InstallListUIntToQListQRgb(GetIntPtr callback)
-{
-	ListUIntToQListQRgb = callback;
-}
-
-Q_DECL_EXPORT void InstallAddUIntToListUInt(AddUInt callback)
-{
-	AddUIntToListUInt = callback;
-}
-
-Q_DECL_EXPORT void InstallListWizardButtonToQListWizardButton(GetIntPtr callback)
-{
-	ListWizardButtonToQListWizardButton = callback;
-}
-
-Q_DECL_EXPORT void InstallGenericPointerGetIntPtr(GetIntPtr callback)
-{
-	GenericPointerGetIntPtr = callback;
-}
-
-Q_DECL_EXPORT void InstallCreateGenericPointer(CreateInstanceFn callback)
-{
-	CreateGenericPointer = callback;
-}
-
-Q_DECL_EXPORT void InstallQPairGetFirst(GetIntPtr callback)
-{
-	QPairGetFirst = callback;
-}
-
-Q_DECL_EXPORT void InstallQPairGetSecond(GetIntPtr callback)
-{
-	QPairGetSecond = callback;
-}
-
-Q_DECL_EXPORT void InstallCreateQPair(CreateQPairFn callback)
-{
-	CreateQPair = callback;
-}
-
-Q_DECL_EXPORT void InstallUnboxToStackItem(SetIntPtr callback)
-{
-	UnboxToStackItem = callback;
-}
-
-Q_DECL_EXPORT void InstallBoxFromStackItem (CreateInstanceFn callback)
-{
-	BoxFromStackItem = callback;
-}
 
 Q_DECL_EXPORT void* ConstructPointerList()
 {
@@ -371,9 +201,6 @@ Q_DECL_EXPORT void AddWizardButtonToQList(void* ptr, int i)
 #endif
 
 }
-
-// extern bool isDerivedFrom(Smoke *smoke, const char *className, const char *baseClassName);
-extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
 Q_DECL_EXPORT bool
 IsContainedInstanceQt(smokeqyoto_object *o)
@@ -717,77 +544,6 @@ qyoto_resolve_classname_qt(smokeqyoto_object * o)
 	return qyoto_modules[o->smoke].binding->className(o->classId);
 
 #undef SET_SMOKEQYOTO_OBJECT
-}
-
-bool
-matches_arg(Smoke *smoke, Smoke::Index meth, Smoke::Index argidx, const char *argtype)
-{
-    Smoke::Index *arg = smoke->argumentList + smoke->methods[meth].args + argidx;
-    SmokeType type = SmokeType(smoke, *arg);
-	return (type.name() && qstrcmp(type.name(), argtype) == 0);
-}
-
-void *
-construct_copy(smokeqyoto_object *o)
-{
-    const char *className = o->smoke->className(o->classId);
-    int classNameLen = strlen(className);
-
-    // copy constructor signature
-    QByteArray ccSig(className);
-    int pos = ccSig.lastIndexOf("::");
-    if (pos != -1) {
-        ccSig = ccSig.mid(pos + strlen("::"));
-    }
-    ccSig.append("#");
-
-    Smoke::ModuleIndex ccId = o->smoke->findMethodName(className, ccSig);
-
-    char *ccArg = new char[classNameLen + 8];
-    sprintf(ccArg, "const %s&", className);
-
-    Smoke::ModuleIndex classId(o->smoke, o->classId);
-    Smoke::ModuleIndex ccMeth = o->smoke->findMethod(classId, ccId);
-
-    if(!ccMeth.index) {
-	return 0;
-    }
-	Smoke::Index method = ccMeth.smoke->methodMaps[ccMeth.index].method;
-    if(method > 0) {
-	// Make sure it's a copy constructor
-	if(!matches_arg(ccMeth.smoke, method, 0, ccArg)) {
-            delete[] ccArg;
-	    return 0;
-        }
-        delete[] ccArg;
-        ccMeth.index = method;
-    } else {
-        // ambiguous method, pick the copy constructor
-	Smoke::Index i = -method;
-	while(o->smoke->ambiguousMethodList[i]) {
-	    if(matches_arg(ccMeth.smoke, ccMeth.smoke->ambiguousMethodList[i], 0, ccArg))
-		break;
-            i++;
-	}
-        delete[] ccArg;
-	ccMeth.index = ccMeth.smoke->ambiguousMethodList[i];
-	if(!ccMeth.index)
-	    return 0;
-    }
-
-    // Okay, ccMeth is the copy constructor. Time to call it.
-    Smoke::StackItem args[2];
-    args[0].s_voidp = 0;
-    args[1].s_voidp = o->ptr;
-    Smoke::ClassFn fn = o->smoke->classes[o->classId].classFn;
-    (*fn)(o->smoke->methods[ccMeth.index].method, 0, args);
-
-    // Initialize the binding for the new instance
-    Smoke::StackItem s[2];
-    s[1].s_voidp = qyoto_modules[o->smoke].binding;
-    (*fn)(0, args[0].s_voidp, s);
-
-    return args[0].s_voidp;
 }
 
 extern "C" {

@@ -15,6 +15,8 @@
 
 #include "qyotosmokebinding.h"
 #include "qyoto.h"
+#include "qyoto_p.h"
+#include "callbacks.h"
 #include "virtualmethodcall.h"
 
 #include <cstdlib>
@@ -110,7 +112,7 @@ Binding::callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool isAb
 		int _id = args[2].s_int;
 		void** _o = (void**)args[3].s_voidp;
 		
-		args[0].s_int = qt_metacall(obj, _c, _id, _o);
+		args[0].s_int = qyoto_qt_metacall(obj, _c, _id, _o);
 
 		(*FreeGCHandle)(obj);
 		return true;

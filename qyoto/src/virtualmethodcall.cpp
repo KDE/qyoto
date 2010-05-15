@@ -15,6 +15,7 @@
 
 #include "virtualmethodcall.h"
 #include "qyoto.h"
+#include "callbacks.h"
 #include "virtualmethodreturnvalue.h"
 
 namespace Qyoto {

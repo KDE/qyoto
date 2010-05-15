@@ -29,16 +29,16 @@ namespace Qyoto {
 		
 #region C++ functions
 		/** Marshalling functions begin **/
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr StringToQString(string str);
 
-		[DllImport("qyotoshared", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.Cdecl)]
 		public static extern string StringFromQString(IntPtr ptr);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr StringArrayToQStringList(int length, string[] strArray);
 		/** Marshalling functions end **/
 		
@@ -46,53 +46,53 @@ namespace Qyoto {
 		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern int SizeOfLong();
 
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructPointerList();
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void AddObjectToPointerList(IntPtr ptr, IntPtr obj);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQListInt();
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void AddIntToQList(IntPtr ptr, int i);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQListQRgb();
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void AddUIntToQListQRgb(IntPtr ptr, uint i);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQListWizardButton();
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddWizardButtonToQList(IntPtr ptr, int i);
 
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQHash(int type);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddIntQVariantToQHash(IntPtr ptr, int i, IntPtr qv);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQStringToQHash(IntPtr ptr, string str1, string str2);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQVariantToQHash(IntPtr ptr, string str, IntPtr qv);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr ConstructQMap(int type);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddIntQVariantToQMap(IntPtr ptr, int i, IntPtr qv);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQStringToQMap(IntPtr ptr, string str1, string str2);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void AddQStringQVariantToQMap(IntPtr ptr, string str, IntPtr qv);
 		/** Other functions end **/
 		
@@ -127,7 +127,7 @@ namespace Qyoto {
 		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallInvokeCustomSlot(InvokeCustomSlotFn callback);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallInvokeDelegate(InvokeDelegateFn callback);
 		
 		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
@@ -136,25 +136,25 @@ namespace Qyoto {
 		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern bool InstallSetProperty(SetPropertyFn callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrToCharStarStar(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrToCharStar(GetStringFromIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrFromCharStar(GetIntPtrFromString callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrToQString(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallIntPtrFromQString(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallStringBuilderToQString(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback);
 
         [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -163,70 +163,70 @@ namespace Qyoto {
         [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallInvokeMethod(InvokeMethodFn callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallConstructList(CreateListFn callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallStringListToQStringList(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallListToPointerList(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallListIntToQListInt(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallListUIntToQListQRgb(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallListWizardButtonToQListWizardButton(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddIntPtrToList(SetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddIntToListInt(AddInt callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr InstallConstructDictionary(ConstructDict callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddObjectObjectToDictionary(InvokeMethodFn callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddIntObjectToDictionary(AddIntObject callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallDictionaryToQHash(DictToHash callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallDictionaryToQMap(DictToMap callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallAddUIntToListUInt(AddUInt callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallQPairGetFirst(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallQPairGetSecond(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallCreateQPair(CreateQPairFn callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallUnboxToStackItem(SetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallBoxFromStackItem(CreateInstanceFn callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallGenericPointerGetIntPtr(GetIntPtr callback);
 
-        [DllImport("qyotoshared", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("qyoto", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void InstallCreateGenericPointer(CreateInstanceFn callback);
 
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl)]
 		public static extern void InstallTryDispose(FromIntPtr callback);
 #endregion
 		

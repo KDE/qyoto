@@ -21,10 +21,10 @@ namespace Qyoto {
 		private static extern void FindQObjectChildren(IntPtr parent, string childTypeName, IntPtr childMetaObject, IntPtr regexp,
 									string childName, AddToListFn addFn);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		private static extern bool ConnectDelegate(IntPtr obj, string signal, Delegate d, IntPtr handle);
 		
-		[DllImport("qyotoshared", CharSet=CharSet.Ansi)]
+		[DllImport("qyoto", CharSet=CharSet.Ansi)]
 		private static extern bool DisconnectDelegate(IntPtr obj, string signal, Delegate d);
 		
 		public static bool Connect(QObject obj, string signal, SlotFunc d) {

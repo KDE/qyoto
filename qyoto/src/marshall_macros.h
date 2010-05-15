@@ -16,6 +16,11 @@
  *                                                                         *
  ***************************************************************************/
 
+#ifndef MARSHALL_MACROS_H
+#define MARSHALL_MACROS_H
+
+#include "callbacks.h"
+
 template <class Item, class ItemList, const char *ItemSTR >
 void marshall_ItemList(Marshall *m) {
 	switch(m->action()) {
@@ -287,3 +292,5 @@ void marshall_QPair(Marshall *m) {
         }  \
         Marshall::HandlerFn marshall_##PairIdent = marshall_QPair<Item1,Item2,PairIdent##Item1STR,PairIdent##Item2STR, \
             PairIdent##Item1CliSTR,PairIdent##Item2CliSTR>;
+
+#endif // MARSHALL_MACROS_H

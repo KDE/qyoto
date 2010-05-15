@@ -32,6 +32,7 @@
 #include <kdebug.h>
 
 #include <qyoto.h>
+#include <callbacks.h>
 
 #include <smoke.h>
 #include <smoke/qtcore_smoke.h>
