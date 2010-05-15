@@ -200,68 +200,45 @@ GetMocArguments(Smoke* smoke, const char * typeName, QList<QByteArray> methodTyp
                         targetType += "&";
                     }
                     typeId = smoke->idType(targetType.constData());
+
+                    if (typeId == 0) {
+                        targetType.prepend("const ");
+                        typeId = smoke->idType(targetType.constData());
+                    }
                 }
 
-                // This shouldn't be necessary because the type of the slot arg should always be in the
-                // smoke module of the slot being invoked. However, that isn't true for a dataUpdated()
-                // slot in a PlasmaScripting.Applet
                 if (typeId == 0) {
-                    QHash<Smoke*, QyotoModule>::const_iterator it;
-                    for (it = qyoto_modules.constBegin(); it != qyoto_modules.constEnd(); ++it) {
-                        smoke = it.key();
-                        targetType = name;
-                        typeId = smoke->idType(targetType.constData());
-                        if (typeId != 0) {
-                            break;
-                        }
-
-                        if (typeId == 0 && !name.contains('*')) {
-                            if (!name.contains("&")) {
-                                targetType += "&";
-                            }
-
-                            typeId = smoke->idType(targetType.constData());
-
-                            if (typeId != 0) {
-                                break;
-                            }
-                        }
-                    }
+                    qFatal("type not found: %s", targetType.constData());
                 }
             } else if (staticType == "bool") {
                 arg->argType = xmoc_bool;
-                // FIXME: this shouldn't be hardcoded to qtcore_Smoke
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "int") {
                 arg->argType = xmoc_int;
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "uint") {
                 arg->argType = xmoc_uint;
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "long") {
                 arg->argType = xmoc_long;
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "ulong") {
                 arg->argType = xmoc_ulong;
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "double") {
                 arg->argType = xmoc_double;
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "char*") {
                 arg->argType = xmoc_charstar;
-                smoke = qtcore_Smoke;
                 typeId = smoke->idType(name.constData());
             } else if (staticType == "QString") {
                 arg->argType = xmoc_QString;
-                name += "*";
-                smoke = qtcore_Smoke;
+                name += "&";
                 typeId = smoke->idType(name.constData());
+                if (typeId == 0) {
+                    name.prepend("const ");
+                    typeId = smoke->idType(name.constData());
+                }
             }
 
             if (typeId == 0) {
