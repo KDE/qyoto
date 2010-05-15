@@ -1,4 +1,4 @@
-project(CSharp)
+project(CSharpBindings)
 
 enable_language(CSharp OPTIONAL)
 
@@ -20,7 +20,7 @@ macro_optional_add_bindings(QT_QTWEBKIT_FOUND "QtWebKit" qtwebkit)
 
 macro_optional_add_bindings(PHONON_FOUND "Phonon" phonon)
 
-macro_optional_add_bindings(QSCINTILLA_FOUND "QScintilla" qsci)
+macro_optional_add_bindings(QSCINTILLA_FOUND "QScintilla" qscintilla)
 
 macro_optional_add_bindings(KDE4_FOUND "Kimono" kimono)
 macro_optional_add_bindings(KDE4_FOUND "KHTML" khtml)
