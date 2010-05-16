@@ -167,7 +167,11 @@ namespace Qyoto {
                 if (type == TypeOf.Invalid) {
                     throw new Exception(string.Format("Type {0} not registered!", valueType.ToString()));
                 } else if (type > TypeOf.LastCoreType) {
-                    GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), (IntPtr) GCHandle.Alloc(value));
+                    IntPtr valueHandle = IntPtr.Zero;
+                    if (value != null) {
+                        valueHandle = (IntPtr) GCHandle.Alloc(value);
+                    }
+                    GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), valueHandle);
                     QVariant v = (QVariant) handle.Target;
                     handle.Free();
                     return v;
