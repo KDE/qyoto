@@ -2,6 +2,7 @@ namespace Qyoto {
 
 	using System;
 
+	[SmokeClass("QDBusVariant")]
 	public class QDBusVariant : QVariant {
 		protected QDBusVariant(System.Type dummy) : base((System.Type) null) {}
 		public QDBusVariant() : base() { }

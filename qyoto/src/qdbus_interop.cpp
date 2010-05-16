@@ -16,6 +16,7 @@
  ***************************************************************************/
 
 #include <QDBusReply>
+#include <QDBusVariant>
 
 #include "qyoto.h"
 #include "callbacks.h"
@@ -38,6 +39,11 @@ qyoto_qdbus_reply_fill(void *msg, void *error, void *variant)
     (*FreeGCHandle)(variant);
 
     qDBusReplyFill(*dbusmsg, *dbuserror, *v);
+
+    // extract the QVariant from the QDBusVariant here
+    if (v->userType() == qMetaTypeId<QDBusVariant>()) {
+        *v = qvariant_cast<QDBusVariant>(*v).variant();
+    }
 }
 
 }
