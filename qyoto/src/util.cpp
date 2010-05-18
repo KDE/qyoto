@@ -206,10 +206,6 @@ GetMocArguments(Smoke* smoke, const char * typeName, QList<QByteArray> methodTyp
                         typeId = smoke->idType(targetType.constData());
                     }
                 }
-
-                if (typeId == 0) {
-                    qFatal("type not found: %s", targetType.constData());
-                }
             } else if (staticType == "bool") {
                 arg->argType = xmoc_bool;
                 typeId = smoke->idType(name.constData());
