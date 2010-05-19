@@ -16,7 +16,7 @@ INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 KDE4_ADD_LIBRARY(kimono SHARED ${SRC_KIMONO})
-TARGET_LINK_LIBRARIES(kimono qyoto
+TARGET_LINK_LIBRARIES(kimono qyoto smokebase
                       smokekdecore smokekdeui smokekio smokekparts smokekfile smokeknewstuff2 smokeknewstuff3 smokekutils
                       ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY}
                       ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS})
@@ -36,7 +36,7 @@ IF (LIBMONO_FOUND)
     INCLUDE_DIRECTORIES(${LIBMONO_INCLUDE_DIRS} ${GLIB2_INCLUDE_DIRS})
     ADD_DEFINITIONS(${GLIB2_CFLAGS} ${MONO_CFLAGS})
     KDE4_ADD_PLUGIN(kimonopluginfactory ${SRC_FACTORY})
-    TARGET_LINK_LIBRARIES(kimonopluginfactory ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS} qyoto smokeqtcore smokeqtgui ${LIBMONO_LIBRARIES})
+    TARGET_LINK_LIBRARIES(kimonopluginfactory ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS} qyoto smokebase smokeqtcore smokeqtgui ${LIBMONO_LIBRARIES})
     INSTALL(TARGETS kimonopluginfactory DESTINATION ${PLUGIN_INSTALL_DIR})
 ELSE (LIBMONO_FOUND)
     MESSAGE(STATUS "Mono not found. kimonopluginfactory will not be compiled.")

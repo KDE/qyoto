@@ -45,7 +45,7 @@ INCLUDE_DIRECTORIES (${QT_INCLUDES} ${CMAKE_SOURCE_DIR}/smoke ${CMAKE_CURRENT_SO
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 
 ADD_LIBRARY (qyoto SHARED ${SRC_QYOTO})
-TARGET_LINK_LIBRARIES (qyoto smokeqtcore smokeqtgui smokeqtxml smokeqtopengl smokeqtsql smokeqtnetwork smokeqtnetwork smokeqtdbus smokeqtsvg
+TARGET_LINK_LIBRARIES (qyoto smokebase smokeqtcore smokeqtgui smokeqtxml smokeqtopengl smokeqtsql smokeqtnetwork smokeqtnetwork smokeqtdbus smokeqtsvg
                        ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTDBUS_LIBRARY})
 set_target_properties(qyoto PROPERTIES VERSION 2.0.0 SOVERSION 2 COMPILE_DEFINITIONS QYOTO_BUILDING)
 
