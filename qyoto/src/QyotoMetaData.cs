@@ -117,14 +117,15 @@ namespace Qyoto {
 			uint propertyCount = (uint) properties.Count;
 			uint propertyOffset = (uint) (propertyCount > 0 ? (10 + (2 * classinfoCount) + (5 * methodCount)) : 0);
 			
-			List<uint> tmp = new List<uint>(new uint[] {
+			List<uint> tmp = new List<uint>()
+			{
 				1,					// revision
 				handler(className),			// classname
 				classinfoCount, classinfoOffset,	// classinfo
 				methodCount, methodOffset,		// methods
 				propertyCount, propertyOffset,		// properties
 				0, 0
-			});
+			};
 			
 			foreach (KeyValuePair<string, string> p in classinfos)
 				AddClassInfo(tmp, p.Key, p.Value);
