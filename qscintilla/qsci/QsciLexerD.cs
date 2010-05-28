@@ -65,7 +65,7 @@ namespace QScintilla {
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-			((GCHandle) stack[0].s_class).Free();
+			((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
 			return (string) returnValue;
 		}
@@ -83,7 +83,7 @@ namespace QScintilla {
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-			((GCHandle) stack[0].s_class).Free();
+			((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
 			return (string) returnValue;
 		}
@@ -101,7 +101,7 @@ namespace QScintilla {
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-			((GCHandle) stack[0].s_class).Free();
+			((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
 			return (string) returnValue;
 		}

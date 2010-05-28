@@ -11,7 +11,7 @@ namespace Qyoto {
 		public override QModelIndex Parent(QModelIndex index) {
 			IntPtr ret = QAbstractItemModelParent((IntPtr) GCHandle.Alloc(this), (IntPtr) GCHandle.Alloc(index));
 			QModelIndex result = (QModelIndex) ((GCHandle) ret).Target;
-			((GCHandle) ret).Free();
+			((GCHandle) ret).SynchronizedFree();
 			return result;
 		}
 

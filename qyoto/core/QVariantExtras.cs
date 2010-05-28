@@ -164,7 +164,7 @@ namespace Qyoto {
                 if (type > TypeOf.LastCoreType) {
                     GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), (IntPtr) GCHandle.Alloc(value));
                     QVariant v = (QVariant) handle.Target;
-                    handle.Free();
+                    handle.SynchronizedFree();
                     return v;
                 } else if (type == TypeOf.Invalid) {
                     throw new Exception("Failed to register type " + typeof(T).ToString());

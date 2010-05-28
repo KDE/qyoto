@@ -37,7 +37,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractItemModelParent((IntPtr) GCHandle.Alloc(this), 
 										(IntPtr) GCHandle.Alloc(child));
 			QModelIndex ix = (QModelIndex) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return ix;
 		}
 		
@@ -45,7 +45,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractItemModelIndex((IntPtr) GCHandle.Alloc(this), row, column, 
 								(IntPtr) GCHandle.Alloc(parent));
 			QModelIndex ix = (QModelIndex) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return ix;
 		}
 		
@@ -53,7 +53,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractProxyModelMapFromSource((IntPtr) GCHandle.Alloc(this), 
 											(IntPtr) GCHandle.Alloc(sourceIndex));
 			QModelIndex ix = (QModelIndex) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return ix;
 		}
 		
@@ -61,7 +61,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractProxyModelMapToSource((IntPtr) GCHandle.Alloc(this), 
 										(IntPtr) GCHandle.Alloc(proxyIndex));
 			QModelIndex ix = (QModelIndex) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return ix;
 		}
 	}

@@ -79,7 +79,7 @@ namespace Qyoto {
 			} else {
 				GCHandle handle = (GCHandle) ret;
 				object target = handle.Target;
-				handle.Free();
+				handle.SynchronizedFree();
 				return (T) target;
 			}
 		}

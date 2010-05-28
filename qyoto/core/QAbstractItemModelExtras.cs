@@ -19,7 +19,7 @@ namespace Qyoto {
 			IntPtr ret = AbstractItemModelCreateIndex((IntPtr) GCHandle.Alloc(this),
 									row, column, (IntPtr) GetIndexHandle(ptr));
 			QModelIndex result = (QModelIndex) ((GCHandle) ret).Target;
-			((GCHandle) ret).Free();
+			((GCHandle) ret).SynchronizedFree();
 			return result;
 		}
 		
@@ -44,7 +44,7 @@ namespace Qyoto {
 				reference.refCount -= 1;
 
 				if (reference.refCount == 0) {
-					reference.handle.Free();
+					reference.handle.SynchronizedFree();
 					handleMap.Remove(o);
 				}
 			}

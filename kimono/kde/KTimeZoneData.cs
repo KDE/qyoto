@@ -196,7 +196,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             secondIndex = stack[2].s_int;
             validTime = stack[3].s_bool;
@@ -214,7 +214,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             secondIndex = stack[2].s_int;
             return stack[0].s_int;

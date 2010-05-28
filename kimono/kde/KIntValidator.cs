@@ -58,7 +58,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             arg2 = stack[2].s_int;
             return (QValidator.State) Enum.ToObject(typeof(QValidator.State), stack[0].s_int);

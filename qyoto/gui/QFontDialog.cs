@@ -110,23 +110,23 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QFont) returnValue;
         }
@@ -153,23 +153,23 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QFont) returnValue;
         }
@@ -191,18 +191,18 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QFont) returnValue;
         }
@@ -219,13 +219,13 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QFont) returnValue;
         }
@@ -242,13 +242,13 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QFont) returnValue;
         }
@@ -261,7 +261,7 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QFont) returnValue;
         }
