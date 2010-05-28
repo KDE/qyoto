@@ -25,6 +25,16 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 	using System.Text;
 
+	public static class GCHandleExtensions {
+		static object HandleLock = new object();
+
+		public static void SynchronizedFree(this GCHandle handle) {
+			lock (HandleLock) {
+				handle.Free();
+			}
+		}
+	}
+
 	public class SmokeMarshallers : object {
 		
 #region C++ functions
