@@ -57,13 +57,13 @@ namespace KParts {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
             retobjid = stack[4].s_ulong;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[5].s_class);
 #else
-            ((GCHandle) stack[5].s_class).Free();
+            ((GCHandle) stack[5].s_class).SynchronizedFree();
 #endif
             return stack[0].s_bool;
         }
@@ -102,18 +102,18 @@ namespace KParts {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             retobjid = stack[5].s_ulong;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_bool;
         }

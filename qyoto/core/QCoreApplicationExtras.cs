@@ -16,7 +16,7 @@ namespace Qyoto {
 				ThreadEvent my = e as ThreadEvent;
 				if (e != null) {
 					my.dele();
-					my.handle.Free();  // free the handle so the event can be collected
+					my.handle.SynchronizedFree();  // free the handle so the event can be collected
 					return true;
 				}
 			}

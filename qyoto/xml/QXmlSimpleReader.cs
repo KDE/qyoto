@@ -28,7 +28,7 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             ok = stack[2].s_bool;
             return stack[0].s_bool;

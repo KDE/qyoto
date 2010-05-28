@@ -23,7 +23,7 @@ namespace Qyoto {
 										(IntPtr) GCHandle.Alloc(option), 
 										(IntPtr) GCHandle.Alloc(index));
 			QSize s = (QSize) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return s;
 		}
 	}

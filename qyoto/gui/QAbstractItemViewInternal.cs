@@ -20,7 +20,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractItemViewIndexAt((IntPtr) GCHandle.Alloc(this), 
 										(IntPtr) GCHandle.Alloc(point));
 			QModelIndex i = (QModelIndex) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return i;
 		}
 		
@@ -32,7 +32,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractItemViewVisualRect((IntPtr) GCHandle.Alloc(this), 
 										(IntPtr) GCHandle.Alloc(index));
 			QRect r = (QRect) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return r;
 		}
 		

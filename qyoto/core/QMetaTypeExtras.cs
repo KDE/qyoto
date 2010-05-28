@@ -46,7 +46,7 @@ namespace Qyoto {
                 ctorHandler = delegate(IntPtr copy) { return CreateObject(className, copy); };
             } else {
                 className = typeof(T).ToString();
-                dtorHandler = delegate(IntPtr obj) { ((GCHandle) obj).Free(); };
+                dtorHandler = delegate(IntPtr obj) { ((GCHandle) obj).SynchronizedFree(); };
                 ctorHandler = delegate(IntPtr copy) {
                     if (copy != IntPtr.Zero) {
                         object o = (T) ((GCHandle) copy).Target;  // create a copy if this is a valuetype

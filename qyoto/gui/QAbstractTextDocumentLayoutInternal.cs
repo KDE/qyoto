@@ -26,14 +26,14 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractTextDocumentLayoutBlockBoundingRect((IntPtr) GCHandle.Alloc(this), 
 												(IntPtr) GCHandle.Alloc(block));
 			QRectF r = (QRectF) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return r;
 		}
 		
 		public override QSizeF DocumentSize () {
 			GCHandle ret = (GCHandle) QAbstractTextDocumentLayoutDocumentSize((IntPtr) GCHandle.Alloc(this));
 			QSizeF s = (QSizeF) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return s;
 		}
 		
@@ -41,7 +41,7 @@ namespace Qyoto {
 			GCHandle ret = (GCHandle) QAbstractTextDocumentLayoutFrameBoundingRect((IntPtr) GCHandle.Alloc(this), 
 												(IntPtr) GCHandle.Alloc(frame));
 			QRectF r = (QRectF) ret.Target;
-			ret.Free();
+			ret.SynchronizedFree();
 			return r;
 		}
 		

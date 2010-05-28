@@ -495,12 +495,12 @@ namespace Kimono {
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-			((GCHandle) stack[1].s_class).Free();
+			((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-			((GCHandle) stack[2].s_class).Free();
+			((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 			arg4 = stack[4].s_bool;
 			return;

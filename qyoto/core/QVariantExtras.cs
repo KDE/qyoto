@@ -173,7 +173,7 @@ namespace Qyoto {
                     }
                     GCHandle handle = (GCHandle) QVariantFromValue(QMetaType.type(typeName), valueHandle);
                     QVariant v = (QVariant) handle.Target;
-                    handle.Free();
+                    handle.SynchronizedFree();
                     return v;
                 }
 

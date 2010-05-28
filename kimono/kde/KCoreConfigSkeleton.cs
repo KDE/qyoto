@@ -315,12 +315,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_int;
                 return;
@@ -343,12 +343,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_int;
                 return;
@@ -425,12 +425,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_long;
                 return;
@@ -453,12 +453,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_long;
                 return;
@@ -566,12 +566,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_int;
                 return;
@@ -595,12 +595,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_int;
                 return;
@@ -653,12 +653,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_int;
                 return;
@@ -681,12 +681,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_int;
                 return;
@@ -761,12 +761,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_ulong;
                 return;
@@ -833,12 +833,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_double;
                 return;
@@ -861,12 +861,12 @@ namespace Kimono {
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[1].s_class);
     #else
-                ((GCHandle) stack[1].s_class).Free();
+                ((GCHandle) stack[1].s_class).SynchronizedFree();
     #endif
     #if DEBUG
                 DebugGCHandle.Free((GCHandle) stack[2].s_class);
     #else
-                ((GCHandle) stack[2].s_class).Free();
+                ((GCHandle) stack[2].s_class).SynchronizedFree();
     #endif
                 reference = stack[3].s_double;
                 return;
@@ -1467,13 +1467,13 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             return (KCoreConfigSkeleton.ItemInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemInt), stack[0].s_int);
         }
@@ -1490,7 +1490,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_int;
             return (KCoreConfigSkeleton.ItemInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemInt), stack[0].s_int);
@@ -1507,7 +1507,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_int;
             return (KCoreConfigSkeleton.ItemInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemInt), stack[0].s_int);
@@ -1541,13 +1541,13 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             return (KCoreConfigSkeleton.ItemUInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemUInt), stack[0].s_int);
         }
@@ -1564,7 +1564,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_int;
             return (KCoreConfigSkeleton.ItemUInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemUInt), stack[0].s_int);
@@ -1581,7 +1581,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_int;
             return (KCoreConfigSkeleton.ItemUInt) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemUInt), stack[0].s_int);
@@ -1615,13 +1615,13 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_long;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             return (KCoreConfigSkeleton.ItemLongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemLongLong), stack[0].s_int);
         }
@@ -1638,7 +1638,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_long;
             return (KCoreConfigSkeleton.ItemLongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemLongLong), stack[0].s_int);
@@ -1655,7 +1655,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_long;
             return (KCoreConfigSkeleton.ItemLongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemLongLong), stack[0].s_int);
@@ -1683,7 +1683,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_ulong;
             return (KCoreConfigSkeleton.ItemULongLong) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemULongLong), stack[0].s_int);
@@ -1717,13 +1717,13 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_double;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             return (KCoreConfigSkeleton.ItemDouble) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemDouble), stack[0].s_int);
         }
@@ -1740,7 +1740,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_double;
             return (KCoreConfigSkeleton.ItemDouble) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemDouble), stack[0].s_int);
@@ -1757,7 +1757,7 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
             reference = stack[2].s_double;
             return (KCoreConfigSkeleton.ItemDouble) Enum.ToObject(typeof(KCoreConfigSkeleton.ItemDouble), stack[0].s_int);

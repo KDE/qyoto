@@ -217,28 +217,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -274,28 +274,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -326,22 +326,22 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
             return stack[0].s_int;
@@ -408,28 +408,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -465,28 +465,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -517,22 +517,22 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
             return stack[0].s_int;
@@ -602,28 +602,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -659,28 +659,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -711,22 +711,22 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
             return stack[0].s_int;
@@ -792,28 +792,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -849,28 +849,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -901,22 +901,22 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
             return stack[0].s_int;
@@ -986,28 +986,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -1043,28 +1043,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -1095,22 +1095,22 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
             return stack[0].s_int;
@@ -1177,28 +1177,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -1234,28 +1234,28 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[6].s_class);
 #else
-            ((GCHandle) stack[6].s_class).Free();
+            ((GCHandle) stack[6].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -1286,22 +1286,22 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             pid = stack[5].s_int;
             return stack[0].s_int;
@@ -1361,23 +1361,23 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             pid = stack[4].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[5].s_class);
 #else
-            ((GCHandle) stack[5].s_class).Free();
+            ((GCHandle) stack[5].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -1403,17 +1403,17 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             pid = stack[4].s_int;
             return stack[0].s_int;
@@ -1470,23 +1470,23 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             pid = stack[4].s_int;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[5].s_class);
 #else
-            ((GCHandle) stack[5].s_class).Free();
+            ((GCHandle) stack[5].s_class).SynchronizedFree();
 #endif
             return stack[0].s_int;
         }
@@ -1512,17 +1512,17 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             pid = stack[4].s_int;
             return stack[0].s_int;

@@ -76,7 +76,7 @@ namespace Kimono {
 				SmokeMarshallers.FromIntPtr fn = delegate(IntPtr ptr) {
 					GCHandle handle = (GCHandle) ptr;
 					ret.Add((string) handle.Target);
-					handle.Free();
+					handle.SynchronizedFree();
 				};
 				KUrlListMimeDataTypes(fn);
 				return ret;
@@ -91,7 +91,7 @@ namespace Kimono {
 				SmokeMarshallers.FromIntPtr addfn = delegate(IntPtr ptr) {
 					GCHandle handle = (GCHandle) ptr;
 					list.Add((KUrl) handle.Target);
-					handle.Free();
+					handle.SynchronizedFree();
 				};
 				IDictionaryEnumerator e = null;
 				if (metaData != null) e = metaData.GetEnumerator();

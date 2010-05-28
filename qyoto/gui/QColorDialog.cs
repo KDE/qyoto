@@ -116,7 +116,7 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             return stack[0].s_uint;
         }

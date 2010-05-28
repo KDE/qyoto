@@ -202,7 +202,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i+1].s_class);
 #else
-							((GCHandle) stackPtr[i+1].s_class).Free();
+							((GCHandle) stackPtr[i+1].s_class).SynchronizedFree();
 #endif
 						}
 					} else {
@@ -211,7 +211,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i+1].s_class);
 #else
-							((GCHandle) stackPtr[i+1].s_class).Free();
+							((GCHandle) stackPtr[i+1].s_class).SynchronizedFree();
 #endif						
 						}
 					}
@@ -317,7 +317,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
 #else
-							((GCHandle) stackPtr[i].s_class).Free();
+							((GCHandle) stackPtr[i].s_class).SynchronizedFree();
 #endif
 						}
 					} else {
@@ -326,7 +326,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
 #else
-							((GCHandle) stackPtr[i].s_class).Free();
+							((GCHandle) stackPtr[i].s_class).SynchronizedFree();
 #endif
 						}
 					}
@@ -421,7 +421,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
 #else
-							((GCHandle) stackPtr[i].s_class).Free();
+							((GCHandle) stackPtr[i].s_class).SynchronizedFree();
 #endif
 						}
 					}
@@ -529,7 +529,7 @@ namespace Qyoto {
 #if DEBUG
 						DebugGCHandle.Free(instanceHandle);
 #else
-						instanceHandle.Free();
+						instanceHandle.SynchronizedFree();
 #endif
 					}
 				}
@@ -627,7 +627,7 @@ namespace Qyoto {
 #if DEBUG
 						DebugGCHandle.Free(instanceHandle);
 #else
-						instanceHandle.Free();
+						instanceHandle.SynchronizedFree();
 #endif
 					}
 					
@@ -669,7 +669,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-							((GCHandle) stack[0].s_class).Free();
+							((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
 						}
 					}
@@ -815,7 +815,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-							((GCHandle) stack[0].s_class).Free();
+							((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
 
 						}
@@ -825,7 +825,7 @@ namespace Qyoto {
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-							((GCHandle) stack[0].s_class).Free();
+							((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
 						}
 					}

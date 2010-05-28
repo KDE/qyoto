@@ -853,19 +853,19 @@ namespace Kimono {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
             isParent = stack[3].s_bool;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (string) returnValue;
         }

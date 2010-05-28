@@ -927,7 +927,7 @@ namespace KIO {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             pCmd = stack[4].s_int;
             return stack[0].s_int;

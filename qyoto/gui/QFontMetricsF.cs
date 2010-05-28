@@ -100,19 +100,19 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             tabarray = stack[5].s_int;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QRectF) returnValue;
         }
@@ -136,14 +136,14 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
             tabarray = stack[4].s_int;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (QSizeF) returnValue;
         }

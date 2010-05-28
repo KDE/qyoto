@@ -199,29 +199,29 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[5].s_class);
 #else
-            ((GCHandle) stack[5].s_class).Free();
+            ((GCHandle) stack[5].s_class).SynchronizedFree();
 #endif
             ok = stack[6].s_bool;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (string) returnValue;
         }
@@ -253,29 +253,29 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[5].s_class);
 #else
-            ((GCHandle) stack[5].s_class).Free();
+            ((GCHandle) stack[5].s_class).SynchronizedFree();
 #endif
             ok = stack[6].s_bool;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (string) returnValue;
         }
@@ -315,17 +315,17 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             ok = stack[8].s_bool;
             return stack[0].s_int;
@@ -356,17 +356,17 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             ok = stack[8].s_bool;
             return stack[0].s_int;
@@ -413,17 +413,17 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             ok = stack[8].s_bool;
             return stack[0].s_double;
@@ -454,17 +454,17 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             ok = stack[8].s_bool;
             return stack[0].s_double;
@@ -514,29 +514,29 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             ok = stack[7].s_bool;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (string) returnValue;
         }
@@ -569,29 +569,29 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[4].s_class);
 #else
-            ((GCHandle) stack[4].s_class).Free();
+            ((GCHandle) stack[4].s_class).SynchronizedFree();
 #endif
             ok = stack[7].s_bool;
             object returnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-            ((GCHandle) stack[0].s_class).Free();
+            ((GCHandle) stack[0].s_class).SynchronizedFree();
 #endif
             return (string) returnValue;
         }
@@ -631,17 +631,17 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             ok = stack[8].s_bool;
             return stack[0].s_int;
@@ -672,17 +672,17 @@ namespace Qyoto {
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[1].s_class);
 #else
-            ((GCHandle) stack[1].s_class).Free();
+            ((GCHandle) stack[1].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[2].s_class);
 #else
-            ((GCHandle) stack[2].s_class).Free();
+            ((GCHandle) stack[2].s_class).SynchronizedFree();
 #endif
 #if DEBUG
             DebugGCHandle.Free((GCHandle) stack[3].s_class);
 #else
-            ((GCHandle) stack[3].s_class).Free();
+            ((GCHandle) stack[3].s_class).SynchronizedFree();
 #endif
             ok = stack[8].s_bool;
             return stack[0].s_int;

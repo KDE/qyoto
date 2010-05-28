@@ -348,7 +348,7 @@ namespace Qyoto {
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) handle);
 #else
-			((GCHandle) handle).Free();
+			((GCHandle) handle).SynchronizedFree();
 #endif
 		}
 		
