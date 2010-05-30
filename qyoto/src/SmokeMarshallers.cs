@@ -1072,10 +1072,17 @@ namespace Qyoto {
 		
 		public static void TryDispose(IntPtr obj) {
 			object o = ((GCHandle) obj).Target;
+			if (o == null) {
+				return;
+			}
+
 			Type t = o.GetType();
 			MethodInfo mi = t.GetMethod("Dispose");
-			if (mi == null) return;
-			if (IsSmokeClass(mi.DeclaringType)) return;
+
+			if (mi == null || IsSmokeClass(mi.DeclaringType)) {
+				return;
+			}
+
 			((IDisposable) o).Dispose();
 		}
 #endregion
