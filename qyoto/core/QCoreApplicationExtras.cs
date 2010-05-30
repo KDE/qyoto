@@ -30,6 +30,7 @@ namespace Qyoto {
 		
 		public ThreadEvent(EventFunc d) : base(QEvent.TypeOf.User) {
 			dele = d;
+			GC.SuppressFinalize(this);    // once the event has entered the event loop, Qt will care for it
 		}
 	}
 
