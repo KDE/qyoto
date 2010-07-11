@@ -163,13 +163,13 @@ namespace Qyoto {
             return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), fileName);
         }
         public bool LoadFromData(Pointer<byte> buf, uint len, string format, uint flags) {
-            return (bool) interceptor.Invoke("loadFromData$$$$", "loadFromData(const uchar*, uint, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(Pointer<byte>), buf, typeof(uint), len, typeof(string), format, typeof(uint), flags);
+            return (bool) interceptor.Invoke("loadFromData$$$$", "loadFromData(const unsigned char*, uint, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(Pointer<byte>), buf, typeof(uint), len, typeof(string), format, typeof(uint), flags);
         }
         public bool LoadFromData(Pointer<byte> buf, uint len, string format) {
-            return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, uint, const char*)", typeof(bool), typeof(Pointer<byte>), buf, typeof(uint), len, typeof(string), format);
+            return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const unsigned char*, uint, const char*)", typeof(bool), typeof(Pointer<byte>), buf, typeof(uint), len, typeof(string), format);
         }
         public bool LoadFromData(Pointer<byte> buf, uint len) {
-            return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, uint)", typeof(bool), typeof(Pointer<byte>), buf, typeof(uint), len);
+            return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const unsigned char*, uint)", typeof(bool), typeof(Pointer<byte>), buf, typeof(uint), len);
         }
         public bool LoadFromData(QByteArray data, string format, uint flags) {
             return (bool) interceptor.Invoke("loadFromData#$$", "loadFromData(const QByteArray&, const char*, Qt::ImageConversionFlags)", typeof(bool), typeof(QByteArray), data, typeof(string), format, typeof(uint), flags);

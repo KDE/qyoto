@@ -54,11 +54,11 @@ namespace Qyoto {
         }
         public QImage(Pointer<byte> data, int width, int height, QImage.Format format) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QImage$$$$", "QImage(uchar*, int, int, QImage::Format)", typeof(void), typeof(Pointer<byte>), data, typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
+            interceptor.Invoke("QImage$$$$", "QImage(unsigned char*, int, int, QImage::Format)", typeof(void), typeof(Pointer<byte>), data, typeof(int), width, typeof(int), height, typeof(QImage.Format), format);
         }
         public QImage(Pointer<byte> data, int width, int height, int bytesPerLine, QImage.Format format) : this((Type) null) {
             CreateProxy();
-            interceptor.Invoke("QImage$$$$$", "QImage(uchar*, int, int, int, QImage::Format)", typeof(void), typeof(Pointer<byte>), data, typeof(int), width, typeof(int), height, typeof(int), bytesPerLine, typeof(QImage.Format), format);
+            interceptor.Invoke("QImage$$$$$", "QImage(unsigned char*, int, int, int, QImage::Format)", typeof(void), typeof(Pointer<byte>), data, typeof(int), width, typeof(int), height, typeof(int), bytesPerLine, typeof(QImage.Format), format);
         }
         public QImage(string fileName, string format) : this((Type) null) {
             CreateProxy();
@@ -291,10 +291,10 @@ namespace Qyoto {
             return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), fileName);
         }
         public bool LoadFromData(Pointer<byte> buf, int len, string format) {
-            return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const uchar*, int, const char*)", typeof(bool), typeof(Pointer<byte>), buf, typeof(int), len, typeof(string), format);
+            return (bool) interceptor.Invoke("loadFromData$$$", "loadFromData(const unsigned char*, int, const char*)", typeof(bool), typeof(Pointer<byte>), buf, typeof(int), len, typeof(string), format);
         }
         public bool LoadFromData(Pointer<byte> buf, int len) {
-            return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const uchar*, int)", typeof(bool), typeof(Pointer<byte>), buf, typeof(int), len);
+            return (bool) interceptor.Invoke("loadFromData$$", "loadFromData(const unsigned char*, int)", typeof(bool), typeof(Pointer<byte>), buf, typeof(int), len);
         }
         public bool LoadFromData(QByteArray data, string aformat) {
             return (bool) interceptor.Invoke("loadFromData#$", "loadFromData(const QByteArray&, const char*)", typeof(bool), typeof(QByteArray), data, typeof(string), aformat);
@@ -392,10 +392,10 @@ namespace Qyoto {
             return (QTransform) staticInterceptor.Invoke("trueMatrix#$$", "trueMatrix(const QTransform&, int, int)", typeof(QTransform), typeof(QTransform), arg1, typeof(int), w, typeof(int), h);
         }
         public static QImage FromData(Pointer<byte> data, int size, string format) {
-            return (QImage) staticInterceptor.Invoke("fromData$$$", "fromData(const uchar*, int, const char*)", typeof(QImage), typeof(Pointer<byte>), data, typeof(int), size, typeof(string), format);
+            return (QImage) staticInterceptor.Invoke("fromData$$$", "fromData(const unsigned char*, int, const char*)", typeof(QImage), typeof(Pointer<byte>), data, typeof(int), size, typeof(string), format);
         }
         public static QImage FromData(Pointer<byte> data, int size) {
-            return (QImage) staticInterceptor.Invoke("fromData$$", "fromData(const uchar*, int)", typeof(QImage), typeof(Pointer<byte>), data, typeof(int), size);
+            return (QImage) staticInterceptor.Invoke("fromData$$", "fromData(const unsigned char*, int)", typeof(QImage), typeof(Pointer<byte>), data, typeof(int), size);
         }
         public static QImage FromData(QByteArray data, string format) {
             return (QImage) staticInterceptor.Invoke("fromData#$", "fromData(const QByteArray&, const char*)", typeof(QImage), typeof(QByteArray), data, typeof(string), format);

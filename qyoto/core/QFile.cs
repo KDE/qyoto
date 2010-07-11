@@ -146,7 +146,7 @@ namespace Qyoto {
             return (Pointer<byte>) interceptor.Invoke("map$$", "map(qint64, qint64)", typeof(Pointer<byte>), typeof(long), offset, typeof(long), size);
         }
         public bool Unmap(Pointer<byte> address) {
-            return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(Pointer<byte>), address);
+            return (bool) interceptor.Invoke("unmap$", "unmap(unsigned char*)", typeof(bool), typeof(Pointer<byte>), address);
         }
         [SmokeMethod("fileEngine() const")]
         public virtual QAbstractFileEngine FileEngine() {

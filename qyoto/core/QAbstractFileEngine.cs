@@ -56,7 +56,7 @@ namespace Qyoto {
             }
             public Pointer<byte> Address {
                 get { return (Pointer<byte>) interceptor.Invoke("address", "address()", typeof(Pointer<byte>)); }
-                set { interceptor.Invoke("setAddress$", "setAddress(uchar*)", typeof(void), typeof(Pointer<byte>), value); }
+                set { interceptor.Invoke("setAddress$", "setAddress(unsigned char*)", typeof(void), typeof(Pointer<byte>), value); }
             }
             public MapExtensionReturn() : this((Type) null) {
                 CreateProxy();
@@ -77,7 +77,7 @@ namespace Qyoto {
             }
             public Pointer<byte> Address {
                 get { return (Pointer<byte>) interceptor.Invoke("address", "address()", typeof(Pointer<byte>)); }
-                set { interceptor.Invoke("setAddress$", "setAddress(uchar*)", typeof(void), typeof(Pointer<byte>), value); }
+                set { interceptor.Invoke("setAddress$", "setAddress(unsigned char*)", typeof(void), typeof(Pointer<byte>), value); }
             }
             public UnMapExtensionOption() : this((Type) null) {
                 CreateProxy();
@@ -264,7 +264,7 @@ namespace Qyoto {
             return (Pointer<byte>) interceptor.Invoke("map$$$", "map(qint64, qint64, QFile::MemoryMapFlags)", typeof(Pointer<byte>), typeof(long), offset, typeof(long), size, typeof(QFile.MemoryMapFlags), flags);
         }
         public bool Unmap(Pointer<byte> ptr) {
-            return (bool) interceptor.Invoke("unmap$", "unmap(uchar*)", typeof(bool), typeof(Pointer<byte>), ptr);
+            return (bool) interceptor.Invoke("unmap$", "unmap(unsigned char*)", typeof(bool), typeof(Pointer<byte>), ptr);
         }
         [SmokeMethod("beginEntryList(QDir::Filters, const QStringList&)")]
         public virtual QAbstractFileEngineIterator BeginEntryList(uint filters, List<string> filterNames) {

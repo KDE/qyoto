@@ -47,7 +47,7 @@ namespace Qyoto {
             return (bool) interceptor.Invoke("load$", "load(const QString&)", typeof(bool), typeof(string), filename);
         }
         public bool Load(Pointer<byte> data, int len) {
-            return (bool) interceptor.Invoke("load$$", "load(const uchar*, int)", typeof(bool), typeof(Pointer<byte>), data, typeof(int), len);
+            return (bool) interceptor.Invoke("load$$", "load(const unsigned char*, int)", typeof(bool), typeof(Pointer<byte>), data, typeof(int), len);
         }
         ~QTranslator() {
             interceptor.Invoke("~QTranslator", "~QTranslator()", typeof(void));
