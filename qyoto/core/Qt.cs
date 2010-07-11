@@ -1163,13 +1163,13 @@ namespace Qyoto {
             return (QDataStream) staticInterceptor.Invoke("operator>>##", "operator>>(QDataStream&, QByteArray&)", typeof(QDataStream), typeof(QDataStream), arg1, typeof(QByteArray), arg2);
         }
         public static QByteArray QCompress(Pointer<byte> data, int nbytes, int compressionLevel) {
-            return (QByteArray) staticInterceptor.Invoke("qCompress$$$", "qCompress(const uchar*, int, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes, typeof(int), compressionLevel);
+            return (QByteArray) staticInterceptor.Invoke("qCompress$$$", "qCompress(const unsigned char*, int, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes, typeof(int), compressionLevel);
         }
         public static QByteArray QCompress(Pointer<byte> data, int nbytes) {
-            return (QByteArray) staticInterceptor.Invoke("qCompress$$", "qCompress(const uchar*, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes);
+            return (QByteArray) staticInterceptor.Invoke("qCompress$$", "qCompress(const unsigned char*, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes);
         }
         public static QByteArray QUncompress(Pointer<byte> data, int nbytes) {
-            return (QByteArray) staticInterceptor.Invoke("qUncompress$$", "qUncompress(const uchar*, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes);
+            return (QByteArray) staticInterceptor.Invoke("qUncompress$$", "qUncompress(const unsigned char*, int)", typeof(QByteArray), typeof(Pointer<byte>), data, typeof(int), nbytes);
         }
         public static QByteArray QCompress(QByteArray data, int compressionLevel) {
             return (QByteArray) staticInterceptor.Invoke("qCompress#$", "qCompress(const QByteArray&, int)", typeof(QByteArray), typeof(QByteArray), data, typeof(int), compressionLevel);
