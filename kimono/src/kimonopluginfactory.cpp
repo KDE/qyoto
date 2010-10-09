@@ -42,6 +42,7 @@
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/debug-helpers.h>
 #include <mono/metadata/mono-config.h>
+#include <glib.h>
 
 #include <stdlib.h>
 #include <stdio.h>
