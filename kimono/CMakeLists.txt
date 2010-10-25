@@ -22,7 +22,7 @@ TARGET_LINK_LIBRARIES(kimono qyoto smokebase
                       ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS})
 
 # write FindPackage modules for these
-pkg_search_module(LIBMONO mono)
+pkg_search_module(LIBMONO mono-2 mono)
 pkg_search_module(GLIB2 glib-2.0)
 
 macro_log_feature(LIBMONO_FOUND "libmono" "Mono library" "http://www.mono-project.com" FALSE "" "Required to compile kimonopluginfactory")
