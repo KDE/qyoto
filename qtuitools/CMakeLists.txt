@@ -10,7 +10,7 @@ SET(SRC_CS src/QtUiTools.cs
 	src/AssemblyInfo.cs
 	qtuitools/*.cs)
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/generator 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(qtuitools-sharp SHARED ${SRC_CPP})

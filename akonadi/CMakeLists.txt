@@ -14,7 +14,7 @@ SET(SRC_CS src/Akonadi.cs
 	src/AssemblyInfo.cs
 	akonadi/*.cs)
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/generator 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
 include_directories( ${KDE4_INCLUDE_DIR}/akonadi )
 

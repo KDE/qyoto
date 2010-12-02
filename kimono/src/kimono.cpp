@@ -26,15 +26,15 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/qtcore_smoke.h>
-#include <smoke/kdecore_smoke.h>
-#include <smoke/kdeui_smoke.h>
-#include <smoke/kparts_smoke.h>
-#include <smoke/kio_smoke.h>
-#include <smoke/knewstuff2_smoke.h>
-#include <smoke/knewstuff3_smoke.h>
-#include <smoke/kfile_smoke.h>
-#include <smoke/kutils_smoke.h>
+#include <smoke/qt/qtcore_smoke.h>
+#include <smoke/kde/kdecore_smoke.h>
+#include <smoke/kde/kdeui_smoke.h>
+#include <smoke/kde/kparts_smoke.h>
+#include <smoke/kde/kio_smoke.h>
+#include <smoke/kde/knewstuff2_smoke.h>
+#include <smoke/kde/knewstuff3_smoke.h>
+#include <smoke/kde/kfile_smoke.h>
+#include <smoke/kde/kutils_smoke.h>
 
 #include <QMimeData>
 #include <QStringList>

@@ -21,7 +21,7 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/qtwebkit_smoke.h>
+#include <smoke/qt/qtwebkit_smoke.h>
 
 static QHash<int, char*> classNames;
 

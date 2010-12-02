@@ -35,8 +35,8 @@
 #include <callbacks.h>
 
 #include <smoke.h>
-#include <smoke/qtcore_smoke.h>
-#include <smoke/qtgui_smoke.h>
+#include <smoke/qt/qtcore_smoke.h>
+#include <smoke/qt/qtgui_smoke.h>
 
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>

@@ -19,7 +19,7 @@ SET(SRC_PLASMASCRIPTENGINEKIMONO
     src/PlasmaScriptengineKimono_DataEngine.cs
     src/PlasmaScriptengineKimono_Compiler.cs)
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/smoke 
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/generator 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${CMAKE_CURRENT_SOURCE_DIR}/../kimono/src ${QT_INCLUDES})
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 ADD_LIBRARY(plasma-sharp SHARED ${SRC_CPP})

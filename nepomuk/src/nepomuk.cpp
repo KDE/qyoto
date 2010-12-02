@@ -21,7 +21,7 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/nepomuk_smoke.h>
+#include <smoke/kde/nepomuk_smoke.h>
 
 static QHash<int, char*> classNames;
 

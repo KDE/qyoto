@@ -22,7 +22,7 @@
 #include "delegateinvocation.h"
 #include "invokeslot.h"
 
-#include <smoke/qtcore_smoke.h>
+#include <smoke/qt/qtcore_smoke.h>
 
 #include <stdio.h>
 

@@ -18,7 +18,7 @@
 #include "qyoto.h"
 #include "callbacks.h"
 
-#include <smoke/qtcore_smoke.h>
+#include <smoke/qt/qtcore_smoke.h>
 
 #include <QMetaType>
 #include <QVariant>
