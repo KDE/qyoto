@@ -25,7 +25,7 @@
 #include <qyotosmokebinding.h>
 
 #include <smoke.h>
-#include <smoke/soprano_smoke.h>
+#include <smoke/kde/soprano_smoke.h>
 
 QHash<int, char*> classNames;
 
