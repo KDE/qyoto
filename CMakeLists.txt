@@ -4,6 +4,27 @@ enable_language(CSharp OPTIONAL)
 
 macro_log_feature(CMAKE_CSharp_COMPILER_LOADED "C# compiler" "Mono or the .NET framework" "http://www.mono-project.com" FALSE "" "Required to compile the C# bindings")
 
+macro_optional_find_package(QScintilla)
+macro_log_feature(QSCINTILLA_FOUND "QScintilla2" "QScintilla2 libraries" "http://www.riverbankcomputing.co.uk/software/qscintilla/intro" FALSE "" "Needed to compile QScintilla2 bindings")
+
+macro_optional_find_package(QImageBlitz)
+macro_log_feature(QIMAGEBLITZ_FOUND "QImageBlitz" "QImageBlitz library" "http://www.kde.org" FALSE "" "Needed to compile QImageBlitz bindings")
+
+macro_optional_find_package(Phonon)
+macro_log_feature(PHONON_FOUND "Phonon" "Phonon multimedia framework" "http://www.kde.org" FALSE "" "Needed to compile Phonon bindings")
+
+macro_optional_find_package(Soprano)
+macro_log_feature(SOPRANO_FOUND "Soprano" "Soprano libraries" "http://soprano.sourceforge.net" FALSE "" "Needed to compile Soprano bindings")
+
+macro_optional_find_package(Nepomuk)
+macro_log_feature(NEPOMUK_FOUND "Nepomuk" "Nepomuk libraries" "http://www.kde.org" FALSE "" "Needed to compile Nepomuk bindings")
+
+macro_optional_find_package(KdepimLibs)
+macro_log_feature(KDEPIMLIBS_FOUND "kdepimlibs" "KDE PIM libraries" "http://www.kde.org" FALSE "" "Needed to compile Akonadi bindings")
+
+macro_optional_find_package(Akonadi)
+macro_log_feature(AKONADI_FOUND "Akonadi" "Akonadi libraries" "http://www.kde.org" FALSE "" "Needed to compile Akonadi bindings")
+
 if (NOT CMAKE_CSharp_COMPILER_LOADED)
     return()
 endif (NOT CMAKE_CSharp_COMPILER_LOADED)
