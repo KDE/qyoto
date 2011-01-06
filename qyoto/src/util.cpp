@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <smoke/qt/qtcore_smoke.h>
+#include <qtcore_smoke.h>
 
 #ifdef DEBUG
 int do_debug = qtdb_gc;
