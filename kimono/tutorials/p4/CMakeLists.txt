@@ -1,3 +1,0 @@
-SET(SRC_P4 ${CMAKE_CURRENT_SOURCE_DIR}/p4.cs)
-CSHARP_ADD_EXECUTABLE(p4 ${SRC_P4} REFERENCES qt-dotnet kde-dotnet khtml-dll COMPILE_FLAGS /warn:0)
-ADD_DEPENDENCIES(p4 khtml-dll)
