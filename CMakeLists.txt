@@ -3,7 +3,7 @@ PROJECT (qyoto)
 cmake_minimum_required(VERSION 2.6)
 
 find_package(Qt4 REQUIRED)
-find_package(Smoke COMPONENTS QtCore QtGui QtXml QtOpenGl QtSql QtNetwork QtDbus QtSvg QtScript QSci QImageBlitz Phonon)
+find_package(Smoke COMPONENTS QtCore QtGui QtXml QtOpenGl QtSql QtNetwork QtDbus QtSvg QtScript QtTest QSci QImageBlitz Phonon)
 include_directories(${SMOKE_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_CURRENT_BUILD_DIR}/cmake ${SMOKE_CMAKE_MODULE_DIR})
 include(MacroOptionalFindPackage)
