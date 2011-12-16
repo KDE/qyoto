@@ -13,7 +13,9 @@
  *                                                                         *
  ***************************************************************************/
 
+#ifdef USING_QTDBUS
 #include <QtDBus>
+#endif // USING_QTDBUS
 
 #include "slotreturnvalue.h"
 #include "qyoto.h"
@@ -31,9 +33,12 @@ SlotReturnValue::SlotReturnValue(void ** o, Smoke::StackItem * result, QList<Moc
 	QByteArray t(type().name());
 	t.replace("const ", "");
 	t.replace("&", "");
+	#ifdef USING_QTDBUS
 	if (t == "QDBusVariant") {
 		*reinterpret_cast<QDBusVariant*>(o[0]) = *(QDBusVariant*) _stack[0].s_class;
-	} else {
+	} else
+	#endif // USING_QTDBUS
+	{
 		// Save any address in zeroth element of the arrary of 'void*'s passed to 
 		// qt_metacall()
 		void * ptr = o[0];

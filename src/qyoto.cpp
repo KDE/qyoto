@@ -65,12 +65,14 @@
 #include <qtopengl_smoke.h>
 #include <qtnetwork_smoke.h>
 #include <qtsvg_smoke.h>
+#ifdef USING_QTDBUS
 #include <qtdbus_smoke.h>
+#endif // USING_QTDBUS
 
 extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 
-extern Q_DECL_IMPORT TypeHandler Qyoto_handlers[];
+extern Q_DECL_EXPORT TypeHandler Qyoto_handlers[];
 
 extern bool IsContainedInstanceQt(smokeqyoto_object *o);
 extern const char * qyoto_resolve_classname_qt(smokeqyoto_object * o);
@@ -376,7 +378,9 @@ Init_qyoto()
     init_qtopengl_Smoke();
     init_qtnetwork_Smoke();
     init_qtsvg_Smoke();
+     #ifdef USING_QTDBUS
     init_qtdbus_Smoke();
+     #endif // USING_QTDBUS
 
     qyoto_install_handlers(Qyoto_handlers);
     QByteArray prefix("Qyoto.");
@@ -388,7 +392,9 @@ Init_qyoto()
     INIT_BINDING(qtopengl)
     INIT_BINDING(qtnetwork)
     INIT_BINDING(qtsvg)
+     #ifdef USING_QTDBUS
     INIT_BINDING(qtdbus)
+     #endif // USING_QTDBUS
 
 #if QT_VERSION >= 0x40300
     QInternal::registerCallback(QInternal::EventNotifyCallback, qyoto_event_notify);

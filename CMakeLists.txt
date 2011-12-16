@@ -10,7 +10,10 @@ include(MacroOptionalFindPackage)
 include(MacroOptionalAddBindings)
 include(MacroLogFeature)
 enable_language(CSharp OPTIONAL)
-set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/)
+
+if (NOT LIB_INSTALL_DIR)
+    set (LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+endif (NOT LIB_INSTALL_DIR)
 
 set(KEYFILE ${CMAKE_CURRENT_SOURCE_DIR}/key.snk)
 install(FILES ${KEYFILE} DESTINATION share/qyoto )
@@ -26,7 +29,6 @@ SET(SRC_QYOTO
     src/methodcall.cpp
     src/methodreturnvalue.cpp
     src/modelfunctions.cpp
-    src/qdbus_interop.cpp
     src/qmetatype_interop.cpp
     src/qobject_interop.cpp
     src/qvariant_interop.cpp
@@ -38,8 +40,12 @@ SET(SRC_QYOTO
     src/virtualmethodcall.cpp
     src/virtualmethodreturnvalue.cpp
 )
+if (SMOKE_QTDBUS_LIBRARY)
+    SET(SRC_QYOTO ${SRC_QYOTO} src/qdbus_interop.cpp)
+    add_definitions(-DUSING_QTDBUS)
+endif (SMOKE_QTDBUS_LIBRARY)
 
-SET(SRC_CS_QYOTO src/SmokeInvocation.cs
+SET(SRC_CS_QYOTO_IN src/SmokeInvocation.cs
     src/SmokeMarshallers.cs
     src/Qyoto.cs
     src/QyotoMetaData.cs
@@ -53,6 +59,17 @@ SET(SRC_CS_QYOTO src/SmokeInvocation.cs
     opengl/*.cs
     qdbus/*.cs)
 
+if (WIN32)
+    # Microsoft's .NET compiler needs backslashes.  Two are needed
+    # because CMake uses backslash as an escape character.
+    foreach (arg ${SRC_CS_QYOTO_IN})
+        string (REPLACE "/" "\\\\" arg ${arg})
+        SET(SRC_CS_QYOTO ${SRC_CS_QYOTO} ${arg})
+    endforeach (arg ${SRC_CS_QYOTO_IN})
+else (WIN32)
+    SET (SRC_CS_QYOTO ${SRC_CS_QYOTO_IN})
+endif (WIN32)
+
 LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
 
 ADD_LIBRARY (qyoto SHARED ${SRC_QYOTO})
@@ -63,9 +80,14 @@ TARGET_LINK_LIBRARIES (qyoto ${SMOKE_BASE_LIBRARY}
         ${SMOKE_QTOPENGL_LIBRARY}
         ${SMOKE_QTSQL_LIBRARY}
         ${SMOKE_QTNETWORK_LIBRARY}
-        ${SMOKE_QTDBUS_LIBRARY}
         ${SMOKE_QTSVG_LIBRARY}
-        ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTDBUS_LIBRARY})
+        ${QT_QTCORE_LIBRARY}
+        ${QT_QTGUI_LIBRARY}
+        ${QT_QTNETWORK_LIBRARY})
+if (SMOKE_QTDBUS_LIBRARY)
+    TARGET_LINK_LIBRARIES (qyoto ${SMOKE_QTDBUS_LIBRARY}
+        ${QT_QTDBUS_LIBRARY})
+endif (SMOKE_QTDBUS_LIBRARY)
 set_target_properties(qyoto PROPERTIES VERSION 2.0.0 SOVERSION 2 COMPILE_DEFINITIONS QYOTO_BUILDING)
 
 
@@ -78,10 +100,17 @@ GET_LIBRARY_OUTPUT_DIR(library_target_dir)
 FILE(WRITE ${library_target_dir}/qt-dotnet.dll.config "<configuration><dllmap dll=\"qyoto\" target=\"libqyoto.so.2\"/></configuration>")
 
 install_assembly(qt-dotnet DESTINATION lib PACKAGE qyoto)
-INSTALL(TARGETS qyoto EXPORT QyotoExport LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+INSTALL(TARGETS qyoto EXPORT QyotoExport
+	LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+    ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+    RUNTIME DESTINATION bin)
+if (WIN32)
+    # Get rid of the "lib" prefix on archives/DLLs in Windows.
+    set_target_properties(qyoto PROPERTIES PREFIX "" IMPORT_PREFIX "")
+endif (WIN32)
 INSTALL(FILES src/emitsignal.h src/callbacks.h src/invokeslot.h src/marshall.h src/marshall_macros.h src/methodcall.h src/methodreturnvalue.h src/qyoto.h src/qyotosmokebinding.h src/signalreturnvalue.h src/slotreturnvalue.h
 src/smokeqyoto.h src/virtualmethodcall.h src/virtualmethodreturnvalue.h DESTINATION include/qyoto)
-INSTALL(EXPORT QyotoExport DESTINATION ${CMAKE_INSTALL_PREFIX}/share/qyoto/cmake NAMESPACE QYOTO_ )
+INSTALL(EXPORT QyotoExport DESTINATION share/qyoto/cmake NAMESPACE QYOTO_ )
 
 add_subdirectory(tools)
 add_subdirectory(examples EXCLUDE_FROM_ALL)

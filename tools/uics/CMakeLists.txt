@@ -22,6 +22,10 @@ set(uics_bin_SRCS
 add_executable(uics_bin ${uics_bin_SRCS})
 set_target_properties(uics_bin PROPERTIES OUTPUT_NAME uics)
 set_target_properties(uics_bin PROPERTIES COMPILE_FLAGS -DQT_UIC_CS_GENERATOR)
+if (WIN32)
+    # So that ui4.h gets the right value of QDESIGNER_UILIB_EXPORT
+    set_target_properties(uics_bin PROPERTIES COMPILE_FLAGS "-DQT_UIC_CS_GENERATOR -DQDESIGNER_UILIB_LIBRARY")
+endif (WIN32)
 
 target_link_libraries(uics_bin  ${QT_QTCORE_LIBRARY} ${QT_QTXML_LIBRARY} )
 

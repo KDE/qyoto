@@ -23,5 +23,12 @@ TARGET_LINK_LIBRARIES(qscintilla-sharp ${SMOKE_QSCI_LIBRARY} qyoto ${QT_QTCORE_L
 CSHARP_ADD_LIBRARY(qscintilla "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(qscintilla qt-dotnet qscintilla-sharp ${SMOKE_QSCI_LIBRARY})
 
-INSTALL(TARGETS qscintilla-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS qscintilla-sharp
+    LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+    ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+    RUNTIME DESTINATION bin)
+if (WIN32)
+    # Get rid of the "lib" prefix on archives/DLLs in Windows.
+    set_target_properties(qscintilla-sharp PROPERTIES PREFIX "" IMPORT_PREFIX "")
+endif (WIN32)
 INSTALL_ASSEMBLY(qscintilla DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

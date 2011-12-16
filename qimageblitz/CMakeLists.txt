@@ -24,5 +24,12 @@ TARGET_LINK_LIBRARIES(qimageblitz-sharp ${SMOKE_QIMAGEBLITZ_LIBRARY} qyoto ${QT_
 CSHARP_ADD_LIBRARY(qimageblitz "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn:0 /keyfile:${KEYFILE})
 ADD_DEPENDENCIES(qimageblitz qt-dotnet qimageblitz-sharp ${SMOKE_QIMAGEBLITZ_LIBRARY})
 
-INSTALL(TARGETS qimageblitz-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS qimageblitz-sharp
+ LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+    ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+    RUNTIME DESTINATION bin)
+if (WIN32)
+    # Get rid of the "lib" prefix on archives/DLLs in Windows.
+    set_target_properties(qimageblitz-sharp PROPERTIES PREFIX "" IMPORT_PREFIX "")
+endif (WIN32)
 INSTALL_ASSEMBLY(qimageblitz DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)

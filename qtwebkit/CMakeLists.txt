@@ -6,9 +6,20 @@ ENDIF (NOT QT4_FOUND)
 
 SET(SRC_CPP src/qtwebkit.cpp src/qtwebkithandlers.cpp)
 
-SET(SRC_CS src/QtWebKit.cs
+SET(SRC_CS_IN src/QtWebKit.cs
 	src/AssemblyInfo.cs
 	qtwebkit/*.cs)
+
+if (WIN32)
+    # Microsoft's .NET compiler needs backslashes.  Two are needed
+    # because CMake uses backslash as an escape character.
+    foreach (arg ${SRC_CS_IN})
+        string (REPLACE "/" "\\\\" arg ${arg})
+        SET(SRC_CS ${SRC_CS} ${arg})
+    endforeach (arg ${SRC_CS_IN})
+else (WIN32)
+    SET (SRC_CS ${SRC_CS_IN})
+endif (WIN32)
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/generator 
 	${CMAKE_CURRENT_SOURCE_DIR}/../qyoto/src ${QT_INCLUDES})
@@ -20,5 +31,12 @@ CSHARP_ADD_LIBRARY(qtwebkit "${SRC_CS}" REFERENCES qt-dotnet COMPILE_FLAGS /warn
 SET_PROPERTY(TARGET qtwebkit PROPERTY pkg-config_template_basename ${PROJECT_NAME})
 ADD_DEPENDENCIES(qtwebkit qt-dotnet qtwebkit-sharp ${SMOKE_QTWEBKIT_LIBRARY})
 
-INSTALL(TARGETS qtwebkit-sharp LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+install(TARGETS qtwebkit-sharp
+    LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+    ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+    RUNTIME DESTINATION bin)
+if (WIN32)
+    # Get rid of the "lib" prefix on archives/DLLs in Windows.
+    set_target_properties(qtwebkit-sharp PROPERTIES PREFIX "" IMPORT_PREFIX "")
+endif (WIN32)
 INSTALL_ASSEMBLY(qtwebkit DESTINATION ${LIB_INSTALL_DIR} PACKAGE qyoto)
