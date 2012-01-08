@@ -56,7 +56,7 @@ QString Driver::findOrInsertSpacer(DomSpacer *ui_spacer)
 QString Driver::findOrInsertLayout(DomLayout *ui_layout)
 {
     if (!m_layouts.contains(ui_layout))
-        m_layouts.insert(ui_layout, unique(QString(), ui_layout->attributeClass()));
+        m_layouts.insert(ui_layout, unique(ui_layout->attributeName(), ui_layout->attributeClass()));
 
     return m_layouts.value(ui_layout);
 }

@@ -2085,6 +2085,8 @@ void DomLayout::read(const QDomElement &node)
 {
     if (node.hasAttribute(QLatin1String("class")))
         setAttributeClass(node.attribute(QLatin1String("class")));
+    if (node.hasAttribute(QLatin1String("name")))
+        setAttributeName(node.attribute(QLatin1String("name")));
 
     for (QDomNode n = node.firstChild(); !n.isNull(); n = n.nextSibling()) {
         if (!n.isElement())
@@ -2126,6 +2128,9 @@ QDomElement DomLayout::write(QDomDocument &doc, const QString &tagName) const
 
     if (hasAttributeClass())
         e.setAttribute(QLatin1String("class"), attributeClass());
+
+    if (hasAttributeName())
+        e.setAttribute(QLatin1String("name"), attributeName());
 
     for (int i = 0; i < m_property.size(); ++i) {
         DomProperty* v = m_property[i];

@@ -766,7 +766,21 @@ void WriteInitialization::acceptLayoutItem(DomLayoutItem *node)
             method = QLatin1String("AddWidget");
             break;
         case DomLayoutItem::Layout:
-            method = QLatin1String("AddLayout");
+            if (layout->attributeClass() == QLatin1String("QFormLayout")) {
+                method = QLatin1String("SetLayout");
+                QString itemRole;
+                if (node->attributeRowSpan() == 2) {
+                    itemRole = "QFormLayout.ItemRole.SpanningRole";
+                } else if (node->attributeColumn() == 0) {
+                    itemRole = "QFormLayout.ItemRole.LabelRole";
+                } else {
+                    itemRole = "QFormLayout.ItemRole.FieldRole";
+                }
+                m_output << "\n" << m_option.indent << layoutName << "." << method << "(" << node->attributeRow() << ", " << itemRole << ", " << varName << opt << ");\n\n";
+                return;
+            } else {
+                method = QLatin1String("AddLayout");
+            }
             break;
         case DomLayoutItem::Spacer:
             method = QLatin1String("AddItem");

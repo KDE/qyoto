@@ -1017,6 +1017,11 @@ public:
     inline void setAttributeClass(const QString& a) { m_attr_class = a; m_has_attr_class = true; }
     inline void clearAttributeClass() { m_has_attr_class = false; }
 
+    inline bool hasAttributeName() const { return m_has_attr_name; }
+    inline QString attributeName() const { return m_attr_name; }
+    inline void setAttributeName(const QString& a) { m_attr_name = a; m_has_attr_name = true; }
+    inline void clearAttributeName() { m_has_attr_name = false; }
+
     // child element accessors
     inline QList<DomProperty*> elementProperty() const { return m_property; }
     void setElementProperty(const QList<DomProperty*>& a);
@@ -1034,6 +1039,9 @@ private:
     // attribute data
     QString m_attr_class;
     bool m_has_attr_class;
+
+    QString m_attr_name;
+    bool m_has_attr_name;
 
     // child element data
     QList<DomProperty*> m_property;
