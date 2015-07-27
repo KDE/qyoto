@@ -1,6 +1,6 @@
+cmake_minimum_required(VERSION 2.8.9)
 PROJECT (qyoto)
 
-cmake_minimum_required(VERSION 2.6)
 
 find_package(Qt4 REQUIRED)
 find_package(Smoke COMPONENTS QtCore QtGui QtXml QtOpenGl QtSql QtNetwork QtDbus QtSvg QtScript QtTest QtUiTools QtWebKit QSci QImageBlitz Phonon)
